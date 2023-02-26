@@ -6,119 +6,24 @@ import java.util.Optional;
 import org.apache.commons.compress.utils.Lists;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
-import defeatedcrow.hac.api.crop.CropGrowType;
-import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
-import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.core.json.JsonModelDC;
-import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class SaplingOlive extends ClimateCropBaseBlock {
+public class SaplingOlive extends SaplingBaseBlock {
 
 	public SaplingOlive(CropTier t) {
 		super(t);
-	}
-
-	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-
-	}
-
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext col) {
-		return Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
-	}
-
-	/* 苗木なのでコレ自体は成長しない */
-
-	@Override
-	public CropStage getCurrentStage(BlockState state) {
-		return CropStage.SAPLING;
-	}
-
-	@Override
-	public BlockState getFeatureState() {
-		return this.defaultBlockState();
-	}
-
-	@Override
-	public BlockState getGrownState() {
-		return this.defaultBlockState();
-	}
-
-	@Override
-	public int getGrowingChance(Level world, BlockPos pos, BlockState thisState) {
-		boolean clm = isSuitableForGrowing(world, pos, thisState);
-		int ret = clm ? 8 : 50;
-		BlockState under = world.getBlockState(pos.below());
-		if (getFertile(world, pos.below(), under) > 5) {
-			ret /= 2;
-		}
-		return ret;
-	}
-
-	@Override
-	public boolean onGrow(Level world, BlockPos pos, BlockState state) {
-		if (state.getBlock() instanceof IClimateCrop)
-			onGrowingTree(world, pos, state, ((IClimateCrop) state.getBlock()).getTier());
-		return true;
-	}
-
-	@Override
-	public boolean canHarvest(BlockState thisState) {
-		return false;
-	}
-
-	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-		List<ItemStack> ret = Lists.newArrayList();
-		ret.add(new ItemStack(this));
-		return ret;
-	}
-
-	/* model */
-
-	@Override
-	public String getRegistryName() {
-		return "food/sapling_" + getFamily().toString() + "_" + cropTier.toString();
-	}
-
-	@Override
-	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/sapling_" + getFamily().toString() + "_" + getSpeciesName(cropTier))));
-	}
-
-	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
-	}
-
-	@Override
-	public JsonModelSimpleDC getItemModel() {
-		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_" + getFamily().toString() + "_" + getSpeciesName(cropTier)));
 	}
 
 	/* ICropData */
@@ -126,16 +31,6 @@ public class SaplingOlive extends ClimateCropBaseBlock {
 	@Override
 	public CropType getFamily() {
 		return CropType.OLIVE;
-	}
-
-	@Override
-	public CropGrowType getGrowType(CropTier t) {
-		return CropGrowType.SINGLE;
-	}
-
-	@Override
-	public ItemLike getSeedItem(CropTier t) {
-		return this;
 	}
 
 	@Override
@@ -188,7 +83,17 @@ public class SaplingOlive extends ClimateCropBaseBlock {
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("FOREST", "COLD", "TAIGA");
+			return ImmutableList.of("FOREST", "COLD", "CONIFEROUS");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("WET", "HOT");
 		default:
 			return Lists.newArrayList();
 		}
@@ -203,6 +108,7 @@ public class SaplingOlive extends ClimateCropBaseBlock {
 		return "ash";
 	}
 
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		// 各種サイズが違う
 		level.random.nextInt(5);
@@ -228,46 +134,15 @@ public class SaplingOlive extends ClimateCropBaseBlock {
 			return;
 
 		if (!level.isClientSide) {
-			for (int i = 1; i < h; i++) {
-				if (!level.getBlockState(pos.above(i)).getMaterial().isReplaceable())
-					return;
+			if (replaceCheck(level, pos, h))
+				return;
 
-			}
-
-			if (h > 10) {
+			if (h > 8) {
 				SaplingBeech.growBigTree2(level, pos, h, log, leaves);
-			} else if (h > 6) {
+			} else if (h > 5) {
 				SaplingBeech.growBigTree(level, pos, h, log, leaves);
 			} else {
-
-				// 幹
-				for (int i = 0; i < h; i++) {
-					level.setBlock(pos.above(i), log, 2);
-				}
-
-				// 葉
-				level.setBlock(pos.above(h), leaves, 2);
-				int h2 = Mth.floor(h / 2F);
-				for (int j = h - 2; j < h + 1; j++) {
-					for (int k = -r; k <= r; k++) {
-						for (int l = -r; l <= r; l++) {
-							double lim = 5D;
-							if (j == h) {
-								lim = 2D;
-							}
-							BlockPos p1 = pos.offset(k, j, l);
-							BlockPos p2 = pos.offset(0, j, 0);
-
-							if (p1.distSqr(p2) > lim)
-								continue;
-
-							if (level.getBlockState(p1).getBlock() == Blocks.AIR) {
-								level.setBlock(p1, leaves, 2);
-							}
-
-						}
-					}
-				}
+				growTree(level, pos, h, log, leaves);
 			}
 
 		}

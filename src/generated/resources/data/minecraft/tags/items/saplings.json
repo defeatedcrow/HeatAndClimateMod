@@ -1,0 +1,31 @@
+{
+  "values": [
+    "dcs_climate:food/sapling_beech_wild",
+    "dcs_climate:food/sapling_beech_common",
+    "dcs_climate:food/sapling_beech_rare",
+    "dcs_climate:food/sapling_cherry_wild",
+    "dcs_climate:food/sapling_cherry_common",
+    "dcs_climate:food/sapling_cherry_rare",
+    "dcs_climate:food/sapling_camellia_wild",
+    "dcs_climate:food/sapling_camellia_common",
+    "dcs_climate:food/sapling_camellia_rare",
+    "dcs_climate:food/sapling_cinnamon_wild",
+    "dcs_climate:food/sapling_cinnamon_common",
+    "dcs_climate:food/sapling_cinnamon_rare",
+    "dcs_climate:food/sapling_citrus_wild",
+    "dcs_climate:food/sapling_citrus_common",
+    "dcs_climate:food/sapling_citrus_rare",
+    "dcs_climate:food/sapling_erica_wild",
+    "dcs_climate:food/sapling_erica_common",
+    "dcs_climate:food/sapling_erica_rare",
+    "dcs_climate:food/sapling_morus_wild",
+    "dcs_climate:food/sapling_morus_common",
+    "dcs_climate:food/sapling_morus_rare",
+    "dcs_climate:food/sapling_olive_wild",
+    "dcs_climate:food/sapling_olive_common",
+    "dcs_climate:food/sapling_olive_rare",
+    "dcs_climate:food/sapling_palm_wild",
+    "dcs_climate:food/sapling_palm_common",
+    "dcs_climate:food/sapling_palm_rare"
+  ]
+}

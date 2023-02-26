@@ -1,7 +1,6 @@
 package defeatedcrow.hac.core.material.block;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.commons.compress.utils.Lists;
 
@@ -62,8 +61,8 @@ public class AlloyDustBlockDC extends ClimateBlock {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return Lists.newArrayList();
 	}
 
 	@Override

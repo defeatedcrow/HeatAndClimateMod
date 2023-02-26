@@ -1,6 +1,6 @@
 {
   "parent": "dcs_climate:block/dcs_cross",
   "textures": {
-    "cross": "dcs_climate:block/crop/brassica_radish_c"
+    "cross": "dcs_climate:block/crop/brassica_radish_f"
   }
 }

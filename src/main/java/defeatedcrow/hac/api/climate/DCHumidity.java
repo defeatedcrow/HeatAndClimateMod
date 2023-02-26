@@ -1,6 +1,5 @@
 package defeatedcrow.hac.api.climate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.compress.utils.Lists;
@@ -66,7 +65,7 @@ public enum DCHumidity {
 			i = 0;
 		if (i > 3)
 			i = 3;
-		for (DCHumidity e : values()) {
+		for (DCHumidity e : elements()) {
 			if (i == e.id)
 				return e;
 		}
@@ -81,19 +80,9 @@ public enum DCHumidity {
 		return this;
 	}
 
-	public static List<DCHumidity> createList() {
-		List<DCHumidity> tiers = new ArrayList<DCHumidity>();
-
-		for (DCHumidity t : DCHumidity.values()) {
-			tiers.add(t);
-		}
-
-		return tiers;
-	}
-
 	public static DCHumidity getFromName(String name) {
 		if (name != null)
-			for (DCHumidity t : DCHumidity.values()) {
+			for (DCHumidity t : DCHumidity.elements()) {
 				if (t.name().equalsIgnoreCase(name)) {
 					return t;
 				}
@@ -103,7 +92,7 @@ public enum DCHumidity {
 
 	public static DCHumidity getFromNameOrNull(String name) {
 		if (name != null)
-			for (DCHumidity t : DCHumidity.values()) {
+			for (DCHumidity t : DCHumidity.elements()) {
 				if (t.name().equalsIgnoreCase(name)) {
 					return t;
 				}
@@ -113,14 +102,15 @@ public enum DCHumidity {
 
 	public static List<DCHumidity> getListFromName(List<String> names) {
 		List<DCHumidity> ret = Lists.newArrayList();
-		for (String name : names)
-			if (name != null && !name.isEmpty())
-				for (DCHumidity t : DCHumidity.values()) {
-					if (t.name().equalsIgnoreCase(name)) {
-						ret.add(t);
-						break;
+		if (names != null)
+			for (String name : names)
+				if (name != null && !name.isEmpty())
+					for (DCHumidity t : DCHumidity.elements()) {
+						if (t.name().equalsIgnoreCase(name)) {
+							ret.add(t);
+							break;
+						}
 					}
-				}
 		return ret;
 	}
 
@@ -134,6 +124,10 @@ public enum DCHumidity {
 
 	public static MutableComponent basename2() {
 		return Component.translatable("dcs.enum.humidity_name2");
+	}
+
+	public static List<DCHumidity> elements() {
+		return ImmutableList.of(UNDERWATER, WET, NORMAL, DRY);
 	}
 
 }

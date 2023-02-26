@@ -53,8 +53,8 @@ public class CropBlockRice extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("0", "1", "2", "3", "4");
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class CropBlockRice extends ClimateCropBaseBlock {
 		case COMMON:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.MUD);
 		case WILD:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.SAND);
+			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.MUD);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.MUD);
 		}
@@ -144,6 +144,16 @@ public class CropBlockRice extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("SWAMP", "RIVER");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("COLD");
 		default:
 			return Lists.newArrayList();
 		}

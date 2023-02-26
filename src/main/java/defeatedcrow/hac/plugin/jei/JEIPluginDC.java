@@ -32,9 +32,9 @@ public class JEIPluginDC implements IModPlugin {
 
 	@Override
 	public void registerIngredients(IModIngredientRegistration registration) {
-		registration.register(IngredientTypeDC.HEAT_TIER, DCHeatTier.createList(), new JeiHeatTierHelper(), new HeatTierRenderer());
-		registration.register(IngredientTypeDC.HUMIDITY, DCHumidity.createList(), new JeiHumidityHelper(), new HumidityRenderer());
-		registration.register(IngredientTypeDC.AIRFLOW, DCAirflow.createList(), new JeiAirflowHelper(), new AirflowRenderer());
+		registration.register(IngredientTypeDC.HEAT_TIER, DCHeatTier.elements(), new JeiHeatTierHelper(), new HeatTierRenderer());
+		registration.register(IngredientTypeDC.HUMIDITY, DCHumidity.elements(), new JeiHumidityHelper(), new HumidityRenderer());
+		registration.register(IngredientTypeDC.AIRFLOW, DCAirflow.elements(), new JeiAirflowHelper(), new AirflowRenderer());
 	}
 
 	@Override

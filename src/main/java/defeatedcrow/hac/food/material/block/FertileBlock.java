@@ -1,7 +1,6 @@
 package defeatedcrow.hac.food.material.block;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.commons.compress.utils.Lists;
 
@@ -86,8 +85,8 @@ public class FertileBlock extends FarmBlock implements IFertileBlock, IBlockDC, 
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "dry", "moist" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("dry", "moist");
 	}
 
 	@Override

@@ -1,6 +1,0 @@
-{
-  "textures": {
-    "all": "dcs_climate:block/tree/beech_common_leaves_c"
-  },
-  "parent": "dcs_climate:block/dcs_leaves"
-}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/frog"
+    },
+    {
+      "tag": "forge:crops/vegetables"
+    },
+    {
+      "tag": "forge:crops/potato"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/plate_legs_raw"
+  }
+}

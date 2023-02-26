@@ -15,21 +15,25 @@ import defeatedcrow.hac.core.material.item.MetalItemDC;
 import defeatedcrow.hac.core.material.item.NullItemDC;
 import defeatedcrow.hac.core.material.item.tool.AgateMortarItem;
 import defeatedcrow.hac.core.material.item.tool.HandSpindleItem;
+import defeatedcrow.hac.core.material.item.tool.ItemScythe;
 import defeatedcrow.hac.core.material.item.tool.SeedingPotItem;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Building;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Machine;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.util.TierDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.Tags;
@@ -43,7 +47,8 @@ public class CoreInit {
 	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, ClimateCore.MOD_ID);
-	public static final DeferredRegister<MobEffect> POTIONS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, ClimateCore.MOD_ID);
+	public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, ClimateCore.MOD_ID);
+	public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, ClimateCore.MOD_ID);
 
 	public static final CreativeModeTab CORE = new CreativeTabClimate("core");
 	public static final CreativeModeTab BUILD = new CreativeTabClimate_Building("build");
@@ -150,6 +155,8 @@ public class CoreInit {
 	public static final RegistryObject<Item> HAND_SPINDLE = regItem("hand_spindle", () -> new HandSpindleItem("hand_spindle"));
 	public static final RegistryObject<Item> SEEDING_POT = regItem("seeding_pot", () -> new SeedingPotItem("seeding_pot"));
 
+	public static final RegistryObject<Item> SCYTHE_BRASS = regItem("scythe_brass", () -> new ItemScythe(TierDC.BRASS, TagDC.ItemTag.SCYTHES));
+
 	// block
 	public static final RegistryObject<Block> STONE_MUD = regBlock("stone_mud", () -> new LayerStoneBlock("stone_mud"), null);
 	public static final RegistryObject<Block> STONE_GYPSUM = regBlock("stone_gypsum", () -> new LayerStoneBlock("stone_gypsum"), TagDC.ItemTag.ORES_GYPSUM);
@@ -237,8 +244,11 @@ public class CoreInit {
 	public static final RegistryObject<Block> METALBLOCK_HASTELLOY = regBlock("metalblock_hastelloy", () -> new MetalBlockDC("metalblock_hastelloy"), TagDC.ItemTag.METALBLOCK_HASTELLOY);
 	public static final RegistryObject<Block> METALBLOCK_BSCCO = regBlock("metalblock_bscco", () -> new MetalBlockDC("metalblock_bscco"), TagDC.ItemTag.METALBLOCK_BSCCO);
 
-	public static final RegistryObject<MobEffect> COLD_RESISTANCE = regPotion("effect_cold_resistance", () -> new MobEffectDC("effect_cold_resistance", MobEffectCategory.BENEFICIAL, 0xFF5000).setIconIndex(1, 1));
-	public static final RegistryObject<MobEffect> WET = regPotion("effect_wet", () -> new MobEffectDC("effect_wet", MobEffectCategory.NEUTRAL, 0x90E0FF).setIconIndex(1, 2));
+	public static final RegistryObject<MobEffect> COLD_RESISTANCE = regPotionEffect("effect_cold_resistance", () -> new MobEffectDC("effect_cold_resistance", MobEffectCategory.BENEFICIAL, 0x0050FF).setIconIndex(1, 1));
+	public static final RegistryObject<Potion> COLD_RES_POTION = regPotion("cold_resistance", () -> new Potion("cold_resistance", new MobEffectInstance(COLD_RESISTANCE.get(), 3600)));
+	public static final RegistryObject<Potion> COLD_RES_LONG = regPotion("long_cold_resistance", () -> new Potion("long_cold_resistance", new MobEffectInstance(COLD_RESISTANCE.get(), 9600)));
+
+	public static final RegistryObject<MobEffect> WET = regPotionEffect("effect_wet", () -> new MobEffectDC("effect_wet", MobEffectCategory.NEUTRAL, 0x90E0FF).setIconIndex(1, 2));
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = BLOCKS.register("main/" + name, block);
@@ -250,8 +260,12 @@ public class CoreInit {
 		return ITEMS.register("main/" + name, item);
 	}
 
-	public static RegistryObject<MobEffect> regPotion(String name, Supplier<MobEffect> effect) {
-		return POTIONS.register(name, effect);
+	public static RegistryObject<MobEffect> regPotionEffect(String name, Supplier<MobEffect> effect) {
+		return EFFECTS.register(name, effect);
+	}
+
+	public static RegistryObject<Potion> regPotion(String name, Supplier<Potion> potion) {
+		return POTIONS.register(name, potion);
 	}
 
 }

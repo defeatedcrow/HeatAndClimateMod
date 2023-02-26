@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#forge:foods/cooked_beef",
+    "#forge:foods/cooked_pork",
+    "#forge:foods/cooked_chicken",
+    "#forge:foods/cooked_mutton",
+    "#forge:foods/cooked_rabbit"
+  ]
+}

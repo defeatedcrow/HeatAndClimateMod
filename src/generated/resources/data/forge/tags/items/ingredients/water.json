@@ -1,5 +1,6 @@
 {
   "values": [
-    "dcs_climate:food/pack_water"
+    "dcs_climate:food/pack_water",
+    "minecraft:water_bucket"
   ]
 }

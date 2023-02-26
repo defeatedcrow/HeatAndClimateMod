@@ -30,7 +30,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -222,7 +221,7 @@ public class LivingTickEventDC {
 
 			/* wet effect */
 
-			if (!(living instanceof WaterAnimal))
+			if (living instanceof Player && ConfigCommonBuilder.INSTANCE.enWetEffect.get())
 				if (clm.getHumidity() == DCHumidity.UNDERWATER || living.isInWaterRainOrBubble()) {
 					if (!living.hasEffect(CoreInit.WET.get()) || living.getEffect(CoreInit.WET.get()).getDuration() < 20) {
 						living.addEffect(new MobEffectInstance(CoreInit.WET.get(), 600, 0));

@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "stage5=0,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_pedaria_common_0"
+    },
+    "stage5=0,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_pedaria_common_1"
+    },
+    "stage5=1,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_pedaria_common_2"
+    },
+    "stage5=1,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_pedaria_common_3"
+    },
+    "stage5=2,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_pedaria_common_4"
+    },
+    "stage5=2,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_pedaria_common_4"
+    },
+    "stage5=3,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_pedaria_common_4"
+    },
+    "stage5=3,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_pedaria_common_4"
+    },
+    "stage5=4,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_pedaria_common_4"
+    },
+    "stage5=4,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_pedaria_common_4"
+    }
+  }
+}

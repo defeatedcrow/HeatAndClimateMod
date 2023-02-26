@@ -16,10 +16,10 @@ import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.climate.ClientClimateData;
+import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.climate.WeatherChecker;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
 import defeatedcrow.hac.core.util.DCTexturePath;
-import defeatedcrow.hac.core.util.DCTimeHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
@@ -185,15 +185,13 @@ public class ClimateHUDEvent {
 							}
 
 							int c2 = 0xFFFFFF;
-							EnumSeason season = EnumSeason.SPRING_EARLY;
-
-							season = DCTimeHelper.getSeasonEnum(world, player.blockPosition());
-							MutableComponent sN = season.getName();
+							EnumSeason season = DCTimeHelper.getClientSeason();
+							MutableComponent sN = season.getFullname();
 							c2 = season.color.getTextColor();
 							fr.width(sN);
 							fr.drawShadow(pose, sN, x, y - 20, c2);
 
-							String dN = DCTimeHelper.getDate(world);
+							String dN = DCTimeHelper.getDateDisp();
 							fr.width(dN);
 							fr.drawShadow(pose, dN, x, y - 10, 0xFFFFFF);
 						}

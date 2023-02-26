@@ -1,40 +1,22 @@
 {
   "variants": {
-    "flag=false,stage6=0": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_false_0"
+    "stage6=0": {
+      "model": "dcs_climate:block/food/leaves_cherry_wild_0"
     },
-    "flag=false,stage6=1": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_false_1"
+    "stage6=1": {
+      "model": "dcs_climate:block/food/leaves_cherry_wild_1"
     },
-    "flag=false,stage6=2": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_false_2"
+    "stage6=2": {
+      "model": "dcs_climate:block/food/leaves_cherry_wild_2"
     },
-    "flag=false,stage6=3": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_false_3"
+    "stage6=3": {
+      "model": "dcs_climate:block/food/leaves_cherry_wild_3"
     },
-    "flag=false,stage6=4": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_false_4"
+    "stage6=4": {
+      "model": "dcs_climate:block/food/leaves_cherry_wild_4"
     },
-    "flag=false,stage6=5": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_false_5"
-    },
-    "flag=true,stage6=0": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_true_0"
-    },
-    "flag=true,stage6=1": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_true_1"
-    },
-    "flag=true,stage6=2": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_true_2"
-    },
-    "flag=true,stage6=3": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_true_3"
-    },
-    "flag=true,stage6=4": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_true_4"
-    },
-    "flag=true,stage6=5": {
-      "model": "dcs_climate:block/food/leaves_cherry_wild_true_5"
+    "stage6=5": {
+      "model": "dcs_climate:block/food/leaves_cherry_wild_5"
     }
   }
 }

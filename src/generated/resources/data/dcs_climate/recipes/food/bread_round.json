@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/bread_grains"
+    },
+    {
+      "tag": "forge:dusts/salt"
+    },
+    {
+      "tag": "forge:ingredients/water"
+    },
+    {
+      "tag": "forge:ingredients/plant_oil"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/bread_round_raw"
+  }
+}

@@ -1,9 +1,5 @@
 package defeatedcrow.hac.core.material.item;
 
-import java.util.List;
-import java.util.Optional;
-
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.core.json.JsonModelDC;
@@ -30,16 +26,6 @@ public class ItemGemDC extends ItemDC {
 	@Override
 	public String getRegistryName() {
 		return domain + "/" + name;
-	}
-
-	@Override
-	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/gem/" + name)));
-	}
-
-	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
 	}
 
 	@Override

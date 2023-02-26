@@ -1,40 +1,22 @@
 {
   "variants": {
-    "flag=false,stage6=0": {
-      "model": "dcs_climate:block/food/leaves_palm_false"
+    "stage6=0": {
+      "model": "dcs_climate:block/food/leaves_palm_0"
     },
-    "flag=false,stage6=1": {
-      "model": "dcs_climate:block/food/leaves_palm_false"
+    "stage6=1": {
+      "model": "dcs_climate:block/food/leaves_palm_0"
     },
-    "flag=false,stage6=2": {
-      "model": "dcs_climate:block/food/leaves_palm_false"
+    "stage6=2": {
+      "model": "dcs_climate:block/food/leaves_palm_0"
     },
-    "flag=false,stage6=3": {
-      "model": "dcs_climate:block/food/leaves_palm_false"
+    "stage6=3": {
+      "model": "dcs_climate:block/food/leaves_palm_0"
     },
-    "flag=false,stage6=4": {
-      "model": "dcs_climate:block/food/leaves_palm_false"
+    "stage6=4": {
+      "model": "dcs_climate:block/food/leaves_palm_0"
     },
-    "flag=false,stage6=5": {
-      "model": "dcs_climate:block/food/leaves_palm_false"
-    },
-    "flag=true,stage6=0": {
-      "model": "dcs_climate:block/food/leaves_palm_true"
-    },
-    "flag=true,stage6=1": {
-      "model": "dcs_climate:block/food/leaves_palm_true"
-    },
-    "flag=true,stage6=2": {
-      "model": "dcs_climate:block/food/leaves_palm_true"
-    },
-    "flag=true,stage6=3": {
-      "model": "dcs_climate:block/food/leaves_palm_true"
-    },
-    "flag=true,stage6=4": {
-      "model": "dcs_climate:block/food/leaves_palm_true"
-    },
-    "flag=true,stage6=5": {
-      "model": "dcs_climate:block/food/leaves_palm_true"
+    "stage6=5": {
+      "model": "dcs_climate:block/food/leaves_palm_0"
     }
   }
 }

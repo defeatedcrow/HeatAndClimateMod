@@ -1,7 +1,6 @@
 package defeatedcrow.hac.core.material.block.building;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.commons.compress.utils.Lists;
 
@@ -49,8 +48,8 @@ public class FenceWoodDC extends FenceBlock implements IBlockDC, IJsonDataDC {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "post", "side" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("post", "side");
 	}
 
 	@Override

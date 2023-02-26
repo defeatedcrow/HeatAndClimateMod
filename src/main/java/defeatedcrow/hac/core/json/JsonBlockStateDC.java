@@ -30,10 +30,14 @@ public class JsonBlockStateDC {
 				Collections.sort(vals);
 				Collections.sort(names);
 				for (int i = 0; i < vals.size(); i++) {
-					int k = i;
-					if (k > names.size())
-						k = names.size() - 1;
-					variants.put(vals.get(i), new Variant("dcs_climate:block/" + data.getRegistryName() + names.get(k)));
+					if (names.isEmpty()) {
+						variants.put(vals.get(i), new Variant("dcs_climate:block/" + data.getRegistryName() + "_0"));
+					} else {
+						int k = i;
+						if (k >= names.size())
+							k = names.size() - 1;
+						variants.put(vals.get(i), new Variant("dcs_climate:block/" + data.getRegistryName() + "_" + names.get(k)));
+					}
 				}
 			}
 		}
@@ -52,6 +56,13 @@ public class JsonBlockStateDC {
 
 	public static List<String> getAllVariants(Block block) {
 		List<String> list = Lists.newArrayList();
+		if (block instanceof IJsonDataDC) {
+			List<String> suf = ((IJsonDataDC) block).getStateNameSuffix();
+			if (suf != null && !suf.isEmpty()) {
+				list.addAll(suf);
+				return list;
+			}
+		}
 		Collection<Property<?>> props = block.defaultBlockState().getProperties();
 		props.stream().forEach(p -> {
 			List<String> list2 = Lists.newArrayList();
@@ -73,21 +84,28 @@ public class JsonBlockStateDC {
 
 	public static List<String> getFilenamePath(Block block) {
 		List<String> list = Lists.newArrayList();
-		Collection<Property<?>> props = block.defaultBlockState().getProperties();
-		props.stream().forEach(p -> {
-			List<String> list2 = Lists.newArrayList();
-			p.getPossibleValues().stream().forEach(val -> {
-				if (list.isEmpty()) {
-					list2.add("_" + getName(p, val).toLowerCase());
-				} else {
-					for (String str : list) {
-						list2.add(str + "_" + getName(p, val).toLowerCase());
-					}
-				}
-			});
-			list.clear();
-			list.addAll(list2);
-		});
+		if (block instanceof IJsonDataDC) {
+			List<String> suf = ((IJsonDataDC) block).getModelNameSuffix();
+			if (suf != null && !suf.isEmpty()) {
+				list.addAll(suf);
+				return list;
+			}
+		}
+		// Collection<Property<?>> props = block.defaultBlockState().getProperties();
+		// props.stream().forEach(p -> {
+		// List<String> list2 = Lists.newArrayList();
+		// p.getPossibleValues().stream().forEach(val -> {
+		// if (list.isEmpty()) {
+		// list2.add("_" + getName(p, val).toLowerCase());
+		// } else {
+		// for (String str : list) {
+		// list2.add(str + "_" + getName(p, val).toLowerCase());
+		// }
+		// }
+		// });
+		// list.clear();
+		// list.addAll(list2);
+		// });
 
 		return list;
 	}

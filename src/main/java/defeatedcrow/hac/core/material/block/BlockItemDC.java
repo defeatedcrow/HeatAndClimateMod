@@ -1,7 +1,6 @@
 package defeatedcrow.hac.core.material.block;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.annotation.Nullable;
 
@@ -43,8 +42,8 @@ public class BlockItemDC extends BlockItem implements IJsonDataDC, IItemDC {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return Lists.newArrayList();
 	}
 
 	@Override

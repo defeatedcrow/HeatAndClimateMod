@@ -1,7 +1,6 @@
 package defeatedcrow.hac.food.material.block;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.commons.compress.utils.Lists;
 
@@ -45,8 +44,8 @@ public class LogBlockDC extends RotatedPillarBlock implements IBlockDC, IJsonDat
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "var", "hol" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("hol", "var", "hol");
 	}
 
 	@Override

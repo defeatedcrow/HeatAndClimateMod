@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "stage6=0": {
+      "model": "dcs_climate:block/food/leaves_morus_mulberry_0"
+    },
+    "stage6=1": {
+      "model": "dcs_climate:block/food/leaves_morus_mulberry_1"
+    },
+    "stage6=2": {
+      "model": "dcs_climate:block/food/leaves_morus_mulberry_2"
+    },
+    "stage6=3": {
+      "model": "dcs_climate:block/food/leaves_morus_mulberry_3"
+    },
+    "stage6=4": {
+      "model": "dcs_climate:block/food/leaves_morus_mulberry_f"
+    },
+    "stage6=5": {
+      "model": "dcs_climate:block/food/leaves_morus_mulberry_c"
+    }
+  }
+}

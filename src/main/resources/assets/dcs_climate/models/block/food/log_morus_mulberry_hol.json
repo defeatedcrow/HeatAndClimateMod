@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "end": "dcs_climate:block/tree/morus_mulberry_log_top",
+    "side": "dcs_climate:block/tree/morus_mulberry_log_side"
+  },
+  "parent": "minecraft:block/cube_column"
+}

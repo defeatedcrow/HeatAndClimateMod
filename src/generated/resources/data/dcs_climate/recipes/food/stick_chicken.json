@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:rods/wooden"
+    },
+    {
+      "tag": "forge:ingredients/raw_chicken"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/stick_chicken_raw"
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "textures": {
-    "cross": "dcs_climate:block/tree/beech_sweet_leaves_wtr"
-  },
-  "parent": "dcs_climate:block/dcs_cross"
-}

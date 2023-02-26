@@ -5,7 +5,7 @@ import net.minecraft.world.item.ItemStack;
 public interface IFoodTaste {
 
 	/**
-	 * 0~4 の5段階である
+	 * -2~2 の5段階である
 	 */
 	int getTaste(ItemStack item);
 

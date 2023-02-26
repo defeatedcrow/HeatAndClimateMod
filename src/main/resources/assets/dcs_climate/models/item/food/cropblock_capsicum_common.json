@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "dcs_climate:item/crop/seed_capsicum_paprika"
-  }
+    "layer0": "dcs_climate:item/crop/seed_capsicum_bell"
+  },
+  "parent": "minecraft:item/generated"
 }

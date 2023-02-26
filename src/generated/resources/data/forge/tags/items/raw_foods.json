@@ -1,0 +1,22 @@
+{
+  "values": [
+    "dcs_climate:food/bread_round_raw",
+    "dcs_climate:food/bread_square_raw",
+    "dcs_climate:food/bread_nuts_raw",
+    "dcs_climate:food/bread_cinnamon_raw",
+    "dcs_climate:food/bread_anko_raw",
+    "dcs_climate:food/bread_cream_raw",
+    "dcs_climate:food/bread_sausage_raw",
+    "dcs_climate:food/stick_beef_raw",
+    "dcs_climate:food/stick_pork_raw",
+    "dcs_climate:food/stick_mutton_raw",
+    "dcs_climate:food/stick_chicken_raw",
+    "dcs_climate:food/stick_offal_raw",
+    "dcs_climate:food/plate_beef_raw",
+    "dcs_climate:food/plate_meat_raw",
+    "dcs_climate:food/plate_legs_raw",
+    "dcs_climate:food/plate_big_garlic_raw",
+    "dcs_climate:food/plate_big_chicken_raw",
+    "dcs_climate:food/plate_fish_raw"
+  ]
+}

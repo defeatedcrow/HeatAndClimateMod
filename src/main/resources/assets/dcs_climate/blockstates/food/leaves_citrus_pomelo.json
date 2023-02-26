@@ -1,40 +1,22 @@
 {
   "variants": {
-    "flag=false,stage6=0": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_false"
+    "stage6=0": {
+      "model": "dcs_climate:block/food/leaves_citrus_pomelo_0"
     },
-    "flag=false,stage6=1": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_false"
+    "stage6=1": {
+      "model": "dcs_climate:block/food/leaves_citrus_pomelo_0"
     },
-    "flag=false,stage6=2": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_false"
+    "stage6=2": {
+      "model": "dcs_climate:block/food/leaves_citrus_pomelo_0"
     },
-    "flag=false,stage6=3": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_false"
+    "stage6=3": {
+      "model": "dcs_climate:block/food/leaves_citrus_pomelo_0"
     },
-    "flag=false,stage6=4": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_false_f"
+    "stage6=4": {
+      "model": "dcs_climate:block/food/leaves_citrus_pomelo_f"
     },
-    "flag=false,stage6=5": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_false_c"
-    },
-    "flag=true,stage6=0": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_true"
-    },
-    "flag=true,stage6=1": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_true"
-    },
-    "flag=true,stage6=2": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_true"
-    },
-    "flag=true,stage6=3": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_true"
-    },
-    "flag=true,stage6=4": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_true_f"
-    },
-    "flag=true,stage6=5": {
-      "model": "dcs_climate:block/food/leaves_citrus_pomelo_true_c"
+    "stage6=5": {
+      "model": "dcs_climate:block/food/leaves_citrus_pomelo_c"
     }
   }
 }

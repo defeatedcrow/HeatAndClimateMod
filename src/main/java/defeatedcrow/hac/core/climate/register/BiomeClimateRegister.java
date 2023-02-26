@@ -15,8 +15,9 @@ import defeatedcrow.hac.api.climate.IBiomeClimateRegister;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.event.WorldHeatTierEvent;
 import defeatedcrow.hac.core.climate.Climate;
+import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.climate.WeatherChecker;
-import defeatedcrow.hac.core.util.DCTimeHelper;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -114,6 +115,8 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 			ResourceLocation dim = world.dimension().location();
 			Optional<DCHeatTier> ret = getRegisteredHeatTier(reg.getKey(b.get()));
 			float temp = ret.map(h -> h.getBiomeTemp()).orElse(b.get().getBaseTemperature());
+			boolean isNether = world.getBiome(pos).is(BiomeTags.IS_NETHER);
+			boolean isEnd = world.getBiome(pos).is(BiomeTags.IS_END);
 
 			// 高度補正
 			float f1 = (float) (TEMPERATURE_NOISE.getValue(pos.getX() / 8.0F, pos.getZ() / 8.0F, false) * 8.0D);
@@ -122,13 +125,22 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 				f2 = -1.0F;
 			temp -= f2;
 
-			float offset = WeatherChecker.getTempOffsetFloat(dim, world.getBiome(pos).is(BiomeTags.IS_NETHER));
+			float offset = WeatherChecker.getTempOffsetFloat(dim, isNether);
 			temp += offset;
 
 			float offset2 = DCTimeHelper.getTimeOffset(world, b);
 			temp += offset2;
 
 			DCHeatTier current = DCHeatTier.getTypeByBiomeTemp(temp);
+
+			if (isNether) {
+				if (ConfigCommonBuilder.INSTANCE.enInferno.get())
+					current = DCHeatTier.INFERNO;
+				else
+					current = current.addTier(1);
+			} else if (isEnd) {
+				current = current.addTier(-1);
+			}
 
 			WorldHeatTierEvent event = new WorldHeatTierEvent(world, pos, current, true);
 			current = event.result();

@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.core.material.entity.ObjectEntityBaseDC;
 import defeatedcrow.hac.core.recipe.DCRecipes;
@@ -12,6 +13,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class FoodEntityBase extends ObjectEntityBaseDC {
@@ -40,7 +42,9 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 					if (count > 0) {
 						count--;
 					} else if (count <= 0) {
-						this.setItem(currentRecipe.getOutput().copy());
+						ItemStack ret = currentRecipe.getOutput().copy();
+						copyTaste(ret, getItem());
+						this.setItem(ret);
 						level.playSound(null, this, SoundEvents.LAVA_EXTINGUISH, SoundSource.AMBIENT, 1.0F, 1.0F);
 						level.addParticle(ParticleTypes.SMOKE, this.getRandomX(0.1D), this.getRandomY() * 0.5D, this.getRandomZ(0.1D), 0D, 0.003D, 0D);
 					}
@@ -55,6 +59,14 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 					currentRecipe = recipe.get();
 					count = recipe.get().recipeFrequency();
 				}
+			}
+		}
+	}
+
+	private void copyTaste(ItemStack ret, ItemStack in) {
+		if (!ret.isEmpty() && !in.isEmpty() && in.getTag() != null) {
+			if (in.getItem() instanceof IFoodTaste && ret.getItem() instanceof IFoodTaste) {
+				((IFoodTaste) ret.getItem()).setTaste(ret, ((IFoodTaste) in.getItem()).getTaste(in));
 			}
 		}
 	}

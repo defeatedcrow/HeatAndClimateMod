@@ -15,6 +15,7 @@ import defeatedcrow.hac.api.crop.CropGrowType;
 import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
+import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.food.material.FoodInit;
@@ -110,6 +111,24 @@ public class CropBlockReed extends ClimateCropBaseBlock {
 		return false;
 	}
 
+	@Override
+	public void afterHarvest(Level world, BlockPos pos, BlockState thisState) {
+		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
+			boolean d = DCState.getBool(thisState, DCState.DOUBLE);
+			// 自然生成物は再収穫できない
+			boolean w = DCState.getBool(thisState, DCState.WILD);
+			if (!w || forceDefault()) {
+				BlockState next = this.getHarvestedState(thisState);
+				if (d) {
+					next = Blocks.AIR.defaultBlockState();
+				}
+				world.setBlock(pos, next, 2);
+			} else {
+				world.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+			}
+		}
+	}
+
 	/* model */
 
 	@Override
@@ -133,8 +152,8 @@ public class CropBlockReed extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "false_0", "false_1", "false_2", "false_3", "false_4", "true_0", "true_1", "true_2", "true_3", "true_4" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("false_0", "false_1", "false_2", "false_3", "false_4", "true_0", "true_1", "true_2", "true_3", "true_4");
 	}
 
 	@Override
@@ -235,6 +254,16 @@ public class CropBlockReed extends ClimateCropBaseBlock {
 			return ImmutableList.of("BEACH", "RIVER", "SWAMP");
 		case COMMON:
 			return ImmutableList.of("DESERT", "SAVANNA");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case COMMON:
+			return ImmutableList.of("COLD");
 		default:
 			return Lists.newArrayList();
 		}

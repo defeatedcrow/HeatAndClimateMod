@@ -70,6 +70,10 @@ public class PluginRecipeListDC {
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_MO_POTATO.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_MO_FLOWER.get());
 
+		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PD_ROGERIA.get());
+		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PD_SESAMI.get());
+		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PD_DEVILSCLAW.get());
+
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PE_GREEN.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PE_GARBANZO.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PE_SOY.get());
@@ -92,6 +96,10 @@ public class PluginRecipeListDC {
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_BH_WALNUT.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_BH_SWEET.get());
 
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CM_OIL.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CM_SCHIMA.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CM_TEA.get());
+
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CH_WILD.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CH_PLUM.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CH_PEACH.get());
@@ -103,6 +111,14 @@ public class PluginRecipeListDC {
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CT_POMELO.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CT_MANDARIN.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CT_LEMON.get());
+
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_ER_HEATH.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_ER_RHODODENDRON.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_ER_BLUEBERRY.get());
+
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MR_MULBERRY.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MR_PAPER.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MR_RUBBER.get());
 
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_ASH.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_OLIVE.get());

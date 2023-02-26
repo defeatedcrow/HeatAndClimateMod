@@ -1,0 +1,8 @@
+{
+  "values": [
+    "dcs_climate:food/string_plant",
+    "dcs_climate:food/string_tree",
+    "dcs_climate:food/string_cotton",
+    "dcs_climate:food/string_wool"
+  ]
+}

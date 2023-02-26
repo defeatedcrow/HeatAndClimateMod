@@ -15,6 +15,7 @@ import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.ClimateCropBaseBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.WorldGenLevel;
@@ -82,47 +83,55 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 
 			// 設置
 			int c = 0;
-			for (int x = -4; x < 5; x++) {
-				for (int z = -4; z < 5; z++) {
-					if (c > 3 && tree) {
+			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
+			if (tree) {
+				// 5回チャレンジ
+				for (int k = 0; k < 6; k++) {
+					if (c > 2)
 						break;
-					}
-
-					double r = 25D;
-					int x1 = x;
-					int z1 = z;
-					if (tree) {
-						// 強制的に間隔を取る
-						x1 *= 3;
-						z1 *= 3;
-						r = 250D;
-					}
-
-					if (x < -8 || x > 7 || z < -8 || z > 7)
-						continue;
-
 					for (int y = -1; y < 3; y++) {
-						BlockPos p3 = new BlockPos(chunk.getMiddleBlockX() + x1, height + y, chunk.getMiddleBlockZ() + z1);
-						BlockState soil = level.getBlockState(p3);
-						BlockState air = level.getBlockState(p3.above());
-						// 果樹やアンコモン種だと少なくなる
-						boolean f = !tree && wild ? random.nextInt(3) == 0 : random.nextInt(8) == 0;
-
-						if (p1.distSqr(p3) < r && f && suitableSoil(crop, level, p3, soil) && air.getMaterial().isReplaceable() && !air.getMaterial().isLiquid()) {
+						mpos.set(chunk.getMiddleBlockX() + random.nextInt(14) - 7, height + y, chunk.getMiddleBlockZ() + random.nextInt(14) - 7);
+						BlockState soil = level.getBlockState(mpos);
+						BlockState air = level.getBlockState(mpos.above());
+						if (suitableSoil(crop, level, mpos, soil) && air.getMaterial().isReplaceable() && !air.getMaterial().isLiquid()) {
 							BlockState nextState = crop.getFeatureState();
 
 							if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW)
-								level.setBlock(p3, Blocks.DIRT.defaultBlockState(), 2);
+								level.setBlock(mpos, Blocks.DIRT.defaultBlockState(), 2);
 
-							level.setBlock(p3.above(), nextState, 2);
+							level.setBlock(mpos.above(), nextState, 2);
 							c++;
-
-							// 二段作物は二段の状態で生えてくる
-							if (nextState.hasProperty(DCState.DOUBLE)) {
-								BlockState upper = crop.getFeatureState().setValue(DCState.DOUBLE, true);
-								level.setBlock(p3.above(2), upper, 2);
-							}
 							continue;
+						}
+					}
+				}
+			} else {
+				for (int x = -4; x < 5; x++) {
+					for (int z = -4; z < 5; z++) {
+						for (int y = -1; y < 3; y++) {
+							mpos.set(chunk.getMiddleBlockX() + x, height + y, chunk.getMiddleBlockZ() + z);
+							BlockState soil = level.getBlockState(mpos);
+							BlockState air = level.getBlockState(mpos.above());
+							double dist = p1.distSqr(mpos);
+							int d = 3 + Mth.absFloor(dist);
+							boolean f = random.nextInt(d) == 0;
+
+							if (f && suitableSoil(crop, level, mpos, soil) && air.getMaterial().isReplaceable() && !air.getMaterial().isLiquid()) {
+								BlockState nextState = crop.getFeatureState();
+
+								if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW || soil.getMaterial() == Material.TOP_SNOW)
+									level.setBlock(mpos, Blocks.DIRT.defaultBlockState(), 2);
+
+								level.setBlock(mpos.above(), nextState, 2);
+								c++;
+
+								// 二段作物は二段の状態で生えてくる
+								if (nextState.hasProperty(DCState.DOUBLE)) {
+									BlockState upper = crop.getFeatureState().setValue(DCState.DOUBLE, true);
+									level.setBlock(mpos.above(2), upper, 2);
+								}
+								continue;
+							}
 						}
 					}
 				}
@@ -142,32 +151,29 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AL_WILD.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AM_GOOSEFOOT.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_CELERY.get());
-		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_FENNEL.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_BR_RAPESEED.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CA_CHILI.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CR_OAT.get());
-		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CR_RYE.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_GN_COMMON.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_HB_MINT.get());
-		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_HB_BASIL.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_KN_SORREL.get());
-		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_KN_BUCKWHEAT.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_ML_JUTE.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_MO_BINDWEED.get());
+		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_PD_ROGERIA.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_PE_GREEN.get());
-		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_PE_GARBANZO.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_RE_COMMON.get());
-		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_RE_SORGHUM.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_RI_ZIZANIA.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_SL_NIGHTSHADE.get());
 
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_BH_COMMON.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CH_WILD.get());
+		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CM_OIL.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CN_CAMPHOR.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CT_POMELO.get());
+		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_ER_HEATH.get());
+		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_MR_MULBERRY.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_OL_ASH.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_COCONUT.get());
-		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_DATE.get());
 	}
 
 	private boolean matchBiome(Holder<Biome> biome, int height, ClimateCropBaseBlock block) {
@@ -175,13 +181,27 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 			// 温度条件の一致
 			return false;
 		}
+		boolean b1 = false;
+		boolean b2 = false;
 		for (String s : block.getGeneratedBiomeTag(block.getTier())) {
-			if (TagUtil.matchTag(s.toLowerCase(), biome).isPresent())
-				return true;
-			else if (s.contains("MOUNTAIN") && height > 130)
-				return true;
+			if (TagUtil.matchTag(s.toLowerCase(), biome).isPresent()) {
+				b1 = true;
+				break;
+			} else if (s.contains("MOUNTAIN") && height > 130) {
+				b1 = true;
+				break;
+			}
 		}
-		return false;
+		for (String s : block.getAvoidBiomeTag(block.getTier())) {
+			if (TagUtil.matchTag(s.toLowerCase(), biome).isPresent()) {
+				b2 = true;
+				break;
+			} else if (s.contains("MOUNTAIN") && height > 130) {
+				b2 = true;
+				break;
+			}
+		}
+		return b1 && !b2;
 	}
 
 }

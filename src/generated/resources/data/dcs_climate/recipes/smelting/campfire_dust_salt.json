@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "cookingtime": 600,
+  "experience": 0.0,
+  "ingredient": {
+    "tag": "forge:ingredients/water"
+  },
+  "result": "dcs_climate:main/dust_salt"
+}

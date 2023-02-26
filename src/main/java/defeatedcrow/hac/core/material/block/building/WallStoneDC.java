@@ -1,7 +1,6 @@
 package defeatedcrow.hac.core.material.block.building;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.commons.compress.utils.Lists;
 
@@ -55,8 +54,8 @@ public class WallStoneDC extends WallBlock implements IBlockDC, IJsonDataDC {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "post", "side", "side_tall" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("post", "side", "side_tall");
 	}
 
 	@Override

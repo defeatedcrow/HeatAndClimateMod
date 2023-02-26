@@ -165,16 +165,16 @@ public class JsonBuilderDC {
 			// 生成にIJsonDataDCインターフェイスを使うので、実装チェックをする。
 			if (dir != null) {
 				List<JsonModelDC> models = data.getBlockModel();
-				Optional<String[]> suffix = data.getModelNameSuffix();
+				List<String> suffix = data.getModelNameSuffix();
 
 				int i = 0;
 				for (JsonModelDC model : models) {
 					String s = "";
-					if (suffix.isPresent()) {
-						if (suffix.get().length <= i) {
-							i = suffix.get().length - 1;
+					if (suffix != null && !suffix.isEmpty()) {
+						if (suffix.size() <= i) {
+							i = suffix.size() - 1;
 						}
-						s = "_" + suffix.get()[i];
+						s = "_" + suffix.get(i);
 					} else {
 						s = "_" + i;
 					}

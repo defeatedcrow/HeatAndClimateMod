@@ -1,9 +1,10 @@
 package defeatedcrow.hac.api.climate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.compress.utils.Lists;
+
+import com.google.common.collect.ImmutableList;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -140,7 +141,7 @@ public enum DCHeatTier {
 
 	public static DCHeatTier getTypeByID(int id) {
 		Mth.clamp(id, 0, 13);
-		for (DCHeatTier e : values()) {
+		for (DCHeatTier e : elements()) {
 			if (id == e.id)
 				return e;
 		}
@@ -179,16 +180,6 @@ public enum DCHeatTier {
 	@Override
 	public String toString() {
 		return name().toLowerCase();
-	}
-
-	public static List<DCHeatTier> createList() {
-		List<DCHeatTier> tiers = new ArrayList<DCHeatTier>();
-
-		for (DCHeatTier t : DCHeatTier.values()) {
-			tiers.add(t);
-		}
-
-		return tiers;
 	}
 
 	public static DCHeatTier getTypeByTemperature(int temp) {
@@ -255,7 +246,7 @@ public enum DCHeatTier {
 
 	public static DCHeatTier getFromName(String name) {
 		if (name != null)
-			for (DCHeatTier t : DCHeatTier.values()) {
+			for (DCHeatTier t : DCHeatTier.elements()) {
 				if (t.name().equalsIgnoreCase(name)) {
 					return t;
 				}
@@ -265,7 +256,7 @@ public enum DCHeatTier {
 
 	public static DCHeatTier getFromNameOrNull(String name) {
 		if (name != null)
-			for (DCHeatTier t : DCHeatTier.values()) {
+			for (DCHeatTier t : DCHeatTier.elements()) {
 				if (t.name().equalsIgnoreCase(name)) {
 					return t;
 				}
@@ -275,14 +266,15 @@ public enum DCHeatTier {
 
 	public static List<DCHeatTier> getListFromName(List<String> names) {
 		List<DCHeatTier> ret = Lists.newArrayList();
-		for (String name : names)
-			if (name != null && !name.isEmpty())
-				for (DCHeatTier t : DCHeatTier.values()) {
-					if (t.name().equalsIgnoreCase(name)) {
-						ret.add(t);
-						break;
+		if (names != null)
+			for (String name : names)
+				if (name != null && !name.isEmpty())
+					for (DCHeatTier t : DCHeatTier.elements()) {
+						if (t.name().equalsIgnoreCase(name)) {
+							ret.add(t);
+							break;
+						}
 					}
-				}
 		return ret;
 	}
 
@@ -292,5 +284,9 @@ public enum DCHeatTier {
 
 	public static MutableComponent basename2() {
 		return Component.translatable("dcs.enum.heat_name2");
+	}
+
+	public static List<DCHeatTier> elements() {
+		return ImmutableList.of(ABSOLUTE, CRYOGENIC, FROSTBITE, COLD, COOL, NORMAL, WARM, HOT, BOIL, OVEN, KILN, SMELTING, UHT, INFERNO);
 	}
 }

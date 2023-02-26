@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/plate_beef_raw"
+  },
+  "parent": "minecraft:item/generated"
+}

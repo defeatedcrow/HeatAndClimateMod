@@ -53,13 +53,20 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("0", "1", "2", "3", "4");
 	}
 
 	@Override
 	public JsonModelDC getItemModel() {
 		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_morningglory_" + getSpeciesName(cropTier)));
+	}
+
+	/* IClimateCrop */
+
+	@Override
+	public BlockState getFeatureState() {
+		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2)).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
@@ -158,6 +165,16 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 			return ImmutableList.of("BEACH", "OCEAN");
 		// case COMMON:
 		// return ImmutableList.of("REVER", "SWAMP");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("COLD");
 		default:
 			return Lists.newArrayList();
 		}

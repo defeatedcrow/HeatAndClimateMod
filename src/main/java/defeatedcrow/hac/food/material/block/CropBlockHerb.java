@@ -53,8 +53,8 @@ public class CropBlockHerb extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("0", "1", "2", "3", "4");
 	}
 
 	@Override
@@ -157,6 +157,18 @@ public class CropBlockHerb extends ClimateCropBaseBlock {
 			return ImmutableList.of("FOREST", "COLD");
 		case COMMON:
 			return ImmutableList.of("JUNGLE");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("CONIFEROUS", "HOT");
+		case COMMON:
+			return ImmutableList.of("COLD");
 		default:
 			return Lists.newArrayList();
 		}

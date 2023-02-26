@@ -44,23 +44,22 @@ public class LeavesPlum extends LeavesCropBlockDC {
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/cherry_plum_leaves_aut")),
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/cherry_plum_leaves_wtr")),
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/cherry_plum_leaves_f")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/cherry_plum_leaves_c")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/cherry_plum_leaves_spr")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/cherry_plum_leaves_smr")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/cherry_plum_leaves_aut")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/cherry_plum_leaves_wtr")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/cherry_plum_leaves_f")),
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/cherry_plum_leaves_c")));
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "false_0", "false_1", "false_2", "false_3", "false_4", "false_5", "true_0", "true_1", "true_2", "true_3", "true_4", "true_5" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("0", "1", "2", "3", "4", "5");
+	}
+
+	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("stage6=0", "stage6=1", "stage6=2", "stage6=3", "stage6=4", "stage6=5");
 	}
 
 	@Override
 	public JsonModelSimpleDC getItemModel() {
-		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_false_0");
+		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_0");
 	}
 
 	/* ICropData */

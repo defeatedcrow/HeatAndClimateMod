@@ -1,6 +1,0 @@
-{
-  "textures": {
-    "all": "dcs_climate:block/tree/olive_osmanthus_leaves_f"
-  },
-  "parent": "dcs_climate:block/dcs_leaves"
-}

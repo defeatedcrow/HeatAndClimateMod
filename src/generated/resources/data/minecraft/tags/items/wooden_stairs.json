@@ -1,0 +1,14 @@
+{
+  "values": [
+    "dcs_climate:build/stairs_beech_common",
+    "dcs_climate:build/stairs_beech_walnut",
+    "dcs_climate:build/stairs_beech_sweet",
+    "dcs_climate:build/stairs_cherry_wild",
+    "dcs_climate:build/stairs_cinnamon_camphor",
+    "dcs_climate:build/stairs_citrus_pomelo",
+    "dcs_climate:build/stairs_morus_mulberry",
+    "dcs_climate:build/stairs_olive_ash",
+    "dcs_climate:build/stairs_palm_coconut",
+    "dcs_climate:build/stairs_reed_sorghum"
+  ]
+}

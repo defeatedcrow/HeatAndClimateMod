@@ -1,7 +1,6 @@
 package defeatedcrow.hac.core.material.block.building;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.commons.compress.utils.Lists;
 
@@ -50,8 +49,8 @@ public class SlabWoodDC extends SlabBlock implements IBlockDC, IJsonDataDC {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "bottom", "double", "top" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("bottom", "bottom", "double", "double", "top", "top");
 	}
 
 	@Override

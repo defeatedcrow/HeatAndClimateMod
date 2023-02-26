@@ -1,0 +1,14 @@
+{
+  "values": [
+    "dcs_climate:build/fence_beech_common",
+    "dcs_climate:build/fence_beech_walnut",
+    "dcs_climate:build/fence_beech_sweet",
+    "dcs_climate:build/fence_cherry_wild",
+    "dcs_climate:build/fence_cinnamon_camphor",
+    "dcs_climate:build/fence_citrus_pomelo",
+    "dcs_climate:build/fence_morus_mulberry",
+    "dcs_climate:build/fence_olive_ash",
+    "dcs_climate:build/fence_palm_coconut",
+    "dcs_climate:build/fence_reed_sorghum"
+  ]
+}

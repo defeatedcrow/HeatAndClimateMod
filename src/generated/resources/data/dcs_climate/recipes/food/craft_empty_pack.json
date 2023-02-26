@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "result": {
+    "count": 16,
+    "item": "dcs_climate:food/pack_empty"
+  }
+}

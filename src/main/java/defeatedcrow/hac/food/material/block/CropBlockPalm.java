@@ -67,8 +67,8 @@ public class CropBlockPalm extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("0", "1", "2", "2", "3");
 	}
 
 	@Override
@@ -207,15 +207,19 @@ public class CropBlockPalm extends ClimateCropBaseBlock {
 		}
 	}
 
-	// 木につく作物なので
 	@Override
-	public int getFertile(Level world, BlockPos pos, BlockState state) {
-		return 1;
+	public int getMutationChance(Level world, BlockPos pos, BlockState thisState) {
+		return 0;
 	}
 
 	@Override
 	public boolean onMutation(Level level, BlockPos pos, BlockState state, RandomSource random) {
 		return false;
+	}
+
+	@Override
+	protected boolean forceDefault() {
+		return true;
 	}
 
 }

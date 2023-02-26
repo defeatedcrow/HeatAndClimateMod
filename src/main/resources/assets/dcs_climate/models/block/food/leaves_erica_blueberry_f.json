@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/tree/erica_blueberry_leaves_f"
+  },
+  "parent": "dcs_climate:block/dcs_leaves"
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/raw_fishes"
+    },
+    {
+      "tag": "forge:crops/vegetables"
+    },
+    {
+      "tag": "forge:crops/potato"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/plate_fish_raw"
+  }
+}

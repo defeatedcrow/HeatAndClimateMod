@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "hand_spindle",
+  "key": {
+    "X": {
+      "tag": "forge:ingredients/fiber_plant"
+    },
+    "Y": {
+      "item": "dcs_climate:main/hand_spindle"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "count": 4,
+    "item": "dcs_climate:food/string_plant"
+  }
+}

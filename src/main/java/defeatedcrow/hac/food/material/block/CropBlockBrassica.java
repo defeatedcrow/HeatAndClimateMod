@@ -49,13 +49,13 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_0")),
 			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_1")),
 			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/brassica_" + getSpeciesName(cropTier) + "_f")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/brassica_" + getSpeciesName(cropTier) + "_c")));
+			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/brassica_" + getSpeciesName(cropTier) + "_c")),
+			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/brassica_" + getSpeciesName(cropTier) + "_f")));
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("0", "1", "2", "3", "4");
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(3));
+		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(3)).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
@@ -166,6 +166,16 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("PLAINS");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("DRY");
 		default:
 			return Lists.newArrayList();
 		}

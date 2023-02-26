@@ -10,21 +10,25 @@ public enum CropType {
 	APIUM, // セリ
 	BEECH, // ブナ
 	BRASSICA, // アブラナ
+	CAMELLIA, // ツバキ
 	CAPSICUM, // トウガラシ
 	CEREALS, // ムギ
 	CHERRY, // サクラ
 	CINNAMON, // クスノキ
 	CITRUS, // カンキツ
+	ERICA, // ツツジ
 	GINGER, // ショウガ
 	GRAPE, // ブドウ
 	KNOTWEED, // タデ
 	HERB, // シソ
+	LOTUS, // ハス
 	MALLOW, // アオイ
 	MORNINGGLORY, // ヒルガオ
-	LOTUS, // ハス
+	MORUS, // クワ
 	OLIVE, // モクセイ
 	PALM, // ヤシ
 	PEAS, // マメ
+	PEDARIA, // ゴマ
 	REED, // アシ
 	RICE, // イネ
 	SOLANUM, // ナス

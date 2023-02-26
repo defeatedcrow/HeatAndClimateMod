@@ -13,6 +13,7 @@ import defeatedcrow.hac.core.climate.register.BlockClimateRegister;
 import defeatedcrow.hac.core.climate.register.MobResistanceRegister;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
+import defeatedcrow.hac.core.config.ConfigServerBuilder;
 import defeatedcrow.hac.core.json.TileNBTFunction;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.network.packet.DCPacket;
@@ -24,6 +25,7 @@ import defeatedcrow.hac.core.tag.ItemTagProviderDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.worldgen.FeatureInit;
 import defeatedcrow.hac.food.client.FoodClientProxy;
+import defeatedcrow.hac.food.recipe.FoodRecipeProvider;
 import defeatedcrow.hac.plugin.jei.PluginRecipeListDC;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -72,6 +74,7 @@ public class ClimateCore {
 		CoreInit.BLOCKS.register(bus);
 		CoreInit.ITEMS.register(bus);
 		CoreInit.FLUIDS.register(bus);
+		CoreInit.EFFECTS.register(bus);
 		CoreInit.POTIONS.register(bus);
 		CoreInit.ENTITIES.register(bus);
 		FeatureInit.FEATURES.register(bus);
@@ -81,6 +84,7 @@ public class ClimateCore {
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigClientBuilder.CONFIG_CLIENT);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigCommonBuilder.CONFIG_COMMON);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ConfigServerBuilder.CONFIG_SERVER);
 
 		bus.addListener(this::registerLayerDefinitions);
 		bus.addListener(this::registerEntityRenderers);
@@ -127,6 +131,7 @@ public class ClimateCore {
 		generator.addProvider(event.includeServer(), new ItemTagProviderDC(generator, blockTag, existingFileHelper));
 		generator.addProvider(event.includeServer(), new BiomeTagProviderDC(generator, existingFileHelper));
 		generator.addProvider(event.includeServer(), new VanillaRecipeProvider(generator));
+		generator.addProvider(event.includeServer(), new FoodRecipeProvider(generator));
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {

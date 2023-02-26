@@ -3,6 +3,8 @@ package defeatedcrow.hac.api.crop;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.compress.utils.Lists;
+
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
@@ -31,6 +33,10 @@ public interface ICropData {
 	List<DCAirflow> getSuitableAir(CropTier tier);
 
 	List<String> getGeneratedBiomeTag(CropTier tier);
+
+	default List<String> getAvoidBiomeTag(CropTier tier) {
+		return Lists.newArrayList();
+	}
 
 	String getSpeciesName(CropTier tier);
 

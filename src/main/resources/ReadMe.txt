@@ -1,0 +1,275 @@
+﻿#### Heat&Climate Mod v4 Early-Alpha for Minecraft 1.19.2 ####
+
+# 導入環境 / Introduction conditions
+
+・Minecraft1.19.2
+・MincraftForge 1.19.2-43.1.1
+
+*Notice*
+
+・HaCv4では、HeatAndClimateLibを必要としません。
+ HaCv4 does not require HeatAndClimateLib.
+
+・このmodはWIPであり、とても不安定なアルファバージョンです。導入前にテスト環境で試すことをおすすめします。
+ This mod is WIP and is a very unstable alpha version. We recommend testing in a test environment before deployment.
+
+・マルチサーバーについては、起動確認のみ行い、作者によるデバッグテストが行われていません。
+ For multi-server, only startup confirmation is performed, and no debugging test is performed by the author.
+
+・このmodはJEIプラグインをサポートし、多くのゲーム内説明をJEIに依存しています。JEIの利用を強く勧めます。
+ This mod supports JEI plugins and relies on JEI for many in-game informations. We strongly recommend using JEI.
+
+# 配布場所 / Published links
+ CurseForge: https://www.curseforge.com/minecraft/mc-mods/heat-and-climate
+ Github: https://github.com/defeatedcrow/HeatAndClimateMod
+ Author Wiki： http://defeatedcrow.jp/modwiki/HeatAndClimate
+
+ # 概要 / Summary
+
+　マインクラフトに『気候』を追加し、それを使って色々するmodです。
+　また、気候や土地が持つ5色の『色』の魔法を使う、M:tGライクな魔法要素が続投されています。
+ It is a mod that adds "climate" to Minecraft and uses it to do various fun things.
+ In addition, M:tG-like magic elements that use the five "color" magic of the climate and land are continuing.
+
+・『気候』について About "Climate"
+　『気候』は温度・湿度・通気の3種類のパラメーターとして表され、金属や食べ物を焼いたり、生物にダメージを与えたり、作物の成長に影響したりします。
+ "Climate" is expressed as three parameters: temperature, humidity and ventilation. This can burn metal and food, damage living things, and affect crop growth.
+
+・『色』について About "Colors"
+　バイオームや気候は『色』のマナと関連付けられ、バイオームに生成する『色』の鉱物や宝石に影響します。
+　鉱物や宝石の色は、色の魔法のために使用されます。
+ Biomes and climates are associated with "color" mana, which affects the "color" minerals and gems that generate in the biome.
+ The colors of minerals and gems are used for color magic.
+
+
+#### 遊び方 / How to play ####
+
+
+◎ Climate!
+
+●HUDについて / About HUD
+
+　現在地の気候(Climate)は、プレイヤーのHUDに表示されます。
+ The current climate is displayed on the player's HUD.
+
+ HUDは、切り替えキー(デフォルト:左シフト）によって表示を切り替えできます。
+ キー設定はコンフィグで変更可能です。
+ The HUD can switch the display with the switch key (default: left-shift).
+ Key settings can be changed in the config.
+
+● HeatTier
+
+　HeatTierは、このmodでの温度です。14段階のTierで表現されます。
+ "HeatTier" is the temperature in this mod. It is defined by 14 tiers.
+
+ バイオームの気温と、近くのブロックの持つ温度から計算されます。
+ Calculated from the temperature of the biome and the temperature of nearby blocks.
+
+ ・バイオームの場合 / About biomes
+
+  1. バイオームの内部値(バニラの機能です)に基づき、基礎温度が決定されます。
+     Base temperature is determined based on Biome's internal values (a vanilla feature).
+  2. 季節による補正値、天候による補正値、夜間の気温低下値によって気温が変動します。
+     The temperature fluctuates due to the influence of season, weather, and time zone correction values.
+  3. 屋根の下にいると気温がNORMALに1段階近づきます。
+     Staying under the roof brings the temperature one step closer to NORMAL.
+　
+・ ブロックの場合 / About blocks
+
+  5x5x5範囲の熱源ブロックの温度の平均値を算出します。
+  Calculate the average temperature of the heat source block in the 5x5x5 range.
+
+  熱いブロックと、冷たいブロックは、互いの温度を相殺します。
+  Hot and cold blocks offset each other's temperature.
+
+● Humidity
+
+ Humidityはこのmodでの湿度です。3段階のTierと、『水中』であるUNDERWATERの4段階で表されます。
+ Humidity is the humidity in this mod. It is defined by 3 tier and "UNDERWATER".
+
+ ・天候による変化 / About weather
+
+  雨天時に、屋外の湿度が上昇します。
+  Outdoor humidity increases during rainy weather.
+
+ ・バイオームの場合 / About biomes
+
+  WET biomes: バイオームの湿度内部値(バニラの機能です)が0.8Fより大きいか、バイオームがWETタグを持つ場合。
+              If the biome's humidity internal value (which is a vanilla feature) is greater than 0.8F or the biome has a WET tag.
+
+  DRY biomes: バイオームがDRYまたはSPARSEタグを持つ場合。
+              If the biome has a DRY or SPARSE tag.
+
+ ・ブロックの場合 / About blocks
+
+  3x3x3範囲のブロックの湿度の平均値を算出します。
+  Calculate the average humidity of the heat source block in the 3x3x3 range.
+
+● Airflow
+
+ 4段階のTierで定義されます。
+ Defined by 4 tiers.
+
+ ・天候による変化 / About weather
+
+  雨天時に、屋外の通気が上昇します。
+  Outdoor airflow increases during rainy weather.
+
+ ・高度による変化 / About altitude
+
+  Y135以上の高度では、屋外の通気が上昇します。
+  At altitudes higher than Y135, outdoor airflow is increases.
+
+ ・バイオームの場合 / About biomes
+
+  WIND biomes: バイオームがMOUNTAINまたはHILLSタグを持つ場合。
+              If the biome has a MOUNTAIN or HILLS tag.
+
+ ・ブロックの場合 / About blocks
+
+ 　屋内はNORMALです。
+  Indoors is NORMAL.
+
+  3x3x3範囲の空気ブロックの数をカウントし、2以下の場合にTIGHTになります。
+  It counts the number of air blocks in a 3x3x3 range and becomes TIGHT if it is 2 or less.
+
+
+◎ 温度ダメージ / Heat and Cold Damage
+
+ 高温・低温は、プレイヤーを含むモブにダメージを与えます。
+ Temperatures that are too hot or too cold will damage mobs, including the player.
+
+ ダメージへの耐性はモブの種類によって異なります。(コンフィグで変更できます。)
+ Resistance to damage depends on the type of mob. (This can be changed in the config.)
+
+ ● ダメージの軽減 / Damage reduction
+
+  布や革の防具は、気候ダメージを減少させます。(アルファでは、バニラの革防具のみです。)
+  Cloth and leather armor reduces climate damage. (Alpha only has vanilla leather armor.)
+
+  ・Heatダメージの軽減 / Heat damage reduction
+   - 防具の耐火エンチャント Armor fire protection enchantment
+   - 耐火ポーション fire resistance potion
+
+  ・Coldダメージの軽減 / Cold damage reduction
+   - HaCの耐寒ポーション cold resistance potion of HaC
+
+ ● Hardmode WETの影響 / About WET hardmode config
+
+ 　ハードモードの"Humidity Effect"を有効化していると、プレイヤーが水に濡れる時に『ずぶ濡れ』ポーション効果を受けます。
+ 　『ずぶ濡れ』のとき、高温のダメージを軽減し、低温のダメージを増加させます。
+  If the "Humidity Effect" in the hard mode config is enabled, the player will receive a "wet" potion effect when the player gets wet.
+  When "wet", it reduces high temperature damage and increases cold temperature damage.
+
+
+◎ 気候精錬 / Climate Smelting
+
+ 気候精錬は、ワールドに設置されたオブジェクトが変化するためのレシピです。
+ "Climate Smelting" is a recipe for transforming objects placed in the world.
+
+ レシピのとおりにブロックまたはエンティティを正しい気候の中に設置すると、ブロックやエンティティが変化します。
+ Placing a block or entity in the correct climate as per the recipe will change the block or entity.
+
+ これらは、あなたがHaC金属を精錬したり、肉を焼くために必要です。
+ These are required for you to smelt HaC metals or grill meat.
+
+ * 気候精錬レシピはコンフィグファイルによって変更したり、削除することが出来ます。しかし、アルファバージョンでは新しいレシピをコンフィグで追加することが出来ません。
+   材料のオブジェクトに、気候精錬に対応する仕様が実装されている必要があります。
+   Climate smelting recipes can be changed or deleted via the config file. But unfortunately the alpha version doesn't allow adding new recipes in the config.
+   The material object must implement the specification for climate smelting.
+
+
+◎ 鉱脈の生成 / Ore Veins
+
+ 5色の鉱脈と、5色のDeep鉱脈が地下に生成されます。
+ 5 color veins and 5 color deep veins are generated underground.
+
+ 鉱脈からは、それぞれの色の金属や宝石を入手できます。
+ Ore veins provide each colored metals and gems.
+
+  ・対応するバイオーム(Tag) / Corresponding biome (Tag)
+   - White: PLAINS, SAVANNA
+   - Blue: COLD, TAIGA, HILLS
+   - Black: SWAMP, SPOOKY, WATER
+   - Red: MOUNTAIN, SANDY, BADLANDS
+   - Green: FOREST, LUSH, DENSE, JUNGLE
+
+
+◎ 新しい農業要素 / New Agriculture
+
+ v1.12とは大きく異なる新要素です!
+ It is a new element that is very different from v1.12!
+
+ ● 作物の栽培 / Cultivation
+
+ 　HaC作物は、適切な気候の環境に植えることで早く成長します。
+ 　気候が合わない環境では、成長が遅くなります。
+  HaC crops grow faster when planted in the right climate.
+  Growth slows down in unfavorable climates.
+
+  ・ バニラ作物への影響 / About vanilla crops
+   - WET湿度でバニラ耕地が湿ります。
+     Vanilla farmland can also be wetted with WET humidity.
+   - バニラ作物は、WARM ~ HOT + WETの環境で成長が促進され、COOL-の低温で成長が遅くなります。
+     Vanilla crops grow faster in a WARM ~ HOT + WET environment and slower in a COOL- lower temperature.
+
+ ● 野生の作物を探そう / Look for wild crops!
+
+ 　それぞれのバイオームには、固有の『WILD作物』が自然生成します。
+ 　Different biomes generate different types of "WILD crops".
+
+  ・WILD作物とは? / What are wild crops?
+   - 一度だけ採集できます。 Can be collected only once.
+   - 耕地以外のブロックの上でも成長できます。(適切な土壌は、JEIで確認できます。)
+     Can grow on blocks other than farmland. (Suitable soils can be checked with JEI.)
+   - 『施肥した耕地』の上に種や苗木を植えると、よりレアな作物に変異する可能性があります。
+     Sowing seeds or saplings on "fertilized farmland" may mutate into a rarer crop.
+
+ ● 作物の変異 / Crop Mutation
+
+ 　・施肥された耕地 / Fertilized farmland
+   - 耕地ブロックに肥料を与えると、『施肥された耕地』に変わります。3回まで施肥できます。
+     Fertilizing a farmland block turns it into a "Fertilized Farmland". You can fertilize up to 3 times.
+   - アルファでは、バニラの骨粉のみ使用できます。
+     Only vanilla bonemeal is available in alpha.
+   - 『緑肥』のTagを持つ作物をクワで右クリックすることでも、施肥された耕地を作ることが出来ます。
+     It can also be created by right-clicking a plant with the "GREEN_MANURE" tag with a hoe.
+
+  ・施肥された耕地にWILD作物を植えると、レア度の高い作物に変化します。
+  　施肥の回数が多いと、レアな作物の出現率が少し上昇します。
+   Planting WILD crops on fertilized farmland will transform them into rarer crops.
+   The more often you fertilize, the more rare crops appear.
+
+ ● 樹木 / Trees
+
+   樹木は、花期と収穫期が季節によって制限されます。
+   Trees are seasonally restricted in their flowering and harvesting periods.
+
+
+◎ HaCの食べ物 / HaC Foods
+
+ HaCの食べ物は、スニークしながらブロックを右クリックすることで、Entityとしてワールドに設置できます。
+ HaC's food can be placed in the world as an Entity by right-clicking on a block while sneaking.
+
+ 気候精錬のレシピを持つ食べ物は、適切な気候の環境に、生の状態で設置することで調理します。
+ Foods with climate refinement recipes are cooked by placing them raw in an environment with the correct climate.
+
+ ● 食べ物の『風味』 / Flavor of food
+
+ 　『風味』は、5段階の★で定義されます。
+  "Flavor" is defined on a 5-point scale.
+
+  『風味』は、プレイヤーがアイテムを食べる時の速度に影響します。
+  Flavor affects the speed at which the player eats items.
+
+  料理の風味は、材料にした食材によって変動します。
+  The flavor of a dish varies depending on the ingredients.
+
+  * 将来的には、調味料によって風味を良くする機能が実装される予定です。
+    In the future, we plan to implement seasoning to enhance the flavor.
+
+
+#### 更新履歴 / Change log ####
+
+○ v4-alpha1 (2023.2.26)
+ - 初回公開

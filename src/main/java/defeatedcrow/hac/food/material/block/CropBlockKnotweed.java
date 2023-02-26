@@ -15,6 +15,7 @@ import defeatedcrow.hac.api.crop.CropGrowType;
 import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
+import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.food.material.FoodInit;
@@ -110,6 +111,24 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 		return false;
 	}
 
+	@Override
+	public void afterHarvest(Level world, BlockPos pos, BlockState thisState) {
+		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
+			boolean d = DCState.getBool(thisState, DCState.DOUBLE);
+			// 自然生成物は再収穫できない
+			boolean w = DCState.getBool(thisState, DCState.WILD);
+			if (!w || forceDefault()) {
+				BlockState next = this.getHarvestedState(thisState);
+				if (d) {
+					next = Blocks.AIR.defaultBlockState();
+				}
+				world.setBlock(pos, next, 2);
+			} else {
+				world.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+			}
+		}
+	}
+
 	/* model */
 
 	@Override
@@ -133,8 +152,8 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "false_0", "false_1", "false_2", "false_3", "false_4", "true_0", "true_1", "true_2", "true_3", "true_4" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("false_0", "false_1", "false_2", "false_3", "false_4", "true_0", "true_1", "true_2", "true_3", "true_4");
 	}
 
 	@Override
@@ -146,7 +165,7 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2));
+		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2)).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
@@ -227,7 +246,7 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 
 	@Override
 	public List<DCAirflow> getSuitableAir(CropTier t) {
-		return ImmutableList.of(DCAirflow.FLOW, DCAirflow.WIND);
+		return ImmutableList.of(DCAirflow.NORMAL, DCAirflow.FLOW, DCAirflow.WIND);
 	}
 
 	@Override
@@ -236,7 +255,19 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 		case WILD:
 			return ImmutableList.of("PLAINS", "MOUNTAIN");
 		case COMMON:
-			return ImmutableList.of("COLD", "DRY", "TAIGA");
+			return ImmutableList.of("COLD", "DRY");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("DENCE", "DRY");
+		case COMMON:
+			return ImmutableList.of("SANDY", "HOT", "WET");
 		default:
 			return Lists.newArrayList();
 		}

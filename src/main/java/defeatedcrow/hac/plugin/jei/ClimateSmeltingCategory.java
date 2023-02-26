@@ -76,7 +76,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 
 		List<DCHeatTier> heats = recipe.requiredHeat();
 		if (heats.isEmpty()) {
-			heats.addAll(DCHeatTier.createList());
+			heats.addAll(DCHeatTier.elements());
 		}
 		for (DCHeatTier heat : heats) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 34 + heat.getID() * 6, 28).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
@@ -85,7 +85,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 
 		List<DCHumidity> hums = recipe.requiredHum();
 		if (hums.isEmpty()) {
-			hums.addAll(DCHumidity.createList());
+			hums.addAll(DCHumidity.elements());
 		}
 		for (DCHumidity hum : hums) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 34 + hum.getID() * 21, 38).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
@@ -94,7 +94,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 
 		List<DCAirflow> airs = recipe.requiredAir();
 		if (airs.isEmpty()) {
-			airs.addAll(DCAirflow.createList());
+			airs.addAll(DCAirflow.elements());
 		}
 		for (DCAirflow air : airs) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 34 + air.getID() * 21, 48).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW,

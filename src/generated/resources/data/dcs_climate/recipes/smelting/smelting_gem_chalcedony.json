@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "cookingtime": 200,
-  "experience": 0.3,
+  "experience": 0.0,
   "ingredient": {
     "tag": "forge:gems/flint"
   },

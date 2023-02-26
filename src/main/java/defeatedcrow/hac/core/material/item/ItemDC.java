@@ -1,7 +1,6 @@
 package defeatedcrow.hac.core.material.item;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.annotation.Nullable;
 
@@ -36,8 +35,13 @@ public abstract class ItemDC extends Item implements IJsonDataDC, IItemDC {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return Lists.newArrayList();
+	}
+
+	@Override
+	public boolean requireStateJson() {
+		return false;
 	}
 
 	@Override

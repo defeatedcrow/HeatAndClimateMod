@@ -44,23 +44,22 @@ public class LeavesOlive extends LeavesCropBlockDC {
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_olive_leaves")),
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_olive_leaves")),
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_olive_leaves_f")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_olive_leaves_c")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_olive_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_olive_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_olive_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_olive_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_olive_leaves_f")),
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_olive_leaves_c")));
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "false", "false", "false", "false", "false_f", "false_c", "true", "true", "true", "true", "true_f", "true_c" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("0", "0", "0", "0", "f", "c");
+	}
+
+	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("stage6=0", "stage6=1", "stage6=2", "stage6=3", "stage6=4", "stage6=5");
 	}
 
 	@Override
 	public JsonModelSimpleDC getItemModel() {
-		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_false");
+		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_0");
 	}
 
 	/* ICropData */

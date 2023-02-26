@@ -16,9 +16,6 @@ import defeatedcrow.hac.core.recipe.MaterialRecipes;
 import defeatedcrow.hac.core.recipe.mill.MillsDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.food.material.FoodInit;
-import defeatedcrow.hac.food.material.block.ClimateCropBaseBlock;
-import defeatedcrow.hac.food.recipe.PlantRecipes;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -53,7 +50,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			mortarGemRecipes(cons, gem);
 		}
 
-		for (MillsDC.Crops crop : MillsDC.VARIANT) {
+		for (MillsDC.Crops crop : MillsDC.INSTANCE.cropRecipe) {
 			mortarMillsRecipes(cons, crop);
 		}
 
@@ -61,14 +58,6 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 		for (MaterialRecipes.Alloy alloy : MaterialRecipes.ALLOY_VARIANT) {
 			alloyRecipes(cons, alloy);
-		}
-
-		for (PlantRecipes.Wood wood : PlantRecipes.INSTANCE.woods) {
-			woodRecipes(cons, wood);
-		}
-
-		for (PlantRecipes.Seeding seeding : PlantRecipes.INSTANCE.seedings) {
-			seedingRecipes(cons, seeding);
 		}
 
 		for (MaterialRecipes.Stone stone : MaterialRecipes.STONE_VARIANT) {
@@ -303,73 +292,26 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_coal_gem", has(TagDC.ItemTag.GEM_COAL))
 			.save(cons, "dcs_climate:core/mortar_dust_coal");
 
-	}
+		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_WOOD.get(), 1)
+			.requires(ItemTags.PLANKS)
+			.requires(CoreInit.MORTAR.get())
+			.group("crusher_mortar")
+			.unlockedBy("has_planks", has(ItemTags.PLANKS))
+			.save(cons, "dcs_climate:core/mortar_dust_wood");
 
-	private static void seedingRecipes(Consumer<FinishedRecipe> cons, PlantRecipes.Seeding seed) {
-		if (seed.output().get() instanceof ClimateCropBaseBlock) {
-			String name = ((ClimateCropBaseBlock) seed.output().get()).getFamily().toString() + "_" + ((ClimateCropBaseBlock) seed.output().get()).getTier().toString();
-
-			ShapelessRecipeBuilder.shapeless(seed.output().get(), seed.count())
-				.requires(seed.input().get())
-				.requires(CoreInit.SEEDING_POT.get())
-				.group("seeding")
-				.unlockedBy("has_seeding_pot", has(CoreInit.SEEDING_POT.get()))
-				.save(cons, "dcs_climate:food/seeding_" + name);
-		}
 	}
 
 	private static void mortarMillsRecipes(Consumer<FinishedRecipe> cons, MillsDC.Crops mill) {
 		if (mill.input().get() instanceof IItemDC) {
 			TagKey<Item> ore = ((IItemDC) mill.input().get().asItem()).getPairTag();
 
-			if (mill.needPack()) {
-				ShapelessRecipeBuilder.shapeless(mill.outputPri().get(), 1)
-					.requires(ore)
-					.requires(CoreInit.MORTAR.get())
-					.requires(FoodInit.FOOD_EMPTY_PACK.get())
-					.group("crusher_mortar")
-					.unlockedBy("has_crop_" + mill.name(), has(mill.input().get().asItem()))
-					.save(cons, "dcs_climate:food/mortar_crop_" + mill.name());
-			} else {
-				ShapelessRecipeBuilder.shapeless(mill.outputPri().get(), 1)
-					.requires(ore)
-					.requires(CoreInit.MORTAR.get())
-					.group("crusher_mortar")
-					.unlockedBy("has_crop_" + mill.name(), has(mill.input().get().asItem()))
-					.save(cons, "dcs_climate:food/mortar_crop_" + mill.name());
-			}
+			ShapelessRecipeBuilder.shapeless(mill.outputPri().get(), 1)
+				.requires(ore)
+				.requires(CoreInit.MORTAR.get())
+				.group("crusher_mortar")
+				.unlockedBy("has_crop_" + mill.name(), has(mill.input().get().asItem()))
+				.save(cons, "dcs_climate:food/mortar_crop_" + mill.name());
 		}
-	}
-
-	private static void woodRecipes(Consumer<FinishedRecipe> cons, PlantRecipes.Wood wood) {
-
-		ShapelessRecipeBuilder.shapeless(wood.plankBlock().get(), 4)
-			.requires(wood.logBlock().get())
-			.unlockedBy("has_" + wood.name() + "_log", has(wood.logBlock().get()))
-			.save(cons, "dcs_climate:food/planks_" + wood.name());
-
-		ShapedRecipeBuilder.shaped(wood.stairsBlock().get(), 4)
-			.pattern("X  ")
-			.pattern("XX ")
-			.pattern("XXX")
-			.define('X', wood.plankBlock().get())
-			.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
-			.save(cons, "dcs_climate:build/stairs2_" + wood.name());
-
-		ShapedRecipeBuilder.shaped(wood.slabBlock().get(), 6)
-			.pattern("XXX")
-			.define('X', wood.plankBlock().get())
-			.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
-			.save(cons, "dcs_climate:build/slab2_" + wood.name());
-
-		ShapedRecipeBuilder.shaped(wood.fenceBlock().get(), 6)
-			.pattern("XYX")
-			.pattern("XYX")
-			.define('X', wood.plankBlock().get())
-			.define('Y', Tags.Items.RODS_WOODEN)
-			.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
-			.save(cons, "dcs_climate:build/fence2_" + wood.name());
-
 	}
 
 	private static void stoneRecipes(Consumer<FinishedRecipe> cons, MaterialRecipes.Stone stone) {
@@ -517,7 +459,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(CoreInit.MORTAR.get(), 1)
 			.pattern("X X")
 			.pattern("XXX")
-			.define('X', TagDC.ItemTag.GEM_CHALCEDONY)
+			.define('X', TagDC.ItemTag.GEM_AGATES)
 			.unlockedBy("has_chalcedony", has(TagDC.ItemTag.GEM_CHALCEDONY))
 			.save(cons, "dcs_climate:core/agate_mortar");
 
@@ -537,16 +479,21 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.define('Y', ItemTags.DIRT)
 			.unlockedBy("has_dirt", has(ItemTags.DIRT))
 			.save(cons, "dcs_climate:core/seeding_pot");
+
+		ShapedRecipeBuilder.shaped(CoreInit.SCYTHE_BRASS.get(), 1)
+			.pattern("YYX")
+			.pattern("  X")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.INGOT_BRASS)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+			.save(cons, "dcs_climate:core/scytheitem_brass");
 	}
 
 	private static void smeltingRecipes(Consumer<FinishedRecipe> cons) {
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(TagDC.ItemTag.GEM_FLINT), CoreInit.GEM_CHALCEDONY.get(), 0.3F, 200)
-			.unlockedBy("has_flint", has(Items.FLINT))
-			.save(cons, "dcs_climate:smelting/smelting_gem_chalcedony");
 
-		SimpleCookingRecipeBuilder.blasting(Ingredient.of(TagDC.ItemTag.GEM_FLINT), CoreInit.GEM_CHALCEDONY.get(), 0.3F, 100)
-			.unlockedBy("has_flint", has(Items.FLINT))
-			.save(cons, "dcs_climate:smelting/blasting_gem_chalcedony");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.GEM_FLINT), CoreInit.GEM_CHALCEDONY.get(), 200, "gem_chalcedony", Items.FLINT, "has_flint");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), CoreInit.DUST_ASH.get(), 200, "dust_ash", CoreInit.DUST_PLANT.get(), "has_dust_plant");
 	}
 
 	@Override
@@ -581,7 +528,16 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		} catch (IOException ioexception) {
 			DCLogger.LOGGER.error("Couldn't save recipe advancement {}", path, ioexception);
 		}
+	}
 
+	private static void smeltingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, Item output, int time, String name, Item unlockTarget, String unlockName) {
+		SimpleCookingRecipeBuilder.smelting(input, output, 0F, time)
+			.unlockedBy(unlockName, has(unlockTarget))
+			.save(cons, "dcs_climate:smelting/smelting_" + name);
+
+		SimpleCookingRecipeBuilder.blasting(input, output, 0F, time / 2)
+			.unlockedBy(unlockName, has(unlockTarget))
+			.save(cons, "dcs_climate:smelting/blasting_" + name);
 	}
 
 }

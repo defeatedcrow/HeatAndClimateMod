@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "X": {
-      "tag": "forge:gems/chalcedony"
+      "tag": "forge:gems/agates"
     }
   },
   "pattern": [

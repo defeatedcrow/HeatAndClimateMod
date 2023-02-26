@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:foods/dough"
+    },
+    {
+      "tag": "forge:crops/nuts"
+    },
+    {
+      "tag": "forge:crops/fruits"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/bread_nuts_raw"
+  }
+}

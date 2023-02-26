@@ -47,9 +47,9 @@ public abstract class ItemEntityFood extends ItemFoodDC implements IEntityItem {
 
 	@Override
 	public boolean canSpawnHere(Level level, BlockPos pos) {
-		boolean b1 = level.getBlockState(pos).isFaceSturdy(level, pos, Direction.UP, SupportType.RIGID);
+		boolean b1 = level.getBlockState(pos).isFaceSturdy(level, pos, Direction.UP, SupportType.CENTER);
 		boolean b2 = !level.getBlockState(pos.above()).getMaterial().blocksMotion();
-		return b1 && b2;
+		return true; // b1 && b2;
 	}
 
 	@Override

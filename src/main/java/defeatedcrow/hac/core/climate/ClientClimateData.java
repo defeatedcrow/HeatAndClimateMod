@@ -63,8 +63,8 @@ public class ClientClimateData {
 		boolean isCold = tempTier < 0;
 
 		// potion
-		heatPrev = DCUtil.getPotionResistantData(player, true);
-		coldPrev = DCUtil.getPotionResistantData(player, false);
+		heatPrev = DCUtil.getPotionResistantData(player, false);
+		coldPrev = DCUtil.getPotionResistantData(player, true);
 		// 防具の計算
 		IItemHandler handler = player.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH).orElse(null);
 		if (handler != null) {

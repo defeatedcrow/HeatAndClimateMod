@@ -53,8 +53,8 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("0", "1", "2", "3", "4");
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2));
+		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2)).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
@@ -153,6 +153,16 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 			return ImmutableList.of("SWAMP", "RIVER");
 		case COMMON:
 			return ImmutableList.of("RIVER", "BEACH");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("COLD", "DRY");
 		default:
 			return Lists.newArrayList();
 		}

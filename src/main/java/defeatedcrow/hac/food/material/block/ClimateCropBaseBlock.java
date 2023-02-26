@@ -2,6 +2,8 @@ package defeatedcrow.hac.food.material.block;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import org.apache.commons.compress.utils.Lists;
 
 import com.google.common.collect.ImmutableList;
@@ -15,21 +17,24 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.crop.ICropData;
 import defeatedcrow.hac.api.crop.IFertileBlock;
+import defeatedcrow.hac.api.material.IRapidCollectables;
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
@@ -51,7 +56,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public abstract class ClimateCropBaseBlock extends BushBlock implements IClimateCrop, BonemealableBlock, IBlockDC, IJsonDataDC, ICropData {
+public abstract class ClimateCropBaseBlock extends BushBlock implements IClimateCrop, BonemealableBlock, IBlockDC, IJsonDataDC, ICropData, IRapidCollectables {
 
 	final CropTier cropTier;
 
@@ -92,8 +97,8 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 			// チャンスは一度だけ
 			int c1 = getMutationChance(level, pos, state);
-			random.nextInt(c1);
-			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0 && random.nextInt(c1) > 50) {
+			random.nextInt(100);
+			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0 && random.nextInt(100) < c1) {
 				onMutation(level, pos, state, random);
 			}
 
@@ -238,8 +243,8 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		CropStage stage = getCurrentStage(state);
 		if (stage == CropStage.GROUND || stage == CropStage.SAPLING) {
 			int c1 = getMutationChance(level, pos, state);
-			random.nextInt(c1);
-			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0 && random.nextInt(c1) > 50) {
+			random.nextInt(100);
+			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0 && random.nextInt(100) < c1) {
 				onMutation(level, pos, state, random);
 			}
 		}
@@ -339,9 +344,9 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		CropStage stage = this.getCurrentStage(thisState);
 		if (stage != CropStage.GROWN && stage != CropStage.DEAD) {
 			boolean clm = isSuitableForGrowing(world, pos, thisState);
-			int ret = clm ? 8 : 50;
+			int ret = clm ? 8 : 80;
 			BlockState under = world.getBlockState(pos.below());
-			if (getFertile(world, pos.below(), under) > 5) {
+			if (isFarmland(under)) {
 				ret /= 2;
 			}
 			return ret;
@@ -377,10 +382,6 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	public boolean onHarvest(Level world, BlockPos pos, BlockState thisState, Player player) {
 		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
 			boolean d = DCState.getBool(thisState, DCState.DOUBLE);
-			if (d) {
-				thisState = world.getBlockState(pos.below());
-				pos = pos.below();
-			}
 			if (canHarvest(thisState)) {
 				int f = 0;
 				if (player != null && !player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
@@ -400,17 +401,15 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 					ret = true;
 				}
 				if (ret) {
-					if (d)
-						world.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), 2);
-
-					// 真下が耕地でない場合、収穫後の植え直しなし
-					BlockState under = world.getBlockState(pos.below());
-					int fert = getFertile(world, pos.below(), under);
-					if (fert > 0) {
-						BlockState next = this.getHarvestedState(thisState);
-						world.setBlock(pos, next, 2);
-					} else {
-						world.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+					afterHarvest(world, pos, thisState);
+					if (isDoubleCrop(thisState) && canHarvest(thisState)) {
+						if (d) {
+							if (canHarvest(world.getBlockState(pos.below())))
+								onHarvest(world, pos.below(), world.getBlockState(pos.below()), player);
+						} else {
+							if (canHarvest(world.getBlockState(pos.above())))
+								onHarvest(world, pos.above(), world.getBlockState(pos.above()), player);
+						}
 					}
 				}
 				return ret;
@@ -419,50 +418,95 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		return false;
 	}
 
+	protected boolean isDoubleCrop(BlockState state) {
+		return state.hasProperty(DCState.DOUBLE);
+	}
+
+	@Override
+	public void afterHarvest(Level world, BlockPos pos, BlockState thisState) {
+		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
+			boolean d = DCState.getBool(thisState, DCState.DOUBLE);
+			if (d) {
+				world.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), 2);
+			} else {
+				// 自然生成物は再収穫できない
+				boolean w = DCState.getBool(thisState, DCState.WILD);
+				if (!w || forceDefault()) {
+					BlockState next = this.getHarvestedState(thisState);
+					world.setBlock(pos, next, 2);
+				} else {
+					world.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+				}
+			}
+		}
+	}
+
+	protected boolean forceDefault() {
+		return false;
+	}
+
 	@Override
 	public int getMutationChance(Level world, BlockPos pos, BlockState thisState) {
 		if (getTier() == CropTier.WILD) {
-			boolean clm = isSuitableForGrowing(world, pos, thisState);
-			int ret = clm ? 50 : 1;
 			BlockState under = world.getBlockState(pos.below());
-			ret += getFertile(world, pos.below(), under) * 5;
-			// DCLogger.debugInfoLog("mutate chance " + ret);
-			return ret;
+			if (!isFarmland(under))
+				return 0;
+			return getFertile(world, pos.below(), under) > 0 ? 100 : 0;
 		}
-		return 1;
+		return 0;
 	}
 
 	@Override
 	public boolean onMutation(Level level, BlockPos pos, BlockState state, RandomSource random) {
-		int c1 = getMutationChance(level, pos, state);
-		if (c1 > 0) {
-			random.nextInt(c1);
-			int r = random.nextInt(c1);
-			DCLogger.debugInfoLog("mutation: " + r);
-			if (r > (99 - CropTier.EPIC.getMutationChance()) && getMutationTarget(CropTier.EPIC).isPresent()) {
-				BlockState next = getMutationTarget(CropTier.EPIC).get().defaultBlockState();
-				return level.setBlock(pos, next, 3);
-			} else if (r > (99 - CropTier.RARE.getMutationChance()) && getMutationTarget(CropTier.RARE).isPresent()) {
-				BlockState next = getMutationTarget(CropTier.RARE).get().defaultBlockState();
-				return level.setBlock(pos, next, 3);
-			} else if (r > (99 - CropTier.COMMON.getMutationChance()) && getMutationTarget(CropTier.COMMON).isPresent()) {
-				BlockState next = getMutationTarget(CropTier.COMMON).get().defaultBlockState();
-				return level.setBlock(pos, next, 3);
-			}
+		int c1 = getFertile(level, pos.below(), state) * 5;
+		int r = random.nextInt(100);
+		// DCLogger.debugInfoLog("mutation: " + r);
+		if (r < c1 + CropTier.EPIC.getMutationChance() && getMutationTarget(CropTier.EPIC).isPresent()) {
+			BlockState next = getMutationTarget(CropTier.EPIC).get().defaultBlockState();
+			return level.setBlock(pos, next, 3);
+		} else if (r < c1 + CropTier.RARE.getMutationChance() && getMutationTarget(CropTier.RARE).isPresent()) {
+			BlockState next = getMutationTarget(CropTier.RARE).get().defaultBlockState();
+			return level.setBlock(pos, next, 3);
+		} else if (getMutationTarget(CropTier.COMMON).isPresent()) {
+			BlockState next = getMutationTarget(CropTier.COMMON).get().defaultBlockState();
+			return level.setBlock(pos, next, 3);
 		}
 		return false;
 	}
 
-	/* return 0 ~ 12 */
-	public int getFertile(Level world, BlockPos pos, BlockState state) {
+	/* return 1 ~ 4 */
+	public static int getFertile(Level world, BlockPos pos, BlockState state) {
 		int ret = 0;
-		if (TagUtil.matchTag("farmland", state).isPresent()) {
-			ret += 5;
-		}
 		if (state.getBlock() instanceof IFertileBlock) {
-			ret += 5 + ((IFertileBlock) state.getBlock()).getFertile(world, pos, state);
+			ret += ((IFertileBlock) state.getBlock()).getFertile(world, pos, state) + 1;
 		}
 		return ret;
+	}
+
+	public static boolean isFarmland(BlockState state) {
+		return TagUtil.matchTag("farmland", state).isPresent();
+	}
+
+	/* IRapidCollectables */
+
+	@Override
+	public TagKey<Item> collectableToolTag() {
+		return TagDC.ItemTag.SCYTHES;
+	}
+
+	@Override
+	public List<ItemStack> getDropList(Level level, BlockPos pos, BlockState state, ItemStack tool) {
+		ImmutableList.Builder<ItemStack> ret = ImmutableList.builder();
+		if (this.canHarvest(state)) {
+			int f = tool.isEmpty() ? 0 : tool.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
+			ret.addAll(this.getCropItems(state, f));
+		}
+		return ret.build();
+	}
+
+	@Override
+	public boolean doCollect(Level level, BlockPos pos, BlockState state, @Nullable Player player, ItemStack tool) {
+		return this.onHarvest(level, pos, state, player);
 	}
 
 }

@@ -56,7 +56,7 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2));
+		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2)).setValue(DCState.WILD, true);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 			boolean clm = isSuitableForGrowing(world, pos, thisState);
 			int ret = clm ? 8 : 50;
 			BlockState under = world.getBlockState(pos.below());
-			if (getFertile(world, pos.below(), under) > 5) {
+			if (isFarmland(under)) {
 				ret /= 2;
 			}
 			return ret;
@@ -116,8 +116,8 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("0", "1", "2", "3", "4");
 	}
 
 	@Override
@@ -211,8 +211,16 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("PLAINS", "RIVER");
-		// case COMMON:
-		// return ImmutableList.of("MOUNTAIN", "COLD");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("HOT", "DRY");
 		default:
 			return Lists.newArrayList();
 		}

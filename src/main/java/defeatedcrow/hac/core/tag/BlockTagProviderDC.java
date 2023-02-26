@@ -139,6 +139,23 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 			BuildInit.WALL_GREISEN.get(), BuildInit.WALL_SKARN.get(), BuildInit.WALL_HORNFELS.get(),
 			BuildInit.WALL_MARBLE.get(), BuildInit.WALL_SCHIST_BLUE.get(), BuildInit.WALL_SCHIST_NETHER.get(), BuildInit.WALL_GRANITE.get());
 
+		tag(TagDC.BlockTag.SCYTHE_BREAKABLE).addTags(BlockTags.LEAVES, BlockTags.WOOL);
+
+		tag(TagDC.BlockTag.SCYTHE_BREAKABLE).add(Blocks.COBWEB, Blocks.DEAD_BUSH, Blocks.HANGING_ROOTS, Blocks.FERN,
+			Blocks.VINE, Blocks.TRIPWIRE);
+
+		tag(TagDC.BlockTag.BEE_FLOWERS).add(FoodInit.BLOCK_BR_RAPESEED.get(), FoodInit.BLOCK_HB_LAVENDER.get(), FoodInit.BLOCK_ML_BLUE.get(),
+			FoodInit.BLOCK_MO_BINDWEED.get(), FoodInit.BLOCK_MO_FLOWER.get(), FoodInit.BLOCK_PD_ROGERIA.get(),
+			FoodInit.BLOCK_SL_NIGHTSHADE.get(), FoodInit.BLOCK_SL_LANTERN.get(), FoodInit.CROPBLOCK_PL_COCONUT.get(),
+			FoodInit.CROPBLOCK_PL_DATE.get(), FoodInit.CROPBLOCK_PL_OIL.get(), FoodInit.LEAVES_CM_OIL.get(),
+			FoodInit.LEAVES_CM_SCHIMA.get(), FoodInit.LEAVES_CH_WILD.get(), FoodInit.LEAVES_CH_PLUM.get(),
+			FoodInit.LEAVES_CH_PEACH.get(), FoodInit.LEAVES_CT_POMELO.get(), FoodInit.LEAVES_CT_MANDARIN.get(),
+			FoodInit.LEAVES_CT_LEMON.get(), FoodInit.LEAVES_ER_HEATH.get(), FoodInit.LEAVES_ER_RHODODENDRON.get(),
+			FoodInit.LEAVES_ER_BLUEBERRY.get(), FoodInit.LEAVES_OL_ASH.get(), FoodInit.LEAVES_OL_OLIVE.get(),
+			FoodInit.LEAVES_OL_OSMANTHUS.get());
+
+		tag(BlockTags.FLOWERS).addTags(TagDC.BlockTag.BEE_FLOWERS);
+
 		// plugins
 
 		tag(TagDC.BlockTag.CROP_GREEN_MANURES).addOptional(new ResourceLocation("biomesoplenty", "clover"));

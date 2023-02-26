@@ -61,28 +61,22 @@ public class LeavesPalm extends LeavesCropBlockDC {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")),
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")));
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "false", "false", "false", "false", "false", "false", "true", "true", "true", "true", "true", "true" });
+	public List<String> getModelNameSuffix() {
+		return Lists.newArrayList();
+	}
+
+	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("stage6=0", "stage6=1", "stage6=2", "stage6=3", "stage6=4", "stage6=5");
 	}
 
 	@Override
 	public JsonModelSimpleDC getItemModel() {
-		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_false");
+		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_0");
 	}
 
 	/* ICropData */

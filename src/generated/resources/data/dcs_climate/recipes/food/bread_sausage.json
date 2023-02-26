@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:foods/dough"
+    },
+    {
+      "tag": "forge:ingredients/cooked_sausage"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/bread_sausage_raw"
+  }
+}

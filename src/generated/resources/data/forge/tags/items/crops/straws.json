@@ -8,6 +8,8 @@
     "#forge:crops/corn",
     "#forge:crops/zizania",
     "#forge:crops/rice",
-    "#forge:crops/aroma_rice"
+    "#forge:crops/aroma_rice",
+    "#forge:crops/reed",
+    "#forge:crops/sorghum"
   ]
 }

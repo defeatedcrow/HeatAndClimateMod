@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/crop/crop_erica_rhododendron"
+  },
+  "parent": "minecraft:item/generated"
+}

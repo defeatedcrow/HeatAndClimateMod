@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/stick_offal_raw"
+  },
+  "parent": "minecraft:item/generated"
+}

@@ -1,7 +1,6 @@
 package defeatedcrow.hac.food.material.item;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.annotation.Nullable;
 
@@ -23,6 +22,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
@@ -52,11 +52,6 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
-	}
-
-	@Override
 	public abstract JsonModelSimpleDC getItemModel();
 
 	@Override
@@ -78,18 +73,18 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 
 	@Override
 	public int getTaste(ItemStack item) {
-		if (!DCUtil.isEmpty(item) && item.getItem() instanceof IFoodTaste && item.getTagElement(TagKeyDC.TASTE) != null) {
+		if (!DCUtil.isEmpty(item) && item.getItem() instanceof IFoodTaste && item.getTag() != null && item.getTag().contains(TagKeyDC.TASTE)) {
 			int taste = item.getTag().getInt(TagKeyDC.TASTE);
-			taste = Mth.clamp(-2, taste, 2);
+			taste = Mth.clamp(taste, -2, 2);
 			return taste;
 		}
-		return 2;
+		return 0;
 	}
 
 	@Override
 	public void setTaste(ItemStack item, int i) {
 		if (!DCUtil.isEmpty(item)) {
-			int taste = Mth.clamp(-2, i, 2);
+			int taste = Mth.clamp(i, -2, 2);
 			CompoundTag tag = item.getOrCreateTag();
 			tag.putInt(TagKeyDC.TASTE, taste);
 			item.setTag(tag);
@@ -98,14 +93,23 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 
 	@Override
 	public int getUseDuration(ItemStack item) {
-		int taste = getTaste(item) + 3;
-		int dur = 128 / (taste * 2);
+		int taste = getTaste(item) + 3; // 1 ~ 5
+		int dur = 256 / (taste * 4);
 		return dur;
 	}
 
 	@Override
 	public boolean isSeasoning() {
 		return false;
+	}
+
+	@Override
+	public Rarity getRarity(ItemStack item) {
+		if (item.getTag() != null && item.getTag().contains(TagKeyDC.TASTE)) {
+			return Rarity.UNCOMMON;
+		} else {
+			return super.getRarity(item);
+		}
 	}
 
 }

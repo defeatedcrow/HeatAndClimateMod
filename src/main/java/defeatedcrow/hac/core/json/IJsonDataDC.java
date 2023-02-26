@@ -1,7 +1,8 @@
 package defeatedcrow.hac.core.json;
 
 import java.util.List;
-import java.util.Optional;
+
+import org.apache.commons.compress.utils.Lists;
 
 public interface IJsonDataDC {
 
@@ -9,7 +10,11 @@ public interface IJsonDataDC {
 
 	List<JsonModelDC> getBlockModel();
 
-	Optional<String[]> getModelNameSuffix();
+	List<String> getModelNameSuffix();
+
+	default List<String> getStateNameSuffix() {
+		return Lists.newArrayList();
+	}
 
 	JsonModelSimpleDC getItemModel();
 

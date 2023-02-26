@@ -1,7 +1,6 @@
 {
   "values": [
     "#forge:ingredients/rye",
-    "#forge:ingredients/barley",
     "#forge:ingredients/wheat"
   ]
 }

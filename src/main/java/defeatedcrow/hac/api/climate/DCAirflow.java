@@ -1,6 +1,5 @@
 package defeatedcrow.hac.api.climate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.compress.utils.Lists;
@@ -66,7 +65,7 @@ public enum DCAirflow {
 			i = 0;
 		if (i > 3)
 			i = 3;
-		for (DCAirflow e : values()) {
+		for (DCAirflow e : elements()) {
 			if (i == e.id)
 				return e;
 		}
@@ -81,19 +80,9 @@ public enum DCAirflow {
 		return this;
 	}
 
-	public static List<DCAirflow> createList() {
-		List<DCAirflow> tiers = new ArrayList<DCAirflow>();
-
-		for (DCAirflow t : DCAirflow.values()) {
-			tiers.add(t);
-		}
-
-		return tiers;
-	}
-
 	public static DCAirflow getFromName(String name) {
 		if (name != null)
-			for (DCAirflow t : DCAirflow.values()) {
+			for (DCAirflow t : DCAirflow.elements()) {
 				if (t.name().equalsIgnoreCase(name)) {
 					return t;
 				}
@@ -103,7 +92,7 @@ public enum DCAirflow {
 
 	public static DCAirflow getFromNameOrNull(String name) {
 		if (name != null)
-			for (DCAirflow t : DCAirflow.values()) {
+			for (DCAirflow t : DCAirflow.elements()) {
 				if (t.name().equalsIgnoreCase(name)) {
 					return t;
 				}
@@ -113,14 +102,15 @@ public enum DCAirflow {
 
 	public static List<DCAirflow> getListFromName(List<String> names) {
 		List<DCAirflow> ret = Lists.newArrayList();
-		for (String name : names)
-			if (name != null && !name.isEmpty())
-				for (DCAirflow t : DCAirflow.values()) {
-					if (t.name().equalsIgnoreCase(name)) {
-						ret.add(t);
-						break;
+		if (names != null)
+			for (String name : names)
+				if (name != null && !name.isEmpty())
+					for (DCAirflow t : DCAirflow.elements()) {
+						if (t.name().equalsIgnoreCase(name)) {
+							ret.add(t);
+							break;
+						}
 					}
-				}
 		return ret;
 	}
 
@@ -138,6 +128,10 @@ public enum DCAirflow {
 
 	public static MutableComponent basename2() {
 		return Component.translatable("dcs.enum.airflow_name2");
+	}
+
+	public static List<DCAirflow> elements() {
+		return ImmutableList.of(TIGHT, NORMAL, FLOW, WIND);
 	}
 
 }

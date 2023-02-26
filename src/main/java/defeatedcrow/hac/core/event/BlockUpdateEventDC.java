@@ -43,7 +43,7 @@ public class BlockUpdateEventDC {
 				// 寒冷地では成長しづらい
 				if (clm.get().getHeat().isCold()) {
 					int c = 5 + clm.get().getHeat().getTier();
-					if (c > 0 && world.random.nextInt(c) > 0)
+					if (c < 2 || world.random.nextInt(c) == 0)
 						event.setResult(Result.DENY);
 				} else if ((clm.get().getHeat() == DCHeatTier.WARM || clm.get().getHeat() == DCHeatTier.HOT) && clm_down.get().getHumidity() == DCHumidity.WET) {
 					// WETの参照posを真下に

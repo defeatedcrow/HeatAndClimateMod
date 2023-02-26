@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "tag": "forge:ingredients/raw_sausage"
+  },
+  "result": "dcs_climate:food/food_sausage_smoked"
+}

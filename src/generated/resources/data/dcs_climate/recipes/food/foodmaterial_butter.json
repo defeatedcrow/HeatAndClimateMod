@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/cream"
+    },
+    {
+      "tag": "forge:dusts/salt"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/food_butter"
+  }
+}

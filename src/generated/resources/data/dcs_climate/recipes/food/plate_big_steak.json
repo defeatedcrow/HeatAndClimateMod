@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/raw_beef"
+    },
+    {
+      "tag": "forge:crops/garlic"
+    },
+    {
+      "tag": "forge:ingredients/butter"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/plate_big_garlic_raw"
+  }
+}

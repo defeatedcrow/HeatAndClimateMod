@@ -6,7 +6,6 @@ import java.util.Map;
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.network.packet.message.MsgWeatherToC;
-import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -39,8 +38,11 @@ public class WeatherChecker {
 		float rain = world.getRainLevel(1.0F);
 		int sunTime = sunCountMap.getOrDefault(dimName, 0);
 		int rainTime = rainCountMap.getOrDefault(dimName, 0);
-		EnumSeason season = DCTimeHelper.getSeasonEnum(world, null);
+		EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 		int day = DCTimeHelper.getDay(world);
+		int dayD = DCTimeHelper.getDisplayDay(world);
+		int time = DCTimeHelper.currentTime(world);
+		String date = DCTimeHelper.getDate(world);
 		boolean flag = false;
 		if (day != lastDay) {
 			lastDay = day;
@@ -52,8 +54,6 @@ public class WeatherChecker {
 		// DCLogger.debugLog("rain:" + rain + " time:" + rainTime);
 		// DCLogger.debugLog("thunder:" + world.thunderLevel);
 		// DCLogger.debugLog("sun time:" + sunTime);
-
-		DCTimeHelper.currentSeason = season;
 
 		rainPowerMap.put(dimName, rain);
 		boolean r = rain > 0.25F;
@@ -81,15 +81,14 @@ public class WeatherChecker {
 				rainCountMap.put(dimName, 0);
 		}
 
-		MsgWeatherToC.setdToClient(dim.location(), rain, rainTime, sunTime, season.id);
+		MsgWeatherToC.sendToClient(dim.location(), rain, rainTime, sunTime, season.id, day, dayD, time, date);
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public static void setWeather(ResourceLocation dim, float rain, int countR, int countS, int season) {
+	public static void setWeather(ResourceLocation dim, float rain, int countR, int countS) {
 		rainPowerMap.put(dim, rain);
 		rainCountMap.put(dim, countR);
 		sunCountMap.put(dim, countS);
-		DCTimeHelper.currentSeason = EnumSeason.getSeasonFromID(season);
 		// DCLogger.debugLog("dim " + dim + "/ received data: " + rain + "/ " + countR + ", " + countS);
 	}
 

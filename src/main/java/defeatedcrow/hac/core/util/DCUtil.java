@@ -11,6 +11,8 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagUtil;
@@ -19,6 +21,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -116,6 +121,23 @@ public class DCUtil {
 			}
 		}
 		return prev;
+	}
+
+	public static boolean removeBadPotion(LivingEntity liv) {
+		if (liv != null && !liv.getLevel().isClientSide) {
+			List<MobEffect> remove = Lists.newArrayList();
+			for (MobEffectInstance p : liv.getActiveEffects()) {
+				if (p.getEffect().getCategory() == MobEffectCategory.HARMFUL)
+					remove.add(p.getEffect());
+			}
+
+			for (MobEffect p2 : remove) {
+				liv.removeEffect(p2);
+			}
+			return !remove.isEmpty();
+		}
+
+		return false;
 	}
 
 	/**

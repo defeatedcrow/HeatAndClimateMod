@@ -2,7 +2,6 @@
   "values": [
     "#forge:crops/chives",
     "#forge:crops/onion",
-    "#forge:crops/garlic",
     "#forge:crops/goosefoot",
     "#forge:crops/glasswort",
     "#forge:crops/spinach",
@@ -24,7 +23,7 @@
     "#forge:crops/soy",
     "#forge:crops/adzuki",
     "#forge:crops/corn",
-    "#forge:crops/zizania",
+    "#forge:ingredients/makomotake",
     "#forge:crops/egg_plant",
     "#forge:crops/tomato",
     "#forge:crops/jute",

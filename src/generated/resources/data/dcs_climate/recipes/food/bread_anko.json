@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:foods/dough"
+    },
+    {
+      "tag": "forge:ingredients/anko"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/bread_anko_raw"
+  }
+}

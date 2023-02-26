@@ -53,6 +53,8 @@ public interface IClimateCrop extends ICropData {
 	// 収穫
 	boolean onHarvest(Level world, BlockPos pos, BlockState thisState, Player player);
 
+	void afterHarvest(Level world, BlockPos pos, BlockState thisState);
+
 	// 変異
 	int getMutationChance(Level world, BlockPos pos, BlockState thisState);
 

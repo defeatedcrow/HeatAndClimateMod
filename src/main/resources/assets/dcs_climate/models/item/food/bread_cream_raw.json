@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/bread_cream_raw"
+  },
+  "parent": "minecraft:item/generated"
+}

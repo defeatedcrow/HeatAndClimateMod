@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:pumpkin_seeds",
+    "minecraft:sunflower",
+    "#forge:crops/beech",
+    "#forge:crops/walnut",
+    "#forge:crops/acorn",
+    "#forge:crops/coconut"
+  ]
+}

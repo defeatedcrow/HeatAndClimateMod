@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#forge:ingredients/raw_beef",
+    "#forge:ingredients/raw_pork",
+    "#forge:ingredients/raw_chicken",
+    "#forge:ingredients/raw_mutton",
+    "#forge:ingredients/raw_rabbit",
+    "#forge:ingredients/frog"
+  ]
+}

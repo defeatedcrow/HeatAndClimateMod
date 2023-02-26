@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "hand_spindle",
+  "ingredients": [
+    {
+      "tag": "minecraft:wool"
+    },
+    {
+      "item": "dcs_climate:main/hand_spindle"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "dcs_climate:food/string_wool"
+  }
+}

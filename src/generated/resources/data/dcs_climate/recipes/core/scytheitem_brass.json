@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/brass"
+    },
+    "Y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "YYX",
+    "  X",
+    " X "
+  ],
+  "result": {
+    "item": "dcs_climate:main/scythe_brass"
+  }
+}

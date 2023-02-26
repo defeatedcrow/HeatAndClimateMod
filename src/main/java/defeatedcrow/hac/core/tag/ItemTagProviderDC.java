@@ -9,6 +9,8 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -57,29 +59,61 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 				}
 			});
 
+		// vanilla
+
 		tag(TagDC.ItemTag.DUST_IRON).addTag(TagDC.ItemTag.DUST_MAGNETITE);
 
 		tag(TagDC.ItemTag.GEM_GARNET).addTag(TagDC.ItemTag.GEM_ALMANDINE);
 		tag(TagDC.ItemTag.GEM_PERIDOT).addTag(TagDC.ItemTag.GEM_OLIVINE);
 
+		tag(TagDC.ItemTag.GEM_AGATES).addTags(TagDC.ItemTag.GEM_CHALCEDONY, TagDC.ItemTag.GEM_CRYSTAL,
+			TagDC.ItemTag.GEM_JASPER, Tags.Items.GEMS_QUARTZ, Tags.Items.GEMS_AMETHYST);
+
 		tag(TagDC.ItemTag.GEM_COAL).add(Items.COAL);
 		tag(TagDC.ItemTag.GEM_FLINT).add(Items.FLINT);
 
-		tag(TagDC.ItemTag.FERTILIZER).add(Items.BONE_MEAL);
-		tag(TagDC.ItemTag.FERTILIZER).addTags(TagDC.ItemTag.FOOD_FISH_POWDER, TagDC.ItemTag.FOOD_PRESS_CAKE);
-
-		// foods
-
 		tag(TagDC.ItemTag.CROP_APPLE).add(Items.APPLE);
 		tag(TagDC.ItemTag.CROP_COCOA).add(Items.COCOA_BEANS);
-		tag(TagDC.ItemTag.FOOD_BREAD).add(Items.BREAD);
+		tag(TagDC.ItemTag.CROP_BERRY).add(Items.SWEET_BERRIES);
+
+		tag(TagDC.ItemTag.BREAD).add(Items.BREAD);
+		tag(TagDC.ItemTag.CROP_NUTS).add(Items.PUMPKIN_SEEDS, Items.SUNFLOWER);
+
+		tag(TagDC.ItemTag.COW_MILK).add(Items.MILK_BUCKET);
+		tag(TagDC.ItemTag.WATER).add(Items.WATER_BUCKET);
+		tag(TagDC.ItemTag.DUST_SUGAR).add(Items.SUGAR);
+
+		tag(TagDC.ItemTag.STICK_BAMBOO).add(Items.BAMBOO);
+
+		tag(TagDC.ItemTag.RAW_BEEF).add(Items.BEEF);
+		tag(TagDC.ItemTag.RAW_PORK).add(Items.PORKCHOP);
+		tag(TagDC.ItemTag.RAW_CHICKEN).add(Items.CHICKEN);
+		tag(TagDC.ItemTag.RAW_MUTTON).add(Items.MUTTON);
+		tag(TagDC.ItemTag.RAW_RABBIT).add(Items.RABBIT);
+		tag(TagDC.ItemTag.RAW_ROTTEN).add(Items.ROTTEN_FLESH);
+
+		tag(TagDC.ItemTag.COOKED_BEEF).add(Items.COOKED_BEEF);
+		tag(TagDC.ItemTag.COOKED_PORK).add(Items.COOKED_PORKCHOP);
+		tag(TagDC.ItemTag.COOKED_CHICKEN).add(Items.COOKED_CHICKEN);
+		tag(TagDC.ItemTag.COOKED_MUTTON).add(Items.COOKED_MUTTON);
+		tag(TagDC.ItemTag.COOKED_RABBIT).add(Items.COOKED_RABBIT);
+
+		tag(TagDC.ItemTag.RAW_COD).add(Items.COD);
+		tag(TagDC.ItemTag.RAW_SALMON).add(Items.SALMON);
+
+		tag(TagDC.ItemTag.COOKED_COD).add(Items.COOKED_COD);
+		tag(TagDC.ItemTag.COOKED_SALMON).add(Items.COOKED_SALMON);
+
+		tag(TagDC.ItemTag.FERTILIZER).add(Items.BONE_MEAL);
+
+		// crops
 
 		tag(TagDC.ItemTag.CROP_CEREALS).addTags(TagDC.ItemTag.CROP_OAT, TagDC.ItemTag.CROP_RYE, TagDC.ItemTag.CROP_BARLEY,
 			TagDC.ItemTag.CROP_WILD_RICE, TagDC.ItemTag.CROP_RICE, TagDC.ItemTag.CROP_AROMA_RICE, Tags.Items.CROPS_WHEAT);
 
-		tag(TagDC.ItemTag.CROP_MILLETS).addTags(TagDC.ItemTag.CROP_GOOSEFOOT, TagDC.ItemTag.CROP_SORGHUM);
+		tag(TagDC.ItemTag.CROP_MILLETS).addTags(TagDC.ItemTag.CROP_SORGHUM);
 
-		tag(TagDC.ItemTag.CROP_PSEUDOCEREALS).addTags(TagDC.ItemTag.CROP_BUCKWHEAT);
+		tag(TagDC.ItemTag.CROP_PSEUDOCEREALS).addTags(TagDC.ItemTag.CROP_GOOSEFOOT, TagDC.ItemTag.CROP_BUCKWHEAT);
 
 		tag(TagDC.ItemTag.CROP_GREEN_LEAFS).addTags(TagDC.ItemTag.CROP_GOOSEFOOT, TagDC.ItemTag.CROP_SPINACH, TagDC.ItemTag.CROP_NAPA,
 			TagDC.ItemTag.CROP_RAPESEED, TagDC.ItemTag.CROP_CABAGGE, TagDC.ItemTag.CROP_FENNEL, TagDC.ItemTag.CROP_CELERY,
@@ -92,43 +126,81 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 			TagDC.ItemTag.CROP_CHILI, TagDC.ItemTag.CROP_PAPRIKA, TagDC.ItemTag.CROP_GINGER, TagDC.ItemTag.CROP_CARDAMOM,
 			TagDC.ItemTag.CROP_TURMERIC, TagDC.ItemTag.CROP_CINNAMON);
 
-		tag(TagDC.ItemTag.CROP_VEGETABLES).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_ONION, TagDC.ItemTag.CROP_GARLIC,
+		tag(TagDC.ItemTag.CROP_HERBS).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_ONION, TagDC.ItemTag.CROP_GARLIC,
+			TagDC.ItemTag.CROP_FENNEL, TagDC.ItemTag.CROP_CELERY, TagDC.ItemTag.CROP_PARSNIP,
+			TagDC.ItemTag.CROP_MINT, TagDC.ItemTag.CROP_BASIL, TagDC.ItemTag.CROP_PERILLA, TagDC.ItemTag.CROP_LAVENDER, TagDC.ItemTag.CROP_HEATH);
+
+		tag(TagDC.ItemTag.CROP_EDIBLE_RAW_VEGGIE).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_ONION,
+			TagDC.ItemTag.CROP_SPINACH, TagDC.ItemTag.CROP_FENNEL, TagDC.ItemTag.CROP_CELERY,
+			TagDC.ItemTag.CROP_RAPESEED, TagDC.ItemTag.CROP_NAPA, TagDC.ItemTag.CROP_CABAGGE, TagDC.ItemTag.CROP_RADISH,
+			TagDC.ItemTag.CROP_PAPRIKA, TagDC.ItemTag.CROP_BELL, TagDC.ItemTag.CROP_SORREL, TagDC.ItemTag.CROP_INDIGO,
+			TagDC.ItemTag.CROP_WATER_SPINACH, TagDC.ItemTag.CROP_CORN, TagDC.ItemTag.CROP_TOMATO,
+			TagDC.ItemTag.CROP_PUMPKIN, Tags.Items.CROPS_CARROT, Tags.Items.CROPS_BEETROOT);
+
+		tag(TagDC.ItemTag.CROP_VEGETABLES).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_ONION,
 			TagDC.ItemTag.CROP_GOOSEFOOT, TagDC.ItemTag.CROP_GLASSWORT, TagDC.ItemTag.CROP_SPINACH,
 			TagDC.ItemTag.CROP_FENNEL, TagDC.ItemTag.CROP_CELERY, TagDC.ItemTag.CROP_PARSNIP,
 			TagDC.ItemTag.CROP_RAPESEED, TagDC.ItemTag.CROP_NAPA, TagDC.ItemTag.CROP_CABAGGE, TagDC.ItemTag.CROP_RADISH,
 			TagDC.ItemTag.CROP_PAPRIKA, TagDC.ItemTag.CROP_BELL, TagDC.ItemTag.CROP_SORREL, TagDC.ItemTag.CROP_INDIGO,
 			TagDC.ItemTag.CROP_WATER_SPINACH, TagDC.ItemTag.CROP_SWEET_POTATO, TagDC.ItemTag.CROP_GREEN_PEAS,
 			TagDC.ItemTag.CROP_GARBANZO, TagDC.ItemTag.CROP_SOY, TagDC.ItemTag.CROP_ADZUKI, TagDC.ItemTag.CROP_CORN,
-			TagDC.ItemTag.CROP_WILD_RICE, TagDC.ItemTag.CROP_EGGPLANT, TagDC.ItemTag.CROP_TOMATO, TagDC.ItemTag.CROP_JUTE,
+			TagDC.ItemTag.MAKOMOTAKE, TagDC.ItemTag.CROP_EGGPLANT, TagDC.ItemTag.CROP_TOMATO, TagDC.ItemTag.CROP_JUTE,
 			Tags.Items.CROPS_CARROT, Tags.Items.CROPS_BEETROOT, Tags.Items.CROPS_POTATO, TagDC.ItemTag.CROP_PUMPKIN);
 
 		tag(TagDC.ItemTag.CROP_FLOWERS).addTags(TagDC.ItemTag.CROP_LAVENDER, TagDC.ItemTag.CROP_BINDWEED, TagDC.ItemTag.CROP_MORNING_GLORY,
-			TagDC.ItemTag.CROP_LANTERN, TagDC.ItemTag.CROP_BLUE_MALLOW, TagDC.ItemTag.CROP_OSUMANTHUS);
+			TagDC.ItemTag.CROP_LANTERN, TagDC.ItemTag.CROP_BLUE_MALLOW, TagDC.ItemTag.CROP_HEATH, TagDC.ItemTag.CROP_RHODODENDRON,
+			TagDC.ItemTag.CROP_OSUMANTHUS);
 
-		tag(TagDC.ItemTag.CROP_FLUITS).addTags(TagDC.ItemTag.CROP_LANTERN, TagDC.ItemTag.CROP_CHERRY, TagDC.ItemTag.CROP_PLUM,
-			TagDC.ItemTag.CROP_PEACH, TagDC.ItemTag.CROP_POMELO, TagDC.ItemTag.CROP_MANDARIN,
-			TagDC.ItemTag.CROP_LEMON, TagDC.ItemTag.CROP_DATE);
+		tag(TagDC.ItemTag.CROP_FRUITS).addTags(TagDC.ItemTag.CROP_LANTERN, TagDC.ItemTag.CROP_CHERRY, TagDC.ItemTag.CROP_PLUM,
+			TagDC.ItemTag.CROP_PEACH, TagDC.ItemTag.CROP_BLUEBERRY, TagDC.ItemTag.CROP_MULBERRY, TagDC.ItemTag.CROP_KAJI,
+			TagDC.ItemTag.CROP_DATE, TagDC.ItemTag.CROP_APPLE, TagDC.ItemTag.CROP_BERRY);
+
+		tag(TagDC.ItemTag.CROP_BERRY).addTags(TagDC.ItemTag.CROP_BLUEBERRY, TagDC.ItemTag.CROP_MULBERRY);
+
+		tag(TagDC.ItemTag.CROP_CITRUS).addTags(TagDC.ItemTag.CROP_POMELO, TagDC.ItemTag.CROP_MANDARIN, TagDC.ItemTag.CROP_LEMON);
 
 		tag(TagDC.ItemTag.CROP_STRAWS).addTags(TagDC.ItemTag.CROP_OAT, TagDC.ItemTag.CROP_RYE, TagDC.ItemTag.CROP_BARLEY,
 			TagDC.ItemTag.CROP_REED, TagDC.ItemTag.CROP_SORGHUM, TagDC.ItemTag.CROP_CORN,
-			TagDC.ItemTag.CROP_WILD_RICE, TagDC.ItemTag.CROP_RICE, TagDC.ItemTag.CROP_AROMA_RICE);
+			TagDC.ItemTag.CROP_WILD_RICE, TagDC.ItemTag.CROP_RICE, TagDC.ItemTag.CROP_AROMA_RICE,
+			TagDC.ItemTag.CROP_REED, TagDC.ItemTag.CROP_SORGHUM);
 
 		tag(TagDC.ItemTag.CROP_STICKS).addTags(TagDC.ItemTag.CROP_GOOSEFOOT, TagDC.ItemTag.CROP_REED, TagDC.ItemTag.CROP_SORGHUM);
 
-		tag(TagDC.ItemTag.CROP_OILS).addTags(TagDC.ItemTag.CROP_RAPESEED, TagDC.ItemTag.CROP_SOY, TagDC.ItemTag.CROP_AVOCADO, TagDC.ItemTag.CROP_OLIVE, TagDC.ItemTag.CROP_OIL_PALM);
+		tag(TagDC.ItemTag.CROP_OILS).addTags(TagDC.ItemTag.CROP_RAPESEED, TagDC.ItemTag.CROP_ROGERIA, TagDC.ItemTag.CROP_SESAMI, TagDC.ItemTag.CROP_SOY,
+			TagDC.ItemTag.CROP_AVOCADO, TagDC.ItemTag.CROP_CAMELLIA, TagDC.ItemTag.CROP_OLIVE, TagDC.ItemTag.CROP_OIL_PALM);
 
-		tag(TagDC.ItemTag.FOOD_BREAD_GRAINS).addTags(TagDC.ItemTag.FOOD_RYE, TagDC.ItemTag.FOOD_BARLEY, TagDC.ItemTag.FOOD_WHEAT);
+		tag(TagDC.ItemTag.CROP_NUTS).addTags(TagDC.ItemTag.CROP_BEECH, TagDC.ItemTag.CROP_WALNUT, TagDC.ItemTag.CROP_ACORN, TagDC.ItemTag.CROP_COCONUT);
 
-		tag(TagDC.ItemTag.FOOD_CEREALS).addTags(TagDC.ItemTag.FOOD_OAT, TagDC.ItemTag.FOOD_RYE, TagDC.ItemTag.FOOD_BARLEY,
-			TagDC.ItemTag.FOOD_ZIZANIA, TagDC.ItemTag.FOOD_RICE, TagDC.ItemTag.FOOD_AROMA_RICE, TagDC.ItemTag.FOOD_WHEAT);
+		tag(TagDC.ItemTag.DUST_BREAD_GRAINS).addTags(TagDC.ItemTag.DUST_RYE, TagDC.ItemTag.DUST_WHEAT);
 
-		tag(TagDC.ItemTag.FOOD_MILLETS).addTags(TagDC.ItemTag.FOOD_SORGHUM);
+		tag(TagDC.ItemTag.DUST_CEREALS).addTags(TagDC.ItemTag.DUST_OAT, TagDC.ItemTag.DUST_RYE, TagDC.ItemTag.DUST_BARLEY,
+			TagDC.ItemTag.DUST_ZIZANIA, TagDC.ItemTag.DUST_RICE, TagDC.ItemTag.DUST_AROMA_RICE, TagDC.ItemTag.DUST_WHEAT);
 
-		tag(TagDC.ItemTag.FOOD_PSEUDOCEREALS).addTags(TagDC.ItemTag.FOOD_BUCKWHEAT);
+		tag(TagDC.ItemTag.DUST_MILLETS).addTags(TagDC.ItemTag.DUST_SORGHUM);
 
-		tag(TagDC.ItemTag.FOOD_RICES).addTags(TagDC.ItemTag.FOOD_ZIZANIA, TagDC.ItemTag.FOOD_RICE, TagDC.ItemTag.FOOD_AROMA_RICE);
+		tag(TagDC.ItemTag.DUST_PSEUDOCEREALS).addTags(TagDC.ItemTag.DUST_AMARANTH, TagDC.ItemTag.DUST_BUCKWHEAT);
 
-		tag(TagDC.ItemTag.FOOD_NUTS).addTags(TagDC.ItemTag.CROP_BEECH, TagDC.ItemTag.CROP_WALNUT, TagDC.ItemTag.CROP_ACORN, TagDC.ItemTag.CROP_COCONUT);
+		tag(TagDC.ItemTag.DUST_RICES).addTags(TagDC.ItemTag.DUST_ZIZANIA, TagDC.ItemTag.DUST_RICE, TagDC.ItemTag.DUST_AROMA_RICE);
+
+		tag(TagDC.ItemTag.SUGARS).addTags(TagDC.ItemTag.HONEY, TagDC.ItemTag.SYRUP, TagDC.ItemTag.DUST_SUGAR);
+
+		tag(TagDC.ItemTag.MILKS).addTags(TagDC.ItemTag.COW_MILK, TagDC.ItemTag.SOY_MILK, TagDC.ItemTag.COCONUT_MILK);
+
+		tag(TagDC.ItemTag.FOOD_FAT).addTags(TagDC.ItemTag.BUTTER, TagDC.ItemTag.MARGARINE);
+
+		tag(TagDC.ItemTag.RAW_MEAT).addTags(TagDC.ItemTag.RAW_BEEF, TagDC.ItemTag.RAW_PORK, TagDC.ItemTag.RAW_CHICKEN,
+			TagDC.ItemTag.RAW_MUTTON, TagDC.ItemTag.RAW_RABBIT, TagDC.ItemTag.FROG);
+
+		tag(TagDC.ItemTag.COOKED_MEAT).addTags(TagDC.ItemTag.COOKED_BEEF, TagDC.ItemTag.COOKED_PORK, TagDC.ItemTag.COOKED_CHICKEN,
+			TagDC.ItemTag.COOKED_MUTTON, TagDC.ItemTag.COOKED_RABBIT);
+
+		tag(TagDC.ItemTag.RAW_FISH).addTags(TagDC.ItemTag.RAW_COD, TagDC.ItemTag.RAW_SALMON);
+
+		tag(TagDC.ItemTag.COOKED_FISH).addTags(TagDC.ItemTag.COOKED_COD, TagDC.ItemTag.COOKED_SALMON);
+
+		tag(TagDC.ItemTag.FERTILIZER).addTags(TagDC.ItemTag.FISH_POWDER, TagDC.ItemTag.PRESS_CAKE);
+
+		tag(Tags.Items.RODS_WOODEN).addTags(TagDC.ItemTag.STICK_SORGHUM);
 
 		// blocks
 		copy(TagDC.BlockTag.ORES_WHITE, TagDC.ItemTag.ORES_WHITE);
@@ -193,10 +265,12 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		copy(TagDC.BlockTag.METALBLOCK_HASTELLOY, TagDC.ItemTag.METALBLOCK_HASTELLOY);
 		copy(TagDC.BlockTag.METALBLOCK_BSCCO, TagDC.ItemTag.METALBLOCK_BSCCO);
 
-		copy(TagDC.BlockTag.CROP_GREEN_MANURES, TagDC.ItemTag.CROP_GREEN_MANURES);
+		copy(BlockTags.LEAVES, ItemTags.LEAVES);
 
 		copy(TagDC.BlockTag.CROP_PUMPKIN, TagDC.ItemTag.CROP_PUMPKIN);
 		copy(TagDC.BlockTag.CROP_MELON, TagDC.ItemTag.CROP_MELON);
+
+		copy(Tags.Blocks.ORES, Tags.Items.ORES);
 
 		// plugin
 		tag(TagDC.ItemTag.CROP_BARLEY).addOptional(new ResourceLocation("biomesoplenty", "barley"));

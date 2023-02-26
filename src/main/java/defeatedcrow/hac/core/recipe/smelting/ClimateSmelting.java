@@ -49,11 +49,19 @@ public class ClimateSmelting implements IClimateSmelting {
 					heat.add(t.addTier(1));
 				}
 			}
+		} else {
+			heat.addAll(DCHeatTier.elements());
 		}
-		if (h != null)
+		if (h != null) {
 			hum.add(h);
-		if (a != null)
+		} else {
+			hum.addAll(DCHumidity.elements());
+		}
+		if (a != null) {
 			air.add(a);
+		} else {
+			air.addAll(DCAirflow.elements());
+		}
 		processedInput = DCItemUtil.getProcessedList(input);
 		frequency = freq;
 	}
@@ -65,11 +73,32 @@ public class ClimateSmelting implements IClimateSmelting {
 		output = o;
 		if (t != null) {
 			heat.addAll(t);
+			if (t.size() == 1) {
+				DCHeatTier t2 = t.get(0);
+				if (t2.getID() < DCHeatTier.INFERNO.getID()) {
+					if (t2.getID() == DCHeatTier.NORMAL.getID() || t2.getID() == DCHeatTier.WARM.getID()) {
+						heat.add(t2.addTier(1));
+						heat.add(t2.addTier(-1));
+					} else if (t2.getID() > DCHeatTier.ABSOLUTE.getID() && t2.getID() < DCHeatTier.NORMAL.getID()) {
+						heat.add(t2.addTier(-1));
+					} else if (t2.getID() > DCHeatTier.WARM.getID()) {
+						heat.add(t2.addTier(1));
+					}
+				}
+			}
+		} else {
+			heat.addAll(DCHeatTier.elements());
 		}
-		if (h != null)
+		if (h != null) {
 			hum.addAll(h);
-		if (a != null)
+		} else {
+			hum.addAll(DCHumidity.elements());
+		}
+		if (a != null) {
 			air.addAll(a);
+		} else {
+			air.addAll(DCAirflow.elements());
+		}
 		processedInput = DCItemUtil.getProcessedList(input);
 		frequency = freq;
 	}

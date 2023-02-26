@@ -1,6 +1,0 @@
-{
-  "textures": {
-    "all": "dcs_climate:block/tree/cherry_wild_leaves_spr"
-  },
-  "parent": "dcs_climate:block/dcs_leaves"
-}

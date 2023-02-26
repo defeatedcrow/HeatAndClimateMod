@@ -22,11 +22,9 @@ import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
@@ -118,45 +116,67 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 		return getTier() == CropTier.RARE ? DCState.getInt(thisState, DCState.STAGE5) > 2 : super.canHarvest(thisState);
 	}
 
-	@Override
-	public boolean onHarvest(Level world, BlockPos pos, BlockState thisState, Player player) {
-		if (this.cropTier == CropTier.WILD || cropTier == CropTier.COMMON) {
-			return super.onHarvest(world, pos, thisState, player);
-		}
-		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
-			if (DCState.getBool(thisState, DCState.DOUBLE)) {
-				thisState = world.getBlockState(pos.below());
-				pos = pos.below();
-			}
-			if (canHarvest(thisState)) {
-				int f = 0;
-				if (player != null && !player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
-					f = player.getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
-				}
-				List<ItemStack> crops = this.getCropItems(thisState, f);
-				boolean ret = false;
-				for (ItemStack item : crops) {
-					ItemEntity drop;
-					item.setCount(2);
-					if (player != null) {
-						drop = new ItemEntity(world, player.getX(), player.getY() + 0.15D, player.getZ(), item);
-					} else {
-						drop = new ItemEntity(world, pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D, item);
-					}
-					if (drop != null && !world.isClientSide)
-						world.addFreshEntity(drop);
-					ret = true;
-				}
-				if (ret) {
-					BlockState next = this.getHarvestedState(thisState);
-					world.setBlock(pos.above(), next.setValue(DCState.DOUBLE, true), 2);
-					world.setBlock(pos, next, 2);
+	// @Override
+	// public boolean onHarvest(Level world, BlockPos pos, BlockState thisState, Player player) {
+	// if (this.cropTier == CropTier.WILD || cropTier == CropTier.COMMON) {
+	// return super.onHarvest(world, pos, thisState, player);
+	// }
+	// if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
+	// if (DCState.getBool(thisState, DCState.DOUBLE)) {
+	// thisState = world.getBlockState(pos.below());
+	// pos = pos.below();
+	// }
+	// if (canHarvest(thisState)) {
+	// int f = 0;
+	// if (player != null && !player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
+	// f = player.getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
+	// }
+	// List<ItemStack> crops = this.getCropItems(thisState, f);
+	// boolean ret = false;
+	// for (ItemStack item : crops) {
+	// ItemEntity drop;
+	// item.setCount(2);
+	// if (player != null) {
+	// drop = new ItemEntity(world, player.getX(), player.getY() + 0.15D, player.getZ(), item);
+	// } else {
+	// drop = new ItemEntity(world, pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D, item);
+	// }
+	// if (drop != null && !world.isClientSide)
+	// world.addFreshEntity(drop);
+	// ret = true;
+	// }
+	// if (ret) {
+	// BlockState next = this.getHarvestedState(thisState);
+	// world.setBlock(pos.above(), next.setValue(DCState.DOUBLE, true), 2);
+	// world.setBlock(pos, next, 2);
+	//
+	// }
+	// return ret;
+	// }
+	// }
+	// return false;
+	// }
 
+	@Override
+	public void afterHarvest(Level world, BlockPos pos, BlockState thisState) {
+		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
+			boolean d = DCState.getBool(thisState, DCState.DOUBLE);
+			// 自然生成物は再収穫できない
+			boolean w = DCState.getBool(thisState, DCState.WILD);
+			if (!w || forceDefault()) {
+				BlockState next = this.getHarvestedState(thisState);
+				if (d) {
+					if (getTier() == CropTier.RARE) {
+						next = next.setValue(DCState.DOUBLE, true);
+					} else {
+						next = Blocks.AIR.defaultBlockState();
+					}
 				}
-				return ret;
+				world.setBlock(pos, next, 2);
+			} else {
+				world.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
 			}
 		}
-		return false;
 	}
 
 	/* model */
@@ -182,8 +202,8 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "false_0", "false_1", "false_2", "false_3", "false_4", "true_0", "true_1", "true_2", "true_3", "true_4" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("false_0", "false_1", "false_2", "false_3", "false_4", "true_0", "true_1", "true_2", "true_3", "true_4");
 	}
 
 	@Override
@@ -276,7 +296,17 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("DESERT", "SAVANNA");
+			return ImmutableList.of("SANDY", "SAVANNA");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("COLD", "WET");
 		default:
 			return Lists.newArrayList();
 		}

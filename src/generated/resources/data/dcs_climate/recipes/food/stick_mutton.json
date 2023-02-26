@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:rods/wooden"
+    },
+    {
+      "tag": "forge:ingredients/raw_mutton"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/stick_mutton_raw"
+  }
+}

@@ -1,7 +1,6 @@
 package defeatedcrow.hac.core.material.block.building;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.commons.compress.utils.Lists;
 
@@ -48,8 +47,13 @@ public class PillarStoneDC extends RotatedPillarBlock implements IBlockDC, IJson
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "var", "hol" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("hol", "var", "hol");
+	}
+
+	@Override
+	public boolean requireStateJson() {
+		return false;
 	}
 
 	@Override

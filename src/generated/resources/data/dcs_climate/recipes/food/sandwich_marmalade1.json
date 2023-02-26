@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:foods/bread"
+    },
+    {
+      "tag": "forge:ingredients/marmalade"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/sandwich_marmalade"
+  }
+}

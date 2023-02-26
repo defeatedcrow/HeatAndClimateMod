@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:rods/wooden"
+    },
+    {
+      "tag": "forge:ingredients/offal"
+    },
+    {
+      "tag": "forge:crops/spices"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/stick_offal_raw"
+  }
+}

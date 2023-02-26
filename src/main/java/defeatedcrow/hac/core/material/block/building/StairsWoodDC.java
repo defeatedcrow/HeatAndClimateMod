@@ -1,7 +1,6 @@
 package defeatedcrow.hac.core.material.block.building;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.commons.compress.utils.Lists;
 
@@ -51,8 +50,8 @@ public class StairsWoodDC extends StairBlock implements IBlockDC, IJsonDataDC {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "normal", "inner", "outer" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("normal", "inner", "outer");
 	}
 
 	@Override

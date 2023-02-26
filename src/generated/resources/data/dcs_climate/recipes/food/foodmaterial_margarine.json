@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/plant_oil"
+    },
+    {
+      "tag": "forge:dusts/salt"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/food_margarine"
+  }
+}

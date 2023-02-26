@@ -1,0 +1,29 @@
+{
+  "values": [
+    "dcs_climate:food/cropblock_brassica_wild",
+    "dcs_climate:food/cropblock_herb_epic",
+    "dcs_climate:food/cropblock_mallow_rare",
+    "dcs_climate:food/cropblock_morningglory_wild",
+    "dcs_climate:food/cropblock_morningglory_epic",
+    "dcs_climate:food/cropblock_pedaria_wild",
+    "dcs_climate:food/cropblock_solanum_wild",
+    "dcs_climate:food/cropblock_solanum_epic",
+    "dcs_climate:food/cropblock_palm_wild",
+    "dcs_climate:food/cropblock_palm_common",
+    "dcs_climate:food/cropblock_palm_rare",
+    "dcs_climate:food/leaves_camellia_oil",
+    "dcs_climate:food/leaves_camellia_schima",
+    "dcs_climate:food/leaves_cherry_wild",
+    "dcs_climate:food/leaves_cherry_plum",
+    "dcs_climate:food/leaves_cherry_peach",
+    "dcs_climate:food/leaves_citrus_pomelo",
+    "dcs_climate:food/leaves_citrus_mandarin",
+    "dcs_climate:food/leaves_citrus_lemon",
+    "dcs_climate:food/leaves_erica_heath",
+    "dcs_climate:food/leaves_erica_rhododendron",
+    "dcs_climate:food/leaves_erica_blueberry",
+    "dcs_climate:food/leaves_olive_ash",
+    "dcs_climate:food/leaves_olive_olive",
+    "dcs_climate:food/leaves_olive_osmanthus"
+  ]
+}

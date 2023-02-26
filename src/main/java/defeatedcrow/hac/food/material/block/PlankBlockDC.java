@@ -1,7 +1,6 @@
 package defeatedcrow.hac.food.material.block;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.commons.compress.utils.Lists;
 
@@ -58,8 +57,8 @@ public class PlankBlockDC extends BlockDC {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return Lists.newArrayList();
 	}
 
 	@Override

@@ -21,7 +21,6 @@ import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -49,23 +48,22 @@ public class LeavesOsmanthus extends LeavesCropBlockDC {
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_osmanthus_leaves")),
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_osmanthus_leaves")),
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_osmanthus_leaves_f")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_osmanthus_leaves_c")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_osmanthus_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_osmanthus_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_osmanthus_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_osmanthus_leaves")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_osmanthus_leaves_f")),
 			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_osmanthus_leaves_c")));
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.of(new String[] { "false", "false", "false", "false", "false_f", "false_c", "true", "true", "true", "true", "true_f", "true_c" });
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("0", "0", "0", "0", "f", "c");
+	}
+
+	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("stage6=0", "stage6=1", "stage6=2", "stage6=3", "stage6=4", "stage6=5");
 	}
 
 	@Override
 	public JsonModelSimpleDC getItemModel() {
-		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_false");
+		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_0");
 	}
 
 	/* ICropData */
@@ -87,7 +85,7 @@ public class LeavesOsmanthus extends LeavesCropBlockDC {
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		return Item.BY_BLOCK.getOrDefault(FoodInit.BLOCK_OL_OSMANTHUS.get(), Items.AIR);
+		return FoodInit.CROP_OL_OSMANTHUS.get();
 	}
 
 	@Override
@@ -136,13 +134,19 @@ public class LeavesOsmanthus extends LeavesCropBlockDC {
 
 	/* 花の収穫ができる */
 	@Override
+	public boolean canHarvest(BlockState thisState) {
+		CropStage stage = this.getCurrentStage(thisState);
+		return stage == CropStage.FLOWER || stage == CropStage.GROWN;
+	}
+
+	@Override
 	public List<ItemStack> getCropItems(BlockState state, int fortune) {
 		CropStage stage = this.getCurrentStage(state);
 		if (stage == CropStage.FLOWER) {
 			ItemStack ret = new ItemStack(FoodInit.CROP_OL_OSMANTHUS.get());
 			return ImmutableList.of(ret);
 		} else {
-			ItemStack ret = new ItemStack(getCropItem(getTier()));
+			ItemStack ret = new ItemStack(getSeedItem(getTier()));
 			return ImmutableList.of(ret);
 		}
 	}

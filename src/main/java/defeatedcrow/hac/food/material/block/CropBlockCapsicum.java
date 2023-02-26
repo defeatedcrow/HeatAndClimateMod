@@ -53,8 +53,8 @@ public class CropBlockCapsicum extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public Optional<String[]> getModelNameSuffix() {
-		return Optional.empty();
+	public List<String> getModelNameSuffix() {
+		return ImmutableList.of("0", "1", "2", "3", "4");
 	}
 
 	@Override
@@ -85,9 +85,9 @@ public class CropBlockCapsicum extends ClimateCropBaseBlock {
 		case WILD:
 			return FoodInit.BLOCK_CA_CHILI.get();
 		case COMMON:
-			return FoodInit.BLOCK_CA_PAPRIKA.get();
-		case RARE:
 			return FoodInit.BLOCK_CA_BELL.get();
+		case RARE:
+			return FoodInit.BLOCK_CA_PAPRIKA.get();
 		default:
 			return FoodInit.BLOCK_CA_CHILI.get();
 		}
@@ -99,9 +99,9 @@ public class CropBlockCapsicum extends ClimateCropBaseBlock {
 		case WILD:
 			return FoodInit.CROP_CA_CHILI.get();
 		case COMMON:
-			return FoodInit.CROP_CA_PAPRIKA.get();
-		case RARE:
 			return FoodInit.CROP_CA_BELL.get();
+		case RARE:
+			return FoodInit.CROP_CA_PAPRIKA.get();
 		default:
 			return FoodInit.CROP_CA_CHILI.get();
 		}
@@ -113,9 +113,9 @@ public class CropBlockCapsicum extends ClimateCropBaseBlock {
 		case WILD:
 			return Optional.of(FoodInit.BLOCK_CA_CHILI.get());
 		case COMMON:
-			return Optional.of(FoodInit.BLOCK_CA_PAPRIKA.get());
-		case RARE:
 			return Optional.of(FoodInit.BLOCK_CA_BELL.get());
+		case RARE:
+			return Optional.of(FoodInit.BLOCK_CA_PAPRIKA.get());
 		default:
 			return Optional.empty();
 		}
@@ -150,7 +150,17 @@ public class CropBlockCapsicum extends ClimateCropBaseBlock {
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("SAVANNA");
+			return ImmutableList.of("SAVANNA", "DRY");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("SANDY", "COLD");
 		default:
 			return Lists.newArrayList();
 		}
@@ -159,9 +169,9 @@ public class CropBlockCapsicum extends ClimateCropBaseBlock {
 	@Override
 	public String getSpeciesName(CropTier tier) {
 		if (tier == CropTier.COMMON)
-			return "paprika";
-		if (tier == CropTier.RARE)
 			return "bell";
+		if (tier == CropTier.RARE)
+			return "paprika";
 		return "chili";
 	}
 

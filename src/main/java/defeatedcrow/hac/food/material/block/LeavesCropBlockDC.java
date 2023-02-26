@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.apache.commons.compress.utils.Lists;
 
 import com.google.common.collect.ImmutableList;
@@ -17,21 +20,25 @@ import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.crop.ICropData;
+import defeatedcrow.hac.api.material.IRapidCollectables;
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.material.block.BlockDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
-import defeatedcrow.hac.core.util.DCTimeHelper;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
@@ -47,8 +54,9 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.common.IForgeShearable;
 
-public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop, IBlockDC, IJsonDataDC, ICropData {
+public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop, IBlockDC, IJsonDataDC, ICropData, IForgeShearable, IRapidCollectables {
 
 	final CropType cropType;
 	final CropTier cropTier;
@@ -151,7 +159,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 			CropStage stage = crop.getCurrentStage(state);
 			CropTier tier = crop.getTier();
 
-			float seedChance = 0.05F;
+			float seedChance = getSeedChance();
 			if (level.random.nextFloat() <= seedChance) {
 				ret.add(crop.getSeedItem(state));
 			}
@@ -162,6 +170,10 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 			}
 		}
 		return ret;
+	}
+
+	protected float getSeedChance() {
+		return 0.05F;
 	}
 
 	@Override
@@ -299,8 +311,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	}
 
 	public int getSeasonLeafStage(Level world, BlockPos pos) {
-		int day = DCTimeHelper.getDay(world);
-		EnumSeason season = DCTimeHelper.getSeasonEnum(world, pos);
+		EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 		if (cropSeasons.contains(season))
 			return 5;
 		else if (flowerSeasons.contains(season))
@@ -337,15 +348,22 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 					ret = true;
 				}
 				if (ret) {
-					BlockState next = this.getHarvestedState(thisState);
-					EnumSeason current = DCTimeHelper.getSeasonEnum(world, pos);
-					next = next.setValue(DCState.STAGE6, current.season);
-					world.setBlock(pos, next, 2);
+					afterHarvest(world, pos, thisState);
 				}
 				return ret;
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public void afterHarvest(Level world, BlockPos pos, BlockState thisState) {
+		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
+			BlockState next = this.getHarvestedState(thisState);
+			EnumSeason current = DCTimeHelper.getSeasonEnum(world);
+			next = next.setValue(DCState.STAGE6, current.season);
+			world.setBlock(pos, next, 2);
+		}
 	}
 
 	// 変異なし
@@ -358,6 +376,42 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	@Override
 	public boolean onMutation(Level level, BlockPos pos, BlockState state, RandomSource random) {
 		return false;
+	}
+
+	// IForgeShearable
+	@Override
+	public List<ItemStack> onSheared(@Nullable Player player, @Nonnull ItemStack item, Level level, BlockPos pos, int fortune) {
+		List<ItemStack> ret = Lists.newArrayList();
+		ret.add(new ItemStack(this));
+
+		// BlockState state = level.getBlockState(pos);
+		// if (canHarvest(state)) {
+		// ret.addAll(this.getCropItems(level.getBlockState(pos), fortune));
+		// }
+
+		return ret;
+	}
+
+	/* IRapidCollectables */
+
+	@Override
+	public TagKey<Item> collectableToolTag() {
+		return TagDC.ItemTag.SCYTHES;
+	}
+
+	@Override
+	public List<ItemStack> getDropList(Level level, BlockPos pos, BlockState state, ItemStack tool) {
+		ImmutableList.Builder<ItemStack> ret = ImmutableList.builder();
+		if (this.canHarvest(state)) {
+			int f = tool.isEmpty() ? 0 : tool.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
+			ret.addAll(this.getCropItems(state, f));
+		}
+		return ret.build();
+	}
+
+	@Override
+	public boolean doCollect(Level level, BlockPos pos, BlockState state, @Nullable Player player, ItemStack tool) {
+		return this.onHarvest(level, pos, state, player);
 	}
 
 }
