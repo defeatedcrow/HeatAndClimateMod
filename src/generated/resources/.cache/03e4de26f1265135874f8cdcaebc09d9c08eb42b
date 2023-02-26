@@ -1,4 +1,4 @@
-// 1.19.2	2023-02-26T17:34:18.735026	Tags for minecraft:item
+// 1.19.2	2023-02-27T01:51:13.9038488	Tags for minecraft:item
 8b47694b290b7b0cab7b257ddb05a4e9ce9fbb2e data/dcs_climate/tags/items/dummy.json
 7d6fd01964c88a56cda99333872579b37ef749b0 data/forge/tags/items/animal_feeds/compound.json
 0332ee57f7973ff3aa0e5f810558555ce7563caf data/forge/tags/items/animal_feeds/hay.json
@@ -38,7 +38,7 @@ d8d79c94a37c8e36100eb35394b5fb521279a684 data/forge/tags/items/crops/coconut.jso
 477d9c284e3b1979cc81287e7eb4934f4cda64c2 data/forge/tags/items/crops/corn.json
 4eaf55ffcb26e96a32b21588f1a2ee7f22379106 data/forge/tags/items/crops/cotton.json
 10ae5ae35700f7e33555cf7ce535a0d568c7bcde data/forge/tags/items/crops/date.json
-bb4777266528ccfb6c21d7d74406da271fe4f684 data/forge/tags/items/crops/devilsclaw.json
+b137d9ad33d4824ec03feebc84a9fa11b213c7e8 data/forge/tags/items/crops/devilsclaw.json
 8b3e26e4e9fad7f8b804395dd4eb85e0ca6b79d4 data/forge/tags/items/crops/edible_raw_vegetables.json
 7e52b49ce47674b250c5ffa90591cbd3e9e8134a data/forge/tags/items/crops/egg_plant.json
 76ae546ea96cfe7cee89c996ec0d424d7c9443f1 data/forge/tags/items/crops/fennel.json
@@ -87,11 +87,11 @@ be8aa9931e929040c6e5e7c2c7e8f7ef39dc5e4d data/forge/tags/items/crops/rapeseed.js
 4199936a812d33699aca9d5d5f0a0cb742ab6b64 data/forge/tags/items/crops/reed.json
 3e54ffa1d0f73ccd304e7727983f39d4e2e6a239 data/forge/tags/items/crops/rhododendron.json
 29963a8e029814e00fb6dd821b7dbbbe66ed4523 data/forge/tags/items/crops/rice.json
-d99f1e337d1d9e51b3eac83272ff6b2bd7591e33 data/forge/tags/items/crops/rogeria.json
+4a34c76de767042774b67e8d0421969f5bd454a4 data/forge/tags/items/crops/rogeria.json
 88c88fbc620dde1bd3dadf0ed05bbe99c5adeb93 data/forge/tags/items/crops/rubber.json
 0f1049e2260de7ec2af2f9a58c12c6c919b0caae data/forge/tags/items/crops/rye.json
 9d18f803337c31638a8abaff93006328d4dd6ce5 data/forge/tags/items/crops/schima.json
-a0117fb275ebc4a71650eabd5938b255b63facde data/forge/tags/items/crops/sesami.json
+f240f49a81ad4991f636902d8d323e2367576a38 data/forge/tags/items/crops/sesami.json
 66e691b369755604c894554522c98fef1f36925a data/forge/tags/items/crops/sorghum.json
 92c78bafc54662aaec4b87dbd4f72238d747ec2e data/forge/tags/items/crops/sorrel.json
 7c57c01f7669a112241d55c81075be2b3d654e5f data/forge/tags/items/crops/soy.json
@@ -348,7 +348,7 @@ bbc8cf461697a36226285a3f3a1454c1135ceec3 data/forge/tags/items/seeds/cardamom.js
 378c5fd2d07e5e085fdd77e999404d5cf41f20df data/forge/tags/items/seeds/chives.json
 d1a3b601745a44977672845a901bcc434a118be5 data/forge/tags/items/seeds/corn.json
 87c51677dd0234e1ba0f1518472a6f4c7e00e705 data/forge/tags/items/seeds/cotton.json
-4a78f2ad0dc1c40a3ed0f965514b70f814ab3e33 data/forge/tags/items/seeds/devilsclaw.json
+8db4a3bedb80f814ac14b1ec5015b5a71d4ef296 data/forge/tags/items/seeds/devilsclaw.json
 09fc0fdddc56a9a053e2bff807b773c8591b8c0e data/forge/tags/items/seeds/egg_plant.json
 b623e86372789be9424b6cba0fb61e60397d45b0 data/forge/tags/items/seeds/fennel.json
 4c862488f3ccd944342f691c75acf91f759f25b7 data/forge/tags/items/seeds/garbanzo.json
@@ -374,9 +374,9 @@ ac8ac5153e2717da37c91ff894acfaf4ae1c3e86 data/forge/tags/items/seeds/perilla.jso
 8401f19d840824c9fecd6ee81f68ce13693c3f67 data/forge/tags/items/seeds/rapeseed.json
 2a2d61e9c7df88abfa2c4d9717fa74ea6e50a209 data/forge/tags/items/seeds/reed.json
 7609b7b2b1b841db6b33dd37d575ced3b84a9bc3 data/forge/tags/items/seeds/rice.json
-013e89fe3898c40d66111d8844660423d7dcb731 data/forge/tags/items/seeds/rogeria.json
+bc36f7adbfc785e4ed8d4a1653b0032ad3d1a99c data/forge/tags/items/seeds/rogeria.json
 e36bb6cc8c566c90f404f6bcec5d4b26cde11f67 data/forge/tags/items/seeds/rye.json
-094e2f576ed1022679c8704c83ac8563c37e807f data/forge/tags/items/seeds/sesami.json
+608014315c32bf8b8017322cd1afe6b759ef0d7d data/forge/tags/items/seeds/sesami.json
 f5cc7ca2a38eef579362bb1389f81a709c2ae37e data/forge/tags/items/seeds/sorghum.json
 32a589ddb676ac76d9365fe908a3266e8dd0855c data/forge/tags/items/seeds/sorrel.json
 e5cd39357fc0a26bae834ef2f6c808745e542a6f data/forge/tags/items/seeds/soy.json

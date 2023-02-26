@@ -1,6 +1,0 @@
-{
-  "textures": {
-    "cross": "dcs_climate:block/crop/pedaria_sesami_f"
-  },
-  "parent": "dcs_climate:block/dcs_cross"
-}

@@ -1,6 +1,0 @@
-{
-  "textures": {
-    "layer0": "dcs_climate:item/crop/seed_pedaria_devilsclaw"
-  },
-  "parent": "minecraft:item/generated"
-}

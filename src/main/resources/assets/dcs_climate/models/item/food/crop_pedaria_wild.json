@@ -1,6 +1,0 @@
-{
-  "textures": {
-    "layer0": "dcs_climate:item/crop/crop_pedaria_rogeria"
-  },
-  "parent": "minecraft:item/generated"
-}

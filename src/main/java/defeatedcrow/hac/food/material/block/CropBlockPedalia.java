@@ -23,9 +23,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 
-public class CropBlockCereals extends ClimateCropBaseBlock {
+public class CropBlockPedalia extends ClimateCropBaseBlock {
 
-	public CropBlockCereals(CropTier t) {
+	public CropBlockPedalia(CropTier t) {
 		super(t);
 		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
@@ -39,17 +39,17 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 
 	@Override
 	public String getRegistryName() {
-		return "food/cropblock_cereals_" + cropTier.toString();
+		return "food/cropblock_pedalia_" + cropTier.toString();
 	}
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_0")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_1")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_2")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_" + getSpeciesName(cropTier) + "_f")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_" + getSpeciesName(cropTier) + "_c")));
+			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_0")),
+			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_1")),
+			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_2")),
+			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_f")),
+			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_c")));
 	}
 
 	@Override
@@ -59,14 +59,21 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 
 	@Override
 	public JsonModelDC getItemModel() {
-		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_cereals_" + getSpeciesName(cropTier)));
+		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_pedalia_" + getSpeciesName(cropTier)));
+	}
+
+	/* IClimateCrop */
+
+	@Override
+	public BlockState getFeatureState() {
+		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2)).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
 
 	@Override
 	public CropType getFamily() {
-		return CropType.CEREALS;
+		return CropType.PEDALIA;
 	}
 
 	@Override
@@ -78,11 +85,11 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 	public ItemLike getSeedItem(CropTier t) {
 		switch (t) {
 		case COMMON:
-			return FoodInit.BLOCK_CR_RYE.get();
+			return FoodInit.BLOCK_PD_SESAMI.get();
 		case RARE:
-			return FoodInit.BLOCK_CR_BARLEY.get();
+			return FoodInit.BLOCK_PD_DEVILSCLAW.get();
 		default:
-			return FoodInit.BLOCK_CR_OAT.get();
+			return FoodInit.BLOCK_PD_ROGERIA.get();
 		}
 	}
 
@@ -90,11 +97,11 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 	public Item getCropItem(CropTier t) {
 		switch (t) {
 		case COMMON:
-			return FoodInit.CROP_CR_RYE.get();
+			return FoodInit.CROP_PD_SESAMI.get();
 		case RARE:
-			return FoodInit.CROP_CR_BARLEY.get();
+			return FoodInit.CROP_PD_DEVILSCLAW.get();
 		default:
-			return FoodInit.CROP_CR_OAT.get();
+			return FoodInit.CROP_PD_ROGERIA.get();
 		}
 	}
 
@@ -102,11 +109,11 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 	public Optional<Block> getMutationTarget(CropTier t) {
 		switch (t) {
 		case WILD:
-			return Optional.of(FoodInit.BLOCK_CR_OAT.get());
+			return Optional.of(FoodInit.BLOCK_PD_ROGERIA.get());
 		case COMMON:
-			return Optional.of(FoodInit.BLOCK_CR_RYE.get());
+			return Optional.of(FoodInit.BLOCK_PD_SESAMI.get());
 		case RARE:
-			return Optional.of(FoodInit.BLOCK_CR_BARLEY.get());
+			return Optional.of(FoodInit.BLOCK_PD_DEVILSCLAW.get());
 		default:
 			return Optional.empty();
 		}
@@ -114,27 +121,17 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
-		default:
-			return ImmutableList.of(SoilType.FARMLAND);
-		}
+		return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.SAND);
 	}
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
-		if (t == CropTier.WILD) {
-			return ImmutableList.of(DCHeatTier.FROSTBITE, DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
-		} else if (t == CropTier.WILD) {
-			return ImmutableList.of(DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
-		}
-		return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
+		return ImmutableList.of(DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL, DCHeatTier.OVEN);
 	}
 
 	@Override
 	public List<DCHumidity> getSuitableHum(CropTier t) {
-		return ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET);
+		return ImmutableList.of(DCHumidity.DRY, DCHumidity.NORMAL, DCHumidity.WET);
 	}
 
 	@Override
@@ -146,7 +143,7 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("COLD", "CONIFEROUS");
+			return ImmutableList.of("DESERT", "SAVANNA");
 		default:
 			return Lists.newArrayList();
 		}
@@ -156,7 +153,7 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("OCEAN");
+			return ImmutableList.of("COLD");
 		default:
 			return Lists.newArrayList();
 		}
@@ -165,10 +162,10 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 	@Override
 	public String getSpeciesName(CropTier tier) {
 		if (tier == CropTier.COMMON)
-			return "rye";
+			return "sesami";
 		if (tier == CropTier.RARE)
-			return "barley";
-		return "oat";
+			return "devilsclaw";
+		return "rogeria";
 	}
 
 }

@@ -28,7 +28,7 @@ public enum CropType {
 	OLIVE, // モクセイ
 	PALM, // ヤシ
 	PEAS, // マメ
-	PEDARIA, // ゴマ
+	PEDALIA, // ゴマ
 	REED, // アシ
 	RICE, // イネ
 	SOLANUM, // ナス

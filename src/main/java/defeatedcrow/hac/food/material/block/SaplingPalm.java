@@ -98,8 +98,8 @@ public class SaplingPalm extends SaplingBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("OCEAN", "BEACH", "JUNGLE");
-		case COMMON:
-			return ImmutableList.of("DESERT", "SAVANNA");
+		// case COMMON:
+		// return ImmutableList.of("DESERT", "SAVANNA");
 		default:
 			return Lists.newArrayList();
 		}
@@ -110,8 +110,8 @@ public class SaplingPalm extends SaplingBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("COLD");
-		case COMMON:
-			return ImmutableList.of("COLD");
+		// case COMMON:
+		// return ImmutableList.of("COLD");
 		default:
 			return Lists.newArrayList();
 		}

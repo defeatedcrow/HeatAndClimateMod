@@ -151,8 +151,8 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("SWAMP", "RIVER");
-		case COMMON:
-			return ImmutableList.of("RIVER", "BEACH");
+		// case COMMON:
+		// return ImmutableList.of("RIVER", "BEACH");
 		default:
 			return Lists.newArrayList();
 		}

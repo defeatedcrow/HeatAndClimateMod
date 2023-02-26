@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_crop_sesami": {
+    "has_seeding_pot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:food/crop_pedalia_common"
+              "dcs_climate:main/seeding_pot"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:food/mortar_crop_sesami"
+        "recipe": "dcs_climate:food/seeding/seeding_pedalia_rare"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_crop_sesami",
+      "has_seeding_pot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:food/mortar_crop_sesami"
+      "dcs_climate:food/seeding/seeding_pedalia_rare"
     ]
   }
 }

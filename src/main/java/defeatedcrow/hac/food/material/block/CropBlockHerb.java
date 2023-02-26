@@ -155,8 +155,8 @@ public class CropBlockHerb extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("FOREST", "COLD");
-		case COMMON:
-			return ImmutableList.of("JUNGLE");
+		// case COMMON:
+		// return ImmutableList.of("JUNGLE");
 		default:
 			return Lists.newArrayList();
 		}
@@ -167,8 +167,8 @@ public class CropBlockHerb extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("CONIFEROUS", "HOT");
-		case COMMON:
-			return ImmutableList.of("COLD");
+		// case COMMON:
+		// return ImmutableList.of("COLD");
 		default:
 			return Lists.newArrayList();
 		}
