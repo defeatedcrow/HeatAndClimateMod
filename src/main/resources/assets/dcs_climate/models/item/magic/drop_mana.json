@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/magic/drop_mana"
+  },
+  "parent": "minecraft:item/generated"
+}

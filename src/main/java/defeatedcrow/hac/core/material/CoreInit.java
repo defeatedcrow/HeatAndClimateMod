@@ -9,12 +9,16 @@ import defeatedcrow.hac.core.material.block.LayerStoneBlock;
 import defeatedcrow.hac.core.material.block.MetalBlockDC;
 import defeatedcrow.hac.core.material.block.OreBlockGemDC;
 import defeatedcrow.hac.core.material.effects.MobEffectDC;
+import defeatedcrow.hac.core.material.entity.proj.ThrownHarpoon;
 import defeatedcrow.hac.core.material.item.ItemGemDC;
 import defeatedcrow.hac.core.material.item.MaterialItemDC;
 import defeatedcrow.hac.core.material.item.MetalItemDC;
+import defeatedcrow.hac.core.material.item.NoTabItemDC;
 import defeatedcrow.hac.core.material.item.NullItemDC;
 import defeatedcrow.hac.core.material.item.tool.AgateMortarItem;
+import defeatedcrow.hac.core.material.item.tool.GemSieveItem;
 import defeatedcrow.hac.core.material.item.tool.HandSpindleItem;
+import defeatedcrow.hac.core.material.item.tool.HarpoonItem;
 import defeatedcrow.hac.core.material.item.tool.ItemScythe;
 import defeatedcrow.hac.core.material.item.tool.SeedingPotItem;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate;
@@ -23,11 +27,13 @@ import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Machine;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.TierDC;
 import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -57,6 +63,7 @@ public class CoreInit {
 	public static void init() {
 		FoodInit.init();
 		BuildInit.init();
+		MagicInit.init();
 	}
 
 	// item
@@ -149,13 +156,19 @@ public class CoreInit {
 	public static final RegistryObject<Item> DUST_WOOD = regItem("dust_wood", () -> new MaterialItemDC("dust_wood", TagDC.ItemTag.DUST_WOOD));
 	public static final RegistryObject<Item> DUST_PLANT = regItem("dust_plant", () -> new MaterialItemDC("dust_plant", TagDC.ItemTag.DUST_PLANT));
 
-	public static final RegistryObject<Item> NULL_ITEM = regItem("null_item", () -> new NullItemDC("null_item"));
-
 	public static final RegistryObject<Item> MORTAR = regItem("agate_mortar", () -> new AgateMortarItem("agate_mortar"));
+	public static final RegistryObject<Item> SIEVE = regItem("sieve", () -> new GemSieveItem("sieve"));
 	public static final RegistryObject<Item> HAND_SPINDLE = regItem("hand_spindle", () -> new HandSpindleItem("hand_spindle"));
 	public static final RegistryObject<Item> SEEDING_POT = regItem("seeding_pot", () -> new SeedingPotItem("seeding_pot"));
 
 	public static final RegistryObject<Item> SCYTHE_BRASS = regItem("scythe_brass", () -> new ItemScythe(TierDC.BRASS, TagDC.ItemTag.SCYTHES));
+
+	public static final RegistryObject<Item> HARPOON_FLINT = regItem("harpoon_flint", () -> new HarpoonItem("flint", TierDC.BAMBOO, TagDC.ItemTag.HARPOON));
+	public static final RegistryObject<Item> HARPOON_STEEL = regItem("harpoon_steel", () -> new HarpoonItem("steel", TierDC.STEEL, TagDC.ItemTag.HARPOON));
+
+	public static final RegistryObject<Item> NULL_ITEM = regItem("null_item", () -> new NullItemDC("null_item"));
+	public static final RegistryObject<Item> ICON_HAC = regItem("icon_hac", () -> new NoTabItemDC("icon_hac"));
+	public static final RegistryObject<Item> ICON_BURN = regItem("icon_burning", () -> new NoTabItemDC("icon_burning"));
 
 	// block
 	public static final RegistryObject<Block> STONE_MUD = regBlock("stone_mud", () -> new LayerStoneBlock("stone_mud"), null);
@@ -243,6 +256,9 @@ public class CoreInit {
 	public static final RegistryObject<Block> METALBLOCK_COBALT = regBlock("metalblock_cobalt", () -> new MetalBlockDC("metalblock_cobalt"), TagDC.ItemTag.METALBLOCK_COBALT);
 	public static final RegistryObject<Block> METALBLOCK_HASTELLOY = regBlock("metalblock_hastelloy", () -> new MetalBlockDC("metalblock_hastelloy"), TagDC.ItemTag.METALBLOCK_HASTELLOY);
 	public static final RegistryObject<Block> METALBLOCK_BSCCO = regBlock("metalblock_bscco", () -> new MetalBlockDC("metalblock_bscco"), TagDC.ItemTag.METALBLOCK_BSCCO);
+
+	public static final RegistryObject<EntityType<ThrownHarpoon>> HARPOON = ENTITIES.register("harpoon", () -> EntityType.Builder.<ThrownHarpoon>of(ThrownHarpoon::new, MobCategory.MISC)
+		.sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("harpoon"));
 
 	public static final RegistryObject<MobEffect> COLD_RESISTANCE = regPotionEffect("effect_cold_resistance", () -> new MobEffectDC("effect_cold_resistance", MobEffectCategory.BENEFICIAL, 0x0050FF).setIconIndex(1, 1));
 	public static final RegistryObject<Potion> COLD_RES_POTION = regPotion("cold_resistance", () -> new Potion("cold_resistance", new MobEffectInstance(COLD_RESISTANCE.get(), 3600)));

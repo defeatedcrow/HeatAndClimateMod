@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/crop/seed_aster_flower"
+  },
+  "parent": "minecraft:item/generated"
+}

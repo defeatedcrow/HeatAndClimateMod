@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "has_drops": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "dcs_climate:color_extracts"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "dcs_climate:textures/gui/advancement/magic.png",
+    "description": {
+      "translate": "advancements.dcs_climate.magic.root.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:magic/extract_u"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.magic.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_drops"
+    ]
+  ]
+}

@@ -1,5 +1,7 @@
 {
   "values": [
+    "#forge:crops/pyrethrum",
+    "#forge:crops/chrysanthemum",
     "#forge:crops/lavender",
     "#forge:crops/bindweed",
     "#forge:crops/morning_glory",

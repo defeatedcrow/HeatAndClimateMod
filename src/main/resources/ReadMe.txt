@@ -269,7 +269,36 @@
     In the future, we plan to implement seasoning to enhance the flavor.
 
 
+◎ 色の魔法 / Color Magic
+
+　　　宝石や作物から『色の魔法の素』を取り出し、魔法のアイテムの素材に使用します。
+　　Color extracts are extracted from crops and gems, and used as a material for magic items.
+
+　● 魔法の矢 / Magical Arrow
+
+　　バニラの弓やクロスボウで撃てる魔法の矢です。
+　　They are magic arrows that can be shot with vanilla bows and crossbows.
+
+
 #### 更新履歴 / Change log ####
+
+○ v4-alpha2 (2023.3.12)
+ add: 魔法の素材
+ add: 魔法の矢
+ add: キク科の作物
+ add: 玉髄のランプ
+ add: 石英ガラス
+ add: 銛
+ add: 宝石ふるい(クラフトツール)
+ add: 実績の一部を先行で追加
+ change: 風味による食べ物の食事速度により大きな差をつけた
+ change: 肥料の入手手段を増やした
+ change: 乳鉢と宝石ふるいのレシピを色々増やした
+ change: Tagのいろいろな入れ替え
+ fix: en_us言語ファイルを入れ忘れた
+ fix: スイカのサラダのテクスチャ
+ fix: 樹木の生成の形を少し直した
+ fix: 一部作物のJEI図鑑情報が欠けていた
 
 ○ v4-alpha1 (2023.2.26)
  - 初回公開

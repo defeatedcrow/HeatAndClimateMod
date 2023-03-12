@@ -3,13 +3,14 @@
   "group": "crusher_mortar",
   "ingredients": [
     {
-      "tag": "forge:ores/niter"
+      "tag": "forge:gems/niter"
     },
     {
       "item": "dcs_climate:main/agate_mortar"
     }
   ],
   "result": {
-    "item": "dcs_climate:main/gem_niter"
+    "count": 2,
+    "item": "dcs_climate:main/dust_niter"
   }
 }

@@ -1,0 +1,35 @@
+{
+  "parent": "dcs_climate:main/table",
+  "criteria": {
+    "has_wild_crop": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "dcs_climate:crops/plant_wild"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.wild_crops.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:food/crop_allium_wild"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.wild_crops.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_wild_crop"
+    ]
+  ]
+}

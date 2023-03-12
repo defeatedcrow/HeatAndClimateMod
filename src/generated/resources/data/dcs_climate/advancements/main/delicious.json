@@ -1,0 +1,35 @@
+{
+  "parent": "dcs_climate:main/bread_bake",
+  "criteria": {
+    "has_good_taste_food": {
+      "conditions": {
+        "items": [
+          {
+            "nbt": "{dcs.taste:2}"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.delicious.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:food/plate_big_garlic_cooked"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.delicious.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_good_taste_food"
+    ]
+  ]
+}

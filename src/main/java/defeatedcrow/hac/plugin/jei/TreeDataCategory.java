@@ -180,7 +180,7 @@ public class TreeDataCategory implements IRecipeCategory<LeavesCropBlockDC> {
 		Minecraft minecraft = Minecraft.getInstance();
 		Font font = minecraft.font;
 
-		MutableComponent name = recipe.getName();
+		Component name = recipe.getSeedItem(recipe.defaultBlockState()).getHoverName();
 		font.draw(stack, name, 65, 9, 0xFF000000);
 
 		MutableComponent com = type.localize();

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/citrus"
+    },
+    {
+      "item": "minecraft:oxidized_copper"
+    }
+  ],
+  "result": {
+    "item": "minecraft:copper_block"
+  }
+}

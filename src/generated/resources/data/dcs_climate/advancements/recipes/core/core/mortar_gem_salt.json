@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_salt_ore": {
+    "has_gem_salt": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:ores/salt"
+            "tag": "forge:gems/salt"
           }
         ]
       },
@@ -20,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_salt_ore",
+      "has_gem_salt",
       "has_the_recipe"
     ]
   ],

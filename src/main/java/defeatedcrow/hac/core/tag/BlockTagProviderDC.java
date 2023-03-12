@@ -14,7 +14,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -59,6 +58,11 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.ORES_RED_DEEP).add(CoreInit.ORE_RED_DEEP.get());
 		tag(TagDC.BlockTag.ORES_GREEN_DEEP).add(CoreInit.ORE_GREEN_DEEP.get());
 
+		tag(TagDC.BlockTag.ORES_COLOR).addTags(TagDC.BlockTag.ORES_WHITE, TagDC.BlockTag.ORES_BLUE,
+			TagDC.BlockTag.ORES_BLACK, TagDC.BlockTag.ORES_RED, TagDC.BlockTag.ORES_GREEN,
+			TagDC.BlockTag.ORES_WHITE_DEEP, TagDC.BlockTag.ORES_BLUE_DEEP,
+			TagDC.BlockTag.ORES_BLACK_DEEP, TagDC.BlockTag.ORES_RED_DEEP, TagDC.BlockTag.ORES_GREEN_DEEP);
+
 		tag(TagDC.BlockTag.ORES_CHALCEDONY).add(CoreInit.ORE_CHALCEDONY.get());
 		tag(TagDC.BlockTag.ORES_HELIODOR).add(CoreInit.ORE_HELIODOR.get());
 		tag(TagDC.BlockTag.ORES_TOPAZ).add(CoreInit.ORE_TOPAZ.get());
@@ -82,16 +86,6 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.ORES_GYPSUM).add(CoreInit.STONE_GYPSUM.get());
 		tag(TagDC.BlockTag.ORES_TRAVERTINE).add(CoreInit.STONE_TRAVERTINE.get());
 		tag(TagDC.BlockTag.ORES_LIME).add(CoreInit.STONE_MARBLE.get(), Blocks.CALCITE);
-
-		tag(Tags.Blocks.ORES).addTags(TagDC.BlockTag.ORES_WHITE, TagDC.BlockTag.ORES_BLUE,
-			TagDC.BlockTag.ORES_BLACK, TagDC.BlockTag.ORES_RED, TagDC.BlockTag.ORES_GREEN,
-			TagDC.BlockTag.ORES_WHITE_DEEP, TagDC.BlockTag.ORES_BLUE_DEEP,
-			TagDC.BlockTag.ORES_BLACK_DEEP, TagDC.BlockTag.ORES_RED_DEEP, TagDC.BlockTag.ORES_GREEN_DEEP,
-			TagDC.BlockTag.ORES_CHALCEDONY, TagDC.BlockTag.ORES_HELIODOR, TagDC.BlockTag.ORES_TOPAZ,
-			TagDC.BlockTag.ORES_FLUORITE, TagDC.BlockTag.ORES_LARIMAR, TagDC.BlockTag.ORES_AQUAMARINE,
-			TagDC.BlockTag.ORES_JET, TagDC.BlockTag.ORES_IOLITE, TagDC.BlockTag.ORES_OPAL,
-			TagDC.BlockTag.ORES_DESERTROSE, TagDC.BlockTag.ORES_ROSINCA, TagDC.BlockTag.ORES_SPINEL,
-			TagDC.BlockTag.ORES_SERPENTINE, TagDC.BlockTag.ORES_AMAZONITE, TagDC.BlockTag.ORES_JADEITE);
 
 		tag(TagDC.BlockTag.DUSTBLOCK_BRASS).add(CoreInit.DUSTBLOCK_BRASS.get());
 		tag(TagDC.BlockTag.DUSTBLOCK_BRONZE).add(CoreInit.DUSTBLOCK_BRONZE.get());

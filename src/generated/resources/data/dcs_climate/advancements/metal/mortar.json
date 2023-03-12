@@ -1,0 +1,79 @@
+{
+  "parent": "dcs_climate:metal/metal_root",
+  "criteria": {
+    "has_dust_copper": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dusts/copper"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_dust_iron": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dusts/iron"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_dust_magnetite": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dusts/magnetite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_dust_tin": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dusts/tin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_dust_zinc": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dusts/zinc"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.metal.mortar.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:main/agate_mortar"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.metal.mortar.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_dust_copper",
+      "has_dust_zinc",
+      "has_dust_magnetite",
+      "has_dust_tin",
+      "has_dust_iron"
+    ]
+  ]
+}

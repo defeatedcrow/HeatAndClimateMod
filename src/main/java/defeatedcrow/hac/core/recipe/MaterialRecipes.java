@@ -97,8 +97,9 @@ public class MaterialRecipes {
 	public static final Gem SERPENTINE = new Gem("serpentine", Rarity.COMMON, MagicColor.GREEN, () -> CoreInit.ORE_SERPENTINE.get(), () -> CoreInit.GEM_SERPENTINE.get());
 	public static final Gem AMAZONITE = new Gem("amazonite", Rarity.UNCOMMON, MagicColor.GREEN, () -> CoreInit.ORE_AMAZONITE.get(), () -> CoreInit.GEM_AMAZONITE.get());
 	public static final Gem JADEITE = new Gem("jadeite", Rarity.RARE, MagicColor.GREEN, () -> CoreInit.ORE_JADEITE.get(), () -> CoreInit.GEM_JADEITE.get());
+	public static final Gem DRAGONSEYE = new Gem("dragonseye", Rarity.RARE, MagicColor.BLACK, () -> CoreInit.ORE_DRAGONSEYE.get(), () -> CoreInit.GEM_DRAGONSEYE.get());
 
-	public static final Gem[] GEM_VARIANT = { CHALCEDONY, HELIODOR, TOPAZ, FLUORITE, LARIMAR, AQUAMARINE, JET, IOLITE, OPAL, DESERT_ROSE, ROSINCA, SPINEL, SERPENTINE, AMAZONITE, JADEITE };
+	public static final Gem[] GEM_VARIANT = { CHALCEDONY, HELIODOR, TOPAZ, FLUORITE, LARIMAR, AQUAMARINE, JET, IOLITE, OPAL, DESERT_ROSE, ROSINCA, SPINEL, SERPENTINE, AMAZONITE, JADEITE, DRAGONSEYE };
 
 	public static final Stone MUD = new Stone("mud", () -> CoreInit.STONE_MUD.get(), () -> BuildInit.BRICKS_MUD.get(), () -> BuildInit.PILLAR_MUD.get(), () -> BuildInit.CHISELED_MUD
 		.get(), () -> BuildInit.STAIRS_MUD.get(), () -> BuildInit.SLAB_MUD.get(), () -> BuildInit.WALL_MUD.get());

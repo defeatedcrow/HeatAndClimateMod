@@ -4,8 +4,11 @@ import java.util.function.Supplier;
 
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.block.LayerStoneBlock;
+import defeatedcrow.hac.core.material.block.building.ConnectedGlassBlock;
 import defeatedcrow.hac.core.material.block.building.FenceWoodDC;
 import defeatedcrow.hac.core.material.block.building.PillarStoneDC;
+import defeatedcrow.hac.core.material.block.building.SidedLightDC;
+import defeatedcrow.hac.core.material.block.building.SimpleLightDC;
 import defeatedcrow.hac.core.material.block.building.SlabStoneDC;
 import defeatedcrow.hac.core.material.block.building.SlabWoodDC;
 import defeatedcrow.hac.core.material.block.building.StairsStoneDC;
@@ -18,6 +21,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.RegistryObject;
 
 public class BuildInit {
@@ -103,6 +107,19 @@ public class BuildInit {
 	public static final RegistryObject<Block> MOSAIC_BLUE = regBlock("mosaic_blue", () -> new LayerStoneBlock("mosaic_blue").setDomain("build").setTexDir("build"), null);
 	public static final RegistryObject<Block> MOSAIC_YELLOW = regBlock("mosaic_yellow", () -> new LayerStoneBlock("mosaic_yellow").setDomain("build").setTexDir("build"), null);
 	public static final RegistryObject<Block> MOSAIC_RED = regBlock("mosaic_red", () -> new LayerStoneBlock("mosaic_red").setDomain("build").setTexDir("build"), null);
+
+	public static final RegistryObject<Block> GLASS_CRYSTAL = regBlock("glass_crystal", () -> new ConnectedGlassBlock("crystal", 0), Tags.Items.GLASS);
+	public static final RegistryObject<Block> GLASS_LIGHT = regBlock("glass_light", () -> new ConnectedGlassBlock("crystal", 15), null);
+	public static final RegistryObject<Block> GLASS_DARK = regBlock("glass_dark", () -> new ConnectedGlassBlock("crystal"), null);
+
+	public static final RegistryObject<Block> CHAL_LAMP = regBlock("chal_lamp", () -> new SimpleLightDC("chal_lamp"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_GLASS = regBlock("chal_lamp_glass", () -> new SimpleLightDC("chal_lamp_glass"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_TABLE = regBlock("chal_lamp_table", () -> new SidedLightDC("chal_lamp_table"), null);
+
+	public static final RegistryObject<Block> CHAL_LAMP_FLUORITE = regBlock("chal_lamp_fluorite", () -> new SidedLightDC("chal_lamp_fluorite"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_JET = regBlock("chal_lamp_jet", () -> new SidedLightDC("chal_lamp_jet"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_DESERTROSE = regBlock("chal_lamp_desertrose", () -> new SidedLightDC("chal_lamp_desertrose"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_SERPENTINE = regBlock("chal_lamp_serpentine", () -> new SidedLightDC("chal_lamp_serpentine"), null);
 
 	public static final RegistryObject<Block> STAIRS_BEECH = regBlock("stairs_beech_common", () -> new StairsWoodDC("beech_common", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_BH_COMMON),
 		ItemTags.WOODEN_STAIRS);

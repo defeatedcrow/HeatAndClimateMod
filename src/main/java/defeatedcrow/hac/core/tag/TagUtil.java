@@ -20,6 +20,13 @@ public class TagUtil {
 		return false;
 	}
 
+	public static boolean isMatch(String domain, String name, TagKey<?> tag) {
+		if (tag != null && tag.location() != null) {
+			return tag.location().toString().toLowerCase().contains(domain) && tag.location().toString().toLowerCase().contains(name);
+		}
+		return false;
+	}
+
 	public static boolean isMatch(ResourceLocation dic, TagKey<?> tag) {
 		if (tag != null && tag.location() != null) {
 			return isMatch(dic.getNamespace(), tag) && isMatch(dic.getPath(), tag);

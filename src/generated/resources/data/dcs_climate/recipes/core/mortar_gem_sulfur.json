@@ -3,13 +3,14 @@
   "group": "crusher_mortar",
   "ingredients": [
     {
-      "tag": "forge:ores/sulfur"
+      "tag": "forge:gems/sulfur"
     },
     {
       "item": "dcs_climate:main/agate_mortar"
     }
   ],
   "result": {
-    "item": "dcs_climate:main/gem_sulfur"
+    "count": 2,
+    "item": "dcs_climate:main/dust_sulfur"
   }
 }

@@ -1,0 +1,28 @@
+{
+  "parent": "dcs_climate:main/table",
+  "criteria": {
+    "impossible": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.damage.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:main/icon_burning"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.damage.title"
+    }
+  },
+  "requirements": [
+    [
+      "impossible"
+    ]
+  ]
+}

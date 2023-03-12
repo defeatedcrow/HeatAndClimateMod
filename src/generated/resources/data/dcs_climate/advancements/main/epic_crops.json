@@ -1,0 +1,97 @@
+{
+  "parent": "dcs_climate:main/tree_crops",
+  "criteria": {
+    "has_epic_crop1": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_brassica_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_epic_crop2": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/cropblock_herb_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_epic_crop3": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_morningglory_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_epic_crop4": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_peas_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_epic_crop5": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_solanum_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.epic_crops.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:food/crop_brassica_epic"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.epic_crops.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_epic_crop1"
+    ],
+    [
+      "has_epic_crop2"
+    ],
+    [
+      "has_epic_crop3"
+    ],
+    [
+      "has_epic_crop4"
+    ],
+    [
+      "has_epic_crop5"
+    ]
+  ]
+}

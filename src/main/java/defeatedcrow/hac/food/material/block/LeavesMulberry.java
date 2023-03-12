@@ -121,7 +121,12 @@ public class LeavesMulberry extends LeavesCropBlockDC {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		return Lists.newArrayList();
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("JUNGLE", "SWAMP");
+		default:
+			return Lists.newArrayList();
+		}
 	}
 
 	@Override

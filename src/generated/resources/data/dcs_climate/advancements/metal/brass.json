@@ -1,0 +1,35 @@
+{
+  "parent": "dcs_climate:metal/mortar",
+  "criteria": {
+    "has_brass": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:storage_blocks/brass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.metal.brass.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:main/metalblock_brass"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.metal.brass.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_brass"
+    ]
+  ]
+}

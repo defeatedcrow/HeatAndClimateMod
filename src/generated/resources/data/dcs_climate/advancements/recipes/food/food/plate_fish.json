@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:ingredients/raw_fishes"
+            "tag": "forge:ingredients/raw_fishes_edible"
           }
         ]
       },

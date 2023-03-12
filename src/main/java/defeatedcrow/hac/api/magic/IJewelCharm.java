@@ -71,8 +71,10 @@ public interface IJewelCharm extends IJewel {
 	boolean isActive(LivingEntity owner, ItemStack charm);
 
 	/**
-	 * チャームが使用可能かを切り替える。<br>
+	 * チャーム使用後のコスト消費処理。<br>
 	 */
-	void setActive(LivingEntity owner, ItemStack charm, boolean flag);
+	void onConsumeResource(LivingEntity owner, ItemStack charm);
+
+	int getMagicCostEXP(ItemStack charm);
 
 }

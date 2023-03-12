@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "has_drops": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "dcs_climate:color_ores"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "dcs_climate:textures/gui/advancement/metal.png",
+    "description": {
+      "translate": "advancements.dcs_climate.metal.root.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:main/ore_blue"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.metal.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_drops"
+    ]
+  ]
+}

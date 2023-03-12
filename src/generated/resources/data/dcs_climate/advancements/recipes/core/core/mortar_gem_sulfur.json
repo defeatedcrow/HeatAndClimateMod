@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sulfur_ore": {
+    "has_gem_sulfur": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:ores/sulfur"
+            "tag": "forge:gems/sulfur"
           }
         ]
       },
@@ -20,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_sulfur_ore",
+      "has_gem_sulfur",
       "has_the_recipe"
     ]
   ],

@@ -13,6 +13,7 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.food.material.block.CropBlockAllium;
 import defeatedcrow.hac.food.material.block.CropBlockAmaranth;
 import defeatedcrow.hac.food.material.block.CropBlockApium;
+import defeatedcrow.hac.food.material.block.CropBlockAster;
 import defeatedcrow.hac.food.material.block.CropBlockBrassica;
 import defeatedcrow.hac.food.material.block.CropBlockCapsicum;
 import defeatedcrow.hac.food.material.block.CropBlockCereals;
@@ -299,6 +300,10 @@ public class FoodInit {
 	public static final RegistryObject<Item> CROP_AP_CELERY = regCrop(CropTier.WILD, CropType.APIUM, TagDC.ItemTag.CROP_CELERY, 1, 0F);
 	public static final RegistryObject<Item> CROP_AP_FENNEL = regCrop(CropTier.COMMON, CropType.APIUM, TagDC.ItemTag.CROP_FENNEL);
 	public static final RegistryObject<Item> CROP_AP_PARSNIP = regCrop(CropTier.RARE, CropType.APIUM, TagDC.ItemTag.CROP_PARSNIP);
+	public static final RegistryObject<Item> CROP_AS_ARTEMISIA = regCrop(CropTier.WILD, CropType.ASTER, TagDC.ItemTag.CROP_ARTEMISIA);
+	public static final RegistryObject<Item> CROP_AS_LETTUCE = regCrop(CropTier.COMMON, CropType.ASTER, TagDC.ItemTag.CROP_LETTUCE);
+	public static final RegistryObject<Item> CROP_AS_PYRETHRUM = regCrop(CropTier.RARE, CropType.ASTER, TagDC.ItemTag.CROP_PYRETHRUM);
+	public static final RegistryObject<Item> CROP_AS_FLOWER = regCrop(CropTier.EPIC, CropType.ASTER, TagDC.ItemTag.CROP_CHRYSANTHEMUM);
 	public static final RegistryObject<Item> CROP_BR_RAPESEED = regCrop(CropTier.WILD, CropType.BRASSICA, TagDC.ItemTag.CROP_RAPESEED);
 	public static final RegistryObject<Item> CROP_BR_GREEN = regCrop(CropTier.COMMON, CropType.BRASSICA, TagDC.ItemTag.CROP_NAPA);
 	public static final RegistryObject<Item> CROP_BR_CABAGGE = regCrop(CropTier.RARE, CropType.BRASSICA, TagDC.ItemTag.CROP_CABAGGE, 1, 0F);
@@ -361,13 +366,13 @@ public class FoodInit {
 	public static final RegistryObject<Item> CROP_ER_HEATH = regCrop(CropTier.WILD, CropType.ERICA, TagDC.ItemTag.CROP_HEATH);
 	public static final RegistryObject<Item> CROP_ER_RHODODENDRON = regCrop(CropTier.COMMON, CropType.ERICA, TagDC.ItemTag.CROP_RHODODENDRON);
 	public static final RegistryObject<Item> CROP_ER_BLUEBERRY = regCrop(CropTier.RARE, CropType.ERICA, TagDC.ItemTag.CROP_BLUEBERRY, 2, 0F);
-	public static final RegistryObject<Item> CROP_MR_MULBERRY = regCrop(CropTier.WILD, CropType.MORUS, TagDC.ItemTag.CROP_MULBERRY, 0);
-	public static final RegistryObject<Item> CROP_MR_PAPER = regCrop(CropTier.COMMON, CropType.MORUS, TagDC.ItemTag.CROP_KAJI);
+	public static final RegistryObject<Item> CROP_MR_MULBERRY = regCrop(CropTier.WILD, CropType.MORUS, TagDC.ItemTag.CROP_MULBERRY, 2, 0F, 0);
+	public static final RegistryObject<Item> CROP_MR_PAPER = regCrop(CropTier.COMMON, CropType.MORUS, TagDC.ItemTag.CROP_KAJI, 2, 0F);
 	public static final RegistryObject<Item> CROP_MR_RUBBER = regCrop(CropTier.RARE, CropType.MORUS, TagDC.ItemTag.CROP_RUBBER, 0);
 	public static final RegistryObject<Item> CROP_OL_ASH = regCrop(CropTier.WILD, CropType.OLIVE, TagDC.ItemTag.CROP_ASH);
 	public static final RegistryObject<Item> CROP_OL_OLIVE = regCrop(CropTier.COMMON, CropType.OLIVE, TagDC.ItemTag.CROP_OLIVE);
 	public static final RegistryObject<Item> CROP_OL_OSMANTHUS = regCrop(CropTier.RARE, CropType.OLIVE, TagDC.ItemTag.CROP_OSUMANTHUS, -1);
-	public static final RegistryObject<Item> CROP_PL_COCONUT = regCrop(CropTier.WILD, CropType.PALM, TagDC.ItemTag.CROP_COCONUT, 2, 0F);
+	public static final RegistryObject<Item> CROP_PL_COCONUT = regCrop(CropTier.WILD, CropType.PALM, TagDC.ItemTag.CROP_COCONUT, 2, 0F, 0);
 	public static final RegistryObject<Item> CROP_PL_DATE = regCrop(CropTier.COMMON, CropType.PALM, TagDC.ItemTag.CROP_DATE, 2, 0F);
 	public static final RegistryObject<Item> CROP_PL_OIL = regCrop(CropTier.RARE, CropType.PALM, TagDC.ItemTag.CROP_OIL_PALM, 0);
 
@@ -380,6 +385,10 @@ public class FoodInit {
 	public static final RegistryObject<Block> BLOCK_AP_CELERY = regSeed(CropTier.WILD, CropType.APIUM, () -> new CropBlockApium(CropTier.WILD), TagDC.ItemTag.SEED_CELERY);
 	public static final RegistryObject<Block> BLOCK_AP_FENNEL = regSeed(CropTier.COMMON, CropType.APIUM, () -> new CropBlockApium(CropTier.COMMON), TagDC.ItemTag.SEED_FENNEL);
 	public static final RegistryObject<Block> BLOCK_AP_PARSNIP = regSeed(CropTier.RARE, CropType.APIUM, () -> new CropBlockApium(CropTier.RARE), TagDC.ItemTag.SEED_PARSNIP);
+	public static final RegistryObject<Block> BLOCK_AS_ARTEMISIA = regSeed(CropTier.WILD, CropType.ASTER, () -> new CropBlockAster(CropTier.WILD), TagDC.ItemTag.SEED_ARTEMISIA);
+	public static final RegistryObject<Block> BLOCK_AS_LETTUCE = regSeed(CropTier.COMMON, CropType.ASTER, () -> new CropBlockAster(CropTier.COMMON), TagDC.ItemTag.SEED_LETTUCE);
+	public static final RegistryObject<Block> BLOCK_AS_PYRETHRUM = regSeed(CropTier.RARE, CropType.ASTER, () -> new CropBlockAster(CropTier.RARE), TagDC.ItemTag.SEED_PYRETHRUM);
+	public static final RegistryObject<Block> BLOCK_AS_FLOWER = regSeed(CropTier.EPIC, CropType.ASTER, () -> new CropBlockAster(CropTier.EPIC), TagDC.ItemTag.SEED_CHRYSANTHEMUM);
 	public static final RegistryObject<Block> BLOCK_BR_RAPESEED = regSeed(CropTier.WILD, CropType.BRASSICA, () -> new CropBlockBrassica(CropTier.WILD), TagDC.ItemTag.SEED_RAPESEED);
 	public static final RegistryObject<Block> BLOCK_BR_GREEN = regSeed(CropTier.COMMON, CropType.BRASSICA, () -> new CropBlockBrassica(CropTier.COMMON), TagDC.ItemTag.SEED_NAPA);
 	public static final RegistryObject<Block> BLOCK_BR_CABAGGE = regSeed(CropTier.RARE, CropType.BRASSICA, () -> new CropBlockBrassica(CropTier.RARE), TagDC.ItemTag.SEED_CABAGGE);
@@ -522,6 +531,11 @@ public class FoodInit {
 	public static RegistryObject<Item> regCrop(CropTier tier, CropType type, TagKey<Item> tag, int taste) {
 		String name = "crop_" + type.toString() + "_" + tier.toString();
 		return CoreInit.ITEMS.register("food/" + name, () -> new ItemCropDC(tier, type, name, tag).taste(taste));
+	}
+
+	public static RegistryObject<Item> regCrop(CropTier tier, CropType type, TagKey<Item> tag, int f, float s, int taste) {
+		String name = "crop_" + type.toString() + "_" + tier.toString();
+		return CoreInit.ITEMS.register("food/" + name, () -> new ItemCropDC(tier, type, name, tag, f, s).taste(taste));
 	}
 
 	public static RegistryObject<Item> regItem(String name, Supplier<Item> item) {

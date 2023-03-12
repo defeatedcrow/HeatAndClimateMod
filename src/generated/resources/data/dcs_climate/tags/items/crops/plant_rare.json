@@ -1,0 +1,22 @@
+{
+  "values": [
+    "dcs_climate:food/crop_allium_rare",
+    "dcs_climate:food/crop_amaranth_rare",
+    "dcs_climate:food/crop_apium_rare",
+    "dcs_climate:food/crop_brassica_rare",
+    "dcs_climate:food/crop_capsicum_rare",
+    "dcs_climate:food/crop_cereals_rare",
+    "dcs_climate:food/crop_aster_rare",
+    "dcs_climate:food/crop_ginger_rare",
+    "dcs_climate:food/crop_herb_rare",
+    "dcs_climate:food/crop_knotweed_rare",
+    "dcs_climate:food/crop_mallow_rare",
+    "dcs_climate:food/crop_morningglory_rare",
+    "dcs_climate:food/crop_pedalia_rare",
+    "dcs_climate:food/crop_peas_rare",
+    "dcs_climate:food/crop_reed_rare",
+    "dcs_climate:food/crop_rice_rare",
+    "dcs_climate:food/crop_solanum_rare",
+    "dcs_climate:food/crop_palm_rare"
+  ]
+}

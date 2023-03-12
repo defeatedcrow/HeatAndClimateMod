@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#dcs_climate:color_ores/white",
+    "#dcs_climate:color_ores/blue",
+    "#dcs_climate:color_ores/black",
+    "#dcs_climate:color_ores/red",
+    "#dcs_climate:color_ores/green",
+    "#dcs_climate:color_ores/deep_white",
+    "#dcs_climate:color_ores/deep_blue",
+    "#dcs_climate:color_ores/deep_black",
+    "#dcs_climate:color_ores/deep_red",
+    "#dcs_climate:color_ores/deep_green"
+  ]
+}

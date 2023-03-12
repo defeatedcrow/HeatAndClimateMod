@@ -4,6 +4,9 @@ import java.io.File;
 import java.nio.file.Path;
 
 import defeatedcrow.hac.api.ClimateAPI;
+import defeatedcrow.hac.core.advancement.AdvancementProviderDC;
+import defeatedcrow.hac.core.advancement.trigger.TriggersDC;
+import defeatedcrow.hac.core.client.entity.EntityClientRegister;
 import defeatedcrow.hac.core.climate.ClimateCalculator;
 import defeatedcrow.hac.core.climate.ClimateHelper;
 import defeatedcrow.hac.core.climate.register.ArmorItemRegister;
@@ -24,8 +27,8 @@ import defeatedcrow.hac.core.tag.BlockTagProviderDC;
 import defeatedcrow.hac.core.tag.ItemTagProviderDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.worldgen.FeatureInit;
-import defeatedcrow.hac.food.client.FoodClientProxy;
 import defeatedcrow.hac.food.recipe.FoodRecipeProvider;
+import defeatedcrow.hac.magic.recipe.MagicRecipeProvider;
 import defeatedcrow.hac.plugin.jei.PluginRecipeListDC;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -69,6 +72,7 @@ public class ClimateCore {
 		TagDC.init();
 		CoreInit.init();
 		FeatureInit.init();
+		TriggersDC.init();
 
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		CoreInit.BLOCKS.register(bus);
@@ -106,11 +110,11 @@ public class ClimateCore {
 	}
 
 	void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		FoodClientProxy.registerLayerDefinitions(event);
+		EntityClientRegister.registerLayerDefinitions(event);
 	}
 
 	void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-		FoodClientProxy.registerEntityRenderers(event);
+		EntityClientRegister.registerEntityRenderers(event);
 	}
 
 	public void commonSetup(FMLCommonSetupEvent event) {
@@ -130,8 +134,12 @@ public class ClimateCore {
 		generator.addProvider(event.includeServer(), blockTag);
 		generator.addProvider(event.includeServer(), new ItemTagProviderDC(generator, blockTag, existingFileHelper));
 		generator.addProvider(event.includeServer(), new BiomeTagProviderDC(generator, existingFileHelper));
+
 		generator.addProvider(event.includeServer(), new VanillaRecipeProvider(generator));
 		generator.addProvider(event.includeServer(), new FoodRecipeProvider(generator));
+		generator.addProvider(event.includeServer(), new MagicRecipeProvider(generator));
+
+		generator.addProvider(event.includeServer(), new AdvancementProviderDC(generator, existingFileHelper));
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {

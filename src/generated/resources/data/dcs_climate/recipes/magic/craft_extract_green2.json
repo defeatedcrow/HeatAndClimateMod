@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:magic/drop_mana"
+    },
+    {
+      "tag": "forge:gems/serpentine"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:magic/extract_g"
+  }
+}

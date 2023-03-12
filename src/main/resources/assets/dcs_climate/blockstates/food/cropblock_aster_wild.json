@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "stage5=0": {
+      "model": "dcs_climate:block/food/cropblock_aster_wild_0"
+    },
+    "stage5=1": {
+      "model": "dcs_climate:block/food/cropblock_aster_wild_1"
+    },
+    "stage5=2": {
+      "model": "dcs_climate:block/food/cropblock_aster_wild_2"
+    },
+    "stage5=3": {
+      "model": "dcs_climate:block/food/cropblock_aster_wild_3"
+    },
+    "stage5=4": {
+      "model": "dcs_climate:block/food/cropblock_aster_wild_4"
+    }
+  }
+}

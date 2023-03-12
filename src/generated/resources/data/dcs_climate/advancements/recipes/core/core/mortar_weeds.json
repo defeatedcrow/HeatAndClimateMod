@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dcs_climate:core/mortar_weeds"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_weeds": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:weed"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_weeds",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dcs_climate:core/mortar_weeds"
+    ]
+  }
+}

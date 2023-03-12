@@ -1,0 +1,22 @@
+{
+  "values": [
+    "dcs_climate:food/crop_allium_wild",
+    "dcs_climate:food/crop_amaranth_wild",
+    "dcs_climate:food/crop_apium_wild",
+    "dcs_climate:food/crop_brassica_wild",
+    "dcs_climate:food/crop_capsicum_wild",
+    "dcs_climate:food/crop_cereals_wild",
+    "dcs_climate:food/crop_aster_wild",
+    "dcs_climate:food/crop_ginger_wild",
+    "dcs_climate:food/crop_herb_wild",
+    "dcs_climate:food/crop_knotweed_wild",
+    "dcs_climate:food/crop_mallow_wild",
+    "dcs_climate:food/crop_morningglory_wild",
+    "dcs_climate:food/crop_pedalia_wild",
+    "dcs_climate:food/crop_peas_wild",
+    "dcs_climate:food/crop_reed_wild",
+    "dcs_climate:food/crop_rice_wild",
+    "dcs_climate:food/crop_solanum_wild",
+    "dcs_climate:food/crop_palm_wild"
+  ]
+}

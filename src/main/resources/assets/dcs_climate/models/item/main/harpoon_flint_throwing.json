@@ -1,0 +1,30 @@
+{
+  "parent": "builtin/entity",
+  "gui_light": "front",
+  "textures": {
+    "particle": "dcs_climate:item/tool/harpoon_flint"
+  },
+  "display": {
+        "thirdperson_righthand": {
+            "rotation": [0, 90, 0]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [0, -90, 0]
+        },
+        "firstperson_righthand": {
+            "rotation": [0, 90, 20],
+            "translation": [3, -6, -3]
+        },
+        "firstperson_lefthand": {
+            "rotation": [0, -90, -20],
+            "translation": [3, -6, -3]
+        },
+        "head": {
+            "rotation": [0, 0, -90],
+            "translation": [-6, 9, 0]
+        },
+        "fixed": {
+            "rotation": [0, 180, 0]
+        }
+    }
+}

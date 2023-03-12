@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/iron"
+    },
+    "Y": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "pattern": [
+    "XYX",
+    " X "
+  ],
+  "result": {
+    "item": "dcs_climate:main/sieve"
+  }
+}

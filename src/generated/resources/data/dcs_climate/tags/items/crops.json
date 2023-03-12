@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#dcs_climate:crops/wild",
+    "#dcs_climate:crops/common",
+    "#dcs_climate:crops/rare",
+    "#dcs_climate:crops/epic"
+  ]
+}

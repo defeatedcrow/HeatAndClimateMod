@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:arrow"
+    },
+    "Y": {
+      "item": "dcs_climate:magic/extract_r"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "item": "dcs_climate:magic/arrow_red"
+  }
+}

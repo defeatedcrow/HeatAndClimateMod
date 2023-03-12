@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:magic/extract_mana"
+    },
+    {
+      "item": "dcs_climate:magic/extract_g"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:magic/pigment_g"
+  }
+}

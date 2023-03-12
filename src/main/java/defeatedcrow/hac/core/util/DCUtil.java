@@ -21,6 +21,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -138,6 +139,44 @@ public class DCUtil {
 		}
 
 		return false;
+	}
+
+	public static Direction getDirectionInBlock(float x, float y, float z) {
+		double x1 = Mth.absMax(1D - x, x);
+		double y1 = Mth.absMax(1D - y, y);
+		double z1 = Mth.absMax(1D - z, z);
+		double x2 = absMin(1D - x, x);
+		double y2 = absMin(1D - y, y);
+		double z2 = absMin(1D - z, z);
+		if (y > 0.5D && y > x1 && y > z1) {
+			return Direction.UP;
+		}
+		if (y < 0.5D && y < x2 && y < z2) {
+			return Direction.DOWN;
+		}
+		if (z > 0.5D && z > x1 && z > y1) {
+			return Direction.SOUTH;
+		}
+		if (z < 0.5D && z < x2 && z < y2) {
+			return Direction.NORTH;
+		}
+		if (x > 0.5D && x > y1 && x > z1) {
+			return Direction.EAST;
+		}
+		if (x < 0.5D && x < y2 && x < z2) {
+			return Direction.WEST;
+		}
+		return Direction.DOWN;
+	}
+
+	public static double absMin(double a, double b) {
+		if (a < 0.0D) {
+			a = -a;
+		}
+		if (b < 0.0D) {
+			b = -b;
+		}
+		return a > b ? b : a;
 	}
 
 	/**

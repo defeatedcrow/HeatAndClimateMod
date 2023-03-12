@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:crops/ash"
+    },
+    "Y": {
+      "item": "dcs_climate:main/agate_mortar"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:magic/drop_mana"
+  }
+}

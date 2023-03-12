@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:food/crop_aster_epic",
+    "dcs_climate:food/crop_brassica_epic",
+    "dcs_climate:food/crop_herb_epic",
+    "dcs_climate:food/crop_morningglory_epic",
+    "dcs_climate:food/crop_peas_epic",
+    "dcs_climate:food/crop_solanum_epic"
+  ]
+}

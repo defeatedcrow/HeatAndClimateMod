@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.recipe.MaterialRecipes;
 import defeatedcrow.hac.core.recipe.mill.MillsDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -52,6 +53,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 		for (MillsDC.Crops crop : MillsDC.INSTANCE.cropRecipe) {
 			mortarMillsRecipes(cons, crop);
+		}
+
+		for (MillsDC.Miscs misc : MillsDC.INSTANCE.miscRecipe) {
+			mortarMiscRecipes(cons, misc);
+		}
+
+		for (MillsDC.Sieve sieve : MillsDC.INSTANCE.sieveRecipe) {
+			sieveRecipes(cons, sieve);
 		}
 
 		mortarOtherRecipes(cons);
@@ -145,6 +154,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.group("crusher_mortar")
 				.unlockedBy("has_" + color.name() + "_ore", has(color.oreBlock().get().asItem()))
 				.save(cons, "dcs_climate:core/mortar_ore_" + color.name());
+
+			ShapelessRecipeBuilder.shapeless(color.gemPri().get(), 1)
+				.requires(ore)
+				.requires(CoreInit.MORTAR.get())
+				.requires(CoreInit.SIEVE.get())
+				.group("crusher_mortar")
+				.unlockedBy("has_" + color.name() + "_ore", has(color.oreBlock().get().asItem()))
+				.save(cons, "dcs_climate:core/sieve_ore_" + color.name());
 		}
 
 		if (color.oreDeep().get().asItem() instanceof IItemDC) {
@@ -156,6 +173,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.group("crusher_mortar")
 				.unlockedBy("has_" + color.name() + "_deepore", has(color.oreDeep().get().asItem()))
 				.save(cons, "dcs_climate:core/mortar_deepore_" + color.name());
+
+			ShapelessRecipeBuilder.shapeless(color.gemSec().get(), 1)
+				.requires(ore)
+				.requires(CoreInit.MORTAR.get())
+				.requires(CoreInit.SIEVE.get())
+				.group("crusher_mortar")
+				.unlockedBy("has_" + color.name() + "_deepore", has(color.oreDeep().get().asItem()))
+				.save(cons, "dcs_climate:core/sieve_deepore_" + color.name());
 		}
 
 		if (color.gemPri().get() instanceof IItemDC) {
@@ -200,105 +225,21 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			ShapelessRecipeBuilder.shapeless(gem.gem().get(), 1)
 				.requires(ore)
 				.requires(CoreInit.MORTAR.get())
+				.requires(CoreInit.SIEVE.get())
 				.group("crusher_mortar")
 				.unlockedBy("has_" + gem.name() + "_ore", has(gem.ore().get().asItem()))
-				.save(cons, "dcs_climate:core/mortar_ore_" + gem.name());
+				.save(cons, "dcs_climate:core/sieve_ore_" + gem.name());
 		}
 	}
 
 	private static void mortarOtherRecipes(Consumer<FinishedRecipe> cons) {
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.GEM_SALT.get(), 1)
-			.requires(TagDC.ItemTag.ORES_SALT)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_salt_ore", has(TagDC.ItemTag.ORES_SALT))
-			.save(cons, "dcs_climate:core/mortar_gem_salt");
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.GEM_NITER.get(), 1)
-			.requires(TagDC.ItemTag.ORES_NITER)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_niter_ore", has(TagDC.ItemTag.ORES_NITER))
-			.save(cons, "dcs_climate:core/mortar_gem_niter");
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.GEM_SULFUR.get(), 1)
-			.requires(TagDC.ItemTag.ORES_SULFUR)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_sulfur_ore", has(TagDC.ItemTag.ORES_SULFUR))
-			.save(cons, "dcs_climate:core/mortar_gem_sulfur");
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_TRONA.get(), 1)
-			.requires(TagDC.ItemTag.ORES_NATRON)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_natron_ore", has(TagDC.ItemTag.ORES_NATRON))
-			.save(cons, "dcs_climate:core/mortar_dust_trona");
-
 		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_CRYSTAL.get(), 1)
-			.requires(TagDC.ItemTag.GEM_CHALCEDONY)
+			.requires(CoreInit.STONE_QUARTZ.get())
 			.requires(CoreInit.MORTAR.get())
+			.requires(CoreInit.SIEVE.get())
 			.group("crusher_mortar")
-			.unlockedBy("has_chalcedony_gem", has(TagDC.ItemTag.GEM_CHALCEDONY))
-			.save(cons, "dcs_climate:core/mortar_dust_crystal1");
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_CRYSTAL.get(), 1)
-			.requires(TagDC.ItemTag.GEM_CRYSTAL)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_crystal_gem", has(TagDC.ItemTag.GEM_CRYSTAL))
-			.save(cons, "dcs_climate:core/mortar_dust_crystal2");
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_CRYSTAL.get(), 1)
-			.requires(Tags.Items.GEMS_QUARTZ)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_quartz", has(Tags.Items.GEMS_QUARTZ))
-			.save(cons, "dcs_climate:core/mortar_dust_crystal3");
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_LIME.get(), 1)
-			.requires(TagDC.ItemTag.ORES_LIME)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_lime", has(TagDC.ItemTag.ORES_LIME))
-			.save(cons, "dcs_climate:core/mortar_dust_lime1");
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_NITER.get(), 1)
-			.requires(TagDC.ItemTag.GEM_NITER)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_niter_gem", has(TagDC.ItemTag.GEM_NITER))
-			.save(cons, "dcs_climate:core/mortar_dust_niter");
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_SULFUR.get(), 1)
-			.requires(TagDC.ItemTag.GEM_SULFUR)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_sulfur_gem", has(TagDC.ItemTag.GEM_SULFUR))
-			.save(cons, "dcs_climate:core/mortar_dust_sulfur");
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_SALT.get(), 1)
-			.requires(TagDC.ItemTag.GEM_SALT)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_salt_gem", has(TagDC.ItemTag.GEM_SALT))
-			.save(cons, "dcs_climate:core/mortar_dust_salt");
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_COAL.get(), 1)
-			.requires(TagDC.ItemTag.GEM_COAL)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_coal_gem", has(TagDC.ItemTag.GEM_COAL))
-			.save(cons, "dcs_climate:core/mortar_dust_coal");
-
-		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_WOOD.get(), 1)
-			.requires(ItemTags.PLANKS)
-			.requires(CoreInit.MORTAR.get())
-			.group("crusher_mortar")
-			.unlockedBy("has_planks", has(ItemTags.PLANKS))
-			.save(cons, "dcs_climate:core/mortar_dust_wood");
-
+			.unlockedBy("has_stone_quartz", has(CoreInit.STONE_QUARTZ.get()))
+			.save(cons, "dcs_climate:core/sieve_stone_quartz");
 	}
 
 	private static void mortarMillsRecipes(Consumer<FinishedRecipe> cons, MillsDC.Crops mill) {
@@ -311,6 +252,29 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.group("crusher_mortar")
 				.unlockedBy("has_crop_" + mill.name(), has(mill.input().get().asItem()))
 				.save(cons, "dcs_climate:food/mortar_crop_" + mill.name());
+		}
+	}
+
+	private static void mortarMiscRecipes(Consumer<FinishedRecipe> cons, MillsDC.Miscs mill) {
+		if (mill.input().get() != null) {
+			ShapelessRecipeBuilder.shapeless(mill.outputPri().get(), mill.outputCount())
+				.requires(mill.input().get())
+				.requires(CoreInit.MORTAR.get())
+				.group("crusher_mortar")
+				.unlockedBy("has_" + mill.name(), has(mill.input().get()))
+				.save(cons, "dcs_climate:core/mortar_" + mill.name());
+		}
+	}
+
+	private static void sieveRecipes(Consumer<FinishedRecipe> cons, MillsDC.Sieve mill) {
+		if (mill.input().get() != null) {
+			ShapelessRecipeBuilder.shapeless(mill.outputPri().get(), mill.outputCount())
+				.requires(mill.input().get())
+				.requires(CoreInit.MORTAR.get())
+				.requires(CoreInit.SIEVE.get())
+				.group("crusher_mortar")
+				.unlockedBy("has_" + mill.name(), has(mill.input().get()))
+				.save(cons, "dcs_climate:core/sieve_" + mill.name());
 		}
 	}
 
@@ -453,6 +417,119 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_dye_red", has(Tags.Items.DYES_RED))
 			.save(cons, "dcs_climate:build/black_mosaic_red");
 
+		ShapedRecipeBuilder.shaped(BuildInit.GLASS_LIGHT.get(), 8)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', BuildInit.GLASS_CRYSTAL.get())
+			.define('Y', Items.GLOWSTONE_DUST)
+			.unlockedBy("has_dust_glowstone", has(Items.GLOWSTONE_DUST))
+			.save(cons, "dcs_climate:build/glass_light1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.GLASS_LIGHT.get(), 8)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', BuildInit.GLASS_CRYSTAL.get())
+			.define('Y', MagicInit.EXTRACT_WHITE.get())
+			.unlockedBy("has_extract_white", has(MagicInit.EXTRACT_WHITE.get()))
+			.save(cons, "dcs_climate:build/glass_light2");
+
+		ShapedRecipeBuilder.shaped(BuildInit.GLASS_DARK.get(), 8)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', BuildInit.GLASS_CRYSTAL.get())
+			.define('Y', TagDC.ItemTag.DUST_SILVER)
+			.unlockedBy("has_dust_silver", has(TagDC.ItemTag.DUST_SILVER))
+			.save(cons, "dcs_climate:build/glass_dark1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.GLASS_DARK.get(), 8)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', BuildInit.GLASS_CRYSTAL.get())
+			.define('Y', MagicInit.EXTRACT_BLACK.get())
+			.unlockedBy("has_extract_black", has(MagicInit.EXTRACT_BLACK.get()))
+			.save(cons, "dcs_climate:build/glass_dark2");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAL_LAMP.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.GEM_AGATES)
+			.define('Y', Tags.Items.DUSTS_REDSTONE)
+			.unlockedBy("has_gem_agate", has(TagDC.ItemTag.GEM_AGATES))
+			.save(cons, "dcs_climate:build/chalcedony_lamp1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAL_LAMP.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.GEM_AGATES)
+			.define('Y', MagicInit.EXTRACT_WHITE.get())
+			.unlockedBy("has_gem_agate", has(TagDC.ItemTag.GEM_AGATES))
+			.save(cons, "dcs_climate:build/chalcedony_lamp2");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAL_LAMP_GLASS.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" X ")
+			.define('X', Tags.Items.GLASS)
+			.define('Y', BuildInit.CHAL_LAMP.get())
+			.unlockedBy("has_chal_lamp", has(BuildInit.CHAL_LAMP.get()))
+			.save(cons, "dcs_climate:build/chalcedony_lamp_glass");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAL_LAMP_TABLE.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" Z ")
+			.define('X', TagDC.ItemTag.GEM_CHALCEDONY)
+			.define('Y', BuildInit.CHAL_LAMP.get())
+			.define('Z', Tags.Items.INGOTS_COPPER)
+			.unlockedBy("has_chal_lamp", has(BuildInit.CHAL_LAMP.get()))
+			.save(cons, "dcs_climate:build/chalcedony_lamp_table");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAL_LAMP_FLUORITE.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" Z ")
+			.define('X', TagDC.ItemTag.GEM_FLUORITE)
+			.define('Y', BuildInit.CHAL_LAMP.get())
+			.define('Z', Tags.Items.INGOTS_COPPER)
+			.unlockedBy("has_chal_lamp", has(BuildInit.CHAL_LAMP.get()))
+			.save(cons, "dcs_climate:build/chalcedony_lamp_fluorite");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAL_LAMP_JET.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" Z ")
+			.define('X', TagDC.ItemTag.GEM_JET)
+			.define('Y', BuildInit.CHAL_LAMP.get())
+			.define('Z', Tags.Items.INGOTS_COPPER)
+			.unlockedBy("has_chal_lamp", has(BuildInit.CHAL_LAMP.get()))
+			.save(cons, "dcs_climate:build/chalcedony_lamp_jet");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAL_LAMP_DESERTROSE.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" Z ")
+			.define('X', TagDC.ItemTag.GEM_DESERTROSE)
+			.define('Y', BuildInit.CHAL_LAMP.get())
+			.define('Z', Tags.Items.INGOTS_COPPER)
+			.unlockedBy("has_chal_lamp", has(BuildInit.CHAL_LAMP.get()))
+			.save(cons, "dcs_climate:build/chalcedony_lamp_desertrose");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAL_LAMP_SERPENTINE.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" Z ")
+			.define('X', TagDC.ItemTag.GEM_SERPENTINE)
+			.define('Y', BuildInit.CHAL_LAMP.get())
+			.define('Z', Tags.Items.INGOTS_COPPER)
+			.unlockedBy("has_chal_lamp", has(BuildInit.CHAL_LAMP.get()))
+			.save(cons, "dcs_climate:build/chalcedony_lamp_serpentine");
+
 	}
 
 	private static void otherRecipes(Consumer<FinishedRecipe> cons) {
@@ -462,6 +539,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.define('X', TagDC.ItemTag.GEM_AGATES)
 			.unlockedBy("has_chalcedony", has(TagDC.ItemTag.GEM_CHALCEDONY))
 			.save(cons, "dcs_climate:core/agate_mortar");
+
+		ShapedRecipeBuilder.shaped(CoreInit.SIEVE.get(), 1)
+			.pattern("XYX")
+			.pattern(" X ")
+			.define('X', Tags.Items.INGOTS_IRON)
+			.define('Y', Items.IRON_BARS)
+			.unlockedBy("has_ingot_iron", has(Tags.Items.INGOTS_IRON))
+			.save(cons, "dcs_climate:core/gem_sieve");
 
 		ShapedRecipeBuilder.shaped(CoreInit.HAND_SPINDLE.get(), 1)
 			.pattern("Y")
@@ -488,11 +573,32 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.define('Y', Tags.Items.RODS_WOODEN)
 			.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
 			.save(cons, "dcs_climate:core/scytheitem_brass");
+
+		ShapedRecipeBuilder.shaped(CoreInit.HARPOON_FLINT.get(), 1)
+			.pattern("  Y")
+			.pattern(" X ")
+			.pattern("XZ ")
+			.define('X', Tags.Items.RODS_WOODEN)
+			.define('Y', TagDC.ItemTag.GEM_FLINT)
+			.define('Z', Tags.Items.STRING)
+			.unlockedBy("has_flint", has(TagDC.ItemTag.GEM_FLINT))
+			.save(cons, "dcs_climate:core/harpoon_flint1");
+
+		ShapedRecipeBuilder.shaped(CoreInit.HARPOON_STEEL.get(), 1)
+			.pattern("  Y")
+			.pattern(" X ")
+			.pattern("XZ ")
+			.define('X', Tags.Items.INGOTS_IRON)
+			.define('Y', TagDC.ItemTag.INGOT_STEEL)
+			.define('Z', Tags.Items.STRING)
+			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
+			.save(cons, "dcs_climate:core/harpoon_steel1");
 	}
 
 	private static void smeltingRecipes(Consumer<FinishedRecipe> cons) {
 
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.GEM_FLINT), CoreInit.GEM_CHALCEDONY.get(), 200, "gem_chalcedony", Items.FLINT, "has_flint");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_CRYSTAL), BuildInit.GLASS_CRYSTAL.get().asItem(), 200, "dust_crystal", CoreInit.DUST_CRYSTAL.get(), "has_dust_crystal");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), CoreInit.DUST_ASH.get(), 200, "dust_ash", CoreInit.DUST_PLANT.get(), "has_dust_plant");
 	}
 

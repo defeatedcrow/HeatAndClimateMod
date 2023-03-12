@@ -1,0 +1,37 @@
+{
+  "parent": "dcs_climate:main/rare_crops",
+  "criteria": {
+    "has_dough": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/bread_round_raw"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.bread_raw.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:food/bread_round_raw"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.bread_raw.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_dough"
+    ]
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "parent": "dcs_climate:magic/magic_root",
+  "criteria": {
+    "has_arrow_black": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:magic/arrow_black"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_arrow_blue": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:magic/arrow_blue"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_arrow_green": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:magic/arrow_green"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_arrow_red": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:magic/arrow_red"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_arrow_white": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:magic/arrow_white"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.magic.arrow.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:magic/arrow_blue"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.magic.arrow.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_arrow_white",
+      "has_arrow_blue",
+      "has_arrow_black",
+      "has_arrow_red",
+      "has_arrow_green"
+    ]
+  ]
+}

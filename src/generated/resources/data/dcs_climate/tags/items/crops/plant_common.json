@@ -1,0 +1,22 @@
+{
+  "values": [
+    "dcs_climate:food/crop_allium_common",
+    "dcs_climate:food/crop_amaranth_common",
+    "dcs_climate:food/crop_apium_common",
+    "dcs_climate:food/crop_brassica_common",
+    "dcs_climate:food/crop_capsicum_common",
+    "dcs_climate:food/crop_cereals_common",
+    "dcs_climate:food/crop_aster_common",
+    "dcs_climate:food/crop_ginger_common",
+    "dcs_climate:food/crop_herb_common",
+    "dcs_climate:food/crop_knotweed_common",
+    "dcs_climate:food/crop_mallow_common",
+    "dcs_climate:food/crop_morningglory_common",
+    "dcs_climate:food/crop_pedalia_common",
+    "dcs_climate:food/crop_peas_common",
+    "dcs_climate:food/crop_reed_common",
+    "dcs_climate:food/crop_rice_common",
+    "dcs_climate:food/crop_solanum_common",
+    "dcs_climate:food/crop_palm_common"
+  ]
+}

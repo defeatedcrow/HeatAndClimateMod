@@ -15,6 +15,7 @@ import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.ClimateCropBaseBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
@@ -56,8 +57,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 			BlockPos p2 = new BlockPos(chunk.getMiddleBlockX(), j, chunk.getMiddleBlockZ());
 			BlockState soil = level.getBlockState(p2);
 			BlockState air = level.getBlockState(p2.above());
-			if ((soil.getMaterial() == Material.DIRT || soil.getMaterial() == Material.SAND || soil.getMaterial() == Material.WATER || soil.getMaterial() == Material.GRASS) && air.getMaterial()
-				.isReplaceable() && !air.getMaterial().isLiquid()) {
+			if ((soil.getMaterial() == Material.DIRT || soil.getMaterial() == Material.SAND || soil.getMaterial() == Material.WATER || soil.getMaterial() == Material.GRASS) && isSurface(air)) {
 				height = j;
 				break;
 			}
@@ -93,7 +93,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 						mpos.set(chunk.getMiddleBlockX() + random.nextInt(14) - 7, height + y, chunk.getMiddleBlockZ() + random.nextInt(14) - 7);
 						BlockState soil = level.getBlockState(mpos);
 						BlockState air = level.getBlockState(mpos.above());
-						if (suitableSoil(crop, level, mpos, soil) && air.getMaterial().isReplaceable() && !air.getMaterial().isLiquid()) {
+						if (suitableSoil(crop, level, mpos, soil) && canReplaceBlock(air)) {
 							BlockState nextState = crop.getFeatureState();
 
 							if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW)
@@ -116,10 +116,10 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 							int d = 3 + Mth.absFloor(dist);
 							boolean f = random.nextInt(d) == 0;
 
-							if (f && suitableSoil(crop, level, mpos, soil) && air.getMaterial().isReplaceable() && !air.getMaterial().isLiquid()) {
+							if (f && suitableSoil(crop, level, mpos, soil) && canReplaceBlock(air)) {
 								BlockState nextState = crop.getFeatureState();
 
-								if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW || soil.getMaterial() == Material.TOP_SNOW)
+								if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW)
 									level.setBlock(mpos, Blocks.DIRT.defaultBlockState(), 2);
 
 								level.setBlock(mpos.above(), nextState, 2);
@@ -141,8 +141,16 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		return true;
 	}
 
+	private boolean isSurface(BlockState state) {
+		return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && !state.getMaterial().isLiquid() && (state.getMaterial().isReplaceable() || state.getMaterial() == Material.LEAVES || state.getMaterial() == Material.WOOD);
+	}
+
 	private boolean suitableSoil(ClimateCropBaseBlock crop, WorldGenLevel level, BlockPos p, BlockState soil) {
 		return crop.isSuitablePlace(level, p, soil) || soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW;
+	}
+
+	private boolean canReplaceBlock(BlockState state) {
+		return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && state.getMaterial().isReplaceable() && !state.getMaterial().isLiquid();
 	}
 
 	static final List<ClimateCropBaseBlock> targetList = Lists.newArrayList();
@@ -151,6 +159,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AL_WILD.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AM_GOOSEFOOT.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_CELERY.get());
+		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AS_ARTEMISIA.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_BR_RAPESEED.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CA_CHILI.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CR_OAT.get());

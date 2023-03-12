@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "crusher_mortar",
+  "ingredients": [
+    {
+      "tag": "dcs_climate:color_ores/black"
+    },
+    {
+      "item": "dcs_climate:main/agate_mortar"
+    },
+    {
+      "item": "dcs_climate:main/sieve"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/gem_vivianite"
+  }
+}

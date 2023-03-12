@@ -119,7 +119,7 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 	}
 
 	@Override
-	public final InteractionResult interact(Player player, InteractionHand hand) {
+	public InteractionResult interact(Player player, InteractionHand hand) {
 		if (!this.isAlive()) {
 			return super.interact(player, hand);
 		} else if (player != null) {

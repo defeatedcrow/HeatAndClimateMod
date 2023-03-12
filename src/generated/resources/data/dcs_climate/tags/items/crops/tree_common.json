@@ -1,0 +1,12 @@
+{
+  "values": [
+    "dcs_climate:food/crop_beech_common",
+    "dcs_climate:food/crop_cherry_common",
+    "dcs_climate:food/crop_camellia_common",
+    "dcs_climate:food/crop_citrus_common",
+    "dcs_climate:food/crop_cinnamon_common",
+    "dcs_climate:food/crop_erica_common",
+    "dcs_climate:food/crop_morus_common",
+    "dcs_climate:food/crop_olive_common"
+  ]
+}

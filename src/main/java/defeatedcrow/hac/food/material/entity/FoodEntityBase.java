@@ -6,13 +6,18 @@ import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.material.entity.ObjectEntityBaseDC;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -69,6 +74,16 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 				((IFoodTaste) ret.getItem()).setTaste(ret, ((IFoodTaste) in.getItem()).getTaste(in));
 			}
 		}
+	}
+
+	@Override
+	public InteractionResult interact(Player player, InteractionHand hand) {
+		if (!getItem().isEmpty() && getItem().getItem() == FoodInit.STICK_CHICKEN_COOKED.get() && player != null) {
+			if (player.getLevel().dimension() == Level.NETHER) {
+				ClimateCore.proxy.triggerAdvancement(player, "main/nether_chicken");
+			}
+		}
+		return super.interact(player, hand);
 	}
 
 }

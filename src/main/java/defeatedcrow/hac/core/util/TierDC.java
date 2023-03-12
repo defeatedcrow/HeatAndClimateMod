@@ -11,12 +11,16 @@ import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 
 public enum TierDC implements Tier {
+	BAMBOO(0, 128, 1.0F, 1.0F, 2, () -> {
+		return Ingredient.of(Tags.Items.RODS_WOODEN);
+	}),
 	BRASS(2, 401, 6.0F, 1.0F, 8, () -> {
 		return Ingredient.of(TagDC.ItemTag.INGOT_BRASS);
 	}),
-	STEEL(3, 750, 8.0F, 1.0F, 6, () -> {
+	STEEL(3, 750, 8.0F, 3.0F, 6, () -> {
 		return Ingredient.of(TagDC.ItemTag.INGOT_STEEL);
 	}),
 	AGATE(3, 32, 8.0F, 3.0F, 15, () -> {
@@ -79,6 +83,8 @@ public enum TierDC implements Tier {
 		switch (this) {
 		case AGATE:
 			return BlockTags.NEEDS_IRON_TOOL;
+		case BAMBOO:
+			return null;
 		case BRASS:
 			return BlockTags.NEEDS_DIAMOND_TOOL;
 		case STEEL:

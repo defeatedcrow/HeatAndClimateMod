@@ -1,0 +1,11 @@
+{
+  "values": [
+    "dcs_climate:food/crop_beech_wild",
+    "dcs_climate:food/crop_cherry_wild",
+    "dcs_climate:food/crop_camellia_wild",
+    "dcs_climate:food/crop_citrus_wild",
+    "dcs_climate:food/crop_erica_wild",
+    "dcs_climate:food/crop_morus_wild",
+    "dcs_climate:food/crop_olive_wild"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "dcs_climate:main/bread_bake",
+  "criteria": {
+    "impossible": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.nether_chicken.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:food/stick_chicken_cooked"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.nether_chicken.title"
+    }
+  },
+  "requirements": [
+    [
+      "impossible"
+    ]
+  ]
+}

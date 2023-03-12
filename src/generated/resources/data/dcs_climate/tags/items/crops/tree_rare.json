@@ -1,0 +1,12 @@
+{
+  "values": [
+    "dcs_climate:food/crop_beech_rare",
+    "dcs_climate:food/crop_cherry_rare",
+    "dcs_climate:food/crop_cinnamon_rare",
+    "dcs_climate:food/crop_camellia_rare",
+    "dcs_climate:food/crop_citrus_rare",
+    "dcs_climate:food/crop_erica_rare",
+    "dcs_climate:food/crop_morus_rare",
+    "dcs_climate:food/crop_olive_rare"
+  ]
+}

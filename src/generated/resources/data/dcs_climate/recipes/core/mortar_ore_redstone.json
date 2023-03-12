@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "crusher_mortar",
+  "ingredients": [
+    {
+      "tag": "forge:ores/redstone"
+    },
+    {
+      "item": "dcs_climate:main/agate_mortar"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "item": "minecraft:redstone"
+  }
+}

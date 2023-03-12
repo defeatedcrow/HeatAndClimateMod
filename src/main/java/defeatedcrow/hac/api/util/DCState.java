@@ -21,6 +21,13 @@ public class DCState {
 
 	// facing
 	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
+	public static final DirectionProperty DIRECTION = DirectionProperty.create("direction");
+	public static final BooleanProperty NORTH = BooleanProperty.create("north");
+	public static final BooleanProperty SOUTH = BooleanProperty.create("south");
+	public static final BooleanProperty EAST = BooleanProperty.create("east");
+	public static final BooleanProperty WEST = BooleanProperty.create("west");
+	public static final BooleanProperty UP = BooleanProperty.create("up");
+	public static final BooleanProperty DOWN = BooleanProperty.create("down");
 
 	// crop
 	public static final IntegerProperty STAGE4 = IntegerProperty.create("stage4", 0, 3);

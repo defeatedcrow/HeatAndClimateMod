@@ -250,11 +250,14 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 		// 葉
 		level.setBlock(pos.above(h), leaves, 2);
 		int h5 = Mth.floor(h / 2F);
-		for (int j = h5 + 2; j < h + 2; j++) {
+		if (h5 > 6) {
+			h5 += 2;
+		}
+		for (int j = h5; j < h + 2; j++) {
 			for (int k = -3; k <= 3; k++) {
 				for (int l = -3; l <= 3; l++) {
 					double lim = 5D + level.random.nextInt(3);
-					if (j == h5 + 2 || j == h + 1) {
+					if (j == h5 || j == h + 1) {
 						lim = 4D;
 					}
 
@@ -333,7 +336,7 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 			leavesPos.add(pos.offset(3, h1, 0));
 			leavesPos.add(pos.offset(-3, h1, 0));
 			leavesPos.add(pos.offset(0, h2, 3));
-			leavesPos.add(pos.offset(0, h, -3));
+			leavesPos.add(pos.offset(0, h2, -3));
 			leavesPos.add(pos.offset(2, h3, 0));
 			leavesPos.add(pos.offset(0, h4, -2));
 

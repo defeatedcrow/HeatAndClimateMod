@@ -30,6 +30,10 @@ public class PlantRecipes {
 		list1.add(new Seeding(() -> FoodInit.BLOCK_AP_CELERY.get(), () -> FoodInit.CROP_AP_CELERY.get(), 1));
 		list1.add(new Seeding(() -> FoodInit.BLOCK_AP_FENNEL.get(), () -> FoodInit.CROP_AP_FENNEL.get(), 1));
 		list1.add(new Seeding(() -> FoodInit.BLOCK_AP_PARSNIP.get(), () -> FoodInit.CROP_AP_PARSNIP.get(), 1));
+		list1.add(new Seeding(() -> FoodInit.BLOCK_AS_ARTEMISIA.get(), () -> FoodInit.CROP_AS_ARTEMISIA.get(), 1));
+		list1.add(new Seeding(() -> FoodInit.BLOCK_AS_LETTUCE.get(), () -> FoodInit.CROP_AS_LETTUCE.get(), 1));
+		list1.add(new Seeding(() -> FoodInit.BLOCK_AS_PYRETHRUM.get(), () -> FoodInit.CROP_AS_PYRETHRUM.get(), 1));
+		list1.add(new Seeding(() -> FoodInit.BLOCK_AS_FLOWER.get(), () -> FoodInit.CROP_AS_FLOWER.get(), 1));
 		list1.add(new Seeding(() -> FoodInit.BLOCK_BR_RAPESEED.get(), () -> FoodInit.CROP_BR_RAPESEED.get(), 1));
 		list1.add(new Seeding(() -> FoodInit.BLOCK_BR_GREEN.get(), () -> FoodInit.CROP_BR_GREEN.get(), 1));
 		list1.add(new Seeding(() -> FoodInit.BLOCK_BR_CABAGGE.get(), () -> FoodInit.CROP_BR_CABAGGE.get(), 1));

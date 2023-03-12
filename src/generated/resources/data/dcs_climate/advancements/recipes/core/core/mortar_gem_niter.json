@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_niter_ore": {
+    "has_gem_niter": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:ores/niter"
+            "tag": "forge:gems/niter"
           }
         ]
       },
@@ -20,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_niter_ore",
+      "has_gem_niter",
       "has_the_recipe"
     ]
   ],

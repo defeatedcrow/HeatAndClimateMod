@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "forge:ingredients/raw_fishes"
+      "tag": "forge:ingredients/raw_fishes_edible"
     },
     {
       "tag": "forge:crops/vegetables"

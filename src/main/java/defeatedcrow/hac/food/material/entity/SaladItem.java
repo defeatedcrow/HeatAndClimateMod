@@ -61,6 +61,6 @@ public class SaladItem extends ItemEntityFood {
 	public static final EntityRenderData GREEN = new EntityRenderData("food/salad_green", 1F, 0F);
 	public static final EntityRenderData POTATO = new EntityRenderData("food/salad_potato", 1F, 0F);
 	public static final EntityRenderData NUTS = new EntityRenderData("food/salad_nuts", 1F, 0F);
-	public static final EntityRenderData MELON = new EntityRenderData("food/salad_melon", 1F, 0F);
+	public static final EntityRenderData MELON = new EntityRenderData("food/salad_watermelon", 1F, 0F);
 
 }

@@ -26,6 +26,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 
 public class FoodRecipeProvider extends RecipeProvider {
@@ -47,7 +48,10 @@ public class FoodRecipeProvider extends RecipeProvider {
 			seedingRecipes(cons, seeding);
 		}
 
+		mortarRecipes(cons);
 		smeltingRecipes(cons);
+
+		copperRecipes(cons);
 	}
 
 	static void foodRecipes(Consumer<FinishedRecipe> cons) {
@@ -227,10 +231,10 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.save(cons, "dcs_climate:food/plate_big_chicken");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLATE_FISH_RAW.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.RAW_FISH))
+			.requires(Ingredient.of(TagDC.ItemTag.RAW_EDIBLE_FISH))
 			.requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))
 			.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
-			.unlockedBy("has_fish", has(TagDC.ItemTag.RAW_FISH))
+			.unlockedBy("has_fish", has(TagDC.ItemTag.RAW_EDIBLE_FISH))
 			.save(cons, "dcs_climate:food/plate_fish");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.PORRIDGE.get(), 1)
@@ -327,20 +331,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 	}
 
-	static void materialRecipes(Consumer<FinishedRecipe> cons) {
-
-		// material
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_PLANT.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.CROP_REED))
-			.unlockedBy("has_reed", has(TagDC.ItemTag.CROP_REED))
-			.save(cons, "dcs_climate:food/reed_fiber_plant");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_PLANT.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.CROP_JUTE))
-			.unlockedBy("has_jute", has(TagDC.ItemTag.CROP_JUTE))
-			.save(cons, "dcs_climate:food/jute_fiber_plant");
-
+	static void mortarRecipes(Consumer<FinishedRecipe> cons) {
 		// mortar
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_WHEAT.get(), 1)
@@ -414,6 +405,21 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.requires(Tags.Items.STRING)
 			.unlockedBy("has_string", has(Tags.Items.STRING))
 			.save(cons, "dcs_climate:core/craft_string_hac");
+	}
+
+	static void materialRecipes(Consumer<FinishedRecipe> cons) {
+
+		// material
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_PLANT.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_REED))
+			.unlockedBy("has_reed", has(TagDC.ItemTag.CROP_REED))
+			.save(cons, "dcs_climate:food/reed_fiber_plant");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_PLANT.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_JUTE))
+			.unlockedBy("has_jute", has(TagDC.ItemTag.CROP_JUTE))
+			.save(cons, "dcs_climate:food/jute_fiber_plant");
 
 		// misc
 
@@ -449,6 +455,20 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.define('X', Ingredient.of(TagDC.ItemTag.FIBER_WOOD))
 			.unlockedBy("has_bark", has(TagDC.ItemTag.FIBER_WOOD))
 			.save(cons, "dcs_climate:core/paper_from_bark");
+
+		// agri
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.FISH_POWDER))
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_ASH))
+			.unlockedBy("has_fish_powder", has(TagDC.ItemTag.FISH_POWDER))
+			.save(cons, "dcs_climate:food/craft_fertilizer_mixed");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.PRESS_CAKE))
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_ASH))
+			.unlockedBy("has_press_cake", has(TagDC.ItemTag.PRESS_CAKE))
+			.save(cons, "dcs_climate:food/craft_fertilizer_mixed2");
 
 		// food materials
 
@@ -525,6 +545,56 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_offal", has(TagDC.ItemTag.OFFAL))
 			.save(cons, "dcs_climate:food/raw_sausage_offal");
 
+	}
+
+	static void copperRecipes(Consumer<FinishedRecipe> cons) {
+		ShapelessRecipeBuilder.shapeless(Blocks.COPPER_BLOCK, 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+			.requires(Ingredient.of(Blocks.OXIDIZED_COPPER))
+			.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
+			.save(cons, "dcs_climate:food/repair_oxidised_block");
+
+		ShapelessRecipeBuilder.shapeless(Blocks.CUT_COPPER, 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+			.requires(Ingredient.of(Blocks.OXIDIZED_CUT_COPPER))
+			.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
+			.save(cons, "dcs_climate:food/repair_oxidised_cutted");
+
+		ShapelessRecipeBuilder.shapeless(Blocks.CUT_COPPER_SLAB, 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+			.requires(Ingredient.of(Blocks.OXIDIZED_CUT_COPPER_SLAB))
+			.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
+			.save(cons, "dcs_climate:food/repair_oxidised_slab");
+
+		ShapelessRecipeBuilder.shapeless(Blocks.CUT_COPPER_STAIRS, 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+			.requires(Ingredient.of(Blocks.OXIDIZED_CUT_COPPER_STAIRS))
+			.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
+			.save(cons, "dcs_climate:food/repair_oxidised_stair");
+
+		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_COPPER_BLOCK, 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+			.requires(Ingredient.of(Blocks.WAXED_OXIDIZED_COPPER))
+			.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
+			.save(cons, "dcs_climate:food/repair_oxidised_block_waxed");
+
+		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_CUT_COPPER, 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+			.requires(Ingredient.of(Blocks.WAXED_OXIDIZED_CUT_COPPER))
+			.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
+			.save(cons, "dcs_climate:food/repair_oxidised_cut_waxed");
+
+		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_CUT_COPPER_SLAB, 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+			.requires(Ingredient.of(Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB))
+			.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
+			.save(cons, "dcs_climate:food/repair_oxidised_slab_waxed");
+
+		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_CUT_COPPER_STAIRS, 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+			.requires(Ingredient.of(Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS))
+			.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
+			.save(cons, "dcs_climate:food/repair_oxidised_stairs_waxed");
 	}
 
 	private static void woodRecipes(Consumer<FinishedRecipe> cons, PlantRecipes.Wood wood) {

@@ -1,0 +1,35 @@
+{
+  "parent": "dcs_climate:main/root",
+  "criteria": {
+    "has_logs": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:logs_that_burn"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.wood.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:oak_log"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.wood.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_logs"
+    ]
+  ]
+}

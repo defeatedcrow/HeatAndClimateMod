@@ -14,6 +14,7 @@ import defeatedcrow.hac.api.damage.ClimateDamageEvent.DamageSet;
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.util.DCItemUtil;
@@ -174,20 +175,22 @@ public class LivingTickEventDC {
 				}
 				charms.clear();
 
-				damTemp -= prevTemp;
+				float finalDam = damTemp - prevTemp;
 
-				ClimateDamageEvent fireEvent = new ClimateDamageEvent(living, source, clm, damTemp);
+				ClimateDamageEvent fireEvent = new ClimateDamageEvent(living, source, clm, finalDam);
 				DamageSet result = fireEvent.result();
-				damTemp = result.damage;
+				finalDam = result.damage;
 				DamageSource source2 = result.source;
 
 				// 2.0F未満の場合はとどめを刺さない
-				if (damTemp < 2.0F && living.getHealth() < 2.0F) {
-					damTemp = 0.0F;
+				if (finalDam < 2.0F && living.getHealth() < 2.0F) {
+					finalDam = 0.0F;
 				}
 
-				if (damTemp >= 1.0F) {
-					living.hurt(source2, damTemp);
+				if (finalDam >= 1.0F) {
+					if (living.hurt(source2, finalDam) && living instanceof Player && !isCold) {
+						ClimateCore.proxy.triggerAdvancement(living, "main/damage");
+					}
 					if (living instanceof Animal || living instanceof Monster) {
 						Vec3 vec = null;
 						BlockPos p2 = null;
@@ -201,7 +204,7 @@ public class LivingTickEventDC {
 							vec = Vec3.atBottomCenterOf(p2);
 							// 逃げるAIを差し込む
 							PathfinderMob animal = (PathfinderMob) living;
-							animal.getPersistentData().putFloat("dcs_lastDamage", damTemp);
+							animal.getPersistentData().putFloat("dcs_lastDamage", finalDam);
 							for (WrappedGoal task : animal.goalSelector.getAvailableGoals()) {
 								if (task.getGoal() instanceof AvoidHeatDamageGoal) {
 									((AvoidHeatDamageGoal) task.getGoal()).avoidPos = vec;
@@ -214,6 +217,9 @@ public class LivingTickEventDC {
 				} else {
 					if (living instanceof PathfinderMob && living.getPersistentData().contains("dcs_lastDamage")) {
 						living.getPersistentData().remove("dcs_lastDamage");
+					}
+					if (damTemp > 2.0F && living instanceof Player) {
+						ClimateCore.proxy.triggerAdvancement(living, "main/wear");
 					}
 				}
 

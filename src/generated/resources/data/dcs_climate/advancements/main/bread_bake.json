@@ -1,0 +1,37 @@
+{
+  "parent": "dcs_climate:main/bread_raw",
+  "criteria": {
+    "has_bread": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/bread_round_baked"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.bread_bake.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:food/bread_round_baked"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.bread_bake.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_bread"
+    ]
+  ]
+}

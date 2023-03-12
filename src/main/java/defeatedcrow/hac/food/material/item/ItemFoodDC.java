@@ -19,6 +19,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -94,8 +97,29 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 	@Override
 	public int getUseDuration(ItemStack item) {
 		int taste = getTaste(item) + 3; // 1 ~ 5
-		int dur = 256 / (taste * 4);
-		return dur;
+		switch (taste) {
+		case 1:
+			return 256;
+		case 2:
+			return 64;
+		case 3:
+			return 32;
+		case 4:
+			return 16;
+		case 5:
+			return 16;
+		default:
+			return 64;
+		}
+	}
+
+	@Override
+	public ItemStack finishUsingItem(ItemStack item, Level level, LivingEntity liv) {
+		int taste = getTaste(item);
+		if (taste == 2 && !level.isClientSide) {
+			liv.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
+		}
+		return super.finishUsingItem(item, level, liv);
 	}
 
 	@Override

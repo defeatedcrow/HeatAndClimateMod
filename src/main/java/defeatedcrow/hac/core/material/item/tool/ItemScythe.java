@@ -34,6 +34,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -144,6 +146,13 @@ public class ItemScythe extends ItemDC {
 		tasteName.withStyle(ChatFormatting.YELLOW);
 		list.add(tasteName);
 		super.appendHoverText(item, level, list, flag);
+	}
+
+	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enc) {
+		if (enc == Enchantments.SWEEPING_EDGE)
+			return false;
+		return enc.category == EnchantmentCategory.WEAPON;
 	}
 
 }

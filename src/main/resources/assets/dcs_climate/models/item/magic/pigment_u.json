@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/magic/pigment_u"
+  },
+  "parent": "minecraft:item/generated"
+}

@@ -1,0 +1,41 @@
+{
+  "criteria": {
+    "in_overworld": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "dimension": "minecraft:overworld"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "dcs_climate:textures/gui/advancement/main.png",
+    "description": {
+      "translate": "advancements.dcs_climate.main.root.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:main/icon_hac"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.dcs_climate.main.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "in_overworld"
+    ]
+  ]
+}

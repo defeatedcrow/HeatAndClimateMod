@@ -1,5 +1,9 @@
 package defeatedcrow.hac.food.material.item;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.api.material.IEntityItem;
@@ -7,12 +11,15 @@ import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.material.entity.ObjectEntityBaseDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SupportType;
@@ -82,5 +89,12 @@ public abstract class ItemEntityFood extends ItemFoodDC implements IEntityItem {
 	@Override
 	public JsonModelDC getItemModel() {
 		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/food/" + name));
+	}
+
+	@Override
+	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		MutableComponent s = Component.translatable("dcs.tip.spawn_entity_food");
+		list.add(s);
+		super.appendHoverText(item, level, list, flag);
 	}
 }

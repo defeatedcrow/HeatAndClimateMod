@@ -1,0 +1,35 @@
+{
+  "parent": "dcs_climate:magic/magic_root",
+  "criteria": {
+    "has_gems": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "dcs_climate:gems"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.magic.gem.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:main/gem_celestite"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.magic.gem.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_gems"
+    ]
+  ]
+}

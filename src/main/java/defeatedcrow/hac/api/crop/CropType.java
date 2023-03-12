@@ -8,6 +8,7 @@ public enum CropType {
 	ALLIUM, // ネギ
 	AMARANTH, // アカザ
 	APIUM, // セリ
+	ASTER, // キク
 	BEECH, // ブナ
 	BRASSICA, // アブラナ
 	CAMELLIA, // ツバキ

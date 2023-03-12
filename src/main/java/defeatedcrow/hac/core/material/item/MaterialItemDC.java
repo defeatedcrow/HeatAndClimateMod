@@ -11,8 +11,8 @@ import net.minecraft.world.item.Item;
 
 public class MaterialItemDC extends ItemDC {
 
-	final String name;
-	private String domain = "main";
+	protected final String name;
+	protected String domain = "main";
 
 	public MaterialItemDC(String s, TagKey<Item> pair) {
 		super(new Item.Properties().tab(CoreInit.CORE), pair);

@@ -1,0 +1,40 @@
+{
+  "parent": "dcs_climate:main/wild_crops",
+  "criteria": {
+    "use_fertilizer": {
+      "conditions": {
+        "item": {
+          "tag": "forge:fertilizer"
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "minecraft:farmland"
+            ]
+          }
+        }
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.fertilizer.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:bone_meal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.fertilizer.title"
+    }
+  },
+  "requirements": [
+    [
+      "use_fertilizer"
+    ]
+  ]
+}

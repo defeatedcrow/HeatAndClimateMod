@@ -1,0 +1,35 @@
+{
+  "parent": "dcs_climate:main/rare_crops",
+  "criteria": {
+    "has_tree_crop": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "dcs_climate:crops/tree_wild"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.tree_crops.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:food/crop_cherry_wild"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.tree_crops.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_tree_crop"
+    ]
+  ]
+}

@@ -3,7 +3,7 @@
   "group": "crusher_mortar",
   "ingredients": [
     {
-      "tag": "forge:ores/white"
+      "tag": "dcs_climate:color_ores/white"
     },
     {
       "item": "dcs_climate:main/agate_mortar"

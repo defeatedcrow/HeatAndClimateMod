@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/iron"
+    },
+    "Y": {
+      "tag": "forge:ingots/steel"
+    },
+    "Z": {
+      "tag": "forge:string"
+    }
+  },
+  "pattern": [
+    "  Y",
+    " X ",
+    "XZ "
+  ],
+  "result": {
+    "item": "dcs_climate:main/harpoon_steel"
+  }
+}

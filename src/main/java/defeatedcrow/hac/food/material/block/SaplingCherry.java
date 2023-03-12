@@ -94,7 +94,7 @@ public class SaplingCherry extends SaplingBaseBlock {
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("CONIFEROUS", "HOT");
+			return ImmutableList.of("CONIFEROUS", "HOT", "TAIGA");
 		default:
 			return Lists.newArrayList();
 		}

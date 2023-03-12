@@ -1,0 +1,29 @@
+{
+    "parent": "minecraft:item/handheld",
+    "textures": {
+        "layer0": "dcs_climate:item/tool/harpoon_steel"
+    },
+    "display": {
+        "thirdperson_righthand": {
+            "rotation": [0, 90, 0]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [0, -90, 0]
+        },
+        "firstperson_righthand": {
+            "rotation": [0, 90, 20],
+            "translation": [3, 0, -3]
+        },
+        "firstperson_lefthand": {
+            "rotation": [0, -90, -20],
+            "translation": [3, 0, -3]
+        },
+        "head": {
+            "rotation": [0, 0, -90],
+            "translation": [-6, 9, 0]
+        },
+        "fixed": {
+            "rotation": [0, 180, 0]
+        }
+    }
+}
