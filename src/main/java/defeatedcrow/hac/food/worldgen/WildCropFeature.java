@@ -57,7 +57,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 			BlockPos p2 = new BlockPos(chunk.getMiddleBlockX(), j, chunk.getMiddleBlockZ());
 			BlockState soil = level.getBlockState(p2);
 			BlockState air = level.getBlockState(p2.above());
-			if ((soil.getMaterial() == Material.DIRT || soil.getMaterial() == Material.SAND || soil.getMaterial() == Material.WATER || soil.getMaterial() == Material.GRASS) && isSurface(air)) {
+			if (isSoil(soil) && isSurface(air)) {
 				height = j;
 				break;
 			}
@@ -70,11 +70,9 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		// サークル状に生成
 		Holder<Biome> biome = level.getBiome(p1);
 		List<ClimateCropBaseBlock> targets = targetList.stream().filter((b) -> matchBiome(biome, p1.getY(), b)).toList();
-		if (!targets.isEmpty()) {
-
+		if (!targets.isEmpty() && targets.size() > 0) {
 			int i = targets.size();
-			random.nextInt(i);
-			ClimateCropBaseBlock crop = i < 1 ? targets.get(0) : targets.get(random.nextInt(i));
+			ClimateCropBaseBlock crop = i < 2 ? targets.get(0) : targets.get(random.nextInt(i));
 			boolean tree = crop.getCurrentStage(crop.defaultBlockState()) == CropStage.SAPLING;
 			boolean wild = crop.getTier() == CropTier.WILD;
 
@@ -143,6 +141,10 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 
 	private boolean isSurface(BlockState state) {
 		return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && !state.getMaterial().isLiquid() && (state.getMaterial().isReplaceable() || state.getMaterial() == Material.LEAVES || state.getMaterial() == Material.WOOD);
+	}
+
+	private boolean isSoil(BlockState soil) {
+		return soil.getMaterial() == Material.DIRT || soil.getMaterial() == Material.SAND || soil.getMaterial() == Material.GRASS || soil.getMaterial() == Material.WATER;
 	}
 
 	private boolean suitableSoil(ClimateCropBaseBlock crop, WorldGenLevel level, BlockPos p, BlockState soil) {
