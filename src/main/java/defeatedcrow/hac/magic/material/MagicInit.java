@@ -19,6 +19,11 @@ import defeatedcrow.hac.magic.material.item.GreenArrowItem;
 import defeatedcrow.hac.magic.material.item.MagicMaterialItemDC;
 import defeatedcrow.hac.magic.material.item.RedArrowItem;
 import defeatedcrow.hac.magic.material.item.WhiteArrowItem;
+import defeatedcrow.hac.magic.material.item.card.CardBlackT1;
+import defeatedcrow.hac.magic.material.item.card.CardBlueT1;
+import defeatedcrow.hac.magic.material.item.card.CardGreenT1;
+import defeatedcrow.hac.magic.material.item.card.CardRedT1;
+import defeatedcrow.hac.magic.material.item.card.CardWhiteT1;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -70,6 +75,12 @@ public class MagicInit {
 	public static final RegistryObject<Item> ARROW_BLACK = regItem("arrow_black", () -> new BlackArrowItem());
 	public static final RegistryObject<Item> ARROW_RED = regItem("arrow_red", () -> new RedArrowItem());
 	public static final RegistryObject<Item> ARROW_GREEN = regItem("arrow_green", () -> new GreenArrowItem());
+
+	public static final RegistryObject<Item> CARD_WHITE_1 = regItem("card_white_common", () -> new CardWhiteT1());
+	public static final RegistryObject<Item> CARD_BLUE_1 = regItem("card_blue_common", () -> new CardBlueT1());
+	public static final RegistryObject<Item> CARD_BLACK_1 = regItem("card_black_common", () -> new CardBlackT1());
+	public static final RegistryObject<Item> CARD_RED_1 = regItem("card_red_common", () -> new CardRedT1());
+	public static final RegistryObject<Item> CARD_GREEN_1 = regItem("card_green_common", () -> new CardGreenT1());
 
 	public static final RegistryObject<Block> SMALL_LIGHT = regBlock("magic_small_light", () -> new MagicSmallLight(), null);
 

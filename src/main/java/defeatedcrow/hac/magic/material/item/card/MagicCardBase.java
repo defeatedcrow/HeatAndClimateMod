@@ -1,16 +1,25 @@
 package defeatedcrow.hac.magic.material.item.card;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.ICardMagic;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.magic.MagicType;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
 import defeatedcrow.hac.magic.material.MagicInit;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -23,6 +32,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
@@ -43,7 +53,7 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 
 	@Override
 	public String getRegistryName() {
-		return "magic/" + name;
+		return "magic/card_" + name;
 	}
 
 	@Override
@@ -127,27 +137,61 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 		if (res.getType() == HitResult.Type.BLOCK) {
 			return onBlockHit(level, player, hand, itemstack, (BlockHitResult) res);
 		} else {
-			player.startUsingItem(hand);
-			if (level instanceof ServerLevel && isActive(player, itemstack)) {
-				level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
-				if (!player.getAbilities().instabuild) {
-					itemstack.shrink(1);
-					onConsumeResource(player, itemstack);
-				}
-				player.awardStat(Stats.ITEM_USED.get(this));
-				player.swing(hand, true);
-				return onUsing(level, player, hand, itemstack);
-			}
+			return onEmptyHit(level, player, hand, itemstack);
 		}
-		return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
 	}
 
 	public InteractionResultHolder<ItemStack> onBlockHit(Level level, Player player, InteractionHand hand, ItemStack card, BlockHitResult res) {
-		return InteractionResultHolder.pass(card);
+		player.startUsingItem(hand);
+		if (level instanceof ServerLevel && isActive(player, card)) {
+			if (onUsing(level, player, res.getBlockPos(), card)) {
+				level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+				if (!player.getAbilities().instabuild) {
+					card.shrink(1);
+					onConsumeResource(player, card);
+				}
+				player.awardStat(Stats.ITEM_USED.get(this));
+				player.swing(hand, true);
+			}
+			return InteractionResultHolder.success(card);
+		}
+		return InteractionResultHolder.success(card);
 	}
 
-	public InteractionResultHolder<ItemStack> onUsing(Level level, Player player, InteractionHand hand, ItemStack card) {
+	public InteractionResultHolder<ItemStack> onEmptyHit(Level level, Player player, InteractionHand hand, ItemStack card) {
+		player.startUsingItem(hand);
+		if (level instanceof ServerLevel && isActive(player, card)) {
+			if (onUsing(level, player, player.blockPosition(), card)) {
+				level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+				if (!player.getAbilities().instabuild) {
+					card.shrink(1);
+					onConsumeResource(player, card);
+				}
+				player.awardStat(Stats.ITEM_USED.get(this));
+				player.swing(hand, true);
+			}
+			return InteractionResultHolder.success(card);
+		}
 		return InteractionResultHolder.success(card);
+	}
+
+	public boolean onUsing(Level level, Player player, BlockPos pos, ItemStack card) {
+		return true;
+	}
+
+	@Override
+	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		MutableComponent tier = Component.translatable(color + " " + item.getRarity());
+		tier.withStyle(color.chatColor);
+		list.add(tier);
+		MutableComponent itemName = Component.translatable("dcs.tip.magic_card.name." + color.toString() + "_" + item.getRarity().toString().toLowerCase());
+		itemName.withStyle(color.chatColor).withStyle(ChatFormatting.ITALIC);
+		list.add(itemName);
+		if (ClimateCore.proxy.keyShiftPushed()) {
+			MutableComponent itemTip = Component.translatable("dcs.tip.magic_card.desc." + color.toString() + "_" + item.getRarity().toString().toLowerCase());
+			list.add(itemTip);
+		}
+		super.appendHoverText(item, level, list, flag);
 	}
 
 }

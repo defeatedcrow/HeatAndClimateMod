@@ -279,8 +279,22 @@
 　　バニラの弓やクロスボウで撃てる魔法の矢です。
 　　They are magic arrows that can be shot with vanilla bows and crossbows.
 
+　● 魔法のカード / Magical card
+
+　　使用することでいろいろな効果を発揮する消費アイテムです。
+　　Magic cards have instant magical effects.
+
 
 #### 更新履歴 / Change log ####
+
+○ v4-alpha3 (2023.3.22)
+ add: 魔法のカードの一部
+ change: レシピjsonのバージョン更新機能をつけた
+ change: デバッグパスワードを設定
+ change: 果樹が気候の合わない環境で枯れるように
+ fix: Pedariaの作物のモデルを修正
+ fix: 火打ち石の銛が使用時に消えてしまう
+ fix: HUDのBiome名表示が翻訳されない
 
 ○ v4-alpha2 (2023.3.12)
  add: 魔法の素材

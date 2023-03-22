@@ -10,7 +10,7 @@
       "model": "dcs_climate:block/food/leaves_olive_osmanthus_0"
     },
     "stage6=3": {
-      "model": "dcs_climate:block/food/leaves_olive_osmanthus_0"
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_d"
     },
     "stage6=4": {
       "model": "dcs_climate:block/food/leaves_olive_osmanthus_f"

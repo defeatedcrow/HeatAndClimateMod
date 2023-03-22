@@ -41,8 +41,8 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.pattern("XYX")
 			.pattern("XXX")
 			.define('X', Items.ARROW)
-			.define('Y', MagicInit.EXTRACT_WHITE.get())
-			.unlockedBy("has_extract_white", has(MagicInit.EXTRACT_WHITE.get()))
+			.define('Y', TagDC.ItemTag.EXTRACT_WHITE)
+			.unlockedBy("has_extract_white", has(TagDC.ItemTag.EXTRACT_WHITE))
 			.save(cons, "dcs_climate:magic/craft_arrow_white");
 
 		ShapedRecipeBuilder.shaped(MagicInit.ARROW_BLUE.get(), 8)
@@ -50,8 +50,8 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.pattern("XYX")
 			.pattern("XXX")
 			.define('X', Items.ARROW)
-			.define('Y', MagicInit.EXTRACT_BLUE.get())
-			.unlockedBy("has_extract_blue", has(MagicInit.EXTRACT_BLUE.get()))
+			.define('Y', TagDC.ItemTag.EXTRACT_BLUE)
+			.unlockedBy("has_extract_blue", has(TagDC.ItemTag.EXTRACT_BLUE))
 			.save(cons, "dcs_climate:magic/craft_arrow_blue");
 
 		ShapedRecipeBuilder.shaped(MagicInit.ARROW_BLACK.get(), 8)
@@ -59,8 +59,8 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.pattern("XYX")
 			.pattern("XXX")
 			.define('X', Items.ARROW)
-			.define('Y', MagicInit.EXTRACT_BLACK.get())
-			.unlockedBy("has_extract_black", has(MagicInit.EXTRACT_BLACK.get()))
+			.define('Y', TagDC.ItemTag.EXTRACT_BLACK)
+			.unlockedBy("has_extract_black", has(TagDC.ItemTag.EXTRACT_BLACK))
 			.save(cons, "dcs_climate:magic/craft_arrow_black");
 
 		ShapedRecipeBuilder.shaped(MagicInit.ARROW_RED.get(), 8)
@@ -68,8 +68,8 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.pattern("XYX")
 			.pattern("XXX")
 			.define('X', Items.ARROW)
-			.define('Y', MagicInit.EXTRACT_RED.get())
-			.unlockedBy("has_extract_red", has(MagicInit.EXTRACT_RED.get()))
+			.define('Y', TagDC.ItemTag.EXTRACT_RED)
+			.unlockedBy("has_extract_red", has(TagDC.ItemTag.EXTRACT_RED))
 			.save(cons, "dcs_climate:magic/craft_arrow_red");
 
 		ShapedRecipeBuilder.shaped(MagicInit.ARROW_GREEN.get(), 8)
@@ -77,9 +77,49 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.pattern("XYX")
 			.pattern("XXX")
 			.define('X', Items.ARROW)
-			.define('Y', MagicInit.EXTRACT_GREEN.get())
-			.unlockedBy("has_extract_green", has(MagicInit.EXTRACT_GREEN.get()))
+			.define('Y', TagDC.ItemTag.EXTRACT_GREEN)
+			.unlockedBy("has_extract_green", has(TagDC.ItemTag.EXTRACT_GREEN))
 			.save(cons, "dcs_climate:magic/craft_arrow_green");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_WHITE_1.get(), 1)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.EXTRACT_WHITE)
+			.unlockedBy("has_extract_white", has(TagDC.ItemTag.EXTRACT_WHITE))
+			.save(cons, "dcs_climate:magic/craft_card_white_common");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BLUE_1.get(), 1)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.EXTRACT_BLUE)
+			.unlockedBy("has_extract_blue", has(TagDC.ItemTag.EXTRACT_BLUE))
+			.save(cons, "dcs_climate:magic/craft_card_blue_common");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BLACK_1.get(), 1)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.EXTRACT_BLACK)
+			.unlockedBy("has_extract_black", has(TagDC.ItemTag.EXTRACT_BLACK))
+			.save(cons, "dcs_climate:magic/craft_card_black_common");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_RED_1.get(), 1)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.EXTRACT_RED)
+			.unlockedBy("has_extract_red", has(TagDC.ItemTag.EXTRACT_RED))
+			.save(cons, "dcs_climate:magic/craft_card_red_common");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_GREEN_1.get(), 1)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.EXTRACT_GREEN)
+			.unlockedBy("has_extract_green", has(TagDC.ItemTag.EXTRACT_GREEN))
+			.save(cons, "dcs_climate:magic/craft_card_green_common");
 	}
 
 	static void mortarRecipes(Consumer<FinishedRecipe> cons) {

@@ -82,6 +82,7 @@ import defeatedcrow.hac.food.material.entity.SandwichItem;
 import defeatedcrow.hac.food.material.entity.StickBeefItem;
 import defeatedcrow.hac.food.material.entity.StickMeatItem;
 import defeatedcrow.hac.food.material.item.EmptyPackItem;
+import defeatedcrow.hac.food.material.item.FertilizerItemDC;
 import defeatedcrow.hac.food.material.item.FoodMaterialItemDC;
 import defeatedcrow.hac.food.material.item.ItemCropDC;
 import defeatedcrow.hac.food.material.item.SeedItemDC;
@@ -140,32 +141,32 @@ public class FoodInit {
 
 	// パン
 	public static final RegistryObject<Item> BREAD_ROUND_RAW_ITEM = regItem("bread_round_raw", () -> new BreadRoundItem("bread_round_raw", 0, 0F, TagDC.ItemTag.DOUGH).setRawFood());
-	public static final RegistryObject<Item> BREAD_ROUND_BAKED_ITEM = regItem("bread_round_baked", () -> new BreadRoundItem("bread_round_baked", 2, 0.2F, TagDC.ItemTag.BREAD));
+	public static final RegistryObject<Item> BREAD_ROUND_BAKED_ITEM = regItem("bread_round_baked", () -> new BreadRoundItem("bread_round_baked", 4, 0.4F, TagDC.ItemTag.BREAD));
 	public static final RegistryObject<Item> BREAD_SQUARE_RAW_ITEM = regItem("bread_square_raw", () -> new BreadSquareItem("bread_square_raw", 0, 0F, TagDC.ItemTag.DOUGH).setRawFood());
-	public static final RegistryObject<Item> BREAD_SQUARE_BAKED_ITEM = regItem("bread_square_baked", () -> new BreadSquareItem("bread_square_baked", 2, 0.2F, TagDC.ItemTag.BREAD));
+	public static final RegistryObject<Item> BREAD_SQUARE_BAKED_ITEM = regItem("bread_square_baked", () -> new BreadSquareItem("bread_square_baked", 4, 0.4F, TagDC.ItemTag.BREAD));
 	public static final RegistryObject<Item> BREAD_NUTS_RAW_ITEM = regItem("bread_nuts_raw", () -> new BreadRoundItem("bread_nuts_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> BREAD_NUTS_BAKED_ITEM = regItem("bread_nuts_baked", () -> new BreadRoundItem("bread_nuts_baked", 4, 0.2F, null));
+	public static final RegistryObject<Item> BREAD_NUTS_BAKED_ITEM = regItem("bread_nuts_baked", () -> new BreadRoundItem("bread_nuts_baked", 6, 0.4F, null));
 	public static final RegistryObject<Item> BREAD_CINNAMON_RAW_ITEM = regItem("bread_cinnamon_raw", () -> new BreadRoundItem("bread_cinnamon_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> BREAD_CINNAMON_BAKED_ITEM = regItem("bread_cinnamon_baked", () -> new BreadRoundItem("bread_cinnamon_baked", 4, 0.2F, null));
+	public static final RegistryObject<Item> BREAD_CINNAMON_BAKED_ITEM = regItem("bread_cinnamon_baked", () -> new BreadRoundItem("bread_cinnamon_baked", 6, 0.4F, null));
 	public static final RegistryObject<Item> BREAD_ANKO_RAW_ITEM = regItem("bread_anko_raw", () -> new BreadRoundItem("bread_anko_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> BREAD_ANKO_BAKED_ITEM = regItem("bread_anko_baked", () -> new BreadRoundItem("bread_anko_baked", 4, 0.3F, null));
+	public static final RegistryObject<Item> BREAD_ANKO_BAKED_ITEM = regItem("bread_anko_baked", () -> new BreadRoundItem("bread_anko_baked", 7, 0.4F, null));
 	public static final RegistryObject<Item> BREAD_CREAM_RAW_ITEM = regItem("bread_cream_raw", () -> new BreadCreamItem("bread_cream_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> BREAD_CREAM_BAKED_ITEM = regItem("bread_cream_baked", () -> new BreadCreamItem("bread_cream_baked", 5, 0.2F, null));
+	public static final RegistryObject<Item> BREAD_CREAM_BAKED_ITEM = regItem("bread_cream_baked", () -> new BreadCreamItem("bread_cream_baked", 6, 0.4F, null));
 	public static final RegistryObject<Item> BREAD_SAUSAGE_RAW_ITEM = regItem("bread_sausage_raw", () -> new BreadSausageItem("bread_sausage_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> BREAD_SAUSAGE_BAKED_ITEM = regItem("bread_sausage_baked", () -> new BreadSausageItem("bread_sausage_baked", 6, 0.3F, null));
+	public static final RegistryObject<Item> BREAD_SAUSAGE_BAKED_ITEM = regItem("bread_sausage_baked", () -> new BreadSausageItem("bread_sausage_baked", 7, 0.6F, null));
 	// public static final RegistryObject<Item> BREAD_PITA_RAW_ITEM = regItem("bread_pita_raw", () -> new BreadRoundItem("bread_pita_raw", 0, 0F, null).setRawFood());
 	// public static final RegistryObject<Item> BREAD_PITA_BAKED_ITEM = regItem("bread_pita_baked", () -> new BreadRoundItem("bread_pita_baked", 2, 0.15F, null));
 	// public static final RegistryObject<Item> BREAD_TORTILLA_RAW_ITEM = regItem("bread_tortilla_raw", () -> new BreadRoundItem("bread_tortilla_raw", 0, 0F, null).setRawFood());
 	// public static final RegistryObject<Item> BREAD_TORTILLA_BAKED_ITEM = regItem("bread_tortilla_baked", () -> new BreadRoundItem("bread_tortilla_baked", 2, 0.15F, null));
 
-	public static final RegistryObject<Item> SANDWICH_FRUIT_ITEM = regItem("sandwich_fruit", () -> new SandwichItem("sandwich_fruit", 4, 0.3F, null));
-	public static final RegistryObject<Item> SANDWICH_MARMALADE_ITEM = regItem("sandwich_marmalade", () -> new SandwichItem("sandwich_marmalade", 4, 0.3F, null));
-	public static final RegistryObject<Item> SANDWICH_EGG_ITEM = regItem("sandwich_egg", () -> new SandwichItem("sandwich_egg", 5, 0.4F, null));
-	public static final RegistryObject<Item> SANDWICH_SALAD_ITEM = regItem("sandwich_salad", () -> new SandwichItem("sandwich_salad", 5, 0.4F, null));
-	public static final RegistryObject<Item> SANDWICH_SALMON_ITEM = regItem("sandwich_salmon", () -> new SandwichItem("sandwich_salmon", 5, 0.4F, null));
+	public static final RegistryObject<Item> SANDWICH_FRUIT_ITEM = regItem("sandwich_fruit", () -> new SandwichItem("sandwich_fruit", 5, 0.3F, null));
+	public static final RegistryObject<Item> SANDWICH_MARMALADE_ITEM = regItem("sandwich_marmalade", () -> new SandwichItem("sandwich_marmalade", 5, 0.3F, null));
+	public static final RegistryObject<Item> SANDWICH_EGG_ITEM = regItem("sandwich_egg", () -> new SandwichItem("sandwich_egg", 6, 0.4F, null));
+	public static final RegistryObject<Item> SANDWICH_SALAD_ITEM = regItem("sandwich_salad", () -> new SandwichItem("sandwich_salad", 6, 0.4F, null));
+	public static final RegistryObject<Item> SANDWICH_SALMON_ITEM = regItem("sandwich_salmon", () -> new SandwichItem("sandwich_salmon", 6, 0.4F, null));
 
-	public static final RegistryObject<Item> PORRIDGE = regItem("porridge_simple", () -> new PorridgeItem("porridge_simple", 3, 0.4F, null));
-	public static final RegistryObject<Item> PORRIDGE_MILK = regItem("porridge_milk", () -> new PorridgeItem("porridge_milk", 5, 0.4F, null));
+	public static final RegistryObject<Item> PORRIDGE = regItem("porridge_simple", () -> new PorridgeItem("porridge_simple", 4, 0.6F, null));
+	public static final RegistryObject<Item> PORRIDGE_MILK = regItem("porridge_milk", () -> new PorridgeItem("porridge_milk", 6, 0.6F, null));
 	public static final RegistryObject<Item> MUESLI = regItem("muesli", () -> new PorridgeItem("muesli", 6, 0.4F, null));
 	// ごはん
 
@@ -288,7 +289,7 @@ public class FoodInit {
 	public static final RegistryObject<Item> FEED_STRAW = regItem("animalfeed_straw", () -> new MaterialItemDC(AGRI, "animalfeed_straw", TagDC.ItemTag.FEED_STRAW).setDomain("food"));
 	public static final RegistryObject<Item> FEED_COMPOUND = regItem("animalfeed_compound", () -> new MaterialItemDC(AGRI, "animalfeed_compound", TagDC.ItemTag.FEED_COMPOUND).setDomain("food"));
 
-	public static final RegistryObject<Item> FERTILIZER_MIXED = regItem("fertilizer_mixed", () -> new MaterialItemDC(AGRI, "fertilizer_mixed", TagDC.ItemTag.FERTILIZER_ADV).setDomain("food"));
+	public static final RegistryObject<Item> FERTILIZER_MIXED = regItem("fertilizer_mixed", () -> new FertilizerItemDC(AGRI, "fertilizer_mixed", TagDC.ItemTag.FERTILIZER_ADV).setDomain("food"));
 
 	// crops
 	public static final RegistryObject<Item> CROP_AL_WILD = regCrop(CropTier.WILD, CropType.ALLIUM, TagDC.ItemTag.CROP_CHIVES);

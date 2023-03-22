@@ -1,33 +1,18 @@
 {
   "variants": {
-    "stage5=0,wild=false": {
+    "stage5=0": {
       "model": "dcs_climate:block/food/cropblock_pedalia_rare_0"
     },
-    "stage5=0,wild=true": {
+    "stage5=1": {
       "model": "dcs_climate:block/food/cropblock_pedalia_rare_1"
     },
-    "stage5=1,wild=false": {
+    "stage5=2": {
       "model": "dcs_climate:block/food/cropblock_pedalia_rare_2"
     },
-    "stage5=1,wild=true": {
+    "stage5=3": {
       "model": "dcs_climate:block/food/cropblock_pedalia_rare_3"
     },
-    "stage5=2,wild=false": {
-      "model": "dcs_climate:block/food/cropblock_pedalia_rare_4"
-    },
-    "stage5=2,wild=true": {
-      "model": "dcs_climate:block/food/cropblock_pedalia_rare_4"
-    },
-    "stage5=3,wild=false": {
-      "model": "dcs_climate:block/food/cropblock_pedalia_rare_4"
-    },
-    "stage5=3,wild=true": {
-      "model": "dcs_climate:block/food/cropblock_pedalia_rare_4"
-    },
-    "stage5=4,wild=false": {
-      "model": "dcs_climate:block/food/cropblock_pedalia_rare_4"
-    },
-    "stage5=4,wild=true": {
+    "stage5=4": {
       "model": "dcs_climate:block/food/cropblock_pedalia_rare_4"
     }
   }

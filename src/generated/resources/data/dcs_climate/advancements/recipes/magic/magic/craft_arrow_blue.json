@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:magic/extract_u"
-            ]
+            "tag": "dcs_climate:color_extracts/blue"
           }
         ]
       },

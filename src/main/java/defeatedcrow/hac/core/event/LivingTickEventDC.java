@@ -49,7 +49,7 @@ public class LivingTickEventDC {
 			if (living.level.getGameTime() % ConfigCommonBuilder.INSTANCE.vUpdateInterval.get() == 0) {
 				if (!living.level.isClientSide) {
 					if (living instanceof Player && ConfigCommonBuilder.INSTANCE.enPotionSharing.get()) {
-						onLivingPotionUpdate(living);
+						onLivingPotionSharing(living);
 					}
 
 					onLivingUpdate(living);
@@ -63,13 +63,14 @@ public class LivingTickEventDC {
 			living.fallDistance = 0.0F;
 		}
 		onLivingCharmUpdate(living);
+		onLivingEffectUpdate(living);
 
 		if (living instanceof Player || ConfigCommonBuilder.INSTANCE.enMobDamage.get()) {
 			onLivingClimateUpdate(living);
 		}
 	}
 
-	public static void onLivingPotionUpdate(LivingEntity living) {
+	public static void onLivingPotionSharing(LivingEntity living) {
 		/* Potion */
 		ArrayList<MobEffect> potions = Lists.newArrayList();
 
@@ -99,6 +100,10 @@ public class LivingTickEventDC {
 			charm.constantEffect(living, item2);
 		}
 		charms.clear();
+	}
+
+	public static void onLivingEffectUpdate(LivingEntity living) {
+
 	}
 
 	public static void onLivingClimateUpdate(LivingEntity living) {

@@ -39,16 +39,6 @@ public class ClimateSmelting implements IClimateSmelting {
 		output = o;
 		if (t != null) {
 			heat.add(t);
-			if (t.getID() < DCHeatTier.INFERNO.getID()) {
-				if (t.getID() == DCHeatTier.NORMAL.getID() || t.getID() == DCHeatTier.WARM.getID()) {
-					heat.add(t.addTier(1));
-					heat.add(t.addTier(-1));
-				} else if (t.getID() > DCHeatTier.ABSOLUTE.getID() && t.getID() < DCHeatTier.NORMAL.getID()) {
-					heat.add(t.addTier(-1));
-				} else if (t.getID() > DCHeatTier.WARM.getID()) {
-					heat.add(t.addTier(1));
-				}
-			}
 		} else {
 			heat.addAll(DCHeatTier.elements());
 		}
@@ -73,19 +63,6 @@ public class ClimateSmelting implements IClimateSmelting {
 		output = o;
 		if (t != null) {
 			heat.addAll(t);
-			if (t.size() == 1) {
-				DCHeatTier t2 = t.get(0);
-				if (t2.getID() < DCHeatTier.INFERNO.getID()) {
-					if (t2.getID() == DCHeatTier.NORMAL.getID() || t2.getID() == DCHeatTier.WARM.getID()) {
-						heat.add(t2.addTier(1));
-						heat.add(t2.addTier(-1));
-					} else if (t2.getID() > DCHeatTier.ABSOLUTE.getID() && t2.getID() < DCHeatTier.NORMAL.getID()) {
-						heat.add(t2.addTier(-1));
-					} else if (t2.getID() > DCHeatTier.WARM.getID()) {
-						heat.add(t2.addTier(1));
-					}
-				}
-			}
 		} else {
 			heat.addAll(DCHeatTier.elements());
 		}

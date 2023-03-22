@@ -4,6 +4,7 @@ import defeatedcrow.hac.core.config.ConfigLoadEventDC;
 import defeatedcrow.hac.core.config.CoreConfigDC;
 import defeatedcrow.hac.core.event.BiomeBaseTempEventDC;
 import defeatedcrow.hac.core.event.BlockUpdateEventDC;
+import defeatedcrow.hac.core.event.CombatEventDC;
 import defeatedcrow.hac.core.event.LivingDropEventDC;
 import defeatedcrow.hac.core.event.LivingTickEventDC;
 import defeatedcrow.hac.core.event.ServerTickEventDC;
@@ -29,6 +30,7 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(ConfigLoadEventDC::onLoad);
 		MinecraftForge.EVENT_BUS.addListener(ConfigLoadEventDC::onFileChange);
 		MinecraftForge.EVENT_BUS.addListener(LivingDropEventDC::onDrop);
+		MinecraftForge.EVENT_BUS.addListener(CombatEventDC::onHurt);
 
 		FoodProxy.registerEvent();
 	}

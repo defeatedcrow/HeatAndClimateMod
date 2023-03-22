@@ -55,6 +55,7 @@ public class ArrowBlack extends AbstractArrow {
 				} else {
 					dropItem(entity.getEyePosition());
 				}
+				this.discard();
 			}
 		}
 

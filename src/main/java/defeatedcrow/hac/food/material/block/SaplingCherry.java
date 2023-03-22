@@ -123,7 +123,7 @@ public class SaplingCherry extends SaplingBaseBlock {
 			leaves = FoodInit.LEAVES_CH_PEACH.get().defaultBlockState().setValue(DCState.FLAG, true);
 		}
 
-		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos);
+		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);
 
 		// 安全性チェック

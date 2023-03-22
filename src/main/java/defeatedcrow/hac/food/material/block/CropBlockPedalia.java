@@ -58,6 +58,11 @@ public class CropBlockPedalia extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("stage5=0", "stage5=1", "stage5=2", "stage5=3", "stage5=4");
+	}
+
+	@Override
 	public JsonModelDC getItemModel() {
 		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_pedalia_" + getSpeciesName(cropTier)));
 	}

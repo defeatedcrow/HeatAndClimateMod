@@ -139,7 +139,7 @@ public class SaplingCamellia extends SaplingBaseBlock {
 			h = 1;
 		}
 
-		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos);
+		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);
 
 		// 安全性チェック

@@ -4,7 +4,7 @@ license="All rights reserved, Please see homepage."
 issueTrackerURL="https://github.com/defeatedcrow/HeatAndClimateMod/issues"
 [[mods]]
 modId="dcs_climate"
-version="${file.jarVersion}"
+version="4.0.0"
 displayName="HeatAndClimate"
 updateJSONURL="https://defeatedcrow.jp/version/heatandclimate.json"
 displayURL="https://github.com/defeatedcrow/HeatAndClimateMod"

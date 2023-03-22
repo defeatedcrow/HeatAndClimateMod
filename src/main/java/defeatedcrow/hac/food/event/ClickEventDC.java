@@ -43,7 +43,7 @@ public class ClickEventDC {
 			BlockState target = event.getLevel().getBlockState(event.getPos());
 
 			// fertilizer
-			if (!item.isEmpty() && TagUtil.matchTag("fertilizer", item.getItem()).isPresent()) {
+			if (!item.isEmpty() && TagUtil.matchTag("fertilizer", item.getItem()).isPresent() && !TagUtil.matchTag("fertilizer_avd", item.getItem()).isPresent()) {
 				int m = DCState.getInt(target, BlockStateProperties.MOISTURE);
 				int f = DCState.getInt(target, DCState.FERTILE);
 				if (target.is(TagDC.BlockTag.FARMLAND) && f < 3) {
@@ -52,9 +52,6 @@ public class ClickEventDC {
 							CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) player, event.getPos(), item);
 						// 肥料アイテムを耕地にまく
 						int f2 = f + 1;
-						if (TagUtil.matchTag("fertilizer_avd", item.getItem()).isPresent()) {
-							f2 = 3;
-						}
 						BlockState next = FoodInit.FERTILE.get().defaultBlockState().setValue(DCState.FERTILE, f + 1).setValue(BlockStateProperties.MOISTURE, m);
 						level.setBlockAndUpdate(event.getPos(), next);
 						item.shrink(1);

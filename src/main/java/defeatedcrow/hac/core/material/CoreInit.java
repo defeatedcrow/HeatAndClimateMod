@@ -101,10 +101,10 @@ public class CoreInit {
 
 	public static final RegistryObject<Item> INGOT_BRASS = regItem("ingot_brass", () -> new MetalItemDC(Rarity.COMMON, "ingot_brass", TagDC.ItemTag.INGOT_BRASS));
 	public static final RegistryObject<Item> INGOT_BRONZE = regItem("ingot_bronze", () -> new MetalItemDC(Rarity.COMMON, "ingot_bronze", TagDC.ItemTag.INGOT_BRONZE));
+	public static final RegistryObject<Item> INGOT_SILVER = regItem("ingot_silver", () -> new MetalItemDC(Rarity.COMMON, "ingot_silver", TagDC.ItemTag.INGOT_SILVER));
 	public static final RegistryObject<Item> INGOT_NICKEL_SILVER = regItem("ingot_nickel_silver", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_nickel_silver", TagDC.ItemTag.INGOT_NICKEL_SILVER));
 	public static final RegistryObject<Item> INGOT_STEEL = regItem("ingot_steel", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_steel", TagDC.ItemTag.INGOT_STEEL));
 	public static final RegistryObject<Item> INGOT_ALUMINUM = regItem("ingot_aluminum", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_aluminum", TagDC.ItemTag.INGOT_ALUMINUM));
-	public static final RegistryObject<Item> INGOT_SILVER = regItem("ingot_silver", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_silver", TagDC.ItemTag.INGOT_SILVER));
 	public static final RegistryObject<Item> INGOT_SUS = regItem("ingot_sus", () -> new MetalItemDC(Rarity.RARE, "ingot_sus", TagDC.ItemTag.INGOT_SUS));
 	public static final RegistryObject<Item> INGOT_TITANIUM = regItem("ingot_titanium", () -> new MetalItemDC(Rarity.RARE, "ingot_titanium", TagDC.ItemTag.INGOT_TITANIUM));
 	public static final RegistryObject<Item> INGOT_MAGNET = regItem("ingot_magnet", () -> new MetalItemDC(Rarity.RARE, "ingot_magnet", TagDC.ItemTag.INGOT_MAGNET));
@@ -265,6 +265,16 @@ public class CoreInit {
 	public static final RegistryObject<Potion> COLD_RES_LONG = regPotion("long_cold_resistance", () -> new Potion("long_cold_resistance", new MobEffectInstance(COLD_RESISTANCE.get(), 9600)));
 
 	public static final RegistryObject<MobEffect> WET = regPotionEffect("effect_wet", () -> new MobEffectDC("effect_wet", MobEffectCategory.NEUTRAL, 0x90E0FF).setIconIndex(1, 2));
+
+	public static final RegistryObject<MobEffect> TRACER = regPotionEffect("effect_tracer", () -> new MobEffectDC("effect_tracer", MobEffectCategory.BENEFICIAL, 0xFF0050).setIconIndex(2, 2));
+
+	// balt
+	// wing
+	// ocean
+	// heavy
+	// nimble
+	// voyans
+	// reflex
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = BLOCKS.register("main/" + name, block);

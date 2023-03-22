@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -13,8 +12,6 @@ import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.crop.CropGrowType;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
-import defeatedcrow.hac.core.json.JsonModelDC;
-import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
@@ -23,7 +20,7 @@ import net.minecraft.world.level.block.Block;
 public class LeavesAsh extends LeavesCropBlockDC {
 
 	public LeavesAsh() {
-		super(CropType.OLIVE, CropTier.WILD);
+		super(CropType.OLIVE, CropTier.WILD, true);
 		this.setSeason(EnumSeason.SPRING_EARLY, EnumSeason.AUTUMN_LATE);
 	}
 
@@ -32,32 +29,6 @@ public class LeavesAsh extends LeavesCropBlockDC {
 	@Override
 	public String getRegistryName() {
 		return "food/leaves_olive_ash";
-	}
-
-	@Override
-	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_ash_leaves_spr")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_ash_leaves_smr")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_ash_leaves_aut")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_ash_leaves_wtr")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_ash_leaves_f")),
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/olive_ash_leaves_c")));
-	}
-
-	@Override
-	public List<String> getModelNameSuffix() {
-		return ImmutableList.of("0", "1", "2", "3", "4", "5");
-	}
-
-	@Override
-	public List<String> getStateNameSuffix() {
-		return ImmutableList.of("stage6=0", "stage6=1", "stage6=2", "stage6=3", "stage6=4", "stage6=5");
-	}
-
-	@Override
-	public JsonModelSimpleDC getItemModel() {
-		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_0");
 	}
 
 	/* ICropData */

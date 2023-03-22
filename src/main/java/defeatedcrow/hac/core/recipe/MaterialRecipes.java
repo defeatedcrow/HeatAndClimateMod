@@ -59,7 +59,7 @@ public class MaterialRecipes {
 	public static final Alloy ALUMINUM = new Alloy("aluminum", Rarity.UNCOMMON, () -> CoreInit.METALBLOCK_ALUMINUM.get(), () -> CoreInit.DUSTBLOCK_ALUMINUM.get(), () -> CoreInit.INGOT_ALUMINUM
 		.get(), () -> TagDC.ItemTag.DUST_ALUMINUM, () -> TagDC.ItemTag.DUST_ALUMINUM, () -> TagDC.ItemTag.GEM_FLUORITE);
 
-	public static final Alloy SILVER = new Alloy("silver", Rarity.UNCOMMON, () -> CoreInit.METALBLOCK_SILVER.get(), () -> CoreInit.DUSTBLOCK_SILVER.get(), () -> CoreInit.INGOT_SILVER
+	public static final Alloy SILVER = new Alloy("silver", Rarity.COMMON, () -> CoreInit.METALBLOCK_SILVER.get(), () -> CoreInit.DUSTBLOCK_SILVER.get(), () -> CoreInit.INGOT_SILVER
 		.get(), () -> TagDC.ItemTag.DUST_SILVER, () -> TagDC.ItemTag.DUST_SILVER, () -> TagDC.ItemTag.DUST_GOLD);
 
 	public static final Alloy SUS = new Alloy("sus", Rarity.RARE, () -> CoreInit.METALBLOCK_SUS.get(), () -> CoreInit.DUSTBLOCK_SUS.get(), () -> CoreInit.INGOT_SUS

@@ -44,8 +44,7 @@ public class ArrowRed extends AbstractArrow {
 		}
 
 		if ((this.dealtDamage || this.isNoPhysics())) {
-			boolean flag = false;
-			this.level.explode(this, this.getX(), this.getY(), this.getZ(), explodeRenge, flag, Explosion.BlockInteraction.NONE);
+			this.level.explode(this, this.getX(), this.getY(), this.getZ(), explodeRenge, false, Explosion.BlockInteraction.NONE);
 			this.discard();
 		}
 
@@ -65,6 +64,7 @@ public class ArrowRed extends AbstractArrow {
 	@Override
 	protected void doPostHurtEffects(LivingEntity liv) {
 		super.doPostHurtEffects(liv);
+		this.level.explode(this, this.getX(), this.getY(), this.getZ(), explodeRenge, false, Explosion.BlockInteraction.NONE);
 		this.dealtDamage = true;
 	}
 
@@ -78,6 +78,7 @@ public class ArrowRed extends AbstractArrow {
 		return 0.99F;
 	}
 
+	@Override
 	public boolean shouldBlockExplode(Explosion exp, BlockGetter level, BlockPos pos, BlockState state, float f) {
 		return false;
 	}

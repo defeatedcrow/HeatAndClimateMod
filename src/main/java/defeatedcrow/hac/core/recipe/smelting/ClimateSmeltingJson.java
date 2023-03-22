@@ -30,6 +30,16 @@ public class ClimateSmeltingJson {
 			heats.add("ANY");
 		} else {
 			heats.add(t.name());
+			if (t.getID() < DCHeatTier.INFERNO.getID()) {
+				if (t.getID() == DCHeatTier.NORMAL.getID() || t.getID() == DCHeatTier.WARM.getID()) {
+					heats.add(t.addTier(1).name());
+					heats.add(t.addTier(-1).name());
+				} else if (t.getID() > DCHeatTier.ABSOLUTE.getID() && t.getID() < DCHeatTier.NORMAL.getID()) {
+					heats.add(t.addTier(-1).name());
+				} else if (t.getID() > DCHeatTier.WARM.getID() && t.getID() < DCHeatTier.INFERNO.getID()) {
+					heats.add(t.addTier(1).name());
+				}
+			}
 		}
 		if (h == null) {
 			hums.add("ANY");

@@ -10,7 +10,7 @@
       "model": "dcs_climate:block/food/leaves_cinnamon_camphor_0"
     },
     "stage6=3": {
-      "model": "dcs_climate:block/food/leaves_cinnamon_camphor_0"
+      "model": "dcs_climate:block/food/leaves_cinnamon_camphor_d"
     },
     "stage6=4": {
       "model": "dcs_climate:block/food/leaves_cinnamon_camphor_f"

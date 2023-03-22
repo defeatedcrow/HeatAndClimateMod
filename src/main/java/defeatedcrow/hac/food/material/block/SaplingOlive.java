@@ -126,7 +126,7 @@ public class SaplingOlive extends SaplingBaseBlock {
 			r = 2;
 		}
 
-		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos);
+		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);
 
 		// 安全性チェック

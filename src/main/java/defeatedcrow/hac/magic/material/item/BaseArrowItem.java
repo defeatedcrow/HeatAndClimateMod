@@ -83,10 +83,10 @@ public abstract class BaseArrowItem extends ArrowItem implements IJsonDataDC, II
 	@Override
 	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tier = Component.translatable(color + " " + item.getRarity());
-		tier.withStyle(color.chatColor).withStyle(ChatFormatting.BOLD);
+		tier.withStyle(color.chatColor);
 		list.add(tier);
 		MutableComponent itemName = Component.translatable("dcs.tip.magic_arrow.name." + color.toString());
-		itemName.withStyle(color.chatColor);
+		itemName.withStyle(color.chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
 		if (ClimateCore.proxy.keyShiftPushed()) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.magic_arrow.desc." + color.toString());

@@ -10,6 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
@@ -35,6 +36,9 @@ public class ClimateSmeltingConfig {
 		INSTANCE.list.put(name, recipe);
 	}
 
+	public static int recipeVersion = 1;
+	public static boolean clean = false;
+
 	public static void initFile() {
 
 		if (ClimateCore.configDir == null)
@@ -47,11 +51,71 @@ public class ClimateSmeltingConfig {
 			dir.getParentFile().mkdirs();
 		}
 
+		// バージョンチェック
+		boolean update = false;
+		File ver = new File(dir, "_recipe_version.json");
+		if (ver.exists()) {
+			try {
+				if (ver.canRead()) {
+					FileInputStream fis = new FileInputStream(ver.getPath());
+					InputStreamReader isr = new InputStreamReader(fis);
+					JsonReader jsr = new JsonReader(isr);
+					Gson gson = new Gson();
+					Map get = gson.fromJson(jsr, Map.class);
+
+					isr.close();
+					fis.close();
+					jsr.close();
+
+					if (get != null && !get.isEmpty()) {
+						if (get.containsKey("version") && get.get("version") instanceof Number) {
+							int v = ((Number) get.get("version")).intValue();
+
+							if (v < recipeVersion) {
+								update = true;
+							}
+						}
+					}
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			update = true;
+		}
+
+		if (update) {
+			clean = true;
+			Map<String, Integer> vermap = Maps.newHashMap();
+			vermap.put("version", recipeVersion);
+			// レシピバージョンの更新
+			try {
+				ver.createNewFile();
+				if (ver.canWrite()) {
+					// Streamは開けたら閉めるを徹底しよう。ご安全に!
+					FileOutputStream fos = new FileOutputStream(ver.getPath());
+					OutputStreamWriter osw = new OutputStreamWriter(fos);
+					JsonWriter jsw = new JsonWriter(osw);
+
+					// ここでインデントのスペースの数を調整でき、ファイルの内容が適宜改行されるようになる。
+					jsw.setIndent("  ");
+					Gson gson = new GsonBuilder().serializeNulls().disableHtmlEscaping().create();
+					gson.toJson(vermap, Map.class, jsw);
+
+					osw.close();
+					fos.close();
+					jsw.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 		for (Entry<String, ClimateSmeltingJson> table : INSTANCE.list.entrySet()) {
 			File f = new File(dir, table.getKey() + ".json");
 
 			// すでにファイルが有る場合は何もしない。
-			if (!f.exists()) {
+			if (!f.exists() || clean) {
 
 				// ファイルを生成する。
 				if (!f.getParentFile().exists()) {
@@ -100,6 +164,9 @@ public class ClimateSmeltingConfig {
 			try {
 				for (File file : files) {
 					if (file.canRead()) {
+						if (file.getCanonicalPath().contains("recipe_version")) {
+							continue;
+						}
 						FileInputStream fis = new FileInputStream(file.getPath());
 						InputStreamReader isr = new InputStreamReader(fis);
 						JsonReader jsr = new JsonReader(isr);
@@ -114,7 +181,7 @@ public class ClimateSmeltingConfig {
 							ClimateSmelting recipe = get.toRecipe();
 							if (!DCRecipes.INSTANCE.SMELTING.contains(recipe))
 								if (DCRecipes.INSTANCE.SMELTING.add(recipe)) {
-									DCLogger.infoLog("Register ClimateSmelting: " + recipe.getOutput().getHoverName().getString());
+									DCLogger.traceLog("Register ClimateSmelting: " + recipe.getOutput().getHoverName().getString());
 								}
 						}
 					}

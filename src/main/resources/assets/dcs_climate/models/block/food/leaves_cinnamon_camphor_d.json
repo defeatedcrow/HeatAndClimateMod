@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/tree/cinnamon_camphor_leaves_d"
+  },
+  "parent": "dcs_climate:block/dcs_leaves"
+}

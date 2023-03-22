@@ -70,11 +70,6 @@ public class ThrownHarpoon extends AbstractArrow {
 			}
 
 			if (harpoon.tier == TierDC.BAMBOO) {
-				if (l > 5) {
-					Vec3 v3 = this.getDeltaMovement();
-					this.setDeltaMovement(v3.x * 0.1D, v3.y - 0.05F, v3.z * 0.1D);
-				}
-
 				if (l > 10)
 					this.dealtDamage = true;
 			}
@@ -156,7 +151,6 @@ public class ThrownHarpoon extends AbstractArrow {
 			// 貫通
 			if (!isPiercing()) {
 				this.dealtDamage = true;
-				this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01D, -0.1D, -0.01D));
 			}
 
 			float f1 = 1.0F;

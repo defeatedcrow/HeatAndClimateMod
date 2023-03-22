@@ -6,7 +6,7 @@
   "itemgroup.dcs.build": "HeatAndClimate:Building",
   "itemgroup.dcs.magic": "HeatAndClimate:Magic",
 
-    "## items":"main",
+    "## items_main":"main",
 
   "item.dcs_climate.main.oreitem_white_1":"Chalcopyrite",
   "item.dcs_climate.main.oreitem_white_2":"Gold",
@@ -109,7 +109,7 @@
   "item.dcs_climate.main.icon_hac":"HeatAndClimate",
   "item.dcs_climate.main.icon_burning":"Heat Damage",
 
-    "## items":"magic",
+    "## items_magic":"magic",
 
   "item.dcs_climate.magic.drop_w":"White Small Drop",
   "item.dcs_climate.magic.drop_u":"Blue Small Drop",
@@ -138,7 +138,13 @@
   "item.dcs_climate.magic.arrow_red":"Red Arrow",
   "item.dcs_climate.magic.arrow_green":"Green Arrow",
 
-    "## items":"food",
+  "item.dcs_climate.magic.card_white_common":"Magic Card (White)",
+  "item.dcs_climate.magic.card_blue_common":"Magic Card (Blue)",
+  "item.dcs_climate.magic.card_black_common":"Magic Card (Black)",
+  "item.dcs_climate.magic.card_red_common":"Magic Card (Red)",
+  "item.dcs_climate.magic.card_green_common":"Magic Card (Green)",
+
+    "## items_food":"food",
 
   "item.dcs_climate.food.crop_allium_wild":"Garlic Chives",
   "item.dcs_climate.food.crop_allium_common":"Onion",
@@ -350,7 +356,7 @@
   "item.dcs_climate.food.salad_nuts":"Nut and Beens Salad",
   "item.dcs_climate.food.salad_melon":"Watermelon Salad",
 
-    "## blocks":"main",
+    "## blocks_main":"main",
 
   "block.dcs_climate.main.stone_quartz":"Quartz Vein",
   "block.dcs_climate.main.stone_mud":"Mudstone",
@@ -425,7 +431,7 @@
   "block.dcs_climate.main.metalblock_hastelloy":"Hastelloy Block",
   "block.dcs_climate.main.metalblock_bscco":"BSCCO Block",
 
-    "## blocks":"food",
+    "## blocks_foods":"food",
 
   "block.dcs_climate.food.fertile":"Fertilized Farm Block",
 
@@ -748,7 +754,18 @@
   "dcs.tip.magic_arrow.desc.red":"Blow up the impact point.",
   "dcs.tip.magic_arrow.desc.green":"Damage through multiple mobs.",
 
-  "## gui":"misc",
+    "dcs.tip.magic_card.name.white_common":"Cure",
+  "dcs.tip.magic_card.desc.white_common":"Cures damage and bad potion effects of nearby players and mobs.",
+  "dcs.tip.magic_card.name.blue_common":"Memory",
+  "dcs.tip.magic_card.desc.blue_common":"Register a respawn point. (Valid outside Overworld.)",
+  "dcs.tip.magic_card.name.black_common":"Tracker",
+  "dcs.tip.magic_card.desc.black_common":"Gain potion effect of tracking.",
+  "dcs.tip.magic_card.name.red_common":"Blast",
+  "dcs.tip.magic_card.desc.red_common":"Fires an arrow that explodes on impact.",
+  "dcs.tip.magic_card.name.green_common":"Grow",
+  "dcs.tip.magic_card.desc.green_common":"Grow plants around the player.",
+
+  "## gui_misc":"misc",
 
   "dcs.smelting":"Climate Smelting",
   "dcs.recipe":"Climate Crafting",
@@ -780,8 +797,9 @@
   "item.minecraft.tripped_arrow.effect.long_cold_resistance":"Cold Resistance Arrow",
 
   "effect.dcs_climate.effect_wet":"Wet",
+  "effect.dcs_climate.effect_tracer":"Tracer",
 
-    "## gui":"jei",
+    "## gui_jei":"jei",
 
   "dcs.gui.jei.smelting_data":"Climate Smelting Data",
   "dcs.gui.jei.crop_data":"HaC Crop Data",
@@ -802,7 +820,7 @@
   "dcs.gui.jei.tree_flower":"Flowering Seasons",
   "dcs.gui.jei.tree_crop":"Harvest Seasons",
 
-    "## gui":"waila",
+    "## gui_waila":"waila",
 
   "dcs.tip.waila.crop_stage":"Stage: ",
   "dcs.tip.waila.crop_harvest":"Harvestable!",
@@ -814,7 +832,7 @@
   "dcs.tip.waila.smelting_tick_scheduled":"A block update is scheduled.",
   "dcs.tip.waila.smelting_tick_not_scheduled":"No block updates.",
 
-    "## advancement":"main",
+    "## advancement_main":"main",
 
   "advancements.dcs_climate.main.root.title":"HeatAndClimate!",
   "advancements.dcs_climate.main.root.desc":"Beginning of HeatAndClimate",
@@ -845,7 +863,7 @@
   "advancements.dcs_climate.main.delicious.title":"Gourmet",
   "advancements.dcs_climate.main.delicious.desc":"Eat foods with 5-star tastes.",
 
-    "## advancement":"magic",
+    "## advancement_magic":"magic",
 
   "advancements.dcs_climate.magic.root.title":"Source of mana",
   "advancements.dcs_climate.magic.root.desc":"Obtain any color extract.",
@@ -854,7 +872,7 @@
   "advancements.dcs_climate.magic.gem.title":"Jewel Spirit",
   "advancements.dcs_climate.magic.gem.desc":"Obtain a gem item of any color.",
 
-    "## advancement":"metal",
+    "## advancement_metal":"metal",
 
   "advancements.dcs_climate.metal.root.title":"Colorful ore",
   "advancements.dcs_climate.metal.root.desc":"Obtain an ore of any color.",

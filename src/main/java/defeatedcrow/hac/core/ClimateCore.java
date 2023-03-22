@@ -54,11 +54,13 @@ public class ClimateCore {
 	public static File assetsDir = null;
 	public static File dataDir = null;
 
-	public static boolean isDebug = true;
+	public static boolean isDebug = false;
 
 	public ClimateCore() {
 		initAPI();
 		configDir = new File(FMLPaths.CONFIGDIR.get().toFile() + "/heat_and_climate");
+		isDebug = DCLogger.checkDebugModePass();
+
 		if (isDebug) {
 			Path path = FMLPaths.GAMEDIR.get();
 			if (path.toString().contains("run")) {
@@ -68,6 +70,10 @@ public class ClimateCore {
 				DCLogger.debugInfoLog("path test2: " + dataDir.getPath());
 			}
 		}
+
+		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigClientBuilder.CONFIG_CLIENT);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigCommonBuilder.CONFIG_COMMON);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ConfigServerBuilder.CONFIG_SERVER);
 
 		TagDC.init();
 		CoreInit.init();
@@ -85,10 +91,6 @@ public class ClimateCore {
 
 		TagDC.init();
 		MaterialRecipes.init();
-
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigClientBuilder.CONFIG_CLIENT);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigCommonBuilder.CONFIG_COMMON);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ConfigServerBuilder.CONFIG_SERVER);
 
 		bus.addListener(this::registerLayerDefinitions);
 		bus.addListener(this::registerEntityRenderers);
@@ -118,6 +120,7 @@ public class ClimateCore {
 	}
 
 	public void commonSetup(FMLCommonSetupEvent event) {
+
 		proxy.commonInit();
 		proxy.registerRecipes();
 

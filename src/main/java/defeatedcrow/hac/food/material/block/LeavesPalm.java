@@ -32,7 +32,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 public class LeavesPalm extends LeavesCropBlockDC {
 
 	public LeavesPalm() {
-		super(CropType.PALM, CropTier.WILD);
+		super(CropType.PALM, CropTier.WILD, false);
 		this.setSeason(EnumSeason.SUMMER_EARLY, EnumSeason.SUMMER_LATE);
 	}
 
@@ -154,7 +154,7 @@ public class LeavesPalm extends LeavesCropBlockDC {
 	}
 
 	@Override
-	public int getSeasonLeafStage(Level world, BlockPos pos) {
+	public int getSeasonLeafStage(Level world, BlockPos pos, BlockState state) {
 		return 0;
 	}
 

@@ -6,7 +6,7 @@
   "itemgroup.dcs.build": "HeatAndClimate:Building",
   "itemgroup.dcs.magic": "HeatAndClimate:Magic",
 
-    "## items":"main",
+    "## items_main":"main",
 
   "item.dcs_climate.main.oreitem_white_1":"黄銅鉱",
   "item.dcs_climate.main.oreitem_white_2":"金",
@@ -109,7 +109,7 @@
   "item.dcs_climate.main.icon_hac":"HeatAndClimate",
   "item.dcs_climate.main.icon_burning":"高温ダメージ",
 
-    "## items":"magic",
+    "## items_magic":"magic",
 
   "item.dcs_climate.magic.drop_w":"白の小さな雫",
   "item.dcs_climate.magic.drop_u":"青の小さな雫",
@@ -138,7 +138,13 @@
   "item.dcs_climate.magic.arrow_red":"赤の魔法矢",
   "item.dcs_climate.magic.arrow_green":"緑の魔法矢",
 
-    "## items":"food",
+  "item.dcs_climate.magic.card_white_common":"白のカード",
+  "item.dcs_climate.magic.card_blue_common":"青のカード",
+  "item.dcs_climate.magic.card_black_common":"黒のカード",
+  "item.dcs_climate.magic.card_red_common":"赤のカード",
+  "item.dcs_climate.magic.card_green_common":"緑のカード",
+
+    "## items_food":"food",
 
   "item.dcs_climate.food.crop_allium_wild":"ノビル",
   "item.dcs_climate.food.crop_allium_common":"タマネギ",
@@ -422,7 +428,7 @@
   "block.dcs_climate.main.metalblock_hastelloy":"ハステロイブロック",
   "block.dcs_climate.main.metalblock_bscco":"BSCCOブロック",
 
-    "## blocks":"food",
+    "## blocks_food":"food",
 
   "block.dcs_climate.food.fertile":"施肥された耕地ブロック",
 
@@ -745,7 +751,18 @@
   "dcs.tip.magic_arrow.desc.red":"着弾地点に爆発を起こします。",
   "dcs.tip.magic_arrow.desc.green":"複数のモブを貫通してダメージを与えます。",
 
-  "## gui":"misc",
+  "dcs.tip.magic_card.name.white_common":"治癒",
+  "dcs.tip.magic_card.desc.white_common":"周囲のプレイヤーやモブのダメージ・悪性ポーション効果を治療する。",
+  "dcs.tip.magic_card.name.blue_common":"記憶",
+  "dcs.tip.magic_card.desc.blue_common":"リスポーン地点を登録する。(Overworld外でも有効。)",
+  "dcs.tip.magic_card.name.black_common":"追跡者",
+  "dcs.tip.magic_card.desc.black_common":"追跡のポーション効果を得る。",
+  "dcs.tip.magic_card.name.red_common":"爆風",
+  "dcs.tip.magic_card.desc.red_common":"着弾地点で爆発する矢を放つ。",
+  "dcs.tip.magic_card.name.green_common":"成長",
+  "dcs.tip.magic_card.desc.green_common":"周囲の植物を成長させる。",
+
+  "## gui_misc":"misc",
 
   "dcs.smelting":"気候精錬レシピ",
   "dcs.recipe":"気候利用クラフト",
@@ -777,8 +794,9 @@
   "item.minecraft.tripped_arrow.effect.long_cold_resistance":"冷気耐性の矢",
 
   "effect.dcs_climate.effect_wet":"ずぶ濡れ",
+  "effect.dcs_climate.effect_tracer":"追跡者",
 
-    "## gui":"jei",
+    "## gui_jei":"jei",
 
   "dcs.gui.jei.smelting_data":"気候精錬",
   "dcs.gui.jei.crop_data":"HaC作物図鑑",
@@ -799,7 +817,7 @@
   "dcs.gui.jei.tree_flower":"花期",
   "dcs.gui.jei.tree_crop":"収穫期",
 
-    "## gui":"waila",
+    "## gui_waila":"waila",
 
   "dcs.tip.waila.crop_stage":"Stage: ",
   "dcs.tip.waila.crop_harvest":"収穫できます",
@@ -811,7 +829,7 @@
   "dcs.tip.waila.smelting_tick_scheduled":"ブロック更新予定あり",
   "dcs.tip.waila.smelting_tick_not_scheduled":"ブロック更新なし",
 
-    "## advancement":"main",
+    "## advancement1":"main",
 
   "advancements.dcs_climate.main.root.title":"HeatAndClimateへようこそ!",
   "advancements.dcs_climate.main.root.desc":"HeatAndClimateを始めよう!",
@@ -842,7 +860,7 @@
   "advancements.dcs_climate.main.delicious.title":"味の探究",
   "advancements.dcs_climate.main.delicious.desc":"風味の良い食べ物を食べる。",
 
-    "## advancement":"magic",
+    "## advancement2":"magic",
 
   "advancements.dcs_climate.magic.root.title":"魔法の素",
   "advancements.dcs_climate.magic.root.desc":"色のエキスを手に入れる。",
@@ -851,7 +869,7 @@
   "advancements.dcs_climate.magic.gem.title":"宝石のもつ力",
   "advancements.dcs_climate.magic.gem.desc":"どれかの色の宝石アイテムを手に入れる。",
 
-    "## advancement":"metal",
+    "## advancement3":"metal",
 
   "advancements.dcs_climate.metal.root.title":"カラフルな鉱物",
   "advancements.dcs_climate.metal.root.desc":"色の鉱石を手に入れる。",
