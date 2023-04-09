@@ -133,10 +133,7 @@ public class PluginRecipeListDC {
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_DATE.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_OIL.get());
 
-		for (IClimateSmelting recipe : DCRecipes.INSTANCE.SMELTING) {
-			if (recipe.isActive())
-				SMELTING_LIST.add(recipe);
-		}
+		SMELTING_LIST.addAll(DCRecipes.INSTANCE.SMELTING.values());
 
 	}
 

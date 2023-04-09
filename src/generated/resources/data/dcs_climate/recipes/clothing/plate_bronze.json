@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": [
+      {
+        "tag": "forge:ingots/brass"
+      },
+      {
+        "tag": "forge:ingots/bronze"
+      }
+    ],
+    "Y": {
+      "tag": "forge:clothes"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/plate_bronze"
+  }
+}

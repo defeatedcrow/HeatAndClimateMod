@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/armor/jacket_linen_black"
+  },
+  "parent": "minecraft:item/generated"
+}

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 import com.google.common.collect.Sets;
 import com.google.gson.JsonObject;
@@ -31,6 +32,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 
@@ -78,6 +80,8 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		otherRecipes(cons);
 
 		smeltingRecipes(cons);
+
+		clothingRecipes(cons);
 
 	}
 
@@ -595,11 +599,281 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.save(cons, "dcs_climate:core/harpoon_steel1");
 	}
 
+	private static void clothingRecipes(Consumer<FinishedRecipe> cons) {
+		ShapedRecipeBuilder.shaped(CoreInit.PATTERN_HAT.get(), 1)
+			.pattern("XXX")
+			.pattern("XYX")
+			.define('X', Items.PAPER)
+			.define('Y', Items.CHARCOAL)
+			.unlockedBy("has_paper", has(Items.PAPER))
+			.save(cons, "dcs_climate:clothing/pattern_hat");
+
+		ShapedRecipeBuilder.shaped(CoreInit.PATTERN_JACKET.get(), 1)
+			.pattern("XYX")
+			.pattern("XXX")
+			.pattern("XXX")
+			.define('X', Items.PAPER)
+			.define('Y', Items.CHARCOAL)
+			.unlockedBy("has_paper", has(Items.PAPER))
+			.save(cons, "dcs_climate:clothing/pattern_jacket");
+
+		ShapedRecipeBuilder.shaped(CoreInit.PATTERN_SHIRT.get(), 1)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("X X")
+			.define('X', Items.PAPER)
+			.define('Y', Items.CHARCOAL)
+			.unlockedBy("has_paper", has(Items.PAPER))
+			.save(cons, "dcs_climate:clothing/pattern_shirt");
+
+		ShapedRecipeBuilder.shaped(CoreInit.PATTERN_SUITS.get(), 1)
+			.pattern("XXX")
+			.pattern("XXX")
+			.pattern("XYX")
+			.define('X', Items.PAPER)
+			.define('Y', Items.CHARCOAL)
+			.unlockedBy("has_paper", has(Items.PAPER))
+			.save(cons, "dcs_climate:clothing/pattern_suits");
+
+		ShapedRecipeBuilder.shaped(CoreInit.PATTERN_PANTS.get(), 1)
+			.pattern("X X")
+			.pattern("XYX")
+			.define('X', Items.PAPER)
+			.define('Y', Items.CHARCOAL)
+			.unlockedBy("has_paper", has(Items.PAPER))
+			.save(cons, "dcs_climate:clothing/pattern_pants");
+
+		Ingredient blass = Ingredient.fromValues(Stream.of(new Ingredient.TagValue(TagDC.ItemTag.INGOT_BRASS), new Ingredient.TagValue(TagDC.ItemTag.INGOT_BRONZE)));
+
+		ShapedRecipeBuilder.shaped(CoreInit.MET_BRONZE.get(), 1)
+			.pattern("XXX")
+			.pattern("XYX")
+			.define('X', blass)
+			.define('Y', TagDC.ItemTag.CLOTHS)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:clothing/helmet_bronze");
+
+		ShapedRecipeBuilder.shaped(CoreInit.CHEST_BRONZE.get(), 1)
+			.pattern("XYX")
+			.pattern("XXX")
+			.pattern("XXX")
+			.define('X', blass)
+			.define('Y', TagDC.ItemTag.CLOTHS)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:clothing/plate_bronze");
+
+		ShapedRecipeBuilder.shaped(CoreInit.LEGGINS_BRONZE.get(), 1)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("X X")
+			.define('X', blass)
+			.define('Y', TagDC.ItemTag.CLOTHS)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:clothing/chain_mail_bronze");
+
+		ShapedRecipeBuilder.shaped(CoreInit.BOOTS_BRONZE.get(), 1)
+			.pattern("X X")
+			.pattern("XYX")
+			.define('X', blass)
+			.define('Y', TagDC.ItemTag.CLOTHS)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:clothing/boots_bronze");
+
+		ShapedRecipeBuilder.shaped(CoreInit.MET_STEEL.get(), 1)
+			.pattern("XXX")
+			.pattern("XYX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', TagDC.ItemTag.CLOTHS)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:clothing/helmet_steel");
+
+		ShapedRecipeBuilder.shaped(CoreInit.CHEST_STEEL.get(), 1)
+			.pattern("XYX")
+			.pattern("XXX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', TagDC.ItemTag.CLOTHS)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:clothing/plate_steel");
+
+		ShapedRecipeBuilder.shaped(CoreInit.LEGGINS_STEEL.get(), 1)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("X X")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', TagDC.ItemTag.CLOTHS)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:clothing/chain_mail_steel");
+
+		ShapedRecipeBuilder.shaped(CoreInit.BOOTS_STEEL.get(), 1)
+			.pattern("X X")
+			.pattern("XYX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', TagDC.ItemTag.CLOTHS)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:clothing/boots_steel");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAT_LINEN.get(), 1)
+			.requires(CoreInit.PATTERN_HAT.get())
+			.requires(TagDC.ItemTag.FIBER_PLANT)
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_fiber_plant", has(TagDC.ItemTag.FIBER_PLANT))
+			.save(cons, "dcs_climate:clothing/hat_linen");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.JACKET_LINEN.get(), 1)
+			.requires(CoreInit.PATTERN_JACKET.get())
+			.requires(TagDC.ItemTag.CLOTH_PLANT)
+			.requires(TagDC.ItemTag.CLOTH_PLANT)
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_linen_cloth", has(TagDC.ItemTag.CLOTH_PLANT))
+			.save(cons, "dcs_climate:clothing/jacket_linen");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.SHIRT_LINEN.get(), 1)
+			.requires(CoreInit.PATTERN_SHIRT.get())
+			.requires(TagDC.ItemTag.CLOTH_PLANT)
+			.requires(TagDC.ItemTag.CLOTH_PLANT)
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_linen_cloth", has(TagDC.ItemTag.CLOTH_PLANT))
+			.save(cons, "dcs_climate:clothing/shirt_linen");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.PANTS_LINEN.get(), 1)
+			.requires(CoreInit.PATTERN_PANTS.get())
+			.requires(TagDC.ItemTag.CLOTH_PLANT)
+			.requires(TagDC.ItemTag.CLOTH_PLANT)
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_linen_cloth", has(TagDC.ItemTag.CLOTH_PLANT))
+			.save(cons, "dcs_climate:clothing/pants_linen");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAT_CLOTH.get(), 1)
+			.requires(CoreInit.PATTERN_HAT.get())
+			.requires(TagDC.ItemTag.CLOTH_COTTON)
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
+			.save(cons, "dcs_climate:clothing/hat_cotton");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.JACKET_CLOTH.get(), 1)
+			.requires(CoreInit.PATTERN_JACKET.get())
+			.requires(TagDC.ItemTag.CLOTH_COTTON)
+			.requires(TagDC.ItemTag.CLOTH_COTTON)
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
+			.save(cons, "dcs_climate:clothing/jacket_cotton");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.SHIRT_CLOTH.get(), 1)
+			.requires(CoreInit.PATTERN_SHIRT.get())
+			.requires(TagDC.ItemTag.CLOTH_COTTON)
+			.requires(TagDC.ItemTag.CLOTH_COTTON)
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
+			.save(cons, "dcs_climate:clothing/shirt_cotton");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.SUITS_CLOTH.get(), 1)
+			.requires(CoreInit.PATTERN_SUITS.get())
+			.requires(TagDC.ItemTag.CLOTH_COTTON)
+			.requires(TagDC.ItemTag.CLOTH_COTTON)
+			.requires(Ingredient.fromValues(Stream.of(new Ingredient.TagValue(TagDC.ItemTag.CROP_COTTON), new Ingredient.TagValue(ItemTags.WOOL))))
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
+			.save(cons, "dcs_climate:clothing/suits_cotton");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.PANTS_CLOTH.get(), 1)
+			.requires(CoreInit.PATTERN_PANTS.get())
+			.requires(TagDC.ItemTag.CLOTH_COTTON)
+			.requires(TagDC.ItemTag.CLOTH_COTTON)
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
+			.save(cons, "dcs_climate:clothing/pants_cotton");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.JACKET_WOOL.get(), 1)
+			.requires(CoreInit.PATTERN_JACKET.get())
+			.requires(TagDC.ItemTag.CLOTH_WOOL)
+			.requires(TagDC.ItemTag.CLOTH_WOOL)
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_wool_cloth", has(TagDC.ItemTag.CLOTH_WOOL))
+			.save(cons, "dcs_climate:clothing/jacket_wool");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.SUITS_LEATHER.get(), 1)
+			.requires(CoreInit.PATTERN_SUITS.get())
+			.requires(Tags.Items.LEATHER)
+			.requires(Tags.Items.LEATHER)
+			.requires(Ingredient.fromValues(Stream.of(new Ingredient.TagValue(TagDC.ItemTag.CROP_COTTON), new Ingredient.TagValue(ItemTags.WOOL))))
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_lether", has(Tags.Items.LEATHER))
+			.save(cons, "dcs_climate:clothing/suits_lether");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.LONG_MAID.get(), 1)
+			.requires(CoreInit.PATTERN_SUITS.get())
+			.requires(TagDC.ItemTag.CLOTH_COTTON)
+			.requires(TagDC.ItemTag.CLOTH_COTTON)
+			.requires(TagDC.ItemTag.DUST_SUGAR)
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
+			.save(cons, "dcs_climate:clothing/dress_maid");
+
+		clothColorRecipe(cons, CoreInit.HAT_LINEN.get(), CoreInit.HAT_LINEN_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "linen_hat");
+		clothColorRecipe(cons, CoreInit.HAT_LINEN.get(), CoreInit.HAT_LINEN_PINK.get(), Tags.Items.DYES_PINK, "pink", "linen_hat");
+		clothColorRecipe(cons, CoreInit.HAT_LINEN.get(), CoreInit.HAT_LINEN_RED.get(), Tags.Items.DYES_RED, "red", "linen_hat");
+
+		clothColorRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_BLACK.get(), Tags.Items.DYES_BLACK, "black", "cloth_hat");
+		clothColorRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "cloth_hat");
+		clothColorRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_GREEN.get(), Tags.Items.DYES_GREEN, "green", "cloth_hat");
+
+		clothColorRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_BLACK.get(), Tags.Items.DYES_BLACK, "black", "linen_jacket");
+		clothColorRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "linen_jacket");
+		clothColorRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_GRAY.get(), Tags.Items.DYES_GRAY, "gray", "linen_jacket");
+
+		clothColorRecipe(cons, CoreInit.JACKET_CLOTH.get(), CoreInit.JACKET_CLOTH_BLACK.get(), Tags.Items.DYES_BLACK, "black", "cloth_jacket");
+		clothColorRecipe(cons, CoreInit.JACKET_CLOTH.get(), CoreInit.JACKET_CLOTH_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "cloth_jacket");
+		clothColorRecipe(cons, CoreInit.JACKET_CLOTH.get(), CoreInit.JACKET_CLOTH_GRAY.get(), Tags.Items.DYES_GRAY, "gray", "cloth_jacket");
+
+		clothColorRecipe(cons, CoreInit.JACKET_WOOL.get(), CoreInit.JACKET_WOOL_CYAN.get(), Tags.Items.DYES_CYAN, "cyan", "wool_jacket");
+		clothColorRecipe(cons, CoreInit.JACKET_WOOL.get(), CoreInit.JACKET_WOOL_LIGHTBLUE.get(), Tags.Items.DYES_LIGHT_BLUE, "lightblue", "wool_jacket");
+		clothColorRecipe(cons, CoreInit.JACKET_WOOL.get(), CoreInit.JACKET_WOOL_RED.get(), Tags.Items.DYES_RED, "red", "wool_jacket");
+
+		clothColorRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_CYAN.get(), Tags.Items.DYES_CYAN, "cyan", "linen_shirt");
+		clothColorRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_GREEN.get(), Tags.Items.DYES_GREEN, "green", "linen_shirt");
+		clothColorRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_PINK.get(), Tags.Items.DYES_PINK, "pink", "linen_shirt");
+
+		clothColorRecipe(cons, CoreInit.SHIRT_CLOTH.get(), CoreInit.SHIRT_CLOTH_BLACK.get(), Tags.Items.DYES_BLACK, "black", "cloth_shirt");
+		clothColorRecipe(cons, CoreInit.SHIRT_CLOTH.get(), CoreInit.SHIRT_CLOTH_LIGHTBLUE.get(), Tags.Items.DYES_LIGHT_BLUE, "lightblue", "cloth_shirt");
+		clothColorRecipe(cons, CoreInit.SHIRT_CLOTH.get(), CoreInit.SHIRT_CLOTH_RED.get(), Tags.Items.DYES_RED, "red", "cloth_shirt");
+
+		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_GREEN.get(), Tags.Items.DYES_CYAN, "green", "linen_pants");
+		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_ORANGE.get(), Tags.Items.DYES_GREEN, "orange", "linen_pants");
+		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_WHITE.get(), Tags.Items.DYES_PINK, "white", "linen_pants");
+
+		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_BLUE.get(), Tags.Items.DYES_BLACK, "blue", "cloth_pants");
+		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_LIGHTBLUE.get(), Tags.Items.DYES_LIGHT_BLUE, "lightblue", "cloth_pants");
+		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_GRAY.get(), Tags.Items.DYES_RED, "gray", "cloth_pants");
+
+		clothColorRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "cloth_suits");
+		clothColorRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_BROWN.get(), Tags.Items.DYES_BROWN, "brown", "cloth_suits");
+		clothColorRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_GREEN.get(), Tags.Items.DYES_GREEN, "green", "cloth_suits");
+
+		clothColorRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_BLACK.get(), Tags.Items.DYES_BLACK, "black", "leather_suits");
+		clothColorRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_BROWN.get(), Tags.Items.DYES_BROWN, "brown", "leather_suits");
+		clothColorRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_WHITE.get(), Tags.Items.DYES_WHITE, "white", "leather_suits");
+
+		clothColorRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_BLACK.get(), Tags.Items.DYES_BLACK, "black", "dress_maid");
+		clothColorRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_BROWN.get(), Tags.Items.DYES_BROWN, "brown", "dress_maid");
+		clothColorRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_GRAY.get(), Tags.Items.DYES_GRAY, "gray", "dress_maid");
+	}
+
+	private static void clothColorRecipe(Consumer<FinishedRecipe> cons, ItemLike in, ItemLike out, TagKey<Item> color, String cname, String name) {
+		ShapelessRecipeBuilder.shapeless(out, 1)
+			.requires(in)
+			.requires(color)
+			.group("cloth_coloring")
+			.unlockedBy("has_" + name, has(in))
+			.save(cons, "dcs_climate:clothing/coloring_" + name + "_" + cname);
+	}
+
 	private static void smeltingRecipes(Consumer<FinishedRecipe> cons) {
 
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.GEM_FLINT), CoreInit.GEM_CHALCEDONY.get(), 200, "gem_chalcedony", Items.FLINT, "has_flint");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_CRYSTAL), BuildInit.GLASS_CRYSTAL.get().asItem(), 200, "dust_crystal", CoreInit.DUST_CRYSTAL.get(), "has_dust_crystal");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), CoreInit.DUST_ASH.get(), 200, "dust_ash", CoreInit.DUST_PLANT.get(), "has_dust_plant");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), CoreInit.DUST_ASH.get(), 200, "dust_wood", CoreInit.DUST_WOOD.get(), "has_dust_wood");
 	}
 
 	@Override

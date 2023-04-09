@@ -9,7 +9,7 @@ import net.minecraftforge.fml.LogicalSide;
 
 public class ClientTickEventDC {
 
-	private static int i = 10;
+	public static int i = 10;
 
 	private static boolean releaseHUDKey = true;
 

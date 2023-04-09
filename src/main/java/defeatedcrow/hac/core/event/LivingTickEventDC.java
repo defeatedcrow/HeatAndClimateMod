@@ -51,7 +51,6 @@ public class LivingTickEventDC {
 					if (living instanceof Player && ConfigCommonBuilder.INSTANCE.enPotionSharing.get()) {
 						onLivingPotionSharing(living);
 					}
-
 					onLivingUpdate(living);
 				}
 			}
@@ -59,8 +58,11 @@ public class LivingTickEventDC {
 	}
 
 	public static void onLivingUpdate(LivingEntity living) {
-		if (living.hasEffect(MobEffects.JUMP)) {
+		if (living.hasEffect(MobEffects.JUMP) || living.hasEffect(CoreInit.BIRD.get())) {
 			living.fallDistance = 0.0F;
+		}
+		if (living.hasEffect(CoreInit.FISH.get()) && living.getAirSupply() < living.getMaxAirSupply()) {
+			living.setAirSupply(living.getMaxAirSupply());
 		}
 		onLivingCharmUpdate(living);
 		onLivingEffectUpdate(living);

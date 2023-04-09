@@ -16,6 +16,7 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.phys.Vec2;
 import net.minecraftforge.common.MinecraftForge;
 
 public class CommonProxyDC {
@@ -46,8 +47,6 @@ public class CommonProxyDC {
 
 	public void registerRecipes() {
 		ClimateSmeltingList.init();
-
-		ClimateSmeltingConfig.loadFiles();
 		ClimateSmeltingConfig.initFile();
 	};
 
@@ -61,6 +60,22 @@ public class CommonProxyDC {
 
 	public boolean keyCharmPushed() {
 		return false;
+	}
+
+	public boolean keyJumpPushed() {
+		return false;
+	}
+
+	public boolean keySneakPushed() {
+		return false;
+	}
+
+	public boolean keyFowardPushed() {
+		return false;
+	}
+
+	public Vec2 getClientFoward() {
+		return Vec2.ZERO;
 	}
 
 	public void triggerAdvancement(LivingEntity player, String res) {

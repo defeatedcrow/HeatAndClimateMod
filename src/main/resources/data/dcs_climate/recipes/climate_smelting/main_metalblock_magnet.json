@@ -1,0 +1,24 @@
+{
+  "type": "dcs_climate:climate_smelting",
+  "group": "climate_smelting",
+  "result": {
+    "item": "dcs_climate:main/metalblock_magnet"
+  },
+  "ingredient": {
+    "item": "dcs_climate:main/dustblock_magnet"
+  },
+  "frequency": 100,
+  "heat": [
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT"
+  ]
+}

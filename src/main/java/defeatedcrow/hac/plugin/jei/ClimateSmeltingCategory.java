@@ -70,7 +70,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 	@Override
 	public void setRecipe(IRecipeLayoutBuilder builder, IClimateSmelting recipe, IFocusGroup focuses) {
 
-		builder.addSlot(RecipeIngredientRole.INPUT, 43, 5).addItemStacks(recipe.getProcessedInput());
+		builder.addSlot(RecipeIngredientRole.INPUT, 43, 5).addIngredients(recipe.getInput());
 
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 95, 5).addItemStack(recipe.getOutput().copy());
 

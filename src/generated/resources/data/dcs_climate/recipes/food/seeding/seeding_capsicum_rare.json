@@ -3,13 +3,13 @@
   "group": "seeding",
   "ingredients": [
     {
-      "item": "dcs_climate:food/crop_capsicum_common"
+      "item": "dcs_climate:food/crop_capsicum_rare"
     },
     {
       "item": "dcs_climate:main/seeding_pot"
     }
   ],
   "result": {
-    "item": "dcs_climate:food/cropblock_capsicum_common"
+    "item": "dcs_climate:food/cropblock_capsicum_rare"
   }
 }

@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.core.advancement.AdvancementProviderDC;
 import defeatedcrow.hac.core.advancement.trigger.TriggersDC;
 import defeatedcrow.hac.core.client.entity.EntityClientRegister;
+import defeatedcrow.hac.core.client.entity.EntityModelLoader;
 import defeatedcrow.hac.core.climate.ClimateCalculator;
 import defeatedcrow.hac.core.climate.ClimateHelper;
 import defeatedcrow.hac.core.climate.register.ArmorItemRegister;
@@ -29,9 +30,9 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.worldgen.FeatureInit;
 import defeatedcrow.hac.food.recipe.FoodRecipeProvider;
 import defeatedcrow.hac.magic.recipe.MagicRecipeProvider;
-import defeatedcrow.hac.plugin.jei.PluginRecipeListDC;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -87,6 +88,8 @@ public class ClimateCore {
 		CoreInit.EFFECTS.register(bus);
 		CoreInit.POTIONS.register(bus);
 		CoreInit.ENTITIES.register(bus);
+		CoreInit.RECIPE_TYPE.register(bus);
+		CoreInit.RECIPE_SEREALIZER.register(bus);
 		FeatureInit.FEATURES.register(bus);
 
 		TagDC.init();
@@ -94,6 +97,8 @@ public class ClimateCore {
 
 		bus.addListener(this::registerLayerDefinitions);
 		bus.addListener(this::registerEntityRenderers);
+		// bus.addListener(this::registerLayers);
+		bus.addListener(this::registerClientReloadListeners);
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
@@ -119,6 +124,14 @@ public class ClimateCore {
 		EntityClientRegister.registerEntityRenderers(event);
 	}
 
+	void registerLayers(EntityRenderersEvent.AddLayers event) {
+		EntityClientRegister.registerLayers(event);
+	}
+
+	void registerClientReloadListeners(RegisterClientReloadListenersEvent event) {
+		event.registerReloadListener(EntityModelLoader.INSTANCE);
+	}
+
 	public void commonSetup(FMLCommonSetupEvent event) {
 
 		proxy.commonInit();
@@ -126,8 +139,6 @@ public class ClimateCore {
 
 		DCPacket.INSTANCE.init();
 		event.enqueueWork(TileNBTFunction::init);
-
-		PluginRecipeListDC.init();
 	}
 
 	public void gatherData(GatherDataEvent event) {

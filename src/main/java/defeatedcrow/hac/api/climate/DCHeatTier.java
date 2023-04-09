@@ -267,14 +267,18 @@ public enum DCHeatTier {
 	public static List<DCHeatTier> getListFromName(List<String> names) {
 		List<DCHeatTier> ret = Lists.newArrayList();
 		if (names != null)
-			for (String name : names)
-				if (name != null && !name.isEmpty())
-					for (DCHeatTier t : DCHeatTier.elements()) {
-						if (t.name().equalsIgnoreCase(name)) {
-							ret.add(t);
-							break;
+			if (names.isEmpty() || names.contains("ANY")) {
+				ret.addAll(elements());
+			} else {
+				for (String name : names)
+					if (name != null && !name.isEmpty())
+						for (DCHeatTier t : DCHeatTier.elements()) {
+							if (t.name().equalsIgnoreCase(name)) {
+								ret.add(t);
+								break;
+							}
 						}
-					}
+			}
 		return ret;
 	}
 

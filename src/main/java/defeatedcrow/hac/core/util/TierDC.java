@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
@@ -17,13 +16,13 @@ public enum TierDC implements Tier {
 	BAMBOO(0, 128, 1.0F, 1.0F, 2, () -> {
 		return Ingredient.of(Tags.Items.RODS_WOODEN);
 	}),
-	BRASS(2, 401, 6.0F, 1.0F, 8, () -> {
+	BRASS(2, 401, 6.0F, 2.0F, 8, () -> {
 		return Ingredient.of(TagDC.ItemTag.INGOT_BRASS);
 	}),
-	STEEL(3, 750, 8.0F, 3.0F, 6, () -> {
+	STEEL(3, 750, 8.0F, 5.0F, 6, () -> {
 		return Ingredient.of(TagDC.ItemTag.INGOT_STEEL);
 	}),
-	AGATE(3, 32, 8.0F, 3.0F, 15, () -> {
+	AGATE(2, 33, 5.0F, 2.0F, 18, () -> {
 		return Ingredient.of(TagDC.ItemTag.GEM_AGATES);
 	});
 
@@ -32,7 +31,7 @@ public enum TierDC implements Tier {
 	private final float speed;
 	private final float damage;
 	private final int enchantmentValue;
-	private final LazyLoadedValue<Ingredient> repairIngredient;
+	private final Supplier<Ingredient> repairIngredient;
 
 	private TierDC(int lev, int use, float spd, float dam, int enc, Supplier<Ingredient> rep) {
 		this.level = lev;
@@ -40,7 +39,7 @@ public enum TierDC implements Tier {
 		this.speed = spd;
 		this.damage = dam;
 		this.enchantmentValue = enc;
-		this.repairIngredient = new LazyLoadedValue<>(rep);
+		this.repairIngredient = rep;
 	}
 
 	@Override

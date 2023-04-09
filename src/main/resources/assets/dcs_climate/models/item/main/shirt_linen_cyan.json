@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/armor/shirt_linen_cyan"
+  },
+  "parent": "minecraft:item/generated"
+}

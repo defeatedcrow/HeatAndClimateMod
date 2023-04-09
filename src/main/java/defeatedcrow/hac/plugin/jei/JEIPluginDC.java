@@ -39,6 +39,7 @@ public class JEIPluginDC implements IModPlugin {
 
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
+		PluginRecipeListDC.init();
 		registration.addRecipes(SMELTING_DATA, PluginRecipeListDC.SMELTING_LIST);
 		registration.addRecipes(CROP_DATA, PluginRecipeListDC.CROP_LIST);
 		registration.addRecipes(TREE_DATA, PluginRecipeListDC.TREE_LIST);

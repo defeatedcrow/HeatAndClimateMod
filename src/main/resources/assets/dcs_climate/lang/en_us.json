@@ -5,6 +5,7 @@
   "itemgroup.dcs.machine": "HeatAndClimate:Devices",
   "itemgroup.dcs.build": "HeatAndClimate:Building",
   "itemgroup.dcs.magic": "HeatAndClimate:Magic",
+  "itemgroup.dcs.clothing": "HeatAndClimate:Clothing",
 
     "## items_main":"main",
 
@@ -138,11 +139,17 @@
   "item.dcs_climate.magic.arrow_red":"Red Arrow",
   "item.dcs_climate.magic.arrow_green":"Green Arrow",
 
-  "item.dcs_climate.magic.card_white_common":"Magic Card (White)",
-  "item.dcs_climate.magic.card_blue_common":"Magic Card (Blue)",
-  "item.dcs_climate.magic.card_black_common":"Magic Card (Black)",
-  "item.dcs_climate.magic.card_red_common":"Magic Card (Red)",
-  "item.dcs_climate.magic.card_green_common":"Magic Card (Green)",
+  "item.dcs_climate.magic.card_white_common":"White Spell",
+  "item.dcs_climate.magic.card_blue_common":"Blue Spell",
+  "item.dcs_climate.magic.card_black_common":"Black Spell",
+  "item.dcs_climate.magic.card_red_common":"Red Spell",
+  "item.dcs_climate.magic.card_green_common":"Green Spell",
+
+  "item.dcs_climate.magic.card_white_uncommon":"Superior White Spell",
+  "item.dcs_climate.magic.card_blue_uncommon":"Superior Blue Spell",
+  "item.dcs_climate.magic.card_black_uncommon":"Superior Black Spell",
+  "item.dcs_climate.magic.card_red_uncommon":"Superior Red Spell",
+  "item.dcs_climate.magic.card_green_uncommon":"Superior Green Spell",
 
     "## items_food":"food",
 
@@ -288,10 +295,15 @@
   "item.dcs_climate.food.fiber_plant":"Plant Fiber",
   "item.dcs_climate.food.fiber_wood":"Bark Fiber",
   "item.dcs_climate.food.fiber_beeswax":"Beeswax",
+
   "item.dcs_climate.food.string_plant":"Plant String",
   "item.dcs_climate.food.string_tree":"Bark String",
   "item.dcs_climate.food.string_wool":"Wool String",
   "item.dcs_climate.food.string_cotton":"Cotton String",
+  "item.dcs_climate.food.cloth_plant":"Plant Cloth",
+  "item.dcs_climate.food.cloth_tree":"Bark Cloth",
+  "item.dcs_climate.food.cloth_wool":"Wool Cloth",
+  "item.dcs_climate.food.cloth_cotton":"Cotton Cloth",
 
   "item.dcs_climate.food.dust_defatted_soy":"Defatted Soy",
   "item.dcs_climate.food.dust_press_cake":"Press Cake",
@@ -355,6 +367,84 @@
   "item.dcs_climate.food.salad_potato":"Potato Salad",
   "item.dcs_climate.food.salad_nuts":"Nut and Beens Salad",
   "item.dcs_climate.food.salad_melon":"Watermelon Salad",
+
+    "## items_wear":"waer",
+
+  "item.dcs_climate.main.pattern_paper_wear":"Pattern for Hat",
+  "item.dcs_climate.main.pattern_paper_jacket":"Pattern for Jacket",
+  "item.dcs_climate.main.pattern_paper_shirt":"Pattern for Shirt",
+  "item.dcs_climate.main.pattern_paper_suits":"Pattern for Suits",
+  "item.dcs_climate.main.pattern_paper_pants":"Pattern for Pants",
+
+  "item.dcs_climate.main.helmet_bronze":"Alloy Helmet",
+  "item.dcs_climate.main.plate_bronze":"Alloy Plate",
+  "item.dcs_climate.main.chain_mail_bronze":"Alloy Chain Mail",
+  "item.dcs_climate.main.boots_bronze":"Alloy Boots",
+
+  "item.dcs_climate.main.helmet_steel":"Steel Helmet",
+  "item.dcs_climate.main.plate_steel":"Steel Plate",
+  "item.dcs_climate.main.chain_mail_steel":"Steel Chain Mail",
+  "item.dcs_climate.main.boots_steel":"Steel Boots",
+
+  "item.dcs_climate.main.hat_linen":"Straw Hat",
+  "item.dcs_climate.main.hat_linen_red":"Straw Hat(Red)",
+  "item.dcs_climate.main.hat_linen_blue":"Straw Hat(Blue)",
+  "item.dcs_climate.main.hat_linen_pink":"Straw Hat(Pink)",
+
+  "item.dcs_climate.main.hat_cloth":"Cloth Hat",
+  "item.dcs_climate.main.hat_cloth_black":"Cloth Hat(Black)",
+  "item.dcs_climate.main.hat_cloth_blue":"Cloth Hat(Blue)",
+  "item.dcs_climate.main.hat_cloth_green":"Cloth Hat(Green)",
+
+  "item.dcs_climate.main.jacket_linen":"Linen Vest",
+  "item.dcs_climate.main.jacket_linen_black":"Linen Vest(Black)",
+  "item.dcs_climate.main.jacket_linen_gray":"Linen Vest(Gray)",
+  "item.dcs_climate.main.jacket_linen_blue":"Linen Vest(Blue)",
+
+  "item.dcs_climate.main.jacket_cloth":"Cloth Jacket",
+  "item.dcs_climate.main.jacket_cloth_black":"Cloth Jacket(Black)",
+  "item.dcs_climate.main.jacket_cloth_gray":"Cloth Jacket(Gray)",
+  "item.dcs_climate.main.jacket_cloth_blue":"Cloth Jacket(Blue)",
+
+  "item.dcs_climate.main.jacket_wool":"Cardigan",
+  "item.dcs_climate.main.jacket_wool_cyan":"Cardigan(Cyan)",
+  "item.dcs_climate.main.jacket_wool_lightblue":"Cardigan(Light Blue)",
+  "item.dcs_climate.main.jacket_wool_red":"Cardigan(Red)",
+
+  "item.dcs_climate.main.shirt_linen":"T-Shirt",
+  "item.dcs_climate.main.shirt_linen_cyan":"T-Shirt(Cyan)",
+  "item.dcs_climate.main.shirt_linen_pink":"T-Shirt(Pink)",
+  "item.dcs_climate.main.shirt_linen_green":"T-Shirt(Green)",
+
+  "item.dcs_climate.main.shirt_cloth":"Cotton Shirt",
+  "item.dcs_climate.main.shirt_cloth_black":"Cotton Shirt(Black)",
+  "item.dcs_climate.main.shirt_cloth_red":"Cotton Shirt(Red)",
+  "item.dcs_climate.main.shirt_cloth_lightblue":"Cotton Shirt(Light Blue)",
+
+  "item.dcs_climate.main.pants_linen":"Linen Pants",
+  "item.dcs_climate.main.pants_linen_green":"Linen Pants(Green)",
+  "item.dcs_climate.main.pants_linen_orange":"Linen Pants(Orange)",
+  "item.dcs_climate.main.pants_linen_white":"Linen Pants(White)",
+
+  "item.dcs_climate.main.pants_cloth":"Denim Pants",
+  "item.dcs_climate.main.pants_cloth_blue":"Denim Pants(Blue)",
+  "item.dcs_climate.main.pants_cloth_lightblue":"Denim Pants(Light Blue)",
+  "item.dcs_climate.main.pants_cloth_gray":"Denim Pants(Gray)",
+
+  "item.dcs_climate.main.suits_leather":"Lether Doublet",
+  "item.dcs_climate.main.suits_leather_black":"Lether Doublet(Black)",
+  "item.dcs_climate.main.suits_leather_brown":"Lether Doublet(Brown)",
+  "item.dcs_climate.main.suits_leather_white":"Lether Doublet(White)",
+
+  "item.dcs_climate.main.suits_cloth":"Quilted Doublet",
+  "item.dcs_climate.main.suits_cloth_blue":"Quilted Doublet(Blue)",
+  "item.dcs_climate.main.suits_cloth_brown":"Quilted Doublet(Brown)",
+  "item.dcs_climate.main.suits_cloth_green":"Quilted Doublet(Green)",
+
+  "item.dcs_climate.main.dress_maid":"Maid Dress",
+  "item.dcs_climate.main.dress_maid_black":"Maid Dress(Black)",
+  "item.dcs_climate.main.dress_maid_gray":"Maid Dress(Gray)",
+  "item.dcs_climate.main.dress_maid_brown":"Maid Dress(Brown)",
 
     "## blocks_main":"main",
 
@@ -765,6 +855,17 @@
   "dcs.tip.magic_card.name.green_common":"Grow",
   "dcs.tip.magic_card.desc.green_common":"Grow plants around the player.",
 
+  "dcs.tip.magic_card.name.white_uncommon":"Bird",
+  "dcs.tip.magic_card.desc.white_uncommon":"Gain potion effect of bird.",
+  "dcs.tip.magic_card.name.blue_uncommon":"Fish",
+  "dcs.tip.magic_card.desc.blue_uncommon":"Gain potion effect of fish.",
+  "dcs.tip.magic_card.name.black_uncommon":"Robber",
+  "dcs.tip.magic_card.desc.black_uncommon":"Steals any armor worn by the target.",
+  "dcs.tip.magic_card.name.red_uncommon":"Flag Bearer",
+  "dcs.tip.magic_card.desc.red_uncommon":"The user becomes the target of attacks by surrounding enemies.",
+  "dcs.tip.magic_card.name.green_uncommon":"Binding",
+  "dcs.tip.magic_card.desc.green_uncommon":"Binds the target mob for 1 minute.",
+
   "## gui_misc":"misc",
 
   "dcs.smelting":"Climate Smelting",
@@ -798,6 +899,10 @@
 
   "effect.dcs_climate.effect_wet":"Wet",
   "effect.dcs_climate.effect_tracer":"Tracer",
+  "effect.dcs_climate.effect_bird":"Blessing of Bird",
+  "effect.dcs_climate.effect_fish":"Blessing of Fish",
+  "effect.dcs_climate.effect_clairvoyance":"Clairvoyance",
+  "effect.dcs_climate.effect_flag":"Flag Bearer",
 
     "## gui_jei":"jei",
 

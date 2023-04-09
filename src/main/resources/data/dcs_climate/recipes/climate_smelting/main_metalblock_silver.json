@@ -1,0 +1,24 @@
+{
+  "type": "dcs_climate:climate_smelting",
+  "group": "climate_smelting",
+  "result": {
+    "item": "dcs_climate:main/metalblock_silver"
+  },
+  "ingredient": {
+    "item": "dcs_climate:main/dustblock_silver"
+  },
+  "frequency": 100,
+  "heat": [
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT"
+  ]
+}

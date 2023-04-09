@@ -20,6 +20,7 @@ import defeatedcrow.hac.api.damage.IArmorMaterialRegister;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.JsonFileFilter;
+import defeatedcrow.hac.core.util.MaterialsDC;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 
@@ -37,6 +38,10 @@ public class ArmorMaterialRegister implements IArmorMaterialRegister {
 		registerMaterial(ArmorMaterials.DIAMOND, 1.0F, 1.0F);
 		registerMaterial(ArmorMaterials.TURTLE, 1.0F, 1.0F);
 		registerMaterial(ArmorMaterials.NETHERITE, 3.0F, 0.0F);
+		registerMaterial(MaterialsDC.LINEN, 2.0F, 1.0F);
+		registerMaterial(MaterialsDC.CLOTH, 2.0F, 2.0F);
+		registerMaterial(MaterialsDC.WOOL, 0.0F, 3.0F);
+		registerMaterial(MaterialsDC.SILK, 3.0F, 0.0F);
 	}
 
 	@Override

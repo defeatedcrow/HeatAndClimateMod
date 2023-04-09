@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "cloth_coloring",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/jacket_linen"
+    },
+    {
+      "tag": "forge:dyes/gray"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/jacket_linen_gray"
+  }
+}

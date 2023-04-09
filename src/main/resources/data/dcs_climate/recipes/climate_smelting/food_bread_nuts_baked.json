@@ -1,0 +1,27 @@
+{
+  "type": "dcs_climate:climate_smelting",
+  "group": "climate_smelting",
+  "result": {
+    "item": "dcs_climate:food/bread_nuts_baked"
+  },
+  "ingredient": {
+    "item": "dcs_climate:food/bread_nuts_raw"
+  },
+  "frequency": 120,
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "DRY",
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

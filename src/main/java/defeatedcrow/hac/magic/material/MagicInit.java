@@ -5,13 +5,16 @@ import java.util.function.Supplier;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
+import defeatedcrow.hac.core.material.entity.ChairEntity;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Magic;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.magic.material.block.MagicSmallLight;
+import defeatedcrow.hac.magic.material.entity.ArrowBindPlant;
 import defeatedcrow.hac.magic.material.entity.ArrowBlack;
 import defeatedcrow.hac.magic.material.entity.ArrowBlue;
 import defeatedcrow.hac.magic.material.entity.ArrowGreen;
 import defeatedcrow.hac.magic.material.entity.ArrowRed;
+import defeatedcrow.hac.magic.material.entity.ArrowRobber;
 import defeatedcrow.hac.magic.material.entity.ArrowWhite;
 import defeatedcrow.hac.magic.material.item.BlackArrowItem;
 import defeatedcrow.hac.magic.material.item.BlueArrowItem;
@@ -20,10 +23,15 @@ import defeatedcrow.hac.magic.material.item.MagicMaterialItemDC;
 import defeatedcrow.hac.magic.material.item.RedArrowItem;
 import defeatedcrow.hac.magic.material.item.WhiteArrowItem;
 import defeatedcrow.hac.magic.material.item.card.CardBlackT1;
+import defeatedcrow.hac.magic.material.item.card.CardBlackT2;
 import defeatedcrow.hac.magic.material.item.card.CardBlueT1;
+import defeatedcrow.hac.magic.material.item.card.CardBlueT2;
 import defeatedcrow.hac.magic.material.item.card.CardGreenT1;
+import defeatedcrow.hac.magic.material.item.card.CardGreenT2;
 import defeatedcrow.hac.magic.material.item.card.CardRedT1;
+import defeatedcrow.hac.magic.material.item.card.CardRedT2;
 import defeatedcrow.hac.magic.material.item.card.CardWhiteT1;
+import defeatedcrow.hac.magic.material.item.card.CardWhiteT2;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -48,6 +56,16 @@ public class MagicInit {
 		.sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("arrow_red"));
 	public static final RegistryObject<EntityType<ArrowGreen>> ARROW_GREEN_ENTITY = CoreInit.ENTITIES.register("arrow_green", () -> EntityType.Builder.<ArrowGreen>of(ArrowGreen::new, MobCategory.MISC)
 		.sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("arrow_green"));
+
+	public static final RegistryObject<EntityType<ArrowRobber>> ARROW_ROBBER_ENTITY = CoreInit.ENTITIES.register("arrow_robber", () -> EntityType.Builder.<ArrowRobber>of(ArrowRobber::new, MobCategory.MISC)
+		.sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("arrow_robber"));
+	public static final RegistryObject<EntityType<ArrowBindPlant>> ARROW_BIND_ENTITY = CoreInit.ENTITIES.register("arrow_bind", () -> EntityType.Builder.<ArrowBindPlant>of(ArrowBindPlant::new, MobCategory.MISC)
+		.sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("arrow_bind"));
+
+	public static final RegistryObject<EntityType<ChairEntity>> BIND_PLANT_ENTITY = CoreInit.ENTITIES.register("bind_plant", () -> EntityType.Builder.<ChairEntity>of(ChairEntity::new, MobCategory.MISC)
+		.sized(1.0F, 0.25F).clientTrackingRange(4).updateInterval(20).build("bind_plant"));
+	public static final RegistryObject<EntityType<ChairEntity>> BIND_ELECTRIC_ENTITY = CoreInit.ENTITIES.register("bind_electric", () -> EntityType.Builder.<ChairEntity>of(ChairEntity::new, MobCategory.MISC)
+		.sized(1.0F, 0.25F).clientTrackingRange(8).updateInterval(20).build("bind_electric"));
 
 	public static final RegistryObject<Item> DROP_WHITE = regItem("drop_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "drop_w", TagDC.ItemTag.DROP_WHITE).setDomain("magic"));
 	public static final RegistryObject<Item> DROP_BLUE = regItem("drop_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "drop_u", TagDC.ItemTag.DROP_BLUE).setDomain("magic"));
@@ -81,6 +99,12 @@ public class MagicInit {
 	public static final RegistryObject<Item> CARD_BLACK_1 = regItem("card_black_common", () -> new CardBlackT1());
 	public static final RegistryObject<Item> CARD_RED_1 = regItem("card_red_common", () -> new CardRedT1());
 	public static final RegistryObject<Item> CARD_GREEN_1 = regItem("card_green_common", () -> new CardGreenT1());
+
+	public static final RegistryObject<Item> CARD_WHITE_2 = regItem("card_white_uncommon", () -> new CardWhiteT2());
+	public static final RegistryObject<Item> CARD_BLUE_2 = regItem("card_blue_uncommon", () -> new CardBlueT2());
+	public static final RegistryObject<Item> CARD_BLACK_2 = regItem("card_black_uncommon", () -> new CardBlackT2());
+	public static final RegistryObject<Item> CARD_RED_2 = regItem("card_red_uncommon", () -> new CardRedT2());
+	public static final RegistryObject<Item> CARD_GREEN_2 = regItem("card_green_uncommon", () -> new CardGreenT2());
 
 	public static final RegistryObject<Block> SMALL_LIGHT = regBlock("magic_small_light", () -> new MagicSmallLight(), null);
 

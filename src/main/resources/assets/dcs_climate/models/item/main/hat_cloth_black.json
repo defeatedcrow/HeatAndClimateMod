@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/armor/hat_cloth_black"
+  },
+  "parent": "minecraft:item/generated"
+}

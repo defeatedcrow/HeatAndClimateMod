@@ -421,6 +421,11 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_jute", has(TagDC.ItemTag.CROP_JUTE))
 			.save(cons, "dcs_climate:food/jute_fiber_plant");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_PLANT.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.WEED))
+			.unlockedBy("has_weed", has(TagDC.ItemTag.WEED))
+			.save(cons, "dcs_climate:food/jute_fiber_plant");
+
 		// misc
 
 		ShapedRecipeBuilder.shaped(FoodInit.PLANK_RE_SORGHUM.get(), 1)
@@ -544,6 +549,30 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.requires(Ingredient.of(TagDC.ItemTag.OFFAL))
 			.unlockedBy("has_offal", has(TagDC.ItemTag.OFFAL))
 			.save(cons, "dcs_climate:food/raw_sausage_offal");
+
+		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_PLANT.get(), 1)
+			.pattern(" X ")
+			.pattern("X X")
+			.pattern(" X ")
+			.define('X', Ingredient.of(TagDC.ItemTag.STRING_PLANT))
+			.unlockedBy("has_plant_string", has(TagDC.ItemTag.STRING_PLANT))
+			.save(cons, "dcs_climate:core/cloth_plant");
+
+		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_COTTON.get(), 1)
+			.pattern(" X ")
+			.pattern("X X")
+			.pattern(" X ")
+			.define('X', Ingredient.of(TagDC.ItemTag.STRING_COTTON))
+			.unlockedBy("has_cotton_string", has(TagDC.ItemTag.STRING_COTTON))
+			.save(cons, "dcs_climate:core/cloth_cotton");
+
+		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_WOOL.get(), 1)
+			.pattern(" X ")
+			.pattern("X X")
+			.pattern(" X ")
+			.define('X', Ingredient.of(TagDC.ItemTag.STRING_WOOL))
+			.unlockedBy("has_plant_string", has(TagDC.ItemTag.STRING_WOOL))
+			.save(cons, "dcs_climate:core/cloth_wool");
 
 	}
 

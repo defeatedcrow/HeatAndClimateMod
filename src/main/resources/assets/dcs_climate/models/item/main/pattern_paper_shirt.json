@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/material/pattern_paper_shirt"
+  },
+  "parent": "minecraft:item/generated"
+}

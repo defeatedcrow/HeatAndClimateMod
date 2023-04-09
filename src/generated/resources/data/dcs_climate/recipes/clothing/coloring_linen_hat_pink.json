@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "cloth_coloring",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/hat_linen"
+    },
+    {
+      "tag": "forge:dyes/pink"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/hat_linen_pink"
+  }
+}

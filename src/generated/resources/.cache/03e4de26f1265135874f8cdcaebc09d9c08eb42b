@@ -1,4 +1,4 @@
-// 1.19.2	2023-03-22T00:31:50.0759598	Tags for minecraft:item
+// 1.19.2	2023-04-09T22:38:34.5708569	Tags for minecraft:item
 9691b8fa959d0c2eca43b928b1d45c3e5fa4fb15 data/dcs_climate/tags/items/color_drops.json
 1003b47c0766f332ef739eaf3b5ea767d6e9f6c1 data/dcs_climate/tags/items/color_drops/black.json
 969f3e30f0b86599ab5d03e4f9004392ecbef823 data/dcs_climate/tags/items/color_drops/blue.json
@@ -49,13 +49,17 @@ bfa015168a13af280008c0441234c8dbb341958b data/dcs_climate/tags/items/gems/black.
 717866aa09166edec1fe66aa17c2353a923a2128 data/dcs_climate/tags/items/gems/green.json
 cd6d18dc51b62418c5466f9fba750545c3b74e79 data/dcs_climate/tags/items/gems/red.json
 fa6626c4d374bc0da9891eb041c6a80385f76161 data/dcs_climate/tags/items/gems/white.json
-4505a9627a494e04ac8f8d5fcf75c486679794cd data/dcs_climate/tags/items/magic_card.json
+5f86011b18234fdffe1c0ec57ef0c3468ea09583 data/dcs_climate/tags/items/magic_card.json
 6430da8ed20b60e93622f4512219d1ff14aefcd8 data/dcs_climate/tags/items/mana_drops.json
 14cef5e12e14cfde96c79f6a0d3142b02c0730a3 data/dcs_climate/tags/items/mana_extractss.json
 49d7be85516a4f729914940353ab9fa2019c4a47 data/dcs_climate/tags/items/raw_foods.json
 7d6fd01964c88a56cda99333872579b37ef749b0 data/forge/tags/items/animal_feeds/compound.json
 0332ee57f7973ff3aa0e5f810558555ce7563caf data/forge/tags/items/animal_feeds/hay.json
 7f473b6b18af20cad07cd66ab6dce77e93ea4f56 data/forge/tags/items/animal_feeds/straw.json
+16f0c29d53c26e277a717e116af209100cafa85d data/forge/tags/items/clothes.json
+518917c86ad0f68a4b941321fa200bf24bea8795 data/forge/tags/items/clothes/cotton.json
+26e0f225b40916d09dc876106ca05c43da385f9f data/forge/tags/items/clothes/plant.json
+b858f7f81af10701fff014d785d71270d4b65dc1 data/forge/tags/items/clothes/wool.json
 33e0e0947c0d39c317d605836b032d580f9109ce data/forge/tags/items/crafting_tools/mortar.json
 13ce2131f2fd5a9d7277d4786ea9e30f0391ab02 data/forge/tags/items/crafting_tools/seeding_pot.json
 940e64f7498d44c5827d2f17cdaa1a589630f6ab data/forge/tags/items/crafting_tools/sieve.json
@@ -450,10 +454,13 @@ bcbe4534a8ff5e5f295315dea5dae732a182c0b0 data/forge/tags/items/storage_blocks/co
 0b293ed9d351ab3e23254defe88726b136b04a0f data/forge/tags/items/storage_blocks/steel.json
 31ceb9f8edfa6a914ccc09eb53b641d4f995a27e data/forge/tags/items/storage_blocks/sus.json
 48d87fe2c91e74ff38e934ef3fa98be51c0b4fa6 data/forge/tags/items/storage_blocks/titanium.json
-e06e2e811f0aca3a2da15e60b43ef4fef7a429a2 data/forge/tags/items/string.json
+2ed46804ff9a01e08811d281a2c017ff685b2291 data/forge/tags/items/string.json
+c74380900e83f72f6211faba04db996211a8a7b6 data/forge/tags/items/strings/cotton.json
+49e74b9023d0e71ccbfc965cfa77ccdaae4eb7a5 data/forge/tags/items/strings/plant.json
+f9e2731ef013b8cbb4cb5e48fa5e33c399ee1489 data/forge/tags/items/strings/wool.json
 e269b8cd8da37045c2db781d6f4861a803e874e6 data/forge/tags/items/tools/harpoon.json
 22fbf7d0b699c28004e0916f81f7bd04fc6cd621 data/forge/tags/items/tools/scythes.json
-61c67ddfff04961b9f856eb1779c714fe36e00d1 data/forge/tags/items/weed.json
+f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/items/weed.json
 18693f8762776180171770992989e15666e10425 data/minecraft/tags/items/arrows.json
 d6b36364c12ec873dc34bdc6264bdeff73c0e123 data/minecraft/tags/items/leaves.json
 214b7a8dbcc2d5c38d35c4bdb40475e67047da9b data/minecraft/tags/items/logs_that_burn.json

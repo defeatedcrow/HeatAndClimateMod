@@ -1,8 +1,10 @@
 package defeatedcrow.hac.core.recipe.smelting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
@@ -16,98 +18,63 @@ import defeatedcrow.hac.core.util.DCItemUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class ClimateSmelting implements IClimateSmelting {
 
-	private final Object input;
-	private ArrayList<ItemStack> processedInput;
-	private final ItemStack output;
+	private Ingredient ingredient;
+	private final ItemStack result;
 
 	private final int frequency;
 	private List<DCHeatTier> heat = new ArrayList<DCHeatTier>();
 	private List<DCHumidity> hum = new ArrayList<DCHumidity>();
 	private List<DCAirflow> air = new ArrayList<DCAirflow>();
 
-	private final boolean active;
-
-	public ClimateSmelting(boolean act, ItemStack o, DCHeatTier t, DCHumidity h, DCAirflow a, int freq,
-			Object i) {
-		active = act;
-		input = i;
-		output = o;
-		if (t != null) {
-			heat.add(t);
-		} else {
-			heat.addAll(DCHeatTier.elements());
-		}
-		if (h != null) {
-			hum.add(h);
-		} else {
-			hum.addAll(DCHumidity.elements());
-		}
-		if (a != null) {
-			air.add(a);
-		} else {
-			air.addAll(DCAirflow.elements());
-		}
-		processedInput = DCItemUtil.getProcessedList(input);
-		frequency = freq;
+	public ClimateSmelting(String group, ItemStack o, List<String> t, List<String> h, List<String> a, int freq, Ingredient i) {
+		this(o, DCHeatTier.getListFromName(t), DCHumidity.getListFromName(h), DCAirflow.getListFromName(a), freq, DCItemUtil.getIngredient(i));
 	}
 
-	public ClimateSmelting(boolean act, ItemStack o, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, int freq,
-			Object i) {
-		active = act;
-		input = i;
-		output = o;
-		if (t != null) {
+	public ClimateSmelting(ItemStack o, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, int freq,
+			Ingredient i) {
+		ingredient = DCItemUtil.getIngredient(i);
+		result = o;
+		if (t != null && !t.isEmpty()) {
 			heat.addAll(t);
 		} else {
 			heat.addAll(DCHeatTier.elements());
 		}
-		if (h != null) {
+		if (h != null && !h.isEmpty()) {
 			hum.addAll(h);
 		} else {
 			hum.addAll(DCHumidity.elements());
 		}
-		if (a != null) {
+		if (a != null && !a.isEmpty()) {
 			air.addAll(a);
 		} else {
 			air.addAll(DCAirflow.elements());
 		}
-		processedInput = DCItemUtil.getProcessedList(input);
 		frequency = freq;
 	}
 
 	@Override
-	public Object getInput() {
-		return input;
+	public Ingredient getInput() {
+		return ingredient;
 	}
 
 	@Override
 	public ItemStack getOutput() {
-		return output.copy();
-	}
-
-	@Override
-	public List<ItemStack> getProcessedInput() {
-		return processedInput;
+		return result.copy();
 	}
 
 	@Override
 	public boolean matcheInput(ItemStack item) {
-		ArrayList<ItemStack> required = new ArrayList<>(DCItemUtil.getProcessedList(input));
-		if (!item.isEmpty() && !required.isEmpty()) {
-			Iterator<ItemStack> itr = required.iterator();
-			boolean match = false;
-			while (itr.hasNext() && !match) {
-				match = DCItemUtil.isSameItem(itr.next(), item, match);
-			}
-			itr = null;
-			return match;
+		if (item.isEmpty() || ingredient.isEmpty()) {
+			return false;
 		}
-		return false;
+		return ingredient.test(item);
 	}
 
 	@Override
@@ -126,7 +93,7 @@ public class ClimateSmelting implements IClimateSmelting {
 
 	@Override
 	public boolean hasBlockProcess() {
-		if (output.getItem() instanceof BlockItem) {
+		if (result.getItem() instanceof BlockItem) {
 			return true;
 		}
 		return false;
@@ -134,7 +101,7 @@ public class ClimateSmelting implements IClimateSmelting {
 
 	@Override
 	public boolean hasEntityProcess() {
-		if (output.getItem() instanceof IEntityItem) {
+		if (result.getItem() instanceof IEntityItem) {
 			return true;
 		}
 		return false;
@@ -178,25 +145,49 @@ public class ClimateSmelting implements IClimateSmelting {
 		if (!(obj instanceof ClimateSmelting))
 			return false;
 		ClimateSmelting target = (ClimateSmelting) obj;
-		return DCItemUtil.isSameItem(output, target.getOutput(), false) && target.getInput() == input;
+		return DCItemUtil.isSameItem(result, target.getOutput(), false) && target.getInput() == ingredient;
 	}
 
 	@Override
 	public boolean hasRandomTick() {
-		if (processedInput.isEmpty())
+		if (ingredient.isEmpty())
 			return false;
-		if (processedInput.get(0).getItem() instanceof BlockItem) {
-			Block block = ((BlockItem) processedInput.get(0).getItem()).getBlock();
+
+		ItemStack top = ingredient.getItems()[0];
+		if (top.getItem() instanceof BlockItem) {
+			Block block = ((BlockItem) top.getItem()).getBlock();
 			return block.isRandomlyTicking(block.defaultBlockState());
-		} else if (processedInput.get(0).getItem() instanceof IEntityItem) {
+		} else if (top.getItem() instanceof IEntityItem) {
 			return true;
 		}
 		return true;
 	}
 
 	@Override
-	public boolean isActive() {
-		return active;
-	}
+	public JsonObject toJson() {
+		JsonObject json = new JsonObject();
+		json.addProperty("type", "dcs_climate:climate_smelting");
+		json.addProperty("group", "climate_smelting");
 
+		JsonObject ret = new JsonObject();
+		ret.addProperty("item", ForgeRegistries.ITEMS.getKey(result.getItem()).toString());
+		json.add("result", ret);
+
+		json.add("ingredient", ingredient.toJson());
+		json.addProperty("frequency", frequency);
+
+		JsonArray heats = new JsonArray();
+		heat.forEach(h -> heats.add(h.name()));
+		json.add("heat", heats);
+
+		JsonArray hums = new JsonArray();
+		hum.forEach(h -> hums.add(h.name()));
+		json.add("hum", hums);
+
+		JsonArray airs = new JsonArray();
+		air.forEach(h -> airs.add(h.name()));
+		json.add("air", airs);
+
+		return json;
+	}
 }

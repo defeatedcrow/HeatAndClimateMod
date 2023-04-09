@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/armor/plate_bronze"
+  },
+  "parent": "minecraft:item/generated"
+}

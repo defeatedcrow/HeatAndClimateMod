@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/pattern_paper_shirt"
+    },
+    {
+      "tag": "forge:clothes/plant"
+    },
+    {
+      "tag": "forge:clothes/plant"
+    },
+    {
+      "tag": "forge:string"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/shirt_linen"
+  }
+}

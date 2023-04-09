@@ -521,6 +521,15 @@ public class TagDC {
 		public static final TagKey<Item> STICK_BAMBOO = itemTag("rods/bamboo");
 		public static final TagKey<Item> FOOD_WAX = itemTag("ingredients/wax");
 
+		public static final TagKey<Item> STRING_PLANT = itemTag("strings/plant");
+		public static final TagKey<Item> STRING_COTTON = itemTag("strings/cotton");
+		public static final TagKey<Item> STRING_WOOL = itemTag("strings/wool");
+
+		public static final TagKey<Item> CLOTH_PLANT = itemTag("clothes/plant");
+		public static final TagKey<Item> CLOTH_COTTON = itemTag("clothes/cotton");
+		public static final TagKey<Item> CLOTH_WOOL = itemTag("clothes/wool");
+		public static final TagKey<Item> CLOTHS = itemTag("clothes");
+
 		public static final TagKey<Item> FISH_POWDER = itemTag("ingredients/fish_powder");
 		public static final TagKey<Item> DEFATTED_SOY = itemTag("ingredients/defatted_soy");
 		public static final TagKey<Item> PRESS_CAKE = itemTag("ingredients/press_cake");

@@ -103,14 +103,18 @@ public enum DCHumidity {
 	public static List<DCHumidity> getListFromName(List<String> names) {
 		List<DCHumidity> ret = Lists.newArrayList();
 		if (names != null)
-			for (String name : names)
-				if (name != null && !name.isEmpty())
-					for (DCHumidity t : DCHumidity.elements()) {
-						if (t.name().equalsIgnoreCase(name)) {
-							ret.add(t);
-							break;
+			if (names.isEmpty() || names.contains("ANY")) {
+				ret.addAll(elements());
+			} else {
+				for (String name : names)
+					if (name != null && !name.isEmpty())
+						for (DCHumidity t : DCHumidity.elements()) {
+							if (t.name().equalsIgnoreCase(name)) {
+								ret.add(t);
+								break;
+							}
 						}
-					}
+			}
 		return ret;
 	}
 

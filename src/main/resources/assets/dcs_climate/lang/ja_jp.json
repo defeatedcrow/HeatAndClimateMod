@@ -5,6 +5,7 @@
   "itemgroup.dcs.machine": "HeatAndClimate:Devices",
   "itemgroup.dcs.build": "HeatAndClimate:Building",
   "itemgroup.dcs.magic": "HeatAndClimate:Magic",
+  "itemgroup.dcs.clothing": "HeatAndClimate:Clothing",
 
     "## items_main":"main",
 
@@ -138,11 +139,17 @@
   "item.dcs_climate.magic.arrow_red":"赤の魔法矢",
   "item.dcs_climate.magic.arrow_green":"緑の魔法矢",
 
-  "item.dcs_climate.magic.card_white_common":"白のカード",
-  "item.dcs_climate.magic.card_blue_common":"青のカード",
-  "item.dcs_climate.magic.card_black_common":"黒のカード",
-  "item.dcs_climate.magic.card_red_common":"赤のカード",
-  "item.dcs_climate.magic.card_green_common":"緑のカード",
+  "item.dcs_climate.magic.card_white_common":"白のスペル",
+  "item.dcs_climate.magic.card_blue_common":"青のスペル",
+  "item.dcs_climate.magic.card_black_common":"黒のスペル",
+  "item.dcs_climate.magic.card_red_common":"赤のスペル",
+  "item.dcs_climate.magic.card_green_common":"緑のスペル",
+
+  "item.dcs_climate.magic.card_white_uncommon":"白の上位スペル",
+  "item.dcs_climate.magic.card_blue_uncommon":"青の上位スペル",
+  "item.dcs_climate.magic.card_black_uncommon":"黒の上位スペル",
+  "item.dcs_climate.magic.card_red_uncommon":"赤の上位スペル",
+  "item.dcs_climate.magic.card_green_uncommon":"緑の上位スペル",
 
     "## items_food":"food",
 
@@ -287,10 +294,15 @@
   "item.dcs_climate.food.fiber_plant":"植物繊維",
   "item.dcs_climate.food.fiber_wood":"木の繊維",
   "item.dcs_climate.food.food_beeswax":"蜜蝋",
+
   "item.dcs_climate.food.string_plant":"草花の糸",
   "item.dcs_climate.food.string_tree":"樹皮の糸",
   "item.dcs_climate.food.string_wool":"毛糸",
   "item.dcs_climate.food.string_cotton":"木綿の糸",
+  "item.dcs_climate.food.cloth_plant":"草花の布",
+  "item.dcs_climate.food.cloth_tree":"樹皮の布",
+  "item.dcs_climate.food.cloth_wool":"毛織物",
+  "item.dcs_climate.food.cloth_cotton":"木綿の布",
 
   "item.dcs_climate.food.dust_defatted_soy":"脱脂大豆",
   "item.dcs_climate.food.dust_press_cake":"油粕",
@@ -353,6 +365,84 @@
   "item.dcs_climate.food.salad_potato":"ポテトサラダ",
   "item.dcs_climate.food.salad_nuts":"ナッツと豆のサラダ",
   "item.dcs_climate.food.salad_melon":"スイカとトマトのサラダ",
+
+    "## items_wear":"waer",
+
+  "item.dcs_climate.main.pattern_paper_wear":"帽子の型紙",
+  "item.dcs_climate.main.pattern_paper_jacket":"ジャケットの型紙",
+  "item.dcs_climate.main.pattern_paper_shirt":"シャツの型紙",
+  "item.dcs_climate.main.pattern_paper_suits":"スーツの型紙",
+  "item.dcs_climate.main.pattern_paper_pants":"ズボンの型紙",
+
+  "item.dcs_climate.main.helmet_bronze":"合金のヘルメット",
+  "item.dcs_climate.main.plate_bronze":"合金の鎧",
+  "item.dcs_climate.main.chain_mail_bronze":"合金のチェインメイル",
+  "item.dcs_climate.main.boots_bronze":"合金のブーツ",
+
+  "item.dcs_climate.main.helmet_steel":"鋼のヘルメット",
+  "item.dcs_climate.main.plate_steel":"鋼の鎧",
+  "item.dcs_climate.main.chain_mail_steel":"鋼のチェインメイル",
+  "item.dcs_climate.main.boots_steel":"鋼のブーツ",
+
+  "item.dcs_climate.main.hat_linen":"麦わら帽子",
+  "item.dcs_climate.main.hat_linen_red":"麦わら帽子(赤)",
+  "item.dcs_climate.main.hat_linen_blue":"麦わら帽子(青)",
+  "item.dcs_climate.main.hat_linen_pink":"麦わら帽子(ピンク)",
+
+  "item.dcs_climate.main.hat_cloth":"布の帽子",
+  "item.dcs_climate.main.hat_cloth_black":"布の帽子(黒)",
+  "item.dcs_climate.main.hat_cloth_blue":"布の帽子(青)",
+  "item.dcs_climate.main.hat_cloth_green":"布の帽子(緑)",
+
+  "item.dcs_climate.main.jacket_linen":"リネンのベスト",
+  "item.dcs_climate.main.jacket_linen_black":"リネンのベスト(黒)",
+  "item.dcs_climate.main.jacket_linen_gray":"リネンのベスト(灰色)",
+  "item.dcs_climate.main.jacket_linen_blue":"リネンのベスト(青)",
+
+  "item.dcs_climate.main.jacket_cloth":"木綿のジャケット",
+  "item.dcs_climate.main.jacket_cloth_black":"木綿のジャケット(黒)",
+  "item.dcs_climate.main.jacket_cloth_gray":"木綿のジャケット(灰色)",
+  "item.dcs_climate.main.jacket_cloth_blue":"木綿のジャケット(青)",
+
+  "item.dcs_climate.main.jacket_wool":"カーディガン",
+  "item.dcs_climate.main.jacket_wool_cyan":"カーディガン(シアン)",
+  "item.dcs_climate.main.jacket_wool_lightblue":"カーディガン(水色)",
+  "item.dcs_climate.main.jacket_wool_red":"カーディガン(赤)",
+
+  "item.dcs_climate.main.shirt_linen":"Tシャツ",
+  "item.dcs_climate.main.shirt_linen_cyan":"Tシャツ(シアン)",
+  "item.dcs_climate.main.shirt_linen_pink":"Tシャツ(ピンク)",
+  "item.dcs_climate.main.shirt_linen_green":"Tシャツ(緑)",
+
+  "item.dcs_climate.main.shirt_cloth":"木綿のシャツ",
+  "item.dcs_climate.main.shirt_cloth_black":"木綿のシャツ(黒)",
+  "item.dcs_climate.main.shirt_cloth_red":"木綿のシャツ(赤)",
+  "item.dcs_climate.main.shirt_cloth_lightblue":"木綿のシャツ(水色)",
+
+  "item.dcs_climate.main.pants_linen":"リネンのズボン",
+  "item.dcs_climate.main.pants_linen_green":"リネンのズボン(緑)",
+  "item.dcs_climate.main.pants_linen_orange":"リネンのズボン(橙)",
+  "item.dcs_climate.main.pants_linen_white":"リネンのズボン(白)",
+
+  "item.dcs_climate.main.pants_cloth":"ジーパン",
+  "item.dcs_climate.main.pants_cloth_blue":"ジーパン(青)",
+  "item.dcs_climate.main.pants_cloth_lightblue":"ジーパン(水色)",
+  "item.dcs_climate.main.pants_cloth_gray":"ジーパン(灰)",
+
+  "item.dcs_climate.main.suits_leather":"レザーのスーツ",
+  "item.dcs_climate.main.suits_leather_black":"レザーのスーツ(黒)",
+  "item.dcs_climate.main.suits_leather_brown":"レザーのスーツ(茶)",
+  "item.dcs_climate.main.suits_leather_white":"レザーのスーツ(白)",
+
+  "item.dcs_climate.main.suits_cloth":"キルトのダブレット",
+  "item.dcs_climate.main.suits_cloth_blue":"キルトのダブレット(青)",
+  "item.dcs_climate.main.suits_cloth_brown":"キルトのダブレット(茶)",
+  "item.dcs_climate.main.suits_cloth_green":"キルトのダブレット(緑)",
+
+  "item.dcs_climate.main.dress_maid":"メイド服",
+  "item.dcs_climate.main.dress_maid_black":"メイド服(黒)",
+  "item.dcs_climate.main.dress_maid_gray":"メイド服(灰色)",
+  "item.dcs_climate.main.dress_maid_brown":"メイド服(茶)",
 
     "## blocks":"main",
 
@@ -762,6 +852,17 @@
   "dcs.tip.magic_card.name.green_common":"成長",
   "dcs.tip.magic_card.desc.green_common":"周囲の植物を成長させる。",
 
+  "dcs.tip.magic_card.name.white_uncommon":"鳥",
+  "dcs.tip.magic_card.desc.white_uncommon":"鳥のポーション効果を得る。",
+  "dcs.tip.magic_card.name.blue_uncommon":"魚",
+  "dcs.tip.magic_card.desc.blue_uncommon":"魚のポーション効果を得る。",
+  "dcs.tip.magic_card.name.black_uncommon":"追い剥ぎ",
+  "dcs.tip.magic_card.desc.black_uncommon":"対象が身につけている防具を奪う。",
+  "dcs.tip.magic_card.name.red_uncommon":"旗手",
+  "dcs.tip.magic_card.desc.red_uncommon":"敵性モブの攻撃対象を使用者に集める。",
+  "dcs.tip.magic_card.name.green_uncommon":"拘束",
+  "dcs.tip.magic_card.desc.green_uncommon":"対象のモブを1分間拘束する。",
+
   "## gui_misc":"misc",
 
   "dcs.smelting":"気候精錬レシピ",
@@ -795,6 +896,10 @@
 
   "effect.dcs_climate.effect_wet":"ずぶ濡れ",
   "effect.dcs_climate.effect_tracer":"追跡者",
+  "effect.dcs_climate.effect_bird":"鳥の加護",
+  "effect.dcs_climate.effect_fish":"魚の加護",
+  "effect.dcs_climate.effect_clairvoyance":"透視",
+  "effect.dcs_climate.effect_flag":"旗手",
 
     "## gui_jei":"jei",
 

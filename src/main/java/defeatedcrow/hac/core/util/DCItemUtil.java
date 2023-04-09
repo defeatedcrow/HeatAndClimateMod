@@ -28,7 +28,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TieredItem;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -252,6 +254,29 @@ public class DCItemUtil {
 			throw new IllegalArgumentException("Unknown Object passed to recipe!");
 		}
 		return ret;
+	}
+
+	public static Ingredient getIngredient(Object obj) {
+		if (obj == null) {
+			return Ingredient.EMPTY;
+		}
+		if (obj instanceof Ingredient) {
+			return (Ingredient) obj;
+		} else if (obj instanceof String) {
+			return Ingredient.of(getOres((String) obj).stream());
+		} else if (obj instanceof TagKey<?>) {
+			return Ingredient.of((TagKey<Item>) obj);
+		} else if (obj instanceof List && !((List) obj).isEmpty()) {
+			return Ingredient.of(((List<ItemStack>) obj).stream());
+		} else if (obj instanceof ItemStack) {
+			if (!((ItemStack) obj).isEmpty())
+				return Ingredient.of(((ItemStack) obj).copy());
+		} else if (obj instanceof ItemLike) {
+			return Ingredient.of((ItemLike) obj);
+		} else {
+			throw new IllegalArgumentException("Unknown Object passed to recipe!");
+		}
+		return Ingredient.EMPTY;
 	}
 
 	public static List<ItemStack> getOres(String str) {

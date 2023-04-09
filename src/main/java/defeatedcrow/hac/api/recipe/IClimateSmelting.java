@@ -8,25 +8,21 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 
 /**
  * Climateを条件に進む、1:1交換のレシピ。<br>
  * 材料は辞書対応。<br>
  */
-public interface IClimateSmelting {
-
-	/**
-	 * Input登録内容
-	 */
-	Object getInput();
+public interface IClimateSmelting extends ISerealizedRecipe {
 
 	ItemStack getOutput();
 
 	/**
 	 * macth条件判定用、鉱石辞書変換後のInputリスト
 	 */
-	List<ItemStack> getProcessedInput();
+	Ingredient getInput();
 
 	/**
 	 * Input条件判定
@@ -80,7 +76,4 @@ public interface IClimateSmelting {
 	List<DCHumidity> requiredHum();
 
 	List<DCAirflow> requiredAir();
-
-	/** レシピが有効かどうか */
-	boolean isActive();
 }

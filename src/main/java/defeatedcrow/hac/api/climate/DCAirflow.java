@@ -103,14 +103,18 @@ public enum DCAirflow {
 	public static List<DCAirflow> getListFromName(List<String> names) {
 		List<DCAirflow> ret = Lists.newArrayList();
 		if (names != null)
-			for (String name : names)
-				if (name != null && !name.isEmpty())
-					for (DCAirflow t : DCAirflow.elements()) {
-						if (t.name().equalsIgnoreCase(name)) {
-							ret.add(t);
-							break;
+			if (names.isEmpty() || names.contains("ANY")) {
+				ret.addAll(elements());
+			} else {
+				for (String name : names)
+					if (name != null && !name.isEmpty())
+						for (DCAirflow t : DCAirflow.elements()) {
+							if (t.name().equalsIgnoreCase(name)) {
+								ret.add(t);
+								break;
+							}
 						}
-					}
+			}
 		return ret;
 	}
 
