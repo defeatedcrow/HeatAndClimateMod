@@ -1,5 +1,7 @@
 package defeatedcrow.hac.core.climate;
 
+import java.util.List;
+
 import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -17,7 +19,6 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.ItemStack;
@@ -81,7 +82,7 @@ public class ClientClimateData {
 		}
 
 		// charm
-		NonNullList<ItemStack> charms = DCItemUtil.getCharms(player, CharmType.ALL);
+		List<ItemStack> charms = DCItemUtil.getCharms(player, CharmType.ALL);
 		DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage :
 				DamageSourceClimate.climateColdDamage;
 		for (ItemStack check : charms) {

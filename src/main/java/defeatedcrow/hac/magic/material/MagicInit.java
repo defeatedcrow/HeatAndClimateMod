@@ -18,6 +18,7 @@ import defeatedcrow.hac.magic.material.entity.ArrowRobber;
 import defeatedcrow.hac.magic.material.entity.ArrowWhite;
 import defeatedcrow.hac.magic.material.item.BlackArrowItem;
 import defeatedcrow.hac.magic.material.item.BlueArrowItem;
+import defeatedcrow.hac.magic.material.item.ColorSeedBagItem;
 import defeatedcrow.hac.magic.material.item.GreenArrowItem;
 import defeatedcrow.hac.magic.material.item.MagicMaterialItemDC;
 import defeatedcrow.hac.magic.material.item.RedArrowItem;
@@ -32,6 +33,8 @@ import defeatedcrow.hac.magic.material.item.card.CardRedT1;
 import defeatedcrow.hac.magic.material.item.card.CardRedT2;
 import defeatedcrow.hac.magic.material.item.card.CardWhiteT1;
 import defeatedcrow.hac.magic.material.item.card.CardWhiteT2;
+import defeatedcrow.hac.magic.material.item.jems.GoldRing;
+import defeatedcrow.hac.magic.material.item.jems.SilverRing;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -94,6 +97,12 @@ public class MagicInit {
 	public static final RegistryObject<Item> ARROW_RED = regItem("arrow_red", () -> new RedArrowItem());
 	public static final RegistryObject<Item> ARROW_GREEN = regItem("arrow_green", () -> new GreenArrowItem());
 
+	public static final RegistryObject<Item> SEEDBAG_WHITE = regItem("seedbag_white", () -> new ColorSeedBagItem(MagicColor.WHITE));
+	public static final RegistryObject<Item> SEEDBAG_BLUE = regItem("seedbag_blue", () -> new ColorSeedBagItem(MagicColor.BLUE));
+	public static final RegistryObject<Item> SEEDBAG_BLACK = regItem("seedbag_black", () -> new ColorSeedBagItem(MagicColor.BLACK));
+	public static final RegistryObject<Item> SEEDBAG_RED = regItem("seedbag_red", () -> new ColorSeedBagItem(MagicColor.RED));
+	public static final RegistryObject<Item> SEEDBAG_GREEN = regItem("seedbag_green", () -> new ColorSeedBagItem(MagicColor.GREEN));
+
 	public static final RegistryObject<Item> CARD_WHITE_1 = regItem("card_white_common", () -> new CardWhiteT1());
 	public static final RegistryObject<Item> CARD_BLUE_1 = regItem("card_blue_common", () -> new CardBlueT1());
 	public static final RegistryObject<Item> CARD_BLACK_1 = regItem("card_black_common", () -> new CardBlackT1());
@@ -105,6 +114,18 @@ public class MagicInit {
 	public static final RegistryObject<Item> CARD_BLACK_2 = regItem("card_black_uncommon", () -> new CardBlackT2());
 	public static final RegistryObject<Item> CARD_RED_2 = regItem("card_red_uncommon", () -> new CardRedT2());
 	public static final RegistryObject<Item> CARD_GREEN_2 = regItem("card_green_uncommon", () -> new CardGreenT2());
+
+	public static final RegistryObject<Item> RING_SILVER_WHITE = regItem("ring_s_white", () -> new SilverRing(MagicColor.WHITE));
+	public static final RegistryObject<Item> RING_SILVER_BLUE = regItem("ring_s_blue", () -> new SilverRing(MagicColor.BLUE));
+	public static final RegistryObject<Item> RING_SILVER_BLACK = regItem("ring_s_black", () -> new SilverRing(MagicColor.BLACK));
+	public static final RegistryObject<Item> RING_SILVER_RED = regItem("ring_s_red", () -> new SilverRing(MagicColor.RED));
+	public static final RegistryObject<Item> RING_SILVER_GREEN = regItem("ring_s_green", () -> new SilverRing(MagicColor.GREEN));
+
+	public static final RegistryObject<Item> RING_GOLD_WHITE = regItem("ring_g_white", () -> new GoldRing(MagicColor.WHITE));
+	public static final RegistryObject<Item> RING_GOLD_BLUE = regItem("ring_g_blue", () -> new GoldRing(MagicColor.BLUE));
+	public static final RegistryObject<Item> RING_GOLD_BLACK = regItem("ring_g_black", () -> new GoldRing(MagicColor.BLACK));
+	public static final RegistryObject<Item> RING_GOLD_RED = regItem("ring_g_red", () -> new GoldRing(MagicColor.RED));
+	public static final RegistryObject<Item> RING_GOLD_GREEN = regItem("ring_g_green", () -> new GoldRing(MagicColor.GREEN));
 
 	public static final RegistryObject<Block> SMALL_LIGHT = regBlock("magic_small_light", () -> new MagicSmallLight(), null);
 

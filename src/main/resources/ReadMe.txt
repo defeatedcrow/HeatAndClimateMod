@@ -144,8 +144,8 @@
 
  ● ダメージの軽減 / Damage reduction
 
-  布や革の防具は、気候ダメージを減少させます。(アルファでは、バニラの革防具のみです。)
-  Cloth and leather armor reduces climate damage. (Alpha only has vanilla leather armor.)
+  布や革の防具は、気候ダメージを減少させます。
+  Cloth and leather armor reduces climate damage.
 
   ・Heatダメージの軽減 / Heat damage reduction
    - 防具の耐火エンチャント Armor fire protection enchantment
@@ -271,8 +271,11 @@
 
 ◎ 色の魔法 / Color Magic
 
-　　　宝石や作物から『色の魔法の素』を取り出し、魔法のアイテムの素材に使用します。
-　　Color extracts are extracted from crops and gems, and used as a material for magic items.
+  宝石や作物から『色の魔法の素』を取り出し、魔法のアイテムの素材に使用します。
+  Color extracts are extracted from crops and gems, and used as a material for magic items.
+
+  コンフィグで魔法ハードモードが有効化されている場合、カードの使用またはXキーによる呪文のキャストにはコスト（EXP）を支払う必要があります。
+  If Magic Hard Mode is enabled in config, player must pay a cost (EXP) to use a card or cast a spell with the X key.
 
 　● 魔法の矢 / Magical Arrow
 
@@ -284,8 +287,31 @@
 　　使用することでいろいろな効果を発揮する消費アイテムです。
 　　Magic cards have instant magical effects.
 
+　● 魔法のアクセサリー / Magical Jewels
+
+  プレイヤーインベントリの最上段に置かれているとき、効果を発揮します。
+  Effect activates when placed in the top row of the player inventory.
+
+  プレイヤー以外のモブの場合は、インベントリのどこかに置かれていれば効果があります。
+  About non-player mobs, it can be anywhere in inventory instead.
+
+  一部のジュエルはプレイヤーにのみ効果があります。
+  Some jewels only affect the player.
+
 
 #### 更新履歴 / Change log ####
+
+○ v4-alpha4 (2023.4.12)
+ add: 布素材
+ add: 服飾要素
+ add: 魔法の種袋
+ add: 5色の魔法のリング
+ add: 上位魔法カード
+ change: 銀のTierを1に下げた(KILNで精錬可能)
+ change: ロジェリア(ゴマ科)がバッドランドなどの赤砂にも生成できるようにした
+ change: 鋼の銛の攻撃力を上方修正した
+ change: 気候精錬レシピをデータパックに対応させた
+ fix: ピーマンとパプリカのテクスチャが逆になっている
 
 ○ v4-alpha3 (2023.3.22)
  add: 魔法のカードの一部

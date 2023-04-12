@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/magic/ring_g_white"
+  },
+  "parent": "minecraft:item/generated"
+}

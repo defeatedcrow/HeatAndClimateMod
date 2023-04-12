@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#forge:seeds/oat",
+    "#forge:seeds/mint",
+    "dcs_climate:food/sapling_beech_wild",
+    "dcs_climate:food/sapling_erica_wild",
+    "dcs_climate:food/sapling_olive_wild"
+  ]
+}

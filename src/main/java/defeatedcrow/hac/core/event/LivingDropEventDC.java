@@ -1,7 +1,9 @@
 package defeatedcrow.hac.core.event;
 
 import defeatedcrow.hac.core.material.item.tool.HarpoonItem;
+import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Cow;
@@ -43,6 +45,17 @@ public class LivingDropEventDC {
 				ItemStack held = owner.getItemBySlot(EquipmentSlot.MAINHAND);
 				if (!held.isEmpty() && held.getItem() instanceof HarpoonItem) {
 					event.getDrops().forEach(d -> d.setPos(owner.getX(), owner.getY() + 0.15D, owner.getZ()));
+				}
+
+				int count = DCItemUtil.hasCharmItem(owner, new ItemStack(MagicInit.RING_GOLD_BLACK.get()));
+				if (count > 0) {
+					int r = count + 1;
+					int s = (count / 3) + 1;
+					event.getDrops().stream().forEach((d) -> {
+						if (target.getLevel().getRandom().nextInt(r) > 0 && d.getItem().getCount() < d.getItem().getMaxStackSize())
+							d.getItem().grow(s);
+					});
+
 				}
 			}
 		}

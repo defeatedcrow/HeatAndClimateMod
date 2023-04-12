@@ -6,10 +6,11 @@ import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class TagUtil {
 
@@ -34,18 +35,14 @@ public class TagUtil {
 		return false;
 	}
 
-	public static Optional<TagKey<Item>> matchTag(String name, Item item) {
-		Optional<Holder<Item>> holder = ForgeRegistries.ITEMS.getHolder(item);
-		return holder.map((h) -> {
-			return holder.get().getTagKeys().filter((tag) -> isMatch(name, tag)).findAny();
-		}).orElse(Optional.empty());
+	public static Optional<TagKey<Item>> matchTag(String name, ItemLike item) {
+		ItemStack stack = new ItemStack(item);
+		return stack.getTags().filter((tag) -> isMatch(name, tag)).findAny();
 	}
 
-	public static Optional<TagKey<Item>> matchTag(ResourceLocation dic, Item item) {
-		Optional<Holder<Item>> holder = ForgeRegistries.ITEMS.getHolder(item);
-		return holder.map((h) -> {
-			return holder.get().getTagKeys().filter((tag) -> isMatch(dic, tag)).findAny();
-		}).orElse(Optional.empty());
+	public static Optional<TagKey<Item>> matchTag(ResourceLocation dic, ItemLike item) {
+		ItemStack stack = new ItemStack(item);
+		return stack.getTags().filter((tag) -> isMatch(dic, tag)).findAny();
 	}
 
 	public static Optional<TagKey<Block>> matchTag(String name, BlockState state) {

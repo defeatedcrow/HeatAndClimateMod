@@ -25,11 +25,11 @@ public class MobEffectBird extends MobEffectDC {
 					float f = player.yHeadRot;
 					float f2 = Mth.sin(-f * Mth.DEG_TO_RAD);
 					float f3 = Mth.cos(f * Mth.DEG_TO_RAD);
-					double lx = 0.7D * Mth.abs(f2);
-					double lz = 0.7D * Mth.abs(f3);
-					double d1 = v.x + 0.2D * f2;
+					double lx = 0.5D * Mth.abs(f2);
+					double lz = 0.5D * Mth.abs(f3);
+					double d1 = v.x + 0.05D * f2;
 					double d2 = v.y;
-					double d3 = v.z + 0.2D * f3;
+					double d3 = v.z + 0.05D * f3;
 					d1 = Mth.clamp(d1, -lx, lx);
 					d3 = Mth.clamp(d3, -lz, lz);
 					Vec3 v2 = new Vec3(d1, d2, d3);
@@ -51,8 +51,8 @@ public class MobEffectBird extends MobEffectDC {
 					Vec3 v2 = new Vec3(v.x, d, v.z);
 					player.setDeltaMovement(v2);
 				}
-			} else {
-				if (ClimateCore.proxy.keyJumpPushed() && !player.isInWaterOrRain()) {
+			} else if (!fish && !player.isInWaterOrRain()) {
+				if (ClimateCore.proxy.keyJumpPushed()) {
 					Vec3 v = player.getDeltaMovement();
 					double d1 = v.x;
 					double d2 = v.y + 0.2D;
@@ -63,8 +63,8 @@ public class MobEffectBird extends MobEffectDC {
 						float f3 = Mth.cos(f * Mth.DEG_TO_RAD);
 						double lx = 0.7D * Mth.abs(f2);
 						double lz = 0.7D * Mth.abs(f3);
-						d1 += 0.2D * f2;
-						d3 += 0.2D * f3;
+						d1 += 0.05D * f2;
+						d3 += 0.05D * f3;
 						d1 = Mth.clamp(d1, -lx, lx);
 						d3 = Mth.clamp(d3, -lz, lz);
 					}

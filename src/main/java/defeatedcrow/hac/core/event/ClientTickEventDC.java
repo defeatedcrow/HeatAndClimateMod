@@ -2,6 +2,7 @@ package defeatedcrow.hac.core.event;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
+import defeatedcrow.hac.core.network.packet.message.MsgCharmKeyToS;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -46,7 +47,6 @@ public class ClientTickEventDC {
 		}
 	}
 
-	@SuppressWarnings("resource")
 	private static void onHUDKeyPushed() {
 		// GUI展開中は切り替えしない
 		if (Minecraft.getInstance().screen == null) {
@@ -58,7 +58,7 @@ public class ClientTickEventDC {
 	}
 
 	private static void onCharmKeyPushed() {
-
+		MsgCharmKeyToS.sendToServer(Minecraft.getInstance().player);
 	}
 
 }

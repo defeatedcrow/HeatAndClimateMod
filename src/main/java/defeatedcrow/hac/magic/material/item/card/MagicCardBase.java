@@ -68,7 +68,7 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 
 	@Override
 	public CharmType getCharmType() {
-		return CharmType.TOOL;
+		return CharmType.INSTANT;
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 
 	@Override
@@ -162,7 +162,7 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 		player.startUsingItem(hand);
 		if (level instanceof ServerLevel && isActive(player, card)) {
 			if (onUsing(level, player, player.blockPosition(), card)) {
-				level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+				level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 0.6F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 				if (!player.getAbilities().instabuild) {
 					card.shrink(1);
 					onConsumeResource(player, card);
@@ -181,7 +181,7 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 
 	@Override
 	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		MutableComponent tier = Component.translatable(color + " " + item.getRarity());
+		MutableComponent tier = Component.translatable(color.name() + " " + item.getRarity());
 		tier.withStyle(color.chatColor);
 		list.add(tier);
 		MutableComponent itemName = Component.translatable("dcs.tip.magic_card.name." + color.toString() + "_" + item.getRarity().toString().toLowerCase());

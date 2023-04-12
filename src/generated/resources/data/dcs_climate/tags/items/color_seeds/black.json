@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#forge:seeds/celery",
+    "#forge:seeds/bindweed",
+    "#forge:seeds/reed",
+    "#forge:seeds/zizania",
+    "#forge:seeds/nightshade"
+  ]
+}

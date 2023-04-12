@@ -33,6 +33,10 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 				if (item.getPairTag() != TagDC.ItemTag.DUMMY) {
 					tag(item.getPairTag()).add(i);
 
+					if (TagUtil.isMatch("forge", "ores", item.getPairTag())) {
+						tag(Tags.Items.ORES).addTag(item.getPairTag());
+					}
+
 					if (TagUtil.isMatch("forge", "raw_materials", item.getPairTag())) {
 						tag(Tags.Items.RAW_MATERIALS).addTag(item.getPairTag());
 					}
@@ -273,6 +277,22 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(ItemTags.ARROWS).add(MagicInit.ARROW_WHITE.get(), MagicInit.ARROW_BLUE.get(), MagicInit.ARROW_BLACK.get(),
 			MagicInit.ARROW_RED.get(), MagicInit.ARROW_GREEN.get());
+
+		tag(TagDC.ItemTag.SEED_WHITE).addTags(TagDC.ItemTag.SEED_CHIVES, TagDC.ItemTag.SEED_GOOSEFOOT, TagDC.ItemTag.SEED_ARTEMISIA,
+			TagDC.ItemTag.SEED_RAPESEED, TagDC.ItemTag.SEED_SORREL);
+
+		tag(TagDC.ItemTag.SEED_BLUE).addTags(TagDC.ItemTag.SEED_OAT, TagDC.ItemTag.SEED_MINT)
+			.add(FoodInit.BLOCK_BH_COMMON.get().asItem(), FoodInit.BLOCK_ER_HEATH.get().asItem(), FoodInit.BLOCK_OL_ASH.get().asItem());
+
+		tag(TagDC.ItemTag.SEED_BLACK).addTags(TagDC.ItemTag.SEED_CELERY, TagDC.ItemTag.SEED_BINDWEED,
+			TagDC.ItemTag.SEED_REED, TagDC.ItemTag.SEED_WILD_RICE, TagDC.ItemTag.SEED_NIGHTSHADE);
+
+		tag(TagDC.ItemTag.SEED_RED).addTags(TagDC.ItemTag.SEED_JUTE, TagDC.ItemTag.SEED_ROGERIA)
+			.add(FoodInit.BLOCK_CH_WILD.get().asItem(), FoodInit.BLOCK_CM_OIL.get().asItem());
+
+		tag(TagDC.ItemTag.SEED_GREEN).addTags(TagDC.ItemTag.SEED_GINGER, TagDC.ItemTag.SEED_GREEN_PEAS)
+			.add(FoodInit.BLOCK_CT_POMELO.get().asItem(), FoodInit.BLOCK_CN_CAMPHOR.get().asItem(),
+				FoodInit.BLOCK_MR_MULBERRY.get().asItem(), FoodInit.BLOCK_PL_COCONUT.get().asItem());
 
 		// blocks
 		copy(TagDC.BlockTag.ORES_WHITE, TagDC.ItemTag.ORES_WHITE);

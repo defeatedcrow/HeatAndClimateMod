@@ -42,6 +42,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -354,10 +356,14 @@ public class CoreInit {
 	public static final RegistryObject<Potion> COLD_RES_POTION = regPotion("cold_resistance", () -> new Potion("cold_resistance", new MobEffectInstance(COLD_RESISTANCE.get(), 3600)));
 	public static final RegistryObject<Potion> COLD_RES_LONG = regPotion("long_cold_resistance", () -> new Potion("long_cold_resistance", new MobEffectInstance(COLD_RESISTANCE.get(), 9600)));
 
-	public static final RegistryObject<MobEffect> TRACER = regPotionEffect("effect_tracer", () -> new MobEffectDC("effect_tracer", MobEffectCategory.BENEFICIAL, 0x500050).setIconIndex(2, 2));
 	public static final RegistryObject<MobEffect> BIRD = regPotionEffect("effect_bird", () -> new MobEffectBird(false, "effect_bird", MobEffectCategory.BENEFICIAL, 0xFFD050).setIconIndex(1, 0));
 	public static final RegistryObject<MobEffect> FISH = regPotionEffect("effect_fish", () -> new MobEffectBird(true, "effect_fish", MobEffectCategory.BENEFICIAL, 0x5080FF).setIconIndex(2, 0));
-	public static final RegistryObject<MobEffect> CLAIR = regPotionEffect("effect_clairvoyance", () -> new MobEffectFlag("effect_clairvoyance", MobEffectCategory.NEUTRAL, 0x90A0E0).setIconIndex(0, 2));
+	public static final RegistryObject<MobEffect> NIMBLE = regPotionEffect("effect_nimble", () -> new MobEffectDC("effect_nimble", MobEffectCategory.BENEFICIAL, 0xFF90E0).setIconIndex(2, 1)
+		.addAttributeModifier(Attributes.ATTACK_SPEED, MobEffectDC.ATTACK_SPEED_MODIFIER.toString(), 0.25F, AttributeModifier.Operation.ADDITION));
+	public static final RegistryObject<MobEffect> HEAVY = regPotionEffect("effect_heavyboots", () -> new MobEffectDC("effect_heavyboots", MobEffectCategory.BENEFICIAL, 0x00D050).setIconIndex(0, 1)
+		.addAttributeModifier(Attributes.KNOCKBACK_RESISTANCE, MobEffectDC.NOCKBACK_MODIFIER.toString(), 0.2F, AttributeModifier.Operation.ADDITION));
+	public static final RegistryObject<MobEffect> TRACER = regPotionEffect("effect_tracer", () -> new MobEffectDC("effect_tracer", MobEffectCategory.BENEFICIAL, 0x500050).setIconIndex(2, 2));
+	public static final RegistryObject<MobEffect> CLAIR = regPotionEffect("effect_clairvoyance", () -> new MobEffectFlag("effect_clairvoyance", MobEffectCategory.BENEFICIAL, 0x90A0E0).setIconIndex(0, 2));
 
 	public static final RegistryObject<MobEffect> WET = regPotionEffect("effect_wet", () -> new MobEffectDC("effect_wet", MobEffectCategory.NEUTRAL, 0x90E0FF).setIconIndex(1, 2));
 	public static final RegistryObject<MobEffect> FLAG = regPotionEffect("effect_flag", () -> new MobEffectFlag("effect_flag", MobEffectCategory.NEUTRAL, 0xFF0050).setIconIndex(3, 2));

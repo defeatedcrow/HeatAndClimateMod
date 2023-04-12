@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#forge:seeds/ginger",
+    "#forge:seeds/green_pea",
+    "dcs_climate:food/sapling_citrus_wild",
+    "dcs_climate:food/sapling_cinnamon_wild",
+    "dcs_climate:food/sapling_morus_wild",
+    "dcs_climate:food/sapling_palm_wild"
+  ]
+}

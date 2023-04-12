@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:gems/agates"
+    },
+    "Y": {
+      "tag": "dcs_climate:color_extracts/white"
+    },
+    "Z": {
+      "tag": "forge:ingots/gold"
+    }
+  },
+  "pattern": [
+    "X",
+    "Y",
+    "Z"
+  ],
+  "result": {
+    "item": "dcs_climate:magic/ring_g_white"
+  }
+}

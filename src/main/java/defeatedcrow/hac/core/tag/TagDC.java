@@ -583,6 +583,12 @@ public class TagDC {
 
 		public static final TagKey<Item> RAW_FOOD = ItemTags.create(new ResourceLocation("dcs_climate", "raw_foods"));
 
+		public static final TagKey<Item> SEED_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/white"));
+		public static final TagKey<Item> SEED_BLUE = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/blue"));
+		public static final TagKey<Item> SEED_BLACK = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/black"));
+		public static final TagKey<Item> SEED_RED = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/red"));
+		public static final TagKey<Item> SEED_GREEN = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/green"));
+
 		public static final TagKey<Item> COLOR_DROPS = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops"));
 		public static final TagKey<Item> DROP_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops/white"));
 		public static final TagKey<Item> DROP_BLUE = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops/blue"));
@@ -614,7 +620,9 @@ public class TagDC {
 		public static final TagKey<Item> MANA_DROPS = ItemTags.create(new ResourceLocation("dcs_climate", "mana_drops"));
 		public static final TagKey<Item> MANA_EXTRACT = ItemTags.create(new ResourceLocation("dcs_climate", "mana_extractss"));
 
-		public static final TagKey<Item> MAGIC_CARD = ItemTags.create(new ResourceLocation("dcs_climate", "magic_card"));
+		public static final TagKey<Item> MAGIC_CARD = ItemTags.create(new ResourceLocation("dcs_climate", "magic_cards"));
+
+		public static final TagKey<Item> MAGIC_RING = ItemTags.create(new ResourceLocation("dcs_climate", "magic_rings"));
 
 		public static final TagKey<Item> DUMMY = ItemTags.create(new ResourceLocation("dcs_climate", "dummy"));
 

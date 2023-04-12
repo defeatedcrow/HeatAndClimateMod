@@ -148,7 +148,7 @@ public class CropBlockPedalia extends ClimateCropBaseBlock {
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("DESERT", "SAVANNA");
+			return ImmutableList.of("SANDY", "SAVANNA");
 		default:
 			return Lists.newArrayList();
 		}

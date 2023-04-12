@@ -1,6 +1,7 @@
 package defeatedcrow.hac.core.event;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.common.collect.Lists;
 
@@ -21,7 +22,6 @@ import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
@@ -47,6 +47,11 @@ public class LivingTickEventDC {
 		LivingEntity living = event.getEntity();
 		if (living != null && living.level != null) {
 			if (living.level.getGameTime() % ConfigCommonBuilder.INSTANCE.vUpdateInterval.get() == 0) {
+				if (living instanceof Player || ConfigCommonBuilder.INSTANCE.enMobDamage.get()) {
+					onLivingClimateUpdate(living);
+				}
+			}
+			if (living.level.getGameTime() % 20 == 0) {
 				if (!living.level.isClientSide) {
 					if (living instanceof Player && ConfigCommonBuilder.INSTANCE.enPotionSharing.get()) {
 						onLivingPotionSharing(living);
@@ -65,11 +70,6 @@ public class LivingTickEventDC {
 			living.setAirSupply(living.getMaxAirSupply());
 		}
 		onLivingCharmUpdate(living);
-		onLivingEffectUpdate(living);
-
-		if (living instanceof Player || ConfigCommonBuilder.INSTANCE.enMobDamage.get()) {
-			onLivingClimateUpdate(living);
-		}
 	}
 
 	public static void onLivingPotionSharing(LivingEntity living) {
@@ -96,7 +96,7 @@ public class LivingTickEventDC {
 	}
 
 	public static void onLivingCharmUpdate(LivingEntity living) {
-		NonNullList<ItemStack> charms = DCItemUtil.getCharms(living, CharmType.CONSTANT);
+		List<ItemStack> charms = DCItemUtil.getCharms(living, CharmType.CONSTANT);
 		for (ItemStack item2 : charms) {
 			IJewelCharm charm = (IJewelCharm) item2.getItem();
 			charm.constantEffect(living, item2);
@@ -175,7 +175,7 @@ public class LivingTickEventDC {
 				}
 
 				// charm
-				NonNullList<ItemStack> charms = DCItemUtil.getCharms(living, CharmType.ALL);
+				List<ItemStack> charms = DCItemUtil.getCharms(living, CharmType.ALL);
 				for (ItemStack check : charms) {
 					IJewelCharm charm = (IJewelCharm) check.getItem();
 					prevTemp += charm.reduceDamage(living, source, damTemp, check);

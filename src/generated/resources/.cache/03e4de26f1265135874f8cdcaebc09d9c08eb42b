@@ -1,4 +1,4 @@
-// 1.19.2	2023-04-09T22:38:34.5708569	Tags for minecraft:item
+// 1.19.2	2023-04-11T22:02:39.8067211	Tags for minecraft:item
 9691b8fa959d0c2eca43b928b1d45c3e5fa4fb15 data/dcs_climate/tags/items/color_drops.json
 1003b47c0766f332ef739eaf3b5ea767d6e9f6c1 data/dcs_climate/tags/items/color_drops/black.json
 969f3e30f0b86599ab5d03e4f9004392ecbef823 data/dcs_climate/tags/items/color_drops/blue.json
@@ -28,6 +28,11 @@ ad6c7e4990398fb5f4005d4080597c7ab547cbff data/dcs_climate/tags/items/color_ores/
 f16a15e9082786b80551f2b9e38fa8cf04d3d87b data/dcs_climate/tags/items/color_pigments/green.json
 872ecd83c80ed214b4399c0343683176fa617abb data/dcs_climate/tags/items/color_pigments/red.json
 6b53ac77bd9358e02b8c682846322ee7632dbae9 data/dcs_climate/tags/items/color_pigments/white.json
+8c9d70fe7fc19a74e370d5f620f3b4bcef62b8a0 data/dcs_climate/tags/items/color_seeds/black.json
+22d12ed4910ca52f57646eba96012b680dc0712d data/dcs_climate/tags/items/color_seeds/blue.json
+28308cfeb1b025f14fa49198fabbb94a69166e5a data/dcs_climate/tags/items/color_seeds/green.json
+b733bc292a25a541b67b1671f5712901edee9ce3 data/dcs_climate/tags/items/color_seeds/red.json
+4427e04bab1cad0d125021410ebfd6190ed4d896 data/dcs_climate/tags/items/color_seeds/white.json
 26d85d22288145a1018523a20deaf20967f151a9 data/dcs_climate/tags/items/crops.json
 8acd2a46a26054ad823e155f2cb6f1d87a4639c8 data/dcs_climate/tags/items/crops/common.json
 c7396345cc466449373dd9ffc37d527c8a96dce5 data/dcs_climate/tags/items/crops/epic.json
@@ -49,7 +54,8 @@ bfa015168a13af280008c0441234c8dbb341958b data/dcs_climate/tags/items/gems/black.
 717866aa09166edec1fe66aa17c2353a923a2128 data/dcs_climate/tags/items/gems/green.json
 cd6d18dc51b62418c5466f9fba750545c3b74e79 data/dcs_climate/tags/items/gems/red.json
 fa6626c4d374bc0da9891eb041c6a80385f76161 data/dcs_climate/tags/items/gems/white.json
-5f86011b18234fdffe1c0ec57ef0c3468ea09583 data/dcs_climate/tags/items/magic_card.json
+5f86011b18234fdffe1c0ec57ef0c3468ea09583 data/dcs_climate/tags/items/magic_cards.json
+85e814e621a82fe67190bcfe1fdd544dee9b1e2f data/dcs_climate/tags/items/magic_rings.json
 6430da8ed20b60e93622f4512219d1ff14aefcd8 data/dcs_climate/tags/items/mana_drops.json
 14cef5e12e14cfde96c79f6a0d3142b02c0730a3 data/dcs_climate/tags/items/mana_extractss.json
 49d7be85516a4f729914940353ab9fa2019c4a47 data/dcs_climate/tags/items/raw_foods.json
@@ -341,7 +347,7 @@ ef0eae57eace67ac0bee0bd569b02852ec51a320 data/forge/tags/items/ingredients/wax.j
 7576b5e358e990001cb92daa877c43c1c058bc88 data/forge/tags/items/ingredients/whip.json
 1f88c377a10e8e075dd5205bb8389f65fc7a3761 data/forge/tags/items/ingredients/zizania.json
 f0f92c5f0b5c5412980a4ca8436b4cb180919deb data/forge/tags/items/magma.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/forge/tags/items/ores.json
+a2576978829e6c17e5fb4306af837464cbd562c3 data/forge/tags/items/ores.json
 f85289b6f02654f20c9cd0e64c982f67ade1ffa4 data/forge/tags/items/ores/amazonite.json
 8d000c4eb487c41b65b0e11bf143e0356d8c3fd0 data/forge/tags/items/ores/aquamarine.json
 9d3bbb062b934af351c69c2c9c5c065859d38839 data/forge/tags/items/ores/chalcedony.json

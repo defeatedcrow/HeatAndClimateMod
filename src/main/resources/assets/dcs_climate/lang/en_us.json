@@ -133,6 +133,12 @@
   "item.dcs_climate.magic.drop_mana":"Small Mana Drop",
   "item.dcs_climate.magic.extract_mana":"Mana Extract",
 
+  "item.dcs_climate.magic.seedbag_white":"White Seed Bag",
+  "item.dcs_climate.magic.seedbag_blue":"Blue Seed Bag",
+  "item.dcs_climate.magic.seedbag_black":"Black Seed Bag",
+  "item.dcs_climate.magic.seedbag_red":"Red Seed Bag",
+  "item.dcs_climate.magic.seedbag_green":"Green Seed Bag",
+
   "item.dcs_climate.magic.arrow_white":"White Arrow",
   "item.dcs_climate.magic.arrow_blue":"Blue Arrow",
   "item.dcs_climate.magic.arrow_black":"Black Arrow",
@@ -150,6 +156,18 @@
   "item.dcs_climate.magic.card_black_uncommon":"Superior Black Spell",
   "item.dcs_climate.magic.card_red_uncommon":"Superior Red Spell",
   "item.dcs_climate.magic.card_green_uncommon":"Superior Green Spell",
+
+  "item.dcs_climate.magic.ring_s_white":"White Silver Ring",
+  "item.dcs_climate.magic.ring_s_blue":"Blue Silver Ring",
+  "item.dcs_climate.magic.ring_s_black":"Black Silver Ring",
+  "item.dcs_climate.magic.ring_s_red":"Red Silver Ring",
+  "item.dcs_climate.magic.ring_s_green":"Green Silver Ring",
+
+  "item.dcs_climate.magic.ring_g_white":"White Gold Ring",
+  "item.dcs_climate.magic.ring_g_blue":"Blue Gold Ring",
+  "item.dcs_climate.magic.ring_g_black":"Black Gold Ring",
+  "item.dcs_climate.magic.ring_g_red":"Red Gold Ring",
+  "item.dcs_climate.magic.ring_g_green":"Green Gold Ring",
 
     "## items_food":"food",
 
@@ -833,6 +851,8 @@
   "dcs.tip.remove_bad_potion":"Removes bad potion effects.",
   "dcs.tip.scythe":"Right-click: Harvest HaC crops within range.",
 
+  "dcs.tip.seedbag.desc":"Randomly obtain one of the following seeds:",
+
   "dcs.tip.magic_arrow.name.white":"Light",
   "dcs.tip.magic_arrow.name.blue":"Freezing",
   "dcs.tip.magic_arrow.name.black":"Warp",
@@ -865,6 +885,28 @@
   "dcs.tip.magic_card.desc.red_uncommon":"The user becomes the target of attacks by surrounding enemies.",
   "dcs.tip.magic_card.name.green_uncommon":"Binding",
   "dcs.tip.magic_card.desc.green_uncommon":"Binds the target mob for 1 minute.",
+
+  "dcs.tip.ring_s.name.white":"Jump",
+  "dcs.tip.ring_s.desc.white":"Gain potion effect of Jump Boost.",
+  "dcs.tip.ring_s.name.blue":"Cold Resistance",
+  "dcs.tip.ring_s.desc.blue":"Gain potion effect of Cold Resistance.",
+  "dcs.tip.ring_s.name.black":"Night Eye",
+  "dcs.tip.ring_s.desc.black":"Gain potion effect of Night Vision.",
+  "dcs.tip.ring_s.name.red":"Heat Resistance",
+  "dcs.tip.ring_s.desc.red":"Gain potion effect of Fire Resistance.",
+  "dcs.tip.ring_s.name.green":"Collect",
+  "dcs.tip.ring_s.desc.green":"Collect drop items around user.",
+
+  "dcs.tip.ring_g.name.white":"Immunity",
+  "dcs.tip.ring_g.desc.white":"Prevent bad potion effects.",
+  "dcs.tip.ring_g.name.blue":"Gills",
+  "dcs.tip.ring_g.desc.blue":"Gain potion effect of Water Breathing.",
+  "dcs.tip.ring_g.name.black":"Hunting",
+  "dcs.tip.ring_g.desc.black":"Occasionally increases dropped items from defeated mobs.",
+  "dcs.tip.ring_g.name.red":"Charge",
+  "dcs.tip.ring_g.desc.red":"Gain potion effect of Nimble and Heavy Boots.",
+  "dcs.tip.ring_g.name.green":"Dowsing",
+  "dcs.tip.ring_g.desc.green":"Using with X Key: Explore the location of the ore under the feet.",
 
   "## gui_misc":"misc",
 
@@ -903,6 +945,8 @@
   "effect.dcs_climate.effect_fish":"Blessing of Fish",
   "effect.dcs_climate.effect_clairvoyance":"Clairvoyance",
   "effect.dcs_climate.effect_flag":"Flag Bearer",
+  "effect.dcs_climate.effect_nimble":"Nimble",
+  "effect.dcs_climate.effect_heavyboots":"Heavy Boots",
 
     "## gui_jei":"jei",
 

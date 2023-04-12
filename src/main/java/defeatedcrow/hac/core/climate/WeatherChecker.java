@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.network.packet.message.MsgWeatherToC;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -29,7 +30,7 @@ public class WeatherChecker {
 	private static int lastDay = 0;
 
 	/* サーバーサイドでのみ季節・天候チェックを行う */
-	public static void setWeather(Level world) {
+	public static void setWeather(ServerLevel world) {
 		if (world == null || world.isClientSide) {
 			return;
 		}
@@ -81,7 +82,7 @@ public class WeatherChecker {
 				rainCountMap.put(dimName, 0);
 		}
 
-		MsgWeatherToC.sendToClient(dim.location(), rain, rainTime, sunTime, season.id, day, dayD, time, date);
+		MsgWeatherToC.sendToClient(world, rain, rainTime, sunTime, season.id, day, dayD, time, date);
 	}
 
 	@OnlyIn(Dist.CLIENT)

@@ -1,3 +1,26 @@
 {
-  "values": []
+  "values": [
+    "#forge:ores/gipsum",
+    "#forge:ores/chalcedony",
+    "#forge:ores/fluorite",
+    "#forge:ores/jet",
+    "#forge:ores/desertrose",
+    "#forge:ores/serpentine",
+    "#forge:ores/heliodor",
+    "#forge:ores/topaz",
+    "#forge:ores/larimar",
+    "#forge:ores/aquamarine",
+    "#forge:ores/iolite",
+    "#forge:ores/opal",
+    "#forge:ores/rosinca",
+    "#forge:ores/spinel",
+    "#forge:ores/amazonite",
+    "#forge:ores/jadeite",
+    "#forge:ores/dragons_eye",
+    "#forge:ores/salt",
+    "#forge:ores/niter",
+    "#forge:ores/sulfur",
+    "#forge:ores/travertine",
+    "#forge:ores/natron"
+  ]
 }

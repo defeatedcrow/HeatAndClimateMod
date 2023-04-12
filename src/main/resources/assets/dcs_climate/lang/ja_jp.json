@@ -133,6 +133,12 @@
   "item.dcs_climate.magic.drop_mana":"マナの雫",
   "item.dcs_climate.magic.extract_mana":"マナの抽出液",
 
+  "item.dcs_climate.magic.seedbag_white":"白の種袋",
+  "item.dcs_climate.magic.seedbag_blue":"青の種袋",
+  "item.dcs_climate.magic.seedbag_black":"黒の種袋",
+  "item.dcs_climate.magic.seedbag_red":"赤の種袋",
+  "item.dcs_climate.magic.seedbag_green":"緑の種袋",
+
   "item.dcs_climate.magic.arrow_white":"白の魔法矢",
   "item.dcs_climate.magic.arrow_blue":"青の魔法矢",
   "item.dcs_climate.magic.arrow_black":"黒の魔法矢",
@@ -150,6 +156,18 @@
   "item.dcs_climate.magic.card_black_uncommon":"黒の上位スペル",
   "item.dcs_climate.magic.card_red_uncommon":"赤の上位スペル",
   "item.dcs_climate.magic.card_green_uncommon":"緑の上位スペル",
+
+  "item.dcs_climate.magic.ring_s_white":"白の銀リング",
+  "item.dcs_climate.magic.ring_s_blue":"青の銀リング",
+  "item.dcs_climate.magic.ring_s_black":"黒の銀リング",
+  "item.dcs_climate.magic.ring_s_red":"赤の銀リング",
+  "item.dcs_climate.magic.ring_s_green":"緑の銀リング",
+
+  "item.dcs_climate.magic.ring_g_white":"白の金リング",
+  "item.dcs_climate.magic.ring_g_blue":"青の金リング",
+  "item.dcs_climate.magic.ring_g_black":"黒の金リング",
+  "item.dcs_climate.magic.ring_g_red":"赤の金リング",
+  "item.dcs_climate.magic.ring_g_green":"緑の金リング",
 
     "## items_food":"food",
 
@@ -830,6 +848,8 @@
   "dcs.tip.remove_bad_potion":"悪性ポーション効果を解除します。",
   "dcs.tip.scythe":"右クリックでHaC作物を範囲収穫します。",
 
+  "dcs.tip.seedbag.desc":"ランダムに種を入手します:",
+
   "dcs.tip.magic_arrow.name.white":"光源",
   "dcs.tip.magic_arrow.name.blue":"氷結",
   "dcs.tip.magic_arrow.name.black":"転移",
@@ -862,6 +882,28 @@
   "dcs.tip.magic_card.desc.red_uncommon":"敵性モブの攻撃対象を使用者に集める。",
   "dcs.tip.magic_card.name.green_uncommon":"拘束",
   "dcs.tip.magic_card.desc.green_uncommon":"対象のモブを1分間拘束する。",
+
+  "dcs.tip.ring_s.name.white":"跳躍",
+  "dcs.tip.ring_s.desc.white":"跳躍力上昇のポーション効果を得る。",
+  "dcs.tip.ring_s.name.blue":"耐寒",
+  "dcs.tip.ring_s.desc.blue":"寒冷耐性のポーション効果を得る。",
+  "dcs.tip.ring_s.name.black":"暗視",
+  "dcs.tip.ring_s.desc.black":"暗視のポーション効果を得る。",
+  "dcs.tip.ring_s.name.red":"耐火",
+  "dcs.tip.ring_s.desc.red":"火炎耐性のポーション効果を得る。",
+  "dcs.tip.ring_s.name.green":"収集",
+  "dcs.tip.ring_s.desc.green":"近くのドロップアイテムを足元に集める。",
+
+  "dcs.tip.ring_g.name.white":"免疫",
+  "dcs.tip.ring_g.desc.white":"悪性ポーション効果にかからなくなる。",
+  "dcs.tip.ring_g.name.blue":"水中呼吸",
+  "dcs.tip.ring_g.desc.blue":"水中呼吸のポーション効果を得る。",
+  "dcs.tip.ring_g.name.black":"狩猟",
+  "dcs.tip.ring_g.desc.black":"モブのドロップアイテムが時々増える。",
+  "dcs.tip.ring_g.name.red":"突撃",
+  "dcs.tip.ring_g.desc.red":"攻撃速度上昇、ノックバック耐性のポーション効果を得る。",
+  "dcs.tip.ring_g.name.green":"ダウジング",
+  "dcs.tip.ring_g.desc.green":"Xキーで使用: 足下の鉱石の位置を探る。",
 
   "## gui_misc":"misc",
 
@@ -900,6 +942,8 @@
   "effect.dcs_climate.effect_fish":"魚の加護",
   "effect.dcs_climate.effect_clairvoyance":"透視",
   "effect.dcs_climate.effect_flag":"旗手",
+  "effect.dcs_climate.effect_nimble":"早業",
+  "effect.dcs_climate.effect_heavyboots":"ヘビーブーツ",
 
     "## gui_jei":"jei",
 

@@ -1,6 +1,7 @@
 package defeatedcrow.hac.api.magic;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -22,6 +23,7 @@ public interface IJewelCharm extends IJewel {
 	/**
 	 * DIFFENCE<br>
 	 * 生物がダメージを受けたときに呼ばれ、被弾時のアクションを起こす。<br>
+	 * trueの場合、Eventをキャンセルする
 	 */
 	boolean onDiffence(LivingEntity owner, DamageSource source, float damage, ItemStack charm);
 
@@ -36,6 +38,7 @@ public interface IJewelCharm extends IJewel {
 	/**
 	 * ATTACK<br>
 	 * 生物がダメージを与えたときに呼ばれ、アクションを起こす。<br>
+	 * trueの場合、Eventをキャンセルする
 	 */
 	boolean onAttacking(LivingEntity owner, LivingEntity attackTarget, DamageSource source, float damage,
 			ItemStack charm);
@@ -62,7 +65,7 @@ public interface IJewelCharm extends IJewel {
 	 *
 	 * @return
 	 */
-	boolean onUsing(LivingEntity owner, ItemStack charm);
+	boolean onUsing(ServerPlayer owner, ItemStack charm);
 
 	// active check
 	/**
