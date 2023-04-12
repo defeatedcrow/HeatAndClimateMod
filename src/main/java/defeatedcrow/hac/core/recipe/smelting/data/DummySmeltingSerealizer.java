@@ -25,6 +25,7 @@ public class DummySmeltingSerealizer implements RecipeSerializer<DummySmelting> 
 
 	@Override
 	public DummySmelting fromJson(ResourceLocation res, JsonObject json) {
+		String type = GsonHelper.getAsString(json, "type", "");
 		String group = GsonHelper.getAsString(json, "group", "");
 		ItemStack ret = DataUtilDC.getStack(json, "result");
 		Ingredient ing = DataUtilDC.getIng(json);
@@ -44,22 +45,23 @@ public class DummySmeltingSerealizer implements RecipeSerializer<DummySmelting> 
 
 	@Override
 	public DummySmelting fromNetwork(ResourceLocation res, FriendlyByteBuf buf) {
+		String type = buf.readUtf();
 		String group = buf.readUtf();
 		ItemStack ret = buf.readItem();
 		Ingredient ing = Ingredient.fromNetwork(buf);
-		int f = buf.readVarInt();
+		int f = buf.readInt();
 		List<String> heat = Lists.newArrayList();
 		List<String> hum = Lists.newArrayList();
 		List<String> air = Lists.newArrayList();
-		int i1 = buf.readVarInt();
+		int i1 = buf.readInt();
 		for (int j1 = 0; j1 < i1; ++j1) {
 			heat.add(buf.readUtf());
 		}
-		int i2 = buf.readVarInt();
+		int i2 = buf.readInt();
 		for (int j2 = 0; j2 < i2; ++j2) {
 			hum.add(buf.readUtf());
 		}
-		int i3 = buf.readVarInt();
+		int i3 = buf.readInt();
 		for (int j3 = 0; j3 < i3; ++j3) {
 			air.add(buf.readUtf());
 		}
@@ -79,6 +81,7 @@ public class DummySmeltingSerealizer implements RecipeSerializer<DummySmelting> 
 
 	@Override
 	public void toNetwork(FriendlyByteBuf buf, DummySmelting recipe) {
+		buf.writeUtf(recipe.getType().toString());
 		buf.writeUtf(recipe.group);
 		buf.writeItem(recipe.result);
 		recipe.ingredient.toNetwork(buf);
