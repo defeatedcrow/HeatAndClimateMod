@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "X": {
-      "tag": "forge:gems/agates"
+      "tag": "forge:dusts/crystal"
     },
     "Y": {
       "tag": "dcs_climate:color_extracts/black"

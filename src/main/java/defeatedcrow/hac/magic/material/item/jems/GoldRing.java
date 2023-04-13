@@ -90,9 +90,10 @@ public class GoldRing extends MagicJewelBase {
 			if (ret.getBlock() != Blocks.AIR) {
 
 				MutableComponent n = ret.getBlock().getName();
-				String mes = "Find " + n + " Y=" + y;
-				MutableComponent s = Component.literal(mes);
-				owner.displayClientMessage(s, true);
+				MutableComponent mes = Component.literal("Find ");
+				mes.append(n);
+				mes.append(" Y=" + y);
+				owner.displayClientMessage(mes, true);
 			} else {
 				owner.displayClientMessage(Component.literal("No ore found..."), true);
 			}

@@ -245,6 +245,8 @@
    樹木は、花期と収穫期が季節によって制限されます。
    Trees are seasonally restricted in their flowering and harvesting periods.
 
+   適さない気温では、花や作物が得られなくなります。
+   At unfavorable temperatures, the leaves of the tree will not bear flowers or fruits.
 
 ◎ HaCの食べ物 / HaC Foods
 

@@ -1,4 +1,4 @@
-// 1.19.2	2023-04-11T22:02:39.8067211	Tags for minecraft:item
+// 1.19.2	2023-04-13T21:29:54.6883387	Tags for minecraft:item
 9691b8fa959d0c2eca43b928b1d45c3e5fa4fb15 data/dcs_climate/tags/items/color_drops.json
 1003b47c0766f332ef739eaf3b5ea767d6e9f6c1 data/dcs_climate/tags/items/color_drops/black.json
 969f3e30f0b86599ab5d03e4f9004392ecbef823 data/dcs_climate/tags/items/color_drops/blue.json
@@ -347,7 +347,7 @@ ef0eae57eace67ac0bee0bd569b02852ec51a320 data/forge/tags/items/ingredients/wax.j
 7576b5e358e990001cb92daa877c43c1c058bc88 data/forge/tags/items/ingredients/whip.json
 1f88c377a10e8e075dd5205bb8389f65fc7a3761 data/forge/tags/items/ingredients/zizania.json
 f0f92c5f0b5c5412980a4ca8436b4cb180919deb data/forge/tags/items/magma.json
-a2576978829e6c17e5fb4306af837464cbd562c3 data/forge/tags/items/ores.json
+79b7875f2428cacf1e48c766001c83d8089c6de5 data/forge/tags/items/ores.json
 f85289b6f02654f20c9cd0e64c982f67ade1ffa4 data/forge/tags/items/ores/amazonite.json
 8d000c4eb487c41b65b0e11bf143e0356d8c3fd0 data/forge/tags/items/ores/aquamarine.json
 9d3bbb062b934af351c69c2c9c5c065859d38839 data/forge/tags/items/ores/chalcedony.json

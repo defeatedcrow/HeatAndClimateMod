@@ -8,6 +8,7 @@ import org.apache.commons.compress.utils.Lists;
 
 import com.google.common.collect.ImmutableMap;
 
+import defeatedcrow.hac.core.client.armor.RenderArmorDC;
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
@@ -35,11 +36,9 @@ public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 		material = mat;
 	}
 
-	public static final defeatedcrow.hac.core.client.armor.RenderArmorDC RENDERER = new defeatedcrow.hac.core.client.armor.RenderArmorDC();
-
 	@Override
 	public void initializeClient(java.util.function.Consumer<net.minecraftforge.client.extensions.common.IClientItemExtensions> consumer) {
-		consumer.accept(RENDERER);
+		consumer.accept(RenderArmorDC.RENDERER);
 	}
 
 	@Override

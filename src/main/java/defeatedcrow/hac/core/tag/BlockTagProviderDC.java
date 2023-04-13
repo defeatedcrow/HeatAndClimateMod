@@ -14,6 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -59,6 +60,11 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.ORES_GREEN_DEEP).add(CoreInit.ORE_GREEN_DEEP.get());
 
 		tag(TagDC.BlockTag.ORES_COLOR).addTags(TagDC.BlockTag.ORES_WHITE, TagDC.BlockTag.ORES_BLUE,
+			TagDC.BlockTag.ORES_BLACK, TagDC.BlockTag.ORES_RED, TagDC.BlockTag.ORES_GREEN,
+			TagDC.BlockTag.ORES_WHITE_DEEP, TagDC.BlockTag.ORES_BLUE_DEEP,
+			TagDC.BlockTag.ORES_BLACK_DEEP, TagDC.BlockTag.ORES_RED_DEEP, TagDC.BlockTag.ORES_GREEN_DEEP);
+
+		tag(Tags.Blocks.ORES).addTags(TagDC.BlockTag.ORES_WHITE, TagDC.BlockTag.ORES_BLUE,
 			TagDC.BlockTag.ORES_BLACK, TagDC.BlockTag.ORES_RED, TagDC.BlockTag.ORES_GREEN,
 			TagDC.BlockTag.ORES_WHITE_DEEP, TagDC.BlockTag.ORES_BLUE_DEEP,
 			TagDC.BlockTag.ORES_BLACK_DEEP, TagDC.BlockTag.ORES_RED_DEEP, TagDC.BlockTag.ORES_GREEN_DEEP);

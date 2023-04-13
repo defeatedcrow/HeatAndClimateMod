@@ -1,4 +1,4 @@
-// 1.19.2	2023-03-11T22:38:10.3311372	Tags for minecraft:block
+// 1.19.2	2023-04-13T21:29:54.6823544	Tags for minecraft:block
 c27613bc70b1102eddea4f03976d58392658a01f data/dcs_climate/tags/blocks/color_ores.json
 5973775ffcba4d39743586a99d401b242edfd861 data/dcs_climate/tags/blocks/color_ores/black.json
 08bdd9cd9a09b6f638cd8ea54bec26923da04737 data/dcs_climate/tags/blocks/color_ores/blue.json
@@ -29,6 +29,7 @@ bd377eeba2aa3156ac2035d008cf6bb46ae6e4e8 data/forge/tags/blocks/dust_blocks/nick
 b6bd6d179434f143c5c23709a509aff7bbceb04d data/forge/tags/blocks/dust_blocks/titanium.json
 a035a8829a44ab9de463f90a757002d928e7b53d data/forge/tags/blocks/farmland.json
 b965cf1cefd134257c07643683f8547e274e026e data/forge/tags/blocks/mud.json
+c27613bc70b1102eddea4f03976d58392658a01f data/forge/tags/blocks/ores.json
 929677fffbf997299619da7698068d56f0cac46c data/forge/tags/blocks/ores/amazonite.json
 75ca1c7e8a75af2dee3162219ccfc204202711d8 data/forge/tags/blocks/ores/aquamarine.json
 8b9fc769ec460932bee4253e1d4b13bba8955d1a data/forge/tags/blocks/ores/chalcedony.json

@@ -15,6 +15,8 @@ import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 public class RenderArmorDC implements IClientItemExtensions {
 
+	public static final RenderArmorDC RENDERER = new RenderArmorDC();
+
 	@Override
 	@NotNull
 	public HumanoidModel<?> getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel<?> original) {
