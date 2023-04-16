@@ -169,6 +169,18 @@
   "item.dcs_climate.magic.ring_g_red":"赤の金リング",
   "item.dcs_climate.magic.ring_g_green":"緑の金リング",
 
+  "item.dcs_climate.magic.pendant_s_white":"白の銀ペンダント",
+  "item.dcs_climate.magic.pendant_s_blue":"青の銀ペンダント",
+  "item.dcs_climate.magic.pendant_s_black":"黒の銀ペンダント",
+  "item.dcs_climate.magic.pendant_s_red":"赤の銀ペンダント",
+  "item.dcs_climate.magic.pendant_s_green":"緑の銀ペンダント",
+
+  "item.dcs_climate.magic.pendant_g_white":"白の金ペンダント",
+  "item.dcs_climate.magic.pendant_g_blue":"青の金ペンダント",
+  "item.dcs_climate.magic.pendant_g_black":"黒の金ペンダント",
+  "item.dcs_climate.magic.pendant_g_red":"赤の金ペンダント",
+  "item.dcs_climate.magic.pendant_g_green":"緑の金ペンダント",
+
     "## items_food":"food",
 
   "item.dcs_climate.food.crop_allium_wild":"ノビル",
@@ -904,6 +916,28 @@
   "dcs.tip.ring_g.desc.red":"攻撃速度上昇、ノックバック耐性のポーション効果を得る。",
   "dcs.tip.ring_g.name.green":"ダウジング",
   "dcs.tip.ring_g.desc.green":"Xキーで使用: 足下の鉱石の位置を探る。",
+
+  "dcs.tip.pendant_s.name.white":"援護",
+  "dcs.tip.pendant_s.desc.white":"敵性モブのみに攻撃が当たるようになる。",
+  "dcs.tip.pendant_s.name.blue":"脱出",
+  "dcs.tip.pendant_s.desc.blue":"周囲のモブの戦闘状態を解除し、透明化のポーション効果を得る。",
+  "dcs.tip.pendant_s.name.black":"隠密",
+  "dcs.tip.pendant_s.desc.black":"攻撃対象に気づかれていないとき、与えるダメージの量が増加する。",
+  "dcs.tip.pendant_s.name.red":"採掘",
+  "dcs.tip.pendant_s.desc.red":"採掘速度上昇のポーション効果を得る。",
+  "dcs.tip.pendant_s.name.green":"整地",
+  "dcs.tip.pendant_s.desc.green":"石や土などの地形ブロックを範囲採掘する。",
+
+  "dcs.tip.pendant_g.name.white":"耐爆",
+  "dcs.tip.pendant_g.desc.white":"爆発によるダメージを半減する。",
+  "dcs.tip.pendant_g.name.blue":"知恵",
+  "dcs.tip.pendant_g.desc.blue":"得られるEXPの量を増加する。",
+  "dcs.tip.pendant_g.name.black":"吸血",
+  "dcs.tip.pendant_g.desc.black":"モブにダメージを与えたとき、体力や空腹度を回復する。",
+  "dcs.tip.pendant_g.name.red":"精錬",
+  "dcs.tip.pendant_g.desc.red":"採掘したブロックのドロップアイテムを精錬する。",
+  "dcs.tip.pendant_g.name.green":"伐採",
+  "dcs.tip.pendant_g.desc.green":"原木を破壊したとき、木こりの効果を発揮する。",
 
   "## gui_misc":"misc",
 

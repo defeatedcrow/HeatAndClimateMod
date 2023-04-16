@@ -3,10 +3,9 @@ package defeatedcrow.hac.food.material.block;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.compress.utils.Lists;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -158,7 +157,7 @@ public class CropBlockPedalia extends ClimateCropBaseBlock {
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("COLD");
+			return ImmutableList.of("COLD", "WET");
 		default:
 			return Lists.newArrayList();
 		}

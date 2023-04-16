@@ -3,8 +3,7 @@ package defeatedcrow.hac.core.recipe.datapack;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
-import org.apache.commons.compress.utils.Lists;
-
+import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

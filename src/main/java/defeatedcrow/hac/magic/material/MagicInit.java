@@ -33,7 +33,9 @@ import defeatedcrow.hac.magic.material.item.card.CardRedT1;
 import defeatedcrow.hac.magic.material.item.card.CardRedT2;
 import defeatedcrow.hac.magic.material.item.card.CardWhiteT1;
 import defeatedcrow.hac.magic.material.item.card.CardWhiteT2;
+import defeatedcrow.hac.magic.material.item.jems.GoldPendant;
 import defeatedcrow.hac.magic.material.item.jems.GoldRing;
+import defeatedcrow.hac.magic.material.item.jems.SilverPendant;
 import defeatedcrow.hac.magic.material.item.jems.SilverRing;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -126,6 +128,18 @@ public class MagicInit {
 	public static final RegistryObject<Item> RING_GOLD_BLACK = regItem("ring_g_black", () -> new GoldRing(MagicColor.BLACK));
 	public static final RegistryObject<Item> RING_GOLD_RED = regItem("ring_g_red", () -> new GoldRing(MagicColor.RED));
 	public static final RegistryObject<Item> RING_GOLD_GREEN = regItem("ring_g_green", () -> new GoldRing(MagicColor.GREEN));
+
+	public static final RegistryObject<Item> PENDANT_SILVER_WHITE = regItem("pendant_s_white", () -> new SilverPendant(MagicColor.WHITE));
+	public static final RegistryObject<Item> PENDANT_SILVER_BLUE = regItem("pendant_s_blue", () -> new SilverPendant(MagicColor.BLUE));
+	public static final RegistryObject<Item> PENDANT_SILVER_BLACK = regItem("pendant_s_black", () -> new SilverPendant(MagicColor.BLACK));
+	public static final RegistryObject<Item> PENDANT_SILVER_RED = regItem("pendant_s_red", () -> new SilverPendant(MagicColor.RED));
+	public static final RegistryObject<Item> PENDANT_SILVER_GREEN = regItem("pendant_s_green", () -> new SilverPendant(MagicColor.GREEN));
+
+	public static final RegistryObject<Item> PENDANT_GOLD_WHITE = regItem("pendant_g_white", () -> new GoldPendant(MagicColor.WHITE));
+	public static final RegistryObject<Item> PENDANT_GOLD_BLUE = regItem("pendant_g_blue", () -> new GoldPendant(MagicColor.BLUE));
+	public static final RegistryObject<Item> PENDANT_GOLD_BLACK = regItem("pendant_g_black", () -> new GoldPendant(MagicColor.BLACK));
+	public static final RegistryObject<Item> PENDANT_GOLD_RED = regItem("pendant_g_red", () -> new GoldPendant(MagicColor.RED));
+	public static final RegistryObject<Item> PENDANT_GOLD_GREEN = regItem("pendant_g_green", () -> new GoldPendant(MagicColor.GREEN));
 
 	public static final RegistryObject<Block> SMALL_LIGHT = regBlock("magic_small_light", () -> new MagicSmallLight(), null);
 

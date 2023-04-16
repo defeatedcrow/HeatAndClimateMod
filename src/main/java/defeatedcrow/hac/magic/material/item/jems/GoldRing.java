@@ -8,6 +8,7 @@ import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -112,6 +113,13 @@ public class GoldRing extends MagicJewelBase {
 		if (ClimateCore.proxy.keyShiftPushed()) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.ring_g.desc." + getColor().toString());
 			list.add(itemTip);
+			if (ConfigCommonBuilder.INSTANCE.enMagicCost.get()) {
+				if (getColor().isGreen) {
+					int i = this.getMagicCostEXP(item);
+					MutableComponent cost = Component.literal("COST: " + i + "Xp");
+					list.add(cost);
+				}
+			}
 		}
 		super.appendHoverText(item, level, list, flag);
 	}

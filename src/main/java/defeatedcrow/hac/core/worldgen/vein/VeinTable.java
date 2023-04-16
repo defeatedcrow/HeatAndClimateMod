@@ -2,7 +2,7 @@ package defeatedcrow.hac.core.worldgen.vein;
 
 import java.util.List;
 
-import org.apache.commons.compress.utils.Lists;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.util.DCItemUtil;
 import net.minecraft.world.level.block.Block;

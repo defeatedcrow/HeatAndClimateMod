@@ -2,7 +2,7 @@ package defeatedcrow.hac.core.material.block;
 
 import java.util.List;
 
-import org.apache.commons.compress.utils.Lists;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import net.minecraft.server.level.ServerLevel;

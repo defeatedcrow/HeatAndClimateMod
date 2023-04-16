@@ -4,9 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.compress.utils.Lists;
-
 import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -80,8 +79,7 @@ public class BlockSet {
 	private static BooleanProperty EMPTY = BooleanProperty.create("none");
 
 	private Property<?> getProp(BlockState state) {
-		Optional<Property<?>> prop =
-				state.getProperties().stream().filter(p -> p.getName().equals(getPropertyName())).findAny();
+		Optional<Property<?>> prop = state.getProperties().stream().filter(p -> p.getName().equals(getPropertyName())).findAny();
 		return prop.orElse(DCState.EMPTY);
 	}
 }

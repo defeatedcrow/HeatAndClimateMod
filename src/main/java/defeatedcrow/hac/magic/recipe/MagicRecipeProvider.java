@@ -304,6 +304,107 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.define('Z', Tags.Items.INGOTS_GOLD)
 			.unlockedBy("has_extract_green", has(TagDC.ItemTag.EXTRACT_GREEN))
 			.save(cons, "dcs_climate:magic/craft_ring_gold_green");
+
+		// pendant
+		ShapedRecipeBuilder.shaped(MagicInit.PENDANT_SILVER_WHITE.get(), 1)
+			.pattern("ZZZ")
+			.pattern(" Y ")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.PIGMENT_WHITE)
+			.define('Z', TagDC.ItemTag.INGOT_SILVER)
+			.unlockedBy("has_pigment_white", has(TagDC.ItemTag.PIGMENT_WHITE))
+			.save(cons, "dcs_climate:magic/craft_pendant_silver_white");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PENDANT_SILVER_BLUE.get(), 1)
+			.pattern("ZZZ")
+			.pattern(" Y ")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.PIGMENT_BLUE)
+			.define('Z', TagDC.ItemTag.INGOT_SILVER)
+			.unlockedBy("has_pigment_blue", has(TagDC.ItemTag.PIGMENT_BLUE))
+			.save(cons, "dcs_climate:magic/craft_pendant_silver_blue");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PENDANT_SILVER_BLACK.get(), 1)
+			.pattern("ZZZ")
+			.pattern(" Y ")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.PIGMENT_BLACK)
+			.define('Z', TagDC.ItemTag.INGOT_SILVER)
+			.unlockedBy("has_pigment_black", has(TagDC.ItemTag.PIGMENT_BLACK))
+			.save(cons, "dcs_climate:magic/craft_pendant_silver_black");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PENDANT_SILVER_RED.get(), 1)
+			.pattern("ZZZ")
+			.pattern(" Y ")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.PIGMENT_RED)
+			.define('Z', TagDC.ItemTag.INGOT_SILVER)
+			.unlockedBy("has_pigment_red", has(TagDC.ItemTag.PIGMENT_RED))
+			.save(cons, "dcs_climate:magic/craft_pendant_silver_red");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PENDANT_SILVER_GREEN.get(), 1)
+			.pattern("ZZZ")
+			.pattern(" Y ")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.PIGMENT_GREEN)
+			.define('Z', TagDC.ItemTag.INGOT_SILVER)
+			.unlockedBy("has_pigment_green", has(TagDC.ItemTag.PIGMENT_GREEN))
+			.save(cons, "dcs_climate:magic/craft_pendant_silver_green");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PENDANT_GOLD_WHITE.get(), 1)
+			.pattern("ZZZ")
+			.pattern(" Y ")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.PIGMENT_WHITE)
+			.define('Z', Tags.Items.INGOTS_GOLD)
+			.unlockedBy("has_pigment_white", has(TagDC.ItemTag.PIGMENT_WHITE))
+			.save(cons, "dcs_climate:magic/craft_pendant_gold_white");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PENDANT_GOLD_BLUE.get(), 1)
+			.pattern("ZZZ")
+			.pattern(" Y ")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.PIGMENT_BLUE)
+			.define('Z', Tags.Items.INGOTS_GOLD)
+			.unlockedBy("has_pigment_blue", has(TagDC.ItemTag.PIGMENT_BLUE))
+			.save(cons, "dcs_climate:magic/craft_pendant_gold_blue");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PENDANT_GOLD_BLACK.get(), 1)
+			.pattern("ZZZ")
+			.pattern(" Y ")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.PIGMENT_BLACK)
+			.define('Z', Tags.Items.INGOTS_GOLD)
+			.unlockedBy("has_pigment_black", has(TagDC.ItemTag.PIGMENT_BLACK))
+			.save(cons, "dcs_climate:magic/craft_pendant_gold_black");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PENDANT_GOLD_RED.get(), 1)
+			.pattern("ZZZ")
+			.pattern(" Y ")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.PIGMENT_RED)
+			.define('Z', Tags.Items.INGOTS_GOLD)
+			.unlockedBy("has_pigment_red", has(TagDC.ItemTag.PIGMENT_RED))
+			.save(cons, "dcs_climate:magic/craft_pendant_gold_red");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PENDANT_GOLD_GREEN.get(), 1)
+			.pattern("ZZZ")
+			.pattern(" Y ")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.PIGMENT_GREEN)
+			.define('Z', Tags.Items.INGOTS_GOLD)
+			.unlockedBy("has_pigment_green", has(TagDC.ItemTag.PIGMENT_GREEN))
+			.save(cons, "dcs_climate:magic/craft_pendant_gold_green");
 	}
 
 	static void mortarRecipes(Consumer<FinishedRecipe> cons) {

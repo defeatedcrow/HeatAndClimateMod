@@ -169,6 +169,18 @@
   "item.dcs_climate.magic.ring_g_red":"Red Gold Ring",
   "item.dcs_climate.magic.ring_g_green":"Green Gold Ring",
 
+  "item.dcs_climate.magic.pendant_s_white":"White Silver Pendant",
+  "item.dcs_climate.magic.pendant_s_blue":"Blue Silver Pendant",
+  "item.dcs_climate.magic.pendant_s_black":"Black Silver Pendant",
+  "item.dcs_climate.magic.pendant_s_red":"Red Silver Pendant",
+  "item.dcs_climate.magic.pendant_s_green":"Green Silver Pendant",
+
+  "item.dcs_climate.magic.pendant_g_white":"White Gold Pendant",
+  "item.dcs_climate.magic.pendant_g_blue":"Blue Gold Pendant",
+  "item.dcs_climate.magic.pendant_g_black":"Black Gold Pendant",
+  "item.dcs_climate.magic.pendant_g_red":"Red Gold Pendant",
+  "item.dcs_climate.magic.pendant_g_green":"Green Gold Pendant",
+
     "## items_food":"food",
 
   "item.dcs_climate.food.crop_allium_wild":"Garlic Chives",
@@ -907,6 +919,28 @@
   "dcs.tip.ring_g.desc.red":"Gain potion effect of Nimble and Heavy Boots.",
   "dcs.tip.ring_g.name.green":"Dowsing",
   "dcs.tip.ring_g.desc.green":"Using with X Key: Explore the location of the ore under the feet.",
+
+  "dcs.tip.pendant_s.name.white":"Ally Protection",
+  "dcs.tip.pendant_s.desc.white":"Attacks will only hit enemies.",
+  "dcs.tip.pendant_s.name.blue":"Escape",
+  "dcs.tip.pendant_s.desc.blue":"Disarms surrounding mobs and gains a potion effect of Invisibility.",
+  "dcs.tip.pendant_s.name.black":"Sneaking",
+  "dcs.tip.pendant_s.desc.black":"Increases damage if the target is unaware.",
+  "dcs.tip.pendant_s.name.red":"Miner",
+  "dcs.tip.pendant_s.desc.red":"Gain potion effect of Haste.",
+  "dcs.tip.pendant_s.name.green":"Range Mining",
+  "dcs.tip.pendant_s.desc.green":"Range mining natural blocks such as stone and dirt.",
+
+  "dcs.tip.pendant_g.name.white":"Explosion Resistance",
+  "dcs.tip.pendant_g.desc.white":"Halves damage from explosions.",
+  "dcs.tip.pendant_g.name.blue":"Wisdom",
+  "dcs.tip.pendant_g.desc.blue":"Increases the amount of EXP gained.",
+  "dcs.tip.pendant_g.name.black":"Absorption",
+  "dcs.tip.pendant_g.desc.black":"Recover health and hunger when damaging mobs.",
+  "dcs.tip.pendant_g.name.red":"Smelting",
+  "dcs.tip.pendant_g.desc.red":"Smelting mined block drop items.",
+  "dcs.tip.pendant_g.name.green":"Lumbering",
+  "dcs.tip.pendant_g.desc.green":"When a log is destroyed, connected logs are destroyed together.",
 
   "## gui_misc":"misc",
 

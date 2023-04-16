@@ -2,8 +2,9 @@ package defeatedcrow.hac.plugin.jei.ingredients;
 
 import java.util.List;
 
-import org.apache.commons.compress.utils.Lists;
 import org.jetbrains.annotations.Nullable;
+
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.ClimateCore;

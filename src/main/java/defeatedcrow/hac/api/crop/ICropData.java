@@ -3,7 +3,7 @@ package defeatedcrow.hac.api.crop;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.compress.utils.Lists;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;

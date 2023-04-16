@@ -72,7 +72,7 @@ public abstract class MagicJewelBase extends ItemDC implements IJewelCharm {
 
 	@Override
 	public float reduceDamage(LivingEntity owner, DamageSource source, float damage, ItemStack charm) {
-		return 0;
+		return 1F;
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public abstract class MagicJewelBase extends ItemDC implements IJewelCharm {
 
 	@Override
 	public float increaceDamage(LivingEntity owner, LivingEntity attackTarget, DamageSource source, float damage, ItemStack charm) {
-		return 0;
+		return 1F;
 	}
 
 	@Override
@@ -107,7 +107,7 @@ public abstract class MagicJewelBase extends ItemDC implements IJewelCharm {
 
 	@Override
 	public boolean isActive(LivingEntity owner, ItemStack charm) {
-		if (getCharmType() == CharmType.CONSTANT)
+		if (getCharmType() == CharmType.CONSTANT || getCharmType() == CharmType.SPECIAL)
 			return true;
 		if (owner != null && owner instanceof Player player) {
 			int cost = getMagicCostEXP(charm);

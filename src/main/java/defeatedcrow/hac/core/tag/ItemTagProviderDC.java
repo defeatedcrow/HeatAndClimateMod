@@ -361,6 +361,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		copy(BlockTags.LEAVES, ItemTags.LEAVES);
 
+		copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
+
 		copy(TagDC.BlockTag.CROP_PUMPKIN, TagDC.ItemTag.CROP_PUMPKIN);
 		copy(TagDC.BlockTag.CROP_MELON, TagDC.ItemTag.CROP_MELON);
 

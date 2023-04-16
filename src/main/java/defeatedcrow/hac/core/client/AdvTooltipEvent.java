@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.apache.commons.compress.utils.Lists;
-
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Either;
 
 import defeatedcrow.hac.core.ClimateCore;

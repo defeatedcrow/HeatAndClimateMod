@@ -3,9 +3,8 @@ package defeatedcrow.hac.plugin.jei;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.compress.utils.Lists;
-
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;

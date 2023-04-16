@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:dusts/crystal"
+    },
+    "Y": {
+      "tag": "dcs_climate:color_pigments/red"
+    },
+    "Z": {
+      "tag": "forge:ingots/silver"
+    }
+  },
+  "pattern": [
+    "ZZZ",
+    " Y ",
+    " X "
+  ],
+  "result": {
+    "item": "dcs_climate:magic/pendant_s_red"
+  }
+}

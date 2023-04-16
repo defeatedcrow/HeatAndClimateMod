@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import org.apache.commons.compress.utils.Lists;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.json.JsonModelDC;

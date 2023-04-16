@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.compress.utils.Lists;
+import com.google.common.collect.Lists;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.Property;

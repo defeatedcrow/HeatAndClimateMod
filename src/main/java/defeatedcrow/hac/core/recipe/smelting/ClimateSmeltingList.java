@@ -2,9 +2,8 @@ package defeatedcrow.hac.core.recipe.smelting;
 
 import java.util.List;
 
-import org.apache.commons.compress.utils.Lists;
-
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;

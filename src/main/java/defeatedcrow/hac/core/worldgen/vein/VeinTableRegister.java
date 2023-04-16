@@ -3,7 +3,7 @@ package defeatedcrow.hac.core.worldgen.vein;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.compress.utils.Lists;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.util.DCUtil;

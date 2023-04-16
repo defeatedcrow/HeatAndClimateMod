@@ -7,10 +7,9 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.apache.commons.compress.utils.Lists;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -35,6 +34,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -174,7 +174,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 		for (int i = 0; i < limit; i++) {
 			for (BlockPos p : leaves) {
 				Arrays.stream(Direction.values()).map(p::relative).forEach(p2 -> {
-					if (world.getBlockState(p2).getBlock() instanceof LogBlockDC) {
+					if (world.getBlockState(p2).is(BlockTags.LOGS)) {
 						log.add(p2);
 					} else if (world.getBlockState(p2).getBlock().equals(block) && !found.contains(p2)) {
 						found.add(p2);

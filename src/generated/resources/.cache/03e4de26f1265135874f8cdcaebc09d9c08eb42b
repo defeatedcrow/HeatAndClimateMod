@@ -1,4 +1,4 @@
-// 1.19.2	2023-04-13T21:29:54.6883387	Tags for minecraft:item
+// 1.19.2	2023-04-16T22:11:29.852996	Tags for minecraft:item
 9691b8fa959d0c2eca43b928b1d45c3e5fa4fb15 data/dcs_climate/tags/items/color_drops.json
 1003b47c0766f332ef739eaf3b5ea767d6e9f6c1 data/dcs_climate/tags/items/color_drops/black.json
 969f3e30f0b86599ab5d03e4f9004392ecbef823 data/dcs_climate/tags/items/color_drops/blue.json
@@ -55,6 +55,7 @@ bfa015168a13af280008c0441234c8dbb341958b data/dcs_climate/tags/items/gems/black.
 cd6d18dc51b62418c5466f9fba750545c3b74e79 data/dcs_climate/tags/items/gems/red.json
 fa6626c4d374bc0da9891eb041c6a80385f76161 data/dcs_climate/tags/items/gems/white.json
 5f86011b18234fdffe1c0ec57ef0c3468ea09583 data/dcs_climate/tags/items/magic_cards.json
+7731b00b985c45aa4af4f155ee3c7f6c9552d8a7 data/dcs_climate/tags/items/magic_pendants.json
 85e814e621a82fe67190bcfe1fdd544dee9b1e2f data/dcs_climate/tags/items/magic_rings.json
 6430da8ed20b60e93622f4512219d1ff14aefcd8 data/dcs_climate/tags/items/mana_drops.json
 14cef5e12e14cfde96c79f6a0d3142b02c0730a3 data/dcs_climate/tags/items/mana_extractss.json

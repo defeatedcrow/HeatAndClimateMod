@@ -173,9 +173,9 @@
  これらは、あなたがHaC金属を精錬したり、肉を焼くために必要です。
  These are required for you to smelt HaC metals or grill meat.
 
- * 気候精錬レシピはコンフィグファイルによって変更したり、削除することが出来ます。しかし、アルファバージョンでは新しいレシピをコンフィグで追加することが出来ません。
+ * 気候精錬レシピはコンフィグファイルによって変更したり、削除することが出来ます。
    材料のオブジェクトに、気候精錬に対応する仕様が実装されている必要があります。
-   Climate smelting recipes can be changed or deleted via the config file. But unfortunately the alpha version doesn't allow adding new recipes in the config.
+   Climate smelting recipes can be changed or deleted via the config file.
    The material object must implement the specification for climate smelting.
 
 
@@ -276,8 +276,8 @@
   宝石や作物から『色の魔法の素』を取り出し、魔法のアイテムの素材に使用します。
   Color extracts are extracted from crops and gems, and used as a material for magic items.
 
-  コンフィグで魔法ハードモードが有効化されている場合、カードの使用またはXキーによる呪文のキャストにはコスト（EXP）を支払う必要があります。
-  If Magic Hard Mode is enabled in config, player must pay a cost (EXP) to use a card or cast a spell with the X key.
+  コンフィグで魔法ハードモードが有効化されている場合、カードやアクセサリーの魔法にはコスト（EXP）を支払う必要があります。
+  If Magic Hard Mode is enabled in config, player must pay a cost (EXP) to use a card or jewel.
 
 　● 魔法の矢 / Magical Arrow
 
@@ -302,6 +302,11 @@
 
 
 #### 更新履歴 / Change log ####
+
+○ v4-alpha5
+ add: 魔法のペンダント
+ change; 鳥・魚のポーション効果にそれぞれ採掘速度上昇効果をつけた
+ fix: サーバーサイドでのクラッシュを修正
 
 ○ v4-alpha4 (2023.4.12)
  add: 布素材

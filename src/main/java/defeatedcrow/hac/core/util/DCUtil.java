@@ -15,11 +15,11 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.material.CoreInit;
-import defeatedcrow.hac.core.tag.TagUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
@@ -205,7 +205,7 @@ public class DCUtil {
 		Set<BlockPos> founds = new LinkedHashSet<>();
 		do {
 			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative))
-				.filter(fixedPos -> world.getBlockState(fixedPos).getBlock().equals(block) || (TagUtil.matchTag("logs", world.getBlockState(fixedPos)).isPresent() && founds.add(fixedPos)))
+				.filter(fixedPos -> (world.getBlockState(fixedPos).getBlock().equals(block) || world.getBlockState(fixedPos).is(BlockTags.LOGS)) && founds.add(fixedPos))
 				.limit(limit - founds.size()).collect(Collectors.toList());
 
 		} while (founds.isEmpty() && !nextTargets.isEmpty());
