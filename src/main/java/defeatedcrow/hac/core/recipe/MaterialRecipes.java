@@ -127,8 +127,8 @@ public class MaterialRecipes {
 	public record Color(
 			String name,
 			MagicColor color,
-			Supplier<Block> oreBlock,
-			Supplier<Block> oreDeep,
+			Supplier<Block> block,
+			Supplier<Block> blockDeep,
 			Supplier<Item> gemPri,
 			Supplier<Item> gemSec,
 			Supplier<Item> gemTert,

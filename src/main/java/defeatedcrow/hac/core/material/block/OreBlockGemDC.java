@@ -52,7 +52,7 @@ public class OreBlockGemDC extends LayerStoneBlock {
 	}
 
 	public ItemStack getSecondary() {
-		return secondary == null | secondary.get() == null ? ItemStack.EMPTY : new ItemStack(secondary.get());
+		return secondary == null || secondary.get() == null ? ItemStack.EMPTY : new ItemStack(secondary.get());
 	}
 
 	@Override

@@ -27,8 +27,8 @@ public abstract class BlockDC extends Block implements IBlockDC, IJsonDataDC {
 		if (state.getBlock() instanceof IBlockDC) {
 			IBlockDC block = (IBlockDC) state.getBlock();
 			ServerLevel level = builder.getLevel();
-			Entity breaker = builder.getParameter(LootContextParams.THIS_ENTITY);
-			ItemStack tool = builder.getParameter(LootContextParams.TOOL);
+			Entity breaker = builder.getOptionalParameter(LootContextParams.THIS_ENTITY);
+			ItemStack tool = builder.getOptionalParameter(LootContextParams.TOOL);
 			// シルクタッチの場合は処理を中段
 			if (!block.getSilkyDrop().isEmpty() && !tool.isEmpty() && tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
 				ret.add(getSilkyDrop());

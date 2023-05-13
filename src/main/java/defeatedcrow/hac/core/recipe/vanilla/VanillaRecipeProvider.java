@@ -149,14 +149,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 	private static void mortarMetalRecipes(Consumer<FinishedRecipe> cons, MaterialRecipes.Color color) {
 
-		if (color.oreBlock().get().asItem() instanceof IItemDC) {
-			TagKey<Item> ore = ((IItemDC) color.oreBlock().get().asItem()).getPairTag();
+		if (color.block().get().asItem() instanceof IItemDC) {
+			TagKey<Item> ore = ((IItemDC) color.block().get().asItem()).getPairTag();
 
 			ShapelessRecipeBuilder.shapeless(color.orePri().get(), 1)
 				.requires(ore)
 				.requires(CoreInit.MORTAR.get())
 				.group("crusher_mortar")
-				.unlockedBy("has_" + color.name() + "_ore", has(color.oreBlock().get().asItem()))
+				.unlockedBy("has_" + color.name() + "_ore", has(color.block().get().asItem()))
 				.save(cons, "dcs_climate:core/mortar_ore_" + color.name());
 
 			ShapelessRecipeBuilder.shapeless(color.gemPri().get(), 1)
@@ -164,18 +164,18 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(CoreInit.MORTAR.get())
 				.requires(CoreInit.SIEVE.get())
 				.group("crusher_mortar")
-				.unlockedBy("has_" + color.name() + "_ore", has(color.oreBlock().get().asItem()))
+				.unlockedBy("has_" + color.name() + "_ore", has(color.block().get().asItem()))
 				.save(cons, "dcs_climate:core/sieve_ore_" + color.name());
 		}
 
-		if (color.oreDeep().get().asItem() instanceof IItemDC) {
-			TagKey<Item> ore = ((IItemDC) color.oreDeep().get().asItem()).getPairTag();
+		if (color.blockDeep().get().asItem() instanceof IItemDC) {
+			TagKey<Item> ore = ((IItemDC) color.blockDeep().get().asItem()).getPairTag();
 
 			ShapelessRecipeBuilder.shapeless(color.oreSec().get(), 1)
 				.requires(ore)
 				.requires(CoreInit.MORTAR.get())
 				.group("crusher_mortar")
-				.unlockedBy("has_" + color.name() + "_deepore", has(color.oreDeep().get().asItem()))
+				.unlockedBy("has_" + color.name() + "_deepore", has(color.blockDeep().get().asItem()))
 				.save(cons, "dcs_climate:core/mortar_deepore_" + color.name());
 
 			ShapelessRecipeBuilder.shapeless(color.gemSec().get(), 1)
@@ -183,40 +183,40 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(CoreInit.MORTAR.get())
 				.requires(CoreInit.SIEVE.get())
 				.group("crusher_mortar")
-				.unlockedBy("has_" + color.name() + "_deepore", has(color.oreDeep().get().asItem()))
+				.unlockedBy("has_" + color.name() + "_deepore", has(color.blockDeep().get().asItem()))
 				.save(cons, "dcs_climate:core/sieve_deepore_" + color.name());
 		}
 
-		if (color.gemPri().get() instanceof IItemDC) {
+		if (color.orePri().get() instanceof IItemDC) {
 			TagKey<Item> ore = ((IItemDC) color.orePri().get()).getPairTag();
 
 			ShapelessRecipeBuilder.shapeless(color.dustPri().get(), 1)
 				.requires(ore)
 				.requires(CoreInit.MORTAR.get())
 				.group("crusher_mortar")
-				.unlockedBy("has_" + color.name() + "_ore", has(color.oreBlock().get().asItem()))
+				.unlockedBy("has_" + color.name() + "_ore", has(color.block().get().asItem()))
 				.save(cons, "dcs_climate:core/mortar_gem1_" + color.name());
 		}
 
-		if (color.gemSec().get() instanceof IItemDC) {
+		if (color.oreSec().get() instanceof IItemDC) {
 			TagKey<Item> ore = ((IItemDC) color.oreSec().get()).getPairTag();
 
 			ShapelessRecipeBuilder.shapeless(color.dustSec().get(), 1)
 				.requires(ore)
 				.requires(CoreInit.MORTAR.get())
 				.group("crusher_mortar")
-				.unlockedBy("has_" + color.name() + "_deepore", has(color.oreDeep().get().asItem()))
+				.unlockedBy("has_" + color.name() + "_deepore", has(color.blockDeep().get().asItem()))
 				.save(cons, "dcs_climate:core/mortar_gem2_" + color.name());
 		}
 
-		if (color.gemTert().get() instanceof IItemDC) {
+		if (color.oreTert().get() instanceof IItemDC) {
 			TagKey<Item> ore = ((IItemDC) color.oreTert().get()).getPairTag();
 
 			ShapelessRecipeBuilder.shapeless(color.dustTert().get(), 1)
 				.requires(ore)
 				.requires(CoreInit.MORTAR.get())
 				.group("crusher_mortar")
-				.unlockedBy("has_" + color.name() + "_deepore", has(color.oreDeep().get().asItem()))
+				.unlockedBy("has_" + color.name() + "_deepore", has(color.blockDeep().get().asItem()))
 				.save(cons, "dcs_climate:core/mortar_gem3_" + color.name());
 		}
 
