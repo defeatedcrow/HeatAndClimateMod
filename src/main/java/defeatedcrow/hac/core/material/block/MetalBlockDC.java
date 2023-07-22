@@ -115,8 +115,10 @@ public class MetalBlockDC extends BlockDC implements IRapidCollectables {
 		} else {
 			drop = new ItemEntity(level, pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D, ret);
 		}
-		if (drop != null && !level.isClientSide)
+		if (drop != null && !level.isClientSide) {
 			level.addFreshEntity(drop);
+			level.removeBlock(pos, false);
+		}
 		return true;
 	}
 

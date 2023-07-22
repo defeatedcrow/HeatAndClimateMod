@@ -137,13 +137,12 @@
     "dcs_climate:build/glass_crystal",
     "dcs_climate:build/glass_light",
     "dcs_climate:build/glass_dark",
-    "dcs_climate:build/chal_lamp",
-    "dcs_climate:build/chal_lamp_glass",
     "dcs_climate:build/chal_lamp_table",
     "dcs_climate:build/chal_lamp_fluorite",
     "dcs_climate:build/chal_lamp_jet",
     "dcs_climate:build/chal_lamp_desertrose",
     "dcs_climate:build/chal_lamp_serpentine",
+    "dcs_climate:build/chain_gold",
     "dcs_climate:magic/magic_small_light"
   ]
 }

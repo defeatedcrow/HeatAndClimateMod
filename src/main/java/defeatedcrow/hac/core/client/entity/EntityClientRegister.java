@@ -1,11 +1,16 @@
 package defeatedcrow.hac.core.client.entity;
 
+import defeatedcrow.hac.core.client.entity.model.BlockChandelier2Model;
+import defeatedcrow.hac.core.client.entity.model.BlockChandelierModel;
 import defeatedcrow.hac.core.client.entity.model.ChairBindModel;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicFin;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicWing;
 import defeatedcrow.hac.core.client.entity.model.ModelThinArmor;
 import defeatedcrow.hac.core.client.entity.renderer.RenderHarpoon;
+import defeatedcrow.hac.core.client.entity.renderer.TileRendererChandelier;
+import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.material.block.tile.ChandelierTile;
 import defeatedcrow.hac.core.material.item.tool.HarpoonItem;
 import defeatedcrow.hac.food.client.entity.RenderBreadCream;
 import defeatedcrow.hac.food.client.entity.RenderBreadSausage;
@@ -62,6 +67,15 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 
 public class EntityClientRegister {
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+		// TESR
+		event.registerLayerDefinition(ChandelierTile.CHALCEDONY.getLayerLocation(), BlockChandelierModel::createBodyLayer);
+		event.registerLayerDefinition(ChandelierTile.FLUORITE.getLayerLocation(), BlockChandelierModel::createBodyLayer);
+		event.registerLayerDefinition(ChandelierTile.JET.getLayerLocation(), BlockChandelierModel::createBodyLayer);
+		event.registerLayerDefinition(ChandelierTile.DESERTROSE.getLayerLocation(), BlockChandelierModel::createBodyLayer);
+		event.registerLayerDefinition(ChandelierTile.SERPENTINE.getLayerLocation(), BlockChandelierModel::createBodyLayer);
+		event.registerLayerDefinition(ChandelierTile.IRON.getLayerLocation(), BlockChandelier2Model::createBodyLayer);
+
+		// Entity
 		event.registerLayerDefinition(HarpoonItem.FLINT.getLayerLocation(), TridentModel::createLayer);
 		event.registerLayerDefinition(HarpoonItem.STEEL.getLayerLocation(), TridentModel::createLayer);
 
@@ -131,6 +145,10 @@ public class EntityClientRegister {
 	}
 
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+		// TESR
+		event.registerBlockEntityRenderer(BuildInit.CHANDELIER_TILE.get(), TileRendererChandelier::new);
+
+		// Entity
 		event.registerEntityRenderer(CoreInit.HARPOON.get(), RenderHarpoon::new);
 
 		event.registerEntityRenderer(FoodInit.BREAD_ROUND.get(), RenderFoodBase::new);

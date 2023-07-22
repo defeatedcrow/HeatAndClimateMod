@@ -534,6 +534,69 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_chal_lamp", has(BuildInit.CHAL_LAMP.get()))
 			.save(cons, "dcs_climate:build/chalcedony_lamp_serpentine");
 
+		ShapedRecipeBuilder.shaped(BuildInit.CHANDELIER_IRON.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" X ")
+			.define('X', BuildInit.CHAL_LAMP_TABLE.get())
+			.define('Y', Tags.Items.INGOTS_IRON)
+			.unlockedBy("has_table_lamp", has(BuildInit.CHAL_LAMP_TABLE.get()))
+			.save(cons, "dcs_climate:build/chandelier_iron_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHANDELIER_LAMP.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" X ")
+			.define('X', BuildInit.CHAL_LAMP_TABLE.get())
+			.define('Y', Tags.Items.INGOTS_GOLD)
+			.unlockedBy("has_table_lamp", has(BuildInit.CHAL_LAMP_TABLE.get()))
+			.save(cons, "dcs_climate:build/chandelier_lamp_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHANDELIER_FLUORITE.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" X ")
+			.define('X', BuildInit.CHAL_LAMP_FLUORITE.get())
+			.define('Y', Tags.Items.INGOTS_GOLD)
+			.unlockedBy("has_fluorite_lamp", has(BuildInit.CHAL_LAMP_FLUORITE.get()))
+			.save(cons, "dcs_climate:build/chandelier_fluorite_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHANDELIER_JET.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" X ")
+			.define('X', BuildInit.CHAL_LAMP_JET.get())
+			.define('Y', Tags.Items.INGOTS_GOLD)
+			.unlockedBy("has_jet_lamp", has(BuildInit.CHAL_LAMP_JET.get()))
+			.save(cons, "dcs_climate:build/chandelier_jet_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHANDELIER_DESERTROSE.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" X ")
+			.define('X', BuildInit.CHAL_LAMP_DESERTROSE.get())
+			.define('Y', Tags.Items.INGOTS_GOLD)
+			.unlockedBy("has_desertrose_lamp", has(BuildInit.CHAL_LAMP_DESERTROSE.get()))
+			.save(cons, "dcs_climate:build/chandelier_desertrose_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHANDELIER_SERPENTINE.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" X ")
+			.define('X', BuildInit.CHAL_LAMP_SERPENTINE.get())
+			.define('Y', Tags.Items.INGOTS_GOLD)
+			.unlockedBy("has_serpentine_lamp", has(BuildInit.CHAL_LAMP_SERPENTINE.get()))
+			.save(cons, "dcs_climate:build/chandelier_serpentine_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAIN_GOLD.get(), 1)
+			.pattern("X")
+			.pattern("Y")
+			.pattern("X")
+			.define('X', Tags.Items.NUGGETS_GOLD)
+			.define('Y', Tags.Items.INGOTS_GOLD)
+			.unlockedBy("has_gold", has(Tags.Items.INGOTS_GOLD))
+			.save(cons, "dcs_climate:build/chain_gold_0");
+
 	}
 
 	private static void otherRecipes(Consumer<FinishedRecipe> cons) {

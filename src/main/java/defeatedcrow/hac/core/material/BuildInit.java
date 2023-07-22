@@ -4,6 +4,8 @@ import java.util.function.Supplier;
 
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.block.LayerStoneBlock;
+import defeatedcrow.hac.core.material.block.building.ChainBlockDC;
+import defeatedcrow.hac.core.material.block.building.ChandelierLamp;
 import defeatedcrow.hac.core.material.block.building.ConnectedGlassBlock;
 import defeatedcrow.hac.core.material.block.building.FenceWoodDC;
 import defeatedcrow.hac.core.material.block.building.PillarStoneDC;
@@ -14,12 +16,14 @@ import defeatedcrow.hac.core.material.block.building.SlabWoodDC;
 import defeatedcrow.hac.core.material.block.building.StairsStoneDC;
 import defeatedcrow.hac.core.material.block.building.StairsWoodDC;
 import defeatedcrow.hac.core.material.block.building.WallStoneDC;
+import defeatedcrow.hac.core.material.block.tile.ChandelierTile;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.RegistryObject;
@@ -108,19 +112,6 @@ public class BuildInit {
 	public static final RegistryObject<Block> MOSAIC_YELLOW = regBlock("mosaic_yellow", () -> new LayerStoneBlock("mosaic_yellow").setDomain("build").setTexDir("build"), null);
 	public static final RegistryObject<Block> MOSAIC_RED = regBlock("mosaic_red", () -> new LayerStoneBlock("mosaic_red").setDomain("build").setTexDir("build"), null);
 
-	public static final RegistryObject<Block> GLASS_CRYSTAL = regBlock("glass_crystal", () -> new ConnectedGlassBlock("crystal", 0), Tags.Items.GLASS);
-	public static final RegistryObject<Block> GLASS_LIGHT = regBlock("glass_light", () -> new ConnectedGlassBlock("crystal", 15), null);
-	public static final RegistryObject<Block> GLASS_DARK = regBlock("glass_dark", () -> new ConnectedGlassBlock("crystal"), null);
-
-	public static final RegistryObject<Block> CHAL_LAMP = regBlock("chal_lamp", () -> new SimpleLightDC("chal_lamp"), null);
-	public static final RegistryObject<Block> CHAL_LAMP_GLASS = regBlock("chal_lamp_glass", () -> new SimpleLightDC("chal_lamp_glass"), null);
-	public static final RegistryObject<Block> CHAL_LAMP_TABLE = regBlock("chal_lamp_table", () -> new SidedLightDC("chal_lamp_table"), null);
-
-	public static final RegistryObject<Block> CHAL_LAMP_FLUORITE = regBlock("chal_lamp_fluorite", () -> new SidedLightDC("chal_lamp_fluorite"), null);
-	public static final RegistryObject<Block> CHAL_LAMP_JET = regBlock("chal_lamp_jet", () -> new SidedLightDC("chal_lamp_jet"), null);
-	public static final RegistryObject<Block> CHAL_LAMP_DESERTROSE = regBlock("chal_lamp_desertrose", () -> new SidedLightDC("chal_lamp_desertrose"), null);
-	public static final RegistryObject<Block> CHAL_LAMP_SERPENTINE = regBlock("chal_lamp_serpentine", () -> new SidedLightDC("chal_lamp_serpentine"), null);
-
 	public static final RegistryObject<Block> STAIRS_BEECH = regBlock("stairs_beech_common", () -> new StairsWoodDC("beech_common", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_BH_COMMON),
 		ItemTags.WOODEN_STAIRS);
 	public static final RegistryObject<Block> SLAB_BEECH = regBlock("slab_beech_common", () -> new SlabWoodDC("beech_common", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), ItemTags.WOODEN_SLABS);
@@ -170,6 +161,33 @@ public class BuildInit {
 		ItemTags.WOODEN_STAIRS);
 	public static final RegistryObject<Block> SLAB_SORGHUM = regBlock("slab_reed_sorghum", () -> new SlabWoodDC("reed_sorghum", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), ItemTags.WOODEN_SLABS);
 	public static final RegistryObject<Block> FENCE_SORGHUM = regBlock("fence_reed_sorghum", () -> new FenceWoodDC("reed_sorghum"), ItemTags.WOODEN_FENCES);
+
+	public static final RegistryObject<Block> GLASS_CRYSTAL = regBlock("glass_crystal", () -> new ConnectedGlassBlock("crystal", 0), Tags.Items.GLASS);
+	public static final RegistryObject<Block> GLASS_LIGHT = regBlock("glass_light", () -> new ConnectedGlassBlock("crystal", 15), null);
+	public static final RegistryObject<Block> GLASS_DARK = regBlock("glass_dark", () -> new ConnectedGlassBlock("crystal"), null);
+
+	public static final RegistryObject<Block> CHAL_LAMP = regBlock("chal_lamp", () -> new SimpleLightDC("chal_lamp"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_GLASS = regBlock("chal_lamp_glass", () -> new SimpleLightDC("chal_lamp_glass"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_TABLE = regBlock("chal_lamp_table", () -> new SidedLightDC("chal_lamp_table"), null);
+
+	public static final RegistryObject<Block> CHAL_LAMP_FLUORITE = regBlock("chal_lamp_fluorite", () -> new SidedLightDC("chal_lamp_fluorite"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_JET = regBlock("chal_lamp_jet", () -> new SidedLightDC("chal_lamp_jet"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_DESERTROSE = regBlock("chal_lamp_desertrose", () -> new SidedLightDC("chal_lamp_desertrose"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_SERPENTINE = regBlock("chal_lamp_serpentine", () -> new SidedLightDC("chal_lamp_serpentine"), null);
+
+	public static final RegistryObject<Block> CHANDELIER_IRON = regBlock("chandelier_iron", () -> new ChandelierLamp("iron"), null);
+	public static final RegistryObject<Block> CHANDELIER_LAMP = regBlock("chandelier_crystal", () -> new ChandelierLamp("crystal"), null);
+	public static final RegistryObject<Block> CHANDELIER_FLUORITE = regBlock("chandelier_fluorite", () -> new ChandelierLamp("fluorite"), null);
+	public static final RegistryObject<Block> CHANDELIER_JET = regBlock("chandelier_jet", () -> new ChandelierLamp("jet"), null);
+	public static final RegistryObject<Block> CHANDELIER_DESERTROSE = regBlock("chandelier_desertrose", () -> new ChandelierLamp("desertrose"), null);
+	public static final RegistryObject<Block> CHANDELIER_SERPENTINE = regBlock("chandelier_serpentine", () -> new ChandelierLamp("serpentine"), null);
+
+	public static final RegistryObject<Block> CHAIN_GOLD = regBlock("chain_gold", () -> new ChainBlockDC("gold"), null);
+
+	// TileEntity
+	public static final RegistryObject<BlockEntityType<ChandelierTile>> CHANDELIER_TILE = CoreInit.BLOCK_ENTITIES.register("chandelier_crystal_tile",
+		() -> BlockEntityType.Builder.of(ChandelierTile::new, new Block[] { CHANDELIER_LAMP.get(), CHANDELIER_FLUORITE.get(), CHANDELIER_JET.get(), CHANDELIER_DESERTROSE.get(), CHANDELIER_SERPENTINE.get(),
+			CHANDELIER_IRON.get() }).build(null));
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("build/" + name, block);

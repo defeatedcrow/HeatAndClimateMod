@@ -69,7 +69,7 @@ public class OreBlockGemDC extends LayerStoneBlock {
 			int size = entity.level.random.nextInt(2 + Mth.floor(level / 2F));
 			if (size > 0) {
 				if (!getSecondary().isEmpty()) {
-					ret.add(new ItemStack(secondary.get(), size));
+					ret.add(new ItemStack(getSecondary().getItem(), size));
 				} else if (!getMainDrop().isEmpty()) {
 					ret.add(new ItemStack(getMainDrop().getItem(), size));
 				}

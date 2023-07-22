@@ -34,11 +34,11 @@ public class DCTimeHelper {
 		if (world.isClientSide) {
 			return getClientTime();
 		}
-		if (ConfigServerBuilder.INSTANCE.enRealTime.get()) {
-			Calendar cal = Calendar.getInstance();
-			int hour = cal.get(cal.HOUR_OF_DAY);
-			return hour;
-		}
+		// if (ConfigServerBuilder.INSTANCE.enRealTime.get()) {
+		// Calendar cal = Calendar.getInstance();
+		// int hour = cal.get(cal.HOUR_OF_DAY);
+		// return hour;
+		// }
 		long time = time(world);
 		time += 6000;
 		if (time > 24000)
@@ -59,11 +59,11 @@ public class DCTimeHelper {
 	}
 
 	public static int currentMinute(Level world) {
-		if (!world.isClientSide && ConfigServerBuilder.INSTANCE.enRealTime.get()) {
-			Calendar cal = Calendar.getInstance();
-			int min = cal.get(cal.MINUTE);
-			return min;
-		}
+		// if (!world.isClientSide && ConfigServerBuilder.INSTANCE.enRealTime.get()) {
+		// Calendar cal = Calendar.getInstance();
+		// int min = cal.get(cal.MINUTE);
+		// return min;
+		// }
 		long time = time(world);
 		return (int) (time % 1000) * 60 / 1000;
 	}

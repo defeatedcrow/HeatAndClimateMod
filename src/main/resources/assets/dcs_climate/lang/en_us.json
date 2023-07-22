@@ -817,6 +817,15 @@
   "block.dcs_climate.build.chal_lamp_desertrose":"Desert Rose Lamp",
   "block.dcs_climate.build.chal_lamp_serpentine":"Serpentine Lamp",
 
+    "block.dcs_climate.build.chandelier_iron":"Iron Chandelier",
+  "block.dcs_climate.build.chandelier_crystal":"Chalcedony Chandelier",
+  "block.dcs_climate.build.chandelier_fluorite":"Fluorite Chandelier",
+  "block.dcs_climate.build.chandelier_jet":"Jet Chandelier",
+  "block.dcs_climate.build.chandelier_desertrose":"Desert Rose Chandelier",
+  "block.dcs_climate.build.chandelier_serpentine":"Serpentine Chandelier",
+
+  "block.dcs_climate.build.chain_gold":"Gold Chain",
+
     "## magic":"",
 
   "block.dcs_climate.magic.magic_small_light":"Mana Small Light",

@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
@@ -68,10 +69,13 @@ public class WallStoneDC extends WallBlock implements IBlockDC, IJsonDataDC {
 		if (state.getBlock() instanceof IBlockDC) {
 			IBlockDC block = (IBlockDC) state.getBlock();
 			ServerLevel level = builder.getLevel();
-			Entity breaker = builder.getParameter(LootContextParams.THIS_ENTITY);
-			ItemStack tool = builder.getParameter(LootContextParams.TOOL);
+			Entity breaker = builder.getOptionalParameter(LootContextParams.THIS_ENTITY);
+			ItemStack tool = builder.getOptionalParameter(LootContextParams.TOOL);
+			if (DCUtil.isEmpty(tool)) {
+
+			}
 			// シルクタッチの場合は処理を中段
-			if (!block.getSilkyDrop().isEmpty() && !tool.isEmpty() && tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
+			if (!block.getSilkyDrop().isEmpty() && !DCUtil.isEmpty(tool) && tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
 				ret.add(getSilkyDrop());
 				return ret;
 			}

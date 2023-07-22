@@ -75,7 +75,7 @@ public class ItemScythe extends ItemDC {
 				entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
 			});
 		}
-		return state.is(TagDC.BlockTag.SCYTHE_BREAKABLE) ? true : super.mineBlock(stack, level, state, pos, liv);
+		return state.is(TagDC.BlockTag.SCYTHE_BREAKABLE) || state.getBlock() instanceof IForgeShearable ? true : super.mineBlock(stack, level, state, pos, liv);
 	}
 
 	@Override
@@ -85,11 +85,11 @@ public class ItemScythe extends ItemDC {
 
 	@Override
 	public float getDestroySpeed(ItemStack stack, BlockState state) {
-		if (state.is(TagDC.BlockTag.SCYTHE_BREAKABLE)) {
+		if (state.is(TagDC.BlockTag.SCYTHE_BREAKABLE) || state.getBlock() instanceof IForgeShearable) {
 			if (state.is(Blocks.COBWEB) || state.is(BlockTags.LEAVES)) {
 				return 15.0F;
 			} else {
-				return 5.0F;
+				return 10.0F;
 			}
 		}
 		return super.getDestroySpeed(stack, state);

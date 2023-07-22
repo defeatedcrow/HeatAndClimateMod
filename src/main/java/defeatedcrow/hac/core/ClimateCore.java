@@ -83,6 +83,7 @@ public class ClimateCore {
 
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		CoreInit.BLOCKS.register(bus);
+		CoreInit.BLOCK_ENTITIES.register(bus);
 		CoreInit.ITEMS.register(bus);
 		CoreInit.FLUIDS.register(bus);
 		CoreInit.EFFECTS.register(bus);

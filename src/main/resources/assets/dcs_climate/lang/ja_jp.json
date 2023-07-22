@@ -814,6 +814,15 @@
   "block.dcs_climate.build.chal_lamp_desertrose":"砂漠のバラのランプ",
   "block.dcs_climate.build.chal_lamp_serpentine":"蛇紋石のランプ",
 
+  "block.dcs_climate.build.chandelier_iron":"鉄のシャンデリア",
+  "block.dcs_climate.build.chandelier_crystal":"玉髄のシャンデリア",
+  "block.dcs_climate.build.chandelier_fluorite":"蛍石のシャンデリア",
+  "block.dcs_climate.build.chandelier_jet":"黒玉のシャンデリア",
+  "block.dcs_climate.build.chandelier_desertrose":"砂漠のバラのシャンデリア",
+  "block.dcs_climate.build.chandelier_serpentine":"蛇紋石のシャンデリア",
+
+  "block.dcs_climate.build.chain_gold":"金の鎖",
+
     "## magic":"",
 
   "block.dcs_climate.magic.magic_small_light":"魔法の光",

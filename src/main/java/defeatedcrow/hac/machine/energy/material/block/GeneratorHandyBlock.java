@@ -1,4 +1,4 @@
-package defeatedcrow.hac.core.material.block.building;
+package defeatedcrow.hac.machine.energy.material.block;
 
 import java.util.List;
 
@@ -16,31 +16,29 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
-public class SimpleLightDC extends BlockDC {
+public class GeneratorHandyBlock extends BlockDC {
 
 	final String name;
-	private String texDir = "build";
-	private String domain = "build";
+	private String texDir = "machine";
+	private String domain = "machine";
 
-	public SimpleLightDC(String s) {
+	public GeneratorHandyBlock(String s) {
 		super(getProp());
 		name = s;
 	}
 
-	public SimpleLightDC setDomain(String s) {
+	public GeneratorHandyBlock setDomain(String s) {
 		domain = s;
 		return this;
 	}
 
-	public SimpleLightDC setTexDir(String s) {
+	public GeneratorHandyBlock setTexDir(String s) {
 		texDir = s;
 		return this;
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(3.0F, 6.0F).noOcclusion().lightLevel((state) -> {
-			return 15;
-		});
+		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).strength(8.0F, 6.0F);
 	}
 
 	@Override
@@ -85,7 +83,7 @@ public class SimpleLightDC extends BlockDC {
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.NONE;
+		return ToolType.PICKAXE;
 	}
 
 	@Override

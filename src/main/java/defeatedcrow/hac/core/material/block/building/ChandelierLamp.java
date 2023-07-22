@@ -8,39 +8,39 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
-import defeatedcrow.hac.core.material.block.BlockDC;
+import defeatedcrow.hac.core.material.block.EntityBlockDC;
+import defeatedcrow.hac.core.material.block.tile.ChandelierTile;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
-public class SimpleLightDC extends BlockDC {
+public class ChandelierLamp extends EntityBlockDC {
 
 	final String name;
-	private String texDir = "build";
 	private String domain = "build";
 
-	public SimpleLightDC(String s) {
+	public ChandelierLamp(String s) {
 		super(getProp());
 		name = s;
-	}
-
-	public SimpleLightDC setDomain(String s) {
-		domain = s;
-		return this;
-	}
-
-	public SimpleLightDC setTexDir(String s) {
-		texDir = s;
-		return this;
+		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
 	public static BlockBehaviour.Properties getProp() {
 		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(3.0F, 6.0F).noOcclusion().lightLevel((state) -> {
 			return 15;
 		});
+	}
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
+		def.add(WATERLOGGED);
 	}
 
 	@Override
@@ -60,12 +60,12 @@ public class SimpleLightDC extends BlockDC {
 
 	@Override
 	public String getRegistryName() {
-		return domain + "/" + name;
+		return domain + "/chandelier_" + name;
 	}
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_cutout_all", ImmutableMap.of("all", "dcs_climate:block/" + texDir + "/" + name)));
+		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_dummy", ImmutableMap.of("all", "dcs_climate:block/build/chandelier_" + name + "_item")));
 	}
 
 	@Override
@@ -74,8 +74,18 @@ public class SimpleLightDC extends BlockDC {
 	}
 
 	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("");
+	}
+
+	@Override
+	public boolean requireStateJson() {
+		return false;
+	}
+
+	@Override
 	public JsonModelSimpleDC getItemModel() {
-		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_0");
+		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:block/build/chandelier_" + name + "_item"));
 	}
 
 	@Override
@@ -91,6 +101,11 @@ public class SimpleLightDC extends BlockDC {
 	@Override
 	public int getToolTier() {
 		return 0;
+	}
+
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new ChandelierTile(pos, state);
 	}
 
 }

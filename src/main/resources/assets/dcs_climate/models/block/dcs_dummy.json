@@ -1,0 +1,9 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": false,
+    "render_type": "cutout",
+    "textures": {
+        "particle": "#all"
+    },
+    "elements": []
+}

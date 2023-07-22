@@ -34,26 +34,26 @@ public class ConfigServerBuilder {
 
 		this.vStartSpr = builder
 			.comment("Set the dates for the beginning of Spring.")
-			.defineInRange("Period of Spring", 1, 1, 365);
+			.defineInRange("Start of Spring", 1, 1, 365);
 
 		this.vStartSmr = builder
 			.comment("Set the dates for the beginning of Summer.")
-			.defineInRange("Period of Summer", 61, 1, 365);
+			.defineInRange("Start of Summer", 61, 1, 365);
 
 		this.vStartAut = builder
 			.comment("Set the dates for the beginning of Autumn.")
-			.defineInRange("Period of Autumn", 121, 1, 365);
+			.defineInRange("Start of Autumn", 121, 1, 365);
 
 		this.vStartWtr = builder
 			.comment("Set the dates for the beginning of Winter.")
-			.defineInRange("Period of Winter", 181, 1, 365);
+			.defineInRange("Start of Winter", 181, 1, 365);
 
 		this.vStartDate = builder
 			.comment("Sets the in-game date at server start.")
 			.defineInRange("Game Start Date", 0, 1, 365);
 
 		this.enRealTime = builder
-			.comment("Set the date format used in  real-time settings.")
+			.comment("Set the date format used in  real-date settings.")
 			.define("Enable Real Time", false);
 
 		this.setFormat = builder
