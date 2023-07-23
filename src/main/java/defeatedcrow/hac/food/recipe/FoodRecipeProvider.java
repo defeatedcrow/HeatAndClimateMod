@@ -142,6 +142,35 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_bread", has(TagDC.ItemTag.BREAD))
 			.save(cons, "dcs_climate:food/sandwich_salmon2");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.CAKE_BUTTER.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_BREAD_GRAINS))
+			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+			.requires(Ingredient.of(Tags.Items.EGGS))
+			.requires(Ingredient.of(TagDC.ItemTag.BUTTER))
+			.unlockedBy("has_bread_grains", has(TagDC.ItemTag.DUST_BREAD_GRAINS))
+			.save(cons, "dcs_climate:food/cake_butter1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CAKE_BERRY.get(), 1)
+			.requires(Ingredient.of(FoodInit.CAKE_BUTTER.get()))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_BERRY))
+			.requires(Ingredient.of(TagDC.ItemTag.CREAM))
+			.unlockedBy("has_cake", has(FoodInit.CAKE_BUTTER.get()))
+			.save(cons, "dcs_climate:food/cake_berry1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CAKE_CHOCOLATE.get(), 1)
+			.requires(Ingredient.of(FoodInit.CAKE_BUTTER.get()))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_COCOA))
+			.requires(Ingredient.of(TagDC.ItemTag.CREAM))
+			.unlockedBy("has_cake", has(FoodInit.CAKE_BUTTER.get()))
+			.save(cons, "dcs_climate:food/cake_chocolate1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CAKE_GREENTEA.get(), 1)
+			.requires(Ingredient.of(FoodInit.CAKE_BUTTER.get()))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_TEA))
+			.requires(Ingredient.of(TagDC.ItemTag.CREAM))
+			.unlockedBy("has_cake", has(FoodInit.CAKE_BUTTER.get()))
+			.save(cons, "dcs_climate:food/cake_greemtea1");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.STICK_BEEF_RAW.get(), 1)
 			.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
 			.requires(Ingredient.of(TagDC.ItemTag.RAW_BEEF))

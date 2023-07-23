@@ -59,6 +59,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.IForgeShearable;
+import net.minecraftforge.common.Tags;
 
 public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop, IBlockDC, IJsonDataDC, ICropData, IForgeShearable, IRapidCollectables {
 
@@ -203,6 +204,14 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 		if (state.getBlock() instanceof IClimateCrop) {
 			IClimateCrop crop = (IClimateCrop) state.getBlock();
 			ServerLevel level = builder.getLevel();
+			ItemStack tool = builder.getOptionalParameter(LootContextParams.TOOL);
+			if (DCUtil.isEmpty(tool)) {
+				tool = ItemStack.EMPTY;
+			}
+
+			if (tool.is(Tags.Items.SHEARS) || tool.is(TagDC.ItemTag.SCYTHES) || tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
+				ret.add(new ItemStack(this));
+			}
 
 			CropStage stage = crop.getCurrentStage(state);
 			CropTier tier = crop.getTier();
@@ -212,7 +221,6 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 				ret.add(crop.getSeedItem(state));
 			}
 			if (crop.canHarvest(state)) {
-				ItemStack tool = builder.getParameter(LootContextParams.TOOL);
 				int f = tool.isEmpty() ? 0 : tool.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
 				ret.addAll(crop.getCropItems(state, f));
 			}
@@ -352,10 +360,11 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	@Override
 	public boolean onGrow(Level level, BlockPos pos, BlockState state) {
+		int current = DCState.getInt(state, DCState.STAGE6);
 		int next = this.getSeasonLeafStage(level, pos, state);
 		BlockState nextState = state.setValue(DCState.STAGE6, next);
 		level.setBlock(pos, nextState, 2);
-		return true;
+		return current != next;
 	}
 
 	public int getSeasonLeafStage(Level world, BlockPos pos, BlockState state) {
@@ -468,10 +477,10 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 		List<ItemStack> ret = Lists.newArrayList();
 		ret.add(new ItemStack(this));
 
-		// BlockState state = level.getBlockState(pos);
-		// if (canHarvest(state)) {
-		// ret.addAll(this.getCropItems(level.getBlockState(pos), fortune));
-		// }
+		BlockState state = level.getBlockState(pos);
+		if (canHarvest(state)) {
+			ret.addAll(this.getCropItems(level.getBlockState(pos), fortune));
+		}
 
 		return ret;
 	}

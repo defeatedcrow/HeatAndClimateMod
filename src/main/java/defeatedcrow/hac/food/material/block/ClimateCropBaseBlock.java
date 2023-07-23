@@ -22,6 +22,7 @@ import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -131,6 +132,10 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		if (state.getBlock() instanceof IClimateCrop) {
 			IClimateCrop crop = (IClimateCrop) state.getBlock();
 			ServerLevel level = builder.getLevel();
+			ItemStack tool = builder.getOptionalParameter(LootContextParams.TOOL);
+			if (DCUtil.isEmpty(tool)) {
+				tool = ItemStack.EMPTY;
+			}
 
 			CropStage stage = crop.getCurrentStage(state);
 			CropTier tier = crop.getTier();
@@ -140,7 +145,6 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 				ret.add(crop.getSeedItem(state));
 			}
 			if (crop.canHarvest(state)) {
-				ItemStack tool = builder.getParameter(LootContextParams.TOOL);
 				int f = tool.isEmpty() ? 0 : tool.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
 				ret.addAll(crop.getCropItems(state, f));
 			}

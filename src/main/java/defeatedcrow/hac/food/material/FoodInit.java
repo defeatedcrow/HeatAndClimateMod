@@ -69,6 +69,7 @@ import defeatedcrow.hac.food.material.entity.BreadCreamItem;
 import defeatedcrow.hac.food.material.entity.BreadRoundItem;
 import defeatedcrow.hac.food.material.entity.BreadSausageItem;
 import defeatedcrow.hac.food.material.entity.BreadSquareItem;
+import defeatedcrow.hac.food.material.entity.CakeItem;
 import defeatedcrow.hac.food.material.entity.FoodEntityBase;
 import defeatedcrow.hac.food.material.entity.PlateBeefItem;
 import defeatedcrow.hac.food.material.entity.PlateChickenItem;
@@ -113,6 +114,9 @@ public class FoodInit {
 		.sized(0.375F, 0.2F).updateInterval(5).build("bread_sausage"));
 	public static final RegistryObject<EntityType<FoodEntityBase>> SANDWICH = CoreInit.ENTITIES.register("sandwich", () -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC)
 		.sized(0.5F, 0.5F).updateInterval(5).build("sandwich"));
+
+	public static final RegistryObject<EntityType<FoodEntityBase>> CAKE = CoreInit.ENTITIES.register("cake", () -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC)
+		.sized(0.5F, 0.5F).updateInterval(5).build("cake"));
 
 	public static final RegistryObject<EntityType<FoodEntityBase>> STICK_BEEF = CoreInit.ENTITIES.register("stick_beef", () -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC)
 		.sized(0.375F, 0.5F).updateInterval(5).build("stick_beef"));
@@ -163,6 +167,11 @@ public class FoodInit {
 	public static final RegistryObject<Item> SANDWICH_EGG_ITEM = regItem("sandwich_egg", () -> new SandwichItem("sandwich_egg", 6, 0.4F, null));
 	public static final RegistryObject<Item> SANDWICH_SALAD_ITEM = regItem("sandwich_salad", () -> new SandwichItem("sandwich_salad", 6, 0.4F, null));
 	public static final RegistryObject<Item> SANDWICH_SALMON_ITEM = regItem("sandwich_salmon", () -> new SandwichItem("sandwich_salmon", 6, 0.4F, null));
+
+	public static final RegistryObject<Item> CAKE_BUTTER = regItem("cake_butter", () -> new CakeItem("cake_butter", 4, 0.3F, null));
+	public static final RegistryObject<Item> CAKE_BERRY = regItem("cake_berry", () -> new CakeItem("cake_berry", 6, 0.4F, null));
+	public static final RegistryObject<Item> CAKE_CHOCOLATE = regItem("cake_chocolate", () -> new CakeItem("cake_chocolate", 6, 0.4F, null));
+	public static final RegistryObject<Item> CAKE_GREENTEA = regItem("cake_greentea", () -> new CakeItem("cake_greentea", 6, 0.4F, null));
 
 	public static final RegistryObject<Item> PORRIDGE = regItem("porridge_simple", () -> new PorridgeItem("porridge_simple", 4, 0.6F, null));
 	public static final RegistryObject<Item> PORRIDGE_MILK = regItem("porridge_milk", () -> new PorridgeItem("porridge_milk", 6, 0.6F, null));

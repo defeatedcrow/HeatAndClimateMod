@@ -363,6 +363,11 @@
   "item.dcs_climate.food.sandwich_salad":"肉と野菜のサンド",
   "item.dcs_climate.food.sandwich_salmon":"サーモンサンド",
 
+  "item.dcs_climate.food.cake_butter":"バターケーキ",
+  "item.dcs_climate.food.cake_berry":"ベリーショートケーキ",
+  "item.dcs_climate.food.cake_chocolate":"チョコレートケーキ",
+  "item.dcs_climate.food.cake_greentea":"抹茶のケーキ",
+
   "item.dcs_climate.food.porridge_simple":"お粥",
   "item.dcs_climate.food.porridge_milk":"ミルク粥",
   "item.dcs_climate.food.muesli":"ミューズリー",
@@ -834,6 +839,7 @@
   "entity.dcs_climate.bread_cream":"クリームパン",
   "entity.dcs_climate.bread_sausage":"ソーセージパン",
   "entity.dcs_climate.sandwich":"サンドイッチ",
+  "entity.dcs_climate.cake":"ケーキ",
   "entity.dcs_climate.salad":"サラダ",
   "entity.dcs_climate.soup":"スープボウル",
   "entity.dcs_climate.stick_beef":"串焼き",
@@ -867,6 +873,7 @@
   "dcs.tip.spawn_entity_food":"スニークしながら使用することで、Entityとしてスポーンします。",
   "dcs.tip.empty_pack":"右クリック:水やミルクを汲むことが出来ます。",
   "dcs.tip.remove_bad_potion":"悪性ポーション効果を解除します。",
+  "dcs.tip.healing":"即時回復",
   "dcs.tip.scythe":"右クリックでHaC作物を範囲収穫します。",
 
   "dcs.tip.seedbag.desc":"ランダムに種を入手します:",

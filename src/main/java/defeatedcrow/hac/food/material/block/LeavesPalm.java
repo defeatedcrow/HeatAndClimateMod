@@ -16,17 +16,22 @@ import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
+import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraftforge.common.Tags;
 
 public class LeavesPalm extends LeavesCropBlockDC {
 
@@ -94,6 +99,13 @@ public class LeavesPalm extends LeavesCropBlockDC {
 	@Override
 	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
+		ItemStack tool = builder.getOptionalParameter(LootContextParams.TOOL);
+		if (DCUtil.isEmpty(tool)) {
+			tool = ItemStack.EMPTY;
+		}
+		if (tool.is(Tags.Items.SHEARS) || tool.is(TagDC.ItemTag.SCYTHES) || tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
+			ret.add(new ItemStack(this));
+		}
 		return ret;
 	}
 
