@@ -11,10 +11,7 @@
     "dcs_climate:food/cropblock_peas_common",
     "dcs_climate:food/cropblock_peas_rare",
     "dcs_climate:food/cropblock_reed_common",
-    "minecraft:grass",
-    "minecraft:tall_grass",
-    "minecraft:fern",
-    "minecraft:large_fern",
+    "#forge:weed",
     {
       "id": "biomesoplenty:clover",
       "required": false

@@ -185,7 +185,7 @@ public class DCUtil {
 	 * @date 2020.02.04
 	 * @author ruby
 	 */
-	public static Set<BlockPos> getLumberTargetList(Level world, BlockPos pos, Block block, int limit) {
+	public static Set<BlockPos> getConnectedTargetList(Level world, BlockPos pos, Block block, int limit) {
 		List<BlockPos> nextTargets = new ArrayList<>();
 		nextTargets.add(pos);
 		Set<BlockPos> founds = new LinkedHashSet<>();
@@ -202,15 +202,31 @@ public class DCUtil {
 	public static boolean findLog(BlockGetter world, BlockPos pos, Block block, int limit) {
 		List<BlockPos> nextTargets = new ArrayList<>();
 		nextTargets.add(pos);
+		Set<BlockPos> logs = new LinkedHashSet<>();
 		Set<BlockPos> founds = new LinkedHashSet<>();
 		do {
 			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative))
-				.filter(fixedPos -> (world.getBlockState(fixedPos).getBlock().equals(block) || world.getBlockState(fixedPos).is(BlockTags.LOGS)) && founds.add(fixedPos))
-				.limit(limit - founds.size()).collect(Collectors.toList());
+				.filter(fixedPos -> (world.getBlockState(fixedPos).getBlock().equals(block) || (world.getBlockState(fixedPos).is(BlockTags.LOGS) && logs.add(fixedPos))))
+				.limit(limit - founds.size()).filter(founds::add).collect(Collectors.toList());
 
-		} while (founds.isEmpty() && !nextTargets.isEmpty());
+		} while (founds.size() <= limit && logs.isEmpty() && !nextTargets.isEmpty());
 
-		return !founds.isEmpty();
+		return !logs.isEmpty();
+	}
+
+	public static boolean findLog2(BlockGetter world, BlockPos pos, Block block, int limit) {
+		List<BlockPos> nextTargets = new ArrayList<>();
+		nextTargets.add(pos);
+		Set<BlockPos> logs = new LinkedHashSet<>();
+		Set<BlockPos> founds = new LinkedHashSet<>();
+		do {
+			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative))
+				.filter(fixedPos -> (world.getBlockState(fixedPos).getBlock().equals(block) || (world.getBlockState(fixedPos).is(BlockTags.LOGS) && logs.add(fixedPos))))
+				.limit(limit - founds.size()).filter(founds::add).collect(Collectors.toList());
+
+		} while (founds.size() <= limit && logs.isEmpty() && !nextTargets.isEmpty());
+
+		return !logs.isEmpty();
 	}
 
 	// デバッグモード

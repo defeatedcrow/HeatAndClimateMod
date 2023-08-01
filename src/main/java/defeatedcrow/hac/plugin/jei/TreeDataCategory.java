@@ -21,7 +21,7 @@ import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.crop.ICropData.SoilType;
 import defeatedcrow.hac.food.material.FoodInit;
-import defeatedcrow.hac.food.material.block.LeavesCropBlockDC;
+import defeatedcrow.hac.food.material.block.crops.LeavesCropBlockDC;
 import defeatedcrow.hac.plugin.jei.ingredients.AirflowRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.HeatTierRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.HumidityRenderer;

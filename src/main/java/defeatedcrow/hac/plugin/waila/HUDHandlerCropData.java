@@ -4,8 +4,8 @@ import static mcp.mobius.waila.api.TooltipPosition.*;
 
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.tag.TagDC;
-import defeatedcrow.hac.food.material.block.ClimateCropBaseBlock;
-import defeatedcrow.hac.food.material.block.FertileBlock;
+import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
+import defeatedcrow.hac.food.material.block.crops.FertileBlock;
 import mcp.mobius.waila.api.IBlockAccessor;
 import mcp.mobius.waila.api.IBlockComponentProvider;
 import mcp.mobius.waila.api.IPluginConfig;

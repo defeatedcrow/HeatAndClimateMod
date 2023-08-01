@@ -96,7 +96,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.1.1'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.2.0'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
     compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))

@@ -59,7 +59,6 @@ public class ClimateHUDEvent {
 	private static int offsetY = 0;
 	private static boolean useBiomeName = true;
 
-	@SuppressWarnings("resource")
 	@SubscribeEvent
 	public static void render(RenderGuiOverlayEvent.Post event) {
 		if (event.getOverlay().id().equals(VanillaGuiOverlay.HOTBAR.id())) {

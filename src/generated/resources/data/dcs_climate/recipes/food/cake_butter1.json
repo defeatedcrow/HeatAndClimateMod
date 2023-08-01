@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/bread_grains"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:ingredients/butter"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/cake_butter"
+  }
+}

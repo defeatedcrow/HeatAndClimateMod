@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredient": {
+    "tag": "forge:storage_blocks/leaves"
+  },
+  "result": "dcs_climate:main/dust_ash"
+}

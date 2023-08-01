@@ -43,7 +43,6 @@ public class ClientClimateData {
 	private static float heatPrev = 0;
 	private static float coldPrev = 0;
 
-	@SuppressWarnings("resource")
 	public void updatePlayerClimate() {
 		ClientLevel world = Minecraft.getInstance().level;
 		LocalPlayer player = Minecraft.getInstance().player;

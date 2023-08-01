@@ -34,6 +34,7 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(LivingDropEventDC::onDrop);
 		MinecraftForge.EVENT_BUS.addListener(BlockEventDC::onFarmLand);
 		MinecraftForge.EVENT_BUS.addListener(BlockEventDC::onDig);
+		MinecraftForge.EVENT_BUS.addListener(BlockEventDC::onBreakBlock);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onAttack);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onHurt);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onDig);

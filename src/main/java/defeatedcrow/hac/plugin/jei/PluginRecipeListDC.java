@@ -7,8 +7,8 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.food.material.FoodInit;
-import defeatedcrow.hac.food.material.block.ClimateCropBaseBlock;
-import defeatedcrow.hac.food.material.block.LeavesCropBlockDC;
+import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
+import defeatedcrow.hac.food.material.block.crops.LeavesCropBlockDC;
 
 public class PluginRecipeListDC {
 

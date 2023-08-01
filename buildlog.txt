@@ -1,0 +1,279 @@
+Initialized native services in: C:\Users\defeatedcrow\.gradle\native
+Initialized jansi services in: C:\Users\defeatedcrow\.gradle\native
+To honour the JVM settings for this build a single-use Daemon process will be forked. See https://docs.gradle.org/7.5.1/userguide/gradle_daemon.html#sec:disabling_the_daemon.
+Starting process 'Gradle build daemon'. Working directory: C:\Users\defeatedcrow\.gradle\daemon\7.5.1 Command: C:\java\jdk-17\bin\java.exe --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.invoke=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.prefs/java.util.prefs=ALL-UNNAMED --add-opens java.prefs/java.util.prefs=ALL-UNNAMED --add-opens java.base/java.nio.charset=ALL-UNNAMED --add-opens java.base/java.net=ALL-UNNAMED --add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED -Xmx3G -Dfile.encoding=windows-31j -Duser.country=JP -Duser.language=ja -Duser.variant -cp C:\Users\defeatedcrow\.gradle\wrapper\dists\gradle-7.5.1-bin\7jzzequgds1hbszbhq3npc5ng\gradle-7.5.1\lib\gradle-launcher-7.5.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 7.5.1
+Successfully started process 'Gradle build daemon'
+An attempt to start the daemon took 0.774 secs.
+The client will now receive all logging from the daemon (pid: 19448). The daemon log file: C:\Users\defeatedcrow\.gradle\daemon\7.5.1\daemon-19448.out.log
+Daemon will be stopped at the end of the build 
+Using 16 worker leases.
+Watching the file system is configured to be enabled if available
+Now considering [F:\modding\1.19\HaCv4] as hierarchies to watch
+File system watching is active
+Starting Build
+Settings evaluated using settings file 'F:\modding\1.19\HaCv4\settings.gradle'.
+Projects loaded. Root project using build file 'F:\modding\1.19\HaCv4\build.gradle'.
+Included projects: [root project 'HaCv4']
+
+> Configure project :
+Evaluating root project 'HaCv4' using build file 'F:\modding\1.19\HaCv4\build.gradle'.
+Creating reobfuscation task for JarJar task: jarJar
+Java: 17, JVM: 17+35-2724 (Oracle Corporation), Arch: amd64
+Starting process 'command 'C:\Program Files\AdoptOpenJDK\jdk-8.0.292.10-hotspot\bin\java.exe''. Working directory: C:\Users\defeatedcrow\.gradle\.tmp\tmp-jvm12619965373212796215probe Command: C:\Program Files\AdoptOpenJDK\jdk-8.0.292.10-hotspot\bin\java.exe -cp . JavaProbe
+Successfully started process 'command 'C:\Program Files\AdoptOpenJDK\jdk-8.0.292.10-hotspot\bin\java.exe''
+Downloading net.minecraft:client:1.19:mappings@txt
+WARNING: This project is configured to use the official obfuscation mappings provided by Mojang. These mapping fall under their associated license, you should be fully aware of this license. For the latest license text, refer below, or the reference copy here: https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md, You can hide this warning by running the `hideOfficialWarningUntilChanged` task
+WARNING: (c) 2020 Microsoft Corporation. These mappings are provided "as-is" and you bear the risk of using them. You may copy and use the mappings for development purposes, but you may not redistribute the mappings complete and unmodified. Microsoft makes no warranties, express or implied, with respect to the mappings provided here.  Use and modification of this document or the source code (in any form) of Minecraft: Java Edition is governed by the Minecraft End User License Agreement available at https://account.mojang.com/documents/minecraft_eula.
+Downloading net.minecraftforge:forge:1.19.2-43.2.0:userdev
+Downloading net.minecraftforge:forge:1.19.2-43.2.0:universal@jar
+Downloading net.minecraftforge:forge:1.19.2-43.2.0:sources@jar
+Downloading de.oceanlabs.mcp:mcp_config:1.19.2-20220805.130853@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.19.2@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.19.2@zip
+Adding source set 'main' to mixin processor
+Not adding source set 'main' to mixin processor, sourceSet already added
+All projects evaluated.
+Downloading net.minecraft:mappings_official:1.19@zip
+Downloading net.minecraft:client:1.19:mappings@txt
+Downloading net.minecraft:server:1.19:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.19@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.19@zip
+Downloading net.minecraft:mappings_official:1.19@zip
+Downloading net.minecraft:mappings_official:1.19@zip
+Downloading net.minecraft:mappings_official:1.19@zip
+Downloading net.minecraft:mappings_official:1.19@zip
+Downloading net.minecraft:mappings_official:1.19@zip
+Downloading net.minecraft:client:1.19:mappings@txt
+Downloading net.minecraft:server:1.19:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.19@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.19@zip
+Downloading net.minecraft:mappings_official:1.19@zip
+Waiting for download of net.minecraft:mappings_official:1.19@zip on other thread
+Waiting for download of net.minecraft:mappings_official:1.19@zip on other thread
+Waiting for download of net.minecraft:mappings_official:1.19@zip on other thread
+Downloading net.minecraft:client:1.19:mappings@txt
+Downloading net.minecraft:server:1.19:mappings@txt
+Downloading de.oceanlabs.mcp:mcp_config:1.19@zip
+Downloading de.oceanlabs.mcp:mcp_config:1.19@zip
+Downloading net.minecraft:mappings_official:1.19@zip
+Downloading net.minecraft:mappings_official:1.19@zip
+Task name matched 'build'
+Selected primary task 'build' from project :
+Downloading net.md-5:SpecialSource:1.11.0:shaded
+Downloading net.md-5:SpecialSource:1.11.0:shaded
+Tasks to be executed: [task ':downloadMcpConfig', task ':extractSrg', task ':createMcpToSrg', task ':compileJava', task ':addMixinsToJar', task ':processResources', task ':classes', task ':jar', task ':configureReobfTaskForReobfJar', task ':reobfJar', task ':configureReobfTaskForReobfJarJar', task ':addMixinsToJarJar', task ':jarJar', task ':reobfJarJar', task ':assemble', task ':compileTestJava', task ':processTestResources', task ':testClasses', task ':test', task ':check', task ':build']
+Tasks that were excluded: []
+Resolve mutations for :downloadMcpConfig (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :downloadMcpConfig (Thread[Execution worker Thread 3,5,main]) completed. Took 0.005 secs.
+:downloadMcpConfig (Thread[included builds,5,main]) started.
+
+> Task :downloadMcpConfig
+Watching 1 directory hierarchies to track changes
+Caching disabled for task ':downloadMcpConfig' because:
+  Build cache is disabled
+Task ':downloadMcpConfig' is not up-to-date because:
+  Task.upToDateWhen is false.
+Not watching anything anymore
+Watching 0 directory hierarchies to track changes
+Downloading de.oceanlabs.mcp:mcp_config:1.19.2-20220805.130853@zip
+Watching 1 directory hierarchies to track changes
+:downloadMcpConfig (Thread[included builds,5,main]) completed. Took 0.115 secs.
+Resolve mutations for :extractSrg (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :extractSrg (Thread[Execution worker Thread 3,5,main]) completed. Took 0.004 secs.
+:extractSrg (Thread[included builds,5,main]) started.
+
+> Task :extractSrg UP-TO-DATE
+Caching disabled for task ':extractSrg' because:
+  Build cache is disabled
+Skipping task ':extractSrg' as it is up-to-date.
+:extractSrg (Thread[included builds,5,main]) completed. Took 0.011 secs.
+Resolve mutations for :createMcpToSrg (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :createMcpToSrg (Thread[Execution worker Thread 3,5,main]) completed. Took 0.0 secs.
+:createMcpToSrg (Thread[included builds,5,main]) started.
+
+> Task :createMcpToSrg UP-TO-DATE
+Caching disabled for task ':createMcpToSrg' because:
+  Build cache is disabled
+Skipping task ':createMcpToSrg' as it is up-to-date.
+:createMcpToSrg (Thread[included builds,5,main]) completed. Took 0.001 secs.
+Resolve mutations for :compileJava (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :compileJava (Thread[Execution worker Thread 3,5,main]) completed. Took 0.0 secs.
+:compileJava (Thread[included builds,5,main]) started.
+
+> Task :compileJava UP-TO-DATE
+Downloading net.minecraft:mappings_official:1.19@zip
+Downloading net.minecraft:mappings_official:1.19@zip
+Downloading net.minecraft:mappings_official:1.19@zip
+Downloading net.minecraft:mappings_official:1.19@zip
+Waiting for download of net.minecraft:mappings_official:1.19@zip on other thread
+Waiting for download of net.minecraft:mappings_official:1.19@zip on other thread
+Caching disabled for task ':compileJava' because:
+  Build cache is disabled
+Skipping task ':compileJava' as it is up-to-date.
+:compileJava (Thread[included builds,5,main]) completed. Took 0.135 secs.
+Resolve mutations for :addMixinsToJar (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :addMixinsToJar (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:addMixinsToJar (Thread[included builds,5,main]) started.
+
+> Task :addMixinsToJar
+Caching disabled for task ':addMixinsToJar' because:
+  Build cache is disabled
+Task ':addMixinsToJar' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Contributing refmap (dcs.refmap.json) to HeatAndClimate-1.19.2-v4-alpha7.jar in root project 'HaCv4'
+Contributing configs (mixins.dcs_climate.json) to manifest of HeatAndClimate-1.19.2-v4-alpha7.jar in root project 'HaCv4'
+:addMixinsToJar (Thread[included builds,5,main]) completed. Took 0.039 secs.
+Resolve mutations for :processResources (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :processResources (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:processResources (Thread[included builds,5,main]) started.
+
+> Task :processResources UP-TO-DATE
+Caching disabled for task ':processResources' because:
+  Build cache is disabled
+Skipping task ':processResources' as it is up-to-date.
+:processResources (Thread[included builds,5,main]) completed. Took 0.478 secs.
+Resolve mutations for :classes (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :classes (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:classes (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :classes UP-TO-DATE
+Skipping task ':classes' as it has no actions.
+:classes (Thread[Execution worker Thread 9,5,main]) completed. Took 0.0 secs.
+Resolve mutations for :jar (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :jar (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:jar (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :jar
+Caching disabled for task ':jar' because:
+  Build cache is disabled
+Task ':jar' is not up-to-date because:
+  No history is available.
+:jar (Thread[Execution worker Thread 9,5,main]) completed. Took 0.993 secs.
+Resolve mutations for :configureReobfTaskForReobfJar (Thread[Execution worker Thread 6,5,main]) started.
+:configureReobfTaskForReobfJar (Thread[Execution worker Thread 9,5,main]) started.
+Resolve mutations for :configureReobfTaskForReobfJar (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+
+> Task :configureReobfTaskForReobfJar
+Caching disabled for task ':configureReobfTaskForReobfJar' because:
+  Build cache is disabled
+Task ':configureReobfTaskForReobfJar' is not up-to-date because:
+  Task.upToDateWhen is false.
+Contributing tsrg mappings (F:\modding\1.19\HaCv4\build\tmp\compileJava\compileJava-mappings.tsrg) to reobfJar in root project 'HaCv4'
+:configureReobfTaskForReobfJar (Thread[Execution worker Thread 9,5,main]) completed. Took 0.057 secs.
+Resolve mutations for :reobfJar (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :reobfJar (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:reobfJar (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :reobfJar
+Downloading net.md-5:SpecialSource:1.11.0:shaded
+Downloading net.md-5:SpecialSource:1.11.0:shaded
+Downloading net.md-5:SpecialSource:1.11.0:shaded
+Caching disabled for task ':reobfJar' because:
+  Build cache is disabled
+Task ':reobfJar' is not up-to-date because:
+  Task.upToDateWhen is false.
+Downloading net.md-5:SpecialSource:1.11.0:shaded
+Downloading net.md-5:SpecialSource:1.11.0:shaded
+Downloading net.md-5:SpecialSource:1.11.0:shaded
+Downloading net.md-5:SpecialSource:1.11.0:shaded
+Starting process 'command 'C:\java\jdk-17\bin\java.exe''. Working directory: F:\modding\1.19\HaCv4\build\reobfJar Command: C:\java\jdk-17\bin\java.exe -Dfile.encoding=windows-31j -Duser.country=JP -Duser.language=ja -Duser.variant -cp C:\Users\defeatedcrow\.gradle\caches\forge_gradle\maven_downloader\net\md-5\SpecialSource\1.11.0\SpecialSource-1.11.0-shaded.jar;C:\Users\defeatedcrow\.gradle\caches\forge_gradle\deobf_dependencies\mezz\jei\jei-1.19.2-common-api\11.6.0.1016_mapped_official_1.19\jei-1.19.2-common-api-11.6.0.1016_mapped_official_1.19.jar;C:\Users\defeatedcrow\.gradle\caches\forge_gradle\deobf_dependencies\mezz\jei\jei-1.19.2-forge-api\11.6.0.1016_mapped_official_1.19\jei-1.19.2-forge-api-11.6.0.1016_mapped_official_1.19.jar;C:\Users\defeatedcrow\.gradle\caches\forge_gradle\deobf_dependencies\mcp\mobius\waila\wthit-api\forge-5.17.0_mapped_official_1.19\wthit-api-forge-5.17.0_mapped_official_1.19.jar;C:\Users\defeatedcrow\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.19.2-43.2.0_mapped_official_1.19\forge-1.19.2-43.2.0_mapped_official_1.19-recomp.jar;C:\Users\defeatedcrow\.gradle\caches\forge_gradle\minecraft_repo\versions\1.19.2\client-extra.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlloader\1.19.2-43.2.0\3e6e8b7b5e1dbc6ee01a20f74675f223b64c7847\fmlloader-1.19.2-43.2.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarSelector\0.3.16\2a31421fb5e267249da103a644f23afb43d158af\JarJarSelector-0.3.16.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarMetadata\0.3.16\f62c8c898dffc8666f5097a8587ed72095e8e83a\JarJarMetadata-0.3.16.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\31.0.1-jre\119ea2b2bc205b138974d351777b20f02b92704b\guava-31.0.1-jre.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\ca.weblite\java-objc-bridge\1.1\1227f9e0666314f9de41477e3ec277e542ed7f7b\java-objc-bridge-1.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mergetool\1.1.5\f3da18e12c696d35a47c82cbb2cc8b5aa15e1154\mergetool-1.1.5-api.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\23.0.0\8cc20c07506ec18e0834947b84a864bfc094484e\annotations-23.0.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\2.1.4\f47e3b9dd860a7b82154b8f90a650ffd0aaa5582\securejarhandler-2.1.4.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\cpw.mods\modlauncher\10.0.8\658c4ddb704aeeaa94ff3e668785a5eebddd0cb5\modlauncher-10.0.8.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.openjdk.nashorn\nashorn-core\15.3\43977e804697048fc8d81d333a36c17d07a5b3dd\nashorn-core-15.3.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.3\1f2a432d1212f5c352ae607d7b61dcae20c20af5\asm-commons-9.3.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.3\9595bc05510d0bd4b610188b77333fe4851a1975\asm-util-9.3.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.3\4b071f211b37c38e0e9f5998550197c8593f6ad8\asm-analysis-9.3.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.3\78d2ecd61318b5a58cd04fb237636c0e86b77d97\asm-tree-9.3.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.3\8e6300ef51c1d801a7ed62d07cd221aca3a90640\asm-9.3.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\accesstransformers\8.0.4\272d240aa73f42195b2a68e2ebd8b701ecf41f63\accesstransformers-8.0.4.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.antlr\antlr4\4.9.1\e92af8ab33e428461927b484e90bb155a4f3a052\antlr4-4.9.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.antlr\antlr4-runtime\4.9.1\428664f05d2b7f7b7610204b5aa7c1763f62011a\antlr4-runtime-4.9.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.19.2-43.2.0\d4dcb5b809b7f035ac22b058941cf81f84451545\fmlcore-1.19.2-43.2.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\eventbus\6.0.3\42fe522ace1bbcbcbba9c880c42411857baf36a9\eventbus-6.0.3.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\forgespi\6.0.0\4a2004591666531f8b30d3402317b1ff6411bd3e\forgespi-6.0.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\coremods\5.0.1\386b00279628b105b2d507539c46e134e96f6237\coremods-5.0.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\unsafe\0.2.0\54d7a0a5e8fdb71b973025caa46f341ae5904f39\unsafe-0.2.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.electronwill.night-config\toml\3.6.4\51d6cefb2b55ee55ee26b16391212fb2c7dfb4f4\toml-3.6.4.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.electronwill.night-config\core\3.6.4\510f174abbf1c947494db50ef2445683bd52c230\core-3.6.4.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.apache.maven\maven-artifact\3.8.5\4433f50c07debefaed0553bd0068f4f48d449313\maven-artifact-3.8.5.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.jodah\typetools\0.8.3\98f84f353457629e81cc6827224871b1a8faa7af\typetools-0.8.3.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecrell\terminalconsoleappender\1.2.0\96d02cd3b384ff015a8fef4223bcb4ccf1717c95\terminalconsoleappender-1.2.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.jline\jline-reader\3.12.1\4382ab1382c7b6f379377ed5f665dc2f6e1218bc\jline-reader-3.12.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.jline\jline-terminal\3.12.1\c777448314e050d980a6b697c140f3bfe9eb7416\jline-terminal-3.12.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.spongepowered\mixin\0.8.5\9d1c0c3a304ae6697ecd477218fa61b850bf57fc\mixin-0.8.5.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\1.1.2\c546e00443d8432cda6baa1c860346980742628\bootstraplauncher-1.1.2.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarFileSystems\0.3.16\e52afbb2599dc7c6f779efea0496d32fc01152e3\JarJarFileSystems-0.3.16.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.19.2-43.2.0\5713dfd49576886a7ffc353f14f067ad42369592\javafmllanguage-1.19.2-43.2.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.19.2-43.2.0\51c88985dd125457fb8b6c2c58a4f3b9349a6b57\lowcodelanguage-1.19.2-43.2.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.19.2-43.2.0\f4fa83ef8129c7f7cc5847fbafb07f7ae86c1bb\mclanguage-1.19.2-43.2.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.mojang\logging\1.0.0\f6ca3b2eee0b80b384e8ed93d368faecb82dfb9b\logging-1.0.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.mojang\blocklist\1.0.10\5c685c5ffa94c4cd39496c7184c1d122e515ecef\blocklist-1.0.10.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.mojang\patchy\2.2.10\da05971b07cbb379d002cf7eaec6a2048211fefc\patchy-2.2.10.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.github.oshi\oshi-core\5.8.5\1d0ec654d820741327f5a9229d513732a4b7ce50\oshi-core-5.8.5.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.java.dev.jna\jna-platform\5.10.0\fbed7d9669dba47714ad0d4f4454290a997aee69\jna-platform-5.10.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.java.dev.jna\jna\5.10.0\7cf4c87dd802db50721db66947aa237d7ad09418\jna-5.10.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-slf4j18-impl\2.17.0\bd7f6c0b9224dd214afb4e684957e2349b529a8d\log4j-slf4j18-impl-2.17.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.machinezoo.noexception\noexception\1.7.1\b65330c98e38a1f915fa54a6e5eca496505e3f0a\noexception-1.7.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\1.8.0-beta4\83b0359d847ee053d745be7ec0d8e9e8a44304b4\slf4j-api-1.8.0-beta4.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.ibm.icu\icu4j\70.1\dfa3a1fbc55bf5db8c6e79fc0935ac7ab1202950\icu4j-70.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.mojang\javabridge\1.2.24\c876796229b2ef5120f186eab5acc870699d3b9\javabridge-1.2.24.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\net.sf.jopt-simple\jopt-simple\5.0.4\4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c\jopt-simple-5.0.4.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\io.netty\netty-handler\4.1.77.Final\47a81089de03635a27f509f3e4e13386ae1db275\netty-handler-4.1.77.Final.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\io.netty\netty-codec\4.1.77.Final\4efc5f59335301d6ba0d7cd31dd10651119b03c8\netty-codec-4.1.77.Final.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-classes-epoll\4.1.77.Final\dd70dbccbcf98382223a59044f3c08d8e9920cad\netty-transport-classes-epoll-4.1.77.Final.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-unix-common\4.1.77.Final\c95d53486414b3270d08057957c5da8e0c37e4eb\netty-transport-native-unix-common-4.1.77.Final.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport\4.1.77.Final\2a3373bbd20d520c821f210bd5ee886788512043\netty-transport-4.1.77.Final.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\io.netty\netty-buffer\4.1.77.Final\d97571f99e5e739d86824d0df99f35d295276b5f\netty-buffer-4.1.77.Final.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\io.netty\netty-resolver\4.1.77.Final\4a239dbf8d8bb5f98aa51462c35011c0516395fd\netty-resolver-4.1.77.Final.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\io.netty\netty-common\4.1.77.Final\ea0fc20f4e6178966b9d62017b7fcb83dfe0e713\netty-common-4.1.77.Final.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.google.guava\failureaccess\1.0.1\1dcf1de382a0bf95a3d8b0849546c88bac1292c9\failureaccess-1.0.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.12.0\c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e\commons-lang3-3.12.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.11.0\a2503f302b11ebde7ebc3df41daebe0e4eea3689\commons-io-2.11.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.5.13\e5f6cae5ca7ecaac1ec2827a9e2d65ae2869cada\httpclient-4.5.13.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.15\49d94806b6e3dc933dacbd8acb0fdbab8ebd1e5d\commons-codec-1.15.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.mojang\brigadier\1.0.18\c1ef1234282716483c92183f49bef47b1a89bfa9\brigadier-1.0.18.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.mojang\datafixerupper\5.0.28\e2157e236e529aff80a5fc3ccb506e56d46b130b\datafixerupper-5.0.28.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.9\8a432c1d6825781e21a02db2e2c33c5fde2833b9\gson-2.8.9.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.mojang\authlib\3.11.49\2e3055ec2a017c7f94b79744b4a68b65695a118c\authlib-3.11.49.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-compress\1.21\4ec95b60d4e86b5c95a0e919cb172a0af98011ef\commons-compress-1.21.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.2\4bfc12adfe4842bf07b657f0369c4cb522955686\commons-logging-1.2.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.4.14\9dd1a631c082d92ecd4bd8fd4cf55026c720a8c1\httpcore-4.4.14.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\it.unimi.dsi\fastutil\8.5.6\76f95700418a68fbc4ac050525261f05dc681ca1\fastutil-8.5.6.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-core\2.17.0\fe6e7a32c1228884b9691a744f953a55d0dd8ead\log4j-core-2.17.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.17.0\bbd791e9c8c9421e45337c4fe0a10851c086e36c\log4j-api-2.17.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\a817bcf213db49f710603677457567c37d53e103\lwjgl-jemalloc-3.3.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\948a89b76a16aa324b046ae9308891216ffce5f9\lwjgl-jemalloc-3.3.1-natives-windows.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\fb476c8ec110e1c137ad3ce8a7f7bfe6b11c6324\lwjgl-jemalloc-3.3.1-natives-windows-x86.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\cae85c4edb219c88b6a0c26a87955ad98dc9519d\lwjgl-jemalloc-3.3.1-natives-windows-arm64.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\2623a6b8ae1dfcd880738656a9f0243d2e6840bd\lwjgl-openal-3.3.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\30a474d0e57193d7bc128849a3ab66bc9316fdb1\lwjgl-openal-3.3.1-natives-windows.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\888349f7b1be6fbae58bf8edfb9ef12def04c4e3\lwjgl-openal-3.3.1-natives-windows-x86.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\40d65f1a7368a2aa47336f9cb69f5a190cf9975a\lwjgl-openal-3.3.1-natives-windows-arm64.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\831a5533a21a5f4f81bbc51bb13e9899319b5411\lwjgl-opengl-3.3.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\c1807e9bd571402787d7e37e3029776ae2513bb8\lwjgl-opengl-3.3.1-natives-windows.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\deef3eb9b178ff2ff3ce893cc72ae741c3a17974\lwjgl-opengl-3.3.1-natives-windows-x86.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\527d78f1e9056aff3ed02ce93019c73c5e8f1721\lwjgl-opengl-3.3.1-natives-windows-arm64.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\cbac1b8d30cb4795149c1ef540f912671a8616d0\lwjgl-glfw-3.3.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\ed892f945cf7e79c8756796f32d00fa4ceaf573b\lwjgl-glfw-3.3.1-natives-windows.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\b997e3391d6ce8f05487e7335d95c606043884a1\lwjgl-glfw-3.3.1-natives-windows-x86.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\beda65ee503443e60aa196d58ed31f8d001dc22a\lwjgl-glfw-3.3.1-natives-windows-arm64.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\b119297cf8ed01f247abe8685857f8e7fcf5980f\lwjgl-stb-3.3.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\86315914ac119efdb02dc9e8e978ade84f1702af\lwjgl-stb-3.3.1-natives-windows.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\a8d41f419eecb430b7c91ea2ce2c5c451cae2091\lwjgl-stb-3.3.1-natives-windows-x86.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\fde63cdd2605c00636721a6c8b961e41d1f6b247\lwjgl-stb-3.3.1-natives-windows-arm64.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\ff1914111ef2e3e0110ef2dabc8d8cdaad82347\lwjgl-tinyfd-3.3.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\a5d830475ec0958d9fdba1559efa99aef211e6ff\lwjgl-tinyfd-3.3.1-natives-windows.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\842eedd876fae354abc308c98a263f6bbc9e8a4d\lwjgl-tinyfd-3.3.1-natives-windows-x86.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\83a5e780df610829ff3a737822b4f931cffecd91\lwjgl-tinyfd-3.3.1-natives-windows-arm64.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\ae58664f88e18a9bb2c77b063833ca7aaec484cb\lwjgl-3.3.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\36c37f16ab611b3aa11f3bcf80b1d509b4ce6b\lwjgl-3.3.1-natives-windows.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\3b14f4beae9dd39791ec9e12190a9380cd8a3ce6\lwjgl-3.3.1-natives-windows-x86.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\f46cadcf95675908fd3a550d63d9d709cb68998\lwjgl-3.3.1-natives-windows-arm64.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.mojang\text2speech\1.16.7\ee4095669061d1fe4bce5fea23d69d1520bc2d58\text2speech-1.16.7.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.codehaus.plexus\plexus-utils\3.3.0\cf43b5391de623b36fe066a21127baef82c64022\plexus-utils-3.3.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.google.guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\b421526c5f297295adef1c886e5246c39d4ac629\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.checkerframework\checker-qual\3.12.0\d5692f0526415fcc6de94bb5bfbd3afd9dd3b3e5\checker-qual-3.12.0.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.google.errorprone\error_prone_annotations\2.7.1\458d9042f7aa6fa9a634df902b37f544e15aacac\error_prone_annotations-2.7.1.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\1.3\ba035118bc8bac37d7eff77700720999acd9986d\j2objc-annotations-1.3.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.antlr\ST4\4.3\92f2c1ad8d84abcbeead6cf7f2c53a04166293c2\ST4-4.3.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.antlr\antlr-runtime\3.5.2\cd9cd41361c155f3af0f653009dcecb08d8b4afd\antlr-runtime-3.5.2.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.abego.treelayout\org.abego.treelayout.core\1.0.3\457216e8e6578099ae63667bb1e4439235892028\org.abego.treelayout.core-1.0.3.jar;C:\Users\defeatedcrow\.gradle\caches\modules-2\files-2.1\org.glassfish\javax.json\1.0.4\3178f73569fd7a1e5ffc464e680f7a8cc784b85a\javax.json-1.0.4.jar net.md_5.specialsource.SpecialSource --in-jar F:\modding\1.19\HaCv4\build\libs\HeatAndClimate-1.19.2-v4-alpha7.jar --out-jar F:\modding\1.19\HaCv4\build\reobfJar\output.jar --srg-in F:\modding\1.19\HaCv4\build\createMcpToSrg\output.tsrg --srg-in F:\modding\1.19\HaCv4\build\tmp\compileJava\compileJava-mappings.tsrg --live
+Successfully started process 'command 'C:\java\jdk-17\bin\java.exe''
+:reobfJar (Thread[Execution worker Thread 9,5,main]) completed. Took 4.13 secs.
+Resolve mutations for :configureReobfTaskForReobfJarJar (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :configureReobfTaskForReobfJarJar (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:configureReobfTaskForReobfJarJar (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :configureReobfTaskForReobfJarJar
+Caching disabled for task ':configureReobfTaskForReobfJarJar' because:
+  Build cache is disabled
+Task ':configureReobfTaskForReobfJarJar' is not up-to-date because:
+  Task.upToDateWhen is false.
+Contributing tsrg mappings (F:\modding\1.19\HaCv4\build\tmp\compileJava\compileJava-mappings.tsrg) to reobfJarJar in root project 'HaCv4'
+:configureReobfTaskForReobfJarJar (Thread[Execution worker Thread 9,5,main]) completed. Took 0.001 secs.
+Resolve mutations for :addMixinsToJarJar (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :addMixinsToJarJar (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:addMixinsToJarJar (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :addMixinsToJarJar
+Caching disabled for task ':addMixinsToJarJar' because:
+  Build cache is disabled
+Task ':addMixinsToJarJar' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Contributing refmap (dcs.refmap.json) to HeatAndClimate-1.19.2-v4-alpha7-all.jar in root project 'HaCv4'
+Contributing configs (mixins.dcs_climate.json) to manifest of HeatAndClimate-1.19.2-v4-alpha7-all.jar in root project 'HaCv4'
+:addMixinsToJarJar (Thread[Execution worker Thread 9,5,main]) completed. Took 0.004 secs.
+Resolve mutations for :jarJar (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :jarJar (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:jarJar (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :jarJar SKIPPED
+Skipping task ':jarJar' as task onlyIf is false.
+:jarJar (Thread[Execution worker Thread 9,5,main]) completed. Took 0.0 secs.
+Resolve mutations for :reobfJarJar (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :reobfJarJar (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:reobfJarJar (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :reobfJarJar SKIPPED
+Skipping task ':reobfJarJar' as task onlyIf is false.
+:reobfJarJar (Thread[Execution worker Thread 9,5,main]) completed. Took 0.0 secs.
+Resolve mutations for :assemble (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :assemble (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:assemble (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :assemble
+Skipping task ':assemble' as it has no actions.
+:assemble (Thread[Execution worker Thread 9,5,main]) completed. Took 0.0 secs.
+Resolve mutations for :compileTestJava (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :compileTestJava (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:compileTestJava (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :compileTestJava NO-SOURCE
+Skipping task ':compileTestJava' as it has no source files and no previous output files.
+:compileTestJava (Thread[Execution worker Thread 9,5,main]) completed. Took 0.002 secs.
+Resolve mutations for :processTestResources (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :processTestResources (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:processTestResources (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :processTestResources NO-SOURCE
+Skipping task ':processTestResources' as it has no source files and no previous output files.
+:processTestResources (Thread[Execution worker Thread 9,5,main]) completed. Took 0.0 secs.
+Resolve mutations for :testClasses (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :testClasses (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:testClasses (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :testClasses UP-TO-DATE
+Skipping task ':testClasses' as it has no actions.
+:testClasses (Thread[Execution worker Thread 9,5,main]) completed. Took 0.0 secs.
+Resolve mutations for :test (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :test (Thread[Execution worker Thread 6,5,main]) completed. Took 0.0 secs.
+:test (Thread[Execution worker Thread 9,5,main]) started.
+producer locations for task group 0 (Thread[Execution worker Thread 15,5,main]) started.
+producer locations for task group 0 (Thread[Execution worker Thread 15,5,main]) completed. Took 0.0 secs.
+
+> Task :test NO-SOURCE
+Skipping task ':test' as it has no source files and no previous output files.
+:test (Thread[Execution worker Thread 9,5,main]) completed. Took 0.0 secs.
+Resolve mutations for :check (Thread[Execution worker Thread 15,5,main]) started.
+Resolve mutations for :check (Thread[Execution worker Thread 15,5,main]) completed. Took 0.0 secs.
+:check (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :check UP-TO-DATE
+Skipping task ':check' as it has no actions.
+:check (Thread[Execution worker Thread 9,5,main]) completed. Took 0.0 secs.
+Resolve mutations for :build (Thread[Execution worker Thread 15,5,main]) started.
+Resolve mutations for :build (Thread[Execution worker Thread 15,5,main]) completed. Took 0.0 secs.
+:build (Thread[Execution worker Thread 9,5,main]) started.
+
+> Task :build
+Skipping task ':build' as it has no actions.
+:build (Thread[Execution worker Thread 9,5,main]) completed. Took 0.0 secs.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.5.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 12s
+11 actionable tasks: 7 executed, 4 up-to-date
+Watched directory hierarchies: [F:\modding\1.19\HaCv4]

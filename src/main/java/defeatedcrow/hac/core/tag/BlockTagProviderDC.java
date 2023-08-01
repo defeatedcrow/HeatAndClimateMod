@@ -122,14 +122,16 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.FARMLAND).add(Blocks.FARMLAND, FoodInit.FERTILE.get());
 		tag(TagDC.BlockTag.MUD).add(Blocks.MUD, Blocks.MUDDY_MANGROVE_ROOTS);
 
+		tag(TagDC.BlockTag.WEED).add(Blocks.GRASS, Blocks.TALL_GRASS, Blocks.DEAD_BUSH, Blocks.FERN, Blocks.LARGE_FERN, Blocks.SEAGRASS);
+
 		tag(TagDC.BlockTag.CROP_PUMPKIN).add(Blocks.PUMPKIN);
 		tag(TagDC.BlockTag.CROP_MELON).add(Blocks.MELON);
 
 		tag(TagDC.BlockTag.CROP_GREEN_MANURES).add(FoodInit.BLOCK_BR_RAPESEED.get(), FoodInit.BLOCK_BR_GREEN.get(),
 			FoodInit.BLOCK_BR_CABAGGE.get(), FoodInit.BLOCK_BR_RADISH.get(), FoodInit.BLOCK_CR_OAT.get(),
 			FoodInit.BLOCK_CR_RYE.get(), FoodInit.BLOCK_CR_BARLEY.get(), FoodInit.BLOCK_PE_GREEN.get(),
-			FoodInit.BLOCK_PE_GARBANZO.get(), FoodInit.BLOCK_PE_SOY.get(), FoodInit.BLOCK_RE_SORGHUM.get(),
-			Blocks.GRASS, Blocks.TALL_GRASS, Blocks.FERN, Blocks.LARGE_FERN);
+			FoodInit.BLOCK_PE_GARBANZO.get(), FoodInit.BLOCK_PE_SOY.get(), FoodInit.BLOCK_RE_SORGHUM.get());
+		tag(TagDC.BlockTag.CROP_GREEN_MANURES).addTag(TagDC.BlockTag.WEED);
 
 		tag(BlockTags.WOODEN_FENCES).add(BuildInit.FENCE_BEECH.get(), BuildInit.FENCE_WALNUT.get(), BuildInit.FENCE_SWEET.get(),
 			BuildInit.FENCE_CHERRY.get(), BuildInit.FENCE_CAMPHOR.get(), BuildInit.FENCE_CITRUS.get(),
@@ -138,11 +140,6 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(BlockTags.WALLS).add(BuildInit.WALL_MUD.get(), BuildInit.WALL_GYPSUM.get(), BuildInit.WALL_SERPENTINE.get(),
 			BuildInit.WALL_GREISEN.get(), BuildInit.WALL_SKARN.get(), BuildInit.WALL_HORNFELS.get(),
 			BuildInit.WALL_MARBLE.get(), BuildInit.WALL_SCHIST_BLUE.get(), BuildInit.WALL_SCHIST_NETHER.get(), BuildInit.WALL_GRANITE.get());
-
-		tag(TagDC.BlockTag.SCYTHE_BREAKABLE).addTags(BlockTags.LEAVES, BlockTags.WOOL);
-
-		tag(TagDC.BlockTag.SCYTHE_BREAKABLE).add(Blocks.COBWEB, Blocks.DEAD_BUSH, Blocks.HANGING_ROOTS, Blocks.FERN,
-			Blocks.VINE, Blocks.TRIPWIRE);
 
 		tag(TagDC.BlockTag.BEE_FLOWERS).add(FoodInit.BLOCK_BR_RAPESEED.get(), FoodInit.BLOCK_HB_LAVENDER.get(), FoodInit.BLOCK_ML_BLUE.get(),
 			FoodInit.BLOCK_MO_BINDWEED.get(), FoodInit.BLOCK_MO_FLOWER.get(), FoodInit.BLOCK_PD_ROGERIA.get(),
@@ -155,6 +152,31 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 			FoodInit.LEAVES_OL_OSMANTHUS.get());
 
 		tag(BlockTags.FLOWERS).addTags(TagDC.BlockTag.BEE_FLOWERS);
+
+		tag(BlockTags.LEAVES).add(FoodInit.LEAVES_BH_COMMON.get(), FoodInit.LEAVES_BH_WALNUT.get(), FoodInit.LEAVES_BH_SWEET.get(),
+			FoodInit.LEAVES_CH_WILD.get(), FoodInit.LEAVES_CH_PLUM.get(), FoodInit.LEAVES_CH_PEACH.get(),
+			FoodInit.LEAVES_CM_TEA.get(), FoodInit.LEAVES_CM_OIL.get(), FoodInit.LEAVES_CM_SCHIMA.get(),
+			FoodInit.LEAVES_CN_CAMPHOR.get(), FoodInit.LEAVES_CN_CINNAMON.get(), FoodInit.LEAVES_CN_AVOCADO.get(),
+			FoodInit.LEAVES_CT_POMELO.get(), FoodInit.LEAVES_CT_MANDARIN.get(), FoodInit.LEAVES_CT_LEMON.get(),
+			FoodInit.LEAVES_ER_HEATH.get(), FoodInit.LEAVES_ER_RHODODENDRON.get(), FoodInit.LEAVES_ER_BLUEBERRY.get(),
+			FoodInit.LEAVES_MR_MULBERRY.get(), FoodInit.LEAVES_MR_PAPER.get(), FoodInit.LEAVES_MR_RUBBER.get(),
+			FoodInit.LEAVES_OL_ASH.get(), FoodInit.LEAVES_OL_OLIVE.get(), FoodInit.LEAVES_OL_OSMANTHUS.get(),
+			FoodInit.LEAVES_PL_COMMON.get());
+
+		tag(BlockTags.LOGS_THAT_BURN).add(FoodInit.LOG_BH_COMMON.get(), FoodInit.LOG_BH_WALNUT.get(), FoodInit.LOG_BH_SWEET.get(),
+			FoodInit.LOG_CH_WILD.get(), FoodInit.LOG_CN_CAMPHOR.get(), FoodInit.LOG_CN_CINNAMON.get(), FoodInit.LOG_CT_POMELO.get(),
+			FoodInit.LOG_MR_MULBERRY.get(), FoodInit.LOG_MR_PAPER.get(), FoodInit.LOG_MR_RUBBER.get(),
+			FoodInit.LOG_OL_ASH.get(), FoodInit.LOG_PL_COCONUT.get());
+
+		tag(BlockTags.PLANKS).add(FoodInit.PLANK_BH_COMMON.get(), FoodInit.PLANK_BH_WALNUT.get(), FoodInit.PLANK_BH_SWEET.get(),
+			FoodInit.PLANK_CH_WILD.get(), FoodInit.PLANK_CN_CAMPHOR.get(), FoodInit.PLANK_CT_POMELO.get(),
+			FoodInit.PLANK_MR_MULBERRY.get(), FoodInit.PLANK_OL_ASH.get(), FoodInit.PLANK_PL_COCONUT.get(), FoodInit.PLANK_RE_SORGHUM.get());
+
+		tag(TagDC.BlockTag.SCYTHE_BREAKABLE).addTags(BlockTags.LEAVES, BlockTags.WOOL);
+
+		tag(TagDC.BlockTag.SCYTHE_BREAKABLE).add(Blocks.COBWEB, Blocks.DEAD_BUSH, Blocks.HANGING_ROOTS, Blocks.FERN,
+			Blocks.VINE, Blocks.TRIPWIRE, Blocks.WHEAT, Blocks.CARROTS, Blocks.POTATOES, Blocks.BEETROOTS, Blocks.PUMPKIN,
+			Blocks.MELON, Blocks.BAMBOO, Blocks.SUGAR_CANE);
 
 		// plugins
 

@@ -9,11 +9,13 @@ This is a mod being developed by @defeatedcrow.<br> 現在の開発環境はMC1.
 
 ## Current operating environment:
 - Minecraft 1.19.2  
-- MinecraftForge 1.19.2-43.1.1+
+- MinecraftForge 1.19.2-43.2.0+
    
 ## Licenses
 このmodは以下のライセンスの元で公開されます。 <br>
 This mod is distributed under the following license:
+### About defeatedcrow
+ - 作者の名義や、modタイトルはdefeatedcrowによって留保されています。作者に無断で他バージョンに移植する行為はお断りいたします。<br> defeatedcrow reserves the rights to author names and project titles. Porting without the permission of the author is not permitted.
 ### Code: All Rights Reserved
 #### Conditions
 - 著作権者の表示 Copyright notice

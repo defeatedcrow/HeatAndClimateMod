@@ -9,6 +9,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 
+import defeatedcrow.hac.api.material.ITierItem;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.CoreInit;
@@ -33,6 +34,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -44,7 +46,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.IForgeShearable;
 
-public class ItemScythe extends ItemDC {
+public class ItemScythe extends ItemDC implements ITierItem {
 
 	public final TierDC tier;
 	private final Multimap<Attribute, AttributeModifier> defaultModifiers;
@@ -153,6 +155,11 @@ public class ItemScythe extends ItemDC {
 		if (enc == Enchantments.SWEEPING_EDGE)
 			return false;
 		return enc.category == EnchantmentCategory.WEAPON;
+	}
+
+	@Override
+	public Tier getTier() {
+		return tier;
 	}
 
 }

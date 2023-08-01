@@ -7,7 +7,7 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
-import defeatedcrow.hac.food.material.block.ClimateCropBaseBlock;
+import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;

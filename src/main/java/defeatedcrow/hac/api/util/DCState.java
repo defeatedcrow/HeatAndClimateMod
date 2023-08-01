@@ -1,13 +1,10 @@
 package defeatedcrow.hac.api.util;
 
-import java.util.Optional;
-
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 
 public class DCState {
 	// int系
@@ -36,6 +33,7 @@ public class DCState {
 	public static final BooleanProperty DOUBLE = BooleanProperty.create("double");
 	public static final BooleanProperty DEAD = BooleanProperty.create("dead");
 	public static final BooleanProperty WILD = BooleanProperty.create("wild");
+	public static final IntegerProperty DIST = IntegerProperty.create("dist", 0, 7);
 
 	public static final IntegerProperty FERTILE = IntegerProperty.create("fertile", 0, 3);
 
@@ -66,43 +64,26 @@ public class DCState {
 	}
 
 	public static BlockState setInt(BlockState state, IntegerProperty prop, int i) {
-		if (state != null) {
-			Optional<Property<?>> target = getProp(state, prop);
-			target.ifPresent(p -> {
-				if (p instanceof IntegerProperty && ((IntegerProperty) p).getPossibleValues().contains(i)) {
-					state.setValue((IntegerProperty) p, i);
-				}
-			});
+		if (state != null && state.hasProperty(prop) && prop.getPossibleValues().contains(Integer.valueOf(i))) {
+			return state.setValue(prop, i);
+		} else {
+			return state;
 		}
-		return state;
 	}
 
 	public static BlockState setBool(BlockState state, BooleanProperty prop, boolean i) {
-		if (state != null) {
-			Optional<Property<?>> target = getProp(state, prop);
-			target.ifPresent(p -> {
-				if (p instanceof BooleanProperty && ((BooleanProperty) p).getPossibleValues().contains(i)) {
-					state.setValue((BooleanProperty) p, i);
-				}
-			});
+		if (state != null && state.hasProperty(prop) && prop.getPossibleValues().contains(Boolean.valueOf(i))) {
+			return state.setValue(prop, i);
+		} else {
+			return state;
 		}
-		return state;
 	}
 
 	public static BlockState setFace(BlockState state, DirectionProperty prop, Direction i) {
-		if (state != null) {
-			Optional<Property<?>> target = getProp(state, prop);
-			target.ifPresent(p -> {
-				if (p instanceof DirectionProperty && ((DirectionProperty) p).getPossibleValues().contains(i)) {
-					state.setValue((DirectionProperty) p, i);
-				}
-			});
+		if (state != null && state.hasProperty(prop) && prop.getPossibleValues().contains(i)) {
+			return state.setValue(prop, i);
+		} else {
+			return state;
 		}
-		return state;
-	}
-
-	public static Optional<Property<?>> getProp(BlockState state, Property<?> prop) {
-		Optional<Property<?>> ret = state.getProperties().stream().filter(p -> p.getName().equals(prop.getName())).findAny();
-		return ret;
 	}
 }

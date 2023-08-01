@@ -63,6 +63,7 @@ public class TagDC {
 		public static final TagKey<Block> FARMLAND = blockTag("farmland");
 		public static final TagKey<Block> MUD = blockTag("mud");
 		public static final TagKey<Block> MAGMA = blockTag("magma");
+		public static final TagKey<Block> WEED = blockTag("weed");
 
 		public static final TagKey<Block> DUSTBLOCK_BRASS = blockTag("dust_blocks/brass");
 		public static final TagKey<Block> DUSTBLOCK_BRONZE = blockTag("dust_blocks/bronze");
@@ -89,6 +90,8 @@ public class TagDC {
 		public static final TagKey<Block> METALBLOCK_COBALT = blockTag("storage_blocks/cobalt_alloy");
 		public static final TagKey<Block> METALBLOCK_HASTELLOY = blockTag("storage_blocks/hastelloy");
 		public static final TagKey<Block> METALBLOCK_BSCCO = blockTag("storage_blocks/bscco");
+
+		public static final TagKey<Block> CONT_LEAVES = blockTag("storage_blocks/leaves");
 
 		// for vanilla
 		public static final TagKey<Block> CROP_PUMPKIN = blockTag("crops/pumpkin");
@@ -533,6 +536,7 @@ public class TagDC {
 		public static final TagKey<Item> FISH_POWDER = itemTag("ingredients/fish_powder");
 		public static final TagKey<Item> DEFATTED_SOY = itemTag("ingredients/defatted_soy");
 		public static final TagKey<Item> PRESS_CAKE = itemTag("ingredients/press_cake");
+		public static final TagKey<Item> LEAF_MOLD = itemTag("ingredients/leaf_mold");
 
 		public static final TagKey<Item> FEED_HAY = itemTag("animal_feeds/hay");
 		public static final TagKey<Item> FEED_STRAW = itemTag("animal_feeds/straw");
@@ -588,6 +592,8 @@ public class TagDC {
 		public static final TagKey<Item> SEED_BLACK = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/black"));
 		public static final TagKey<Item> SEED_RED = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/red"));
 		public static final TagKey<Item> SEED_GREEN = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/green"));
+
+		public static final TagKey<Item> CONT_LEAVES = itemTag("storage_blocks/leaves");
 
 		public static final TagKey<Item> COLOR_DROPS = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops"));
 		public static final TagKey<Item> DROP_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops/white"));

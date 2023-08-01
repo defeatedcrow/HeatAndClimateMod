@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
+import defeatedcrow.hac.api.material.ITierItem;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.CoreInit;
@@ -26,6 +27,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -33,7 +35,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class HarpoonItem extends ItemDC {
+public class HarpoonItem extends ItemDC implements ITierItem {
 
 	public final TierDC tier;
 	public final String name;
@@ -47,6 +49,11 @@ public class HarpoonItem extends ItemDC {
 		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", tier.getAttackDamageBonus() + 3.0D, AttributeModifier.Operation.ADDITION));
 		builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -2.3D, AttributeModifier.Operation.ADDITION));
 		this.defaultModifiers = builder.build();
+	}
+
+	@Override
+	public Tier getTier() {
+		return tier;
 	}
 
 	@Override

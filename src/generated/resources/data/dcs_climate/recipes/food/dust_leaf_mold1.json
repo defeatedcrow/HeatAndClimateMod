@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:container/container_leaves"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/dust_leaf_mold"
+  }
+}

@@ -117,7 +117,6 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.MAGMA).add(Items.MAGMA_BLOCK);
 		tag(TagDC.ItemTag.DRIPSTONES).add(Items.DRIPSTONE_BLOCK, Items.POINTED_DRIPSTONE);
-		tag(TagDC.ItemTag.WEED).add(Items.GRASS, Items.TALL_GRASS, Items.DEAD_BUSH, Items.FERN, Items.LARGE_FERN, Items.SEAGRASS);
 
 		// magic
 		tag(TagDC.ItemTag.GEM_WHITE).addTags(TagDC.ItemTag.GEM_CHALCEDONY, TagDC.ItemTag.GEM_CRYSTAL, TagDC.ItemTag.GEM_HELIODOR,
@@ -268,7 +267,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.COOKED_FISH).addTags(TagDC.ItemTag.COOKED_COD, TagDC.ItemTag.COOKED_SALMON);
 
-		tag(TagDC.ItemTag.FERTILIZER).addTags(TagDC.ItemTag.FISH_POWDER, TagDC.ItemTag.PRESS_CAKE, TagDC.ItemTag.FERTILIZER_ADV);
+		tag(TagDC.ItemTag.FERTILIZER).addTags(TagDC.ItemTag.FISH_POWDER, TagDC.ItemTag.PRESS_CAKE, TagDC.ItemTag.LEAF_MOLD, TagDC.ItemTag.FERTILIZER_ADV);
 
 		tag(Tags.Items.STRING).addTags(TagDC.ItemTag.STRING_PLANT, TagDC.ItemTag.STRING_COTTON, TagDC.ItemTag.STRING_WOOL);
 		tag(TagDC.ItemTag.CLOTHS).addTags(TagDC.ItemTag.CLOTH_PLANT, TagDC.ItemTag.CLOTH_COTTON, TagDC.ItemTag.CLOTH_WOOL);
@@ -359,6 +358,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		copy(TagDC.BlockTag.METALBLOCK_HASTELLOY, TagDC.ItemTag.METALBLOCK_HASTELLOY);
 		copy(TagDC.BlockTag.METALBLOCK_BSCCO, TagDC.ItemTag.METALBLOCK_BSCCO);
 
+		copy(TagDC.BlockTag.CONT_LEAVES, TagDC.ItemTag.CONT_LEAVES);
+
 		copy(BlockTags.LEAVES, ItemTags.LEAVES);
 
 		copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
@@ -367,6 +368,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		copy(TagDC.BlockTag.CROP_MELON, TagDC.ItemTag.CROP_MELON);
 
 		copy(TagDC.BlockTag.MAGMA, TagDC.ItemTag.MAGMA);
+
+		copy(TagDC.BlockTag.WEED, TagDC.ItemTag.WEED);
 
 		copy(Tags.Blocks.ORES, Tags.Items.ORES);
 

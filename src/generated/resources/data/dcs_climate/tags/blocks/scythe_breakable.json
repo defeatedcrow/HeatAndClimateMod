@@ -7,6 +7,14 @@
     "minecraft:hanging_roots",
     "minecraft:fern",
     "minecraft:vine",
-    "minecraft:tripwire"
+    "minecraft:tripwire",
+    "minecraft:wheat",
+    "minecraft:carrots",
+    "minecraft:potatoes",
+    "minecraft:beetroots",
+    "minecraft:pumpkin",
+    "minecraft:melon",
+    "minecraft:bamboo",
+    "minecraft:sugar_cane"
   ]
 }

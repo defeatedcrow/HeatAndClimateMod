@@ -58,25 +58,21 @@ public class ClientProxyDC extends CommonProxyDC {
 		return InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), ConfigClientBuilder.INSTANCE.key_Charm.get());
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public boolean keyJumpPushed() {
 		return Minecraft.getInstance().player.input.jumping;
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public boolean keySneakPushed() {
 		return Minecraft.getInstance().player.input.shiftKeyDown;
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public boolean keyFowardPushed() {
 		return Minecraft.getInstance().player.input.hasForwardImpulse();
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public Vec2 getClientFoward() {
 		return Minecraft.getInstance().player.input.getMoveVector();

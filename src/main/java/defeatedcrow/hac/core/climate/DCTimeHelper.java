@@ -3,6 +3,7 @@ package defeatedcrow.hac.core.climate;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.event.GetSeasonEvent;
@@ -190,6 +191,10 @@ public class DCTimeHelper {
 				offset *= 2F;
 		}
 		return offset;
+	}
+
+	public static String getLocalizedDate() {
+		return String.format(Locale.getDefault(), "%1$tb %1$te, %1$tY", Calendar.getInstance());
 	}
 
 	/* Client Data */
