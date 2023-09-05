@@ -20,4 +20,5 @@ public class ClimateAPI {
 	public static IMobHeatResistance registerMob;
 	public static IArmorItemRegister registerArmor;
 	public static IArmorMaterialRegister registerMaterial;
+
 }

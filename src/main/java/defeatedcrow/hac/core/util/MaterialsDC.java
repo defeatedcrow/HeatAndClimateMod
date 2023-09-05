@@ -1,9 +1,9 @@
 package defeatedcrow.hac.core.util;
 
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.tag.TagUtil;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -24,7 +24,7 @@ public enum MaterialsDC implements ArmorMaterial {
 		return Ingredient.of(TagDC.ItemTag.CLOTH_COTTON);
 	}),
 	BRONZE("bronze", 18, new int[] { 2, 4, 5, 2 }, 8, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
-		return Ingredient.fromValues(Stream.of(new Ingredient.TagValue(TagDC.ItemTag.INGOT_BRASS), new Ingredient.TagValue(TagDC.ItemTag.INGOT_BRONZE)));
+		return TagUtil.BRONZE_OR_BRASS;
 	}),
 	STEEL("steel", 30, new int[] { 3, 6, 7, 2 }, 8, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
 		return Ingredient.of(TagDC.ItemTag.INGOT_STEEL);

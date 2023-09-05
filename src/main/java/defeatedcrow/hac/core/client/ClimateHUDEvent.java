@@ -19,7 +19,6 @@ import defeatedcrow.hac.core.climate.ClientClimateData;
 import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.climate.WeatherChecker;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
-import defeatedcrow.hac.core.util.DCTexturePath;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;

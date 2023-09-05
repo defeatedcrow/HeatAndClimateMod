@@ -5,6 +5,9 @@ import java.util.function.Function;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.network.packet.message.MsgCharmKeyToS;
+import defeatedcrow.hac.core.network.packet.message.MsgTileClimateToC;
+import defeatedcrow.hac.core.network.packet.message.MsgTileOwnerKeyToS;
+import defeatedcrow.hac.core.network.packet.message.MsgTileSimpleIntegerToC;
 import defeatedcrow.hac.core.network.packet.message.MsgWeatherToC;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -31,6 +34,9 @@ public class DCPacket {
 	public void init() {
 		registerStoC(MsgWeatherToC.class, MsgWeatherToC::decode);
 		registerCtoS(MsgCharmKeyToS.class, MsgCharmKeyToS::decode);
+		registerCtoS(MsgTileOwnerKeyToS.class, MsgTileOwnerKeyToS::decode);
+		registerStoC(MsgTileSimpleIntegerToC.class, MsgTileSimpleIntegerToC::decode);
+		registerStoC(MsgTileClimateToC.class, MsgTileClimateToC::decode);
 	}
 
 	private static <MSG extends IPacketDC> void registerStoC(Class<MSG> clazz, Function<FriendlyByteBuf, MSG> decoder) {

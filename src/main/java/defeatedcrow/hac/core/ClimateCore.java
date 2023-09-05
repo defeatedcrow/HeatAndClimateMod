@@ -29,6 +29,7 @@ import defeatedcrow.hac.core.tag.ItemTagProviderDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.worldgen.FeatureInit;
 import defeatedcrow.hac.food.recipe.FoodRecipeProvider;
+import defeatedcrow.hac.machine.recipe.MachineRecipeProvider;
 import defeatedcrow.hac.magic.recipe.MagicRecipeProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -91,6 +92,7 @@ public class ClimateCore {
 		CoreInit.ENTITIES.register(bus);
 		CoreInit.RECIPE_TYPE.register(bus);
 		CoreInit.RECIPE_SEREALIZER.register(bus);
+		CoreInit.MENU_TYPE.register(bus);
 		FeatureInit.FEATURES.register(bus);
 
 		TagDC.init();
@@ -153,6 +155,7 @@ public class ClimateCore {
 		generator.addProvider(event.includeServer(), new VanillaRecipeProvider(generator));
 		generator.addProvider(event.includeServer(), new FoodRecipeProvider(generator));
 		generator.addProvider(event.includeServer(), new MagicRecipeProvider(generator));
+		generator.addProvider(event.includeServer(), new MachineRecipeProvider(generator));
 
 		generator.addProvider(event.includeServer(), new AdvancementProviderDC(generator, existingFileHelper));
 	}

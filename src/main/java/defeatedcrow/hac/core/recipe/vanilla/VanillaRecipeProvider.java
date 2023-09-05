@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.material.item.IItemDC;
 import defeatedcrow.hac.core.recipe.MaterialRecipes;
 import defeatedcrow.hac.core.recipe.mill.MillsDC;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.data.CachedOutput;
@@ -597,6 +598,132 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_gold", has(Tags.Items.INGOTS_GOLD))
 			.save(cons, "dcs_climate:build/chain_gold_0");
 
+		ShapedRecipeBuilder.shaped(BuildInit.CABINET_NORMAL.get(), 1)
+			.pattern("XXX")
+			.pattern(" Y ")
+			.pattern("XXX")
+			.define('X', ItemTags.PLANKS)
+			.define('Y', Tags.Items.CHESTS_WOODEN)
+			.unlockedBy("has_chest", has(Tags.Items.CHESTS_WOODEN))
+			.save(cons, "dcs_climate:build/cabinet_normal_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.CABINET_WHITE.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_WHITE)
+			.requires(BuildInit.CABINET_NORMAL.get())
+			.unlockedBy("has_cabinet", has(BuildInit.CABINET_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/cabinet_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.CABINET_BLUE.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_BLUE)
+			.requires(BuildInit.CABINET_NORMAL.get())
+			.unlockedBy("has_cabinet", has(BuildInit.CABINET_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/cabinet_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.CABINET_BLACK.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_BLACK)
+			.requires(BuildInit.CABINET_NORMAL.get())
+			.unlockedBy("has_cabinet", has(BuildInit.CABINET_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/cabinet_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.CABINET_RED.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_RED)
+			.requires(BuildInit.CABINET_NORMAL.get())
+			.unlockedBy("has_cabinet", has(BuildInit.CABINET_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/cabinet_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.CABINET_GREEN.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_GREEN)
+			.requires(BuildInit.CABINET_NORMAL.get())
+			.unlockedBy("has_cabinet", has(BuildInit.CABINET_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/cabinet_green_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.LUGGAGE_NORMAL.get(), 1)
+			.pattern("XXX")
+			.pattern(" Y ")
+			.pattern("XXX")
+			.define('X', Tags.Items.LEATHER)
+			.define('Y', Tags.Items.CHESTS_WOODEN)
+			.unlockedBy("has_chest", has(Tags.Items.CHESTS_WOODEN))
+			.save(cons, "dcs_climate:build/luggage_normal_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LUGGAGE_WHITE.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_WHITE)
+			.requires(BuildInit.LUGGAGE_NORMAL.get())
+			.unlockedBy("has_luggage", has(BuildInit.LUGGAGE_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/luggage_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LUGGAGE_BLUE.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_BLUE)
+			.requires(BuildInit.LUGGAGE_NORMAL.get())
+			.unlockedBy("has_luggage", has(BuildInit.LUGGAGE_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/luggage_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LUGGAGE_BLACK.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_BLACK)
+			.requires(BuildInit.LUGGAGE_NORMAL.get())
+			.unlockedBy("has_luggage", has(BuildInit.LUGGAGE_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/luggage_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LUGGAGE_RED.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_RED)
+			.requires(BuildInit.LUGGAGE_NORMAL.get())
+			.unlockedBy("has_luggage", has(BuildInit.LUGGAGE_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/luggage_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LUGGAGE_GREEN.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_GREEN)
+			.requires(BuildInit.LUGGAGE_NORMAL.get())
+			.unlockedBy("has_luggage", has(BuildInit.LUGGAGE_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/luggage_green_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.LOCKER_NORMAL.get(), 1)
+			.pattern("XXX")
+			.pattern(" Y ")
+			.pattern("XXX")
+			.define('X', Tags.Items.INGOTS_IRON)
+			.define('Y', Tags.Items.CHESTS_WOODEN)
+			.unlockedBy("has_chest", has(Tags.Items.CHESTS_WOODEN))
+			.save(cons, "dcs_climate:build/locker_normal_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.LOCKER_NORMAL.get(), 1)
+			.pattern("XXX")
+			.pattern(" Y ")
+			.pattern("XXX")
+			.define('X', TagUtil.BRONZE_OR_BRASS)
+			.define('Y', Tags.Items.CHESTS_WOODEN)
+			.unlockedBy("has_chest", has(Tags.Items.CHESTS_WOODEN))
+			.save(cons, "dcs_climate:build/locker_normal_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOCKER_WHITE.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_WHITE)
+			.requires(BuildInit.LOCKER_NORMAL.get())
+			.unlockedBy("has_locker", has(BuildInit.LOCKER_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/locker_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOCKER_BLUE.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_BLUE)
+			.requires(BuildInit.LOCKER_NORMAL.get())
+			.unlockedBy("has_locker", has(BuildInit.LOCKER_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/locker_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOCKER_BLACK.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_BLACK)
+			.requires(BuildInit.LOCKER_NORMAL.get())
+			.unlockedBy("has_locker", has(BuildInit.LOCKER_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/locker_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOCKER_RED.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_RED)
+			.requires(BuildInit.LOCKER_NORMAL.get())
+			.unlockedBy("has_locker", has(BuildInit.LOCKER_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/locker_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOCKER_GREEN.get(), 1)
+			.requires(TagDC.ItemTag.EXTRACT_GREEN)
+			.requires(BuildInit.LOCKER_NORMAL.get())
+			.unlockedBy("has_locker", has(BuildInit.LOCKER_NORMAL.get()))
+			.save(cons, "dcs_climate:clothing/locker_green_0");
+
 	}
 
 	private static void otherRecipes(Consumer<FinishedRecipe> cons) {
@@ -706,12 +833,10 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_paper", has(Items.PAPER))
 			.save(cons, "dcs_climate:clothing/pattern_pants");
 
-		Ingredient blass = Ingredient.fromValues(Stream.of(new Ingredient.TagValue(TagDC.ItemTag.INGOT_BRASS), new Ingredient.TagValue(TagDC.ItemTag.INGOT_BRONZE)));
-
 		ShapedRecipeBuilder.shaped(CoreInit.MET_BRONZE.get(), 1)
 			.pattern("XXX")
 			.pattern("XYX")
-			.define('X', blass)
+			.define('X', TagUtil.BRONZE_OR_BRASS)
 			.define('Y', TagDC.ItemTag.CLOTHS)
 			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
 			.save(cons, "dcs_climate:clothing/helmet_bronze");
@@ -720,7 +845,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.pattern("XYX")
 			.pattern("XXX")
 			.pattern("XXX")
-			.define('X', blass)
+			.define('X', TagUtil.BRONZE_OR_BRASS)
 			.define('Y', TagDC.ItemTag.CLOTHS)
 			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
 			.save(cons, "dcs_climate:clothing/plate_bronze");
@@ -729,7 +854,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.pattern("XXX")
 			.pattern("XYX")
 			.pattern("X X")
-			.define('X', blass)
+			.define('X', TagUtil.BRONZE_OR_BRASS)
 			.define('Y', TagDC.ItemTag.CLOTHS)
 			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
 			.save(cons, "dcs_climate:clothing/chain_mail_bronze");
@@ -737,7 +862,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(CoreInit.BOOTS_BRONZE.get(), 1)
 			.pattern("X X")
 			.pattern("XYX")
-			.define('X', blass)
+			.define('X', TagUtil.BRONZE_OR_BRASS)
 			.define('Y', TagDC.ItemTag.CLOTHS)
 			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
 			.save(cons, "dcs_climate:clothing/boots_bronze");

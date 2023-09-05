@@ -14,7 +14,7 @@ public class ClimateHelper implements IClimateHelper {
 	@Override
 	public IClimate getClimateFromInt(int code) {
 		if (code <= 0) {
-			return new Climate(DCHeatTier.NORMAL, DCHumidity.NORMAL, DCAirflow.NORMAL);
+			return getDefaultClimate();
 		}
 		int t = code & 15;
 		int h = (code >> 4) & 3;
@@ -89,6 +89,11 @@ public class ClimateHelper implements IClimateHelper {
 	@Override
 	public String getNBTKey() {
 		return NBT_KEY;
+	}
+
+	@Override
+	public IClimate getDefaultClimate() {
+		return new Climate(DCHeatTier.NORMAL, DCHumidity.NORMAL, DCAirflow.NORMAL);
 	}
 
 }

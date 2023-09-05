@@ -1,0 +1,7 @@
+{
+ "variants": {
+    "": {
+      "model": "dcs_climate:block/machine/chamber_iron_0"
+    }
+  }
+}

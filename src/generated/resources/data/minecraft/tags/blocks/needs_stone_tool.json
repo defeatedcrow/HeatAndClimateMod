@@ -82,6 +82,7 @@
     "dcs_climate:build/mosaic_black",
     "dcs_climate:build/mosaic_blue",
     "dcs_climate:build/mosaic_yellow",
-    "dcs_climate:build/mosaic_red"
+    "dcs_climate:build/mosaic_red",
+    "dcs_climate:machine/chamber_iron"
   ]
 }

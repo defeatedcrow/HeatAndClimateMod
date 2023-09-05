@@ -6,13 +6,20 @@ import defeatedcrow.hac.core.client.AdvTooltipEvent;
 import defeatedcrow.hac.core.client.ClimateHUDEvent;
 import defeatedcrow.hac.core.client.DCTextureStitch;
 import defeatedcrow.hac.core.client.RenderPlayerEventDC;
+import defeatedcrow.hac.core.client.gui.DoubleInventoryScreen;
+import defeatedcrow.hac.core.client.gui.SimpleInventoryScreen;
+import defeatedcrow.hac.core.client.gui.UnlockedInventoryScreen;
 import defeatedcrow.hac.core.climate.ClientClimateData;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
 import defeatedcrow.hac.core.event.ClientTickEventDC;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.machine.client.gui.HeatingChamberScreen;
+import defeatedcrow.hac.machine.material.MachineInit;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec2;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -36,6 +43,11 @@ public class ClientProxyDC extends CommonProxyDC {
 		ItemProperties.register(CoreInit.HARPOON_FLINT.get(), new ResourceLocation("throwing"), (stack, level, living, i) -> {
 			return living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F;
 		});
+
+		MenuScreens.register(CoreInit.SIMPLE_SINGLE.get(), SimpleInventoryScreen::new);
+		MenuScreens.register(CoreInit.SIMPLE_DOUBLE.get(), DoubleInventoryScreen::new);
+		MenuScreens.register(CoreInit.UNLOCKED_DOUBLE.get(), UnlockedInventoryScreen::new);
+		MenuScreens.register(MachineInit.CHAMBER_MENU.get(), HeatingChamberScreen::new);
 	}
 
 	@Override
@@ -76,6 +88,11 @@ public class ClientProxyDC extends CommonProxyDC {
 	@Override
 	public Vec2 getClientFoward() {
 		return Minecraft.getInstance().player.input.getMoveVector();
+	}
+
+	@Override
+	public boolean isOP(Player player) {
+		return true;
 	}
 
 	// @Override

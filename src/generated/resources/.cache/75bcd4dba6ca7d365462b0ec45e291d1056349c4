@@ -1,4 +1,4 @@
-// 1.19.2	2023-08-01T23:23:44.0488523	Tags for minecraft:block
+// 1.19.2	2023-09-05T23:49:10.0091054	Tags for minecraft:block
 c27613bc70b1102eddea4f03976d58392658a01f data/dcs_climate/tags/blocks/color_ores.json
 5973775ffcba4d39743586a99d401b242edfd861 data/dcs_climate/tags/blocks/color_ores/black.json
 08bdd9cd9a09b6f638cd8ea54bec26923da04737 data/dcs_climate/tags/blocks/color_ores/blue.json
@@ -68,10 +68,10 @@ f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/blocks/weed.json
 1d2ea23b239462760511d7ee9127e4c44029ab59 data/minecraft/tags/blocks/leaves.json
 214b7a8dbcc2d5c38d35c4bdb40475e67047da9b data/minecraft/tags/blocks/logs_that_burn.json
 29c7ca4acb8a0d89e36c597c6e544e1d6c96c271 data/minecraft/tags/blocks/mineable/axe.json
-988499883015f39ab8f3868086bfe21e0457c772 data/minecraft/tags/blocks/mineable/pickaxe.json
+281377e6e448d1fb5dcdfd2b060185631c20b391 data/minecraft/tags/blocks/mineable/pickaxe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/needs_diamond_tool.json
 333b0e2ade270e3c2c54c0ec974c8027fbda16bd data/minecraft/tags/blocks/needs_iron_tool.json
-2eccfb11f0e410d19b0b43a3246dc1f9684b9b82 data/minecraft/tags/blocks/needs_stone_tool.json
+41cb830045e89851906f0062d3ed56bf570c1e03 data/minecraft/tags/blocks/needs_stone_tool.json
 5b8d8fcd959a7e1b3608b9060865482aa382d944 data/minecraft/tags/blocks/planks.json
 77fb866d31af5d8f52f649bcf7f936a17dc50ac3 data/minecraft/tags/blocks/walls.json
 afed0dd93dd7217472f973d18f8e9540a07dd51e data/minecraft/tags/blocks/wooden_fences.json

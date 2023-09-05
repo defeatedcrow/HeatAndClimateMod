@@ -1,18 +1,22 @@
 package defeatedcrow.hac.core.tag;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class TagUtil {
+
+	public static final Ingredient BRONZE_OR_BRASS = Ingredient.fromValues(Stream.of(new Ingredient.TagValue(TagDC.ItemTag.INGOT_BRASS), new Ingredient.TagValue(TagDC.ItemTag.INGOT_BRONZE)));
 
 	public static boolean isMatch(String name, TagKey<?> tag) {
 		if (tag != null && tag.location() != null) {

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "dcs_climate:color_extracts/green"
+    },
+    {
+      "item": "dcs_climate:build/locker_normal"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/locker_green"
+  }
+}

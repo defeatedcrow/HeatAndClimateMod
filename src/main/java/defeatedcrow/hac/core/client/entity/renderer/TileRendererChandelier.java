@@ -6,7 +6,7 @@ import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.core.client.entity.model.BlockChandelier2Model;
 import defeatedcrow.hac.core.client.entity.model.BlockChandelierModel;
 import defeatedcrow.hac.core.material.BuildInit;
-import defeatedcrow.hac.core.material.block.tile.ChandelierTile;
+import defeatedcrow.hac.core.material.block.building.ChandelierTile;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;

@@ -9,8 +9,8 @@ import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.math.Matrix4f;
 
+import defeatedcrow.hac.core.client.DCTexturePath;
 import defeatedcrow.hac.core.material.effects.MobEffectDC;
-import defeatedcrow.hac.core.util.DCTexturePath;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 import net.minecraft.client.renderer.GameRenderer;

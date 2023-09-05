@@ -9,7 +9,7 @@
       ],
       "entries": [
         {
-          "name": "dcs_climate:food/container_leaves",
+          "name": "dcs_climate:container/container_leaves",
           "type": "minecraft:item"
         }
       ],

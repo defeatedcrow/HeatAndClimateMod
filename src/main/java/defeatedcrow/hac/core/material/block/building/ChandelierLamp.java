@@ -9,7 +9,6 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.EntityBlockDC;
-import defeatedcrow.hac.core.material.block.tile.ChandelierTile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +32,7 @@ public class ChandelierLamp extends EntityBlockDC {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(3.0F, 6.0F).noOcclusion().lightLevel((state) -> {
+		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F, 6.0F).noOcclusion().lightLevel((state) -> {
 			return 15;
 		});
 	}

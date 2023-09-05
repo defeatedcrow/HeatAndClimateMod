@@ -4,10 +4,17 @@ import java.util.function.Supplier;
 
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.block.LayerStoneBlock;
+import defeatedcrow.hac.core.material.block.building.CabinetBlock;
+import defeatedcrow.hac.core.material.block.building.CabinetTile;
 import defeatedcrow.hac.core.material.block.building.ChainBlockDC;
 import defeatedcrow.hac.core.material.block.building.ChandelierLamp;
+import defeatedcrow.hac.core.material.block.building.ChandelierTile;
 import defeatedcrow.hac.core.material.block.building.ConnectedGlassBlock;
 import defeatedcrow.hac.core.material.block.building.FenceWoodDC;
+import defeatedcrow.hac.core.material.block.building.LockerBlock;
+import defeatedcrow.hac.core.material.block.building.LockerTile;
+import defeatedcrow.hac.core.material.block.building.LuggageBlock;
+import defeatedcrow.hac.core.material.block.building.LuggageTile;
 import defeatedcrow.hac.core.material.block.building.PillarStoneDC;
 import defeatedcrow.hac.core.material.block.building.SidedLightDC;
 import defeatedcrow.hac.core.material.block.building.SimpleLightDC;
@@ -16,7 +23,6 @@ import defeatedcrow.hac.core.material.block.building.SlabWoodDC;
 import defeatedcrow.hac.core.material.block.building.StairsStoneDC;
 import defeatedcrow.hac.core.material.block.building.StairsWoodDC;
 import defeatedcrow.hac.core.material.block.building.WallStoneDC;
-import defeatedcrow.hac.core.material.block.tile.ChandelierTile;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -184,10 +190,42 @@ public class BuildInit {
 
 	public static final RegistryObject<Block> CHAIN_GOLD = regBlock("chain_gold", () -> new ChainBlockDC("gold"), null);
 
+	public static final RegistryObject<Block> LUGGAGE_NORMAL = regBlock("luggage_normal", () -> new LuggageBlock("luggage_normal"), null);
+	public static final RegistryObject<Block> LUGGAGE_WHITE = regBlock("luggage_white", () -> new LuggageBlock("luggage_white"), null);
+	public static final RegistryObject<Block> LUGGAGE_BLUE = regBlock("luggage_blue", () -> new LuggageBlock("luggage_blue"), null);
+	public static final RegistryObject<Block> LUGGAGE_BLACK = regBlock("luggage_black", () -> new LuggageBlock("luggage_black"), null);
+	public static final RegistryObject<Block> LUGGAGE_RED = regBlock("luggage_red", () -> new LuggageBlock("luggage_red"), null);
+	public static final RegistryObject<Block> LUGGAGE_GREEN = regBlock("luggage_green", () -> new LuggageBlock("luggage_green"), null);
+
+	public static final RegistryObject<Block> LOCKER_NORMAL = regBlock("locker_normal", () -> new LockerBlock("locker_normal"), null);
+	public static final RegistryObject<Block> LOCKER_WHITE = regBlock("locker_white", () -> new LockerBlock("locker_white"), null);
+	public static final RegistryObject<Block> LOCKER_BLUE = regBlock("locker_blue", () -> new LockerBlock("locker_blue"), null);
+	public static final RegistryObject<Block> LOCKER_BLACK = regBlock("locker_black", () -> new LockerBlock("locker_black"), null);
+	public static final RegistryObject<Block> LOCKER_RED = regBlock("locker_red", () -> new LockerBlock("locker_red"), null);
+	public static final RegistryObject<Block> LOCKER_GREEN = regBlock("locker_green", () -> new LockerBlock("locker_green"), null);
+
+	public static final RegistryObject<Block> CABINET_NORMAL = regBlock("cabinet_normal", () -> new CabinetBlock("cabinet_normal"), null);
+	public static final RegistryObject<Block> CABINET_WHITE = regBlock("cabinet_white", () -> new CabinetBlock("cabinet_white"), null);
+	public static final RegistryObject<Block> CABINET_BLUE = regBlock("cabinet_blue", () -> new CabinetBlock("cabinet_blue"), null);
+	public static final RegistryObject<Block> CABINET_BLACK = regBlock("cabinet_black", () -> new CabinetBlock("cabinet_black"), null);
+	public static final RegistryObject<Block> CABINET_RED = regBlock("cabinet_red", () -> new CabinetBlock("cabinet_red"), null);
+	public static final RegistryObject<Block> CABINET_GREEN = regBlock("cabinet_green", () -> new CabinetBlock("cabinet_green"), null);
+
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<ChandelierTile>> CHANDELIER_TILE = CoreInit.BLOCK_ENTITIES.register("chandelier_crystal_tile",
 		() -> BlockEntityType.Builder.of(ChandelierTile::new, new Block[] { CHANDELIER_LAMP.get(), CHANDELIER_FLUORITE.get(), CHANDELIER_JET.get(), CHANDELIER_DESERTROSE.get(), CHANDELIER_SERPENTINE.get(),
 			CHANDELIER_IRON.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<LuggageTile>> LUGGAGE_TILE = CoreInit.BLOCK_ENTITIES.register("luggage_tile",
+		() -> BlockEntityType.Builder.of(LuggageTile::new, new Block[] { LUGGAGE_NORMAL.get(), LUGGAGE_WHITE.get(), LUGGAGE_BLUE.get(), LUGGAGE_BLACK.get(), LUGGAGE_RED.get(), LUGGAGE_GREEN.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<LockerTile>> LOCKER_TILE = CoreInit.BLOCK_ENTITIES.register("locker_tile",
+		() -> BlockEntityType.Builder.of(LockerTile::new, new Block[] { LOCKER_NORMAL.get(), LOCKER_WHITE.get(), LOCKER_BLUE.get(), LOCKER_BLACK.get(), LOCKER_RED.get(), LOCKER_GREEN.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<CabinetTile>> CABINET_TILE = CoreInit.BLOCK_ENTITIES.register("cabinet_tile",
+		() -> BlockEntityType.Builder.of(CabinetTile::new, new Block[] { CABINET_NORMAL.get(), CABINET_WHITE.get(), CABINET_BLUE.get(), CABINET_BLACK.get(), CABINET_RED.get(), CABINET_GREEN.get() }).build(null));
+
+	// Menu
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("build/" + name, block);

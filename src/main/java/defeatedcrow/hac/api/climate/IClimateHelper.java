@@ -28,4 +28,6 @@ public interface IClimateHelper {
 
 	int getClimateintFromIDs(int[] is);
 
+	IClimate getDefaultClimate();
+
 }

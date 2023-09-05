@@ -1,16 +1,25 @@
 package defeatedcrow.hac.core.client.entity;
 
+import defeatedcrow.hac.core.client.entity.model.BlockCabinetModel;
 import defeatedcrow.hac.core.client.entity.model.BlockChandelier2Model;
 import defeatedcrow.hac.core.client.entity.model.BlockChandelierModel;
+import defeatedcrow.hac.core.client.entity.model.BlockLockerModel;
+import defeatedcrow.hac.core.client.entity.model.BlockLuggageModel;
 import defeatedcrow.hac.core.client.entity.model.ChairBindModel;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicFin;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicWing;
 import defeatedcrow.hac.core.client.entity.model.ModelThinArmor;
 import defeatedcrow.hac.core.client.entity.renderer.RenderHarpoon;
+import defeatedcrow.hac.core.client.entity.renderer.TileRendererCabinet;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererChandelier;
+import defeatedcrow.hac.core.client.entity.renderer.TileRendererLocker;
+import defeatedcrow.hac.core.client.entity.renderer.TileRendererLuggage;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
-import defeatedcrow.hac.core.material.block.tile.ChandelierTile;
+import defeatedcrow.hac.core.material.block.building.CabinetTile;
+import defeatedcrow.hac.core.material.block.building.ChandelierTile;
+import defeatedcrow.hac.core.material.block.building.LockerTile;
+import defeatedcrow.hac.core.material.block.building.LuggageTile;
 import defeatedcrow.hac.core.material.item.tool.HarpoonItem;
 import defeatedcrow.hac.food.client.entity.RenderBreadCream;
 import defeatedcrow.hac.food.client.entity.RenderBreadSausage;
@@ -61,6 +70,11 @@ import defeatedcrow.hac.food.material.entity.SaladItem;
 import defeatedcrow.hac.food.material.entity.SandwichItem;
 import defeatedcrow.hac.food.material.entity.StickBeefItem;
 import defeatedcrow.hac.food.material.entity.StickMeatItem;
+import defeatedcrow.hac.machine.client.entity.BlockChamberFuelModel;
+import defeatedcrow.hac.machine.client.entity.BlockChamberIronModel;
+import defeatedcrow.hac.machine.client.entity.TileRendererChamberFuel;
+import defeatedcrow.hac.machine.client.entity.TileRendererChamberIron;
+import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.magic.client.entity.RenderBindPlant;
 import defeatedcrow.hac.magic.client.entity.RenderColorArrow;
 import defeatedcrow.hac.magic.material.MagicInit;
@@ -77,6 +91,30 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(ChandelierTile.DESERTROSE.getLayerLocation(), BlockChandelierModel::createBodyLayer);
 		event.registerLayerDefinition(ChandelierTile.SERPENTINE.getLayerLocation(), BlockChandelierModel::createBodyLayer);
 		event.registerLayerDefinition(ChandelierTile.IRON.getLayerLocation(), BlockChandelier2Model::createBodyLayer);
+
+		event.registerLayerDefinition(LuggageTile.NORMAL.getLayerLocation(), BlockLuggageModel::createBodyLayer);
+		event.registerLayerDefinition(LuggageTile.BLUE.getLayerLocation(), BlockLuggageModel::createBodyLayer);
+		event.registerLayerDefinition(LuggageTile.BLACK.getLayerLocation(), BlockLuggageModel::createBodyLayer);
+		event.registerLayerDefinition(LuggageTile.RED.getLayerLocation(), BlockLuggageModel::createBodyLayer);
+		event.registerLayerDefinition(LuggageTile.GREEN.getLayerLocation(), BlockLuggageModel::createBodyLayer);
+		event.registerLayerDefinition(LuggageTile.WHITE.getLayerLocation(), BlockLuggageModel::createBodyLayer);
+
+		event.registerLayerDefinition(CabinetTile.NORMAL.getLayerLocation(), BlockCabinetModel::createBodyLayer);
+		event.registerLayerDefinition(CabinetTile.BLUE.getLayerLocation(), BlockCabinetModel::createBodyLayer);
+		event.registerLayerDefinition(CabinetTile.BLACK.getLayerLocation(), BlockCabinetModel::createBodyLayer);
+		event.registerLayerDefinition(CabinetTile.RED.getLayerLocation(), BlockCabinetModel::createBodyLayer);
+		event.registerLayerDefinition(CabinetTile.GREEN.getLayerLocation(), BlockCabinetModel::createBodyLayer);
+		event.registerLayerDefinition(CabinetTile.WHITE.getLayerLocation(), BlockCabinetModel::createBodyLayer);
+
+		event.registerLayerDefinition(LockerTile.NORMAL.getLayerLocation(), BlockLockerModel::createBodyLayer);
+		event.registerLayerDefinition(LockerTile.BLUE.getLayerLocation(), BlockLockerModel::createBodyLayer);
+		event.registerLayerDefinition(LockerTile.BLACK.getLayerLocation(), BlockLockerModel::createBodyLayer);
+		event.registerLayerDefinition(LockerTile.RED.getLayerLocation(), BlockLockerModel::createBodyLayer);
+		event.registerLayerDefinition(LockerTile.GREEN.getLayerLocation(), BlockLockerModel::createBodyLayer);
+		event.registerLayerDefinition(LockerTile.WHITE.getLayerLocation(), BlockLockerModel::createBodyLayer);
+
+		event.registerLayerDefinition(TileRendererChamberIron.DATA.getLayerLocation(), BlockChamberIronModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererChamberFuel.DATA.getLayerLocation(), BlockChamberFuelModel::createBodyLayer);
 
 		// Entity
 		event.registerLayerDefinition(HarpoonItem.FLINT.getLayerLocation(), TridentModel::createLayer);
@@ -154,6 +192,11 @@ public class EntityClientRegister {
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		// TESR
 		event.registerBlockEntityRenderer(BuildInit.CHANDELIER_TILE.get(), TileRendererChandelier::new);
+		event.registerBlockEntityRenderer(BuildInit.LUGGAGE_TILE.get(), TileRendererLuggage::new);
+		event.registerBlockEntityRenderer(BuildInit.CABINET_TILE.get(), TileRendererCabinet::new);
+		event.registerBlockEntityRenderer(BuildInit.LOCKER_TILE.get(), TileRendererLocker::new);
+		event.registerBlockEntityRenderer(MachineInit.CHAMBER_BRICK_TILE.get(), TileRendererChamberFuel::new);
+		event.registerBlockEntityRenderer(MachineInit.CHAMBER_IRON_TILE.get(), TileRendererChamberIron::new);
 
 		// Entity
 		event.registerEntityRenderer(CoreInit.HARPOON.get(), RenderHarpoon::new);

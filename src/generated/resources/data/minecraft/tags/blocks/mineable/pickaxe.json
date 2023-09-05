@@ -143,6 +143,9 @@
     "dcs_climate:build/chal_lamp_desertrose",
     "dcs_climate:build/chal_lamp_serpentine",
     "dcs_climate:build/chain_gold",
+    "dcs_climate:machine/chamber_brick_a",
+    "dcs_climate:machine/chamber_brick_b",
+    "dcs_climate:machine/chamber_iron",
     "dcs_climate:magic/magic_small_light"
   ]
 }

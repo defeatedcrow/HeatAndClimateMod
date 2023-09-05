@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/brick"
+    },
+    "Y": {
+      "item": "minecraft:campfire"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "X X"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/chamber_brick_b"
+  }
+}

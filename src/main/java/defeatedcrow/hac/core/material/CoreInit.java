@@ -3,11 +3,13 @@ package defeatedcrow.hac.core.material;
 import java.util.function.Supplier;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.client.gui.SimpleInventoryMenu;
 import defeatedcrow.hac.core.material.block.AlloyDustBlockDC;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.block.LayerStoneBlock;
 import defeatedcrow.hac.core.material.block.MetalBlockDC;
 import defeatedcrow.hac.core.material.block.OreBlockGemDC;
+import defeatedcrow.hac.core.material.block.building.SimpleChestDC;
 import defeatedcrow.hac.core.material.effects.MobEffectBird;
 import defeatedcrow.hac.core.material.effects.MobEffectDC;
 import defeatedcrow.hac.core.material.effects.MobEffectFlag;
@@ -34,6 +36,7 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.MaterialsDC;
 import defeatedcrow.hac.core.util.TierDC;
 import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
@@ -44,6 +47,8 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -57,6 +62,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.network.IContainerFactory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -72,6 +78,7 @@ public class CoreInit {
 	public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<RecipeType<?>> RECIPE_TYPE = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, ClimateCore.MOD_ID);
 	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SEREALIZER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ClimateCore.MOD_ID);
+	public static final DeferredRegister<MenuType<?>> MENU_TYPE = DeferredRegister.create(ForgeRegistries.MENU_TYPES, ClimateCore.MOD_ID);
 
 	public static final CreativeModeTab CORE = new CreativeTabClimate("core");
 	public static final CreativeModeTab BUILD = new CreativeTabClimate_Building("build");
@@ -81,6 +88,7 @@ public class CoreInit {
 	public static void init() {
 		FoodInit.init();
 		BuildInit.init();
+		MachineInit.init();
 		MagicInit.init();
 	}
 
@@ -372,6 +380,22 @@ public class CoreInit {
 
 	// reflex
 
+	// menu
+	public static final RegistryObject<MenuType<SimpleInventoryMenu>> SIMPLE_SINGLE = register("dcs_simple_single", (IContainerFactory<SimpleInventoryMenu>) (id, playerInv, data) -> {
+		SimpleChestDC cont = (SimpleChestDC) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return SimpleInventoryMenu.singleMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<SimpleInventoryMenu>> SIMPLE_DOUBLE = register("dcs_simple_double", (IContainerFactory<SimpleInventoryMenu>) (id, playerInv, data) -> {
+		SimpleChestDC cont = (SimpleChestDC) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return SimpleInventoryMenu.doubleMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<SimpleInventoryMenu>> UNLOCKED_DOUBLE = register("dcs_unlocked_double", (IContainerFactory<SimpleInventoryMenu>) (id, playerInv, data) -> {
+		SimpleChestDC cont = (SimpleChestDC) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return SimpleInventoryMenu.unlockedMenu(id, playerInv, cont);
+	});
+
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = BLOCKS.register("main/" + name, block);
 		regItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(CORE), tag));
@@ -392,5 +416,9 @@ public class CoreInit {
 
 	public static final RegistryObject<RecipeType<DummySmelting>> SMELTING = RECIPE_TYPE.register("climate_smelting", () -> new RecipeType<DummySmelting>() {});
 	public static final RegistryObject<RecipeSerializer<DummySmelting>> SMELTING_SEREALIZER = RECIPE_SEREALIZER.register("climate_smelting", () -> new DummySmeltingSerealizer());
+
+	public static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> register(String name, MenuType.MenuSupplier<T> supplier) {
+		return MENU_TYPE.register(name, () -> new MenuType<>(supplier));
+	}
 
 }

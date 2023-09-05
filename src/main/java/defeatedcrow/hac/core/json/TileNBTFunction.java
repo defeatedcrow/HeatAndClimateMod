@@ -3,7 +3,7 @@ package defeatedcrow.hac.core.json;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 
-import defeatedcrow.hac.core.material.tile.ITileNBTHolder;
+import defeatedcrow.hac.core.material.block.ITileNBTHolder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -23,8 +23,7 @@ public class TileNBTFunction extends LootItemConditionalFunction {
 		if (instance != null) {
 			return;
 		}
-		instance = Registry.register(Registry.LOOT_FUNCTION_TYPE, new ResourceLocation(
-				"dcs_climate:nbt_tile"), new LootItemFunctionType(new Serializer()));
+		instance = Registry.register(Registry.LOOT_FUNCTION_TYPE, new ResourceLocation("dcs_climate:nbt_tile"), new LootItemFunctionType(new Serializer()));
 	}
 
 	protected TileNBTFunction(LootItemCondition[] conditions) {
@@ -41,7 +40,7 @@ public class TileNBTFunction extends LootItemConditionalFunction {
 		BlockEntity tile = context.getParamOrNull(LootContextParams.BLOCK_ENTITY);
 		if (tile instanceof ITileNBTHolder) {
 			ITileNBTHolder holder = (ITileNBTHolder) tile;
-			return holder.getDropItem(item);
+			return holder.getDropItem(item, tile);
 		}
 
 		return item;

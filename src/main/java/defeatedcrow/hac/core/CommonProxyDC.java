@@ -17,6 +17,7 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec2;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -92,6 +93,12 @@ public class CommonProxyDC {
 			if (adv != null)
 				((ServerPlayer) player).getAdvancements().award(adv, "impossible");
 		}
+	}
+
+	public boolean isOP(Player player) {
+		if (player == null)
+			return false;
+		return player.getLevel().getServer().getPlayerList().isOp(player.getGameProfile());
 	}
 
 }

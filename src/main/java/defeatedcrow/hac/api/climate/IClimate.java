@@ -20,4 +20,10 @@ public interface IClimate {
 
 	IClimate addAirTier(int tier);
 
+	IClimate setHeat(DCHeatTier heat);
+
+	IClimate setHumidity(DCHumidity hum);
+
+	IClimate setAirflow(DCAirflow air);
+
 }

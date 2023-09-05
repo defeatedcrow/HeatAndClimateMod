@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "dcs_climate:color_extracts/red"
+    },
+    {
+      "item": "dcs_climate:build/cabinet_normal"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/cabinet_red"
+  }
+}

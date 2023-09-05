@@ -1,0 +1,63 @@
+{
+    "parent": "block/block",
+    "render_type": "cutout",
+    "textures": {
+        "base": "block/bricks",
+        "net": "dcs_climate:block/build/ironplate_mesh",
+        "particle": "block/bricks"
+    },
+    "elements": [
+        {
+            "from": [0, 0, 0],
+            "to": [16, 2, 16],
+            "faces": {
+                "north": {"uv": [0, 14, 16, 16], "texture": "#base"},
+                "east": {"uv": [0, 14, 16, 16], "texture": "#base"},
+                "south": {"uv": [0, 14, 16, 16], "texture": "#base"},
+                "west": {"uv": [0, 14, 16, 16], "texture": "#base"},
+                "up": {"uv": [0, 0, 16, 16], "texture": "#base"},
+                "down": {"uv": [0, 0, 16, 16], "texture": "#base"}
+            }
+        },
+        {
+            "from": [0, 2, 0],
+            "to": [16, 16, 2],
+            "faces": {
+                "north": {"uv": [0, 0, 16, 14], "texture": "#base"},
+                "east": {"uv": [14, 0, 16, 14], "texture": "#base"},
+                "south": {"uv": [0, 0, 16, 14], "texture": "#base"},
+                "west": {"uv": [0, 0, 2, 14], "texture": "#base"},
+                "up": {"uv": [0, 0, 16, 2], "texture": "#base"},
+                "down": {"uv": [0, 0, 16, 2], "texture": "#base"}
+            }
+        },
+        {
+            "from": [0, 2, 2],
+            "to": [2, 16, 16],
+            "faces": {
+                "east": {"uv": [0, 0, 14, 14], "texture": "#base"},
+                "south": {"uv": [0, 0, 2, 14], "texture": "#base"},
+                "west": {"uv": [2, 0, 16, 14], "texture": "#base"},
+                "up": {"uv": [0, 2, 2, 16], "texture": "#base"}
+            }
+        },
+        {
+            "from": [14, 2, 2],
+            "to": [16, 16, 16],
+            "faces": {
+                "east": {"uv": [0, 0, 14, 14], "texture": "#base"},
+                "south": {"uv": [14, 0, 16, 14], "texture": "#base"},
+                "west": {"uv": [2, 0, 16, 14], "texture": "#base"},
+                "up": {"uv": [14, 2, 16, 16], "texture": "#base"}
+            }
+        },
+        {
+            "from": [2, 16, 2],
+            "to": [14, 16, 14],
+            "faces": {
+                "up": {"uv": [2, 3, 14, 15], "texture": "#net"},
+                "down": {"uv": [2, 3, 14, 15], "rotation": 180, "texture": "#net"}
+            }
+        }
+    ]
+}

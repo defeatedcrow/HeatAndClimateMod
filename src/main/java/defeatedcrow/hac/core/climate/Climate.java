@@ -62,4 +62,19 @@ public class Climate implements IClimate {
 		return new Climate(temp, hum, flow.addTier(tier));
 	}
 
+	@Override
+	public IClimate setHeat(DCHeatTier heat) {
+		return new Climate(heat, hum, flow);
+	}
+
+	@Override
+	public IClimate setHumidity(DCHumidity hum) {
+		return new Climate(temp, hum, flow);
+	}
+
+	@Override
+	public IClimate setAirflow(DCAirflow air) {
+		return new Climate(temp, hum, air);
+	}
+
 }

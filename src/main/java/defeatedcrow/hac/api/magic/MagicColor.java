@@ -41,4 +41,6 @@ public enum MagicColor {
 	public String toString() {
 		return name().toLowerCase();
 	}
+
+	public static MagicColor[] BASIC_COLOERS = { RED, GREEN, BLUE, WHITE, BLACK };
 }
