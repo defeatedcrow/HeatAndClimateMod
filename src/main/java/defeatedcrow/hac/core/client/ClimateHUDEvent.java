@@ -128,7 +128,7 @@ public class ClimateHUDEvent {
 								drawTexturedModalRect(pose.last().pose(), x + 6, y + 3, i2 * 23, 35, 23, 26);
 							} else {
 								i2 -= 10;
-								drawTexturedModalRect(pose.last().pose(), x + 6, y + 3, i1 * 23, 61, 23, 26);
+								drawTexturedModalRect(pose.last().pose(), x + 6, y + 3, i2 * 23, 61, 23, 26);
 							}
 
 							// hum

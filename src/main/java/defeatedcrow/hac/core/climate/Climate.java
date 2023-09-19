@@ -20,8 +20,8 @@ public class Climate implements IClimate {
 		hum = h;
 		flow = f;
 		int i1 = t.getID(); // 0-15
-		int i2 = h.getID(); // 0-2
-		int i3 = f.getID(); // 0-2
+		int i2 = h.getID(); // 0-3
+		int i3 = f.getID(); // 0-3
 		i2 = i2 << 4;
 		i3 = i3 << 6;
 		code = i1 + i2 + i3;

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_campfire": {
+    "has_bucket": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:campfire"
+              "minecraft:bucket"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:magic/craft_iron_stove"
+        "recipe": "dcs_climate:machine/portable_can_1"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_campfire",
+      "has_bucket",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:magic/craft_iron_stove"
+      "dcs_climate:machine/portable_can_1"
     ]
   }
 }

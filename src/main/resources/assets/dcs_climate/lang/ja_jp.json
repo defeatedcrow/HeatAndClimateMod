@@ -103,6 +103,8 @@
   "item.dcs_climate.main.hand_spindle":"紡錘",
   "item.dcs_climate.main.seeding_pot":"育苗ポット",
   "item.dcs_climate.main.sieve":"宝石ふるい",
+  "item.dcs_climate.main.bellow":"ふいご",
+
   "item.dcs_climate.main.scythe_brass":"真鍮の大鎌",
   "item.dcs_climate.main.harpoon_flint":"火打ち石の銛",
   "item.dcs_climate.main.harpoon_steel":"鋼の銛",
@@ -860,6 +862,13 @@
   "block.dcs_climate.machine.chamber_iron":"加熱チャンバー",
   "block.dcs_climate.machine.chamber_brick_a":"レンガのかまど",
   "block.dcs_climate.machine.chamber_brick_b":"レンガのかまど",
+  "block.dcs_climate.machine.ibc":"IBC",
+  "block.dcs_climate.machine.portable_can":"ポリタンク",
+  "block.dcs_climate.machine.portable_can_white":"ポリタンク(白)",
+  "block.dcs_climate.machine.portable_can_blue":"ポリタンク(青)",
+  "block.dcs_climate.machine.portable_can_black":"ポリタンク(黒)",
+  "block.dcs_climate.machine.portable_can_red":"ポリタンク(赤)",
+  "block.dcs_climate.machine.portable_can_green":"ポリタンク(緑)",
 
     "## magic":"",
 
@@ -902,6 +911,9 @@
   "dcs.tip.device.airflow":"通気: %1$s",
   "dcs.tip.device.heat":"温度: %1$s",
 
+  "dcs.tip.chamber.temp":"温度範囲: ",
+  "dcs.tip.chamber.wind":"通気の良い場所や、ふいごの使用により、温度が上昇します。",
+
   "dcs.tip.foodtaste.1":"風味: ★",
   "dcs.tip.foodtaste.2":"風味: ★★",
   "dcs.tip.foodtaste.3":"風味: ★★★",
@@ -909,11 +921,12 @@
   "dcs.tip.foodtaste.5":"風味: ★★★★★",
 
   "dcs.tip.raw_eaten_crop":"生食可",
-  "dcs.tip.spawn_entity_food":"スニークしながら使用することで、Entityとしてスポーンします。",
+  "dcs.tip.spawn_entity_food":"スニーク+右クリック: Entityとしてスポーンします。",
   "dcs.tip.empty_pack":"右クリック:水やミルクを汲むことが出来ます。",
   "dcs.tip.remove_bad_potion":"悪性ポーション効果を解除します。",
   "dcs.tip.healing":"即時回復",
-  "dcs.tip.scythe":"右クリックでHaC作物を範囲収穫します。",
+  "dcs.tip.scythe":"右クリック: HaC作物を範囲収穫します。",
+  "dcs.tip.bellow":"スニーク+右クリック: 燃焼チャンバーに風を送ります。",
 
   "dcs.tip.seedbag.desc":"ランダムに種を入手します:",
 
@@ -1004,6 +1017,8 @@
   "dcs.container.device.with_owner":"%1$s の マシン",
   "dcs.container.chamber":"炉",
   "dcs.container.chamber.with_owner":"%1$s の 炉",
+  "dcs.container.tank":"タンク",
+  "dcs.container.tank.with_owner":"%1$s の タンク",
 
   "## gui_misc":"misc",
 

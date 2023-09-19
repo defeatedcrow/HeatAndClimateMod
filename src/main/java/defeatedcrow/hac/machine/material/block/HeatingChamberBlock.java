@@ -8,15 +8,17 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.machine.material.MachineInit;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -25,7 +27,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraft.world.phys.BlockHitResult;
 
 public class HeatingChamberBlock extends HeatSourceBlock {
 
@@ -36,21 +37,8 @@ public class HeatingChamberBlock extends HeatSourceBlock {
 		name = s;
 	}
 
-	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
-		BlockEntity tile = level.getBlockEntity(pos);
-		if (tile instanceof HeatingChamberTile t) {
-			if (ClimateCore.isDebug) {
-				DCLogger.debugInfoLog("### Chamber output: " + t.output.name() + " ###");
-				DCLogger.debugInfoLog("### Chamber fire: " + t.currentProgress + "/" + t.totalProgress + " ###");
-				DCLogger.debugInfoLog("### Chamber airflow: " + t.resultClimate().getAirflow() + " ###");
-			}
-		}
-		return super.use(state, level, pos, player, hand, hitRes);
-	}
-
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).strength(0.1F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(2.0F, 540.0F).noOcclusion();
 	}
 
 	@Override
@@ -102,6 +90,16 @@ public class HeatingChamberBlock extends HeatSourceBlock {
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
 		return !level.isClientSide ? createTickerHelper(type, MachineInit.CHAMBER_IRON_TILE.get(), ProcessTileBaseDC::serverTick) : null;
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+		MutableComponent TEMP1 = DCHeatTier.OVEN.localize().withStyle(ChatFormatting.GOLD);
+		MutableComponent TEMP2 = DCHeatTier.SMELTING.localize().withStyle(ChatFormatting.LIGHT_PURPLE);
+		MutableComponent tex1 = Component.translatable("dcs.tip.chamber.temp").append(TEMP1).append(" - ").append(TEMP2);
+		MutableComponent tex2 = Component.translatable("dcs.tip.chamber.wind");
+		list.add(tex1);
+		list.add(tex2);
 	}
 
 }

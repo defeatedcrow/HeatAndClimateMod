@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/machine/portable_can_white_item"
+  },
+  "parent": "minecraft:item/generated"
+}

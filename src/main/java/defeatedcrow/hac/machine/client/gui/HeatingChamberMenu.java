@@ -102,7 +102,12 @@ public class HeatingChamberMenu extends AbstractContainerMenu {
 	public int getBurnProgress() {
 		int i = this.data.get(0);
 		int j = this.data.get(1);
-		return j != 0 && i != 0 ? i * 14 / j : 0;
+		if (j == 0 || i == 0)
+			return 0;
+		int ret = i * 14 / j;
+		if (i > 0 && ret == 0)
+			return 1;
+		return ret;
 	}
 
 	public int getTempID() {
@@ -110,7 +115,7 @@ public class HeatingChamberMenu extends AbstractContainerMenu {
 	}
 
 	public int getAirID() {
-		return container.resultClimate().getAirflow().getID();
+		return container.clientClimate.getAirflow().getID();
 	}
 
 }

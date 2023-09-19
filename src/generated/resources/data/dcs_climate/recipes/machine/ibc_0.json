@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/nickel_silver"
+    },
+    "Y": {
+      "tag": "forge:glass"
+    },
+    "Z": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "pattern": [
+    "ZYZ",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/ibc"
+  }
+}

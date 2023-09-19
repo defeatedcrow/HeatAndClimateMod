@@ -9,7 +9,10 @@ import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Either;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.material.block.BlockItemDC;
+import defeatedcrow.hac.core.material.item.ItemDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.MutableComponent;
@@ -34,6 +37,12 @@ public class AdvTooltipEvent {
 			if (regH != 0 || regC != 0) {
 				MutableComponent ret = Component.translatable("dcs.tip.resistance").append(": " + String.format("%.1f", regH) + "/" + String.format("%.1f", regC));
 				list.add(ret);
+			}
+
+			if (target.getItem() instanceof ItemDC item) {
+				item.advTooltipText(target, Minecraft.getInstance().level, list);
+			} else if (target.getItem() instanceof BlockItemDC block) {
+				block.advTooltipText(target, Minecraft.getInstance().level, list);
 			}
 
 			if (!target.getTags().toList().isEmpty()) {

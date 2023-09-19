@@ -95,7 +95,7 @@ public class HeatingChamberScreen extends AbstractContainerScreen<HeatingChamber
 
 		int l = this.menu.getBurnProgress();
 		if (l > 0)
-			this.blit(pose, i + 80, j + 58 + l, 176, 42 + l, 14, 14 - l);
+			this.blit(pose, i + 81, j + 59 + l, 176, 42 + l, 14, 14 - l);
 	}
 
 	@Override

@@ -1,8 +1,5 @@
 package defeatedcrow.hac.core.network.packet.message;
 
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimateReceiver;
 import defeatedcrow.hac.core.network.packet.DCPacket;
 import defeatedcrow.hac.core.network.packet.IPacketDC;
@@ -29,24 +26,18 @@ public class MsgTileClimateToC implements IPacketDC {
 
 	public MsgTileClimateToC() {}
 
-	public MsgTileClimateToC(BlockPos pos, int i, int i2, int i3, int i4) {
+	public MsgTileClimateToC(BlockPos pos, int i) {
 		x = pos.getX();
 		y = pos.getY();
 		z = pos.getZ();
 		climate = i;
-		temp = i2;
-		hum = i3;
-		air = i4;
 	}
 
-	public MsgTileClimateToC(int i1, int i2, int i3, int clm, int t, int h, int a) {
+	public MsgTileClimateToC(int i1, int i2, int i3, int clm) {
 		x = i1;
 		y = i2;
 		z = i3;
 		climate = clm;
-		temp = t;
-		hum = h;
-		air = a;
 	}
 
 	@Override
@@ -55,9 +46,6 @@ public class MsgTileClimateToC implements IPacketDC {
 		buf.writeInt(y);
 		buf.writeInt(z);
 		buf.writeInt(climate);
-		buf.writeInt(temp);
-		buf.writeInt(hum);
-		buf.writeInt(air);
 	}
 
 	public static MsgTileClimateToC decode(FriendlyByteBuf buf) {
@@ -65,10 +53,7 @@ public class MsgTileClimateToC implements IPacketDC {
 		int y1 = buf.readInt();
 		int z1 = buf.readInt();
 		int clm = buf.readInt();
-		int t = buf.readInt();
-		int h = buf.readInt();
-		int a = buf.readInt();
-		return new MsgTileClimateToC(x1, y1, z1, clm, t, h, a);
+		return new MsgTileClimateToC(x1, y1, z1, clm);
 	}
 
 	@Override
@@ -79,16 +64,13 @@ public class MsgTileClimateToC implements IPacketDC {
 			BlockEntity entity = level.getBlockEntity(pos);
 			if (entity instanceof IClimateReceiver tile) {
 				tile.currentClimate(climate);
-				tile.receiveHeatTier(DCHeatTier.getTypeByID(temp));
-				tile.receiveHumidity(DCHumidity.getTypeByID(hum));
-				tile.receiveAirflow(DCAirflow.getTypeByID(air));
 			}
 		}
 	}
 
-	public static void sendToClient(ServerLevel level, BlockPos pos, int i, DCHeatTier t, DCHumidity h, DCAirflow a) {
+	public static void sendToClient(ServerLevel level, BlockPos pos, int i) {
 		if (level != null) {
-			MsgTileClimateToC packet = new MsgTileClimateToC(pos, i, t.getID(), h.getID(), a.getID());
+			MsgTileClimateToC packet = new MsgTileClimateToC(pos, i);
 			level.players().forEach(player -> {
 				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
 			});

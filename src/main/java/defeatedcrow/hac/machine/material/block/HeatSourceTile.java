@@ -46,9 +46,10 @@ public abstract class HeatSourceTile extends ProcessTileBaseDC implements IIntRe
 			output = DCHeatTier.NORMAL;
 		}
 
-		if (lastHeat != output.getID() && level instanceof ServerLevel) {
+		if (lastHeat != output.getID()) {
 			lastHeat = output.getID();
-			MsgTileSimpleIntegerToC.sendToClient((ServerLevel) level, pos, output.getID());
+			if (level instanceof ServerLevel)
+				MsgTileSimpleIntegerToC.sendToClient((ServerLevel) level, pos, output.getID());
 			setChanged(level, pos, state);
 		}
 

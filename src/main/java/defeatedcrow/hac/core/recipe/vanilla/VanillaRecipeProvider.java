@@ -759,6 +759,24 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_dirt", has(ItemTags.DIRT))
 			.save(cons, "dcs_climate:core/seeding_pot");
 
+		ShapedRecipeBuilder.shaped(CoreInit.HANDY_BELLOW.get(), 1)
+			.pattern("XY")
+			.pattern("YZ")
+			.define('X', Tags.Items.INGOTS_IRON)
+			.define('Y', ItemTags.PLANKS)
+			.define('Z', Tags.Items.LEATHER)
+			.unlockedBy("has_leather", has(Tags.Items.LEATHER))
+			.save(cons, "dcs_climate:core/bellow_0");
+
+		ShapedRecipeBuilder.shaped(CoreInit.HANDY_BELLOW.get(), 1)
+			.pattern("XY")
+			.pattern("YZ")
+			.define('X', TagUtil.BRONZE_OR_BRASS)
+			.define('Y', ItemTags.PLANKS)
+			.define('Z', Tags.Items.LEATHER)
+			.unlockedBy("has_leather", has(Tags.Items.LEATHER))
+			.save(cons, "dcs_climate:core/bellow_1");
+
 		ShapedRecipeBuilder.shaped(CoreInit.SCYTHE_BRASS.get(), 1)
 			.pattern("YYX")
 			.pattern("  X")

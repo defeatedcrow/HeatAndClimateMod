@@ -14,6 +14,7 @@ import defeatedcrow.hac.core.config.ConfigClientBuilder;
 import defeatedcrow.hac.core.event.ClientTickEventDC;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberScreen;
+import defeatedcrow.hac.machine.client.gui.PortableTankScreen;
 import defeatedcrow.hac.machine.material.MachineInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -48,6 +49,8 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(CoreInit.SIMPLE_DOUBLE.get(), DoubleInventoryScreen::new);
 		MenuScreens.register(CoreInit.UNLOCKED_DOUBLE.get(), UnlockedInventoryScreen::new);
 		MenuScreens.register(MachineInit.CHAMBER_MENU.get(), HeatingChamberScreen::new);
+		MenuScreens.register(MachineInit.FLUID_MENU.get(), PortableTankScreen::new);
+		MenuScreens.register(MachineInit.FLUID_MENU_LARGE.get(), PortableTankScreen::new);
 	}
 
 	@Override

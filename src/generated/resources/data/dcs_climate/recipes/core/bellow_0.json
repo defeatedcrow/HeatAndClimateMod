@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/iron"
+    },
+    "Y": {
+      "tag": "minecraft:planks"
+    },
+    "Z": {
+      "tag": "forge:leather"
+    }
+  },
+  "pattern": [
+    "XY",
+    "YZ"
+  ],
+  "result": {
+    "item": "dcs_climate:main/bellow"
+  }
+}

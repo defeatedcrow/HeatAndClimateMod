@@ -8,10 +8,17 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.machine.material.MachineInit;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -37,7 +44,7 @@ public class BrickChamberBlock extends HeatSourceBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(2.0F, 540.0F).noOcclusion();
 	}
 
 	@Override
@@ -89,6 +96,16 @@ public class BrickChamberBlock extends HeatSourceBlock {
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
 		return !level.isClientSide ? createTickerHelper(type, MachineInit.CHAMBER_BRICK_TILE.get(), ProcessTileBaseDC::serverTick) : null;
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+		MutableComponent TEMP1 = DCHeatTier.BOIL.localize().withStyle(ChatFormatting.GOLD);
+		MutableComponent TEMP2 = DCHeatTier.KILN.localize().withStyle(ChatFormatting.RED);
+		MutableComponent tex1 = Component.translatable("dcs.tip.chamber.temp").append(TEMP1).append(" - ").append(TEMP2);
+		MutableComponent tex2 = Component.translatable("dcs.tip.chamber.wind");
+		list.add(tex1);
+		list.add(tex2);
 	}
 
 }

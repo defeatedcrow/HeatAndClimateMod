@@ -28,7 +28,7 @@ public abstract class HeatSourceBlock extends ProcessTileBlock implements IHeatT
 		BlockEntity entity = level.getBlockEntity(pos);
 		if (entity instanceof HeatSourceTile tile) {
 			int i = tile.getHeatTier().getID() - DCHeatTier.NORMAL.getID();
-			return i * 2;
+			return i > 0 ? i * 2 : 0;
 		}
 		return 0;
 	}

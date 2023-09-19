@@ -97,10 +97,6 @@ public class InventoryDC implements Container {
 
 	/* * * * */
 
-	public int getSlotLimit(int s) {
-		return LARGE_MAX_STACK_SIZE;
-	}
-
 	public NonNullList<ItemStack> getSizedList(int from, int to) {
 		NonNullList<ItemStack> ret = NonNullList.create();
 		for (int i = from; i <= to; i++) {
@@ -113,6 +109,25 @@ public class InventoryDC implements Container {
 		return ret;
 	}
 
+	public int getSlotLimit(int s) {
+		ItemStack check = getItem(s);
+		if (DCUtil.isEmpty(check)) {
+			return this.getMaxStackSize();
+		} else {
+			return Math.min(getMaxStackSize(), check.getMaxStackSize());
+		}
+	}
+
+	public boolean isMaxStack(int s) {
+		ItemStack check = getItem(s);
+		if (DCUtil.isEmpty(check)) {
+			return false;
+		} else {
+			int lim = getSlotLimit(s);
+			return !check.isStackable() || check.getCount() >= lim;
+		}
+	}
+
 	public int canIncrSlot(int s, ItemStack ins) {
 		if (DCUtil.isEmpty(ins)) {
 			return 0;
@@ -123,9 +138,8 @@ public class InventoryDC implements Container {
 		ItemStack slot = getItem(s);
 		if (DCItemUtil.isSameItem(ins, slot, true)) {
 			int i1 = slot.getCount() + ins.getCount();
-			int limit = Math.min(getSlotLimit(s), slot.getMaxStackSize());
-			if (i1 >= limit) {
-				return limit - slot.getCount();
+			if (i1 >= getSlotLimit(s)) {
+				return getSlotLimit(s) - slot.getCount();
 			} else {
 				return ins.getCount();
 			}

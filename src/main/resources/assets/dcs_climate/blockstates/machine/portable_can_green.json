@@ -1,0 +1,7 @@
+{
+ "variants": {
+    "": {
+      "model": "dcs_climate:block/machine/portable_can_green_0"
+    }
+  }
+}

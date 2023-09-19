@@ -72,9 +72,15 @@ import defeatedcrow.hac.food.material.entity.StickBeefItem;
 import defeatedcrow.hac.food.material.entity.StickMeatItem;
 import defeatedcrow.hac.machine.client.entity.BlockChamberFuelModel;
 import defeatedcrow.hac.machine.client.entity.BlockChamberIronModel;
+import defeatedcrow.hac.machine.client.entity.IBCModel;
+import defeatedcrow.hac.machine.client.entity.PortableCanModel;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberFuel;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberIron;
+import defeatedcrow.hac.machine.client.entity.TileRendererIBC;
+import defeatedcrow.hac.machine.client.entity.TileRendererPortableCan;
 import defeatedcrow.hac.machine.material.MachineInit;
+import defeatedcrow.hac.machine.material.block.IBCTile;
+import defeatedcrow.hac.machine.material.block.PortableCanTile;
 import defeatedcrow.hac.magic.client.entity.RenderBindPlant;
 import defeatedcrow.hac.magic.client.entity.RenderColorArrow;
 import defeatedcrow.hac.magic.material.MagicInit;
@@ -115,6 +121,16 @@ public class EntityClientRegister {
 
 		event.registerLayerDefinition(TileRendererChamberIron.DATA.getLayerLocation(), BlockChamberIronModel::createBodyLayer);
 		event.registerLayerDefinition(TileRendererChamberFuel.DATA.getLayerLocation(), BlockChamberFuelModel::createBodyLayer);
+
+		event.registerLayerDefinition(PortableCanTile.NORMAL.getLayerLocation(), PortableCanModel::createBodyLayer);
+		event.registerLayerDefinition(PortableCanTile.WHITE.getLayerLocation(), PortableCanModel::createBodyLayer);
+		event.registerLayerDefinition(PortableCanTile.BLUE.getLayerLocation(), PortableCanModel::createBodyLayer);
+		event.registerLayerDefinition(PortableCanTile.BLACK.getLayerLocation(), PortableCanModel::createBodyLayer);
+		event.registerLayerDefinition(PortableCanTile.RED.getLayerLocation(), PortableCanModel::createBodyLayer);
+		event.registerLayerDefinition(PortableCanTile.GREEN.getLayerLocation(), PortableCanModel::createBodyLayer);
+
+		event.registerLayerDefinition(IBCTile.NORMAL.getLayerLocation(), IBCModel::createBodyLayer);
+		event.registerLayerDefinition(IBCTile.INNER.getLayerLocation(), IBCModel::createBodyLayer);
 
 		// Entity
 		event.registerLayerDefinition(HarpoonItem.FLINT.getLayerLocation(), TridentModel::createLayer);
@@ -197,6 +213,8 @@ public class EntityClientRegister {
 		event.registerBlockEntityRenderer(BuildInit.LOCKER_TILE.get(), TileRendererLocker::new);
 		event.registerBlockEntityRenderer(MachineInit.CHAMBER_BRICK_TILE.get(), TileRendererChamberFuel::new);
 		event.registerBlockEntityRenderer(MachineInit.CHAMBER_IRON_TILE.get(), TileRendererChamberIron::new);
+		event.registerBlockEntityRenderer(MachineInit.PORTABLE_CAN_TILE.get(), TileRendererPortableCan::new);
+		event.registerBlockEntityRenderer(MachineInit.IBC_TILE.get(), TileRendererIBC::new);
 
 		// Entity
 		event.registerEntityRenderer(CoreInit.HARPOON.get(), RenderHarpoon::new);

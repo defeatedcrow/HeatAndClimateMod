@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:machine/portable_can"
+    },
+    {
+      "tag": "dcs_climate:color_extracts/red"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:machine/portable_can_red"
+  }
+}

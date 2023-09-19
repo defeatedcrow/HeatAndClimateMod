@@ -146,6 +146,13 @@
     "dcs_climate:machine/chamber_brick_a",
     "dcs_climate:machine/chamber_brick_b",
     "dcs_climate:machine/chamber_iron",
+    "dcs_climate:machine/portable_can",
+    "dcs_climate:machine/portable_can_white",
+    "dcs_climate:machine/portable_can_blue",
+    "dcs_climate:machine/portable_can_black",
+    "dcs_climate:machine/portable_can_red",
+    "dcs_climate:machine/portable_can_green",
+    "dcs_climate:machine/ibc",
     "dcs_climate:magic/magic_small_light"
   ]
 }

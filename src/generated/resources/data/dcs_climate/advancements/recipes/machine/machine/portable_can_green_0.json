@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_campfire": {
+    "has_portable_can": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:campfire"
+              "dcs_climate:machine/portable_can"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:magic/craft_bricks_stove_a"
+        "recipe": "dcs_climate:machine/portable_can_green_0"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_campfire",
+      "has_portable_can",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:magic/craft_bricks_stove_a"
+      "dcs_climate:machine/portable_can_green_0"
     ]
   }
 }

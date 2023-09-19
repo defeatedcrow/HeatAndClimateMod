@@ -103,6 +103,8 @@
   "item.dcs_climate.main.hand_spindle":"Hand Spindle",
   "item.dcs_climate.main.seeding_pot":"Seeding Pot",
   "item.dcs_climate.main.sieve":"Gem Sieve",
+  "item.dcs_climate.main.bellow":"Bellow",
+
   "item.dcs_climate.main.scythe_brass":"Brass Scythe",
   "item.dcs_climate.main.harpoon_flint":"Fishing Harpoon",
   "item.dcs_climate.main.harpoon_steel":"Steel Harpoon",
@@ -863,6 +865,13 @@
   "block.dcs_climate.machine.chamber_iron":"Heating Chamber",
   "block.dcs_climate.machine.chamber_brick_a":"Bricks Stove",
   "block.dcs_climate.machine.chamber_brick_b":"Bricks Stove",
+  "block.dcs_climate.machine.ibc":"IBC",
+  "block.dcs_climate.machine.portable_can":"Potrtable Can",
+  "block.dcs_climate.machine.portable_can_white":"White Potrtable Can",
+  "block.dcs_climate.machine.portable_can_blue":"Blue Potrtable Can",
+  "block.dcs_climate.machine.portable_can_black":"Black Potrtable Can",
+  "block.dcs_climate.machine.portable_can_red":"Red Potrtable Can",
+  "block.dcs_climate.machine.portable_can_green":"Green Potrtable Can",
 
     "## magic":"",
 
@@ -905,6 +914,9 @@
   "dcs.tip.device.airflow":"Airflow: %1$s",
   "dcs.tip.device.heat":"Fire Temp: %1$s",
 
+  "dcs.tip.chamber.temp":"Temperature Range: ",
+  "dcs.tip.chamber.wind":"High airflow or the use of bellows will result in high temperatures.",
+
   "dcs.tip.foodtaste.1":"Taste: ★",
   "dcs.tip.foodtaste.2":"Taste: ★★",
   "dcs.tip.foodtaste.3":"Taste: ★★★",
@@ -912,11 +924,12 @@
   "dcs.tip.foodtaste.5":"Taste: ★★★★★",
 
   "dcs.tip.raw_eaten_crop":"Edible Raw",
-  "dcs.tip.spawn_entity_food":"Sniiking + Right-click: Spawn as entity",
+  "dcs.tip.spawn_entity_food":"Sneaking + Right-click: Spawn as entity",
   "dcs.tip.empty_pack":"Right-click: Can be filled with water or milk.",
   "dcs.tip.remove_bad_potion":"Removes bad potion effects.",
   "dcs.tip.healing":"Instant Healing",
   "dcs.tip.scythe":"Right-click: Harvest HaC crops within range.",
+  "dcs.tip.bellow":"Sneaking + Right-click: Blow air into the heating chambers.",
 
   "dcs.tip.seedbag.desc":"Randomly obtain one of the following seeds:",
 
@@ -1007,6 +1020,8 @@
   "dcs.container.device.with_owner":"%1$s 's Device",
   "dcs.container.chamber":"Stove",
   "dcs.container.chamber.with_owner":"%1$s 's Stove",
+  "dcs.container.tank":"Tank",
+  "dcs.container.tank.with_owner":"%1$s 's Tank",
 
   "## gui_misc":"misc",
 

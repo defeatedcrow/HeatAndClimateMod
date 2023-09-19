@@ -61,10 +61,8 @@ public class BlockItemDC extends BlockItem implements IJsonDataDC, IItemDC {
 		return tag == null ? TagDC.ItemTag.DUMMY : tag;
 	}
 
-	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		if (tag != null && flag.isAdvanced())
-			list.add(Component.literal("Tag: " + tag.location().toString()));
+	public void advTooltipText(ItemStack item, @Nullable Level level, List<Component> list) {
+		this.getBlock().appendHoverText(item, level, list, TooltipFlag.Default.NORMAL);
 	}
 
 }

@@ -51,8 +51,6 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 
 	// tick
 	public static void serverTick(Level level, BlockPos pos, BlockState state, ProcessTileBaseDC tile) {
-		// if (level.isClientSide)
-		// return;
 
 		tile.updateClimate(level, pos);
 
@@ -79,40 +77,45 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 		tile.onTickProcess(level, pos, state);
 	}
 
-	private int count = 10;
+	private int count = 20;
 	private int lastClimate = 0;
 
 	public void updateClimate(Level level, BlockPos pos) {
 		if (count <= 0) {
+			count = 20;
+
+			if (heatTime <= 0 && receivingHeat != DCHeatTier.NORMAL) {
+				receivingHeat = DCHeatTier.NORMAL;
+			} else {
+				heatTime--;
+			}
+
+			if (humTime <= 0 && receivingHum != DCHumidity.NORMAL) {
+				receivingHum = DCHumidity.NORMAL;
+			} else {
+				humTime--;
+			}
+
+			if (airTime <= 0 && receivingAir != DCAirflow.NORMAL) {
+				receivingAir = DCAirflow.NORMAL;
+			} else {
+				airTime--;
+			}
+
 			currentClimate = new ClimateSupplier(level, pos).get();
-			count = 10;
+
+			int i = resultClimate().getClimateInt();
+			if (i != lastClimate) {
+				lastClimate = i;
+				this.setChanged(level, pos, getBlockState());
+				if (level instanceof ServerLevel)
+					MsgTileClimateToC.sendToClient((ServerLevel) this.getLevel(), pos, i);
+			}
+
 		} else {
 			count--;
 		}
 
-		if (heatTime <= 0 && receivingHeat != DCHeatTier.NORMAL) {
-			receivingHeat = DCHeatTier.NORMAL;
-		} else {
-			heatTime--;
-		}
-
-		if (humTime <= 0 && receivingHum != DCHumidity.NORMAL) {
-			receivingHum = DCHumidity.NORMAL;
-		} else {
-			humTime--;
-		}
-
-		if (airTime <= 0 && receivingAir != DCAirflow.NORMAL) {
-			receivingAir = DCAirflow.NORMAL;
-		} else {
-			airTime--;
-		}
-
-		int i = resultClimate().getClimateInt();
-		if (i != lastClimate && level instanceof ServerLevel) {
-			lastClimate = i;
-			MsgTileClimateToC.sendToClient((ServerLevel) this.getLevel(), pos, currentClimate.getClimateInt(), receivingHeat, receivingHum, receivingAir);
-		}
 	}
 
 	public boolean isActive(Level level, BlockPos pos, BlockState state) {
@@ -198,7 +201,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 	public void receiveHeatTier(DCHeatTier heat) {
 		if (heat != null && heat != DCHeatTier.NORMAL) {
 			receivingHeat = heat;
-			heatTime = 60;
+			heatTime = 3;
 		}
 	}
 
@@ -206,7 +209,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 	public void receiveHumidity(DCHumidity hum) {
 		if (hum != null && hum != DCHumidity.NORMAL) {
 			receivingHum = hum;
-			humTime = 60;
+			humTime = 3;
 		}
 	};
 
@@ -214,13 +217,15 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 	public void receiveAirflow(DCAirflow air) {
 		if (air != null && air != DCAirflow.NORMAL) {
 			receivingAir = air;
-			airTime = 60;
+			airTime = 3;
 		}
 	};
 
+	public IClimate clientClimate = ClimateAPI.helper.getDefaultClimate();
+
 	@Override
 	public void currentClimate(int clm) {
-		currentClimate = ClimateAPI.helper.getClimateFromInt(clm);
+		clientClimate = ClimateAPI.helper.getClimateFromInt(clm);
 	}
 
 	IClimate currentClimate = ClimateAPI.helper.getDefaultClimate();

@@ -10,6 +10,8 @@ public class TagKeyDC {
 	public static final String ITEM = "dcs.item";
 	public static final String FLUID = "dcs.fluid";
 	public static final String ENERGY = "dcs.energy";
+	public static final String CAPACITY = "dcs.cap";
+	public static final String HEAD = "dcs.head";
 	public static final String FACE_IO = "dcs.face_io";
 	public static final String LAST_PROGRESS = "dcs.last_progress";
 	public static final String CURRENT_PROGRESS = "dcs.current_progress";

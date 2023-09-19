@@ -14,7 +14,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 public abstract class ItemDC extends Item implements IJsonDataDC, IItemDC {
@@ -57,10 +56,6 @@ public abstract class ItemDC extends Item implements IJsonDataDC, IItemDC {
 		return tag == null ? TagDC.ItemTag.DUMMY : tag;
 	}
 
-	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		if (tag != null && flag.isAdvanced())
-			list.add(Component.literal("Tag: " + tag.location().toString()));
-	}
+	public void advTooltipText(ItemStack item, @Nullable Level level, List<Component> list) {}
 
 }
