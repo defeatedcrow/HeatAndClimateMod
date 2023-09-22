@@ -62,10 +62,15 @@ public class TileRendererChamberIron implements BlockEntityRenderer<HeatingChamb
 				float f4 = 1F - f3;
 				f4 *= 0.5F;
 
+				int i = 15728880;
+				int j = i % 65536;
+				int k = i / 65536;
+				int l = j | k << 16;
+
 				poseStack.pushPose();
 				poseStack.translate(f4, 0D, f4);
 				poseStack.scale(f3, f3, f3);
-				this.renderer.renderSingleBlock(fire, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY);
+				this.renderer.renderSingleBlock(fire, poseStack, buffer, l, OverlayTexture.NO_OVERLAY);
 				poseStack.popPose();
 			}
 

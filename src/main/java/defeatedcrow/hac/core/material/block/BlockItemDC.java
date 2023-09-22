@@ -2,8 +2,6 @@ package defeatedcrow.hac.core.material.block;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.json.IJsonDataDC;
@@ -11,13 +9,9 @@ import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.item.IItemDC;
 import defeatedcrow.hac.core.tag.TagDC;
-import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
 public class BlockItemDC extends BlockItem implements IJsonDataDC, IItemDC {
@@ -59,10 +53,6 @@ public class BlockItemDC extends BlockItem implements IJsonDataDC, IItemDC {
 	@Override
 	public TagKey<Item> getPairTag() {
 		return tag == null ? TagDC.ItemTag.DUMMY : tag;
-	}
-
-	public void advTooltipText(ItemStack item, @Nullable Level level, List<Component> list) {
-		this.getBlock().appendHoverText(item, level, list, TooltipFlag.Default.NORMAL);
 	}
 
 }

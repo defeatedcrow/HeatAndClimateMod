@@ -14,6 +14,7 @@ public class DCState {
 
 	// bool
 	public static final BooleanProperty FLAG = BooleanProperty.create("flag");
+	public static final BooleanProperty LIT = BooleanProperty.create("lit");
 	public static final BooleanProperty POWERED = BooleanProperty.create("powered");
 
 	// facing

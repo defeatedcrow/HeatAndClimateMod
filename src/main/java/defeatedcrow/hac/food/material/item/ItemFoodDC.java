@@ -68,8 +68,6 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 		MutableComponent tasteName = Component.translatable("dcs.tip.foodtaste." + taste);
 		tasteName.withStyle(ChatFormatting.YELLOW);
 		list.add(tasteName);
-		if (getPairTag() != null && flag.isAdvanced())
-			list.add(Component.literal("Tag: " + getPairTag().location().toString()));
 	}
 
 	/* FoodDC */

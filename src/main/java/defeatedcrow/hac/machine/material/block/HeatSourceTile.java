@@ -33,7 +33,7 @@ public abstract class HeatSourceTile extends ProcessTileBaseDC implements IIntRe
 	@Override
 	public boolean onTickProcess(Level level, BlockPos pos, BlockState state) {
 
-		if (this.isInProcess()) {
+		if (this.isInProcess() && this.isActive(level, pos, state)) {
 			IClimate current = this.resultClimate();
 			if (current.getAirflow() == DCAirflow.TIGHT) {
 				output = baseHeatTier().addTier(-1);
@@ -50,6 +50,7 @@ public abstract class HeatSourceTile extends ProcessTileBaseDC implements IIntRe
 			lastHeat = output.getID();
 			if (level instanceof ServerLevel)
 				MsgTileSimpleIntegerToC.sendToClient((ServerLevel) level, pos, output.getID());
+			HeatSourceBlock.changeLisState(level, pos, output.getTier() > 0);
 			setChanged(level, pos, state);
 		}
 
@@ -58,7 +59,11 @@ public abstract class HeatSourceTile extends ProcessTileBaseDC implements IIntRe
 
 	@Override
 	public void receiveInteger(int i) {
+		int last = output.getID();
 		output = DCHeatTier.getTypeByID(i);
+		// if (last != i) {
+		// HeatSourceBlock.changeLisState(level, getBlockPos(), isLit());
+		// }
 	}
 
 	@Override

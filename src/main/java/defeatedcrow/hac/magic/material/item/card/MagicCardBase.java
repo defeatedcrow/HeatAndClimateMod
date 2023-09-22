@@ -187,11 +187,16 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 		MutableComponent itemName = Component.translatable("dcs.tip.magic_card.name." + color.toString() + "_" + item.getRarity().toString().toLowerCase());
 		itemName.withStyle(color.chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
+
+		super.appendHoverText(item, level, list, flag);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable Level level, List<Component> list) {
 		if (ClimateCore.proxy.keyShiftPushed()) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.magic_card.desc." + color.toString() + "_" + item.getRarity().toString().toLowerCase());
 			list.add(itemTip);
 		}
-		super.appendHoverText(item, level, list, flag);
 	}
 
 }

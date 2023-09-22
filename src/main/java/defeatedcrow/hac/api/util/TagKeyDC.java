@@ -20,4 +20,8 @@ public class TagKeyDC {
 	public static final String HUMIDITY = "dcs.humidity";
 	public static final String AIRFLOW = "dcs.airflow";
 
+	public static final String getTankKey(int id) {
+		return "dcs.tank_" + id;
+	}
+
 }

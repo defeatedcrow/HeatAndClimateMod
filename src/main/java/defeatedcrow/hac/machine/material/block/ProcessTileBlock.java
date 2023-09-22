@@ -42,7 +42,8 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 
 	public ProcessTileBlock(Properties prop) {
 		super(prop);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.POWERED, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.LIT, Boolean.valueOf(false)).setValue(DCState.POWERED, Boolean.valueOf(false)).setValue(WATERLOGGED,
+			Boolean.valueOf(false)));
 	}
 
 	@Override
@@ -100,7 +101,7 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
-		state.add(DCState.FACING, DCState.POWERED, WATERLOGGED);
+		state.add(DCState.FACING, DCState.LIT, DCState.POWERED, WATERLOGGED);
 	}
 
 	@Override

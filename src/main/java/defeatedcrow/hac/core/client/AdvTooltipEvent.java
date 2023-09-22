@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Either;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.material.block.BlockDC;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
@@ -41,8 +42,10 @@ public class AdvTooltipEvent {
 
 			if (target.getItem() instanceof ItemDC item) {
 				item.advTooltipText(target, Minecraft.getInstance().level, list);
-			} else if (target.getItem() instanceof BlockItemDC block) {
-				block.advTooltipText(target, Minecraft.getInstance().level, list);
+			} else if (target.getItem() instanceof BlockItemDC blockitem) {
+				if (blockitem.getBlock() instanceof BlockDC block) {
+					block.advTooltipText(target, Minecraft.getInstance().level, list);
+				}
 			}
 
 			if (!target.getTags().toList().isEmpty()) {

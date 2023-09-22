@@ -2,6 +2,7 @@ package defeatedcrow.hac.machine.material.block;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileFluidToC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.material.fluid.DCTank;
@@ -85,6 +86,7 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 			boolean flag = false;
 			if (!DCUtil.isEmpty(this.inventory.getItem(0)) && !this.inventory.isMaxStack(1)) {
 				ItemStack copy = this.inventory.getItem(0).copy();
+				copy.setCount(1);
 				flag = FluidUtil.getFluidHandler(copy)
 					.map(handler -> {
 						FluidStack fluid = handler.getFluidInTank(0);
@@ -182,8 +184,8 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 	@Override
 	public void loadTag(CompoundTag tag) {
 		super.loadTag(tag);
-		if (tag.contains("dcs.tank_1", 10)) {
-			CompoundTag tankTag = tag.getCompound("dcs.tank_1");
+		if (tag.contains(TagKeyDC.getTankKey(1), 10)) {
+			CompoundTag tankTag = tag.getCompound(TagKeyDC.getTankKey(1));
 			tank.readFromNBT(tankTag);
 		}
 	}
@@ -193,7 +195,7 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 		super.writeTag(tag);
 		CompoundTag tankTag = new CompoundTag();
 		tank.writeToNBT(tankTag);
-		tag.put("dcs.tank_1", tankTag);
+		tag.put(TagKeyDC.getTankKey(1), tankTag);
 	}
 
 	// cap

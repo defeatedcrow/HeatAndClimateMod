@@ -2,6 +2,7 @@ package defeatedcrow.hac.machine.material.block;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
+import defeatedcrow.hac.api.util.DCState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -25,12 +26,18 @@ public abstract class HeatSourceBlock extends ProcessTileBlock implements IHeatT
 
 	@Override
 	public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
-		BlockEntity entity = level.getBlockEntity(pos);
-		if (entity instanceof HeatSourceTile tile) {
-			int i = tile.getHeatTier().getID() - DCHeatTier.NORMAL.getID();
-			return i > 0 ? i * 2 : 0;
+		if (DCState.getBool(state, DCState.LIT)) {
+			return 12;
 		}
 		return 0;
+	}
+
+	public static void changeLisState(Level level, BlockPos pos, boolean lit) {
+		BlockState state = level.getBlockState(pos);
+		if (state.getBlock() instanceof HeatSourceBlock) {
+			boolean l = lit & !DCState.getBool(state, DCState.POWERED);
+			level.setBlock(pos, state.setValue(DCState.LIT, Boolean.valueOf(l)), 3);
+		}
 	}
 
 }

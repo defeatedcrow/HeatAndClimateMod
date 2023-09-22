@@ -8,11 +8,15 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.machine.material.MachineInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -20,14 +24,35 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class PortableCanBlock extends PortableFluidTankBlock {
+
+	protected static final VoxelShape NS_AABB = Block.box(0.0D, 0.0D, 3.0D, 16.0D, 15.0D, 13.0D);
+	protected static final VoxelShape WE_AABB = Block.box(3.0D, 0.0D, 0.0D, 13.0D, 15.0D, 16.0D);
 
 	final String name;
 
 	public PortableCanBlock(String s) {
 		super(getProp());
 		name = s;
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext cont) {
+		Direction dir = DCState.getFace(state, DCState.FACING);
+		switch (dir.getAxis()) {
+		case X:
+			return WE_AABB;
+		case Y:
+			return NS_AABB;
+		case Z:
+			return NS_AABB;
+		default:
+			return NS_AABB;
+		}
+
 	}
 
 	public static BlockBehaviour.Properties getProp() {
