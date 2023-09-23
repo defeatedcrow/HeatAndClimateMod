@@ -1,5 +1,7 @@
 package defeatedcrow.hac.core;
 
+import java.util.Optional;
+
 import defeatedcrow.hac.core.config.ConfigLoadEventDC;
 import defeatedcrow.hac.core.config.CoreConfigDC;
 import defeatedcrow.hac.core.event.BiomeBaseTempEventDC;
@@ -18,6 +20,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -84,6 +87,10 @@ public class CommonProxyDC {
 
 	public Vec2 getClientFoward() {
 		return Vec2.ZERO;
+	}
+
+	public Optional<Level> getClientLevel() {
+		return Optional.empty();
 	}
 
 	public void triggerAdvancement(LivingEntity player, String res) {

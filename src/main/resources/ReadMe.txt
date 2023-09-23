@@ -3,7 +3,7 @@
 # 導入環境 / Introduction conditions
 
 ・Minecraft1.19.2
-・MincraftForge 1.19.2-43.1.1
+・MincraftForge 1.19.2-43.2.0
 
 *Notice*
 
@@ -45,7 +45,7 @@
 #### 遊び方 / How to play ####
 
 
-◎ Climate!
+◎ 気候で遊ぼう! / Climate!
 
 ●HUDについて / About HUD
 
@@ -178,6 +178,25 @@
    Climate smelting recipes can be changed or deleted via the config file.
    The material object must implement the specification for climate smelting.
 
+ ● 昇温ブロック / Heating Block
+
+ 気候精錬レシピのために役立つブロックが追加されています。
+ HaC adds several heat source devices.
+
+  ・加熱チャンバー / Heating Chamber
+
+  通気がFLOW以上の場合に、燃料を消費してSMELTINGの温度を発生する熱源です。
+  When the airflow is FLOW+, it consumes fuel and generates temperatures of SMELTING.
+  ふいごを使用することでも、十分な通気を与えることが出来ます。
+  You can also use bellows to provide sufficient Airflow.
+
+  ・レンガのかまど / Brick Stove
+
+  通気がFLOW以上の場合に、燃料を消費してKILNの温度を発生する熱源です。
+  When the airflow is FLOW+, it consumes fuel and generates temperatures of KILN.
+  燃焼チャンバーより温度が低いかわりに、燃料がより長持ちします。
+  It has a lower temperature and is more fuel efficient than a heated chamber.
+
 
 ◎ 鉱脈の生成 / Ore Veins
 
@@ -230,8 +249,8 @@
  　・施肥された耕地 / Fertilized farmland
    - 耕地ブロックに肥料を与えると、『施肥された耕地』に変わります。3回まで施肥できます。
      Fertilizing a farmland block turns it into a "Fertilized Farmland". You can fertilize up to 3 times.
-   - アルファでは、バニラの骨粉のみ使用できます。
-     Only vanilla bonemeal is available in alpha.
+   - バニラの骨粉や、HaCで追加される肥料を使用できます。
+     You can use vanilla bonemeal or HaC fertilizer.
    - 『緑肥』のTagを持つ作物をクワで右クリックすることでも、施肥された耕地を作ることが出来ます。
      It can also be created by right-clicking a plant with the "GREEN_MANURE" tag with a hoe.
 
@@ -302,6 +321,9 @@
 
 
 #### 更新履歴 / Change log ####
+
+○ v4-alpha9
+ fix: サーバー起動時のクラッシュを修正
 
 ○ v4-aipha8
  add: 加熱チャンバー、レンガのかまど

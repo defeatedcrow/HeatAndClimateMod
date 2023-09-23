@@ -1,14 +1,13 @@
 package defeatedcrow.hac.core.network.packet.message;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.network.packet.DCPacket;
 import defeatedcrow.hac.core.network.packet.IPacketDC;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkEvent;
@@ -54,9 +53,9 @@ public class MsgTileSimpleIntegerToC implements IPacketDC {
 
 	@Override
 	public void handle(NetworkEvent.Context ctx) {
-		if (FMLEnvironment.dist == Dist.CLIENT) {
+		if (FMLEnvironment.dist.isClient() && ClimateCore.proxy.getClientLevel().isPresent()) {
 			BlockPos pos = new BlockPos(x, y, z);
-			Level level = Minecraft.getInstance().level;
+			Level level = ClimateCore.proxy.getClientLevel().get();
 			BlockEntity entity = level.getBlockEntity(pos);
 			if (entity instanceof IIntReceiver tile) {
 				tile.receiveInteger(data);
@@ -65,7 +64,7 @@ public class MsgTileSimpleIntegerToC implements IPacketDC {
 	}
 
 	public static void sendToClient(ServerLevel level, BlockPos pos, int i) {
-		if (level != null) {
+		if (level != null && level instanceof ServerLevel) {
 			MsgTileSimpleIntegerToC packet = new MsgTileSimpleIntegerToC(pos, i);
 			level.players().forEach(player -> {
 				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);

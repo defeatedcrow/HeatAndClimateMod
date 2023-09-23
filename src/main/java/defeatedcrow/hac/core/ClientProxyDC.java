@@ -1,5 +1,7 @@
 package defeatedcrow.hac.core;
 
+import java.util.Optional;
+
 import com.mojang.blaze3d.platform.InputConstants;
 
 import defeatedcrow.hac.core.client.AdvTooltipEvent;
@@ -21,6 +23,7 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -91,6 +94,11 @@ public class ClientProxyDC extends CommonProxyDC {
 	@Override
 	public Vec2 getClientFoward() {
 		return Minecraft.getInstance().player.input.getMoveVector();
+	}
+
+	@Override
+	public Optional<Level> getClientLevel() {
+		return Optional.of(Minecraft.getInstance().level);
 	}
 
 	@Override
