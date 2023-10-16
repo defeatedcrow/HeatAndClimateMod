@@ -34,6 +34,7 @@ public class FertilizerItemDC extends MaterialItemDC {
 		ItemStack use = cont.getItemInHand();
 		BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
 		Player player = cont.getPlayer();
+		boolean success = false;
 		for (int x = -2; x < 2; x++) {
 			for (int z = -2; z < 2; z++) {
 				for (int y = -2; y < 2; y++) {
@@ -50,13 +51,14 @@ public class FertilizerItemDC extends MaterialItemDC {
 							int f = DCState.getInt(crop, DCState.FERTILE);
 							if (f < 3) {
 								if (player instanceof ServerPlayer)
-									CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) player, mpos, use);
+									CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) player, mpos, meal);
 								// 肥料アイテムを耕地にまく
 								BlockState next = FoodInit.FERTILE.get().defaultBlockState().setValue(DCState.FERTILE, 3).setValue(BlockStateProperties.MOISTURE, m);
 								level.setBlockAndUpdate(mpos, next);
 								if (!level.isClientSide) {
 									level.levelEvent(1505, mpos, 0);
 								}
+								success = true;
 
 							}
 						} else if (crop.getBlock() instanceof BonemealableBlock) {
@@ -68,6 +70,7 @@ public class FertilizerItemDC extends MaterialItemDC {
 										if (!level.isClientSide) {
 											level.levelEvent(1505, mpos, 0);
 										}
+										success = true;
 									}
 								}
 							}
@@ -75,6 +78,10 @@ public class FertilizerItemDC extends MaterialItemDC {
 					}
 				}
 			}
+		}
+
+		if (success && !player.getAbilities().instabuild) {
+			use.shrink(1);
 		}
 
 		return InteractionResult.sidedSuccess(level.isClientSide);

@@ -17,6 +17,11 @@
     "dcs_climate:food/crop_reed_rare",
     "dcs_climate:food/crop_rice_rare",
     "dcs_climate:food/crop_solanum_rare",
-    "dcs_climate:food/crop_palm_rare"
+    "dcs_climate:food/crop_palm_rare",
+    "dcs_climate:food/crop_gourd_rare",
+    "dcs_climate:food/crop_grape_rare",
+    "dcs_climate:food/crop_iris_rare",
+    "dcs_climate:food/crop_orchid_rare",
+    "dcs_climate:food/crop_ranunculus_rare"
   ]
 }

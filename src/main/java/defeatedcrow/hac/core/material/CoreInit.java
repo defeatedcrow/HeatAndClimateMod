@@ -31,6 +31,8 @@ import defeatedcrow.hac.core.material.tabs.CreativeTabClimate;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Building;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Clothing;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Machine;
+import defeatedcrow.hac.core.recipe.device.data.DummyDeviceRecipe;
+import defeatedcrow.hac.core.recipe.device.data.DummyDeviceRecipeSerealizer;
 import defeatedcrow.hac.core.recipe.smelting.data.DummySmelting;
 import defeatedcrow.hac.core.recipe.smelting.data.DummySmeltingSerealizer;
 import defeatedcrow.hac.core.tag.TagDC;
@@ -419,6 +421,9 @@ public class CoreInit {
 
 	public static final RegistryObject<RecipeType<DummySmelting>> SMELTING = RECIPE_TYPE.register("climate_smelting", () -> new RecipeType<DummySmelting>() {});
 	public static final RegistryObject<RecipeSerializer<DummySmelting>> SMELTING_SEREALIZER = RECIPE_SEREALIZER.register("climate_smelting", () -> new DummySmeltingSerealizer());
+
+	public static final RegistryObject<RecipeType<DummyDeviceRecipe>> DEVICE_RECIPE = RECIPE_TYPE.register("device_recipe", () -> new RecipeType<DummyDeviceRecipe>() {});
+	public static final RegistryObject<RecipeSerializer<DummyDeviceRecipe>> DEVICE_RECIPE_SEREALIZER = RECIPE_SEREALIZER.register("device_recipe", () -> new DummyDeviceRecipeSerealizer());
 
 	public static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> register(String name, MenuType.MenuSupplier<T> supplier) {
 		return MENU_TYPE.register(name, () -> new MenuType<>(supplier));

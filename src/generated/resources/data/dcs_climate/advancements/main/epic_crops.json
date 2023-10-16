@@ -60,6 +60,42 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_epic_crop6": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_mallow_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_epic_crop7": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_orchid_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_epic_crop8": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_ranunculus_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -92,6 +128,15 @@
     ],
     [
       "has_epic_crop5"
+    ],
+    [
+      "has_epic_crop6"
+    ],
+    [
+      "has_epic_crop7"
+    ],
+    [
+      "has_epic_crop8"
     ]
   ]
 }

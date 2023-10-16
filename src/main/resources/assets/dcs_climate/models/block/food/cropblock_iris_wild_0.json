@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/crop/iris_0"
+  },
+  "parent": "dcs_climate:block/dcs_cross"
+}

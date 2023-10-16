@@ -1,19 +1,34 @@
 {
   "variants": {
-    "stage5=0": {
-      "model": "dcs_climate:block/food/cropblock_rice_wild_0"
+    "double=false,stage5=0": {
+      "model": "dcs_climate:block/food/cropblock_rice_wild_false_0"
     },
-    "stage5=1": {
-      "model": "dcs_climate:block/food/cropblock_rice_wild_1"
+    "double=false,stage5=1": {
+      "model": "dcs_climate:block/food/cropblock_rice_wild_false_1"
     },
-    "stage5=2": {
-      "model": "dcs_climate:block/food/cropblock_rice_wild_2"
+    "double=false,stage5=2": {
+      "model": "dcs_climate:block/food/cropblock_rice_wild_false_2"
     },
-    "stage5=3": {
-      "model": "dcs_climate:block/food/cropblock_rice_wild_3"
+    "double=false,stage5=3": {
+      "model": "dcs_climate:block/food/cropblock_rice_wild_false_3"
     },
-    "stage5=4": {
-      "model": "dcs_climate:block/food/cropblock_rice_wild_4"
+    "double=false,stage5=4": {
+      "model": "dcs_climate:block/food/cropblock_rice_wild_false_4"
+    },
+    "double=true,stage5=0": {
+      "model": "dcs_climate:block/food/cropblock_rice_wild_true_0"
+    },
+    "double=true,stage5=1": {
+      "model": "dcs_climate:block/food/cropblock_rice_wild_true_1"
+    },
+    "double=true,stage5=2": {
+      "model": "dcs_climate:block/food/cropblock_rice_wild_true_2"
+    },
+    "double=true,stage5=3": {
+      "model": "dcs_climate:block/food/cropblock_rice_wild_true_3"
+    },
+    "double=true,stage5=4": {
+      "model": "dcs_climate:block/food/cropblock_rice_wild_true_4"
     }
   }
 }

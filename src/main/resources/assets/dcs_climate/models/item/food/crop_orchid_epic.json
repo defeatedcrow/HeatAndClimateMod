@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/crop/crop_orchid_cattleya"
+  },
+  "parent": "minecraft:item/generated"
+}

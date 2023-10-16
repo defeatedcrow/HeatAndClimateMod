@@ -1,0 +1,278 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "dcs_climate:block/dcs_crop_dummy"
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_top"
+      },
+      "when": {
+        "OR": [
+          {
+            "up": "true",
+            "stage5": 0
+          },
+          {
+            "up": "true",
+            "stage5": 1
+          },
+          {
+            "up": "true",
+            "stage5": 2
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_top_f"
+      },
+      "when": {
+        "up": "true",
+        "stage5": 3
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_top_c"
+      },
+      "when": {
+        "up": "true",
+        "stage5": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_0"
+      },
+      "when": {
+        "up": "false",
+        "north": "false",
+        "east": "false",
+        "south": "false",
+        "west": "false",
+        "stage5": 0
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_1"
+      },
+      "when": {
+        "up": "false",
+        "north": "false",
+        "east": "false",
+        "south": "false",
+        "west": "false",
+        "stage5": 1
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_2"
+      },
+      "when": {
+        "up": "false",
+        "north": "false",
+        "east": "false",
+        "south": "false",
+        "west": "false",
+        "stage5": 2
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_f"
+      },
+      "when": {
+        "up": "false",
+        "north": "false",
+        "east": "false",
+        "south": "false",
+        "west": "false",
+        "stage5": 3
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_c"
+      },
+      "when": {
+        "up": "false",
+        "north": "false",
+        "east": "false",
+        "south": "false",
+        "west": "false",
+        "stage5": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side"
+      },
+      "when": {
+        "OR": [
+          {
+            "north": "true",
+            "stage5": 0
+          },
+          {
+            "north": "true",
+            "stage5": 1
+          },
+          {
+            "north": "true",
+            "stage5": 2
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side_f"
+      },
+      "when": {
+        "north": "true",
+        "stage5": 3
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side_c"
+      },
+      "when": {
+        "north": "true",
+        "stage5": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side",
+        "y": 90
+      },
+      "when": {
+        "OR": [
+          {
+            "east": "true",
+            "stage5": 0
+          },
+          {
+            "east": "true",
+            "stage5": 1
+          },
+          {
+            "east": "true",
+            "stage5": 2
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side_f",
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "stage5": 3
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side_c",
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "stage5": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side",
+        "y": 180
+      },
+      "when": {
+        "OR": [
+          {
+            "south": "true",
+            "stage5": 0
+          },
+          {
+            "south": "true",
+            "stage5": 1
+          },
+          {
+            "south": "true",
+            "stage5": 2
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side_f",
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "stage5": 3
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side_c",
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "stage5": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side",
+        "y": 270
+      },
+      "when": {
+        "OR": [
+          {
+            "west": "true",
+            "stage5": 0
+          },
+          {
+            "west": "true",
+            "stage5": 1
+          },
+          {
+            "west": "true",
+            "stage5": 2
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side_f",
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "stage5": 3
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_wild_side_c",
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "stage5": 4
+      }
+    }
+  ]
+}

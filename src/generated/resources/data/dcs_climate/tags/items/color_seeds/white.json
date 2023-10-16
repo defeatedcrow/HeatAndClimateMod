@@ -4,6 +4,7 @@
     "#forge:seeds/goosefoot",
     "#forge:seeds/artemisia",
     "#forge:seeds/rapeseed",
+    "#forge:seeds/chili",
     "#forge:seeds/sorrel"
   ]
 }

@@ -93,7 +93,7 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 						if (fluid.isEmpty()) {
 							int space = Math.min(tank.getSpace(), handler.getTankCapacity(0));
 							int d = handler.fill(tank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
-							if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 2) != 0) {
+							if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
 								// drain
 								tank.drain(d, FluidAction.EXECUTE);
 								ItemStack ret = handler.getContainer();
@@ -107,7 +107,7 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 						} else if (handler.isFluidValid(getTankCap(), fluid)) {
 							FluidStack drain = handler.drain(fluid, FluidAction.EXECUTE);
 							int f = tank.fill(drain, FluidAction.SIMULATE);
-							if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 2) != 0) {
+							if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
 								// fill
 								tank.fill(drain, FluidAction.EXECUTE);
 								ItemStack ret = handler.getContainer().copy();

@@ -17,6 +17,7 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -112,49 +113,8 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 
 	@Override
 	public boolean canHarvest(BlockState thisState) {
-		return getTier() == CropTier.RARE ? DCState.getInt(thisState, DCState.STAGE5) > 2 : super.canHarvest(thisState);
+		return getTier() == CropTier.RARE || getTier() == CropTier.EPIC ? DCState.getInt(thisState, DCState.STAGE5) > 2 : super.canHarvest(thisState);
 	}
-
-	// @Override
-	// public boolean onHarvest(Level world, BlockPos pos, BlockState thisState, Player player) {
-	// if (this.cropTier == CropTier.WILD || cropTier == CropTier.COMMON) {
-	// return super.onHarvest(world, pos, thisState, player);
-	// }
-	// if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
-	// if (DCState.getBool(thisState, DCState.DOUBLE)) {
-	// thisState = world.getBlockState(pos.below());
-	// pos = pos.below();
-	// }
-	// if (canHarvest(thisState)) {
-	// int f = 0;
-	// if (player != null && !player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
-	// f = player.getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
-	// }
-	// List<ItemStack> crops = this.getCropItems(thisState, f);
-	// boolean ret = false;
-	// for (ItemStack item : crops) {
-	// ItemEntity drop;
-	// item.setCount(2);
-	// if (player != null) {
-	// drop = new ItemEntity(world, player.getX(), player.getY() + 0.15D, player.getZ(), item);
-	// } else {
-	// drop = new ItemEntity(world, pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D, item);
-	// }
-	// if (drop != null && !world.isClientSide)
-	// world.addFreshEntity(drop);
-	// ret = true;
-	// }
-	// if (ret) {
-	// BlockState next = this.getHarvestedState(thisState);
-	// world.setBlock(pos.above(), next.setValue(DCState.DOUBLE, true), 2);
-	// world.setBlock(pos, next, 2);
-	//
-	// }
-	// return ret;
-	// }
-	// }
-	// return false;
-	// }
 
 	@Override
 	public void afterHarvest(Level world, BlockPos pos, BlockState thisState) {
@@ -229,6 +189,8 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 			return FoodInit.BLOCK_ML_COTTON.get();
 		case RARE:
 			return FoodInit.BLOCK_ML_BLUE.get();
+		case EPIC:
+			return FoodInit.BLOCK_ML_TROPICAL.get();
 		default:
 			return FoodInit.BLOCK_ML_JUTE.get();
 		}
@@ -241,9 +203,22 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 			return FoodInit.CROP_ML_COTTON.get();
 		case RARE:
 			return FoodInit.CROP_ML_BLUE.get();
+		case EPIC:
+			return FoodInit.CROP_ML_TROPICAL.get();
 		default:
 			return FoodInit.CROP_ML_JUTE.get();
 		}
+	}
+
+	@Override
+	public List<ItemStack> getCropItems(BlockState state, int fortune) {
+		if (getTier() == CropTier.EPIC) {
+			int chance = 5 + fortune * 5;
+			if (DCUtil.rand.nextInt(chance) > 3) {
+				return ImmutableList.of(new ItemStack(FoodInit.CROP_ML_TROPICAL.get()), new ItemStack(FoodInit.MALLOW_CALYCES.get()));
+			}
+		}
+		return super.getCropItems(state, fortune);
 	}
 
 	@Override
@@ -255,6 +230,8 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 			return Optional.of(FoodInit.BLOCK_ML_COTTON.get());
 		case RARE:
 			return Optional.of(FoodInit.BLOCK_ML_BLUE.get());
+		case EPIC:
+			return Optional.of(FoodInit.BLOCK_ML_TROPICAL.get());
 		default:
 			return Optional.empty();
 		}
@@ -265,6 +242,8 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.SAND);
+		case COMMON:
+			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND);
 		}
@@ -272,7 +251,7 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
-		if (t == CropTier.RARE) {
+		if (t == CropTier.RARE || t == CropTier.EPIC) {
 			return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL);
 		}
 		return ImmutableList.of(DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL, DCHeatTier.OVEN);
@@ -296,6 +275,8 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("SANDY", "SAVANNA");
+		case COMMON:
+			return ImmutableList.of("SAVANNA");
 		default:
 			return Lists.newArrayList();
 		}
@@ -304,7 +285,7 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("COLD", "WET");
 		default:
 			return Lists.newArrayList();
@@ -317,6 +298,8 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 			return "cotton";
 		if (tier == CropTier.RARE)
 			return "blue";
+		if (tier == CropTier.EPIC)
+			return "tropical";
 		return "jute";
 	}
 

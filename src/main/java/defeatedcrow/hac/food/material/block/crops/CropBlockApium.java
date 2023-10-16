@@ -150,8 +150,8 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("SWAMP", "RIVER");
-		// case COMMON:
-		// return ImmutableList.of("RIVER", "BEACH");
+		case COMMON:
+			return ImmutableList.of("RIVER", "BEACH");
 		default:
 			return Lists.newArrayList();
 		}
@@ -160,7 +160,7 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("COLD", "DRY");
 		default:
 			return Lists.newArrayList();

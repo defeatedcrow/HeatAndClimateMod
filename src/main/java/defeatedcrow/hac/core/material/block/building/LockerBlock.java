@@ -56,11 +56,6 @@ public class LockerBlock extends ContainerTileBlock {
 	}
 
 	@Override
-	public boolean requireStateJson() {
-		return false;
-	}
-
-	@Override
 	public JsonModelSimpleDC getItemModel() {
 		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:block/build/" + name + "_item"));
 	}

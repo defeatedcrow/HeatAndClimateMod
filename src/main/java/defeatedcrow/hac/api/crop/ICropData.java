@@ -45,7 +45,8 @@ public interface ICropData {
 		DIRT,
 		SAND,
 		MUD,
-		WATER;
+		WATER,
+		LOGS;
 	}
 
 }

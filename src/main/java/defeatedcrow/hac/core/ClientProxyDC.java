@@ -36,8 +36,9 @@ public class ClientProxyDC extends CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(ClimateHUDEvent::render);
 		MinecraftForge.EVENT_BUS.addListener(ClimateHUDEvent::renderScreen);
 		MinecraftForge.EVENT_BUS.addListener(RenderPlayerEventDC::renderWings);
-		MinecraftForge.EVENT_BUS.addListener(AdvTooltipEvent::render);
 		MinecraftForge.EVENT_BUS.addListener(DCTextureStitch::register);
+
+		MinecraftForge.EVENT_BUS.addListener(AdvTooltipEvent::render);
 	}
 
 	@Override

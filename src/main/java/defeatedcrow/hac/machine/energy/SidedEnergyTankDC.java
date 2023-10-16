@@ -10,7 +10,7 @@ public class SidedEnergyTankDC implements ISidedMachine, IEnergyStorage {
 	protected int energy;
 	protected int capacity;
 	protected int flowRate;
-	protected NonNullList<FaceIO> faces = NonNullList.of(FaceIO.OUTPUT, FaceIO.INPUT, FaceIO.BOTH, FaceIO.BOTH, FaceIO.BOTH, FaceIO.BOTH);
+	protected NonNullList<FaceIO> faces = NonNullList.of(FaceIO.OUTPUT, FaceIO.INPUT, FaceIO.PIPE, FaceIO.PIPE, FaceIO.PIPE, FaceIO.PIPE);
 
 	public SidedEnergyTankDC(int cap) {
 		this(cap, 32, 0);

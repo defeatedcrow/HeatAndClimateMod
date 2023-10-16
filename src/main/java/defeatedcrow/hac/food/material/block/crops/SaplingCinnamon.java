@@ -65,6 +65,9 @@ public class SaplingCinnamon extends SaplingBaseBlock {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
+		if (t == CropTier.COMMON) {
+			return ImmutableList.of(DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL);
+		}
 		return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
 	}
 
@@ -83,6 +86,8 @@ public class SaplingCinnamon extends SaplingBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("FOREST");
+		case COMMON:
+			return ImmutableList.of("SWAMP", "JUNGLE");
 		default:
 			return Lists.newArrayList();
 		}
@@ -91,7 +96,7 @@ public class SaplingCinnamon extends SaplingBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("CONIFEROUS", "COLD");
 		default:
 			return Lists.newArrayList();

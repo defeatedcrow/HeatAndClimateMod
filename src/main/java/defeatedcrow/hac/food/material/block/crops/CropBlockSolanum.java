@@ -110,42 +110,6 @@ public class CropBlockSolanum extends ClimateCropBaseBlock {
 		return false;
 	}
 
-	// @Override
-	// public boolean onHarvest(Level world, BlockPos pos, BlockState thisState, Player player) {
-	// if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
-	// if (DCState.getBool(thisState, DCState.DOUBLE)) {
-	// thisState = world.getBlockState(pos.below());
-	// pos = pos.below();
-	// }
-	// if (canHarvest(thisState)) {
-	// int f = 0;
-	// if (player != null && !player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
-	// f = player.getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
-	// }
-	// List<ItemStack> crops = this.getCropItems(thisState, f);
-	// boolean ret = false;
-	// for (ItemStack item : crops) {
-	// ItemEntity drop;
-	// if (player != null) {
-	// drop = new ItemEntity(world, player.getX(), player.getY() + 0.15D, player.getZ(), item);
-	// } else {
-	// drop = new ItemEntity(world, pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D, item);
-	// }
-	// if (drop != null && !world.isClientSide)
-	// world.addFreshEntity(drop);
-	// ret = true;
-	// }
-	// if (ret) {
-	// BlockState next = this.getHarvestedState(thisState);
-	// world.setBlock(pos, next, 2);
-	// world.setBlock(pos.above(), next.setValue(DCState.DOUBLE, true), 2);
-	// }
-	// return ret;
-	// }
-	// }
-	// return false;
-	// }
-
 	@Override
 	public void afterHarvest(Level world, BlockPos pos, BlockState thisState) {
 		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
@@ -262,7 +226,7 @@ public class CropBlockSolanum extends ClimateCropBaseBlock {
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND);
@@ -290,7 +254,7 @@ public class CropBlockSolanum extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("FOREST", "SAVANNA");
 		default:
 			return Lists.newArrayList();
@@ -300,7 +264,7 @@ public class CropBlockSolanum extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("COLD", "CONIFEROUS");
 		default:
 			return Lists.newArrayList();

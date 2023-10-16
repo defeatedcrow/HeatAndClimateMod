@@ -155,8 +155,8 @@ public class CropBlockAmaranth extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("PLAINS", "SAVANNA");
-		// case COMMON:
-		// return ImmutableList.of("SWAMP", "BEACH");
+		case COMMON:
+			return ImmutableList.of("SWAMP", "BEACH");
 		default:
 			return Lists.newArrayList();
 		}
@@ -165,7 +165,7 @@ public class CropBlockAmaranth extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("COLD");
 		default:
 			return Lists.newArrayList();

@@ -2,6 +2,7 @@
   "values": [
     "#forge:seeds/jute",
     "#forge:seeds/rogeria",
+    "#forge:seeds/wild_grape",
     "dcs_climate:food/sapling_cherry_wild",
     "dcs_climate:food/sapling_camellia_wild"
   ]

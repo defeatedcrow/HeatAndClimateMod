@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "crop": "dcs_climate:block/crop/vine/grape_common_g"
+  },
+  "parent": "dcs_climate:block/dcs_crop_side"
+}

@@ -146,6 +146,8 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("COLD", "CONIFEROUS");
+		case COMMON:
+			return ImmutableList.of("COLD", "FOREST");
 		default:
 			return Lists.newArrayList();
 		}
@@ -156,6 +158,8 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("OCEAN");
+		case COMMON:
+			return ImmutableList.of("OCEAN", "CONIFEROUS");
 		default:
 			return Lists.newArrayList();
 		}

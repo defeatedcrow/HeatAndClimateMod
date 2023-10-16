@@ -1,6 +1,10 @@
 {
   "values": [
     "#forge:crops/lantern",
+    "#forge:crops/wild_grape",
+    "#forge:crops/red_grape",
+    "#forge:crops/white_grape",
+    "#forge:crops/cantaloup",
     "#forge:crops/cherry",
     "#forge:crops/plum",
     "#forge:crops/peach",
@@ -8,6 +12,7 @@
     "#forge:crops/mulberry",
     "#forge:crops/kaji",
     "#forge:crops/date",
+    "#forge:crops/raspberry",
     "#forge:crops/apple",
     "#forge:crops/berries"
   ]

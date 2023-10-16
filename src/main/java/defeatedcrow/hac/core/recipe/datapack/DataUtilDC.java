@@ -16,6 +16,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class DataUtilDC {
@@ -25,15 +27,52 @@ public class DataUtilDC {
 		return Ingredient.fromJson(element);
 	}
 
-	public static ItemStack getStack(JsonObject json, String key) {
-		ItemStack stack = new ItemStack(CoreInit.NULL_ITEM.get());
+	public static List<Ingredient> getIngs(JsonObject json) {
+		List<Ingredient> ret = Lists.newArrayList();
+		if (GsonHelper.isValidNode(json, "ingredients") && json.get("ingredients").isJsonArray()) {
+			JsonArray array = GsonHelper.getAsJsonArray(json, "ingredients");
+			StreamSupport.stream(array.spliterator(), false).filter(e -> !e.isJsonNull()).forEach(e -> ret.add(Ingredient.fromJson(e.getAsJsonObject())));
+		}
+		return ret;
+	}
+
+	public static ItemStack getStackOrEmpty(JsonObject json, String key) {
+		ItemStack stack = ItemStack.EMPTY;
 		if (GsonHelper.isValidNode(json, key) && json.get(key).isJsonObject())
 			stack = net.minecraftforge.common.crafting.CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, key), true, true);
-		else {
+		else if (json.has(key)) {
 			String s1 = GsonHelper.getAsString(json, key);
 			ResourceLocation res = new ResourceLocation(s1);
 			if (ForgeRegistries.ITEMS.containsKey(res))
 				stack = new ItemStack(ForgeRegistries.ITEMS.getValue(res));
+		}
+		return stack;
+	}
+
+	public static ItemStack getStack(JsonObject json, String key) {
+		ItemStack stack = new ItemStack(CoreInit.NULL_ITEM.get());
+		if (GsonHelper.isValidNode(json, key) && json.get(key).isJsonObject())
+			stack = net.minecraftforge.common.crafting.CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, key), true, true);
+		else if (json.has(key)) {
+			String s1 = GsonHelper.getAsString(json, key);
+			ResourceLocation res = new ResourceLocation(s1);
+			if (ForgeRegistries.ITEMS.containsKey(res))
+				stack = new ItemStack(ForgeRegistries.ITEMS.getValue(res));
+		}
+		return stack;
+	}
+
+	public static FluidStack getFluidStack(JsonObject json, String key) {
+		FluidStack stack = FluidStack.EMPTY;
+		if (GsonHelper.isValidNode(json, key) && json.get(key).isJsonObject()) {
+			JsonObject obj = GsonHelper.getAsJsonObject(json, key);
+			String fluidName = GsonHelper.getAsString(obj, "fluid");
+			ResourceLocation res = new ResourceLocation(fluidName);
+			if (ForgeRegistries.FLUIDS.containsKey(res)) {
+				Fluid fluid = ForgeRegistries.FLUIDS.getValue(res);
+				int amo = GsonHelper.getAsInt(obj, "amount", 1000);
+				stack = new FluidStack(fluid, amo);
+			}
 		}
 		return stack;
 	}
@@ -57,6 +96,13 @@ public class DataUtilDC {
 
 	public static List<DCAirflow> getAirflow(JsonObject json) {
 		return DCAirflow.getListFromName(getList(json, "air"));
+	}
+
+	public static int getIntOrZero(JsonObject json, String key) {
+		if (json.has(key)) {
+			return GsonHelper.getAsInt(json, key);
+		}
+		return 0;
 	}
 
 	public static List<String> getHeatTierName(List<DCHeatTier> list) {

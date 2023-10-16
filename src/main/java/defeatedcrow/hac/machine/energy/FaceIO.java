@@ -4,7 +4,7 @@ public enum FaceIO {
 	NONE(0, false, false),
 	OUTPUT(1, true, false),
 	INPUT(2, false, true),
-	BOTH(3, true, true);
+	PIPE(3, true, true);
 
 	private final boolean canReceive;
 	private final boolean canExtract;
@@ -34,7 +34,7 @@ public enum FaceIO {
 		if (i == 2)
 			return INPUT;
 		if (i == 3)
-			return BOTH;
+			return PIPE;
 		return NONE;
 	}
 

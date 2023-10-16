@@ -83,6 +83,8 @@ public class SaplingOlive extends SaplingBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("FOREST", "COLD", "CONIFEROUS");
+		case COMMON:
+			return ImmutableList.of("DRY", "PLAINS");
 		default:
 			return Lists.newArrayList();
 		}
@@ -93,6 +95,8 @@ public class SaplingOlive extends SaplingBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("WET", "HOT");
+		case COMMON:
+			return ImmutableList.of("WET", "COLD");
 		default:
 			return Lists.newArrayList();
 		}

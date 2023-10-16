@@ -8,30 +8,37 @@ public enum CropType {
 	ALLIUM, // ネギ
 	AMARANTH, // アカザ
 	APIUM, // セリ
+	AROIDS, // サトイモ
 	ASTER, // キク
 	BEECH, // ブナ
 	BRASSICA, // アブラナ
 	CAMELLIA, // ツバキ
 	CAPSICUM, // トウガラシ
+	CASHEW, // ウルシ
 	CEREALS, // ムギ
 	CHERRY, // サクラ
 	CINNAMON, // クスノキ
 	CITRUS, // カンキツ
 	ERICA, // ツツジ
 	GINGER, // ショウガ
+	GOURD, // ウリ
 	GRAPE, // ブドウ
 	KNOTWEED, // タデ
 	HERB, // シソ
+	IRIS, // アヤメ
 	LOTUS, // ハス
 	MALLOW, // アオイ
 	MORNINGGLORY, // ヒルガオ
 	MORUS, // クワ
 	OLIVE, // モクセイ
+	ORCHID, // ラン
 	PALM, // ヤシ
 	PEAS, // マメ
 	PEDALIA, // ゴマ
+	RANUNCULUS, // キンポウゲ
 	REED, // アシ
 	RICE, // イネ
+	ROSE, // バラ
 	SOLANUM, // ナス
 	TRADING; // 交易限定種
 

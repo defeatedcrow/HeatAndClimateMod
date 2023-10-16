@@ -424,12 +424,26 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_crop_chrysanthemum", has(TagDC.ItemTag.CROP_CHRYSANTHEMUM))
 			.save(cons, "dcs_climate:magic/mortar_crop_chrysanthemum");
 
+		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_WHITE.get(), 1)
+			.requires(TagDC.ItemTag.CROP_DAMASCHENA)
+			.requires(CoreInit.MORTAR.get())
+			.group("crusher_mortar")
+			.unlockedBy("has_crop_damaschena", has(TagDC.ItemTag.CROP_DAMASCHENA))
+			.save(cons, "dcs_climate:magic/mortar_crop_damaschena");
+
 		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_BLUE.get(), 1)
 			.requires(TagDC.ItemTag.CROP_LAVENDER)
 			.requires(CoreInit.MORTAR.get())
 			.group("crusher_mortar")
 			.unlockedBy("has_crop_lavender", has(TagDC.ItemTag.CROP_LAVENDER))
 			.save(cons, "dcs_climate:magic/mortar_crop_lavender");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_BLUE.get(), 1)
+			.requires(TagDC.ItemTag.CROP_IRIS)
+			.requires(CoreInit.MORTAR.get())
+			.group("crusher_mortar")
+			.unlockedBy("has_crop_iris", has(TagDC.ItemTag.CROP_IRIS))
+			.save(cons, "dcs_climate:magic/mortar_crop_iris");
 
 		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_BLACK.get(), 1)
 			.requires(TagDC.ItemTag.CROP_DEVILSCLAW)
@@ -438,6 +452,13 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_crop_devilsclaw", has(TagDC.ItemTag.CROP_DEVILSCLAW))
 			.save(cons, "dcs_climate:magic/mortar_crop_devilsclaw");
 
+		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_BLACK.get(), 1)
+			.requires(TagDC.ItemTag.CROP_MONKSHOOD)
+			.requires(CoreInit.MORTAR.get())
+			.group("crusher_mortar")
+			.unlockedBy("has_crop_monkshood", has(TagDC.ItemTag.CROP_MONKSHOOD))
+			.save(cons, "dcs_climate:magic/mortar_crop_monkshood");
+
 		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_RED.get(), 1)
 			.requires(TagDC.ItemTag.CROP_LANTERN)
 			.requires(CoreInit.MORTAR.get())
@@ -445,12 +466,26 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_crop_lantern", has(TagDC.ItemTag.CROP_LANTERN))
 			.save(cons, "dcs_climate:magic/mortar_crop_lantern");
 
+		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_RED.get(), 1)
+			.requires(TagDC.ItemTag.CROP_TROPICAL)
+			.requires(CoreInit.MORTAR.get())
+			.group("crusher_mortar")
+			.unlockedBy("has_crop_hibiscus", has(TagDC.ItemTag.CROP_TROPICAL))
+			.save(cons, "dcs_climate:magic/mortar_crop_hibiscus");
+
 		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_GREEN.get(), 1)
 			.requires(TagDC.ItemTag.CROP_MORNING_GLORY)
 			.requires(CoreInit.MORTAR.get())
 			.group("crusher_mortar")
 			.unlockedBy("has_crop_morning_glory", has(TagDC.ItemTag.CROP_MORNING_GLORY))
 			.save(cons, "dcs_climate:magic/mortar_crop_morning_glory");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_GREEN.get(), 1)
+			.requires(TagDC.ItemTag.CROP_CATTLEYA)
+			.requires(CoreInit.MORTAR.get())
+			.group("crusher_mortar")
+			.unlockedBy("has_crop_cattleya", has(TagDC.ItemTag.CROP_CATTLEYA))
+			.save(cons, "dcs_climate:magic/mortar_crop_cattleya");
 
 		ShapedRecipeBuilder.shaped(MagicInit.DROP_MANA.get(), 1)
 			.pattern("XXX")

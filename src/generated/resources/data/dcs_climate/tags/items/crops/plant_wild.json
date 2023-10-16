@@ -17,6 +17,11 @@
     "dcs_climate:food/crop_reed_wild",
     "dcs_climate:food/crop_rice_wild",
     "dcs_climate:food/crop_solanum_wild",
-    "dcs_climate:food/crop_palm_wild"
+    "dcs_climate:food/crop_palm_wild",
+    "dcs_climate:food/crop_gourd_wild",
+    "dcs_climate:food/crop_grape_wild",
+    "dcs_climate:food/crop_iris_wild",
+    "dcs_climate:food/crop_orchid_wild",
+    "dcs_climate:food/crop_ranunculus_wild"
   ]
 }

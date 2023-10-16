@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Either;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.config.ConfigClientBuilder;
 import defeatedcrow.hac.core.material.block.BlockDC;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
@@ -30,7 +31,7 @@ public class AdvTooltipEvent {
 	@SubscribeEvent
 	public static void render(RenderTooltipEvent.GatherComponents event) {
 		ItemStack target = event.getItemStack();
-		if (!target.isEmpty()) {
+		if (!target.isEmpty() && ConfigClientBuilder.INSTANCE.showAltTip.get()) {
 			List<Component> list = Lists.newArrayList();
 
 			float regH = DCItemUtil.getItemResistantData(target, false);

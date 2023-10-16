@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "overlay": "dcs_climate:block/crop/vine/grape_wild_o_f"
+  },
+  "parent": "dcs_climate:block/dcs_crop_side_overlay"
+}

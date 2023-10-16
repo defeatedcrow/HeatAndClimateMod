@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/tree/rose_rugosa_leaves_f"
+  },
+  "parent": "dcs_climate:block/dcs_leaves"
+}

@@ -83,6 +83,8 @@ public class SaplingMorus extends SaplingBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("JUNGLE", "SWAMP");
+		case COMMON:
+			return ImmutableList.of("JUNGLE", "MOUNTAIN");
 		default:
 			return Lists.newArrayList();
 		}
@@ -91,7 +93,7 @@ public class SaplingMorus extends SaplingBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("CONIFEROUS", "COLD");
 		default:
 			return Lists.newArrayList();
@@ -138,7 +140,7 @@ public class SaplingMorus extends SaplingBaseBlock {
 
 			if (h > 9) {
 				SaplingBeech.growBigTree2(level, pos, h, log, leaves);
-			} else if (h > 4) {
+			} else if (h > 5) {
 				SaplingBeech.growBigTree(level, pos, h, log, leaves);
 			} else {
 				growTree(level, pos, h, log, leaves);

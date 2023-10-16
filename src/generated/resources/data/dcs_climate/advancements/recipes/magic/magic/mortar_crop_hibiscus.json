@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_crop_hibiscus": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:crops/hibiscus"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dcs_climate:magic/mortar_crop_hibiscus"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_crop_hibiscus",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dcs_climate:magic/mortar_crop_hibiscus"
+    ]
+  }
+}

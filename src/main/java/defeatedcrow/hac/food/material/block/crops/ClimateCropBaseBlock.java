@@ -26,6 +26,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
@@ -165,6 +166,9 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		for (SoilType soil : soils) {
 			if (soil == SoilType.WATER) {
 				if (!state.getFluidState().isEmpty() && state.getFluidState().is(FluidTags.WATER))
+					return true;
+			} else if (soil == SoilType.LOGS) {
+				if (state.is(BlockTags.LOGS))
 					return true;
 			} else if (TagUtil.matchTag(soil.toString().toLowerCase(), state).isPresent()) {
 				return true;

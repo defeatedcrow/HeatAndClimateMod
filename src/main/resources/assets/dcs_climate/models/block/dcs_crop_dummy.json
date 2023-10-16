@@ -1,0 +1,9 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": false,
+    "render_type": "cutout",
+    "textures": {
+        "particle": "dcs_climate:block/crop/vine/gourd_0"
+    },
+    "elements": []
+}

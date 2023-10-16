@@ -27,6 +27,7 @@ public class ItemCropDC extends ItemDC implements IFoodTaste {
 	final String name;
 	private String domain = "food";
 	private int taste = -5;
+	private boolean poisonous = false;
 
 	private final CropType type;
 	private final CropTier tier;
@@ -36,6 +37,14 @@ public class ItemCropDC extends ItemDC implements IFoodTaste {
 		name = s;
 		type = t;
 		tier = rare;
+	}
+
+	public ItemCropDC(CropTier rare, CropType t, String s, TagKey<Item> pair, boolean poison) {
+		super(new Item.Properties().rarity(rare.getRarity()).tab(FoodInit.AGRI), pair);
+		name = s;
+		type = t;
+		tier = rare;
+		poisonous = true;
 	}
 
 	public ItemCropDC(CropTier rare, CropType t, String s, TagKey<Item> pair, int nut, float sat) {
@@ -93,10 +102,16 @@ public class ItemCropDC extends ItemDC implements IFoodTaste {
 			tasteName.withStyle(ChatFormatting.AQUA);
 			list.add(tasteName);
 		}
-		int taste = getTaste(item) + 3;
-		MutableComponent tasteName = Component.translatable("dcs.tip.foodtaste." + taste);
-		tasteName.withStyle(ChatFormatting.YELLOW);
-		list.add(tasteName);
+		if (poisonous) {
+			MutableComponent tasteName = Component.translatable("dcs.tip.not_eaten_crop");
+			tasteName.withStyle(ChatFormatting.RED);
+			list.add(tasteName);
+		} else {
+			int taste = getTaste(item) + 3;
+			MutableComponent tasteName = Component.translatable("dcs.tip.foodtaste." + taste);
+			tasteName.withStyle(ChatFormatting.YELLOW);
+			list.add(tasteName);
+		}
 		super.appendHoverText(item, level, list, flag);
 	}
 

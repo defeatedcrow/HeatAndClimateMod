@@ -1,0 +1,18 @@
+{
+    "ambientocclusion": false,
+    "render_type": "cutout",
+    "textures": {
+        "particle": "#overlay"
+    },
+    "elements": [
+        {
+            "from": [0, -2, 1],
+            "to": [16, 14, 1],
+            "faces": {
+                "north": {"uv": [0, 0, 16, 16], "texture": "#overlay"},
+                "south": {"uv": [0, 0, 16, 16], "texture": "#overlay"},
+                "down": {"uv": [0, 0, 16, 0], "texture": "#overlay"}
+            }
+        }
+    ]
+}

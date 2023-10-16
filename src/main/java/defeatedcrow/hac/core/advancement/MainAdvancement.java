@@ -73,6 +73,9 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 			.addCriterion("has_epic_crop3", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_MO_FLOWER.get()))
 			.addCriterion("has_epic_crop4", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_PE_ADZUKI.get()))
 			.addCriterion("has_epic_crop5", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_SL_LANTERN.get()))
+			.addCriterion("has_epic_crop6", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_ML_TROPICAL.get()))
+			.addCriterion("has_epic_crop7", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_OR_CATTLEYA.get()))
+			.addCriterion("has_epic_crop8", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_RA_MONKSHOOD.get()))
 			.requirements(RequirementsStrategy.AND).save(t, "dcs_climate:main/epic_crops");
 
 		Advancement b1 = Advancement.Builder.advancement().parent(a6).display(FoodInit.BREAD_ROUND_RAW_ITEM.get(), Component.translatable("advancements.dcs_climate.main.bread_raw.title"),

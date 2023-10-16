@@ -7,6 +7,6 @@ import net.minecraft.world.item.crafting.Recipe;
 public interface IDummySmelting extends Recipe<Container> {
 	@Override
 	default net.minecraft.world.item.crafting.RecipeType<?> getType() {
-		return CoreInit.SMELTING.get();
+		return CoreInit.DEVICE_RECIPE.get();
 	}
 }

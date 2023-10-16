@@ -7,8 +7,19 @@
     "#forge:crops/morning_glory",
     "#forge:crops/lantern",
     "#forge:crops/blue_mallow",
+    "#forge:crops/hibiscus",
+    "#forge:crops/crocus",
+    "#forge:crops/iris",
+    "#forge:crops/spiranthes",
+    "#forge:crops/cymbidium",
+    "#forge:crops/cattleya",
+    "#forge:crops/anemone",
+    "#forge:crops/delphinium",
+    "#forge:crops/clematis",
+    "#forge:crops/monkshood",
     "#forge:crops/heath",
     "#forge:crops/rhododendron",
-    "#forge:crops/osmanthus"
+    "#forge:crops/osmanthus",
+    "#forge:crops/damaschena"
   ]
 }

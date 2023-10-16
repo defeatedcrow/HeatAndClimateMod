@@ -253,8 +253,8 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("PLAINS", "MOUNTAIN");
-		// case COMMON:
-		// return ImmutableList.of("COLD", "DRY");
+		case COMMON:
+			return ImmutableList.of("COLD", "DRY");
 		default:
 			return Lists.newArrayList();
 		}
@@ -265,8 +265,8 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("DENCE", "DRY");
-		// case COMMON:
-		// return ImmutableList.of("SANDY", "HOT", "WET");
+		case COMMON:
+			return ImmutableList.of("SANDY", "HOT", "WET");
 		default:
 			return Lists.newArrayList();
 		}

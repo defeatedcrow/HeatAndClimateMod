@@ -159,6 +159,12 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 				list.add(Component.translatable("dcs.gui.jei.crop_water"));
 			}
 
+		if (soils.contains(SoilType.LOGS))
+			if (mouseX > 103 && mouseX < 119 && mouseY > 53 && mouseY < 69) {
+				list.add(Component.translatable("dcs.gui.jei.crop_soil"));
+				list.add(Component.translatable("dcs.gui.jei.crop_epiphyte"));
+			}
+
 		return list;
 	}
 
@@ -229,6 +235,8 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 				drawTexturedModalRect(stack.last().pose(), 86, 53, 48, 182, 16, 16);
 			} else if (soil == SoilType.WATER) {
 				drawTexturedModalRect(stack.last().pose(), 103, 53, 64, 182, 16, 16);
+			} else if (soil == SoilType.LOGS) {
+				drawTexturedModalRect(stack.last().pose(), 103, 53, 80, 182, 16, 16);
 			}
 		}
 

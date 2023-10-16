@@ -99,6 +99,8 @@ public class SaplingCamellia extends SaplingBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("MOUNTAIN", "COLD");
+		case COMMON:
+			return ImmutableList.of("MOUNTAIN", "JUNGLE");
 		default:
 			return Lists.newArrayList();
 		}
@@ -107,8 +109,10 @@ public class SaplingCamellia extends SaplingBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
-		case COMMON:
+		case WILD:
 			return ImmutableList.of("HOT", "DRY", "CONIFEROUS");
+		case COMMON:
+			return ImmutableList.of("COLD", "CONIFEROUS");
 		default:
 			return Lists.newArrayList();
 		}

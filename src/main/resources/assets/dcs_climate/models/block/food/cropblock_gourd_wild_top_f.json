@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/crop/vine/gourd_calabash_o_f"
+  },
+  "parent": "dcs_climate:block/dcs_build_cross"
+}

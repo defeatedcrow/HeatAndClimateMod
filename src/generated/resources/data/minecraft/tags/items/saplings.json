@@ -26,6 +26,9 @@
     "dcs_climate:food/sapling_olive_rare",
     "dcs_climate:food/sapling_palm_wild",
     "dcs_climate:food/sapling_palm_common",
-    "dcs_climate:food/sapling_palm_rare"
+    "dcs_climate:food/sapling_palm_rare",
+    "dcs_climate:food/sapling_rose_wild",
+    "dcs_climate:food/sapling_rose_common",
+    "dcs_climate:food/sapling_rose_rare"
   ]
 }

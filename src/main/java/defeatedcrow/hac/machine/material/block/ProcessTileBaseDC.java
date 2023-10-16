@@ -47,7 +47,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 	public int currentProgress = 0;
 	public int totalProgress = 0;
 
-	public IDeviceRecipe recipe;
+	public IDeviceRecipe recipe = null;
 
 	// tick
 	public static void serverTick(Level level, BlockPos pos, BlockState state, ProcessTileBaseDC tile) {

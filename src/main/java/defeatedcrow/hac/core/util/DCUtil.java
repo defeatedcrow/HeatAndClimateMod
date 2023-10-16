@@ -35,6 +35,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -60,6 +61,10 @@ public class DCUtil {
 
 	public static Optional<ResourceLocation> getRes(Block block) {
 		return Optional.ofNullable(ForgeRegistries.BLOCKS.getKey(block));
+	}
+
+	public static Optional<ResourceLocation> getRes(Fluid fluid) {
+		return Optional.ofNullable(ForgeRegistries.FLUIDS.getKey(fluid));
 	}
 
 	public static String getName(Item item) {

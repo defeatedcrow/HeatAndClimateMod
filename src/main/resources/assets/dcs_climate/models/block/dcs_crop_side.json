@@ -1,0 +1,17 @@
+{
+    "ambientocclusion": false,
+    "render_type": "cutout",
+    "textures": {
+        "particle": "#crop"
+    },
+    "elements": [
+        {
+            "from": [0, 0, 0.5],
+            "to": [16, 16, 0.5],
+            "faces": {
+                "north": {"uv": [0, 0, 16, 16], "texture": "#crop"},
+                "south": {"uv": [0, 0, 16, 16], "texture": "#crop"}
+            }
+        }
+    ]
+}

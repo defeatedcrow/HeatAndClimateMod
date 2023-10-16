@@ -1,0 +1,1924 @@
+{
+  "variants": {
+    "down=false,east=false,north=false,south=false,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_0"
+    },
+    "down=false,east=false,north=false,south=false,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_1"
+    },
+    "down=false,east=false,north=false,south=false,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_2"
+    },
+    "down=false,east=false,north=false,south=false,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_c"
+    },
+    "down=false,east=false,north=false,south=false,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side"
+    },
+    "down=false,east=false,north=false,south=false,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_c"
+    },
+    "down=false,east=false,north=false,south=false,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=false,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=false,south=true,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=false,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=false,north=true,south=true,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=false,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=false,south=true,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=false,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=false,east=true,north=true,south=true,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=false,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=false,south=true,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=false,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=false,north=true,south=true,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=false,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=false,south=true,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=false,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=0,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=0,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=0,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=0,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=0,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=0,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=0,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=0,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=1,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=1,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=1,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=1,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=1,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=1,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=1,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=1,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=2,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=2,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=2,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=2,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=2,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=2,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=2,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=2,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=3,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=3,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=3,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=3,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=3,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=3,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=3,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=3,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=4,up=false,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=4,up=false,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=4,up=false,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=4,up=false,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=4,up=true,west=false,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=4,up=true,west=false,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=4,up=true,west=true,wild=false": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    },
+    "down=true,east=true,north=true,south=true,stage5=4,up=true,west=true,wild=true": {
+      "model": "dcs_climate:block/food/cropblock_ranunculus_clematis_side_f"
+    }
+  }
+}

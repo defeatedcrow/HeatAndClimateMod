@@ -17,6 +17,11 @@
     "dcs_climate:food/crop_reed_common",
     "dcs_climate:food/crop_rice_common",
     "dcs_climate:food/crop_solanum_common",
-    "dcs_climate:food/crop_palm_common"
+    "dcs_climate:food/crop_palm_common",
+    "dcs_climate:food/crop_gourd_common",
+    "dcs_climate:food/crop_grape_common",
+    "dcs_climate:food/crop_iris_common",
+    "dcs_climate:food/crop_orchid_common",
+    "dcs_climate:food/crop_ranunculus_common"
   ]
 }

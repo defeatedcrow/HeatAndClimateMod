@@ -157,7 +157,7 @@ public class CropBlockAster extends ClimateCropBaseBlock {
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND);
@@ -166,6 +166,9 @@ public class CropBlockAster extends ClimateCropBaseBlock {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
+		if (t == CropTier.COMMON) {
+			return ImmutableList.of(DCHeatTier.FROSTBITE, DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
+		}
 		return ImmutableList.of(DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
 	}
 
@@ -182,7 +185,7 @@ public class CropBlockAster extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("PLAINS", "FOREST");
 		default:
 			return Lists.newArrayList();
@@ -194,6 +197,8 @@ public class CropBlockAster extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("DRY", "COLD");
+		case COMMON:
+			return ImmutableList.of("DRY", "HOT");
 		default:
 			return Lists.newArrayList();
 		}

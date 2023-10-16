@@ -4,6 +4,7 @@
     "#forge:seeds/bindweed",
     "#forge:seeds/reed",
     "#forge:seeds/zizania",
-    "#forge:seeds/nightshade"
+    "#forge:seeds/nightshade",
+    "dcs_climate:food/sapling_rose_wild"
   ]
 }

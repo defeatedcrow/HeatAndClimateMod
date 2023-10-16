@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/crop/vine/grape_wild_o_n"
+  },
+  "parent": "dcs_climate:block/dcs_cross"
+}

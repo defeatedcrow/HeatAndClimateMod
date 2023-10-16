@@ -141,7 +141,7 @@ public class CropBlockRice extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("SWAMP", "RIVER");
 		default:
 			return Lists.newArrayList();
@@ -151,7 +151,7 @@ public class CropBlockRice extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("COLD");
 		default:
 			return Lists.newArrayList();

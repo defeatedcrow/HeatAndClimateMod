@@ -440,6 +440,15 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.requires(Tags.Items.STRING)
 			.unlockedBy("has_string", has(Tags.Items.STRING))
 			.save(cons, "dcs_climate:core/craft_string_hac");
+
+		ShapelessRecipeBuilder.shapeless(Items.LEAD, 1)
+			.requires(TagDC.ItemTag.VINE)
+			.requires(TagDC.ItemTag.VINE)
+			.requires(TagDC.ItemTag.VINE)
+			.requires(CoreInit.HAND_SPINDLE.get())
+			.group("hand_spindle")
+			.unlockedBy("has_vine", has(TagDC.ItemTag.VINE))
+			.save(cons, "dcs_climate:core/spindle_vanilla_lead");
 	}
 
 	static void materialRecipes(Consumer<FinishedRecipe> cons) {
@@ -460,6 +469,21 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.requires(Ingredient.of(TagDC.ItemTag.WEED))
 			.unlockedBy("has_weed", has(TagDC.ItemTag.WEED))
 			.save(cons, "dcs_climate:food/jute_fiber_plant");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_BINDWEED))
+			.unlockedBy("has_bindweed", has(TagDC.ItemTag.CROP_BINDWEED))
+			.save(cons, "dcs_climate:food/bindweed_vine");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CLEMATIS))
+			.unlockedBy("has_clematis", has(TagDC.ItemTag.CROP_BINDWEED))
+			.save(cons, "dcs_climate:food/clematis_vine");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1)
+			.requires(Ingredient.of(Items.VINE))
+			.unlockedBy("has_vine", has(Items.VINE))
+			.save(cons, "dcs_climate:food/vanilla_vine");
 
 		// misc
 
@@ -570,6 +594,11 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.requires(Ingredient.of(TagDC.ItemTag.PALM_FLOWER))
 			.unlockedBy("has_palm_flower", has(TagDC.ItemTag.PALM_FLOWER))
 			.save(cons, "dcs_climate:food/palm_flower_syrup");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CURED_VANILLA.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_VANILLA))
+			.unlockedBy("has_vanilla", has(TagDC.ItemTag.CROP_VANILLA))
+			.save(cons, "dcs_climate:food/crop_vanilla_curing");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.RAW_SAUSAGE.get(), 3)
 			.requires(Ingredient.of(TagDC.ItemTag.RAW_MEAT))

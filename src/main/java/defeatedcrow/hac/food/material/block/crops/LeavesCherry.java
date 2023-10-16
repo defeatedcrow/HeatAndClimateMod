@@ -93,6 +93,11 @@ public class LeavesCherry extends LeavesCropBlockDC {
 	}
 
 	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		return ImmutableList.of("HOT", "LOWLAND");
+	}
+
+	@Override
 	public String getSpeciesName(CropTier tier) {
 		return "wild";
 	}

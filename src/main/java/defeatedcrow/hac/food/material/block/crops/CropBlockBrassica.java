@@ -138,7 +138,7 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND);
@@ -163,7 +163,7 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("PLAINS");
 		default:
 			return Lists.newArrayList();
@@ -173,7 +173,7 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("DRY");
 		default:
 			return Lists.newArrayList();

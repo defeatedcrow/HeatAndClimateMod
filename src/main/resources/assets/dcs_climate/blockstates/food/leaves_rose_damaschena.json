@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "stage6=0": {
+      "model": "dcs_climate:block/food/leaves_rose_damaschena_0"
+    },
+    "stage6=1": {
+      "model": "dcs_climate:block/food/leaves_rose_damaschena_0"
+    },
+    "stage6=2": {
+      "model": "dcs_climate:block/food/leaves_rose_damaschena_0"
+    },
+    "stage6=3": {
+      "model": "dcs_climate:block/food/leaves_rose_damaschena_d"
+    },
+    "stage6=4": {
+      "model": "dcs_climate:block/food/leaves_rose_damaschena_f"
+    },
+    "stage6=5": {
+      "model": "dcs_climate:block/food/leaves_rose_damaschena_c"
+    }
+  }
+}

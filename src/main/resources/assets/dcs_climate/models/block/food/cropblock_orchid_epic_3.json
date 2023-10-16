@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/crop/orchid_cattleya_3"
+  },
+  "parent": "dcs_climate:block/dcs_cross"
+}

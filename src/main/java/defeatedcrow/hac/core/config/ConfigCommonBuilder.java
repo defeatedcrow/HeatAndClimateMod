@@ -32,22 +32,12 @@ public class ConfigCommonBuilder {
 	public final ForgeConfigSpec.BooleanValue enFarmland;
 	public final ForgeConfigSpec.BooleanValue enVanillaCrop;
 	public final ForgeConfigSpec.BooleanValue enSnow;
+	public final ForgeConfigSpec.BooleanValue enCommonCrop;
+	public final ForgeConfigSpec.IntValue vCropFeature;
 
 	// item
 	public final ForgeConfigSpec.BooleanValue enDropSmelting;
 	public final ForgeConfigSpec.BooleanValue enPotionSharing;
-
-	// date
-	// public final ForgeConfigSpec.IntValue vYear;
-	// public final ForgeConfigSpec.IntValue vStartSpr;
-	// public final ForgeConfigSpec.IntValue vStartSmr;
-	// public final ForgeConfigSpec.IntValue vStartAut;
-	// public final ForgeConfigSpec.IntValue vStartWtr;
-	// public final ForgeConfigSpec.IntValue vStartDate;
-	// public final ForgeConfigSpec.ConfigValue<String> setFormat;
-	// public final ForgeConfigSpec.BooleanValue enRealTime;
-	// public EnumSeason overYear = EnumSeason.WINTER_LATE;
-	// public String dateFormat = "yyyy/MM/dd";
 
 	// hardmode
 	public final ForgeConfigSpec.BooleanValue enInferno;
@@ -168,6 +158,14 @@ public class ConfigCommonBuilder {
 			.comment("*Optional* Enabling configs increases the load on the computer.")
 			.comment("Enable all climate smelting and vanilla smelting in drop item state.")
 			.define("Enable Drop Item Smelting", false);
+
+		this.enCommonCrop = builder
+			.comment("Enable natural generation of common crops.")
+			.define("Enable Common Crop Generation", false);
+
+		this.vCropFeature = builder
+			.comment("Sets the wild crop generation rate per chunk. (If 0, it will not be generated.)")
+			.defineInRange("Amount of Crop Gen Rate", 10, 0, 100);
 
 		builder.pop();
 

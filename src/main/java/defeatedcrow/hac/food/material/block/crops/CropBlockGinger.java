@@ -146,7 +146,7 @@ public class CropBlockGinger extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("JUNGLE", "SWAMP");
 		default:
 			return Lists.newArrayList();
@@ -156,7 +156,7 @@ public class CropBlockGinger extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of("COLD", "DRY");
 		default:
 			return Lists.newArrayList();

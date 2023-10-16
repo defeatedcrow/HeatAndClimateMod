@@ -6,8 +6,10 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 /**
@@ -15,7 +17,7 @@ import net.minecraftforge.fluids.FluidStack;
  * すべてのレシピでインターフェイスは共用。<br>
  * 材料は辞書対応。<br>
  */
-public interface IDeviceRecipe {
+public interface IDeviceRecipe extends ISerealizedRecipe {
 
 	RecipeTypeDC getType();
 
@@ -36,12 +38,12 @@ public interface IDeviceRecipe {
 	 */
 	List<Ingredient> getInputs();
 
-	List<FluidStack> getInputFluids();
+	List<TagKey<Fluid>> getInputFluids();
 
 	/**
 	 * Input条件判定
 	 */
-	boolean matcheInput(List<ItemStack> items);
+	int[] matcheInput(List<ItemStack> items);
 
 	boolean matcheInputFluid(FluidStack input1, FluidStack input2);
 
@@ -64,5 +66,7 @@ public interface IDeviceRecipe {
 	List<DCHumidity> requiredHum();
 
 	List<DCAirflow> requiredAir();
+
+	int getPriority();
 
 }

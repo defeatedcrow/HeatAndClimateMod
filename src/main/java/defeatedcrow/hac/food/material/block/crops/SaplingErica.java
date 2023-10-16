@@ -86,6 +86,8 @@ public class SaplingErica extends SaplingBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("CONIFEROUS", "COLD", "MOUNTAIN");
+		case COMMON:
+			return ImmutableList.of("CONIFEROUS", "JUNGLE", "MOUNTAIN");
 		default:
 			return Lists.newArrayList();
 		}
@@ -96,6 +98,8 @@ public class SaplingErica extends SaplingBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("HOT", "OCEAN");
+		case COMMON:
+			return ImmutableList.of("LOWLAND");
 		default:
 			return Lists.newArrayList();
 		}

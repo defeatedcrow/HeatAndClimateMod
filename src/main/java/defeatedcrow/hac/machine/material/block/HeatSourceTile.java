@@ -61,9 +61,6 @@ public abstract class HeatSourceTile extends ProcessTileBaseDC implements IIntRe
 	public void receiveInteger(int i) {
 		int last = output.getID();
 		output = DCHeatTier.getTypeByID(i);
-		// if (last != i) {
-		// HeatSourceBlock.changeLisState(level, getBlockPos(), isLit());
-		// }
 	}
 
 	@Override
