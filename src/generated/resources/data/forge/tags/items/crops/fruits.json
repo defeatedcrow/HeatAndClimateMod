@@ -14,6 +14,8 @@
     "#forge:crops/date",
     "#forge:crops/raspberry",
     "#forge:crops/apple",
-    "#forge:crops/berries"
+    "#forge:crops/berries",
+    "#forge:crops/mango",
+    "#forge:crops/cashew"
   ]
 }

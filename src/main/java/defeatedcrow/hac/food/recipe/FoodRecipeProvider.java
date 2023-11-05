@@ -487,6 +487,26 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		// misc
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_CN_CAMPHOR.get(), 4)
+			.requires(Ingredient.of(FoodInit.LOG_CN_CINNAMON.get()))
+			.unlockedBy("has_cinnamon_log", has(FoodInit.LOG_CN_CINNAMON.get()))
+			.save(cons, "dcs_climate:food/planks_camphor_from_cinnamon");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_MR_MULBERRY.get(), 4)
+			.requires(Ingredient.of(FoodInit.LOG_MR_PAPER.get()))
+			.unlockedBy("has_kaji_log", has(FoodInit.LOG_MR_PAPER.get()))
+			.save(cons, "dcs_climate:food/planks_morus_from_kaji");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_MR_MULBERRY.get(), 4)
+			.requires(Ingredient.of(FoodInit.LOG_MR_RUBBER.get()))
+			.unlockedBy("has_rubber_log", has(FoodInit.LOG_MR_RUBBER.get()))
+			.save(cons, "dcs_climate:food/planks_morus_from_rubber");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_SU_LACQUER.get(), 4)
+			.requires(Ingredient.of(FoodInit.LOG_SU_MANGO.get()))
+			.unlockedBy("has_mango_log", has(FoodInit.LOG_SU_MANGO.get()))
+			.save(cons, "dcs_climate:food/planks_sumac_from_mango");
+
 		ShapedRecipeBuilder.shaped(FoodInit.PLANK_RE_SORGHUM.get(), 1)
 			.pattern("XX")
 			.pattern("XX")
@@ -519,6 +539,15 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.define('X', Ingredient.of(TagDC.ItemTag.FIBER_WOOD))
 			.unlockedBy("has_bark", has(TagDC.ItemTag.FIBER_WOOD))
 			.save(cons, "dcs_climate:core/paper_from_bark");
+
+		ShapedRecipeBuilder.shaped(FoodInit.PLANK_LACQUERWARE.get(), 8)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', ItemTags.PLANKS)
+			.define('Y', TagDC.ItemTag.SAP_LACQUER)
+			.unlockedBy("has_lacquer_sap", has(TagDC.ItemTag.SAP_LACQUER))
+			.save(cons, "dcs_climate:food/lacquerware_planks");
 
 		// agri
 
@@ -773,6 +802,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 	static void smeltingRecipes(Consumer<FinishedRecipe> cons) {
 		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.WATER), CoreInit.DUST_SALT.get(), 200, "dust_salt", FoodInit.FOOD_WATER.get(), "has_water");
+		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.CROP_CASHEW), FoodInit.CASHEW_NUTS.get(), 200, "cashew_nuts", FoodInit.CROP_SU_CASHEW.get(), "has_cashew");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LEAVES), CoreInit.DUST_ASH.get(), 200, "dust_ash1", FoodInit.CONT_LEAVES.get(), "has_cont_leaves");
 		smokingRecipe(cons, Ingredient.of(TagDC.ItemTag.RAW_SAUSAGE), FoodInit.SMOKED_SAUSAGE.get(), 200, "smoked_sausage", FoodInit.RAW_SAUSAGE.get(), "has_raw_sausage");
 	}

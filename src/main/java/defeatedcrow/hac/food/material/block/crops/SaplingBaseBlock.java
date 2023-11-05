@@ -30,6 +30,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.PlantType;
 
 public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 
@@ -44,7 +45,12 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext col) {
-		return Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+		return Block.box(2.0D, 0.0D, 2.0D, 14.0D, 14.0D, 14.0D);
+	}
+
+	@Override
+	public PlantType getPlantType(BlockGetter level, BlockPos pos) {
+		return net.minecraftforge.common.PlantType.PLAINS;
 	}
 
 	/* 苗木なのでコレ自体は成長しない */

@@ -20,6 +20,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 
@@ -136,6 +137,98 @@ public class MachineRecipeProvider extends RecipeProvider {
 			.define('Z', Items.IRON_BARS)
 			.unlockedBy("has_bucket", has(Items.BUCKET))
 			.save(cons, "dcs_climate:machine/ibc_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.COOKING_POT_NORMAL.get(), 1)
+			.pattern("XYX")
+			.pattern("X X")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', Tags.Items.GLASS)
+			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
+			.save(cons, "dcs_climate:machine/cooking_pot_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.COOKING_POT_WHITE.get(), 1)
+			.requires(MachineInit.COOKING_POT_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_WHITE)
+			.unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/cooking_pot_white_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.COOKING_POT_BLUE.get(), 1)
+			.requires(MachineInit.COOKING_POT_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_BLUE)
+			.unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/cooking_pot_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.COOKING_POT_BLACK.get(), 1)
+			.requires(MachineInit.COOKING_POT_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_BLACK)
+			.unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/cooking_pot_black_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.COOKING_POT_RED.get(), 1)
+			.requires(MachineInit.COOKING_POT_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_RED)
+			.unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/cooking_pot_red_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.COOKING_POT_GREEN.get(), 1)
+			.requires(MachineInit.COOKING_POT_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_GREEN)
+			.unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/cooking_pot_green_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.FERMANTATION_JAR_NORMAL.get(), 1)
+			.pattern(" X ")
+			.pattern("X X")
+			.pattern("XXX")
+			.define('X', Tags.Items.INGOTS_BRICK)
+			.unlockedBy("has_bricks", has(Tags.Items.INGOTS_BRICK))
+			.save(cons, "dcs_climate:machine/farmentation_jar_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.FERMANTATION_JAR_NORMAL.get(), 1)
+			.pattern(" X ")
+			.pattern("X X")
+			.pattern("XXX")
+			.define('X', ItemTags.TERRACOTTA)
+			.unlockedBy("has_terracotta", has(ItemTags.TERRACOTTA))
+			.save(cons, "dcs_climate:machine/farmentation_jar_1");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.FERMANTATION_JAR_WHITE.get(), 1)
+			.requires(MachineInit.FERMANTATION_JAR_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_WHITE)
+			.unlockedBy("has_farmentation_jar", has(MachineInit.FERMANTATION_JAR_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/farmentation_jar_white_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.FERMANTATION_JAR_BLUE.get(), 1)
+			.requires(MachineInit.FERMANTATION_JAR_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_BLUE)
+			.unlockedBy("has_farmentation_jar", has(MachineInit.FERMANTATION_JAR_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/farmentation_jar_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.FERMANTATION_JAR_BLACK.get(), 1)
+			.requires(MachineInit.FERMANTATION_JAR_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_BLACK)
+			.unlockedBy("has_farmentation_jar", has(MachineInit.FERMANTATION_JAR_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/farmentation_jar_black_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.FERMANTATION_JAR_RED.get(), 1)
+			.requires(MachineInit.FERMANTATION_JAR_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_RED)
+			.unlockedBy("has_farmentation_jar", has(MachineInit.FERMANTATION_JAR_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/farmentation_jar_red_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.FERMANTATION_JAR_GREEN.get(), 1)
+			.requires(MachineInit.FERMANTATION_JAR_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_GREEN)
+			.unlockedBy("has_farmentation_jar", has(MachineInit.FERMANTATION_JAR_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/farmentation_jar_green_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.SPILE.get(), 1)
+			.requires(Items.BUCKET)
+			.requires(Tags.Items.STRING)
+			.requires(Items.TRIPWIRE_HOOK)
+			.unlockedBy("has_bucket", has(Items.BUCKET))
+			.save(cons, "dcs_climate:machine/spile_and_cup_0");
 
 	}
 

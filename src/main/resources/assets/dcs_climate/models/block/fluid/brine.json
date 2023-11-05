@@ -1,0 +1,6 @@
+{
+    "render_type": "minecraft:translucent",
+    "textures": {
+        "particle": "dcs_climate:fluid/brine_bucket"
+    }
+}

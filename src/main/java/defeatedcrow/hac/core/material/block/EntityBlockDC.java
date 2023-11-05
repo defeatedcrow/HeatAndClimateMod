@@ -128,7 +128,7 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 	}
 
 	@Override
-	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity) {
+	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity, @Nullable BlockEntity tile) {
 		return Lists.newArrayList();
 	}
 

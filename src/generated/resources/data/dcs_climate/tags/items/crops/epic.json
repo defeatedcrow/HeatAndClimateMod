@@ -1,5 +1,6 @@
 {
   "values": [
-    "#dcs_climate:crops/plant_epic"
+    "#dcs_climate:crops/plant_epic",
+    "#dcs_climate:crops/tree_epic"
   ]
 }

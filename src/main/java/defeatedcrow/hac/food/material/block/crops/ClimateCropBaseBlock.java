@@ -47,15 +47,18 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.PlantType;
 
 public abstract class ClimateCropBaseBlock extends BushBlock implements IClimateCrop, BonemealableBlock, IBlockDC, IJsonDataDC, ICropData, IRapidCollectables {
 
@@ -130,12 +133,15 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	@Override
 	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
-		if (state.getBlock() instanceof IClimateCrop) {
+		if (state == null || builder == null) {
+			ret.addAll(super.getDrops(state, builder));
+		} else if (state.getBlock() instanceof IClimateCrop) {
+			LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
 			IClimateCrop crop = (IClimateCrop) state.getBlock();
-			ServerLevel level = builder.getLevel();
-			ItemStack tool = builder.getOptionalParameter(LootContextParams.TOOL);
-			if (DCUtil.isEmpty(tool)) {
-				tool = ItemStack.EMPTY;
+			ServerLevel level = cont.getLevel();
+			ItemStack tool = ItemStack.EMPTY;
+			if (cont.hasParam(LootContextParams.TOOL) && !DCUtil.isEmpty(cont.getParamOrNull(LootContextParams.TOOL))) {
+				tool = cont.getParam(LootContextParams.TOOL);
 			}
 
 			CropStage stage = crop.getCurrentStage(state);
@@ -162,19 +168,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	@Override
 	public boolean isSuitablePlace(BlockGetter world, BlockPos pos, BlockState state) {
-		List<SoilType> soils = getSoilTypes(cropTier);
-		for (SoilType soil : soils) {
-			if (soil == SoilType.WATER) {
-				if (!state.getFluidState().isEmpty() && state.getFluidState().is(FluidTags.WATER))
-					return true;
-			} else if (soil == SoilType.LOGS) {
-				if (state.is(BlockTags.LOGS))
-					return true;
-			} else if (TagUtil.matchTag(soil.toString().toLowerCase(), state).isPresent()) {
-				return true;
-			}
-		}
-		return false;
+		return state.getBlock().canSustainPlant(state, world, pos, Direction.UP, this);
 	}
 
 	@Override
@@ -192,7 +186,26 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	@Override
 	protected boolean mayPlaceOn(BlockState under, BlockGetter level, BlockPos pos) {
-		return isSuitablePlace(level, pos, under);
+		if (under != null) {
+			List<SoilType> soils = getSoilTypes(cropTier);
+			for (SoilType soil : soils) {
+				if (soil == SoilType.WATER) {
+					if (!under.getFluidState().isEmpty() && under.getFluidState().is(FluidTags.WATER))
+						return true;
+				} else if (soil == SoilType.LOGS) {
+					if (under.is(BlockTags.LOGS))
+						return true;
+				} else if (TagUtil.matchTag(soil.toString().toLowerCase(), under).isPresent()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public PlantType getPlantType(BlockGetter level, BlockPos pos) {
+		return net.minecraftforge.common.PlantType.CROP;
 	}
 
 	// 破壊処理とシェイプ更新を兼ねているよくわからないメソッド
@@ -272,7 +285,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	}
 
 	@Override
-	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity) {
+	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity, @Nullable BlockEntity tile) {
 		return Lists.newArrayList();
 	}
 

@@ -101,9 +101,9 @@ public class InventoryDC implements Container {
 		NonNullList<ItemStack> ret = NonNullList.withSize(to + 1 - from, ItemStack.EMPTY);
 		for (int i = from; i <= to; i++) {
 			if (DCUtil.isEmpty(getItem(i))) {
-				ret.add(i, ItemStack.EMPTY);
+				ret.set(i, ItemStack.EMPTY);
 			} else {
-				ret.add(i, getItem(i));
+				ret.set(i, getItem(i));
 			}
 		}
 		return ret;
@@ -181,7 +181,7 @@ public class InventoryDC implements Container {
 		ItemStack ret = item.copy();
 		int count = 0;
 		for (int i = s1; i <= s2; i++) {
-			int l = incrStackInSlot(i, ret);
+			int l = incrStackInSlot(i, ret.copy());
 			ret.split(l);
 			count += l;
 			if (ret.isEmpty())

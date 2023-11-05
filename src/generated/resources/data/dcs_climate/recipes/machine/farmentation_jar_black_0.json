@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:machine/fermentation_jar_normal"
+    },
+    {
+      "tag": "dcs_climate:color_extracts/black"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:machine/fermentation_jar_black"
+  }
+}

@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.compress.utils.Lists;
-
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -56,11 +55,11 @@ public class DeviceRecipe implements IDeviceRecipe {
 			List<Ingredient> in) {
 		type = typeIn;
 		int c = 0;
-		if (!in.isEmpty()) {
+		if (in != null && !in.isEmpty()) {
 			ingredients = in;
 			c += ingredients.size();
 		}
-		if (!inputFluid.isEmpty()) {
+		if (inF != null && !inF.isEmpty()) {
 			inputFluid.addAll(inF);
 			c += inputFluid.size();
 		}
@@ -142,7 +141,9 @@ public class DeviceRecipe implements IDeviceRecipe {
 
 	@Override
 	public int[] matcheInput(List<ItemStack> items) {
-		ArrayList<Ingredient> required = new ArrayList<Ingredient>(this.ingredients);
+		ArrayList<Ingredient> required = Lists.newArrayList();
+		required.addAll(ingredients);
+
 		if (required.isEmpty()) {
 			return new int[items.size()];
 		} else if (items.size() > 0) {

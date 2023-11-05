@@ -6,11 +6,13 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -56,7 +58,7 @@ public class OreBlockGemDC extends LayerStoneBlock {
 	}
 
 	@Override
-	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity) {
+	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity, @Nullable BlockEntity tile) {
 		List<ItemStack> ret = Lists.newArrayList();
 		int luck = 5;
 		int level = 0;
@@ -64,9 +66,9 @@ public class OreBlockGemDC extends LayerStoneBlock {
 			level = tool.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
 			luck += level * 5;
 		}
-		entity.level.random.nextInt(100);
-		if (entity.level.random.nextInt(100) < luck) {
-			int size = entity.level.random.nextInt(2 + Mth.floor(level / 2F));
+		DCUtil.rand.nextInt(100);
+		if (DCUtil.rand.nextInt(100) < luck) {
+			int size = DCUtil.rand.nextInt(2 + Mth.floor(level / 2F));
 			if (size > 0) {
 				if (!getSecondary().isEmpty()) {
 					ret.add(new ItemStack(getSecondary().getItem(), size));

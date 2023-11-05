@@ -59,6 +59,10 @@ public class DummyDeviceRecipeSerealizer implements RecipeSerializer<DummyDevice
 					DCRecipes.INSTANCE.TEA.put(res, recipe);
 					DCLogger.traceLog("Tea recipe loaded from json: " + res);
 				}
+				if (id == RecipeTypeDC.FERMENTATION) {
+					DCRecipes.INSTANCE.FERMENTATION.put(res, recipe);
+					DCLogger.traceLog("Fermentation recipe loaded from json: " + res);
+				}
 
 			}
 		}

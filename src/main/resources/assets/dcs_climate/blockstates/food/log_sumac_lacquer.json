@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "dcs_climate:block/food/log_sumac_lacquer_hol"
+    },
+    "axis=y": {
+      "model": "dcs_climate:block/food/log_sumac_lacquer_hol"
+    },
+    "axis=z": {
+      "model": "dcs_climate:block/food/log_sumac_lacquer_var"
+    }
+  }
+}

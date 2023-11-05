@@ -2,6 +2,8 @@ package defeatedcrow.hac.magic.material.block;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.util.DCState;
@@ -17,6 +19,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -81,7 +84,7 @@ public class MagicSmallLight extends BlockDC implements SimpleWaterloggedBlock {
 	}
 
 	@Override
-	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity) {
+	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity, @Nullable BlockEntity tile) {
 		return Lists.newArrayList();
 	}
 

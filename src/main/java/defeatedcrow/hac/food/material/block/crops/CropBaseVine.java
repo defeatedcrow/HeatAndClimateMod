@@ -87,14 +87,14 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 	}
 
 	private boolean checkVineSupport(BlockGetter level, BlockPos pos, boolean includeBelow) {
-		boolean b1 = false;
+		boolean b1 = !includeBelow;
 		boolean b2 = false;
 		boolean b3 = false;
 		for (Direction dir : Direction.values()) {
 			BlockPos p2 = pos.relative(dir);
 			BlockState check = level.getBlockState(p2);
-			if (dir == Direction.DOWN && includeBelow) {
-				if (super.isSuitablePlace(level, p2, check))
+			if (dir == Direction.DOWN) {
+				if (super.mayPlaceOn(check, level, p2))
 					b1 = true;
 			} else if (dir == Direction.UP) {
 				if (check.getMaterial().isSolid())
@@ -108,7 +108,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 
 	@Override
 	public void checkAndDropBlock(Level world, BlockPos pos, BlockState state) {
-		boolean check = isSuitablePlace(world, pos.below(), world.getBlockState(pos.below()));
+		boolean check = checkVineSupport(world, pos, true);
 
 		if (!check) {
 			dropResources(state, world, pos);
@@ -117,8 +117,8 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public boolean isSuitablePlace(BlockGetter world, BlockPos pos, BlockState state) {
-		return checkVineSupport(world, pos.above(), true);
+	protected boolean mayPlaceOn(BlockState under, BlockGetter level, BlockPos pos) {
+		return checkVineSupport(level, pos.above(), true);
 	}
 
 	public boolean checkFlag(BlockGetter world, BlockPos pos) {
@@ -136,7 +136,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 		BlockGetter level = cont.getLevel();
 		BlockPos pos = cont.getClickedPos();
 		BlockState next = super.getStateForPlacement(cont);
-		boolean down = super.isSuitablePlace(level, pos.below(), level.getBlockState(pos.below()));
+		boolean down = super.mayPlaceOn(level.getBlockState(pos.below()), level, pos.below());
 		boolean up = level.getBlockState(pos.above()).getMaterial().isSolid();
 		boolean north = level.getBlockState(pos.north()).getMaterial().isSolid();
 		boolean south = level.getBlockState(pos.south()).getMaterial().isSolid();
@@ -150,7 +150,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 	@Override
 	public BlockState updateShape(BlockState state, Direction dir, BlockState state2, LevelAccessor level, BlockPos pos, BlockPos pos2) {
 		BlockState next = state;
-		boolean down = super.isSuitablePlace(level, pos.below(), level.getBlockState(pos.below()));
+		boolean down = super.mayPlaceOn(level.getBlockState(pos.below()), level, pos.below());
 		boolean up = level.getBlockState(pos.above()).getMaterial().isSolid();
 		boolean north = level.getBlockState(pos.north()).getMaterial().isSolid();
 		boolean south = level.getBlockState(pos.south()).getMaterial().isSolid();

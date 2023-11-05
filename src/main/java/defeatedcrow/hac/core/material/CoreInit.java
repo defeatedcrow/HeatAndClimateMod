@@ -39,8 +39,12 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.MaterialsDC;
 import defeatedcrow.hac.core.util.TierDC;
 import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.food.material.fluid.WaterTypeFluidDC;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.magic.material.MagicInit;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -64,7 +68,9 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.network.IContainerFactory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -74,6 +80,7 @@ public class CoreInit {
 
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, ClimateCore.MOD_ID);
+	public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, ClimateCore.MOD_ID);
 	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, ClimateCore.MOD_ID);
@@ -82,6 +89,7 @@ public class CoreInit {
 	public static final DeferredRegister<RecipeType<?>> RECIPE_TYPE = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, ClimateCore.MOD_ID);
 	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SEREALIZER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<MenuType<?>> MENU_TYPE = DeferredRegister.create(ForgeRegistries.MENU_TYPES, ClimateCore.MOD_ID);
+	public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPE = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, ClimateCore.MOD_ID);
 
 	public static final CreativeModeTab CORE = new CreativeTabClimate("core");
 	public static final CreativeModeTab BUILD = new CreativeTabClimate_Building("build");
@@ -383,6 +391,41 @@ public class CoreInit {
 	public static final RegistryObject<MobEffect> WET = regPotionEffect("effect_wet", () -> new MobEffectDC("effect_wet", MobEffectCategory.NEUTRAL, 0x90E0FF).setIconIndex(1, 2));
 	public static final RegistryObject<MobEffect> FLAG = regPotionEffect("effect_flag", () -> new MobEffectFlag("effect_flag", MobEffectCategory.NEUTRAL, 0xFF0050).setIconIndex(3, 2));
 
+	public static final WaterTypeFluidDC BRINE = new WaterTypeFluidDC("brine", 0xFF00F0C0);
+	public static final WaterTypeFluidDC HOTSPRING = new WaterTypeFluidDC("hotspring", 0xFFAEFFDE, 353);
+	public static final WaterTypeFluidDC PLANT_OIL = new WaterTypeFluidDC("plant_oil", 0xFFAF7F00, FluidType.Properties.create()
+		.canSwim(false)
+		.fallDistanceModifier(0F)
+		.motionScale(0.007D)
+		.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+		.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
+		.sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
+		.canHydrate(false)
+		.density(900)
+		.viscosity(6000)
+		.temperature(298));
+	public static final WaterTypeFluidDC FUEL_OIL = new WaterTypeFluidDC("fuel_oil", 0xFFF8E000, FluidType.Properties.create()
+		.canSwim(false)
+		.fallDistanceModifier(0F)
+		.motionScale(0.007D)
+		.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+		.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
+		.sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
+		.canHydrate(false)
+		.density(800)
+		.viscosity(1500)
+		.temperature(298));
+	public static final WaterTypeFluidDC SPARKLING = new WaterTypeFluidDC("sparkling", 0xFF40B0FF, FluidType.Properties.create()
+		.fallDistanceModifier(0F)
+		.canExtinguish(true)
+		.canConvertToSource(true)
+		.supportsBoating(true)
+		.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+		.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
+		.sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
+		.canHydrate(true)
+		.temperature(283), "fluid/sparkling_still");
+
 	// reflex
 
 	// menu
@@ -400,6 +443,9 @@ public class CoreInit {
 		SimpleChestDC cont = (SimpleChestDC) playerInv.player.level.getBlockEntity(data.readBlockPos());
 		return SimpleInventoryMenu.unlockedMenu(id, playerInv, cont);
 	});
+
+	// particle
+	public static final RegistryObject<SimpleParticleType> SMOKE = PARTICLE_TYPE.register("smoke", () -> new SimpleParticleType(false));
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = BLOCKS.register("main/" + name, block);

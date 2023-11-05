@@ -162,7 +162,7 @@ public class SaplingPalm extends SaplingBaseBlock {
 				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX() * 4, h + 1, dir.getStepZ() * 4), leaves, true);
 
 				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX() + dir.getClockWise().getStepX(), h + 2, dir.getStepZ() + dir.getClockWise().getStepZ()), leaves, true);
-				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX() * 2 + dir.getClockWise().getStepX() * 2, h + 3, dir.getStepZ() * 2 + dir.getClockWise().getStepZ() * 2), leaves, true);
+				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX() + dir.getClockWise().getStepX(), h + 3, dir.getStepZ() + dir.getClockWise().getStepZ()), leaves, true);
 
 				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX(), h, dir.getStepZ()), crop, true);
 			}

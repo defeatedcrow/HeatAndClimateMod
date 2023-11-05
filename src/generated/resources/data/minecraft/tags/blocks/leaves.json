@@ -24,6 +24,10 @@
     "dcs_climate:food/leaves_olive_ash",
     "dcs_climate:food/leaves_olive_olive",
     "dcs_climate:food/leaves_olive_osmanthus",
-    "dcs_climate:food/leaves_palm"
+    "dcs_climate:food/leaves_palm",
+    "dcs_climate:food/leaves_sumac_lacquer",
+    "dcs_climate:food/leaves_sumac_mango",
+    "dcs_climate:food/leaves_sumac_cashew",
+    "dcs_climate:food/leaves_sumac_pistachio"
   ]
 }

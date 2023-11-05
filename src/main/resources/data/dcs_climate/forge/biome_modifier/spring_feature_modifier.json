@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#forge:ore_target",
+  "features": "dcs_climate:spring_dc",
+  "step": "vegetal_decoration"
+}

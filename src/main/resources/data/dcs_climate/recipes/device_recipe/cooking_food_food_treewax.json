@@ -1,0 +1,30 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/food_treewax",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/lacquer"
+    }
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

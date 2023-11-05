@@ -142,14 +142,17 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 			BuildInit.WALL_MARBLE.get(), BuildInit.WALL_SCHIST_BLUE.get(), BuildInit.WALL_SCHIST_NETHER.get(), BuildInit.WALL_GRANITE.get());
 
 		tag(TagDC.BlockTag.BEE_FLOWERS).add(FoodInit.BLOCK_BR_RAPESEED.get(), FoodInit.BLOCK_HB_LAVENDER.get(), FoodInit.BLOCK_ML_BLUE.get(),
-			FoodInit.BLOCK_MO_BINDWEED.get(), FoodInit.BLOCK_MO_FLOWER.get(), FoodInit.BLOCK_PD_ROGERIA.get(),
-			FoodInit.BLOCK_SL_NIGHTSHADE.get(), FoodInit.BLOCK_SL_LANTERN.get(), FoodInit.CROPBLOCK_PL_COCONUT.get(),
+			FoodInit.BLOCK_ML_TROPICAL.get(), FoodInit.BLOCK_MO_BINDWEED.get(), FoodInit.BLOCK_MO_FLOWER.get(), FoodInit.BLOCK_PD_ROGERIA.get(),
+			FoodInit.BLOCK_SL_NIGHTSHADE.get(), FoodInit.BLOCK_SL_LANTERN.get(), FoodInit.BLOCK_IR_CROCUS.get(),
+			FoodInit.BLOCK_IR_IRIS.get(), FoodInit.BLOCK_IR_SAFFRON.get(), FoodInit.BLOCK_OR_SPIRANTHES.get(), FoodInit.BLOCK_OR_CYMBIDIUM.get(),
+			FoodInit.BLOCK_OR_CATTLEYA.get(), FoodInit.BLOCK_RA_ANEMONE.get(), FoodInit.BLOCK_RA_DELPHINIUM.get(),
+			FoodInit.BLOCK_RA_CLEMATIS.get(), FoodInit.BLOCK_OR_CYMBIDIUM.get(), FoodInit.CROPBLOCK_PL_COCONUT.get(),
 			FoodInit.CROPBLOCK_PL_DATE.get(), FoodInit.CROPBLOCK_PL_OIL.get(), FoodInit.LEAVES_CM_OIL.get(),
 			FoodInit.LEAVES_CM_SCHIMA.get(), FoodInit.LEAVES_CH_WILD.get(), FoodInit.LEAVES_CH_PLUM.get(),
 			FoodInit.LEAVES_CH_PEACH.get(), FoodInit.LEAVES_CT_POMELO.get(), FoodInit.LEAVES_CT_MANDARIN.get(),
 			FoodInit.LEAVES_CT_LEMON.get(), FoodInit.LEAVES_ER_HEATH.get(), FoodInit.LEAVES_ER_RHODODENDRON.get(),
 			FoodInit.LEAVES_ER_BLUEBERRY.get(), FoodInit.LEAVES_OL_ASH.get(), FoodInit.LEAVES_OL_OLIVE.get(),
-			FoodInit.LEAVES_OL_OSMANTHUS.get());
+			FoodInit.LEAVES_OL_OSMANTHUS.get(), FoodInit.LEAVES_RO_RUGOSA.get(), FoodInit.LEAVES_RO_DAMASCHENA.get());
 
 		tag(BlockTags.FLOWERS).addTags(TagDC.BlockTag.BEE_FLOWERS);
 
@@ -161,16 +164,29 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 			FoodInit.LEAVES_ER_HEATH.get(), FoodInit.LEAVES_ER_RHODODENDRON.get(), FoodInit.LEAVES_ER_BLUEBERRY.get(),
 			FoodInit.LEAVES_MR_MULBERRY.get(), FoodInit.LEAVES_MR_PAPER.get(), FoodInit.LEAVES_MR_RUBBER.get(),
 			FoodInit.LEAVES_OL_ASH.get(), FoodInit.LEAVES_OL_OLIVE.get(), FoodInit.LEAVES_OL_OSMANTHUS.get(),
-			FoodInit.LEAVES_PL_COMMON.get());
+			FoodInit.LEAVES_PL_COMMON.get(), FoodInit.LEAVES_SU_LACQUER.get(), FoodInit.LEAVES_SU_MANGO.get(),
+			FoodInit.LEAVES_SU_CASHEW.get(), FoodInit.LEAVES_SU_PISTACHIO.get());
 
 		tag(BlockTags.LOGS_THAT_BURN).add(FoodInit.LOG_BH_COMMON.get(), FoodInit.LOG_BH_WALNUT.get(), FoodInit.LOG_BH_SWEET.get(),
 			FoodInit.LOG_CH_WILD.get(), FoodInit.LOG_CN_CAMPHOR.get(), FoodInit.LOG_CN_CINNAMON.get(), FoodInit.LOG_CT_POMELO.get(),
 			FoodInit.LOG_MR_MULBERRY.get(), FoodInit.LOG_MR_PAPER.get(), FoodInit.LOG_MR_RUBBER.get(),
-			FoodInit.LOG_OL_ASH.get(), FoodInit.LOG_PL_COCONUT.get());
+			FoodInit.LOG_OL_ASH.get(), FoodInit.LOG_PL_COCONUT.get(), FoodInit.LOG_SU_LACQUER.get(), FoodInit.LOG_SU_MANGO.get());
+
+		tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(FoodInit.LOG_BH_COMMON.get(), FoodInit.LOG_BH_WALNUT.get(), FoodInit.LOG_BH_SWEET.get(),
+			FoodInit.LOG_CH_WILD.get(), FoodInit.LOG_CN_CAMPHOR.get(), FoodInit.LOG_CN_CINNAMON.get(), FoodInit.LOG_CT_POMELO.get(),
+			FoodInit.LOG_MR_MULBERRY.get(), FoodInit.LOG_MR_PAPER.get(), FoodInit.LOG_MR_RUBBER.get(),
+			FoodInit.LOG_OL_ASH.get(), FoodInit.LOG_PL_COCONUT.get(), FoodInit.LOG_SU_LACQUER.get(), FoodInit.LOG_SU_MANGO.get());
 
 		tag(BlockTags.PLANKS).add(FoodInit.PLANK_BH_COMMON.get(), FoodInit.PLANK_BH_WALNUT.get(), FoodInit.PLANK_BH_SWEET.get(),
 			FoodInit.PLANK_CH_WILD.get(), FoodInit.PLANK_CN_CAMPHOR.get(), FoodInit.PLANK_CT_POMELO.get(),
-			FoodInit.PLANK_MR_MULBERRY.get(), FoodInit.PLANK_OL_ASH.get(), FoodInit.PLANK_PL_COCONUT.get(), FoodInit.PLANK_RE_SORGHUM.get());
+			FoodInit.PLANK_MR_MULBERRY.get(), FoodInit.PLANK_OL_ASH.get(), FoodInit.PLANK_PL_COCONUT.get(),
+			FoodInit.PLANK_RE_SORGHUM.get(), FoodInit.PLANK_SU_LACQUER.get());
+
+		tag(TagDC.BlockTag.LOG_SWEET).add(FoodInit.LOG_BH_WALNUT.get(), FoodInit.LOG_BH_SWEET.get(), FoodInit.LOG_PL_COCONUT.get(), Blocks.BIRCH_LOG);
+		tag(TagDC.BlockTag.LOG_RESIN).add(Blocks.ACACIA_LOG, Blocks.SPRUCE_LOG);
+		tag(TagDC.BlockTag.LOG_LATEX).add(FoodInit.LOG_MR_RUBBER.get());
+		tag(TagDC.BlockTag.LOG_LACQUER).add(FoodInit.LOG_SU_LACQUER.get());
+		tag(TagDC.BlockTag.LOG_SAP).addTags(TagDC.BlockTag.LOG_SWEET, TagDC.BlockTag.LOG_RESIN, TagDC.BlockTag.LOG_LATEX, TagDC.BlockTag.LOG_LACQUER);
 
 		tag(TagDC.BlockTag.SCYTHE_BREAKABLE).addTags(BlockTags.LEAVES, BlockTags.WOOL);
 

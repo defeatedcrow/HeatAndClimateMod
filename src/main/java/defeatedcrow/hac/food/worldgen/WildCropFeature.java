@@ -23,6 +23,7 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -165,7 +166,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 	}
 
 	private boolean canReplaceBlock(BlockState state) {
-		return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && state.getMaterial().isReplaceable() && !state.getMaterial().isLiquid();
+		return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && state.getMaterial().isReplaceable() && !state.getMaterial().isLiquid() && !(state.getBlock() instanceof LiquidBlock);
 	}
 
 	static final List<ClimateCropBaseBlock> targetList = Lists.newArrayList();
@@ -207,6 +208,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		targetTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_OL_ASH.get());
 		targetTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_COCONUT.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_RO_RUGOSA.get());
+		targetTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_SU_LACQUER.get());
 
 		if (ConfigCommonBuilder.INSTANCE.enCommonCrop.get()) {
 			commonList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AL_ONION.get());
@@ -242,6 +244,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 			commonTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_OL_OLIVE.get());
 			commonTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_DATE.get());
 			commonList.add((ClimateCropBaseBlock) FoodInit.BLOCK_RO_RASPBERRY.get());
+			commonTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_SU_MANGO.get());
 		}
 	}
 

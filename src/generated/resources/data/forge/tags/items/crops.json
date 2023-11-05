@@ -103,6 +103,10 @@
     "#forge:crops/oil_palm",
     "#forge:crops/rugosa",
     "#forge:crops/raspberry",
-    "#forge:crops/damaschena"
+    "#forge:crops/damaschena",
+    "#forge:crops/lacquer",
+    "#forge:crops/mango",
+    "#forge:crops/cashew",
+    "#forge:crops/pistachio"
   ]
 }

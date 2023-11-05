@@ -34,6 +34,8 @@ import defeatedcrow.hac.magic.recipe.MagicRecipeProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -86,6 +88,7 @@ public class ClimateCore {
 		CoreInit.BLOCKS.register(bus);
 		CoreInit.BLOCK_ENTITIES.register(bus);
 		CoreInit.ITEMS.register(bus);
+		CoreInit.FLUID_TYPES.register(bus);
 		CoreInit.FLUIDS.register(bus);
 		CoreInit.EFFECTS.register(bus);
 		CoreInit.POTIONS.register(bus);
@@ -93,6 +96,8 @@ public class ClimateCore {
 		CoreInit.RECIPE_TYPE.register(bus);
 		CoreInit.RECIPE_SEREALIZER.register(bus);
 		CoreInit.MENU_TYPE.register(bus);
+		CoreInit.PARTICLE_TYPE.register(bus);
+
 		FeatureInit.FEATURES.register(bus);
 
 		TagDC.init();
@@ -101,12 +106,16 @@ public class ClimateCore {
 		bus.addListener(this::registerLayerDefinitions);
 		bus.addListener(this::registerEntityRenderers);
 		// bus.addListener(this::registerLayers);
+		bus.addListener(this::registerParticles);
 		bus.addListener(this::registerClientReloadListeners);
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
 
 		proxy.registerEvent();
+
+		// forge milk
+		ForgeMod.enableMilkFluid();
 	}
 
 	void initAPI() {
@@ -129,6 +138,10 @@ public class ClimateCore {
 
 	void registerLayers(EntityRenderersEvent.AddLayers event) {
 		EntityClientRegister.registerLayers(event);
+	}
+
+	void registerParticles(RegisterParticleProvidersEvent event) {
+		EntityClientRegister.registerParticle(event);
 	}
 
 	void registerClientReloadListeners(RegisterClientReloadListenersEvent event) {

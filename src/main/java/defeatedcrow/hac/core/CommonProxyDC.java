@@ -12,6 +12,8 @@ import defeatedcrow.hac.core.event.LivingDropEventDC;
 import defeatedcrow.hac.core.event.LivingTickEventDC;
 import defeatedcrow.hac.core.event.ServerTickEventDC;
 import defeatedcrow.hac.core.json.JsonInit;
+import defeatedcrow.hac.core.recipe.device.DeviceRecipeConfig;
+import defeatedcrow.hac.core.recipe.device.DeviceRecipeList;
 import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingConfig;
 import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingList;
 import defeatedcrow.hac.food.FoodProxy;
@@ -59,6 +61,9 @@ public class CommonProxyDC {
 	public void registerRecipes() {
 		ClimateSmeltingList.init();
 		ClimateSmeltingConfig.initFile();
+
+		DeviceRecipeList.init();
+		DeviceRecipeConfig.initFile();
 	};
 
 	public boolean keyShiftPushed() {

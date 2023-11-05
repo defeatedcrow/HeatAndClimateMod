@@ -6,6 +6,7 @@ import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.animal.Sheep;
@@ -23,21 +24,46 @@ public class LivingDropEventDC {
 	public static void onDrop(LivingDropsEvent event) {
 		if (event.getEntity() != null && event.getSource().getEntity() != null) {
 			LivingEntity target = event.getEntity();
+			int f = event.getLootingLevel() * 10;
 			if (target instanceof Cow || target instanceof Pig || target instanceof Sheep || target instanceof Goat) {
-				if (target.getLevel().getRandom().nextInt(100) < 10) {
+				if (target.getLevel().getRandom().nextInt(100) < 30 + f) {
 					ItemEntity drop = new ItemEntity(target.getLevel(), target.position().x(), target.position().y() + 0.15D, target.position().z(), new ItemStack(FoodInit.FOOD_OFFAL.get()));
 					event.getDrops().add(drop);
 				}
 			}
+			if (target instanceof Cow) {
+				if (target.getLevel().getRandom().nextInt(100) < 30 + f) {
+					ItemEntity drop = new ItemEntity(target.getLevel(), target.position().x(), target.position().y() + 0.15D, target.position().z(), new ItemStack(FoodInit.BONE_COW.get()));
+					event.getDrops().add(drop);
+				}
+			}
+			if (target instanceof Pig) {
+				if (target.getLevel().getRandom().nextInt(100) < 30 + f) {
+					ItemEntity drop = new ItemEntity(target.getLevel(), target.position().x(), target.position().y() + 0.15D, target.position().z(), new ItemStack(FoodInit.BONE_PIG.get()));
+					event.getDrops().add(drop);
+				}
+			}
+			if (target instanceof Pig) {
+				if (target.getLevel().getRandom().nextInt(100) < 30 + f) {
+					ItemEntity drop = new ItemEntity(target.getLevel(), target.position().x(), target.position().y() + 0.15D, target.position().z(), new ItemStack(FoodInit.SKIN_PIG.get()));
+					event.getDrops().add(drop);
+				}
+			}
+			if (target instanceof Chicken) {
+				if (target.getLevel().getRandom().nextInt(100) < 30 + f) {
+					ItemEntity drop = new ItemEntity(target.getLevel(), target.position().x(), target.position().y() + 0.15D, target.position().z(), new ItemStack(FoodInit.BONE_CHICKEN.get()));
+					event.getDrops().add(drop);
+				}
+			}
 			if (target instanceof Squid) {
-				if (target.getLevel().getRandom().nextInt(100) < 50) {
+				if (target.getLevel().getRandom().nextInt(100) < 50 + f) {
 					ItemEntity drop = new ItemEntity(target.getLevel(), target.position().x(), target.position().y() + 0.15D, target.position().z(), new ItemStack(FoodInit.FOOD_SQUID.get()));
 					event.getDrops().add(drop);
 				}
 			}
 			if (target instanceof Frog) {
-				if (target.getLevel().getRandom().nextInt(100) < 50) {
-					ItemEntity drop = new ItemEntity(target.getLevel(), target.position().x(), target.position().y() + 0.15D, target.position().z(), new ItemStack(FoodInit.FOOD_SQUID.get()));
+				if (target.getLevel().getRandom().nextInt(100) < 50 + f) {
+					ItemEntity drop = new ItemEntity(target.getLevel(), target.position().x(), target.position().y() + 0.15D, target.position().z(), new ItemStack(FoodInit.FOOD_FROG.get()));
 					event.getDrops().add(drop);
 				}
 			}

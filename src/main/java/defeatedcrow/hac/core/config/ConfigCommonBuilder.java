@@ -33,7 +33,9 @@ public class ConfigCommonBuilder {
 	public final ForgeConfigSpec.BooleanValue enVanillaCrop;
 	public final ForgeConfigSpec.BooleanValue enSnow;
 	public final ForgeConfigSpec.BooleanValue enCommonCrop;
+	public final ForgeConfigSpec.BooleanValue enCustomSpring;
 	public final ForgeConfigSpec.IntValue vCropFeature;
+	public final ForgeConfigSpec.IntValue vSpringFeature;
 
 	// item
 	public final ForgeConfigSpec.BooleanValue enDropSmelting;
@@ -166,6 +168,14 @@ public class ConfigCommonBuilder {
 		this.vCropFeature = builder
 			.comment("Sets the wild crop generation rate per chunk. (If 0, it will not be generated.)")
 			.defineInRange("Amount of Crop Gen Rate", 10, 0, 100);
+
+		this.enCustomSpring = builder
+			.comment("Enable natural generation of custom springs in Overworld.")
+			.define("Enable Custom Spring Generation", true);
+
+		this.vSpringFeature = builder
+			.comment("Sets the HaC springs generation rate per chunk. (If 0, it will not be generated.)")
+			.defineInRange("Amount of Spring Gen Rate", 3, 0, 100);
 
 		builder.pop();
 

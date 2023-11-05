@@ -2,5 +2,5 @@
   "textures": {
     "cross": "dcs_climate:block/crop/vine/grape_white_o_c"
   },
-  "parent": "dcs_climate:block/dcs_cross"
+  "parent": "dcs_climate:block/dcs_build_cross"
 }

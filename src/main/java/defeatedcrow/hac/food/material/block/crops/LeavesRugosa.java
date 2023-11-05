@@ -102,7 +102,7 @@ public class LeavesRugosa extends LeavesCropBlockDC {
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("BEACH", "OCEAN");
+			return ImmutableList.of("BEACH", "OCEAN", "PLAINS");
 		default:
 			return Lists.newArrayList();
 		}

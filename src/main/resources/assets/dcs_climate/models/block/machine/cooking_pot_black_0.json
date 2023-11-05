@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/machine/cooking_pot_black_item"
+  },
+  "parent": "dcs_climate:block/dcs_dummy"
+}

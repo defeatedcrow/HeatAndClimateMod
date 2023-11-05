@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/machine/fermentation_jar_green_item"
+  },
+  "parent": "minecraft:item/generated"
+}

@@ -28,7 +28,7 @@ public class HeatingChamberScreen extends AbstractContainerScreen<HeatingChamber
 		super(menu, playerInv, comp);
 		this.imageHeight = 182;
 		this.titleLabelX = 8;
-		this.titleLabelY = 12;
+		this.titleLabelY = 11;
 		this.inventoryLabelX = 8;
 		this.inventoryLabelY = this.imageHeight - 92;
 	}

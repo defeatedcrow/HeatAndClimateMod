@@ -1,0 +1,398 @@
+package defeatedcrow.hac.machine.material.block;
+
+import java.util.Optional;
+
+import javax.annotation.Nullable;
+
+import com.google.common.base.Suppliers;
+
+import defeatedcrow.hac.api.material.EntityRenderData;
+import defeatedcrow.hac.api.material.IRenderBlockData;
+import defeatedcrow.hac.api.recipe.IDeviceRecipe;
+import defeatedcrow.hac.api.util.TagKeyDC;
+import defeatedcrow.hac.core.network.packet.message.MsgTileFluidToC;
+import defeatedcrow.hac.core.recipe.DCRecipes;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.machine.client.gui.FermentationJarMenu;
+import defeatedcrow.hac.machine.material.MachineInit;
+import defeatedcrow.hac.machine.material.fluid.DCTank;
+import defeatedcrow.hac.machine.material.fluid.IFluidTankTileDC;
+import defeatedcrow.hac.machine.material.fluid.SidedFluidWrapper;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
+
+public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTankTileDC, IRenderBlockData {
+
+	public FermentationJarTile(BlockPos pos, BlockState state) {
+		super(MachineInit.FERMANTATION_JAR_TILE.get(), pos, state);
+		totalProgress = 200;
+	}
+
+	/* inventory */
+
+	public final ContainerData dataAccess = new ContainerData() {
+		@Override
+		public int get(int id) {
+			switch (id) {
+			case 0:
+				return FermentationJarTile.this.currentProgress;
+			default:
+				return 0;
+			}
+		}
+
+		@Override
+		public void set(int id, int data) {
+			switch (id) {
+			case 0:
+				FermentationJarTile.this.currentProgress = data;
+				break;
+			}
+
+		}
+
+		@Override
+		public int getCount() {
+			return 1;
+		}
+	};
+
+	@Override
+	public int getContainerSize() {
+		return 9;
+	}
+
+	@Override
+	protected int[] getTopSlots() {
+		return new int[] { 0, 1, 2, 3, 4, 5, 7 };
+	}
+
+	@Override
+	protected int[] getBottomSlots() {
+		return new int[] { 3, 4, 6, 8 };
+	}
+
+	@Override
+	protected int[] getSideSlots() {
+		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+	}
+
+	private int intankS1 = 5;
+	private int intankS2 = 6;
+	private int outtankS1 = 7;
+	private int outtankS2 = 8;
+
+	/* DeviceRecipe */
+
+	public static final int TANK_CAP = 4000;
+	public DCTank inputTank = new DCTank(TANK_CAP);
+	public DCTank outputTank = new DCTank(TANK_CAP);
+
+	@Override
+	public boolean isInProcess() {
+		return recipe != null;
+	}
+
+	private int[] consume = new int[0];
+
+	@Override
+	public boolean continueProcess(Level level, BlockPos pos, BlockState state) {
+		// priority check
+		if (recipe != null) {
+			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, 2);
+			Optional<IDeviceRecipe> check = DCRecipes.getCookingRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
+
+			if (check.isPresent() && check.get() == recipe) {
+				consume = recipe.matcheInput(inputs);
+				boolean result = inventory.canInsertResult(recipe.getOutput(), 3, 4) > 0 && outputTank.fill(recipe.getOutputFluid(), FluidAction.SIMULATE) >= recipe.getOutputFluid().getAmount();
+				if (recipe.getSecondaryRate() > 0 && inventory.canInsertResult(recipe.getSecondaryOutput(), 3, 4) == 0) {
+					result = false;
+				}
+				return consume.length > 0 && result;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean finishProcess(Level level, BlockPos pos, BlockState state) {
+		if (recipe != null) {
+			boolean flag = false;
+			ItemStack res = recipe.getOutput();
+			if (!DCUtil.isEmpty(res) && inventory.insertResult(res, 3, 4) > 0) {
+				flag = true;
+			}
+			ItemStack sec = recipe.getSecondaryOutput();
+			if (!DCUtil.isEmpty(sec) && level.random.nextInt(100) < recipe.getSecondaryRate() && inventory.insertResult(sec, 3, 4) > 0) {
+				flag = true;
+			}
+			FluidStack outF = recipe.getOutputFluid();
+			if (!outF.isEmpty() && outputTank.fill(recipe.getOutputFluid(), FluidAction.EXECUTE) > 0) {
+				flag = true;
+			}
+			return flag;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean consumeInputs() {
+		if (consume.length > 0) {
+			for (int i = 0; i < consume.length; i++) {
+				inventory.removeItem(i, consume[i]);
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean resetProcess() {
+		recipe = null;
+		consume = new int[0];
+		this.totalProgress = 0;
+		this.currentProgress = 0;
+		this.lastProgress = 0;
+		return true;
+	}
+
+	@Override
+	public boolean startProcess(Level level, BlockPos pos, BlockState state) {
+		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, 2);
+		Optional<IDeviceRecipe> check = DCRecipes.getFermentationRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
+		if (check.isPresent()) {
+			recipe = check.get();
+			this.totalProgress = 200;
+			return true;
+		}
+		return false;
+	}
+
+	int count = 5;
+	private int lastHash1 = 0;
+
+	@Override
+	public boolean onTickProcess(Level level, BlockPos pos, BlockState state) {
+		if (count > 0) {
+			count--;
+			return false;
+		} else {
+			count = 5;
+
+			boolean flag = false;
+			if (!DCUtil.isEmpty(this.inventory.getItem(intankS1)) && !this.inventory.isMaxStack(intankS2)) {
+				ItemStack copy = this.inventory.getItem(intankS1).copy();
+				copy.setCount(1);
+				flag = FluidUtil.getFluidHandler(copy)
+					.map(handler -> {
+						FluidStack fluid = handler.getFluidInTank(0);
+						if (fluid.isEmpty()) {
+							int space = Math.min(inputTank.getSpace(), handler.getTankCapacity(0));
+							int d = handler.fill(inputTank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
+							if (d > 0 && inventory.canInsertResult(handler.getContainer(), intankS2, intankS2) != 0) {
+								// drain
+								inputTank.drain(d, FluidAction.EXECUTE);
+								ItemStack ret = handler.getContainer();
+								if (!ret.isEmpty()) {
+									ret.setCount(1);
+									inventory.incrStackInSlot(intankS2, ret);
+								}
+								inventory.removeItem(intankS1, 1);
+								return true;
+							}
+						} else if (handler.isFluidValid(TANK_CAP, fluid)) {
+							FluidStack drain = handler.drain(fluid, FluidAction.EXECUTE);
+							int f = inputTank.fill(drain, FluidAction.SIMULATE);
+							if (f > 0 && inventory.canInsertResult(handler.getContainer(), intankS2, intankS2) != 0) {
+								// fill
+								inputTank.fill(drain, FluidAction.EXECUTE);
+								ItemStack ret = handler.getContainer().copy();
+								if (!ret.isEmpty()) {
+									ret.setCount(1);
+									inventory.incrStackInSlot(intankS2, ret);
+								}
+								inventory.removeItem(intankS1, 1);
+								return true;
+							}
+						}
+						return false;
+					}).orElse(false);
+			}
+
+			if (!DCUtil.isEmpty(this.inventory.getItem(outtankS1)) && !this.inventory.isMaxStack(11)) {
+				ItemStack copy = this.inventory.getItem(outtankS1).copy();
+				copy.setCount(1);
+				flag = FluidUtil.getFluidHandler(copy)
+					.map(handler -> {
+						FluidStack fluid = handler.getFluidInTank(0);
+						if (fluid.isEmpty()) {
+							int space = Math.min(outputTank.getSpace(), handler.getTankCapacity(0));
+							int d = handler.fill(outputTank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
+							if (d > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
+								// drain
+								outputTank.drain(d, FluidAction.EXECUTE);
+								ItemStack ret = handler.getContainer();
+								if (!ret.isEmpty()) {
+									ret.setCount(1);
+									inventory.incrStackInSlot(outtankS2, ret);
+								}
+								inventory.removeItem(outtankS1, 1);
+								return true;
+							}
+						} else if (handler.isFluidValid(TANK_CAP, fluid)) {
+							FluidStack drain = handler.drain(fluid, FluidAction.EXECUTE);
+							int f = outputTank.fill(drain, FluidAction.SIMULATE);
+							if (f > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
+								// fill
+								outputTank.fill(drain, FluidAction.EXECUTE);
+								ItemStack ret = handler.getContainer().copy();
+								if (!ret.isEmpty()) {
+									ret.setCount(1);
+									inventory.incrStackInSlot(outtankS2, ret);
+								}
+								inventory.removeItem(outtankS1, 1);
+								return true;
+							}
+						}
+						return false;
+					}).orElse(false);
+			}
+
+			int hash1 = inputTank.getFluid().hashCode();
+			int hash2 = outputTank.getFluid().hashCode();
+			if (lastHash1 != hash1 + hash2) {
+				lastHash1 = hash1 + hash2;
+				flag = true;
+			}
+
+			if (flag && level instanceof ServerLevel) {
+				this.setChanged(level, pos, state);
+				NonNullList<FluidStack> list = NonNullList.withSize(3, FluidStack.EMPTY);
+				list.set(0, inputTank.getFluid());
+				list.set(1, outputTank.getFluid());
+				MsgTileFluidToC.sendToClient((ServerLevel) level, pos, list);
+			}
+
+			return flag;
+		}
+	}
+
+	// fluid
+
+	@Override
+	public int getTanks() {
+		return 2;
+	}
+
+	@Override
+	public DCTank getTank(int id) {
+		return id == 0 ? inputTank : outputTank;
+	}
+
+	@Override
+	public DCTank getTank(Direction dir) {
+		return dir == Direction.UP ? inputTank : outputTank;
+	}
+
+	// nbt
+
+	@Override
+	public void loadTag(CompoundTag tag) {
+		super.loadTag(tag);
+		if (tag.contains(TagKeyDC.getTankKey(1), 10)) {
+			CompoundTag tankTag1 = tag.getCompound(TagKeyDC.getTankKey(1));
+			inputTank.readFromNBT(tankTag1);
+		}
+		if (tag.contains(TagKeyDC.getTankKey(2), 10)) {
+			CompoundTag tankTag2 = tag.getCompound(TagKeyDC.getTankKey(2));
+			outputTank.readFromNBT(tankTag2);
+		}
+	}
+
+	@Override
+	public void writeTag(CompoundTag tag) {
+		super.writeTag(tag);
+		CompoundTag tankTag1 = new CompoundTag();
+		inputTank.writeToNBT(tankTag1);
+		tag.put(TagKeyDC.getTankKey(1), tankTag1);
+		CompoundTag tankTag2 = new CompoundTag();
+		outputTank.writeToNBT(tankTag2);
+		tag.put(TagKeyDC.getTankKey(2), tankTag2);
+	}
+
+	// cap
+
+	LazyOptional<? extends IFluidHandler> fluidhandler = LazyOptional.of(() -> new SidedFluidWrapper(inputTank, outputTank));
+
+	@Override
+	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
+		if (!this.remove && capability == ForgeCapabilities.FLUID_HANDLER) {
+			return fluidhandler.cast();
+		}
+		return super.getCapability(capability, facing);
+	}
+
+	@Override
+	public void invalidateCaps() {
+		super.invalidateCaps();
+		fluidhandler.invalidate();
+	}
+
+	@Override
+	public void reviveCaps() {
+		super.reviveCaps();
+		this.fluidhandler = LazyOptional.of(() -> new SidedFluidWrapper(inputTank, outputTank));
+	}
+
+	@Override
+	protected AbstractContainerMenu createMenu(int i, Inventory inv) {
+		return new FermentationJarMenu(MachineInit.JAR_MENU.get(), i, inv, this, this.dataAccess);
+	}
+
+	@Override
+	protected Component getDefaultName() {
+		return this.hasOwner() ? Component.translatable("dcs.container.cooking.with_owner", this.ownerName) : Component.translatable("dcs.container.cooking");
+	}
+
+	@Override
+	public EntityRenderData getRenderData(Block block) {
+		if (block == MachineInit.FERMANTATION_JAR_BLUE.get())
+			return BLUE;
+		if (block == MachineInit.FERMANTATION_JAR_BLACK.get())
+			return BLACK;
+		if (block == MachineInit.FERMANTATION_JAR_RED.get())
+			return RED;
+		if (block == MachineInit.FERMANTATION_JAR_GREEN.get())
+			return GREEN;
+		if (block == MachineInit.FERMANTATION_JAR_WHITE.get())
+			return WHITE;
+		if (block == MachineInit.FERMANTATION_JAR_NORMAL.get())
+			return NORMAL;
+		return NORMAL;
+	}
+
+	public static final EntityRenderData WHITE = new EntityRenderData("tile/fermentation_jar_white", 1F, -0.5F);
+	public static final EntityRenderData BLUE = new EntityRenderData("tile/fermentation_jar_blue", 1F, -0.5F);
+	public static final EntityRenderData BLACK = new EntityRenderData("tile/fermentation_jar_black", 1F, -0.5F);
+	public static final EntityRenderData RED = new EntityRenderData("tile/fermentation_jar_red", 1F, -0.5F);
+	public static final EntityRenderData GREEN = new EntityRenderData("tile/fermentation_jar_green", 1F, -0.5F);
+	public static final EntityRenderData NORMAL = new EntityRenderData("tile/fermentation_jar_normal", 1F, -0.5F);
+
+}

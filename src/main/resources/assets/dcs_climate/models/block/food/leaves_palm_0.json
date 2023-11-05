@@ -1,6 +1,6 @@
 {
   "textures": {
-    "all": "dcs_climate:block/tree/palm_leaves"
+    "cross": "dcs_climate:block/tree/palm_leaves"
   },
-  "parent": "dcs_climate:block/dcs_leaves"
+  "parent": "dcs_climate:block/dcs_palm_leaves"
 }

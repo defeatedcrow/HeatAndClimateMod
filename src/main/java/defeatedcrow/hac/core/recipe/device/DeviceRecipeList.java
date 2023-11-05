@@ -11,6 +11,7 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeTypeDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.machine.recipe.CookingRecipes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -20,18 +21,18 @@ import net.minecraftforge.fluids.FluidStack;
 public class DeviceRecipeList {
 
 	public static void init() {
-
+		CookingRecipes.init();
 	}
 
-	public static void addRecipe(RecipeTypeDC group, Item output, DCHeatTier heat, List<Ingredient> input) {
-		addRecipe(group, new ItemStack(output), heat, null, null, input);
+	public static void addSimpleRecipe(RecipeTypeDC group, Item output, DCHeatTier heat, List<Ingredient> input) {
+		addSimpleRecipe(group, new ItemStack(output), heat, null, null, input);
 	}
 
-	public static void addRecipe(RecipeTypeDC group, Item output, DCHeatTier heat, DCHumidity hum, DCAirflow air, List<Ingredient> input) {
-		addRecipe(group, new ItemStack(output), heat, hum, air, input);
+	public static void addSimpleRecipe(RecipeTypeDC group, Item output, DCHeatTier heat, DCHumidity hum, DCAirflow air, List<Ingredient> input) {
+		addSimpleRecipe(group, new ItemStack(output), heat, hum, air, input);
 	}
 
-	public static void addRecipe(RecipeTypeDC group, ItemStack output, DCHeatTier heat, DCHumidity hum, DCAirflow air, List<Ingredient> input) {
+	public static void addSimpleRecipe(RecipeTypeDC group, ItemStack output, DCHeatTier heat, DCHumidity hum, DCAirflow air, List<Ingredient> input) {
 		List<DCHeatTier> heats = Lists.newArrayList();
 		List<DCHumidity> hums = Lists.newArrayList();
 		List<DCAirflow> airs = Lists.newArrayList();
@@ -58,26 +59,32 @@ public class DeviceRecipeList {
 		} else {
 			airs.add(air);
 		}
-		addRecipe(group, output, ItemStack.EMPTY, 0, heats, hums, airs, input);
+		addMillRecipe(group, output, ItemStack.EMPTY, 0, heats, hums, airs, input);
 	}
 
 	// mill
-	public static void addRecipe(RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<Ingredient> in) {
+	public static void addMillRecipe(RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<Ingredient> in) {
 		addRecipe(group, o, sec, secRate, ItemStack.EMPTY, 0, FluidStack.EMPTY, t, h, a, new ArrayList<String>(), in);
 	}
 
 	// squeeze, distill, tea
-	public static void addRecipe(RecipeTypeDC group, ItemStack o, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<String> inF, List<Ingredient> in) {
+	public static void addFluidRecipe(RecipeTypeDC group, ItemStack o, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<String> inF, List<Ingredient> in) {
 		addRecipe(group, o, ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, oF, t, h, a, inF, in);
 	}
 
 	// cooking
-	public static void addRecipe(RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<String> inF, List<Ingredient> in) {
+	public static void addCookingRecipe(RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<String> inF, List<Ingredient> in) {
 		addRecipe(group, o, sec, secRate, ItemStack.EMPTY, 0, oF, t, h, a, inF, in);
 	}
 
+	// cooking2
+	public static void addCookingRecipe(RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, FluidStack oF, List<DCHeatTier> t, List<String> inF, List<Ingredient> in) {
+		addRecipe(group, o, sec, secRate, ItemStack.EMPTY, 0, oF, t, Lists.newArrayList(), Lists.newArrayList(), inF, in);
+	}
+
 	// pulverize
-	public static void addRecipe(RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<Ingredient> in) {
+	public static void addPulverizeRecipe(RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a,
+			List<Ingredient> in) {
 		addRecipe(group, o, sec, secRate, ter, terRate, oF, t, h, a, new ArrayList<String>(), in);
 	}
 

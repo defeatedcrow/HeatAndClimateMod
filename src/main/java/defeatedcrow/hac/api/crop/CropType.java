@@ -14,7 +14,6 @@ public enum CropType {
 	BRASSICA, // アブラナ
 	CAMELLIA, // ツバキ
 	CAPSICUM, // トウガラシ
-	CASHEW, // ウルシ
 	CEREALS, // ムギ
 	CHERRY, // サクラ
 	CINNAMON, // クスノキ
@@ -40,6 +39,7 @@ public enum CropType {
 	RICE, // イネ
 	ROSE, // バラ
 	SOLANUM, // ナス
+	SUMAC, // ウルシ
 	TRADING; // 交易限定種
 
 	public MutableComponent localize() {

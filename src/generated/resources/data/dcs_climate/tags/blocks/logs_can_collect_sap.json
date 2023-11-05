@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#dcs_climate:logs_can_collect_sap/seeet_sap",
+    "#dcs_climate:logs_can_collect_sap/resin",
+    "#dcs_climate:logs_can_collect_sap/latex",
+    "#dcs_climate:logs_can_collect_sap/lacquer"
+  ]
+}

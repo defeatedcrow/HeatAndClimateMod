@@ -153,6 +153,19 @@
     "dcs_climate:machine/portable_can_red",
     "dcs_climate:machine/portable_can_green",
     "dcs_climate:machine/ibc",
+    "dcs_climate:machine/spilecup",
+    "dcs_climate:machine/cooking_pot_normal",
+    "dcs_climate:machine/cooking_pot_white",
+    "dcs_climate:machine/cooking_pot_blue",
+    "dcs_climate:machine/cooking_pot_black",
+    "dcs_climate:machine/cooking_pot_red",
+    "dcs_climate:machine/cooking_pot_green",
+    "dcs_climate:machine/fermentation_jar_normal",
+    "dcs_climate:machine/fermentation_jar_white",
+    "dcs_climate:machine/fermentation_jar_blue",
+    "dcs_climate:machine/fermentation_jar_black",
+    "dcs_climate:machine/fermentation_jar_red",
+    "dcs_climate:machine/fermentation_jar_green",
     "dcs_climate:magic/magic_small_light"
   ]
 }

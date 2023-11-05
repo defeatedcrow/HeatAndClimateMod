@@ -80,7 +80,7 @@ public abstract class CropBaseEpiphyte extends ClimateCropBaseBlock {
 	}
 
 	private boolean checkVineSupport(BlockGetter level, BlockPos pos, boolean includeBelow) {
-		boolean down = super.isSuitablePlace(level, pos.below(), level.getBlockState(pos.below()));
+		boolean down = !includeBelow || super.mayPlaceOn(level.getBlockState(pos.below()), level, pos.below());
 		boolean north = isSuitableWalls(level.getBlockState(pos.north()));
 		boolean south = isSuitableWalls(level.getBlockState(pos.south()));
 		boolean east = isSuitableWalls(level.getBlockState(pos.east()));
@@ -90,7 +90,7 @@ public abstract class CropBaseEpiphyte extends ClimateCropBaseBlock {
 
 	@Override
 	public void checkAndDropBlock(Level world, BlockPos pos, BlockState state) {
-		boolean check = isSuitablePlace(world, pos.below(), world.getBlockState(pos.below()));
+		boolean check = checkVineSupport(world, pos, true);
 
 		if (!check) {
 			dropResources(state, world, pos);
@@ -99,8 +99,8 @@ public abstract class CropBaseEpiphyte extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public boolean isSuitablePlace(BlockGetter world, BlockPos pos, BlockState state) {
-		return checkVineSupport(world, pos.above(), true);
+	protected boolean mayPlaceOn(BlockState under, BlockGetter level, BlockPos pos) {
+		return checkVineSupport(level, pos.above(), true);
 	}
 
 	public boolean isSuitableWalls(BlockState state) {
@@ -123,7 +123,7 @@ public abstract class CropBaseEpiphyte extends ClimateCropBaseBlock {
 	@Override
 	public BlockState updateShape(BlockState state, Direction dir, BlockState state2, LevelAccessor level, BlockPos pos, BlockPos pos2) {
 		BlockState next = state;
-		boolean down = super.isSuitablePlace(level, pos.below(), level.getBlockState(pos.below()));
+		boolean down = super.mayPlaceOn(level.getBlockState(pos.below()), level, pos.below());
 		boolean north = isSuitableWalls(level.getBlockState(pos.north()));
 		boolean south = isSuitableWalls(level.getBlockState(pos.south()));
 		boolean east = isSuitableWalls(level.getBlockState(pos.east()));

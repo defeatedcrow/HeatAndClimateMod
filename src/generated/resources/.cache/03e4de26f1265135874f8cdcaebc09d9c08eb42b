@@ -1,4 +1,4 @@
-// 1.19.2	2023-10-15T13:19:02.1127983	Tags for minecraft:item
+// 1.19.2	2023-11-05T16:52:58.1928231	Tags for minecraft:item
 9691b8fa959d0c2eca43b928b1d45c3e5fa4fb15 data/dcs_climate/tags/items/color_drops.json
 1003b47c0766f332ef739eaf3b5ea767d6e9f6c1 data/dcs_climate/tags/items/color_drops/black.json
 969f3e30f0b86599ab5d03e4f9004392ecbef823 data/dcs_climate/tags/items/color_drops/blue.json
@@ -35,7 +35,7 @@ d33a92cf7224385a7f65ab50d5e8b517425845bb data/dcs_climate/tags/items/color_seeds
 e95970894b1662a0e365fb1351d18815cb14d149 data/dcs_climate/tags/items/color_seeds/white.json
 26d85d22288145a1018523a20deaf20967f151a9 data/dcs_climate/tags/items/crops.json
 8acd2a46a26054ad823e155f2cb6f1d87a4639c8 data/dcs_climate/tags/items/crops/common.json
-c7396345cc466449373dd9ffc37d527c8a96dce5 data/dcs_climate/tags/items/crops/epic.json
+4e660559fdbd7e8bb03158c9ebc61c427543ca2b data/dcs_climate/tags/items/crops/epic.json
 48762e37c9650e1ce67f1541824ce716c992b14b data/dcs_climate/tags/items/crops/oils.json
 cd4a3bb5bae24c721e56bc740287b830355f5901 data/dcs_climate/tags/items/crops/plant_common.json
 733fa4ab44ed9781876f8fb44a14deb366c41f80 data/dcs_climate/tags/items/crops/plant_epic.json
@@ -44,9 +44,10 @@ d42ed619cd13acfe942c2bf162e84c24e90bb552 data/dcs_climate/tags/items/crops/plant
 db2034b76ba1befa212ead464949f566de62c06a data/dcs_climate/tags/items/crops/rare.json
 8787f0641075f35379ee5375c14e27f14ae84280 data/dcs_climate/tags/items/crops/sticks.json
 e5636f3159fc2a47e9e20da8ef5724a27fa6b0b5 data/dcs_climate/tags/items/crops/straws.json
-98d8d57817e41feaf516d92738c1c831dd909a4a data/dcs_climate/tags/items/crops/tree_common.json
-3c6ab09dff99e3bf5a258c4909da2d10756ae4c1 data/dcs_climate/tags/items/crops/tree_rare.json
-a6033aa292c5b204a19f7139ac4b0d4ab8af2450 data/dcs_climate/tags/items/crops/tree_wild.json
+e8902a178775da347dda5193e06f05444c99ab9d data/dcs_climate/tags/items/crops/tree_common.json
+52a8809781460b35ce176e8f5e12f59a23f498b8 data/dcs_climate/tags/items/crops/tree_epic.json
+007cfd68645db0f6b86398d3749596965e5c6d66 data/dcs_climate/tags/items/crops/tree_rare.json
+128a663ba5c83814e839289b050966180b8c18d4 data/dcs_climate/tags/items/crops/tree_wild.json
 ce66ece7ca33b2b6e3af9aa37d5cb47d6435747d data/dcs_climate/tags/items/crops/wild.json
 f9be281231ab0be930b60bee688dcf542f800e3a data/dcs_climate/tags/items/gems.json
 bfa015168a13af280008c0441234c8dbb341958b data/dcs_climate/tags/items/gems/black.json
@@ -54,6 +55,11 @@ bfa015168a13af280008c0441234c8dbb341958b data/dcs_climate/tags/items/gems/black.
 717866aa09166edec1fe66aa17c2353a923a2128 data/dcs_climate/tags/items/gems/green.json
 cd6d18dc51b62418c5466f9fba750545c3b74e79 data/dcs_climate/tags/items/gems/red.json
 fa6626c4d374bc0da9891eb041c6a80385f76161 data/dcs_climate/tags/items/gems/white.json
+ba23160154d7745820c323db555d6d6b708750e9 data/dcs_climate/tags/items/logs_can_collect_sap.json
+995780b538ec0d5ba35266df7b1cc561e7a7d15c data/dcs_climate/tags/items/logs_can_collect_sap/lacquer.json
+8c8d04e6558e83e86b428523fa5055683822b260 data/dcs_climate/tags/items/logs_can_collect_sap/latex.json
+8e4237c49cd273b8f3e3503a7a293e045c9853cd data/dcs_climate/tags/items/logs_can_collect_sap/resin.json
+f2cdc97a774fb6bb826cc512d5fda718518ef3ab data/dcs_climate/tags/items/logs_can_collect_sap/seeet_sap.json
 5f86011b18234fdffe1c0ec57ef0c3468ea09583 data/dcs_climate/tags/items/magic_cards.json
 7731b00b985c45aa4af4f155ee3c7f6c9552d8a7 data/dcs_climate/tags/items/magic_pendants.json
 85e814e621a82fe67190bcfe1fdd544dee9b1e2f data/dcs_climate/tags/items/magic_rings.json
@@ -63,6 +69,7 @@ fa6626c4d374bc0da9891eb041c6a80385f76161 data/dcs_climate/tags/items/gems/white.
 7d6fd01964c88a56cda99333872579b37ef749b0 data/forge/tags/items/animal_feeds/compound.json
 0332ee57f7973ff3aa0e5f810558555ce7563caf data/forge/tags/items/animal_feeds/hay.json
 7f473b6b18af20cad07cd66ab6dce77e93ea4f56 data/forge/tags/items/animal_feeds/straw.json
+d673abe514b8497e051af0ae88941b292f686d8e data/forge/tags/items/bones.json
 16f0c29d53c26e277a717e116af209100cafa85d data/forge/tags/items/clothes.json
 518917c86ad0f68a4b941321fa200bf24bea8795 data/forge/tags/items/clothes/cotton.json
 26e0f225b40916d09dc876106ca05c43da385f9f data/forge/tags/items/clothes/plant.json
@@ -71,7 +78,7 @@ b858f7f81af10701fff014d785d71270d4b65dc1 data/forge/tags/items/clothes/wool.json
 13ce2131f2fd5a9d7277d4786ea9e30f0391ab02 data/forge/tags/items/crafting_tools/seeding_pot.json
 940e64f7498d44c5827d2f17cdaa1a589630f6ab data/forge/tags/items/crafting_tools/sieve.json
 a6f7273f7130d5d607b7da073fc5a85f25b3b69d data/forge/tags/items/crafting_tools/spindle.json
-1625c16255abfbb56815b6e01a424e0217e7e2d7 data/forge/tags/items/crops.json
+f2c56b9018c929f378fde937ccbcd8c6c8e9a5fb data/forge/tags/items/crops.json
 8a6bfdd3837538291f01b0f804642adddd18b8d8 data/forge/tags/items/crops/acorn.json
 d88083011e32e8b51cb47ea5b551feb82811f08c data/forge/tags/items/crops/adzuki.json
 d00b5c37db16ddbe8943557e30a0a4cae4529158 data/forge/tags/items/crops/anemone.json
@@ -95,6 +102,7 @@ fa86a61f46cd401070ebf53f8e79d75d3de4f0ec data/forge/tags/items/crops/calabash.js
 d3315040c744707703b10b6ee060524b9331fa36 data/forge/tags/items/crops/camellia.json
 d7430b3c53db44c16a8bf44f8cf335eb0942bf4e data/forge/tags/items/crops/cantaloup.json
 3eafb75cea882a266ae21d5bb549106bb8302758 data/forge/tags/items/crops/cardamom.json
+67bf180af088e4d15592e0221404dd801a1a62bb data/forge/tags/items/crops/cashew.json
 63999e2bd627dc235e41308cdd1471a0d2745363 data/forge/tags/items/crops/cattleya.json
 9fa70025c54fa07762d47b47bd6bb2e4097fe96c data/forge/tags/items/crops/celery.json
 763ec2ef0c24fa3650e346ba23ad0ebe9bdb40a3 data/forge/tags/items/crops/cereals.json
@@ -120,7 +128,7 @@ b137d9ad33d4824ec03feebc84a9fa11b213c7e8 data/forge/tags/items/crops/devilsclaw.
 7e52b49ce47674b250c5ffa90591cbd3e9e8134a data/forge/tags/items/crops/egg_plant.json
 76ae546ea96cfe7cee89c996ec0d424d7c9443f1 data/forge/tags/items/crops/fennel.json
 d86116a85957ea29292227cf36ce6066ade788fe data/forge/tags/items/crops/flowers.json
-fb23efbf6f498db90c802bcc6c6c4691be9ca556 data/forge/tags/items/crops/fruits.json
+4b907ccb8486885802670ed5fa7350106609c5a0 data/forge/tags/items/crops/fruits.json
 67d9239a97b20424516758d7994f9c06917de0c8 data/forge/tags/items/crops/garbanzo.json
 6c6f482c75fe96ae120488901835a2f8c249b869 data/forge/tags/items/crops/garlic.json
 71765becdb621850feb677162e417e601f9d200d data/forge/tags/items/crops/ginger.json
@@ -135,11 +143,13 @@ a9336c46090fec115cbba2862b97258934728afa data/forge/tags/items/crops/indigo.json
 d4c9bbf20f5cc1680e28240b9c36c3107391c2f4 data/forge/tags/items/crops/iris.json
 0f2450b43c6bf4565694a2490684d31a6ef0d29d data/forge/tags/items/crops/jute.json
 7525fdb8e27532ce7f76f38ebedb8350d14d1cc5 data/forge/tags/items/crops/kaji.json
+b1d14136000633b04273c23422698772a0cc5622 data/forge/tags/items/crops/lacquer.json
 8411cdee631775ec7cfe945ff76cb3c7276dc7c9 data/forge/tags/items/crops/lantern.json
 4d98b39839039962e440b7e58de8f7c1dadee6fe data/forge/tags/items/crops/lavender.json
 a94fb2a857043e93eebbe1c664eba0caaf5280b6 data/forge/tags/items/crops/lemon.json
 dace0f50fa731e6bc067fab2e97b1551d71ad3e3 data/forge/tags/items/crops/lettuce.json
 cbccb5b1f3636addbda92a30f4c5cdb93c74b0f2 data/forge/tags/items/crops/mandarin.json
+07b45cd24f711ab8651b41203ecc6873083e5b83 data/forge/tags/items/crops/mango.json
 814fe5838791d700256cfa0273c5d62387b04b5d data/forge/tags/items/crops/melon.json
 cebf6ebc7f805d89cb61fab1a645821ef633bc8b data/forge/tags/items/crops/millets.json
 421baef0b3e4ea5a349a7cbba37cb4e24345e91b data/forge/tags/items/crops/mint.json
@@ -148,7 +158,7 @@ cebf6ebc7f805d89cb61fab1a645821ef633bc8b data/forge/tags/items/crops/millets.jso
 22a89c3937adbd39071235a400128c0081ed680d data/forge/tags/items/crops/mulberry.json
 839554dfe53f8c2a811a69a8f449fc40c3324ab0 data/forge/tags/items/crops/napa.json
 195a173a117d75707b9af887ccca0b3666c9e7f3 data/forge/tags/items/crops/nightshade.json
-5e1e311311ed871ff35d9061fea68a3f2590ce9d data/forge/tags/items/crops/nuts.json
+93e8f4588e8d0dec1062fce23b7fd8f7725f24dc data/forge/tags/items/crops/nuts.json
 c280ffc61710b8d83f7c7fdf3aa083ca47a257c5 data/forge/tags/items/crops/oat.json
 71bf28290bbbe2d57511a5efb58a82643de4a3b7 data/forge/tags/items/crops/oil_palm.json
 e7e37f694747565dca53fca1066d5e166043f03d data/forge/tags/items/crops/olive.json
@@ -159,6 +169,7 @@ ce0c94bbcae153351fabdd453967e9cc4a687c44 data/forge/tags/items/crops/onion.json
 dce5ecbdc8d7707998ec28cd4bb9720cbfc7c3ab data/forge/tags/items/crops/pea.json
 6e610930d777240d559d6615677cc21b93df8487 data/forge/tags/items/crops/peach.json
 86804dae95f4cfdb5febe9637c85b2ae16c72c04 data/forge/tags/items/crops/perilla.json
+52a8809781460b35ce176e8f5e12f59a23f498b8 data/forge/tags/items/crops/pistachio.json
 30e255ce43da48d4426d5247afd9e85de9b0957c data/forge/tags/items/crops/plum.json
 378d7fdd367a16d65b7a3c7a4d1e28bbc8169a48 data/forge/tags/items/crops/pomelo.json
 5c240d3042d03b5df35776e54aada4a01c346e8f data/forge/tags/items/crops/preudo_cereals.json
@@ -184,6 +195,7 @@ f240f49a81ad4991f636902d8d323e2367576a38 data/forge/tags/items/crops/sesami.json
 ca0560d3673d7d9fd205aaf0dc399b47f7c1e80b data/forge/tags/items/crops/spices.json
 525e09f0bdcf4fef42c28813138d8acb82dfdbf5 data/forge/tags/items/crops/spinach.json
 255169932ba8605f7518ac090e6e2946e5c677b6 data/forge/tags/items/crops/spiranthes.json
+f02fc9781e8f0ae33ed3b98cf4f46ba6927c7ff8 data/forge/tags/items/crops/sugarcane.json
 7c841918029b5eb36f3aa6f243299919ccf7467a data/forge/tags/items/crops/sweet_potato.json
 ecebb6619acffb9979e13f2cf3e40b0b713910bf data/forge/tags/items/crops/tea.json
 84b3ae9e75f29679c80aa7458237b2a168786ec9 data/forge/tags/items/crops/tomato.json
@@ -304,9 +316,13 @@ d3b550483f19afea8b512600d266ea1c0c617c17 data/forge/tags/items/ingots/steel.json
 b7a1f487a9ea53992619f74e53191409bb435cda data/forge/tags/items/ingredients/anko.json
 95e633e6cf17d7c46d9dc5443a222b21782af13c data/forge/tags/items/ingredients/aroma_rice.json
 c8ae00487769cc8af31edfa00b8ec67148460290 data/forge/tags/items/ingredients/barley.json
+a5153583ad173c677ea675dcdfbfce5fd9415493 data/forge/tags/items/ingredients/bone_chicken.json
+a79b13aa1014c090ce43b59368bdeab486b6e18c data/forge/tags/items/ingredients/bone_cow.json
+c132f42bec7448cf84f31d99f4601dd3254dda86 data/forge/tags/items/ingredients/bone_pig.json
 11d306c85e971475428486ab917e79e40d5eb1bd data/forge/tags/items/ingredients/bread_grains.json
 7f9a94274273b8c608a0835dbc99f48473a271c3 data/forge/tags/items/ingredients/buckwheat.json
 10fe51ead2ba137817409292e721591f8e0774b4 data/forge/tags/items/ingredients/butter.json
+100cc4a74463c913b70ca4835ca69d465475dc90 data/forge/tags/items/ingredients/cashew_nuts.json
 7d0fe7519927d7ef5576e40840135a9d29deb591 data/forge/tags/items/ingredients/cereals.json
 fd8e3ad29170238b59e858d8a6cd906442767bd1 data/forge/tags/items/ingredients/cheese.json
 19c25670b8b0a66c310342f34c78fbe423a28aee data/forge/tags/items/ingredients/coconut_milk.json
@@ -368,10 +384,11 @@ cee195a15594e3f06a00f1d159fd5af650f69c48 data/forge/tags/items/ingredients/syrup
 094e093362bfcbb9a375840c972e654ae458c86c data/forge/tags/items/ingredients/vanilla_cured.json
 5c30b60932a4e1b7101a377e0e1be1bbbfa04cae data/forge/tags/items/ingredients/vine.json
 e48cbad30b2e5483f251e5cab75a273775e4c6b7 data/forge/tags/items/ingredients/water.json
-ef0eae57eace67ac0bee0bd569b02852ec51a320 data/forge/tags/items/ingredients/wax.json
+69584022c54e32b79c2869fd48111c011a07bb39 data/forge/tags/items/ingredients/wax.json
 5216b82b13fc22313eb962b340b777761d157ac7 data/forge/tags/items/ingredients/wheat.json
 7576b5e358e990001cb92daa877c43c1c058bc88 data/forge/tags/items/ingredients/whip.json
 1f88c377a10e8e075dd5205bb8389f65fc7a3761 data/forge/tags/items/ingredients/zizania.json
+72547f942a1ba09caff7a28df1a9a770102f5b2d data/forge/tags/items/leather.json
 f0f92c5f0b5c5412980a4ca8436b4cb180919deb data/forge/tags/items/magma.json
 79b7875f2428cacf1e48c766001c83d8089c6de5 data/forge/tags/items/ores.json
 f85289b6f02654f20c9cd0e64c982f67ade1ffa4 data/forge/tags/items/ores/amazonite.json
@@ -416,6 +433,11 @@ c68d1a63e7a7384bfb00671a76f503ed2d314a6a data/forge/tags/items/raw_materials/zin
 578dd629e6c69bf5641983afdf5f54ca2d3b5882 data/forge/tags/items/rods/bamboo.json
 7064c7dc0149fbfaf6b2b059dc440c4996803a4f data/forge/tags/items/rods/sorghum.json
 9f9fd1af73344f5d4085c5598871eed2c2980006 data/forge/tags/items/rods/wooden.json
+daaca5ff26f1d04d21a3c1b2a3f06c7cbcb30982 data/forge/tags/items/saps.json
+2f5f40ac1ee544ee1065c3d160df3e25d45851f7 data/forge/tags/items/saps/lacquer.json
+39a26713a0d1c8e186e22ce1eff370f3edaabf96 data/forge/tags/items/saps/latex.json
+a66b82d6b5f7061d90bebbb9e49cd395efd72b4d data/forge/tags/items/saps/resin.json
+d281ce5f751383db8f7ec5bd81036d0d6e01f662 data/forge/tags/items/saps/seeet_sap.json
 36a13623f4d0b0266eb2e53fd2af256c74be1094 data/forge/tags/items/seeds.json
 0cec7ece960c9e565f8155e09b18e70626de76a5 data/forge/tags/items/seeds/adzuki.json
 68118c7e0f124d56223e0c0f2d489c86a19f63b0 data/forge/tags/items/seeds/anemone.json
@@ -513,11 +535,11 @@ e269b8cd8da37045c2db781d6f4861a803e874e6 data/forge/tags/items/tools/harpoon.jso
 22fbf7d0b699c28004e0916f81f7bd04fc6cd621 data/forge/tags/items/tools/scythes.json
 f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/items/weed.json
 18693f8762776180171770992989e15666e10425 data/minecraft/tags/items/arrows.json
-153b6b7b10ec2d28be783be7982e6f23564eda13 data/minecraft/tags/items/leaves.json
-cdba02845468e264fefb6d3add99a4261a272466 data/minecraft/tags/items/logs_that_burn.json
-5b8d8fcd959a7e1b3608b9060865482aa382d944 data/minecraft/tags/items/planks.json
-05213ef76da39b367521e1a35f958d5195b8c81e data/minecraft/tags/items/saplings.json
+1bc6535ef08b32bd7ce1ec20bc3ae7f4771bee7a data/minecraft/tags/items/leaves.json
+994fa27af7f716d9b8b5e772ad0e3acd2c9e5ccc data/minecraft/tags/items/logs_that_burn.json
+6c4420b9e2c6f6f1f8e2b879764dc6fc872ff44b data/minecraft/tags/items/planks.json
+8eae89b1c09c2199d72197e99f536a0b3ca1acc6 data/minecraft/tags/items/saplings.json
 77fb866d31af5d8f52f649bcf7f936a17dc50ac3 data/minecraft/tags/items/walls.json
-d64076887924067cfef6b5be2b83fe03a6320351 data/minecraft/tags/items/wooden_fences.json
-ff573223752d7d1a4a92b4b834de1d31fc0fa021 data/minecraft/tags/items/wooden_slabs.json
-476e73c114709dd842fe89c1db392a2dd1f6d4c2 data/minecraft/tags/items/wooden_stairs.json
+762445f8ea38447cf66b21c09c749af863651a0f data/minecraft/tags/items/wooden_fences.json
+20f19557b1ccbf75cd60dc7e0e4f8065bc50aabf data/minecraft/tags/items/wooden_slabs.json
+5690d65fae7684a2389849d5eb34b752a75113a4 data/minecraft/tags/items/wooden_stairs.json

@@ -61,7 +61,7 @@ public class SaplingRose extends SaplingBaseBlock {
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
 		if (t == CropTier.WILD) {
-			ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.SAND);
+			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.SAND);
 		}
 		return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 	}
@@ -88,7 +88,7 @@ public class SaplingRose extends SaplingBaseBlock {
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("BEACH", "OCEAN", "PLAINS");
+			return ImmutableList.of("OCEAN", "BEACH", "PLAINS");
 		case COMMON:
 			return ImmutableList.of("FOREST", "MOUNTAIN");
 		default:

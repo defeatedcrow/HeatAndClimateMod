@@ -2,6 +2,8 @@ package defeatedcrow.hac.core.material.block.building;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -53,7 +55,7 @@ public class ChandelierLamp extends EntityBlockDC {
 	}
 
 	@Override
-	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity) {
+	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity, @Nullable BlockEntity tile) {
 		return Lists.newArrayList();
 	}
 

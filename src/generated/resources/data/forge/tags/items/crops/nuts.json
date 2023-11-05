@@ -5,6 +5,8 @@
     "#forge:crops/beech",
     "#forge:crops/walnut",
     "#forge:crops/acorn",
-    "#forge:crops/coconut"
+    "#forge:crops/coconut",
+    "#forge:crops/pistachio",
+    "#forge:ingredients/cashew_nuts"
   ]
 }

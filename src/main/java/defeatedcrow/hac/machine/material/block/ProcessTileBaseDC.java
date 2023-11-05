@@ -59,6 +59,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 				if (tile.continueProcess(level, pos, state)) {
 					if (tile.currentProgress >= tile.totalProgress && tile.finishProcess(level, pos, state)) {
 						tile.consumeInputs();
+						tile.resetProcess();
 						tile.setChanged(level, pos, state);
 					} else {
 						tile.lastProgress = tile.currentProgress;

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/machine/fermentation_jar_blue_item"
+  },
+  "parent": "dcs_climate:block/dcs_dummy"
+}

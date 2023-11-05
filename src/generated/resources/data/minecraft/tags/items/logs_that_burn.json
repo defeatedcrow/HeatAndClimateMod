@@ -12,6 +12,8 @@
     "dcs_climate:food/log_morus_rubber",
     "dcs_climate:food/log_olive_ash",
     "dcs_climate:food/log_palm_coconut",
+    "dcs_climate:food/log_sumac_lacquer",
+    "dcs_climate:food/log_sumac_mango",
     "dcs_climate:food/log_beech_common",
     "dcs_climate:food/log_beech_walnut",
     "dcs_climate:food/log_beech_sweet",
@@ -23,6 +25,8 @@
     "dcs_climate:food/log_morus_paper",
     "dcs_climate:food/log_morus_rubber",
     "dcs_climate:food/log_olive_ash",
-    "dcs_climate:food/log_palm_coconut"
+    "dcs_climate:food/log_palm_coconut",
+    "dcs_climate:food/log_sumac_lacquer",
+    "dcs_climate:food/log_sumac_mango"
   ]
 }

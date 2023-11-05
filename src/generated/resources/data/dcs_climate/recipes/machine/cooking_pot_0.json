@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "tag": "forge:glass"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "X X",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/cooking_pot_normal"
+  }
+}

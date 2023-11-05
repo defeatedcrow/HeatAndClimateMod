@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/log_cinnamon_true"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "dcs_climate:food/plank_cinnamon_camphor"
+  }
+}

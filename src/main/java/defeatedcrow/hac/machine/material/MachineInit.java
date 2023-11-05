@@ -4,10 +4,16 @@ import java.util.function.Supplier;
 
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
+import defeatedcrow.hac.machine.client.gui.CookingPotMenu;
+import defeatedcrow.hac.machine.client.gui.FermentationJarMenu;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberMenu;
 import defeatedcrow.hac.machine.client.gui.PortableTankMenu;
 import defeatedcrow.hac.machine.material.block.BrickChamberBlock;
 import defeatedcrow.hac.machine.material.block.BrickChamberTile;
+import defeatedcrow.hac.machine.material.block.CookingPotBlock;
+import defeatedcrow.hac.machine.material.block.CookingPotTile;
+import defeatedcrow.hac.machine.material.block.FermentationJarBlock;
+import defeatedcrow.hac.machine.material.block.FermentationJarTile;
 import defeatedcrow.hac.machine.material.block.HeatingChamberBlock;
 import defeatedcrow.hac.machine.material.block.HeatingChamberTile;
 import defeatedcrow.hac.machine.material.block.IBCBlock;
@@ -15,6 +21,7 @@ import defeatedcrow.hac.machine.material.block.IBCTile;
 import defeatedcrow.hac.machine.material.block.PortableCanBlock;
 import defeatedcrow.hac.machine.material.block.PortableCanTile;
 import defeatedcrow.hac.machine.material.block.PortableFluidTankTile;
+import defeatedcrow.hac.machine.material.block.SpileCupBlock;
 import defeatedcrow.hac.machine.material.fluid.FluidBlockItemDC;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.inventory.MenuType;
@@ -41,6 +48,22 @@ public class MachineInit {
 
 	public static final RegistryObject<Block> IBC = regFluidBlock("ibc", () -> new IBCBlock("ibc"), null);
 
+	public static final RegistryObject<Block> SPILE = regFluidBlock("spilecup", () -> new SpileCupBlock("spilecup"), null);
+
+	public static final RegistryObject<Block> COOKING_POT_NORMAL = regBlock("cooking_pot_normal", () -> new CookingPotBlock("cooking_pot_normal"), null);
+	public static final RegistryObject<Block> COOKING_POT_WHITE = regBlock("cooking_pot_white", () -> new CookingPotBlock("cooking_pot_white"), null);
+	public static final RegistryObject<Block> COOKING_POT_BLUE = regBlock("cooking_pot_blue", () -> new CookingPotBlock("cooking_pot_blue"), null);
+	public static final RegistryObject<Block> COOKING_POT_BLACK = regBlock("cooking_pot_black", () -> new CookingPotBlock("cooking_pot_black"), null);
+	public static final RegistryObject<Block> COOKING_POT_RED = regBlock("cooking_pot_red", () -> new CookingPotBlock("cooking_pot_red"), null);
+	public static final RegistryObject<Block> COOKING_POT_GREEN = regBlock("cooking_pot_green", () -> new CookingPotBlock("cooking_pot_green"), null);
+
+	public static final RegistryObject<Block> FERMANTATION_JAR_NORMAL = regBlock("fermentation_jar_normal", () -> new FermentationJarBlock("fermentation_jar_normal", false), null);
+	public static final RegistryObject<Block> FERMANTATION_JAR_WHITE = regBlock("fermentation_jar_white", () -> new FermentationJarBlock("fermentation_jar_white", false), null);
+	public static final RegistryObject<Block> FERMANTATION_JAR_BLUE = regBlock("fermentation_jar_blue", () -> new FermentationJarBlock("fermentation_jar_blue", true), null);
+	public static final RegistryObject<Block> FERMANTATION_JAR_BLACK = regBlock("fermentation_jar_black", () -> new FermentationJarBlock("fermentation_jar_black", false), null);
+	public static final RegistryObject<Block> FERMANTATION_JAR_RED = regBlock("fermentation_jar_red", () -> new FermentationJarBlock("fermentation_jar_red", true), null);
+	public static final RegistryObject<Block> FERMANTATION_JAR_GREEN = regBlock("fermentation_jar_green", () -> new FermentationJarBlock("fermentation_jar_green", true), null);
+
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<BrickChamberTile>> CHAMBER_BRICK_TILE = CoreInit.BLOCK_ENTITIES.register("chamber_brick_tile",
 		() -> BlockEntityType.Builder.of(BrickChamberTile::new, new Block[] { CHAMBER_BRICK_A.get(), CHAMBER_BRICK_B.get() }).build(null));
@@ -54,6 +77,15 @@ public class MachineInit {
 
 	public static final RegistryObject<BlockEntityType<IBCTile>> IBC_TILE = CoreInit.BLOCK_ENTITIES.register("ibc_tile",
 		() -> BlockEntityType.Builder.of(IBCTile::new, new Block[] { IBC.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<CookingPotTile>> COOKING_POT_TILE = CoreInit.BLOCK_ENTITIES.register("cooking_pot_tile",
+		() -> BlockEntityType.Builder.of(CookingPotTile::new, new Block[] { COOKING_POT_NORMAL.get(), COOKING_POT_WHITE.get(), COOKING_POT_BLUE.get(), COOKING_POT_BLACK.get(), COOKING_POT_RED.get(), COOKING_POT_GREEN
+			.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<FermentationJarTile>> FERMANTATION_JAR_TILE = CoreInit.BLOCK_ENTITIES.register("fermentation_jar_tile",
+		() -> BlockEntityType.Builder.of(FermentationJarTile::new, new Block[] { FERMANTATION_JAR_NORMAL.get(), FERMANTATION_JAR_WHITE.get(), FERMANTATION_JAR_BLUE.get(), FERMANTATION_JAR_BLACK.get(),
+			FERMANTATION_JAR_RED.get(), FERMANTATION_JAR_GREEN
+				.get() }).build(null));
 
 	// Menu
 	public static final RegistryObject<MenuType<HeatingChamberMenu>> CHAMBER_MENU = CoreInit.register("dcs_chamber_item", (IContainerFactory<HeatingChamberMenu>) (id, playerInv, data) -> {
@@ -69,6 +101,16 @@ public class MachineInit {
 	public static final RegistryObject<MenuType<PortableTankMenu>> FLUID_MENU_LARGE = CoreInit.register("dcs_fluid_tank_large", (IContainerFactory<PortableTankMenu>) (id, playerInv, data) -> {
 		PortableFluidTankTile cont = (PortableFluidTankTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
 		return PortableTankMenu.getLargeMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<CookingPotMenu>> POT_MENU = CoreInit.register("dcs_cooking_pot", (IContainerFactory<CookingPotMenu>) (id, playerInv, data) -> {
+		CookingPotTile cont = (CookingPotTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return CookingPotMenu.getMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<FermentationJarMenu>> JAR_MENU = CoreInit.register("dcs_fermentation_jar", (IContainerFactory<FermentationJarMenu>) (id, playerInv, data) -> {
+		FermentationJarTile cont = (FermentationJarTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return FermentationJarMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {

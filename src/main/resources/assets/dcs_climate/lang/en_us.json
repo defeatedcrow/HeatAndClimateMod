@@ -113,6 +113,12 @@
   "item.dcs_climate.main.icon_hac":"HeatAndClimate",
   "item.dcs_climate.main.icon_burning":"Heat Damage",
 
+  "item.dcs_climate.fluid.bucket_brine":"Brine Bucket",
+  "item.dcs_climate.fluid.bucket_hotspring":"Hotspring Bucket",
+  "item.dcs_climate.fluid.bucket_fuel_oil":"Fuel OilBucket",
+  "item.dcs_climate.fluid.bucket_plant_oil":"Plant Oil Bucket",
+  "item.dcs_climate.fluid.bucket_sparkling":"Sparkling Water Bucket",
+
     "## items_magic":"magic",
 
   "item.dcs_climate.magic.drop_w":"White Small Drop",
@@ -291,6 +297,10 @@
   "item.dcs_climate.food.crop_rose_wild":"Rosehip",
   "item.dcs_climate.food.crop_rose_common":"Raspberry",
   "item.dcs_climate.food.crop_rose_rare":"Damask Rose Flower",
+  "item.dcs_climate.food.crop_sumac_wild":"Lacquer Tree Fluits",
+  "item.dcs_climate.food.crop_sumac_common":"Mango",
+  "item.dcs_climate.food.crop_sumac_rare":"Cashew Apple",
+  "item.dcs_climate.food.crop_sumac_epic":"Pistachio",
 
   "item.dcs_climate.food.food_amaranth":"Amaranth",
   "item.dcs_climate.food.food_oat":"Oat Flour",
@@ -314,6 +324,11 @@
   "item.dcs_climate.food.food_offal":"Offal",
   "item.dcs_climate.food.food_gelatine":"Gelatine",
   "item.dcs_climate.food.food_rennet":"Rennet",
+  "item.dcs_climate.food.bone_cow":"Beef Bones",
+  "item.dcs_climate.food.bone_pig":"Pork Bones",
+  "item.dcs_climate.food.bone_chicken":"Chicken Bones",
+  "item.dcs_climate.food.skin_pig":"Pig Leather",
+
   "item.dcs_climate.food.food_raw_frog":"Raw Frog Legs",
   "item.dcs_climate.food.food_raw_prawn":"Raw Prawn",
   "item.dcs_climate.food.food_raw_squid":"Raw Squid",
@@ -347,10 +362,18 @@
   "item.dcs_climate.food.food_palm_flower":"Palm Flowers",
   "item.dcs_climate.food.food_mallow_calyces":"Hibiscus Calyces",
   "item.dcs_climate.food.food_vanilla_cured":"Cured Vanilla Beans",
+  "item.dcs_climate.food.food_cashew_nuts":"Cashew Nuts",
+
   "item.dcs_climate.food.food_vine":"Vine",
   "item.dcs_climate.food.fiber_plant":"Plant Fiber",
   "item.dcs_climate.food.fiber_wood":"Bark Fiber",
   "item.dcs_climate.food.fiber_beeswax":"Beeswax",
+  "item.dcs_climate.food.food_treewax":"Plant Wax",
+
+  "item.dcs_climate.food.sap_sweet":"Sweet Sap",
+  "item.dcs_climate.food.sap_resin":"Resin",
+  "item.dcs_climate.food.sap_latex":"Latex",
+  "item.dcs_climate.food.sap_sumac":"Lacquer",
 
   "item.dcs_climate.food.string_plant":"Plant String",
   "item.dcs_climate.food.string_tree":"Bark String",
@@ -693,9 +716,13 @@
   "block.dcs_climate.food.sapling_palm_wild":"Coconut Tree Sapling",
   "block.dcs_climate.food.sapling_palm_common":"Date Sapling",
   "block.dcs_climate.food.sapling_palm_rare":"Oil Palm Sapling",
-  "block.dcs_climate.food.sapling_rose_wild":"Dog Rose",
-  "block.dcs_climate.food.sapling_rose_common":"Raspberry",
-  "block.dcs_climate.food.sapling_rose_rare":"Damask Rose",
+  "block.dcs_climate.food.sapling_rose_wild":"Dog Rose Sapling",
+  "block.dcs_climate.food.sapling_rose_common":"Raspberry Sapling",
+  "block.dcs_climate.food.sapling_rose_rare":"Damask Rose Sapling",
+  "block.dcs_climate.food.sapling_sumac_wild":"Lacquer Tree Sapling",
+  "block.dcs_climate.food.sapling_sumac_common":"Mango Sapling",
+  "block.dcs_climate.food.sapling_sumac_rare":"Cashew Sapling",
+  "block.dcs_climate.food.sapling_sumac_epic":"Pistachio Sapling",
 
   "block.dcs_climate.food.leaves_beech_common":"Beech Leaves",
   "block.dcs_climate.food.leaves_beech_walnut":"Walnut Leaves",
@@ -725,6 +752,10 @@
   "block.dcs_climate.food.leaves_rose_rugosa":"Dog Rose Leaves",
   "block.dcs_climate.food.leaves_rose_raspberry":"Raspberry Leaves",
   "block.dcs_climate.food.leaves_rose_damaschena":"Damask Rose leaves",
+  "block.dcs_climate.food.leaves_sumac_lacquer":"Lacquer Tree Leaves",
+  "block.dcs_climate.food.leaves_sumac_mango":"Mango Leaves",
+  "block.dcs_climate.food.leaves_sumac_cashew":"Cashew Leaves",
+  "block.dcs_climate.food.leaves_sumac_pistachio":"Pistachio Leaves",
 
   "block.dcs_climate.food.log_beech_common":"Beech Log",
   "block.dcs_climate.food.log_beech_walnut":"Walnut Log",
@@ -738,6 +769,8 @@
   "block.dcs_climate.food.log_morus_rubber":"Rubberwood Log",
   "block.dcs_climate.food.log_olive_ash":"Ash Log",
   "block.dcs_climate.food.log_palm_coconut":"Palm Log",
+  "block.dcs_climate.food.log_sumac_lacquer":"Lacquer Tree Log",
+  "block.dcs_climate.food.log_sumac_mango":"Sumac Log",
 
   "block.dcs_climate.food.plank_beech_common":"Beech Planks",
   "block.dcs_climate.food.plank_beech_walnut":"Walnut Planks",
@@ -749,6 +782,8 @@
   "block.dcs_climate.food.plank_olive_ash":"Ash Planks",
   "block.dcs_climate.food.plank_palm_coconut":"Palm Planks",
   "block.dcs_climate.food.plank_reed_sorghum":"Sorghum Planks",
+  "block.dcs_climate.food.plank_sumac_lacquer":"Sumac Planks",
+  "block.dcs_climate.food.plank_lacquerware":"Lacquered Planks",
 
   "## containers":"",
 
@@ -832,6 +867,8 @@
   "block.dcs_climate.build.stairs_olive_ash":"Ash Stairs",
   "block.dcs_climate.build.stairs_palm_coconut":"Palm Stairs",
   "block.dcs_climate.build.stairs_reed_sorghum":"Sorghum Stairs",
+  "block.dcs_climate.build.stairs_sumac_lacquer":"Sumac Stairs",
+  "block.dcs_climate.build.stairs_lacquerware":"Lacquered Stairs",
 
   "block.dcs_climate.build.slab_beech_common":"Beech Slab",
   "block.dcs_climate.build.slab_beech_walnut":"Walnut Slab",
@@ -843,6 +880,8 @@
   "block.dcs_climate.build.slab_olive_ash":"Ash Slab",
   "block.dcs_climate.build.slab_palm_coconut":"Palm Slab",
   "block.dcs_climate.build.slab_reed_sorghum":"Sorghum Slab",
+  "block.dcs_climate.build.slab_sumac_lacquer":"Sumac Slab",
+  "block.dcs_climate.build.slab_lacquerware":"Lacquered Slab",
 
   "block.dcs_climate.build.fence_beech_common":"Beech Fence",
   "block.dcs_climate.build.fence_beech_walnut":"Walnut Fence",
@@ -854,6 +893,8 @@
   "block.dcs_climate.build.fence_olive_ash":"Ash Fence",
   "block.dcs_climate.build.fence_palm_coconut":"Palm Fence",
   "block.dcs_climate.build.fence_reed_sorghum":"Sorghum Fence",
+  "block.dcs_climate.build.fence_sumac_lacquer":"Sumac Fence",
+  "block.dcs_climate.build.fence_lacquerware":"Lacquered Fence",
 
   "block.dcs_climate.build.flintbricks":"Flint Bricks",
   "block.dcs_climate.build.flintbricks_black":"Black Flint Bricks",
@@ -919,10 +960,31 @@
   "block.dcs_climate.machine.portable_can_black":"Black Potrtable Can",
   "block.dcs_climate.machine.portable_can_red":"Red Potrtable Can",
   "block.dcs_climate.machine.portable_can_green":"Green Potrtable Can",
+  "block.dcs_climate.machine.spilecup":"Spile And Cup",
+  "block.dcs_climate.machine.cooking_pot_normal":"Cooking Pot",
+  "block.dcs_climate.machine.cooking_pot_white":"White Cooking Pot",
+  "block.dcs_climate.machine.cooking_pot_blue":"Blue Cooking Pot",
+  "block.dcs_climate.machine.cooking_pot_black":"Black Skillet",
+  "block.dcs_climate.machine.cooking_pot_red":"Red Cooking Pot",
+  "block.dcs_climate.machine.cooking_pot_green":"Green Cooking Pot",
+  "block.dcs_climate.machine.fermentation_jar_normal":"Fermentation Jar",
+  "block.dcs_climate.machine.fermentation_jar_white":"White Jar",
+  "block.dcs_climate.machine.fermentation_jar_blue":"Blue Jar",
+  "block.dcs_climate.machine.fermentation_jar_black":"Black Jar",
+  "block.dcs_climate.machine.fermentation_jar_red":"Red Jar",
+  "block.dcs_climate.machine.fermentation_jar_green":"Green Jar",
 
     "## magic":"",
 
   "block.dcs_climate.magic.magic_small_light":"Mana Small Light",
+
+    "## fluids":"",
+
+  "fluid_type.dcs_climate.brine":"Brine",
+  "fluid_type.dcs_climate.hotspring":"Hotspring",
+  "fluid_type.dcs_climate.fuel_oil":"Fuel Oil",
+  "fluid_type.dcs_climate.plant_oil":"Plant Oil",
+  "fluid_type.dcs_climate.sparkling":"Sparkling Water",
 
     "## entities":"",
 
@@ -959,7 +1021,8 @@
   "dcs.tip.container.ownable":"The Owner can lock this tile and restrict its use to the Owner or ServerOP only, and stops unloading of the hopper.",
   "dcs.tip.container.ownable_locked":"Tile is Locked by %1$s",
   "dcs.tip.device.airflow":"Airflow: %1$s",
-  "dcs.tip.device.heat":"Fire Temp: %1$s",
+  "dcs.tip.device.humidity":"Humidity: %1$s",
+  "dcs.tip.device.heat":"Temp: %1$s",
 
   "dcs.tip.chamber.temp":"Temperature Range: ",
   "dcs.tip.chamber.wind":"High airflow or the use of bellows will result in high temperatures.",
@@ -1070,6 +1133,8 @@
   "dcs.container.chamber.with_owner":"%1$s 's Stove",
   "dcs.container.tank":"Tank",
   "dcs.container.tank.with_owner":"%1$s 's Tank",
+  "dcs.container.cooking":"Cooking Device",
+  "dcs.container.cooking.with_owner":"%1$s 's Cooking Device",
 
   "## gui_misc":"misc",
 
@@ -1096,11 +1161,11 @@
   "item.minecraft.potion.effect.cold_resistance":"Cold Resistance Potion",
   "item.minecraft.splash_potion.effect.cold_resistance":"Cold Resistance Splash Potion",
   "item.minecraft.lingering_potion.effect.cold_resistance":"Cold Resistance Lingering Potion",
-  "item.minecraft.tripped_arrow.effect.cold_resistance":"Cold Resistance Arrow",
+  "item.minecraft.tipped_arrow.effect.cold_resistance":"Cold Resistance Arrow",
   "item.minecraft.potion.effect.long_cold_resistance":"Cold Resistance Potion",
   "item.minecraft.splash_potion.effect.long_cold_resistance":"Cold Resistance Splash Potion",
   "item.minecraft.lingering_potion.effect.long_cold_resistance":"Cold Resistance Lingering Potion",
-  "item.minecraft.tripped_arrow.effect.long_cold_resistance":"Cold Resistance Arrow",
+  "item.minecraft.tipped_arrow.effect.long_cold_resistance":"Cold Resistance Arrow",
 
   "effect.dcs_climate.effect_wet":"Wet",
   "effect.dcs_climate.effect_tracer":"Tracer",
@@ -1114,6 +1179,7 @@
     "## gui_jei":"jei",
 
   "dcs.gui.jei.smelting_data":"Climate Smelting Data",
+  "dcs.gui.jei.cooking_data":"Cooking Data",
   "dcs.gui.jei.crop_data":"HaC Crop Data",
   "dcs.gui.jei.tree_data":"HaC Tree Data",
   "dcs.gui.jei.smelting_tip1":"Proceed as a placed block.",
@@ -1277,5 +1343,6 @@
   "dcs.enum.croptype.rice":"RICE",
   "dcs.enum.croptype.rose":"ROSE",
   "dcs.enum.croptype.solanum":"SOLANUM",
+  "dcs.enum.croptype.sumac":"SUMAC",
   "dcs.enum.croptype.trading":"TRADE ONLY"
 }

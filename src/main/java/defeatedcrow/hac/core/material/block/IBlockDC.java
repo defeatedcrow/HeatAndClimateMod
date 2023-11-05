@@ -2,8 +2,11 @@ package defeatedcrow.hac.core.material.block;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public interface IBlockDC {
@@ -14,7 +17,7 @@ public interface IBlockDC {
 	/* 通常処理をキャンセルする */
 	public ItemStack getSilkyDrop();
 
-	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity);
+	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity, @Nullable BlockEntity tile);
 
 	/* 通常処理をキャンセルする */
 	public ToolType getToolType();

@@ -12,6 +12,8 @@
     "dcs_climate:food/log_morus_rubber",
     "dcs_climate:food/log_olive_ash",
     "dcs_climate:food/log_palm_coconut",
+    "dcs_climate:food/log_sumac_lacquer",
+    "dcs_climate:food/log_sumac_mango",
     "dcs_climate:food/plank_beech_common",
     "dcs_climate:food/plank_beech_walnut",
     "dcs_climate:food/plank_beech_sweet",
@@ -21,7 +23,9 @@
     "dcs_climate:food/plank_morus_mulberry",
     "dcs_climate:food/plank_olive_ash",
     "dcs_climate:food/plank_palm_coconut",
+    "dcs_climate:food/plank_sumac_lacquer",
     "dcs_climate:food/plank_reed_sorghum",
+    "dcs_climate:food/plank_lacquerware",
     "dcs_climate:build/stairs_beech_common",
     "dcs_climate:build/slab_beech_common",
     "dcs_climate:build/fence_beech_common",
@@ -49,8 +53,14 @@
     "dcs_climate:build/stairs_palm_coconut",
     "dcs_climate:build/slab_palm_coconut",
     "dcs_climate:build/fence_palm_coconut",
+    "dcs_climate:build/stairs_sumac_lacquer",
+    "dcs_climate:build/slab_sumac_lacquer",
+    "dcs_climate:build/fence_sumac_lacquer",
     "dcs_climate:build/stairs_reed_sorghum",
     "dcs_climate:build/slab_reed_sorghum",
-    "dcs_climate:build/fence_reed_sorghum"
+    "dcs_climate:build/fence_reed_sorghum",
+    "dcs_climate:build/stairs_lacquerware",
+    "dcs_climate:build/slab_lacquerware",
+    "dcs_climate:build/fence_lacquerware"
   ]
 }

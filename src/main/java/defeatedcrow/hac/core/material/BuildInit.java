@@ -163,10 +163,20 @@ public class BuildInit {
 	public static final RegistryObject<Block> SLAB_PALM = regBlock("slab_palm_coconut", () -> new SlabWoodDC("palm_coconut", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), ItemTags.WOODEN_SLABS);
 	public static final RegistryObject<Block> FENCE_PALM = regBlock("fence_palm_coconut", () -> new FenceWoodDC("palm_coconut"), ItemTags.WOODEN_FENCES);
 
+	public static final RegistryObject<Block> STAIRS_SUMAC = regBlock("stairs_sumac_lacquer", () -> new StairsWoodDC("sumac_lacquer", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_SU_LACQUER),
+		ItemTags.WOODEN_STAIRS);
+	public static final RegistryObject<Block> SLAB_SUMAC = regBlock("slab_sumac_lacquer", () -> new SlabWoodDC("sumac_lacquer", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), ItemTags.WOODEN_SLABS);
+	public static final RegistryObject<Block> FENCE_SUMAC = regBlock("fence_sumac_lacquer", () -> new FenceWoodDC("sumac_lacquer"), ItemTags.WOODEN_FENCES);
+
 	public static final RegistryObject<Block> STAIRS_SORGHUM = regBlock("stairs_reed_sorghum", () -> new StairsWoodDC("reed_sorghum", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_RE_SORGHUM),
 		ItemTags.WOODEN_STAIRS);
 	public static final RegistryObject<Block> SLAB_SORGHUM = regBlock("slab_reed_sorghum", () -> new SlabWoodDC("reed_sorghum", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), ItemTags.WOODEN_SLABS);
 	public static final RegistryObject<Block> FENCE_SORGHUM = regBlock("fence_reed_sorghum", () -> new FenceWoodDC("reed_sorghum"), ItemTags.WOODEN_FENCES);
+
+	public static final RegistryObject<Block> STAIRS_LACQUER = regBlock("stairs_lacquerware", () -> new StairsWoodDC("lacquerware", BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS), FoodInit.PLANK_LACQUERWARE),
+		ItemTags.WOODEN_STAIRS);
+	public static final RegistryObject<Block> SLAB_LACQUER = regBlock("slab_lacquerware", () -> new SlabWoodDC("lacquerware", BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)), ItemTags.WOODEN_SLABS);
+	public static final RegistryObject<Block> FENCE_LACQUER = regBlock("fence_lacquerware", () -> new FenceWoodDC("lacquerware"), ItemTags.WOODEN_FENCES);
 
 	public static final RegistryObject<Block> GLASS_CRYSTAL = regBlock("glass_crystal", () -> new ConnectedGlassBlock("crystal", 0), Tags.Items.GLASS);
 	public static final RegistryObject<Block> GLASS_LIGHT = regBlock("glass_light", () -> new ConnectedGlassBlock("crystal", 15), null);

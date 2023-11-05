@@ -136,4 +136,47 @@ public class DCFluidUtil {
 		return false;
 	}
 
+	public static boolean exchangeSidedFluid(Level level, Vec3 pos, DCTank inTank, DCTank outTank, ItemStack item) {
+		if (!DCUtil.isEmpty(item)) {
+			ItemStack copy = item.copy();
+			copy.setCount(1);
+			return !DCUtil.isEmpty(item) && FluidUtil.getFluidHandler(copy)
+				.map(handler -> {
+					FluidStack fluid = handler.getFluidInTank(0);
+					if (fluid.isEmpty()) {
+						int space = Math.min(outTank.getFluidAmount(), handler.getTankCapacity(0));
+						FluidStack drain = outTank.drain(space, FluidAction.SIMULATE);
+						int d = handler.fill(drain, FluidAction.EXECUTE);
+						if (d > 0) {
+							outTank.drain(d, FluidAction.EXECUTE);
+							ItemStack ret = handler.getContainer();
+							item.shrink(1);
+							if (!ret.isEmpty()) {
+								ret.setCount(1);
+								ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, ret);
+								level.addFreshEntity(drop);
+							}
+							return true;
+						}
+					} else if (handler.isFluidValid(inTank.getSpace(), fluid)) {
+						FluidStack drain = handler.drain(fluid, FluidAction.EXECUTE);
+						int f = inTank.fill(drain, FluidAction.SIMULATE);
+						if (f > 0) {
+							inTank.fill(drain, FluidAction.EXECUTE);
+							ItemStack ret = handler.getContainer().copy();
+							item.shrink(1);
+							if (!ret.isEmpty()) {
+								ret.setCount(1);
+								ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, ret);
+								level.addFreshEntity(drop);
+							}
+							return true;
+						}
+					}
+					return false;
+				}).orElse(false);
+		}
+		return false;
+	}
+
 }

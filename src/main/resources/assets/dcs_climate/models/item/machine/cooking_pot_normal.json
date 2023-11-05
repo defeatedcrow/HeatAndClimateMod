@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/machine/cooking_pot_normal_item"
+  },
+  "parent": "minecraft:item/generated"
+}

@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
@@ -433,6 +434,11 @@ public class ClimateCalculator implements IClimateCalculator {
 				if (type != null) {
 					ret = DCHeatTier.getTypeByTemperature(type.getFluidType().getTemperature());
 				}
+			} else if (block instanceof LiquidBlock) {
+				Fluid type = ((LiquidBlock) block).getFluid();
+				if (type != null) {
+					ret = DCHeatTier.getTypeByTemperature(type.getFluidType().getTemperature());
+				}
 			}
 
 			BlockHeatTierEvent event = new BlockHeatTierEvent(level, source, ret, b);
@@ -455,6 +461,11 @@ public class ClimateCalculator implements IClimateCalculator {
 				ret = ClimateAPI.registerBlock.getHumidity(state).orElse(DCHumidity.NORMAL);
 			} else if (block instanceof IFluidBlock) {
 				Fluid type = ((IFluidBlock) block).getFluid();
+				if (type != null && type.getFluidType().canHydrate(type.defaultFluidState(), Level, target, Blocks.FARMLAND.defaultBlockState(), source)) {
+					ret = DCHumidity.UNDERWATER;
+				}
+			} else if (block instanceof LiquidBlock) {
+				Fluid type = ((LiquidBlock) block).getFluid();
 				if (type != null && type.getFluidType().canHydrate(type.defaultFluidState(), Level, target, Blocks.FARMLAND.defaultBlockState(), source)) {
 					ret = DCHumidity.UNDERWATER;
 				}

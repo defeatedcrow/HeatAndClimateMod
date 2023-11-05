@@ -50,11 +50,13 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.IForgeShearable;
@@ -113,9 +115,9 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	@Override
 	public List<String> getModelNameSuffix() {
 		if (defoliation)
-			return ImmutableList.of("0", "1", "2", "3", "4", "5");
+			return Lists.newArrayList("0", "1", "2", "3", "4", "5");
 		else
-			return ImmutableList.of("0", "0", "0", "d", "f", "c");
+			return Lists.newArrayList("0", "0", "0", "d", "f", "c");
 	}
 
 	@Override
@@ -202,12 +204,15 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	@Override
 	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
-		if (state.getBlock() instanceof IClimateCrop) {
+		if (state == null || builder == null) {
+			ret.addAll(super.getDrops(state, builder));
+		} else if (state.getBlock() instanceof IClimateCrop) {
+			LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
 			IClimateCrop crop = (IClimateCrop) state.getBlock();
-			ServerLevel level = builder.getLevel();
-			ItemStack tool = builder.getOptionalParameter(LootContextParams.TOOL);
-			if (DCUtil.isEmpty(tool)) {
-				tool = ItemStack.EMPTY;
+			ServerLevel level = cont.getLevel();
+			ItemStack tool = ItemStack.EMPTY;
+			if (cont.hasParam(LootContextParams.TOOL) && !DCUtil.isEmpty(cont.getParamOrNull(LootContextParams.TOOL))) {
+				tool = cont.getParam(LootContextParams.TOOL);
 			}
 
 			if (tool.is(Tags.Items.SHEARS) || tool.is(TagDC.ItemTag.SCYTHES) || tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
@@ -282,7 +287,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	}
 
 	@Override
-	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity) {
+	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity, @Nullable BlockEntity tile) {
 		return Lists.newArrayList();
 	}
 

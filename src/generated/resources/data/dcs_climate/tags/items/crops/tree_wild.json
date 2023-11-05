@@ -7,6 +7,7 @@
     "dcs_climate:food/crop_erica_wild",
     "dcs_climate:food/crop_morus_wild",
     "dcs_climate:food/crop_olive_wild",
-    "dcs_climate:food/crop_rose_wild"
+    "dcs_climate:food/crop_rose_wild",
+    "dcs_climate:food/crop_sumac_wild"
   ]
 }

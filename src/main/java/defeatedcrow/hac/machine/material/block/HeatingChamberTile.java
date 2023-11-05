@@ -47,6 +47,7 @@ public class HeatingChamberTile extends HeatSourceTile {
 				break;
 			case 1:
 				HeatingChamberTile.this.totalProgress = data;
+				break;
 			}
 
 		}

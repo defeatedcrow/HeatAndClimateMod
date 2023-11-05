@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "#forge:ore_target",
-  "features": "dcs_climate:wild_crop_dc",
-  "step": "vegetal_decoration"
+  "features": "dcs_climate:ore_vein_dc",
+  "step": "underground_ores"
 }

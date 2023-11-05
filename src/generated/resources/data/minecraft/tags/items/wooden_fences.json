@@ -9,6 +9,8 @@
     "dcs_climate:build/fence_morus_mulberry",
     "dcs_climate:build/fence_olive_ash",
     "dcs_climate:build/fence_palm_coconut",
-    "dcs_climate:build/fence_reed_sorghum"
+    "dcs_climate:build/fence_sumac_lacquer",
+    "dcs_climate:build/fence_reed_sorghum",
+    "dcs_climate:build/fence_lacquerware"
   ]
 }

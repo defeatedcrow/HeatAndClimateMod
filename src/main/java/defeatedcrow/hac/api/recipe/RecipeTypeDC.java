@@ -8,8 +8,8 @@ public enum RecipeTypeDC {
 	SIEVE,
 	DISTILL,
 	CATALYST,
-	STERILIZE,
 	ELECTROLYZE,
+	FERMENTATION,
 	COOKING,
 	TEA;
 
@@ -34,8 +34,8 @@ public enum RecipeTypeDC {
 			SIEVE,
 			DISTILL,
 			CATALYST,
-			STERILIZE,
 			ELECTROLYZE,
+			FERMENTATION,
 			COOKING,
 			TEA);
 	}

@@ -1,7 +1,10 @@
 package defeatedcrow.hac.core.tag;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
+
+import com.google.common.collect.Lists;
 
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +16,8 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class TagUtil {
 
@@ -59,5 +64,14 @@ public class TagUtil {
 
 	public static Optional<TagKey<Biome>> matchTag(String name, Holder<Biome> biome) {
 		return biome.getTagKeys().filter((tag) -> isMatch(name, tag)).findAny();
+	}
+
+	public static List<Fluid> getFluidList(TagKey<Fluid> tag) {
+		List<Fluid> ret = Lists.newArrayList();
+		ForgeRegistries.FLUIDS.iterator().forEachRemaining((f) -> {
+			if (f.is(tag))
+				ret.add(f);
+		});
+		return ret;
 	}
 }

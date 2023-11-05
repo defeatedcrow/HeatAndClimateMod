@@ -59,12 +59,12 @@ public class CropBlockRanunculus_Delphinium extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public boolean isSuitablePlace(BlockGetter world, BlockPos pos, BlockState state) {
-		BlockState avobe = world.getBlockState(pos.above());
-		if (DCState.getBool(avobe, DCState.DOUBLE)) {
-			return state.getBlock() == this && DCState.getInt(state, DCState.STAGE5) > 1;
+	protected boolean mayPlaceOn(BlockState under, BlockGetter level, BlockPos pos) {
+		if (under != null && under.getBlock() == this) {
+			BlockState avobe = level.getBlockState(pos.above());
+			return DCState.getBool(avobe, DCState.DOUBLE) && DCState.getInt(under, DCState.STAGE5) > 1;
 		}
-		return super.isSuitablePlace(world, pos, state);
+		return super.mayPlaceOn(under, level, pos);
 	}
 
 	@Override

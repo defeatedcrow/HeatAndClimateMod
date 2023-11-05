@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
+import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
@@ -15,6 +16,7 @@ public class PluginRecipeListDC {
 	private PluginRecipeListDC() {}
 
 	public static final List<IClimateSmelting> SMELTING_LIST = Lists.newArrayList();
+	public static final List<IDeviceRecipe> COOKING_LIST = Lists.newArrayList();
 	public static final List<ClimateCropBaseBlock> CROP_LIST = Lists.newArrayList();
 	public static final List<LeavesCropBlockDC> TREE_LIST = Lists.newArrayList();
 
@@ -156,12 +158,18 @@ public class PluginRecipeListDC {
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_RO_RASPBERRY.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_RO_DAMASCHENA.get());
 
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_SU_LACQUER.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_SU_MANGO.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_SU_CASHEW.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_SU_PISTACHIO.get());
+
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_COCONUT.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_DATE.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_OIL.get());
 
 		SMELTING_LIST.addAll(DCRecipes.INSTANCE.SMELTING.values());
 
+		COOKING_LIST.addAll(DCRecipes.INSTANCE.COOKING.values());
 	}
 
 }

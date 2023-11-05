@@ -1,0 +1,16 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "sap": "dcs_climate:block/machine/spilecup_sap",
+        "particle": "dcs_climate:block/machine/spilecup_sap"
+    },
+    "elements": [
+        {
+            "from": [2, 9, 1],
+            "to": [13, 9, 7],
+            "faces": {
+                "up": {"uv": [0, 0, 11, 6], "texture": "#sap"}
+            }
+        }
+    ]
+}

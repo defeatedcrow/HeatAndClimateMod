@@ -14,6 +14,7 @@ import defeatedcrow.hac.core.client.entity.renderer.TileRendererCabinet;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererChandelier;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLocker;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLuggage;
+import defeatedcrow.hac.core.client.particle.SmokeParticleDC;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.building.CabinetTile;
@@ -72,13 +73,22 @@ import defeatedcrow.hac.food.material.entity.StickBeefItem;
 import defeatedcrow.hac.food.material.entity.StickMeatItem;
 import defeatedcrow.hac.machine.client.entity.BlockChamberFuelModel;
 import defeatedcrow.hac.machine.client.entity.BlockChamberIronModel;
+import defeatedcrow.hac.machine.client.entity.CookingPotModel_A;
+import defeatedcrow.hac.machine.client.entity.CookingPotModel_B;
+import defeatedcrow.hac.machine.client.entity.CookingPotModel_C;
+import defeatedcrow.hac.machine.client.entity.FermentationJarModel_A;
+import defeatedcrow.hac.machine.client.entity.FermentationJarModel_B;
 import defeatedcrow.hac.machine.client.entity.IBCModel;
 import defeatedcrow.hac.machine.client.entity.PortableCanModel;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberFuel;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberIron;
+import defeatedcrow.hac.machine.client.entity.TileRendererCookingPot;
+import defeatedcrow.hac.machine.client.entity.TileRendererFermentationJar;
 import defeatedcrow.hac.machine.client.entity.TileRendererIBC;
 import defeatedcrow.hac.machine.client.entity.TileRendererPortableCan;
 import defeatedcrow.hac.machine.material.MachineInit;
+import defeatedcrow.hac.machine.material.block.CookingPotTile;
+import defeatedcrow.hac.machine.material.block.FermentationJarTile;
 import defeatedcrow.hac.machine.material.block.IBCTile;
 import defeatedcrow.hac.machine.material.block.PortableCanTile;
 import defeatedcrow.hac.magic.client.entity.RenderBindPlant;
@@ -86,7 +96,10 @@ import defeatedcrow.hac.magic.client.entity.RenderColorArrow;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.client.model.TridentModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 
 public class EntityClientRegister {
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -131,6 +144,20 @@ public class EntityClientRegister {
 
 		event.registerLayerDefinition(IBCTile.NORMAL.getLayerLocation(), IBCModel::createBodyLayer);
 		event.registerLayerDefinition(IBCTile.INNER.getLayerLocation(), IBCModel::createBodyLayer);
+
+		event.registerLayerDefinition(CookingPotTile.NORMAL.getLayerLocation(), CookingPotModel_A::createBodyLayer);
+		event.registerLayerDefinition(CookingPotTile.WHITE.getLayerLocation(), CookingPotModel_A::createBodyLayer);
+		event.registerLayerDefinition(CookingPotTile.BLUE.getLayerLocation(), CookingPotModel_B::createBodyLayer);
+		event.registerLayerDefinition(CookingPotTile.BLACK.getLayerLocation(), CookingPotModel_C::createBodyLayer);
+		event.registerLayerDefinition(CookingPotTile.RED.getLayerLocation(), CookingPotModel_A::createBodyLayer);
+		event.registerLayerDefinition(CookingPotTile.GREEN.getLayerLocation(), CookingPotModel_B::createBodyLayer);
+
+		event.registerLayerDefinition(FermentationJarTile.NORMAL.getLayerLocation(), FermentationJarModel_B::createBodyLayer);
+		event.registerLayerDefinition(FermentationJarTile.WHITE.getLayerLocation(), FermentationJarModel_B::createBodyLayer);
+		event.registerLayerDefinition(FermentationJarTile.BLUE.getLayerLocation(), FermentationJarModel_A::createBodyLayer);
+		event.registerLayerDefinition(FermentationJarTile.BLACK.getLayerLocation(), FermentationJarModel_B::createBodyLayer);
+		event.registerLayerDefinition(FermentationJarTile.RED.getLayerLocation(), FermentationJarModel_A::createBodyLayer);
+		event.registerLayerDefinition(FermentationJarTile.GREEN.getLayerLocation(), FermentationJarModel_A::createBodyLayer);
 
 		// Entity
 		event.registerLayerDefinition(HarpoonItem.FLINT.getLayerLocation(), TridentModel::createLayer);
@@ -215,6 +242,8 @@ public class EntityClientRegister {
 		event.registerBlockEntityRenderer(MachineInit.CHAMBER_IRON_TILE.get(), TileRendererChamberIron::new);
 		event.registerBlockEntityRenderer(MachineInit.PORTABLE_CAN_TILE.get(), TileRendererPortableCan::new);
 		event.registerBlockEntityRenderer(MachineInit.IBC_TILE.get(), TileRendererIBC::new);
+		event.registerBlockEntityRenderer(MachineInit.COOKING_POT_TILE.get(), TileRendererCookingPot::new);
+		event.registerBlockEntityRenderer(MachineInit.FERMANTATION_JAR_TILE.get(), TileRendererFermentationJar::new);
 
 		// Entity
 		event.registerEntityRenderer(CoreInit.HARPOON.get(), RenderHarpoon::new);
@@ -250,4 +279,20 @@ public class EntityClientRegister {
 	public static void registerLayers(EntityRenderersEvent.AddLayers event) {
 
 	}
+
+	public static void registerParticle(RegisterParticleProvidersEvent event) {
+		event.register(CoreInit.SMOKE.get(), SmokeParticleDC.Provider::new);
+	}
+
+	public static void registerRenderTypes() {
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.BRINE.getStillFluid().get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.BRINE.getFlowingFluid().get(), RenderType.translucent());
+
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.HOTSPRING.getStillFluid().get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.HOTSPRING.getFlowingFluid().get(), RenderType.translucent());
+
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getStillFluid().get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getFlowingFluid().get(), RenderType.translucent());
+	}
+
 }

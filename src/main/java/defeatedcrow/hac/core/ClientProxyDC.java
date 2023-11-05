@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.client.AdvTooltipEvent;
 import defeatedcrow.hac.core.client.ClimateHUDEvent;
 import defeatedcrow.hac.core.client.DCTextureStitch;
 import defeatedcrow.hac.core.client.RenderPlayerEventDC;
+import defeatedcrow.hac.core.client.entity.EntityClientRegister;
 import defeatedcrow.hac.core.client.gui.DoubleInventoryScreen;
 import defeatedcrow.hac.core.client.gui.SimpleInventoryScreen;
 import defeatedcrow.hac.core.client.gui.UnlockedInventoryScreen;
@@ -15,6 +16,8 @@ import defeatedcrow.hac.core.climate.ClientClimateData;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
 import defeatedcrow.hac.core.event.ClientTickEventDC;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.machine.client.gui.CookingPotScreen;
+import defeatedcrow.hac.machine.client.gui.FermentationJarScreen;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberScreen;
 import defeatedcrow.hac.machine.client.gui.PortableTankScreen;
 import defeatedcrow.hac.machine.material.MachineInit;
@@ -37,7 +40,6 @@ public class ClientProxyDC extends CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(ClimateHUDEvent::renderScreen);
 		MinecraftForge.EVENT_BUS.addListener(RenderPlayerEventDC::renderWings);
 		MinecraftForge.EVENT_BUS.addListener(DCTextureStitch::register);
-
 		MinecraftForge.EVENT_BUS.addListener(AdvTooltipEvent::render);
 	}
 
@@ -55,6 +57,10 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(MachineInit.CHAMBER_MENU.get(), HeatingChamberScreen::new);
 		MenuScreens.register(MachineInit.FLUID_MENU.get(), PortableTankScreen::new);
 		MenuScreens.register(MachineInit.FLUID_MENU_LARGE.get(), PortableTankScreen::new);
+		MenuScreens.register(MachineInit.POT_MENU.get(), CookingPotScreen::new);
+		MenuScreens.register(MachineInit.JAR_MENU.get(), FermentationJarScreen::new);
+
+		EntityClientRegister.registerRenderTypes();
 	}
 
 	@Override

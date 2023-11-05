@@ -146,7 +146,9 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 
 	@Override
 	public List<DCHumidity> getSuitableHum(CropTier t) {
-		if (t == CropTier.WILD || t == CropTier.COMMON) {
+		if (t == CropTier.WILD) {
+			return ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET);
+		} else if (t == CropTier.COMMON) {
 			return ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET, DCHumidity.UNDERWATER);
 		}
 		return ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET);

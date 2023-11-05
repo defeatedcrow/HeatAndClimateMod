@@ -84,6 +84,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.CROP_APPLE).add(Items.APPLE);
 		tag(TagDC.ItemTag.CROP_COCOA).add(Items.COCOA_BEANS);
 		tag(TagDC.ItemTag.CROP_BERRY).add(Items.SWEET_BERRIES);
+		tag(TagDC.ItemTag.CROP_SUGAR).add(Items.SUGAR_CANE);
 
 		tag(TagDC.ItemTag.BREAD).add(Items.BREAD);
 		tag(TagDC.ItemTag.CROP_NUTS).add(Items.PUMPKIN_SEEDS, Items.SUNFLOWER);
@@ -164,18 +165,22 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 			FoodInit.CROP_ML_TROPICAL.get(), FoodInit.CROP_PE_ADZUKI.get(), FoodInit.CROP_SL_LANTERN.get(), FoodInit.CROP_OR_CATTLEYA.get(), FoodInit.CROP_RA_MONKSHOOD.get());
 
 		tag(TagDC.ItemTag.TREE_WILD).add(FoodInit.CROP_BH_COMMON.get(), FoodInit.CROP_CH_WILD.get(), FoodInit.CROP_CM_OIL.get(), FoodInit.CROP_CT_POMELO.get(),
-			FoodInit.CROP_ER_HEATH.get(), FoodInit.CROP_MR_MULBERRY.get(), FoodInit.CROP_OL_ASH.get(), FoodInit.CROP_RO_RUGOSA.get());
+			FoodInit.CROP_ER_HEATH.get(), FoodInit.CROP_MR_MULBERRY.get(), FoodInit.CROP_OL_ASH.get(), FoodInit.CROP_RO_RUGOSA.get(), FoodInit.CROP_SU_LACQUER.get());
 
 		tag(TagDC.ItemTag.TREE_COMMON).add(FoodInit.CROP_BH_WALNUT.get(), FoodInit.CROP_CH_PLUM.get(), FoodInit.CROP_CM_SCHIMA.get(), FoodInit.CROP_CT_MANDARIN.get(),
-			FoodInit.CROP_CN_CINNAMON.get(), FoodInit.CROP_ER_RHODODENDRON.get(), FoodInit.CROP_MR_PAPER.get(), FoodInit.CROP_OL_OLIVE.get(), FoodInit.CROP_RO_RASPBERRY.get());
+			FoodInit.CROP_CN_CINNAMON.get(), FoodInit.CROP_ER_RHODODENDRON.get(), FoodInit.CROP_MR_PAPER.get(), FoodInit.CROP_OL_OLIVE.get(),
+			FoodInit.CROP_RO_RASPBERRY.get(), FoodInit.CROP_SU_MANGO.get());
 
 		tag(TagDC.ItemTag.TREE_RARE).add(FoodInit.CROP_BH_SWEET.get(), FoodInit.CROP_CH_PEACH.get(), FoodInit.CROP_CN_AVOCADO.get(), FoodInit.CROP_CM_TEA.get(),
-			FoodInit.CROP_CT_LEMON.get(), FoodInit.CROP_ER_BLUEBERRY.get(), FoodInit.CROP_MR_RUBBER.get(), FoodInit.CROP_OL_OSMANTHUS.get(), FoodInit.CROP_RO_DAMASCHENA.get());
+			FoodInit.CROP_CT_LEMON.get(), FoodInit.CROP_ER_BLUEBERRY.get(), FoodInit.CROP_MR_RUBBER.get(), FoodInit.CROP_OL_OSMANTHUS.get(),
+			FoodInit.CROP_RO_DAMASCHENA.get(), FoodInit.CROP_SU_CASHEW.get());
+
+		tag(TagDC.ItemTag.TREE_EPIC).add(FoodInit.CROP_SU_PISTACHIO.get());
 
 		tag(TagDC.ItemTag.ALL_WILD).addTags(TagDC.ItemTag.CROP_WILD, TagDC.ItemTag.TREE_WILD);
 		tag(TagDC.ItemTag.ALL_COMMON).addTags(TagDC.ItemTag.CROP_COMMON, TagDC.ItemTag.TREE_COMMON);
 		tag(TagDC.ItemTag.ALL_RARE).addTags(TagDC.ItemTag.CROP_RARE, TagDC.ItemTag.TREE_RARE);
-		tag(TagDC.ItemTag.ALL_EPIC).addTags(TagDC.ItemTag.CROP_EPIC);
+		tag(TagDC.ItemTag.ALL_EPIC).addTags(TagDC.ItemTag.CROP_EPIC, TagDC.ItemTag.TREE_EPIC);
 		tag(TagDC.ItemTag.ALL_CROPS).addTags(TagDC.ItemTag.ALL_WILD, TagDC.ItemTag.ALL_COMMON, TagDC.ItemTag.ALL_RARE, TagDC.ItemTag.ALL_EPIC);
 
 		tag(TagDC.ItemTag.CROP_CEREALS).addTags(TagDC.ItemTag.CROP_OAT, TagDC.ItemTag.CROP_RYE, TagDC.ItemTag.CROP_BARLEY,
@@ -229,7 +234,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.CROP_FRUITS).addTags(TagDC.ItemTag.CROP_LANTERN, TagDC.ItemTag.CROP_WILD_GRAPE, TagDC.ItemTag.CROP_RED_GRAPE,
 			TagDC.ItemTag.CROP_WHITE_GRAPE, TagDC.ItemTag.CROP_CANTALOUP, TagDC.ItemTag.CROP_CHERRY, TagDC.ItemTag.CROP_PLUM,
 			TagDC.ItemTag.CROP_PEACH, TagDC.ItemTag.CROP_BLUEBERRY, TagDC.ItemTag.CROP_MULBERRY, TagDC.ItemTag.CROP_KAJI,
-			TagDC.ItemTag.CROP_DATE, TagDC.ItemTag.CROP_RASPBERRY, TagDC.ItemTag.CROP_APPLE, TagDC.ItemTag.CROP_BERRY);
+			TagDC.ItemTag.CROP_DATE, TagDC.ItemTag.CROP_RASPBERRY, TagDC.ItemTag.CROP_APPLE, TagDC.ItemTag.CROP_BERRY,
+			TagDC.ItemTag.CROP_MANGO, TagDC.ItemTag.CROP_CASHEW);
 
 		tag(TagDC.ItemTag.CROP_BERRY).addTags(TagDC.ItemTag.CROP_BLUEBERRY, TagDC.ItemTag.CROP_MULBERRY, TagDC.ItemTag.CROP_RASPBERRY);
 
@@ -247,7 +253,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.CROP_OILS).addTags(TagDC.ItemTag.CROP_RAPESEED, TagDC.ItemTag.CROP_ROGERIA, TagDC.ItemTag.CROP_SESAMI, TagDC.ItemTag.CROP_SOY,
 			TagDC.ItemTag.CROP_AVOCADO, TagDC.ItemTag.CROP_CAMELLIA, TagDC.ItemTag.CROP_OLIVE, TagDC.ItemTag.CROP_OIL_PALM);
 
-		tag(TagDC.ItemTag.CROP_NUTS).addTags(TagDC.ItemTag.CROP_BEECH, TagDC.ItemTag.CROP_WALNUT, TagDC.ItemTag.CROP_ACORN, TagDC.ItemTag.CROP_COCONUT);
+		tag(TagDC.ItemTag.CROP_NUTS).addTags(TagDC.ItemTag.CROP_BEECH, TagDC.ItemTag.CROP_WALNUT, TagDC.ItemTag.CROP_ACORN, TagDC.ItemTag.CROP_COCONUT,
+			TagDC.ItemTag.CROP_PISTACHIO, TagDC.ItemTag.CASHEW_NUTS);
 
 		tag(TagDC.ItemTag.DUST_BREAD_GRAINS).addTags(TagDC.ItemTag.DUST_RYE, TagDC.ItemTag.DUST_WHEAT);
 
@@ -264,6 +271,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.MILKS).addTags(TagDC.ItemTag.COW_MILK, TagDC.ItemTag.SOY_MILK, TagDC.ItemTag.COCONUT_MILK);
 
+		tag(TagDC.ItemTag.SAPS).addTags(TagDC.ItemTag.SAP_SWEET, TagDC.ItemTag.SAP_RESIN, TagDC.ItemTag.SAP_LATEX, TagDC.ItemTag.SAP_LACQUER);
+
 		tag(TagDC.ItemTag.FOOD_FAT).addTags(TagDC.ItemTag.BUTTER, TagDC.ItemTag.MARGARINE);
 
 		tag(TagDC.ItemTag.RAW_MEAT).addTags(TagDC.ItemTag.RAW_BEEF, TagDC.ItemTag.RAW_PORK, TagDC.ItemTag.RAW_CHICKEN,
@@ -276,6 +285,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.RAW_ALL_FISH).addTags(TagDC.ItemTag.RAW_EDIBLE_FISH).add(Items.PUFFERFISH, Items.TROPICAL_FISH);
 
 		tag(TagDC.ItemTag.COOKED_FISH).addTags(TagDC.ItemTag.COOKED_COD, TagDC.ItemTag.COOKED_SALMON);
+
+		tag(Tags.Items.BONES).addTags(TagDC.ItemTag.BONE_COW, TagDC.ItemTag.BONE_PIG, TagDC.ItemTag.BONE_CHICKEN);
 
 		tag(TagDC.ItemTag.FERTILIZER).addTags(TagDC.ItemTag.FISH_POWDER, TagDC.ItemTag.PRESS_CAKE, TagDC.ItemTag.LEAF_MOLD, TagDC.ItemTag.FERTILIZER_ADV);
 
@@ -377,6 +388,12 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		copy(TagDC.BlockTag.CROP_PUMPKIN, TagDC.ItemTag.CROP_PUMPKIN);
 		copy(TagDC.BlockTag.CROP_MELON, TagDC.ItemTag.CROP_MELON);
+
+		copy(TagDC.BlockTag.LOG_SWEET, TagDC.ItemTag.LOG_SWEET);
+		copy(TagDC.BlockTag.LOG_RESIN, TagDC.ItemTag.LOG_RESIN);
+		copy(TagDC.BlockTag.LOG_LATEX, TagDC.ItemTag.LOG_LATEX);
+		copy(TagDC.BlockTag.LOG_LACQUER, TagDC.ItemTag.LOG_LACQUER);
+		copy(TagDC.BlockTag.LOG_SAP, TagDC.ItemTag.LOG_SAP);
 
 		copy(TagDC.BlockTag.MAGMA, TagDC.ItemTag.MAGMA);
 
