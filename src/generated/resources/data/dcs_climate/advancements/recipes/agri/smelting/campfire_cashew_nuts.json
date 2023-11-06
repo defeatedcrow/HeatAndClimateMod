@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cashew_apple": {
+    "has_cashew": {
       "conditions": {
         "items": [
           {
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_cashew_apple",
+      "has_cashew",
       "has_the_recipe"
     ]
   ],

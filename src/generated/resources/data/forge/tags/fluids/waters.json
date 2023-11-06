@@ -1,0 +1,8 @@
+{
+  "values": [
+    "minecraft:water",
+    "dcs_climate:brine",
+    "dcs_climate:hotspring",
+    "dcs_climate:sparkling"
+  ]
+}

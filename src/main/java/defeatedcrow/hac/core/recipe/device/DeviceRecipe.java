@@ -247,18 +247,18 @@ public class DeviceRecipe implements IDeviceRecipe {
 
 		if (!secondary.isEmpty()) {
 			JsonObject sec = new JsonObject();
-			ret.addProperty("item", ForgeRegistries.ITEMS.getKey(secondary.getItem()).toString());
-			ret.addProperty("count", secondary.getCount());
-			json.add("secondary", ret);
+			sec.addProperty("item", ForgeRegistries.ITEMS.getKey(secondary.getItem()).toString());
+			sec.addProperty("count", secondary.getCount());
+			json.add("secondary", sec);
 
 			json.addProperty("secondary_rate", secondaryRate);
 		}
 
 		if (!tertiary.isEmpty()) {
 			JsonObject ter = new JsonObject();
-			ret.addProperty("item", ForgeRegistries.ITEMS.getKey(tertiary.getItem()).toString());
-			ret.addProperty("count", tertiary.getCount());
-			json.add("tertiary", ret);
+			ter.addProperty("item", ForgeRegistries.ITEMS.getKey(tertiary.getItem()).toString());
+			ter.addProperty("count", tertiary.getCount());
+			json.add("tertiary", ter);
 
 			json.addProperty("tertiary_rate", tertiaryRate);
 		}
@@ -267,7 +267,7 @@ public class DeviceRecipe implements IDeviceRecipe {
 			JsonObject retF = new JsonObject();
 			retF.addProperty("fluid", ForgeRegistries.FLUIDS.getKey(resultFluid.getFluid()).toString());
 			retF.addProperty("amount", resultFluid.getAmount());
-			json.add("result_fluid", ret);
+			json.add("result_fluid", retF);
 		}
 
 		JsonArray ings = new JsonArray();

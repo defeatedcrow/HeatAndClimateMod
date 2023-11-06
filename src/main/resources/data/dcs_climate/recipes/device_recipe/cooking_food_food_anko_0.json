@@ -2,12 +2,16 @@
   "type": "dcs_climate:device_recipe",
   "group": "cooking",
   "result": {
-    "item": "dcs_climate:main/dust_salt",
+    "item": "dcs_climate:food/food_anko",
     "count": 1
   },
-  "ingredients": [],
-  "input_fluids": [
-    "forge:brine"
+  "ingredients": [
+    {
+      "tag": "forge:crops/adzuki"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    }
   ],
   "heat": [
     "BOIL",

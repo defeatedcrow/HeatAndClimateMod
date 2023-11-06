@@ -25,6 +25,7 @@ import defeatedcrow.hac.core.recipe.MaterialRecipes;
 import defeatedcrow.hac.core.recipe.vanilla.VanillaRecipeProvider;
 import defeatedcrow.hac.core.tag.BiomeTagProviderDC;
 import defeatedcrow.hac.core.tag.BlockTagProviderDC;
+import defeatedcrow.hac.core.tag.FluidTagProviderDC;
 import defeatedcrow.hac.core.tag.ItemTagProviderDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.worldgen.FeatureInit;
@@ -164,6 +165,7 @@ public class ClimateCore {
 		generator.addProvider(event.includeServer(), blockTag);
 		generator.addProvider(event.includeServer(), new ItemTagProviderDC(generator, blockTag, existingFileHelper));
 		generator.addProvider(event.includeServer(), new BiomeTagProviderDC(generator, existingFileHelper));
+		generator.addProvider(event.includeServer(), new FluidTagProviderDC(generator, existingFileHelper));
 
 		generator.addProvider(event.includeServer(), new VanillaRecipeProvider(generator));
 		generator.addProvider(event.includeServer(), new FoodRecipeProvider(generator));

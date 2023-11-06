@@ -10,11 +10,15 @@ import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.math.Matrix4f;
 
+import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.machine.material.MachineInit;
+import defeatedcrow.hac.plugin.jei.ingredients.AirflowRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.HeatTierRenderer;
+import defeatedcrow.hac.plugin.jei.ingredients.HumidityRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.IngredientTypeDC;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -29,25 +33,25 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
 
-public class DeviceCookingCategory implements IRecipeCategory<IDeviceRecipe> {
+public class DeviceFermentationCategory implements IRecipeCategory<IDeviceRecipe> {
 	protected IDrawable background;
 	protected IDrawable icon;
 
-	public DeviceCookingCategory(IGuiHelper guiHelper) {
-		icon = guiHelper.createDrawableItemStack(new ItemStack(MachineInit.COOKING_POT_NORMAL.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.COOKING.getLocation(), 8, 5, 155, 75)
-			.addPadding(0, 0, 4, 1)
+	public DeviceFermentationCategory(IGuiHelper guiHelper) {
+		icon = guiHelper.createDrawableItemStack(new ItemStack(MachineInit.FERMANTATION_JAR_NORMAL.get()));
+		background = guiHelper.drawableBuilder(PluginTexDC.FERMENTATION.getLocation(), 15, 6, 142, 92)
+			.addPadding(0, 0, 8, 3)
 			.build();
 	}
 
 	@Override
 	public RecipeType<IDeviceRecipe> getRecipeType() {
-		return JEIPluginDC.COOKING_DATA;
+		return JEIPluginDC.FERMENTATION_DATA;
 	}
 
 	@Override
 	public Component getTitle() {
-		return Component.translatable("dcs.gui.jei.cooking_data");
+		return Component.translatable("dcs.gui.jei.fermentation_data");
 	}
 
 	@Override
@@ -63,29 +67,28 @@ public class DeviceCookingCategory implements IRecipeCategory<IDeviceRecipe> {
 	@Override
 	public void setRecipe(IRecipeLayoutBuilder builder, IDeviceRecipe recipe, IFocusGroup focuses) {
 
-		int l = Math.min(6, recipe.getInputs().size());
+		int l = Math.min(3, recipe.getInputs().size());
 		for (int l1 = 0; l1 < l; l1++) {
-			int x = l1 > 2 ? 18 : 0;
-			int y = (l1 % 3) * 18;
-			builder.addSlot(RecipeIngredientRole.INPUT, 60 + x, 6 + y).addIngredients(recipe.getInputs().get(l1));
+			int y = l1 * 18;
+			builder.addSlot(RecipeIngredientRole.INPUT, 66, 6 + y).addIngredients(recipe.getInputs().get(l1));
 		}
 
-		builder.addSlot(RecipeIngredientRole.OUTPUT, 114, 14).addItemStack(recipe.getOutput().copy());
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 104, 13).addItemStack(recipe.getOutput().copy());
 
 		if (!recipe.getSecondaryOutput().isEmpty())
-			builder.addSlot(RecipeIngredientRole.OUTPUT, 114, 38).addItemStack(recipe.getSecondaryOutput().copy());
+			builder.addSlot(RecipeIngredientRole.OUTPUT, 104, 37).addItemStack(recipe.getSecondaryOutput().copy());
 
 		if (!recipe.getInputFluids().isEmpty()) {
 			TagKey<Fluid> tag = recipe.getInputFluids().get(0);
 			List<Fluid> list = TagUtil.getFluidList(tag);
 			if (!list.isEmpty()) {
 				Fluid f = list.get(0);
-				builder.addSlot(RecipeIngredientRole.INPUT, 37, 37).addFluidStack(f, 1000);
+				builder.addSlot(RecipeIngredientRole.INPUT, 43, 36).addFluidStack(f, 1000);
 			}
 		}
 
 		if (!recipe.getOutputFluid().isEmpty()) {
-			builder.addSlot(RecipeIngredientRole.OUTPUT, 137, 37).addFluidStack(recipe.getOutputFluid().getFluid(), recipe.getOutputFluid().getAmount());
+			builder.addSlot(RecipeIngredientRole.OUTPUT, 127, 37).addFluidStack(recipe.getOutputFluid().getFluid(), recipe.getOutputFluid().getAmount());
 		}
 
 		List<DCHeatTier> heats = recipe.requiredHeat();
@@ -93,8 +96,26 @@ public class DeviceCookingCategory implements IRecipeCategory<IDeviceRecipe> {
 			heats.addAll(DCHeatTier.elements());
 		}
 		for (DCHeatTier heat : heats) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 41 + heat.getID() * 6, 67).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
+			builder.addSlot(RecipeIngredientRole.INPUT, 38 + heat.getID() * 6, 66).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
 				new HeatTierRenderer(6, 3));
+		}
+
+		List<DCHumidity> hums = recipe.requiredHum();
+		if (hums.isEmpty()) {
+			hums.addAll(DCHumidity.elements());
+		}
+		for (DCHumidity hum : hums) {
+			builder.addSlot(RecipeIngredientRole.INPUT, 38 + hum.getID() * 21, 75).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
+				new HumidityRenderer(21, 3));
+		}
+
+		List<DCAirflow> airs = recipe.requiredAir();
+		if (airs.isEmpty()) {
+			airs.addAll(DCAirflow.elements());
+		}
+		for (DCAirflow air : airs) {
+			builder.addSlot(RecipeIngredientRole.INPUT, 38 + air.getID() * 21, 85).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW,
+				new AirflowRenderer(21, 3));
 		}
 	}
 
@@ -105,7 +126,7 @@ public class DeviceCookingCategory implements IRecipeCategory<IDeviceRecipe> {
 
 		if (!recipe.getInputFluids().isEmpty()) {
 			TagKey<Fluid> tag = recipe.getInputFluids().get(0);
-			if (mouseX > 37 && mouseX < 53 && mouseY > 13 && mouseY < 54) {
+			if (mouseX > 37 && mouseX < 53 && mouseY > 12 && mouseY < 54) {
 				list.add(Component.literal("Fluid Tag: " + tag.location().toString()));
 			}
 		}

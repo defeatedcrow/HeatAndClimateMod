@@ -130,7 +130,7 @@ public class FermentationJarScreen extends AbstractContainerScreen<FermentationJ
 
 		int l = this.menu.getBurnProgress();
 		if (l > 0) {
-			this.blit(pose, i + 103, j + 55, 176, 42 + l, l, 9);
+			this.blit(pose, i + 103, j + 55, 176, 42, l, 9);
 		}
 
 		if (!this.menu.getInputFluid().isEmpty()) {

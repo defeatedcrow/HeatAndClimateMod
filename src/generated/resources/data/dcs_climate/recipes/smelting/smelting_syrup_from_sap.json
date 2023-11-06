@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "cookingtime": 200,
-  "experience": 0.0,
-  "ingredient": {
-    "tag": "forge:saps/seeet_sap"
-  },
-  "result": "dcs_climate:food/pack_syrup"
-}

@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.google.common.collect.ImmutableList;
 
 import defeatedcrow.hac.api.material.IFoodTaste;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -39,6 +40,24 @@ public class CraftingFoodEvent {
 				food.setTaste(event.getCrafting(), taste);
 			}
 		}
+	}
+
+	public static int getResultTaste(NonNullList<ItemStack> inputs, int[] cons) {
+		int lim = Math.min(inputs.size(), cons.length);
+		int taste = 0;
+		for (int i = 0; i < lim; i++) {
+			ItemStack check = inputs.get(i);
+			if (!check.isEmpty()) {
+				if (check.getItem() instanceof IFoodTaste) {
+					taste += ((IFoodTaste) check.getItem()).getTaste(check);
+				} else {
+					taste += getTaste(check.getItem()).map((vt) -> {
+						return vt.f;
+					}).orElse(0);
+				}
+			}
+		}
+		return taste;
 	}
 
 	private static Optional<Taste> getTaste(Item item) {

@@ -43,6 +43,7 @@ public class JEIPluginDC implements IModPlugin {
 		PluginRecipeListDC.init();
 		registration.addRecipes(SMELTING_DATA, PluginRecipeListDC.SMELTING_LIST);
 		registration.addRecipes(COOKING_DATA, PluginRecipeListDC.COOKING_LIST);
+		registration.addRecipes(FERMENTATION_DATA, PluginRecipeListDC.FERMENTATION_LIST);
 		registration.addRecipes(CROP_DATA, PluginRecipeListDC.CROP_LIST);
 		registration.addRecipes(TREE_DATA, PluginRecipeListDC.TREE_LIST);
 	}
@@ -53,6 +54,7 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipeCategories(new CropDataCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new TreeDataCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceCookingCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new DeviceFermentationCategory(registration.getJeiHelpers().getGuiHelper()));
 	}
 
 	public static final ResourceLocation SMELTING_ID = new ResourceLocation(ClimateCore.MOD_ID, "smelting_data");
@@ -66,5 +68,8 @@ public class JEIPluginDC implements IModPlugin {
 
 	public static final ResourceLocation COOKING_ID = new ResourceLocation(ClimateCore.MOD_ID, "cooking_data");
 	public static final RecipeType<IDeviceRecipe> COOKING_DATA = new RecipeType<IDeviceRecipe>(COOKING_ID, IDeviceRecipe.class);
+
+	public static final ResourceLocation FERMENTATION_ID = new ResourceLocation(ClimateCore.MOD_ID, "fermentation_data");
+	public static final RecipeType<IDeviceRecipe> FERMENTATION_DATA = new RecipeType<IDeviceRecipe>(FERMENTATION_ID, IDeviceRecipe.class);
 
 }

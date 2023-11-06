@@ -2,13 +2,12 @@
   "type": "dcs_climate:device_recipe",
   "group": "cooking",
   "result": {
-    "item": "dcs_climate:food/pack_syrup",
+    "item": "dcs_climate:main/dust_salt",
     "count": 1
   },
-  "ingredients": [
-    {
-      "tag": "forge:saps/seeet_sap"
-    }
+  "ingredients": [],
+  "input_fluids": [
+    "minecraft:water"
   ],
   "heat": [
     "BOIL",

@@ -588,46 +588,10 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
 			.save(cons, "dcs_climate:food/foodmaterial_margarine");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_JAM.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.CROP_FRUITS))
-			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
-			.unlockedBy("has_fluits", has(TagDC.ItemTag.CROP_FRUITS))
-			.save(cons, "dcs_climate:food/foodmaterial_fluit_jam");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MARMALADE.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
-			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
-			.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
-			.save(cons, "dcs_climate:food/foodmaterial_marmalade");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_ANKO.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.CROP_ADZUKI))
-			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
-			.unlockedBy("has_adzuki", has(TagDC.ItemTag.CROP_ADZUKI))
-			.save(cons, "dcs_climate:food/foodmaterial_anko");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_CUSTARD.get(), 3)
-			.requires(Ingredient.of(TagDC.ItemTag.MILKS))
-			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
-			.requires(Ingredient.of(Tags.Items.EGGS))
-			.unlockedBy("has_milks", has(TagDC.ItemTag.MILKS))
-			.save(cons, "dcs_climate:food/foodmaterial_custard");
-
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MAKOMOTAKE.get(), 1)
 			.requires(Ingredient.of(TagDC.ItemTag.CROP_WILD_RICE))
 			.unlockedBy("has_zizania", has(TagDC.ItemTag.CROP_WILD_RICE))
 			.save(cons, "dcs_climate:food/makomodake_zizania");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_SYRUP.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.PALM_FLOWER))
-			.unlockedBy("has_palm_flower", has(TagDC.ItemTag.PALM_FLOWER))
-			.save(cons, "dcs_climate:food/palm_flower_syrup");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.CURED_VANILLA.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.CROP_VANILLA))
-			.unlockedBy("has_vanilla", has(TagDC.ItemTag.CROP_VANILLA))
-			.save(cons, "dcs_climate:food/crop_vanilla_curing");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.RAW_SAUSAGE.get(), 3)
 			.requires(Ingredient.of(TagDC.ItemTag.RAW_MEAT))

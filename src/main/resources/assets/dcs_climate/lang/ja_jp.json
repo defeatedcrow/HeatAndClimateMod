@@ -1177,6 +1177,7 @@
 
   "dcs.gui.jei.smelting_data":"気候精錬",
   "dcs.gui.jei.cooking_data":"料理",
+  "dcs.gui.jei.fermentation_data":"発酵",
   "dcs.gui.jei.crop_data":"HaC作物図鑑",
   "dcs.gui.jei.tree_data":"HaC樹木図鑑",
   "dcs.gui.jei.smelting_tip1":"ブロックとして設置されている時に進行します。",

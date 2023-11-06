@@ -3,6 +3,7 @@ package defeatedcrow.hac.core.recipe.device;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
@@ -24,15 +25,15 @@ public class DeviceRecipeList {
 		CookingRecipes.init();
 	}
 
-	public static void addSimpleRecipe(RecipeTypeDC group, Item output, DCHeatTier heat, List<Ingredient> input) {
-		addSimpleRecipe(group, new ItemStack(output), heat, null, null, input);
+	public static void addSimpleRecipe(int id, RecipeTypeDC group, Item output, DCHeatTier heat, List<Ingredient> input) {
+		addSimpleRecipe(id, group, new ItemStack(output), heat, null, null, input);
 	}
 
-	public static void addSimpleRecipe(RecipeTypeDC group, Item output, DCHeatTier heat, DCHumidity hum, DCAirflow air, List<Ingredient> input) {
-		addSimpleRecipe(group, new ItemStack(output), heat, hum, air, input);
+	public static void addSimpleRecipe(int id, RecipeTypeDC group, Item output, DCHeatTier heat, DCHumidity hum, DCAirflow air, List<Ingredient> input) {
+		addSimpleRecipe(id, group, new ItemStack(output), heat, hum, air, input);
 	}
 
-	public static void addSimpleRecipe(RecipeTypeDC group, ItemStack output, DCHeatTier heat, DCHumidity hum, DCAirflow air, List<Ingredient> input) {
+	public static void addSimpleRecipe(int id, RecipeTypeDC group, ItemStack output, DCHeatTier heat, DCHumidity hum, DCAirflow air, List<Ingredient> input) {
 		List<DCHeatTier> heats = Lists.newArrayList();
 		List<DCHumidity> hums = Lists.newArrayList();
 		List<DCAirflow> airs = Lists.newArrayList();
@@ -59,42 +60,54 @@ public class DeviceRecipeList {
 		} else {
 			airs.add(air);
 		}
-		addMillRecipe(group, output, ItemStack.EMPTY, 0, heats, hums, airs, input);
+		addMillRecipe(id, group, output, ItemStack.EMPTY, 0, heats, hums, airs, input);
 	}
 
 	// mill
-	public static void addMillRecipe(RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<Ingredient> in) {
-		addRecipe(group, o, sec, secRate, ItemStack.EMPTY, 0, FluidStack.EMPTY, t, h, a, new ArrayList<String>(), in);
+	public static void addMillRecipe(int id, RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<Ingredient> in) {
+		addRecipe(id, group, o, sec, secRate, ItemStack.EMPTY, 0, FluidStack.EMPTY, t, h, a, new ArrayList<String>(), in);
 	}
 
 	// squeeze, distill, tea
-	public static void addFluidRecipe(RecipeTypeDC group, ItemStack o, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<String> inF, List<Ingredient> in) {
-		addRecipe(group, o, ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, oF, t, h, a, inF, in);
+	public static void addFluidRecipe(int id, RecipeTypeDC group, ItemStack o, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<String> inF, List<Ingredient> in) {
+		addRecipe(id, group, o, ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, oF, t, h, a, inF, in);
 	}
 
 	// cooking
-	public static void addCookingRecipe(RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<String> inF, List<Ingredient> in) {
-		addRecipe(group, o, sec, secRate, ItemStack.EMPTY, 0, oF, t, h, a, inF, in);
+	public static void addCookingRecipe(int id, RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<String> inF,
+			List<Ingredient> in) {
+		addRecipe(id, group, o, sec, secRate, ItemStack.EMPTY, 0, oF, t, h, a, inF, in);
 	}
 
 	// cooking2
-	public static void addCookingRecipe(RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, FluidStack oF, List<DCHeatTier> t, List<String> inF, List<Ingredient> in) {
-		addRecipe(group, o, sec, secRate, ItemStack.EMPTY, 0, oF, t, Lists.newArrayList(), Lists.newArrayList(), inF, in);
+	public static void addCookingRecipe(int id, RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, FluidStack oF, List<DCHeatTier> t, List<String> inF, List<Ingredient> in) {
+		addRecipe(id, group, o, sec, secRate, ItemStack.EMPTY, 0, oF, t, Lists.newArrayList(), Lists.newArrayList(), inF, in);
+	}
+
+	// fermentation
+	public static void addFermentationRecipe(int id, RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, FluidStack oF, List<String> inF, List<Ingredient> in) {
+		addRecipe(id, group, o, sec, secRate, ItemStack.EMPTY, 0, oF,
+			ImmutableList.of(DCHeatTier.WARM, DCHeatTier.HOT),
+			ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET),
+			ImmutableList.of(DCAirflow.NORMAL), inF, in);
 	}
 
 	// pulverize
-	public static void addPulverizeRecipe(RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a,
+	public static void addPulverizeRecipe(int id, RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a,
 			List<Ingredient> in) {
-		addRecipe(group, o, sec, secRate, ter, terRate, oF, t, h, a, new ArrayList<String>(), in);
+		addRecipe(id, group, o, sec, secRate, ter, terRate, oF, t, h, a, new ArrayList<String>(), in);
 	}
 
 	// all
-	public static void addRecipe(RecipeTypeDC type, ItemStack output, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack outF, List<DCHeatTier> heat, List<DCHumidity> hum, List<DCAirflow> air,
+	public static void addRecipe(int id, RecipeTypeDC type, ItemStack output, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack outF, List<DCHeatTier> heat, List<DCHumidity> hum, List<DCAirflow> air,
 			List<String> inF, List<Ingredient> input) {
 		ResourceLocation resF = DCUtil.getRes(outF.getFluid()).orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
 		ResourceLocation resO = DCUtil.getRes(output.getItem()).orElse(resF);
 		String fName = resO.getPath().replace('/', '_');
 		DeviceRecipe ret = new DeviceRecipe(type, output, sec, secRate, ter, terRate, outF, heat, hum, air, inF, input);
+		if (id >= 0) {
+			fName += "_" + id;
+		}
 		DeviceRecipeConfig.addRecipe(fName, ret);
 	}
 

@@ -13,7 +13,13 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.Cow;
+import net.minecraft.world.entity.animal.goat.Goat;
+import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -63,6 +69,22 @@ public class EmptyPackItem extends MaterialItemDC {
 			}
 		}
 		return InteractionResultHolder.fail(itemstack);
+	}
+
+	@Override
+	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand) {
+		ItemStack itemstack = player.getItemInHand(hand);
+		if (entity instanceof Cow || entity instanceof Llama || entity instanceof Goat) {
+			if (entity.level.isClientSide)
+				return InteractionResult.SUCCESS;
+			BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
+			if (!((Animal) entity).isBaby()) {
+				player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
+				ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_MILK.get()), false);
+			}
+			return net.minecraft.world.InteractionResult.SUCCESS;
+		}
+		return net.minecraft.world.InteractionResult.PASS;
 	}
 
 }

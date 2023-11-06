@@ -7,12 +7,14 @@ import javax.annotation.Nullable;
 import com.google.common.base.Suppliers;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
+import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.material.IRenderBlockData;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileFluidToC;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.event.CraftingFoodEvent;
 import defeatedcrow.hac.machine.client.gui.FermentationJarMenu;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.fluid.DCTank;
@@ -118,15 +120,14 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 		// priority check
 		if (recipe != null) {
 			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, 2);
-			Optional<IDeviceRecipe> check = DCRecipes.getCookingRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
+			Optional<IDeviceRecipe> check = DCRecipes.getFermentationRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
 
 			if (check.isPresent() && check.get() == recipe) {
-				consume = recipe.matcheInput(inputs);
 				boolean result = inventory.canInsertResult(recipe.getOutput(), 3, 4) > 0 && outputTank.fill(recipe.getOutputFluid(), FluidAction.SIMULATE) >= recipe.getOutputFluid().getAmount();
 				if (recipe.getSecondaryRate() > 0 && inventory.canInsertResult(recipe.getSecondaryOutput(), 3, 4) == 0) {
 					result = false;
 				}
-				return consume.length > 0 && result;
+				return result;
 			}
 		}
 		return false;
@@ -134,9 +135,15 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 
 	@Override
 	public boolean finishProcess(Level level, BlockPos pos, BlockState state) {
+		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, 2);
+		consume = recipe.matcheInput(inputs);
 		if (recipe != null) {
 			boolean flag = false;
 			ItemStack res = recipe.getOutput();
+			if (!res.isEmpty() && res.getItem() instanceof IFoodTaste food) {
+				int taste = CraftingFoodEvent.getResultTaste(inputs, consume);
+				food.setTaste(res, taste);
+			}
 			if (!DCUtil.isEmpty(res) && inventory.insertResult(res, 3, 4) > 0) {
 				flag = true;
 			}
@@ -147,6 +154,9 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 			FluidStack outF = recipe.getOutputFluid();
 			if (!outF.isEmpty() && outputTank.fill(recipe.getOutputFluid(), FluidAction.EXECUTE) > 0) {
 				flag = true;
+			}
+			if (flag) {
+				this.setChanged(level, pos, state);
 			}
 			return flag;
 		}

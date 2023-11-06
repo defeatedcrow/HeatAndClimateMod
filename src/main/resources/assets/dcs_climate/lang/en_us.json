@@ -1180,6 +1180,7 @@
 
   "dcs.gui.jei.smelting_data":"Climate Smelting Data",
   "dcs.gui.jei.cooking_data":"Cooking Data",
+  "dcs.gui.jei.fermentation_data":"Fermentation Data",
   "dcs.gui.jei.crop_data":"HaC Crop Data",
   "dcs.gui.jei.tree_data":"HaC Tree Data",
   "dcs.gui.jei.smelting_tip1":"Proceed as a placed block.",

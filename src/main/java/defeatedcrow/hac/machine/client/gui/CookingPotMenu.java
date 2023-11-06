@@ -163,7 +163,7 @@ public class CookingPotMenu extends AbstractContainerMenu {
 		int i = this.data.get(0);
 		if (i == 0)
 			return 0;
-		int ret = i * 14 / 70;
+		int ret = i * 14 / 60;
 		if (i > 0 && ret == 0)
 			return 1;
 		return ret;

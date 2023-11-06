@@ -66,6 +66,8 @@ public class FermentationJarMenu extends AbstractContainerMenu {
 				this.addSlot(new Slot(playerInv, i1, 8 + i1 * 18, h3));
 			}
 		}
+
+		this.addDataSlots(data);
 	}
 
 	@Override
@@ -158,7 +160,7 @@ public class FermentationJarMenu extends AbstractContainerMenu {
 		int i = this.data.get(0);
 		if (i == 0)
 			return 0;
-		int ret = i * 14 / 70;
+		int ret = i * 14 / 200;
 		if (i > 0 && ret == 0)
 			return 1;
 		return ret;

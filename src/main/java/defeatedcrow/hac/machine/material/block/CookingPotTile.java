@@ -7,12 +7,14 @@ import javax.annotation.Nullable;
 import com.google.common.base.Suppliers;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
+import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.material.IRenderBlockData;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileFluidToC;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.event.CraftingFoodEvent;
 import defeatedcrow.hac.machine.client.gui.CookingPotMenu;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.fluid.DCTank;
@@ -123,7 +125,6 @@ public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileD
 		// priority check
 		if (recipe != null) {
 			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, 5);
-
 			Optional<IDeviceRecipe> check = DCRecipes.getCookingRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
 
 			if (check.isPresent() && check.get().getPriority() == recipe.getPriority()) {
@@ -144,6 +145,10 @@ public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileD
 		if (recipe != null) {
 			boolean flag = false;
 			ItemStack res = recipe.getOutput();
+			if (!res.isEmpty() && res.getItem() instanceof IFoodTaste food) {
+				int taste = CraftingFoodEvent.getResultTaste(inputs, consume);
+				food.setTaste(res, taste);
+			}
 			if (!DCUtil.isEmpty(res) && inventory.insertResult(res, 6, 7) > 0) {
 				flag = true;
 			}
@@ -190,7 +195,7 @@ public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileD
 		Optional<IDeviceRecipe> check = DCRecipes.getCookingRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
 		if (check.isPresent()) {
 			recipe = check.get();
-			this.totalProgress = 70;
+			this.totalProgress = 60;
 			return true;
 		}
 		return false;
