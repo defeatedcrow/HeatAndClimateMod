@@ -188,9 +188,9 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 
 	// ねじれ型
 	public static void growBigTree(Level level, BlockPos pos, int h, BlockState log, BlockState leaves) {
-		int h1 = h - 1 + level.random.nextInt(3);
-		int h2 = h - 2 + level.random.nextInt(3);
-		int h3 = h - 3 + level.random.nextInt(3);
+		int h1 = h - 2 + level.random.nextInt(3);
+		int h2 = h - 3 + level.random.nextInt(3);
+		int h3 = h - 4 + level.random.nextInt(3);
 		Direction d1 = Direction.Plane.HORIZONTAL.getRandomDirection(level.random);
 		Direction d2 = Direction.Plane.HORIZONTAL.getRandomDirection(level.random);
 		Direction d3 = Direction.Plane.HORIZONTAL.getRandomDirection(level.random);
@@ -301,8 +301,8 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 
 	// 笠形 10+
 	public static void growBigTree2(Level level, BlockPos pos, int h, BlockState log, BlockState leaves) {
-		int h1 = h - 4 + level.random.nextInt(3);
-		int h2 = h - 4 + level.random.nextInt(3);
+		int h1 = h - 5 + level.random.nextInt(3);
+		int h2 = h - 5 + level.random.nextInt(3);
 		int h3 = h - 2 + level.random.nextInt(3);
 		int h4 = h - 2 + level.random.nextInt(3);
 		List<BlockPos> leavesPos = Lists.newArrayList();

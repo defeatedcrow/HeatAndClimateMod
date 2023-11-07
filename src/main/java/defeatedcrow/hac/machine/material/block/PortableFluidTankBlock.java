@@ -48,5 +48,4 @@ public abstract class PortableFluidTankBlock extends ProcessTileBlock {
 		}
 		return InteractionResult.sidedSuccess(level.isClientSide);
 	}
-
 }

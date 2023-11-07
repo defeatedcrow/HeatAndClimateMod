@@ -101,9 +101,11 @@ public class DeviceRecipeList {
 	// all
 	public static void addRecipe(int id, RecipeTypeDC type, ItemStack output, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack outF, List<DCHeatTier> heat, List<DCHumidity> hum, List<DCAirflow> air,
 			List<String> inF, List<Ingredient> input) {
-		ResourceLocation resF = DCUtil.getRes(outF.getFluid()).orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
-		ResourceLocation resO = DCUtil.getRes(output.getItem()).orElse(resF);
-		String fName = resO.getPath().replace('/', '_');
+		ResourceLocation res = DCUtil.getRes(output.getItem()).orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
+		if (DCUtil.isEmpty(output)) {
+			res = DCUtil.getRes(outF.getFluid()).orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
+		}
+		String fName = res.getPath().replace('/', '_');
 		DeviceRecipe ret = new DeviceRecipe(type, output, sec, secRate, ter, terRate, outF, heat, hum, air, inF, input);
 		if (id >= 0) {
 			fName += "_" + id;

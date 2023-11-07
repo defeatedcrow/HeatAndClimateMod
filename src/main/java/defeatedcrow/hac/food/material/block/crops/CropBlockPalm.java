@@ -131,9 +131,9 @@ public class CropBlockPalm extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public boolean isSuitablePlace(BlockGetter world, BlockPos pos, BlockState state) {
+	protected boolean mayPlaceOn(BlockState under, BlockGetter level, BlockPos pos) {
 		for (Direction dir : Direction.Plane.HORIZONTAL) {
-			BlockState log = world.getBlockState(pos.relative(dir));
+			BlockState log = level.getBlockState(pos.above().relative(dir));
 			if (log.getBlock() instanceof LogBlockDC)
 				return true;
 		}

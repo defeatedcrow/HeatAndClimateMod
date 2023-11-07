@@ -2,6 +2,8 @@ package defeatedcrow.hac.machine.material.block;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -16,6 +18,8 @@ import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.item.FoodMaterialItemDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -24,6 +28,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -119,16 +124,20 @@ public class SpileCupBlock extends BlockDC {
 			if (log != null && log.is(TagDC.BlockTag.LOG_LACQUER)) {
 				item = new ItemStack(FoodInit.SAP_SUMAC.get(), i);
 			}
-			if (!item.isEmpty()) {
-				ItemEntity drop;
-				if (player != null) {
-					drop = new ItemEntity(level, player.getX(), player.getY() + 0.15D, player.getZ(), item);
-				} else {
-					drop = new ItemEntity(level, pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D, item);
-				}
-				if (drop != null && !level.isClientSide)
-					level.addFreshEntity(drop);
+			if (item.isEmpty()) {
+				item = new ItemStack(FoodInit.SAP_SWEET.get(), i);
+				((FoodMaterialItemDC) item.getItem()).setTaste(item, -1);
 			}
+
+			ItemEntity drop;
+			if (player != null) {
+				drop = new ItemEntity(level, player.getX(), player.getY() + 0.15D, player.getZ(), item);
+			} else {
+				drop = new ItemEntity(level, pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D, item);
+			}
+			if (drop != null && !level.isClientSide)
+				level.addFreshEntity(drop);
+
 			if (!level.isClientSide) {
 				BlockState next = state.setValue(DCState.STAGE5, 0);
 				level.setBlock(pos, next, 2);
@@ -158,16 +167,18 @@ public class SpileCupBlock extends BlockDC {
 					BlockState log = level.getBlockState(pos.relative(dir));
 					if (log != null && log.is(TagDC.BlockTag.LOG_SWEET)) {
 						ret.add(new ItemStack(FoodInit.SAP_SWEET.get(), i));
-					}
-					if (log != null && log.is(TagDC.BlockTag.LOG_RESIN)) {
+					} else if (log != null && log.is(TagDC.BlockTag.LOG_RESIN)) {
 						ret.add(new ItemStack(FoodInit.SAP_RESIN.get(), i));
-					}
-					if (log != null && log.is(TagDC.BlockTag.LOG_LATEX)) {
+					} else if (log != null && log.is(TagDC.BlockTag.LOG_LATEX)) {
 						ret.add(new ItemStack(FoodInit.SAP_LATEX.get(), i));
-					}
-					if (log != null && log.is(TagDC.BlockTag.LOG_LACQUER)) {
+					} else if (log != null && log.is(TagDC.BlockTag.LOG_LACQUER)) {
 						ret.add(new ItemStack(FoodInit.SAP_SUMAC.get(), i));
+					} else {
+						ItemStack item = new ItemStack(FoodInit.SAP_SWEET.get(), i);
+						((FoodMaterialItemDC) item.getItem()).setTaste(item, -1);
+						ret.add(item);
 					}
+
 				}
 			}
 		}
@@ -245,6 +256,12 @@ public class SpileCupBlock extends BlockDC {
 	@Override
 	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity, BlockEntity tile) {
 		return Lists.newArrayList();
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+		MutableComponent tex1 = Component.translatable("dcs.tip.spile", "logs_can_collect_sap");
+		list.add(tex1);
 	}
 
 }

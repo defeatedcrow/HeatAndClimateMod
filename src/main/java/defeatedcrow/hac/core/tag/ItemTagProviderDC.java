@@ -309,7 +309,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 			.add(FoodInit.BLOCK_RO_RUGOSA.get().asItem());
 
 		tag(TagDC.ItemTag.SEED_RED).addTags(TagDC.ItemTag.SEED_JUTE, TagDC.ItemTag.SEED_ROGERIA, TagDC.ItemTag.SEED_WILD_GRAPE)
-			.add(FoodInit.BLOCK_CH_WILD.get().asItem(), FoodInit.BLOCK_CM_OIL.get().asItem());
+			.add(FoodInit.BLOCK_CH_WILD.get().asItem(), FoodInit.BLOCK_CM_OIL.get().asItem(), FoodInit.BLOCK_SU_LACQUER.get().asItem());
 
 		tag(TagDC.ItemTag.SEED_GREEN).addTags(TagDC.ItemTag.SEED_GINGER, TagDC.ItemTag.SEED_GREEN_PEAS, TagDC.ItemTag.SEED_CALABASH, TagDC.ItemTag.SEED_SPIRANTHES)
 			.add(FoodInit.BLOCK_CT_POMELO.get().asItem(), FoodInit.BLOCK_CN_CAMPHOR.get().asItem(),

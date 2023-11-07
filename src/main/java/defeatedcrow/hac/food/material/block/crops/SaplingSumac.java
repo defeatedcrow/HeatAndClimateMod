@@ -100,7 +100,7 @@ public class SaplingSumac extends SaplingBaseBlock {
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("SWAMP", "FOREST");
+			return ImmutableList.of("MOUNTAIN", "FOREST");
 		case COMMON:
 			return ImmutableList.of("JUNGLE");
 		default:
@@ -111,7 +111,9 @@ public class SaplingSumac extends SaplingBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		switch (t) {
-		case WILD, COMMON:
+		case WILD:
+			return ImmutableList.of("CONIFEROUS", "SNOWY", "HOT");
+		case COMMON:
 			return ImmutableList.of("CONIFEROUS", "COLD");
 		default:
 			return Lists.newArrayList();
@@ -133,7 +135,7 @@ public class SaplingSumac extends SaplingBaseBlock {
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		// 各種サイズが違う
 		level.random.nextInt(4);
-		int h = 6 + level.random.nextInt(8);
+		int h = 5 + level.random.nextInt(6);
 		int r = 4;
 		BlockState log = FoodInit.LOG_SU_MANGO.get().defaultBlockState();
 		BlockState leaves = FoodInit.LEAVES_SU_MANGO.get().defaultBlockState().setValue(DCState.FLAG, true);

@@ -1026,6 +1026,9 @@
 
   "dcs.tip.chamber.temp":"Temperature Range: ",
   "dcs.tip.chamber.wind":"High airflow or the use of bellows will result in high temperatures.",
+  "dcs.tip.cooking_pot":"This device uses the surrounding heat and climate to cook food.",
+  "dcs.tip.crop_on_jar":"When there is water in the input tank, flowers or crops can place on top.",
+  "dcs.tip.spile":"When attached to the log has %1$s tag, it collects the sap in a cup.",
 
   "dcs.tip.foodtaste.1":"Taste: ★",
   "dcs.tip.foodtaste.2":"Taste: ★★",

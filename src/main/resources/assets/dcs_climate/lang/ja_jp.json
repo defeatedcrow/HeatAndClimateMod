@@ -1023,6 +1023,9 @@
 
   "dcs.tip.chamber.temp":"温度範囲: ",
   "dcs.tip.chamber.wind":"通気の良い場所や、ふいごの使用により、温度が上昇します。",
+  "dcs.tip.cooking_pot":"周囲の温度や気候を利用して料理レシピを進行します。",
+  "dcs.tip.crop_on_jar":"中に水を入れると、上に花や作物を設置して飾れるようになります。",
+  "dcs.tip.spile":"以下のTagを持つ樹液の出る幹に設置すると、樹液を集めることが出来ます。: %1$s",
 
   "dcs.tip.foodtaste.1":"風味: ★",
   "dcs.tip.foodtaste.2":"風味: ★★",

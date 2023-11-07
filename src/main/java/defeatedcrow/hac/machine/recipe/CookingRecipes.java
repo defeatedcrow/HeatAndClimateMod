@@ -32,7 +32,7 @@ public class CookingRecipes {
 		DeviceRecipeList.addCookingRecipe(0, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_SYRUP.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags,
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.SAP_SWEET)));
 
-		DeviceRecipeList.addCookingRecipe(0, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_SYRUP.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags,
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_SYRUP.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags,
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.PALM_FLOWER)));
 
 		DeviceRecipeList.addCookingRecipe(0, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_JAM.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags,

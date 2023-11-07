@@ -8,6 +8,7 @@ import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import defeatedcrow.hac.food.material.block.crops.LeavesCropBlockDC;
+import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.plugin.jei.ingredients.AirflowRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.HeatTierRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.HumidityRenderer;
@@ -19,9 +20,11 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IModIngredientRegistration;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 
 @JeiPlugin
 public class JEIPluginDC implements IModPlugin {
@@ -55,6 +58,23 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipeCategories(new TreeDataCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceCookingCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceFermentationCategory(registration.getJeiHelpers().getGuiHelper()));
+	}
+
+	@Override
+	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.COOKING_POT_NORMAL.get()), COOKING_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.COOKING_POT_WHITE.get()), COOKING_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.COOKING_POT_BLUE.get()), COOKING_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.COOKING_POT_BLACK.get()), COOKING_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.COOKING_POT_RED.get()), COOKING_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.COOKING_POT_GREEN.get()), COOKING_DATA);
+
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_NORMAL.get()), FERMENTATION_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_WHITE.get()), FERMENTATION_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_BLUE.get()), FERMENTATION_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_BLACK.get()), FERMENTATION_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_RED.get()), FERMENTATION_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_GREEN.get()), FERMENTATION_DATA);
 	}
 
 	public static final ResourceLocation SMELTING_ID = new ResourceLocation(ClimateCore.MOD_ID, "smelting_data");

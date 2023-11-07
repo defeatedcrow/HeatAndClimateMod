@@ -1,4 +1,4 @@
-// 1.19.2	2023-11-05T16:52:58.1928231	Tags for minecraft:item
+// 1.19.2	2023-11-07T23:59:45.9434039	Tags for minecraft:item
 9691b8fa959d0c2eca43b928b1d45c3e5fa4fb15 data/dcs_climate/tags/items/color_drops.json
 1003b47c0766f332ef739eaf3b5ea767d6e9f6c1 data/dcs_climate/tags/items/color_drops/black.json
 969f3e30f0b86599ab5d03e4f9004392ecbef823 data/dcs_climate/tags/items/color_drops/blue.json
@@ -31,7 +31,7 @@ f16a15e9082786b80551f2b9e38fa8cf04d3d87b data/dcs_climate/tags/items/color_pigme
 80205a4d30a5a553e0acfd028f765e056fd7b2b0 data/dcs_climate/tags/items/color_seeds/black.json
 018c0688f9728f94546ef47639822a665514f295 data/dcs_climate/tags/items/color_seeds/blue.json
 d33a92cf7224385a7f65ab50d5e8b517425845bb data/dcs_climate/tags/items/color_seeds/green.json
-001872d325b30e2ed3c7debe18026f8cdc01d2f3 data/dcs_climate/tags/items/color_seeds/red.json
+76e784168a5bb8762540baae91836fffd2a6e88b data/dcs_climate/tags/items/color_seeds/red.json
 e95970894b1662a0e365fb1351d18815cb14d149 data/dcs_climate/tags/items/color_seeds/white.json
 26d85d22288145a1018523a20deaf20967f151a9 data/dcs_climate/tags/items/crops.json
 8acd2a46a26054ad823e155f2cb6f1d87a4639c8 data/dcs_climate/tags/items/crops/common.json

@@ -30,6 +30,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public abstract class EntityBlockDC extends BlockDC implements EntityBlock, SimpleWaterloggedBlock, ITileNBTHolder {
@@ -68,13 +69,19 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 	@Override
 	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
-		if (state.getBlock() instanceof EntityBlockDC cont && builder != null) {
+		if (state == null || builder == null) {
+			ret.addAll(super.getDrops(state, builder));
+		} else if (state.getBlock() instanceof EntityBlockDC cont && builder != null) {
+			LootContext context = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
 			IBlockDC block = (IBlockDC) state.getBlock();
-			ServerLevel level = builder.getLevel();
-			BlockEntity tile = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+			ServerLevel level = context.getLevel();
+			BlockEntity tile = null;
+			if (context.hasParam(LootContextParams.BLOCK_ENTITY)) {
+				tile = context.getParam(LootContextParams.BLOCK_ENTITY);
+			}
 
 			ItemStack drop = getMainDrop();
-			if (tile instanceof OwnableContainerBaseTileDC base) {
+			if (tile != null && tile instanceof OwnableContainerBaseTileDC base) {
 				drop = getDropItem(drop, base);
 			}
 			ret.add(drop);

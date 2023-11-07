@@ -109,7 +109,6 @@ public class DeviceCookingCategory implements IRecipeCategory<IDeviceRecipe> {
 				list.add(Component.literal("Fluid Tag: " + tag.location().toString()));
 			}
 		}
-
 		return list;
 	}
 

@@ -162,7 +162,12 @@
   When "wet", it reduces high temperature damage and increases cold temperature damage.
 
 
-◎ 気候精錬 / Climate Smelting
+◎ HaCカスタムレシピ / HaC Custom Recipes
+
+　HaCで追加されるカスタムレシピは、データパックで追加・編集できます。
+　HaC Custom recipes can be added and edited with data packs.
+
+　● 気候精錬 / Climate Smelting
 
  気候精錬は、ワールドに設置されたオブジェクトが変化するためのレシピです。
  "Climate Smelting" is a recipe for transforming objects placed in the world.
@@ -173,10 +178,8 @@
  これらは、あなたがHaC金属を精錬したり、肉を焼くために必要です。
  These are required for you to smelt HaC metals or grill meat.
 
- * 気候精錬レシピはコンフィグファイルによって変更したり、削除することが出来ます。
-   材料のオブジェクトに、気候精錬に対応する仕様が実装されている必要があります。
-   Climate smelting recipes can be changed or deleted via the config file.
-   The material object must implement the specification for climate smelting.
+ * 気候精錬レシピによりBlockを変化させる場合、材料となるBlockが Random Tick を持っている必要があります。
+   If you add a new climate smelting recipe, the material block must be implement vanilla random tick behavior.
 
  ● 昇温ブロック / Heating Block
 
@@ -277,18 +280,45 @@
 
  ● 食べ物の『風味』 / Flavor of food
 
- 　『風味』は、5段階の★で定義されます。
-  "Flavor" is defined on a 5-point scale.
+   『風味』は、5段階の★で定義されます。
+   "Flavor" is defined on a 5-point scale.
 
-  『風味』は、プレイヤーがアイテムを食べる時の速度に影響します。
-  Flavor affects the speed at which the player eats items.
+   『風味』は、プレイヤーがアイテムを食べる時の速度に影響します。
+   Flavor affects the speed at which the player eats items.
 
-  料理の風味は、材料にした食材によって変動します。
-  The flavor of a dish varies depending on the ingredients.
+   料理の風味は、材料にした食材によって変動します。
+   The flavor of a dish varies depending on the ingredients.
 
-  * 将来的には、調味料によって風味を良くする機能が実装される予定です。
-    In the future, we plan to implement seasoning to enhance the flavor.
+   * 将来的には、調味料によって風味を良くする機能が実装される予定です。
+     In the future, we plan to implement seasoning to enhance the flavor.
 
+◎ 色々な調理デバイス / Devices for ingredients
+
+　●　鍋 / Cooking Pot
+
+　　 環境の熱を利用して、食べ物を調理します。
+   Cooking Pots use ambient heat to cook food.
+
+ ●　壺 / Fermentation Jar
+
+　　 適切な環境(温暖な屋内)に置かれている時、食べ物を発酵させて新しい食材を得ます。
+   When the jar is placed in the right environment (warm, humid, indoors), it ferments the ingredients to obtain new food.
+
+   Input Tank に水が入っている時、花瓶のように、壺の上に花や作物の苗を設置できます。
+   When the input tank has water, flowers and crops can place on top of it, like a vase.
+
+ ●　樹液採集カップ / Spile and Cup
+
+　　 樹液のある原木に設置すると、樹液を集めることが出来ます。
+   When attached to a log with sap, it can collect sap.
+
+   樹液のある原木は、以下のTagによって追加できます。
+   Logs with sap are added by following Tag
+     -> dcs_climate:logs_can_collect_sap
+         - lacquer
+         - latex
+         - resin
+         - sweet
 
 ◎ 色の魔法 / Color Magic
 
@@ -331,8 +361,7 @@
  add: 漆塗りの木材
  add: 追加液体5種
  add: 樹液4種
- add: 家畜の骨3種
- add: 豚の革
+ add: 家畜の追加ドロップ4種
  add: 自然生成の特殊泉4種を追加
  change: マシンレシピの追加およびデータパック対応
  change: 毒のある作物に有毒の表示を付け、食べられないようにした

@@ -97,7 +97,7 @@ public class LeavesLacquer extends LeavesCropBlockDC {
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		return ImmutableList.of("SNOWY", "HOT");
+		return ImmutableList.of("CONIFEROUS", "SNOWY", "HOT");
 	}
 
 	@Override

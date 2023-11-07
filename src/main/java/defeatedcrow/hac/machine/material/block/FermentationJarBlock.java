@@ -17,12 +17,15 @@ import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.fluid.DCFluidUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -168,6 +171,14 @@ public class FermentationJarBlock extends ProcessTileBlock {
 		}
 
 		return false;
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+		MutableComponent tex1 = Component.translatable("dcs.tip.cooking_pot");
+		list.add(tex1);
+		MutableComponent tex2 = Component.translatable("dcs.tip.crop_on_jar");
+		list.add(tex2);
 	}
 
 }

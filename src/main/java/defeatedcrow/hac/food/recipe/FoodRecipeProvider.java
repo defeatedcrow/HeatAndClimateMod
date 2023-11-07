@@ -549,6 +549,14 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_lacquer_sap", has(TagDC.ItemTag.SAP_LACQUER))
 			.save(cons, "dcs_climate:food/lacquerware_planks");
 
+		ShapedRecipeBuilder.shaped(Items.CANDLE, 1)
+			.pattern("X")
+			.pattern("Y")
+			.define('X', Tags.Items.STRING)
+			.define('Y', TagDC.ItemTag.FOOD_WAX)
+			.unlockedBy("has_wax", has(TagDC.ItemTag.FOOD_WAX))
+			.save(cons, "dcs_climate:food/vanilla_candle");
+
 		// agri
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 1)
