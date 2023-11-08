@@ -67,8 +67,14 @@ public class DeviceRecipe implements IDeviceRecipe {
 		resultFluid = oF;
 		secondary = sec;
 		secondaryRate = secRate;
+		if (!secondary.isEmpty() && secondaryRate == 0) {
+			secondaryRate = 100;
+		}
 		tertiary = ter;
 		tertiaryRate = terRate;
+		if (!tertiary.isEmpty() && tertiaryRate == 0) {
+			tertiaryRate = 100;
+		}
 		if (t != null && !t.isEmpty()) {
 			heat.addAll(t);
 		} else {
@@ -186,7 +192,7 @@ public class DeviceRecipe implements IDeviceRecipe {
 		boolean f1 = false;
 		boolean f2 = false;
 		if (getInputFluids().isEmpty()) {
-			return true;
+			return input1.isEmpty();
 		} else if (getInputFluids().size() == 1) {
 			TagKey<Fluid> tag1 = getInputFluids().get(0);
 			f1 = !input1.isEmpty() && input1.getFluid().is(tag1);
@@ -240,10 +246,12 @@ public class DeviceRecipe implements IDeviceRecipe {
 		json.addProperty("type", "dcs_climate:device_recipe");
 		json.addProperty("group", type.toString());
 
-		JsonObject ret = new JsonObject();
-		ret.addProperty("item", ForgeRegistries.ITEMS.getKey(result.getItem()).toString());
-		ret.addProperty("count", result.getCount());
-		json.add("result", ret);
+		if (!result.isEmpty()) {
+			JsonObject ret = new JsonObject();
+			ret.addProperty("item", ForgeRegistries.ITEMS.getKey(result.getItem()).toString());
+			ret.addProperty("count", result.getCount());
+			json.add("result", ret);
+		}
 
 		if (!secondary.isEmpty()) {
 			JsonObject sec = new JsonObject();

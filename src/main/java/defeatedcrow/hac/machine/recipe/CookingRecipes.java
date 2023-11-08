@@ -68,10 +68,6 @@ public class CookingRecipes {
 			tags,
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_VANILLA)));
 
-		DeviceRecipeList.addFermentationRecipe(0, RecipeTypeDC.FERMENTATION, ItemStack.EMPTY, ItemStack.EMPTY, 0, new FluidStack(CoreInit.SPARKLING.getStillFluid().get(), 1000),
-			ImmutableList.of(FluidTags.WATER.location().toString()),
-			ImmutableList.of(Ingredient.of(TagDC.ItemTag.SUGARS)));
-
 	}
 
 }

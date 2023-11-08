@@ -27,8 +27,8 @@ public class DummyDeviceRecipeSerealizer implements RecipeSerializer<DummyDevice
 		ItemStack ret = DataUtilDC.getStackOrEmpty(json, "result");
 		ItemStack sec = DataUtilDC.getStackOrEmpty(json, "secondary");
 		ItemStack ter = DataUtilDC.getStackOrEmpty(json, "tertiary");
-		int sR = DataUtilDC.getIntOrZero(json, "secondaryRate");
-		int tR = DataUtilDC.getIntOrZero(json, "tertiaryRate");
+		int sR = DataUtilDC.getIntOrZero(json, "secondary_rate");
+		int tR = DataUtilDC.getIntOrZero(json, "tertiary_rate");
 		FluidStack retF = DataUtilDC.getFluidStack(json, "result_fluid");
 		List<Ingredient> ings = DataUtilDC.getIngs(json);
 		List<String> inF = DataUtilDC.getList(json, "input_fluids");

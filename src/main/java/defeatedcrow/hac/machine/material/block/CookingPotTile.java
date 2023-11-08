@@ -26,6 +26,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
@@ -33,6 +34,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -174,7 +176,12 @@ public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileD
 			for (int i = 0; i < consume.length; i++) {
 				inventory.removeItem(i, consume[i]);
 			}
-			return true;
+		}
+		if (!recipe.getInputFluids().isEmpty()) {
+			TagKey<Fluid> tag = recipe.getInputFluids().get(0);
+			if (!inputTank.isEmpty() && inputTank.getFluidType().is(tag)) {
+				inputTank.drain(1000, FluidAction.EXECUTE);
+			}
 		}
 		return false;
 	}

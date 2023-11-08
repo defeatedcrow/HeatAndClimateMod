@@ -46,6 +46,10 @@ public class DCTank implements IFluidHandler, IFluidTank {
 		fluid = f;
 	}
 
+	public boolean isEmpty() {
+		return fluid == null || fluid.isEmpty();
+	}
+
 	public boolean isFull() {
 		return (fluid != null) && (fluid.getAmount() == capacity);
 	}
