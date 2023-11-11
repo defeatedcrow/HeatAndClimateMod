@@ -5,6 +5,7 @@
     "#forge:seeds/wild_grape",
     "dcs_climate:food/sapling_cherry_wild",
     "dcs_climate:food/sapling_camellia_wild",
+    "dcs_climate:food/sapling_sumac_wild",
     "dcs_climate:food/sapling_sumac_wild"
   ]
 }

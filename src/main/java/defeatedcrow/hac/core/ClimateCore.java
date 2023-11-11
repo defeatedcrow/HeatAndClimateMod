@@ -6,8 +6,6 @@ import java.nio.file.Path;
 import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.core.advancement.AdvancementProviderDC;
 import defeatedcrow.hac.core.advancement.trigger.TriggersDC;
-import defeatedcrow.hac.core.client.entity.EntityClientRegister;
-import defeatedcrow.hac.core.client.entity.EntityModelLoader;
 import defeatedcrow.hac.core.climate.ClimateCalculator;
 import defeatedcrow.hac.core.climate.ClimateHelper;
 import defeatedcrow.hac.core.climate.register.ArmorItemRegister;
@@ -33,9 +31,6 @@ import defeatedcrow.hac.food.recipe.FoodRecipeProvider;
 import defeatedcrow.hac.machine.recipe.MachineRecipeProvider;
 import defeatedcrow.hac.magic.recipe.MagicRecipeProvider;
 import net.minecraft.data.DataGenerator;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -104,14 +99,11 @@ public class ClimateCore {
 		TagDC.init();
 		MaterialRecipes.init();
 
-		bus.addListener(this::registerLayerDefinitions);
-		bus.addListener(this::registerEntityRenderers);
-		// bus.addListener(this::registerLayers);
-		bus.addListener(this::registerParticles);
-		bus.addListener(this::registerClientReloadListeners);
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
+
+		proxy.addListener(bus);
 
 		proxy.registerEvent();
 
@@ -127,26 +119,6 @@ public class ClimateCore {
 		ClimateAPI.registerMaterial = new ArmorMaterialRegister();
 		ClimateAPI.registerArmor = new ArmorItemRegister();
 		ClimateAPI.registerMob = new MobResistanceRegister();
-	}
-
-	void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		EntityClientRegister.registerLayerDefinitions(event);
-	}
-
-	void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-		EntityClientRegister.registerEntityRenderers(event);
-	}
-
-	void registerLayers(EntityRenderersEvent.AddLayers event) {
-		EntityClientRegister.registerLayers(event);
-	}
-
-	void registerParticles(RegisterParticleProvidersEvent event) {
-		EntityClientRegister.registerParticle(event);
-	}
-
-	void registerClientReloadListeners(RegisterClientReloadListenersEvent event) {
-		event.registerReloadListener(EntityModelLoader.INSTANCE);
 	}
 
 	public void commonSetup(FMLCommonSetupEvent event) {

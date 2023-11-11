@@ -17,6 +17,7 @@ import defeatedcrow.hac.core.recipe.device.DeviceRecipeList;
 import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingConfig;
 import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingList;
 import defeatedcrow.hac.food.FoodProxy;
+import defeatedcrow.hac.food.event.FishingEventDC;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -25,8 +26,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 
 public class CommonProxyDC {
+
+	public void addListener(IEventBus bus) {}
 
 	public void registerEvent() {
 		MinecraftForge.EVENT_BUS.addListener(BiomeBaseTempEventDC::onTemp);
@@ -45,6 +49,7 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onHurt);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onDig);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onXpPickup);
+		MinecraftForge.EVENT_BUS.addListener(FishingEventDC::onFishing);
 
 		FoodProxy.registerEvent();
 	}

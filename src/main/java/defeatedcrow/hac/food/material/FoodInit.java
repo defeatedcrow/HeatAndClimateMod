@@ -106,6 +106,7 @@ import defeatedcrow.hac.food.material.item.EmptyPackItem;
 import defeatedcrow.hac.food.material.item.FertilizerItemDC;
 import defeatedcrow.hac.food.material.item.FoodMaterialItemDC;
 import defeatedcrow.hac.food.material.item.ItemCropDC;
+import defeatedcrow.hac.food.material.item.RawFishItem;
 import defeatedcrow.hac.food.material.item.SeedItemDC;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -113,6 +114,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.RegistryObject;
@@ -263,15 +265,28 @@ public class FoodInit {
 
 	// meat
 	public static final RegistryObject<Item> FOOD_FROG = regItem("food_raw_frog", () -> new FoodMaterialItemDC(FOOD, "food_raw_frog", TagDC.ItemTag.FROG).taste(-1).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_PRAWN = regItem("food_raw_prawn", () -> new FoodMaterialItemDC(FOOD, "food_raw_prawn", TagDC.ItemTag.PRAWN).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_SQUID = regItem("food_raw_squid", () -> new FoodMaterialItemDC(FOOD, "food_raw_squid", TagDC.ItemTag.SQUID).taste(1).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_ROE = regItem("food_raw_roe", () -> new FoodMaterialItemDC(FOOD, "food_raw_roe", TagDC.ItemTag.ROE).taste(1).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_FISH_POWDER = regItem("dust_fish_powder", () -> new FoodMaterialItemDC(FOOD, "dust_fish_powder", TagDC.ItemTag.FISH_POWDER).setDomain("food"));
-
 	public static final RegistryObject<Item> BONE_COW = regItem("bone_cow", () -> new FoodMaterialItemDC(FOOD, "bone_cow", TagDC.ItemTag.BONE_COW).setDomain("food"));
 	public static final RegistryObject<Item> BONE_PIG = regItem("bone_pig", () -> new FoodMaterialItemDC(FOOD, "bone_pig", TagDC.ItemTag.BONE_PIG).setDomain("food"));
 	public static final RegistryObject<Item> BONE_CHICKEN = regItem("bone_chicken", () -> new FoodMaterialItemDC(FOOD, "bone_chicken", TagDC.ItemTag.BONE_CHICKEN).setDomain("food"));
 	public static final RegistryObject<Item> SKIN_PIG = regItem("skin_pig", () -> new MaterialItemDC(FOOD, "skin_pig", Tags.Items.LEATHER).setDomain("food"));
+
+	// fish
+	public static final RegistryObject<Item> FOOD_MULLET = regItem("fish_mullet", () -> new RawFishItem("fish_mullet", Rarity.COMMON, TagDC.ItemTag.MULLET).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_SMELT = regItem("fish_smelt", () -> new RawFishItem("fish_smelt", Rarity.COMMON, TagDC.ItemTag.SMELT).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_SARDINE = regItem("fish_sardine", () -> new RawFishItem("fish_sardine", Rarity.COMMON, TagDC.ItemTag.SARDINE).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_CARP = regItem("fish_carp", () -> new RawFishItem("fish_carp", Rarity.UNCOMMON, TagDC.ItemTag.CARP).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_MACKEREL = regItem("fish_mackerel", () -> new RawFishItem("fish_mackerel", Rarity.UNCOMMON, TagDC.ItemTag.MACKEREL).taste(2).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_ROCKFISH = regItem("fish_rockfish", () -> new RawFishItem("fish_rockfish", Rarity.UNCOMMON, TagDC.ItemTag.ROCKFISH).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_SEABREAM = regItem("fish_seabream", () -> new RawFishItem("fish_seabream", Rarity.RARE, TagDC.ItemTag.SEABREAM).taste(1).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_FLOUNDER = regItem("fish_flounder", () -> new RawFishItem("fish_flounder", Rarity.RARE, TagDC.ItemTag.FLOUNDER).taste(1).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_GROUPER = regItem("fish_grouper", () -> new RawFishItem("fish_grouper", Rarity.RARE, TagDC.ItemTag.GROUPER).taste(2).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_KRILL = regItem("fish_krill", () -> new RawFishItem("fish_krill", Rarity.COMMON, TagDC.ItemTag.KRILL).taste(-1).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_PRAWN = regItem("fish_prawn", () -> new RawFishItem("fish_prawn", Rarity.COMMON, TagDC.ItemTag.PRAWN).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_CRAB = regItem("fish_crab", () -> new RawFishItem("fish_crab", Rarity.UNCOMMON, TagDC.ItemTag.CRAB).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_SQUID = regItem("fish_squid", () -> new RawFishItem("fish_squid", Rarity.COMMON, TagDC.ItemTag.SQUID).taste(1).setDomain("food"));
+
+	public static final RegistryObject<Item> FOOD_ROE = regItem("food_raw_roe", () -> new FoodMaterialItemDC(FOOD, "food_raw_roe", TagDC.ItemTag.ROE).taste(1).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_FISH_POWDER = regItem("dust_fish_powder", () -> new FoodMaterialItemDC(FOOD, "dust_fish_powder", TagDC.ItemTag.FISH_POWDER).setDomain("food"));
 
 	// processed
 	public static final RegistryObject<Item> FOOD_JAM = regItem("food_fruit_jam", () -> new FoodMaterialItemDC(FOOD, "food_fruit_jam", TagDC.ItemTag.JAM).setDomain("food"));

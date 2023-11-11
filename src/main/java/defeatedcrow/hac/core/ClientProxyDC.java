@@ -29,8 +29,17 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 
 public class ClientProxyDC extends CommonProxyDC {
+
+	@Override
+	public void addListener(IEventBus bus) {
+		bus.addListener(EntityClientRegister::registerLayerDefinitions);
+		bus.addListener(EntityClientRegister::registerEntityRenderers);
+		bus.addListener(EntityClientRegister::registerClientReloadListeners);
+		bus.addListener(EntityClientRegister::registerParticle);
+	}
 
 	@Override
 	public void registerEvent() {

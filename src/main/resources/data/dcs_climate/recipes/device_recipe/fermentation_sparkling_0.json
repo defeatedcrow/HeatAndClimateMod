@@ -1,10 +1,6 @@
 {
   "type": "dcs_climate:device_recipe",
   "group": "fermentation",
-  "result": {
-    "item": "minecraft:air",
-    "count": 0
-  },
   "result_fluid": {
     "fluid": "dcs_climate:sparkling",
     "amount": 1000

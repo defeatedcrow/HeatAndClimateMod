@@ -1,0 +1,16 @@
+{
+  "values": [
+    "dcs_climate:food/fish_sardine",
+    "dcs_climate:food/fish_mackerel",
+    "dcs_climate:food/fish_rockfish",
+    "dcs_climate:food/fish_seabream",
+    "dcs_climate:food/fish_flounder",
+    "dcs_climate:food/fish_grouper",
+    "dcs_climate:food/fish_krill",
+    "dcs_climate:food/fish_crab",
+    "dcs_climate:food/fish_squid",
+    "minecraft:cod",
+    "minecraft:pufferfish",
+    "minecraft:tropical_fish"
+  ]
+}

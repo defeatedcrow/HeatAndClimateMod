@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/material/fish_squid"
+  },
+  "parent": "minecraft:item/generated"
+}

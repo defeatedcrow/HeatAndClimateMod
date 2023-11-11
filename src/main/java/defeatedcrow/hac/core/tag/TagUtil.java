@@ -74,4 +74,14 @@ public class TagUtil {
 		});
 		return ret;
 	}
+
+	public static List<ItemStack> getItemList(TagKey<Item> tag) {
+		List<ItemStack> ret = Lists.newArrayList();
+		ForgeRegistries.ITEMS.iterator().forEachRemaining((i) -> {
+			ItemStack r = new ItemStack(i);
+			if (r.is(tag))
+				ret.add(r);
+		});
+		return ret;
+	}
 }

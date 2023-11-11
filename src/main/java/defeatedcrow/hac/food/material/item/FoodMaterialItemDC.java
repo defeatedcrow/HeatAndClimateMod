@@ -29,6 +29,10 @@ public class FoodMaterialItemDC extends MaterialItemDC implements IFoodTaste {
 		super(tab, s, pair);
 	}
 
+	public FoodMaterialItemDC(Properties prop, String s, TagKey<Item> pair) {
+		super(prop, s, pair);
+	}
+
 	public FoodMaterialItemDC taste(int i) {
 		taste = Mth.clamp(taste, -2, 2);
 		taste = i;

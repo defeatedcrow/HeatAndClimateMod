@@ -270,6 +270,24 @@
    適さない気温では、花や作物が得られなくなります。
    At unfavorable temperatures, the leaves of the tree will not bear flowers or fruits.
 
+◎ 釣り / Fishing
+
+  バニラの魚が釣れたときに、差し替える形でHaCの追加魚種をスポーンさせます。
+  When Vanilla Fish is caught, HaC Fishes may be obtained instead.
+
+  釣りには、バイオーム、気温、時刻が影響します。日の出・日没の時間帯は珍しい魚種が10%釣れやすくなります。
+  Fishing is affected by biome, temperature, and time of day.
+  During sunrise and sunset times, the chance of rare fishes increases by 10%.
+
+  HaC魚が水中にドロップして5秒経過すると消滅し、魚が逃げます。
+  魚を逃した場合、時々周囲のPlayerにLuckのポーション効果を与えます。
+  HaC fish items will disappear after 5 seconds have passed after being dropped into water. The fish runs away.
+  If you release a HaC fish, it will sometimes give a Luck potion effect to nearby players.
+
+  釣りで得られる魚種はTagによって編集できます。
+  Fish obtained by fishing can be edited by tag.
+    -> dcs_climate:fishes
+
 ◎ HaCの食べ物 / HaC Foods
 
  HaCの食べ物は、スニークしながらブロックを右クリックすることで、Entityとしてワールドに設置できます。
@@ -298,6 +316,9 @@
 
 　　 環境の熱を利用して、食べ物を調理します。
    Cooking Pots use ambient heat to cook food.
+
+   スニーク+右クリックでフタを開閉します。
+   Sneak + right-click to toggle the pot lid.
 
  ●　壺 / Fermentation Jar
 
@@ -352,7 +373,13 @@
 
 #### 更新履歴 / Change log ####
 
-○ v4-alpha10
+○ v4-alpha11 (2023.11.12)
+ add: 追加魚種
+ change: 釣りEventを追加
+ fix: Server起動時のクラッシュを修正
+ fix: HUD時計とゲーム内時刻がズレている
+
+○ v4-alpha10 (2023.11.11)
  add: 鍋
  add: 壺
  add: 樹液採取容器
@@ -374,10 +401,10 @@
  fix: 一部の追加原木を木材にするレシピがない
  fix: コンフィグのShow Additional Tooltipsが機能しない問題を修正
 
-○ v4-alpha9
+○ v4-alpha9 (2023.9.23)
  fix: サーバー起動時のクラッシュを修正
 
-○ v4-aipha8
+○ v4-aipha8 (2023.9.23)
  add: 加熱チャンバー、レンガのかまど
  add: ふいご
  add: キャビネット、ロッカー、キャリーケース(各6色)
@@ -387,13 +414,13 @@
  fix: 葉の圧縮ブロックのドロップアイテムを修正
  fix: HUDの温度表示がSMELTING以上のゲージを表示できないのを修正
 
-○ v4-alpha7
+○ v4-alpha7 (2023.8.2)
  add: 圧縮した葉ブロック
  add: 腐葉土
  change: 大鎌に作物や葉ブロックの範囲破壊機能を追加
  fix: 葉ブロックが崩壊してしまう
 
-○ v4-alpha6
+○ v4-alpha6 (2023.7.23)
  add: 宝石のシャンデリア
  add: 金の鎖
  add: ケーキ 4種
@@ -402,7 +429,7 @@
  fix: 季節が正常に進行しない
  fix: 葉ブロックをハサミで回収できない
 
-○ v4-alpha5
+○ v4-alpha5 (2023.4.17)
  add: 魔法のペンダント
  change; 鳥・魚のポーション効果にそれぞれ採掘速度上昇効果をつけた
  fix: サーバーサイドでのクラッシュを修正

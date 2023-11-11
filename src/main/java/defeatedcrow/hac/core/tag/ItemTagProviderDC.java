@@ -281,9 +281,6 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.COOKED_MEAT).addTags(TagDC.ItemTag.COOKED_BEEF, TagDC.ItemTag.COOKED_PORK, TagDC.ItemTag.COOKED_CHICKEN,
 			TagDC.ItemTag.COOKED_MUTTON, TagDC.ItemTag.COOKED_RABBIT);
 
-		tag(TagDC.ItemTag.RAW_EDIBLE_FISH).addTags(TagDC.ItemTag.RAW_COD, TagDC.ItemTag.RAW_SALMON);
-		tag(TagDC.ItemTag.RAW_ALL_FISH).addTags(TagDC.ItemTag.RAW_EDIBLE_FISH).add(Items.PUFFERFISH, Items.TROPICAL_FISH);
-
 		tag(TagDC.ItemTag.COOKED_FISH).addTags(TagDC.ItemTag.COOKED_COD, TagDC.ItemTag.COOKED_SALMON);
 
 		tag(Tags.Items.BONES).addTags(TagDC.ItemTag.BONE_COW, TagDC.ItemTag.BONE_PIG, TagDC.ItemTag.BONE_CHICKEN);
@@ -309,11 +306,66 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 			.add(FoodInit.BLOCK_RO_RUGOSA.get().asItem());
 
 		tag(TagDC.ItemTag.SEED_RED).addTags(TagDC.ItemTag.SEED_JUTE, TagDC.ItemTag.SEED_ROGERIA, TagDC.ItemTag.SEED_WILD_GRAPE)
-			.add(FoodInit.BLOCK_CH_WILD.get().asItem(), FoodInit.BLOCK_CM_OIL.get().asItem(), FoodInit.BLOCK_SU_LACQUER.get().asItem());
+			.add(FoodInit.BLOCK_CH_WILD.get().asItem(), FoodInit.BLOCK_CM_OIL.get().asItem(), FoodInit.BLOCK_SU_LACQUER.get().asItem())
+			.add(FoodInit.BLOCK_SU_LACQUER.get().asItem());
 
 		tag(TagDC.ItemTag.SEED_GREEN).addTags(TagDC.ItemTag.SEED_GINGER, TagDC.ItemTag.SEED_GREEN_PEAS, TagDC.ItemTag.SEED_CALABASH, TagDC.ItemTag.SEED_SPIRANTHES)
 			.add(FoodInit.BLOCK_CT_POMELO.get().asItem(), FoodInit.BLOCK_CN_CAMPHOR.get().asItem(),
 				FoodInit.BLOCK_MR_MULBERRY.get().asItem(), FoodInit.BLOCK_PL_COCONUT.get().asItem());
+
+		// fishing
+		tag(ItemTags.FISHES).addTags(TagDC.ItemTag.MULLET, TagDC.ItemTag.SMELT, TagDC.ItemTag.SARDINE, TagDC.ItemTag.MACKEREL, TagDC.ItemTag.CARP,
+			TagDC.ItemTag.ROCKFISH, TagDC.ItemTag.GROUPER, TagDC.ItemTag.SEABREAM, TagDC.ItemTag.FLOUNDER, TagDC.ItemTag.CRAB, TagDC.ItemTag.PRAWN,
+			TagDC.ItemTag.KRILL, TagDC.ItemTag.SQUID);
+
+		tag(TagDC.ItemTag.RAW_EDIBLE_FISH).addTags(TagDC.ItemTag.RAW_COD, TagDC.ItemTag.RAW_SALMON, TagDC.ItemTag.MACKEREL, TagDC.ItemTag.SARDINE, TagDC.ItemTag.CARP,
+			TagDC.ItemTag.ROCKFISH, TagDC.ItemTag.GROUPER, TagDC.ItemTag.SEABREAM, TagDC.ItemTag.FLOUNDER, TagDC.ItemTag.MULLET, TagDC.ItemTag.SMELT);
+
+		tag(TagDC.ItemTag.RAW_ALL_FISH).addTags(TagDC.ItemTag.RAW_EDIBLE_FISH).add(Items.PUFFERFISH, Items.TROPICAL_FISH);
+
+		tag(TagDC.ItemTag.FISH_BLUE).addTags(TagDC.ItemTag.MACKEREL, TagDC.ItemTag.SARDINE);
+
+		tag(TagDC.ItemTag.FISH_WHITE).addTags(TagDC.ItemTag.RAW_COD, TagDC.ItemTag.RAW_SALMON, TagDC.ItemTag.ROCKFISH, TagDC.ItemTag.CARP,
+			TagDC.ItemTag.GROUPER, TagDC.ItemTag.SEABREAM, TagDC.ItemTag.FLOUNDER, TagDC.ItemTag.MULLET, TagDC.ItemTag.SMELT);
+
+		tag(TagDC.ItemTag.FISH_SASHIMI).addTags(TagDC.ItemTag.RAW_SALMON, TagDC.ItemTag.MACKEREL, TagDC.ItemTag.SARDINE,
+			TagDC.ItemTag.ROCKFISH, TagDC.ItemTag.GROUPER, TagDC.ItemTag.SEABREAM, TagDC.ItemTag.FLOUNDER);
+
+		tag(TagDC.ItemTag.FISH_WITH_ROE).addTags(TagDC.ItemTag.RAW_COD, TagDC.ItemTag.RAW_SALMON, TagDC.ItemTag.MACKEREL, TagDC.ItemTag.MULLET, TagDC.ItemTag.SMELT);
+
+		tag(TagDC.ItemTag.FISH).add(FoodInit.FOOD_MULLET.get(), FoodInit.FOOD_SMELT.get(), FoodInit.FOOD_SARDINE.get(), FoodInit.FOOD_MACKEREL.get(),
+			FoodInit.FOOD_CARP.get(), FoodInit.FOOD_ROCKFISH.get(), FoodInit.FOOD_SEABREAM.get(), FoodInit.FOOD_FLOUNDER.get(), FoodInit.FOOD_GROUPER.get(),
+			FoodInit.FOOD_KRILL.get(), FoodInit.FOOD_PRAWN.get(), FoodInit.FOOD_CRAB.get(), FoodInit.FOOD_SQUID.get(),
+			Items.COD, Items.SALMON, Items.PUFFERFISH, Items.TROPICAL_FISH);
+
+		tag(TagDC.ItemTag.FISH_VANILLA).add(Items.COD, Items.SALMON, Items.PUFFERFISH, Items.TROPICAL_FISH);
+
+		tag(TagDC.ItemTag.FISH_LOD).addTags(TagDC.ItemTag.FISH);
+
+		tag(TagDC.ItemTag.FISH_NIGHT).add(FoodInit.FOOD_ROCKFISH.get(), FoodInit.FOOD_FLOUNDER.get(), FoodInit.FOOD_GROUPER.get(), FoodInit.FOOD_SQUID.get());
+
+		tag(TagDC.ItemTag.FISH_DAY).add(FoodInit.FOOD_MULLET.get(), FoodInit.FOOD_SMELT.get(), FoodInit.FOOD_SARDINE.get(), FoodInit.FOOD_MACKEREL.get(),
+			FoodInit.FOOD_CARP.get(), FoodInit.FOOD_SEABREAM.get(), FoodInit.FOOD_KRILL.get(), FoodInit.FOOD_PRAWN.get(), FoodInit.FOOD_CRAB.get(),
+			Items.COD, Items.SALMON, Items.PUFFERFISH, Items.TROPICAL_FISH);
+
+		tag(TagDC.ItemTag.FISH_RIVER).add(FoodInit.FOOD_MULLET.get(), FoodInit.FOOD_SMELT.get(), FoodInit.FOOD_CARP.get(), FoodInit.FOOD_PRAWN.get(),
+			FoodInit.FOOD_CRAB.get(), Items.SALMON);
+
+		tag(TagDC.ItemTag.FISH_BEACH).add(FoodInit.FOOD_MULLET.get(), FoodInit.FOOD_SARDINE.get(),
+			FoodInit.FOOD_ROCKFISH.get(), FoodInit.FOOD_SEABREAM.get(), FoodInit.FOOD_FLOUNDER.get(),
+			FoodInit.FOOD_CRAB.get(), FoodInit.FOOD_SQUID.get(), Items.PUFFERFISH, Items.TROPICAL_FISH);
+
+		tag(TagDC.ItemTag.FISH_MANGROVE).add(FoodInit.FOOD_MACKEREL.get(), FoodInit.FOOD_SEABREAM.get(), FoodInit.FOOD_PRAWN.get(), FoodInit.FOOD_CRAB.get());
+
+		tag(TagDC.ItemTag.FISH_OCEAN).add(FoodInit.FOOD_SARDINE.get(), FoodInit.FOOD_MACKEREL.get(),
+			FoodInit.FOOD_ROCKFISH.get(), FoodInit.FOOD_SEABREAM.get(), FoodInit.FOOD_FLOUNDER.get(), FoodInit.FOOD_GROUPER.get(),
+			FoodInit.FOOD_KRILL.get(), FoodInit.FOOD_CRAB.get(), FoodInit.FOOD_SQUID.get(),
+			Items.COD, Items.PUFFERFISH, Items.TROPICAL_FISH);
+
+		tag(TagDC.ItemTag.FISH_COLD_WATER).add(FoodInit.FOOD_SMELT.get(), FoodInit.FOOD_FLOUNDER.get(), Items.COD, Items.SALMON);
+
+		tag(TagDC.ItemTag.FISH_TROPICAL).add(FoodInit.FOOD_MULLET.get(), FoodInit.FOOD_SARDINE.get(), FoodInit.FOOD_SEABREAM.get(), FoodInit.FOOD_GROUPER.get(),
+			FoodInit.FOOD_CARP.get(), FoodInit.FOOD_PRAWN.get(), FoodInit.FOOD_SQUID.get(), Items.PUFFERFISH, Items.TROPICAL_FISH);
 
 		// blocks
 		copy(TagDC.BlockTag.ORES_WHITE, TagDC.ItemTag.ORES_WHITE);

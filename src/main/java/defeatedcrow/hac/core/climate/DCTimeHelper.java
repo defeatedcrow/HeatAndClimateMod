@@ -28,7 +28,7 @@ public class DCTimeHelper {
 
 	public static boolean isDayTime(Level world) {
 		int t = currentTime(world);
-		return t >= 6 && t <= 17;
+		return t > 5 && t < 18;
 	}
 
 	public static int currentTime(Level world) {
@@ -41,7 +41,6 @@ public class DCTimeHelper {
 		// return hour;
 		// }
 		long time = time(world);
-		time += 6000;
 		if (time > 24000)
 			time -= 24000;
 		return (int) (time / 1000);

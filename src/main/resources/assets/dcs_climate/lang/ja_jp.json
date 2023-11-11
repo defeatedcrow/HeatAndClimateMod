@@ -327,10 +327,22 @@
   "item.dcs_climate.food.bone_pig":"豚骨",
   "item.dcs_climate.food.bone_chicken":"鶏ガラ",
   "item.dcs_climate.food.skin_pig":"豚革",
-
   "item.dcs_climate.food.food_raw_frog":"生のカエル肉",
-  "item.dcs_climate.food.food_raw_prawn":"生のテナガエビ",
-  "item.dcs_climate.food.food_raw_squid":"生のイカ",
+
+  "item.dcs_climate.food.fish_mullet":"生のボラ",
+  "item.dcs_climate.food.fish_smelt":"生のワカサギ",
+  "item.dcs_climate.food.fish_sardine":"生のイワシ",
+  "item.dcs_climate.food.fish_carp":"生のコイ",
+  "item.dcs_climate.food.fish_mackerel":"生のアジ",
+  "item.dcs_climate.food.fish_rockfish":"生のメバル",
+  "item.dcs_climate.food.fish_seabream":"生のチヌ",
+  "item.dcs_climate.food.fish_flounder":"生のヒラメ",
+  "item.dcs_climate.food.fish_grouper":"生のクエ",
+  "item.dcs_climate.food.fish_krill":"生のオキアミ",
+  "item.dcs_climate.food.fish_prawn":"生のテナガエビ",
+  "item.dcs_climate.food.fish_crab":"生のカニ",
+  "item.dcs_climate.food.fish_squid":"生のイカ",
+
   "item.dcs_climate.food.food_raw_roe":"魚卵",
   "item.dcs_climate.food.dust_fish_powder":"魚粉",
 
@@ -1039,9 +1051,21 @@
   "dcs.tip.empty_pack":"右クリック:水やミルクを汲むことが出来ます。",
   "dcs.tip.remove_bad_potion":"悪性ポーション効果を解除します。",
   "dcs.tip.healing":"即時回復",
+
+  "dcs.tip.fishdata.biome":"生息域: ",
+  "dcs.tip.fishdata.river":"淡水 ",
+  "dcs.tip.fishdata.beach":"浜辺 ",
+  "dcs.tip.fishdata.mangrove":"汽水 ",
+  "dcs.tip.fishdata.ocean":"沖合 ",
+  "dcs.tip.fishdata.coldwater":"冷水性",
+  "dcs.tip.fishdata.tropical":"熱帯性",
+  "dcs.tip.fishdata.time":"活動時間: ",
+  "dcs.tip.fishdata.night":"夜",
+  "dcs.tip.fishdata.day":"昼",
+  "dcs.tip.fishdata.luck":"水に投げ込むとリリースできます。",
+
   "dcs.tip.scythe":"右クリック: HaC作物を範囲収穫します。",
   "dcs.tip.bellow":"スニーク+右クリック: 燃焼チャンバーに風を送ります。",
-
   "dcs.tip.seedbag.desc":"ランダムに種を入手します:",
 
   "dcs.tip.magic_arrow.name.white":"光源",

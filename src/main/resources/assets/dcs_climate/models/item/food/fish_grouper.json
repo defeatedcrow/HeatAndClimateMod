@@ -1,6 +1,6 @@
 {
   "textures": {
-    "layer0": "dcs_climate:item/material/food_raw_squid"
+    "layer0": "dcs_climate:item/material/fish_grouper"
   },
   "parent": "minecraft:item/generated"
 }

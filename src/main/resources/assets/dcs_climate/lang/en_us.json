@@ -328,10 +328,22 @@
   "item.dcs_climate.food.bone_pig":"Pork Bones",
   "item.dcs_climate.food.bone_chicken":"Chicken Bones",
   "item.dcs_climate.food.skin_pig":"Pig Leather",
-
   "item.dcs_climate.food.food_raw_frog":"Raw Frog Legs",
-  "item.dcs_climate.food.food_raw_prawn":"Raw Prawn",
-  "item.dcs_climate.food.food_raw_squid":"Raw Squid",
+
+    "item.dcs_climate.food.fish_mullet":"Raw Mullet",
+  "item.dcs_climate.food.fish_smelt":"Raw Smelt",
+  "item.dcs_climate.food.fish_sardine":"Raw Sardine",
+  "item.dcs_climate.food.fish_carp":"Raw Carp",
+  "item.dcs_climate.food.fish_mackerel":"Raw Mackerel",
+  "item.dcs_climate.food.fish_rockfish":"Raw Rockfish",
+  "item.dcs_climate.food.fish_seabream":"Raw Seabream",
+  "item.dcs_climate.food.fish_flounder":"Raw Flounder",
+  "item.dcs_climate.food.fish_grouper":"Raw Grouper",
+  "item.dcs_climate.food.fish_krill":"Raw Krill",
+  "item.dcs_climate.food.fish_prawn":"Raw Prawn",
+  "item.dcs_climate.food.fish_crab":"Raw Crab",
+  "item.dcs_climate.food.fish_squid":"Raw Squid",
+
   "item.dcs_climate.food.food_raw_roe":"Raw Roe",
   "item.dcs_climate.food.dust_fish_powder":"Fish Meal",
 
@@ -1042,6 +1054,19 @@
   "dcs.tip.empty_pack":"Right-click: Can be filled with water or milk.",
   "dcs.tip.remove_bad_potion":"Removes bad potion effects.",
   "dcs.tip.healing":"Instant Healing",
+
+  "dcs.tip.fishdata.biome":"Biome: ",
+  "dcs.tip.fishdata.river":"Fleshwater ",
+  "dcs.tip.fishdata.beach":"Beach ",
+  "dcs.tip.fishdata.mangrove":"Mangrove ",
+  "dcs.tip.fishdata.ocean":"Ocean ",
+  "dcs.tip.fishdata.coldwater":"Coldwater",
+  "dcs.tip.fishdata.tropical":"Tropical",
+  "dcs.tip.fishdata.time":"Active Time: ",
+  "dcs.tip.fishdata.night":"Night",
+  "dcs.tip.fishdata.day":"Daytime",
+  "dcs.tip.fishdata.luck":"You can release this fish by throwing it into the water.",
+
   "dcs.tip.scythe":"Right-click: Harvest HaC crops within range.",
   "dcs.tip.bellow":"Sneaking + Right-click: Blow air into the heating chambers.",
 

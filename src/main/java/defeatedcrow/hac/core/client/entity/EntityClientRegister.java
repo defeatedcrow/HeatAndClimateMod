@@ -99,9 +99,11 @@ import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 
 public class EntityClientRegister {
+
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		// TESR
 		event.registerLayerDefinition(ChandelierTile.CHALCEDONY.getLayerLocation(), BlockChandelierModel::createBodyLayer);
@@ -284,6 +286,10 @@ public class EntityClientRegister {
 		event.register(CoreInit.SMOKE.get(), SmokeParticleDC.Provider::new);
 	}
 
+	public static void registerClientReloadListeners(RegisterClientReloadListenersEvent event) {
+		event.registerReloadListener(EntityModelLoader.INSTANCE);
+	}
+
 	public static void registerRenderTypes() {
 		ItemBlockRenderTypes.setRenderLayer(CoreInit.BRINE.getStillFluid().get(), RenderType.translucent());
 		ItemBlockRenderTypes.setRenderLayer(CoreInit.BRINE.getFlowingFluid().get(), RenderType.translucent());
@@ -294,5 +300,4 @@ public class EntityClientRegister {
 		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getStillFluid().get(), RenderType.translucent());
 		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getFlowingFluid().get(), RenderType.translucent());
 	}
-
 }

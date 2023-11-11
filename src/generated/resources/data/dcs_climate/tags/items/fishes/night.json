@@ -1,0 +1,8 @@
+{
+  "values": [
+    "dcs_climate:food/fish_rockfish",
+    "dcs_climate:food/fish_flounder",
+    "dcs_climate:food/fish_grouper",
+    "dcs_climate:food/fish_squid"
+  ]
+}
