@@ -77,9 +77,13 @@ public class FermentationJarMenu extends AbstractContainerMenu {
 		if (slot != null && slot.hasItem()) {
 			ItemStack check = slot.getItem();
 			stack = check.copy();
-			if (s > 11) {
-				if (FluidUtil.getFluidHandler(stack).isPresent()) {
-					if (!this.moveItemStackTo(stack, 0, 3, false)) {
+			if (s > 8) {
+				if (FluidUtil.getFluidHandler(check).isPresent()) {
+					if (!this.moveItemStackTo(check, 5, 6, false)) {
+						return ItemStack.EMPTY;
+					}
+				} else {
+					if (!this.moveItemStackTo(check, 0, 3, false)) {
 						return ItemStack.EMPTY;
 					}
 				}
@@ -94,6 +98,12 @@ public class FermentationJarMenu extends AbstractContainerMenu {
 			} else {
 				slot.setChanged();
 			}
+
+			if (check.getCount() == stack.getCount()) {
+				return ItemStack.EMPTY;
+			}
+
+			slot.onTake(player, check);
 		}
 
 		return stack;

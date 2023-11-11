@@ -84,6 +84,12 @@ public class SimpleInventoryMenu extends AbstractContainerMenu {
 			} else {
 				slot.setChanged();
 			}
+
+			if (check.getCount() == stack.getCount()) {
+				return ItemStack.EMPTY;
+			}
+
+			slot.onTake(player, check);
 		}
 
 		return stack;

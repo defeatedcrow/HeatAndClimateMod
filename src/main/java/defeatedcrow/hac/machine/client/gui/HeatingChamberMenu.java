@@ -67,8 +67,8 @@ public class HeatingChamberMenu extends AbstractContainerMenu {
 			ItemStack check = slot.getItem();
 			stack = check.copy();
 			if (s > 1) {
-				if (net.minecraftforge.common.ForgeHooks.getBurnTime(stack, RecipeType.SMELTING) > 0) {
-					if (!this.moveItemStackTo(stack, 0, 1, false)) {
+				if (net.minecraftforge.common.ForgeHooks.getBurnTime(check, RecipeType.SMELTING) > 0) {
+					if (!this.moveItemStackTo(check, 0, 1, false)) {
 						return ItemStack.EMPTY;
 					}
 				}
@@ -83,6 +83,12 @@ public class HeatingChamberMenu extends AbstractContainerMenu {
 			} else {
 				slot.setChanged();
 			}
+
+			if (check.getCount() == stack.getCount()) {
+				return ItemStack.EMPTY;
+			}
+
+			slot.onTake(player, check);
 		}
 
 		return stack;
