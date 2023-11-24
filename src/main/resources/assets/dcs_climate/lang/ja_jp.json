@@ -106,8 +106,11 @@
   "item.dcs_climate.main.bellow":"ふいご",
 
   "item.dcs_climate.main.scythe_brass":"真鍮の大鎌",
+  "item.dcs_climate.main.scythe_steel":"鋼の大鎌",
   "item.dcs_climate.main.harpoon_flint":"火打ち石の銛",
   "item.dcs_climate.main.harpoon_steel":"鋼の銛",
+
+  "item.dcs_climate.main.bucket_calabash":"ヒョウタンの水筒",
 
   "item.dcs_climate.main.null_item":"Null",
   "item.dcs_climate.main.icon_hac":"HeatAndClimate",
@@ -282,6 +285,7 @@
   "item.dcs_climate.food.crop_citrus_wild":"ブンタン",
   "item.dcs_climate.food.crop_citrus_common":"みかん",
   "item.dcs_climate.food.crop_citrus_rare":"レモン",
+  "item.dcs_climate.food.crop_citrus_epic":"花椒",
   "item.dcs_climate.food.crop_erica_wild":"ヒースの花",
   "item.dcs_climate.food.crop_erica_common":"シャクナゲの花",
   "item.dcs_climate.food.crop_erica_rare":"ブルーベリー",
@@ -317,6 +321,12 @@
   "item.dcs_climate.food.food_starch":"でんぷん",
   "item.dcs_climate.food.food_agar":"寒天",
 
+  "item.dcs_climate.food.food_pastry":"ペストリー生地",
+  "item.dcs_climate.food.food_noodle_wheat":"パスタ",
+  "item.dcs_climate.food.food_noodle_brine":"中華麺",
+  "item.dcs_climate.food.food_noodle_buckwheat":"蕎麦切り",
+  "item.dcs_climate.food.food_noodle_rice":"米粉麺",
+
   "item.dcs_climate.food.food_butter":"バター",
   "item.dcs_climate.food.food_margarine":"マーガリン",
   "item.dcs_climate.food.food_cheese":"チーズ",
@@ -350,13 +360,36 @@
   "item.dcs_climate.food.food_marmalade":"マーマレード",
   "item.dcs_climate.food.food_custard":"カスタードクリーム",
   "item.dcs_climate.food.food_anko":"小倉あん",
+  "item.dcs_climate.food.food_sauerkraut":"ザワークラウト",
+  "item.dcs_climate.food.food_tofu":"豆腐",
+  "item.dcs_climate.food.food_umeboshi":"梅干し",
+  "item.dcs_climate.food.food_tsukemono":"お漬物",
+  "item.dcs_climate.food.food_kimchi":"キムチ",
+  "item.dcs_climate.food.food_malt":"麦芽",
+  "item.dcs_climate.food.food_koji":"麹",
 
   "item.dcs_climate.food.food_sausage_raw":"生のソーセージ",
   "item.dcs_climate.food.food_sausage_smoked":"燻製ソーセージ",
 
+  "item.dcs_climate.food.food_basesoup_vegi":"野菜スープ",
+  "item.dcs_climate.food.food_basesoup_beef":"牛骨スープ",
+  "item.dcs_climate.food.food_basesoup_pork":"豚骨スープ",
+  "item.dcs_climate.food.food_basesoup_chicken":"鶏ガラスープ",
+  "item.dcs_climate.food.food_basesoup":"スープストック",
+
+  "item.dcs_climate.food.food_fish_sauce":"魚醤",
+  "item.dcs_climate.food.food_anchovy":"アンチョビ",
+  "item.dcs_climate.food.food_shrimp_paste":"シュリンプペースト",
+
   "item.dcs_climate.food.food_soysauce":"醤油",
   "item.dcs_climate.food.food_miso":"味噌",
   "item.dcs_climate.food.food_mixed_spices":"ミックススパイス",
+  "item.dcs_climate.food.food_ketchup":"ケチャップ",
+  "item.dcs_climate.food.food_mayonnaise":"マヨネーズ",
+  "item.dcs_climate.food.food_hotsauce":"ホットソース",
+  "item.dcs_climate.food.food_sauce_hummus":"フムス",
+  "item.dcs_climate.food.food_sauce_salsa":"サルサソース",
+  "item.dcs_climate.food.food_vinegar":"酢",
 
   "item.dcs_climate.food.pack_milk":"牛乳パック",
   "item.dcs_climate.food.pack_soy_milk":"豆乳パック",
@@ -374,6 +407,7 @@
   "item.dcs_climate.food.food_mallow_calyces":"ハイビスカスの実",
   "item.dcs_climate.food.food_vanilla_cured":"バニラビーンズ",
   "item.dcs_climate.food.food_cashew_nuts":"カシューナッツ",
+  "item.dcs_climate.food.food_sprout":"もやし",
 
   "item.dcs_climate.food.food_vine":"ツル",
   "item.dcs_climate.food.fiber_plant":"植物繊維",
@@ -433,6 +467,7 @@
   "item.dcs_climate.food.porridge_simple":"お粥",
   "item.dcs_climate.food.porridge_milk":"ミルク粥",
   "item.dcs_climate.food.muesli":"ミューズリー",
+  "item.dcs_climate.food.rice_boiled":"ご飯",
 
   "item.dcs_climate.food.stick_beef_raw":"生の牛串",
   "item.dcs_climate.food.stick_beef_cooked":"牛串",
@@ -462,6 +497,11 @@
   "item.dcs_climate.food.salad_potato":"ポテトサラダ",
   "item.dcs_climate.food.salad_nuts":"ナッツと豆のサラダ",
   "item.dcs_climate.food.salad_melon":"スイカとトマトのサラダ",
+
+  "item.dcs_climate.food.bottle_beer":"ビール",
+  "item.dcs_climate.food.bottle_sake":"日本酒",
+  "item.dcs_climate.food.bottle_wine":"赤ワイン",
+  "item.dcs_climate.food.bottle_wine_white":"白ワイン",
 
     "## items_wear":"waer",
 
@@ -713,6 +753,7 @@
   "block.dcs_climate.food.sapling_citrus_wild":"ブンタン",
   "block.dcs_climate.food.sapling_citrus_common":"ミカン",
   "block.dcs_climate.food.sapling_citrus_rare":"レモン",
+  "block.dcs_climate.food.sapling_citrus_epic":"花椒",
   "block.dcs_climate.food.sapling_erica_wild":"ヒース",
   "block.dcs_climate.food.sapling_erica_common":"シャクナゲ",
   "block.dcs_climate.food.sapling_erica_rare":"ブルーベリー",
@@ -748,6 +789,7 @@
   "block.dcs_climate.food.leaves_citrus_pomelo":"ブンタンの葉",
   "block.dcs_climate.food.leaves_citrus_mandarin":"ミカンの葉",
   "block.dcs_climate.food.leaves_citrus_lemon":"レモンの葉",
+  "block.dcs_climate.food.leaves_citrus_pepper":"花椒の葉",
   "block.dcs_climate.food.leaves_erica_heath":"ヒースの葉",
   "block.dcs_climate.food.leaves_erica_rhododendron":"シャクナゲの葉",
   "block.dcs_climate.food.leaves_erica_blueberry":"ブルーベリーの葉",
@@ -769,7 +811,7 @@
   "block.dcs_climate.food.log_beech_common":"ブナの原木",
   "block.dcs_climate.food.log_beech_walnut":"クルミの原木",
   "block.dcs_climate.food.log_beech_sweet":"シロミズナラの原木",
-  "block.dcs_climate.food.log_cherry_wild":"サクラの原木",
+  "block.dcs_climate.food.log_cherry_wild":"桜の原木",
   "block.dcs_climate.food.log_cinnamon_camphor":"樟の原木",
   "block.dcs_climate.food.log_cinnamon_true":"シナモンの原木",
   "block.dcs_climate.food.log_citrus_pomelo":"ミカンの原木",
@@ -794,11 +836,47 @@
   "block.dcs_climate.food.plank_sumac_lacquer":"ウルシ材",
   "block.dcs_climate.food.plank_lacquerware":"漆塗りの木材",
 
-    "## containers":"",
+    "## containers":"containers",
 
   "block.dcs_climate.container.container_leaves":"圧縮した葉ブロック",
 
-    "## build":"",
+  "block.dcs_climate.container.logcont_oak":"オークの原木の束",
+  "block.dcs_climate.container.logcont_birch":"シラカバの原木の束",
+  "block.dcs_climate.container.logcont_spruce":"トウヒの原木の束",
+  "block.dcs_climate.container.logcont_jungle":"ジャングルの原木の束",
+  "block.dcs_climate.container.logcont_acacia":"アカシアの原木の束",
+  "block.dcs_climate.container.logcont_darkoak":"ダークオークの原木の束",
+  "block.dcs_climate.container.logcont_mangrove":"マングローブの原木の束",
+  "block.dcs_climate.container.logcont_crimson":"真紅の幹の束",
+  "block.dcs_climate.container.logcont_warped":"歪んだ幹の束",
+  "block.dcs_climate.container.logcont_beech_common":"ブナの原木の束",
+  "block.dcs_climate.container.logcont_beech_walnut":"クルミの原木の束",
+  "block.dcs_climate.container.logcont_beech_sweet":"シロミズナラの原木の束",
+  "block.dcs_climate.container.logcont_cherry_wild":"桜の原木の束",
+  "block.dcs_climate.container.logcont_citrus_pomelo":"ミカンの原木の束",
+  "block.dcs_climate.container.logcont_cinnamon_camphor":"樟の原木の束",
+  "block.dcs_climate.container.logcont_cinnamon_true":"シナモンの原木の束",
+  "block.dcs_climate.container.logcont_morus_mulberry":"桑の原木の束",
+  "block.dcs_climate.container.logcont_morus_paper":"梶の原木の束",
+  "block.dcs_climate.container.logcont_morus_rubber":"ゴムの木の原木の束",
+  "block.dcs_climate.container.logcont_olive_ash":"トネリコの原木の束",
+  "block.dcs_climate.container.logcont_palm_coconut":"ヤシの原木の束",
+  "block.dcs_climate.container.logcont_sumac_lacquer":"ウルシの原木の束",
+  "block.dcs_climate.container.logcont_sumac_mango":"マンゴーの原木の束",
+  "block.dcs_climate.container.logcont_charcoal":"木炭の束",
+  
+  "block.dcs_climate.container.woodbox_apple":"リンゴの箱",
+  "block.dcs_climate.container.woodbox_carrot":"ニンジンの箱",
+  "block.dcs_climate.container.woodbox_potato":"ジャガイモの箱",
+  "block.dcs_climate.container.woodbox_beet":"ビートルートの箱",
+  "block.dcs_climate.container.woodbox_pumpkin":"カボチャの箱",
+  "block.dcs_climate.container.woodbox_melon":"スイカの箱",
+  "block.dcs_climate.container.woodbox_cactus":"サボテンの箱",
+  "block.dcs_climate.container.woodbox_sugarcane":"サトウキビの箱",
+  "block.dcs_climate.container.woodbox_cocoa":"カカオ豆の箱",
+  "block.dcs_climate.container.woodbox_bushberry":"スイートベリーの箱",
+
+    "## build":"build",
 
   "block.dcs_climate.build.bricks_mud":"泥岩レンガ",
   "block.dcs_climate.build.bricks_gypsum":"石膏レンガ",
@@ -956,6 +1034,7 @@
   "block.dcs_climate.build.cabinet_green":"キャビネット(緑)",
 
   "block.dcs_climate.build.chain_gold":"金の鎖",
+  "block.dcs_climate.build.toolhook":"アイテム壁掛けフック",
 
     "## machine":"",
 
@@ -1199,6 +1278,7 @@
   "effect.dcs_climate.effect_flag":"旗手",
   "effect.dcs_climate.effect_nimble":"早業",
   "effect.dcs_climate.effect_heavyboots":"ヘビーブーツ",
+  "effect.dcs_climate.effect_proj_resistance":"射撃耐性",
 
     "## gui_jei":"jei",
 

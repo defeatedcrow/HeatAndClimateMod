@@ -1,0 +1,24 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "fermentation",
+  "result": {
+    "item": "dcs_climate:food/food_sprout",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:seeds/edible_sprout"
+    }
+  ],
+  "heat": [
+    "WARM",
+    "HOT"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "NORMAL"
+  ]
+}

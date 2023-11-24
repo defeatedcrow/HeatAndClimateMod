@@ -1,0 +1,8 @@
+{
+  "textures": {
+    "top": "dcs_climate:block/container/woodbox_t_carrot",
+    "bottom": "dcs_climate:block/container/woodbox_b",
+    "side": "dcs_climate:block/container/woodbox_s"
+  },
+  "parent": "dcs_climate:block/dcs_container"
+}

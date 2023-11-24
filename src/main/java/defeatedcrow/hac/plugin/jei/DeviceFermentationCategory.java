@@ -70,13 +70,13 @@ public class DeviceFermentationCategory implements IRecipeCategory<IDeviceRecipe
 		int l = Math.min(3, recipe.getInputs().size());
 		for (int l1 = 0; l1 < l; l1++) {
 			int y = l1 * 18;
-			builder.addSlot(RecipeIngredientRole.INPUT, 66, 6 + y).addIngredients(recipe.getInputs().get(l1));
+			builder.addSlot(RecipeIngredientRole.INPUT, 66, 5 + y).addIngredients(recipe.getInputs().get(l1));
 		}
 
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 104, 13).addItemStack(recipe.getOutput().copy());
 
 		if (!recipe.getSecondaryOutput().isEmpty())
-			builder.addSlot(RecipeIngredientRole.OUTPUT, 104, 37).addItemStack(recipe.getSecondaryOutput().copy());
+			builder.addSlot(RecipeIngredientRole.OUTPUT, 104, 36).addItemStack(recipe.getSecondaryOutput().copy());
 
 		if (!recipe.getInputFluids().isEmpty()) {
 			TagKey<Fluid> tag = recipe.getInputFluids().get(0);

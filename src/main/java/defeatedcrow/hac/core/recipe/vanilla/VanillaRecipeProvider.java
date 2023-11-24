@@ -598,6 +598,16 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_gold", has(Tags.Items.INGOTS_GOLD))
 			.save(cons, "dcs_climate:build/chain_gold_0");
 
+		ShapedRecipeBuilder.shaped(BuildInit.TOOL_HOOK.get(), 1)
+			.pattern("Z")
+			.pattern("Y")
+			.pattern("X")
+			.define('X', ItemTags.PLANKS)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.define('Z', TagDC.ItemTag.INGOT_BRASS)
+			.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+			.save(cons, "dcs_climate:build/wall_hook_0");
+
 		ShapedRecipeBuilder.shaped(BuildInit.CABINET_NORMAL.get(), 1)
 			.pattern("XXX")
 			.pattern(" Y ")
@@ -786,6 +796,15 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
 			.save(cons, "dcs_climate:core/scytheitem_brass");
 
+		ShapedRecipeBuilder.shaped(CoreInit.SCYTHE_STEEL.get(), 1)
+			.pattern("YYX")
+			.pattern("  X")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
+			.save(cons, "dcs_climate:core/scytheitem_steel");
+
 		ShapedRecipeBuilder.shaped(CoreInit.HARPOON_FLINT.get(), 1)
 			.pattern("  Y")
 			.pattern(" X ")
@@ -805,6 +824,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.define('Z', Tags.Items.STRING)
 			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
 			.save(cons, "dcs_climate:core/harpoon_steel1");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.CALABASH_BUCKET.get(), 1)
+			.requires(TagDC.ItemTag.CROP_CALABASH)
+			.requires(TagDC.ItemTag.SAP_LACQUER)
+			.requires(Tags.Items.STRING)
+			.unlockedBy("has_crop_calabash", has(TagDC.ItemTag.CROP_CALABASH))
+			.save(cons, "dcs_climate:clothing/bucket_calabash_0");
 	}
 
 	private static void clothingRecipes(Consumer<FinishedRecipe> cons) {

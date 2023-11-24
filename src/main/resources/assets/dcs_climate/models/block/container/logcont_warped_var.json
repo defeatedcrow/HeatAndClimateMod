@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "top": "dcs_climate:block/container/logcont_warped_t",
+    "side": "dcs_climate:block/container/logcont_warped_s"
+  },
+  "parent": "dcs_climate:block/dcs_piller_var"
+}

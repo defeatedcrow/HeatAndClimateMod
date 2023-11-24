@@ -7,12 +7,15 @@ import javax.annotation.Nullable;
 import com.google.common.base.Suppliers;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
+import defeatedcrow.hac.api.material.IDisplayTile;
 import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.material.IRenderBlockData;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.api.util.TagKeyDC;
+import defeatedcrow.hac.core.network.packet.message.MsgTileDisplayItemToC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileFluidToC;
 import defeatedcrow.hac.core.recipe.DCRecipes;
+import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.event.CraftingFoodEvent;
 import defeatedcrow.hac.machine.client.gui.CookingPotMenu;
@@ -43,7 +46,7 @@ import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 
-public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileDC, IRenderBlockData {
+public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileDC, IRenderBlockData, IDisplayTile {
 
 	public CookingPotTile(BlockPos pos, BlockState state) {
 		super(MachineInit.COOKING_POT_TILE.get(), pos, state);
@@ -210,6 +213,17 @@ public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileD
 
 	int count = 5;
 	private int lastHash1 = 0;
+	private ItemStack display = ItemStack.EMPTY;
+
+	@Override
+	public ItemStack getDisplay() {
+		return display;
+	}
+
+	@Override
+	public void setDisplay(ItemStack item) {
+		display = item;
+	}
 
 	@Override
 	public boolean onTickProcess(Level level, BlockPos pos, BlockState state) {
@@ -226,8 +240,8 @@ public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileD
 				flag = FluidUtil.getFluidHandler(copy)
 					.map(handler -> {
 						FluidStack fluid = handler.getFluidInTank(0);
-						if (fluid.isEmpty()) {
-							int space = Math.min(inputTank.getSpace(), handler.getTankCapacity(0));
+						if (fluid.isEmpty() || inputTank.isFull()) {
+							int space = Math.min(inputTank.getFluidAmount(), handler.getTankCapacity(0));
 							int d = handler.fill(inputTank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
 							if (d > 0 && inventory.canInsertResult(handler.getContainer(), intankS2, intankS2) != 0) {
 								// drain
@@ -241,11 +255,13 @@ public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileD
 								return true;
 							}
 						} else if (handler.isFluidValid(TANK_CAP, fluid)) {
-							FluidStack drain = handler.drain(fluid, FluidAction.EXECUTE);
+							FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
 							int f = inputTank.fill(drain, FluidAction.SIMULATE);
 							if (f > 0 && inventory.canInsertResult(handler.getContainer(), intankS2, intankS2) != 0) {
 								// fill
+								drain.setAmount(f);
 								inputTank.fill(drain, FluidAction.EXECUTE);
+								handler.drain(drain, FluidAction.EXECUTE);
 								ItemStack ret = handler.getContainer().copy();
 								if (!ret.isEmpty()) {
 									ret.setCount(1);
@@ -265,8 +281,8 @@ public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileD
 				flag = FluidUtil.getFluidHandler(copy)
 					.map(handler -> {
 						FluidStack fluid = handler.getFluidInTank(0);
-						if (fluid.isEmpty()) {
-							int space = Math.min(outputTank.getSpace(), handler.getTankCapacity(0));
+						if (fluid.isEmpty() || outputTank.isFull()) {
+							int space = Math.min(outputTank.getFluidAmount(), handler.getTankCapacity(0));
 							int d = handler.fill(outputTank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
 							if (d > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
 								// drain
@@ -280,11 +296,13 @@ public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileD
 								return true;
 							}
 						} else if (handler.isFluidValid(TANK_CAP, fluid)) {
-							FluidStack drain = handler.drain(fluid, FluidAction.EXECUTE);
+							FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
 							int f = outputTank.fill(drain, FluidAction.SIMULATE);
 							if (f > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
 								// fill
+								drain.setAmount(f);
 								outputTank.fill(drain, FluidAction.EXECUTE);
+								handler.drain(drain, FluidAction.EXECUTE);
 								ItemStack ret = handler.getContainer().copy();
 								if (!ret.isEmpty()) {
 									ret.setCount(1);
@@ -311,6 +329,11 @@ public class CookingPotTile extends ProcessTileBaseDC implements IFluidTankTileD
 				list.set(0, inputTank.getFluid());
 				list.set(1, outputTank.getFluid());
 				MsgTileFluidToC.sendToClient((ServerLevel) level, pos, list);
+			}
+
+			if (!DCItemUtil.isSameItem(display, inventory.getItem(6), false)) {
+				display = inventory.getItem(6).copy();
+				MsgTileDisplayItemToC.sendToClient((ServerLevel) level, pos, display);
 			}
 
 			return flag;

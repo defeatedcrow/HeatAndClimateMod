@@ -1,0 +1,24 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "fermentation",
+  "result": {
+    "item": "dcs_climate:food/food_koji",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/rice_boiled"
+    }
+  ],
+  "heat": [
+    "WARM",
+    "HOT"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "NORMAL"
+  ]
+}

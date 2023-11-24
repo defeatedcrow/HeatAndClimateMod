@@ -213,9 +213,12 @@ public abstract class OwnableContainerBaseTileDC extends BlockEntity implements 
 	}
 
 	public void loadTag(CompoundTag tag) {
-		owner = tag.getUUID(TagKeyDC.OWNER_UUID);
-		ownerName = tag.getString("ownerName");
-		date = tag.getString("dateString");
+		if (tag.contains(TagKeyDC.OWNER_UUID))
+			owner = tag.getUUID(TagKeyDC.OWNER_UUID);
+		if (tag.contains("ownerName"))
+			ownerName = tag.getString("ownerName");
+		if (tag.contains("dateString"))
+			date = tag.getString("dateString");
 		isLocked = tag.getBoolean("locked");
 		if (tag.contains("CustomName", 8)) {
 			name = Component.Serializer.fromJson(tag.getString("CustomName"));

@@ -90,7 +90,22 @@ public class LeavesWalnut extends LeavesCropBlockDC {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		return Lists.newArrayList();
+		switch (t) {
+		case WILD, COMMON:
+			return ImmutableList.of("MOUNTAIN", "COLD");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD, COMMON:
+			return ImmutableList.of("CONIFEROUS");
+		default:
+			return Lists.newArrayList();
+		}
 	}
 
 	@Override

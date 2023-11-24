@@ -63,6 +63,8 @@ public class LeavesMandarin extends LeavesCropBlockDC {
 			return Optional.of(FoodInit.BLOCK_CT_MANDARIN.get());
 		case RARE:
 			return Optional.of(FoodInit.BLOCK_CT_LEMON.get());
+		case EPIC:
+			return Optional.of(FoodInit.BLOCK_CT_PEPPER.get());
 		default:
 			return Optional.empty();
 		}
@@ -90,7 +92,22 @@ public class LeavesMandarin extends LeavesCropBlockDC {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		return Lists.newArrayList();
+		switch (t) {
+		case WILD, COMMON:
+			return ImmutableList.of("JUNGLE", "FOREST");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD, COMMON:
+			return ImmutableList.of("CONIFEROUS", "COLD");
+		default:
+			return Lists.newArrayList();
+		}
 	}
 
 	@Override

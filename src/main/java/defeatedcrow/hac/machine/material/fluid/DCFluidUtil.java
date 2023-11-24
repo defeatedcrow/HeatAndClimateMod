@@ -100,13 +100,14 @@ public class DCFluidUtil {
 			return !DCUtil.isEmpty(item) && FluidUtil.getFluidHandler(copy)
 				.map(handler -> {
 					FluidStack fluid = handler.getFluidInTank(0);
-					if (fluid.isEmpty()) {
+					if (fluid.isEmpty() || tank.isFull()) {
+						// tank -> handler
 						int space = Math.min(tank.getFluidAmount(), handler.getTankCapacity(0));
 						FluidStack drain = tank.drain(space, FluidAction.SIMULATE);
 						int d = handler.fill(drain, FluidAction.EXECUTE);
 						if (d > 0) {
 							tank.drain(d, FluidAction.EXECUTE);
-							ItemStack ret = handler.getContainer();
+							ItemStack ret = handler.getContainer().copy();
 							item.shrink(1);
 							if (!ret.isEmpty()) {
 								ret.setCount(1);
@@ -116,10 +117,13 @@ public class DCFluidUtil {
 							return true;
 						}
 					} else if (handler.isFluidValid(tank.getSpace(), fluid)) {
-						FluidStack drain = handler.drain(fluid, FluidAction.EXECUTE);
+						// handler -> tank
+						FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
 						int f = tank.fill(drain, FluidAction.SIMULATE);
 						if (f > 0) {
+							drain.setAmount(f);
 							tank.fill(drain, FluidAction.EXECUTE);
+							handler.drain(drain, FluidAction.EXECUTE);
 							ItemStack ret = handler.getContainer().copy();
 							item.shrink(1);
 							if (!ret.isEmpty()) {
@@ -143,13 +147,13 @@ public class DCFluidUtil {
 			return !DCUtil.isEmpty(item) && FluidUtil.getFluidHandler(copy)
 				.map(handler -> {
 					FluidStack fluid = handler.getFluidInTank(0);
-					if (fluid.isEmpty()) {
+					if (fluid.isEmpty() || outTank.isFull()) {
 						int space = Math.min(outTank.getFluidAmount(), handler.getTankCapacity(0));
 						FluidStack drain = outTank.drain(space, FluidAction.SIMULATE);
 						int d = handler.fill(drain, FluidAction.EXECUTE);
 						if (d > 0) {
 							outTank.drain(d, FluidAction.EXECUTE);
-							ItemStack ret = handler.getContainer();
+							ItemStack ret = handler.getContainer().copy();
 							item.shrink(1);
 							if (!ret.isEmpty()) {
 								ret.setCount(1);
@@ -159,10 +163,12 @@ public class DCFluidUtil {
 							return true;
 						}
 					} else if (handler.isFluidValid(inTank.getSpace(), fluid)) {
-						FluidStack drain = handler.drain(fluid, FluidAction.EXECUTE);
+						FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
 						int f = inTank.fill(drain, FluidAction.SIMULATE);
 						if (f > 0) {
+							drain.setAmount(f);
 							inTank.fill(drain, FluidAction.EXECUTE);
+							handler.drain(drain, FluidAction.EXECUTE);
 							ItemStack ret = handler.getContainer().copy();
 							item.shrink(1);
 							if (!ret.isEmpty()) {

@@ -103,7 +103,7 @@ public class LeavesPistachio extends LeavesCropBlockDC {
 
 	@Override
 	public String getSpeciesName(CropTier tier) {
-		return "lacquer";
+		return "pistachio";
 	}
 
 	@Override

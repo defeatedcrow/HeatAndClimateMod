@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "dcs_climate:block/container/logcont_morus_rubber_hol",
+      "y": 90
+    },
+    "axis=y": {
+      "model": "dcs_climate:block/container/logcont_morus_rubber_var"
+    },
+    "axis=z": {
+      "model": "dcs_climate:block/container/logcont_morus_rubber_hol"
+    }
+  }
+}

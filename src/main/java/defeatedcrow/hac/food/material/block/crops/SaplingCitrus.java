@@ -39,6 +39,8 @@ public class SaplingCitrus extends SaplingBaseBlock {
 			return FoodInit.CROP_CT_MANDARIN.get();
 		case RARE:
 			return FoodInit.CROP_CT_LEMON.get();
+		case EPIC:
+			return FoodInit.CROP_CT_PEPPER.get();
 		default:
 			return FoodInit.CROP_CT_POMELO.get();
 		}
@@ -53,6 +55,8 @@ public class SaplingCitrus extends SaplingBaseBlock {
 			return Optional.of(FoodInit.BLOCK_CT_MANDARIN.get());
 		case RARE:
 			return Optional.of(FoodInit.BLOCK_CT_LEMON.get());
+		case EPIC:
+			return Optional.of(FoodInit.BLOCK_CT_PEPPER.get());
 		default:
 			return Optional.empty();
 		}
@@ -104,12 +108,14 @@ public class SaplingCitrus extends SaplingBaseBlock {
 			return "mandarin";
 		if (tier == CropTier.RARE)
 			return "lemon";
+		if (tier == CropTier.EPIC)
+			return "pepper";
 		return "pomelo";
 	}
 
 	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
-		// 高さ4~5、幅5
+		// 高さ3~5、幅5
 		level.random.nextInt(2);
 		int h = 3 + level.random.nextInt(3);
 		int r = 2;
@@ -119,6 +125,8 @@ public class SaplingCitrus extends SaplingBaseBlock {
 			leaves = FoodInit.LEAVES_CT_MANDARIN.get().defaultBlockState().setValue(DCState.FLAG, true);
 		} else if (t == CropTier.RARE) {
 			leaves = FoodInit.LEAVES_CT_LEMON.get().defaultBlockState().setValue(DCState.FLAG, true);
+		} else if (t == CropTier.EPIC) {
+			leaves = FoodInit.LEAVES_CT_PEPPER.get().defaultBlockState().setValue(DCState.FLAG, true);
 		}
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
@@ -132,7 +140,11 @@ public class SaplingCitrus extends SaplingBaseBlock {
 			if (replaceCheck(level, pos, h))
 				return;
 
-			growTree(level, pos, h, log, leaves);
+			if (h == 3) {
+				growSmallTree(level, pos, h, log, leaves);
+			} else {
+				growTree(level, pos, h, log, leaves);
+			}
 		}
 	}
 

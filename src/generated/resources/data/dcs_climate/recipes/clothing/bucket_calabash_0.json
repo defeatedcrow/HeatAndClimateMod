@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/calabash"
+    },
+    {
+      "tag": "forge:saps/lacquer"
+    },
+    {
+      "tag": "forge:string"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/bucket_calabash"
+  }
+}

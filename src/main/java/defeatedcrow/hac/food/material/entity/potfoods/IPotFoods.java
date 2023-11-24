@@ -1,10 +1,10 @@
 package defeatedcrow.hac.food.material.entity.potfoods;
 
-import net.minecraft.resources.ResourceLocation;
+import defeatedcrow.hac.api.material.EntityRenderData;
 import net.minecraft.world.item.Item;
 
 public interface IPotFoods {
 
-	ResourceLocation getPotTexture(Item item);
+	EntityRenderData getPotTexture(Item item);
 
 }

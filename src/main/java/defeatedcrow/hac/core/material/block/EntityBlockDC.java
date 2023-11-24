@@ -10,7 +10,6 @@ import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -73,8 +72,6 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 			ret.addAll(super.getDrops(state, builder));
 		} else if (state.getBlock() instanceof EntityBlockDC cont && builder != null) {
 			LootContext context = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
-			IBlockDC block = (IBlockDC) state.getBlock();
-			ServerLevel level = context.getLevel();
 			BlockEntity tile = null;
 			if (context.hasParam(LootContextParams.BLOCK_ENTITY)) {
 				tile = context.getParam(LootContextParams.BLOCK_ENTITY);

@@ -1,0 +1,36 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/porridge_milk",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/milks"
+    },
+    {
+      "tag": "forge:ingredients/oat"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

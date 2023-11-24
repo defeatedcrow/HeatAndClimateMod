@@ -11,7 +11,6 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidUtil;
 
 public class PortableTankMenu extends AbstractContainerMenu {
 
@@ -70,11 +69,11 @@ public class PortableTankMenu extends AbstractContainerMenu {
 			ItemStack check = slot.getItem();
 			stack = check.copy();
 			if (s > 1) {
-				if (FluidUtil.getFluidHandler(check).isPresent()) {
-					if (!this.moveItemStackTo(check, 0, 1, false)) {
-						return ItemStack.EMPTY;
-					}
+				// if (FluidUtil.getFluidHandler(check).isPresent()) {
+				if (!this.moveItemStackTo(check, 0, 1, false)) {
+					return ItemStack.EMPTY;
 				}
+				// }
 			} else {
 				if (!this.moveItemStackTo(check, 2, this.slots.size(), false)) {
 					return ItemStack.EMPTY;

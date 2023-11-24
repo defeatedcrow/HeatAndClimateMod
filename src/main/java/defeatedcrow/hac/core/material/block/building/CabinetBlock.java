@@ -13,11 +13,9 @@ import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.block.ContainerTileBlock;
 import defeatedcrow.hac.core.material.block.EntityBlockDC;
-import defeatedcrow.hac.core.material.block.IBlockDC;
 import defeatedcrow.hac.core.material.block.InventoryDC;
 import defeatedcrow.hac.core.material.block.OwnableContainerBaseTileDC;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -28,6 +26,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class CabinetBlock extends ContainerTileBlock {
@@ -85,9 +84,11 @@ public class CabinetBlock extends ContainerTileBlock {
 	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (state.getBlock() instanceof EntityBlockDC cont && builder != null) {
-			IBlockDC block = (IBlockDC) state.getBlock();
-			ServerLevel level = builder.getLevel();
-			BlockEntity tile = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+			LootContext context = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+			BlockEntity tile = null;
+			if (context.hasParam(LootContextParams.BLOCK_ENTITY)) {
+				tile = context.getParam(LootContextParams.BLOCK_ENTITY);
+			}
 
 			ret.add(getMainDrop());
 			if (tile instanceof OwnableContainerBaseTileDC base) {

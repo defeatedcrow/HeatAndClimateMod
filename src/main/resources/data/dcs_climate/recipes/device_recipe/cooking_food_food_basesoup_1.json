@@ -1,0 +1,45 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/food_basesoup",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/flavored"
+    },
+    {
+      "tag": "forge:crops/spicy_vegetables"
+    },
+    {
+      "tag": "forge:ingredients/raw_fishes_edible"
+    },
+    {
+      "tag": "forge:crops/celery"
+    },
+    {
+      "tag": "forge:crops/carrot"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

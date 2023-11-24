@@ -8,7 +8,7 @@ import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IEntityItem;
 import defeatedcrow.hac.food.client.model.SoupModel;
 import defeatedcrow.hac.food.material.entity.FoodEntityBase;
-import defeatedcrow.hac.food.material.entity.PorridgeItem;
+import defeatedcrow.hac.food.material.entity.potfoods.PorridgeItem;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;

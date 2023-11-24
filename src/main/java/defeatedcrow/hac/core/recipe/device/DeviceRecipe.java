@@ -167,7 +167,8 @@ public class DeviceRecipe implements IDeviceRecipe {
 						continue;
 					}
 					for (ItemStack check : next.getItems()) {
-						if (DCItemUtil.isSameItem(check, slot, false) && check.getCount() <= slot.getCount()) {
+						int i = slot.getCount() - ret[x];
+						if (DCItemUtil.isSameItem(check, slot, false) && check.getCount() <= i) {
 							match += check.getCount();
 							break;
 						}

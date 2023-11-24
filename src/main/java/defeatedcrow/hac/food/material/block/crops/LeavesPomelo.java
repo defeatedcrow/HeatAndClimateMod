@@ -62,6 +62,8 @@ public class LeavesPomelo extends LeavesCropBlockDC {
 			return Optional.of(FoodInit.BLOCK_CT_MANDARIN.get());
 		case RARE:
 			return Optional.of(FoodInit.BLOCK_CT_LEMON.get());
+		case EPIC:
+			return Optional.of(FoodInit.BLOCK_CT_PEPPER.get());
 		default:
 			return Optional.empty();
 		}

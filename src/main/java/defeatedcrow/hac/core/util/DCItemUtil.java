@@ -54,6 +54,13 @@ public class DCItemUtil {
 		return false;
 	}
 
+	public static boolean isSameItem(ItemStack ins, ItemStack slot, boolean nbtSensitive, boolean nullable) {
+		if (ins.isEmpty() || slot.isEmpty()) {
+			return ins.isEmpty() && slot.isEmpty() && nullable;
+		}
+		return isSameItem(ins, slot, nbtSensitive);
+	}
+
 	public static boolean isSameItem(ItemStack ins, ItemStack slot, boolean nbtSensitive) {
 		if (ins.isEmpty() || slot.isEmpty()) {
 			return false;

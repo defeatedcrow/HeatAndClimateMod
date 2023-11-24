@@ -11,7 +11,9 @@ import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Agri;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Cont;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Food;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.food.material.block.containers.CropContBlock;
 import defeatedcrow.hac.food.material.block.containers.LeavesContBlock;
+import defeatedcrow.hac.food.material.block.containers.LogContBlock;
 import defeatedcrow.hac.food.material.block.crops.CropBlockAllium;
 import defeatedcrow.hac.food.material.block.crops.CropBlockAmaranth;
 import defeatedcrow.hac.food.material.block.crops.CropBlockApium;
@@ -69,6 +71,7 @@ import defeatedcrow.hac.food.material.block.crops.LeavesRhododendron;
 import defeatedcrow.hac.food.material.block.crops.LeavesRubber;
 import defeatedcrow.hac.food.material.block.crops.LeavesRugosa;
 import defeatedcrow.hac.food.material.block.crops.LeavesSchima;
+import defeatedcrow.hac.food.material.block.crops.LeavesSichuanPepper;
 import defeatedcrow.hac.food.material.block.crops.LeavesSweet;
 import defeatedcrow.hac.food.material.block.crops.LeavesTea;
 import defeatedcrow.hac.food.material.block.crops.LeavesWalnut;
@@ -85,6 +88,8 @@ import defeatedcrow.hac.food.material.block.crops.SaplingOlive;
 import defeatedcrow.hac.food.material.block.crops.SaplingPalm;
 import defeatedcrow.hac.food.material.block.crops.SaplingRose;
 import defeatedcrow.hac.food.material.block.crops.SaplingSumac;
+import defeatedcrow.hac.food.material.entity.BottleBeerItem;
+import defeatedcrow.hac.food.material.entity.BottleWineItem;
 import defeatedcrow.hac.food.material.entity.BreadCreamItem;
 import defeatedcrow.hac.food.material.entity.BreadRoundItem;
 import defeatedcrow.hac.food.material.entity.BreadSausageItem;
@@ -97,11 +102,12 @@ import defeatedcrow.hac.food.material.entity.PlateFishItem;
 import defeatedcrow.hac.food.material.entity.PlateGarlicItem;
 import defeatedcrow.hac.food.material.entity.PlateLegsItem;
 import defeatedcrow.hac.food.material.entity.PlateMeatItem;
-import defeatedcrow.hac.food.material.entity.PorridgeItem;
 import defeatedcrow.hac.food.material.entity.SaladItem;
 import defeatedcrow.hac.food.material.entity.SandwichItem;
 import defeatedcrow.hac.food.material.entity.StickBeefItem;
 import defeatedcrow.hac.food.material.entity.StickMeatItem;
+import defeatedcrow.hac.food.material.entity.potfoods.PorridgeItem;
+import defeatedcrow.hac.food.material.entity.potfoods.RiceBowlItem;
 import defeatedcrow.hac.food.material.item.EmptyPackItem;
 import defeatedcrow.hac.food.material.item.FertilizerItemDC;
 import defeatedcrow.hac.food.material.item.FoodMaterialItemDC;
@@ -166,6 +172,15 @@ public class FoodInit {
 	public static final RegistryObject<EntityType<FoodEntityBase>> SOUP = CoreInit.ENTITIES.register("soup", () -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC)
 		.sized(0.5F, 0.5F).updateInterval(5).build("soup"));
 
+	public static final RegistryObject<EntityType<FoodEntityBase>> RICE = CoreInit.ENTITIES.register("rice", () -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC)
+		.sized(0.5F, 0.5F).updateInterval(5).build("rice"));
+
+	public static final RegistryObject<EntityType<FoodEntityBase>> BOTTLE_BEERTYPE = CoreInit.ENTITIES.register("bottle_beer", () -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC)
+		.sized(0.5F, 0.5F).updateInterval(5).build("bottle_beer"));
+
+	public static final RegistryObject<EntityType<FoodEntityBase>> BOTTLE_WINETYPE = CoreInit.ENTITIES.register("bottle_wine", () -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC)
+		.sized(0.5F, 0.5F).updateInterval(5).build("bottle_wine"));
+
 	// パン
 	public static final RegistryObject<Item> BREAD_ROUND_RAW_ITEM = regItem("bread_round_raw", () -> new BreadRoundItem("bread_round_raw", 0, 0F, TagDC.ItemTag.DOUGH).setRawFood());
 	public static final RegistryObject<Item> BREAD_ROUND_BAKED_ITEM = regItem("bread_round_baked", () -> new BreadRoundItem("bread_round_baked", 4, 0.4F, TagDC.ItemTag.BREAD));
@@ -199,8 +214,10 @@ public class FoodInit {
 
 	public static final RegistryObject<Item> PORRIDGE = regItem("porridge_simple", () -> new PorridgeItem("porridge_simple", 4, 0.6F, null));
 	public static final RegistryObject<Item> PORRIDGE_MILK = regItem("porridge_milk", () -> new PorridgeItem("porridge_milk", 6, 0.6F, null));
-	public static final RegistryObject<Item> MUESLI = regItem("muesli", () -> new PorridgeItem("muesli", 6, 0.4F, null));
+	public static final RegistryObject<Item> MUESLI = regItem("muesli", () -> new PorridgeItem("muesli", 8, 0.4F, null));
+
 	// ごはん
+	public static final RegistryObject<Item> BOILED_RICE = regItem("rice_boiled", () -> new RiceBowlItem("rice_boiled", 6, 0.4F, TagDC.ItemTag.BOILED_RICE));
 
 	// 麺
 	// そば
@@ -237,6 +254,12 @@ public class FoodInit {
 	public static final RegistryObject<Item> SALAD_NUTS = regItem("salad_nuts", () -> new SaladItem("salad_nuts", 8, 0.4F, null));
 	public static final RegistryObject<Item> SALAD_MELON = regItem("salad_melon", () -> new SaladItem("salad_melon", 7, 0.4F, null));
 
+	// ドリンク
+	public static final RegistryObject<Item> BOTTLE_BEER = regItem("bottle_beer", () -> new BottleBeerItem("bottle_beer", 4, 0F, TagDC.ItemTag.LIQUOR));
+	public static final RegistryObject<Item> BOTTLE_SAKE = regItem("bottle_sake", () -> new BottleBeerItem("bottle_sake", 4, 0F, TagDC.ItemTag.LIQUOR));
+	public static final RegistryObject<Item> BOTTLE_WINE = regItem("bottle_wine", () -> new BottleWineItem("bottle_wine", 4, 0F, TagDC.ItemTag.LIQUOR));
+	public static final RegistryObject<Item> BOTTLE_WINE_WHITE = regItem("bottle_wine_white", () -> new BottleWineItem("bottle_wine_white", 4, 0F, TagDC.ItemTag.LIQUOR));
+
 	/* 食材系 */
 
 	// mill
@@ -254,14 +277,6 @@ public class FoodInit {
 	public static final RegistryObject<Item> FOOD_WHEAT = regItem("food_wheat", () -> new FoodMaterialItemDC(FOOD, "food_wheat", TagDC.ItemTag.DUST_WHEAT).taste(1).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_STARCH = regItem("food_starch", () -> new FoodMaterialItemDC(FOOD, "food_starch", TagDC.ItemTag.DUST_STARCH).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_AGAR = regItem("food_agar", () -> new FoodMaterialItemDC(FOOD, "food_agar", TagDC.ItemTag.AGAR).setDomain("food"));
-
-	// dairy
-	public static final RegistryObject<Item> FOOD_BUTTER = regItem("food_butter", () -> new FoodMaterialItemDC(FOOD, "food_butter", TagDC.ItemTag.BUTTER).taste(1).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_MARGARINE = regItem("food_margarine", () -> new FoodMaterialItemDC(FOOD, "food_margarine", TagDC.ItemTag.MARGARINE).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_CHEESE = regItem("food_cheese", () -> new FoodMaterialItemDC(FOOD, "food_cheese", TagDC.ItemTag.CHEESE).taste(1).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_OFFAL = regItem("food_offal", () -> new FoodMaterialItemDC(FOOD, "food_offal", TagDC.ItemTag.OFFAL).taste(-1).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_GELATINE = regItem("food_gelatine", () -> new FoodMaterialItemDC(FOOD, "food_gelatine", TagDC.ItemTag.GELATINE).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_RENNET = regItem("food_rennet", () -> new FoodMaterialItemDC(FOOD, "food_rennet", TagDC.ItemTag.RENNET).setDomain("food"));
 
 	// meat
 	public static final RegistryObject<Item> FOOD_FROG = regItem("food_raw_frog", () -> new FoodMaterialItemDC(FOOD, "food_raw_frog", TagDC.ItemTag.FROG).taste(-1).setDomain("food"));
@@ -288,26 +303,58 @@ public class FoodInit {
 	public static final RegistryObject<Item> FOOD_ROE = regItem("food_raw_roe", () -> new FoodMaterialItemDC(FOOD, "food_raw_roe", TagDC.ItemTag.ROE).taste(1).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_FISH_POWDER = regItem("dust_fish_powder", () -> new FoodMaterialItemDC(FOOD, "dust_fish_powder", TagDC.ItemTag.FISH_POWDER).setDomain("food"));
 
+	// dairy
+	public static final RegistryObject<Item> FOOD_BUTTER = regItem("food_butter", () -> new FoodMaterialItemDC(FOOD, "food_butter", TagDC.ItemTag.BUTTER).taste(1).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_MARGARINE = regItem("food_margarine", () -> new FoodMaterialItemDC(FOOD, "food_margarine", TagDC.ItemTag.MARGARINE).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_CHEESE = regItem("food_cheese", () -> new FoodMaterialItemDC(FOOD, "food_cheese", TagDC.ItemTag.CHEESE).taste(1).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_OFFAL = regItem("food_offal", () -> new FoodMaterialItemDC(FOOD, "food_offal", TagDC.ItemTag.OFFAL).taste(-1).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_GELATINE = regItem("food_gelatine", () -> new FoodMaterialItemDC(FOOD, "food_gelatine", TagDC.ItemTag.GELATINE).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_RENNET = regItem("food_rennet", () -> new FoodMaterialItemDC(FOOD, "food_rennet", TagDC.ItemTag.RENNET).setDomain("food"));
+
 	// processed
+	public static final RegistryObject<Item> NOODLE_WHEAT = regItem("food_noodle_wheat", () -> new FoodMaterialItemDC(FOOD, "food_noodle_wheat", TagDC.ItemTag.PASTA).setDomain("food"));
+	public static final RegistryObject<Item> NOODLE_BRINE = regItem("food_noodle_brine", () -> new FoodMaterialItemDC(FOOD, "food_noodle_brine", TagDC.ItemTag.NOODLE).setDomain("food"));
+	public static final RegistryObject<Item> NOODLE_BUCKWHEAT = regItem("food_noodle_buckwheat", () -> new FoodMaterialItemDC(FOOD, "food_noodle_buckwheat", TagDC.ItemTag.NOODLE).setDomain("food"));
+	public static final RegistryObject<Item> NOODLE_RICE = regItem("food_noodle_rice", () -> new FoodMaterialItemDC(FOOD, "food_noodle_rice", TagDC.ItemTag.NOODLE).setDomain("food"));
+
+	public static final RegistryObject<Item> FOOD_PASTRY = regItem("food_pastry", () -> new FoodMaterialItemDC(FOOD, "food_pastry", TagDC.ItemTag.PASTRY).setDomain("food"));
+
 	public static final RegistryObject<Item> FOOD_JAM = regItem("food_fruit_jam", () -> new FoodMaterialItemDC(FOOD, "food_fruit_jam", TagDC.ItemTag.JAM).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_MARMALADE = regItem("food_marmalade", () -> new FoodMaterialItemDC(FOOD, "food_marmalade", TagDC.ItemTag.MARMALADE).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_CUSTARD = regItem("food_custard", () -> new FoodMaterialItemDC(FOOD, "food_custard", TagDC.ItemTag.CUSTARD).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_ANKO = regItem("food_anko", () -> new FoodMaterialItemDC(FOOD, "food_anko", TagDC.ItemTag.ANKO).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_SAUERKRAUT = regItem("food_sauerkraut", () -> new FoodMaterialItemDC(FOOD, "food_sauerkraut", null).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_TOFU = regItem("food_tofu", () -> new FoodMaterialItemDC(FOOD, "food_tofu", TagDC.ItemTag.TOFU).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_UMEBOSHI = regItem("food_umeboshi", () -> new FoodMaterialItemDC(FOOD, "food_umeboshi", null).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_TSUKEMONO = regItem("food_tsukemono", () -> new FoodMaterialItemDC(FOOD, "food_tsukemono", null).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_KIMCHI = regItem("food_kimchi", () -> new FoodMaterialItemDC(FOOD, "food_kimchi", null).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_MALT = regItem("food_malt", () -> new FoodMaterialItemDC(FOOD, "food_malt", null).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_KOJI = regItem("food_koji", () -> new FoodMaterialItemDC(FOOD, "food_koji", null).setDomain("food"));
 
 	public static final RegistryObject<Item> RAW_SAUSAGE = regItem("food_sausage_raw", () -> new FoodMaterialItemDC(FOOD, "food_sausage_raw", TagDC.ItemTag.RAW_SAUSAGE).setDomain("food"));
 	public static final RegistryObject<Item> SMOKED_SAUSAGE = regItem("food_sausage_smoked", () -> new FoodMaterialItemDC(FOOD, "food_sausage_smoked", TagDC.ItemTag.COOKED_SAUSAGE).setDomain("food"));
+
+	public static final RegistryObject<Item> BASESOUP_VEGI = regItem("food_basesoup_vegi", () -> new FoodMaterialItemDC(FOOD, "food_basesoup_vegi", TagDC.ItemTag.BASESOUP).setDomain("food"));
+	public static final RegistryObject<Item> BASESOUP_BEEF = regItem("food_basesoup_beef", () -> new FoodMaterialItemDC(FOOD, "food_basesoup_beef", TagDC.ItemTag.BASESOUP).setDomain("food"));
+	public static final RegistryObject<Item> BASESOUP_PORK = regItem("food_basesoup_pork", () -> new FoodMaterialItemDC(FOOD, "food_basesoup_pork", TagDC.ItemTag.BASESOUP).setDomain("food"));
+	public static final RegistryObject<Item> BASESOUP_CHICKEN = regItem("food_basesoup_chicken", () -> new FoodMaterialItemDC(FOOD, "food_basesoup_chicken", TagDC.ItemTag.BASESOUP).setDomain("food"));
+	public static final RegistryObject<Item> BASESOUP = regItem("food_basesoup", () -> new FoodMaterialItemDC(FOOD, "food_basesoup", TagDC.ItemTag.BASESOUP).setDomain("food"));
+
+	public static final RegistryObject<Item> FOOD_FISH_SAUSE = regItem("food_fish_sauce", () -> new FoodMaterialItemDC(FOOD, "food_fish_sauce", null).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_ANCHOVY = regItem("food_anchovy", () -> new FoodMaterialItemDC(FOOD, "food_anchovy", null).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_SHRIMP_PASTE = regItem("food_shrimp_paste", () -> new FoodMaterialItemDC(FOOD, "food_shrimp_paste", null).setDomain("food"));
 
 	// seasoning
 	public static final RegistryObject<Item> FOOD_SOYSAUCE = regItem("food_soysauce", () -> new FoodMaterialItemDC(FOOD, "food_soysauce", TagDC.ItemTag.SOYSAUCE).taste(2).seasoning().setDomain("food"));
 	public static final RegistryObject<Item> FOOD_MISO = regItem("food_miso", () -> new FoodMaterialItemDC(FOOD, "food_miso", TagDC.ItemTag.MISO).taste(2).seasoning().setDomain("food"));
 	public static final RegistryObject<Item> FOOD_MIXED_SPICES = regItem("food_mixed_spices", () -> new FoodMaterialItemDC(FOOD, "food_mixed_spices", TagDC.ItemTag.MIXED_SPICES).taste(2).seasoning().setDomain(
 		"food"));
-
-	// ケチャップ
-	// マヨ
-	// タバスコ
-	// エビペースト
-	// カレー粉
+	public static final RegistryObject<Item> FOOD_KETCHUP = regItem("food_ketchup", () -> new FoodMaterialItemDC(FOOD, "food_ketchup", TagDC.ItemTag.KETCHUP).taste(2).seasoning().setDomain("food"));
+	public static final RegistryObject<Item> FOOD_MAYONNAISE = regItem("food_mayonnaise", () -> new FoodMaterialItemDC(FOOD, "food_mayonnaise", TagDC.ItemTag.MAYONNAISE).taste(2).seasoning().setDomain("food"));
+	public static final RegistryObject<Item> FOOD_HOT_SAUSE = regItem("food_hotsauce", () -> new FoodMaterialItemDC(FOOD, "food_hotsauce", TagDC.ItemTag.HOT_SAUSE).taste(2).seasoning().setDomain("food"));
+	public static final RegistryObject<Item> FOOD_VINEGER = regItem("food_vinegar", () -> new FoodMaterialItemDC(FOOD, "food_vinegar", TagDC.ItemTag.VINEGAR).taste(2).seasoning().setDomain("food"));
+	public static final RegistryObject<Item> FOOD_HUMMUS = regItem("food_sauce_hummus", () -> new FoodMaterialItemDC(FOOD, "food_sauce_hummus", TagDC.ItemTag.HUMMUS).taste(2).seasoning().setDomain("food"));
+	public static final RegistryObject<Item> FOOD_SALSA = regItem("food_sauce_salsa", () -> new FoodMaterialItemDC(FOOD, "food_sauce_salsa", TagDC.ItemTag.SALSA).taste(2).seasoning().setDomain("food"));
 
 	// pack
 	public static final RegistryObject<Item> FOOD_MILK = regItem("pack_milk", () -> new FoodMaterialItemDC(FOOD, "pack_milk", TagDC.ItemTag.COW_MILK).taste(1).setDomain("food"));
@@ -322,12 +369,12 @@ public class FoodInit {
 	public static final RegistryObject<Item> FOOD_EMPTY_PACK = regItem("pack_empty", () -> new EmptyPackItem(FOOD, "pack_empty", TagDC.ItemTag.EMPTY_PACK).setDomain("food"));
 
 	// agri
-
 	public static final RegistryObject<Item> SORGHUM_STICK = regItem("stick_sorghum", () -> new MaterialItemDC(AGRI, "stick_sorghum", TagDC.ItemTag.STICK_SORGHUM).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_PALM_FLOWER = regItem("food_palm_flower", () -> new FoodMaterialItemDC(AGRI, "food_palm_flower", TagDC.ItemTag.PALM_FLOWER).setDomain("food"));
 	public static final RegistryObject<Item> MALLOW_CALYCES = regItem("food_mallow_calyces", () -> new FoodMaterialItemDC(AGRI, "food_mallow_calyces", TagDC.ItemTag.MALLOW_CALYCES).taste(1).setDomain("food"));
 	public static final RegistryObject<Item> CURED_VANILLA = regItem("food_vanilla_cured", () -> new FoodMaterialItemDC(AGRI, "food_vanilla_cured", TagDC.ItemTag.VANILLA_CURED).taste(2).setDomain("food"));
 	public static final RegistryObject<Item> CASHEW_NUTS = regItem("food_cashew_nuts", () -> new FoodMaterialItemDC(AGRI, "food_cashew_nuts", TagDC.ItemTag.CASHEW_NUTS).taste(1).setDomain("food"));
+	public static final RegistryObject<Item> SPROUT = regItem("food_sprout", () -> new FoodMaterialItemDC(AGRI, "food_sprout", TagDC.ItemTag.SPROUT).setDomain("food"));
 
 	public static final RegistryObject<Item> VINE = regItem("food_vine", () -> new MaterialItemDC(AGRI, "food_vine", TagDC.ItemTag.VINE).setDomain("food"));
 	public static final RegistryObject<Item> FIBER_PLANT = regItem("fiber_plant", () -> new MaterialItemDC(AGRI, "fiber_plant", TagDC.ItemTag.FIBER_PLANT).setDomain("food"));
@@ -453,6 +500,7 @@ public class FoodInit {
 	public static final RegistryObject<Item> CROP_CT_POMELO = regCrop(CropTier.WILD, CropType.CITRUS, TagDC.ItemTag.CROP_POMELO, 2, 0F);
 	public static final RegistryObject<Item> CROP_CT_MANDARIN = regCrop(CropTier.COMMON, CropType.CITRUS, TagDC.ItemTag.CROP_MANDARIN, 2, 0F);
 	public static final RegistryObject<Item> CROP_CT_LEMON = regCrop(CropTier.RARE, CropType.CITRUS, TagDC.ItemTag.CROP_LEMON, 1, 0F);
+	public static final RegistryObject<Item> CROP_CT_PEPPER = regCrop(CropTier.EPIC, CropType.CITRUS, TagDC.ItemTag.CROP_SICHUAN_PEPPER);
 	public static final RegistryObject<Item> CROP_ER_HEATH = regCrop(CropTier.WILD, CropType.ERICA, TagDC.ItemTag.CROP_HEATH);
 	public static final RegistryObject<Item> CROP_ER_RHODODENDRON = regPoisonCrop(CropTier.COMMON, CropType.ERICA, TagDC.ItemTag.CROP_RHODODENDRON);
 	public static final RegistryObject<Item> CROP_ER_BLUEBERRY = regCrop(CropTier.RARE, CropType.ERICA, TagDC.ItemTag.CROP_BLUEBERRY, 2, 0F);
@@ -527,10 +575,10 @@ public class FoodInit {
 	public static final RegistryObject<Block> BLOCK_OR_CYMBIDIUM = regSeed(CropTier.COMMON, CropType.ORCHID, () -> new CropBlockOrchid(CropTier.COMMON), TagDC.ItemTag.SEED_CYMBIDIUM);
 	public static final RegistryObject<Block> BLOCK_OR_VANILLA = regSeed(CropTier.RARE, CropType.ORCHID, () -> new CropBlockOrchid_Epiphyte(CropTier.RARE), TagDC.ItemTag.SEED_VANILLA);
 	public static final RegistryObject<Block> BLOCK_OR_CATTLEYA = regSeed(CropTier.EPIC, CropType.ORCHID, () -> new CropBlockOrchid_Epiphyte(CropTier.EPIC), TagDC.ItemTag.SEED_CATTLEYA);
-	public static final RegistryObject<Block> BLOCK_PE_GREEN = regSeed(CropTier.WILD, CropType.PEAS, () -> new CropBlockPeas(CropTier.WILD), TagDC.ItemTag.SEED_GREEN_PEAS);
 	public static final RegistryObject<Block> BLOCK_PD_ROGERIA = regSeed(CropTier.WILD, CropType.PEDALIA, () -> new CropBlockPedalia(CropTier.WILD), TagDC.ItemTag.SEED_ROGERIA);
 	public static final RegistryObject<Block> BLOCK_PD_SESAMI = regSeed(CropTier.COMMON, CropType.PEDALIA, () -> new CropBlockPedalia(CropTier.COMMON), TagDC.ItemTag.SEED_SESAMI);
 	public static final RegistryObject<Block> BLOCK_PD_DEVILSCLAW = regSeed(CropTier.RARE, CropType.PEDALIA, () -> new CropBlockPedalia(CropTier.RARE), TagDC.ItemTag.SEED_DEVILSCLAW);
+	public static final RegistryObject<Block> BLOCK_PE_GREEN = regSeed(CropTier.WILD, CropType.PEAS, () -> new CropBlockPeas(CropTier.WILD), TagDC.ItemTag.SEED_GREEN_PEAS);
 	public static final RegistryObject<Block> BLOCK_PE_GARBANZO = regSeed(CropTier.COMMON, CropType.PEAS, () -> new CropBlockPeas(CropTier.COMMON), TagDC.ItemTag.SEED_GARBANZO);
 	public static final RegistryObject<Block> BLOCK_PE_SOY = regSeed(CropTier.RARE, CropType.PEAS, () -> new CropBlockPeas(CropTier.RARE), TagDC.ItemTag.SEED_SOY);
 	public static final RegistryObject<Block> BLOCK_PE_ADZUKI = regSeed(CropTier.EPIC, CropType.PEAS, () -> new CropBlockPeas(CropTier.EPIC), TagDC.ItemTag.SEED_ADZUKI);
@@ -564,6 +612,7 @@ public class FoodInit {
 	public static final RegistryObject<Block> BLOCK_CT_POMELO = regCropBlock(CropTier.WILD, CropType.CITRUS, () -> new SaplingCitrus(CropTier.WILD), "sapling", ItemTags.SAPLINGS);
 	public static final RegistryObject<Block> BLOCK_CT_MANDARIN = regCropBlock(CropTier.COMMON, CropType.CITRUS, () -> new SaplingCitrus(CropTier.COMMON), "sapling", ItemTags.SAPLINGS);
 	public static final RegistryObject<Block> BLOCK_CT_LEMON = regCropBlock(CropTier.RARE, CropType.CITRUS, () -> new SaplingCitrus(CropTier.RARE), "sapling", ItemTags.SAPLINGS);
+	public static final RegistryObject<Block> BLOCK_CT_PEPPER = regCropBlock(CropTier.EPIC, CropType.CITRUS, () -> new SaplingCitrus(CropTier.EPIC), "sapling", ItemTags.SAPLINGS);
 	public static final RegistryObject<Block> BLOCK_ER_HEATH = regCropBlock(CropTier.WILD, CropType.ERICA, () -> new SaplingErica(CropTier.WILD), "sapling", ItemTags.SAPLINGS);
 	public static final RegistryObject<Block> BLOCK_ER_RHODODENDRON = regCropBlock(CropTier.COMMON, CropType.ERICA, () -> new SaplingErica(CropTier.COMMON), "sapling", ItemTags.SAPLINGS);
 	public static final RegistryObject<Block> BLOCK_ER_BLUEBERRY = regCropBlock(CropTier.RARE, CropType.ERICA, () -> new SaplingErica(CropTier.RARE), "sapling", ItemTags.SAPLINGS);
@@ -599,6 +648,7 @@ public class FoodInit {
 	public static final RegistryObject<Block> LEAVES_CT_POMELO = regBlock("leaves_citrus_pomelo", () -> new LeavesPomelo(), ItemTags.LEAVES);
 	public static final RegistryObject<Block> LEAVES_CT_MANDARIN = regBlock("leaves_citrus_mandarin", () -> new LeavesMandarin(), ItemTags.LEAVES);
 	public static final RegistryObject<Block> LEAVES_CT_LEMON = regBlock("leaves_citrus_lemon", () -> new LeavesLemon(), ItemTags.LEAVES);
+	public static final RegistryObject<Block> LEAVES_CT_PEPPER = regBlock("leaves_citrus_pepper", () -> new LeavesSichuanPepper(), ItemTags.LEAVES);
 	public static final RegistryObject<Block> LEAVES_ER_HEATH = regBlock("leaves_erica_heath", () -> new LeavesHeath(), ItemTags.LEAVES);
 	public static final RegistryObject<Block> LEAVES_ER_RHODODENDRON = regBlock("leaves_erica_rhododendron", () -> new LeavesRhododendron(), ItemTags.LEAVES);
 	public static final RegistryObject<Block> LEAVES_ER_BLUEBERRY = regBlock("leaves_erica_blueberry", () -> new LeavesBlueberry(), ItemTags.LEAVES);
@@ -652,6 +702,44 @@ public class FoodInit {
 	public static final RegistryObject<Block> FERTILE = regBlock("fertile", () -> new FertileBlock(), null);
 
 	public static final RegistryObject<Block> CONT_LEAVES = regCont("container_leaves", () -> new LeavesContBlock("container_leaves"), TagDC.ItemTag.CONT_LEAVES);
+
+	public static final RegistryObject<Block> CONT_LOG_OAK = regCont("logcont_oak", () -> new LogContBlock("oak"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_BIRCH = regCont("logcont_birch", () -> new LogContBlock("birch"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_SPRUCE = regCont("logcont_spruce", () -> new LogContBlock("spruce"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_JUNGLE = regCont("logcont_jungle", () -> new LogContBlock("jungle"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_ACACIA = regCont("logcont_acacia", () -> new LogContBlock("acacia"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_DARKOAK = regCont("logcont_darkoak", () -> new LogContBlock("darkoak"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_MANGROVE = regCont("logcont_mangrove", () -> new LogContBlock("mangrove"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_CRIMSON = regCont("logcont_crimson", () -> new LogContBlock("crimson"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_WARPED = regCont("logcont_warped", () -> new LogContBlock("warped"), TagDC.ItemTag.CONT_LOGS);
+
+	public static final RegistryObject<Block> CONT_LOG_BH_COMMON = regCont("logcont_beech_common", () -> new LogContBlock("beech_common"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_BH_WALNUT = regCont("logcont_beech_walnut", () -> new LogContBlock("beech_walnut"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_BH_SWEET = regCont("logcont_beech_sweet", () -> new LogContBlock("beech_sweet"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_CH_WILD = regCont("logcont_cherry_wild", () -> new LogContBlock("cherry_wild"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_CN_CAMPHOR = regCont("logcont_cinnamon_camphor", () -> new LogContBlock("cinnamon_camphor"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_CN_CINNAMON = regCont("logcont_cinnamon_true", () -> new LogContBlock("cinnamon_true"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_CT_POMELO = regCont("logcont_citrus_pomelo", () -> new LogContBlock("citrus_pomelo"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_MR_MULBERRY = regCont("logcont_morus_mulberry", () -> new LogContBlock("morus_mulberry"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_MR_PAPER = regCont("logcont_morus_paper", () -> new LogContBlock("morus_paper"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_MR_RUBBER = regCont("logcont_morus_rubber", () -> new LogContBlock("morus_rubber"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_OL_ASH = regCont("logcont_olive_ash", () -> new LogContBlock("olive_ash"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_PL_COCONUT = regCont("logcont_palm_coconut", () -> new LogContBlock("palm_coconut"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_SU_LACQUER = regCont("logcont_sumac_lacquer", () -> new LogContBlock("sumac_lacquer"), TagDC.ItemTag.CONT_LOGS);
+	public static final RegistryObject<Block> CONT_LOG_SU_MANGO = regCont("logcont_sumac_mango", () -> new LogContBlock("sumac_mango"), TagDC.ItemTag.CONT_LOGS);
+
+	public static final RegistryObject<Block> CONT_LOG_CHARCOAL = regCont("logcont_charcoal", () -> new LogContBlock("charcoal"), TagDC.ItemTag.CONT_CHARCOAL);
+
+	public static final RegistryObject<Block> CONT_CROP_APPLE = regCont("woodbox_apple", () -> new CropContBlock("woodbox", "apple"), TagDC.ItemTag.CONT_APPLE);
+	public static final RegistryObject<Block> CONT_CROP_CARROT = regCont("woodbox_carrot", () -> new CropContBlock("woodbox", "carrot"), TagDC.ItemTag.CONT_CARROT);
+	public static final RegistryObject<Block> CONT_CROP_POTATO = regCont("woodbox_potato", () -> new CropContBlock("woodbox", "potato"), TagDC.ItemTag.CONT_POTATO);
+	public static final RegistryObject<Block> CONT_CROP_BEET = regCont("woodbox_beet", () -> new CropContBlock("woodbox", "beet"), TagDC.ItemTag.CONT_BEET);
+	public static final RegistryObject<Block> CONT_CROP_PUMPKIN = regCont("woodbox_pumpkin", () -> new CropContBlock("woodbox", "pumpkin"), TagDC.ItemTag.CONT_PUMPKIN);
+	public static final RegistryObject<Block> CONT_CROP_MELON = regCont("woodbox_melon", () -> new CropContBlock("woodbox", "melon"), TagDC.ItemTag.CONT_MELON);
+	public static final RegistryObject<Block> CONT_CROP_CACTUS = regCont("woodbox_cactus", () -> new CropContBlock("woodbox", "cactus"), TagDC.ItemTag.CONT_CACTUS);
+	public static final RegistryObject<Block> CONT_CROP_SUGARCANE = regCont("woodbox_sugarcane", () -> new CropContBlock("woodbox", "sugarcane"), TagDC.ItemTag.CONT_SUGARCANE);
+	public static final RegistryObject<Block> CONT_CROP_COCOA = regCont("woodbox_cocoa", () -> new CropContBlock("woodbox", "cocoa"), TagDC.ItemTag.CONT_COCOA);
+	public static final RegistryObject<Block> CONT_CROP_BUSHBERRY = regCont("woodbox_bushberry", () -> new CropContBlock("woodbox", "bushberry"), TagDC.ItemTag.CONT_BUSHBERRY);
 
 	public static RegistryObject<Item> regCrop(CropTier tier, CropType type, TagKey<Item> tag) {
 		String name = "crop_" + type.toString() + "_" + tier.toString();

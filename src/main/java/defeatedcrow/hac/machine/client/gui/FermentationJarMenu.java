@@ -13,7 +13,6 @@ import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidUtil;
 
 public class FermentationJarMenu extends AbstractContainerMenu {
 
@@ -77,16 +76,16 @@ public class FermentationJarMenu extends AbstractContainerMenu {
 		if (slot != null && slot.hasItem()) {
 			ItemStack check = slot.getItem();
 			stack = check.copy();
-			if (s > 8) {
-				if (FluidUtil.getFluidHandler(check).isPresent()) {
-					if (!this.moveItemStackTo(check, 5, 6, false)) {
-						return ItemStack.EMPTY;
-					}
-				} else {
-					if (!this.moveItemStackTo(check, 0, 3, false)) {
-						return ItemStack.EMPTY;
-					}
+			if (s > 3) {
+				// if (FluidUtil.getFluidHandler(check).isPresent()) {
+				// if (!this.moveItemStackTo(check, 5, 6, false)) {
+				// return ItemStack.EMPTY;
+				// }
+				// } else {
+				if (!this.moveItemStackTo(check, 0, 3, false)) {
+					return ItemStack.EMPTY;
 				}
+				// }
 			} else {
 				if (!this.moveItemStackTo(check, 9, this.slots.size(), false)) {
 					return ItemStack.EMPTY;

@@ -1,0 +1,39 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/food_basesoup_chicken",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/flavored"
+    },
+    {
+      "tag": "forge:crops/spicy_vegetables"
+    },
+    {
+      "tag": "forge:ingredients/bone_chicken"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

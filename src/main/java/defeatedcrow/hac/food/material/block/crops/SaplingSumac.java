@@ -146,7 +146,7 @@ public class SaplingSumac extends SaplingBaseBlock {
 		} else if (t == CropTier.RARE) {
 			leaves = FoodInit.LEAVES_SU_CASHEW.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 5 + level.random.nextInt(4);
-		} else if (t == CropTier.RARE) {
+		} else if (t == CropTier.EPIC) {
 			leaves = FoodInit.LEAVES_SU_PISTACHIO.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 4 + level.random.nextInt(4);
 		}

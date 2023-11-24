@@ -27,6 +27,7 @@ import defeatedcrow.hac.core.material.item.tool.HandyBellowItem;
 import defeatedcrow.hac.core.material.item.tool.HarpoonItem;
 import defeatedcrow.hac.core.material.item.tool.ItemScythe;
 import defeatedcrow.hac.core.material.item.tool.SeedingPotItem;
+import defeatedcrow.hac.core.material.item.tool.StackableBucketItem;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Building;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Clothing;
@@ -201,9 +202,12 @@ public class CoreInit {
 	public static final RegistryObject<Item> HANDY_BELLOW = regItem("bellow", () -> new HandyBellowItem("bellow"));
 
 	public static final RegistryObject<Item> SCYTHE_BRASS = regItem("scythe_brass", () -> new ItemScythe(TierDC.BRASS, TagDC.ItemTag.SCYTHES));
+	public static final RegistryObject<Item> SCYTHE_STEEL = regItem("scythe_steel", () -> new ItemScythe(TierDC.STEEL, TagDC.ItemTag.SCYTHES));
 
 	public static final RegistryObject<Item> HARPOON_FLINT = regItem("harpoon_flint", () -> new HarpoonItem("flint", TierDC.BAMBOO, TagDC.ItemTag.HARPOON));
 	public static final RegistryObject<Item> HARPOON_STEEL = regItem("harpoon_steel", () -> new HarpoonItem("steel", TierDC.STEEL, TagDC.ItemTag.HARPOON));
+
+	public static final RegistryObject<Item> CALABASH_BUCKET = regItem("bucket_calabash", () -> new StackableBucketItem("bucket_calabash", TagDC.ItemTag.CRAFT_CALABASH));
 
 	public static final RegistryObject<Item> PATTERN_HAT = regItem("pattern_paper_wear", () -> new MaterialItemDC(CLOTH, "pattern_paper_wear", null));
 	public static final RegistryObject<Item> PATTERN_JACKET = regItem("pattern_paper_jacket", () -> new MaterialItemDC(CLOTH, "pattern_paper_jacket", null));
@@ -387,6 +391,7 @@ public class CoreInit {
 		.addAttributeModifier(Attributes.KNOCKBACK_RESISTANCE, MobEffectDC.NOCKBACK_MODIFIER.toString(), 0.2F, AttributeModifier.Operation.ADDITION));
 	public static final RegistryObject<MobEffect> TRACER = regPotionEffect("effect_tracer", () -> new MobEffectDC("effect_tracer", MobEffectCategory.BENEFICIAL, 0x500050).setIconIndex(2, 2));
 	public static final RegistryObject<MobEffect> CLAIR = regPotionEffect("effect_clairvoyance", () -> new MobEffectFlag("effect_clairvoyance", MobEffectCategory.BENEFICIAL, 0x90A0E0).setIconIndex(0, 2));
+	public static final RegistryObject<MobEffect> PROJ_RESISTANCE = regPotionEffect("effect_proj_resistance", () -> new MobEffectFlag("effect_proj_resistance", MobEffectCategory.BENEFICIAL, 0xA0A0A0).setIconIndex(3, 0));
 
 	public static final RegistryObject<MobEffect> WET = regPotionEffect("effect_wet", () -> new MobEffectDC("effect_wet", MobEffectCategory.NEUTRAL, 0x90E0FF).setIconIndex(1, 2));
 	public static final RegistryObject<MobEffect> FLAG = regPotionEffect("effect_flag", () -> new MobEffectFlag("effect_flag", MobEffectCategory.NEUTRAL, 0xFF0050).setIconIndex(3, 2));

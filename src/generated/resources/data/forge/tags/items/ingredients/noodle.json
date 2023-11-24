@@ -1,0 +1,8 @@
+{
+  "values": [
+    "dcs_climate:food/food_noodle_brine",
+    "dcs_climate:food/food_noodle_buckwheat",
+    "dcs_climate:food/food_noodle_rice",
+    "#forge:ingredients/pasta"
+  ]
+}

@@ -20,6 +20,7 @@ import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.crop.ICropData.SoilType;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.crops.LeavesCropBlockDC;
 import defeatedcrow.hac.plugin.jei.ingredients.AirflowRenderer;
@@ -199,9 +200,10 @@ public class TreeDataCategory implements IRecipeCategory<LeavesCropBlockDC> {
 		}
 		font.draw(stack, com, 65, 20, c);
 
+		boolean common = ConfigCommonBuilder.INSTANCE.enCommonCrop.get() && recipe.getTier() == CropTier.COMMON;
 		MutableComponent text4 = Component.translatable("dcs.gui.jei.habitat");
 		text4.append(":");
-		if (!recipe.getGeneratedBiomeTag(tier).isEmpty()) {
+		if (!recipe.getGeneratedBiomeTag(tier).isEmpty() && (recipe.getTier() == CropTier.WILD || common)) {
 			for (String s : recipe.getGeneratedBiomeTag(tier)) {
 				text4.append(" " + s);
 			}

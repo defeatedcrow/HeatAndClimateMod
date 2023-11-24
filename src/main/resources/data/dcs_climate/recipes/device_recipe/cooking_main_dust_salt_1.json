@@ -3,11 +3,16 @@
   "group": "cooking",
   "result": {
     "item": "dcs_climate:main/dust_salt",
+    "count": 2
+  },
+  "secondary": {
+    "item": "dcs_climate:main/dust_trona",
     "count": 1
   },
+  "secondary_rate": 100,
   "ingredients": [],
   "input_fluids": [
-    "minecraft:water"
+    "forge:brine"
   ],
   "heat": [
     "BOIL",

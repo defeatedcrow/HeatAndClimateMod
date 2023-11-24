@@ -75,7 +75,12 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		List<ClimateCropBaseBlock> targets = targetList.stream().filter((b) -> matchBiome(biome, p1.getY(), b)).toList();
 		boolean tree = random.nextInt(100) < 30;
 		if (tree) {
-			targets = targetTreeList.stream().filter((b) -> matchBiome(biome, p1.getY(), b)).toList();
+			// 村には生成しないように
+			if (level.getLevel().isCloseToVillage(p1, 16)) {
+				return false;
+			} else {
+				targets = targetTreeList.stream().filter((b) -> matchBiome(biome, p1.getY(), b)).toList();
+			}
 		}
 		if (ConfigCommonBuilder.INSTANCE.enCommonCrop.get() && random.nextInt(100) < 20) {
 			// 20%の確率

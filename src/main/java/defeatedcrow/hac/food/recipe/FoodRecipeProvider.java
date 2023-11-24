@@ -272,62 +272,6 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_fish", has(TagDC.ItemTag.RAW_EDIBLE_FISH))
 			.save(cons, "dcs_climate:food/plate_fish");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.PORRIDGE.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.WATER))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_OAT))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
-			.unlockedBy("has_oat", has(TagDC.ItemTag.CROP_OAT))
-			.save(cons, "dcs_climate:food/porridge_oat");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.PORRIDGE.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.WATER))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_MILLETS))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
-			.unlockedBy("has_millets", has(TagDC.ItemTag.CROP_MILLETS))
-			.save(cons, "dcs_climate:food/porridge_millets");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.PORRIDGE.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.WATER))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_PSEUDOCEREALS))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
-			.unlockedBy("has_pseudocereals", has(TagDC.ItemTag.CROP_PSEUDOCEREALS))
-			.save(cons, "dcs_climate:food/porridge_pseudocereals");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.PORRIDGE.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.WATER))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_RICES))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
-			.unlockedBy("has_rices", has(TagDC.ItemTag.DUST_RICES))
-			.save(cons, "dcs_climate:food/porridge_rices");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.PORRIDGE_MILK.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.MILKS))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_OAT))
-			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
-			.unlockedBy("has_oat", has(TagDC.ItemTag.CROP_OAT))
-			.save(cons, "dcs_climate:food/porridge_milk_oat");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.PORRIDGE_MILK.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.MILKS))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_MILLETS))
-			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
-			.unlockedBy("has_millets", has(TagDC.ItemTag.CROP_MILLETS))
-			.save(cons, "dcs_climate:food/porridge_milk_millets");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.PORRIDGE_MILK.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.MILKS))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_PSEUDOCEREALS))
-			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
-			.unlockedBy("has_pseudocereals", has(TagDC.ItemTag.CROP_PSEUDOCEREALS))
-			.save(cons, "dcs_climate:food/porridge_milk_pseudocereals");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.PORRIDGE_MILK.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.MILKS))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_RICES))
-			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
-			.unlockedBy("has_rices", has(TagDC.ItemTag.DUST_RICES))
-			.save(cons, "dcs_climate:food/porridge_milk_rices");
-
 		ShapelessRecipeBuilder.shapeless(FoodInit.MUESLI.get(), 1)
 			.requires(Ingredient.of(TagDC.ItemTag.MILKS))
 			.requires(Ingredient.of(TagDC.ItemTag.DUST_OAT))
@@ -485,6 +429,30 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_vine", has(Items.VINE))
 			.save(cons, "dcs_climate:food/vanilla_vine");
 
+		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_PLANT.get(), 1)
+			.pattern(" X ")
+			.pattern("X X")
+			.pattern(" X ")
+			.define('X', Ingredient.of(TagDC.ItemTag.STRING_PLANT))
+			.unlockedBy("has_plant_string", has(TagDC.ItemTag.STRING_PLANT))
+			.save(cons, "dcs_climate:core/cloth_plant");
+
+		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_COTTON.get(), 1)
+			.pattern(" X ")
+			.pattern("X X")
+			.pattern(" X ")
+			.define('X', Ingredient.of(TagDC.ItemTag.STRING_COTTON))
+			.unlockedBy("has_cotton_string", has(TagDC.ItemTag.STRING_COTTON))
+			.save(cons, "dcs_climate:core/cloth_cotton");
+
+		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_WOOL.get(), 1)
+			.pattern(" X ")
+			.pattern("X X")
+			.pattern(" X ")
+			.define('X', Ingredient.of(TagDC.ItemTag.STRING_WOOL))
+			.unlockedBy("has_plant_string", has(TagDC.ItemTag.STRING_WOOL))
+			.save(cons, "dcs_climate:core/cloth_wool");
+
 		// misc
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_CN_CAMPHOR.get(), 4)
@@ -579,6 +547,40 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		// food materials
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_PASTRY.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(Tags.Items.EGGS))
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
+			.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
+			.save(cons, "dcs_climate:food/foodmaterial_pastry");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_WHEAT.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
+			.requires(Ingredient.of(TagDC.ItemTag.WATER))
+			.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
+			.save(cons, "dcs_climate:food/foodmaterial_pasta");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_BRINE.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
+			.requires(Ingredient.of(TagDC.ItemTag.WATER))
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_TRONA))
+			.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
+			.save(cons, "dcs_climate:food/foodmaterial_chinese_noodle");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_BUCKWHEAT.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_BUCKWHEAT))
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
+			.requires(Ingredient.of(TagDC.ItemTag.WATER))
+			.unlockedBy("has_dust_buckwheat", has(TagDC.ItemTag.DUST_BUCKWHEAT))
+			.save(cons, "dcs_climate:food/foodmaterial_buckwheat_noodle");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_RICE.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_RICES))
+			.requires(Ingredient.of(TagDC.ItemTag.WATER))
+			.unlockedBy("has_dust_rices", has(TagDC.ItemTag.DUST_RICES))
+			.save(cons, "dcs_climate:food/foodmaterial_rice_noodle");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_CREAM.get(), 1)
 			.requires(Ingredient.of(TagDC.ItemTag.COW_MILK))
 			.unlockedBy("has_cow_milk", has(TagDC.ItemTag.COW_MILK))
@@ -621,29 +623,24 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_offal", has(TagDC.ItemTag.OFFAL))
 			.save(cons, "dcs_climate:food/raw_sausage_offal");
 
-		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_PLANT.get(), 1)
-			.pattern(" X ")
-			.pattern("X X")
-			.pattern(" X ")
-			.define('X', Ingredient.of(TagDC.ItemTag.STRING_PLANT))
-			.unlockedBy("has_plant_string", has(TagDC.ItemTag.STRING_PLANT))
-			.save(cons, "dcs_climate:core/cloth_plant");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_RENNET.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.OFFAL))
+			.unlockedBy("has_offal", has(TagDC.ItemTag.OFFAL))
+			.save(cons, "dcs_climate:food/foodmaterial_rennet");
 
-		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_COTTON.get(), 1)
-			.pattern(" X ")
-			.pattern("X X")
-			.pattern(" X ")
-			.define('X', Ingredient.of(TagDC.ItemTag.STRING_COTTON))
-			.unlockedBy("has_cotton_string", has(TagDC.ItemTag.STRING_COTTON))
-			.save(cons, "dcs_climate:core/cloth_cotton");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MAYONNAISE.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.VINEGAR))
+			.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
+			.requires(Ingredient.of(Tags.Items.EGGS))
+			.unlockedBy("has_eggs", has(Tags.Items.EGGS))
+			.save(cons, "dcs_climate:food/foodmaterial_mayonnaise");
 
-		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_WOOL.get(), 1)
-			.pattern(" X ")
-			.pattern("X X")
-			.pattern(" X ")
-			.define('X', Ingredient.of(TagDC.ItemTag.STRING_WOOL))
-			.unlockedBy("has_plant_string", has(TagDC.ItemTag.STRING_WOOL))
-			.save(cons, "dcs_climate:core/cloth_wool");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MAYONNAISE.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_LEMON))
+			.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
+			.requires(Ingredient.of(Tags.Items.EGGS))
+			.unlockedBy("has_eggs", has(Tags.Items.EGGS))
+			.save(cons, "dcs_climate:food/foodmaterial_mayonnaise2");
 
 		// leaves
 		ShapedRecipeBuilder.shaped(FoodInit.CONT_LEAVES.get(), 1)
@@ -758,18 +755,35 @@ public class FoodRecipeProvider extends RecipeProvider {
 	}
 
 	static void contRecipes(Consumer<FinishedRecipe> cons, ContainerRecipes.Cont pair) {
-		ShapedRecipeBuilder.shaped(pair.output().get(), 1)
-			.pattern("XXX")
-			.pattern("XXX")
-			.pattern("XXX")
-			.define('X', pair.inputTag().get())
-			.unlockedBy("has_" + pair.name(), has(pair.inputTag().get()))
-			.save(cons, "dcs_climate:container/cont_" + pair.name());
+		if (pair.inputTag().get() != TagDC.ItemTag.DUMMY) {
 
-		ShapelessRecipeBuilder.shapeless(pair.input().get(), 9)
-			.requires(pair.output().get())
-			.unlockedBy("has_" + pair.name(), has(pair.inputTag().get()))
-			.save(cons, "dcs_climate:food/seeding/cont_" + pair.name() + "_rev");
+			ShapedRecipeBuilder.shaped(pair.output().get(), 1)
+				.pattern("XXX")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', pair.inputTag().get())
+				.unlockedBy("has_" + pair.name(), has(pair.inputTag().get()))
+				.save(cons, "dcs_climate:container/cont_" + pair.name());
+
+			ShapelessRecipeBuilder.shapeless(pair.input().get(), 9)
+				.requires(pair.output().get())
+				.unlockedBy("has_" + pair.name(), has(pair.inputTag().get()))
+				.save(cons, "dcs_climate:container/cont_" + pair.name() + "_rev");
+		} else {
+
+			ShapedRecipeBuilder.shaped(pair.output().get(), 1)
+				.pattern("XXX")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', pair.input().get())
+				.unlockedBy("has_" + pair.name(), has(pair.input().get()))
+				.save(cons, "dcs_climate:container/cont_" + pair.name());
+
+			ShapelessRecipeBuilder.shapeless(pair.input().get(), 9)
+				.requires(pair.output().get())
+				.unlockedBy("has_" + pair.name(), has(pair.input().get()))
+				.save(cons, "dcs_climate:container/cont_" + pair.name() + "_rev");
+		}
 	}
 
 	static void smeltingRecipes(Consumer<FinishedRecipe> cons) {

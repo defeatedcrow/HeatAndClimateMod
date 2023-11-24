@@ -22,6 +22,8 @@ import defeatedcrow.hac.core.material.block.building.SlabStoneDC;
 import defeatedcrow.hac.core.material.block.building.SlabWoodDC;
 import defeatedcrow.hac.core.material.block.building.StairsStoneDC;
 import defeatedcrow.hac.core.material.block.building.StairsWoodDC;
+import defeatedcrow.hac.core.material.block.building.ToolHookBlock;
+import defeatedcrow.hac.core.material.block.building.ToolHookTile;
 import defeatedcrow.hac.core.material.block.building.WallStoneDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.tags.ItemTags;
@@ -200,6 +202,8 @@ public class BuildInit {
 
 	public static final RegistryObject<Block> CHAIN_GOLD = regBlock("chain_gold", () -> new ChainBlockDC("gold"), null);
 
+	public static final RegistryObject<Block> TOOL_HOOK = regBlock("toolhook", () -> new ToolHookBlock("toolhook"), null);
+
 	public static final RegistryObject<Block> LUGGAGE_NORMAL = regBlock("luggage_normal", () -> new LuggageBlock("luggage_normal"), null);
 	public static final RegistryObject<Block> LUGGAGE_WHITE = regBlock("luggage_white", () -> new LuggageBlock("luggage_white"), null);
 	public static final RegistryObject<Block> LUGGAGE_BLUE = regBlock("luggage_blue", () -> new LuggageBlock("luggage_blue"), null);
@@ -234,6 +238,9 @@ public class BuildInit {
 
 	public static final RegistryObject<BlockEntityType<CabinetTile>> CABINET_TILE = CoreInit.BLOCK_ENTITIES.register("cabinet_tile",
 		() -> BlockEntityType.Builder.of(CabinetTile::new, new Block[] { CABINET_NORMAL.get(), CABINET_WHITE.get(), CABINET_BLUE.get(), CABINET_BLACK.get(), CABINET_RED.get(), CABINET_GREEN.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<ToolHookTile>> TOOLHOOK_TILE = CoreInit.BLOCK_ENTITIES.register("toolhook_tile",
+		() -> BlockEntityType.Builder.of(ToolHookTile::new, new Block[] { TOOL_HOOK.get() }).build(null));
 
 	// Menu
 

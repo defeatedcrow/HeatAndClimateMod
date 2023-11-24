@@ -5,13 +5,18 @@ import java.util.function.Supplier;
 
 import com.google.common.collect.ImmutableList;
 
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.food.material.FoodInit;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 public class FoodRecipes {
 	public static FoodRecipes INSTANCE = new FoodRecipes() {};
 
 	public final List<Smelting> Smeltings;
+
+	public final List<SmeltingBlock> SmeltingBlocks;
 
 	private FoodRecipes() {
 		ImmutableList.Builder<Smelting> list = ImmutableList.builder();
@@ -34,10 +39,18 @@ public class FoodRecipes {
 		list.add(new Smelting(FoodInit.PLATE_CHICKEN_BIG_COOKED, FoodInit.PLATE_CHICKEN_BIG_RAW, 120));
 		list.add(new Smelting(FoodInit.PLATE_FISH_COOKED, FoodInit.PLATE_FISH_RAW, 120));
 		Smeltings = list.build();
+
+		ImmutableList.Builder<SmeltingBlock> list2 = ImmutableList.builder();
+		list2.add(new SmeltingBlock(FoodInit.CONT_LOG_CHARCOAL, () -> TagDC.ItemTag.CONT_LOGS, 120));
+		SmeltingBlocks = list2.build();
 	}
 
 	public record Smelting(
 			Supplier<Item> output,
 			Supplier<Item> input, int time) {}
+
+	public record SmeltingBlock(
+			Supplier<Block> output,
+			Supplier<TagKey<Item>> input, int time) {}
 
 }

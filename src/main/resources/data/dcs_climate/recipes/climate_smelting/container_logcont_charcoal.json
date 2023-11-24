@@ -1,0 +1,23 @@
+{
+  "type": "dcs_climate:climate_smelting",
+  "group": "climate_smelting",
+  "result": {
+    "item": "dcs_climate:container/logcont_charcoal"
+  },
+  "ingredient": {
+    "tag": "forge:storage_blocks/logs"
+  },
+  "frequency": 120,
+  "heat": [
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "DRY",
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "TIGHT"
+  ]
+}

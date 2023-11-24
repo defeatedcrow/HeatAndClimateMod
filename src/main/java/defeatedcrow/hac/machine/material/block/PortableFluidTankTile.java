@@ -90,13 +90,13 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 				flag = FluidUtil.getFluidHandler(copy)
 					.map(handler -> {
 						FluidStack fluid = handler.getFluidInTank(0);
-						if (fluid.isEmpty()) {
-							int space = Math.min(tank.getSpace(), handler.getTankCapacity(0));
+						if (fluid.isEmpty() || tank.isFull()) {
+							int space = Math.min(tank.getFluidAmount(), handler.getTankCapacity(0));
 							int d = handler.fill(tank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
 							if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
 								// drain
 								tank.drain(d, FluidAction.EXECUTE);
-								ItemStack ret = handler.getContainer();
+								ItemStack ret = handler.getContainer().copy();
 								if (!ret.isEmpty()) {
 									ret.setCount(1);
 									inventory.incrStackInSlot(1, ret);
@@ -105,11 +105,13 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 								return true;
 							}
 						} else if (handler.isFluidValid(getTankCap(), fluid)) {
-							FluidStack drain = handler.drain(fluid, FluidAction.EXECUTE);
+							FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
 							int f = tank.fill(drain, FluidAction.SIMULATE);
 							if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
 								// fill
+								drain.setAmount(f);
 								tank.fill(drain, FluidAction.EXECUTE);
+								handler.drain(drain, FluidAction.EXECUTE);
 								ItemStack ret = handler.getContainer().copy();
 								if (!ret.isEmpty()) {
 									ret.setCount(1);

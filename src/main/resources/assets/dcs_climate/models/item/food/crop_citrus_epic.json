@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/crop/crop_citrus_pepper"
+  },
+  "parent": "minecraft:item/generated"
+}

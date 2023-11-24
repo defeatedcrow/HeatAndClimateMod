@@ -1,6 +1,6 @@
 {
   "textures": {
-    "cross": "dcs_climate:block/tree/sumac_lacquer_leaves_wtr"
+    "cross": "dcs_climate:block/tree/sumac_pistachio_leaves_wtr"
   },
   "parent": "dcs_climate:block/dcs_cross"
 }

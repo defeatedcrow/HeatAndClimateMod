@@ -66,6 +66,8 @@ public class LeavesLemon extends LeavesCropBlockDC {
 			return Optional.of(FoodInit.BLOCK_CT_MANDARIN.get());
 		case RARE:
 			return Optional.of(FoodInit.BLOCK_CT_LEMON.get());
+		case EPIC:
+			return Optional.of(FoodInit.BLOCK_CT_PEPPER.get());
 		default:
 			return Optional.empty();
 		}
@@ -78,7 +80,7 @@ public class LeavesLemon extends LeavesCropBlockDC {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
-		return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.WARM);
+		return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
 	}
 
 	@Override

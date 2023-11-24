@@ -1,0 +1,9 @@
+{
+  "values": [
+    "dcs_climate:food/food_basesoup_vegi",
+    "dcs_climate:food/food_basesoup_beef",
+    "dcs_climate:food/food_basesoup_pork",
+    "dcs_climate:food/food_basesoup_chicken",
+    "dcs_climate:food/food_basesoup"
+  ]
+}

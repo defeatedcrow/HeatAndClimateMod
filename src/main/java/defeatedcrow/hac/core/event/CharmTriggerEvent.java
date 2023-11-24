@@ -30,30 +30,9 @@ public class CharmTriggerEvent {
 		LivingEntity living = event.getEntity();
 		DamageSource source = event.getSource();
 		float amount = event.getAmount();
-		boolean b1 = false;
 		boolean b2 = false;
-		float dif = 1.0F;
 		if (living == null || !living.isAlive())
 			return;
-
-		ArrayList<ItemStack> difCharms = DCItemUtil.getCharms(living, CharmType.DEFFENCE);
-		for (ItemStack c1 : difCharms) {
-			if (!c1.isEmpty() && c1.getItem() instanceof IJewelCharm charm) {
-				if (charm.isActive(living, c1)) {
-					if (charm.onDiffence(living, source, amount, c1)) {
-						b1 = true;
-						charm.onConsumeResource(living, c1);
-					} else {
-						dif *= charm.reduceDamage(living, source, amount, c1);
-					}
-				}
-			}
-		}
-
-		if (b1 || amount * dif < 0.5F) {
-			event.setCanceled(true);
-			return;
-		}
 
 		if (source.getEntity() instanceof LivingEntity attacker) {
 			ArrayList<ItemStack> attCharms = DCItemUtil.getCharms(attacker, CharmType.ATTACK);
@@ -89,22 +68,58 @@ public class CharmTriggerEvent {
 		if (living == null || !living.isAlive())
 			return;
 
-		float f = 1.0F;
-		if (source.getEntity() instanceof LivingEntity attacker) {
-			ArrayList<ItemStack> attCharms = DCItemUtil.getCharms(attacker, CharmType.ATTACK);
-			for (ItemStack c2 : attCharms) {
-				if (!c2.isEmpty() && c2.getItem() instanceof IJewelCharm charm) {
-					if (charm.isActive(attacker, c2)) {
-						if (charm.onAttacking(attacker, living, source, amount, c2)) {
-							f *= charm.increaceDamage(attacker, living, source, amount, c2);
-							charm.onConsumeResource(attacker, c2);
-						}
+		boolean b1 = false;
+		float dif = 1.0F;
+
+		ArrayList<ItemStack> difCharms = DCItemUtil.getCharms(living, CharmType.DEFFENCE);
+		for (ItemStack c1 : difCharms) {
+			if (!c1.isEmpty() && c1.getItem() instanceof IJewelCharm charm) {
+				if (charm.isActive(living, c1)) {
+					if (charm.onDiffence(living, source, amount, c1)) {
+						b1 = true;
+						charm.onConsumeResource(living, c1);
+					} else {
+						dif *= charm.reduceDamage(living, source, amount, c1);
 					}
 				}
 			}
 		}
 
-		event.setAmount(amount * f);
+		float atk = 1.0F;
+		if (source.getEntity() instanceof LivingEntity attacker) {
+			ArrayList<ItemStack> attCharms = DCItemUtil.getCharms(attacker, CharmType.ATTACK);
+			for (ItemStack c2 : attCharms) {
+				if (!c2.isEmpty() && c2.getItem() instanceof IJewelCharm charm) {
+					if (charm.isActive(attacker, c2)) {
+						atk *= charm.increaceDamage(attacker, living, source, amount, c2);
+					}
+				}
+			}
+		}
+
+		// potion
+		float f2 = 1.0F;
+		if (source.isProjectile() && living != null) {
+			if (living.hasEffect(CoreInit.PROJ_RESISTANCE.get())) {
+				MobEffectInstance eff = living.getEffect(CoreInit.PROJ_RESISTANCE.get());
+				f2 = 1F - (eff.getAmplifier() * 0.20F);
+				if (f2 < 0F)
+					f2 = 0F;
+			}
+		}
+
+		if (source == DamageSource.FREEZE && living != null) {
+			if (living.hasEffect(CoreInit.COLD_RESISTANCE.get())) {
+				f2 = 0F;
+			}
+		}
+
+		if (b1 || amount * dif * atk * f2 < 0.5F) {
+			event.setCanceled(true);
+			return;
+		}
+
+		event.setAmount(amount * dif * atk * f2);
 	}
 
 	@SubscribeEvent

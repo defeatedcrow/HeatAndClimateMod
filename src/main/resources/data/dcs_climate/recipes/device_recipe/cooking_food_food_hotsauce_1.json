@@ -1,0 +1,36 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/food_hotsauce",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/chili"
+    },
+    {
+      "tag": "forge:dusts/salt"
+    },
+    {
+      "tag": "forge:ingredients/vinegar"
+    }
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

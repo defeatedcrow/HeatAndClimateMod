@@ -33,6 +33,14 @@ public class ClimateSmeltingList {
 			ClimateSmeltingConfig.addRecipe(fName, ret);
 		}
 
+		for (FoodRecipes.SmeltingBlock foods : FoodRecipes.INSTANCE.SmeltingBlocks) {
+			ResourceLocation res = DCUtil.getRes(foods.output().get()).orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
+			String fName = res.getPath().replace('/', '_');
+			ClimateSmelting ret = new ClimateSmelting(new ItemStack(foods.output().get()), ImmutableList.of(DCHeatTier.OVEN, DCHeatTier.KILN), DCHumidity.exceptUnderwater(), ImmutableList.of(DCAirflow.TIGHT), foods
+				.time(), Ingredient.of(foods.input().get()));
+			ClimateSmeltingConfig.addRecipe(fName, ret);
+		}
+
 	}
 
 	private static DCHeatTier getHeat(Rarity r) {

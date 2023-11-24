@@ -126,12 +126,13 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(TagDC.BlockTag.CROP_PUMPKIN).add(Blocks.PUMPKIN);
 		tag(TagDC.BlockTag.CROP_MELON).add(Blocks.MELON);
+		tag(TagDC.BlockTag.CROP_CACTUS).add(Blocks.CACTUS);
 
 		tag(TagDC.BlockTag.CROP_GREEN_MANURES).add(FoodInit.BLOCK_BR_RAPESEED.get(), FoodInit.BLOCK_BR_GREEN.get(),
 			FoodInit.BLOCK_BR_CABAGGE.get(), FoodInit.BLOCK_BR_RADISH.get(), FoodInit.BLOCK_CR_OAT.get(),
 			FoodInit.BLOCK_CR_RYE.get(), FoodInit.BLOCK_CR_BARLEY.get(), FoodInit.BLOCK_PE_GREEN.get(),
-			FoodInit.BLOCK_PE_GARBANZO.get(), FoodInit.BLOCK_PE_SOY.get(), FoodInit.BLOCK_RE_SORGHUM.get());
-		tag(TagDC.BlockTag.CROP_GREEN_MANURES).addTag(TagDC.BlockTag.WEED);
+			FoodInit.BLOCK_PE_GARBANZO.get(), FoodInit.BLOCK_PE_SOY.get(), FoodInit.BLOCK_RE_SORGHUM.get())
+			.addTag(TagDC.BlockTag.WEED);
 
 		tag(BlockTags.WOODEN_FENCES).add(BuildInit.FENCE_BEECH.get(), BuildInit.FENCE_WALNUT.get(), BuildInit.FENCE_SWEET.get(),
 			BuildInit.FENCE_CHERRY.get(), BuildInit.FENCE_CAMPHOR.get(), BuildInit.FENCE_CITRUS.get(),
@@ -193,6 +194,21 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.SCYTHE_BREAKABLE).add(Blocks.COBWEB, Blocks.DEAD_BUSH, Blocks.HANGING_ROOTS, Blocks.FERN,
 			Blocks.VINE, Blocks.TRIPWIRE, Blocks.WHEAT, Blocks.CARROTS, Blocks.POTATOES, Blocks.BEETROOTS, Blocks.PUMPKIN,
 			Blocks.MELON, Blocks.BAMBOO, Blocks.SUGAR_CANE);
+
+		tag(TagDC.BlockTag.CONT_LEAVES).add(FoodInit.CONT_LEAVES.get());
+
+		tag(TagDC.BlockTag.CONT_LOGS).add(
+			FoodInit.CONT_LOG_OAK.get(), FoodInit.CONT_LOG_BIRCH.get(), FoodInit.CONT_LOG_SPRUCE.get(), FoodInit.CONT_LOG_JUNGLE.get(),
+			FoodInit.CONT_LOG_ACACIA.get(), FoodInit.CONT_LOG_DARKOAK.get(), FoodInit.CONT_LOG_MANGROVE.get(), FoodInit.CONT_LOG_CRIMSON.get(), FoodInit.CONT_LOG_WARPED.get(),
+			FoodInit.CONT_LOG_BH_COMMON.get(), FoodInit.CONT_LOG_BH_WALNUT.get(), FoodInit.CONT_LOG_BH_SWEET.get(), FoodInit.CONT_LOG_CH_WILD.get(), FoodInit.CONT_LOG_CN_CAMPHOR.get(),
+			FoodInit.CONT_LOG_CN_CINNAMON.get(), FoodInit.CONT_LOG_CT_POMELO.get(), FoodInit.CONT_LOG_MR_MULBERRY.get(), FoodInit.CONT_LOG_MR_PAPER.get(), FoodInit.CONT_LOG_MR_RUBBER.get(),
+			FoodInit.CONT_LOG_OL_ASH.get(), FoodInit.CONT_LOG_PL_COCONUT.get(), FoodInit.CONT_LOG_SU_LACQUER.get(), FoodInit.CONT_LOG_SU_MANGO.get(), FoodInit.CONT_LOG_CHARCOAL.get());
+
+		tag(TagDC.BlockTag.CONT_CHARCOAL).add(FoodInit.CONT_LOG_CHARCOAL.get());
+
+		tag(TagDC.BlockTag.CONT_CROPS).add(FoodInit.CONT_CROP_APPLE.get(), FoodInit.CONT_CROP_CARROT.get(), FoodInit.CONT_CROP_POTATO.get(),
+			FoodInit.CONT_CROP_BEET.get(), FoodInit.CONT_CROP_PUMPKIN.get(), FoodInit.CONT_CROP_MELON.get(), FoodInit.CONT_CROP_CACTUS.get(),
+			FoodInit.CONT_CROP_COCOA.get(), FoodInit.CONT_CROP_SUGARCANE.get(), FoodInit.CONT_CROP_BUSHBERRY.get());
 
 		// plugins
 

@@ -54,6 +54,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -196,9 +197,18 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 			return 0;
 		} else if (state.getBlock() instanceof LogBlockDC) {
 			return 0;
-		} else {
-			return (state.getBlock() instanceof LeavesCropBlockDC || state.is(BlockTags.LEAVES)) ? DCState.getInt(state, DCState.DIST) : 7;
+		} else if (state.getBlock() instanceof LeavesCropBlockDC) {
+			return DCState.getInt(state, DCState.DIST);
+		} else if (state.is(BlockTags.LEAVES)) {
+			if (state.hasProperty(BlockStateProperties.DISTANCE)) {
+				return DCState.getInt(state, BlockStateProperties.DISTANCE);
+			} else if (state.hasProperty(DCState.DIST)) {
+				return DCState.getInt(state, DCState.DIST);
+			} else {
+				return 3;
+			}
 		}
+		return 7;
 	}
 
 	@Override

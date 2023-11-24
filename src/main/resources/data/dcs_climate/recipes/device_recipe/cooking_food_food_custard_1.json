@@ -3,11 +3,11 @@
   "group": "cooking",
   "result": {
     "item": "dcs_climate:food/food_custard",
-    "count": 4
+    "count": 1
   },
   "ingredients": [
     {
-      "tag": "forge:ingredients/vanilla_cured"
+      "tag": "forge:ingredients/milks"
     },
     {
       "tag": "forge:ingredients/sugars"
@@ -15,9 +15,6 @@
     {
       "tag": "forge:eggs"
     }
-  ],
-  "input_fluids": [
-    "forge:milk"
   ],
   "heat": [
     "BOIL",

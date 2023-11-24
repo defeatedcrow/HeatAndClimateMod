@@ -106,8 +106,11 @@
   "item.dcs_climate.main.bellow":"Bellow",
 
   "item.dcs_climate.main.scythe_brass":"Brass Scythe",
+  "item.dcs_climate.main.scythe_steel":"Steel Scythe",
   "item.dcs_climate.main.harpoon_flint":"Fishing Harpoon",
   "item.dcs_climate.main.harpoon_steel":"Steel Harpoon",
+
+  "item.dcs_climate.main.bucket_calabash":"Calabash Water Bottle",
 
   "item.dcs_climate.main.null_item":"Null",
   "item.dcs_climate.main.icon_hac":"HeatAndClimate",
@@ -282,6 +285,7 @@
   "item.dcs_climate.food.crop_citrus_wild":"Pomelo",
   "item.dcs_climate.food.crop_citrus_common":"Maidarin Orange",
   "item.dcs_climate.food.crop_citrus_rare":"Lemon",
+  "item.dcs_climate.food.crop_citrus_epic":"Sichuan Pepper",
   "item.dcs_climate.food.crop_erica_wild":"Heath Flowers",
   "item.dcs_climate.food.crop_erica_common":"Rhododendron Flowers",
   "item.dcs_climate.food.crop_erica_rare":"Blueberry",
@@ -317,6 +321,11 @@
   "item.dcs_climate.food.food_starch":"Starch",
   "item.dcs_climate.food.food_agar":"Agar",
 
+  "item.dcs_climate.food.food_pastry":"Pastry",
+  "item.dcs_climate.food.food_noodle_wheat":"Pasta",
+  "item.dcs_climate.food.food_noodle_brine":"Chinese Noodle",
+  "item.dcs_climate.food.food_noodle_buckwheat":"Buckwheat Noodle",
+  "item.dcs_climate.food.food_noodle_rice":"Rice Noodle",
 
   "item.dcs_climate.food.food_butter":"Butter",
   "item.dcs_climate.food.food_margarine":"Margarine",
@@ -351,13 +360,36 @@
   "item.dcs_climate.food.food_marmalade":"Marmalade",
   "item.dcs_climate.food.food_custard":"Custard",
   "item.dcs_climate.food.food_anko":"Anko",
+  "item.dcs_climate.food.food_sauerkraut":"Sauerkraut",
+  "item.dcs_climate.food.food_tofu":"Tofu",
+  "item.dcs_climate.food.food_umeboshi":"Umeboshi",
+  "item.dcs_climate.food.food_tsukemono":"Tsukemono",
+  "item.dcs_climate.food.food_kimchi":"Kimchi",
+  "item.dcs_climate.food.food_malt":"Malt",
+  "item.dcs_climate.food.food_koji":"Koji",
 
   "item.dcs_climate.food.food_sausage_raw":"Raw Sausage",
   "item.dcs_climate.food.food_sausage_smoked":"Smoked Sausage",
 
+  "item.dcs_climate.food.food_basesoup_vegi":"Vegitable Stock",
+  "item.dcs_climate.food.food_basesoup_beef":"Beef Stock",
+  "item.dcs_climate.food.food_basesoup_pork":"Pork Stock",
+  "item.dcs_climate.food.food_basesoup_chicken":"Chicken Stock",
+  "item.dcs_climate.food.food_basesoup":"Broth",
+
+  "item.dcs_climate.food.food_fish_sauce":"Fish Sauce",
+  "item.dcs_climate.food.food_anchovy":"Anchovy",
+  "item.dcs_climate.food.food_shrimp_paste":"Shrimp Paste",
+
   "item.dcs_climate.food.food_soysauce":"Soysauce",
   "item.dcs_climate.food.food_miso":"Miso",
   "item.dcs_climate.food.food_mixed_spices":"Mixed Spices",
+  "item.dcs_climate.food.food_ketchup":"Ketchup",
+  "item.dcs_climate.food.food_mayonnaise":"Mayonnaise",
+  "item.dcs_climate.food.food_hotsauce":"Hot Sauce",
+  "item.dcs_climate.food.food_sauce_hummus":"Hummus",
+  "item.dcs_climate.food.food_sauce_salsa":"Salsa",
+  "item.dcs_climate.food.food_vinegar":"Vinegar",
 
   "item.dcs_climate.food.pack_milk":"Milk Pack",
   "item.dcs_climate.food.pack_soy_milk":"Soy milk Pack",
@@ -375,6 +407,7 @@
   "item.dcs_climate.food.food_mallow_calyces":"Hibiscus Calyces",
   "item.dcs_climate.food.food_vanilla_cured":"Cured Vanilla Beans",
   "item.dcs_climate.food.food_cashew_nuts":"Cashew Nuts",
+  "item.dcs_climate.food.food_sprout":"Sprout",
 
   "item.dcs_climate.food.food_vine":"Vine",
   "item.dcs_climate.food.fiber_plant":"Plant Fiber",
@@ -435,6 +468,7 @@
   "item.dcs_climate.food.porridge_simple":"Porridge",
   "item.dcs_climate.food.porridge_milk":"Milk Porridge",
   "item.dcs_climate.food.muesli":"Muesli",
+  "item.dcs_climate.food.rice_boiled":"Boiled Rice",
 
   "item.dcs_climate.food.stick_beef_raw":"Raw Beef Skewer",
   "item.dcs_climate.food.stick_beef_cooked":"Grilled Beef Skewer",
@@ -464,6 +498,11 @@
   "item.dcs_climate.food.salad_potato":"Potato Salad",
   "item.dcs_climate.food.salad_nuts":"Nut and Beens Salad",
   "item.dcs_climate.food.salad_melon":"Watermelon Salad",
+
+  "item.dcs_climate.food.bottle_beer":"Beer",
+  "item.dcs_climate.food.bottle_sake":"Sake",
+  "item.dcs_climate.food.bottle_wine":"Wine",
+  "item.dcs_climate.food.bottle_wine_white":"White Wine",
 
     "## items_wear":"waer",
 
@@ -716,6 +755,7 @@
   "block.dcs_climate.food.sapling_citrus_wild":"Pomelo Sapling",
   "block.dcs_climate.food.sapling_citrus_common":"Mandarin Sapling",
   "block.dcs_climate.food.sapling_citrus_rare":"Lemon Sapling",
+  "block.dcs_climate.food.sapling_citrus_epic":"Sichuan Pepper Sapling",
   "block.dcs_climate.food.sapling_erica_wild":"Heath Sapling",
   "block.dcs_climate.food.sapling_erica_common":"Rhododendron Sapling",
   "block.dcs_climate.food.sapling_erica_rare":"Blueberry Sapling",
@@ -751,6 +791,7 @@
   "block.dcs_climate.food.leaves_citrus_pomelo":"Pomelo Leaves",
   "block.dcs_climate.food.leaves_citrus_mandarin":"Mandarin Leaves",
   "block.dcs_climate.food.leaves_citrus_lemon":"Lemon Leaves",
+  "block.dcs_climate.food.leaves_citrus_pepper":"Sichuan Pepper Leaves",
   "block.dcs_climate.food.leaves_erica_heath":"Heath Leaves",
   "block.dcs_climate.food.leaves_erica_rhododendron":"Rhododendron Leaves",
   "block.dcs_climate.food.leaves_erica_blueberry":"Blueberry Leaves",
@@ -800,6 +841,42 @@
   "## containers":"",
 
   "block.dcs_climate.container.container_leaves":"Compressed Leaves",
+
+  "block.dcs_climate.container.logcont_oak":"Oak Log Bunch",
+  "block.dcs_climate.container.logcont_birch":"Birch Log Bunch",
+  "block.dcs_climate.container.logcont_spruce":"Spruce Log Bunch",
+  "block.dcs_climate.container.logcont_jungle":"Jungle Log Bunch",
+  "block.dcs_climate.container.logcont_acacia":"Acacia Log Bunch",
+  "block.dcs_climate.container.logcont_darkoak":"Dark Oak Log Bunch",
+  "block.dcs_climate.container.logcont_mangrove":"Mangrove Log Bunch",
+  "block.dcs_climate.container.logcont_crimson":"Crimson Stem Bunch",
+  "block.dcs_climate.container.logcont_warped":"Warped Stem Bunch",
+  "block.dcs_climate.container.logcont_beech_common":"Beech Log Bunch",
+  "block.dcs_climate.container.logcont_beech_walnut":"Walnut Log Bunch",
+  "block.dcs_climate.container.logcont_beech_sweet":"Mizunara Log Bunch",
+  "block.dcs_climate.container.logcont_cherry_wild":"Cherry Log Bunch",
+  "block.dcs_climate.container.logcont_citrus_pomelo":"Citrus Log Bunch",
+  "block.dcs_climate.container.logcont_cinnamon_camphor":"Camphorwood Log Bunch",
+  "block.dcs_climate.container.logcont_cinnamon_true":"Cinnamon Log Bunch",
+  "block.dcs_climate.container.logcont_morus_mulberry":"Mulberry Log Bunch",
+  "block.dcs_climate.container.logcont_morus_paper":"Paper Mulberry Log Bunch",
+  "block.dcs_climate.container.logcont_morus_rubber":"Rubberwood Log Bunch",
+  "block.dcs_climate.container.logcont_olive_ash":"Ash Log Bunch",
+  "block.dcs_climate.container.logcont_palm_coconut":"Palm Log Bunch",
+  "block.dcs_climate.container.logcont_sumac_lacquer":"Lacquer Tree Log Bunch",
+  "block.dcs_climate.container.logcont_sumac_mango":"Sumac Log Bunch",
+  "block.dcs_climate.container.logcont_charcoal":"Charcoal Bunch",
+
+  "block.dcs_climate.container.woodbox_apple":"Apple Box",
+  "block.dcs_climate.container.woodbox_carrot":"Carrot Box",
+  "block.dcs_climate.container.woodbox_potato":"Potato Box",
+  "block.dcs_climate.container.woodbox_beet":"Beetroot Box",
+  "block.dcs_climate.container.woodbox_pumpkin":"Pumpkin Box",
+  "block.dcs_climate.container.woodbox_melon":"Melon Box",
+  "block.dcs_climate.container.woodbox_cactus":"Cactus Box",
+  "block.dcs_climate.container.woodbox_sugarcane":"Sugarcane Box",
+  "block.dcs_climate.container.woodbox_cocoa":"Cocoa Beans Box",
+  "block.dcs_climate.container.woodbox_bushberry":"Sweet Berry Box",
 
   "## build":"",
 
@@ -959,6 +1036,7 @@
   "block.dcs_climate.build.cabinet_green":"Green Cabinet",
 
   "block.dcs_climate.build.chain_gold":"Gold Chain",
+  "block.dcs_climate.build.toolhook":"Wall Hook",
 
     "## machine":"",
 
@@ -1016,6 +1094,9 @@
   "entity.dcs_climate.plate_big_steak":"Grilled Bit Steak",
   "entity.dcs_climate.plate_chicken":"Roast Chicken",
   "entity.dcs_climate.plate_fish":"Grilled Fish",
+  "entity.dcs_climate.rice":"Rice Bowl",
+  "entity.dcs_climate.bottle_beer":"Bottle",
+  "entity.dcs_climate.bottle_wine":"Bottle",
 
     "## tips":"",
 
@@ -1203,6 +1284,7 @@
   "effect.dcs_climate.effect_flag":"Flag Bearer",
   "effect.dcs_climate.effect_nimble":"Nimble",
   "effect.dcs_climate.effect_heavyboots":"Heavy Boots",
+  "effect.dcs_climate.effect_proj_resistance":"Projectile Protection",
 
     "## gui_jei":"jei",
 

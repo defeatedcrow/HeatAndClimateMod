@@ -10,6 +10,7 @@ import com.mojang.math.Vector3f;
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.food.material.entity.potfoods.IPotFoods;
+import defeatedcrow.hac.food.material.entity.potfoods.RiceBowlItem;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.block.CookingPotTile;
 import net.minecraft.client.Minecraft;
@@ -36,12 +37,14 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 	protected CookingPotModel_A model_A;
 	protected CookingPotModel_B model_B;
 	protected CookingPotModel_C model_C;
+	protected CookingPotModel_Layer model_layer;
 	private BlockRenderDispatcher renderer;
 
 	public TileRendererCookingPot(BlockEntityRendererProvider.Context ctx) {
 		this.model_A = new CookingPotModel_A(ctx.bakeLayer(CookingPotTile.NORMAL.getLayerLocation()));
 		this.model_B = new CookingPotModel_B(ctx.bakeLayer(CookingPotTile.BLUE.getLayerLocation()));
 		this.model_C = new CookingPotModel_C(ctx.bakeLayer(CookingPotTile.BLACK.getLayerLocation()));
+		this.model_layer = new CookingPotModel_Layer(ctx.bakeLayer(RiceBowlItem.NORMAL_LAYER.getLayerLocation()));
 		renderer = ctx.getBlockRenderDispatcher();
 	}
 
@@ -51,7 +54,6 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 			Block block = tile.getBlockState().getBlock();
 			EntityRenderData data = tile.getRenderData(block);
 			ResourceLocation tex = data.getTextureLocation();
-			ResourceLocation tex2 = data.getTextureLocation();
 			Direction dir = DCState.getFace(tile.getBlockState(), DCState.FACING);
 			float f1 = data.getModelScale();
 			float f2 = data.getAdjustY();
@@ -84,7 +86,7 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 
 			ItemStack output = tile.getItem(6);
 			if (output.getItem() instanceof IPotFoods) {
-				renderOutputItem(poseStack, buffer, output.copy(), packedLight, 0.5F, 0.075F, 0.5F, isB ? 0.375F : 0.305F, 0.35F);
+				renderOutputItem(poseStack, buffer, output.copy(), packedLight);
 			} else {
 				FluidStack fluid = tile.outputTank.getFluid();
 				if (fluid.isEmpty()) {
@@ -125,19 +127,17 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 		pose.popPose();
 	}
 
-	public static void renderOutputItem(PoseStack pose, MultiBufferSource buffer, ItemStack item, int light, float x, float y, float z, float w, float h) {
+	public void renderOutputItem(PoseStack pose, MultiBufferSource buffer, ItemStack item, int light) {
 		if (item.getItem() instanceof IPotFoods food) {
-			ResourceLocation res = food.getPotTexture(item.getItem());
+			EntityRenderData data = food.getPotTexture(item.getItem());
+			ResourceLocation tex = data.getTextureLocation();
 
 			pose.pushPose();
-			pose.translate(x, y, z);
-			Matrix4f m4f = pose.last().pose();
-			Matrix3f m3f = pose.last().normal();
-			VertexConsumer vertex = buffer.getBuffer(RenderType.translucent());
-			RenderSystem.setShaderTexture(0, res);
+			pose.translate(0.5F, 0F, 0.5F);
+			pose.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+			pose.scale(0.75F, 1F, 0.75F);
 
-			pose.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
-			drawQuad(m4f, m3f, vertex, light, 0, -w, -w, h, w, w);
+			this.model_layer.renderToBuffer(pose, buffer.getBuffer(model_layer.renderType(tex)), light, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 
 			pose.popPose();
 		}

@@ -1,0 +1,14 @@
+{
+  "values": [
+    "dcs_climate:container/woodbox_apple",
+    "dcs_climate:container/woodbox_carrot",
+    "dcs_climate:container/woodbox_potato",
+    "dcs_climate:container/woodbox_beet",
+    "dcs_climate:container/woodbox_pumpkin",
+    "dcs_climate:container/woodbox_melon",
+    "dcs_climate:container/woodbox_cactus",
+    "dcs_climate:container/woodbox_cocoa",
+    "dcs_climate:container/woodbox_sugarcane",
+    "dcs_climate:container/woodbox_bushberry"
+  ]
+}

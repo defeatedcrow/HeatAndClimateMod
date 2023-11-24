@@ -6,10 +6,12 @@ import java.util.function.Supplier;
 import com.google.common.collect.ImmutableList;
 
 import defeatedcrow.hac.core.material.BuildInit;
+import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ComposterBlock;
 
 public class PlantRecipes {
 	public static PlantRecipes INSTANCE = new PlantRecipes() {};
@@ -110,6 +112,7 @@ public class PlantRecipes {
 		list1.add(new Seeding(FoodInit.BLOCK_CT_POMELO, FoodInit.CROP_CT_POMELO, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_CT_MANDARIN, FoodInit.CROP_CT_MANDARIN, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_CT_LEMON, FoodInit.CROP_CT_LEMON, 1));
+		list1.add(new Seeding(FoodInit.BLOCK_CT_PEPPER, FoodInit.CROP_CT_PEPPER, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_ER_HEATH, FoodInit.CROP_ER_HEATH, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_ER_RHODODENDRON, FoodInit.CROP_ER_RHODODENDRON, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_ER_BLUEBERRY, FoodInit.CROP_ER_BLUEBERRY, 1));
@@ -158,5 +161,29 @@ public class PlantRecipes {
 			Supplier<Block> stairsBlock,
 			Supplier<Block> slabBlock,
 			Supplier<Block> fenceBlock) {}
+
+	public static void addCompostables() {
+		ComposterBlock.COMPOSTABLES.put(CoreInit.DUST_ASH.get(), 0.3F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_BR_RAPESEED.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_BR_GREEN.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_BR_CABAGGE.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_BR_RADISH.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_CR_OAT.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_CR_RYE.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_CR_BARLEY.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_PE_GREEN.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_PE_GARBANZO.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_PE_SOY.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_PE_ADZUKI.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_RE_SORGHUM.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_RE_CORN.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.FEED_STRAW.get(), 0.5F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.FEED_HAY.get(), 0.5F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.FEED_COMPOUND.get(), 0.5F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.FOOD_LEAF_MOLD.get(), 0.85F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.FOOD_PRESS_CAKE.get(), 0.85F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.FOOD_FISH_POWDER.get(), 0.85F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.FERTILIZER_MIXED.get(), 1.0F);
+	}
 
 }

@@ -89,6 +89,7 @@
     "#forge:crops/pomelo",
     "#forge:crops/mandarin",
     "#forge:crops/lemon",
+    "#forge:crops/sichuan_pepper",
     "#forge:crops/heath",
     "#forge:crops/rhododendron",
     "#forge:crops/blueberry",
@@ -107,6 +108,16 @@
     "#forge:crops/lacquer",
     "#forge:crops/mango",
     "#forge:crops/cashew",
-    "#forge:crops/pistachio"
+    "#forge:crops/pistachio",
+    "#forge:storage_blocks/crops/apple",
+    "#forge:storage_blocks/crops/carrot",
+    "#forge:storage_blocks/crops/potato",
+    "#forge:storage_blocks/crops/beet",
+    "#forge:storage_blocks/crops/pumpkin",
+    "#forge:storage_blocks/crops/melon",
+    "#forge:storage_blocks/crops/cactus",
+    "#forge:storage_blocks/crops/sugarcane",
+    "#forge:storage_blocks/crops/cocoa",
+    "#forge:storage_blocks/crops/bushberry"
   ]
 }

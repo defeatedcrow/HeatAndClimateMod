@@ -1,0 +1,35 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "fermentation",
+  "result": {
+    "item": "dcs_climate:food/food_miso",
+    "count": 1
+  },
+  "secondary": {
+    "item": "dcs_climate:food/food_soysauce",
+    "count": 1
+  },
+  "secondary_rate": 100,
+  "ingredients": [
+    {
+      "tag": "forge:crops/soy"
+    },
+    {
+      "tag": "forge:dusts/salt"
+    },
+    {
+      "item": "dcs_climate:food/food_koji"
+    }
+  ],
+  "heat": [
+    "WARM",
+    "HOT"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "NORMAL"
+  ]
+}

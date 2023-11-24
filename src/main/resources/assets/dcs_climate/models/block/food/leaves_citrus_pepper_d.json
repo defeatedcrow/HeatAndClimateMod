@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/tree/citrus_pepper_leaves_d"
+  },
+  "parent": "dcs_climate:block/dcs_leaves"
+}

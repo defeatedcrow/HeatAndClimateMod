@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#forge:crops/rapeseed",
+    "#forge:crops/napa",
+    "#forge:crops/cabagge",
+    "#forge:crops/radish",
+    "#forge:crops/celery",
+    "#forge:crops/cucumber",
+    "#forge:crops/sorrel",
+    "#forge:crops/water_spinach",
+    "#forge:crops/egg_plant",
+    "minecraft:carrot"
+  ]
+}

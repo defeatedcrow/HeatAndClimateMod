@@ -1,0 +1,30 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "fermentation",
+  "result": {
+    "item": "dcs_climate:food/food_kimchi",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/tsukemono_vegi"
+    },
+    {
+      "tag": "forge:crops/chili"
+    },
+    {
+      "item": "dcs_climate:food/food_shrimp_paste"
+    }
+  ],
+  "heat": [
+    "WARM",
+    "HOT"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "NORMAL"
+  ]
+}

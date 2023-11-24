@@ -75,7 +75,7 @@ public class ClimateHelper implements IClimateHelper {
 			IClimate climate = getClimateFromInt(i);
 			return climate;
 		}
-		return null;
+		return getDefaultClimate();
 	}
 
 	@Override

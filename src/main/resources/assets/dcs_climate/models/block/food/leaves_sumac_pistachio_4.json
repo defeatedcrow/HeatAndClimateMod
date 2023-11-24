@@ -1,6 +1,6 @@
 {
   "textures": {
-    "all": "dcs_climate:block/tree/sumac_lacquer_leaves_f"
+    "all": "dcs_climate:block/tree/sumac_pistachio_leaves_f"
   },
   "parent": "dcs_climate:block/dcs_leaves"
 }

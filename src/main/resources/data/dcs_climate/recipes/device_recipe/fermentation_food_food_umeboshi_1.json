@@ -1,0 +1,30 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "fermentation",
+  "result": {
+    "item": "dcs_climate:food/food_umeboshi",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/plum"
+    },
+    {
+      "tag": "forge:dusts/salt"
+    },
+    {
+      "tag": "forge:crops/perilla"
+    }
+  ],
+  "heat": [
+    "WARM",
+    "HOT"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "NORMAL"
+  ]
+}

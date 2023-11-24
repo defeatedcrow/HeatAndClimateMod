@@ -93,10 +93,14 @@ public class TagDC {
 		public static final TagKey<Block> METALBLOCK_BSCCO = blockTag("storage_blocks/bscco");
 
 		public static final TagKey<Block> CONT_LEAVES = blockTag("storage_blocks/leaves");
+		public static final TagKey<Block> CONT_LOGS = blockTag("storage_blocks/logs");
+		public static final TagKey<Block> CONT_CHARCOAL = blockTag("storage_blocks/charcoal");
+		public static final TagKey<Block> CONT_CROPS = blockTag("storage_blocks/crops");
 
 		// for vanilla
 		public static final TagKey<Block> CROP_PUMPKIN = blockTag("crops/pumpkin");
 		public static final TagKey<Block> CROP_MELON = blockTag("crops/melon");
+		public static final TagKey<Block> CROP_CACTUS = blockTag("crops/cactus");
 
 		public static final TagKey<Block> CROP_GREEN_MANURES = BlockTags.create(new ResourceLocation("dcs_climate", "green_manures"));
 
@@ -384,6 +388,7 @@ public class TagDC {
 		public static final TagKey<Item> CROP_POMELO = itemTag("crops/pomelo");
 		public static final TagKey<Item> CROP_MANDARIN = itemTag("crops/mandarin");
 		public static final TagKey<Item> CROP_LEMON = itemTag("crops/lemon");
+		public static final TagKey<Item> CROP_SICHUAN_PEPPER = itemTag("crops/sichuan_pepper");
 		public static final TagKey<Item> CROP_HEATH = itemTag("crops/heath");
 		public static final TagKey<Item> CROP_RHODODENDRON = itemTag("crops/rhododendron");
 		public static final TagKey<Item> CROP_BLUEBERRY = itemTag("crops/blueberry");
@@ -411,13 +416,17 @@ public class TagDC {
 		public static final TagKey<Item> CROP_BEANS = itemTag("crops/beans");
 		public static final TagKey<Item> CROP_NUTS = itemTag("crops/nuts");
 		public static final TagKey<Item> CROP_SPICES = itemTag("crops/spices");
+		public static final TagKey<Item> CROP_SPICY_VEGI = itemTag("crops/spicy_vegetables");
+		public static final TagKey<Item> CROP_FLAVORED = itemTag("crops/flavored");
 		public static final TagKey<Item> CROP_HERBS = itemTag("crops/herbs");
 		public static final TagKey<Item> CROP_EDIBLE_RAW_VEGGIE = itemTag("crops/edible_raw_vegetables");
 		public static final TagKey<Item> CROP_VEGETABLES = itemTag("crops/vegetables");
 		public static final TagKey<Item> CROP_FLOWERS = itemTag("crops/flowers");
 		public static final TagKey<Item> CROP_FRUITS = itemTag("crops/fruits");
 		public static final TagKey<Item> CROP_CITRUS = itemTag("crops/citrus");
-		public static final TagKey<Item> CROP_GRAPES = itemTag("crops/grapes");
+		public static final TagKey<Item> CROP_RED_GRAPES = itemTag("crops/red_grapes");
+		public static final TagKey<Item> CROP_ALL_GRAPES = itemTag("crops/all_grapes");
+		public static final TagKey<Item> CROP_TSUKEMONO = itemTag("crops/tsukemono_vegi");
 
 		public static final TagKey<Item> CROP_STRAWS = ItemTags.create(new ResourceLocation("dcs_climate", "crops/straws"));
 		public static final TagKey<Item> CROP_STICKS = ItemTags.create(new ResourceLocation("dcs_climate", "crops/sticks"));
@@ -500,6 +509,8 @@ public class TagDC {
 		public static final TagKey<Item> SEED_LANTERN = itemTag("seeds/lantern");
 
 		public static final TagKey<Item> SEEDS = itemTag("seeds");
+		public static final TagKey<Item> SEED_SPROUT = itemTag("seeds/edible_sprout");
+		public static final TagKey<Item> SEED_APIUM = itemTag("seeds/apium_seed");
 
 		public static final TagKey<Item> FERTILIZER = itemTag("fertilizer");
 		public static final TagKey<Item> FERTILIZER_ADV = itemTag("fertilizer_advanced");
@@ -508,6 +519,7 @@ public class TagDC {
 		public static final TagKey<Item> CRAFT_SIEVE = itemTag("crafting_tools/sieve");
 		public static final TagKey<Item> CRAFT_SPINDLE = itemTag("crafting_tools/spindle");
 		public static final TagKey<Item> CRAFT_SEEDING_POT = itemTag("crafting_tools/seeding_pot");
+		public static final TagKey<Item> CRAFT_CALABASH = itemTag("crafting_tools/calabash_bottle");
 
 		public static final TagKey<Item> SCYTHES = itemTag("tools/scythes");
 		public static final TagKey<Item> HARPOON = itemTag("tools/harpoon");
@@ -530,6 +542,7 @@ public class TagDC {
 		public static final TagKey<Item> MALLOW_CALYCES = itemTag("ingredients/mallow_calyces");
 		public static final TagKey<Item> VANILLA_CURED = itemTag("ingredients/vanilla_cured");
 		public static final TagKey<Item> CASHEW_NUTS = itemTag("ingredients/cashew_nuts");
+		public static final TagKey<Item> SPROUT = itemTag("ingredients/sprout");
 
 		public static final TagKey<Item> DUST_BREAD_GRAINS = itemTag("ingredients/bread_grains");
 		public static final TagKey<Item> DUST_CEREALS = itemTag("ingredients/cereals");
@@ -572,14 +585,27 @@ public class TagDC {
 		public static final TagKey<Item> BONE_PIG = itemTag("ingredients/bone_pig");
 		public static final TagKey<Item> BONE_CHICKEN = itemTag("ingredients/bone_chicken");
 
+		public static final TagKey<Item> BASESOUP = itemTag("ingredients/basesoup");
+		public static final TagKey<Item> PASTA = itemTag("ingredients/pasta");
+		public static final TagKey<Item> NOODLE = itemTag("ingredients/noodle");
+		public static final TagKey<Item> PASTRY = itemTag("ingredients/pastry");
+
 		public static final TagKey<Item> SOYSAUCE = itemTag("ingredients/soysauce");
 		public static final TagKey<Item> MISO = itemTag("ingredients/miso");
+		public static final TagKey<Item> KETCHUP = itemTag("ingredients/ketchup");
+		public static final TagKey<Item> MAYONNAISE = itemTag("ingredients/mayonnaise");
+		public static final TagKey<Item> HOT_SAUSE = itemTag("ingredients/hot_sause");
 		public static final TagKey<Item> MIXED_SPICES = itemTag("ingredients/mixed_spices");
+		public static final TagKey<Item> HUMMUS = itemTag("ingredients/hummus");
+		public static final TagKey<Item> SALSA = itemTag("ingredients/salsa");
+		public static final TagKey<Item> VINEGAR = itemTag("ingredients/vinegar");
+
 		public static final TagKey<Item> SUGARS = itemTag("ingredients/sugars");
 		public static final TagKey<Item> JAM = itemTag("ingredients/fluit_jam");
 		public static final TagKey<Item> MARMALADE = itemTag("ingredients/marmalade");
 		public static final TagKey<Item> CUSTARD = itemTag("ingredients/custard");
 		public static final TagKey<Item> ANKO = itemTag("ingredients/anko");
+		public static final TagKey<Item> TOFU = itemTag("ingredients/tofu");
 
 		public static final TagKey<Item> COW_MILK = itemTag("ingredients/cow_milk");
 		public static final TagKey<Item> SOY_MILK = itemTag("ingredients/soy_milk");
@@ -628,8 +654,12 @@ public class TagDC {
 		public static final TagKey<Item> DOUGH = itemTag("foods/dough");
 		public static final TagKey<Item> BREAD = itemTag("foods/bread");
 
+		public static final TagKey<Item> BOILED_RICE = itemTag("foods/boiled_rice");
+
 		public static final TagKey<Item> RAW_SAUSAGE = itemTag("ingredients/raw_sausage");
 		public static final TagKey<Item> COOKED_SAUSAGE = itemTag("ingredients/cooked_sausage");
+
+		public static final TagKey<Item> LIQUOR = itemTag("foods/liquor");
 
 		// vanilla
 		public static final TagKey<Item> CROP_APPLE = itemTag("crops/apple");
@@ -638,6 +668,7 @@ public class TagDC {
 		public static final TagKey<Item> CROP_COCOA = itemTag("crops/cocoa");
 		public static final TagKey<Item> CROP_BERRY = itemTag("crops/berries");
 		public static final TagKey<Item> CROP_SUGAR = itemTag("crops/sugarcane");
+		public static final TagKey<Item> CROP_CACTUS = itemTag("crops/cactus");
 
 		public static final TagKey<Item> RAW_BEEF = itemTag("ingredients/raw_beef");
 		public static final TagKey<Item> RAW_PORK = itemTag("ingredients/raw_pork");
@@ -691,6 +722,21 @@ public class TagDC {
 		public static final TagKey<Item> FISH_DAY = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/day"));
 
 		public static final TagKey<Item> CONT_LEAVES = itemTag("storage_blocks/leaves");
+		public static final TagKey<Item> CONT_LOGS = itemTag("storage_blocks/logs");
+		public static final TagKey<Item> CONT_CHARCOAL = itemTag("storage_blocks/charcoal");
+		public static final TagKey<Item> CONT_CROPS = itemTag("storage_blocks/crops");
+
+		// vanilla
+		public static final TagKey<Item> CONT_APPLE = itemTag("storage_blocks/crops/apple");
+		public static final TagKey<Item> CONT_CARROT = itemTag("storage_blocks/crops/carrot");
+		public static final TagKey<Item> CONT_POTATO = itemTag("storage_blocks/crops/potato");
+		public static final TagKey<Item> CONT_BEET = itemTag("storage_blocks/crops/beet");
+		public static final TagKey<Item> CONT_PUMPKIN = itemTag("storage_blocks/crops/pumpkin");
+		public static final TagKey<Item> CONT_MELON = itemTag("storage_blocks/crops/melon");
+		public static final TagKey<Item> CONT_CACTUS = itemTag("storage_blocks/crops/cactus");
+		public static final TagKey<Item> CONT_SUGARCANE = itemTag("storage_blocks/crops/sugarcane");
+		public static final TagKey<Item> CONT_COCOA = itemTag("storage_blocks/crops/cocoa");
+		public static final TagKey<Item> CONT_BUSHBERRY = itemTag("storage_blocks/crops/bushberry");
 
 		public static final TagKey<Item> COLOR_DROPS = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops"));
 		public static final TagKey<Item> DROP_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops/white"));

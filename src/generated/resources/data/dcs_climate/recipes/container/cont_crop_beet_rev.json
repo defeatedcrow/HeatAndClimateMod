@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:container/woodbox_beet"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "minecraft:beetroot"
+  }
+}

@@ -155,6 +155,32 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 		return false;
 	}
 
+	public static void growSmallTree(Level level, BlockPos pos, int h, BlockState log, BlockState leaves) {
+		// 幹
+		for (int i = 0; i < h; i++) {
+			level.setBlock(pos.above(i), log, 2);
+		}
+
+		// 葉
+		level.setBlock(pos.above(h), leaves, 2);
+		for (int j = 1; j < h; j++) {
+			for (int k = -1; k <= 1; k++) {
+				for (int l = -1; l <= 1; l++) {
+					BlockPos p1 = pos.offset(k, j, l);
+					BlockPos p2 = pos.offset(0, j, 0);
+
+					if (p1.equals(p2))
+						continue;
+
+					int dist = Math.min(6, Mth.floor(p1.distSqr(p2)));
+					placeLeaves(level, p1, dist, leaves);
+
+				}
+			}
+		}
+
+	}
+
 	public static void growTree(Level level, BlockPos pos, int h, BlockState log, BlockState leaves) {
 		// 幹
 		for (int i = 0; i < h; i++) {
@@ -186,11 +212,11 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 
 	}
 
-	// ねじれ型
+	// ねじれ型 6+
 	public static void growBigTree(Level level, BlockPos pos, int h, BlockState log, BlockState leaves) {
-		int h1 = h - 2 + level.random.nextInt(3);
-		int h2 = h - 3 + level.random.nextInt(3);
-		int h3 = h - 4 + level.random.nextInt(3);
+		int h1 = h - 3 + level.random.nextInt(2);
+		int h2 = h - 4 + level.random.nextInt(2);
+		int h3 = h - 5 + level.random.nextInt(2);
 		Direction d1 = Direction.Plane.HORIZONTAL.getRandomDirection(level.random);
 		Direction d2 = Direction.Plane.HORIZONTAL.getRandomDirection(level.random);
 		Direction d3 = Direction.Plane.HORIZONTAL.getRandomDirection(level.random);
@@ -278,11 +304,11 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 		}
 
 		for (BlockPos pl : leavesPos) {
-			for (int j = -1; j < 5; j++) {
+			for (int j = -1; j < 4; j++) {
 				for (int k = -3; k <= 3; k++) {
 					for (int l = -3; l <= 3; l++) {
 						double lim = 5D;
-						if (j == -1 || j == 4) {
+						if (j == -1 || j == 3) {
 							lim = 2D;
 						}
 
@@ -301,10 +327,11 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 
 	// 笠形 10+
 	public static void growBigTree2(Level level, BlockPos pos, int h, BlockState log, BlockState leaves) {
-		int h1 = h - 5 + level.random.nextInt(3);
-		int h2 = h - 5 + level.random.nextInt(3);
-		int h3 = h - 2 + level.random.nextInt(3);
-		int h4 = h - 2 + level.random.nextInt(3);
+		int b = 7;
+		int h1 = h - b + level.random.nextInt(3);
+		int h2 = h - b + level.random.nextInt(3);
+		int h3 = h - b + 2 + level.random.nextInt(3);
+		int h4 = h - b + 2 + level.random.nextInt(3);
 		List<BlockPos> leavesPos = Lists.newArrayList();
 		BlockState logX = log.setValue(BlockStateProperties.AXIS, Direction.Axis.X);
 		BlockState logZ = log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
@@ -360,12 +387,15 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 
 		// 葉
 		level.setBlock(pos.above(h), leaves, 2);
-		for (int j = 6; j < h + 2; j++) {
+		for (int j = 5; j < h + 2; j++) {
 			for (int k = -3; k <= 3; k++) {
 				for (int l = -3; l <= 3; l++) {
-					double lim = 5D + level.random.nextInt(3);
-					if (j == 4 || j == h + 1) {
+					double lim = 6D + level.random.nextInt(3);
+					if (j == 5 || j == h) {
 						lim = 4D;
+					}
+					if (j == h + 1) {
+						lim = 3D;
 					}
 
 					BlockPos p1 = pos.offset(k, j, l);
@@ -384,7 +414,7 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 				for (int k = -3; k <= 3; k++) {
 					for (int l = -3; l <= 3; l++) {
 						double lim = 6D;
-						if (j == -2 || j == 3) {
+						if (j == -2 || j > 2) {
 							lim = 2D;
 						}
 

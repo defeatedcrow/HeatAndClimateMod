@@ -104,7 +104,26 @@ public class LeavesCamellia extends LeavesCropBlockDC {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		return Lists.newArrayList();
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("MOUNTAIN", "COLD");
+		case COMMON:
+			return ImmutableList.of("MOUNTAIN", "JUNGLE");
+		default:
+			return Lists.newArrayList();
+		}
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		switch (t) {
+		case WILD:
+			return ImmutableList.of("HOT", "DRY", "CONIFEROUS");
+		case COMMON:
+			return ImmutableList.of("COLD", "CONIFEROUS");
+		default:
+			return Lists.newArrayList();
+		}
 	}
 
 	@Override

@@ -373,11 +373,29 @@
 
 #### 更新履歴 / Change log ####
 
+○ v4-alpha12
+ add: 原木の圧縮ブロック
+ add: バニラ作物の圧縮ブロック
+ add: 壁掛けフック
+ add: ヒョウタンの水筒
+ add: 花椒
+ add: ご飯
+ add: 少々の醸造酒
+ add: 色々な食材
+ change: FluidTankBlockは、アイテム状態でも液体容器として機能するようになった
+ change: 鍋で料理が完成した時、鍋に中身を表示する機能を追加
+ change: 緑肥、肥料アイテムをバニラのコンポストに対応させた
+ fix: ピスタチオの木の成長
+ fix: 大型の樹形を調整した
+ fix: 村の周囲にはHaC樹木が生成されないように
+
 ○ v4-alpha11 (2023.11.12)
  add: 追加魚種
  change: 釣りEventを追加
  fix: Server起動時のクラッシュを修正
  fix: HUD時計とゲーム内時刻がズレている
+ fix: マコモが2段に成長しない
+ fix: GUI上でShift-clickを使用した際のクラッシュ
 
 ○ v4-alpha10 (2023.11.11)
  add: 鍋

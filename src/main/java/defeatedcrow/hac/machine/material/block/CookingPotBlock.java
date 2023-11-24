@@ -13,6 +13,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
+import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.fluid.DCFluidUtil;
@@ -21,6 +22,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -151,6 +153,20 @@ public class CookingPotBlock extends ProcessTileBlock {
 			}
 		}
 		return InteractionResult.sidedSuccess(level.isClientSide);
+	}
+
+	@Override
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
+		BlockEntity tile = level.getBlockEntity(pos);
+		if (tile instanceof CookingPotTile pot && rand.nextInt(3) == 0) {
+			ItemStack output = pot.getDisplay();
+			if (!pot.getDisplay().isEmpty()) {
+				double d0 = pos.getX() + 0.1D + rand.nextDouble() * 0.8D;
+				double d1 = pos.getY() + 0.5D;
+				double d2 = pos.getZ() + 0.1D + rand.nextDouble() * 0.8D;
+				level.addParticle(CoreInit.SMOKE.get(), d0, d1, d2, 0.0D, 0.005D, 0.0D);
+			}
+		}
 	}
 
 	@Override

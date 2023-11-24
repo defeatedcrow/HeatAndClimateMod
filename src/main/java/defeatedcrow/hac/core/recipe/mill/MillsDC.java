@@ -57,6 +57,7 @@ public class MillsDC {
 		list1.add(new Crops("rice", FoodInit.CROP_RI_SHORT, FoodInit.FOOD_RICE, FoodInit.FEED_STRAW));
 		list1.add(new Crops("aroma_rice", FoodInit.CROP_RI_AROMA, FoodInit.FOOD_AROMA_RICE, FoodInit.FEED_STRAW));
 		list1.add(new Crops("avocado", FoodInit.CROP_CN_AVOCADO, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
+		list1.add(new Crops("olive", FoodInit.CROP_OL_OLIVE, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
 		list1.add(new Crops("camellia", FoodInit.CROP_CM_OIL, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
 		list1.add(new Crops("heath", FoodInit.CROP_ER_HEATH, () -> Items.LIGHT_GRAY_DYE, CoreInit.DUST_PLANT));
 		list1.add(new Crops("rhododendron", FoodInit.CROP_ER_RHODODENDRON, () -> Items.MAGENTA_DYE, CoreInit.DUST_PLANT));

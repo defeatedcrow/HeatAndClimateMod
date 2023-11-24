@@ -1,0 +1,33 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/food_cheese",
+    "count": 4
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/rennet"
+    }
+  ],
+  "input_fluids": [
+    "forge:milk"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}
