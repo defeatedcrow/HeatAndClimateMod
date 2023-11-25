@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod v4 Early-Alpha for Minecraft 1.19.2 ####
+#### Heat&Climate Mod v4 Early-Alpha for Minecraft 1.19.2 ####
 
 # 導入環境 / Introduction conditions
 
@@ -97,8 +97,8 @@
   WET biomes: バイオームの湿度内部値(バニラの機能です)が0.8Fより大きいか、バイオームがWETタグを持つ場合。
               If the biome's humidity internal value (which is a vanilla feature) is greater than 0.8F or the biome has a WET tag.
 
-  DRY biomes: バイオームがDRYまたはSPARSEタグを持つ場合。
-              If the biome has a DRY or SPARSE tag.
+  DRY biomes: バイオームの湿度内部値が0.3F以下であるか、バイオームがDRYタグを持つ場合。
+              If the biome's humidity internal value (which is a vanilla feature) is smaller than 0.3F the biome has a DRY or SPARSE tag.
 
  ・ブロックの場合 / About blocks
 

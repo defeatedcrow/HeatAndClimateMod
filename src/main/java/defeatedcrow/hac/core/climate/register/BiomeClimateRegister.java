@@ -157,8 +157,10 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 		if (world.isLoaded(pos)) {
 			Holder<Biome> biome = world.getBiome(pos);
 			DCAirflow ret = getRegisteredAirflow(reg.getKey(biome.get())).orElse(DCAirflow.NORMAL);
-			if (biome.is(BiomeTags.IS_MOUNTAIN) || biome.is(BiomeTags.IS_HILL))
-				return DCAirflow.FLOW;
+			if (ret == DCAirflow.NORMAL) {
+				if (biome.is(BiomeTags.IS_MOUNTAIN) || biome.is(BiomeTags.IS_HILL))
+					return DCAirflow.FLOW;
+			}
 			return ret;
 		}
 		return DCAirflow.NORMAL;
@@ -169,10 +171,12 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 		if (world.isLoaded(pos)) {
 			Holder<Biome> biome = world.getBiome(pos);
 			DCHumidity hum = getRegisteredHumidity(reg.getKey(biome.get())).orElse(DCHumidity.NORMAL);
-			if (biome.is(Biomes.IS_WATER) || biome.is(Biomes.IS_WET) || biome.get().getDownfall() > 0.8F) {
-				return DCHumidity.WET;
-			} else if (biome.is(Biomes.IS_DRY) || biome.is(Biomes.IS_SPARSE)) {
-				return DCHumidity.DRY;
+			if (hum == DCHumidity.NORMAL) {
+				if (biome.is(Biomes.IS_WATER) || biome.is(Biomes.IS_WET) || biome.get().getDownfall() > 0.8F) {
+					return DCHumidity.WET;
+				} else if (biome.is(Biomes.IS_DRY) || biome.get().getDownfall() <= 0.3F) {
+					return DCHumidity.DRY;
+				}
 			}
 			return hum;
 		}

@@ -76,7 +76,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		boolean tree = random.nextInt(100) < 30;
 		if (tree) {
 			// 村には生成しないように
-			if (level.getLevel().isCloseToVillage(p1, 16)) {
+			if (level.getLevel().isCloseToVillage(p1, 3)) {
 				return false;
 			} else {
 				targets = targetTreeList.stream().filter((b) -> matchBiome(biome, p1.getY(), b)).toList();
