@@ -19,7 +19,7 @@ public class DCTimeHelper {
 	private DCTimeHelper() {}
 
 	public static long time(Level world) {
-		return world.getGameTime() % 24000L;
+		return 7000 + world.getDayTime() % 24000L;
 	}
 
 	public static long totalTime(Level world) {
@@ -200,7 +200,7 @@ public class DCTimeHelper {
 	private static EnumSeason clientSeason = EnumSeason.SPRING_EARLY;
 	private static int clientDay = 0;
 	private static int clientInnerDay = 0;
-	private static int clientTime = 0;
+	private static int clientTime = 6;
 	private static String clientDate = "Year - / Day -";
 
 	public static void setClientData(EnumSeason s, int d, int di, int t, String disp) {
