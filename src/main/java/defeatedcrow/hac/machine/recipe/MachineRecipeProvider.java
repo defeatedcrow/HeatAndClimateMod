@@ -36,6 +36,16 @@ public class MachineRecipeProvider extends RecipeProvider {
 	}
 
 	static void craftRecipes(Consumer<FinishedRecipe> cons) {
+		ShapedRecipeBuilder.shaped(MachineInit.MOTOR_TIER1.get(), 1)
+			.pattern("XYX")
+			.pattern("ZYZ")
+			.pattern("ZYZ")
+			.define('X', TagDC.ItemTag.RAW_MAGNETITE)
+			.define('Y', Tags.Items.INGOTS_IRON)
+			.define('Z', Tags.Items.INGOTS_COPPER)
+			.unlockedBy("has_raw_magnetite", has(TagDC.ItemTag.RAW_MAGNETITE))
+			.save(cons, "dcs_climate:machine/small_motor_0");
+
 		ShapedRecipeBuilder.shaped(MachineInit.CHAMBER_BRICK_A.get(), 1)
 			.pattern("X X")
 			.pattern("XYX")
@@ -137,6 +147,17 @@ public class MachineRecipeProvider extends RecipeProvider {
 			.define('Z', Items.IRON_BARS)
 			.unlockedBy("has_bucket", has(Items.BUCKET))
 			.save(cons, "dcs_climate:machine/ibc_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.STONE_MILL.get(), 1)
+			.pattern("ZYZ")
+			.pattern("XXX")
+			.pattern("XWX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', TagDC.ItemTag.MOTOR_T1)
+			.define('Z', Tags.Items.STONE)
+			.define('W', Tags.Items.CHESTS)
+			.unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1))
+			.save(cons, "dcs_climate:machine/stone_mill_0");
 
 		ShapedRecipeBuilder.shaped(MachineInit.COOKING_POT_NORMAL.get(), 1)
 			.pattern("XYX")

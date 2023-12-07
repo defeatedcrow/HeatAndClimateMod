@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -62,7 +63,7 @@ public class ClickEventDC {
 				}
 			}
 			// green manure
-			else if (!item.isEmpty() && TagUtil.matchTag("hoes", item.getItem()).isPresent()) {
+			else if (!item.isEmpty() && item.is(Tags.Items.TOOLS_HOES)) {
 				int m = DCState.getInt(target, DCState.STAGE5);
 				if (target.is(TagDC.BlockTag.CROP_GREEN_MANURES) && (m == -1 || m > 1)) {
 					// 下のブロック

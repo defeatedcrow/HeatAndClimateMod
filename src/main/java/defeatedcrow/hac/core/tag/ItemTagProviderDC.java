@@ -119,6 +119,10 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.MAGMA).add(Items.MAGMA_BLOCK);
 		tag(TagDC.ItemTag.DRIPSTONES).add(Items.DRIPSTONE_BLOCK, Items.POINTED_DRIPSTONE);
 
+		// main
+
+		tag(TagDC.ItemTag.DUST_ALKALI).addTags(TagDC.ItemTag.DUST_ASH, TagDC.ItemTag.DUST_LIME, TagDC.ItemTag.DUST_TRONA);
+
 		// magic
 		tag(TagDC.ItemTag.GEM_WHITE).addTags(TagDC.ItemTag.GEM_CHALCEDONY, TagDC.ItemTag.GEM_CRYSTAL, TagDC.ItemTag.GEM_HELIODOR,
 			TagDC.ItemTag.GEM_THUNDEREGG, TagDC.ItemTag.GEM_TOPAZ, Tags.Items.GEMS_DIAMOND);
@@ -309,10 +313,15 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.FERTILIZER).addTags(TagDC.ItemTag.FISH_POWDER, TagDC.ItemTag.PRESS_CAKE, TagDC.ItemTag.LEAF_MOLD, TagDC.ItemTag.FERTILIZER_ADV);
 
+		tag(TagDC.ItemTag.RESIDUES).addTags(TagDC.ItemTag.DUST_PLANT, TagDC.ItemTag.PRESS_CAKE, TagDC.ItemTag.DEFATTED_SOY, TagDC.ItemTag.DUST_WOOD,
+			TagDC.ItemTag.BRAN, TagDC.ItemTag.BAGASSE, TagDC.ItemTag.FEED_HAY, TagDC.ItemTag.FEED_STRAW, ItemTags.LEAVES);
+
 		tag(Tags.Items.STRING).addTags(TagDC.ItemTag.STRING_PLANT, TagDC.ItemTag.STRING_COTTON, TagDC.ItemTag.STRING_WOOL);
 		tag(TagDC.ItemTag.CLOTHS).addTags(TagDC.ItemTag.CLOTH_PLANT, TagDC.ItemTag.CLOTH_COTTON, TagDC.ItemTag.CLOTH_WOOL);
 
 		tag(Tags.Items.RODS_WOODEN).addTags(TagDC.ItemTag.STICK_SORGHUM);
+
+		// magic
 
 		tag(ItemTags.ARROWS).add(MagicInit.ARROW_WHITE.get(), MagicInit.ARROW_BLUE.get(), MagicInit.ARROW_BLACK.get(),
 			MagicInit.ARROW_RED.get(), MagicInit.ARROW_GREEN.get());
@@ -388,6 +397,9 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.FISH_TROPICAL).add(FoodInit.FOOD_MULLET.get(), FoodInit.FOOD_SARDINE.get(), FoodInit.FOOD_SEABREAM.get(), FoodInit.FOOD_GROUPER.get(),
 			FoodInit.FOOD_CARP.get(), FoodInit.FOOD_PRAWN.get(), FoodInit.FOOD_SQUID.get(), Items.PUFFERFISH, Items.TROPICAL_FISH);
+
+		// machine
+		tag(TagDC.ItemTag.MOTORS).addTags(TagDC.ItemTag.MOTOR_T1);
 
 		// blocks
 		copy(TagDC.BlockTag.ORES_WHITE, TagDC.ItemTag.ORES_WHITE);

@@ -1,9 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "X": {
-      "tag": "forge:ingots/brass"
-    },
+    "X": [
+      {
+        "tag": "forge:ingots/brass"
+      },
+      {
+        "tag": "forge:ingots/bronze"
+      }
+    ],
     "Y": {
       "tag": "forge:rods/wooden"
     }

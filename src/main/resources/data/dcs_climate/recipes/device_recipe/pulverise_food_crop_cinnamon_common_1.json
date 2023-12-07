@@ -1,0 +1,46 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "pulverise",
+  "result": {
+    "item": "dcs_climate:food/crop_cinnamon_common",
+    "count": 1
+  },
+  "secondary": {
+    "item": "dcs_climate:main/dust_wood",
+    "count": 4
+  },
+  "secondary_rate": 100,
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/log_cinnamon_true"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

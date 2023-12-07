@@ -1,0 +1,14 @@
+{
+  "values": [
+    "dcs_climate:build/slab_mud",
+    "dcs_climate:build/slab_gypsum",
+    "dcs_climate:build/slab_serpentine",
+    "dcs_climate:build/slab_greisen",
+    "dcs_climate:build/slab_skarn",
+    "dcs_climate:build/slab_hornfels",
+    "dcs_climate:build/slab_marble",
+    "dcs_climate:build/slab_schist_blue",
+    "dcs_climate:build/slab_schist_nether",
+    "dcs_climate:build/slab_granite"
+  ]
+}

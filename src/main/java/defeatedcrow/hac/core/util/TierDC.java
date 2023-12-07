@@ -16,7 +16,7 @@ public enum TierDC implements Tier {
 	BAMBOO(0, 128, 1.0F, 1.0F, 2, () -> {
 		return Ingredient.of(Tags.Items.RODS_WOODEN);
 	}),
-	BRASS(2, 401, 6.0F, 2.0F, 8, () -> {
+	BRASS(2, 600, 6.0F, 2.0F, 8, () -> {
 		return Ingredient.of(TagDC.ItemTag.INGOT_BRASS);
 	}),
 	STEEL(3, 750, 8.0F, 5.0F, 6, () -> {

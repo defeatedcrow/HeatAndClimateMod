@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.Mth;
@@ -179,6 +180,17 @@ public enum DCHeatTier {
 	@Override
 	public String toString() {
 		return name().toLowerCase();
+	}
+
+	public ChatFormatting getChatColor() {
+		if (temp >= 300)
+			return ChatFormatting.RED;
+		else if (temp > 40)
+			return ChatFormatting.GOLD;
+		else if (temp > 0F)
+			return ChatFormatting.GREEN;
+		else
+			return ChatFormatting.AQUA;
 	}
 
 	public static DCHeatTier getTypeByTemperature(int temp) {

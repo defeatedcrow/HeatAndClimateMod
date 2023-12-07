@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "tag": "forge:chests"
+    },
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "tag": "dcs_climate:motors/small"
+    },
+    "Z": {
+      "tag": "forge:stone"
+    }
+  },
+  "pattern": [
+    "ZYZ",
+    "XXX",
+    "XWX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/stone_mill"
+  }
+}

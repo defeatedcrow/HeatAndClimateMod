@@ -34,6 +34,11 @@ public class FenceWoodDC extends FenceBlock implements IBlockDC, IJsonDataDC {
 		name = n;
 	}
 
+	public FenceWoodDC(String n, BlockBehaviour.Properties prop) {
+		super(prop);
+		name = n;
+	}
+
 	public FenceWoodDC setTexDir(String s) {
 		texDir = s;
 		return this;

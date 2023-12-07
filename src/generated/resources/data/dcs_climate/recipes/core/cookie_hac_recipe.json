@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingredients/wheat"
+    },
+    "Y": {
+      "tag": "forge:crops/cocoa"
+    }
+  },
+  "pattern": [
+    "XYX"
+  ],
+  "result": {
+    "count": 4,
+    "item": "minecraft:cookie"
+  }
+}

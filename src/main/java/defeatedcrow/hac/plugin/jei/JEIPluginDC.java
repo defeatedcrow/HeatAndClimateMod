@@ -47,6 +47,7 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipes(SMELTING_DATA, PluginRecipeListDC.SMELTING_LIST);
 		registration.addRecipes(COOKING_DATA, PluginRecipeListDC.COOKING_LIST);
 		registration.addRecipes(FERMENTATION_DATA, PluginRecipeListDC.FERMENTATION_LIST);
+		registration.addRecipes(MILL_DATA, PluginRecipeListDC.PULVERISER_LIST);
 		registration.addRecipes(CROP_DATA, PluginRecipeListDC.CROP_LIST);
 		registration.addRecipes(TREE_DATA, PluginRecipeListDC.TREE_LIST);
 	}
@@ -58,6 +59,7 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipeCategories(new TreeDataCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceCookingCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceFermentationCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new DeviceMillCategory(registration.getJeiHelpers().getGuiHelper()));
 	}
 
 	@Override
@@ -75,6 +77,8 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_BLACK.get()), FERMENTATION_DATA);
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_RED.get()), FERMENTATION_DATA);
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_GREEN.get()), FERMENTATION_DATA);
+
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.STONE_MILL.get()), MILL_DATA);
 	}
 
 	public static final ResourceLocation SMELTING_ID = new ResourceLocation(ClimateCore.MOD_ID, "smelting_data");
@@ -91,5 +95,8 @@ public class JEIPluginDC implements IModPlugin {
 
 	public static final ResourceLocation FERMENTATION_ID = new ResourceLocation(ClimateCore.MOD_ID, "fermentation_data");
 	public static final RecipeType<IDeviceRecipe> FERMENTATION_DATA = new RecipeType<IDeviceRecipe>(FERMENTATION_ID, IDeviceRecipe.class);
+
+	public static final ResourceLocation MILL_ID = new ResourceLocation(ClimateCore.MOD_ID, "mill_data");
+	public static final RecipeType<IDeviceRecipe> MILL_DATA = new RecipeType<IDeviceRecipe>(MILL_ID, IDeviceRecipe.class);
 
 }

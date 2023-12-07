@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "dcs_climate:build/fence_metal"
+  },
+  "result": "dcs_climate:main/ingot_aluminum"
+}

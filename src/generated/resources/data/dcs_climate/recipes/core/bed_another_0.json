@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:clothes"
+    },
+    "Y": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "YYY"
+  ],
+  "result": {
+    "item": "minecraft:white_bed"
+  }
+}

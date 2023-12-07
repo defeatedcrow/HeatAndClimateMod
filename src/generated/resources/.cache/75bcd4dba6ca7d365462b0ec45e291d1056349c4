@@ -1,4 +1,4 @@
-// 1.19.2	2023-11-24T23:39:01.6017432	Tags for minecraft:block
+// 1.19.2	2023-12-06T23:35:51.1469987	Tags for minecraft:block
 c27613bc70b1102eddea4f03976d58392658a01f data/dcs_climate/tags/blocks/color_ores.json
 5973775ffcba4d39743586a99d401b242edfd861 data/dcs_climate/tags/blocks/color_ores/black.json
 08bdd9cd9a09b6f638cd8ea54bec26923da04737 data/dcs_climate/tags/blocks/color_ores/blue.json
@@ -12,11 +12,11 @@ f94d0af61e853e714398aa2fd20e319610b0b44f data/dcs_climate/tags/blocks/color_ores
 33d2df73da999bad25772aebb1454189df2c4f77 data/dcs_climate/tags/blocks/color_ores/white.json
 049685960daa6fe685dc596631040866cff5c29e data/dcs_climate/tags/blocks/flowers_for_bee.json
 75c7dc675e3c7734d0421b53b3e2fb77912ac24c data/dcs_climate/tags/blocks/green_manures.json
-ba23160154d7745820c323db555d6d6b708750e9 data/dcs_climate/tags/blocks/logs_can_collect_sap.json
+4907e6cc62f45960f628e6078eedd050a85e4d75 data/dcs_climate/tags/blocks/logs_can_collect_sap.json
 995780b538ec0d5ba35266df7b1cc561e7a7d15c data/dcs_climate/tags/blocks/logs_can_collect_sap/lacquer.json
 8c8d04e6558e83e86b428523fa5055683822b260 data/dcs_climate/tags/blocks/logs_can_collect_sap/latex.json
 8e4237c49cd273b8f3e3503a7a293e045c9853cd data/dcs_climate/tags/blocks/logs_can_collect_sap/resin.json
-f2cdc97a774fb6bb826cc512d5fda718518ef3ab data/dcs_climate/tags/blocks/logs_can_collect_sap/seeet_sap.json
+f2cdc97a774fb6bb826cc512d5fda718518ef3ab data/dcs_climate/tags/blocks/logs_can_collect_sap/sweet_sap.json
 5c59a22166febcd8e5dbc057af9238804006c4e3 data/dcs_climate/tags/blocks/scythe_breakable.json
 40fc28555ba86485c2fdf3bc327bb05602bd7cb5 data/forge/tags/blocks/crops/cactus.json
 814fe5838791d700256cfa0273c5d62387b04b5d data/forge/tags/blocks/crops/melon.json
@@ -74,15 +74,17 @@ c0472c5510910fda0f8dda26fc87ea5356f8ae4b data/forge/tags/blocks/storage_blocks/h
 46225b91b53648d7f1861eae3d246fc58892b93d data/forge/tags/blocks/storage_blocks/sus.json
 48d87fe2c91e74ff38e934ef3fa98be51c0b4fa6 data/forge/tags/blocks/storage_blocks/titanium.json
 f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/blocks/weed.json
+150544f18cbf9dd9a0df2a480855d25205ac317d data/minecraft/tags/blocks/climbable.json
+0c66697fb072599561fc62082ec9457347694d33 data/minecraft/tags/blocks/fences.json
 4f70c6aa1886452df3a643211c4f3c6571cfebe0 data/minecraft/tags/blocks/flowers.json
 1272fe63eae7da1a7e5d04373fc9879f595e11b9 data/minecraft/tags/blocks/leaves.json
 60dad91ad9b8b77338f6d97c1265ec34e369a4dd data/minecraft/tags/blocks/logs_that_burn.json
 25390a752077cf808992558c80c9654187c25a76 data/minecraft/tags/blocks/mineable/axe.json
-73a55af52d13fed8b5a6998e1bd36b25031b57ec data/minecraft/tags/blocks/mineable/pickaxe.json
+c083d64920caf1f37de65a879cbc52b2b3fe64b9 data/minecraft/tags/blocks/mineable/pickaxe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/needs_diamond_tool.json
 333b0e2ade270e3c2c54c0ec974c8027fbda16bd data/minecraft/tags/blocks/needs_iron_tool.json
 41cb830045e89851906f0062d3ed56bf570c1e03 data/minecraft/tags/blocks/needs_stone_tool.json
 60dad91ad9b8b77338f6d97c1265ec34e369a4dd data/minecraft/tags/blocks/overworld_natural_logs.json
 3f537871f023a3235e317bbfba6ae46e219cb796 data/minecraft/tags/blocks/planks.json
 77fb866d31af5d8f52f649bcf7f936a17dc50ac3 data/minecraft/tags/blocks/walls.json
-afed0dd93dd7217472f973d18f8e9540a07dd51e data/minecraft/tags/blocks/wooden_fences.json
+beac27d91a0f2cef2a8a900fc401edad69e43dc5 data/minecraft/tags/blocks/wooden_fences.json

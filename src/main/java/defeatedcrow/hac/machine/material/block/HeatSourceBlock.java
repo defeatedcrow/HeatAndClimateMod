@@ -32,7 +32,7 @@ public abstract class HeatSourceBlock extends ProcessTileBlock implements IHeatT
 		return 0;
 	}
 
-	public static void changeLisState(Level level, BlockPos pos, boolean lit) {
+	public static void changeLitState(Level level, BlockPos pos, boolean lit) {
 		BlockState state = level.getBlockState(pos);
 		if (state.getBlock() instanceof HeatSourceBlock) {
 			boolean l = lit & !DCState.getBool(state, DCState.POWERED);

@@ -1,0 +1,41 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "pulverise",
+  "result": {
+    "item": "dcs_climate:main/gem_salt",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ores/salt"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

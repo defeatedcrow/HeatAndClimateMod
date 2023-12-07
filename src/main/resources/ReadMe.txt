@@ -216,6 +216,8 @@
    - Red: MOUNTAIN, SANDY, BADLANDS
    - Green: FOREST, LUSH, DENSE, JUNGLE
 
+ 鉱脈は、コンフィグファイルによって編集、削除、追加ができます。
+ Veins can be edited, deleted, and added using the config file.
 
 ◎ 新しい農業要素 / New Agriculture
 
@@ -373,7 +375,16 @@
 
 #### 更新履歴 / Change log ####
 
-○ v4-alpha12
+○ v4-alpha13
+ add: アルファ版石臼
+ add: 真鍮・鋼のツール
+ add: アルミニウム製の建材
+ change: 炭酸泉のレイヤーブロックを苔丸石に変えた
+ change: 鉱脈生成コンフィグの登録処理を変更し、いくつも増やせるようにした
+ fix: 魔法のカードの作成枚数を修正
+ fix: マシンレシピの材料アイテムの空容器がOutputスロットに返却されない
+
+○ v4-alpha12 (2023.11.25)
  add: 原木の圧縮ブロック
  add: バニラ作物の圧縮ブロック
  add: 壁掛けフック

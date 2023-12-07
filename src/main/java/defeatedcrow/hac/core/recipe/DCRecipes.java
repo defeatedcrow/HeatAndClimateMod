@@ -92,4 +92,13 @@ public class DCRecipes {
 		return Optional.empty();
 	}
 
+	public static Optional<IDeviceRecipe> getPulverizeRecipe(List<ItemStack> inputs) {
+		for (IDeviceRecipe recipe : INSTANCE.PULVERISE.values()) {
+			if (recipe.matcheInput(inputs).length > 0) {
+				return Optional.of(recipe);
+			}
+		}
+		return Optional.empty();
+	}
+
 }

@@ -72,6 +72,10 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 		registerHeatBlock(new BlockSet(Blocks.BLAST_FURNACE, "lit", ImmutableList.of("true")), DCHeatTier.KILN);
 	}
 
+	public static void register() {
+		// registerHumBlock(new BlockSet(CoreInit.sto, "lit", ImmutableList.of("true")), DCHeatTier.WARM);
+	}
+
 	@Override
 	public void registerHeatBlock(BlockSet block, DCHeatTier temp) {
 		if (block != null) {

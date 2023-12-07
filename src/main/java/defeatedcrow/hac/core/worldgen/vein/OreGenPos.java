@@ -24,7 +24,7 @@ public class OreGenPos {
 		rand.nextInt(8);
 
 		// 浅層、深層で2個生成する
-		OreVein[] ret = new OreVein[4];
+		OreVein[] ret = new OreVein[2];
 
 		int y1 = 64;
 		int x1 = chunk.getMinBlockX() + 2 + rand.nextInt(12);
@@ -50,7 +50,7 @@ public class OreGenPos {
 		if (!table3.isEmpty()) {
 			VeinTable get = table3.get(rand.nextInt(table3.size()));
 			if (rand.nextInt(100) < get.generateProbability) {
-				ret[2] = getVeinFromSeed(world, pos3, get, seed);
+				ret[1] = getVeinFromSeed(world, pos3, get, seed);
 			}
 		}
 

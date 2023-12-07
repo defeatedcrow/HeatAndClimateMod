@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:raw_materials/magnetite"
+    },
+    "Y": {
+      "tag": "forge:ingots/iron"
+    },
+    "Z": {
+      "tag": "forge:ingots/copper"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "ZYZ",
+    "ZYZ"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/motor_small"
+  }
+}

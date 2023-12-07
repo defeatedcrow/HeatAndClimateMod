@@ -401,6 +401,8 @@ public class FoodInit {
 	// feed
 	public static final RegistryObject<Item> FOOD_DEFATTED_SOY = regItem("dust_defatted_soy", () -> new MaterialItemDC(AGRI, "dust_defatted_soy", TagDC.ItemTag.DEFATTED_SOY).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_PRESS_CAKE = regItem("dust_press_cake", () -> new MaterialItemDC(AGRI, "dust_press_cake", TagDC.ItemTag.PRESS_CAKE).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_BRAN = regItem("dust_bran", () -> new MaterialItemDC(AGRI, "dust_bran", TagDC.ItemTag.BRAN).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_BAGASSE = regItem("dust_bagasse", () -> new MaterialItemDC(AGRI, "dust_bagasse", TagDC.ItemTag.BAGASSE).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_LEAF_MOLD = regItem("dust_leaf_mold", () -> new MaterialItemDC(AGRI, "dust_leaf_mold", TagDC.ItemTag.LEAF_MOLD).setDomain("food"));
 
 	public static final RegistryObject<Item> FEED_HAY = regItem("animalfeed_hay", () -> new MaterialItemDC(AGRI, "animalfeed_hay", TagDC.ItemTag.FEED_HAY).setDomain("food"));
@@ -408,6 +410,9 @@ public class FoodInit {
 	public static final RegistryObject<Item> FEED_COMPOUND = regItem("animalfeed_compound", () -> new MaterialItemDC(AGRI, "animalfeed_compound", TagDC.ItemTag.FEED_COMPOUND).setDomain("food"));
 
 	public static final RegistryObject<Item> FERTILIZER_MIXED = regItem("fertilizer_mixed", () -> new FertilizerItemDC(AGRI, "fertilizer_mixed", TagDC.ItemTag.FERTILIZER_ADV).setDomain("food"));
+
+	public static final RegistryObject<Item> BIOMASS_PELLET = regItem("bio_briquet_raw", () -> new MaterialItemDC(AGRI, "bio_briquet_raw", null).setDomain("food"));
+	public static final RegistryObject<Item> BIOMASS_BRIQUET = regItem("bio_briquet", () -> new MaterialItemDC(AGRI, "bio_briquet", null).setDomain("food"));
 
 	// crops
 	public static final RegistryObject<Item> CROP_AL_WILD = regCrop(CropTier.WILD, CropType.ALLIUM, TagDC.ItemTag.CROP_CHIVES);

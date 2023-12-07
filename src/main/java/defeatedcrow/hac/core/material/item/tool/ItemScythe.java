@@ -36,6 +36,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.Vanishable;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -46,7 +47,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.IForgeShearable;
 
-public class ItemScythe extends ItemDC implements ITierItem {
+public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 
 	public final TierDC tier;
 	private final Multimap<Attribute, AttributeModifier> defaultModifiers;

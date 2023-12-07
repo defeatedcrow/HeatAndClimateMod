@@ -1,0 +1,41 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "pulverise",
+  "result": {
+    "item": "dcs_climate:main/dust_wood",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "minecraft:planks"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

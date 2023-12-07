@@ -27,6 +27,8 @@ public enum BlockClimateData {
 	BLUE_ICE(Blocks.BLUE_ICE, DCHeatTier.COLD, DCHumidity.NORMAL, DCAirflow.TIGHT),
 	FROSTED_ICE(Blocks.FROSTED_ICE, DCHeatTier.COLD, DCHumidity.NORMAL, DCAirflow.TIGHT),
 	PACKED_ICE(Blocks.PACKED_ICE, DCHeatTier.COLD, DCHumidity.NORMAL, DCAirflow.TIGHT),
+	CALCITE(Blocks.CALCITE, DCHeatTier.NORMAL, DCHumidity.DRY, DCAirflow.TIGHT),
+	TERRACOTTA(Blocks.TERRACOTTA, DCHeatTier.NORMAL, DCHumidity.DRY, DCAirflow.TIGHT),
 	SPONGE(Blocks.SPONGE, DCHeatTier.NORMAL, DCHumidity.DRY, DCAirflow.TIGHT),
 	SOUL_SAND(Blocks.SOUL_SAND, DCHeatTier.NORMAL, DCHumidity.DRY, DCAirflow.TIGHT),
 	WET_SPONGE(Blocks.WET_SPONGE, DCHeatTier.NORMAL, DCHumidity.WET, DCAirflow.TIGHT),

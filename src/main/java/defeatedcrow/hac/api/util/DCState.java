@@ -13,6 +13,8 @@ public class DCState {
 	public static final IntegerProperty TYPE4 = IntegerProperty.create("type4", 0, 3);
 
 	// bool
+	public static final BooleanProperty TOP = BooleanProperty.create("top");
+	public static final BooleanProperty BOTTOM = BooleanProperty.create("bottom");
 	public static final BooleanProperty FLAG = BooleanProperty.create("flag");
 	public static final BooleanProperty LIT = BooleanProperty.create("lit");
 	public static final BooleanProperty POWERED = BooleanProperty.create("powered");

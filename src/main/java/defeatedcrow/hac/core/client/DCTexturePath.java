@@ -19,7 +19,8 @@ public enum DCTexturePath {
 	GUI_FLUID_TANK_LARGE("textures/gui/fluid_tank_large_inv.png"),
 	GUI_COOKING_POT("textures/gui/cooking_pot_inv.png"),
 	GUI_FERMENTATION_JAR("textures/gui/fermentation_jar_inv.png"),
-	GUI_TEA_POT("textures/gui/tea_pot_inv.png");
+	GUI_TEA_POT("textures/gui/tea_pot_inv.png"),
+	GUI_MILL("textures/gui/stonemill_inv.png");
 
 	private final String name;
 
@@ -36,6 +37,7 @@ public enum DCTexturePath {
 	}
 
 	public static List<DCTexturePath> elements() {
-		return ImmutableList.of(POTION, HUD, GRAY, HOT_DISP, COLD_DISP, GUI_INV_SINGLE, GUI_INV_DOUBLE, GUI_CHAMBER_ITEM, GUI_FLUID_TANK, GUI_FLUID_TANK_LARGE, GUI_COOKING_POT, GUI_TEA_POT, GUI_FERMENTATION_JAR);
+		return ImmutableList.of(POTION, HUD, GRAY, HOT_DISP, COLD_DISP, GUI_INV_SINGLE, GUI_INV_DOUBLE, GUI_CHAMBER_ITEM, GUI_FLUID_TANK,
+			GUI_FLUID_TANK_LARGE, GUI_COOKING_POT, GUI_TEA_POT, GUI_FERMENTATION_JAR, GUI_MILL);
 	}
 }

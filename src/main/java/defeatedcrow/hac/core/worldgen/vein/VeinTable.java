@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 public class VeinTable {
 
 	public final String veinName;
+	public final String color;
 	public final int generateProbability;
 	public final int altitude;
 	public final int radius;
@@ -17,8 +18,19 @@ public class VeinTable {
 	public final String layerStone;
 	public final List<OreSetData> entries = Lists.newArrayList();
 
-	public VeinTable(String name, int p, int a, int r, boolean deep, String layer) {
-		veinName = name;
+	public VeinTable(String colorIn, int p, int a, int r, boolean deep, String layer) {
+		veinName = colorIn;
+		color = colorIn;
+		generateProbability = p;
+		altitude = a;
+		radius = r;
+		isDeep = deep;
+		layerStone = layer;
+	}
+
+	public VeinTable(String name, String colorIn, int p, int a, int r, boolean deep, String layer) {
+		veinName = name == null ? colorIn : name;
+		color = colorIn;
 		generateProbability = p;
 		altitude = a;
 		radius = r;

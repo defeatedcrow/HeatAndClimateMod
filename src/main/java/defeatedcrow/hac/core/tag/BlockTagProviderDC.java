@@ -135,8 +135,12 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 			.addTag(TagDC.BlockTag.WEED);
 
 		tag(BlockTags.WOODEN_FENCES).add(BuildInit.FENCE_BEECH.get(), BuildInit.FENCE_WALNUT.get(), BuildInit.FENCE_SWEET.get(),
-			BuildInit.FENCE_CHERRY.get(), BuildInit.FENCE_CAMPHOR.get(), BuildInit.FENCE_CITRUS.get(),
-			BuildInit.FENCE_ASH.get(), BuildInit.FENCE_PALM.get());
+			BuildInit.FENCE_CHERRY.get(), BuildInit.FENCE_CAMPHOR.get(), BuildInit.FENCE_CITRUS.get(), BuildInit.FENCE_ASH.get(),
+			BuildInit.FENCE_PALM.get(), BuildInit.FENCE_SORGHUM.get(), BuildInit.FENCE_SUMAC.get(), BuildInit.FENCE_LACQUER.get());
+
+		tag(BlockTags.FENCES).add(BuildInit.FENCE_METAL.get());
+
+		tag(BlockTags.CLIMBABLE).add(BuildInit.LADDER_METAL.get());
 
 		tag(BlockTags.WALLS).add(BuildInit.WALL_MUD.get(), BuildInit.WALL_GYPSUM.get(), BuildInit.WALL_SERPENTINE.get(),
 			BuildInit.WALL_GREISEN.get(), BuildInit.WALL_SKARN.get(), BuildInit.WALL_HORNFELS.get(),

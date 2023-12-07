@@ -1,0 +1,30 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "fermentation",
+  "result": {
+    "item": "dcs_climate:food/food_soysauce",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/defatted_soy"
+    },
+    {
+      "tag": "forge:dusts/salt"
+    },
+    {
+      "item": "dcs_climate:food/food_koji"
+    }
+  ],
+  "heat": [
+    "WARM",
+    "HOT"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "NORMAL"
+  ]
+}

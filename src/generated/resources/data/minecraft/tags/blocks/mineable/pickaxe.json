@@ -123,9 +123,14 @@
     "dcs_climate:build/bricks_granite",
     "dcs_climate:build/pillar_granite",
     "dcs_climate:build/chiseled_granite",
-    "dcs_climate:build/slab_granite",
     "dcs_climate:build/stairs_granite",
+    "dcs_climate:build/slab_granite",
     "dcs_climate:build/wall_granite",
+    "dcs_climate:build/metal_stairs",
+    "dcs_climate:build/metal_slab",
+    "dcs_climate:build/fence_metal",
+    "dcs_climate:build/metal_ladder",
+    "dcs_climate:build/stairs_roof_gray",
     "dcs_climate:build/flintbricks",
     "dcs_climate:build/flintbricks_white",
     "dcs_climate:build/flintbricks_black",
@@ -166,6 +171,7 @@
     "dcs_climate:machine/fermentation_jar_black",
     "dcs_climate:machine/fermentation_jar_red",
     "dcs_climate:machine/fermentation_jar_green",
+    "dcs_climate:machine/stone_mill",
     "dcs_climate:magic/magic_small_light"
   ]
 }

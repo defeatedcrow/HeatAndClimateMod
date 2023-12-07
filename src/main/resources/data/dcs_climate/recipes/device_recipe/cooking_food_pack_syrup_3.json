@@ -8,6 +8,9 @@
   "ingredients": [
     {
       "tag": "forge:ingredients/rices"
+    },
+    {
+      "item": "dcs_climate:food/food_malt"
     }
   ],
   "input_fluids": [

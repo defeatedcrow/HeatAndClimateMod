@@ -4,9 +4,11 @@ import java.util.function.Supplier;
 
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.machine.client.gui.CookingPotMenu;
 import defeatedcrow.hac.machine.client.gui.FermentationJarMenu;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberMenu;
+import defeatedcrow.hac.machine.client.gui.MillMenu;
 import defeatedcrow.hac.machine.client.gui.PortableTankMenu;
 import defeatedcrow.hac.machine.material.block.BrickChamberBlock;
 import defeatedcrow.hac.machine.material.block.BrickChamberTile;
@@ -22,10 +24,14 @@ import defeatedcrow.hac.machine.material.block.PortableCanBlock;
 import defeatedcrow.hac.machine.material.block.PortableCanTile;
 import defeatedcrow.hac.machine.material.block.PortableFluidTankTile;
 import defeatedcrow.hac.machine.material.block.SpileCupBlock;
+import defeatedcrow.hac.machine.material.block.StoneMillBlock;
+import defeatedcrow.hac.machine.material.block.StoneMillTile;
 import defeatedcrow.hac.machine.material.fluid.FluidBlockItemDC;
+import defeatedcrow.hac.machine.material.item.MachineMaterialItem;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.network.IContainerFactory;
@@ -64,6 +70,10 @@ public class MachineInit {
 	public static final RegistryObject<Block> FERMANTATION_JAR_RED = regBlock("fermentation_jar_red", () -> new FermentationJarBlock("fermentation_jar_red", true), null);
 	public static final RegistryObject<Block> FERMANTATION_JAR_GREEN = regBlock("fermentation_jar_green", () -> new FermentationJarBlock("fermentation_jar_green", true), null);
 
+	public static final RegistryObject<Block> STONE_MILL = regBlock("stone_mill", () -> new StoneMillBlock("stone_ill"), null);
+
+	public static final RegistryObject<Item> MOTOR_TIER1 = regItem("motor_small", () -> new MachineMaterialItem(Rarity.COMMON, "motor_small", TagDC.ItemTag.MOTOR_T1));
+
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<BrickChamberTile>> CHAMBER_BRICK_TILE = CoreInit.BLOCK_ENTITIES.register("chamber_brick_tile",
 		() -> BlockEntityType.Builder.of(BrickChamberTile::new, new Block[] { CHAMBER_BRICK_A.get(), CHAMBER_BRICK_B.get() }).build(null));
@@ -86,6 +96,9 @@ public class MachineInit {
 		() -> BlockEntityType.Builder.of(FermentationJarTile::new, new Block[] { FERMANTATION_JAR_NORMAL.get(), FERMANTATION_JAR_WHITE.get(), FERMANTATION_JAR_BLUE.get(), FERMANTATION_JAR_BLACK.get(),
 			FERMANTATION_JAR_RED.get(), FERMANTATION_JAR_GREEN
 				.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<StoneMillTile>> MILL_TILE = CoreInit.BLOCK_ENTITIES.register("mill_tile",
+		() -> BlockEntityType.Builder.of(StoneMillTile::new, new Block[] { STONE_MILL.get() }).build(null));
 
 	// Menu
 	public static final RegistryObject<MenuType<HeatingChamberMenu>> CHAMBER_MENU = CoreInit.register("dcs_chamber_item", (IContainerFactory<HeatingChamberMenu>) (id, playerInv, data) -> {
@@ -111,6 +124,11 @@ public class MachineInit {
 	public static final RegistryObject<MenuType<FermentationJarMenu>> JAR_MENU = CoreInit.register("dcs_fermentation_jar", (IContainerFactory<FermentationJarMenu>) (id, playerInv, data) -> {
 		FermentationJarTile cont = (FermentationJarTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
 		return FermentationJarMenu.getMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<MillMenu>> MILL_MENU = CoreInit.register("dcs_pulveriser", (IContainerFactory<MillMenu>) (id, playerInv, data) -> {
+		StoneMillTile cont = (StoneMillTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return MillMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {

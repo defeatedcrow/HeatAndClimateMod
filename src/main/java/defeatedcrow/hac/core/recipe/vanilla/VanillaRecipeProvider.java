@@ -338,6 +338,59 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 	private static void buildingRecipes(Consumer<FinishedRecipe> cons) {
 
+		ShapedRecipeBuilder.shaped(BuildInit.SLAB_METAL.get(), 3)
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+			.save(cons, "dcs_climate:build/metal_slab_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.STAIRS_METAL.get(), 3)
+			.pattern("X  ")
+			.pattern(" X ")
+			.pattern("  X")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+			.save(cons, "dcs_climate:build/metal_stairs_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.STAIRS_METAL.get(), 3)
+			.pattern("  X")
+			.pattern(" X ")
+			.pattern("X  ")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+			.save(cons, "dcs_climate:build/metal_stairs_2");
+
+		ShapedRecipeBuilder.shaped(BuildInit.ROOF_METAL_GRAY.get(), 6)
+			.pattern("X  ")
+			.pattern("XX ")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+			.save(cons, "dcs_climate:build/metal_roof_gray_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.ROOF_METAL_GRAY.get(), 6)
+			.pattern("  X")
+			.pattern(" XX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+			.save(cons, "dcs_climate:build/metal_roof_gray_2");
+
+		ShapedRecipeBuilder.shaped(BuildInit.LADDER_METAL.get(), 7)
+			.pattern("X X")
+			.pattern("XXX")
+			.pattern("X X")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+			.save(cons, "dcs_climate:build/metal_ladder_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.FENCE_METAL.get(), 6)
+			.pattern("XXX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+			.save(cons, "dcs_climate:build/metal_fence_1");
+
 		ShapedRecipeBuilder.shaped(BuildInit.FLINTBRICKS.get(), 4)
 			.pattern("XY")
 			.pattern("YX")
@@ -787,14 +840,78 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_leather", has(Tags.Items.LEATHER))
 			.save(cons, "dcs_climate:core/bellow_1");
 
+		ShapedRecipeBuilder.shaped(CoreInit.AXE_BRASS.get(), 1)
+			.pattern("YYX")
+			.pattern(" XX")
+			.define('X', TagUtil.BRONZE_OR_BRASS)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+			.save(cons, "dcs_climate:core/axeitem_brass");
+
+		ShapedRecipeBuilder.shaped(CoreInit.PICKAXE_BRASS.get(), 1)
+			.pattern("  X")
+			.pattern("YYX")
+			.pattern("  X")
+			.define('X', TagUtil.BRONZE_OR_BRASS)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+			.save(cons, "dcs_climate:core/pickaxeitem_brass");
+
+		ShapedRecipeBuilder.shaped(CoreInit.SHOVEL_BRASS.get(), 1)
+			.pattern("YYX")
+			.define('X', TagUtil.BRONZE_OR_BRASS)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+			.save(cons, "dcs_climate:core/shovelitem_brass");
+
+		ShapedRecipeBuilder.shaped(CoreInit.HOE_BRASS.get(), 1)
+			.pattern("YYX")
+			.pattern("  X")
+			.define('X', TagUtil.BRONZE_OR_BRASS)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+			.save(cons, "dcs_climate:core/hoeitem_brass");
+
 		ShapedRecipeBuilder.shaped(CoreInit.SCYTHE_BRASS.get(), 1)
 			.pattern("YYX")
 			.pattern("  X")
 			.pattern(" X ")
-			.define('X', TagDC.ItemTag.INGOT_BRASS)
+			.define('X', TagUtil.BRONZE_OR_BRASS)
 			.define('Y', Tags.Items.RODS_WOODEN)
 			.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
 			.save(cons, "dcs_climate:core/scytheitem_brass");
+
+		ShapedRecipeBuilder.shaped(CoreInit.AXE_STEEL.get(), 1)
+			.pattern("YYX")
+			.pattern(" XX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
+			.save(cons, "dcs_climate:core/axeitem_steel");
+
+		ShapedRecipeBuilder.shaped(CoreInit.PICKAXE_STEEL.get(), 1)
+			.pattern("  X")
+			.pattern("YYX")
+			.pattern("  X")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
+			.save(cons, "dcs_climate:core/pickaxeitem_steel");
+
+		ShapedRecipeBuilder.shaped(CoreInit.SHOVEL_STEEL.get(), 1)
+			.pattern("YYX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
+			.save(cons, "dcs_climate:core/shovelitem_steel");
+
+		ShapedRecipeBuilder.shaped(CoreInit.HOE_STEEL.get(), 1)
+			.pattern("YYX")
+			.pattern("  X")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
+			.save(cons, "dcs_climate:core/hoeitem_steel");
 
 		ShapedRecipeBuilder.shaped(CoreInit.SCYTHE_STEEL.get(), 1)
 			.pattern("YYX")
@@ -830,7 +947,75 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.requires(TagDC.ItemTag.SAP_LACQUER)
 			.requires(Tags.Items.STRING)
 			.unlockedBy("has_crop_calabash", has(TagDC.ItemTag.CROP_CALABASH))
-			.save(cons, "dcs_climate:clothing/bucket_calabash_0");
+			.save(cons, "dcs_climate:core/bucket_calabash_0");
+
+		// vanilla another
+
+		ShapedRecipeBuilder.shaped(Items.PAINTING, 1)
+			.pattern("YYY")
+			.pattern("YXY")
+			.pattern("YYY")
+			.define('X', TagDC.ItemTag.CLOTHS)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:core/painting_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.WHITE_BED, 1)
+			.pattern("XXX")
+			.pattern("YYY")
+			.define('X', TagDC.ItemTag.CLOTHS)
+			.define('Y', ItemTags.PLANKS)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:core/bed_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.WHITE_BANNER, 1)
+			.pattern("XXX")
+			.pattern("XXX")
+			.pattern(" Y ")
+			.define('X', TagDC.ItemTag.CLOTHS)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:core/banner_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.LOOM, 1)
+			.pattern("XX")
+			.pattern("YY")
+			.define('X', TagDC.ItemTag.CLOTHS)
+			.define('Y', ItemTags.PLANKS)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:core/loom_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.BOOK, 1)
+			.pattern("YY")
+			.pattern("YX")
+			.define('X', TagDC.ItemTag.CLOTHS)
+			.define('Y', Items.PAPER)
+			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+			.save(cons, "dcs_climate:core/book_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.SPYGLASS, 1)
+			.pattern("Y")
+			.pattern("X")
+			.pattern("X")
+			.define('X', Tags.Items.INGOTS_COPPER)
+			.define('Y', TagDC.ItemTag.GEM_FLUORITE)
+			.unlockedBy("has_fluorite", has(TagDC.ItemTag.GEM_FLUORITE))
+			.save(cons, "dcs_climate:core/spyglass_another_0");
+
+		ShapelessRecipeBuilder.shapeless(Items.GUNPOWDER, 1)
+			.requires(TagDC.ItemTag.DUST_NITER)
+			.requires(TagDC.ItemTag.DUST_NITER)
+			.requires(TagDC.ItemTag.DUST_COAL)
+			.requires(TagDC.ItemTag.DUST_SULFUR)
+			.unlockedBy("has_dust_niter", has(TagDC.ItemTag.DUST_NITER))
+			.save(cons, "dcs_climate:core/gunpowder_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.BUCKET, 1)
+			.pattern("X X")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+			.save(cons, "dcs_climate:core/bucket_another_0");
 	}
 
 	private static void clothingRecipes(Consumer<FinishedRecipe> cons) {
@@ -1106,6 +1291,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_CRYSTAL), BuildInit.GLASS_CRYSTAL.get().asItem(), 200, "dust_crystal", CoreInit.DUST_CRYSTAL.get(), "has_dust_crystal");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), CoreInit.DUST_ASH.get(), 200, "dust_ash", CoreInit.DUST_PLANT.get(), "has_dust_plant");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), CoreInit.DUST_ASH.get(), 200, "dust_wood", CoreInit.DUST_WOOD.get(), "has_dust_wood");
+
+		// アルミ建材の還元
+		smeltingRecipe(cons, Ingredient.of(BuildInit.SLAB_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_slab_metal", BuildInit.SLAB_METAL.get().asItem(), "has_slab_metal");
+		smeltingRecipe(cons, Ingredient.of(BuildInit.FENCE_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_fence_metal", BuildInit.FENCE_METAL.get().asItem(), "has_fence_metal");
+		smeltingRecipe(cons, Ingredient.of(BuildInit.LADDER_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_ladder_metal", BuildInit.LADDER_METAL.get().asItem(), "has_ladder_metal");
+		smeltingRecipe(cons, Ingredient.of(BuildInit.STAIRS_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_stairs_metal", BuildInit.STAIRS_METAL.get().asItem(), "has_stairs_metal");
+		smeltingRecipe(cons, Ingredient.of(BuildInit.ROOF_METAL_GRAY.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_roof_metal", BuildInit.ROOF_METAL_GRAY.get().asItem(), "has_roof_metal");
 	}
 
 	@Override

@@ -25,7 +25,11 @@ import defeatedcrow.hac.core.material.item.tool.GemSieveItem;
 import defeatedcrow.hac.core.material.item.tool.HandSpindleItem;
 import defeatedcrow.hac.core.material.item.tool.HandyBellowItem;
 import defeatedcrow.hac.core.material.item.tool.HarpoonItem;
+import defeatedcrow.hac.core.material.item.tool.ItemAxeDC;
+import defeatedcrow.hac.core.material.item.tool.ItemHoeDC;
+import defeatedcrow.hac.core.material.item.tool.ItemPickaxeDC;
 import defeatedcrow.hac.core.material.item.tool.ItemScythe;
+import defeatedcrow.hac.core.material.item.tool.ItemShovelDC;
 import defeatedcrow.hac.core.material.item.tool.SeedingPotItem;
 import defeatedcrow.hac.core.material.item.tool.StackableBucketItem;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate;
@@ -201,7 +205,16 @@ public class CoreInit {
 
 	public static final RegistryObject<Item> HANDY_BELLOW = regItem("bellow", () -> new HandyBellowItem("bellow"));
 
+	public static final RegistryObject<Item> AXE_BRASS = regItem("axe_brass", () -> new ItemAxeDC(TierDC.BRASS, Tags.Items.TOOLS_AXES));
+	public static final RegistryObject<Item> PICKAXE_BRASS = regItem("pickaxe_brass", () -> new ItemPickaxeDC(TierDC.BRASS, Tags.Items.TOOLS_PICKAXES));
+	public static final RegistryObject<Item> SHOVEL_BRASS = regItem("shovel_brass", () -> new ItemShovelDC(TierDC.BRASS, Tags.Items.TOOLS_SHOVELS));
+	public static final RegistryObject<Item> HOE_BRASS = regItem("hoe_brass", () -> new ItemHoeDC(TierDC.BRASS, Tags.Items.TOOLS_HOES));
 	public static final RegistryObject<Item> SCYTHE_BRASS = regItem("scythe_brass", () -> new ItemScythe(TierDC.BRASS, TagDC.ItemTag.SCYTHES));
+
+	public static final RegistryObject<Item> AXE_STEEL = regItem("axe_steel", () -> new ItemAxeDC(TierDC.STEEL, Tags.Items.TOOLS_AXES));
+	public static final RegistryObject<Item> PICKAXE_STEEL = regItem("pickaxe_steel", () -> new ItemPickaxeDC(TierDC.STEEL, Tags.Items.TOOLS_PICKAXES));
+	public static final RegistryObject<Item> SHOVEL_STEEL = regItem("shovel_steel", () -> new ItemShovelDC(TierDC.STEEL, Tags.Items.TOOLS_SHOVELS));
+	public static final RegistryObject<Item> HOE_STEEL = regItem("hoe_steel", () -> new ItemHoeDC(TierDC.STEEL, Tags.Items.TOOLS_HOES));
 	public static final RegistryObject<Item> SCYTHE_STEEL = regItem("scythe_steel", () -> new ItemScythe(TierDC.STEEL, TagDC.ItemTag.SCYTHES));
 
 	public static final RegistryObject<Item> HARPOON_FLINT = regItem("harpoon_flint", () -> new HarpoonItem("flint", TierDC.BAMBOO, TagDC.ItemTag.HARPOON));
@@ -322,6 +335,7 @@ public class CoreInit {
 	public static final RegistryObject<Block> STONE_SALT = regBlock("stone_salt", () -> new LayerStoneBlock("stone_salt"), TagDC.ItemTag.ORES_SALT);
 	public static final RegistryObject<Block> STONE_GUANO = regBlock("stone_guano", () -> new LayerStoneBlock("stone_guano"), TagDC.ItemTag.ORES_NITER);
 	public static final RegistryObject<Block> STONE_SULFUR = regBlock("stone_sulfur", () -> new LayerStoneBlock("stone_sulfur"), TagDC.ItemTag.ORES_SULFUR);
+	// public static final RegistryObject<Block> STONE_LIME = regBlock("stone_lime", () -> new LayerStoneBlock("stone_lime"), TagDC.ItemTag.ORES_LIME);
 	public static final RegistryObject<Block> STONE_TRAVERTINE = regBlock("stone_travertine", () -> new LayerStoneBlock("stone_travertine"), TagDC.ItemTag.ORES_TRAVERTINE);
 	public static final RegistryObject<Block> STONE_NATRON = regBlock("stone_natron", () -> new LayerStoneBlock("stone_natron"), TagDC.ItemTag.ORES_NATRON);
 

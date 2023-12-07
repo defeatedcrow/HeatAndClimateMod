@@ -91,16 +91,19 @@ import defeatedcrow.hac.machine.client.entity.FermentationJarModel_A;
 import defeatedcrow.hac.machine.client.entity.FermentationJarModel_B;
 import defeatedcrow.hac.machine.client.entity.IBCModel;
 import defeatedcrow.hac.machine.client.entity.PortableCanModel;
+import defeatedcrow.hac.machine.client.entity.StoneMillModel;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberFuel;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberIron;
 import defeatedcrow.hac.machine.client.entity.TileRendererCookingPot;
 import defeatedcrow.hac.machine.client.entity.TileRendererFermentationJar;
 import defeatedcrow.hac.machine.client.entity.TileRendererIBC;
 import defeatedcrow.hac.machine.client.entity.TileRendererPortableCan;
+import defeatedcrow.hac.machine.client.entity.TileRendererStoneMill;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.block.CookingPotTile;
 import defeatedcrow.hac.machine.material.block.FermentationJarTile;
 import defeatedcrow.hac.machine.material.block.IBCTile;
+import defeatedcrow.hac.machine.material.block.StoneMillTile;
 import defeatedcrow.hac.machine.material.block.PortableCanTile;
 import defeatedcrow.hac.magic.client.entity.RenderBindPlant;
 import defeatedcrow.hac.magic.client.entity.RenderColorArrow;
@@ -171,6 +174,8 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(FermentationJarTile.BLACK.getLayerLocation(), FermentationJarModel_B::createBodyLayer);
 		event.registerLayerDefinition(FermentationJarTile.RED.getLayerLocation(), FermentationJarModel_A::createBodyLayer);
 		event.registerLayerDefinition(FermentationJarTile.GREEN.getLayerLocation(), FermentationJarModel_A::createBodyLayer);
+
+		event.registerLayerDefinition(StoneMillTile.NORMAL.getLayerLocation(), StoneMillModel::createBodyLayer);
 
 		// Entity
 		event.registerLayerDefinition(HarpoonItem.FLINT.getLayerLocation(), TridentModel::createLayer);
@@ -269,6 +274,7 @@ public class EntityClientRegister {
 		event.registerBlockEntityRenderer(MachineInit.IBC_TILE.get(), TileRendererIBC::new);
 		event.registerBlockEntityRenderer(MachineInit.COOKING_POT_TILE.get(), TileRendererCookingPot::new);
 		event.registerBlockEntityRenderer(MachineInit.FERMANTATION_JAR_TILE.get(), TileRendererFermentationJar::new);
+		event.registerBlockEntityRenderer(MachineInit.MILL_TILE.get(), TileRendererStoneMill::new);
 
 		// Entity
 		event.registerEntityRenderer(CoreInit.HARPOON.get(), RenderHarpoon::new);

@@ -83,7 +83,7 @@ public class CookingRecipes {
 
 		DeviceRecipeList.addCookingRecipe(3, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_SYRUP.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 			ImmutableList.of(FluidTags.WATER.location().toString()),
-			ImmutableList.of(Ingredient.of(TagDC.ItemTag.DUST_RICES)));
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.DUST_RICES), Ingredient.of(FoodInit.FOOD_MALT.get())));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_JAM.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags,
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_FRUITS), Ingredient.of(TagDC.ItemTag.SUGARS)));
@@ -228,6 +228,10 @@ public class CookingRecipes {
 			tags,
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_NAPA), Ingredient.of(TagDC.ItemTag.DUST_SALT)));
 
+		DeviceRecipeList.addFermentationRecipe(3, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FOOD_TSUKEMONO.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+			tags,
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_TSUKEMONO), Ingredient.of(TagDC.ItemTag.BRAN), Ingredient.of(TagDC.ItemTag.DUST_SALT)));
+
 		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FOOD_KIMCHI.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
 			tags,
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_TSUKEMONO), Ingredient.of(TagDC.ItemTag.CROP_CHILI), Ingredient.of(FoodInit.FOOD_SHRIMP_PASTE.get())));
@@ -247,6 +251,10 @@ public class CookingRecipes {
 		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FOOD_MISO.get(), 1), new ItemStack(FoodInit.FOOD_SOYSAUCE.get(), 1), 100, FluidStack.EMPTY,
 			tags,
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_SOY), Ingredient.of(TagDC.ItemTag.DUST_SALT), Ingredient.of(FoodInit.FOOD_KOJI.get())));
+
+		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FOOD_SOYSAUCE.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+			tags,
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.DEFATTED_SOY), Ingredient.of(TagDC.ItemTag.DUST_SALT), Ingredient.of(FoodInit.FOOD_KOJI.get())));
 
 		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FOOD_VINEGER.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
 			tags,

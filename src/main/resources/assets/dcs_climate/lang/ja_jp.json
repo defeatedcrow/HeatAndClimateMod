@@ -105,6 +105,14 @@
   "item.dcs_climate.main.sieve":"宝石ふるい",
   "item.dcs_climate.main.bellow":"ふいご",
 
+  "item.dcs_climate.main.axe_brass":"真鍮の斧",
+  "item.dcs_climate.main.pickaxe_brass":"真鍮のツルハシ",
+  "item.dcs_climate.main.shovel_brass":"真鍮のシャベル",
+  "item.dcs_climate.main.hoe_brass":"真鍮の鍬",
+  "item.dcs_climate.main.axe_steel":"鋼の斧",
+  "item.dcs_climate.main.pickaxe_steel":"鋼のツルハシ",
+  "item.dcs_climate.main.shovel_steel":"鋼のシャベル",
+  "item.dcs_climate.main.hoe_steel":"鋼の鍬",
   "item.dcs_climate.main.scythe_brass":"真鍮の大鎌",
   "item.dcs_climate.main.scythe_steel":"鋼の大鎌",
   "item.dcs_climate.main.harpoon_flint":"火打ち石の銛",
@@ -121,6 +129,10 @@
   "item.dcs_climate.fluid.bucket_fuel_oil":"燃料油のバケツ",
   "item.dcs_climate.fluid.bucket_plant_oil":"植物油のバケツ",
   "item.dcs_climate.fluid.bucket_sparkling":"炭酸水のバケツ",
+
+    "## items_machine":"machine",
+
+  "item.dcs_climate.machine.motor_small":"小さなモーター",
 
     "## items_magic":"magic",
 
@@ -431,12 +443,17 @@
 
   "item.dcs_climate.food.dust_defatted_soy":"脱脂大豆",
   "item.dcs_climate.food.dust_press_cake":"油粕",
+  "item.dcs_climate.food.dust_bran":"ぬか",
+  "item.dcs_climate.food.dust_bagasse":"バガス",
   "item.dcs_climate.food.dust_leaf_mold":"腐葉土",
   "item.dcs_climate.food.animalfeed_hay":"干し草",
   "item.dcs_climate.food.animalfeed_straw":"ワラ",
   "item.dcs_climate.food.animalfeed_compound":"配合飼料",
 
   "item.dcs_climate.food.fertilizer_mixed":"肥料",
+
+  "item.dcs_climate.food.bio_briquet_raw":"バイオマスペレット",
+  "item.dcs_climate.food.bio_briquet":"バイオマス豆炭",
 
   "item.dcs_climate.food.bread_round_raw":"パン生地",
   "item.dcs_climate.food.bread_round_baked":"丸パン",
@@ -864,7 +881,7 @@
   "block.dcs_climate.container.logcont_sumac_lacquer":"ウルシの原木の束",
   "block.dcs_climate.container.logcont_sumac_mango":"マンゴーの原木の束",
   "block.dcs_climate.container.logcont_charcoal":"木炭の束",
-  
+
   "block.dcs_climate.container.woodbox_apple":"リンゴの箱",
   "block.dcs_climate.container.woodbox_carrot":"ニンジンの箱",
   "block.dcs_climate.container.woodbox_potato":"ジャガイモの箱",
@@ -983,6 +1000,12 @@
   "block.dcs_climate.build.fence_sumac_lacquer":"ウルシのフェンス",
   "block.dcs_climate.build.fence_lacquerware":"漆塗りのフェンス",
 
+  "block.dcs_climate.build.fence_metal":"アルミのフェンス",
+  "block.dcs_climate.build.metal_ladder":"アルミのはしご",
+  "block.dcs_climate.build.metal_slab":"アルミの半ブロック",
+  "block.dcs_climate.build.metal_stairs":"アルミの階段",
+  "block.dcs_climate.build.stairs_roof_gray":"アルミの屋根",
+
   "block.dcs_climate.build.flintbricks":"火打ち石レンガ",
   "block.dcs_climate.build.flintbricks_black":"火打ち石レンガ(黒)",
   "block.dcs_climate.build.flintbricks_white":"火打ち石レンガ(白)",
@@ -1061,6 +1084,7 @@
   "block.dcs_climate.machine.fermentation_jar_black":"壺(黒)",
   "block.dcs_climate.machine.fermentation_jar_red":"壺(赤)",
   "block.dcs_climate.machine.fermentation_jar_green":"壺(緑)",
+  "block.dcs_climate.machine.stone_mill":"アルファ型全自動石臼",
 
     "## magic":"",
 
@@ -1117,6 +1141,8 @@
   "dcs.tip.cooking_pot":"周囲の温度や気候を利用して料理レシピを進行します。",
   "dcs.tip.crop_on_jar":"中に水を入れると、上に花や作物を設置して飾れるようになります。",
   "dcs.tip.spile":"以下のTagを持つ樹液の出る幹に設置すると、樹液を集めることが出来ます。: %1$s",
+  "dcs.tip.alpha_mill":"アルファ版なのでエネルギー無しで動作します。",
+  "dcs.tip.metal_building_blocks":"同じブロックを手に持って右クリックすると、ブロックの設置を補助します。",
 
   "dcs.tip.foodtaste.1":"風味: ★",
   "dcs.tip.foodtaste.2":"風味: ★★",
@@ -1250,7 +1276,6 @@
   "dcs.effective":"気候に影響するブロック",
   "dcs.spinning":"紡績機",
   "dcs.biome":"バイオーム気候情報",
-  "dcs.crusher":"破砕機レシピ",
 
   "death.attack.dcs_heat":"%1$sはこんがり焼き上がった。",
   "death.attack.dcs_cold":"%1$sはシャーベットになった。",
@@ -1285,6 +1310,7 @@
   "dcs.gui.jei.smelting_data":"気候精錬",
   "dcs.gui.jei.cooking_data":"料理",
   "dcs.gui.jei.fermentation_data":"発酵",
+  "dcs.gui.jei.mill_data":"石臼粉砕",
   "dcs.gui.jei.crop_data":"HaC作物図鑑",
   "dcs.gui.jei.tree_data":"HaC樹木図鑑",
   "dcs.gui.jei.smelting_tip1":"ブロックとして設置されている時に進行します。",

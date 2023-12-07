@@ -171,7 +171,7 @@ public class CookingPotBlock extends ProcessTileBlock {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
-		MutableComponent tex1 = Component.translatable("dcs.tip.cooking.tip");
+		MutableComponent tex1 = Component.translatable("dcs.tip.cooking_pot");
 		list.add(tex1);
 	}
 

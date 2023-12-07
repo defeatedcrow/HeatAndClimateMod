@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:mud"
+    },
+    {
+      "tag": "forge:animal_feeds/straw"
+    }
+  ],
+  "result": {
+    "item": "minecraft:packed_mud"
+  }
+}

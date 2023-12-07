@@ -17,6 +17,8 @@ import defeatedcrow.hac.core.material.block.InventoryDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -120,10 +122,12 @@ public class ToolHookBlock extends EntityBlockDC {
 					level.addFreshEntity(drop);
 					hook.inventory.clearContent();
 					hook.setChanged();
+					level.playSound(player, pos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 0.8F, 1.5F);
 				} else if (!DCUtil.isEmpty(itemstack)) {
 					ItemStack item = itemstack.split(1);
 					hook.inventory.setItem(0, item);
 					hook.setChanged();
+					level.playSound(player, pos, SoundEvents.ITEM_FRAME_PLACE, SoundSource.BLOCKS, 0.8F, 1.5F);
 				}
 			}
 			return InteractionResult.sidedSuccess(level.isClientSide);

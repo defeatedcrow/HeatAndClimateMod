@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredient": {
+    "tag": "forge:storage_blocks/logs"
+  },
+  "result": "dcs_climate:container/logcont_charcoal"
+}

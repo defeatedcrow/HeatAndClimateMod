@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
@@ -52,6 +53,15 @@ public enum DCHumidity {
 	@Override
 	public String toString() {
 		return name().toLowerCase();
+	}
+
+	public ChatFormatting getChatColor() {
+		if (id == 0)
+			return ChatFormatting.RED;
+		else if (id == 1)
+			return ChatFormatting.GREEN;
+		else
+			return ChatFormatting.AQUA;
 	}
 
 	public DCHumidity addTier(int i) {

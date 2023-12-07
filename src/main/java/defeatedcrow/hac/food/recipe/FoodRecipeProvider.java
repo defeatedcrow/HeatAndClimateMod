@@ -23,6 +23,7 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -308,6 +309,37 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_green_leaves", has(TagDC.ItemTag.CROP_GREEN_LEAFS))
 			.save(cons, "dcs_climate:food/salad_melon1");
 
+		// vanilla
+
+		ShapelessRecipeBuilder.shapeless(Items.PACKED_MUD, 1)
+			.requires(Ingredient.of(Items.MUD))
+			.requires(Ingredient.of(TagDC.ItemTag.FEED_STRAW))
+			.unlockedBy("has_straw", has(TagDC.ItemTag.FEED_STRAW))
+			.save(cons, "dcs_climate:food/packed_mud_from_straw");
+
+		ShapedRecipeBuilder.shaped(Items.CAKE, 1)
+			.pattern("XXX")
+			.pattern("ZYZ")
+			.pattern("WWW")
+			.define('X', TagDC.ItemTag.MILKS)
+			.define('Y', Tags.Items.EGGS)
+			.define('Z', TagDC.ItemTag.SUGARS)
+			.define('W', TagDC.ItemTag.DUST_WHEAT)
+			.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
+			.save(cons, "dcs_climate:core/cake_hac_recipe");
+
+		ShapedRecipeBuilder.shaped(Items.COOKIE, 4)
+			.pattern("XYX")
+			.define('X', TagDC.ItemTag.DUST_WHEAT)
+			.define('Y', TagDC.ItemTag.CROP_COCOA)
+			.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
+			.save(cons, "dcs_climate:core/cookie_hac_recipe");
+
+		ShapedRecipeBuilder.shaped(Items.PAPER, 4)
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.BAGASSE)
+			.unlockedBy("has_bagasse", has(TagDC.ItemTag.BAGASSE))
+			.save(cons, "dcs_climate:core/paper_hac_recipe");
 	}
 
 	static void mortarRecipes(Consumer<FinishedRecipe> cons) {
@@ -527,7 +559,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		// agri
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 1)
+		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 2)
 			.requires(Ingredient.of(TagDC.ItemTag.FISH_POWDER))
 			.requires(Ingredient.of(TagDC.ItemTag.DUST_ASH))
 			.unlockedBy("has_fish_powder", has(TagDC.ItemTag.FISH_POWDER))
@@ -544,6 +576,26 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.requires(Ingredient.of(TagDC.ItemTag.DUST_ASH))
 			.unlockedBy("has_leaf_mold", has(TagDC.ItemTag.LEAF_MOLD))
 			.save(cons, "dcs_climate:food/craft_fertilizer_mixed3");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 4)
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_NITER))
+			.requires(Ingredient.of(TagDC.ItemTag.FISH_POWDER))
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_ASH))
+			.unlockedBy("has_dust_niter", has(TagDC.ItemTag.DUST_NITER))
+			.save(cons, "dcs_climate:food/craft_fertilizer_mixed4");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.BIOMASS_PELLET.get(), 2)
+			.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
+			.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
+			.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
+			.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
+			.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
+			.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
+			.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
+			.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_ALKALI))
+			.unlockedBy("has_residues", has(TagDC.ItemTag.RESIDUES))
+			.save(cons, "dcs_climate:food/craft_bio_briquet_raw");
 
 		// food materials
 
@@ -627,6 +679,11 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.requires(Ingredient.of(TagDC.ItemTag.OFFAL))
 			.unlockedBy("has_offal", has(TagDC.ItemTag.OFFAL))
 			.save(cons, "dcs_climate:food/foodmaterial_rennet");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_ROE.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.FISH_WITH_ROE))
+			.unlockedBy("has_fish_with_roe", has(TagDC.ItemTag.FISH_WITH_ROE))
+			.save(cons, "dcs_climate:food/foodmaterial_fish_roe");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MAYONNAISE.get(), 1)
 			.requires(Ingredient.of(TagDC.ItemTag.VINEGAR))
@@ -791,9 +848,11 @@ public class FoodRecipeProvider extends RecipeProvider {
 		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.CROP_CASHEW), FoodInit.CASHEW_NUTS.get(), 200, "cashew_nuts", FoodInit.CROP_SU_CASHEW.get(), "has_cashew");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LEAVES), CoreInit.DUST_ASH.get(), 200, "dust_ash1", FoodInit.CONT_LEAVES.get(), "has_cont_leaves");
 		smokingRecipe(cons, Ingredient.of(TagDC.ItemTag.RAW_SAUSAGE), FoodInit.SMOKED_SAUSAGE.get(), 200, "smoked_sausage", FoodInit.RAW_SAUSAGE.get(), "has_raw_sausage");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LOGS), FoodInit.CONT_LOG_CHARCOAL.get(), 200, "charcoal_container", TagDC.ItemTag.CONT_LOGS, "has_log_cont");
+		smeltingRecipe(cons, Ingredient.of(FoodInit.BIOMASS_PELLET.get()), FoodInit.BIOMASS_BRIQUET.get(), 200, "biomass_briquet", FoodInit.BIOMASS_PELLET.get(), "has_biomass_pellet");
 	}
 
-	private static void cookingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, Item output, int time, String name, ItemLike unlockTarget, String unlockName) {
+	private static void cookingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, ItemLike output, int time, String name, ItemLike unlockTarget, String unlockName) {
 		SimpleCookingRecipeBuilder.campfireCooking(input, output, 0F, time * 3)
 			.unlockedBy(unlockName, has(unlockTarget))
 			.save(cons, "dcs_climate:smelting/campfire_" + name);
@@ -803,7 +862,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.save(cons, "dcs_climate:smelting/smelting_" + name);
 	}
 
-	private static void smeltingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, Item output, int time, String name, ItemLike unlockTarget, String unlockName) {
+	private static void smeltingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, ItemLike output, int time, String name, ItemLike unlockTarget, String unlockName) {
 		SimpleCookingRecipeBuilder.smelting(input, output, 0F, time)
 			.unlockedBy(unlockName, has(unlockTarget))
 			.save(cons, "dcs_climate:smelting/smelting_" + name);
@@ -813,7 +872,17 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.save(cons, "dcs_climate:smelting/blasting_" + name);
 	}
 
-	private static void smokingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, Item output, int time, String name, ItemLike unlockTarget, String unlockName) {
+	private static void smeltingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, ItemLike output, int time, String name, TagKey<Item> unlockTarget, String unlockName) {
+		SimpleCookingRecipeBuilder.smelting(input, output, 0F, time)
+			.unlockedBy(unlockName, has(unlockTarget))
+			.save(cons, "dcs_climate:smelting/smelting_" + name);
+
+		SimpleCookingRecipeBuilder.blasting(input, output, 0F, time / 2)
+			.unlockedBy(unlockName, has(unlockTarget))
+			.save(cons, "dcs_climate:smelting/blasting_" + name);
+	}
+
+	private static void smokingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, ItemLike output, int time, String name, ItemLike unlockTarget, String unlockName) {
 		SimpleCookingRecipeBuilder.smoking(input, output, 0F, time)
 			.unlockedBy(unlockName, has(unlockTarget))
 			.save(cons, "dcs_climate:smelting/smoking_" + name);

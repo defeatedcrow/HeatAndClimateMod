@@ -1,0 +1,51 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "pulverise",
+  "result": {
+    "item": "minecraft:sugar",
+    "count": 5
+  },
+  "secondary": {
+    "item": "dcs_climate:food/dust_bagasse",
+    "count": 1
+  },
+  "secondary_rate": 100,
+  "tertiary": {
+    "item": "dcs_climate:food/pack_syrup",
+    "count": 1
+  },
+  "tertiary_rate": 50,
+  "ingredients": [
+    {
+      "tag": "forge:crops/sugarcane"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

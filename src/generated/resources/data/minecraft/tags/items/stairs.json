@@ -1,0 +1,15 @@
+{
+  "values": [
+    "dcs_climate:build/stairs_mud",
+    "dcs_climate:build/stairs_gypsum",
+    "dcs_climate:build/stairs_serpentine",
+    "dcs_climate:build/stairs_greisen",
+    "dcs_climate:build/stairs_skarn",
+    "dcs_climate:build/stairs_hornfels",
+    "dcs_climate:build/stairs_marble",
+    "dcs_climate:build/stairs_schist_blue",
+    "dcs_climate:build/stairs_schist_nether",
+    "dcs_climate:build/stairs_granite",
+    "dcs_climate:build/stairs_roof_gray"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/fishes_with_roe"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/food_raw_roe"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "tag": "forge:ingredients/wheat"
+    },
+    "X": {
+      "tag": "forge:ingredients/milks"
+    },
+    "Y": {
+      "tag": "forge:eggs"
+    },
+    "Z": {
+      "tag": "forge:ingredients/sugars"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "ZYZ",
+    "WWW"
+  ],
+  "result": {
+    "item": "minecraft:cake"
+  }
+}

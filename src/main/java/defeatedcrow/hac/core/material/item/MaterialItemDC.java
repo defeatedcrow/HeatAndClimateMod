@@ -41,7 +41,7 @@ public class MaterialItemDC extends ItemDC {
 
 	@Override
 	public JsonModelSimpleDC getItemModel() {
-		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/material/" + name));
+		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/" + domain + "/" + name));
 	}
 
 }

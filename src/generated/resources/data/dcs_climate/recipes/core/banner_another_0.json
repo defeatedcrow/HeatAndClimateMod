@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:clothes"
+    },
+    "Y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XXX",
+    " Y "
+  ],
+  "result": {
+    "item": "minecraft:white_banner"
+  }
+}

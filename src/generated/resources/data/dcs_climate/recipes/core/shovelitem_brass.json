@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": [
+      {
+        "tag": "forge:ingots/brass"
+      },
+      {
+        "tag": "forge:ingots/bronze"
+      }
+    ],
+    "Y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "YYX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/shovel_brass"
+  }
+}

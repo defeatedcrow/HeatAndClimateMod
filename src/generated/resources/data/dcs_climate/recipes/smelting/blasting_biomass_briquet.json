@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "dcs_climate:food/bio_briquet_raw"
+  },
+  "result": "dcs_climate:food/bio_briquet"
+}

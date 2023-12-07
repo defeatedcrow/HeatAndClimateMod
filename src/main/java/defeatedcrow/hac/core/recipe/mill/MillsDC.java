@@ -45,7 +45,7 @@ public class MillsDC {
 		list1.add(new Crops("spiranthes", FoodInit.CROP_OR_SPIRANTHES, () -> Items.PINK_DYE, CoreInit.DUST_PLANT));
 		list1.add(new Crops("cymbidium", FoodInit.CROP_OR_CYMBIDIUM, () -> Items.LIME_DYE, CoreInit.DUST_PLANT));
 		list1.add(new Crops("rogeria", FoodInit.CROP_PD_ROGERIA, FoodInit.FOOD_PLANT_OIL, CoreInit.DUST_PLANT));
-		list1.add(new Crops("sesami", FoodInit.CROP_PD_SESAMI, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_DEFATTED_SOY));
+		list1.add(new Crops("sesami", FoodInit.CROP_PD_SESAMI, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
 		list1.add(new Crops("soy", FoodInit.CROP_PE_SOY, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_DEFATTED_SOY));
 		list1.add(new Crops("anemone", FoodInit.CROP_RA_ANEMONE, () -> Items.WHITE_DYE, CoreInit.DUST_PLANT));
 		list1.add(new Crops("delphinium", FoodInit.CROP_RA_DELPHINIUM, () -> Items.LIGHT_BLUE_DYE, CoreInit.DUST_PLANT));
@@ -81,6 +81,7 @@ public class MillsDC {
 		list2.add(new Miscs("gem_sulfur", 2, () -> TagDC.ItemTag.GEM_SULFUR, CoreInit.DUST_SULFUR, CoreInit.DUST_SULFUR));
 		list2.add(new Miscs("ore_trona", 3, () -> TagDC.ItemTag.ORES_NATRON, CoreInit.DUST_TRONA, CoreInit.DUST_SALT));
 		list2.add(new Miscs("ore_lime", 3, () -> TagDC.ItemTag.ORES_LIME, CoreInit.DUST_LIME, CoreInit.DUST_LIME));
+		list2.add(new Miscs("ore_travertine", 1, () -> TagDC.ItemTag.ORES_TRAVERTINE, CoreInit.DUST_LIME, CoreInit.DUST_SULFUR));
 		list2.add(new Miscs("gem_agates", 1, () -> TagDC.ItemTag.GEM_AGATES, CoreInit.DUST_CRYSTAL, CoreInit.DUST_CRYSTAL));
 		list2.add(new Miscs("gem_coal", 1, () -> TagDC.ItemTag.GEM_COAL, CoreInit.DUST_COAL, CoreInit.DUST_COAL));
 		list2.add(new Miscs("dripstones", 1, () -> TagDC.ItemTag.DRIPSTONES, CoreInit.DUST_LIME, CoreInit.DUST_LIME));

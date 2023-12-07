@@ -1,0 +1,30 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "fermentation",
+  "result": {
+    "item": "dcs_climate:food/food_tsukemono",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/tsukemono_vegi"
+    },
+    {
+      "tag": "forge:ingredients/bran"
+    },
+    {
+      "tag": "forge:dusts/salt"
+    }
+  ],
+  "heat": [
+    "WARM",
+    "HOT"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "NORMAL"
+  ]
+}

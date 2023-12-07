@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": [
+      {
+        "tag": "forge:ingots/brass"
+      },
+      {
+        "tag": "forge:ingots/bronze"
+      }
+    ],
+    "Y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "YYX",
+    "  X"
+  ],
+  "result": {
+    "item": "dcs_climate:main/hoe_brass"
+  }
+}

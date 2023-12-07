@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:clothes"
+    },
+    "Y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "YYY",
+    "YXY",
+    "YYY"
+  ],
+  "result": {
+    "item": "minecraft:painting"
+  }
+}

@@ -7,6 +7,9 @@ import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.climate.IAirflowTile;
+import defeatedcrow.hac.api.climate.IHeatTile;
+import defeatedcrow.hac.api.climate.IHumidityTile;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import mcp.mobius.waila.api.IBlockAccessor;
 import mcp.mobius.waila.api.IBlockComponentProvider;
@@ -48,16 +51,37 @@ public class HUDHandlerClimateData implements IBlockComponentProvider {
 
 			ClimateAPI.registerBlock.getHeatTier(level.getBlockState()).ifPresent(heat -> {
 				if (heat != DCHeatTier.NORMAL)
-					tooltip.addLine(new PairComponent(DCHeatTier.basename2().withStyle(ChatFormatting.GOLD), heat.localize()));
+					tooltip.addLine(new PairComponent(DCHeatTier.basename2().withStyle(heat.getChatColor()), heat.localize()));
 			});
 			ClimateAPI.registerBlock.getHumidity(level.getBlockState()).ifPresent(hum -> {
 				if (hum != DCHumidity.NORMAL)
-					tooltip.addLine(new PairComponent(DCHumidity.basename2().withStyle(ChatFormatting.BLUE), hum.localize()));
+					tooltip.addLine(new PairComponent(DCHumidity.basename2().withStyle(hum.getChatColor()), hum.localize()));
 			});
 			ClimateAPI.registerBlock.getAirflow(level.getBlockState()).ifPresent(air -> {
 				if (air != DCAirflow.TIGHT)
-					tooltip.addLine(new PairComponent(DCAirflow.basename2().withStyle(ChatFormatting.GREEN), air.localize()));
+					tooltip.addLine(new PairComponent(DCAirflow.basename2().withStyle(air.getChatColor()), air.localize()));
 			});
+			return;
+		}
+
+		if (config.getBoolean(CLIMATE) && level.getBlock() instanceof IHeatTile tile) {
+			DCHeatTier heat = tile.getHeatTier(level.getWorld(), level.getPosition(), level.getPosition());
+			if (heat != DCHeatTier.NORMAL)
+				tooltip.addLine(new PairComponent(DCHeatTier.basename2().withStyle(heat.getChatColor()), heat.localize()));
+			return;
+		}
+
+		if (config.getBoolean(CLIMATE) && level.getBlock() instanceof IHumidityTile tile) {
+			DCHumidity hum = tile.getHumidity(level.getWorld(), level.getPosition(), level.getPosition());
+			if (hum != DCHumidity.NORMAL)
+				tooltip.addLine(new PairComponent(DCHumidity.basename2().withStyle(hum.getChatColor()), hum.localize()));
+			return;
+		}
+
+		if (config.getBoolean(CLIMATE) && level.getBlock() instanceof IAirflowTile tile) {
+			DCAirflow air = tile.getAirflow(level.getWorld(), level.getPosition(), level.getPosition());
+			if (air != DCAirflow.TIGHT)
+				tooltip.addLine(new PairComponent(DCAirflow.basename2().withStyle(air.getChatColor()), air.localize()));
 			return;
 		}
 

@@ -93,7 +93,7 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 		}
 
 		// 中心点
-		p = new BlockPos(chunk.getMiddleBlockX(), height - 2, chunk.getMiddleBlockZ());
+		p = new BlockPos(chunk.getMiddleBlockX(), height - 1, chunk.getMiddleBlockZ());
 		int r = 5 + random.nextInt(4);
 		double r1 = r - 1D;
 		double r2 = r - 3D;
@@ -228,7 +228,7 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 	private static final SpringTable BLUE = new SpringTable(MagicColor.BLUE, 60, CoreInit.STONE_GYPSUM, CoreInit.STONE_TRAVERTINE, () -> CoreInit.HOTSPRING.getStillBlock().get());
 	private static final SpringTable BLACK = new SpringTable(MagicColor.BLACK, 40, CoreInit.STONE_GUANO, CoreInit.STONE_GUANO, () -> (LiquidBlock) Blocks.WATER);
 	private static final SpringTable RED = new SpringTable(MagicColor.RED, 60, CoreInit.STONE_NATRON, CoreInit.STONE_SALT, () -> CoreInit.BRINE.getStillBlock().get());
-	private static final SpringTable GREEN = new SpringTable(MagicColor.GREEN, 60, () -> Blocks.COBBLESTONE, () -> Blocks.GRAVEL, () -> CoreInit.SPARKLING.getStillBlock().get());
+	private static final SpringTable GREEN = new SpringTable(MagicColor.GREEN, 60, () -> Blocks.COBBLESTONE, () -> Blocks.MOSSY_COBBLESTONE, () -> CoreInit.SPARKLING.getStillBlock().get());
 
 	private record SpringTable(
 			MagicColor color,

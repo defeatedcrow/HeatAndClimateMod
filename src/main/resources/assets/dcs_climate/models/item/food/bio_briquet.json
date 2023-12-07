@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/material/bio_briquet"
+  },
+  "parent": "minecraft:item/generated"
+}

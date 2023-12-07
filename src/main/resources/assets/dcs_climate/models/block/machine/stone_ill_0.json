@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/machine/stone_ill_item"
+  },
+  "parent": "dcs_climate:block/dcs_dummy"
+}

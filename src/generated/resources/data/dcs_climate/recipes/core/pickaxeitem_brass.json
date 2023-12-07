@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": [
+      {
+        "tag": "forge:ingots/brass"
+      },
+      {
+        "tag": "forge:ingots/bronze"
+      }
+    ],
+    "Y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "  X",
+    "YYX",
+    "  X"
+  ],
+  "result": {
+    "item": "dcs_climate:main/pickaxe_brass"
+  }
+}

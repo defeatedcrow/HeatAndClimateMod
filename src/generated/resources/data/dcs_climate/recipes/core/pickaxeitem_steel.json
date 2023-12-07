@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "  X",
+    "YYX",
+    "  X"
+  ],
+  "result": {
+    "item": "dcs_climate:main/pickaxe_steel"
+  }
+}

@@ -10,10 +10,13 @@ import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 public abstract class ItemDC extends Item implements IJsonDataDC, IItemDC {
@@ -57,5 +60,18 @@ public abstract class ItemDC extends Item implements IJsonDataDC, IItemDC {
 	}
 
 	public void advTooltipText(ItemStack item, @Nullable Level level, List<Component> list) {}
+
+	@Override
+	public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {
+		if (!DCUtil.isEmpty(stack)) {
+			if (stack.is(TagDC.ItemTag.PLANT_OIL)) {
+				return 800;
+			}
+			if (stack.is(FoodInit.BIOMASS_BRIQUET.get())) {
+				return 1600;
+			}
+		}
+		return -1;
+	}
 
 }

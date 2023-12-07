@@ -19,7 +19,7 @@ public class DCTimeHelper {
 	private DCTimeHelper() {}
 
 	public static long time(Level world) {
-		return 7000 + world.getDayTime() % 24000L;
+		return 6980 + world.getDayTime() % 24000L;
 	}
 
 	public static long totalTime(Level world) {

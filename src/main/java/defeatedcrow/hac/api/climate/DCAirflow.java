@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
@@ -41,6 +42,17 @@ public enum DCAirflow {
 	@Override
 	public String toString() {
 		return name().toLowerCase();
+	}
+
+	public ChatFormatting getChatColor() {
+		if (id == 0)
+			return ChatFormatting.GRAY;
+		else if (id == 1)
+			return ChatFormatting.WHITE;
+		else if (id == 2)
+			return ChatFormatting.GREEN;
+		else
+			return ChatFormatting.AQUA;
 	}
 
 	public int[] getColor() {

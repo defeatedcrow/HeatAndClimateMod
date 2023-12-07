@@ -124,7 +124,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.save(cons, "dcs_climate:magic/craft_seedbag_green");
 
 		// card
-		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_WHITE_1.get(), 1)
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_WHITE_1.get(), 3)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
@@ -132,7 +132,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_extract_white", has(TagDC.ItemTag.EXTRACT_WHITE))
 			.save(cons, "dcs_climate:magic/craft_card_white_common");
 
-		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BLUE_1.get(), 1)
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BLUE_1.get(), 3)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
@@ -140,7 +140,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_extract_blue", has(TagDC.ItemTag.EXTRACT_BLUE))
 			.save(cons, "dcs_climate:magic/craft_card_blue_common");
 
-		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BLACK_1.get(), 1)
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BLACK_1.get(), 3)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
@@ -148,7 +148,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_extract_black", has(TagDC.ItemTag.EXTRACT_BLACK))
 			.save(cons, "dcs_climate:magic/craft_card_black_common");
 
-		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_RED_1.get(), 1)
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_RED_1.get(), 3)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
@@ -156,7 +156,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_extract_red", has(TagDC.ItemTag.EXTRACT_RED))
 			.save(cons, "dcs_climate:magic/craft_card_red_common");
 
-		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_GREEN_1.get(), 1)
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_GREEN_1.get(), 3)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
@@ -164,7 +164,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_extract_green", has(TagDC.ItemTag.EXTRACT_GREEN))
 			.save(cons, "dcs_climate:magic/craft_card_green_common");
 
-		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_WHITE_2.get(), 1)
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_WHITE_2.get(), 3)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
@@ -172,7 +172,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_pigment_white", has(TagDC.ItemTag.PIGMENT_WHITE))
 			.save(cons, "dcs_climate:magic/craft_card_white_uncommon");
 
-		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BLUE_2.get(), 1)
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BLUE_2.get(), 3)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
@@ -180,7 +180,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_pigment_blue", has(TagDC.ItemTag.PIGMENT_BLUE))
 			.save(cons, "dcs_climate:magic/craft_card_blue_uncommon");
 
-		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BLACK_2.get(), 1)
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BLACK_2.get(), 3)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
@@ -188,7 +188,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_pigment_black", has(TagDC.ItemTag.PIGMENT_BLACK))
 			.save(cons, "dcs_climate:magic/craft_card_black_uncommon");
 
-		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_RED_2.get(), 1)
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_RED_2.get(), 3)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
@@ -196,7 +196,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_pigment_red", has(TagDC.ItemTag.PIGMENT_RED))
 			.save(cons, "dcs_climate:magic/craft_card_red_uncommon");
 
-		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_GREEN_2.get(), 1)
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_GREEN_2.get(), 3)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)
 			.requires(Items.PAPER)

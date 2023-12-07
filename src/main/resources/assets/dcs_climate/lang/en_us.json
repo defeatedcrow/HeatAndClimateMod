@@ -105,6 +105,14 @@
   "item.dcs_climate.main.sieve":"Gem Sieve",
   "item.dcs_climate.main.bellow":"Bellow",
 
+"item.dcs_climate.main.axe_brass":"Brass Axe",
+  "item.dcs_climate.main.pickaxe_brass":"Brass Pickaxe",
+  "item.dcs_climate.main.shovel_brass":"Brass Shovel",
+  "item.dcs_climate.main.hoe_brass":"Brass Hoe",
+  "item.dcs_climate.main.axe_steel":"Steel Axe",
+  "item.dcs_climate.main.pickaxe_steel":"Steel Pickaxe",
+  "item.dcs_climate.main.shovel_steel":"Steel Shovel",
+  "item.dcs_climate.main.hoe_steel":"Steel Hoe",
   "item.dcs_climate.main.scythe_brass":"Brass Scythe",
   "item.dcs_climate.main.scythe_steel":"Steel Scythe",
   "item.dcs_climate.main.harpoon_flint":"Fishing Harpoon",
@@ -121,6 +129,10 @@
   "item.dcs_climate.fluid.bucket_fuel_oil":"Fuel OilBucket",
   "item.dcs_climate.fluid.bucket_plant_oil":"Plant Oil Bucket",
   "item.dcs_climate.fluid.bucket_sparkling":"Sparkling Water Bucket",
+
+    "## items_machine":"machine",
+
+  "item.dcs_climate.machine.motor_small":"Small Motor",
 
     "## items_magic":"magic",
 
@@ -431,6 +443,8 @@
 
   "item.dcs_climate.food.dust_defatted_soy":"Defatted Soy",
   "item.dcs_climate.food.dust_press_cake":"Press Cake",
+  "item.dcs_climate.food.dust_bran":"Bran",
+  "item.dcs_climate.food.dust_bagasse":"Bagasse",
   "item.dcs_climate.food.dust_leaf_mold":"Leaf Mold",
 
   "item.dcs_climate.food.animalfeed_hay":"Hay",
@@ -438,6 +452,9 @@
   "item.dcs_climate.food.animalfeed_compound":"Compound Feed",
 
   "item.dcs_climate.food.fertilizer_mixed":"Mixed Fertilizer",
+
+  "item.dcs_climate.food.bio_briquet_raw":"Biomass Pellet",
+  "item.dcs_climate.food.bio_briquet":"Biomass Briquet",
 
   "item.dcs_climate.food.bread_round_raw":"Dough",
   "item.dcs_climate.food.bread_round_baked":"Round Bread",
@@ -985,6 +1002,12 @@
   "block.dcs_climate.build.fence_sumac_lacquer":"Sumac Fence",
   "block.dcs_climate.build.fence_lacquerware":"Lacquered Fence",
 
+  "block.dcs_climate.build.fence_metal":"Metal Fence",
+  "block.dcs_climate.build.metal_ladder":"Metal Ladder",
+  "block.dcs_climate.build.metal_slab":"Metal Slab",
+  "block.dcs_climate.build.metal_stairs":"Metal Stairs",
+  "block.dcs_climate.build.stairs_roof_gray":"Metal Roof Block",
+
   "block.dcs_climate.build.flintbricks":"Flint Bricks",
   "block.dcs_climate.build.flintbricks_black":"Black Flint Bricks",
   "block.dcs_climate.build.flintbricks_white":"White Flint Bricks",
@@ -1063,6 +1086,7 @@
   "block.dcs_climate.machine.fermentation_jar_black":"Black Jar",
   "block.dcs_climate.machine.fermentation_jar_red":"Red Jar",
   "block.dcs_climate.machine.fermentation_jar_green":"Green Jar",
+  "block.dcs_climate.machine.stone_mill":"Alpha Stone Mill",
 
     "## magic":"",
 
@@ -1122,6 +1146,8 @@
   "dcs.tip.cooking_pot":"This device uses the surrounding heat and climate to cook food.",
   "dcs.tip.crop_on_jar":"When there is water in the input tank, flowers or crops can place on top.",
   "dcs.tip.spile":"When attached to the log has %1$s tag, it collects the sap in a cup.",
+  "dcs.tip.alpha_mill":"In alpha version, it works without energy.",
+  "dcs.tip.metal_building_blocks":"Hold the same block and right-click: Assists in placing the block.",
 
   "dcs.tip.foodtaste.1":"Taste: ★",
   "dcs.tip.foodtaste.2":"Taste: ★★",
@@ -1291,6 +1317,7 @@
   "dcs.gui.jei.smelting_data":"Climate Smelting Data",
   "dcs.gui.jei.cooking_data":"Cooking Data",
   "dcs.gui.jei.fermentation_data":"Fermentation Data",
+  "dcs.gui.jei.mill_data":"Mill Grind Data",
   "dcs.gui.jei.crop_data":"HaC Crop Data",
   "dcs.gui.jei.tree_data":"HaC Tree Data",
   "dcs.gui.jei.smelting_tip1":"Proceed as a placed block.",

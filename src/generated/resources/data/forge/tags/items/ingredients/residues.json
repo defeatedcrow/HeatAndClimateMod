@@ -1,0 +1,13 @@
+{
+  "values": [
+    "#forge:dusts/plant",
+    "#forge:ingredients/press_cake",
+    "#forge:ingredients/defatted_soy",
+    "#forge:dusts/wood",
+    "#forge:ingredients/bran",
+    "#forge:ingredients/bagasse",
+    "#forge:animal_feeds/hay",
+    "#forge:animal_feeds/straw",
+    "#minecraft:leaves"
+  ]
+}

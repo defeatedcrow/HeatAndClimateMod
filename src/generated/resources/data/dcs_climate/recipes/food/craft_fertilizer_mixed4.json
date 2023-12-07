@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dusts/niter"
+    },
+    {
+      "tag": "forge:ingredients/fish_powder"
+    },
+    {
+      "tag": "forge:dusts/ash"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "dcs_climate:food/fertilizer_mixed"
+  }
+}

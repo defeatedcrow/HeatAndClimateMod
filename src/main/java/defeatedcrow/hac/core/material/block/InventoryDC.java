@@ -103,7 +103,7 @@ public class InventoryDC implements Container {
 			if (DCUtil.isEmpty(getItem(i))) {
 				ret.set(i, ItemStack.EMPTY);
 			} else {
-				ret.set(i, getItem(i));
+				ret.set(i, getItem(i).copy());
 			}
 		}
 		return ret;

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/copper"
+    },
+    "Y": {
+      "tag": "forge:gems/fluorite"
+    }
+  },
+  "pattern": [
+    "Y",
+    "X",
+    "X"
+  ],
+  "result": {
+    "item": "minecraft:spyglass"
+  }
+}

@@ -18,6 +18,7 @@ public class PluginRecipeListDC {
 	public static final List<IClimateSmelting> SMELTING_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> COOKING_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> FERMENTATION_LIST = Lists.newArrayList();
+	public static final List<IDeviceRecipe> PULVERISER_LIST = Lists.newArrayList();
 	public static final List<ClimateCropBaseBlock> CROP_LIST = Lists.newArrayList();
 	public static final List<LeavesCropBlockDC> TREE_LIST = Lists.newArrayList();
 
@@ -174,6 +175,8 @@ public class PluginRecipeListDC {
 		COOKING_LIST.addAll(DCRecipes.INSTANCE.COOKING.values());
 
 		FERMENTATION_LIST.addAll(DCRecipes.INSTANCE.FERMENTATION.values());
+
+		PULVERISER_LIST.addAll(DCRecipes.INSTANCE.PULVERISE.values());
 	}
 
 }

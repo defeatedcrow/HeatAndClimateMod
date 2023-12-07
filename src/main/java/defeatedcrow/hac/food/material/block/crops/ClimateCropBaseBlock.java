@@ -364,11 +364,17 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		CropStage stage = this.getCurrentStage(thisState);
 		if (stage != CropStage.GROWN && stage != CropStage.DEAD) {
 			boolean clm = isSuitableForGrowing(world, pos, thisState);
-			int ret = clm ? 8 : 80;
+			int ret = clm ? 12 : 80;
 			BlockState under = world.getBlockState(pos.below());
 			if (isFarmland(under)) {
 				ret /= 2;
 			}
+			int f = getFertile(world, pos.below(), under);
+			if (f > 0) {
+				ret /= f;
+			}
+			if (ret <= 0)
+				ret = 1;
 			return ret;
 		}
 		return 0;

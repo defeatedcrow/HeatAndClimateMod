@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/machine/stone_ill_item"
+  },
+  "parent": "minecraft:item/generated"
+}

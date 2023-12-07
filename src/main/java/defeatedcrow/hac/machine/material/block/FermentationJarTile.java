@@ -33,6 +33,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.capabilities.Capability;
@@ -46,8 +47,12 @@ import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTankTileDC, IRenderBlockData {
 
 	public FermentationJarTile(BlockPos pos, BlockState state) {
-		super(MachineInit.FERMANTATION_JAR_TILE.get(), pos, state);
-		totalProgress = 200;
+		this(MachineInit.FERMANTATION_JAR_TILE.get(), pos, state);
+	}
+
+	public FermentationJarTile(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+		super(type, pos, state);
+		totalProgress = maxProgressTime();
 	}
 
 	/* inventory */
@@ -99,10 +104,18 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 	}
 
-	private int intankS1 = 5;
-	private int intankS2 = 6;
-	private int outtankS1 = 7;
-	private int outtankS2 = 8;
+	protected int intankS1 = maxInSlot() + 3;
+	protected int intankS2 = maxInSlot() + 4;
+	protected int outtankS1 = maxInSlot() + 5;
+	protected int outtankS2 = maxInSlot() + 6;
+
+	protected int maxInSlot() {
+		return 2;
+	}
+
+	protected int maxProgressTime() {
+		return 300;
+	}
 
 	/* DeviceRecipe */
 
@@ -115,18 +128,54 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 		return recipe != null;
 	}
 
-	private int[] consume = new int[0];
+	protected int[] consume = new int[0];
+
+	private ItemStack getSecondaryOrContainer() {
+		if (recipe != null && consume != null) {
+			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
+			// container優先
+			if (consume.length > 0) {
+				for (int i = 0; i < consume.length && i < inputs.size(); i++) {
+					if (!inputs.get(i).isEmpty()) {
+						ItemStack check = inputs.get(i).copy();
+						check.setCount(1);
+						if (!check.getCraftingRemainingItem().isEmpty()) {
+							return check.getCraftingRemainingItem().copy();
+						} else if (FluidUtil.getFluidContained(check).isPresent()) {
+							ItemStack ret = FluidUtil.getFluidHandler(check)
+								.map(handler -> {
+									FluidStack fluid = handler.getFluidInTank(0);
+									if (!fluid.isEmpty()) {
+										handler.drain(fluid, FluidAction.EXECUTE);
+										return handler.getContainer().copy();
+									}
+									return ItemStack.EMPTY;
+								}).orElse(ItemStack.EMPTY);
+							if (!DCUtil.isEmpty(ret)) {
+								return ret;
+							}
+						}
+					}
+				}
+			}
+			if (recipe.getSecondaryRate() > 0 && level.random.nextInt(100) < recipe.getSecondaryRate()) {
+				return recipe.getSecondaryOutput().copy();
+			}
+		}
+		return ItemStack.EMPTY;
+	}
 
 	@Override
 	public boolean continueProcess(Level level, BlockPos pos, BlockState state) {
 		// priority check
 		if (recipe != null) {
-			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, 2);
+			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
 			Optional<IDeviceRecipe> check = DCRecipes.getFermentationRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
 
-			if (check.isPresent() && check.get() == recipe) {
-				boolean result = inventory.canInsertResult(recipe.getOutput(), 3, 4) > 0 && outputTank.fill(recipe.getOutputFluid(), FluidAction.SIMULATE) >= recipe.getOutputFluid().getAmount();
-				if (recipe.getSecondaryRate() > 0 && inventory.canInsertResult(recipe.getSecondaryOutput(), 3, 4) == 0) {
+			if (check.isPresent() && check.get().getPriority() == recipe.getPriority()) {
+				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxInSlot() + 2) > 0 && outputTank.fill(recipe.getOutputFluid(), FluidAction.SIMULATE) >= recipe.getOutputFluid()
+					.getAmount();
+				if (recipe.getSecondaryRate() > 0 && inventory.canInsertResult(recipe.getSecondaryOutput(), maxInSlot() + 1, maxInSlot() + 2) == 0) {
 					result = false;
 				}
 				return result;
@@ -137,7 +186,7 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 
 	@Override
 	public boolean finishProcess(Level level, BlockPos pos, BlockState state) {
-		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, 2);
+		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
 		consume = recipe.matcheInput(inputs);
 		if (recipe != null) {
 			boolean flag = false;
@@ -146,11 +195,11 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 				int taste = CraftingFoodEvent.getResultTaste(inputs, consume);
 				food.setTaste(res, taste);
 			}
-			if (!DCUtil.isEmpty(res) && inventory.insertResult(res, 3, 4) > 0) {
+			if (!DCUtil.isEmpty(res) && inventory.insertResult(res, maxInSlot() + 1, maxInSlot() + 2) > 0) {
 				flag = true;
 			}
-			ItemStack sec = recipe.getSecondaryOutput();
-			if (!DCUtil.isEmpty(sec) && level.random.nextInt(100) < recipe.getSecondaryRate() && inventory.insertResult(sec, 3, 4) > 0) {
+			ItemStack sec = getSecondaryOrContainer();
+			if (!DCUtil.isEmpty(sec) && inventory.insertResult(sec, maxInSlot() + 1, maxInSlot() + 2) > 0) {
 				flag = true;
 			}
 			FluidStack outF = recipe.getOutputFluid();
@@ -193,11 +242,11 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 
 	@Override
 	public boolean startProcess(Level level, BlockPos pos, BlockState state) {
-		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, 2);
+		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
 		Optional<IDeviceRecipe> check = DCRecipes.getFermentationRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
 		if (check.isPresent()) {
 			recipe = check.get();
-			this.totalProgress = 200;
+			this.totalProgress = maxProgressTime();
 			return true;
 		}
 		return false;
