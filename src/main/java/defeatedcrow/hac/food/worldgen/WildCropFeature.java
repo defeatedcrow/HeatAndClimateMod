@@ -159,7 +159,8 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 	}
 
 	private boolean isSurface(BlockState state) {
-		return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && !state.getMaterial().isLiquid() && (state.getMaterial().isReplaceable() || state.getMaterial() == Material.LEAVES || state.getMaterial() == Material.WOOD);
+		return !state.getFluidState().isSource() && !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && !state.getMaterial().isLiquid() && (state.getMaterial().isReplaceable() || state
+			.getMaterial() == Material.LEAVES || state.getMaterial() == Material.WOOD);
 	}
 
 	private boolean isSoil(BlockState soil) {

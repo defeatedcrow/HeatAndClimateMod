@@ -46,10 +46,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 
-	protected static final VoxelShape N_AABB = Block.box(0.0D, 0.0D, 1.0D, 16.0D, 16.0D, 2.0D);
-	protected static final VoxelShape S_AABB = Block.box(0.0D, 0.0D, 14.0D, 16.0D, 16.0D, 15.0D);
-	protected static final VoxelShape E_AABB = Block.box(14.0D, 0.0D, 0.0D, 15.0D, 16.0D, 16.0D);
-	protected static final VoxelShape W_AABB = Block.box(1.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D);
+	protected static final VoxelShape N_AABB = Block.box(0.0D, 0.0D, 2.0D, 16.0D, 16.0D, 4.0D);
+	protected static final VoxelShape S_AABB = Block.box(0.0D, 0.0D, 12.0D, 16.0D, 16.0D, 14.0D);
+	protected static final VoxelShape E_AABB = Block.box(12.0D, 0.0D, 0.0D, 14.0D, 16.0D, 16.0D);
+	protected static final VoxelShape W_AABB = Block.box(2.0D, 0.0D, 0.0D, 4.0D, 16.0D, 16.0D);
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	final String name;
