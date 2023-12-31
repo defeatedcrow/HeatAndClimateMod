@@ -1,0 +1,9 @@
+{
+  "values": [
+    "dcs_climate:magic/element_w_inert",
+    "dcs_climate:magic/element_u_inert",
+    "dcs_climate:magic/element_b_inert",
+    "dcs_climate:magic/element_r_inert",
+    "dcs_climate:magic/element_g_inert"
+  ]
+}

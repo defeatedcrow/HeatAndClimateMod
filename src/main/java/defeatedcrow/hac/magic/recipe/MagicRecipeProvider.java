@@ -583,6 +583,86 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_extrast_mana", has(MagicInit.EXTRACT_MANA.get()))
 			.save(cons, "dcs_climate:magic/craft_pigment_green");
 
+		ShapedRecipeBuilder.shaped(MagicInit.ELEMENT_MANA.get(), 1)
+			.pattern("ZXZ")
+			.pattern("XYX")
+			.pattern("ZXZ")
+			.define('X', MagicInit.EXTRACT_MANA.get())
+			.define('Y', Tags.Items.GEMS_DIAMOND)
+			.define('Z', TagDC.ItemTag.GEM_AGATES)
+			.unlockedBy("has_extract_mana", has(MagicInit.EXTRACT_MANA.get()))
+			.save(cons, "dcs_climate:magic/craft_element_mana");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_WHITE_INERT.get(), 1)
+			.requires(MagicInit.ELEMENT_MANA.get())
+			.requires(MagicInit.PIGMENT_WHITE.get())
+			.requires(TagDC.ItemTag.GEM_TOPAZ)
+			.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
+			.save(cons, "dcs_climate:magic/craft_element_white_inart");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_WHITE_INERT.get(), 1)
+			.requires(MagicInit.ELEMENT_MANA.get())
+			.requires(MagicInit.PIGMENT_WHITE.get())
+			.requires(Tags.Items.GEMS_DIAMOND)
+			.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
+			.save(cons, "dcs_climate:magic/craft_element_white_inart_2");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_BLUE_INERT.get(), 1)
+			.requires(MagicInit.ELEMENT_MANA.get())
+			.requires(MagicInit.PIGMENT_BLUE.get())
+			.requires(TagDC.ItemTag.GEM_SAPPHIRE)
+			.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
+			.save(cons, "dcs_climate:magic/craft_element_blue_inart");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_BLUE_INERT.get(), 1)
+			.requires(MagicInit.ELEMENT_MANA.get())
+			.requires(MagicInit.PIGMENT_BLUE.get())
+			.requires(TagDC.ItemTag.GEM_AQUAMARINE)
+			.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
+			.save(cons, "dcs_climate:magic/craft_element_blue_inart_2");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_BLACK_INERT.get(), 1)
+			.requires(MagicInit.ELEMENT_MANA.get())
+			.requires(MagicInit.PIGMENT_BLACK.get())
+			.requires(TagDC.ItemTag.GEM_OPAL)
+			.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
+			.save(cons, "dcs_climate:magic/craft_element_black_inart");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_BLACK_INERT.get(), 1)
+			.requires(MagicInit.ELEMENT_MANA.get())
+			.requires(MagicInit.PIGMENT_BLACK.get())
+			.requires(TagDC.ItemTag.GEM_DRAGONSEYE)
+			.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
+			.save(cons, "dcs_climate:magic/craft_element_black_inart_2");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_RED_INERT.get(), 1)
+			.requires(MagicInit.ELEMENT_MANA.get())
+			.requires(MagicInit.PIGMENT_RED.get())
+			.requires(TagDC.ItemTag.GEM_SPINEL)
+			.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
+			.save(cons, "dcs_climate:magic/craft_element_red_inart");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_RED_INERT.get(), 1)
+			.requires(MagicInit.ELEMENT_MANA.get())
+			.requires(MagicInit.PIGMENT_RED.get())
+			.requires(TagDC.ItemTag.GEM_RUBY)
+			.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
+			.save(cons, "dcs_climate:magic/craft_element_red_inart_2");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_GREEN_INERT.get(), 1)
+			.requires(MagicInit.ELEMENT_MANA.get())
+			.requires(MagicInit.PIGMENT_GREEN.get())
+			.requires(TagDC.ItemTag.GEM_JADEITE)
+			.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
+			.save(cons, "dcs_climate:magic/craft_element_green_inart");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_GREEN_INERT.get(), 1)
+			.requires(MagicInit.ELEMENT_MANA.get())
+			.requires(MagicInit.PIGMENT_GREEN.get())
+			.requires(Tags.Items.GEMS_EMERALD)
+			.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
+			.save(cons, "dcs_climate:magic/craft_element_green_inart_2");
+
 		// gems
 
 		ShapelessRecipeBuilder.shapeless(MagicInit.EXTRACT_WHITE.get(), 1)

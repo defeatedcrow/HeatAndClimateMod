@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#dcs_climate:color_elements/white",
+    "#dcs_climate:color_elements/blue",
+    "#dcs_climate:color_elements/black",
+    "#dcs_climate:color_elements/red",
+    "#dcs_climate:color_elements/green"
+  ]
+}

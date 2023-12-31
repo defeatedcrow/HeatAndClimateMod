@@ -840,6 +840,28 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_leather", has(Tags.Items.LEATHER))
 			.save(cons, "dcs_climate:core/bellow_1");
 
+		ShapedRecipeBuilder.shaped(CoreInit.EMPTY_COIL_CASE.get(), 1)
+			.pattern("XXY")
+			.pattern("XX ")
+			.define('X', Tags.Items.INGOTS_IRON)
+			.define('Y', Items.CHAIN)
+			.unlockedBy("has_ingot_iron", has(Tags.Items.INGOTS_IRON))
+			.save(cons, "dcs_climate:core/insence_case_1");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.COIL_CASE.get(), 1)
+			.requires(CoreInit.EMPTY_COIL_CASE.get())
+			.requires(CoreInit.MOSQUITO_COIL.get())
+			.unlockedBy("has_mosquito_coil", has(CoreInit.MOSQUITO_COIL.get()))
+			.save(cons, "dcs_climate:core/mosquito_coil_case_1");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.MOSQUITO_COIL.get(), 1)
+			.requires(TagDC.ItemTag.WATER)
+			.requires(TagDC.ItemTag.DUST_WOOD)
+			.requires(TagDC.ItemTag.CAMPHOR)
+			.requires(TagDC.ItemTag.CROP_PYRETHRUM)
+			.unlockedBy("has_crop_pyrethrum", has(TagDC.ItemTag.CROP_PYRETHRUM))
+			.save(cons, "dcs_climate:core/mosquito_coil_1");
+
 		ShapedRecipeBuilder.shaped(CoreInit.AXE_BRASS.get(), 1)
 			.pattern("YYX")
 			.pattern(" XX")

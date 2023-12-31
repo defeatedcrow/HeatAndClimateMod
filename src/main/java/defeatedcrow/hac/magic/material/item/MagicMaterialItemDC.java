@@ -10,13 +10,19 @@ import defeatedcrow.hac.core.material.item.MaterialItemDC;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 
 public class MagicMaterialItemDC extends MaterialItemDC implements IColorDC {
 
 	private final MagicColor color;
 
-	public MagicMaterialItemDC(MagicColor c, String s, TagKey<Item> pair) {
-		super(MagicInit.MAGIC, s, pair);
+	public MagicMaterialItemDC(MagicColor c, String s, Rarity rare, TagKey<Item> pair) {
+		super(new Item.Properties().tab(MagicInit.MAGIC).rarity(rare), s, pair);
+		color = c;
+	}
+
+	public MagicMaterialItemDC(Properties prop, MagicColor c, String s, TagKey<Item> pair) {
+		super(prop, s, pair);
 		color = c;
 	}
 

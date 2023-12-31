@@ -15,9 +15,11 @@ import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
+import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
@@ -40,13 +42,13 @@ import net.minecraft.world.phys.HitResult;
 
 public class MagicCardBase extends ItemDC implements ICardMagic {
 
-	protected final String name;
+	protected String name;
 	private final MagicColor color;
 	private final Rarity rarity;
 
 	public MagicCardBase(MagicColor c, Rarity rare, TagKey<Item> pair) {
 		super(new Item.Properties().tab(MagicInit.MAGIC).stacksTo(16).rarity(rare), pair);
-		name = c.toString() + "_" + rare.toString().toLowerCase();
+		name = c.isBasic ? c.toString() + "_" + rare.toString().toLowerCase() : c.toString();
 		color = c;
 		rarity = rare;
 	}
@@ -143,8 +145,9 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 
 	public InteractionResultHolder<ItemStack> onBlockHit(Level level, Player player, InteractionHand hand, ItemStack card, BlockHitResult res) {
 		player.startUsingItem(hand);
-		if (level instanceof ServerLevel && isActive(player, card)) {
-			if (onUsing(level, player, res.getBlockPos(), card)) {
+		if (!level.isClientSide && level instanceof ServerLevel && isActive(player, card)) {
+			float boost = MagicUtil.getMagicBooster(player);
+			if (onUsing(level, player, res.getBlockPos(), res.getDirection(), card, boost)) {
 				level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 				if (!player.getAbilities().instabuild) {
 					card.shrink(1);
@@ -160,8 +163,9 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 
 	public InteractionResultHolder<ItemStack> onEmptyHit(Level level, Player player, InteractionHand hand, ItemStack card) {
 		player.startUsingItem(hand);
-		if (level instanceof ServerLevel && isActive(player, card)) {
-			if (onUsing(level, player, player.blockPosition(), card)) {
+		if (!level.isClientSide && level instanceof ServerLevel && isActive(player, card)) {
+			float boost = MagicUtil.getMagicBooster(player);
+			if (onUsing(level, player, player.blockPosition(), player.getDirection(), card, boost)) {
 				level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 0.6F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 				if (!player.getAbilities().instabuild) {
 					card.shrink(1);
@@ -175,28 +179,31 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 		return InteractionResultHolder.success(card);
 	}
 
-	public boolean onUsing(Level level, Player player, BlockPos pos, ItemStack card) {
+	public boolean onUsing(Level level, Player player, BlockPos pos, Direction dir, ItemStack card, float boost) {
 		return true;
 	}
 
 	@Override
 	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		MutableComponent tier = Component.translatable(color.name() + " " + item.getRarity());
+		MutableComponent tier = Component.literal(color.isBasic ? color.name() + " " + item.getRarity() : color.name());
 		tier.withStyle(color.chatColor);
 		list.add(tier);
-		MutableComponent itemName = Component.translatable("dcs.tip.magic_card.name." + color.toString() + "_" + item.getRarity().toString().toLowerCase());
+		MutableComponent itemName = Component.translatable("dcs.tip.magic_card.name." + name);
 		itemName.withStyle(color.chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
-
+		if (ClimateCore.proxy.keyShiftPushed()) {
+			MutableComponent itemTip = Component.translatable("dcs.tip.magic_card.desc." + name);
+			list.add(itemTip);
+		}
 		super.appendHoverText(item, level, list, flag);
 	}
 
 	@Override
 	public void advTooltipText(ItemStack item, @Nullable Level level, List<Component> list) {
-		if (ClimateCore.proxy.keyShiftPushed()) {
-			MutableComponent itemTip = Component.translatable("dcs.tip.magic_card.desc." + color.toString() + "_" + item.getRarity().toString().toLowerCase());
-			list.add(itemTip);
-		}
+		// if (ClimateCore.proxy.keyShiftPushed() && !getColor().isBasic) {
+		// MutableComponent itemTip = Component.translatable("dcs.tip.magic_card.flavor." + name);
+		// list.add(itemTip);
+		// }
 	}
 
 }

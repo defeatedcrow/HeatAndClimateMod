@@ -212,7 +212,7 @@ public class CropBlockPalm extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public boolean onMutation(Level level, BlockPos pos, BlockState state, RandomSource random) {
+	public boolean onMutation(Level level, BlockPos pos, BlockState state, RandomSource random, int fertile) {
 		return false;
 	}
 

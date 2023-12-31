@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:magic/element_mana"
+    },
+    {
+      "item": "dcs_climate:magic/pigment_r"
+    },
+    {
+      "tag": "forge:gems/ruby"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:magic/element_r_inert"
+  }
+}

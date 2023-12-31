@@ -7,8 +7,8 @@ import com.mojang.blaze3d.platform.InputConstants;
 import defeatedcrow.hac.core.client.AdvTooltipEvent;
 import defeatedcrow.hac.core.client.ClimateHUDEvent;
 import defeatedcrow.hac.core.client.DCTextureStitch;
+import defeatedcrow.hac.core.client.EntityClientRegister;
 import defeatedcrow.hac.core.client.RenderPlayerEventDC;
-import defeatedcrow.hac.core.client.entity.EntityClientRegister;
 import defeatedcrow.hac.core.client.gui.DoubleInventoryScreen;
 import defeatedcrow.hac.core.client.gui.SimpleInventoryScreen;
 import defeatedcrow.hac.core.client.gui.UnlockedInventoryScreen;
@@ -22,6 +22,8 @@ import defeatedcrow.hac.machine.client.gui.HeatingChamberScreen;
 import defeatedcrow.hac.machine.client.gui.MillScreen;
 import defeatedcrow.hac.machine.client.gui.PortableTankScreen;
 import defeatedcrow.hac.machine.material.MachineInit;
+import defeatedcrow.hac.magic.client.gui.BoringScreen;
+import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -70,6 +72,7 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(MachineInit.POT_MENU.get(), CookingPotScreen::new);
 		MenuScreens.register(MachineInit.JAR_MENU.get(), FermentationJarScreen::new);
 		MenuScreens.register(MachineInit.MILL_MENU.get(), MillScreen::new);
+		MenuScreens.register(MagicInit.BORING_SURVEY_MENU.get(), BoringScreen::new);
 
 		EntityClientRegister.registerRenderTypes();
 	}

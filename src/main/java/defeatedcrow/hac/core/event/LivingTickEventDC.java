@@ -20,8 +20,8 @@ import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.MagicUtil;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
@@ -35,10 +35,8 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.items.IItemHandler;
 
 public class LivingTickEventDC {
 
@@ -96,7 +94,7 @@ public class LivingTickEventDC {
 	}
 
 	public static void onLivingCharmUpdate(LivingEntity living) {
-		List<ItemStack> charms = DCItemUtil.getCharms(living, CharmType.CONSTANT);
+		List<ItemStack> charms = MagicUtil.getCharms(living, CharmType.CONSTANT);
 		for (ItemStack item2 : charms) {
 			IJewelCharm charm = (IJewelCharm) item2.getItem();
 			charm.constantEffect(living, item2);
@@ -162,20 +160,10 @@ public class LivingTickEventDC {
 				prevTemp += DCUtil.getPotionResistantData(living, isCold);
 
 				// 防具の計算
-				IItemHandler handler = living.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH).orElse(null);
-				if (handler != null) {
-					for (int s = 0; s < handler.getSlots(); s++) {
-						ItemStack item = handler.getStackInSlot(s);
-						if (item.isEmpty())
-							continue;
-
-						float p = DCItemUtil.getItemResistantData(item, isCold);
-						prevTemp += p;
-					}
-				}
+				prevTemp += DCItemUtil.getArmorResistant(living, isCold);
 
 				// charm
-				List<ItemStack> charms = DCItemUtil.getCharms(living, CharmType.ALL);
+				List<ItemStack> charms = MagicUtil.getCharms(living, CharmType.ALL);
 				for (ItemStack check : charms) {
 					IJewelCharm charm = (IJewelCharm) check.getItem();
 					prevTemp += charm.reduceDamage(living, source, damTemp, check);

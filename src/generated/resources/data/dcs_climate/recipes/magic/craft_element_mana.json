@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:magic/extract_mana"
+    },
+    "Y": {
+      "tag": "forge:gems/diamond"
+    },
+    "Z": {
+      "tag": "forge:gems/agates"
+    }
+  },
+  "pattern": [
+    "ZXZ",
+    "XYX",
+    "ZXZ"
+  ],
+  "result": {
+    "item": "dcs_climate:magic/element_mana"
+  }
+}

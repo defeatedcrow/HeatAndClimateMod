@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/tool/mosquito_coil_case"
+  },
+  "parent": "minecraft:item/generated"
+}

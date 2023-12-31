@@ -29,11 +29,14 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.worldgen.FeatureInit;
 import defeatedcrow.hac.food.recipe.FoodRecipeProvider;
 import defeatedcrow.hac.machine.recipe.MachineRecipeProvider;
+import defeatedcrow.hac.magic.material.MagicInit;
+import defeatedcrow.hac.magic.material.entity.CrowTurretEntity;
 import defeatedcrow.hac.magic.recipe.MagicRecipeProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -102,6 +105,7 @@ public class ClimateCore {
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
+		bus.addListener(this::attributeRegister);
 
 		proxy.addListener(bus);
 
@@ -128,6 +132,11 @@ public class ClimateCore {
 
 		DCPacket.INSTANCE.init();
 		event.enqueueWork(TileNBTFunction::init);
+	}
+
+	public void attributeRegister(EntityAttributeCreationEvent event) {
+
+		event.put(MagicInit.CROW_TURRET.get(), CrowTurretEntity.createAttributes().build());
 	}
 
 	public void gatherData(GatherDataEvent event) {

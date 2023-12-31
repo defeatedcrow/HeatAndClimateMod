@@ -4,6 +4,7 @@ import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.magic.material.entity.ArrowRobber;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
@@ -17,14 +18,12 @@ public class CardBlackT2 extends MagicCardBase {
 	}
 
 	@Override
-	public boolean onUsing(Level level, Player player, BlockPos pos, ItemStack card) {
-		if (!level.isClientSide()) {
-			ArrowRobber arrow = new ArrowRobber(level, player);
-			arrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 3.0F, 1.0F);
-			arrow.setCritArrow(true);
-			arrow.pickup = AbstractArrow.Pickup.DISALLOWED;
-			level.addFreshEntity(arrow);
-		}
+	public boolean onUsing(Level level, Player player, BlockPos pos, Direction dir, ItemStack card, float f) {
+		ArrowRobber arrow = new ArrowRobber(level, player);
+		arrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 3.0F, 1.0F);
+		arrow.setCritArrow(true);
+		arrow.pickup = AbstractArrow.Pickup.DISALLOWED;
+		level.addFreshEntity(arrow);
 		return true;
 	}
 

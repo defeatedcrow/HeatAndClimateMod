@@ -1,5 +1,6 @@
 package defeatedcrow.hac.core.util;
 
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -7,9 +8,6 @@ import java.util.Optional;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.ClimateAPI;
-import defeatedcrow.hac.api.magic.CharmType;
-import defeatedcrow.hac.api.magic.IJewel;
-import defeatedcrow.hac.api.magic.MagicType;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.core.NonNullList;
@@ -117,49 +115,22 @@ public class DCItemUtil {
 		return false;
 	}
 
-	public static ArrayList<ItemStack> getCharms(LivingEntity living, CharmType type) {
-		ArrayList<ItemStack> ret = Lists.newArrayList();
-		if (living != null) {
+	public static SimpleEntry<Integer, ItemStack> getItem(LivingEntity living, Ingredient target) {
+		if (living != null && target != null && !target.isEmpty()) {
 			if (living instanceof Player) {
 				Player player = (Player) living;
-				for (int i = 9; i < 18; i++) {
+				for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
 					ItemStack check = player.getInventory().getItem(i);
-					if (!check.isEmpty() && check.getItem() instanceof IJewel) {
-						IJewel charm = (IJewel) check.getItem();
-						if (charm.getType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
-							boolean b = false;
-							for (ItemStack c2 : ret) {
-								if (isSameItem(check, c2, false)) {
-									c2.grow(1);
-									b = true;
-									break;
-								}
-							}
-							if (!b) {
-								ret.add(check.copy());
-							}
-						}
+					if (target.test(check)) {
+						return new SimpleEntry(i, check);
 					}
 				}
 			} else if (living instanceof AbstractVillager) {
 				SimpleContainer inv = ((AbstractVillager) living).getInventory();
 				for (int i = 0; i < inv.getContainerSize(); i++) {
 					ItemStack check = inv.getItem(i);
-					if (!check.isEmpty() && check.getItem() instanceof IJewel) {
-						IJewel charm = (IJewel) check.getItem();
-						if (charm.getType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
-							boolean b = false;
-							for (ItemStack c2 : ret) {
-								if (isSameItem(check, c2, false)) {
-									c2.grow(1);
-									b = true;
-									break;
-								}
-							}
-							if (!b) {
-								ret.add(check.copy());
-							}
-						}
+					if (target.test(check)) {
+						return new SimpleEntry(i, check);
 					}
 				}
 			} else {
@@ -167,39 +138,23 @@ public class DCItemUtil {
 				if (handler != null) {
 					for (int i = 0; i < handler.getSlots(); i++) {
 						ItemStack check = handler.getStackInSlot(i);
-						if (!check.isEmpty() && check.getItem() instanceof IJewel) {
-							IJewel charm = (IJewel) check.getItem();
-							if (charm.getType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
-								boolean b = false;
-								for (ItemStack c2 : ret) {
-									if (isSameItem(check, c2, false)) {
-										c2.grow(1);
-										b = true;
-										break;
-									}
-								}
-								if (!b) {
-									ret.add(check.copy());
-								}
-							}
+						if (target.test(check)) {
+							return new SimpleEntry(i, check);
 						}
 					}
 				}
 			}
 		}
-		return ret;
+		return new SimpleEntry(-1, ItemStack.EMPTY);
 	}
 
-	public static int hasCharmItem(LivingEntity living, ItemStack item) {
-		if (living == null || item.isEmpty())
-			return 0;
-		List<ItemStack> charms = getCharms(living, CharmType.ALL);
-		for (ItemStack check : charms) {
-			if (!check.isEmpty() && isSameItem(check, item, false)) {
-				return check.getCount();
-			}
+	public static float getArmorResistant(LivingEntity living, boolean isCold) {
+		float ret = 0F;
+		while (living.getArmorSlots().iterator().hasNext()) {
+			ItemStack item = living.getArmorSlots().iterator().next();
+			ret += getItemResistantData(item, isCold);
 		}
-		return 0;
+		return ret;
 	}
 
 	public static float getItemResistantData(ItemStack item, boolean isCold) {

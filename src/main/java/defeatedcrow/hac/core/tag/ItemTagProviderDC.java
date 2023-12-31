@@ -145,6 +145,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.COLOR_DROPS).addTags(TagDC.ItemTag.DROP_WHITE, TagDC.ItemTag.DROP_BLUE, TagDC.ItemTag.DROP_BLACK, TagDC.ItemTag.DROP_RED, TagDC.ItemTag.DROP_GREEN);
 		tag(TagDC.ItemTag.COLOR_EXTRACTS).addTags(TagDC.ItemTag.EXTRACT_WHITE, TagDC.ItemTag.EXTRACT_BLUE, TagDC.ItemTag.EXTRACT_BLACK, TagDC.ItemTag.EXTRACT_RED, TagDC.ItemTag.EXTRACT_GREEN);
 		tag(TagDC.ItemTag.COLOR_PIGMENTS).addTags(TagDC.ItemTag.PIGMENT_WHITE, TagDC.ItemTag.PIGMENT_BLUE, TagDC.ItemTag.PIGMENT_BLACK, TagDC.ItemTag.PIGMENT_RED, TagDC.ItemTag.PIGMENT_GREEN);
+		tag(TagDC.ItemTag.COLOR_ELEMENTS).addTags(TagDC.ItemTag.ELEMENT_WHITE, TagDC.ItemTag.ELEMENT_BLUE, TagDC.ItemTag.ELEMENT_BLACK, TagDC.ItemTag.ELEMENT_RED, TagDC.ItemTag.ELEMENT_GREEN);
 
 		// crops
 		tag(TagDC.ItemTag.CROP_WILD).add(FoodInit.CROP_AL_WILD.get(), FoodInit.CROP_AM_GOOSEFOOT.get(), FoodInit.CROP_AP_CELERY.get(), FoodInit.CROP_BR_RAPESEED.get(),
@@ -343,6 +344,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.SEED_GREEN).addTags(TagDC.ItemTag.SEED_GINGER, TagDC.ItemTag.SEED_GREEN_PEAS, TagDC.ItemTag.SEED_CALABASH, TagDC.ItemTag.SEED_SPIRANTHES)
 			.add(FoodInit.BLOCK_CT_POMELO.get().asItem(), FoodInit.BLOCK_CN_CAMPHOR.get().asItem(),
 				FoodInit.BLOCK_MR_MULBERRY.get().asItem(), FoodInit.BLOCK_PL_COCONUT.get().asItem());
+
+		tag(TagDC.ItemTag.MAGIC_BOOSTER).add(MagicInit.BADGE_SILVER_WHITE.get());
 
 		// fishing
 		tag(ItemTags.FISHES).addTags(TagDC.ItemTag.MULLET, TagDC.ItemTag.SMELT, TagDC.ItemTag.SARDINE, TagDC.ItemTag.MACKEREL, TagDC.ItemTag.CARP,

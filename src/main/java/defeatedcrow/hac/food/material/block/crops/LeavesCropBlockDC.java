@@ -483,7 +483,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	}
 
 	@Override
-	public boolean onMutation(Level level, BlockPos pos, BlockState state, RandomSource random) {
+	public boolean onMutation(Level level, BlockPos pos, BlockState state, RandomSource random, int fertile) {
 		return false;
 	}
 

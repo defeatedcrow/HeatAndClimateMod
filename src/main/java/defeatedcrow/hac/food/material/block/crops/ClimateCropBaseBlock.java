@@ -33,6 +33,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -103,7 +104,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			int c1 = getMutationChance(level, pos, state);
 			random.nextInt(100);
 			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0 && random.nextInt(100) < c1) {
-				onMutation(level, pos, state, random);
+				onMutation(level, pos, state, random, c1);
 			}
 
 			onGrow(level, pos, level.getBlockState(pos));
@@ -265,7 +266,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			int c1 = getMutationChance(level, pos, state);
 			random.nextInt(100);
 			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0 && random.nextInt(100) < c1) {
-				onMutation(level, pos, state, random);
+				onMutation(level, pos, state, random, c1);
 			}
 		}
 
@@ -426,6 +427,18 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 						world.addFreshEntity(drop);
 					ret = true;
 				}
+
+				int exp = 0;
+				if (this.getTier() == CropTier.RARE) {
+					exp = 1;
+				} else if (this.getTier() == CropTier.EPIC) {
+					exp = 2;
+				}
+				if (exp > 0 && !world.isClientSide) {
+					ExperienceOrb orb = new ExperienceOrb(world, player.getX(), player.getY() + 0.15D, player.getZ(), exp);
+					world.addFreshEntity(orb);
+				}
+
 				if (ret) {
 					afterHarvest(world, pos, thisState);
 					if (isDoubleCrop(thisState) && canHarvest(thisState)) {
@@ -483,8 +496,8 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	}
 
 	@Override
-	public boolean onMutation(Level level, BlockPos pos, BlockState state, RandomSource random) {
-		int c1 = getFertile(level, pos.below(), state) * 5;
+	public boolean onMutation(Level level, BlockPos pos, BlockState state, RandomSource random, int fertile) {
+		int c1 = fertile * 5;
 		int r = random.nextInt(100);
 		// DCLogger.debugInfoLog("mutation: " + r);
 		if (r < c1 + CropTier.EPIC.getMutationChance() && getMutationTarget(CropTier.EPIC).isPresent()) {

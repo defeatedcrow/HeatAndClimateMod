@@ -27,6 +27,7 @@ import defeatedcrow.hac.core.material.item.tool.HandyBellowItem;
 import defeatedcrow.hac.core.material.item.tool.HarpoonItem;
 import defeatedcrow.hac.core.material.item.tool.ItemAxeDC;
 import defeatedcrow.hac.core.material.item.tool.ItemHoeDC;
+import defeatedcrow.hac.core.material.item.tool.ItemMosquitoCoil;
 import defeatedcrow.hac.core.material.item.tool.ItemPickaxeDC;
 import defeatedcrow.hac.core.material.item.tool.ItemScythe;
 import defeatedcrow.hac.core.material.item.tool.ItemShovelDC;
@@ -204,6 +205,10 @@ public class CoreInit {
 	public static final RegistryObject<Item> SEEDING_POT = regItem("seeding_pot", () -> new SeedingPotItem("seeding_pot"));
 
 	public static final RegistryObject<Item> HANDY_BELLOW = regItem("bellow", () -> new HandyBellowItem("bellow"));
+
+	public static final RegistryObject<Item> EMPTY_COIL_CASE = regItem("insence_case", () -> new MaterialItemDC(MACHINE, "insence_case", null));
+	public static final RegistryObject<Item> MOSQUITO_COIL = regItem("mosquito_coil", () -> new MaterialItemDC(MACHINE, "mosquito_coil", null));
+	public static final RegistryObject<Item> COIL_CASE = regItem("mosquito_coil_case", () -> new ItemMosquitoCoil("mosquito_coil_case", null));
 
 	public static final RegistryObject<Item> AXE_BRASS = regItem("axe_brass", () -> new ItemAxeDC(TierDC.BRASS, Tags.Items.TOOLS_AXES));
 	public static final RegistryObject<Item> PICKAXE_BRASS = regItem("pickaxe_brass", () -> new ItemPickaxeDC(TierDC.BRASS, Tags.Items.TOOLS_PICKAXES));
@@ -465,6 +470,10 @@ public class CoreInit {
 
 	// particle
 	public static final RegistryObject<SimpleParticleType> SMOKE = PARTICLE_TYPE.register("smoke", () -> new SimpleParticleType(false));
+
+	public static final RegistryObject<SimpleParticleType> LIGHT_ORB_WHITE = PARTICLE_TYPE.register("light_orb", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> LIGHT_ORB_RED = PARTICLE_TYPE.register("light_orb_red", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> LIGHT_ORB_BLUE = PARTICLE_TYPE.register("light_orb_blue", () -> new SimpleParticleType(false));
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = BLOCKS.register("main/" + name, block);

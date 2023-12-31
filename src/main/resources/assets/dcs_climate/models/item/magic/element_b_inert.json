@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/magic/element_b_inert"
+  },
+  "parent": "minecraft:item/generated"
+}

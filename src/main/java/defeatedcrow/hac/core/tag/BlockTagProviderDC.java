@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.IBlockDC;
 import defeatedcrow.hac.core.material.block.IBlockDC.ToolType;
 import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
@@ -46,6 +47,10 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		TagsProvider.TagAppender<Block> toolTier3 = this.tag(BlockTags.NEEDS_DIAMOND_TOOL);
 		CoreInit.BLOCKS.getEntries().stream().filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolTier() == 3)
 			.map(RegistryObject::get).forEach(toolTier3::add);
+
+		TagsProvider.TagAppender<Block> crops = this.tag(BlockTags.CROPS);
+		CoreInit.BLOCKS.getEntries().stream().filter(block -> block.get() instanceof ClimateCropBaseBlock)
+			.map(RegistryObject::get).forEach(crops::add);
 
 		tag(TagDC.BlockTag.ORES_WHITE).add(CoreInit.ORE_WHITE.get());
 		tag(TagDC.BlockTag.ORES_BLUE).add(CoreInit.ORE_BLUE.get());

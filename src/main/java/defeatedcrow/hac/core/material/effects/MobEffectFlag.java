@@ -10,7 +10,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Enemy;
 
 public class MobEffectFlag extends MobEffectDC {
 
@@ -21,20 +21,20 @@ public class MobEffectFlag extends MobEffectDC {
 	@Override
 	public void applyEffectTick(LivingEntity liv, int amp) {
 		if (!liv.level.isClientSide) {
-			double d = (amp + 1) * 16D;
-			List<Monster> list = liv.level.getNearbyEntities(Monster.class, TargetingConditions.forCombat().range(d), liv, liv.getBoundingBox().inflate(d));
+			double d = 16D + (amp * 16D);
+			List<Mob> list = liv.level.getNearbyEntities(Mob.class, TargetingConditions.forCombat().range(d).ignoreLineOfSight().ignoreInvisibilityTesting(), liv, liv.getBoundingBox().inflate(d));
 			list.stream().filter(this::notNeutral).forEach(mob -> {
 				if (this == CoreInit.FLAG.get())
 					mob.setTarget(liv);
 				else if (this == CoreInit.CLAIR.get())
-					mob.addEffect(new MobEffectInstance(MobEffects.GLOWING, 300));
+					mob.addEffect(new MobEffectInstance(MobEffects.GLOWING, 30));
 			});
 		}
 
 	}
 
 	private boolean notNeutral(Mob mob) {
-		return !(mob instanceof NeutralMob);
+		return mob instanceof Enemy && !(mob instanceof NeutralMob);
 	}
 
 	@Override

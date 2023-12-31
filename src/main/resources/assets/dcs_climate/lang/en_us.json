@@ -104,6 +104,9 @@
   "item.dcs_climate.main.seeding_pot":"Seeding Pot",
   "item.dcs_climate.main.sieve":"Gem Sieve",
   "item.dcs_climate.main.bellow":"Bellow",
+  "item.dcs_climate.main.insence_case":"Empty Insence Case",
+  "item.dcs_climate.main.mosquito_coil_case":"Mosquito Coil Case",
+  "item.dcs_climate.main.mosquito_coil":"Mosquito Coil",
 
 "item.dcs_climate.main.axe_brass":"Brass Axe",
   "item.dcs_climate.main.pickaxe_brass":"Brass Pickaxe",
@@ -130,6 +133,7 @@
   "item.dcs_climate.fluid.bucket_plant_oil":"Plant Oil Bucket",
   "item.dcs_climate.fluid.bucket_sparkling":"Sparkling Water Bucket",
 
+
     "## items_machine":"machine",
 
   "item.dcs_climate.machine.motor_small":"Small Motor",
@@ -154,8 +158,21 @@
   "item.dcs_climate.magic.pigment_r":"Red Pigment",
   "item.dcs_climate.magic.pigment_g":"Green Pigment",
 
+  "item.dcs_climate.magic.element_w":"White Element",
+  "item.dcs_climate.magic.element_u":"Blue Element",
+  "item.dcs_climate.magic.element_b":"Black Element",
+  "item.dcs_climate.magic.element_r":"Red Element",
+  "item.dcs_climate.magic.element_g":"Green Element",
+
+  "item.dcs_climate.magic.element_w_inert":"Inert White Element",
+  "item.dcs_climate.magic.element_u_inert":"Inert Blue Element",
+  "item.dcs_climate.magic.element_b_inert":"Inert Black Element",
+  "item.dcs_climate.magic.element_r_inert":"Inert Red Element",
+  "item.dcs_climate.magic.element_g_inert":"Inert Green Element",
+
   "item.dcs_climate.magic.drop_mana":"Small Mana Drop",
   "item.dcs_climate.magic.extract_mana":"Mana Extract",
+  "item.dcs_climate.magic.element_mana":"Mana Element",
 
   "item.dcs_climate.magic.seedbag_white":"White Seed Bag",
   "item.dcs_climate.magic.seedbag_blue":"Blue Seed Bag",
@@ -181,6 +198,18 @@
   "item.dcs_climate.magic.card_red_uncommon":"Superior Red Spell",
   "item.dcs_climate.magic.card_green_uncommon":"Superior Green Spell",
 
+  "item.dcs_climate.magic.card_white_red":"White Red Spell",
+  "item.dcs_climate.magic.card_blue_green":"Blue Green Spell",
+  "item.dcs_climate.magic.card_black_white":"Black Red Spell",
+  "item.dcs_climate.magic.card_red_blue":"Red Blue Spell",
+  "item.dcs_climate.magic.card_green_black":"Green Black Spell",
+
+  "item.dcs_climate.magic.card_white_blue":"White Blue Spell",
+  "item.dcs_climate.magic.card_blue_black":"Blue Black Spell",
+  "item.dcs_climate.magic.card_black_red":"Black Red Spell",
+  "item.dcs_climate.magic.card_red_green":"Red Green Spell",
+  "item.dcs_climate.magic.card_green_white":"Green White Spell",
+
   "item.dcs_climate.magic.ring_s_white":"White Silver Ring",
   "item.dcs_climate.magic.ring_s_blue":"Blue Silver Ring",
   "item.dcs_climate.magic.ring_s_black":"Black Silver Ring",
@@ -204,6 +233,8 @@
   "item.dcs_climate.magic.pendant_g_black":"Black Gold Pendant",
   "item.dcs_climate.magic.pendant_g_red":"Red Gold Pendant",
   "item.dcs_climate.magic.pendant_g_green":"Green Gold Pendant",
+
+  "item.dcs_climate.magic.document_boring_survey":"Document of Boring Survey",
 
     "## items_food":"food",
 
@@ -426,6 +457,7 @@
   "item.dcs_climate.food.fiber_wood":"Bark Fiber",
   "item.dcs_climate.food.fiber_beeswax":"Beeswax",
   "item.dcs_climate.food.food_treewax":"Plant Wax",
+  "item.dcs_climate.food.food_camphor":"Camphor",
 
   "item.dcs_climate.food.sap_sweet":"Sweet Sap",
   "item.dcs_climate.food.sap_resin":"Resin",
@@ -1179,6 +1211,14 @@
 
   "dcs.tip.seedbag.desc":"Randomly obtain one of the following seeds:",
 
+  "dcs.tip.inert_element":"It grows when the player gains exp in the right environment.",
+  "dcs.tip.inert_element.white":"Under the sun",
+  "dcs.tip.inert_element.blue":"Underwater",
+  "dcs.tip.inert_element.black":"Deepdark underground",
+  "dcs.tip.inert_element.red":"High-temperature",
+  "dcs.tip.inert_element.green":"Surrounded by plants",
+  "dcs.tip.active_element":"It can enchant items with the anvil.",
+
   "dcs.tip.magic_arrow.name.white":"Light",
   "dcs.tip.magic_arrow.name.blue":"Freezing",
   "dcs.tip.magic_arrow.name.black":"Warp",
@@ -1211,6 +1251,28 @@
   "dcs.tip.magic_card.desc.red_uncommon":"The user becomes the target of attacks by surrounding enemies.",
   "dcs.tip.magic_card.name.green_uncommon":"Binding",
   "dcs.tip.magic_card.desc.green_uncommon":"Binds the target mob for 1 minute.",
+
+    "dcs.tip.magic_card.name.white_red":"Sealing Light",
+  "dcs.tip.magic_card.desc.white_red":"Suppresses monster spawning in a 3x3x3 chunk area.",
+  "dcs.tip.magic_card.name.blue_green":"Mutation",
+  "dcs.tip.magic_card.desc.blue_green":"Mutate the target WILD crop.",
+  "dcs.tip.magic_card.name.black_white":"Clairvoyance",
+  "dcs.tip.magic_card.desc.black_white":"Surrounding enemy mobs can be seen through walls.",
+  "dcs.tip.magic_card.name.red_blue":"Shock",
+  "dcs.tip.magic_card.desc.red_blue":"Attack and capture enemy mobs.",
+  "dcs.tip.magic_card.name.green_black":"Vertical travel",
+  "dcs.tip.magic_card.desc.green_black":"Travel between the surface and the underground.",
+
+  "dcs.tip.magic_card.name.white_blue":"Going home",
+  "dcs.tip.magic_card.desc.white_blue":"Warp to the respawn registration point.",
+  "dcs.tip.magic_card.name.blue_black":"Silence",
+  "dcs.tip.magic_card.desc.blue_black":"Despawns enemy mobs within loaded area.",
+  "dcs.tip.magic_card.name.black_red":"Turret",
+  "dcs.tip.magic_card.desc.black_red":"Summons a turret that automatically attacks enemy mobs.",
+  "dcs.tip.magic_card.name.red_green":"Silky blast",
+  "dcs.tip.magic_card.desc.red_green":"Destroy blocks within a chunk with the Silk Touch effect.",
+  "dcs.tip.magic_card.name.green_white":"Geological survey",
+  "dcs.tip.magic_card.desc.green_white":"Examine the underground block below player's feet.",
 
   "dcs.tip.ring_s.name.white":"Jump",
   "dcs.tip.ring_s.desc.white":"Gain potion effect of Jump Boost.",

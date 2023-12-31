@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/insence_case"
+    },
+    {
+      "item": "dcs_climate:main/mosquito_coil"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/mosquito_coil_case"
+  }
+}

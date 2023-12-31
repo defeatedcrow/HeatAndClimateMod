@@ -1,5 +1,7 @@
 package defeatedcrow.hac.magic.material.item.jems;
 
+import java.util.List;
+
 import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.api.magic.CharmType;
@@ -10,8 +12,11 @@ import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
+import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
@@ -149,5 +154,16 @@ public abstract class MagicJewelBase extends ItemDC implements IJewelCharm {
 			return base;
 		}
 		return 0;
+	}
+
+	public static int getMagicBoost(LivingEntity owner) {
+		int count = 0;
+		List<ItemStack> charms = MagicUtil.getCharms(owner, CharmType.ALL).stream().filter(c -> c.is(TagDC.ItemTag.MAGIC_BOOSTER)).toList();
+		count += charms.size();
+		if (owner.getLevel() instanceof ServerLevel sl) {
+			if (!MagicUtil.getMagicEntity(sl, MagicColor.BLACK_WHITE).isEmpty())
+				count++;
+		}
+		return count;
 	}
 }

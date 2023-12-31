@@ -7,7 +7,7 @@ import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.network.packet.DCPacket;
 import defeatedcrow.hac.core.network.packet.IPacketDC;
-import defeatedcrow.hac.core.util.DCItemUtil;
+import defeatedcrow.hac.magic.MagicUtil;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -40,7 +40,7 @@ public class MsgCharmKeyToS implements IPacketDC {
 	public void handle(NetworkEvent.Context ctx) {
 		if (ctx.getSender() != null && ctx.getSender().getUUID().equals(id)) {
 			ServerPlayer player = ctx.getSender();
-			ArrayList<ItemStack> charms = DCItemUtil.getCharms(player, CharmType.KEY);
+			ArrayList<ItemStack> charms = MagicUtil.getCharms(player, CharmType.KEY);
 			if (!charms.isEmpty() && charms.size() > 0) {
 				ItemStack item = charms.get(0);
 				if (item.getItem() instanceof IJewelCharm charm) {

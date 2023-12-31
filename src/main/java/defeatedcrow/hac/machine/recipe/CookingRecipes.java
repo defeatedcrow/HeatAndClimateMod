@@ -171,6 +171,10 @@ public class CookingRecipes {
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.TREEWAX.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags,
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_LACQUER)));
 
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.CAMPHOR.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+			ImmutableList.of(FluidTags.WATER.location().toString()),
+			ImmutableList.of(Ingredient.of(FoodInit.LOG_CN_CAMPHOR.get())));
+
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_SALT.get(), 2), new ItemStack(CoreInit.DUST_TRONA.get()), 100, FluidStack.EMPTY, boil,
 			ImmutableList.of(TagDC.FluidTag.BRINE.location().toString()),
 			ImmutableList.of());

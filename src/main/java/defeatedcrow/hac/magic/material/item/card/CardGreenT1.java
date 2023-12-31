@@ -3,13 +3,14 @@ package defeatedcrow.hac.magic.material.item.card;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -21,10 +22,11 @@ public class CardGreenT1 extends MagicCardBase {
 	}
 
 	@Override
-	public boolean onUsing(Level level, Player player, BlockPos pos, ItemStack card) {
+	public boolean onUsing(Level level, Player player, BlockPos pos, Direction dir, ItemStack card, float boost) {
 		BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
-		for (int x = -8; x < 8; x++) {
-			for (int z = -8; z < 8; z++) {
+		int range = 8 + Mth.floor(boost);
+		for (int x = -range; x < range; x++) {
+			for (int z = -range; z < range; z++) {
 				for (int y = -2; y < 3; y++) {
 					mpos.set(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
 					if (mpos.getY() > level.getMinBuildHeight() && mpos.getY() < level.getMaxBuildHeight()) {
@@ -34,16 +36,14 @@ public class CardGreenT1 extends MagicCardBase {
 						if (hook != 0)
 							return hook > 0;
 						if (crop.getBlock() instanceof BonemealableBlock) {
-							if (crop.getMaterial() == Material.GRASS || crop.getBlock() == Blocks.TALL_GRASS || crop.getBlock() == Blocks.GRASS_BLOCK)
+							if (crop.getMaterial() == Material.DIRT || crop.getMaterial() == Material.GRASS || crop.is(TagDC.BlockTag.WEED))
 								continue;
 							BonemealableBlock target = (BonemealableBlock) crop.getBlock();
-							if (target.isValidBonemealTarget(level, mpos, crop, level.isClientSide)) {
+							if (target.isValidBonemealTarget(level, mpos, crop, false)) {
 								if (level instanceof ServerLevel) {
 									if (target.isBonemealSuccess(level, level.random, mpos, crop)) {
 										target.performBonemeal((ServerLevel) level, level.random, mpos, crop);
-										if (!level.isClientSide) {
-											level.levelEvent(1505, mpos, 0);
-										}
+										level.levelEvent(1505, mpos, 0);
 									}
 								}
 							}

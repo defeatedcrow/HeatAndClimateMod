@@ -104,6 +104,9 @@
   "item.dcs_climate.main.seeding_pot":"育苗ポット",
   "item.dcs_climate.main.sieve":"宝石ふるい",
   "item.dcs_climate.main.bellow":"ふいご",
+  "item.dcs_climate.main.insence_case":"空の線香入れ",
+  "item.dcs_climate.main.mosquito_coil_case":"蚊遣り器",
+  "item.dcs_climate.main.mosquito_coil":"蚊取り線香",
 
   "item.dcs_climate.main.axe_brass":"真鍮の斧",
   "item.dcs_climate.main.pickaxe_brass":"真鍮のツルハシ",
@@ -154,8 +157,21 @@
   "item.dcs_climate.magic.pigment_r":"赤の魔法色素",
   "item.dcs_climate.magic.pigment_g":"緑の魔法色素",
 
+  "item.dcs_climate.magic.element_w":"白の結晶",
+  "item.dcs_climate.magic.element_u":"青の結晶",
+  "item.dcs_climate.magic.element_b":"黒の結晶",
+  "item.dcs_climate.magic.element_r":"赤の結晶",
+  "item.dcs_climate.magic.element_g":"緑の結晶",
+
+  "item.dcs_climate.magic.element_w_inert":"不活性な白の結晶",
+  "item.dcs_climate.magic.element_u_inert":"不活性な青の結晶",
+  "item.dcs_climate.magic.element_b_inert":"不活性な黒の結晶",
+  "item.dcs_climate.magic.element_r_inert":"不活性な赤の結晶",
+  "item.dcs_climate.magic.element_g_inert":"不活性な緑の結晶",
+
   "item.dcs_climate.magic.drop_mana":"マナの雫",
   "item.dcs_climate.magic.extract_mana":"マナの抽出液",
+  "item.dcs_climate.magic.element_mana":"マナの結晶",
 
   "item.dcs_climate.magic.seedbag_white":"白の種袋",
   "item.dcs_climate.magic.seedbag_blue":"青の種袋",
@@ -181,6 +197,18 @@
   "item.dcs_climate.magic.card_red_uncommon":"赤の上位スペル",
   "item.dcs_climate.magic.card_green_uncommon":"緑の上位スペル",
 
+  "item.dcs_climate.magic.card_white_red":"白・赤のスペル",
+  "item.dcs_climate.magic.card_blue_green":"青・緑のスペル",
+  "item.dcs_climate.magic.card_black_white":"黒・赤のスペル",
+  "item.dcs_climate.magic.card_red_blue":"赤・青のスペル",
+  "item.dcs_climate.magic.card_green_black":"緑・黒のスペル",
+
+  "item.dcs_climate.magic.card_white_blue":"白・青のスペル",
+  "item.dcs_climate.magic.card_blue_black":"青・黒のスペル",
+  "item.dcs_climate.magic.card_black_red":"黒・赤のスペル",
+  "item.dcs_climate.magic.card_red_green":"赤・緑のスペル",
+  "item.dcs_climate.magic.card_green_white":"緑・白のスペル",
+
   "item.dcs_climate.magic.ring_s_white":"白の銀リング",
   "item.dcs_climate.magic.ring_s_blue":"青の銀リング",
   "item.dcs_climate.magic.ring_s_black":"黒の銀リング",
@@ -204,6 +232,8 @@
   "item.dcs_climate.magic.pendant_g_black":"黒の金ペンダント",
   "item.dcs_climate.magic.pendant_g_red":"赤の金ペンダント",
   "item.dcs_climate.magic.pendant_g_green":"緑の金ペンダント",
+
+  "item.dcs_climate.magic.document_boring_survey":"地質調査の結果",
 
     "## items_food":"food",
 
@@ -426,6 +456,7 @@
   "item.dcs_climate.food.fiber_wood":"木の繊維",
   "item.dcs_climate.food.food_beeswax":"蜜蝋",
   "item.dcs_climate.food.food_treewax":"木蝋",
+  "item.dcs_climate.food.food_camphor":"樟脳",
 
   "item.dcs_climate.food.sap_sweet":"甘い樹液",
   "item.dcs_climate.food.sap_resin":"樹脂",
@@ -1173,6 +1204,14 @@
   "dcs.tip.bellow":"スニーク+右クリック: 燃焼チャンバーに風を送ります。",
   "dcs.tip.seedbag.desc":"ランダムに種を入手します:",
 
+  "dcs.tip.inert_element":"条件に合う環境でプレイヤーが経験値を得ると、結晶が成長します。",
+  "dcs.tip.inert_element.white":"『明るい日の下』",
+  "dcs.tip.inert_element.blue":"『水中』",
+  "dcs.tip.inert_element.black":"『暗い地底』",
+  "dcs.tip.inert_element.red":"『高温環境』",
+  "dcs.tip.inert_element.green":"『植物に囲まれた場所』",
+  "dcs.tip.active_element":"鉄床で使うと、エンチャントを付与できます。",
+
   "dcs.tip.magic_arrow.name.white":"光源",
   "dcs.tip.magic_arrow.name.blue":"氷結",
   "dcs.tip.magic_arrow.name.black":"転移",
@@ -1205,6 +1244,28 @@
   "dcs.tip.magic_card.desc.red_uncommon":"敵性モブの攻撃対象を使用者に集める。",
   "dcs.tip.magic_card.name.green_uncommon":"拘束",
   "dcs.tip.magic_card.desc.green_uncommon":"対象のモブを1分間拘束する。",
+
+  "dcs.tip.magic_card.name.white_red":"灯火",
+  "dcs.tip.magic_card.desc.white_red":"3x3x3チャンクの範囲でモンスターのスポーンを抑制する燭台を設置する。",
+  "dcs.tip.magic_card.name.blue_green":"変異",
+  "dcs.tip.magic_card.desc.blue_green":"対象のWILD作物を変異させる。",
+  "dcs.tip.magic_card.name.black_white":"千里眼",
+  "dcs.tip.magic_card.desc.black_white":"周囲の敵性モブが壁越しに見えるようになる。",
+  "dcs.tip.magic_card.name.red_blue":"放電",
+  "dcs.tip.magic_card.desc.red_blue":"敵性モブを攻撃し一定時間拘束する放電を発生させる。",
+  "dcs.tip.magic_card.name.green_black":"潜行",
+  "dcs.tip.magic_card.desc.green_black":"地上から地底にワープする。地下で使用すると地上にワープする。",
+
+  "dcs.tip.magic_card.name.white_blue":"帰路",
+  "dcs.tip.magic_card.desc.white_blue":"リスポーン登録地点にワープする。",
+  "dcs.tip.magic_card.name.blue_black":"静寂",
+  "dcs.tip.magic_card.desc.blue_black":"読み込み範囲内にいる敵性モブをデスポーンさせる。",
+  "dcs.tip.magic_card.name.black_red":"砲台",
+  "dcs.tip.magic_card.desc.black_red":"敵性モブを自動迎撃するタレットを設置する。",
+  "dcs.tip.magic_card.name.red_green":"発破",
+  "dcs.tip.magic_card.desc.red_green":"チャンク内のブロックをシルクタッチ効果で破壊する。",
+  "dcs.tip.magic_card.name.green_white":"地質調査",
+  "dcs.tip.magic_card.desc.green_white":"足下の地下のブロックを調べる。",
 
   "dcs.tip.ring_s.name.white":"跳躍",
   "dcs.tip.ring_s.desc.white":"跳躍力上昇のポーション効果を得る。",

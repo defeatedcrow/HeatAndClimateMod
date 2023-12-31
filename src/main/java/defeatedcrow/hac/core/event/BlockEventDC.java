@@ -3,8 +3,8 @@ package defeatedcrow.hac.core.event;
 import defeatedcrow.hac.api.material.ITierItem;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
-import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -43,7 +43,7 @@ public class BlockEventDC {
 		if (player == null || !player.isAlive())
 			return;
 
-		int count = DCItemUtil.hasCharmItem(player, new ItemStack(MagicInit.PENDANT_SILVER_RED.get()));
+		int count = MagicUtil.hasCharmItem(player, new ItemStack(MagicInit.PENDANT_SILVER_RED.get()));
 		if (count > 0) {
 			f += 0.5F * count;
 		}

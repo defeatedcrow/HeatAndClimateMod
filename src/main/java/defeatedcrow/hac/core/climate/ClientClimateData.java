@@ -14,6 +14,7 @@ import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.MagicUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
@@ -81,7 +82,7 @@ public class ClientClimateData {
 		}
 
 		// charm
-		List<ItemStack> charms = DCItemUtil.getCharms(player, CharmType.ALL);
+		List<ItemStack> charms = MagicUtil.getCharms(player, CharmType.ALL);
 		DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage :
 				DamageSourceClimate.climateColdDamage;
 		for (ItemStack check : charms) {

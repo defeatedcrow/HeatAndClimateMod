@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/water"
+    },
+    {
+      "tag": "forge:dusts/wood"
+    },
+    {
+      "tag": "forge:ingredients/camphor"
+    },
+    {
+      "tag": "forge:crops/pyrethrum"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/mosquito_coil"
+  }
+}

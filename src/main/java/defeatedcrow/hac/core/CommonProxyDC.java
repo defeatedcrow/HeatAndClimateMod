@@ -4,11 +4,12 @@ import java.util.Optional;
 
 import defeatedcrow.hac.core.config.ConfigLoadEventDC;
 import defeatedcrow.hac.core.config.CoreConfigDC;
+import defeatedcrow.hac.core.event.AnvilEventDC;
 import defeatedcrow.hac.core.event.BiomeBaseTempEventDC;
 import defeatedcrow.hac.core.event.BlockEventDC;
 import defeatedcrow.hac.core.event.BlockUpdateEventDC;
 import defeatedcrow.hac.core.event.CharmTriggerEvent;
-import defeatedcrow.hac.core.event.LivingDropEventDC;
+import defeatedcrow.hac.core.event.LivingEventDC;
 import defeatedcrow.hac.core.event.LivingTickEventDC;
 import defeatedcrow.hac.core.event.ServerTickEventDC;
 import defeatedcrow.hac.core.json.JsonInit;
@@ -41,7 +42,8 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(BlockUpdateEventDC::onBlockPlacement);
 		MinecraftForge.EVENT_BUS.addListener(ConfigLoadEventDC::onLoad);
 		MinecraftForge.EVENT_BUS.addListener(ConfigLoadEventDC::onFileChange);
-		MinecraftForge.EVENT_BUS.addListener(LivingDropEventDC::onDrop);
+		MinecraftForge.EVENT_BUS.addListener(LivingEventDC::onDrop);
+		MinecraftForge.EVENT_BUS.addListener(LivingEventDC::onSpawnCheck);
 		MinecraftForge.EVENT_BUS.addListener(BlockEventDC::onFarmLand);
 		MinecraftForge.EVENT_BUS.addListener(BlockEventDC::onDig);
 		MinecraftForge.EVENT_BUS.addListener(BlockEventDC::onBreakBlock);
@@ -50,6 +52,7 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onDig);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onXpPickup);
 		MinecraftForge.EVENT_BUS.addListener(FishingEventDC::onFishing);
+		MinecraftForge.EVENT_BUS.addListener(AnvilEventDC::onEvent);
 
 		FoodProxy.registerEvent();
 	}

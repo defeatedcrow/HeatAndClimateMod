@@ -12,7 +12,6 @@ import defeatedcrow.hac.core.material.block.OwnableContainerBaseTileDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -80,7 +79,6 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 			} else {
 				if (chest.canOpen(player) && player instanceof ServerPlayer) {
 					NetworkHooks.openScreen((ServerPlayer) player, chest, pos);
-					player.awardStat(Stats.OPEN_CHEST);
 				}
 				return InteractionResult.CONSUME;
 			}

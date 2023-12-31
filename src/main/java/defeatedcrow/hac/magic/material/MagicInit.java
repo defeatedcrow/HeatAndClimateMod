@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.entity.ChairEntity;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Magic;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.magic.client.gui.BoringMenu;
 import defeatedcrow.hac.magic.material.block.MagicSmallLight;
 import defeatedcrow.hac.magic.material.entity.ArrowBindPlant;
 import defeatedcrow.hac.magic.material.entity.ArrowBlack;
@@ -16,33 +17,55 @@ import defeatedcrow.hac.magic.material.entity.ArrowGreen;
 import defeatedcrow.hac.magic.material.entity.ArrowRed;
 import defeatedcrow.hac.magic.material.entity.ArrowRobber;
 import defeatedcrow.hac.magic.material.entity.ArrowWhite;
-import defeatedcrow.hac.magic.material.item.BlackArrowItem;
-import defeatedcrow.hac.magic.material.item.BlueArrowItem;
+import defeatedcrow.hac.magic.material.entity.CrowTurretEntity;
+import defeatedcrow.hac.magic.material.entity.PhoenixLightEntity;
+import defeatedcrow.hac.magic.material.entity.SilkyFairyEntity;
+import defeatedcrow.hac.magic.material.item.BoringSurveyItem;
 import defeatedcrow.hac.magic.material.item.ColorSeedBagItem;
-import defeatedcrow.hac.magic.material.item.GreenArrowItem;
+import defeatedcrow.hac.magic.material.item.InertElementItem;
+import defeatedcrow.hac.magic.material.item.MagicElementItem;
 import defeatedcrow.hac.magic.material.item.MagicMaterialItemDC;
-import defeatedcrow.hac.magic.material.item.RedArrowItem;
-import defeatedcrow.hac.magic.material.item.WhiteArrowItem;
+import defeatedcrow.hac.magic.material.item.arrow.BlackArrowItem;
+import defeatedcrow.hac.magic.material.item.arrow.BlueArrowItem;
+import defeatedcrow.hac.magic.material.item.arrow.GreenArrowItem;
+import defeatedcrow.hac.magic.material.item.arrow.RedArrowItem;
+import defeatedcrow.hac.magic.material.item.arrow.WhiteArrowItem;
+import defeatedcrow.hac.magic.material.item.card.CardBlackRed;
 import defeatedcrow.hac.magic.material.item.card.CardBlackT1;
 import defeatedcrow.hac.magic.material.item.card.CardBlackT2;
+import defeatedcrow.hac.magic.material.item.card.CardBlackWhite;
+import defeatedcrow.hac.magic.material.item.card.CardBlueBlack;
+import defeatedcrow.hac.magic.material.item.card.CardBlueGreen;
 import defeatedcrow.hac.magic.material.item.card.CardBlueT1;
 import defeatedcrow.hac.magic.material.item.card.CardBlueT2;
+import defeatedcrow.hac.magic.material.item.card.CardGreenBlack;
 import defeatedcrow.hac.magic.material.item.card.CardGreenT1;
 import defeatedcrow.hac.magic.material.item.card.CardGreenT2;
+import defeatedcrow.hac.magic.material.item.card.CardGreenWhite;
+import defeatedcrow.hac.magic.material.item.card.CardRedBlue;
+import defeatedcrow.hac.magic.material.item.card.CardRedGreen;
 import defeatedcrow.hac.magic.material.item.card.CardRedT1;
 import defeatedcrow.hac.magic.material.item.card.CardRedT2;
+import defeatedcrow.hac.magic.material.item.card.CardWhiteBlue;
+import defeatedcrow.hac.magic.material.item.card.CardWhiteRed;
 import defeatedcrow.hac.magic.material.item.card.CardWhiteT1;
 import defeatedcrow.hac.magic.material.item.card.CardWhiteT2;
 import defeatedcrow.hac.magic.material.item.jems.GoldPendant;
 import defeatedcrow.hac.magic.material.item.jems.GoldRing;
+import defeatedcrow.hac.magic.material.item.jems.SilverBadge;
 import defeatedcrow.hac.magic.material.item.jems.SilverPendant;
 import defeatedcrow.hac.magic.material.item.jems.SilverRing;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.network.IContainerFactory;
 import net.minecraftforge.registries.RegistryObject;
 
 public class MagicInit {
@@ -72,26 +95,48 @@ public class MagicInit {
 	public static final RegistryObject<EntityType<ChairEntity>> BIND_ELECTRIC_ENTITY = CoreInit.ENTITIES.register("bind_electric", () -> EntityType.Builder.<ChairEntity>of(ChairEntity::new, MobCategory.MISC)
 		.sized(1.0F, 0.25F).clientTrackingRange(8).updateInterval(20).build("bind_electric"));
 
-	public static final RegistryObject<Item> DROP_WHITE = regItem("drop_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "drop_w", TagDC.ItemTag.DROP_WHITE).setDomain("magic"));
-	public static final RegistryObject<Item> DROP_BLUE = regItem("drop_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "drop_u", TagDC.ItemTag.DROP_BLUE).setDomain("magic"));
-	public static final RegistryObject<Item> DROP_BLACK = regItem("drop_b", () -> new MagicMaterialItemDC(MagicColor.BLACK, "drop_b", TagDC.ItemTag.DROP_BLACK).setDomain("magic"));
-	public static final RegistryObject<Item> DROP_RED = regItem("drop_r", () -> new MagicMaterialItemDC(MagicColor.RED, "drop_r", TagDC.ItemTag.DROP_RED).setDomain("magic"));
-	public static final RegistryObject<Item> DROP_GREEN = regItem("drop_g", () -> new MagicMaterialItemDC(MagicColor.GREEN, "drop_g", TagDC.ItemTag.DROP_GREEN).setDomain("magic"));
+	public static final RegistryObject<EntityType<PhoenixLightEntity>> PHOENIX_LIGHT_ENTITY = CoreInit.ENTITIES.register("phoenix_light", () -> EntityType.Builder.<PhoenixLightEntity>of(PhoenixLightEntity::new,
+		MobCategory.MISC).sized(1.0F, 1.0F).clientTrackingRange(12).updateInterval(20).build("phoenix_light"));
 
-	public static final RegistryObject<Item> EXTRACT_WHITE = regItem("extract_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "extract_w", TagDC.ItemTag.EXTRACT_WHITE).setDomain("magic"));
-	public static final RegistryObject<Item> EXTRACT_BLUE = regItem("extract_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "extract_u", TagDC.ItemTag.EXTRACT_BLUE).setDomain("magic"));
-	public static final RegistryObject<Item> EXTRACT_BLACK = regItem("extract_b", () -> new MagicMaterialItemDC(MagicColor.BLACK, "extract_b", TagDC.ItemTag.EXTRACT_BLACK).setDomain("magic"));
-	public static final RegistryObject<Item> EXTRACT_RED = regItem("extract_r", () -> new MagicMaterialItemDC(MagicColor.RED, "extract_r", TagDC.ItemTag.EXTRACT_RED).setDomain("magic"));
-	public static final RegistryObject<Item> EXTRACT_GREEN = regItem("extract_g", () -> new MagicMaterialItemDC(MagicColor.GREEN, "extract_g", TagDC.ItemTag.EXTRACT_GREEN).setDomain("magic"));
+	public static final RegistryObject<EntityType<SilkyFairyEntity>> SILKY_FAIRY_ENTITY = CoreInit.ENTITIES.register("silky_fairy", () -> EntityType.Builder.<SilkyFairyEntity>of(SilkyFairyEntity::new,
+		MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(5).build("silky_fairy"));
 
-	public static final RegistryObject<Item> PIGMENT_WHITE = regItem("pigment_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "pigment_w", TagDC.ItemTag.PIGMENT_WHITE).setDomain("magic"));
-	public static final RegistryObject<Item> PIGMENT_BLUE = regItem("pigment_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "pigment_u", TagDC.ItemTag.PIGMENT_BLUE).setDomain("magic"));
-	public static final RegistryObject<Item> PIGMENT_BLACK = regItem("pigment_b", () -> new MagicMaterialItemDC(MagicColor.BLACK, "pigment_b", TagDC.ItemTag.PIGMENT_BLACK).setDomain("magic"));
-	public static final RegistryObject<Item> PIGMENT_RED = regItem("pigment_r", () -> new MagicMaterialItemDC(MagicColor.RED, "pigment_r", TagDC.ItemTag.PIGMENT_RED).setDomain("magic"));
-	public static final RegistryObject<Item> PIGMENT_GREEN = regItem("pigment_g", () -> new MagicMaterialItemDC(MagicColor.GREEN, "pigment_g", TagDC.ItemTag.PIGMENT_GREEN).setDomain("magic"));
+	public static final RegistryObject<EntityType<CrowTurretEntity>> CROW_TURRET = CoreInit.ENTITIES.register("crow_turret", () -> EntityType.Builder.<CrowTurretEntity>of(CrowTurretEntity::new,
+		MobCategory.CREATURE).sized(1.0F, 1.0F).clientTrackingRange(32).updateInterval(5).build("crow_turret"));
 
-	public static final RegistryObject<Item> DROP_MANA = regItem("drop_mana", () -> new MagicMaterialItemDC(MagicColor.NONE, "drop_mana", TagDC.ItemTag.MANA_DROPS).setDomain("magic"));
-	public static final RegistryObject<Item> EXTRACT_MANA = regItem("extract_mana", () -> new MagicMaterialItemDC(MagicColor.NONE, "extract_mana", TagDC.ItemTag.MANA_EXTRACT).setDomain("magic"));
+	public static final RegistryObject<Item> DROP_WHITE = regItem("drop_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "drop_w", Rarity.COMMON, TagDC.ItemTag.DROP_WHITE).setDomain("magic"));
+	public static final RegistryObject<Item> DROP_BLUE = regItem("drop_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "drop_u", Rarity.COMMON, TagDC.ItemTag.DROP_BLUE).setDomain("magic"));
+	public static final RegistryObject<Item> DROP_BLACK = regItem("drop_b", () -> new MagicMaterialItemDC(MagicColor.BLACK, "drop_b", Rarity.COMMON, TagDC.ItemTag.DROP_BLACK).setDomain("magic"));
+	public static final RegistryObject<Item> DROP_RED = regItem("drop_r", () -> new MagicMaterialItemDC(MagicColor.RED, "drop_r", Rarity.COMMON, TagDC.ItemTag.DROP_RED).setDomain("magic"));
+	public static final RegistryObject<Item> DROP_GREEN = regItem("drop_g", () -> new MagicMaterialItemDC(MagicColor.GREEN, "drop_g", Rarity.COMMON, TagDC.ItemTag.DROP_GREEN).setDomain("magic"));
+
+	public static final RegistryObject<Item> EXTRACT_WHITE = regItem("extract_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "extract_w", Rarity.COMMON, TagDC.ItemTag.EXTRACT_WHITE).setDomain("magic"));
+	public static final RegistryObject<Item> EXTRACT_BLUE = regItem("extract_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "extract_u", Rarity.COMMON, TagDC.ItemTag.EXTRACT_BLUE).setDomain("magic"));
+	public static final RegistryObject<Item> EXTRACT_BLACK = regItem("extract_b", () -> new MagicMaterialItemDC(MagicColor.BLACK, "extract_b", Rarity.COMMON, TagDC.ItemTag.EXTRACT_BLACK).setDomain("magic"));
+	public static final RegistryObject<Item> EXTRACT_RED = regItem("extract_r", () -> new MagicMaterialItemDC(MagicColor.RED, "extract_r", Rarity.COMMON, TagDC.ItemTag.EXTRACT_RED).setDomain("magic"));
+	public static final RegistryObject<Item> EXTRACT_GREEN = regItem("extract_g", () -> new MagicMaterialItemDC(MagicColor.GREEN, "extract_g", Rarity.COMMON, TagDC.ItemTag.EXTRACT_GREEN).setDomain("magic"));
+
+	public static final RegistryObject<Item> PIGMENT_WHITE = regItem("pigment_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "pigment_w", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_WHITE).setDomain("magic"));
+	public static final RegistryObject<Item> PIGMENT_BLUE = regItem("pigment_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "pigment_u", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_BLUE).setDomain("magic"));
+	public static final RegistryObject<Item> PIGMENT_BLACK = regItem("pigment_b", () -> new MagicMaterialItemDC(MagicColor.BLACK, "pigment_b", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_BLACK).setDomain("magic"));
+	public static final RegistryObject<Item> PIGMENT_RED = regItem("pigment_r", () -> new MagicMaterialItemDC(MagicColor.RED, "pigment_r", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_RED).setDomain("magic"));
+	public static final RegistryObject<Item> PIGMENT_GREEN = regItem("pigment_g", () -> new MagicMaterialItemDC(MagicColor.GREEN, "pigment_g", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_GREEN).setDomain("magic"));
+
+	public static final RegistryObject<Item> ELEMENT_WHITE_INERT = regItem("element_w_inert", () -> new InertElementItem(MagicColor.WHITE, "element_w_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_BLUE_INERT = regItem("element_u_inert", () -> new InertElementItem(MagicColor.BLUE, "element_u_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_BLACK_INERT = regItem("element_b_inert", () -> new InertElementItem(MagicColor.BLACK, "element_b_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_RED_INERT = regItem("element_r_inert", () -> new InertElementItem(MagicColor.RED, "element_r_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_GREEN_INERT = regItem("element_g_inert", () -> new InertElementItem(MagicColor.GREEN, "element_g_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain("magic"));
+
+	public static final RegistryObject<Item> ELEMENT_WHITE = regItem("element_w", () -> new MagicElementItem(MagicColor.WHITE, "element_w", TagDC.ItemTag.ELEMENT_WHITE).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_BLUE = regItem("element_u", () -> new MagicElementItem(MagicColor.BLUE, "element_u", TagDC.ItemTag.ELEMENT_BLUE).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_BLACK = regItem("element_b", () -> new MagicElementItem(MagicColor.BLACK, "element_b", TagDC.ItemTag.ELEMENT_BLACK).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_RED = regItem("element_r", () -> new MagicElementItem(MagicColor.RED, "element_r", TagDC.ItemTag.ELEMENT_RED).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_GREEN = regItem("element_g", () -> new MagicElementItem(MagicColor.GREEN, "element_g", TagDC.ItemTag.ELEMENT_GREEN).setDomain("magic"));
+
+	public static final RegistryObject<Item> DROP_MANA = regItem("drop_mana", () -> new MagicMaterialItemDC(MagicColor.NONE, "drop_mana", Rarity.COMMON, TagDC.ItemTag.MANA_DROPS).setDomain("magic"));
+	public static final RegistryObject<Item> EXTRACT_MANA = regItem("extract_mana", () -> new MagicMaterialItemDC(MagicColor.NONE, "extract_mana", Rarity.UNCOMMON, TagDC.ItemTag.MANA_EXTRACT).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_MANA = regItem("element_mana", () -> new MagicMaterialItemDC(MagicColor.NONE, "element_mana", Rarity.RARE, TagDC.ItemTag.MANA_ELEMENT).setDomain("magic"));
 
 	public static final RegistryObject<Item> ARROW_WHITE = regItem("arrow_white", () -> new WhiteArrowItem());
 	public static final RegistryObject<Item> ARROW_BLUE = regItem("arrow_blue", () -> new BlueArrowItem());
@@ -117,6 +162,18 @@ public class MagicInit {
 	public static final RegistryObject<Item> CARD_RED_2 = regItem("card_red_uncommon", () -> new CardRedT2());
 	public static final RegistryObject<Item> CARD_GREEN_2 = regItem("card_green_uncommon", () -> new CardGreenT2());
 
+	public static final RegistryObject<Item> CARD_WU = regItem("card_white_blue", () -> new CardWhiteBlue());
+	public static final RegistryObject<Item> CARD_UB = regItem("card_blue_black", () -> new CardBlueBlack());
+	public static final RegistryObject<Item> CARD_BR = regItem("card_black_red", () -> new CardBlackRed());
+	public static final RegistryObject<Item> CARD_RG = regItem("card_red_green", () -> new CardRedGreen());
+	public static final RegistryObject<Item> CARD_GW = regItem("card_green_white", () -> new CardGreenWhite());
+
+	public static final RegistryObject<Item> CARD_WR = regItem("card_white_red", () -> new CardWhiteRed());
+	public static final RegistryObject<Item> CARD_UG = regItem("card_blue_green", () -> new CardBlueGreen());
+	public static final RegistryObject<Item> CARD_BW = regItem("card_black_white", () -> new CardBlackWhite());
+	public static final RegistryObject<Item> CARD_RU = regItem("card_red_blue", () -> new CardRedBlue());
+	public static final RegistryObject<Item> CARD_GB = regItem("card_green_black", () -> new CardGreenBlack());
+
 	public static final RegistryObject<Item> RING_SILVER_WHITE = regItem("ring_s_white", () -> new SilverRing(MagicColor.WHITE));
 	public static final RegistryObject<Item> RING_SILVER_BLUE = regItem("ring_s_blue", () -> new SilverRing(MagicColor.BLUE));
 	public static final RegistryObject<Item> RING_SILVER_BLACK = regItem("ring_s_black", () -> new SilverRing(MagicColor.BLACK));
@@ -141,7 +198,20 @@ public class MagicInit {
 	public static final RegistryObject<Item> PENDANT_GOLD_RED = regItem("pendant_g_red", () -> new GoldPendant(MagicColor.RED));
 	public static final RegistryObject<Item> PENDANT_GOLD_GREEN = regItem("pendant_g_green", () -> new GoldPendant(MagicColor.GREEN));
 
+	public static final RegistryObject<Item> BADGE_SILVER_WHITE = regItem("badge_s_white", () -> new SilverBadge(MagicColor.WHITE));
+	public static final RegistryObject<Item> BADGE_SILVER_BLUE = regItem("badge_s_blue", () -> new SilverBadge(MagicColor.BLUE));
+	public static final RegistryObject<Item> BADGE_SILVER_BLACK = regItem("badge_s_black", () -> new SilverBadge(MagicColor.BLACK));
+	public static final RegistryObject<Item> BADGE_SILVER_RED = regItem("badge_s_red", () -> new SilverBadge(MagicColor.RED));
+	public static final RegistryObject<Item> BADGE_SILVER_GREEN = regItem("badge_s_green", () -> new SilverBadge(MagicColor.GREEN));
+
+	public static final RegistryObject<Item> DOCUMENT_BORING = regItem("document_boring_survey", () -> new BoringSurveyItem());
+
 	public static final RegistryObject<Block> SMALL_LIGHT = regBlock("magic_small_light", () -> new MagicSmallLight(), null);
+
+	public static final RegistryObject<MenuType<BoringMenu>> BORING_SURVEY_MENU = register("dcs_boring_menu", (IContainerFactory<BoringMenu>) (id, playerInv, data) -> {
+		ItemStack held = playerInv.player.getMainHandItem();
+		return BoringMenu.getMenu(id, held, playerInv.player);
+	});
 
 	public static RegistryObject<Item> regItem(String name, Supplier<Item> item) {
 		return CoreInit.ITEMS.register("magic/" + name, item);
@@ -151,6 +221,10 @@ public class MagicInit {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("magic/" + name, block);
 		regItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(MAGIC), tag));
 		return obj;
+	}
+
+	public static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> register(String name, MenuType.MenuSupplier<T> supplier) {
+		return CoreInit.MENU_TYPE.register(name, () -> new MenuType<>(supplier));
 	}
 
 }

@@ -381,6 +381,7 @@ public class FoodInit {
 	public static final RegistryObject<Item> FIBER_WOOD = regItem("fiber_wood", () -> new MaterialItemDC(AGRI, "fiber_wood", TagDC.ItemTag.FIBER_WOOD).setDomain("food"));
 	public static final RegistryObject<Item> BEESWAX = regItem("food_beeswax", () -> new MaterialItemDC(AGRI, "food_beeswax", TagDC.ItemTag.FOOD_WAX).setDomain("food"));
 	public static final RegistryObject<Item> TREEWAX = regItem("food_treewax", () -> new MaterialItemDC(AGRI, "food_treewax", TagDC.ItemTag.FOOD_WAX).setDomain("food"));
+	public static final RegistryObject<Item> CAMPHOR = regItem("food_camphor", () -> new MaterialItemDC(AGRI, "food_camphor", TagDC.ItemTag.CAMPHOR).setDomain("food"));
 
 	public static final RegistryObject<Item> SAP_SWEET = regItem("sap_sweet", () -> new FoodMaterialItemDC(AGRI, "sap_sweet", TagDC.ItemTag.SAP_SWEET).setDomain("food"));
 	public static final RegistryObject<Item> SAP_RESIN = regItem("sap_resin", () -> new MaterialItemDC(AGRI, "sap_resin", TagDC.ItemTag.SAP_RESIN).setDomain("food"));

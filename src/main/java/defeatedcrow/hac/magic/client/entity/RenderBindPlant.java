@@ -7,6 +7,7 @@ import com.mojang.math.Vector3f;
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.core.client.entity.model.ChairBindModel;
 import defeatedcrow.hac.core.material.entity.ChairEntity;
+import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -33,6 +34,9 @@ public class RenderBindPlant extends EntityRenderer<ChairEntity> {
 		if (entity != null) {
 			int count = entity.getAge() & 3;
 			String texName = "dcs_climate:textures/entity/magic/chair_bind_" + count + ".png";
+			if (entity.getType() == MagicInit.BIND_ELECTRIC_ENTITY.get()) {
+				texName = "dcs_climate:textures/entity/magic/chair_electric_" + count + ".png";
+			}
 			ResourceLocation tex = new ResourceLocation(texName);
 
 			poseStack.pushPose();

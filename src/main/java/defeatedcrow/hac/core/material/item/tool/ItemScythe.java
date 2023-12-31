@@ -1,7 +1,6 @@
 package defeatedcrow.hac.core.material.item.tool;
 
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -22,6 +21,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -34,6 +34,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.Vanishable;
@@ -101,30 +102,31 @@ public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack stack, Player playerIn, LivingEntity entity, InteractionHand hand) {
 		if (entity instanceof IForgeShearable target) {
-			if (entity.level.isClientSide)
-				return InteractionResult.SUCCESS;
-			BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
-			// 範囲毛刈り
-			AABB aabb = new AABB(pos).inflate(tier.getLevel());
-			List<LivingEntity> list = entity.getLevel().getNearbyEntities(LivingEntity.class, TargetingConditions.forNonCombat(), entity, aabb);
-			boolean consume = false;
-			for (LivingEntity liv : list) {
-				if (liv instanceof IForgeShearable target2)
-					if (target2.isShearable(stack, entity.level, pos)) {
-						List<ItemStack> drops = target2.onSheared(playerIn, stack, entity.getLevel(), pos,
-							EnchantmentHelper.getTagEnchantmentLevel(Enchantments.BLOCK_FORTUNE, stack));
-						Random rand = new Random();
-						drops.forEach(d -> {
-							ItemEntity ent = liv.spawnAtLocation(d, 1.0F);
-							ent.setDeltaMovement(ent.getDeltaMovement().add((rand.nextFloat() - rand.nextFloat()) * 0.1F, rand.nextFloat() * 0.05F, (rand.nextFloat() - rand.nextFloat()) * 0.1F));
-						});
-						consume = true;
-					}
+			if (!playerIn.level.isClientSide) {
+				BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
+				// 範囲毛刈り
+				AABB aabb = new AABB(pos).inflate(tier.getLevel());
+				List<LivingEntity> list = entity.getLevel().getNearbyEntities(LivingEntity.class, TargetingConditions.DEFAULT, entity, aabb);
+				boolean consume = false;
+				ItemStack dummy = new ItemStack(Items.SHEARS);
+				for (LivingEntity liv : list) {
+					if (liv instanceof IForgeShearable target2)
+						if (target2.isShearable(dummy, playerIn.level, pos)) {
+							List<ItemStack> drops = target2.onSheared(playerIn, dummy, entity.getLevel(), pos,
+								EnchantmentHelper.getTagEnchantmentLevel(Enchantments.BLOCK_FORTUNE, stack));
+							RandomSource rand = playerIn.level.random;
+							drops.forEach(d -> {
+								ItemEntity ent = liv.spawnAtLocation(d, 1.0F);
+								ent.setDeltaMovement(ent.getDeltaMovement().add((rand.nextFloat() - rand.nextFloat()) * 0.1F, rand.nextFloat() * 0.05F, (rand.nextFloat() - rand.nextFloat()) * 0.1F));
+							});
+							consume = true;
+						}
+				}
+				if (consume) {
+					stack.hurtAndBreak(1, playerIn, e -> e.broadcastBreakEvent(hand));
+				}
 			}
-			if (consume) {
-				stack.hurtAndBreak(1, playerIn, e -> e.broadcastBreakEvent(hand));
-			}
-			return net.minecraft.world.InteractionResult.SUCCESS;
+			return net.minecraft.world.InteractionResult.sidedSuccess(playerIn.level.isClientSide);
 		}
 		return net.minecraft.world.InteractionResult.PASS;
 	}

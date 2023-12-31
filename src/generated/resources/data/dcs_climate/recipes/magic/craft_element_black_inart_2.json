@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:magic/element_mana"
+    },
+    {
+      "item": "dcs_climate:magic/pigment_b"
+    },
+    {
+      "tag": "forge:gems/dragons_eye"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:magic/element_b_inert"
+  }
+}

@@ -14,11 +14,16 @@ public class TagKeyDC {
 	public static final String HEAD = "dcs.head";
 	public static final String FACE_IO = "dcs.face_io";
 	public static final String LAST_PROGRESS = "dcs.last_progress";
+	public static final String LOCK = "dcs.lock";
 	public static final String CURRENT_PROGRESS = "dcs.current_progress";
 	public static final String MAX_PROGRESS = "dcs.max_progress";
 	public static final String HEAT_TIER = "dcs.heat";
 	public static final String HUMIDITY = "dcs.humidity";
 	public static final String AIRFLOW = "dcs.airflow";
+	public static final String DIM_LOCATION = "dcs.dim_location";
+	public static final String POS_X = "dcs.pos_x";
+	public static final String POS_Y = "dcs.pos_y";
+	public static final String POS_Z = "dcs.pos_z";
 
 	public static final String getTankKey(int id) {
 		return "dcs.tank_" + id;

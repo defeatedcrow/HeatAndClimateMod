@@ -17,6 +17,7 @@ import net.minecraft.world.phys.Vec3;
 public class ArrowBindPlant extends AbstractArrow {
 
 	private boolean dealtDamage;
+	private int maxAge = 1200;
 
 	public ArrowBindPlant(EntityType<? extends ArrowBindPlant> type, Level level) {
 		super(type, level);
@@ -28,6 +29,10 @@ public class ArrowBindPlant extends AbstractArrow {
 
 	public ArrowBindPlant(Level level, double x, double y, double z) {
 		super(MagicInit.ARROW_BIND_ENTITY.get(), x, y, z, level);
+	}
+
+	public void setMaxAge(int a) {
+		maxAge = a;
 	}
 
 	@Override
@@ -66,7 +71,7 @@ public class ArrowBindPlant extends AbstractArrow {
 				ChairEntity bind = MagicInit.BIND_PLANT_ENTITY.get().create(level);
 				bind.setPos(liv.position());
 				bind.setDeltaMovement(0D, 0D, 0D);
-				bind.setMaxAge(1200);
+				bind.setMaxAge(maxAge);
 				if (owner instanceof Player player) {
 					bind.setOwner(player.getUUID());
 				}

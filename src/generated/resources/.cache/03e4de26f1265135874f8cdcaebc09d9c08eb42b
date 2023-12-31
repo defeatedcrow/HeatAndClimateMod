@@ -1,10 +1,17 @@
-// 1.19.2	2023-12-04T23:02:30.514822	Tags for minecraft:item
+// 1.19.2	2023-12-10T23:41:34.5414533	Tags for minecraft:item
 9691b8fa959d0c2eca43b928b1d45c3e5fa4fb15 data/dcs_climate/tags/items/color_drops.json
 1003b47c0766f332ef739eaf3b5ea767d6e9f6c1 data/dcs_climate/tags/items/color_drops/black.json
 969f3e30f0b86599ab5d03e4f9004392ecbef823 data/dcs_climate/tags/items/color_drops/blue.json
 dad4b5b30f026f09045ec4b43590e20f6883f205 data/dcs_climate/tags/items/color_drops/green.json
 ba7fc2a45d5c0a48426eedea4a625430ab103a07 data/dcs_climate/tags/items/color_drops/red.json
 fd5ed7bb51dff22df4ec984b0dadfa343c4e3cde data/dcs_climate/tags/items/color_drops/white.json
+70ea5ee777e8e7978b82a52e12b1ed5842d3a392 data/dcs_climate/tags/items/color_elements.json
+45df72a42224941680e052853c498e7c614b92a2 data/dcs_climate/tags/items/color_elements/black.json
+7a4538cabb07e85400cceafdedc14c8b27ba29ca data/dcs_climate/tags/items/color_elements/blue.json
+9566cedc6a8f89de3906edccf0eaab6c4155c852 data/dcs_climate/tags/items/color_elements/green.json
+f8dd35b479b05572b021cd592d5141fcaf0fdd5f data/dcs_climate/tags/items/color_elements/inert.json
+748def66a4eaecb6f6adac56b7db916b79259cab data/dcs_climate/tags/items/color_elements/red.json
+c30a06b5a17f9a7b9e781e5ac14e6b547f26f521 data/dcs_climate/tags/items/color_elements/white.json
 d20044bf1d37e4b3767792007b327f4253e2fbfb data/dcs_climate/tags/items/color_extracts.json
 e98c5a617a269673c056373869b8eb0eb8388791 data/dcs_climate/tags/items/color_extracts/black.json
 4a0af70b2bb2cd01f635944c9df45ebe935b2d14 data/dcs_climate/tags/items/color_extracts/blue.json
@@ -75,7 +82,8 @@ f2cdc97a774fb6bb826cc512d5fda718518ef3ab data/dcs_climate/tags/items/logs_can_co
 7731b00b985c45aa4af4f155ee3c7f6c9552d8a7 data/dcs_climate/tags/items/magic_pendants.json
 85e814e621a82fe67190bcfe1fdd544dee9b1e2f data/dcs_climate/tags/items/magic_rings.json
 6430da8ed20b60e93622f4512219d1ff14aefcd8 data/dcs_climate/tags/items/mana_drops.json
-14cef5e12e14cfde96c79f6a0d3142b02c0730a3 data/dcs_climate/tags/items/mana_extractss.json
+8c9f062dc20a9f733b8ed31f95dcfd702f331056 data/dcs_climate/tags/items/mana_elements.json
+14cef5e12e14cfde96c79f6a0d3142b02c0730a3 data/dcs_climate/tags/items/mana_extracts.json
 8b11f0a581e2d2b006dbe0a90333c37cabb5e094 data/dcs_climate/tags/items/motors.json
 152dbc221c9dff2f573eec4b5d6b264eada13aeb data/dcs_climate/tags/items/motors/small.json
 49d7be85516a4f729914940353ab9fa2019c4a47 data/dcs_climate/tags/items/raw_foods.json
@@ -350,6 +358,7 @@ c132f42bec7448cf84f31d99f4601dd3254dda86 data/forge/tags/items/ingredients/bone_
 11d306c85e971475428486ab917e79e40d5eb1bd data/forge/tags/items/ingredients/bread_grains.json
 7f9a94274273b8c608a0835dbc99f48473a271c3 data/forge/tags/items/ingredients/buckwheat.json
 10fe51ead2ba137817409292e721591f8e0774b4 data/forge/tags/items/ingredients/butter.json
+9cf6166f935aa1efa329b8d0d0649ce9ef840e7f data/forge/tags/items/ingredients/camphor.json
 f7686a7f9a496b5d055d2d3113a818965cbced9d data/forge/tags/items/ingredients/carp.json
 100cc4a74463c913b70ca4835ca69d465475dc90 data/forge/tags/items/ingredients/cashew_nuts.json
 7d0fe7519927d7ef5576e40840135a9d29deb591 data/forge/tags/items/ingredients/cereals.json

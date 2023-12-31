@@ -59,6 +59,6 @@ public interface IClimateCrop extends ICropData {
 	int getMutationChance(Level world, BlockPos pos, BlockState thisState);
 
 	// 変異
-	boolean onMutation(Level world, BlockPos pos, BlockState thisState, RandomSource random);
+	boolean onMutation(Level world, BlockPos pos, BlockState thisState, RandomSource random, int fertile);
 
 }

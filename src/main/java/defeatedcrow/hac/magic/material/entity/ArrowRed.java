@@ -2,6 +2,7 @@ package defeatedcrow.hac.magic.material.entity;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.util.CustomExplosion;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -15,11 +16,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.ForgeEventFactory;
 
 public class ArrowRed extends AbstractArrow {
 
 	private boolean dealtDamage;
 	private float explodeRenge = 3.0F;
+	private boolean isSafety = false;
 
 	public ArrowRed(EntityType<? extends ArrowRed> type, Level level) {
 		super(type, level);
@@ -37,6 +40,10 @@ public class ArrowRed extends AbstractArrow {
 		explodeRenge = f;
 	}
 
+	public void setSafety() {
+		isSafety = true;
+	}
+
 	@Override
 	public void tick() {
 		if (this.inGroundTime > 2 || this.getY() < 0 || this.isInLava()) {
@@ -44,7 +51,11 @@ public class ArrowRed extends AbstractArrow {
 		}
 
 		if ((this.dealtDamage || this.isNoPhysics())) {
-			this.level.explode(this, this.getX(), this.getY(), this.getZ(), explodeRenge, false, Explosion.BlockInteraction.NONE);
+			CustomExplosion exp = new CustomExplosion(level, this, this.getX(), this.getY(), this.getZ(), explodeRenge, isSafety);
+			if (net.minecraftforge.event.ForgeEventFactory.onExplosionStart(level, exp))
+				return;
+			exp.explode();
+			exp.finalizeExplosion(true);
 			this.discard();
 		}
 
@@ -64,7 +75,13 @@ public class ArrowRed extends AbstractArrow {
 	@Override
 	protected void doPostHurtEffects(LivingEntity liv) {
 		super.doPostHurtEffects(liv);
-		this.level.explode(this, this.getX(), this.getY(), this.getZ(), explodeRenge, false, Explosion.BlockInteraction.NONE);
+		CustomExplosion exp = new CustomExplosion(level, this, this.getX(), this.getY(), this.getZ(), explodeRenge, isSafety);
+		if (ForgeEventFactory.onExplosionStart(level, exp))
+			return;
+		exp.explode();
+		exp.finalizeExplosion(true);
+		if (this.level.isClientSide)
+			this.level.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
 		this.dealtDamage = true;
 	}
 

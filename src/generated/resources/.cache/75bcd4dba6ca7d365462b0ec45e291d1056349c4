@@ -1,4 +1,4 @@
-// 1.19.2	2023-12-06T23:35:51.1469987	Tags for minecraft:block
+// 1.19.2	2023-12-10T23:41:34.5464402	Tags for minecraft:block
 c27613bc70b1102eddea4f03976d58392658a01f data/dcs_climate/tags/blocks/color_ores.json
 5973775ffcba4d39743586a99d401b242edfd861 data/dcs_climate/tags/blocks/color_ores/black.json
 08bdd9cd9a09b6f638cd8ea54bec26923da04737 data/dcs_climate/tags/blocks/color_ores/blue.json
@@ -75,6 +75,7 @@ c0472c5510910fda0f8dda26fc87ea5356f8ae4b data/forge/tags/blocks/storage_blocks/h
 48d87fe2c91e74ff38e934ef3fa98be51c0b4fa6 data/forge/tags/blocks/storage_blocks/titanium.json
 f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/blocks/weed.json
 150544f18cbf9dd9a0df2a480855d25205ac317d data/minecraft/tags/blocks/climbable.json
+1046947fb99ea174027f3882da22e7a29892a326 data/minecraft/tags/blocks/crops.json
 0c66697fb072599561fc62082ec9457347694d33 data/minecraft/tags/blocks/fences.json
 4f70c6aa1886452df3a643211c4f3c6571cfebe0 data/minecraft/tags/blocks/flowers.json
 1272fe63eae7da1a7e5d04373fc9879f595e11b9 data/minecraft/tags/blocks/leaves.json

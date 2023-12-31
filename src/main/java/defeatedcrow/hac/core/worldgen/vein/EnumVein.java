@@ -23,9 +23,15 @@ public enum EnumVein {
 	BLACK_RED(7, MagicColor.BLACK_RED, TagDC.BiomeTag.BLACK_BIOME, TagDC.BiomeTag.RED_BIOME),
 	RED_GREEN(8, MagicColor.RED_GREEN, TagDC.BiomeTag.RED_BIOME, TagDC.BiomeTag.GREEN_BIOME),
 	GREEN_WHITE(9, MagicColor.GREEN_WHITE, TagDC.BiomeTag.GREEN_BIOME, TagDC.BiomeTag.WHITE_BIOME),
-	NETHER(10, MagicColor.BLACK_RED, BiomeTags.IS_NETHER);
+	WHITE_RED(10, MagicColor.WHITE_RED, TagDC.BiomeTag.WHITE_BIOME, TagDC.BiomeTag.RED_BIOME),
+	BLUE_GREEN(11, MagicColor.BLUE_GREEN, TagDC.BiomeTag.BLUE_BIOME, TagDC.BiomeTag.GREEN_BIOME),
+	BLACK_WHITE(12, MagicColor.BLACK_WHITE, TagDC.BiomeTag.BLACK_BIOME, TagDC.BiomeTag.WHITE_BIOME),
+	RED_BLUE(13, MagicColor.RED_BLUE, TagDC.BiomeTag.RED_BIOME, TagDC.BiomeTag.BLUE_BIOME),
+	GREEN_BLACK(14, MagicColor.GREEN_BLACK, TagDC.BiomeTag.GREEN_BIOME, TagDC.BiomeTag.BLACK_BIOME),
+	NETHER(15, MagicColor.BLACK_RED, BiomeTags.IS_NETHER);
 
-	public static final EnumVein[] VALUES = { RED, GREEN, BLUE, WHITE, BLACK, WHITE_BLUE, BLUE_BLACK, BLACK_RED, RED_GREEN, GREEN_WHITE, NETHER };
+	public static final EnumVein[] VALUES = { RED, GREEN, BLUE, WHITE, BLACK, WHITE_BLUE, BLUE_BLACK, BLACK_RED, RED_GREEN,
+		GREEN_WHITE, WHITE_RED, BLUE_GREEN, BLACK_WHITE, RED_BLUE, GREEN_BLACK, NETHER };
 
 	public final int id;
 	public final MagicColor color;
@@ -42,8 +48,16 @@ public enum EnumVein {
 	}
 
 	public static EnumVein getType(String name) {
+		String sub = name;
+		if (name.contains("_")) {
+			// 逆順
+			String[] n2 = name.split("_");
+			if (n2 != null && n2.length > 1) {
+				sub = n2[1] + "_" + n2[0];
+			}
+		}
 		for (EnumVein ret : VALUES) {
-			if (ret.name().equalsIgnoreCase(name)) {
+			if (ret.name().equalsIgnoreCase(name) || ret.name().equalsIgnoreCase(sub)) {
 				return ret;
 			}
 		}

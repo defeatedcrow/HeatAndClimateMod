@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/magic/document_item_boring_survey"
+  },
+  "parent": "minecraft:item/generated"
+}
