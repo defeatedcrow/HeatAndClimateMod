@@ -1,0 +1,27 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "fermentation",
+  "result": {
+    "item": "dcs_climate:food/food_yogult",
+    "count": 6
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/yogult"
+    }
+  ],
+  "input_fluids": [
+    "forge:milk"
+  ],
+  "heat": [
+    "WARM",
+    "HOT"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "NORMAL"
+  ]
+}

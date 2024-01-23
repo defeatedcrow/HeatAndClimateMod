@@ -35,6 +35,11 @@ public abstract class ItemEntityFood extends ItemFoodDC implements IEntityItem {
 		name = s;
 	}
 
+	public ItemEntityFood(String s, Properties prop, TagKey<Item> pair) {
+		super(prop, pair);
+		name = s;
+	}
+
 	@Override
 	public InteractionResult useOn(UseOnContext context) {
 		Level level = context.getLevel();

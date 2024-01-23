@@ -70,7 +70,7 @@ public class DeviceRecipeList {
 		addPulverizeRecipe(id, group, o, sec, secRate, ItemStack.EMPTY, 0, FluidStack.EMPTY, in);
 	}
 
-	// squeeze, distill, tea
+	// squeeze, distill
 	public static void addFluidRecipe(int id, RecipeTypeDC group, ItemStack o, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<String> inF, List<Ingredient> in) {
 		addRecipe(id, group, o, ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, oF, t, h, a, inF, in);
 	}

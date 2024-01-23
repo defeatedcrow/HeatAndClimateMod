@@ -1,14 +1,13 @@
 {
   "values": [
     "#forge:crops/chives",
-    "#forge:crops/garlic",
     "#forge:crops/fennel",
     "#forge:crops/celery",
+    "#forge:crops/coriander",
     "#forge:crops/artemisia",
     "#forge:crops/mint",
     "#forge:crops/basil",
     "#forge:crops/perilla",
-    "#forge:crops/lavender",
     "#forge:crops/heath",
     "#forge:crops/saffron"
   ]

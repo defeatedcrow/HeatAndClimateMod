@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/food_fish_sauce"
+    },
+    {
+      "item": "dcs_climate:food/food_shrimp_paste"
+    },
+    {
+      "tag": "forge:crops/ginger"
+    },
+    {
+      "tag": "forge:crops/chili"
+    },
+    {
+      "tag": "forge:crops/onions"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/food_tomyum_paste"
+  }
+}

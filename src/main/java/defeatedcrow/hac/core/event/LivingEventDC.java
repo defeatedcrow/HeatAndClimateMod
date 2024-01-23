@@ -106,7 +106,7 @@ public class LivingEventDC {
 			for (OwnableMagicEntity target : list) {
 				Vec3 vec = Vec3.atCenterOf(target.chunkPosition().getMiddleBlockPosition(target.getBlockY()));
 				double d = entity.position().distanceToSqr(vec);
-				if (d <= 572D) {
+				if (d <= 625D) {
 					flag = true;
 					break;
 				}

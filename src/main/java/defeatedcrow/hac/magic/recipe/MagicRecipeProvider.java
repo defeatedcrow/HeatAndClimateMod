@@ -204,6 +204,86 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_pigment_green", has(TagDC.ItemTag.PIGMENT_GREEN))
 			.save(cons, "dcs_climate:magic/craft_card_green_uncommon");
 
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_WU.get(), 2)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.PIGMENT_WHITE)
+			.requires(TagDC.ItemTag.PIGMENT_BLUE)
+			.unlockedBy("has_pigment_white", has(TagDC.ItemTag.PIGMENT_WHITE))
+			.save(cons, "dcs_climate:magic/craft_card_white_blue");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_WR.get(), 2)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.EXTRACT_WHITE)
+			.requires(TagDC.ItemTag.EXTRACT_RED)
+			.unlockedBy("has_extract_white", has(TagDC.ItemTag.EXTRACT_WHITE))
+			.save(cons, "dcs_climate:magic/craft_card_white_red");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_UB.get(), 2)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.PIGMENT_BLUE)
+			.requires(TagDC.ItemTag.PIGMENT_BLACK)
+			.unlockedBy("has_pigment_blue", has(TagDC.ItemTag.PIGMENT_BLUE))
+			.save(cons, "dcs_climate:magic/craft_card_blue_black");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_UG.get(), 2)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.EXTRACT_BLUE)
+			.requires(TagDC.ItemTag.EXTRACT_GREEN)
+			.unlockedBy("has_extract_blue", has(TagDC.ItemTag.EXTRACT_BLUE))
+			.save(cons, "dcs_climate:magic/craft_card_blue_green");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BR.get(), 2)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.PIGMENT_BLACK)
+			.requires(TagDC.ItemTag.PIGMENT_RED)
+			.unlockedBy("has_pigment_black", has(TagDC.ItemTag.PIGMENT_BLACK))
+			.save(cons, "dcs_climate:magic/craft_card_black_red");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_BW.get(), 2)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.EXTRACT_BLACK)
+			.requires(TagDC.ItemTag.EXTRACT_WHITE)
+			.unlockedBy("has_extract_black", has(TagDC.ItemTag.EXTRACT_BLACK))
+			.save(cons, "dcs_climate:magic/craft_card_black_white");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_RG.get(), 2)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.PIGMENT_RED)
+			.requires(TagDC.ItemTag.PIGMENT_GREEN)
+			.unlockedBy("has_pigment_red", has(TagDC.ItemTag.PIGMENT_RED))
+			.save(cons, "dcs_climate:magic/craft_card_red_green");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_RU.get(), 2)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.EXTRACT_RED)
+			.requires(TagDC.ItemTag.EXTRACT_BLUE)
+			.unlockedBy("has_extract_red", has(TagDC.ItemTag.EXTRACT_RED))
+			.save(cons, "dcs_climate:magic/craft_card_red_blue");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_GW.get(), 2)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.PIGMENT_GREEN)
+			.requires(TagDC.ItemTag.PIGMENT_WHITE)
+			.unlockedBy("has_pigment_green", has(TagDC.ItemTag.PIGMENT_GREEN))
+			.save(cons, "dcs_climate:magic/craft_card_green_white");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.CARD_GB.get(), 2)
+			.requires(Items.PAPER)
+			.requires(Items.PAPER)
+			.requires(TagDC.ItemTag.EXTRACT_GREEN)
+			.requires(TagDC.ItemTag.EXTRACT_BLACK)
+			.unlockedBy("has_extract_green", has(TagDC.ItemTag.EXTRACT_GREEN))
+			.save(cons, "dcs_climate:magic/craft_card_green_black");
+
 		// ring
 		ShapedRecipeBuilder.shaped(MagicInit.RING_SILVER_WHITE.get(), 1)
 			.pattern("X")
@@ -405,6 +485,57 @@ public class MagicRecipeProvider extends RecipeProvider {
 			.define('Z', Tags.Items.INGOTS_GOLD)
 			.unlockedBy("has_pigment_green", has(TagDC.ItemTag.PIGMENT_GREEN))
 			.save(cons, "dcs_climate:magic/craft_pendant_gold_green");
+
+		// badge
+		ShapedRecipeBuilder.shaped(MagicInit.BADGE_SILVER_WHITE.get(), 1)
+			.pattern(" X ")
+			.pattern("ZYZ")
+			.pattern(" Z ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.ELEMENT_WHITE)
+			.define('Z', TagDC.ItemTag.INGOT_SILVER)
+			.unlockedBy("has_element_white", has(TagDC.ItemTag.ELEMENT_WHITE))
+			.save(cons, "dcs_climate:magic/craft_badge_silver_white");
+
+		ShapedRecipeBuilder.shaped(MagicInit.BADGE_SILVER_BLUE.get(), 1)
+			.pattern(" X ")
+			.pattern("ZYZ")
+			.pattern(" Z ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.ELEMENT_BLUE)
+			.define('Z', TagDC.ItemTag.INGOT_SILVER)
+			.unlockedBy("has_element_blue", has(TagDC.ItemTag.ELEMENT_BLUE))
+			.save(cons, "dcs_climate:magic/craft_badge_silver_blue");
+
+		ShapedRecipeBuilder.shaped(MagicInit.BADGE_SILVER_BLACK.get(), 1)
+			.pattern(" X ")
+			.pattern("ZYZ")
+			.pattern(" Z ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.ELEMENT_BLACK)
+			.define('Z', TagDC.ItemTag.INGOT_SILVER)
+			.unlockedBy("has_element_black", has(TagDC.ItemTag.ELEMENT_BLACK))
+			.save(cons, "dcs_climate:magic/craft_badge_silver_black");
+
+		ShapedRecipeBuilder.shaped(MagicInit.BADGE_SILVER_RED.get(), 1)
+			.pattern(" X ")
+			.pattern("ZYZ")
+			.pattern(" Z ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.ELEMENT_RED)
+			.define('Z', TagDC.ItemTag.INGOT_SILVER)
+			.unlockedBy("has_element_red", has(TagDC.ItemTag.ELEMENT_RED))
+			.save(cons, "dcs_climate:magic/craft_badge_silver_red");
+
+		ShapedRecipeBuilder.shaped(MagicInit.BADGE_SILVER_GREEN.get(), 1)
+			.pattern(" X ")
+			.pattern("ZYZ")
+			.pattern(" Z ")
+			.define('X', TagDC.ItemTag.DUST_CRYSTAL)
+			.define('Y', TagDC.ItemTag.ELEMENT_GREEN)
+			.define('Z', TagDC.ItemTag.INGOT_SILVER)
+			.unlockedBy("has_element_green", has(TagDC.ItemTag.ELEMENT_GREEN))
+			.save(cons, "dcs_climate:magic/craft_badge_silver_green");
 	}
 
 	static void mortarRecipes(Consumer<FinishedRecipe> cons) {

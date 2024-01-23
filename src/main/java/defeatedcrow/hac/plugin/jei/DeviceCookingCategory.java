@@ -35,7 +35,7 @@ public class DeviceCookingCategory implements IRecipeCategory<IDeviceRecipe> {
 
 	public DeviceCookingCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(MachineInit.COOKING_POT_NORMAL.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.COOKING.getLocation(), 8, 5, 155, 75)
+		background = guiHelper.drawableBuilder(PluginTexDC.COOKING.getLocation(), 8, 5, 155, 72)
 			.addPadding(0, 0, 4, 1)
 			.build();
 	}

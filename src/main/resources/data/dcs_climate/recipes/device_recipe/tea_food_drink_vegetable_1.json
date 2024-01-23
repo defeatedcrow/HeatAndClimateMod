@@ -1,0 +1,39 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "tea",
+  "result": {
+    "item": "dcs_climate:food/drink_vegetable",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/green_leafs"
+    },
+    {
+      "tag": "forge:crops/edible_raw_vegetables"
+    },
+    {
+      "tag": "forge:crops/citrus"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "FROSTBITE",
+    "COLD",
+    "COOL"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

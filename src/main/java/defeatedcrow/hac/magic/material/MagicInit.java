@@ -162,17 +162,17 @@ public class MagicInit {
 	public static final RegistryObject<Item> CARD_RED_2 = regItem("card_red_uncommon", () -> new CardRedT2());
 	public static final RegistryObject<Item> CARD_GREEN_2 = regItem("card_green_uncommon", () -> new CardGreenT2());
 
-	public static final RegistryObject<Item> CARD_WU = regItem("card_white_blue", () -> new CardWhiteBlue());
-	public static final RegistryObject<Item> CARD_UB = regItem("card_blue_black", () -> new CardBlueBlack());
-	public static final RegistryObject<Item> CARD_BR = regItem("card_black_red", () -> new CardBlackRed());
-	public static final RegistryObject<Item> CARD_RG = regItem("card_red_green", () -> new CardRedGreen());
-	public static final RegistryObject<Item> CARD_GW = regItem("card_green_white", () -> new CardGreenWhite());
-
 	public static final RegistryObject<Item> CARD_WR = regItem("card_white_red", () -> new CardWhiteRed());
 	public static final RegistryObject<Item> CARD_UG = regItem("card_blue_green", () -> new CardBlueGreen());
 	public static final RegistryObject<Item> CARD_BW = regItem("card_black_white", () -> new CardBlackWhite());
 	public static final RegistryObject<Item> CARD_RU = regItem("card_red_blue", () -> new CardRedBlue());
 	public static final RegistryObject<Item> CARD_GB = regItem("card_green_black", () -> new CardGreenBlack());
+
+	public static final RegistryObject<Item> CARD_WU = regItem("card_white_blue", () -> new CardWhiteBlue());
+	public static final RegistryObject<Item> CARD_UB = regItem("card_blue_black", () -> new CardBlueBlack());
+	public static final RegistryObject<Item> CARD_BR = regItem("card_black_red", () -> new CardBlackRed());
+	public static final RegistryObject<Item> CARD_RG = regItem("card_red_green", () -> new CardRedGreen());
+	public static final RegistryObject<Item> CARD_GW = regItem("card_green_white", () -> new CardGreenWhite());
 
 	public static final RegistryObject<Item> RING_SILVER_WHITE = regItem("ring_s_white", () -> new SilverRing(MagicColor.WHITE));
 	public static final RegistryObject<Item> RING_SILVER_BLUE = regItem("ring_s_blue", () -> new SilverRing(MagicColor.BLUE));

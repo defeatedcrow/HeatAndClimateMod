@@ -29,6 +29,7 @@ public enum CropType {
 	MALLOW, // アオイ
 	MORNINGGLORY, // ヒルガオ
 	MORUS, // クワ
+	MYRTLE, // フトモモ
 	OLIVE, // モクセイ
 	ORCHID, // ラン
 	PALM, // ヤシ

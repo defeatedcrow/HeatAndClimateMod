@@ -49,6 +49,7 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(BlockEventDC::onBreakBlock);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onAttack);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onHurt);
+		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onDeath);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onDig);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onXpPickup);
 		MinecraftForge.EVENT_BUS.addListener(FishingEventDC::onFishing);

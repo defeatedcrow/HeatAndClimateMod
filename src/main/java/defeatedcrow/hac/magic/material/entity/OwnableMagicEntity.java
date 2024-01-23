@@ -120,6 +120,14 @@ public abstract class OwnableMagicEntity extends Entity implements IItemDropEnti
 
 	@Override
 	public boolean hurt(DamageSource source, float damage) {
+		Entity attacker = source.getEntity();
+		if (attacker != null) {
+			if (attacker instanceof Player player && !source.isExplosion() && !source.isProjectile()) {
+				if (!this.getLocked() || this.isOwnerOrOP(player)) {
+					this.discard();
+				}
+			}
+		}
 		return super.hurt(source, damage);
 	}
 

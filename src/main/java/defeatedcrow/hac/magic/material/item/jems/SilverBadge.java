@@ -13,6 +13,7 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -33,8 +34,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class SilverBadge extends MagicJewelBase {
@@ -73,7 +76,7 @@ public class SilverBadge extends MagicJewelBase {
 					flag = true;
 				} else if (attacker instanceof Player player) {
 					Monster monster = player.getLevel().getNearestEntity(Monster.class, TargetingConditions.forCombat().range(16D),
-						player, player.getX(), player.getY(), player.getZ(), player.getBoundingBox().inflate(16D));
+						target, target.getX(), target.getY(), target.getZ(), player.getBoundingBox().inflate(16D));
 					if (monster != null) {
 						source = DamageSource.mobAttack(monster);
 					} else {
@@ -90,9 +93,20 @@ public class SilverBadge extends MagicJewelBase {
 		return false;
 	}
 
-	public InteractionResultHolder<ItemStack> onBlockHit(Level level, Player player, InteractionHand hand, ItemStack charm, BlockHitResult res) {
-		if (!DCUtil.isEmpty(charm) && getColor().isBlue && res != null && level instanceof ServerLevel serverLevel) {
-			Vec3 vec3 = Vec3.atBottomCenterOf(res.getBlockPos().relative(res.getDirection()));
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		ItemStack itemstack = player.getItemInHand(hand);
+		HitResult res = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
+		if (res.getType() == HitResult.Type.BLOCK) {
+			return onBlockHit(level, player, hand, itemstack, ((BlockHitResult) res).getBlockPos(), ((BlockHitResult) res).getDirection());
+		} else {
+			return onBlockHit(level, player, hand, itemstack, player.blockPosition(), Direction.UP);
+		}
+	}
+
+	public InteractionResultHolder<ItemStack> onBlockHit(Level level, Player player, InteractionHand hand, ItemStack charm, BlockPos pos, Direction dir) {
+		if (!DCUtil.isEmpty(charm) && getColor().isBlue && level instanceof ServerLevel serverLevel) {
+			Vec3 vec3 = Vec3.atBottomCenterOf(pos.relative(dir));
 			BlockPos p1 = new BlockPos(vec3);
 			BlockPos p2 = p1.above();
 			if (level.getBlockState(p1).getMaterial().isReplaceable() && level.getBlockState(p2).getMaterial().isReplaceable()) {
@@ -139,12 +153,17 @@ public class SilverBadge extends MagicJewelBase {
 		MutableComponent tier = Component.translatable(getColor().name() + " " + item.getRarity());
 		tier.withStyle(getColor().chatColor);
 		list.add(tier);
-		MutableComponent itemName = Component.translatable("dcs.tip.pendant_g.name." + getColor().toString());
+		MutableComponent itemName = Component.translatable("dcs.tip.badge_s.name." + getColor().toString());
 		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
 		if (ClimateCore.proxy.keyShiftPushed()) {
-			MutableComponent itemTip = Component.translatable("dcs.tip.pendant_g.desc." + getColor().toString());
+			MutableComponent itemTip = Component.translatable("dcs.tip.badge_s.desc." + getColor().toString());
 			list.add(itemTip);
+
+			if (getColor().isBlack || getColor().isBlue) {
+				MutableComponent itemTip2 = Component.translatable("dcs.tip.badge_s.desc2." + getColor().toString());
+				list.add(itemTip2);
+			}
 
 			if (ConfigCommonBuilder.INSTANCE.enMagicCost.get()) {
 				if (!getColor().isBlue) {

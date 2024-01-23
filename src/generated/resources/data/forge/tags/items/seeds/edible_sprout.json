@@ -9,6 +9,7 @@
     "#forge:seeds/green_pea",
     "#forge:seeds/garbanzo",
     "#forge:seeds/soy",
-    "#forge:seeds/adzuki"
+    "#forge:seeds/adzuki",
+    "#forge:seeds/coriander"
   ]
 }

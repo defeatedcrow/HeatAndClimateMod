@@ -9,6 +9,7 @@
     "dcs_climate:food/crop_morus_common",
     "dcs_climate:food/crop_olive_common",
     "dcs_climate:food/crop_rose_common",
-    "dcs_climate:food/crop_sumac_common"
+    "dcs_climate:food/crop_sumac_common",
+    "dcs_climate:food/crop_myrtle_common"
   ]
 }

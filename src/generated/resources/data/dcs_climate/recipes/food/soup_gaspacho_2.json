@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/tomato"
+    },
+    {
+      "tag": "forge:crops/cucumber"
+    },
+    {
+      "tag": "forge:crops/bellpepper"
+    },
+    {
+      "tag": "forge:crops/garlic"
+    },
+    {
+      "tag": "forge:foods/bread"
+    },
+    {
+      "tag": "forge:ingredients/plant_oil"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/soup_gaspacho"
+  }
+}

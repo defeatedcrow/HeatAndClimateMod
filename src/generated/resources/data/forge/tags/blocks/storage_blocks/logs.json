@@ -23,6 +23,7 @@
     "dcs_climate:container/logcont_palm_coconut",
     "dcs_climate:container/logcont_sumac_lacquer",
     "dcs_climate:container/logcont_sumac_mango",
-    "dcs_climate:container/logcont_charcoal"
+    "dcs_climate:container/logcont_charcoal",
+    "dcs_climate:container/logcont_myrtle_eucalyptus"
   ]
 }

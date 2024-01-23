@@ -1,0 +1,39 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "tea",
+  "result": {
+    "item": "dcs_climate:food/drink_milkshake",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    },
+    {
+      "tag": "forge:ingredients/vanilla_cured"
+    }
+  ],
+  "input_fluids": [
+    "forge:milk"
+  ],
+  "heat": [
+    "FROSTBITE",
+    "COLD",
+    "COOL"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

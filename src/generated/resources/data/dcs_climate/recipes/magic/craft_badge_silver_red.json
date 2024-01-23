@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:dusts/crystal"
+    },
+    "Y": {
+      "tag": "dcs_climate:color_elements/red"
+    },
+    "Z": {
+      "tag": "forge:ingots/silver"
+    }
+  },
+  "pattern": [
+    " X ",
+    "ZYZ",
+    " Z "
+  ],
+  "result": {
+    "item": "dcs_climate:magic/badge_s_red"
+  }
+}

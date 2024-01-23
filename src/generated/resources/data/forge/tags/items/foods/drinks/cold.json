@@ -1,0 +1,31 @@
+{
+  "values": [
+    "dcs_climate:food/drink_apple",
+    "dcs_climate:food/drink_berry",
+    "dcs_climate:food/drink_melon",
+    "dcs_climate:food/drink_grape",
+    "dcs_climate:food/drink_grape_white",
+    "dcs_climate:food/drink_plum",
+    "dcs_climate:food/drink_peach",
+    "dcs_climate:food/drink_pomelo",
+    "dcs_climate:food/drink_mandarin",
+    "dcs_climate:food/drink_lemon",
+    "dcs_climate:food/drink_mango",
+    "dcs_climate:food/drink_guava",
+    "dcs_climate:food/drink_vegetable",
+    "dcs_climate:food/drink_milkshake",
+    "dcs_climate:food/drink_tea_barley",
+    "dcs_climate:food/drink_soda_blue",
+    "dcs_climate:food/drink_soda_tea",
+    "dcs_climate:food/drink_soda_apple",
+    "dcs_climate:food/drink_soda_berry",
+    "dcs_climate:food/drink_soda_melon",
+    "dcs_climate:food/drink_soda_grape",
+    "dcs_climate:food/drink_soda_grape_white",
+    "dcs_climate:food/drink_soda_plum",
+    "dcs_climate:food/drink_soda_peach",
+    "dcs_climate:food/drink_soda_citrus",
+    "dcs_climate:food/drink_soda_mango",
+    "dcs_climate:food/drink_soda_guava"
+  ]
+}

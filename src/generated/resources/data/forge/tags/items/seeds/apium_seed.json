@@ -1,6 +1,7 @@
 {
   "values": [
     "#forge:seeds/celery",
-    "#forge:seeds/fennel"
+    "#forge:seeds/fennel",
+    "#forge:seeds/coriander"
   ]
 }

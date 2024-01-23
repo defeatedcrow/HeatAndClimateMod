@@ -198,6 +198,45 @@ public class MachineRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get()))
 			.save(cons, "dcs_climate:machine/cooking_pot_green_0");
 
+		ShapedRecipeBuilder.shaped(MachineInit.TEA_POT_NORMAL.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', TagDC.ItemTag.CLOTHS)
+			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
+			.save(cons, "dcs_climate:machine/tea_pot_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.TEA_POT_WHITE.get(), 1)
+			.requires(MachineInit.TEA_POT_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_WHITE)
+			.unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/tea_pot_white_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.TEA_POT_BLUE.get(), 1)
+			.requires(MachineInit.TEA_POT_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_BLUE)
+			.unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/tea_pot_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.TEA_POT_BLACK.get(), 1)
+			.requires(MachineInit.TEA_POT_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_BLACK)
+			.unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/tea_pot_black_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.TEA_POT_RED.get(), 1)
+			.requires(MachineInit.TEA_POT_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_RED)
+			.unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/tea_pot_red_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.TEA_POT_GREEN.get(), 1)
+			.requires(MachineInit.TEA_POT_NORMAL.get())
+			.requires(TagDC.ItemTag.EXTRACT_GREEN)
+			.unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get()))
+			.save(cons, "dcs_climate:machine/tea_pot_green_0");
+
 		ShapedRecipeBuilder.shaped(MachineInit.FERMANTATION_JAR_NORMAL.get(), 1)
 			.pattern(" X ")
 			.pattern("X X")

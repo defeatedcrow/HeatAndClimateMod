@@ -22,6 +22,9 @@
     "dcs_climate:food/leaves_morus_mulberry",
     "dcs_climate:food/leaves_morus_paper",
     "dcs_climate:food/leaves_morus_rubber",
+    "dcs_climate:food/leaves_myrtle_eucalyptus",
+    "dcs_climate:food/leaves_myrtle_guava",
+    "dcs_climate:food/leaves_myrtle_clove",
     "dcs_climate:food/leaves_olive_ash",
     "dcs_climate:food/leaves_olive_olive",
     "dcs_climate:food/leaves_olive_osmanthus",
@@ -61,6 +64,9 @@
     "dcs_climate:food/leaves_sumac_lacquer",
     "dcs_climate:food/leaves_sumac_mango",
     "dcs_climate:food/leaves_sumac_cashew",
-    "dcs_climate:food/leaves_sumac_pistachio"
+    "dcs_climate:food/leaves_sumac_pistachio",
+    "dcs_climate:food/leaves_myrtle_eucalyptus",
+    "dcs_climate:food/leaves_myrtle_guava",
+    "dcs_climate:food/leaves_myrtle_clove"
   ]
 }

@@ -211,6 +211,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		targetTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CT_POMELO.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_ER_HEATH.get());
 		targetTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_MR_MULBERRY.get());
+		targetTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_MY_EUCALYPTUS.get());
 		targetTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_OL_ASH.get());
 		targetTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_COCONUT.get());
 		targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_RO_RUGOSA.get());
@@ -247,6 +248,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 			commonTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CT_MANDARIN.get());
 			commonTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_ER_RHODODENDRON.get());
 			commonTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_MR_PAPER.get());
+			targetTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_MY_GUAVA.get());
 			commonTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_OL_OLIVE.get());
 			commonTreeList.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_DATE.get());
 			commonList.add((ClimateCropBaseBlock) FoodInit.BLOCK_RO_RASPBERRY.get());

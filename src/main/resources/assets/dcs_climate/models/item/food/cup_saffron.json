@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/cup_saffron"
+  },
+  "parent": "minecraft:item/generated"
+}

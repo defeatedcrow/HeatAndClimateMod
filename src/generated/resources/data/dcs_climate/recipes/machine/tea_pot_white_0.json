@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:machine/tea_pot_normal"
+    },
+    {
+      "tag": "dcs_climate:color_extracts/white"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:machine/tea_pot_white"
+  }
+}

@@ -310,6 +310,7 @@ public class TagDC {
 		public static final TagKey<Item> CROP_FENNEL = itemTag("crops/fennel");
 		public static final TagKey<Item> CROP_CELERY = itemTag("crops/celery");
 		public static final TagKey<Item> CROP_PARSNIP = itemTag("crops/parsnip");
+		public static final TagKey<Item> CROP_CORIANDER = itemTag("crops/coriander");
 		public static final TagKey<Item> CROP_RAPESEED = itemTag("crops/rapeseed");
 		public static final TagKey<Item> CROP_NAPA = itemTag("crops/napa");
 		public static final TagKey<Item> CROP_CABAGGE = itemTag("crops/cabagge");
@@ -351,6 +352,8 @@ public class TagDC {
 		public static final TagKey<Item> CROP_WATER_SPINACH = itemTag("crops/water_spinach");
 		public static final TagKey<Item> CROP_SWEET_POTATO = itemTag("crops/sweet_potato");
 		public static final TagKey<Item> CROP_MORNING_GLORY = itemTag("crops/morning_glory");
+		public static final TagKey<Item> CROP_GUAVA = itemTag("crops/guava");
+		public static final TagKey<Item> CROP_CLOVE = itemTag("crops/clove");
 		public static final TagKey<Item> CROP_SPIRANTHES = itemTag("crops/spiranthes");
 		public static final TagKey<Item> CROP_CYMBIDIUM = itemTag("crops/cymbidium");
 		public static final TagKey<Item> CROP_VANILLA = itemTag("crops/vanilla");
@@ -421,6 +424,7 @@ public class TagDC {
 		public static final TagKey<Item> CROP_SPICES = itemTag("crops/spices");
 		public static final TagKey<Item> CROP_SPICY_VEGI = itemTag("crops/spicy_vegetables");
 		public static final TagKey<Item> CROP_FLAVORED = itemTag("crops/flavored");
+		public static final TagKey<Item> CROP_ONIONS = itemTag("crops/onions");
 		public static final TagKey<Item> CROP_HERBS = itemTag("crops/herbs");
 		public static final TagKey<Item> CROP_EDIBLE_RAW_VEGGIE = itemTag("crops/edible_raw_vegetables");
 		public static final TagKey<Item> CROP_VEGETABLES = itemTag("crops/vegetables");
@@ -444,6 +448,7 @@ public class TagDC {
 		public static final TagKey<Item> SEED_FENNEL = itemTag("seeds/fennel");
 		public static final TagKey<Item> SEED_CELERY = itemTag("seeds/celery");
 		public static final TagKey<Item> SEED_PARSNIP = itemTag("seeds/parsnip");
+		public static final TagKey<Item> SEED_CORIANDER = itemTag("seeds/coriander");
 		public static final TagKey<Item> SEED_RAPESEED = itemTag("seeds/rapeseed");
 		public static final TagKey<Item> SEED_NAPA = itemTag("seeds/napa");
 		public static final TagKey<Item> SEED_CABAGGE = itemTag("seeds/cabagge");
@@ -544,6 +549,9 @@ public class TagDC {
 		public static final TagKey<Item> MAKOMOTAKE = itemTag("ingredients/makomotake");
 		public static final TagKey<Item> PALM_FLOWER = itemTag("ingredients/palm_flower");
 		public static final TagKey<Item> MALLOW_CALYCES = itemTag("ingredients/mallow_calyces");
+		public static final TagKey<Item> TEA_LEAVES_GREEN = itemTag("ingredients/tea_leaves_green");
+		public static final TagKey<Item> TEA_LEAVES_OOLONG = itemTag("ingredients/tea_leaves_oolong");
+		public static final TagKey<Item> TEA_LEAVES_BLACK = itemTag("ingredients/tea_leaves_black");
 		public static final TagKey<Item> VANILLA_CURED = itemTag("ingredients/vanilla_cured");
 		public static final TagKey<Item> CASHEW_NUTS = itemTag("ingredients/cashew_nuts");
 		public static final TagKey<Item> SPROUT = itemTag("ingredients/sprout");
@@ -558,6 +566,7 @@ public class TagDC {
 		public static final TagKey<Item> MARGARINE = itemTag("ingredients/margarine");
 		public static final TagKey<Item> FOOD_FAT = itemTag("ingredients/fat");
 		public static final TagKey<Item> CHEESE = itemTag("ingredients/cheese");
+		public static final TagKey<Item> YOGULT = itemTag("ingredients/yogult");
 
 		public static final TagKey<Item> FROG = itemTag("ingredients/frog");
 
@@ -615,11 +624,13 @@ public class TagDC {
 		public static final TagKey<Item> SOY_MILK = itemTag("ingredients/soy_milk");
 		public static final TagKey<Item> COCONUT_MILK = itemTag("ingredients/coconut_milk");
 		public static final TagKey<Item> MILKS = itemTag("ingredients/milks");
-		public static final TagKey<Item> CREAM = itemTag("ingredients/cream");
-		public static final TagKey<Item> WHIP = itemTag("ingredients/whip");
+		public static final TagKey<Item> CREAM = itemTag("ingredients/milk_cream");
+		public static final TagKey<Item> WHIP = itemTag("ingredients/plant_cream");
+		public static final TagKey<Item> CREAMS = itemTag("ingredients/creams");
 		public static final TagKey<Item> HONEY = itemTag("ingredients/honey");
 		public static final TagKey<Item> SYRUP = itemTag("ingredients/syrup");
 		public static final TagKey<Item> WATER = itemTag("ingredients/water");
+		public static final TagKey<Item> SPARKLING = itemTag("ingredients/sparkling");
 		public static final TagKey<Item> PLANT_OIL = itemTag("ingredients/plant_oil");
 		public static final TagKey<Item> EMPTY_PACK = itemTag("ingredients/empty_pack");
 
@@ -668,6 +679,10 @@ public class TagDC {
 		public static final TagKey<Item> COOKED_SAUSAGE = itemTag("ingredients/cooked_sausage");
 
 		public static final TagKey<Item> LIQUOR = itemTag("foods/liquor");
+
+		public static final TagKey<Item> DRINK = itemTag("foods/drinks");
+		public static final TagKey<Item> DRINK_HOT = itemTag("foods/drinks/hot");
+		public static final TagKey<Item> DRINK_COLD = itemTag("foods/drinks/cold");
 
 		// vanilla
 		public static final TagKey<Item> CROP_APPLE = itemTag("crops/apple");

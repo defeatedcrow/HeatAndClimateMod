@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "cookingtime": 600,
+  "experience": 0.0,
+  "ingredient": {
+    "tag": "forge:crops/tea"
+  },
+  "result": "dcs_climate:food/food_tea_green"
+}

@@ -322,6 +322,14 @@
    スニーク+右クリックでフタを開閉します。
    Sneak + right-click to toggle the pot lid.
 
+ ●　ティーポット / Tea Pot
+
+　　 環境の熱を利用して、飲み物を調理します。
+   Tea Pots use ambient heat to make drink.
+
+   飲み物は飲用時にポーション効果を発揮します。
+   Drinks have potion effects.
+
  ●　壺 / Fermentation Jar
 
 　　 適切な環境(温暖な屋内)に置かれている時、食べ物を発酵させて新しい食材を得ます。
@@ -376,6 +384,12 @@
 #### 更新履歴 / Change log ####
 
 ○ v4-alpha14
+ add: ティーポット
+ add: 飲み物
+ add: フトモモ科の樹木
+ add: いくつかの食材アイテム
+ add: 茶葉
+ add: 蚊取り線香
  add: 魔法のバッジ
  add: マルチカラー魔法カード
  add: 色の結晶

@@ -21,6 +21,7 @@ import defeatedcrow.hac.machine.client.gui.FermentationJarScreen;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberScreen;
 import defeatedcrow.hac.machine.client.gui.MillScreen;
 import defeatedcrow.hac.machine.client.gui.PortableTankScreen;
+import defeatedcrow.hac.machine.client.gui.TeaPotScreen;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.magic.client.gui.BoringScreen;
 import defeatedcrow.hac.magic.material.MagicInit;
@@ -70,6 +71,7 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(MachineInit.FLUID_MENU.get(), PortableTankScreen::new);
 		MenuScreens.register(MachineInit.FLUID_MENU_LARGE.get(), PortableTankScreen::new);
 		MenuScreens.register(MachineInit.POT_MENU.get(), CookingPotScreen::new);
+		MenuScreens.register(MachineInit.TEA_POT_MENU.get(), TeaPotScreen::new);
 		MenuScreens.register(MachineInit.JAR_MENU.get(), FermentationJarScreen::new);
 		MenuScreens.register(MachineInit.MILL_MENU.get(), MillScreen::new);
 		MenuScreens.register(MagicInit.BORING_SURVEY_MENU.get(), BoringScreen::new);

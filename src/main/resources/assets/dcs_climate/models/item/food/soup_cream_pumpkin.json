@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/soup_cream_pumpkin"
+  },
+  "parent": "minecraft:item/generated"
+}

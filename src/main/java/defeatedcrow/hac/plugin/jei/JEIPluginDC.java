@@ -46,6 +46,7 @@ public class JEIPluginDC implements IModPlugin {
 		PluginRecipeListDC.init();
 		registration.addRecipes(SMELTING_DATA, PluginRecipeListDC.SMELTING_LIST);
 		registration.addRecipes(COOKING_DATA, PluginRecipeListDC.COOKING_LIST);
+		registration.addRecipes(TEA_DATA, PluginRecipeListDC.TEA_LIST);
 		registration.addRecipes(FERMENTATION_DATA, PluginRecipeListDC.FERMENTATION_LIST);
 		registration.addRecipes(MILL_DATA, PluginRecipeListDC.PULVERISER_LIST);
 		registration.addRecipes(CROP_DATA, PluginRecipeListDC.CROP_LIST);
@@ -58,6 +59,7 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipeCategories(new CropDataCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new TreeDataCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceCookingCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new DeviceTeaCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceFermentationCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceMillCategory(registration.getJeiHelpers().getGuiHelper()));
 	}
@@ -70,6 +72,13 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.COOKING_POT_BLACK.get()), COOKING_DATA);
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.COOKING_POT_RED.get()), COOKING_DATA);
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.COOKING_POT_GREEN.get()), COOKING_DATA);
+
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.TEA_POT_NORMAL.get()), TEA_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.TEA_POT_WHITE.get()), TEA_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.TEA_POT_BLUE.get()), TEA_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.TEA_POT_BLACK.get()), TEA_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.TEA_POT_RED.get()), TEA_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.TEA_POT_GREEN.get()), TEA_DATA);
 
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_NORMAL.get()), FERMENTATION_DATA);
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_WHITE.get()), FERMENTATION_DATA);
@@ -92,6 +101,9 @@ public class JEIPluginDC implements IModPlugin {
 
 	public static final ResourceLocation COOKING_ID = new ResourceLocation(ClimateCore.MOD_ID, "cooking_data");
 	public static final RecipeType<IDeviceRecipe> COOKING_DATA = new RecipeType<IDeviceRecipe>(COOKING_ID, IDeviceRecipe.class);
+
+	public static final ResourceLocation TEA_ID = new ResourceLocation(ClimateCore.MOD_ID, "tea_data");
+	public static final RecipeType<IDeviceRecipe> TEA_DATA = new RecipeType<IDeviceRecipe>(TEA_ID, IDeviceRecipe.class);
 
 	public static final ResourceLocation FERMENTATION_ID = new ResourceLocation(ClimateCore.MOD_ID, "fermentation_data");
 	public static final RecipeType<IDeviceRecipe> FERMENTATION_DATA = new RecipeType<IDeviceRecipe>(FERMENTATION_ID, IDeviceRecipe.class);

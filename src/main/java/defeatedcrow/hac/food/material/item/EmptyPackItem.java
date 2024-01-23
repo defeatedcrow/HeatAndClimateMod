@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.item.MaterialItemDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
@@ -64,6 +65,11 @@ public class EmptyPackItem extends MaterialItemDC {
 				if (state.is(Blocks.WATER) && state.getFluidState().is(Fluids.WATER)) {
 					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
 					ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_WATER.get()), false);
+					return InteractionResultHolder.sidedSuccess(ret.copy(), level.isClientSide());
+				}
+				if (state.is(CoreInit.SPARKLING.getStillBlock().get()) && state.getFluidState().is(CoreInit.SPARKLING.getStillFluid().get())) {
+					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
+					ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_SPARKLING.get()), false);
 					return InteractionResultHolder.sidedSuccess(ret.copy(), level.isClientSide());
 				}
 			}

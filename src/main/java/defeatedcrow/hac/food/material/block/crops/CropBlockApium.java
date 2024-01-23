@@ -87,6 +87,8 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 			return FoodInit.BLOCK_AP_FENNEL.get();
 		case RARE:
 			return FoodInit.BLOCK_AP_PARSNIP.get();
+		case EPIC:
+			return FoodInit.BLOCK_AP_CORIANDER.get();
 		default:
 			return FoodInit.BLOCK_AP_CELERY.get();
 		}
@@ -99,6 +101,8 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 			return FoodInit.CROP_AP_FENNEL.get();
 		case RARE:
 			return FoodInit.CROP_AP_PARSNIP.get();
+		case EPIC:
+			return FoodInit.CROP_AP_CORIANDER.get();
 		default:
 			return FoodInit.CROP_AP_CELERY.get();
 		}
@@ -113,6 +117,8 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 			return Optional.of(FoodInit.BLOCK_AP_FENNEL.get());
 		case RARE:
 			return Optional.of(FoodInit.BLOCK_AP_PARSNIP.get());
+		case EPIC:
+			return Optional.of(FoodInit.BLOCK_AP_CORIANDER.get());
 		default:
 			return Optional.empty();
 		}
@@ -132,6 +138,8 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
+		if (t == CropTier.EPIC)
+			return ImmutableList.of(DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL);
 		return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
 	}
 
@@ -173,6 +181,8 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 			return "fennel";
 		if (tier == CropTier.RARE)
 			return "parsnip";
+		if (tier == CropTier.EPIC)
+			return "coriander";
 		return "celery";
 	}
 

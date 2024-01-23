@@ -19,9 +19,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -35,6 +32,10 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 
 	public ItemFoodDC(int nut, float sat, TagKey<Item> pair) {
 		super(new Item.Properties().tab(FoodInit.FOOD).food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().build()), pair);
+	}
+
+	public ItemFoodDC(Properties prop, TagKey<Item> pair) {
+		super(prop, pair);
 	}
 
 	public ItemFoodDC setRawFood() {
@@ -68,6 +69,7 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 		MutableComponent tasteName = Component.translatable("dcs.tip.foodtaste." + taste);
 		tasteName.withStyle(ChatFormatting.YELLOW);
 		list.add(tasteName);
+		super.appendHoverText(item, level, list, flag);
 	}
 
 	/* FoodDC */
@@ -111,14 +113,14 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 		}
 	}
 
-	@Override
-	public ItemStack finishUsingItem(ItemStack item, Level level, LivingEntity liv) {
-		int taste = getTaste(item);
-		if (taste == 2 && !level.isClientSide) {
-			liv.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
-		}
-		return super.finishUsingItem(item, level, liv);
-	}
+	// @Override
+	// public ItemStack finishUsingItem(ItemStack item, Level level, LivingEntity liv) {
+	// int taste = getTaste(item);
+	// if (taste == 2 && !level.isClientSide) {
+	// liv.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
+	// }
+	// return super.finishUsingItem(item, level, liv);
+	// }
 
 	@Override
 	public boolean isSeasoning() {

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/drink_soda_apple"
+  },
+  "parent": "minecraft:item/generated"
+}

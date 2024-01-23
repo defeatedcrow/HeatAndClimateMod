@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "drink_craft",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/cup_cocoa"
+    },
+    {
+      "tag": "forge:ingredients/milks"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/cup_cocoa_milk"
+  }
+}

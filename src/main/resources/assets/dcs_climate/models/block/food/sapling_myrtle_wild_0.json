@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/tree/sapling_myrtle_eucalyptus"
+  },
+  "parent": "dcs_climate:block/dcs_cross"
+}

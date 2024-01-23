@@ -1,0 +1,24 @@
+{
+  "values": [
+    "dcs_climate:food/cup_tea_green",
+    "dcs_climate:food/cup_tea_blue",
+    "dcs_climate:food/cup_tea_black",
+    "dcs_climate:food/cup_tea_lemon",
+    "dcs_climate:food/cup_tea_apple",
+    "dcs_climate:food/cup_tea_berry",
+    "dcs_climate:food/cup_tea_chai",
+    "dcs_climate:food/cup_cocoa",
+    "dcs_climate:food/cup_mint",
+    "dcs_climate:food/cup_mallow",
+    "dcs_climate:food/cup_mallow_lemon",
+    "dcs_climate:food/cup_saffron",
+    "dcs_climate:food/cup_rosehip",
+    "dcs_climate:food/cup_hibiscus",
+    "dcs_climate:food/cup_tea_green_milk",
+    "dcs_climate:food/cup_tea_blue_milk",
+    "dcs_climate:food/cup_tea_black_milk",
+    "dcs_climate:food/cup_tea_apple_milk",
+    "dcs_climate:food/cup_tea_berry_milk",
+    "dcs_climate:food/cup_cocoa_milk"
+  ]
+}

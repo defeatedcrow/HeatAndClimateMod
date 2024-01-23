@@ -1,0 +1,36 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "tea",
+  "result": {
+    "item": "dcs_climate:food/drink_soda_blue",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/herbs"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    }
+  ],
+  "input_fluids": [
+    "forge:sparkling"
+  ],
+  "heat": [
+    "FROSTBITE",
+    "COLD",
+    "COOL"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

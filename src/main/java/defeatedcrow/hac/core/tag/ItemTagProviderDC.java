@@ -174,11 +174,11 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.TREE_COMMON).add(FoodInit.CROP_BH_WALNUT.get(), FoodInit.CROP_CH_PLUM.get(), FoodInit.CROP_CM_SCHIMA.get(), FoodInit.CROP_CT_MANDARIN.get(),
 			FoodInit.CROP_CN_CINNAMON.get(), FoodInit.CROP_ER_RHODODENDRON.get(), FoodInit.CROP_MR_PAPER.get(), FoodInit.CROP_OL_OLIVE.get(),
-			FoodInit.CROP_RO_RASPBERRY.get(), FoodInit.CROP_SU_MANGO.get());
+			FoodInit.CROP_RO_RASPBERRY.get(), FoodInit.CROP_SU_MANGO.get(), FoodInit.CROP_MY_GUAVA.get());
 
 		tag(TagDC.ItemTag.TREE_RARE).add(FoodInit.CROP_BH_SWEET.get(), FoodInit.CROP_CH_PEACH.get(), FoodInit.CROP_CN_AVOCADO.get(), FoodInit.CROP_CM_TEA.get(),
 			FoodInit.CROP_CT_LEMON.get(), FoodInit.CROP_ER_BLUEBERRY.get(), FoodInit.CROP_MR_RUBBER.get(), FoodInit.CROP_OL_OSMANTHUS.get(),
-			FoodInit.CROP_RO_DAMASCHENA.get(), FoodInit.CROP_SU_CASHEW.get());
+			FoodInit.CROP_RO_DAMASCHENA.get(), FoodInit.CROP_SU_CASHEW.get(), FoodInit.CROP_MY_CLOVE.get());
 
 		tag(TagDC.ItemTag.TREE_EPIC).add(FoodInit.CROP_CT_PEPPER.get(), FoodInit.CROP_SU_PISTACHIO.get());
 
@@ -204,25 +204,26 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.CROP_SPICES).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_GARLIC,
 			TagDC.ItemTag.CROP_CHILI, TagDC.ItemTag.CROP_PAPRIKA, TagDC.ItemTag.CROP_GINGER, TagDC.ItemTag.CROP_CARDAMOM,
-			TagDC.ItemTag.CROP_TURMERIC, TagDC.ItemTag.CROP_CINNAMON, TagDC.ItemTag.CROP_SICHUAN_PEPPER);
+			TagDC.ItemTag.CROP_TURMERIC, TagDC.ItemTag.CROP_CINNAMON, TagDC.ItemTag.CROP_SICHUAN_PEPPER, TagDC.ItemTag.CROP_CLOVE);
 
-		tag(TagDC.ItemTag.CROP_HERBS).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_GARLIC,
-			TagDC.ItemTag.CROP_FENNEL, TagDC.ItemTag.CROP_CELERY, TagDC.ItemTag.CROP_ARTEMISIA,
-			TagDC.ItemTag.CROP_MINT, TagDC.ItemTag.CROP_BASIL, TagDC.ItemTag.CROP_PERILLA, TagDC.ItemTag.CROP_LAVENDER,
-			TagDC.ItemTag.CROP_HEATH, TagDC.ItemTag.CROP_SAFFRON);
+		tag(TagDC.ItemTag.CROP_HERBS).addTags(TagDC.ItemTag.CROP_CHIVES,
+			TagDC.ItemTag.CROP_FENNEL, TagDC.ItemTag.CROP_CELERY, TagDC.ItemTag.CROP_CORIANDER, TagDC.ItemTag.CROP_ARTEMISIA,
+			TagDC.ItemTag.CROP_MINT, TagDC.ItemTag.CROP_BASIL, TagDC.ItemTag.CROP_PERILLA, TagDC.ItemTag.CROP_HEATH, TagDC.ItemTag.CROP_SAFFRON);
 
 		tag(TagDC.ItemTag.CROP_SPICY_VEGI).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_ONION, TagDC.ItemTag.CROP_GARLIC, TagDC.ItemTag.CROP_GINGER);
 
 		tag(TagDC.ItemTag.CROP_FLAVORED).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_ONION, TagDC.ItemTag.CROP_GARLIC,
-			TagDC.ItemTag.CROP_FENNEL, TagDC.ItemTag.CROP_CELERY, TagDC.ItemTag.CROP_MINT, TagDC.ItemTag.CROP_BASIL,
-			TagDC.ItemTag.CROP_PERILLA, TagDC.ItemTag.CROP_PAPRIKA, TagDC.ItemTag.CROP_GINGER, Tags.Items.CROPS_CARROT);
+			TagDC.ItemTag.CROP_FENNEL, TagDC.ItemTag.CROP_CELERY, TagDC.ItemTag.CROP_CORIANDER,
+			TagDC.ItemTag.CROP_PAPRIKA, TagDC.ItemTag.CROP_GINGER, Tags.Items.CROPS_CARROT);
+
+		tag(TagDC.ItemTag.CROP_ONIONS).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_ONION);
 
 		tag(TagDC.ItemTag.CROP_EDIBLE_RAW_VEGGIE).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_ONION,
 			TagDC.ItemTag.CROP_SPINACH, TagDC.ItemTag.CROP_FENNEL, TagDC.ItemTag.CROP_CELERY, TagDC.ItemTag.CROP_LETTUCE,
 			TagDC.ItemTag.CROP_RAPESEED, TagDC.ItemTag.CROP_NAPA, TagDC.ItemTag.CROP_CABAGGE, TagDC.ItemTag.CROP_RADISH,
 			TagDC.ItemTag.CROP_PAPRIKA, TagDC.ItemTag.CROP_BELL, TagDC.ItemTag.CROP_SORREL, TagDC.ItemTag.CROP_INDIGO,
 			TagDC.ItemTag.CROP_WATER_SPINACH, TagDC.ItemTag.CROP_CORN, TagDC.ItemTag.CROP_TOMATO, TagDC.ItemTag.CROP_CUCUMBER,
-			TagDC.ItemTag.CROP_PUMPKIN, Tags.Items.CROPS_CARROT, Tags.Items.CROPS_BEETROOT);
+			TagDC.ItemTag.CROP_PUMPKIN, Tags.Items.CROPS_CARROT, Tags.Items.CROPS_BEETROOT, TagDC.ItemTag.CROP_CORIANDER);
 
 		tag(TagDC.ItemTag.CROP_VEGETABLES).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_ONION,
 			TagDC.ItemTag.CROP_GOOSEFOOT, TagDC.ItemTag.CROP_GLASSWORT, TagDC.ItemTag.CROP_SPINACH,
@@ -232,7 +233,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 			TagDC.ItemTag.CROP_WATER_SPINACH, TagDC.ItemTag.CROP_SWEET_POTATO, TagDC.ItemTag.CROP_GREEN_PEAS,
 			TagDC.ItemTag.CROP_GARBANZO, TagDC.ItemTag.CROP_SOY, TagDC.ItemTag.CROP_ADZUKI, TagDC.ItemTag.CROP_CORN,
 			TagDC.ItemTag.MAKOMOTAKE, TagDC.ItemTag.CROP_EGGPLANT, TagDC.ItemTag.CROP_TOMATO, TagDC.ItemTag.CROP_JUTE,
-			TagDC.ItemTag.CROP_CUCUMBER, TagDC.ItemTag.CROP_ANEMONE,
+			TagDC.ItemTag.CROP_CUCUMBER, TagDC.ItemTag.CROP_ANEMONE, TagDC.ItemTag.SPROUT,
 			Tags.Items.CROPS_CARROT, Tags.Items.CROPS_BEETROOT, Tags.Items.CROPS_POTATO, TagDC.ItemTag.CROP_PUMPKIN);
 
 		tag(TagDC.ItemTag.CROP_FLOWERS).addTags(TagDC.ItemTag.CROP_PYRETHRUM, TagDC.ItemTag.CROP_CHRYSANTHEMUM,
@@ -246,7 +247,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 			TagDC.ItemTag.CROP_WHITE_GRAPE, TagDC.ItemTag.CROP_CANTALOUP, TagDC.ItemTag.CROP_CHERRY, TagDC.ItemTag.CROP_PLUM,
 			TagDC.ItemTag.CROP_PEACH, TagDC.ItemTag.CROP_BLUEBERRY, TagDC.ItemTag.CROP_MULBERRY, TagDC.ItemTag.CROP_KAJI,
 			TagDC.ItemTag.CROP_DATE, TagDC.ItemTag.CROP_RASPBERRY, TagDC.ItemTag.CROP_APPLE, TagDC.ItemTag.CROP_BERRY,
-			TagDC.ItemTag.CROP_MANGO, TagDC.ItemTag.CROP_CASHEW);
+			TagDC.ItemTag.CROP_MANGO, TagDC.ItemTag.CROP_CASHEW, TagDC.ItemTag.CROP_GUAVA);
 
 		tag(TagDC.ItemTag.CROP_BERRY).addTags(TagDC.ItemTag.CROP_BLUEBERRY, TagDC.ItemTag.CROP_MULBERRY, TagDC.ItemTag.CROP_RASPBERRY);
 
@@ -277,9 +278,9 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.SEED_SPROUT).addTags(TagDC.ItemTag.SEED_CABAGGE, TagDC.ItemTag.SEED_RADISH, TagDC.ItemTag.SEED_NAPA,
 			TagDC.ItemTag.SEED_CELERY, TagDC.ItemTag.SEED_FENNEL, TagDC.ItemTag.SEED_WATER_SPINACH, TagDC.ItemTag.SEED_GREEN_PEAS,
-			TagDC.ItemTag.SEED_GARBANZO, TagDC.ItemTag.SEED_SOY, TagDC.ItemTag.SEED_ADZUKI);
+			TagDC.ItemTag.SEED_GARBANZO, TagDC.ItemTag.SEED_SOY, TagDC.ItemTag.SEED_ADZUKI, TagDC.ItemTag.SEED_CORIANDER);
 
-		tag(TagDC.ItemTag.SEED_APIUM).addTags(TagDC.ItemTag.SEED_CELERY, TagDC.ItemTag.SEED_FENNEL);
+		tag(TagDC.ItemTag.SEED_APIUM).addTags(TagDC.ItemTag.SEED_CELERY, TagDC.ItemTag.SEED_FENNEL, TagDC.ItemTag.SEED_CORIANDER);
 
 		tag(TagDC.ItemTag.DUST_BREAD_GRAINS).addTags(TagDC.ItemTag.DUST_RYE, TagDC.ItemTag.DUST_WHEAT);
 
@@ -296,11 +297,17 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.MILKS).addTags(TagDC.ItemTag.COW_MILK, TagDC.ItemTag.SOY_MILK, TagDC.ItemTag.COCONUT_MILK);
 
+		tag(TagDC.ItemTag.CREAMS).addTags(TagDC.ItemTag.CREAM, TagDC.ItemTag.WHIP);
+
 		tag(TagDC.ItemTag.SAPS).addTags(TagDC.ItemTag.SAP_SWEET, TagDC.ItemTag.SAP_RESIN, TagDC.ItemTag.SAP_LATEX, TagDC.ItemTag.SAP_LACQUER);
 
 		tag(TagDC.ItemTag.FOOD_FAT).addTags(TagDC.ItemTag.BUTTER, TagDC.ItemTag.MARGARINE);
 
 		tag(TagDC.ItemTag.NOODLE).addTags(TagDC.ItemTag.PASTA);
+
+		tag(TagDC.ItemTag.SPARKLING).add(CoreInit.SPARKLING.getBucket().get());
+
+		tag(TagDC.ItemTag.DRINK).addTags(TagDC.ItemTag.DRINK_HOT, TagDC.ItemTag.DRINK_COLD);
 
 		tag(TagDC.ItemTag.RAW_MEAT).addTags(TagDC.ItemTag.RAW_BEEF, TagDC.ItemTag.RAW_PORK, TagDC.ItemTag.RAW_CHICKEN,
 			TagDC.ItemTag.RAW_MUTTON, TagDC.ItemTag.RAW_RABBIT, TagDC.ItemTag.FROG);

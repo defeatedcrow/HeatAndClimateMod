@@ -92,6 +92,23 @@ public class DCRecipes {
 		return Optional.empty();
 	}
 
+	public static Optional<IDeviceRecipe> getTeaRecipe(Supplier<IClimate> clm, List<ItemStack> inputs, FluidStack inF) {
+		int c = 0;
+		IDeviceRecipe keep = null;
+		for (IDeviceRecipe recipe : INSTANCE.TEA.values()) {
+			if (recipe.matcheInput(inputs).length > 0 && recipe.matcheInputFluid(inF, FluidStack.EMPTY) && recipe.matchClimate(clm.get())) {
+				if (recipe.getPriority() > c) {
+					c = recipe.getPriority();
+					keep = recipe;
+				}
+			}
+		}
+		if (keep != null) {
+			return Optional.of(keep);
+		}
+		return Optional.empty();
+	}
+
 	public static Optional<IDeviceRecipe> getPulverizeRecipe(List<ItemStack> inputs) {
 		for (IDeviceRecipe recipe : INSTANCE.PULVERISE.values()) {
 			if (recipe.matcheInput(inputs).length > 0) {

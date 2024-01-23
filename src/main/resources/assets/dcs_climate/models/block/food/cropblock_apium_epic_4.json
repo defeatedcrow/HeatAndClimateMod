@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/crop/apium_coriander_c"
+  },
+  "parent": "dcs_climate:block/dcs_cross"
+}

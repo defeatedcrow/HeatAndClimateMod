@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/tree/myrtle_clove_leaves_c"
+  },
+  "parent": "dcs_climate:block/dcs_leaves"
+}

@@ -1,0 +1,39 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "tea",
+  "result": {
+    "item": "dcs_climate:food/cup_tea_chai",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/tea_leaves_black"
+    },
+    {
+      "tag": "forge:crops/cinnamon"
+    },
+    {
+      "tag": "forge:crops/clove"
+    }
+  ],
+  "input_fluids": [
+    "forge:milk"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

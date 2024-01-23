@@ -9,6 +9,16 @@
     "dcs_climate:magic/card_blue_uncommon",
     "dcs_climate:magic/card_black_uncommon",
     "dcs_climate:magic/card_red_uncommon",
-    "dcs_climate:magic/card_green_uncommon"
+    "dcs_climate:magic/card_green_uncommon",
+    "dcs_climate:magic/card_white_red",
+    "dcs_climate:magic/card_blue_green",
+    "dcs_climate:magic/card_black_white",
+    "dcs_climate:magic/card_red_blue",
+    "dcs_climate:magic/card_green_black",
+    "dcs_climate:magic/card_white_blue",
+    "dcs_climate:magic/card_blue_black",
+    "dcs_climate:magic/card_black_red",
+    "dcs_climate:magic/card_red_green",
+    "dcs_climate:magic/card_green_white"
   ]
 }

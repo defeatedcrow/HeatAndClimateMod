@@ -10,6 +10,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.tag.TagDC;
+import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -150,9 +151,12 @@ public class DCItemUtil {
 
 	public static float getArmorResistant(LivingEntity living, boolean isCold) {
 		float ret = 0F;
-		while (living.getArmorSlots().iterator().hasNext()) {
-			ItemStack item = living.getArmorSlots().iterator().next();
-			ret += getItemResistantData(item, isCold);
+		IItemHandler handler = living.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH).orElse(null);
+		if (handler != null) {
+			for (int i = 0; i < handler.getSlots(); i++) {
+				ItemStack check = handler.getStackInSlot(i);
+				ret += getItemResistantData(check, isCold);
+			}
 		}
 		return ret;
 	}

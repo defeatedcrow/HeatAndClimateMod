@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/machine/tea_pot_red_item"
+  },
+  "parent": "dcs_climate:block/dcs_dummy"
+}

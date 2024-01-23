@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/yogult"
+    },
+    {
+      "tag": "forge:crops/cucumber"
+    },
+    {
+      "tag": "forge:crops/walnut"
+    },
+    {
+      "tag": "forge:crops/garlic"
+    },
+    {
+      "tag": "forge:crops/herbs"
+    },
+    {
+      "tag": "forge:ingredients/plant_oil"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/soup_tarator"
+  }
+}

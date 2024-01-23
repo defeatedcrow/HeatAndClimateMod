@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:container/logcont_myrtle_eucalyptus"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "dcs_climate:food/log_myrtle_eucalyptus"
+  }
+}

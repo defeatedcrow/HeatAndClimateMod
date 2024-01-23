@@ -1,6 +1,7 @@
 {
   "values": [
     "minecraft:acacia_log",
-    "minecraft:spruce_log"
+    "minecraft:spruce_log",
+    "dcs_climate:food/log_myrtle_eucalyptus"
   ]
 }

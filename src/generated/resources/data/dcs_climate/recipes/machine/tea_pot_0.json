@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "tag": "forge:clothes"
+    }
+  },
+  "pattern": [
+    " X ",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/tea_pot_normal"
+  }
+}

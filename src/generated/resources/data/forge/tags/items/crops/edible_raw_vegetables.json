@@ -20,6 +20,7 @@
     "#forge:crops/cucumber",
     "#forge:crops/pumpkin",
     "#forge:crops/carrot",
-    "#forge:crops/beetroot"
+    "#forge:crops/beetroot",
+    "#forge:crops/coriander"
   ]
 }

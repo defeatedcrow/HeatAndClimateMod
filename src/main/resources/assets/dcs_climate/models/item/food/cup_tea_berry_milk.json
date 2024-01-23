@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/cup_tea_berry_milk"
+  },
+  "parent": "minecraft:item/generated"
+}

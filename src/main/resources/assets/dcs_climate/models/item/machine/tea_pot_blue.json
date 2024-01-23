@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/machine/tea_pot_blue_item"
+  },
+  "parent": "minecraft:item/generated"
+}

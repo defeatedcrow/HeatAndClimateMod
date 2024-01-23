@@ -28,6 +28,9 @@
     "dcs_climate:food/leaves_sumac_lacquer",
     "dcs_climate:food/leaves_sumac_mango",
     "dcs_climate:food/leaves_sumac_cashew",
-    "dcs_climate:food/leaves_sumac_pistachio"
+    "dcs_climate:food/leaves_sumac_pistachio",
+    "dcs_climate:food/leaves_myrtle_eucalyptus",
+    "dcs_climate:food/leaves_myrtle_guava",
+    "dcs_climate:food/leaves_myrtle_clove"
   ]
 }

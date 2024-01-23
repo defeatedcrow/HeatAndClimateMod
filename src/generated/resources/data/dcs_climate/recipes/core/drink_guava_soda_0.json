@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "drink_craft",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/drink_guava"
+    },
+    {
+      "tag": "forge:ingredients/sparkling"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/drink_soda_guava"
+  }
+}

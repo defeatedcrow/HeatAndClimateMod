@@ -6,8 +6,10 @@ import defeatedcrow.hac.core.util.CustomExplosion;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -70,6 +72,11 @@ public class ArrowRed extends AbstractArrow {
 	@Nullable
 	protected EntityHitResult findHitEntity(Vec3 vec, Vec3 vec2) {
 		return this.dealtDamage ? null : super.findHitEntity(vec, vec2);
+	}
+
+	@Override
+	protected boolean canHitEntity(Entity entity) {
+		return super.canHitEntity(entity) && entity != this.getOwner() && !(entity instanceof Player);
 	}
 
 	@Override

@@ -39,6 +39,7 @@ public class ContainerRecipes {
 		list.add(new Cont("log_morus_mulberry", FoodInit.CONT_LOG_MR_MULBERRY, () -> FoodInit.LOG_MR_MULBERRY.get().asItem(), () -> TagDC.ItemTag.DUMMY));
 		list.add(new Cont("log_morus_paper", FoodInit.CONT_LOG_MR_PAPER, () -> FoodInit.LOG_MR_PAPER.get().asItem(), () -> TagDC.ItemTag.DUMMY));
 		list.add(new Cont("log_morus_rubber", FoodInit.CONT_LOG_MR_RUBBER, () -> FoodInit.LOG_MR_RUBBER.get().asItem(), () -> TagDC.ItemTag.DUMMY));
+		list.add(new Cont("log_myrtle_eucalyptus", FoodInit.CONT_LOG_MY_EUCALYPTUS, () -> FoodInit.LOG_MY_EUCALYPTUS.get().asItem(), () -> TagDC.ItemTag.DUMMY));
 		list.add(new Cont("log_olive_ash", FoodInit.CONT_LOG_OL_ASH, () -> FoodInit.LOG_OL_ASH.get().asItem(), () -> TagDC.ItemTag.DUMMY));
 		list.add(new Cont("log_palm_coconut", FoodInit.CONT_LOG_PL_COCONUT, () -> FoodInit.LOG_PL_COCONUT.get().asItem(), () -> TagDC.ItemTag.DUMMY));
 		list.add(new Cont("log_sumac_lacquer", FoodInit.CONT_LOG_SU_LACQUER, () -> FoodInit.LOG_SU_LACQUER.get().asItem(), () -> TagDC.ItemTag.DUMMY));

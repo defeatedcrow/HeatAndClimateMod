@@ -17,6 +17,7 @@ public class PluginRecipeListDC {
 
 	public static final List<IClimateSmelting> SMELTING_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> COOKING_LIST = Lists.newArrayList();
+	public static final List<IDeviceRecipe> TEA_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> FERMENTATION_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> PULVERISER_LIST = Lists.newArrayList();
 	public static final List<ClimateCropBaseBlock> CROP_LIST = Lists.newArrayList();
@@ -38,6 +39,7 @@ public class PluginRecipeListDC {
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_CELERY.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_FENNEL.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_PARSNIP.get());
+		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_CORIANDER.get());
 
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AS_ARTEMISIA.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AS_LETTUCE.get());
@@ -153,6 +155,10 @@ public class PluginRecipeListDC {
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MR_PAPER.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MR_RUBBER.get());
 
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MY_EUCALYPTUS.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MY_GUAVA.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MY_CLOVE.get());
+
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_ASH.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_OLIVE.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_OSMANTHUS.get());
@@ -173,6 +179,8 @@ public class PluginRecipeListDC {
 		SMELTING_LIST.addAll(DCRecipes.INSTANCE.SMELTING.values());
 
 		COOKING_LIST.addAll(DCRecipes.INSTANCE.COOKING.values());
+
+		TEA_LIST.addAll(DCRecipes.INSTANCE.TEA.values());
 
 		FERMENTATION_LIST.addAll(DCRecipes.INSTANCE.FERMENTATION.values());
 

@@ -32,6 +32,7 @@ public class PlantRecipes {
 		list1.add(new Seeding(FoodInit.BLOCK_AP_CELERY, FoodInit.CROP_AP_CELERY, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AP_FENNEL, FoodInit.CROP_AP_FENNEL, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AP_PARSNIP, FoodInit.CROP_AP_PARSNIP, 1));
+		list1.add(new Seeding(FoodInit.BLOCK_AP_CORIANDER, FoodInit.CROP_AP_CORIANDER, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AS_ARTEMISIA, FoodInit.CROP_AS_ARTEMISIA, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AS_LETTUCE, FoodInit.CROP_AS_LETTUCE, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AS_PYRETHRUM, FoodInit.CROP_AS_PYRETHRUM, 1));
@@ -119,6 +120,8 @@ public class PlantRecipes {
 		list1.add(new Seeding(FoodInit.BLOCK_MR_MULBERRY, FoodInit.CROP_MR_MULBERRY, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_MR_PAPER, FoodInit.CROP_MR_PAPER, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_MR_RUBBER, FoodInit.CROP_MR_RUBBER, 1));
+		list1.add(new Seeding(FoodInit.BLOCK_MY_GUAVA, FoodInit.CROP_MY_GUAVA, 1));
+		list1.add(new Seeding(FoodInit.BLOCK_MY_CLOVE, FoodInit.CROP_MY_CLOVE, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_OL_ASH, FoodInit.CROP_OL_ASH, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_OL_OLIVE, FoodInit.CROP_OL_OLIVE, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_OL_OSMANTHUS, FoodInit.CROP_OL_OSMANTHUS, 1));
@@ -141,6 +144,7 @@ public class PlantRecipes {
 		list2.add(new Wood("cinnamon_camphor", FoodInit.LOG_CN_CAMPHOR, FoodInit.PLANK_CN_CAMPHOR, BuildInit.STAIRS_CAMPHOR, BuildInit.SLAB_CAMPHOR, BuildInit.FENCE_CAMPHOR));
 		list2.add(new Wood("citrus_pomelo", FoodInit.LOG_CT_POMELO, FoodInit.PLANK_CT_POMELO, BuildInit.STAIRS_CITRUS, BuildInit.SLAB_CITRUS, BuildInit.FENCE_CITRUS));
 		list2.add(new Wood("morus_mulberry", FoodInit.LOG_MR_MULBERRY, FoodInit.PLANK_MR_MULBERRY, BuildInit.STAIRS_MORUS, BuildInit.SLAB_MORUS, BuildInit.FENCE_MORUS));
+		list2.add(new Wood("myrtle_eucalyptus", FoodInit.LOG_MY_EUCALYPTUS, FoodInit.PLANK_MY_EUCALYPTUS, BuildInit.STAIRS_EUCALYPTUS, BuildInit.SLAB_EUCALYPTUS, BuildInit.FENCE_EUCALYPTUS));
 		list2.add(new Wood("olive_ash", FoodInit.LOG_OL_ASH, FoodInit.PLANK_OL_ASH, BuildInit.STAIRS_ASH, BuildInit.SLAB_ASH, BuildInit.FENCE_ASH));
 		list2.add(new Wood("palm_coconut", FoodInit.LOG_PL_COCONUT, FoodInit.PLANK_PL_COCONUT, BuildInit.STAIRS_PALM, BuildInit.SLAB_PALM, BuildInit.FENCE_PALM));
 		list2.add(new Wood("sumac_lacquer", FoodInit.LOG_SU_LACQUER, FoodInit.PLANK_SU_LACQUER, BuildInit.STAIRS_SUMAC, BuildInit.SLAB_SUMAC, BuildInit.FENCE_SUMAC));

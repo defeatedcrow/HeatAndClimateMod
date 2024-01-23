@@ -4,6 +4,8 @@ import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.material.CoreInit;
@@ -18,6 +20,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
@@ -233,7 +236,7 @@ public class CharmTriggerEvent {
 		}
 
 		int range = 0;
-		int count = 1 * MagicUtil.hasCharmItem(player, new ItemStack(MagicInit.BADGE_SILVER_RED.get()));
+		int count = 2 * MagicUtil.hasCharmItem(player, new ItemStack(MagicInit.BADGE_SILVER_RED.get()));
 		if (count > 0 && level instanceof ServerLevel serverLevel) {
 			Direction dir = player.getDirection();
 			if (player.getXRot() > 45F) {
@@ -243,66 +246,63 @@ public class CharmTriggerEvent {
 				dir = Direction.DOWN;
 			}
 
-			if (dir.getAxis().isVertical()) {
-				for (int x = -count; x < count; x++) {
-					for (int z = -count; z < count; z++) {
-						BlockPos p2 = pos.offset(x, 0, z);
-						BlockState s2 = level.getBlockState(p2);
-						BlockEntity e2 = level.getBlockEntity(p2);
-						LootContext.Builder builder = (new LootContext.Builder(serverLevel))
-							.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
-							.withParameter(LootContextParams.BLOCK_STATE, s2)
-							.withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2)
-							.withOptionalParameter(LootContextParams.THIS_ENTITY, player)
-							.withParameter(LootContextParams.TOOL, player.getMainHandItem());
-						List<ItemStack> list = state.getDrops(builder);
-						list.forEach((item) -> {
-							Block.popResource(serverLevel, p2, item);
-						});
-						serverLevel.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
-					}
-				}
-			} else if (dir.getAxis() == Direction.Axis.X) {
-				for (int y = -count; y < count; y++) {
-					for (int z = -count; z < count; z++) {
-						BlockPos p2 = pos.offset(0, y, z);
-						BlockState s2 = level.getBlockState(p2);
-						BlockEntity e2 = level.getBlockEntity(p2);
-						LootContext.Builder builder = (new LootContext.Builder(serverLevel))
-							.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
-							.withParameter(LootContextParams.BLOCK_STATE, s2)
-							.withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2)
-							.withOptionalParameter(LootContextParams.THIS_ENTITY, player)
-							.withParameter(LootContextParams.TOOL, player.getMainHandItem());
-						List<ItemStack> list = state.getDrops(builder);
-						list.forEach((item) -> {
-							Block.popResource(serverLevel, p2, item);
-						});
-						serverLevel.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
-					}
-				}
-			} else if (dir.getAxis() == Direction.Axis.Z) {
-				for (int x = -count; x < count; x++) {
-					for (int y = -count; y < count; y++) {
-						BlockPos p2 = pos.offset(x, y, y);
-						BlockState s2 = level.getBlockState(p2);
-						BlockEntity e2 = level.getBlockEntity(p2);
-						LootContext.Builder builder = (new LootContext.Builder(serverLevel))
-							.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
-							.withParameter(LootContextParams.BLOCK_STATE, s2)
-							.withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2)
-							.withOptionalParameter(LootContextParams.THIS_ENTITY, player)
-							.withParameter(LootContextParams.TOOL, player.getMainHandItem());
-						List<ItemStack> list = state.getDrops(builder);
-						list.forEach((item) -> {
-							Block.popResource(serverLevel, p2, item);
-						});
-						serverLevel.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
-					}
-				}
-			}
+			List<BlockPos> targetPosList = getTargetPos(pos, dir, count);
+			targetPosList.forEach((p2) -> {
+				BlockState s2 = level.getBlockState(p2);
+				BlockEntity e2 = level.getBlockEntity(p2);
+				LootContext.Builder builder = (new LootContext.Builder(serverLevel))
+					.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
+					.withParameter(LootContextParams.BLOCK_STATE, s2)
+					.withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2)
+					.withOptionalParameter(LootContextParams.THIS_ENTITY, player)
+					.withParameter(LootContextParams.TOOL, player.getMainHandItem());
+				s2.getDrops(builder).forEach((item) -> {
+					Block.popResource(serverLevel, p2, item);
+				});
+				s2.getBlock().destroy(serverLevel, p2, s2);
+				serverLevel.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
+			});
+
+			player.getMainHandItem().hurtAndBreak(2, player, (p) -> {
+				p.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+			});
 
 			event.setCanceled(true);
+		}
+	}
+
+	static List<BlockPos> getTargetPos(BlockPos pos, Direction face, int r) {
+		List<BlockPos> ret = Lists.newArrayList();
+		if (face.getAxis() == Direction.Axis.X) {
+			for (int z = -r; z <= r; z++) {
+				for (int y = -r; y <= r; y++) {
+					if (z == 0 && y == 0)
+						continue;
+					BlockPos p = pos.offset(0, y, z);
+					ret.add(p);
+				}
+			}
+			return ret;
+		} else if (face.getAxis() == Direction.Axis.Z) {
+			for (int x = -r; x <= r; x++) {
+				for (int y = -r; y <= r; y++) {
+					if (x == 0 && y == 0)
+						continue;
+					BlockPos p = pos.offset(x, y, 0);
+					ret.add(p);
+				}
+			}
+			return ret;
+		} else {
+			for (int z = -r; z <= r; z++) {
+				for (int x = -r; x <= r; x++) {
+					if (z == 0 && x == 0)
+						continue;
+					BlockPos p = pos.offset(x, 0, z);
+					ret.add(p);
+				}
+			}
+			return ret;
 		}
 	}
 

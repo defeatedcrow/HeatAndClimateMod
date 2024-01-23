@@ -19,6 +19,7 @@
     "dcs_climate:container/logcont_morus_mulberry",
     "dcs_climate:container/logcont_morus_paper",
     "dcs_climate:container/logcont_morus_rubber",
+    "dcs_climate:container/logcont_myrtle_eucalyptus",
     "dcs_climate:container/logcont_olive_ash",
     "dcs_climate:container/logcont_palm_coconut",
     "dcs_climate:container/logcont_sumac_lacquer",
@@ -46,6 +47,7 @@
     "dcs_climate:container/logcont_palm_coconut",
     "dcs_climate:container/logcont_sumac_lacquer",
     "dcs_climate:container/logcont_sumac_mango",
-    "dcs_climate:container/logcont_charcoal"
+    "dcs_climate:container/logcont_charcoal",
+    "dcs_climate:container/logcont_myrtle_eucalyptus"
   ]
 }

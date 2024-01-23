@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "tag": "dcs_climate:color_pigments/blue"
+    },
+    {
+      "tag": "dcs_climate:color_pigments/black"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "dcs_climate:magic/card_blue_black"
+  }
+}

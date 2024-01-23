@@ -23,7 +23,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
@@ -246,12 +245,9 @@ public class CrowTurretEntity extends LivingEntity {
 				this.kill();
 				return false;
 			} else if (!this.isInvulnerableTo(source) && !this.invisible) {
-				if (source.isExplosion()) {
-					this.onBroken(true);
-					return false;
-				} else if (DamageSource.IN_FIRE.equals(source)) {
+				if (DamageSource.IN_FIRE.equals(source)) {
 					if (this.isOnFire()) {
-						if (causeDamage(source, 0.15F)) {
+						if (causeDamage(source, 0.5F)) {
 							this.onBroken(true);
 						}
 					} else {
@@ -274,19 +270,8 @@ public class CrowTurretEntity extends LivingEntity {
 						if (attacker instanceof LivingEntity && !source.isNoAggro()) {
 							this.setLastHurtByMob((LivingEntity) attacker);
 						}
-						if (attacker instanceof Player) {
+						if (attacker instanceof Player && !source.isExplosion() && !source.isProjectile()) {
 							this.onBroken(false);
-						} else if (attacker instanceof TamableAnimal) {
-							TamableAnimal tamableEntity = (TamableAnimal) attacker;
-							if (tamableEntity.isTame()) {
-								this.lastHurtByPlayerTime = 100;
-								LivingEntity livingentity = tamableEntity.getOwner();
-								if (livingentity != null && livingentity.getType() == EntityType.PLAYER) {
-									this.lastHurtByPlayer = (Player) livingentity;
-								} else {
-									this.lastHurtByPlayer = null;
-								}
-							}
 						}
 					}
 
@@ -370,20 +355,23 @@ public class CrowTurretEntity extends LivingEntity {
 			// 見えなくなったら諦める
 			if (!target.isAlive()) {
 				target = null;
-			} else if (this.distanceToSqr(target) > 16D && !this.hasLineOfSight(target)) {
+			} else if (this.distanceToSqr(target) > 9D && !this.hasLineOfSight(target)) {
 				target = null;
 			} else if (this.distanceToSqr(target) > 48D * 48D) {
 				target = null;
 			} else {
 				// 首振り
-				this.lookAt(target, 20F, 20F);
+				this.lookAt(target, 30F, 30F);
 				Vec2 v1 = this.getRotationVector();
 				Vec2 v2 = this.getLookVec(target);
 
-				if (count <= 0) {
-					if (v1.distanceToSqr(v2) < 1F) {
-						fire();
-					}
+				if (count <= 0 && v1.distanceToSqr(v2) < 16D) {
+					fire();
+					count = 20;
+				} else if (count < -60) {
+					// 3秒経ったらリセットする
+					fire();
+					target = null;
 					count = 20;
 				} else {
 					count--;
@@ -410,7 +398,7 @@ public class CrowTurretEntity extends LivingEntity {
 			ArrowRed red = (ArrowRed) arrowitem.createArrow(level, new ItemStack(arrowitem), this);
 			red.shootFromRotation(this, this.getXRot(), this.getYRot(), 0.0F, 3.0F, 1.0F);
 			red.setCritArrow(true);
-			red.setBaseDamage(red.getBaseDamage() * 2D);
+			red.setBaseDamage(red.getBaseDamage());
 			red.setRange(getRange());
 			red.setSafety();
 			red.pickup = AbstractArrow.Pickup.DISALLOWED;
@@ -421,16 +409,17 @@ public class CrowTurretEntity extends LivingEntity {
 	private LivingEntity getTarget() {
 		// 反撃
 		if (getLastHurtByMob() != null) {
-			if (getLastHurtByMob() == this || !(getLastHurtByMob() instanceof Enemy)) {
+			if (!getLastHurtByMob().isAlive() || !(getLastHurtByMob() instanceof Enemy)) {
 				this.setLastHurtByMob(null);
 			} else {
 				return getLastHurtByMob();
 			}
-		} else if (getLastHurtMob() != null) {
-			if (getLastHurtMob() == this || !(getLastHurtMob() instanceof Enemy)) {
+		}
+		if (getLastHurtMob() != null) {
+			if (!getLastHurtMob().isAlive() || !(getLastHurtMob() instanceof Enemy)) {
 				this.setLastHurtMob(null);
 			} else {
-				return getLastHurtByMob();
+				return getLastHurtMob();
 			}
 		}
 		// 騎乗している

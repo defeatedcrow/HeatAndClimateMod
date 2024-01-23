@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:fluid/bucket_sparkling"
+    },
+    {
+      "tag": "forge:ingredients/empty_pack"
+    },
+    {
+      "tag": "forge:ingredients/empty_pack"
+    },
+    {
+      "tag": "forge:ingredients/empty_pack"
+    },
+    {
+      "tag": "forge:ingredients/empty_pack"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "dcs_climate:food/pack_sparkling"
+  }
+}

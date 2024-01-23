@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/soup_chilibeans"
+  },
+  "parent": "minecraft:item/generated"
+}
