@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/rice"
+    },
+    {
+      "tag": "forge:crops/saffron"
+    },
+    {
+      "tag": "forge:ingredients/cheese"
+    },
+    {
+      "item": "dcs_climate:food/food_bolognese_sauce"
+    },
+    {
+      "item": "dcs_climate:food/food_bechamel_sauce"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/casserole_doria_raw"
+  }
+}

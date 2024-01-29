@@ -5,6 +5,7 @@
     "#forge:seeds/artemisia",
     "#forge:seeds/rapeseed",
     "#forge:seeds/chili",
-    "#forge:seeds/sorrel"
+    "#forge:seeds/sorrel",
+    "dcs_climate:food/sapling_myrtle_wild"
   ]
 }

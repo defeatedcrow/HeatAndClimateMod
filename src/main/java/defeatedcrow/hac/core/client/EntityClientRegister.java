@@ -31,6 +31,7 @@ import defeatedcrow.hac.food.client.entity.RenderBreadCream;
 import defeatedcrow.hac.food.client.entity.RenderBreadSausage;
 import defeatedcrow.hac.food.client.entity.RenderBreadSquare;
 import defeatedcrow.hac.food.client.entity.RenderCake;
+import defeatedcrow.hac.food.client.entity.RenderCasserole;
 import defeatedcrow.hac.food.client.entity.RenderDrinkCold;
 import defeatedcrow.hac.food.client.entity.RenderDrinkCup;
 import defeatedcrow.hac.food.client.entity.RenderFoodBase;
@@ -47,6 +48,7 @@ import defeatedcrow.hac.food.client.entity.RenderSoup;
 import defeatedcrow.hac.food.client.entity.RenderStew;
 import defeatedcrow.hac.food.client.entity.RenderStickBeef;
 import defeatedcrow.hac.food.client.entity.RenderStickMeat;
+import defeatedcrow.hac.food.client.entity.RenderTart;
 import defeatedcrow.hac.food.client.model.BottleModel_Beer;
 import defeatedcrow.hac.food.client.model.BottleModel_Wine;
 import defeatedcrow.hac.food.client.model.BowlSoupModel;
@@ -56,6 +58,7 @@ import defeatedcrow.hac.food.client.model.BreadRoundModel;
 import defeatedcrow.hac.food.client.model.BreadSausageModel;
 import defeatedcrow.hac.food.client.model.BreadSquareModel;
 import defeatedcrow.hac.food.client.model.CakeModel;
+import defeatedcrow.hac.food.client.model.CasseroleModel;
 import defeatedcrow.hac.food.client.model.DrinkCupModel;
 import defeatedcrow.hac.food.client.model.DrinkGlassModel;
 import defeatedcrow.hac.food.client.model.PlateChickenModel;
@@ -69,6 +72,7 @@ import defeatedcrow.hac.food.client.model.SaladModel;
 import defeatedcrow.hac.food.client.model.SandwichModel;
 import defeatedcrow.hac.food.client.model.StickBeefModel;
 import defeatedcrow.hac.food.client.model.StickChickenModel;
+import defeatedcrow.hac.food.client.model.TartModel;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.entity.BottleBeerItem;
 import defeatedcrow.hac.food.material.entity.BottleWineItem;
@@ -77,6 +81,7 @@ import defeatedcrow.hac.food.material.entity.BreadRoundItem;
 import defeatedcrow.hac.food.material.entity.BreadSausageItem;
 import defeatedcrow.hac.food.material.entity.BreadSquareItem;
 import defeatedcrow.hac.food.material.entity.CakeItem;
+import defeatedcrow.hac.food.material.entity.CasseroleItem;
 import defeatedcrow.hac.food.material.entity.DrinkColdItem;
 import defeatedcrow.hac.food.material.entity.DrinkCupItem;
 import defeatedcrow.hac.food.material.entity.PlateBeefItem;
@@ -89,6 +94,7 @@ import defeatedcrow.hac.food.material.entity.SaladItem;
 import defeatedcrow.hac.food.material.entity.SandwichItem;
 import defeatedcrow.hac.food.material.entity.StickBeefItem;
 import defeatedcrow.hac.food.material.entity.StickMeatItem;
+import defeatedcrow.hac.food.material.entity.TartItem;
 import defeatedcrow.hac.food.material.entity.potfoods.PorridgeItem;
 import defeatedcrow.hac.food.material.entity.potfoods.RiceBowlItem;
 import defeatedcrow.hac.food.material.entity.potfoods.SoupItem;
@@ -124,6 +130,7 @@ import defeatedcrow.hac.machine.material.block.TeaPotTile;
 import defeatedcrow.hac.magic.client.entity.RenderBindPlant;
 import defeatedcrow.hac.magic.client.entity.RenderColorArrow;
 import defeatedcrow.hac.magic.client.entity.RenderCrowTurret;
+import defeatedcrow.hac.magic.client.entity.RenderEmpty;
 import defeatedcrow.hac.magic.client.entity.RenderLightCauldron;
 import defeatedcrow.hac.magic.client.model.CrowTurretModel;
 import defeatedcrow.hac.magic.client.model.LightCauldronModel;
@@ -236,11 +243,28 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(BreadCreamItem.BREAD_CREAM_BAKED.getLayerLocation(), BreadCreamModel::createBodyLayer);
 		event.registerLayerDefinition(BreadSausageItem.BREAD_SAUSAGE_RAW.getLayerLocation(), BreadSausageModel::createBodyLayer);
 		event.registerLayerDefinition(BreadSausageItem.BREAD_SAUSAGE_BAKED.getLayerLocation(), BreadSausageModel::createBodyLayer);
+
 		event.registerLayerDefinition(SandwichItem.FRUIT.getLayerLocation(), SandwichModel::createBodyLayer);
 		event.registerLayerDefinition(SandwichItem.MARMALADE.getLayerLocation(), SandwichModel::createBodyLayer);
 		event.registerLayerDefinition(SandwichItem.EGG.getLayerLocation(), SandwichModel::createBodyLayer);
 		event.registerLayerDefinition(SandwichItem.SALAD.getLayerLocation(), SandwichModel::createBodyLayer);
 		event.registerLayerDefinition(SandwichItem.SALMON.getLayerLocation(), SandwichModel::createBodyLayer);
+
+		event.registerLayerDefinition(TartItem.TART_APPLE_RAW.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_APPLE_BAKED.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_PEACH_RAW.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_PEACH_BAKED.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_BERRY_RAW.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_BERRY_BAKED.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_LEMON_RAW.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_LEMON_BAKED.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_COCOA_RAW.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_COCOA_BAKED.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_PISTACHIO_RAW.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_PISTACHIO_BAKED.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_PISTACHIO_RAW.getLayerLocation(), TartModel::createBodyLayer);
+		event.registerLayerDefinition(TartItem.TART_PISTACHIO_BAKED.getLayerLocation(), TartModel::createBodyLayer);
+
 		event.registerLayerDefinition(StickBeefItem.BEEF_RAW.getLayerLocation(), StickBeefModel::createBodyLayer);
 		event.registerLayerDefinition(StickBeefItem.BEEF_COOKED.getLayerLocation(), StickBeefModel::createBodyLayer);
 		event.registerLayerDefinition(StickBeefItem.PORK_RAW.getLayerLocation(), StickBeefModel::createBodyLayer);
@@ -251,6 +275,7 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(StickMeatItem.CHICKEN_COOKED.getLayerLocation(), StickChickenModel::createBodyLayer);
 		event.registerLayerDefinition(StickMeatItem.OFFAL_RAW.getLayerLocation(), StickChickenModel::createBodyLayer);
 		event.registerLayerDefinition(StickMeatItem.OFFAL_COOKED.getLayerLocation(), StickChickenModel::createBodyLayer);
+
 		event.registerLayerDefinition(PlateBeefItem.BEEF_RAW.getLayerLocation(), PlateSteakModel::createBodyLayer);
 		event.registerLayerDefinition(PlateBeefItem.BEEF_COOKED.getLayerLocation(), PlateSteakModel::createBodyLayer);
 		event.registerLayerDefinition(PlateMeatItem.MEAT_RAW.getLayerLocation(), PlateMeatModel::createBodyLayer);
@@ -263,10 +288,25 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(PlateChickenItem.CHICKEN_BIG_COOKED.getLayerLocation(), PlateChickenModel::createBodyLayer);
 		event.registerLayerDefinition(PlateFishItem.FISH_RAW.getLayerLocation(), PlateFishModel::createBodyLayer);
 		event.registerLayerDefinition(PlateFishItem.FISH_COOKED.getLayerLocation(), PlateFishModel::createBodyLayer);
+
 		event.registerLayerDefinition(SaladItem.GREEN.getLayerLocation(), SaladModel::createBodyLayer);
 		event.registerLayerDefinition(SaladItem.POTATO.getLayerLocation(), SaladModel::createBodyLayer);
 		event.registerLayerDefinition(SaladItem.NUTS.getLayerLocation(), SaladModel::createBodyLayer);
 		event.registerLayerDefinition(SaladItem.MELON.getLayerLocation(), SaladModel::createBodyLayer);
+
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_GRATIN_SHRIMP_RAW.getLayerLocation(), CasseroleModel::createBodyLayer);
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_GRATIN_SHRIMP_BAKED.getLayerLocation(), CasseroleModel::createBodyLayer);
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_SHEPHERDS_PIE_RAW.getLayerLocation(), CasseroleModel::createBodyLayer);
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_SHEPHERDS_PIE_BAKED.getLayerLocation(), CasseroleModel::createBodyLayer);
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_DORIA_RAW.getLayerLocation(), CasseroleModel::createBodyLayer);
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_DORIA_BAKED.getLayerLocation(), CasseroleModel::createBodyLayer);
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_JANSSONS_FRESTELESE_RAW.getLayerLocation(), CasseroleModel::createBodyLayer);
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_JANSSONS_FRESTELESE_BAKED.getLayerLocation(), CasseroleModel::createBodyLayer);
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_MOUSSAKA_RAW.getLayerLocation(), CasseroleModel::createBodyLayer);
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_MOUSSAKA_BAKED.getLayerLocation(), CasseroleModel::createBodyLayer);
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_PARMIGIANA_RAW.getLayerLocation(), CasseroleModel::createBodyLayer);
+		event.registerLayerDefinition(CasseroleItem.CASSEROLE_PARMIGIANA_BAKED.getLayerLocation(), CasseroleModel::createBodyLayer);
+
 		event.registerLayerDefinition(PorridgeItem.PORRIDGE.getLayerLocation(), BowlStewModel::createBodyLayer);
 		event.registerLayerDefinition(PorridgeItem.PORRIDGE_MILK.getLayerLocation(), BowlStewModel::createBodyLayer);
 		event.registerLayerDefinition(PorridgeItem.MUESLI.getLayerLocation(), BowlStewModel::createBodyLayer);
@@ -284,6 +324,7 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(PorridgeItem.STEW_MISO_TOFU.getLayerLocation(), BowlStewModel::createBodyLayer);
 		event.registerLayerDefinition(PorridgeItem.STEW_MISO_MUSHROOM.getLayerLocation(), BowlStewModel::createBodyLayer);
 		event.registerLayerDefinition(PorridgeItem.STEW_MISO_PORK.getLayerLocation(), BowlStewModel::createBodyLayer);
+
 		event.registerLayerDefinition(SoupItem.SOUP_CREAM_POTATO.getLayerLocation(), BowlSoupModel::createBodyLayer);
 		event.registerLayerDefinition(SoupItem.SOUP_CREAM_PUMPKIN.getLayerLocation(), BowlSoupModel::createBodyLayer);
 		event.registerLayerDefinition(SoupItem.SOUP_CREAM_CORN.getLayerLocation(), BowlSoupModel::createBodyLayer);
@@ -298,15 +339,19 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(SoupItem.SOUP_MINESTRONE.getLayerLocation(), BowlSoupModel::createBodyLayer);
 		event.registerLayerDefinition(SoupItem.SOUP_CHILIBEANS.getLayerLocation(), BowlSoupModel::createBodyLayer);
 		event.registerLayerDefinition(SoupItem.SOUP_SORREL.getLayerLocation(), BowlSoupModel::createBodyLayer);
+
 		event.registerLayerDefinition(CakeItem.BUTTER.getLayerLocation(), CakeModel::createBodyLayer);
 		event.registerLayerDefinition(CakeItem.BERRY.getLayerLocation(), CakeModel::createBodyLayer);
 		event.registerLayerDefinition(CakeItem.CHOCOLATE.getLayerLocation(), CakeModel::createBodyLayer);
 		event.registerLayerDefinition(CakeItem.GREENTEA.getLayerLocation(), CakeModel::createBodyLayer);
+
 		event.registerLayerDefinition(RiceBowlItem.NORMAL.getLayerLocation(), RiceModel::createBodyLayer);
+
 		event.registerLayerDefinition(BottleBeerItem.BEER.getLayerLocation(), BottleModel_Beer::createBodyLayer);
 		event.registerLayerDefinition(BottleBeerItem.SAKE.getLayerLocation(), BottleModel_Beer::createBodyLayer);
 		event.registerLayerDefinition(BottleWineItem.WINE.getLayerLocation(), BottleModel_Wine::createBodyLayer);
 		event.registerLayerDefinition(BottleWineItem.WINE_WHITE.getLayerLocation(), BottleModel_Wine::createBodyLayer);
+
 		event.registerLayerDefinition(DrinkColdItem.DRINK_BERRY.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_BERRY_SODA.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_GRAPE.getLayerLocation(), DrinkGlassModel::createBodyLayer);
@@ -331,6 +376,7 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(DrinkColdItem.DRINK_TEA_BARLEY.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_TEA_SODA.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_TONIC.getLayerLocation(), DrinkGlassModel::createBodyLayer);
+
 		event.registerLayerDefinition(DrinkCupItem.TEA_APPLE.getLayerLocation(), DrinkCupModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkCupItem.TEA_APPLE_MILK.getLayerLocation(), DrinkCupModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkCupItem.TEA_BERRY.getLayerLocation(), DrinkCupModel::createBodyLayer);
@@ -429,6 +475,8 @@ public class EntityClientRegister {
 		event.registerEntityRenderer(FoodInit.BOTTLE_WINETYPE.get(), RenderBottleWine::new);
 		event.registerEntityRenderer(FoodInit.CUP.get(), RenderDrinkCup::new);
 		event.registerEntityRenderer(FoodInit.GLASS.get(), RenderDrinkCold::new);
+		event.registerEntityRenderer(FoodInit.CASSEROLE.get(), RenderCasserole::new);
+		event.registerEntityRenderer(FoodInit.TART.get(), RenderTart::new);
 
 		event.registerEntityRenderer(MagicInit.ARROW_WHITE_ENTITY.get(), RenderColorArrow::new);
 		event.registerEntityRenderer(MagicInit.ARROW_BLUE_ENTITY.get(), RenderColorArrow::new);
@@ -442,6 +490,7 @@ public class EntityClientRegister {
 		event.registerEntityRenderer(MagicInit.BIND_ELECTRIC_ENTITY.get(), RenderBindPlant::new);
 
 		event.registerEntityRenderer(MagicInit.PHOENIX_LIGHT_ENTITY.get(), RenderLightCauldron::new);
+		event.registerEntityRenderer(MagicInit.SILKY_FAIRY_ENTITY.get(), RenderEmpty::new);
 		event.registerEntityRenderer(MagicInit.CROW_TURRET.get(), RenderCrowTurret::new);
 	}
 

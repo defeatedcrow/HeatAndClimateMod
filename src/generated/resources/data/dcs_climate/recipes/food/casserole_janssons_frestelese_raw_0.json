@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/food_anchovy"
+    },
+    {
+      "tag": "forge:crops/potato"
+    },
+    {
+      "tag": "forge:crops/onion"
+    },
+    {
+      "tag": "forge:ingredients/creams"
+    },
+    {
+      "tag": "forge:ingredients/fat"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/casserole_janssons_frestelese_raw"
+  }
+}

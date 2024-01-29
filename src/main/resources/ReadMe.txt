@@ -31,6 +31,13 @@
  It is a mod that adds "climate" to Minecraft and uses it to do various fun things.
  In addition, M:tG-like magic elements that use the five "color" magic of the climate and land are continuing.
 
+ 主にオーバーワールドの地上部にコンテンツを多数追加し、プレイヤーの生活や冒険に役立つものを追加します。
+ This mod mainly adds a lot of content to the above-ground part of the overworld to help players with their lives and adventures.
+ 一方、地下にはより高い効果を持つ希少な鉱物が追加されます。
+ Meanwhile, rare minerals with higher effects will be added underground.
+ HaCv4は、『地上で準備を整えて地下探索に挑む』というプレイスタイルの強化を目的としています。
+ This mod aims to reinforce the play style of "prepare above ground and take on the challenge of underground exploration."
+
 ・『気候』について About "Climate"
 　『気候』は温度・湿度・通気の3種類のパラメーターとして表され、金属や食べ物を焼いたり、生物にダメージを与えたり、作物の成長に影響したりします。
  "Climate" is expressed as three parameters: temperature, humidity and ventilation. This can burn metal and food, damage living things, and affect crop growth.
@@ -351,6 +358,7 @@
          - resin
          - sweet
 
+
 ◎ 色の魔法 / Color Magic
 
   宝石や作物から『色の魔法の素』を取り出し、魔法のアイテムの素材に使用します。
@@ -383,9 +391,10 @@
 
 #### 更新履歴 / Change log ####
 
-○ v4-alpha14
+○ v4-alpha14 (2014.1.29)
  add: ティーポット
  add: 飲み物
+ add: スープ、タルト、キャセロール
  add: フトモモ科の樹木
  add: いくつかの食材アイテム
  add: 茶葉
@@ -394,8 +403,14 @@
  add: マルチカラー魔法カード
  add: 色の結晶
  change: 魔法ブーストアイテムによるカード魔法の強化
+ change: アイテムタグを色々増やした
+ change: 赤の魔法による爆発は、プレイヤーを巻き込まないようになった
+ fix: 遮光・発光ガラスブロックが空のアイテムをドロップする問題の修正
+ fix: 漬物が食べられない問題の修正
+ fix: 生成される池のサイズを少し小さくした
+ fix: HaC樹木の苗は村の内部に生成されづらくなった
 
-○ v4-alpha13
+○ v4-alpha13 (2023.12.8)
  add: アルファ版石臼
  add: 真鍮・鋼のツール
  add: アルミニウム製の建材

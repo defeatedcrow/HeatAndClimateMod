@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/pastry"
+    },
+    {
+      "tag": "forge:crops/cocoa"
+    },
+    {
+      "tag": "forge:ingredients/fat"
+    },
+    {
+      "tag": "forge:crops/nuts"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:ingredients/creams"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/tart_cocoa_raw"
+  }
+}

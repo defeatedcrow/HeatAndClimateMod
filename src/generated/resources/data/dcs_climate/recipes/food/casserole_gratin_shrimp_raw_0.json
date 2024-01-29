@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/pasta"
+    },
+    {
+      "tag": "forge:ingredients/prawn"
+    },
+    {
+      "tag": "forge:crops/green_leafs"
+    },
+    {
+      "tag": "forge:ingredients/cheese"
+    },
+    {
+      "tag": "forge:ingredients/fat"
+    },
+    {
+      "item": "dcs_climate:food/food_bechamel_sauce"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/casserole_gratin_shrimp_raw"
+  }
+}

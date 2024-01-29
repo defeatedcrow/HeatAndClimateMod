@@ -273,6 +273,181 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_fish", has(TagDC.ItemTag.RAW_EDIBLE_FISH))
 			.save(cons, "dcs_climate:food/plate_fish");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.TART_APPLE_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.PASTRY))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_APPLE))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_NUTS))
+			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CINNAMON))
+			.requires(Ingredient.of(TagDC.ItemTag.CUSTARD))
+			.unlockedBy("has_pastry", has(TagDC.ItemTag.PASTRY))
+			.save(cons, "dcs_climate:food/tart_apple_raw_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TART_PEACH_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.PASTRY))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_PEACH))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_MINT))
+			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+			.requires(Ingredient.of(TagDC.ItemTag.VANILLA_CURED))
+			.requires(Ingredient.of(TagDC.ItemTag.CUSTARD))
+			.unlockedBy("has_pastry", has(TagDC.ItemTag.PASTRY))
+			.save(cons, "dcs_climate:food/tart_peach_raw_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TART_BERRY_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.PASTRY))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_BERRY))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_NUTS))
+			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+			.requires(Ingredient.of(TagDC.ItemTag.CUSTARD))
+			.unlockedBy("has_pastry", has(TagDC.ItemTag.PASTRY))
+			.save(cons, "dcs_climate:food/tart_berry_raw_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TART_LEMON_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.PASTRY))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_LEMON))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_NUTS))
+			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+			.requires(Ingredient.of(Tags.Items.EGGS))
+			.unlockedBy("has_pastry", has(TagDC.ItemTag.PASTRY))
+			.save(cons, "dcs_climate:food/tart_lemon_raw_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TART_COCOA_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.PASTRY))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_COCOA))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_NUTS))
+			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+			.requires(Ingredient.of(Tags.Items.EGGS))
+			.requires(Ingredient.of(TagDC.ItemTag.CREAMS))
+			.unlockedBy("has_pastry", has(TagDC.ItemTag.PASTRY))
+			.save(cons, "dcs_climate:food/tart_cocoa_raw_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TART_PISTACHIO_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.PASTRY))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_PISTACHIO))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_BERRY))
+			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+			.requires(Ingredient.of(Tags.Items.EGGS))
+			.requires(Ingredient.of(TagDC.ItemTag.CREAMS))
+			.unlockedBy("has_pastry", has(TagDC.ItemTag.PASTRY))
+			.save(cons, "dcs_climate:food/tart_pistachio_raw_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TART_PISTACHIO_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.PASTRY))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_PISTACHIO))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CHERRY))
+			.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+			.requires(Ingredient.of(Tags.Items.EGGS))
+			.requires(Ingredient.of(TagDC.ItemTag.CREAMS))
+			.unlockedBy("has_pastry", has(TagDC.ItemTag.PASTRY))
+			.save(cons, "dcs_climate:food/tart_pistachio_raw_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TART_QUICHE_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.PASTRY))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_TOMATO))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
+			.requires(Ingredient.of(TagDC.ItemTag.RAW_MEAT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONION))
+			.requires(Ingredient.of(Tags.Items.EGGS))
+			.requires(Ingredient.of(TagDC.ItemTag.CREAMS))
+			.unlockedBy("has_pastry", has(TagDC.ItemTag.PASTRY))
+			.save(cons, "dcs_climate:food/tart_quiche_raw_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_SHEPHERDS_PIE_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+			.requires(Ingredient.of(Tags.Items.CROPS_CARROT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.requires(Ingredient.of(TagDC.ItemTag.RAW_MUTTON))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(TagDC.ItemTag.MILKS))
+			.requires(Ingredient.of(FoodInit.FOOD_BOLOGNESE_SAUCE.get()))
+			.unlockedBy("has_meat_sauce", has(FoodInit.FOOD_BOLOGNESE_SAUCE.get()))
+			.save(cons, "dcs_climate:food/casserole_shepherds_pie_raw_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_SHEPHERDS_PIE_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+			.requires(Ingredient.of(Tags.Items.CROPS_CARROT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.requires(Ingredient.of(TagDC.ItemTag.RAW_BEEF))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(TagDC.ItemTag.MILKS))
+			.requires(Ingredient.of(FoodInit.FOOD_BOLOGNESE_SAUCE.get()))
+			.unlockedBy("has_meat_sauce", has(FoodInit.FOOD_BOLOGNESE_SAUCE.get()))
+			.save(cons, "dcs_climate:food/casserole_shepherds_pie_raw_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_GRATIN_SHRIMP_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.PASTA))
+			.requires(Ingredient.of(TagDC.ItemTag.PRAWN))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
+			.requires(Ingredient.of(TagDC.ItemTag.CHEESE))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(FoodInit.FOOD_BECHAMEL_SAUCE.get()))
+			.unlockedBy("has_bechamel_sauce", has(FoodInit.FOOD_BECHAMEL_SAUCE.get()))
+			.save(cons, "dcs_climate:food/casserole_gratin_shrimp_raw_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_DORIA_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_RICE))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_SAFFRON))
+			.requires(Ingredient.of(TagDC.ItemTag.CHEESE))
+			.requires(Ingredient.of(FoodInit.FOOD_BOLOGNESE_SAUCE.get()))
+			.requires(Ingredient.of(FoodInit.FOOD_BECHAMEL_SAUCE.get()))
+			.unlockedBy("has_meat_sauce", has(FoodInit.FOOD_BOLOGNESE_SAUCE.get()))
+			.save(cons, "dcs_climate:food/casserole_doria_raw_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_DORIA_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_RICE))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_TURMERIC))
+			.requires(Ingredient.of(TagDC.ItemTag.CHEESE))
+			.requires(Ingredient.of(FoodInit.FOOD_BOLOGNESE_SAUCE.get()))
+			.requires(Ingredient.of(FoodInit.FOOD_BECHAMEL_SAUCE.get()))
+			.unlockedBy("has_meat_sauce", has(FoodInit.FOOD_BOLOGNESE_SAUCE.get()))
+			.save(cons, "dcs_climate:food/casserole_doria_raw_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_MOUSSAKA_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_EGGPLANT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_TOMATO))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.requires(Ingredient.of(TagDC.ItemTag.RAW_MEAT))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(FoodInit.FOOD_BECHAMEL_SAUCE.get()))
+			.unlockedBy("has_bechamel_sauce", has(FoodInit.FOOD_BECHAMEL_SAUCE.get()))
+			.save(cons, "dcs_climate:food/casserole_moussaka_raw_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_MOUSSAKA_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_EGGPLANT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_TOMATO))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.requires(Ingredient.of(FoodInit.FOOD_BECHAMEL_SAUCE.get()))
+			.unlockedBy("has_bechamel_sauce", has(FoodInit.FOOD_BECHAMEL_SAUCE.get()))
+			.save(cons, "dcs_climate:food/casserole_moussaka_raw_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_PARMIGIANA_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_EGGPLANT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_TOMATO))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_GARLIC))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_BASIL))
+			.requires(Ingredient.of(TagDC.ItemTag.CHEESE))
+			.unlockedBy("has_eggplant", has(TagDC.ItemTag.CROP_EGGPLANT))
+			.save(cons, "dcs_climate:food/casserole_parmigiana_raw_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_JANSSONS_FRESTELESE_RAW_ITEM.get(), 1)
+			.requires(Ingredient.of(FoodInit.FOOD_ANCHOVY.get()))
+			.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONION))
+			.requires(Ingredient.of(TagDC.ItemTag.CREAMS))
+			.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+			.unlockedBy("has_anchovy", has(FoodInit.FOOD_ANCHOVY.get()))
+			.save(cons, "dcs_climate:food/casserole_janssons_frestelese_raw_0");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.MUESLI.get(), 1)
 			.requires(Ingredient.of(TagDC.ItemTag.MILKS))
 			.requires(Ingredient.of(TagDC.ItemTag.DUST_OAT))

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/tart_peach_baked"
+  },
+  "parent": "minecraft:item/generated"
+}

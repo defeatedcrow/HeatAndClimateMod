@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/egg_plant"
+    },
+    {
+      "tag": "forge:crops/tomato"
+    },
+    {
+      "tag": "forge:crops/onions"
+    },
+    {
+      "tag": "forge:crops/garlic"
+    },
+    {
+      "tag": "forge:crops/basil"
+    },
+    {
+      "tag": "forge:ingredients/cheese"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/casserole_parmigiana_raw"
+  }
+}

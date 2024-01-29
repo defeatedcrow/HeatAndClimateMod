@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/potato"
+    },
+    {
+      "tag": "forge:crops/carrot"
+    },
+    {
+      "tag": "forge:crops/onions"
+    },
+    {
+      "tag": "forge:ingredients/raw_beef"
+    },
+    {
+      "tag": "forge:ingredients/fat"
+    },
+    {
+      "tag": "forge:ingredients/milks"
+    },
+    {
+      "item": "dcs_climate:food/food_bolognese_sauce"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/casserole_shepherds_pie_raw"
+  }
+}

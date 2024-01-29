@@ -335,7 +335,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 			MagicInit.ARROW_RED.get(), MagicInit.ARROW_GREEN.get());
 
 		tag(TagDC.ItemTag.SEED_WHITE).addTags(TagDC.ItemTag.SEED_CHIVES, TagDC.ItemTag.SEED_GOOSEFOOT, TagDC.ItemTag.SEED_ARTEMISIA,
-			TagDC.ItemTag.SEED_RAPESEED, TagDC.ItemTag.SEED_CHILI, TagDC.ItemTag.SEED_SORREL);
+			TagDC.ItemTag.SEED_RAPESEED, TagDC.ItemTag.SEED_CHILI, TagDC.ItemTag.SEED_SORREL)
+			.add(FoodInit.BLOCK_MY_EUCALYPTUS.get().asItem());
 
 		tag(TagDC.ItemTag.SEED_BLUE).addTags(TagDC.ItemTag.SEED_OAT, TagDC.ItemTag.SEED_MINT, TagDC.ItemTag.SEED_CROCUS, TagDC.ItemTag.SEED_ANEMONE)
 			.add(FoodInit.BLOCK_BH_COMMON.get().asItem(), FoodInit.BLOCK_ER_HEATH.get().asItem(), FoodInit.BLOCK_OL_ASH.get().asItem());

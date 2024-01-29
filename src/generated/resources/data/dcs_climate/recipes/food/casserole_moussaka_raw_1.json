@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/egg_plant"
+    },
+    {
+      "tag": "forge:crops/tomato"
+    },
+    {
+      "tag": "forge:crops/onions"
+    },
+    {
+      "tag": "forge:ingredients/raw_meats"
+    },
+    {
+      "tag": "forge:ingredients/fat"
+    },
+    {
+      "item": "dcs_climate:food/food_bechamel_sauce"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/casserole_moussaka_raw"
+  }
+}

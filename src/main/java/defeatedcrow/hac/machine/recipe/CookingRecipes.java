@@ -248,6 +248,13 @@ public class CookingRecipes {
 			ImmutableList.of(Tags.Fluids.MILK.location().toString()),
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.VANILLA_CURED), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(Tags.Items.EGGS)));
 
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_BOLOGNESE_SAUCE.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags,
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.RAW_MEAT), Ingredient.of(TagDC.ItemTag.CROP_TOMATO), Ingredient.of(TagDC.ItemTag.CROP_ONIONS),
+				Ingredient.of(TagDC.ItemTag.CROP_CELERY), Ingredient.of(Tags.Items.CROPS_CARROT), Ingredient.of(TagDC.ItemTag.CROP_HERBS)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_BECHAMEL_SAUCE.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags,
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.BUTTER), Ingredient.of(TagDC.ItemTag.DUST_WHEAT), Ingredient.of(TagDC.ItemTag.MILKS)));
+
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_CHEESE.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 			tags,
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.COW_MILK), Ingredient.of(TagDC.ItemTag.RENNET)));
@@ -259,6 +266,10 @@ public class CookingRecipes {
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_TOFU.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 			tags,
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.SOY_MILK), Ingredient.of(TagDC.ItemTag.DUST_TRONA)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_SOY_MILK.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+			ImmutableList.of(FluidTags.WATER.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_SOY)));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.BASESOUP_VEGI.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 			ImmutableList.of(FluidTags.WATER.location().toString()),

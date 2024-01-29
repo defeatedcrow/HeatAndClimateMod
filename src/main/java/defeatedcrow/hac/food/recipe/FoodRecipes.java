@@ -38,6 +38,19 @@ public class FoodRecipes {
 		list.add(new Smelting(FoodInit.PLATE_GARLIC_COOKED, FoodInit.PLATE_GARLIC_RAW, 120));
 		list.add(new Smelting(FoodInit.PLATE_CHICKEN_BIG_COOKED, FoodInit.PLATE_CHICKEN_BIG_RAW, 120));
 		list.add(new Smelting(FoodInit.PLATE_FISH_COOKED, FoodInit.PLATE_FISH_RAW, 120));
+		list.add(new Smelting(FoodInit.TART_APPLE_BAKED_ITEM, FoodInit.TART_APPLE_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.TART_BERRY_BAKED_ITEM, FoodInit.TART_BERRY_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.TART_PEACH_BAKED_ITEM, FoodInit.TART_PEACH_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.TART_LEMON_BAKED_ITEM, FoodInit.TART_LEMON_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.TART_COCOA_BAKED_ITEM, FoodInit.TART_COCOA_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.TART_PISTACHIO_BAKED_ITEM, FoodInit.TART_PISTACHIO_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.TART_QUICHE_BAKED_ITEM, FoodInit.TART_QUICHE_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.CASSEROLE_DORIA_BAKED_ITEM, FoodInit.CASSEROLE_DORIA_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.CASSEROLE_GRATIN_SHRIMP_BAKED_ITEM, FoodInit.CASSEROLE_GRATIN_SHRIMP_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.CASSEROLE_JANSSONS_FRESTELESE_BAKED_ITEM, FoodInit.CASSEROLE_JANSSONS_FRESTELESE_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.CASSEROLE_SHEPHERDS_PIE_BAKED_ITEM, FoodInit.CASSEROLE_SHEPHERDS_PIE_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.CASSEROLE_PARMIGIANA_BAKED_ITEM, FoodInit.CASSEROLE_PARMIGIANA_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.CASSEROLE_MOUSSAKA_BAKED_ITEM, FoodInit.CASSEROLE_MOUSSAKA_RAW_ITEM, 120));
 		Smeltings = list.build();
 
 		ImmutableList.Builder<SmeltingBlock> list2 = ImmutableList.builder();

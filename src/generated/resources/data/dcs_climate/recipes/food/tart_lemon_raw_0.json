@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/pastry"
+    },
+    {
+      "tag": "forge:crops/lemon"
+    },
+    {
+      "tag": "forge:ingredients/fat"
+    },
+    {
+      "tag": "forge:crops/nuts"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    },
+    {
+      "tag": "forge:eggs"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/tart_lemon_raw"
+  }
+}

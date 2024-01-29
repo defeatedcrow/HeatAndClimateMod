@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/pastry"
+    },
+    {
+      "tag": "forge:crops/peach"
+    },
+    {
+      "tag": "forge:ingredients/fat"
+    },
+    {
+      "tag": "forge:crops/mint"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    },
+    {
+      "tag": "forge:ingredients/vanilla_cured"
+    },
+    {
+      "tag": "forge:ingredients/custard"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/tart_peach_raw"
+  }
+}

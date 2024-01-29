@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/pastry"
+    },
+    {
+      "tag": "forge:crops/apple"
+    },
+    {
+      "tag": "forge:ingredients/fat"
+    },
+    {
+      "tag": "forge:crops/nuts"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    },
+    {
+      "tag": "forge:crops/cinnamon"
+    },
+    {
+      "tag": "forge:ingredients/custard"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/tart_apple_raw"
+  }
+}

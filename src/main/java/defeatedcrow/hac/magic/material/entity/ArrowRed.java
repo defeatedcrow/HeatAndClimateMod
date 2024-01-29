@@ -48,11 +48,11 @@ public class ArrowRed extends AbstractArrow {
 
 	@Override
 	public void tick() {
-		if (this.inGroundTime > 2 || this.getY() < 0 || this.isInLava()) {
+		if (this.tickCount > 2 && this.inGroundTime > 2 || this.getY() < 0 || this.isInLava()) {
 			this.dealtDamage = true;
 		}
 
-		if ((this.dealtDamage || this.isNoPhysics())) {
+		if (this.dealtDamage) {
 			CustomExplosion exp = new CustomExplosion(level, this, this.getX(), this.getY(), this.getZ(), explodeRenge, isSafety);
 			if (net.minecraftforge.event.ForgeEventFactory.onExplosionStart(level, exp))
 				return;
@@ -76,7 +76,7 @@ public class ArrowRed extends AbstractArrow {
 
 	@Override
 	protected boolean canHitEntity(Entity entity) {
-		return super.canHitEntity(entity) && entity != this.getOwner() && !(entity instanceof Player);
+		return super.canHitEntity(entity) && !this.ownedBy(entity) && !(entity instanceof Player);
 	}
 
 	@Override
