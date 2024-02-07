@@ -1,6 +1,5 @@
 {
   "values": [
-    "#forge:foods/drinks/hot",
-    "#forge:foods/drinks/cold"
+    "#dcs_climate:meals/drinks"
   ]
 }

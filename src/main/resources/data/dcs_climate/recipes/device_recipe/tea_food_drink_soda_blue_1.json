@@ -10,6 +10,9 @@
       "tag": "forge:crops/herbs"
     },
     {
+      "tag": "forge:crops/citrus"
+    },
+    {
       "tag": "forge:ingredients/sugars"
     }
   ],

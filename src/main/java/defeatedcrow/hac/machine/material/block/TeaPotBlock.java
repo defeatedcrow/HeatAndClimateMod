@@ -161,7 +161,7 @@ public class TeaPotBlock extends ProcessTileBlock {
 		BlockEntity tile = level.getBlockEntity(pos);
 		if (tile instanceof TeaPotTile pot && rand.nextInt(3) == 0) {
 			ItemStack output = pot.getDisplay();
-			if (!output.isEmpty() && output.is(TagDC.ItemTag.DRINK_HOT)) {
+			if (!output.isEmpty() && output.is(TagDC.ItemTag.HAC_DRINK_HOT)) {
 				double d0 = pos.getX() + 0.1D + rand.nextDouble() * 0.8D;
 				double d1 = pos.getY() + 0.5D;
 				double d2 = pos.getZ() + 0.1D + rand.nextDouble() * 0.8D;

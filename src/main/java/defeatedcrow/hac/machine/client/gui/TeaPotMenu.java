@@ -29,13 +29,13 @@ public class TeaPotMenu extends AbstractContainerMenu {
 	}
 
 	public static TeaPotMenu getMenu(int i, Inventory playerInv, TeaPotTile cont) {
-		return new TeaPotMenu(MachineInit.TEA_POT_MENU.get(), i, playerInv, cont, new SimpleContainerData(1));
+		return new TeaPotMenu(MachineInit.TEA_POT_MENU.get(), i, playerInv, cont, new SimpleContainerData(2));
 	}
 
 	public TeaPotMenu(MenuType<?> type, int s, Inventory playerInv, TeaPotTile cont, ContainerData d) {
 		super(type, s);
 		checkContainerSize(cont, 7);
-		checkContainerDataCount(d, 1);
+		checkContainerDataCount(d, 2);
 		container = cont;
 		container.startOpen(playerInv.player);
 		isOwner = cont.isOwner(playerInv.player);

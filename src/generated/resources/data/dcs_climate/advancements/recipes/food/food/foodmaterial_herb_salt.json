@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cobalt_ingot": {
+    "has_salt": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ingot_cobalt"
-            ]
+            "tag": "forge:dusts/salt"
           }
         ]
       },
@@ -15,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:core/metalblock_cobalt"
+        "recipe": "dcs_climate:food/foodmaterial_herb_salt"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cobalt_ingot",
+      "has_salt",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:core/metalblock_cobalt"
+      "dcs_climate:food/foodmaterial_herb_salt"
     ]
   }
 }

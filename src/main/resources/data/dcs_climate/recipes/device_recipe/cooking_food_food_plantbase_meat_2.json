@@ -2,17 +2,22 @@
   "type": "dcs_climate:device_recipe",
   "group": "cooking",
   "result": {
-    "item": "dcs_climate:main/dust_salt",
-    "count": 2
-  },
-  "secondary": {
-    "item": "dcs_climate:main/dust_trona",
+    "item": "dcs_climate:food/food_plantbase_meat",
     "count": 1
   },
-  "secondary_rate": 100,
-  "ingredients": [],
+  "ingredients": [
+    {
+      "tag": "forge:crops/beans"
+    },
+    {
+      "tag": "forge:ingredients/cereals"
+    },
+    {
+      "tag": "forge:ingredients/plant_oil"
+    }
+  ],
   "input_fluids": [
-    "forge:brine"
+    "minecraft:water"
   ],
   "heat": [
     "BOIL",

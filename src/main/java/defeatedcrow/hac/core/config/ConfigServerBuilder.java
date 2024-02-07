@@ -2,7 +2,6 @@ package defeatedcrow.hac.core.config;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import defeatedcrow.hac.api.climate.EnumSeason;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class ConfigServerBuilder {
@@ -17,9 +16,9 @@ public class ConfigServerBuilder {
 	public final ForgeConfigSpec.IntValue vStartAut;
 	public final ForgeConfigSpec.IntValue vStartWtr;
 	public final ForgeConfigSpec.IntValue vStartDate;
+	public final ForgeConfigSpec.IntValue vOverYear;
 	public final ForgeConfigSpec.ConfigValue<String> setFormat;
 	public final ForgeConfigSpec.BooleanValue enRealTime;
-	public EnumSeason overYear = EnumSeason.WINTER_LATE;
 	public String dateFormat = "yyyy/MM/dd";
 
 	public static int HUD_type = 0;
@@ -52,6 +51,10 @@ public class ConfigServerBuilder {
 			.comment("Sets the in-game date at server start.")
 			.defineInRange("Game Start Date", 0, 1, 365);
 
+		this.vOverYear = builder
+			.comment("Sets the id of season for the biginning of the years.")
+			.defineInRange("Biginning Year Season ID", 3, 0, 3);
+
 		this.enRealTime = builder
 			.comment("Set the date format used in  real-date settings.")
 			.define("Enable Real Time", false);
@@ -63,38 +66,16 @@ public class ConfigServerBuilder {
 		builder.pop();
 	}
 
-	public void setDateFormat() {
-		String s = this.setFormat.get();
+	public static void setDateFormat() {
+		String s = INSTANCE.setFormat.get();
 		if (s == null) {
-			dateFormat = "yyyy/MM/dd";
+			INSTANCE.dateFormat = "yyyy/MM/dd";
 		} else {
 			if (s.contains("yy") || s.contains("MM") || s.contains("dd")) {
-				dateFormat = s;
+				INSTANCE.dateFormat = s;
 			} else {
-				dateFormat = "yyyy/MM/dd";
+				INSTANCE.dateFormat = "yyyy/MM/dd";
 			}
-		}
-	}
-
-	public void setSeasonOverYear() {
-		int s = 0;
-		overYear = EnumSeason.WINTER_LATE;
-		// 開始日が最も遅い季節を探す
-		if (s < this.vStartSpr.get()) {
-			s = this.vStartSpr.get();
-			overYear = EnumSeason.SPRING_LATE;
-		}
-		if (s < this.vStartSmr.get()) {
-			s = this.vStartSmr.get();
-			overYear = EnumSeason.SUMMER_LATE;
-		}
-		if (s < this.vStartAut.get()) {
-			s = this.vStartAut.get();
-			overYear = EnumSeason.AUTUMN_LATE;
-		}
-		if (s < this.vStartWtr.get()) {
-			s = this.vStartWtr.get();
-			overYear = EnumSeason.WINTER_LATE;
 		}
 	}
 

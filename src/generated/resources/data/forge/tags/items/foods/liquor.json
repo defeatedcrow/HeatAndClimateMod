@@ -1,8 +1,5 @@
 {
   "values": [
-    "dcs_climate:food/bottle_beer",
-    "dcs_climate:food/bottle_sake",
-    "dcs_climate:food/bottle_wine",
-    "dcs_climate:food/bottle_wine_white"
+    "#dcs_climate:meals/liquor"
   ]
 }

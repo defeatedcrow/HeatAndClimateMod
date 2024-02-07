@@ -3,7 +3,7 @@
   "group": "storage_unpack",
   "ingredients": [
     {
-      "tag": "forge:storage_blocks/cobalt"
+      "tag": "forge:storage_blocks/cobalt_alloy"
     }
   ],
   "result": {

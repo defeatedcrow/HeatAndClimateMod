@@ -389,6 +389,7 @@
   "item.dcs_climate.food.bone_chicken":"鶏ガラ",
   "item.dcs_climate.food.skin_pig":"豚革",
   "item.dcs_climate.food.food_raw_frog":"生のカエル肉",
+  "item.dcs_climate.food.food_plantbase_meat":"プラントベースミート",
 
   "item.dcs_climate.food.fish_mullet":"生のボラ",
   "item.dcs_climate.food.fish_smelt":"生のワカサギ",
@@ -438,6 +439,7 @@
 
   "item.dcs_climate.food.food_soysauce":"醤油",
   "item.dcs_climate.food.food_miso":"味噌",
+  "item.dcs_climate.food.food_herb_salt":"ハーブソルト",
   "item.dcs_climate.food.food_mixed_spices":"ミックススパイス",
   "item.dcs_climate.food.food_ketchup":"ケチャップ",
   "item.dcs_climate.food.food_mayonnaise":"マヨネーズ",
@@ -593,6 +595,11 @@
   "item.dcs_climate.food.stick_chicken_cooked":"焼き鳥",
   "item.dcs_climate.food.stick_offal_raw":"生のもつ串",
   "item.dcs_climate.food.stick_offal_cooked":"もつ串",
+  "item.dcs_climate.food.stick_fish_raw":"生の魚串",
+  "item.dcs_climate.food.stick_fish_cooked":"串焼き魚",
+
+  "item.dcs_climate.food.sweetpotato_raw":"紙包みのサツマイモ",
+  "item.dcs_climate.food.sweetpotato_cooked":"焼き芋",
 
   "item.dcs_climate.food.plate_beef_raw":"生のステーキプレート",
   "item.dcs_climate.food.plate_beef_cooked":"ステーキプレート",
@@ -1290,6 +1297,8 @@
   "entity.dcs_climate.stew":"スープボウル",
   "entity.dcs_climate.stick_beef":"串焼き",
   "entity.dcs_climate.stick_meat":"串焼き",
+  "entity.dcs_climate.stick_fish":"串焼き",
+  "entity.dcs_climate.cooked_sweetpotato":"焼き芋",
   "entity.dcs_climate.casserole":"キャセロール",
   "entity.dcs_climate.plate_steak":"ステーキプレート",
   "entity.dcs_climate.plate_meat":"ステーキプレート",
@@ -1348,6 +1357,7 @@
   "dcs.tip.empty_pack":"右クリック:水やミルクを汲むことが出来ます。",
   "dcs.tip.remove_bad_potion":"悪性ポーション効果を解除します。",
   "dcs.tip.healing":"即時回復",
+  "dcs.tip.coodinate":"=== 登録座標 ===",
 
   "dcs.tip.fishdata.biome":"生息域: ",
   "dcs.tip.fishdata.river":"淡水 ",

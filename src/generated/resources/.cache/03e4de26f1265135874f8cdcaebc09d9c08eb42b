@@ -1,4 +1,4 @@
-// 1.19.2	2024-01-29T21:03:33.3551161	Tags for minecraft:item
+// 1.19.2	2024-02-06T22:45:31.9071056	Tags for minecraft:item
 9691b8fa959d0c2eca43b928b1d45c3e5fa4fb15 data/dcs_climate/tags/items/color_drops.json
 1003b47c0766f332ef739eaf3b5ea767d6e9f6c1 data/dcs_climate/tags/items/color_drops/black.json
 969f3e30f0b86599ab5d03e4f9004392ecbef823 data/dcs_climate/tags/items/color_drops/blue.json
@@ -86,9 +86,27 @@ ddf63601841c399b3b24f1adabfa1c0d4433d639 data/dcs_climate/tags/items/magic_cards
 6430da8ed20b60e93622f4512219d1ff14aefcd8 data/dcs_climate/tags/items/mana_drops.json
 8c9f062dc20a9f733b8ed31f95dcfd702f331056 data/dcs_climate/tags/items/mana_elements.json
 14cef5e12e14cfde96c79f6a0d3142b02c0730a3 data/dcs_climate/tags/items/mana_extracts.json
+07180c746820a8b4a0c1147343a276f2900a5d09 data/dcs_climate/tags/items/meals.json
+c20ff62f4af8017188b899eaecba0b9173dddc87 data/dcs_climate/tags/items/meals/boiled_rice.json
+364c5462a2a6589abdbfc986a88b3c40f777ba18 data/dcs_climate/tags/items/meals/bread.json
+5b7a5377f8e02363c61737b7d71cc5f279c527f2 data/dcs_climate/tags/items/meals/bread/plane.json
+8d8c863de08d8f937c70d8be740beb85f122c0cc data/dcs_climate/tags/items/meals/bread/sandwich.json
+7b7be6d388a582ec8bc584a94494adf83882d9d4 data/dcs_climate/tags/items/meals/casserole.json
+a2292d583acc1fc9804dceff1c14f44b73161c62 data/dcs_climate/tags/items/meals/drinks.json
+729e6b5cdbac20edc1b1be77b3cda342d175d8d5 data/dcs_climate/tags/items/meals/drinks/cold.json
+85096a507c07de5cb30eeab436bc2c5e58e70913 data/dcs_climate/tags/items/meals/drinks/hot.json
+321ed8b42214c3e1c90042670daf92ff9cdaaa61 data/dcs_climate/tags/items/meals/liquor.json
+8b81f59cc92ee73e84ecc750cde7ab76ef9ac002 data/dcs_climate/tags/items/meals/plate_meal.json
+ac87e05f51a4cd378c8694a197232eee334a18fa data/dcs_climate/tags/items/meals/porridge.json
+3c0608932fc29a5f787d26de777f255d1406ecc7 data/dcs_climate/tags/items/meals/salad.json
+e86548b9f10725178451a627180c5446b7ae180e data/dcs_climate/tags/items/meals/skewered.json
+434b4c2e102ae0f7d010948787caa23f876a981f data/dcs_climate/tags/items/meals/soup.json
+1d946ecb82bfd115602a95bf2c4207504a1ddecf data/dcs_climate/tags/items/meals/sweets.json
+60f0025f98b7ec0daeecae59c4d6b5009a30f29e data/dcs_climate/tags/items/meals/tart.json
 8b11f0a581e2d2b006dbe0a90333c37cabb5e094 data/dcs_climate/tags/items/motors.json
 152dbc221c9dff2f573eec4b5d6b264eada13aeb data/dcs_climate/tags/items/motors/small.json
-7c0f26688270d606e771694b87370b454e8dcf7d data/dcs_climate/tags/items/raw_foods.json
+14beccb609979217819b872695ab401898eb321a data/dcs_climate/tags/items/raw_foods.json
+b46bf9cdc3f2579ba6e4484e7a451ceffd59c4a5 data/dcs_climate/tags/items/seasoning.json
 7d6fd01964c88a56cda99333872579b37ef749b0 data/forge/tags/items/animal_feeds/compound.json
 0332ee57f7973ff3aa0e5f810558555ce7563caf data/forge/tags/items/animal_feeds/hay.json
 7f473b6b18af20cad07cd66ab6dce77e93ea4f56 data/forge/tags/items/animal_feeds/straw.json
@@ -167,7 +185,7 @@ d86116a85957ea29292227cf36ce6066ade788fe data/forge/tags/items/crops/flowers.jso
 4158f4bc5a5be46205d2cbf8f24951ac29b501bb data/forge/tags/items/crops/green_leafs.json
 00e9e1091a2ffff1a39d965f7c11f3cf39c03dae data/forge/tags/items/crops/guava.json
 3cba94f19d05c7cd6cba7f63da466fc7aba6c52b data/forge/tags/items/crops/heath.json
-efbfbb832cdd557d465fa32c9785abd6cb0e5e1a data/forge/tags/items/crops/herbs.json
+325f1e09175514ca7cbdf9db5957a2ef96ce93da data/forge/tags/items/crops/herbs.json
 e5da6d0924bae02038cc9a5f07546e00d24aec8b data/forge/tags/items/crops/hibiscus.json
 a9336c46090fec115cbba2862b97258934728afa data/forge/tags/items/crops/indigo.json
 d4c9bbf20f5cc1680e28240b9c36c3107391c2f4 data/forge/tags/items/crops/iris.json
@@ -285,8 +303,8 @@ d2179c5c56e6012dbec83c0c0cd1bdc011d8b0bd data/forge/tags/items/dust_blocks/sus.j
 b6bd6d179434f143c5c23709a509aff7bbceb04d data/forge/tags/items/dust_blocks/titanium.json
 5cc570bb13b8d66af94d7c67fefdd9c4a992277f data/forge/tags/items/fertilizer.json
 a2365aef1cbc334b1fe049e17958cd44325cacca data/forge/tags/items/fertilizer_advanced.json
-c20ff62f4af8017188b899eaecba0b9173dddc87 data/forge/tags/items/foods/boiled_rice.json
-a6b07d3f74d595110bb67941ef7b835927b29fd5 data/forge/tags/items/foods/bread.json
+43a31007aac5ca131686c0feab8044f707170d6b data/forge/tags/items/foods/boiled_rice.json
+67e3479ddc2e2e3fb2208c9b1618341e0418fcdd data/forge/tags/items/foods/bread.json
 6ddb26f62487e2f1691999b5c3549e4a5bf5e8fb data/forge/tags/items/foods/cooked_beef.json
 c3c27458abd0552603e7efa5057e67df2cdca0e5 data/forge/tags/items/foods/cooked_chicken.json
 e2dd92f6b67f2992b259b3435fba67ac775aba2e data/forge/tags/items/foods/cooked_cod.json
@@ -297,10 +315,8 @@ c18b5cb2923eb4955572b2bb32cbbee4445bb993 data/forge/tags/items/foods/cooked_mutt
 9f77948b8bcc8ff9ce8d4f192f7156c733795ab7 data/forge/tags/items/foods/cooked_rabbit.json
 606f7f87c60718be3fdbf8a3491ad3fb2edf83b4 data/forge/tags/items/foods/cooked_salmon.json
 6bda0b31e05f29de3a64aa7e96b54a6131c162cb data/forge/tags/items/foods/dough.json
-49707a66591d0bb147cfae05ebdf25ad42923067 data/forge/tags/items/foods/drinks.json
-729e6b5cdbac20edc1b1be77b3cda342d175d8d5 data/forge/tags/items/foods/drinks/cold.json
-85096a507c07de5cb30eeab436bc2c5e58e70913 data/forge/tags/items/foods/drinks/hot.json
-321ed8b42214c3e1c90042670daf92ff9cdaaa61 data/forge/tags/items/foods/liquor.json
+6430e7f3f25f7f3c9e6b2a594c30c863c1abc31e data/forge/tags/items/foods/drinks.json
+1c36e857735a1d0e40bb810ef705900fc0fca276 data/forge/tags/items/foods/liquor.json
 da96ca8fe3674fdc9cf574171466e3d422078cac data/forge/tags/items/gems.json
 1dc28a103e837335c4ea900b117ec729a81f35b9 data/forge/tags/items/gems/agates.json
 538eddc0d54519c15055c7ac3be348ec752f07f8 data/forge/tags/items/gems/almandine.json
@@ -390,6 +406,7 @@ cad896b02570a86ef2ac72664cff96bbef66861b data/forge/tags/items/ingredients/fishe
 3b6a87a66dfdf093d97d6771149dcc2f834351a9 data/forge/tags/items/ingredients/frog.json
 3cfcf453c01724a7c3def7799b2529a6cd3f1258 data/forge/tags/items/ingredients/geratine.json
 42605f4979dd6e747686ec1168b848861673b9c8 data/forge/tags/items/ingredients/grouper.json
+b9c2afe2494a8774717519016972ab1acd894cf8 data/forge/tags/items/ingredients/herb_salt.json
 5f96103d02aa5d63e8d509210a28a1d5e6b3c2a6 data/forge/tags/items/ingredients/honey.json
 6a263f1f017f49d05a9d364c266b9ff733a0ff17 data/forge/tags/items/ingredients/hot_sause.json
 9aa1005736801408e11b2f4f713d65adacbca437 data/forge/tags/items/ingredients/hummus.json
@@ -427,6 +444,7 @@ d14710b6121edb04c184b88cb21ce8d106aafd32 data/forge/tags/items/ingredients/raw_b
 1315cf11d2013abd184236745580fed51e8c925d data/forge/tags/items/ingredients/raw_fishes_edible.json
 f0e43a7c4c9ddafb14a5659bbb8c9cf54cf59647 data/forge/tags/items/ingredients/raw_meats.json
 113f509ec498e488c93d8c889a20d330cc8967d0 data/forge/tags/items/ingredients/raw_mutton.json
+0f8b93bb45d0d6cd9f895542231308b97338d342 data/forge/tags/items/ingredients/raw_plantbase_meats.json
 33cb78441f05ba4ca385d72ebd7ddc4849b986d1 data/forge/tags/items/ingredients/raw_pork.json
 676cee16d107d62d62093f32df13eb8e934c7db9 data/forge/tags/items/ingredients/raw_rabbit.json
 ed812d11a070d92ca88d1d889a167aa4dcda4159 data/forge/tags/items/ingredients/raw_rotten_flesh.json
@@ -511,11 +529,11 @@ c68d1a63e7a7384bfb00671a76f503ed2d314a6a data/forge/tags/items/raw_materials/zin
 578dd629e6c69bf5641983afdf5f54ca2d3b5882 data/forge/tags/items/rods/bamboo.json
 7064c7dc0149fbfaf6b2b059dc440c4996803a4f data/forge/tags/items/rods/sorghum.json
 9f9fd1af73344f5d4085c5598871eed2c2980006 data/forge/tags/items/rods/wooden.json
-daaca5ff26f1d04d21a3c1b2a3f06c7cbcb30982 data/forge/tags/items/saps.json
+117039d113dbcf2020f55ddfcfc176a6ad117c44 data/forge/tags/items/saps.json
 2f5f40ac1ee544ee1065c3d160df3e25d45851f7 data/forge/tags/items/saps/lacquer.json
 39a26713a0d1c8e186e22ce1eff370f3edaabf96 data/forge/tags/items/saps/latex.json
 a66b82d6b5f7061d90bebbb9e49cd395efd72b4d data/forge/tags/items/saps/resin.json
-d281ce5f751383db8f7ec5bd81036d0d6e01f662 data/forge/tags/items/saps/seeet_sap.json
+d281ce5f751383db8f7ec5bd81036d0d6e01f662 data/forge/tags/items/saps/sweet_sap.json
 8af5aab59f2a46f41352f5edff9bdc5825b73477 data/forge/tags/items/seeds.json
 0cec7ece960c9e565f8155e09b18e70626de76a5 data/forge/tags/items/seeds/adzuki.json
 68118c7e0f124d56223e0c0f2d489c86a19f63b0 data/forge/tags/items/seeds/anemone.json

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/cardamom"
+    },
+    {
+      "tag": "forge:crops/cinnamon"
+    },
+    {
+      "tag": "forge:crops/clove"
+    },
+    {
+      "tag": "forge:crops/ginger"
+    },
+    {
+      "tag": "forge:crops/chili"
+    },
+    {
+      "tag": "forge:seeds/apium_seed"
+    },
+    {
+      "tag": "forge:seeds/fennel"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/food_mixed_spices"
+  }
+}

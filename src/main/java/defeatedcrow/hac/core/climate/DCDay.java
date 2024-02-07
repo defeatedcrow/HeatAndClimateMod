@@ -40,7 +40,7 @@ public class DCDay {
 		int aut = ConfigServerBuilder.INSTANCE.vStartAut.get();
 		int wtr = ConfigServerBuilder.INSTANCE.vStartWtr.get();
 		int y = ConfigServerBuilder.INSTANCE.vYear.get();
-		int oy = ConfigServerBuilder.INSTANCE.overYear.id;
+		int oy = ConfigServerBuilder.INSTANCE.vOverYear.get();
 		int season = -1;
 
 		int year = ConfigServerBuilder.INSTANCE.vYear.get();

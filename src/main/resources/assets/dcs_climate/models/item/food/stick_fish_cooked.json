@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/stick_fish_cooked"
+  },
+  "parent": "minecraft:item/generated"
+}

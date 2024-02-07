@@ -390,6 +390,7 @@
   "item.dcs_climate.food.bone_chicken":"Chicken Bones",
   "item.dcs_climate.food.skin_pig":"Pig Leather",
   "item.dcs_climate.food.food_raw_frog":"Raw Frog Legs",
+  "item.dcs_climate.food.food_plantbase_meat":"Plantbase Meat",
 
     "item.dcs_climate.food.fish_mullet":"Raw Mullet",
   "item.dcs_climate.food.fish_smelt":"Raw Smelt",
@@ -439,6 +440,7 @@
 
   "item.dcs_climate.food.food_soysauce":"Soysauce",
   "item.dcs_climate.food.food_miso":"Miso",
+  "item.dcs_climate.food.food_herb_salt":"Herb Salt",
   "item.dcs_climate.food.food_mixed_spices":"Mixed Spices",
   "item.dcs_climate.food.food_ketchup":"Ketchup",
   "item.dcs_climate.food.food_mayonnaise":"Mayonnaise",
@@ -595,6 +597,11 @@
   "item.dcs_climate.food.stick_chicken_cooked":"Grilled Chicken Skewer",
   "item.dcs_climate.food.stick_offal_raw":"Raw Offal Skewer",
   "item.dcs_climate.food.stick_offal_cooked":"Grilled Offal Skewer",
+  "item.dcs_climate.food.stick_fish_raw":"Raw Fish Skewer",
+  "item.dcs_climate.food.stick_fish_cooked":"Grilled Fish Skewer",
+
+  "item.dcs_climate.food.sweetpotato_raw":"Paper-wrapped Sweet Potato",
+  "item.dcs_climate.food.sweetpotato_cooked":"Roasted Sweet Potato",
 
   "item.dcs_climate.food.plate_beef_raw":"Raw Steak Plate",
   "item.dcs_climate.food.plate_beef_cooked":"Grilled Steak",
@@ -1290,6 +1297,8 @@
   "entity.dcs_climate.cake":"Cake",
   "entity.dcs_climate.stick_beef":"Meat Skewer",
   "entity.dcs_climate.stick_meat":"Meat Skewer",
+  "entity.dcs_climate.stick_fish":"Fish Skewer",
+  "entity.dcs_climate.cooked_sweetpotato":"Roasted Sweet Potato",
   "entity.dcs_climate.salad":"Salad",
   "entity.dcs_climate.soup":"Soup Bowl",
   "entity.dcs_climate.stew":"Stew Bowl",
@@ -1351,6 +1360,7 @@
   "dcs.tip.empty_pack":"Right-click: Can be filled with water or milk.",
   "dcs.tip.remove_bad_potion":"Removes bad potion effects.",
   "dcs.tip.healing":"Instant Healing",
+  "dcs.tip.coodinate":"=== Registered Coodinate ===",
 
   "dcs.tip.fishdata.biome":"Biome: ",
   "dcs.tip.fishdata.river":"Fleshwater ",

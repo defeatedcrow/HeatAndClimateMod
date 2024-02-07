@@ -1,0 +1,16 @@
+{
+  "values": [
+    "#dcs_climate:meals/bread",
+    "#dcs_climate:meals/boiled_rice",
+    "#dcs_climate:meals/soup",
+    "#dcs_climate:meals/porridge",
+    "#dcs_climate:meals/casserole",
+    "#dcs_climate:meals/salad",
+    "#dcs_climate:meals/skewered",
+    "#dcs_climate:meals/plate_meal",
+    "#dcs_climate:meals/tart",
+    "#dcs_climate:meals/sweets",
+    "#dcs_climate:meals/liquor",
+    "#dcs_climate:meals/drinks"
+  ]
+}

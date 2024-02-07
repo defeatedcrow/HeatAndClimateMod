@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:food/plate_beef_cooked",
+    "dcs_climate:food/plate_meat_cooked",
+    "dcs_climate:food/plate_legs_cooked",
+    "dcs_climate:food/plate_big_garlic_cooked",
+    "dcs_climate:food/plate_big_chicken_cooked",
+    "dcs_climate:food/plate_fish_cooked"
+  ]
+}

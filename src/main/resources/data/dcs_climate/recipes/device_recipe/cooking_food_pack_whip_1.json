@@ -2,17 +2,21 @@
   "type": "dcs_climate:device_recipe",
   "group": "cooking",
   "result": {
-    "item": "dcs_climate:main/dust_salt",
+    "item": "dcs_climate:food/pack_whip",
     "count": 1
   },
-  "ingredients": [],
-  "input_fluids": [
-    "minecraft:water"
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/plant_oil"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    }
   ],
   "heat": [
-    "BOIL",
-    "OVEN",
-    "KILN"
+    "FROSTBITE",
+    "COLD",
+    "COOL"
   ],
   "hum": [
     "UNDERWATER",

@@ -1,0 +1,11 @@
+{
+  "values": [
+    "dcs_climate:food/bread_nuts_baked",
+    "dcs_climate:food/bread_cinnamon_baked",
+    "dcs_climate:food/bread_anko_baked",
+    "dcs_climate:food/bread_cream_baked",
+    "dcs_climate:food/bread_sausage_baked",
+    "#dcs_climate:meals/bread/plane",
+    "#dcs_climate:meals/bread/sandwich"
+  ]
+}

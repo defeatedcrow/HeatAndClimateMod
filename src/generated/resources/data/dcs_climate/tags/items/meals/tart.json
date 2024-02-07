@@ -1,0 +1,11 @@
+{
+  "values": [
+    "dcs_climate:food/tart_apple_baked",
+    "dcs_climate:food/tart_berry_baked",
+    "dcs_climate:food/tart_peach_baked",
+    "dcs_climate:food/tart_lemon_baked",
+    "dcs_climate:food/tart_cocoa_baked",
+    "dcs_climate:food/tart_pistachio_baked",
+    "dcs_climate:food/tart_quiche_baked"
+  ]
+}

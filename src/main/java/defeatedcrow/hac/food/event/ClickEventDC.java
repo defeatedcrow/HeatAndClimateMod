@@ -4,7 +4,6 @@ import defeatedcrow.hac.api.material.IRapidCollectables;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.material.item.tool.ItemScythe;
 import defeatedcrow.hac.core.tag.TagDC;
-import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
@@ -44,7 +43,7 @@ public class ClickEventDC {
 			BlockState target = event.getLevel().getBlockState(event.getPos());
 
 			// fertilizer
-			if (!item.isEmpty() && TagUtil.matchTag("fertilizer", item.getItem()).isPresent() && !TagUtil.matchTag("fertilizer_avd", item.getItem()).isPresent()) {
+			if (!item.isEmpty() && item.is(TagDC.ItemTag.FERTILIZER)) {
 				int m = DCState.getInt(target, BlockStateProperties.MOISTURE);
 				int f = DCState.getInt(target, DCState.FERTILE);
 				if (target.is(TagDC.BlockTag.FARMLAND) && f < 3) {
@@ -53,7 +52,10 @@ public class ClickEventDC {
 							CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) player, event.getPos(), item);
 						// 肥料アイテムを耕地にまく
 						int f2 = f + 1;
-						BlockState next = FoodInit.FERTILE.get().defaultBlockState().setValue(DCState.FERTILE, f + 1).setValue(BlockStateProperties.MOISTURE, m);
+						if (item.is(TagDC.ItemTag.FERTILIZER_ADV)) {
+							f2 = 3;
+						}
+						BlockState next = FoodInit.FERTILE.get().defaultBlockState().setValue(DCState.FERTILE, f2).setValue(BlockStateProperties.MOISTURE, m);
 						level.setBlockAndUpdate(event.getPos(), next);
 						item.shrink(1);
 						level.levelEvent(1505, event.getPos().above(), 0);

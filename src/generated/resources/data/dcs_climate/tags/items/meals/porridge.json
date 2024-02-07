@@ -1,0 +1,9 @@
+{
+  "values": [
+    "dcs_climate:food/porridge_simple",
+    "dcs_climate:food/porridge_milk",
+    "dcs_climate:food/muesli",
+    "dcs_climate:food/porridge_saffron",
+    "dcs_climate:food/porridge_squid"
+  ]
+}

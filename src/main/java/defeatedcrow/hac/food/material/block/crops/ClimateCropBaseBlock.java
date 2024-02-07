@@ -103,7 +103,8 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			// チャンスは一度だけ
 			int c1 = getMutationChance(level, pos, state);
 			random.nextInt(100);
-			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0 && random.nextInt(100) < c1) {
+
+			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0) {
 				onMutation(level, pos, state, random, c1);
 			}
 
@@ -265,7 +266,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		if (stage == CropStage.GROUND || stage == CropStage.SAPLING) {
 			int c1 = getMutationChance(level, pos, state);
 			random.nextInt(100);
-			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0 && random.nextInt(100) < c1) {
+			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0) {
 				onMutation(level, pos, state, random, c1);
 			}
 		}
@@ -490,7 +491,9 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			BlockState under = world.getBlockState(pos.below());
 			if (!isFarmland(under))
 				return 0;
-			return getFertile(world, pos.below(), under) > 0 ? 100 : 0;
+
+			int f = getFertile(world, pos.below(), under);
+			return f > 0 ? f : 0;
 		}
 		return 0;
 	}

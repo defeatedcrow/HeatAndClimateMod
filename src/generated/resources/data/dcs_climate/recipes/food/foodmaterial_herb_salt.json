@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dusts/salt"
+    },
+    {
+      "tag": "forge:crops/herbs"
+    },
+    {
+      "tag": "forge:crops/spices"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/food_herb_salt"
+  }
+}

@@ -608,6 +608,7 @@ public class TagDC {
 		public static final TagKey<Item> KETCHUP = itemTag("ingredients/ketchup");
 		public static final TagKey<Item> MAYONNAISE = itemTag("ingredients/mayonnaise");
 		public static final TagKey<Item> HOT_SAUSE = itemTag("ingredients/hot_sause");
+		public static final TagKey<Item> HERB_SALT = itemTag("ingredients/herb_salt");
 		public static final TagKey<Item> MIXED_SPICES = itemTag("ingredients/mixed_spices");
 		public static final TagKey<Item> HUMMUS = itemTag("ingredients/hummus");
 		public static final TagKey<Item> SALSA = itemTag("ingredients/salsa");
@@ -642,7 +643,7 @@ public class TagDC {
 		public static final TagKey<Item> FOOD_WAX = itemTag("ingredients/wax");
 		public static final TagKey<Item> CAMPHOR = itemTag("ingredients/camphor");
 
-		public static final TagKey<Item> SAP_SWEET = itemTag("saps/seeet_sap");
+		public static final TagKey<Item> SAP_SWEET = itemTag("saps/sweet_sap");
 		public static final TagKey<Item> SAP_RESIN = itemTag("saps/resin");
 		public static final TagKey<Item> SAP_LATEX = itemTag("saps/latex");
 		public static final TagKey<Item> SAP_LACQUER = itemTag("saps/lacquer");
@@ -672,17 +673,36 @@ public class TagDC {
 
 		public static final TagKey<Item> DOUGH = itemTag("foods/dough");
 		public static final TagKey<Item> BREAD = itemTag("foods/bread");
-
 		public static final TagKey<Item> BOILED_RICE = itemTag("foods/boiled_rice");
 
 		public static final TagKey<Item> RAW_SAUSAGE = itemTag("ingredients/raw_sausage");
 		public static final TagKey<Item> COOKED_SAUSAGE = itemTag("ingredients/cooked_sausage");
 
 		public static final TagKey<Item> LIQUOR = itemTag("foods/liquor");
-
 		public static final TagKey<Item> DRINK = itemTag("foods/drinks");
-		public static final TagKey<Item> DRINK_HOT = itemTag("foods/drinks/hot");
-		public static final TagKey<Item> DRINK_COLD = itemTag("foods/drinks/cold");
+
+		public static final TagKey<Item> HAC_SEASONING = ItemTags.create(new ResourceLocation("dcs_climate", "seasoning"));
+
+		public static final TagKey<Item> HAC_MEALS = ItemTags.create(new ResourceLocation("dcs_climate", "meals"));
+		public static final TagKey<Item> HAC_BREAD = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread"));
+		public static final TagKey<Item> HAC_BREAD_PLANE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread/plane"));
+		public static final TagKey<Item> HAC_BREAD_SANDWICH = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread/sandwich"));
+		public static final TagKey<Item> HAC_BOILED_RICE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/boiled_rice"));
+		public static final TagKey<Item> HAC_SOUP = ItemTags.create(new ResourceLocation("dcs_climate", "meals/soup"));
+		public static final TagKey<Item> HAC_PORRIDGE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/porridge"));
+		public static final TagKey<Item> HAC_CASSEROLE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/casserole"));
+		public static final TagKey<Item> HAC_SALAD = ItemTags.create(new ResourceLocation("dcs_climate", "meals/salad"));
+		public static final TagKey<Item> HAC_SKEWERED = ItemTags.create(new ResourceLocation("dcs_climate", "meals/skewered"));
+		public static final TagKey<Item> HAC_PLATE_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/plate_meal"));
+		public static final TagKey<Item> HAC_TART = ItemTags.create(new ResourceLocation("dcs_climate", "meals/tart"));
+		public static final TagKey<Item> HAC_SWEETS = ItemTags.create(new ResourceLocation("dcs_climate", "meals/sweets"));
+
+		public static final TagKey<Item> HAC_LIQUOR = ItemTags.create(new ResourceLocation("dcs_climate", "meals/liquor"));
+		public static final TagKey<Item> HAC_DRINK = ItemTags.create(new ResourceLocation("dcs_climate", "meals/drinks"));
+		public static final TagKey<Item> HAC_DRINK_HOT = ItemTags.create(new ResourceLocation("dcs_climate", "meals/drinks/hot"));
+		public static final TagKey<Item> HAC_DRINK_COLD = ItemTags.create(new ResourceLocation("dcs_climate", "meals/drinks/cold"));
+
+		public static final TagKey<Item> HAC_ANIMAL = ItemTags.create(new ResourceLocation("dcs_climate", "ingredient/animal_base"));
 
 		// vanilla
 		public static final TagKey<Item> CROP_APPLE = itemTag("crops/apple");
@@ -700,6 +720,7 @@ public class TagDC {
 		public static final TagKey<Item> RAW_RABBIT = itemTag("ingredients/raw_rabbit");
 		public static final TagKey<Item> RAW_MEAT = itemTag("ingredients/raw_meats");
 		public static final TagKey<Item> RAW_ROTTEN = itemTag("ingredients/raw_rotten_flesh");
+		public static final TagKey<Item> RAW_PLANT_MEAT = itemTag("ingredients/raw_plantbase_meats");
 
 		public static final TagKey<Item> COOKED_BEEF = itemTag("foods/cooked_beef");
 		public static final TagKey<Item> COOKED_PORK = itemTag("foods/cooked_pork");

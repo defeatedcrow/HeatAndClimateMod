@@ -156,6 +156,20 @@ public class SilverBadge extends MagicJewelBase {
 		MutableComponent itemName = Component.translatable("dcs.tip.badge_s.name." + getColor().toString());
 		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
+		if (!DCUtil.isEmpty(item) && getColor().isBlue) {
+			if (item.hasTag() && item.getTag().contains(TagKeyDC.DIM_LOCATION)) {
+				CompoundTag tag = item.getTag();
+				String s1 = tag.getString(TagKeyDC.DIM_LOCATION);
+				int dx = tag.getInt(TagKeyDC.POS_X);
+				int dy = tag.getInt(TagKeyDC.POS_Y);
+				int dz = tag.getInt(TagKeyDC.POS_Z);
+				list.add(Component.translatable("dcs.tip.coodinate").withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("DIM: " + s1).withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("X: " + dx).withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("Y: " + dy).withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("Z: " + dz).withStyle(ChatFormatting.GRAY));
+			}
+		}
 		if (ClimateCore.proxy.keyShiftPushed()) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.badge_s.desc." + getColor().toString());
 			list.add(itemTip);

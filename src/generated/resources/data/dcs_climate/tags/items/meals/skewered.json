@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:food/stick_beef_cooked",
+    "dcs_climate:food/stick_pork_cooked",
+    "dcs_climate:food/stick_mutton_cooked",
+    "dcs_climate:food/stick_chicken_cooked",
+    "dcs_climate:food/stick_offal_cooked",
+    "dcs_climate:food/stick_fish_cooked"
+  ]
+}

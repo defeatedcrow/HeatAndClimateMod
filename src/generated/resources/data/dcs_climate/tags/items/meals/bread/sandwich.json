@@ -1,0 +1,9 @@
+{
+  "values": [
+    "dcs_climate:food/sandwich_fruit",
+    "dcs_climate:food/sandwich_marmalade",
+    "dcs_climate:food/sandwich_egg",
+    "dcs_climate:food/sandwich_salad",
+    "dcs_climate:food/sandwich_salmon"
+  ]
+}

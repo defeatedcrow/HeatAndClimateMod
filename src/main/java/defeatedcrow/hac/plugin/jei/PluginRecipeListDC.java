@@ -89,15 +89,15 @@ public class PluginRecipeListDC {
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_ML_BLUE.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_ML_TROPICAL.get());
 
+		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_MO_BINDWEED.get());
+		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_MO_WATER.get());
+		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_MO_POTATO.get());
+		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_MO_FLOWER.get());
+
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_OR_SPIRANTHES.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_OR_CYMBIDIUM.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_OR_VANILLA.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_OR_CATTLEYA.get());
-
-		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_HB_MINT.get());
-		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_HB_BASIL.get());
-		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_HB_PERILLA.get());
-		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_HB_LAVENDER.get());
 
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PD_ROGERIA.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PD_SESAMI.get());

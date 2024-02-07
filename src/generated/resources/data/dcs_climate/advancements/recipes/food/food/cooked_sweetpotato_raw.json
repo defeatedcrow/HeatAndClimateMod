@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dusts/cobalt": {
+    "has_sweetpotato": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:dusts/cobalt"
+            "tag": "forge:crops/sweet_potato"
           }
         ]
       },
@@ -13,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:core/dustblock_cobalt"
+        "recipe": "dcs_climate:food/cooked_sweetpotato_raw"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_dusts/cobalt",
+      "has_sweetpotato",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:core/dustblock_cobalt"
+      "dcs_climate:food/cooked_sweetpotato_raw"
     ]
   }
 }

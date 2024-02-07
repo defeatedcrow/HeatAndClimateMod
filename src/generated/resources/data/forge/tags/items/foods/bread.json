@@ -1,7 +1,6 @@
 {
   "values": [
-    "dcs_climate:food/bread_round_baked",
-    "dcs_climate:food/bread_square_baked",
-    "minecraft:bread"
+    "minecraft:bread",
+    "#dcs_climate:meals/bread/plane"
   ]
 }

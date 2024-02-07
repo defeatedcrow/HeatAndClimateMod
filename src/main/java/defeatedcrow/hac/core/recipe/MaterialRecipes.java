@@ -71,7 +71,7 @@ public class MaterialRecipes {
 	public static final Alloy MAGNET = new Alloy("magnet", Rarity.RARE, () -> CoreInit.METALBLOCK_MAGNET.get(), () -> CoreInit.DUSTBLOCK_MAGNET.get(), () -> CoreInit.INGOT_MAGNET
 		.get(), () -> TagDC.ItemTag.DUST_MAGNETITE, () -> TagDC.ItemTag.DUST_COAL, () -> TagDC.ItemTag.GEM_CELESTITE);
 
-	public static final Alloy COBALT = new Alloy("cobalt", Rarity.RARE, () -> CoreInit.METALBLOCK_COBALT.get(), () -> CoreInit.DUSTBLOCK_COBALT.get(), () -> CoreInit.INGOT_COBALT
+	public static final Alloy COBALT = new Alloy("cobalt_alloy", Rarity.RARE, () -> CoreInit.METALBLOCK_COBALT.get(), () -> CoreInit.DUSTBLOCK_COBALT.get(), () -> CoreInit.INGOT_COBALT
 		.get(), () -> TagDC.ItemTag.DUST_COBALT, () -> TagDC.ItemTag.DUST_CHROMIUM, () -> TagDC.ItemTag.DUST_TUNGSTEN);
 
 	public static final Alloy HASTELLOY = new Alloy("hastelloy", Rarity.RARE, () -> CoreInit.METALBLOCK_HASTELLOY.get(), () -> CoreInit.DUSTBLOCK_HASTELLOY.get(), () -> CoreInit.INGOT_HASTELLOY

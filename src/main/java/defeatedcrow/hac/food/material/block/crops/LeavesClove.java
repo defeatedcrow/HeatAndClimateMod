@@ -24,8 +24,8 @@ public class LeavesClove extends LeavesCropBlockDC {
 
 	public LeavesClove() {
 		super(CropType.MYRTLE, CropTier.COMMON, false);
-		this.setSeason(EnumSeason.SUMMER_LATE, EnumSeason.WINTER_LATE);
-		flowerSeasons.add(EnumSeason.AUTUMN_EARLY);
+		this.setSeason(EnumSeason.SUMMER_LATE, EnumSeason.AUTUMN_EARLY);
+		flowerSeasons.add(EnumSeason.WINTER_LATE);
 		cropSeasons.add(EnumSeason.SPRING_EARLY);
 	}
 

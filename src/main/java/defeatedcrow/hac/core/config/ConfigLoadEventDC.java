@@ -20,7 +20,6 @@ public class ConfigLoadEventDC {
 
 	static void onFileLoad() {
 		ConfigServerBuilder.INSTANCE.setDateFormat();
-		ConfigServerBuilder.INSTANCE.setSeasonOverYear();
 	}
 
 }

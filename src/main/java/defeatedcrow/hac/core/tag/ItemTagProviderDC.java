@@ -206,8 +206,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 			TagDC.ItemTag.CROP_CHILI, TagDC.ItemTag.CROP_PAPRIKA, TagDC.ItemTag.CROP_GINGER, TagDC.ItemTag.CROP_CARDAMOM,
 			TagDC.ItemTag.CROP_TURMERIC, TagDC.ItemTag.CROP_CINNAMON, TagDC.ItemTag.CROP_SICHUAN_PEPPER, TagDC.ItemTag.CROP_CLOVE);
 
-		tag(TagDC.ItemTag.CROP_HERBS).addTags(TagDC.ItemTag.CROP_CHIVES,
-			TagDC.ItemTag.CROP_FENNEL, TagDC.ItemTag.CROP_CELERY, TagDC.ItemTag.CROP_CORIANDER, TagDC.ItemTag.CROP_ARTEMISIA,
+		tag(TagDC.ItemTag.CROP_HERBS).addTags(TagDC.ItemTag.CROP_FENNEL, TagDC.ItemTag.CROP_CELERY, TagDC.ItemTag.CROP_CORIANDER, TagDC.ItemTag.CROP_ARTEMISIA,
 			TagDC.ItemTag.CROP_MINT, TagDC.ItemTag.CROP_BASIL, TagDC.ItemTag.CROP_PERILLA, TagDC.ItemTag.CROP_HEATH, TagDC.ItemTag.CROP_SAFFRON);
 
 		tag(TagDC.ItemTag.CROP_SPICY_VEGI).addTags(TagDC.ItemTag.CROP_CHIVES, TagDC.ItemTag.CROP_ONION, TagDC.ItemTag.CROP_GARLIC, TagDC.ItemTag.CROP_GINGER);
@@ -307,8 +306,6 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.SPARKLING).add(CoreInit.SPARKLING.getBucket().get());
 
-		tag(TagDC.ItemTag.DRINK).addTags(TagDC.ItemTag.DRINK_HOT, TagDC.ItemTag.DRINK_COLD);
-
 		tag(TagDC.ItemTag.RAW_MEAT).addTags(TagDC.ItemTag.RAW_BEEF, TagDC.ItemTag.RAW_PORK, TagDC.ItemTag.RAW_CHICKEN,
 			TagDC.ItemTag.RAW_MUTTON, TagDC.ItemTag.RAW_RABBIT, TagDC.ItemTag.FROG);
 
@@ -328,6 +325,24 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.CLOTHS).addTags(TagDC.ItemTag.CLOTH_PLANT, TagDC.ItemTag.CLOTH_COTTON, TagDC.ItemTag.CLOTH_WOOL);
 
 		tag(Tags.Items.RODS_WOODEN).addTags(TagDC.ItemTag.STICK_SORGHUM);
+
+		// foods
+		tag(TagDC.ItemTag.HAC_BREAD).addTags(TagDC.ItemTag.HAC_BREAD_PLANE, TagDC.ItemTag.HAC_BREAD_SANDWICH);
+		tag(TagDC.ItemTag.HAC_DRINK).addTags(TagDC.ItemTag.HAC_DRINK_HOT, TagDC.ItemTag.HAC_DRINK_COLD);
+		tag(TagDC.ItemTag.HAC_MEALS).addTags(TagDC.ItemTag.HAC_BREAD, TagDC.ItemTag.HAC_BOILED_RICE, TagDC.ItemTag.HAC_SOUP,
+			TagDC.ItemTag.HAC_PORRIDGE, TagDC.ItemTag.HAC_CASSEROLE, TagDC.ItemTag.HAC_SALAD,
+			TagDC.ItemTag.HAC_SKEWERED, TagDC.ItemTag.HAC_PLATE_MEAL, TagDC.ItemTag.HAC_TART,
+			TagDC.ItemTag.HAC_SWEETS, TagDC.ItemTag.HAC_LIQUOR, TagDC.ItemTag.HAC_DRINK);
+
+		tag(TagDC.ItemTag.BREAD).addTags(TagDC.ItemTag.HAC_BREAD_PLANE);
+		tag(TagDC.ItemTag.BOILED_RICE).addTags(TagDC.ItemTag.HAC_BOILED_RICE);
+		tag(TagDC.ItemTag.DRINK).addTags(TagDC.ItemTag.HAC_DRINK);
+		tag(TagDC.ItemTag.LIQUOR).addTags(TagDC.ItemTag.HAC_LIQUOR);
+
+		tag(TagDC.ItemTag.HAC_SEASONING).addTags(TagDC.ItemTag.SOYSAUCE, TagDC.ItemTag.MISO,
+			TagDC.ItemTag.MIXED_SPICES, TagDC.ItemTag.KETCHUP, TagDC.ItemTag.MAYONNAISE,
+			TagDC.ItemTag.HOT_SAUSE, TagDC.ItemTag.VINEGAR, TagDC.ItemTag.HUMMUS,
+			TagDC.ItemTag.SALSA, TagDC.ItemTag.HERB_SALT, TagDC.ItemTag.SUGARS);
 
 		// magic
 

@@ -46,6 +46,7 @@ import defeatedcrow.hac.core.util.MaterialsDC;
 import defeatedcrow.hac.core.util.TierDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.fluid.WaterTypeFluidDC;
+import defeatedcrow.hac.food.recipe.FlavorCustomRecipe;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.particles.ParticleType;
@@ -71,6 +72,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SimpleRecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Fluid;
@@ -498,6 +500,9 @@ public class CoreInit {
 
 	public static final RegistryObject<RecipeType<DummyDeviceRecipe>> DEVICE_RECIPE = RECIPE_TYPE.register("device_recipe", () -> new RecipeType<DummyDeviceRecipe>() {});
 	public static final RegistryObject<RecipeSerializer<DummyDeviceRecipe>> DEVICE_RECIPE_SEREALIZER = RECIPE_SEREALIZER.register("device_recipe", () -> new DummyDeviceRecipeSerealizer());
+
+	public static final RegistryObject<RecipeType<FlavorCustomRecipe>> FLAVOR = RECIPE_TYPE.register("food_customize", () -> new RecipeType<FlavorCustomRecipe>() {});
+	public static final RegistryObject<RecipeSerializer<FlavorCustomRecipe>> FLAVOR_SEREALIZER = RECIPE_SEREALIZER.register("food_customize", () -> new SimpleRecipeSerializer<>(FlavorCustomRecipe::new));
 
 	public static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> register(String name, MenuType.MenuSupplier<T> supplier) {
 		return MENU_TYPE.register(name, () -> new MenuType<>(supplier));
