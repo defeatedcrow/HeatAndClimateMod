@@ -37,8 +37,13 @@ public class ConnectedGlassBlock extends BlockDC {
 			return light;
 		}));
 		name = s;
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.NORTH, false).setValue(DCState.SOUTH, false).setValue(DCState.EAST, false)
-			.setValue(DCState.WEST, false).setValue(DCState.UP, false).setValue(DCState.DOWN, false));
+		this.registerDefaultState(this.stateDefinition.any()
+			.setValue(DCState.NORTH, false)
+			.setValue(DCState.SOUTH, false)
+			.setValue(DCState.EAST, false)
+			.setValue(DCState.WEST, false)
+			.setValue(DCState.UP, false)
+			.setValue(DCState.DOWN, false));
 	}
 
 	public ConnectedGlassBlock(String s) {
@@ -135,23 +140,8 @@ public class ConnectedGlassBlock extends BlockDC {
 
 	@Override
 	public BlockState updateShape(BlockState s1, Direction dir, BlockState s2, LevelAccessor level, BlockPos pos, BlockPos pos2) {
-		if (dir == Direction.NORTH) {
-			return s1.setValue(DCState.NORTH, connectsTo(s2, level, pos2, dir.getOpposite()));
-		}
-		if (dir == Direction.SOUTH) {
-			return s1.setValue(DCState.SOUTH, connectsTo(s2, level, pos2, dir.getOpposite()));
-		}
-		if (dir == Direction.EAST) {
-			return s1.setValue(DCState.EAST, connectsTo(s2, level, pos2, dir.getOpposite()));
-		}
-		if (dir == Direction.WEST) {
-			return s1.setValue(DCState.WEST, connectsTo(s2, level, pos2, dir.getOpposite()));
-		}
-		if (dir == Direction.UP) {
-			return s1.setValue(DCState.UP, connectsTo(s2, level, pos2, dir.getOpposite()));
-		}
-		if (dir == Direction.DOWN) {
-			return s1.setValue(DCState.DOWN, connectsTo(s2, level, pos2, dir.getOpposite()));
+		if (dir != null) {
+			return s1.setValue(DCState.getFacingProperty(dir), connectsTo(s2, level, pos2, dir.getOpposite()));
 		}
 		return super.updateShape(s1, dir, s2, level, pos, pos2);
 	}

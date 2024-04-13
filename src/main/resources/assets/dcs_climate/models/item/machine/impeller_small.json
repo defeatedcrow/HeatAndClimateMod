@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/machine/impeller_small"
+  },
+  "parent": "minecraft:item/generated"
+}

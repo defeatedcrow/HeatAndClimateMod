@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "tag": "dcs_climate:impellers/small"
+    },
+    "X": {
+      "tag": "forge:ingots/nickel_silver"
+    },
+    "Y": {
+      "tag": "dcs_climate:pipe_fluid"
+    },
+    "Z": {
+      "tag": "dcs_climate:battery_items/small"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XZX",
+    "XWX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/water_pump"
+  }
+}

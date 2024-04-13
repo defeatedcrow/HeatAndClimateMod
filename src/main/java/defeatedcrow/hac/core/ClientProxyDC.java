@@ -6,6 +6,7 @@ import com.mojang.blaze3d.platform.InputConstants;
 
 import defeatedcrow.hac.core.client.AdvTooltipEvent;
 import defeatedcrow.hac.core.client.ClimateHUDEvent;
+import defeatedcrow.hac.core.client.ColorHandlerRegister;
 import defeatedcrow.hac.core.client.DCTextureStitch;
 import defeatedcrow.hac.core.client.EntityClientRegister;
 import defeatedcrow.hac.core.client.RenderPlayerEventDC;
@@ -16,7 +17,10 @@ import defeatedcrow.hac.core.climate.ClientClimateData;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
 import defeatedcrow.hac.core.event.ClientTickEventDC;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.machine.client.gui.BoilerBiomassScreen;
 import defeatedcrow.hac.machine.client.gui.CookingPotScreen;
+import defeatedcrow.hac.machine.client.gui.EnergyBatteryScreen;
+import defeatedcrow.hac.machine.client.gui.EnergyGeneratorScreen;
 import defeatedcrow.hac.machine.client.gui.FermentationJarScreen;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberScreen;
 import defeatedcrow.hac.machine.client.gui.MillScreen;
@@ -43,6 +47,8 @@ public class ClientProxyDC extends CommonProxyDC {
 		bus.addListener(EntityClientRegister::registerEntityRenderers);
 		bus.addListener(EntityClientRegister::registerClientReloadListeners);
 		bus.addListener(EntityClientRegister::registerParticle);
+		bus.addListener(ColorHandlerRegister::registerBlockColorHandler);
+		bus.addListener(ColorHandlerRegister::registerItemColorHandler);
 	}
 
 	@Override
@@ -74,6 +80,9 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(MachineInit.TEA_POT_MENU.get(), TeaPotScreen::new);
 		MenuScreens.register(MachineInit.JAR_MENU.get(), FermentationJarScreen::new);
 		MenuScreens.register(MachineInit.MILL_MENU.get(), MillScreen::new);
+		MenuScreens.register(MachineInit.BATTERY_MENU.get(), EnergyBatteryScreen::new);
+		MenuScreens.register(MachineInit.GENERATOR_MENU.get(), EnergyGeneratorScreen::new);
+		MenuScreens.register(MachineInit.BOILER_BIOMASS_MENU.get(), BoilerBiomassScreen::new);
 		MenuScreens.register(MagicInit.BORING_SURVEY_MENU.get(), BoringScreen::new);
 
 		EntityClientRegister.registerRenderTypes();

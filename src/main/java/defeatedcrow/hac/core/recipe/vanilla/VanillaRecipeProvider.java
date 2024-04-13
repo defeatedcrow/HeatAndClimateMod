@@ -18,6 +18,7 @@ import defeatedcrow.hac.core.recipe.mill.MillsDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
@@ -475,6 +476,46 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_dye_red", has(Tags.Items.DYES_RED))
 			.save(cons, "dcs_climate:build/black_mosaic_red");
 
+		ShapedRecipeBuilder.shaped(BuildInit.SLAB_DIRT.get(), 6)
+			.pattern("XXX")
+			.define('X', ItemTags.DIRT)
+			.unlockedBy("has_dirt", has(ItemTags.DIRT))
+			.save(cons, "dcs_climate:core/slab_dirt");
+
+		ShapedRecipeBuilder.shaped(Blocks.DIRT, 1)
+			.pattern("X")
+			.pattern("X")
+			.define('X', BuildInit.SLAB_DIRT.get())
+			.unlockedBy("has_dirt_slab", has(BuildInit.SLAB_DIRT.get()))
+			.save(cons, "dcs_climate:core/dirt_from_slabs");
+
+		ShapedRecipeBuilder.shaped(BuildInit.SLAB_GRAVEL.get(), 6)
+			.pattern("XXX")
+			.define('X', Tags.Items.GRAVEL)
+			.unlockedBy("has_gravel", has(Tags.Items.GRAVEL))
+			.save(cons, "dcs_climate:core/slab_gravel");
+
+		ShapedRecipeBuilder.shaped(Blocks.GRAVEL, 1)
+			.pattern("X")
+			.pattern("X")
+			.define('X', BuildInit.SLAB_GRAVEL.get())
+			.unlockedBy("has_gravel_slab", has(BuildInit.SLAB_GRAVEL.get()))
+			.save(cons, "dcs_climate:core/gravel_from_slabs");
+
+		ShapedRecipeBuilder.shaped(BuildInit.ADOBE_BLOCK_WET.get(), 4)
+			.pattern("XX")
+			.pattern("XX")
+			.define('X', ItemTags.DIRT)
+			.unlockedBy("has_dirt", has(ItemTags.DIRT))
+			.save(cons, "dcs_climate:core/adobe_wet");
+
+		ShapedRecipeBuilder.shaped(BuildInit.ADOBE_BRICKS.get(), 1)
+			.pattern("XX")
+			.pattern("XX")
+			.define('X', CoreInit.ADOBE_BRICK_ITEM.get())
+			.unlockedBy("has_adobe_brick_item", has(CoreInit.ADOBE_BRICK_ITEM.get()))
+			.save(cons, "dcs_climate:core/adobe_bricks_block");
+
 		ShapedRecipeBuilder.shaped(BuildInit.GLASS_LIGHT.get(), 8)
 			.pattern("XXX")
 			.pattern("XYX")
@@ -840,6 +881,16 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_leather", has(Tags.Items.LEATHER))
 			.save(cons, "dcs_climate:core/bellow_1");
 
+		ShapedRecipeBuilder.shaped(CoreInit.SCREWDRIVER.get(), 1)
+			.pattern("X")
+			.pattern("Y")
+			.pattern("Z")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', ItemTags.PLANKS)
+			.define('Z', Tags.Items.LEATHER)
+			.unlockedBy("has_ingot_steel", has(TagDC.ItemTag.INGOT_STEEL))
+			.save(cons, "dcs_climate:core/screwdriver_0");
+
 		ShapedRecipeBuilder.shaped(CoreInit.EMPTY_COIL_CASE.get(), 1)
 			.pattern("XXY")
 			.pattern("XX ")
@@ -971,6 +1022,30 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_crop_calabash", has(TagDC.ItemTag.CROP_CALABASH))
 			.save(cons, "dcs_climate:core/bucket_calabash_0");
 
+		ShapedRecipeBuilder.shaped(CoreInit.DUSTBLOCK_RUBBER.get())
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.SAP_LATEX)
+			.define('Y', TagDC.ItemTag.DUST_SULFUR)
+			.unlockedBy("has_sap_latex", has(TagDC.ItemTag.SAP_LATEX))
+			.save(cons, "dcs_climate:core/dustblock_rubber_0");
+
+		ShapedRecipeBuilder.shaped(CoreInit.BLOCK_RUBBER.get())
+			.pattern("XXX")
+			.pattern("XXX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.CLOTH_RUBBER)
+			.group("storage_pack")
+			.unlockedBy("has_cloth_rubber", has(TagDC.ItemTag.CLOTH_RUBBER))
+			.save(cons, "dcs_climate:core/block_rubber_0");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.CLOTH_RUBBER.get(), 9)
+			.requires(TagDC.ItemTag.BLOCK_RUBBER)
+			.group("storage_unpack")
+			.unlockedBy("has_block_rubber", has(TagDC.ItemTag.BLOCK_RUBBER))
+			.save(cons, "dcs_climate:core/cloth_rubber_0");
+
 		// vanilla another
 
 		ShapedRecipeBuilder.shaped(Items.PAINTING, 1)
@@ -1038,6 +1113,24 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
 			.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
 			.save(cons, "dcs_climate:core/bucket_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.TORCH, 4)
+			.pattern("X")
+			.pattern("Y")
+			.define('X', FoodInit.BIOMASS_BRIQUET.get())
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_briquet", has(FoodInit.BIOMASS_BRIQUET.get()))
+			.save(cons, "dcs_climate:core/torch_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.CAMPFIRE, 1)
+			.pattern(" Y ")
+			.pattern("YXY")
+			.pattern("ZZZ")
+			.define('X', FoodInit.BIOMASS_BRIQUET.get())
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.define('Z', ItemTags.LOGS_THAT_BURN)
+			.unlockedBy("has_briquet", has(FoodInit.BIOMASS_BRIQUET.get()))
+			.save(cons, "dcs_climate:core/campfire_another_0");
 	}
 
 	private static void clothingRecipes(Consumer<FinishedRecipe> cons) {
@@ -1277,9 +1370,9 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		clothColorRecipe(cons, CoreInit.SHIRT_CLOTH.get(), CoreInit.SHIRT_CLOTH_LIGHTBLUE.get(), Tags.Items.DYES_LIGHT_BLUE, "lightblue", "cloth_shirt");
 		clothColorRecipe(cons, CoreInit.SHIRT_CLOTH.get(), CoreInit.SHIRT_CLOTH_RED.get(), Tags.Items.DYES_RED, "red", "cloth_shirt");
 
-		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_GREEN.get(), Tags.Items.DYES_CYAN, "green", "linen_pants");
-		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_ORANGE.get(), Tags.Items.DYES_GREEN, "orange", "linen_pants");
-		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_WHITE.get(), Tags.Items.DYES_PINK, "white", "linen_pants");
+		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_GREEN.get(), Tags.Items.DYES_GREEN, "green", "linen_pants");
+		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_ORANGE.get(), Tags.Items.DYES_ORANGE, "orange", "linen_pants");
+		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_WHITE.get(), Tags.Items.DYES_WHITE, "white", "linen_pants");
 
 		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_BLUE.get(), Tags.Items.DYES_BLACK, "blue", "cloth_pants");
 		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_LIGHTBLUE.get(), Tags.Items.DYES_LIGHT_BLUE, "lightblue", "cloth_pants");
@@ -1313,6 +1406,12 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_CRYSTAL), BuildInit.GLASS_CRYSTAL.get().asItem(), 200, "dust_crystal", CoreInit.DUST_CRYSTAL.get(), "has_dust_crystal");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), CoreInit.DUST_ASH.get(), 200, "dust_ash", CoreInit.DUST_PLANT.get(), "has_dust_plant");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), CoreInit.DUST_ASH.get(), 200, "dust_wood", CoreInit.DUST_WOOD.get(), "has_dust_wood");
+
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_IRON), Items.IRON_INGOT, 200, "ingot_iron", CoreInit.OREDUST_RED1.get(), "has_dust_iron");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_COPPER), Items.COPPER_INGOT, 200, "ingot_copper", CoreInit.OREDUST_WHITE1.get(), "has_dust_copper");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_GOLD), Items.GOLD_INGOT, 200, "ingot_gold", CoreInit.OREDUST_WHITE2.get(), "has_dust_gold");
+
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUSTBLOCK_STEEL), Items.IRON_BLOCK, 200, "container_iron", CoreInit.DUSTBLOCK_STEEL.get().asItem(), "has_dustblock_iron");
 
 		// アルミ建材の還元
 		smeltingRecipe(cons, Ingredient.of(BuildInit.SLAB_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_slab_metal", BuildInit.SLAB_METAL.get().asItem(), "has_slab_metal");

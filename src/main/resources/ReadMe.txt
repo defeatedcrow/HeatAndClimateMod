@@ -1,4 +1,4 @@
-#### Heat&Climate Mod v4 Early-Alpha for Minecraft 1.19.2 ####
+#### Heat&Climate Mod v4 Beta for Minecraft 1.19.2 ####
 
 # 導入環境 / Introduction conditions
 
@@ -51,7 +51,6 @@
 
 #### 遊び方 / How to play ####
 
-
 ◎ 気候で遊ぼう! / Climate!
 
 ●HUDについて / About HUD
@@ -88,6 +87,25 @@
 
   熱いブロックと、冷たいブロックは、互いの温度を相殺します。
   Hot and cold blocks offset each other's temperature.
+  
+ ・昇温ブロック / Heating Block
+
+ 温度調整のために役立つブロックが追加されています。
+ HaC adds several heat source devices.
+
+  - 加熱チャンバー / Heating Chamber
+
+  通気がFLOW以上の場合に、燃料を消費してSMELTINGの温度を発生する熱源です。
+  When the airflow is FLOW+, it consumes fuel and generates temperatures of SMELTING.
+  ふいごを使用することでも、十分な通気を与えることが出来ます。
+  You can also use bellows to provide sufficient Airflow.
+
+  - レンガのかまど / Brick Stove
+
+  通気がFLOW以上の場合に、燃料を消費してKILNの温度を発生する熱源です。
+  When the airflow is FLOW+, it consumes fuel and generates temperatures of KILN.
+  燃焼チャンバーより温度が低いかわりに、燃料がより長持ちします。
+  It has a lower temperature and is more fuel efficient than a heated chamber.
 
 ● Humidity
 
@@ -168,6 +186,7 @@
   If the "Humidity Effect" in the hard mode config is enabled, the player will receive a "wet" potion effect when the player gets wet.
   When "wet", it reduces high temperature damage and increases cold temperature damage.
 
+****************************************************************************************************
 
 ◎ HaCカスタムレシピ / HaC Custom Recipes
 
@@ -187,26 +206,13 @@
 
  * 気候精錬レシピによりBlockを変化させる場合、材料となるBlockが Random Tick を持っている必要があります。
    If you add a new climate smelting recipe, the material block must be implement vanilla random tick behavior.
-
- ● 昇温ブロック / Heating Block
-
- 気候精錬レシピのために役立つブロックが追加されています。
- HaC adds several heat source devices.
-
-  ・加熱チャンバー / Heating Chamber
-
-  通気がFLOW以上の場合に、燃料を消費してSMELTINGの温度を発生する熱源です。
-  When the airflow is FLOW+, it consumes fuel and generates temperatures of SMELTING.
-  ふいごを使用することでも、十分な通気を与えることが出来ます。
-  You can also use bellows to provide sufficient Airflow.
-
-  ・レンガのかまど / Brick Stove
-
-  通気がFLOW以上の場合に、燃料を消費してKILNの温度を発生する熱源です。
-  When the airflow is FLOW+, it consumes fuel and generates temperatures of KILN.
-  燃焼チャンバーより温度が低いかわりに、燃料がより長持ちします。
-  It has a lower temperature and is more fuel efficient than a heated chamber.
-
+  
+  ● マシンレシピ / Device Recipe
+  
+  マシンで使用されるすべてのレシピは、データパックに対応しています。
+  All machine recipes can be added and edited with data packs.
+  
+****************************************************************************************************
 
 ◎ 鉱脈の生成 / Ore Veins
 
@@ -225,6 +231,8 @@
 
  鉱脈は、コンフィグファイルによって編集、削除、追加ができます。
  Veins can be edited, deleted, and added using the config file.
+
+****************************************************************************************************
 
 ◎ 新しい農業要素 / New Agriculture
 
@@ -358,6 +366,7 @@
          - resin
          - sweet
 
+****************************************************************************************************
 
 ◎ 色の魔法 / Color Magic
 
@@ -387,11 +396,49 @@
 
   一部のジュエルはプレイヤーにのみ効果があります。
   Some jewels only affect the player.
+  
+****************************************************************************************************
+  
+◎ 電気とマシン / Electricity and Machines
 
+ HaCv4では、マシンの動力に電気を使用します。
+ HaCv4 uses electricity to power the machine.
+ 
+ 電気はForgeFEと互換性があります。
+ Electric is compatible with ForgeFE.
+ 
+ ●発電 / Power Generation
+ 
+ 発電機に
+
+****************************************************************************************************
 
 #### 更新履歴 / Change log ####
 
-○ v4-beta2
+○v4-beta3
+ add: 発電機
+ add: 充電池ブロック
+ add: エネルギーケーブル
+ add: 液体パイプ
+ add: 水中ポンプ
+ add: 土半ブロック
+ add: 日干しレンガ
+ add: 加硫ゴム
+ change: 自動石臼にはエネルギーが必要になった
+ change: 地底の通気をTIGHTにするハードモードの追加
+ change: 通気TIGHTのときに窒息効果が発生するハードモードを追加
+ change: 鉱脈追加コンフィグの登録処理を改善
+ change: 行商人に取引内容を追加
+ change: 魔法アイテムに使用時のメッセージ表示を追加
+ fix: 雪が自然に溶けないのを修正
+ fix: 追加池の最低半径が小さすぎた
+ fix: 調味料レシピのdupeを修正
+ fix: リネンのパンツの浅色レシピを修正
+ fix: 発酵壺GUIのプログレスバーの描画
+ fix: 赤緑のカードが本来破壊できないブロックまで破壊してしまうのを修正
+ fix: テクスチャがロードされていないEntityの修正(日本酒、)
+
+○ v4-beta2 (2024.2.7)
  add: 植物肉
  add: 焼き芋
  add: 串焼き魚

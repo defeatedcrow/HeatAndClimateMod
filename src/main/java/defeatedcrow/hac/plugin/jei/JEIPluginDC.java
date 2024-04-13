@@ -4,6 +4,7 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
+import defeatedcrow.hac.api.recipe.IDeviceFuel;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
@@ -51,6 +52,7 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipes(MILL_DATA, PluginRecipeListDC.PULVERISER_LIST);
 		registration.addRecipes(CROP_DATA, PluginRecipeListDC.CROP_LIST);
 		registration.addRecipes(TREE_DATA, PluginRecipeListDC.TREE_LIST);
+		registration.addRecipes(BIOMASS_FUEL_DATA, PluginRecipeListDC.BIOMASS_FUEL_LIST);
 	}
 
 	@Override
@@ -61,6 +63,7 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipeCategories(new DeviceCookingCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceTeaCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceFermentationCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new FuelBiomassCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceMillCategory(registration.getJeiHelpers().getGuiHelper()));
 	}
 
@@ -88,6 +91,8 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_GREEN.get()), FERMENTATION_DATA);
 
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.STONE_MILL.get()), MILL_DATA);
+
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.BOILER_BIOMASS.get()), BIOMASS_FUEL_DATA);
 	}
 
 	public static final ResourceLocation SMELTING_ID = new ResourceLocation(ClimateCore.MOD_ID, "smelting_data");
@@ -110,5 +115,8 @@ public class JEIPluginDC implements IModPlugin {
 
 	public static final ResourceLocation MILL_ID = new ResourceLocation(ClimateCore.MOD_ID, "mill_data");
 	public static final RecipeType<IDeviceRecipe> MILL_DATA = new RecipeType<IDeviceRecipe>(MILL_ID, IDeviceRecipe.class);
+
+	public static final ResourceLocation BIOMASS_FUEL_ID = new ResourceLocation(ClimateCore.MOD_ID, "fuel_biomass_data");
+	public static final RecipeType<IDeviceFuel> BIOMASS_FUEL_DATA = new RecipeType<IDeviceFuel>(BIOMASS_FUEL_ID, IDeviceFuel.class);
 
 }

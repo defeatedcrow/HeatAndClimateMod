@@ -29,7 +29,7 @@ public class VeinTable {
 	}
 
 	public VeinTable(String name, String colorIn, int p, int a, int r, boolean deep, String layer) {
-		veinName = name == null ? colorIn : name;
+		veinName = (name == null) ? colorIn : name;
 		color = colorIn;
 		generateProbability = p;
 		altitude = a;
@@ -39,11 +39,11 @@ public class VeinTable {
 	}
 
 	public EnumVein getVeinType() {
-		return EnumVein.getType(veinName);
+		return EnumVein.getType(getColor());
 	}
 
 	public VeinTable setData(OreSet data) {
-		entries.add(new OreSetData(data));
+		entries.add(new OreSetData(data, getLayer()));
 		return this;
 	}
 
@@ -67,4 +67,11 @@ public class VeinTable {
 		return i;
 	}
 
+	public String getColor() {
+		return color == null ? veinName : color;
+	}
+
+	public String getName() {
+		return veinName == null ? color : veinName;
+	}
 }

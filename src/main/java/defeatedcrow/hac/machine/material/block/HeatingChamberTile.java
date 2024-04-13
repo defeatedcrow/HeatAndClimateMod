@@ -92,7 +92,7 @@ public class HeatingChamberTile extends HeatSourceTile {
 	public boolean continueProcess(Level level, BlockPos pos, BlockState state) {
 		if (DCState.getBool(state, ProcessTileBlock.WATERLOGGED))
 			return false;
-		else if (level.canSeeSky(pos) && level.isRaining())
+		else if (level.isRainingAt(pos))
 			return false;
 		return true;
 	}

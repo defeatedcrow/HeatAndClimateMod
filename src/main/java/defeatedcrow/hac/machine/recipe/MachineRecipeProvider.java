@@ -46,6 +46,26 @@ public class MachineRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_raw_magnetite", has(TagDC.ItemTag.RAW_MAGNETITE))
 			.save(cons, "dcs_climate:machine/small_motor_0");
 
+		ShapedRecipeBuilder.shaped(MachineInit.IMPELLER_TIER1.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', TagDC.ItemTag.MOTOR_T1)
+			.unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1))
+			.save(cons, "dcs_climate:machine/small_impeller_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.BATTERYITEM_TIER1.get(), 1)
+			.pattern("XYX")
+			.pattern("XZX")
+			.pattern("XWX")
+			.define('X', Tags.Items.INGOTS_IRON)
+			.define('Y', TagDC.ItemTag.DUST_NICKEL)
+			.define('Z', TagDC.ItemTag.DUST_TRONA)
+			.define('W', Items.BLAZE_POWDER)
+			.unlockedBy("has_dust_nickel", has(TagDC.ItemTag.DUST_NICKEL))
+			.save(cons, "dcs_climate:machine/small_battery_0");
+
 		ShapedRecipeBuilder.shaped(MachineInit.CHAMBER_BRICK_A.get(), 1)
 			.pattern("X X")
 			.pattern("XYX")
@@ -147,17 +167,6 @@ public class MachineRecipeProvider extends RecipeProvider {
 			.define('Z', Items.IRON_BARS)
 			.unlockedBy("has_bucket", has(Items.BUCKET))
 			.save(cons, "dcs_climate:machine/ibc_0");
-
-		ShapedRecipeBuilder.shaped(MachineInit.STONE_MILL.get(), 1)
-			.pattern("ZYZ")
-			.pattern("XXX")
-			.pattern("XWX")
-			.define('X', TagDC.ItemTag.INGOT_STEEL)
-			.define('Y', TagDC.ItemTag.MOTOR_T1)
-			.define('Z', Tags.Items.STONE)
-			.define('W', Tags.Items.CHESTS)
-			.unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1))
-			.save(cons, "dcs_climate:machine/stone_mill_0");
 
 		ShapedRecipeBuilder.shaped(MachineInit.COOKING_POT_NORMAL.get(), 1)
 			.pattern("XYX")
@@ -289,6 +298,77 @@ public class MachineRecipeProvider extends RecipeProvider {
 			.requires(Items.TRIPWIRE_HOOK)
 			.unlockedBy("has_bucket", has(Items.BUCKET))
 			.save(cons, "dcs_climate:machine/spile_and_cup_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.CABLE_COPPER.get(), 8)
+			.pattern("XXX")
+			.define('X', Tags.Items.INGOTS_COPPER)
+			.unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER))
+			.save(cons, "dcs_climate:machine/copper_cable_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.CABLE_COPPER_COATED.get(), 8)
+			.pattern("YYY")
+			.pattern("XXX")
+			.define('Y', TagDC.ItemTag.CLOTH_RUBBER)
+			.define('X', MachineInit.CABLE_COPPER.get())
+			.unlockedBy("has_copper_cable", has(MachineInit.CABLE_COPPER.get()))
+			.save(cons, "dcs_climate:machine/copper_cable_coated_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.PIPE_BRASS.get(), 8)
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_BRASS)
+			.unlockedBy("has_ingot_brass", has(TagDC.ItemTag.INGOT_BRASS))
+			.save(cons, "dcs_climate:machine/brass_pipe_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.BATTERY_SMALL.get(), 1)
+			.pattern("XXX")
+			.pattern("YYY")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', MachineInit.BATTERYITEM_TIER1.get())
+			.unlockedBy("has_cbatteryitem_t1", has(MachineInit.BATTERYITEM_TIER1.get()))
+			.save(cons, "dcs_climate:machine/battery_small_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.GENERATOR_SMALL.get(), 1)
+			.pattern("XXX")
+			.pattern("YZY")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', MachineInit.BATTERYITEM_TIER1.get())
+			.define('Z', TagDC.ItemTag.IMPELLER_T1)
+			.unlockedBy("has_cbatteryitem_t1", has(MachineInit.BATTERYITEM_TIER1.get()))
+			.save(cons, "dcs_climate:machine/generator_small_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.BOILER_BIOMASS.get(), 1)
+			.pattern(" X ")
+			.pattern("XYX")
+			.pattern("XZX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', Items.BUCKET)
+			.define('Z', MachineInit.CHAMBER_IRON.get())
+			.unlockedBy("has_chamber", has(MachineInit.CHAMBER_IRON.get()))
+			.save(cons, "dcs_climate:machine/boiler_biomass_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.STONE_MILL.get(), 1)
+			.pattern("ZYZ")
+			.pattern("XXX")
+			.pattern("XWX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', TagDC.ItemTag.MOTOR_T1)
+			.define('Z', Tags.Items.STONE)
+			.define('W', Tags.Items.CHESTS)
+			.unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1))
+			.save(cons, "dcs_climate:machine/stone_mill_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.WATER_PUMP.get(), 1)
+			.pattern("XYX")
+			.pattern("XZX")
+			.pattern("XWX")
+			.define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER)
+			.define('Y', TagDC.ItemTag.FLUID_PIPE)
+			.define('Z', Items.BUCKET)
+			.define('W', TagDC.ItemTag.IMPELLER_T1)
+			.unlockedBy("has_impeller_t1", has(TagDC.ItemTag.IMPELLER_T1))
+			.save(cons, "dcs_climate:machine/water_pump_0");
 
 	}
 

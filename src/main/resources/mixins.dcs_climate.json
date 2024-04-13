@@ -9,7 +9,8 @@
     "BlockClassMixin",
     "BlockUpdateMixin_Block",
     "BlockUpdateMixin_Farm",
-    "BlockUpdateMixin_Snow"
+    "BlockUpdateMixin_Snow",
+    "LivingEntityMixin"
   ],
   "client": [],
   "server": [],

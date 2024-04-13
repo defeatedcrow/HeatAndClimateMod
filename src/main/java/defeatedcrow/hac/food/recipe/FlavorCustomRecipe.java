@@ -65,7 +65,9 @@ public class FlavorCustomRecipe extends CustomRecipe {
 
 		if (!meal.isEmpty() && !seasoning.isEmpty() && list.size() == 2) {
 			IFoodTaste food = (IFoodTaste) meal.getItem();
-			food.setTaste(meal, 2);
+			meal.setCount(1);
+			int ret = food.getTaste(meal) > 0 ? 2 : 1;
+			food.setTaste(meal, ret);
 			return meal;
 		} else {
 			return ItemStack.EMPTY;

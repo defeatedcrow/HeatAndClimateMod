@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.client.entity.renderer.TileRendererChandelier;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLocker;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLuggage;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererToolHook;
+import defeatedcrow.hac.core.client.particle.LeakageParticleDC;
 import defeatedcrow.hac.core.client.particle.LightOrbDC;
 import defeatedcrow.hac.core.client.particle.SmokeParticleDC;
 import defeatedcrow.hac.core.material.BuildInit;
@@ -106,6 +107,7 @@ import defeatedcrow.hac.food.material.entity.potfoods.RiceBowlItem;
 import defeatedcrow.hac.food.material.entity.potfoods.SoupItem;
 import defeatedcrow.hac.machine.client.entity.BlockChamberFuelModel;
 import defeatedcrow.hac.machine.client.entity.BlockChamberIronModel;
+import defeatedcrow.hac.machine.client.entity.CableModel;
 import defeatedcrow.hac.machine.client.entity.CookingPotModel_A;
 import defeatedcrow.hac.machine.client.entity.CookingPotModel_B;
 import defeatedcrow.hac.machine.client.entity.CookingPotModel_C;
@@ -121,11 +123,15 @@ import defeatedcrow.hac.machine.client.entity.TeaPotModel_C;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberFuel;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberIron;
 import defeatedcrow.hac.machine.client.entity.TileRendererCookingPot;
+import defeatedcrow.hac.machine.client.entity.TileRendererCopperCable;
 import defeatedcrow.hac.machine.client.entity.TileRendererFermentationJar;
 import defeatedcrow.hac.machine.client.entity.TileRendererIBC;
+import defeatedcrow.hac.machine.client.entity.TileRendererPipeAlloy;
 import defeatedcrow.hac.machine.client.entity.TileRendererPortableCan;
 import defeatedcrow.hac.machine.client.entity.TileRendererStoneMill;
 import defeatedcrow.hac.machine.client.entity.TileRendererTeaPot;
+import defeatedcrow.hac.machine.client.entity.TileRendererWaterPump;
+import defeatedcrow.hac.machine.client.entity.WaterPumpModel;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.block.CookingPotTile;
 import defeatedcrow.hac.machine.material.block.FermentationJarTile;
@@ -216,6 +222,21 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(FermentationJarTile.GREEN.getLayerLocation(), FermentationJarModel_A::createBodyLayer);
 
 		event.registerLayerDefinition(StoneMillTile.NORMAL.getLayerLocation(), StoneMillModel::createBodyLayer);
+
+		event.registerLayerDefinition(TileRendererCopperCable.COPPER.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererCopperCable.COPPER_INPUT.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererCopperCable.COPPER_OUTLET.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererCopperCable.COPPER_POWERED.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererCopperCable.COPPER_COATED.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererCopperCable.COPPER_COATED_INPUT.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererCopperCable.COPPER_COATED_OUTLET.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererCopperCable.COPPER_COATED_POWERED.getLayerLocation(), CableModel::createBodyLayer);
+
+		event.registerLayerDefinition(TileRendererPipeAlloy.BRASS.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererPipeAlloy.BRASS_INPUT.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererPipeAlloy.BRASS_OUTLET.getLayerLocation(), CableModel::createBodyLayer);
+
+		event.registerLayerDefinition(TileRendererWaterPump.TEX.getLayerLocation(), WaterPumpModel::createBodyLayer);
 
 		// Entity
 		event.registerLayerDefinition(HarpoonItem.FLINT.getLayerLocation(), TridentModel::createLayer);
@@ -460,6 +481,9 @@ public class EntityClientRegister {
 		event.registerBlockEntityRenderer(MachineInit.TEA_POT_TILE.get(), TileRendererTeaPot::new);
 		event.registerBlockEntityRenderer(MachineInit.FERMANTATION_JAR_TILE.get(), TileRendererFermentationJar::new);
 		event.registerBlockEntityRenderer(MachineInit.MILL_TILE.get(), TileRendererStoneMill::new);
+		event.registerBlockEntityRenderer(MachineInit.CABLE_COPPER_TILE.get(), TileRendererCopperCable::new);
+		event.registerBlockEntityRenderer(MachineInit.PIPE_BRASS_TILE.get(), TileRendererPipeAlloy::new);
+		event.registerBlockEntityRenderer(MachineInit.WATER_PUMP_TILE.get(), TileRendererWaterPump::new);
 
 		// Entity
 		event.registerEntityRenderer(CoreInit.HARPOON.get(), RenderHarpoon::new);
@@ -516,6 +540,7 @@ public class EntityClientRegister {
 		event.register(CoreInit.LIGHT_ORB_WHITE.get(), LightOrbDC.Provider::new);
 		event.register(CoreInit.LIGHT_ORB_RED.get(), LightOrbDC.Provider::new);
 		event.register(CoreInit.LIGHT_ORB_BLUE.get(), LightOrbDC.Provider::new);
+		event.register(CoreInit.LEAKAGE.get(), LeakageParticleDC.Provider::new);
 	}
 
 	public static void registerClientReloadListeners(RegisterClientReloadListenersEvent event) {

@@ -2,7 +2,7 @@ package defeatedcrow.hac.core.network.packet.message;
 
 import java.util.UUID;
 
-import defeatedcrow.hac.core.material.block.OwnableContainerBaseTileDC;
+import defeatedcrow.hac.core.material.block.OwnableBaseTileDC;
 import defeatedcrow.hac.core.network.packet.DCPacket;
 import defeatedcrow.hac.core.network.packet.IPacketDC;
 import net.minecraft.core.BlockPos;
@@ -62,7 +62,7 @@ public class MsgTileOwnerKeyToS implements IPacketDC {
 			ServerPlayer player = ctx.getSender();
 			BlockPos pos = new BlockPos(x, y, z);
 			BlockEntity entity = player.getLevel().getBlockEntity(pos);
-			if (entity instanceof OwnableContainerBaseTileDC tile) {
+			if (entity instanceof OwnableBaseTileDC tile) {
 				tile.lock(lock);
 			}
 		}

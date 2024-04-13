@@ -9,8 +9,11 @@ import java.util.function.Supplier;
 import com.google.common.base.Suppliers;
 
 import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.api.recipe.FuelTypeDC;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
+import defeatedcrow.hac.api.recipe.IDeviceFuel;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
@@ -30,6 +33,11 @@ public class DCRecipes {
 	public static final Map<ResourceLocation, IDeviceRecipe> FERMENTATION = new HashMap<>();
 	public static final Map<ResourceLocation, IDeviceRecipe> COOKING = new HashMap<>();
 	public static final Map<ResourceLocation, IDeviceRecipe> TEA = new HashMap<>();
+
+	public static final Map<ResourceLocation, IDeviceFuel> BIOMASS_FUEL = new HashMap<>();
+	public static final Map<ResourceLocation, IDeviceFuel> THERMAL_FUEL = new HashMap<>();
+	public static final Map<ResourceLocation, IDeviceFuel> FLUID_FUEL = new HashMap<>();
+	public static final Map<ResourceLocation, IDeviceFuel> GAS_FUEL = new HashMap<>();
 
 	public static Optional<IClimateSmelting> getSmeltingRecipe(Supplier<IClimate> clm, ItemStack item) {
 		for (IClimateSmelting recipe : INSTANCE.SMELTING.values()) {
@@ -116,6 +124,24 @@ public class DCRecipes {
 			}
 		}
 		return Optional.empty();
+	}
+
+	public static int getFuelBurnTime(FuelTypeDC type, ItemStack input) {
+		if (type == FuelTypeDC.BIOMASS && !DCUtil.isEmpty(input)) {
+			for (IDeviceFuel recipe : INSTANCE.BIOMASS_FUEL.values()) {
+				if (recipe.matcheInput(input)) {
+					return recipe.getBurnTime();
+				}
+			}
+		}
+		if (type == FuelTypeDC.THERMAL && !DCUtil.isEmpty(input)) {
+			for (IDeviceFuel recipe : INSTANCE.THERMAL_FUEL.values()) {
+				if (recipe.matcheInput(input)) {
+					return recipe.getBurnTime();
+				}
+			}
+		}
+		return 0;
 	}
 
 }

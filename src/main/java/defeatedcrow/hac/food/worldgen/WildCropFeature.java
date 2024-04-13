@@ -172,7 +172,8 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 	}
 
 	private boolean canReplaceBlock(BlockState state) {
-		return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && state.getMaterial().isReplaceable() && !state.getMaterial().isLiquid() && !(state.getBlock() instanceof LiquidBlock);
+		return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && (state.getMaterial().isReplaceable() || state.getMaterial() == Material.TOP_SNOW) && !state.getMaterial().isLiquid() && !(state
+			.getBlock() instanceof LiquidBlock);
 	}
 
 	static final List<ClimateCropBaseBlock> targetList = Lists.newArrayList();

@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
 public class OreSet {
 
@@ -74,11 +75,11 @@ public class OreSet {
 	}
 
 	public boolean hasSecondOre() {
-		return hasSec;
+		return hasSec && ore2 != Blocks.AIR;
 	}
 
 	public boolean hasTertOre() {
-		return hasTert;
+		return hasTert && ore3 != Blocks.AIR;
 	}
 
 	@Override

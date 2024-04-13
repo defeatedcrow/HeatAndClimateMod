@@ -34,7 +34,7 @@ public class CardGreenT1 extends MagicCardBase {
 						ItemStack f = new ItemStack(Items.BONE_MEAL);
 						int hook = net.minecraftforge.event.ForgeEventFactory.onApplyBonemeal(player, level, mpos, crop, f);
 						if (hook != 0)
-							return hook > 0;
+							continue;
 						if (crop.getBlock() instanceof BonemealableBlock) {
 							if (crop.getMaterial() == Material.DIRT || crop.getMaterial() == Material.GRASS || crop.is(TagDC.BlockTag.WEED))
 								continue;

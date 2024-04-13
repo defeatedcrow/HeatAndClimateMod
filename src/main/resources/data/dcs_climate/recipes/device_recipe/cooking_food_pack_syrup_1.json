@@ -7,7 +7,7 @@
   },
   "ingredients": [
     {
-      "tag": "forge:ingredients/sweet_sap"
+      "tag": "forge:saps/sweet_sap"
     }
   ],
   "heat": [

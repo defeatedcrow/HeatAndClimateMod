@@ -1,0 +1,83 @@
+{
+  "parent": "block/block",
+  "textures": {
+        "front": "dcs_climate:block/machine/small_battery_front_0",
+        "top": "dcs_climate:block/machine/small_battery_top",
+        "side": "dcs_climate:block/machine/small_battery_side",
+        "particle": "dcs_climate:block/machine/small_battery_front_0"
+    },
+    "elements": [
+        {
+            "from": [0, 0, 0],
+            "to": [16, 14, 16],
+            "faces": {
+                "north": {"uv": [0, 2, 16, 16], "texture": "#front"},
+                "east": {"uv": [0, 1, 16, 15], "texture": "#side"},
+                "south": {"uv": [0, 2, 16, 16], "texture": "#front"},
+                "west": {"uv": [0, 1, 16, 15], "texture": "#side"},
+                "up": {"uv": [0, 0, 16, 16], "texture": "#side"},
+                "down": {"uv": [0, 0, 16, 16], "texture": "#side"}
+            }
+        },
+        {
+            "from": [0, 14, 0],
+            "to": [2, 15, 16],
+            "faces": {
+                "north": {"uv": [14, 0, 16, 1], "texture": "#top"},
+                "east": {"uv": [0, 0, 16, 1], "texture": "#top"},
+                "south": {"uv": [0, 0, 2, 1], "texture": "#top"},
+                "west": {"uv": [0, 0, 16, 1], "texture": "#top"},
+                "up": {"uv": [0, 0, 2, 16], "texture": "#top"},
+                "down": {"uv": [0, 0, 2, 16], "texture": "#side"}
+            }
+        },
+        {
+            "from": [14, 14, 0],
+            "to": [16, 15, 16],
+            "faces": {
+                "north": {"uv": [0, 0, 2, 1], "texture": "#top"},
+                "east": {"uv": [0, 0, 16, 1], "texture": "#top"},
+                "south": {"uv": [14, 0, 16, 1], "texture": "#top"},
+                "west": {"uv": [0, 0, 16, 1], "texture": "#top"},
+                "up": {"uv": [14, 0, 16, 16], "texture": "#top"},
+                "down": {"uv": [14, 0, 16, 16], "texture": "#side"}
+            }
+        },
+        {
+            "from": [0, 15, 4],
+            "to": [2, 16, 12],
+            "faces": {
+                "north": {"uv": [14, 0, 16, 1], "texture": "#top"},
+                "east": {"uv": [4, 0, 12, 1], "texture": "#top"},
+                "south": {"uv": [0, 0, 2, 1], "texture": "#top"},
+                "west": {"uv": [4, 0, 12, 1], "texture": "#top"},
+                "up": {"uv": [0, 4, 2, 12], "texture": "#top"},
+                "down": {"uv": [0, 4, 2, 12], "texture": "#front"}
+            }
+        },
+        {
+            "from": [14, 15, 4],
+            "to": [16, 16, 12],
+            "faces": {
+                "north": {"uv": [0, 0, 2, 1], "texture": "#top"},
+                "east": {"uv": [4, 0, 12, 1], "texture": "#top"},
+                "south": {"uv": [14, 0, 16, 1], "texture": "#top"},
+                "west": {"uv": [4, 0, 12, 1], "texture": "#top"},
+                "up": {"uv": [14, 4, 16, 12], "texture": "#top"},
+                "down": {"uv": [14, 4, 16, 12], "texture": "#side"}
+            }
+        },
+        {
+            "from": [2, 15, 6],
+            "to": [14, 16, 10],
+            "faces": {
+                "north": {"uv": [2, 0, 14, 1], "texture": "#top"},
+                "east": {"uv": [6, 0, 10, 1], "texture": "#side"},
+                "south": {"uv": [2, 0, 14, 1], "texture": "#top"},
+                "west": {"uv": [6, 0, 10, 1], "texture": "#side"},
+                "up": {"uv": [2, 7, 14, 11], "texture": "#top"},
+                "down": {"uv": [2, 7, 14, 11], "texture": "#top"}
+            }
+        }
+    ]
+}

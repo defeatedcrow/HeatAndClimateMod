@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/metal/dustblock_rubber"
+  },
+  "parent": "minecraft:block/cube_all"
+}

@@ -61,6 +61,7 @@ public class FluidBlockItemDC extends BlockItemDC {
 				}
 			}
 		}
+		super.appendHoverText(stack, level, list, flag);
 	}
 
 	@Override

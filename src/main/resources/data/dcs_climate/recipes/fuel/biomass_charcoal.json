@@ -1,0 +1,9 @@
+{
+  "type": "dcs_climate:device_fuel",
+  "group": "biomass",
+  "ingredient": {
+    "item": "minecraft:charcoal"
+  },
+  "input_fluid": "empty",
+  "burn_time": 1600
+}

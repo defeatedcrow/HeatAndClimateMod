@@ -99,11 +99,15 @@
   "item.dcs_climate.main.dust_wood":"木くず",
   "item.dcs_climate.main.dust_plant":"植物くず",
 
+  "item.dcs_climate.main.cloth_rubber":"ゴムシート",
+  "item.dcs_climate.main.adobe_brick_item":"日干しレンガ",
+
   "item.dcs_climate.main.agate_mortar":"石英の乳鉢",
   "item.dcs_climate.main.hand_spindle":"紡錘",
   "item.dcs_climate.main.seeding_pot":"育苗ポット",
   "item.dcs_climate.main.sieve":"宝石ふるい",
   "item.dcs_climate.main.bellow":"ふいご",
+  "item.dcs_climate.main.screwdriver":"ドライバー",
   "item.dcs_climate.main.insence_case":"空の線香入れ",
   "item.dcs_climate.main.mosquito_coil_case":"蚊遣り器",
   "item.dcs_climate.main.mosquito_coil":"蚊取り線香",
@@ -136,6 +140,8 @@
     "## items_machine":"machine",
 
   "item.dcs_climate.machine.motor_small":"小さなモーター",
+  "item.dcs_climate.machine.impeller_small":"小さなインペラ",
+  "item.dcs_climate.machine.batteryitem_small":"ニッケル-ブレイズ電池",
 
     "## items_magic":"magic",
 
@@ -838,6 +844,9 @@
   "block.dcs_climate.main.metalblock_hastelloy":"ハステロイブロック",
   "block.dcs_climate.main.metalblock_bscco":"BSCCOブロック",
 
+  "block.dcs_climate.main.dustblock_rubber":"生のゴムブロック",
+  "block.dcs_climate.main.block_rubber":"加硫ゴムブロック",
+
     "## blocks_food":"food",
 
   "block.dcs_climate.food.fertile":"施肥された耕地ブロック",
@@ -1195,6 +1204,15 @@
   "block.dcs_climate.build.mosaic_yellow":"モザイクタイル(黄)",
   "block.dcs_climate.build.mosaic_red":"モザイクタイル(赤)",
 
+  "block.dcs_climate.build.adobe_block_wet":"生乾きの土レンガ",
+  "block.dcs_climate.build.adobe_block":"土レンガブロック",
+  "block.dcs_climate.build.adobe_bricks":"日干しレンガブロック",
+
+  "block.dcs_climate.build.dirt_slab":"土のハーフブロック",
+  "block.dcs_climate.build.grass_slab":"草のハーフブロック",
+  "block.dcs_climate.build.path_slab":"道のハーフブロック",
+  "block.dcs_climate.build.gravel_slab":"砂利のハーフブロック",
+
   "block.dcs_climate.build.glass_crystal":"石英ガラス",
   "block.dcs_climate.build.glass_light":"発光石英ガラス",
   "block.dcs_climate.build.glass_dark":"遮光石英ガラス",
@@ -1250,6 +1268,7 @@
   "block.dcs_climate.machine.portable_can_black":"ポリタンク(黒)",
   "block.dcs_climate.machine.portable_can_red":"ポリタンク(赤)",
   "block.dcs_climate.machine.portable_can_green":"ポリタンク(緑)",
+  "block.dcs_climate.machine.pipe_brass":"真鍮の液体管",
   "block.dcs_climate.machine.spilecup":"樹液タンク",
   "block.dcs_climate.machine.cooking_pot_normal":"調理鍋",
   "block.dcs_climate.machine.cooking_pot_white":"調理鍋(白)",
@@ -1269,7 +1288,13 @@
   "block.dcs_climate.machine.fermentation_jar_black":"壺(黒)",
   "block.dcs_climate.machine.fermentation_jar_red":"壺(赤)",
   "block.dcs_climate.machine.fermentation_jar_green":"壺(緑)",
-  "block.dcs_climate.machine.stone_mill":"アルファ型全自動石臼",
+  "block.dcs_climate.machine.stone_mill":"電動石臼",
+  "block.dcs_climate.machine.water_pump":"水中ポンプ",
+  "block.dcs_climate.machine.battery_small":"ポータブル電源",
+  "block.dcs_climate.machine.generator_small":"発電機",
+  "block.dcs_climate.machine.boiler_biomass":"バイオマスボイラ",
+  "block.dcs_climate.machine.cable_copper":"銅のケーブル",
+  "block.dcs_climate.machine.cable_copper_coated":"銅のケーブル(被覆)",
 
     "## magic":"",
 
@@ -1336,14 +1361,44 @@
   "dcs.tip.device.airflow":"通気: %1$s",
   "dcs.tip.device.heat":"温度: %1$s",
   "dcs.tip.device.humidity":"湿度: %1$s",
+  "dcs.tip.device.energy.power":"主電源: ",
+  "dcs.tip.device.energy.rs":"レッドストーン信号: ",
+  "dcs.tip.device.energy.ammeter":"発電量: ",
+  "dcs.tip.device.energy.active.ON":"エネルギー送受信 有効",
+  "dcs.tip.device.energy.active.OFF":"エネルギー送受信 無効",
+  "dcs.tip.device.energy.io.outlet":"送信のみ",
+  "dcs.tip.device.energy.io.input":"受信のみ",
+  "dcs.tip.device.energy.io.pass":"平均化",
+  "dcs.tip.device.energy.io.none":"切断",
+  "dcs.tip.device.energy.battery.amount":"充電量: ",
 
   "dcs.tip.chamber.temp":"温度範囲: ",
   "dcs.tip.chamber.wind":"通気の良い場所や、ふいごの使用により、温度が上昇します。",
+  "dcs.tip.boiler":"水とバイオマス燃料を消費して動力を生成します。",
   "dcs.tip.cooking_pot":"周囲の温度や気候を利用して料理レシピを進行します。",
   "dcs.tip.crop_on_jar":"中に水を入れると、上に花や作物を設置して飾れるようになります。",
   "dcs.tip.spile":"以下のTagを持つ樹液の出る幹に設置すると、樹液を集めることが出来ます。: %1$s",
   "dcs.tip.alpha_mill":"アルファ版なのでエネルギー無しで動作します。",
   "dcs.tip.metal_building_blocks":"同じブロックを手に持って右クリックすると、ブロックの設置を補助します。",
+  "dcs.tip.screwdriver":"ケーブルやマシンの接続を切り替えます。",
+  "dcs.tip.fluid_pipe":"重力を利用して液体を輸送します。",
+
+  "dcs.tip.flow.tier1":"[Tier1] Flow Rate: 32 /t",
+  "dcs.tip.flow.tier2":"[Tier2] Flow Rate: 128 /t",
+  "dcs.tip.flow.tier3":"[Tier3] Flow Rate: 512 /t",
+
+  "dcs.tip.energy.battery":"[充電池]",
+  "dcs.tip.energy.battery.desc":"エネルギーを貯蔵し、隣接するマシンやケーブルとエネルギーの送受信を行います。",
+  "dcs.tip.energy.generator":"[発電機]",
+  "dcs.tip.energy.generator.desc":"隣接する『動力源』から動力を受け、発電します。",
+  "dcs.tip.energy.powersource":"[動力源]",
+  "dcs.tip.energy.powersource.desc":"隣接する『発電機』に動力を与えます。",
+  "dcs.tip.energy.cable":"[ケーブル]",
+  "dcs.tip.energy.cable.desc":"エネルギーの送受信を行います。",
+  "dcs.tip.energy.machine":"[電気機器]",
+  "dcs.tip.energy.machine.desc":"エネルギーを消費して動作するマシンです。",
+  "dcs.tip.energy.leakage":"漏電に注意!",
+  "dcs.tip.energy.leakage.desc":"被覆されていないケーブルは、水濡れやモブとの接触で漏電が発生し、エネルギーをロストしてしまいます!",
 
   "dcs.tip.foodtaste.1":"風味: ★",
   "dcs.tip.foodtaste.2":"風味: ★★",
@@ -1510,6 +1565,12 @@
   "dcs.container.tank.with_owner":"%1$s の タンク",
   "dcs.container.cooking":"調理器具",
   "dcs.container.cooking.with_owner":"%1$s の 調理器具",
+  "dcs.container.battery":"電源",
+  "dcs.container.battery.with_owner":"%1$s の 電源",
+  "dcs.container.generator":"発電機",
+  "dcs.container.generator.with_owner":"%1$s の 発電機",
+  "dcs.container.boiler_biomass":"バイオマスボイラ",
+  "dcs.container.boiler_biomass.with_owner":"%1$s の バイオマスボイラ",
 
   "## gui_misc":"misc",
 
@@ -1558,6 +1619,7 @@
   "dcs.gui.jei.tea_data":"飲み物",
   "dcs.gui.jei.fermentation_data":"発酵",
   "dcs.gui.jei.mill_data":"石臼粉砕",
+  "dcs.gui.jei.biomass_fuel_data":"燃料:バイオマス発電",
   "dcs.gui.jei.crop_data":"HaC作物図鑑",
   "dcs.gui.jei.tree_data":"HaC樹木図鑑",
   "dcs.gui.jei.smelting_tip1":"ブロックとして設置されている時に進行します。",

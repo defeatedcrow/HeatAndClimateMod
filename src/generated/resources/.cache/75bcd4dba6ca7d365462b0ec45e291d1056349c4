@@ -1,4 +1,9 @@
-// 1.19.2	2024-01-22T00:53:47.4896382	Tags for minecraft:block
+// 1.19.2	2024-04-11T23:28:45.4618225	Tags for minecraft:block
+2e8672209a9848b9297ff80db4c49435599de07a data/dcs_climate/tags/blocks/building_stones.json
+e4ee8a3908637657413df9cecb92f115e6bff913 data/dcs_climate/tags/blocks/building_stones/bricks.json
+0da4d363ac374474ad909a6d433c4f4caf737cff data/dcs_climate/tags/blocks/building_stones/chiseled.json
+f0f84ef05dd2be2e8b224382654ab426dab1fc42 data/dcs_climate/tags/blocks/building_stones/pillar.json
+af01e42317f63dc3a54da95dfc59def9ec8cf6a1 data/dcs_climate/tags/blocks/cable_energy.json
 c27613bc70b1102eddea4f03976d58392658a01f data/dcs_climate/tags/blocks/color_ores.json
 5973775ffcba4d39743586a99d401b242edfd861 data/dcs_climate/tags/blocks/color_ores/black.json
 08bdd9cd9a09b6f638cd8ea54bec26923da04737 data/dcs_climate/tags/blocks/color_ores/blue.json
@@ -10,13 +15,16 @@ f94d0af61e853e714398aa2fd20e319610b0b44f data/dcs_climate/tags/blocks/color_ores
 33819a70c2f31abecc781bac1842df1e5b253bcf data/dcs_climate/tags/blocks/color_ores/green.json
 5b7255042a7e7e9a8ee9f454fb696f6a9b3d2ef9 data/dcs_climate/tags/blocks/color_ores/red.json
 33d2df73da999bad25772aebb1454189df2c4f77 data/dcs_climate/tags/blocks/color_ores/white.json
+9a549dda1a9a999746920b9322af049c768b35e2 data/dcs_climate/tags/blocks/dirt_slab.json
 c69632bb11716639a23d1303292dc986d08b67f4 data/dcs_climate/tags/blocks/flowers_for_bee.json
 75c7dc675e3c7734d0421b53b3e2fb77912ac24c data/dcs_climate/tags/blocks/green_manures.json
+94ff6238538ed033196035f110b10721b2cf337f data/dcs_climate/tags/blocks/leakage_machine.json
 4907e6cc62f45960f628e6078eedd050a85e4d75 data/dcs_climate/tags/blocks/logs_can_collect_sap.json
 995780b538ec0d5ba35266df7b1cc561e7a7d15c data/dcs_climate/tags/blocks/logs_can_collect_sap/lacquer.json
 8c8d04e6558e83e86b428523fa5055683822b260 data/dcs_climate/tags/blocks/logs_can_collect_sap/latex.json
 52e92430406456214703fe01a475b44c40a39a6c data/dcs_climate/tags/blocks/logs_can_collect_sap/resin.json
 f2cdc97a774fb6bb826cc512d5fda718518ef3ab data/dcs_climate/tags/blocks/logs_can_collect_sap/sweet_sap.json
+ea87dddaf131cef22fdeafd24a3a9421b7b97368 data/dcs_climate/tags/blocks/pipe_fluid.json
 5c59a22166febcd8e5dbc057af9238804006c4e3 data/dcs_climate/tags/blocks/scythe_breakable.json
 40fc28555ba86485c2fdf3bc327bb05602bd7cb5 data/forge/tags/blocks/crops/cactus.json
 814fe5838791d700256cfa0273c5d62387b04b5d data/forge/tags/blocks/crops/melon.json
@@ -81,10 +89,10 @@ bad4af831c4554174ef66c7bf6187f640f76e08f data/minecraft/tags/blocks/crops.json
 7c5974a82ac8da1f9ae2de73ad95d374568da878 data/minecraft/tags/blocks/leaves.json
 8a807ae1842a64558c93aba23fc7b51ca278457c data/minecraft/tags/blocks/logs_that_burn.json
 8a270cf912b1c67c7ab367af80df47431e860187 data/minecraft/tags/blocks/mineable/axe.json
-3aa3d58056b74449653718fcc0999905fd1124a1 data/minecraft/tags/blocks/mineable/pickaxe.json
+348d5497480b5df89d6d61d14847971866f18697 data/minecraft/tags/blocks/mineable/pickaxe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/needs_diamond_tool.json
 333b0e2ade270e3c2c54c0ec974c8027fbda16bd data/minecraft/tags/blocks/needs_iron_tool.json
-41cb830045e89851906f0062d3ed56bf570c1e03 data/minecraft/tags/blocks/needs_stone_tool.json
+a2e4033edce8897994ab99cea644da67b1af24b9 data/minecraft/tags/blocks/needs_stone_tool.json
 8a807ae1842a64558c93aba23fc7b51ca278457c data/minecraft/tags/blocks/overworld_natural_logs.json
 efb4ac82e6900bfb1cc6ec2fc4d567dc9bd2773d data/minecraft/tags/blocks/planks.json
 77fb866d31af5d8f52f649bcf7f936a17dc50ac3 data/minecraft/tags/blocks/walls.json

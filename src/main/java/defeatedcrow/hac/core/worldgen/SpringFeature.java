@@ -94,7 +94,7 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 
 		// 中心点
 		p = new BlockPos(chunk.getMiddleBlockX(), height - 1, chunk.getMiddleBlockZ());
-		int r = 4 + random.nextInt(3);
+		int r = 5 + random.nextInt(3);
 		double r1 = r - 1D;
 		double r2 = r - 3D;
 

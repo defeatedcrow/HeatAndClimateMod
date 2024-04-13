@@ -9,6 +9,8 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.material.BuildInit;
+import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.recipe.MaterialRecipes;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.recipe.FoodRecipes;
@@ -40,6 +42,12 @@ public class ClimateSmeltingList {
 				.time(), Ingredient.of(foods.input().get()));
 			ClimateSmeltingConfig.addRecipe(fName, ret);
 		}
+
+		addRecipe(new ItemStack(BuildInit.ADOBE_BLOCK.get()), ImmutableList.of(DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL, DCHeatTier.OVEN), ImmutableList.of(DCHumidity.DRY), null, 300, Ingredient.of(
+			BuildInit.ADOBE_BLOCK_WET.get()));
+
+		addRecipe(new ItemStack(CoreInit.BLOCK_RUBBER.get()), ImmutableList.of(DCHeatTier.BOIL, DCHeatTier.OVEN), ImmutableList.of(DCHumidity.DRY, DCHumidity.NORMAL), null, 300, Ingredient.of(
+			CoreInit.DUSTBLOCK_RUBBER.get()));
 
 	}
 

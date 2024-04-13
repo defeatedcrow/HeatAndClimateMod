@@ -55,6 +55,7 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 			EntityRenderData data = tile.getRenderData(block);
 			ResourceLocation tex = data.getTextureLocation();
 			Direction dir = DCState.getFace(tile.getBlockState(), DCState.FACING);
+			boolean lit = DCState.getBool(tile.getBlockState(), DCState.LIT);
 			float f1 = data.getModelScale();
 			float f2 = data.getAdjustY();
 			boolean isB = block == MachineInit.COOKING_POT_BLUE.get() || block == MachineInit.COOKING_POT_GREEN.get();
@@ -73,7 +74,7 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 			else
 				this.model_A.renderToBuffer(poseStack, buffer.getBuffer(model_A.renderType(tex)), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 
-			if (DCState.getBool(tile.getBlockState(), DCState.LIT)) {
+			if (lit) {
 				if (isC)
 					this.model_C.renderTop(poseStack, buffer.getBuffer(model_C.renderType(tex)), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 				else if (isB)
@@ -84,26 +85,27 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 
 			poseStack.popPose();
 
-			ItemStack output = tile.getItem(6);
-			if (output.getItem() instanceof IPotFoods) {
-				renderOutputItem(poseStack, buffer, output.copy(), packedLight);
-			} else {
-				FluidStack fluid = tile.outputTank.getFluid();
-				if (fluid.isEmpty()) {
-					fluid = tile.inputTank.getFluid();
-				}
-				if (!fluid.isEmpty()) {
-					FluidStack copy = fluid.copy();
-					if (isC) {
-						float h = copy.getAmount() * 0.25F / tile.TANK_CAP;
-						renderFluid(poseStack, buffer, copy, packedLight, 0.5F, 0.125F, 0.5F, 0.305F, h);
-					} else {
-						float h = copy.getAmount() * 0.35F / tile.TANK_CAP;
-						renderFluid(poseStack, buffer, copy, packedLight, 0.5F, 0.075F, 0.5F, isB ? 0.375F : 0.305F, h);
+			if (!lit) {
+				ItemStack output = tile.getItem(6);
+				if (output.getItem() instanceof IPotFoods) {
+					renderOutputItem(poseStack, buffer, output.copy(), packedLight);
+				} else {
+					FluidStack fluid = tile.outputTank.getFluid();
+					if (fluid.isEmpty()) {
+						fluid = tile.inputTank.getFluid();
+					}
+					if (!fluid.isEmpty()) {
+						FluidStack copy = fluid.copy();
+						if (isC) {
+							float h = copy.getAmount() * 0.25F / tile.TANK_CAP;
+							renderFluid(poseStack, buffer, copy, packedLight, 0.5F, 0.125F, 0.5F, 0.305F, h);
+						} else {
+							float h = copy.getAmount() * 0.35F / tile.TANK_CAP;
+							renderFluid(poseStack, buffer, copy, packedLight, 0.5F, 0.075F, 0.5F, isB ? 0.375F : 0.305F, h);
+						}
 					}
 				}
 			}
-
 		}
 	}
 

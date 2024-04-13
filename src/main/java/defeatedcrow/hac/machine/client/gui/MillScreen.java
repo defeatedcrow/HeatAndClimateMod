@@ -39,7 +39,7 @@ public class MillScreen extends AbstractContainerScreen<MillMenu> {
 
 		List<Component> list = Lists.newArrayList();
 		boolean lock = this.getMenu().getContainer().isLocked();
-		if (this.isHovering(156, 3, 168, 23, mx, my)) {
+		if (this.isHovering(156, 3, 12, 20, mx, my)) {
 			if (lock) {
 				list.add(Component.translatable("dcs.tip.container.ownable_locked", this.getMenu().getContainer().getOwnerName()));
 			} else {
@@ -49,6 +49,12 @@ public class MillScreen extends AbstractContainerScreen<MillMenu> {
 					list.add(Component.translatable("dcs.tip.container.ownable_short"));
 			}
 		}
+
+		if (this.isHovering(10, 57, 12, 16, mx, my)) {
+			String s = this.menu.getEnergy() + "/" + this.menu.getContainer().getEnergyHandler().getMaxEnergyStored() + " FE";
+			list.add(Component.literal(s));
+		}
+
 		this.renderComponentTooltip(pose, list, mx, my);
 	}
 
@@ -70,7 +76,15 @@ public class MillScreen extends AbstractContainerScreen<MillMenu> {
 
 		int l = this.menu.getBurnProgress();
 		if (l > 0)
-			this.blit(pose, i + 47, j + 54, 189, l * 12, 12, 12);
+			this.blit(pose, i + 67, j + 54, 189, l * 12, 12, 12);
+
+		int m = this.menu.getBatteryCount();
+		if (m > 0)
+			this.blit(pose, i + 13, j + 78 - m * 2, 176, 42, 12, m * 2);
+
+		if (this.menu.isRS()) {
+			this.blit(pose, i + 14, j + 43, 176, 58, 10, 10);
+		}
 	}
 
 	@Override

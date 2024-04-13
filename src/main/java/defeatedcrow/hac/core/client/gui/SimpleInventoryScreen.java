@@ -38,7 +38,7 @@ public class SimpleInventoryScreen extends AbstractContainerScreen<SimpleInvento
 		this.renderTooltip(pose, mx, my);
 
 		boolean lock = this.getMenu().getContainer().isLocked();
-		if (this.isHovering(156, 3, 168, 23, mx, my)) {
+		if (this.isHovering(156, 3, 12, 20, mx, my)) {
 			List<Component> list = Lists.newArrayList();
 			if (lock) {
 				list.add(Component.translatable("dcs.tip.container.ownable_locked", this.getMenu().getContainer().getOwnerName()));

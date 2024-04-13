@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.Entity;
@@ -16,6 +17,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -78,7 +80,7 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 			}
 
 			ItemStack drop = getMainDrop();
-			if (tile != null && tile instanceof OwnableContainerBaseTileDC base) {
+			if (tile != null && tile instanceof OwnableBaseTileDC base) {
 				drop = getDropItem(drop, base);
 			}
 			ret.add(drop);
@@ -92,7 +94,7 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 	public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity living, ItemStack item) {
 		if (!DCUtil.isEmpty(item) && item.getItem() instanceof BlockItemDC && ((BlockItemDC) item.getItem()).getBlock() instanceof ITileNBTHolder holder) {
 			BlockEntity tile = level.getBlockEntity(pos);
-			if (tile instanceof OwnableContainerBaseTileDC cont) {
+			if (tile instanceof OwnableBaseTileDC cont) {
 				CompoundTag tag = new CompoundTag();
 				holder.setNBTFromItem(item, cont);
 				if (!cont.hasOwner() && living instanceof Player player) {
@@ -105,7 +107,7 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 
 	@Override
 	public ItemStack getDropItem(ItemStack item, BlockEntity tile) {
-		if (!DCUtil.isEmpty(item) && tile instanceof OwnableContainerBaseTileDC basetile) {
+		if (!DCUtil.isEmpty(item) && tile instanceof OwnableBaseTileDC basetile) {
 			CompoundTag tag = item.getOrCreateTag();
 			basetile.writeTag(tag);
 			item.setTag(tag);
@@ -115,7 +117,7 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 
 	@Override
 	public void setNBTFromItem(ItemStack item, BlockEntity tile) {
-		if (!DCUtil.isEmpty(item) && item.hasTag() && tile instanceof OwnableContainerBaseTileDC basetile) {
+		if (!DCUtil.isEmpty(item) && item.hasTag() && tile instanceof OwnableBaseTileDC basetile) {
 			CompoundTag tag = item.getTag();
 			basetile.load(tag);
 		}
@@ -137,6 +139,14 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 	}
 
 	/* waterlogged */
+
+	@Override
+	public BlockState updateShape(BlockState state, Direction dir, BlockState state2, LevelAccessor level, BlockPos p1, BlockPos p2) {
+		if (state.getValue(WATERLOGGED)) {
+			level.scheduleTick(p1, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+		}
+		return super.updateShape(state, dir, state2, level, p1, p2);
+	}
 
 	@Override
 	public FluidState getFluidState(BlockState state) {

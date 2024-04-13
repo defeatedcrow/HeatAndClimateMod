@@ -170,6 +170,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 				world.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
 			} else if (pre != post) {
 				world.scheduleTick(pos, this, 5);
+				world.updateNeighborsAt(pos, this);
 			}
 		}
 	}
@@ -471,7 +472,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 			if (m > 3) {
 				m = DCTimeHelper.getSeasonEnum(world).getSeasonLimitedID();
 			}
-			world.setBlock(pos, next, m);
+			world.setBlock(pos, next.setValue(DCState.STAGE6, m), 2);
 		}
 	}
 

@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
+import defeatedcrow.hac.api.recipe.IDeviceFuel;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.food.material.FoodInit;
@@ -20,6 +21,7 @@ public class PluginRecipeListDC {
 	public static final List<IDeviceRecipe> TEA_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> FERMENTATION_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> PULVERISER_LIST = Lists.newArrayList();
+	public static final List<IDeviceFuel> BIOMASS_FUEL_LIST = Lists.newArrayList();
 	public static final List<ClimateCropBaseBlock> CROP_LIST = Lists.newArrayList();
 	public static final List<LeavesCropBlockDC> TREE_LIST = Lists.newArrayList();
 
@@ -185,6 +187,8 @@ public class PluginRecipeListDC {
 		FERMENTATION_LIST.addAll(DCRecipes.INSTANCE.FERMENTATION.values());
 
 		PULVERISER_LIST.addAll(DCRecipes.INSTANCE.PULVERISE.values());
+
+		BIOMASS_FUEL_LIST.addAll(DCRecipes.INSTANCE.BIOMASS_FUEL.values());
 	}
 
 }

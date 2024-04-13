@@ -1,0 +1,26 @@
+{
+  "values": [
+    "dcs_climate:build/bricks_mud",
+    "dcs_climate:build/bricks_gypsum",
+    "dcs_climate:build/bricks_serpentine",
+    "dcs_climate:build/bricks_greisen",
+    "dcs_climate:build/bricks_skarn",
+    "dcs_climate:build/bricks_hornfels",
+    "dcs_climate:build/bricks_marble",
+    "dcs_climate:build/bricks_schist_blue",
+    "dcs_climate:build/bricks_schist_nether",
+    "dcs_climate:build/bricks_granite",
+    "dcs_climate:build/adobe_bricks",
+    "dcs_climate:build/bricks_mud",
+    "dcs_climate:build/bricks_gypsum",
+    "dcs_climate:build/bricks_serpentine",
+    "dcs_climate:build/bricks_greisen",
+    "dcs_climate:build/bricks_skarn",
+    "dcs_climate:build/bricks_hornfels",
+    "dcs_climate:build/bricks_marble",
+    "dcs_climate:build/bricks_schist_blue",
+    "dcs_climate:build/bricks_schist_nether",
+    "dcs_climate:build/bricks_granite",
+    "dcs_climate:build/adobe_bricks"
+  ]
+}

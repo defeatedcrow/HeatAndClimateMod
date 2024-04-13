@@ -1,7 +1,6 @@
 package defeatedcrow.hac.magic.material.item.card;
 
 import defeatedcrow.hac.api.magic.MagicColor;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -37,7 +36,7 @@ public class CardGreenBlack extends MagicCardBase {
 				}
 			}
 		}
-		DCLogger.debugInfoLog("test 1: onGround " + onGround);
+		// DCLogger.debugInfoLog("test 1: onGround " + onGround);
 		if (!onGround) {
 			boolean isDangerBlock = false;
 			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
@@ -59,7 +58,7 @@ public class CardGreenBlack extends MagicCardBase {
 					}
 				}
 			}
-			DCLogger.debugInfoLog("test 2-1: y " + mpos.getY());
+			// DCLogger.debugInfoLog("test 2-1: y " + mpos.getY());
 			if (isDangerBlock) {
 				player.displayClientMessage(Component.translatable("dcs.tip.magic_card.danger_alart").withStyle(ChatFormatting.RED), true);
 				return false;
@@ -85,7 +84,7 @@ public class CardGreenBlack extends MagicCardBase {
 					break;
 				}
 			}
-			DCLogger.debugInfoLog("test 2-2: y " + mpos.getY());
+			// DCLogger.debugInfoLog("test 2-2: y " + mpos.getY());
 			if (isDangerBlock) {
 				player.displayClientMessage(Component.translatable("dcs.tip.magic_card.danger_alart").withStyle(ChatFormatting.RED), true);
 				return false;

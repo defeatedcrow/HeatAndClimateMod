@@ -1,0 +1,24 @@
+{
+  "values": [
+    "dcs_climate:build/pillar_mud",
+    "dcs_climate:build/pillar_gypsum",
+    "dcs_climate:build/pillar_serpentine",
+    "dcs_climate:build/pillar_greisen",
+    "dcs_climate:build/pillar_skarn",
+    "dcs_climate:build/pillar_hornfels",
+    "dcs_climate:build/pillar_marble",
+    "dcs_climate:build/pillar_schist_blue",
+    "dcs_climate:build/pillar_schist_nether",
+    "dcs_climate:build/pillar_granite",
+    "dcs_climate:build/pillar_mud",
+    "dcs_climate:build/pillar_gypsum",
+    "dcs_climate:build/pillar_serpentine",
+    "dcs_climate:build/pillar_greisen",
+    "dcs_climate:build/pillar_skarn",
+    "dcs_climate:build/pillar_hornfels",
+    "dcs_climate:build/pillar_marble",
+    "dcs_climate:build/pillar_schist_blue",
+    "dcs_climate:build/pillar_schist_nether",
+    "dcs_climate:build/pillar_granite"
+  ]
+}

@@ -9,6 +9,7 @@ public class DCWailaPlugin implements IWailaPlugin {
 	public void register(IRegistrar registrar) {
 		HUDHandlerClimateData.register(registrar);
 		HUDHandlerCropData.register(registrar);
+		HUDWaterHeadData.register(registrar);
 	}
 
 }

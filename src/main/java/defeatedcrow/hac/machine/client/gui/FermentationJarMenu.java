@@ -169,7 +169,7 @@ public class FermentationJarMenu extends AbstractContainerMenu {
 		int i = this.data.get(0);
 		if (i == 0)
 			return 0;
-		int ret = i * 14 / 200;
+		int ret = i * 14 / 300;
 		if (i > 0 && ret == 0)
 			return 1;
 		return ret;

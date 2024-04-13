@@ -85,6 +85,9 @@ public class DCTimeHelper {
 			return getDateDisp();
 		}
 		if (ConfigServerBuilder.INSTANCE.enRealTime.get()) {
+			if (ConfigServerBuilder.INSTANCE.dateFormat.length() < 1) {
+				ConfigServerBuilder.INSTANCE.setDateFormat();
+			}
 			Calendar cal = Calendar.getInstance();
 			Date date = cal.getTime();
 			SimpleDateFormat format = new SimpleDateFormat(ConfigServerBuilder.INSTANCE.dateFormat);

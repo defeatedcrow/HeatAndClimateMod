@@ -12,13 +12,14 @@ import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.event.CraftingFoodEvent;
 import defeatedcrow.hac.machine.client.gui.MillMenu;
+import defeatedcrow.hac.machine.energy.SidedEnergyReceiver;
+import defeatedcrow.hac.machine.energy.SidedEnergyTankDC;
 import defeatedcrow.hac.machine.material.MachineInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -28,7 +29,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 
-public class StoneMillTile extends ProcessTileBaseDC implements IRenderBlockData, IIntReceiver {
+public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData, IIntReceiver {
 
 	public StoneMillTile(BlockPos pos, BlockState state) {
 		this(MachineInit.MILL_TILE.get(), pos, state);
@@ -39,33 +40,42 @@ public class StoneMillTile extends ProcessTileBaseDC implements IRenderBlockData
 		totalProgress = maxProgressTime();
 	}
 
+	int count = 5;
+	private int lastHash = 0;
+
+	@Override
+	public boolean onTickProcess(Level level, BlockPos pos, BlockState state) {
+		if (count > 0) {
+			count--;
+		} else {
+			count = 5;
+
+			if (lastHash != currentProgress) {
+				lastHash = currentProgress;
+				if (level instanceof ServerLevel)
+					MsgTileSimpleIntegerToC.sendToClient((ServerLevel) level, pos, currentProgress);
+			}
+		}
+		return super.onTickProcess(level, pos, state);
+	}
+
+	public int rotation = 0;
+
+	public static void clientTick(Level level, BlockPos pos, BlockState state, StoneMillTile tile) {
+		if (tile.currentProgress > 0) {
+			tile.rotation++;
+			if (tile.rotation > 360) {
+				tile.rotation -= 360;
+			}
+		}
+	}
+
+	@Override
+	public void receiveInteger(int i) {
+		currentProgress = i;
+	}
+
 	/* inventory */
-
-	public final ContainerData dataAccess = new ContainerData() {
-		@Override
-		public int get(int id) {
-			switch (id) {
-			case 0:
-				return StoneMillTile.this.currentProgress;
-			default:
-				return 0;
-			}
-		}
-
-		@Override
-		public void set(int id, int data) {
-			switch (id) {
-			case 0:
-				StoneMillTile.this.currentProgress = data;
-				break;
-			}
-		}
-
-		@Override
-		public int getCount() {
-			return 1;
-		}
-	};
 
 	@Override
 	public int getContainerSize() {
@@ -92,7 +102,7 @@ public class StoneMillTile extends ProcessTileBaseDC implements IRenderBlockData
 	}
 
 	protected int maxProgressTime() {
-		return 240;
+		return 320;
 	}
 
 	/* DeviceRecipe */
@@ -165,6 +175,12 @@ public class StoneMillTile extends ProcessTileBaseDC implements IRenderBlockData
 	}
 
 	@Override
+	public int consumeEnergy() {
+		int e = Math.min(getEnergyHandler().getFlowRate(), totalProgress - currentProgress);
+		return getEnergyHandler().consumeEnergy(e);
+	}
+
+	@Override
 	public boolean finishProcess(Level level, BlockPos pos, BlockState state) {
 		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
 		consume = recipe.matcheInput(inputs);
@@ -224,42 +240,20 @@ public class StoneMillTile extends ProcessTileBaseDC implements IRenderBlockData
 		return false;
 	}
 
-	int count = 5;
-	private int lastHash = 0;
+	/* battery */
 
-	@Override
-	public boolean onTickProcess(Level level, BlockPos pos, BlockState state) {
-		if (count > 0) {
-			count--;
-			return false;
-		} else {
-			count = 5;
+	public SidedEnergyTankDC battery = new SidedEnergyReceiver(this, getMaxEnergy(), 32);
 
-			if (lastHash != currentProgress) {
-				lastHash = currentProgress;
-				if (level instanceof ServerLevel)
-					MsgTileSimpleIntegerToC.sendToClient((ServerLevel) level, pos, currentProgress);
-			}
-
-			return false;
-		}
-	}
-
-	public int rotation = 0;
-
-	public static void clientTick(Level level, BlockPos pos, BlockState state, StoneMillTile tile) {
-		if (tile.currentProgress > 0) {
-			tile.rotation++;
-			if (tile.rotation > 360) {
-				tile.rotation -= 360;
-			}
-		}
+	protected int getMaxEnergy() {
+		return 4000;
 	}
 
 	@Override
-	public void receiveInteger(int i) {
-		currentProgress = i;
+	public SidedEnergyTankDC getEnergyHandler() {
+		return battery;
 	}
+
+	/* menu */
 
 	@Override
 	protected AbstractContainerMenu createMenu(int i, Inventory inv) {

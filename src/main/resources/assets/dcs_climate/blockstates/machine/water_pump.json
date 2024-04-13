@@ -1,0 +1,7 @@
+{
+ "variants": {
+    "": {
+      "model": "dcs_climate:block/machine/water_pump_0"
+    }
+  }
+}

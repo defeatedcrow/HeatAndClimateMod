@@ -1,0 +1,25 @@
+{
+  "type": "dcs_climate:climate_smelting",
+  "group": "climate_smelting",
+  "result": {
+    "item": "dcs_climate:main/block_rubber"
+  },
+  "ingredient": {
+    "item": "dcs_climate:main/dustblock_rubber"
+  },
+  "frequency": 300,
+  "heat": [
+    "BOIL",
+    "OVEN"
+  ],
+  "hum": [
+    "DRY",
+    "NORMAL"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

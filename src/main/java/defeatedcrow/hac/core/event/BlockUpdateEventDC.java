@@ -8,13 +8,21 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.event.DCBlockUpdateEvent;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
+import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
+import defeatedcrow.hac.core.material.BuildInit;
+import defeatedcrow.hac.core.material.block.building.GrassSlab;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.GrassBlock;
+import net.minecraft.world.level.block.SnowLayerBlock;
+import net.minecraft.world.level.block.SnowyDirtBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.common.util.BlockSnapshot;
@@ -67,15 +75,8 @@ public class BlockUpdateEventDC {
 			BlockState st = event.state;
 			Block block = st.getBlock();
 
-			// for (Block b : CoreConfigDC.blackListBlock) {
-			// if (block == b) {
-			// return;
-			// }
-			// }
-
-			ClimateSupplier clm = new ClimateSupplier(world, p);
-
 			if (ConfigCommonBuilder.INSTANCE.enFarmland.get() && FarmBlock.class.isInstance(block) && st.getProperties().contains(BlockStateProperties.MOISTURE)) {
+				ClimateSupplier clm = new ClimateSupplier(world, p);
 				DCHumidity hum = ClimateAPI.calculator.getHumidity(world, p, 4, true);
 				DCHumidity hum2 = clm.get().getHumidity();
 				// 耕地はWET以上の湿度では湿る
@@ -85,6 +86,28 @@ public class BlockUpdateEventDC {
 					event.setCanceled(true);
 				}
 				return;
+			}
+
+			if (GrassBlock.class.isInstance(block)) {
+				if (!world.isAreaLoaded(p, 3))
+					return;
+				if (world.getMaxLocalRawBrightness(p.above()) >= 9) {
+					Direction dir = Direction.Plane.HORIZONTAL.getRandomDirection(world.getRandom());
+					BlockPos p2 = p.relative(dir);
+					if (world.getBlockState(p2).is(BuildInit.SLAB_DIRT.get()) && GrassSlab.canBeGrass(world, p2) && !world.getFluidState(p2).is(FluidTags.WATER)) {
+						world.setBlockAndUpdate(p2, BuildInit.SLAB_GRASS.get().defaultBlockState().setValue(GrassSlab.SNOWY, Boolean.valueOf(DCState.getBool(st, SnowyDirtBlock.SNOWY))));
+					}
+				}
+			}
+
+			if (SnowLayerBlock.class.isInstance(block)) {
+				if (world.getBiome(p).get().warmEnoughToRain(p)) {
+					ClimateSupplier clm = new ClimateSupplier(world, p);
+					if (clm.get().getHeat().getTier() > DCHeatTier.COLD.getTier()) {
+						SnowLayerBlock.dropResources(st, world, p);
+						world.removeBlock(p, false);
+					}
+				}
 			}
 
 		}

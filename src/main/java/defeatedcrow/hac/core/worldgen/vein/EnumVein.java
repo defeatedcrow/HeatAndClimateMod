@@ -52,8 +52,13 @@ public enum EnumVein {
 		if (name.contains("_")) {
 			// 逆順
 			String[] n2 = name.split("_");
-			if (n2 != null && n2.length > 1) {
-				sub = n2[1] + "_" + n2[0];
+			if (n2 != null) {
+				if (n2.length > 1 && n2[1].length() > 2) {
+					sub = n2[1] + "_" + n2[0];
+				} else {
+					sub = n2[0];
+				}
+
 			}
 		}
 		for (EnumVein ret : VALUES) {

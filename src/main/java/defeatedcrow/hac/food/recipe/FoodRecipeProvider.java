@@ -584,6 +584,12 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_straw", has(TagDC.ItemTag.FEED_STRAW))
 			.save(cons, "dcs_climate:food/packed_mud_from_straw");
 
+		ShapelessRecipeBuilder.shapeless(Items.PACKED_MUD, 1)
+			.requires(Ingredient.of(Items.MUD))
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_PLANT))
+			.unlockedBy("has_dust_plant", has(TagDC.ItemTag.DUST_PLANT))
+			.save(cons, "dcs_climate:food/packed_mud_from_dust");
+
 		ShapedRecipeBuilder.shaped(Items.CAKE, 1)
 			.pattern("XXX")
 			.pattern("ZYZ")
@@ -1012,18 +1018,19 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_residues", has(TagDC.ItemTag.RESIDUES))
 			.save(cons, "dcs_climate:food/craft_bio_briquet_raw");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.BIOMASS_PELLET.get(), 2)
-			.requires(Ingredient.of(ItemTags.SAPLINGS))
-			.requires(Ingredient.of(ItemTags.SAPLINGS))
-			.requires(Ingredient.of(ItemTags.SAPLINGS))
-			.requires(Ingredient.of(ItemTags.SAPLINGS))
-			.requires(Ingredient.of(ItemTags.SAPLINGS))
-			.requires(Ingredient.of(ItemTags.SAPLINGS))
-			.requires(Ingredient.of(ItemTags.SAPLINGS))
-			.requires(Ingredient.of(ItemTags.SAPLINGS))
-			.requires(Ingredient.of(TagDC.ItemTag.DUST_ALKALI))
-			.unlockedBy("has_saplings", has(ItemTags.SAPLINGS))
-			.save(cons, "dcs_climate:food/craft_bio_briquet_raw2");
+		ShapelessRecipeBuilder.shapeless(Blocks.DIRT, 1)
+			.requires(Ingredient.of(TagDC.ItemTag.LEAF_MOLD))
+			.requires(Ingredient.of(ItemTags.SAND))
+			.unlockedBy("has_leaf_mold", has(TagDC.ItemTag.LEAF_MOLD))
+			.save(cons, "dcs_climate:core/dirt_another_0");
+
+		ShapelessRecipeBuilder.shapeless(Items.GUNPOWDER, 1)
+			.requires(TagDC.ItemTag.DUST_NITER)
+			.requires(TagDC.ItemTag.DUST_NITER)
+			.requires(TagDC.ItemTag.DUST_COAL)
+			.requires(TagDC.ItemTag.DUST_SULFUR)
+			.unlockedBy("has_dust_niter", has(TagDC.ItemTag.DUST_NITER))
+			.save(cons, "dcs_climate:core/gunpowder_another_0");
 
 		// food materials
 

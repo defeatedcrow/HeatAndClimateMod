@@ -12,15 +12,20 @@ import defeatedcrow.hac.core.event.CharmTriggerEvent;
 import defeatedcrow.hac.core.event.LivingEventDC;
 import defeatedcrow.hac.core.event.LivingTickEventDC;
 import defeatedcrow.hac.core.event.ServerTickEventDC;
+import defeatedcrow.hac.core.event.ThunderstruckEventDC;
+import defeatedcrow.hac.core.event.WandererTradeEventDC;
 import defeatedcrow.hac.core.json.JsonInit;
 import defeatedcrow.hac.core.recipe.device.DeviceRecipeConfig;
 import defeatedcrow.hac.core.recipe.device.DeviceRecipeList;
+import defeatedcrow.hac.core.recipe.fuel.FuelConfig;
+import defeatedcrow.hac.core.recipe.fuel.FuelList;
 import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingConfig;
 import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingList;
 import defeatedcrow.hac.food.FoodProxy;
 import defeatedcrow.hac.food.event.FishingEventDC;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.PlayerAdvancements;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -51,9 +56,12 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onHurt);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onDeath);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onDig);
+		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onPotionEffectColor);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onXpPickup);
 		MinecraftForge.EVENT_BUS.addListener(FishingEventDC::onFishing);
 		MinecraftForge.EVENT_BUS.addListener(AnvilEventDC::onEvent);
+		MinecraftForge.EVENT_BUS.addListener(WandererTradeEventDC::onLoadingTrade);
+		MinecraftForge.EVENT_BUS.addListener(ThunderstruckEventDC::onLodUpdate);
 
 		FoodProxy.registerEvent();
 	}
@@ -73,6 +81,9 @@ public class CommonProxyDC {
 
 		DeviceRecipeList.init();
 		DeviceRecipeConfig.initFile();
+
+		FuelList.init();
+		FuelConfig.initFile();
 	};
 
 	public boolean keyShiftPushed() {
@@ -114,6 +125,18 @@ public class CommonProxyDC {
 			if (adv != null)
 				((ServerPlayer) player).getAdvancements().award(adv, "impossible");
 		}
+	}
+
+	public boolean isAdvancementDone(LivingEntity player, String res) {
+		if (player instanceof ServerPlayer) {
+			ServerPlayer serverplayer = (ServerPlayer) player;
+			Advancement adv = serverplayer.server.getAdvancements().getAdvancement(new ResourceLocation(ClimateCore.MOD_ID + ":" + res));
+			if (adv != null && adv.getDisplay() != null) {
+				PlayerAdvancements advs = serverplayer.server.getPlayerList().getPlayerAdvancements(serverplayer);
+				return advs != null && advs.getOrStartProgress(adv).isDone();
+			}
+		}
+		return false;
 	}
 
 	public boolean isOP(Player player) {

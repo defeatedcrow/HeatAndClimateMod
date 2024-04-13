@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "tag": "minecraft:planks"
+    },
+    "Z": {
+      "tag": "forge:leather"
+    }
+  },
+  "pattern": [
+    "X",
+    "Y",
+    "Z"
+  ],
+  "result": {
+    "item": "dcs_climate:main/screwdriver"
+  }
+}

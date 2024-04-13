@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "item": "dcs_climate:machine/batteryitem_small"
+    },
+    "Z": {
+      "tag": "dcs_climate:impellers/small"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "YZY",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/generator_small"
+  }
+}

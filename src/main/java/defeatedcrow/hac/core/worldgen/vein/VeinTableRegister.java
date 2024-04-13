@@ -30,7 +30,7 @@ public class VeinTableRegister {
 
 	public Optional<VeinTable> getTable(String vein) {
 		for (VeinTable v : list) {
-			if (v.veinName.equalsIgnoreCase(vein)) {
+			if (v.getName().equalsIgnoreCase(vein)) {
 				return Optional.of(v);
 			}
 		}

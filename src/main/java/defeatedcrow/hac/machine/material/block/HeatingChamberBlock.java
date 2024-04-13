@@ -9,6 +9,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.machine.material.MachineInit;
@@ -98,8 +99,14 @@ public class HeatingChamberBlock extends HeatSourceBlock {
 		MutableComponent TEMP2 = DCHeatTier.SMELTING.localize().withStyle(ChatFormatting.LIGHT_PURPLE);
 		MutableComponent tex1 = Component.translatable("dcs.tip.chamber.temp").append(TEMP1).append(" - ").append(TEMP2);
 		MutableComponent tex2 = Component.translatable("dcs.tip.chamber.wind");
-		list.add(tex1);
-		list.add(tex2);
+		if (ClimateCore.proxy.keyShiftPushed()) {
+			list.add(tex1);
+			list.add(tex2);
+		} else {
+			list.add(tex1);
+			list.add(Component.translatable("dcs.tip.shift"));
+		}
+		super.appendHoverText(stack, level, list, flag);
 	}
 
 }

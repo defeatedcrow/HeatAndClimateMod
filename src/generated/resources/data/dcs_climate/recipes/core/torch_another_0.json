@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:food/bio_briquet"
+    },
+    "Y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "X",
+    "Y"
+  ],
+  "result": {
+    "count": 4,
+    "item": "minecraft:torch"
+  }
+}

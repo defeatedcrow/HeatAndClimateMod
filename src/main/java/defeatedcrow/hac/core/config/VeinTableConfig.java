@@ -31,7 +31,7 @@ public class VeinTableConfig {
 		File dir = new File(ClimateCore.configDir, "/ore_deposits/");
 
 		for (VeinTable table : VeinTableRegister.INSTANCE.list) {
-			File f = new File(dir, table.veinName.toLowerCase() + ".json");
+			File f = new File(dir, table.getName().toLowerCase() + ".json");
 
 			// すでにファイルが有る場合は何もしない。
 			if (!f.exists()) {

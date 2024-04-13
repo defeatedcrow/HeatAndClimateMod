@@ -31,6 +31,7 @@ import defeatedcrow.hac.core.material.item.tool.ItemMosquitoCoil;
 import defeatedcrow.hac.core.material.item.tool.ItemPickaxeDC;
 import defeatedcrow.hac.core.material.item.tool.ItemScythe;
 import defeatedcrow.hac.core.material.item.tool.ItemShovelDC;
+import defeatedcrow.hac.core.material.item.tool.ScrewdriverItem;
 import defeatedcrow.hac.core.material.item.tool.SeedingPotItem;
 import defeatedcrow.hac.core.material.item.tool.StackableBucketItem;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate;
@@ -39,6 +40,8 @@ import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Clothing;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Machine;
 import defeatedcrow.hac.core.recipe.device.data.DummyDeviceRecipe;
 import defeatedcrow.hac.core.recipe.device.data.DummyDeviceRecipeSerealizer;
+import defeatedcrow.hac.core.recipe.fuel.data.DummyFuel;
+import defeatedcrow.hac.core.recipe.fuel.data.DummyFuelSerealizer;
 import defeatedcrow.hac.core.recipe.smelting.data.DummySmelting;
 import defeatedcrow.hac.core.recipe.smelting.data.DummySmeltingSerealizer;
 import defeatedcrow.hac.core.tag.TagDC;
@@ -201,12 +204,17 @@ public class CoreInit {
 	public static final RegistryObject<Item> DUST_WOOD = regItem("dust_wood", () -> new MaterialItemDC("dust_wood", TagDC.ItemTag.DUST_WOOD));
 	public static final RegistryObject<Item> DUST_PLANT = regItem("dust_plant", () -> new MaterialItemDC("dust_plant", TagDC.ItemTag.DUST_PLANT));
 
+	public static final RegistryObject<Item> CLOTH_RUBBER = regItem("cloth_rubber", () -> new MaterialItemDC("cloth_rubber", TagDC.ItemTag.CLOTH_RUBBER));
+
+	public static final RegistryObject<Item> ADOBE_BRICK_ITEM = regItem("adobe_brick_item", () -> new MaterialItemDC("adobe_brick_item", null));
+
 	public static final RegistryObject<Item> MORTAR = regItem("agate_mortar", () -> new AgateMortarItem("agate_mortar"));
 	public static final RegistryObject<Item> SIEVE = regItem("sieve", () -> new GemSieveItem("sieve"));
 	public static final RegistryObject<Item> HAND_SPINDLE = regItem("hand_spindle", () -> new HandSpindleItem("hand_spindle"));
 	public static final RegistryObject<Item> SEEDING_POT = regItem("seeding_pot", () -> new SeedingPotItem("seeding_pot"));
 
 	public static final RegistryObject<Item> HANDY_BELLOW = regItem("bellow", () -> new HandyBellowItem("bellow"));
+	public static final RegistryObject<Item> SCREWDRIVER = regItem("screwdriver", () -> new ScrewdriverItem("screwdriver"));
 
 	public static final RegistryObject<Item> EMPTY_COIL_CASE = regItem("insence_case", () -> new MaterialItemDC(MACHINE, "insence_case", null));
 	public static final RegistryObject<Item> MOSQUITO_COIL = regItem("mosquito_coil", () -> new MaterialItemDC(MACHINE, "mosquito_coil", null));
@@ -397,6 +405,9 @@ public class CoreInit {
 	public static final RegistryObject<Block> METALBLOCK_HASTELLOY = regBlock("metalblock_hastelloy", () -> new MetalBlockDC("metalblock_hastelloy"), TagDC.ItemTag.METALBLOCK_HASTELLOY);
 	public static final RegistryObject<Block> METALBLOCK_BSCCO = regBlock("metalblock_bscco", () -> new MetalBlockDC("metalblock_bscco"), TagDC.ItemTag.METALBLOCK_BSCCO);
 
+	public static final RegistryObject<Block> DUSTBLOCK_RUBBER = regBlock("dustblock_rubber", () -> new AlloyDustBlockDC("dustblock_rubber"), TagDC.ItemTag.DUSTBLOCK_RUBBER);
+	public static final RegistryObject<Block> BLOCK_RUBBER = regBlock("block_rubber", () -> new MetalBlockDC("block_rubber"), TagDC.ItemTag.BLOCK_RUBBER);
+
 	public static final RegistryObject<EntityType<ThrownHarpoon>> HARPOON = ENTITIES.register("harpoon", () -> EntityType.Builder.<ThrownHarpoon>of(ThrownHarpoon::new, MobCategory.MISC)
 		.sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("harpoon"));
 
@@ -477,6 +488,8 @@ public class CoreInit {
 	public static final RegistryObject<SimpleParticleType> LIGHT_ORB_RED = PARTICLE_TYPE.register("light_orb_red", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> LIGHT_ORB_BLUE = PARTICLE_TYPE.register("light_orb_blue", () -> new SimpleParticleType(false));
 
+	public static final RegistryObject<SimpleParticleType> LEAKAGE = PARTICLE_TYPE.register("leakage", () -> new SimpleParticleType(false));
+
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = BLOCKS.register("main/" + name, block);
 		regItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(CORE), tag));
@@ -500,6 +513,9 @@ public class CoreInit {
 
 	public static final RegistryObject<RecipeType<DummyDeviceRecipe>> DEVICE_RECIPE = RECIPE_TYPE.register("device_recipe", () -> new RecipeType<DummyDeviceRecipe>() {});
 	public static final RegistryObject<RecipeSerializer<DummyDeviceRecipe>> DEVICE_RECIPE_SEREALIZER = RECIPE_SEREALIZER.register("device_recipe", () -> new DummyDeviceRecipeSerealizer());
+
+	public static final RegistryObject<RecipeType<DummyFuel>> DEVICE_FUEL = RECIPE_TYPE.register("device_fuel", () -> new RecipeType<DummyFuel>() {});
+	public static final RegistryObject<RecipeSerializer<DummyFuel>> DEVICE_FUEL_SEREALIZER = RECIPE_SEREALIZER.register("device_fuel", () -> new DummyFuelSerealizer());
 
 	public static final RegistryObject<RecipeType<FlavorCustomRecipe>> FLAVOR = RECIPE_TYPE.register("food_customize", () -> new RecipeType<FlavorCustomRecipe>() {});
 	public static final RegistryObject<RecipeSerializer<FlavorCustomRecipe>> FLAVOR_SEREALIZER = RECIPE_SEREALIZER.register("food_customize", () -> new SimpleRecipeSerializer<>(FlavorCustomRecipe::new));

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:machine/cable_copper"
+    },
+    "Y": {
+      "tag": "forge:clothes/rubber"
+    }
+  },
+  "pattern": [
+    "YYY",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "item": "dcs_climate:machine/cable_copper_coated"
+  }
+}

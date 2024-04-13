@@ -21,7 +21,7 @@ public class MobEffectFlag extends MobEffectDC {
 	@Override
 	public void applyEffectTick(LivingEntity liv, int amp) {
 		if (!liv.level.isClientSide) {
-			double d = 16D + (amp * 16D);
+			double d = 32D + (amp * 16D);
 			List<Mob> list = liv.level.getNearbyEntities(Mob.class, TargetingConditions.forCombat().range(d).ignoreLineOfSight().ignoreInvisibilityTesting(), liv, liv.getBoundingBox().inflate(d));
 			list.stream().filter(this::notNeutral).forEach(mob -> {
 				if (this == CoreInit.FLAG.get())

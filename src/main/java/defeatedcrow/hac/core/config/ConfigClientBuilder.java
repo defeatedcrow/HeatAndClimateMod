@@ -25,13 +25,14 @@ public class ConfigClientBuilder {
 
 	ConfigClientBuilder(ForgeConfigSpec.Builder builder) {
 
-		builder.comment("========= Render Setting ========", "Gives some additional tooltips to the item.").push("render_config");
+		builder.comment("========= Render Setting ========", "Setting for rendering").push("render_config");
 
 		this.showAltTip = builder
+			.comment("Gives some additional tooltips to the item.")
 			.define("Show Additional Tooltips", true);
 
 		this.showDamEffect = builder
-			.comment("= Set the screen effect when climate damage occurs.")
+			.comment("Set the screen effect when climate damage occurs.")
 			.define("Show Damage Effect", true);
 
 		this.showHUD = builder
@@ -40,9 +41,10 @@ public class ConfigClientBuilder {
 
 		builder.pop();
 
-		builder.comment("======== HUD Setting ========", "Select a color number for the climate HUD.").push("hud_config");
+		builder.comment("======== HUD Setting ========", "Setting for the HUD display.").push("hud_config");
 
 		this.HUD_c = builder
+			.comment("Select a color number for the climate HUD.")
 			.defineInRange("HUD Color Select", 0, 0, 4);
 
 		this.offset_x = builder
@@ -55,7 +57,7 @@ public class ConfigClientBuilder {
 
 		builder.pop();
 
-		builder.comment("======== Keybind Setting ========", "Sets the HUD display switching key.").push("key_config");
+		builder.comment("======== Keybind Setting ========", "Setting for the keybind.").push("key_config");
 
 		this.key_HUD = builder
 			.comment(" Set the key to switch HUD design. default:L-shift")

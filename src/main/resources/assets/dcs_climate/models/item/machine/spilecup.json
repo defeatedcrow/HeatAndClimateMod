@@ -1,3 +1,6 @@
 {
-  "parent": "dcs_climate:block/machine/spilecup_base"
+  "textures": {
+    "layer0": "dcs_climate:block/machine/spilecup_item"
+  },
+  "parent": "minecraft:item/generated"
 }

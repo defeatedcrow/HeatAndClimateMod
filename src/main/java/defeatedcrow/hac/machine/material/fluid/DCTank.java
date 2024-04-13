@@ -2,7 +2,6 @@ package defeatedcrow.hac.machine.material.fluid;
 
 import org.jetbrains.annotations.NotNull;
 
-import defeatedcrow.hac.api.util.TagKeyDC;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -18,22 +17,14 @@ public class DCTank implements IFluidHandler, IFluidTank {
 		capacity = cap;
 	}
 
-	public DCTank readFromNBT(CompoundTag tag) {
+	public void readFromNBT(CompoundTag tag) {
 		DCTank ret = this;
-		if (tag.contains(TagKeyDC.CAPACITY)) {
-			int c = tag.getInt(TagKeyDC.CAPACITY);
-			if (c != capacity) {
-				ret = new DCTank(c);
-			}
-		}
-		FluidStack fluid = FluidStack.loadFluidStackFromNBT(tag);
-		ret.setFluid(fluid);
-		return ret;
+		FluidStack f = FluidStack.loadFluidStackFromNBT(tag);
+		fluid = f;
 	}
 
 	public CompoundTag writeToNBT(CompoundTag tag) {
 		fluid.writeToNBT(tag);
-		tag.putInt(TagKeyDC.CAPACITY, capacity);
 		return tag;
 	}
 
@@ -90,13 +81,8 @@ public class DCTank implements IFluidHandler, IFluidTank {
 				if (fluid.isEmpty()) {
 					setFluid(get);
 				} else {
-					CompoundTag tag = DCFluidUtil.combineTag(fluid, get);
-					if (tag != null) {
-						fluid.setTag(tag);
-					}
 					fluid.grow(ret);
 				}
-				DCFluidUtil.removeHead(fluid);
 			}
 			return ret;
 		}
@@ -115,7 +101,7 @@ public class DCTank implements IFluidHandler, IFluidTank {
 						setFluid(FluidStack.EMPTY);
 					}
 				}
-				return DCFluidUtil.removeHead(fluid);
+				return fluid;
 			}
 		}
 		return FluidStack.EMPTY;

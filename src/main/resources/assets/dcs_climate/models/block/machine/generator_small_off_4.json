@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+        "north": "dcs_climate:block/machine/generator_side",
+        "south": "dcs_climate:block/machine/generator_off_4",
+        "east": "dcs_climate:block/machine/generator_side",
+        "west": "dcs_climate:block/machine/generator_side",
+        "up": "dcs_climate:block/machine/generator_side",
+        "down": "dcs_climate:block/machine/generator_side",
+        "particle": "dcs_climate:block/machine/generator_off_4"
+    }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:food/bio_briquet"
+    },
+    "Y": {
+      "tag": "forge:rods/wooden"
+    },
+    "Z": {
+      "tag": "minecraft:logs_that_burn"
+    }
+  },
+  "pattern": [
+    " Y ",
+    "YXY",
+    "ZZZ"
+  ],
+  "result": {
+    "item": "minecraft:campfire"
+  }
+}

@@ -117,6 +117,13 @@ public class SilverBadge extends MagicJewelBase {
 				tag.putInt(TagKeyDC.POS_Y, p1.getY());
 				tag.putInt(TagKeyDC.POS_Z, p1.getZ());
 				charm.setTag(tag);
+
+				MutableComponent mes = Component.translatable("dcs.tip.coodinate");
+				MutableComponent mes2 = Component.literal(" X:" + p1.getX());
+				mes.append(Component.literal(" Y:" + p1.getY()));
+				mes.append(Component.literal(" Z:" + p1.getZ()));
+				player.displayClientMessage(mes, true);
+				player.displayClientMessage(mes2, true);
 			}
 		}
 		return InteractionResultHolder.success(charm);

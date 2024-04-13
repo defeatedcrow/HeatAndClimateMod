@@ -1,0 +1,41 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "pulverise",
+  "result": {
+    "item": "minecraft:gravel",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:cobblestone"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

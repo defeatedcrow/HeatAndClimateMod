@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/machine/cable_copper_coated_item"
+  },
+  "parent": "dcs_climate:block/dcs_dummy"
+}

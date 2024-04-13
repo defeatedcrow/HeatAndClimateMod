@@ -1,0 +1,9 @@
+{
+  "type": "dcs_climate:device_fuel",
+  "group": "biomass",
+  "ingredient": {
+    "item": "dcs_climate:food/bio_briquet"
+  },
+  "input_fluid": "empty",
+  "burn_time": 1600
+}

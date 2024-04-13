@@ -28,7 +28,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -259,7 +258,7 @@ public class SpileCupBlock extends BlockDC {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable Level level, List<Component> list) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.spile", "logs_can_collect_sap");
 		list.add(tex1);
 	}

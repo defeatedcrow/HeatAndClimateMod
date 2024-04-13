@@ -119,7 +119,7 @@ public class SilverPendant extends MagicJewelBase {
 				dir = Direction.DOWN;
 			}
 
-			List<BlockPos> list = getTargetPos(pos, dir, charm.getCount());
+			List<BlockPos> list = getTargetPos(pos, dir, charm.getCount() * 2);
 			for (BlockPos p : list) {
 				BlockState s = owner.level.getBlockState(p);
 				if (s != null && !s.hasBlockEntity() && isTerrainBlock(s)) {
@@ -200,9 +200,7 @@ public class SilverPendant extends MagicJewelBase {
 							n.stopBeingAngry();
 						}
 					} else if (liv instanceof Monster monster) {
-						monster.targetSelector.getRunningGoals().forEach(goal -> {
-							goal.stop();
-						});
+						monster.targetSelector.removeAllGoals();
 					}
 				}
 			}

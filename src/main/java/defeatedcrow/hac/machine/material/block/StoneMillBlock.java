@@ -8,6 +8,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.machine.material.MachineInit;
@@ -28,7 +29,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
-public class StoneMillBlock extends ProcessTileBlock {
+public class StoneMillBlock extends EnergyProcessBlock {
 
 	final String name;
 
@@ -94,13 +95,21 @@ public class StoneMillBlock extends ProcessTileBlock {
 	@Override
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-		return level.isClientSide ? createTickerHelper(type, MachineInit.MILL_TILE.get(), StoneMillTile::clientTick) : createTickerHelper(type, MachineInit.MILL_TILE.get(), ProcessTileBaseDC::serverTick);
+		return level.isClientSide ? createTickerHelper(type, MachineInit.MILL_TILE.get(), StoneMillTile::clientTick) : createTickerHelper(type, MachineInit.MILL_TILE.get(), StoneMillTile::serverTick);
 	}
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
-		MutableComponent tex1 = Component.translatable("dcs.tip.alpha_mill").withStyle(ChatFormatting.GRAY);
-		list.add(tex1);
+		MutableComponent tex1 = Component.translatable("dcs.tip.energy.machine").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD);
+		MutableComponent tex2 = Component.translatable("dcs.tip.energy.machine.desc");
+		if (ClimateCore.proxy.keyShiftPushed()) {
+			list.add(tex1);
+			list.add(tex2);
+		} else {
+			list.add(tex1);
+			list.add(Component.translatable("dcs.tip.shift"));
+		}
+		super.appendHoverText(stack, level, list, flag);
 	}
 
 }

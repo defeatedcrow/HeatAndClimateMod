@@ -1,12 +1,8 @@
 package defeatedcrow.hac.machine.material.block;
 
-import java.util.UUID;
-
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.material.block.EntityBlockDC;
 import defeatedcrow.hac.core.material.block.OwnableContainerBaseTileDC;
 import net.minecraft.core.BlockPos;
@@ -41,8 +37,11 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 
 	public ProcessTileBlock(Properties prop) {
 		super(prop);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.LIT, Boolean.valueOf(false)).setValue(DCState.POWERED, Boolean.valueOf(false)).setValue(WATERLOGGED,
-			Boolean.valueOf(false)));
+		this.registerDefaultState(this.stateDefinition.any()
+			.setValue(DCState.FACING, Direction.NORTH)
+			.setValue(DCState.LIT, Boolean.valueOf(false))
+			.setValue(DCState.POWERED, Boolean.valueOf(false))
+			.setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
 	@Override
@@ -68,12 +67,12 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
 		BlockEntity tile = level.getBlockEntity(pos);
 		if (tile instanceof ProcessTileBaseDC chest) {
-			if (ClimateCore.isDebug && player.isCrouching()) {
-				UUID id = chest.getOwner();
-				String name = chest.getOwnerName();
-				DCLogger.debugInfoLog("### Registerd Owner: " + id.toString() + " ###");
-				DCLogger.debugInfoLog("### Registerd OwnerName: " + name + " ###");
-			}
+			// if (ClimateCore.isDebug && player.isCrouching()) {
+			// UUID id = chest.getOwner();
+			// String name = chest.getOwnerName();
+			// DCLogger.debugInfoLog("### Registerd Owner: " + id.toString() + " ###");
+			// DCLogger.debugInfoLog("### Registerd OwnerName: " + name + " ###");
+			// }
 			if (level.isClientSide) {
 				return InteractionResult.SUCCESS;
 			} else {

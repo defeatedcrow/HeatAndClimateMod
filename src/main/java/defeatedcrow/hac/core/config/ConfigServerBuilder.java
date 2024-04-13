@@ -19,7 +19,7 @@ public class ConfigServerBuilder {
 	public final ForgeConfigSpec.IntValue vOverYear;
 	public final ForgeConfigSpec.ConfigValue<String> setFormat;
 	public final ForgeConfigSpec.BooleanValue enRealTime;
-	public String dateFormat = "yyyy/MM/dd";
+	public String dateFormat = "";
 
 	public static int HUD_type = 0;
 

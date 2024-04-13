@@ -120,7 +120,11 @@ public class ClimateHUDEvent {
 						// ベース部分
 						if (showIcon) {
 							int i1 = ConfigClientBuilder.INSTANCE.HUD_c.get();
-							drawTexturedModalRect(pose.last().pose(), x, y, i1 * 32, 96, 32, 32);
+							if (i1 == 4) {
+								drawTexturedModalRect(pose.last().pose(), x, y, 0, 0, 32, 32);
+							} else {
+								drawTexturedModalRect(pose.last().pose(), x, y, i1 * 32, 96, 32, 32);
+							}
 
 							// heat
 							int i2 = clm.getHeat().getID();

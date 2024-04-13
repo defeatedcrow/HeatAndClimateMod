@@ -55,6 +55,8 @@
     "dcs_climate:main/metalblock_cobalt",
     "dcs_climate:main/metalblock_hastelloy",
     "dcs_climate:main/metalblock_bscco",
+    "dcs_climate:main/dustblock_rubber",
+    "dcs_climate:main/block_rubber",
     "dcs_climate:build/bricks_mud",
     "dcs_climate:build/chiseled_mud",
     "dcs_climate:build/bricks_gypsum",
@@ -83,6 +85,8 @@
     "dcs_climate:build/mosaic_blue",
     "dcs_climate:build/mosaic_yellow",
     "dcs_climate:build/mosaic_red",
-    "dcs_climate:machine/chamber_iron"
+    "dcs_climate:build/adobe_bricks",
+    "dcs_climate:machine/chamber_iron",
+    "dcs_climate:machine/boiler_biomass"
   ]
 }

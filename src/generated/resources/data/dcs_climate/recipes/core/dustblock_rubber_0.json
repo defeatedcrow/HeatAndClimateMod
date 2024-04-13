@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:saps/latex"
+    },
+    "Y": {
+      "tag": "forge:dusts/sulfur"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/dustblock_rubber"
+  }
+}

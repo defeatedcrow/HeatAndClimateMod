@@ -174,6 +174,8 @@ public class DCUtil {
 		return Direction.DOWN;
 	}
 
+	public static Direction[] PipeScanList = new Direction[] { Direction.DOWN, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST, Direction.UP };
+
 	public static double absMin(double a, double b) {
 		if (a < 0.0D) {
 			a = -a;

@@ -1,0 +1,26 @@
+{
+  "type": "dcs_climate:climate_smelting",
+  "group": "climate_smelting",
+  "result": {
+    "item": "dcs_climate:build/adobe_block"
+  },
+  "ingredient": {
+    "item": "dcs_climate:build/adobe_block_wet"
+  },
+  "frequency": 300,
+  "heat": [
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN"
+  ],
+  "hum": [
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

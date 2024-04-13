@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine.client.gui;
 
+import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.client.gui.MachineResultSlot;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.block.StoneMillTile;
@@ -27,23 +28,24 @@ public class MillMenu extends AbstractContainerMenu {
 	}
 
 	public static MillMenu getMenu(int i, Inventory playerInv, StoneMillTile cont) {
-		return new MillMenu(MachineInit.MILL_MENU.get(), i, playerInv, cont, new SimpleContainerData(1));
+		return new MillMenu(MachineInit.MILL_MENU.get(), i, playerInv, cont, new SimpleContainerData(3));
 	}
 
 	public MillMenu(MenuType<?> type, int s, Inventory playerInv, StoneMillTile cont, ContainerData d) {
 		super(type, s);
 		checkContainerSize(cont, 5);
-		checkContainerDataCount(d, 1);
+		checkContainerDataCount(d, 3);
 		container = cont;
 		container.startOpen(playerInv.player);
 		isOwner = cont.isOwner(playerInv.player);
 		data = d;
 
 		if (cont.canOpen(playerInv.player)) {
-			this.addSlot(new Slot(cont, 0, 20, 29));
-			for (int i1 = 0; i1 < 4; ++i1) {
-				this.addSlot(new MachineResultSlot(cont, i1 + 1, 85 + i1 * 18, 54));
-			}
+			this.addSlot(new Slot(cont, 0, 40, 29));
+			this.addSlot(new MachineResultSlot(cont, 1, 106, 36));
+			this.addSlot(new MachineResultSlot(cont, 2, 124, 36));
+			this.addSlot(new MachineResultSlot(cont, 3, 106, 54));
+			this.addSlot(new MachineResultSlot(cont, 4, 124, 54));
 
 			for (int l = 0; l < 3; ++l) {
 				for (int j1 = 0; j1 < 9; ++j1) {
@@ -103,10 +105,24 @@ public class MillMenu extends AbstractContainerMenu {
 		this.container.stopOpen(player);
 	}
 
+	public int getBatteryCount() {
+		int i = this.data.get(2);
+		int ret = i * 8 / 4000;
+		return ret;
+	}
+
+	public int getEnergy() {
+		return this.data.get(2);
+	}
+
 	public int getBurnProgress() {
 		int i = this.data.get(0);
-		int ret = i * 11 / 240;
+		int ret = i * 11 / 320;
 		return ret;
+	}
+
+	public boolean isRS() {
+		return DCState.getBool(container.getBlockState(), DCState.POWERED);
 	}
 
 }

@@ -158,8 +158,10 @@ public class OreveinFeature extends Feature<NoneFeatureConfiguration> {
 										level.setBlock(p, add.getTertOre().defaultBlockState(), isForced ? 3 : 2);
 									} else if (add.hasSecondOre() && j < add.getSecondChance()) {
 										level.setBlock(p, add.getSecondOre().defaultBlockState(), isForced ? 3 : 2);
-									} else {
+									} else if (add.getOre() != Blocks.AIR) {
 										level.setBlock(p, add.getOre().defaultBlockState(), isForced ? 3 : 2);
+									} else {
+										level.setBlock(p, vein.table.getLayer().defaultBlockState(), isForced ? 3 : 2);
 									}
 								}
 							}

@@ -26,7 +26,7 @@ public class OreSetData {
 		probability2 = chanceIn2;
 	}
 
-	public OreSetData(OreSet oreIn) {
+	public OreSetData(OreSet oreIn, Block layer) {
 		weight = oreIn.getWeight();
 		ore = DCUtil.getBlockRegName(oreIn.getOre());
 		ore2 = DCUtil.getBlockRegName(oreIn.getSecondOre());

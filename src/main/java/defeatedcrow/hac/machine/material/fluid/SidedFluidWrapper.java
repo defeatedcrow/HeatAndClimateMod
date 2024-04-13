@@ -42,7 +42,7 @@ public class SidedFluidWrapper implements IFluidHandler, ICapabilityProvider {
 
 	@Override
 	public int getTanks() {
-		return 1;
+		return 2;
 	}
 
 	@NotNull

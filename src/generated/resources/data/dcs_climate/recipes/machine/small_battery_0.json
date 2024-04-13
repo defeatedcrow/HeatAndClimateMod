@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:blaze_powder"
+    },
+    "X": {
+      "tag": "forge:ingots/iron"
+    },
+    "Y": {
+      "tag": "forge:dusts/nickel"
+    },
+    "Z": {
+      "tag": "forge:dusts/trona"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XZX",
+    "XWX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/batteryitem_small"
+  }
+}

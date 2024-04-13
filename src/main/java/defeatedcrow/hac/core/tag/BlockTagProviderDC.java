@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.material.block.IBlockDC;
 import defeatedcrow.hac.core.material.block.IBlockDC.ToolType;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
+import defeatedcrow.hac.machine.material.MachineInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
@@ -220,6 +221,44 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.CONT_CROPS).add(FoodInit.CONT_CROP_APPLE.get(), FoodInit.CONT_CROP_CARROT.get(), FoodInit.CONT_CROP_POTATO.get(),
 			FoodInit.CONT_CROP_BEET.get(), FoodInit.CONT_CROP_PUMPKIN.get(), FoodInit.CONT_CROP_MELON.get(), FoodInit.CONT_CROP_CACTUS.get(),
 			FoodInit.CONT_CROP_COCOA.get(), FoodInit.CONT_CROP_SUGARCANE.get(), FoodInit.CONT_CROP_BUSHBERRY.get());
+
+		tag(TagDC.BlockTag.BUILDING_BRICKS).add(BuildInit.BRICKS_MUD.get(), BuildInit.BRICKS_GYPSUM.get(), BuildInit.BRICKS_SERPENTINE.get(),
+			BuildInit.BRICKS_GREISEN.get(), BuildInit.BRICKS_SKARN.get(), BuildInit.BRICKS_HORNFELS.get(), BuildInit.BRICKS_MARBLE.get(),
+			BuildInit.BRICKS_SCHIST_BLUE.get(), BuildInit.BRICKS_SCHIST_NETHER.get(), BuildInit.BRICKS_GRANITE.get(), BuildInit.ADOBE_BRICKS.get());
+
+		tag(TagDC.BlockTag.BUILDING_PILLAR).add(BuildInit.PILLAR_MUD.get(), BuildInit.PILLAR_GYPSUM.get(), BuildInit.PILLAR_SERPENTINE.get(),
+			BuildInit.PILLAR_GREISEN.get(), BuildInit.PILLAR_SKARN.get(), BuildInit.PILLAR_HORNFELS.get(), BuildInit.PILLAR_MARBLE.get(),
+			BuildInit.PILLAR_SCHIST_BLUE.get(), BuildInit.PILLAR_SCHIST_NETHER.get(), BuildInit.PILLAR_GRANITE.get());
+
+		tag(TagDC.BlockTag.BUILDING_CHISELED).add(BuildInit.CHISELED_MUD.get(), BuildInit.CHISELED_GYPSUM.get(), BuildInit.CHISELED_SERPENTINE.get(),
+			BuildInit.CHISELED_GREISEN.get(), BuildInit.CHISELED_SKARN.get(), BuildInit.CHISELED_HORNFELS.get(), BuildInit.CHISELED_MARBLE.get(),
+			BuildInit.CHISELED_SCHIST_BLUE.get(), BuildInit.CHISELED_SCHIST_NETHER.get(), BuildInit.CHISELED_GRANITE.get());
+
+		tag(TagDC.BlockTag.BUILDING_STONE).add(BuildInit.FLINTBRICKS.get(), BuildInit.FLINTBRICKS_WHITE.get(), BuildInit.FLINTBRICKS_BLACK.get(),
+			BuildInit.FLINTBRICKS_RED.get(), BuildInit.MOSAIC_BLACK.get(), BuildInit.MOSAIC_BLUE.get(), BuildInit.MOSAIC_YELLOW.get(),
+			BuildInit.MOSAIC_RED.get());
+
+		tag(TagDC.BlockTag.BUILDING_STONE).add(BuildInit.FLINTBRICKS.get(), BuildInit.FLINTBRICKS_WHITE.get(), BuildInit.FLINTBRICKS_BLACK.get());
+
+		tag(TagDC.BlockTag.DIRT_SLABS).add(BuildInit.SLAB_DIRT.get(), BuildInit.SLAB_GRASS.get(), BuildInit.SLAB_PATH.get());
+
+		tag(TagDC.BlockTag.BUILDING_STONE).addTags(TagDC.BlockTag.BUILDING_BRICKS, TagDC.BlockTag.BUILDING_PILLAR, TagDC.BlockTag.BUILDING_CHISELED);
+
+		tag(TagDC.BlockTag.LEAKAGE_MACHINE).add(MachineInit.CABLE_COPPER.get());
+
+		tag(TagDC.BlockTag.FLUID_PIPE).add(MachineInit.PIPE_BRASS.get());
+
+		tag(TagDC.BlockTag.ENERGY_CABLE).add(MachineInit.CABLE_COPPER.get(), MachineInit.CABLE_COPPER_COATED.get());
+
+		// // climate
+		//
+		// tag(TagDC.BlockTag.HEAT_TIER).addTags(TagDC.BlockTag.ABSOLUTE, TagDC.BlockTag.CRYOGENIC, TagDC.BlockTag.FROSTBITE, TagDC.BlockTag.COLD,
+		// TagDC.BlockTag.COOL, TagDC.BlockTag.NORMAL, TagDC.BlockTag.WARM, TagDC.BlockTag.HOT, TagDC.BlockTag.BOIL,
+		// TagDC.BlockTag.OVEN, TagDC.BlockTag.KILN, TagDC.BlockTag.SMELTING, TagDC.BlockTag.UHT, TagDC.BlockTag.INFERNO);
+		//
+		// tag(TagDC.BlockTag.HUMIDITY).addTags(TagDC.BlockTag.DRY, TagDC.BlockTag.NORMAL_HUM, TagDC.BlockTag.WET, TagDC.BlockTag.UNDERWATER);
+		//
+		// tag(TagDC.BlockTag.AIRFLOW).addTags(TagDC.BlockTag.TIGHT, TagDC.BlockTag.NORMAL_AIR, TagDC.BlockTag.FLOW, TagDC.BlockTag.WIND);
 
 		// plugins
 

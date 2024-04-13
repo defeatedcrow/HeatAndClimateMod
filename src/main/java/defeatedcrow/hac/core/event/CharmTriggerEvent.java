@@ -40,6 +40,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.PotionColorCalculationEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -303,6 +304,15 @@ public class CharmTriggerEvent {
 				}
 			}
 			return ret;
+		}
+	}
+
+	@SubscribeEvent
+	public static void onPotionEffectColor(PotionColorCalculationEvent event) {
+		if (event.getEffects() != null && !event.getEffects().isEmpty()) {
+			if (event.getEffects().size() == 1 && event.getEffects().stream().anyMatch((e) -> e.getEffect() == CoreInit.WET.get())) {
+				event.shouldHideParticles(true);
+			}
 		}
 	}
 

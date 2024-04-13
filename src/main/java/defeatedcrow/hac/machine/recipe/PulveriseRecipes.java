@@ -408,6 +408,10 @@ public class PulveriseRecipes {
 			ImmutableList.of(Ingredient.of(Tags.Items.ORES_REDSTONE)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
+			new ItemStack(Items.GRAVEL, 1), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+			ImmutableList.of(Ingredient.of(Tags.Items.COBBLESTONE)));
+
+		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
 			new ItemStack(Items.FLINT, 1), new ItemStack(Items.SAND, 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 			ImmutableList.of(Ingredient.of(Tags.Items.GRAVEL)));
 
@@ -426,6 +430,10 @@ public class PulveriseRecipes {
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
 			new ItemStack(CoreInit.DUST_PLANT.get(), 1), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.WEED)));
+
+		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
+			new ItemStack(Items.CLAY_BALL, 1), new ItemStack(Items.SAND, 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+			ImmutableList.of(Ingredient.of(ItemTags.DIRT)));
 
 	}
 

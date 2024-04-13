@@ -29,7 +29,6 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
@@ -62,12 +61,12 @@ public class EmptyPackItem extends MaterialItemDC {
 			BlockPos pos1 = pos.relative(dir);
 			if (level.mayInteract(player, pos) && player.mayUseItemAt(pos1, dir, itemstack)) {
 				BlockState state = level.getBlockState(pos);
-				if (state.is(Blocks.WATER) && state.getFluidState().is(Fluids.WATER)) {
+				if (state.getFluidState().is(Fluids.WATER) && state.getFluidState().isSource()) {
 					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
 					ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_WATER.get()), false);
 					return InteractionResultHolder.sidedSuccess(ret.copy(), level.isClientSide());
 				}
-				if (state.is(CoreInit.SPARKLING.getStillBlock().get()) && state.getFluidState().is(CoreInit.SPARKLING.getStillFluid().get())) {
+				if (state.getFluidState().is(CoreInit.SPARKLING.getStillFluid().get())) {
 					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
 					ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_SPARKLING.get()), false);
 					return InteractionResultHolder.sidedSuccess(ret.copy(), level.isClientSide());

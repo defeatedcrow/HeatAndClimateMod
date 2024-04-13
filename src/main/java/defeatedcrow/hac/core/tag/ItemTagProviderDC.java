@@ -426,6 +426,13 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		// machine
 		tag(TagDC.ItemTag.MOTORS).addTags(TagDC.ItemTag.MOTOR_T1);
+		tag(TagDC.ItemTag.IMPELLERS).addTags(TagDC.ItemTag.IMPELLER_T1);
+
+		tag(TagDC.ItemTag.FUEL_BIOMASS).add(CoreInit.DUST_WOOD.get(), CoreInit.DUST_PLANT.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.VINE.get(),
+			FoodInit.SORGHUM_STICK.get(), FoodInit.BEESWAX.get(), FoodInit.TREEWAX.get(), FoodInit.FOOD_DEFATTED_SOY.get(), FoodInit.FOOD_PRESS_CAKE.get(),
+			FoodInit.FOOD_BRAN.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.FEED_HAY.get(), FoodInit.FEED_STRAW.get());
+
+		tag(TagDC.ItemTag.HAC_FUELS).addTags(TagDC.ItemTag.FUEL_BIOMASS);
 
 		// blocks
 		copy(TagDC.BlockTag.ORES_WHITE, TagDC.ItemTag.ORES_WHITE);
@@ -479,6 +486,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		copy(TagDC.BlockTag.DUSTBLOCK_COBALT, TagDC.ItemTag.DUSTBLOCK_COBALT);
 		copy(TagDC.BlockTag.DUSTBLOCK_HASTELLOY, TagDC.ItemTag.DUSTBLOCK_HASTELLOY);
 		copy(TagDC.BlockTag.DUSTBLOCK_BSCCO, TagDC.ItemTag.DUSTBLOCK_BSCCO);
+		copy(TagDC.BlockTag.DUSTBLOCK_RUBBER, TagDC.ItemTag.DUSTBLOCK_RUBBER);
 
 		copy(TagDC.BlockTag.METALBLOCK_BRASS, TagDC.ItemTag.METALBLOCK_BRASS);
 		copy(TagDC.BlockTag.METALBLOCK_BRONZE, TagDC.ItemTag.METALBLOCK_BRONZE);
@@ -491,6 +499,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		copy(TagDC.BlockTag.METALBLOCK_COBALT, TagDC.ItemTag.METALBLOCK_COBALT);
 		copy(TagDC.BlockTag.METALBLOCK_HASTELLOY, TagDC.ItemTag.METALBLOCK_HASTELLOY);
 		copy(TagDC.BlockTag.METALBLOCK_BSCCO, TagDC.ItemTag.METALBLOCK_BSCCO);
+		copy(TagDC.BlockTag.BLOCK_RUBBER, TagDC.ItemTag.BLOCK_RUBBER);
 
 		copy(TagDC.BlockTag.CONT_LEAVES, TagDC.ItemTag.CONT_LEAVES);
 		copy(TagDC.BlockTag.CONT_LOGS, TagDC.ItemTag.CONT_LOGS);
@@ -515,7 +524,15 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		copy(TagDC.BlockTag.WEED, TagDC.ItemTag.WEED);
 
+		copy(TagDC.BlockTag.BUILDING_BRICKS, TagDC.ItemTag.BUILDING_BRICKS);
+		copy(TagDC.BlockTag.BUILDING_PILLAR, TagDC.ItemTag.BUILDING_PILLAR);
+		copy(TagDC.BlockTag.BUILDING_CHISELED, TagDC.ItemTag.BUILDING_CHISELED);
+		copy(TagDC.BlockTag.BUILDING_STONE, TagDC.ItemTag.BUILDING_STONE);
+
 		copy(Tags.Blocks.ORES, Tags.Items.ORES);
+
+		copy(TagDC.BlockTag.FLUID_PIPE, TagDC.ItemTag.FLUID_PIPE);
+		copy(TagDC.BlockTag.ENERGY_CABLE, TagDC.ItemTag.ENERGY_CABLE);
 
 		// plugin
 		tag(TagDC.ItemTag.CROP_BARLEY).addOptional(new ResourceLocation("biomesoplenty", "barley"));

@@ -1,0 +1,46 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "pulverise",
+  "result": {
+    "item": "minecraft:clay_ball",
+    "count": 1
+  },
+  "secondary": {
+    "item": "minecraft:sand",
+    "count": 1
+  },
+  "secondary_rate": 100,
+  "ingredients": [
+    {
+      "tag": "minecraft:dirt"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

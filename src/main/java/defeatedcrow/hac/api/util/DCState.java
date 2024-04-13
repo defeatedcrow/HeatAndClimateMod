@@ -33,6 +33,7 @@ public class DCState {
 	public static final IntegerProperty STAGE4 = IntegerProperty.create("stage4", 0, 3);
 	public static final IntegerProperty STAGE5 = IntegerProperty.create("stage5", 0, 4);
 	public static final IntegerProperty STAGE6 = IntegerProperty.create("stage6", 0, 5);
+	public static final IntegerProperty STAGE9 = IntegerProperty.create("stage9", 0, 8);
 	public static final BooleanProperty DOUBLE = BooleanProperty.create("double");
 	public static final BooleanProperty DEAD = BooleanProperty.create("dead");
 	public static final BooleanProperty WILD = BooleanProperty.create("wild");
@@ -41,6 +42,25 @@ public class DCState {
 	public static final IntegerProperty FERTILE = IntegerProperty.create("fertile", 0, 3);
 
 	public static BooleanProperty EMPTY = BooleanProperty.create("none");
+
+	public static BooleanProperty getFacingProperty(Direction dir) {
+		switch (dir) {
+		case DOWN:
+			return DOWN;
+		case EAST:
+			return EAST;
+		case NORTH:
+			return NORTH;
+		case SOUTH:
+			return SOUTH;
+		case UP:
+			return UP;
+		case WEST:
+			return WEST;
+		default:
+			return NORTH;
+		}
+	}
 
 	public static int getInt(BlockState state, IntegerProperty prop) {
 		if (state != null && state.hasProperty(prop)) {

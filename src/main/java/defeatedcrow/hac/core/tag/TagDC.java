@@ -79,6 +79,7 @@ public class TagDC {
 		public static final TagKey<Block> DUSTBLOCK_COBALT = blockTag("dust_blocks/cobalt_alloy");
 		public static final TagKey<Block> DUSTBLOCK_HASTELLOY = blockTag("dust_blocks/hastelloy");
 		public static final TagKey<Block> DUSTBLOCK_BSCCO = blockTag("dust_blocks/bscco");
+		public static final TagKey<Block> DUSTBLOCK_RUBBER = blockTag("dust_blocks/rubber");
 
 		public static final TagKey<Block> METALBLOCK_BRASS = blockTag("storage_blocks/brass");
 		public static final TagKey<Block> METALBLOCK_BRONZE = blockTag("storage_blocks/bronze");
@@ -92,6 +93,7 @@ public class TagDC {
 		public static final TagKey<Block> METALBLOCK_COBALT = blockTag("storage_blocks/cobalt_alloy");
 		public static final TagKey<Block> METALBLOCK_HASTELLOY = blockTag("storage_blocks/hastelloy");
 		public static final TagKey<Block> METALBLOCK_BSCCO = blockTag("storage_blocks/bscco");
+		public static final TagKey<Block> BLOCK_RUBBER = blockTag("storage_blocks/rubber");
 
 		public static final TagKey<Block> CONT_LEAVES = blockTag("storage_blocks/leaves");
 		public static final TagKey<Block> CONT_LOGS = blockTag("storage_blocks/logs");
@@ -114,6 +116,46 @@ public class TagDC {
 		public static final TagKey<Block> LOG_LATEX = BlockTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap/latex"));
 		public static final TagKey<Block> LOG_LACQUER = BlockTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap/lacquer"));
 		public static final TagKey<Block> LOG_SAP = BlockTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap"));
+
+		public static final TagKey<Block> BUILDING_STONE = BlockTags.create(new ResourceLocation("dcs_climate", "building_stones"));
+		public static final TagKey<Block> BUILDING_BRICKS = BlockTags.create(new ResourceLocation("dcs_climate", "building_stones/bricks"));
+		public static final TagKey<Block> BUILDING_PILLAR = BlockTags.create(new ResourceLocation("dcs_climate", "building_stones/pillar"));
+		public static final TagKey<Block> BUILDING_CHISELED = BlockTags.create(new ResourceLocation("dcs_climate", "building_stones/chiseled"));
+
+		public static final TagKey<Block> DIRT_SLABS = BlockTags.create(new ResourceLocation("dcs_climate", "dirt_slab"));
+
+		public static final TagKey<Block> LEAKAGE_MACHINE = BlockTags.create(new ResourceLocation("dcs_climate", "leakage_machine"));
+
+		public static final TagKey<Block> FLUID_PIPE = BlockTags.create(new ResourceLocation("dcs_climate", "pipe_fluid"));
+		public static final TagKey<Block> ENERGY_CABLE = BlockTags.create(new ResourceLocation("dcs_climate", "cable_energy"));
+
+		// public static final TagKey<Block> HEAT_TIER = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier"));
+		// public static final TagKey<Block> ABSOLUTE = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/absolute"));
+		// public static final TagKey<Block> CRYOGENIC = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/cryogenic"));
+		// public static final TagKey<Block> FROSTBITE = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/frostbite"));
+		// public static final TagKey<Block> COLD = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/cold"));
+		// public static final TagKey<Block> COOL = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/cool"));
+		// public static final TagKey<Block> NORMAL = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/normal"));
+		// public static final TagKey<Block> WARM = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/warm"));
+		// public static final TagKey<Block> HOT = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/hot"));
+		// public static final TagKey<Block> BOIL = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/boil"));
+		// public static final TagKey<Block> OVEN = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/oven"));
+		// public static final TagKey<Block> KILN = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/kiln"));
+		// public static final TagKey<Block> SMELTING = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/smelting"));
+		// public static final TagKey<Block> UHT = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/uht"));
+		// public static final TagKey<Block> INFERNO = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/inferno"));
+		//
+		// public static final TagKey<Block> HUMIDITY = BlockTags.create(new ResourceLocation("dcs_climate", "climate_humidity"));
+		// public static final TagKey<Block> DRY = BlockTags.create(new ResourceLocation("dcs_climate", "climate_humidity/dry"));
+		// public static final TagKey<Block> NORMAL_HUM = BlockTags.create(new ResourceLocation("dcs_climate", "climate_humidity/normal"));
+		// public static final TagKey<Block> WET = BlockTags.create(new ResourceLocation("dcs_climate", "climate_humidity/wet"));
+		// public static final TagKey<Block> UNDERWATER = BlockTags.create(new ResourceLocation("dcs_climate", "climate_humidity/underwater"));
+		//
+		// public static final TagKey<Block> AIRFLOW = BlockTags.create(new ResourceLocation("dcs_climate", "climate_airflow"));
+		// public static final TagKey<Block> TIGHT = BlockTags.create(new ResourceLocation("dcs_climate", "climate_airflow/tight"));
+		// public static final TagKey<Block> NORMAL_AIR = BlockTags.create(new ResourceLocation("dcs_climate", "climate_airflow/normal"));
+		// public static final TagKey<Block> FLOW = BlockTags.create(new ResourceLocation("dcs_climate", "climate_airflow/flow"));
+		// public static final TagKey<Block> WIND = BlockTags.create(new ResourceLocation("dcs_climate", "climate_airflow/wind"));
 
 		private static TagKey<Block> blockTag(String name) {
 			return BlockTags.create(new ResourceLocation("forge", name));
@@ -232,6 +274,7 @@ public class TagDC {
 		public static final TagKey<Item> DUSTBLOCK_COBALT = itemTag("dust_blocks/cobalt_alloy");
 		public static final TagKey<Item> DUSTBLOCK_HASTELLOY = itemTag("dust_blocks/hastelloy");
 		public static final TagKey<Item> DUSTBLOCK_BSCCO = itemTag("dust_blocks/bscco");
+		public static final TagKey<Item> DUSTBLOCK_RUBBER = itemTag("dust_blocks/rubber");
 
 		public static final TagKey<Item> METALBLOCK_BRASS = itemTag("storage_blocks/brass");
 		public static final TagKey<Item> METALBLOCK_BRONZE = itemTag("storage_blocks/bronze");
@@ -245,6 +288,7 @@ public class TagDC {
 		public static final TagKey<Item> METALBLOCK_COBALT = itemTag("storage_blocks/cobalt_alloy");
 		public static final TagKey<Item> METALBLOCK_HASTELLOY = itemTag("storage_blocks/hastelloy");
 		public static final TagKey<Item> METALBLOCK_BSCCO = itemTag("storage_blocks/bscco");
+		public static final TagKey<Item> BLOCK_RUBBER = itemTag("storage_blocks/rubber");
 
 		public static final TagKey<Item> GEM_CHALCEDONY = itemTag("gems/chalcedony");
 		public static final TagKey<Item> GEM_CRYSTAL = itemTag("gems/crystal");
@@ -528,6 +572,7 @@ public class TagDC {
 		public static final TagKey<Item> CRAFT_SPINDLE = itemTag("crafting_tools/spindle");
 		public static final TagKey<Item> CRAFT_SEEDING_POT = itemTag("crafting_tools/seeding_pot");
 		public static final TagKey<Item> CRAFT_CALABASH = itemTag("crafting_tools/calabash_bottle");
+		public static final TagKey<Item> CRAFT_DRIVER = itemTag("crafting_tools/screwdriver");
 
 		public static final TagKey<Item> SCYTHES = itemTag("tools/scythes");
 		public static final TagKey<Item> HARPOON = itemTag("tools/harpoon");
@@ -656,6 +701,7 @@ public class TagDC {
 		public static final TagKey<Item> CLOTH_PLANT = itemTag("clothes/plant");
 		public static final TagKey<Item> CLOTH_COTTON = itemTag("clothes/cotton");
 		public static final TagKey<Item> CLOTH_WOOL = itemTag("clothes/wool");
+		public static final TagKey<Item> CLOTH_RUBBER = itemTag("clothes/rubber");
 		public static final TagKey<Item> CLOTHS = itemTag("clothes");
 
 		public static final TagKey<Item> FISH_POWDER = itemTag("ingredients/fish_powder");
@@ -703,6 +749,9 @@ public class TagDC {
 		public static final TagKey<Item> HAC_DRINK_COLD = ItemTags.create(new ResourceLocation("dcs_climate", "meals/drinks/cold"));
 
 		public static final TagKey<Item> HAC_ANIMAL = ItemTags.create(new ResourceLocation("dcs_climate", "ingredient/animal_base"));
+
+		public static final TagKey<Item> FUEL_BIOMASS = ItemTags.create(new ResourceLocation("dcs_climate", "fuels/biomass"));
+		public static final TagKey<Item> HAC_FUELS = ItemTags.create(new ResourceLocation("dcs_climate", "fuels"));
 
 		// vanilla
 		public static final TagKey<Item> CROP_APPLE = itemTag("crops/apple");
@@ -752,7 +801,7 @@ public class TagDC {
 
 		public static final TagKey<Item> FISH = ItemTags.create(new ResourceLocation("dcs_climate", "fishes"));
 		public static final TagKey<Item> FISH_VANILLA = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/vanilla"));
-		public static final TagKey<Item> FISH_LOD = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/can_fish_with_lod"));
+		public static final TagKey<Item> FISH_LOD = ItemTags.create(new ResourceLocation("dcs_climate", "can_fish_with_lod"));
 
 		public static final TagKey<Item> FISH_RIVER = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/river"));
 		public static final TagKey<Item> FISH_BEACH = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/beach"));
@@ -837,11 +886,27 @@ public class TagDC {
 		public static final TagKey<Item> LOG_LACQUER = ItemTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap/lacquer"));
 		public static final TagKey<Item> LOG_SAP = ItemTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap"));
 
+		public static final TagKey<Item> BUILDING_STONE = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones"));
+		public static final TagKey<Item> BUILDING_BRICKS = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones/bricks"));
+		public static final TagKey<Item> BUILDING_PILLAR = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones/pillar"));
+		public static final TagKey<Item> BUILDING_CHISELED = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones/chiseled"));
+
+		public static final TagKey<Item> DIRT_SLABS = ItemTags.create(new ResourceLocation("dcs_climate", "dirt_slab"));
+
 		public static final TagKey<Item> DUMMY = ItemTags.create(new ResourceLocation("dcs_climate", "dummy"));
 
 		// machine
 		public static final TagKey<Item> MOTORS = ItemTags.create(new ResourceLocation("dcs_climate", "motors"));
 		public static final TagKey<Item> MOTOR_T1 = ItemTags.create(new ResourceLocation("dcs_climate", "motors/small"));
+
+		public static final TagKey<Item> IMPELLERS = ItemTags.create(new ResourceLocation("dcs_climate", "impellers"));
+		public static final TagKey<Item> IMPELLER_T1 = ItemTags.create(new ResourceLocation("dcs_climate", "impellers/small"));
+		public static final TagKey<Item> BATTERY_T1 = ItemTags.create(new ResourceLocation("dcs_climate", "battery_items/small"));
+
+		public static final TagKey<Item> LEAKAGE_MACHINE = ItemTags.create(new ResourceLocation("dcs_climate", "leakage_machine"));
+
+		public static final TagKey<Item> FLUID_PIPE = ItemTags.create(new ResourceLocation("dcs_climate", "pipe_fluid"));
+		public static final TagKey<Item> ENERGY_CABLE = ItemTags.create(new ResourceLocation("dcs_climate", "cable_energy"));
 
 		private static TagKey<Item> itemTag(String name) {
 			return ItemTags.create(new ResourceLocation("forge", name));
@@ -880,6 +945,7 @@ public class TagDC {
 		public static final TagKey<Fluid> DRINK_WATER = biomeTag("drink_waters");
 		public static final TagKey<Fluid> PLANT_OIL = biomeTag("plant_oil");
 		public static final TagKey<Fluid> FUEL = biomeTag("fuel_oil");
+		public static final TagKey<Fluid> AIR = biomeTag("air");
 
 		private static TagKey<Fluid> biomeTag(String name) {
 			return TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation("forge", name));

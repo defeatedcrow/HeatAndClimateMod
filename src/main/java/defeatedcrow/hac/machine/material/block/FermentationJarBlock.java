@@ -24,8 +24,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -174,11 +174,13 @@ public class FermentationJarBlock extends ProcessTileBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable Level level, List<Component> list) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.cooking_pot");
 		list.add(tex1);
-		MutableComponent tex2 = Component.translatable("dcs.tip.crop_on_jar");
-		list.add(tex2);
+		if (!item.is(Item.byBlock(MachineInit.FERMANTATION_JAR_NORMAL.get())) && !item.is(Item.byBlock(MachineInit.FERMANTATION_JAR_BLACK.get()))) {
+			MutableComponent tex2 = Component.translatable("dcs.tip.crop_on_jar");
+			list.add(tex2);
+		}
 	}
 
 }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "item": "minecraft:bucket"
+    },
+    "Z": {
+      "item": "dcs_climate:machine/chamber_iron"
+    }
+  },
+  "pattern": [
+    " X ",
+    "XYX",
+    "XZX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/boiler_biomass"
+  }
+}

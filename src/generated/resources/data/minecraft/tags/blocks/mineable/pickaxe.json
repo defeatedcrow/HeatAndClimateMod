@@ -66,6 +66,8 @@
     "dcs_climate:main/metalblock_cobalt",
     "dcs_climate:main/metalblock_hastelloy",
     "dcs_climate:main/metalblock_bscco",
+    "dcs_climate:main/dustblock_rubber",
+    "dcs_climate:main/block_rubber",
     "dcs_climate:build/bricks_mud",
     "dcs_climate:build/pillar_mud",
     "dcs_climate:build/chiseled_mud",
@@ -139,6 +141,8 @@
     "dcs_climate:build/mosaic_blue",
     "dcs_climate:build/mosaic_yellow",
     "dcs_climate:build/mosaic_red",
+    "dcs_climate:build/adobe_block",
+    "dcs_climate:build/adobe_bricks",
     "dcs_climate:build/glass_crystal",
     "dcs_climate:build/glass_light",
     "dcs_climate:build/glass_dark",
@@ -158,6 +162,7 @@
     "dcs_climate:machine/portable_can_red",
     "dcs_climate:machine/portable_can_green",
     "dcs_climate:machine/ibc",
+    "dcs_climate:machine/pipe_brass",
     "dcs_climate:machine/spilecup",
     "dcs_climate:machine/cooking_pot_normal",
     "dcs_climate:machine/cooking_pot_white",
@@ -178,6 +183,12 @@
     "dcs_climate:machine/fermentation_jar_red",
     "dcs_climate:machine/fermentation_jar_green",
     "dcs_climate:machine/stone_mill",
+    "dcs_climate:machine/water_pump",
+    "dcs_climate:machine/generator_small",
+    "dcs_climate:machine/boiler_biomass",
+    "dcs_climate:machine/battery_small",
+    "dcs_climate:machine/cable_copper",
+    "dcs_climate:machine/cable_copper_coated",
     "dcs_climate:magic/magic_small_light"
   ]
 }
