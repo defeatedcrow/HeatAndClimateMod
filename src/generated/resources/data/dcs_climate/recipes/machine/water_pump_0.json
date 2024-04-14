@@ -11,7 +11,7 @@
       "tag": "dcs_climate:pipe_fluid"
     },
     "Z": {
-      "tag": "dcs_climate:battery_items/small"
+      "item": "minecraft:bucket"
     }
   },
   "pattern": [

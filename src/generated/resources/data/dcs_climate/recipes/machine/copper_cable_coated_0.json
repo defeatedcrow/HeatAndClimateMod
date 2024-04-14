@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "X": {
-      "item": "dcs_climate:machine/cable_copper"
+      "tag": "forge:ingots/copper"
     },
     "Y": {
       "tag": "forge:clothes/rubber"

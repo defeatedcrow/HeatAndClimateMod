@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_copper_cable": {
+    "has_ingot_copper": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:machine/cable_copper"
-            ]
+            "tag": "forge:ingots/copper"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_copper_cable",
+      "has_ingot_copper",
       "has_the_recipe"
     ]
   ],

@@ -10,8 +10,8 @@
 ・HaCv4では、HeatAndClimateLibを必要としません。
  HaCv4 does not require HeatAndClimateLib.
 
-・このmodはWIPであり、とても不安定なアルファバージョンです。導入前にテスト環境で試すことをおすすめします。
- This mod is WIP and is a very unstable alpha version. We recommend testing in a test environment before deployment.
+・このmodはWIPであり、現在はベータバージョンです。導入前にテスト環境で試すことをおすすめします。
+ This mod is WIP and is a beta version. We recommend testing in a test environment before deployment.
 
 ・マルチサーバーについては、起動確認のみ行い、作者によるデバッグテストが行われていません。
  For multi-server, only startup confirmation is performed, and no debugging test is performed by the author.
@@ -48,6 +48,7 @@
  Biomes and climates are associated with "color" mana, which affects the "color" minerals and gems that generate in the biome.
  The colors of minerals and gems are used for color magic.
 
+****************************************************************************************************
 
 #### 遊び方 / How to play ####
 
@@ -87,7 +88,7 @@
 
   熱いブロックと、冷たいブロックは、互いの温度を相殺します。
   Hot and cold blocks offset each other's temperature.
-  
+
  ・昇温ブロック / Heating Block
 
  温度調整のために役立つブロックが追加されています。
@@ -206,12 +207,12 @@
 
  * 気候精錬レシピによりBlockを変化させる場合、材料となるBlockが Random Tick を持っている必要があります。
    If you add a new climate smelting recipe, the material block must be implement vanilla random tick behavior.
-  
+
   ● マシンレシピ / Device Recipe
-  
+
   マシンで使用されるすべてのレシピは、データパックに対応しています。
   All machine recipes can be added and edited with data packs.
-  
+
 ****************************************************************************************************
 
 ◎ 鉱脈の生成 / Ore Veins
@@ -252,7 +253,7 @@
    - バニラ作物は、WARM ~ HOT + WETの環境で成長が促進され、COOL-の低温で成長が遅くなります。
      Vanilla crops grow faster in a WARM ~ HOT + WET environment and slower in a COOL- lower temperature.
 
- ● 野生の作物を探そう / Look for wild crops!
+ ・ 野生の作物を探そう / Look for wild crops!
 
  　それぞれのバイオームには、固有の『WILD作物』が自然生成します。
  　Different biomes generate different types of "WILD crops".
@@ -264,7 +265,7 @@
    - 『施肥した耕地』の上に種や苗木を植えると、よりレアな作物に変異する可能性があります。
      Sowing seeds or saplings on "fertilized farmland" may mutate into a rarer crop.
 
- ● 作物の変異 / Crop Mutation
+ ・ 作物の変異 / Crop Mutation
 
  　・施肥された耕地 / Fertilized farmland
    - 耕地ブロックに肥料を与えると、『施肥された耕地』に変わります。3回まで施肥できます。
@@ -279,7 +280,7 @@
    Planting WILD crops on fertilized farmland will transform them into rarer crops.
    The more often you fertilize, the more rare crops appear.
 
- ● 樹木 / Trees
+ ・ 樹木 / Trees
 
    樹木は、花期と収穫期が季節によって制限されます。
    Trees are seasonally restricted in their flowering and harvesting periods.
@@ -287,7 +288,7 @@
    適さない気温では、花や作物が得られなくなります。
    At unfavorable temperatures, the leaves of the tree will not bear flowers or fruits.
 
-◎ 釣り / Fishing
+ ● 釣り / Fishing
 
   バニラの魚が釣れたときに、差し替える形でHaCの追加魚種をスポーンさせます。
   When Vanilla Fish is caught, HaC Fishes may be obtained instead.
@@ -305,15 +306,15 @@
   Fish obtained by fishing can be edited by tag.
     -> dcs_climate:fishes
 
-◎ HaCの食べ物 / HaC Foods
+ ● HaCの食べ物 / HaC Foods
 
- HaCの食べ物は、スニークしながらブロックを右クリックすることで、Entityとしてワールドに設置できます。
- HaC's food can be placed in the world as an Entity by right-clicking on a block while sneaking.
+  HaCの食べ物は、スニークしながらブロックを右クリックすることで、Entityとしてワールドに設置できます。
+  HaC's food can be placed in the world as an Entity by right-clicking on a block while sneaking.
 
- 気候精錬のレシピを持つ食べ物は、適切な気候の環境に、生の状態で設置することで調理します。
- Foods with climate refinement recipes are cooked by placing them raw in an environment with the correct climate.
+  気候精錬のレシピを持つ食べ物は、適切な気候の環境に、生の状態で設置することで調理します。
+  Foods with climate refinement recipes are cooked by placing them raw in an environment with the correct climate.
 
- ● 食べ物の『風味』 / Flavor of food
+ ・ 食べ物の『風味』 / Flavor of food
 
    『風味』は、5段階の★で定義されます。
    "Flavor" is defined on a 5-point scale.
@@ -327,9 +328,9 @@
    * 将来的には、調味料によって風味を良くする機能が実装される予定です。
      In the future, we plan to implement seasoning to enhance the flavor.
 
-◎ 色々な調理デバイス / Devices for ingredients
+　● 色々な調理デバイス / Devices for ingredients
 
-　●　鍋 / Cooking Pot
+　・　鍋 / Cooking Pot
 
 　　 環境の熱を利用して、食べ物を調理します。
    Cooking Pots use ambient heat to cook food.
@@ -337,7 +338,7 @@
    スニーク+右クリックでフタを開閉します。
    Sneak + right-click to toggle the pot lid.
 
- ●　ティーポット / Tea Pot
+ ・　ティーポット / Tea Pot
 
 　　 環境の熱を利用して、飲み物を調理します。
    Tea Pots use ambient heat to make drink.
@@ -345,15 +346,15 @@
    飲み物は飲用時にポーション効果を発揮します。
    Drinks have potion effects.
 
- ●　壺 / Fermentation Jar
+ ・　壺 / Fermentation Jar
 
-　　 適切な環境(温暖な屋内)に置かれている時、食べ物を発酵させて新しい食材を得ます。
+　　適切な環境(温暖な屋内)に置かれている時、食べ物を発酵させて新しい食材を得ます。
    When the jar is placed in the right environment (warm, humid, indoors), it ferments the ingredients to obtain new food.
 
    Input Tank に水が入っている時、花瓶のように、壺の上に花や作物の苗を設置できます。
    When the input tank has water, flowers and crops can place on top of it, like a vase.
 
- ●　樹液採集カップ / Spile and Cup
+ ・　樹液採集カップ / Spile and Cup
 
 　　 樹液のある原木に設置すると、樹液を集めることが出来ます。
    When attached to a log with sap, it can collect sap.
@@ -396,20 +397,138 @@
 
   一部のジュエルはプレイヤーにのみ効果があります。
   Some jewels only affect the player.
-  
+
 ****************************************************************************************************
-  
+
 ◎ 電気とマシン / Electricity and Machines
 
  HaCv4では、マシンの動力に電気を使用します。
  HaCv4 uses electricity to power the machine.
- 
+
  電気はForgeFEと互換性があります。
  Electric is compatible with ForgeFE.
- 
- ●発電 / Power Generation
- 
- 発電機に
+
+ ● 電気機器の共通仕様 / Common specifications for electrical equipment
+
+  電気機器は6面それぞれに接続状態を設定できます。接続状態はドライバーアイテムを使って変更できます。
+  The connection status of electrical devices can be set for each of the six sides.
+  The connection status can be changed using a screwdriver.
+
+   - OUTLET: 送信のみ。 Outlet Only.
+   - INPUT: 受信のみ。 Input Only.
+   - PATH: 容量の空きが大きい方へ流れます。 The flow goes to those with more capacity.
+   - NONE: 送受信の停止。 Stop sending and receiving.
+
+   PATHモードはケーブルと充電池ブロックのみが持つモードです。
+   Only cables and battery blocks have PATH mode.
+
+  電気機器はレッドストーン信号によって停止します。また、一部のブロックはGUIにも主電源スイッチがついています。
+  Electrical equipment is suspended by a redstone signal.
+  Some blocks also have a main power switch on the GUI.
+
+ ● 発電 / Power Generation
+
+ - 発電機 / Generator
+
+   『発電機』に『動力源』ブロックを隣接させ、『動力源』から動力を与えることで電気を生み出します。
+   Produce electricity by placing a "power source" block adjacent to the "generator" and applying power from the "power source".
+
+   『発電機』は複数の『動力源』の動力を受け取れます。
+   A "generator" can receive power from multiple "power sources".
+
+   『動力源』は隣接する『発電機』のいずれか一つのみに動力を供給します。
+   A "power source" supplies power to only one of the adjacent "generators".
+
+  - バニラ避雷針 / vanilla Lightning Rod
+
+   バニラの避雷針に落雷したとき、避雷針の下にある電気機器に 1000FE の電力を供給します。
+   When a lightning rod in vanilla is struck by lightning, it supplies 1000FE to the electric machine under the lightning rod.
+
+ ● 送電ケーブル / Cable
+
+  電気を送るためのブロックです。
+  A block for transmitting electricity.
+
+  ケーブルのTierに応じた送電速度に制限があります。現在は　Tier1 (32FE/t) のみ実装されています。
+  There is a limit to the power transmission speed depending on the cable tier.
+  Currently only Tier1 (32FE/t) is implemented.
+
+  むき出しのケーブルにはリスクがあります。ゴムで被覆することで安全に扱えます。
+  Exposed cables are dangerous. Covering it with rubber makes it safe to handle.
+
+   - 水や雨に触れると漏電が発生し、電力を消失します。 Water and rain can cause electrical leakage, resulting in power loss.
+   - 活線に触れるとダメージが発生します。 Touching a live cable will cause damage.
+
+ ● 充電池ブロック / Battery Block
+
+  一定量の電気を貯められるブロックです。
+  A block that can store electricity.
+
+ ● 電気機器 / Electric Machines
+
+  電気を消費して動作するマシンブロックです。
+  Machines that consume electricity to operate.
+
+  ・ 電動石臼 / Electric Stone Mill
+
+   素材を粉砕して、加工物や副産物を得られる加工機です。
+   A processing machine that crushes materials to obtain products and by-products.
+
+  ・ 水中ポンプ / Underwater Pump
+
+   250FEを消費して、接触している流体ブロックを回収するマシンです。
+   Spend 250FE and collect adjacent fluid blocks.
+
+   流れブロックに接しているとき、8ブロック先まで流れを辿り、源ブロックを回収します。
+   When touching a flow block, follow the flow up to 8 blocks ahead and collect the source block.
+
+   水ブロックに投入した場合、水源ブロックの回収を行わず、無限水源として扱います。その場合、最大32FE/tの速度で水を汲み上げます。
+   If it's in water source, it do not collect source block. In that case, it pumps water at a rate of up to 32FE/t.
+
+   汲み上げた流体は、真上にパイプなどをつなげた場合、水頭 6ブロック で送られます。
+   If you connect a pipe directly above the pumped fluid, it will be sent with a water head of 6 blocks.
+
+****************************************************************************************************
+
+◎ 流体の扱い / Fluid Handling
+
+ ● 流体タンクアイテム / Fluid Tank Items
+
+  ・ ヒョウタンの水筒 / Calabash Water Bottle : 1000 mB
+
+  　バケツのように水源を設置できます。
+   Can place a fluid source like a bucket.
+
+   300°C (573K) 以上の流体は入れられません。
+   No fluids above 300°C (573K) are allowed.
+
+ ● 流体タンク / Fluid Tank Blocks
+
+ 　一定量の流体を貯められるタンクです。
+  Tanks that can store fluid.
+
+  ・ ポリタンク / Portable Can : Max 18 Bucket
+  ・ IBC : Max 1000 Bucket
+
+ ● パイプ / Brass Pipe
+
+  重力を利用して流体を輸送するブロックです。
+  Transports fluid using gravity.
+
+  流体は高さに応じた『水頭』を得て、同じ高さまで輸送することが出来ます。
+  The fluid has a "water head" that corresponds to its height, and can be transported to the same height.
+
+  6面それぞれに接続状態を設定できます。接続状態はドライバーアイテムを使って変更できます。
+  The connection status of pipes can be set for each of the six sides.
+  The connection status can be changed using a screwdriver.
+
+   - OUTLET: 吐出のみ。 Outlet Only.
+   - INPUT: 受け入れのみ。 Input Only.
+   - PATH: 容量の空きが大きい方へ流れます。 The flow goes to those with more capacity.
+   - NONE: 送受信の停止。 Stop sending and receiving.
+
+   INPUTモードは、液体タンクや、水の入った大釜から流体を取り出すことが出来ます。
+   INPUT mode takes fluid from a fluid tank or cauldron filled with water.
 
 ****************************************************************************************************
 

@@ -84,6 +84,10 @@ public class DrinkColdItem extends ItemEntityFood {
 
 	@Override
 	public EntityRenderData getRenderData(Item item) {
+		if (item == FoodInit.DRINK_APPLE.get())
+			return DRINK_APPLE;
+		if (item == FoodInit.DRINK_APPLE_SODA.get())
+			return DRINK_APPLE_SODA;
 		if (item == FoodInit.DRINK_BERRY.get())
 			return DRINK_BERRY;
 		if (item == FoodInit.DRINK_BERRY_SODA.get())
@@ -124,6 +128,8 @@ public class DrinkColdItem extends ItemEntityFood {
 			return DRINK_GUAVA;
 		if (item == FoodInit.DRINK_GUAVA_SODA.get())
 			return DRINK_GUAVA_SODA;
+		if (item == FoodInit.DRINK_VEGETABLE.get())
+			return DRINK_VEGETABLE;
 		if (item == FoodInit.DRINK_MILK_SHAKE.get())
 			return DRINK_MILK_SHAKE;
 		if (item == FoodInit.DRINK_TONIC.get())
@@ -135,29 +141,32 @@ public class DrinkColdItem extends ItemEntityFood {
 		return DRINK_TONIC;
 	}
 
-	public static final EntityRenderData DRINK_BERRY = new EntityRenderData("food/drink_berry", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_BERRY_SODA = new EntityRenderData("food/drink_soda_berry", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_MELON = new EntityRenderData("food/drink_melon", 0.5F, 1F);
-	public static final EntityRenderData DRINK_MELON_SODA = new EntityRenderData("food/drink_soda_melon", 0.5F, 1F);
-	public static final EntityRenderData DRINK_GRAPE = new EntityRenderData("food/drink_grape", 0.5F, 1F);
-	public static final EntityRenderData DRINK_GRAPE_SODA = new EntityRenderData("food/drink_soda_grape", 0.5F, 1F);
-	public static final EntityRenderData DRINK_GRAPE_WHITE = new EntityRenderData("food/drink_grape_white", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_GRAPE_WHITE_SODA = new EntityRenderData("food/drink_soda_grape_white", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_PLUM = new EntityRenderData("food/drink_plum", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_PLUM_SODA = new EntityRenderData("food/drink_soda_plum", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_PEACH = new EntityRenderData("food/drink_peach", 0.5F, 1F);
-	public static final EntityRenderData DRINK_PEACH_SODA = new EntityRenderData("food/drink_soda_peach", 0.5F, 1F);
-	public static final EntityRenderData DRINK_POMELO = new EntityRenderData("food/drink_pomelo", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_MANDARIN = new EntityRenderData("food/drink_mandarin", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_LEMON = new EntityRenderData("food/drink_lemon", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_CITRUS_SODA = new EntityRenderData("food/drink_soda_citrus", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_MANGO = new EntityRenderData("food/drink_mango", 0.5F, 1F);
-	public static final EntityRenderData DRINK_MANGO_SODA = new EntityRenderData("food/drink_soda_mango", 0.5F, 1F);
-	public static final EntityRenderData DRINK_GUAVA = new EntityRenderData("food/drink_guava", 0.5F, 1F);
-	public static final EntityRenderData DRINK_GUAVA_SODA = new EntityRenderData("food/drink_soda_guava", 0.5F, 1F);
-	public static final EntityRenderData DRINK_MILK_SHAKE = new EntityRenderData("food/drink_milk_shake", 0.5F, 1F);
-	public static final EntityRenderData DRINK_TONIC = new EntityRenderData("food/drink_soda_blue", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_TEA_BARLEY = new EntityRenderData("food/drink_tea_barley", 0.5F, 0.75F);
-	public static final EntityRenderData DRINK_TEA_SODA = new EntityRenderData("food/drink_soda_tea", 0.5F, 0.75F);
+	public static final EntityRenderData DRINK_APPLE = new EntityRenderData("food/drink_apple", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_APPLE_SODA = new EntityRenderData("food/drink_soda_apple", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_BERRY = new EntityRenderData("food/drink_berry", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_BERRY_SODA = new EntityRenderData("food/drink_soda_berry", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_MELON = new EntityRenderData("food/drink_melon", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_MELON_SODA = new EntityRenderData("food/drink_soda_melon", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_GRAPE = new EntityRenderData("food/drink_grape", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_GRAPE_SODA = new EntityRenderData("food/drink_soda_grape", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_GRAPE_WHITE = new EntityRenderData("food/drink_grape_white", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_GRAPE_WHITE_SODA = new EntityRenderData("food/drink_soda_grape_white", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_PLUM = new EntityRenderData("food/drink_plum", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_PLUM_SODA = new EntityRenderData("food/drink_soda_plum", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_PEACH = new EntityRenderData("food/drink_peach", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_PEACH_SODA = new EntityRenderData("food/drink_soda_peach", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_POMELO = new EntityRenderData("food/drink_pomelo", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_MANDARIN = new EntityRenderData("food/drink_mandarin", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_LEMON = new EntityRenderData("food/drink_lemon", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_CITRUS_SODA = new EntityRenderData("food/drink_soda_citrus", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_MANGO = new EntityRenderData("food/drink_mango", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_MANGO_SODA = new EntityRenderData("food/drink_soda_mango", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_GUAVA = new EntityRenderData("food/drink_guava", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_GUAVA_SODA = new EntityRenderData("food/drink_soda_guava", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_VEGETABLE = new EntityRenderData("food/drink_vegetable", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_MILK_SHAKE = new EntityRenderData("food/drink_milkshake", 0.5F, 00.05F);
+	public static final EntityRenderData DRINK_TONIC = new EntityRenderData("food/drink_soda_blue", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_TEA_BARLEY = new EntityRenderData("food/drink_tea_barley", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_TEA_SODA = new EntityRenderData("food/drink_soda_tea", 0.5F, 0.05F);
 
 }

@@ -277,8 +277,6 @@ public class CharmTriggerEvent {
 		if (face.getAxis() == Direction.Axis.X) {
 			for (int z = -r; z <= r; z++) {
 				for (int y = -r; y <= r; y++) {
-					if (z == 0 && y == 0)
-						continue;
 					BlockPos p = pos.offset(0, y, z);
 					ret.add(p);
 				}
@@ -287,8 +285,6 @@ public class CharmTriggerEvent {
 		} else if (face.getAxis() == Direction.Axis.Z) {
 			for (int x = -r; x <= r; x++) {
 				for (int y = -r; y <= r; y++) {
-					if (x == 0 && y == 0)
-						continue;
 					BlockPos p = pos.offset(x, y, 0);
 					ret.add(p);
 				}
@@ -297,8 +293,6 @@ public class CharmTriggerEvent {
 		} else {
 			for (int z = -r; z <= r; z++) {
 				for (int x = -r; x <= r; x++) {
-					if (z == 0 && x == 0)
-						continue;
 					BlockPos p = pos.offset(x, 0, z);
 					ret.add(p);
 				}

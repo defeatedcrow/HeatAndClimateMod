@@ -384,6 +384,8 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(BottleWineItem.WINE.getLayerLocation(), BottleModel_Wine::createBodyLayer);
 		event.registerLayerDefinition(BottleWineItem.WINE_WHITE.getLayerLocation(), BottleModel_Wine::createBodyLayer);
 
+		event.registerLayerDefinition(DrinkColdItem.DRINK_APPLE.getLayerLocation(), DrinkGlassModel::createBodyLayer);
+		event.registerLayerDefinition(DrinkColdItem.DRINK_APPLE_SODA.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_BERRY.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_BERRY_SODA.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_GRAPE.getLayerLocation(), DrinkGlassModel::createBodyLayer);
@@ -400,6 +402,7 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(DrinkColdItem.DRINK_MANGO_SODA.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_MELON.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_MELON_SODA.getLayerLocation(), DrinkGlassModel::createBodyLayer);
+		event.registerLayerDefinition(DrinkColdItem.DRINK_VEGETABLE.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_MILK_SHAKE.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_PEACH.getLayerLocation(), DrinkGlassModel::createBodyLayer);
 		event.registerLayerDefinition(DrinkColdItem.DRINK_PEACH_SODA.getLayerLocation(), DrinkGlassModel::createBodyLayer);

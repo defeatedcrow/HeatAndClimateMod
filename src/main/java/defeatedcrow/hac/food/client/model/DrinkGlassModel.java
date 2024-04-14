@@ -27,13 +27,15 @@ public class DrinkGlassModel<T extends Entity> extends EntityModel<T> {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition glass = partdefinition.addOrReplaceChild("glass", CubeListBuilder.create().texOffs(0, 0).addBox(-3.5F, -1.0F, -3.5F, 7.0F, 1.0F, 7.0F, new CubeDeformation(0.0F))
+		PartDefinition glass = partdefinition.addOrReplaceChild("glass", CubeListBuilder.create()
+			.texOffs(0, 0).addBox(-3.5F, -1.0F, -3.5F, 7.0F, 1.0F, 7.0F, new CubeDeformation(0.0F))
 			.texOffs(0, 13).addBox(2.5F, -10.0F, -3.5F, 1.0F, 9.0F, 7.0F, new CubeDeformation(0.0F))
 			.texOffs(30, 13).addBox(-3.5F, -10.0F, -3.5F, 1.0F, 9.0F, 7.0F, new CubeDeformation(0.0F))
 			.texOffs(47, 19).addBox(-2.5F, -10.0F, -3.5F, 5.0F, 9.0F, 1.0F, new CubeDeformation(0.0F))
 			.texOffs(17, 19).addBox(-2.5F, -10.0F, 2.5F, 5.0F, 9.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
 
-		PartDefinition bb_main = partdefinition.addOrReplaceChild("inner", CubeListBuilder.create().texOffs(32, 0).addBox(-2.5F, -8.0F, -2.5F, 5.0F, 7.0F, 5.0F, new CubeDeformation(0.0F))
+		PartDefinition bb_main = partdefinition.addOrReplaceChild("inner", CubeListBuilder.create()
+			.texOffs(32, 0).addBox(-2.5F, -7.9F, -2.5F, 5.0F, 7.0F, 5.0F, new CubeDeformation(0.0F))
 			.texOffs(15, 10).addBox(-2.5F, -8.9F, -2.5F, 5.0F, 1.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
 
 		return LayerDefinition.create(meshdefinition, 64, 32);

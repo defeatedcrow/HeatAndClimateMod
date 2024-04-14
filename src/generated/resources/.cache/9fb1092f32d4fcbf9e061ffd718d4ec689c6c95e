@@ -1,4 +1,4 @@
-// 1.19.2	2024-04-12T23:57:53.4387818	Recipes
+// 1.19.2	2024-04-14T04:55:11.6602385	Recipes
 f61b12168a5eb180f4cdbf40aaec410beb17969b data/dcs_climate/advancements/recipes/machine/machine/battery_small_0.json
 f4b60b950b77112e2f67440b78d6c6e903c71553 data/dcs_climate/advancements/recipes/machine/machine/boiler_biomass_0.json
 a98e991c97d64bc5ba51fdcd736310d1638261f2 data/dcs_climate/advancements/recipes/machine/machine/brass_pipe_0.json
@@ -11,7 +11,7 @@ b6a2a99037f58aaff6dcac6daaba2e892cc4b69e data/dcs_climate/advancements/recipes/m
 84cf5dcf425c2a0c2270e79501cf98868f9507d1 data/dcs_climate/advancements/recipes/machine/machine/cooking_pot_red_0.json
 a86e30d78747300c16a08a3a665fd7a078cc53d5 data/dcs_climate/advancements/recipes/machine/machine/cooking_pot_white_0.json
 9da6be6bdd9c8ab3ef92430e8ab9d9489327ef34 data/dcs_climate/advancements/recipes/machine/machine/copper_cable_0.json
-449f399503901d3eaaf373f9b2e84323cf5bb4d7 data/dcs_climate/advancements/recipes/machine/machine/copper_cable_coated_0.json
+62ce8eb8f97438ddd0eb0feb74312ed43d8d4aec data/dcs_climate/advancements/recipes/machine/machine/copper_cable_coated_0.json
 7e173ac56f536a879c2222b4014b5798567fa9c6 data/dcs_climate/advancements/recipes/machine/machine/farmentation_jar_0.json
 091170007a286aa3759cb759bcfdcc4e2af983ab data/dcs_climate/advancements/recipes/machine/machine/farmentation_jar_1.json
 5e558976873b25f43bd679699c4e07d7b295278c data/dcs_climate/advancements/recipes/machine/machine/farmentation_jar_black_0.json
@@ -55,7 +55,7 @@ cc66d4a6d80aac6cbc590540d4211a646a510616 data/dcs_climate/recipes/machine/bricks
 76ba213b0565a58ca3bf3089c2ce167b763fe6dd data/dcs_climate/recipes/machine/cooking_pot_red_0.json
 7ca8319bbb76dca7fdd6bc2f30dd0f5921a6f343 data/dcs_climate/recipes/machine/cooking_pot_white_0.json
 32bbe3988ae08b163987a86d9154f271a8d9d41e data/dcs_climate/recipes/machine/copper_cable_0.json
-9279150afe703c0dabef17175a0172c2c446cb8f data/dcs_climate/recipes/machine/copper_cable_coated_0.json
+37830e679f223157d3e877566f081aaa2743e42b data/dcs_climate/recipes/machine/copper_cable_coated_0.json
 4deb606932a238c7cc83512afa45aef73f0b4a93 data/dcs_climate/recipes/machine/farmentation_jar_0.json
 20a97bf4abb661827df86d74e266c47747f27d7d data/dcs_climate/recipes/machine/farmentation_jar_1.json
 029332d1094f9a3273fffb2829fe28831b87e90a data/dcs_climate/recipes/machine/farmentation_jar_black_0.json
@@ -86,4 +86,4 @@ b7ca1da31048133328f37af4b54587d08649e7d8 data/dcs_climate/recipes/machine/tea_po
 7828c53d9c207a29d246316156b0e942646d0e54 data/dcs_climate/recipes/machine/tea_pot_green_0.json
 3bfe6a79d9280a6b3ee36005a8ae49c13163ef1c data/dcs_climate/recipes/machine/tea_pot_red_0.json
 8119da18debbfdc94df36f1d2fc13a3301c0c905 data/dcs_climate/recipes/machine/tea_pot_white_0.json
-bb77c04e2c16acabb1233e75aebab880f0fd2e9e data/dcs_climate/recipes/machine/water_pump_0.json
+a0a7ef06b10421abc3cbc5b4485535e43305c54f data/dcs_climate/recipes/machine/water_pump_0.json

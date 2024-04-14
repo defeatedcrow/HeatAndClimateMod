@@ -309,8 +309,8 @@ public class MachineRecipeProvider extends RecipeProvider {
 			.pattern("YYY")
 			.pattern("XXX")
 			.define('Y', TagDC.ItemTag.CLOTH_RUBBER)
-			.define('X', MachineInit.CABLE_COPPER.get())
-			.unlockedBy("has_copper_cable", has(MachineInit.CABLE_COPPER.get()))
+			.define('X', Tags.Items.INGOTS_COPPER)
+			.unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER))
 			.save(cons, "dcs_climate:machine/copper_cable_coated_0");
 
 		ShapedRecipeBuilder.shaped(MachineInit.PIPE_BRASS.get(), 8)
