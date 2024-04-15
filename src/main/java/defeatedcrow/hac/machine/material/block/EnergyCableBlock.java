@@ -278,6 +278,12 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 		return false;
 	}
 
+	@Override
+	public ItemStack getDropItem(ItemStack item, BlockEntity tile) {
+		// NBTを保持しない
+		return item;
+	}
+
 	/* BlockDC */
 
 	@Override

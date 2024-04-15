@@ -60,7 +60,7 @@ public class BoilerBiomassBlock extends HeatSourceBlock {
 
 	@Override
 	public int getToolTier() {
-		return 1;
+		return 0;
 	}
 
 	@Override

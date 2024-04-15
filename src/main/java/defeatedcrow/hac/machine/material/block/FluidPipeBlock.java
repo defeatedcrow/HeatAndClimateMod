@@ -262,6 +262,11 @@ public abstract class FluidPipeBlock extends EntityBlockDC {
 		return false;
 	}
 
+	@Override
+	public ItemStack getDropItem(ItemStack item, BlockEntity tile) {
+		return item;
+	}
+
 	/* BlockDC */
 
 	@Override
