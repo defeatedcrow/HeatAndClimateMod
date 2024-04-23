@@ -73,12 +73,12 @@ public class TeaPotMenu extends AbstractContainerMenu {
 		if (slot != null && slot.hasItem()) {
 			ItemStack check = slot.getItem();
 			stack = check.copy();
-			if (s > 3) {
+			if (s > 6) {
 				if (!this.moveItemStackTo(check, 0, 3, false)) {
 					return ItemStack.EMPTY;
 				}
 			} else {
-				if (!this.moveItemStackTo(check, 7, this.slots.size(), false)) {
+				if (!this.moveItemStackTo(check, 7, this.slots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 			}

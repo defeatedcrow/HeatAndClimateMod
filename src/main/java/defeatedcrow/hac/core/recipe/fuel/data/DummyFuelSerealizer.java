@@ -19,6 +19,7 @@ public class DummyFuelSerealizer implements RecipeSerializer<DummyFuel> {
 
 	@Override
 	public DummyFuel fromJson(ResourceLocation res, JsonObject json) {
+		DCLogger.debugInfoLog("fuel recipe: " + res.toString());
 		String type = GsonHelper.getAsString(json, "type", "");
 		String group = GsonHelper.getAsString(json, "group", "");
 		Ingredient ing = DataUtilDC.getIng(json);

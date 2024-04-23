@@ -69,13 +69,11 @@ public class PortableTankMenu extends AbstractContainerMenu {
 			ItemStack check = slot.getItem();
 			stack = check.copy();
 			if (s > 1) {
-				// if (FluidUtil.getFluidHandler(check).isPresent()) {
 				if (!this.moveItemStackTo(check, 0, 1, false)) {
 					return ItemStack.EMPTY;
 				}
-				// }
 			} else {
-				if (!this.moveItemStackTo(check, 2, this.slots.size(), false)) {
+				if (!this.moveItemStackTo(check, 2, this.slots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 			}

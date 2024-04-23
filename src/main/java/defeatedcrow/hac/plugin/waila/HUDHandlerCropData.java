@@ -68,8 +68,8 @@ public class HUDHandlerCropData implements IBlockComponentProvider {
 
 	public static void register(IRegistrar registrar) {
 
-		registrar.addMergedConfig(CROP, true);
-		registrar.addMergedConfig(FERTILE, true);
+		registrar.addFeatureConfig(CROP, true);
+		registrar.addFeatureConfig(FERTILE, true);
 
 		registrar.addComponent(INSTANCE, TAIL, ClimateCropBaseBlock.class);
 		registrar.addComponent(INSTANCE, TAIL, FertileBlock.class);

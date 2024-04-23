@@ -1,0 +1,163 @@
+package defeatedcrow.hac.machine.material.block;
+
+import javax.annotation.Nullable;
+
+import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.material.block.EntityBlockDC;
+import defeatedcrow.hac.core.material.block.OwnableContainerBaseTileDC;
+import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.network.NetworkHooks;
+
+/**
+ * 汎用マシンベースクラス (EnergyMachineBaseDCに対応)<br>
+ * - Owner登録、開閉アニメーションなし
+ */
+public abstract class HopperBaseBlockDC extends EntityBlockDC {
+
+	public HopperBaseBlockDC(Properties prop) {
+		super(prop);
+		this.registerDefaultState(this.stateDefinition.any()
+			.setValue(DCState.DIRECTION, Direction.DOWN)
+			.setValue(DCState.FLAG, Boolean.valueOf(false))
+			.setValue(DCState.POWERED, Boolean.valueOf(false))
+			.setValue(WATERLOGGED, Boolean.valueOf(false)));
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext cont) {
+		FluidState fluidstate = cont.getLevel().getFluidState(cont.getClickedPos());
+		boolean pow = cont.getLevel().hasNeighborSignal(cont.getClickedPos());
+		Direction face = cont.getClickedFace().getOpposite();
+		boolean flag = false;
+		if (face.getAxis().isVertical() && cont.getPlayer() != null) {
+			if (this.defaultBlockState().is(TagDC.BlockTag.HOPPER_FILTER)) {
+				face = cont.getPlayer().getDirection();
+			}
+			flag = !cont.getPlayer().isCrouching() && face == Direction.UP;
+		}
+		return this.defaultBlockState().setValue(DCState.DIRECTION, face)
+			.setValue(DCState.FLAG, Boolean.valueOf(flag))
+			.setValue(DCState.POWERED, Boolean.valueOf(pow))
+			.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+	}
+
+	@Override
+	public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos pos2, boolean flag) {
+		if (!level.isClientSide) {
+			boolean pow = level.hasNeighborSignal(pos);
+			if (pow != DCState.getBool(state, DCState.POWERED)) {
+				level.setBlock(pos, state.setValue(DCState.POWERED, Boolean.valueOf(pow)), 2);
+			}
+		}
+	}
+
+	@Override
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
+		BlockEntity tile = level.getBlockEntity(pos);
+		ItemStack held = player.getItemInHand(hand);
+		if (tile instanceof HopperBaseTile machine) {
+			if (!DCUtil.isEmpty(held) && held.is(TagDC.ItemTag.CRAFT_DRIVER) && hitRes != null) {
+				this.rotate(state, Rotation.CLOCKWISE_90);
+				return InteractionResult.SUCCESS;
+			} else {
+				if (level.isClientSide) {
+					return InteractionResult.SUCCESS;
+				} else {
+					if (player instanceof ServerPlayer && machine.canOpen(player) && machine.createMenu(0, player.getInventory(), player) != null) {
+						NetworkHooks.openScreen((ServerPlayer) player, machine, pos);
+					}
+					return InteractionResult.CONSUME;
+				}
+			}
+		} else {
+			return InteractionResult.sidedSuccess(level.isClientSide);
+		}
+	}
+
+	@Override
+	public BlockState rotate(BlockState state, Rotation rot) {
+		Direction dir = DCState.getFace(state, DCState.DIRECTION);
+		return state.setValue(DCState.DIRECTION, rot.rotate(dir));
+	}
+
+	@Override
+	public BlockState mirror(BlockState state, Mirror mir) {
+		Direction dir = DCState.getFace(state, DCState.DIRECTION);
+		return state.setValue(DCState.DIRECTION, mir.mirror(dir));
+	}
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
+		state.add(DCState.DIRECTION, DCState.FLAG, DCState.POWERED, WATERLOGGED);
+	}
+
+	@Override
+	public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType pathCom) {
+		return false;
+	}
+
+	/* BlockDC */
+
+	@Override
+	public ToolType getToolType() {
+		return ToolType.PICKAXE;
+	}
+
+	@Override
+	public int getToolTier() {
+		return 0;
+	}
+
+	@Override
+	public BlockType getDropType() {
+		return BlockType.NORMAL;
+	}
+
+	/* Redstone */
+
+	@Override
+	public PushReaction getPistonPushReaction(BlockState state) {
+		return PushReaction.BLOCK;
+	}
+
+	@Override
+	public void onRemove(BlockState state, Level level, BlockPos pos, BlockState state2, boolean flag) {
+		if (!state.is(state2.getBlock())) {
+			BlockEntity blockentity = level.getBlockEntity(pos);
+			if (blockentity instanceof OwnableContainerBaseTileDC) {
+				level.updateNeighbourForOutputSignal(pos, state.getBlock());
+			}
+			super.onRemove(state, level, pos, state2, flag);
+		}
+	}
+
+	@Nullable
+	protected static <T extends BlockEntity> BlockEntityTicker<T> createTicker(Level level, BlockEntityType<T> type, BlockEntityType<? extends HopperBaseTile> tile) {
+		return level.isClientSide ? null : createTickerHelper(type, tile, HopperBaseTile::serverTick);
+	}
+
+}

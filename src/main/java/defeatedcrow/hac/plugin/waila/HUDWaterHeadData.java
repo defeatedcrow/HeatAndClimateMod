@@ -43,7 +43,7 @@ public class HUDWaterHeadData implements IBlockComponentProvider {
 
 	public static void register(IRegistrar registrar) {
 
-		registrar.addMergedConfig(FLUID_HEAD, true);
+		registrar.addFeatureConfig(FLUID_HEAD, true);
 
 		registrar.addComponent(INSTANCE, TAIL, FluidPipeBlock.class);
 

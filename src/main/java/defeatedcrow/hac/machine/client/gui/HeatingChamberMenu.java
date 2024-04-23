@@ -73,7 +73,7 @@ public class HeatingChamberMenu extends AbstractContainerMenu {
 					}
 				}
 			} else {
-				if (!this.moveItemStackTo(check, 2, this.slots.size(), false)) {
+				if (!this.moveItemStackTo(check, 2, this.slots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 			}

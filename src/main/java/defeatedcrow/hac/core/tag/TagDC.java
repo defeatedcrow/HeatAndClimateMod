@@ -129,6 +129,9 @@ public class TagDC {
 		public static final TagKey<Block> FLUID_PIPE = BlockTags.create(new ResourceLocation("dcs_climate", "pipe_fluid"));
 		public static final TagKey<Block> ENERGY_CABLE = BlockTags.create(new ResourceLocation("dcs_climate", "cable_energy"));
 
+		public static final TagKey<Block> HOPPER = BlockTags.create(new ResourceLocation("dcs_climate", "hoppers"));
+		public static final TagKey<Block> HOPPER_FILTER = BlockTags.create(new ResourceLocation("dcs_climate", "hoppers/filter_hopper"));
+
 		// public static final TagKey<Block> HEAT_TIER = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier"));
 		// public static final TagKey<Block> ABSOLUTE = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/absolute"));
 		// public static final TagKey<Block> CRYOGENIC = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/cryogenic"));
@@ -901,12 +904,16 @@ public class TagDC {
 
 		public static final TagKey<Item> IMPELLERS = ItemTags.create(new ResourceLocation("dcs_climate", "impellers"));
 		public static final TagKey<Item> IMPELLER_T1 = ItemTags.create(new ResourceLocation("dcs_climate", "impellers/small"));
+
 		public static final TagKey<Item> BATTERY_T1 = ItemTags.create(new ResourceLocation("dcs_climate", "battery_items/small"));
 
 		public static final TagKey<Item> LEAKAGE_MACHINE = ItemTags.create(new ResourceLocation("dcs_climate", "leakage_machine"));
 
 		public static final TagKey<Item> FLUID_PIPE = ItemTags.create(new ResourceLocation("dcs_climate", "pipe_fluid"));
 		public static final TagKey<Item> ENERGY_CABLE = ItemTags.create(new ResourceLocation("dcs_climate", "cable_energy"));
+
+		public static final TagKey<Item> HOPPER = ItemTags.create(new ResourceLocation("dcs_climate", "hoppers"));
+		public static final TagKey<Item> HOPPER_FILTER = ItemTags.create(new ResourceLocation("dcs_climate", "hoppers/filter_hopper"));
 
 		private static TagKey<Item> itemTag(String name) {
 			return ItemTags.create(new ResourceLocation("forge", name));

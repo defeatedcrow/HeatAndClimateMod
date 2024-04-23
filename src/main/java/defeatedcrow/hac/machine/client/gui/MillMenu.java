@@ -73,7 +73,7 @@ public class MillMenu extends AbstractContainerMenu {
 					return ItemStack.EMPTY;
 				}
 			} else {
-				if (!this.moveItemStackTo(check, 5, this.slots.size(), false)) {
+				if (!this.moveItemStackTo(check, 5, this.slots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 			}

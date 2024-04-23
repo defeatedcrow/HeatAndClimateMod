@@ -1,4 +1,4 @@
-// 1.19.2	2024-04-11T23:28:45.4618225	Tags for minecraft:block
+// 1.19.2	2024-04-16T20:16:28.2970749	Tags for minecraft:block
 2e8672209a9848b9297ff80db4c49435599de07a data/dcs_climate/tags/blocks/building_stones.json
 e4ee8a3908637657413df9cecb92f115e6bff913 data/dcs_climate/tags/blocks/building_stones/bricks.json
 0da4d363ac374474ad909a6d433c4f4caf737cff data/dcs_climate/tags/blocks/building_stones/chiseled.json
@@ -92,7 +92,7 @@ bad4af831c4554174ef66c7bf6187f640f76e08f data/minecraft/tags/blocks/crops.json
 348d5497480b5df89d6d61d14847971866f18697 data/minecraft/tags/blocks/mineable/pickaxe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/needs_diamond_tool.json
 333b0e2ade270e3c2c54c0ec974c8027fbda16bd data/minecraft/tags/blocks/needs_iron_tool.json
-a2e4033edce8897994ab99cea644da67b1af24b9 data/minecraft/tags/blocks/needs_stone_tool.json
+503ff3e55f99803a06d80def53803020a6b58060 data/minecraft/tags/blocks/needs_stone_tool.json
 8a807ae1842a64558c93aba23fc7b51ca278457c data/minecraft/tags/blocks/overworld_natural_logs.json
 efb4ac82e6900bfb1cc6ec2fc4d567dc9bd2773d data/minecraft/tags/blocks/planks.json
 77fb866d31af5d8f52f649bcf7f936a17dc50ac3 data/minecraft/tags/blocks/walls.json

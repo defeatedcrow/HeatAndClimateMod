@@ -175,12 +175,42 @@ public class InventoryDC implements Container {
 		return count;
 	}
 
+	public int canInsertResult(ItemStack item, int[] slots) {
+		if (DCUtil.isEmpty(item))
+			return -1;
+		ItemStack ret = item.copy();
+		int count = 0;
+		for (int i : slots) {
+			int l = canIncrSlot(i, item);
+			ret.split(l);
+			count += l;
+			if (ret.isEmpty())
+				break;
+		}
+		return count;
+	}
+
 	public int insertResult(ItemStack item, int s1, int s2) {
 		if (DCUtil.isEmpty(item))
 			return 0;
 		ItemStack ret = item.copy();
 		int count = 0;
 		for (int i = s1; i <= s2; i++) {
+			int l = incrStackInSlot(i, ret.copy());
+			ret.split(l);
+			count += l;
+			if (ret.isEmpty())
+				break;
+		}
+		return count;
+	}
+
+	public int insertResult(ItemStack item, int[] slots) {
+		if (DCUtil.isEmpty(item))
+			return 0;
+		ItemStack ret = item.copy();
+		int count = 0;
+		for (int i : slots) {
 			int l = incrStackInSlot(i, ret.copy());
 			ret.split(l);
 			count += l;

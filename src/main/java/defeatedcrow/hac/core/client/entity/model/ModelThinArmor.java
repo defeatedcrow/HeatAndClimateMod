@@ -32,8 +32,7 @@ public class ModelThinArmor extends HumanoidModel {
 		PartDefinition part = mesh.getRoot();
 		PartDefinition head = part.addOrReplaceChild("head", CubeListBuilder.create()
 			.texOffs(0, 0).addBox(-4.5F, -10.0F, -4.5F, 9.0F, 3.0F, 9.0F, new CubeDeformation(0.55F))
-			.texOffs(0, 17).addBox(-7.0F, -7.0F, -7.0F, 14.0F, 1.0F, 14.0F, new CubeDeformation(0.55F)),
-			PartPose.ZERO);
+			.texOffs(0, 17).addBox(-7.0F, -7.0F, -7.0F, 14.0F, 1.0F, 14.0F, new CubeDeformation(0.55F)), PartPose.ZERO);
 		// head.addOrReplaceChild("hat", CubeListBuilder.create().texOffs(0, 17).addBox(-7.0F, -7.0F, -7.0F, 14.0F, 1.0F, 14.0F, new CubeDeformation(0F)), PartPose.ZERO);
 		return LayerDefinition.create(mesh, 64, 32);
 	}

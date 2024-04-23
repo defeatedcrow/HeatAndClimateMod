@@ -72,7 +72,7 @@ public class DummyFuel implements IDummyFuel {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return CoreInit.SMELTING_SEREALIZER.get();
+		return CoreInit.DEVICE_FUEL_SEREALIZER.get();
 	}
 
 }

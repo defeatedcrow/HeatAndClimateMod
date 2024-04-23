@@ -79,18 +79,12 @@ public class CookingPotMenu extends AbstractContainerMenu {
 		if (slot != null && slot.hasItem()) {
 			ItemStack check = slot.getItem();
 			stack = check.copy();
-			if (s > 5) {
-				// if (FluidUtil.getFluidHandler(check).isPresent()) {
-				// if (!this.moveItemStackTo(check, 8, 9, false)) {
-				// return ItemStack.EMPTY;
-				// }
-				// } else {
-				if (!this.moveItemStackTo(check, 0, 6, false)) {
+			if (s > 11) {
+				if (!this.moveItemStackTo(check, 0, 5, false)) {
 					return ItemStack.EMPTY;
 				}
-				// }
 			} else {
-				if (!this.moveItemStackTo(check, 12, this.slots.size(), false)) {
+				if (!this.moveItemStackTo(check, 12, this.slots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 			}

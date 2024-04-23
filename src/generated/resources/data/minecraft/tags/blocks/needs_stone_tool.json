@@ -86,7 +86,6 @@
     "dcs_climate:build/mosaic_yellow",
     "dcs_climate:build/mosaic_red",
     "dcs_climate:build/adobe_bricks",
-    "dcs_climate:machine/chamber_iron",
-    "dcs_climate:machine/boiler_biomass"
+    "dcs_climate:machine/chamber_iron"
   ]
 }

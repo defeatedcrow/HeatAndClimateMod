@@ -89,8 +89,8 @@ public class HUDHandlerClimateData implements IBlockComponentProvider {
 
 	public static void register(IRegistrar registrar) {
 
-		registrar.addMergedConfig(CLIMATE, true);
-		registrar.addMergedConfig(CLIMATE_SMELTING, true);
+		registrar.addFeatureConfig(CLIMATE, true);
+		registrar.addFeatureConfig(CLIMATE_SMELTING, true);
 
 		registrar.addComponent(INSTANCE, TAIL, Block.class);
 

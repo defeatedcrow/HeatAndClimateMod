@@ -76,14 +76,14 @@ public class BoilerBiomassMenu extends AbstractContainerMenu {
 		if (slot != null && slot.hasItem()) {
 			ItemStack check = slot.getItem();
 			stack = check.copy();
-			if (s > 1) {
-				if (net.minecraftforge.common.ForgeHooks.getBurnTime(check, RecipeType.SMELTING) > 0) {
-					if (!this.moveItemStackTo(check, 0, 6, false)) {
+			if (s > 8) {
+				if (net.minecraftforge.common.ForgeHooks.getBurnTime(stack, RecipeType.SMELTING) > 0) {
+					if (!this.moveItemStackTo(check, 0, 5, false)) {
 						return ItemStack.EMPTY;
 					}
 				}
 			} else {
-				if (!this.moveItemStackTo(check, 9, this.slots.size(), false)) {
+				if (!this.moveItemStackTo(check, 9, this.slots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 			}
