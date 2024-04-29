@@ -1,0 +1,9 @@
+{
+  "parent": "block/hopper",
+  "textures": {
+    "particle": "dcs_climate:block/machine/hopper_gold_outside",
+        "top": "dcs_climate:block/machine/hopper_gold_top",
+        "side": "dcs_climate:block/machine/hopper_gold_outside",
+        "inside": "dcs_climate:block/machine/hopper_gold_inside"
+  }
+}

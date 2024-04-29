@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -122,6 +123,12 @@ public class SlabWoodDC extends SlabBlock implements IBlockDC, IJsonDataDC {
 	@Override
 	public int getToolTier() {
 		return 0;
+	}
+
+	@Override
+	public BlockState mirror(BlockState state, Mirror mir) {
+		Boolean flag = state.getValue(TYPE) == SlabType.BOTTOM;
+		return state.setValue(TYPE, flag ? SlabType.TOP : SlabType.BOTTOM);
 	}
 
 }

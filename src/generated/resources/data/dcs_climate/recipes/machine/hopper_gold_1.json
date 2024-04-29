@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/gold"
+    },
+    "Z": {
+      "tag": "forge:chests"
+    }
+  },
+  "pattern": [
+    "X X",
+    "XZX",
+    " X "
+  ],
+  "result": {
+    "item": "dcs_climate:machine/hopper_gold"
+  }
+}

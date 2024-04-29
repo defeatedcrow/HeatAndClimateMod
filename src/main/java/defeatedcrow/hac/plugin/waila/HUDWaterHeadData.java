@@ -3,7 +3,7 @@ package defeatedcrow.hac.plugin.waila;
 import static mcp.mobius.waila.api.TooltipPosition.*;
 
 import defeatedcrow.hac.api.machine.IFluidPipe;
-import defeatedcrow.hac.machine.material.block.FluidPipeBlock;
+import defeatedcrow.hac.machine.material.block.transport.FluidPipeBlock;
 import defeatedcrow.hac.machine.material.fluid.DCFluidUtil;
 import mcp.mobius.waila.api.IBlockAccessor;
 import mcp.mobius.waila.api.IBlockComponentProvider;

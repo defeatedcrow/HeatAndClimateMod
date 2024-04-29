@@ -3,7 +3,7 @@ package defeatedcrow.hac.machine.client.gui;
 import defeatedcrow.hac.core.client.gui.FuelItemSlot;
 import defeatedcrow.hac.core.client.gui.MachineResultSlot;
 import defeatedcrow.hac.machine.material.MachineInit;
-import defeatedcrow.hac.machine.material.block.HeatingChamberTile;
+import defeatedcrow.hac.machine.material.block.machine.HeatingChamberTile;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;

@@ -2,6 +2,7 @@ package defeatedcrow.hac.core.event;
 
 import defeatedcrow.hac.api.material.ITierItem;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.material.block.building.SlabWoodDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicUtil;
@@ -14,11 +15,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.level.BlockEvent.FarmlandTrampleEvent;
+import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class BlockEventDC {
@@ -100,6 +105,35 @@ public class BlockEventDC {
 				}
 			}
 		}
+	}
+
+	@SubscribeEvent
+	public static void onClickBlock(PlayerInteractEvent.RightClickBlock event) {
+		if (event.getEntity() != null && event.getHitVec() != null) {
+			if (event.getItemStack().is(TagDC.ItemTag.CRAFT_DRIVER)) {
+				BlockPos pos = event.getPos().relative(event.getHitVec().getDirection().getOpposite());
+				BlockState state = event.getLevel().getBlockState(pos);
+				if (event.getEntity().isCrouching() && isMirrorTarget(state)) {
+					BlockState next = state.mirror(Mirror.FRONT_BACK);
+					event.getLevel().setBlock(pos, next, 3);
+					event.getEntity().swing(event.getHand(), true);
+					event.setUseItem(Result.ALLOW);
+				} else if (!event.getEntity().isCrouching() && isRotateTarget(state)) {
+					BlockState next = state.rotate(Rotation.CLOCKWISE_90);
+					event.getLevel().setBlock(pos, next, 3);
+					event.getEntity().swing(event.getHand(), true);
+					event.setUseItem(Result.ALLOW);
+				}
+			}
+		}
+	}
+
+	private static boolean isRotateTarget(BlockState state) {
+		return state.is(TagDC.BlockTag.HOPPER);
+	}
+
+	private static boolean isMirrorTarget(BlockState state) {
+		return state.is(TagDC.BlockTag.HOPPER) || state.getBlock() instanceof SlabWoodDC;
 	}
 
 }

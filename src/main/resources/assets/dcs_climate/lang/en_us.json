@@ -1264,6 +1264,9 @@
   "block.dcs_climate.machine.chamber_iron":"Heating Chamber",
   "block.dcs_climate.machine.chamber_brick_a":"Bricks Stove",
   "block.dcs_climate.machine.chamber_brick_b":"Bricks Stove",
+  "block.dcs_climate.machine.hopper_filter":"Filter Hopper",
+  "block.dcs_climate.machine.hopper_gold":"Golden Hopper",
+  "block.dcs_climate.machine.hopper_filter_gold":"Golden Finter Hopper",
   "block.dcs_climate.machine.ibc":"IBC",
   "block.dcs_climate.machine.portable_can":"Potrtable Can",
   "block.dcs_climate.machine.portable_can_white":"White Potrtable Can",
@@ -1298,6 +1301,8 @@
   "block.dcs_climate.machine.boiler_biomass":"Biomass Boiler",
   "block.dcs_climate.machine.cable_copper":"Copper Cable",
   "block.dcs_climate.machine.cable_copper_coated":"Coated Copper Cable",
+  "block.dcs_climate.machine.monitor_rs_lamp":"RS Indicator",
+  "block.dcs_climate.machine.monitor_rs_pilot":"RS Pilot Lamp",
 
     "## magic":"",
 
@@ -1375,6 +1380,10 @@
   "dcs.tip.device.energy.io.none":"None",
   "dcs.tip.device.energy.battery.amount":"Power: ",
   "dcs.tip.fluid_pipe":"Transports liquid using gravity.",
+  "dcs.tip.hopper.iron":"Transport: 1 item / 5 tick",
+  "dcs.tip.hopper.gold":"Transport: 1 item / tick",
+  "dcs.tip.hopper.filter":"Filter",
+  "dcs.tip.hopper.filter.desc":"Items in the filter slot will be transported horizontally, and others will be transported vertically.",
 
   "dcs.tip.flow.tier1":"[Tier1] Flow Rate: 32 /t",
   "dcs.tip.flow.tier2":"[Tier2] Flow Rate: 128 /t",
@@ -1390,6 +1399,9 @@
   "dcs.tip.energy.cable.desc":"This machine transmits and receives energy to and from adjacent machines and cables.",
   "dcs.tip.energy.machine":"[MACHINE]",
   "dcs.tip.energy.machine.desc":"This machine consumes energy to operate.",
+  "dcs.tip.energy.indicator":"[INDICATOR]",
+  "dcs.tip.energy.indicator.desc":"Displays the status of registered coordinates.",
+  "dcs.tip.energy.indicator.desc2":"Hold and right-click othe block: Register the coordinates.",
   "dcs.tip.energy.leakage":"Be careful of electrical leakage!!",
   "dcs.tip.energy.leakage.desc":"Unsheathed cables will leak and lose energy if they get wet or come into contact with mobs.",
 
@@ -1562,6 +1574,8 @@
   "dcs.container.double.with_owner":"%1$s 's Storage",
   "dcs.container.device":"Device",
   "dcs.container.device.with_owner":"%1$s 's Device",
+  "dcs.container.hopper":"Hopper",
+  "dcs.container.hopper.with_owner":"%1$s 's Hopper",
   "dcs.container.chamber":"Stove",
   "dcs.container.chamber.with_owner":"%1$s 's Stove",
   "dcs.container.tank":"Tank",

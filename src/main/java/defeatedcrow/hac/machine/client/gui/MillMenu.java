@@ -3,7 +3,7 @@ package defeatedcrow.hac.machine.client.gui;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.client.gui.MachineResultSlot;
 import defeatedcrow.hac.machine.material.MachineInit;
-import defeatedcrow.hac.machine.material.block.StoneMillTile;
+import defeatedcrow.hac.machine.material.block.machine.StoneMillTile;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;

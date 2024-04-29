@@ -534,7 +534,14 @@
 
 #### 更新履歴 / Change log ####
 
-○v4-beta3
+○v4-beta4
+ add: 特殊ホッパー
+ add: RSインジケーター
+ add: RSパイロットランプ
+ change: BlockEntityのインターバルを調整
+ fix: DataPackのロード時のクラッシュ
+
+○v4-beta3 (2024.4.15)
  add: 発電機
  add: 充電池ブロック
  add: エネルギーケーブル

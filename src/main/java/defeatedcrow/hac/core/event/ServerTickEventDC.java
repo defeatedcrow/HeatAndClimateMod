@@ -22,7 +22,7 @@ public class ServerTickEventDC {
 
 				// 10秒ごと
 				if (!event.level.isClientSide && event.side == LogicalSide.SERVER && event.level instanceof ServerLevel server) {
-					if (time % 10 == 0) {
+					if (time % 9 == 0) {
 						WeatherChecker.INSTANCE.setWeather(server);
 					}
 				}

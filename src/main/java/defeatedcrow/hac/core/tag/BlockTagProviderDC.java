@@ -244,6 +244,10 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(TagDC.BlockTag.BUILDING_STONE).addTags(TagDC.BlockTag.BUILDING_BRICKS, TagDC.BlockTag.BUILDING_PILLAR, TagDC.BlockTag.BUILDING_CHISELED);
 
+		tag(TagDC.BlockTag.HOPPER_FILTER).add(MachineInit.HOPPER_FILTER.get(), MachineInit.HOPPER_FILTER_GOLD.get());
+
+		tag(TagDC.BlockTag.HOPPER).addTag(TagDC.BlockTag.HOPPER_FILTER).add(Blocks.HOPPER, MachineInit.HOPPER_GOLD.get());
+
 		tag(TagDC.BlockTag.LEAKAGE_MACHINE).add(MachineInit.CABLE_COPPER.get());
 
 		tag(TagDC.BlockTag.FLUID_PIPE).add(MachineInit.PIPE_BRASS.get());

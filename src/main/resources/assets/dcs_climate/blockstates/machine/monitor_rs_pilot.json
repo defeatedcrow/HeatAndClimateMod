@@ -1,0 +1,16 @@
+{
+ "variants": {
+    "direction=north,powered=false": {"model": "dcs_climate:block/machine/monitor_rs_pilot_0"},
+    "direction=north,powered=true": {"model": "dcs_climate:block/machine/monitor_rs_pilot_on"},
+    "direction=south,powered=false": {"model": "dcs_climate:block/machine/monitor_rs_pilot_0", "y": 180},
+    "direction=south,powered=true": {"model": "dcs_climate:block/machine/monitor_rs_pilot_on", "y": 180},
+    "direction=east,powered=false": {"model": "dcs_climate:block/machine/monitor_rs_pilot_0", "y": 90},
+    "direction=east,powered=true": {"model": "dcs_climate:block/machine/monitor_rs_pilot_on", "y": 90},
+    "direction=west,powered=false": {"model": "dcs_climate:block/machine/monitor_rs_pilot_0",  "y": 270},
+    "direction=west,powered=true": {"model": "dcs_climate:block/machine/monitor_rs_pilot_on",  "y": 270},
+    "direction=down,powered=false": {"model": "dcs_climate:block/machine/monitor_rs_pilot_0", "x": 90},
+    "direction=down,powered=true": {"model": "dcs_climate:block/machine/monitor_rs_pilot_on", "x": 90},
+    "direction=up,powered=false": {"model": "dcs_climate:block/machine/monitor_rs_pilot_0", "x": 270},
+    "direction=up,powered=true": {"model": "dcs_climate:block/machine/monitor_rs_pilot_on", "x": 270}
+  }
+}

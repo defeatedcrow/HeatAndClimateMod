@@ -102,6 +102,51 @@ public class MachineRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_campfire", has(Items.CAMPFIRE))
 			.save(cons, "dcs_climate:machine/iron_stove_1");
 
+		ShapedRecipeBuilder.shaped(MachineInit.HOPPER_FILTER.get(), 1)
+			.pattern("XYX")
+			.pattern("XZX")
+			.pattern(" X ")
+			.define('X', Tags.Items.INGOTS_IRON)
+			.define('Y', Items.IRON_BARS)
+			.define('Z', Tags.Items.CHESTS)
+			.unlockedBy("has_ingot_iron", has(Tags.Items.INGOTS_IRON))
+			.save(cons, "dcs_climate:machine/hopper_filter_1");
+
+		ShapedRecipeBuilder.shaped(MachineInit.HOPPER_FILTER.get(), 1)
+			.pattern("Y")
+			.pattern("X")
+			.define('X', Items.HOPPER)
+			.define('Y', Items.IRON_BARS)
+			.unlockedBy("has_ingot_iron", has(Tags.Items.INGOTS_IRON))
+			.save(cons, "dcs_climate:machine/hopper_filter_2");
+
+		ShapedRecipeBuilder.shaped(MachineInit.HOPPER_GOLD.get(), 1)
+			.pattern("X X")
+			.pattern("XZX")
+			.pattern(" X ")
+			.define('X', Tags.Items.INGOTS_GOLD)
+			.define('Z', Tags.Items.CHESTS)
+			.unlockedBy("has_ingot_gold", has(Tags.Items.INGOTS_GOLD))
+			.save(cons, "dcs_climate:machine/hopper_gold_1");
+
+		ShapedRecipeBuilder.shaped(MachineInit.HOPPER_FILTER_GOLD.get(), 1)
+			.pattern("XYX")
+			.pattern("XZX")
+			.pattern(" X ")
+			.define('X', Tags.Items.INGOTS_GOLD)
+			.define('Y', Items.IRON_BARS)
+			.define('Z', Tags.Items.CHESTS)
+			.unlockedBy("has_ingot_gold", has(Tags.Items.INGOTS_GOLD))
+			.save(cons, "dcs_climate:machine/hopper_filter_gold_1");
+
+		ShapedRecipeBuilder.shaped(MachineInit.HOPPER_FILTER_GOLD.get(), 1)
+			.pattern("Y")
+			.pattern("X")
+			.define('X', MachineInit.HOPPER_GOLD.get())
+			.define('Y', Items.IRON_BARS)
+			.unlockedBy("has_hopper_gold", has(MachineInit.HOPPER_GOLD.get()))
+			.save(cons, "dcs_climate:machine/hopper_filter_gold_2");
+
 		ShapedRecipeBuilder.shaped(MachineInit.PORTABLE_CAN.get(), 1)
 			.pattern(" X ")
 			.pattern("XYX")
@@ -369,6 +414,24 @@ public class MachineRecipeProvider extends RecipeProvider {
 			.define('W', TagDC.ItemTag.IMPELLER_T1)
 			.unlockedBy("has_impeller_t1", has(TagDC.ItemTag.IMPELLER_T1))
 			.save(cons, "dcs_climate:machine/water_pump_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.MONITOR_RS.get(), 1)
+			.pattern("XZX")
+			.pattern("YYY")
+			.define('X', TagDC.ItemTag.DUST_BISMUTH)
+			.define('Y', Tags.Items.STONE)
+			.define('Z', Items.REDSTONE_TORCH)
+			.unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH))
+			.save(cons, "dcs_climate:machine/monitor_rs_lamp_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.MONITOR_RS_PILOT.get(), 1)
+			.pattern("XZX")
+			.pattern("YYY")
+			.define('X', TagDC.ItemTag.DUST_BISMUTH)
+			.define('Y', Tags.Items.STONE)
+			.define('Z', Items.REDSTONE_LAMP)
+			.unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH))
+			.save(cons, "dcs_climate:machine/monitor_rs_pilot_0");
 
 	}
 

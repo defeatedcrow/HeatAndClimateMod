@@ -24,6 +24,7 @@ public class TagKeyDC {
 	public static final String POS_X = "dcs.pos_x";
 	public static final String POS_Y = "dcs.pos_y";
 	public static final String POS_Z = "dcs.pos_z";
+	public static final String DIRECTION = "dcs.dir";
 
 	public static final String getTankKey(int id) {
 		return "dcs.tank_" + id;

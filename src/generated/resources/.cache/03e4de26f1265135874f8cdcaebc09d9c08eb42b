@@ -1,4 +1,4 @@
-// 1.19.2	2024-04-07T23:41:55.3028365	Tags for minecraft:item
+// 1.19.2	2024-04-27T01:06:10.964165	Tags for minecraft:item
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
 144365fa6b17b4fa9910d0ab669c911f7a7619b6 data/dcs_climate/tags/items/building_stones.json
 f4f040e5c59073f0ad286cbc58be4a8313d31c25 data/dcs_climate/tags/items/building_stones/bricks.json
@@ -82,6 +82,8 @@ bfa015168a13af280008c0441234c8dbb341958b data/dcs_climate/tags/items/gems/black.
 717866aa09166edec1fe66aa17c2353a923a2128 data/dcs_climate/tags/items/gems/green.json
 cd6d18dc51b62418c5466f9fba750545c3b74e79 data/dcs_climate/tags/items/gems/red.json
 fa6626c4d374bc0da9891eb041c6a80385f76161 data/dcs_climate/tags/items/gems/white.json
+edc53fe07b6cc91a4dc3d15cc04f5b2f1b0442d7 data/dcs_climate/tags/items/hoppers.json
+e732b125ba986a25ea6fa15aec48f3d42c148280 data/dcs_climate/tags/items/hoppers/filter_hopper.json
 441c1a784e15ad6e9e166852abf0125021519374 data/dcs_climate/tags/items/impellers.json
 74242775277a2e826a2e0827788832d0795c6049 data/dcs_climate/tags/items/impellers/small.json
 94ff6238538ed033196035f110b10721b2cf337f data/dcs_climate/tags/items/leakage_machine.json

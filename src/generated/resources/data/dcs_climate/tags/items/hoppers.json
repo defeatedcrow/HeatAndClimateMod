@@ -1,0 +1,7 @@
+{
+  "values": [
+    "#dcs_climate:hoppers/filter_hopper",
+    "minecraft:hopper",
+    "dcs_climate:machine/hopper_gold"
+  ]
+}

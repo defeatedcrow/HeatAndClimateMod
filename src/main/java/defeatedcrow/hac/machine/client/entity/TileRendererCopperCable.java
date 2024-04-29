@@ -7,7 +7,7 @@ import defeatedcrow.hac.api.machine.FaceIO;
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.machine.material.MachineInit;
-import defeatedcrow.hac.machine.material.block.CableCopperTile;
+import defeatedcrow.hac.machine.material.block.transport.CableCopperTile;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;

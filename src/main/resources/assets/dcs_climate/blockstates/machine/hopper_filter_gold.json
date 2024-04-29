@@ -1,0 +1,16 @@
+{
+ "variants": {
+    "direction=north,flag=false": {"model": "dcs_climate:block/machine/hopper_filter_gold_0", "y": 180},
+    "direction=north,flag=true": {"model": "dcs_climate:block/machine/hopper_filter_gold_0", "x": 180},
+    "direction=south,flag=false": {"model": "dcs_climate:block/machine/hopper_filter_gold_0"},
+    "direction=south,flag=true": {"model": "dcs_climate:block/machine/hopper_filter_gold_0", "x": 180, "y": 180},
+    "direction=east,flag=false": {"model": "dcs_climate:block/machine/hopper_filter_gold_0", "y": 270},
+    "direction=east,flag=true": {"model": "dcs_climate:block/machine/hopper_filter_gold_0", "x": 180, "y": 90},
+    "direction=west,flag=false": {"model": "dcs_climate:block/machine/hopper_filter_gold_0",  "y": 90},
+    "direction=west,flag=true": {"model": "dcs_climate:block/machine/hopper_filter_gold_0", "x": 180,  "y": 270},
+    "direction=down,flag=false": {"model": "dcs_climate:block/machine/hopper_filter_gold_0", "y": 180},
+    "direction=down,flag=true": {"model": "dcs_climate:block/machine/hopper_filter_gold_0", "x": 180},
+    "direction=up,flag=false": {"model": "dcs_climate:block/machine/hopper_filter_gold_0", "y": 180},
+    "direction=up,flag=true": {"model": "dcs_climate:block/machine/hopper_filter_gold_0", "x": 180}
+  }
+}

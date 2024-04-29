@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/gold"
+    },
+    "Y": {
+      "item": "minecraft:iron_bars"
+    },
+    "Z": {
+      "tag": "forge:chests"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XZX",
+    " X "
+  ],
+  "result": {
+    "item": "dcs_climate:machine/hopper_filter_gold"
+  }
+}

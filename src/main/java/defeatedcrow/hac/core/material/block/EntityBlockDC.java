@@ -94,9 +94,9 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 	public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity living, ItemStack item) {
 		if (!DCUtil.isEmpty(item) && item.getItem() instanceof BlockItemDC && ((BlockItemDC) item.getItem()).getBlock() instanceof ITileNBTHolder holder) {
 			BlockEntity tile = level.getBlockEntity(pos);
+			CompoundTag tag = new CompoundTag();
+			holder.setNBTFromItem(item, tile);
 			if (tile instanceof OwnableBaseTileDC cont) {
-				CompoundTag tag = new CompoundTag();
-				holder.setNBTFromItem(item, cont);
 				if (!cont.hasOwner() && living instanceof Player player) {
 					cont.setOwner(player.getUUID());
 					cont.setOwnerName(player.getScoreboardName());

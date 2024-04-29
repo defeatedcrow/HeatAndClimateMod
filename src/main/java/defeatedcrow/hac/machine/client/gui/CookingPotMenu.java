@@ -2,7 +2,7 @@ package defeatedcrow.hac.machine.client.gui;
 
 import defeatedcrow.hac.core.client.gui.MachineResultSlot;
 import defeatedcrow.hac.machine.material.MachineInit;
-import defeatedcrow.hac.machine.material.block.CookingPotTile;
+import defeatedcrow.hac.machine.material.block.machine.CookingPotTile;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

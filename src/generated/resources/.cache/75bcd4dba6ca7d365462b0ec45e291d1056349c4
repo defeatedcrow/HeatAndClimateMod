@@ -1,4 +1,4 @@
-// 1.19.2	2024-04-16T20:16:28.2970749	Tags for minecraft:block
+// 1.19.2	2024-04-27T01:06:10.9711459	Tags for minecraft:block
 2e8672209a9848b9297ff80db4c49435599de07a data/dcs_climate/tags/blocks/building_stones.json
 e4ee8a3908637657413df9cecb92f115e6bff913 data/dcs_climate/tags/blocks/building_stones/bricks.json
 0da4d363ac374474ad909a6d433c4f4caf737cff data/dcs_climate/tags/blocks/building_stones/chiseled.json
@@ -18,6 +18,8 @@ f94d0af61e853e714398aa2fd20e319610b0b44f data/dcs_climate/tags/blocks/color_ores
 9a549dda1a9a999746920b9322af049c768b35e2 data/dcs_climate/tags/blocks/dirt_slab.json
 c69632bb11716639a23d1303292dc986d08b67f4 data/dcs_climate/tags/blocks/flowers_for_bee.json
 75c7dc675e3c7734d0421b53b3e2fb77912ac24c data/dcs_climate/tags/blocks/green_manures.json
+edc53fe07b6cc91a4dc3d15cc04f5b2f1b0442d7 data/dcs_climate/tags/blocks/hoppers.json
+54057d6a734f0270d772afc38d85be2443fe48b5 data/dcs_climate/tags/blocks/hoppers/filter_hopper.json
 94ff6238538ed033196035f110b10721b2cf337f data/dcs_climate/tags/blocks/leakage_machine.json
 4907e6cc62f45960f628e6078eedd050a85e4d75 data/dcs_climate/tags/blocks/logs_can_collect_sap.json
 995780b538ec0d5ba35266df7b1cc561e7a7d15c data/dcs_climate/tags/blocks/logs_can_collect_sap/lacquer.json
@@ -89,10 +91,10 @@ bad4af831c4554174ef66c7bf6187f640f76e08f data/minecraft/tags/blocks/crops.json
 7c5974a82ac8da1f9ae2de73ad95d374568da878 data/minecraft/tags/blocks/leaves.json
 8a807ae1842a64558c93aba23fc7b51ca278457c data/minecraft/tags/blocks/logs_that_burn.json
 8a270cf912b1c67c7ab367af80df47431e860187 data/minecraft/tags/blocks/mineable/axe.json
-348d5497480b5df89d6d61d14847971866f18697 data/minecraft/tags/blocks/mineable/pickaxe.json
+8bd3208a694f3ad5a9eebb0f72885c0da0442dd2 data/minecraft/tags/blocks/mineable/pickaxe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/needs_diamond_tool.json
 333b0e2ade270e3c2c54c0ec974c8027fbda16bd data/minecraft/tags/blocks/needs_iron_tool.json
-503ff3e55f99803a06d80def53803020a6b58060 data/minecraft/tags/blocks/needs_stone_tool.json
+240c0138318ce96660975ac2eb8ffe4899e96789 data/minecraft/tags/blocks/needs_stone_tool.json
 8a807ae1842a64558c93aba23fc7b51ca278457c data/minecraft/tags/blocks/overworld_natural_logs.json
 efb4ac82e6900bfb1cc6ec2fc4d567dc9bd2773d data/minecraft/tags/blocks/planks.json
 77fb866d31af5d8f52f649bcf7f936a17dc50ac3 data/minecraft/tags/blocks/walls.json

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:machine/hopper_gold"
+    },
+    "Y": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "pattern": [
+    "Y",
+    "X"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/hopper_filter_gold"
+  }
+}

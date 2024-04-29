@@ -23,6 +23,7 @@ import defeatedcrow.hac.machine.client.gui.EnergyBatteryScreen;
 import defeatedcrow.hac.machine.client.gui.EnergyGeneratorScreen;
 import defeatedcrow.hac.machine.client.gui.FermentationJarScreen;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberScreen;
+import defeatedcrow.hac.machine.client.gui.HopperFilterScreen;
 import defeatedcrow.hac.machine.client.gui.MillScreen;
 import defeatedcrow.hac.machine.client.gui.PortableTankScreen;
 import defeatedcrow.hac.machine.client.gui.TeaPotScreen;
@@ -83,6 +84,9 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(MachineInit.BATTERY_MENU.get(), EnergyBatteryScreen::new);
 		MenuScreens.register(MachineInit.GENERATOR_MENU.get(), EnergyGeneratorScreen::new);
 		MenuScreens.register(MachineInit.BOILER_BIOMASS_MENU.get(), BoilerBiomassScreen::new);
+		MenuScreens.register(MachineInit.HOPPER_FILTER_MENU.get(), HopperFilterScreen::new);
+		MenuScreens.register(MachineInit.HOPPER_GOLD_MENU.get(), HopperFilterScreen::new);
+		MenuScreens.register(MachineInit.HOPPER_FILTER_GOLD_MENU.get(), HopperFilterScreen::new);
 		MenuScreens.register(MagicInit.BORING_SURVEY_MENU.get(), BoringScreen::new);
 
 		EntityClientRegister.registerRenderTypes();

@@ -3,7 +3,7 @@ package defeatedcrow.hac.core.event;
 import java.util.EnumSet;
 
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.machine.material.block.EnergyTileBaseDC;
+import defeatedcrow.hac.machine.material.block.machine.EnergyTileBaseDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.LightningRodBlock;

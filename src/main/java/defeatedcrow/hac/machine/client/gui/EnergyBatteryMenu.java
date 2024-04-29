@@ -2,7 +2,7 @@ package defeatedcrow.hac.machine.client.gui;
 
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.machine.material.MachineInit;
-import defeatedcrow.hac.machine.material.block.EnergyMachineBaseDC;
+import defeatedcrow.hac.machine.material.block.machine.EnergyMachineBaseDC;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;

@@ -10,41 +10,52 @@ import defeatedcrow.hac.machine.client.gui.CookingPotMenu;
 import defeatedcrow.hac.machine.client.gui.EnergyBatteryMenu;
 import defeatedcrow.hac.machine.client.gui.FermentationJarMenu;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberMenu;
+import defeatedcrow.hac.machine.client.gui.HopperFilterMenu;
 import defeatedcrow.hac.machine.client.gui.MillMenu;
 import defeatedcrow.hac.machine.client.gui.PortableTankMenu;
 import defeatedcrow.hac.machine.client.gui.TeaPotMenu;
 import defeatedcrow.hac.machine.energy.EnergyTankItemDC;
-import defeatedcrow.hac.machine.material.block.BatterySmallBlock;
-import defeatedcrow.hac.machine.material.block.BoilerBiomassBlock;
-import defeatedcrow.hac.machine.material.block.BoilerBiomassTile;
-import defeatedcrow.hac.machine.material.block.BrickChamberBlock;
-import defeatedcrow.hac.machine.material.block.BrickChamberTile;
-import defeatedcrow.hac.machine.material.block.CableCopperBlock;
-import defeatedcrow.hac.machine.material.block.CableCopperTile;
-import defeatedcrow.hac.machine.material.block.CookingPotBlock;
-import defeatedcrow.hac.machine.material.block.CookingPotTile;
-import defeatedcrow.hac.machine.material.block.EnergyBatteryTile;
-import defeatedcrow.hac.machine.material.block.EnergyGeneratorTile;
-import defeatedcrow.hac.machine.material.block.EnergyMachineBaseDC;
-import defeatedcrow.hac.machine.material.block.FermentationJarBlock;
-import defeatedcrow.hac.machine.material.block.FermentationJarTile;
-import defeatedcrow.hac.machine.material.block.FluidPipeAlloyBlock;
-import defeatedcrow.hac.machine.material.block.FluidPipeAlloyTile;
-import defeatedcrow.hac.machine.material.block.GeneratorSmallBlock;
-import defeatedcrow.hac.machine.material.block.HeatingChamberBlock;
-import defeatedcrow.hac.machine.material.block.HeatingChamberTile;
-import defeatedcrow.hac.machine.material.block.IBCBlock;
-import defeatedcrow.hac.machine.material.block.IBCTile;
-import defeatedcrow.hac.machine.material.block.PortableCanBlock;
-import defeatedcrow.hac.machine.material.block.PortableCanTile;
-import defeatedcrow.hac.machine.material.block.PortableFluidTankTile;
-import defeatedcrow.hac.machine.material.block.SpileCupBlock;
-import defeatedcrow.hac.machine.material.block.StoneMillBlock;
-import defeatedcrow.hac.machine.material.block.StoneMillTile;
-import defeatedcrow.hac.machine.material.block.TeaPotBlock;
-import defeatedcrow.hac.machine.material.block.TeaPotTile;
-import defeatedcrow.hac.machine.material.block.WaterPumpBlock;
-import defeatedcrow.hac.machine.material.block.WaterPumpTile;
+import defeatedcrow.hac.machine.material.block.machine.BoilerBiomassBlock;
+import defeatedcrow.hac.machine.material.block.machine.BoilerBiomassTile;
+import defeatedcrow.hac.machine.material.block.machine.BrickChamberBlock;
+import defeatedcrow.hac.machine.material.block.machine.BrickChamberTile;
+import defeatedcrow.hac.machine.material.block.machine.CookingPotBlock;
+import defeatedcrow.hac.machine.material.block.machine.CookingPotTile;
+import defeatedcrow.hac.machine.material.block.machine.EnergyGeneratorTile;
+import defeatedcrow.hac.machine.material.block.machine.EnergyMachineBaseDC;
+import defeatedcrow.hac.machine.material.block.machine.FermentationJarBlock;
+import defeatedcrow.hac.machine.material.block.machine.FermentationJarTile;
+import defeatedcrow.hac.machine.material.block.machine.GeneratorSmallBlock;
+import defeatedcrow.hac.machine.material.block.machine.HeatingChamberBlock;
+import defeatedcrow.hac.machine.material.block.machine.HeatingChamberTile;
+import defeatedcrow.hac.machine.material.block.machine.SpileCupBlock;
+import defeatedcrow.hac.machine.material.block.machine.StoneMillBlock;
+import defeatedcrow.hac.machine.material.block.machine.StoneMillTile;
+import defeatedcrow.hac.machine.material.block.machine.TeaPotBlock;
+import defeatedcrow.hac.machine.material.block.machine.TeaPotTile;
+import defeatedcrow.hac.machine.material.block.machine.WaterPumpBlock;
+import defeatedcrow.hac.machine.material.block.machine.WaterPumpTile;
+import defeatedcrow.hac.machine.material.block.monitor.MonitorBlockItem;
+import defeatedcrow.hac.machine.material.block.monitor.MonitorRSBlock;
+import defeatedcrow.hac.machine.material.block.monitor.MonitorRSTile;
+import defeatedcrow.hac.machine.material.block.transport.BatterySmallBlock;
+import defeatedcrow.hac.machine.material.block.transport.CableCopperBlock;
+import defeatedcrow.hac.machine.material.block.transport.CableCopperTile;
+import defeatedcrow.hac.machine.material.block.transport.EnergyBatteryTile;
+import defeatedcrow.hac.machine.material.block.transport.FluidPipeAlloyBlock;
+import defeatedcrow.hac.machine.material.block.transport.FluidPipeAlloyTile;
+import defeatedcrow.hac.machine.material.block.transport.HopperBaseTile;
+import defeatedcrow.hac.machine.material.block.transport.HopperFilterBlock;
+import defeatedcrow.hac.machine.material.block.transport.HopperFilterGoldBlock;
+import defeatedcrow.hac.machine.material.block.transport.HopperFilterGoldTile;
+import defeatedcrow.hac.machine.material.block.transport.HopperFilterTile;
+import defeatedcrow.hac.machine.material.block.transport.HopperGoldBlock;
+import defeatedcrow.hac.machine.material.block.transport.HopperGoldTile;
+import defeatedcrow.hac.machine.material.block.transport.IBCBlock;
+import defeatedcrow.hac.machine.material.block.transport.IBCTile;
+import defeatedcrow.hac.machine.material.block.transport.PortableCanBlock;
+import defeatedcrow.hac.machine.material.block.transport.PortableCanTile;
+import defeatedcrow.hac.machine.material.block.transport.PortableFluidTankTile;
 import defeatedcrow.hac.machine.material.fluid.FluidBlockItemDC;
 import defeatedcrow.hac.machine.material.item.MachineMaterialItem;
 import net.minecraft.tags.TagKey;
@@ -63,6 +74,10 @@ public class MachineInit {
 	public static final RegistryObject<Block> CHAMBER_BRICK_A = regBlock("chamber_brick_a", () -> new BrickChamberBlock("chamber_brick_a"), null);
 	public static final RegistryObject<Block> CHAMBER_BRICK_B = regBlock("chamber_brick_b", () -> new BrickChamberBlock("chamber_brick_b"), null);
 	public static final RegistryObject<Block> CHAMBER_IRON = regBlock("chamber_iron", () -> new HeatingChamberBlock("chamber_iron"), null);
+
+	public static final RegistryObject<Block> HOPPER_FILTER = regBlock("hopper_filter", () -> new HopperFilterBlock("hopper_filter"), TagDC.ItemTag.HOPPER_FILTER);
+	public static final RegistryObject<Block> HOPPER_GOLD = regBlock("hopper_gold", () -> new HopperGoldBlock("hopper_gold"), null);
+	public static final RegistryObject<Block> HOPPER_FILTER_GOLD = regBlock("hopper_filter_gold", () -> new HopperFilterGoldBlock("hopper_filter_gold"), TagDC.ItemTag.HOPPER_FILTER);
 
 	public static final RegistryObject<Block> PORTABLE_CAN = regFluidBlock("portable_can", () -> new PortableCanBlock("portable_can"), 18000);
 	public static final RegistryObject<Block> PORTABLE_CAN_WHITE = regFluidBlock("portable_can_white", () -> new PortableCanBlock("portable_can_white"), 18000);
@@ -118,12 +133,25 @@ public class MachineInit {
 
 	public static final RegistryObject<Item> BATTERYITEM_TIER1 = regItem("batteryitem_small", () -> new MachineMaterialItem(Rarity.COMMON, "batteryitem_small", TagDC.ItemTag.BATTERY_T1));
 
+	public static final RegistryObject<Block> MONITOR_RS = regMonitorBlock("monitor_rs_lamp", () -> new MonitorRSBlock("monitor_rs_lamp"));
+
+	public static final RegistryObject<Block> MONITOR_RS_PILOT = regMonitorBlock("monitor_rs_pilot", () -> new MonitorRSBlock("monitor_rs_pilot"));
+
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<BrickChamberTile>> CHAMBER_BRICK_TILE = CoreInit.BLOCK_ENTITIES.register("chamber_brick_tile",
 		() -> BlockEntityType.Builder.of(BrickChamberTile::new, new Block[] { CHAMBER_BRICK_A.get(), CHAMBER_BRICK_B.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<HeatingChamberTile>> CHAMBER_IRON_TILE = CoreInit.BLOCK_ENTITIES.register("chamber_iron_tile",
 		() -> BlockEntityType.Builder.of(HeatingChamberTile::new, new Block[] { CHAMBER_IRON.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<HopperFilterTile>> HOPPER_FILTER_TILE = CoreInit.BLOCK_ENTITIES.register("hopper_filter_tile",
+		() -> BlockEntityType.Builder.of(HopperFilterTile::new, new Block[] { HOPPER_FILTER.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<HopperGoldTile>> HOPPER_GOLD_TILE = CoreInit.BLOCK_ENTITIES.register("hopper_gold_tile",
+		() -> BlockEntityType.Builder.of(HopperGoldTile::new, new Block[] { HOPPER_GOLD.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<HopperFilterGoldTile>> HOPPER_FILTER_GOLD_TILE = CoreInit.BLOCK_ENTITIES.register("hopper_filter_gold_tile",
+		() -> BlockEntityType.Builder.of(HopperFilterGoldTile::new, new Block[] { HOPPER_FILTER_GOLD.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<PortableCanTile>> PORTABLE_CAN_TILE = CoreInit.BLOCK_ENTITIES.register("portable_can_tile",
 		() -> BlockEntityType.Builder.of(PortableCanTile::new, new Block[] { PORTABLE_CAN.get(), PORTABLE_CAN_WHITE.get(), PORTABLE_CAN_BLUE.get(), PORTABLE_CAN_BLACK.get(), PORTABLE_CAN_RED.get(), PORTABLE_CAN_GREEN
@@ -163,6 +191,9 @@ public class MachineInit {
 
 	public static final RegistryObject<BlockEntityType<CableCopperTile>> CABLE_COPPER_TILE = CoreInit.BLOCK_ENTITIES.register("cable_copper_tile",
 		() -> BlockEntityType.Builder.of(CableCopperTile::new, new Block[] { CABLE_COPPER.get(), CABLE_COPPER_COATED.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<MonitorRSTile>> MONITOR_RS_TILE = CoreInit.BLOCK_ENTITIES.register("monitor_rs_tile",
+		() -> BlockEntityType.Builder.of(MonitorRSTile::new, new Block[] { MONITOR_RS.get(), MONITOR_RS_PILOT.get() }).build(null));
 
 	// Menu
 	public static final RegistryObject<MenuType<HeatingChamberMenu>> CHAMBER_MENU = CoreInit.register("dcs_chamber_item", (IContainerFactory<HeatingChamberMenu>) (id, playerInv, data) -> {
@@ -215,6 +246,21 @@ public class MachineInit {
 		return BoilerBiomassMenu.getMenu(id, playerInv, cont);
 	});
 
+	public static final RegistryObject<MenuType<HopperFilterMenu>> HOPPER_FILTER_MENU = CoreInit.register("dcs_filter_hopper", (IContainerFactory<HopperFilterMenu>) (id, playerInv, data) -> {
+		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return HopperFilterMenu.filterMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<HopperFilterMenu>> HOPPER_GOLD_MENU = CoreInit.register("dcs_gold_hopper", (IContainerFactory<HopperFilterMenu>) (id, playerInv, data) -> {
+		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return HopperFilterMenu.goldMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<HopperFilterMenu>> HOPPER_FILTER_GOLD_MENU = CoreInit.register("dcs_filter_gold_hopper", (IContainerFactory<HopperFilterMenu>) (id, playerInv, data) -> {
+		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return HopperFilterMenu.filterGoldMenu(id, playerInv, cont);
+	});
+
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("machine/" + name, block);
 		regItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE), tag));
@@ -230,6 +276,12 @@ public class MachineInit {
 	public static RegistryObject<Block> regEnergyBlock(String name, Supplier<Block> block, int cap) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("machine/" + name, block);
 		regItem(name, () -> new EnergyTankItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE), null).setCap(cap));
+		return obj;
+	}
+
+	public static RegistryObject<Block> regMonitorBlock(String name, Supplier<Block> block) {
+		RegistryObject<Block> obj = CoreInit.BLOCKS.register("machine/" + name, block);
+		regItem(name, () -> new MonitorBlockItem(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE), null));
 		return obj;
 	}
 

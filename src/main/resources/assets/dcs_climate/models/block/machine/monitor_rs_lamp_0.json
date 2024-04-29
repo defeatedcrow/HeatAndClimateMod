@@ -1,0 +1,35 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "base": "dcs_climate:block/build/build_concrete",
+        "lamp": "dcs_climate:block/machine/monitor_rs_off",
+        "particle": "dcs_climate:block/machine/monitor_rs_off"
+    },
+    "elements": [
+        {
+            "from": [4, 4, 0],
+            "to": [12, 12, 1],
+            "faces": {
+                "north": {"uv": [4, 4, 12, 12], "texture": "#base"},
+                "east": {"uv": [14, 4, 15, 12], "texture": "#base"},
+                "south": {"uv": [4, 4, 12, 12], "texture": "#base"},
+                "west": {"uv": [1, 4, 2, 12], "texture": "#base"},
+                "up": {"uv": [4, 1, 12, 2], "texture": "#base"},
+                "down": {"uv": [4, 14, 12, 15], "texture": "#base"}
+            }
+        },
+        {
+            "from": [5, 5, 1],
+            "to": [11, 11, 6],
+            "shade": false,
+            "faces": {
+                "north": {"uv": [5, 5, 11, 11], "texture": "#lamp"},
+                "east": {"uv": [11, 5, 16, 11], "texture": "#lamp"},
+                "south": {"uv": [5, 5, 11, 11], "texture": "#lamp"},
+                "west": {"uv": [0, 5, 5, 11], "texture": "#lamp"},
+                "up": {"uv": [5, 0, 11, 5], "texture": "#lamp"},
+                "down": {"uv": [5, 11, 11, 16], "texture": "#lamp"}
+            }
+        }
+    ]
+}

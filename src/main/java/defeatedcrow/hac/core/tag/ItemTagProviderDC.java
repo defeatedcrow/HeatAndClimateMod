@@ -531,6 +531,9 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		copy(Tags.Blocks.ORES, Tags.Items.ORES);
 
+		copy(TagDC.BlockTag.HOPPER_FILTER, TagDC.ItemTag.HOPPER_FILTER);
+		copy(TagDC.BlockTag.HOPPER, TagDC.ItemTag.HOPPER);
+
 		copy(TagDC.BlockTag.FLUID_PIPE, TagDC.ItemTag.FLUID_PIPE);
 		copy(TagDC.BlockTag.ENERGY_CABLE, TagDC.ItemTag.ENERGY_CABLE);
 

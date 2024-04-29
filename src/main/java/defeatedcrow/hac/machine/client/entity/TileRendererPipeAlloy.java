@@ -5,7 +5,7 @@ import com.mojang.math.Vector3f;
 
 import defeatedcrow.hac.api.machine.FaceIO;
 import defeatedcrow.hac.api.material.EntityRenderData;
-import defeatedcrow.hac.machine.material.block.FluidPipeAlloyTile;
+import defeatedcrow.hac.machine.material.block.transport.FluidPipeAlloyTile;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;

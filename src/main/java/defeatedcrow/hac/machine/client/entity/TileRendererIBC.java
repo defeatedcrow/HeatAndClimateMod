@@ -9,7 +9,7 @@ import com.mojang.math.Vector3f;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.machine.material.block.IBCTile;
+import defeatedcrow.hac.machine.material.block.transport.IBCTile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;

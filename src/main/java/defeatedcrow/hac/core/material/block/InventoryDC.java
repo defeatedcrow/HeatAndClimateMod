@@ -180,8 +180,8 @@ public class InventoryDC implements Container {
 			return -1;
 		ItemStack ret = item.copy();
 		int count = 0;
-		for (int i : slots) {
-			int l = canIncrSlot(i, item);
+		for (int i = 0; i < slots.length; i++) {
+			int l = canIncrSlot(slots[i], item);
 			ret.split(l);
 			count += l;
 			if (ret.isEmpty())
@@ -210,8 +210,8 @@ public class InventoryDC implements Container {
 			return 0;
 		ItemStack ret = item.copy();
 		int count = 0;
-		for (int i : slots) {
-			int l = incrStackInSlot(i, ret.copy());
+		for (int i = 0; i < slots.length; i++) {
+			int l = incrStackInSlot(slots[i], ret.copy());
 			ret.split(l);
 			count += l;
 			if (ret.isEmpty())

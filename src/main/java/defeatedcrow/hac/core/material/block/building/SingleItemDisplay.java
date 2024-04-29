@@ -33,7 +33,7 @@ public abstract class SingleItemDisplay extends BlockEntity implements WorldlyCo
 		super(tile, pos, state);
 	}
 
-	int count = 20;
+	int count = 9;
 	private ItemStack display = ItemStack.EMPTY;
 
 	@Override
@@ -56,7 +56,7 @@ public abstract class SingleItemDisplay extends BlockEntity implements WorldlyCo
 			count--;
 			return false;
 		} else {
-			count = 10;
+			count = 9;
 
 			if (!DCItemUtil.isSameItem(display, inventory.getItem(0), false, true)) {
 				display = inventory.getItem(0).copy();

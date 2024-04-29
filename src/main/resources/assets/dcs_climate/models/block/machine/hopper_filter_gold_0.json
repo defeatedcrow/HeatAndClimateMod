@@ -1,0 +1,10 @@
+{
+	"parent": "dcs_climate:block/machine/hopper_filter_0",
+	"textures": {
+		"top": "dcs_climate:block/machine/hopper_gold_top",
+		"particle": "dcs_climate:block/machine/hopper_gold_outside",
+		"side": "dcs_climate:block/machine/hopper_gold_outside",
+		"inside": "dcs_climate:block/machine/hopper_gold_inside",
+		"filter": "dcs_climate:block/machine/ironplate_gold_mesh"
+	}
+}

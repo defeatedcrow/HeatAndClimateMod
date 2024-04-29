@@ -12,7 +12,7 @@ import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.food.material.entity.potfoods.IPotFoods;
 import defeatedcrow.hac.food.material.entity.potfoods.RiceBowlItem;
 import defeatedcrow.hac.machine.material.MachineInit;
-import defeatedcrow.hac.machine.material.block.CookingPotTile;
+import defeatedcrow.hac.machine.material.block.machine.CookingPotTile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;

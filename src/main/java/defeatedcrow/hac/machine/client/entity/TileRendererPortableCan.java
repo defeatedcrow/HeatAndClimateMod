@@ -5,7 +5,7 @@ import com.mojang.math.Vector3f;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.machine.material.block.PortableCanTile;
+import defeatedcrow.hac.machine.material.block.transport.PortableCanTile;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
