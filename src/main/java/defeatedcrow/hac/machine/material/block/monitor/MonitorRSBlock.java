@@ -64,6 +64,14 @@ public class MonitorRSBlock extends EntityBlockDC implements ITileNBTHolder {
 	}
 
 	@Override
+	public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
+		if (DCState.getBool(state, DCState.POWERED) || state.getBlock() == MachineInit.MONITOR_RS_PILOT.get()) {
+			return 8;
+		}
+		return 0;
+	}
+
+	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext cont) {
 		Direction dir = DCState.getFace(state, DCState.DIRECTION);
 		switch (dir) {

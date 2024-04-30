@@ -129,6 +129,11 @@ public class BuildInit {
 	public static final RegistryObject<Block> FENCE_METAL = regBlock("fence_metal", () -> new FenceMetal("metal"), ItemTags.FENCES);
 	public static final RegistryObject<Block> LADDER_METAL = regBlock("metal_ladder", () -> new MetalLadder("metal_ladder"), null);
 	public static final RegistryObject<Block> ROOF_METAL_GRAY = regBlock("stairs_roof_gray", () -> new StairsMetalRoof("roof_gray", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
+	public static final RegistryObject<Block> ROOF_METAL_YELLOW = regBlock("stairs_roof_yellow", () -> new StairsMetalRoof("roof_yellow", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
+	public static final RegistryObject<Block> ROOF_METAL_BLUE = regBlock("stairs_roof_blue", () -> new StairsMetalRoof("roof_blue", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
+	public static final RegistryObject<Block> ROOF_METAL_BLACK = regBlock("stairs_roof_black", () -> new StairsMetalRoof("roof_black", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
+	public static final RegistryObject<Block> ROOF_METAL_RED = regBlock("stairs_roof_red", () -> new StairsMetalRoof("roof_red", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
+	public static final RegistryObject<Block> ROOF_METAL_GREEN = regBlock("stairs_roof_green", () -> new StairsMetalRoof("roof_green", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
 
 	public static final RegistryObject<Block> FLINTBRICKS = regBlock("flintbricks", () -> new LayerStoneBlock("flintbricks").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
 	public static final RegistryObject<Block> FLINTBRICKS_WHITE = regBlock("flintbricks_white", () -> new LayerStoneBlock("flintbricks_white").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
@@ -144,10 +149,29 @@ public class BuildInit {
 	public static final RegistryObject<Block> ADOBE_BLOCK = regBlock("adobe_block", () -> new AdobeBlock("adobe_block").setDomain("build").setTexDir("build"), null);
 	public static final RegistryObject<Block> ADOBE_BRICKS = regBlock("adobe_bricks", () -> new LayerStoneBlock("adobe_bricks").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_BRICKS);
 
+	public static final RegistryObject<Block> MORTAR = regBlock("mortar", () -> new LayerStoneBlock("mortar").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+
 	public static final RegistryObject<Block> SLAB_DIRT = regBlock("dirt_slab", () -> new GroundSlab("dirt_slab"), TagDC.ItemTag.DIRT_SLABS);
 	public static final RegistryObject<Block> SLAB_GRASS = regBlock("grass_slab", () -> new GrassSlab("grass_slab"), TagDC.ItemTag.DIRT_SLABS);
 	public static final RegistryObject<Block> SLAB_PATH = regBlock("path_slab", () -> new GroundSlab("path_slab"), TagDC.ItemTag.DIRT_SLABS);
 	public static final RegistryObject<Block> SLAB_GRAVEL = regBlock("gravel_slab", () -> new GroundSlab("gravel_slab"), TagDC.ItemTag.DIRT_SLABS);
+
+	public static final RegistryObject<Block> LINOLEUM_BLACK = regBlock("linoleum_black", () -> new LayerStoneBlock("linoleum_black").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_RED = regBlock("linoleum_red", () -> new LayerStoneBlock("linoleum_red").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_GREEN = regBlock("linoleum_green", () -> new LayerStoneBlock("linoleum_green").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_BROWN = regBlock("linoleum_brown", () -> new LayerStoneBlock("linoleum_brown").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_BLUE = regBlock("linoleum_blue", () -> new LayerStoneBlock("linoleum_blue").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_PURPLE = regBlock("linoleum_purple", () -> new LayerStoneBlock("linoleum_purple").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_CYAN = regBlock("linoleum_cyan", () -> new LayerStoneBlock("linoleum_cyan").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_LIGHT_GRAY = regBlock("linoleum_light_gray", () -> new LayerStoneBlock("linoleum_light_gray").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_GRAY = regBlock("linoleum_gray", () -> new LayerStoneBlock("linoleum_gray").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_PINK = regBlock("linoleum_pink", () -> new LayerStoneBlock("linoleum_pink").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_LIME = regBlock("linoleum_lime", () -> new LayerStoneBlock("linoleum_lime").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_YELLOW = regBlock("linoleum_yellow", () -> new LayerStoneBlock("linoleum_yellow").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_LIGHT_BLUE = regBlock("linoleum_light_blue", () -> new LayerStoneBlock("linoleum_light_blue").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_MAGENTA = regBlock("linoleum_magenta", () -> new LayerStoneBlock("linoleum_magenta").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_ORANGE = regBlock("linoleum_orange", () -> new LayerStoneBlock("linoleum_orange").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> LINOLEUM_WHITE = regBlock("linoleum_white", () -> new LayerStoneBlock("linoleum_white").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
 
 	public static final RegistryObject<Block> STAIRS_BEECH = regBlock("stairs_beech_common", () -> new StairsWoodDC("beech_common", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_BH_COMMON),
 		ItemTags.WOODEN_STAIRS);

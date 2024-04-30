@@ -75,9 +75,9 @@ public class MachineInit {
 	public static final RegistryObject<Block> CHAMBER_BRICK_B = regBlock("chamber_brick_b", () -> new BrickChamberBlock("chamber_brick_b"), null);
 	public static final RegistryObject<Block> CHAMBER_IRON = regBlock("chamber_iron", () -> new HeatingChamberBlock("chamber_iron"), null);
 
-	public static final RegistryObject<Block> HOPPER_FILTER = regBlock("hopper_filter", () -> new HopperFilterBlock("hopper_filter"), TagDC.ItemTag.HOPPER_FILTER);
+	public static final RegistryObject<Block> HOPPER_FILTER = regBlock("hopper_filter", () -> new HopperFilterBlock("hopper_filter"), null);
 	public static final RegistryObject<Block> HOPPER_GOLD = regBlock("hopper_gold", () -> new HopperGoldBlock("hopper_gold"), null);
-	public static final RegistryObject<Block> HOPPER_FILTER_GOLD = regBlock("hopper_filter_gold", () -> new HopperFilterGoldBlock("hopper_filter_gold"), TagDC.ItemTag.HOPPER_FILTER);
+	public static final RegistryObject<Block> HOPPER_FILTER_GOLD = regBlock("hopper_filter_gold", () -> new HopperFilterGoldBlock("hopper_filter_gold"), null);
 
 	public static final RegistryObject<Block> PORTABLE_CAN = regFluidBlock("portable_can", () -> new PortableCanBlock("portable_can"), 18000);
 	public static final RegistryObject<Block> PORTABLE_CAN_WHITE = regFluidBlock("portable_can_white", () -> new PortableCanBlock("portable_can_white"), 18000);
@@ -127,15 +127,15 @@ public class MachineInit {
 
 	public static final RegistryObject<Block> CABLE_COPPER_COATED = regBlock("cable_copper_coated", () -> new CableCopperBlock("cable_copper_coated"), null);
 
+	public static final RegistryObject<Block> MONITOR_RS = regMonitorBlock("monitor_rs_lamp", () -> new MonitorRSBlock("monitor_rs_lamp"));
+
+	public static final RegistryObject<Block> MONITOR_RS_PILOT = regMonitorBlock("monitor_rs_pilot", () -> new MonitorRSBlock("monitor_rs_pilot"));
+
 	public static final RegistryObject<Item> MOTOR_TIER1 = regItem("motor_small", () -> new MachineMaterialItem(Rarity.COMMON, "motor_small", TagDC.ItemTag.MOTOR_T1));
 
 	public static final RegistryObject<Item> IMPELLER_TIER1 = regItem("impeller_small", () -> new MachineMaterialItem(Rarity.COMMON, "impeller_small", TagDC.ItemTag.IMPELLER_T1));
 
 	public static final RegistryObject<Item> BATTERYITEM_TIER1 = regItem("batteryitem_small", () -> new MachineMaterialItem(Rarity.COMMON, "batteryitem_small", TagDC.ItemTag.BATTERY_T1));
-
-	public static final RegistryObject<Block> MONITOR_RS = regMonitorBlock("monitor_rs_lamp", () -> new MonitorRSBlock("monitor_rs_lamp"));
-
-	public static final RegistryObject<Block> MONITOR_RS_PILOT = regMonitorBlock("monitor_rs_pilot", () -> new MonitorRSBlock("monitor_rs_pilot"));
 
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<BrickChamberTile>> CHAMBER_BRICK_TILE = CoreInit.BLOCK_ENTITIES.register("chamber_brick_tile",

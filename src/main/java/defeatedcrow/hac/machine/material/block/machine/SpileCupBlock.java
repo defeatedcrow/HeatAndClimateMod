@@ -32,6 +32,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -182,6 +184,16 @@ public class SpileCupBlock extends BlockDC {
 			}
 		}
 		return ret;
+	}
+
+	@Override
+	public BlockState rotate(BlockState state, Rotation rot) {
+		return state.setValue(DCState.FACING, rot.rotate(state.getValue(DCState.FACING)));
+	}
+
+	@Override
+	public BlockState mirror(BlockState state, Mirror mir) {
+		return state.rotate(mir.getRotation(state.getValue(DCState.FACING)));
 	}
 
 	@Override

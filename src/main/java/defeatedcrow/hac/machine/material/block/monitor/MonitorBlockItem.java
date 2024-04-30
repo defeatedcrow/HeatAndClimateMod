@@ -15,6 +15,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -52,10 +53,14 @@ public class MonitorBlockItem extends BlockItemDC {
 			tag.putInt(TagKeyDC.POS_Z, p.getZ());
 			stack.setTag(tag);
 
-			MutableComponent mes = Component.literal(" X:" + p.getX());
-			mes.append(Component.literal(" Y:" + p.getY()));
-			mes.append(Component.literal(" Z:" + p.getZ()));
-			player.displayClientMessage(mes, true);
+			if (player instanceof ServerPlayer sp) {
+				MutableComponent mes = Component.translatable("dcs.tip.coodinate");
+				MutableComponent mes2 = Component.literal(" X:" + p.getX());
+				mes2.append(Component.literal(" Y:" + p.getY()));
+				mes2.append(Component.literal(" Z:" + p.getZ()));
+				sp.sendSystemMessage(mes);
+				sp.sendSystemMessage(mes2);
+			}
 		}
 		return InteractionResultHolder.success(stack);
 	}

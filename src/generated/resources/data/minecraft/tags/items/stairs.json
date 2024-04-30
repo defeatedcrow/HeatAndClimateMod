@@ -10,6 +10,11 @@
     "dcs_climate:build/stairs_schist_blue",
     "dcs_climate:build/stairs_schist_nether",
     "dcs_climate:build/stairs_granite",
-    "dcs_climate:build/stairs_roof_gray"
+    "dcs_climate:build/stairs_roof_gray",
+    "dcs_climate:build/stairs_roof_yellow",
+    "dcs_climate:build/stairs_roof_blue",
+    "dcs_climate:build/stairs_roof_black",
+    "dcs_climate:build/stairs_roof_red",
+    "dcs_climate:build/stairs_roof_green"
   ]
 }

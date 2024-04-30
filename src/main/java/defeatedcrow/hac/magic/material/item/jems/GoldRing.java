@@ -94,9 +94,9 @@ public class GoldRing extends MagicJewelBase {
 				MutableComponent mes = Component.literal("Find ");
 				mes.append(n);
 				mes.append(" Y=" + y);
-				owner.displayClientMessage(mes, true);
+				owner.sendSystemMessage(mes);
 			} else {
-				owner.displayClientMessage(Component.literal("No ore found..."), true);
+				owner.sendSystemMessage(Component.literal("No ore found..."));
 			}
 		}
 		return false;

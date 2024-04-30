@@ -67,12 +67,6 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
 		BlockEntity tile = level.getBlockEntity(pos);
 		if (tile instanceof ProcessTileBaseDC chest) {
-			// if (ClimateCore.isDebug && player.isCrouching()) {
-			// UUID id = chest.getOwner();
-			// String name = chest.getOwnerName();
-			// DCLogger.debugInfoLog("### Registerd Owner: " + id.toString() + " ###");
-			// DCLogger.debugInfoLog("### Registerd OwnerName: " + name + " ###");
-			// }
 			if (level.isClientSide) {
 				return InteractionResult.SUCCESS;
 			} else {

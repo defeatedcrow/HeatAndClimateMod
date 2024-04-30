@@ -1,6 +1,6 @@
-// 1.19.2	2024-04-27T01:06:10.964165	Tags for minecraft:item
+// 1.19.2	2024-04-30T23:55:51.302299	Tags for minecraft:item
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
-144365fa6b17b4fa9910d0ab669c911f7a7619b6 data/dcs_climate/tags/items/building_stones.json
+766814a645325ff12a745441ecbe320a062ff8a1 data/dcs_climate/tags/items/building_stones.json
 f4f040e5c59073f0ad286cbc58be4a8313d31c25 data/dcs_climate/tags/items/building_stones/bricks.json
 b84f492dcd8df246708cd5b8022015efba4ee401 data/dcs_climate/tags/items/building_stones/chiseled.json
 54f98685e983a08d29848c1afcaccf77db4523ef data/dcs_climate/tags/items/building_stones/pillar.json
@@ -83,7 +83,7 @@ bfa015168a13af280008c0441234c8dbb341958b data/dcs_climate/tags/items/gems/black.
 cd6d18dc51b62418c5466f9fba750545c3b74e79 data/dcs_climate/tags/items/gems/red.json
 fa6626c4d374bc0da9891eb041c6a80385f76161 data/dcs_climate/tags/items/gems/white.json
 edc53fe07b6cc91a4dc3d15cc04f5b2f1b0442d7 data/dcs_climate/tags/items/hoppers.json
-e732b125ba986a25ea6fa15aec48f3d42c148280 data/dcs_climate/tags/items/hoppers/filter_hopper.json
+54057d6a734f0270d772afc38d85be2443fe48b5 data/dcs_climate/tags/items/hoppers/filter_hopper.json
 441c1a784e15ad6e9e166852abf0125021519374 data/dcs_climate/tags/items/impellers.json
 74242775277a2e826a2e0827788832d0795c6049 data/dcs_climate/tags/items/impellers/small.json
 94ff6238538ed033196035f110b10721b2cf337f data/dcs_climate/tags/items/leakage_machine.json
@@ -677,7 +677,7 @@ f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/items/weed.json
 8e606e6dbfeff3d72c99752517d102482f9df815 data/minecraft/tags/items/planks.json
 6f2d5b9c5efdff88ccf6da5dff92d0a0d8a62ef4 data/minecraft/tags/items/saplings.json
 3506ccac40969956e7be5a5ba073b6b2e0a6ec1b data/minecraft/tags/items/slabs.json
-65b2129efaa713b350e76763d269ffeaa93f3df3 data/minecraft/tags/items/stairs.json
+1d501713ba03830b885fa20b12550cbaa374338e data/minecraft/tags/items/stairs.json
 77fb866d31af5d8f52f649bcf7f936a17dc50ac3 data/minecraft/tags/items/walls.json
 df73efc98158574a6bc92435946a721d87263e90 data/minecraft/tags/items/wooden_fences.json
 adc094f32baa137eb46e4b44f0639c2b7685af10 data/minecraft/tags/items/wooden_slabs.json

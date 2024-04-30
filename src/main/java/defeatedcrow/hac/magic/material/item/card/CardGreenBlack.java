@@ -6,6 +6,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -60,7 +62,10 @@ public class CardGreenBlack extends MagicCardBase {
 			}
 			// DCLogger.debugInfoLog("test 2-1: y " + mpos.getY());
 			if (isDangerBlock) {
-				player.displayClientMessage(Component.translatable("dcs.tip.magic_card.danger_alart").withStyle(ChatFormatting.RED), true);
+				if (player instanceof ServerPlayer sp) {
+					MutableComponent mes = Component.translatable("dcs.tip.magic_card.danger_alart").withStyle(ChatFormatting.RED);
+					sp.sendSystemMessage(mes);
+				}
 				return false;
 			} else {
 				Vec3 vec3 = Vec3.atBottomCenterOf(mpos.above());
@@ -86,7 +91,10 @@ public class CardGreenBlack extends MagicCardBase {
 			}
 			// DCLogger.debugInfoLog("test 2-2: y " + mpos.getY());
 			if (isDangerBlock) {
-				player.displayClientMessage(Component.translatable("dcs.tip.magic_card.danger_alart").withStyle(ChatFormatting.RED), true);
+				if (player instanceof ServerPlayer sp) {
+					MutableComponent mes = Component.translatable("dcs.tip.magic_card.danger_alart").withStyle(ChatFormatting.RED);
+					sp.sendSystemMessage(mes);
+				}
 				return false;
 			} else {
 				Vec3 vec3 = Vec3.atBottomCenterOf(mpos);

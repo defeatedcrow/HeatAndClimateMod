@@ -29,6 +29,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -226,6 +227,11 @@ public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 		boolean clamp = level.getBlockState(pos.relative(dir)).isFaceSturdy(level, pos.relative(dir), dir.getOpposite());
 
 		return super.getStateForPlacement(cont).setValue(DCState.FACING, face).setValue(DCState.FLAG, clamp).setValue(DCState.TOP, top).setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+	}
+
+	@Override
+	public BlockState rotate(BlockState state, Rotation rot) {
+		return state.setValue(DCState.FACING, rot.rotate(state.getValue(DCState.FACING)));
 	}
 
 	@Override

@@ -426,6 +426,10 @@
   Electrical equipment is suspended by a redstone signal.
   Some blocks also have a main power switch on the GUI.
 
+  電気機器ブロックは設置したプレイヤーをOwnerとして登録します。GUIロックすると、OwnerとサーバーOPのみが開けられるよう制限されます。
+  The machine block registers the player who installed it as the owner.
+  When the GUI is locked, only the Owner and server OP can open it.
+
  ● 発電 / Power Generation
 
  - 発電機 / Generator
@@ -532,13 +536,61 @@
 
 ****************************************************************************************************
 
+◎ アイテムの扱い / Item Handling and Inventory
+
+ ● 特殊チェスト / Special Chest
+
+  Owner登録機能や、ドロップ時の内容保持機能があるインベントリブロックです。
+  Special chests register their owners or retain their contents when dropped.
+
+  追加チェストは設置したプレイヤーをOwnerとして登録します。GUIロックすると、OwnerとサーバーOPのみが開けられるよう制限されます。
+  The special chest registers the player who installed it as the owner.
+  When the GUI is locked, only the Owner and server OP can open it.
+
+  サーバーOPのみ、プレイヤー名をつけたネームタグを使用することで、ブロックのOwnerを強制的に上書きできます。
+  The server OP can forcefully override a block's owner by using a name tag with the player's name.
+
+   - キャリーバッグ / Luggage... Owner Register ○ : Inventory Retention ○
+   - ロッカー / Locker ... Owner Register ○ : Inventory Retention ○
+   - キャビネット / Cabinet ... Owner Register ○ : IInventory Retention ×
+
+ ● 特殊ホッパー / Special Hopper
+
+  こちらもOwner登録機能や、ドロップ時の内容保持機能があるインベントリブロックです。
+  Special hoppers also register their owners or retain their contents when dropped.
+
+  スクリュードライバーを使うと、ブロックの向きを変更できます。
+  The screwdriver can change the direction of the block.
+
+   ・ フィルター付き / Filter Hopper
+
+    『フィルタースロット』に入れたアイテムは水平方向に、それ以外を上下方向に輸送する二叉ホッパーです。
+    The filter hopper is a two-pronged hopper that transports items placed in the filter slot horizontally and other items vertically.
+
+    フィルタースロットには常に1個のアイテムが残ります。
+    One item always remains in the filter slot.
+
+    スタック出来ないアイテムを『フィルタースロット』に入れると、それはブロックされます。
+    If you put a non-stackable item into a "filter slot", it will be blocked.
+
+   ・ 金のホッパー / Golden Hopper
+
+    輸送速度が速いホッパーです。 1個/tick の速度でアイテムを輸送します。
+    A hopper with fast transportation speed. Transports items at a rate of 1 item/tick.
+
+****************************************************************************************************
+
 #### 更新履歴 / Change log ####
 
 ○v4-beta4
  add: 特殊ホッパー
  add: RSインジケーター
  add: RSパイロットランプ
+ add: リノリウムブロック (16色)
+ add: モルタルブロック
+ add: アルミの屋根のカラーバリエーション
  change: BlockEntityのインターバルを調整
+ change: ネームタグを使ってサーバーOPがOwnableTileのOwnerを強制変更する機能を追加
  fix: DataPackのロード時のクラッシュ
 
 ○v4-beta3 (2024.4.15)

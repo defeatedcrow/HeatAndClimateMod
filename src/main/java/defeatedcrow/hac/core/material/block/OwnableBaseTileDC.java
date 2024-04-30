@@ -58,12 +58,10 @@ public abstract class OwnableBaseTileDC extends BlockEntity implements MenuProvi
 	public void setOwner(UUID id) {
 		this.owner = id;
 		this.setChanged();
-		// DCLogger.debugInfoLog("### Register Owner: " + owner.toString() + " ###");
 	}
 
 	public void setOwnerName(String name) {
 		ownerName = name;
-		// DCLogger.debugInfoLog("### Register OwnerName " + ownerName + " ###");
 	}
 
 	public void setDate() {

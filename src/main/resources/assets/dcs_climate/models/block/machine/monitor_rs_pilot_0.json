@@ -1,7 +1,7 @@
 {
     "parent": "block/block",
     "textures": {
-        "base": "dcs_climate:block/build/build_concrete",
+        "base": "dcs_climate:block/build/mortar",
         "lamp": "dcs_climate:block/machine/monitor_rs_off",
         "lamp2": "dcs_climate:block/machine/monitor_rs_blue_on",
         "particle": "dcs_climate:block/machine/monitor_rs_blue_on"

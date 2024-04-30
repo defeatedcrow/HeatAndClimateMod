@@ -26,6 +26,7 @@ import defeatedcrow.hac.food.event.FishingEventDC;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.PlayerAdvancements;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -144,6 +145,12 @@ public class CommonProxyDC {
 		if (player == null)
 			return false;
 		return player.getLevel().getServer().getPlayerList().isOp(player.getGameProfile());
+	}
+
+	public Player getPlayer(ServerLevel level, String name) {
+		if (name == null)
+			return null;
+		return level.getServer().getPlayerList().getPlayerByName(name);
 	}
 
 }

@@ -1,10 +1,6 @@
 package defeatedcrow.hac.core.material.block;
 
-import java.util.UUID;
-
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.material.block.building.SimpleChestDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -54,17 +50,11 @@ public abstract class ContainerTileBlock extends EntityBlockDC {
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
 		BlockEntity tile = level.getBlockEntity(pos);
 		if (tile instanceof SimpleChestDC chest) {
-			if (ClimateCore.isDebug && player.isCrouching()) {
-				UUID id = chest.getOwner();
-				String name = chest.getOwnerName();
-				DCLogger.debugInfoLog("### Registerd Owner: " + id.toString() + " ###");
-				DCLogger.debugInfoLog("### Registerd OwnerName: " + name + " ###");
-			}
 			if (level.isClientSide) {
 				return InteractionResult.SUCCESS;
 			} else {
-				if (chest.canOpen(player) && player instanceof ServerPlayer) {
-					NetworkHooks.openScreen((ServerPlayer) player, chest, pos);
+				if (chest.canOpen(player) && player instanceof ServerPlayer sp) {
+					NetworkHooks.openScreen(sp, chest, pos);
 					player.awardStat(Stats.OPEN_CHEST);
 				}
 				return InteractionResult.CONSUME;

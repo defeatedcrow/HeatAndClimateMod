@@ -377,6 +377,51 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
 			.save(cons, "dcs_climate:build/metal_roof_gray_2");
 
+		ShapedRecipeBuilder.shaped(BuildInit.ROOF_METAL_YELLOW.get(), 8)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.define('Y', Tags.Items.DYES_YELLOW)
+			.unlockedBy("has_metal_roof", has(BuildInit.ROOF_METAL_GRAY.get()))
+			.save(cons, "dcs_climate:build/metal_roof_yellow_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.ROOF_METAL_BLUE.get(), 8)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.define('Y', Tags.Items.DYES_BLUE)
+			.unlockedBy("has_metal_roof", has(BuildInit.ROOF_METAL_GRAY.get()))
+			.save(cons, "dcs_climate:build/metal_roof_blue_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.ROOF_METAL_BLACK.get(), 8)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.define('Y', Tags.Items.DYES_BLACK)
+			.unlockedBy("has_metal_roof", has(BuildInit.ROOF_METAL_GRAY.get()))
+			.save(cons, "dcs_climate:build/metal_roof_black_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.ROOF_METAL_RED.get(), 8)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.define('Y', Tags.Items.DYES_RED)
+			.unlockedBy("has_metal_roof", has(BuildInit.ROOF_METAL_GRAY.get()))
+			.save(cons, "dcs_climate:build/metal_roof_red_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.ROOF_METAL_GREEN.get(), 8)
+			.pattern("XXX")
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.define('Y', Tags.Items.DYES_GREEN)
+			.unlockedBy("has_metal_roof", has(BuildInit.ROOF_METAL_GRAY.get()))
+			.save(cons, "dcs_climate:build/metal_roof_green_1");
+
 		ShapedRecipeBuilder.shaped(BuildInit.LADDER_METAL.get(), 7)
 			.pattern("X X")
 			.pattern("XXX")
@@ -515,6 +560,172 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.define('X', CoreInit.ADOBE_BRICK_ITEM.get())
 			.unlockedBy("has_adobe_brick_item", has(CoreInit.ADOBE_BRICK_ITEM.get()))
 			.save(cons, "dcs_climate:core/adobe_bricks_block");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.MORTAR.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(Tags.Items.SAND)
+			.requires(TagDC.ItemTag.WATER)
+			.unlockedBy("has_dust_lime", has(TagDC.ItemTag.DUST_LIME))
+			.save(cons, "dcs_climate:build/mortar_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.MORTAR.get(), 4)
+			.requires(TagDC.ItemTag.ORES_GYPSUM)
+			.requires(TagDC.ItemTag.ORES_GYPSUM)
+			.requires(Tags.Items.SAND)
+			.requires(TagDC.ItemTag.WATER)
+			.unlockedBy("has_ore_gypsum", has(TagDC.ItemTag.ORES_GYPSUM))
+			.save(cons, "dcs_climate:build/mortar_2");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_BLACK.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_BLACK)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_black_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_RED.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_RED)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_red_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_GREEN.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_GREEN)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_green_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_BROWN.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_BROWN)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_brown_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_BLUE.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_BLUE)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_blue_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_PURPLE.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_PURPLE)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_purple_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_CYAN.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_CYAN)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_cyan_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_LIGHT_GRAY.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_LIGHT_GRAY)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_light_gray_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_PINK.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_PINK)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_pink_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_LIME.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_LIME)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_lime_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_YELLOW.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_YELLOW)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_yellow_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_LIGHT_BLUE.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_LIGHT_BLUE)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_light_blue_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_MAGENTA.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_MAGENTA)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_magenta_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_ORANGE.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_ORANGE)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_orange_1");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_WHITE.get(), 4)
+			.requires(TagDC.ItemTag.DUST_LIME)
+			.requires(TagDC.ItemTag.PLANT_OIL)
+			.requires(TagDC.ItemTag.SAP_RESIN)
+			.requires(TagDC.ItemTag.CLOTHS)
+			.requires(ItemTags.PLANKS)
+			.requires(Tags.Items.DYES_WHITE)
+			.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+			.save(cons, "dcs_climate:build/linoleum_white_1");
 
 		ShapedRecipeBuilder.shaped(BuildInit.GLASS_LIGHT.get(), 8)
 			.pattern("XXX")

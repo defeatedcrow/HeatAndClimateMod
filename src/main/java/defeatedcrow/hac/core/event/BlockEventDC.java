@@ -1,18 +1,25 @@
 package defeatedcrow.hac.core.event;
 
 import defeatedcrow.hac.api.material.ITierItem;
+import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.material.block.OwnableBaseTileDC;
 import defeatedcrow.hac.core.material.block.building.SlabWoodDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Mirror;
@@ -109,27 +116,44 @@ public class BlockEventDC {
 
 	@SubscribeEvent
 	public static void onClickBlock(PlayerInteractEvent.RightClickBlock event) {
-		if (event.getEntity() != null && event.getHitVec() != null) {
+		if (event.getEntity() != null && event.getEntity().isCrouching() && event.getHitVec() != null) {
+			BlockPos pos = event.getPos();
 			if (event.getItemStack().is(TagDC.ItemTag.CRAFT_DRIVER)) {
-				BlockPos pos = event.getPos().relative(event.getHitVec().getDirection().getOpposite());
+				DCLogger.debugInfoLog("pos " + pos.toShortString());
 				BlockState state = event.getLevel().getBlockState(pos);
-				if (event.getEntity().isCrouching() && isMirrorTarget(state)) {
+				if (isMirrorTarget(state)) {
 					BlockState next = state.mirror(Mirror.FRONT_BACK);
 					event.getLevel().setBlock(pos, next, 3);
 					event.getEntity().swing(event.getHand(), true);
 					event.setUseItem(Result.ALLOW);
-				} else if (!event.getEntity().isCrouching() && isRotateTarget(state)) {
+					event.setCanceled(true);
+				} else if (isRotateTarget(state)) {
 					BlockState next = state.rotate(Rotation.CLOCKWISE_90);
 					event.getLevel().setBlock(pos, next, 3);
 					event.getEntity().swing(event.getHand(), true);
 					event.setUseItem(Result.ALLOW);
+					event.setCanceled(true);
 				}
+			} else if (event.getItemStack().is(Items.NAME_TAG) && event.getLevel().getBlockEntity(pos) instanceof OwnableBaseTileDC ownable) {
+				if (event.getEntity() instanceof ServerPlayer sp) {
+					if (sp.getMainHandItem().is(Items.NAME_TAG) && ClimateCore.proxy.isOP(sp)) {
+						Component name = sp.getMainHandItem().getHoverName();
+						Player target = ClimateCore.proxy.getPlayer(sp.getLevel(), name.getString());
+						if (target != null) {
+							ownable.setOwner(target.getUUID());
+							ownable.setOwnerName(target.getScoreboardName());
+							sp.sendSystemMessage(Component.translatable("dcs.tip.container.ownable_register", name.getString()));
+						}
+					}
+				}
+				event.setUseItem(Result.ALLOW);
+				event.setCanceled(true);
 			}
 		}
 	}
 
 	private static boolean isRotateTarget(BlockState state) {
-		return state.is(TagDC.BlockTag.HOPPER);
+		return state.is(BlockTags.STAIRS) || state.hasProperty(DCState.FACING);
 	}
 
 	private static boolean isMirrorTarget(BlockState state) {
