@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.climate.IHumidityTile;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import mcp.mobius.waila.api.IBlockAccessor;
 import mcp.mobius.waila.api.IBlockComponentProvider;
@@ -89,8 +90,12 @@ public class HUDHandlerClimateData implements IBlockComponentProvider {
 
 	public static void register(IRegistrar registrar) {
 
-		registrar.addFeatureConfig(CLIMATE, true);
-		registrar.addFeatureConfig(CLIMATE_SMELTING, true);
+		try {
+			registrar.addFeatureConfig(CLIMATE, true);
+			registrar.addFeatureConfig(CLIMATE_SMELTING, true);
+		} catch (Exception e) {
+			DCLogger.warnLog("Since the old Waila API is not supported, it will not be added to the config.");
+		}
 
 		registrar.addComponent(INSTANCE, TAIL, Block.class);
 

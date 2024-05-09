@@ -43,7 +43,9 @@ public class HUDWaterHeadData implements IBlockComponentProvider {
 
 	public static void register(IRegistrar registrar) {
 
-		registrar.addFeatureConfig(FLUID_HEAD, true);
+		try {
+			registrar.addFeatureConfig(FLUID_HEAD, true);
+		} catch (Exception e) {}
 
 		registrar.addComponent(INSTANCE, TAIL, FluidPipeBlock.class);
 

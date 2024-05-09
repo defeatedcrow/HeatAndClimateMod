@@ -79,7 +79,7 @@ public class DummyFuelSerealizer implements RecipeSerializer<DummyFuel> {
 				}
 			}
 		}
-		return null;
+		return new DummyFuel(res, group, burn, fluid, ing);
 	}
 
 	@Override

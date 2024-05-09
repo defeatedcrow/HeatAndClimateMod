@@ -582,7 +582,12 @@
 
 #### 更新履歴 / Change log ####
 
-○v4-beta4
+○v4-beta5 (2024.5.10)
+ fix: 黒白のカードのアイテム名
+ fix: FuelRecipe登録時のnullエラーを修正
+ fix: WTHITの対応バージョンを5.19.3に落とした
+
+○v4-beta4 (2024.5.1)
  add: 特殊ホッパー
  add: RSインジケーター
  add: RSパイロットランプ
