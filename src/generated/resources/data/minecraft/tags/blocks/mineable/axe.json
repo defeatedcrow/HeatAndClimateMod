@@ -91,6 +91,26 @@
     "dcs_climate:build/fence_reed_sorghum",
     "dcs_climate:build/stairs_lacquerware",
     "dcs_climate:build/slab_lacquerware",
-    "dcs_climate:build/fence_lacquerware"
+    "dcs_climate:build/fence_lacquerware",
+    "dcs_climate:build/carpet_linen",
+    "dcs_climate:build/carpet_white",
+    "dcs_climate:build/carpet_blue",
+    "dcs_climate:build/carpet_black",
+    "dcs_climate:build/carpet_red",
+    "dcs_climate:build/carpet_green",
+    "dcs_climate:build/table_wood",
+    "dcs_climate:build/table_linen",
+    "dcs_climate:build/table_white",
+    "dcs_climate:build/table_blue",
+    "dcs_climate:build/table_black",
+    "dcs_climate:build/table_red",
+    "dcs_climate:build/table_green",
+    "dcs_climate:build/chair_wood",
+    "dcs_climate:build/chair_linen",
+    "dcs_climate:build/chair_white",
+    "dcs_climate:build/chair_blue",
+    "dcs_climate:build/chair_black",
+    "dcs_climate:build/chair_red",
+    "dcs_climate:build/chair_green"
   ]
 }

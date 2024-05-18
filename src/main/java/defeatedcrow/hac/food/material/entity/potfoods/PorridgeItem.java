@@ -1,22 +1,36 @@
 package defeatedcrow.hac.food.material.entity.potfoods;
 
+import java.util.List;
 import java.util.function.Supplier;
+
+import javax.annotation.Nullable;
+
+import com.google.common.collect.ImmutableList;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.item.ItemEntityFood;
+import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.level.Level;
 
 public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 
+	private final boolean isCold;
+
 	public PorridgeItem(String s, int nut, float sat, boolean cold, TagKey<Item> pair) {
 		super(s, prop(nut, sat, cold), pair);
+		isCold = cold;
 	}
 
 	private static Properties prop(int nut, float sat, boolean isCold) {
@@ -37,6 +51,18 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 	@Override
 	public EntityType<?> getType() {
 		return FoodInit.STEW.get();
+	}
+
+	@Override
+	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		if (!DCUtil.isEmpty(item)) {
+			ItemStack stack = item.copy();
+			int taste = getTaste(stack);
+			MobEffectInstance effect = isCold ? cold().get() : hot().get();
+			PotionUtils.setCustomEffects(stack, ImmutableList.of(effect));
+			PotionUtils.addPotionTooltip(stack, list, 1.0F);
+		}
+		super.appendHoverText(item, level, list, flag);
 	}
 
 	@Override
@@ -83,6 +109,12 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 			return STEW_MISO_MUSHROOM;
 		if (item == FoodInit.STEW_MISO_PORK.get())
 			return STEW_MISO_PORK;
+		if (item == FoodInit.STEW_ERWTEN.get())
+			return STEW_ERWTEN;
+		if (item == FoodInit.STEW_LAMPREDOTTO.get())
+			return STEW_LAMPREDOTTO;
+		if (item == FoodInit.STEW_MOTU.get())
+			return STEW_OFFAL;
 		return PORRIDGE;
 	}
 
@@ -130,6 +162,12 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 			return STEW_MISO_MUSHROOM_LAYER;
 		if (item == FoodInit.STEW_MISO_PORK.get())
 			return STEW_MISO_PORK_LAYER;
+		if (item == FoodInit.STEW_ERWTEN.get())
+			return STEW_ERWTEN_LAYER;
+		if (item == FoodInit.STEW_LAMPREDOTTO.get())
+			return STEW_LAMPREDOTTO_LAYER;
+		if (item == FoodInit.STEW_MOTU.get())
+			return STEW_OFFAL_LAYER;
 		return PORRIDGE_LAYER;
 	}
 
@@ -154,6 +192,9 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 	public static final EntityRenderData STEW_MISO_EGGPLANT = new EntityRenderData("food/stew_miso_eggplant", 0.75F, 0F);
 	public static final EntityRenderData STEW_MISO_MUSHROOM = new EntityRenderData("food/stew_miso_mushroom", 0.75F, 0F);
 	public static final EntityRenderData STEW_MISO_PORK = new EntityRenderData("food/stew_miso_pork", 0.75F, 0F);
+	public static final EntityRenderData STEW_ERWTEN = new EntityRenderData("food/stew_erwten", 0.75F, 0F);
+	public static final EntityRenderData STEW_LAMPREDOTTO = new EntityRenderData("food/stew_lampredotto", 0.75F, 0F);
+	public static final EntityRenderData STEW_OFFAL = new EntityRenderData("food/stew_offal", 0.75F, 0F, "outer");
 
 	public static final EntityRenderData PORRIDGE_LAYER = new EntityRenderData("food/layer/porridge_simple_layer", 1F, 0F);
 	public static final EntityRenderData PORRIDGE_MILK_LAYER = new EntityRenderData("food/layer/porridge_milk_layer", 1F, 0F);
@@ -172,9 +213,12 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 	public static final EntityRenderData STEW_TOMYUMPLA_LAYER = new EntityRenderData("food/stew_tomyumpla_layer", 0.75F, 0F);
 	public static final EntityRenderData STEW_TOMYUMGAI_LAYER = new EntityRenderData("food/stew_tomyumgai_layer", 0.75F, 0F);
 	public static final EntityRenderData STEW_BAKKUTTEH_LAYER = new EntityRenderData("food/stew_bakkutteh_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_MISO_TOFU_LAYER = new EntityRenderData("food/stew_miso_tofu_layer", 0.75F, 0F, "outer");
+	public static final EntityRenderData STEW_MISO_TOFU_LAYER = new EntityRenderData("food/stew_miso_tofu_layer", 0.75F, 0F);
 	public static final EntityRenderData STEW_MISO_EGGPLANT_LAYER = new EntityRenderData("food/stew_miso_eggplant_layer", 0.75F, 0F);
 	public static final EntityRenderData STEW_MISO_MUSHROOM_LAYER = new EntityRenderData("food/stew_miso_mushroom_layer", 0.75F, 0F);
 	public static final EntityRenderData STEW_MISO_PORK_LAYER = new EntityRenderData("food/stew_miso_pork_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_ERWTEN_LAYER = new EntityRenderData("food/stew_erwten_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_LAMPREDOTTO_LAYER = new EntityRenderData("food/stew_lampredotto_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_OFFAL_LAYER = new EntityRenderData("food/stew_offal_layer", 0.75F, 0F, "outer");
 
 }

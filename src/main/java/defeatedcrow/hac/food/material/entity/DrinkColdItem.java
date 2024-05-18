@@ -12,7 +12,9 @@ import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.item.ItemEntityFood;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -60,12 +62,21 @@ public class DrinkColdItem extends ItemEntityFood {
 	public ItemStack finishUsingItem(ItemStack item, Level level, LivingEntity liv) {
 		int taste = getTaste(item);
 		if (taste > -2 && !level.isClientSide) {
-			MobEffectInstance effect = potion(potionId, taste).get();
-			if (liv.hasEffect(effect.getEffect())) {
-				int d = liv.getEffect(effect.getEffect()).getDuration() + effect.getDuration();
-				effect = new MobEffectInstance(effect.getEffect(), d, effect.getAmplifier());
+			if (item.is(FoodInit.DRINK_VEGETABLE.get()) || item.is(FoodInit.DRINK_LASSI_PLANE.get())) {
+				DCUtil.removeBadPotion(liv);
+			} else if (item.is(FoodInit.DRINK_LASSI_MANGO.get()) || item.is(FoodInit.DRINK_LASSI_CITRUS.get())) {
+				DCUtil.removeBadPotion(liv);
+				if (taste > 0) {
+					liv.heal(1.0F * taste);
+				}
+			} else {
+				MobEffectInstance effect = potion(potionId, taste).get();
+				if (liv.hasEffect(effect.getEffect())) {
+					int d = liv.getEffect(effect.getEffect()).getDuration() + effect.getDuration();
+					effect = new MobEffectInstance(effect.getEffect(), d, effect.getAmplifier());
+				}
+				liv.addEffect(effect);
 			}
-			liv.addEffect(effect);
 		}
 		return super.finishUsingItem(item, level, liv);
 	}
@@ -75,9 +86,24 @@ public class DrinkColdItem extends ItemEntityFood {
 		if (!DCUtil.isEmpty(item)) {
 			ItemStack stack = item.copy();
 			int taste = getTaste(stack);
-			MobEffectInstance effect = potion(potionId, taste).get();
-			PotionUtils.setCustomEffects(stack, ImmutableList.of(effect));
-			PotionUtils.addPotionTooltip(stack, list, 1.0F);
+			if (item.is(FoodInit.DRINK_VEGETABLE.get()) || item.is(FoodInit.DRINK_LASSI_PLANE.get())) {
+				MutableComponent st = Component.translatable("dcs.tip.remove_bad_potion");
+				st.withStyle(ChatFormatting.GRAY);
+				list.add(st);
+			} else if (item.is(FoodInit.DRINK_LASSI_MANGO.get()) || item.is(FoodInit.DRINK_LASSI_CITRUS.get())) {
+				MutableComponent st = Component.translatable("dcs.tip.remove_bad_potion");
+				st.withStyle(ChatFormatting.GRAY);
+				list.add(st);
+				if (taste > 0) {
+					MutableComponent st2 = Component.translatable("dcs.tip.healing");
+					st2.withStyle(ChatFormatting.GRAY);
+					list.add(st2);
+				}
+			} else {
+				MobEffectInstance effect = potion(potionId, taste).get();
+				PotionUtils.setCustomEffects(stack, ImmutableList.of(effect));
+				PotionUtils.addPotionTooltip(stack, list, 1.0F);
+			}
 		}
 		super.appendHoverText(item, level, list, flag);
 	}
@@ -138,6 +164,12 @@ public class DrinkColdItem extends ItemEntityFood {
 			return DRINK_TEA_BARLEY;
 		if (item == FoodInit.DRINK_TEA_SODA.get())
 			return DRINK_TEA_SODA;
+		if (item == FoodInit.DRINK_LASSI_PLANE.get())
+			return DRINK_LASSI_PLANE;
+		if (item == FoodInit.DRINK_LASSI_MANGO.get())
+			return DRINK_LASSI_MANGO;
+		if (item == FoodInit.DRINK_LASSI_CITRUS.get())
+			return DRINK_LASSI_CITRUS;
 		return DRINK_TONIC;
 	}
 
@@ -168,5 +200,8 @@ public class DrinkColdItem extends ItemEntityFood {
 	public static final EntityRenderData DRINK_TONIC = new EntityRenderData("food/drink_soda_blue", 0.5F, 0.05F);
 	public static final EntityRenderData DRINK_TEA_BARLEY = new EntityRenderData("food/drink_tea_barley", 0.5F, 0.05F);
 	public static final EntityRenderData DRINK_TEA_SODA = new EntityRenderData("food/drink_soda_tea", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_LASSI_PLANE = new EntityRenderData("food/drink_lassi_plane", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_LASSI_MANGO = new EntityRenderData("food/drink_lassi_mango", 0.5F, 0.05F);
+	public static final EntityRenderData DRINK_LASSI_CITRUS = new EntityRenderData("food/drink_lassi_citrus", 0.5F, 0.05F);
 
 }

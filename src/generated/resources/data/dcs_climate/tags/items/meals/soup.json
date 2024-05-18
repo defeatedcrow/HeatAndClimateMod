@@ -22,13 +22,18 @@
     "dcs_climate:food/stew_cream_shrimp",
     "dcs_climate:food/stew_cullenskink",
     "dcs_climate:food/stew_kharcho",
+    "dcs_climate:food/stew_erwten",
+    "dcs_climate:food/stew_lampredotto",
     "dcs_climate:food/stew_tomyumgoong",
     "dcs_climate:food/stew_tomyumpla",
     "dcs_climate:food/stew_tomyumgai",
     "dcs_climate:food/stew_bakkutteh",
+    "dcs_climate:food/stew_offal",
     "dcs_climate:food/stew_miso_tofu",
     "dcs_climate:food/stew_miso_eggplant",
     "dcs_climate:food/stew_miso_mushroom",
-    "dcs_climate:food/stew_miso_pork"
+    "dcs_climate:food/stew_miso_pork",
+    "dcs_climate:food/large_bowl_acqua_pazza",
+    "dcs_climate:food/large_bowl_fish"
   ]
 }

@@ -1,6 +1,7 @@
 {
   "values": [
     "#forge:foods/cooked_cod",
-    "#forge:foods/cooked_salmon"
+    "#forge:foods/cooked_salmon",
+    "dcs_climate:food/stick_fish_cooked"
   ]
 }

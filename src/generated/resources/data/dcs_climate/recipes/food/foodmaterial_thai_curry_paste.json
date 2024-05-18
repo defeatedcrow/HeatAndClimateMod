@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/food_shrimp_paste"
+    },
+    {
+      "tag": "forge:crops/coriander"
+    },
+    {
+      "tag": "forge:crops/ginger"
+    },
+    {
+      "tag": "forge:crops/chili"
+    },
+    {
+      "tag": "forge:crops/onions"
+    },
+    {
+      "tag": "forge:crops/citrus"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/food_thai_curry_paste"
+  }
+}

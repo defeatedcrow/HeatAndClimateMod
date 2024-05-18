@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:build/stairs_roof_gray",
+    "dcs_climate:build/stairs_roof_yellow",
+    "dcs_climate:build/stairs_roof_blue",
+    "dcs_climate:build/stairs_roof_black",
+    "dcs_climate:build/stairs_roof_red",
+    "dcs_climate:build/stairs_roof_green"
+  ]
+}

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
@@ -46,7 +45,8 @@ public class FishingEventDC {
 				boolean isMangrove = biome.is(Biomes.MANGROVE_SWAMP);
 				boolean isBeach = biome.is(BiomeTags.IS_BEACH) || biome.is(Biomes.STONY_SHORE);
 				boolean isOcean = biome.is(BiomeTags.IS_OCEAN);
-				boolean isRiver = !isMangrove && !isBeach && !isOcean;
+				boolean isDeepOcean = biome.is(BiomeTags.IS_DEEP_OCEAN);
+				boolean isRiver = !isMangrove && !isBeach && !isOcean && !isDeepOcean;
 
 				int time = DCTimeHelper.currentTime(level);
 				boolean day = time > 7 && time < 17;
@@ -61,7 +61,7 @@ public class FishingEventDC {
 					// マズメは確率アップ
 					rand -= 10;
 				}
-				DCLogger.debugInfoLog("Event rand" + rand);
+				// DCLogger.debugInfoLog("Event rand" + rand);
 
 				List<ItemStack> cL = Lists.newArrayList();
 				List<ItemStack> uL = Lists.newArrayList();
@@ -82,6 +82,8 @@ public class FishingEventDC {
 					if (isBeach && fish.is(TagDC.ItemTag.FISH_BEACH))
 						flag = true;
 					if (isOcean && fish.is(TagDC.ItemTag.FISH_OCEAN))
+						flag = true;
+					if (isDeepOcean && fish.is(TagDC.ItemTag.FISH_DEEP_OCEAN))
 						flag = true;
 					if (isRiver && fish.is(TagDC.ItemTag.FISH_RIVER))
 						flag = true;
@@ -122,7 +124,7 @@ public class FishingEventDC {
 					} else {
 						fish = replace.get(0).copy();
 					}
-					DCLogger.debugInfoLog("Event result " + fish.getDisplayName().getString());
+					// DCLogger.debugInfoLog("Event result " + fish.getDisplayName().getString());
 					if (!level.isClientSide) {
 						ItemEntity drop = new ItemEntity(level, event.getHookEntity().getX(), event.getHookEntity().getY(), event.getHookEntity().getZ(), fish);
 						double d0 = event.getEntity().getX() - event.getHookEntity().getX();

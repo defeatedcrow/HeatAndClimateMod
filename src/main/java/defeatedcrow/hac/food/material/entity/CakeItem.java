@@ -29,14 +29,15 @@ public class CakeItem extends ItemEntityFood {
 		return FoodInit.CAKE.get();
 	}
 
-	// 悪性ポーション効果の解除
+	// 回復
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
 		int taste = getTaste(stack) + 1;
 		if (stack.getItem() != FoodInit.CAKE_BUTTER.get()) {
 			taste *= 2;
 		}
-		living.heal(1.0F * taste);
+		if (taste > 0)
+			living.heal(1.0F * taste);
 		return super.finishUsingItem(stack, level, living);
 	}
 

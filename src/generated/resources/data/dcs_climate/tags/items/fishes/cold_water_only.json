@@ -3,6 +3,7 @@
     "dcs_climate:food/fish_smelt",
     "dcs_climate:food/fish_flounder",
     "minecraft:cod",
-    "minecraft:salmon"
+    "minecraft:salmon",
+    "dcs_climate:food/fish_trout"
   ]
 }

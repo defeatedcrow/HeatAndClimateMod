@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "drink_craft",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/yogult"
+    },
+    {
+      "tag": "forge:ingredients/water"
+    },
+    {
+      "tag": "forge:crops/citrus"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/drink_lassi_citrus"
+  }
+}

@@ -1,5 +1,6 @@
 {
   "values": [
-    "minecraft:cooked_beef"
+    "minecraft:cooked_beef",
+    "dcs_climate:food/stick_beef_cooked"
   ]
 }

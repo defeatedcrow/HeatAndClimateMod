@@ -97,7 +97,7 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 		case COMMON:
 			return FoodInit.BLOCK_BR_GREEN.get();
 		case RARE:
-			return FoodInit.BLOCK_BR_CABAGGE.get();
+			return FoodInit.BLOCK_BR_CABBAGE.get();
 		case EPIC:
 			return FoodInit.BLOCK_BR_RADISH.get();
 		default:
@@ -111,7 +111,7 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 		case COMMON:
 			return FoodInit.CROP_BR_GREEN.get();
 		case RARE:
-			return FoodInit.CROP_BR_CABAGGE.get();
+			return FoodInit.CROP_BR_CABBAGE.get();
 		case EPIC:
 			return FoodInit.CROP_BR_RADISH.get();
 		default:
@@ -127,7 +127,7 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 		case COMMON:
 			return Optional.of(FoodInit.BLOCK_BR_GREEN.get());
 		case RARE:
-			return Optional.of(FoodInit.BLOCK_BR_CABAGGE.get());
+			return Optional.of(FoodInit.BLOCK_BR_CABBAGE.get());
 		case EPIC:
 			return Optional.of(FoodInit.BLOCK_BR_RADISH.get());
 		default:

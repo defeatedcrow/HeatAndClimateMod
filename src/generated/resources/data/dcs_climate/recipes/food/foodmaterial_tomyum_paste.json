@@ -15,6 +15,9 @@
     },
     {
       "tag": "forge:crops/onions"
+    },
+    {
+      "tag": "forge:crops/citrus"
     }
   ],
   "result": {

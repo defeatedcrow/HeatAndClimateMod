@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/drink_lassi_plane"
+  },
+  "parent": "minecraft:item/generated"
+}

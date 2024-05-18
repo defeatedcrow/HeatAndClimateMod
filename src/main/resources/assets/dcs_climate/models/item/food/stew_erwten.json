@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/stew_erwten"
+  },
+  "parent": "minecraft:item/generated"
+}

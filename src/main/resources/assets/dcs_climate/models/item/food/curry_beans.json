@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/curry_beans"
+  },
+  "parent": "minecraft:item/generated"
+}

@@ -1,5 +1,6 @@
 {
   "values": [
-    "minecraft:salmon"
+    "minecraft:salmon",
+    "dcs_climate:food/fish_trout"
   ]
 }

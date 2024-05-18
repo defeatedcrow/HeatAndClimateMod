@@ -3,7 +3,7 @@
   "cookingtime": 200,
   "experience": 0.0,
   "ingredient": {
-    "item": "dcs_climate:build/stairs_roof_gray"
+    "tag": "dcs_climate:metal_roofs"
   },
   "result": "dcs_climate:main/ingot_aluminum"
 }

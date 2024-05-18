@@ -1,0 +1,12 @@
+{
+  "values": [
+    "dcs_climate:food/fish_mackerel",
+    "dcs_climate:food/fish_rockfish",
+    "dcs_climate:food/fish_seabream",
+    "dcs_climate:food/fish_trout",
+    "dcs_climate:food/fish_flathead",
+    "dcs_climate:food/fish_gurnard",
+    "dcs_climate:food/fish_crab",
+    "dcs_climate:food/fish_squid"
+  ]
+}

@@ -8,7 +8,9 @@ import defeatedcrow.hac.core.material.block.building.AdobeBlock;
 import defeatedcrow.hac.core.material.block.building.AdobeWetBlock;
 import defeatedcrow.hac.core.material.block.building.CabinetBlock;
 import defeatedcrow.hac.core.material.block.building.CabinetTile;
+import defeatedcrow.hac.core.material.block.building.CarpetPlanks;
 import defeatedcrow.hac.core.material.block.building.ChainBlockDC;
+import defeatedcrow.hac.core.material.block.building.ChairBlock;
 import defeatedcrow.hac.core.material.block.building.ChandelierLamp;
 import defeatedcrow.hac.core.material.block.building.ChandelierTile;
 import defeatedcrow.hac.core.material.block.building.ConnectedGlassBlock;
@@ -128,12 +130,12 @@ public class BuildInit {
 	public static final RegistryObject<Block> SLAB_METAL = regBlock("metal_slab", () -> new MetalSlab("metal_stlab"), null);
 	public static final RegistryObject<Block> FENCE_METAL = regBlock("fence_metal", () -> new FenceMetal("metal"), ItemTags.FENCES);
 	public static final RegistryObject<Block> LADDER_METAL = regBlock("metal_ladder", () -> new MetalLadder("metal_ladder"), null);
-	public static final RegistryObject<Block> ROOF_METAL_GRAY = regBlock("stairs_roof_gray", () -> new StairsMetalRoof("roof_gray", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
-	public static final RegistryObject<Block> ROOF_METAL_YELLOW = regBlock("stairs_roof_yellow", () -> new StairsMetalRoof("roof_yellow", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
-	public static final RegistryObject<Block> ROOF_METAL_BLUE = regBlock("stairs_roof_blue", () -> new StairsMetalRoof("roof_blue", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
-	public static final RegistryObject<Block> ROOF_METAL_BLACK = regBlock("stairs_roof_black", () -> new StairsMetalRoof("roof_black", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
-	public static final RegistryObject<Block> ROOF_METAL_RED = regBlock("stairs_roof_red", () -> new StairsMetalRoof("roof_red", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
-	public static final RegistryObject<Block> ROOF_METAL_GREEN = regBlock("stairs_roof_green", () -> new StairsMetalRoof("roof_green", CoreInit.METALBLOCK_ALUMINUM), ItemTags.STAIRS);
+	public static final RegistryObject<Block> ROOF_METAL_GRAY = regBlock("stairs_roof_gray", () -> new StairsMetalRoof("roof_gray", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
+	public static final RegistryObject<Block> ROOF_METAL_YELLOW = regBlock("stairs_roof_yellow", () -> new StairsMetalRoof("roof_yellow", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
+	public static final RegistryObject<Block> ROOF_METAL_BLUE = regBlock("stairs_roof_blue", () -> new StairsMetalRoof("roof_blue", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
+	public static final RegistryObject<Block> ROOF_METAL_BLACK = regBlock("stairs_roof_black", () -> new StairsMetalRoof("roof_black", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
+	public static final RegistryObject<Block> ROOF_METAL_RED = regBlock("stairs_roof_red", () -> new StairsMetalRoof("roof_red", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
+	public static final RegistryObject<Block> ROOF_METAL_GREEN = regBlock("stairs_roof_green", () -> new StairsMetalRoof("roof_green", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
 
 	public static final RegistryObject<Block> FLINTBRICKS = regBlock("flintbricks", () -> new LayerStoneBlock("flintbricks").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
 	public static final RegistryObject<Block> FLINTBRICKS_WHITE = regBlock("flintbricks_white", () -> new LayerStoneBlock("flintbricks_white").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
@@ -262,6 +264,29 @@ public class BuildInit {
 	public static final RegistryObject<Block> CHAIN_GOLD = regBlock("chain_gold", () -> new ChainBlockDC("gold"), null);
 
 	public static final RegistryObject<Block> TOOL_HOOK = regBlock("toolhook", () -> new ToolHookBlock("toolhook"), null);
+
+	public static final RegistryObject<Block> CARPET_LINEN = regBlock("carpet_linen", () -> new CarpetPlanks("carpet_linen"), null);
+	public static final RegistryObject<Block> CARPET_WHITE = regBlock("carpet_white", () -> new CarpetPlanks("carpet_white"), null);
+	public static final RegistryObject<Block> CARPET_BLUE = regBlock("carpet_blue", () -> new CarpetPlanks("carpet_blue"), null);
+	public static final RegistryObject<Block> CARPET_BLACK = regBlock("carpet_black", () -> new CarpetPlanks("carpet_black"), null);
+	public static final RegistryObject<Block> CARPET_RED = regBlock("carpet_red", () -> new CarpetPlanks("carpet_red"), null);
+	public static final RegistryObject<Block> CARPET_GREEN = regBlock("carpet_green", () -> new CarpetPlanks("carpet_green"), null);
+
+	public static final RegistryObject<Block> TABLE_WOOD = regBlock("table_wood", () -> new CarpetPlanks("table_wood"), null);
+	public static final RegistryObject<Block> TABLE_LINEN = regBlock("table_linen", () -> new CarpetPlanks("table_linen"), null);
+	public static final RegistryObject<Block> TABLE_WHITE = regBlock("table_white", () -> new CarpetPlanks("table_white"), null);
+	public static final RegistryObject<Block> TABLE_BLUE = regBlock("table_blue", () -> new CarpetPlanks("table_blue"), null);
+	public static final RegistryObject<Block> TABLE_BLACK = regBlock("table_black", () -> new CarpetPlanks("table_black"), null);
+	public static final RegistryObject<Block> TABLE_RED = regBlock("table_red", () -> new CarpetPlanks("table_red"), null);
+	public static final RegistryObject<Block> TABLE_GREEN = regBlock("table_green", () -> new CarpetPlanks("table_green"), null);
+
+	public static final RegistryObject<Block> CHAIR_WOOD = regBlock("chair_wood", () -> new ChairBlock("chair_wood"), null);
+	public static final RegistryObject<Block> CHAIR_LINEN = regBlock("chair_linen", () -> new ChairBlock("chair_linen"), null);
+	public static final RegistryObject<Block> CHAIR_WHITE = regBlock("chair_white", () -> new ChairBlock("chair_white"), null);
+	public static final RegistryObject<Block> CHAIR_BLUE = regBlock("chair_blue", () -> new ChairBlock("chair_blue"), null);
+	public static final RegistryObject<Block> CHAIR_BLACK = regBlock("chair_black", () -> new ChairBlock("chair_black"), null);
+	public static final RegistryObject<Block> CHAIR_RED = regBlock("chair_red", () -> new ChairBlock("chair_red"), null);
+	public static final RegistryObject<Block> CHAIR_GREEN = regBlock("chair_green", () -> new ChairBlock("chair_green"), null);
 
 	public static final RegistryObject<Block> LUGGAGE_NORMAL = regBlock("luggage_normal", () -> new LuggageBlock("luggage_normal"), null);
 	public static final RegistryObject<Block> LUGGAGE_WHITE = regBlock("luggage_white", () -> new LuggageBlock("luggage_white"), null);

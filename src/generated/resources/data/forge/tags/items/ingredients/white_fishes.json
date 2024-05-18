@@ -1,13 +1,12 @@
 {
   "values": [
     "#forge:ingredients/raw_cod",
-    "#forge:ingredients/raw_salmon",
     "#forge:ingredients/rockfish",
-    "#forge:ingredients/carp",
+    "#forge:ingredients/flathead",
+    "#forge:ingredients/gurnard",
     "#forge:ingredients/grouper",
     "#forge:ingredients/seabream",
     "#forge:ingredients/flounder",
-    "#forge:ingredients/mullet",
-    "#forge:ingredients/smelt"
+    "#forge:ingredients/mullet"
   ]
 }

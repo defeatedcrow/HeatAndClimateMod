@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dyes/green"
+    },
+    {
+      "item": "dcs_climate:build/chair_white"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/chair_green"
+  }
+}

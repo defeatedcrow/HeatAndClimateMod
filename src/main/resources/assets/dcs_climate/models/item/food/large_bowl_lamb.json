@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/large_bowl_lamb"
+  },
+  "parent": "minecraft:item/generated"
+}

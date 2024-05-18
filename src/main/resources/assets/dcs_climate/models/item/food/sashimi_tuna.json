@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/sashimi_tuna"
+  },
+  "parent": "minecraft:item/generated"
+}

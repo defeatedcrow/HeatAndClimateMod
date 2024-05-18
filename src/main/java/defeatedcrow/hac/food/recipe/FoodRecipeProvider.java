@@ -444,7 +444,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.save(cons, "dcs_climate:food/casserole_gratin_shrimp_raw_0");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_DORIA_RAW_ITEM.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.CROP_RICE))
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_RICES))
 			.requires(Ingredient.of(TagDC.ItemTag.CROP_SAFFRON))
 			.requires(Ingredient.of(TagDC.ItemTag.CHEESE))
 			.requires(Ingredient.of(FoodInit.FOOD_BOLOGNESE_SAUCE.get()))
@@ -453,7 +453,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.save(cons, "dcs_climate:food/casserole_doria_raw_1");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_DORIA_RAW_ITEM.get(), 1)
-			.requires(Ingredient.of(TagDC.ItemTag.CROP_RICE))
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_RICES))
 			.requires(Ingredient.of(TagDC.ItemTag.CROP_TURMERIC))
 			.requires(Ingredient.of(TagDC.ItemTag.CHEESE))
 			.requires(Ingredient.of(FoodInit.FOOD_BOLOGNESE_SAUCE.get()))
@@ -518,6 +518,68 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_oat", has(TagDC.ItemTag.CROP_OAT))
 			.save(cons, "dcs_climate:food/muesli_oat");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.RICE_NAPA.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_NAPA))
+			.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
+			.unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
+			.save(cons, "dcs_climate:food/nameshi_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.RICE_FISH.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
+			.requires(Ingredient.of(TagDC.ItemTag.COOKED_FISH))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER))
+			.unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
+			.save(cons, "dcs_climate:food/tuna_and_ginger_rice_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CHAZUKE_UME.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
+			.requires(Ingredient.of(FoodInit.TEA_GREEN.get()))
+			.requires(Ingredient.of(FoodInit.FOOD_UMEBOSHI.get()))
+			.requires(Ingredient.of(Items.DRIED_KELP))
+			.unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
+			.save(cons, "dcs_climate:food/ume_chazuke_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CHAZUKE_UME.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
+			.requires(Ingredient.of(FoodInit.TEA_GREEN.get()))
+			.requires(Ingredient.of(FoodInit.FOOD_UMEBOSHI.get()))
+			.requires(Ingredient.of(FoodInit.FOOD_TSUKEMONO.get()))
+			.unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
+			.save(cons, "dcs_climate:food/ume_chazuke_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CHAZUKE_SAKE.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
+			.requires(Ingredient.of(FoodInit.TEA_GREEN.get()))
+			.requires(Ingredient.of(TagDC.ItemTag.COOKED_SALMON))
+			.requires(Ingredient.of(Items.DRIED_KELP))
+			.unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
+			.save(cons, "dcs_climate:food/sake_chazuke_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CHAZUKE_SAKE.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
+			.requires(Ingredient.of(FoodInit.TEA_GREEN.get()))
+			.requires(Ingredient.of(TagDC.ItemTag.COOKED_SALMON))
+			.requires(Ingredient.of(FoodInit.FOOD_TSUKEMONO.get()))
+			.unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
+			.save(cons, "dcs_climate:food/sake_chazuke_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CHAZUKE_TARAKO.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
+			.requires(Ingredient.of(FoodInit.TEA_GREEN.get()))
+			.requires(Ingredient.of(TagDC.ItemTag.ROE))
+			.requires(Ingredient.of(Items.DRIED_KELP))
+			.unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
+			.save(cons, "dcs_climate:food/tarako_chazuke_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CHAZUKE_TARAKO.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
+			.requires(Ingredient.of(FoodInit.TEA_GREEN.get()))
+			.requires(Ingredient.of(TagDC.ItemTag.ROE))
+			.requires(Ingredient.of(FoodInit.FOOD_TSUKEMONO.get()))
+			.unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
+			.save(cons, "dcs_climate:food/tarako_chazuke_2");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.SOUP_GASPACHO.get(), 3)
 			.requires(Ingredient.of(TagDC.ItemTag.CROP_TOMATO))
 			.requires(Ingredient.of(TagDC.ItemTag.CROP_CUCUMBER))
@@ -547,6 +609,96 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
 			.unlockedBy("has_yogult", has(TagDC.ItemTag.YOGULT))
 			.save(cons, "dcs_climate:food/soup_tarator_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.LARGE_BOWL_CARPACCIO.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.RAW_BEEF))
+			.requires(Ingredient.of(TagDC.ItemTag.CHEESE))
+			.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS))
+			.unlockedBy("has_beef", has(TagDC.ItemTag.RAW_BEEF))
+			.save(cons, "dcs_climate:food/large_bowl_carpaccio_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.LARGE_BOWL_FISH_CARPACCIO.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.FISH_WHITE))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+			.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS))
+			.unlockedBy("has_white_fish", has(TagDC.ItemTag.FISH_WHITE))
+			.save(cons, "dcs_climate:food/large_bowl_fish_carpaccio_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.LARGE_BOWL_CAPRESE.get(), 1)
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_TOMATO))
+			.requires(Ingredient.of(TagDC.ItemTag.CHEESE))
+			.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_BASIL))
+			.unlockedBy("has_tomato", has(TagDC.ItemTag.CROP_TOMATO))
+			.save(cons, "dcs_climate:food/large_bowl_caprese_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_WHITE.get(), 2)
+			.requires(Ingredient.of(TagDC.ItemTag.FISH_WHITE))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.unlockedBy("has_white_fish", has(TagDC.ItemTag.FISH_WHITE))
+			.save(cons, "dcs_climate:food/sashimi_white_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_WHITE.get(), 2)
+			.requires(Ingredient.of(TagDC.ItemTag.FISH_WHITE))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_PERILLA))
+			.unlockedBy("has_white_fish", has(TagDC.ItemTag.FISH_WHITE))
+			.save(cons, "dcs_climate:food/sashimi_white_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_SALMON.get(), 2)
+			.requires(Ingredient.of(TagDC.ItemTag.RAW_SALMON))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.unlockedBy("has_salmon_fish", has(TagDC.ItemTag.RAW_SALMON))
+			.save(cons, "dcs_climate:food/sashimi_salmon_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_SALMON.get(), 2)
+			.requires(Ingredient.of(TagDC.ItemTag.RAW_SALMON))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_PERILLA))
+			.unlockedBy("has_salmon_fish", has(TagDC.ItemTag.RAW_SALMON))
+			.save(cons, "dcs_climate:food/sashimi_salmon_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_BLUE.get(), 2)
+			.requires(Ingredient.of(TagDC.ItemTag.FISH_BLUE))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.unlockedBy("has_blue_fish", has(TagDC.ItemTag.FISH_BLUE))
+			.save(cons, "dcs_climate:food/sashimi_blue_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_BLUE.get(), 2)
+			.requires(Ingredient.of(TagDC.ItemTag.FISH_BLUE))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_PERILLA))
+			.unlockedBy("has_blue_fish", has(TagDC.ItemTag.FISH_BLUE))
+			.save(cons, "dcs_climate:food/sashimi_blue_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_TUNA.get(), 3)
+			.requires(Ingredient.of(TagDC.ItemTag.TUNA))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.unlockedBy("has_tuna_fish", has(TagDC.ItemTag.TUNA))
+			.save(cons, "dcs_climate:food/sashimi_tuna_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_TUNA.get(), 3)
+			.requires(Ingredient.of(TagDC.ItemTag.TUNA))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_PERILLA))
+			.unlockedBy("has_tuna_fish", has(TagDC.ItemTag.TUNA))
+			.save(cons, "dcs_climate:food/sashimi_tuna_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_SQUID.get(), 2)
+			.requires(Ingredient.of(TagDC.ItemTag.SQUID))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.unlockedBy("has_squid", has(TagDC.ItemTag.SQUID))
+			.save(cons, "dcs_climate:food/sashimi_squid_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_SQUID.get(), 2)
+			.requires(Ingredient.of(TagDC.ItemTag.SQUID))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_PERILLA))
+			.unlockedBy("has_squid", has(TagDC.ItemTag.SQUID))
+			.save(cons, "dcs_climate:food/sashimi_squid_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CURRY_RICE.get(), 3)
+			.requires(Ingredient.of(TagDC.ItemTag.HAC_CURRY))
+			.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
+			.unlockedBy("has_curry", has(TagDC.ItemTag.HAC_CURRY))
+			.save(cons, "dcs_climate:food/curry_rice_0");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.SALAD_GREEN.get(), 1)
 			.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
@@ -699,6 +851,38 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.group("drink_craft")
 			.unlockedBy("has_sparkling", has(TagDC.ItemTag.SPARKLING))
 			.save(cons, "dcs_climate:core/drink_tea_soda_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.DRINK_LASSI_PLANE.get(), 1)
+			.requires(TagDC.ItemTag.YOGULT)
+			.requires(TagDC.ItemTag.WATER)
+			.requires(TagDC.ItemTag.SUGARS)
+			.group("drink_craft")
+			.unlockedBy("has_yogult", has(TagDC.ItemTag.YOGULT))
+			.save(cons, "dcs_climate:core/drink_lassi_plane_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.DRINK_LASSI_PLANE.get(), 1)
+			.requires(TagDC.ItemTag.YOGULT)
+			.requires(TagDC.ItemTag.WATER)
+			.requires(TagDC.ItemTag.DUST_SALT)
+			.group("drink_craft")
+			.unlockedBy("has_yogult", has(TagDC.ItemTag.YOGULT))
+			.save(cons, "dcs_climate:core/drink_lassi_plane_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.DRINK_LASSI_MANGO.get(), 1)
+			.requires(TagDC.ItemTag.YOGULT)
+			.requires(TagDC.ItemTag.WATER)
+			.requires(TagDC.ItemTag.CROP_MANGO)
+			.group("drink_craft")
+			.unlockedBy("has_yogult", has(TagDC.ItemTag.YOGULT))
+			.save(cons, "dcs_climate:core/drink_lassi_plane_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.DRINK_LASSI_CITRUS.get(), 1)
+			.requires(TagDC.ItemTag.YOGULT)
+			.requires(TagDC.ItemTag.WATER)
+			.requires(TagDC.ItemTag.CROP_CITRUS)
+			.group("drink_craft")
+			.unlockedBy("has_yogult", has(TagDC.ItemTag.YOGULT))
+			.save(cons, "dcs_climate:core/drink_lassi_citrus_1");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.TEA_BLACK_LEMON.get(), 1)
 			.requires(FoodInit.TEA_BLACK.get())
@@ -1140,8 +1324,19 @@ public class FoodRecipeProvider extends RecipeProvider {
 			.requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER))
 			.requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI))
 			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
 			.unlockedBy("has_shrimp_paste", has(FoodInit.FOOD_SHRIMP_PASTE.get()))
 			.save(cons, "dcs_climate:food/foodmaterial_tomyum_paste");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_THAI_CURRY_PASTE.get(), 1)
+			.requires(Ingredient.of(FoodInit.FOOD_SHRIMP_PASTE.get()))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CORIANDER))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+			.unlockedBy("has_shrimp_paste", has(FoodInit.FOOD_SHRIMP_PASTE.get()))
+			.save(cons, "dcs_climate:food/foodmaterial_thai_curry_paste");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_HERB_SALT.get(), 1)
 			.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))

@@ -1,0 +1,45 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/curry_biriyani",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/aroma_rice"
+    },
+    {
+      "tag": "dcs_climate:meals/curry"
+    },
+    {
+      "tag": "forge:ingredients/raw_mutton"
+    },
+    {
+      "tag": "forge:crops/saffron"
+    },
+    {
+      "tag": "forge:crops/mint"
+    },
+    {
+      "tag": "forge:ingredients/yogult"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

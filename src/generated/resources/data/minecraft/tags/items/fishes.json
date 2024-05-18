@@ -12,6 +12,10 @@
     "#forge:ingredients/crab",
     "#forge:ingredients/prawn",
     "#forge:ingredients/krill",
-    "#forge:ingredients/squid"
+    "#forge:ingredients/squid",
+    "#forge:ingredients/flathead",
+    "#forge:ingredients/gurnard",
+    "#forge:ingredients/tuna",
+    "#forge:ingredients/trout"
   ]
 }

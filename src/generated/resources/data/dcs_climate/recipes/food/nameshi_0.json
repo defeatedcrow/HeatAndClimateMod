@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:foods/boiled_rice"
+    },
+    {
+      "tag": "forge:crops/napa"
+    },
+    {
+      "tag": "forge:dusts/salt"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/rice_napa"
+  }
+}

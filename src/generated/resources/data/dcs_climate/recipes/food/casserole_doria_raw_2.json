@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "forge:crops/rice"
+      "tag": "forge:ingredients/rices"
     },
     {
       "tag": "forge:crops/turmeric"

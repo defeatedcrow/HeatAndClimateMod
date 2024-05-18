@@ -1,0 +1,12 @@
+{
+  "values": [
+    "dcs_climate:food/curry_biriyani",
+    "dcs_climate:food/curry_rice",
+    "dcs_climate:food/rice_napa",
+    "dcs_climate:food/rice_seki",
+    "dcs_climate:food/rice_fish",
+    "dcs_climate:food/chazuke_ume",
+    "dcs_climate:food/chazuke_sake",
+    "dcs_climate:food/chazuke_tarako"
+  ]
+}

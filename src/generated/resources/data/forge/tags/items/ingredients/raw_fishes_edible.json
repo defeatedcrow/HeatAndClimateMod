@@ -10,6 +10,10 @@
     "#forge:ingredients/seabream",
     "#forge:ingredients/flounder",
     "#forge:ingredients/mullet",
-    "#forge:ingredients/smelt"
+    "#forge:ingredients/smelt",
+    "#forge:ingredients/flathead",
+    "#forge:ingredients/gurnard",
+    "#forge:ingredients/tuna",
+    "#forge:ingredients/trout"
   ]
 }

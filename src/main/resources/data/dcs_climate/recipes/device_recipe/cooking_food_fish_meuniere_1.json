@@ -1,0 +1,42 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/fish_meuniere",
+    "count": 2
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/rockfish"
+    },
+    {
+      "tag": "forge:crops/lemon"
+    },
+    {
+      "tag": "forge:ingredients/fat"
+    },
+    {
+      "tag": "forge:ingredients/wheat"
+    },
+    {
+      "tag": "forge:crops/herbs"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

@@ -135,7 +135,7 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.CROP_CACTUS).add(Blocks.CACTUS);
 
 		tag(TagDC.BlockTag.CROP_GREEN_MANURES).add(FoodInit.BLOCK_BR_RAPESEED.get(), FoodInit.BLOCK_BR_GREEN.get(),
-			FoodInit.BLOCK_BR_CABAGGE.get(), FoodInit.BLOCK_BR_RADISH.get(), FoodInit.BLOCK_CR_OAT.get(),
+			FoodInit.BLOCK_BR_CABBAGE.get(), FoodInit.BLOCK_BR_RADISH.get(), FoodInit.BLOCK_CR_OAT.get(),
 			FoodInit.BLOCK_CR_RYE.get(), FoodInit.BLOCK_CR_BARLEY.get(), FoodInit.BLOCK_PE_GREEN.get(),
 			FoodInit.BLOCK_PE_GARBANZO.get(), FoodInit.BLOCK_PE_SOY.get(), FoodInit.BLOCK_RE_SORGHUM.get())
 			.addTag(TagDC.BlockTag.WEED);

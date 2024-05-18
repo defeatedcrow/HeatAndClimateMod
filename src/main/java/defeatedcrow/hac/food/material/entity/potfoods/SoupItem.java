@@ -1,22 +1,36 @@
 package defeatedcrow.hac.food.material.entity.potfoods;
 
+import java.util.List;
 import java.util.function.Supplier;
+
+import javax.annotation.Nullable;
+
+import com.google.common.collect.ImmutableList;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.item.ItemEntityFood;
+import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.level.Level;
 
 public class SoupItem extends ItemEntityFood implements IPotFoods {
 
+	private final boolean isCold;
+
 	public SoupItem(String s, int nut, float sat, boolean cold, TagKey<Item> pair) {
 		super(s, prop(nut, sat, cold), pair);
+		isCold = cold;
 	}
 
 	private static Properties prop(int nut, float sat, boolean isCold) {
@@ -34,6 +48,18 @@ public class SoupItem extends ItemEntityFood implements IPotFoods {
 	@Override
 	public EntityType<?> getType() {
 		return FoodInit.SOUP.get();
+	}
+
+	@Override
+	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		if (!DCUtil.isEmpty(item)) {
+			ItemStack stack = item.copy();
+			int taste = getTaste(stack);
+			MobEffectInstance effect = isCold ? cold().get() : hot().get();
+			PotionUtils.setCustomEffects(stack, ImmutableList.of(effect));
+			PotionUtils.addPotionTooltip(stack, list, 1.0F);
+		}
+		super.appendHoverText(item, level, list, flag);
 	}
 
 	@Override

@@ -1,0 +1,42 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/fish_meuniere",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "dcs_climate:fishes/large_size"
+    },
+    {
+      "tag": "forge:crops/lemon"
+    },
+    {
+      "tag": "forge:ingredients/fat"
+    },
+    {
+      "tag": "forge:ingredients/wheat"
+    },
+    {
+      "tag": "forge:crops/herbs"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

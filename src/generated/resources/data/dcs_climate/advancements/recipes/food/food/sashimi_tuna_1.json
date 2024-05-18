@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dcs_climate:food/sashimi_tuna_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tuna_fish": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingredients/tuna"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_tuna_fish",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dcs_climate:food/sashimi_tuna_1"
+    ]
+  }
+}

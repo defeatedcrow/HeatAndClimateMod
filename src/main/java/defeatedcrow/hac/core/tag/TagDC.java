@@ -360,7 +360,7 @@ public class TagDC {
 		public static final TagKey<Item> CROP_CORIANDER = itemTag("crops/coriander");
 		public static final TagKey<Item> CROP_RAPESEED = itemTag("crops/rapeseed");
 		public static final TagKey<Item> CROP_NAPA = itemTag("crops/napa");
-		public static final TagKey<Item> CROP_CABAGGE = itemTag("crops/cabagge");
+		public static final TagKey<Item> CROP_CABBAGE = itemTag("crops/cabbage");
 		public static final TagKey<Item> CROP_RADISH = itemTag("crops/radish");
 		public static final TagKey<Item> CROP_CHILI = itemTag("crops/chili");
 		public static final TagKey<Item> CROP_PAPRIKA = itemTag("crops/paprika");
@@ -498,7 +498,7 @@ public class TagDC {
 		public static final TagKey<Item> SEED_CORIANDER = itemTag("seeds/coriander");
 		public static final TagKey<Item> SEED_RAPESEED = itemTag("seeds/rapeseed");
 		public static final TagKey<Item> SEED_NAPA = itemTag("seeds/napa");
-		public static final TagKey<Item> SEED_CABAGGE = itemTag("seeds/cabagge");
+		public static final TagKey<Item> SEED_CABBAGE = itemTag("seeds/cabbage");
 		public static final TagKey<Item> SEED_RADISH = itemTag("seeds/radish");
 		public static final TagKey<Item> SEED_CHILI = itemTag("seeds/chili");
 		public static final TagKey<Item> SEED_PAPRIKA = itemTag("seeds/paprika");
@@ -621,11 +621,15 @@ public class TagDC {
 		public static final TagKey<Item> MACKEREL = itemTag("ingredients/mackerel");
 		public static final TagKey<Item> SARDINE = itemTag("ingredients/sardine");
 		public static final TagKey<Item> ROCKFISH = itemTag("ingredients/rockfish");
+		public static final TagKey<Item> FLATHEAD = itemTag("ingredients/flathead");
 		public static final TagKey<Item> GROUPER = itemTag("ingredients/grouper");
+		public static final TagKey<Item> GURNARD = itemTag("ingredients/gurnard");
 		public static final TagKey<Item> SEABREAM = itemTag("ingredients/seabream");
 		public static final TagKey<Item> FLOUNDER = itemTag("ingredients/flounder");
 		public static final TagKey<Item> MULLET = itemTag("ingredients/mullet");
 		public static final TagKey<Item> SMELT = itemTag("ingredients/smelt");
+		public static final TagKey<Item> TUNA = itemTag("ingredients/tuna");
+		public static final TagKey<Item> TROUT = itemTag("ingredients/trout");
 		public static final TagKey<Item> CARP = itemTag("ingredients/carp");
 		public static final TagKey<Item> CRAB = itemTag("ingredients/crab");
 		public static final TagKey<Item> PRAWN = itemTag("ingredients/prawn");
@@ -634,7 +638,6 @@ public class TagDC {
 
 		public static final TagKey<Item> FISH_BLUE = itemTag("ingredients/blue_fishes");
 		public static final TagKey<Item> FISH_WHITE = itemTag("ingredients/white_fishes");
-		public static final TagKey<Item> FISH_SASHIMI = itemTag("ingredients/sashimi_fishes");
 		public static final TagKey<Item> FISH_WITH_ROE = itemTag("ingredients/fishes_with_roe");
 		public static final TagKey<Item> ROE = itemTag("ingredients/roe");
 
@@ -736,10 +739,13 @@ public class TagDC {
 		public static final TagKey<Item> HAC_BREAD = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread"));
 		public static final TagKey<Item> HAC_BREAD_PLANE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread/plane"));
 		public static final TagKey<Item> HAC_BREAD_SANDWICH = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread/sandwich"));
-		public static final TagKey<Item> HAC_BOILED_RICE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/boiled_rice"));
 		public static final TagKey<Item> HAC_SOUP = ItemTags.create(new ResourceLocation("dcs_climate", "meals/soup"));
+		public static final TagKey<Item> HAC_CURRY = ItemTags.create(new ResourceLocation("dcs_climate", "meals/curry"));
 		public static final TagKey<Item> HAC_PORRIDGE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/porridge"));
 		public static final TagKey<Item> HAC_CASSEROLE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/casserole"));
+		public static final TagKey<Item> HAC_FISH_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/fish_meal"));
+		public static final TagKey<Item> HAC_MEAT_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/meat_meal"));
+		public static final TagKey<Item> HAC_RICE_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/rice_meal"));
 		public static final TagKey<Item> HAC_SALAD = ItemTags.create(new ResourceLocation("dcs_climate", "meals/salad"));
 		public static final TagKey<Item> HAC_SKEWERED = ItemTags.create(new ResourceLocation("dcs_climate", "meals/skewered"));
 		public static final TagKey<Item> HAC_PLATE_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/plate_meal"));
@@ -810,12 +816,20 @@ public class TagDC {
 		public static final TagKey<Item> FISH_BEACH = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/beach"));
 		public static final TagKey<Item> FISH_MANGROVE = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/mangrove"));
 		public static final TagKey<Item> FISH_OCEAN = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/ocean"));
+		public static final TagKey<Item> FISH_DEEP_OCEAN = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/deep_ocean"));
 
 		public static final TagKey<Item> FISH_COLD_WATER = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/cold_water_only"));
 		public static final TagKey<Item> FISH_TROPICAL = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/tropical_only"));
 
 		public static final TagKey<Item> FISH_NIGHT = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/night"));
 		public static final TagKey<Item> FISH_DAY = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/day"));
+
+		public static final TagKey<Item> FISH_SHALLOW = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/shallow"));
+		public static final TagKey<Item> FISH_FLOOR = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/floor"));
+
+		public static final TagKey<Item> FISH_SMALL = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/small_size"));
+		public static final TagKey<Item> FISH_MIDDLE = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/middle_size"));
+		public static final TagKey<Item> FISH_LARGE = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/large_size"));
 
 		public static final TagKey<Item> CONT_LEAVES = itemTag("storage_blocks/leaves");
 		public static final TagKey<Item> CONT_LOGS = itemTag("storage_blocks/logs");
@@ -893,6 +907,8 @@ public class TagDC {
 		public static final TagKey<Item> BUILDING_BRICKS = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones/bricks"));
 		public static final TagKey<Item> BUILDING_PILLAR = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones/pillar"));
 		public static final TagKey<Item> BUILDING_CHISELED = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones/chiseled"));
+
+		public static final TagKey<Item> ALMINUM_ROOFS = ItemTags.create(new ResourceLocation("dcs_climate", "metal_roofs"));
 
 		public static final TagKey<Item> DIRT_SLABS = ItemTags.create(new ResourceLocation("dcs_climate", "dirt_slab"));
 

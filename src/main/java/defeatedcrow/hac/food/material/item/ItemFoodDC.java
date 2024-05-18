@@ -107,7 +107,7 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 		case 4:
 			return 16;
 		case 5:
-			return 16;
+			return 8;
 		default:
 			return 64;
 		}

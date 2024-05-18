@@ -83,6 +83,14 @@ public class RawFishItem extends FoodMaterialItemDC {
 		if (item.is(TagDC.ItemTag.FISH_OCEAN)) {
 			s2.append(Component.translatable("dcs.tip.fishdata.ocean"));
 		}
+		if (item.is(TagDC.ItemTag.FISH_DEEP_OCEAN)) {
+			s2.append(Component.translatable("dcs.tip.fishdata.deep_ocean"));
+		}
+		if (item.is(TagDC.ItemTag.FISH_SHALLOW)) {
+			s2.append("(").append(Component.translatable("dcs.tip.fishdata.shallow")).append(")");
+		} else if (item.is(TagDC.ItemTag.FISH_FLOOR)) {
+			s2.append("(").append(Component.translatable("dcs.tip.fishdata.floor")).append(")");
+		}
 		list.add(s2);
 		if (item.is(TagDC.ItemTag.FISH_COLD_WATER)) {
 			MutableComponent s4 = Component.translatable("dcs.tip.fishdata.coldwater").withStyle(ChatFormatting.BLUE);

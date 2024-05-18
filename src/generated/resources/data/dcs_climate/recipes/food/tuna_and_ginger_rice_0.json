@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:foods/boiled_rice"
+    },
+    {
+      "tag": "forge:foods/cooked_fishes"
+    },
+    {
+      "tag": "forge:crops/ginger"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/rice_fish"
+  }
+}

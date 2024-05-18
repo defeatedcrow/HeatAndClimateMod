@@ -39,7 +39,7 @@ public class PlantRecipes {
 		list1.add(new Seeding(FoodInit.BLOCK_AS_FLOWER, FoodInit.CROP_AS_FLOWER, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_BR_RAPESEED, FoodInit.CROP_BR_RAPESEED, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_BR_GREEN, FoodInit.CROP_BR_GREEN, 1));
-		list1.add(new Seeding(FoodInit.BLOCK_BR_CABAGGE, FoodInit.CROP_BR_CABAGGE, 1));
+		list1.add(new Seeding(FoodInit.BLOCK_BR_CABBAGE, FoodInit.CROP_BR_CABBAGE, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_BR_RADISH, FoodInit.CROP_BR_RADISH, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_CA_CHILI, FoodInit.CROP_CA_CHILI, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_CA_PAPRIKA, FoodInit.CROP_CA_PAPRIKA, 1));
@@ -170,7 +170,7 @@ public class PlantRecipes {
 		ComposterBlock.COMPOSTABLES.put(CoreInit.DUST_ASH.get(), 0.3F);
 		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_BR_RAPESEED.get(), 0.65F);
 		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_BR_GREEN.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_BR_CABAGGE.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_BR_CABBAGE.get(), 0.65F);
 		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_BR_RADISH.get(), 0.65F);
 		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_CR_OAT.get(), 0.65F);
 		ComposterBlock.COMPOSTABLES.put(FoodInit.CROP_CR_RYE.get(), 0.65F);

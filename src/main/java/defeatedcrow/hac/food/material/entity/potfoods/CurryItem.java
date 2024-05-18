@@ -1,0 +1,91 @@
+package defeatedcrow.hac.food.material.entity.potfoods;
+
+import java.util.List;
+import java.util.function.Supplier;
+
+import javax.annotation.Nullable;
+
+import com.google.common.collect.ImmutableList;
+
+import defeatedcrow.hac.api.material.EntityRenderData;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.food.material.item.ItemEntityFood;
+import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.level.Level;
+
+public class CurryItem extends ItemEntityFood {
+
+	public CurryItem(String s, int nut, float sat, boolean curry, TagKey<Item> pair) {
+		super(s, prop(nut, sat, curry), pair);
+	}
+
+	private static Properties prop(int nut, float sat, boolean isCurry) {
+		return new Item.Properties().tab(FoodInit.FOOD).food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().effect(hot(), 1.0F).build());
+	}
+
+	private static Supplier<MobEffectInstance> hot() {
+		return () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600);
+	}
+
+	@Override
+	public EntityType<?> getType() {
+		return FoodInit.CURRY_BASE.get();
+	}
+
+	@Override
+	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		if (!DCUtil.isEmpty(item)) {
+			ItemStack stack = item.copy();
+			int taste = getTaste(stack);
+			MobEffectInstance effect = hot().get();
+			PotionUtils.setCustomEffects(stack, ImmutableList.of(effect));
+			PotionUtils.addPotionTooltip(stack, list, 1.0F);
+		}
+		super.appendHoverText(item, level, list, flag);
+	}
+
+	@Override
+	public EntityRenderData getRenderData(Item item) {
+		if (item == FoodInit.CURRY_VEGI.get())
+			return CURRY_VEGI;
+		if (item == FoodInit.CURRY_BEANS.get())
+			return CURRY_BEANS;
+		if (item == FoodInit.CURRY_SPINACH.get())
+			return CURRY_SPINACH;
+		if (item == FoodInit.CURRY_BUTTER_CHICKEN.get())
+			return CURRY_BUTTER_CHICKEN;
+		if (item == FoodInit.CURRY_VINDALOO.get())
+			return CURRY_VINDALOO;
+		if (item == FoodInit.CURRY_BIRIYANI.get())
+			return CURRY_BIRIYANI;
+		if (item == FoodInit.CURRY_GREEN.get())
+			return CURRY_GREEN;
+		if (item == FoodInit.CURRY_RED.get())
+			return CURRY_RED;
+		if (item == FoodInit.CURRY_MASSAMAN.get())
+			return CURRY_MASSAMAN;
+
+		return CURRY_VEGI;
+	}
+
+	public static final EntityRenderData CURRY_VEGI = new EntityRenderData("food/curry_vegi", 0.75F, -0.1F);
+	public static final EntityRenderData CURRY_BEANS = new EntityRenderData("food/curry_beans", 0.75F, -0.1F);
+	public static final EntityRenderData CURRY_SPINACH = new EntityRenderData("food/curry_spinach", 0.75F, -0.1F);
+	public static final EntityRenderData CURRY_BUTTER_CHICKEN = new EntityRenderData("food/curry_butter_chicken", 0.75F, -0.1F);
+	public static final EntityRenderData CURRY_VINDALOO = new EntityRenderData("food/curry_vindaloo", 0.75F, -0.1F);
+	public static final EntityRenderData CURRY_BIRIYANI = new EntityRenderData("food/curry_biriyani", 0.75F, -0.1F);
+	public static final EntityRenderData CURRY_GREEN = new EntityRenderData("food/curry_green", 0.75F, -0.1F);
+	public static final EntityRenderData CURRY_RED = new EntityRenderData("food/curry_red", 0.75F, -0.1F);
+	public static final EntityRenderData CURRY_MASSAMAN = new EntityRenderData("food/curry_massaman", 0.75F, -0.1F);
+
+}
