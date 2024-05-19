@@ -119,6 +119,10 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.MAGMA).add(Items.MAGMA_BLOCK);
 		tag(TagDC.ItemTag.DRIPSTONES).add(Items.DRIPSTONE_BLOCK, Items.POINTED_DRIPSTONE);
 
+		// vanilla tag
+
+		tag(ItemTags.FREEZE_IMMUNE_WEARABLES).add(CoreInit.LEGGINS_WADERS.get(), CoreInit.BOOTS_SAFETY.get());
+
 		// main
 
 		tag(TagDC.ItemTag.DUST_ALKALI).addTags(TagDC.ItemTag.DUST_ASH, TagDC.ItemTag.DUST_LIME, TagDC.ItemTag.DUST_TRONA);

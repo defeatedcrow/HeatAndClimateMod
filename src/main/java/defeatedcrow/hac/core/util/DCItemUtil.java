@@ -116,6 +116,26 @@ public class DCItemUtil {
 		return false;
 	}
 
+	public static boolean isWearArmorItem(Item item, LivingEntity liv, EquipmentSlot slot) {
+		if (item == null || liv == null)
+			return false;
+		if (!liv.getItemBySlot(slot).isEmpty()) {
+			if (liv.getItemBySlot(slot).is(item))
+				return true;
+		}
+		return false;
+	}
+
+	public static boolean isWearArmorItem(TagKey<Item> tag, LivingEntity liv, EquipmentSlot slot) {
+		if (tag == null || liv == null)
+			return false;
+		if (!liv.getItemBySlot(slot).isEmpty()) {
+			if (liv.getItemBySlot(slot).is(tag))
+				return true;
+		}
+		return false;
+	}
+
 	public static SimpleEntry<Integer, ItemStack> getItem(LivingEntity living, Ingredient target) {
 		if (living != null && target != null && !target.isEmpty()) {
 			if (living instanceof Player) {

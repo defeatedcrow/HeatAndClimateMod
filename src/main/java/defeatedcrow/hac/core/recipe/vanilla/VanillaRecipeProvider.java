@@ -1397,6 +1397,15 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
 			.save(cons, "dcs_climate:core/scytheitem_steel");
 
+		ShapedRecipeBuilder.shaped(CoreInit.SCYTHE_FLINT.get(), 1)
+			.pattern("YYX")
+			.pattern("  X")
+			.pattern(" X ")
+			.define('X', TagDC.ItemTag.GEM_FLINT)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_flint", has(TagDC.ItemTag.GEM_FLINT))
+			.save(cons, "dcs_climate:core/scytheitem_flint");
+
 		ShapedRecipeBuilder.shaped(CoreInit.HARPOON_FLINT.get(), 1)
 			.pattern("  Y")
 			.pattern(" X ")
@@ -1405,7 +1414,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.define('Y', TagDC.ItemTag.GEM_FLINT)
 			.define('Z', Tags.Items.STRING)
 			.unlockedBy("has_flint", has(TagDC.ItemTag.GEM_FLINT))
-			.save(cons, "dcs_climate:core/harpoon_flint1");
+			.save(cons, "dcs_climate:core/harpoon_flint_1");
 
 		ShapedRecipeBuilder.shaped(CoreInit.HARPOON_STEEL.get(), 1)
 			.pattern("  Y")
@@ -1415,7 +1424,27 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.define('Y', TagDC.ItemTag.INGOT_STEEL)
 			.define('Z', Tags.Items.STRING)
 			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
-			.save(cons, "dcs_climate:core/harpoon_steel1");
+			.save(cons, "dcs_climate:core/harpoon_steel_1");
+
+		ShapedRecipeBuilder.shaped(CoreInit.HARPOON_FLINT.get(), 1)
+			.pattern("  Y")
+			.pattern(" X ")
+			.pattern("XZ ")
+			.define('X', Tags.Items.RODS_WOODEN)
+			.define('Y', TagDC.ItemTag.GEM_FLINT)
+			.define('Z', TagDC.ItemTag.VINE)
+			.unlockedBy("has_flint", has(TagDC.ItemTag.GEM_FLINT))
+			.save(cons, "dcs_climate:core/harpoon_flint_2");
+
+		ShapedRecipeBuilder.shaped(CoreInit.HARPOON_STEEL.get(), 1)
+			.pattern("  Y")
+			.pattern(" X ")
+			.pattern("XZ ")
+			.define('X', Tags.Items.INGOTS_IRON)
+			.define('Y', TagDC.ItemTag.INGOT_STEEL)
+			.define('Z', TagDC.ItemTag.VINE)
+			.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
+			.save(cons, "dcs_climate:core/harpoon_steel_2");
 
 		ShapelessRecipeBuilder.shapeless(CoreInit.CALABASH_BUCKET.get(), 1)
 			.requires(TagDC.ItemTag.CROP_CALABASH)
@@ -1646,6 +1675,62 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.define('Y', TagDC.ItemTag.CLOTHS)
 			.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
 			.save(cons, "dcs_climate:clothing/boots_steel");
+
+		ShapedRecipeBuilder.shaped(CoreInit.HAT_SAFETY.get(), 1)
+			.pattern("XXX")
+			.pattern("XYX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', TagDC.ItemTag.CLOTH_RUBBER)
+			.unlockedBy("has_rubber_cloth", has(TagDC.ItemTag.CLOTH_RUBBER))
+			.save(cons, "dcs_climate:clothing/helmet_safety");
+
+		ShapedRecipeBuilder.shaped(CoreInit.BOOTS_SAFETY.get(), 1)
+			.pattern("Z Z")
+			.pattern("XYX")
+			.define('X', TagDC.ItemTag.INGOT_STEEL)
+			.define('Y', TagDC.ItemTag.CLOTH_RUBBER)
+			.define('Z', Tags.Items.LEATHER)
+			.unlockedBy("has_rubber_cloth", has(TagDC.ItemTag.CLOTH_RUBBER))
+			.save(cons, "dcs_climate:clothing/boots_safety");
+
+		ShapedRecipeBuilder.shaped(CoreInit.LEGGINS_WADERS.get(), 1)
+			.pattern("XYX")
+			.pattern("XXX")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.CLOTH_RUBBER)
+			.define('Y', TagDC.ItemTag.CLOTHS)
+			.unlockedBy("has_rubber_cloth", has(TagDC.ItemTag.CLOTH_RUBBER))
+			.save(cons, "dcs_climate:clothing/rubber_waders");
+
+		ShapedRecipeBuilder.shaped(CoreInit.FUR_SHAWL.get(), 1)
+			.pattern("XYX")
+			.define('X', Items.RABBIT_HIDE)
+			.define('Y', Tags.Items.STRING)
+			.unlockedBy("has_rabbit_hide", has(Items.RABBIT_HIDE))
+			.save(cons, "dcs_climate:clothing/shawl_fur_1");
+
+		ShapedRecipeBuilder.shaped(CoreInit.FUR_SHAWL.get(), 1)
+			.pattern("XYX")
+			.define('X', Tags.Items.LEATHER)
+			.define('Y', Tags.Items.STRING)
+			.unlockedBy("has_leather", has(Tags.Items.LEATHER))
+			.save(cons, "dcs_climate:clothing/shawl_fur_2");
+
+		ShapedRecipeBuilder.shaped(CoreInit.FUR_LOINCLOTH.get(), 1)
+			.pattern(" Y ")
+			.pattern("XXX")
+			.define('X', Items.RABBIT_HIDE)
+			.define('Y', Tags.Items.STRING)
+			.unlockedBy("has_rabbit_hide", has(Items.RABBIT_HIDE))
+			.save(cons, "dcs_climate:clothing/shawl_loincloth_1");
+
+		ShapedRecipeBuilder.shaped(CoreInit.FUR_LOINCLOTH.get(), 1)
+			.pattern(" Y ")
+			.pattern("XXX")
+			.define('X', Tags.Items.LEATHER)
+			.define('Y', Tags.Items.STRING)
+			.unlockedBy("has_leather", has(Tags.Items.LEATHER))
+			.save(cons, "dcs_climate:clothing/shawl_loincloth_2");
 
 		ShapelessRecipeBuilder.shapeless(CoreInit.HAT_LINEN.get(), 1)
 			.requires(CoreInit.PATTERN_HAT.get())

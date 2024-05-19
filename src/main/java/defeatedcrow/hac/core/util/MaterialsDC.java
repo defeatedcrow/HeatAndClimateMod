@@ -29,6 +29,9 @@ public enum MaterialsDC implements ArmorMaterial {
 	STEEL("steel", 30, new int[] { 3, 6, 7, 2 }, 8, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
 		return Ingredient.of(TagDC.ItemTag.INGOT_STEEL);
 	}),
+	RUBBER("rubber", 12, new int[] { 4, 5, 5, 4 }, 10, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.1F, () -> {
+		return Ingredient.of(TagDC.ItemTag.CLOTH_RUBBER);
+	}),
 	AGATE("agate", 4, new int[] { 2, 4, 5, 2 }, 18, SoundEvents.ARMOR_EQUIP_DIAMOND, 0.0F, 0.0F, () -> {
 		return Ingredient.of(TagDC.ItemTag.GEM_AGATES);
 	});

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/armor/loincloth_fur"
+  },
+  "parent": "minecraft:item/generated"
+}

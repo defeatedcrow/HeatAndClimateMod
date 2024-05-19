@@ -41,6 +41,7 @@ public class ArmorMaterialRegister implements IArmorMaterialRegister {
 		registerMaterial(MaterialsDC.CLOTH, 2.0F, 2.0F);
 		registerMaterial(MaterialsDC.WOOL, 0.0F, 3.0F);
 		registerMaterial(MaterialsDC.SILK, 3.0F, 0.0F);
+		registerMaterial(MaterialsDC.RUBBER, 1.0F, 1.0F);
 	}
 
 	@Override

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:rabbit_hide"
+    },
+    "Y": {
+      "tag": "forge:string"
+    }
+  },
+  "pattern": [
+    "XYX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/shawl_fur"
+  }
+}

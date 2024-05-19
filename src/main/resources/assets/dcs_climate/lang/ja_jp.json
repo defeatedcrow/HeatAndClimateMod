@@ -120,6 +120,7 @@
   "item.dcs_climate.main.pickaxe_steel":"鋼のツルハシ",
   "item.dcs_climate.main.shovel_steel":"鋼のシャベル",
   "item.dcs_climate.main.hoe_steel":"鋼の鍬",
+  "item.dcs_climate.main.scythe_flint":"火打ち石の大鎌",
   "item.dcs_climate.main.scythe_brass":"真鍮の大鎌",
   "item.dcs_climate.main.scythe_steel":"鋼の大鎌",
   "item.dcs_climate.main.harpoon_flint":"火打ち石の銛",
@@ -756,6 +757,13 @@
   "item.dcs_climate.main.plate_steel":"鋼の鎧",
   "item.dcs_climate.main.chain_mail_steel":"鋼のチェインメイル",
   "item.dcs_climate.main.boots_steel":"鋼のブーツ",
+
+  "item.dcs_climate.main.helmet_safety":"安全ヘルメット",
+  "item.dcs_climate.main.waders_rubber":"ゴムのウェーダー",
+  "item.dcs_climate.main.boots_safety":"安全靴",
+
+  "item.dcs_climate.main.shawl_fur":"毛皮のショール",
+  "item.dcs_climate.main.loincloth_fur":"毛皮の腰布",
 
   "item.dcs_climate.main.hat_linen":"麦わら帽子",
   "item.dcs_climate.main.hat_linen_red":"麦わら帽子(赤)",
@@ -1493,6 +1501,9 @@
   "dcs.tip.hopper.gold":"輸送速度: 1 item / tick",
   "dcs.tip.hopper.filter":"フィルター付き",
   "dcs.tip.hopper.filter.desc":"フィルタースロットに入れたアイテムは横方向へ、それ以外は上下方向へ輸送します。",
+  "dcs.tip.helmet_safety":"爆発や落下物のダメージを軽減します。",
+  "dcs.tip.boots_safety":"落下や足下のダメージを軽減します。",
+  "dcs.tip.waders_rubber":"濡れ状態を防止し、粉雪のダメージを軽減します。",
 
   "dcs.tip.flow.tier1":"[Tier1] 流速: 32 /t",
   "dcs.tip.flow.tier2":"[Tier2] 流速: 128 /t",

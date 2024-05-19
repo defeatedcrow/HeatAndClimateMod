@@ -32,6 +32,8 @@ public class RenderArmorDC implements IClientItemExtensions {
 				return EntityModelLoader.INSTANCE.MODEL_LEGGINS;
 			case SHIRT:
 				return EntityModelLoader.INSTANCE.MODEL_SHIRT;
+			case OVERSUITS:
+				return EntityModelLoader.INSTANCE.MODEL_OVERSUITS;
 			case SUITS:
 				return EntityModelLoader.INSTANCE.MODEL_SUITS;
 			case LONG:
@@ -63,7 +65,7 @@ public class RenderArmorDC implements IClientItemExtensions {
 				rep.rightLeg.visible = false;
 				rep.leftLeg.visible = false;
 			}
-			if (rep == EntityModelLoader.INSTANCE.MODEL_SUITS || rep == EntityModelLoader.INSTANCE.MODEL_DRESS) {
+			if (rep == EntityModelLoader.INSTANCE.MODEL_SUITS || rep == EntityModelLoader.INSTANCE.MODEL_OVERSUITS || rep == EntityModelLoader.INSTANCE.MODEL_DRESS) {
 				rep.body.visible = true;
 				rep.rightArm.visible = true;
 				rep.leftArm.visible = true;

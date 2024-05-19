@@ -93,7 +93,7 @@ public class HarpoonItem extends ItemDC implements ITierItem {
 					level.addFreshEntity(thrown);
 
 					level.playSound((Player) null, thrown, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
-					if (!player.getAbilities().instabuild && tier != TierDC.BAMBOO) {
+					if (!player.getAbilities().instabuild && tier != TierDC.FLINT) {
 						player.getInventory().removeItem(stack);
 					}
 				}

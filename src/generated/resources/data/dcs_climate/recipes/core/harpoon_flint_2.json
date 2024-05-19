@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:rods/wooden"
+    },
+    "Y": {
+      "tag": "forge:gems/flint"
+    },
+    "Z": {
+      "tag": "forge:ingredients/vine"
+    }
+  },
+  "pattern": [
+    "  Y",
+    " X ",
+    "XZ "
+  ],
+  "result": {
+    "item": "dcs_climate:main/harpoon_flint"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "tag": "forge:clothes/rubber"
+    },
+    "Z": {
+      "tag": "forge:leather"
+    }
+  },
+  "pattern": [
+    "Z Z",
+    "XYX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/boots_safety"
+  }
+}

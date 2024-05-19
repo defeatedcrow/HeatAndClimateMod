@@ -133,7 +133,7 @@ public class CharmTriggerEvent {
 
 		// potion
 		float f2 = 1.0F;
-		if (source.isProjectile() && living != null) {
+		if (source.isProjectile()) {
 			if (living.hasEffect(CoreInit.PROJ_RESISTANCE.get())) {
 				MobEffectInstance eff = living.getEffect(CoreInit.PROJ_RESISTANCE.get());
 				f2 = 1F - (eff.getAmplifier() * 0.20F);
@@ -142,13 +142,34 @@ public class CharmTriggerEvent {
 			}
 		}
 
-		if (source == DamageSource.FREEZE && living != null) {
+		if (source.isExplosion() || source.isDamageHelmet()) {
+			if (DCItemUtil.isWearArmorItem(CoreInit.HAT_SAFETY.get(), living, EquipmentSlot.HEAD)) {
+				f2 *= 0.5F;
+			}
+		}
+
+		if (source == DamageSource.FREEZE) {
 			float armor = DCItemUtil.getArmorResistant(living, true);
 			if (armor > 1.0F) {
 				amount -= armor;
 			}
 			if (living.hasEffect(CoreInit.COLD_RESISTANCE.get())) {
 				f2 = 0F;
+			}
+			if (DCItemUtil.isWearArmorItem(CoreInit.LEGGINS_WADERS.get(), living, EquipmentSlot.CHEST)) {
+				f2 = 0F;
+			}
+		}
+
+		if (source == DamageSource.CACTUS || source == DamageSource.HOT_FLOOR || source == DamageSource.SWEET_BERRY_BUSH) {
+			if (DCItemUtil.isWearArmorItem(CoreInit.BOOTS_SAFETY.get(), living, EquipmentSlot.FEET)) {
+				f2 = 0F;
+			}
+		}
+
+		if (source.isFall()) {
+			if (DCItemUtil.isWearArmorItem(CoreInit.BOOTS_SAFETY.get(), living, EquipmentSlot.FEET)) {
+				f2 *= 0.5F;
 			}
 		}
 

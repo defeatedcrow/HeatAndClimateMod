@@ -27,6 +27,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
@@ -222,7 +223,7 @@ public class LivingTickEventDC {
 
 			/* wet effect */
 
-			if (living instanceof Player && ConfigCommonBuilder.INSTANCE.enWetEffect.get())
+			if (living instanceof Player && ConfigCommonBuilder.INSTANCE.enWetEffect.get() && !DCItemUtil.isWearArmorItem(CoreInit.LEGGINS_WADERS.get(), living, EquipmentSlot.LEGS))
 				if (clm.getHumidity() == DCHumidity.UNDERWATER || living.isInWaterRainOrBubble()) {
 					if (!living.hasEffect(CoreInit.WET.get()) || living.getEffect(CoreInit.WET.get()).getDuration() < 20) {
 						living.addEffect(new MobEffectInstance(CoreInit.WET.get(), 600, 0));

@@ -10,13 +10,12 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.Tags;
 
 public enum TierDC implements Tier {
-	BAMBOO(0, 128, 1.0F, 1.0F, 2, () -> {
-		return Ingredient.of(Tags.Items.RODS_WOODEN);
+	FLINT(1, 128, 4.0F, 1.0F, 4, () -> {
+		return Ingredient.of(TagDC.ItemTag.GEM_FLINT);
 	}),
-	BRASS(2, 600, 6.0F, 2.0F, 8, () -> {
+	BRASS(2, 450, 6.0F, 2.0F, 8, () -> {
 		return Ingredient.of(TagDC.ItemTag.INGOT_BRASS);
 	}),
 	STEEL(3, 750, 8.0F, 5.0F, 6, () -> {
@@ -82,8 +81,8 @@ public enum TierDC implements Tier {
 		switch (this) {
 		case AGATE:
 			return BlockTags.NEEDS_IRON_TOOL;
-		case BAMBOO:
-			return null;
+		case FLINT:
+			return BlockTags.NEEDS_STONE_TOOL;
 		case BRASS:
 			return BlockTags.NEEDS_DIAMOND_TOOL;
 		case STEEL:

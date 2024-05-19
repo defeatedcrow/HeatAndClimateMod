@@ -69,7 +69,7 @@ public class ThrownHarpoon extends AbstractArrow {
 				this.discard();
 			}
 
-			if (harpoon.tier == TierDC.BAMBOO) {
+			if (harpoon.tier == TierDC.FLINT) {
 				if (l > 10)
 					this.dealtDamage = true;
 			}

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/armor/waders_rubber"
+  },
+  "parent": "minecraft:item/generated"
+}

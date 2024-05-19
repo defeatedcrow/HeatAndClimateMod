@@ -221,18 +221,22 @@ public class CoreInit {
 	public static final RegistryObject<Item> COIL_CASE = regItem("mosquito_coil_case", () -> new ItemMosquitoCoil("mosquito_coil_case", null));
 
 	public static final RegistryObject<Item> AXE_BRASS = regItem("axe_brass", () -> new ItemAxeDC(TierDC.BRASS, Tags.Items.TOOLS_AXES));
-	public static final RegistryObject<Item> PICKAXE_BRASS = regItem("pickaxe_brass", () -> new ItemPickaxeDC(TierDC.BRASS, Tags.Items.TOOLS_PICKAXES));
-	public static final RegistryObject<Item> SHOVEL_BRASS = regItem("shovel_brass", () -> new ItemShovelDC(TierDC.BRASS, Tags.Items.TOOLS_SHOVELS));
-	public static final RegistryObject<Item> HOE_BRASS = regItem("hoe_brass", () -> new ItemHoeDC(TierDC.BRASS, Tags.Items.TOOLS_HOES));
-	public static final RegistryObject<Item> SCYTHE_BRASS = regItem("scythe_brass", () -> new ItemScythe(TierDC.BRASS, TagDC.ItemTag.SCYTHES));
-
 	public static final RegistryObject<Item> AXE_STEEL = regItem("axe_steel", () -> new ItemAxeDC(TierDC.STEEL, Tags.Items.TOOLS_AXES));
+
+	public static final RegistryObject<Item> PICKAXE_BRASS = regItem("pickaxe_brass", () -> new ItemPickaxeDC(TierDC.BRASS, Tags.Items.TOOLS_PICKAXES));
 	public static final RegistryObject<Item> PICKAXE_STEEL = regItem("pickaxe_steel", () -> new ItemPickaxeDC(TierDC.STEEL, Tags.Items.TOOLS_PICKAXES));
+
+	public static final RegistryObject<Item> SHOVEL_BRASS = regItem("shovel_brass", () -> new ItemShovelDC(TierDC.BRASS, Tags.Items.TOOLS_SHOVELS));
 	public static final RegistryObject<Item> SHOVEL_STEEL = regItem("shovel_steel", () -> new ItemShovelDC(TierDC.STEEL, Tags.Items.TOOLS_SHOVELS));
+
+	public static final RegistryObject<Item> HOE_BRASS = regItem("hoe_brass", () -> new ItemHoeDC(TierDC.BRASS, Tags.Items.TOOLS_HOES));
 	public static final RegistryObject<Item> HOE_STEEL = regItem("hoe_steel", () -> new ItemHoeDC(TierDC.STEEL, Tags.Items.TOOLS_HOES));
+
+	public static final RegistryObject<Item> SCYTHE_FLINT = regItem("scythe_flint", () -> new ItemScythe(TierDC.FLINT, TagDC.ItemTag.SCYTHES));
+	public static final RegistryObject<Item> SCYTHE_BRASS = regItem("scythe_brass", () -> new ItemScythe(TierDC.BRASS, TagDC.ItemTag.SCYTHES));
 	public static final RegistryObject<Item> SCYTHE_STEEL = regItem("scythe_steel", () -> new ItemScythe(TierDC.STEEL, TagDC.ItemTag.SCYTHES));
 
-	public static final RegistryObject<Item> HARPOON_FLINT = regItem("harpoon_flint", () -> new HarpoonItem("flint", TierDC.BAMBOO, TagDC.ItemTag.HARPOON));
+	public static final RegistryObject<Item> HARPOON_FLINT = regItem("harpoon_flint", () -> new HarpoonItem("flint", TierDC.FLINT, TagDC.ItemTag.HARPOON));
 	public static final RegistryObject<Item> HARPOON_STEEL = regItem("harpoon_steel", () -> new HarpoonItem("steel", TierDC.STEEL, TagDC.ItemTag.HARPOON));
 
 	public static final RegistryObject<Item> CALABASH_BUCKET = regItem("bucket_calabash", () -> new StackableBucketItem("bucket_calabash", TagDC.ItemTag.CRAFT_CALABASH));
@@ -243,15 +247,25 @@ public class CoreInit {
 	public static final RegistryObject<Item> PATTERN_SUITS = regItem("pattern_paper_suits", () -> new MaterialItemDC(CLOTH, "pattern_paper_suits", null));
 	public static final RegistryObject<Item> PATTERN_PANTS = regItem("pattern_paper_pants", () -> new MaterialItemDC(CLOTH, "pattern_paper_pants", null));
 
-	public static final RegistryObject<Item> MET_BRONZE = regItem("helmet_bronze", () -> new ArmorItemDC("helmet_bronze", MaterialsDC.BRONZE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.DEFAULT));
-	public static final RegistryObject<Item> CHEST_BRONZE = regItem("plate_bronze", () -> new ArmorItemDC("plate_bronze", MaterialsDC.BRONZE, EquipmentSlot.CHEST, ArmorItemDC.ModelType.DEFAULT));
+	public static final RegistryObject<Item> MET_BRONZE = regItem("helmet_bronze", () -> new ArmorItemDC("helmet_bronze", MaterialsDC.BRONZE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.DEFAULT).setArmorName());
+	public static final RegistryObject<Item> CHEST_BRONZE = regItem("plate_bronze", () -> new ArmorItemDC("plate_bronze", MaterialsDC.BRONZE, EquipmentSlot.CHEST, ArmorItemDC.ModelType.DEFAULT).setArmorName());
 	public static final RegistryObject<Item> LEGGINS_BRONZE = regItem("chain_mail_bronze", () -> new ArmorItemDC("chain_mail_bronze", MaterialsDC.BRONZE, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
-	public static final RegistryObject<Item> BOOTS_BRONZE = regItem("boots_bronze", () -> new ArmorItemDC("boots_bronze", MaterialsDC.BRONZE, EquipmentSlot.FEET, ArmorItemDC.ModelType.DEFAULT));
+	public static final RegistryObject<Item> BOOTS_BRONZE = regItem("boots_bronze", () -> new ArmorItemDC("boots_bronze", MaterialsDC.BRONZE, EquipmentSlot.FEET, ArmorItemDC.ModelType.DEFAULT).setArmorName());
 
-	public static final RegistryObject<Item> MET_STEEL = regItem("helmet_steel", () -> new ArmorItemDC("helmet_steel", MaterialsDC.STEEL, EquipmentSlot.HEAD, ArmorItemDC.ModelType.DEFAULT));
-	public static final RegistryObject<Item> CHEST_STEEL = regItem("plate_steel", () -> new ArmorItemDC("plate_steel", MaterialsDC.STEEL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.DEFAULT));
+	public static final RegistryObject<Item> MET_STEEL = regItem("helmet_steel", () -> new ArmorItemDC("helmet_steel", MaterialsDC.STEEL, EquipmentSlot.HEAD, ArmorItemDC.ModelType.DEFAULT).setArmorName());
+	public static final RegistryObject<Item> CHEST_STEEL = regItem("plate_steel", () -> new ArmorItemDC("plate_steel", MaterialsDC.STEEL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.DEFAULT).setArmorName());
 	public static final RegistryObject<Item> LEGGINS_STEEL = regItem("chain_mail_steel", () -> new ArmorItemDC("chain_mail_steel", MaterialsDC.STEEL, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
-	public static final RegistryObject<Item> BOOTS_STEEL = regItem("boots_steel", () -> new ArmorItemDC("boots_steel", MaterialsDC.STEEL, EquipmentSlot.FEET, ArmorItemDC.ModelType.DEFAULT));
+	public static final RegistryObject<Item> BOOTS_STEEL = regItem("boots_steel", () -> new ArmorItemDC("boots_steel", MaterialsDC.STEEL, EquipmentSlot.FEET, ArmorItemDC.ModelType.DEFAULT).setArmorName());
+
+	public static final RegistryObject<Item> HAT_SAFETY = regItem("helmet_safety", () -> new ArmorItemDC("helmet_safety", MaterialsDC.RUBBER, EquipmentSlot.HEAD, ArmorItemDC.ModelType.DEFAULT)
+		.setArmorName("armor_safety"));
+	public static final RegistryObject<Item> LEGGINS_WADERS = regItem("waders_rubber", () -> new ArmorItemDC("waders_rubber", MaterialsDC.RUBBER, EquipmentSlot.CHEST, ArmorItemDC.ModelType.OVERSUITS));
+	public static final RegistryObject<Item> BOOTS_SAFETY = regItem("boots_safety", () -> new ArmorItemDC("boots_safety", MaterialsDC.RUBBER, EquipmentSlot.FEET, ArmorItemDC.ModelType.DEFAULT)
+		.setArmorName("armor_safety"));
+
+	public static final RegistryObject<Item> FUR_SHAWL = regItem("shawl_fur", () -> new ArmorItemDC("shawl_fur", ArmorMaterials.LEATHER, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	public static final RegistryObject<Item> FUR_LOINCLOTH = regItem("loincloth_fur", () -> new ArmorItemDC("loincloth_fur", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.OVERSUITS)
+		.setArmorName("loincloth_fur"));
 
 	public static final RegistryObject<Item> HAT_LINEN = regItem("hat_linen", () -> new ArmorItemDC("hat_linen", MaterialsDC.LINEN, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAT));
 	public static final RegistryObject<Item> HAT_LINEN_RED = regItem("hat_linen_red", () -> new ArmorItemDC("hat_linen_red", MaterialsDC.LINEN, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAT));

@@ -24,9 +24,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class CarpetPlanks extends BlockDC {
 
+	protected static final VoxelShape AABB = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+	protected static final VoxelShape AABB_FULL = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 	final String name;
 
 	public CarpetPlanks(String s) {
@@ -37,6 +41,21 @@ public class CarpetPlanks extends BlockDC {
 			.setValue(DCState.SOUTH, false)
 			.setValue(DCState.EAST, false)
 			.setValue(DCState.WEST, false));
+	}
+
+	@Override
+	public VoxelShape getOcclusionShape(BlockState p_53338_, BlockGetter p_53339_, BlockPos p_53340_) {
+		return AABB;
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext cont) {
+		return AABB_FULL;
+	}
+
+	@Override
+	public boolean isOcclusionShapeFullBlock(BlockState state, BlockGetter level, BlockPos pos) {
+		return false;
 	}
 
 	@Override

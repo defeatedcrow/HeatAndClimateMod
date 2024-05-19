@@ -14,25 +14,68 @@ import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.item.IItemDC;
 import defeatedcrow.hac.core.tag.TagDC;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
 public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 
 	final String name;
 	final ModelType type;
 	final ArmorMaterial material;
+	private String armorName;
 
 	public ArmorItemDC(String n, ArmorMaterial mat, EquipmentSlot slot, ModelType t) {
 		super(mat, slot, (new Item.Properties()).tab(CoreInit.CLOTH));
 		name = n;
 		type = t;
 		material = mat;
+		armorName = name;
+	}
+
+	public ArmorItemDC setArmorName() {
+		armorName = "armor_" + material.getName();
+		return this;
+	}
+
+	public ArmorItemDC setArmorName(String s) {
+		armorName = s;
+		return this;
+	}
+
+	@Override
+	public boolean canWalkOnPowderedSnow(ItemStack stack, LivingEntity wearer) {
+		return stack.is(CoreInit.BOOTS_SAFETY.get());
+	}
+
+	@Override
+	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		if (item.getItem() == CoreInit.HAT_SAFETY.get()) {
+			MutableComponent s = Component.translatable("dcs.tip.helmet_safety");
+			s.withStyle(ChatFormatting.GRAY);
+			list.add(s);
+		}
+		if (item.getItem() == CoreInit.LEGGINS_WADERS.get()) {
+			MutableComponent s = Component.translatable("dcs.tip.waders_rubber");
+			s.withStyle(ChatFormatting.GRAY);
+			list.add(s);
+		}
+		if (item.getItem() == CoreInit.BOOTS_SAFETY.get()) {
+			MutableComponent s = Component.translatable("dcs.tip.boots_safety");
+			s.withStyle(ChatFormatting.GRAY);
+			list.add(s);
+		}
+		super.appendHoverText(item, level, list, flag);
 	}
 
 	@Override
@@ -43,10 +86,7 @@ public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 	@Override
 	@Nullable
 	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String typeIn) {
-		if (type == ModelType.DEFAULT) {
-			return "dcs_climate:textures/entity/armor/armor_" + material.getName() + ".png";
-		}
-		return "dcs_climate:textures/entity/armor/" + name + ".png";
+		return "dcs_climate:textures/entity/armor/" + armorName + ".png";
 	}
 
 	@Override
@@ -93,6 +133,7 @@ public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 		LEGGINS,
 		SHIRT,
 		JACKET,
+		OVERSUITS,
 		SUITS,
 		HAT,
 		LONG,

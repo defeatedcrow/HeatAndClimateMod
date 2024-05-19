@@ -120,6 +120,7 @@
   "item.dcs_climate.main.pickaxe_steel":"Steel Pickaxe",
   "item.dcs_climate.main.shovel_steel":"Steel Shovel",
   "item.dcs_climate.main.hoe_steel":"Steel Hoe",
+  "item.dcs_climate.main.scythe_flint":"Flint Scythe",
   "item.dcs_climate.main.scythe_brass":"Brass Scythe",
   "item.dcs_climate.main.scythe_steel":"Steel Scythe",
   "item.dcs_climate.main.harpoon_flint":"Fishing Harpoon",
@@ -758,6 +759,13 @@
   "item.dcs_climate.main.plate_steel":"Steel Plate",
   "item.dcs_climate.main.chain_mail_steel":"Steel Chain Mail",
   "item.dcs_climate.main.boots_steel":"Steel Boots",
+
+  "item.dcs_climate.main.helmet_safety":"Safety Helmet",
+  "item.dcs_climate.main.waders_rubber":"Rubber Waders",
+  "item.dcs_climate.main.boots_safety":"Safety Boots",
+
+  "item.dcs_climate.main.shawl_fur":"Far Shawl",
+  "item.dcs_climate.main.loincloth_fur":"Fur Loincloth",
 
   "item.dcs_climate.main.hat_linen":"Straw Hat",
   "item.dcs_climate.main.hat_linen_red":"Straw Hat(Red)",
@@ -1516,6 +1524,9 @@
   "dcs.tip.alpha_mill":"In alpha version, it works without energy.",
   "dcs.tip.metal_building_blocks":"Hold the same block and right-click: Assists in placing the block.",
   "dcs.tip.screwdriver":"Switch cables and machine connections.",
+  "dcs.tip.helmet_safety":"Reduces damage from explosions and falling objects.",
+  "dcs.tip.boots_safety":"Reduces damage from falling and cactus.",
+  "dcs.tip.waders_rubber":"Prevents wetness and reduces damage from powder snow.",
 
   "dcs.tip.foodtaste.1":"Taste: ★",
   "dcs.tip.foodtaste.2":"Taste: ★★",

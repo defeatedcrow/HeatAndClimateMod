@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:rabbit_hide"
+    },
+    "Y": {
+      "tag": "forge:string"
+    }
+  },
+  "pattern": [
+    " Y ",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/loincloth_fur"
+  }
+}

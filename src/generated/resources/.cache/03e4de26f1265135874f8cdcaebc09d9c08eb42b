@@ -1,4 +1,4 @@
-// 1.19.2	2024-05-19T02:36:02.7170279	Tags for minecraft:item
+// 1.19.2	2024-05-20T02:02:14.7852843	Tags for minecraft:item
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
 766814a645325ff12a745441ecbe320a062ff8a1 data/dcs_climate/tags/items/building_stones.json
 f4f040e5c59073f0ad286cbc58be4a8313d31c25 data/dcs_climate/tags/items/building_stones/bricks.json
@@ -679,12 +679,13 @@ f9e2731ef013b8cbb4cb5e48fa5e33c399ee1489 data/forge/tags/items/strings/wool.json
 e269b8cd8da37045c2db781d6f4861a803e874e6 data/forge/tags/items/tools/harpoon.json
 bcc189e8978c2f13896ee9fbdb769e5607f2c78f data/forge/tags/items/tools/hoes.json
 de98ccc62c06e18b0ecd6dffbc6a7d8200610517 data/forge/tags/items/tools/pickaxes.json
-e5e2835330022f62711c37e9b88d7b9287ec10dd data/forge/tags/items/tools/scythes.json
+19809fc0844957cf77a803014c483aa57b4aed91 data/forge/tags/items/tools/scythes.json
 5018bd14cf5bd3ce6f4889a2bfa5d703e6a6c2ce data/forge/tags/items/tools/shovels.json
 f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/items/weed.json
 18693f8762776180171770992989e15666e10425 data/minecraft/tags/items/arrows.json
 0c66697fb072599561fc62082ec9457347694d33 data/minecraft/tags/items/fences.json
 4e8bf3fdbeca44ce5eba22bc2bf4c9b5a558e1a1 data/minecraft/tags/items/fishes.json
+5ee7f6137705b796a2b17e71224eb7ddfc0a6ce2 data/minecraft/tags/items/freeze_immune_wearables.json
 64070bb4724e38554171e259037bfb8778dae6ed data/minecraft/tags/items/leaves.json
 5c354d98c29eecca1d47c2a8237158c7bd18742f data/minecraft/tags/items/logs_that_burn.json
 8e606e6dbfeff3d72c99752517d102482f9df815 data/minecraft/tags/items/planks.json

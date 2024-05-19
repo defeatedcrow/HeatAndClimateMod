@@ -16,6 +16,7 @@ public class EntityModelLoader implements ResourceManagerReloadListener {
 	public static ModelThinArmor MODEL_LEGGINS;
 	public static ModelThinArmor MODEL_SHIRT;
 	public static ModelThinArmor MODEL_JACKET;
+	public static ModelThinArmor MODEL_OVERSUITS;
 	public static ModelThinArmor MODEL_SUITS;
 	public static ModelThinArmor MODEL_HAT;
 	public static ModelThinArmor MODEL_DRESS;
@@ -29,6 +30,7 @@ public class EntityModelLoader implements ResourceManagerReloadListener {
 		MODEL_LEGGINS = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(LEGGINS.getLayerLocation()));
 		MODEL_SHIRT = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(SHIRT.getLayerLocation()));
 		MODEL_JACKET = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(JACKET.getLayerLocation()));
+		MODEL_OVERSUITS = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(OVERSUITS.getLayerLocation()));
 		MODEL_SUITS = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(SUITS.getLayerLocation()));
 		MODEL_HAT = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(HAT.getLayerLocation()));
 		MODEL_DRESS = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(LONG.getLayerLocation()));
@@ -40,6 +42,7 @@ public class EntityModelLoader implements ResourceManagerReloadListener {
 	public static final EntityRenderData LEGGINS = new EntityRenderData("armor/leggins_linen", 1F, 0F);
 	public static final EntityRenderData SHIRT = new EntityRenderData("armor/shirt_linen", 1F, 0F);
 	public static final EntityRenderData JACKET = new EntityRenderData("armor/jacket_linen", 1F, 0F);
+	public static final EntityRenderData OVERSUITS = new EntityRenderData("armor/suits_cloth", 1F, 0F);
 	public static final EntityRenderData SUITS = new EntityRenderData("armor/suits_linen", 1F, 0F);
 	public static final EntityRenderData HAT = new EntityRenderData("armor/hat_linen", 1F, 0F);
 	public static final EntityRenderData LONG = new EntityRenderData("armor/long_linen", 1F, 0F);
