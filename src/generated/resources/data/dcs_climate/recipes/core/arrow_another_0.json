@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:gems/agates"
+    },
+    "Y": {
+      "tag": "forge:rods/wooden"
+    },
+    "Z": {
+      "tag": "forge:feathers"
+    }
+  },
+  "pattern": [
+    "Y",
+    "X",
+    "Z"
+  ],
+  "result": {
+    "count": 4,
+    "item": "minecraft:arrow"
+  }
+}

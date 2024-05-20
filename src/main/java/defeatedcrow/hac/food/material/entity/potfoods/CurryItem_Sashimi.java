@@ -33,8 +33,8 @@ public class CurryItem_Sashimi extends ItemEntityFood {
 		return LARGE_BOWL_CAPRESE;
 	}
 
-	public static final EntityRenderData LARGE_BOWL_CARPACCIO = new EntityRenderData("food/large_bowl_carpaccio", 0.75F, 0F);
-	public static final EntityRenderData LARGE_BOWL_FISH_CARPACCIO = new EntityRenderData("food/large_bowl_fish_carpaccio", 0.75F, 0F);
-	public static final EntityRenderData LARGE_BOWL_CAPRESE = new EntityRenderData("food/large_bowl_caprese", 0.75F, 0F);
+	public static final EntityRenderData LARGE_BOWL_CARPACCIO = new EntityRenderData("food/large_bowl_carpaccio", 0.85F, -0.1F);
+	public static final EntityRenderData LARGE_BOWL_FISH_CARPACCIO = new EntityRenderData("food/large_bowl_fish_carpaccio", 0.85F, -0.1F);
+	public static final EntityRenderData LARGE_BOWL_CAPRESE = new EntityRenderData("food/large_bowl_caprese", 0.85F, -0.1F);
 
 }

@@ -64,8 +64,8 @@ public class CurryItem_Fish extends ItemEntityFood {
 		return CURRY_FISH;
 	}
 
-	public static final EntityRenderData CURRY_FISH = new EntityRenderData("food/curry_fish", 0.75F, 0F);
+	public static final EntityRenderData CURRY_FISH = new EntityRenderData("food/curry_fish", 0.85F, -0.1F);
 
-	public static final EntityRenderData LARGE_BOWL_ACQUA_PAZZA = new EntityRenderData("food/large_bowl_acqua_pazza", 0.75F, 0F);
+	public static final EntityRenderData LARGE_BOWL_ACQUA_PAZZA = new EntityRenderData("food/large_bowl_acqua_pazza", 0.85F, -0.1F);
 
 }

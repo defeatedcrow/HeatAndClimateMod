@@ -62,6 +62,6 @@ public class CurryItem_Rice extends ItemEntityFood {
 		return CURRY_RICE;
 	}
 
-	public static final EntityRenderData CURRY_RICE = new EntityRenderData("food/curry_rice", 0.75F, 0F);
+	public static final EntityRenderData CURRY_RICE = new EntityRenderData("food/curry_rice", 0.85F, -0.1F);
 
 }

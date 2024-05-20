@@ -33,10 +33,10 @@ public class SquareSashimiItem extends ItemEntityFood {
 		return WHITE;
 	}
 
-	public static final EntityRenderData WHITE = new EntityRenderData("food/sashimi_white", 1F, 0F);
-	public static final EntityRenderData SALMON = new EntityRenderData("food/sashimi_salmon", 1F, 0F);
-	public static final EntityRenderData BLUE = new EntityRenderData("food/sashimi_blue", 1F, 0F);
-	public static final EntityRenderData TUNA = new EntityRenderData("food/sashimi_tuna", 1F, 0F);
-	public static final EntityRenderData SQUID = new EntityRenderData("food/sashimi_squid", 1F, 0F);
+	public static final EntityRenderData WHITE = new EntityRenderData("food/sashimi_white", 0.8F, 0F);
+	public static final EntityRenderData SALMON = new EntityRenderData("food/sashimi_salmon", 0.8F, 0F);
+	public static final EntityRenderData BLUE = new EntityRenderData("food/sashimi_blue", 0.8F, 0F);
+	public static final EntityRenderData TUNA = new EntityRenderData("food/sashimi_tuna", 0.8F, 0F);
+	public static final EntityRenderData SQUID = new EntityRenderData("food/sashimi_squid", 0.8F, 0F);
 
 }

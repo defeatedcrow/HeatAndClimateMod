@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "XX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/cutlery_chopsticks"
+  }
+}

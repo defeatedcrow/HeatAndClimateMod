@@ -26,7 +26,7 @@ public class SquareFishItem extends ItemEntityFood {
 		return SIMMER;
 	}
 
-	public static final EntityRenderData MEUNIERE = new EntityRenderData("food/fish_meuniere", 1F, 0F);
-	public static final EntityRenderData SIMMER = new EntityRenderData("food/simmered_fish", 1F, 0F);
+	public static final EntityRenderData MEUNIERE = new EntityRenderData("food/fish_meuniere", 0.8F, 0F);
+	public static final EntityRenderData SIMMER = new EntityRenderData("food/simmered_fish", 0.8F, 0F);
 
 }

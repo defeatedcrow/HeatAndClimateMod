@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/tool/cutlery_spoon"
+  },
+  "parent": "minecraft:item/handheld"
+}

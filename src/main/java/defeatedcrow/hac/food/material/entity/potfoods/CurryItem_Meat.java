@@ -68,9 +68,9 @@ public class CurryItem_Meat extends ItemEntityFood {
 		return LARGE_BOWL_LAMB;
 	}
 
-	public static final EntityRenderData LARGE_BOWL_FISH = new EntityRenderData("food/large_bowl_fish", 0.75F, 0F);
-	public static final EntityRenderData LARGE_BOWL_CABBAGE = new EntityRenderData("food/large_bowl_cabbage", 0.75F, 0F);
-	public static final EntityRenderData LARGE_BOWL_LAMB = new EntityRenderData("food/large_bowl_lamb", 0.75F, 0F);
-	public static final EntityRenderData LARGE_BOWL_BEEF = new EntityRenderData("food/large_bowl_beef", 0.75F, 0F);
+	public static final EntityRenderData LARGE_BOWL_FISH = new EntityRenderData("food/large_bowl_fish", 0.85F, -0.1F);
+	public static final EntityRenderData LARGE_BOWL_CABBAGE = new EntityRenderData("food/large_bowl_cabbage", 0.85F, -0.1F);
+	public static final EntityRenderData LARGE_BOWL_LAMB = new EntityRenderData("food/large_bowl_lamb", 0.85F, -0.1F);
+	public static final EntityRenderData LARGE_BOWL_BEEF = new EntityRenderData("food/large_bowl_beef", 0.85F, -0.1F);
 
 }

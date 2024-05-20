@@ -48,6 +48,11 @@ public class ChairEntity extends Entity implements IItemDropEntity {
 	}
 
 	@Override
+	public double getPassengersRidingOffset() {
+		return this.getBbHeight() + 0.25D;
+	}
+
+	@Override
 	public boolean canBeCollidedWith() {
 		return false;
 	}

@@ -78,14 +78,14 @@ public class CurryItem extends ItemEntityFood {
 		return CURRY_VEGI;
 	}
 
-	public static final EntityRenderData CURRY_VEGI = new EntityRenderData("food/curry_vegi", 0.75F, -0.1F);
-	public static final EntityRenderData CURRY_BEANS = new EntityRenderData("food/curry_beans", 0.75F, -0.1F);
-	public static final EntityRenderData CURRY_SPINACH = new EntityRenderData("food/curry_spinach", 0.75F, -0.1F);
-	public static final EntityRenderData CURRY_BUTTER_CHICKEN = new EntityRenderData("food/curry_butter_chicken", 0.75F, -0.1F);
-	public static final EntityRenderData CURRY_VINDALOO = new EntityRenderData("food/curry_vindaloo", 0.75F, -0.1F);
-	public static final EntityRenderData CURRY_BIRIYANI = new EntityRenderData("food/curry_biriyani", 0.75F, -0.1F);
-	public static final EntityRenderData CURRY_GREEN = new EntityRenderData("food/curry_green", 0.75F, -0.1F);
-	public static final EntityRenderData CURRY_RED = new EntityRenderData("food/curry_red", 0.75F, -0.1F);
-	public static final EntityRenderData CURRY_MASSAMAN = new EntityRenderData("food/curry_massaman", 0.75F, -0.1F);
+	public static final EntityRenderData CURRY_VEGI = new EntityRenderData("food/curry_vegi", 0.85F, -0.1F);
+	public static final EntityRenderData CURRY_BEANS = new EntityRenderData("food/curry_beans", 0.85F, -0.1F);
+	public static final EntityRenderData CURRY_SPINACH = new EntityRenderData("food/curry_spinach", 0.85F, -0.1F);
+	public static final EntityRenderData CURRY_BUTTER_CHICKEN = new EntityRenderData("food/curry_butter_chicken", 0.85F, -0.1F);
+	public static final EntityRenderData CURRY_VINDALOO = new EntityRenderData("food/curry_vindaloo", 0.85F, -0.1F);
+	public static final EntityRenderData CURRY_BIRIYANI = new EntityRenderData("food/curry_biriyani", 0.85F, -0.1F);
+	public static final EntityRenderData CURRY_GREEN = new EntityRenderData("food/curry_green", 0.85F, -0.1F);
+	public static final EntityRenderData CURRY_RED = new EntityRenderData("food/curry_red", 0.85F, -0.1F);
+	public static final EntityRenderData CURRY_MASSAMAN = new EntityRenderData("food/curry_massaman", 0.85F, -0.1F);
 
 }

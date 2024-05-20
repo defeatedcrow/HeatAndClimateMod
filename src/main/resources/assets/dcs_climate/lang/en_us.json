@@ -128,6 +128,10 @@
 
   "item.dcs_climate.main.bucket_calabash":"Calabash Water Bottle",
 
+  "item.dcs_climate.main.cutlery_chopsticks":"Chopsticks",
+  "item.dcs_climate.main.cutlery_spoon":"Spoon",
+  "item.dcs_climate.main.cutlery_fork":"Fork",
+
   "item.dcs_climate.main.null_item":"Null",
   "item.dcs_climate.main.icon_hac":"HeatAndClimate",
   "item.dcs_climate.main.icon_burning":"Heat Damage",
@@ -1419,6 +1423,13 @@
 
     "## entities":"",
 
+    "entity.dcs_climate.harpoon":"Harpoon",
+
+  "entity.dcs_climate.cutlery_chopsticks":"Chopsticks",
+  "entity.dcs_climate.cutlery_spoon":"Spoon",
+  "entity.dcs_climate.cutlery_fork":"Fork",
+  "entity.dcs_climate.chair_entity":"Chair",
+
   "entity.dcs_climate.bread_round":"Bread",
   "entity.dcs_climate.bread_square":"Plain Bread",
   "entity.dcs_climate.bread_cream":"Cream Filled Bread",
@@ -1446,7 +1457,7 @@
   "entity.dcs_climate.bottle_wine":"Bottle",
   "entity.dcs_climate.cup":"Teacup",
   "entity.dcs_climate.glass":"Drink",
-  "entity.dcs_climate.curry_base":"Large_Bowl",
+  "entity.dcs_climate.curry_base_model":"Large_Bowl",
   "entity.dcs_climate.curry_fish_model":"Large_Bowl",
   "entity.dcs_climate.curry_rice_model":"Large_Bowl",
   "entity.dcs_climate.curry_meat_model":"Large_Bowl",

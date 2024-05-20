@@ -33,10 +33,10 @@ public class SandwichItem extends ItemEntityFood {
 		return FRUIT;
 	}
 
-	public static final EntityRenderData FRUIT = new EntityRenderData("food/sandwich_fruit_jam", 1F, 0F);
-	public static final EntityRenderData MARMALADE = new EntityRenderData("food/sandwich_marmalade", 1F, 0F);
-	public static final EntityRenderData EGG = new EntityRenderData("food/sandwich_egg", 1F, 0F);
-	public static final EntityRenderData SALAD = new EntityRenderData("food/sandwich_salad", 1F, 0F);
-	public static final EntityRenderData SALMON = new EntityRenderData("food/sandwich_salmon", 1F, 0F);
+	public static final EntityRenderData FRUIT = new EntityRenderData("food/sandwich_fruit_jam", 0.6F, 0F);
+	public static final EntityRenderData MARMALADE = new EntityRenderData("food/sandwich_marmalade", 0.6F, 0F);
+	public static final EntityRenderData EGG = new EntityRenderData("food/sandwich_egg", 0.6F, 0F);
+	public static final EntityRenderData SALAD = new EntityRenderData("food/sandwich_salad", 0.6F, 0F);
+	public static final EntityRenderData SALMON = new EntityRenderData("food/sandwich_salmon", 0.6F, 0F);
 
 }

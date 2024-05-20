@@ -78,6 +78,14 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 
 	@Override
 	public InteractionResult interact(Player player, InteractionHand hand) {
+		if (!getItem().isEmpty() && player != null && player.getItemInHand(hand).is(TagDC.ItemTag.CUTLERY)) {
+			ItemStack food = getItem().copy();
+			if (food.isEdible()) {
+				player.eat(getLevel(), food);
+				getLevel().playSound(player, this.getX(), this.getY(), this.getZ(), SoundEvents.CHICKEN_EGG, SoundSource.PLAYERS, 0.5F, getLevel().random.nextFloat() * 0.2F + 0.8F);
+				this.kill();
+			}
+		}
 		if (!getItem().isEmpty() && getItem().getItem() == FoodInit.STICK_CHICKEN_COOKED.get() && player != null) {
 			if (player.getLevel().dimension() == Level.NETHER) {
 				ClimateCore.proxy.triggerAdvancement(player, "main/nether_chicken");

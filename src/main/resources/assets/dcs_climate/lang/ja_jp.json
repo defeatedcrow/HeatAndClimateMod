@@ -128,6 +128,10 @@
 
   "item.dcs_climate.main.bucket_calabash":"ヒョウタンの水筒",
 
+  "item.dcs_climate.main.cutlery_chopsticks":"箸",
+  "item.dcs_climate.main.cutlery_spoon":"スプーン",
+  "item.dcs_climate.main.cutlery_fork":"フォーク",
+
   "item.dcs_climate.main.null_item":"Null",
   "item.dcs_climate.main.icon_hac":"HeatAndClimate",
   "item.dcs_climate.main.icon_burning":"高温ダメージ",
@@ -1416,6 +1420,13 @@
 
     "## entities":"",
 
+  "entity.dcs_climate.harpoon":"銛",
+
+  "entity.dcs_climate.cutlery_chopsticks":"箸",
+  "entity.dcs_climate.cutlery_spoon":"スプーン",
+  "entity.dcs_climate.cutlery_fork":"フォーク",
+  "entity.dcs_climate.chair_entity":"椅子",
+
   "entity.dcs_climate.bread_round":"パン",
   "entity.dcs_climate.bread_square":"食パン",
   "entity.dcs_climate.bread_cream":"クリームパン",
@@ -1443,7 +1454,7 @@
   "entity.dcs_climate.bottle_wine":"酒瓶",
   "entity.dcs_climate.cup":"カップ",
   "entity.dcs_climate.glass":"グラス",
-  "entity.dcs_climate.curry_base":"カレー",
+  "entity.dcs_climate.curry_base_model":"カレー",
   "entity.dcs_climate.curry_fish_model":"大皿",
   "entity.dcs_climate.curry_rice_model":"大皿",
   "entity.dcs_climate.curry_meat_model":"大皿",

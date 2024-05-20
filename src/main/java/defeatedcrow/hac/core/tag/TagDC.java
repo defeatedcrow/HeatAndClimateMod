@@ -579,6 +579,7 @@ public class TagDC {
 
 		public static final TagKey<Item> SCYTHES = itemTag("tools/scythes");
 		public static final TagKey<Item> HARPOON = itemTag("tools/harpoon");
+		public static final TagKey<Item> CUTLERY = itemTag("tools/cutlery");
 
 		public static final TagKey<Item> DUST_AMARANTH = itemTag("ingredients/amaranth");
 		public static final TagKey<Item> DUST_OAT = itemTag("ingredients/oat");

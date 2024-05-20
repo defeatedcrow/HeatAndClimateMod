@@ -7,7 +7,9 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
+import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.BlockDC;
+import defeatedcrow.hac.core.material.entity.ChairEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -76,7 +78,13 @@ public class ChairBlock extends BlockDC implements SimpleWaterloggedBlock {
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
-
+		if (player != null) {
+			ChairEntity bind = CoreInit.CHAIR_ENTITY.get().create(level);
+			bind.setPos(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D);
+			bind.setDeltaMovement(0D, 0D, 0D);
+			player.startRiding(bind);
+			level.addFreshEntity(bind);
+		}
 		return InteractionResult.sidedSuccess(level.isClientSide);
 	}
 

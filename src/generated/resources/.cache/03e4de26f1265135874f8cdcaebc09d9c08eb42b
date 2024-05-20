@@ -1,4 +1,4 @@
-// 1.19.2	2024-05-20T02:02:14.7852843	Tags for minecraft:item
+// 1.19.2	2024-05-21T00:35:08.2886611	Tags for minecraft:item
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
 766814a645325ff12a745441ecbe320a062ff8a1 data/dcs_climate/tags/items/building_stones.json
 f4f040e5c59073f0ad286cbc58be4a8313d31c25 data/dcs_climate/tags/items/building_stones/bricks.json
@@ -676,6 +676,7 @@ c74380900e83f72f6211faba04db996211a8a7b6 data/forge/tags/items/strings/cotton.js
 49e74b9023d0e71ccbfc965cfa77ccdaae4eb7a5 data/forge/tags/items/strings/plant.json
 f9e2731ef013b8cbb4cb5e48fa5e33c399ee1489 data/forge/tags/items/strings/wool.json
 328a165aff818adfcd9eb9a7e98c7d5e4c4276a1 data/forge/tags/items/tools/axes.json
+ec25bf6f3a902db76c0c4deda002323da66a2b75 data/forge/tags/items/tools/cutlery.json
 e269b8cd8da37045c2db781d6f4861a803e874e6 data/forge/tags/items/tools/harpoon.json
 bcc189e8978c2f13896ee9fbdb769e5607f2c78f data/forge/tags/items/tools/hoes.json
 de98ccc62c06e18b0ecd6dffbc6a7d8200610517 data/forge/tags/items/tools/pickaxes.json

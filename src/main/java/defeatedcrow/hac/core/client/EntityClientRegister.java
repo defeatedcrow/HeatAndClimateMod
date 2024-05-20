@@ -7,10 +7,15 @@ import defeatedcrow.hac.core.client.entity.model.BlockChandelierModel;
 import defeatedcrow.hac.core.client.entity.model.BlockLockerModel;
 import defeatedcrow.hac.core.client.entity.model.BlockLuggageModel;
 import defeatedcrow.hac.core.client.entity.model.ChairBindModel;
+import defeatedcrow.hac.core.client.entity.model.CutleryModel;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicFin;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicWing;
 import defeatedcrow.hac.core.client.entity.model.ModelThinArmor;
+import defeatedcrow.hac.core.client.entity.renderer.RenderChair;
+import defeatedcrow.hac.core.client.entity.renderer.RenderChopsticks;
+import defeatedcrow.hac.core.client.entity.renderer.RenderFork;
 import defeatedcrow.hac.core.client.entity.renderer.RenderHarpoon;
+import defeatedcrow.hac.core.client.entity.renderer.RenderSpoon;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererCabinet;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererChandelier;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLocker;
@@ -25,6 +30,9 @@ import defeatedcrow.hac.core.material.block.building.CabinetTile;
 import defeatedcrow.hac.core.material.block.building.ChandelierTile;
 import defeatedcrow.hac.core.material.block.building.LockerTile;
 import defeatedcrow.hac.core.material.block.building.LuggageTile;
+import defeatedcrow.hac.core.material.item.tool.CutleryChopsticksItem;
+import defeatedcrow.hac.core.material.item.tool.CutleryForkItem;
+import defeatedcrow.hac.core.material.item.tool.CutlerySpoonItem;
 import defeatedcrow.hac.core.material.item.tool.HarpoonItem;
 import defeatedcrow.hac.food.client.entity.RenderBottleBeer;
 import defeatedcrow.hac.food.client.entity.RenderBottleWine;
@@ -267,6 +275,10 @@ public class EntityClientRegister {
 		// Entity
 		event.registerLayerDefinition(HarpoonItem.FLINT.getLayerLocation(), TridentModel::createLayer);
 		event.registerLayerDefinition(HarpoonItem.STEEL.getLayerLocation(), TridentModel::createLayer);
+
+		event.registerLayerDefinition(CutleryChopsticksItem.CHOPSTICKS.getLayerLocation(), CutleryModel::createLayer);
+		event.registerLayerDefinition(CutlerySpoonItem.SPOON.getLayerLocation(), CutleryModel::createLayer);
+		event.registerLayerDefinition(CutleryForkItem.FORK.getLayerLocation(), CutleryModel::createLayer);
 
 		event.registerLayerDefinition(EntityModelLoader.INSTANCE.BOOTS.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.45F)));
 		event.registerLayerDefinition(EntityModelLoader.INSTANCE.LEGGINS.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.35F)));
@@ -568,6 +580,10 @@ public class EntityClientRegister {
 
 		// Entity
 		event.registerEntityRenderer(CoreInit.HARPOON.get(), RenderHarpoon::new);
+		event.registerEntityRenderer(CoreInit.CUTLERY_CHOPSTICKS.get(), RenderChopsticks::new);
+		event.registerEntityRenderer(CoreInit.CUTLERY_SPOON.get(), RenderSpoon::new);
+		event.registerEntityRenderer(CoreInit.CUTLERY_FORK.get(), RenderFork::new);
+		event.registerEntityRenderer(CoreInit.CHAIR_ENTITY.get(), RenderChair::new);
 
 		event.registerEntityRenderer(FoodInit.BREAD_ROUND.get(), RenderFoodBase::new);
 		event.registerEntityRenderer(FoodInit.BREAD_SQUARE.get(), RenderBreadSquare::new);

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:rods/wooden"
+    },
+    "Y": {
+      "tag": "forge:ingots/nickel_silver"
+    }
+  },
+  "pattern": [
+    "Y",
+    "Y",
+    "X"
+  ],
+  "result": {
+    "item": "dcs_climate:main/cutlery_spoon"
+  }
+}
