@@ -109,6 +109,7 @@ public class PlantRecipes {
 		list1.add(new Seeding(FoodInit.BLOCK_CH_WILD, FoodInit.CROP_CH_WILD, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_CH_PLUM, FoodInit.CROP_CH_PLUM, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_CH_PEACH, FoodInit.CROP_CH_PEACH, 1));
+		list1.add(new Seeding(FoodInit.BLOCK_CH_ALMOND, FoodInit.CROP_CH_ALMOND, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_CN_AVOCADO, FoodInit.CROP_CN_AVOCADO, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_CT_POMELO, FoodInit.CROP_CT_POMELO, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_CT_MANDARIN, FoodInit.CROP_CT_MANDARIN, 1));

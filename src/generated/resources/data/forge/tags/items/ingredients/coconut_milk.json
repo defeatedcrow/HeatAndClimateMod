@@ -1,5 +1,6 @@
 {
   "values": [
-    "dcs_climate:food/pack_coconut_milk"
+    "dcs_climate:food/pack_coconut_milk",
+    "dcs_climate:food/pack_almond_milk"
   ]
 }

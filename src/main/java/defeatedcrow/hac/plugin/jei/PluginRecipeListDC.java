@@ -139,6 +139,7 @@ public class PluginRecipeListDC {
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CH_WILD.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CH_PLUM.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CH_PEACH.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CH_ALMOND.get());
 
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CN_CAMPHOR.get());
 		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CN_CINNAMON.get());

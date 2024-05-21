@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/tree/cherry_almond_leaves_aut"
+  },
+  "parent": "dcs_climate:block/dcs_leaves"
+}

@@ -433,6 +433,7 @@ public class TagDC {
 		public static final TagKey<Item> CROP_CHERRY = itemTag("crops/cherry");
 		public static final TagKey<Item> CROP_PLUM = itemTag("crops/plum");
 		public static final TagKey<Item> CROP_PEACH = itemTag("crops/peach");
+		public static final TagKey<Item> CROP_ALMOND = itemTag("crops/almond");
 		public static final TagKey<Item> CROP_CAMELLIA = itemTag("crops/camellia");
 		public static final TagKey<Item> CROP_SCHIMA = itemTag("crops/schima");
 		public static final TagKey<Item> CROP_TEA = itemTag("crops/tea");
@@ -603,6 +604,7 @@ public class TagDC {
 		public static final TagKey<Item> TEA_LEAVES_BLACK = itemTag("ingredients/tea_leaves_black");
 		public static final TagKey<Item> VANILLA_CURED = itemTag("ingredients/vanilla_cured");
 		public static final TagKey<Item> CASHEW_NUTS = itemTag("ingredients/cashew_nuts");
+		public static final TagKey<Item> ALMOND_NUTS = itemTag("ingredients/almond_nuts");
 		public static final TagKey<Item> SPROUT = itemTag("ingredients/sprout");
 
 		public static final TagKey<Item> DUST_BREAD_GRAINS = itemTag("ingredients/bread_grains");

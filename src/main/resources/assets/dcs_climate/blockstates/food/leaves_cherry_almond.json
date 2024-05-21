@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "stage6=0": {
+      "model": "dcs_climate:block/food/leaves_cherry_almond_0"
+    },
+    "stage6=1": {
+      "model": "dcs_climate:block/food/leaves_cherry_almond_1"
+    },
+    "stage6=2": {
+      "model": "dcs_climate:block/food/leaves_cherry_almond_2"
+    },
+    "stage6=3": {
+      "model": "dcs_climate:block/food/leaves_cherry_almond_3"
+    },
+    "stage6=4": {
+      "model": "dcs_climate:block/food/leaves_cherry_almond_4"
+    },
+    "stage6=5": {
+      "model": "dcs_climate:block/food/leaves_cherry_almond_5"
+    }
+  }
+}

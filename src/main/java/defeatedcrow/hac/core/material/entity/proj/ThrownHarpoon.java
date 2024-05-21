@@ -59,7 +59,7 @@ public class ThrownHarpoon extends AbstractArrow {
 		Entity entity = this.getOwner();
 		if (!getItem().isEmpty() && getItem().getItem() instanceof HarpoonItem harpoon) {
 			if ((this.dealtDamage || this.isNoPhysics()) && entity != null) {
-				if (harpoon.tier.getLevel() > 0 && pickup != AbstractArrow.Pickup.DISALLOWED) {
+				if (harpoon.tier != TierDC.FLINT && pickup != AbstractArrow.Pickup.DISALLOWED) {
 					if (!this.isAcceptibleReturnOwner()) {
 						dropItem(this.getEyePosition());
 					} else {

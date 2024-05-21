@@ -40,6 +40,8 @@ public class SaplingCherry extends SaplingBaseBlock {
 			return FoodInit.CROP_CH_PLUM.get();
 		case RARE:
 			return FoodInit.CROP_CH_PEACH.get();
+		case EPIC:
+			return FoodInit.CROP_CH_ALMOND.get();
 		default:
 			return FoodInit.CROP_CH_WILD.get();
 		}
@@ -54,6 +56,8 @@ public class SaplingCherry extends SaplingBaseBlock {
 			return Optional.of(FoodInit.BLOCK_CH_PLUM.get());
 		case RARE:
 			return Optional.of(FoodInit.BLOCK_CH_PEACH.get());
+		case EPIC:
+			return Optional.of(FoodInit.BLOCK_CH_ALMOND.get());
 		default:
 			return Optional.empty();
 		}
@@ -66,11 +70,17 @@ public class SaplingCherry extends SaplingBaseBlock {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
+		if (t == CropTier.EPIC) {
+			return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
+		}
 		return ImmutableList.of(DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
 	}
 
 	@Override
 	public List<DCHumidity> getSuitableHum(CropTier t) {
+		if (t == CropTier.EPIC) {
+			return ImmutableList.of(DCHumidity.DRY, DCHumidity.NORMAL);
+		}
 		return ImmutableList.of(DCHumidity.DRY, DCHumidity.NORMAL, DCHumidity.WET);
 	}
 
@@ -107,13 +117,15 @@ public class SaplingCherry extends SaplingBaseBlock {
 			return "plum";
 		if (tier == CropTier.RARE)
 			return "peach";
+		if (tier == CropTier.EPIC)
+			return "almond";
 		return "wild";
 	}
 
 	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		// 高さ3~6、幅5
-		level.random.nextInt(2);
+		level.random.nextInt(3);
 		int h = 3 + level.random.nextInt(3);
 		int r = 2;
 		BlockState log = FoodInit.LOG_CH_WILD.get().defaultBlockState();
@@ -122,6 +134,8 @@ public class SaplingCherry extends SaplingBaseBlock {
 			leaves = FoodInit.LEAVES_CH_PLUM.get().defaultBlockState().setValue(DCState.FLAG, true);
 		} else if (t == CropTier.RARE) {
 			leaves = FoodInit.LEAVES_CH_PEACH.get().defaultBlockState().setValue(DCState.FLAG, true);
+		} else if (t == CropTier.EPIC) {
+			leaves = FoodInit.LEAVES_CH_ALMOND.get().defaultBlockState().setValue(DCState.FLAG, true);
 		}
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
