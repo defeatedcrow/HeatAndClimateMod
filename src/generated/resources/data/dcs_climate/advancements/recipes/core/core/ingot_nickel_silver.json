@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_nickel_silver_ingot": {
+    "has_nickel_silver_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:main/ingot_nickel_silver"
+              "dcs_climate:main/metalblock_nickel_silver"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_nickel_silver_ingot",
+      "has_nickel_silver_block",
       "has_the_recipe"
     ]
   ],

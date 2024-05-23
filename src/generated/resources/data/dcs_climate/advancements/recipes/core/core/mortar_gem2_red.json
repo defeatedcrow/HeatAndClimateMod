@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_red_deepore": {
+    "has_red_raw_2": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_red_deep"
-            ]
+            "tag": "forge:raw_materials/aluminum"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_red_deepore",
+      "has_red_raw_2",
       "has_the_recipe"
     ]
   ],

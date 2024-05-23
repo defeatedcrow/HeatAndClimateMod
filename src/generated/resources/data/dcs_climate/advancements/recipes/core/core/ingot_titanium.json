@@ -7,12 +7,12 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_titanium_ingot": {
+    "has_titanium_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:main/ingot_titanium"
+              "dcs_climate:main/metalblock_titanium"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_titanium_ingot",
+      "has_titanium_block",
       "has_the_recipe"
     ]
   ],

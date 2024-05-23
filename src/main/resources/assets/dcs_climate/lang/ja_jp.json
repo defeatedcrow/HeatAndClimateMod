@@ -1154,6 +1154,7 @@
   "block.dcs_climate.build.bricks_schist_blue":"青色片岩レンガ",
   "block.dcs_climate.build.bricks_schist_nether":"ネザー片岩レンガ",
   "block.dcs_climate.build.bricks_granite":"御影石レンガ",
+  "block.dcs_climate.build.bricks_mortar":"モルタルレンガ",
 
   "block.dcs_climate.build.pillar_mud":"泥岩の柱",
   "block.dcs_climate.build.pillar_gypsum":"石膏の柱",
@@ -1165,6 +1166,7 @@
   "block.dcs_climate.build.pillar_schist_blue":"青色片岩の柱",
   "block.dcs_climate.build.pillar_schist_nether":"ネザー片岩の柱",
   "block.dcs_climate.build.pillar_granite":"御影石の柱",
+  "block.dcs_climate.build.pillar_mortar":"モルタルの柱",
 
   "block.dcs_climate.build.chiseled_mud":"模様つき泥岩",
   "block.dcs_climate.build.chiseled_gypsum":"模様つき石膏",
@@ -1176,6 +1178,7 @@
   "block.dcs_climate.build.chiseled_schist_blue":"模様つき青色片岩",
   "block.dcs_climate.build.chiseled_schist_nether":"模様つきネザー片岩",
   "block.dcs_climate.build.chiseled_granite":"模様つき御影石",
+  "block.dcs_climate.build.chiseled_mortar":"模様つきモルタルブロック",
 
   "block.dcs_climate.build.stairs_mud":"泥岩の階段",
   "block.dcs_climate.build.stairs_gypsum":"石膏の階段",
@@ -1187,6 +1190,8 @@
   "block.dcs_climate.build.stairs_schist_blue":"青色片岩の階段",
   "block.dcs_climate.build.stairs_schist_nether":"ネザー片岩の階段",
   "block.dcs_climate.build.stairs_granite":"御影石の階段",
+  "block.dcs_climate.build.stairs_mortar":"モルタルの階段",
+  "block.dcs_climate.build.stairs_adobe":"日干しレンガの階段",
 
   "block.dcs_climate.build.slab_mud":"泥岩の半ブロック",
   "block.dcs_climate.build.slab_gypsum":"石膏の半ブロック",
@@ -1198,6 +1203,8 @@
   "block.dcs_climate.build.slab_schist_blue":"青色片岩の半ブロック",
   "block.dcs_climate.build.slab_schist_nether":"ネザー片岩の半ブロック",
   "block.dcs_climate.build.slab_granite":"御影石の半ブロック",
+  "block.dcs_climate.build.slab_mortar":"モルタルの半ブロック",
+  "block.dcs_climate.build.slab_adobe":"日干しレンガの半ブロック",
 
   "block.dcs_climate.build.wall_mud":"泥岩の塀",
   "block.dcs_climate.build.wall_gypsum":"石膏の塀",
@@ -1209,6 +1216,8 @@
   "block.dcs_climate.build.wall_schist_blue":"青色片岩の塀",
   "block.dcs_climate.build.wall_schist_nether":"ネザー片岩の塀",
   "block.dcs_climate.build.wall_granite":"御影石の塀",
+  "block.dcs_climate.build.wall_mortar":"モルタルの塀",
+  "block.dcs_climate.build.wall_adobe":"日干しレンガの塀",
 
   "block.dcs_climate.build.stairs_beech_common":"ブナの階段",
   "block.dcs_climate.build.stairs_beech_walnut":"クルミの階段",
@@ -1251,6 +1260,30 @@
   "block.dcs_climate.build.fence_reed_sorghum":"ソルガム材のフェンス",
   "block.dcs_climate.build.fence_sumac_lacquer":"ウルシのフェンス",
   "block.dcs_climate.build.fence_lacquerware":"漆塗りのフェンス",
+
+  "block.dcs_climate.build.door_beech":"ブナのドア",
+  "block.dcs_climate.build.door_walnut":"クルミのドア",
+  "block.dcs_climate.build.door_sweet":"ミズナラのドア",
+  "block.dcs_climate.build.door_cherry":"サクラのドア",
+  "block.dcs_climate.build.door_camphor":"樟のドア",
+  "block.dcs_climate.build.door_citrus":"ミカンのドア",
+  "block.dcs_climate.build.door_mulberry":"クワのドア",
+  "block.dcs_climate.build.door_eucalyptus":"ユーカリのドア",
+  "block.dcs_climate.build.door_ash":"トネリコのドア",
+  "block.dcs_climate.build.door_lacquer":"ウルシのドア",
+  "block.dcs_climate.build.door_lacquerware":"漆塗りのドア",
+
+  "block.dcs_climate.build.trapdoor_beech":"ブナのトラップドア",
+  "block.dcs_climate.build.trapdoor_walnut":"クルミのトラップドア",
+  "block.dcs_climate.build.trapdoor_sweet":"ミズナラのトラップドア",
+  "block.dcs_climate.build.trapdoor_cherry":"サクラのトラップドア",
+  "block.dcs_climate.build.trapdoor_camphor":"樟のトラップドア",
+  "block.dcs_climate.build.trapdoor_citrus":"ミカンのトラップドア",
+  "block.dcs_climate.build.trapdoor_mulberry":"クワのトラップドア",
+  "block.dcs_climate.build.trapdoor_eucalyptus":"ユーカリのトラップドア",
+  "block.dcs_climate.build.trapdoor_ash":"トネリコのトラップドア",
+  "block.dcs_climate.build.trapdoor_lacquer":"ウルシのトラップドア",
+  "block.dcs_climate.build.trapdoor_lacquerware":"漆塗りのトラップドア",
 
   "block.dcs_climate.build.fence_metal":"アルミのフェンス",
   "block.dcs_climate.build.metal_ladder":"アルミのはしご",
@@ -1547,6 +1580,7 @@
   "dcs.tip.foodtaste.4":"風味: ★★★★",
   "dcs.tip.foodtaste.5":"風味: ★★★★★",
 
+  "dcs.tip.unsafe_food":"安全ではありません",
   "dcs.tip.raw_eaten_crop":"生食可",
   "dcs.tip.not_eaten_crop":"食べられません。",
   "dcs.tip.spawn_entity_food":"スニーク+右クリック: Entityとしてスポーンします。",

@@ -1157,6 +1157,7 @@
   "block.dcs_climate.build.bricks_schist_blue":"Blue Schist Bricks",
   "block.dcs_climate.build.bricks_schist_nether":"Nether Schist Bricks",
   "block.dcs_climate.build.bricks_granite":"Black Granite Bricks",
+  "block.dcs_climate.build.bricks_mortar":"Mortar Bricks",
 
   "block.dcs_climate.build.pillar_mud":"Mud Pillar",
   "block.dcs_climate.build.pillar_gypsum":"Gypsum Pillar",
@@ -1168,6 +1169,7 @@
   "block.dcs_climate.build.pillar_schist_blue":"Blue Schist Pillar",
   "block.dcs_climate.build.pillar_schist_nether":"Nether Schist Pillar",
   "block.dcs_climate.build.pillar_granite":"Black Granite Pillar",
+  "block.dcs_climate.build.pillar_mortar":"Mortar Pillar",
 
   "block.dcs_climate.build.chiseled_mud":"Chiseled Mud",
   "block.dcs_climate.build.chiseled_gypsum":"Chiseled Gypsum",
@@ -1179,6 +1181,7 @@
   "block.dcs_climate.build.chiseled_schist_blue":"Chiseled Blue Schist",
   "block.dcs_climate.build.chiseled_schist_nether":"Chiseled Nether Schist",
   "block.dcs_climate.build.chiseled_granite":"Chiseled Granite",
+  "block.dcs_climate.build.chiseled_mortar":"Chiseled Mortar",
 
   "block.dcs_climate.build.stairs_mud":"Mud Stairs",
   "block.dcs_climate.build.stairs_gypsum":"Gypsum Stairs",
@@ -1190,6 +1193,8 @@
   "block.dcs_climate.build.stairs_schist_blue":"Blue Schist Stairs",
   "block.dcs_climate.build.stairs_schist_nether":"Nether Schist Stairs",
   "block.dcs_climate.build.stairs_granite":"Black Granite Stairs",
+  "block.dcs_climate.build.stairs_mortar":"Mortar Stairs",
+  "block.dcs_climate.build.stairs_adobe":"Adobe Stairs",
 
   "block.dcs_climate.build.slab_mud":"Mud Slab",
   "block.dcs_climate.build.slab_gypsum":"Gypsum Slab",
@@ -1201,6 +1206,8 @@
   "block.dcs_climate.build.slab_schist_blue":"Blue Schist Slab",
   "block.dcs_climate.build.slab_schist_nether":"Nether Schist Slab",
   "block.dcs_climate.build.slab_granite":"Black Granite Slab",
+  "block.dcs_climate.build.slab_mortar":"Mortar Slab",
+  "block.dcs_climate.build.slab_adobe":"Adobe Slab",
 
   "block.dcs_climate.build.wall_mud":"Mud Wall",
   "block.dcs_climate.build.wall_gypsum":"Gypsum Wall",
@@ -1212,6 +1219,8 @@
   "block.dcs_climate.build.wall_schist_blue":"Blue Schist Wall",
   "block.dcs_climate.build.wall_schist_nether":"Nether Schist Wall",
   "block.dcs_climate.build.wall_granite":"Black Granite Wall",
+  "block.dcs_climate.build.wall_mortar":"Mortar Wall",
+  "block.dcs_climate.build.wall_adobe":"Adobe Wall",
 
   "block.dcs_climate.build.stairs_beech_common":"Beech Stairs",
   "block.dcs_climate.build.stairs_beech_walnut":"Walnut Stairs",
@@ -1254,6 +1263,30 @@
   "block.dcs_climate.build.fence_reed_sorghum":"Sorghum Fence",
   "block.dcs_climate.build.fence_sumac_lacquer":"Sumac Fence",
   "block.dcs_climate.build.fence_lacquerware":"Lacquered Fence",
+
+  "block.dcs_climate.build.door_beech":"Beech Door",
+  "block.dcs_climate.build.door_walnut":"Walnut Door",
+  "block.dcs_climate.build.door_sweet":"Mizunara Door",
+  "block.dcs_climate.build.door_cherry":"Cherry Door",
+  "block.dcs_climate.build.door_camphor":"Camphorwood Door",
+  "block.dcs_climate.build.door_citrus":"Citrus Door",
+  "block.dcs_climate.build.door_mulberry":"Mulberry Door",
+  "block.dcs_climate.build.door_eucalyptus":"River Red Gum Door",
+  "block.dcs_climate.build.door_ash":"Ash Door",
+  "block.dcs_climate.build.door_lacquer":"Sumac Door",
+  "block.dcs_climate.build.door_lacquerware":"Lacquered Door",
+
+  "block.dcs_climate.build.trapdoor_beech":"Beech Trapdoor",
+  "block.dcs_climate.build.trapdoor_walnut":"Walnut Trapdoor",
+  "block.dcs_climate.build.trapdoor_sweet":"Mizunara Trapdoor",
+  "block.dcs_climate.build.trapdoor_cherry":"Cherry Trapdoor",
+  "block.dcs_climate.build.trapdoor_camphor":"Camphorwood Trapdoor",
+  "block.dcs_climate.build.trapdoor_citrus":"Citrus Trapdoor",
+  "block.dcs_climate.build.trapdoor_mulberry":"Mulberry Trapdoor",
+  "block.dcs_climate.build.trapdoor_eucalyptus":"River Red Gum Trapdoor",
+  "block.dcs_climate.build.trapdoor_ash":"Ash Trapdoor",
+  "block.dcs_climate.build.trapdoor_lacquer":"Sumac Trapdoor",
+  "block.dcs_climate.build.trapdoor_lacquerware":"Lacquered Trapdoor",
 
   "block.dcs_climate.build.fence_metal":"Metal Fence",
   "block.dcs_climate.build.metal_ladder":"Metal Ladder",
@@ -1550,6 +1583,7 @@
   "dcs.tip.foodtaste.4":"Taste: ★★★★",
   "dcs.tip.foodtaste.5":"Taste: ★★★★★",
 
+  "dcs.tip.unsafe_food":"UNSAFE",
   "dcs.tip.raw_eaten_crop":"Edible Raw",
   "dcs.tip.not_eaten_crop":"Not Edible",
   "dcs.tip.spawn_entity_food":"Sneaking + Right-click: Spawn as entity",

@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_black_deepore": {
+    "has_black_raw_3": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_black_deep"
-            ]
+            "tag": "forge:raw_materials/molybdenum"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_black_deepore",
+      "has_black_raw_3",
       "has_the_recipe"
     ]
   ],

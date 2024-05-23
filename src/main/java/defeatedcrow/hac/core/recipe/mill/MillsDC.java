@@ -72,10 +72,11 @@ public class MillsDC {
 		list2.add(new Miscs("ore_gold", 1, () -> Tags.Items.ORES_GOLD, () -> Items.RAW_GOLD, () -> Items.RAW_GOLD));
 		list2.add(new Miscs("ore_redstone", 6, () -> Tags.Items.ORES_REDSTONE, () -> Items.REDSTONE, CoreInit.OREDUST_GREEN3));
 		list2.add(new Miscs("cobblestone", 1, () -> Tags.Items.COBBLESTONE, () -> Items.GRAVEL, () -> Items.FLINT));
-		list2.add(new Miscs("gravel", 1, () -> Tags.Items.GRAVEL, () -> Items.SAND, CoreInit.DUST_CRYSTAL));
+		list2.add(new Miscs("gravel", 1, () -> Tags.Items.GRAVEL, () -> Items.FLINT, () -> Items.SAND));
 		list2.add(new Miscs("magma", 1, () -> TagDC.ItemTag.MAGMA, () -> Items.BLAZE_POWDER, () -> Items.BLAZE_POWDER));
 		list2.add(new Miscs("bone", 5, () -> Tags.Items.BONES, () -> Items.BONE_MEAL, () -> Items.BONE_MEAL));
 		list2.add(new Miscs("sugar_cane", 3, () -> TagDC.ItemTag.CROP_SUGAR, () -> Items.SUGAR, FoodInit.FOOD_SYRUP));
+		list2.add(new Miscs("sandstone", 1, () -> Tags.Items.SANDSTONE, () -> Items.SAND, CoreInit.DUST_LIME));
 
 		list2.add(new Miscs("gem_salt", 2, () -> TagDC.ItemTag.GEM_SALT, CoreInit.DUST_SALT, CoreInit.DUST_SALT));
 		list2.add(new Miscs("gem_niter", 2, () -> TagDC.ItemTag.GEM_NITER, CoreInit.DUST_NITER, CoreInit.DUST_NITER));
@@ -89,13 +90,12 @@ public class MillsDC {
 		list2.add(new Miscs("planks", 1, () -> ItemTags.PLANKS, CoreInit.DUST_WOOD, CoreInit.DUST_WOOD));
 		list2.add(new Miscs("weeds", 1, () -> TagDC.ItemTag.WEED, CoreInit.DUST_PLANT, CoreInit.DUST_PLANT));
 
+		list2.add(new Miscs("ore_salt", 1, () -> TagDC.ItemTag.ORES_SALT, CoreInit.GEM_SALT, CoreInit.GEM_SALT));
+		list2.add(new Miscs("ore_niter", 1, () -> TagDC.ItemTag.ORES_NITER, CoreInit.GEM_NITER, CoreInit.GEM_NITER));
+		list2.add(new Miscs("ore_sulfur", 1, () -> TagDC.ItemTag.ORES_SULFUR, CoreInit.GEM_SULFUR, CoreInit.GEM_SULFUR));
+
 		list2.add(new Miscs("fish_powder", 1, () -> TagDC.ItemTag.RAW_ALL_FISH, FoodInit.FOOD_FISH_POWDER, FoodInit.FOOD_FISH_POWDER));
 
-		list3.add(new Sieve("ore_salt", 1, () -> TagDC.ItemTag.ORES_SALT, CoreInit.GEM_SALT, CoreInit.GEM_SALT));
-		list3.add(new Sieve("ore_niter", 1, () -> TagDC.ItemTag.ORES_NITER, CoreInit.GEM_NITER, CoreInit.GEM_NITER));
-		list3.add(new Sieve("ore_sulfur", 1, () -> TagDC.ItemTag.ORES_SULFUR, CoreInit.GEM_SULFUR, CoreInit.GEM_SULFUR));
-
-		list3.add(new Sieve("gravel", 1, () -> Tags.Items.GRAVEL, () -> Items.FLINT, CoreInit.GEM_CHALCEDONY));
 		list3.add(new Sieve("ore_coal", 1, () -> Tags.Items.ORES_COAL, () -> Items.COAL, () -> Items.COAL));
 		list3.add(new Sieve("ore_lapis", 8, () -> Tags.Items.ORES_LAPIS, () -> Items.LAPIS_LAZULI, () -> Items.LAPIS_LAZULI));
 		list3.add(new Sieve("ore_emerald", 1, () -> Tags.Items.ORES_EMERALD, () -> Items.EMERALD, () -> Items.EMERALD));

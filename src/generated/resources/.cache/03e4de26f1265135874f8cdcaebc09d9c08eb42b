@@ -1,9 +1,9 @@
-// 1.19.2	2024-05-21T16:51:39.9611864	Tags for minecraft:item
+// 1.19.2	2024-05-24T02:01:37.4373277	Tags for minecraft:item
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
-766814a645325ff12a745441ecbe320a062ff8a1 data/dcs_climate/tags/items/building_stones.json
-f4f040e5c59073f0ad286cbc58be4a8313d31c25 data/dcs_climate/tags/items/building_stones/bricks.json
-b84f492dcd8df246708cd5b8022015efba4ee401 data/dcs_climate/tags/items/building_stones/chiseled.json
-54f98685e983a08d29848c1afcaccf77db4523ef data/dcs_climate/tags/items/building_stones/pillar.json
+ec1456f116d5ab235ffefbc79d4a8fe9087d6286 data/dcs_climate/tags/items/building_stones.json
+c7f96f68fcca93bc6fe2450a3d1f1b41ea5b9021 data/dcs_climate/tags/items/building_stones/bricks.json
+37b81f1ced017a5998c0ddd9ad9756d1bd2cce97 data/dcs_climate/tags/items/building_stones/chiseled.json
+51137264e631573abba87e5b5fee1467e0a6d06e data/dcs_climate/tags/items/building_stones/pillar.json
 af01e42317f63dc3a54da95dfc59def9ec8cf6a1 data/dcs_climate/tags/items/cable_energy.json
 3ebf02db67e2caa14a6ed41a30670c907ffdf9e4 data/dcs_climate/tags/items/can_fish_with_lod.json
 9691b8fa959d0c2eca43b928b1d45c3e5fa4fb15 data/dcs_climate/tags/items/color_drops.json
@@ -132,6 +132,7 @@ e86548b9f10725178451a627180c5446b7ae180e data/dcs_climate/tags/items/meals/skewe
 ea87dddaf131cef22fdeafd24a3a9421b7b97368 data/dcs_climate/tags/items/pipe_fluid.json
 14beccb609979217819b872695ab401898eb321a data/dcs_climate/tags/items/raw_foods.json
 b46bf9cdc3f2579ba6e4484e7a451ceffd59c4a5 data/dcs_climate/tags/items/seasoning.json
+e5831731f89023bcb8f23853ad482b9f89716ffa data/dcs_climate/tags/items/unsafe_foods.json
 7d6fd01964c88a56cda99333872579b37ef749b0 data/forge/tags/items/animal_feeds/compound.json
 0332ee57f7973ff3aa0e5f810558555ce7563caf data/forge/tags/items/animal_feeds/hay.json
 7f473b6b18af20cad07cd66ab6dce77e93ea4f56 data/forge/tags/items/animal_feeds/straw.json
@@ -693,9 +694,11 @@ f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/items/weed.json
 5c354d98c29eecca1d47c2a8237158c7bd18742f data/minecraft/tags/items/logs_that_burn.json
 8e606e6dbfeff3d72c99752517d102482f9df815 data/minecraft/tags/items/planks.json
 7261738e511958f49a3da840fa522373858e9788 data/minecraft/tags/items/saplings.json
-3506ccac40969956e7be5a5ba073b6b2e0a6ec1b data/minecraft/tags/items/slabs.json
-93584eacb2466fc331d14ba375b406a838d1bf83 data/minecraft/tags/items/stairs.json
-77fb866d31af5d8f52f649bcf7f936a17dc50ac3 data/minecraft/tags/items/walls.json
-df73efc98158574a6bc92435946a721d87263e90 data/minecraft/tags/items/wooden_fences.json
-adc094f32baa137eb46e4b44f0639c2b7685af10 data/minecraft/tags/items/wooden_slabs.json
-479f35cc53336ab17de66c1eb1d71b3f7db8f28f data/minecraft/tags/items/wooden_stairs.json
+d834e91d596939b5052eae20b8a61a2707d8e324 data/minecraft/tags/items/slabs.json
+83f14342ac2d8fab4913fcf9ca7e8bb0277252b7 data/minecraft/tags/items/stairs.json
+fba12fd49e2fc3cd86609bc6f04d1b94e27afb82 data/minecraft/tags/items/walls.json
+c735a949a5e49036e41213b18af4325306358ad6 data/minecraft/tags/items/wooden_doors.json
+0bd5b3fedd00b4500c89731de33589d1836fdcbc data/minecraft/tags/items/wooden_fences.json
+1d4dcffe5864ab4b1b7d960c61cdee252c2aa0d1 data/minecraft/tags/items/wooden_slabs.json
+893a5d66ed5a9dd0f9ec5626b5a7dc1fe9fdf4e1 data/minecraft/tags/items/wooden_stairs.json
+367543585afa8d3c3612598dfa2b5d4504890af3 data/minecraft/tags/items/wooden_trapdoors.json

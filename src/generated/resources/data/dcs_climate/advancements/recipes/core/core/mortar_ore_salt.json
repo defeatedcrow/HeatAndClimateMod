@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ore_sulfur": {
+    "has_ore_salt": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:ores/sulfur"
+            "tag": "forge:ores/salt"
           }
         ]
       },
@@ -13,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:core/sieve_ore_sulfur"
+        "recipe": "dcs_climate:core/mortar_ore_salt"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_ore_sulfur",
+      "has_ore_salt",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:core/sieve_ore_sulfur"
+      "dcs_climate:core/mortar_ore_salt"
     ]
   }
 }

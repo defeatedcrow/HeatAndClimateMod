@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_gravel": {
+    "has_sandstone": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:gravel"
+            "tag": "forge:sandstone"
           }
         ]
       },
@@ -13,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:core/sieve_gravel"
+        "recipe": "dcs_climate:core/mortar_sandstone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_gravel",
+      "has_sandstone",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:core/sieve_gravel"
+      "dcs_climate:core/mortar_sandstone"
     ]
   }
 }

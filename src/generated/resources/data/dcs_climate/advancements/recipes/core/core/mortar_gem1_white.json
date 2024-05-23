@@ -7,13 +7,11 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_white_ore": {
+    "has_white_raw_1": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_white"
-            ]
+            "tag": "forge:raw_materials/copper"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_white_ore",
+      "has_white_raw_1",
       "has_the_recipe"
     ]
   ],

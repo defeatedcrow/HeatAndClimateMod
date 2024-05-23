@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bscco_ingot": {
+    "has_bscco_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:main/ingot_bscco"
+              "dcs_climate:main/metalblock_bscco"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_bscco_ingot",
+      "has_bscco_block",
       "has_the_recipe"
     ]
   ],

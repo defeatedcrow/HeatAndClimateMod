@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:food/crop_amaranth_common"
-            ]
+            "tag": "forge:crops/glasswort"
           }
         ]
       },

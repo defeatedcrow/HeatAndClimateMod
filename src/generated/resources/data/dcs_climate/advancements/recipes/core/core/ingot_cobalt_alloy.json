@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cobalt_alloy_ingot": {
+    "has_cobalt_alloy_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:main/ingot_cobalt"
+              "dcs_climate:main/metalblock_cobalt"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_cobalt_alloy_ingot",
+      "has_cobalt_alloy_block",
       "has_the_recipe"
     ]
   ],

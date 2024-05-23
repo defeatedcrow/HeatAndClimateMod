@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:core/sieve_ore_niter"
+        "recipe": "dcs_climate:core/mortar_ore_niter"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:core/sieve_ore_niter"
+      "dcs_climate:core/mortar_ore_niter"
     ]
   }
 }

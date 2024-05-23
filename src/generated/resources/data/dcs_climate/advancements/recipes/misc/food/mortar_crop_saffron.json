@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:food/crop_iris_common"
-            ]
+            "tag": "forge:crops/saffron"
           }
         ]
       },

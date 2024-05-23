@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sus_ingot": {
+    "has_sus_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:main/ingot_sus"
+              "dcs_climate:main/metalblock_sus"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_sus_ingot",
+      "has_sus_block",
       "has_the_recipe"
     ]
   ],

@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_black_ore": {
+    "has_black_raw_1": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_black"
-            ]
+            "tag": "forge:raw_materials/magnetite"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_black_ore",
+      "has_black_raw_1",
       "has_the_recipe"
     ]
   ],

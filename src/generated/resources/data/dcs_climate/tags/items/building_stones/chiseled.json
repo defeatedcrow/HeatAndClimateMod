@@ -10,6 +10,7 @@
     "dcs_climate:build/chiseled_schist_blue",
     "dcs_climate:build/chiseled_schist_nether",
     "dcs_climate:build/chiseled_granite",
+    "dcs_climate:build/chiseled_mortar",
     "dcs_climate:build/chiseled_mud",
     "dcs_climate:build/chiseled_gypsum",
     "dcs_climate:build/chiseled_serpentine",
@@ -19,6 +20,7 @@
     "dcs_climate:build/chiseled_marble",
     "dcs_climate:build/chiseled_schist_blue",
     "dcs_climate:build/chiseled_schist_nether",
-    "dcs_climate:build/chiseled_granite"
+    "dcs_climate:build/chiseled_granite",
+    "dcs_climate:build/chiseled_mortar"
   ]
 }

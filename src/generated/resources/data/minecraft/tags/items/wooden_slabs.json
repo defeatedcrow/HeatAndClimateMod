@@ -9,9 +9,9 @@
     "dcs_climate:build/slab_morus_mulberry",
     "dcs_climate:build/slab_myrtle_eucalyptus",
     "dcs_climate:build/slab_olive_ash",
-    "dcs_climate:build/slab_palm_coconut",
     "dcs_climate:build/slab_sumac_lacquer",
-    "dcs_climate:build/slab_reed_sorghum",
-    "dcs_climate:build/slab_lacquerware"
+    "dcs_climate:build/slab_lacquerware",
+    "dcs_climate:build/slab_palm_coconut",
+    "dcs_climate:build/slab_reed_sorghum"
   ]
 }

@@ -348,6 +348,11 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 				TagDC.ItemTag.HOT_SAUSE, TagDC.ItemTag.VINEGAR, TagDC.ItemTag.HUMMUS,
 				TagDC.ItemTag.SALSA, TagDC.ItemTag.HERB_SALT, TagDC.ItemTag.SUGARS);
 
+		// unsafe foods
+
+		tag(TagDC.ItemTag.HAC_UNSAFE_FOODS).add(Items.ROTTEN_FLESH, Items.SPIDER_EYE, Items.POISONOUS_POTATO,
+				FoodInit.CROP_RA_MONKSHOOD.get(), FoodInit.CROP_SL_NIGHTSHADE.get());
+
 		// magic
 
 		tag(ItemTags.ARROWS).add(MagicInit.ARROW_WHITE.get(), MagicInit.ARROW_BLUE.get(), MagicInit.ARROW_BLACK.get(),

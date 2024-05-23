@@ -1,5 +1,6 @@
 {
   "values": [
+    "dcs_climate:build/mortar",
     "dcs_climate:build/flintbricks",
     "dcs_climate:build/flintbricks_white",
     "dcs_climate:build/flintbricks_black",
@@ -8,7 +9,6 @@
     "dcs_climate:build/mosaic_blue",
     "dcs_climate:build/mosaic_yellow",
     "dcs_climate:build/mosaic_red",
-    "dcs_climate:build/mortar",
     "dcs_climate:build/linoleum_black",
     "dcs_climate:build/linoleum_red",
     "dcs_climate:build/linoleum_green",
@@ -33,9 +33,7 @@
     "dcs_climate:build/mosaic_blue",
     "dcs_climate:build/mosaic_yellow",
     "dcs_climate:build/mosaic_red",
-    "dcs_climate:build/flintbricks",
-    "dcs_climate:build/flintbricks_white",
-    "dcs_climate:build/flintbricks_black",
+    "dcs_climate:build/mortar",
     "#dcs_climate:building_stones/bricks",
     "#dcs_climate:building_stones/pillar",
     "#dcs_climate:building_stones/chiseled"

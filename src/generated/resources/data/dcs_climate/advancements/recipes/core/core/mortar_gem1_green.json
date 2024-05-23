@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_green_ore": {
+    "has_green_raw_1": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_green"
-            ]
+            "tag": "forge:raw_materials/tin"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_green_ore",
+      "has_green_raw_1",
       "has_the_recipe"
     ]
   ],

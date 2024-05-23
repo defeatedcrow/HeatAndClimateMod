@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_brass_ingot": {
+    "has_brass_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:main/ingot_brass"
+              "dcs_climate:main/metalblock_brass"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_brass_ingot",
+      "has_brass_block",
       "has_the_recipe"
     ]
   ],

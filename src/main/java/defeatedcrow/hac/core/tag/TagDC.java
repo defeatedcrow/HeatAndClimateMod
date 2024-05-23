@@ -738,6 +738,8 @@ public class TagDC {
 
 		public static final TagKey<Item> HAC_SEASONING = ItemTags.create(new ResourceLocation("dcs_climate", "seasoning"));
 
+		public static final TagKey<Item> HAC_UNSAFE_FOODS = ItemTags.create(new ResourceLocation("dcs_climate", "unsafe_foods"));
+
 		public static final TagKey<Item> HAC_MEALS = ItemTags.create(new ResourceLocation("dcs_climate", "meals"));
 		public static final TagKey<Item> HAC_BREAD = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread"));
 		public static final TagKey<Item> HAC_BREAD_PLANE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread/plane"));

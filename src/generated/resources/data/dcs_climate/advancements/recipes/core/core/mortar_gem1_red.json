@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_red_ore": {
+    "has_red_raw_1": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_red"
-            ]
+            "tag": "forge:raw_materials/iron"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_red_ore",
+      "has_red_raw_1",
       "has_the_recipe"
     ]
   ],

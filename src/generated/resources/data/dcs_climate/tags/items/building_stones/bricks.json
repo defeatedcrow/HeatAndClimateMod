@@ -10,6 +10,7 @@
     "dcs_climate:build/bricks_schist_blue",
     "dcs_climate:build/bricks_schist_nether",
     "dcs_climate:build/bricks_granite",
+    "dcs_climate:build/bricks_mortar",
     "dcs_climate:build/adobe_bricks",
     "dcs_climate:build/bricks_mud",
     "dcs_climate:build/bricks_gypsum",
@@ -21,6 +22,7 @@
     "dcs_climate:build/bricks_schist_blue",
     "dcs_climate:build/bricks_schist_nether",
     "dcs_climate:build/bricks_granite",
+    "dcs_climate:build/bricks_mortar",
     "dcs_climate:build/adobe_bricks"
   ]
 }

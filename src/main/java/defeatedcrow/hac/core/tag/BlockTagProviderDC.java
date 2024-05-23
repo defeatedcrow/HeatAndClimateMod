@@ -142,7 +142,16 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(BlockTags.WOODEN_FENCES).add(BuildInit.FENCE_BEECH.get(), BuildInit.FENCE_WALNUT.get(), BuildInit.FENCE_SWEET.get(),
 				BuildInit.FENCE_CHERRY.get(), BuildInit.FENCE_CAMPHOR.get(), BuildInit.FENCE_CITRUS.get(), BuildInit.FENCE_ASH.get(),
-				BuildInit.FENCE_PALM.get(), BuildInit.FENCE_SORGHUM.get(), BuildInit.FENCE_SUMAC.get(), BuildInit.FENCE_LACQUER.get());
+				BuildInit.FENCE_PALM.get(), BuildInit.FENCE_SORGHUM.get(), BuildInit.FENCE_SUMAC.get(), BuildInit.FENCE_LACQUER.get(),
+				BuildInit.FENCE_EUCALYPTUS.get());
+
+		tag(BlockTags.WOODEN_DOORS).add(BuildInit.DOOR_BEECH.get(), BuildInit.DOOR_WALNUT.get(), BuildInit.DOOR_SWEET.get(),
+				BuildInit.DOOR_CHERRY.get(), BuildInit.DOOR_CAMPHOR.get(), BuildInit.DOOR_CITRUS.get(), BuildInit.DOOR_ASH.get(),
+				BuildInit.DOOR_SUMAC.get(), BuildInit.DOOR_LACQUER.get(), BuildInit.DOOR_EUCALYPTUS.get());
+
+		tag(BlockTags.WOODEN_TRAPDOORS).add(BuildInit.TRAPDOOR_BEECH.get(), BuildInit.TRAPDOOR_WALNUT.get(), BuildInit.DOOR_SWEET.get(),
+				BuildInit.TRAPDOOR_CHERRY.get(), BuildInit.TRAPDOOR_CAMPHOR.get(), BuildInit.TRAPDOOR_CITRUS.get(), BuildInit.TRAPDOOR_ASH.get(),
+				BuildInit.TRAPDOOR_SUMAC.get(), BuildInit.TRAPDOOR_LACQUER.get(), BuildInit.TRAPDOOR_EUCALYPTUS.get());
 
 		tag(BlockTags.FENCES).add(BuildInit.FENCE_METAL.get());
 
@@ -150,7 +159,8 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(BlockTags.WALLS).add(BuildInit.WALL_MUD.get(), BuildInit.WALL_GYPSUM.get(), BuildInit.WALL_SERPENTINE.get(),
 				BuildInit.WALL_GREISEN.get(), BuildInit.WALL_SKARN.get(), BuildInit.WALL_HORNFELS.get(),
-				BuildInit.WALL_MARBLE.get(), BuildInit.WALL_SCHIST_BLUE.get(), BuildInit.WALL_SCHIST_NETHER.get(), BuildInit.WALL_GRANITE.get());
+				BuildInit.WALL_MARBLE.get(), BuildInit.WALL_SCHIST_BLUE.get(), BuildInit.WALL_SCHIST_NETHER.get(), BuildInit.WALL_GRANITE.get(),
+				BuildInit.WALL_MORTAR.get(), BuildInit.WALL_ADOBE.get());
 
 		tag(TagDC.BlockTag.BEE_FLOWERS).add(FoodInit.BLOCK_BR_RAPESEED.get(), FoodInit.BLOCK_HB_LAVENDER.get(), FoodInit.BLOCK_ML_BLUE.get(),
 				FoodInit.BLOCK_ML_TROPICAL.get(), FoodInit.BLOCK_MO_BINDWEED.get(), FoodInit.BLOCK_MO_FLOWER.get(), FoodInit.BLOCK_PD_ROGERIA.get(),
@@ -224,21 +234,20 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(TagDC.BlockTag.BUILDING_BRICKS).add(BuildInit.BRICKS_MUD.get(), BuildInit.BRICKS_GYPSUM.get(), BuildInit.BRICKS_SERPENTINE.get(),
 				BuildInit.BRICKS_GREISEN.get(), BuildInit.BRICKS_SKARN.get(), BuildInit.BRICKS_HORNFELS.get(), BuildInit.BRICKS_MARBLE.get(),
-				BuildInit.BRICKS_SCHIST_BLUE.get(), BuildInit.BRICKS_SCHIST_NETHER.get(), BuildInit.BRICKS_GRANITE.get(), BuildInit.ADOBE_BRICKS.get());
+				BuildInit.BRICKS_SCHIST_BLUE.get(), BuildInit.BRICKS_SCHIST_NETHER.get(), BuildInit.BRICKS_GRANITE.get(), BuildInit.BRICKS_MORTAR.get(),
+				BuildInit.ADOBE_BRICKS.get());
 
 		tag(TagDC.BlockTag.BUILDING_PILLAR).add(BuildInit.PILLAR_MUD.get(), BuildInit.PILLAR_GYPSUM.get(), BuildInit.PILLAR_SERPENTINE.get(),
 				BuildInit.PILLAR_GREISEN.get(), BuildInit.PILLAR_SKARN.get(), BuildInit.PILLAR_HORNFELS.get(), BuildInit.PILLAR_MARBLE.get(),
-				BuildInit.PILLAR_SCHIST_BLUE.get(), BuildInit.PILLAR_SCHIST_NETHER.get(), BuildInit.PILLAR_GRANITE.get());
+				BuildInit.PILLAR_SCHIST_BLUE.get(), BuildInit.PILLAR_SCHIST_NETHER.get(), BuildInit.PILLAR_GRANITE.get(), BuildInit.PILLAR_MORTAR.get());
 
 		tag(TagDC.BlockTag.BUILDING_CHISELED).add(BuildInit.CHISELED_MUD.get(), BuildInit.CHISELED_GYPSUM.get(), BuildInit.CHISELED_SERPENTINE.get(),
 				BuildInit.CHISELED_GREISEN.get(), BuildInit.CHISELED_SKARN.get(), BuildInit.CHISELED_HORNFELS.get(), BuildInit.CHISELED_MARBLE.get(),
-				BuildInit.CHISELED_SCHIST_BLUE.get(), BuildInit.CHISELED_SCHIST_NETHER.get(), BuildInit.CHISELED_GRANITE.get());
+				BuildInit.CHISELED_SCHIST_BLUE.get(), BuildInit.CHISELED_SCHIST_NETHER.get(), BuildInit.CHISELED_GRANITE.get(), BuildInit.CHISELED_MORTAR.get());
 
 		tag(TagDC.BlockTag.BUILDING_STONE).add(BuildInit.FLINTBRICKS.get(), BuildInit.FLINTBRICKS_WHITE.get(), BuildInit.FLINTBRICKS_BLACK.get(),
 				BuildInit.FLINTBRICKS_RED.get(), BuildInit.MOSAIC_BLACK.get(), BuildInit.MOSAIC_BLUE.get(), BuildInit.MOSAIC_YELLOW.get(),
-				BuildInit.MOSAIC_RED.get());
-
-		tag(TagDC.BlockTag.BUILDING_STONE).add(BuildInit.FLINTBRICKS.get(), BuildInit.FLINTBRICKS_WHITE.get(), BuildInit.FLINTBRICKS_BLACK.get());
+				BuildInit.MOSAIC_RED.get(), BuildInit.MORTAR.get());
 
 		tag(TagDC.BlockTag.DIRT_SLABS).add(BuildInit.SLAB_DIRT.get(), BuildInit.SLAB_GRASS.get(), BuildInit.SLAB_PATH.get());
 

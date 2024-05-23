@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_green_deepore": {
+    "has_green_raw_3": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_green_deep"
-            ]
+            "tag": "forge:raw_materials/chromium"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_green_deepore",
+      "has_green_raw_3",
       "has_the_recipe"
     ]
   ],

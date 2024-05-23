@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_blue_deepore": {
+    "has_blue_raw_2": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_blue_deep"
-            ]
+            "tag": "forge:raw_materials/bismuth"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_blue_deepore",
+      "has_blue_raw_2",
       "has_the_recipe"
     ]
   ],

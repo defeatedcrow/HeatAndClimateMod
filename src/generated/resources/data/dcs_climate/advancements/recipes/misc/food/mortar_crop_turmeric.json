@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:food/crop_ginger_rare"
-            ]
+            "tag": "forge:crops/turmeric"
           }
         ]
       },

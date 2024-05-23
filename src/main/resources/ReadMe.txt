@@ -325,8 +325,25 @@
    料理の風味は、材料にした食材によって変動します。
    The flavor of a dish varies depending on the ingredients.
 
-   * 将来的には、調味料によって風味を良くする機能が実装される予定です。
-     In the future, we plan to implement seasoning to enhance the flavor.
+   調味料をクラフトすると、風味が良くなります。
+   Crafting seasonings improves their flavor.
+
+ ・ 食べ物の安全性 / Unsafe Food Tag
+
+   HaCは、プレイヤーが任意のアイテムを追加できる 『dcs_climate:unsafe_foods』 のタグを追加します。
+   HaC adds "dcs_climate:unsafe_foods" tag that allows players to add any item they want.
+
+   タグで指定したアイテムが食べ物アイテムの作成工程に混入した場合、アイテムのツールチップに『安全ではありません』と表示されます。
+   If the item specified by the tag is mixed into the food crafting process, the message "UNSAFE" will appear in the food items tooltip.
+
+   プレイヤーに食べさせたくない食材を自由に指定してください。
+   Please feel free to specify the ingredients you do not want players to eat.
+
+   * 安全ではないと表示された食べ物を食べることにデメリットはありません。フレーバーのための機能です。
+   * There is no downside to eating food labeled as unsafe. This is a function for flavor.
+
+   * バニラかまどで調理すると、表示が消えてしまいます。
+   * The message disappears when cooking items in the Vanilla Furnace.
 
 　● 色々な調理デバイス / Devices for ingredients
 
@@ -586,12 +603,16 @@
  add: カーペット付き木材
  add: 木製テーブル
  add: 木製イス
+ add: ドアとトラップドア
+ add: モルタルと土レンガの建材ブロック
  add: アーモンド
  add: カレー
  add: 煮込み料理
  add: 刺身
  add: ゴムと毛皮の防具
  add: 火打ち石の大鎌
+ add: タグによる食材のUNSAFE指定機能
+ change: いくつかの乳鉢レシピを見直した
  change: プレート料理のアイコンを描き直した
  fix: アルミ階段(色)のレシピを修正
  fix: キャベツのスペルミス

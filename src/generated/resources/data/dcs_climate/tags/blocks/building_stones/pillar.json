@@ -9,6 +9,7 @@
     "dcs_climate:build/pillar_marble",
     "dcs_climate:build/pillar_schist_blue",
     "dcs_climate:build/pillar_schist_nether",
-    "dcs_climate:build/pillar_granite"
+    "dcs_climate:build/pillar_granite",
+    "dcs_climate:build/pillar_mortar"
   ]
 }

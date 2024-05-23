@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_aluminum_ingot": {
+    "has_aluminum_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:main/ingot_aluminum"
+              "dcs_climate:main/metalblock_aluminum"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_aluminum_ingot",
+      "has_aluminum_block",
       "has_the_recipe"
     ]
   ],

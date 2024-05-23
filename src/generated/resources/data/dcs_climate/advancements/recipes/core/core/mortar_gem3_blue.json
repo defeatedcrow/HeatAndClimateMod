@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_blue_deepore": {
+    "has_blue_raw_3": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_blue_deep"
-            ]
+            "tag": "forge:raw_materials/cobalt"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_blue_deepore",
+      "has_blue_raw_3",
       "has_the_recipe"
     ]
   ],

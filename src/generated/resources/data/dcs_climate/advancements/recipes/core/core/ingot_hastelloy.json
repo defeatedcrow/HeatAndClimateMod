@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hastelloy_ingot": {
+    "has_hastelloy_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:main/ingot_hastelloy"
+              "dcs_climate:main/metalblock_hastelloy"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_hastelloy_ingot",
+      "has_hastelloy_block",
       "has_the_recipe"
     ]
   ],

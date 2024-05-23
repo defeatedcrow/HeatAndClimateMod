@@ -1,0 +1,15 @@
+{
+  "values": [
+    "dcs_climate:build/trapdoor_beech",
+    "dcs_climate:build/trapdoor_walnut",
+    "dcs_climate:build/trapdoor_sweet",
+    "dcs_climate:build/trapdoor_cherry",
+    "dcs_climate:build/trapdoor_camphor",
+    "dcs_climate:build/trapdoor_citrus",
+    "dcs_climate:build/trapdoor_mulberry",
+    "dcs_climate:build/trapdoor_eucalyptus",
+    "dcs_climate:build/trapdoor_ash",
+    "dcs_climate:build/trapdoor_lacquer",
+    "dcs_climate:build/trapdoor_lacquerware"
+  ]
+}

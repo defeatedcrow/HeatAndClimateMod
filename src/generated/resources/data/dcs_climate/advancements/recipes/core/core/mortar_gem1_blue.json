@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_blue_ore": {
+    "has_blue_raw_1": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_blue"
-            ]
+            "tag": "forge:raw_materials/zinc"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_blue_ore",
+      "has_blue_raw_1",
       "has_the_recipe"
     ]
   ],

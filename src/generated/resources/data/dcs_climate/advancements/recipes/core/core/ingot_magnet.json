@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_magnet_ingot": {
+    "has_magnet_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:main/ingot_magnet"
+              "dcs_climate:main/metalblock_magnet"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_magnet_ingot",
+      "has_magnet_block",
       "has_the_recipe"
     ]
   ],

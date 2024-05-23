@@ -101,7 +101,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(alloy.ingotItem().get(), 9)
 				.requires(alloy.getTag("storage_blocks"))
 				.group("storage_unpack")
-				.unlockedBy("has_" + alloy.name() + "_ingot", has(alloy.ingotItem().get()))
+				.unlockedBy("has_" + alloy.name() + "_block", has(alloy.metalBlock().get()))
 				.save(cons, "dcs_climate:core/ingot_" + alloy.name());
 
 		if (alloy == MaterialRecipes.BSCCO) {
@@ -196,7 +196,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 					.requires(ore)
 					.requires(CoreInit.MORTAR.get())
 					.group("crusher_mortar")
-					.unlockedBy("has_" + color.name() + "_ore", has(color.block().get().asItem()))
+					.unlockedBy("has_" + color.name() + "_raw_1", has(ore))
 					.save(cons, "dcs_climate:core/mortar_gem1_" + color.name());
 		}
 
@@ -207,7 +207,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 					.requires(ore)
 					.requires(CoreInit.MORTAR.get())
 					.group("crusher_mortar")
-					.unlockedBy("has_" + color.name() + "_deepore", has(color.blockDeep().get().asItem()))
+					.unlockedBy("has_" + color.name() + "_raw_2", has(ore))
 					.save(cons, "dcs_climate:core/mortar_gem2_" + color.name());
 		}
 
@@ -218,7 +218,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 					.requires(ore)
 					.requires(CoreInit.MORTAR.get())
 					.group("crusher_mortar")
-					.unlockedBy("has_" + color.name() + "_deepore", has(color.blockDeep().get().asItem()))
+					.unlockedBy("has_" + color.name() + "_raw_3", has(ore))
 					.save(cons, "dcs_climate:core/mortar_gem3_" + color.name());
 		}
 
@@ -233,13 +233,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
 					.requires(CoreInit.MORTAR.get())
 					.requires(CoreInit.SIEVE.get())
 					.group("crusher_mortar")
-					.unlockedBy("has_" + gem.name() + "_ore", has(gem.ore().get().asItem()))
+					.unlockedBy("has_" + gem.name() + "_ore", has(ore))
 					.save(cons, "dcs_climate:core/sieve_ore_" + gem.name());
 		}
 	}
 
 	private static void mortarOtherRecipes(Consumer<FinishedRecipe> cons) {
-		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_CRYSTAL.get(), 1)
+		ShapelessRecipeBuilder.shapeless(Items.QUARTZ, 4)
 				.requires(CoreInit.STONE_QUARTZ.get())
 				.requires(CoreInit.MORTAR.get())
 				.requires(CoreInit.SIEVE.get())
@@ -256,7 +256,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 					.requires(ore)
 					.requires(CoreInit.MORTAR.get())
 					.group("crusher_mortar")
-					.unlockedBy("has_crop_" + mill.name(), has(mill.input().get().asItem()))
+					.unlockedBy("has_crop_" + mill.name(), has(ore))
 					.save(cons, "dcs_climate:food/mortar_crop_" + mill.name());
 		}
 	}
@@ -560,6 +560,35 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('X', CoreInit.ADOBE_BRICK_ITEM.get())
 				.unlockedBy("has_adobe_brick_item", has(CoreInit.ADOBE_BRICK_ITEM.get()))
 				.save(cons, "dcs_climate:core/adobe_bricks_block");
+
+		ShapedRecipeBuilder.shaped(BuildInit.STAIRS_ADOBE.get(), 4)
+				.pattern("X  ")
+				.pattern("XX ")
+				.pattern("XXX")
+				.define('X', BuildInit.ADOBE_BRICKS.get())
+				.unlockedBy("has_adobe_brick", has(BuildInit.ADOBE_BRICKS.get()))
+				.save(cons, "dcs_climate:core/adobe_bricks_stairs_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.STAIRS_ADOBE.get(), 4)
+				.pattern("  X")
+				.pattern(" XX")
+				.pattern("XXX")
+				.define('X', BuildInit.ADOBE_BRICKS.get())
+				.unlockedBy("has_adobe_brick", has(BuildInit.ADOBE_BRICKS.get()))
+				.save(cons, "dcs_climate:core/adobe_bricks_stairs_2");
+
+		ShapedRecipeBuilder.shaped(BuildInit.SLAB_ADOBE.get(), 6)
+				.pattern("XXX")
+				.define('X', BuildInit.ADOBE_BRICKS.get())
+				.unlockedBy("has_adobe_brick", has(BuildInit.ADOBE_BRICKS.get()))
+				.save(cons, "dcs_climate:core/adobe_bricks_slab");
+
+		ShapedRecipeBuilder.shaped(BuildInit.WALL_ADOBE.get(), 6)
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', BuildInit.ADOBE_BRICKS.get())
+				.unlockedBy("has_adobe_brick", has(BuildInit.ADOBE_BRICKS.get()))
+				.save(cons, "dcs_climate:core/adobe_bricks_wall");
 
 		ShapelessRecipeBuilder.shapeless(BuildInit.MORTAR.get(), 4)
 				.requires(TagDC.ItemTag.DUST_LIME)

@@ -1448,6 +1448,14 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
 				.save(cons, "dcs_climate:build/stairs2_" + wood.name());
 
+		ShapedRecipeBuilder.shaped(wood.stairsBlock().get(), 4)
+				.pattern("  X")
+				.pattern(" XX")
+				.pattern("XXX")
+				.define('X', wood.plankBlock().get())
+				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
+				.save(cons, "dcs_climate:build/stairs3_" + wood.name());
+
 		ShapedRecipeBuilder.shaped(wood.slabBlock().get(), 6)
 				.pattern("XXX")
 				.define('X', wood.plankBlock().get())
@@ -1461,6 +1469,25 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.define('Y', Tags.Items.RODS_WOODEN)
 				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
 				.save(cons, "dcs_climate:build/fence2_" + wood.name());
+
+		if (wood.doorBlock().get() != null) {
+			ShapedRecipeBuilder.shaped(wood.doorBlock().get(), 3)
+					.pattern("XX")
+					.pattern("XX")
+					.pattern("XX")
+					.define('X', wood.plankBlock().get())
+					.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
+					.save(cons, "dcs_climate:build/door2_" + wood.name());
+		}
+
+		if (wood.trapdoorBlock().get() != null) {
+			ShapedRecipeBuilder.shaped(wood.trapdoorBlock().get(), 3)
+					.pattern("XXX")
+					.pattern("XXX")
+					.define('X', wood.plankBlock().get())
+					.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
+					.save(cons, "dcs_climate:build/trapdoor2_" + wood.name());
+		}
 
 	}
 

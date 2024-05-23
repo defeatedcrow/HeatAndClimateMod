@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_topaz"
-            ]
+            "tag": "forge:ores/topaz"
           }
         ]
       },

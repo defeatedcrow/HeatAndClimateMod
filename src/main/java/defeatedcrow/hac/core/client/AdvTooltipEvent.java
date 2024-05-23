@@ -12,12 +12,16 @@ import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.material.IFoodTaste;
+import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
 import defeatedcrow.hac.core.material.block.BlockDC;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
@@ -37,10 +41,25 @@ public class AdvTooltipEvent {
 	@SubscribeEvent
 	public static void render(RenderTooltipEvent.GatherComponents event) {
 		ItemStack target = event.getItemStack();
-		if (!target.isEmpty() && ConfigClientBuilder.INSTANCE.showAltTip.get()) {
-			List<Component> list = Lists.newArrayList();
-			List<Component> list2 = Lists.newArrayList();
+		List<Component> list = Lists.newArrayList();
+		List<Component> list2 = Lists.newArrayList();
+		if (!target.isEmpty()) {
+			if (target.isEdible() || target.getItem() instanceof IFoodTaste) {
+				boolean unsafe = false;
+				if (target.getTag() != null && target.getTag().contains(TagKeyDC.UNSAFE)) {
+					if (target.getTag().getBoolean(TagKeyDC.UNSAFE)) {
+						unsafe = true;
+					}
+				} else if (target.is(TagDC.ItemTag.HAC_UNSAFE_FOODS)) {
+					unsafe = true;
+				}
+				if (unsafe) {
+					list.add(Component.translatable("dcs.tip.unsafe_food").withStyle(ChatFormatting.RED));
+				}
+			}
+		}
 
+		if (!target.isEmpty() && ConfigClientBuilder.INSTANCE.showAltTip.get()) {
 			float regH = DCItemUtil.getItemResistantData(target, false);
 			float regC = DCItemUtil.getItemResistantData(target, true);
 			if (regH != 0 || regC != 0) {
@@ -64,13 +83,6 @@ public class AdvTooltipEvent {
 				});
 			}
 
-			if (!list.isEmpty()) {
-				List<Either<FormattedText, TooltipComponent>> elements = list.stream()
-					.map((Function<FormattedText, Either<FormattedText, TooltipComponent>>) Either::left)
-					.collect(Collectors.toCollection(ArrayList::new));
-				event.getTooltipElements().addAll(elements);
-			}
-
 			if (target.getItem() instanceof ItemDC item) {
 				item.advTooltipText(target, Minecraft.getInstance().level, list2);
 			} else if (target.getItem() instanceof BlockItemDC blockitem) {
@@ -86,17 +98,25 @@ public class AdvTooltipEvent {
 				list2.add(Component.literal(tag.location().toString()));
 			});
 
-			if (!list2.isEmpty()) {
-				if (!ClimateCore.proxy.keyShiftPushed()) {
-					list2.clear();
-					list2.add(Component.translatable("dcs.tip.shift"));
-				}
+		}
 
-				List<Either<FormattedText, TooltipComponent>> elements = list2.stream()
+		if (!list.isEmpty()) {
+			List<Either<FormattedText, TooltipComponent>> elements = list.stream()
 					.map((Function<FormattedText, Either<FormattedText, TooltipComponent>>) Either::left)
 					.collect(Collectors.toCollection(ArrayList::new));
-				event.getTooltipElements().addAll(elements);
+			event.getTooltipElements().addAll(elements);
+		}
+
+		if (!list2.isEmpty()) {
+			if (!ClimateCore.proxy.keyShiftPushed()) {
+				list2.clear();
+				list2.add(Component.translatable("dcs.tip.shift"));
 			}
+
+			List<Either<FormattedText, TooltipComponent>> elements = list2.stream()
+					.map((Function<FormattedText, Either<FormattedText, TooltipComponent>>) Either::left)
+					.collect(Collectors.toCollection(ArrayList::new));
+			event.getTooltipElements().addAll(elements);
 		}
 
 	}

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_steel_ingot": {
+    "has_steel_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:main/ingot_steel"
+              "dcs_climate:main/metalblock_steel"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_steel_ingot",
+      "has_steel_block",
       "has_the_recipe"
     ]
   ],

@@ -3,16 +3,13 @@
   "group": "crusher_mortar",
   "ingredients": [
     {
-      "tag": "forge:ores/niter"
+      "tag": "forge:ores/salt"
     },
     {
       "item": "dcs_climate:main/agate_mortar"
-    },
-    {
-      "item": "dcs_climate:main/sieve"
     }
   ],
   "result": {
-    "item": "dcs_climate:main/gem_niter"
+    "item": "dcs_climate:main/gem_salt"
   }
 }

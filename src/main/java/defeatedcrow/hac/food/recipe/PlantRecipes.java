@@ -138,19 +138,29 @@ public class PlantRecipes {
 		list1.add(new Seeding(FoodInit.BLOCK_SU_PISTACHIO, FoodInit.CROP_SU_PISTACHIO, 1));
 		seedings = list1.build();
 
-		list2.add(new Wood("beech_common", FoodInit.LOG_BH_COMMON, FoodInit.PLANK_BH_COMMON, BuildInit.STAIRS_BEECH, BuildInit.SLAB_BEECH, BuildInit.FENCE_BEECH));
-		list2.add(new Wood("beech_walnut", FoodInit.LOG_BH_WALNUT, FoodInit.PLANK_BH_WALNUT, BuildInit.STARIS_WALNUT, BuildInit.SLAB_WALNUT, BuildInit.FENCE_WALNUT));
-		list2.add(new Wood("beech_sweet", FoodInit.LOG_BH_SWEET, FoodInit.PLANK_BH_SWEET, BuildInit.STAIRS_SWEET, BuildInit.SLAB_SWEET, BuildInit.FENCE_SWEET));
-		list2.add(new Wood("cherry_wild", FoodInit.LOG_CH_WILD, FoodInit.PLANK_CH_WILD, BuildInit.STAIRS_CHERRY, BuildInit.SLAB_CHERRY, BuildInit.FENCE_CHERRY));
-		list2.add(new Wood("cinnamon_camphor", FoodInit.LOG_CN_CAMPHOR, FoodInit.PLANK_CN_CAMPHOR, BuildInit.STAIRS_CAMPHOR, BuildInit.SLAB_CAMPHOR, BuildInit.FENCE_CAMPHOR));
-		list2.add(new Wood("citrus_pomelo", FoodInit.LOG_CT_POMELO, FoodInit.PLANK_CT_POMELO, BuildInit.STAIRS_CITRUS, BuildInit.SLAB_CITRUS, BuildInit.FENCE_CITRUS));
-		list2.add(new Wood("morus_mulberry", FoodInit.LOG_MR_MULBERRY, FoodInit.PLANK_MR_MULBERRY, BuildInit.STAIRS_MORUS, BuildInit.SLAB_MORUS, BuildInit.FENCE_MORUS));
-		list2.add(new Wood("myrtle_eucalyptus", FoodInit.LOG_MY_EUCALYPTUS, FoodInit.PLANK_MY_EUCALYPTUS, BuildInit.STAIRS_EUCALYPTUS, BuildInit.SLAB_EUCALYPTUS, BuildInit.FENCE_EUCALYPTUS));
-		list2.add(new Wood("olive_ash", FoodInit.LOG_OL_ASH, FoodInit.PLANK_OL_ASH, BuildInit.STAIRS_ASH, BuildInit.SLAB_ASH, BuildInit.FENCE_ASH));
-		list2.add(new Wood("palm_coconut", FoodInit.LOG_PL_COCONUT, FoodInit.PLANK_PL_COCONUT, BuildInit.STAIRS_PALM, BuildInit.SLAB_PALM, BuildInit.FENCE_PALM));
-		list2.add(new Wood("sumac_lacquer", FoodInit.LOG_SU_LACQUER, FoodInit.PLANK_SU_LACQUER, BuildInit.STAIRS_SUMAC, BuildInit.SLAB_SUMAC, BuildInit.FENCE_SUMAC));
-		list2.add(new Wood("lacquerware", () -> null, FoodInit.PLANK_LACQUERWARE, BuildInit.STAIRS_LACQUER, BuildInit.SLAB_LACQUER, BuildInit.FENCE_LACQUER));
-		list2.add(new Wood("sorghum", () -> null, FoodInit.PLANK_RE_SORGHUM, BuildInit.STAIRS_SORGHUM, BuildInit.SLAB_SORGHUM, BuildInit.FENCE_SORGHUM));
+		list2.add(
+				new Wood("beech_common", FoodInit.LOG_BH_COMMON, FoodInit.PLANK_BH_COMMON, BuildInit.STAIRS_BEECH, BuildInit.SLAB_BEECH, BuildInit.FENCE_BEECH, BuildInit.DOOR_BEECH, BuildInit.TRAPDOOR_BEECH));
+		list2.add(
+				new Wood("beech_walnut", FoodInit.LOG_BH_WALNUT, FoodInit.PLANK_BH_WALNUT, BuildInit.STARIS_WALNUT, BuildInit.SLAB_WALNUT, BuildInit.FENCE_WALNUT, BuildInit.DOOR_WALNUT, BuildInit.TRAPDOOR_WALNUT));
+		list2.add(
+				new Wood("beech_sweet", FoodInit.LOG_BH_SWEET, FoodInit.PLANK_BH_SWEET, BuildInit.STAIRS_SWEET, BuildInit.SLAB_SWEET, BuildInit.FENCE_SWEET, BuildInit.DOOR_SWEET, BuildInit.TRAPDOOR_SWEET));
+		list2.add(
+				new Wood("cherry_wild", FoodInit.LOG_CH_WILD, FoodInit.PLANK_CH_WILD, BuildInit.STAIRS_CHERRY, BuildInit.SLAB_CHERRY, BuildInit.FENCE_CHERRY, BuildInit.DOOR_CHERRY, BuildInit.TRAPDOOR_CHERRY));
+		list2.add(
+				new Wood("cinnamon_camphor", FoodInit.LOG_CN_CAMPHOR, FoodInit.PLANK_CN_CAMPHOR, BuildInit.STAIRS_CAMPHOR, BuildInit.SLAB_CAMPHOR, BuildInit.FENCE_CAMPHOR, BuildInit.DOOR_CAMPHOR, BuildInit.TRAPDOOR_CAMPHOR));
+		list2.add(
+				new Wood("citrus_pomelo", FoodInit.LOG_CT_POMELO, FoodInit.PLANK_CT_POMELO, BuildInit.STAIRS_CITRUS, BuildInit.SLAB_CITRUS, BuildInit.FENCE_CITRUS, BuildInit.DOOR_CITRUS, BuildInit.TRAPDOOR_CITRUS));
+		list2.add(
+				new Wood("morus_mulberry", FoodInit.LOG_MR_MULBERRY, FoodInit.PLANK_MR_MULBERRY, BuildInit.STAIRS_MORUS, BuildInit.SLAB_MORUS, BuildInit.FENCE_MORUS, BuildInit.DOOR_MORUS, BuildInit.TRAPDOOR_MORUS));
+		list2.add(
+				new Wood("myrtle_eucalyptus", FoodInit.LOG_MY_EUCALYPTUS, FoodInit.PLANK_MY_EUCALYPTUS, BuildInit.STAIRS_EUCALYPTUS, BuildInit.SLAB_EUCALYPTUS, BuildInit.FENCE_EUCALYPTUS, BuildInit.DOOR_EUCALYPTUS, BuildInit.TRAPDOOR_EUCALYPTUS));
+		list2.add(new Wood("olive_ash", FoodInit.LOG_OL_ASH, FoodInit.PLANK_OL_ASH, BuildInit.STAIRS_ASH, BuildInit.SLAB_ASH, BuildInit.FENCE_ASH, BuildInit.DOOR_ASH, BuildInit.TRAPDOOR_ASH));
+		list2.add(new Wood("palm_coconut", FoodInit.LOG_PL_COCONUT, FoodInit.PLANK_PL_COCONUT, BuildInit.STAIRS_PALM, BuildInit.SLAB_PALM, BuildInit.FENCE_PALM, () -> null, () -> null));
+		list2.add(
+				new Wood("sumac_lacquer", FoodInit.LOG_SU_LACQUER, FoodInit.PLANK_SU_LACQUER, BuildInit.STAIRS_SUMAC, BuildInit.SLAB_SUMAC, BuildInit.FENCE_SUMAC, BuildInit.DOOR_SUMAC, BuildInit.TRAPDOOR_SUMAC));
+		list2.add(
+				new Wood("lacquerware", () -> null, FoodInit.PLANK_LACQUERWARE, BuildInit.STAIRS_LACQUER, BuildInit.SLAB_LACQUER, BuildInit.FENCE_LACQUER, BuildInit.DOOR_LACQUER, BuildInit.TRAPDOOR_LACQUER));
+		list2.add(new Wood("sorghum", () -> null, FoodInit.PLANK_RE_SORGHUM, BuildInit.STAIRS_SORGHUM, BuildInit.SLAB_SORGHUM, BuildInit.FENCE_SORGHUM, () -> null, () -> null));
 		woods = list2.build();
 	}
 
@@ -165,7 +175,9 @@ public class PlantRecipes {
 			Supplier<Block> plankBlock,
 			Supplier<Block> stairsBlock,
 			Supplier<Block> slabBlock,
-			Supplier<Block> fenceBlock) {}
+			Supplier<Block> fenceBlock,
+			Supplier<Block> doorBlock,
+			Supplier<Block> trapdoorBlock) {}
 
 	public static void addCompostables() {
 		ComposterBlock.COMPOSTABLES.put(CoreInit.DUST_ASH.get(), 0.3F);

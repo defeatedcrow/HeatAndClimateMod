@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.material.IRenderBlockData;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
+import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.network.packet.message.IIntReceiver;
 import defeatedcrow.hac.core.network.packet.message.MsgTileSimpleIntegerToC;
 import defeatedcrow.hac.core.recipe.DCRecipes;
@@ -17,6 +18,7 @@ import defeatedcrow.hac.machine.energy.SidedEnergyTankDC;
 import defeatedcrow.hac.machine.material.MachineInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -127,14 +129,14 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 							return check.getCraftingRemainingItem().copy();
 						} else if (FluidUtil.getFluidContained(check).isPresent()) {
 							ItemStack ret = FluidUtil.getFluidHandler(check)
-								.map(handler -> {
-									FluidStack fluid = handler.getFluidInTank(0);
-									if (!fluid.isEmpty()) {
-										handler.drain(fluid, FluidAction.EXECUTE);
-										return handler.getContainer().copy();
-									}
-									return ItemStack.EMPTY;
-								}).orElse(ItemStack.EMPTY);
+									.map(handler -> {
+										FluidStack fluid = handler.getFluidInTank(0);
+										if (!fluid.isEmpty()) {
+											handler.drain(fluid, FluidAction.EXECUTE);
+											return handler.getContainer().copy();
+										}
+										return ItemStack.EMPTY;
+									}).orElse(ItemStack.EMPTY);
 							if (!DCUtil.isEmpty(ret)) {
 								return ret;
 							}
@@ -192,6 +194,14 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 			if (!res.isEmpty() && res.getItem() instanceof IFoodTaste food) {
 				int taste = CraftingFoodEvent.getResultTaste(inputs, consume);
 				food.setTaste(res, taste);
+			}
+			if (!res.isEmpty() && res.isEdible()) {
+				boolean unsafe = CraftingFoodEvent.checkUnsafe(inputs, consume);
+				if (unsafe) {
+					CompoundTag tag = res.getOrCreateTag();
+					tag.putBoolean(TagKeyDC.UNSAFE, true);
+					res.setTag(tag);
+				}
 			}
 			if (!DCUtil.isEmpty(res) && inventory.insertResult(res, maxInSlot() + 1, maxOutSlot()) > 0) {
 				flag = true;

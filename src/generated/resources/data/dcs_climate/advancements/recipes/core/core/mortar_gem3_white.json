@@ -7,13 +7,11 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_white_deepore": {
+    "has_white_raw_3": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "dcs_climate:main/ore_white_deep"
-            ]
+            "tag": "forge:raw_materials/tungsten"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_white_deepore",
+      "has_white_raw_3",
       "has_the_recipe"
     ]
   ],
