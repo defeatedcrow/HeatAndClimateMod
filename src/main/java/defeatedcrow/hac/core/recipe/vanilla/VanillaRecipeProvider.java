@@ -1262,6 +1262,17 @@ public class VanillaRecipeProvider extends RecipeProvider {
 	}
 
 	private static void otherRecipes(Consumer<FinishedRecipe> cons) {
+
+		ShapedRecipeBuilder.shaped(CoreInit.DUSTBLOCK_ALUMINUM.get())
+				.pattern("PPP")
+				.pattern("PPP")
+				.pattern("PPT")
+				.define('P', TagDC.ItemTag.DUST_ALUMINUM)
+				.define('T', TagDC.ItemTag.DUST_TRONA)
+				.unlockedBy("has_dust_aluminum", has(TagDC.ItemTag.DUST_ALUMINUM))
+				.group("dustblock_pack")
+				.save(cons, "dcs_climate:core/dustblock_aluminum_2");
+
 		ShapedRecipeBuilder.shaped(CoreInit.MORTAR.get(), 1)
 				.pattern("X X")
 				.pattern("XXX")
@@ -1635,8 +1646,8 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.save(cons, "dcs_climate:core/campfire_another_0");
 
 		ShapedRecipeBuilder.shaped(Items.ARROW, 4)
-				.pattern("Y")
 				.pattern("X")
+				.pattern("Y")
 				.pattern("Z")
 				.define('Z', Tags.Items.FEATHERS)
 				.define('Y', Tags.Items.RODS_WOODEN)
@@ -1942,9 +1953,9 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_ORANGE.get(), Tags.Items.DYES_ORANGE, "orange", "linen_pants");
 		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_WHITE.get(), Tags.Items.DYES_WHITE, "white", "linen_pants");
 
-		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_BLUE.get(), Tags.Items.DYES_BLACK, "blue", "cloth_pants");
+		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "cloth_pants");
 		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_LIGHTBLUE.get(), Tags.Items.DYES_LIGHT_BLUE, "lightblue", "cloth_pants");
-		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_GRAY.get(), Tags.Items.DYES_RED, "gray", "cloth_pants");
+		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_GRAY.get(), Tags.Items.DYES_GRAY, "gray", "cloth_pants");
 
 		clothColorRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "cloth_suits");
 		clothColorRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_BROWN.get(), Tags.Items.DYES_BROWN, "brown", "cloth_suits");

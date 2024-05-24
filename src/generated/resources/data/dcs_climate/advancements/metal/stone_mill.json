@@ -1,0 +1,31 @@
+{
+  "parent": "dcs_climate:metal/motor_t1",
+  "criteria": {
+    "place_stone_mill": {
+      "conditions": {
+        "block": "dcs_climate:machine/stone_mill"
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.metal.stone_mill.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:machine/stone_mill"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.metal.stone_mill.title"
+    }
+  },
+  "requirements": [
+    [
+      "place_stone_mill"
+    ]
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "dcs_climate:main/rare_crops",
+  "criteria": {
+    "impossible": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.mosquito_coil.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:main/mosquito_coil"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.mosquito_coil.title"
+    }
+  },
+  "requirements": [
+    [
+      "impossible"
+    ]
+  ]
+}

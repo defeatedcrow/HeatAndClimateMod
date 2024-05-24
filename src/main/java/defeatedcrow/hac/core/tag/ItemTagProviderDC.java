@@ -125,6 +125,18 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		// main
 
+		tag(TagDC.ItemTag.RAW_MATERIALS_COLOR).add(CoreInit.OREITEM_WHITE1.get(), CoreInit.OREITEM_WHITE2.get(), CoreInit.OREITEM_WHITE3.get(),
+				CoreInit.OREITEM_BLUE1.get(), CoreInit.OREITEM_BLUE2.get(), CoreInit.OREITEM_BLUE3.get(),
+				CoreInit.OREITEM_BLACK1.get(), CoreInit.OREITEM_BLACK2.get(), CoreInit.OREITEM_BLACK3.get(),
+				CoreInit.OREITEM_RED1.get(), CoreInit.OREITEM_RED2.get(), CoreInit.OREITEM_RED3.get(),
+				CoreInit.OREITEM_GREEN1.get(), CoreInit.OREITEM_GREEN2.get(), CoreInit.OREITEM_GREEN3.get());
+
+		tag(TagDC.ItemTag.DUST_COLOR).add(CoreInit.OREDUST_WHITE1.get(), CoreInit.OREDUST_WHITE2.get(), CoreInit.OREDUST_WHITE3.get(),
+				CoreInit.OREDUST_BLUE1.get(), CoreInit.OREDUST_BLUE2.get(), CoreInit.OREDUST_BLUE3.get(),
+				CoreInit.OREDUST_BLACK1.get(), CoreInit.OREDUST_BLACK2.get(), CoreInit.OREDUST_BLACK3.get(),
+				CoreInit.OREDUST_RED1.get(), CoreInit.OREDUST_RED2.get(), CoreInit.OREDUST_RED3.get(),
+				CoreInit.OREDUST_GREEN1.get(), CoreInit.OREDUST_GREEN2.get(), CoreInit.OREDUST_GREEN3.get());
+
 		tag(TagDC.ItemTag.DUST_ALKALI).addTags(TagDC.ItemTag.DUST_ASH, TagDC.ItemTag.DUST_LIME, TagDC.ItemTag.DUST_TRONA);
 
 		// magic
@@ -355,7 +367,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		// magic
 
-		tag(ItemTags.ARROWS).add(MagicInit.ARROW_WHITE.get(), MagicInit.ARROW_BLUE.get(), MagicInit.ARROW_BLACK.get(),
+		tag(TagDC.ItemTag.MAGIC_ARROW).add(MagicInit.ARROW_WHITE.get(), MagicInit.ARROW_BLUE.get(), MagicInit.ARROW_BLACK.get(),
 				MagicInit.ARROW_RED.get(), MagicInit.ARROW_GREEN.get());
 
 		tag(TagDC.ItemTag.SEED_WHITE).addTags(TagDC.ItemTag.SEED_CHIVES, TagDC.ItemTag.SEED_GOOSEFOOT, TagDC.ItemTag.SEED_ARTEMISIA,
@@ -377,7 +389,19 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 				.add(FoodInit.BLOCK_CT_POMELO.get().asItem(), FoodInit.BLOCK_CN_CAMPHOR.get().asItem(),
 						FoodInit.BLOCK_MR_MULBERRY.get().asItem(), FoodInit.BLOCK_PL_COCONUT.get().asItem());
 
+		tag(TagDC.ItemTag.MAGIC_TIER1).addTags(TagDC.ItemTag.MAGIC_ARROW, TagDC.ItemTag.MAGIC_RING)
+				.add(MagicInit.CARD_BLACK_1.get(), MagicInit.CARD_BLUE_1.get(), MagicInit.CARD_GREEN_1.get(), MagicInit.CARD_RED_1.get(), MagicInit.CARD_WHITE_1.get(),
+						MagicInit.CARD_BW.get(), MagicInit.CARD_GB.get(), MagicInit.CARD_RU.get(), MagicInit.CARD_UG.get(), MagicInit.CARD_WR.get());
+
+		tag(TagDC.ItemTag.MAGIC_TIER2).addTags(TagDC.ItemTag.MAGIC_PENDANT)
+				.add(MagicInit.CARD_BLACK_2.get(), MagicInit.CARD_BLUE_2.get(), MagicInit.CARD_GREEN_2.get(), MagicInit.CARD_RED_2.get(), MagicInit.CARD_WHITE_2.get(),
+						MagicInit.CARD_BR.get(), MagicInit.CARD_GW.get(), MagicInit.CARD_RG.get(), MagicInit.CARD_UB.get(), MagicInit.CARD_WU.get());
+
+		tag(TagDC.ItemTag.MAGIC_TIER3).addTags(TagDC.ItemTag.MAGIC_BADGE);
+
 		tag(TagDC.ItemTag.MAGIC_BOOSTER).add(MagicInit.BADGE_SILVER_WHITE.get());
+
+		tag(ItemTags.ARROWS).addTags(TagDC.ItemTag.MAGIC_ARROW);
 
 		// fishing
 		tag(ItemTags.FISHES).addTags(TagDC.ItemTag.MULLET, TagDC.ItemTag.SMELT, TagDC.ItemTag.SARDINE, TagDC.ItemTag.MACKEREL, TagDC.ItemTag.CARP,
@@ -397,14 +421,11 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.FISH_WITH_ROE).addTags(TagDC.ItemTag.RAW_COD, TagDC.ItemTag.RAW_SALMON, TagDC.ItemTag.MACKEREL, TagDC.ItemTag.MULLET, TagDC.ItemTag.SMELT);
 
-		tag(TagDC.ItemTag.FISH).add(FoodInit.FOOD_MULLET.get(), FoodInit.FOOD_SMELT.get(), FoodInit.FOOD_SARDINE.get(), FoodInit.FOOD_MACKEREL.get(), FoodInit.FOOD_TROUT.get(),
-				FoodInit.FOOD_CARP.get(), FoodInit.FOOD_ROCKFISH.get(), FoodInit.FOOD_SEABREAM.get(), FoodInit.FOOD_FLOUNDER.get(), FoodInit.FOOD_GROUPER.get(),
-				FoodInit.FOOD_FLATHEAD.get(), FoodInit.FOOD_GURNARD.get(), FoodInit.FOOD_TUNA.get(), FoodInit.FOOD_KRILL.get(), FoodInit.FOOD_PRAWN.get(),
-				FoodInit.FOOD_CRAB.get(), FoodInit.FOOD_SQUID.get(), Items.COD, Items.SALMON, Items.PUFFERFISH, Items.TROPICAL_FISH);
-
 		tag(TagDC.ItemTag.FISH_VANILLA).add(Items.COD, Items.SALMON, Items.PUFFERFISH, Items.TROPICAL_FISH);
 
-		tag(TagDC.ItemTag.FISH_LOD).addTags(TagDC.ItemTag.FISH);
+		tag(TagDC.ItemTag.FISH_HAC).add(FoodInit.FOOD_MULLET.get(), FoodInit.FOOD_SMELT.get(), FoodInit.FOOD_SARDINE.get(), FoodInit.FOOD_MACKEREL.get(), FoodInit.FOOD_TROUT.get(),
+				FoodInit.FOOD_CARP.get(), FoodInit.FOOD_ROCKFISH.get(), FoodInit.FOOD_SEABREAM.get(), FoodInit.FOOD_FLOUNDER.get(), FoodInit.FOOD_GROUPER.get(),
+				FoodInit.FOOD_FLATHEAD.get(), FoodInit.FOOD_GURNARD.get(), FoodInit.FOOD_TUNA.get());
 
 		tag(TagDC.ItemTag.FISH_NIGHT).add(FoodInit.FOOD_ROCKFISH.get(), FoodInit.FOOD_FLOUNDER.get(), FoodInit.FOOD_GROUPER.get(), FoodInit.FOOD_GURNARD.get(), FoodInit.FOOD_SQUID.get());
 
@@ -449,6 +470,11 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.FISH_LARGE).add(FoodInit.FOOD_CARP.get(), FoodInit.FOOD_FLOUNDER.get(), FoodInit.FOOD_GROUPER.get(),
 				FoodInit.FOOD_TUNA.get(), Items.COD, Items.SALMON);
+
+		tag(TagDC.ItemTag.FISH_ALL).addTags(TagDC.ItemTag.FISH_VANILLA, TagDC.ItemTag.FISH_HAC)
+				.add(FoodInit.FOOD_KRILL.get(), FoodInit.FOOD_PRAWN.get(), FoodInit.FOOD_CRAB.get(), FoodInit.FOOD_SQUID.get());
+
+		tag(TagDC.ItemTag.FISH_LOD).addTags(TagDC.ItemTag.FISH_ALL);
 
 		// machine
 		tag(TagDC.ItemTag.MOTORS).addTags(TagDC.ItemTag.MOTOR_T1);

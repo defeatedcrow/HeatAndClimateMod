@@ -34,6 +34,11 @@ public class WallStoneDC extends WallBlock implements IBlockDC, IJsonDataDC {
 		name = n;
 	}
 
+	public WallStoneDC(String n, boolean noOcclusion) {
+		super(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion());
+		name = n;
+	}
+
 	public WallStoneDC setTexDir(String s) {
 		texDir = s;
 		return this;
@@ -52,8 +57,8 @@ public class WallStoneDC extends WallBlock implements IBlockDC, IJsonDataDC {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(new JsonModelDC("minecraft:block/template_wall_post", ImmutableMap.of("wall", "dcs_climate:block/" + texDir + name)),
-			new JsonModelDC("minecraft:block/template_wall_side", ImmutableMap.of("wall", "dcs_climate:block/" + texDir + name)),
-			new JsonModelDC("minecraft:block/template_wall_side_tall", ImmutableMap.of("wall", "dcs_climate:block/" + texDir + name)));
+				new JsonModelDC("minecraft:block/template_wall_side", ImmutableMap.of("wall", "dcs_climate:block/" + texDir + name)),
+				new JsonModelDC("minecraft:block/template_wall_side_tall", ImmutableMap.of("wall", "dcs_climate:block/" + texDir + name)));
 	}
 
 	@Override

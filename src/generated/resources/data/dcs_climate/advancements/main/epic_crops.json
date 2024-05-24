@@ -13,12 +13,48 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_epic_crop10": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_cherry_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_epic_crop11": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_citrus_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_epic_crop12": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_sumac_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_epic_crop2": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:food/cropblock_herb_epic"
+              "dcs_climate:food/crop_herb_epic"
             ]
           }
         ]
@@ -96,6 +132,18 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_epic_crop9": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_aster_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -137,6 +185,18 @@
     ],
     [
       "has_epic_crop8"
+    ],
+    [
+      "has_epic_crop9"
+    ],
+    [
+      "has_epic_crop10"
+    ],
+    [
+      "has_epic_crop11"
+    ],
+    [
+      "has_epic_crop12"
     ]
   ]
 }

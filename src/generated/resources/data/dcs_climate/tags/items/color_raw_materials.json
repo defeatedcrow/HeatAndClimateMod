@@ -1,0 +1,19 @@
+{
+  "values": [
+    "dcs_climate:main/oreitem_white_1",
+    "dcs_climate:main/oreitem_white_2",
+    "dcs_climate:main/oreitem_white_3",
+    "dcs_climate:main/oreitem_blue_1",
+    "dcs_climate:main/oreitem_blue_2",
+    "dcs_climate:main/oreitem_blue_3",
+    "dcs_climate:main/oreitem_black_1",
+    "dcs_climate:main/oreitem_black_2",
+    "dcs_climate:main/oreitem_black_3",
+    "dcs_climate:main/oreitem_red_1",
+    "dcs_climate:main/oreitem_red_2",
+    "dcs_climate:main/oreitem_red_3",
+    "dcs_climate:main/oreitem_green_1",
+    "dcs_climate:main/oreitem_green_2",
+    "dcs_climate:main/oreitem_green_3"
+  ]
+}

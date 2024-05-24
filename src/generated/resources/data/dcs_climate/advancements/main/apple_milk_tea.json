@@ -1,0 +1,37 @@
+{
+  "parent": "dcs_climate:main/cooking_pot",
+  "criteria": {
+    "has_apple_milk_tea": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/cup_tea_apple_milk"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.apple_milk_tea.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "dcs_climate:food/cup_tea_apple_milk"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.apple_milk_tea.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_apple_milk_tea"
+    ]
+  ]
+}

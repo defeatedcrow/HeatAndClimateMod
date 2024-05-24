@@ -63,14 +63,14 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 	public EnergyCableBlock(Properties prop) {
 		super(prop);
 		this.registerDefaultState(this.stateDefinition.any()
-			.setValue(DCState.NORTH, false)
-			.setValue(DCState.SOUTH, false)
-			.setValue(DCState.EAST, false)
-			.setValue(DCState.WEST, false)
-			.setValue(DCState.UP, false)
-			.setValue(DCState.DOWN, false)
-			.setValue(DCState.POWERED, Boolean.valueOf(false))
-			.setValue(WATERLOGGED, Boolean.valueOf(false)));
+				.setValue(DCState.NORTH, false)
+				.setValue(DCState.SOUTH, false)
+				.setValue(DCState.EAST, false)
+				.setValue(DCState.WEST, false)
+				.setValue(DCState.UP, false)
+				.setValue(DCState.DOWN, false)
+				.setValue(DCState.POWERED, Boolean.valueOf(false))
+				.setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
 	@Override
@@ -92,14 +92,14 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 		BlockState s5 = level.getBlockState(p5);
 		BlockState s6 = level.getBlockState(p6);
 		return this.defaultBlockState()
-			.setValue(DCState.NORTH, this.connectsTo(s1, level, p1, Direction.NORTH, true))
-			.setValue(DCState.EAST, this.connectsTo(s2, level, p2, Direction.EAST, true))
-			.setValue(DCState.SOUTH, this.connectsTo(s3, level, p3, Direction.SOUTH, true))
-			.setValue(DCState.WEST, this.connectsTo(s4, level, p4, Direction.WEST, true))
-			.setValue(DCState.UP, this.connectsTo(s5, level, p5, Direction.UP, true))
-			.setValue(DCState.DOWN, this.connectsTo(s6, level, p6, Direction.DOWN, true))
-			.setValue(DCState.POWERED, Boolean.valueOf(pow))
-			.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+				.setValue(DCState.NORTH, this.connectsTo(s1, level, p1, Direction.NORTH, true))
+				.setValue(DCState.EAST, this.connectsTo(s2, level, p2, Direction.EAST, true))
+				.setValue(DCState.SOUTH, this.connectsTo(s3, level, p3, Direction.SOUTH, true))
+				.setValue(DCState.WEST, this.connectsTo(s4, level, p4, Direction.WEST, true))
+				.setValue(DCState.UP, this.connectsTo(s5, level, p5, Direction.UP, true))
+				.setValue(DCState.DOWN, this.connectsTo(s6, level, p6, Direction.DOWN, true))
+				.setValue(DCState.POWERED, Boolean.valueOf(pow))
+				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 
 	@Override
@@ -145,6 +145,9 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 				int leakage = tile.getEnergyHandler().extractEnergy(320, false);
 				if (leakage >= 5) {
 					target.hurt(DamageSource.LIGHTNING_BOLT, leakage * 0.1F);
+					if (target instanceof Player player) {
+						ClimateCore.proxy.triggerAdvancement(player, "metal/cable_danger");
+					}
 				}
 			}
 	}

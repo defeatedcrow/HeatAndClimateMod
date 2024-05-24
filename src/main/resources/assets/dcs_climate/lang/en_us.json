@@ -749,7 +749,7 @@
   "item.dcs_climate.food.bottle_wine":"Wine",
   "item.dcs_climate.food.bottle_wine_white":"White Wine",
 
-    "## items_wear":"waer",
+    "## items_wear":"wear",
 
   "item.dcs_climate.main.pattern_paper_wear":"Pattern for Hat",
   "item.dcs_climate.main.pattern_paper_jacket":"Pattern for Jacket",
@@ -1857,6 +1857,10 @@
   "advancements.dcs_climate.main.tree_crops.desc":"Fruit trees can only be harvested during the harvest season.",
   "advancements.dcs_climate.main.epic_crops.title":"Master of Mutation",
   "advancements.dcs_climate.main.epic_crops.desc":"Obtain all EPIC Crops.",
+  "advancements.dcs_climate.main.fish.title":"Angler's holiday",
+  "advancements.dcs_climate.main.fish.desc":"Catch new species of fish with a fishing rod.",
+  "advancements.dcs_climate.main.mosquito_coil.title":"Phantom fly into the fire",
+  "advancements.dcs_climate.main.mosquito_coil.desc":"Put the Mosquito Coil in your inventory and get attacked by the Phantom.",
   "advancements.dcs_climate.main.bread_raw.title":"Homemade bread",
   "advancements.dcs_climate.main.bread_raw.desc":"Get water, salt, oil, wheat or rye flour and make a dough.",
   "advancements.dcs_climate.main.bread_bake.title":"So tasty!",
@@ -1865,6 +1869,10 @@
   "advancements.dcs_climate.main.nether_chicken.desc":"Try grilling skewered chicken in Nether temperatures.",
   "advancements.dcs_climate.main.delicious.title":"Gourmet",
   "advancements.dcs_climate.main.delicious.desc":"Eat foods with 5-star tastes.",
+  "advancements.dcs_climate.main.cooking_pot.title":"Challenge to home cooking",
+  "advancements.dcs_climate.main.cooking_pot.desc":"Get a crockpot, teapot, or farmentation jar.",
+  "advancements.dcs_climate.main.apple_milk_tea.title":"Apple Milk Tea!",
+  "advancements.dcs_climate.main.apple_milk_tea.desc":"Get apple milk tea.",
 
     "## advancement_magic":"magic",
 
@@ -1874,6 +1882,14 @@
   "advancements.dcs_climate.magic.arrow.desc":"Obtain a common color magic item.",
   "advancements.dcs_climate.magic.gem.title":"Jewel Spirit",
   "advancements.dcs_climate.magic.gem.desc":"Obtain a gem item of any color.",
+  "advancements.dcs_climate.magic.tier2.title":"Advanced Magic",
+  "advancements.dcs_climate.magic.tier2.desc":"Obtain a uncommon color magic item.",
+  "advancements.dcs_climate.magic.bird.title":"Fly Me to the Moon",
+  "advancements.dcs_climate.magic.bird.desc":"Gain the Blessing of Bird potion effect.",
+  "advancements.dcs_climate.magic.ring.title":"Magic Ring",
+  "advancements.dcs_climate.magic.ring.desc":"Colored jewels are effective when placed at the top of your inventory.",
+  "advancements.dcs_climate.magic.element.title":"Elements grow with you.",
+  "advancements.dcs_climate.magic.element.desc":"Grow and activating inactive color elements.",
 
     "## advancement_metal":"metal",
 
@@ -1883,6 +1899,18 @@
   "advancements.dcs_climate.metal.mortar.desc":"Grind colored ores in a mortar to obtain metal dust.",
   "advancements.dcs_climate.metal.brass.title":"Climate smelting",
   "advancements.dcs_climate.metal.brass.desc":"Create a space with HeatTier:KILN, Airflow:TIGHT, place a brass dust block there, and get brass.",
+  "advancements.dcs_climate.metal.brass_tool.title":"Between iron and diamond.",
+  "advancements.dcs_climate.metal.brass_tool.desc":"Get brass or steel tools.",
+  "advancements.dcs_climate.metal.motor_t1.title":"HaC got the electric power",
+  "advancements.dcs_climate.metal.motor_t1.desc":"Get a Small Motor.",
+  "advancements.dcs_climate.metal.stone_mill.title":"Mechanization",
+  "advancements.dcs_climate.metal.stone_mill.desc":"Place Electric Stone Mill block.",
+  "advancements.dcs_climate.metal.lightning.title":"Jumpstarter",
+  "advancements.dcs_climate.metal.lightning.desc":"Place a lightning rod on electrical device and catch lightning.",
+  "advancements.dcs_climate.metal.cable.title":"How to use a screwdriver",
+  "advancements.dcs_climate.metal.cable.desc":"Grab the screwdriver and click on the cable.",
+  "advancements.dcs_climate.metal.cable_danger.title":"Electric leakage accident",
+  "advancements.dcs_climate.metal.cable_danger.desc":"Touch a leaking cable and receive damage.",
 
     "## enums":"",
 

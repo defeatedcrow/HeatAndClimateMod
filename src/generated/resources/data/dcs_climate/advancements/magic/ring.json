@@ -1,11 +1,11 @@
 {
-  "parent": "dcs_climate:magic/magic_root",
+  "parent": "dcs_climate:magic/gem",
   "criteria": {
-    "has_arrow_white": {
+    "has_ring": {
       "conditions": {
         "items": [
           {
-            "tag": "dcs_climate:magic_tier1"
+            "tag": "dcs_climate:magic_rings"
           }
         ]
       },
@@ -15,21 +15,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.dcs_climate.magic.arrow.desc"
+      "translate": "advancements.dcs_climate.magic.ring.desc"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "dcs_climate:magic/arrow_black"
+      "item": "dcs_climate:magic/ring_g_red"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.dcs_climate.magic.arrow.title"
+      "translate": "advancements.dcs_climate.magic.ring.title"
     }
   },
   "requirements": [
     [
-      "has_arrow_white"
+      "has_ring"
     ]
   ]
 }

@@ -1,0 +1,19 @@
+{
+  "values": [
+    "dcs_climate:main/oredust_white_1",
+    "dcs_climate:main/oredust_white_2",
+    "dcs_climate:main/oredust_white_3",
+    "dcs_climate:main/oredust_blue_1",
+    "dcs_climate:main/oredust_blue_2",
+    "dcs_climate:main/oredust_blue_3",
+    "dcs_climate:main/oredust_black_1",
+    "dcs_climate:main/oredust_black_2",
+    "dcs_climate:main/oredust_black_3",
+    "dcs_climate:main/oredust_red_1",
+    "dcs_climate:main/oredust_red_2",
+    "dcs_climate:main/oredust_red_3",
+    "dcs_climate:main/oredust_green_1",
+    "dcs_climate:main/oredust_green_2",
+    "dcs_climate:main/oredust_green_3"
+  ]
+}

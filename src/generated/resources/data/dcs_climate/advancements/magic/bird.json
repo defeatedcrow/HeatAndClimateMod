@@ -1,0 +1,33 @@
+{
+  "parent": "dcs_climate:magic/magic_tier2",
+  "criteria": {
+    "has_magic_tier2": {
+      "conditions": {
+        "effects": {
+          "dcs_climate:effect_bird": {}
+        }
+      },
+      "trigger": "minecraft:effects_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.magic.bird.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:feather"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.magic.bird.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_magic_tier2"
+    ]
+  ]
+}

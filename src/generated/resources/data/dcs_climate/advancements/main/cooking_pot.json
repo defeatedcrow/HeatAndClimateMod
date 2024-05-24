@@ -1,0 +1,63 @@
+{
+  "parent": "dcs_climate:main/bread_bake",
+  "criteria": {
+    "has_cooking_pot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:machine/cooking_pot_normal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fermentation_jar": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:machine/fermentation_jar_normal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tea_pot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:machine/tea_pot_normal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.cooking_pot.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:machine/cooking_pot_normal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.cooking_pot.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cooking_pot",
+      "has_tea_pot",
+      "has_fermentation_jar"
+    ]
+  ]
+}

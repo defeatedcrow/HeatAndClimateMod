@@ -224,7 +224,7 @@ public class LivingTickEventDC {
 			/* wet effect */
 
 			if (living instanceof Player && ConfigCommonBuilder.INSTANCE.enWetEffect.get() && !DCItemUtil.isWearArmorItem(CoreInit.LEGGINS_WADERS.get(), living, EquipmentSlot.LEGS))
-				if (clm.getHumidity() == DCHumidity.UNDERWATER || living.isInWaterRainOrBubble()) {
+				if (!living.getLevel().isClientSide && clm.getHumidity() == DCHumidity.UNDERWATER || living.isInWaterRainOrBubble()) {
 					if (!living.hasEffect(CoreInit.WET.get()) || living.getEffect(CoreInit.WET.get()).getDuration() < 20) {
 						living.addEffect(new MobEffectInstance(CoreInit.WET.get(), 600, 0));
 					}

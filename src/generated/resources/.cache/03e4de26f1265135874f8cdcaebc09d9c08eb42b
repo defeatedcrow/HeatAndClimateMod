@@ -1,4 +1,4 @@
-// 1.19.2	2024-05-24T02:01:37.4373277	Tags for minecraft:item
+// 1.19.2	2024-05-25T01:25:18.9785898	Tags for minecraft:item
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
 ec1456f116d5ab235ffefbc79d4a8fe9087d6286 data/dcs_climate/tags/items/building_stones.json
 c7f96f68fcca93bc6fe2450a3d1f1b41ea5b9021 data/dcs_climate/tags/items/building_stones/bricks.json
@@ -42,6 +42,7 @@ ad6c7e4990398fb5f4005d4080597c7ab547cbff data/dcs_climate/tags/items/color_ores/
 f16a15e9082786b80551f2b9e38fa8cf04d3d87b data/dcs_climate/tags/items/color_pigments/green.json
 872ecd83c80ed214b4399c0343683176fa617abb data/dcs_climate/tags/items/color_pigments/red.json
 6b53ac77bd9358e02b8c682846322ee7632dbae9 data/dcs_climate/tags/items/color_pigments/white.json
+e2477cdf4cf67128225135d2ee485f53f1bd99e6 data/dcs_climate/tags/items/color_raw_materials.json
 80205a4d30a5a553e0acfd028f765e056fd7b2b0 data/dcs_climate/tags/items/color_seeds/black.json
 018c0688f9728f94546ef47639822a665514f295 data/dcs_climate/tags/items/color_seeds/blue.json
 d33a92cf7224385a7f65ab50d5e8b517425845bb data/dcs_climate/tags/items/color_seeds/green.json
@@ -64,12 +65,14 @@ a3fa1af19a7283a69c4c5086a2a4b3e849ee4fcf data/dcs_climate/tags/items/crops/tree_
 128a663ba5c83814e839289b050966180b8c18d4 data/dcs_climate/tags/items/crops/tree_wild.json
 ce66ece7ca33b2b6e3af9aa37d5cb47d6435747d data/dcs_climate/tags/items/crops/wild.json
 a63db1306fcdd0b567295629850118a684df7aef data/dcs_climate/tags/items/dirt_slab.json
-39a468d461dad77676a57f352d4bc58c45dbacc7 data/dcs_climate/tags/items/fishes.json
+e13e1ca62ba8d0058adef3d77a32488118af2b87 data/dcs_climate/tags/items/dusts.json
+156a66e91a84e08593a36b5dc773b74a8930ba7f data/dcs_climate/tags/items/fishes.json
 9b1046750e6880d175f9d0cf13079590c97d7d9d data/dcs_climate/tags/items/fishes/beach.json
 846854fee8d69b5ad09f87083f5085d0dff2b9b5 data/dcs_climate/tags/items/fishes/cold_water_only.json
 c06f5fb4c2a79dd4f48fd93005ec2e31561ed2dc data/dcs_climate/tags/items/fishes/day.json
 4d38feea179264050b05b17148ec3a049f907678 data/dcs_climate/tags/items/fishes/deep_ocean.json
 5671eb94b1deeda3a79cc6995f56226e461ad0ca data/dcs_climate/tags/items/fishes/floor.json
+1f454eebad026420a53830a667e72c4955332a40 data/dcs_climate/tags/items/fishes/hac.json
 1d89bcd54a9888211b668eb58a27a7c4ff9bd486 data/dcs_climate/tags/items/fishes/large_size.json
 3a4901b6a39b62758ff52383ec3d2a9b07decce7 data/dcs_climate/tags/items/fishes/mangrove.json
 e82493e7911c58c8fe2da39723b2032075442333 data/dcs_climate/tags/items/fishes/middle_size.json
@@ -98,11 +101,15 @@ edc53fe07b6cc91a4dc3d15cc04f5b2f1b0442d7 data/dcs_climate/tags/items/hoppers.jso
 8c8d04e6558e83e86b428523fa5055683822b260 data/dcs_climate/tags/items/logs_can_collect_sap/latex.json
 52e92430406456214703fe01a475b44c40a39a6c data/dcs_climate/tags/items/logs_can_collect_sap/resin.json
 f2cdc97a774fb6bb826cc512d5fda718518ef3ab data/dcs_climate/tags/items/logs_can_collect_sap/sweet_sap.json
+18693f8762776180171770992989e15666e10425 data/dcs_climate/tags/items/magic_arrows.json
 7aee38b7c970c1f3d1d52225aa01a808c07dc168 data/dcs_climate/tags/items/magic_badges.json
 ca0f47ac39b19e49977153f3027507ff755e5df5 data/dcs_climate/tags/items/magic_boost_item.json
 ddf63601841c399b3b24f1adabfa1c0d4433d639 data/dcs_climate/tags/items/magic_cards.json
 7731b00b985c45aa4af4f155ee3c7f6c9552d8a7 data/dcs_climate/tags/items/magic_pendants.json
 85e814e621a82fe67190bcfe1fdd544dee9b1e2f data/dcs_climate/tags/items/magic_rings.json
+1ba1e3d8d45d761b9109adcb7cbd43698627b2d5 data/dcs_climate/tags/items/magic_tier1.json
+d91527d786a9d0228641f402c58d45b15440fdeb data/dcs_climate/tags/items/magic_tier2.json
+14c10ab9eee599e107ed7fcc88f688aef0894d1e data/dcs_climate/tags/items/magic_tier3.json
 6430da8ed20b60e93622f4512219d1ff14aefcd8 data/dcs_climate/tags/items/mana_drops.json
 8c9f062dc20a9f733b8ed31f95dcfd702f331056 data/dcs_climate/tags/items/mana_elements.json
 14cef5e12e14cfde96c79f6a0d3142b02c0730a3 data/dcs_climate/tags/items/mana_extracts.json
@@ -686,7 +693,7 @@ de98ccc62c06e18b0ecd6dffbc6a7d8200610517 data/forge/tags/items/tools/pickaxes.js
 19809fc0844957cf77a803014c483aa57b4aed91 data/forge/tags/items/tools/scythes.json
 5018bd14cf5bd3ce6f4889a2bfa5d703e6a6c2ce data/forge/tags/items/tools/shovels.json
 f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/items/weed.json
-18693f8762776180171770992989e15666e10425 data/minecraft/tags/items/arrows.json
+dbf9023ad17b399103b373c5e2c87f229008aeb6 data/minecraft/tags/items/arrows.json
 0c66697fb072599561fc62082ec9457347694d33 data/minecraft/tags/items/fences.json
 4e8bf3fdbeca44ce5eba22bc2bf4c9b5a558e1a1 data/minecraft/tags/items/fishes.json
 5ee7f6137705b796a2b17e71224eb7ddfc0a6ce2 data/minecraft/tags/items/freeze_immune_wearables.json

@@ -1,0 +1,51 @@
+{
+  "parent": "dcs_climate:metal/brass",
+  "criteria": {
+    "has_brass_tool": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:main/pickaxe_brass"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_steel_tool": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:main/pickaxe_steel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.metal.brass_tool.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:main/pickaxe_brass",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.metal.brass_tool.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_brass_tool",
+      "has_steel_tool"
+    ]
+  ]
+}

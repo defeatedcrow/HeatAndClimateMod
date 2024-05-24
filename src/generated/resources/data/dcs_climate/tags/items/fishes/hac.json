@@ -1,0 +1,17 @@
+{
+  "values": [
+    "dcs_climate:food/fish_mullet",
+    "dcs_climate:food/fish_smelt",
+    "dcs_climate:food/fish_sardine",
+    "dcs_climate:food/fish_mackerel",
+    "dcs_climate:food/fish_trout",
+    "dcs_climate:food/fish_carp",
+    "dcs_climate:food/fish_rockfish",
+    "dcs_climate:food/fish_seabream",
+    "dcs_climate:food/fish_flounder",
+    "dcs_climate:food/fish_grouper",
+    "dcs_climate:food/fish_flathead",
+    "dcs_climate:food/fish_gurnard",
+    "dcs_climate:food/fish_tuna"
+  ]
+}

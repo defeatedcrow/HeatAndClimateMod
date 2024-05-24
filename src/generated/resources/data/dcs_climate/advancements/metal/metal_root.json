@@ -4,7 +4,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "dcs_climate:color_ores"
+            "tag": "dcs_climate:color_raw_materials"
           }
         ]
       },
@@ -20,7 +20,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "dcs_climate:main/ore_blue"
+      "item": "dcs_climate:main/oreitem_blue_2"
     },
     "show_toast": true,
     "title": {

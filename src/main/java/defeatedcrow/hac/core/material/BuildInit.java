@@ -150,7 +150,7 @@ public class BuildInit {
 			TagDC.ItemTag.BUILDING_CHISELED);
 	public static final RegistryObject<Block> STAIRS_MORTAR = regBlock("stairs_mortar", () -> new StairsStoneDC("mortar", CoreInit.STONE_GRANITE), ItemTags.STAIRS);
 	public static final RegistryObject<Block> SLAB_MORTAR = regBlock("slab_mortar", () -> new SlabStoneDC("mortar"), ItemTags.SLABS);
-	public static final RegistryObject<Block> WALL_MORTAR = regBlock("wall_mortar", () -> new WallStoneDC("mortar"), ItemTags.WALLS);
+	public static final RegistryObject<Block> WALL_MORTAR = regBlock("wall_mortar", () -> new WallStoneDC("mortar", true), ItemTags.WALLS);
 
 	public static final RegistryObject<Block> STAIRS_METAL = regBlock("metal_stairs", () -> new MetalStairs("metal_stairs"), null);
 	public static final RegistryObject<Block> SLAB_METAL = regBlock("metal_slab", () -> new MetalSlab("metal_stlab"), null);
@@ -394,8 +394,7 @@ public class BuildInit {
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<ChandelierTile>> CHANDELIER_TILE = CoreInit.BLOCK_ENTITIES.register("chandelier_crystal_tile",
 			() -> BlockEntityType.Builder.of(ChandelierTile::new, new Block[] { CHANDELIER_LAMP.get(), CHANDELIER_FLUORITE.get(), CHANDELIER_JET.get(), CHANDELIER_DESERTROSE.get(),
-				CHANDELIER_SERPENTINE.get(),
-				CHANDELIER_IRON.get() }).build(null));
+				CHANDELIER_SERPENTINE.get(), CHANDELIER_IRON.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<LuggageTile>> LUGGAGE_TILE = CoreInit.BLOCK_ENTITIES.register("luggage_tile",
 			() -> BlockEntityType.Builder.of(LuggageTile::new, new Block[] { LUGGAGE_NORMAL.get(), LUGGAGE_WHITE.get(), LUGGAGE_BLUE.get(), LUGGAGE_BLACK.get(), LUGGAGE_RED.get(), LUGGAGE_GREEN

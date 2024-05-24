@@ -1,11 +1,11 @@
 {
-  "parent": "dcs_climate:magic/magic_root",
+  "parent": "dcs_climate:metal/brass",
   "criteria": {
-    "has_arrow_white": {
+    "has_motor_t1": {
       "conditions": {
         "items": [
           {
-            "tag": "dcs_climate:magic_tier1"
+            "tag": "dcs_climate:motors/small"
           }
         ]
       },
@@ -15,21 +15,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.dcs_climate.magic.arrow.desc"
+      "translate": "advancements.dcs_climate.metal.motor_t1.desc"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "dcs_climate:magic/arrow_black"
+      "item": "dcs_climate:machine/motor_small"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.dcs_climate.magic.arrow.title"
+      "translate": "advancements.dcs_climate.metal.motor_t1.title"
     }
   },
   "requirements": [
     [
-      "has_arrow_white"
+      "has_motor_t1"
     ]
   ]
 }

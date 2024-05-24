@@ -1,0 +1,42 @@
+{
+  "parent": "dcs_climate:metal/stone_mill",
+  "criteria": {
+    "screwdriver_to_cable": {
+      "conditions": {
+        "item": {
+          "items": [
+            "dcs_climate:main/screwdriver"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "dcs_climate:machine/cable_copper"
+            ]
+          }
+        }
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.metal.cable.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:main/screwdriver"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.metal.cable.title"
+    }
+  },
+  "requirements": [
+    [
+      "screwdriver_to_cable"
+    ]
+  ]
+}

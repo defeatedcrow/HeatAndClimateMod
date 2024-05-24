@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.magic.MagicUtil;
@@ -126,6 +127,11 @@ public class CharmTriggerEvent {
 					}
 					attacker.hurt(DamageSource.playerAttack(player), 20F);
 					event.setAmount(0F);
+
+					if (player != null && attacker instanceof Phantom) {
+						ClimateCore.proxy.triggerAdvancement(player, "main/mosquito_coil");
+					}
+
 					event.setCanceled(true);
 				}
 			}
@@ -273,11 +279,11 @@ public class CharmTriggerEvent {
 				BlockState s2 = level.getBlockState(p2);
 				BlockEntity e2 = level.getBlockEntity(p2);
 				LootContext.Builder builder = (new LootContext.Builder(serverLevel))
-					.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
-					.withParameter(LootContextParams.BLOCK_STATE, s2)
-					.withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2)
-					.withOptionalParameter(LootContextParams.THIS_ENTITY, player)
-					.withParameter(LootContextParams.TOOL, player.getMainHandItem());
+						.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
+						.withParameter(LootContextParams.BLOCK_STATE, s2)
+						.withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2)
+						.withOptionalParameter(LootContextParams.THIS_ENTITY, player)
+						.withParameter(LootContextParams.TOOL, player.getMainHandItem());
 				s2.getDrops(builder).forEach((item) -> {
 					Block.popResource(serverLevel, p2, item);
 				});

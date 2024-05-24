@@ -222,6 +222,8 @@ public class TagDC {
 		public static final TagKey<Item> RAW_NICKEL = itemTag("raw_materials/nickel");
 		public static final TagKey<Item> RAW_CHROMIUM = itemTag("raw_materials/chromium");
 
+		public static final TagKey<Item> RAW_MATERIALS_COLOR = ItemTags.create(new ResourceLocation("dcs_climate", "color_raw_materials"));
+
 		public static final TagKey<Item> DUST_COPPER = itemTag("dusts/copper");
 		public static final TagKey<Item> DUST_GOLD = itemTag("dusts/gold");
 		public static final TagKey<Item> DUST_TUNGSTEN = itemTag("dusts/tungsten");
@@ -237,6 +239,8 @@ public class TagDC {
 		public static final TagKey<Item> DUST_TIN = itemTag("dusts/tin");
 		public static final TagKey<Item> DUST_NICKEL = itemTag("dusts/nickel");
 		public static final TagKey<Item> DUST_CHROMIUM = itemTag("dusts/chromium");
+
+		public static final TagKey<Item> DUST_COLOR = ItemTags.create(new ResourceLocation("dcs_climate", "dusts"));
 
 		public static final TagKey<Item> DUST_COAL = itemTag("dusts/coal");
 		public static final TagKey<Item> DUST_SALT = itemTag("dusts/salt");
@@ -813,8 +817,9 @@ public class TagDC {
 		public static final TagKey<Item> SEED_RED = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/red"));
 		public static final TagKey<Item> SEED_GREEN = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/green"));
 
-		public static final TagKey<Item> FISH = ItemTags.create(new ResourceLocation("dcs_climate", "fishes"));
+		public static final TagKey<Item> FISH_ALL = ItemTags.create(new ResourceLocation("dcs_climate", "fishes"));
 		public static final TagKey<Item> FISH_VANILLA = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/vanilla"));
+		public static final TagKey<Item> FISH_HAC = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/hac"));
 		public static final TagKey<Item> FISH_LOD = ItemTags.create(new ResourceLocation("dcs_climate", "can_fish_with_lod"));
 
 		public static final TagKey<Item> FISH_RIVER = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/river"));
@@ -897,10 +902,15 @@ public class TagDC {
 
 		public static final TagKey<Item> MAGIC_CARD = ItemTags.create(new ResourceLocation("dcs_climate", "magic_cards"));
 
+		public static final TagKey<Item> MAGIC_ARROW = ItemTags.create(new ResourceLocation("dcs_climate", "magic_arrows"));
 		public static final TagKey<Item> MAGIC_RING = ItemTags.create(new ResourceLocation("dcs_climate", "magic_rings"));
 		public static final TagKey<Item> MAGIC_PENDANT = ItemTags.create(new ResourceLocation("dcs_climate", "magic_pendants"));
 		public static final TagKey<Item> MAGIC_BADGE = ItemTags.create(new ResourceLocation("dcs_climate", "magic_badges"));
 		public static final TagKey<Item> MAGIC_BOOSTER = ItemTags.create(new ResourceLocation("dcs_climate", "magic_boost_item"));
+
+		public static final TagKey<Item> MAGIC_TIER1 = ItemTags.create(new ResourceLocation("dcs_climate", "magic_tier1"));
+		public static final TagKey<Item> MAGIC_TIER2 = ItemTags.create(new ResourceLocation("dcs_climate", "magic_tier2"));
+		public static final TagKey<Item> MAGIC_TIER3 = ItemTags.create(new ResourceLocation("dcs_climate", "magic_tier3"));
 
 		public static final TagKey<Item> LOG_SWEET = ItemTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap/sweet_sap"));
 		public static final TagKey<Item> LOG_RESIN = ItemTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap/resin"));
