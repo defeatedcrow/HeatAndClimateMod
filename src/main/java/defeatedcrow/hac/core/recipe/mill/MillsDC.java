@@ -66,6 +66,8 @@ public class MillsDC {
 		list1.add(new Crops("almond", FoodInit.CROP_CH_ALMOND, FoodInit.FOOD_ALMOND_MILK, CoreInit.DUST_PLANT));
 		list1.add(new Crops("date", FoodInit.CROP_PL_DATE, FoodInit.FOOD_SYRUP, CoreInit.DUST_PLANT));
 		list1.add(new Crops("oil_palm", FoodInit.CROP_PL_OIL, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
+		list1.add(new Crops("camellia_flower", FoodInit.FLOWER_CAMELLIA, () -> Items.RED_DYE, CoreInit.DUST_PLANT));
+		list1.add(new Crops("schima_flower", FoodInit.FLOWER_SCHIMA, () -> Items.WHITE_DYE, CoreInit.DUST_PLANT));
 
 		list2.add(new Miscs("ore_iron", 1, () -> Tags.Items.ORES_IRON, () -> Items.RAW_IRON, () -> Items.RAW_IRON));
 		list2.add(new Miscs("ore_copper", 1, () -> Tags.Items.ORES_COPPER, () -> Items.RAW_COPPER, () -> Items.RAW_COPPER));

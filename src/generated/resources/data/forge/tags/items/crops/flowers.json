@@ -20,6 +20,8 @@
     "#forge:crops/heath",
     "#forge:crops/rhododendron",
     "#forge:crops/osmanthus",
-    "#forge:crops/damaschena"
+    "#forge:crops/damaschena",
+    "#forge:crops/camellia_flower",
+    "#forge:crops/schima_flower"
   ]
 }

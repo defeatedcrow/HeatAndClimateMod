@@ -11,11 +11,13 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.crop.CropGrowType;
+import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -124,6 +126,25 @@ public class LeavesSchima extends LeavesCropBlockDC {
 	@Override
 	public String getSpeciesName(CropTier tier) {
 		return "schima";
+	}
+
+	/* 花の収穫ができる */
+	@Override
+	public boolean canHarvest(BlockState thisState) {
+		CropStage stage = this.getCurrentStage(thisState);
+		return stage == CropStage.FLOWER || stage == CropStage.GROWN;
+	}
+
+	@Override
+	public List<ItemStack> getCropItems(BlockState state, int fortune) {
+		CropStage stage = this.getCurrentStage(state);
+		if (stage == CropStage.FLOWER) {
+			ItemStack ret = new ItemStack(FoodInit.FLOWER_SCHIMA.get());
+			return ImmutableList.of(ret);
+		} else {
+			ItemStack ret = new ItemStack(getSeedItem(getTier()));
+			return ImmutableList.of(ret);
+		}
 	}
 
 }

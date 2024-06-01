@@ -5,16 +5,13 @@
       "tag": "forge:rods/wooden"
     },
     {
-      "tag": "forge:crops/egg_plant"
+      "tag": "forge:crops/vegetables"
     },
     {
       "tag": "forge:crops/paprika"
     },
     {
       "tag": "forge:crops/pumpkin"
-    },
-    {
-      "tag": "forge:mushrooms"
     }
   ],
   "result": {

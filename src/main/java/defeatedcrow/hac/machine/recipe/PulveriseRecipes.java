@@ -230,6 +230,14 @@ public class PulveriseRecipes {
 				ImmutableList.of(Ingredient.of(FoodInit.LOG_CN_CINNAMON.get())));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
+				new ItemStack(Items.RED_DYE, 3), new ItemStack(CoreInit.DUST_PLANT.get(), 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(FoodInit.FLOWER_CAMELLIA.get())));
+
+		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
+				new ItemStack(Items.WHITE_DYE, 3), new ItemStack(CoreInit.DUST_PLANT.get(), 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(FoodInit.FLOWER_SCHIMA.get())));
+
+		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
 				new ItemStack(FoodInit.FOOD_FISH_POWDER.get(), 3), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.RAW_ALL_FISH)));
 

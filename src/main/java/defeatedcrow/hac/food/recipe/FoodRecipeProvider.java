@@ -234,19 +234,17 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.STICK_VEGI_RAW.get(), 1)
 				.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_EGGPLANT))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_BELL))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_PUMPKIN))
-				.requires(Ingredient.of(Tags.Items.MUSHROOMS))
 				.unlockedBy("has_bellpepper", has(TagDC.ItemTag.CROP_BELL))
 				.save(cons, "dcs_climate:food/stick_vegi_1");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.STICK_VEGI_RAW.get(), 1)
 				.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_EGGPLANT))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_PAPRIKA))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_PUMPKIN))
-				.requires(Ingredient.of(Tags.Items.MUSHROOMS))
 				.unlockedBy("has_paprika", has(TagDC.ItemTag.CROP_PAPRIKA))
 				.save(cons, "dcs_climate:food/stick_vegi_2");
 
