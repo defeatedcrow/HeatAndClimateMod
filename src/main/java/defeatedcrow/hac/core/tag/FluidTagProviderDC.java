@@ -23,10 +23,10 @@ public class FluidTagProviderDC extends FluidTagsProvider {
 		tag(TagDC.FluidTag.SPARKLING).add(CoreInit.SPARKLING.getStillFluid().get());
 		tag(TagDC.FluidTag.PLANT_OIL).add(CoreInit.PLANT_OIL.getStillFluid().get());
 		tag(TagDC.FluidTag.FUEL).add(CoreInit.FUEL_OIL.getStillFluid().get());
-		tag(TagDC.FluidTag.AIR).add(Fluids.EMPTY);
+		tag(TagDC.FluidTag.AIR).add(Fluids.EMPTY, CoreInit.AIR.getStillFluid().get());
 
 		tag(TagDC.FluidTag.ALL_WATER).add(Fluids.WATER, CoreInit.BRINE.getStillFluid().get(),
-			CoreInit.HOTSPRING.getStillFluid().get(), CoreInit.SPARKLING.getStillFluid().get());
+				CoreInit.HOTSPRING.getStillFluid().get(), CoreInit.SPARKLING.getStillFluid().get());
 
 		tag(TagDC.FluidTag.DRINK_WATER).add(Fluids.WATER, CoreInit.SPARKLING.getStillFluid().get());
 

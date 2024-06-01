@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "dcs_climate:fluid/compressed_air_bucket"
+  }
+}

@@ -22,7 +22,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.SupportType;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 
@@ -59,9 +58,7 @@ public abstract class ItemEntityFood extends ItemFoodDC implements IEntityItem {
 
 	@Override
 	public boolean canSpawnHere(Level level, BlockPos pos) {
-		boolean b1 = level.getBlockState(pos).isFaceSturdy(level, pos, Direction.UP, SupportType.CENTER);
-		boolean b2 = !level.getBlockState(pos.above()).getMaterial().blocksMotion();
-		return true; // b1 && b2;
+		return true;
 	}
 
 	@Override

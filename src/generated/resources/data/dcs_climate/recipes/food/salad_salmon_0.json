@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/green_leafs"
+    },
+    {
+      "tag": "forge:ingredients/raw_salmon"
+    },
+    {
+      "tag": "forge:crops/onions"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/salad_salmon"
+  }
+}

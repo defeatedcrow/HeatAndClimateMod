@@ -141,6 +141,7 @@
   "item.dcs_climate.fluid.bucket_fuel_oil":"燃料油のバケツ",
   "item.dcs_climate.fluid.bucket_plant_oil":"植物油のバケツ",
   "item.dcs_climate.fluid.bucket_sparkling":"炭酸水のバケツ",
+  "item.dcs_climate.fluid.bucket_compressed_air":"圧縮空気のバケツ",
 
     "## items_machine":"machine",
 
@@ -385,7 +386,8 @@
   "item.dcs_climate.food.food_agar":"寒天",
 
   "item.dcs_climate.food.food_pastry":"ペストリー生地",
-  "item.dcs_climate.food.food_noodle_wheat":"パスタ",
+  "item.dcs_climate.food.food_noodle_pasta":"パスタ",
+  "item.dcs_climate.food.food_noodle_wheat":"小麦麺",
   "item.dcs_climate.food.food_noodle_brine":"中華麺",
   "item.dcs_climate.food.food_noodle_buckwheat":"蕎麦切り",
   "item.dcs_climate.food.food_noodle_rice":"米粉麺",
@@ -579,6 +581,30 @@
   "item.dcs_climate.food.chazuke_sake":"鮭茶漬け",
   "item.dcs_climate.food.chazuke_tarako":"たらこ茶漬け",
 
+  "item.dcs_climate.food.pasta_oil":"ペペロンチーノ",
+  "item.dcs_climate.food.pasta_basil":"ジェノベーゼのパスタ",
+  "item.dcs_climate.food.pasta_krill":"小エビと青菜のペペロンチーノ",
+  "item.dcs_climate.food.pasta_tomato":"トリコローレのパスタ",
+  "item.dcs_climate.food.pasta_prawn":"エビのトマトパスタ",
+  "item.dcs_climate.food.pasta_puttanesca":"プッタネスカ",
+  "item.dcs_climate.food.pasta_beef":"ボロネーゼ",
+  "item.dcs_climate.food.pasta_squid":"イカスミのパスタ",
+  "item.dcs_climate.food.pasta_cod":"白身魚のクリームパスタ",
+  "item.dcs_climate.food.pasta_roe":"タラコのパスタ",
+
+  "item.dcs_climate.food.phat_thai_prawn":"エビのパッタイ",
+  "item.dcs_climate.food.phat_thai_chicken":"チキンのパッタイ",
+
+  "item.dcs_climate.food.udon_simple":"かけうどん",
+  "item.dcs_climate.food.udon_kitsune":"きつねうどん",
+  "item.dcs_climate.food.udon_tsukimi":"月見うどん",
+  "item.dcs_climate.food.udon_tenpura":"天ぷらうどん",
+
+  "item.dcs_climate.food.soba_simple":"かけそば",
+  "item.dcs_climate.food.soba_kitsune":"きつねそば",
+  "item.dcs_climate.food.soba_tsukimi":"月見そば",
+  "item.dcs_climate.food.soba_tenpura":"天ぷらそば",
+
   "item.dcs_climate.food.soup_cream_potato":"芋のポタージュ",
   "item.dcs_climate.food.soup_cream_pumpkin":"カボチャのポタージュ",
   "item.dcs_climate.food.soup_cream_corn":"コーンポタージュ",
@@ -655,6 +681,10 @@
   "item.dcs_climate.food.stick_offal_cooked":"もつ串",
   "item.dcs_climate.food.stick_fish_raw":"生の魚串",
   "item.dcs_climate.food.stick_fish_cooked":"串焼き魚",
+  "item.dcs_climate.food.stick_vegi_raw":"生の野菜串",
+  "item.dcs_climate.food.stick_vegi_cooked":"串焼き野菜",
+  "item.dcs_climate.food.stick_corn_raw":"生のコーン串",
+  "item.dcs_climate.food.stick_corn_cooked":"串焼きコーン",
 
   "item.dcs_climate.food.sweetpotato_raw":"紙包みのサツマイモ",
   "item.dcs_climate.food.sweetpotato_cooked":"焼き芋",
@@ -689,6 +719,8 @@
   "item.dcs_climate.food.salad_potato":"ポテトサラダ",
   "item.dcs_climate.food.salad_nuts":"ナッツと豆のサラダ",
   "item.dcs_climate.food.salad_melon":"スイカとトマトのサラダ",
+  "item.dcs_climate.food.salad_salmon":"サーモンのサラダ",
+  "item.dcs_climate.food.salad_tofu":"豆腐と海藻のサラダ",
 
   "item.dcs_climate.food.drink_apple":"リンゴジュース",
   "item.dcs_climate.food.drink_berry":"ベリージュース",
@@ -747,7 +779,7 @@
   "item.dcs_climate.food.bottle_wine":"赤ワイン",
   "item.dcs_climate.food.bottle_wine_white":"白ワイン",
 
-    "## items_wear":"waer",
+    "## items_wear":"wear",
 
   "item.dcs_climate.main.pattern_paper_wear":"帽子の型紙",
   "item.dcs_climate.main.pattern_paper_jacket":"ジャケットの型紙",
@@ -1455,6 +1487,7 @@
   "fluid_type.dcs_climate.fuel_oil":"燃料油",
   "fluid_type.dcs_climate.plant_oil":"植物油",
   "fluid_type.dcs_climate.sparkling":"炭酸水",
+  "fluid_type.dcs_climate.compressed_air":"圧縮空気",
 
     "## entities":"",
 
@@ -1478,6 +1511,8 @@
   "entity.dcs_climate.stick_beef":"串焼き",
   "entity.dcs_climate.stick_meat":"串焼き",
   "entity.dcs_climate.stick_fish":"串焼き",
+  "entity.dcs_climate.stick_corn":"串焼き",
+  "entity.dcs_climate.stick_vegi":"串焼き",
   "entity.dcs_climate.cooked_sweetpotato":"焼き芋",
   "entity.dcs_climate.casserole":"キャセロール",
   "entity.dcs_climate.plate_steak":"ステーキプレート",
@@ -1499,6 +1534,10 @@
   "entity.dcs_climate.curry_sashimi_model":"大皿",
   "entity.dcs_climate.square_fish":"魚料理",
   "entity.dcs_climate.square_sashimi":"刺身",
+  "entity.dcs_climate.square_pasta":"パスタ",
+  "entity.dcs_climate.square_noodle":"麺",
+  "entity.dcs_climate.square_udon":"うどん",
+  "entity.dcs_climate.square_soba":"そば",
 
   "entity.dcs_climate.bind_plant":"ツタの罠",
   "entity.dcs_climate.bind_electric":"おしおき電気罠",

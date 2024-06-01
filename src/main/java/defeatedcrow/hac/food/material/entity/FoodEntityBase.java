@@ -10,8 +10,10 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.material.entity.ObjectEntityBaseDC;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -92,6 +94,14 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 			}
 		}
 		return super.interact(player, hand);
+	}
+
+	@Override
+	protected Component getTypeName() {
+		if (!DCUtil.isEmpty(getDropItem())) {
+			return Component.translatable(getDropItem().getDescriptionId());
+		}
+		return super.getTypeName();
 	}
 
 }

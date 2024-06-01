@@ -1,0 +1,20 @@
+{
+  "values": [
+    "dcs_climate:food/pasta_oil",
+    "dcs_climate:food/pasta_basil",
+    "dcs_climate:food/pasta_krill",
+    "dcs_climate:food/pasta_tomato",
+    "dcs_climate:food/pasta_prawn",
+    "dcs_climate:food/pasta_puttanesca",
+    "dcs_climate:food/pasta_beef",
+    "dcs_climate:food/pasta_squid",
+    "dcs_climate:food/pasta_cod",
+    "dcs_climate:food/pasta_roe",
+    "dcs_climate:food/phat_thai_prawn",
+    "dcs_climate:food/phat_thai_chicken",
+    "dcs_climate:food/udon_simple",
+    "dcs_climate:food/udon_tsukimi",
+    "dcs_climate:food/soba_simple",
+    "dcs_climate:food/soba_tsukimi"
+  ]
+}

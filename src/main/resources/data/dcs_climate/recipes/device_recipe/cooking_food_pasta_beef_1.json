@@ -1,0 +1,42 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/pasta_beef",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/pasta"
+    },
+    {
+      "tag": "forge:ingredients/plant_oil"
+    },
+    {
+      "item": "dcs_climate:food/food_bolognese_sauce"
+    },
+    {
+      "tag": "forge:ingredients/cheese"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

@@ -5,6 +5,8 @@
     "dcs_climate:food/stick_mutton_cooked",
     "dcs_climate:food/stick_chicken_cooked",
     "dcs_climate:food/stick_offal_cooked",
-    "dcs_climate:food/stick_fish_cooked"
+    "dcs_climate:food/stick_fish_cooked",
+    "dcs_climate:food/stick_vegi_cooked",
+    "dcs_climate:food/stick_corn_cooked"
   ]
 }

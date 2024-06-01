@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/soba_tenpura"
+  },
+  "parent": "minecraft:item/generated"
+}

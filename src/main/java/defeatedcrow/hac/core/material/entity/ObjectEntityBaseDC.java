@@ -4,8 +4,10 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.material.IEntityItem;
 import defeatedcrow.hac.api.material.IItemDropEntity;
 import defeatedcrow.hac.api.util.TagKeyDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -92,7 +94,7 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 		}
 
 		// 落下
-		if (!this.onGround || this.getDeltaMovement().horizontalDistanceSqr() > 0.001F) {
+		if (!this.onGround || this.getDeltaMovement().length() > 0.0001F) {
 			this.move(MoverType.SELF, this.getDeltaMovement());
 			float f1 = 0.98F;
 			if (this.onGround) {
@@ -123,6 +125,14 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 		if (!this.isAlive()) {
 			return super.interact(player, hand);
 		} else if (player != null) {
+			if (player.isCrouching()) {
+				ItemStack held = player.getItemInHand(hand);
+				if (!DCUtil.isEmpty(held) && held.getItem() instanceof IEntityItem food) {
+					Vec3 vec3 = this.position().add(0D, this.getBbHeight() + 0.2D, 0D);
+					food.spawnPlacementEntity(getLevel(), player, vec3, held);
+				}
+				return InteractionResult.FAIL;
+			}
 			this.dropItem(player.position());
 			this.kill();
 			return InteractionResult.SUCCESS;

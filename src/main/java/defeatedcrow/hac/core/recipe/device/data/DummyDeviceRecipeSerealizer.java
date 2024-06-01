@@ -55,6 +55,10 @@ public class DummyDeviceRecipeSerealizer implements RecipeSerializer<DummyDevice
 					DCRecipes.INSTANCE.COOKING.put(res, recipe);
 					DCLogger.traceLog("Cooking recipe loaded from json: " + res);
 				}
+				if (id == RecipeTypeDC.FRYING) {
+					DCRecipes.INSTANCE.FRYING.put(res, recipe);
+					DCLogger.traceLog("Frying recipe loaded from json: " + res);
+				}
 				if (id == RecipeTypeDC.TEA) {
 					DCRecipes.INSTANCE.TEA.put(res, recipe);
 					DCLogger.traceLog("Tea recipe loaded from json: " + res);
@@ -124,6 +128,10 @@ public class DummyDeviceRecipeSerealizer implements RecipeSerializer<DummyDevice
 					if (id == RecipeTypeDC.COOKING) {
 						DCRecipes.INSTANCE.COOKING.put(res, recipe);
 						DCLogger.traceLog("Cooking recipe loaded from json: " + res);
+					}
+					if (id == RecipeTypeDC.FRYING) {
+						DCRecipes.INSTANCE.FRYING.put(res, recipe);
+						DCLogger.traceLog("Frying recipe loaded from json: " + res);
 					}
 					if (id == RecipeTypeDC.TEA) {
 						DCRecipes.INSTANCE.TEA.put(res, recipe);

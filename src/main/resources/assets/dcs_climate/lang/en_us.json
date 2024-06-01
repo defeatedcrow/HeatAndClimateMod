@@ -141,6 +141,7 @@
   "item.dcs_climate.fluid.bucket_fuel_oil":"Fuel OilBucket",
   "item.dcs_climate.fluid.bucket_plant_oil":"Plant Oil Bucket",
   "item.dcs_climate.fluid.bucket_sparkling":"Sparkling Water Bucket",
+  "item.dcs_climate.fluid.bucket_compressed_air":"Compressed Air Bucket",
 
 
     "## items_machine":"machine",
@@ -386,7 +387,8 @@
   "item.dcs_climate.food.food_agar":"Agar",
 
   "item.dcs_climate.food.food_pastry":"Pastry",
-  "item.dcs_climate.food.food_noodle_wheat":"Pasta",
+  "item.dcs_climate.food.food_noodle_pasta":"Pasta",
+  "item.dcs_climate.food.food_noodle_wheat":"Wheat Noodle",
   "item.dcs_climate.food.food_noodle_brine":"Chinese Noodle",
   "item.dcs_climate.food.food_noodle_buckwheat":"Buckwheat Noodle",
   "item.dcs_climate.food.food_noodle_rice":"Rice Noodle",
@@ -581,6 +583,30 @@
   "item.dcs_climate.food.chazuke_sake":"Salmon Chazuke",
   "item.dcs_climate.food.chazuke_tarako":"Roe Chazuke",
 
+    "item.dcs_climate.food.pasta_oil":"Aglio Olioe e peperoncino",
+  "item.dcs_climate.food.pasta_basil":"Pesto Genovese Pasta",
+  "item.dcs_climate.food.pasta_krill":"Garlic Krill and Lemon Pasta",
+  "item.dcs_climate.food.pasta_tomato":"Tricolore Pasta",
+  "item.dcs_climate.food.pasta_prawn":"Prawn Chili Pasta",
+  "item.dcs_climate.food.pasta_puttanesca":"Puttanesca",
+  "item.dcs_climate.food.pasta_beef":"Bolognese",
+  "item.dcs_climate.food.pasta_squid":"Squid Ink Pasta",
+  "item.dcs_climate.food.pasta_cod":"Creamy Fish Pasta",
+  "item.dcs_climate.food.pasta_roe":"Creamy Mentaico Pasta",
+
+  "item.dcs_climate.food.phat_thai_prawn":"Prawn Phat Thai",
+  "item.dcs_climate.food.phat_thai_chicken":"Chicken Phat Thai",
+
+  "item.dcs_climate.food.udon_simple":"Udon Soup",
+  "item.dcs_climate.food.udon_kitsune":"Kitsune Udon",
+  "item.dcs_climate.food.udon_tsukimi":"Tsukimi Udon",
+  "item.dcs_climate.food.udon_tenpura":"Tempura Udon",
+
+  "item.dcs_climate.food.soba_simple":"Soba Soup",
+  "item.dcs_climate.food.soba_kitsune":"Kitsune Soba",
+  "item.dcs_climate.food.soba_tsukimi":"Tsukimi Soba",
+  "item.dcs_climate.food.soba_tenpura":"Tempura Soba",
+
   "item.dcs_climate.food.soup_cream_potato":"Creamy Potato Soup",
   "item.dcs_climate.food.soup_cream_pumpkin":"Creamy Pumpkin Soup",
   "item.dcs_climate.food.soup_cream_corn":"Creamy Corn Soup",
@@ -657,6 +683,10 @@
   "item.dcs_climate.food.stick_offal_cooked":"Grilled Offal Skewer",
   "item.dcs_climate.food.stick_fish_raw":"Raw Fish Skewer",
   "item.dcs_climate.food.stick_fish_cooked":"Grilled Fish Skewer",
+  "item.dcs_climate.food.stick_vegi_raw":"Raw Vegetable Skewer",
+  "item.dcs_climate.food.stick_vegi_cooked":"Grilled Vegetable Skewer",
+  "item.dcs_climate.food.stick_corn_raw":"Raw Corn Skewer",
+  "item.dcs_climate.food.stick_corn_cooked":"Grilled Corn Skewer",
 
   "item.dcs_climate.food.sweetpotato_raw":"Paper-wrapped Sweet Potato",
   "item.dcs_climate.food.sweetpotato_cooked":"Roasted Sweet Potato",
@@ -691,6 +721,8 @@
   "item.dcs_climate.food.salad_potato":"Potato Salad",
   "item.dcs_climate.food.salad_nuts":"Nut and Beens Salad",
   "item.dcs_climate.food.salad_melon":"Watermelon Salad",
+  "item.dcs_climate.food.salad_salmon":"Salmon Salad",
+  "item.dcs_climate.food.salad_tofu":"Tofu salad",
 
   "item.dcs_climate.food.drink_apple":"Apple Juice",
   "item.dcs_climate.food.drink_berry":"Berry Juice",
@@ -1458,6 +1490,7 @@
   "fluid_type.dcs_climate.fuel_oil":"Fuel Oil",
   "fluid_type.dcs_climate.plant_oil":"Plant Oil",
   "fluid_type.dcs_climate.sparkling":"Sparkling Water",
+  "fluid_type.dcs_climate.compressed_air":"Compressed Air",
 
     "## entities":"",
 
@@ -1478,6 +1511,8 @@
   "entity.dcs_climate.stick_beef":"Meat Skewer",
   "entity.dcs_climate.stick_meat":"Meat Skewer",
   "entity.dcs_climate.stick_fish":"Fish Skewer",
+  "entity.dcs_climate.stick_corn":"Corn Skewer",
+  "entity.dcs_climate.stick_vegi":"Vegetable Skewer",
   "entity.dcs_climate.cooked_sweetpotato":"Roasted Sweet Potato",
   "entity.dcs_climate.salad":"Salad",
   "entity.dcs_climate.soup":"Soup Bowl",
@@ -1502,6 +1537,10 @@
   "entity.dcs_climate.curry_sashimi_model":"Large_Plate",
   "entity.dcs_climate.square_fish":"Fish Meal",
   "entity.dcs_climate.square_sashimi":"Sashimi",
+  "entity.dcs_climate.square_pasta":"Pasta",
+  "entity.dcs_climate.square_noodle":"Noodle",
+  "entity.dcs_climate.square_udon":"Udon",
+  "entity.dcs_climate.square_soba":"Soba",
 
   "entity.dcs_climate.bind_plant":"Bind Plants",
   "entity.dcs_climate.bind_electric":"Electric Bind",

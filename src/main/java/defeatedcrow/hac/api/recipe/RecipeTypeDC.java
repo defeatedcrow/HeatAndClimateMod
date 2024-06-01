@@ -11,6 +11,7 @@ public enum RecipeTypeDC {
 	ELECTROLYZE,
 	FERMENTATION,
 	COOKING,
+	FRYING,
 	TEA;
 
 	public static RecipeTypeDC getType(String name) {
@@ -30,13 +31,14 @@ public enum RecipeTypeDC {
 
 	public static ImmutableList<RecipeTypeDC> elements() {
 		return ImmutableList.of(PULVERISE,
-			SQUEEZE,
-			SIEVE,
-			DISTILL,
-			CATALYST,
-			ELECTROLYZE,
-			FERMENTATION,
-			COOKING,
-			TEA);
+				SQUEEZE,
+				SIEVE,
+				DISTILL,
+				CATALYST,
+				ELECTROLYZE,
+				FERMENTATION,
+				COOKING,
+				FRYING,
+				TEA);
 	}
 }

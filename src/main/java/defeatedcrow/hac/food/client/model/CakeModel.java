@@ -33,20 +33,20 @@ public class CakeModel<T extends Entity> extends EntityModel<T> {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition bottom = partdefinition.addOrReplaceChild("bottom", CubeListBuilder.create().texOffs(28, 0).mirror().addBox(-4.0F, -1.0F, -4.0F, 8.0F, 1.0F, 8.0F, new CubeDeformation(0.0F)).mirror(false)
-			.texOffs(16, 18).mirror().addBox(-6.0F, -1.5F, -6.0F, 12.0F, 1.0F, 12.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.ZERO);
+		PartDefinition bottom = partdefinition.addOrReplaceChild("bottom", CubeListBuilder.create().texOffs(28, 0).mirror().addBox(-4.0F, -1.0F, -4.0F, 8.0F, 1.0F, 8.0F, new CubeDeformation(0.0F))
+				.texOffs(16, 18).mirror().addBox(-6.0F, -1.5F, -6.0F, 12.0F, 1.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
 
-		PartDefinition jelly1 = partdefinition.addOrReplaceChild("jelly1", CubeListBuilder.create().texOffs(0, 9).mirror().addBox(-3.5F, -6.0F, -3.5F, 7.0F, 2.0F, 7.0F, new CubeDeformation(0.0F)).mirror(false),
-			PartPose.ZERO);
+		PartDefinition jelly1 = partdefinition.addOrReplaceChild("jelly1", CubeListBuilder.create().texOffs(0, 9).mirror().addBox(-3.5F, -6.0F, -3.5F, 7.0F, 2.0F, 7.0F, new CubeDeformation(0.0F)),
+				PartPose.ZERO);
 
-		PartDefinition jelly2 = partdefinition.addOrReplaceChild("jelly2", CubeListBuilder.create().texOffs(0, 19).mirror().addBox(-3.5F, -4.0F, -3.5F, 7.0F, 3.0F, 7.0F, new CubeDeformation(0.0F)).mirror(false),
-			PartPose.ZERO);
+		PartDefinition jelly2 = partdefinition.addOrReplaceChild("jelly2", CubeListBuilder.create().texOffs(0, 19).mirror().addBox(-3.5F, -4.0F, -3.5F, 7.0F, 3.0F, 7.0F, new CubeDeformation(0.0F)),
+				PartPose.ZERO);
 
-		PartDefinition jelly3 = partdefinition.addOrReplaceChild("jelly3", CubeListBuilder.create().texOffs(0, 0).mirror().addBox(-3.5F, -7.0F, -3.5F, 7.0F, 1.0F, 7.0F, new CubeDeformation(0.0F)).mirror(false),
-			PartPose.ZERO);
+		PartDefinition jelly3 = partdefinition.addOrReplaceChild("jelly3", CubeListBuilder.create().texOffs(0, 0).mirror().addBox(-3.5F, -7.0F, -3.5F, 7.0F, 1.0F, 7.0F, new CubeDeformation(0.0F)),
+				PartPose.ZERO);
 
 		PartDefinition fruits = partdefinition.addOrReplaceChild("fruits", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -8.0F, -1.0F, 1.0F, 1.0F, 1.0F, new CubeDeformation(0.0F))
-			.texOffs(0, 2).addBox(-1.0F, -8.0F, 0.0F, 1.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
+				.texOffs(0, 2).addBox(-1.0F, -8.0F, 0.0F, 1.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
 
 		return LayerDefinition.create(meshdefinition, 64, 32);
 	}

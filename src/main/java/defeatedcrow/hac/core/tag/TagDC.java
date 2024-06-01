@@ -755,6 +755,7 @@ public class TagDC {
 		public static final TagKey<Item> HAC_FISH_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/fish_meal"));
 		public static final TagKey<Item> HAC_MEAT_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/meat_meal"));
 		public static final TagKey<Item> HAC_RICE_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/rice_meal"));
+		public static final TagKey<Item> HAC_NOODLE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/noodle"));
 		public static final TagKey<Item> HAC_SALAD = ItemTags.create(new ResourceLocation("dcs_climate", "meals/salad"));
 		public static final TagKey<Item> HAC_SKEWERED = ItemTags.create(new ResourceLocation("dcs_climate", "meals/skewered"));
 		public static final TagKey<Item> HAC_PLATE_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/plate_meal"));

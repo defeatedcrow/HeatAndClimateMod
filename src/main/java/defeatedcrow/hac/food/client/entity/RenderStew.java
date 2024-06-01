@@ -64,7 +64,6 @@ public class RenderStew<T extends FoodEntityBase> extends EntityRenderer<T> {
 				}
 			}
 		}
-		super.render(entity, yaw, partialTicks, poseStack, buffer, packedLight);
 	}
 
 }

@@ -226,6 +226,36 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_edible_fish", has(TagDC.ItemTag.RAW_EDIBLE_FISH))
 				.save(cons, "dcs_climate:food/stick_fish");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.STICK_CORN_RAW.get(), 1)
+				.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_CORN))
+				.unlockedBy("has_corn", has(TagDC.ItemTag.CROP_CORN))
+				.save(cons, "dcs_climate:food/stick_corn");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.STICK_VEGI_RAW.get(), 1)
+				.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_EGGPLANT))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_BELL))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_PUMPKIN))
+				.requires(Ingredient.of(Tags.Items.MUSHROOMS))
+				.unlockedBy("has_bellpepper", has(TagDC.ItemTag.CROP_BELL))
+				.save(cons, "dcs_climate:food/stick_vegi_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.STICK_VEGI_RAW.get(), 1)
+				.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_EGGPLANT))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_PAPRIKA))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_PUMPKIN))
+				.requires(Ingredient.of(Tags.Items.MUSHROOMS))
+				.unlockedBy("has_paprika", has(TagDC.ItemTag.CROP_PAPRIKA))
+				.save(cons, "dcs_climate:food/stick_vegi_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.STICK_FISH_RAW.get(), 1)
+				.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
+				.requires(Ingredient.of(TagDC.ItemTag.RAW_EDIBLE_FISH))
+				.unlockedBy("has_edible_fish", has(TagDC.ItemTag.RAW_EDIBLE_FISH))
+				.save(cons, "dcs_climate:food/stick_fish");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.SWEETPOTATO_RAW.get(), 1)
 				.requires(Ingredient.of(Items.PAPER))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_SWEET_POTATO))
@@ -728,6 +758,20 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_green_leaves", has(TagDC.ItemTag.CROP_GREEN_LEAFS))
 				.save(cons, "dcs_climate:food/salad_melon_0");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.SALAD_SALMON.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
+				.requires(Ingredient.of(TagDC.ItemTag.RAW_SALMON))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+				.unlockedBy("has_green_leaves", has(TagDC.ItemTag.CROP_GREEN_LEAFS))
+				.save(cons, "dcs_climate:food/salad_salmon_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SALAD_TOFU.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
+				.requires(Ingredient.of(FoodInit.FOOD_TOFU.get()))
+				.requires(Ingredient.of(Items.DRIED_KELP))
+				.unlockedBy("has_green_leaves", has(TagDC.ItemTag.CROP_GREEN_LEAFS))
+				.save(cons, "dcs_climate:food/salad_tofu_0");
+
 		// vanilla
 
 		ShapelessRecipeBuilder.shapeless(Items.PACKED_MUD, 1)
@@ -1226,11 +1270,18 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
 				.save(cons, "dcs_climate:food/foodmaterial_pastry");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_WHEAT.get(), 1)
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_PASTA.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
 				.requires(Ingredient.of(TagDC.ItemTag.WATER))
 				.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
 				.save(cons, "dcs_climate:food/foodmaterial_pasta");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_WHEAT.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
+				.requires(Ingredient.of(TagDC.ItemTag.WATER))
+				.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
+				.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
+				.save(cons, "dcs_climate:food/foodmaterial_wheat");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_BRINE.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))

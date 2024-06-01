@@ -27,32 +27,32 @@ public class PlateChickenModel<T extends Entity> extends EntityModel<T> {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition plate = partdefinition.addOrReplaceChild("plate", CubeListBuilder.create().texOffs(0, 0).mirror().addBox(-6.0F, -1.0F, -5.0F, 12.0F, 1.0F, 10.0F, new CubeDeformation(0.0F)).mirror(false)
-			.texOffs(0, 12).mirror().addBox(-7.0F, -3.0F, -6.0F, 14.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)).mirror(false)
-			.texOffs(0, 12).mirror().addBox(-7.0F, -3.0F, 5.0F, 14.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)).mirror(false)
-			.texOffs(0, 17).mirror().addBox(-7.0F, -3.0F, -5.0F, 1.0F, 3.0F, 10.0F, new CubeDeformation(0.0F)).mirror(false)
-			.texOffs(0, 17).mirror().addBox(6.0F, -3.0F, -5.0F, 1.0F, 3.0F, 10.0F, new CubeDeformation(0.0F)).mirror(false)
-			.texOffs(36, 0).mirror().addBox(-8.0F, -3.0F, -2.0F, 1.0F, 1.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false)
-			.texOffs(36, 0).mirror().addBox(7.0F, -3.0F, -2.0F, 1.0F, 1.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, 0.0F, 0.0F));
+		PartDefinition plate = partdefinition.addOrReplaceChild("plate", CubeListBuilder.create().texOffs(0, 0).mirror().addBox(-6.0F, -1.0F, -5.0F, 12.0F, 1.0F, 10.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 12).mirror().addBox(-7.0F, -3.0F, -6.0F, 14.0F, 3.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 12).mirror().addBox(-7.0F, -3.0F, 5.0F, 14.0F, 3.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 17).mirror().addBox(-7.0F, -3.0F, -5.0F, 1.0F, 3.0F, 10.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 17).mirror().addBox(6.0F, -3.0F, -5.0F, 1.0F, 3.0F, 10.0F, new CubeDeformation(0.0F))
+				.texOffs(36, 0).mirror().addBox(-8.0F, -3.0F, -2.0F, 1.0F, 1.0F, 4.0F, new CubeDeformation(0.0F))
+				.texOffs(36, 0).mirror().addBox(7.0F, -3.0F, -2.0F, 1.0F, 1.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-		PartDefinition steak1 = partdefinition.addOrReplaceChild("steak1", CubeListBuilder.create().texOffs(0, 32).mirror().addBox(-5.0F, -4.0F, -3.0F, 8.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false)
-			.texOffs(26, 32).mirror().addBox(-3.1F, -4.5F, -2.0F, 6.0F, 1.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false)
-			.texOffs(48, 32).mirror().addBox(-1.5F, -5.0F, -1.5F, 4.0F, 1.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, 0.0F, 0.0F));
+		PartDefinition steak1 = partdefinition.addOrReplaceChild("steak1", CubeListBuilder.create().texOffs(0, 32).mirror().addBox(-5.0F, -4.0F, -3.0F, 8.0F, 3.0F, 6.0F, new CubeDeformation(0.0F))
+				.texOffs(26, 32).mirror().addBox(-3.1F, -4.5F, -2.0F, 6.0F, 1.0F, 4.0F, new CubeDeformation(0.0F))
+				.texOffs(48, 32).mirror().addBox(-1.5F, -5.0F, -1.5F, 4.0F, 1.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-		PartDefinition wing2 = steak1.addOrReplaceChild("wing2", CubeListBuilder.create().texOffs(0, 42).mirror().addBox(-4.0F, -2.0F, 3.0F, 3.0F, 2.0F, 1.0F, new CubeDeformation(0.0F)).mirror(false)
-			.texOffs(25, 42).mirror().addBox(3.0F, -3.0F, -3.0F, 4.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F, -1.0F, 0.0F, 0.0F, -0.1396F, 0.0F));
+		PartDefinition wing2 = steak1.addOrReplaceChild("wing2", CubeListBuilder.create().texOffs(0, 42).mirror().addBox(-4.0F, -2.0F, 3.0F, 3.0F, 2.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(25, 42).mirror().addBox(3.0F, -3.0F, -3.0F, 4.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -1.0F, 0.0F, 0.0F, -0.1396F, 0.0F));
 
-		PartDefinition wing1 = steak1.addOrReplaceChild("wing1", CubeListBuilder.create().texOffs(0, 42).mirror().addBox(-4.0F, -2.0F, -4.0F, 3.0F, 2.0F, 1.0F, new CubeDeformation(0.0F)).mirror(false), PartPose
-			.offsetAndRotation(0.0F, -1.0F, 0.0F, 0.0F, 0.1047F, 0.0F));
+		PartDefinition wing1 = steak1.addOrReplaceChild("wing1", CubeListBuilder.create().texOffs(0, 42).mirror().addBox(-4.0F, -2.0F, -4.0F, 3.0F, 2.0F, 1.0F, new CubeDeformation(0.0F)), PartPose
+				.offsetAndRotation(0.0F, -1.0F, 0.0F, 0.0F, 0.1047F, 0.0F));
 
-		PartDefinition leg3 = steak1.addOrReplaceChild("leg3", CubeListBuilder.create().texOffs(25, 45).mirror().addBox(3.0F, -3.0F, 2.0F, 4.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)).mirror(false), PartPose
-			.offsetAndRotation(0.0F, -1.0F, 0.0F, 0.0F, 0.1396F, 0.0F));
+		PartDefinition leg3 = steak1.addOrReplaceChild("leg3", CubeListBuilder.create().texOffs(25, 45).mirror().addBox(3.0F, -3.0F, 2.0F, 4.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)), PartPose
+				.offsetAndRotation(0.0F, -1.0F, 0.0F, 0.0F, 0.1396F, 0.0F));
 
-		PartDefinition leg2 = steak1.addOrReplaceChild("leg2", CubeListBuilder.create().texOffs(10, 42).mirror().addBox(-1.0F, -4.0F, -4.0F, 5.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose
-			.offsetAndRotation(0.0F, -1.0F, 0.0F, 0.2618F, -0.2618F, 0.0F));
+		PartDefinition leg2 = steak1.addOrReplaceChild("leg2", CubeListBuilder.create().texOffs(10, 42).mirror().addBox(-1.0F, -4.0F, -4.0F, 5.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose
+				.offsetAndRotation(0.0F, -1.0F, 0.0F, 0.2618F, -0.2618F, 0.0F));
 
-		PartDefinition leg1 = steak1.addOrReplaceChild("leg1", CubeListBuilder.create().texOffs(10, 48).mirror().addBox(-1.0F, -4.0F, 2.0F, 5.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose
-			.offsetAndRotation(0.0F, -1.0F, 0.0F, -0.2618F, 0.2618F, 0.0F));
+		PartDefinition leg1 = steak1.addOrReplaceChild("leg1", CubeListBuilder.create().texOffs(10, 48).mirror().addBox(-1.0F, -4.0F, 2.0F, 5.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose
+				.offsetAndRotation(0.0F, -1.0F, 0.0F, -0.2618F, 0.2618F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}

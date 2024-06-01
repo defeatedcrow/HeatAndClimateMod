@@ -1,11 +1,11 @@
 package defeatedcrow.hac.magic.material.item.jems;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import javax.annotation.Nullable;
+
+import com.google.common.collect.ImmutableList;
 
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.MagicColor;
@@ -97,9 +97,9 @@ public class GoldPendant extends MagicJewelBase {
 			ItemStack item = new ItemStack(state.getBlock());
 			if (state.is(BlockTags.LOGS)) {
 				if (!owner.level.isClientSide) {
-					Set<BlockPos> set = DCUtil.getConnectedTargetList(owner.level, pos, state.getBlock(), 192);
+					List<BlockPos> set = DCUtil.findLog(owner.level, pos, 512);
 					if (set.isEmpty()) {
-						set = Collections.singleton(pos);
+						set = ImmutableList.of(pos);
 					}
 					int count = 0;
 					for (BlockPos p2 : set) {
@@ -138,7 +138,7 @@ public class GoldPendant extends MagicJewelBase {
 				if (!drops.isEmpty()) {
 					for (ItemStack item : drops) {
 						Optional<SmeltingRecipe> recipe = server.getServer().getRecipeManager().getAllRecipesFor(RecipeType.SMELTING).stream()
-							.filter((r) -> matchRecipe(r, item)).findFirst();
+								.filter((r) -> matchRecipe(r, item)).findFirst();
 						recipe.ifPresentOrElse(r -> {
 							ItemStack out = r.getResultItem();
 							ItemEntity dropE = new ItemEntity(owner.level, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, out.copy());

@@ -55,12 +55,18 @@ public class SaladItem extends ItemEntityFood {
 			return NUTS;
 		if (item == FoodInit.SALAD_MELON.get())
 			return MELON;
+		if (item == FoodInit.SALAD_TOFU.get())
+			return TOFU;
+		if (item == FoodInit.SALAD_SALMON.get())
+			return SALMON;
 		return GREEN;
 	}
 
-	public static final EntityRenderData GREEN = new EntityRenderData("food/salad_green", 1F, 0F);
-	public static final EntityRenderData POTATO = new EntityRenderData("food/salad_potato", 1F, 0F);
-	public static final EntityRenderData NUTS = new EntityRenderData("food/salad_nuts", 1F, 0F);
-	public static final EntityRenderData MELON = new EntityRenderData("food/salad_watermelon", 1F, 0F);
+	public static final EntityRenderData GREEN = new EntityRenderData("food/salad_green", 0.85F, 0F);
+	public static final EntityRenderData POTATO = new EntityRenderData("food/salad_potato", 0.85F, 0F);
+	public static final EntityRenderData NUTS = new EntityRenderData("food/salad_nuts", 0.85F, 0F);
+	public static final EntityRenderData MELON = new EntityRenderData("food/salad_watermelon", 0.85F, 0F);
+	public static final EntityRenderData TOFU = new EntityRenderData("food/salad_tofu", 0.85F, 0F);
+	public static final EntityRenderData SALMON = new EntityRenderData("food/salad_salmon", 0.85F, 0F);
 
 }

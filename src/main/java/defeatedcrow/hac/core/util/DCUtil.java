@@ -102,7 +102,8 @@ public class DCUtil {
 	}
 
 	public static boolean setBlockIfReplaceable(Level level, BlockPos pos, BlockState set, boolean needAir) {
-		if (!level.getBlockState(pos).is(BlockTags.FEATURES_CANNOT_REPLACE) && level.getBlockState(pos).getMaterial().isReplaceable() && (!needAir || level.getBlockState(pos).getBlock() == Blocks.AIR)) {
+		if (!level.getBlockState(pos).is(BlockTags.FEATURES_CANNOT_REPLACE) && level.getBlockState(pos).getMaterial().isReplaceable() && (!needAir || level.getBlockState(pos)
+				.getBlock() == Blocks.AIR)) {
 			return level.setBlock(pos, set, 2);
 		}
 		return false;
@@ -198,42 +199,29 @@ public class DCUtil {
 		Set<BlockPos> founds = new LinkedHashSet<>();
 		do {
 			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative))
-				.filter(fixedPos -> world.getBlockState(fixedPos).getBlock().equals(block)).limit(limit - founds
-					.size()).filter(founds::add).collect(Collectors.toList());
+					.filter(fixedPos -> world.getBlockState(fixedPos).getBlock().equals(block)).limit(limit - founds
+							.size()).filter(founds::add).collect(Collectors.toList());
 
 		} while (founds.size() <= limit && !nextTargets.isEmpty());
 
 		return founds;
 	}
 
-	public static boolean findLog(BlockGetter world, BlockPos pos, Block block, int limit) {
+	public static List<BlockPos> findLog(BlockGetter world, BlockPos pos, int limit) {
 		List<BlockPos> nextTargets = new ArrayList<>();
 		nextTargets.add(pos);
-		Set<BlockPos> logs = new LinkedHashSet<>();
+		List<BlockPos> logs = new ArrayList<>();
 		Set<BlockPos> founds = new LinkedHashSet<>();
 		do {
 			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative))
-				.filter(fixedPos -> (world.getBlockState(fixedPos).getBlock().equals(block) || (world.getBlockState(fixedPos).is(BlockTags.LOGS) && logs.add(fixedPos))))
-				.limit(limit - founds.size()).filter(founds::add).collect(Collectors.toList());
+					.filter(fixedPos -> (world.getBlockState(fixedPos).is(BlockTags.LEAVES) || world.getBlockState(fixedPos).is(BlockTags.LOGS)))
+					.limit(limit - founds.size()).filter(founds::add).collect(Collectors.toList());
 
 		} while (founds.size() <= limit && logs.isEmpty() && !nextTargets.isEmpty());
 
-		return !logs.isEmpty();
-	}
+		logs = founds.stream().filter(p -> world.getBlockState(p).is(BlockTags.LOGS)).toList();
 
-	public static boolean findLog2(BlockGetter world, BlockPos pos, Block block, int limit) {
-		List<BlockPos> nextTargets = new ArrayList<>();
-		nextTargets.add(pos);
-		Set<BlockPos> logs = new LinkedHashSet<>();
-		Set<BlockPos> founds = new LinkedHashSet<>();
-		do {
-			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative))
-				.filter(fixedPos -> (world.getBlockState(fixedPos).getBlock().equals(block) || (world.getBlockState(fixedPos).is(BlockTags.LOGS) && logs.add(fixedPos))))
-				.limit(limit - founds.size()).filter(founds::add).collect(Collectors.toList());
-
-		} while (founds.size() <= limit && logs.isEmpty() && !nextTargets.isEmpty());
-
-		return !logs.isEmpty();
+		return logs;
 	}
 
 	// デバッグモード

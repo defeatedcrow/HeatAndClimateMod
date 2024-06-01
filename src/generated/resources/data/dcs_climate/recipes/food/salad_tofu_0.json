@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/green_leafs"
+    },
+    {
+      "item": "dcs_climate:food/food_tofu"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/salad_tofu"
+  }
+}

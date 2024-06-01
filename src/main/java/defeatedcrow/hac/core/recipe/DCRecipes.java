@@ -32,6 +32,7 @@ public class DCRecipes {
 	public static final Map<ResourceLocation, IDeviceRecipe> SIEVE = new HashMap<>();
 	public static final Map<ResourceLocation, IDeviceRecipe> FERMENTATION = new HashMap<>();
 	public static final Map<ResourceLocation, IDeviceRecipe> COOKING = new HashMap<>();
+	public static final Map<ResourceLocation, IDeviceRecipe> FRYING = new HashMap<>();
 	public static final Map<ResourceLocation, IDeviceRecipe> TEA = new HashMap<>();
 
 	public static final Map<ResourceLocation, IDeviceFuel> BIOMASS_FUEL = new HashMap<>();
@@ -104,6 +105,23 @@ public class DCRecipes {
 		int c = 0;
 		IDeviceRecipe keep = null;
 		for (IDeviceRecipe recipe : INSTANCE.TEA.values()) {
+			if (recipe.matcheInput(inputs).length > 0 && recipe.matcheInputFluid(inF, FluidStack.EMPTY) && recipe.matchClimate(clm.get())) {
+				if (recipe.getPriority() > c) {
+					c = recipe.getPriority();
+					keep = recipe;
+				}
+			}
+		}
+		if (keep != null) {
+			return Optional.of(keep);
+		}
+		return Optional.empty();
+	}
+
+	public static Optional<IDeviceRecipe> getFryingRecipe(Supplier<IClimate> clm, List<ItemStack> inputs, FluidStack inF) {
+		int c = 0;
+		IDeviceRecipe keep = null;
+		for (IDeviceRecipe recipe : INSTANCE.FRYING.values()) {
 			if (recipe.matcheInput(inputs).length > 0 && recipe.matcheInputFluid(inF, FluidStack.EMPTY) && recipe.matchClimate(clm.get())) {
 				if (recipe.getPriority() > c) {
 					c = recipe.getPriority();

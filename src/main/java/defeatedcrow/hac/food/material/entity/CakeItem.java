@@ -62,9 +62,9 @@ public class CakeItem extends ItemEntityFood {
 		return BUTTER;
 	}
 
-	public static final EntityRenderData BUTTER = new EntityRenderData("food/cake_butter", 1F, 0F);
-	public static final EntityRenderData BERRY = new EntityRenderData("food/cake_berry", 1F, 0F);
-	public static final EntityRenderData CHOCOLATE = new EntityRenderData("food/cake_chocolate", 1F, 0F);
-	public static final EntityRenderData GREENTEA = new EntityRenderData("food/cake_greentea", 1F, 0F);
+	public static final EntityRenderData BUTTER = new EntityRenderData("food/cake_butter", 0.6F, 0F);
+	public static final EntityRenderData BERRY = new EntityRenderData("food/cake_berry", 0.6F, 0F);
+	public static final EntityRenderData CHOCOLATE = new EntityRenderData("food/cake_chocolate", 0.6F, 0F);
+	public static final EntityRenderData GREENTEA = new EntityRenderData("food/cake_greentea", 0.6F, 0F);
 
 }

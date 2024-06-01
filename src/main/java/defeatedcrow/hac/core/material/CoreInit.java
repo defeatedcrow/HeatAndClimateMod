@@ -53,6 +53,7 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.MaterialsDC;
 import defeatedcrow.hac.core.util.TierDC;
 import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.food.material.fluid.GasTypeFluidDC;
 import defeatedcrow.hac.food.material.fluid.WaterTypeFluidDC;
 import defeatedcrow.hac.food.recipe.FlavorCustomRecipe;
 import defeatedcrow.hac.machine.material.MachineInit;
@@ -537,6 +538,8 @@ public class CoreInit {
 			.sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
 			.canHydrate(true)
 			.temperature(283), "fluid/sparkling_still");
+
+	public static final GasTypeFluidDC AIR = new GasTypeFluidDC("compressed_air", 0xFF40B0FF, false, "fluid/sparkling_still");
 
 	// reflex
 

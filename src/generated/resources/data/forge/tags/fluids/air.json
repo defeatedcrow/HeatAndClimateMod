@@ -1,5 +1,6 @@
 {
   "values": [
-    "minecraft:empty"
+    "minecraft:empty",
+    "dcs_climate:compressed_air"
   ]
 }

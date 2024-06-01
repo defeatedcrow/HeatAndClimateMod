@@ -49,7 +49,7 @@ public class SilverRing extends MagicJewelBase {
 				owner.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 300));
 			} else if (color.isGreen) {
 				if (owner.getLevel().getGameTime() % 10 == 0) {
-					double d = 4D + (2D * i);
+					double d = 8D + (4D * i);
 					List<ItemEntity> list = owner.level.getEntitiesOfClass(ItemEntity.class, owner.getBoundingBox().inflate(d), EntitySelector.ENTITY_STILL_ALIVE);
 					list.stream().forEach(drop -> {
 						drop.setPos(owner.getX(), owner.getY() + 0.15D, owner.getZ());

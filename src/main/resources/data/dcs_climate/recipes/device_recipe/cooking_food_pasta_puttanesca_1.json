@@ -1,0 +1,48 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/pasta_puttanesca",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/pasta"
+    },
+    {
+      "tag": "forge:ingredients/plant_oil"
+    },
+    {
+      "tag": "forge:crops/tomato"
+    },
+    {
+      "item": "dcs_climate:food/food_anchovy"
+    },
+    {
+      "tag": "forge:crops/olive"
+    },
+    {
+      "tag": "forge:crops/herbs"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}
