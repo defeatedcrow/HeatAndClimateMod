@@ -607,6 +607,7 @@
  change: 腐葉土の作成方法を変更
  change: 暖かい食べ物Entityに湯気パーティクルを追加
  change: 黒の魔法矢のベースダメージを0Fにした
+ change: クリエイティブタブの見た目を変更
  ex: Just Enough Effect Descriptions用の説明文をlangファイルに追加
  ex: CuriosAPIの追加スロットに対して魔法Jewelの所持確認を行う処理を追加
 

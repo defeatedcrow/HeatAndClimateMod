@@ -24,7 +24,7 @@ public class CreativeTabClimate_Machine extends CreativeModeTab {
 
 	@Override
 	public ItemStack makeIcon() {
-		return new ItemStack(CoreInit.MORTAR.get());
+		return new ItemStack(CoreInit.SCREWDRIVER.get());
 	}
 
 	@Override

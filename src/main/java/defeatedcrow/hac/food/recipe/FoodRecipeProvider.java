@@ -1453,9 +1453,22 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.requires(Ingredient.of(Tags.Items.CROPS))
 				.requires(Ingredient.of(Tags.Items.CROPS))
 				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
-				.unlockedBy("has_residues", has(TagDC.ItemTag.RESIDUES))
-				.save(cons, "dcs_climate:food/cont_plant_wastes");
+				.requires(Ingredient.of(TagDC.ItemTag.BRAN))
+				.unlockedBy("has_residues", has(TagDC.ItemTag.BRAN))
+				.save(cons, "dcs_climate:food/cont_plant_wastes_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_WASTE.get(), 1)
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(TagDC.ItemTag.PRESS_CAKE))
+				.unlockedBy("has_residues", has(TagDC.ItemTag.PRESS_CAKE))
+				.save(cons, "dcs_climate:food/cont_plant_wastes_2");
 
 	}
 

@@ -11,7 +11,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.material.IRapidCollectables;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
-import defeatedcrow.hac.core.material.block.BlockDC;
+import defeatedcrow.hac.core.material.block.ClimateBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
@@ -28,13 +28,13 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.Tags;
 
-public class LeavesContBlock extends BlockDC implements IRapidCollectables {
+public class LeavesContBlock extends ClimateBlock implements IRapidCollectables {
 
 	final String name;
 	private String domain = "container";
 
 	public LeavesContBlock(String s) {
-		super(getProp());
+		super(getProp(), false);
 		name = s;
 	}
 
@@ -90,6 +90,11 @@ public class LeavesContBlock extends BlockDC implements IRapidCollectables {
 	@Override
 	public int getToolTier() {
 		return 0;
+	}
+
+	@Override
+	public boolean playSEOnChanging() {
+		return false;
 	}
 
 	/* IRapidCollectables */

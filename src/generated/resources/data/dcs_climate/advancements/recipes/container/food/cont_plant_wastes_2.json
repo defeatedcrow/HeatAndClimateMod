@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:ingredients/residues"
+            "tag": "forge:ingredients/press_cake"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:food/cont_plant_wastes"
+        "recipe": "dcs_climate:food/cont_plant_wastes_2"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:food/cont_plant_wastes"
+      "dcs_climate:food/cont_plant_wastes_2"
     ]
   }
 }

@@ -25,7 +25,7 @@ public class CreativeTabClimate_Cont extends CreativeModeTab {
 
 	@Override
 	public ItemStack makeIcon() {
-		return new ItemStack(FoodInit.CONT_LEAVES.get());
+		return new ItemStack(FoodInit.CONT_CROP_APPLE.get());
 	}
 
 	@Override
