@@ -8,4 +8,6 @@ public interface IFertileBlock {
 
 	public int getFertile(BlockGetter level, BlockPos pos, BlockState state);
 
+	public BlockState fertileTargetSoil(int fertile, BlockState state);
+
 }

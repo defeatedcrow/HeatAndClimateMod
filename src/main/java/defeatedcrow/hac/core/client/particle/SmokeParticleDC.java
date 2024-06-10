@@ -47,4 +47,18 @@ public class SmokeParticleDC extends BaseAshSmokeParticle {
 		}
 	}
 
+	@OnlyIn(Dist.CLIENT)
+	public static class ProviderSmall implements ParticleProvider<SimpleParticleType> {
+		private final SpriteSet sprites;
+
+		public ProviderSmall(SpriteSet sprite) {
+			this.sprites = sprite;
+		}
+
+		@Override
+		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double sx, double sy, double sz) {
+			return new SmokeParticleDC(level, x, y, z, sx, sy, sz, 0.4F, this.sprites);
+		}
+	}
+
 }

@@ -39,7 +39,7 @@ public class HeatingChamberBlock extends HeatSourceBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(2.0F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(2.0F, 540.0F).noOcclusion().lightLevel(HeatSourceBlock.emission(12));
 	}
 
 	@Override

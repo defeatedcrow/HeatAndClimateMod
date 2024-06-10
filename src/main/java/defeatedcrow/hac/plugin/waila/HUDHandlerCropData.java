@@ -4,8 +4,8 @@ import static mcp.mobius.waila.api.TooltipPosition.*;
 
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.food.material.block.FertileBlock;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
-import defeatedcrow.hac.food.material.block.crops.FertileBlock;
 import mcp.mobius.waila.api.IBlockAccessor;
 import mcp.mobius.waila.api.IBlockComponentProvider;
 import mcp.mobius.waila.api.IPluginConfig;
@@ -46,7 +46,7 @@ public class HUDHandlerCropData implements IBlockComponentProvider {
 			} else {
 				if (level.getBlockState().is(TagDC.BlockTag.CROP_GREEN_MANURES) && stage5 > 1) {
 					BlockState below = level.getWorld().getBlockState(level.getPosition().below());
-					if ((below.is(BlockTags.DIRT) || below.is(TagDC.BlockTag.FARMLAND)) && DCState.getInt(below, DCState.FERTILE) < 3)
+					if ((below.is(BlockTags.DIRT) || below.is(TagDC.BlockTag.FARMLAND)) && FertileBlock.getFertile(level.getWorld(), level.getPosition().below(), below) < 3)
 						tooltip.addLine(Component.translatable("dcs.tip.waila.crop_green_matures").withStyle(ChatFormatting.AQUA));
 				} else {
 					tooltip.addLine(Component.translatable("dcs.tip.waila.crop_hoe"));
@@ -57,7 +57,7 @@ public class HUDHandlerCropData implements IBlockComponentProvider {
 		}
 
 		if (config.getBoolean(FERTILE) && level.getBlock() instanceof FertileBlock) {
-			int f = DCState.getInt(level.getBlockState(), DCState.FERTILE);
+			int f = FertileBlock.getFertile(level.getWorld(), level.getPosition(), level.getBlockState());
 			if (f >= 0) {
 				float stage = f / 3.0F;
 				tooltip.addLine(new PairComponent(Component.translatable("dcs.tip.waila.fertile_block"), Component.translatable(String.format("%.0f %%", stage * 100F))));

@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewel;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.magic.MagicType;
+import defeatedcrow.hac.api.magic.SearchPlayerCharmEvent;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -24,6 +25,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.items.IItemHandler;
 
 public class MagicUtil {
@@ -46,20 +48,17 @@ public class MagicUtil {
 				Player player = (Player) living;
 				for (int i = 9; i < 18; i++) {
 					ItemStack check = player.getInventory().getItem(i);
-					if (!check.isEmpty() && check.getItem() instanceof IJewel) {
-						IJewel charm = (IJewel) check.getItem();
-						if (charm.getType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
-							boolean b = false;
-							for (ItemStack c2 : ret) {
-								if (DCItemUtil.isSameItem(check, c2, false)) {
-									c2.grow(1);
-									b = true;
-									break;
-								}
+					if (isCharmItem(check, type)) {
+						boolean b = false;
+						for (ItemStack c2 : ret) {
+							if (DCItemUtil.isSameItem(check, c2, false)) {
+								c2.grow(1);
+								b = true;
+								break;
 							}
-							if (!b) {
-								ret.add(check.copy());
-							}
+						}
+						if (!b) {
+							ret.add(check.copy());
 						}
 					}
 				}
@@ -67,20 +66,17 @@ public class MagicUtil {
 				SimpleContainer inv = ((AbstractVillager) living).getInventory();
 				for (int i = 0; i < inv.getContainerSize(); i++) {
 					ItemStack check = inv.getItem(i);
-					if (!check.isEmpty() && check.getItem() instanceof IJewel) {
-						IJewel charm = (IJewel) check.getItem();
-						if (charm.getType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
-							boolean b = false;
-							for (ItemStack c2 : ret) {
-								if (DCItemUtil.isSameItem(check, c2, false)) {
-									c2.grow(1);
-									b = true;
-									break;
-								}
+					if (isCharmItem(check, type)) {
+						boolean b = false;
+						for (ItemStack c2 : ret) {
+							if (DCItemUtil.isSameItem(check, c2, false)) {
+								c2.grow(1);
+								b = true;
+								break;
 							}
-							if (!b) {
-								ret.add(check.copy());
-							}
+						}
+						if (!b) {
+							ret.add(check.copy());
 						}
 					}
 				}
@@ -89,56 +85,56 @@ public class MagicUtil {
 				if (handler != null) {
 					for (int i = 0; i < handler.getSlots(); i++) {
 						ItemStack check = handler.getStackInSlot(i);
-						if (!check.isEmpty() && check.getItem() instanceof IJewel) {
-							IJewel charm = (IJewel) check.getItem();
-							if (charm.getType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
-								boolean b = false;
-								for (ItemStack c2 : ret) {
-									if (DCItemUtil.isSameItem(check, c2, false)) {
-										c2.grow(1);
-										b = true;
-										break;
-									}
+						if (isCharmItem(check, type)) {
+							boolean b = false;
+							for (ItemStack c2 : ret) {
+								if (DCItemUtil.isSameItem(check, c2, false)) {
+									c2.grow(1);
+									b = true;
+									break;
 								}
-								if (!b) {
-									ret.add(check.copy());
-								}
+							}
+							if (!b) {
+								ret.add(check.copy());
 							}
 						}
 					}
 				}
 			}
+
+			SearchPlayerCharmEvent event = new SearchPlayerCharmEvent(living, type, ret);
+			List<ItemStack> post = event.result();
+			if (event.hasResult() && event.getResult() == Result.ALLOW) {
+				ret.clear();
+				ret.addAll(post);
+			}
 		}
 		return ret;
 	}
 
+	private static boolean isCharmItem(ItemStack check, CharmType type) {
+		if (!check.isEmpty()) {
+			if (type == null) {
+				return true;
+			} else if (check.getItem() instanceof IJewel) {
+				IJewel charm = (IJewel) check.getItem();
+				if (charm.getType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	public static int hasCharmItem(LivingEntity living, ItemStack item) {
 		int count = 0;
-		if (living != null && !DCUtil.isEmpty(item)) {
-			if (living instanceof Player) {
-				Player player = (Player) living;
-				for (int i = 9; i < 18; i++) {
-					ItemStack check = player.getInventory().getItem(i);
+		if (living != null && !DCUtil.isEmpty(item) && item.getItem() instanceof IJewel jewel) {
+			ArrayList<ItemStack> ret = getCharms(living, jewel.getCharmType());
+			if (!ret.isEmpty()) {
+				for (int i = 0; i < ret.size(); i++) {
+					ItemStack check = ret.get(i);
 					if (!check.isEmpty() && DCItemUtil.isSameItem(check, item, false)) {
 						count += check.getCount();
-					}
-				}
-			} else if (living instanceof AbstractVillager) {
-				SimpleContainer inv = ((AbstractVillager) living).getInventory();
-				for (int i = 0; i < inv.getContainerSize(); i++) {
-					ItemStack check = inv.getItem(i);
-					if (!check.isEmpty() && DCItemUtil.isSameItem(check, item, false)) {
-						count += check.getCount();
-					}
-				}
-			} else {
-				IItemHandler handler = living.getCapability(ForgeCapabilities.ITEM_HANDLER, null).orElse(null);
-				if (handler != null) {
-					for (int i = 0; i < handler.getSlots(); i++) {
-						ItemStack check = handler.getStackInSlot(i);
-						if (!check.isEmpty() && DCItemUtil.isSameItem(check, item, false)) {
-							count += check.getCount();
-						}
 					}
 				}
 			}
@@ -149,30 +145,12 @@ public class MagicUtil {
 	public static int hasCharmItem(LivingEntity living, Ingredient target) {
 		int count = 0;
 		if (living != null && target != null && !target.isEmpty()) {
-			if (living instanceof Player) {
-				Player player = (Player) living;
-				for (int i = 9; i < 18; i++) {
-					ItemStack check = player.getInventory().getItem(i);
+			ArrayList<ItemStack> ret = getCharms(living, null);
+			if (!ret.isEmpty()) {
+				for (int i = 0; i < ret.size(); i++) {
+					ItemStack check = ret.get(i);
 					if (target.test(check)) {
 						count += check.getCount();
-					}
-				}
-			} else if (living instanceof AbstractVillager) {
-				SimpleContainer inv = ((AbstractVillager) living).getInventory();
-				for (int i = 0; i < inv.getContainerSize(); i++) {
-					ItemStack check = inv.getItem(i);
-					if (target.test(check)) {
-						count += check.getCount();
-					}
-				}
-			} else {
-				IItemHandler handler = living.getCapability(ForgeCapabilities.ITEM_HANDLER, null).orElse(null);
-				if (handler != null) {
-					for (int i = 0; i < handler.getSlots(); i++) {
-						ItemStack check = handler.getStackInSlot(i);
-						if (target.test(check)) {
-							count += check.getCount();
-						}
 					}
 				}
 			}

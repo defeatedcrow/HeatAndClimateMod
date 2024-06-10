@@ -8,18 +8,20 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.event.DCBlockUpdateEvent;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
+import defeatedcrow.hac.api.recipe.IHeatTreatment;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.block.building.GrassSlab;
 import defeatedcrow.hac.core.recipe.DCRecipes;
+import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.food.material.block.FertileBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.SnowyDirtBlock;
@@ -56,7 +58,8 @@ public class BlockUpdateEventDC {
 				} else if ((clm.get().getHeat() == DCHeatTier.WARM || clm.get().getHeat() == DCHeatTier.HOT) && clm_down.get().getHumidity() == DCHumidity.WET) {
 					// WETの参照posを真下に
 					// WARMかつWETの場合に成長が促進される
-					if (world.random.nextInt(5) == 0) {
+					int fertile = FertileBlock.getFertile(world, p.below(), world.getBlockState(p.below()));
+					if (world.random.nextInt(5 - fertile) == 0) {
 						event.setResult(Result.ALLOW);
 					} else {
 						event.setResult(Result.DEFAULT);
@@ -75,7 +78,7 @@ public class BlockUpdateEventDC {
 			BlockState st = event.state;
 			Block block = st.getBlock();
 
-			if (ConfigCommonBuilder.INSTANCE.enFarmland.get() && FarmBlock.class.isInstance(block) && st.getProperties().contains(BlockStateProperties.MOISTURE)) {
+			if (st.is(TagDC.BlockTag.FARMLAND) && st.getProperties().contains(BlockStateProperties.MOISTURE)) {
 				ClimateSupplier clm = new ClimateSupplier(world, p);
 				DCHumidity hum = ClimateAPI.calculator.getHumidity(world, p, 4, true);
 				DCHumidity hum2 = clm.get().getHumidity();
@@ -122,6 +125,10 @@ public class BlockUpdateEventDC {
 			Optional<IClimateSmelting> recipe = DCRecipes.hasAnySmeltingRecipe(place.getBlock());
 			recipe.ifPresent(ret -> {
 				placer.getLevel().scheduleTick(snap.getPos(), place.getBlock(), ret.recipeFrequency());
+			});
+			Optional<IHeatTreatment> recipe2 = DCRecipes.hasAnyHeatTreatmentRecipe(place.getBlock());
+			recipe2.ifPresent(ret -> {
+				placer.getLevel().scheduleTick(snap.getPos(), place.getBlock(), ret.getHeatingTime());
 			});
 		}
 	}

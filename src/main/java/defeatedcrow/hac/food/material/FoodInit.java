@@ -11,6 +11,9 @@ import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Agri;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Cont;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Food;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.food.material.block.FertileBlock;
+import defeatedcrow.hac.food.material.block.FertilePlanterBlock;
+import defeatedcrow.hac.food.material.block.LeafMoldBlock;
 import defeatedcrow.hac.food.material.block.containers.CropContBlock;
 import defeatedcrow.hac.food.material.block.containers.LeavesContBlock;
 import defeatedcrow.hac.food.material.block.containers.LogContBlock;
@@ -41,7 +44,6 @@ import defeatedcrow.hac.food.material.block.crops.CropBlockReed;
 import defeatedcrow.hac.food.material.block.crops.CropBlockRice;
 import defeatedcrow.hac.food.material.block.crops.CropBlockRice_Zizania;
 import defeatedcrow.hac.food.material.block.crops.CropBlockSolanum;
-import defeatedcrow.hac.food.material.block.crops.FertileBlock;
 import defeatedcrow.hac.food.material.block.crops.LeavesAlmond;
 import defeatedcrow.hac.food.material.block.crops.LeavesAsh;
 import defeatedcrow.hac.food.material.block.crops.LeavesAvocado;
@@ -1046,8 +1048,11 @@ public class FoodInit {
 	public static final RegistryObject<Block> PLANK_LACQUERWARE = regBlock("plank_lacquerware", () -> new PlankBlockDC("plank_lacquerware"), ItemTags.PLANKS);
 
 	public static final RegistryObject<Block> FERTILE = regBlock("fertile", () -> new FertileBlock(), null);
+	public static final RegistryObject<Block> FERTILE_PLANTER = regBlock("fertile_planter", () -> new FertilePlanterBlock(), null);
 
 	public static final RegistryObject<Block> CONT_LEAVES = regCont("container_leaves", () -> new LeavesContBlock("container_leaves"), TagDC.ItemTag.CONT_LEAVES);
+	public static final RegistryObject<Block> CONT_WASTE = regCont("container_plant_wastes", () -> new LeavesContBlock("container_plant_wastes"), TagDC.ItemTag.CONT_LEAVES);
+	public static final RegistryObject<Block> CONT_LEAF_MOLD = regCont("container_leaf_mold", () -> new LeafMoldBlock("container_leaf_mold"), null);
 
 	public static final RegistryObject<Block> CONT_LOG_OAK = regCont("logcont_oak", () -> new LogContBlock("oak"), TagDC.ItemTag.CONT_LOGS);
 	public static final RegistryObject<Block> CONT_LOG_BIRCH = regCont("logcont_birch", () -> new LogContBlock("birch"), TagDC.ItemTag.CONT_LOGS);

@@ -1,6 +1,7 @@
 {
   "values": [
     "minecraft:farmland",
-    "dcs_climate:food/fertile"
+    "dcs_climate:food/fertile",
+    "dcs_climate:food/fertile_planter"
   ]
 }

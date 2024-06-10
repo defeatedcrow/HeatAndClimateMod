@@ -1258,6 +1258,22 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_dust_niter", has(TagDC.ItemTag.DUST_NITER))
 				.save(cons, "dcs_climate:core/gunpowder_another_0");
 
+		ShapedRecipeBuilder.shaped(FoodInit.FERTILE_PLANTER.get(), 1)
+				.pattern("YXY")
+				.pattern("YYY")
+				.define('X', ItemTags.DIRT)
+				.define('Y', Tags.Items.INGOTS_BRICK)
+				.unlockedBy("has_bricks", has(Tags.Items.INGOTS_BRICK))
+				.save(cons, "dcs_climate:food/fertile_planter_block_1");
+
+		ShapedRecipeBuilder.shaped(FoodInit.FERTILE_PLANTER.get(), 1)
+				.pattern("YXY")
+				.pattern("YYY")
+				.define('X', ItemTags.DIRT)
+				.define('Y', ItemTags.TERRACOTTA)
+				.unlockedBy("has_terracotta", has(ItemTags.TERRACOTTA))
+				.save(cons, "dcs_climate:food/fertile_planter_block_2");
+
 		// food materials
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_PASTRY.get(), 1)
@@ -1415,18 +1431,31 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.save(cons, "dcs_climate:food/foodmaterial_pack_sparkling");
 
 		// leaves
-		ShapedRecipeBuilder.shaped(FoodInit.CONT_LEAVES.get(), 1)
-				.pattern("XXX")
-				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', ItemTags.LEAVES)
+		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_LEAVES.get(), 1)
+				.requires(Ingredient.of(ItemTags.LEAVES))
+				.requires(Ingredient.of(ItemTags.LEAVES))
+				.requires(Ingredient.of(ItemTags.LEAVES))
+				.requires(Ingredient.of(ItemTags.LEAVES))
+				.requires(Ingredient.of(ItemTags.LEAVES))
+				.requires(Ingredient.of(ItemTags.LEAVES))
+				.requires(Ingredient.of(ItemTags.LEAVES))
+				.requires(Ingredient.of(ItemTags.LEAVES))
+				.requires(Ingredient.of(ItemTags.LEAVES))
 				.unlockedBy("has_leaves", has(ItemTags.LEAVES))
 				.save(cons, "dcs_climate:food/cont_leaves");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_LEAF_MOLD.get(), 1)
-				.requires(FoodInit.CONT_LEAVES.get())
-				.unlockedBy("has_leaves", has(ItemTags.LEAVES))
-				.save(cons, "dcs_climate:food/dust_leaf_mold_0");
+		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_WASTE.get(), 1)
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(Tags.Items.CROPS))
+				.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
+				.unlockedBy("has_residues", has(TagDC.ItemTag.RESIDUES))
+				.save(cons, "dcs_climate:food/cont_plant_wastes");
 
 	}
 

@@ -709,6 +709,10 @@ public class CookingRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.SUGARS)));
 
 		// fermentation
+		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FOOD_LEAF_MOLD.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CONT_LEAVES)));
+
 		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.SPROUT.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.SEED_SPROUT)));

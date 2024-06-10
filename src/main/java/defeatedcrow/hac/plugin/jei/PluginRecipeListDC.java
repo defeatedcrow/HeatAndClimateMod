@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.api.recipe.IDeviceFuel;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
+import defeatedcrow.hac.api.recipe.IHeatTreatment;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
@@ -17,6 +18,7 @@ public class PluginRecipeListDC {
 	private PluginRecipeListDC() {}
 
 	public static final List<IClimateSmelting> SMELTING_LIST = Lists.newArrayList();
+	public static final List<IHeatTreatment> HEAT_TREATMENT_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> COOKING_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> TEA_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> FERMENTATION_LIST = Lists.newArrayList();
@@ -180,6 +182,8 @@ public class PluginRecipeListDC {
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_OIL.get());
 
 		SMELTING_LIST.addAll(DCRecipes.INSTANCE.SMELTING.values());
+
+		HEAT_TREATMENT_LIST.addAll(DCRecipes.INSTANCE.HEAT_TREATMENT.values());
 
 		COOKING_LIST.addAll(DCRecipes.INSTANCE.COOKING.values());
 

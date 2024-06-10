@@ -29,7 +29,9 @@ public class CraftingFoodEvent {
 			for (int i = 0; i < matrix.getContainerSize(); i++) {
 				ItemStack check = matrix.getItem(i);
 				if (!check.isEmpty()) {
-					if (check.getItem() instanceof IFoodTaste) {
+					if (check.is(TagDC.ItemTag.HAC_SEASONING)) {
+						taste += 3;
+					} else if (check.getItem() instanceof IFoodTaste) {
 						taste += ((IFoodTaste) check.getItem()).getTaste(check);
 					} else {
 						taste += getTaste(check.getItem()).map((vt) -> {
@@ -47,7 +49,9 @@ public class CraftingFoodEvent {
 			}
 			if (res.getItem() instanceof IFoodTaste) {
 				IFoodTaste food = (IFoodTaste) res.getItem();
-				if (taste != 0) {
+				if (res.is(TagDC.ItemTag.HAC_SEASONING)) {
+					food.setTaste(event.getCrafting(), 2);
+				} else if (taste != 0) {
 					// DCLogger.debugInfoLog("Taste: " + taste);
 					food.setTaste(event.getCrafting(), taste);
 				}
@@ -66,7 +70,9 @@ public class CraftingFoodEvent {
 		for (int i = 0; i < lim; i++) {
 			ItemStack check = inputs.get(i);
 			if (!check.isEmpty()) {
-				if (check.getItem() instanceof IFoodTaste) {
+				if (check.is(TagDC.ItemTag.HAC_SEASONING)) {
+					taste += 3;
+				} else if (check.getItem() instanceof IFoodTaste) {
 					taste += ((IFoodTaste) check.getItem()).getTaste(check);
 				} else {
 					taste += getTaste(check.getItem()).map((vt) -> {

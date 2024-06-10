@@ -226,6 +226,8 @@ public class ClimateHUDEvent {
 			InventoryScreen gui = (InventoryScreen) event.getScreen();
 			int x = event.getMouseX() - gui.getGuiLeft();
 			int y = event.getMouseY() - gui.getGuiTop();
+			int x1 = 28;
+			int y1 = 68;
 
 			if (gui.getSlotUnderMouse() != null && gui.getSlotUnderMouse().hasItem()) {
 				return;
@@ -239,9 +241,9 @@ public class ClimateHUDEvent {
 				RenderSystem.defaultBlendFunc();
 
 				int i7 = ClientClimateData.INSTANCE.getIconTier();
-				drawTexturedModalRect(event.getPoseStack().last().pose(), gui.getGuiLeft() + 26, gui.getGuiTop() + 8, 64 + i7 * 9, 0, 9, 9);
+				drawTexturedModalRect(event.getPoseStack().last().pose(), gui.getGuiLeft() + x1, gui.getGuiTop() + y1, 64 + i7 * 9, 0, 9, 9);
 
-				if (x > 26 && x < 32 && y > 8 && y < 14) {
+				if (x > x1 && x < x1 + 9 && y > y1 && y < y1 + 8) {
 					List<Component> list = Lists.newArrayList();
 					list.add(Component.literal("Armor Heat Resistant"));
 					list.add(Component.literal("Heat: " + String.format("%.1fF", ClientClimateData.INSTANCE.getArmorHeatPrev())));

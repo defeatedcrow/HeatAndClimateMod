@@ -1,14 +1,33 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "X": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
       "tag": "minecraft:leaves"
     }
-  },
-  "pattern": [
-    "XXX",
-    "XXX",
-    "XXX"
   ],
   "result": {
     "item": "dcs_climate:container/container_leaves"

@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.gui.SimpleInventoryMenu;
 import defeatedcrow.hac.core.material.block.AlloyDustBlockDC;
+import defeatedcrow.hac.core.material.block.AlloyHeatTreatmentBlock;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.block.LayerStoneBlock;
 import defeatedcrow.hac.core.material.block.MetalBlockDC;
@@ -282,9 +283,14 @@ public class CoreInit {
 			.setArmorName("armor_safety"));
 
 	public static final RegistryObject<Item> FUR_SHAWL = regItem("shawl_fur", () -> new ArmorItemDC("shawl_fur", ArmorMaterials.LEATHER, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	public static final RegistryObject<Item> FUR_SHAWL_BLACK = regItem("shawl_fur_black", () -> new ArmorItemDC("shawl_fur_black", ArmorMaterials.LEATHER, EquipmentSlot.CHEST,
+			ArmorItemDC.ModelType.JACKET));
+	public static final RegistryObject<Item> FUR_SHAWL_SILVER = regItem("shawl_fur_silver", () -> new ArmorItemDC("shawl_fur_silver", ArmorMaterials.LEATHER, EquipmentSlot.CHEST,
+			ArmorItemDC.ModelType.JACKET));
+	public static final RegistryObject<Item> FUR_SHAWL_WHITE = regItem("shawl_fur_white", () -> new ArmorItemDC("shawl_fur_white", ArmorMaterials.LEATHER, EquipmentSlot.CHEST,
+			ArmorItemDC.ModelType.JACKET));
 	public static final RegistryObject<Item> FUR_LOINCLOTH = regItem("loincloth_fur",
-			() -> new ArmorItemDC("loincloth_fur", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.OVERSUITS)
-					.setArmorName("loincloth_fur"));
+			() -> new ArmorItemDC("loincloth_fur", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.OVERSUITS).setArmorName("loincloth_fur"));
 
 	public static final RegistryObject<Item> HAT_LINEN = regItem("hat_linen", () -> new ArmorItemDC("hat_linen", MaterialsDC.LINEN, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAT));
 	public static final RegistryObject<Item> HAT_LINEN_RED = regItem("hat_linen_red", () -> new ArmorItemDC("hat_linen_red", MaterialsDC.LINEN, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAT));
@@ -440,31 +446,48 @@ public class CoreInit {
 
 	public static final RegistryObject<Block> DUSTBLOCK_BRASS = regBlock("dustblock_brass", () -> new AlloyDustBlockDC("dustblock_brass"), TagDC.ItemTag.DUSTBLOCK_BRASS);
 	public static final RegistryObject<Block> DUSTBLOCK_BRONZE = regBlock("dustblock_bronze", () -> new AlloyDustBlockDC("dustblock_bronze"), TagDC.ItemTag.DUSTBLOCK_BRONZE);
+	public static final RegistryObject<Block> DUSTBLOCK_SILVER = regBlock("dustblock_silver", () -> new AlloyDustBlockDC("dustblock_silver"), TagDC.ItemTag.DUSTBLOCK_SILVER);
 	public static final RegistryObject<Block> DUSTBLOCK_NICKEL_SILVER = regBlock("dustblock_nickel_silver", () -> new AlloyDustBlockDC("dustblock_nickel_silver"),
 			TagDC.ItemTag.DUSTBLOCK_NICKEL_SILVER);
-	public static final RegistryObject<Block> DUSTBLOCK_STEEL = regBlock("dustblock_steel", () -> new AlloyDustBlockDC("dustblock_steel"), TagDC.ItemTag.DUSTBLOCK_STEEL);
 	public static final RegistryObject<Block> DUSTBLOCK_ALUMINUM = regBlock("dustblock_aluminum", () -> new AlloyDustBlockDC("dustblock_aluminum"), TagDC.ItemTag.DUSTBLOCK_ALUMINUM);
-	public static final RegistryObject<Block> DUSTBLOCK_SILVER = regBlock("dustblock_silver", () -> new AlloyDustBlockDC("dustblock_silver"), TagDC.ItemTag.DUSTBLOCK_SILVER);
+	public static final RegistryObject<Block> DUSTBLOCK_MAGNET = regBlock("dustblock_magnet", () -> new AlloyDustBlockDC("dustblock_magnet"), TagDC.ItemTag.DUSTBLOCK_MAGNET);
+	public static final RegistryObject<Block> DUSTBLOCK_BSCCO = regBlock("dustblock_bscco", () -> new AlloyDustBlockDC("dustblock_bscco"), TagDC.ItemTag.DUSTBLOCK_BSCCO);
+
+	public static final RegistryObject<Block> DUSTBLOCK_STEEL = regBlock("dustblock_steel", () -> new AlloyDustBlockDC("dustblock_steel"), TagDC.ItemTag.DUSTBLOCK_STEEL);
 	public static final RegistryObject<Block> DUSTBLOCK_SUS = regBlock("dustblock_sus", () -> new AlloyDustBlockDC("dustblock_sus"), TagDC.ItemTag.DUSTBLOCK_SUS);
 	public static final RegistryObject<Block> DUSTBLOCK_TITANIUM = regBlock("dustblock_titanium", () -> new AlloyDustBlockDC("dustblock_titanium"), TagDC.ItemTag.DUSTBLOCK_TITANIUM);
-	public static final RegistryObject<Block> DUSTBLOCK_MAGNET = regBlock("dustblock_magnet", () -> new AlloyDustBlockDC("dustblock_magnet"), TagDC.ItemTag.DUSTBLOCK_MAGNET);
 	public static final RegistryObject<Block> DUSTBLOCK_COBALT = regBlock("dustblock_cobalt", () -> new AlloyDustBlockDC("dustblock_cobalt"), TagDC.ItemTag.DUSTBLOCK_COBALT);
 	public static final RegistryObject<Block> DUSTBLOCK_HASTELLOY = regBlock("dustblock_hastelloy", () -> new AlloyDustBlockDC("dustblock_hastelloy"), TagDC.ItemTag.DUSTBLOCK_HASTELLOY);
-	public static final RegistryObject<Block> DUSTBLOCK_BSCCO = regBlock("dustblock_bscco", () -> new AlloyDustBlockDC("dustblock_bscco"), TagDC.ItemTag.DUSTBLOCK_BSCCO);
 
 	public static final RegistryObject<Block> METALBLOCK_BRASS = regBlock("metalblock_brass", () -> new MetalBlockDC("metalblock_brass"), TagDC.ItemTag.METALBLOCK_BRASS);
 	public static final RegistryObject<Block> METALBLOCK_BRONZE = regBlock("metalblock_bronze", () -> new MetalBlockDC("metalblock_bronze"), TagDC.ItemTag.METALBLOCK_BRONZE);
+	public static final RegistryObject<Block> METALBLOCK_SILVER = regBlock("metalblock_silver", () -> new MetalBlockDC("metalblock_silver"), TagDC.ItemTag.METALBLOCK_SILVER);
 	public static final RegistryObject<Block> METALBLOCK_NICKEL_SILVER = regBlock("metalblock_nickel_silver", () -> new MetalBlockDC("metalblock_nickel_silver"),
 			TagDC.ItemTag.METALBLOCK_NICKEL_SILVER);
-	public static final RegistryObject<Block> METALBLOCK_STEEL = regBlock("metalblock_steel", () -> new MetalBlockDC("metalblock_steel"), TagDC.ItemTag.METALBLOCK_STEEL);
 	public static final RegistryObject<Block> METALBLOCK_ALUMINUM = regBlock("metalblock_aluminum", () -> new MetalBlockDC("metalblock_aluminum"), TagDC.ItemTag.METALBLOCK_ALUMINUM);
-	public static final RegistryObject<Block> METALBLOCK_SILVER = regBlock("metalblock_silver", () -> new MetalBlockDC("metalblock_silver"), TagDC.ItemTag.METALBLOCK_SILVER);
-	public static final RegistryObject<Block> METALBLOCK_SUS = regBlock("metalblock_sus", () -> new MetalBlockDC("metalblock_sus"), TagDC.ItemTag.METALBLOCK_SUS);
-	public static final RegistryObject<Block> METALBLOCK_TITANIUM = regBlock("metalblock_titanium", () -> new MetalBlockDC("metalblock_titanium"), TagDC.ItemTag.METALBLOCK_TITANIUM);
 	public static final RegistryObject<Block> METALBLOCK_MAGNET = regBlock("metalblock_magnet", () -> new MetalBlockDC("metalblock_magnet"), TagDC.ItemTag.METALBLOCK_MAGNET);
-	public static final RegistryObject<Block> METALBLOCK_COBALT = regBlock("metalblock_cobalt", () -> new MetalBlockDC("metalblock_cobalt"), TagDC.ItemTag.METALBLOCK_COBALT);
-	public static final RegistryObject<Block> METALBLOCK_HASTELLOY = regBlock("metalblock_hastelloy", () -> new MetalBlockDC("metalblock_hastelloy"), TagDC.ItemTag.METALBLOCK_HASTELLOY);
 	public static final RegistryObject<Block> METALBLOCK_BSCCO = regBlock("metalblock_bscco", () -> new MetalBlockDC("metalblock_bscco"), TagDC.ItemTag.METALBLOCK_BSCCO);
+
+	public static final RegistryObject<Block> METALBLOCK_STEEL = regBlock("metalblock_steel", () -> new MetalBlockDC("metalblock_steel"), TagDC.ItemTag.METALBLOCK_STEEL);
+	public static final RegistryObject<Block> METAL_STEEL_HEATING = regBlock("metal_steel_heating", () -> new AlloyHeatTreatmentBlock("metal_steel_heating", 1, true), null);
+	public static final RegistryObject<Block> METAL_STEEL_COOLING = regBlock("metal_steel_cooling", () -> new AlloyHeatTreatmentBlock("metal_steel_cooling", 2, false), null);
+	public static final RegistryObject<Block> METAL_STEEL_FAIL = regBlock("metal_steel_fail", () -> new AlloyHeatTreatmentBlock("metal_steel_fail", 0, false), null);
+	public static final RegistryObject<Block> METALBLOCK_SUS = regBlock("metalblock_sus", () -> new MetalBlockDC("metalblock_sus"), TagDC.ItemTag.METALBLOCK_SUS);
+	public static final RegistryObject<Block> METAL_SUS_HEATING = regBlock("metal_sus_heating", () -> new AlloyHeatTreatmentBlock("metal_sus_heating", 1, true), null);
+	public static final RegistryObject<Block> METAL_SUS_COOLING = regBlock("metal_sus_cooling", () -> new AlloyHeatTreatmentBlock("metal_sus_cooling", 2, false), null);
+	public static final RegistryObject<Block> METAL_SUS_FAIL = regBlock("metal_sus_fail", () -> new AlloyHeatTreatmentBlock("metal_sus_fail", 0, false), null);
+	public static final RegistryObject<Block> METALBLOCK_TITANIUM = regBlock("metalblock_titanium", () -> new MetalBlockDC("metalblock_titanium"), TagDC.ItemTag.METALBLOCK_TITANIUM);
+	public static final RegistryObject<Block> METAL_TITANIUM_HEATING = regBlock("metal_titanium_heating", () -> new AlloyHeatTreatmentBlock("metal_titanium_heating", 1, true), null);
+	public static final RegistryObject<Block> METAL_TITANIUM_COOLING = regBlock("metal_titanium_cooling", () -> new AlloyHeatTreatmentBlock("metal_titanium_cooling", 2, false), null);
+	public static final RegistryObject<Block> METAL_TITANIUM_FAIL = regBlock("metal_titanium_fail", () -> new AlloyHeatTreatmentBlock("metal_titanium_fail", 0, false), null);
+	public static final RegistryObject<Block> METALBLOCK_COBALT = regBlock("metalblock_cobalt", () -> new MetalBlockDC("metalblock_cobalt"), TagDC.ItemTag.METALBLOCK_COBALT);
+	public static final RegistryObject<Block> METAL_COBALT_HEATING = regBlock("metal_cobalt_heating", () -> new AlloyHeatTreatmentBlock("metal_cobalt_heating", 1, true), null);
+	public static final RegistryObject<Block> METAL_COBALT_COOLING = regBlock("metal_cobalt_cooling", () -> new AlloyHeatTreatmentBlock("metal_cobalt_cooling", 2, false), null);
+	public static final RegistryObject<Block> METAL_COBALT_FAIL = regBlock("metal_cobalt_fail", () -> new AlloyHeatTreatmentBlock("metal_cobalt_fail", 0, false), null);
+	public static final RegistryObject<Block> METALBLOCK_HASTELLOY = regBlock("metalblock_hastelloy", () -> new MetalBlockDC("metalblock_hastelloy"), TagDC.ItemTag.METALBLOCK_HASTELLOY);
+	public static final RegistryObject<Block> METAL_HASTELLOY_HEATING = regBlock("metal_hastelloy_heating", () -> new AlloyHeatTreatmentBlock("metal_hastelloy_heating", 1, true), null);
+	public static final RegistryObject<Block> METAL_HASTELLOY_COOLING = regBlock("metal_hastelloy_cooling", () -> new AlloyHeatTreatmentBlock("metal_hastelloy_cooling", 2, false), null);
+	public static final RegistryObject<Block> METAL_HASTELLOY_FAIL = regBlock("metal_hastelloy_fail", () -> new AlloyHeatTreatmentBlock("metal_hastelloy_fail", 0, false), null);
 
 	public static final RegistryObject<Block> DUSTBLOCK_RUBBER = regBlock("dustblock_rubber", () -> new AlloyDustBlockDC("dustblock_rubber"), TagDC.ItemTag.DUSTBLOCK_RUBBER);
 	public static final RegistryObject<Block> BLOCK_RUBBER = regBlock("block_rubber", () -> new MetalBlockDC("block_rubber"), TagDC.ItemTag.BLOCK_RUBBER);
@@ -561,6 +584,7 @@ public class CoreInit {
 
 	// particle
 	public static final RegistryObject<SimpleParticleType> SMOKE = PARTICLE_TYPE.register("smoke", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> SMOKE_SMALL = PARTICLE_TYPE.register("smoke_small", () -> new SimpleParticleType(false));
 
 	public static final RegistryObject<SimpleParticleType> LIGHT_ORB_WHITE = PARTICLE_TYPE.register("light_orb", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> LIGHT_ORB_RED = PARTICLE_TYPE.register("light_orb_red", () -> new SimpleParticleType(false));

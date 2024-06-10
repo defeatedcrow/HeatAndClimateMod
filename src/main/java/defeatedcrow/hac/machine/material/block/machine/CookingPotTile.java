@@ -2,8 +2,6 @@ package defeatedcrow.hac.machine.material.block.machine;
 
 import java.util.Optional;
 
-import com.google.common.base.Suppliers;
-
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IDisplayTile;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
@@ -101,11 +99,12 @@ public class CookingPotTile extends FermentationJarTile implements IDisplayTile 
 		// priority check
 		if (recipe != null) {
 			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
-			Optional<IDeviceRecipe> check = DCRecipes.getCookingRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
+			Optional<IDeviceRecipe> check = DCRecipes.getCookingRecipe(currentClimate, inputs, inputTank.getFluid());
 
 			if (check.isPresent() && check.get().getPriority() == recipe.getPriority()) {
-				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxInSlot() + 2) > 0 && outputTank.fill(recipe.getOutputFluid(), FluidAction.SIMULATE) >= recipe.getOutputFluid()
-					.getAmount();
+				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxInSlot() + 2) > 0 && outputTank.fill(recipe.getOutputFluid(), FluidAction.SIMULATE) >= recipe
+						.getOutputFluid()
+						.getAmount();
 				if (recipe.getSecondaryRate() > 0 && inventory.canInsertResult(recipe.getSecondaryOutput(), maxInSlot() + 1, maxInSlot() + 2) == 0) {
 					result = false;
 				}
@@ -118,7 +117,7 @@ public class CookingPotTile extends FermentationJarTile implements IDisplayTile 
 	@Override
 	public boolean startProcess(Level level, BlockPos pos, BlockState state) {
 		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
-		Optional<IDeviceRecipe> check = DCRecipes.getCookingRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
+		Optional<IDeviceRecipe> check = DCRecipes.getCookingRecipe(currentClimate, inputs, inputTank.getFluid());
 		if (check.isPresent()) {
 			recipe = check.get();
 			this.totalProgress = maxProgressTime();

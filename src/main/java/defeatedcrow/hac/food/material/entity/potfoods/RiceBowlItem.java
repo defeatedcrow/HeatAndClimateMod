@@ -10,7 +10,7 @@ import net.minecraft.world.item.Item;
 public class RiceBowlItem extends ItemEntityFood implements IPotFoods {
 
 	public RiceBowlItem(String s, int nut, float sat, TagKey<Item> pair) {
-		super(s, nut, sat, pair);
+		super(s, nut, sat, true, pair);
 	}
 
 	@Override

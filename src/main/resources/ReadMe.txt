@@ -599,7 +599,18 @@
 
 #### 更新履歴 / Change log ####
 
-○v4-beta7
+○v4-beta8
+ add: 栽培プランター(変異なし耕地)
+ add: 野菜くずの圧縮ブロック
+ change: 鋼など一部金属の精錬方法のハードモードを追加
+ change: 収穫した作物の風味が変動する機能を追加
+ change: 腐葉土の作成方法を変更
+ change: 暖かい食べ物Entityに湯気パーティクルを追加
+ change: 黒の魔法矢のベースダメージを0Fにした
+ ex: Just Enough Effect Descriptions用の説明文をlangファイルに追加
+ ex: CuriosAPIの追加スロットに対して魔法Jewelの所持確認を行う処理を追加
+
+○v4-beta7 (2024.6.2)
  add: パスタ
  add: いくつかの麺料理
  add: 野菜とコーンの串焼き

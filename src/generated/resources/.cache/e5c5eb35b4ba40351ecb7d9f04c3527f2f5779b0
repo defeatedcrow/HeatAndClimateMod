@@ -1,11 +1,11 @@
-// 1.19.2	2024-05-25T01:25:18.9815818	Advancements
+// 1.19.2	2024-06-06T01:28:21.2349668	Advancements
 68697141ec0eb7920c91bfac93ea8b98fdad42e5 data/dcs_climate/advancements/magic/bird.json
 de6a103b02f61d751df843c44e26ce649f72bd8c data/dcs_climate/advancements/magic/element.json
 ab2d163066c56123a5b84a20c9a5edb1697012e9 data/dcs_climate/advancements/magic/gem.json
 cb8856d7f4bc1fc99a36e10a1a3e900ac18a5236 data/dcs_climate/advancements/magic/magic_root.json
-8c48e981330c1f24cc61aba195afbe71ea844a5f data/dcs_climate/advancements/magic/magic_tier2.json
-4c2e57bcb1bf0d1b2cdd41cce061fe098bd49462 data/dcs_climate/advancements/magic/mana_arrow.json
-984234cff57b8afa518e8c37efc1e573eef9838d data/dcs_climate/advancements/magic/ring.json
+f15960e42c6cdad41da3f8fe6fdaa2ca4cf16d65 data/dcs_climate/advancements/magic/magic_tier2.json
+d8039bb0ebb1e696e25ccd6561f97a2380f680b2 data/dcs_climate/advancements/magic/mana_arrow.json
+9c73ab19ca3d79e49ffd4a14b905e1c639e6df1d data/dcs_climate/advancements/magic/ring.json
 a3216ba4ba5a32c1679f37aa4c31d9158a34901d data/dcs_climate/advancements/main/apple_milk_tea.json
 ddc9489714539b2d70b950ddbb0cd6b29c9fbb11 data/dcs_climate/advancements/main/bread_bake.json
 d674e3b3d26bb47b93e300bbcc3a5ced9e4c2918 data/dcs_climate/advancements/main/bread_raw.json

@@ -690,6 +690,7 @@ public class EntityClientRegister {
 
 	public static void registerParticle(RegisterParticleProvidersEvent event) {
 		event.register(CoreInit.SMOKE.get(), SmokeParticleDC.Provider::new);
+		event.register(CoreInit.SMOKE_SMALL.get(), SmokeParticleDC.ProviderSmall::new);
 		event.register(CoreInit.LIGHT_ORB_WHITE.get(), LightOrbDC.Provider::new);
 		event.register(CoreInit.LIGHT_ORB_RED.get(), LightOrbDC.Provider::new);
 		event.register(CoreInit.LIGHT_ORB_BLUE.get(), LightOrbDC.Provider::new);

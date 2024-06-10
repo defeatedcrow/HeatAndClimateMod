@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/container/container_plant_wastes"
+  },
+  "parent": "minecraft:block/cube_all"
+}

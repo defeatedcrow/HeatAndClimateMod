@@ -29,7 +29,7 @@ public class SoupItem extends ItemEntityFood implements IPotFoods {
 	private final boolean isCold;
 
 	public SoupItem(String s, int nut, float sat, boolean cold, TagKey<Item> pair) {
-		super(s, prop(nut, sat, cold), pair);
+		super(s, prop(nut, sat, cold), !cold, pair);
 		isCold = cold;
 	}
 

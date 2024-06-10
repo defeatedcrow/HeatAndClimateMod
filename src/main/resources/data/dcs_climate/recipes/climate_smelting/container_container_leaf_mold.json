@@ -1,0 +1,24 @@
+{
+  "type": "dcs_climate:climate_smelting",
+  "group": "climate_smelting",
+  "result": {
+    "item": "dcs_climate:container/container_leaf_mold"
+  },
+  "ingredient": {
+    "tag": "forge:storage_blocks/leaves"
+  },
+  "frequency": 300,
+  "heat": [
+    "COOL",
+    "NORMAL",
+    "WARM"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL"
+  ]
+}

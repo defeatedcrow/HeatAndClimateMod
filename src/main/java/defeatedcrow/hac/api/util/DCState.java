@@ -11,6 +11,7 @@ public class DCState {
 	public static final IntegerProperty TYPE16 = IntegerProperty.create("type16", 0, 15);
 	public static final IntegerProperty TYPE8 = IntegerProperty.create("type8", 0, 7);
 	public static final IntegerProperty TYPE4 = IntegerProperty.create("type4", 0, 3);
+	public static final IntegerProperty STAGE3 = IntegerProperty.create("stage4", 0, 2);
 
 	// bool
 	public static final BooleanProperty TOP = BooleanProperty.create("top");

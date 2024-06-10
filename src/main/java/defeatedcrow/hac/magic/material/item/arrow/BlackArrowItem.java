@@ -16,7 +16,7 @@ public class BlackArrowItem extends BaseArrowItem {
 	@Override
 	public AbstractArrow createArrow(Level level, ItemStack stack, LivingEntity living) {
 		ArrowBlack arrow = new ArrowBlack(level, living);
-		arrow.setBaseDamage(4.0F);
+		arrow.setBaseDamage(0.0F);
 		return arrow;
 	}
 

@@ -10,7 +10,7 @@ import net.minecraft.world.item.Item;
 public class StickCornItem extends ItemEntityFood {
 
 	public StickCornItem(String s, int nut, float sat, TagKey<Item> pair) {
-		super(s, nut, sat, pair);
+		super(s, nut, sat, true, pair);
 	}
 
 	@Override

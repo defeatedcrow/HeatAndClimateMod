@@ -21,7 +21,7 @@ import net.minecraft.world.level.Level;
 public class CakeItem extends ItemEntityFood {
 
 	public CakeItem(String s, int nut, float sat, TagKey<Item> pair) {
-		super(s, nut, sat, pair);
+		super(s, nut, sat, false, pair);
 	}
 
 	@Override

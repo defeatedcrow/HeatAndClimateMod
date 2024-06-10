@@ -15,14 +15,16 @@ import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.crop.ICropData;
-import defeatedcrow.hac.api.crop.IFertileBlock;
 import defeatedcrow.hac.api.material.IRapidCollectables;
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.material.block.FertileBlock;
+import defeatedcrow.hac.food.material.item.ItemCropDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -371,7 +373,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			if (isFarmland(under)) {
 				ret /= 2;
 			}
-			int f = getFertile(world, pos.below(), under);
+			int f = FertileBlock.getFertile(world, pos.below(), under) + 1;
 			if (f > 0) {
 				ret /= f;
 			}
@@ -416,8 +418,22 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 					f = player.getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
 				}
 				List<ItemStack> crops = this.getCropItems(thisState, f);
+				BlockState soil = world.getBlockState(pos.below());
+				if (d) {
+					soil = world.getBlockState(pos.below(2));
+				}
+				int fertile = FertileBlock.getFertile(world, pos, soil) + 1;
 				boolean ret = false;
 				for (ItemStack item : crops) {
+					if (item.getItem() instanceof ItemCropDC crop && ConfigCommonBuilder.INSTANCE.enCropTaste.get()) {
+						if (DCState.getBool(thisState, DCState.WILD) && !isSuitableForGrowing(world, pos, thisState)) {
+							crop.setTaste(item, crop.getTier().getTaste() - 1);
+						} else if (fertile > 2 && world.getRandom().nextInt(3) == 0) {
+							crop.setTaste(item, crop.getTier().getTaste() + 2);
+						} else if (fertile > 0 && world.getRandom().nextInt(6 - fertile) == 0) {
+							crop.setTaste(item, crop.getTier().getTaste() + 1);
+						}
+					}
 					ItemEntity drop;
 					if (player != null) {
 						drop = new ItemEntity(world, player.getX(), player.getY() + 0.15D, player.getZ(), item);
@@ -492,7 +508,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			if (!isFarmland(under))
 				return 0;
 
-			int f = getFertile(world, pos.below(), under);
+			int f = FertileBlock.getFertile(world, pos.below(), under) + 1;
 			return f > 0 ? f : 0;
 		}
 		return 0;
@@ -516,17 +532,8 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		return false;
 	}
 
-	/* return 1 ~ 4 */
-	public static int getFertile(Level world, BlockPos pos, BlockState state) {
-		int ret = 0;
-		if (state.getBlock() instanceof IFertileBlock) {
-			ret += ((IFertileBlock) state.getBlock()).getFertile(world, pos, state) + 1;
-		}
-		return ret;
-	}
-
 	public static boolean isFarmland(BlockState state) {
-		return TagUtil.matchTag("farmland", state).isPresent();
+		return state.is(TagDC.BlockTag.MUTABLE_FARMLAND);
 	}
 
 	/* IRapidCollectables */

@@ -10,7 +10,7 @@ import net.minecraft.world.item.Item;
 public class SandwichItem extends ItemEntityFood {
 
 	public SandwichItem(String s, int nut, float sat, TagKey<Item> pair) {
-		super(s, nut, sat, pair);
+		super(s, nut, sat, false, pair);
 	}
 
 	@Override

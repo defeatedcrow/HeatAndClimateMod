@@ -15,10 +15,12 @@ import defeatedcrow.hac.core.event.ServerTickEventDC;
 import defeatedcrow.hac.core.event.ThunderstruckEventDC;
 import defeatedcrow.hac.core.event.WandererTradeEventDC;
 import defeatedcrow.hac.core.json.JsonInit;
+import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.core.recipe.device.DeviceRecipeConfig;
 import defeatedcrow.hac.core.recipe.device.DeviceRecipeList;
 import defeatedcrow.hac.core.recipe.fuel.FuelConfig;
 import defeatedcrow.hac.core.recipe.fuel.FuelList;
+import defeatedcrow.hac.core.recipe.metal.HeatTreatmentList;
 import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingConfig;
 import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingList;
 import defeatedcrow.hac.food.FoodProxy;
@@ -78,8 +80,12 @@ public class CommonProxyDC {
 	public void updatePlayerClimate() {}
 
 	public void registerRecipes() {
+		DCRecipes.INSTANCE.init();
+
 		ClimateSmeltingList.init();
 		ClimateSmeltingConfig.initFile();
+
+		HeatTreatmentList.init();
 
 		DeviceRecipeList.init();
 		DeviceRecipeConfig.initFile();

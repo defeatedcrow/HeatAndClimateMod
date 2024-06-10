@@ -137,6 +137,10 @@ public enum DCAirflow {
 		return ImmutableList.of(TIGHT, NORMAL, FLOW);
 	}
 
+	public static List<DCAirflow> underRoofs() {
+		return ImmutableList.of(TIGHT, NORMAL);
+	}
+
 	public static MutableComponent basename() {
 		return Component.translatable("dcs.enum.airflow_name");
 	}

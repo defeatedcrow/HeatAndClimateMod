@@ -1,0 +1,24 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "fermentation",
+  "result": {
+    "item": "dcs_climate:food/dust_leaf_mold",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/leaves"
+    }
+  ],
+  "heat": [
+    "WARM",
+    "HOT"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "NORMAL"
+  ]
+}

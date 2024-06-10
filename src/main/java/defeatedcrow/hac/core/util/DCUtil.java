@@ -112,10 +112,12 @@ public class DCUtil {
 	public static float getPotionResistantData(LivingEntity living, boolean isCold) {
 		float prev = 0F;
 		if (!isCold && living.hasEffect(MobEffects.FIRE_RESISTANCE)) {
-			prev += 4.0F;
+			int f = living.getEffect(MobEffects.FIRE_RESISTANCE).getAmplifier() + 1;
+			prev += 4.0F * f;
 		}
 		if (isCold && living.hasEffect(CoreInit.COLD_RESISTANCE.get())) {
-			prev += 4.0F;
+			int f = living.getEffect(CoreInit.COLD_RESISTANCE.get()).getAmplifier() + 1;
+			prev += 4.0F * f;
 		}
 
 		// 濡れ状態

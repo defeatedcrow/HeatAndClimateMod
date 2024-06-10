@@ -9,13 +9,17 @@ import com.google.common.collect.ImmutableMap;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.material.IFoodTaste;
+import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Mth;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -84,11 +88,23 @@ public class ItemCropDC extends ItemDC implements IFoodTaste {
 
 	@Override
 	public int getTaste(ItemStack item) {
+		if (!DCUtil.isEmpty(item) && item.getItem() instanceof IFoodTaste && item.getTag() != null && item.getTag().contains(TagKeyDC.TASTE)) {
+			int taste = item.getTag().getInt(TagKeyDC.TASTE);
+			taste = Mth.clamp(taste, -2, 2);
+			return taste;
+		}
 		return taste > -3 ? taste : tier.getTaste();
 	}
 
 	@Override
-	public void setTaste(ItemStack item, int i) {}
+	public void setTaste(ItemStack item, int i) {
+		if (!DCUtil.isEmpty(item)) {
+			int taste = Mth.clamp(i, -2, 2);
+			CompoundTag tag = item.getOrCreateTag();
+			tag.putInt(TagKeyDC.TASTE, taste);
+			item.setTag(tag);
+		}
+	}
 
 	@Override
 	public boolean isSeasoning() {

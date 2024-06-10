@@ -22,7 +22,7 @@ import net.minecraft.world.level.Level;
 public class SaladItem extends ItemEntityFood {
 
 	public SaladItem(String s, int nut, float sat, TagKey<Item> pair) {
-		super(s, nut, sat, pair);
+		super(s, nut, sat, false, pair);
 	}
 
 	// 悪性ポーション効果の解除

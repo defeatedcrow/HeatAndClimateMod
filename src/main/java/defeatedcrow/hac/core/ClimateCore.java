@@ -32,6 +32,7 @@ import defeatedcrow.hac.machine.recipe.MachineRecipeProvider;
 import defeatedcrow.hac.magic.material.MagicInit;
 import defeatedcrow.hac.magic.material.entity.CrowTurretEntity;
 import defeatedcrow.hac.magic.recipe.MagicRecipeProvider;
+import defeatedcrow.hac.plugin.PluginDC;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -113,6 +114,8 @@ public class ClimateCore {
 
 		// forge milk
 		ForgeMod.enableMilkFluid();
+
+		PluginDC.init();
 	}
 
 	void initAPI() {

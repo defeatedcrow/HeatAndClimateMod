@@ -1,6 +1,7 @@
 {
   "values": [
     "dcs_climate:container/container_leaves",
+    "dcs_climate:container/container_plant_wastes",
     "dcs_climate:container/container_leaves"
   ]
 }

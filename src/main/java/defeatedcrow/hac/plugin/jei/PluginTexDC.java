@@ -4,6 +4,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public enum PluginTexDC {
 	SMELTING("textures/gui/climate_smelting_jei.png"),
+	HEAT_TREATMENT("textures/gui/metal_treatment_jei.png"),
 	COOKING("textures/gui/cooking_pot_jei.png"),
 	TEA("textures/gui/tea_pot_jei.png"),
 	FERMENTATION("textures/gui/fermentation_jar_jei.png"),

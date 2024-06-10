@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/armor/shawl_fur_white"
+  },
+  "parent": "minecraft:item/generated"
+}

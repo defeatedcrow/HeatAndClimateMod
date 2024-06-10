@@ -26,7 +26,7 @@ public interface IClimateHelper {
 
 	int[] getIDs(int i);
 
-	int getClimateintFromIDs(int[] is);
+	int getClimateIntFromIDs(int[] is);
 
 	IClimate getDefaultClimate();
 

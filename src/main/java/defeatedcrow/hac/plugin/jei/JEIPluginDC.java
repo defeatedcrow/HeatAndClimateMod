@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.api.recipe.IDeviceFuel;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
+import defeatedcrow.hac.api.recipe.IHeatTreatment;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import defeatedcrow.hac.food.material.block.crops.LeavesCropBlockDC;
@@ -46,6 +47,7 @@ public class JEIPluginDC implements IModPlugin {
 	public void registerRecipes(IRecipeRegistration registration) {
 		PluginRecipeListDC.init();
 		registration.addRecipes(SMELTING_DATA, PluginRecipeListDC.SMELTING_LIST);
+		registration.addRecipes(HEAT_TREATMENT_DATA, PluginRecipeListDC.HEAT_TREATMENT_LIST);
 		registration.addRecipes(COOKING_DATA, PluginRecipeListDC.COOKING_LIST);
 		registration.addRecipes(TEA_DATA, PluginRecipeListDC.TEA_LIST);
 		registration.addRecipes(FERMENTATION_DATA, PluginRecipeListDC.FERMENTATION_LIST);
@@ -58,6 +60,7 @@ public class JEIPluginDC implements IModPlugin {
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registration) {
 		registration.addRecipeCategories(new ClimateSmeltingCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new HeatTreatmentCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new CropDataCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new TreeDataCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new DeviceCookingCategory(registration.getJeiHelpers().getGuiHelper()));
@@ -97,6 +100,9 @@ public class JEIPluginDC implements IModPlugin {
 
 	public static final ResourceLocation SMELTING_ID = new ResourceLocation(ClimateCore.MOD_ID, "smelting_data");
 	public static final RecipeType<IClimateSmelting> SMELTING_DATA = new RecipeType<IClimateSmelting>(SMELTING_ID, IClimateSmelting.class);
+
+	public static final ResourceLocation HEAT_TREATMENT_ID = new ResourceLocation(ClimateCore.MOD_ID, "heat_treatment_data");
+	public static final RecipeType<IHeatTreatment> HEAT_TREATMENT_DATA = new RecipeType<IHeatTreatment>(HEAT_TREATMENT_ID, IHeatTreatment.class);
 
 	public static final ResourceLocation CROP_ID = new ResourceLocation(ClimateCore.MOD_ID, "crop_data");
 	public static final RecipeType<ClimateCropBaseBlock> CROP_DATA = new RecipeType<ClimateCropBaseBlock>(CROP_ID, ClimateCropBaseBlock.class);

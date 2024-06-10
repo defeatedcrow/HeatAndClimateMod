@@ -26,7 +26,7 @@ import net.minecraft.world.level.Level;
 public class CurryItem extends ItemEntityFood {
 
 	public CurryItem(String s, int nut, float sat, boolean curry, TagKey<Item> pair) {
-		super(s, prop(nut, sat, curry), pair);
+		super(s, prop(nut, sat, curry), true, pair);
 	}
 
 	private static Properties prop(int nut, float sat, boolean isCurry) {

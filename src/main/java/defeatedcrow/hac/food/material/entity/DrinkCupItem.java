@@ -30,7 +30,7 @@ public class DrinkCupItem extends ItemEntityFood {
 	private final boolean milk;
 
 	public DrinkCupItem(String s, int nut, float sat, int id, boolean mi, TagKey<Item> pair) {
-		super(s, nut, sat, pair);
+		super(s, nut, sat, true, pair);
 		potionId = id;
 		milk = mi;
 	}

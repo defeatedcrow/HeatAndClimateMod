@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/metal/metal_hastelloy_cooling"
+  },
+  "parent": "minecraft:block/cube_all"
+}

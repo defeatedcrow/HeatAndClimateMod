@@ -131,6 +131,14 @@ public enum DCHumidity {
 		return ImmutableList.of(DRY, NORMAL, WET);
 	}
 
+	public static List<DCHumidity> notWet() {
+		return ImmutableList.of(DRY, NORMAL);
+	}
+
+	public static List<DCHumidity> wet() {
+		return ImmutableList.of(WET, UNDERWATER);
+	}
+
 	public static MutableComponent basename() {
 		return Component.translatable("dcs.enum.humidity_name");
 	}

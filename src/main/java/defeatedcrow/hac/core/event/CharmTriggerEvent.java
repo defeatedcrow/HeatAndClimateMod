@@ -71,7 +71,8 @@ public class CharmTriggerEvent {
 
 			// tracer
 			if (living.hasEffect(CoreInit.TRACER.get())) {
-				MobEffectInstance glow = new MobEffectInstance(MobEffects.GLOWING, 600, 0);
+				int f = living.getEffect(CoreInit.TRACER.get()).getAmplifier() + 1;
+				MobEffectInstance glow = new MobEffectInstance(MobEffects.GLOWING, 600 * f, 0);
 				attacker.addEffect(glow);
 			}
 		}
@@ -160,7 +161,8 @@ public class CharmTriggerEvent {
 				amount -= armor;
 			}
 			if (living.hasEffect(CoreInit.COLD_RESISTANCE.get())) {
-				f2 = 0F;
+				int f = living.getEffect(CoreInit.COLD_RESISTANCE.get()).getAmplifier() + 1;
+				f2 -= 4.0F * f;
 			}
 			if (DCItemUtil.isWearArmorItem(CoreInit.LEGGINS_WADERS.get(), living, EquipmentSlot.CHEST)) {
 				f2 = 0F;

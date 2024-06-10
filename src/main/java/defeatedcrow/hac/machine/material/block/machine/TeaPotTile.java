@@ -4,8 +4,6 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
-import com.google.common.base.Suppliers;
-
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IDisplayTile;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
@@ -108,7 +106,7 @@ public class TeaPotTile extends FermentationJarTile implements IDisplayTile {
 		// priority check
 		if (recipe != null) {
 			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
-			Optional<IDeviceRecipe> check = DCRecipes.getTeaRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
+			Optional<IDeviceRecipe> check = DCRecipes.getTeaRecipe(currentClimate, inputs, inputTank.getFluid());
 
 			if (check.isPresent() && check.get().getPriority() == recipe.getPriority()) {
 				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxInSlot() + 2) > 0;
@@ -124,7 +122,7 @@ public class TeaPotTile extends FermentationJarTile implements IDisplayTile {
 	@Override
 	public boolean startProcess(Level level, BlockPos pos, BlockState state) {
 		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
-		Optional<IDeviceRecipe> check = DCRecipes.getTeaRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
+		Optional<IDeviceRecipe> check = DCRecipes.getTeaRecipe(currentClimate, inputs, inputTank.getFluid());
 		if (check.isPresent()) {
 			recipe = check.get();
 			this.totalProgress = maxProgressTime();

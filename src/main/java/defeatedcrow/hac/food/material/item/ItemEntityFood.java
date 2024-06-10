@@ -28,15 +28,22 @@ import net.minecraft.world.phys.Vec3;
 public abstract class ItemEntityFood extends ItemFoodDC implements IEntityItem {
 
 	final String name;
+	final boolean hotFood;
 
-	public ItemEntityFood(String s, int nut, float sat, TagKey<Item> pair) {
+	public ItemEntityFood(String s, int nut, float sat, boolean hot, TagKey<Item> pair) {
 		super(nut, sat, pair);
 		name = s;
+		hotFood = hot;
 	}
 
-	public ItemEntityFood(String s, Properties prop, TagKey<Item> pair) {
+	public ItemEntityFood(String s, Properties prop, boolean hot, TagKey<Item> pair) {
 		super(prop, pair);
 		name = s;
+		hotFood = hot;
+	}
+
+	public boolean isHotFood() {
+		return hotFood;
 	}
 
 	@Override

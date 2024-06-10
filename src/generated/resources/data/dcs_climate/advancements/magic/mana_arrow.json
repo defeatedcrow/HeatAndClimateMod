@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "dcs_climate:magic_tier1"
+            "tag": "dcs_climate:magic/tier1"
           }
         ]
       },

@@ -1,0 +1,8 @@
+{
+  "parent": "dcs_climate:block/food/fertile_planter_mid_0",
+  "textures": {
+    "base": "minecraft:block/terracotta",
+    "top": "dcs_climate:block/crop/planter_moist_3",
+    "particle": "dcs_climate:block/crop/planter_moist_3"
+  }
+}

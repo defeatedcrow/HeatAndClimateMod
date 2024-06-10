@@ -806,6 +806,9 @@
   "item.dcs_climate.main.boots_safety":"Safety Boots",
 
   "item.dcs_climate.main.shawl_fur":"Far Shawl",
+  "item.dcs_climate.main.shawl_fur_black":"Far Shawl(Black)",
+  "item.dcs_climate.main.shawl_fur_silver":"Far Shawl(Silver)",
+  "item.dcs_climate.main.shawl_fur_white":"Far Shawl(White)",
   "item.dcs_climate.main.loincloth_fur":"Fur Loincloth",
 
   "item.dcs_climate.main.hat_linen":"Straw Hat",
@@ -929,6 +932,22 @@
   "block.dcs_climate.main.dustblock_hastelloy":"Hastelloy Dust Block",
   "block.dcs_climate.main.dustblock_bscco":"BSCCO Dust Block",
 
+  "block.dcs_climate.main.metal_steel_heating":"Heated Steel Block",
+  "block.dcs_climate.main.metal_steel_cooling":"Cooled Steel Block",
+  "block.dcs_climate.main.metal_steel_fail":"Brittle Steel Block",
+  "block.dcs_climate.main.metal_sus_heating":"Heated SUS Block",
+  "block.dcs_climate.main.metal_sus_cooling":"Cooled SUS Block",
+  "block.dcs_climate.main.metal_sus_fail":"Brittle SUS Block",
+  "block.dcs_climate.main.metal_titanium_heating":"Heated Titanium Block",
+  "block.dcs_climate.main.metal_titanium_cooling":"Cooled Titanium Block",
+  "block.dcs_climate.main.metal_titanium_fail":"Brittle Titanium Block",
+  "block.dcs_climate.main.metal_cobalt_heating":"Heated Cobalt Alloy Block",
+  "block.dcs_climate.main.metal_cobalt_cooling":"Cooled Cobalt Alloy Block",
+  "block.dcs_climate.main.metal_cobalt_fail":"Brittle Cobalt Alloy Block",
+  "block.dcs_climate.main.metal_hastelloy_heating":"Heated Hastelloy Block",
+  "block.dcs_climate.main.metal_hastelloy_cooling":"Cooled Hastelloy Block",
+  "block.dcs_climate.main.metal_hastelloy_fail":"Brittle Hastelloy Block",
+
   "block.dcs_climate.main.metalblock_brass":"Brass Block",
   "block.dcs_climate.main.metalblock_bronze":"Bronze Block",
   "block.dcs_climate.main.metalblock_nickel_silver":"Nickel Silver Block",
@@ -949,6 +968,7 @@
     "## blocks_foods":"food",
 
   "block.dcs_climate.food.fertile":"Fertilized Farm Block",
+  "block.dcs_climate.food.fertile_planter":"Gardening Pot",
 
   "block.dcs_climate.food.cropblock_allium_wild":"Garlic Chives",
   "block.dcs_climate.food.cropblock_allium_common":"Onion",
@@ -1141,6 +1161,8 @@
   "## containers":"",
 
   "block.dcs_climate.container.container_leaves":"Compressed Leaves",
+  "block.dcs_climate.container.container_plant_wastes":"Compressed Vegetal Residues",
+  "block.dcs_climate.container.container_leaf_mold":"Leaf Mold Block",
 
   "block.dcs_climate.container.logcont_oak":"Oak Log Bunch",
   "block.dcs_climate.container.logcont_birch":"Birch Log Bunch",
@@ -1584,6 +1606,9 @@
   "dcs.tip.hopper.gold":"Transport: 1 item / tick",
   "dcs.tip.hopper.filter":"Filter",
   "dcs.tip.hopper.filter.desc":"Items in the filter slot will be transported horizontally, and others will be transported vertically.",
+  "dcs.tip.fertile.fertile":"You can fertilize this block to promoting crop growth.",
+  "dcs.tip.fertile.mutation.on":"Crop Mutations: Enabled",
+  "dcs.tip.fertile.mutation.pff":"Crop Mutations: Disabled",
 
   "dcs.tip.flow.tier1":"[Tier1] Flow Rate: 32 /t",
   "dcs.tip.flow.tier2":"[Tier2] Flow Rate: 128 /t",
@@ -1837,9 +1862,21 @@
   "effect.dcs_climate.effect_heavyboots":"Heavy Boots",
   "effect.dcs_climate.effect_proj_resistance":"Projectile Protection",
 
+  "effect.dcs_climate.effect_cold_resistance.description": "Reduces HaC cold and vanilla freeze damage. (Amount: 4.0F x amp)",
+  "effect.dcs_climate.effect_wet.description": "Reduces HaC heat damage and increace cold damage. (Amount: 1.0F)",
+  "effect.dcs_climate.effect_tracer.description": "Gives a glowing effect to mobs that attack the user. (Duration: 30s x amp)",
+  "effect.dcs_climate.effect_bird.description": "The user player can use the jump key to rise and the sneak key to hover into the air.",
+  "effect.dcs_climate.effect_fish.description": "The user player can move quickly in water and gain the effect of underwater breathing.",
+  "effect.dcs_climate.effect_clairvoyance.description": "Gives a glowing effect to monsters near the user. (Range: 32block + 16block x amp)",
+  "effect.dcs_climate.effect_flag.description": "Stimulates monsters near the user, inducing a combat state with the user. (Range: 32block + 16block x amp)",
+  "effect.dcs_climate.effect_nimble.description": "Increases the user's attack speed. (Amount: 0.25F x amp)",
+  "effect.dcs_climate.effect_heavyboots.description": "Increases the user's knockback resistance. (Amount: 20% x amp)",
+  "effect.dcs_climate.effect_proj_resistance.description": "Reduces projectile damage. (Amount: 20% x amp)",
+
     "## gui_jei":"jei",
 
   "dcs.gui.jei.smelting_data":"Climate Smelting Data",
+  "dcs.gui.jei.heat_treatment_data":"Metal Heat Treatment Data",
   "dcs.gui.jei.cooking_data":"Cooking Data",
   "dcs.gui.jei.tea_data":"Drink Data",
   "dcs.gui.jei.fermentation_data":"Fermentation Data",

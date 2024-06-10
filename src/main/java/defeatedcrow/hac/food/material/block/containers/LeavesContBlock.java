@@ -39,7 +39,7 @@ public class LeavesContBlock extends BlockDC implements IRapidCollectables {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.GRASS).strength(1.0F, 1.0F).sound(SoundType.GRASS);
+		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.GRASS).strength(1.0F, 1.0F).sound(SoundType.GRASS).randomTicks();
 	}
 
 	@Override

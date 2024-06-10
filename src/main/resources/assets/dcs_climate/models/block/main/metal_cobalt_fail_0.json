@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/metal/metal_cobalt_fail"
+  },
+  "parent": "minecraft:block/cube_all"
+}

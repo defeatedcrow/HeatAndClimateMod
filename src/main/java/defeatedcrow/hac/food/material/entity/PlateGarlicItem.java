@@ -10,7 +10,7 @@ import net.minecraft.world.item.Item;
 public class PlateGarlicItem extends ItemEntityFood {
 
 	public PlateGarlicItem(String s, int nut, float sat, TagKey<Item> pair) {
-		super(s, nut, sat, pair);
+		super(s, nut, sat, true, pair);
 	}
 
 	@Override

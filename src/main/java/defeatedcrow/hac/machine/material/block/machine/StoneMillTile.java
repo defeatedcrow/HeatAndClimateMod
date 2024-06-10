@@ -86,7 +86,7 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 
 	@Override
 	protected int[] getTopSlots() {
-		return new int[] { 0, 1, 2, 3, 4 };
+		return new int[] { 0 };
 	}
 
 	@Override

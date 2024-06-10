@@ -400,6 +400,10 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.MAGIC_TIER3).addTags(TagDC.ItemTag.MAGIC_BADGE);
 
+		tag(TagDC.ItemTag.MAGIC_ALL).addTags(TagDC.ItemTag.MAGIC_TIER1, TagDC.ItemTag.MAGIC_TIER2, TagDC.ItemTag.MAGIC_TIER3);
+
+		tag(TagDC.ItemTag.MAGIC_JEWEL).addTags(TagDC.ItemTag.MAGIC_RING, TagDC.ItemTag.MAGIC_PENDANT, TagDC.ItemTag.MAGIC_BADGE);
+
 		tag(TagDC.ItemTag.MAGIC_BOOSTER).add(MagicInit.BADGE_SILVER_WHITE.get());
 
 		tag(ItemTags.ARROWS).addTags(TagDC.ItemTag.MAGIC_ARROW);

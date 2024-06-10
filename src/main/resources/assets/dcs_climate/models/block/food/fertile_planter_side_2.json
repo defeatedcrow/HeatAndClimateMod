@@ -1,0 +1,54 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "base": "minecraft:block/terracotta",
+    "top": "dcs_climate:block/crop/planter_moist_1",
+    "particle": "minecraft:block/terracotta"
+  },
+  "elements": [
+        {
+            "from": [2, 1, 0],
+            "to": [14, 15, 2],
+            "faces": {
+                "up": {"uv": [2, 0, 14, 2], "texture": "top"},
+                "down": {"uv": [2, 0, 14, 2], "texture": "#base"}
+            }
+        },
+        {
+            "from": [1, 1, 0],
+            "to": [2, 15, 2],
+            "faces": {
+                "west": {"uv": [0, 1, 2, 15], "texture": "#base"},
+                "up": {"uv": [1, 0, 2, 2], "texture": "#base"},
+                "down": {"uv": [14, 0, 15, 2], "texture": "#base"}
+            }
+        },
+        {
+            "from": [14, 1, 0],
+            "to": [15, 15, 2],
+            "faces": {
+                "east": {"uv": [14, 1, 16, 15], "texture": "#base"},
+                "up": {"uv": [14, 0, 15, 2], "texture": "#base"},
+                "down": {"uv": [1, 0, 2, 2], "texture": "#base"}
+            }
+        },
+        {
+            "from": [0, 13, 0],
+            "to": [1, 15, 2],
+            "faces": {
+                "west": {"uv": [0, 0, 2, 2], "texture": "#base"},
+                "up": {"uv": [0, 0, 1, 2], "texture": "#base"},
+                "down": {"uv": [15, 0, 16, 2], "texture": "#base"}
+            }
+        },
+        {
+            "from": [15, 13, 0],
+            "to": [16, 15, 2],
+            "faces": {
+                "east": {"uv": [14, 0, 16, 2], "texture": "#base"},
+                "up": {"uv": [15, 0, 16, 2], "texture": "#base"},
+                "down": {"uv": [0, 0, 1, 2], "texture": "#base"}
+            }
+        }
+    ]
+}

@@ -6,6 +6,7 @@ import defeatedcrow.hac.core.material.item.tool.ItemScythe;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.food.material.block.FertileBlock;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -26,7 +27,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
@@ -44,8 +44,7 @@ public class ClickEventDC {
 
 			// fertilizer
 			if (!item.isEmpty() && item.is(TagDC.ItemTag.FERTILIZER)) {
-				int m = DCState.getInt(target, BlockStateProperties.MOISTURE);
-				int f = DCState.getInt(target, DCState.FERTILE);
+				int f = FertileBlock.getFertile(level, event.getPos(), target);
 				if (target.is(TagDC.BlockTag.FARMLAND) && f < 3) {
 					if (!level.isClientSide) {
 						if (player instanceof ServerPlayer)
@@ -55,7 +54,7 @@ public class ClickEventDC {
 						if (item.is(TagDC.ItemTag.FERTILIZER_ADV)) {
 							f2 = 3;
 						}
-						BlockState next = FoodInit.FERTILE.get().defaultBlockState().setValue(DCState.FERTILE, f2).setValue(BlockStateProperties.MOISTURE, m);
+						BlockState next = FertileBlock.fertileSoil(f2, target);
 						level.setBlockAndUpdate(event.getPos(), next);
 						item.shrink(1);
 						level.levelEvent(1505, event.getPos().above(), 0);
@@ -71,7 +70,7 @@ public class ClickEventDC {
 					// 下のブロック
 					BlockState below = level.getBlockState(event.getPos().below());
 					if (below.is(BlockTags.DIRT) || below.is(TagDC.BlockTag.FARMLAND)) {
-						int f = DCState.getInt(below, DCState.FERTILE);
+						int f = FertileBlock.getFertile(level, event.getPos().below(), below);
 						if (!level.isClientSide && f < 3) {
 							// 緑肥をすき込む
 							if (target.getBlock() instanceof ClimateCropBaseBlock) {
@@ -79,7 +78,7 @@ public class ClickEventDC {
 							} else {
 								level.setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
 							}
-							BlockState next = FoodInit.FERTILE.get().defaultBlockState().setValue(DCState.FERTILE, f + 1).setValue(BlockStateProperties.MOISTURE, 7);
+							BlockState next = FertileBlock.fertileSoil(f + 1, below);
 							level.setBlockAndUpdate(event.getPos().below(), next);
 							if (player != null) {
 								item.hurtAndBreak(1, player, (c) -> {

@@ -31,7 +31,7 @@ public class DrinkColdItem extends ItemEntityFood {
 	private final int potionId;
 
 	public DrinkColdItem(String s, int nut, float sat, int id, TagKey<Item> pair) {
-		super(s, nut, sat, pair);
+		super(s, nut, sat, false, pair);
 		potionId = id;
 	}
 

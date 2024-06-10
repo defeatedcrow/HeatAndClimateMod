@@ -804,6 +804,9 @@
   "item.dcs_climate.main.boots_safety":"安全靴",
 
   "item.dcs_climate.main.shawl_fur":"毛皮のショール",
+  "item.dcs_climate.main.shawl_fur_black":"毛皮のショール(黒)",
+  "item.dcs_climate.main.shawl_fur_silver":"毛皮のショール(灰色)",
+  "item.dcs_climate.main.shawl_fur_white":"毛皮のショール(白)",
   "item.dcs_climate.main.loincloth_fur":"毛皮の腰布",
 
   "item.dcs_climate.main.hat_linen":"麦わら帽子",
@@ -926,6 +929,22 @@
   "block.dcs_climate.main.dustblock_hastelloy":"ハステロイ粉末ブロック",
   "block.dcs_climate.main.dustblock_bscco":"BSCCO粉末ブロック",
 
+  "block.dcs_climate.main.metal_steel_heating":"赤熱した鋼ブロック",
+  "block.dcs_climate.main.metal_steel_cooling":"冷却された鋼ブロック",
+  "block.dcs_climate.main.metal_steel_fail":"脆い鋼ブロック",
+  "block.dcs_climate.main.metal_sus_heating":"赤熱したSUSブロック",
+  "block.dcs_climate.main.metal_sus_cooling":"冷却されたSUSブロック",
+  "block.dcs_climate.main.metal_sus_fail":"脆いSUSブロック",
+  "block.dcs_climate.main.metal_titanium_heating":"赤熱したチタン合金ブロック",
+  "block.dcs_climate.main.metal_titanium_cooling":"冷却されたチタン合金ブロック",
+  "block.dcs_climate.main.metal_titanium_fail":"脆いチタン合金ブロック",
+  "block.dcs_climate.main.metal_cobalt_heating":"赤熱したコバルト合金ブロック",
+  "block.dcs_climate.main.metal_cobalt_cooling":"冷却されたコバルト合金ブロック",
+  "block.dcs_climate.main.metal_cobalt_fail":"脆いコバルト合金ブロック",
+  "block.dcs_climate.main.metal_hastelloy_heating":"赤熱したハステロイブロック",
+  "block.dcs_climate.main.metal_hastelloy_cooling":"冷却されたハステロイブロック",
+  "block.dcs_climate.main.metal_hastelloy_fail":"脆いハステロイブロック",
+
   "block.dcs_climate.main.metalblock_brass":"真鍮ブロック",
   "block.dcs_climate.main.metalblock_bronze":"青銅ブロック",
   "block.dcs_climate.main.metalblock_nickel_silver":"洋白ブロック",
@@ -946,6 +965,7 @@
     "## blocks_food":"food",
 
   "block.dcs_climate.food.fertile":"施肥された耕地ブロック",
+  "block.dcs_climate.food.fertile_planter":"栽培プランター",
 
   "block.dcs_climate.food.cropblock_allium_wild":"ノビル",
   "block.dcs_climate.food.cropblock_allium_common":"タマネギ",
@@ -1138,6 +1158,8 @@
     "## containers":"containers",
 
   "block.dcs_climate.container.container_leaves":"圧縮した葉ブロック",
+  "block.dcs_climate.container.container_plant_wastes":"圧縮した野菜くず",
+  "block.dcs_climate.container.container_leaf_mold":"腐葉土ブロック",
 
   "block.dcs_climate.container.logcont_oak":"オークの原木の束",
   "block.dcs_climate.container.logcont_birch":"シラカバの原木の束",
@@ -1576,6 +1598,9 @@
   "dcs.tip.device.energy.io.pass":"平均化",
   "dcs.tip.device.energy.io.none":"切断",
   "dcs.tip.device.energy.battery.amount":"充電量: ",
+  "dcs.tip.fertile.fertile":"施肥することで作物の成長を促進します。",
+  "dcs.tip.fertile.mutation.on":"WILD作物の変異:あり",
+  "dcs.tip.fertile.mutation.pff":"WILD作物の変異:なし",
 
   "dcs.tip.chamber.temp":"温度範囲: ",
   "dcs.tip.chamber.wind":"通気の良い場所や、ふいごの使用により、温度が上昇します。",
@@ -1833,9 +1858,21 @@
   "effect.dcs_climate.effect_heavyboots":"ヘビーブーツ",
   "effect.dcs_climate.effect_proj_resistance":"射撃耐性",
 
+  "effect.dcs_climate.effect_cold_resistance.description": "HaCの低温ダメージ、バニラのしもやけダメージを軽減します。 (軽減量: 4.0F x レベル)",
+  "effect.dcs_climate.effect_wet.description": "HaC高温ダメージを軽減し、HaC低温ダメージを上昇します。 (変化量: 1.0F)",
+  "effect.dcs_climate.effect_tracer.description": "使用者を攻撃してきたモブに対し、発光のポーション効果を与えます。 (効果時間: 30s x レベル)",
+  "effect.dcs_climate.effect_bird.description": "使用者はジャンプキーで空中を上昇・スニークキーで空中停止できるようになります。また、落下ダメージを無効化します。",
+  "effect.dcs_climate.effect_fish.description": "使用者は水中での移動速度が上昇し、水中で呼吸できるようになります。",
+  "effect.dcs_climate.effect_clairvoyance.description": "使用者の周囲にいるモンスターを発光させます。 (効果範囲: 32ブロック + 16ブロック x レベル)",
+  "effect.dcs_climate.effect_flag.description": "使用者の周囲にいる非戦闘状態のモンスターを刺激し、使用者と強制的に敵対させます。 (効果範囲: 32ブロック + 16ブロック x レベル)",
+  "effect.dcs_climate.effect_nimble.description": "使用者の攻撃速度を上昇させます。 (効果量: 0.25F x レベル)",
+  "effect.dcs_climate.effect_heavyboots.description": "使用者のノックバック耐性を上昇させます。 (効果量: 20% x レベル)",
+  "effect.dcs_climate.effect_proj_resistance.description": "使用者の射撃ダメージを軽減します。 (効果量: 20% x レベル)",
+
     "## gui_jei":"jei",
 
   "dcs.gui.jei.smelting_data":"気候精錬",
+  "dcs.gui.jei.heat_treatment_data":"金属熱処理",
   "dcs.gui.jei.cooking_data":"料理",
   "dcs.gui.jei.tea_data":"飲み物",
   "dcs.gui.jei.fermentation_data":"発酵",

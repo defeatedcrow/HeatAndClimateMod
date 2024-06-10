@@ -62,6 +62,7 @@ public class TagDC {
 		public static final TagKey<Block> ORES_LIME = blockTag("ores/lime");
 		public static final TagKey<Block> ORES_NATRON = blockTag("ores/natron");
 
+		public static final TagKey<Block> MUTABLE_FARMLAND = blockTag("mutable_farmland");
 		public static final TagKey<Block> FARMLAND = blockTag("farmland");
 		public static final TagKey<Block> MUD = blockTag("mud");
 		public static final TagKey<Block> MAGMA = blockTag("magma");
@@ -846,6 +847,7 @@ public class TagDC {
 		public static final TagKey<Item> FISH_LARGE = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/large_size"));
 
 		public static final TagKey<Item> CONT_LEAVES = itemTag("storage_blocks/leaves");
+		public static final TagKey<Item> CONT_WASTE = itemTag("storage_blocks/wastes");
 		public static final TagKey<Item> CONT_LOGS = itemTag("storage_blocks/logs");
 		public static final TagKey<Item> CONT_CHARCOAL = itemTag("storage_blocks/charcoal");
 		public static final TagKey<Item> CONT_CROPS = itemTag("storage_blocks/crops");
@@ -907,14 +909,18 @@ public class TagDC {
 		public static final TagKey<Item> MAGIC_CARD = ItemTags.create(new ResourceLocation("dcs_climate", "magic_cards"));
 
 		public static final TagKey<Item> MAGIC_ARROW = ItemTags.create(new ResourceLocation("dcs_climate", "magic_arrows"));
-		public static final TagKey<Item> MAGIC_RING = ItemTags.create(new ResourceLocation("dcs_climate", "magic_rings"));
-		public static final TagKey<Item> MAGIC_PENDANT = ItemTags.create(new ResourceLocation("dcs_climate", "magic_pendants"));
-		public static final TagKey<Item> MAGIC_BADGE = ItemTags.create(new ResourceLocation("dcs_climate", "magic_badges"));
+
+		public static final TagKey<Item> MAGIC_JEWEL = ItemTags.create(new ResourceLocation("dcs_climate", "jewels"));
+		public static final TagKey<Item> MAGIC_RING = ItemTags.create(new ResourceLocation("dcs_climate", "jewels/magic_rings"));
+		public static final TagKey<Item> MAGIC_PENDANT = ItemTags.create(new ResourceLocation("dcs_climate", "jewels/magic_pendants"));
+		public static final TagKey<Item> MAGIC_BADGE = ItemTags.create(new ResourceLocation("dcs_climate", "jewels/magic_badges"));
+
 		public static final TagKey<Item> MAGIC_BOOSTER = ItemTags.create(new ResourceLocation("dcs_climate", "magic_boost_item"));
 
-		public static final TagKey<Item> MAGIC_TIER1 = ItemTags.create(new ResourceLocation("dcs_climate", "magic_tier1"));
-		public static final TagKey<Item> MAGIC_TIER2 = ItemTags.create(new ResourceLocation("dcs_climate", "magic_tier2"));
-		public static final TagKey<Item> MAGIC_TIER3 = ItemTags.create(new ResourceLocation("dcs_climate", "magic_tier3"));
+		public static final TagKey<Item> MAGIC_ALL = ItemTags.create(new ResourceLocation("dcs_climate", "magic"));
+		public static final TagKey<Item> MAGIC_TIER1 = ItemTags.create(new ResourceLocation("dcs_climate", "magic/tier1"));
+		public static final TagKey<Item> MAGIC_TIER2 = ItemTags.create(new ResourceLocation("dcs_climate", "magic/tier2"));
+		public static final TagKey<Item> MAGIC_TIER3 = ItemTags.create(new ResourceLocation("dcs_climate", "magic/tier3"));
 
 		public static final TagKey<Item> LOG_SWEET = ItemTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap/sweet_sap"));
 		public static final TagKey<Item> LOG_RESIN = ItemTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap/resin"));

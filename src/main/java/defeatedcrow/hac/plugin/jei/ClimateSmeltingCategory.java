@@ -42,8 +42,8 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 	public ClimateSmeltingCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(FoodInit.BREAD_ROUND_BAKED_ITEM.get()));
 		background = guiHelper.drawableBuilder(PluginTexDC.SMELTING.getLocation(), 21, 20, 127, 68)
-			.addPadding(0, 0, 10, 3)
-			.build();
+				.addPadding(0, 0, 10, 3)
+				.build();
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 		}
 		for (DCHeatTier heat : heats) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 34 + heat.getID() * 6, 28).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
-				new HeatTierRenderer(6, 3));
+					new HeatTierRenderer(6, 3));
 		}
 
 		List<DCHumidity> hums = recipe.requiredHum();
@@ -88,7 +88,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 		}
 		for (DCHumidity hum : hums) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 34 + hum.getID() * 21, 38).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
-				new HumidityRenderer(21, 3));
+					new HumidityRenderer(21, 3));
 		}
 
 		List<DCAirflow> airs = recipe.requiredAir();
@@ -97,7 +97,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 		}
 		for (DCAirflow air : airs) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 34 + air.getID() * 21, 48).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW,
-				new AirflowRenderer(21, 3));
+					new AirflowRenderer(21, 3));
 		}
 	}
 

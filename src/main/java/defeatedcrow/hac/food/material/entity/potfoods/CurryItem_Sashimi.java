@@ -11,7 +11,7 @@ import net.minecraft.world.item.Item;
 public class CurryItem_Sashimi extends ItemEntityFood {
 
 	public CurryItem_Sashimi(String s, int nut, float sat, boolean curry, TagKey<Item> pair) {
-		super(s, prop(nut, sat, curry), pair);
+		super(s, prop(nut, sat, curry), false, pair);
 	}
 
 	private static Properties prop(int nut, float sat, boolean isCurry) {

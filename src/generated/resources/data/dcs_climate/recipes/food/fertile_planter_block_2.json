@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:dirt"
+    },
+    "Y": {
+      "tag": "minecraft:terracotta"
+    }
+  },
+  "pattern": [
+    "YXY",
+    "YYY"
+  ],
+  "result": {
+    "item": "dcs_climate:food/fertile_planter"
+  }
+}

@@ -48,6 +48,20 @@ public class HUDHandlerClimateData implements IBlockComponentProvider {
 			return;
 		}
 
+		if (config.getBoolean(CLIMATE_SMELTING) && DCRecipes.INSTANCE.hasAnyHeatTreatmentRecipe(level.getBlock()).isPresent()) {
+
+			ClimateSupplier clm = new ClimateSupplier(level.getWorld(), level.getPosition());
+			if (DCRecipes.INSTANCE.getHeatTreatmentRecipe(clm, new ItemStack(level.getBlock())).isPresent()) {
+				tooltip.addLine(Component.translatable("dcs.tip.waila.smelting_suitable").withStyle(ChatFormatting.AQUA));
+				if (level.getBlock().isRandomlyTicking(level.getBlockState())) {
+					tooltip.addLine(Component.translatable("dcs.tip.waila.smelting_tick_scheduled"));
+				} else {
+					tooltip.addLine(Component.translatable("dcs.tip.waila.smelting_tick_not_scheduled"));
+				}
+			}
+			return;
+		}
+
 		if (config.getBoolean(CLIMATE) && ClimateAPI.registerBlock.isRegisteredBlock(level.getBlockState())) {
 
 			ClimateAPI.registerBlock.getHeatTier(level.getBlockState()).ifPresent(heat -> {

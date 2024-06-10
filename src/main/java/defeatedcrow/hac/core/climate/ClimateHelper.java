@@ -42,7 +42,7 @@ public class ClimateHelper implements IClimateHelper {
 	}
 
 	@Override
-	public int getClimateintFromIDs(int[] is) {
+	public int getClimateIntFromIDs(int[] is) {
 		int t = 0;
 		int h = 0;
 		int a = 0;

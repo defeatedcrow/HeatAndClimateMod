@@ -1273,6 +1273,12 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.group("dustblock_pack")
 				.save(cons, "dcs_climate:core/dustblock_aluminum_2");
 
+		ShapelessRecipeBuilder.shapeless(Items.IRON_INGOT, 9)
+				.requires(CoreInit.METAL_STEEL_FAIL.get())
+				.group("storage_unpack")
+				.unlockedBy("has_brittle_steel_block", has(CoreInit.METAL_STEEL_FAIL.get()))
+				.save(cons, "dcs_climate:core/ingot_iron_from_brittle_steel");
+
 		ShapedRecipeBuilder.shaped(CoreInit.MORTAR.get(), 1)
 				.pattern("X X")
 				.pattern("XXX")
@@ -1928,6 +1934,10 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		clothColorRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_BLACK.get(), Tags.Items.DYES_BLACK, "black", "cloth_hat");
 		clothColorRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "cloth_hat");
 		clothColorRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_GREEN.get(), Tags.Items.DYES_GREEN, "green", "cloth_hat");
+
+		clothColorRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_BLACK.get(), Tags.Items.DYES_BLACK, "black", "fur_shawl");
+		clothColorRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_SILVER.get(), Tags.Items.DYES_LIGHT_GRAY, "silver", "fur_shawl");
+		clothColorRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_WHITE.get(), Tags.Items.DYES_WHITE, "white", "fur_shawl");
 
 		clothColorRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_BLACK.get(), Tags.Items.DYES_BLACK, "black", "linen_jacket");
 		clothColorRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "linen_jacket");

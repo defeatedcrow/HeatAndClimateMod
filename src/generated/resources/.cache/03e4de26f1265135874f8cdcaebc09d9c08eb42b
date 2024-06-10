@@ -1,4 +1,4 @@
-// 1.19.2	2024-06-01T19:25:19.8273127	Tags for minecraft:item
+// 1.19.2	2024-06-10T22:04:28.7988493	Tags for minecraft:item
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
 ec1456f116d5ab235ffefbc79d4a8fe9087d6286 data/dcs_climate/tags/items/building_stones.json
 c7f96f68fcca93bc6fe2450a3d1f1b41ea5b9021 data/dcs_climate/tags/items/building_stones/bricks.json
@@ -95,21 +95,23 @@ edc53fe07b6cc91a4dc3d15cc04f5b2f1b0442d7 data/dcs_climate/tags/items/hoppers.jso
 54057d6a734f0270d772afc38d85be2443fe48b5 data/dcs_climate/tags/items/hoppers/filter_hopper.json
 441c1a784e15ad6e9e166852abf0125021519374 data/dcs_climate/tags/items/impellers.json
 74242775277a2e826a2e0827788832d0795c6049 data/dcs_climate/tags/items/impellers/small.json
+4633cdb417b87817de5612ba3eecfc8398f717bb data/dcs_climate/tags/items/jewels.json
+7aee38b7c970c1f3d1d52225aa01a808c07dc168 data/dcs_climate/tags/items/jewels/magic_badges.json
+7731b00b985c45aa4af4f155ee3c7f6c9552d8a7 data/dcs_climate/tags/items/jewels/magic_pendants.json
+85e814e621a82fe67190bcfe1fdd544dee9b1e2f data/dcs_climate/tags/items/jewels/magic_rings.json
 94ff6238538ed033196035f110b10721b2cf337f data/dcs_climate/tags/items/leakage_machine.json
 4907e6cc62f45960f628e6078eedd050a85e4d75 data/dcs_climate/tags/items/logs_can_collect_sap.json
 995780b538ec0d5ba35266df7b1cc561e7a7d15c data/dcs_climate/tags/items/logs_can_collect_sap/lacquer.json
 8c8d04e6558e83e86b428523fa5055683822b260 data/dcs_climate/tags/items/logs_can_collect_sap/latex.json
 52e92430406456214703fe01a475b44c40a39a6c data/dcs_climate/tags/items/logs_can_collect_sap/resin.json
 f2cdc97a774fb6bb826cc512d5fda718518ef3ab data/dcs_climate/tags/items/logs_can_collect_sap/sweet_sap.json
+c99cab4675d13c2b1ef31fd0929a42fafef6d3ba data/dcs_climate/tags/items/magic.json
+ee0c324158675b8c748be8b1a5bb2dfc0d0297a8 data/dcs_climate/tags/items/magic/tier1.json
+24ced985b511a6bbdc950eafdec1fd02e215af71 data/dcs_climate/tags/items/magic/tier2.json
+f91a01cafa4241db2f9d972e8c17c3b9a614695f data/dcs_climate/tags/items/magic/tier3.json
 18693f8762776180171770992989e15666e10425 data/dcs_climate/tags/items/magic_arrows.json
-7aee38b7c970c1f3d1d52225aa01a808c07dc168 data/dcs_climate/tags/items/magic_badges.json
 ca0f47ac39b19e49977153f3027507ff755e5df5 data/dcs_climate/tags/items/magic_boost_item.json
 ddf63601841c399b3b24f1adabfa1c0d4433d639 data/dcs_climate/tags/items/magic_cards.json
-7731b00b985c45aa4af4f155ee3c7f6c9552d8a7 data/dcs_climate/tags/items/magic_pendants.json
-85e814e621a82fe67190bcfe1fdd544dee9b1e2f data/dcs_climate/tags/items/magic_rings.json
-1ba1e3d8d45d761b9109adcb7cbd43698627b2d5 data/dcs_climate/tags/items/magic_tier1.json
-d91527d786a9d0228641f402c58d45b15440fdeb data/dcs_climate/tags/items/magic_tier2.json
-14c10ab9eee599e107ed7fcc88f688aef0894d1e data/dcs_climate/tags/items/magic_tier3.json
 6430da8ed20b60e93622f4512219d1ff14aefcd8 data/dcs_climate/tags/items/mana_drops.json
 8c9f062dc20a9f733b8ed31f95dcfd702f331056 data/dcs_climate/tags/items/mana_elements.json
 14cef5e12e14cfde96c79f6a0d3142b02c0730a3 data/dcs_climate/tags/items/mana_extracts.json
@@ -675,7 +677,7 @@ d947c8790c56532f2daf00fc05c4a29154ae9e51 data/forge/tags/items/storage_blocks/cr
 c910d17690692fe117409dbad314ee6529a797b3 data/forge/tags/items/storage_blocks/crops/pumpkin.json
 4f1b264bd4e62123d885308b206e44c761fec5aa data/forge/tags/items/storage_blocks/crops/sugarcane.json
 6780a3af873bed694d234dca83e613ff7a3308d0 data/forge/tags/items/storage_blocks/hastelloy.json
-e41f2c9fad61fc2c40275732d00dcf030361aa9e data/forge/tags/items/storage_blocks/leaves.json
+0f45a6ee54b15b957592c742ba8f536f24e875f2 data/forge/tags/items/storage_blocks/leaves.json
 648568da4353d62f74506fd92087ff6d6d545b8e data/forge/tags/items/storage_blocks/logs.json
 2bd2156091ef77d462af17bb94fa7ae003888674 data/forge/tags/items/storage_blocks/magnet.json
 4e70dd8ec36835ed39b271616b0dabd2475f5548 data/forge/tags/items/storage_blocks/nickel_silver.json

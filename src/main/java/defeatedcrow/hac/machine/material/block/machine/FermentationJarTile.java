@@ -4,8 +4,6 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
-import com.google.common.base.Suppliers;
-
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.material.IRenderBlockData;
@@ -91,7 +89,7 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 
 	@Override
 	protected int[] getTopSlots() {
-		return new int[] { 0, 1, 2, 3, 4, 5, 7 };
+		return new int[] { 0, 1, 2, 5, 7 };
 	}
 
 	@Override
@@ -170,7 +168,7 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 		// priority check
 		if (recipe != null) {
 			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
-			Optional<IDeviceRecipe> check = DCRecipes.getFermentationRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
+			Optional<IDeviceRecipe> check = DCRecipes.getFermentationRecipe(currentClimate, inputs, inputTank.getFluid());
 
 			if (check.isPresent() && check.get().getPriority() == recipe.getPriority()) {
 				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxInSlot() + 2) > 0 && outputTank.fill(recipe.getOutputFluid(), FluidAction.SIMULATE) >= recipe
@@ -252,7 +250,7 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 	@Override
 	public boolean startProcess(Level level, BlockPos pos, BlockState state) {
 		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
-		Optional<IDeviceRecipe> check = DCRecipes.getFermentationRecipe(Suppliers.ofInstance(currentClimate), inputs, inputTank.getFluid());
+		Optional<IDeviceRecipe> check = DCRecipes.getFermentationRecipe(currentClimate, inputs, inputTank.getFluid());
 		if (check.isPresent()) {
 			recipe = check.get();
 			this.totalProgress = maxProgressTime();

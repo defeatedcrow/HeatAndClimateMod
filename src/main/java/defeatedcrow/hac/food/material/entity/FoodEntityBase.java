@@ -7,11 +7,13 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.entity.ObjectEntityBaseDC;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.food.material.item.ItemEntityFood;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -66,6 +68,15 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 					currentRecipe = recipe.get();
 					count = recipe.get().recipeFrequency();
 				}
+			}
+		}
+
+		if (getLevel().random.nextInt(5) == 0 && !isRaw() && !getItem().isEmpty() && getItem().getItem() instanceof ItemEntityFood food) {
+			if (food.isHotFood()) {
+				double d0 = this.position().x + getLevel().random.nextDouble() * 0.4D - 0.2D;
+				double d1 = this.position().y + 0.25D;
+				double d2 = this.position().z + getLevel().random.nextDouble() * 0.4D - 0.2D;
+				level.addParticle(CoreInit.SMOKE_SMALL.get(), d0, d1, d2, 0.0D, 0.01D, 0.0D);
 			}
 		}
 	}

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/metal/metal_sus_heating"
+  },
+  "parent": "minecraft:block/cube_all"
+}
