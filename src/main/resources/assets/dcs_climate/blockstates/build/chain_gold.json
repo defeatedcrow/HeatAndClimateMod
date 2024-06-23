@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "dcs_climate:block/build/chain_gold_0",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "dcs_climate:block/build/chain_gold_0"
+    },
+    "axis=z": {
+      "model": "dcs_climate:block/build/chain_gold_0",
+      "x": 90
+    }
+  }
+}

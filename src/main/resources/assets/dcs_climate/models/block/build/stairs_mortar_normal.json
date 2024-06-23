@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/mortar"
+  },
+  "parent": "dcs_climate:block/dcs_stairs_normal"
+}

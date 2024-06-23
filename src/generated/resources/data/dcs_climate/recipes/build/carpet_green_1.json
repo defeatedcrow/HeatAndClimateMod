@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:build/carpet_white"
+    },
+    "Y": {
+      "tag": "forge:dyes/green"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:build/carpet_green"
+  }
+}

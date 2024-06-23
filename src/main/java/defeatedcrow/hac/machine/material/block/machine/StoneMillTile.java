@@ -164,7 +164,9 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 
 			if (check.isPresent()) {
 				ItemStack ret = recipe.getOutput().copy();
-				if (ret.getCount() > 2)
+				if (ret.getCount() > 4)
+					ret.shrink(2);
+				else if (ret.getCount() > 2)
 					ret.shrink(1);
 				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxOutSlot()) > 0;
 				if (recipe.getSecondaryRate() > 0 && inventory.canInsertResult(recipe.getSecondaryOutput(), maxInSlot() + 1, maxOutSlot()) == 0) {
@@ -189,7 +191,9 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 		if (recipe != null) {
 			boolean flag = false;
 			ItemStack res = recipe.getOutput();
-			if (res.getCount() > 2)
+			if (res.getCount() > 4)
+				res.shrink(2);
+			else if (res.getCount() > 2)
 				res.shrink(1);
 			if (!res.isEmpty() && res.getItem() instanceof IFoodTaste food) {
 				int taste = CraftingFoodEvent.getResultTaste(inputs, consume);

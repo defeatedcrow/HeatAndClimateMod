@@ -91,6 +91,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.COW_MILK).add(Items.MILK_BUCKET);
 		tag(TagDC.ItemTag.WATER).add(Items.WATER_BUCKET);
+		tag(TagDC.ItemTag.HONEY).add(Items.HONEY_BOTTLE);
 		tag(TagDC.ItemTag.DUST_SUGAR).add(Items.SUGAR);
 
 		tag(TagDC.ItemTag.STICK_BAMBOO).add(Items.BAMBOO);
@@ -118,6 +119,27 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.MAGMA).add(Items.MAGMA_BLOCK);
 		tag(TagDC.ItemTag.DRIPSTONES).add(Items.DRIPSTONE_BLOCK, Items.POINTED_DRIPSTONE);
+
+		tag(TagDC.ItemTag.COLORED_WOOL).add(Items.BLACK_WOOL, Items.BLUE_WOOL, Items.BROWN_WOOL, Items.CYAN_WOOL, Items.GRAY_WOOL,
+				Items.GREEN_WOOL, Items.LIGHT_BLUE_WOOL, Items.LIGHT_GRAY_WOOL, Items.LIME_WOOL, Items.MAGENTA_WOOL,
+				Items.ORANGE_WOOL, Items.PINK_WOOL, Items.PURPLE_WOOL, Items.RED_WOOL, Items.WHITE_WOOL, Items.YELLOW_WOOL);
+
+		tag(TagDC.ItemTag.COLORED_TERRACOTTA).add(Items.BLACK_TERRACOTTA, Items.BLUE_TERRACOTTA, Items.BROWN_TERRACOTTA, Items.CYAN_TERRACOTTA, Items.GRAY_TERRACOTTA,
+				Items.GREEN_TERRACOTTA, Items.LIGHT_BLUE_TERRACOTTA, Items.LIGHT_GRAY_TERRACOTTA, Items.LIME_TERRACOTTA, Items.MAGENTA_TERRACOTTA,
+				Items.ORANGE_TERRACOTTA, Items.PINK_TERRACOTTA, Items.PURPLE_TERRACOTTA, Items.RED_TERRACOTTA, Items.WHITE_TERRACOTTA, Items.YELLOW_TERRACOTTA);
+
+		tag(TagDC.ItemTag.COLORED_GLASS).add(Items.BLACK_STAINED_GLASS, Items.BLUE_STAINED_GLASS, Items.BROWN_STAINED_GLASS, Items.CYAN_STAINED_GLASS, Items.GRAY_STAINED_GLASS,
+				Items.GREEN_STAINED_GLASS, Items.LIGHT_BLUE_STAINED_GLASS, Items.LIGHT_GRAY_STAINED_GLASS, Items.LIME_STAINED_GLASS, Items.MAGENTA_STAINED_GLASS,
+				Items.ORANGE_STAINED_GLASS, Items.PINK_STAINED_GLASS, Items.PURPLE_STAINED_GLASS, Items.RED_STAINED_GLASS, Items.WHITE_STAINED_GLASS, Items.YELLOW_STAINED_GLASS);
+
+		tag(TagDC.ItemTag.COLORED_GLASS_PLATE).add(Items.BLACK_STAINED_GLASS_PANE, Items.BLUE_STAINED_GLASS_PANE, Items.BROWN_STAINED_GLASS_PANE, Items.CYAN_STAINED_GLASS_PANE,
+				Items.GRAY_STAINED_GLASS_PANE, Items.GREEN_STAINED_GLASS_PANE, Items.LIGHT_BLUE_STAINED_GLASS_PANE, Items.LIGHT_GRAY_STAINED_GLASS_PANE, Items.LIME_STAINED_GLASS_PANE,
+				Items.MAGENTA_STAINED_GLASS_PANE, Items.ORANGE_STAINED_GLASS_PANE, Items.PINK_STAINED_GLASS_PANE, Items.PURPLE_STAINED_GLASS_PANE, Items.RED_STAINED_GLASS_PANE,
+				Items.WHITE_STAINED_GLASS_PANE, Items.YELLOW_STAINED_GLASS_PANE);
+
+		tag(TagDC.ItemTag.COLORED_CANDLE).add(Items.BLACK_CANDLE, Items.BLUE_CANDLE, Items.BROWN_CANDLE, Items.CYAN_CANDLE, Items.GRAY_CANDLE,
+				Items.GREEN_CANDLE, Items.LIGHT_BLUE_CANDLE, Items.LIGHT_GRAY_CANDLE, Items.LIME_CANDLE, Items.MAGENTA_CANDLE,
+				Items.ORANGE_CANDLE, Items.PINK_CANDLE, Items.PURPLE_CANDLE, Items.RED_CANDLE, Items.WHITE_CANDLE, Items.YELLOW_CANDLE);
 
 		// vanilla tag
 
@@ -311,11 +333,13 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.SUGARS).addTags(TagDC.ItemTag.HONEY, TagDC.ItemTag.SYRUP, TagDC.ItemTag.DUST_SUGAR);
 
-		tag(TagDC.ItemTag.MILKS).addTags(TagDC.ItemTag.COW_MILK, TagDC.ItemTag.SOY_MILK, TagDC.ItemTag.COCONUT_MILK);
+		tag(TagDC.ItemTag.MILKS).addTags(TagDC.ItemTag.COW_MILK, TagDC.ItemTag.SOY_MILK, TagDC.ItemTag.COCONUT_MILK, TagDC.ItemTag.ALMOND_MILK);
 
 		tag(TagDC.ItemTag.CREAMS).addTags(TagDC.ItemTag.CREAM, TagDC.ItemTag.WHIP);
 
 		tag(TagDC.ItemTag.SAPS).addTags(TagDC.ItemTag.SAP_SWEET, TagDC.ItemTag.SAP_RESIN, TagDC.ItemTag.SAP_LATEX, TagDC.ItemTag.SAP_LACQUER);
+
+		tag(TagDC.ItemTag.SOAPS).addTags(TagDC.ItemTag.SOAP_OIL, TagDC.ItemTag.SOAP_MAGIC);
 
 		tag(TagDC.ItemTag.FOOD_FAT).addTags(TagDC.ItemTag.BUTTER, TagDC.ItemTag.MARGARINE);
 
@@ -485,7 +509,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.MOTORS).addTags(TagDC.ItemTag.MOTOR_T1);
 		tag(TagDC.ItemTag.IMPELLERS).addTags(TagDC.ItemTag.IMPELLER_T1);
 
-		tag(TagDC.ItemTag.FUEL_BIOMASS).add(CoreInit.DUST_WOOD.get(), CoreInit.DUST_PLANT.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.VINE.get(),
+		tag(TagDC.ItemTag.FUEL_BIOMASS).add(FoodInit.DUST_WOOD.get(), FoodInit.DUST_PLANT.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.VINE.get(),
 				FoodInit.SORGHUM_STICK.get(), FoodInit.BEESWAX.get(), FoodInit.TREEWAX.get(), FoodInit.FOOD_DEFATTED_SOY.get(), FoodInit.FOOD_PRESS_CAKE.get(),
 				FoodInit.FOOD_BRAN.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.FEED_HAY.get(), FoodInit.FEED_STRAW.get());
 

@@ -133,6 +133,12 @@
     "dcs_climate:build/chair_blue",
     "dcs_climate:build/chair_black",
     "dcs_climate:build/chair_red",
-    "dcs_climate:build/chair_green"
+    "dcs_climate:build/chair_green",
+    "dcs_climate:build/sofa_white",
+    "dcs_climate:build/sofa_orange",
+    "dcs_climate:build/sofa_blue",
+    "dcs_climate:build/sofa_black",
+    "dcs_climate:build/sofa_pink",
+    "dcs_climate:build/sofa_green"
   ]
 }

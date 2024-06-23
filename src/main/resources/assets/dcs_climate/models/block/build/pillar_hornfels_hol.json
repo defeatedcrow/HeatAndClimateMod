@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "end": "dcs_climate:block/ore/stone_hornfels",
+    "side": "dcs_climate:block/build/pillar_hornfels"
+  },
+  "parent": "minecraft:block/cube_column_horizontal"
+}

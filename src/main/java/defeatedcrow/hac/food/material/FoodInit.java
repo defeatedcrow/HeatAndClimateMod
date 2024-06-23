@@ -139,6 +139,7 @@ import defeatedcrow.hac.food.material.entity.potfoods.SoupItem;
 import defeatedcrow.hac.food.material.item.EdibleMaterialItem;
 import defeatedcrow.hac.food.material.item.EmptyPackItem;
 import defeatedcrow.hac.food.material.item.FertilizerItemDC;
+import defeatedcrow.hac.food.material.item.FluidPackItem;
 import defeatedcrow.hac.food.material.item.FoodMaterialItemDC;
 import defeatedcrow.hac.food.material.item.ItemCropDC;
 import defeatedcrow.hac.food.material.item.RawFishItem;
@@ -676,17 +677,19 @@ public class FoodInit {
 			"food"));
 
 	// pack
-	public static final RegistryObject<Item> FOOD_MILK = regItem("pack_milk", () -> new FoodMaterialItemDC(FOOD, "pack_milk", TagDC.ItemTag.COW_MILK).taste(1).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_MILK = regItem("pack_milk", () -> new FluidPackItem(FOOD, "pack_milk", TagDC.ItemTag.COW_MILK, FluidPackItem.MILK).taste(1).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_SOY_MILK = regItem("pack_soy_milk", () -> new FoodMaterialItemDC(FOOD, "pack_soy_milk", TagDC.ItemTag.SOY_MILK).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_COCONUT_MILK = regItem("pack_coconut_milk", () -> new FoodMaterialItemDC(FOOD, "pack_coconut_milk", TagDC.ItemTag.COCONUT_MILK).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_COCONUT_MILK = regItem("pack_coconut_milk", () -> new FoodMaterialItemDC(FOOD, "pack_coconut_milk", TagDC.ItemTag.ALMOND_MILK).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_ALMOND_MILK = regItem("pack_almond_milk", () -> new FoodMaterialItemDC(FOOD, "pack_almond_milk", TagDC.ItemTag.COCONUT_MILK).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_CREAM = regItem("pack_cream", () -> new FoodMaterialItemDC(FOOD, "pack_cream", TagDC.ItemTag.CREAM).taste(1).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_WHIP = regItem("pack_whip", () -> new FoodMaterialItemDC(FOOD, "pack_whip", TagDC.ItemTag.WHIP).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_HONEY = regItem("pack_honey", () -> new FoodMaterialItemDC(FOOD, "pack_honey", TagDC.ItemTag.HONEY).taste(2).seasoning().setDomain("food"));
 	public static final RegistryObject<Item> FOOD_SYRUP = regItem("pack_syrup", () -> new FoodMaterialItemDC(FOOD, "pack_syrup", TagDC.ItemTag.SYRUP).taste(1).seasoning().setDomain("food"));
-	public static final RegistryObject<Item> FOOD_PLANT_OIL = regItem("pack_plant_oil", () -> new FoodMaterialItemDC(FOOD, "pack_plant_oil", TagDC.ItemTag.PLANT_OIL).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_WATER = regItem("pack_water", () -> new FoodMaterialItemDC(FOOD, "pack_water", TagDC.ItemTag.WATER).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_SPARKLING = regItem("pack_sparkling", () -> new FoodMaterialItemDC(FOOD, "pack_sparkling", TagDC.ItemTag.SPARKLING).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_PLANT_OIL = regItem("pack_plant_oil", () -> new FluidPackItem(FOOD, "pack_plant_oil", TagDC.ItemTag.PLANT_OIL, FluidPackItem.PLANT_OIL).setDomain(
+			"food"));
+	public static final RegistryObject<Item> FOOD_WATER = regItem("pack_water", () -> new FluidPackItem(FOOD, "pack_water", TagDC.ItemTag.WATER, FluidPackItem.WATER).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_SPARKLING = regItem("pack_sparkling", () -> new FluidPackItem(FOOD, "pack_sparkling", TagDC.ItemTag.SPARKLING, FluidPackItem.SPARKLING).setDomain(
+			"food"));
 	public static final RegistryObject<Item> FOOD_EMPTY_PACK = regItem("pack_empty", () -> new EmptyPackItem(FOOD, "pack_empty", TagDC.ItemTag.EMPTY_PACK).setDomain("food"));
 
 	// agri
@@ -725,6 +728,9 @@ public class FoodInit {
 	public static final RegistryObject<Item> FOOD_PRESS_CAKE = regItem("dust_press_cake", () -> new MaterialItemDC(AGRI, "dust_press_cake", TagDC.ItemTag.PRESS_CAKE).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_BRAN = regItem("dust_bran", () -> new MaterialItemDC(AGRI, "dust_bran", TagDC.ItemTag.BRAN).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_BAGASSE = regItem("dust_bagasse", () -> new MaterialItemDC(AGRI, "dust_bagasse", TagDC.ItemTag.BAGASSE).setDomain("food"));
+	public static final RegistryObject<Item> DUST_WOOD = regItem("dust_wood", () -> new MaterialItemDC(AGRI, "dust_wood", TagDC.ItemTag.DUST_WOOD), "main");
+	public static final RegistryObject<Item> DUST_PLANT = regItem("dust_plant", () -> new MaterialItemDC(AGRI, "dust_plant", TagDC.ItemTag.DUST_PLANT), "main");
+	public static final RegistryObject<Item> DUST_ASH = regItem("dust_ash", () -> new MaterialItemDC(AGRI, "dust_ash", TagDC.ItemTag.DUST_ASH), "main");
 	public static final RegistryObject<Item> FOOD_LEAF_MOLD = regItem("dust_leaf_mold", () -> new MaterialItemDC(AGRI, "dust_leaf_mold", TagDC.ItemTag.LEAF_MOLD).setDomain("food"));
 
 	public static final RegistryObject<Item> FEED_HAY = regItem("animalfeed_hay", () -> new MaterialItemDC(AGRI, "animalfeed_hay", TagDC.ItemTag.FEED_HAY).setDomain("food"));
@@ -1124,6 +1130,10 @@ public class FoodInit {
 
 	public static RegistryObject<Item> regContItem(String name, Supplier<Item> item) {
 		return CoreInit.ITEMS.register("container/" + name, item);
+	}
+
+	public static RegistryObject<Item> regItem(String name, Supplier<Item> item, String domein) {
+		return CoreInit.ITEMS.register(domein + "/" + name, item);
 	}
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {

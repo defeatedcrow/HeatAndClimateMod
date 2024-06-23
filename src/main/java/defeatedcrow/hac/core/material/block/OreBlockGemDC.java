@@ -7,13 +7,18 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.RegistryObject;
 
 public class OreBlockGemDC extends LayerStoneBlock {
@@ -79,6 +84,11 @@ public class OreBlockGemDC extends LayerStoneBlock {
 		}
 
 		return ret;
+	}
+
+	@Override
+	public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
+		return silkTouchLevel == 0 && getMainDrop().is(Tags.Items.GEMS) ? UniformInt.of(2, 5).sample(randomSource) : 0;
 	}
 
 }

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/chandelier_iron_item"
+  },
+  "parent": "dcs_climate:block/dcs_dummy"
+}

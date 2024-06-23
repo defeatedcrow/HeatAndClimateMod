@@ -1,5 +1,6 @@
 package defeatedcrow.hac.core.event;
 
+import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.material.ITierItem;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.ClimateCore;
@@ -20,10 +21,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.StemBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -86,6 +90,8 @@ public class BlockEventDC {
 			int range = 2;
 			if (held.getItem() instanceof ITierItem tool) {
 				range = tool.getTier().getLevel() + 1;
+			} else if (held.getItem() instanceof TieredItem tool) {
+				range = tool.getTier().getLevel();
 			}
 			boolean b = false;
 			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
@@ -93,17 +99,16 @@ public class BlockEventDC {
 			for (int y = range; y > -range - 1; y--) {
 				for (int x = -range; x < range + 1; x++) {
 					for (int z = -range; z < range + 1; z++) {
-						if (x == 0 && y == 0 && z == 0)
-							continue;
 						mpos.set(pos.offset(x, y, z));
 						BlockState target = level.getBlockState(mpos);
 						ItemStack copy = held.copy();
 						if (level.getBlockEntity(mpos) != null || !target.canHarvestBlock(level, mpos, player))
 							continue;
 
-						if (target.is(TagDC.BlockTag.SCYTHE_BREAKABLE) || target.is(BlockTags.FLOWERS) || target.is(TagDC.BlockTag.WEED)) {
-							if (target.onDestroyedByPlayer(level, mpos, player, true, level.getFluidState(mpos))) {
-								target.getBlock().destroy(level, mpos, state);
+						if (target.is(TagDC.BlockTag.SCYTHE_BREAKABLE) || target.is(BlockTags.FLOWERS) || target.is(TagDC.BlockTag.WEED)
+								|| target.getBlock() instanceof IClimateCrop) {
+							if (canHarvestCrop(level, mpos, target) && target.onDestroyedByPlayer(level, mpos, player, true, level.getFluidState(mpos))) {
+								target.getBlock().destroy(level, mpos, target);
 								target.getBlock().playerDestroy(level, player, mpos, target, null, copy);
 								b = true;
 							}
@@ -111,6 +116,22 @@ public class BlockEventDC {
 					}
 				}
 			}
+
+			if (b) {
+				event.setCanceled(true);
+			}
+		}
+	}
+
+	private static boolean canHarvestCrop(Level level, BlockPos pos, BlockState state) {
+		if (state.getBlock() instanceof IClimateCrop climateCrop) {
+			return climateCrop.canHarvest(state);
+		} else if (state.getBlock() instanceof StemBlock) {
+			return false;
+		} else if (state.getBlock() instanceof CropBlock crop) {
+			return !crop.isValidBonemealTarget(level, pos, state, level.isClientSide);
+		} else {
+			return true;
 		}
 	}
 

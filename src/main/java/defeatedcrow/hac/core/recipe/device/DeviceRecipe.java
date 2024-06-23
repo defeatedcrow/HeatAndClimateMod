@@ -47,11 +47,13 @@ public class DeviceRecipe implements IDeviceRecipe {
 
 	private int priority = 1;
 
-	public DeviceRecipe(String group, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<String> t, List<String> h, List<String> a, List<String> inF, List<Ingredient> in) {
+	public DeviceRecipe(String group, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<String> t, List<String> h, List<String> a, List<String> inF,
+			List<Ingredient> in) {
 		this(RecipeTypeDC.getType(group), o, sec, secRate, ter, terRate, oF, DCHeatTier.getListFromName(t), DCHumidity.getListFromName(h), DCAirflow.getListFromName(a), inF, in);
 	}
 
-	public DeviceRecipe(RecipeTypeDC typeIn, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<String> inF,
+	public DeviceRecipe(RecipeTypeDC typeIn, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a,
+			List<String> inF,
 			List<Ingredient> in) {
 		type = typeIn;
 		int c = 0;
@@ -279,9 +281,11 @@ public class DeviceRecipe implements IDeviceRecipe {
 			json.add("result_fluid", retF);
 		}
 
-		JsonArray ings = new JsonArray();
-		ingredients.forEach(i -> ings.add(i.toJson()));
-		json.add("ingredients", ings);
+		if (!ingredients.isEmpty()) {
+			JsonArray ings = new JsonArray();
+			ingredients.forEach(i -> ings.add(i.toJson()));
+			json.add("ingredients", ings);
+		}
 
 		if (!inputFluid.isEmpty()) {
 			JsonArray inF = new JsonArray();

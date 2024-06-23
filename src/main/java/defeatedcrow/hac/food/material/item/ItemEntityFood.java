@@ -9,6 +9,7 @@ import com.google.common.collect.ImmutableMap;
 import defeatedcrow.hac.api.material.IEntityItem;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.material.entity.ObjectEntityBaseDC;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -102,7 +103,7 @@ public abstract class ItemEntityFood extends ItemFoodDC implements IEntityItem {
 
 	@Override
 	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		MutableComponent s = Component.translatable("dcs.tip.spawn_entity_food");
+		MutableComponent s = Component.translatable("dcs.tip.spawn_entity_food").withStyle(ChatFormatting.GRAY);
 		list.add(s);
 		super.appendHoverText(item, level, list, flag);
 	}

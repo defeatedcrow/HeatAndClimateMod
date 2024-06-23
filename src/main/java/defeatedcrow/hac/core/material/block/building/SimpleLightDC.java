@@ -30,6 +30,11 @@ public class SimpleLightDC extends BlockDC {
 		name = s;
 	}
 
+	public SimpleLightDC(BlockBehaviour.Properties prop, String s) {
+		super(getProp());
+		name = s;
+	}
+
 	public SimpleLightDC setDomain(String s) {
 		domain = s;
 		return this;

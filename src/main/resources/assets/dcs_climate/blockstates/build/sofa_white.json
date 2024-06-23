@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=north,left=false,right=false":  { "model": "dcs_climate:block/build/sofa_white_s" },
+        "facing=north,left=false,right=true":  { "model": "dcs_climate:block/build/sofa_white_r" },
+        "facing=north,left=true,right=false": { "model": "dcs_climate:block/build/sofa_white_l" },
+        "facing=north,left=true,right=true": { "model": "dcs_climate:block/build/sofa_white_b" },
+        "facing=south,left=false,right=false":  { "model": "dcs_climate:block/build/sofa_white_s", "y": 180},
+        "facing=south,left=false,right=true":  { "model": "dcs_climate:block/build/sofa_white_r", "y": 180},
+        "facing=south,left=true,right=false": { "model": "dcs_climate:block/build/sofa_white_l", "y": 180},
+        "facing=south,left=true,right=true": { "model": "dcs_climate:block/build/sofa_white_b", "y": 180 },
+        "facing=west,left=false,right=false":  { "model": "dcs_climate:block/build/sofa_white_s", "y": 270  },
+        "facing=west,left=false,right=true":  { "model": "dcs_climate:block/build/sofa_white_r", "y": 270 },
+        "facing=west,left=true,right=false": { "model": "dcs_climate:block/build/sofa_white_l", "y": 270 },
+        "facing=west,left=true,right=true": { "model": "dcs_climate:block/build/sofa_white_b", "y": 270 },
+        "facing=east,left=false,right=false":  { "model": "dcs_climate:block/build/sofa_white_s", "y": 90  },
+        "facing=east,left=false,right=true":  { "model": "dcs_climate:block/build/sofa_white_r", "y": 90 },
+        "facing=east,left=true,right=false": { "model": "dcs_climate:block/build/sofa_white_l", "y": 90 },
+        "facing=east,left=true,right=true": { "model": "dcs_climate:block/build/sofa_white_b", "y": 90 }
+    }
+}

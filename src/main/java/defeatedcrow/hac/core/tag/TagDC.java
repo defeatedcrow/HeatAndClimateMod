@@ -686,6 +686,7 @@ public class TagDC {
 		public static final TagKey<Item> COW_MILK = itemTag("ingredients/cow_milk");
 		public static final TagKey<Item> SOY_MILK = itemTag("ingredients/soy_milk");
 		public static final TagKey<Item> COCONUT_MILK = itemTag("ingredients/coconut_milk");
+		public static final TagKey<Item> ALMOND_MILK = itemTag("ingredients/almond_milk");
 		public static final TagKey<Item> MILKS = itemTag("ingredients/milks");
 		public static final TagKey<Item> CREAM = itemTag("ingredients/milk_cream");
 		public static final TagKey<Item> WHIP = itemTag("ingredients/plant_cream");
@@ -733,6 +734,10 @@ public class TagDC {
 		public static final TagKey<Item> FEED_STRAW = itemTag("animal_feeds/straw");
 		public static final TagKey<Item> FEED_COMPOUND = itemTag("animal_feeds/compound");
 		public static final TagKey<Item> FEEDS = itemTag("animal_feeds");
+
+		public static final TagKey<Item> SOAP_OIL = itemTag("soaps/olive");
+		public static final TagKey<Item> SOAP_MAGIC = itemTag("soaps/magic");
+		public static final TagKey<Item> SOAPS = itemTag("soaps");
 
 		public static final TagKey<Item> DOUGH = itemTag("foods/dough");
 		public static final TagKey<Item> BREAD = itemTag("foods/bread");
@@ -955,6 +960,23 @@ public class TagDC {
 
 		public static final TagKey<Item> HOPPER = ItemTags.create(new ResourceLocation("dcs_climate", "hoppers"));
 		public static final TagKey<Item> HOPPER_FILTER = ItemTags.create(new ResourceLocation("dcs_climate", "hoppers/filter_hopper"));
+
+		// for soap
+		public static final TagKey<Item> COLORED_WOOL = ItemTags.create(new ResourceLocation("dcs_climate", "colored/wool"));
+		public static final TagKey<Item> COLORED_TERRACOTTA = ItemTags.create(new ResourceLocation("dcs_climate", "colored/terracotta"));
+		public static final TagKey<Item> COLORED_GLASS = ItemTags.create(new ResourceLocation("dcs_climate", "colored/glass"));
+		public static final TagKey<Item> COLORED_GLASS_PLATE = ItemTags.create(new ResourceLocation("dcs_climate", "colored/glass_panel"));
+		public static final TagKey<Item> COLORED_CANDLE = ItemTags.create(new ResourceLocation("dcs_climate", "colored/candle"));
+
+		public static final TagKey<Item> HAC_LANTERN = ItemTags.create(new ResourceLocation("dcs_climate", "lanterns"));
+		public static final TagKey<Item> HAC_ANDON = ItemTags.create(new ResourceLocation("dcs_climate", "andons"));
+		public static final TagKey<Item> HAC_CARPET = ItemTags.create(new ResourceLocation("dcs_climate", "carpets"));
+		public static final TagKey<Item> HAC_CHAIR = ItemTags.create(new ResourceLocation("dcs_climate", "chairs"));
+		public static final TagKey<Item> HAC_SOFA = ItemTags.create(new ResourceLocation("dcs_climate", "sofas"));
+		public static final TagKey<Item> HAC_TABLE = ItemTags.create(new ResourceLocation("dcs_climate", "tables"));
+		public static final TagKey<Item> HAC_LUGGAGE = ItemTags.create(new ResourceLocation("dcs_climate", "luggages"));
+		public static final TagKey<Item> HAC_LOCKER = ItemTags.create(new ResourceLocation("dcs_climate", "lockers"));
+		public static final TagKey<Item> HAC_CABINET = ItemTags.create(new ResourceLocation("dcs_climate", "cabinets"));
 
 		private static TagKey<Item> itemTag(String name) {
 			return ItemTags.create(new ResourceLocation("forge", name));

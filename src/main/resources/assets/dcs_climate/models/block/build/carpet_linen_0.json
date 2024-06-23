@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/carpet/carpet_jute_0000"
+  },
+  "parent": "dcs_climate:block/dcs_cutout_all"
+}

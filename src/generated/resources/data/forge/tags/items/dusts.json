@@ -22,8 +22,8 @@
     "#forge:dusts/crystal",
     "#forge:dusts/lime",
     "#forge:dusts/trona",
-    "#forge:dusts/ash",
     "#forge:dusts/wood",
-    "#forge:dusts/plant"
+    "#forge:dusts/plant",
+    "#forge:dusts/ash"
   ]
 }

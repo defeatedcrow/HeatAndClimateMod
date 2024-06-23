@@ -7,10 +7,10 @@ import defeatedcrow.hac.api.machine.IPowerSource;
 import defeatedcrow.hac.api.recipe.FuelTypeDC;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.api.util.TagKeyDC;
-import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.network.packet.message.MsgTileFluidToC;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.machine.client.gui.BoilerBiomassMenu;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.fluid.DCTank;
@@ -121,41 +121,41 @@ public class BoilerBiomassTile extends HeatSourceTile implements IPowerSource, I
 				ItemStack copy = this.inventory.getItem(7).copy();
 				copy.setCount(1);
 				flag = FluidUtil.getFluidHandler(copy)
-					.map(handler -> {
-						FluidStack fluid = handler.getFluidInTank(0);
-						if (fluid.isEmpty() || tank.isFull()) {
-							int space = Math.min(tank.getFluidAmount(), handler.getTankCapacity(0));
-							int d = handler.fill(tank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
-							if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
-								// drain
-								tank.drain(d, FluidAction.EXECUTE);
-								ItemStack ret = handler.getContainer().copy();
-								if (!ret.isEmpty()) {
-									ret.setCount(1);
-									inventory.incrStackInSlot(8, ret);
+						.map(handler -> {
+							FluidStack fluid = handler.getFluidInTank(0);
+							if (fluid.isEmpty() || tank.isFull()) {
+								int space = Math.min(tank.getFluidAmount(), handler.getTankCapacity(0));
+								int d = handler.fill(tank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
+								if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
+									// drain
+									tank.drain(d, FluidAction.EXECUTE);
+									ItemStack ret = handler.getContainer().copy();
+									if (!ret.isEmpty()) {
+										ret.setCount(1);
+										inventory.incrStackInSlot(8, ret);
+									}
+									inventory.removeItem(7, 1);
+									return true;
 								}
-								inventory.removeItem(7, 1);
-								return true;
-							}
-						} else if (handler.isFluidValid(8000, fluid)) {
-							FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
-							int f = tank.fill(drain, FluidAction.SIMULATE);
-							if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
-								// fill
-								drain.setAmount(f);
-								tank.fill(drain, FluidAction.EXECUTE);
-								handler.drain(drain, FluidAction.EXECUTE);
-								ItemStack ret = handler.getContainer().copy();
-								if (!ret.isEmpty()) {
-									ret.setCount(1);
-									inventory.incrStackInSlot(8, ret);
+							} else if (handler.isFluidValid(8000, fluid)) {
+								FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
+								int f = tank.fill(drain, FluidAction.SIMULATE);
+								if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
+									// fill
+									drain.setAmount(f);
+									tank.fill(drain, FluidAction.EXECUTE);
+									handler.drain(drain, FluidAction.EXECUTE);
+									ItemStack ret = handler.getContainer().copy();
+									if (!ret.isEmpty()) {
+										ret.setCount(1);
+										inventory.incrStackInSlot(8, ret);
+									}
+									inventory.removeItem(7, 1);
+									return true;
 								}
-								inventory.removeItem(7, 1);
-								return true;
 							}
-						}
-						return false;
-					}).orElse(false);
+							return false;
+						}).orElse(false);
 			}
 
 			int hash = tank.getFluid().hashCode();
@@ -311,14 +311,14 @@ public class BoilerBiomassTile extends HeatSourceTile implements IPowerSource, I
 	@Override
 	public boolean startProcess(Level level, BlockPos pos, BlockState state) {
 		// 灰を排出できるか
-		if (!isInProcess() && this.getInventory().canIncrSlot(6, new ItemStack(CoreInit.DUST_ASH.get())) > 0) {
+		if (!isInProcess() && this.getInventory().canIncrSlot(6, new ItemStack(FoodInit.DUST_ASH.get())) > 0) {
 			for (int i = 0; i < 6; i++) {
 				ItemStack inp = this.getInventory().getItem(i);
 				int fuel = getFuel(inp);
 				if (fuel > 0) {
 					// chamberはスタート時に燃料を消費する
 					this.getInventory().getItem(i).split(1);
-					this.getInventory().incrStackInSlot(6, new ItemStack(CoreInit.DUST_ASH.get()));
+					this.getInventory().incrStackInSlot(6, new ItemStack(FoodInit.DUST_ASH.get()));
 					this.totalProgress += fuel;
 					this.setChanged();
 					return true;

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "waterlogged=false": {
+      "model": "dcs_climate:block/build/path_slab_0"
+    },
+    "waterlogged=true": {
+      "model": "dcs_climate:block/build/path_slab_0"
+    }
+  }
+}

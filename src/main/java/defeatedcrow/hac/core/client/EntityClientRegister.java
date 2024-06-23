@@ -165,6 +165,7 @@ import defeatedcrow.hac.machine.client.entity.FermentationJarModel_B;
 import defeatedcrow.hac.machine.client.entity.IBCModel;
 import defeatedcrow.hac.machine.client.entity.PortableCanModel;
 import defeatedcrow.hac.machine.client.entity.StoneMillModel;
+import defeatedcrow.hac.machine.client.entity.StormglassModel;
 import defeatedcrow.hac.machine.client.entity.TeaPotModel_A;
 import defeatedcrow.hac.machine.client.entity.TeaPotModel_B;
 import defeatedcrow.hac.machine.client.entity.TeaPotModel_C;
@@ -177,6 +178,7 @@ import defeatedcrow.hac.machine.client.entity.TileRendererIBC;
 import defeatedcrow.hac.machine.client.entity.TileRendererPipeAlloy;
 import defeatedcrow.hac.machine.client.entity.TileRendererPortableCan;
 import defeatedcrow.hac.machine.client.entity.TileRendererStoneMill;
+import defeatedcrow.hac.machine.client.entity.TileRendererStormglass;
 import defeatedcrow.hac.machine.client.entity.TileRendererTeaPot;
 import defeatedcrow.hac.machine.client.entity.TileRendererWaterPump;
 import defeatedcrow.hac.machine.client.entity.WaterPumpModel;
@@ -247,6 +249,8 @@ public class EntityClientRegister {
 
 		event.registerLayerDefinition(IBCTile.NORMAL.getLayerLocation(), IBCModel::createBodyLayer);
 		event.registerLayerDefinition(IBCTile.INNER.getLayerLocation(), IBCModel::createBodyLayer);
+
+		event.registerLayerDefinition(TileRendererStormglass.TEX.getLayerLocation(), StormglassModel::createBodyLayer);
 
 		event.registerLayerDefinition(CookingPotTile.NORMAL.getLayerLocation(), CookingPotModel_A::createBodyLayer);
 		event.registerLayerDefinition(CookingPotTile.WHITE.getLayerLocation(), CookingPotModel_A::createBodyLayer);
@@ -619,6 +623,7 @@ public class EntityClientRegister {
 		event.registerBlockEntityRenderer(MachineInit.CABLE_COPPER_TILE.get(), TileRendererCopperCable::new);
 		event.registerBlockEntityRenderer(MachineInit.PIPE_BRASS_TILE.get(), TileRendererPipeAlloy::new);
 		event.registerBlockEntityRenderer(MachineInit.WATER_PUMP_TILE.get(), TileRendererWaterPump::new);
+		event.registerBlockEntityRenderer(MachineInit.STORMGLASS_TILE.get(), TileRendererStormglass::new);
 
 		// Entity
 		event.registerEntityRenderer(CoreInit.HARPOON.get(), RenderHarpoon::new);

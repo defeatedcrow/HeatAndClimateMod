@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:gems/flint"
+    },
+    "Y": {
+      "item": "minecraft:diorite"
+    }
+  },
+  "pattern": [
+    "XY",
+    "YX"
+  ],
+  "result": {
+    "count": 4,
+    "item": "dcs_climate:build/flintbricks_white"
+  }
+}

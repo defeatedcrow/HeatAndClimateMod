@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:build/stairs_roof_gray"
+    },
+    "Y": {
+      "tag": "forge:dyes/blue"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "item": "dcs_climate:build/stairs_roof_blue"
+  }
+}

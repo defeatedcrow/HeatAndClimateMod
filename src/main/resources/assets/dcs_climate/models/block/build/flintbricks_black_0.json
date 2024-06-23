@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/flintbricks_black"
+  },
+  "parent": "minecraft:block/cube_all"
+}

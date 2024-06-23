@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/tree/plank_sumac_lacquer"
+  },
+  "parent": "dcs_climate:block/dcs_slab_top"
+}

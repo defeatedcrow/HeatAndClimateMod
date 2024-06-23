@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "texture": "dcs_climate:block/tree/plank_cherry_wild"
+  },
+  "parent": "minecraft:block/fence_inventory"
+}

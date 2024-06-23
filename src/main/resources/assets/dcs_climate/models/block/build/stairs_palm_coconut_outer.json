@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/tree/plank_palm_coconut"
+  },
+  "parent": "dcs_climate:block/dcs_stairs_outer"
+}

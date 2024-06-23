@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/ore/stone_hornfels"
+  },
+  "parent": "dcs_climate:block/dcs_slab_top"
+}

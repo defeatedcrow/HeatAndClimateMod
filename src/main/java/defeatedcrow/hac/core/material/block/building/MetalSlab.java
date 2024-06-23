@@ -11,6 +11,7 @@ import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.BlockDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -184,7 +185,7 @@ public class MetalSlab extends BlockDC implements SimpleWaterloggedBlock {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
-		MutableComponent tex1 = Component.translatable("dcs.tip.metal_building_blocks");
+		MutableComponent tex1 = Component.translatable("dcs.tip.metal_building_blocks").withStyle(ChatFormatting.GRAY);
 		list.add(tex1);
 	}
 

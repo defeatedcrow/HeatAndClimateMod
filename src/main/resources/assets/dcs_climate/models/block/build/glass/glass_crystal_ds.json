@@ -1,0 +1,18 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "0": "dcs_climate:block/build/glass_crystal",
+    "particle": "dcs_climate:block/build/glass_crystal"
+  },
+  "elements": [
+    {
+      "name": "DS",
+      "from": [0, 0, 15.5],
+      "to": [16, 0.5, 16],
+      "faces": {
+        "south": {"uv": [0, 15.5, 16, 16], "texture": "#0"},
+        "down": {"uv": [0, 0, 16, 0.5], "texture": "#0"}
+      }
+    }
+  ]
+}

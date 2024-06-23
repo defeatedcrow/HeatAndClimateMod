@@ -28,51 +28,51 @@ public class ConfigClientBuilder {
 		builder.comment("========= Render Setting ========", "Setting for rendering").push("render_config");
 
 		this.showAltTip = builder
-			.comment("Gives some additional tooltips to the item.")
-			.define("Show Additional Tooltips", true);
+				.comment("Gives some additional tooltips to the item.")
+				.define("Show Additional Tooltips", true);
 
 		this.showDamEffect = builder
-			.comment("Set the screen effect when climate damage occurs.")
-			.define("Show Damage Effect", true);
+				.comment("Set the screen effect when climate damage occurs.")
+				.define("Show Damage Effect", true);
 
 		this.showHUD = builder
-			.comment(" Show climate info on HUD.")
-			.define("Show Climate HUD", true);
+				.comment(" Show climate info on HUD.")
+				.define("Show Climate HUD", true);
 
 		builder.pop();
 
 		builder.comment("======== HUD Setting ========", "Setting for the HUD display.").push("hud_config");
 
 		this.HUD_c = builder
-			.comment("Select a color number for the climate HUD.")
-			.defineInRange("HUD Color Select", 0, 0, 4);
+				.comment("Select a color number for the climate HUD.")
+				.defineInRange("HUD Color Select", 0, 0, 4);
 
 		this.offset_x = builder
-			.comment(" Adjust the display position of the HUD.")
-			.defineInRange("HUD X Offset", 3, -100, 400);
+				.comment(" Adjust the display position of the HUD.")
+				.defineInRange("HUD X Offset", 3, -100, 400);
 
 		this.offset_y = builder
-			.comment(" Adjust the display position of the HUD.")
-			.defineInRange("HUD Y Offset", 160, -100, 240);
+				.comment(" Adjust the display position of the HUD.")
+				.defineInRange("HUD Y Offset", 160, -100, 240);
 
 		builder.pop();
 
 		builder.comment("======== Keybind Setting ========", "Setting for the keybind.").push("key_config");
 
 		this.key_HUD = builder
-			.comment(" Set the key to switch HUD design. default:L-shift")
-			.defineInRange("HUD Switch Key", 340, 0, 350);
+				.comment(" Set the key to switch HUD design. default:L-shift")
+				.defineInRange("HUD Switch Key", 340, 32, 348);
 
 		this.key_Charm = builder
-			.comment(" Sets the using charm effect key. default:X")
-			.defineInRange("Charm Using Key", 88, 0, 350);
+				.comment(" Sets the using charm effect key. default:X")
+				.defineInRange("Charm Using Key", 88, 32, 348);
 
 		builder.pop();
 	}
 
 	static {
 		Pair<ConfigClientBuilder, ForgeConfigSpec> pair = new ForgeConfigSpec.Builder()
-			.configure(ConfigClientBuilder::new);
+				.configure(ConfigClientBuilder::new);
 		CONFIG_CLIENT = pair.getRight();
 		INSTANCE = pair.getLeft();
 	}

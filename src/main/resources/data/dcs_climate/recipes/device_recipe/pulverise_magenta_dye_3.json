@@ -12,7 +12,7 @@
   "secondary_rate": 100,
   "ingredients": [
     {
-      "tag": "forge:crops/blue_mallow"
+      "item": "minecraft:allium"
     }
   ],
   "heat": [

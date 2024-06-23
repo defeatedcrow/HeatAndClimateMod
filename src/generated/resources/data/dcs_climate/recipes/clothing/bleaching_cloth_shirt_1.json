@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "bleaching",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/shirt_cloth_black"
+    },
+    {
+      "tag": "forge:soaps/olive"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/shirt_cloth"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/linoleum_orange"
+  },
+  "parent": "minecraft:block/cube_all"
+}

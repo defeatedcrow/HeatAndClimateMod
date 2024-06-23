@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/iron"
+    },
+    "Y": {
+      "tag": "forge:chests/wooden"
+    }
+  },
+  "pattern": [
+    "XXX",
+    " Y ",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:build/locker_normal"
+  }
+}

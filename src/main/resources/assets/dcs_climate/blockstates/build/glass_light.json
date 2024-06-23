@@ -1,0 +1,29 @@
+{
+    "multipart": [
+        {   "apply": { "model": "dcs_climate:block/build/glass/glass_light_core" }},
+        {   "when": { "north": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_dn" }},
+            {   "when": { "north": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_un" }},
+            {   "when": { "south": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_ds" }},
+            {   "when": { "south": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_us" }},
+            {   "when": { "east": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_de" }},
+            {   "when": { "east": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_ue" }},
+            {   "when": { "west": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_dw" }},
+            {   "when": { "west": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_uw" }},
+            {   "when": { "north": "true", "east": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_ne" }},
+            {   "when": { "south": "true", "east": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_se" }},
+            {   "when": { "north": "true", "west": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_nw" }},
+            {   "when": { "south": "true", "west": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_light_sw" }}
+    ]
+}

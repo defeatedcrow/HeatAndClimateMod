@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "texture": "dcs_climate:block/tree/plank_citrus_pomelo"
+  },
+  "parent": "minecraft:block/fence_post"
+}

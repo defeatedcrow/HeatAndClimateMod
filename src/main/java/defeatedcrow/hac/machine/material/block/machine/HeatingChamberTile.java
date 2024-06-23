@@ -1,7 +1,7 @@
 package defeatedcrow.hac.machine.material.block.machine;
 
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberMenu;
 import defeatedcrow.hac.machine.material.MachineInit;
 import net.minecraft.core.BlockPos;
@@ -121,13 +121,13 @@ public class HeatingChamberTile extends HeatSourceTile {
 	@Override
 	public boolean startProcess(Level level, BlockPos pos, BlockState state) {
 		// 灰を排出できるか
-		if (!isInProcess() && this.getInventory().canIncrSlot(1, new ItemStack(CoreInit.DUST_ASH.get())) > 0) {
+		if (!isInProcess() && this.getInventory().canIncrSlot(1, new ItemStack(FoodInit.DUST_ASH.get())) > 0) {
 			ItemStack inp = this.getInventory().getItem(0);
 			int fuel = getFuel(inp);
 			if (fuel > 0) {
 				// chamberはスタート時に燃料を消費する
 				this.getInventory().getItem(0).split(1);
-				this.getInventory().incrStackInSlot(1, new ItemStack(CoreInit.DUST_ASH.get()));
+				this.getInventory().incrStackInSlot(1, new ItemStack(FoodInit.DUST_ASH.get()));
 				this.totalProgress += fuel;
 				this.setChanged();
 				return true;

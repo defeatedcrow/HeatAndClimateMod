@@ -24,7 +24,7 @@ public class ItemMosquitoCoil extends MaterialItemDC {
 	@Override
 	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tasteName = Component.translatable("dcs.tip.mosquito_coil");
-		tasteName.withStyle(ChatFormatting.YELLOW);
+		tasteName.withStyle(ChatFormatting.GRAY);
 		list.add(tasteName);
 		super.appendHoverText(item, level, list, flag);
 	}

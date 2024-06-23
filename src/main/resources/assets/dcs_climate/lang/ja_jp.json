@@ -111,6 +111,8 @@
   "item.dcs_climate.main.insence_case":"空の線香入れ",
   "item.dcs_climate.main.mosquito_coil_case":"蚊遣り器",
   "item.dcs_climate.main.mosquito_coil":"蚊取り線香",
+  "item.dcs_climate.main.soap_olive":"石鹸",
+  "item.dcs_climate.main.soap_magic":"魔法の石鹸",
 
   "item.dcs_climate.main.axe_brass":"真鍮の斧",
   "item.dcs_climate.main.pickaxe_brass":"真鍮のツルハシ",
@@ -1372,6 +1374,23 @@
   "block.dcs_climate.build.path_slab":"道のハーフブロック",
   "block.dcs_climate.build.gravel_slab":"砂利のハーフブロック",
 
+  "block.dcs_climate.build.claybricks_black":"黒のテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_red":"赤のテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_green":"緑のテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_brown":"茶色のテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_blue":"青のテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_purple":"紫のテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_cyan":"シアンのテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_light_gray":"ライトグレーのテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_gray":"グレーのテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_pink":"ピンクのテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_lime":"ライムのテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_yellow":"黄色のテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_light_blue":"ライトブルーのテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_magenta":"マゼンタのテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_orange":"オレンジのテラコッタレンガ",
+  "block.dcs_climate.build.claybricks_white":"白のテラコッタレンガ",
+
   "block.dcs_climate.build.linoleum_black":"黒のリノリウムブロック",
   "block.dcs_climate.build.linoleum_red":"赤のリノリウムブロック",
   "block.dcs_climate.build.linoleum_green":"緑のリノリウムブロック",
@@ -1408,6 +1427,20 @@
   "block.dcs_climate.build.chandelier_desertrose":"砂漠のバラのシャンデリア",
   "block.dcs_climate.build.chandelier_serpentine":"蛇紋石のシャンデリア",
 
+  "block.dcs_climate.build.candlestick":"燭台",
+
+  "block.dcs_climate.build.berry_lantern_white":"白の鬼灯ランタン",
+  "block.dcs_climate.build.berry_lantern_blue":"青の鬼灯ランタン",
+  "block.dcs_climate.build.berry_lantern_black":"黒の鬼灯ランタン",
+  "block.dcs_climate.build.berry_lantern_red":"赤の鬼灯ランタン",
+  "block.dcs_climate.build.berry_lantern_green":"緑の鬼灯ランタン",
+
+  "block.dcs_climate.build.andon_lantern_white":"白の行燈",
+  "block.dcs_climate.build.andon_lantern_blue":"青の行燈",
+  "block.dcs_climate.build.andon_lantern_black":"黒の行燈",
+  "block.dcs_climate.build.andon_lantern_red":"赤の行燈",
+  "block.dcs_climate.build.andon_lantern_green":"緑の行燈",
+
   "block.dcs_climate.build.carpet_linen":"リネンのカーペット付き木材",
   "block.dcs_climate.build.carpet_white":"白のカーペット付き木材",
   "block.dcs_climate.build.carpet_blue":"青のカーペット付き木材",
@@ -1430,6 +1463,13 @@
   "block.dcs_climate.build.chair_black":"黒のイス",
   "block.dcs_climate.build.chair_red":"赤のイス",
   "block.dcs_climate.build.chair_green":"緑のイス",
+
+  "block.dcs_climate.build.sofa_white":"白のソファ",
+  "block.dcs_climate.build.sofa_orange":"黄色のソファ",
+  "block.dcs_climate.build.sofa_blue":"青のソファ",
+  "block.dcs_climate.build.sofa_black":"黒のソファ",
+  "block.dcs_climate.build.sofa_pink":"赤のソファ",
+  "block.dcs_climate.build.sofa_green":"緑のソファ",
 
   "block.dcs_climate.build.luggage_normal":"キャリーバッグ",
   "block.dcs_climate.build.luggage_white":"キャリーバッグ(白)",
@@ -1499,6 +1539,7 @@
   "block.dcs_climate.machine.cable_copper_coated":"銅のケーブル(被覆)",
   "block.dcs_climate.machine.monitor_rs_lamp":"遠隔RSインジケーター",
   "block.dcs_climate.machine.monitor_rs_pilot":"遠隔RSパイロットランプ",
+  "block.dcs_climate.machine.stormglass":"ストームグラス",
 
     "## magic":"",
 
@@ -1600,7 +1641,7 @@
   "dcs.tip.device.energy.battery.amount":"充電量: ",
   "dcs.tip.fertile.fertile":"施肥することで作物の成長を促進します。",
   "dcs.tip.fertile.mutation.on":"WILD作物の変異:あり",
-  "dcs.tip.fertile.mutation.pff":"WILD作物の変異:なし",
+  "dcs.tip.fertile.mutation.off":"WILD作物の変異:なし",
 
   "dcs.tip.chamber.temp":"温度範囲: ",
   "dcs.tip.chamber.wind":"通気の良い場所や、ふいごの使用により、温度が上昇します。",
@@ -1619,6 +1660,9 @@
   "dcs.tip.helmet_safety":"爆発や落下物のダメージを軽減します。",
   "dcs.tip.boots_safety":"落下や足下のダメージを軽減します。",
   "dcs.tip.waders_rubber":"濡れ状態を防止し、粉雪のダメージを軽減します。",
+  "dcs.tip.soap_oil":"染色されたアイテムを脱色します。",
+  "dcs.tip.soap_magic":"アイテムに付与されたエンチャントを落とします。",
+  "dcs.tip.stormglass":"ワールドの天候によって中身が変化します。",
 
   "dcs.tip.flow.tier1":"[Tier1] 流速: 32 /t",
   "dcs.tip.flow.tier2":"[Tier2] 流速: 128 /t",

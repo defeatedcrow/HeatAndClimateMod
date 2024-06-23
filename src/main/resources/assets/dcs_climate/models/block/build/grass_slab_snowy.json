@@ -1,0 +1,9 @@
+{
+  "parent": "dcs_climate:block/build/dirt_slab_0",
+   "textures": {
+    "bottom": "minecraft:block/dirt",
+    "particle": "minecraft:block/dirt",
+    "side": "minecraft:block/grass_block_snow",
+    "top": "minecraft:block/snow"
+  }
+}

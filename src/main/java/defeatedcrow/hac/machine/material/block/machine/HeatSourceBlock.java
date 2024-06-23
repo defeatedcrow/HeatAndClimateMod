@@ -25,14 +25,6 @@ public abstract class HeatSourceBlock extends ProcessTileBlock implements IHeatT
 		return DCHeatTier.NORMAL;
 	}
 
-	// @Override
-	// public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
-	// if (DCState.getBool(state, DCState.LIT)) {
-	// return 12;
-	// }
-	// return super.getLightEmission(state, level, pos);
-	// }
-
 	public static void changeLitState(Level level, BlockPos pos, boolean lit) {
 		BlockState state = level.getBlockState(pos);
 		if (state.getBlock() instanceof HeatSourceBlock) {

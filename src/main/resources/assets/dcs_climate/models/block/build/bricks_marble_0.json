@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/bricks_marble"
+  },
+  "parent": "minecraft:block/cube_all"
+}

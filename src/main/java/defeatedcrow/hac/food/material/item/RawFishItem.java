@@ -42,8 +42,10 @@ public class RawFishItem extends FoodMaterialItemDC {
 					ServerLevel serverlevel = (ServerLevel) drop.getLevel();
 					drop.playSound(SoundEvents.FISHING_BOBBER_SPLASH, 0.25F, 1.0F + (drop.getLevel().random.nextFloat() - drop.getLevel().random.nextFloat()) * 0.4F);
 					double d3 = drop.getY() + 0.5D;
-					serverlevel.sendParticles(ParticleTypes.BUBBLE, drop.getX(), d3, drop.getZ(), (int) (1.0F + drop.getBbWidth() * 20.0F), (double) drop.getBbWidth(), 0.0D, (double) drop.getBbWidth(), (double) 0.2F);
-					serverlevel.sendParticles(ParticleTypes.SPLASH, drop.getX(), d3, drop.getZ(), (int) (1.0F + drop.getBbWidth() * 20.0F), (double) drop.getBbWidth(), 0.0D, (double) drop.getBbWidth(), (double) 0.2F);
+					serverlevel.sendParticles(ParticleTypes.BUBBLE, drop.getX(), d3, drop.getZ(), (int) (1.0F + drop.getBbWidth() * 20.0F), (double) drop.getBbWidth(), 0.0D, (double) drop
+							.getBbWidth(), (double) 0.2F);
+					serverlevel.sendParticles(ParticleTypes.SPLASH, drop.getX(), d3, drop.getZ(), (int) (1.0F + drop.getBbWidth() * 20.0F), (double) drop.getBbWidth(), 0.0D, (double) drop
+							.getBbWidth(), (double) 0.2F);
 
 					// playerに幸運を与える
 					if (stack.is(TagDC.ItemTag.KRILL) || drop.getLevel().random.nextInt(8) == 0) {
@@ -66,7 +68,7 @@ public class RawFishItem extends FoodMaterialItemDC {
 
 	@Override
 	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		MutableComponent s0 = Component.translatable("dcs.tip.fishdata.luck");
+		MutableComponent s0 = Component.translatable("dcs.tip.fishdata.luck").withStyle(ChatFormatting.GRAY);
 		list.add(s0);
 		MutableComponent s1 = Component.literal("=== Fish Data ===").withStyle(ChatFormatting.AQUA);
 		list.add(s1);

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/build/locker_black_item"
+  },
+  "parent": "minecraft:item/generated"
+}

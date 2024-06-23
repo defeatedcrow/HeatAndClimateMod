@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/chiseled_serpentine"
+  },
+  "parent": "minecraft:block/cube_all"
+}

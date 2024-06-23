@@ -1,5 +1,6 @@
 {
   "values": [
-    "dcs_climate:food/pack_honey"
+    "dcs_climate:food/pack_honey",
+    "minecraft:honey_bottle"
   ]
 }

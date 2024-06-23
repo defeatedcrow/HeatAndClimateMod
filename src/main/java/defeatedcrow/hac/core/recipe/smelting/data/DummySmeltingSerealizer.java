@@ -34,7 +34,7 @@ public class DummySmeltingSerealizer implements RecipeSerializer<DummySmelting> 
 		List<String> air = DataUtilDC.getList(json, "air");
 		if (!DCUtil.isEmpty(ret)) {
 			ClimateSmelting smelting = new ClimateSmelting(group, ret, heat, hum, air, f, ing);
-			if (smelting != null) {
+			if (smelting != null && !DCRecipes.INSTANCE.SMELTING.containsKey(res)) {
 				DCRecipes.INSTANCE.SMELTING.put(res, smelting);
 				DCLogger.traceLog("ClimateSmelting loaded from json: " + res);
 			}
@@ -67,9 +67,9 @@ public class DummySmeltingSerealizer implements RecipeSerializer<DummySmelting> 
 		if (!DCUtil.isEmpty(ret)) {
 			try {
 				ClimateSmelting smelting = new ClimateSmelting(group, ret, heat, hum, air, f, ing);
-				if (smelting != null) {
+				if (smelting != null && !DCRecipes.INSTANCE.SMELTING.containsKey(res)) {
 					DCRecipes.INSTANCE.SMELTING.put(res, smelting);
-					DCLogger.traceLog("ClimateSmelting loaded from json: " + res);
+					DCLogger.traceLog("ClimateSmelting loaded from bytebuf: " + res);
 				}
 			} catch (Exception e) {
 				DCLogger.infoLog("ClimateSmelting load failed: " + res);

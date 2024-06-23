@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/ore/stone_schist_blue"
+  },
+  "parent": "dcs_climate:block/dcs_stairs_outer"
+}

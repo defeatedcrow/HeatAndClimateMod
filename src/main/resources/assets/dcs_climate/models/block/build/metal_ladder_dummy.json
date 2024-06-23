@@ -1,0 +1,6 @@
+{
+    "parent": "dcs_climate:block/dcs_dummy",
+    "textures": {
+        "all": "dcs_climate:block/build/plate_aluminium"
+    }
+}

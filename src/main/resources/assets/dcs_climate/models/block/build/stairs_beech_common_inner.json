@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/tree/plank_beech_common"
+  },
+  "parent": "dcs_climate:block/dcs_stairs_inner"
+}

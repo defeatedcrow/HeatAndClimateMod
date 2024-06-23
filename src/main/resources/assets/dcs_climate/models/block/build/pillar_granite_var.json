@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "end": "dcs_climate:block/ore/stone_granite",
+    "side": "dcs_climate:block/build/pillar_granite"
+  },
+  "parent": "minecraft:block/cube_column"
+}

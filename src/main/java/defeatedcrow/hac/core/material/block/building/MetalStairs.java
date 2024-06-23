@@ -11,6 +11,7 @@ import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.BlockDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -117,7 +118,7 @@ public class MetalStairs extends BlockDC implements SimpleWaterloggedBlock {
 					boolean clamp = level.getBlockState(next.relative(dir)).isFaceSturdy(level, pos.relative(dir), dir.getOpposite());
 					FluidState fluidstate = level.getFluidState(next);
 					BlockState place = this.defaultBlockState().setValue(DCState.FACING, dir).setValue(WATERLOGGED, Boolean.valueOf(fluidstate
-						.getType() == Fluids.WATER));
+							.getType() == Fluids.WATER));
 					if (!level.isClientSide && level.setBlock(next, place, 3)) {
 						player.getItemInHand(hand).shrink(1);
 					}
@@ -212,7 +213,7 @@ public class MetalStairs extends BlockDC implements SimpleWaterloggedBlock {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
-		MutableComponent tex1 = Component.translatable("dcs.tip.metal_building_blocks");
+		MutableComponent tex1 = Component.translatable("dcs.tip.metal_building_blocks").withStyle(ChatFormatting.GRAY);
 		list.add(tex1);
 	}
 

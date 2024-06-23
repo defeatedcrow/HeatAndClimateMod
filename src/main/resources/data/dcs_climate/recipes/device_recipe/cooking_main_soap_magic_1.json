@@ -1,0 +1,36 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:main/soap_magic",
+    "count": 4
+  },
+  "ingredients": [
+    {
+      "tag": "forge:dusts/alkali"
+    },
+    {
+      "tag": "dcs_climate:mana_drops"
+    }
+  ],
+  "input_fluids": [
+    "forge:plant_oil"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "end": "dcs_climate:block/ore/stone_schist_blue",
+    "side": "dcs_climate:block/build/pillar_schist_blue"
+  },
+  "parent": "minecraft:block/cube_column"
+}

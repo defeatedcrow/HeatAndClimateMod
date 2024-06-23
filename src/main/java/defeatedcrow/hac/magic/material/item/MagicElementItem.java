@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.magic.material.MagicInit;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
@@ -39,7 +40,7 @@ public class MagicElementItem extends MagicMaterialItemDC {
 
 	@Override
 	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		MutableComponent t1 = Component.translatable("dcs.tip.active_element");
+		MutableComponent t1 = Component.translatable("dcs.tip.active_element").withStyle(ChatFormatting.GRAY);
 		list.add(t1);
 		MutableComponent t2 = Component.empty().append(getEnchantment().getFullname(1));
 		t2.withStyle(getColor().chatColor);

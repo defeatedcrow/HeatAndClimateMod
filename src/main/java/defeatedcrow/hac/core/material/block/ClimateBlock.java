@@ -16,7 +16,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -73,6 +75,14 @@ public abstract class ClimateBlock extends BlockDC implements IClimateObject {
 
 					if (this.isForcedTickUpdate()) {
 						level.scheduleTick(pos, retS.getBlock(), recipe.recipeFrequency());
+					}
+
+					if (!level.isClientSide) {
+						int exp = UniformInt.of(0, 3).sample(level.getRandom());
+						if (exp > 0) {
+							ExperienceOrb orb = new ExperienceOrb(level, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, exp);
+							level.addFreshEntity(orb);
+						}
 					}
 				}
 				return true;

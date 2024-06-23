@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "end": "dcs_climate:block/build/slab_top_mortar",
+    "side": "dcs_climate:block/build/slab_mortar"
+  },
+  "parent": "minecraft:block/cube_column"
+}

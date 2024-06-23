@@ -1,0 +1,7 @@
+{
+  "render_type": "cutout",
+  "textures": {
+    "all": "dcs_climate:block/build/chain_gold"
+  },
+  "parent": "block/chain"
+}

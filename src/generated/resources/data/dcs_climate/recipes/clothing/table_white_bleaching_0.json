@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:soaps/olive"
+    },
+    {
+      "tag": "dcs_climate:tables"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/table_white"
+  }
+}

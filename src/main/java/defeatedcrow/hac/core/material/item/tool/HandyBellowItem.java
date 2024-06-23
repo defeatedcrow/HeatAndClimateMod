@@ -58,7 +58,7 @@ public class HandyBellowItem extends CraftingItemDC {
 	@Override
 	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tasteName = Component.translatable("dcs.tip.bellow");
-		tasteName.withStyle(ChatFormatting.YELLOW);
+		tasteName.withStyle(ChatFormatting.GRAY);
 		list.add(tasteName);
 		super.appendHoverText(item, level, list, flag);
 	}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:gems/serpentine"
+    },
+    "Y": {
+      "item": "dcs_climate:build/chal_lamp"
+    },
+    "Z": {
+      "tag": "forge:ingots/copper"
+    }
+  },
+  "pattern": [
+    " X ",
+    "XYX",
+    " Z "
+  ],
+  "result": {
+    "item": "dcs_climate:build/chal_lamp_serpentine"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dcs_climate:clothing/table_white_0"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wooden_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:build/table_wood"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_wooden_table",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dcs_climate:clothing/table_white_0"
+    ]
+  }
+}

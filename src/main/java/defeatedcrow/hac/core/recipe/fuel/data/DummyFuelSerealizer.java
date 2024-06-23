@@ -29,19 +29,19 @@ public class DummyFuelSerealizer implements RecipeSerializer<DummyFuel> {
 			DeviceFuel fuel = new DeviceFuel(group, b, fluid, ing);
 			if (fuel != null) {
 				FuelTypeDC id = FuelTypeDC.getType(group);
-				if (id == FuelTypeDC.BIOMASS) {
+				if (id == FuelTypeDC.BIOMASS && !DCRecipes.INSTANCE.BIOMASS_FUEL.containsKey(res)) {
 					DCRecipes.INSTANCE.BIOMASS_FUEL.put(res, fuel);
 					DCLogger.traceLog("Biomass fuel data from json: " + res);
 				}
-				if (id == FuelTypeDC.THERMAL) {
+				if (id == FuelTypeDC.THERMAL && !DCRecipes.INSTANCE.THERMAL_FUEL.containsKey(res)) {
 					DCRecipes.INSTANCE.THERMAL_FUEL.put(res, fuel);
 					DCLogger.traceLog("Thermal fuel data  from json: " + res);
 				}
-				if (id == FuelTypeDC.FLUID) {
+				if (id == FuelTypeDC.FLUID && !DCRecipes.INSTANCE.FLUID_FUEL.containsKey(res)) {
 					DCRecipes.INSTANCE.FLUID_FUEL.put(res, fuel);
 					DCLogger.traceLog("Fluid fuel data  from json: " + res);
 				}
-				if (id == FuelTypeDC.GAS) {
+				if (id == FuelTypeDC.GAS && !DCRecipes.INSTANCE.GAS_FUEL.containsKey(res)) {
 					DCRecipes.INSTANCE.GAS_FUEL.put(res, fuel);
 					DCLogger.traceLog("Gas fuel data  from json: " + res);
 				}
@@ -61,21 +61,21 @@ public class DummyFuelSerealizer implements RecipeSerializer<DummyFuel> {
 			DeviceFuel fuel = new DeviceFuel(group, burn, fluid, ing);
 			if (fuel != null) {
 				FuelTypeDC id = FuelTypeDC.getType(group);
-				if (id == FuelTypeDC.BIOMASS) {
+				if (id == FuelTypeDC.BIOMASS && !DCRecipes.INSTANCE.BIOMASS_FUEL.containsKey(res)) {
 					DCRecipes.INSTANCE.BIOMASS_FUEL.put(res, fuel);
-					DCLogger.traceLog("Biomass fuel data from json: " + res);
+					DCLogger.traceLog("Biomass fuel data from bytebuf: " + res);
 				}
-				if (id == FuelTypeDC.THERMAL) {
+				if (id == FuelTypeDC.THERMAL && !DCRecipes.INSTANCE.THERMAL_FUEL.containsKey(res)) {
 					DCRecipes.INSTANCE.THERMAL_FUEL.put(res, fuel);
-					DCLogger.traceLog("Thermal fuel data  from json: " + res);
+					DCLogger.traceLog("Thermal fuel data  from bytebuf: " + res);
 				}
-				if (id == FuelTypeDC.FLUID) {
+				if (id == FuelTypeDC.FLUID && !DCRecipes.INSTANCE.FLUID_FUEL.containsKey(res)) {
 					DCRecipes.INSTANCE.FLUID_FUEL.put(res, fuel);
-					DCLogger.traceLog("Fluid fuel data  from json: " + res);
+					DCLogger.traceLog("Fluid fuel data  from bytebuf: " + res);
 				}
-				if (id == FuelTypeDC.GAS) {
+				if (id == FuelTypeDC.GAS && !DCRecipes.INSTANCE.GAS_FUEL.containsKey(res)) {
 					DCRecipes.INSTANCE.GAS_FUEL.put(res, fuel);
-					DCLogger.traceLog("Gas fuel data  from json: " + res);
+					DCLogger.traceLog("Gas fuel data  from bytebuf: " + res);
 				}
 			}
 		}

@@ -701,12 +701,32 @@ public class CookingRecipes {
 				ImmutableList.of(TagDC.FluidTag.BRINE.location().toString()),
 				ImmutableList.of());
 
-		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_SALT.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
-				ImmutableList.of(FluidTags.WATER.location().toString()),
-				ImmutableList.of());
+		DeviceRecipeList.addCookingRecipe(3, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_SALT.get(), 2), new ItemStack(CoreInit.DUST_TRONA.get()), 100, FluidStack.EMPTY, boil,
+				tags,
+				ImmutableList.of(Ingredient.of(CoreInit.BRINE.getBucket().get())));
+
+		DeviceRecipeList.addCookingRecipe(4, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_SALT.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+				tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.WATER)));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_WHIP.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, cool, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.SUGARS)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(CoreInit.SOAP_OIL.get(), 4), ItemStack.EMPTY, 0, FluidStack.EMPTY, cool,
+				ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.DUST_ALKALI)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(CoreInit.SOAP_MAGIC.get(), 4), ItemStack.EMPTY, 0, FluidStack.EMPTY, cool,
+				ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.DUST_ALKALI), Ingredient.of(TagDC.ItemTag.MANA_DROPS)));
+
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(CoreInit.SOAP_OIL.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.DUST_ALKALI)));
+
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(CoreInit.SOAP_MAGIC.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.DUST_ALKALI), Ingredient.of(TagDC.ItemTag.MANA_DROPS)));
 
 		// fermentation
 		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FOOD_LEAF_MOLD.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY,

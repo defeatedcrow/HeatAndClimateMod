@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "end": "dcs_climate:block/ore/stone_serpentine",
+    "side": "dcs_climate:block/build/pillar_serpentine"
+  },
+  "parent": "minecraft:block/cube_column"
+}

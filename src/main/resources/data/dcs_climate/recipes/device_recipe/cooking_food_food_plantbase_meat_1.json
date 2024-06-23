@@ -3,11 +3,14 @@
   "group": "cooking",
   "result": {
     "item": "dcs_climate:food/food_plantbase_meat",
-    "count": 1
+    "count": 2
   },
   "ingredients": [
     {
       "tag": "forge:ingredients/defatted_soy"
+    },
+    {
+      "tag": "forge:ingredients/cereals"
     },
     {
       "tag": "forge:ingredients/plant_oil"

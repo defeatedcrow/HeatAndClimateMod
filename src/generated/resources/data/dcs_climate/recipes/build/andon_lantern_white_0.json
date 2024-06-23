@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:paper"
+    },
+    "Y": {
+      "tag": "forge:ingredients/plant_oil"
+    },
+    "Z": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "ZXZ",
+    "ZYZ"
+  ],
+  "result": {
+    "item": "dcs_climate:build/andon_lantern_white"
+  }
+}

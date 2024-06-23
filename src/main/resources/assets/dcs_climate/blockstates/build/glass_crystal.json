@@ -1,0 +1,29 @@
+{
+    "multipart": [
+        {   "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_core" }},
+        {   "when": { "north": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_dn" }},
+            {   "when": { "north": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_un" }},
+            {   "when": { "south": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_ds" }},
+            {   "when": { "south": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_us" }},
+            {   "when": { "east": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_de" }},
+            {   "when": { "east": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_ue" }},
+            {   "when": { "west": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_dw" }},
+            {   "when": { "west": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_uw" }},
+            {   "when": { "north": "true", "east": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_ne" }},
+            {   "when": { "south": "true", "east": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_se" }},
+            {   "when": { "north": "true", "west": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_nw" }},
+            {   "when": { "south": "true", "west": "true" },
+            "apply": { "model": "dcs_climate:block/build/glass/glass_crystal_sw" }}
+    ]
+}

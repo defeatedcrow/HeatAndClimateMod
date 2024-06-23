@@ -38,6 +38,8 @@ import defeatedcrow.hac.machine.material.block.machine.WaterPumpTile;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorBlockItem;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorRSBlock;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorRSTile;
+import defeatedcrow.hac.machine.material.block.monitor.StormglassBlock;
+import defeatedcrow.hac.machine.material.block.monitor.StormglassTile;
 import defeatedcrow.hac.machine.material.block.transport.BatterySmallBlock;
 import defeatedcrow.hac.machine.material.block.transport.CableCopperBlock;
 import defeatedcrow.hac.machine.material.block.transport.CableCopperTile;
@@ -133,67 +135,76 @@ public class MachineInit {
 
 	public static final RegistryObject<Item> MOTOR_TIER1 = regItem("motor_small", () -> new MachineMaterialItem(Rarity.COMMON, "motor_small", TagDC.ItemTag.MOTOR_T1));
 
+	public static final RegistryObject<Block> STORMGLASS = regBlock("stormglass", () -> new StormglassBlock("stormglass"), null);
+
 	public static final RegistryObject<Item> IMPELLER_TIER1 = regItem("impeller_small", () -> new MachineMaterialItem(Rarity.COMMON, "impeller_small", TagDC.ItemTag.IMPELLER_T1));
 
 	public static final RegistryObject<Item> BATTERYITEM_TIER1 = regItem("batteryitem_small", () -> new MachineMaterialItem(Rarity.COMMON, "batteryitem_small", TagDC.ItemTag.BATTERY_T1));
 
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<BrickChamberTile>> CHAMBER_BRICK_TILE = CoreInit.BLOCK_ENTITIES.register("chamber_brick_tile",
-		() -> BlockEntityType.Builder.of(BrickChamberTile::new, new Block[] { CHAMBER_BRICK_A.get(), CHAMBER_BRICK_B.get() }).build(null));
+			() -> BlockEntityType.Builder.of(BrickChamberTile::new, new Block[] { CHAMBER_BRICK_A.get(), CHAMBER_BRICK_B.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<HeatingChamberTile>> CHAMBER_IRON_TILE = CoreInit.BLOCK_ENTITIES.register("chamber_iron_tile",
-		() -> BlockEntityType.Builder.of(HeatingChamberTile::new, new Block[] { CHAMBER_IRON.get() }).build(null));
+			() -> BlockEntityType.Builder.of(HeatingChamberTile::new, new Block[] { CHAMBER_IRON.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<HopperFilterTile>> HOPPER_FILTER_TILE = CoreInit.BLOCK_ENTITIES.register("hopper_filter_tile",
-		() -> BlockEntityType.Builder.of(HopperFilterTile::new, new Block[] { HOPPER_FILTER.get() }).build(null));
+			() -> BlockEntityType.Builder.of(HopperFilterTile::new, new Block[] { HOPPER_FILTER.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<HopperGoldTile>> HOPPER_GOLD_TILE = CoreInit.BLOCK_ENTITIES.register("hopper_gold_tile",
-		() -> BlockEntityType.Builder.of(HopperGoldTile::new, new Block[] { HOPPER_GOLD.get() }).build(null));
+			() -> BlockEntityType.Builder.of(HopperGoldTile::new, new Block[] { HOPPER_GOLD.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<HopperFilterGoldTile>> HOPPER_FILTER_GOLD_TILE = CoreInit.BLOCK_ENTITIES.register("hopper_filter_gold_tile",
-		() -> BlockEntityType.Builder.of(HopperFilterGoldTile::new, new Block[] { HOPPER_FILTER_GOLD.get() }).build(null));
+			() -> BlockEntityType.Builder.of(HopperFilterGoldTile::new, new Block[] { HOPPER_FILTER_GOLD.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<PortableCanTile>> PORTABLE_CAN_TILE = CoreInit.BLOCK_ENTITIES.register("portable_can_tile",
-		() -> BlockEntityType.Builder.of(PortableCanTile::new, new Block[] { PORTABLE_CAN.get(), PORTABLE_CAN_WHITE.get(), PORTABLE_CAN_BLUE.get(), PORTABLE_CAN_BLACK.get(), PORTABLE_CAN_RED.get(), PORTABLE_CAN_GREEN
-			.get() }).build(null));
+			() -> BlockEntityType.Builder.of(PortableCanTile::new, new Block[] { PORTABLE_CAN.get(), PORTABLE_CAN_WHITE.get(), PORTABLE_CAN_BLUE.get(), PORTABLE_CAN_BLACK.get(), PORTABLE_CAN_RED
+					.get(), PORTABLE_CAN_GREEN
+							.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<IBCTile>> IBC_TILE = CoreInit.BLOCK_ENTITIES.register("ibc_tile",
-		() -> BlockEntityType.Builder.of(IBCTile::new, new Block[] { IBC.get() }).build(null));
+			() -> BlockEntityType.Builder.of(IBCTile::new, new Block[] { IBC.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<FluidPipeAlloyTile>> PIPE_BRASS_TILE = CoreInit.BLOCK_ENTITIES.register("pipe_brass_tile",
-		() -> BlockEntityType.Builder.of(FluidPipeAlloyTile::new, new Block[] { PIPE_BRASS.get() }).build(null));
+			() -> BlockEntityType.Builder.of(FluidPipeAlloyTile::new, new Block[] { PIPE_BRASS.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<CookingPotTile>> COOKING_POT_TILE = CoreInit.BLOCK_ENTITIES.register("cooking_pot_tile",
-		() -> BlockEntityType.Builder.of(CookingPotTile::new, new Block[] { COOKING_POT_NORMAL.get(), COOKING_POT_WHITE.get(), COOKING_POT_BLUE.get(), COOKING_POT_BLACK.get(), COOKING_POT_RED.get(), COOKING_POT_GREEN
-			.get() }).build(null));
+			() -> BlockEntityType.Builder.of(CookingPotTile::new, new Block[] { COOKING_POT_NORMAL.get(), COOKING_POT_WHITE.get(), COOKING_POT_BLUE.get(), COOKING_POT_BLACK.get(), COOKING_POT_RED
+					.get(), COOKING_POT_GREEN
+							.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<TeaPotTile>> TEA_POT_TILE = CoreInit.BLOCK_ENTITIES.register("tea_pot_tile",
-		() -> BlockEntityType.Builder.of(TeaPotTile::new, new Block[] { TEA_POT_NORMAL.get(), TEA_POT_WHITE.get(), TEA_POT_BLUE.get(), TEA_POT_BLACK.get(), TEA_POT_RED.get(), TEA_POT_GREEN.get() }).build(null));
+			() -> BlockEntityType.Builder.of(TeaPotTile::new, new Block[] { TEA_POT_NORMAL.get(), TEA_POT_WHITE.get(), TEA_POT_BLUE.get(), TEA_POT_BLACK.get(), TEA_POT_RED.get(), TEA_POT_GREEN
+					.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<FermentationJarTile>> FERMANTATION_JAR_TILE = CoreInit.BLOCK_ENTITIES.register("fermentation_jar_tile",
-		() -> BlockEntityType.Builder.of(FermentationJarTile::new, new Block[] { FERMANTATION_JAR_NORMAL.get(), FERMANTATION_JAR_WHITE.get(), FERMANTATION_JAR_BLUE.get(), FERMANTATION_JAR_BLACK.get(),
-			FERMANTATION_JAR_RED.get(), FERMANTATION_JAR_GREEN.get() }).build(null));
+			() -> BlockEntityType.Builder.of(FermentationJarTile::new, new Block[] { FERMANTATION_JAR_NORMAL.get(), FERMANTATION_JAR_WHITE.get(), FERMANTATION_JAR_BLUE.get(), FERMANTATION_JAR_BLACK
+					.get(),
+				FERMANTATION_JAR_RED.get(), FERMANTATION_JAR_GREEN.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<StoneMillTile>> MILL_TILE = CoreInit.BLOCK_ENTITIES.register("mill_tile",
-		() -> BlockEntityType.Builder.of(StoneMillTile::new, new Block[] { STONE_MILL.get() }).build(null));
+			() -> BlockEntityType.Builder.of(StoneMillTile::new, new Block[] { STONE_MILL.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<WaterPumpTile>> WATER_PUMP_TILE = CoreInit.BLOCK_ENTITIES.register("water_pump_tile",
-		() -> BlockEntityType.Builder.of(WaterPumpTile::new, new Block[] { WATER_PUMP.get() }).build(null));
+			() -> BlockEntityType.Builder.of(WaterPumpTile::new, new Block[] { WATER_PUMP.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<EnergyBatteryTile>> BATTERY_SMALL_TILE = CoreInit.BLOCK_ENTITIES.register("battery_small_tile",
-		() -> BlockEntityType.Builder.of(EnergyBatteryTile::new, new Block[] { BATTERY_SMALL.get() }).build(null));
+			() -> BlockEntityType.Builder.of(EnergyBatteryTile::new, new Block[] { BATTERY_SMALL.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<EnergyGeneratorTile>> GENERATOR_SMALL_TILE = CoreInit.BLOCK_ENTITIES.register("generator_small_tile",
-		() -> BlockEntityType.Builder.of(EnergyGeneratorTile::new, new Block[] { GENERATOR_SMALL.get() }).build(null));
+			() -> BlockEntityType.Builder.of(EnergyGeneratorTile::new, new Block[] { GENERATOR_SMALL.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<BoilerBiomassTile>> BOILER_BIOMASS_TILE = CoreInit.BLOCK_ENTITIES.register("boiler_biomass_tile",
-		() -> BlockEntityType.Builder.of(BoilerBiomassTile::new, new Block[] { BOILER_BIOMASS.get() }).build(null));
+			() -> BlockEntityType.Builder.of(BoilerBiomassTile::new, new Block[] { BOILER_BIOMASS.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<CableCopperTile>> CABLE_COPPER_TILE = CoreInit.BLOCK_ENTITIES.register("cable_copper_tile",
-		() -> BlockEntityType.Builder.of(CableCopperTile::new, new Block[] { CABLE_COPPER.get(), CABLE_COPPER_COATED.get() }).build(null));
+			() -> BlockEntityType.Builder.of(CableCopperTile::new, new Block[] { CABLE_COPPER.get(), CABLE_COPPER_COATED.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<MonitorRSTile>> MONITOR_RS_TILE = CoreInit.BLOCK_ENTITIES.register("monitor_rs_tile",
-		() -> BlockEntityType.Builder.of(MonitorRSTile::new, new Block[] { MONITOR_RS.get(), MONITOR_RS_PILOT.get() }).build(null));
+			() -> BlockEntityType.Builder.of(MonitorRSTile::new, new Block[] { MONITOR_RS.get(), MONITOR_RS_PILOT.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<StormglassTile>> STORMGLASS_TILE = CoreInit.BLOCK_ENTITIES.register("stormglass_tile",
+			() -> BlockEntityType.Builder.of(StormglassTile::new, new Block[] { STORMGLASS.get() }).build(null));
 
 	// Menu
 	public static final RegistryObject<MenuType<HeatingChamberMenu>> CHAMBER_MENU = CoreInit.register("dcs_chamber_item", (IContainerFactory<HeatingChamberMenu>) (id, playerInv, data) -> {
@@ -256,7 +267,8 @@ public class MachineInit {
 		return HopperFilterMenu.goldMenu(id, playerInv, cont);
 	});
 
-	public static final RegistryObject<MenuType<HopperFilterMenu>> HOPPER_FILTER_GOLD_MENU = CoreInit.register("dcs_filter_gold_hopper", (IContainerFactory<HopperFilterMenu>) (id, playerInv, data) -> {
+	public static final RegistryObject<MenuType<HopperFilterMenu>> HOPPER_FILTER_GOLD_MENU = CoreInit.register("dcs_filter_gold_hopper", (IContainerFactory<HopperFilterMenu>) (id, playerInv,
+			data) -> {
 		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
 		return HopperFilterMenu.filterGoldMenu(id, playerInv, cont);
 	});

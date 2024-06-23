@@ -1,0 +1,26 @@
+{
+ "variants": {
+  "direction=west": {
+   "model": "dcs_climate:block/build/chal_lamp_fluorite_s",
+   "y": 270
+  },
+  "direction=down": {
+   "model": "dcs_climate:block/build/chal_lamp_fluorite_d"
+  },
+  "direction=up": {
+   "model": "dcs_climate:block/build/chal_lamp_fluorite_u"
+  },
+  "direction=north": {
+   "model": "dcs_climate:block/build/chal_lamp_fluorite_s",
+   "y": 0
+  },
+  "direction=south": {
+   "model": "dcs_climate:block/build/chal_lamp_fluorite_s",
+   "y": 180
+  },
+  "direction=east": {
+   "model": "dcs_climate:block/build/chal_lamp_fluorite_s",
+   "y": 90
+  }
+ }
+}

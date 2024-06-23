@@ -1,0 +1,9 @@
+{
+  "values": [
+    "dcs_climate:build/andon_lantern_white",
+    "dcs_climate:build/andon_lantern_blue",
+    "dcs_climate:build/andon_lantern_black",
+    "dcs_climate:build/andon_lantern_red",
+    "dcs_climate:build/andon_lantern_green"
+  ]
+}

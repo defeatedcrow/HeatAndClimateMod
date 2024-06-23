@@ -203,7 +203,7 @@ public class StackableBucketItem extends CraftingItemDC {
 				CompoundTag tankTag = stack.getTag().getCompound(TagKeyDC.getTankKey(1));
 				FluidStack fluid = FluidStack.loadFluidStackFromNBT(tankTag);
 				if (fluid.isEmpty()) {
-					MutableComponent com = Component.literal("EMPTY");
+					MutableComponent com = Component.literal("EMPTY").withStyle(ChatFormatting.GRAY);
 					list.add(com);
 				} else {
 					MutableComponent com = Component.literal("FLUID: ");

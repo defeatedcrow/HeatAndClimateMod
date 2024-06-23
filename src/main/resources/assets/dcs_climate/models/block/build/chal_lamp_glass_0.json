@@ -1,0 +1,36 @@
+{
+  "parent": "block/block",
+    "ambientocclusion": false,
+    "render_type": "cutout",
+    "textures": {
+        "all": "dcs_climate:block/build/lamp_chal_clear",
+        "core": "dcs_climate:block/build/lamp_chal",
+        "particle": "dcs_climate:block/build/lamp_chal"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "shade": false,
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#all" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "cullface": "east" }
+            }
+        },
+        {   "from": [ 2, 2, 2 ],
+            "to": [ 14, 14, 14 ],
+            "shade": false,
+            "faces": {
+                "down":  { "uv": [ 2, 2, 14, 14 ], "texture": "#core" },
+                "up":    { "uv": [ 2, 2, 14, 14 ], "texture": "#core", "cullface": "up" },
+                "north": { "uv": [ 2, 2, 14, 14 ], "texture": "#core", "cullface": "north" },
+                "south": { "uv": [ 2, 2, 14, 14 ], "texture": "#core", "cullface": "south" },
+                "west":  { "uv": [ 2, 2, 14, 14 ], "texture": "#core", "cullface": "west" },
+                "east":  { "uv": [ 2, 2, 14, 14 ], "texture": "#core", "cullface": "east" }
+            }
+        }
+    ]
+}

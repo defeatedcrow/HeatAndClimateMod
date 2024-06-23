@@ -39,35 +39,34 @@ public class DummyDeviceRecipeSerealizer implements RecipeSerializer<DummyDevice
 			DeviceRecipe recipe = new DeviceRecipe(group, ret, sec, sR, ter, tR, retF, heat, hum, air, inF, ings);
 			if (recipe != null) {
 				RecipeTypeDC id = RecipeTypeDC.getType(group);
-				if (id == RecipeTypeDC.PULVERISE) {
+				if (id == RecipeTypeDC.PULVERISE && !DCRecipes.INSTANCE.PULVERISE.containsKey(res)) {
 					DCRecipes.INSTANCE.PULVERISE.put(res, recipe);
 					DCLogger.traceLog("Pulverise recipe loaded from json: " + res);
 				}
-				if (id == RecipeTypeDC.SQUEEZE) {
+				if (id == RecipeTypeDC.SQUEEZE && !DCRecipes.INSTANCE.SQUEEZE.containsKey(res)) {
 					DCRecipes.INSTANCE.SQUEEZE.put(res, recipe);
 					DCLogger.traceLog("Squeeze recipe loaded from json: " + res);
 				}
-				if (id == RecipeTypeDC.SIEVE) {
+				if (id == RecipeTypeDC.SIEVE && !DCRecipes.INSTANCE.SIEVE.containsKey(res)) {
 					DCRecipes.INSTANCE.SIEVE.put(res, recipe);
 					DCLogger.traceLog("Sieve recipe loaded from json: " + res);
 				}
-				if (id == RecipeTypeDC.COOKING) {
+				if (id == RecipeTypeDC.COOKING && !DCRecipes.INSTANCE.COOKING.containsKey(res)) {
 					DCRecipes.INSTANCE.COOKING.put(res, recipe);
 					DCLogger.traceLog("Cooking recipe loaded from json: " + res);
 				}
-				if (id == RecipeTypeDC.FRYING) {
+				if (id == RecipeTypeDC.FRYING && !DCRecipes.INSTANCE.FRYING.containsKey(res)) {
 					DCRecipes.INSTANCE.FRYING.put(res, recipe);
 					DCLogger.traceLog("Frying recipe loaded from json: " + res);
 				}
-				if (id == RecipeTypeDC.TEA) {
+				if (id == RecipeTypeDC.TEA && !DCRecipes.INSTANCE.TEA.containsKey(res)) {
 					DCRecipes.INSTANCE.TEA.put(res, recipe);
 					DCLogger.traceLog("Tea recipe loaded from json: " + res);
 				}
-				if (id == RecipeTypeDC.FERMENTATION) {
+				if (id == RecipeTypeDC.FERMENTATION && !DCRecipes.INSTANCE.FERMENTATION.containsKey(res)) {
 					DCRecipes.INSTANCE.FERMENTATION.put(res, recipe);
 					DCLogger.traceLog("Fermentation recipe loaded from json: " + res);
 				}
-
 			}
 		}
 		return new DummyDeviceRecipe(res, group, ret, sec, sR, ter, tR, retF, heat, hum, air, inF, ings);
@@ -113,31 +112,34 @@ public class DummyDeviceRecipeSerealizer implements RecipeSerializer<DummyDevice
 				DeviceRecipe recipe = new DeviceRecipe(group, ret, sec, sR, ter, tR, retF, heat, hum, air, inF, ings);
 				if (recipe != null) {
 					RecipeTypeDC id = RecipeTypeDC.getType(group);
-					if (id == RecipeTypeDC.PULVERISE) {
+					if (id == RecipeTypeDC.PULVERISE && !DCRecipes.INSTANCE.PULVERISE.containsKey(res)) {
 						DCRecipes.INSTANCE.PULVERISE.put(res, recipe);
-						DCLogger.traceLog("Pulverise recipe loaded from json: " + res);
+						DCLogger.traceLog("Pulverise recipe loaded from bytebuf: " + res);
 					}
-					if (id == RecipeTypeDC.SQUEEZE) {
+					if (id == RecipeTypeDC.SQUEEZE && !DCRecipes.INSTANCE.SQUEEZE.containsKey(res)) {
 						DCRecipes.INSTANCE.SQUEEZE.put(res, recipe);
-						DCLogger.traceLog("Squeeze recipe loaded from json: " + res);
+						DCLogger.traceLog("Squeeze recipe loaded from bytebuf: " + res);
 					}
-					if (id == RecipeTypeDC.SIEVE) {
+					if (id == RecipeTypeDC.SIEVE && !DCRecipes.INSTANCE.SIEVE.containsKey(res)) {
 						DCRecipes.INSTANCE.SIEVE.put(res, recipe);
-						DCLogger.traceLog("Sieve recipe loaded from json: " + res);
+						DCLogger.traceLog("Sieve recipe loaded from bytebuf: " + res);
 					}
-					if (id == RecipeTypeDC.COOKING) {
+					if (id == RecipeTypeDC.COOKING && !DCRecipes.INSTANCE.COOKING.containsKey(res)) {
 						DCRecipes.INSTANCE.COOKING.put(res, recipe);
-						DCLogger.traceLog("Cooking recipe loaded from json: " + res);
+						DCLogger.traceLog("Cooking recipe loaded from bytebuf: " + res);
 					}
-					if (id == RecipeTypeDC.FRYING) {
+					if (id == RecipeTypeDC.FRYING && !DCRecipes.INSTANCE.FRYING.containsKey(res)) {
 						DCRecipes.INSTANCE.FRYING.put(res, recipe);
-						DCLogger.traceLog("Frying recipe loaded from json: " + res);
+						DCLogger.traceLog("Frying recipe loaded from bytebuf: " + res);
 					}
-					if (id == RecipeTypeDC.TEA) {
+					if (id == RecipeTypeDC.TEA && !DCRecipes.INSTANCE.TEA.containsKey(res)) {
 						DCRecipes.INSTANCE.TEA.put(res, recipe);
-						DCLogger.traceLog("Tea recipe loaded from json: " + res);
+						DCLogger.traceLog("Tea recipe loaded from bytebuf: " + res);
 					}
-
+					if (id == RecipeTypeDC.FERMENTATION && !DCRecipes.INSTANCE.FERMENTATION.containsKey(res)) {
+						DCRecipes.INSTANCE.FERMENTATION.put(res, recipe);
+						DCLogger.traceLog("Fermentation recipe loaded from bytebuf: " + res);
+					}
 				}
 			} catch (Exception e) {
 				DCLogger.infoLog("Devicerecipe load failed: " + res);

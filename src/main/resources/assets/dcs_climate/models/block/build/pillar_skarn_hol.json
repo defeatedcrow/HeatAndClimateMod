@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "end": "dcs_climate:block/ore/stone_skarn",
+    "side": "dcs_climate:block/build/pillar_skarn"
+  },
+  "parent": "minecraft:block/cube_column_horizontal"
+}

@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=bottom,waterlogged=false": {
+      "model": "dcs_climate:block/build/slab_sumac_lacquer_bottom"
+    },
+    "type=bottom,waterlogged=true": {
+      "model": "dcs_climate:block/build/slab_sumac_lacquer_bottom"
+    },
+    "type=double,waterlogged=false": {
+      "model": "dcs_climate:block/build/slab_sumac_lacquer_double"
+    },
+    "type=double,waterlogged=true": {
+      "model": "dcs_climate:block/build/slab_sumac_lacquer_double"
+    },
+    "type=top,waterlogged=false": {
+      "model": "dcs_climate:block/build/slab_sumac_lacquer_top"
+    },
+    "type=top,waterlogged=true": {
+      "model": "dcs_climate:block/build/slab_sumac_lacquer_top"
+    }
+  }
+}

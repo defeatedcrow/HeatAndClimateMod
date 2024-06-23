@@ -19,6 +19,8 @@ public class DCState {
 	public static final BooleanProperty FLAG = BooleanProperty.create("flag");
 	public static final BooleanProperty LIT = BooleanProperty.create("lit");
 	public static final BooleanProperty POWERED = BooleanProperty.create("powered");
+	public static final BooleanProperty LEFT = BooleanProperty.create("left");
+	public static final BooleanProperty RIGHT = BooleanProperty.create("right");
 
 	// facing
 	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);

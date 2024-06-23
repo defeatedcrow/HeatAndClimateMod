@@ -2,6 +2,7 @@
   "values": [
     "#forge:ingredients/cow_milk",
     "#forge:ingredients/soy_milk",
-    "#forge:ingredients/coconut_milk"
+    "#forge:ingredients/coconut_milk",
+    "#forge:ingredients/almond_milk"
   ]
 }

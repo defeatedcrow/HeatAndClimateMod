@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "east=false,north=false,south=false,west=false":  { "model": "dcs_climate:block/build/carpet/carpet_blue_0000", "uvlock": true  },
+        "east=false,north=true,south=false,west=false":  { "model": "dcs_climate:block/build/carpet/carpet_blue_1000", "uvlock": true  },
+        "east=false,north=false,south=true,west=false":  { "model": "dcs_climate:block/build/carpet/carpet_blue_0100", "uvlock": true  },
+        "east=false,north=false,south=false,west=true":  { "model": "dcs_climate:block/build/carpet/carpet_blue_0010", "uvlock": true  },
+        "east=true,north=false,south=false,west=false":  { "model": "dcs_climate:block/build/carpet/carpet_blue_0001", "uvlock": true  },
+        "east=false,north=true,south=true,west=false":  { "model": "dcs_climate:block/build/carpet/carpet_blue_1100", "uvlock": true  },
+        "east=false,north=true,south=false,west=true":  { "model": "dcs_climate:block/build/carpet/carpet_blue_1010", "uvlock": true  },
+        "east=true,north=true,south=false,west=false":  { "model": "dcs_climate:block/build/carpet/carpet_blue_1001", "uvlock": true  },
+        "east=false,north=false,south=true,west=true":  { "model": "dcs_climate:block/build/carpet/carpet_blue_0110", "uvlock": true  },
+        "east=true,north=false,south=true,west=false":  { "model": "dcs_climate:block/build/carpet/carpet_blue_0101", "uvlock": true  },
+        "east=true,north=false,south=false,west=true":  { "model": "dcs_climate:block/build/carpet/carpet_blue_0011", "uvlock": true  },
+        "east=false,north=true,south=true,west=true":  { "model": "dcs_climate:block/build/carpet/carpet_blue_1110", "uvlock": true  },
+        "east=true,north=true,south=true,west=false":  { "model": "dcs_climate:block/build/carpet/carpet_blue_1101", "uvlock": true  },
+        "east=true,north=true,south=false,west=true":  { "model": "dcs_climate:block/build/carpet/carpet_blue_1011", "uvlock": true  },
+        "east=true,north=false,south=true,west=true":  { "model": "dcs_climate:block/build/carpet/carpet_blue_0111", "uvlock": true  },
+        "east=true,north=true,south=true,west=true":  { "model": "dcs_climate:block/build/carpet/carpet_blue_1111", "uvlock": true  }
+    }
+}

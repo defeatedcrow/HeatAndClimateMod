@@ -111,6 +111,8 @@
   "item.dcs_climate.main.insence_case":"Empty Insence Case",
   "item.dcs_climate.main.mosquito_coil_case":"Mosquito Coil Case",
   "item.dcs_climate.main.mosquito_coil":"Mosquito Coil",
+  "item.dcs_climate.main.soap_olive":"Soap",
+  "item.dcs_climate.main.soap_magic":"Magical Soap",
 
 "item.dcs_climate.main.axe_brass":"Brass Axe",
   "item.dcs_climate.main.pickaxe_brass":"Brass Pickaxe",
@@ -1375,6 +1377,23 @@
   "block.dcs_climate.build.path_slab":"Half Path",
   "block.dcs_climate.build.gravel_slab":"Half Gravel",
 
+  "block.dcs_climate.build.claybricks_black":"Black Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_red":"Red Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_green":"Green Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_brown":"Brown Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_blue":"Blue Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_purple":"Purple Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_cyan":"Cyan Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_light_gray":"Light Gray Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_gray":"Gray Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_pink":"Pink Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_lime":"Lime Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_yellow":"Yellow Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_light_blue":"Light Blue Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_magenta":"Magenta Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_orange":"Orange Terracotta Bricks",
+  "block.dcs_climate.build.claybricks_white":"White Terracotta Bricks",
+
   "block.dcs_climate.build.linoleum_black":"Black Linoleum",
   "block.dcs_climate.build.linoleum_red":"Red Linoleum",
   "block.dcs_climate.build.linoleum_green":"Green Linoleum",
@@ -1411,6 +1430,20 @@
   "block.dcs_climate.build.chandelier_desertrose":"Desert Rose Chandelier",
   "block.dcs_climate.build.chandelier_serpentine":"Serpentine Chandelier",
 
+  "block.dcs_climate.build.candlestick":"Candlestick",
+
+  "block.dcs_climate.build.berry_lantern_white":"White Paper Lantern",
+  "block.dcs_climate.build.berry_lantern_blue":"Blue Paper Lantern",
+  "block.dcs_climate.build.berry_lantern_black":"Black Paper Lantern",
+  "block.dcs_climate.build.berry_lantern_red":"Red Paper Lantern",
+  "block.dcs_climate.build.berry_lantern_green":"Green Paper Lantern",
+
+  "block.dcs_climate.build.andon_lantern_white":"White Andon Lamp",
+  "block.dcs_climate.build.andon_lantern_blue":"Blue Andon Lamp",
+  "block.dcs_climate.build.andon_lantern_black":"Black Andon Lamp",
+  "block.dcs_climate.build.andon_lantern_red":"Red Andon Lamp",
+  "block.dcs_climate.build.andon_lantern_green":"Green Andon Lamp",
+
   "block.dcs_climate.build.carpet_linen":"Linen Carpet Planks",
   "block.dcs_climate.build.carpet_white":"White Carpet Planks",
   "block.dcs_climate.build.carpet_blue":"Blue Carpet Planks",
@@ -1433,6 +1466,13 @@
   "block.dcs_climate.build.chair_black":"Black Chair",
   "block.dcs_climate.build.chair_red":"Red Chair",
   "block.dcs_climate.build.chair_green":"Green Chair",
+
+  "block.dcs_climate.build.sofa_white":"White Sofa",
+  "block.dcs_climate.build.sofa_orange":"Yellow Sofa",
+  "block.dcs_climate.build.sofa_blue":"Blue Sofa",
+  "block.dcs_climate.build.sofa_black":"Black Sofa",
+  "block.dcs_climate.build.sofa_pink":"Red Sofa",
+  "block.dcs_climate.build.sofa_green":"Green Sofa",
 
   "block.dcs_climate.build.luggage_normal":"Luggage",
   "block.dcs_climate.build.luggage_white":"White Luggage",
@@ -1502,6 +1542,7 @@
   "block.dcs_climate.machine.cable_copper_coated":"Coated Copper Cable",
   "block.dcs_climate.machine.monitor_rs_lamp":"RS Indicator",
   "block.dcs_climate.machine.monitor_rs_pilot":"RS Pilot Lamp",
+  "block.dcs_climate.machine.stormglass":"Storm Glass",
 
     "## magic":"",
 
@@ -1608,7 +1649,7 @@
   "dcs.tip.hopper.filter.desc":"Items in the filter slot will be transported horizontally, and others will be transported vertically.",
   "dcs.tip.fertile.fertile":"You can fertilize this block to promoting crop growth.",
   "dcs.tip.fertile.mutation.on":"Crop Mutations: Enabled",
-  "dcs.tip.fertile.mutation.pff":"Crop Mutations: Disabled",
+  "dcs.tip.fertile.mutation.off":"Crop Mutations: Disabled",
 
   "dcs.tip.flow.tier1":"[Tier1] Flow Rate: 32 /t",
   "dcs.tip.flow.tier2":"[Tier2] Flow Rate: 128 /t",
@@ -1642,6 +1683,9 @@
   "dcs.tip.helmet_safety":"Reduces damage from explosions and falling objects.",
   "dcs.tip.boots_safety":"Reduces damage from falling and cactus.",
   "dcs.tip.waders_rubber":"Prevents wetness and reduces damage from powder snow.",
+  "dcs.tip.soap_oil":"Bleach the colored sheeps.",
+  "dcs.tip.soap_magic":"Removes any enchantments applied to the item.",
+  "dcs.tip.stormglass":"The crystals inside change depending on the world's weather.",
 
   "dcs.tip.foodtaste.1":"Taste: ★",
   "dcs.tip.foodtaste.2":"Taste: ★★",
@@ -1719,7 +1763,7 @@
   "dcs.tip.magic_card.name.green_uncommon":"Binding",
   "dcs.tip.magic_card.desc.green_uncommon":"Binds the target mob for 1 minute.",
 
-    "dcs.tip.magic_card.name.white_red":"Sealing Light",
+  "dcs.tip.magic_card.name.white_red":"Sealing Light",
   "dcs.tip.magic_card.desc.white_red":"Suppresses monster spawning in 25 block radius.",
   "dcs.tip.magic_card.name.blue_green":"Mutation",
   "dcs.tip.magic_card.desc.blue_green":"Mutate the target WILD crop.",

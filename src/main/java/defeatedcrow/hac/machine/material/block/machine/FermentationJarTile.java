@@ -147,7 +147,7 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 											handler.drain(fluid, FluidAction.EXECUTE);
 											return handler.getContainer().copy();
 										}
-										return ItemStack.EMPTY;
+										return handler.getContainer().copy();
 									}).orElse(ItemStack.EMPTY);
 							if (!DCUtil.isEmpty(ret)) {
 								return ret;

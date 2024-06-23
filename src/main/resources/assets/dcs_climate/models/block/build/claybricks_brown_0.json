@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/claybricks_brown"
+  },
+  "parent": "minecraft:block/cube_all"
+}

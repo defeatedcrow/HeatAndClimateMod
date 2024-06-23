@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/glass_light"
+  },
+  "parent": "dcs_climate:block/dcs_cutout_all"
+}

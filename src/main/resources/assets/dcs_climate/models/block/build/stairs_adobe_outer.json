@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/adobe_bricks"
+  },
+  "parent": "dcs_climate:block/dcs_stairs_outer"
+}

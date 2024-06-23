@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dusts/lime"
+    },
+    {
+      "tag": "forge:ingredients/plant_oil"
+    },
+    {
+      "tag": "forge:saps/resin"
+    },
+    {
+      "tag": "forge:clothes"
+    },
+    {
+      "tag": "minecraft:planks"
+    },
+    {
+      "tag": "forge:dyes/light_blue"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "dcs_climate:build/linoleum_light_blue"
+  }
+}

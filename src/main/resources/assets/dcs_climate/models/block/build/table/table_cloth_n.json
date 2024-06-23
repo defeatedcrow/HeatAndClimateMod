@@ -1,0 +1,48 @@
+{
+  "parent": "block/block",
+  "textures": {
+        "cloth": "dcs_climate:block/build/carpets/carpet_jute_1011",
+        "particle": "dcs_climate:block/build/wood_build"
+    },
+    "elements": [
+        {
+            "name": "n",
+            "from": [10, 6, 0.5],
+            "to": [14, 14, 2.5],
+            "faces": {
+                "north": {"uv": [2, 8, 6, 16], "texture": "#cloth"},
+                "east": {"uv": [0, 8, 2, 16], "texture": "#cloth"},
+                "south": {"uv": [10, 8, 14, 16], "texture": "#cloth"},
+                "west": {"uv": [6, 8, 8, 16], "texture": "#cloth"},
+                "up": {"uv": [0, 0, 4, 2], "texture": "#cloth"},
+                "down": {"uv": [0, 0, 4, 2], "texture": "#cloth"}
+            }
+        },
+        {
+            "name": "n",
+            "from": [6, 6, 0],
+            "to": [10, 14, 2],
+            "faces": {
+                "north": {"uv": [6, 8, 10, 16], "texture": "#cloth"},
+                "east": {"uv": [4, 8, 6, 16], "texture": "#cloth"},
+                "south": {"uv": [6, 8, 10, 16], "texture": "#cloth"},
+                "west": {"uv": [10, 8, 12, 16], "texture": "#cloth"},
+                "up": {"uv": [0, 0, 4, 2], "texture": "#cloth"},
+                "down": {"uv": [0, 0, 4, 2], "texture": "#cloth"}
+            }
+        },
+        {
+            "name": "n",
+            "from": [2, 6, 0.5],
+            "to": [6, 14, 2.5],
+            "faces": {
+                "north": {"uv": [10, 8, 14, 16], "texture": "#cloth"},
+                "east": {"uv": [8, 8, 10, 16], "texture": "#cloth"},
+                "south": {"uv": [2, 8, 6, 16], "texture": "#cloth"},
+                "west": {"uv": [14, 8, 16, 16], "texture": "#cloth"},
+                "up": {"uv": [0, 0, 4, 2], "texture": "#cloth"},
+                "down": {"uv": [0, 0, 4, 2], "texture": "#cloth"}
+            }
+        }
+    ]
+}

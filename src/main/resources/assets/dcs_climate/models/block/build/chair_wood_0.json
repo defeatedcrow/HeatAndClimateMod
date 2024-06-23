@@ -1,0 +1,82 @@
+{
+  "parent": "block/block",
+  "textures": {
+        "wood": "dcs_climate:block/build/wood_build",
+        "cloth": "dcs_climate:block/build/wood_build",
+        "particle": "dcs_climate:block/build/wood_build"
+    },
+    "elements": [
+        {
+            "from": [2, 6, 3],
+            "to": [14, 8, 13],
+            "faces": {
+                "north": {"uv": [2, 0, 14, 2], "texture": "#cloth"},
+                "east": {"uv": [0, 3, 2, 13], "rotation": 90, "texture": "#cloth"},
+                "south": {"uv": [2, 14, 14, 16], "texture": "#cloth"},
+                "west": {"uv": [14, 3, 16, 13], "rotation": 90, "texture": "#cloth"},
+                "up": {"uv": [2, 3, 14, 13], "texture": "#cloth"},
+                "down": {"uv": [2, 3, 14, 13], "texture": "#wood"}
+            }
+        },
+        {
+            "name": "se",
+            "from": [11, 0, 13],
+            "to": [13, 12, 15],
+            "faces": {
+                "north": {"uv": [1, 4, 3, 16], "texture": "#wood"},
+                "east": {"uv": [1, 4, 3, 16], "texture": "#wood"},
+                "south": {"uv": [13, 4, 15, 16], "texture": "#wood"},
+                "west": {"uv": [13, 4, 15, 16], "texture": "#wood"},
+                "down": {"uv": [3, 13, 5, 15], "texture": "#wood"}
+            }
+        },
+        {
+            "name": "ne",
+            "from": [11, 0, 4],
+            "to": [13, 6, 6],
+            "faces": {
+                "north": {"uv": [1, 10, 3, 16], "texture": "#wood"},
+                "east": {"uv": [13, 10, 15, 16], "texture": "#wood"},
+                "south": {"uv": [13, 10, 15, 16], "texture": "#wood"},
+                "west": {"uv": [1, 10, 3, 16], "texture": "#wood"},
+                "down": {"uv": [3, 4, 5, 6], "texture": "#wood"}
+            }
+        },
+        {
+            "name": "sw",
+            "from": [3, 0, 13],
+            "to": [5, 12, 15],
+            "faces": {
+                "north": {"uv": [13, 4, 15, 16], "texture": "#wood"},
+                "east": {"uv": [1, 4, 3, 16], "texture": "#wood"},
+                "south": {"uv": [1, 4, 3, 16], "texture": "#wood"},
+                "west": {"uv": [13, 4, 15, 16], "texture": "#wood"},
+                "down": {"uv": [11, 13, 13, 15], "texture": "#wood"}
+            }
+        },
+        {
+            "name": "nw",
+            "from": [3, 0, 4],
+            "to": [5, 6, 6],
+            "faces": {
+                "north": {"uv": [13, 10, 15, 16], "texture": "#wood"},
+                "east": {"uv": [13, 10, 15, 16], "texture": "#wood"},
+                "south": {"uv": [1, 10, 3, 16], "texture": "#wood"},
+                "west": {"uv": [1, 10, 3, 16], "texture": "#wood"},
+                "down": {"uv": [11, 4, 13, 6], "texture": "#wood"}
+            }
+        },
+        {
+            "from": [2, 12, 13],
+            "to": [14, 16, 15],
+            "faces": {
+                "north": {"uv": [2, 2, 6, 14], "rotation": 90, "texture": "#cloth"},
+                "east": {"uv": [2, 14, 6, 16], "rotation": 90, "texture": "#cloth"},
+                "south": {"uv": [10, 2, 14, 14], "rotation": 90, "texture": "#cloth"},
+                "west": {"uv": [2, 0, 6, 2], "rotation": 90, "texture": "#cloth"},
+                "up": {"uv": [0, 2, 2, 14], "rotation": 90, "texture": "#cloth"},
+                "down": {"uv": [6, 2, 8, 14], "rotation": 90, "texture": "#cloth"}
+            }
+        }
+    ]
+}

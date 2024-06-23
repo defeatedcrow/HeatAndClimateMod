@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Y": {
+      "item": "minecraft:green_carpet"
+    }
+  },
+  "pattern": [
+    "Y",
+    "X"
+  ],
+  "result": {
+    "item": "dcs_climate:build/carpet_green"
+  }
+}

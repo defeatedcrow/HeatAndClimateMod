@@ -1,0 +1,8 @@
+{
+    "parent": "dcs_climate:block/dcs_sofabase_r",
+    "textures": {
+        "upper": "dcs_climate:block/build/sofa_blue_upper",
+        "under": "dcs_climate:block/build/sofa_blue_under",
+        "foot": "dcs_climate:block/build/mortar"
+    }
+}

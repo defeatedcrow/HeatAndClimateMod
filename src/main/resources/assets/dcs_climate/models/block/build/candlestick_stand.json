@@ -1,0 +1,72 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "tex": "dcs_climate:block/build/candlestick_stand",
+        "particle": "dcs_climate:block/build/candlestick_stand"
+    },
+    "elements": [
+        {
+            "from": [6.5, 4, 6.5],
+            "to": [9.5, 6, 9.5],
+            "faces": {
+                "north": {"uv": [4, 0, 7, 2], "texture": "#tex"},
+                "east": {"uv": [4, 0, 7, 2], "texture": "#tex"},
+                "south": {"uv": [4, 0, 7, 2], "texture": "#tex"},
+                "west": {"uv": [4, 0, 7, 2], "texture": "#tex"},
+                "up": {"uv": [1, 0, 4, 3], "texture": "#tex"},
+                "down": {"uv": [1, 0, 4, 3], "texture": "#tex"}
+            }
+        },
+        {
+            "from": [7, 6, 7],
+            "to": [9, 14, 9],
+            "faces": {
+                "north": {"uv": [12, 0, 14, 8], "texture": "#tex"},
+                "east": {"uv": [14, 0, 16, 8], "texture": "#tex"},
+                "south": {"uv": [12, 0, 14, 8], "texture": "#tex"},
+                "west": {"uv": [10, 0, 12, 8], "texture": "#tex"},
+                "up": {"uv": [12, 8, 14, 10], "texture": "#tex"}
+            }
+        },
+        {
+            "from": [8, 14, 7.5],
+            "to": [8, 15, 8.5],
+            "faces": {
+                "east": {"uv": [10, 8, 11, 9], "texture": "#tex"},
+                "west": {"uv": [10, 8, 11, 9], "texture": "#tex"}
+            }
+        },
+        {
+            "from": [7.5, 14, 8],
+            "to": [8.5, 15, 8],
+            "faces": {
+                "north": {"uv": [10, 8, 11, 9], "texture": "#tex"},
+                "south": {"uv": [10, 8, 11, 9], "texture": "#tex"}
+            }
+        },
+        {
+            "from": [7.5, 1, 7.5],
+            "to": [8.5, 4, 8.5],
+            "faces": {
+                "north": {"uv": [0, 0, 1, 3], "texture": "#tex"},
+                "east": {"uv": [0, 0, 1, 3], "texture": "#tex"},
+                "south": {"uv": [0, 0, 1, 3], "texture": "#tex"},
+                "west": {"uv": [0, 0, 1, 3], "texture": "#tex"},
+                "up": {"uv": [0, 0, 1, 1], "texture": "#tex"},
+                "down": {"uv": [0, 0, 1, 1], "texture": "#tex"}
+            }
+        },
+        {
+            "from": [5.5, 0, 5.5],
+            "to": [10.5, 1, 10.5],
+            "faces": {
+                "north": {"uv": [0, 8, 5, 9], "texture": "#tex"},
+                "east": {"uv": [0, 8, 5, 9], "texture": "#tex"},
+                "south": {"uv": [0, 8, 5, 9], "texture": "#tex"},
+                "west": {"uv": [0, 8, 5, 9], "texture": "#tex"},
+                "up": {"uv": [0, 3, 5, 8], "texture": "#tex"},
+                "down": {"uv": [0, 3, 5, 8], "texture": "#tex"}
+            }
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "end": "dcs_climate:block/ore/stone_gypsum",
+    "side": "dcs_climate:block/build/pillar_gypsum"
+  },
+  "parent": "minecraft:block/cube_column_horizontal"
+}

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "wall": "dcs_climate:block/ore/stone_serpentine"
+  },
+  "parent": "minecraft:block/wall_inventory"
+}

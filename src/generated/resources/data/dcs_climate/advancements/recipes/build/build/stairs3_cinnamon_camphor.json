@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cinnamon_camphor_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/plank_cinnamon_camphor"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dcs_climate:build/stairs3_cinnamon_camphor"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_cinnamon_camphor_planks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dcs_climate:build/stairs3_cinnamon_camphor"
+    ]
+  }
+}

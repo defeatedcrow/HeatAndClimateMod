@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "texture": "dcs_climate:block/tree/plank_sumac_lacquer"
+  },
+  "parent": "minecraft:block/fence_inventory"
+}

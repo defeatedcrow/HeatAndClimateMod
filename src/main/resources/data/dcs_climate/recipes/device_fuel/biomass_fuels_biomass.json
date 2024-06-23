@@ -1,9 +1,0 @@
-{
-  "type": "dcs_climate:device_fuel",
-  "group": "biomass",
-  "ingredient": {
-    "tag": "dcs_climate:fuels/biomass"
-  },
-  "input_fluid": "empty",
-  "burn_time": 200
-}

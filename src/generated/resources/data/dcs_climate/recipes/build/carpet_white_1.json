@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Y": {
+      "tag": "forge:clothes/cotton"
+    }
+  },
+  "pattern": [
+    "Y",
+    "X"
+  ],
+  "result": {
+    "item": "dcs_climate:build/carpet_white"
+  }
+}

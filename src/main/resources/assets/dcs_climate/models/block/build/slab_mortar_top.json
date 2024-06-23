@@ -1,0 +1,8 @@
+{
+  "textures": {
+    "bottom": "dcs_climate:block/build/slab_top_mortar",
+    "side": "dcs_climate:block/build/slab_mortar",
+    "top": "dcs_climate:block/build/slab_top_mortar"
+  },
+  "parent": "minecraft:block/stone_slab_top"
+}

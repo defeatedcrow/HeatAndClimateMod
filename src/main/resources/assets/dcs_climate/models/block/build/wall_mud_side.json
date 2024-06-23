@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "wall": "dcs_climate:block/ore/stone_mud"
+  },
+  "parent": "minecraft:block/template_wall_side"
+}

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/ore/stone_granite"
+  },
+  "parent": "dcs_climate:block/dcs_stairs_normal"
+}

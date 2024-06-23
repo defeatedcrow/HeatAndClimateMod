@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Y": {
+      "tag": "forge:chests/wooden"
+    }
+  },
+  "pattern": [
+    "XXX",
+    " Y ",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:build/cabinet_normal"
+  }
+}

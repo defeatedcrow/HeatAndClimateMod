@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "dcs_climate:block/build/grass_slab_0"
+    },
+    "snowy=true": {
+      "model": "dcs_climate:block/build/grass_slab_snowy"
+    }
+  }
+}

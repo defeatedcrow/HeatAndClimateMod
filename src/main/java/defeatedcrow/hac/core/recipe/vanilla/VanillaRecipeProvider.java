@@ -606,6 +606,118 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_ore_gypsum", has(TagDC.ItemTag.ORES_GYPSUM))
 				.save(cons, "dcs_climate:build/mortar_2");
 
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_BLACK.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.BLACK_TERRACOTTA)
+				.unlockedBy("has_terracotta_black", has(Items.BLACK_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_black");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_RED.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.RED_TERRACOTTA)
+				.unlockedBy("has_terracotta_red", has(Items.RED_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_red");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_GREEN.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.GREEN_TERRACOTTA)
+				.unlockedBy("has_terracotta_green", has(Items.GREEN_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_green");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_BROWN.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.BROWN_TERRACOTTA)
+				.unlockedBy("has_terracotta_brown", has(Items.BROWN_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_brown");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_BLUE.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.BLUE_TERRACOTTA)
+				.unlockedBy("has_terracotta_blue", has(Items.BLUE_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_blue");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_PURPLE.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.PURPLE_TERRACOTTA)
+				.unlockedBy("has_terracotta_purple", has(Items.PURPLE_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_purple");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_CYAN.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.CYAN_TERRACOTTA)
+				.unlockedBy("has_terracotta_cyan", has(Items.CYAN_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_cyan");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_LIGHT_GRAY.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.LIGHT_GRAY_TERRACOTTA)
+				.unlockedBy("has_terracotta_light_gray", has(Items.LIGHT_GRAY_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_light_gray");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_GRAY.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.GRAY_TERRACOTTA)
+				.unlockedBy("has_terracotta_gray", has(Items.GRAY_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_gray");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_PINK.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.PINK_TERRACOTTA)
+				.unlockedBy("has_terracotta_pink", has(Items.PINK_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_pink");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_LIME.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.LIME_TERRACOTTA)
+				.unlockedBy("has_terracotta_lime", has(Items.LIME_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_lime");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_YELLOW.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.YELLOW_TERRACOTTA)
+				.unlockedBy("has_terracotta_yellow", has(Items.YELLOW_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_yellow");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_LIGHT_BLUE.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.LIGHT_BLUE_TERRACOTTA)
+				.unlockedBy("has_terracotta_light_blue", has(Items.LIGHT_BLUE_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_light_blue");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_MAGENTA.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.MAGENTA_TERRACOTTA)
+				.unlockedBy("has_terracotta_magenta", has(Items.MAGENTA_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_magenta");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_ORANGE.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.ORANGE_TERRACOTTA)
+				.unlockedBy("has_terracotta_orange", has(Items.ORANGE_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_orange");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_WHITE.get(), 4)
+				.pattern("XX")
+				.pattern("XX")
+				.define('X', Items.WHITE_TERRACOTTA)
+				.unlockedBy("has_terracotta_white", has(Items.WHITE_TERRACOTTA))
+				.save(cons, "dcs_climate:core/bricks_terracotta_white");
+
 		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_BLACK.get(), 4)
 				.requires(TagDC.ItemTag.DUST_LIME)
 				.requires(TagDC.ItemTag.PLANT_OIL)
@@ -923,6 +1035,92 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_serpentine_lamp", has(BuildInit.CHAL_LAMP_SERPENTINE.get()))
 				.save(cons, "dcs_climate:build/chandelier_serpentine_0");
 
+		ShapedRecipeBuilder.shaped(BuildInit.CANDLESTICK.get(), 1)
+				.pattern("Y")
+				.pattern("X")
+				.define('X', Tags.Items.INGOTS_IRON)
+				.define('Y', ItemTags.CANDLES)
+				.unlockedBy("has_candles", has(ItemTags.CANDLES))
+				.save(cons, "dcs_climate:build/candlestick_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.BERRY_LANTERN_WHITE.get(), 1)
+				.pattern(" X ")
+				.pattern("XYX")
+				.pattern(" X ")
+				.define('X', Items.PAPER)
+				.define('Y', TagDC.ItemTag.CROP_LANTERN)
+				.unlockedBy("has_crop_lantern", has(TagDC.ItemTag.CROP_LANTERN))
+				.save(cons, "dcs_climate:build/berry_lantern_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.BERRY_LANTERN_BLUE.get(), 1)
+				.requires(Tags.Items.DYES_BLUE)
+				.requires(BuildInit.BERRY_LANTERN_WHITE.get())
+				.unlockedBy("has_white_berry_lantern", has(BuildInit.BERRY_LANTERN_WHITE.get()))
+				.save(cons, "dcs_climate:build/berry_lantern_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.BERRY_LANTERN_BLACK.get(), 1)
+				.requires(Tags.Items.DYES_BLACK)
+				.requires(BuildInit.BERRY_LANTERN_WHITE.get())
+				.unlockedBy("has_white_berry_lantern", has(BuildInit.BERRY_LANTERN_WHITE.get()))
+				.save(cons, "dcs_climate:build/berry_lantern_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.BERRY_LANTERN_RED.get(), 1)
+				.requires(Tags.Items.DYES_RED)
+				.requires(BuildInit.BERRY_LANTERN_WHITE.get())
+				.unlockedBy("has_white_berry_lantern", has(BuildInit.BERRY_LANTERN_WHITE.get()))
+				.save(cons, "dcs_climate:build/berry_lantern_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.BERRY_LANTERN_GREEN.get(), 1)
+				.requires(Tags.Items.DYES_GREEN)
+				.requires(BuildInit.BERRY_LANTERN_WHITE.get())
+				.unlockedBy("has_white_berry_lantern", has(BuildInit.BERRY_LANTERN_WHITE.get()))
+				.save(cons, "dcs_climate:build/berry_lantern_green_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.BERRY_LANTERN_WHITE.get(), 1)
+				.requires(TagDC.ItemTag.HAC_LANTERN)
+				.requires(TagDC.ItemTag.SOAP_OIL)
+				.unlockedBy("has_berry_lantern", has(TagDC.ItemTag.HAC_LANTERN))
+				.save(cons, "dcs_climate:build/berry_lantern_blieaching_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.ANDON_LANTERN_WHITE.get(), 1)
+				.pattern("ZXZ")
+				.pattern("ZYZ")
+				.define('X', Items.PAPER)
+				.define('Y', TagDC.ItemTag.PLANT_OIL)
+				.define('Z', Tags.Items.RODS_WOODEN)
+				.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+				.save(cons, "dcs_climate:build/andon_lantern_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.ANDON_LANTERN_BLUE.get(), 1)
+				.requires(Tags.Items.DYES_BLUE)
+				.requires(BuildInit.ANDON_LANTERN_WHITE.get())
+				.unlockedBy("has_white_andon_lantern", has(BuildInit.ANDON_LANTERN_WHITE.get()))
+				.save(cons, "dcs_climate:build/andon_lantern_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.ANDON_LANTERN_BLACK.get(), 1)
+				.requires(Tags.Items.DYES_BLACK)
+				.requires(BuildInit.ANDON_LANTERN_WHITE.get())
+				.unlockedBy("has_white_andon_lantern", has(BuildInit.ANDON_LANTERN_WHITE.get()))
+				.save(cons, "dcs_climate:build/andon_lantern_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.ANDON_LANTERN_RED.get(), 1)
+				.requires(Tags.Items.DYES_RED)
+				.requires(BuildInit.ANDON_LANTERN_WHITE.get())
+				.unlockedBy("has_white_andon_lantern", has(BuildInit.ANDON_LANTERN_WHITE.get()))
+				.save(cons, "dcs_climate:build/andon_lantern_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.ANDON_LANTERN_GREEN.get(), 1)
+				.requires(Tags.Items.DYES_GREEN)
+				.requires(BuildInit.ANDON_LANTERN_WHITE.get())
+				.unlockedBy("has_white_andon_lantern", has(BuildInit.ANDON_LANTERN_WHITE.get()))
+				.save(cons, "dcs_climate:build/andon_lantern_green_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.ANDON_LANTERN_WHITE.get(), 1)
+				.requires(TagDC.ItemTag.HAC_ANDON)
+				.requires(TagDC.ItemTag.SOAP_OIL)
+				.unlockedBy("has_andon_lantern", has(TagDC.ItemTag.HAC_ANDON))
+				.save(cons, "dcs_climate:build/andon_lantern_blieaching_0");
+
 		ShapedRecipeBuilder.shaped(BuildInit.CHAIN_GOLD.get(), 1)
 				.pattern("X")
 				.pattern("Y")
@@ -1034,6 +1232,12 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_carpet_green", has(Items.GREEN_CARPET))
 				.save(cons, "dcs_climate:build/carpet_green_2");
 
+		ShapelessRecipeBuilder.shapeless(BuildInit.CARPET_WHITE.get(), 1)
+				.requires(TagDC.ItemTag.SOAP_OIL)
+				.requires(TagDC.ItemTag.HAC_CARPET)
+				.unlockedBy("has_carpet", has(TagDC.ItemTag.HAC_CARPET))
+				.save(cons, "dcs_climate:clothing/carpet_white_bleaching_0");
+
 		ShapedRecipeBuilder.shaped(BuildInit.TABLE_WOOD.get(), 1)
 				.pattern("XXX")
 				.pattern("Y Y")
@@ -1097,6 +1301,12 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_white_table", has(BuildInit.TABLE_WHITE.get()))
 				.save(cons, "dcs_climate:clothing/table_green_0");
 
+		ShapelessRecipeBuilder.shapeless(BuildInit.TABLE_WHITE.get(), 1)
+				.requires(TagDC.ItemTag.SOAP_OIL)
+				.requires(TagDC.ItemTag.HAC_TABLE)
+				.unlockedBy("has_table", has(TagDC.ItemTag.HAC_TABLE))
+				.save(cons, "dcs_climate:clothing/table_white_bleaching_0");
+
 		ShapelessRecipeBuilder.shapeless(BuildInit.CHAIR_LINEN.get(), 1)
 				.requires(TagDC.ItemTag.CLOTH_PLANT)
 				.requires(BuildInit.CHAIR_WOOD.get())
@@ -1132,6 +1342,56 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(BuildInit.CHAIR_WHITE.get())
 				.unlockedBy("has_white_chair", has(BuildInit.CHAIR_WHITE.get()))
 				.save(cons, "dcs_climate:clothing/chair_green_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.CHAIR_WHITE.get(), 1)
+				.requires(TagDC.ItemTag.SOAP_OIL)
+				.requires(TagDC.ItemTag.HAC_CHAIR)
+				.unlockedBy("has_chair", has(TagDC.ItemTag.HAC_CHAIR))
+				.save(cons, "dcs_climate:clothing/chair_white_bleaching_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.SOFA_WHITE.get(), 1)
+				.pattern("XXX")
+				.pattern("Y Y")
+				.define('X', TagDC.ItemTag.CLOTHS)
+				.define('Y', ItemTags.WOODEN_FENCES)
+				.unlockedBy("has_wooden_fence", has(ItemTags.WOODEN_FENCES))
+				.save(cons, "dcs_climate:build/sofa_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.SOFA_ORANGE.get(), 1)
+				.requires(Tags.Items.DYES_YELLOW)
+				.requires(BuildInit.SOFA_WHITE.get())
+				.unlockedBy("has_white_sofa", has(BuildInit.SOFA_WHITE.get()))
+				.save(cons, "dcs_climate:clothing/sofa_orange_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.SOFA_BLUE.get(), 1)
+				.requires(Tags.Items.DYES_BLUE)
+				.requires(BuildInit.SOFA_WHITE.get())
+				.unlockedBy("has_white_sofa", has(BuildInit.SOFA_WHITE.get()))
+				.save(cons, "dcs_climate:clothing/sofa_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.SOFA_BLACK.get(), 1)
+				.requires(Tags.Items.DYES_BLACK)
+				.requires(BuildInit.SOFA_WHITE.get())
+				.unlockedBy("has_white_sofa", has(BuildInit.SOFA_WHITE.get()))
+				.save(cons, "dcs_climate:clothing/sofa_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.SOFA_PINK.get(), 1)
+				.requires(Tags.Items.DYES_RED)
+				.requires(BuildInit.SOFA_WHITE.get())
+				.unlockedBy("has_white_sofa", has(BuildInit.SOFA_WHITE.get()))
+				.save(cons, "dcs_climate:clothing/sofa_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.SOFA_GREEN.get(), 1)
+				.requires(Tags.Items.DYES_GREEN)
+				.requires(BuildInit.SOFA_WHITE.get())
+				.unlockedBy("has_white_sofa", has(BuildInit.SOFA_WHITE.get()))
+				.save(cons, "dcs_climate:clothing/sofa_green_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.SOFA_WHITE.get(), 1)
+				.requires(TagDC.ItemTag.SOAP_OIL)
+				.requires(TagDC.ItemTag.HAC_SOFA)
+				.unlockedBy("has_sofa", has(TagDC.ItemTag.HAC_SOFA))
+				.save(cons, "dcs_climate:clothing/sofa_white_bleaching_0");
 
 		ShapedRecipeBuilder.shaped(BuildInit.CABINET_NORMAL.get(), 1)
 				.pattern("XXX")
@@ -1660,6 +1920,59 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('X', TagDC.ItemTag.GEM_AGATES)
 				.unlockedBy("has_agate", has(TagDC.ItemTag.GEM_AGATES))
 				.save(cons, "dcs_climate:core/arrow_another_0");
+
+		// bleaching
+
+		ShapedRecipeBuilder.shaped(Items.WHITE_WOOL, 8)
+				.pattern("XXX")
+				.pattern("XYX")
+				.pattern("XXX")
+				.define('Y', TagDC.ItemTag.SOAP_OIL)
+				.define('X', TagDC.ItemTag.COLORED_WOOL)
+				.group("bliaching")
+				.unlockedBy("has_soap", has(TagDC.ItemTag.SOAP_OIL))
+				.save(cons, "dcs_climate:core/bleaching_wool_1");
+
+		ShapedRecipeBuilder.shaped(Items.TERRACOTTA, 8)
+				.pattern("XXX")
+				.pattern("XYX")
+				.pattern("XXX")
+				.define('Y', TagDC.ItemTag.SOAP_OIL)
+				.define('X', TagDC.ItemTag.COLORED_TERRACOTTA)
+				.group("bliaching")
+				.unlockedBy("has_soap", has(TagDC.ItemTag.SOAP_OIL))
+				.save(cons, "dcs_climate:core/bleaching_tetrracotta_1");
+
+		ShapedRecipeBuilder.shaped(Items.GLASS, 8)
+				.pattern("XXX")
+				.pattern("XYX")
+				.pattern("XXX")
+				.define('Y', TagDC.ItemTag.SOAP_OIL)
+				.define('X', TagDC.ItemTag.COLORED_GLASS)
+				.group("bliaching")
+				.unlockedBy("has_soap", has(TagDC.ItemTag.SOAP_OIL))
+				.save(cons, "dcs_climate:core/bleaching_glass_1");
+
+		ShapedRecipeBuilder.shaped(Items.GLASS_PANE, 8)
+				.pattern("XXX")
+				.pattern("XYX")
+				.pattern("XXX")
+				.define('Y', TagDC.ItemTag.SOAP_OIL)
+				.define('X', TagDC.ItemTag.COLORED_GLASS_PLATE)
+				.group("bliaching")
+				.unlockedBy("has_soap", has(TagDC.ItemTag.SOAP_OIL))
+				.save(cons, "dcs_climate:core/bleaching_glass_pane_1");
+
+		ShapedRecipeBuilder.shaped(Items.CANDLE, 8)
+				.pattern("XXX")
+				.pattern("XYX")
+				.pattern("XXX")
+				.define('Y', TagDC.ItemTag.SOAP_OIL)
+				.define('X', TagDC.ItemTag.COLORED_CANDLE)
+				.group("bliaching")
+				.unlockedBy("has_soap", has(TagDC.ItemTag.SOAP_OIL))
+				.save(cons, "dcs_climate:core/bleaching_candle_1");
+
 	}
 
 	private static void clothingRecipes(Consumer<FinishedRecipe> cons) {
@@ -1931,53 +2244,105 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		clothColorRecipe(cons, CoreInit.HAT_LINEN.get(), CoreInit.HAT_LINEN_PINK.get(), Tags.Items.DYES_PINK, "pink", "linen_hat");
 		clothColorRecipe(cons, CoreInit.HAT_LINEN.get(), CoreInit.HAT_LINEN_RED.get(), Tags.Items.DYES_RED, "red", "linen_hat");
 
+		clothBleachRecipe(cons, CoreInit.HAT_LINEN.get(), CoreInit.HAT_LINEN_BLUE.get(), "linen_hat", 1);
+		clothBleachRecipe(cons, CoreInit.HAT_LINEN.get(), CoreInit.HAT_LINEN_PINK.get(), "linen_hat", 2);
+		clothBleachRecipe(cons, CoreInit.HAT_LINEN.get(), CoreInit.HAT_LINEN_RED.get(), "linen_hat", 3);
+
 		clothColorRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_BLACK.get(), Tags.Items.DYES_BLACK, "black", "cloth_hat");
 		clothColorRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "cloth_hat");
 		clothColorRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_GREEN.get(), Tags.Items.DYES_GREEN, "green", "cloth_hat");
+
+		clothBleachRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_BLACK.get(), "cloth_hat", 1);
+		clothBleachRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_BLUE.get(), "cloth_hat", 2);
+		clothBleachRecipe(cons, CoreInit.HAT_CLOTH.get(), CoreInit.HAT_CLOTH_GREEN.get(), "cloth_hat", 3);
 
 		clothColorRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_BLACK.get(), Tags.Items.DYES_BLACK, "black", "fur_shawl");
 		clothColorRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_SILVER.get(), Tags.Items.DYES_LIGHT_GRAY, "silver", "fur_shawl");
 		clothColorRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_WHITE.get(), Tags.Items.DYES_WHITE, "white", "fur_shawl");
 
+		clothBleachRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_BLACK.get(), "fur_shawl", 1);
+		clothBleachRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_SILVER.get(), "fur_shawl", 2);
+		clothBleachRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_WHITE.get(), "fur_shawl", 3);
+
 		clothColorRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_BLACK.get(), Tags.Items.DYES_BLACK, "black", "linen_jacket");
 		clothColorRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "linen_jacket");
 		clothColorRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_GRAY.get(), Tags.Items.DYES_GRAY, "gray", "linen_jacket");
+
+		clothBleachRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_BLACK.get(), "linen_jacket", 1);
+		clothBleachRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_BLUE.get(), "linen_jacket", 2);
+		clothBleachRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_GRAY.get(), "linen_jacket", 3);
 
 		clothColorRecipe(cons, CoreInit.JACKET_CLOTH.get(), CoreInit.JACKET_CLOTH_BLACK.get(), Tags.Items.DYES_BLACK, "black", "cloth_jacket");
 		clothColorRecipe(cons, CoreInit.JACKET_CLOTH.get(), CoreInit.JACKET_CLOTH_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "cloth_jacket");
 		clothColorRecipe(cons, CoreInit.JACKET_CLOTH.get(), CoreInit.JACKET_CLOTH_GRAY.get(), Tags.Items.DYES_GRAY, "gray", "cloth_jacket");
 
+		clothBleachRecipe(cons, CoreInit.JACKET_CLOTH.get(), CoreInit.JACKET_CLOTH_BLACK.get(), "cloth_jacket", 1);
+		clothBleachRecipe(cons, CoreInit.JACKET_CLOTH.get(), CoreInit.JACKET_CLOTH_BLUE.get(), "cloth_jacket", 2);
+		clothBleachRecipe(cons, CoreInit.JACKET_CLOTH.get(), CoreInit.JACKET_CLOTH_GRAY.get(), "cloth_jacket", 3);
+
 		clothColorRecipe(cons, CoreInit.JACKET_WOOL.get(), CoreInit.JACKET_WOOL_CYAN.get(), Tags.Items.DYES_CYAN, "cyan", "wool_jacket");
 		clothColorRecipe(cons, CoreInit.JACKET_WOOL.get(), CoreInit.JACKET_WOOL_LIGHTBLUE.get(), Tags.Items.DYES_LIGHT_BLUE, "lightblue", "wool_jacket");
 		clothColorRecipe(cons, CoreInit.JACKET_WOOL.get(), CoreInit.JACKET_WOOL_RED.get(), Tags.Items.DYES_RED, "red", "wool_jacket");
+
+		clothBleachRecipe(cons, CoreInit.JACKET_WOOL.get(), CoreInit.JACKET_WOOL_CYAN.get(), "wool_jacket", 1);
+		clothBleachRecipe(cons, CoreInit.JACKET_WOOL.get(), CoreInit.JACKET_WOOL_LIGHTBLUE.get(), "wool_jacket", 2);
+		clothBleachRecipe(cons, CoreInit.JACKET_WOOL.get(), CoreInit.JACKET_WOOL_RED.get(), "wool_jacket", 3);
 
 		clothColorRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_CYAN.get(), Tags.Items.DYES_CYAN, "cyan", "linen_shirt");
 		clothColorRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_GREEN.get(), Tags.Items.DYES_GREEN, "green", "linen_shirt");
 		clothColorRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_PINK.get(), Tags.Items.DYES_PINK, "pink", "linen_shirt");
 
+		clothBleachRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_CYAN.get(), "linen_shirt", 1);
+		clothBleachRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_GREEN.get(), "linen_shirt", 2);
+		clothBleachRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_PINK.get(), "linen_shirt", 3);
+
 		clothColorRecipe(cons, CoreInit.SHIRT_CLOTH.get(), CoreInit.SHIRT_CLOTH_BLACK.get(), Tags.Items.DYES_BLACK, "black", "cloth_shirt");
 		clothColorRecipe(cons, CoreInit.SHIRT_CLOTH.get(), CoreInit.SHIRT_CLOTH_LIGHTBLUE.get(), Tags.Items.DYES_LIGHT_BLUE, "lightblue", "cloth_shirt");
 		clothColorRecipe(cons, CoreInit.SHIRT_CLOTH.get(), CoreInit.SHIRT_CLOTH_RED.get(), Tags.Items.DYES_RED, "red", "cloth_shirt");
+
+		clothBleachRecipe(cons, CoreInit.SHIRT_CLOTH.get(), CoreInit.SHIRT_CLOTH_BLACK.get(), "cloth_shirt", 1);
+		clothBleachRecipe(cons, CoreInit.SHIRT_CLOTH.get(), CoreInit.SHIRT_CLOTH_LIGHTBLUE.get(), "cloth_shirt", 2);
+		clothBleachRecipe(cons, CoreInit.SHIRT_CLOTH.get(), CoreInit.SHIRT_CLOTH_RED.get(), "cloth_shirt", 3);
 
 		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_GREEN.get(), Tags.Items.DYES_GREEN, "green", "linen_pants");
 		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_ORANGE.get(), Tags.Items.DYES_ORANGE, "orange", "linen_pants");
 		clothColorRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_WHITE.get(), Tags.Items.DYES_WHITE, "white", "linen_pants");
 
+		clothBleachRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_GREEN.get(), "linen_pants", 1);
+		clothBleachRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_ORANGE.get(), "linen_pants", 2);
+		clothBleachRecipe(cons, CoreInit.PANTS_LINEN.get(), CoreInit.PANTS_WHITE.get(), "linen_pants", 3);
+
 		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "cloth_pants");
 		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_LIGHTBLUE.get(), Tags.Items.DYES_LIGHT_BLUE, "lightblue", "cloth_pants");
 		clothColorRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_GRAY.get(), Tags.Items.DYES_GRAY, "gray", "cloth_pants");
+
+		clothBleachRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_BLUE.get(), "cloth_pants", 1);
+		clothBleachRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_LIGHTBLUE.get(), "cloth_pants", 2);
+		clothBleachRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_GRAY.get(), "cloth_pants", 3);
 
 		clothColorRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "cloth_suits");
 		clothColorRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_BROWN.get(), Tags.Items.DYES_BROWN, "brown", "cloth_suits");
 		clothColorRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_GREEN.get(), Tags.Items.DYES_GREEN, "green", "cloth_suits");
 
+		clothBleachRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_BLUE.get(), "cloth_suits", 1);
+		clothBleachRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_BROWN.get(), "cloth_suits", 2);
+		clothBleachRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_GREEN.get(), "cloth_suits", 3);
+
 		clothColorRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_BLACK.get(), Tags.Items.DYES_BLACK, "black", "leather_suits");
 		clothColorRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_BROWN.get(), Tags.Items.DYES_BROWN, "brown", "leather_suits");
 		clothColorRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_WHITE.get(), Tags.Items.DYES_WHITE, "white", "leather_suits");
 
+		clothBleachRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_BLACK.get(), "leather_suits", 1);
+		clothBleachRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_BROWN.get(), "leather_suits", 2);
+		clothBleachRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_WHITE.get(), "leather_suits", 3);
+
 		clothColorRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_BLACK.get(), Tags.Items.DYES_BLACK, "black", "dress_maid");
 		clothColorRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_BROWN.get(), Tags.Items.DYES_BROWN, "brown", "dress_maid");
 		clothColorRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_GRAY.get(), Tags.Items.DYES_GRAY, "gray", "dress_maid");
+
+		clothBleachRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_BLACK.get(), "dress_maid", 1);
+		clothBleachRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_BROWN.get(), "dress_maid", 2);
+		clothBleachRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_GRAY.get(), "dress_maid", 3);
 	}
 
 	private static void clothColorRecipe(Consumer<FinishedRecipe> cons, ItemLike in, ItemLike out, TagKey<Item> color, String cname, String name) {
@@ -1989,12 +2354,21 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.save(cons, "dcs_climate:clothing/coloring_" + name + "_" + cname);
 	}
 
+	private static void clothBleachRecipe(Consumer<FinishedRecipe> cons, ItemLike out, ItemLike in, String name, int num) {
+		ShapelessRecipeBuilder.shapeless(out, 1)
+				.requires(in)
+				.requires(TagDC.ItemTag.SOAP_OIL)
+				.group("bleaching")
+				.unlockedBy("has_" + name, has(out))
+				.save(cons, "dcs_climate:clothing/bleaching_" + name + "_" + num);
+	}
+
 	private static void smeltingRecipes(Consumer<FinishedRecipe> cons) {
 
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.GEM_FLINT), CoreInit.GEM_CHALCEDONY.get(), 200, "gem_chalcedony", Items.FLINT, "has_flint");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_CRYSTAL), BuildInit.GLASS_CRYSTAL.get().asItem(), 200, "dust_crystal", CoreInit.DUST_CRYSTAL.get(), "has_dust_crystal");
-		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), CoreInit.DUST_ASH.get(), 200, "dust_ash", CoreInit.DUST_PLANT.get(), "has_dust_plant");
-		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), CoreInit.DUST_ASH.get(), 200, "dust_wood", CoreInit.DUST_WOOD.get(), "has_dust_wood");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), FoodInit.DUST_ASH.get(), 200, "dust_ash", FoodInit.DUST_PLANT.get(), "has_dust_plant");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), FoodInit.DUST_ASH.get(), 200, "dust_wood", FoodInit.DUST_WOOD.get(), "has_dust_wood");
 
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_IRON), Items.IRON_INGOT, 200, "ingot_iron", CoreInit.OREDUST_RED1.get(), "has_dust_iron");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_COPPER), Items.COPPER_INGOT, 200, "ingot_copper", CoreInit.OREDUST_WHITE1.get(), "has_dust_copper");

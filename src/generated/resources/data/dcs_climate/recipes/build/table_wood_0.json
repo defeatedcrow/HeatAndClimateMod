@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Y": {
+      "tag": "minecraft:wooden_fences"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "Y Y",
+    "Y Y"
+  ],
+  "result": {
+    "item": "dcs_climate:build/table_wood"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "parent": "block/block",
+  "textures": {
+        "wood": "dcs_climate:block/build/wood_build",
+        "particle": "dcs_climate:block/build/wood_build"
+    },
+    "elements": [
+        {
+            "from": [0, 14, 0],
+            "to": [16, 16, 16],
+            "faces": {
+                "north": {"uv": [0, 0, 16, 2], "texture": "#wood"},
+                "east": {"uv": [0, 0, 2, 16], "rotation": 90, "texture": "#wood"},
+                "south": {"uv": [0, 0, 16, 2], "texture": "#wood"},
+                "west": {"uv": [0, 0, 2, 16], "rotation": 90, "texture": "#wood"},
+                "up": {"uv": [0, 0, 16, 16], "texture": "#wood"},
+                "down": {"uv": [0, 0, 16, 16], "texture": "#wood"}
+            }
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "dcs_climate:block/build/pillar_gypsum_hol",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "dcs_climate:block/build/pillar_gypsum_var"
+    },
+    "axis=z": {
+      "model": "dcs_climate:block/build/pillar_gypsum_hol",
+      "x": 90
+    }
+  }
+}

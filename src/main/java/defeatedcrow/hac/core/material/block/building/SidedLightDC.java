@@ -13,6 +13,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -22,7 +24,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class SidedLightDC extends SimpleLightDC {
+public class SidedLightDC extends SimpleLightDC implements SimpleWaterloggedBlock {
 
 	protected static final VoxelShape N_AABB = Block.box(5.0D, 2.0D, 0.0D, 11.0D, 14.0D, 8.0D);
 	protected static final VoxelShape S_AABB = Block.box(5.0D, 2.0D, 8.0D, 11.0D, 14.0D, 16.0D);
@@ -35,6 +37,10 @@ public class SidedLightDC extends SimpleLightDC {
 	public SidedLightDC(String s) {
 		super(s);
 		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DIRECTION, Direction.DOWN).setValue(WATERLOGGED, false));
+	}
+
+	public SidedLightDC(BlockBehaviour.Properties prop, String s) {
+		super(getProp(), s);
 	}
 
 	@Override
@@ -78,7 +84,7 @@ public class SidedLightDC extends SimpleLightDC {
 
 	@Override
 	public JsonModelSimpleDC getItemModel() {
-		return new JsonModelSimpleDC("dcs_climate:block/build/chal_lamp_table_d");
+		return new JsonModelSimpleDC("dcs_climate:block/build/" + name + "_d");
 	}
 
 	@Override

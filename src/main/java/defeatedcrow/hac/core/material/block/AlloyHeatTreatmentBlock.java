@@ -17,7 +17,9 @@ import defeatedcrow.hac.core.recipe.DCRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -69,6 +71,12 @@ public class AlloyHeatTreatmentBlock extends ClimateBlock implements IRapidColle
 
 					if (this.isForcedTickUpdate()) {
 						level.scheduleTick(pos, retS.getBlock(), recipe.getHeatingTime());
+					}
+
+					if (!level.isClientSide) {
+						int exp = UniformInt.of(2, 5).sample(level.getRandom());
+						ExperienceOrb orb = new ExperienceOrb(level, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, exp);
+						level.addFreshEntity(orb);
 					}
 				}
 				return true;

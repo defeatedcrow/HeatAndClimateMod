@@ -4,11 +4,15 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import org.jetbrains.annotations.NotNull;
+
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.item.MaterialItemDC;
 import defeatedcrow.hac.food.material.FoodInit;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
@@ -33,6 +37,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 
 public class EmptyPackItem extends MaterialItemDC {
 
@@ -42,7 +52,7 @@ public class EmptyPackItem extends MaterialItemDC {
 
 	@Override
 	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		MutableComponent st = Component.translatable("dcs.tip.empty_pack");
+		MutableComponent st = Component.translatable("dcs.tip.empty_pack").withStyle(ChatFormatting.GRAY);
 		list.add(st);
 		super.appendHoverText(item, level, list, flag);
 	}
@@ -65,8 +75,7 @@ public class EmptyPackItem extends MaterialItemDC {
 					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
 					ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_WATER.get()), false);
 					return InteractionResultHolder.sidedSuccess(ret.copy(), level.isClientSide());
-				}
-				if (state.getFluidState().is(CoreInit.SPARKLING.getStillFluid().get())) {
+				} else if (state.getFluidState().is(CoreInit.SPARKLING.getStillFluid().get())) {
 					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
 					ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_SPARKLING.get()), false);
 					return InteractionResultHolder.sidedSuccess(ret.copy(), level.isClientSide());
@@ -90,6 +99,91 @@ public class EmptyPackItem extends MaterialItemDC {
 			return net.minecraft.world.InteractionResult.SUCCESS;
 		}
 		return net.minecraft.world.InteractionResult.PASS;
+	}
+
+	@Override
+	public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag tag) {
+		return new EmptyPackWrapper(stack);
+	}
+
+	// Fill Only
+	public class EmptyPackWrapper implements IFluidHandlerItem, ICapabilityProvider {
+
+		@NotNull
+		protected ItemStack container;
+
+		public EmptyPackWrapper(@NotNull ItemStack cont) {
+			container = cont;
+		}
+
+		@Override
+		public @NotNull ItemStack getContainer() {
+			return container;
+		}
+
+		@Override
+		public int getTanks() {
+			return 1;
+		}
+
+		@Override
+		public @NotNull FluidStack getFluidInTank(int i) {
+			return FluidStack.EMPTY;
+		}
+
+		@Override
+		public int getTankCapacity(int tank) {
+			return 250;
+		}
+
+		@Override
+		public boolean isFluidValid(int tank, @NotNull FluidStack stack) {
+			if (!stack.isEmpty()) {
+				for (FluidPackItem.Type type : FluidPackItem.TYPES) {
+					if (stack.getFluid().isSame(type.fluid().get().getFluid())) {
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+
+		@Override
+		public int fill(FluidStack fill, FluidAction action) {
+			if (!isFluidValid(1, fill)) {
+				return 0;
+			}
+			if (250 > fill.getAmount()) {
+				return 0;
+			}
+			if (action.execute()) {
+				for (FluidPackItem.Type type : FluidPackItem.TYPES) {
+					if (fill.getFluid().isSame(type.fluid().get().getFluid())) {
+						container = new ItemStack(type.cont().get());
+					}
+				}
+			}
+			return 250;
+		}
+
+		@Override
+		public @NotNull FluidStack drain(FluidStack drain, FluidAction action) {
+			return FluidStack.EMPTY;
+		}
+
+		@Override
+		public @NotNull FluidStack drain(int maxDrain, FluidAction action) {
+			return FluidStack.EMPTY;
+		}
+
+		private final LazyOptional<IFluidHandlerItem> holder = LazyOptional.of(() -> this);
+
+		@Override
+		@NotNull
+		public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction facing) {
+			return ForgeCapabilities.FLUID_HANDLER_ITEM.orEmpty(capability, holder);
+		}
+
 	}
 
 }

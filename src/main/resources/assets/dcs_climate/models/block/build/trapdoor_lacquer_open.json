@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "texture": "dcs_climate:block/build/trapdoor_lacquer"
+  },
+  "render_type": "cutout",
+  "parent": "minecraft:block/template_orientable_trapdoor_open"
+}

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/tree/plank_morus_mulberry"
+  },
+  "parent": "dcs_climate:block/dcs_slab_top"
+}

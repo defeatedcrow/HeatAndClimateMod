@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=bottom,waterlogged=false": {
+      "model": "dcs_climate:block/build/slab_schist_nether_bottom"
+    },
+    "type=bottom,waterlogged=true": {
+      "model": "dcs_climate:block/build/slab_schist_nether_bottom"
+    },
+    "type=double,waterlogged=false": {
+      "model": "dcs_climate:block/build/slab_schist_nether_double"
+    },
+    "type=double,waterlogged=true": {
+      "model": "dcs_climate:block/build/slab_schist_nether_double"
+    },
+    "type=top,waterlogged=false": {
+      "model": "dcs_climate:block/build/slab_schist_nether_top"
+    },
+    "type=top,waterlogged=true": {
+      "model": "dcs_climate:block/build/slab_schist_nether_top"
+    }
+  }
+}

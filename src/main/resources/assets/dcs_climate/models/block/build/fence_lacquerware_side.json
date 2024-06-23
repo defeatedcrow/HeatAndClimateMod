@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "texture": "dcs_climate:block/tree/plank_lacquerware"
+  },
+  "parent": "minecraft:block/fence_side"
+}

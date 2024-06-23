@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/locker_normal_item"
+  },
+  "parent": "dcs_climate:block/dcs_dummy"
+}

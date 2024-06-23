@@ -1,0 +1,22 @@
+{
+  "parent": "block/block",
+  "textures": {
+        "wood": "dcs_climate:block/build/wood_build",
+        "particle": "dcs_climate:block/build/wood_build"
+    },
+    "elements": [
+        {
+            "name": "ne",
+            "from": [13, 0, 1],
+            "to": [15, 14, 3],
+            "faces": {
+                "north": {"uv": [1, 2, 3, 16], "texture": "#wood"},
+                "east": {"uv": [13, 2, 15, 16], "texture": "#wood"},
+                "south": {"uv": [13, 2, 15, 16], "texture": "#wood"},
+                "west": {"uv": [1, 2, 3, 16], "texture": "#wood"},
+                "up": {"uv": [13, 1, 15, 3], "texture": "#wood"},
+                "down": {"uv": [13, 13, 15, 15], "texture": "#wood"}
+            }
+        }
+    ]
+}

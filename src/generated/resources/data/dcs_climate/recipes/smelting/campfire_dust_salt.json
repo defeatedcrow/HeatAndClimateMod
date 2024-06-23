@@ -3,7 +3,7 @@
   "cookingtime": 600,
   "experience": 0.0,
   "ingredient": {
-    "tag": "forge:ingredients/water"
+    "item": "dcs_climate:food/pack_water"
   },
   "result": "dcs_climate:main/dust_salt"
 }

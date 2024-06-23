@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "bottom": "dcs_climate:block/build/door_camphor_bottom",
+    "top": "dcs_climate:block/build/door_camphor_top"
+  },
+  "parent": "dcs_climate:block/door_top_left_open"
+}

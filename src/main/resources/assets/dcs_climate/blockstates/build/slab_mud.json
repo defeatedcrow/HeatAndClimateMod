@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=bottom,waterlogged=false": {
+      "model": "dcs_climate:block/build/slab_mud_bottom"
+    },
+    "type=bottom,waterlogged=true": {
+      "model": "dcs_climate:block/build/slab_mud_bottom"
+    },
+    "type=double,waterlogged=false": {
+      "model": "dcs_climate:block/build/slab_mud_double"
+    },
+    "type=double,waterlogged=true": {
+      "model": "dcs_climate:block/build/slab_mud_double"
+    },
+    "type=top,waterlogged=false": {
+      "model": "dcs_climate:block/build/slab_mud_top"
+    },
+    "type=top,waterlogged=true": {
+      "model": "dcs_climate:block/build/slab_mud_top"
+    }
+  }
+}

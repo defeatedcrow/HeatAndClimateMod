@@ -15,7 +15,6 @@ out
 *.xcf
 
 # gradle
-build
 .gradle
 
 # other

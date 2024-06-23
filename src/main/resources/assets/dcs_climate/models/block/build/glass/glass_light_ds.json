@@ -1,0 +1,7 @@
+{
+  "parent": "dcs_climate:block/build/glass/glass_crystal_ds",
+  "textures": {
+    "0": "dcs_climate:block/build/glass_light",
+    "particle": "dcs_climate:block/build/glass_light"
+  }
+}

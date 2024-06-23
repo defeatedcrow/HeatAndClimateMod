@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "wall": "dcs_climate:block/build/mortar"
+  },
+  "parent": "minecraft:block/wall_inventory"
+}

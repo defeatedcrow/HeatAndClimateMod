@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bliaching",
+  "key": {
+    "X": {
+      "tag": "dcs_climate:colored/wool"
+    },
+    "Y": {
+      "tag": "forge:soaps/olive"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "item": "minecraft:white_wool"
+  }
+}

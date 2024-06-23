@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "flag=false": {
+      "model": "dcs_climate:block/build/metal_slab_under"
+    },
+    "flag=true": {
+      "model": "dcs_climate:block/build/metal_slab_upper"
+    }
+  }
+}

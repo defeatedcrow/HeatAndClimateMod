@@ -1,0 +1,7 @@
+{
+  "parent": "dcs_climate:block/build/table/table_cloth_n",
+  "textures": {
+        "cloth": "dcs_climate:block/build/carpets/carpet_red_1111",
+        "particle": "dcs_climate:block/build/carpets/carpet_red_1111"
+    }
+}

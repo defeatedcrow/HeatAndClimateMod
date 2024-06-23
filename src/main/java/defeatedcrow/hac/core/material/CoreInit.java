@@ -39,11 +39,13 @@ import defeatedcrow.hac.core.material.item.tool.ItemScythe;
 import defeatedcrow.hac.core.material.item.tool.ItemShovelDC;
 import defeatedcrow.hac.core.material.item.tool.ScrewdriverItem;
 import defeatedcrow.hac.core.material.item.tool.SeedingPotItem;
+import defeatedcrow.hac.core.material.item.tool.SoapItem;
 import defeatedcrow.hac.core.material.item.tool.StackableBucketItem;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Building;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Clothing;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Machine;
+import defeatedcrow.hac.core.recipe.ClearEnchantmrntRecipe;
 import defeatedcrow.hac.core.recipe.device.data.DummyDeviceRecipe;
 import defeatedcrow.hac.core.recipe.device.data.DummyDeviceRecipeSerealizer;
 import defeatedcrow.hac.core.recipe.fuel.data.DummyFuel;
@@ -207,9 +209,6 @@ public class CoreInit {
 	public static final RegistryObject<Item> DUST_CRYSTAL = regItem("dust_crystal", () -> new MaterialItemDC("dust_crystal", TagDC.ItemTag.DUST_CRYSTAL));
 	public static final RegistryObject<Item> DUST_LIME = regItem("dust_lime", () -> new MaterialItemDC("dust_lime", TagDC.ItemTag.DUST_LIME));
 	public static final RegistryObject<Item> DUST_TRONA = regItem("dust_trona", () -> new MaterialItemDC("dust_trona", TagDC.ItemTag.DUST_TRONA));
-	public static final RegistryObject<Item> DUST_ASH = regItem("dust_ash", () -> new MaterialItemDC("dust_ash", TagDC.ItemTag.DUST_ASH));
-	public static final RegistryObject<Item> DUST_WOOD = regItem("dust_wood", () -> new MaterialItemDC("dust_wood", TagDC.ItemTag.DUST_WOOD));
-	public static final RegistryObject<Item> DUST_PLANT = regItem("dust_plant", () -> new MaterialItemDC("dust_plant", TagDC.ItemTag.DUST_PLANT));
 
 	public static final RegistryObject<Item> CLOTH_RUBBER = regItem("cloth_rubber", () -> new MaterialItemDC("cloth_rubber", TagDC.ItemTag.CLOTH_RUBBER));
 
@@ -226,6 +225,9 @@ public class CoreInit {
 	public static final RegistryObject<Item> EMPTY_COIL_CASE = regItem("insence_case", () -> new MaterialItemDC(MACHINE, "insence_case", null));
 	public static final RegistryObject<Item> MOSQUITO_COIL = regItem("mosquito_coil", () -> new MaterialItemDC(MACHINE, "mosquito_coil", null));
 	public static final RegistryObject<Item> COIL_CASE = regItem("mosquito_coil_case", () -> new ItemMosquitoCoil("mosquito_coil_case", null));
+
+	public static final RegistryObject<Item> SOAP_OIL = regItem("soap_olive", () -> new SoapItem("soap_olive", TagDC.ItemTag.SOAP_OIL));
+	public static final RegistryObject<Item> SOAP_MAGIC = regItem("soap_magic", () -> new SoapItem("soap_magic", TagDC.ItemTag.SOAP_MAGIC));
 
 	public static final RegistryObject<Item> AXE_BRASS = regItem("axe_brass", () -> new ItemAxeDC(TierDC.BRASS, Tags.Items.TOOLS_AXES));
 	public static final RegistryObject<Item> AXE_STEEL = regItem("axe_steel", () -> new ItemAxeDC(TierDC.STEEL, Tags.Items.TOOLS_AXES));
@@ -622,6 +624,10 @@ public class CoreInit {
 	public static final RegistryObject<RecipeType<FlavorCustomRecipe>> FLAVOR = RECIPE_TYPE.register("food_customize", () -> new RecipeType<FlavorCustomRecipe>() {});
 	public static final RegistryObject<RecipeSerializer<FlavorCustomRecipe>> FLAVOR_SEREALIZER = RECIPE_SEREALIZER.register("food_customize",
 			() -> new SimpleRecipeSerializer<>(FlavorCustomRecipe::new));
+
+	public static final RegistryObject<RecipeType<ClearEnchantmrntRecipe>> CLEAR_ENCHANTMENT = RECIPE_TYPE.register("clear_enchantment", () -> new RecipeType<ClearEnchantmrntRecipe>() {});
+	public static final RegistryObject<RecipeSerializer<ClearEnchantmrntRecipe>> CLEAR_ENCHANTMENT_SEREALIZER = RECIPE_SEREALIZER.register("clear_enchantment",
+			() -> new SimpleRecipeSerializer<>(ClearEnchantmrntRecipe::new));
 
 	public static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> register(String name, MenuType.MenuSupplier<T> supplier) {
 		return MENU_TYPE.register(name, () -> new MenuType<>(supplier));
