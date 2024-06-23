@@ -31,7 +31,7 @@ public class SimpleLightDC extends BlockDC {
 	}
 
 	public SimpleLightDC(BlockBehaviour.Properties prop, String s) {
-		super(getProp());
+		super(prop);
 		name = s;
 	}
 

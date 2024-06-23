@@ -40,12 +40,12 @@ public class Candlestick extends SidedLightDC implements IHeatTile {
 	protected static final VoxelShape AABB = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 
 	public Candlestick(String s) {
-		super(getProp(), s);
+		super(prop(), s);
 		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DIRECTION, Direction.DOWN).setValue(WATERLOGGED, false).setValue(DCState.LIT, false));
 	}
 
-	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.CLAY).strength(1.0F, 6.0F).noOcclusion();
+	public static BlockBehaviour.Properties prop() {
+		return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.CLAY).strength(1.0F, 6.0F).noOcclusion().lightLevel(Candlestick.emission(10));
 	}
 
 	@Override

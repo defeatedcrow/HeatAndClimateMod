@@ -40,7 +40,7 @@ public class SidedLightDC extends SimpleLightDC implements SimpleWaterloggedBloc
 	}
 
 	public SidedLightDC(BlockBehaviour.Properties prop, String s) {
-		super(getProp(), s);
+		super(prop, s);
 	}
 
 	@Override
