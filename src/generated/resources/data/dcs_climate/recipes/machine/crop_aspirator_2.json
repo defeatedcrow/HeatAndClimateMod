@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:machine/item_aspirator"
+    },
+    {
+      "tag": "forge:tools/scythes"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:machine/crop_aspirator"
+  }
+}

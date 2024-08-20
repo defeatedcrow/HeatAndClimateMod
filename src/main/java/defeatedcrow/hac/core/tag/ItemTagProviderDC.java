@@ -117,6 +117,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.FERTILIZER).add(Items.BONE_MEAL);
 
+		tag(TagDC.ItemTag.FIRESTARTER).add(Items.FLINT_AND_STEEL);
+
 		tag(TagDC.ItemTag.MAGMA).add(Items.MAGMA_BLOCK);
 		tag(TagDC.ItemTag.DRIPSTONES).add(Items.DRIPSTONE_BLOCK, Items.POINTED_DRIPSTONE);
 
@@ -506,8 +508,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.FISH_LOD).addTags(TagDC.ItemTag.FISH_ALL);
 
 		// machine
-		tag(TagDC.ItemTag.MOTORS).addTags(TagDC.ItemTag.MOTOR_T1);
-		tag(TagDC.ItemTag.IMPELLERS).addTags(TagDC.ItemTag.IMPELLER_T1);
+		tag(TagDC.ItemTag.MOTORS).addTags(TagDC.ItemTag.MOTOR_T1, TagDC.ItemTag.MOTOR_T2);
+		tag(TagDC.ItemTag.IMPELLERS).addTags(TagDC.ItemTag.IMPELLER_T1, TagDC.ItemTag.IMPELLER_T2);
 
 		tag(TagDC.ItemTag.FUEL_BIOMASS).add(FoodInit.DUST_WOOD.get(), FoodInit.DUST_PLANT.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.VINE.get(),
 				FoodInit.SORGHUM_STICK.get(), FoodInit.BEESWAX.get(), FoodInit.TREEWAX.get(), FoodInit.FOOD_DEFATTED_SOY.get(), FoodInit.FOOD_PRESS_CAKE.get(),

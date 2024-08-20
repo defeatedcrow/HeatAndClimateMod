@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:machine/faucet_a"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:machine/faucet_b"
+  }
+}

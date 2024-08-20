@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/machine/conveyor_dropper_item"
+  },
+  "parent": "minecraft:item/generated"
+}

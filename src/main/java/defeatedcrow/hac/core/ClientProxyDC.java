@@ -5,26 +5,31 @@ import java.util.Optional;
 import com.mojang.blaze3d.platform.InputConstants;
 
 import defeatedcrow.hac.core.client.AdvTooltipEvent;
+import defeatedcrow.hac.core.client.ClientRegisterInit;
 import defeatedcrow.hac.core.client.ClimateHUDEvent;
 import defeatedcrow.hac.core.client.ColorHandlerRegister;
 import defeatedcrow.hac.core.client.DCTextureStitch;
-import defeatedcrow.hac.core.client.EntityClientRegister;
 import defeatedcrow.hac.core.client.RenderPlayerEventDC;
+import defeatedcrow.hac.core.client.gui.DisplayShelfScreen;
 import defeatedcrow.hac.core.client.gui.DoubleInventoryScreen;
 import defeatedcrow.hac.core.client.gui.SimpleInventoryScreen;
 import defeatedcrow.hac.core.client.gui.UnlockedInventoryScreen;
 import defeatedcrow.hac.core.climate.ClientClimateData;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
 import defeatedcrow.hac.core.event.ClientTickEventDC;
+import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.machine.client.gui.BoilerBiomassScreen;
 import defeatedcrow.hac.machine.client.gui.CookingPotScreen;
 import defeatedcrow.hac.machine.client.gui.EnergyBatteryScreen;
 import defeatedcrow.hac.machine.client.gui.EnergyGeneratorScreen;
 import defeatedcrow.hac.machine.client.gui.FermentationJarScreen;
+import defeatedcrow.hac.machine.client.gui.FluidChamberScreen;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberScreen;
 import defeatedcrow.hac.machine.client.gui.HopperFilterScreen;
+import defeatedcrow.hac.machine.client.gui.KichenBenchScreen;
 import defeatedcrow.hac.machine.client.gui.MillScreen;
+import defeatedcrow.hac.machine.client.gui.MonitorAndonScreen;
 import defeatedcrow.hac.machine.client.gui.PortableTankScreen;
 import defeatedcrow.hac.machine.client.gui.TeaPotScreen;
 import defeatedcrow.hac.machine.material.MachineInit;
@@ -32,8 +37,6 @@ import defeatedcrow.hac.magic.client.gui.BoringScreen;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
@@ -44,10 +47,10 @@ public class ClientProxyDC extends CommonProxyDC {
 
 	@Override
 	public void addListener(IEventBus bus) {
-		bus.addListener(EntityClientRegister::registerLayerDefinitions);
-		bus.addListener(EntityClientRegister::registerEntityRenderers);
-		bus.addListener(EntityClientRegister::registerClientReloadListeners);
-		bus.addListener(EntityClientRegister::registerParticle);
+		bus.addListener(ClientRegisterInit::registerLayerDefinitions);
+		bus.addListener(ClientRegisterInit::registerEntityRenderers);
+		bus.addListener(ClientRegisterInit::registerClientReloadListeners);
+		bus.addListener(ClientRegisterInit::registerParticle);
 		bus.addListener(ColorHandlerRegister::registerBlockColorHandler);
 		bus.addListener(ColorHandlerRegister::registerItemColorHandler);
 	}
@@ -67,14 +70,12 @@ public class ClientProxyDC extends CommonProxyDC {
 	public void commonInit() {
 		super.commonInit();
 
-		ItemProperties.register(CoreInit.HARPOON_FLINT.get(), new ResourceLocation("throwing"), (stack, level, living, i) -> {
-			return living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F;
-		});
-
 		MenuScreens.register(CoreInit.SIMPLE_SINGLE.get(), SimpleInventoryScreen::new);
 		MenuScreens.register(CoreInit.SIMPLE_DOUBLE.get(), DoubleInventoryScreen::new);
 		MenuScreens.register(CoreInit.UNLOCKED_DOUBLE.get(), UnlockedInventoryScreen::new);
+		MenuScreens.register(BuildInit.DISPLAY_SHELF_MENU.get(), DisplayShelfScreen::new);
 		MenuScreens.register(MachineInit.CHAMBER_MENU.get(), HeatingChamberScreen::new);
+		MenuScreens.register(MachineInit.FLUID_CHAMBER_MENU.get(), FluidChamberScreen::new);
 		MenuScreens.register(MachineInit.FLUID_MENU.get(), PortableTankScreen::new);
 		MenuScreens.register(MachineInit.FLUID_MENU_LARGE.get(), PortableTankScreen::new);
 		MenuScreens.register(MachineInit.POT_MENU.get(), CookingPotScreen::new);
@@ -87,9 +88,11 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(MachineInit.HOPPER_FILTER_MENU.get(), HopperFilterScreen::new);
 		MenuScreens.register(MachineInit.HOPPER_GOLD_MENU.get(), HopperFilterScreen::new);
 		MenuScreens.register(MachineInit.HOPPER_FILTER_GOLD_MENU.get(), HopperFilterScreen::new);
+		MenuScreens.register(MachineInit.KICHEN_BENCH_MENU.get(), KichenBenchScreen::new);
+		MenuScreens.register(MachineInit.MONITOR_ANDON_MENU.get(), MonitorAndonScreen::new);
 		MenuScreens.register(MagicInit.BORING_SURVEY_MENU.get(), BoringScreen::new);
 
-		EntityClientRegister.registerRenderTypes();
+		ClientRegisterInit.registerRenderTypes();
 	}
 
 	@Override
@@ -135,6 +138,11 @@ public class ClientProxyDC extends CommonProxyDC {
 	@Override
 	public Optional<Level> getClientLevel() {
 		return Optional.of(Minecraft.getInstance().level);
+	}
+
+	@Override
+	public Optional<Player> getClientPlayer() {
+		return Optional.of(Minecraft.getInstance().player);
 	}
 
 	@Override

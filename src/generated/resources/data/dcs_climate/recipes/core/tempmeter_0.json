@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:glass"
+    },
+    "Y": {
+      "tag": "forge:crafting_tools/screwdriver"
+    },
+    "Z": {
+      "tag": "forge:ingots/copper"
+    }
+  },
+  "pattern": [
+    "X",
+    "Y",
+    "Z"
+  ],
+  "result": {
+    "item": "dcs_climate:main/tempmeter"
+  }
+}

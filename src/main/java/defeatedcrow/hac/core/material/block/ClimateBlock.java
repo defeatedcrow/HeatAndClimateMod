@@ -69,7 +69,7 @@ public abstract class ClimateBlock extends BlockDC implements IClimateObject {
 
 					// 効果音
 					if (playSEOnChanging()) {
-						level.playSound(null, pos, getSE(), SoundSource.BLOCKS, 0.8F, 1.5F);
+						level.playSound(null, pos, getSE(clm), SoundSource.BLOCKS, 0.8F, 1.5F);
 						DCLogger.debugLog("Smelting! " + output.getDisplayName().getString());
 					}
 
@@ -102,8 +102,10 @@ public abstract class ClimateBlock extends BlockDC implements IClimateObject {
 	}
 
 	@Override
-	public SoundEvent getSE() {
-		return SoundEvents.LAVA_EXTINGUISH;
+	public SoundEvent getSE(IClimate climate) {
+		if (climate.getHumidity() == DCHumidity.UNDERWATER)
+			return SoundEvents.BUCKET_FILL;
+		return climate.getHeat().isCold() ? SoundEvents.GLASS_BREAK : SoundEvents.LAVA_EXTINGUISH;
 	}
 
 	@Override

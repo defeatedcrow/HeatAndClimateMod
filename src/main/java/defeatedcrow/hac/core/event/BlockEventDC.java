@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.StemBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -75,7 +76,7 @@ public class BlockEventDC {
 		event.setNewSpeed(f);
 	}
 
-	// scythe
+	// on break
 	@SubscribeEvent
 	public static void onBreakBlock(BlockEvent.BreakEvent event) {
 		Player player = event.getPlayer();
@@ -83,6 +84,15 @@ public class BlockEventDC {
 		BlockPos pos = event.getPos();
 		Level level = player.level;
 		ItemStack held = player.getMainHandItem();
+		BlockEntity tile = level.getBlockEntity(pos);
+
+		if (tile instanceof OwnableBaseTileDC cont) {
+			if (cont.hasOwner() && !cont.isOwner(player) && cont.isLocked()) {
+				event.setCanceled(true);
+				return;
+			}
+		}
+
 		if (level.isClientSide || player.isCrouching() || player.isSpectator())
 			return;
 

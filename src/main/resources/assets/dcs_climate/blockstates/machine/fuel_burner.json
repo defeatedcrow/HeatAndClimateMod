@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north,flag=false,lit=false": {"model": "dcs_climate:block/machine/fuel_burner_0"},
+    "facing=south,flag=false,lit=false": {"model": "dcs_climate:block/machine/fuel_burner_0","y": 180},
+    "facing=east,flag=false,lit=false": {"model": "dcs_climate:block/machine/fuel_burner_0", "y": 90},
+    "facing=west,flag=false,lit=false": {"model": "dcs_climate:block/machine/fuel_burner_0", "y": 270},
+    "facing=north,flag=false,lit=true": {"model": "dcs_climate:block/machine/fuel_burner_error"},
+    "facing=south,flag=false,lit=true": {"model": "dcs_climate:block/machine/fuel_burner_error","y": 180},
+    "facing=east,flag=false,lit=true": {"model": "dcs_climate:block/machine/fuel_burner_error", "y": 90},
+    "facing=west,flag=false,lit=true": {"model": "dcs_climate:block/machine/fuel_burner_error", "y": 270},
+    "facing=north,flag=true,lit=false": {"model": "dcs_climate:block/machine/fuel_burner_0"},
+    "facing=south,flag=true,lit=false": {"model": "dcs_climate:block/machine/fuel_burner_0","y": 180},
+    "facing=east,flag=true,lit=false": {"model": "dcs_climate:block/machine/fuel_burner_0", "y": 90},
+    "facing=west,flag=true,lit=false": {"model": "dcs_climate:block/machine/fuel_burner_0", "y": 270},
+    "facing=north,flag=true,lit=true": {"model": "dcs_climate:block/machine/fuel_burner_on"},
+    "facing=south,flag=true,lit=true": {"model": "dcs_climate:block/machine/fuel_burner_on","y": 180},
+    "facing=east,flag=true,lit=true": {"model": "dcs_climate:block/machine/fuel_burner_on", "y": 90},
+    "facing=west,flag=true,lit=true": {"model": "dcs_climate:block/machine/fuel_burner_on", "y": 270}
+  }
+}

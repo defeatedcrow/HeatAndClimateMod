@@ -418,21 +418,10 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 					f = player.getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
 				}
 				List<ItemStack> crops = this.getCropItems(thisState, f);
-				BlockState soil = world.getBlockState(pos.below());
-				if (d) {
-					soil = world.getBlockState(pos.below(2));
-				}
-				int fertile = FertileBlock.getFertile(world, pos, soil) + 1;
 				boolean ret = false;
 				for (ItemStack item : crops) {
 					if (item.getItem() instanceof ItemCropDC crop && ConfigCommonBuilder.INSTANCE.enCropTaste.get()) {
-						if (DCState.getBool(thisState, DCState.WILD) && !isSuitableForGrowing(world, pos, thisState)) {
-							crop.setTaste(item, crop.getTier().getTaste() - 1);
-						} else if (fertile > 2 && world.getRandom().nextInt(3) == 0) {
-							crop.setTaste(item, crop.getTier().getTaste() + 2);
-						} else if (fertile > 0 && world.getRandom().nextInt(6 - fertile) == 0) {
-							crop.setTaste(item, crop.getTier().getTaste() + 1);
-						}
+						crop.setTaste(item, crop.getTier().getTaste() + getCropTaste(world, pos, thisState));
 					}
 					ItemEntity drop;
 					if (player != null) {
@@ -472,6 +461,23 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			}
 		}
 		return false;
+	}
+
+	public int getCropTaste(Level world, BlockPos pos, BlockState thisState) {
+		BlockState soil = world.getBlockState(pos.below());
+		if (DCState.getBool(thisState, DCState.DOUBLE)) {
+			soil = world.getBlockState(pos.below(2));
+		}
+		int fertile = FertileBlock.getFertile(world, pos, soil);
+		if (DCState.getBool(thisState, DCState.WILD) || !isSuitableForGrowing(world, pos, thisState)) {
+			if (world.getRandom().nextInt(3) == 0)
+				return -1;
+		} else if (fertile > 2 && world.getRandom().nextInt(3) == 0) {
+			return 2;
+		} else if (fertile > 0 && world.getRandom().nextInt(6 - fertile) == 0) {
+			return 1;
+		}
+		return 0;
 	}
 
 	protected boolean isDoubleCrop(BlockState state) {

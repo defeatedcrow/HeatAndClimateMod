@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.machine.material.block.monitor.MonitorBlockItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -64,7 +65,14 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 	@Nullable
 	public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
 		BlockEntity blockentity = level.getBlockEntity(pos);
-		return blockentity instanceof MenuProvider ? (MenuProvider) blockentity : null;
+		if (blockentity instanceof MenuProvider provider) {
+			if (blockentity instanceof OwnableBaseTileDC ownable) {
+				return ownable.hasMenu() ? provider : null;
+			} else {
+				return provider;
+			}
+		}
+		return null;
 	}
 
 	@Nullable
@@ -75,23 +83,24 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
 		BlockEntity tile = level.getBlockEntity(pos);
+		ItemStack held = player.getItemInHand(hand);
+		if (!DCUtil.isEmpty(held) && held.getItem() instanceof MonitorBlockItem) {
+			return InteractionResult.PASS;
+		}
 		if (tile instanceof OwnableBaseTileDC chest) {
-			if (level.isClientSide) {
-				return InteractionResult.SUCCESS;
-			} else {
-				if (player instanceof ServerPlayer sp) {
-					if (player.getMainHandItem().is(Items.NAME_TAG) && ClimateCore.proxy.isOP(player)) {
-						Component name = player.getMainHandItem().getHoverName();
-						Player target = ClimateCore.proxy.getPlayer(sp.getLevel(), name.getString());
-						if (target != null) {
-							chest.setOwner(target.getUUID());
-							chest.setOwnerName(target.getScoreboardName());
-							sp.sendSystemMessage(Component.translatable("dcs.tip.register_owner", name.getString()));
-						}
+			if (!level.isClientSide && player instanceof ServerPlayer sp) {
+				if (player.getMainHandItem().is(Items.NAME_TAG) && ClimateCore.proxy.isOP(player)) {
+					Component name = player.getMainHandItem().getHoverName();
+					Player target = ClimateCore.proxy.getPlayer(sp.getLevel(), name.getString());
+					if (target != null) {
+						chest.setOwner(target.getUUID());
+						chest.setOwnerName(target.getScoreboardName());
+						sp.sendSystemMessage(Component.translatable("dcs.tip.register_owner", name.getString()));
+						return InteractionResult.SUCCESS;
 					}
 				}
-				return InteractionResult.SUCCESS;
 			}
+			return InteractionResult.sidedSuccess(level.isClientSide);
 		} else {
 			return InteractionResult.sidedSuccess(level.isClientSide);
 		}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:bucket"
+    },
+    "X": {
+      "item": "dcs_climate:machine/pipe_brass"
+    },
+    "Y": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "Z": {
+      "tag": "forge:ingots/steel"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "ZWZ"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/fuel_burner"
+  }
+}

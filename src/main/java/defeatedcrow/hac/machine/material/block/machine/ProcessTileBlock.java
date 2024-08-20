@@ -38,10 +38,11 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 	public ProcessTileBlock(Properties prop) {
 		super(prop);
 		this.registerDefaultState(this.stateDefinition.any()
-			.setValue(DCState.FACING, Direction.NORTH)
-			.setValue(DCState.LIT, Boolean.valueOf(false))
-			.setValue(DCState.POWERED, Boolean.valueOf(false))
-			.setValue(WATERLOGGED, Boolean.valueOf(false)));
+				.setValue(DCState.FACING, Direction.NORTH)
+				.setValue(DCState.FLAG, Boolean.valueOf(false))
+				.setValue(DCState.LIT, Boolean.valueOf(false))
+				.setValue(DCState.POWERED, Boolean.valueOf(false))
+				.setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
 	@Override
@@ -49,8 +50,8 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 		FluidState fluidstate = cont.getLevel().getFluidState(cont.getClickedPos());
 		boolean pow = cont.getLevel().hasNeighborSignal(cont.getClickedPos());
 		return this.defaultBlockState().setValue(DCState.FACING, cont.getHorizontalDirection().getOpposite())
-			.setValue(DCState.POWERED, Boolean.valueOf(pow))
-			.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+				.setValue(DCState.POWERED, Boolean.valueOf(pow))
+				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 
 	@Override
@@ -66,6 +67,13 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
 		BlockEntity tile = level.getBlockEntity(pos);
+		InteractionResult check = super.use(state, level, pos, player, hand, hitRes);
+		if (check == InteractionResult.SUCCESS) {
+			return InteractionResult.SUCCESS;
+		}
+		if (check == InteractionResult.PASS) {
+			return InteractionResult.PASS;
+		}
 		if (tile instanceof ProcessTileBaseDC chest) {
 			if (level.isClientSide) {
 				return InteractionResult.SUCCESS;
@@ -92,7 +100,7 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
-		state.add(DCState.FACING, DCState.LIT, DCState.POWERED, WATERLOGGED);
+		state.add(DCState.FACING, DCState.FLAG, DCState.LIT, DCState.POWERED, WATERLOGGED);
 	}
 
 	@Override
@@ -118,6 +126,16 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 	}
 
 	/* Redstone */
+
+	@Override
+	public boolean hasAnalogOutputSignal(BlockState state) {
+		return true;
+	}
+
+	@Override
+	public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+		return ProcessTileBaseDC.getContainerOutputSignal(level.getBlockEntity(pos));
+	}
 
 	@Override
 	public PushReaction getPistonPushReaction(BlockState state) {

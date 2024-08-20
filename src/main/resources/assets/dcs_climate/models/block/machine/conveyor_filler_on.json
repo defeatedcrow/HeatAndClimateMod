@@ -1,0 +1,10 @@
+{
+  "parent": "dcs_climate:block/machine/conveyor_filler_0",
+  "textures": {
+        "base": "dcs_climate:block/build/plate_steel",
+        "belt": "dcs_climate:block/machine/conveyor_belt",
+        "nozzle": "dcs_climate:block/machine/conveyor_dropper",
+        "filler": "dcs_climate:block/machine/conveyor_filler_on",
+        "particle": "dcs_climate:block/machine/conveyor_belt"
+    }
+}

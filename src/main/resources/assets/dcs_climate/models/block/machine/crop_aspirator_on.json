@@ -1,0 +1,11 @@
+{
+    "parent": "dcs_climate:block/machine/crop_aspirator_0",
+    "textures": {
+        "inner": "dcs_climate:block/machine/item_aspirator_inner",
+        "side": "dcs_climate:block/build/sus_plate_side",
+        "plate": "dcs_climate:block/build/sus_plate",
+        "back": "dcs_climate:block/machine/item_aspirator_back",
+        "blade": "dcs_climate:block/machine/crop_aspirator_blade_on",
+        "particle": "dcs_climate:block/build/sus_plate_side"
+    }
+}

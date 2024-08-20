@@ -57,6 +57,12 @@ public class TileRendererIBC implements BlockEntityRenderer<IBCTile> {
 			this.model.renderToBuffer(poseStack, buffer.getBuffer(model.renderType(tex)), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 			poseStack.popPose();
 
+			if (!tile.tank.getFluid().isEmpty()) {
+				FluidStack copy = tile.tank.getFluid().copy();
+				float h = copy.getAmount() * 0.9F / tile.tank.getCapacity();
+				renderFluid(poseStack, buffer, copy, packedLight, 0.5F, 0.05F, 0.5F, 0.45F, h);
+			}
+
 			poseStack.pushPose();
 			poseStack.translate(0.5F, 0.5F + f2, 0.5F);
 			poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
@@ -64,12 +70,6 @@ public class TileRendererIBC implements BlockEntityRenderer<IBCTile> {
 			poseStack.scale(f1, f1, f1);
 			this.model.renderInner(poseStack, buffer.getBuffer(RenderType.entityTranslucent(tex2)), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.5F);
 			poseStack.popPose();
-
-			if (!tile.tank.getFluid().isEmpty()) {
-				FluidStack copy = tile.tank.getFluid().copy();
-				float h = copy.getAmount() * 0.9F / tile.tank.getCapacity();
-				renderFluid(poseStack, buffer, copy, packedLight, 0.5F, 0.05F, 0.5F, 0.45F, h);
-			}
 
 		}
 	}

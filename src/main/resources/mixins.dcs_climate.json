@@ -10,6 +10,7 @@
     "BlockUpdateMixin_Block",
     "BlockUpdateMixin_Farm",
     "BlockUpdateMixin_Snow",
+    "BlockUpdateMixin_Grass",
     "LivingEntityMixin"
   ],
   "client": [],

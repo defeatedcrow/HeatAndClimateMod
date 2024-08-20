@@ -159,7 +159,7 @@ public class TeaPotBlock extends ProcessTileBlock {
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
 		BlockEntity tile = level.getBlockEntity(pos);
 		if (tile instanceof TeaPotTile pot && rand.nextInt(3) == 0) {
-			ItemStack output = pot.getDisplay();
+			ItemStack output = pot.getDisplay(0);
 			if (!output.isEmpty() && output.is(TagDC.ItemTag.HAC_DRINK_HOT)) {
 				double d0 = pos.getX() + 0.1D + rand.nextDouble() * 0.8D;
 				double d1 = pos.getY() + 0.5D;

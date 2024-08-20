@@ -26,6 +26,13 @@ public abstract class PortableFluidTankBlock extends ProcessTileBlock {
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
+		InteractionResult check = super.use(state, level, pos, player, hand, hitRes);
+		if (check == InteractionResult.SUCCESS) {
+			return InteractionResult.SUCCESS;
+		}
+		if (check == InteractionResult.PASS) {
+			return InteractionResult.PASS;
+		}
 		BlockEntity tile = level.getBlockEntity(pos);
 		if (tile instanceof PortableFluidTankTile tank) {
 			if (ClimateCore.isDebug && player.isCrouching()) {
@@ -48,5 +55,15 @@ public abstract class PortableFluidTankBlock extends ProcessTileBlock {
 			}
 		}
 		return InteractionResult.sidedSuccess(level.isClientSide);
+	}
+
+	@Override
+	public boolean hasAnalogOutputSignal(BlockState state) {
+		return true;
+	}
+
+	@Override
+	public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+		return PortableFluidTankTile.getFluidOutputSignal(level.getBlockEntity(pos));
 	}
 }

@@ -3,6 +3,7 @@ package defeatedcrow.hac.core.client;
 import defeatedcrow.hac.core.client.entity.EntityModelLoader;
 import defeatedcrow.hac.core.client.entity.model.BlockCabinetModel;
 import defeatedcrow.hac.core.client.entity.model.BlockChandelier2Model;
+import defeatedcrow.hac.core.client.entity.model.BlockChandelier3Model;
 import defeatedcrow.hac.core.client.entity.model.BlockChandelierModel;
 import defeatedcrow.hac.core.client.entity.model.BlockLockerModel;
 import defeatedcrow.hac.core.client.entity.model.BlockLuggageModel;
@@ -18,6 +19,7 @@ import defeatedcrow.hac.core.client.entity.renderer.RenderHarpoon;
 import defeatedcrow.hac.core.client.entity.renderer.RenderSpoon;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererCabinet;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererChandelier;
+import defeatedcrow.hac.core.client.entity.renderer.TileRendererDisplayShelf;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLocker;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLuggage;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererToolHook;
@@ -160,9 +162,16 @@ import defeatedcrow.hac.machine.client.entity.CookingPotModel_A;
 import defeatedcrow.hac.machine.client.entity.CookingPotModel_B;
 import defeatedcrow.hac.machine.client.entity.CookingPotModel_C;
 import defeatedcrow.hac.machine.client.entity.CookingPotModel_Layer;
+import defeatedcrow.hac.machine.client.entity.FaucetModel_A;
+import defeatedcrow.hac.machine.client.entity.FaucetModel_B;
+import defeatedcrow.hac.machine.client.entity.FaucetModel_C;
+import defeatedcrow.hac.machine.client.entity.FaucetModel_D;
 import defeatedcrow.hac.machine.client.entity.FermentationJarModel_A;
 import defeatedcrow.hac.machine.client.entity.FermentationJarModel_B;
+import defeatedcrow.hac.machine.client.entity.HydroTurbineModel;
 import defeatedcrow.hac.machine.client.entity.IBCModel;
+import defeatedcrow.hac.machine.client.entity.IntakeFanModel;
+import defeatedcrow.hac.machine.client.entity.MonitorPanelModel;
 import defeatedcrow.hac.machine.client.entity.PortableCanModel;
 import defeatedcrow.hac.machine.client.entity.StoneMillModel;
 import defeatedcrow.hac.machine.client.entity.StormglassModel;
@@ -171,10 +180,16 @@ import defeatedcrow.hac.machine.client.entity.TeaPotModel_B;
 import defeatedcrow.hac.machine.client.entity.TeaPotModel_C;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberFuel;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberIron;
+import defeatedcrow.hac.machine.client.entity.TileRendererConveyor;
 import defeatedcrow.hac.machine.client.entity.TileRendererCookingPot;
 import defeatedcrow.hac.machine.client.entity.TileRendererCopperCable;
+import defeatedcrow.hac.machine.client.entity.TileRendererFaucet;
 import defeatedcrow.hac.machine.client.entity.TileRendererFermentationJar;
+import defeatedcrow.hac.machine.client.entity.TileRendererHydroTurbine;
 import defeatedcrow.hac.machine.client.entity.TileRendererIBC;
+import defeatedcrow.hac.machine.client.entity.TileRendererIntakeFan;
+import defeatedcrow.hac.machine.client.entity.TileRendererMeterEnergy;
+import defeatedcrow.hac.machine.client.entity.TileRendererMeterTemp;
 import defeatedcrow.hac.machine.client.entity.TileRendererPipeAlloy;
 import defeatedcrow.hac.machine.client.entity.TileRendererPortableCan;
 import defeatedcrow.hac.machine.client.entity.TileRendererStoneMill;
@@ -185,8 +200,11 @@ import defeatedcrow.hac.machine.client.entity.WaterPumpModel;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.block.machine.CookingPotTile;
 import defeatedcrow.hac.machine.material.block.machine.FermentationJarTile;
+import defeatedcrow.hac.machine.material.block.machine.HydroTurbineTile;
+import defeatedcrow.hac.machine.material.block.machine.IntakeFanTile;
 import defeatedcrow.hac.machine.material.block.machine.StoneMillTile;
 import defeatedcrow.hac.machine.material.block.machine.TeaPotTile;
+import defeatedcrow.hac.machine.material.block.transport.FaucetTile;
 import defeatedcrow.hac.machine.material.block.transport.IBCTile;
 import defeatedcrow.hac.machine.material.block.transport.PortableCanTile;
 import defeatedcrow.hac.magic.client.entity.RenderBindPlant;
@@ -201,11 +219,15 @@ import net.minecraft.client.model.TridentModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 
-public class EntityClientRegister {
+public class ClientRegisterInit {
 
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		// TESR
@@ -215,6 +237,7 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(ChandelierTile.DESERTROSE.getLayerLocation(), BlockChandelierModel::createBodyLayer);
 		event.registerLayerDefinition(ChandelierTile.SERPENTINE.getLayerLocation(), BlockChandelierModel::createBodyLayer);
 		event.registerLayerDefinition(ChandelierTile.IRON.getLayerLocation(), BlockChandelier2Model::createBodyLayer);
+		event.registerLayerDefinition(ChandelierTile.CANDLE.getLayerLocation(), BlockChandelier3Model::createBodyLayer);
 
 		event.registerLayerDefinition(LuggageTile.NORMAL.getLayerLocation(), BlockLuggageModel::createBodyLayer);
 		event.registerLayerDefinition(LuggageTile.BLUE.getLayerLocation(), BlockLuggageModel::createBodyLayer);
@@ -250,6 +273,11 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(IBCTile.NORMAL.getLayerLocation(), IBCModel::createBodyLayer);
 		event.registerLayerDefinition(IBCTile.INNER.getLayerLocation(), IBCModel::createBodyLayer);
 
+		event.registerLayerDefinition(FaucetTile.TYPE_A.getLayerLocation(), FaucetModel_A::createBodyLayer);
+		event.registerLayerDefinition(FaucetTile.TYPE_B.getLayerLocation(), FaucetModel_B::createBodyLayer);
+		event.registerLayerDefinition(FaucetTile.TYPE_C.getLayerLocation(), FaucetModel_C::createBodyLayer);
+		event.registerLayerDefinition(FaucetTile.TYPE_D.getLayerLocation(), FaucetModel_D::createBodyLayer);
+
 		event.registerLayerDefinition(TileRendererStormglass.TEX.getLayerLocation(), StormglassModel::createBodyLayer);
 
 		event.registerLayerDefinition(CookingPotTile.NORMAL.getLayerLocation(), CookingPotModel_A::createBodyLayer);
@@ -275,6 +303,8 @@ public class EntityClientRegister {
 
 		event.registerLayerDefinition(StoneMillTile.NORMAL.getLayerLocation(), StoneMillModel::createBodyLayer);
 
+		event.registerLayerDefinition(TileRendererMeterTemp.NORMAL.getLayerLocation(), MonitorPanelModel::createBodyLayer);
+
 		event.registerLayerDefinition(TileRendererCopperCable.COPPER.getLayerLocation(), CableModel::createBodyLayer);
 		event.registerLayerDefinition(TileRendererCopperCable.COPPER_INPUT.getLayerLocation(), CableModel::createBodyLayer);
 		event.registerLayerDefinition(TileRendererCopperCable.COPPER_OUTLET.getLayerLocation(), CableModel::createBodyLayer);
@@ -288,7 +318,10 @@ public class EntityClientRegister {
 		event.registerLayerDefinition(TileRendererPipeAlloy.BRASS_INPUT.getLayerLocation(), CableModel::createBodyLayer);
 		event.registerLayerDefinition(TileRendererPipeAlloy.BRASS_OUTLET.getLayerLocation(), CableModel::createBodyLayer);
 
+		event.registerLayerDefinition(HydroTurbineTile.NORMAL.getLayerLocation(), HydroTurbineModel::createBodyLayer);
+
 		event.registerLayerDefinition(TileRendererWaterPump.TEX.getLayerLocation(), WaterPumpModel::createBodyLayer);
+		event.registerLayerDefinition(IntakeFanTile.NORMAL.getLayerLocation(), IntakeFanModel::createBodyLayer);
 
 		// Entity
 		event.registerLayerDefinition(HarpoonItem.FLINT.getLayerLocation(), TridentModel::createLayer);
@@ -612,6 +645,7 @@ public class EntityClientRegister {
 		event.registerBlockEntityRenderer(BuildInit.CABINET_TILE.get(), TileRendererCabinet::new);
 		event.registerBlockEntityRenderer(BuildInit.LOCKER_TILE.get(), TileRendererLocker::new);
 		event.registerBlockEntityRenderer(BuildInit.TOOLHOOK_TILE.get(), TileRendererToolHook::new);
+		event.registerBlockEntityRenderer(BuildInit.DISPLAY_SHELF_TILE.get(), TileRendererDisplayShelf::new);
 		event.registerBlockEntityRenderer(MachineInit.CHAMBER_BRICK_TILE.get(), TileRendererChamberFuel::new);
 		event.registerBlockEntityRenderer(MachineInit.CHAMBER_IRON_TILE.get(), TileRendererChamberIron::new);
 		event.registerBlockEntityRenderer(MachineInit.PORTABLE_CAN_TILE.get(), TileRendererPortableCan::new);
@@ -624,6 +658,14 @@ public class EntityClientRegister {
 		event.registerBlockEntityRenderer(MachineInit.PIPE_BRASS_TILE.get(), TileRendererPipeAlloy::new);
 		event.registerBlockEntityRenderer(MachineInit.WATER_PUMP_TILE.get(), TileRendererWaterPump::new);
 		event.registerBlockEntityRenderer(MachineInit.STORMGLASS_TILE.get(), TileRendererStormglass::new);
+		event.registerBlockEntityRenderer(MachineInit.MONITOR_TEMP_TILE.get(), TileRendererMeterTemp::new);
+		event.registerBlockEntityRenderer(MachineInit.MONITOR_ENERGY_TILE.get(), TileRendererMeterEnergy::new);
+		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_TILE.get(), TileRendererConveyor::new);
+		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_DROPPER_TILE.get(), TileRendererConveyor::new);
+		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_FILLER_TILE.get(), TileRendererConveyor::new);
+		event.registerBlockEntityRenderer(MachineInit.FAUCET_TILE.get(), TileRendererFaucet::new);
+		event.registerBlockEntityRenderer(MachineInit.INTAKE_FAN_TILE.get(), TileRendererIntakeFan::new);
+		event.registerBlockEntityRenderer(MachineInit.HYDRO_TURBINE_TILE.get(), TileRendererHydroTurbine::new);
 
 		// Entity
 		event.registerEntityRenderer(CoreInit.HARPOON.get(), RenderHarpoon::new);
@@ -715,5 +757,14 @@ public class EntityClientRegister {
 
 		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getStillFluid().get(), RenderType.translucent());
 		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getFlowingFluid().get(), RenderType.translucent());
+
+		ItemProperties.register(CoreInit.HARPOON_FLINT.get(), new ResourceLocation("throwing"), (stack, level, living, i) -> {
+			return living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F;
+		});
+
+		ItemProperties.register(CoreInit.ALTIMETER.get(), new ResourceLocation("angle"), (stack, level, liv, i) -> {
+			Entity entity = liv == null ? stack.getEntityRepresentation() : liv;
+			return entity == null ? 0.0F : entity.blockPosition().getY() >= 192 ? 1.0F : Mth.clamp((entity.blockPosition().getY() + 64) / 256F, 0F, 1F);
+		});
 	}
 }

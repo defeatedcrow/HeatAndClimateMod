@@ -36,8 +36,12 @@ public class MonitorBlockItem extends BlockItemDC {
 
 	@Override
 	public InteractionResult place(BlockPlaceContext cont) {
-		if (cont != null && cont.getPlayer() != null && !cont.getPlayer().isCrouching()) {
-			return onBlockHit(cont.getLevel(), cont.getPlayer(), cont.getHand(), cont.getItemInHand(), cont.getClickedPos(), cont.getClickedFace()).getResult();
+		if (cont != null && cont.getPlayer() != null) {
+			if (cont.getPlayer().isCrouching()) {
+				return super.place(cont);
+			} else {
+				return onBlockHit(cont.getLevel(), cont.getPlayer(), cont.getHand(), cont.getItemInHand(), cont.getClickedPos(), cont.getClickedFace()).getResult();
+			}
 		} else {
 			return super.place(cont);
 		}

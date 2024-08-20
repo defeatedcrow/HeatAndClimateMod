@@ -14,6 +14,7 @@ import defeatedcrow.hac.machine.material.fluid.DCFluidUtil;
 import defeatedcrow.hac.machine.material.fluid.DCHeadTank;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
@@ -46,13 +47,14 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 				FluidState pumpState = state.getFluidState();
 				FluidStack fill = FluidStack.EMPTY;
 				BlockPos lastPos = getBlockPos();
+				int cost = 0;
 				// WATER
 				if (DCState.getBool(getBlockState(), EntityBlockDC.WATERLOGGED) || pumpState.is(Fluids.WATER) || pumpState.is(Fluids.FLOWING_WATER)) {
 					fill = new FluidStack(Fluids.WATER, getEnergyHandler().getEnergyStored()).copy();
 					if (fill.getAmount() > 32) {
 						fill.setAmount(32);
 					}
-				} else if (getEnergyHandler().getEnergyStored() >= 250) {
+				} else if (getEnergyHandler().getEnergyStored() >= 100) {
 					// LIQUID
 					if (isPumpableWater(pumpState)) {
 						fill = new FluidStack(pumpState.getType(), 1000);
@@ -79,6 +81,7 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 							}
 							if (!last.isEmpty() && last.isSource()) {
 								fill = new FluidStack(last.getType(), 1000);
+								cost = 100;
 							}
 							if (lastPos.equals(p2)) {
 								break;
@@ -93,19 +96,18 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 				if (!fill.isEmpty()) {
 					int ret = tank.fill(fill, FluidAction.SIMULATE);
 					if (ret >= fill.getAmount()) {
-						int consume = tank.fill(fill, FluidAction.EXECUTE) / 4;
 						BlockState s2 = getLevel().getBlockState(lastPos);
 						if (fill.getFluid() != Fluids.WATER && s2.getBlock() instanceof BucketPickup pickup) {
 							pickup.pickupBlock(getLevel(), lastPos, s2);
 						}
-						getEnergyHandler().consumeEnergy(consume);
+						getEnergyHandler().consumeEnergy(cost);
 					}
 				}
 			}
 
 			BlockEntity target = getLevel().getBlockEntity(getBlockPos().above());
 			// 方向偽装
-			if (target != null && target.getCapability(ForgeCapabilities.FLUID_HANDLER).isPresent()) {
+			if (getEnergyHandler().getEnergyStored() >= 8 && target != null && target.getCapability(ForgeCapabilities.FLUID_HANDLER).isPresent()) {
 				if (!tank.isEmpty()) {
 					boolean b = target.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP).filter(handler -> !(handler instanceof IFluidPipe)).map((handler) -> {
 						FluidStack drain = tank.getFluid().copy();
@@ -148,13 +150,17 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 								float f2 = (17000F - drain.getFluid().getFluidType().getViscosity(drain)) / 16000F;
 								if (f2 < 0.0625F)
 									f2 = 0.0625F;
+								if (f2 > 4F)
+									f2 = 4F;
 								h *= f2;
+								int cost = Mth.ceil(10F / f2);
 								int head = Mth.ceil(h) + 6;
 								if (head > 0) {
 									drain.setAmount(ret);
 									drain = DCFluidUtil.addHead(drain, head);
 									int consume = handler.fill(drain, FluidAction.EXECUTE);
 									tank.drain(consume, FluidAction.EXECUTE);
+									getEnergyHandler().consumeEnergy(cost);
 								}
 							}
 						});
@@ -181,7 +187,7 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 		return battery;
 	}
 
-	public DCHeadTank tank = new DCHeadTank(4000, 1000).setDefaultFace(Direction.UP, FaceIO.OUTPUT);
+	public DCHeadTank tank = new DCHeadTank(4000, 1000).setDefaultFace(NonNullList.of(FaceIO.OUTPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT));
 
 	@Override
 	public void loadTag(CompoundTag tag) {
@@ -226,6 +232,11 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 	@Override
 	protected AbstractContainerMenu createMenu(int i, Inventory inv) {
 		return null;
+	}
+
+	@Override
+	public boolean hasMenu() {
+		return false;
 	}
 
 	@Override

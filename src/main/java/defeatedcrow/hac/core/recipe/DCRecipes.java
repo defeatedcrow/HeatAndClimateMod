@@ -16,6 +16,8 @@ import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.event.server.ServerStoppedEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 
 public class DCRecipes {
@@ -40,7 +42,7 @@ public class DCRecipes {
 	public static final Map<ResourceLocation, IDeviceFuel> FLUID_FUEL = new HashMap<>();
 	public static final Map<ResourceLocation, IDeviceFuel> GAS_FUEL = new HashMap<>();
 
-	public static void init() {
+	public static void clear() {
 		SMELTING.clear();
 		HEAT_TREATMENT.clear();
 		PULVERISE.clear();
@@ -52,6 +54,11 @@ public class DCRecipes {
 		THERMAL_FUEL.clear();
 		FLUID_FUEL.clear();
 		GAS_FUEL.clear();
+	}
+
+	@SubscribeEvent
+	public static void serverStop(ServerStoppedEvent event) {
+		INSTANCE.clear();
 	}
 
 	public static Optional<IClimateSmelting> getSmeltingRecipe(Supplier<IClimate> clm, ItemStack item) {
@@ -200,6 +207,24 @@ public class DCRecipes {
 		if (type == FuelTypeDC.THERMAL && !DCUtil.isEmpty(input)) {
 			for (IDeviceFuel recipe : INSTANCE.THERMAL_FUEL.values()) {
 				if (recipe.matcheInput(input)) {
+					return recipe.getBurnTime();
+				}
+			}
+		}
+		return 0;
+	}
+
+	public static int getFluidFuelBurnTime(FuelTypeDC type, FluidStack input) {
+		if (type == FuelTypeDC.FLUID && input != null && !input.isEmpty()) {
+			for (IDeviceFuel recipe : INSTANCE.FLUID_FUEL.values()) {
+				if (recipe.matcheInputFluid(input)) {
+					return recipe.getBurnTime();
+				}
+			}
+		}
+		if (type == FuelTypeDC.GAS && input != null && !input.isEmpty()) {
+			for (IDeviceFuel recipe : INSTANCE.GAS_FUEL.values()) {
+				if (recipe.matcheInputFluid(input)) {
 					return recipe.getBurnTime();
 				}
 			}

@@ -28,14 +28,21 @@ public abstract class HeatSourceBlock extends ProcessTileBlock implements IHeatT
 	public static void changeLitState(Level level, BlockPos pos, boolean lit) {
 		BlockState state = level.getBlockState(pos);
 		if (state.getBlock() instanceof HeatSourceBlock) {
-			boolean l = lit & !DCState.getBool(state, DCState.POWERED);
+			boolean l = lit && !DCState.getBool(state, DCState.POWERED) && !DCState.getBool(state, WATERLOGGED);
 			level.setBlock(pos, state.setValue(DCState.LIT, Boolean.valueOf(l)), 3);
+		}
+	}
+
+	public static void changeFlagState(Level level, BlockPos pos, boolean flag) {
+		BlockState state = level.getBlockState(pos);
+		if (state.getBlock() instanceof HeatSourceBlock && flag != DCState.getBool(state, DCState.FLAG)) {
+			level.setBlock(pos, state.setValue(DCState.FLAG, Boolean.valueOf(flag)), 3);
 		}
 	}
 
 	public static ToIntFunction<BlockState> emission(int light) {
 		return (state) -> {
-			return state.getValue(DCState.LIT) ? light : 0;
+			return state.getValue(DCState.LIT) ? DCState.getBool(state, DCState.FLAG) ? light : light / 2 : 0;
 		};
 	}
 

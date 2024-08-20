@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/magnet"
+    },
+    "Y": {
+      "tag": "forge:ingots/steel"
+    },
+    "Z": {
+      "tag": "forge:ingots/copper"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "ZYZ",
+    "ZYZ"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/motor_middle"
+  }
+}

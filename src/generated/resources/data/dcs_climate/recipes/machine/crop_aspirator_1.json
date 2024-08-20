@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "tag": "forge:tools/scythes"
+    },
+    "X": {
+      "tag": "forge:ingots/sus"
+    },
+    "Y": {
+      "item": "dcs_climate:machine/intake_fan"
+    },
+    "Z": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XWX",
+    "XZX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/crop_aspirator"
+  }
+}

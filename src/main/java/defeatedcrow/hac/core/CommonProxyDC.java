@@ -66,6 +66,7 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(AnvilEventDC::onEvent);
 		MinecraftForge.EVENT_BUS.addListener(WandererTradeEventDC::onLoadingTrade);
 		MinecraftForge.EVENT_BUS.addListener(ThunderstruckEventDC::onLodUpdate);
+		MinecraftForge.EVENT_BUS.addListener(DCRecipes::serverStop);
 
 		FoodProxy.registerEvent();
 	}
@@ -80,7 +81,7 @@ public class CommonProxyDC {
 	public void updatePlayerClimate() {}
 
 	public void registerRecipes() {
-		DCRecipes.INSTANCE.init();
+		DCRecipes.INSTANCE.clear();
 
 		ClimateSmeltingList.init();
 		ClimateSmeltingConfig.initFile();
@@ -123,6 +124,10 @@ public class CommonProxyDC {
 	}
 
 	public Optional<Level> getClientLevel() {
+		return Optional.empty();
+	}
+
+	public Optional<Player> getClientPlayer() {
 		return Optional.empty();
 	}
 

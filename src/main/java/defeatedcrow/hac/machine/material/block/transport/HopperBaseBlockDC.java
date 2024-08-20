@@ -8,9 +8,11 @@ import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -47,10 +49,10 @@ public abstract class HopperBaseBlockDC extends EntityBlockDC {
 	public HopperBaseBlockDC(Properties prop) {
 		super(prop);
 		this.registerDefaultState(this.stateDefinition.any()
-			.setValue(DCState.DIRECTION, Direction.DOWN)
-			.setValue(DCState.FLAG, Boolean.valueOf(false))
-			.setValue(DCState.POWERED, Boolean.valueOf(false))
-			.setValue(WATERLOGGED, Boolean.valueOf(false)));
+				.setValue(DCState.DIRECTION, Direction.DOWN)
+				.setValue(DCState.FLAG, Boolean.valueOf(false))
+				.setValue(DCState.POWERED, Boolean.valueOf(false))
+				.setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
 	@Override
@@ -82,9 +84,9 @@ public abstract class HopperBaseBlockDC extends EntityBlockDC {
 			flag = cont.getClickLocation().y - cont.getClickedPos().getY() > 0.5D;
 		}
 		return this.defaultBlockState().setValue(DCState.DIRECTION, face)
-			.setValue(DCState.FLAG, Boolean.valueOf(flag))
-			.setValue(DCState.POWERED, Boolean.valueOf(pow))
-			.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+				.setValue(DCState.FLAG, Boolean.valueOf(flag))
+				.setValue(DCState.POWERED, Boolean.valueOf(pow))
+				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 
 	@Override
@@ -99,6 +101,9 @@ public abstract class HopperBaseBlockDC extends EntityBlockDC {
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
+		if (super.use(state, level, pos, player, hand, hitRes) == InteractionResult.SUCCESS) {
+			return InteractionResult.SUCCESS;
+		}
 		BlockEntity tile = level.getBlockEntity(pos);
 		ItemStack held = player.getItemInHand(hand);
 		if (tile instanceof HopperBaseTile machine) {
@@ -160,6 +165,16 @@ public abstract class HopperBaseBlockDC extends EntityBlockDC {
 	}
 
 	/* Redstone */
+
+	@Override
+	public boolean hasAnalogOutputSignal(BlockState state) {
+		return true;
+	}
+
+	@Override
+	public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+		return AbstractContainerMenu.getRedstoneSignalFromContainer((Container) level.getBlockEntity(pos));
+	}
 
 	@Override
 	public PushReaction getPistonPushReaction(BlockState state) {

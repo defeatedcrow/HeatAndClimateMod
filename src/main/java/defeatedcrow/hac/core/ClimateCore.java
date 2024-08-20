@@ -162,4 +162,5 @@ public class ClimateCore {
 	public void clientSetup(FMLClientSetupEvent event) {
 
 	}
+
 }

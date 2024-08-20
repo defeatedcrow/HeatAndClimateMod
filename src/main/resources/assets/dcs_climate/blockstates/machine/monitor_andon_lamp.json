@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "stage3=0": {
+   "model": "dcs_climate:block/machine/monitor_andon_lamp_0"
+  },
+  "stage3=1": {
+   "model": "dcs_climate:block/machine/monitor_andon_lamp_1"
+  },
+  "stage3=2": {
+   "model": "dcs_climate:block/machine/monitor_andon_lamp_2"
+  }
+ }
+}

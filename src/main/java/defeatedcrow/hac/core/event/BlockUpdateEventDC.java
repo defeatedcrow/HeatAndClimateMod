@@ -22,9 +22,9 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.SnowyDirtBlock;
+import net.minecraft.world.level.block.SpreadingSnowyDirtBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.common.util.BlockSnapshot;
@@ -91,14 +91,23 @@ public class BlockUpdateEventDC {
 				return;
 			}
 
-			if (GrassBlock.class.isInstance(block)) {
+			if (block instanceof SpreadingSnowyDirtBlock) {
 				if (!world.isAreaLoaded(p, 3))
+					return;
+				if (event.rand.nextInt(3) != 0)
 					return;
 				if (world.getMaxLocalRawBrightness(p.above()) >= 9) {
 					Direction dir = Direction.Plane.HORIZONTAL.getRandomDirection(world.getRandom());
 					BlockPos p2 = p.relative(dir);
 					if (world.getBlockState(p2).is(BuildInit.SLAB_DIRT.get()) && GrassSlab.canBeGrass(world, p2) && !world.getFluidState(p2).is(FluidTags.WATER)) {
 						world.setBlockAndUpdate(p2, BuildInit.SLAB_GRASS.get().defaultBlockState().setValue(GrassSlab.SNOWY, Boolean.valueOf(DCState.getBool(st, SnowyDirtBlock.SNOWY))));
+						event.setCanceled(true);
+					} else {
+						BlockPos p3 = p.relative(dir).above();
+						if (world.getBlockState(p3).is(BuildInit.SLAB_DIRT.get()) && GrassSlab.canBeGrass(world, p3) && !world.getFluidState(p3).is(FluidTags.WATER)) {
+							world.setBlockAndUpdate(p3, BuildInit.SLAB_GRASS.get().defaultBlockState().setValue(GrassSlab.SNOWY, Boolean.valueOf(DCState.getBool(st, SnowyDirtBlock.SNOWY))));
+							event.setCanceled(true);
+						}
 					}
 				}
 			}

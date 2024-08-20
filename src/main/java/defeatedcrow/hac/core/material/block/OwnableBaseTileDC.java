@@ -178,4 +178,8 @@ public abstract class OwnableBaseTileDC extends BlockEntity implements MenuProvi
 
 	protected abstract AbstractContainerMenu createMenu(int i, Inventory inv);
 
+	public boolean hasMenu() {
+		return true;
+	}
+
 }

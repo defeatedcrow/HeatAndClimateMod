@@ -11,12 +11,14 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.util.Mth;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -294,6 +296,26 @@ public abstract class EnergyProcessTile extends EnergyTileBaseDC implements Worl
 	@Override
 	protected Component getDefaultName() {
 		return this.hasOwner() ? Component.translatable("dcs.container.device.with_owner", this.ownerName) : Component.translatable("dcs.container.device");
+	}
+
+	public static int getContainerOutputSignal(BlockEntity tile) {
+		if (tile instanceof EnergyProcessTile machine) {
+			int i = 0;
+			float f = 0.0F;
+
+			for (int j : machine.getBottomSlots()) {
+				ItemStack itemstack = machine.getItem(j);
+				if (!itemstack.isEmpty()) {
+					f += (float) itemstack.getCount() / (float) Math.min(machine.getMaxStackSize(), itemstack.getMaxStackSize());
+					++i;
+				}
+			}
+
+			f /= machine.getBottomSlots().length;
+			return Mth.floor(f * 14.0F) + (i > 0 ? 1 : 0);
+		} else {
+			return 0;
+		}
 	}
 
 }

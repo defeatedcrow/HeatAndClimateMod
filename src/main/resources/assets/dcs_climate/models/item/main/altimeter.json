@@ -1,0 +1,41 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "dcs_climate:item/tool/altimeter_00"
+    },
+    "overrides": [
+        { "predicate": { "angle": 0.00000 }, "model": "dcs_climate:item/main/altimeter_17" },
+        { "predicate": { "angle": 0.03125 }, "model": "dcs_climate:item/main/altimeter_17" },
+        { "predicate": { "angle": 0.06250 }, "model": "dcs_climate:item/main/altimeter_18" },
+        { "predicate": { "angle": 0.09375 }, "model": "dcs_climate:item/main/altimeter_19" },
+        { "predicate": { "angle": 0.12500 }, "model": "dcs_climate:item/main/altimeter_20" },
+        { "predicate": { "angle": 0.15625 }, "model": "dcs_climate:item/main/altimeter_21" },
+        { "predicate": { "angle": 0.18750 }, "model": "dcs_climate:item/main/altimeter_22" },
+        { "predicate": { "angle": 0.21875 }, "model": "dcs_climate:item/main/altimeter_23" },
+        { "predicate": { "angle": 0.25000 }, "model": "dcs_climate:item/main/altimeter_24" },
+        { "predicate": { "angle": 0.28125 }, "model": "dcs_climate:item/main/altimeter_25" },
+        { "predicate": { "angle": 0.31250 }, "model": "dcs_climate:item/main/altimeter_26" },
+        { "predicate": { "angle": 0.34375 }, "model": "dcs_climate:item/main/altimeter_27" },
+        { "predicate": { "angle": 0.37500 }, "model": "dcs_climate:item/main/altimeter_28" },
+        { "predicate": { "angle": 0.40625 }, "model": "dcs_climate:item/main/altimeter_29" },
+        { "predicate": { "angle": 0.43750 }, "model": "dcs_climate:item/main/altimeter_30" },
+        { "predicate": { "angle": 0.46875 }, "model": "dcs_climate:item/main/altimeter_31" },
+        { "predicate": { "angle": 0.50000 }, "model": "dcs_climate:item/main/altimeter" },
+        { "predicate": { "angle": 0.53125 }, "model": "dcs_climate:item/main/altimeter_01" },
+        { "predicate": { "angle": 0.56250 }, "model": "dcs_climate:item/main/altimeter_02" },
+        { "predicate": { "angle": 0.59375 }, "model": "dcs_climate:item/main/altimeter_03" },
+        { "predicate": { "angle": 0.62500 }, "model": "dcs_climate:item/main/altimeter_04" },
+        { "predicate": { "angle": 0.65625 }, "model": "dcs_climate:item/main/altimeter_05" },
+        { "predicate": { "angle": 0.68750 }, "model": "dcs_climate:item/main/altimeter_06" },
+        { "predicate": { "angle": 0.71875 }, "model": "dcs_climate:item/main/altimeter_07" },
+        { "predicate": { "angle": 0.75000 }, "model": "dcs_climate:item/main/altimeter_08" },
+        { "predicate": { "angle": 0.78125 }, "model": "dcs_climate:item/main/altimeter_09" },
+        { "predicate": { "angle": 0.81250 }, "model": "dcs_climate:item/main/altimeter_10" },
+        { "predicate": { "angle": 0.84375 }, "model": "dcs_climate:item/main/altimeter_11" },
+        { "predicate": { "angle": 0.87500 }, "model": "dcs_climate:item/main/altimeter_12" },
+        { "predicate": { "angle": 0.90625 }, "model": "dcs_climate:item/main/altimeter_13" },
+        { "predicate": { "angle": 0.93750 }, "model": "dcs_climate:item/main/altimeter_14" },
+        { "predicate": { "angle": 0.96875 }, "model": "dcs_climate:item/main/altimeter_15" },
+        { "predicate": { "angle": 1.00000 }, "model": "dcs_climate:item/main/altimeter_15" }
+    ]
+}

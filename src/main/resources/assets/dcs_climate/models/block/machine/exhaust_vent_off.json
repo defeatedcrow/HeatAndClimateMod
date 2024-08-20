@@ -1,0 +1,9 @@
+{
+  "parent": "dcs_climate:block/machine/exhaust_vent_0",
+  "render_type": "cutout",
+  "textures": {
+        "front": "dcs_climate:block/machine/exhaust_vent_front_off",
+        "back": "dcs_climate:block/machine/exhaust_vent_back",
+        "particle": "dcs_climate:block/machine/exhaust_vent_front"
+    }
+}

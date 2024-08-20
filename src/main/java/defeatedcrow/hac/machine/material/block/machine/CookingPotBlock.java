@@ -146,8 +146,9 @@ public class CookingPotBlock extends ProcessTileBlock {
 					return InteractionResult.CONSUME;
 				} else if (DCUtil.isEmpty(held) && player.isCrouching()) {
 					CookingPotBlock.changeLisState(level, pos);
+					return InteractionResult.CONSUME;
 				} else {
-					super.use(state, level, pos, player, hand, hitRes);
+					return super.use(state, level, pos, player, hand, hitRes);
 				}
 			}
 		}
@@ -158,8 +159,8 @@ public class CookingPotBlock extends ProcessTileBlock {
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
 		BlockEntity tile = level.getBlockEntity(pos);
 		if (tile instanceof CookingPotTile pot && rand.nextInt(3) == 0) {
-			ItemStack output = pot.getDisplay();
-			if (!pot.getDisplay().isEmpty()) {
+			ItemStack output = pot.getDisplay(0);
+			if (!output.isEmpty()) {
 				double d0 = pos.getX() + 0.1D + rand.nextDouble() * 0.8D;
 				double d1 = pos.getY() + 0.5D;
 				double d2 = pos.getZ() + 0.1D + rand.nextDouble() * 0.8D;

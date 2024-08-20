@@ -13,12 +13,9 @@ import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.EntityBlockDC;
 import defeatedcrow.hac.core.material.block.ITileNBTHolder;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.material.MachineInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -43,24 +40,24 @@ public class MonitorRSBlock extends EntityBlockDC implements ITileNBTHolder {
 
 	final String name;
 
-	protected static final VoxelShape N_AABB = Block.box(5.0D, 2.0D, 0.0D, 11.0D, 14.0D, 8.0D);
-	protected static final VoxelShape S_AABB = Block.box(5.0D, 2.0D, 8.0D, 11.0D, 14.0D, 16.0D);
-	protected static final VoxelShape E_AABB = Block.box(8.0D, 2.0D, 5.0D, 16.0D, 14.0D, 11.0D);
-	protected static final VoxelShape W_AABB = Block.box(0.0D, 2.0D, 5.0D, 8.0D, 14.0D, 11.0D);
-	protected static final VoxelShape U_AABB = Block.box(5.0D, 8.0D, 5.0D, 11.0D, 16.0D, 11.0D);
-	protected static final VoxelShape D_AABB = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 8.0D, 11.0D);
+	protected static final VoxelShape N_AABB = Block.box(5.0D, 2.0D, 0.0D, 11.0D, 14.0D, 6.0D);
+	protected static final VoxelShape S_AABB = Block.box(5.0D, 2.0D, 10.0D, 11.0D, 14.0D, 16.0D);
+	protected static final VoxelShape E_AABB = Block.box(10.0D, 2.0D, 5.0D, 16.0D, 14.0D, 11.0D);
+	protected static final VoxelShape W_AABB = Block.box(0.0D, 2.0D, 5.0D, 6.0D, 14.0D, 11.0D);
+	protected static final VoxelShape U_AABB = Block.box(2.0D, 10.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+	protected static final VoxelShape D_AABB = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 6.0D, 14.0D);
 
 	public MonitorRSBlock(String s) {
 		super(getProp());
 		name = s;
 		this.registerDefaultState(this.stateDefinition.any()
-			.setValue(DCState.DIRECTION, Direction.NORTH)
-			.setValue(DCState.POWERED, Boolean.valueOf(false))
-			.setValue(WATERLOGGED, Boolean.valueOf(false)));
+				.setValue(DCState.DIRECTION, Direction.NORTH)
+				.setValue(DCState.POWERED, Boolean.valueOf(false))
+				.setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(2.0F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.METAL).requiresCorrectToolForDrops().strength(2.0F, 540.0F).noOcclusion();
 	}
 
 	@Override
@@ -100,7 +97,7 @@ public class MonitorRSBlock extends EntityBlockDC implements ITileNBTHolder {
 		FluidState fluidstate = cont.getLevel().getFluidState(cont.getClickedPos());
 		Direction face = cont.getClickedFace().getOpposite();
 		return this.defaultBlockState().setValue(DCState.DIRECTION, face)
-			.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 
 	public static boolean changePowerState(Level level, BlockPos pos, boolean pow) {
@@ -119,7 +116,7 @@ public class MonitorRSBlock extends EntityBlockDC implements ITileNBTHolder {
 
 	@Override
 	public int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos, Direction dir) {
-		return state.getValue(DCState.POWERED) && DCState.getFace(state, DCState.DIRECTION) == dir ? 15 : 0;
+		return state.getValue(DCState.POWERED) && DCState.getFace(state, DCState.DIRECTION).getAxis() == dir.getAxis() ? 15 : 0;
 	}
 
 	@Override
@@ -157,24 +154,6 @@ public class MonitorRSBlock extends EntityBlockDC implements ITileNBTHolder {
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
 		return !level.isClientSide ? createTickerHelper(type, MachineInit.MONITOR_RS_TILE.get(), MonitorBaseTile::serverTick) : null;
-	}
-
-	@Override
-	public ItemStack getDropItem(ItemStack item, BlockEntity tile) {
-		if (!DCUtil.isEmpty(item) && tile instanceof MonitorBaseTile basetile) {
-			CompoundTag tag = item.getOrCreateTag();
-			basetile.writeTag(tag);
-			item.setTag(tag);
-		}
-		return item;
-	}
-
-	@Override
-	public void setNBTFromItem(ItemStack item, BlockEntity tile) {
-		if (!DCUtil.isEmpty(item) && item.hasTag() && tile instanceof MonitorBaseTile basetile) {
-			CompoundTag tag = item.getTag();
-			basetile.load(tag);
-		}
 	}
 
 	@Override

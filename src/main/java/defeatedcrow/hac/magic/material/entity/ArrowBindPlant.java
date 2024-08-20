@@ -37,7 +37,7 @@ public class ArrowBindPlant extends AbstractArrow {
 
 	@Override
 	public void tick() {
-		if (this.dealtDamage || this.inGroundTime > 2 || this.getY() < 0 || this.isInLava()) {
+		if (this.dealtDamage || this.inGroundTime > 2 || this.getY() < this.getLevel().getMinBuildHeight() || this.isInLava()) {
 			this.discard();
 		}
 		super.tick();

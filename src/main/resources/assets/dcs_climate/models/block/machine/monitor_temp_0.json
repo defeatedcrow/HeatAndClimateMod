@@ -1,0 +1,33 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "base": "dcs_climate:block/build/mortar",
+        "panel": "dcs_climate:block/machine/meterpanel_temp",
+        "particle": "dcs_climate:block/build/mortar"
+    },
+    "elements": [
+        {
+            "from": [1, 1, 0],
+            "to": [15, 15, 1],
+            "faces": {
+                "north": {"uv": [1, 1, 15, 15], "texture": "#base"},
+                "east": {"uv": [15, 1, 16, 15], "texture": "#base"},
+                "south": {"uv": [1, 1, 15, 15], "texture": "#base"},
+                "west": {"uv": [0, 1, 1, 15], "texture": "#base"},
+                "up": {"uv": [1, 0, 15, 1], "texture": "#base"},
+                "down": {"uv": [1, 15, 15, 16], "texture": "#base"}
+            }
+        },
+        {
+            "from": [1.5, 1.5, 1],
+            "to": [14.5, 14.5, 2],
+            "faces": {
+                "east": {"uv": [14, 1, 15, 14], "texture": "#panel"},
+                "south": {"uv": [1, 1, 14, 14], "texture": "#panel"},
+                "west": {"uv": [0, 1, 1, 14], "texture": "#panel"},
+                "up": {"uv": [1, 0, 14, 1], "texture": "#panel"},
+                "down": {"uv": [1, 14, 14, 15], "texture": "#panel"}
+            }
+        }
+    ]
+}

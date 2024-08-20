@@ -71,6 +71,11 @@ public class GrassSlab extends BlockDC implements SimpleWaterloggedBlock {
 	}
 
 	@Override
+	public boolean useShapeForLightOcclusion(BlockState state) {
+		return true;
+	}
+
+	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext cont) {
 		return AABB_D;
 	}
@@ -121,15 +126,13 @@ public class GrassSlab extends BlockDC implements SimpleWaterloggedBlock {
 		} else {
 			if (!level.isAreaLoaded(pos, 3))
 				return;
-			if (level.getMaxLocalRawBrightness(pos.above()) >= 9) {
-				Direction dir = Direction.Plane.HORIZONTAL.getRandomDirection(rand);
-				BlockPos p2 = pos.relative(dir);
-				if (canBeGrass(level, p2) && !level.getFluidState(p2).is(FluidTags.WATER)) {
-					if (level.getBlockState(p2).is(Blocks.DIRT)) {
-						level.setBlockAndUpdate(p2, Blocks.GRASS_BLOCK.defaultBlockState().setValue(SNOWY, Boolean.valueOf(level.getBlockState(p2.above()).is(Blocks.SNOW))));
-					} else if (level.getBlockState(p2).is(BuildInit.SLAB_DIRT.get())) {
-						level.setBlockAndUpdate(p2, this.defaultBlockState().setValue(SNOWY, Boolean.valueOf(DCState.getBool(state, SNOWY))));
-					}
+			Direction dir = Direction.Plane.HORIZONTAL.getRandomDirection(rand);
+			BlockPos p2 = pos.relative(dir);
+			if (canBeGrass(level, p2) && !level.getFluidState(p2).is(FluidTags.WATER)) {
+				if (level.getBlockState(p2).is(Blocks.DIRT)) {
+					level.setBlockAndUpdate(p2, Blocks.GRASS_BLOCK.defaultBlockState().setValue(SNOWY, Boolean.valueOf(level.getBlockState(p2.above()).is(Blocks.SNOW))));
+				} else if (level.getBlockState(p2).is(BuildInit.SLAB_DIRT.get())) {
+					level.setBlockAndUpdate(p2, this.defaultBlockState().setValue(SNOWY, Boolean.valueOf(DCState.getBool(state, SNOWY))));
 				}
 			}
 		}

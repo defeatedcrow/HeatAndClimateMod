@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:glass"
+    },
+    "Y": {
+      "tag": "forge:gems/agates"
+    },
+    "Z": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "YYY",
+    "ZZZ"
+  ],
+  "result": {
+    "item": "minecraft:daylight_detector"
+  }
+}

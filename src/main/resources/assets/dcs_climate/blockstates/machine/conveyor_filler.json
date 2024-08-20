@@ -1,0 +1,12 @@
+{
+ "variants": {
+    "facing=north,powered=false": {"model": "dcs_climate:block/machine/conveyor_filler_0"},
+    "facing=south,powered=false": {"model": "dcs_climate:block/machine/conveyor_filler_0", "y": 180},
+    "facing=east,powered=false": {"model": "dcs_climate:block/machine/conveyor_filler_0", "y": 90},
+    "facing=west,powered=false": {"model": "dcs_climate:block/machine/conveyor_filler_0",  "y": 270},
+    "facing=north,powered=true": {"model": "dcs_climate:block/machine/conveyor_filler_on"},
+    "facing=south,powered=true": {"model": "dcs_climate:block/machine/conveyor_filler_on", "y": 180},
+    "facing=east,powered=true": {"model": "dcs_climate:block/machine/conveyor_filler_on", "y": 90},
+    "facing=west,powered=true": {"model": "dcs_climate:block/machine/conveyor_filler_on",  "y": 270}
+  }
+}

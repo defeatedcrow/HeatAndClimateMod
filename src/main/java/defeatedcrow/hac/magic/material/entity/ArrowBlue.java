@@ -35,7 +35,7 @@ public class ArrowBlue extends AbstractArrow {
 
 	@Override
 	public void tick() {
-		if (this.inGroundTime > 0 || this.getY() < 0 || this.isInLava() || this.isInWater()) {
+		if (this.inGroundTime > 0 || this.getY() < this.getLevel().getMinBuildHeight() || this.isInLava() || this.isInWater()) {
 			this.dealtDamage = true;
 		}
 

@@ -65,6 +65,11 @@ public class GroundSlab extends BlockDC implements SimpleWaterloggedBlock, Bonem
 	}
 
 	@Override
+	public boolean useShapeForLightOcclusion(BlockState state) {
+		return true;
+	}
+
+	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext cont) {
 		return state.getBlock() == BuildInit.SLAB_PATH.get() ? AABB_P : AABB_D;
 	}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:rods/wooden"
+    },
+    "Y": {
+      "tag": "forge:string"
+    }
+  },
+  "pattern": [
+    " XY",
+    "X Y",
+    " XY"
+  ],
+  "result": {
+    "item": "minecraft:bow"
+  }
+}

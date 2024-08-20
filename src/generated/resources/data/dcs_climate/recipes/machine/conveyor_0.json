@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "tag": "dcs_climate:motors/small"
+    }
+  },
+  "pattern": [
+    "XYX"
+  ],
+  "result": {
+    "count": 8,
+    "item": "dcs_climate:machine/conveyor"
+  }
+}

@@ -788,6 +788,16 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
 				.save(cons, "dcs_climate:build/linoleum_cyan_1");
 
+		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_GRAY.get(), 4)
+				.requires(TagDC.ItemTag.DUST_LIME)
+				.requires(TagDC.ItemTag.PLANT_OIL)
+				.requires(TagDC.ItemTag.SAP_RESIN)
+				.requires(TagDC.ItemTag.CLOTHS)
+				.requires(ItemTags.PLANKS)
+				.requires(Tags.Items.DYES_GRAY)
+				.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
+				.save(cons, "dcs_climate:build/linoleum_gray_1");
+
 		ShapelessRecipeBuilder.shapeless(BuildInit.LINOLEUM_LIGHT_GRAY.get(), 4)
 				.requires(TagDC.ItemTag.DUST_LIME)
 				.requires(TagDC.ItemTag.PLANT_OIL)
@@ -1043,6 +1053,15 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_candles", has(ItemTags.CANDLES))
 				.save(cons, "dcs_climate:build/candlestick_0");
 
+		ShapedRecipeBuilder.shaped(BuildInit.CHANDELIER_CANDLE.get(), 1)
+				.pattern(" X ")
+				.pattern("XYX")
+				.pattern(" X ")
+				.define('X', BuildInit.CANDLESTICK.get())
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_candlestick", has(BuildInit.CANDLESTICK.get()))
+				.save(cons, "dcs_climate:build/chandelier_candle_0");
+
 		ShapedRecipeBuilder.shaped(BuildInit.BERRY_LANTERN_WHITE.get(), 1)
 				.pattern(" X ")
 				.pattern("XYX")
@@ -1139,6 +1158,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('Z', TagDC.ItemTag.INGOT_BRASS)
 				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
 				.save(cons, "dcs_climate:build/wall_hook_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.DISPLAY_SHELF.get(), 1)
+				.pattern("Z Z")
+				.pattern("XXX")
+				.define('X', ItemTags.PLANKS)
+				.define('Z', TagDC.ItemTag.INGOT_BRASS)
+				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+				.save(cons, "dcs_climate:build/display_shelf_0");
 
 		ShapedRecipeBuilder.shaped(BuildInit.CARPET_LINEN.get(), 1)
 				.pattern("Y")
@@ -1599,6 +1626,46 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_ingot_steel", has(TagDC.ItemTag.INGOT_STEEL))
 				.save(cons, "dcs_climate:core/screwdriver_0");
 
+		ShapedRecipeBuilder.shaped(CoreInit.ALTIMETER.get(), 1)
+				.pattern("X")
+				.pattern("Y")
+				.pattern("Z")
+				.define('X', Tags.Items.GLASS)
+				.define('Y', TagDC.ItemTag.CRAFT_DRIVER)
+				.define('Z', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_screwdriver", has(TagDC.ItemTag.CRAFT_DRIVER))
+				.save(cons, "dcs_climate:core/altimeter_0");
+
+		ShapedRecipeBuilder.shaped(CoreInit.TEMPMETER.get(), 1)
+				.pattern("X")
+				.pattern("Y")
+				.pattern("Z")
+				.define('X', Tags.Items.GLASS)
+				.define('Y', TagDC.ItemTag.CRAFT_DRIVER)
+				.define('Z', Tags.Items.INGOTS_COPPER)
+				.unlockedBy("has_screwdriver", has(TagDC.ItemTag.CRAFT_DRIVER))
+				.save(cons, "dcs_climate:core/tempmeter_0");
+
+		ShapedRecipeBuilder.shaped(CoreInit.FLOWMETER.get(), 1)
+				.pattern("X")
+				.pattern("Y")
+				.pattern("Z")
+				.define('X', Tags.Items.GLASS)
+				.define('Y', TagDC.ItemTag.CRAFT_DRIVER)
+				.define('Z', Tags.Items.INGOTS_GOLD)
+				.unlockedBy("has_screwdriver", has(TagDC.ItemTag.CRAFT_DRIVER))
+				.save(cons, "dcs_climate:core/flowmeter_0");
+
+		ShapedRecipeBuilder.shaped(CoreInit.ENERGYMETER.get(), 1)
+				.pattern("X")
+				.pattern("Y")
+				.pattern("Z")
+				.define('X', Tags.Items.GLASS)
+				.define('Y', TagDC.ItemTag.CRAFT_DRIVER)
+				.define('Z', Tags.Items.DUSTS_REDSTONE)
+				.unlockedBy("has_screwdriver", has(TagDC.ItemTag.CRAFT_DRIVER))
+				.save(cons, "dcs_climate:core/energymeter_0");
+
 		ShapedRecipeBuilder.shaped(CoreInit.CHOPSTICKS.get(), 1)
 				.pattern("XX")
 				.define('X', Tags.Items.RODS_WOODEN)
@@ -1861,6 +1928,24 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
 				.save(cons, "dcs_climate:core/loom_another_0");
 
+		ShapedRecipeBuilder.shaped(Items.SCAFFOLDING, 6)
+				.pattern("XYX")
+				.pattern("X X")
+				.pattern("X X")
+				.define('X', TagDC.ItemTag.STICK_SORGHUM)
+				.define('Y', Tags.Items.STRING)
+				.unlockedBy("has_rod_sorghum", has(TagDC.ItemTag.STICK_SORGHUM))
+				.save(cons, "dcs_climate:core/scaffolding_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.BOW, 1)
+				.pattern(" XY")
+				.pattern("X Y")
+				.pattern(" XY")
+				.define('X', Tags.Items.RODS_WOODEN)
+				.define('Y', Tags.Items.STRING)
+				.unlockedBy("has_strings", has(Tags.Items.STRING))
+				.save(cons, "dcs_climate:core/bow_another_0");
+
 		ShapedRecipeBuilder.shaped(Items.BOOK, 1)
 				.pattern("YY")
 				.pattern("YX")
@@ -1920,6 +2005,30 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('X', TagDC.ItemTag.GEM_AGATES)
 				.unlockedBy("has_agate", has(TagDC.ItemTag.GEM_AGATES))
 				.save(cons, "dcs_climate:core/arrow_another_0");
+
+		ShapelessRecipeBuilder.shapeless(Items.FLINT_AND_STEEL, 1)
+				.requires(Tags.Items.INGOTS_IRON)
+				.requires(TagDC.ItemTag.GEM_AGATES)
+				.unlockedBy("has_agate", has(TagDC.ItemTag.GEM_AGATES))
+				.save(cons, "dcs_climate:core/firestarter_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.STICKY_PISTON, 1)
+				.pattern("X")
+				.pattern("Y")
+				.define('X', TagDC.ItemTag.SAP_RESIN)
+				.define('Y', Items.PISTON)
+				.unlockedBy("has_sap_resin", has(TagDC.ItemTag.SAP_RESIN))
+				.save(cons, "dcs_climate:core/stickey_piston_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.DAYLIGHT_DETECTOR, 1)
+				.pattern("XXX")
+				.pattern("YYY")
+				.pattern("ZZZ")
+				.define('X', Tags.Items.GLASS)
+				.define('Y', TagDC.ItemTag.GEM_AGATES)
+				.define('Z', ItemTags.WOODEN_SLABS)
+				.unlockedBy("has_sap_resin", has(TagDC.ItemTag.SAP_RESIN))
+				.save(cons, "dcs_climate:core/daylight_detector_another_0");
 
 		// bleaching
 

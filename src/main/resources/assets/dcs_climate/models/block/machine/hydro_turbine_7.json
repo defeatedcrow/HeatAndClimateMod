@@ -1,0 +1,9 @@
+{
+    "parent": "dcs_climate:block/machine/hydro_turbine_0",
+    "textures": {
+        "base": "dcs_climate:block/machine/hydro_turbine_inner",
+        "back": "dcs_climate:block/machine/hydro_turbine_back_7",
+        "plate": "dcs_climate:block/build/sus_plate",
+        "particle": "dcs_climate:block/machine/hydro_turbine_inner"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "parent": "dcs_climate:block/machine/fuel_burner_on",
+    "textures": {
+        "flame": "dcs_climate:block/machine/fuel_burner_fire_incomplete",
+        "tanktop": "dcs_climate:block/machine/fuel_tank_top",
+        "tankside": "dcs_climate:block/machine/fuel_tank_side",
+        "bottom": "dcs_climate:block/machine/boilder_biomass_bottom",
+        "metal": "dcs_climate:block/machine/fuel_burner_top",
+        "particle": "dcs_climate:block/machine/fuel_tank_side"
+    }
+}

@@ -20,9 +20,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -68,7 +70,8 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 				} else {
 					tile.resetProcess();
 				}
-			} else {
+			}
+			if (!tile.isInProcess()) {
 				if (tile.startProcess(level, pos, state)) {
 					tile.setChanged(level, pos, state);
 				}
@@ -315,5 +318,25 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 
 	@Override
 	public void stopOpen(Player player) {}
+
+	public static int getContainerOutputSignal(BlockEntity tile) {
+		if (tile instanceof ProcessTileBaseDC machine) {
+			int i = 0;
+			float f = 0.0F;
+
+			for (int j : machine.getBottomSlots()) {
+				ItemStack itemstack = machine.getItem(j);
+				if (!itemstack.isEmpty()) {
+					f += (float) itemstack.getCount() / (float) Math.min(machine.getMaxStackSize(), itemstack.getMaxStackSize());
+					++i;
+				}
+			}
+
+			f /= machine.getBottomSlots().length;
+			return Mth.floor(f * 14.0F) + (i > 0 ? 1 : 0);
+		} else {
+			return 0;
+		}
+	}
 
 }

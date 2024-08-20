@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/brick"
+    },
+    "Y": {
+      "item": "minecraft:crafting_table"
+    },
+    "Z": {
+      "tag": "forge:chests"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XZX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/kichen_bench_brick"
+  }
+}

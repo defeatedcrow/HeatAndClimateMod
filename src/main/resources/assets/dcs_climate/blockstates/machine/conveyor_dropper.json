@@ -1,0 +1,8 @@
+{
+ "variants": {
+    "facing=north": {"model": "dcs_climate:block/machine/conveyor_dropper_0"},
+    "facing=south": {"model": "dcs_climate:block/machine/conveyor_dropper_0", "y": 180},
+    "facing=east": {"model": "dcs_climate:block/machine/conveyor_dropper_0", "y": 90},
+    "facing=west": {"model": "dcs_climate:block/machine/conveyor_dropper_0",  "y": 270}
+  }
+}

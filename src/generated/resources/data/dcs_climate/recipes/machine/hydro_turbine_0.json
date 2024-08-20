@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/sus"
+    },
+    "Y": {
+      "tag": "dcs_climate:impellers/middle"
+    },
+    "Z": {
+      "item": "dcs_climate:machine/cable_copper_coated"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "ZYZ",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/hydro_turbine"
+  }
+}

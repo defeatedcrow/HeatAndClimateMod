@@ -2,6 +2,7 @@ package defeatedcrow.hac.core.recipe.fuel;
 
 import defeatedcrow.hac.api.recipe.FuelTypeDC;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
@@ -22,6 +23,8 @@ public class FuelList {
 		addBiomassFuel(ItemTags.LEAVES, 100);
 		addBiomassFuel(ItemTags.SAPLINGS, 100);
 		addBiomassFuel(TagDC.ItemTag.FUEL_BIOMASS, 200);
+		addFluidFuel(TagDC.FluidTag.PLANT_OIL, 80);
+		addFluidFuel(TagDC.FluidTag.FUEL, 240);
 	}
 
 	private static void addBiomassFuel(ItemStack input, int time) {
@@ -51,13 +54,13 @@ public class FuelList {
 	private static void addFluidFuel(TagKey<Fluid> fluid, int time) {
 		ResourceLocation res = fluid.location();
 		String fName = res.getPath().replace('/', '_');
-		FuelConfig.INSTANCE.addRecipe(fName, new DeviceFuel(FuelTypeDC.FLUID.toString(), time, res.toString(), Ingredient.EMPTY));
+		FuelConfig.INSTANCE.addRecipe(fName, new DeviceFuel(FuelTypeDC.FLUID.toString(), time, res.toString(), Ingredient.of(new ItemStack(CoreInit.NULL_ITEM.get()))));
 	}
 
 	private static void addGasFuel(TagKey<Fluid> fluid, int time) {
 		ResourceLocation res = fluid.location();
 		String fName = res.getPath().replace('/', '_');
-		FuelConfig.INSTANCE.addRecipe(fName, new DeviceFuel(FuelTypeDC.GAS.toString(), time, res.toString(), Ingredient.EMPTY));
+		FuelConfig.INSTANCE.addRecipe(fName, new DeviceFuel(FuelTypeDC.GAS.toString(), time, res.toString(), Ingredient.of(new ItemStack(CoreInit.NULL_ITEM.get()))));
 	}
 
 }

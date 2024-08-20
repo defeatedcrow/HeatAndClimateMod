@@ -2,6 +2,7 @@ package defeatedcrow.hac.core.material;
 
 import java.util.function.Supplier;
 
+import defeatedcrow.hac.core.client.gui.DisplayShelfMenu;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.block.DoorItemDC;
 import defeatedcrow.hac.core.material.block.LayerStoneBlock;
@@ -13,9 +14,12 @@ import defeatedcrow.hac.core.material.block.building.Candlestick;
 import defeatedcrow.hac.core.material.block.building.CarpetPlanks;
 import defeatedcrow.hac.core.material.block.building.ChainBlockDC;
 import defeatedcrow.hac.core.material.block.building.ChairBlock;
+import defeatedcrow.hac.core.material.block.building.ChandelierCandle;
 import defeatedcrow.hac.core.material.block.building.ChandelierLamp;
 import defeatedcrow.hac.core.material.block.building.ChandelierTile;
 import defeatedcrow.hac.core.material.block.building.ConnectedGlassBlock;
+import defeatedcrow.hac.core.material.block.building.DisplayShelfBlock;
+import defeatedcrow.hac.core.material.block.building.DisplayShelfTile;
 import defeatedcrow.hac.core.material.block.building.DoorWoodDC;
 import defeatedcrow.hac.core.material.block.building.FenceMetal;
 import defeatedcrow.hac.core.material.block.building.FenceWoodDC;
@@ -46,12 +50,14 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.network.IContainerFactory;
 import net.minecraftforge.registries.RegistryObject;
 
 public class BuildInit {
@@ -380,6 +386,7 @@ public class BuildInit {
 	public static final RegistryObject<Block> CHANDELIER_SERPENTINE = regBlock("chandelier_serpentine", () -> new ChandelierLamp("serpentine"), null);
 
 	public static final RegistryObject<Block> CANDLESTICK = regBlock("candlestick", () -> new Candlestick("candlestick"), null);
+	public static final RegistryObject<Block> CHANDELIER_CANDLE = regBlock("chandelier_candle", () -> new ChandelierCandle("candle"), null);
 
 	public static final RegistryObject<Block> BERRY_LANTERN_WHITE = regBlock("berry_lantern_white", () -> new LanternLight("berry_lantern_white"), TagDC.ItemTag.HAC_LANTERN);
 	public static final RegistryObject<Block> BERRY_LANTERN_BLUE = regBlock("berry_lantern_blue", () -> new LanternLight("berry_lantern_blue"), TagDC.ItemTag.HAC_LANTERN);
@@ -396,6 +403,7 @@ public class BuildInit {
 	public static final RegistryObject<Block> CHAIN_GOLD = regBlock("chain_gold", () -> new ChainBlockDC("gold"), null);
 
 	public static final RegistryObject<Block> TOOL_HOOK = regBlock("toolhook", () -> new ToolHookBlock("toolhook"), null);
+	public static final RegistryObject<Block> DISPLAY_SHELF = regBlock("display_shelf", () -> new DisplayShelfBlock("display_shelf"), null);
 
 	public static final RegistryObject<Block> CARPET_LINEN = regBlock("carpet_linen", () -> new CarpetPlanks("carpet_linen"), null);
 	public static final RegistryObject<Block> CARPET_WHITE = regBlock("carpet_white", () -> new CarpetPlanks("carpet_white"), TagDC.ItemTag.HAC_CARPET);
@@ -451,7 +459,7 @@ public class BuildInit {
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<ChandelierTile>> CHANDELIER_TILE = CoreInit.BLOCK_ENTITIES.register("chandelier_crystal_tile",
 			() -> BlockEntityType.Builder.of(ChandelierTile::new, new Block[] { CHANDELIER_LAMP.get(), CHANDELIER_FLUORITE.get(), CHANDELIER_JET.get(), CHANDELIER_DESERTROSE.get(),
-				CHANDELIER_SERPENTINE.get(), CHANDELIER_IRON.get() }).build(null));
+				CHANDELIER_SERPENTINE.get(), CHANDELIER_IRON.get(), CHANDELIER_CANDLE.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<LuggageTile>> LUGGAGE_TILE = CoreInit.BLOCK_ENTITIES.register("luggage_tile",
 			() -> BlockEntityType.Builder.of(LuggageTile::new, new Block[] { LUGGAGE_NORMAL.get(), LUGGAGE_WHITE.get(), LUGGAGE_BLUE.get(), LUGGAGE_BLACK.get(), LUGGAGE_RED.get(), LUGGAGE_GREEN
@@ -468,7 +476,14 @@ public class BuildInit {
 	public static final RegistryObject<BlockEntityType<ToolHookTile>> TOOLHOOK_TILE = CoreInit.BLOCK_ENTITIES.register("toolhook_tile",
 			() -> BlockEntityType.Builder.of(ToolHookTile::new, new Block[] { TOOL_HOOK.get() }).build(null));
 
+	public static final RegistryObject<BlockEntityType<DisplayShelfTile>> DISPLAY_SHELF_TILE = CoreInit.BLOCK_ENTITIES.register("display_shelf_tile",
+			() -> BlockEntityType.Builder.of(DisplayShelfTile::new, new Block[] { DISPLAY_SHELF.get() }).build(null));
+
 	// Menu
+	public static final RegistryObject<MenuType<DisplayShelfMenu>> DISPLAY_SHELF_MENU = CoreInit.register("dcs_display_shelf", (IContainerFactory<DisplayShelfMenu>) (id, playerInv, data) -> {
+		DisplayShelfTile cont = (DisplayShelfTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return DisplayShelfMenu.getMenu(id, playerInv, cont);
+	});
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("build/" + name, block);

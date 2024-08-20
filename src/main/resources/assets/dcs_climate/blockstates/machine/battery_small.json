@@ -1,132 +1,40 @@
 {
- "variants": {
-    "facing=north,stage9=0": {
-      "model": "dcs_climate:block/machine/battery_small_0"
-    },
-    "facing=south,stage9=0": {
-      "model": "dcs_climate:block/machine/battery_small_0",
-      "y": 180
-    },
-    "facing=east,stage9=0": {
-      "model": "dcs_climate:block/machine/battery_small_0",
-      "y": 90
-    },
-    "facing=west,stage9=0": {
-      "model": "dcs_climate:block/machine/battery_small_0",
-      "y": 270
-    },
-    "facing=north,stage9=1": {
-      "model": "dcs_climate:block/machine/battery_small_1"
-    },
-    "facing=south,stage9=1": {
-      "model": "dcs_climate:block/machine/battery_small_1",
-      "y": 180
-    },
-    "facing=east,stage9=1": {
-      "model": "dcs_climate:block/machine/battery_small_1",
-      "y": 90
-    },
-    "facing=west,stage9=1": {
-      "model": "dcs_climate:block/machine/battery_small_1",
-      "y": 270
-    },"facing=north,stage9=2": {
-      "model": "dcs_climate:block/machine/battery_small_2"
-    },
-    "facing=south,stage9=2": {
-      "model": "dcs_climate:block/machine/battery_small_2",
-      "y": 180
-    },
-    "facing=east,stage9=2": {
-      "model": "dcs_climate:block/machine/battery_small_2",
-      "y": 90
-    },
-    "facing=west,stage9=2": {
-      "model": "dcs_climate:block/machine/battery_small_2",
-      "y": 270
-    },"facing=north,stage9=3": {
-      "model": "dcs_climate:block/machine/battery_small_3"
-    },
-    "facing=south,stage9=3": {
-      "model": "dcs_climate:block/machine/battery_small_3",
-      "y": 180
-    },
-    "facing=east,stage9=3": {
-      "model": "dcs_climate:block/machine/battery_small_3",
-      "y": 90
-    },
-    "facing=west,stage9=3": {
-      "model": "dcs_climate:block/machine/battery_small_3",
-      "y": 270
-    },"facing=north,stage9=4": {
-      "model": "dcs_climate:block/machine/battery_small_4"
-    },
-    "facing=south,stage9=4": {
-      "model": "dcs_climate:block/machine/battery_small_4",
-      "y": 180
-    },
-    "facing=east,stage9=4": {
-      "model": "dcs_climate:block/machine/battery_small_4",
-      "y": 90
-    },
-    "facing=west,stage9=4": {
-      "model": "dcs_climate:block/machine/battery_small_4",
-      "y": 270
-    },"facing=north,stage9=5": {
-      "model": "dcs_climate:block/machine/battery_small_5"
-    },
-    "facing=south,stage9=5": {
-      "model": "dcs_climate:block/machine/battery_small_5",
-      "y": 180
-    },
-    "facing=east,stage9=5": {
-      "model": "dcs_climate:block/machine/battery_small_5",
-      "y": 90
-    },
-    "facing=west,stage9=5": {
-      "model": "dcs_climate:block/machine/battery_small_5",
-      "y": 270
-    },"facing=north,stage9=6": {
-      "model": "dcs_climate:block/machine/battery_small_6"
-    },
-    "facing=south,stage9=6": {
-      "model": "dcs_climate:block/machine/battery_small_6",
-      "y": 180
-    },
-    "facing=east,stage9=6": {
-      "model": "dcs_climate:block/machine/battery_small_6",
-      "y": 90
-    },
-    "facing=west,stage9=6": {
-      "model": "dcs_climate:block/machine/battery_small_6",
-      "y": 270
-    },"facing=north,stage9=7": {
-      "model": "dcs_climate:block/machine/battery_small_7"
-    },
-    "facing=south,stage9=7": {
-      "model": "dcs_climate:block/machine/battery_small_7",
-      "y": 180
-    },
-    "facing=east,stage9=7": {
-      "model": "dcs_climate:block/machine/battery_small_7",
-      "y": 90
-    },
-    "facing=west,stage9=7": {
-      "model": "dcs_climate:block/machine/battery_small_7",
-      "y": 270
-    },"facing=north,stage9=8": {
-      "model": "dcs_climate:block/machine/battery_small_8"
-    },
-    "facing=south,stage9=8": {
-      "model": "dcs_climate:block/machine/battery_small_8",
-      "y": 180
-    },
-    "facing=east,stage9=8": {
-      "model": "dcs_climate:block/machine/battery_small_8",
-      "y": 90
-    },
-    "facing=west,stage9=8": {
-      "model": "dcs_climate:block/machine/battery_small_8",
-      "y": 270
-    }
+  "variants": {
+    "facing=north,stage9=0": {"model": "dcs_climate:block/machine/battery_small_0"},
+    "facing=south,stage9=0": {"model": "dcs_climate:block/machine/battery_small_0","y": 180},
+    "facing=east,stage9=0": {"model": "dcs_climate:block/machine/battery_small_0", "y": 90},
+    "facing=west,stage9=0": {"model": "dcs_climate:block/machine/battery_small_0", "y": 270},
+    "facing=north,stage9=1": {"model": "dcs_climate:block/machine/battery_small_1"},
+    "facing=south,stage9=1": {"model": "dcs_climate:block/machine/battery_small_1","y": 180},
+    "facing=east,stage9=1": {"model": "dcs_climate:block/machine/battery_small_1","y": 90},
+    "facing=west,stage9=1": {"model": "dcs_climate:block/machine/battery_small_1","y": 270},
+    "facing=north,stage9=2": {"model": "dcs_climate:block/machine/battery_small_2"},
+    "facing=south,stage9=2": {"model": "dcs_climate:block/machine/battery_small_2","y": 180},
+    "facing=east,stage9=2": {"model": "dcs_climate:block/machine/battery_small_2","y": 90},
+    "facing=west,stage9=2": {"model": "dcs_climate:block/machine/battery_small_2","y": 270},
+    "facing=north,stage9=3": {"model": "dcs_climate:block/machine/battery_small_3"},
+    "facing=south,stage9=3": {"model": "dcs_climate:block/machine/battery_small_3","y": 180},
+    "facing=east,stage9=3": {"model": "dcs_climate:block/machine/battery_small_3","y": 90},
+    "facing=west,stage9=3": {"model": "dcs_climate:block/machine/battery_small_3","y": 270},
+    "facing=north,stage9=4": {"model": "dcs_climate:block/machine/battery_small_4"},
+    "facing=south,stage9=4": {"model": "dcs_climate:block/machine/battery_small_4","y": 180},
+    "facing=east,stage9=4": {"model": "dcs_climate:block/machine/battery_small_4","y": 90},
+    "facing=west,stage9=4": {"model": "dcs_climate:block/machine/battery_small_4", "y": 270},
+    "facing=north,stage9=5": {"model": "dcs_climate:block/machine/battery_small_5"},
+    "facing=south,stage9=5": {"model": "dcs_climate:block/machine/battery_small_5","y": 180},
+    "facing=east,stage9=5": {"model": "dcs_climate:block/machine/battery_small_5","y": 90},
+    "facing=west,stage9=5": {"model": "dcs_climate:block/machine/battery_small_5","y": 270},
+    "facing=north,stage9=6": {"model": "dcs_climate:block/machine/battery_small_6"},
+    "facing=south,stage9=6": {"model": "dcs_climate:block/machine/battery_small_6","y": 180},
+    "facing=east,stage9=6": {"model": "dcs_climate:block/machine/battery_small_6","y": 90},
+    "facing=west,stage9=6": {"model": "dcs_climate:block/machine/battery_small_6","y": 270},
+    "facing=north,stage9=7": {"model": "dcs_climate:block/machine/battery_small_7"},
+    "facing=south,stage9=7": {"model": "dcs_climate:block/machine/battery_small_7","y": 180},
+    "facing=east,stage9=7": { "model": "dcs_climate:block/machine/battery_small_7","y": 90},
+    "facing=west,stage9=7": {"model": "dcs_climate:block/machine/battery_small_7","y": 270},
+    "facing=north,stage9=8": {"model": "dcs_climate:block/machine/battery_small_8"},
+    "facing=south,stage9=8": {"model": "dcs_climate:block/machine/battery_small_8","y": 180},
+    "facing=east,stage9=8": {"model": "dcs_climate:block/machine/battery_small_8","y": 90},
+    "facing=west,stage9=8": {"model": "dcs_climate:block/machine/battery_small_8","y": 270}
   }
 }

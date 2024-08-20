@@ -1,0 +1,85 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "base": "dcs_climate:block/build/slab_top_mortar",
+        "red": "dcs_climate:block/machine/monitor_rs_off",
+        "yellow": "dcs_climate:block/machine/monitor_rs_yellow_off",
+        "blue": "dcs_climate:block/machine/monitor_rs_green_on",
+        "particle": "dcs_climate:block/build/slab_top_mortar"
+    },
+    "elements": [
+        {
+            "from": [4, 0, 4],
+            "to": [12, 2, 12],
+            "faces": {
+                "north": {"uv": [4, 14, 12, 16], "texture": "#base"},
+                "east": {"uv": [4, 14, 12, 16], "texture": "#base"},
+                "south": {"uv": [4, 14, 12, 16], "texture": "#base"},
+                "west": {"uv": [4, 14, 12, 16], "texture": "#base"},
+                "up": {"uv": [4, 4, 12, 12], "texture": "#base"},
+                "down": {"uv": [4, 4, 12, 12], "texture": "#base"}
+            }
+        },
+        {
+            "from": [6, 15, 6],
+            "to": [10, 16, 10],
+            "faces": {
+                "north": {"uv": [6, 9, 10, 10], "texture": "#base"},
+                "east": {"uv": [6, 9, 10, 10], "texture": "#base"},
+                "south": {"uv": [6, 9, 10, 10], "texture": "#base"},
+                "west": {"uv": [6, 9, 10, 10], "texture": "#base"},
+                "up": {"uv": [6, 5, 10, 9], "texture": "#base"},
+                "down": {"uv": [6, 5, 10, 9], "texture": "#base"}
+            }
+        },
+        {
+            "from": [6, 2, 6],
+            "to": [10, 3, 10],
+            "faces": {
+                "north": {"uv": [6, 9, 10, 10], "texture": "#base"},
+                "east": {"uv": [6, 9, 10, 10], "texture": "#base"},
+                "south": {"uv": [6, 9, 10, 10], "texture": "#base"},
+                "west": {"uv": [6, 9, 10, 10], "texture": "#base"},
+                "up": {"uv": [6, 5, 10, 9], "texture": "#base"},
+                "down": {"uv": [6, 5, 10, 9], "texture": "#base"}
+            }
+        },
+        {
+            "from": [6, 11, 6],
+            "to": [10, 15, 10],
+            "faces": {
+                "north": {"uv": [6, 6, 10, 10], "texture": "#red"},
+                "east": {"uv": [6, 6, 10, 10], "texture": "#red"},
+                "south": {"uv": [6, 6, 10, 10], "texture": "#red"},
+                "west": {"uv": [6, 6, 10, 10], "texture": "#red"},
+                "up": {"uv": [6, 6, 10, 10], "texture": "#red"},
+                "down": {"uv": [6, 6, 10, 10], "texture": "#red"}
+            }
+        },
+        {
+            "from": [6, 7, 6],
+            "to": [10, 11, 10],
+            "faces": {
+                "north": {"uv": [6, 6, 10, 10], "texture": "#yellow"},
+                "east": {"uv": [6, 6, 10, 10], "texture": "#yellow"},
+                "south": {"uv": [6, 6, 10, 10], "texture": "#yellow"},
+                "west": {"uv": [6, 6, 10, 10], "texture": "#yellow"},
+                "up": {"uv": [6, 6, 10, 10], "texture": "#yellow"},
+                "down": {"uv": [6, 6, 10, 10], "texture": "#yellow"}
+            }
+        },
+        {
+            "from": [6, 3, 6],
+            "to": [10, 7, 10],
+            "shade": false,
+            "faces": {
+                "north": {"uv": [6, 6, 10, 10], "texture": "#blue"},
+                "east": {"uv": [6, 6, 10, 10], "texture": "#blue"},
+                "south": {"uv": [6, 6, 10, 10], "texture": "#blue"},
+                "west": {"uv": [6, 6, 10, 10], "texture": "#blue"},
+                "up": {"uv": [6, 6, 10, 10], "texture": "#blue"},
+                "down": {"uv": [6, 6, 10, 10], "texture": "#blue"}
+            }
+        }
+    ]
+}

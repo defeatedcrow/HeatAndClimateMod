@@ -130,12 +130,12 @@ public class CookingPotTile extends FermentationJarTile implements IDisplayTile 
 	private ItemStack display = ItemStack.EMPTY;
 
 	@Override
-	public ItemStack getDisplay() {
+	public ItemStack getDisplay(int s) {
 		return display;
 	}
 
 	@Override
-	public void setDisplay(ItemStack item) {
+	public void setDisplay(int s, ItemStack item) {
 		display = item;
 	}
 
@@ -150,7 +150,7 @@ public class CookingPotTile extends FermentationJarTile implements IDisplayTile 
 
 			if (!DCItemUtil.isSameItem(display, inventory.getItem(maxInSlot() + 1), false)) {
 				display = inventory.getItem(maxInSlot() + 1).copy();
-				MsgTileDisplayItemToC.sendToClient((ServerLevel) level, pos, display);
+				MsgTileDisplayItemToC.sendToClient((ServerLevel) level, pos, display, 0);
 			}
 			return false;
 		}

@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.core.client.entity.model.BlockChandelier2Model;
+import defeatedcrow.hac.core.client.entity.model.BlockChandelier3Model;
 import defeatedcrow.hac.core.client.entity.model.BlockChandelierModel;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.block.building.ChandelierTile;
@@ -23,10 +24,12 @@ public class TileRendererChandelier implements BlockEntityRenderer<ChandelierTil
 
 	protected BlockChandelierModel model;
 	protected BlockChandelier2Model model2;
+	protected BlockChandelier3Model model3;
 
 	public TileRendererChandelier(BlockEntityRendererProvider.Context ctx) {
 		this.model = new BlockChandelierModel(ctx.bakeLayer(ChandelierTile.CHALCEDONY.getLayerLocation()));
 		this.model2 = new BlockChandelier2Model(ctx.bakeLayer(ChandelierTile.IRON.getLayerLocation()));
+		this.model3 = new BlockChandelier3Model(ctx.bakeLayer(ChandelierTile.CANDLE.getLayerLocation()));
 	}
 
 	@Override
@@ -52,6 +55,8 @@ public class TileRendererChandelier implements BlockEntityRenderer<ChandelierTil
 			if (block == BuildInit.CHANDELIER_IRON.get()) {
 				this.model2.renderToBuffer(poseStack, buffer.getBuffer(model2.renderType(tex)), l, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 				this.model2.renderFlowers(poseStack, buffer.getBuffer(RenderType.beaconBeam(tex, false)).uv2(240), l, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+			} else if (block == BuildInit.CHANDELIER_CANDLE.get()) {
+				this.model3.renderToBuffer(poseStack, buffer.getBuffer(model3.renderType(tex)), l, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 			} else {
 				this.model.renderToBuffer(poseStack, buffer.getBuffer(model.renderType(tex)), l, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 				this.model.renderFlowers(poseStack, buffer.getBuffer(RenderType.beaconBeam(tex, false)).uv2(240), l, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);

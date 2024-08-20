@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:dusts/bismuth"
+    },
+    "Y": {
+      "tag": "forge:gems/agates"
+    },
+    "Z": {
+      "item": "dcs_climate:main/tempmeter"
+    }
+  },
+  "pattern": [
+    "XZX",
+    "YYY"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/monitor_temp"
+  }
+}

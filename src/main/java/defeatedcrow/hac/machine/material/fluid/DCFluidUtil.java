@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 
 public class DCFluidUtil {
@@ -60,16 +61,16 @@ public class DCFluidUtil {
 		return f;
 	}
 
-	// public static FluidStack removeHead(FluidStack f) {
-	// if (f == null || f.isEmpty())
-	// return FluidStack.EMPTY;
-	// if (f.hasTag() && f.getTag().contains(TagKeyDC.HEAD)) {
-	// CompoundTag tag = f.getTag();
-	// tag.remove(TagKeyDC.HEAD);
-	// f.setTag(tag);
-	// }
-	// return f;
-	// }
+	public static FluidStack removeHead(FluidStack f) {
+		if (f == null || f.isEmpty())
+			return FluidStack.EMPTY;
+		if (f.hasTag() && f.getTag().contains(TagKeyDC.HEAD)) {
+			CompoundTag tag = f.getTag();
+			tag.remove(TagKeyDC.HEAD);
+			f.setTag(tag);
+		}
+		return f;
+	}
 
 	public static int combineHead(FluidStack f1, FluidStack f2) {
 		return Math.max(getHead(f1), getHead(f2));
@@ -116,44 +117,44 @@ public class DCFluidUtil {
 			ItemStack copy = item.copy();
 			copy.setCount(1);
 			return !DCUtil.isEmpty(item) && FluidUtil.getFluidHandler(copy)
-				.map(handler -> {
-					FluidStack fluid = handler.getFluidInTank(0);
-					if (fluid.isEmpty() || tank.isFull()) {
-						// tank -> handler
-						int space = Math.min(tank.getFluidAmount(), handler.getTankCapacity(0));
-						FluidStack drain = tank.drain(space, FluidAction.SIMULATE);
-						int d = handler.fill(drain, FluidAction.EXECUTE);
-						if (d > 0) {
-							tank.drain(d, FluidAction.EXECUTE);
-							ItemStack ret = handler.getContainer().copy();
-							item.shrink(1);
-							if (!ret.isEmpty()) {
-								ret.setCount(1);
-								ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, ret);
-								level.addFreshEntity(drop);
+					.map(handler -> {
+						FluidStack fluid = handler.getFluidInTank(0);
+						if (fluid.isEmpty() || tank.isFull()) {
+							// tank -> handler
+							int space = Math.min(tank.getFluidAmount(), handler.getTankCapacity(0));
+							FluidStack drain = tank.drain(space, FluidAction.SIMULATE);
+							int d = handler.fill(drain, FluidAction.EXECUTE);
+							if (d > 0) {
+								tank.drain(d, FluidAction.EXECUTE);
+								ItemStack ret = handler.getContainer().copy();
+								item.shrink(1);
+								if (!ret.isEmpty()) {
+									ret.setCount(1);
+									ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, ret);
+									level.addFreshEntity(drop);
+								}
+								return true;
 							}
-							return true;
-						}
-					} else if (handler.isFluidValid(tank.getSpace(), fluid)) {
-						// handler -> tank
-						FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
-						int f = tank.fill(drain, FluidAction.SIMULATE);
-						if (f > 0) {
-							drain.setAmount(f);
-							tank.fill(drain, FluidAction.EXECUTE);
-							handler.drain(drain, FluidAction.EXECUTE);
-							ItemStack ret = handler.getContainer().copy();
-							item.shrink(1);
-							if (!ret.isEmpty()) {
-								ret.setCount(1);
-								ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, ret);
-								level.addFreshEntity(drop);
+						} else if (handler.isFluidValid(tank.getSpace(), fluid)) {
+							// handler -> tank
+							FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
+							int f = tank.fill(drain, FluidAction.SIMULATE);
+							if (f > 0) {
+								drain.setAmount(f);
+								tank.fill(drain, FluidAction.EXECUTE);
+								handler.drain(drain, FluidAction.EXECUTE);
+								ItemStack ret = handler.getContainer().copy();
+								item.shrink(1);
+								if (!ret.isEmpty()) {
+									ret.setCount(1);
+									ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, ret);
+									level.addFreshEntity(drop);
+								}
+								return true;
 							}
-							return true;
 						}
-					}
-					return false;
-				}).orElse(false);
+						return false;
+					}).orElse(false);
 		}
 		return false;
 	}
@@ -163,44 +164,103 @@ public class DCFluidUtil {
 			ItemStack copy = item.copy();
 			copy.setCount(1);
 			return !DCUtil.isEmpty(item) && FluidUtil.getFluidHandler(copy)
-				.map(handler -> {
-					FluidStack fluid = handler.getFluidInTank(0);
-					if (fluid.isEmpty() || outTank.isFull()) {
-						int space = Math.min(outTank.getFluidAmount(), handler.getTankCapacity(0));
-						FluidStack drain = outTank.drain(space, FluidAction.SIMULATE);
-						int d = handler.fill(drain, FluidAction.EXECUTE);
-						if (d > 0) {
-							outTank.drain(d, FluidAction.EXECUTE);
-							ItemStack ret = handler.getContainer().copy();
-							item.shrink(1);
-							if (!ret.isEmpty()) {
-								ret.setCount(1);
-								ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, ret);
-								level.addFreshEntity(drop);
+					.map(handler -> {
+						FluidStack fluid = handler.getFluidInTank(0);
+						if (fluid.isEmpty() || outTank.isFull()) {
+							int space = Math.min(outTank.getFluidAmount(), handler.getTankCapacity(0));
+							FluidStack drain = outTank.drain(space, FluidAction.SIMULATE);
+							int d = handler.fill(drain, FluidAction.EXECUTE);
+							if (d > 0) {
+								outTank.drain(d, FluidAction.EXECUTE);
+								ItemStack ret = handler.getContainer().copy();
+								item.shrink(1);
+								if (!ret.isEmpty()) {
+									ret.setCount(1);
+									ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, ret);
+									level.addFreshEntity(drop);
+								}
+								return true;
 							}
-							return true;
-						}
-					} else if (handler.isFluidValid(inTank.getSpace(), fluid)) {
-						FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
-						int f = inTank.fill(drain, FluidAction.SIMULATE);
-						if (f > 0) {
-							drain.setAmount(f);
-							inTank.fill(drain, FluidAction.EXECUTE);
-							handler.drain(drain, FluidAction.EXECUTE);
-							ItemStack ret = handler.getContainer().copy();
-							item.shrink(1);
-							if (!ret.isEmpty()) {
-								ret.setCount(1);
-								ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, ret);
-								level.addFreshEntity(drop);
+						} else if (handler.isFluidValid(inTank.getSpace(), fluid)) {
+							FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
+							int f = inTank.fill(drain, FluidAction.SIMULATE);
+							if (f > 0) {
+								drain.setAmount(f);
+								inTank.fill(drain, FluidAction.EXECUTE);
+								handler.drain(drain, FluidAction.EXECUTE);
+								ItemStack ret = handler.getContainer().copy();
+								item.shrink(1);
+								if (!ret.isEmpty()) {
+									ret.setCount(1);
+									ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, ret);
+									level.addFreshEntity(drop);
+								}
+								return true;
 							}
-							return true;
 						}
-					}
-					return false;
-				}).orElse(false);
+						return false;
+					}).orElse(false);
 		}
 		return false;
+	}
+
+	public static boolean drainFluidIntoSink(Level level, Vec3 pos, IFluidHandler tank, ItemStack item) {
+		if (!DCUtil.isEmpty(item)) {
+			ItemStack copy = item.copy();
+			copy.setCount(1);
+			return FluidUtil.getFluidHandler(copy)
+					.map(handler -> {
+						FluidStack fluid = handler.getFluidInTank(0);
+						if (fluid.isEmpty()) {
+							// tank -> handler
+							return false;
+						} else if (handler.isFluidValid(1000, fluid)) {
+							// handler -> tank
+							FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
+							if (!drain.isEmpty()) {
+								handler.drain(drain, FluidAction.EXECUTE);
+								ItemStack ret = handler.getContainer().copy();
+								item.shrink(1);
+								if (!ret.isEmpty()) {
+									ret.setCount(1);
+									ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, ret);
+									level.addFreshEntity(drop);
+								}
+								return true;
+							}
+						}
+						return false;
+					}).orElse(false);
+		}
+		return false;
+	}
+
+	public static ItemStack fillFluidItem(Level level, IFluidHandler tank, ItemStack item) {
+		if (!DCUtil.isEmpty(item)) {
+			ItemStack copy = item.copy();
+			copy.setCount(1);
+			return FluidUtil.getFluidHandler(copy)
+					.map(handler -> {
+						FluidStack fluid = tank.getFluidInTank(0);
+						if (!fluid.isEmpty()) {
+							int space = Math.min(fluid.getAmount(), handler.getTankCapacity(0) - handler.getFluidInTank(0).getAmount());
+							space = Math.min(space, 1000);
+							FluidStack drain = tank.drain(space, FluidAction.SIMULATE);
+							int d = handler.fill(drain, FluidAction.EXECUTE);
+							if (d > 0) {
+								tank.drain(d, FluidAction.EXECUTE);
+								ItemStack ret = handler.getContainer().copy();
+								item.shrink(1);
+								if (!ret.isEmpty()) {
+									ret.setCount(1);
+								}
+								return ret;
+							}
+						}
+						return item;
+					}).orElse(item);
+		}
+		return item;
 	}
 
 }

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Z": {
+      "tag": "forge:ingots/brass"
+    }
+  },
+  "pattern": [
+    "Z Z",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:build/display_shelf"
+  }
+}

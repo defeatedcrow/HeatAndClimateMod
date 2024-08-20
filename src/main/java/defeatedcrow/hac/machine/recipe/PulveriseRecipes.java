@@ -259,6 +259,10 @@ public class PulveriseRecipes {
 				new ItemStack(FoodInit.FOOD_WHEAT.get(), 3), new ItemStack(FoodInit.FOOD_BRAN.get()), 100, new ItemStack(FoodInit.FEED_STRAW.get()), 100, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(Tags.Items.CROPS_WHEAT)));
 
+		DeviceRecipeList.addPulverizeRecipe(2, RecipeTypeDC.PULVERISE,
+				new ItemStack(FoodInit.FOOD_WHEAT.get(), 2), new ItemStack(FoodInit.FOOD_BRAN.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(Tags.Items.SEEDS_WHEAT)));
+
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
 				new ItemStack(Items.SUGAR, 5), new ItemStack(FoodInit.FOOD_BAGASSE.get()), 100, new ItemStack(FoodInit.FOOD_SYRUP.get()), 50, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_SUGAR)));
@@ -451,9 +455,21 @@ public class PulveriseRecipes {
 				new ItemStack(Items.CLAY_BALL, 1), new ItemStack(Items.SAND, 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(ItemTags.DIRT)));
 
+		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
+				new ItemStack(Items.SAND, 4), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(Tags.Items.SANDSTONE)));
+
 		DeviceRecipeList.addPulverizeRecipe(2, RecipeTypeDC.PULVERISE,
 				new ItemStack(Items.CLAY_BALL, 1), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(ItemTags.SAND)));
+
+		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
+				new ItemStack(FoodInit.STRING_WOOL.get(), 4), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(ItemTags.WOOL)));
+
+		DeviceRecipeList.addPulverizeRecipe(2, RecipeTypeDC.PULVERISE,
+				new ItemStack(FoodInit.STRING_WOOL.get(), 2), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(ItemTags.WOOL_CARPETS)));
 
 		DeviceRecipeList.addPulverizeRecipe(3, RecipeTypeDC.PULVERISE,
 				new ItemStack(Items.WHITE_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,

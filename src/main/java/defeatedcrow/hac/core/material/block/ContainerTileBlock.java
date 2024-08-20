@@ -49,8 +49,15 @@ public abstract class ContainerTileBlock extends EntityBlockDC {
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
 		BlockEntity tile = level.getBlockEntity(pos);
-		if (tile instanceof SimpleChestDC chest) {
-			if (level.isClientSide) {
+		InteractionResult check = super.use(state, level, pos, player, hand, hitRes);
+		if (check == InteractionResult.SUCCESS) {
+			return InteractionResult.SUCCESS;
+		}
+		if (check == InteractionResult.PASS) {
+			return InteractionResult.PASS;
+		}
+		if (tile instanceof OwnableBaseTileDC chest) {
+			if (level.isClientSide || !chest.hasMenu()) {
 				return InteractionResult.SUCCESS;
 			} else {
 				if (chest.canOpen(player) && player instanceof ServerPlayer sp) {
@@ -59,6 +66,7 @@ public abstract class ContainerTileBlock extends EntityBlockDC {
 				}
 				return InteractionResult.CONSUME;
 			}
+
 		} else {
 			return InteractionResult.sidedSuccess(level.isClientSide);
 		}

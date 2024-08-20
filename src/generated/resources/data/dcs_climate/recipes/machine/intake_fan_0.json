@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/aluminum"
+    },
+    "Y": {
+      "item": "minecraft:iron_bars"
+    },
+    "Z": {
+      "tag": "dcs_climate:impellers/middle"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "YZY",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/intake_fan"
+  }
+}

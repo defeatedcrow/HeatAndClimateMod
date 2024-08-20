@@ -1,19 +1,22 @@
 package defeatedcrow.hac.machine.material.block.monitor;
 
 import defeatedcrow.hac.api.util.TagKeyDC;
+import defeatedcrow.hac.core.material.block.OwnableBaseTileDC;
 import defeatedcrow.hac.core.network.packet.message.IIntReceiver;
 import defeatedcrow.hac.core.network.packet.message.MsgTileSimpleIntegerToC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class MonitorBaseTile extends BlockEntity implements IIntReceiver {
+public abstract class MonitorBaseTile extends OwnableBaseTileDC implements IIntReceiver {
 
 	protected BlockPos pairPos = BlockPos.ZERO;
 	public Direction side = Direction.UP;
@@ -24,7 +27,7 @@ public abstract class MonitorBaseTile extends BlockEntity implements IIntReceive
 
 	public int amount = 0;
 	public int amountMax = 0;
-	private int last = 0;
+	public int last = 0;
 
 	public String unit() {
 		return "";
@@ -118,22 +121,8 @@ public abstract class MonitorBaseTile extends BlockEntity implements IIntReceive
 	abstract boolean updateState();
 
 	@Override
-	public ClientboundBlockEntityDataPacket getUpdatePacket() {
-		return ClientboundBlockEntityDataPacket.create(this);
-	}
-
-	@Override
-	public CompoundTag getUpdateTag() {
-		return this.saveWithoutMetadata();
-	}
-
-	@Override
-	public void load(CompoundTag tag) {
-		super.load(tag);
-		loadTag(tag);
-	}
-
 	public void loadTag(CompoundTag tag) {
+		super.loadTag(tag);
 		int x = 0;
 		if (tag.contains(TagKeyDC.POS_X))
 			x = tag.getInt(TagKeyDC.POS_X);
@@ -153,16 +142,27 @@ public abstract class MonitorBaseTile extends BlockEntity implements IIntReceive
 	}
 
 	@Override
-	protected void saveAdditional(CompoundTag tag) {
-		super.saveAdditional(tag);
-		writeTag(tag);
-	}
-
 	public void writeTag(CompoundTag tag) {
+		super.writeTag(tag);
 		tag.putInt(TagKeyDC.POS_X, pairPos.getX());
 		tag.putInt(TagKeyDC.POS_Y, pairPos.getY());
 		tag.putInt(TagKeyDC.POS_Z, pairPos.getZ());
 		tag.putInt(TagKeyDC.DIRECTION, side.get3DDataValue());
+	}
+
+	@Override
+	protected Component getDefaultName() {
+		return this.hasOwner() ? Component.translatable("dcs.container.monitor.with_owner", this.ownerName) : Component.translatable("dcs.container.monitor");
+	}
+
+	@Override
+	protected AbstractContainerMenu createMenu(int i, Inventory inv) {
+		return null;
+	}
+
+	@Override
+	public boolean hasMenu() {
+		return false;
 	}
 
 }

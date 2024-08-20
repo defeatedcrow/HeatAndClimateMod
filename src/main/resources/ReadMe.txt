@@ -108,6 +108,13 @@
   燃焼チャンバーより温度が低いかわりに、燃料がより長持ちします。
   It has a lower temperature and is more fuel efficient than a heated chamber.
 
+  - 液体燃料バーナー / Fluid Fuel Burner
+
+  通気がFLOW以上の場合に、燃料を消費してUHTの温度を発生する熱源です。
+  When the airflow is FLOW+, it consumes fuel and generates temperatures of UHT.
+  植物油や燃料油などの液体燃料を消費します。
+  It consumes liquid fuels such as vegetable oil and fuel oil.
+
 ● Humidity
 
  Humidityはこのmodでの湿度です。3段階のTierと、『水中』であるUNDERWATERの4段階で表されます。
@@ -509,6 +516,56 @@
    汲み上げた流体は、真上にパイプなどをつなげた場合、水頭 6ブロック で送られます。
    If you connect a pipe directly above the pumped fluid, it will be sent with a water head of 6 blocks.
 
+  ・ 吸気ファン / Intake Fan
+
+   マシンの前方 5x5x5ブロックの範囲にある燃焼チャンバーの通気を上昇させます。
+   Increases the airflow of the combustion chamber within a 5x5x5 block area in front of the machine.
+
+   また、背後に液体容器が隣接しているとき、『圧縮空気』を排出します。
+   When there is a fluid container behind it, it discharges "compressed air" into it.
+
+   動作条件 Operating conditions
+    - 消費電力　Power Consumption : 4 FE / 8tick
+    - 前面にブロックが無いとき No block in front
+    - 背面にブロックが無い、または圧縮空気を送れる流体容器が置かれているとき No block or fluid container on the back
+
+  ・ 排気口 / Exhaust Vent
+
+   エネルギーを消費しないマシンです。
+   It is a machine that does not consume energy.
+
+   背後から圧縮空気を入れると、4 mB/tick で消費しながら通気WINDを発生します。
+   When compressed air is supplied from the rear, it generates WIND airflow while consuming at 4 mB/tick.
+
+   右クリックでスリットを閉じると、通気がFLOWに弱まり、圧縮空気の消費量が減少します。
+   Right-click to close the slit and weaken the airflow to FLOW, reducing compressed air consumption.
+
+  ・ アイテム吸引機 / Item Aspirator
+
+   RS信号か右クリックで動作し、1回の動作で 250FE 消費します。
+   It is operated by RS signal or right click, and consumes 250FE per operation.
+
+   前方 9x9x9 の範囲にあるドロップアイテムを集め、マシンの背後に集めます。
+   Collects dropped items within a 9x9x9 block range in front of it and places them behind the machine.
+
+   マシンの後ろにインベントリブロックがあるとき、集めたアイテムをインベントリに挿入します。
+   When there is an inventory block behind the machine, insert the collected items into it.
+
+  ・ 作物収穫機 / Crop Harvester
+
+   RS信号か右クリックで動作し、1回の動作で 250FE 消費します。
+   It is operated by RS signal or right click, and consumes 250FE per operation.
+
+   前方 9x9x9 の範囲にある作物ブロックを刈り取り、ドロップアイテムを集めます。
+   Harvests crop blocks within a 9x9x9 block area in front and collects dropped items.
+
+   小麦やジャガイモなどの苗ブロックを刈り取った後、種を植え直します。
+   After harvesting crop blocks (such as wheat or potatoes), the seeds are replanted.
+
+   マシンの後ろにインベントリブロックがあるとき、集めたアイテムをインベントリに挿入します。
+   When there is an inventory block behind the machine, insert the collected items into it.
+
+
 ****************************************************************************************************
 
 ◎ 流体の扱い / Fluid Handling
@@ -550,6 +607,15 @@
 
    INPUTモードは、液体タンクや、水の入った大釜から流体を取り出すことが出来ます。
    INPUT mode takes fluid from a fluid tank or cauldron filled with water.
+
+ ● 無限水源蛇口 / Infinity Water Faucet
+
+  RS信号または右クリックで動作します。
+  Operates with RS signal or right click.
+
+  蛇口を開いている間、下にある流体タンクに 128 mB/t で水を注入します。
+  While the tap is open, water is pumped into the fluid tank below at 128 mB/t.
+
 
 ****************************************************************************************************
 
@@ -595,9 +661,69 @@
     輸送速度が速いホッパーです。 1個/tick の速度でアイテムを輸送します。
     A hopper with fast transportation speed. Transports items at a rate of 1 item/tick.
 
+ ● コンベア / Conveyor
+
+ 　・ ノーマルコンベア / Normal Conveyor
+
+   隣接するインベントリからアイテムを引き出し、1個 / 8tick の速度で輸送します。
+   Takes an item from an adjacent inventory and transports it at a speed of 1 item/8 ticks.
+
+   通過するアイテムを気候精練します。
+   Climate smelting flowing items.
+
+   また、SMELTING以上の温度と、NORMAL以下の通気の場合、バニラ精錬を試みます。
+   Also, if the temperature is above SMELTING and the airflow is below NORMAL, it will attempt the vanilla smelting.
+
+  ・ ドロッパーコンベア / Dropper Conveyor
+
+   隣接するインベントリからアイテムを引き出し、1個 / 8tick の速度で輸送します。
+   Takes an item from an adjacent inventory and transports it at a speed of 1 item/8 ticks.
+
+   通過するアイテムを真下のインベントリに挿入します。挿入に失敗した場合、そのまま通過します。
+   Inserts the floating item into the inventory below. If insertion fails, it passes through.
+
+  ・ 充填コンベア / Filler Conveyor
+
+   隣接するインベントリからアイテムを引き出し、1個 / 8tick の速度で輸送します。
+   Takes an item from an adjacent inventory and transports it at a speed of 1 item/8 ticks.
+
+   真上に液体が入ったタンクブロックがあるとき、流れているアイテムにその液体の充填を試みます。
+   When there is a tank block with fluid on top, it will attempt to fill the flowing item with that fluid.
+
+
 ****************************************************************************************************
 
 #### 更新履歴 / Change log ####
+
+○v4-beta10
+ add: 測定器アイテム
+ add: 飾り棚
+ add: キャンドルのシャンデリア
+ add: コンベア 3種
+ add: キッチン作業台
+ add: シンク台
+ add: 液体燃料バーナー
+ add: 水力タービン
+ add: アンドン灯
+ add: インベントリモニター
+ add: 無限水源蛇口
+ add: アイテム吸引機
+ add: 作物収穫機
+ add: 吸気扇と排気口
+ change: マシンブロックにコンパレータ出力機能を付けた
+ change: キャビネットのテクスチャを修正
+ change: ポンプの消費エネルギーを調整
+ change: モニターブロックの座標登録動作を修正
+ change: 圧縮空気の設置時仕様を整えた
+ change: バニラ小麦の種で小麦粉を作れるように
+ change: いくつかのバニラレシピのアナザーを追加
+ fix: ProjectileがYマイナス高度で消えてしまうのを修正
+ fix: 土半ブロックは斜め下方向の草ブロックからも草の伝播を受ける
+ fix: 発電機、石臼のGUIの描画の修正
+ fix: グレーのリノリウムのレシピがない
+ fix: 追加ホッパーの向き
+ fix: 調理鍋のテクスチャの修正
+ fix: ふいごの使用時にSEがない
 
 ○v4-beta9
  add: 鬼灯ランタン

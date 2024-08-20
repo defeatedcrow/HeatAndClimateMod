@@ -5,6 +5,7 @@ import java.util.function.Function;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.network.packet.message.MsgCharmKeyToS;
+import defeatedcrow.hac.core.network.packet.message.MsgEffectToC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileBatteryGuiKeyToS;
 import defeatedcrow.hac.core.network.packet.message.MsgTileClimateToC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileDisplayItemToC;
@@ -12,6 +13,7 @@ import defeatedcrow.hac.core.network.packet.message.MsgTileFaceIOToC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileFluidToC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileOwnerKeyToS;
 import defeatedcrow.hac.core.network.packet.message.MsgTileSimpleIntegerToC;
+import defeatedcrow.hac.core.network.packet.message.MsgTileSimpleIntegerToS;
 import defeatedcrow.hac.core.network.packet.message.MsgWeatherToC;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -25,10 +27,10 @@ public class DCPacket {
 
 	private static SimpleChannel createChannel() {
 		return NetworkRegistry.ChannelBuilder.named(new ResourceLocation(ClimateCore.MOD_ID, "core"))
-			.networkProtocolVersion(() -> PROTOCOL_VERSION)
-			.serverAcceptedVersions(PROTOCOL_VERSION::equals)
-			.clientAcceptedVersions(PROTOCOL_VERSION::equals)
-			.simpleChannel();
+				.networkProtocolVersion(() -> PROTOCOL_VERSION)
+				.serverAcceptedVersions(PROTOCOL_VERSION::equals)
+				.clientAcceptedVersions(PROTOCOL_VERSION::equals)
+				.simpleChannel();
 	}
 
 	private static int id = 0;
@@ -45,6 +47,8 @@ public class DCPacket {
 		registerStoC(MsgTileDisplayItemToC.class, MsgTileDisplayItemToC::decode);
 		registerCtoS(MsgTileBatteryGuiKeyToS.class, MsgTileBatteryGuiKeyToS::decode);
 		registerStoC(MsgTileFaceIOToC.class, MsgTileFaceIOToC::decode);
+		registerCtoS(MsgTileSimpleIntegerToS.class, MsgTileSimpleIntegerToS::decode);
+		registerStoC(MsgEffectToC.class, MsgEffectToC::decode);
 	}
 
 	private static <MSG extends IPacketDC> void registerStoC(Class<MSG> clazz, Function<FriendlyByteBuf, MSG> decoder) {

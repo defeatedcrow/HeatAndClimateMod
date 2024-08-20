@@ -101,7 +101,7 @@ public class DCTank implements IFluidHandler, IFluidTank {
 						setFluid(FluidStack.EMPTY);
 					}
 				}
-				return fluid;
+				return f;
 			}
 		}
 		return FluidStack.EMPTY;
@@ -136,7 +136,7 @@ public class DCTank implements IFluidHandler, IFluidTank {
 
 	@Override
 	public boolean isFluidValid(int tank, @NotNull FluidStack stack) {
-		return isFluidValid(stack) && stack.getAmount() > 0 && tank >= stack.getAmount();
+		return isFluidValid(stack) && stack.getAmount() > 0 && tank <= getTanks();
 	}
 
 }

@@ -62,7 +62,7 @@ public class ToolHookBlock extends EntityBlockDC {
 		super(getProp());
 		name = s;
 		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.LIT, Boolean.valueOf(false)).setValue(WATERLOGGED,
-			Boolean.valueOf(false)));
+				Boolean.valueOf(false)));
 	}
 
 	@Override
@@ -97,7 +97,7 @@ public class ToolHookBlock extends EntityBlockDC {
 
 	public static void changeLisState(Level level, BlockPos pos, boolean lit) {
 		BlockState state = level.getBlockState(pos);
-		if (state.getBlock() instanceof ToolHookBlock && lit != DCState.getBool(state, DCState.POWERED)) {
+		if (state.getBlock() instanceof ToolHookBlock && lit != DCState.getBool(state, DCState.LIT)) {
 			level.setBlock(pos, state.setValue(DCState.LIT, Boolean.valueOf(lit)), 3);
 		}
 	}
@@ -107,13 +107,13 @@ public class ToolHookBlock extends EntityBlockDC {
 		FluidState fluidstate = cont.getLevel().getFluidState(cont.getClickedPos());
 		boolean pow = cont.getLevel().hasNeighborSignal(cont.getClickedPos());
 		return this.defaultBlockState().setValue(DCState.FACING, cont.getHorizontalDirection())
-			.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
 		BlockEntity tile = level.getBlockEntity(pos);
-		if (player != null && tile instanceof SingleItemDisplay hook) {
+		if (player != null && tile instanceof ItemDisplayTile hook) {
 			ItemStack itemstack = player.getItemInHand(hand);
 			if (!level.isClientSide) {
 				if (!DCUtil.isEmpty(hook.inventory.getItem(0))) {
@@ -162,7 +162,7 @@ public class ToolHookBlock extends EntityBlockDC {
 			}
 
 			ret.add(getMainDrop());
-			if (tile instanceof SingleItemDisplay base) {
+			if (tile instanceof ItemDisplayTile base) {
 				// 中身をその場に散らかす
 				InventoryDC inv = base.inventory;
 				ret.addAll(inv.inv);
@@ -234,7 +234,7 @@ public class ToolHookBlock extends EntityBlockDC {
 	@Override
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-		return level.isClientSide ? null : createTickerHelper(type, BuildInit.TOOLHOOK_TILE.get(), SingleItemDisplay::serverTick);
+		return level.isClientSide ? null : createTickerHelper(type, BuildInit.TOOLHOOK_TILE.get(), ItemDisplayTile::serverTick);
 	}
 
 }

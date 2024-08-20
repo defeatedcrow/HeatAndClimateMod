@@ -12,6 +12,7 @@ import defeatedcrow.hac.api.climate.IHeatCanceler;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.climate.IHumidityTile;
 import defeatedcrow.hac.api.event.BlockHeatTierEvent;
+import defeatedcrow.hac.api.material.IPosLinkTile;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
@@ -83,12 +85,21 @@ public class ClimateCalculator implements IClimateCalculator {
 		}
 
 		/*
+		 * PosLinkTile
+		 */
+		BlockEntity self = level.getBlockEntity(pos);
+		if (self instanceof IPosLinkTile link) {
+			if (link.getLinkType() == IPosLinkTile.Type.HEAT && link.getLinkPos() != null) {
+				DCHeatTier current = getBlockHeatTier(level, pos, link.getLinkPos(), true);
+				if (current != null && current.getTier() > hot.getTier()) {
+					hot = current;
+				}
+			}
+		}
+		/*
 		 * blockの気温
 		 */
 		int r = 2;
-		if (r < 0) {
-			r = 0;
-		}
 		int h1 = r;
 		for (int x = pos.getX() - r; x <= pos.getX() + r; x++) {
 			for (int z = pos.getZ() - r; z <= pos.getZ() + r; z++) {
@@ -111,11 +122,7 @@ public class ClimateCalculator implements IClimateCalculator {
 						}
 
 						DCHeatTier current = getBlockHeatTier(level, pos, p2, true);
-						if (current == null) {
-							current = hot;
-						}
-
-						if (current.getTier() > hot.getTier()) {
+						if (current != null && current.getTier() > hot.getTier()) {
 							hot = current;
 						}
 					}
@@ -123,6 +130,7 @@ public class ClimateCalculator implements IClimateCalculator {
 				}
 			}
 		}
+
 		return hot;
 	}
 
@@ -149,6 +157,18 @@ public class ClimateCalculator implements IClimateCalculator {
 		}
 
 		/*
+		 * PosLinkTile
+		 */
+		BlockEntity self = level.getBlockEntity(pos);
+		if (self instanceof IPosLinkTile link) {
+			if (link.getLinkType() == IPosLinkTile.Type.HEAT && link.getLinkPos() != null) {
+				DCHeatTier current = getBlockHeatTier(level, pos, link.getLinkPos(), true);
+				if (current != null && current.getTier() < cold.getTier()) {
+					cold = current;
+				}
+			}
+		}
+		/*
 		 * blockの気温
 		 */
 		int r = 2;
@@ -174,12 +194,7 @@ public class ClimateCalculator implements IClimateCalculator {
 						}
 
 						DCHeatTier current = getBlockHeatTier(level, pos, p2, false);
-
-						if (current == null) {
-							current = cold;
-						}
-
-						if (current.getTier() < cold.getTier()) {
+						if (current != null && current.getTier() < cold.getTier()) {
 							cold = current;
 						}
 					}
@@ -234,6 +249,7 @@ public class ClimateCalculator implements IClimateCalculator {
 				}
 			}
 		}
+
 		if (hasWater && hasAir < 4) {
 			return DCHumidity.UNDERWATER;
 		}
@@ -243,6 +259,7 @@ public class ClimateCalculator implements IClimateCalculator {
 			int offset = level.isRaining() && level.dimensionType().hasSkyLight() ? 1 : 0;
 			ret += offset;
 		}
+
 		/*
 		 * blockの値
 		 */
@@ -267,6 +284,22 @@ public class ClimateCalculator implements IClimateCalculator {
 								ret++;
 							}
 						}
+					}
+				}
+			}
+		}
+		/*
+		 * PosLinkTile
+		 */
+		BlockEntity self = level.getBlockEntity(pos);
+		if (self instanceof IPosLinkTile link) {
+			if (link.getLinkType() == IPosLinkTile.Type.HUM && link.getLinkPos() != null) {
+				DCHumidity current = getBlockHumidity(level, pos, link.getLinkPos());
+				if (current != null) {
+					if (current == DCHumidity.DRY) {
+						ret--;
+					} else if (current.getID() > 1) {
+						ret++;
 					}
 				}
 			}
@@ -335,6 +368,19 @@ public class ClimateCalculator implements IClimateCalculator {
 							count++;
 						}
 					}
+				}
+			}
+		}
+		/*
+		 * PosLinkTile
+		 */
+		BlockEntity self = level.getBlockEntity(pos);
+		if (self instanceof IPosLinkTile link) {
+			if (link.getLinkType() == IPosLinkTile.Type.AIR && link.getLinkPos() != null) {
+				DCAirflow current = getBlockAirflow(level, pos, link.getLinkPos());
+				if (current != null && current.getID() > 0) {
+					air = current;
+					count = 3;
 				}
 			}
 		}

@@ -48,7 +48,7 @@ public class ArrowRed extends AbstractArrow {
 
 	@Override
 	public void tick() {
-		if (this.tickCount > 2 && this.inGroundTime > 2 || this.getY() < 0 || this.isInLava()) {
+		if (this.tickCount > 2 && this.inGroundTime > 2 || this.getY() < this.getLevel().getMinBuildHeight() || this.isInLava()) {
 			this.dealtDamage = true;
 		}
 

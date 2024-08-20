@@ -1,5 +1,6 @@
 {
   "values": [
-    "#dcs_climate:impellers/small"
+    "#dcs_climate:impellers/small",
+    "#dcs_climate:impellers/middle"
   ]
 }

@@ -189,4 +189,13 @@ public abstract class EnergyTileBaseDC extends OwnableBaseTileDC implements IFac
 		return this.hasOwner() ? Component.translatable("dcs.container.battery.with_owner", this.ownerName) : Component.translatable("dcs.container.battery");
 	}
 
+	public static int getEnergyOutputSignal(BlockEntity tile) {
+		if (tile instanceof EnergyTileBaseDC machine) {
+			float f = machine.getEnergyHandler().getEnergyStored() / machine.getEnergyHandler().getMaxEnergyStored();
+			return Mth.floor(f * 14.0F) + (machine.getEnergyHandler().getEnergyStored() > 0 ? 1 : 0);
+		} else {
+			return 0;
+		}
+	}
+
 }

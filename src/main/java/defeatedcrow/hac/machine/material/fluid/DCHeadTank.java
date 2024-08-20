@@ -34,6 +34,16 @@ public class DCHeadTank extends DCTank implements IFluidPipe, IFacingTile, ICapa
 		return this;
 	}
 
+	public DCHeadTank setDefaultFace(NonNullList<FaceIO> faces) {
+		for (int i = 0; i < faces.size(); i++) {
+			if (i >= 0 && i < 6) {
+				FaceIO face = faces.get(i);
+				faces.set(i, face);
+			}
+		}
+		return this;
+	}
+
 	public DCHeadTank(int cap, int rate) {
 		super(cap);
 		this.flowRate = rate;

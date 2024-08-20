@@ -45,9 +45,9 @@ public abstract class EnergyProcessBlock extends EntityBlockDC {
 	public EnergyProcessBlock(Properties prop) {
 		super(prop);
 		this.registerDefaultState(this.stateDefinition.any()
-			.setValue(DCState.FACING, Direction.NORTH)
-			.setValue(DCState.POWERED, Boolean.valueOf(false))
-			.setValue(WATERLOGGED, Boolean.valueOf(false)));
+				.setValue(DCState.FACING, Direction.NORTH)
+				.setValue(DCState.POWERED, Boolean.valueOf(false))
+				.setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
 	@Override
@@ -59,8 +59,8 @@ public abstract class EnergyProcessBlock extends EntityBlockDC {
 			face = cont.getPlayer().getDirection().getOpposite();
 		}
 		return this.defaultBlockState().setValue(DCState.FACING, face)
-			.setValue(DCState.POWERED, Boolean.valueOf(pow))
-			.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+				.setValue(DCState.POWERED, Boolean.valueOf(pow))
+				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 
 	@Override
@@ -75,6 +75,13 @@ public abstract class EnergyProcessBlock extends EntityBlockDC {
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
+		InteractionResult check = super.use(state, level, pos, player, hand, hitRes);
+		if (check == InteractionResult.SUCCESS) {
+			return InteractionResult.SUCCESS;
+		}
+		if (check == InteractionResult.PASS) {
+			return InteractionResult.PASS;
+		}
 		BlockEntity tile = level.getBlockEntity(pos);
 		ItemStack held = player.getItemInHand(hand);
 		if (tile instanceof EnergyTileBaseDC machine) {
@@ -146,6 +153,16 @@ public abstract class EnergyProcessBlock extends EntityBlockDC {
 	}
 
 	/* Redstone */
+
+	@Override
+	public boolean hasAnalogOutputSignal(BlockState state) {
+		return true;
+	}
+
+	@Override
+	public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+		return EnergyProcessTile.getContainerOutputSignal(level.getBlockEntity(pos));
+	}
 
 	@Override
 	public PushReaction getPistonPushReaction(BlockState state) {

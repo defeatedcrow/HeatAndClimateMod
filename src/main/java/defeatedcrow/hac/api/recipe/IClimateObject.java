@@ -13,7 +13,7 @@ public interface IClimateObject {
 	/** in Block#tick method */
 	boolean onClimateChange(Level level, BlockPos pos, BlockState state, IClimate climate);
 
-	SoundEvent getSE();
+	SoundEvent getSE(IClimate climate);
 
 	boolean playSEOnChanging();
 

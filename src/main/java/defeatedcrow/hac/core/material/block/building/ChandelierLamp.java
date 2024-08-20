@@ -33,6 +33,12 @@ public class ChandelierLamp extends EntityBlockDC {
 		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
+	public ChandelierLamp(String s, BlockBehaviour.Properties prop) {
+		super(prop);
+		name = s;
+		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)));
+	}
+
 	public static BlockBehaviour.Properties getProp() {
 		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F, 6.0F).noOcclusion().lightLevel((state) -> {
 			return 15;

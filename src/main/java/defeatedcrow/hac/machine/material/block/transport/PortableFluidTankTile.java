@@ -14,8 +14,10 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -89,41 +91,41 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 				ItemStack copy = this.inventory.getItem(0).copy();
 				copy.setCount(1);
 				flag = FluidUtil.getFluidHandler(copy)
-					.map(handler -> {
-						FluidStack fluid = handler.getFluidInTank(0);
-						if (fluid.isEmpty() || tank.isFull()) {
-							int space = Math.min(tank.getFluidAmount(), handler.getTankCapacity(0));
-							int d = handler.fill(tank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
-							if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
-								// drain
-								tank.drain(d, FluidAction.EXECUTE);
-								ItemStack ret = handler.getContainer().copy();
-								if (!ret.isEmpty()) {
-									ret.setCount(1);
-									inventory.incrStackInSlot(1, ret);
+						.map(handler -> {
+							FluidStack fluid = handler.getFluidInTank(0);
+							if (fluid.isEmpty() || tank.isFull()) {
+								int space = Math.min(tank.getFluidAmount(), handler.getTankCapacity(0));
+								int d = handler.fill(tank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
+								if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
+									// drain
+									tank.drain(d, FluidAction.EXECUTE);
+									ItemStack ret = handler.getContainer().copy();
+									if (!ret.isEmpty()) {
+										ret.setCount(1);
+										inventory.incrStackInSlot(1, ret);
+									}
+									inventory.removeItem(0, 1);
+									return true;
 								}
-								inventory.removeItem(0, 1);
-								return true;
-							}
-						} else if (handler.isFluidValid(getTankCap(), fluid)) {
-							FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
-							int f = tank.fill(drain, FluidAction.SIMULATE);
-							if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
-								// fill
-								drain.setAmount(f);
-								tank.fill(drain, FluidAction.EXECUTE);
-								handler.drain(drain, FluidAction.EXECUTE);
-								ItemStack ret = handler.getContainer().copy();
-								if (!ret.isEmpty()) {
-									ret.setCount(1);
-									inventory.incrStackInSlot(1, ret);
+							} else if (handler.isFluidValid(getTankCap(), fluid)) {
+								FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
+								int f = tank.fill(drain, FluidAction.SIMULATE);
+								if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
+									// fill
+									drain.setAmount(f);
+									tank.fill(drain, FluidAction.EXECUTE);
+									handler.drain(drain, FluidAction.EXECUTE);
+									ItemStack ret = handler.getContainer().copy();
+									if (!ret.isEmpty()) {
+										ret.setCount(1);
+										inventory.incrStackInSlot(1, ret);
+									}
+									inventory.removeItem(0, 1);
+									return true;
 								}
-								inventory.removeItem(0, 1);
-								return true;
 							}
-						}
-						return false;
-					}).orElse(false);
+							return false;
+						}).orElse(false);
 			}
 
 			int hash = tank.getFluid().hashCode();
@@ -228,6 +230,17 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 	@Override
 	protected Component getDefaultName() {
 		return this.hasOwner() ? Component.translatable("dcs.container.tank.with_owner", this.ownerName) : Component.translatable("dcs.container.tank");
+	}
+
+	public static int getFluidOutputSignal(BlockEntity tile) {
+		if (tile instanceof PortableFluidTankTile machine) {
+			int cap = machine.tank.getCapacity();
+			int fluid = machine.tank.getFluidAmount();
+			float f = fluid / cap;
+			return Mth.floor(f * 14.0F) + (fluid > 0 ? 1 : 0);
+		} else {
+			return 0;
+		}
 	}
 
 }

@@ -98,7 +98,7 @@ public class BoilerBiomassTile extends HeatSourceTile implements IPowerSource, I
 		super.onTickProcess(level, pos, state);
 
 		int pow = 0;
-		lastPow = 0;
+		lastPow = power;
 		if (this.currentProgress > 0 && this.isActive(level, pos, state) && tank.getFluidAmount() > 0) {
 			if (!tank.getFluid().isEmpty() && tank.getFluid().getRawFluid().is(FluidTags.WATER) && !tank.drain(1, FluidAction.EXECUTE).isEmpty()) {
 				int tier = output.getTier() - 1;
@@ -108,7 +108,6 @@ public class BoilerBiomassTile extends HeatSourceTile implements IPowerSource, I
 			}
 		}
 		power = pow;
-		lastPow = pow;
 
 		if (count > 0) {
 			count--;

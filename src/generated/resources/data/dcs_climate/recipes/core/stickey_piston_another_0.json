@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:saps/resin"
+    },
+    "Y": {
+      "item": "minecraft:piston"
+    }
+  },
+  "pattern": [
+    "X",
+    "Y"
+  ],
+  "result": {
+    "item": "minecraft:sticky_piston"
+  }
+}

@@ -3,7 +3,6 @@ package defeatedcrow.hac.machine.material.block.machine;
 import defeatedcrow.hac.api.machine.FaceIO;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.material.block.EntityBlockDC;
-import defeatedcrow.hac.core.material.block.OwnableContainerBaseTileDC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileFaceIOToC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -42,11 +41,11 @@ public abstract class EnergyMachineBlock extends EntityBlockDC {
 	public EnergyMachineBlock(Properties prop) {
 		super(prop);
 		this.registerDefaultState(this.stateDefinition.any()
-			.setValue(DCState.FACING, Direction.NORTH)
-			.setValue(DCState.STAGE9, Integer.valueOf(0))
-			.setValue(DCState.FLAG, Boolean.valueOf(false))
-			.setValue(DCState.POWERED, Boolean.valueOf(false))
-			.setValue(WATERLOGGED, Boolean.valueOf(false)));
+				.setValue(DCState.FACING, Direction.NORTH)
+				.setValue(DCState.STAGE9, Integer.valueOf(0))
+				.setValue(DCState.FLAG, Boolean.valueOf(false))
+				.setValue(DCState.POWERED, Boolean.valueOf(false))
+				.setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
 	@Override
@@ -58,8 +57,8 @@ public abstract class EnergyMachineBlock extends EntityBlockDC {
 			face = cont.getPlayer().getDirection().getOpposite();
 		}
 		return this.defaultBlockState().setValue(DCState.FACING, face)
-			.setValue(DCState.POWERED, Boolean.valueOf(pow))
-			.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+				.setValue(DCState.POWERED, Boolean.valueOf(pow))
+				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 
 	@Override
@@ -69,6 +68,13 @@ public abstract class EnergyMachineBlock extends EntityBlockDC {
 			if (pow != DCState.getBool(state, DCState.POWERED)) {
 				level.setBlock(pos, state.setValue(DCState.POWERED, Boolean.valueOf(pow)), 2);
 			}
+		}
+	}
+
+	public static void changeRSState(Level level, BlockPos pos, boolean pow) {
+		BlockState state = level.getBlockState(pos);
+		if (state.getBlock() instanceof EnergyMachineBlock && DCState.getBool(state, DCState.POWERED) != pow) {
+			level.setBlock(pos, state.setValue(DCState.POWERED, pow), 3);
 		}
 	}
 
@@ -88,6 +94,13 @@ public abstract class EnergyMachineBlock extends EntityBlockDC {
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
+		InteractionResult check = super.use(state, level, pos, player, hand, hitRes);
+		if (check == InteractionResult.SUCCESS) {
+			return InteractionResult.SUCCESS;
+		}
+		if (check == InteractionResult.PASS) {
+			return InteractionResult.PASS;
+		}
 		BlockEntity tile = level.getBlockEntity(pos);
 		ItemStack held = player.getItemInHand(hand);
 		if (tile instanceof EnergyMachineBaseDC machine) {
@@ -100,12 +113,6 @@ public abstract class EnergyMachineBlock extends EntityBlockDC {
 				player.displayClientMessage(mes, true);
 				return InteractionResult.SUCCESS;
 			} else {
-				// if (ClimateCore.isDebug && player.isCrouching()) {
-				// UUID id = machine.getOwner();
-				// String name = machine.getOwnerName();
-				// DCLogger.debugInfoLog("### Registerd Owner: " + id.toString() + " ###");
-				// DCLogger.debugInfoLog("### Registerd OwnerName: " + name + " ###");
-				// }
 				if (level.isClientSide) {
 					return InteractionResult.SUCCESS;
 				} else {
@@ -162,6 +169,16 @@ public abstract class EnergyMachineBlock extends EntityBlockDC {
 	/* Redstone */
 
 	@Override
+	public boolean hasAnalogOutputSignal(BlockState state) {
+		return true;
+	}
+
+	@Override
+	public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+		return EnergyTileBaseDC.getEnergyOutputSignal(level.getBlockEntity(pos));
+	}
+
+	@Override
 	public PushReaction getPistonPushReaction(BlockState state) {
 		return PushReaction.BLOCK;
 	}
@@ -170,7 +187,7 @@ public abstract class EnergyMachineBlock extends EntityBlockDC {
 	public void onRemove(BlockState state, Level level, BlockPos pos, BlockState state2, boolean flag) {
 		if (!state.is(state2.getBlock())) {
 			BlockEntity blockentity = level.getBlockEntity(pos);
-			if (blockentity instanceof OwnableContainerBaseTileDC) {
+			if (blockentity instanceof EnergyTileBaseDC) {
 				level.updateNeighbourForOutputSignal(pos, state.getBlock());
 			}
 			super.onRemove(state, level, pos, state2, flag);

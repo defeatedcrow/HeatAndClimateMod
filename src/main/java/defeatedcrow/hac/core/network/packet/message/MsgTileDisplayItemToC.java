@@ -21,22 +21,25 @@ public class MsgTileDisplayItemToC implements IPacketDC {
 	protected int x;
 	protected int y;
 	protected int z;
+	protected int slot;
 	@Nonnull
 	protected ItemStack data;
 
 	public MsgTileDisplayItemToC() {}
 
-	public MsgTileDisplayItemToC(BlockPos pos, @Nonnull ItemStack stack) {
+	public MsgTileDisplayItemToC(BlockPos pos, @Nonnull ItemStack stack, int s) {
 		x = pos.getX();
 		y = pos.getY();
 		z = pos.getZ();
+		slot = s;
 		data = stack;
 	}
 
-	public MsgTileDisplayItemToC(int i1, int i2, int i3, @Nonnull ItemStack stack) {
+	public MsgTileDisplayItemToC(int i1, int i2, int i3, @Nonnull ItemStack stack, int s) {
 		x = i1;
 		y = i2;
 		z = i3;
+		slot = s;
 		data = stack;
 	}
 
@@ -45,6 +48,7 @@ public class MsgTileDisplayItemToC implements IPacketDC {
 		buf.writeInt(x);
 		buf.writeInt(y);
 		buf.writeInt(z);
+		buf.writeInt(slot);
 		buf.writeItem(data);
 	}
 
@@ -52,8 +56,9 @@ public class MsgTileDisplayItemToC implements IPacketDC {
 		int x1 = buf.readInt();
 		int y1 = buf.readInt();
 		int z1 = buf.readInt();
+		int s = buf.readInt();
 		ItemStack item = buf.readItem();
-		return new MsgTileDisplayItemToC(x1, y1, z1, item);
+		return new MsgTileDisplayItemToC(x1, y1, z1, item, s);
 	}
 
 	@Override
@@ -63,14 +68,14 @@ public class MsgTileDisplayItemToC implements IPacketDC {
 			Level level = ClimateCore.proxy.getClientLevel().get();
 			BlockEntity entity = level.getBlockEntity(pos);
 			if (entity instanceof IDisplayTile tile) {
-				tile.setDisplay(data);
+				tile.setDisplay(slot, data);
 			}
 		}
 	}
 
-	public static void sendToClient(ServerLevel level, BlockPos pos, @Nonnull ItemStack item) {
+	public static void sendToClient(ServerLevel level, BlockPos pos, @Nonnull ItemStack item, int s) {
 		if (level != null && level instanceof ServerLevel) {
-			MsgTileDisplayItemToC packet = new MsgTileDisplayItemToC(pos, item);
+			MsgTileDisplayItemToC packet = new MsgTileDisplayItemToC(pos, item, s);
 			level.players().forEach(player -> {
 				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
 			});

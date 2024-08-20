@@ -6,6 +6,6 @@ import net.minecraft.world.level.Level;
 /** Blockに実装するもの */
 public interface IAirflowTile {
 
-	DCAirflow getAirflow(Level world, BlockPos targrt, BlockPos source);
+	DCAirflow getAirflow(Level world, BlockPos target, BlockPos source);
 
 }

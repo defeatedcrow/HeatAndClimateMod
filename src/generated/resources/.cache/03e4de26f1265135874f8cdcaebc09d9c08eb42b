@@ -1,4 +1,4 @@
-// 1.19.2	2024-06-23T04:14:01.2109562	Tags for minecraft:item
+// 1.19.2	2024-08-19T20:30:04.4912204	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
 3e53fdcbff82a9db030e03d6fcbd63745c1eb081 data/dcs_climate/tags/items/building_stones.json
@@ -102,7 +102,8 @@ cd6d18dc51b62418c5466f9fba750545c3b74e79 data/dcs_climate/tags/items/gems/red.js
 fa6626c4d374bc0da9891eb041c6a80385f76161 data/dcs_climate/tags/items/gems/white.json
 edc53fe07b6cc91a4dc3d15cc04f5b2f1b0442d7 data/dcs_climate/tags/items/hoppers.json
 54057d6a734f0270d772afc38d85be2443fe48b5 data/dcs_climate/tags/items/hoppers/filter_hopper.json
-441c1a784e15ad6e9e166852abf0125021519374 data/dcs_climate/tags/items/impellers.json
+9b0d1233fd3bfdad3dcd63637527196a96a8e2e3 data/dcs_climate/tags/items/impellers.json
+e68745a2ba0c5a84a52a3c7d6324e14ca01e390a data/dcs_climate/tags/items/impellers/middle.json
 74242775277a2e826a2e0827788832d0795c6049 data/dcs_climate/tags/items/impellers/small.json
 4633cdb417b87817de5612ba3eecfc8398f717bb data/dcs_climate/tags/items/jewels.json
 7aee38b7c970c1f3d1d52225aa01a808c07dc168 data/dcs_climate/tags/items/jewels/magic_badges.json
@@ -149,7 +150,8 @@ e90f807327b2eeb5467e8207b64ed51e340bc63e data/dcs_climate/tags/items/meals/salad
 1d946ecb82bfd115602a95bf2c4207504a1ddecf data/dcs_climate/tags/items/meals/sweets.json
 60f0025f98b7ec0daeecae59c4d6b5009a30f29e data/dcs_climate/tags/items/meals/tart.json
 4a518f658c214b6035179b95d3f6d745440df29a data/dcs_climate/tags/items/metal_roofs.json
-8b11f0a581e2d2b006dbe0a90333c37cabb5e094 data/dcs_climate/tags/items/motors.json
+5ff8722f493662a5f0d273b59a34433148e9a8e1 data/dcs_climate/tags/items/motors.json
+d097701fe3472faa82108c234f386b57084d0a12 data/dcs_climate/tags/items/motors/middle.json
 152dbc221c9dff2f573eec4b5d6b264eada13aeb data/dcs_climate/tags/items/motors/small.json
 ea87dddaf131cef22fdeafd24a3a9421b7b97368 data/dcs_climate/tags/items/pipe_fluid.json
 69e89e6d3c1ecaf154db0e050b66caea7293da3e data/dcs_climate/tags/items/raw_foods.json
@@ -166,12 +168,16 @@ d673abe514b8497e051af0ae88941b292f686d8e data/forge/tags/items/bones.json
 26e0f225b40916d09dc876106ca05c43da385f9f data/forge/tags/items/clothes/plant.json
 f180ba5c0c0aeca2b0f43c37b21395742b015f68 data/forge/tags/items/clothes/rubber.json
 b858f7f81af10701fff014d785d71270d4b65dc1 data/forge/tags/items/clothes/wool.json
+53a1d9b96605ee5e576e683e3aaacb024aa706bb data/forge/tags/items/crafting_tools/altimeter.json
 61dbadc5b62d77863b8186aca0db8fd34ecb2f00 data/forge/tags/items/crafting_tools/calabash_bottle.json
+51aac884d587840c766e3e0bb8c230c00b687b33 data/forge/tags/items/crafting_tools/energymeter.json
+12f65178c0efecb21bc51b5386c3e7d670f596c5 data/forge/tags/items/crafting_tools/flowmeter.json
 33e0e0947c0d39c317d605836b032d580f9109ce data/forge/tags/items/crafting_tools/mortar.json
 ceb883b7349b5c333561182528462fd639554e73 data/forge/tags/items/crafting_tools/screwdriver.json
 13ce2131f2fd5a9d7277d4786ea9e30f0391ab02 data/forge/tags/items/crafting_tools/seeding_pot.json
 940e64f7498d44c5827d2f17cdaa1a589630f6ab data/forge/tags/items/crafting_tools/sieve.json
 a6f7273f7130d5d607b7da073fc5a85f25b3b69d data/forge/tags/items/crafting_tools/spindle.json
+4ec7c0320bbd686b3356bcb714654d2bc32519cb data/forge/tags/items/crafting_tools/tempmeter.json
 7b96e6ed1b4341367ba26c2dc6100aa198626af1 data/forge/tags/items/crops.json
 8a6bfdd3837538291f01b0f804642adddd18b8d8 data/forge/tags/items/crops/acorn.json
 d88083011e32e8b51cb47ea5b551feb82811f08c data/forge/tags/items/crops/adzuki.json
@@ -710,6 +716,7 @@ c74380900e83f72f6211faba04db996211a8a7b6 data/forge/tags/items/strings/cotton.js
 f9e2731ef013b8cbb4cb5e48fa5e33c399ee1489 data/forge/tags/items/strings/wool.json
 328a165aff818adfcd9eb9a7e98c7d5e4c4276a1 data/forge/tags/items/tools/axes.json
 ec25bf6f3a902db76c0c4deda002323da66a2b75 data/forge/tags/items/tools/cutlery.json
+ea5453bb23292a045408ae8581a1bcde5230ac72 data/forge/tags/items/tools/firestarter.json
 e269b8cd8da37045c2db781d6f4861a803e874e6 data/forge/tags/items/tools/harpoon.json
 bcc189e8978c2f13896ee9fbdb769e5607f2c78f data/forge/tags/items/tools/hoes.json
 de98ccc62c06e18b0ecd6dffbc6a7d8200610517 data/forge/tags/items/tools/pickaxes.json

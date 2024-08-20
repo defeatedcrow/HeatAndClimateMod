@@ -1,0 +1,9 @@
+{
+  "type": "dcs_climate:device_fuel",
+  "group": "fluid",
+  "ingredient": {
+    "item": "dcs_climate:main/null_item"
+  },
+  "input_fluid": "forge:plant_oil",
+  "burn_time": 80
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingredients/water"
+    },
+    "Y": {
+      "tag": "forge:clothes/rubber"
+    },
+    "Z": {
+      "tag": "forge:ingots/sus"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "ZZZ",
+    "Z  "
+  ],
+  "result": {
+    "item": "dcs_climate:machine/faucet_a"
+  }
+}

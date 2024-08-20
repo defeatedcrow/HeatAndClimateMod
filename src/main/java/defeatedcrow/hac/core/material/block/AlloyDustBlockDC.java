@@ -64,7 +64,7 @@ public class AlloyDustBlockDC extends ClimateBlock implements IRapidCollectables
 
 					// 効果音
 					if (playSEOnChanging()) {
-						level.playSound(null, pos, getSE(), SoundSource.BLOCKS, 0.8F, 1.5F);
+						level.playSound(null, pos, getSE(clm), SoundSource.BLOCKS, 0.8F, 1.5F);
 						DCLogger.debugLog("Smelting! " + output.getDisplayName().getString());
 					}
 

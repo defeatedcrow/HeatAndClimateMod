@@ -4,11 +4,13 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.material.IDisplayTile;
 import defeatedcrow.hac.core.material.block.InventoryDC;
+import defeatedcrow.hac.core.material.block.OwnableBaseTileDC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileDisplayItemToC;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
@@ -18,7 +20,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -27,27 +28,27 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public abstract class SingleItemDisplay extends BlockEntity implements WorldlyContainer, IDisplayTile {
+public abstract class ItemDisplayTile extends OwnableBaseTileDC implements WorldlyContainer, IDisplayTile {
 
-	public SingleItemDisplay(BlockEntityType<?> tile, BlockPos pos, BlockState state) {
+	public ItemDisplayTile(BlockEntityType<?> tile, BlockPos pos, BlockState state) {
 		super(tile, pos, state);
 	}
 
 	int count = 9;
-	private ItemStack display = ItemStack.EMPTY;
+	private NonNullList<ItemStack> display = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
 
 	@Override
-	public ItemStack getDisplay() {
-		return display;
+	public ItemStack getDisplay(int s) {
+		return display.get(s);
 	}
 
 	@Override
-	public void setDisplay(ItemStack item) {
-		display = item;
+	public void setDisplay(int s, ItemStack item) {
+		display.set(s, item);
 	}
 
 	// tick
-	public static void serverTick(Level level, BlockPos pos, BlockState state, SingleItemDisplay tile) {
+	public static void serverTick(Level level, BlockPos pos, BlockState state, ItemDisplayTile tile) {
 		tile.onTickProcess(level, pos, state);
 	}
 
@@ -57,17 +58,18 @@ public abstract class SingleItemDisplay extends BlockEntity implements WorldlyCo
 			return false;
 		} else {
 			count = 9;
-
-			if (!DCItemUtil.isSameItem(display, inventory.getItem(0), false, true)) {
-				display = inventory.getItem(0).copy();
-				MsgTileDisplayItemToC.sendToClient((ServerLevel) level, pos, display);
-			}
-
 			boolean lit = false;
-			if (!DCUtil.isEmpty(display) && display.getItem() instanceof BlockItem blockitem) {
-				Block block = blockitem.getBlock();
-				if (block.defaultBlockState().getLightEmission(level, pos) > 0) {
-					lit = true;
+			for (int i = 0; i < getContainerSize(); i++) {
+				if (!DCUtil.isEmpty(getDisplay(i)) && getDisplay(i).getItem() instanceof BlockItem blockitem) {
+					Block block = blockitem.getBlock();
+					if (block.defaultBlockState().getLightEmission(level, pos) > 0) {
+						lit = true;
+					}
+				}
+
+				if (!DCItemUtil.isSameItem(getDisplay(i), inventory.getItem(i), false, true)) {
+					setDisplay(i, inventory.getItem(i).copy());
+					MsgTileDisplayItemToC.sendToClient((ServerLevel) level, pos, getDisplay(i), i);
 				}
 			}
 			changeLitState(level, pos, lit);
@@ -77,11 +79,11 @@ public abstract class SingleItemDisplay extends BlockEntity implements WorldlyCo
 
 	protected void changeLitState(Level level, BlockPos pos, boolean lit) {}
 
-	public InventoryDC inventory = new InventoryDC(1, this);
+	public InventoryDC inventory = new InventoryDC(getContainerSize(), this);
 
 	@Override
 	public int getContainerSize() {
-		return 1;
+		return 5;
 	}
 
 	@Override
@@ -114,7 +116,7 @@ public abstract class SingleItemDisplay extends BlockEntity implements WorldlyCo
 		if (this.level.getBlockEntity(this.worldPosition) != this) {
 			return false;
 		} else {
-			return true;
+			return canOpen(player);
 		}
 	}
 
@@ -125,17 +127,17 @@ public abstract class SingleItemDisplay extends BlockEntity implements WorldlyCo
 
 	@Override
 	public int[] getSlotsForFace(Direction dir) {
-		return new int[] { 1 };
+		return new int[] { 0, 1, 2, 3, 4 };
 	}
 
 	@Override
 	public boolean canPlaceItemThroughFace(int s, ItemStack stack, @Nullable Direction dir) {
-		return !true;
+		return !this.isLocked() && this.canPlaceItem(s, stack);
 	}
 
 	@Override
 	public boolean canTakeItemThroughFace(int s, ItemStack stack, Direction dir) {
-		return true;
+		return !this.isLocked();
 	}
 
 	@Override
@@ -152,9 +154,18 @@ public abstract class SingleItemDisplay extends BlockEntity implements WorldlyCo
 	public void load(CompoundTag tag) {
 		super.load(tag);
 		inventory.readFromNBT(tag);
-		if (tag.contains("Display")) {
-			CompoundTag dispTag = tag.getCompound("Display");
-			display = ItemStack.of(dispTag);
+		if (getContainerSize() == 1) {
+			if (tag.contains("Display")) {
+				CompoundTag dispTag = tag.getCompound("Display");
+				display.set(0, ItemStack.of(dispTag));
+			}
+		} else {
+			for (int i = 0; i < getContainerSize(); i++) {
+				if (tag.contains("Display_" + i)) {
+					CompoundTag dispTag = tag.getCompound("Display_" + i);
+					display.set(i, ItemStack.of(dispTag));
+				}
+			}
 		}
 	}
 
@@ -162,9 +173,18 @@ public abstract class SingleItemDisplay extends BlockEntity implements WorldlyCo
 	protected void saveAdditional(CompoundTag tag) {
 		super.saveAdditional(tag);
 		inventory.writeToNBT(tag);
-		CompoundTag dispTag = new CompoundTag();
-		display.save(dispTag);
-		tag.put("Display", dispTag);
+
+		if (getContainerSize() == 1) {
+			CompoundTag dispTag = new CompoundTag();
+			getDisplay(0).save(dispTag);
+			tag.put("Display", dispTag);
+		} else {
+			for (int i = 0; i < getContainerSize(); i++) {
+				CompoundTag dispTag = new CompoundTag();
+				getDisplay(i).save(dispTag);
+				tag.put("Display_" + i, dispTag);
+			}
+		}
 	}
 
 	private LazyOptional<?> itemHandler = LazyOptional.of(() -> createUnSidedHandler());
@@ -175,7 +195,7 @@ public abstract class SingleItemDisplay extends BlockEntity implements WorldlyCo
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
-		if (!this.remove && cap == ForgeCapabilities.ITEM_HANDLER)
+		if (!this.isLocked() && !this.remove && cap == ForgeCapabilities.ITEM_HANDLER)
 			return itemHandler.cast();
 		return super.getCapability(cap, side);
 	}

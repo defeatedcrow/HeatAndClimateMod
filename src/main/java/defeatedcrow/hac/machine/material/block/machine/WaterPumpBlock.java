@@ -102,9 +102,13 @@ public class WaterPumpBlock extends EnergyMachineBlock {
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.energy.machine").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD);
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.machine.desc");
+		MutableComponent tex3 = Component.translatable("dcs.tip.energy.water_pump.desc").withStyle(ChatFormatting.GRAY);
+		MutableComponent tex4 = Component.translatable("dcs.tip.energy.water_pump.desc2").withStyle(ChatFormatting.GRAY);
 		if (ClimateCore.proxy.keyShiftPushed()) {
 			list.add(tex1);
 			list.add(tex2);
+			list.add(tex3);
+			list.add(tex4);
 		} else {
 			list.add(tex1);
 			list.add(Component.translatable("dcs.tip.shift"));

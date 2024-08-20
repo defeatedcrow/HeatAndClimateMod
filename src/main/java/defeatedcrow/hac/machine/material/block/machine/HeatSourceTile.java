@@ -3,6 +3,7 @@ package defeatedcrow.hac.machine.material.block.machine;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.api.material.IPosLinkTile;
 import defeatedcrow.hac.core.network.packet.message.IIntReceiver;
 import defeatedcrow.hac.core.network.packet.message.MsgTileSimpleIntegerToC;
 import net.minecraft.core.BlockPos;
@@ -12,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class HeatSourceTile extends ProcessTileBaseDC implements IIntReceiver {
+public abstract class HeatSourceTile extends ProcessTileBaseDC implements IIntReceiver, IPosLinkTile {
 
 	public HeatSourceTile(BlockEntityType<?> tile, BlockPos pos, BlockState state) {
 		super(tile, pos, state);
@@ -51,6 +52,7 @@ public abstract class HeatSourceTile extends ProcessTileBaseDC implements IIntRe
 			if (level instanceof ServerLevel)
 				MsgTileSimpleIntegerToC.sendToClient((ServerLevel) level, pos, output.getID());
 			HeatSourceBlock.changeLitState(level, pos, output.getTier() > 0);
+			HeatSourceBlock.changeFlagState(level, pos, output.getTier() > baseHeatTier().getTier());
 			setChanged(level, pos, state);
 		}
 
@@ -64,16 +66,40 @@ public abstract class HeatSourceTile extends ProcessTileBaseDC implements IIntRe
 	}
 
 	@Override
+	public IPosLinkTile.Type getLinkType() {
+		return IPosLinkTile.Type.AIR;
+	}
+
+	@Override
+	public boolean canLink(Level level, BlockPos pos, IPosLinkTile.Type type) {
+		return type == getLinkType() && pos != null && getBlockPos().closerThan(pos, 8.0D);
+	}
+
+	private BlockPos link = null;
+
+	@Override
+	public void setLinkPos(BlockPos pos) {
+		link = pos;
+	}
+
+	@Override
+	public BlockPos getLinkPos() {
+		return link;
+	}
+
+	@Override
 	public void loadTag(CompoundTag tag) {
 		super.loadTag(tag);
 		int o = tag.getInt("dcs.heat.output");
 		output = DCHeatTier.getTypeByID(o);
+		this.writePosToTag(tag);
 	}
 
 	@Override
 	public void writeTag(CompoundTag tag) {
 		super.writeTag(tag);
 		tag.putInt("dcs.heat.output", output.getID());
+		this.loadPosFromTag(tag);
 	}
 
 }

@@ -1,0 +1,45 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"wood": "dcs_climate:block/tree/plank_beech_walnut",
+        "particle": "dcs_climate:block/tree/plank_beech_walnut"
+	},
+	"elements": [
+        {
+            "from": [0, 0, 12],
+            "to": [2, 2, 16],
+            "faces": {
+                "north": {"uv": [14, 0, 16, 2], "texture": "#wood"},
+                "east": {"uv": [0, 2, 4, 4], "texture": "#wood"},
+                "south": {"uv": [0, 0, 2, 2], "texture": "#wood"},
+                "west": {"uv": [12, 2, 16, 4], "texture": "#wood"},
+                "up": {"uv": [14, 0, 16, 4], "texture": "#wood"},
+                "down": {"uv": [0, 0, 2, 4], "texture": "#wood"}
+            }
+        },
+        {
+            "from": [14, 0, 12],
+            "to": [16, 2, 16],
+            "faces": {
+                "north": {"uv": [0, 0, 2, 2], "texture": "#wood"},
+                "east": {"uv": [0, 2, 4, 4], "texture": "#wood"},
+                "south": {"uv": [14, 0, 16, 2], "texture": "#wood"},
+                "west": {"uv": [12, 2, 16, 4], "texture": "#wood"},
+                "up": {"uv": [0, 0, 2, 4], "texture": "#wood"},
+                "down": {"uv": [14, 0, 16, 4], "texture": "#wood"}
+            }
+        },
+        {
+            "from": [0, 2, 8],
+            "to": [16, 3, 16],
+            "faces": {
+                "north": {"uv": [0, 0, 16, 1], "texture": "#wood"},
+                "east": {"uv": [0, 0, 8, 1], "texture": "#wood"},
+                "south": {"uv": [0, 0, 16, 1], "texture": "#wood"},
+                "west": {"uv": [8, 0, 16, 1], "texture": "#wood"},
+                "up": {"uv": [0, 8, 16, 16], "texture": "#wood"},
+                "down": {"uv": [0, 0, 16, 8], "texture": "#wood"}
+            }
+        }
+    ]
+}

@@ -37,6 +37,8 @@ public class ChandelierTile extends BlockEntity implements IRenderBlockData {
 			return SERPENTINE;
 		if (block == BuildInit.CHANDELIER_IRON.get())
 			return IRON;
+		if (block == BuildInit.CHANDELIER_CANDLE.get())
+			return CANDLE;
 		return CHALCEDONY;
 	}
 
@@ -47,5 +49,7 @@ public class ChandelierTile extends BlockEntity implements IRenderBlockData {
 	public static final EntityRenderData SERPENTINE = new EntityRenderData("tile/chandelier_crystal_serpentine", 1.5F, 0.65F);
 
 	public static final EntityRenderData IRON = new EntityRenderData("tile/chandelier_iron", 1.5F, 0.65F);
+
+	public static final EntityRenderData CANDLE = new EntityRenderData("tile/chandelier_candle", 1.5F, 0.65F);
 
 }

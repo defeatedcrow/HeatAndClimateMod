@@ -76,7 +76,7 @@ public class SimpleInventoryScreen extends AbstractContainerScreen<SimpleInvento
 
 		double dx = x - (i + 156);
 		double dy = y - (j + 3);
-		if (dx >= 0.0D && dy >= 0.0D && dx < 112.0D && dy < 21.0D) {
+		if (dx >= 0.0D && dy >= 0.0D && dx < 14.0D && dy < 21.0D) {
 			if (this.getMenu().getContainer() != null && this.getMenu().isOwner) {
 				boolean b = this.getMenu().getContainer().toggleLock();
 				MsgTileOwnerKeyToS.sendToServer(this.minecraft.player, this.getMenu().getContainer().getBlockPos(), b);

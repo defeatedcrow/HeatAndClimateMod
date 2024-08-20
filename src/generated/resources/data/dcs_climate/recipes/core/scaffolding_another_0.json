@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:rods/sorghum"
+    },
+    "Y": {
+      "tag": "forge:string"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "X X",
+    "X X"
+  ],
+  "result": {
+    "count": 6,
+    "item": "minecraft:scaffolding"
+  }
+}

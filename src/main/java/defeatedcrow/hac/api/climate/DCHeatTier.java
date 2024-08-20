@@ -293,6 +293,10 @@ public enum DCHeatTier {
 		return ret;
 	}
 
+	public static List<DCHeatTier> smeltingTemp() {
+		return ImmutableList.of(SMELTING, UHT, INFERNO);
+	}
+
 	public static MutableComponent basename() {
 		return Component.translatable("dcs.enum.heat_name");
 	}

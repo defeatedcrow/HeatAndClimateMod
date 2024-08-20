@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,7 +18,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -90,7 +90,7 @@ public class Candlestick extends SidedLightDC implements IHeatTile {
 		if (player.getAbilities().mayBuild && player.getItemInHand(hand).isEmpty() && DCState.getBool(state, DCState.LIT)) {
 			extinguish(player, state, level, pos);
 			return InteractionResult.sidedSuccess(level.isClientSide);
-		} else if (player.getAbilities().mayBuild && player.getItemInHand(hand).is(Items.FLINT_AND_STEEL) && !DCState.getBool(state, DCState.LIT)) {
+		} else if (player.getAbilities().mayBuild && player.getItemInHand(hand).is(TagDC.ItemTag.FIRESTARTER) && !DCState.getBool(state, DCState.LIT)) {
 			setLit(state, level, pos, true);
 			return InteractionResult.sidedSuccess(level.isClientSide);
 		} else {
@@ -111,8 +111,7 @@ public class Candlestick extends SidedLightDC implements IHeatTile {
 		if (f < 0.3F) {
 			level.addParticle(ParticleTypes.SMOKE, vec.x, vec.y, vec.z, 0.0D, 0.0D, 0.0D);
 			if (f < 0.17F) {
-				level.playLocalSound(vec.x + 0.5D, vec.y + 0.5D, vec.z + 0.5D, SoundEvents.CANDLE_AMBIENT, SoundSource.BLOCKS, 1.0F + rand.nextFloat(), rand
-						.nextFloat() * 0.7F + 0.3F, false);
+				level.playLocalSound(vec.x, vec.y, vec.z, SoundEvents.CANDLE_AMBIENT, SoundSource.BLOCKS, 1.0F + rand.nextFloat(), rand.nextFloat() * 0.7F + 0.3F, false);
 			}
 		}
 		level.addParticle(ParticleTypes.SMALL_FLAME, vec.x, vec.y, vec.z, 0.0D, 0.0D, 0.0D);

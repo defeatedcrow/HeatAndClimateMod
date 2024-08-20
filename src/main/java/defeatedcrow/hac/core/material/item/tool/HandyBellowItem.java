@@ -43,12 +43,14 @@ public class HandyBellowItem extends CraftingItemDC {
 
 	public InteractionResultHolder<ItemStack> onBlockHit(Level level, Player player, InteractionHand hand, ItemStack card, BlockHitResult res) {
 		player.startUsingItem(hand);
-		if (!level.isClientSide && level.getBlockEntity(res.getBlockPos()) != null) {
+		if (level.getBlockEntity(res.getBlockPos()) != null) {
 			BlockEntity blockentity = level.getBlockEntity(res.getBlockPos());
 			if (blockentity instanceof IClimateReceiver tile) {
-				tile.receiveAirflow(DCAirflow.WIND);
+				if (!level.isClientSide) {
+					tile.receiveAirflow(DCAirflow.WIND);
+					player.swing(hand, true);
+				}
 				level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.WOOL_BREAK, SoundSource.BLOCKS, 1.0F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
-				player.swing(hand, true);
 			}
 			return InteractionResultHolder.success(card);
 		}

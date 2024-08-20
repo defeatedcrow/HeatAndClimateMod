@@ -58,14 +58,14 @@ public abstract class FluidPipeBlock extends EntityBlockDC {
 	public FluidPipeBlock(Properties prop) {
 		super(prop);
 		this.registerDefaultState(this.stateDefinition.any()
-			.setValue(DCState.NORTH, false)
-			.setValue(DCState.SOUTH, false)
-			.setValue(DCState.EAST, false)
-			.setValue(DCState.WEST, false)
-			.setValue(DCState.UP, false)
-			.setValue(DCState.DOWN, false)
-			.setValue(DCState.POWERED, Boolean.valueOf(false))
-			.setValue(WATERLOGGED, Boolean.valueOf(false)));
+				.setValue(DCState.NORTH, false)
+				.setValue(DCState.SOUTH, false)
+				.setValue(DCState.EAST, false)
+				.setValue(DCState.WEST, false)
+				.setValue(DCState.UP, false)
+				.setValue(DCState.DOWN, false)
+				.setValue(DCState.POWERED, Boolean.valueOf(false))
+				.setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
 	@Override
@@ -87,14 +87,14 @@ public abstract class FluidPipeBlock extends EntityBlockDC {
 		BlockState s5 = level.getBlockState(p5);
 		BlockState s6 = level.getBlockState(p6);
 		return this.defaultBlockState()
-			.setValue(DCState.NORTH, this.connectsTo(s1, level, p1, Direction.NORTH, true))
-			.setValue(DCState.EAST, this.connectsTo(s2, level, p2, Direction.EAST, true))
-			.setValue(DCState.SOUTH, this.connectsTo(s3, level, p3, Direction.SOUTH, true))
-			.setValue(DCState.WEST, this.connectsTo(s4, level, p4, Direction.WEST, true))
-			.setValue(DCState.UP, this.connectsTo(s5, level, p5, Direction.UP, true))
-			.setValue(DCState.DOWN, this.connectsTo(s6, level, p6, Direction.DOWN, true))
-			.setValue(DCState.POWERED, Boolean.valueOf(pow))
-			.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+				.setValue(DCState.NORTH, this.connectsTo(s1, level, p1, Direction.NORTH, true))
+				.setValue(DCState.EAST, this.connectsTo(s2, level, p2, Direction.EAST, true))
+				.setValue(DCState.SOUTH, this.connectsTo(s3, level, p3, Direction.SOUTH, true))
+				.setValue(DCState.WEST, this.connectsTo(s4, level, p4, Direction.WEST, true))
+				.setValue(DCState.UP, this.connectsTo(s5, level, p5, Direction.UP, true))
+				.setValue(DCState.DOWN, this.connectsTo(s6, level, p6, Direction.DOWN, true))
+				.setValue(DCState.POWERED, Boolean.valueOf(pow))
+				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 
 	@Override
@@ -196,6 +196,9 @@ public abstract class FluidPipeBlock extends EntityBlockDC {
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
+		if (super.use(state, level, pos, player, hand, hitRes) == InteractionResult.SUCCESS) {
+			return InteractionResult.SUCCESS;
+		}
 		BlockEntity tile = level.getBlockEntity(pos);
 		ItemStack held = player.getItemInHand(hand);
 		if (tile instanceof FluidPipeTileBaseDC cable && hitRes != null) {

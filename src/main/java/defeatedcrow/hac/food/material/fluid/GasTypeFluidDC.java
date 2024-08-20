@@ -8,17 +8,22 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.material.CoreInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.RegistryObject;
@@ -85,6 +90,22 @@ public class GasTypeFluidDC {
 					}
 				});
 			}
+
+			@Override
+			public boolean isVaporizedOnPlacement(Level level, BlockPos pos, FluidStack stack) {
+				return true;
+			}
+
+			@Override
+			public void onVaporize(@Nullable Player player, Level level, BlockPos pos, FluidStack stack) {
+				if (!level.getBlockState(pos.above()).getFluidState().isEmpty()) {
+					level.playSound(player, pos, SoundEvents.BUBBLE_COLUMN_UPWARDS_AMBIENT, SoundSource.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
+					for (int l = 0; l < 4; ++l)
+						level.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, pos.getX() + Math.random(), pos.getY() + Math.random(), pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);
+				} else {
+					super.onVaporize(player, level, pos, stack);
+				}
+			}
 		});
 		still = CoreInit.FLUIDS.register(name, () -> new ForgeFlowingFluid.Source(fluidProperties()));
 		flow = CoreInit.FLUIDS.register(name + "_flowing", () -> new ForgeFlowingFluid.Flowing(fluidProperties()));
@@ -92,13 +113,18 @@ public class GasTypeFluidDC {
 		block = CoreInit.BLOCKS.register("fluid/" + name,
 				() -> new LiquidBlock(getStillFluid(), BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100.0F).noLootTable()) {
 					@Override
-					public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
-						if (level.getBlockState(pos.above()).isAir() && this.getFluid().getFluidType().getTemperature() > 350 && rand.nextInt(3) == 0) {
-							double d0 = pos.getX() + 0.1D + rand.nextDouble() * 0.8D;
-							double d1 = pos.getY() + 1.125D;
-							double d2 = pos.getZ() + 0.1D + rand.nextDouble() * 0.8D;
-							level.addParticle(CoreInit.SMOKE.get(), d0, d1, d2, 0.0D, 0.0D, 0.0D);
+					public void onPlace(BlockState state, Level level, BlockPos pos, BlockState state2, boolean flag) {
+						if (!level.getBlockState(pos.above()).getFluidState().isEmpty()) {
+							level.playSound(null, pos, SoundEvents.BUBBLE_COLUMN_UPWARDS_AMBIENT, SoundSource.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
+							for (int l = 0; l < 4; ++l)
+								level.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, pos.getX() + Math.random(), pos.getY() + Math.random(), pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);
+						} else {
+							level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
+
+							for (int l = 0; l < 8; ++l)
+								level.addAlwaysVisibleParticle(CoreInit.SMOKE.get(), pos.getX() + Math.random(), pos.getY() + Math.random(), pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);
 						}
+						level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
 					}
 				});
 		bucket = CoreInit.ITEMS.register("fluid/bucket_" + name,
@@ -127,7 +153,8 @@ public class GasTypeFluidDC {
 	protected ForgeFlowingFluid.Properties fluidProperties() {
 		return new ForgeFlowingFluid.Properties(type, still, flow)
 				.bucket(getBucket())
-				.block(getStillBlock());
+				.block(getStillBlock())
+				.levelDecreasePerBlock(15);
 	}
 
 	public Supplier<FluidType> getType() {

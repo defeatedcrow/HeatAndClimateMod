@@ -106,43 +106,43 @@ public abstract class HopperBaseTile extends OwnableContainerBaseTileDC implemen
 				if (!(input instanceof Hopper)) {
 					if (getTopSlots() != null && getTopSlots().length > 0 && input != null) {
 						input.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.DOWN)
-							.ifPresent(handler -> {
-								int slot = -1;
-								for (int j = 0; j < handler.getSlots(); j++) {
-									if (!handler.extractItem(j, 1, true).isEmpty()) {
-										slot = j;
-										break;
-									}
-								}
-								if (slot >= 0) {
-									ItemStack take = handler.extractItem(slot, 1, true).copy();
-									if (isFilterInclude(take)) {
-										int i = this.getInventory().canInsertResult(take, getFilterSlots());
-										if (i > 0) {
-											this.getInventory().insertResult(take, getFilterSlots());
-											handler.extractItem(slot, 1, false);
-											this.setChanged();
-											input.setChanged();
-										}
-									} else {
-										int i = this.getInventory().canInsertResult(take, getBottomSlots());
-										if (i > 0) {
-											this.getInventory().insertResult(take, getBottomSlots());
-											handler.extractItem(slot, 1, false);
-											this.setChanged();
-											input.setChanged();
+								.ifPresent(handler -> {
+									int slot = -1;
+									for (int j = 0; j < handler.getSlots(); j++) {
+										if (!handler.extractItem(j, 1, true).isEmpty()) {
+											slot = j;
+											break;
 										}
 									}
-								}
-							});
+									if (slot >= 0) {
+										ItemStack take = handler.extractItem(slot, 1, true).copy();
+										if (isFilterInclude(take)) {
+											int i = this.getInventory().canInsertResult(take, getFilterSlots());
+											if (i > 0) {
+												this.getInventory().insertResult(take, getFilterSlots());
+												handler.extractItem(slot, 1, false);
+												this.setChanged();
+												input.setChanged();
+											}
+										} else {
+											int i = this.getInventory().canInsertResult(take, getBottomSlots());
+											if (i > 0) {
+												this.getInventory().insertResult(take, getBottomSlots());
+												handler.extractItem(slot, 1, false);
+												this.setChanged();
+												input.setChanged();
+											}
+										}
+									}
+								});
 					}
 				}
 			} else {
 				// item suction
 				List<ItemEntity> drops = this.getSuckShape().toAabbs().stream().flatMap((aabb) -> {
 					return getLevel().getEntitiesOfClass(ItemEntity.class,
-						aabb.move(this.getLevelX() - 0.5D, this.getLevelY() + (getInputSide().getStepY() * 0.5D) - 1.0D, this.getLevelZ() - 0.5D),
-						EntitySelector.ENTITY_STILL_ALIVE).stream();
+							aabb.move(this.getLevelX() - 0.5D, this.getLevelY() + (getInputSide().getStepY() * 0.5D) - 1.0D, this.getLevelZ() - 0.5D),
+							EntitySelector.ENTITY_STILL_ALIVE).stream();
 				}).collect(Collectors.toList());
 				for (ItemEntity drop : drops) {
 					ItemStack take = drop.getItem().copy();

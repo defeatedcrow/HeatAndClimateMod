@@ -32,28 +32,28 @@ public class CookingPotModel_C extends Model {
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition top = partdefinition.addOrReplaceChild("top", CubeListBuilder.create()
-			.texOffs(-2, 19).addBox(-6.0F, -8.0F, -6.0F, 12.0F, 1.0F, 12.0F, new CubeDeformation(0.0F))
-			.texOffs(22, 11).addBox(-1.0F, -9.5F, -1.0F, 2.0F, 1.0F, 2.0F, new CubeDeformation(0.0F))
-			.texOffs(30, 12).addBox(-0.5F, -9.0F, -0.5F, 1.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
+				.texOffs(0, 19).addBox(-6.0F, -8.0F, -6.0F, 12.0F, 1.0F, 12.0F, new CubeDeformation(0.0F))
+				.texOffs(22, 11).addBox(-1.0F, -9.5F, -1.0F, 2.0F, 1.0F, 2.0F, new CubeDeformation(0.0F))
+				.texOffs(30, 12).addBox(-0.5F, -9.0F, -0.5F, 1.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
 
 		PartDefinition main = partdefinition.addOrReplaceChild("main", CubeListBuilder.create().texOffs(0, 0)
-			.texOffs(0, 0).addBox(-5.0F, -2.0F, -5.0F, 10.0F, 1.0F, 10.0F, new CubeDeformation(0.0F))
-			.texOffs(0, 11).addBox(-5.0F, -7.0F, -6.0F, 10.0F, 5.0F, 1.0F, new CubeDeformation(0.0F))
-			.texOffs(34, 1).addBox(-7.0F, -6.0F, -1.5F, 1.0F, 1.0F, 3.0F, new CubeDeformation(0.0F))
-			.texOffs(34, 1).addBox(6.0F, -6.0F, -1.5F, 1.0F, 1.0F, 3.0F, new CubeDeformation(0.0F))
-			.texOffs(23, 15).addBox(-6.0F, -2.0F, 3.0F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.0F))
-			.texOffs(23, 15).addBox(5.0F, -2.0F, 3.0F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.0F))
-			.texOffs(23, 15).addBox(-0.5F, -2.0F, -6.0F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.0F))
-			.texOffs(33, 9).addBox(-1.0F, -7.0F, -14.0F, 2.0F, 1.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
+				.texOffs(0, 0).addBox(-5.0F, -2.0F, -5.0F, 10.0F, 1.0F, 10.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 11).addBox(-5.0F, -7.0F, -6.0F, 10.0F, 5.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(34, 1).addBox(-7.0F, -6.0F, -1.5F, 1.0F, 1.0F, 3.0F, new CubeDeformation(0.0F))
+				.texOffs(34, 1).addBox(6.0F, -6.0F, -1.5F, 1.0F, 1.0F, 3.0F, new CubeDeformation(0.0F))
+				.texOffs(23, 15).addBox(-6.0F, -2.0F, 3.0F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(23, 15).addBox(5.0F, -2.0F, 3.0F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(23, 15).addBox(-0.5F, -2.0F, -6.0F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(33, 9).addBox(-1.0F, -7.0F, -14.0F, 2.0F, 1.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
 
 		PartDefinition cube_r1 = main.addOrReplaceChild("cube_r1", CubeListBuilder.create()
-			.texOffs(0, 11).addBox(-5.0F, -7.0F, -6.0F, 10.0F, 5.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 1.5708F, 0.0F));
+				.texOffs(0, 11).addBox(-5.0F, -7.0F, -6.0F, 10.0F, 5.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 1.5708F, 0.0F));
 
 		PartDefinition cube_r2 = main.addOrReplaceChild("cube_r2", CubeListBuilder.create()
-			.texOffs(0, 11).addBox(-5.0F, -7.0F, -6.0F, 10.0F, 5.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, -1.5708F, 0.0F));
+				.texOffs(0, 11).addBox(-5.0F, -7.0F, -6.0F, 10.0F, 5.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, -1.5708F, 0.0F));
 
 		PartDefinition cube_r3 = main.addOrReplaceChild("cube_r3", CubeListBuilder.create()
-			.texOffs(0, 11).addBox(-5.0F, -7.0F, -6.0F, 10.0F, 5.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 3.1416F, 0.0F));
+				.texOffs(0, 11).addBox(-5.0F, -7.0F, -6.0F, 10.0F, 5.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 3.1416F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 64, 32);
 	}

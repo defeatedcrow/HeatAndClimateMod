@@ -212,6 +212,9 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
+		if (super.use(state, level, pos, player, hand, hitRes) == InteractionResult.SUCCESS) {
+			return InteractionResult.SUCCESS;
+		}
 		BlockEntity tile = level.getBlockEntity(pos);
 		ItemStack held = player.getItemInHand(hand);
 		if (tile instanceof EnergyTileBaseDC cable && hitRes != null) {

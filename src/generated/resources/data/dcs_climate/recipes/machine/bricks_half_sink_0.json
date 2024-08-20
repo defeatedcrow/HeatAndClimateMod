@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:machine/fluid_sink_brick"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:machine/half_sink_brick"
+  }
+}

@@ -105,6 +105,7 @@ public class TagDC {
 		public static final TagKey<Block> CROP_PUMPKIN = blockTag("crops/pumpkin");
 		public static final TagKey<Block> CROP_MELON = blockTag("crops/melon");
 		public static final TagKey<Block> CROP_CACTUS = blockTag("crops/cactus");
+		public static final TagKey<Block> CROP_TALL = blockTag("crops/tall_plants");
 
 		public static final TagKey<Block> CROP_GREEN_MANURES = BlockTags.create(new ResourceLocation("dcs_climate", "green_manures"));
 
@@ -585,10 +586,15 @@ public class TagDC {
 		public static final TagKey<Item> CRAFT_SEEDING_POT = itemTag("crafting_tools/seeding_pot");
 		public static final TagKey<Item> CRAFT_CALABASH = itemTag("crafting_tools/calabash_bottle");
 		public static final TagKey<Item> CRAFT_DRIVER = itemTag("crafting_tools/screwdriver");
+		public static final TagKey<Item> CRAFT_ALTIMETER = itemTag("crafting_tools/altimeter");
+		public static final TagKey<Item> CRAFT_TEMPMETER = itemTag("crafting_tools/tempmeter");
+		public static final TagKey<Item> CRAFT_FLOWMETER = itemTag("crafting_tools/flowmeter");
+		public static final TagKey<Item> CRAFT_ENERGYMETER = itemTag("crafting_tools/energymeter");
 
 		public static final TagKey<Item> SCYTHES = itemTag("tools/scythes");
 		public static final TagKey<Item> HARPOON = itemTag("tools/harpoon");
 		public static final TagKey<Item> CUTLERY = itemTag("tools/cutlery");
+		public static final TagKey<Item> FIRESTARTER = itemTag("tools/firestarter");
 
 		public static final TagKey<Item> DUST_AMARANTH = itemTag("ingredients/amaranth");
 		public static final TagKey<Item> DUST_OAT = itemTag("ingredients/oat");
@@ -821,12 +827,14 @@ public class TagDC {
 
 		public static final TagKey<Item> RAW_FOOD = ItemTags.create(new ResourceLocation("dcs_climate", "raw_foods"));
 
+		// magic
 		public static final TagKey<Item> SEED_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/white"));
 		public static final TagKey<Item> SEED_BLUE = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/blue"));
 		public static final TagKey<Item> SEED_BLACK = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/black"));
 		public static final TagKey<Item> SEED_RED = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/red"));
 		public static final TagKey<Item> SEED_GREEN = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/green"));
 
+		// fish
 		public static final TagKey<Item> FISH_ALL = ItemTags.create(new ResourceLocation("dcs_climate", "fishes"));
 		public static final TagKey<Item> FISH_VANILLA = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/vanilla"));
 		public static final TagKey<Item> FISH_HAC = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/hac"));
@@ -851,13 +859,13 @@ public class TagDC {
 		public static final TagKey<Item> FISH_MIDDLE = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/middle_size"));
 		public static final TagKey<Item> FISH_LARGE = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/large_size"));
 
+		// container
 		public static final TagKey<Item> CONT_LEAVES = itemTag("storage_blocks/leaves");
 		public static final TagKey<Item> CONT_WASTE = itemTag("storage_blocks/wastes");
 		public static final TagKey<Item> CONT_LOGS = itemTag("storage_blocks/logs");
 		public static final TagKey<Item> CONT_CHARCOAL = itemTag("storage_blocks/charcoal");
 		public static final TagKey<Item> CONT_CROPS = itemTag("storage_blocks/crops");
 
-		// container
 		public static final TagKey<Item> CONT_APPLE = itemTag("storage_blocks/crops/apple");
 		public static final TagKey<Item> CONT_CARROT = itemTag("storage_blocks/crops/carrot");
 		public static final TagKey<Item> CONT_POTATO = itemTag("storage_blocks/crops/potato");
@@ -947,9 +955,11 @@ public class TagDC {
 		// machine
 		public static final TagKey<Item> MOTORS = ItemTags.create(new ResourceLocation("dcs_climate", "motors"));
 		public static final TagKey<Item> MOTOR_T1 = ItemTags.create(new ResourceLocation("dcs_climate", "motors/small"));
+		public static final TagKey<Item> MOTOR_T2 = ItemTags.create(new ResourceLocation("dcs_climate", "motors/middle"));
 
 		public static final TagKey<Item> IMPELLERS = ItemTags.create(new ResourceLocation("dcs_climate", "impellers"));
 		public static final TagKey<Item> IMPELLER_T1 = ItemTags.create(new ResourceLocation("dcs_climate", "impellers/small"));
+		public static final TagKey<Item> IMPELLER_T2 = ItemTags.create(new ResourceLocation("dcs_climate", "impellers/middle"));
 
 		public static final TagKey<Item> BATTERY_T1 = ItemTags.create(new ResourceLocation("dcs_climate", "battery_items/small"));
 

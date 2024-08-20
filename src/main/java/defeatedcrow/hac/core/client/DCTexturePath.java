@@ -14,7 +14,10 @@ public enum DCTexturePath {
 	COLD_DISP("textures/gui/hud_cold.png"),
 	GUI_INV_SINGLE("textures/gui/simple_inv_single.png"),
 	GUI_INV_DOUBLE("textures/gui/simple_inv_double.png"),
+	GUI_DISPLAY_SHELF("textures/gui/display_shelf_inv.png"),
+	GUI_KICHEN_BENCH("textures/gui/kichen_bench_inv.png"),
 	GUI_CHAMBER_ITEM("textures/gui/chamber_item_inv.png"),
+	GUI_CHAMBER_FLUID("textures/gui/chamber_fluid_inv.png"),
 	GUI_FLUID_TANK("textures/gui/fluid_tank_inv.png"),
 	GUI_FLUID_TANK_LARGE("textures/gui/fluid_tank_large_inv.png"),
 	GUI_COOKING_POT("textures/gui/cooking_pot_inv.png"),
@@ -27,6 +30,7 @@ public enum DCTexturePath {
 	GUI_HOPPER_FILTER("textures/gui/hopper_filter_inv.png"),
 	GUI_HOPPER_GOLD("textures/gui/hopper_gold_inv.png"),
 	GUI_HOPPER_GOLD_FILTER("textures/gui/hopper_filter_gold_inv.png"),
+	GUI_MONITOR_ANDON("textures/gui/andon_signal_gui.png"),
 	GUI_BORING("textures/gui/boring_survey.png");
 
 	private final String name;
@@ -44,8 +48,8 @@ public enum DCTexturePath {
 	}
 
 	public static List<DCTexturePath> elements() {
-		return ImmutableList.of(POTION, HUD, GRAY, HOT_DISP, COLD_DISP, GUI_INV_SINGLE, GUI_INV_DOUBLE, GUI_CHAMBER_ITEM, GUI_FLUID_TANK,
-			GUI_FLUID_TANK_LARGE, GUI_COOKING_POT, GUI_TEA_POT, GUI_FERMENTATION_JAR, GUI_MILL, GUI_BATTERY, GUI_GENERATOR, GUI_BOILER_BIOMASS,
-			GUI_HOPPER_FILTER, GUI_HOPPER_GOLD, GUI_HOPPER_GOLD_FILTER, GUI_BORING);
+		return ImmutableList.of(POTION, HUD, GRAY, HOT_DISP, COLD_DISP, GUI_INV_SINGLE, GUI_INV_DOUBLE, GUI_DISPLAY_SHELF, GUI_CHAMBER_ITEM, GUI_CHAMBER_FLUID, GUI_FLUID_TANK,
+				GUI_FLUID_TANK_LARGE, GUI_COOKING_POT, GUI_TEA_POT, GUI_FERMENTATION_JAR, GUI_MILL, GUI_BATTERY, GUI_GENERATOR, GUI_BOILER_BIOMASS,
+				GUI_HOPPER_FILTER, GUI_HOPPER_GOLD, GUI_HOPPER_GOLD_FILTER, GUI_KICHEN_BENCH, GUI_MONITOR_ANDON, GUI_BORING);
 	}
 }

@@ -24,9 +24,12 @@ import defeatedcrow.hac.core.material.item.NoTabItemDC;
 import defeatedcrow.hac.core.material.item.NullItemDC;
 import defeatedcrow.hac.core.material.item.armor.ArmorItemDC;
 import defeatedcrow.hac.core.material.item.tool.AgateMortarItem;
+import defeatedcrow.hac.core.material.item.tool.AltimeterItem;
 import defeatedcrow.hac.core.material.item.tool.CutleryChopsticksItem;
 import defeatedcrow.hac.core.material.item.tool.CutleryForkItem;
 import defeatedcrow.hac.core.material.item.tool.CutlerySpoonItem;
+import defeatedcrow.hac.core.material.item.tool.EnergymeterItem;
+import defeatedcrow.hac.core.material.item.tool.FlowmeterItem;
 import defeatedcrow.hac.core.material.item.tool.GemSieveItem;
 import defeatedcrow.hac.core.material.item.tool.HandSpindleItem;
 import defeatedcrow.hac.core.material.item.tool.HandyBellowItem;
@@ -41,6 +44,7 @@ import defeatedcrow.hac.core.material.item.tool.ScrewdriverItem;
 import defeatedcrow.hac.core.material.item.tool.SeedingPotItem;
 import defeatedcrow.hac.core.material.item.tool.SoapItem;
 import defeatedcrow.hac.core.material.item.tool.StackableBucketItem;
+import defeatedcrow.hac.core.material.item.tool.TempmeterItem;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Building;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Clothing;
@@ -214,18 +218,6 @@ public class CoreInit {
 
 	public static final RegistryObject<Item> ADOBE_BRICK_ITEM = regItem("adobe_brick_item", () -> new MaterialItemDC("adobe_brick_item", null));
 
-	public static final RegistryObject<Item> MORTAR = regItem("agate_mortar", () -> new AgateMortarItem("agate_mortar"));
-	public static final RegistryObject<Item> SIEVE = regItem("sieve", () -> new GemSieveItem("sieve"));
-	public static final RegistryObject<Item> HAND_SPINDLE = regItem("hand_spindle", () -> new HandSpindleItem("hand_spindle"));
-	public static final RegistryObject<Item> SEEDING_POT = regItem("seeding_pot", () -> new SeedingPotItem("seeding_pot"));
-
-	public static final RegistryObject<Item> HANDY_BELLOW = regItem("bellow", () -> new HandyBellowItem("bellow"));
-	public static final RegistryObject<Item> SCREWDRIVER = regItem("screwdriver", () -> new ScrewdriverItem("screwdriver"));
-
-	public static final RegistryObject<Item> EMPTY_COIL_CASE = regItem("insence_case", () -> new MaterialItemDC(MACHINE, "insence_case", null));
-	public static final RegistryObject<Item> MOSQUITO_COIL = regItem("mosquito_coil", () -> new MaterialItemDC(MACHINE, "mosquito_coil", null));
-	public static final RegistryObject<Item> COIL_CASE = regItem("mosquito_coil_case", () -> new ItemMosquitoCoil("mosquito_coil_case", null));
-
 	public static final RegistryObject<Item> SOAP_OIL = regItem("soap_olive", () -> new SoapItem("soap_olive", TagDC.ItemTag.SOAP_OIL));
 	public static final RegistryObject<Item> SOAP_MAGIC = regItem("soap_magic", () -> new SoapItem("soap_magic", TagDC.ItemTag.SOAP_MAGIC));
 
@@ -249,10 +241,26 @@ public class CoreInit {
 	public static final RegistryObject<Item> HARPOON_STEEL = regItem("harpoon_steel", () -> new HarpoonItem("steel", TierDC.STEEL, TagDC.ItemTag.HARPOON));
 
 	public static final RegistryObject<Item> CALABASH_BUCKET = regItem("bucket_calabash", () -> new StackableBucketItem("bucket_calabash", TagDC.ItemTag.CRAFT_CALABASH));
-
 	public static final RegistryObject<Item> SPOON = regItem("cutlery_spoon", () -> new CutlerySpoonItem("cutlery_spoon"));
 	public static final RegistryObject<Item> FORK = regItem("cutlery_fork", () -> new CutleryForkItem("cutlery_fork"));
 	public static final RegistryObject<Item> CHOPSTICKS = regItem("cutlery_chopsticks", () -> new CutleryChopsticksItem("cutlery_chopsticks"));
+
+	public static final RegistryObject<Item> MORTAR = regItem("agate_mortar", () -> new AgateMortarItem("agate_mortar"));
+	public static final RegistryObject<Item> SIEVE = regItem("sieve", () -> new GemSieveItem("sieve"));
+	public static final RegistryObject<Item> HAND_SPINDLE = regItem("hand_spindle", () -> new HandSpindleItem("hand_spindle"));
+	public static final RegistryObject<Item> SEEDING_POT = regItem("seeding_pot", () -> new SeedingPotItem("seeding_pot"));
+
+	public static final RegistryObject<Item> EMPTY_COIL_CASE = regItem("insence_case", () -> new MaterialItemDC(MACHINE, "insence_case", null));
+	public static final RegistryObject<Item> MOSQUITO_COIL = regItem("mosquito_coil", () -> new MaterialItemDC(MACHINE, "mosquito_coil", null));
+	public static final RegistryObject<Item> COIL_CASE = regItem("mosquito_coil_case", () -> new ItemMosquitoCoil("mosquito_coil_case", null));
+
+	public static final RegistryObject<Item> HANDY_BELLOW = regItem("bellow", () -> new HandyBellowItem("bellow"));
+	public static final RegistryObject<Item> SCREWDRIVER = regItem("screwdriver", () -> new ScrewdriverItem("screwdriver"));
+
+	public static final RegistryObject<Item> ALTIMETER = regItem("altimeter", () -> new AltimeterItem("altimeter"));
+	public static final RegistryObject<Item> TEMPMETER = regItem("tempmeter", () -> new TempmeterItem("tempmeter"));
+	public static final RegistryObject<Item> FLOWMETER = regItem("flowmeter", () -> new FlowmeterItem("flowmeter"));
+	public static final RegistryObject<Item> ENERGYMETER = regItem("energymeter", () -> new EnergymeterItem("energymeter"));
 
 	public static final RegistryObject<Item> PATTERN_HAT = regItem("pattern_paper_wear", () -> new MaterialItemDC(CLOTH, "pattern_paper_wear", null));
 	public static final RegistryObject<Item> PATTERN_JACKET = regItem("pattern_paper_jacket", () -> new MaterialItemDC(CLOTH, "pattern_paper_jacket", null));

@@ -102,7 +102,7 @@ public class HopperFilterBlock extends HopperBaseBlockDC {
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.hopper.iron").withStyle(ChatFormatting.YELLOW);
 		MutableComponent tex2 = Component.translatable("dcs.tip.hopper.filter").withStyle(ChatFormatting.YELLOW);
-		MutableComponent tex3 = Component.translatable("dcs.tip.hopper.filter.desc");
+		MutableComponent tex3 = Component.translatable("dcs.tip.hopper.filter.desc").withStyle(ChatFormatting.GRAY);
 		if (ClimateCore.proxy.keyShiftPushed()) {
 			list.add(tex1);
 			list.add(tex2);

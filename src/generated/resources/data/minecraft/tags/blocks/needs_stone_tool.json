@@ -122,6 +122,7 @@
     "dcs_climate:build/linoleum_orange",
     "dcs_climate:build/linoleum_white",
     "dcs_climate:machine/chamber_iron",
+    "dcs_climate:machine/fuel_burner",
     "dcs_climate:machine/hopper_filter",
     "dcs_climate:machine/hopper_gold",
     "dcs_climate:machine/hopper_filter_gold",

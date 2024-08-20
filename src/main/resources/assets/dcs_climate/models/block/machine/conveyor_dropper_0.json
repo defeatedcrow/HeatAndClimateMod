@@ -1,0 +1,69 @@
+{
+  "parent": "block/block",
+  "textures": {
+        "base": "dcs_climate:block/build/plate_steel",
+        "belt": "dcs_climate:block/machine/conveyor_belt",
+        "dropper": "dcs_climate:block/machine/conveyor_dropper",
+        "particle": "dcs_climate:block/machine/conveyor_belt"
+    },
+    "elements": [
+        {
+            "from": [0, 0, 0],
+            "to": [1, 4, 16],
+            "faces": {
+                "north": {"uv": [15, 12, 16, 16], "texture": "#base"},
+                "east": {"uv": [0, 0, 16, 4], "texture": "#base"},
+                "south": {"uv": [0, 12, 1, 16], "texture": "#base"},
+                "west": {"uv": [0, 0, 16, 4], "texture": "#base"},
+                "up": {"uv": [15, 0, 16, 16], "texture": "#base"},
+                "down": {"uv": [0, 0, 1, 16], "texture": "#base"}
+            }
+        },
+        {
+            "from": [15, 0, 0],
+            "to": [16, 4, 16],
+            "faces": {
+                "north": {"uv": [0, 12, 1, 16], "texture": "#base"},
+                "east": {"uv": [0, 0, 16, 4], "texture": "#base"},
+                "south": {"uv": [15, 12, 16, 16], "texture": "#base"},
+                "west": {"uv": [0, 0, 16, 4], "texture": "#base"},
+                "up": {"uv": [0, 0, 1, 16], "texture": "#base"},
+                "down": {"uv": [15, 0, 16, 16], "texture": "#base"}
+            }
+        },
+        {
+            "from": [1, 1, 0],
+            "to": [15, 3, 16],
+            "faces": {
+                "north": {"uv": [1, 14, 15, 16], "rotation": 180, "texture": "#belt"},
+                "south": {"uv": [1, 0, 15, 2], "texture": "#belt"},
+                "up": {"uv": [1, 0, 15, 16], "texture": "#belt"},
+                "down": {"uv": [1, 0, 15, 16], "texture": "#belt"}
+            }
+        },
+        {
+            "from": [4, 0.5, 4],
+            "to": [12, 3.5, 12],
+            "faces": {
+                "north": {"uv": [4, 1, 12, 4], "texture": "#dropper"},
+                "east": {"uv": [12, 4, 15, 12], "rotation": 270, "texture": "#dropper"},
+                "south": {"uv": [4, 12, 12, 15], "texture": "#dropper"},
+                "west": {"uv": [1, 4, 4, 12], "rotation": 90, "texture": "#dropper"},
+                "up": {"uv": [4, 4, 12, 12], "texture": "#dropper"},
+                "down": {"uv": [4, 4, 12, 12], "texture": "#dropper"}
+            }
+        },
+        {
+            "from": [6, 0, 6],
+            "to": [10, 1, 10],
+            "faces": {
+                "north": {"uv": [6, 10, 10, 11], "texture": "#dropper"},
+                "east": {"uv": [6, 10, 10, 11], "texture": "#dropper"},
+                "south": {"uv": [6, 10, 10, 11], "texture": "#dropper"},
+                "west": {"uv": [6, 10, 10, 11], "texture": "#dropper"},
+                "up": {"uv": [6, 6, 10, 10], "texture": "#dropper"},
+                "down": {"uv": [6, 6, 10, 10], "texture": "#dropper"}
+            }
+        }
+    ]
+}

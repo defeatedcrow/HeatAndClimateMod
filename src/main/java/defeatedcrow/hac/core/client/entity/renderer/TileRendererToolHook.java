@@ -5,7 +5,7 @@ import com.mojang.math.Vector3f;
 
 import defeatedcrow.hac.api.material.ITierItem;
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.core.material.block.building.SingleItemDisplay;
+import defeatedcrow.hac.core.material.block.building.ItemDisplayTile;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
@@ -21,7 +21,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class TileRendererToolHook implements BlockEntityRenderer<SingleItemDisplay> {
+public class TileRendererToolHook implements BlockEntityRenderer<ItemDisplayTile> {
 
 	private BlockRenderDispatcher renderer;
 	private final ItemRenderer itemRenderer;
@@ -32,15 +32,15 @@ public class TileRendererToolHook implements BlockEntityRenderer<SingleItemDispl
 	}
 
 	@Override
-	public void render(SingleItemDisplay tile, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int i2) {
+	public void render(ItemDisplayTile tile, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int i2) {
 		if (tile != null && tile.getBlockState() != null) {
 			Direction dir = DCState.getFace(tile.getBlockState(), DCState.FACING);
 			if (dir == null)
 				dir = Direction.NORTH;
 			int i = (int) tile.getBlockPos().asLong();
 
-			if (!DCUtil.isEmpty(tile.getDisplay())) {
-				ItemStack disp = tile.getDisplay().copy();
+			if (!DCUtil.isEmpty(tile.getDisplay(0))) {
+				ItemStack disp = tile.getDisplay(0).copy();
 				boolean lit = DCState.getBool(tile.getBlockState(), DCState.LIT);
 
 				float f1 = dir.getStepX() * 0.35F;

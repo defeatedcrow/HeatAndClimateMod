@@ -1,0 +1,44 @@
+{
+  "parent": "block/block",
+  "textures": {
+        "belt": "dcs_climate:block/machine/conveyor_belt",
+        "side": "dcs_climate:block/build/plate_steel",
+        "particle": "dcs_climate:block/machine/conveyor_belt"
+    },
+    "elements": [
+        {
+            "from": [0, 0, 0],
+            "to": [1, 4, 16],
+            "faces": {
+                "north": {"uv": [15, 12, 16, 16], "texture": "#side"},
+                "east": {"uv": [0, 0, 16, 4], "texture": "#side"},
+                "south": {"uv": [0, 12, 1, 16], "texture": "#side"},
+                "west": {"uv": [0, 0, 16, 4], "texture": "#side"},
+                "up": {"uv": [15, 0, 16, 16], "texture": "#side"},
+                "down": {"uv": [0, 0, 1, 16], "texture": "#side"}
+            }
+        },
+        {
+            "from": [15, 0, 0],
+            "to": [16, 4, 16],
+            "faces": {
+                "north": {"uv": [0, 12, 1, 16], "texture": "#side"},
+                "east": {"uv": [0, 0, 16, 4], "texture": "#side"},
+                "south": {"uv": [15, 12, 16, 16], "texture": "#side"},
+                "west": {"uv": [0, 0, 16, 4], "texture": "#side"},
+                "up": {"uv": [0, 0, 1, 16], "texture": "#side"},
+                "down": {"uv": [15, 0, 16, 16], "texture": "#side"}
+            }
+        },
+        {
+            "from": [1, 1, 0],
+            "to": [15, 3, 16],
+            "faces": {
+                "north": {"uv": [1, 14, 15, 16], "rotation": 180, "texture": "#belt"},
+                "south": {"uv": [1, 0, 15, 2], "texture": "#belt"},
+                "up": {"uv": [1, 0, 15, 16], "texture": "#belt"},
+                "down": {"uv": [1, 0, 15, 16], "texture": "#belt"}
+            }
+        }
+    ]
+}

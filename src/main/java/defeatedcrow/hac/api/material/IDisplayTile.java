@@ -5,8 +5,8 @@ import net.minecraft.world.item.ItemStack;
 /* 何かしら Client Side でアイテムを表示するEntityBlock */
 public interface IDisplayTile {
 
-	ItemStack getDisplay();
+	ItemStack getDisplay(int slot);
 
-	void setDisplay(ItemStack item);
+	void setDisplay(int slot, ItemStack item);
 
 }
