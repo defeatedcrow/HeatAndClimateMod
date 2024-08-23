@@ -1,4 +1,4 @@
-// 1.19.2	2024-08-19T23:22:47.7349965	Tags for minecraft:block
+// 1.19.2	2024-08-21T23:23:33.3588485	Tags for minecraft:block
 b094b4912df19dd03d0bc38d7fcdda0e799a0911 data/dcs_climate/tags/blocks/building_stones.json
 06b949bc461b20f8740141f309397037604998bb data/dcs_climate/tags/blocks/building_stones/bricks.json
 f0332bf8fa15d83dd07f1eecdcef7bea47060259 data/dcs_climate/tags/blocks/building_stones/chiseled.json
@@ -85,6 +85,7 @@ c0472c5510910fda0f8dda26fc87ea5356f8ae4b data/forge/tags/blocks/storage_blocks/h
 265425903b67b1dcb9d8337c6fdca74d2da8d882 data/forge/tags/blocks/storage_blocks/steel.json
 46225b91b53648d7f1861eae3d246fc58892b93d data/forge/tags/blocks/storage_blocks/sus.json
 48d87fe2c91e74ff38e934ef3fa98be51c0b4fa6 data/forge/tags/blocks/storage_blocks/titanium.json
+d3832d708ff9b2e83f4502b9cf13a6c7e4df0f38 data/forge/tags/blocks/storage_blocks/wax.json
 f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/blocks/weed.json
 150544f18cbf9dd9a0df2a480855d25205ac317d data/minecraft/tags/blocks/climbable.json
 d137c1d1b4630523508cc78445c8087b5fbcdc8e data/minecraft/tags/blocks/crops.json
@@ -93,7 +94,7 @@ d137c1d1b4630523508cc78445c8087b5fbcdc8e data/minecraft/tags/blocks/crops.json
 bd193a01ac93741e2332229222c247034aaa1f6c data/minecraft/tags/blocks/leaves.json
 8a807ae1842a64558c93aba23fc7b51ca278457c data/minecraft/tags/blocks/logs_that_burn.json
 bc3a8f78b8a5e19c8c7b0e90622f666fdfd4fe81 data/minecraft/tags/blocks/mineable/axe.json
-437c0aa4da20f59682717e3696cabdd6be9a90ab data/minecraft/tags/blocks/mineable/pickaxe.json
+25a57a20fc1d3cbde642a6ab121cb9b0aa6d873a data/minecraft/tags/blocks/mineable/pickaxe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/needs_diamond_tool.json
 333b0e2ade270e3c2c54c0ec974c8027fbda16bd data/minecraft/tags/blocks/needs_iron_tool.json
 019ab5d505a77d80156813ebce8278b581680421 data/minecraft/tags/blocks/needs_stone_tool.json

@@ -1,6 +1,6 @@
 {
   "values": [
-    "dcs_climate:food/food_beeswax",
-    "dcs_climate:food/food_treewax"
+    "#forge:ingredients/beeswax",
+    "#forge:ingredients/treewax"
   ]
 }

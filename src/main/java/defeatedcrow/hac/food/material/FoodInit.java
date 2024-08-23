@@ -17,6 +17,7 @@ import defeatedcrow.hac.food.material.block.LeafMoldBlock;
 import defeatedcrow.hac.food.material.block.containers.CropContBlock;
 import defeatedcrow.hac.food.material.block.containers.LeavesContBlock;
 import defeatedcrow.hac.food.material.block.containers.LogContBlock;
+import defeatedcrow.hac.food.material.block.containers.WaxContBlock;
 import defeatedcrow.hac.food.material.block.crops.CropBlockAllium;
 import defeatedcrow.hac.food.material.block.crops.CropBlockAmaranth;
 import defeatedcrow.hac.food.material.block.crops.CropBlockApium;
@@ -703,8 +704,8 @@ public class FoodInit {
 	public static final RegistryObject<Item> VINE = regItem("food_vine", () -> new MaterialItemDC(AGRI, "food_vine", TagDC.ItemTag.VINE).setDomain("food"));
 	public static final RegistryObject<Item> FIBER_PLANT = regItem("fiber_plant", () -> new MaterialItemDC(AGRI, "fiber_plant", TagDC.ItemTag.FIBER_PLANT).setDomain("food"));
 	public static final RegistryObject<Item> FIBER_WOOD = regItem("fiber_wood", () -> new MaterialItemDC(AGRI, "fiber_wood", TagDC.ItemTag.FIBER_WOOD).setDomain("food"));
-	public static final RegistryObject<Item> BEESWAX = regItem("food_beeswax", () -> new MaterialItemDC(AGRI, "food_beeswax", TagDC.ItemTag.FOOD_WAX).setDomain("food"));
-	public static final RegistryObject<Item> TREEWAX = regItem("food_treewax", () -> new MaterialItemDC(AGRI, "food_treewax", TagDC.ItemTag.FOOD_WAX).setDomain("food"));
+	public static final RegistryObject<Item> BEESWAX = regItem("food_beeswax", () -> new MaterialItemDC(AGRI, "food_beeswax", TagDC.ItemTag.FOOD_BEESWAX).setDomain("food"));
+	public static final RegistryObject<Item> TREEWAX = regItem("food_treewax", () -> new MaterialItemDC(AGRI, "food_treewax", TagDC.ItemTag.FOOD_TREEWAX).setDomain("food"));
 	public static final RegistryObject<Item> CAMPHOR = regItem("food_camphor", () -> new MaterialItemDC(AGRI, "food_camphor", TagDC.ItemTag.CAMPHOR).setDomain("food"));
 
 	public static final RegistryObject<Item> SAP_SWEET = regItem("sap_sweet", () -> new FoodMaterialItemDC(AGRI, "sap_sweet", TagDC.ItemTag.SAP_SWEET).setDomain("food"));
@@ -1059,6 +1060,9 @@ public class FoodInit {
 	public static final RegistryObject<Block> CONT_LEAVES = regCont("container_leaves", () -> new LeavesContBlock("container_leaves"), TagDC.ItemTag.CONT_LEAVES);
 	public static final RegistryObject<Block> CONT_WASTE = regCont("container_plant_wastes", () -> new LeavesContBlock("container_plant_wastes"), TagDC.ItemTag.CONT_LEAVES);
 	public static final RegistryObject<Block> CONT_LEAF_MOLD = regCont("container_leaf_mold", () -> new LeafMoldBlock("container_leaf_mold"), null);
+
+	public static final RegistryObject<Block> CONT_BEESWAX = regCont("container_beeswax", () -> new WaxContBlock("container_beeswax"), TagDC.ItemTag.CONT_BEESWAX);
+	public static final RegistryObject<Block> CONT_TREEWAX = regCont("container_treewax", () -> new WaxContBlock("container_treewax"), TagDC.ItemTag.CONT_TREEWAX);
 
 	public static final RegistryObject<Block> CONT_LOG_OAK = regCont("logcont_oak", () -> new LogContBlock("oak"), TagDC.ItemTag.CONT_LOGS);
 	public static final RegistryObject<Block> CONT_LOG_BIRCH = regCont("logcont_birch", () -> new LogContBlock("birch"), TagDC.ItemTag.CONT_LOGS);

@@ -1171,6 +1171,8 @@
   "block.dcs_climate.container.container_leaves":"Compressed Leaves",
   "block.dcs_climate.container.container_plant_wastes":"Compressed Vegetal Residues",
   "block.dcs_climate.container.container_leaf_mold":"Leaf Mold Block",
+  "block.dcs_climate.container.container_beeswax":"Beeswax Block",
+  "block.dcs_climate.container.container_treewax":"Treewax Block",
 
   "block.dcs_climate.container.logcont_oak":"Oak Log Bunch",
   "block.dcs_climate.container.logcont_birch":"Birch Log Bunch",
@@ -1519,6 +1521,7 @@
   "block.dcs_climate.machine.hopper_gold":"Gold Hopper",
   "block.dcs_climate.machine.hopper_filter_gold":"Gold Finter Hopper",
   "block.dcs_climate.machine.conveyor":"Conveyor",
+  "block.dcs_climate.machine.conveyor_smelting":"Smelting Conveyor",
   "block.dcs_climate.machine.conveyor_dropper":"Dropper Conveyor",
   "block.dcs_climate.machine.conveyor_filler":"Filler Conveyor",
   "block.dcs_climate.machine.ibc":"IBC",

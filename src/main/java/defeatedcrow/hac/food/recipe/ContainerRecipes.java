@@ -56,6 +56,8 @@ public class ContainerRecipes {
 		list.add(new Cont("crop_sugarcane", FoodInit.CONT_CROP_SUGARCANE, () -> Items.SUGAR_CANE, () -> TagDC.ItemTag.CROP_SUGAR));
 		list.add(new Cont("crop_cocoa", FoodInit.CONT_CROP_COCOA, () -> Items.COCOA_BEANS, () -> TagDC.ItemTag.CROP_COCOA));
 		list.add(new Cont("crop_bushberry", FoodInit.CONT_CROP_BUSHBERRY, () -> Items.SWEET_BERRIES, () -> TagDC.ItemTag.DUMMY));
+		list.add(new Cont("container_beeswax", FoodInit.CONT_BEESWAX, () -> FoodInit.BEESWAX.get(), () -> TagDC.ItemTag.FOOD_BEESWAX));
+		list.add(new Cont("container_treewax", FoodInit.CONT_TREEWAX, () -> FoodInit.TREEWAX.get(), () -> TagDC.ItemTag.FOOD_TREEWAX));
 		pairs = list.build();
 	}
 

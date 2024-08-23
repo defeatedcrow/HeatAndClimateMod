@@ -341,6 +341,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.SAPS).addTags(TagDC.ItemTag.SAP_SWEET, TagDC.ItemTag.SAP_RESIN, TagDC.ItemTag.SAP_LATEX, TagDC.ItemTag.SAP_LACQUER);
 
+		tag(TagDC.ItemTag.FOOD_WAX).addTags(TagDC.ItemTag.FOOD_BEESWAX, TagDC.ItemTag.FOOD_TREEWAX);
+
 		tag(TagDC.ItemTag.SOAPS).addTags(TagDC.ItemTag.SOAP_OIL, TagDC.ItemTag.SOAP_MAGIC);
 
 		tag(TagDC.ItemTag.FOOD_FAT).addTags(TagDC.ItemTag.BUTTER, TagDC.ItemTag.MARGARINE);
@@ -588,6 +590,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		copy(TagDC.BlockTag.CONT_LOGS, TagDC.ItemTag.CONT_LOGS);
 		copy(TagDC.BlockTag.CONT_CHARCOAL, TagDC.ItemTag.CONT_CHARCOAL);
 		copy(TagDC.BlockTag.CONT_CROPS, TagDC.ItemTag.CONT_CROPS);
+		copy(TagDC.BlockTag.CONT_WAX, TagDC.ItemTag.CONT_WAX);
 
 		copy(BlockTags.LEAVES, ItemTags.LEAVES);
 

@@ -100,6 +100,7 @@ public class TagDC {
 		public static final TagKey<Block> CONT_LOGS = blockTag("storage_blocks/logs");
 		public static final TagKey<Block> CONT_CHARCOAL = blockTag("storage_blocks/charcoal");
 		public static final TagKey<Block> CONT_CROPS = blockTag("storage_blocks/crops");
+		public static final TagKey<Block> CONT_WAX = blockTag("storage_blocks/wax");
 
 		// for vanilla
 		public static final TagKey<Block> CROP_PUMPKIN = blockTag("crops/pumpkin");
@@ -709,6 +710,8 @@ public class TagDC {
 		public static final TagKey<Item> FIBER_WOOD = itemTag("ingredients/fiber_wood");
 		public static final TagKey<Item> STICK_SORGHUM = itemTag("rods/sorghum");
 		public static final TagKey<Item> STICK_BAMBOO = itemTag("rods/bamboo");
+		public static final TagKey<Item> FOOD_BEESWAX = itemTag("ingredients/beeswax");
+		public static final TagKey<Item> FOOD_TREEWAX = itemTag("ingredients/treewax");
 		public static final TagKey<Item> FOOD_WAX = itemTag("ingredients/wax");
 		public static final TagKey<Item> CAMPHOR = itemTag("ingredients/camphor");
 
@@ -865,6 +868,7 @@ public class TagDC {
 		public static final TagKey<Item> CONT_LOGS = itemTag("storage_blocks/logs");
 		public static final TagKey<Item> CONT_CHARCOAL = itemTag("storage_blocks/charcoal");
 		public static final TagKey<Item> CONT_CROPS = itemTag("storage_blocks/crops");
+		public static final TagKey<Item> CONT_WAX = itemTag("storage_blocks/wax");
 
 		public static final TagKey<Item> CONT_APPLE = itemTag("storage_blocks/crops/apple");
 		public static final TagKey<Item> CONT_CARROT = itemTag("storage_blocks/crops/carrot");
@@ -876,6 +880,9 @@ public class TagDC {
 		public static final TagKey<Item> CONT_SUGARCANE = itemTag("storage_blocks/crops/sugarcane");
 		public static final TagKey<Item> CONT_COCOA = itemTag("storage_blocks/crops/cocoa");
 		public static final TagKey<Item> CONT_BUSHBERRY = itemTag("storage_blocks/crops/bushberry");
+
+		public static final TagKey<Item> CONT_BEESWAX = itemTag("storage_blocks/beeswax");
+		public static final TagKey<Item> CONT_TREEWAX = itemTag("storage_blocks/treewax");
 
 		// magic
 		public static final TagKey<Item> COLOR_DROPS = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops"));

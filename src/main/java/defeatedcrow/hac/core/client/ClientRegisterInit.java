@@ -661,6 +661,7 @@ public class ClientRegisterInit {
 		event.registerBlockEntityRenderer(MachineInit.MONITOR_TEMP_TILE.get(), TileRendererMeterTemp::new);
 		event.registerBlockEntityRenderer(MachineInit.MONITOR_ENERGY_TILE.get(), TileRendererMeterEnergy::new);
 		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_TILE.get(), TileRendererConveyor::new);
+		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_SMELTING_TILE.get(), TileRendererConveyor::new);
 		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_DROPPER_TILE.get(), TileRendererConveyor::new);
 		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_FILLER_TILE.get(), TileRendererConveyor::new);
 		event.registerBlockEntityRenderer(MachineInit.FAUCET_TILE.get(), TileRendererFaucet::new);

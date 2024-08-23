@@ -234,6 +234,8 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 				FoodInit.CONT_CROP_BEET.get(), FoodInit.CONT_CROP_PUMPKIN.get(), FoodInit.CONT_CROP_MELON.get(), FoodInit.CONT_CROP_CACTUS.get(),
 				FoodInit.CONT_CROP_COCOA.get(), FoodInit.CONT_CROP_SUGARCANE.get(), FoodInit.CONT_CROP_BUSHBERRY.get());
 
+		tag(TagDC.BlockTag.CONT_WAX).add(FoodInit.CONT_BEESWAX.get(), FoodInit.CONT_TREEWAX.get());
+
 		tag(TagDC.BlockTag.BUILDING_BRICKS).add(BuildInit.BRICKS_MUD.get(), BuildInit.BRICKS_GYPSUM.get(), BuildInit.BRICKS_SERPENTINE.get(),
 				BuildInit.BRICKS_GREISEN.get(), BuildInit.BRICKS_SKARN.get(), BuildInit.BRICKS_HORNFELS.get(), BuildInit.BRICKS_MARBLE.get(),
 				BuildInit.BRICKS_SCHIST_BLUE.get(), BuildInit.BRICKS_SCHIST_NETHER.get(), BuildInit.BRICKS_GRANITE.get(), BuildInit.BRICKS_MORTAR.get(),

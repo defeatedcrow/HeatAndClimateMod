@@ -668,6 +668,8 @@
    隣接するインベントリからアイテムを引き出し、1個 / 8tick の速度で輸送します。
    Takes an item from an adjacent inventory and transports it at a speed of 1 item/8 ticks.
 
+  ・ 精錬コンベア / Normal Conveyor
+
    通過するアイテムを気候精練します。
    Climate smelting flowing items.
 
@@ -676,16 +678,10 @@
 
   ・ ドロッパーコンベア / Dropper Conveyor
 
-   隣接するインベントリからアイテムを引き出し、1個 / 8tick の速度で輸送します。
-   Takes an item from an adjacent inventory and transports it at a speed of 1 item/8 ticks.
-
    通過するアイテムを真下のインベントリに挿入します。挿入に失敗した場合、そのまま通過します。
    Inserts the floating item into the inventory below. If insertion fails, it passes through.
 
   ・ 充填コンベア / Filler Conveyor
-
-   隣接するインベントリからアイテムを引き出し、1個 / 8tick の速度で輸送します。
-   Takes an item from an adjacent inventory and transports it at a speed of 1 item/8 ticks.
 
    真上に液体が入ったタンクブロックがあるとき、流れているアイテムにその液体の充填を試みます。
    When there is a tank block with fluid on top, it will attempt to fill the flowing item with that fluid.
@@ -694,6 +690,13 @@
 ****************************************************************************************************
 
 #### 更新履歴 / Change log ####
+
+○v4-beta11
+ add: 蝋の圧縮ブロック
+ add: 精錬コンベア
+ change: ノーマルコンベアは精錬機能を無くした
+ fix: 水中ポンプの汲み上げ動作を修正
+ fix: エネルギーモニターの設置時のクラッシュを修正
 
 ○v4-beta10
  add: 測定器アイテム

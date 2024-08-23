@@ -1169,6 +1169,9 @@
   "block.dcs_climate.container.container_plant_wastes":"圧縮した野菜くず",
   "block.dcs_climate.container.container_leaf_mold":"腐葉土ブロック",
 
+  "block.dcs_climate.container.container_beeswax":"蜜蝋ブロック",
+  "block.dcs_climate.container.container_treewax":"木蝋ブロック",
+
   "block.dcs_climate.container.logcont_oak":"オークの原木の束",
   "block.dcs_climate.container.logcont_birch":"シラカバの原木の束",
   "block.dcs_climate.container.logcont_spruce":"トウヒの原木の束",
@@ -1516,6 +1519,7 @@
   "block.dcs_climate.machine.hopper_gold":"金のホッパー",
   "block.dcs_climate.machine.hopper_filter_gold":"金のフィルターホッパー",
   "block.dcs_climate.machine.conveyor":"コンベア",
+  "block.dcs_climate.machine.conveyor_smelting":"コンベア(精錬)",
   "block.dcs_climate.machine.conveyor_dropper":"コンベア(ドロッパー)",
   "block.dcs_climate.machine.conveyor_filler":"コンベア(流体充填)",
   "block.dcs_climate.machine.ibc":"IBC",

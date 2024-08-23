@@ -36,13 +36,15 @@ public class MonitorEnergyTile extends MonitorBaseTile {
 			p1 = getBlockPos().relative(face);
 		}
 		BlockEntity target = getLevel().getBlockEntity(p1);
-		IEnergyStorage handler = target.getCapability(ForgeCapabilities.ENERGY).orElseGet(null);
-		if (handler != null) {
-			int i1 = handler.getEnergyStored();
-			int i2 = handler.getMaxEnergyStored();
-			amount = Mth.floor(90F * i1 / i2);
-			amountMax = 90;
-			return amount > 0;
+		if (target != null) {
+			IEnergyStorage handler = target.getCapability(ForgeCapabilities.ENERGY).orElseGet(null);
+			if (handler != null) {
+				int i1 = handler.getEnergyStored();
+				int i2 = handler.getMaxEnergyStored();
+				amount = Mth.floor(90F * i1 / i2);
+				amountMax = 90;
+				return amount > 0;
+			}
 		}
 		return false;
 	}

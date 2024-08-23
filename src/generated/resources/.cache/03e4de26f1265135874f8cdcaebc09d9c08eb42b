@@ -1,4 +1,4 @@
-// 1.19.2	2024-08-19T20:30:04.4912204	Tags for minecraft:item
+// 1.19.2	2024-08-21T23:23:33.3498486	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
 3e53fdcbff82a9db030e03d6fcbd63745c1eb081 data/dcs_climate/tags/items/building_stones.json
@@ -439,6 +439,7 @@ b7a1f487a9ea53992619f74e53191409bb435cda data/forge/tags/items/ingredients/anko.
 d952ef1b1fe160e61738f8b06d0dbd20ef27af4d data/forge/tags/items/ingredients/bagasse.json
 c8ae00487769cc8af31edfa00b8ec67148460290 data/forge/tags/items/ingredients/barley.json
 6a08bea75f62dd133e4b73a34bd90bcdc3e90252 data/forge/tags/items/ingredients/basesoup.json
+ef0eae57eace67ac0bee0bd569b02852ec51a320 data/forge/tags/items/ingredients/beeswax.json
 f16cf96642df3a0a2f47fdafcd1ded01911c8534 data/forge/tags/items/ingredients/blue_fishes.json
 a5153583ad173c677ea675dcdfbfce5fd9415493 data/forge/tags/items/ingredients/bone_chicken.json
 a79b13aa1014c090ce43b59368bdeab486b6e18c data/forge/tags/items/ingredients/bone_cow.json
@@ -540,13 +541,14 @@ cee195a15594e3f06a00f1d159fd5af650f69c48 data/forge/tags/items/ingredients/syrup
 be7acdc39b139f4c15c4e53d23ad1907e858e023 data/forge/tags/items/ingredients/tea_leaves_green.json
 0f30b4e4d86c2ee8f1ca453dfa9557d728f7d192 data/forge/tags/items/ingredients/tea_leaves_oolong.json
 21ab068d81f991df5655fb47407673cb2692e187 data/forge/tags/items/ingredients/tofu.json
+9b9b58e0646be66d75d46f6bdb594d68469f6739 data/forge/tags/items/ingredients/treewax.json
 6d49140b9dbf9008b77534bd842a9bac2cdf7c29 data/forge/tags/items/ingredients/trout.json
 51f8cc452a6d7f5e3ab19a16c8f2b0ef32fe9f0b data/forge/tags/items/ingredients/tuna.json
 094e093362bfcbb9a375840c972e654ae458c86c data/forge/tags/items/ingredients/vanilla_cured.json
 5c30b60932a4e1b7101a377e0e1be1bbbfa04cae data/forge/tags/items/ingredients/vine.json
 8344c9b999865f9ba063b11cdf4a3383639e3892 data/forge/tags/items/ingredients/vinegar.json
 e48cbad30b2e5483f251e5cab75a273775e4c6b7 data/forge/tags/items/ingredients/water.json
-69584022c54e32b79c2869fd48111c011a07bb39 data/forge/tags/items/ingredients/wax.json
+5297705bd5a141a39bed191dedf0e813cc9a1f41 data/forge/tags/items/ingredients/wax.json
 5216b82b13fc22313eb962b340b777761d157ac7 data/forge/tags/items/ingredients/wheat.json
 fa0c11353a3feb78c357ce978211fcc4bf4ca625 data/forge/tags/items/ingredients/white_fishes.json
 8816e52a8c5f32c17ebc8e0caa829bbf946f38b4 data/forge/tags/items/ingredients/yogult.json
@@ -684,6 +686,7 @@ d008aafae145de3f68713ad4c0dc017f11ade104 data/forge/tags/items/soaps.json
 69a564f2648b5b46ce683320ba14ad5b2e6ea771 data/forge/tags/items/soaps/magic.json
 6e36aac6c9c4b9b6b6ce4dcde367d4e978fa6ac4 data/forge/tags/items/soaps/olive.json
 518069aa4476dcb976eb887976323e6eed6dd8d5 data/forge/tags/items/storage_blocks/aluminum.json
+4ee9fc39ec4f1d1505a85dda12bdb4e5fb0fb6a3 data/forge/tags/items/storage_blocks/beeswax.json
 421992f6e6c98a5290bc667c3485b851c2fc5cfc data/forge/tags/items/storage_blocks/brass.json
 24489edac3acc6c1accdf7359630963f2f3cf31e data/forge/tags/items/storage_blocks/bronze.json
 c730d1b9bf1b64cf891ec4ba4d4cb3514e83df21 data/forge/tags/items/storage_blocks/bscco.json
@@ -710,6 +713,8 @@ c910d17690692fe117409dbad314ee6529a797b3 data/forge/tags/items/storage_blocks/cr
 0b293ed9d351ab3e23254defe88726b136b04a0f data/forge/tags/items/storage_blocks/steel.json
 31ceb9f8edfa6a914ccc09eb53b641d4f995a27e data/forge/tags/items/storage_blocks/sus.json
 48d87fe2c91e74ff38e934ef3fa98be51c0b4fa6 data/forge/tags/items/storage_blocks/titanium.json
+98e5cfd0810559e280d292ddf13c8e877212aa4e data/forge/tags/items/storage_blocks/treewax.json
+d3832d708ff9b2e83f4502b9cf13a6c7e4df0f38 data/forge/tags/items/storage_blocks/wax.json
 2ed46804ff9a01e08811d281a2c017ff685b2291 data/forge/tags/items/string.json
 c74380900e83f72f6211faba04db996211a8a7b6 data/forge/tags/items/strings/cotton.json
 49e74b9023d0e71ccbfc965cfa77ccdaae4eb7a5 data/forge/tags/items/strings/plant.json

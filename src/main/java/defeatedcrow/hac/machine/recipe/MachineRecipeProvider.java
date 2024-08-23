@@ -212,6 +212,12 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1))
 				.save(cons, "dcs_climate:machine/conveyor_0");
 
+		ShapelessRecipeBuilder.shapeless(MachineInit.CONVEYOR_SMELTING.get(), 1)
+				.requires(MachineInit.CONVEYOR.get())
+				.requires(CoreInit.TEMPMETER.get())
+				.unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
+				.save(cons, "dcs_climate:machine/conveyor_smelting_0");
+
 		ShapelessRecipeBuilder.shapeless(MachineInit.CONVEYOR_DROPPER.get(), 1)
 				.requires(MachineInit.CONVEYOR.get())
 				.requires(Items.DROPPER)

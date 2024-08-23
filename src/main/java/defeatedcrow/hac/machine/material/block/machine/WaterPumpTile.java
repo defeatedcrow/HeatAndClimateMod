@@ -43,7 +43,7 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 	public boolean onTickProcess(Level level, BlockPos pos, BlockState state) {
 		if (this.isActive(level, pos, state)) {
 			// pumping
-			if (getEnergyHandler().getEnergyStored() >= 8 && !tank.isFull()) {
+			if (!tank.isFull()) {
 				FluidState pumpState = state.getFluidState();
 				FluidStack fill = FluidStack.EMPTY;
 				BlockPos lastPos = getBlockPos();
@@ -52,6 +52,7 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 				if (DCState.getBool(getBlockState(), EntityBlockDC.WATERLOGGED) || pumpState.is(Fluids.WATER) || pumpState.is(Fluids.FLOWING_WATER)) {
 					fill = new FluidStack(Fluids.WATER, getEnergyHandler().getEnergyStored()).copy();
 					if (fill.getAmount() > 32) {
+						// 水のみ吸い上げにエネルギーを必要としない
 						fill.setAmount(32);
 					}
 				} else if (getEnergyHandler().getEnergyStored() >= 100) {
@@ -95,7 +96,8 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 
 				if (!fill.isEmpty()) {
 					int ret = tank.fill(fill, FluidAction.SIMULATE);
-					if (ret >= fill.getAmount()) {
+					if (ret == fill.getAmount()) {
+						tank.fill(fill, FluidAction.EXECUTE);
 						BlockState s2 = getLevel().getBlockState(lastPos);
 						if (fill.getFluid() != Fluids.WATER && s2.getBlock() instanceof BucketPickup pickup) {
 							pickup.pickupBlock(getLevel(), lastPos, s2);
@@ -119,6 +121,7 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 							drain.setAmount(ret);
 							int consume = handler.fill(drain, FluidAction.EXECUTE);
 							tank.drain(consume, FluidAction.EXECUTE);
+							getEnergyHandler().consumeEnergy(8);
 							return true;
 						}
 						return false;

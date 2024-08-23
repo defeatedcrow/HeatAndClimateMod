@@ -72,6 +72,8 @@ import defeatedcrow.hac.machine.material.block.transport.ConveyorDropperTile;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorFillerBlock;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorFillerTile;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorNormalBlock;
+import defeatedcrow.hac.machine.material.block.transport.ConveyorSmeltingBlock;
+import defeatedcrow.hac.machine.material.block.transport.ConveyorSmeltingTile;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorTile;
 import defeatedcrow.hac.machine.material.block.transport.EnergyBatteryTile;
 import defeatedcrow.hac.machine.material.block.transport.FaucetBlock;
@@ -122,6 +124,7 @@ public class MachineInit {
 	public static final RegistryObject<Block> HOPPER_FILTER_GOLD = regBlock("hopper_filter_gold", () -> new HopperFilterGoldBlock("hopper_filter_gold"), null);
 
 	public static final RegistryObject<Block> CONVEYOR = regBlock("conveyor", () -> new ConveyorNormalBlock("conveyor"), null);
+	public static final RegistryObject<Block> CONVEYOR_SMELTING = regBlock("conveyor_smelting", () -> new ConveyorSmeltingBlock("conveyor_smelting"), null);
 	public static final RegistryObject<Block> CONVEYOR_DROPPER = regBlock("conveyor_dropper", () -> new ConveyorDropperBlock("conveyor_dropper"), null);
 	public static final RegistryObject<Block> CONVEYOR_FILLER = regBlock("conveyor_filler", () -> new ConveyorFillerBlock("conveyor_filler"), null);
 
@@ -220,6 +223,9 @@ public class MachineInit {
 
 	public static final RegistryObject<BlockEntityType<ConveyorTile>> CONVEYOR_TILE = CoreInit.BLOCK_ENTITIES.register("conveyor_tile",
 			() -> BlockEntityType.Builder.of(ConveyorTile::new, new Block[] { CONVEYOR.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<ConveyorSmeltingTile>> CONVEYOR_SMELTING_TILE = CoreInit.BLOCK_ENTITIES.register("conveyor_smelting_tile",
+			() -> BlockEntityType.Builder.of(ConveyorSmeltingTile::new, new Block[] { CONVEYOR_SMELTING.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<ConveyorDropperTile>> CONVEYOR_DROPPER_TILE = CoreInit.BLOCK_ENTITIES.register("conveyor_dropper_tile",
 			() -> BlockEntityType.Builder.of(ConveyorDropperTile::new, new Block[] { CONVEYOR_DROPPER.get() }).build(null));

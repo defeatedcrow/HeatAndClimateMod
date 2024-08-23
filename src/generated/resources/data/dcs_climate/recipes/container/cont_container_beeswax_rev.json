@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:container/container_beeswax"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "dcs_climate:food/food_beeswax"
+  }
+}

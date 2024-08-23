@@ -9,6 +9,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.machine.material.MachineInit;
@@ -31,11 +32,11 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.Vec3;
 
-public class ConveyorNormalBlock extends ConveyorBlockBase {
+public class ConveyorSmeltingBlock extends ConveyorBlockBase {
 
 	final String name;
 
-	public ConveyorNormalBlock(String s) {
+	public ConveyorSmeltingBlock(String s) {
 		super(getProp());
 		name = s;
 	}
@@ -65,7 +66,7 @@ public class ConveyorNormalBlock extends ConveyorBlockBase {
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new ConveyorTile(pos, state);
+		return new ConveyorSmeltingTile(pos, state);
 	}
 
 	@Override
@@ -101,14 +102,23 @@ public class ConveyorNormalBlock extends ConveyorBlockBase {
 	@Override
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-		return !level.isClientSide ? createTickerHelper(type, MachineInit.CONVEYOR_TILE.get(), ConveyorTile::serverTick) :
-				createTickerHelper(type, MachineInit.CONVEYOR_TILE.get(), ConveyorTile::clientTick);
+		return !level.isClientSide ? createTickerHelper(type, MachineInit.CONVEYOR_SMELTING_TILE.get(), ConveyorTile::serverTick) :
+				createTickerHelper(type, MachineInit.CONVEYOR_SMELTING_TILE.get(), ConveyorTile::clientTick);
 	}
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.conveyor.transport").withStyle(ChatFormatting.YELLOW);
-		list.add(tex1);
+		MutableComponent tex2 = Component.translatable("dcs.tip.conveyor.smelt").withStyle(ChatFormatting.YELLOW);
+		MutableComponent tex3 = Component.translatable("dcs.tip.conveyor.smelt.desc").withStyle(ChatFormatting.GRAY);
+		if (ClimateCore.proxy.keyShiftPushed()) {
+			list.add(tex1);
+			list.add(tex2);
+			list.add(tex3);
+		} else {
+			list.add(tex1);
+			list.add(tex2);
+		}
 		super.appendHoverText(stack, level, list, flag);
 	}
 
