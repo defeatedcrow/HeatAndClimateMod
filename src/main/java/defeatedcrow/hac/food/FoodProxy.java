@@ -4,7 +4,7 @@ import defeatedcrow.hac.food.event.ClickEventDC;
 import defeatedcrow.hac.food.event.CraftingFoodEvent;
 import defeatedcrow.hac.food.recipe.BrewingRecipeDC;
 import defeatedcrow.hac.food.recipe.PlantRecipes;
-import defeatedcrow.hac.food.worldgen.WildCropFeature;
+import defeatedcrow.hac.food.worldgen.TargetCropList;
 import net.minecraftforge.common.MinecraftForge;
 
 public class FoodProxy {
@@ -17,7 +17,7 @@ public class FoodProxy {
 	}
 
 	public static void commonInit() {
-		WildCropFeature.init();
+		TargetCropList.INSTANCE.init();
 		BrewingRecipeDC.INSTANCE.init();
 		PlantRecipes.addCompostables();
 	}

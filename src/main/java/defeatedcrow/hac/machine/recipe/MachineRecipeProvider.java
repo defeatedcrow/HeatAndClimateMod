@@ -224,6 +224,12 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
 				.save(cons, "dcs_climate:machine/conveyor_dropper_0");
 
+		ShapelessRecipeBuilder.shapeless(MachineInit.CONVEYOR_SORTER.get(), 1)
+				.requires(MachineInit.CONVEYOR.get())
+				.requires(MachineInit.HOPPER_FILTER.get())
+				.unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
+				.save(cons, "dcs_climate:machine/conveyor_sorter_0");
+
 		ShapelessRecipeBuilder.shapeless(MachineInit.CONVEYOR_FILLER.get(), 1)
 				.requires(MachineInit.CONVEYOR.get())
 				.requires(Items.BUCKET)

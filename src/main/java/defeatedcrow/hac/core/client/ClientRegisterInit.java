@@ -181,6 +181,7 @@ import defeatedcrow.hac.machine.client.entity.TeaPotModel_C;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberFuel;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberIron;
 import defeatedcrow.hac.machine.client.entity.TileRendererConveyor;
+import defeatedcrow.hac.machine.client.entity.TileRendererConveyorSorter;
 import defeatedcrow.hac.machine.client.entity.TileRendererCookingPot;
 import defeatedcrow.hac.machine.client.entity.TileRendererCopperCable;
 import defeatedcrow.hac.machine.client.entity.TileRendererFaucet;
@@ -664,6 +665,7 @@ public class ClientRegisterInit {
 		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_SMELTING_TILE.get(), TileRendererConveyor::new);
 		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_DROPPER_TILE.get(), TileRendererConveyor::new);
 		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_FILLER_TILE.get(), TileRendererConveyor::new);
+		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_SORTER_TILE.get(), TileRendererConveyorSorter::new);
 		event.registerBlockEntityRenderer(MachineInit.FAUCET_TILE.get(), TileRendererFaucet::new);
 		event.registerBlockEntityRenderer(MachineInit.INTAKE_FAN_TILE.get(), TileRendererIntakeFan::new);
 		event.registerBlockEntityRenderer(MachineInit.HYDRO_TURBINE_TILE.get(), TileRendererHydroTurbine::new);

@@ -13,6 +13,7 @@ import defeatedcrow.hac.core.tag.TagUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.WorldGenLevel;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -49,11 +51,12 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 		Random random = new Random(seed);
 
 		random.nextInt(1000);
-		int rate = 1000 - ConfigCommonBuilder.INSTANCE.vSpringFeature.get() * 10;
+		int rate = ConfigCommonBuilder.INSTANCE.vSpringFeature.get() * 10;
 		if (random.nextInt(1000) < rate) {
 			return false;
 		}
 
+		int surface = level.getHeight(Heightmap.Types.WORLD_SURFACE, chunk.getMiddleBlockX(), chunk.getMiddleBlockZ());
 		BlockPos p = new BlockPos(chunk.getMiddleBlockX(), 65, chunk.getMiddleBlockZ());
 		Holder<Biome> biome = level.getBiome(p);
 
@@ -64,30 +67,47 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 			table = RED;
 		} else if (biome.containsTag(TagDC.BiomeTag.GREEN_BIOME)) {
 			table = GREEN;
-		} else if (biome.containsTag(Tags.Biomes.IS_WATER) || biome.is(Tags.Biomes.IS_UNDERGROUND)) {
+		} else if (biome.containsTag(Tags.Biomes.IS_DEAD) || biome.containsTag(BiomeTags.IS_OCEAN) || biome.is(Tags.Biomes.IS_UNDERGROUND)) {
 			table = BLACK;
 		}
 
 		BlockPos.MutableBlockPos mp = new BlockPos.MutableBlockPos();
 		// 高度選定
 		int height = 0;
-		for (int j = 150; j >= 45; j--) {
+		if (table == BLACK) {
+			for (int j = surface; j > surface - 30; j--) {
 
-			mp.set(chunk.getMiddleBlockX(), j, chunk.getMiddleBlockZ());
-			BlockState check = level.getBlockState(mp);
-			if (!check.isAir() && isPlaceable(check)) {
-				height = j;
-				break;
+				mp.set(chunk.getMiddleBlockX(), j, chunk.getMiddleBlockZ());
+				BlockState check = level.getBlockState(mp);
+				BlockState under = level.getBlockState(mp.below());
+				if (!under.isAir() && isPlaceable(under) && check.getMaterial().isLiquid()) {
+					height = j;
+					break;
+				}
+
+				if (!check.isAir() && isPlaceable(check) && (under.getMaterial().isLiquid() || under.isAir())) {
+					height = j;
+					break;
+				}
 			}
-			if (check.getMaterial().isLiquid() && table != BLACK) {
-				height = 0;
-				break;
+			if (height > surface) {
+				return false;
 			}
-		}
-		if (height < 45) {
-			if (table == BLACK) {
-				height = random.nextInt(40);
-			} else {
+		} else {
+			for (int j = surface + 100; j > surface - 10; j--) {
+
+				mp.set(chunk.getMiddleBlockX(), j, chunk.getMiddleBlockZ());
+				BlockState check = level.getBlockState(mp);
+				if (!check.isAir() && isPlaceable(check)) {
+					height = j;
+					break;
+				}
+				if (check.getMaterial().isLiquid()) {
+					height = 0;
+					break;
+				}
+			}
+			if (height < 45) {
 				return false;
 			}
 		}
@@ -213,7 +233,7 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 	static boolean isPlaceable(BlockState block) {
 		if (!block.hasBlockEntity() && !block.is(BlockTags.FEATURES_CANNOT_REPLACE))
 			if (block.getMaterial() == Material.STONE || block.getMaterial() == Material.SAND || block.getMaterial() == Material.CLAY || block.getMaterial() == Material.ICE || block
-				.getMaterial() == Material.DIRT || block.getMaterial() == Material.GRASS || block.getMaterial() == Material.SNOW || block.getMaterial() == Material.POWDER_SNOW) {
+					.getMaterial() == Material.DIRT || block.getMaterial() == Material.GRASS || block.getMaterial() == Material.SNOW || block.getMaterial() == Material.POWDER_SNOW) {
 				if (TagUtil.matchTag("ores", block.getBlock().asItem()).isEmpty() && block.getBlock() != Blocks.POINTED_DRIPSTONE) {
 					return true;
 				}

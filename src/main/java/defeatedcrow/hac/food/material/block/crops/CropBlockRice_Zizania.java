@@ -138,16 +138,16 @@ public class CropBlockRice_Zizania extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_0")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_f")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_c")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_0")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_f")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_c")));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_0")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_c")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_0")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_c")));
 	}
 
 	@Override
@@ -223,7 +223,7 @@ public class CropBlockRice_Zizania extends ClimateCropBaseBlock {
 		case COMMON:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.MUD);
 		case WILD:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.MUD);
+			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.MUD, SoilType.WATER);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.MUD);
 		}

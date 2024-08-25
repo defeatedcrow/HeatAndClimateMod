@@ -2,5 +2,5 @@
   "type": "forge:add_features",
   "biomes": "#forge:ore_target",
   "features": "dcs_climate:wild_crop_dc",
-  "step": "vegetal_decoration"
+  "step": "top_layer_modification"
 }

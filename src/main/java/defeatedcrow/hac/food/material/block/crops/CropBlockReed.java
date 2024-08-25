@@ -138,16 +138,16 @@ public class CropBlockReed extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_0")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_f")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_c")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_0")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_f")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_c")));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_0")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_c")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_0")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/reed_" + getSpeciesName(cropTier) + "_c")));
 	}
 
 	@Override
@@ -216,7 +216,7 @@ public class CropBlockReed extends ClimateCropBaseBlock {
 		case COMMON:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.SAND);
 		case WILD:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.SAND, SoilType.MUD);
+			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.SAND, SoilType.MUD, SoilType.WATER);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND);
 		}

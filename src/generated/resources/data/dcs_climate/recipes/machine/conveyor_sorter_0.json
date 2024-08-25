@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:machine/conveyor"
+    },
+    {
+      "item": "dcs_climate:machine/hopper_filter"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:machine/conveyor_sorter"
+  }
+}

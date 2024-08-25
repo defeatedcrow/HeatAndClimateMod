@@ -6,6 +6,7 @@ import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.machine.client.gui.BoilerBiomassMenu;
+import defeatedcrow.hac.machine.client.gui.ConveyorSorterMenu;
 import defeatedcrow.hac.machine.client.gui.CookingPotMenu;
 import defeatedcrow.hac.machine.client.gui.EnergyBatteryMenu;
 import defeatedcrow.hac.machine.client.gui.FermentationJarMenu;
@@ -74,6 +75,8 @@ import defeatedcrow.hac.machine.material.block.transport.ConveyorFillerTile;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorNormalBlock;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorSmeltingBlock;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorSmeltingTile;
+import defeatedcrow.hac.machine.material.block.transport.ConveyorSortingBlock;
+import defeatedcrow.hac.machine.material.block.transport.ConveyorSortingTile;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorTile;
 import defeatedcrow.hac.machine.material.block.transport.EnergyBatteryTile;
 import defeatedcrow.hac.machine.material.block.transport.FaucetBlock;
@@ -126,6 +129,7 @@ public class MachineInit {
 	public static final RegistryObject<Block> CONVEYOR = regBlock("conveyor", () -> new ConveyorNormalBlock("conveyor"), null);
 	public static final RegistryObject<Block> CONVEYOR_SMELTING = regBlock("conveyor_smelting", () -> new ConveyorSmeltingBlock("conveyor_smelting"), null);
 	public static final RegistryObject<Block> CONVEYOR_DROPPER = regBlock("conveyor_dropper", () -> new ConveyorDropperBlock("conveyor_dropper"), null);
+	public static final RegistryObject<Block> CONVEYOR_SORTER = regBlock("conveyor_sorter", () -> new ConveyorSortingBlock("conveyor_sorter"), null);
 	public static final RegistryObject<Block> CONVEYOR_FILLER = regBlock("conveyor_filler", () -> new ConveyorFillerBlock("conveyor_filler"), null);
 
 	public static final RegistryObject<Block> PORTABLE_CAN = regFluidBlock("portable_can", () -> new PortableCanBlock("portable_can"), 18000);
@@ -229,6 +233,9 @@ public class MachineInit {
 
 	public static final RegistryObject<BlockEntityType<ConveyorDropperTile>> CONVEYOR_DROPPER_TILE = CoreInit.BLOCK_ENTITIES.register("conveyor_dropper_tile",
 			() -> BlockEntityType.Builder.of(ConveyorDropperTile::new, new Block[] { CONVEYOR_DROPPER.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<ConveyorSortingTile>> CONVEYOR_SORTER_TILE = CoreInit.BLOCK_ENTITIES.register("conveyor_sorter_tile",
+			() -> BlockEntityType.Builder.of(ConveyorSortingTile::new, new Block[] { CONVEYOR_SORTER.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<ConveyorFillerTile>> CONVEYOR_FILLER_TILE = CoreInit.BLOCK_ENTITIES.register("conveyor_filler_tile",
 			() -> BlockEntityType.Builder.of(ConveyorFillerTile::new, new Block[] { CONVEYOR_FILLER.get() }).build(null));
@@ -385,6 +392,11 @@ public class MachineInit {
 			data) -> {
 		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
 		return HopperFilterMenu.filterGoldMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<ConveyorSorterMenu>> CONVEYOR_SORTER_MENU = CoreInit.register("dcs_conveyor_sorter", (IContainerFactory<ConveyorSorterMenu>) (id, playerInv, data) -> {
+		ConveyorSortingTile cont = (ConveyorSortingTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return ConveyorSorterMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<KichenBenchMenu>> KICHEN_BENCH_MENU = CoreInit.register("dcs_kichen_bench", (IContainerFactory<KichenBenchMenu>) (id, playerInv,

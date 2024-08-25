@@ -8,6 +8,7 @@ import defeatedcrow.hac.api.material.IDisplayTile;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.material.block.InventoryDC;
+import defeatedcrow.hac.core.material.block.OwnableBaseTileDC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileDisplayItemToC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.material.MachineInit;
@@ -15,13 +16,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -34,7 +36,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public class ConveyorTile extends BlockEntity implements WorldlyContainer, IDisplayTile {
+public class ConveyorTile extends OwnableBaseTileDC implements WorldlyContainer, IDisplayTile {
 
 	public ConveyorTile(BlockEntityType<?> tile, BlockPos pos, BlockState state) {
 		super(tile, pos, state);
@@ -158,28 +160,6 @@ public class ConveyorTile extends BlockEntity implements WorldlyContainer, IDisp
 		return false;
 	}
 
-	// protected boolean insertDrop() {
-	// if (!DCUtil.isEmpty(this.getItem(0)))
-	// return false;
-	//
-	// VoxelShape box = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-	// AABB aabb = box.bounds().move(getBlockPos()).inflate(0.5D);
-	// List<ItemEntity> drops = getLevel().getEntitiesOfClass(ItemEntity.class, aabb, EntitySelector.ENTITY_STILL_ALIVE);
-	// for (ItemEntity drop : drops) {
-	// ItemStack take = drop.getItem().copy();
-	// take.setCount(1);
-	// int i = this.getInventory().canIncrSlot(0, take);
-	// if (i > 0) {
-	// this.getInventory().incrStackInSlot(0, take);
-	// drop.getItem().split(i);
-	// if (drop.getItem().isEmpty())
-	// drop.discard();
-	// this.setChanged();
-	// }
-	// }
-	// return false;
-	// }
-
 	protected BlockPos getForwardPos() {
 		Direction side = getBlockDir();
 		return getBlockPos().relative(side);
@@ -244,6 +224,7 @@ public class ConveyorTile extends BlockEntity implements WorldlyContainer, IDisp
 		return 1;
 	}
 
+	@Override
 	protected Component getDefaultName() {
 		return Component.translatable("dcs.container.device");
 	}
@@ -340,35 +321,27 @@ public class ConveyorTile extends BlockEntity implements WorldlyContainer, IDisp
 	}
 
 	@Override
-	public ClientboundBlockEntityDataPacket getUpdatePacket() {
-		return ClientboundBlockEntityDataPacket.create(this);
-	}
-
-	@Override
-	public CompoundTag getUpdateTag() {
-		return this.saveWithoutMetadata();
-	}
-
-	@Override
-	public void load(CompoundTag tag) {
-		super.load(tag);
-		loadTag(tag);
-	}
-
 	public void loadTag(CompoundTag tag) {
+		super.loadTag(tag);
 		getInventory().readFromNBT(tag);
 		move = tag.getInt(TagKeyDC.CURRENT_PROGRESS);
 	}
 
 	@Override
-	protected void saveAdditional(CompoundTag tag) {
-		super.saveAdditional(tag);
-		writeTag(tag);
+	public void writeTag(CompoundTag tag) {
+		super.writeTag(tag);
+		getInventory().writeToNBT(tag);
 		tag.putInt(TagKeyDC.CURRENT_PROGRESS, move);
 	}
 
-	public void writeTag(CompoundTag tag) {
-		getInventory().writeToNBT(tag);
+	@Override
+	protected AbstractContainerMenu createMenu(int i, Inventory inv) {
+		return null;
+	}
+
+	@Override
+	public boolean hasMenu() {
+		return false;
 	}
 
 }

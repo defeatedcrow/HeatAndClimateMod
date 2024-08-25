@@ -977,6 +977,7 @@
 
   "block.dcs_climate.food.fertile":"Fertilized Farm Block",
   "block.dcs_climate.food.fertile_planter":"Gardening Pot",
+  "block.dcs_climate.food.fertile_planter_gem":"Breeding Pot",
 
   "block.dcs_climate.food.cropblock_allium_wild":"Garlic Chives",
   "block.dcs_climate.food.cropblock_allium_common":"Onion",
@@ -1165,6 +1166,8 @@
   "block.dcs_climate.food.plank_reed_sorghum":"Sorghum Planks",
   "block.dcs_climate.food.plank_sumac_lacquer":"Sumac Planks",
   "block.dcs_climate.food.plank_lacquerware":"Lacquered Planks",
+
+  "block.dcs_climate.food.dummy_dianthus":"Wild Dianthus",
 
   "## containers":"",
 
@@ -1521,8 +1524,9 @@
   "block.dcs_climate.machine.hopper_gold":"Gold Hopper",
   "block.dcs_climate.machine.hopper_filter_gold":"Gold Finter Hopper",
   "block.dcs_climate.machine.conveyor":"Conveyor",
-  "block.dcs_climate.machine.conveyor_smelting":"Smelting Conveyor",
+  "block.dcs_climate.machine.conveyor_smelting":"Smelter Conveyor",
   "block.dcs_climate.machine.conveyor_dropper":"Dropper Conveyor",
+  "block.dcs_climate.machine.conveyor_sorter":"Sorter Conveyor",
   "block.dcs_climate.machine.conveyor_filler":"Filler Conveyor",
   "block.dcs_climate.machine.ibc":"IBC",
   "block.dcs_climate.machine.portable_can":"Potrtable Can",
@@ -1679,6 +1683,11 @@
   "dcs.tip.device.energy.io.pass":"Energy Averaging",
   "dcs.tip.device.energy.io.none":"None",
   "dcs.tip.device.energy.battery.amount":"Power: ",
+  "dcs.tip.device.sorter.type.off":"No Filtering",
+  "dcs.tip.device.sorter.type.phrase":"Phrase (filter items display name) is included as part of the item name or tag name",
+  "dcs.tip.device.sorter.type.tag":"Contains any tag in common with the filter item",
+  "dcs.tip.device.sorter.type.exact":"Identical (Item and NBT)",
+
   "dcs.tip.fluid_pipe":"Transports liquid using gravity.",
   "dcs.tip.hopper.iron":"Transport: 1 item / 5 tick",
   "dcs.tip.hopper.gold":"Transport: 1 item / tick",
@@ -1702,6 +1711,9 @@
   "dcs.tip.conveyor.dropper.desc":"Try to insert the passing item into the inventory of the block below.",
   "dcs.tip.conveyor.filler":"[Fluid Filler]",
   "dcs.tip.conveyor.filler.desc":"Fill the passing fluid container item　with the fluid in the upper tank.",
+  "dcs.tip.conveyor.sorter":"[Item Sorting]",
+  "dcs.tip.conveyor.sorter.desc":"The destination will change depending on the item set in the filter.",
+  "dcs.tip.conveyor.sorter.desc2":"When it can't find a destination, it drops it under the conveyor.",
 
   "dcs.tip.energy.stone_mill.desc":"Handles the pulverization recipe.",
   "dcs.tip.energy.water_pump.desc":"It sucks up nearby fluid sources.",
@@ -1924,6 +1936,8 @@
   "dcs.container.device.with_owner":"%1$s 's Device",
   "dcs.container.hopper":"Hopper",
   "dcs.container.hopper.with_owner":"%1$s 's Hopper",
+  "dcs.container.conveyor":"Conveyor",
+  "dcs.container.conveyor.with_owner":"%1$s 's Conveyor",
   "dcs.container.chamber":"Stove",
   "dcs.container.chamber.with_owner":"%1$s 's Stove",
   "dcs.container.tank":"Tank",

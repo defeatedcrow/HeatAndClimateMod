@@ -681,6 +681,17 @@
    通過するアイテムを真下のインベントリに挿入します。挿入に失敗した場合、そのまま通過します。
    Inserts the floating item into the inventory below. If insertion fails, it passes through.
 
+   送り先が見つからないとき、コンベアの下に落とします。
+   When it can't find a destination, it drops it under the conveyor.
+
+   『Phrase』モードでは、金床で変更したアイテムの名前をフィルターに利用できます。
+   In "Phrase" mode, the anvil-modified item name can be used for filtering.
+
+  ・ 仕分けコンベア / Sorter Conveyor
+
+   通過するアイテムをフィルタリングし、搬出先を切替えます。
+   The destination will change depending on the item set in the filter.
+
   ・ 充填コンベア / Filler Conveyor
 
    真上に液体が入ったタンクブロックがあるとき、流れているアイテムにその液体の充填を試みます。
@@ -690,6 +701,12 @@
 ****************************************************************************************************
 
 #### 更新履歴 / Change log ####
+
+○v4-beta12
+ add: 改良プランター
+ add: 仕分けコンベア
+ change: 作物ブロック、追加池の自然生成処理を変更
+ fix: HUDのBiome名表示時、LocalizeされていないBiome名を内部名で表示するように
 
 ○v4-beta11
  add: 蝋の圧縮ブロック

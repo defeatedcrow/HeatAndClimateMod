@@ -1274,6 +1274,14 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_terracotta", has(ItemTags.TERRACOTTA))
 				.save(cons, "dcs_climate:food/fertile_planter_block_2");
 
+		ShapedRecipeBuilder.shaped(FoodInit.FERTILE_PLANTER_GEM.get(), 1)
+				.pattern("YXY")
+				.pattern("YYY")
+				.define('X', ItemTags.DIRT)
+				.define('Y', TagDC.ItemTag.GEM_AGATES)
+				.unlockedBy("has_gem_agates", has(TagDC.ItemTag.GEM_AGATES))
+				.save(cons, "dcs_climate:food/fertile_planter_gem_1");
+
 		// food materials
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_PASTRY.get(), 1)

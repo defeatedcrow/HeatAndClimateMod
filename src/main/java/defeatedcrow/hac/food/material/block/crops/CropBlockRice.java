@@ -44,11 +44,11 @@ public class CropBlockRice extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_0")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_1")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/rice_2")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/rice_" + getSpeciesName(cropTier) + "_f")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/rice_" + getSpeciesName(cropTier) + "_c")));
+				new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_0")),
+				new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_1")),
+				new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/rice_2")),
+				new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/rice_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/rice_" + getSpeciesName(cropTier) + "_c")));
 	}
 
 	@Override
@@ -117,7 +117,7 @@ public class CropBlockRice extends ClimateCropBaseBlock {
 		case COMMON:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.MUD);
 		case WILD:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.MUD);
+			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.MUD, SoilType.WATER);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.MUD);
 		}

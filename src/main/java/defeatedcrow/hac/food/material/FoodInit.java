@@ -1055,7 +1055,10 @@ public class FoodInit {
 	public static final RegistryObject<Block> PLANK_LACQUERWARE = regBlock("plank_lacquerware", () -> new PlankBlockDC("plank_lacquerware"), ItemTags.PLANKS);
 
 	public static final RegistryObject<Block> FERTILE = regBlock("fertile", () -> new FertileBlock(), null);
-	public static final RegistryObject<Block> FERTILE_PLANTER = regBlock("fertile_planter", () -> new FertilePlanterBlock(), null);
+	public static final RegistryObject<Block> FERTILE_PLANTER = regBlock("fertile_planter", () -> new FertilePlanterBlock(false), null);
+	public static final RegistryObject<Block> FERTILE_PLANTER_GEM = regBlock("fertile_planter_gem", () -> new FertilePlanterBlock(true), null);
+
+	// public static final RegistryObject<Block> DUMMY_DIANTHUS = regBlock("dummy_dianthus", () -> new DummyDianthusBlock(), null);
 
 	public static final RegistryObject<Block> CONT_LEAVES = regCont("container_leaves", () -> new LeavesContBlock("container_leaves"), TagDC.ItemTag.CONT_LEAVES);
 	public static final RegistryObject<Block> CONT_WASTE = regCont("container_plant_wastes", () -> new LeavesContBlock("container_plant_wastes"), TagDC.ItemTag.CONT_LEAVES);

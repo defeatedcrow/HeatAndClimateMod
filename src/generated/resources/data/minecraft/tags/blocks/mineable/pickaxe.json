@@ -227,6 +227,7 @@
     "dcs_climate:machine/conveyor",
     "dcs_climate:machine/conveyor_smelting",
     "dcs_climate:machine/conveyor_dropper",
+    "dcs_climate:machine/conveyor_sorter",
     "dcs_climate:machine/conveyor_filler",
     "dcs_climate:machine/portable_can",
     "dcs_climate:machine/portable_can_white",

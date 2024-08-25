@@ -55,7 +55,7 @@ public enum DCHeatTier {
 	// cooking
 	OVEN(220, 4, 9, 0xFF5000, 4.5F),
 	// making charcoal, bronze, burn dust
-	KILN(800, 5, 10, 0xFF0000, 16.0F),
+	KILN(800, 5, 10, 0xD00000, 16.0F),
 	// making iron or another metal
 	SMELTING(1500, 6, 11, 0xFF00FF, 30.0F),
 	// special alloy

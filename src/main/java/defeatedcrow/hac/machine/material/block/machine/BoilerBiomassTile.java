@@ -70,6 +70,7 @@ public class BoilerBiomassTile extends HeatSourceTile implements IPowerSource, I
 				break;
 			case 1:
 				BoilerBiomassTile.this.totalProgress = data;
+				break;
 			case 2:
 				BoilerBiomassTile.this.lastPow = data;
 				break;

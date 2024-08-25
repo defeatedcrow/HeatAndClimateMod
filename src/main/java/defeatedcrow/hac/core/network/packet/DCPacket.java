@@ -14,6 +14,7 @@ import defeatedcrow.hac.core.network.packet.message.MsgTileFluidToC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileOwnerKeyToS;
 import defeatedcrow.hac.core.network.packet.message.MsgTileSimpleIntegerToC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileSimpleIntegerToS;
+import defeatedcrow.hac.core.network.packet.message.MsgTileSorterGuiKeyToS;
 import defeatedcrow.hac.core.network.packet.message.MsgWeatherToC;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -49,6 +50,7 @@ public class DCPacket {
 		registerStoC(MsgTileFaceIOToC.class, MsgTileFaceIOToC::decode);
 		registerCtoS(MsgTileSimpleIntegerToS.class, MsgTileSimpleIntegerToS::decode);
 		registerStoC(MsgEffectToC.class, MsgEffectToC::decode);
+		registerCtoS(MsgTileSorterGuiKeyToS.class, MsgTileSorterGuiKeyToS::decode);
 	}
 
 	private static <MSG extends IPacketDC> void registerStoC(Class<MSG> clazz, Function<FriendlyByteBuf, MSG> decoder) {

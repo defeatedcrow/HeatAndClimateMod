@@ -179,6 +179,10 @@ public class ClimateHUDEvent {
 						if (showDate) {
 							String bn = printBiome(biome);
 							MutableComponent biomeName = Component.translatable(bn);
+							if (biomeName == null || biomeName.getString() == null || biomeName.getString().isEmpty()) {
+								bn = printBiomeInternal(biome);
+								biomeName = Component.literal(bn);
+							}
 							if (biomeName != null) {
 								float f = biome.get().getBaseTemperature();
 								if (ClimateCore.isDebug)
@@ -287,6 +291,14 @@ public class ClimateHUDEvent {
 	private static String printBiome(Holder<Biome> biome) {
 		return biome.unwrap().map((res) -> {
 			return "biome." + res.location().toLanguageKey();
+		}, (b) -> {
+			return "[unregistered " + b + "]";
+		});
+	}
+
+	private static String printBiomeInternal(Holder<Biome> biome) {
+		return biome.unwrap().map((res) -> {
+			return res.location().getPath();
 		}, (b) -> {
 			return "[unregistered " + b + "]";
 		});

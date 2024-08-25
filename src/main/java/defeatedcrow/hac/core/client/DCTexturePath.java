@@ -30,6 +30,7 @@ public enum DCTexturePath {
 	GUI_HOPPER_FILTER("textures/gui/hopper_filter_inv.png"),
 	GUI_HOPPER_GOLD("textures/gui/hopper_gold_inv.png"),
 	GUI_HOPPER_GOLD_FILTER("textures/gui/hopper_filter_gold_inv.png"),
+	GUI_CONVEYOR_SORTER("textures/gui/conveyor_sorter_inv.png"),
 	GUI_MONITOR_ANDON("textures/gui/andon_signal_gui.png"),
 	GUI_BORING("textures/gui/boring_survey.png");
 
@@ -50,6 +51,6 @@ public enum DCTexturePath {
 	public static List<DCTexturePath> elements() {
 		return ImmutableList.of(POTION, HUD, GRAY, HOT_DISP, COLD_DISP, GUI_INV_SINGLE, GUI_INV_DOUBLE, GUI_DISPLAY_SHELF, GUI_CHAMBER_ITEM, GUI_CHAMBER_FLUID, GUI_FLUID_TANK,
 				GUI_FLUID_TANK_LARGE, GUI_COOKING_POT, GUI_TEA_POT, GUI_FERMENTATION_JAR, GUI_MILL, GUI_BATTERY, GUI_GENERATOR, GUI_BOILER_BIOMASS,
-				GUI_HOPPER_FILTER, GUI_HOPPER_GOLD, GUI_HOPPER_GOLD_FILTER, GUI_KICHEN_BENCH, GUI_MONITOR_ANDON, GUI_BORING);
+				GUI_HOPPER_FILTER, GUI_HOPPER_GOLD, GUI_HOPPER_GOLD_FILTER, GUI_CONVEYOR_SORTER, GUI_KICHEN_BENCH, GUI_MONITOR_ANDON, GUI_BORING);
 	}
 }

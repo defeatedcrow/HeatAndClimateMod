@@ -172,7 +172,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	@Override
 	public boolean isSuitablePlace(BlockGetter world, BlockPos pos, BlockState state) {
-		return state.getBlock().canSustainPlant(state, world, pos, Direction.UP, this);
+		return mayPlaceOn(state, world, pos);
 	}
 
 	@Override
@@ -196,10 +196,12 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 				if (soil == SoilType.WATER) {
 					if (!under.getFluidState().isEmpty() && under.getFluidState().is(FluidTags.WATER))
 						return true;
-				} else if (soil == SoilType.LOGS) {
+				}
+				if (soil == SoilType.LOGS) {
 					if (under.is(BlockTags.LOGS))
 						return true;
-				} else if (TagUtil.matchTag(soil.toString().toLowerCase(), under).isPresent()) {
+				}
+				if (TagUtil.matchTag(soil.toString().toLowerCase(), under).isPresent()) {
 					return true;
 				}
 			}

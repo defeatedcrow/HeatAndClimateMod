@@ -974,6 +974,7 @@
 
   "block.dcs_climate.food.fertile":"施肥された耕地ブロック",
   "block.dcs_climate.food.fertile_planter":"栽培プランター",
+  "block.dcs_climate.food.fertile_planter_gem":"改良プランター",
 
   "block.dcs_climate.food.cropblock_allium_wild":"ノビル",
   "block.dcs_climate.food.cropblock_allium_common":"タマネギ",
@@ -1162,6 +1163,8 @@
   "block.dcs_climate.food.plank_reed_sorghum":"ソルガム材",
   "block.dcs_climate.food.plank_sumac_lacquer":"ウルシ材",
   "block.dcs_climate.food.plank_lacquerware":"漆塗りの木材",
+
+  "block.dcs_climate.food.dummy_dianthus":"野生のナデシコ",
 
     "## containers":"containers",
 
@@ -1521,6 +1524,7 @@
   "block.dcs_climate.machine.conveyor":"コンベア",
   "block.dcs_climate.machine.conveyor_smelting":"コンベア(精錬)",
   "block.dcs_climate.machine.conveyor_dropper":"コンベア(ドロッパー)",
+  "block.dcs_climate.machine.conveyor_sorter":"コンベア(仕分け)",
   "block.dcs_climate.machine.conveyor_filler":"コンベア(流体充填)",
   "block.dcs_climate.machine.ibc":"IBC",
   "block.dcs_climate.machine.portable_can":"ポリタンク",
@@ -1677,6 +1681,11 @@
   "dcs.tip.device.energy.io.pass":"平均化",
   "dcs.tip.device.energy.io.none":"切断",
   "dcs.tip.device.energy.battery.amount":"充電量: ",
+  "dcs.tip.device.sorter.type.off":"フィルタリングなし",
+  "dcs.tip.device.sorter.type.phrase":"フィルターアイテムの表示名が、アイテム名またはTag名の一部に含まれている場合に通過できます。",
+  "dcs.tip.device.sorter.type.tag":"フィルターアイテムと共通のTagを含む場合に通過できます。",
+  "dcs.tip.device.sorter.type.exact":"アイテムとNBTが一致する場合に通過できます。",
+
   "dcs.tip.fertile.fertile":"施肥することで作物の成長を促進します。",
   "dcs.tip.fertile.mutation.on":"WILD作物の変異:あり",
   "dcs.tip.fertile.mutation.off":"WILD作物の変異:なし",
@@ -1717,6 +1726,9 @@
   "dcs.tip.conveyor.dropper.desc":"真下のブロックにインベントリがあるとき、通過したアイテムを下のインベントリに挿入します。",
   "dcs.tip.conveyor.filler":"[流体充填]",
   "dcs.tip.conveyor.filler.desc":"通過したアイテムが空の流体容器の場合、真上のタンクの流体を充填します。",
+  "dcs.tip.conveyor.sorter":"[仕分け]",
+  "dcs.tip.conveyor.sorter.desc":"フィルターにセットしたアイテムによって、アイテムの送り先を切替えます。",
+  "dcs.tip.conveyor.sorter.desc2":"送り先が見つからないとき、コンベアの下に落とします。",
 
   "dcs.tip.energy.battery":"[充電池]",
   "dcs.tip.energy.battery.desc":"エネルギーを貯蔵し、隣接するマシンやケーブルとエネルギーの送受信を行います。",
@@ -1922,6 +1934,8 @@
   "dcs.container.device.with_owner":"%1$s の マシン",
   "dcs.container.hopper":"ホッパー",
   "dcs.container.hopper.with_owner":"%1$s の ホッパー",
+  "dcs.container.conveyor":"コンベア",
+  "dcs.container.conveyor.with_owner":"%1$s の コンベア",
   "dcs.container.chamber":"炉",
   "dcs.container.chamber.with_owner":"%1$s の 炉",
   "dcs.container.tank":"タンク",

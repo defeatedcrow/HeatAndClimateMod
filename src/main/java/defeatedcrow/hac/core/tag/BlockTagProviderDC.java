@@ -125,8 +125,8 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.METALBLOCK_HASTELLOY).add(CoreInit.METALBLOCK_HASTELLOY.get());
 		tag(TagDC.BlockTag.METALBLOCK_BSCCO).add(CoreInit.METALBLOCK_BSCCO.get());
 
-		tag(TagDC.BlockTag.MUTABLE_FARMLAND).add(FoodInit.FERTILE.get());
-		tag(TagDC.BlockTag.FARMLAND).add(Blocks.FARMLAND, FoodInit.FERTILE.get(), FoodInit.FERTILE_PLANTER.get());
+		tag(TagDC.BlockTag.MUTABLE_FARMLAND).add(FoodInit.FERTILE.get(), FoodInit.FERTILE_PLANTER_GEM.get());
+		tag(TagDC.BlockTag.FARMLAND).add(Blocks.FARMLAND, FoodInit.FERTILE.get(), FoodInit.FERTILE_PLANTER.get(), FoodInit.FERTILE_PLANTER_GEM.get());
 		tag(TagDC.BlockTag.MUD).add(Blocks.MUD, Blocks.MUDDY_MANGROVE_ROOTS);
 
 		tag(TagDC.BlockTag.WEED).add(Blocks.GRASS, Blocks.TALL_GRASS, Blocks.DEAD_BUSH, Blocks.FERN, Blocks.LARGE_FERN, Blocks.SEAGRASS);
