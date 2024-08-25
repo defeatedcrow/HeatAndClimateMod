@@ -184,7 +184,7 @@ public class ConfigCommonBuilder {
 				.define("Enable Custom Spring Generation", true);
 
 		this.vSpringFeature = builder
-				.comment("Sets the HaC springs generation rate per chunk. (If 0, it will not be generated.)")
+				.comment("Sets the HaC springs generation rate per chunk. (0.X%. If 0, it will not be generated.)")
 				.defineInRange("Amount of Spring Gen Rate", 3, 0, 100);
 
 		builder.pop();

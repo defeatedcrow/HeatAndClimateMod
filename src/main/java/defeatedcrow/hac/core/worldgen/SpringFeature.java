@@ -51,8 +51,8 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 		Random random = new Random(seed);
 
 		random.nextInt(1000);
-		int rate = ConfigCommonBuilder.INSTANCE.vSpringFeature.get() * 10;
-		if (random.nextInt(1000) < rate) {
+		int rate = ConfigCommonBuilder.INSTANCE.vSpringFeature.get();
+		if (random.nextInt(1000) > rate) {
 			return false;
 		}
 
