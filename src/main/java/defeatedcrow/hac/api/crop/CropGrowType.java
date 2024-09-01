@@ -5,7 +5,7 @@ public enum CropGrowType {
 	SINGLE,
 	DOUBLE,
 	VINE,
-	EPIPTYTE,
+	EPIPHYTE,
 	LEAVES;
 
 }

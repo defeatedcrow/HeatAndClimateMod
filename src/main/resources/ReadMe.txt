@@ -3,7 +3,7 @@
 # 導入環境 / Introduction conditions
 
 ・Minecraft1.19.2
-・MincraftForge 1.19.2-43.2.0
+・MincraftForge 1.19.2-43.4.0
 
 *Notice*
 
@@ -702,24 +702,39 @@
 
 #### 更新履歴 / Change log ####
 
-○v4-beta13
+○v4-beta14
+ add: チュニックの型紙
+ add: スカート
+ add: ワンピース
+ add: ニットタイツ
+ change: 内部処理でのTagの検索方法を改良
+ change: 野生のモブが動物を襲うAIにインターバルを設定するコンフィグを追加
+ change: HaC以外の食べ物のツールチップに風味(Taste)を表示するコンフィグの追加
+ change: 食べ物の風味(Taste)の計算方法を変更し、Tagで編集可能にした
+ change: 食べ物EntityをDispenserで召喚可能にした
+ change: 食べ物Entityがホッパーの上でアイテム化するように
+ fix: 内部のtypoを修正
+ fix: いくつかの欠けているマシンレシピを追加
+ fix: 青の色素のテクスチャを修正
+
+○v4-beta13 (2024.8.26)
  fix: 池の生成確率がおかしい
  fix: 改良プランターのテクスチャ
 
-○v4-beta12
+○v4-beta12 (2024.8.26)
  add: 改良プランター
  add: 仕分けコンベア
  change: 作物ブロック、追加池の自然生成処理を変更
  fix: HUDのBiome名表示時、LocalizeされていないBiome名を内部名で表示するように
 
-○v4-beta11
+○v4-beta11 (2024.8.24)
  add: 蝋の圧縮ブロック
  add: 精錬コンベア
  change: ノーマルコンベアは精錬機能を無くした
  fix: 水中ポンプの汲み上げ動作を修正
  fix: エネルギーモニターの設置時のクラッシュを修正
 
-○v4-beta10
+○v4-beta10 (2024.8.22)
  add: 測定器アイテム
  add: 飾り棚
  add: キャンドルのシャンデリア
@@ -749,7 +764,7 @@
  fix: 調理鍋のテクスチャの修正
  fix: ふいごの使用時にSEがない
 
-○v4-beta9
+○v4-beta9 (2024.6.23)
  add: 鬼灯ランタン
  add: 行燈
  add: 燭台
@@ -767,7 +782,7 @@
  fix: キーコンフィグに0を指定したときにエラーが出るのを修正
  ex: modロゴの更新
 
-○v4-beta8
+○v4-beta8 (2024.6.10)
  add: 栽培プランター(変異なし耕地)
  add: 野菜くずの圧縮ブロック
  change: 鋼など一部金属の精錬方法のハードモードを追加

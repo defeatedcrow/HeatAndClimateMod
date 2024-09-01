@@ -1,0 +1,31 @@
+{
+  "values": [
+    "dcs_climate:food/fish_mackerel",
+    "dcs_climate:food/fish_gurnard",
+    "dcs_climate:food/fish_grouper",
+    "dcs_climate:food/fish_tuna",
+    "dcs_climate:food/food_soysauce",
+    "dcs_climate:food/food_miso",
+    "dcs_climate:food/food_herb_salt",
+    "dcs_climate:food/food_mixed_spices",
+    "dcs_climate:food/food_ketchup",
+    "dcs_climate:food/food_mayonnaise",
+    "dcs_climate:food/food_hotsauce",
+    "dcs_climate:food/food_vinegar",
+    "dcs_climate:food/food_sauce_hummus",
+    "dcs_climate:food/food_sauce_salsa",
+    "dcs_climate:food/pack_honey",
+    "dcs_climate:food/food_vanilla_cured",
+    "dcs_climate:food/crop_apium_epic",
+    "dcs_climate:food/crop_brassica_epic",
+    "dcs_climate:food/crop_herb_epic",
+    "dcs_climate:food/crop_mallow_epic",
+    "dcs_climate:food/crop_peas_epic",
+    "dcs_climate:food/crop_solanum_epic",
+    "dcs_climate:food/crop_cherry_epic",
+    "dcs_climate:food/crop_citrus_epic",
+    "dcs_climate:food/crop_sumac_epic",
+    "minecraft:beef",
+    "minecraft:cooked_beef"
+  ]
+}

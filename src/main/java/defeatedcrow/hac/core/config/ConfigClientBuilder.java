@@ -12,6 +12,7 @@ public class ConfigClientBuilder {
 	public final ForgeConfigSpec.BooleanValue showAltTip;
 	public final ForgeConfigSpec.BooleanValue showDamEffect;
 	public final ForgeConfigSpec.BooleanValue showHUD;
+	public final ForgeConfigSpec.BooleanValue showTasteTip;
 
 	public final ForgeConfigSpec.IntValue HUD_c;
 
@@ -30,6 +31,10 @@ public class ConfigClientBuilder {
 		this.showAltTip = builder
 				.comment("Gives some additional tooltips to the item.")
 				.define("Show Additional Tooltips", true);
+
+		this.showTasteTip = builder
+				.comment("Display taste level in tooltips for non-HaC items.")
+				.define("Show Food Taste Tooltips", true);
 
 		this.showDamEffect = builder
 				.comment("Set the screen effect when climate damage occurs.")

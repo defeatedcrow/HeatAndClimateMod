@@ -795,9 +795,11 @@
 
   "item.dcs_climate.main.pattern_paper_wear":"Pattern for Hat",
   "item.dcs_climate.main.pattern_paper_jacket":"Pattern for Jacket",
+  "item.dcs_climate.main.pattern_paper_tunic":"Pattern for Tunic",
   "item.dcs_climate.main.pattern_paper_shirt":"Pattern for Shirt",
   "item.dcs_climate.main.pattern_paper_suits":"Pattern for Suits",
   "item.dcs_climate.main.pattern_paper_pants":"Pattern for Pants",
+  "item.dcs_climate.main.pattern_paper_skirt":"Pattern for Skirt",
 
   "item.dcs_climate.main.helmet_bronze":"Alloy Helmet",
   "item.dcs_climate.main.plate_bronze":"Alloy Plate",
@@ -854,6 +856,12 @@
   "item.dcs_climate.main.shirt_cloth_red":"Cotton Shirt(Red)",
   "item.dcs_climate.main.shirt_cloth_lightblue":"Cotton Shirt(Light Blue)",
 
+  "item.dcs_climate.main.skirt_linen":"Linen Skirt",
+  "item.dcs_climate.main.skirt_linen_pink":"Linen Skirt(Pink)",
+  "item.dcs_climate.main.skirt_linen_gray":"Linen Skirt(Gray)",
+  "item.dcs_climate.main.skirt_linen_blue":"Linen Skirt(Blue)",
+  "item.dcs_climate.main.skirt_linen_green":"Linen Skirt(Green)",
+
   "item.dcs_climate.main.pants_linen":"Linen Pants",
   "item.dcs_climate.main.pants_linen_green":"Linen Pants(Green)",
   "item.dcs_climate.main.pants_linen_orange":"Linen Pants(Orange)",
@@ -864,6 +872,11 @@
   "item.dcs_climate.main.pants_cloth_lightblue":"Denim Pants(Light Blue)",
   "item.dcs_climate.main.pants_cloth_gray":"Denim Pants(Gray)",
 
+  "item.dcs_climate.main.tights_knit":"Knit Tights",
+  "item.dcs_climate.main.tights_knit_black":"Knit Tights(Black)",
+  "item.dcs_climate.main.tights_knit_red":"Knit Tights(Red)",
+  "item.dcs_climate.main.tights_knit_blue":"Knit Tights(Blue)",
+
   "item.dcs_climate.main.suits_leather":"Lether Doublet",
   "item.dcs_climate.main.suits_leather_black":"Lether Doublet(Black)",
   "item.dcs_climate.main.suits_leather_brown":"Lether Doublet(Brown)",
@@ -873,6 +886,17 @@
   "item.dcs_climate.main.suits_cloth_blue":"Quilted Doublet(Blue)",
   "item.dcs_climate.main.suits_cloth_brown":"Quilted Doublet(Brown)",
   "item.dcs_climate.main.suits_cloth_green":"Quilted Doublet(Green)",
+
+  "item.dcs_climate.main.dress_linen":"Linen Dress",
+  "item.dcs_climate.main.dress_linen_black":"Linen Dress(Black)",
+  "item.dcs_climate.main.dress_linen_green":"Linen Dress(Green)",
+  "item.dcs_climate.main.dress_linen_cyan":"Linen Dress(Cyan)",
+  "item.dcs_climate.main.dress_linen_magenta":"Linen Dress(Magenta)",
+  "item.dcs_climate.main.dress_linen_white":"Linen Dress(White)",
+
+  "item.dcs_climate.main.dress_cloth":"Cotton Dress",
+  "item.dcs_climate.main.dress_cloth_pink":"Cotton Dress(Pink)",
+  "item.dcs_climate.main.dress_cloth_lightblue":"Cotton Dress(Light Blue)",
 
   "item.dcs_climate.main.dress_maid":"Maid Dress",
   "item.dcs_climate.main.dress_maid_black":"Maid Dress(Black)",

@@ -40,7 +40,6 @@ public class ConfigCommonBuilder {
 
 	// item
 	public final ForgeConfigSpec.BooleanValue enDropSmelting;
-	public final ForgeConfigSpec.BooleanValue enPotionSharing;
 
 	// hardmode
 	public final ForgeConfigSpec.BooleanValue enInferno;
@@ -51,6 +50,11 @@ public class ConfigCommonBuilder {
 
 	public final ForgeConfigSpec.BooleanValue enMagicCost;
 	public final ForgeConfigSpec.IntValue vMagicCost;
+
+	// misc
+	public final ForgeConfigSpec.BooleanValue enPotionSharing;
+	public final ForgeConfigSpec.BooleanValue enMobTarget;
+	public final ForgeConfigSpec.IntValue vMobTargetInterval;
 
 	// public final ForgeConfigSpec.BooleanValue enCookingFlavor;
 
@@ -158,10 +162,6 @@ public class ConfigCommonBuilder {
 				.comment("Enables the climate to affect the snow layer.")
 				.define("Enable Snow Layer Effect", true);
 
-		this.enPotionSharing = builder
-				.comment("Enable sharing potion effects with riding mob.")
-				.define("Enable Sharing Potion Effect", true);
-
 		this.enDropSmelting = builder
 				.comment("*Optional* Enabling configs increases the load on the computer.")
 				.comment("Enable all climate smelting and vanilla smelting in drop item state.")
@@ -186,6 +186,22 @@ public class ConfigCommonBuilder {
 		this.vSpringFeature = builder
 				.comment("Sets the HaC springs generation rate per chunk. (0.X%. If 0, it will not be generated.)")
 				.defineInRange("Amount of Spring Gen Rate", 3, 0, 100);
+
+		builder.pop();
+
+		builder.comment("========= Internal Setting ========", "Setting for other internal specifications.").push("internal_config");
+
+		this.enMobTarget = builder
+				.comment("Adds an interval time when mobs attack wild animals.")
+				.define("Enable Animal Hanting Interval", false);
+
+		this.vMobTargetInterval = builder
+				.comment("Set the interval minute when mobs attack wild animals.")
+				.defineInRange("Setting Hanting Interval", 10, 1, 60);
+
+		this.enPotionSharing = builder
+				.comment("Enable sharing potion effects with riding mob.")
+				.define("Enable Sharing Potion Effect", true);
 
 		builder.pop();
 

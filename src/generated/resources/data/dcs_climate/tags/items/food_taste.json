@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#dcs_climate:food_taste/tier1",
+    "#dcs_climate:food_taste/tier2",
+    "#dcs_climate:food_taste/tier3",
+    "#dcs_climate:food_taste/tier4",
+    "#dcs_climate:food_taste/tier5"
+  ]
+}

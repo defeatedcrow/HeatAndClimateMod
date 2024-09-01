@@ -43,7 +43,7 @@ public class DeviceRecipeConfig {
 		}
 
 		for (Entry<String, DeviceRecipe> table : INSTANCE.list.entrySet()) {
-			File f = new File(dir, table.getValue().getType().toString() + "_" + table.getKey() + ".json");
+			File f = new File(dir, table.getKey() + ".json");
 
 			// すでにファイルが有る場合は何もしない。
 			if (!f.exists()) {

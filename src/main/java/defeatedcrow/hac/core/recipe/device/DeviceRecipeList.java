@@ -89,9 +89,9 @@ public class DeviceRecipeList {
 	// fermentation
 	public static void addFermentationRecipe(int id, RecipeTypeDC group, ItemStack o, ItemStack sec, int secRate, FluidStack oF, List<String> inF, List<Ingredient> in) {
 		addRecipe(id, group, o, sec, secRate, ItemStack.EMPTY, 0, oF,
-			ImmutableList.of(DCHeatTier.WARM, DCHeatTier.HOT),
-			ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET),
-			ImmutableList.of(DCAirflow.NORMAL), inF, in);
+				ImmutableList.of(DCHeatTier.WARM, DCHeatTier.HOT),
+				ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET),
+				ImmutableList.of(DCAirflow.NORMAL), inF, in);
 	}
 
 	// pulverize
@@ -103,13 +103,14 @@ public class DeviceRecipeList {
 	}
 
 	// all
-	public static void addRecipe(int id, RecipeTypeDC type, ItemStack output, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack outF, List<DCHeatTier> heat, List<DCHumidity> hum, List<DCAirflow> air,
+	public static void addRecipe(int id, RecipeTypeDC type, ItemStack output, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack outF, List<DCHeatTier> heat, List<DCHumidity> hum,
+			List<DCAirflow> air,
 			List<String> inF, List<Ingredient> input) {
 		ResourceLocation res = DCUtil.getRes(output.getItem()).orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
 		if (DCUtil.isEmpty(output)) {
 			res = DCUtil.getRes(outF.getFluid()).orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
 		}
-		String fName = res.getPath().replace('/', '_');
+		String fName = type.toString() + "_" + res.getPath().replace('/', '_');
 		DeviceRecipe ret = new DeviceRecipe(type, output, sec, secRate, ter, terRate, outF, heat, hum, air, inF, input);
 		if (id >= 0) {
 			fName += "_" + id;

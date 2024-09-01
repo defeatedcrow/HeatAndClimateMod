@@ -5,6 +5,8 @@ import org.jetbrains.annotations.Nullable;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.item.IItemDC;
 import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.food.material.item.FoodMaterialItemDC;
+import defeatedcrow.hac.food.material.item.ItemEdibleCropDC;
 import defeatedcrow.hac.food.material.item.ItemFoodDC;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.data.DataGenerator;
@@ -65,6 +67,14 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 					if (item instanceof ItemFoodDC && ((ItemFoodDC) item).isRawFood()) {
 						tag(TagDC.ItemTag.RAW_FOOD).add(i);
+					}
+
+					if (item instanceof FoodMaterialItemDC food) {
+						tag(food.getFlavorTag()).add(i);
+					}
+
+					if (item instanceof ItemEdibleCropDC food) {
+						tag(food.getFlavorTag()).add(i);
 					}
 				});
 
@@ -393,6 +403,21 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.HAC_UNSAFE_FOODS).add(Items.ROTTEN_FLESH, Items.SPIDER_EYE, Items.POISONOUS_POTATO,
 				FoodInit.CROP_RA_MONKSHOOD.get(), FoodInit.CROP_SL_NIGHTSHADE.get());
+
+		tag(TagDC.ItemTag.HAC_FOOD_FLAVOR1).addTags(TagDC.ItemTag.HAC_UNSAFE_FOODS);
+
+		tag(TagDC.ItemTag.HAC_FOOD_FLAVOR2).add(Items.PUFFERFISH, Items.TROPICAL_FISH, Items.CHORUS_FRUIT, Items.NETHER_WART, Items.GLOW_BERRIES);
+
+		tag(TagDC.ItemTag.HAC_FOOD_FLAVOR3).add(Items.COD, Items.COOKED_COD, Items.POTATO, Items.CARROT, Items.PUMPKIN, Items.MELON_SLICE, Items.MELON, Items.SWEET_BERRIES,
+				Items.APPLE, Items.BEETROOT, Items.RABBIT, Items.COOKED_RABBIT, Items.DRIED_KELP, Items.BREAD);
+
+		tag(TagDC.ItemTag.HAC_FOOD_FLAVOR4).add(Items.GOLDEN_APPLE, Items.HONEY_BOTTLE, Items.PORKCHOP, Items.CHICKEN, Items.MUTTON, Items.SALMON,
+				Items.COOKED_PORKCHOP, Items.COOKED_CHICKEN, Items.COOKED_MUTTON, Items.COOKED_SALMON, Items.BAKED_POTATO);
+
+		tag(TagDC.ItemTag.HAC_FOOD_FLAVOR5).add(Items.BEEF, Items.COOKED_BEEF);
+
+		tag(TagDC.ItemTag.HAC_FOOD_FLAVOR).addTags(TagDC.ItemTag.HAC_FOOD_FLAVOR1, TagDC.ItemTag.HAC_FOOD_FLAVOR2, TagDC.ItemTag.HAC_FOOD_FLAVOR3,
+				TagDC.ItemTag.HAC_FOOD_FLAVOR4, TagDC.ItemTag.HAC_FOOD_FLAVOR5);
 
 		// magic
 

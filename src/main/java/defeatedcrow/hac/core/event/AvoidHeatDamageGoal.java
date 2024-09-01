@@ -34,8 +34,8 @@ public class AvoidHeatDamageGoal extends FleeSunGoal {
 	}
 
 	private float getDamage() {
-		if (this.mob.getPersistentData().contains("dcs_lastDamage")) {
-			return this.mob.getPersistentData().getFloat("dcs_lastDamage");
+		if (this.mob.getPersistentData().contains("dcs_last_damage")) {
+			return this.mob.getPersistentData().getFloat("dcs_last_damage");
 		}
 		return 0F;
 	}
@@ -48,8 +48,7 @@ public class AvoidHeatDamageGoal extends FleeSunGoal {
 
 		if (avoidPos != null)
 			for (int i = 0; i < 10; ++i) {
-				BlockPos blockpos1 =
-						blockpos.offset(randomsource.nextInt(10) - 5, randomsource.nextInt(6) - 3, randomsource.nextInt(10) - 5);
+				BlockPos blockpos1 = blockpos.offset(randomsource.nextInt(10) - 5, randomsource.nextInt(6) - 3, randomsource.nextInt(10) - 5);
 				if (avoidPos.distanceTo(Vec3.atBottomCenterOf(blockpos1)) > 3.0D && this.mob.getWalkTargetValue(blockpos1) < 0.0F) {
 					return Vec3.atBottomCenterOf(blockpos1);
 				}

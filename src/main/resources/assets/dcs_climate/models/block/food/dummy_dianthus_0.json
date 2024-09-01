@@ -1,6 +1,6 @@
 {
   "textures": {
-    "cross": "dcs_climate:block/crop/dianthus_f"
+    "all": "dcs_climate:block/crop/dianthus_f"
   },
-  "parent": "dcs_climate:block/dcs_cross"
+  "parent": "dcs_climate:block/dcs_dummy"
 }

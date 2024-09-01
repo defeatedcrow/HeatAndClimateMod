@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/pattern_paper_tunic"
+    },
+    {
+      "tag": "forge:clothes/cotton"
+    },
+    {
+      "tag": "forge:clothes/cotton"
+    },
+    {
+      "tag": "minecraft:flowers"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/dress_cloth"
+  }
+}

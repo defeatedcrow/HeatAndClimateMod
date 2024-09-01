@@ -46,7 +46,16 @@ public class TagUtil {
 
 	public static Optional<TagKey<Item>> matchTag(String name, ItemLike item) {
 		ItemStack stack = new ItemStack(item);
-		return stack.getTags().filter((tag) -> isMatch(name, tag)).findAny();
+		return stack.getTags().filter((tag) -> !isMatch("_ban", tag))
+				.filter((tag) -> !isMatch("_but_", tag))
+				.filter((tag) -> !isMatch("all", tag))
+				.filter((tag) -> !isMatch("taste", tag))
+				.filter((tag) -> isMatch(name, tag)).findAny();
+	}
+
+	public static Optional<TagKey<Item>> matchTag(String name, String exclusion, ItemLike item) {
+		ItemStack stack = new ItemStack(item);
+		return stack.getTags().filter((tag) -> exclusion.isBlank() || !isMatch(exclusion, tag)).filter((tag) -> isMatch(name, tag)).findAny();
 	}
 
 	public static Optional<TagKey<Item>> matchTag(ResourceLocation dic, ItemLike item) {
@@ -55,7 +64,15 @@ public class TagUtil {
 	}
 
 	public static Optional<TagKey<Block>> matchTag(String name, BlockState state) {
-		return state.getTags().filter((tag) -> isMatch(name, tag)).findAny();
+		return state.getTags().filter((tag) -> !isMatch("_ban", tag))
+				.filter((tag) -> !isMatch("_but_", tag))
+				.filter((tag) -> !isMatch("all", tag))
+				.filter((tag) -> !isMatch("taste", tag))
+				.filter((tag) -> isMatch(name, tag)).findAny();
+	}
+
+	public static Optional<TagKey<Block>> matchTag(String name, String exclusion, BlockState state) {
+		return state.getTags().filter((tag) -> exclusion.isBlank() || !isMatch(exclusion, tag)).filter((tag) -> isMatch(name, tag)).findAny();
 	}
 
 	public static Optional<TagKey<Block>> matchTag(ResourceLocation dic, BlockState state) {
@@ -63,7 +80,10 @@ public class TagUtil {
 	}
 
 	public static Optional<TagKey<Biome>> matchTag(String name, Holder<Biome> biome) {
-		return biome.getTagKeys().filter((tag) -> isMatch(name, tag)).findAny();
+		return biome.getTagKeys().filter((tag) -> !isMatch("_ban", tag))
+				.filter((tag) -> !isMatch("_but_", tag))
+				.filter((tag) -> !isMatch("all", tag))
+				.filter((tag) -> isMatch(name, tag)).findAny();
 	}
 
 	public static List<Fluid> getFluidList(TagKey<Fluid> tag) {

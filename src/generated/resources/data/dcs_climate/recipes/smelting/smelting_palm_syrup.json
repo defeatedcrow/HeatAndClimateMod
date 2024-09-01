@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "tag": "forge:ingredients/palm_flower"
+  },
+  "result": "dcs_climate:food/pack_syrup"
+}

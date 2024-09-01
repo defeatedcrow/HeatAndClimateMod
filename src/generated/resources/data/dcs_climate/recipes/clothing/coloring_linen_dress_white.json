@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "cloth_coloring",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/dress_linen"
+    },
+    {
+      "tag": "forge:dyes/white"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/dress_linen_white"
+  }
+}

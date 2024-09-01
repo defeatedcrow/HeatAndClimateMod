@@ -200,7 +200,7 @@ public class LivingTickEventDC {
 							vec = Vec3.atBottomCenterOf(p2);
 							// 逃げるAIを差し込む
 							PathfinderMob animal = (PathfinderMob) living;
-							animal.getPersistentData().putFloat("dcs_lastDamage", finalDam);
+							animal.getPersistentData().putFloat("dcs_last_damage", finalDam);
 							for (WrappedGoal task : animal.goalSelector.getAvailableGoals()) {
 								if (task.getGoal() instanceof AvoidHeatDamageGoal) {
 									((AvoidHeatDamageGoal) task.getGoal()).avoidPos = vec;
@@ -211,8 +211,8 @@ public class LivingTickEventDC {
 						}
 					}
 				} else {
-					if (living instanceof PathfinderMob && living.getPersistentData().contains("dcs_lastDamage")) {
-						living.getPersistentData().remove("dcs_lastDamage");
+					if (living instanceof PathfinderMob && living.getPersistentData().contains("dcs_last_damage")) {
+						living.getPersistentData().remove("dcs_last_damage");
 					}
 					if (damTemp > 2.0F && living instanceof Player) {
 						ClimateCore.proxy.triggerAdvancement(living, "main/wear");
@@ -229,6 +229,14 @@ public class LivingTickEventDC {
 						living.addEffect(new MobEffectInstance(CoreInit.WET.get(), 600, 0));
 					}
 				}
+
+			/* Goal Interval */
+			int i = living.getPersistentData().getInt("dcs_fulfill_interval");
+			if (i > 0) {
+				i--;
+				living.getPersistentData().putInt("dcs_fulfill_interval", i);
+			}
+
 		}
 	}
 

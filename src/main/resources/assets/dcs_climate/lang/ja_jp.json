@@ -793,9 +793,11 @@
 
   "item.dcs_climate.main.pattern_paper_wear":"帽子の型紙",
   "item.dcs_climate.main.pattern_paper_jacket":"ジャケットの型紙",
+  "item.dcs_climate.main.pattern_paper_tunic":"チュニックの型紙",
   "item.dcs_climate.main.pattern_paper_shirt":"シャツの型紙",
   "item.dcs_climate.main.pattern_paper_suits":"スーツの型紙",
   "item.dcs_climate.main.pattern_paper_pants":"ズボンの型紙",
+  "item.dcs_climate.main.pattern_paper_skirt":"スカートの型紙",
 
   "item.dcs_climate.main.helmet_bronze":"合金のヘルメット",
   "item.dcs_climate.main.plate_bronze":"合金の鎧",
@@ -815,7 +817,11 @@
   "item.dcs_climate.main.shawl_fur_black":"毛皮のショール(黒)",
   "item.dcs_climate.main.shawl_fur_silver":"毛皮のショール(灰色)",
   "item.dcs_climate.main.shawl_fur_white":"毛皮のショール(白)",
+
   "item.dcs_climate.main.loincloth_fur":"毛皮の腰布",
+  "item.dcs_climate.main.loincloth_fur_black":"毛皮の腰布(黒)",
+  "item.dcs_climate.main.loincloth_fur_silver":"毛皮の腰布(灰色)",
+  "item.dcs_climate.main.loincloth_fur_white":"毛皮の腰布(白)",
 
   "item.dcs_climate.main.hat_linen":"麦わら帽子",
   "item.dcs_climate.main.hat_linen_red":"麦わら帽子(赤)",
@@ -852,6 +858,12 @@
   "item.dcs_climate.main.shirt_cloth_red":"木綿のシャツ(赤)",
   "item.dcs_climate.main.shirt_cloth_lightblue":"木綿のシャツ(水色)",
 
+  "item.dcs_climate.main.skirt_linen":"リネンのスカート",
+  "item.dcs_climate.main.skirt_linen_pink":"リネンのスカート(ピンク)",
+  "item.dcs_climate.main.skirt_linen_gray":"リネンのスカート(灰色)",
+  "item.dcs_climate.main.skirt_linen_blue":"リネンのスカート(青)",
+  "item.dcs_climate.main.skirt_linen_green":"リネンのスカート(緑)",
+
   "item.dcs_climate.main.pants_linen":"リネンのズボン",
   "item.dcs_climate.main.pants_linen_green":"リネンのズボン(緑)",
   "item.dcs_climate.main.pants_linen_orange":"リネンのズボン(橙)",
@@ -862,6 +874,11 @@
   "item.dcs_climate.main.pants_cloth_lightblue":"ジーパン(水色)",
   "item.dcs_climate.main.pants_cloth_gray":"ジーパン(灰)",
 
+  "item.dcs_climate.main.tights_knit":"ニットのタイツ",
+  "item.dcs_climate.main.tights_knit_black":"ニットのタイツ(黒)",
+  "item.dcs_climate.main.tights_knit_red":"ニットのタイツ(赤)",
+  "item.dcs_climate.main.tights_knit_blue":"ニットのタイツ(青)",
+
   "item.dcs_climate.main.suits_leather":"レザーのスーツ",
   "item.dcs_climate.main.suits_leather_black":"レザーのスーツ(黒)",
   "item.dcs_climate.main.suits_leather_brown":"レザーのスーツ(茶)",
@@ -871,6 +888,17 @@
   "item.dcs_climate.main.suits_cloth_blue":"キルトのダブレット(青)",
   "item.dcs_climate.main.suits_cloth_brown":"キルトのダブレット(茶)",
   "item.dcs_climate.main.suits_cloth_green":"キルトのダブレット(緑)",
+
+  "item.dcs_climate.main.dress_linen":"リネンのワンピース",
+  "item.dcs_climate.main.dress_linen_black":"リネンのワンピース(黒)",
+  "item.dcs_climate.main.dress_linen_green":"リネンのワンピース(緑)",
+  "item.dcs_climate.main.dress_linen_cyan":"リネンのワンピース(シアン)",
+  "item.dcs_climate.main.dress_linen_magenta":"リネンのワンピース(マゼンタ)",
+  "item.dcs_climate.main.dress_linen_white":"リネンのワンピース(白)",
+
+  "item.dcs_climate.main.dress_cloth":"木綿のワンピース",
+  "item.dcs_climate.main.dress_cloth_pink":"木綿のワンピース(ピンク)",
+  "item.dcs_climate.main.dress_cloth_lightblue":"木綿のワンピース(水色)",
 
   "item.dcs_climate.main.dress_maid":"メイド服",
   "item.dcs_climate.main.dress_maid_black":"メイド服(黒)",

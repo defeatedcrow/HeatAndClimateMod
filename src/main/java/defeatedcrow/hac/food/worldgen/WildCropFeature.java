@@ -53,8 +53,9 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		ChunkPos chunk = level.getChunk(pos).getPos();
 
 		// 高度選定
-		int height = level.getHeight(Heightmap.Types.WORLD_SURFACE, chunk.getMiddleBlockX(), chunk.getMiddleBlockZ());
-		for (int j = height - 10; j < level.getMaxBuildHeight(); j++) {
+		int surface = level.getHeight(Heightmap.Types.WORLD_SURFACE, chunk.getMiddleBlockX(), chunk.getMiddleBlockZ());
+		int height = level.getMaxBuildHeight();
+		for (int j = surface - 20; j < level.getMaxBuildHeight() - 5; j++) {
 
 			BlockPos p2 = new BlockPos(chunk.getMiddleBlockX(), j, chunk.getMiddleBlockZ());
 			BlockState soil = level.getBlockState(p2);
@@ -64,13 +65,14 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 				break;
 			}
 		}
-		if (height < pos.getY())
+		if (height == level.getMaxBuildHeight())
 			return false;
 
 		BlockPos p1 = new BlockPos(chunk.getMiddleBlockX(), height + 1, chunk.getMiddleBlockZ());
 		// BlockState nextState = FoodInit.DUMMY_DIANTHUS.get().defaultBlockState();
 		// level.setBlock(p1, nextState, 2);
-		updateFlower(level, p1, random);
+
+		WildCropFeature.updateFlower(level, p1, random);
 
 		return true;
 	}
@@ -131,7 +133,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 			} else {
 				for (int x = -4; x < 5; x++) {
 					for (int z = -4; z < 5; z++) {
-						for (int y = -1; y < 3; y++) {
+						for (int y = -3; y < 3; y++) {
 							mpos.set(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
 							BlockState soil = level.getBlockState(mpos);
 							BlockState air = level.getBlockState(mpos.above());
@@ -145,17 +147,16 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 								if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW)
 									level.setBlock(mpos, Blocks.DIRT.defaultBlockState(), 2);
 
-								if (crop.getGrowType(crop.getTier()) == CropGrowType.VINE || crop.getGrowType(crop.getTier()) == CropGrowType.EPIPTYTE) {
+								if (crop.getGrowType(crop.getTier()) == CropGrowType.VINE || crop.getGrowType(crop.getTier()) == CropGrowType.EPIPHYTE) {
 									nextState = crop.updateShape(nextState, Direction.DOWN, nextState, level, mpos.above(), mpos);
 								}
 								level.setBlock(mpos.above(), nextState, 2);
-
 								// 二段作物は二段の状態で生えてくる
 								if (nextState.hasProperty(DCState.DOUBLE)) {
 									BlockState upper = crop.getFeatureState().setValue(DCState.DOUBLE, true);
 									level.setBlock(mpos.above(2), upper, 2);
 								}
-								continue;
+								break;
 							}
 						}
 					}
@@ -168,7 +169,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 
 	private static boolean isSurface(BlockState state) {
 		return !state.getFluidState().isSource() && !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && !state.getMaterial().isLiquid() && (state.getMaterial().isReplaceable() || state
-				.getMaterial() == Material.LEAVES || state.getMaterial() == Material.WOOD || state.getMaterial() == Material.PLANT);
+				.getMaterial() == Material.LEAVES || state.getMaterial() == Material.PLANT);
 	}
 
 	private static boolean isSoil(BlockState soil) {

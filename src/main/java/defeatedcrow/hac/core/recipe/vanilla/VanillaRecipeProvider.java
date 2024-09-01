@@ -2102,6 +2102,15 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_paper", has(Items.PAPER))
 				.save(cons, "dcs_climate:clothing/pattern_jacket");
 
+		ShapedRecipeBuilder.shaped(CoreInit.PATTERN_TUNIC.get(), 1)
+				.pattern("XXX")
+				.pattern("XYX")
+				.pattern("XXX")
+				.define('X', Items.PAPER)
+				.define('Y', Items.CHARCOAL)
+				.unlockedBy("has_paper", has(Items.PAPER))
+				.save(cons, "dcs_climate:clothing/pattern_tunic");
+
 		ShapedRecipeBuilder.shaped(CoreInit.PATTERN_SHIRT.get(), 1)
 				.pattern("XXX")
 				.pattern("XYX")
@@ -2283,6 +2292,22 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_linen_cloth", has(TagDC.ItemTag.CLOTH_PLANT))
 				.save(cons, "dcs_climate:clothing/pants_linen");
 
+		ShapelessRecipeBuilder.shapeless(CoreInit.SKIRT_LINEN.get(), 1)
+				.requires(CoreInit.PATTERN_PANTS.get())
+				.requires(TagDC.ItemTag.CLOTH_PLANT)
+				.requires(TagDC.ItemTag.CLOTH_PLANT)
+				.requires(TagDC.ItemTag.GEM_AGATES)
+				.unlockedBy("has_linen_cloth", has(TagDC.ItemTag.CLOTH_PLANT))
+				.save(cons, "dcs_climate:clothing/skirt_linen");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.DRESS_LINEN.get(), 1)
+				.requires(CoreInit.PATTERN_TUNIC.get())
+				.requires(TagDC.ItemTag.CLOTH_PLANT)
+				.requires(TagDC.ItemTag.CLOTH_PLANT)
+				.requires(TagDC.ItemTag.GEM_AGATES)
+				.unlockedBy("has_linen_cloth", has(TagDC.ItemTag.CLOTH_PLANT))
+				.save(cons, "dcs_climate:clothing/dress_linen");
+
 		ShapelessRecipeBuilder.shapeless(CoreInit.HAT_CLOTH.get(), 1)
 				.requires(CoreInit.PATTERN_HAT.get())
 				.requires(TagDC.ItemTag.CLOTH_COTTON)
@@ -2323,6 +2348,22 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
 				.save(cons, "dcs_climate:clothing/pants_cotton");
 
+		ShapelessRecipeBuilder.shapeless(CoreInit.DRESS_CLOTH.get(), 1)
+				.requires(CoreInit.PATTERN_TUNIC.get())
+				.requires(TagDC.ItemTag.CLOTH_COTTON)
+				.requires(TagDC.ItemTag.CLOTH_COTTON)
+				.requires(TagDC.ItemTag.CROP_FLOWERS)
+				.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
+				.save(cons, "dcs_climate:clothing/dress_cotton_1");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.DRESS_CLOTH.get(), 1)
+				.requires(CoreInit.PATTERN_TUNIC.get())
+				.requires(TagDC.ItemTag.CLOTH_COTTON)
+				.requires(TagDC.ItemTag.CLOTH_COTTON)
+				.requires(ItemTags.FLOWERS)
+				.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
+				.save(cons, "dcs_climate:clothing/dress_cotton_2");
+
 		ShapelessRecipeBuilder.shapeless(CoreInit.JACKET_WOOL.get(), 1)
 				.requires(CoreInit.PATTERN_JACKET.get())
 				.requires(TagDC.ItemTag.CLOTH_WOOL)
@@ -2330,6 +2371,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(Tags.Items.STRING)
 				.unlockedBy("has_wool_cloth", has(TagDC.ItemTag.CLOTH_WOOL))
 				.save(cons, "dcs_climate:clothing/jacket_wool");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.TIGHTS_WOOL.get(), 1)
+				.requires(CoreInit.PATTERN_PANTS.get())
+				.requires(TagDC.ItemTag.CLOTH_WOOL)
+				.requires(TagDC.ItemTag.CLOTH_WOOL)
+				.requires(Tags.Items.STRING)
+				.unlockedBy("has_wool_cloth", has(TagDC.ItemTag.CLOTH_WOOL))
+				.save(cons, "dcs_climate:clothing/tights_wool");
 
 		ShapelessRecipeBuilder.shapeless(CoreInit.SUITS_LEATHER.get(), 1)
 				.requires(CoreInit.PATTERN_SUITS.get())
@@ -2372,6 +2421,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		clothBleachRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_BLACK.get(), "fur_shawl", 1);
 		clothBleachRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_SILVER.get(), "fur_shawl", 2);
 		clothBleachRecipe(cons, CoreInit.FUR_SHAWL.get(), CoreInit.FUR_SHAWL_WHITE.get(), "fur_shawl", 3);
+
+		clothColorRecipe(cons, CoreInit.FUR_LOINCLOTH.get(), CoreInit.FUR_LOINCLOTH_BLACK.get(), Tags.Items.DYES_BLACK, "black", "fur_loincloth");
+		clothColorRecipe(cons, CoreInit.FUR_LOINCLOTH.get(), CoreInit.FUR_LOINCLOTH_SILVER.get(), Tags.Items.DYES_LIGHT_GRAY, "silver", "fur_loincloth");
+		clothColorRecipe(cons, CoreInit.FUR_LOINCLOTH.get(), CoreInit.FUR_LOINCLOTH_WHITE.get(), Tags.Items.DYES_WHITE, "white", "fur_loincloth");
+
+		clothBleachRecipe(cons, CoreInit.FUR_LOINCLOTH.get(), CoreInit.FUR_LOINCLOTH_BLACK.get(), "fur_loincloth", 1);
+		clothBleachRecipe(cons, CoreInit.FUR_LOINCLOTH.get(), CoreInit.FUR_LOINCLOTH_SILVER.get(), "fur_loincloth", 2);
+		clothBleachRecipe(cons, CoreInit.FUR_LOINCLOTH.get(), CoreInit.FUR_LOINCLOTH_WHITE.get(), "fur_loincloth", 3);
 
 		clothColorRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_BLACK.get(), Tags.Items.DYES_BLACK, "black", "linen_jacket");
 		clothColorRecipe(cons, CoreInit.JACKET_LINEN.get(), CoreInit.JACKET_LINEN_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "linen_jacket");
@@ -2429,6 +2486,24 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		clothBleachRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_LIGHTBLUE.get(), "cloth_pants", 2);
 		clothBleachRecipe(cons, CoreInit.PANTS_CLOTH.get(), CoreInit.PANTS_CLOTH_GRAY.get(), "cloth_pants", 3);
 
+		clothColorRecipe(cons, CoreInit.TIGHTS_WOOL.get(), CoreInit.TIGHTS_WOOL_BLACK.get(), Tags.Items.DYES_BLACK, "black", "knit_tights");
+		clothColorRecipe(cons, CoreInit.TIGHTS_WOOL.get(), CoreInit.TIGHTS_WOOL_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "knit_tights");
+		clothColorRecipe(cons, CoreInit.TIGHTS_WOOL.get(), CoreInit.TIGHTS_WOOL_RED.get(), Tags.Items.DYES_RED, "red", "knit_tights");
+
+		clothBleachRecipe(cons, CoreInit.TIGHTS_WOOL.get(), CoreInit.TIGHTS_WOOL_BLACK.get(), "knit_tights", 1);
+		clothBleachRecipe(cons, CoreInit.TIGHTS_WOOL.get(), CoreInit.TIGHTS_WOOL_BLUE.get(), "knit_tights", 2);
+		clothBleachRecipe(cons, CoreInit.TIGHTS_WOOL.get(), CoreInit.TIGHTS_WOOL_RED.get(), "knit_tights", 3);
+
+		clothColorRecipe(cons, CoreInit.SKIRT_LINEN.get(), CoreInit.SKIRT_LINEN_PINK.get(), Tags.Items.DYES_PINK, "black", "linen_skirt");
+		clothColorRecipe(cons, CoreInit.SKIRT_LINEN.get(), CoreInit.SKIRT_LINEN_GRAY.get(), Tags.Items.DYES_GRAY, "blue", "linen_skirt");
+		clothColorRecipe(cons, CoreInit.SKIRT_LINEN.get(), CoreInit.SKIRT_LINEN_BLUE.get(), Tags.Items.DYES_BLUE, "red", "linen_skirt");
+		clothColorRecipe(cons, CoreInit.SKIRT_LINEN.get(), CoreInit.SKIRT_LINEN_GREEN.get(), Tags.Items.DYES_GREEN, "green", "linen_skirt");
+
+		clothBleachRecipe(cons, CoreInit.SKIRT_LINEN.get(), CoreInit.SKIRT_LINEN_PINK.get(), "linen_skirt", 1);
+		clothBleachRecipe(cons, CoreInit.SKIRT_LINEN.get(), CoreInit.SKIRT_LINEN_GRAY.get(), "linen_skirt", 2);
+		clothBleachRecipe(cons, CoreInit.SKIRT_LINEN.get(), CoreInit.SKIRT_LINEN_BLUE.get(), "linen_skirt", 3);
+		clothBleachRecipe(cons, CoreInit.SKIRT_LINEN.get(), CoreInit.SKIRT_LINEN_GREEN.get(), "linen_skirt", 4);
+
 		clothColorRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "cloth_suits");
 		clothColorRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_BROWN.get(), Tags.Items.DYES_BROWN, "brown", "cloth_suits");
 		clothColorRecipe(cons, CoreInit.SUITS_CLOTH.get(), CoreInit.SUITS_CLOTH_GREEN.get(), Tags.Items.DYES_GREEN, "green", "cloth_suits");
@@ -2444,6 +2519,24 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		clothBleachRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_BLACK.get(), "leather_suits", 1);
 		clothBleachRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_BROWN.get(), "leather_suits", 2);
 		clothBleachRecipe(cons, CoreInit.SUITS_LEATHER.get(), CoreInit.SUITS_LEATHER_WHITE.get(), "leather_suits", 3);
+
+		clothColorRecipe(cons, CoreInit.DRESS_LINEN.get(), CoreInit.DRESS_LINEN_BLACK.get(), Tags.Items.DYES_BLACK, "black", "linen_dress");
+		clothColorRecipe(cons, CoreInit.DRESS_LINEN.get(), CoreInit.DRESS_LINEN_GREEN.get(), Tags.Items.DYES_GREEN, "green", "linen_dress");
+		clothColorRecipe(cons, CoreInit.DRESS_LINEN.get(), CoreInit.DRESS_LINEN_CYAN.get(), Tags.Items.DYES_CYAN, "cyan", "linen_dress");
+		clothColorRecipe(cons, CoreInit.DRESS_LINEN.get(), CoreInit.DRESS_LINEN_MAGENTA.get(), Tags.Items.DYES_MAGENTA, "magenta", "linen_dress");
+		clothColorRecipe(cons, CoreInit.DRESS_LINEN.get(), CoreInit.DRESS_LINEN_WHITE.get(), Tags.Items.DYES_WHITE, "white", "linen_dress");
+
+		clothBleachRecipe(cons, CoreInit.DRESS_LINEN.get(), CoreInit.DRESS_LINEN_BLACK.get(), "linen_dress", 1);
+		clothBleachRecipe(cons, CoreInit.DRESS_LINEN.get(), CoreInit.DRESS_LINEN_GREEN.get(), "linen_dress", 2);
+		clothBleachRecipe(cons, CoreInit.DRESS_LINEN.get(), CoreInit.DRESS_LINEN_CYAN.get(), "linen_dress", 3);
+		clothBleachRecipe(cons, CoreInit.DRESS_LINEN.get(), CoreInit.DRESS_LINEN_MAGENTA.get(), "linen_dress", 4);
+		clothBleachRecipe(cons, CoreInit.DRESS_LINEN.get(), CoreInit.DRESS_LINEN_WHITE.get(), "linen_dress", 5);
+
+		clothColorRecipe(cons, CoreInit.DRESS_CLOTH.get(), CoreInit.DRESS_CLOTH_LIGHTBLUE.get(), Tags.Items.DYES_LIGHT_BLUE, "lightblue", "cotton_dress");
+		clothColorRecipe(cons, CoreInit.DRESS_CLOTH.get(), CoreInit.DRESS_CLOTH_PINK.get(), Tags.Items.DYES_PINK, "pink", "cotton_dress");
+
+		clothBleachRecipe(cons, CoreInit.DRESS_CLOTH.get(), CoreInit.DRESS_CLOTH_LIGHTBLUE.get(), "cotton_dress", 1);
+		clothBleachRecipe(cons, CoreInit.DRESS_CLOTH.get(), CoreInit.DRESS_CLOTH_PINK.get(), "cotton_dress", 2);
 
 		clothColorRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_BLACK.get(), Tags.Items.DYES_BLACK, "black", "dress_maid");
 		clothColorRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_BROWN.get(), Tags.Items.DYES_BROWN, "brown", "dress_maid");

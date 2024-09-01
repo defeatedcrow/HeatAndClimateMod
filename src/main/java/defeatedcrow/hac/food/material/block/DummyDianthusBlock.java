@@ -21,6 +21,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -62,6 +63,15 @@ public class DummyDianthusBlock extends BlockDC {
 			level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
 		}
 		return super.use(state, level, pos, player, hand, res);
+	}
+
+	@Override
+	public void destroy(LevelAccessor level, BlockPos pos, BlockState state) {
+		if (!level.isClientSide() && level instanceof ServerLevel && state != null && state.getBlock() != null) {
+			WildCropFeature.updateFlower((ServerLevel) level, pos, level.getRandom());
+			level.levelEvent(1505, pos, 0);
+			level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+		}
 	}
 
 	@Override

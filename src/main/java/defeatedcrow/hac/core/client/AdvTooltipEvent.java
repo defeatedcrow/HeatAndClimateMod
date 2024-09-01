@@ -44,7 +44,7 @@ public class AdvTooltipEvent {
 		List<Component> list = Lists.newArrayList();
 		List<Component> list2 = Lists.newArrayList();
 		if (!target.isEmpty()) {
-			if (target.isEdible() || target.getItem() instanceof IFoodTaste) {
+			if ((ConfigClientBuilder.INSTANCE.showTasteTip.get() && target.is(TagDC.ItemTag.HAC_FOOD_FLAVOR)) || target.getItem() instanceof IFoodTaste) {
 				boolean unsafe = false;
 				if (target.getTag() != null && target.getTag().contains(TagKeyDC.UNSAFE)) {
 					if (target.getTag().getBoolean(TagKeyDC.UNSAFE)) {
@@ -55,6 +55,13 @@ public class AdvTooltipEvent {
 				}
 				if (unsafe) {
 					list.add(Component.translatable("dcs.tip.unsafe_food").withStyle(ChatFormatting.RED));
+				} else {
+					int taste = IFoodTaste.getFoodTaste(target) + 3;
+					if (taste > 0) {
+						MutableComponent tasteName = Component.translatable("dcs.tip.foodtaste." + taste);
+						tasteName.withStyle(ChatFormatting.YELLOW);
+						list.add(tasteName);
+					}
 				}
 			}
 		}

@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.magic.MagicUtil;
@@ -25,6 +26,9 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -223,7 +227,7 @@ public class CharmTriggerEvent {
 	@SubscribeEvent
 	public static void onDeath(LivingDeathEvent event) {
 		LivingEntity living = event.getEntity();
-		if (living != null && living.isAlive()) {
+		if (living != null) {
 			ArrayList<ItemStack> charms = MagicUtil.getCharms(living, CharmType.DEFFENCE);
 			int count = 0;
 			for (ItemStack c : charms) {
@@ -239,8 +243,15 @@ public class CharmTriggerEvent {
 				living.setHealth(count * 2.0F);
 				event.setCanceled(true);
 			}
-		}
 
+			if (ConfigCommonBuilder.INSTANCE.enMobTarget.get() && (living instanceof Animal || living instanceof WaterAnimal)) {
+				DamageSource source = event.getSource();
+				if (source != null && source.getEntity() instanceof PathfinderMob attacker) {
+					int i = ConfigCommonBuilder.INSTANCE.vMobTargetInterval.get() * 1200;
+					attacker.getPersistentData().putInt("dcs_fulfill_interval", i);
+				}
+			}
+		}
 	}
 
 	@SubscribeEvent

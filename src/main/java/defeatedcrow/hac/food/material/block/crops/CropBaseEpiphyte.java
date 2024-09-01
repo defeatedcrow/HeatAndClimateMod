@@ -28,11 +28,11 @@ public abstract class CropBaseEpiphyte extends ClimateCropBaseBlock {
 	public CropBaseEpiphyte(CropTier t) {
 		super(t);
 		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0))
-			.setValue(DCState.NORTH, false)
-			.setValue(DCState.SOUTH, false)
-			.setValue(DCState.EAST, false)
-			.setValue(DCState.WEST, false)
-			.setValue(DCState.WILD, false));
+				.setValue(DCState.NORTH, false)
+				.setValue(DCState.SOUTH, false)
+				.setValue(DCState.EAST, false)
+				.setValue(DCState.WEST, false)
+				.setValue(DCState.WILD, false));
 	}
 
 	@Override
@@ -117,7 +117,7 @@ public abstract class CropBaseEpiphyte extends ClimateCropBaseBlock {
 		boolean east = isSuitableWalls(level.getBlockState(pos.east()));
 		boolean west = isSuitableWalls(level.getBlockState(pos.west()));
 		return next.setValue(DCState.NORTH, north).setValue(DCState.SOUTH, south)
-			.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
+				.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
 	}
 
 	@Override
@@ -129,7 +129,7 @@ public abstract class CropBaseEpiphyte extends ClimateCropBaseBlock {
 		boolean east = isSuitableWalls(level.getBlockState(pos.east()));
 		boolean west = isSuitableWalls(level.getBlockState(pos.west()));
 		next = next.setValue(DCState.NORTH, north).setValue(DCState.SOUTH, south)
-			.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
+				.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
 		return down || north || south || east || west ? next : super.updateShape(state, dir, state2, level, pos, pos2);
 	}
 
@@ -145,7 +145,7 @@ public abstract class CropBaseEpiphyte extends ClimateCropBaseBlock {
 
 	@Override
 	public CropGrowType getGrowType(CropTier t) {
-		return CropGrowType.EPIPTYTE;
+		return CropGrowType.EPIPHYTE;
 	}
 
 }

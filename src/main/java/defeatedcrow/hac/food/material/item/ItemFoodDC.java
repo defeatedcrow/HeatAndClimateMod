@@ -2,8 +2,6 @@ package defeatedcrow.hac.food.material.item;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.material.IFoodTaste;
@@ -11,20 +9,16 @@ import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
-import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 
 public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 
@@ -63,23 +57,37 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 		return BlockType.ITEM;
 	}
 
-	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		int taste = getTaste(item) + 3;
-		MutableComponent tasteName = Component.translatable("dcs.tip.foodtaste." + taste);
-		tasteName.withStyle(ChatFormatting.YELLOW);
-		list.add(tasteName);
-		super.appendHoverText(item, level, list, flag);
-	}
+	// @Override
+	// public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	// int taste = getTaste(item) + 3;
+	// MutableComponent tasteName = Component.translatable("dcs.tip.foodtaste." + taste);
+	// tasteName.withStyle(ChatFormatting.YELLOW);
+	// list.add(tasteName);
+	// super.appendHoverText(item, level, list, flag);
+	// }
 
 	/* FoodDC */
 
 	@Override
 	public int getTaste(ItemStack item) {
-		if (!DCUtil.isEmpty(item) && item.getItem() instanceof IFoodTaste && item.getTag() != null && item.getTag().contains(TagKeyDC.TASTE)) {
+		if (DCUtil.isEmpty(item))
+			return 0;
+		if (item.getTag() != null && item.getTag().contains(TagKeyDC.TASTE)) {
 			int taste = item.getTag().getInt(TagKeyDC.TASTE);
 			taste = Mth.clamp(taste, -2, 2);
 			return taste;
+		} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR)) {
+			if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR5)) {
+				return 2;
+			} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR4)) {
+				return 1;
+			} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR3)) {
+				return 0;
+			} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR2)) {
+				return -1;
+			} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR1)) {
+				return -2;
+			}
 		}
 		return 0;
 	}

@@ -1,4 +1,4 @@
-// 1.19.2	2024-08-21T23:23:33.3498486	Tags for minecraft:item
+// 1.19.2	2024-08-29T22:58:58.4241287	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
 3e53fdcbff82a9db030e03d6fcbd63745c1eb081 data/dcs_climate/tags/items/building_stones.json
@@ -92,6 +92,12 @@ e913b19202ae9e447f4bda49966d4ee096b1e4d6 data/dcs_climate/tags/items/fishes/ocea
 824294fa4a7d60b9b352ed054fb3921ee0bdf6f9 data/dcs_climate/tags/items/fishes/small_size.json
 ef7f9d4aca38f5474634dcbda534e3e750228ba2 data/dcs_climate/tags/items/fishes/tropical_only.json
 8f30352bc88bb604102fe85458f0fcf898f966f3 data/dcs_climate/tags/items/fishes/vanilla.json
+b1410710e34489f1aaf507b94633525d197cbc1f data/dcs_climate/tags/items/food_taste.json
+7f01ab18c3c16b58225da18b1317b0b94d955870 data/dcs_climate/tags/items/food_taste/tier1.json
+bb4c2a1e35283e109ae8abf96986b00756a61aff data/dcs_climate/tags/items/food_taste/tier2.json
+8f9873d40eeee23a65c89d0cef42e8033c215b5f data/dcs_climate/tags/items/food_taste/tier3.json
+1b91dbdb8e462b2737b42cd2b7e6771a8ccb2ff7 data/dcs_climate/tags/items/food_taste/tier4.json
+0af726090dd082ba7756c966deff1069d06d6a88 data/dcs_climate/tags/items/food_taste/tier5.json
 8d8b6ae97ecdc0080c2f91383f4cda476ab357ed data/dcs_climate/tags/items/fuels.json
 f50b24a1472032a94300741e933ef1a5d74aa2f2 data/dcs_climate/tags/items/fuels/biomass.json
 f9be281231ab0be930b60bee688dcf542f800e3a data/dcs_climate/tags/items/gems.json

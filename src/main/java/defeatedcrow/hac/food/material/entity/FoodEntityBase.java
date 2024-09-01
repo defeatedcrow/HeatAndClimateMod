@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
+import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.entity.ObjectEntityBaseDC;
@@ -24,6 +25,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.Hopper;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class FoodEntityBase extends ObjectEntityBaseDC {
 
@@ -69,6 +73,13 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 					count = recipe.get().recipeFrequency();
 				}
 			}
+		}
+
+		BlockEntity under = getLevel().getBlockEntity(getOnPos());
+		BlockState underState = getLevel().getBlockState(getOnPos());
+		if (under != null && under instanceof Hopper && !DCState.getBool(underState, DCState.FLAG)) {
+			this.dropItem(this.position());
+			this.kill();
 		}
 
 		if (getLevel().random.nextInt(5) == 0 && !isRaw() && !getItem().isEmpty() && getItem().getItem() instanceof ItemEntityFood food) {

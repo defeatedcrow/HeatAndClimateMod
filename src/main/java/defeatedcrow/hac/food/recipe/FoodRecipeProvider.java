@@ -1640,6 +1640,8 @@ public class FoodRecipeProvider extends RecipeProvider {
 		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.CROP_ALMOND), FoodInit.ALMOND_NUTS.get(), 200, "almond_nuts", FoodInit.CROP_CH_ALMOND.get(), "has_almond");
 		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.CROP_CASHEW), FoodInit.CASHEW_NUTS.get(), 200, "cashew_nuts", FoodInit.CROP_SU_CASHEW.get(), "has_cashew");
 		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.CROP_TEA), FoodInit.GREEN_TEA_LEAVES.get(), 200, "crop_tea", FoodInit.GREEN_TEA_LEAVES.get(), "has_crop_tea");
+		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.PALM_FLOWER), FoodInit.FOOD_SYRUP.get(), 200, "palm_syrup", FoodInit.FOOD_PALM_FLOWER.get(), "has_flower_palm");
+		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.SAP_SWEET), FoodInit.FOOD_SYRUP.get(), 200, "sap_syrup", FoodInit.SAP_SWEET.get(), "has_sweet_sap");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LEAVES), FoodInit.DUST_ASH.get(), 200, "dust_ash1", FoodInit.CONT_LEAVES.get(), "has_cont_leaves");
 		smokingRecipe(cons, Ingredient.of(TagDC.ItemTag.RAW_SAUSAGE), FoodInit.SMOKED_SAUSAGE.get(), 200, "smoked_sausage", FoodInit.RAW_SAUSAGE.get(), "has_raw_sausage");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LOGS), FoodInit.CONT_LOG_CHARCOAL.get(), 200, "charcoal_container", TagDC.ItemTag.CONT_LOGS, "has_log_cont");

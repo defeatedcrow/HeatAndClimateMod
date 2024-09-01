@@ -11,7 +11,8 @@
     "BlockUpdateMixin_Farm",
     "BlockUpdateMixin_Snow",
     "BlockUpdateMixin_Grass",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "AttackTargetGoalMixin"
   ],
   "client": [],
   "server": [],

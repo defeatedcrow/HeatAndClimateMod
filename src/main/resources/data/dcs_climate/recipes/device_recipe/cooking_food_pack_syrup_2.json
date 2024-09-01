@@ -1,0 +1,33 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/pack_syrup",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/food_palm_flower"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

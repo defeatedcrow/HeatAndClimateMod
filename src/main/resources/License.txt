@@ -1,4 +1,4 @@
-Copyright (c) defeatedcrow, 2023
+Copyright (c) defeatedcrow, 2023-2024
 URL:http://defeatedcrow.jp/modwiki/Mainpage
 
 このmodは以下のライセンスの元で公開されます。

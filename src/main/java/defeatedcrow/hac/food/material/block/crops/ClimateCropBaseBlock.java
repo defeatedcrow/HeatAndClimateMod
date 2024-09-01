@@ -24,7 +24,7 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.block.FertileBlock;
-import defeatedcrow.hac.food.material.item.ItemCropDC;
+import defeatedcrow.hac.food.material.item.ItemEdibleCropDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -191,17 +191,17 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	@Override
 	protected boolean mayPlaceOn(BlockState under, BlockGetter level, BlockPos pos) {
 		if (under != null) {
+			if (under.isAir())
+				return false;
 			List<SoilType> soils = getSoilTypes(cropTier);
 			for (SoilType soil : soils) {
 				if (soil == SoilType.WATER) {
 					if (!under.getFluidState().isEmpty() && under.getFluidState().is(FluidTags.WATER))
 						return true;
-				}
-				if (soil == SoilType.LOGS) {
+				} else if (soil == SoilType.LOGS) {
 					if (under.is(BlockTags.LOGS))
 						return true;
-				}
-				if (TagUtil.matchTag(soil.toString().toLowerCase(), under).isPresent()) {
+				} else if (TagUtil.matchTag(soil.toString().toLowerCase(), "but_", under).isPresent()) {
 					return true;
 				}
 			}
@@ -422,7 +422,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 				List<ItemStack> crops = this.getCropItems(thisState, f);
 				boolean ret = false;
 				for (ItemStack item : crops) {
-					if (item.getItem() instanceof ItemCropDC crop && ConfigCommonBuilder.INSTANCE.enCropTaste.get()) {
+					if (item.getItem() instanceof ItemEdibleCropDC crop && ConfigCommonBuilder.INSTANCE.enCropTaste.get()) {
 						crop.setTaste(item, crop.getTier().getTaste() + getCropTaste(world, pos, thisState));
 					}
 					ItemEntity drop;
