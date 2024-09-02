@@ -3,13 +3,13 @@
   "group": "crusher_mortar",
   "ingredients": [
     {
-      "tag": "forge:crops/heath"
+      "tag": "forge:crops/artemisia"
     },
     {
       "item": "dcs_climate:main/agate_mortar"
     }
   ],
   "result": {
-    "item": "minecraft:gray_dye"
+    "item": "minecraft:green_dye"
   }
 }

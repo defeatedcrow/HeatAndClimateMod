@@ -59,7 +59,7 @@ public class MillsDC {
 		list1.add(new Crops("avocado", FoodInit.CROP_CN_AVOCADO, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
 		list1.add(new Crops("olive", FoodInit.CROP_OL_OLIVE, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
 		list1.add(new Crops("camellia", FoodInit.CROP_CM_OIL, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
-		list1.add(new Crops("heath", FoodInit.CROP_ER_HEATH, () -> Items.LIGHT_GRAY_DYE, FoodInit.DUST_PLANT));
+		list1.add(new Crops("heath", FoodInit.CROP_ER_HEATH, () -> Items.GRAY_DYE, FoodInit.DUST_PLANT));
 		list1.add(new Crops("rhododendron", FoodInit.CROP_ER_RHODODENDRON, () -> Items.MAGENTA_DYE, FoodInit.DUST_PLANT));
 		list1.add(new Crops("blueberry", FoodInit.CROP_ER_BLUEBERRY, () -> Items.PURPLE_DYE, FoodInit.DUST_PLANT));
 		list1.add(new Crops("coconut", FoodInit.CROP_PL_COCONUT, FoodInit.FOOD_COCONUT_MILK, FoodInit.FIBER_PLANT));
@@ -68,6 +68,7 @@ public class MillsDC {
 		list1.add(new Crops("oil_palm", FoodInit.CROP_PL_OIL, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
 		list1.add(new Crops("camellia_flower", FoodInit.FLOWER_CAMELLIA, () -> Items.RED_DYE, FoodInit.DUST_PLANT));
 		list1.add(new Crops("schima_flower", FoodInit.FLOWER_SCHIMA, () -> Items.WHITE_DYE, FoodInit.DUST_PLANT));
+		list1.add(new Crops("artemisia", FoodInit.CROP_AS_ARTEMISIA, () -> Items.GREEN_DYE, FoodInit.DUST_PLANT));
 
 		list2.add(new Miscs("ore_iron", 1, () -> Tags.Items.ORES_IRON, () -> Items.RAW_IRON, () -> Items.RAW_IRON));
 		list2.add(new Miscs("ore_copper", 1, () -> Tags.Items.ORES_COPPER, () -> Items.RAW_COPPER, () -> Items.RAW_COPPER));

@@ -12,7 +12,7 @@
   "secondary_rate": 100,
   "ingredients": [
     {
-      "tag": "forge:crops/heath"
+      "item": "minecraft:oxeye_daisy"
     }
   ],
   "heat": [

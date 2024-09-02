@@ -68,6 +68,33 @@ public class ModelThinArmor extends HumanoidModel {
 		return LayerDefinition.create(mesh, 64, 64);
 	}
 
+	public static LayerDefinition createTunicMesh() {
+		MeshDefinition mesh = HumanoidModel.createMesh(new CubeDeformation(0.0F), 0.0F);
+		PartDefinition part = mesh.getRoot();
+
+		PartDefinition body = part.addOrReplaceChild("body", CubeListBuilder.create()
+				.texOffs(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.45F))
+				.texOffs(0, 47).addBox(-3.0F, 10.2F, -3.5F, 6.0F, 8.0F, 7.0F, new CubeDeformation(0.1F)), PartPose.ZERO);
+
+		PartDefinition left_leg = part.addOrReplaceChild("left_leg", CubeListBuilder.create(), PartPose.offset(1.9F, 12.0F, 0.0F));
+
+		PartDefinition skirt_l1 = left_leg.addOrReplaceChild("skirt_l1", CubeListBuilder.create()
+				.texOffs(27, 33).addBox(-4.0F, -1.5F, -3.0F, 7.0F, 7.0F, 6.0F, new CubeDeformation(0.1F)), PartPose.offsetAndRotation(0.1F, 0.0F, 0.0F, 0.0F, 0.0F, -0.2618F));
+
+		PartDefinition right_leg = part.addOrReplaceChild("right_leg", CubeListBuilder.create(), PartPose.offset(-1.9F, 12.0F, 0.0F));
+
+		PartDefinition skirt_r1 = right_leg.addOrReplaceChild("skirt_r1", CubeListBuilder.create()
+				.texOffs(0, 33).mirror().addBox(-3.0F, -1.5F, -3.0F, 7.0F, 7.0F, 6.0F, new CubeDeformation(0.1F)).mirror(false), PartPose.offsetAndRotation(-0.1F, 0.0F, 0.0F, 0.0F, 0.0F, 0.2618F));
+
+		PartDefinition left_arm = part.addOrReplaceChild("left_arm", CubeListBuilder.create()
+				.texOffs(40, 16).mirror().addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.45F)).mirror(false), PartPose.offset(5.0F, 2.0F, 0.0F));
+
+		PartDefinition right_arm = part.addOrReplaceChild("right_arm", CubeListBuilder.create()
+				.texOffs(44, 47).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.45F)), PartPose.offset(-5.0F, 2.0F, 0.0F));
+
+		return LayerDefinition.create(mesh, 64, 64);
+	}
+
 	public static LayerDefinition createSkirtMesh() {
 		MeshDefinition mesh = HumanoidModel.createMesh(new CubeDeformation(0.0F), 0.0F);
 		PartDefinition part = mesh.getRoot();

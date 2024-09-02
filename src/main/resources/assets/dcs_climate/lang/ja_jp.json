@@ -848,6 +848,11 @@
   "item.dcs_climate.main.jacket_wool_lightblue":"カーディガン(水色)",
   "item.dcs_climate.main.jacket_wool_red":"カーディガン(赤)",
 
+  "item.dcs_climate.main.tunic_cloth":"木綿のチュニック",
+  "item.dcs_climate.main.tunic_cloth_black":"木綿のチュニック(黒)",
+  "item.dcs_climate.main.tunic_cloth_green":"木綿のチュニック(緑)",
+  "item.dcs_climate.main.tunic_cloth_orange":"木綿のチュニック(橙)",
+
   "item.dcs_climate.main.shirt_linen":"Tシャツ",
   "item.dcs_climate.main.shirt_linen_cyan":"Tシャツ(シアン)",
   "item.dcs_climate.main.shirt_linen_pink":"Tシャツ(ピンク)",
@@ -897,6 +902,7 @@
   "item.dcs_climate.main.dress_linen_white":"リネンのワンピース(白)",
 
   "item.dcs_climate.main.dress_cloth":"木綿のワンピース",
+  "item.dcs_climate.main.dress_cloth_black":"木綿のワンピース(黒)",
   "item.dcs_climate.main.dress_cloth_pink":"木綿のワンピース(ピンク)",
   "item.dcs_climate.main.dress_cloth_lightblue":"木綿のワンピース(水色)",
 

@@ -19,6 +19,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.fluids.FluidStack;
 
+/**
+ * It's just a pathway for data packs. DummyRecipe does not participate in HaC's machine recipe implementation.
+ */
 public class DummyDeviceRecipeSerealizer implements RecipeSerializer<DummyDeviceRecipe> {
 	@Override
 	public DummyDeviceRecipe fromJson(ResourceLocation res, JsonObject json) {

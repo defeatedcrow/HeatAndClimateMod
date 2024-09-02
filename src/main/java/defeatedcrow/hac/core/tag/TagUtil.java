@@ -47,7 +47,7 @@ public class TagUtil {
 	public static Optional<TagKey<Item>> matchTag(String name, ItemLike item) {
 		ItemStack stack = new ItemStack(item);
 		return stack.getTags().filter((tag) -> !isMatch("_ban", tag))
-				.filter((tag) -> !isMatch("_but_", tag))
+				.filter((tag) -> !isMatch("but_", tag))
 				.filter((tag) -> !isMatch("all", tag))
 				.filter((tag) -> !isMatch("taste", tag))
 				.filter((tag) -> isMatch(name, tag)).findAny();
@@ -65,7 +65,7 @@ public class TagUtil {
 
 	public static Optional<TagKey<Block>> matchTag(String name, BlockState state) {
 		return state.getTags().filter((tag) -> !isMatch("_ban", tag))
-				.filter((tag) -> !isMatch("_but_", tag))
+				.filter((tag) -> !isMatch("but_", tag))
 				.filter((tag) -> !isMatch("all", tag))
 				.filter((tag) -> !isMatch("taste", tag))
 				.filter((tag) -> isMatch(name, tag)).findAny();

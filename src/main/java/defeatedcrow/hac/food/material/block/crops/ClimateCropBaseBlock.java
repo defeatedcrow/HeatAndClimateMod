@@ -201,7 +201,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 				} else if (soil == SoilType.LOGS) {
 					if (under.is(BlockTags.LOGS))
 						return true;
-				} else if (TagUtil.matchTag(soil.toString().toLowerCase(), "but_", under).isPresent()) {
+				} else if (TagUtil.matchTag(soil.toString().toLowerCase(), under).isPresent()) {
 					return true;
 				}
 			}

@@ -14,10 +14,10 @@
       "tag": "forge:string"
     },
     {
-      "tag": "forge:crops/flowers"
+      "tag": "forge:leather"
     }
   ],
   "result": {
-    "item": "dcs_climate:main/dress_cloth"
+    "item": "dcs_climate:main/tunic_cloth"
   }
 }

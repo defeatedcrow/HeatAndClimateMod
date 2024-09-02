@@ -62,7 +62,7 @@ public class PulveriseRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_BARLEY)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
-				new ItemStack(Items.LIGHT_GRAY_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				new ItemStack(Items.GRAY_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_HEATH)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
@@ -515,7 +515,7 @@ public class PulveriseRecipes {
 				new ItemStack(Items.PINK_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(Items.PEONY)));
 
-		DeviceRecipeList.addPulverizeRecipe(2, RecipeTypeDC.PULVERISE,
+		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
 				new ItemStack(Items.LIGHT_GRAY_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(Items.OXEYE_DAISY)));
 

@@ -2323,6 +2323,15 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
 				.save(cons, "dcs_climate:clothing/jacket_cotton");
 
+		ShapelessRecipeBuilder.shapeless(CoreInit.TUNIC_CLOTH.get(), 1)
+				.requires(CoreInit.PATTERN_TUNIC.get())
+				.requires(TagDC.ItemTag.CLOTH_COTTON)
+				.requires(TagDC.ItemTag.CLOTH_COTTON)
+				.requires(Tags.Items.STRING)
+				.requires(Tags.Items.LEATHER)
+				.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
+				.save(cons, "dcs_climate:clothing/tunic_cotton");
+
 		ShapelessRecipeBuilder.shapeless(CoreInit.SHIRT_CLOTH.get(), 1)
 				.requires(CoreInit.PATTERN_SHIRT.get())
 				.requires(TagDC.ItemTag.CLOTH_COTTON)
@@ -2352,6 +2361,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(CoreInit.PATTERN_TUNIC.get())
 				.requires(TagDC.ItemTag.CLOTH_COTTON)
 				.requires(TagDC.ItemTag.CLOTH_COTTON)
+				.requires(Tags.Items.STRING)
 				.requires(TagDC.ItemTag.CROP_FLOWERS)
 				.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
 				.save(cons, "dcs_climate:clothing/dress_cotton_1");
@@ -2360,6 +2370,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(CoreInit.PATTERN_TUNIC.get())
 				.requires(TagDC.ItemTag.CLOTH_COTTON)
 				.requires(TagDC.ItemTag.CLOTH_COTTON)
+				.requires(Tags.Items.STRING)
 				.requires(ItemTags.FLOWERS)
 				.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
 				.save(cons, "dcs_climate:clothing/dress_cotton_2");
@@ -2454,6 +2465,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		clothBleachRecipe(cons, CoreInit.JACKET_WOOL.get(), CoreInit.JACKET_WOOL_LIGHTBLUE.get(), "wool_jacket", 2);
 		clothBleachRecipe(cons, CoreInit.JACKET_WOOL.get(), CoreInit.JACKET_WOOL_RED.get(), "wool_jacket", 3);
 
+		clothColorRecipe(cons, CoreInit.TUNIC_CLOTH.get(), CoreInit.TUNIC_CLOTH_BLACK.get(), Tags.Items.DYES_BLACK, "black", "cloth_tunic");
+		clothColorRecipe(cons, CoreInit.TUNIC_CLOTH.get(), CoreInit.TUNIC_CLOTH_GREEN.get(), Tags.Items.DYES_GREEN, "green", "cloth_tunic");
+		clothColorRecipe(cons, CoreInit.TUNIC_CLOTH.get(), CoreInit.TUNIC_CLOTH_ORANGE.get(), Tags.Items.DYES_ORANGE, "orange", "cloth_tunic");
+
+		clothBleachRecipe(cons, CoreInit.TUNIC_CLOTH.get(), CoreInit.TUNIC_CLOTH_BLACK.get(), "cloth_tunic", 1);
+		clothBleachRecipe(cons, CoreInit.TUNIC_CLOTH.get(), CoreInit.TUNIC_CLOTH_GREEN.get(), "cloth_tunic", 2);
+		clothBleachRecipe(cons, CoreInit.TUNIC_CLOTH.get(), CoreInit.TUNIC_CLOTH_ORANGE.get(), "cloth_tunic", 3);
+
 		clothColorRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_CYAN.get(), Tags.Items.DYES_CYAN, "cyan", "linen_shirt");
 		clothColorRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_GREEN.get(), Tags.Items.DYES_GREEN, "green", "linen_shirt");
 		clothColorRecipe(cons, CoreInit.SHIRT_LINEN.get(), CoreInit.SHIRT_LINEN_PINK.get(), Tags.Items.DYES_PINK, "pink", "linen_shirt");
@@ -2534,9 +2553,11 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 		clothColorRecipe(cons, CoreInit.DRESS_CLOTH.get(), CoreInit.DRESS_CLOTH_LIGHTBLUE.get(), Tags.Items.DYES_LIGHT_BLUE, "lightblue", "cotton_dress");
 		clothColorRecipe(cons, CoreInit.DRESS_CLOTH.get(), CoreInit.DRESS_CLOTH_PINK.get(), Tags.Items.DYES_PINK, "pink", "cotton_dress");
+		clothColorRecipe(cons, CoreInit.DRESS_CLOTH.get(), CoreInit.DRESS_CLOTH_BLACK.get(), Tags.Items.DYES_BLACK, "black", "cotton_dress");
 
 		clothBleachRecipe(cons, CoreInit.DRESS_CLOTH.get(), CoreInit.DRESS_CLOTH_LIGHTBLUE.get(), "cotton_dress", 1);
 		clothBleachRecipe(cons, CoreInit.DRESS_CLOTH.get(), CoreInit.DRESS_CLOTH_PINK.get(), "cotton_dress", 2);
+		clothBleachRecipe(cons, CoreInit.DRESS_CLOTH.get(), CoreInit.DRESS_CLOTH_BLACK.get(), "cotton_dress", 3);
 
 		clothColorRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_BLACK.get(), Tags.Items.DYES_BLACK, "black", "dress_maid");
 		clothColorRecipe(cons, CoreInit.LONG_MAID.get(), CoreInit.LONG_MAID_BROWN.get(), Tags.Items.DYES_BROWN, "brown", "dress_maid");

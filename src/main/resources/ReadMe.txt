@@ -704,6 +704,7 @@
 
 ○v4-beta14
  add: チュニックの型紙
+ add: チュニック
  add: スカート
  add: ワンピース
  add: ニットタイツ
@@ -713,6 +714,7 @@
  change: 食べ物の風味(Taste)の計算方法を変更し、Tagで編集可能にした
  change: 食べ物EntityをDispenserで召喚可能にした
  change: 食べ物Entityがホッパーの上でアイテム化するように
+ change: 茶と黒の染料のレシピを追加
  fix: 内部のtypoを修正
  fix: いくつかの欠けているマシンレシピを追加
  fix: 青の色素のテクスチャを修正

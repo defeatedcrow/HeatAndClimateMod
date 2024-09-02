@@ -134,10 +134,11 @@ public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 		LEGGINS,
 		SHIRT,
 		JACKET,
+		TUNIC,
 		OVERSUITS,
 		SUITS,
-		HAT,
 		LONG,
+		HAT,
 		DEFAULT
 	}
 

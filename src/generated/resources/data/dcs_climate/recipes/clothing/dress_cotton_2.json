@@ -11,6 +11,9 @@
       "tag": "forge:clothes/cotton"
     },
     {
+      "tag": "forge:string"
+    },
+    {
       "tag": "minecraft:flowers"
     }
   ],

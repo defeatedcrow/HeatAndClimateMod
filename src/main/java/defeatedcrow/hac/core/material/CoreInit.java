@@ -344,6 +344,14 @@ public class CoreInit {
 	public static final RegistryObject<Item> JACKET_WOOL_RED = regItem("jacket_wool_red",
 			() -> new ArmorItemDC("jacket_wool_red", MaterialsDC.WOOL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 
+	public static final RegistryObject<Item> TUNIC_CLOTH = regItem("tunic_cloth", () -> new ArmorItemDC("tunic_cloth", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.TUNIC));
+	public static final RegistryObject<Item> TUNIC_CLOTH_BLACK = regItem("tunic_cloth_black", () -> new ArmorItemDC("tunic_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.CHEST,
+			ArmorItemDC.ModelType.TUNIC));
+	public static final RegistryObject<Item> TUNIC_CLOTH_GREEN = regItem("tunic_cloth_green", () -> new ArmorItemDC("tunic_cloth_green", MaterialsDC.CLOTH, EquipmentSlot.CHEST,
+			ArmorItemDC.ModelType.TUNIC));
+	public static final RegistryObject<Item> TUNIC_CLOTH_ORANGE = regItem("tunic_cloth_orange", () -> new ArmorItemDC("tunic_cloth_orange", MaterialsDC.CLOTH, EquipmentSlot.CHEST,
+			ArmorItemDC.ModelType.TUNIC));
+
 	public static final RegistryObject<Item> SHIRT_LINEN = regItem("shirt_linen", () -> new ArmorItemDC("shirt_linen", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
 	public static final RegistryObject<Item> SHIRT_LINEN_CYAN = regItem("shirt_linen_cyan",
 			() -> new ArmorItemDC("shirt_linen_cyan", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
@@ -358,6 +366,16 @@ public class CoreInit {
 	public static final RegistryObject<Item> SHIRT_CLOTH_RED = regItem("shirt_cloth_red", () -> new ArmorItemDC("shirt_cloth_red", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
 	public static final RegistryObject<Item> SHIRT_CLOTH_LIGHTBLUE = regItem("shirt_cloth_lightblue",
 			() -> new ArmorItemDC("shirt_cloth_lightblue", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
+
+	public static final RegistryObject<Item> SKIRT_LINEN = regItem("skirt_linen", () -> new ArmorItemDC("skirt_linen", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> SKIRT_LINEN_PINK = regItem("skirt_linen_pink", () -> new ArmorItemDC("skirt_linen_pink", MaterialsDC.LINEN, EquipmentSlot.LEGS,
+			ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> SKIRT_LINEN_GRAY = regItem("skirt_linen_gray", () -> new ArmorItemDC("skirt_linen_gray", MaterialsDC.LINEN, EquipmentSlot.LEGS,
+			ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> SKIRT_LINEN_BLUE = regItem("skirt_linen_blue", () -> new ArmorItemDC("skirt_linen_blue", MaterialsDC.LINEN, EquipmentSlot.LEGS,
+			ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> SKIRT_LINEN_GREEN = regItem("skirt_linen_green", () -> new ArmorItemDC("skirt_linen_green", MaterialsDC.LINEN, EquipmentSlot.LEGS,
+			ArmorItemDC.ModelType.SKIRT));
 
 	public static final RegistryObject<Item> PANTS_LINEN = regItem("pants_linen", () -> new ArmorItemDC("pants_linen", MaterialsDC.LINEN, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 	public static final RegistryObject<Item> PANTS_GREEN = regItem("pants_linen_green",
@@ -383,15 +401,32 @@ public class CoreInit {
 	public static final RegistryObject<Item> TIGHTS_WOOL_BLUE = regItem("tights_knit_blue", () -> new ArmorItemDC("tights_knit_blue", MaterialsDC.WOOL, EquipmentSlot.FEET,
 			ArmorItemDC.ModelType.LEGGINS));
 
-	public static final RegistryObject<Item> SKIRT_LINEN = regItem("skirt_linen", () -> new ArmorItemDC("skirt_linen", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> SKIRT_LINEN_PINK = regItem("skirt_linen_pink", () -> new ArmorItemDC("skirt_linen_pink", MaterialsDC.LINEN, EquipmentSlot.LEGS,
+	public static final RegistryObject<Item> DRESS_LINEN = regItem("dress_linen", () -> new ArmorItemDC("dress_linen", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_LINEN_BLACK = regItem("dress_linen_black", () -> new ArmorItemDC("dress_linen_black", MaterialsDC.LINEN, EquipmentSlot.LEGS,
 			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> SKIRT_LINEN_GRAY = regItem("skirt_linen_gray", () -> new ArmorItemDC("skirt_linen_gray", MaterialsDC.LINEN, EquipmentSlot.LEGS,
+	public static final RegistryObject<Item> DRESS_LINEN_GREEN = regItem("dress_linen_green", () -> new ArmorItemDC("dress_linen_green", MaterialsDC.LINEN, EquipmentSlot.LEGS,
 			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> SKIRT_LINEN_BLUE = regItem("skirt_linen_blue", () -> new ArmorItemDC("skirt_linen_blue", MaterialsDC.LINEN, EquipmentSlot.LEGS,
+	public static final RegistryObject<Item> DRESS_LINEN_CYAN = regItem("dress_linen_cyan", () -> new ArmorItemDC("dress_linen_cyan", MaterialsDC.LINEN, EquipmentSlot.LEGS,
 			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> SKIRT_LINEN_GREEN = regItem("skirt_linen_green", () -> new ArmorItemDC("skirt_linen_green", MaterialsDC.LINEN, EquipmentSlot.LEGS,
+	public static final RegistryObject<Item> DRESS_LINEN_MAGENTA = regItem("dress_linen_magenta", () -> new ArmorItemDC("dress_linen_magenta", MaterialsDC.LINEN, EquipmentSlot.LEGS,
 			ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_LINEN_WHITE = regItem("dress_linen_white", () -> new ArmorItemDC("dress_linen_white", MaterialsDC.LINEN, EquipmentSlot.LEGS,
+			ArmorItemDC.ModelType.SKIRT));
+
+	public static final RegistryObject<Item> DRESS_CLOTH = regItem("dress_cloth", () -> new ArmorItemDC("dress_cloth", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_CLOTH_BLACK = regItem("dress_cloth_black", () -> new ArmorItemDC("dress_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.LEGS,
+			ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_CLOTH_PINK = regItem("dress_cloth_pink", () -> new ArmorItemDC("dress_cloth_pink", MaterialsDC.CLOTH, EquipmentSlot.LEGS,
+			ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_CLOTH_LIGHTBLUE = regItem("dress_cloth_lightblue", () -> new ArmorItemDC("dress_cloth_lightblue", MaterialsDC.CLOTH, EquipmentSlot.LEGS,
+			ArmorItemDC.ModelType.SKIRT));
+
+	public static final RegistryObject<Item> LONG_MAID = regItem("dress_maid", () -> new ArmorItemDC("dress_maid", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
+	public static final RegistryObject<Item> LONG_MAID_BLACK = regItem("dress_maid_black",
+			() -> new ArmorItemDC("dress_maid_black", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
+	public static final RegistryObject<Item> LONG_MAID_GRAY = regItem("dress_maid_gray", () -> new ArmorItemDC("dress_maid_gray", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
+	public static final RegistryObject<Item> LONG_MAID_BROWN = regItem("dress_maid_brown",
+			() -> new ArmorItemDC("dress_maid_brown", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
 
 	public static final RegistryObject<Item> SUITS_LEATHER = regItem("suits_leather", () -> new ArmorItemDC("suits_leather", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 	public static final RegistryObject<Item> SUITS_LEATHER_BLACK = regItem("suits_leather_black",
@@ -408,31 +443,6 @@ public class CoreInit {
 			() -> new ArmorItemDC("suits_cloth_brown", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 	public static final RegistryObject<Item> SUITS_CLOTH_BLUE = regItem("suits_cloth_blue",
 			() -> new ArmorItemDC("suits_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
-
-	public static final RegistryObject<Item> DRESS_LINEN = regItem("dress_linen", () -> new ArmorItemDC("dress_linen", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_LINEN_BLACK = regItem("dress_linen_black", () -> new ArmorItemDC("dress_linen_black", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_LINEN_GREEN = regItem("dress_linen_green", () -> new ArmorItemDC("dress_linen_green", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_LINEN_CYAN = regItem("dress_linen_cyan", () -> new ArmorItemDC("dress_linen_cyan", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_LINEN_MAGENTA = regItem("dress_linen_magenta", () -> new ArmorItemDC("dress_linen_magenta", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_LINEN_WHITE = regItem("dress_linen_white", () -> new ArmorItemDC("dress_linen_white", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-
-	public static final RegistryObject<Item> DRESS_CLOTH = regItem("dress_cloth", () -> new ArmorItemDC("dress_cloth", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_CLOTH_PINK = regItem("dress_cloth_pink", () -> new ArmorItemDC("dress_cloth_pink", MaterialsDC.CLOTH, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_CLOTH_LIGHTBLUE = regItem("dress_cloth_lightblue", () -> new ArmorItemDC("dress_cloth_lightblue", MaterialsDC.CLOTH, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-
-	public static final RegistryObject<Item> LONG_MAID = regItem("dress_maid", () -> new ArmorItemDC("dress_maid", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
-	public static final RegistryObject<Item> LONG_MAID_BLACK = regItem("dress_maid_black",
-			() -> new ArmorItemDC("dress_maid_black", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
-	public static final RegistryObject<Item> LONG_MAID_GRAY = regItem("dress_maid_gray", () -> new ArmorItemDC("dress_maid_gray", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
-	public static final RegistryObject<Item> LONG_MAID_BROWN = regItem("dress_maid_brown",
-			() -> new ArmorItemDC("dress_maid_brown", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
 
 	public static final RegistryObject<Item> NULL_ITEM = regItem("null_item", () -> new NullItemDC("null_item"));
 	public static final RegistryObject<Item> ICON_HAC = regItem("icon_hac", () -> new NoTabItemDC("icon_hac"));

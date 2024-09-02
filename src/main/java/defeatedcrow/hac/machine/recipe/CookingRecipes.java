@@ -573,6 +573,22 @@ public class CookingRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_TOMATO), Ingredient.of(TagDC.ItemTag.CROP_CHILI), Ingredient.of(TagDC.ItemTag.CROP_ONION),
 						Ingredient.of(TagDC.ItemTag.CROP_PAPRIKA), Ingredient.of(TagDC.ItemTag.CROP_HERBS), Ingredient.of(TagDC.ItemTag.CROP_LEMON)));
 
+		// other
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(Items.BROWN_DYE, 8), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_BEECH), Ingredient.of(TagDC.ItemTag.CROP_BEECH), Ingredient.of(TagDC.ItemTag.CROP_BEECH),
+						Ingredient.of(TagDC.ItemTag.DUST_IRON), Ingredient.of(TagDC.ItemTag.VINEGAR)));
+
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(Items.BROWN_DYE, 8), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_WALNUT), Ingredient.of(TagDC.ItemTag.CROP_WALNUT), Ingredient.of(TagDC.ItemTag.CROP_WALNUT),
+						Ingredient.of(TagDC.ItemTag.DUST_IRON), Ingredient.of(TagDC.ItemTag.VINEGAR)));
+
+		DeviceRecipeList.addCookingRecipe(3, RecipeTypeDC.COOKING, new ItemStack(Items.BLACK_DYE, 8), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_ACORN), Ingredient.of(TagDC.ItemTag.CROP_ACORN), Ingredient.of(TagDC.ItemTag.CROP_ACORN),
+						Ingredient.of(TagDC.ItemTag.DUST_IRON), Ingredient.of(TagDC.ItemTag.VINEGAR)));
+
 		// tea
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.TEA, new ItemStack(FoodInit.DRINK_APPLE.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, cool,
 				ImmutableList.of(FluidTags.WATER.location().toString()),

@@ -1,0 +1,45 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "minecraft:brown_dye",
+    "count": 8
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/beech"
+    },
+    {
+      "tag": "forge:crops/beech"
+    },
+    {
+      "tag": "forge:crops/beech"
+    },
+    {
+      "tag": "forge:dusts/iron"
+    },
+    {
+      "tag": "forge:ingredients/vinegar"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

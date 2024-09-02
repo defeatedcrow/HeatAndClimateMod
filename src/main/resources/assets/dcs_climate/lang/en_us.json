@@ -846,6 +846,11 @@
   "item.dcs_climate.main.jacket_wool_lightblue":"Cardigan(Light Blue)",
   "item.dcs_climate.main.jacket_wool_red":"Cardigan(Red)",
 
+  "item.dcs_climate.main.tunic_cloth":"Cloth Tunic",
+  "item.dcs_climate.main.tunic_cloth_black":"Cloth Tunic(Black)",
+  "item.dcs_climate.main.tunic_cloth_green":"Cloth Tunic(Green)",
+  "item.dcs_climate.main.tunic_cloth_orange":"Cloth Tunic(Orange)",
+
   "item.dcs_climate.main.shirt_linen":"T-Shirt",
   "item.dcs_climate.main.shirt_linen_cyan":"T-Shirt(Cyan)",
   "item.dcs_climate.main.shirt_linen_pink":"T-Shirt(Pink)",
@@ -895,6 +900,7 @@
   "item.dcs_climate.main.dress_linen_white":"Linen Dress(White)",
 
   "item.dcs_climate.main.dress_cloth":"Cotton Dress",
+  "item.dcs_climate.main.dress_cloth_black":"Cotton Dress(Black)",
   "item.dcs_climate.main.dress_cloth_pink":"Cotton Dress(Pink)",
   "item.dcs_climate.main.dress_cloth_lightblue":"Cotton Dress(Light Blue)",
 
