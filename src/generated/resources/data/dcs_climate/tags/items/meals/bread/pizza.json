@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:food/pizza_tomato_baked",
+    "dcs_climate:food/pizza_margherita_baked",
+    "dcs_climate:food/pizza_romana_baked",
+    "dcs_climate:food/pizza_tonno_baked",
+    "dcs_climate:food/pizza_sausage_baked",
+    "dcs_climate:food/pizza_mentai_baked"
+  ]
+}

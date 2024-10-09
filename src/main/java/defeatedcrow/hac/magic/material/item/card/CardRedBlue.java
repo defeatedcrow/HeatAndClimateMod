@@ -39,7 +39,7 @@ public class CardRedBlue extends MagicCardBase {
 
 		List<Mob> list = level.getNearbyEntities(Mob.class, TargetingConditions.forCombat().range(d).ignoreLineOfSight(), player, player.getBoundingBox().inflate(d));
 		list.stream().filter(mob -> mob instanceof Enemy && !mob.getType().is(Tags.EntityTypes.BOSSES)).forEach((mob) -> {
-			mob.hurt(DamageSource.LIGHTNING_BOLT, 12.0F);
+			mob.hurt(DamageSource.LIGHTNING_BOLT, 12.0F * boost);
 			if (mob.getVehicle() != null) {
 				mob.removeVehicle();
 			}

@@ -7,7 +7,7 @@
   },
   "ingredients": [
     {
-      "tag": "forge:ingredients/raw_meats"
+      "tag": "forge:ingredients/all_raw_meats"
     },
     {
       "tag": "forge:crops/tomato"

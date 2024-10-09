@@ -17,6 +17,7 @@ public class TagKeyDC {
 	public static final String LOCK = "dcs.lock";
 	public static final String CURRENT_PROGRESS = "dcs.current_progress";
 	public static final String MAX_PROGRESS = "dcs.max_progress";
+	public static final String COUNTER = "dcs.counter";
 	public static final String HEAT_TIER = "dcs.heat";
 	public static final String HUMIDITY = "dcs.humidity";
 	public static final String AIRFLOW = "dcs.airflow";

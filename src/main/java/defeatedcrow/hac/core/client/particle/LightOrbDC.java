@@ -21,7 +21,7 @@ public class LightOrbDC extends BaseAshSmokeParticle {
 		this.rCol = 1.0F;
 		this.gCol = 1.0F;
 		this.bCol = 1.0F;
-		this.lifetime = 16 + level.random.nextInt(5);
+		this.lifetime = 5 + level.random.nextInt(8);
 		this.lifetime = Math.max(this.lifetime, 1);
 		movY = this.yd;
 	}

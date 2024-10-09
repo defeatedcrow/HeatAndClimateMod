@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/iwashi_mentai"
+  },
+  "parent": "minecraft:item/generated"
+}

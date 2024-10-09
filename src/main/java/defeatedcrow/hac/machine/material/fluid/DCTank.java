@@ -77,7 +77,7 @@ public class DCTank implements IFluidHandler, IFluidTank {
 		if (!get.isEmpty() && isFluidValid(get)) {
 			int vac = capacity - this.getFluidAmount();
 			int ret = Math.min(vac, get.getAmount());
-			if (!action.simulate()) {
+			if (!action.simulate() && vac > 0) {
 				if (fluid.isEmpty()) {
 					setFluid(get);
 				} else {

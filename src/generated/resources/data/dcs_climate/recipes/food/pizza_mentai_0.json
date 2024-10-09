@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/bread_flat_raw"
+    },
+    {
+      "tag": "forge:ingredients/roe"
+    },
+    {
+      "tag": "forge:ingredients/cheese"
+    },
+    {
+      "tag": "forge:ingredients/soysauce"
+    },
+    {
+      "tag": "forge:crops/chili"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/pizza_mentai_raw"
+  }
+}

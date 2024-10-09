@@ -10,6 +10,7 @@ import defeatedcrow.hac.core.material.block.OwnableBaseTileDC;
 import defeatedcrow.hac.core.material.block.building.SlabWoodDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.BlockPos;
@@ -18,18 +19,22 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.StemBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -93,7 +98,7 @@ public class BlockEventDC {
 			}
 		}
 
-		if (level.isClientSide || player.isCrouching() || player.isSpectator())
+		if (level.isClientSide || player.isCrouching() || player.isSpectator() || !level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS))
 			return;
 
 		if (!DCUtil.isEmpty(held) && held.is(TagDC.ItemTag.SCYTHES)) {
@@ -122,6 +127,14 @@ public class BlockEventDC {
 								target.getBlock().playerDestroy(level, player, mpos, target, null, copy);
 								b = true;
 							}
+						}
+						if (target.is(TagDC.BlockTag.BAMBOO_SHOOT)) {
+							level.setBlock(mpos, Blocks.AIR.defaultBlockState(), 2);
+							Vec3 v3 = Vec3.atCenterOf(mpos);
+							ItemEntity drop = new ItemEntity(level, v3.x, v3.y, v3.z, new ItemStack(FoodInit.FOOD_BAMBOO_SHOOT.get()));
+							drop.setDefaultPickUpDelay();
+							level.addFreshEntity(drop);
+							b = true;
 						}
 					}
 				}

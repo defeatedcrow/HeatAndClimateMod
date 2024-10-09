@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "tag": "forge:chests"
+    },
+    "X": {
+      "tag": "forge:ingots/sus"
+    },
+    "Y": {
+      "tag": "dcs_climate:motors/middle"
+    },
+    "Z": {
+      "tag": "dcs_climate:battery_items/middle"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XZX",
+    "XWX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/roll_crusher"
+  }
+}

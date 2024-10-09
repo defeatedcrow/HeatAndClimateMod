@@ -49,6 +49,8 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 	public int currentProgress = 0;
 	public int totalProgress = 0;
 
+	public int freeCounter = 0;
+
 	public IDeviceRecipe recipe = null;
 
 	// tick
@@ -250,6 +252,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 		lastProgress = tag.getInt(TagKeyDC.LAST_PROGRESS);
 		currentProgress = tag.getInt(TagKeyDC.CURRENT_PROGRESS);
 		totalProgress = tag.getInt(TagKeyDC.MAX_PROGRESS);
+		freeCounter = tag.getInt(TagKeyDC.COUNTER);
 
 		heatTime = tag.getInt("dcs.heat_time");
 		humTime = tag.getInt("dcs.hum_time");
@@ -268,6 +271,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 		tag.putInt(TagKeyDC.LAST_PROGRESS, lastProgress);
 		tag.putInt(TagKeyDC.CURRENT_PROGRESS, currentProgress);
 		tag.putInt(TagKeyDC.MAX_PROGRESS, totalProgress);
+		tag.putInt(TagKeyDC.COUNTER, freeCounter);
 
 		tag.putInt("dcs_heat_time", heatTime);
 		tag.putInt("dcs_hum_time", humTime);

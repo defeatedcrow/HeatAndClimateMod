@@ -1,6 +1,8 @@
 {
   "values": [
     "dcs_climate:food/bread_round_baked",
-    "dcs_climate:food/bread_square_baked"
+    "dcs_climate:food/bread_square_baked",
+    "dcs_climate:food/bread_flat_baked",
+    "dcs_climate:food/bread_tortilla_baked"
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/machine/crusher_blade_alumina"
+  },
+  "parent": "minecraft:item/generated"
+}

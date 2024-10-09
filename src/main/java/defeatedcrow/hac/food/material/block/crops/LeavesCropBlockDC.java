@@ -271,7 +271,14 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	@Override
 	public List<ItemStack> getCropItems(BlockState state, int fortune) {
-		ItemStack ret = new ItemStack(getCropItem(cropTier));
+		int i = 1;
+		if (fortune > 0) {
+			int rand = DCUtil.rand.nextInt(fortune * 100);
+			int count = rand / 100;
+			int f = count % 100;
+			i += count + DCUtil.rand.nextInt(f + 1);
+		}
+		ItemStack ret = new ItemStack(getCropItem(cropTier), i);
 		return ImmutableList.of(ret);
 	}
 

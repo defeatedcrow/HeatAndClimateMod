@@ -24,6 +24,7 @@ public enum DCTexturePath {
 	GUI_FERMENTATION_JAR("textures/gui/fermentation_jar_inv.png"),
 	GUI_TEA_POT("textures/gui/tea_pot_inv.png"),
 	GUI_MILL("textures/gui/stonemill_inv.png"),
+	GUI_CRUSHER("textures/gui/roll_crusher_inv.png"),
 	GUI_BATTERY("textures/gui/battery_small_inv.png"),
 	GUI_GENERATOR("textures/gui/generator_small_inv.png"),
 	GUI_BOILER_BIOMASS("textures/gui/boiler_biomass_inv.png"),
@@ -50,7 +51,7 @@ public enum DCTexturePath {
 
 	public static List<DCTexturePath> elements() {
 		return ImmutableList.of(POTION, HUD, GRAY, HOT_DISP, COLD_DISP, GUI_INV_SINGLE, GUI_INV_DOUBLE, GUI_DISPLAY_SHELF, GUI_CHAMBER_ITEM, GUI_CHAMBER_FLUID, GUI_FLUID_TANK,
-				GUI_FLUID_TANK_LARGE, GUI_COOKING_POT, GUI_TEA_POT, GUI_FERMENTATION_JAR, GUI_MILL, GUI_BATTERY, GUI_GENERATOR, GUI_BOILER_BIOMASS,
+				GUI_FLUID_TANK_LARGE, GUI_COOKING_POT, GUI_TEA_POT, GUI_FERMENTATION_JAR, GUI_MILL, GUI_CRUSHER, GUI_BATTERY, GUI_GENERATOR, GUI_BOILER_BIOMASS,
 				GUI_HOPPER_FILTER, GUI_HOPPER_GOLD, GUI_HOPPER_GOLD_FILTER, GUI_CONVEYOR_SORTER, GUI_KICHEN_BENCH, GUI_MONITOR_ANDON, GUI_BORING);
 	}
 }

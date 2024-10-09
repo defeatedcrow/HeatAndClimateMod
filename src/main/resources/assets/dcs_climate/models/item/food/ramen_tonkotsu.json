@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/ramen_tonkotsu"
+  },
+  "parent": "minecraft:item/generated"
+}

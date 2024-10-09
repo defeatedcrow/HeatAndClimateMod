@@ -24,6 +24,10 @@ public class CasseroleItem extends ItemEntityFood {
 			return CASSEROLE_GRATIN_SHRIMP_RAW;
 		if (item == FoodInit.CASSEROLE_GRATIN_SHRIMP_BAKED_ITEM.get())
 			return CASSEROLE_GRATIN_SHRIMP_BAKED;
+		if (item == FoodInit.CASSEROLE_GRATIN_ONION_RAW_ITEM.get())
+			return CASSEROLE_GRATIN_ONION_RAW;
+		if (item == FoodInit.CASSEROLE_GRATIN_ONION_BAKED_ITEM.get())
+			return CASSEROLE_GRATIN_ONION_BAKED;
 		if (item == FoodInit.CASSEROLE_SHEPHERDS_PIE_RAW_ITEM.get())
 			return CASSEROLE_SHEPHERDS_PIE_RAW;
 		if (item == FoodInit.CASSEROLE_SHEPHERDS_PIE_BAKED_ITEM.get())
@@ -44,11 +48,17 @@ public class CasseroleItem extends ItemEntityFood {
 			return CASSEROLE_MOUSSAKA_RAW;
 		if (item == FoodInit.CASSEROLE_MOUSSAKA_BAKED_ITEM.get())
 			return CASSEROLE_MOUSSAKA_BAKED;
+		if (item == FoodInit.CASSEROLE_STUFFING_RAW_ITEM.get())
+			return CASSEROLE_STUFFING_RAW;
+		if (item == FoodInit.CASSEROLE_STUFFING_BAKED_ITEM.get())
+			return CASSEROLE_STUFFING_BAKED;
 		return CASSEROLE_GRATIN_SHRIMP_RAW;
 	}
 
 	public static final EntityRenderData CASSEROLE_GRATIN_SHRIMP_RAW = new EntityRenderData("food/casserole_gratin_shrimp_raw", 1.0F, 0F);
 	public static final EntityRenderData CASSEROLE_GRATIN_SHRIMP_BAKED = new EntityRenderData("food/casserole_gratin_shrimp_baked", 1.0F, 0F);
+	public static final EntityRenderData CASSEROLE_GRATIN_ONION_RAW = new EntityRenderData("food/casserole_gratin_onion_raw", 1.0F, 0F);
+	public static final EntityRenderData CASSEROLE_GRATIN_ONION_BAKED = new EntityRenderData("food/casserole_gratin_onion_baked", 1.0F, 0F);
 	public static final EntityRenderData CASSEROLE_SHEPHERDS_PIE_RAW = new EntityRenderData("food/casserole_shepherds_pie_raw", 1.0F, 0F);
 	public static final EntityRenderData CASSEROLE_SHEPHERDS_PIE_BAKED = new EntityRenderData("food/casserole_shepherds_pie_baked", 1.0F, 0F);
 	public static final EntityRenderData CASSEROLE_DORIA_RAW = new EntityRenderData("food/casserole_doria_raw", 1.0F, 0F);
@@ -59,5 +69,7 @@ public class CasseroleItem extends ItemEntityFood {
 	public static final EntityRenderData CASSEROLE_PARMIGIANA_BAKED = new EntityRenderData("food/casserole_parmigiana_baked", 1.0F, 0F);
 	public static final EntityRenderData CASSEROLE_MOUSSAKA_RAW = new EntityRenderData("food/casserole_moussaka_raw", 1.0F, 0F);
 	public static final EntityRenderData CASSEROLE_MOUSSAKA_BAKED = new EntityRenderData("food/casserole_moussaka_baked", 1.0F, 0F);
+	public static final EntityRenderData CASSEROLE_STUFFING_RAW = new EntityRenderData("food/casserole_stuffing_raw", 1.0F, 0F);
+	public static final EntityRenderData CASSEROLE_STUFFING_BAKED = new EntityRenderData("food/casserole_stuffing_baked", 1.0F, 0F);
 
 }

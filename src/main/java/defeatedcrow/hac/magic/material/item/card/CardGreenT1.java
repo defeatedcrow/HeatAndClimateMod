@@ -1,6 +1,7 @@
 package defeatedcrow.hac.magic.material.item.card;
 
 import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.core.network.packet.message.MsgEffectToC;
 import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -43,7 +44,7 @@ public class CardGreenT1 extends MagicCardBase {
 								if (level instanceof ServerLevel) {
 									if (target.isBonemealSuccess(level, level.random, mpos, crop)) {
 										target.performBonemeal((ServerLevel) level, level.random, mpos, crop);
-										level.levelEvent(1505, mpos, 0);
+										MsgEffectToC.sendToClient((ServerLevel) level, player.position().add(0D, 1.0D, 0D), 1);
 									}
 								}
 							}

@@ -22,12 +22,12 @@ public class UdonItem extends ItemEntityFood {
 	public EntityRenderData getRenderData(Item item) {
 		if (item == FoodInit.UDON_SIMPLE.get())
 			return SIMPLE;
-		// if (item == FoodInit.UDON_KITSUNE.get())
-		// return KITSUNE;
+		if (item == FoodInit.UDON_KITSUNE.get())
+			return KITSUNE;
 		if (item == FoodInit.UDON_TSUKIMI.get())
 			return TSUKIMI;
-		// if (item == FoodInit.UDON_TENPURA.get())
-		// return TENPURA;
+		if (item == FoodInit.UDON_TENPURA.get())
+			return TENPURA;
 		return SIMPLE;
 	}
 

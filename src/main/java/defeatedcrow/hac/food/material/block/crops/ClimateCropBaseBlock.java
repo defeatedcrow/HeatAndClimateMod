@@ -182,7 +182,14 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	@Override
 	public List<ItemStack> getCropItems(BlockState state, int fortune) {
-		ItemStack ret = new ItemStack(getCropItem(getTier()));
+		int i = 1;
+		if (fortune > 0) {
+			int rand = DCUtil.rand.nextInt(fortune * 100);
+			int count = rand / 100;
+			int f = count % 100;
+			i += count + DCUtil.rand.nextInt(f + 1);
+		}
+		ItemStack ret = new ItemStack(getCropItem(getTier()), i);
 		return ImmutableList.of(ret);
 	}
 
@@ -423,7 +430,14 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 				boolean ret = false;
 				for (ItemStack item : crops) {
 					if (item.getItem() instanceof ItemEdibleCropDC crop && ConfigCommonBuilder.INSTANCE.enCropTaste.get()) {
-						crop.setTaste(item, crop.getTier().getTaste() + getCropTaste(world, pos, thisState));
+						int c = getCropTaste(world, pos, thisState);
+						crop.setTaste(item, crop.getTier().getTaste() + c);
+						if (c > 0) {
+							int fortune = world.getRandom().nextInt(0, c + 1);
+							item.grow(fortune);
+						} else if (c < 0 && world.getRandom().nextBoolean()) {
+							item.setCount(1);
+						}
 					}
 					ItemEntity drop;
 					if (player != null) {

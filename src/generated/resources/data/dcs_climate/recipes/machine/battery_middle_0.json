@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/sus"
+    },
+    "Y": {
+      "item": "dcs_climate:machine/batteryitem_middle"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "YYY",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/battery_middle"
+  }
+}

@@ -23,7 +23,6 @@ public class CardBlueGreen extends MagicCardBase {
 		BlockState state = level.getBlockState(pos);
 		if (state != null && state.getBlock() instanceof IClimateCrop crop) {
 			if (crop.onMutation(level, pos, state, level.random, 5 + Mth.floor(f))) {
-				level.levelEvent(1505, pos, 0);
 				return true;
 			}
 		}

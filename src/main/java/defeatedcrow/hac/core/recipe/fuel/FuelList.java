@@ -20,10 +20,12 @@ public class FuelList {
 	public static void init() {
 		addBiomassFuel(new ItemStack(Items.CHARCOAL), 1600);
 		addBiomassFuel(new ItemStack(FoodInit.BIOMASS_BRIQUET.get()), 1600);
+		addBiomassFuel(new ItemStack(FoodInit.CONT_LOG_CHARCOAL.get()), 14400);
 		addBiomassFuel(ItemTags.LEAVES, 100);
 		addBiomassFuel(ItemTags.SAPLINGS, 100);
 		addBiomassFuel(TagDC.ItemTag.FUEL_BIOMASS, 200);
 		addFluidFuel(TagDC.FluidTag.PLANT_OIL, 80);
+		addFluidFuel(TagDC.FluidTag.USED_PLANT_OIL, 80);
 		addFluidFuel(TagDC.FluidTag.FUEL, 240);
 	}
 

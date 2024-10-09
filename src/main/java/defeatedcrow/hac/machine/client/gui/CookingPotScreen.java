@@ -15,6 +15,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.DCTexturePath;
 import defeatedcrow.hac.core.network.packet.message.MsgTileOwnerKeyToS;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -36,7 +37,7 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotMenu> {
 	private int w1 = 45;
 	private int h1 = 33;
 	private int w2 = 145;
-	private int h2 = 33;
+	private int h2 = 34;
 
 	public CookingPotScreen(CookingPotMenu menu, Inventory playerInv, Component comp) {
 		super(menu, playerInv, comp);
@@ -87,6 +88,10 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotMenu> {
 			list.add(Component.translatable("dcs.tip.device.heat", temp.localize()));
 		}
 
+		if (this.menu.isOverheated() && this.isHovering(29, 85, 14, 14, mx, my)) {
+			list.add(Component.translatable("dcs.tip.device.overheat").withStyle(ChatFormatting.RED));
+		}
+
 		this.renderComponentTooltip(pose, list, mx, my);
 	}
 
@@ -117,6 +122,10 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotMenu> {
 			} else {
 				this.blit(pose, i + 45, j + 85 + 14 - l, 176, 56 + 14 - l, 14, l);
 			}
+		}
+
+		if (this.menu.isOverheated()) {
+			this.blit(pose, i + 29, j + 85, 176, 70, 14, 14);
 		}
 
 		if (!this.menu.getInputFluid().isEmpty()) {

@@ -93,10 +93,12 @@ public abstract class EnergyProcessTile extends EnergyTileBaseDC implements Worl
 		if (isActive(level, pos, state)) {
 			if (isInProcess()) {
 				if (continueProcess(level, pos, state)) {
-					if (currentProgress >= totalProgress && finishProcess(level, pos, state)) {
-						consumeInputs();
-						resetProcess();
-						setChanged(level, pos, state);
+					if (currentProgress >= totalProgress) {
+						if (finishProcess(level, pos, state)) {
+							consumeInputs();
+							resetProcess();
+							setChanged(level, pos, state);
+						}
 					} else {
 						lastProgress = currentProgress;
 						currentProgress += consumeEnergy();

@@ -86,6 +86,17 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_dust_nickel", has(TagDC.ItemTag.DUST_NICKEL))
 				.save(cons, "dcs_climate:machine/small_battery_0");
 
+		ShapedRecipeBuilder.shaped(MachineInit.BATTERYITEM_TIER2.get(), 1)
+				.pattern("XYX")
+				.pattern("XZX")
+				.pattern("XWX")
+				.define('X', Tags.Items.INGOTS_IRON)
+				.define('Y', TagDC.ItemTag.DUST_LITHIUM)
+				.define('Z', TagDC.ItemTag.DUST_COAL)
+				.define('W', TagDC.ItemTag.DUST_COBALT)
+				.unlockedBy("has_dust_lithium", has(TagDC.ItemTag.DUST_LITHIUM))
+				.save(cons, "dcs_climate:machine/middle_battery_0");
+
 		ShapedRecipeBuilder.shaped(MachineInit.CHAMBER_BRICK_A.get(), 1)
 				.pattern("X X")
 				.pattern("XYX")
@@ -493,6 +504,15 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_cbatteryitem_t1", has(MachineInit.BATTERYITEM_TIER1.get()))
 				.save(cons, "dcs_climate:machine/battery_small_0");
 
+		ShapedRecipeBuilder.shaped(MachineInit.BATTERY_MIDDLE.get(), 1)
+				.pattern("XXX")
+				.pattern("YYY")
+				.pattern("XXX")
+				.define('X', TagDC.ItemTag.INGOT_SUS)
+				.define('Y', MachineInit.BATTERYITEM_TIER2.get())
+				.unlockedBy("has_cbatteryitem_t2", has(MachineInit.BATTERYITEM_TIER2.get()))
+				.save(cons, "dcs_climate:machine/battery_middle_0");
+
 		ShapedRecipeBuilder.shaped(MachineInit.GENERATOR_SMALL.get(), 1)
 				.pattern("XXX")
 				.pattern("YZY")
@@ -590,6 +610,44 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.requires(TagDC.ItemTag.SCYTHES)
 				.unlockedBy("has_item_aspirator", has(MachineInit.ITEM_ASPIRATOR.get()))
 				.save(cons, "dcs_climate:machine/crop_aspirator_2");
+
+		ShapedRecipeBuilder.shaped(MachineInit.ROLL_CRUSHER.get(), 1)
+				.pattern("XYX")
+				.pattern("XZX")
+				.pattern("XWX")
+				.define('X', TagDC.ItemTag.INGOT_SUS)
+				.define('Y', TagDC.ItemTag.MOTOR_T2)
+				.define('W', Tags.Items.CHESTS)
+				.define('Z', TagDC.ItemTag.BATTERY_T2)
+				.unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T2))
+				.save(cons, "dcs_climate:machine/roll_crusher_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.BLADE_ALUMINA.get(), 1)
+				.pattern("XYX")
+				.pattern("XYX")
+				.pattern("XYX")
+				.define('X', TagDC.ItemTag.DUST_ALUMINA)
+				.define('Y', TagDC.ItemTag.INGOT_TITANIUM)
+				.unlockedBy("has_roll_crusher", has(MachineInit.ROLL_CRUSHER.get()))
+				.save(cons, "dcs_climate:machine/blade_alumina_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.BLADE_SUS.get(), 1)
+				.pattern("XYX")
+				.pattern("XYX")
+				.pattern("XYX")
+				.define('X', TagDC.ItemTag.INGOT_SUS)
+				.define('Y', TagDC.ItemTag.INGOT_TITANIUM)
+				.unlockedBy("has_roll_crusher", has(MachineInit.ROLL_CRUSHER.get()))
+				.save(cons, "dcs_climate:machine/blade_sus_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.BLADE_SCREEN.get(), 1)
+				.pattern("XYX")
+				.pattern("XYX")
+				.pattern("XYX")
+				.define('Y', Items.IRON_BARS)
+				.define('X', TagDC.ItemTag.INGOT_TITANIUM)
+				.unlockedBy("has_roll_crusher", has(MachineInit.ROLL_CRUSHER.get()))
+				.save(cons, "dcs_climate:machine/blade_screen_0");
 
 		ShapedRecipeBuilder.shaped(MachineInit.MONITOR_RS.get(), 1)
 				.pattern("XZX")

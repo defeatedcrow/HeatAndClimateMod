@@ -144,19 +144,19 @@ public class SoupItem extends ItemEntityFood implements IPotFoods {
 	public static final EntityRenderData SOUP_SORREL = new EntityRenderData("food/soup_sorrel", 0.75F, 0F, "outer");
 
 	public static final EntityRenderData SOUP_LAYER = new EntityRenderData("food/layer/soup_simple_layer", 1F, 0F);
-	public static final EntityRenderData SOUP_CREAM_POTATO_LAYER = new EntityRenderData("food/soup_cream_potato_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_CREAM_PUMPKIN_LAYER = new EntityRenderData("food/soup_cream_pumpkin_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_CREAM_CORN_LAYER = new EntityRenderData("food/soup_cream_corn_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_CREAM_SPINACH_LAYER = new EntityRenderData("food/soup_cream_spinach_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_CREAM_PARSNIP_LAYER = new EntityRenderData("food/soup_cream_parsnip_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_CREAM_SHRIMP_LAYER = new EntityRenderData("food/soup_cream_shrimp_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_CHINESE_EGG_LAYER = new EntityRenderData("food/soup_chinese_egg_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_CHINESE_CRAB_LAYER = new EntityRenderData("food/soup_chinese_crab_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_JUTE_LAYER = new EntityRenderData("food/soup_jute_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_GASPACHO_LAYER = new EntityRenderData("food/soup_gaspacho_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_TARATOR_LAYER = new EntityRenderData("food/soup_tarator_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_MINESTRONE_LAYER = new EntityRenderData("food/soup_minestrone_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_CHILIBEANS_LAYER = new EntityRenderData("food/soup_chilibeans_layer", 0.75F, 0F);
-	public static final EntityRenderData SOUP_SORREL_LAYER = new EntityRenderData("food/soup_sorrel_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_CREAM_POTATO_LAYER = new EntityRenderData("food/layer/soup_cream_potato_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_CREAM_PUMPKIN_LAYER = new EntityRenderData("food/layer/soup_cream_pumpkin_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_CREAM_CORN_LAYER = new EntityRenderData("food/layer/soup_cream_corn_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_CREAM_SPINACH_LAYER = new EntityRenderData("food/layer/soup_cream_spinach_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_CREAM_PARSNIP_LAYER = new EntityRenderData("food/layer/soup_cream_parsnip_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_CREAM_SHRIMP_LAYER = new EntityRenderData("food/layer/soup_cream_shrimp_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_CHINESE_EGG_LAYER = new EntityRenderData("food/layer/soup_chinese_egg_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_CHINESE_CRAB_LAYER = new EntityRenderData("food/layer/soup_chinese_crab_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_JUTE_LAYER = new EntityRenderData("food/layer/soup_jute_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_GASPACHO_LAYER = new EntityRenderData("food/layer/soup_gaspacho_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_TARATOR_LAYER = new EntityRenderData("food/layer/soup_tarator_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_MINESTRONE_LAYER = new EntityRenderData("food/layer/soup_minestrone_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_CHILIBEANS_LAYER = new EntityRenderData("food/layer/soup_chilibeans_layer", 0.75F, 0F);
+	public static final EntityRenderData SOUP_SORREL_LAYER = new EntityRenderData("food/layer/soup_sorrel_layer", 0.75F, 0F);
 
 }

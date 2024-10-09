@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/gem/gem_nervous_tourmaline"
+  },
+  "parent": "minecraft:item/generated"
+}

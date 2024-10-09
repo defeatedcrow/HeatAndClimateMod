@@ -502,6 +502,18 @@
    素材を粉砕して、加工物や副産物を得られる加工機です。
    A processing machine that crushes materials to obtain products and by-products.
 
+  ・ ロールクラッシャー / Roll Crusher
+
+   素材を粉砕して、加工物や副産物を得られる加工機です。
+   A processing machine that crushes materials to obtain products and by-products.
+
+   3種類の『ブレードロール』を付け替えることで、異なるレシピに対応します。
+   Three types of blade rolls each handle different recipes.
+
+    - サニタリーブレード / Sanitary : 食べ物の粉砕レシピを扱います。 Works with food grinding recipes.
+    - アルミナブレード / Alumina : 鉱物の粉砕レシピを扱います。 Works with rock grinding recipes.
+    - 宝石ふるい / Gem Sifter : 鉱物から宝石を得るレシピを扱います。 Works with gem sifter recipe.
+
   ・ 水中ポンプ / Underwater Pump
 
    250FEを消費して、接触している流体ブロックを回収するマシンです。
@@ -702,7 +714,35 @@
 
 #### 更新履歴 / Change log ####
 
-○v4-beta14
+○v4-beta15
+ add: ロールクラッシャー
+ add: ロールブレード 3種
+ add: いくつかの素材アイテム
+ add: リチウムイオン電池
+ add: 料理追加 48種
+ add: 使い古しの食用油
+ change: 緑の金ペンダントの木こり効果を調整するコンフィグの追加
+ change: 村人が自力でHP回復できるようになる機能と有効化コンフィグの追加
+ change: 村人が拾えるアイテムをMixinで増やした
+ change: 作物の収穫数がfortuneエンチャントや風味の変動の影響を受けるように
+ change: 調理鍋で揚げ物レシピを扱えるように
+ change: 調理鍋で揚げ油を過熱すると自然発火するハードモードの追加
+ change: ベリーティーの効果を暗視に変えた
+ change: 食品系の粉砕レシピのレシピカテゴリを変更
+ change: 石臼レシピの生成アイテム個数を全体的に減らした
+ change: HUD切替キーのデフォルトを右shiftに変更した。
+ change: バニラの竹の苗に鎌を使用するとタケノコを得られるように
+ fix: 鍋でスープやシチューを作るとMissingTextureが表示される
+ fix: 燃焼チャンバーの燃料としてバニラ溶岩が使用できないようにした
+ fix: コンベアが金属加工レシピを正常に扱えないのを修正
+ fix: カーペットブロックのクラフト個数を修正
+ fix: 作物収穫機の対象エリアのズレを修正
+ fix: 収穫マシンの収穫範囲のズレを修正
+ fix: 醸造壺のGUIのサーバ・クライアント同期処理を修正
+ ex: マシンGUIにJEIレシピ表示ボタンをつけた
+ ex: forgeのversionを43.4.0に上げた
+
+○v4-beta14 (2024.9.2)
  add: チュニックの型紙
  add: チュニック
  add: スカート

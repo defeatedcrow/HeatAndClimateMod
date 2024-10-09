@@ -18,11 +18,14 @@ import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.network.packet.message.MsgEffectToC;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -33,8 +36,10 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -56,6 +61,9 @@ public class LivingTickEventDC {
 						onLivingPotionSharing(living);
 					}
 					onLivingUpdate(living);
+					if (living instanceof Villager villager) {
+						onVillagerUpdate(villager);
+					}
 				}
 			}
 		}
@@ -238,6 +246,51 @@ public class LivingTickEventDC {
 			}
 
 		}
+	}
+
+	public static void onVillagerUpdate(Villager vil) {
+		if (ConfigCommonBuilder.INSTANCE.enVillagerEatToHeal.get()) {
+			int i = vil.getPersistentData().getInt("dcs_fulfill_interval");
+			if (i > 0) {
+				i--;
+				if (i <= 0) {
+					vil.getPersistentData().remove("dcs_fulfill_interval");
+				} else {
+					vil.getPersistentData().putInt("dcs_fulfill_interval", i);
+				}
+			} else {
+				if (vil.getHealth() < vil.getMaxHealth()) {
+					int slot = countFoodPoints(vil);
+					if (slot >= 0) {
+						ItemStack food = vil.getInventory().getItem(slot).copy();
+						vil.getInventory().removeItem(slot, 1);
+						int point = Villager.FOOD_POINTS.get(food.getItem());
+						vil.heal(point * 2F);
+						vil.getPersistentData().putInt("dcs_fulfill_interval", 5);
+						if (vil.getLevel() instanceof ServerLevel serverLevel)
+							MsgEffectToC.sendToClient(serverLevel, vil.position().add(0D, 2.4D, 0D), 43);
+					}
+				}
+				if (vil.getInventory().countItem(Items.POTATO) > 3) {
+					vil.getInventory().removeItemType(Items.POTATO, 1);
+					ItemStack potato = vil.getInventory().addItem(new ItemStack(Items.BAKED_POTATO, 1));
+					if (!potato.isEmpty()) {
+						vil.spawnAtLocation(potato, 0.5F);
+					}
+				}
+			}
+		}
+	}
+
+	private static int countFoodPoints(Villager vil) {
+		SimpleContainer container = vil.getInventory();
+		for (int i = 0; i < container.getContainerSize(); i++) {
+			ItemStack item = container.getItem(i);
+			if (!DCUtil.isEmpty(item) && Villager.FOOD_POINTS.keySet().contains(item.getItem())) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 }

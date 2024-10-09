@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
@@ -34,6 +35,7 @@ public class FishingEventDC {
 			// 一度だけ取得する
 			fishList.addAll(TagUtil.getItemList(TagDC.ItemTag.FISH_LOD));
 		}
+		DCLogger.debugInfoLog("Fish list " + (fishList.isEmpty() ? "empty" : fishList.size()));
 		NonNullList<ItemStack> fishes = event.getDrops();
 		if (!fishes.isEmpty() && event.getHookEntity() != null && event.getEntity() != null) {
 			ItemStack item = fishes.get(0);
@@ -61,7 +63,7 @@ public class FishingEventDC {
 					// マズメは確率アップ
 					rand -= 10;
 				}
-				// DCLogger.debugInfoLog("Event rand" + rand);
+				DCLogger.debugInfoLog("Event rand" + rand);
 
 				List<ItemStack> cL = Lists.newArrayList();
 				List<ItemStack> uL = Lists.newArrayList();
@@ -124,7 +126,7 @@ public class FishingEventDC {
 					} else {
 						fish = replace.get(0).copy();
 					}
-					// DCLogger.debugInfoLog("Event result " + fish.getDisplayName().getString());
+					DCLogger.debugInfoLog("Event result " + fish.getDisplayName().getString());
 					if (!level.isClientSide) {
 						ItemEntity drop = new ItemEntity(level, event.getHookEntity().getX(), event.getHookEntity().getY(), event.getHookEntity().getZ(), fish);
 						double d0 = event.getEntity().getX() - event.getHookEntity().getX();

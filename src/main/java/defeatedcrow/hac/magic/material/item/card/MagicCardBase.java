@@ -15,6 +15,7 @@ import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
+import defeatedcrow.hac.core.network.packet.message.MsgEffectToC;
 import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.ChatFormatting;
@@ -23,8 +24,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
@@ -145,10 +144,10 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 
 	public InteractionResultHolder<ItemStack> onBlockHit(Level level, Player player, InteractionHand hand, ItemStack card, BlockHitResult res) {
 		player.startUsingItem(hand);
-		if (!level.isClientSide && level instanceof ServerLevel && isActive(player, card)) {
+		if (!level.isClientSide && level instanceof ServerLevel serverLevel && isActive(player, card)) {
 			float boost = MagicUtil.getMagicBooster(player);
 			if (onUsing(level, player, res.getBlockPos(), res.getDirection(), card, boost)) {
-				level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+				MsgEffectToC.sendToClient(serverLevel, res.getBlockPos(), 31);
 				if (!player.getAbilities().instabuild) {
 					card.shrink(1);
 					onConsumeResource(player, card);
@@ -163,10 +162,10 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 
 	public InteractionResultHolder<ItemStack> onEmptyHit(Level level, Player player, InteractionHand hand, ItemStack card) {
 		player.startUsingItem(hand);
-		if (!level.isClientSide && level instanceof ServerLevel && isActive(player, card)) {
+		if (!level.isClientSide && level instanceof ServerLevel serverLevel && isActive(player, card)) {
 			float boost = MagicUtil.getMagicBooster(player);
 			if (onUsing(level, player, player.blockPosition(), player.getDirection(), card, boost)) {
-				level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 0.6F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+				MsgEffectToC.sendToClient(serverLevel, player.position().add(0D, 1.0D, 0D), 31);
 				if (!player.getAbilities().instabuild) {
 					card.shrink(1);
 					onConsumeResource(player, card);

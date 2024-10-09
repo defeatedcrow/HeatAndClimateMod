@@ -209,7 +209,7 @@ public class DCUtil {
 		return founds;
 	}
 
-	public static List<BlockPos> findLog(BlockGetter world, BlockPos pos, Block block, int limit) {
+	public static List<BlockPos> findLog(BlockGetter world, BlockPos pos, Block block, int limit, boolean includeLeaves) {
 		List<BlockPos> nextTargets = new ArrayList<>();
 		nextTargets.add(pos);
 		List<BlockPos> logs = new ArrayList<>();
@@ -221,7 +221,11 @@ public class DCUtil {
 
 		} while (founds.size() <= limit && logs.isEmpty() && !nextTargets.isEmpty());
 
-		logs = founds.stream().filter(p -> world.getBlockState(p).is(block)).toList();
+		if (includeLeaves) {
+			logs = founds.stream().filter(p -> world.getBlockState(p).is(block) || world.getBlockState(p).is(BlockTags.LEAVES)).toList();
+		} else {
+			logs = founds.stream().filter(p -> world.getBlockState(p).is(block)).toList();
+		}
 
 		return logs;
 	}

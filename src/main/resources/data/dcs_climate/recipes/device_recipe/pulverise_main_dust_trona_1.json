@@ -10,6 +10,11 @@
     "count": 1
   },
   "secondary_rate": 50,
+  "tertiary": {
+    "item": "dcs_climate:main/dust_lithium",
+    "count": 1
+  },
+  "tertiary_rate": 50,
   "ingredients": [
     {
       "tag": "forge:ores/natron"

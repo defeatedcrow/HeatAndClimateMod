@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/deepfry_croquette_corn"
+  },
+  "parent": "minecraft:item/generated"
+}

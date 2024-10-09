@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/titanium"
+    },
+    "Y": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XYX",
+    "XYX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/crusher_blade_screen"
+  }
+}

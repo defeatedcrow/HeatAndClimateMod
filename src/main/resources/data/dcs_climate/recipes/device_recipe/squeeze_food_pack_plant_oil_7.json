@@ -1,0 +1,55 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "squeeze",
+  "result": {
+    "item": "dcs_climate:food/pack_plant_oil",
+    "count": 1
+  },
+  "secondary": {
+    "item": "dcs_climate:food/dust_defatted_soy",
+    "count": 1
+  },
+  "secondary_rate": 100,
+  "tertiary": {
+    "item": "dcs_climate:food/dust_germ",
+    "count": 1
+  },
+  "tertiary_rate": 100,
+  "result_fluid": {
+    "fluid": "dcs_climate:plant_oil",
+    "amount": 500
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/soy"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

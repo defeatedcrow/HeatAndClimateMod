@@ -97,7 +97,8 @@ public class GoldPendant extends MagicJewelBase {
 			ItemStack item = new ItemStack(state.getBlock());
 			if (state.is(BlockTags.LOGS)) {
 				if (!owner.level.isClientSide) {
-					List<BlockPos> set = DCUtil.findLog(owner.level, pos, state.getBlock(), 512);
+					int lim = ConfigCommonBuilder.INSTANCE.vTimberLimit.get();
+					List<BlockPos> set = DCUtil.findLog(owner.level, pos, state.getBlock(), lim, ConfigCommonBuilder.INSTANCE.enTimberBreakLeaves.get());
 					if (set.isEmpty()) {
 						set = ImmutableList.of(pos);
 					}

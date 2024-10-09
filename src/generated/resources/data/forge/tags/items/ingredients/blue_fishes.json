@@ -1,7 +1,6 @@
 {
   "values": [
     "#forge:ingredients/mackerel",
-    "#forge:ingredients/sardine",
-    "#forge:ingredients/tuna"
+    "#forge:ingredients/sardine"
   ]
 }

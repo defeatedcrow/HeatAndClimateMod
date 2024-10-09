@@ -1,0 +1,51 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "squeeze",
+  "result": {
+    "item": "dcs_climate:food/food_aroma_rice",
+    "count": 3
+  },
+  "secondary": {
+    "item": "dcs_climate:food/dust_bran",
+    "count": 1
+  },
+  "secondary_rate": 100,
+  "tertiary": {
+    "item": "dcs_climate:food/animalfeed_straw",
+    "count": 1
+  },
+  "tertiary_rate": 100,
+  "ingredients": [
+    {
+      "tag": "forge:crops/aroma_rice"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

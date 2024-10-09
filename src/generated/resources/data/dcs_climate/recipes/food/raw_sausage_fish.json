@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/white_fishes"
+    },
+    {
+      "tag": "forge:crops/herbs"
+    },
+    {
+      "tag": "forge:ingredients/plant_oil"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/food_sausage_raw"
+  }
+}

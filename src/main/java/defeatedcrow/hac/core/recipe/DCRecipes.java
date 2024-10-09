@@ -6,12 +6,15 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+import javax.annotation.Nonnull;
+
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.recipe.FuelTypeDC;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.api.recipe.IDeviceFuel;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.api.recipe.IHeatTreatment;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -112,7 +115,8 @@ public class DCRecipes {
 			ItemStack check = new ItemStack(item);
 			if (recipe.getHeatingInput().test(check)
 					|| recipe.getHeatingOutput().asItem() == item.asItem()
-					|| recipe.getCoolingOutput().asItem() == item.asItem()) {
+					|| recipe.getCoolingOutput().asItem() == item.asItem()
+					|| recipe.getFail().asItem() == item.asItem()) {
 				return Optional.of(recipe);
 			}
 		}
@@ -187,8 +191,21 @@ public class DCRecipes {
 		return Optional.empty();
 	}
 
-	public static Optional<IDeviceRecipe> getPulverizeRecipe(List<ItemStack> inputs) {
-		for (IDeviceRecipe recipe : INSTANCE.PULVERISE.values()) {
+	public static Optional<IDeviceRecipe> getCrusherRecipe(List<ItemStack> inputs, @Nonnull ItemStack catalyst) {
+		if (catalyst.is(TagDC.ItemTag.BLADE_ALUMINA))
+			return INSTANCE.PULVERISE.values().stream().filter(recipe -> recipe.matcheInput(inputs).length > 0).findAny();
+		if (catalyst.is(TagDC.ItemTag.BLADE_SANITARY))
+			return INSTANCE.SQUEEZE.values().stream().filter(recipe -> recipe.matcheInput(inputs).length > 0).findAny();
+		if (catalyst.is(TagDC.ItemTag.BLADE_SCREEN))
+			return INSTANCE.SIEVE.values().stream().filter(recipe -> recipe.matcheInput(inputs).length > 0).findAny();
+		return Optional.empty();
+	}
+
+	public static Optional<IDeviceRecipe> getMillRecipe(List<ItemStack> inputs) {
+		Map<ResourceLocation, IDeviceRecipe> mills = new HashMap<>();
+		mills.putAll(INSTANCE.PULVERISE);
+		mills.putAll(INSTANCE.SQUEEZE);
+		for (IDeviceRecipe recipe : mills.values()) {
 			if (recipe.matcheInput(inputs).length > 0) {
 				return Optional.of(recipe);
 			}

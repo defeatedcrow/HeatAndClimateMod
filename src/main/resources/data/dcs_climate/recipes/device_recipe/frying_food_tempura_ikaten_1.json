@@ -1,0 +1,40 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "frying",
+  "result": {
+    "item": "dcs_climate:food/tempura_ikaten",
+    "count": 1
+  },
+  "result_fluid": {
+    "fluid": "dcs_climate:used_plant_oil",
+    "amount": 200
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/squid"
+    },
+    {
+      "tag": "forge:ingredients/batter"
+    }
+  ],
+  "input_fluids": [
+    "forge:plant_oil"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

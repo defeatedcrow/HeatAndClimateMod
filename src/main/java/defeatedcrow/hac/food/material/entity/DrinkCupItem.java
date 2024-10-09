@@ -53,6 +53,8 @@ public class DrinkCupItem extends ItemEntityFood {
 			return () -> new MobEffectInstance(MobEffects.JUMP, d, a);
 		if (id == 7)
 			return () -> new MobEffectInstance(CoreInit.HEAVY.get(), d, a);
+		if (id == 8)
+			return () -> new MobEffectInstance(MobEffects.NIGHT_VISION, d, a);
 
 		return () -> new MobEffectInstance(MobEffects.REGENERATION, d, a);
 	}

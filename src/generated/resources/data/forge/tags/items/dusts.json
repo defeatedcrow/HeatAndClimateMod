@@ -19,9 +19,13 @@
     "#forge:dusts/salt",
     "#forge:dusts/niter",
     "#forge:dusts/sulfur",
+    "#forge:dusts/lithium",
     "#forge:dusts/crystal",
+    "#forge:dusts/alumina",
+    "#forge:dusts/diamond",
     "#forge:dusts/lime",
     "#forge:dusts/trona",
+    "#forge:dusts/borax",
     "#forge:dusts/wood",
     "#forge:dusts/plant",
     "#forge:dusts/ash"

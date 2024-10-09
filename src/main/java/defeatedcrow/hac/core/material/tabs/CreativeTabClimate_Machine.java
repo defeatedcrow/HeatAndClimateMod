@@ -41,6 +41,13 @@ public class CreativeTabClimate_Machine extends CreativeModeTab {
 				battery.setTag(tag);
 				l.add(battery);
 			}
+			if (item.get() == MachineInit.BATTERY_MIDDLE.get().asItem()) {
+				ItemStack battery = new ItemStack(MachineInit.BATTERY_MIDDLE.get());
+				CompoundTag tag = new CompoundTag();
+				tag.putInt(TagKeyDC.ENERGY, 128000);
+				battery.setTag(tag);
+				l.add(battery);
+			}
 		}
 	}
 

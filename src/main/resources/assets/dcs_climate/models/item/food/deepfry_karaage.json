@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/deepfry_karaage"
+  },
+  "parent": "minecraft:item/generated"
+}

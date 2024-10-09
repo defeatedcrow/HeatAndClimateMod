@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/bone_cow"
+    },
+    {
+      "tag": "forge:ingredients/herb_salt"
+    },
+    {
+      "tag": "forge:crops/garlic"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/plate_bone_marrow_raw"
+  }
+}

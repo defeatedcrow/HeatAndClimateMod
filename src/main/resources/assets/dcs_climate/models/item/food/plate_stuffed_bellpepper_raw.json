@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/plate_stuffed_bellpepper_raw"
+  },
+  "parent": "minecraft:item/generated"
+}

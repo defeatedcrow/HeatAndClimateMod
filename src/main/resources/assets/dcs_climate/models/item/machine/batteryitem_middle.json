@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/machine/batteryitem_middle"
+  },
+  "parent": "minecraft:item/generated"
+}

@@ -4,11 +4,12 @@ import com.google.common.collect.ImmutableList;
 
 public enum RecipeTypeDC {
 	PULVERISE,
+	FOOD_MILL,
 	SQUEEZE,
 	SIEVE,
-	DISTILL,
-	CATALYST,
-	ELECTROLYZE,
+	CHEM_DISTILL,
+	CHEM_CATALYST,
+	CHEM_ELECTROLYZE,
 	FERMENTATION,
 	COOKING,
 	FRYING,
@@ -31,11 +32,12 @@ public enum RecipeTypeDC {
 
 	public static ImmutableList<RecipeTypeDC> elements() {
 		return ImmutableList.of(PULVERISE,
+				FOOD_MILL,
 				SQUEEZE,
 				SIEVE,
-				DISTILL,
-				CATALYST,
-				ELECTROLYZE,
+				CHEM_DISTILL,
+				CHEM_CATALYST,
+				CHEM_ELECTROLYZE,
 				FERMENTATION,
 				COOKING,
 				FRYING,

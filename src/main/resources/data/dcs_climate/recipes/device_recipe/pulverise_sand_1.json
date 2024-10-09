@@ -5,6 +5,11 @@
     "item": "minecraft:sand",
     "count": 4
   },
+  "tertiary": {
+    "item": "dcs_climate:main/dust_borax",
+    "count": 1
+  },
+  "tertiary_rate": 50,
   "ingredients": [
     {
       "tag": "forge:sandstone"

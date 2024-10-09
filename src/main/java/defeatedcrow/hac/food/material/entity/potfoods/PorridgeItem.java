@@ -198,27 +198,27 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 
 	public static final EntityRenderData PORRIDGE_LAYER = new EntityRenderData("food/layer/porridge_simple_layer", 1F, 0F);
 	public static final EntityRenderData PORRIDGE_MILK_LAYER = new EntityRenderData("food/layer/porridge_milk_layer", 1F, 0F);
-	public static final EntityRenderData PORRIDGE_SAFFRON_LAYER = new EntityRenderData("food/porridge_saffron_layer", 0.75F, 0F);
+	public static final EntityRenderData PORRIDGE_SAFFRON_LAYER = new EntityRenderData("food/layer/porridge_saffron_layer", 0.75F, 0F);
 	public static final EntityRenderData PORRIDGE_SQUID_LAYER = new EntityRenderData("food/layer/porridge_squid_layer", 1F, 0F);
 	public static final EntityRenderData MUESLI_LAYER = new EntityRenderData("food/layer/muesli_layer", 1F, 0F);
-	public static final EntityRenderData STEW_BORSCH_LAYER = new EntityRenderData("food/stew_borsch_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_IRISH_LAYER = new EntityRenderData("food/stew_irish_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_CONSOMME_VEGETABLE_LAYER = new EntityRenderData("food/stew_consomme_vegetable_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_CREAM_MUSHROOM_LAYER = new EntityRenderData("food/stew_cream_mushroom_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_CREAM_SALMON_LAYER = new EntityRenderData("food/stew_cream_salmon_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_CREAM_SHRIMP_LAYER = new EntityRenderData("food/stew_cream_shrimp_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_CULLEN_SKINK_LAYER = new EntityRenderData("food/stew_cullenskink_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_KHARCHO_LAYER = new EntityRenderData("food/stew_kharcho_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_TOMYUMGOONG_LAYER = new EntityRenderData("food/stew_tomyumgoong_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_TOMYUMPLA_LAYER = new EntityRenderData("food/stew_tomyumpla_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_TOMYUMGAI_LAYER = new EntityRenderData("food/stew_tomyumgai_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_BAKKUTTEH_LAYER = new EntityRenderData("food/stew_bakkutteh_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_MISO_TOFU_LAYER = new EntityRenderData("food/stew_miso_tofu_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_MISO_EGGPLANT_LAYER = new EntityRenderData("food/stew_miso_eggplant_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_MISO_MUSHROOM_LAYER = new EntityRenderData("food/stew_miso_mushroom_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_MISO_PORK_LAYER = new EntityRenderData("food/stew_miso_pork_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_ERWTEN_LAYER = new EntityRenderData("food/stew_erwten_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_LAMPREDOTTO_LAYER = new EntityRenderData("food/stew_lampredotto_layer", 0.75F, 0F);
-	public static final EntityRenderData STEW_OFFAL_LAYER = new EntityRenderData("food/stew_offal_layer", 0.75F, 0F, "outer");
+	public static final EntityRenderData STEW_BORSCH_LAYER = new EntityRenderData("food/layer/stew_borsch_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_IRISH_LAYER = new EntityRenderData("food/layer/stew_irish_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_CONSOMME_VEGETABLE_LAYER = new EntityRenderData("food/layer/stew_consomme_vegetable_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_CREAM_MUSHROOM_LAYER = new EntityRenderData("food/layer/stew_cream_mushroom_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_CREAM_SALMON_LAYER = new EntityRenderData("food/layer/stew_cream_salmon_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_CREAM_SHRIMP_LAYER = new EntityRenderData("food/layer/stew_cream_shrimp_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_CULLEN_SKINK_LAYER = new EntityRenderData("food/layer/stew_cullenskink_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_KHARCHO_LAYER = new EntityRenderData("food/layer/stew_kharcho_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_TOMYUMGOONG_LAYER = new EntityRenderData("food/layer/stew_tomyumgoong_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_TOMYUMPLA_LAYER = new EntityRenderData("food/layer/stew_tomyumpla_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_TOMYUMGAI_LAYER = new EntityRenderData("food/layer/stew_tomyumgai_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_BAKKUTTEH_LAYER = new EntityRenderData("food/layer/stew_bakkutteh_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_MISO_TOFU_LAYER = new EntityRenderData("food/layer/stew_miso_tofu_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_MISO_EGGPLANT_LAYER = new EntityRenderData("food/layer/stew_miso_eggplant_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_MISO_MUSHROOM_LAYER = new EntityRenderData("food/layer/stew_miso_mushroom_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_MISO_PORK_LAYER = new EntityRenderData("food/layer/stew_miso_pork_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_ERWTEN_LAYER = new EntityRenderData("food/layer/stew_erwten_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_LAMPREDOTTO_LAYER = new EntityRenderData("food/layer/stew_lampredotto_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_OFFAL_LAYER = new EntityRenderData("food/layer/stew_offal_layer", 0.75F, 0F, "outer");
 
 }

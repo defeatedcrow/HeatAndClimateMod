@@ -9,7 +9,7 @@
     "item": "dcs_climate:main/oreitem_white_3",
     "count": 1
   },
-  "secondary_rate": 30,
+  "secondary_rate": 50,
   "ingredients": [
     {
       "tag": "dcs_climate:color_ores/deep_white"

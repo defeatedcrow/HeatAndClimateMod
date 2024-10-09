@@ -7,6 +7,9 @@
     "dcs_climate:food/sashimi_tuna",
     "dcs_climate:food/sashimi_squid",
     "dcs_climate:food/fish_meuniere",
-    "dcs_climate:food/simmered_fish"
+    "dcs_climate:food/simmered_fish",
+    "dcs_climate:food/grilled_salmon",
+    "dcs_climate:food/grilled_white_fish",
+    "dcs_climate:food/iwashi_mentai"
   ]
 }

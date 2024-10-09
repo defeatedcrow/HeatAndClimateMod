@@ -22,11 +22,20 @@ public class SquareFishItem extends ItemEntityFood {
 	public EntityRenderData getRenderData(Item item) {
 		if (item == FoodInit.FISH_MEUNIERE.get())
 			return MEUNIERE;
+		if (item == FoodInit.GRILLED_SALMON.get())
+			return SALMON;
+		if (item == FoodInit.GRILLED_WHITE_FISH.get())
+			return WHITE;
+		if (item == FoodInit.IWASHI_MENTAI.get())
+			return IWASHI;
 
 		return SIMMER;
 	}
 
 	public static final EntityRenderData MEUNIERE = new EntityRenderData("food/fish_meuniere", 0.8F, 0F);
 	public static final EntityRenderData SIMMER = new EntityRenderData("food/simmered_fish", 0.8F, 0F);
+	public static final EntityRenderData SALMON = new EntityRenderData("food/grilled_salmon", 0.8F, 0F);
+	public static final EntityRenderData WHITE = new EntityRenderData("food/grilled_white_fish", 0.8F, 0F);
+	public static final EntityRenderData IWASHI = new EntityRenderData("food/iwashi_mentai", 0.8F, 0F);
 
 }

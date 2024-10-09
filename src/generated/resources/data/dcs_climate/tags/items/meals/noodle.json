@@ -12,9 +12,19 @@
     "dcs_climate:food/pasta_roe",
     "dcs_climate:food/phat_thai_prawn",
     "dcs_climate:food/phat_thai_chicken",
+    "dcs_climate:food/ramen_shoyu",
+    "dcs_climate:food/ramen_miso",
+    "dcs_climate:food/ramen_tonkotsu",
+    "dcs_climate:food/ramen_tantan",
+    "dcs_climate:food/ramen_tantan_sesami",
+    "dcs_climate:food/ramen_lanzhou_beef",
     "dcs_climate:food/udon_simple",
+    "dcs_climate:food/udon_kitsune",
     "dcs_climate:food/udon_tsukimi",
+    "dcs_climate:food/udon_tenpura",
     "dcs_climate:food/soba_simple",
-    "dcs_climate:food/soba_tsukimi"
+    "dcs_climate:food/soba_kitsune",
+    "dcs_climate:food/soba_tsukimi",
+    "dcs_climate:food/soba_tenpura"
   ]
 }

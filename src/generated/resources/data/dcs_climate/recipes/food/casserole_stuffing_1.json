@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/basesoup"
+    },
+    {
+      "tag": "forge:crops/beans"
+    },
+    {
+      "tag": "forge:ingredients/cereals"
+    },
+    {
+      "tag": "forge:crops/onions"
+    },
+    {
+      "tag": "forge:crops/celery"
+    },
+    {
+      "tag": "forge:crops/berries"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/casserole_stuffing_raw"
+  }
+}

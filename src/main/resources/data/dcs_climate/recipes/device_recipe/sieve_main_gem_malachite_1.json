@@ -1,0 +1,51 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "sieve",
+  "result": {
+    "item": "dcs_climate:main/gem_malachite",
+    "count": 2
+  },
+  "secondary": {
+    "item": "dcs_climate:main/gem_olivine",
+    "count": 1
+  },
+  "secondary_rate": 30,
+  "tertiary": {
+    "item": "minecraft:emerald",
+    "count": 1
+  },
+  "tertiary_rate": 3,
+  "ingredients": [
+    {
+      "tag": "dcs_climate:color_ores/green"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

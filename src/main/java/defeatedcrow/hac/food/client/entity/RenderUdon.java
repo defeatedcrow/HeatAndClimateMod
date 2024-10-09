@@ -8,6 +8,7 @@ import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IEntityItem;
 import defeatedcrow.hac.food.client.model.SobaModel;
 import defeatedcrow.hac.food.material.entity.FoodEntityBase;
+import defeatedcrow.hac.food.material.entity.SobaItem;
 import defeatedcrow.hac.food.material.entity.UdonItem;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -49,6 +50,9 @@ public class RenderUdon<T extends FoodEntityBase> extends EntityRenderer<T> {
 				model.setupAnim(entity, 360.0F - yaw, partialTicks, packedLight, f1, f2);
 				VertexConsumer vertex = buffer.getBuffer(model.renderType(tex));
 				this.model.renderToBuffer(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+				if (data == SobaItem.TENPURA || data == UdonItem.TENPURA) {
+					this.model.renderTempura(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+				}
 				poseStack.popPose();
 
 				poseStack.pushPose();

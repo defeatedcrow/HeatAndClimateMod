@@ -1,0 +1,46 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "sieve",
+  "result": {
+    "item": "dcs_climate:main/gem_jet",
+    "count": 2
+  },
+  "secondary": {
+    "item": "dcs_climate:main/gem_iolite",
+    "count": 1
+  },
+  "secondary_rate": 10,
+  "ingredients": [
+    {
+      "tag": "forge:ores/jet"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

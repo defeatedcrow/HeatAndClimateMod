@@ -1,10 +1,12 @@
-// 1.19.2	2024-05-28T01:02:35.8108599	Tags for minecraft:fluid
+// 1.19.2	2024-09-16T22:59:32.73198	Tags for minecraft:fluid
 b1b4725037170e91c4793f9d032bf05221c90a51 data/forge/tags/fluids/air.json
 90dd3ef79bbfd42b6edabec2cc3801e0f68a42bc data/forge/tags/fluids/brine.json
 846b0bd87c3819c320044222a91c52e1bed3dff7 data/forge/tags/fluids/drink_waters.json
+5e23b314f2e2e69914c7494e4187874e9cfb41be data/forge/tags/fluids/flammable_oil.json
 7eaa561539b919f7f1caec6cb96e3b58ae2bdf69 data/forge/tags/fluids/fuel_oil.json
 1021f6b1c1fdc9d6656a854e631deb6256f3dc71 data/forge/tags/fluids/hotspring.json
 ba2a714efadbcbfddfbd3e11326e4ba75f8a6d66 data/forge/tags/fluids/milks.json
 605b22cd45469deb26145560079f28660ac7fc12 data/forge/tags/fluids/plant_oil.json
 47bcc011d155a86b2dbaf798e13ba62e6b35d193 data/forge/tags/fluids/sparkling.json
+937b5ce78dc1064ea0d8aea3856382afbcad28b8 data/forge/tags/fluids/used_plant_oil.json
 47391de50a945445af67e5933a5e9b694505a23e data/forge/tags/fluids/waters.json

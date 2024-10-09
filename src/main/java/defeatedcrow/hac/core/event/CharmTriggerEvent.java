@@ -34,6 +34,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -247,7 +248,8 @@ public class CharmTriggerEvent {
 			if (ConfigCommonBuilder.INSTANCE.enMobTarget.get() && (living instanceof Animal || living instanceof WaterAnimal)) {
 				DamageSource source = event.getSource();
 				if (source != null && source.getEntity() instanceof PathfinderMob attacker) {
-					int i = ConfigCommonBuilder.INSTANCE.vMobTargetInterval.get() * 1200;
+					attacker.heal(attacker.getMaxHealth() * 0.5F);
+					int i = ConfigCommonBuilder.INSTANCE.vMobTargetInterval.get() * 60;
 					attacker.getPersistentData().putInt("dcs_fulfill_interval", i);
 				}
 			}
@@ -260,7 +262,7 @@ public class CharmTriggerEvent {
 		BlockState state = event.getState();
 		BlockPos pos = event.getPos();
 		Level level = player.level;
-		if (level.isClientSide || player.isCrouching())
+		if (level.isClientSide || player.isCrouching() || !level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS))
 			return;
 
 		ArrayList<ItemStack> charms = MagicUtil.getCharms(player, CharmType.DIG);

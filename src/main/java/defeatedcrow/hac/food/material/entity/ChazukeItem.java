@@ -24,12 +24,15 @@ public class ChazukeItem extends ItemEntityFood {
 			return SAKE;
 		if (item == FoodInit.CHAZUKE_TARAKO.get())
 			return TARAKO;
+		if (item == FoodInit.CHAZUKE_TAI.get())
+			return TAI;
 
 		return UME;
 	}
 
 	public static final EntityRenderData UME = new EntityRenderData("food/chazuke_ume", 0.75F, 0F);
 	public static final EntityRenderData SAKE = new EntityRenderData("food/chazuke_sake", 0.75F, 0F);
+	public static final EntityRenderData TAI = new EntityRenderData("food/chazuke_tai", 0.75F, 0F);
 	public static final EntityRenderData TARAKO = new EntityRenderData("food/chazuke_tarako", 0.75F, 0F);
 
 }

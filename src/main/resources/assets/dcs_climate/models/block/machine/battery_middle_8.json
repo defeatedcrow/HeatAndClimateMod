@@ -1,0 +1,9 @@
+{
+  "parent": "dcs_climate:block/machine/battery_middle_0",
+  "textures": {
+        "front": "dcs_climate:block/machine/middle_battery_front_8",
+        "top": "dcs_climate:block/machine/middle_battery_top",
+        "side": "dcs_climate:block/machine/middle_battery_side",
+        "particle": "dcs_climate:block/machine/middle_battery_front_8"
+    }
+}

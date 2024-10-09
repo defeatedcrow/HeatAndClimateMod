@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/paprika"
+    },
+    {
+      "tag": "forge:ingredients/staffing"
+    },
+    {
+      "tag": "forge:ingredients/all_raw_meats"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/plate_stuffed_paprika_raw"
+  }
+}

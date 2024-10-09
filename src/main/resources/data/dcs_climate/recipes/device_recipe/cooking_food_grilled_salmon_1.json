@@ -1,0 +1,33 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/grilled_salmon",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/raw_salmon"
+    },
+    {
+      "tag": "forge:dusts/salt"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

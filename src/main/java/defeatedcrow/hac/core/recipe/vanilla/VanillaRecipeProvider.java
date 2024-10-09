@@ -1191,7 +1191,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_carpet_white", has(Items.WHITE_CARPET))
 				.save(cons, "dcs_climate:build/carpet_white_2");
 
-		ShapedRecipeBuilder.shaped(BuildInit.CARPET_BLUE.get(), 1)
+		ShapedRecipeBuilder.shaped(BuildInit.CARPET_BLUE.get(), 8)
 				.pattern("XXX")
 				.pattern("XYX")
 				.pattern("XXX")
@@ -1208,7 +1208,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_carpet_blue", has(Items.BLUE_CARPET))
 				.save(cons, "dcs_climate:build/carpet_blue_2");
 
-		ShapedRecipeBuilder.shaped(BuildInit.CARPET_BLACK.get(), 1)
+		ShapedRecipeBuilder.shaped(BuildInit.CARPET_BLACK.get(), 8)
 				.pattern("XXX")
 				.pattern("XYX")
 				.pattern("XXX")
@@ -1225,7 +1225,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_carpet_black", has(Items.BLACK_CARPET))
 				.save(cons, "dcs_climate:build/carpet_black_2");
 
-		ShapedRecipeBuilder.shaped(BuildInit.CARPET_RED.get(), 1)
+		ShapedRecipeBuilder.shaped(BuildInit.CARPET_RED.get(), 8)
 				.pattern("XXX")
 				.pattern("XYX")
 				.pattern("XXX")
@@ -1242,7 +1242,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_carpet_red", has(Items.RED_CARPET))
 				.save(cons, "dcs_climate:build/carpet_red_2");
 
-		ShapedRecipeBuilder.shaped(BuildInit.CARPET_GREEN.get(), 1)
+		ShapedRecipeBuilder.shaped(BuildInit.CARPET_GREEN.get(), 8)
 				.pattern("XXX")
 				.pattern("XYX")
 				.pattern("XXX")

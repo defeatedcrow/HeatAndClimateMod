@@ -59,6 +59,20 @@ public class CakeItem extends ItemEntityFood {
 			return CHOCOLATE;
 		if (item == FoodInit.CAKE_GREENTEA.get())
 			return GREENTEA;
+		if (item == FoodInit.CAKE_APPLE.get())
+			return APPLE;
+		if (item == FoodInit.CAKE_LEMON.get())
+			return LEMON;
+		if (item == FoodInit.CAKE_GRAPE.get())
+			return GRAPE;
+		if (item == FoodInit.CAKE_ROSE.get())
+			return ROSE;
+		if (item == FoodInit.CAKE_CREAM_VANILLA.get())
+			return CREAM_VANILLA;
+		if (item == FoodInit.CAKE_CREAM_MANGO.get())
+			return CREAM_MANGO;
+		if (item == FoodInit.CAKE_CREAM_SESAMI.get())
+			return CREAM_SESAMI;
 		return BUTTER;
 	}
 
@@ -66,5 +80,12 @@ public class CakeItem extends ItemEntityFood {
 	public static final EntityRenderData BERRY = new EntityRenderData("food/cake_berry", 0.6F, 0F);
 	public static final EntityRenderData CHOCOLATE = new EntityRenderData("food/cake_chocolate", 0.6F, 0F);
 	public static final EntityRenderData GREENTEA = new EntityRenderData("food/cake_greentea", 0.6F, 0F);
+	public static final EntityRenderData LEMON = new EntityRenderData("food/cake_lemon", 0.6F, 0F);
+	public static final EntityRenderData GRAPE = new EntityRenderData("food/cake_jelly_grape", 0.6F, 0F);
+	public static final EntityRenderData ROSE = new EntityRenderData("food/cake_jelly_rose", 0.6F, 0F);
+	public static final EntityRenderData APPLE = new EntityRenderData("food/cake_tarte_tatin", 0.6F, 0F);
+	public static final EntityRenderData CREAM_VANILLA = new EntityRenderData("food/cake_cream_vanilla", 0.6F, 0F);
+	public static final EntityRenderData CREAM_MANGO = new EntityRenderData("food/cake_cream_mango", 0.6F, 0F);
+	public static final EntityRenderData CREAM_SESAMI = new EntityRenderData("food/cake_cream_sesami", 0.6F, 0F);
 
 }

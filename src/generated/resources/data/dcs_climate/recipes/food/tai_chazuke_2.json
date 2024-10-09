@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:foods/boiled_rice"
+    },
+    {
+      "item": "dcs_climate:food/cup_tea_green"
+    },
+    {
+      "tag": "forge:ingredients/seabream"
+    },
+    {
+      "tag": "forge:crops/sesami"
+    },
+    {
+      "item": "dcs_climate:food/food_tsukemono"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/chazuke_tai"
+  }
+}

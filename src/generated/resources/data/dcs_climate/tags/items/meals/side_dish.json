@@ -1,0 +1,16 @@
+{
+  "values": [
+    "dcs_climate:food/tempura_vegi",
+    "dcs_climate:food/tempura_prawn",
+    "dcs_climate:food/tempura_umesiso",
+    "dcs_climate:food/tempura_ikaten",
+    "dcs_climate:food/tempura_fish",
+    "dcs_climate:food/deepfry_tonkatsu",
+    "dcs_climate:food/deepfry_karaage",
+    "dcs_climate:food/deepfry_croquette_potato",
+    "dcs_climate:food/deepfry_croquette_pumpkin",
+    "dcs_climate:food/deepfry_croquette_corn",
+    "dcs_climate:food/deepfry_croquette_crab",
+    "dcs_climate:food/deepfry_croquette_fish"
+  ]
+}

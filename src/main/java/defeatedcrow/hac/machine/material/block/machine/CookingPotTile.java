@@ -2,24 +2,33 @@ package defeatedcrow.hac.machine.material.block.machine;
 
 import java.util.Optional;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IDisplayTile;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
+import defeatedcrow.hac.api.recipe.RecipeTypeDC;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
+import defeatedcrow.hac.core.network.packet.message.MsgEffectToC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileDisplayItemToC;
 import defeatedcrow.hac.core.recipe.DCRecipes;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.machine.client.gui.CookingPotMenu;
 import defeatedcrow.hac.machine.material.MachineInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 
 public class CookingPotTile extends FermentationJarTile implements IDisplayTile {
@@ -39,6 +48,8 @@ public class CookingPotTile extends FermentationJarTile implements IDisplayTile 
 				return CookingPotTile.this.currentProgress;
 			case 1:
 				return CookingPotTile.this.totalProgress;
+			case 2:
+				return CookingPotTile.this.freeCounter;
 			default:
 				return 0;
 			}
@@ -53,13 +64,16 @@ public class CookingPotTile extends FermentationJarTile implements IDisplayTile 
 			case 1:
 				CookingPotTile.this.totalProgress = data;
 				break;
+			case 2:
+				CookingPotTile.this.freeCounter = data;
+				break;
 			}
 
 		}
 
 		@Override
 		public int getCount() {
-			return 2;
+			return 3;
 		}
 	};
 
@@ -99,9 +113,10 @@ public class CookingPotTile extends FermentationJarTile implements IDisplayTile 
 		// priority check
 		if (recipe != null) {
 			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
-			Optional<IDeviceRecipe> check = DCRecipes.getCookingRecipe(currentClimate, inputs, inputTank.getFluid());
+			Optional<IDeviceRecipe> check = DCRecipes.getCookingRecipe(currentClimate, inputs, inputTank.getFluid()).filter(r -> r.getPriority() == recipe.getPriority());
+			Optional<IDeviceRecipe> check2 = DCRecipes.getFryingRecipe(currentClimate, inputs, inputTank.getFluid()).filter(r -> r.getPriority() == recipe.getPriority());
 
-			if (check.isPresent() && check.get().getPriority() == recipe.getPriority()) {
+			if (check.isPresent() || check2.isPresent()) {
 				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxInSlot() + 2) > 0 && outputTank.fill(recipe.getOutputFluid(), FluidAction.SIMULATE) >= recipe
 						.getOutputFluid()
 						.getAmount();
@@ -115,11 +130,33 @@ public class CookingPotTile extends FermentationJarTile implements IDisplayTile 
 	}
 
 	@Override
+	public boolean consumeInputs() {
+		if (consume.length > 0) {
+			for (int i = 0; i < consume.length; i++) {
+				inventory.removeItem(i, consume[i]);
+			}
+		}
+		if (!recipe.getInputFluids().isEmpty()) {
+			TagKey<Fluid> tag = recipe.getInputFluids().get(0);
+			if (!inputTank.isEmpty() && inputTank.getFluidType().is(tag)) {
+				int amo = recipe.getType() == RecipeTypeDC.FRYING ? 200 : 1000;
+				inputTank.drain(amo, FluidAction.EXECUTE);
+			}
+		}
+		return false;
+	}
+
+	@Override
 	public boolean startProcess(Level level, BlockPos pos, BlockState state) {
 		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
 		Optional<IDeviceRecipe> check = DCRecipes.getCookingRecipe(currentClimate, inputs, inputTank.getFluid());
+		Optional<IDeviceRecipe> check2 = DCRecipes.getFryingRecipe(currentClimate, inputs, inputTank.getFluid());
 		if (check.isPresent()) {
 			recipe = check.get();
+			this.totalProgress = maxProgressTime();
+			return true;
+		} else if (check2.isPresent()) {
+			recipe = check2.get();
 			this.totalProgress = maxProgressTime();
 			return true;
 		}
@@ -151,6 +188,30 @@ public class CookingPotTile extends FermentationJarTile implements IDisplayTile 
 			if (!DCItemUtil.isSameItem(display, inventory.getItem(maxInSlot() + 1), false)) {
 				display = inventory.getItem(maxInSlot() + 1).copy();
 				MsgTileDisplayItemToC.sendToClient((ServerLevel) level, pos, display, 0);
+			}
+
+			if (ConfigCommonBuilder.INSTANCE.enTempuraFire.get()) {
+				if (!inputTank.isEmpty() && inputTank.getFluidType().is(TagDC.FluidTag.FLAMMABLE)) {
+					if (currentClimate != null && currentClimate.getHeat().getTier() > DCHeatTier.KILN.getTier()) {
+						if (this.freeCounter < 300)
+							this.freeCounter++;
+					} else if (this.freeCounter > 0) {
+						this.freeCounter--;
+					}
+				} else {
+					this.freeCounter = 0;
+				}
+
+				if (this.freeCounter > 0 && level instanceof ServerLevel serverLevel) {
+					MsgEffectToC.sendToClient(serverLevel, pos, 4);
+				}
+
+				if (this.freeCounter >= 300 && level.getRandom().nextInt(10) == 0) {
+					for (Direction dir : Direction.values()) {
+						if (level.getBlockState(pos.relative(dir)).isAir() && level.setBlock(pos.relative(dir), Blocks.FIRE.defaultBlockState(), 3))
+							break;
+					}
+				}
 			}
 			return false;
 		}

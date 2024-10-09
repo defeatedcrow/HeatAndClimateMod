@@ -20,10 +20,15 @@ public class PluginRecipeListDC {
 	public static final List<IClimateSmelting> SMELTING_LIST = Lists.newArrayList();
 	public static final List<IHeatTreatment> HEAT_TREATMENT_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> COOKING_LIST = Lists.newArrayList();
+	public static final List<IDeviceRecipe> FRYING_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> TEA_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> FERMENTATION_LIST = Lists.newArrayList();
 	public static final List<IDeviceRecipe> PULVERISER_LIST = Lists.newArrayList();
+	public static final List<IDeviceRecipe> CRUSHER_PULVERISE_LIST = Lists.newArrayList();
+	public static final List<IDeviceRecipe> CRUSHER_SQUEEZE_LIST = Lists.newArrayList();
+	public static final List<IDeviceRecipe> CRUSHER_SIEVE_LIST = Lists.newArrayList();
 	public static final List<IDeviceFuel> BIOMASS_FUEL_LIST = Lists.newArrayList();
+	public static final List<IDeviceFuel> FLUID_FUEL_LIST = Lists.newArrayList();
 	public static final List<ClimateCropBaseBlock> CROP_LIST = Lists.newArrayList();
 	public static final List<LeavesCropBlockDC> TREE_LIST = Lists.newArrayList();
 
@@ -194,17 +199,34 @@ public class PluginRecipeListDC {
 		if (COOKING_LIST.isEmpty())
 			COOKING_LIST.addAll(DCRecipes.INSTANCE.COOKING.values());
 
+		if (FRYING_LIST.isEmpty())
+			FRYING_LIST.addAll(DCRecipes.INSTANCE.FRYING.values());
+
 		if (TEA_LIST.isEmpty())
 			TEA_LIST.addAll(DCRecipes.INSTANCE.TEA.values());
 
 		if (FERMENTATION_LIST.isEmpty())
 			FERMENTATION_LIST.addAll(DCRecipes.INSTANCE.FERMENTATION.values());
 
-		if (PULVERISER_LIST.isEmpty())
+		if (PULVERISER_LIST.isEmpty()) {
 			PULVERISER_LIST.addAll(DCRecipes.INSTANCE.PULVERISE.values());
+			PULVERISER_LIST.addAll(DCRecipes.INSTANCE.SQUEEZE.values());
+		}
+
+		if (CRUSHER_PULVERISE_LIST.isEmpty())
+			CRUSHER_PULVERISE_LIST.addAll(DCRecipes.INSTANCE.PULVERISE.values());
+
+		if (CRUSHER_SQUEEZE_LIST.isEmpty())
+			CRUSHER_SQUEEZE_LIST.addAll(DCRecipes.INSTANCE.SQUEEZE.values());
+
+		if (CRUSHER_SIEVE_LIST.isEmpty())
+			CRUSHER_SIEVE_LIST.addAll(DCRecipes.INSTANCE.SIEVE.values());
 
 		if (BIOMASS_FUEL_LIST.isEmpty())
 			BIOMASS_FUEL_LIST.addAll(DCRecipes.INSTANCE.BIOMASS_FUEL.values());
+
+		if (FLUID_FUEL_LIST.isEmpty())
+			FLUID_FUEL_LIST.addAll(DCRecipes.INSTANCE.FLUID_FUEL.values());
 	}
 
 }

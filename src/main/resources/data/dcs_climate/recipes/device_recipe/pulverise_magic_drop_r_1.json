@@ -3,13 +3,18 @@
   "group": "pulverise",
   "result": {
     "item": "dcs_climate:magic/drop_r",
-    "count": 2
+    "count": 3
   },
   "secondary": {
     "item": "dcs_climate:main/dust_plant",
     "count": 1
   },
   "secondary_rate": 100,
+  "tertiary": {
+    "item": "dcs_climate:food/food_mallow_calyces",
+    "count": 1
+  },
+  "tertiary_rate": 10,
   "ingredients": [
     {
       "tag": "forge:crops/hibiscus"

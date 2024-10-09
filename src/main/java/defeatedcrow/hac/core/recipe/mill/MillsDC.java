@@ -52,7 +52,7 @@ public class MillsDC {
 		list1.add(new Crops("clematis", FoodInit.CROP_RA_CLEMATIS, () -> Items.PINK_DYE, FoodInit.VINE));
 		list1.add(new Crops("reed", FoodInit.CROP_RE_COMMON, FoodInit.FEED_STRAW, FoodInit.FIBER_PLANT));
 		list1.add(new Crops("sorghum", FoodInit.CROP_RE_SORGHUM, FoodInit.FOOD_SORGHUM, FoodInit.SORGHUM_STICK));
-		list1.add(new Crops("corn", FoodInit.CROP_RE_CORN, FoodInit.FOOD_MASA, FoodInit.FIBER_PLANT));
+		list1.add(new Crops("corn", FoodInit.CROP_RE_CORN, FoodInit.FOOD_CORNMEAL, FoodInit.FIBER_PLANT));
 		list1.add(new Crops("zizania", FoodInit.CROP_RI_ZIZANIA, FoodInit.FOOD_ZIZANIA, FoodInit.FEED_STRAW));
 		list1.add(new Crops("rice", FoodInit.CROP_RI_SHORT, FoodInit.FOOD_RICE, FoodInit.FEED_STRAW));
 		list1.add(new Crops("aroma_rice", FoodInit.CROP_RI_AROMA, FoodInit.FOOD_AROMA_RICE, FoodInit.FEED_STRAW));
@@ -61,7 +61,7 @@ public class MillsDC {
 		list1.add(new Crops("camellia", FoodInit.CROP_CM_OIL, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
 		list1.add(new Crops("heath", FoodInit.CROP_ER_HEATH, () -> Items.GRAY_DYE, FoodInit.DUST_PLANT));
 		list1.add(new Crops("rhododendron", FoodInit.CROP_ER_RHODODENDRON, () -> Items.MAGENTA_DYE, FoodInit.DUST_PLANT));
-		list1.add(new Crops("blueberry", FoodInit.CROP_ER_BLUEBERRY, () -> Items.PURPLE_DYE, FoodInit.DUST_PLANT));
+		list1.add(new Crops("blueberry", FoodInit.CROP_ER_BLUEBERRY, () -> Items.BLUE_DYE, FoodInit.DUST_PLANT));
 		list1.add(new Crops("coconut", FoodInit.CROP_PL_COCONUT, FoodInit.FOOD_COCONUT_MILK, FoodInit.FIBER_PLANT));
 		list1.add(new Crops("almond", FoodInit.CROP_CH_ALMOND, FoodInit.FOOD_ALMOND_MILK, FoodInit.DUST_PLANT));
 		list1.add(new Crops("date", FoodInit.CROP_PL_DATE, FoodInit.FOOD_SYRUP, FoodInit.DUST_PLANT));

@@ -259,7 +259,7 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 		return false;
 	}
 
-	int count = 5;
+	int count = 4;
 	private int lastHash1 = 0;
 
 	@Override
@@ -268,7 +268,7 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 			count--;
 			return false;
 		} else {
-			count = 5;
+			count = 4;
 
 			boolean flag = false;
 			if (!DCUtil.isEmpty(this.inventory.getItem(intankS1)) && !this.inventory.isMaxStack(intankS2)) {
@@ -353,8 +353,8 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 						}).orElse(false);
 			}
 
-			int hash1 = inputTank.getFluid().hashCode();
-			int hash2 = outputTank.getFluid().hashCode();
+			int hash1 = inputTank.getFluid().hashCode() + inputTank.getFluidAmount();
+			int hash2 = outputTank.getFluid().hashCode() + outputTank.getFluidAmount();
 			if (lastHash1 != hash1 + hash2) {
 				lastHash1 = hash1 + hash2;
 				flag = true;

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/cake_butter"
+    },
+    {
+      "tag": "forge:crops/lemon"
+    },
+    {
+      "tag": "forge:ingredients/milk_cream"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/cake_lemon"
+  }
+}

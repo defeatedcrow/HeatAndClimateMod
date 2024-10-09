@@ -1,0 +1,33 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/grilled_white_fish",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/white_fishes"
+    },
+    {
+      "tag": "forge:dusts/salt"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

@@ -144,7 +144,8 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 					}
 				}
 			}
-			if (recipe.getSecondaryRate() > 0 && level.random.nextInt(100) < recipe.getSecondaryRate()) {
+			// Millの場合はセカンダリ確率が半分になる
+			if (recipe.getSecondaryRate() > 0 && level.random.nextInt(200) < recipe.getSecondaryRate()) {
 				return recipe.getSecondaryOutput().copy();
 			}
 		}
@@ -160,13 +161,13 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 		// priority check
 		if (recipe != null) {
 			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
-			Optional<IDeviceRecipe> check = DCRecipes.getPulverizeRecipe(inputs);
+			Optional<IDeviceRecipe> check = DCRecipes.getMillRecipe(inputs);
 
 			if (check.isPresent()) {
 				ItemStack ret = recipe.getOutput().copy();
 				if (ret.getCount() > 4)
 					ret.shrink(2);
-				else if (ret.getCount() > 2)
+				else if (ret.getCount() > 1)
 					ret.shrink(1);
 				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxOutSlot()) > 0;
 				if (recipe.getSecondaryRate() > 0 && inventory.canInsertResult(recipe.getSecondaryOutput(), maxInSlot() + 1, maxOutSlot()) == 0) {
@@ -193,7 +194,7 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 			ItemStack res = recipe.getOutput();
 			if (res.getCount() > 4)
 				res.shrink(2);
-			else if (res.getCount() > 2)
+			else if (res.getCount() > 1)
 				res.shrink(1);
 			if (!res.isEmpty() && res.getItem() instanceof IFoodTaste food) {
 				int taste = CraftingFoodEvent.getResultTaste(inputs, consume);
@@ -245,7 +246,7 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 	@Override
 	public boolean startProcess(Level level, BlockPos pos, BlockState state) {
 		NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
-		Optional<IDeviceRecipe> check = DCRecipes.getPulverizeRecipe(inputs);
+		Optional<IDeviceRecipe> check = DCRecipes.getMillRecipe(inputs);
 		if (check.isPresent()) {
 			recipe = check.get();
 			this.totalProgress = maxProgressTime();

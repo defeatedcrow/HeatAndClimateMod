@@ -40,6 +40,8 @@ public class ConfigCommonBuilder {
 
 	// item
 	public final ForgeConfigSpec.BooleanValue enDropSmelting;
+	public final ForgeConfigSpec.IntValue vTimberLimit;
+	public final ForgeConfigSpec.BooleanValue enTimberBreakLeaves;
 
 	// hardmode
 	public final ForgeConfigSpec.BooleanValue enInferno;
@@ -47,6 +49,7 @@ public class ConfigCommonBuilder {
 	public final ForgeConfigSpec.BooleanValue enTightDeep;
 	public final ForgeConfigSpec.BooleanValue enTightEffect;
 	public final ForgeConfigSpec.BooleanValue enHeatTreatment;
+	public final ForgeConfigSpec.BooleanValue enTempuraFire;
 
 	public final ForgeConfigSpec.BooleanValue enMagicCost;
 	public final ForgeConfigSpec.IntValue vMagicCost;
@@ -55,6 +58,7 @@ public class ConfigCommonBuilder {
 	public final ForgeConfigSpec.BooleanValue enPotionSharing;
 	public final ForgeConfigSpec.BooleanValue enMobTarget;
 	public final ForgeConfigSpec.IntValue vMobTargetInterval;
+	public final ForgeConfigSpec.BooleanValue enVillagerEatToHeal;
 
 	// public final ForgeConfigSpec.BooleanValue enCookingFlavor;
 
@@ -138,6 +142,10 @@ public class ConfigCommonBuilder {
 				.comment("The metal is refined in the more difficult heat treatment mode.")
 				.define("Hardmode Metal Refining", false);
 
+		this.enTempuraFire = builder
+				.comment("Vegetable oil in a pan can spontaneously combust if it becomes overheated.")
+				.define("Hardmode Tempura Fire", false);
+
 		this.enMagicCost = builder
 				.comment("When enabled, EXP is consumed to cast the magic.")
 				.define("Magic EXP Cost", false);
@@ -179,6 +187,14 @@ public class ConfigCommonBuilder {
 				.comment("Sets the wild crop generation rate per chunk. (If 0, it will not be generated.)")
 				.defineInRange("Amount of Crop Gen Rate", 10, 0, 100);
 
+		this.enTimberBreakLeaves = builder
+				.comment("Enables leaf destruction with the lumberjack effect (green gold pendant).")
+				.define("Enable Lunberjack Effect Break Leaves", false);
+
+		this.vTimberLimit = builder
+				.comment("Sets the limit for the number of blocks scanned by the lumberjack effect.")
+				.defineInRange("Lumberjack Block Limit", 512, 32, 2048);
+
 		this.enCustomSpring = builder
 				.comment("Enable natural generation of custom springs in Overworld.")
 				.define("Enable Custom Spring Generation", true);
@@ -202,6 +218,10 @@ public class ConfigCommonBuilder {
 		this.enPotionSharing = builder
 				.comment("Enable sharing potion effects with riding mob.")
 				.define("Enable Sharing Potion Effect", true);
+
+		this.enVillagerEatToHeal = builder
+				.comment("Enables villagers to consume food to regain health.")
+				.define("Enable Villager Eat Food", true);
 
 		builder.pop();
 

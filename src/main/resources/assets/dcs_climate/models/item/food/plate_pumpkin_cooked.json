@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/plate_pumpkin_cooked"
+  },
+  "parent": "minecraft:item/generated"
+}

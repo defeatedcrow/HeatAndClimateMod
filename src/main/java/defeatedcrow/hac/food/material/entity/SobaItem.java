@@ -22,12 +22,12 @@ public class SobaItem extends ItemEntityFood {
 	public EntityRenderData getRenderData(Item item) {
 		if (item == FoodInit.SOBA_SIMPLE.get())
 			return SIMPLE;
-		// if (item == FoodInit.SOBA_KITSUNE.get())
-		// return KITSUNE;
+		if (item == FoodInit.SOBA_KITSUNE.get())
+			return KITSUNE;
 		if (item == FoodInit.SOBA_TSUKIMI.get())
 			return TSUKIMI;
-		// if (item == FoodInit.SOBA_TENPURA.get())
-		// return TENPURA;
+		if (item == FoodInit.SOBA_TENPURA.get())
+			return TENPURA;
 		return SIMPLE;
 	}
 

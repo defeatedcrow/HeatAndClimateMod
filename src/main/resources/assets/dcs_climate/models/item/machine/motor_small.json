@@ -1,6 +1,6 @@
 {
   "textures": {
-    "layer0": "dcs_climate:item/material/motor_small"
+    "layer0": "dcs_climate:item/machine/motor_small"
   },
   "parent": "minecraft:item/generated"
 }

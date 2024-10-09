@@ -1,0 +1,45 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/cake_jelly_rose",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/pastry"
+    },
+    {
+      "item": "dcs_climate:food/food_rose_jam"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    },
+    {
+      "tag": "forge:ingredients/creams"
+    },
+    {
+      "tag": "forge:ingredients/cheese"
+    },
+    {
+      "tag": "forge:ingredients/geratine"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

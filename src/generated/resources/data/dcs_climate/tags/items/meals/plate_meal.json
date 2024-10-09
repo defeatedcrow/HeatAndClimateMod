@@ -5,6 +5,11 @@
     "dcs_climate:food/plate_legs_cooked",
     "dcs_climate:food/plate_big_garlic_cooked",
     "dcs_climate:food/plate_big_chicken_cooked",
-    "dcs_climate:food/plate_fish_cooked"
+    "dcs_climate:food/plate_fish_cooked",
+    "dcs_climate:food/plate_bone_marrow_cooked",
+    "dcs_climate:food/plate_stuffed_bellpepper_cooked",
+    "dcs_climate:food/plate_stuffed_paprika_cooked",
+    "dcs_climate:food/plate_potato_cooked",
+    "dcs_climate:food/plate_pumpkin_cooked"
   ]
 }

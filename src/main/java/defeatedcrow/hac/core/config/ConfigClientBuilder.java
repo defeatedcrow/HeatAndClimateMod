@@ -65,8 +65,8 @@ public class ConfigClientBuilder {
 		builder.comment("======== Keybind Setting ========", "Setting for the keybind.").push("key_config");
 
 		this.key_HUD = builder
-				.comment(" Set the key to switch HUD design. default:L-shift")
-				.defineInRange("HUD Switch Key", 340, 32, 348);
+				.comment(" Set the key to switch HUD design. default:R-shift")
+				.defineInRange("HUD Switch Key", 344, 32, 348);
 
 		this.key_Charm = builder
 				.comment(" Sets the using charm effect key. default:X")

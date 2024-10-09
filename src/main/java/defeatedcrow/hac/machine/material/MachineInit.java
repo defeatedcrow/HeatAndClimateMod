@@ -17,6 +17,7 @@ import defeatedcrow.hac.machine.client.gui.KichenBenchMenu;
 import defeatedcrow.hac.machine.client.gui.MillMenu;
 import defeatedcrow.hac.machine.client.gui.MonitorAndonMenu;
 import defeatedcrow.hac.machine.client.gui.PortableTankMenu;
+import defeatedcrow.hac.machine.client.gui.RollCrusherMenu;
 import defeatedcrow.hac.machine.client.gui.TeaPotMenu;
 import defeatedcrow.hac.machine.energy.EnergyTankItemDC;
 import defeatedcrow.hac.machine.material.block.machine.BoilerBiomassBlock;
@@ -45,6 +46,8 @@ import defeatedcrow.hac.machine.material.block.machine.ItemAspiratorBlock;
 import defeatedcrow.hac.machine.material.block.machine.ItemAspiratorTile;
 import defeatedcrow.hac.machine.material.block.machine.KichenBenchBlock;
 import defeatedcrow.hac.machine.material.block.machine.KichenBenchTile;
+import defeatedcrow.hac.machine.material.block.machine.RollCrusherBlock;
+import defeatedcrow.hac.machine.material.block.machine.RollCrusherTile;
 import defeatedcrow.hac.machine.material.block.machine.SpileCupBlock;
 import defeatedcrow.hac.machine.material.block.machine.StoneMillBlock;
 import defeatedcrow.hac.machine.material.block.machine.StoneMillTile;
@@ -65,6 +68,7 @@ import defeatedcrow.hac.machine.material.block.monitor.MonitorTempBlock;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorTempTile;
 import defeatedcrow.hac.machine.material.block.monitor.StormglassBlock;
 import defeatedcrow.hac.machine.material.block.monitor.StormglassTile;
+import defeatedcrow.hac.machine.material.block.transport.BatteryMiddleBlock;
 import defeatedcrow.hac.machine.material.block.transport.BatterySmallBlock;
 import defeatedcrow.hac.machine.material.block.transport.CableCopperBlock;
 import defeatedcrow.hac.machine.material.block.transport.CableCopperTile;
@@ -79,6 +83,7 @@ import defeatedcrow.hac.machine.material.block.transport.ConveyorSortingBlock;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorSortingTile;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorTile;
 import defeatedcrow.hac.machine.material.block.transport.EnergyBatteryTile;
+import defeatedcrow.hac.machine.material.block.transport.EnergyMiddleBatteryTile;
 import defeatedcrow.hac.machine.material.block.transport.FaucetBlock;
 import defeatedcrow.hac.machine.material.block.transport.FaucetTile;
 import defeatedcrow.hac.machine.material.block.transport.FluidPipeAlloyBlock;
@@ -173,6 +178,7 @@ public class MachineInit {
 
 	public static final RegistryObject<Block> WATER_PUMP = regBlock("water_pump", () -> new WaterPumpBlock("water_pump"), null);
 	public static final RegistryObject<Block> STONE_MILL = regBlock("stone_mill", () -> new StoneMillBlock("stone_mill"), null);
+	public static final RegistryObject<Block> ROLL_CRUSHER = regBlock("roll_crusher", () -> new RollCrusherBlock("roll_crusher"), null);
 	public static final RegistryObject<Block> INTAKE_FAN = regBlock("intake_fan", () -> new IntakeFanBlock("intake_fan"), null);
 	public static final RegistryObject<Block> EXHAUST_VENT = regBlock("exhaust_vent", () -> new ExhaustVentBlock("exhaust_vent"), null);
 	public static final RegistryObject<Block> ITEM_ASPIRATOR = regBlock("item_aspirator", () -> new ItemAspiratorBlock("item_aspirator"), null);
@@ -184,6 +190,7 @@ public class MachineInit {
 	public static final RegistryObject<Block> HYDRO_TURBINE = regBlock("hydro_turbine", () -> new HydroTurbineBlock("hydro_turbine"), null);
 
 	public static final RegistryObject<Block> BATTERY_SMALL = regEnergyBlock("battery_small", () -> new BatterySmallBlock("battery_small"), 32000);
+	public static final RegistryObject<Block> BATTERY_MIDDLE = regEnergyBlock("battery_middle", () -> new BatteryMiddleBlock("battery_small"), 128000);
 
 	public static final RegistryObject<Block> CABLE_COPPER = regBlock("cable_copper", () -> new CableCopperBlock("cable_copper"), TagDC.ItemTag.LEAKAGE_MACHINE);
 
@@ -205,6 +212,11 @@ public class MachineInit {
 	public static final RegistryObject<Item> IMPELLER_TIER2 = regItem("impeller_middle", () -> new MachineMaterialItem(Rarity.UNCOMMON, "impeller_middle", TagDC.ItemTag.IMPELLER_T2));
 
 	public static final RegistryObject<Item> BATTERYITEM_TIER1 = regItem("batteryitem_small", () -> new MachineMaterialItem(Rarity.COMMON, "batteryitem_small", TagDC.ItemTag.BATTERY_T1));
+	public static final RegistryObject<Item> BATTERYITEM_TIER2 = regItem("batteryitem_middle", () -> new MachineMaterialItem(Rarity.UNCOMMON, "batteryitem_middle", TagDC.ItemTag.BATTERY_T2));
+
+	public static final RegistryObject<Item> BLADE_SUS = regItem("crusher_blade_sanitary", () -> new MachineMaterialItem(Rarity.UNCOMMON, "crusher_blade_sanitary", TagDC.ItemTag.BLADE_SANITARY));
+	public static final RegistryObject<Item> BLADE_ALUMINA = regItem("crusher_blade_alumina", () -> new MachineMaterialItem(Rarity.RARE, "crusher_blade_alumina", TagDC.ItemTag.BLADE_ALUMINA));
+	public static final RegistryObject<Item> BLADE_SCREEN = regItem("crusher_blade_screen", () -> new MachineMaterialItem(Rarity.UNCOMMON, "crusher_blade_screen", TagDC.ItemTag.BLADE_SCREEN));
 
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<BrickChamberTile>> CHAMBER_BRICK_TILE = CoreInit.BLOCK_ENTITIES.register("chamber_brick_tile",
@@ -271,6 +283,9 @@ public class MachineInit {
 	public static final RegistryObject<BlockEntityType<StoneMillTile>> MILL_TILE = CoreInit.BLOCK_ENTITIES.register("mill_tile",
 			() -> BlockEntityType.Builder.of(StoneMillTile::new, new Block[] { STONE_MILL.get() }).build(null));
 
+	public static final RegistryObject<BlockEntityType<RollCrusherTile>> CRUSHER_TILE = CoreInit.BLOCK_ENTITIES.register("roll_crusher_tile",
+			() -> BlockEntityType.Builder.of(RollCrusherTile::new, new Block[] { ROLL_CRUSHER.get() }).build(null));
+
 	public static final RegistryObject<BlockEntityType<WaterPumpTile>> WATER_PUMP_TILE = CoreInit.BLOCK_ENTITIES.register("water_pump_tile",
 			() -> BlockEntityType.Builder.of(WaterPumpTile::new, new Block[] { WATER_PUMP.get() }).build(null));
 
@@ -285,6 +300,9 @@ public class MachineInit {
 
 	public static final RegistryObject<BlockEntityType<EnergyBatteryTile>> BATTERY_SMALL_TILE = CoreInit.BLOCK_ENTITIES.register("battery_small_tile",
 			() -> BlockEntityType.Builder.of(EnergyBatteryTile::new, new Block[] { BATTERY_SMALL.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<EnergyMiddleBatteryTile>> BATTERY_MIDDLE_TILE = CoreInit.BLOCK_ENTITIES.register("battery_middle_tile",
+			() -> BlockEntityType.Builder.of(EnergyMiddleBatteryTile::new, new Block[] { BATTERY_MIDDLE.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<EnergyGeneratorTile>> GENERATOR_SMALL_TILE = CoreInit.BLOCK_ENTITIES.register("generator_small_tile",
 			() -> BlockEntityType.Builder.of(EnergyGeneratorTile::new, new Block[] { GENERATOR_SMALL.get() }).build(null));
@@ -361,6 +379,11 @@ public class MachineInit {
 	public static final RegistryObject<MenuType<MillMenu>> MILL_MENU = CoreInit.register("dcs_pulveriser", (IContainerFactory<MillMenu>) (id, playerInv, data) -> {
 		StoneMillTile cont = (StoneMillTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
 		return MillMenu.getMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<RollCrusherMenu>> CRUSHER_MENU = CoreInit.register("dcs_roll_crusher", (IContainerFactory<RollCrusherMenu>) (id, playerInv, data) -> {
+		RollCrusherTile cont = (RollCrusherTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return RollCrusherMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<EnergyBatteryMenu>> BATTERY_MENU = CoreInit.register("dcs_battery", (IContainerFactory<EnergyBatteryMenu>) (id, playerInv, data) -> {

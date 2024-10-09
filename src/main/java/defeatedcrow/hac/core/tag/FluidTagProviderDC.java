@@ -22,6 +22,7 @@ public class FluidTagProviderDC extends FluidTagsProvider {
 		tag(TagDC.FluidTag.HOT_SPRING).add(CoreInit.HOTSPRING.getStillFluid().get());
 		tag(TagDC.FluidTag.SPARKLING).add(CoreInit.SPARKLING.getStillFluid().get());
 		tag(TagDC.FluidTag.PLANT_OIL).add(CoreInit.PLANT_OIL.getStillFluid().get());
+		tag(TagDC.FluidTag.USED_PLANT_OIL).add(CoreInit.USED_PLANT_OIL.getStillFluid().get());
 		tag(TagDC.FluidTag.FUEL).add(CoreInit.FUEL_OIL.getStillFluid().get());
 		tag(TagDC.FluidTag.AIR).add(Fluids.EMPTY, CoreInit.AIR.getStillFluid().get());
 
@@ -31,6 +32,8 @@ public class FluidTagProviderDC extends FluidTagsProvider {
 		tag(TagDC.FluidTag.DRINK_WATER).add(Fluids.WATER, CoreInit.SPARKLING.getStillFluid().get());
 
 		tag(TagDC.FluidTag.ALL_MILK).add(ForgeMod.MILK.get());
+
+		tag(TagDC.FluidTag.FLAMMABLE).addTags(TagDC.FluidTag.PLANT_OIL, TagDC.FluidTag.PLANT_OIL, TagDC.FluidTag.FUEL);
 	}
 
 }

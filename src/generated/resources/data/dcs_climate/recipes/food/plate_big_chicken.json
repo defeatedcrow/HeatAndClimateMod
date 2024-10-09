@@ -5,13 +5,7 @@
       "tag": "forge:ingredients/raw_chicken"
     },
     {
-      "tag": "forge:crops/vegetables"
-    },
-    {
-      "tag": "forge:crops/spices"
-    },
-    {
-      "tag": "forge:foods/bread"
+      "tag": "forge:ingredients/staffing"
     }
   ],
   "result": {

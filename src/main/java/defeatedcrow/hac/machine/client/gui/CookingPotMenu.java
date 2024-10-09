@@ -29,13 +29,13 @@ public class CookingPotMenu extends AbstractContainerMenu {
 	}
 
 	public static CookingPotMenu getMenu(int i, Inventory playerInv, CookingPotTile cont) {
-		return new CookingPotMenu(MachineInit.POT_MENU.get(), i, playerInv, cont, new SimpleContainerData(2));
+		return new CookingPotMenu(MachineInit.POT_MENU.get(), i, playerInv, cont, new SimpleContainerData(3));
 	}
 
 	public CookingPotMenu(MenuType<?> type, int s, Inventory playerInv, CookingPotTile cont, ContainerData d) {
 		super(type, s);
 		checkContainerSize(cont, 12);
-		checkContainerDataCount(d, 2);
+		checkContainerDataCount(d, 3);
 		container = cont;
 		container.startOpen(playerInv.player);
 		isOwner = cont.isOwner(playerInv.player);
@@ -174,6 +174,10 @@ public class CookingPotMenu extends AbstractContainerMenu {
 
 	public int getTempID() {
 		return container.clientClimate.getHeat().getID();
+	}
+
+	public boolean isOverheated() {
+		return this.data.get(2) > 0;
 	}
 
 }

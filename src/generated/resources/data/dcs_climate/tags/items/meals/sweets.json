@@ -3,6 +3,13 @@
     "dcs_climate:food/cake_butter",
     "dcs_climate:food/cake_berry",
     "dcs_climate:food/cake_chocolate",
-    "dcs_climate:food/cake_greentea"
+    "dcs_climate:food/cake_greentea",
+    "dcs_climate:food/cake_tarte_tatin",
+    "dcs_climate:food/cake_lemon",
+    "dcs_climate:food/cake_jelly_grape",
+    "dcs_climate:food/cake_jelly_rose",
+    "dcs_climate:food/cake_cream_vanilla",
+    "dcs_climate:food/cake_cream_mango",
+    "dcs_climate:food/cake_cream_sesami"
   ]
 }

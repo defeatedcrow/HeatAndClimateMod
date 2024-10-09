@@ -1,0 +1,46 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "frying",
+  "result": {
+    "item": "dcs_climate:food/deepfry_croquette_pumpkin",
+    "count": 1
+  },
+  "result_fluid": {
+    "fluid": "dcs_climate:used_plant_oil",
+    "amount": 200
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/pumpkin"
+    },
+    {
+      "tag": "forge:ingredients/fat"
+    },
+    {
+      "tag": "forge:ingredients/batter"
+    },
+    {
+      "tag": "forge:foods/bread"
+    }
+  ],
+  "input_fluids": [
+    "forge:plant_oil"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

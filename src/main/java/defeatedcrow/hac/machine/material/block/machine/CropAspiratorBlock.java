@@ -77,10 +77,10 @@ public class CropAspiratorBlock extends RedstoneMachineBlock {
 			ItemStack held = new ItemStack(CoreInit.SCYTHE_BRASS.get());
 			if (aspirator.getEnergyHandler().getEnergyStored() > 250) {
 				aspirator.getEnergyHandler().consumeEnergy(250);
-				MsgEffectToC.sendToClient(level, pos, 1);
+				MsgEffectToC.sendToClient(level, pos, 10);
 				// 前方 9x9x9
 				for (int y = 4; y > -4; y--) {
-					BlockPos.betweenClosedStream(new AABB(pos.relative(dir, 4).above(y)).inflate(4.0D, 0.0D, 4.0D))
+					BlockPos.betweenClosedStream(new AABB(pos.relative(dir, 4).above(y)).move(0.5D, 0.0D, 0.5D).inflate(4.5D, 0.0D, 4.5D))
 							.filter((p) -> level.getBlockState(p) != null && !level.getBlockState(p).isAir()).forEach(p -> {
 								BlockState st = level.getBlockState(p);
 								if (st.getBlock() instanceof IClimateCrop crop) {

@@ -281,8 +281,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 				TagDC.ItemTag.CROP_PAPRIKA, TagDC.ItemTag.CROP_BELL, TagDC.ItemTag.CROP_SORREL, TagDC.ItemTag.CROP_INDIGO,
 				TagDC.ItemTag.CROP_WATER_SPINACH, TagDC.ItemTag.CROP_SWEET_POTATO, TagDC.ItemTag.CROP_GREEN_PEAS,
 				TagDC.ItemTag.CROP_GARBANZO, TagDC.ItemTag.CROP_SOY, TagDC.ItemTag.CROP_ADZUKI, TagDC.ItemTag.CROP_CORN,
-				TagDC.ItemTag.MAKOMOTAKE, TagDC.ItemTag.CROP_EGGPLANT, TagDC.ItemTag.CROP_TOMATO, TagDC.ItemTag.CROP_JUTE,
-				TagDC.ItemTag.CROP_CUCUMBER, TagDC.ItemTag.CROP_ANEMONE, TagDC.ItemTag.SPROUT,
+				TagDC.ItemTag.CROP_EGGPLANT, TagDC.ItemTag.CROP_TOMATO, TagDC.ItemTag.CROP_JUTE,
+				TagDC.ItemTag.CROP_CUCUMBER, TagDC.ItemTag.CROP_ANEMONE, TagDC.ItemTag.SPROUT, TagDC.ItemTag.BAMBOO_SHOOT,
 				Tags.Items.CROPS_CARROT, Tags.Items.CROPS_BEETROOT, Tags.Items.CROPS_POTATO, TagDC.ItemTag.CROP_PUMPKIN);
 
 		tag(TagDC.ItemTag.CROP_FLOWERS).addTags(TagDC.ItemTag.CROP_PYRETHRUM, TagDC.ItemTag.CROP_CHRYSANTHEMUM,
@@ -343,6 +343,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.DUST_RICES).addTags(TagDC.ItemTag.DUST_RICE, TagDC.ItemTag.DUST_AROMA_RICE);
 
+		tag(TagDC.ItemTag.BAMBOO_SHOOT).addTags(TagDC.ItemTag.MAKOMOTAKE);
+
 		tag(TagDC.ItemTag.SUGARS).addTags(TagDC.ItemTag.HONEY, TagDC.ItemTag.SYRUP, TagDC.ItemTag.DUST_SUGAR);
 
 		tag(TagDC.ItemTag.MILKS).addTags(TagDC.ItemTag.COW_MILK, TagDC.ItemTag.SOY_MILK, TagDC.ItemTag.COCONUT_MILK, TagDC.ItemTag.ALMOND_MILK);
@@ -367,6 +369,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.COOKED_MEAT).addTags(TagDC.ItemTag.COOKED_BEEF, TagDC.ItemTag.COOKED_PORK, TagDC.ItemTag.COOKED_CHICKEN,
 				TagDC.ItemTag.COOKED_MUTTON, TagDC.ItemTag.COOKED_RABBIT);
 
+		tag(TagDC.ItemTag.ALL_RAW_MEAT).addTags(TagDC.ItemTag.RAW_MEAT, TagDC.ItemTag.RAW_PLANT_MEAT);
+
 		tag(TagDC.ItemTag.COOKED_FISH).addTags(TagDC.ItemTag.COOKED_COD, TagDC.ItemTag.COOKED_SALMON).add(FoodInit.STICK_FISH_COOKED.get());
 
 		tag(Tags.Items.BONES).addTags(TagDC.ItemTag.BONE_COW, TagDC.ItemTag.BONE_PIG, TagDC.ItemTag.BONE_CHICKEN);
@@ -374,7 +378,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.FERTILIZER).addTags(TagDC.ItemTag.FISH_POWDER, TagDC.ItemTag.PRESS_CAKE, TagDC.ItemTag.LEAF_MOLD, TagDC.ItemTag.FERTILIZER_ADV);
 
 		tag(TagDC.ItemTag.RESIDUES).addTags(TagDC.ItemTag.DUST_PLANT, TagDC.ItemTag.PRESS_CAKE, TagDC.ItemTag.DEFATTED_SOY, TagDC.ItemTag.DUST_WOOD,
-				TagDC.ItemTag.BRAN, TagDC.ItemTag.BAGASSE, TagDC.ItemTag.FEED_HAY, TagDC.ItemTag.FEED_STRAW, ItemTags.LEAVES);
+				TagDC.ItemTag.BRAN, TagDC.ItemTag.GERM, TagDC.ItemTag.BAGASSE, TagDC.ItemTag.FEED_HAY, TagDC.ItemTag.FEED_STRAW, ItemTags.LEAVES);
 
 		tag(Tags.Items.STRING).addTags(TagDC.ItemTag.STRING_PLANT, TagDC.ItemTag.STRING_COTTON, TagDC.ItemTag.STRING_WOOL);
 		tag(TagDC.ItemTag.CLOTHS).addTags(TagDC.ItemTag.CLOTH_PLANT, TagDC.ItemTag.CLOTH_COTTON, TagDC.ItemTag.CLOTH_WOOL);
@@ -393,6 +397,9 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.BREAD).addTags(TagDC.ItemTag.HAC_BREAD_PLANE);
 		tag(TagDC.ItemTag.DRINK).addTags(TagDC.ItemTag.HAC_DRINK);
 		tag(TagDC.ItemTag.LIQUOR).addTags(TagDC.ItemTag.HAC_LIQUOR);
+
+		tag(TagDC.ItemTag.HAC_TEMPURA).add(FoodInit.TEMPURA_VEGI.get(), FoodInit.TEMPURA_PRAWN.get(), FoodInit.TEMPURA_IKATEN.get(),
+				FoodInit.TEMPURA_FISH.get(), FoodInit.TEMPURA_UMESISO.get());
 
 		tag(TagDC.ItemTag.HAC_SEASONING).addTags(TagDC.ItemTag.SOYSAUCE, TagDC.ItemTag.MISO,
 				TagDC.ItemTag.MIXED_SPICES, TagDC.ItemTag.KETCHUP, TagDC.ItemTag.MAYONNAISE,
@@ -472,7 +479,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.RAW_ALL_FISH).addTags(TagDC.ItemTag.RAW_EDIBLE_FISH).add(Items.PUFFERFISH, Items.TROPICAL_FISH);
 
-		tag(TagDC.ItemTag.FISH_BLUE).addTags(TagDC.ItemTag.MACKEREL, TagDC.ItemTag.SARDINE, TagDC.ItemTag.TUNA);
+		tag(TagDC.ItemTag.FISH_BLUE).addTags(TagDC.ItemTag.MACKEREL, TagDC.ItemTag.SARDINE);
 
 		tag(TagDC.ItemTag.FISH_WHITE).addTags(TagDC.ItemTag.RAW_COD, TagDC.ItemTag.ROCKFISH, TagDC.ItemTag.FLATHEAD, TagDC.ItemTag.GURNARD,
 				TagDC.ItemTag.GROUPER, TagDC.ItemTag.SEABREAM, TagDC.ItemTag.FLOUNDER, TagDC.ItemTag.MULLET);
@@ -537,10 +544,11 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		// machine
 		tag(TagDC.ItemTag.MOTORS).addTags(TagDC.ItemTag.MOTOR_T1, TagDC.ItemTag.MOTOR_T2);
 		tag(TagDC.ItemTag.IMPELLERS).addTags(TagDC.ItemTag.IMPELLER_T1, TagDC.ItemTag.IMPELLER_T2);
+		tag(TagDC.ItemTag.CRUSHER_BLADE).addTags(TagDC.ItemTag.BLADE_SANITARY, TagDC.ItemTag.BLADE_ALUMINA, TagDC.ItemTag.BLADE_SCREEN);
 
 		tag(TagDC.ItemTag.FUEL_BIOMASS).add(FoodInit.DUST_WOOD.get(), FoodInit.DUST_PLANT.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.VINE.get(),
 				FoodInit.SORGHUM_STICK.get(), FoodInit.BEESWAX.get(), FoodInit.TREEWAX.get(), FoodInit.FOOD_DEFATTED_SOY.get(), FoodInit.FOOD_PRESS_CAKE.get(),
-				FoodInit.FOOD_BRAN.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.FEED_HAY.get(), FoodInit.FEED_STRAW.get());
+				FoodInit.FOOD_BRAN.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.FEED_HAY.get(), FoodInit.FEED_STRAW.get(), FoodInit.FOOD_GERM.get());
 
 		tag(TagDC.ItemTag.HAC_FUELS).addTags(TagDC.ItemTag.FUEL_BIOMASS);
 

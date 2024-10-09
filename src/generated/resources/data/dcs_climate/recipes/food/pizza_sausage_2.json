@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/pizza_tomato_raw"
+    },
+    {
+      "tag": "forge:ingredients/cooked_sausage"
+    },
+    {
+      "tag": "forge:ingredients/cheese"
+    },
+    {
+      "tag": "forge:crops/paprika"
+    },
+    {
+      "tag": "forge:crops/chili"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/pizza_sausage_raw"
+  }
+}

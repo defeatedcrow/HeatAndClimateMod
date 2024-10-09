@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/potato"
+    },
+    {
+      "tag": "forge:ingredients/plant_oil"
+    },
+    {
+      "tag": "forge:ingredients/cheese"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/plate_potato_raw"
+  }
+}

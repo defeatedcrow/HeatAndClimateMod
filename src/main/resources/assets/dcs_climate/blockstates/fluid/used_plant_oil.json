@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "dcs_climate:block/fluid/used_plant_oil"
+    }
+  }
+}

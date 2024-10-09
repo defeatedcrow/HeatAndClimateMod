@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "tag": "forge:dusts/cobalt"
+    },
+    "X": {
+      "tag": "forge:ingots/iron"
+    },
+    "Y": {
+      "tag": "forge:dusts/lithium"
+    },
+    "Z": {
+      "tag": "forge:dusts/coal"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XZX",
+    "XWX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/batteryitem_middle"
+  }
+}

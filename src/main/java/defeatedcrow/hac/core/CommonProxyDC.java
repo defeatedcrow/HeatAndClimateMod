@@ -1,6 +1,10 @@
 package defeatedcrow.hac.core;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+
+import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.core.config.ConfigLoadEventDC;
 import defeatedcrow.hac.core.config.CoreConfigDC;
@@ -25,13 +29,17 @@ import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingConfig;
 import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingList;
 import defeatedcrow.hac.food.FoodProxy;
 import defeatedcrow.hac.food.event.FishingEventDC;
+import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.PlayerAdvancements;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraftforge.common.MinecraftForge;
@@ -76,6 +84,8 @@ public class CommonProxyDC {
 		CoreConfigDC.loadConfig();
 
 		FoodProxy.commonInit();
+
+		registerVillagerFoods();
 	}
 
 	public void updatePlayerClimate() {}
@@ -162,6 +172,31 @@ public class CommonProxyDC {
 		if (name == null)
 			return null;
 		return level.getServer().getPlayerList().getPlayerByName(name);
+	}
+
+	public static void registerVillagerFoods() {
+		Map<Item, Integer> map = new HashMap<>();
+		map.put(Items.APPLE, 1);
+		map.put(Items.BAKED_POTATO, 2);
+		map.put(Items.PUMPKIN_PIE, 2);
+		map.put(Items.BEETROOT_SOUP, 2);
+		map.put(Items.COOKIE, 2);
+		map.put(FoodInit.BREAD_ROUND_BAKED_ITEM.get(), 3);
+		map.put(FoodInit.BREAD_NUTS_BAKED_ITEM.get(), 4);
+		map.put(FoodInit.BREAD_CREAM_BAKED_ITEM.get(), 4);
+		map.put(FoodInit.BREAD_ANKO_BAKED_ITEM.get(), 4);
+		map.put(FoodInit.BREAD_SAUSAGE_BAKED_ITEM.get(), 4);
+		map.put(FoodInit.BREAD_CINNAMON_BAKED_ITEM.get(), 4);
+		map.put(FoodInit.SANDWICH_EGG_ITEM.get(), 4);
+		map.put(FoodInit.SANDWICH_FRUIT_ITEM.get(), 4);
+		map.put(FoodInit.SANDWICH_MARMALADE_ITEM.get(), 4);
+		map.put(FoodInit.SANDWICH_SALMON_ITEM.get(), 4);
+		map.put(FoodInit.SANDWICH_SALAD_ITEM.get(), 4);
+		if (Villager.FOOD_POINTS instanceof ImmutableMap) {
+			Villager.FOOD_POINTS = map;
+		} else {
+			Villager.FOOD_POINTS.putAll(map);
+		}
 	}
 
 }

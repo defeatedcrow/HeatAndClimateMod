@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/cake_cream_sesami"
+  },
+  "parent": "minecraft:item/generated"
+}

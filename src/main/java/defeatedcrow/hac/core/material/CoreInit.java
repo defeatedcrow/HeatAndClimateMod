@@ -201,6 +201,7 @@ public class CoreInit {
 	public static final RegistryObject<Item> GEM_AMAZONITE = regItem("gem_amazonite", () -> new ItemGemDC(Rarity.UNCOMMON, "gem_amazonite", TagDC.ItemTag.GEM_AMAZONITE));
 	public static final RegistryObject<Item> GEM_OLIVINE = regItem("gem_olivine", () -> new ItemGemDC(Rarity.UNCOMMON, "gem_olivine", TagDC.ItemTag.GEM_OLIVINE));
 	public static final RegistryObject<Item> GEM_JADEITE = regItem("gem_jadeite", () -> new ItemGemDC(Rarity.RARE, "gem_jadeite", TagDC.ItemTag.GEM_JADEITE));
+	public static final RegistryObject<Item> GEM_TOURMALINE = regItem("gem_nervous_tourmaline", () -> new ItemGemDC(Rarity.RARE, "gem_nervous_tourmaline", TagDC.ItemTag.GEM_TOURMALINE));
 
 	public static final RegistryObject<Item> GEM_SALT = regItem("gem_salt", () -> new ItemGemDC(Rarity.COMMON, "gem_salt", TagDC.ItemTag.GEM_SALT));
 	public static final RegistryObject<Item> GEM_NITER = regItem("gem_niter", () -> new ItemGemDC(Rarity.COMMON, "gem_niter", TagDC.ItemTag.GEM_NITER));
@@ -210,9 +211,13 @@ public class CoreInit {
 	public static final RegistryObject<Item> DUST_SALT = regItem("dust_salt", () -> new MaterialItemDC("dust_salt", TagDC.ItemTag.DUST_SALT));
 	public static final RegistryObject<Item> DUST_NITER = regItem("dust_niter", () -> new MaterialItemDC("dust_niter", TagDC.ItemTag.DUST_NITER));
 	public static final RegistryObject<Item> DUST_SULFUR = regItem("dust_sulfur", () -> new MaterialItemDC("dust_sulfur", TagDC.ItemTag.DUST_SULFUR));
+	public static final RegistryObject<Item> DUST_LITHIUM = regItem("dust_lithium", () -> new MaterialItemDC("dust_lithium", TagDC.ItemTag.DUST_LITHIUM));
 	public static final RegistryObject<Item> DUST_CRYSTAL = regItem("dust_crystal", () -> new MaterialItemDC("dust_crystal", TagDC.ItemTag.DUST_CRYSTAL));
+	public static final RegistryObject<Item> DUST_ALUMINA = regItem("dust_alumina", () -> new MaterialItemDC("dust_alumina", TagDC.ItemTag.DUST_ALUMINA));
+	public static final RegistryObject<Item> DUST_DIAMOND = regItem("dust_diamond", () -> new MaterialItemDC("dust_diamond", TagDC.ItemTag.DUST_DIAMOND));
 	public static final RegistryObject<Item> DUST_LIME = regItem("dust_lime", () -> new MaterialItemDC("dust_lime", TagDC.ItemTag.DUST_LIME));
 	public static final RegistryObject<Item> DUST_TRONA = regItem("dust_trona", () -> new MaterialItemDC("dust_trona", TagDC.ItemTag.DUST_TRONA));
+	public static final RegistryObject<Item> DUST_BORAX = regItem("dust_borax", () -> new MaterialItemDC("dust_borax", TagDC.ItemTag.DUST_BORAX));
 
 	public static final RegistryObject<Item> CLOTH_RUBBER = regItem("cloth_rubber", () -> new MaterialItemDC("cloth_rubber", TagDC.ItemTag.CLOTH_RUBBER));
 
@@ -591,9 +596,20 @@ public class CoreInit {
 	public static final RegistryObject<MobEffect> WET = regPotionEffect("effect_wet", () -> new MobEffectDC("effect_wet", MobEffectCategory.NEUTRAL, 0x90E0FF).setIconIndex(1, 2));
 	public static final RegistryObject<MobEffect> FLAG = regPotionEffect("effect_flag", () -> new MobEffectFlag("effect_flag", MobEffectCategory.NEUTRAL, 0xFF0050).setIconIndex(3, 2));
 
-	public static final WaterTypeFluidDC BRINE = new WaterTypeFluidDC("brine", 0xFF00F0C0);
+	public static final WaterTypeFluidDC BRINE = new WaterTypeFluidDC("brine", 0xE000F0C0);
 	public static final WaterTypeFluidDC HOTSPRING = new WaterTypeFluidDC("hotspring", 0xFFAEFFDE, 353);
-	public static final WaterTypeFluidDC PLANT_OIL = new WaterTypeFluidDC("plant_oil", 0xFFAF7F00, FluidType.Properties.create()
+	public static final WaterTypeFluidDC PLANT_OIL = new WaterTypeFluidDC("plant_oil", 0xFFAFC000, FluidType.Properties.create()
+			.canSwim(false)
+			.fallDistanceModifier(0F)
+			.motionScale(0.007D)
+			.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+			.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
+			.sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
+			.canHydrate(false)
+			.density(900)
+			.viscosity(6000)
+			.temperature(298));
+	public static final WaterTypeFluidDC USED_PLANT_OIL = new WaterTypeFluidDC("used_plant_oil", 0xFFA08020, FluidType.Properties.create()
 			.canSwim(false)
 			.fallDistanceModifier(0F)
 			.motionScale(0.007D)
@@ -626,7 +642,7 @@ public class CoreInit {
 			.canHydrate(true)
 			.temperature(283), "fluid/sparkling_still");
 
-	public static final GasTypeFluidDC AIR = new GasTypeFluidDC("compressed_air", 0xFF40B0FF, false, "fluid/sparkling_still");
+	public static final GasTypeFluidDC AIR = new GasTypeFluidDC("compressed_air", 0xC040B0FF, false, "fluid/sparkling_still");
 
 	// reflex
 
@@ -654,7 +670,11 @@ public class CoreInit {
 	public static final RegistryObject<SimpleParticleType> LIGHT_ORB_RED = PARTICLE_TYPE.register("light_orb_red", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> LIGHT_ORB_BLUE = PARTICLE_TYPE.register("light_orb_blue", () -> new SimpleParticleType(false));
 
+	public static final RegistryObject<SimpleParticleType> SPARKLE = PARTICLE_TYPE.register("sparkle", () -> new SimpleParticleType(false));
+
 	public static final RegistryObject<SimpleParticleType> LEAKAGE = PARTICLE_TYPE.register("leakage", () -> new SimpleParticleType(false));
+
+	public static final RegistryObject<SimpleParticleType> FOOD_PARTICLE = PARTICLE_TYPE.register("food_particle", () -> new SimpleParticleType(false));
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = BLOCKS.register("main/" + name, block);

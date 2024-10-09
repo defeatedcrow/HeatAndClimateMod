@@ -14,7 +14,7 @@ import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 @Mixin(TargetingConditions.class)
 public abstract class TargetingConditionsMixin {
 
-	@Inject(method = "test", at = @At(value = "HEAD"), cancellable = true, remap = false)
+	@Inject(method = "test", at = @At(value = "HEAD"), cancellable = true, remap = true)
 	public void testFix(@Nullable LivingEntity owner, LivingEntity target, @Nonnull CallbackInfoReturnable<Boolean> callback) {
 		if (target == null) {
 			callback.setReturnValue(false);
