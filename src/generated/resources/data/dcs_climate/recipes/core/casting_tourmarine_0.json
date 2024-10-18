@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "V": {
+      "tag": "forge:dusts/borax"
+    },
+    "W": {
+      "tag": "forge:dusts/crystal"
+    },
+    "X": {
+      "tag": "forge:ores/gipsum"
+    },
+    "Y": {
+      "tag": "forge:dusts/alumina"
+    },
+    "Z": {
+      "tag": "forge:dusts/lithium"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "WZV",
+    "XYX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/casting_mold_tourmarine_raw"
+  }
+}

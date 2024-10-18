@@ -1,4 +1,4 @@
-// 1.19.2	2024-10-09T21:41:19.7205277	Recipes
+// 1.19.2	2024-10-19T00:01:01.1898053	Recipes
 159d9a8e11dd685a327828426555af8d9751b55b data/dcs_climate/advancements/recipes/magic/magic/craft_arrow_black.json
 e6e94659b01fe19aebee0afbdd0f12fbd6e95810 data/dcs_climate/advancements/recipes/magic/magic/craft_arrow_blue.json
 21f5e5ec7b6c0bd6590d8da8931b0351e745f05e data/dcs_climate/advancements/recipes/magic/magic/craft_arrow_green.json
@@ -31,6 +31,7 @@ a3424f90eaa6326126b4098b2009c09b603bdeda data/dcs_climate/advancements/recipes/m
 cdea4dde9114baa1aa667c9ffed0db8fe4ccd595 data/dcs_climate/advancements/recipes/magic/magic/craft_card_white_uncommon.json
 649ac6f2355fdf5ce627bb6193a2080776eaf92c data/dcs_climate/advancements/recipes/magic/magic/craft_element_black_inart.json
 8aebb0916c9046e738444c0c9878f7bf36883bc1 data/dcs_climate/advancements/recipes/magic/magic/craft_element_black_inart_2.json
+3ee9b0f2608460e0aee5d4136b5e9ad466668ef0 data/dcs_climate/advancements/recipes/magic/magic/craft_element_black_inart_3.json
 2abf38fe437a9c7927873cc692ddd4f4b975ec9d data/dcs_climate/advancements/recipes/magic/magic/craft_element_blue_inart.json
 35b221c83789afc08aa83fd47d2640da01bc3e14 data/dcs_climate/advancements/recipes/magic/magic/craft_element_blue_inart_2.json
 57e8ce5e610601c32bbaf8089bf65ec76a673a08 data/dcs_climate/advancements/recipes/magic/magic/craft_element_green_inart.json
@@ -141,6 +142,7 @@ a052339fe400a2d0182ba0bad9f65cad19425f06 data/dcs_climate/recipes/magic/craft_ca
 3fce22e8430d34a01e2f4af7a358fa366c37a3f3 data/dcs_climate/recipes/magic/craft_card_white_uncommon.json
 a4ca1dd26ed6058efb5b16a30c3f2e75ffd39bd0 data/dcs_climate/recipes/magic/craft_element_black_inart.json
 5a0dc139e78f1dd9a331c5406d61c7c4b29cee54 data/dcs_climate/recipes/magic/craft_element_black_inart_2.json
+58bf1ac962afa964b8e29b584fd1807816a7fc4f data/dcs_climate/recipes/magic/craft_element_black_inart_3.json
 3ed92a9ef0d97a51a4b460e0dfabc6d9df480d4a data/dcs_climate/recipes/magic/craft_element_blue_inart.json
 289725e299c71506f25b6f1994e0e11fbb7260cd data/dcs_climate/recipes/magic/craft_element_blue_inart_2.json
 9059d7c16c91f89a6cfe5d2319b24eede66d8281 data/dcs_climate/recipes/magic/craft_element_green_inart.json

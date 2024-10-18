@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.client.gui.SimpleInventoryMenu;
 import defeatedcrow.hac.core.material.block.AlloyDustBlockDC;
 import defeatedcrow.hac.core.material.block.AlloyHeatTreatmentBlock;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
+import defeatedcrow.hac.core.material.block.CastingMoldBlock;
 import defeatedcrow.hac.core.material.block.LayerStoneBlock;
 import defeatedcrow.hac.core.material.block.MetalBlockDC;
 import defeatedcrow.hac.core.material.block.OreBlockGemDC;
@@ -82,7 +83,6 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.alchemy.Potion;
@@ -188,6 +188,7 @@ public class CoreInit {
 	public static final RegistryObject<Item> GEM_IOLITE = regItem("gem_iolite", () -> new ItemGemDC(Rarity.UNCOMMON, "gem_iolite", TagDC.ItemTag.GEM_IOLITE));
 	public static final RegistryObject<Item> GEM_SAKURA = regItem("gem_sakura", () -> new ItemGemDC(Rarity.UNCOMMON, "gem_sakura", TagDC.ItemTag.GEM_SAKURA));
 	public static final RegistryObject<Item> GEM_FANG = regItem("gem_fang", () -> new ItemGemDC(Rarity.UNCOMMON, "gem_fang", TagDC.ItemTag.GEM_FANG));
+	public static final RegistryObject<Item> GEM_KUNZITE = regItem("gem_kunzite", () -> new ItemGemDC(Rarity.RARE, "gem_kunzite", TagDC.ItemTag.GEM_KUNZITE));
 	public static final RegistryObject<Item> GEM_OPAL = regItem("gem_opal", () -> new ItemGemDC(Rarity.RARE, "gem_opal", TagDC.ItemTag.GEM_OPAL));
 	public static final RegistryObject<Item> GEM_DRAGONSEYE = regItem("gem_dragonseye", () -> new ItemGemDC(Rarity.RARE, "gem_dragonseye", TagDC.ItemTag.GEM_DRAGONSEYE));
 	public static final RegistryObject<Item> GEM_DESERTROSE = regItem("gem_desertrose", () -> new ItemGemDC(Rarity.COMMON, "gem_desertrose", TagDC.ItemTag.GEM_DESERTROSE));
@@ -325,6 +326,15 @@ public class CoreInit {
 	public static final RegistryObject<Item> HAT_CLOTH_BLUE = regItem("hat_cloth_blue", () -> new ArmorItemDC("hat_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAT));
 	public static final RegistryObject<Item> HAT_CLOTH_GREEN = regItem("hat_cloth_green", () -> new ArmorItemDC("hat_cloth_green", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAT));
 
+	public static final RegistryObject<Item> HAIR_CLOTH = regItem("hair_cloth",
+			() -> new ArmorItemDC("hair_cloth", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_CLOTH_BLACK = regItem("hair_cloth_black",
+			() -> new ArmorItemDC("hair_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_CLOTH_RED = regItem("hair_cloth_red",
+			() -> new ArmorItemDC("hair_cloth_red", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_CLOTH_BLUE = regItem("hair_cloth_blue",
+			() -> new ArmorItemDC("hair_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+
 	public static final RegistryObject<Item> JACKET_LINEN = regItem("jacket_linen", () -> new ArmorItemDC("jacket_linen", MaterialsDC.LINEN, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 	public static final RegistryObject<Item> JACKET_LINEN_BLACK = regItem("jacket_linen_black",
 			() -> new ArmorItemDC("jacket_linen_black", MaterialsDC.LINEN, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
@@ -449,6 +459,49 @@ public class CoreInit {
 	public static final RegistryObject<Item> SUITS_CLOTH_BLUE = regItem("suits_cloth_blue",
 			() -> new ArmorItemDC("suits_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 
+	public static final RegistryObject<Item> HAIR_FLOWER_ASTER = regItem("hair_flower_aster",
+			() -> new ArmorItemDC("hair_flower_aster", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_PYRETHRUM = regItem("hair_flower_pyrethrum",
+			() -> new ArmorItemDC("hair_flower_pyrethrum", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_CAMELLIA = regItem("hair_flower_camellia",
+			() -> new ArmorItemDC("hair_flower_camellia", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_SCHIMA = regItem("hair_flower_schima",
+			() -> new ArmorItemDC("hair_flower_schima", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_HEATH = regItem("hair_flower_heath",
+			() -> new ArmorItemDC("hair_flower_heath", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_RHODODENDRON = regItem("hair_flower_rhododendron",
+			() -> new ArmorItemDC("hair_flower_rhododendron", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_LAVENDER = regItem("hair_flower_lavender",
+			() -> new ArmorItemDC("hair_flower_lavender", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_CROCUS = regItem("hair_flower_crocus",
+			() -> new ArmorItemDC("hair_flower_crocus", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_IRIS = regItem("hair_flower_iris",
+			() -> new ArmorItemDC("hair_flower_iris", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_MALLOW = regItem("hair_flower_mallow",
+			() -> new ArmorItemDC("hair_flower_mallow", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_TROPICAL = regItem("hair_flower_tropical",
+			() -> new ArmorItemDC("hair_flower_tropical", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_BINDWEED = regItem("hair_flower_bindweed",
+			() -> new ArmorItemDC("hair_flower_bindweed", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_MORNING = regItem("hair_flower_morning",
+			() -> new ArmorItemDC("hair_flower_morning", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_OSMANTHUS = regItem("hair_flower_osmanthus",
+			() -> new ArmorItemDC("hair_flower_osmanthus", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_SPIRANTHES = regItem("hair_flower_spiranthes",
+			() -> new ArmorItemDC("hair_flower_spiranthes", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_CYMBIDIUM = regItem("hair_flower_cymbidium",
+			() -> new ArmorItemDC("hair_flower_cymbidium", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_CATTLEYA = regItem("hair_flower_cattleya",
+			() -> new ArmorItemDC("hair_flower_cattleya", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_DELPHINIUM = regItem("hair_flower_delphinium",
+			() -> new ArmorItemDC("hair_flower_delphinium", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_CLEMATIS = regItem("hair_flower_clematis",
+			() -> new ArmorItemDC("hair_flower_clematis", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_MONKSHOOD = regItem("hair_flower_monkshood",
+			() -> new ArmorItemDC("hair_flower_monkshood", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_DAMASCHENA = regItem("hair_flower_damaschena",
+			() -> new ArmorItemDC("hair_flower_damaschena", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+
 	public static final RegistryObject<Item> NULL_ITEM = regItem("null_item", () -> new NullItemDC("null_item"));
 	public static final RegistryObject<Item> ICON_HAC = regItem("icon_hac", () -> new NoTabItemDC("icon_hac"));
 	public static final RegistryObject<Item> ICON_BURN = regItem("icon_burning", () -> new NoTabItemDC("icon_burning"));
@@ -474,7 +527,7 @@ public class CoreInit {
 	public static final RegistryObject<Block> ORE_TOPAZ = regBlock("ore_topaz", () -> new OreBlockGemDC(GEM_TOPAZ, "ore_topaz").setTier(2), TagDC.ItemTag.ORES_TOPAZ);
 	public static final RegistryObject<Block> ORE_LARIMAR = regBlock("ore_larimar", () -> new OreBlockGemDC(GEM_LARIMAR, "ore_larimar"), TagDC.ItemTag.ORES_LARIMAR);
 	public static final RegistryObject<Block> ORE_AQUAMARINE = regBlock("ore_aquamarine", () -> new OreBlockGemDC(GEM_AQUAMARINE, "ore_aquamarine").setTier(2), TagDC.ItemTag.ORES_AQUAMARINE);
-	public static final RegistryObject<Block> ORE_IOLITE = regBlock("ore_iolite", () -> new OreBlockGemDC(GEM_IOLITE, "ore_iolite"), TagDC.ItemTag.ORES_IOLITE);
+	public static final RegistryObject<Block> ORE_IOLITE = regBlock("ore_iolite", () -> new OreBlockGemDC(GEM_IOLITE, "ore_iolite").setSecondary(GEM_SAKURA), TagDC.ItemTag.ORES_IOLITE);
 	public static final RegistryObject<Block> ORE_OPAL = regBlock("ore_opal", () -> new OreBlockGemDC(GEM_OPAL, "ore_opal").setTier(2), TagDC.ItemTag.ORES_OPAL);
 	public static final RegistryObject<Block> ORE_ROSINCA = regBlock("ore_rosinca", () -> new OreBlockGemDC(GEM_ROSINCA, "ore_rosinca"), TagDC.ItemTag.ORES_ROSINCA);
 	public static final RegistryObject<Block> ORE_SPINEL = regBlock("ore_spinel", () -> new OreBlockGemDC(GEM_SPINEL, "ore_spinel").setTier(2), TagDC.ItemTag.ORES_SPINEL);
@@ -493,19 +546,16 @@ public class CoreInit {
 	public static final RegistryObject<Block> ORE_WHITE = regBlock("ore_white", () -> new OreBlockGemDC(OREITEM_WHITE1, "ore_white").setSecondary(GEM_CRYSTAL), TagDC.ItemTag.ORES_WHITE);
 	public static final RegistryObject<Block> ORE_WHITE_DEEP = regBlock("ore_white_deep", () -> new OreBlockGemDC(OREITEM_WHITE2, "ore_white_deep")
 			.setSecondary(GEM_THUNDEREGG).setTier(2), TagDC.ItemTag.ORES_WHITE_DEEP);
-	public static final RegistryObject<Block> ORE_BLUE = regBlock("ore_blue", () -> new OreBlockGemDC(OREITEM_BLUE1, "ore_blue") {
-		@Override
-		public ItemStack getSecondary() {
-			return new ItemStack(Items.LAPIS_LAZULI);
-		}
-	}, TagDC.ItemTag.ORES_BLUE);
+	public static final RegistryObject<Block> ORE_BLUE = regBlock("ore_blue", () -> new OreBlockGemDC(OREITEM_BLUE1, "ore_blue")
+			.setSecondary(() -> Items.LAPIS_LAZULI), TagDC.ItemTag.ORES_BLUE);
 	public static final RegistryObject<Block> ORE_BLUE_DEEP = regBlock("ore_blue_deep", () -> new OreBlockGemDC(OREITEM_BLUE2, "ore_blue_deep")
 			.setSecondary(GEM_CELESTITE).setTier(2), TagDC.ItemTag.ORES_BLUE_DEEP);
 	public static final RegistryObject<Block> ORE_BLACK = regBlock("ore_black", () -> new OreBlockGemDC(OREITEM_BLACK1, "ore_black")
 			.setSecondary(GEM_VIVIANITE), TagDC.ItemTag.ORES_BLACK);
 	public static final RegistryObject<Block> ORE_BLACK_DEEP = regBlock("ore_black_deep", () -> new OreBlockGemDC(OREITEM_BLACK2, "ore_black_deep")
 			.setSecondary(GEM_FANG).setTier(2), TagDC.ItemTag.ORES_BLACK_DEEP);
-	public static final RegistryObject<Block> ORE_RED = regBlock("ore_red", () -> new OreBlockGemDC(OREITEM_RED1, "ore_red").setSecondary(GEM_JASPER), TagDC.ItemTag.ORES_RED);
+	public static final RegistryObject<Block> ORE_RED = regBlock("ore_red", () -> new OreBlockGemDC(OREITEM_RED1, "ore_red")
+			.setSecondary(GEM_JASPER), TagDC.ItemTag.ORES_RED);
 	public static final RegistryObject<Block> ORE_RED_DEEP = regBlock("ore_red_deep", () -> new OreBlockGemDC(OREITEM_RED2, "ore_red_deep")
 			.setSecondary(GEM_ALMANDINE).setTier(2), TagDC.ItemTag.ORES_RED_DEEP);
 	public static final RegistryObject<Block> ORE_GREEN = regBlock("ore_green", () -> new OreBlockGemDC(OREITEM_GREEN1, "ore_green")
@@ -560,6 +610,15 @@ public class CoreInit {
 
 	public static final RegistryObject<Block> DUSTBLOCK_RUBBER = regBlock("dustblock_rubber", () -> new AlloyDustBlockDC("dustblock_rubber"), TagDC.ItemTag.DUSTBLOCK_RUBBER);
 	public static final RegistryObject<Block> BLOCK_RUBBER = regBlock("block_rubber", () -> new MetalBlockDC("block_rubber"), TagDC.ItemTag.BLOCK_RUBBER);
+
+	public static final RegistryObject<Block> CASTING_QUARTZ_RAW = regBlock("casting_mold_quartz_raw",
+			() -> new CastingMoldBlock("casting_mold_quartz_raw", CoreInit.DUST_CRYSTAL, true), null);
+	public static final RegistryObject<Block> CASTING_QUARTZ = regBlock("casting_mold_quartz",
+			() -> new CastingMoldBlock("casting_mold_quartz", () -> Items.QUARTZ, false), null);
+	public static final RegistryObject<Block> CASTING_TOURMARINE_RAW = regBlock("casting_mold_tourmarine_raw",
+			() -> new CastingMoldBlock("casting_mold_tourmarine_raw", CoreInit.DUST_ALUMINA, true), null);
+	public static final RegistryObject<Block> CASTING_TOURMARINE = regBlock("casting_mold_tourmarine",
+			() -> new CastingMoldBlock("casting_mold_tourmarine", CoreInit.GEM_TOURMALINE, false), null);
 
 	public static final RegistryObject<EntityType<ThrownHarpoon>> HARPOON = ENTITIES.register("harpoon", () -> EntityType.Builder.<ThrownHarpoon>of(ThrownHarpoon::new, MobCategory.MISC)
 			.sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("harpoon"));

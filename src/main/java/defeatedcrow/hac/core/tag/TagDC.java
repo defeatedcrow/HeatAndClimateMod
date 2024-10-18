@@ -329,6 +329,7 @@ public class TagDC {
 		public static final TagKey<Item> GEM_AQUAMARINE = itemTag("gems/aquamarine");
 		public static final TagKey<Item> GEM_IOLITE = itemTag("gems/iolite");
 		public static final TagKey<Item> GEM_SAKURA = itemTag("gems/sakura");
+		public static final TagKey<Item> GEM_KUNZITE = itemTag("gems/kunzite");
 		public static final TagKey<Item> GEM_OPAL = itemTag("gems/opal");
 		public static final TagKey<Item> GEM_ROSINCA = itemTag("gems/rosinca");
 		public static final TagKey<Item> GEM_SPINEL = itemTag("gems/spinel");
@@ -465,7 +466,7 @@ public class TagDC {
 		public static final TagKey<Item> CROP_RUBBER = itemTag("crops/rubber");
 		public static final TagKey<Item> CROP_ASH = itemTag("crops/ash");
 		public static final TagKey<Item> CROP_OLIVE = itemTag("crops/olive");
-		public static final TagKey<Item> CROP_OSUMANTHUS = itemTag("crops/osmanthus");
+		public static final TagKey<Item> CROP_OSMANTHUS = itemTag("crops/osmanthus");
 		public static final TagKey<Item> CROP_COCONUT = itemTag("crops/coconut");
 		public static final TagKey<Item> CROP_DATE = itemTag("crops/date");
 		public static final TagKey<Item> CROP_OIL_PALM = itemTag("crops/oil_palm");

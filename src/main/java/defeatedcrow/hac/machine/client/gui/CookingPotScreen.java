@@ -130,11 +130,11 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotMenu> {
 
 		if (!this.menu.getInputFluid().isEmpty()) {
 			int amo = this.menu.getInputFluidGauge();
-			renderFluid(pose, this.menu.getInputFluid(), i + w1, j + h1, 12, 40, amo);
+			PortableTankScreen.renderFluid(pose, this.menu.getInputFluid(), i + w1, j + h1, 12, 40, amo);
 		}
 		if (!this.menu.getOutputFluid().isEmpty()) {
 			int amo = this.menu.getOutputFluidGauge();
-			renderFluid(pose, this.menu.getOutputFluid(), i + w2, j + h2, 12, 40, amo);
+			PortableTankScreen.renderFluid(pose, this.menu.getOutputFluid(), i + w2, j + h2, 12, 40, amo);
 		}
 
 	}

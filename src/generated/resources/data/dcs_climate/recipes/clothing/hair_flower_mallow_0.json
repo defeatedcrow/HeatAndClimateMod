@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/pattern_paper_wear"
+    },
+    {
+      "tag": "forge:crops/schima"
+    },
+    {
+      "tag": "forge:string"
+    },
+    {
+      "tag": "forge:crops/blue_mallow"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/hair_flower_mallow"
+  }
+}

@@ -1,6 +1,7 @@
 package defeatedcrow.hac.core.material.block;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
@@ -19,21 +20,20 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.RegistryObject;
 
 public class OreBlockGemDC extends LayerStoneBlock {
 
 	private int toolTier = 1;
-	private final RegistryObject<Item> drop;
+	private final Supplier<Item> drop;
 	@Nullable
-	private RegistryObject<Item> secondary;
+	private Supplier<Item> secondary;
 
-	public OreBlockGemDC(RegistryObject<Item> item, String s) {
+	public OreBlockGemDC(Supplier<Item> item, String s) {
 		super(s);
 		drop = item;
 	}
 
-	public OreBlockGemDC setSecondary(RegistryObject<Item> item) {
+	public OreBlockGemDC setSecondary(Supplier<Item> item) {
 		secondary = item;
 		return this;
 	}

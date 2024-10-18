@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "base": "dcs_climate:block/machine/casting_mold",
+    "top": "dcs_climate:item/material/casting_mold_hole"
+  },
+  "parent": "dcs_climate:machine/casting_mold"
+}

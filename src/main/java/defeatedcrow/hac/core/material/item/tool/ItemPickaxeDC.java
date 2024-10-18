@@ -24,4 +24,9 @@ public class ItemPickaxeDC extends PickaxeItem implements IItemDC, ITierItem {
 		return tag;
 	}
 
+	@Override
+	public TierDC getTier() {
+		return tier;
+	}
+
 }

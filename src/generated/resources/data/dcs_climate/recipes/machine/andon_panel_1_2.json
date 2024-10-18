@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:machine/monitor_andon_panel_9"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:machine/monitor_andon_panel_1"
+  }
+}

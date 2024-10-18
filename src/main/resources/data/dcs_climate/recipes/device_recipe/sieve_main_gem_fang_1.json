@@ -6,10 +6,15 @@
     "count": 2
   },
   "secondary": {
-    "item": "dcs_climate:main/gem_opal",
+    "item": "dcs_climate:main/gem_kunzite",
     "count": 1
   },
   "secondary_rate": 30,
+  "tertiary": {
+    "item": "dcs_climate:main/gem_nervous_tourmaline",
+    "count": 1
+  },
+  "tertiary_rate": 2,
   "ingredients": [
     {
       "tag": "dcs_climate:color_ores/deep_black"

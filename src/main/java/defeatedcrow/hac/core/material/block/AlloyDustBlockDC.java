@@ -122,12 +122,12 @@ public class AlloyDustBlockDC extends ClimateBlock implements IRapidCollectables
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.PICKAXE;
+		return ToolType.SHOVEL;
 	}
 
 	@Override
 	public int getToolTier() {
-		return 1;
+		return 0;
 	}
 
 	/* IRapidCollectables */

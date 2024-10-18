@@ -38,7 +38,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.Vanishable;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -122,7 +121,7 @@ public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 					if (liv instanceof IForgeShearable target2)
 						if (target2.isShearable(dummy, playerIn.level, pos)) {
 							List<ItemStack> drops = target2.onSheared(playerIn, dummy, entity.getLevel(), pos,
-								EnchantmentHelper.getTagEnchantmentLevel(Enchantments.BLOCK_FORTUNE, stack));
+									EnchantmentHelper.getTagEnchantmentLevel(Enchantments.BLOCK_FORTUNE, stack));
 							RandomSource rand = playerIn.level.random;
 							drops.forEach(d -> {
 								ItemEntity ent = liv.spawnAtLocation(d, 1.0F);
@@ -170,7 +169,7 @@ public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 	}
 
 	@Override
-	public Tier getTier() {
+	public TierDC getTier() {
 		return tier;
 	}
 

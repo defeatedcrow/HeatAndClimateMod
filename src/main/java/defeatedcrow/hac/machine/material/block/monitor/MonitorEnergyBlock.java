@@ -86,7 +86,10 @@ public class MonitorEnergyBlock extends EntityBlockDC implements ITileNBTHolder 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext cont) {
 		FluidState fluidstate = cont.getLevel().getFluidState(cont.getClickedPos());
-		Direction face = cont.getHorizontalDirection();
+		Direction face = cont.getClickedFace().getOpposite();
+		if (face.getAxis().isVertical()) {
+			face = cont.getHorizontalDirection();
+		}
 		return this.defaultBlockState().setValue(DCState.FACING, face)
 				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}

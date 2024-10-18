@@ -1,0 +1,24 @@
+{
+  "type": "dcs_climate:climate_smelting",
+  "group": "climate_smelting",
+  "result": {
+    "item": "dcs_climate:main/casting_mold_quartz"
+  },
+  "ingredient": {
+    "item": "dcs_climate:main/casting_mold_quartz_raw"
+  },
+  "frequency": 100,
+  "heat": [
+    "SMELTING",
+    "UHT"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT"
+  ]
+}

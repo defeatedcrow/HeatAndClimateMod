@@ -31,6 +31,8 @@ public class ClimateSmeltingList {
 		addRecipe(CoreInit.METALBLOCK_SILVER.get(), getHeat(Rarity.COMMON), null, DCAirflow.TIGHT, Ingredient.of(CoreInit.DUSTBLOCK_SILVER.get().asItem()));
 		addRecipe(CoreInit.METALBLOCK_MAGNET.get(), getHeat(Rarity.RARE), null, DCAirflow.TIGHT, Ingredient.of(CoreInit.DUSTBLOCK_MAGNET.get().asItem()));
 		addRecipe(CoreInit.METALBLOCK_BSCCO.get(), getHeat(Rarity.RARE), null, DCAirflow.TIGHT, Ingredient.of(CoreInit.DUSTBLOCK_BSCCO.get().asItem()));
+		addRecipe(CoreInit.CASTING_QUARTZ.get(), getHeat(Rarity.UNCOMMON), null, DCAirflow.TIGHT, Ingredient.of(CoreInit.CASTING_QUARTZ_RAW.get().asItem()));
+		addRecipe(CoreInit.CASTING_TOURMARINE.get(), getHeat(Rarity.UNCOMMON), null, DCAirflow.TIGHT, Ingredient.of(CoreInit.CASTING_TOURMARINE_RAW.get().asItem()));
 
 		for (FoodRecipes.Smelting foods : FoodRecipes.INSTANCE.Smeltings) {
 			ResourceLocation res = DCUtil.getRes(foods.output().get()).orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
@@ -51,8 +53,7 @@ public class ClimateSmeltingList {
 		}
 
 		addRecipe(new ItemStack(BuildInit.ADOBE_BLOCK.get()), ImmutableList.of(DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL, DCHeatTier.OVEN), ImmutableList.of(DCHumidity.DRY), null, 300,
-				Ingredient.of(
-						BuildInit.ADOBE_BLOCK_WET.get()));
+				Ingredient.of(BuildInit.ADOBE_BLOCK_WET.get()));
 
 		addRecipe(new ItemStack(CoreInit.BLOCK_RUBBER.get()), ImmutableList.of(DCHeatTier.BOIL, DCHeatTier.OVEN), ImmutableList.of(DCHumidity.DRY, DCHumidity.NORMAL), null, 300, Ingredient.of(
 				CoreInit.DUSTBLOCK_RUBBER.get()));

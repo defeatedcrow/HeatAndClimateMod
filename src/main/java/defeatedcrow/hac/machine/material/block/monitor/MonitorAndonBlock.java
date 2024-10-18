@@ -92,6 +92,10 @@ public class MonitorAndonBlock extends EntityBlockDC implements ITileNBTHolder {
 		return false;
 	}
 
+	public String getAlartMessage() {
+		return "dcs.tip.andon.alart_message";
+	}
+
 	@Override
 	public int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction dir) {
 		int i = DCState.getInt(state, DCState.STAGE3) * 7;

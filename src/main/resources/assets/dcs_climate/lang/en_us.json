@@ -70,6 +70,7 @@
   "item.dcs_climate.main.gem_iolite":"Iolite",
   "item.dcs_climate.main.gem_sakura":"Sakura Stone",
   "item.dcs_climate.main.gem_fang":"Fang Fossil",
+  "item.dcs_climate.main.gem_kunzite":"Kunzite",
   "item.dcs_climate.main.gem_opal":"Black Opal",
   "item.dcs_climate.main.gem_dragonseye":"Dragon's Eye",
   "item.dcs_climate.main.gem_desertrose":"Desert Rose",
@@ -167,6 +168,7 @@
   "item.dcs_climate.machine.crusher_blade_sanitary":"Blade Roll (Sanitary)",
   "item.dcs_climate.machine.crusher_blade_alumina":"Blade Roll (Alumina)",
   "item.dcs_climate.machine.crusher_blade_screen":"Blade Roll (Gem Sifter)",
+  "item.dcs_climate.machine.memory_coord":"Coordinate Record Card",
 
     "## items_magic":"magic",
 
@@ -911,6 +913,11 @@
   "item.dcs_climate.main.hat_cloth_blue":"Cloth Hat(Blue)",
   "item.dcs_climate.main.hat_cloth_green":"Cloth Hat(Green)",
 
+  "item.dcs_climate.main.hair_cloth":"Alice Band",
+  "item.dcs_climate.main.hair_cloth_black":"Alice Band(Black)",
+  "item.dcs_climate.main.hair_cloth_blue":"Alice Band(Blue)",
+  "item.dcs_climate.main.hair_cloth_red":"Alice Band(Magenta)",
+
   "item.dcs_climate.main.jacket_linen":"Linen Vest",
   "item.dcs_climate.main.jacket_linen_black":"Linen Vest(Black)",
   "item.dcs_climate.main.jacket_linen_gray":"Linen Vest(Gray)",
@@ -988,6 +995,28 @@
   "item.dcs_climate.main.dress_maid_black":"Maid Dress(Black)",
   "item.dcs_climate.main.dress_maid_gray":"Maid Dress(Gray)",
   "item.dcs_climate.main.dress_maid_brown":"Maid Dress(Brown)",
+
+  "item.dcs_climate.main.hair_flower_aster":"Hair Accessory(Garden Mum)",
+  "item.dcs_climate.main.hair_flower_pyrethrum":"Hair Accessory(除虫菊)",
+  "item.dcs_climate.main.hair_flower_camellia":"Hair Accessory(Camellia)",
+  "item.dcs_climate.main.hair_flower_schima":"Hair Accessory(Schima)",
+  "item.dcs_climate.main.hair_flower_heath":"Hair Accessory(Heath)",
+  "item.dcs_climate.main.hair_flower_rhododendron":"Hair Accessory(Rhododendron)",
+  "item.dcs_climate.main.hair_flower_lavender":"Hair Accessory(Lavender)",
+  "item.dcs_climate.main.hair_flower_crocus":"Hair Accessory(Crocus)",
+  "item.dcs_climate.main.hair_flower_iris":"Hair Accessory(Iris)",
+  "item.dcs_climate.main.hair_flower_mallow":"Hair Accessory(Mallow)",
+  "item.dcs_climate.main.hair_flower_tropical":"Hair Accessory(Hibiscus)",
+  "item.dcs_climate.main.hair_flower_bindweed":"Hair Accessory(Bindweed)",
+  "item.dcs_climate.main.hair_flower_morning":"Hair Accessory(Morning Glory)",
+  "item.dcs_climate.main.hair_flower_osmanthus":"Hair Accessory(Osmanthus)",
+  "item.dcs_climate.main.hair_flower_spiranthes":"Hair Accessory(Spiranthes)",
+  "item.dcs_climate.main.hair_flower_cymbidium":"Hair Accessory(Cymbidium)",
+  "item.dcs_climate.main.hair_flower_cattleya":"Hair Accessory(Cattleya)",
+  "item.dcs_climate.main.hair_flower_delphinium":"Hair Accessory(Delphinium)",
+  "item.dcs_climate.main.hair_flower_clematis":"Hair Accessory(Clematis)",
+  "item.dcs_climate.main.hair_flower_monkshood":"Hair Accessory(Monkshood)",
+  "item.dcs_climate.main.hair_flower_damaschena":"Hair Accessory(Damask Rose)",
 
     "## blocks_main":"main",
 
@@ -1082,6 +1111,11 @@
 
   "block.dcs_climate.main.dustblock_rubber":"Raw Rubber Block",
   "block.dcs_climate.main.block_rubber":"Vulcanized Rubber Block",
+
+  "block.dcs_climate.main.casting_mold_quartz_raw":"Synthetic Quartz Seed",
+  "block.dcs_climate.main.casting_mold_quartz":"Synthetic Quartz",
+  "block.dcs_climate.main.casting_mold_tourmarine_raw":"Synthetic Tourmarine Seed",
+  "block.dcs_climate.main.casting_mold_tourmarine":"Synthetic Tourmarine",
 
     "## blocks_foods":"food",
 
@@ -1687,6 +1721,15 @@
   "block.dcs_climate.machine.monitor_comparator_lamp":"Inventory Indicator",
   "block.dcs_climate.machine.monitor_rs_pilot":"RS Pilot Lamp",
   "block.dcs_climate.machine.monitor_andon_lamp":"Andon Lamp",
+  "block.dcs_climate.machine.monitor_andon_panel_1":"Andon Number Board No.1",
+  "block.dcs_climate.machine.monitor_andon_panel_2":"Andon Number Board No.2",
+  "block.dcs_climate.machine.monitor_andon_panel_3":"Andon Number Board No.3",
+  "block.dcs_climate.machine.monitor_andon_panel_4":"Andon Number Board No.4",
+  "block.dcs_climate.machine.monitor_andon_panel_5":"Andon Number Board No.5",
+  "block.dcs_climate.machine.monitor_andon_panel_6":"Andon Number Board No.6",
+  "block.dcs_climate.machine.monitor_andon_panel_7":"Andon Number Board No.7",
+  "block.dcs_climate.machine.monitor_andon_panel_8":"Andon Number Board No.8",
+  "block.dcs_climate.machine.monitor_andon_panel_9":"Andon Number Board No.9",
   "block.dcs_climate.machine.monitor_energy":"Energy Meter Panel",
   "block.dcs_climate.machine.monitor_temp":"Tempmeter Panel",
   "block.dcs_climate.machine.stormglass":"Storm Glass",
@@ -1870,6 +1913,17 @@
   "dcs.tip.andon.red":"Sets the red light threshold.",
   "dcs.tip.andon.yellow":"Sets the yellow light threshold.",
 
+  "dcs.tip.andon.alart_message":"ALART! ",
+  "dcs.tip.andon.alart_message_no1":"No.1 ALART ",
+  "dcs.tip.andon.alart_message_no2":"No.2 ALART ",
+  "dcs.tip.andon.alart_message_no3":"No.3 ALART ",
+  "dcs.tip.andon.alart_message_no4":"No.4 ALART ",
+  "dcs.tip.andon.alart_message_no5":"No.5 ALART ",
+  "dcs.tip.andon.alart_message_no6":"No.6 ALART ",
+  "dcs.tip.andon.alart_message_no7":"No.7 ALART ",
+  "dcs.tip.andon.alart_message_no8":"No.8 ALART ",
+  "dcs.tip.andon.alart_message_no9":"No.9 ALART ",
+
   "dcs.tip.chamber.temp":"Temperature Range: ",
   "dcs.tip.chamber.wind":"High airflow or the use of bellows will result in high temperatures.",
   "dcs.tip.boiler":"This device consumes water and biomass fuel to generate power.",
@@ -1886,6 +1940,7 @@
   "dcs.tip.soap_magic":"Removes any enchantments applied to the item.",
   "dcs.tip.stormglass":"The crystals inside change depending on the world's weather.",
   "dcs.tip.hydro_turbine":"Generates power using falling water in front.",
+  "dcs.tip.memory_coord":"Used for HaC machines with coordinate registration: Registers coordinates into the machine.",
 
   "dcs.tip.foodtaste.1":"Taste: ★",
   "dcs.tip.foodtaste.2":"Taste: ★★",
@@ -1921,6 +1976,7 @@
   "dcs.tip.bellow":"Sneaking + Right-click: Blow air into the heating chambers.",
   "dcs.tip.mosquito_coil":"When in the player inventory, it repels phantoms and bugs.",
   "dcs.tip.seedbag.desc":"Randomly obtain one of the following seeds:",
+  "dcs.tip.sap":"It can be collected using a Spile.",
 
   "dcs.tip.inert_element":"It grows when the player gains exp in the right environment.",
   "dcs.tip.inert_element.white":"Under the sun",

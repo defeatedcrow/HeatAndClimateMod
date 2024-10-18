@@ -56,6 +56,7 @@ import defeatedcrow.hac.machine.material.block.machine.TeaPotTile;
 import defeatedcrow.hac.machine.material.block.machine.WaterPumpBlock;
 import defeatedcrow.hac.machine.material.block.machine.WaterPumpTile;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorAndonBlock;
+import defeatedcrow.hac.machine.material.block.monitor.MonitorAndonPanelBlock;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorAndonTile;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorBlockItem;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorComparatorBlock;
@@ -104,6 +105,7 @@ import defeatedcrow.hac.machine.material.block.transport.PortableCanTile;
 import defeatedcrow.hac.machine.material.block.transport.PortableFluidTankTile;
 import defeatedcrow.hac.machine.material.fluid.FluidBlockItemDC;
 import defeatedcrow.hac.machine.material.item.MachineMaterialItem;
+import defeatedcrow.hac.machine.material.item.MemoryCoordItem;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
@@ -203,6 +205,16 @@ public class MachineInit {
 	public static final RegistryObject<Block> MONITOR_TEMP = regMonitorBlock("monitor_temp", () -> new MonitorTempBlock("monitor_temp"));
 	public static final RegistryObject<Block> MONITOR_ENERGY = regMonitorBlock("monitor_energy", () -> new MonitorEnergyBlock("monitor_energy"));
 
+	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_1 = regMonitorBlock("monitor_andon_panel_1", () -> new MonitorAndonPanelBlock(1));
+	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_2 = regMonitorBlock("monitor_andon_panel_2", () -> new MonitorAndonPanelBlock(2));
+	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_3 = regMonitorBlock("monitor_andon_panel_3", () -> new MonitorAndonPanelBlock(3));
+	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_4 = regMonitorBlock("monitor_andon_panel_4", () -> new MonitorAndonPanelBlock(4));
+	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_5 = regMonitorBlock("monitor_andon_panel_5", () -> new MonitorAndonPanelBlock(5));
+	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_6 = regMonitorBlock("monitor_andon_panel_6", () -> new MonitorAndonPanelBlock(6));
+	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_7 = regMonitorBlock("monitor_andon_panel_7", () -> new MonitorAndonPanelBlock(7));
+	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_8 = regMonitorBlock("monitor_andon_panel_8", () -> new MonitorAndonPanelBlock(8));
+	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_9 = regMonitorBlock("monitor_andon_panel_9", () -> new MonitorAndonPanelBlock(9));
+
 	public static final RegistryObject<Block> STORMGLASS = regBlock("stormglass", () -> new StormglassBlock("stormglass"), null);
 
 	public static final RegistryObject<Item> MOTOR_TIER1 = regItem("motor_small", () -> new MachineMaterialItem(Rarity.COMMON, "motor_small", TagDC.ItemTag.MOTOR_T1));
@@ -217,6 +229,8 @@ public class MachineInit {
 	public static final RegistryObject<Item> BLADE_SUS = regItem("crusher_blade_sanitary", () -> new MachineMaterialItem(Rarity.UNCOMMON, "crusher_blade_sanitary", TagDC.ItemTag.BLADE_SANITARY));
 	public static final RegistryObject<Item> BLADE_ALUMINA = regItem("crusher_blade_alumina", () -> new MachineMaterialItem(Rarity.RARE, "crusher_blade_alumina", TagDC.ItemTag.BLADE_ALUMINA));
 	public static final RegistryObject<Item> BLADE_SCREEN = regItem("crusher_blade_screen", () -> new MachineMaterialItem(Rarity.UNCOMMON, "crusher_blade_screen", TagDC.ItemTag.BLADE_SCREEN));
+
+	public static final RegistryObject<Item> MEMORY_COORD = regItem("memory_coord", () -> new MemoryCoordItem(Rarity.COMMON, "memory_coord"));
 
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<BrickChamberTile>> CHAMBER_BRICK_TILE = CoreInit.BLOCK_ENTITIES.register("chamber_brick_tile",
@@ -323,7 +337,9 @@ public class MachineInit {
 			() -> BlockEntityType.Builder.of(MonitorComparatorTile::new, new Block[] { MONITOR_COMPARATOR.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<MonitorAndonTile>> MONITOR_ANDON_TILE = CoreInit.BLOCK_ENTITIES.register("monitor_andon_tile",
-			() -> BlockEntityType.Builder.of(MonitorAndonTile::new, new Block[] { MONITOR_ANDON_LAMP.get() }).build(null));
+			() -> BlockEntityType.Builder.of(MonitorAndonTile::new, new Block[] { MONITOR_ANDON_LAMP.get(), MONITOR_ANDON_PANEL_1.get(), MONITOR_ANDON_PANEL_2.get(), MONITOR_ANDON_PANEL_3.get(),
+				MONITOR_ANDON_PANEL_4.get(), MONITOR_ANDON_PANEL_5.get(), MONITOR_ANDON_PANEL_6.get(), MONITOR_ANDON_PANEL_7.get(), MONITOR_ANDON_PANEL_8.get(), MONITOR_ANDON_PANEL_9.get() }).build(
+						null));
 
 	public static final RegistryObject<BlockEntityType<MonitorTempTile>> MONITOR_TEMP_TILE = CoreInit.BLOCK_ENTITIES.register("monitor_temp_tile",
 			() -> BlockEntityType.Builder.of(MonitorTempTile::new, new Block[] { MONITOR_TEMP.get() }).build(null));

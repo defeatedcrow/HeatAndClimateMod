@@ -271,7 +271,7 @@ public class LivingTickEventDC {
 							MsgEffectToC.sendToClient(serverLevel, vil.position().add(0D, 2.4D, 0D), 43);
 					}
 				}
-				if (vil.getInventory().countItem(Items.POTATO) > 3) {
+				if (vil.getInventory().countItem(Items.POTATO) > 3 && vil.getInventory().countItem(Items.BAKED_POTATO) < 16) {
 					vil.getInventory().removeItemType(Items.POTATO, 1);
 					ItemStack potato = vil.getInventory().addItem(new ItemStack(Items.BAKED_POTATO, 1));
 					if (!potato.isEmpty()) {

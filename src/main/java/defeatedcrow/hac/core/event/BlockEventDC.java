@@ -3,6 +3,7 @@ package defeatedcrow.hac.core.event;
 import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.material.ITierItem;
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.material.CoreInit;
@@ -11,10 +12,15 @@ import defeatedcrow.hac.core.material.block.building.SlabWoodDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.machine.material.MachineInit;
+import defeatedcrow.hac.machine.material.block.monitor.MonitorBaseTile;
 import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
@@ -104,7 +110,7 @@ public class BlockEventDC {
 		if (!DCUtil.isEmpty(held) && held.is(TagDC.ItemTag.SCYTHES)) {
 			int range = 2;
 			if (held.getItem() instanceof ITierItem tool) {
-				range = tool.getTier().getLevel() + 1;
+				range = tool.getTier().getBreakRange();
 			} else if (held.getItem() instanceof TieredItem tool) {
 				range = tool.getTier().getLevel();
 			}
@@ -160,9 +166,9 @@ public class BlockEventDC {
 
 	@SubscribeEvent
 	public static void onClickBlock(PlayerInteractEvent.RightClickBlock event) {
-		if (event.getEntity() != null && event.getEntity().isCrouching() && event.getHitVec() != null) {
+		if (event.getEntity() != null && event.getHitVec() != null) {
 			BlockPos pos = event.getPos();
-			if (event.getItemStack().is(TagDC.ItemTag.CRAFT_DRIVER)) {
+			if (event.getEntity().isCrouching() && event.getItemStack().is(TagDC.ItemTag.CRAFT_DRIVER)) {
 				DCLogger.debugInfoLog("pos " + pos.toShortString());
 				BlockState state = event.getLevel().getBlockState(pos);
 				if (isMirrorTarget(state)) {
@@ -178,7 +184,7 @@ public class BlockEventDC {
 					event.setUseItem(Result.ALLOW);
 					event.setCanceled(true);
 				}
-			} else if (event.getItemStack().is(Items.NAME_TAG) && event.getLevel().getBlockEntity(pos) instanceof OwnableBaseTileDC ownable) {
+			} else if (event.getEntity().isCrouching() && event.getItemStack().is(Items.NAME_TAG) && event.getLevel().getBlockEntity(pos) instanceof OwnableBaseTileDC ownable) {
 				if (event.getEntity() instanceof ServerPlayer sp) {
 					if (sp.getMainHandItem().is(Items.NAME_TAG) && ClimateCore.proxy.isOP(sp)) {
 						Component name = sp.getMainHandItem().getHoverName();
@@ -192,6 +198,37 @@ public class BlockEventDC {
 				}
 				event.setUseItem(Result.ALLOW);
 				event.setCanceled(true);
+			} else if (event.getItemStack().is(MachineInit.MEMORY_COORD.get())) {
+				CompoundTag tag = event.getItemStack().getOrCreateTag();
+				BlockEntity target = event.getLevel().getBlockEntity(pos);
+				if (tag.contains(TagKeyDC.POS_X)) {
+					if (target instanceof MonitorBaseTile monitor) {
+						monitor.loadCoordTag(tag);
+						event.getEntity().swing(event.getHand(), true);
+						event.setUseItem(Result.ALLOW);
+						event.setCanceled(true);
+					}
+				} else if (event.getLevel() instanceof ServerLevel serverLevel) {
+					BlockPos p = pos.relative(event.getFace().getOpposite());
+					tag.putInt(TagKeyDC.DIRECTION, event.getFace().getOpposite().get3DDataValue());
+					tag.putInt(TagKeyDC.POS_X, p.getX());
+					tag.putInt(TagKeyDC.POS_Y, p.getY());
+					tag.putInt(TagKeyDC.POS_Z, p.getZ());
+					event.getItemStack().setTag(tag);
+
+					if (event.getEntity() instanceof ServerPlayer sp) {
+						MutableComponent mes = Component.translatable("dcs.tip.coodinate");
+						MutableComponent mes2 = Component.literal(" X:" + p.getX());
+						mes2.append(Component.literal(" Y:" + p.getY()));
+						mes2.append(Component.literal(" Z:" + p.getZ()));
+						sp.sendSystemMessage(mes);
+						sp.sendSystemMessage(mes2);
+					}
+
+					event.getEntity().swing(event.getHand(), true);
+					event.setUseItem(Result.ALLOW);
+					event.setCanceled(true);
+				}
 			}
 		}
 	}

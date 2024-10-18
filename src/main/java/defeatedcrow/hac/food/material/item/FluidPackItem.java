@@ -65,8 +65,8 @@ public class FluidPackItem extends FoodMaterialItemDC {
 	public static Type EMPTY = new Type(FoodInit.FOOD_EMPTY_PACK, () -> FluidStack.EMPTY);
 	public static Type WATER = new Type(FoodInit.FOOD_WATER, () -> new FluidStack(Fluids.WATER, 250));
 	public static Type SPARKLING = new Type(FoodInit.FOOD_SPARKLING, () -> new FluidStack(CoreInit.SPARKLING.getStillFluid().get(), 250));
-	public static Type MILK = new Type(FoodInit.FOOD_EMPTY_PACK, () -> new FluidStack(ForgeMod.MILK.get(), 250));
-	public static Type PLANT_OIL = new Type(FoodInit.FOOD_EMPTY_PACK, () -> new FluidStack(CoreInit.PLANT_OIL.getStillFluid().get(), 250));
+	public static Type MILK = new Type(FoodInit.FOOD_MILK, () -> new FluidStack(ForgeMod.MILK.get(), 250));
+	public static Type PLANT_OIL = new Type(FoodInit.FOOD_PLANT_OIL, () -> new FluidStack(CoreInit.PLANT_OIL.getStillFluid().get(), 250));
 
 	public static List<Type> TYPES = ImmutableList.of(WATER, SPARKLING, MILK, PLANT_OIL);
 

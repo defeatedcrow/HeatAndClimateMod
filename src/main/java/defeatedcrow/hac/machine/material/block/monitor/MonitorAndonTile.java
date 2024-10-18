@@ -64,7 +64,15 @@ public class MonitorAndonTile extends MonitorBaseTile implements IIntReceiverCli
 		}
 
 		if (lastLit != lit) {
-			MonitorAndonBlock.changePowerState(getLevel(), getBlockPos(), lit);
+			String alart = "dcs.tip.andon.alart_message";
+			if (this.getBlockState().getBlock() instanceof MonitorAndonBlock) {
+				MonitorAndonBlock.changePowerState(getLevel(), getBlockPos(), lit);
+				alart = ((MonitorAndonBlock) getBlockState().getBlock()).getAlartMessage();
+			}
+			if (this.getBlockState().getBlock() instanceof MonitorAndonPanelBlock) {
+				MonitorAndonPanelBlock.changePowerState(getLevel(), getBlockPos(), lit);
+				alart = ((MonitorAndonPanelBlock) getBlockState().getBlock()).getAlartMessage();
+			}
 			level.updateNeighbourForOutputSignal(getBlockPos(), getBlockState().getBlock());
 
 			if (lit == 2 && isAlartMode) {
@@ -74,7 +82,7 @@ public class MonitorAndonTile extends MonitorBaseTile implements IIntReceiverCli
 				}
 				Player player = this.getLevel().getPlayerByUUID(getOwner());
 				if (player instanceof ServerPlayer sp) {
-					MutableComponent mes = Component.literal("ALART! ");
+					MutableComponent mes = Component.translatable(alart);
 					mes.append(Component.literal(" X:" + p1.getX()));
 					mes.append(Component.literal(" Y:" + p1.getY()));
 					mes.append(Component.literal(" Z:" + p1.getZ()));

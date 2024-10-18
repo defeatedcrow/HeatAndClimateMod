@@ -27,7 +27,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -52,7 +51,7 @@ public class HarpoonItem extends ItemDC implements ITierItem {
 	}
 
 	@Override
-	public Tier getTier() {
+	public TierDC getTier() {
 		return tier;
 	}
 

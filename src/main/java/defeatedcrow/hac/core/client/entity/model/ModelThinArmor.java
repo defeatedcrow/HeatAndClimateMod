@@ -36,6 +36,28 @@ public class ModelThinArmor extends HumanoidModel {
 		return LayerDefinition.create(mesh, 64, 32);
 	}
 
+	public static LayerDefinition createHairMesh() {
+		MeshDefinition mesh = HumanoidModel.createMesh(new CubeDeformation(0F), 0.0F);
+		PartDefinition part = mesh.getRoot();
+		PartDefinition head = part.addOrReplaceChild("hat", CubeListBuilder.create()
+				.texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.6F)), PartPose.ZERO);
+
+		PartDefinition flower6_r1 = head.addOrReplaceChild("flower6", CubeListBuilder.create()
+				.texOffs(24, 12).addBox(4.8F, -7.0F, -2.5F, 0.0F, 8.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -5.0F, 0.0F, -0.7854F, 0.0F, 0.0F));
+		PartDefinition flower5_r1 = head.addOrReplaceChild("flower5", CubeListBuilder.create()
+				.texOffs(16, 12).addBox(4.5F, -6.0F, -2.5F, 0.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -5.0F, 0.0F, -2.5307F, 0.1745F, -0.1745F));
+		PartDefinition flower4_r1 = head.addOrReplaceChild("flower4", CubeListBuilder.create()
+				.texOffs(16, 18).addBox(4.5F, -6.0F, -1.5F, 0.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -5.0F, 0.0F, 2.5307F, -0.1745F, -0.1745F));
+		PartDefinition flower3_r1 = head.addOrReplaceChild("flower3", CubeListBuilder.create()
+				.texOffs(8, 18).addBox(4.5F, -6.0F, -1.5F, 0.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -5.0F, 0.0F, 1.2217F, -0.1745F, 0.1745F));
+		PartDefinition flower2_r1 = head.addOrReplaceChild("flower2", CubeListBuilder.create()
+				.texOffs(8, 12).addBox(4.5F, -6.0F, -2.5F, 0.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -5.0F, 0.0F, -1.2217F, 0.1745F, 0.1745F));
+		PartDefinition flower1_r1 = head.addOrReplaceChild("flower1", CubeListBuilder.create()
+				.texOffs(0, 12).addBox(4.5F, -6.0F, -2.0F, 0.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -5.0F, 0.0F, 0.0F, 0.0F, 0.2618F));
+
+		return LayerDefinition.create(mesh, 64, 32);
+	}
+
 	public static LayerDefinition createLongMesh() {
 		MeshDefinition mesh = HumanoidModel.createMesh(new CubeDeformation(0.4F), 0.0F);
 		PartDefinition part = mesh.getRoot();

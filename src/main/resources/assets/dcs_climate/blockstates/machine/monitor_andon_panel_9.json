@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north,stage3=0": {"model": "dcs_climate:block/machine/monitor_andon_panel_green_9"},
+    "facing=south,stage3=0": {"model": "dcs_climate:block/machine/andon_panel_green_9","y": 180},
+    "facing=east,stage3=0": {"model": "dcs_climate:block/machine/andon_panel_green_9", "y": 90},
+    "facing=west,stage3=0": {"model": "dcs_climate:block/machine/andon_panel_green_9", "y": 270},
+    "facing=north,stage3=1": {"model": "dcs_climate:block/machine/andon_panel_yellow_9"},
+    "facing=south,stage3=1": {"model": "dcs_climate:block/machine/andon_panel_yellow_9","y": 180},
+    "facing=east,stage3=1": {"model": "dcs_climate:block/machine/andon_panel_yellow_9","y": 90},
+    "facing=west,stage3=1": {"model": "dcs_climate:block/machine/andon_panel_yellow_9","y": 270},
+    "facing=north,stage3=2": {"model": "dcs_climate:block/machine/andon_panel_red_9"},
+    "facing=south,stage3=2": {"model": "dcs_climate:block/machine/andon_panel_red_9","y": 180},
+    "facing=east,stage3=2": {"model": "dcs_climate:block/machine/andon_panel_red_9","y": 90},
+    "facing=west,stage3=2": {"model": "dcs_climate:block/machine/andon_panel_red_9","y": 270}
+  }
+}

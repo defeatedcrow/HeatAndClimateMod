@@ -32,6 +32,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.CropBlock;
@@ -51,6 +52,8 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 public class CropAspiratorBlock extends RedstoneMachineBlock {
 
 	final String name;
+
+	private static final List<Block> HarvestBlackList = ImmutableList.of(Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.PODZOL, Blocks.NETHERRACK);
 
 	public CropAspiratorBlock(String s) {
 		super(getProp());
@@ -114,7 +117,7 @@ public class CropAspiratorBlock extends RedstoneMachineBlock {
 										dropTargetItem(level, pos.relative(dir.getOpposite()), drops);
 										level.setBlock(p, Blocks.AIR.defaultBlockState(), 3);
 									}
-								} else if (st.getBlock() instanceof BonemealableBlock crop && st.getMaterial() != Material.GRASS) {
+								} else if (st.getBlock() instanceof BonemealableBlock crop && !HarvestBlackList.contains(st.getBlock())) {
 									if (!crop.isValidBonemealTarget(level, p, st, false)) {
 										LootContext.Builder builder = (new LootContext.Builder(level))
 												.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p))

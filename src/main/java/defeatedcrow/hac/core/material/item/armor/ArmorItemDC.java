@@ -33,7 +33,7 @@ public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 	final String name;
 	final ModelType type;
 	final ArmorMaterial material;
-	private String armorName;
+	protected String armorName;
 
 	public ArmorItemDC(String n, ArmorMaterial mat, EquipmentSlot slot, ModelType t) {
 		super(mat, slot, (new Item.Properties()).tab(CoreInit.CLOTH));
@@ -139,6 +139,7 @@ public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 		SUITS,
 		LONG,
 		HAT,
+		HAIR,
 		DEFAULT
 	}
 

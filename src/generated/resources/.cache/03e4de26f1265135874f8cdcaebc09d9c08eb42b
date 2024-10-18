@@ -1,4 +1,4 @@
-// 1.19.2	2024-10-09T20:19:13.489421	Tags for minecraft:item
+// 1.19.2	2024-10-12T22:11:49.4277789	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
@@ -106,7 +106,7 @@ e836340a1be22e478ef9bdb0123670b07df8a9b4 data/dcs_climate/tags/items/food_taste/
 8d8b6ae97ecdc0080c2f91383f4cda476ab357ed data/dcs_climate/tags/items/fuels.json
 7b5d162b7c8891d940f801670825ddc17f2a2fb0 data/dcs_climate/tags/items/fuels/biomass.json
 f9be281231ab0be930b60bee688dcf542f800e3a data/dcs_climate/tags/items/gems.json
-bfa015168a13af280008c0441234c8dbb341958b data/dcs_climate/tags/items/gems/black.json
+389505bf9bb01293cfefc170ca1233c267ddeb10 data/dcs_climate/tags/items/gems/black.json
 6c95c82ad6e4ad2d79917dde4952dc2660b9331b data/dcs_climate/tags/items/gems/blue.json
 717866aa09166edec1fe66aa17c2353a923a2128 data/dcs_climate/tags/items/gems/green.json
 cd6d18dc51b62418c5466f9fba750545c3b74e79 data/dcs_climate/tags/items/gems/red.json
@@ -398,7 +398,7 @@ e0f0a00ac0a0bb6be332292160ee171f8fac6320 data/forge/tags/items/foods/cooked_pork
 6bda0b31e05f29de3a64aa7e96b54a6131c162cb data/forge/tags/items/foods/dough.json
 6430e7f3f25f7f3c9e6b2a594c30c863c1abc31e data/forge/tags/items/foods/drinks.json
 1c36e857735a1d0e40bb810ef705900fc0fca276 data/forge/tags/items/foods/liquor.json
-7c415e1963cdc71c599d40dc5247f33b407dfd46 data/forge/tags/items/gems.json
+daeaa04d4ed8e9bdf4c44ffecb77fe5dc1feb4fe data/forge/tags/items/gems.json
 1dc28a103e837335c4ea900b117ec729a81f35b9 data/forge/tags/items/gems/agates.json
 538eddc0d54519c15055c7ac3be348ec752f07f8 data/forge/tags/items/gems/almandine.json
 eee7e50584a51c7b04cdc7f739fe6e0ee3667224 data/forge/tags/items/gems/amazonite.json
@@ -418,6 +418,7 @@ d6cf2da9de510296d464c1ba2f92a2fc188b477e data/forge/tags/items/gems/heliodor.jso
 6be6cc0455fc5b08282c4e840aa55e9aac8a9780 data/forge/tags/items/gems/jadeite.json
 a48bce62af9f62b55d87ee4ebd53c296e78134a4 data/forge/tags/items/gems/jasper.json
 0a9160a3efe881d051756d9c23d70a07125a154e data/forge/tags/items/gems/jet.json
+cd7e70821e207f364dc9e5a67e6adc26050c54c1 data/forge/tags/items/gems/kunzite.json
 f020bb01e24835287c3df7b7a8224138f5953509 data/forge/tags/items/gems/larimar.json
 1e6d3e3ceb3e87683e66d2fd68c2261f2ee9b437 data/forge/tags/items/gems/malachite.json
 2e4e82e663c5a36be12b5e71396d104f4d19d5b4 data/forge/tags/items/gems/niter.json

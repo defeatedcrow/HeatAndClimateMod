@@ -181,7 +181,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 				TagDC.ItemTag.GEM_AQUAMARINE, TagDC.ItemTag.GEM_SAPPHIRE, Tags.Items.GEMS_LAPIS);
 
 		tag(TagDC.ItemTag.GEM_BLACK).addTags(TagDC.ItemTag.GEM_JET, TagDC.ItemTag.GEM_VIVIANITE, TagDC.ItemTag.GEM_IOLITE,
-				TagDC.ItemTag.GEM_FANG, TagDC.ItemTag.GEM_OPAL, TagDC.ItemTag.GEM_DRAGONSEYE);
+				TagDC.ItemTag.GEM_FANG, TagDC.ItemTag.GEM_KUNZITE, TagDC.ItemTag.GEM_OPAL, TagDC.ItemTag.GEM_DRAGONSEYE);
 
 		tag(TagDC.ItemTag.GEM_RED).addTags(TagDC.ItemTag.GEM_DESERTROSE, TagDC.ItemTag.GEM_JASPER, TagDC.ItemTag.GEM_ROSINCA,
 				TagDC.ItemTag.GEM_ALMANDINE, TagDC.ItemTag.GEM_SPINEL, TagDC.ItemTag.GEM_RUBY);
@@ -290,7 +290,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 				TagDC.ItemTag.CROP_LANTERN, TagDC.ItemTag.CROP_BLUE_MALLOW, TagDC.ItemTag.CROP_TROPICAL, TagDC.ItemTag.CROP_CROCUS,
 				TagDC.ItemTag.CROP_IRIS, TagDC.ItemTag.CROP_SPIRANTHES, TagDC.ItemTag.CROP_CYMBIDIUM, TagDC.ItemTag.CROP_CATTLEYA,
 				TagDC.ItemTag.CROP_ANEMONE, TagDC.ItemTag.CROP_DELPHINIUM, TagDC.ItemTag.CROP_CLEMATIS, TagDC.ItemTag.CROP_MONKSHOOD,
-				TagDC.ItemTag.CROP_HEATH, TagDC.ItemTag.CROP_RHODODENDRON, TagDC.ItemTag.CROP_OSUMANTHUS, TagDC.ItemTag.CROP_DAMASCHENA,
+				TagDC.ItemTag.CROP_HEATH, TagDC.ItemTag.CROP_RHODODENDRON, TagDC.ItemTag.CROP_OSMANTHUS, TagDC.ItemTag.CROP_DAMASCHENA,
 				TagDC.ItemTag.CAMELLIA_FLOWER, TagDC.ItemTag.SCHIMA_FLOWER);
 
 		tag(TagDC.ItemTag.CROP_FRUITS).addTags(TagDC.ItemTag.CROP_LANTERN, TagDC.ItemTag.CROP_WILD_GRAPE, TagDC.ItemTag.CROP_RED_GRAPE,

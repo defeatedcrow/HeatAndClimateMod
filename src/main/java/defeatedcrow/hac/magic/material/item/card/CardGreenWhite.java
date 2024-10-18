@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class CardGreenWhite extends MagicCardBase {
 
 	public CardGreenWhite() {
-		super(MagicColor.GREEN_WHITE, Rarity.COMMON, TagDC.ItemTag.MAGIC_CARD);
+		super(MagicColor.GREEN_WHITE, Rarity.UNCOMMON, TagDC.ItemTag.MAGIC_CARD);
 	}
 
 	@Override

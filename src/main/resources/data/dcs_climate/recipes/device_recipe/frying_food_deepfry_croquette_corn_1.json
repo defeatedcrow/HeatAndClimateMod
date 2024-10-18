@@ -11,7 +11,7 @@
   },
   "ingredients": [
     {
-      "tag": "forge:ingredients/crab"
+      "tag": "forge:crops/corn"
     },
     {
       "item": "dcs_climate:food/food_bechamel_sauce"

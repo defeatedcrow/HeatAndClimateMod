@@ -1,9 +1,12 @@
 package defeatedcrow.hac.core.client;
 
+import java.util.Calendar;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.entity.EntityModelLoader;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicFin;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicWing;
@@ -24,6 +27,8 @@ public class RenderPlayerEventDC {
 
 	private static final ResourceLocation WINGS_LOCATION = new ResourceLocation("dcs_climate:textures/entity/magic/magic_wing.png");
 	private static final ResourceLocation FIN_LOCATION = new ResourceLocation("dcs_climate:textures/entity/magic/magic_fin.png");
+	private static final ResourceLocation WINGS_LOCATION_BLACK = new ResourceLocation("dcs_climate:textures/entity/magic/magic_wing_black.png");
+	private static final ResourceLocation WINGS_LOCATION_HALLOWEEN = new ResourceLocation("dcs_climate:textures/entity/magic/magic_wing_halloween.png");
 
 	@SubscribeEvent
 	public static void renderWings(RenderPlayerEvent.Post event) {
@@ -44,7 +49,7 @@ public class RenderPlayerEventDC {
 					pose.scale(1.5F, 1.5F, 1.5F);
 					ModelMagicWing model = EntityModelLoader.INSTANCE.MODEL_WING;
 					model.setupAnim(player, 0F, 0F, event.getPartialTick(), 0F, 0F);
-					VertexConsumer vertex = event.getMultiBufferSource().getBuffer(model.renderType(WINGS_LOCATION));
+					VertexConsumer vertex = event.getMultiBufferSource().getBuffer(model.renderType(getWingTex()));
 					model.renderToBuffer(pose, vertex, event.getPackedLight(), OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 					pose.popPose();
 				}
@@ -73,6 +78,20 @@ public class RenderPlayerEventDC {
 
 	private static boolean hasElytra(ItemStack stack) {
 		return stack.getItem() == Items.ELYTRA;
+	}
+
+	private static ResourceLocation getWingTex() {
+		Calendar cal = Calendar.getInstance();
+		if (cal.get(cal.MONTH) == 3 && cal.get(cal.DATE) == 1) {
+			return WINGS_LOCATION_BLACK;
+		}
+		if (cal.get(cal.MONTH) == 9 && cal.get(cal.DATE) > 28) {
+			return WINGS_LOCATION_HALLOWEEN;
+		}
+		if (ClimateCore.isDebug) {
+			return WINGS_LOCATION_BLACK;
+		}
+		return WINGS_LOCATION;
 	}
 
 }

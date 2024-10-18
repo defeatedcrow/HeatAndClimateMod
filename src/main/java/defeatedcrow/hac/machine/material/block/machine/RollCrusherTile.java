@@ -20,6 +20,7 @@ import defeatedcrow.hac.machine.client.gui.RollCrusherMenu;
 import defeatedcrow.hac.machine.energy.SidedEnergyReceiver;
 import defeatedcrow.hac.machine.energy.SidedEnergyTankDC;
 import defeatedcrow.hac.machine.material.MachineInit;
+import defeatedcrow.hac.machine.material.fluid.DCDummyTank;
 import defeatedcrow.hac.machine.material.fluid.DCTank;
 import defeatedcrow.hac.machine.material.fluid.IFluidTankTileDC;
 import defeatedcrow.hac.machine.material.fluid.SidedFluidWrapper;
@@ -180,10 +181,16 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 			int hash2 = outputTank.getFluid().hashCode() + outputTank.getFluidAmount();
 			if (lastHash2 != hash2) {
 				lastHash2 = hash2;
+				flag = true;
+				if (level instanceof ServerLevel) {
+					NonNullList<FluidStack> list = NonNullList.withSize(3, FluidStack.EMPTY);
+					list.set(1, outputTank.getFluid());
+					MsgTileFluidToC.sendToClient((ServerLevel) level, pos, list);
+				}
+			}
+
+			if (flag) {
 				this.setChanged(level, pos, state);
-				NonNullList<FluidStack> list = NonNullList.withSize(3, FluidStack.EMPTY);
-				list.set(0, outputTank.getFluid());
-				MsgTileFluidToC.sendToClient((ServerLevel) level, pos, list);
 			}
 		}
 		return super.onTickProcess(level, pos, state);
@@ -317,12 +324,14 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 						errorData[i] = 0;
 					}
 				}
-				if (outputTank.fill(recipe.getOutputFluid(), FluidAction.SIMULATE) < recipe.getOutputFluid().getAmount()) {
-					result = false;
-					errorData[4] = 1;
-				} else {
-					outputTank.fill(recipe.getOutputFluid(), FluidAction.EXECUTE);
-					errorData[4] = 0;
+				if (!recipe.getOutputFluid().isEmpty()) {
+					FluidStack outF = recipe.getOutputFluid().copy();
+					if (outputTank.fill(outF, FluidAction.SIMULATE) < outF.getAmount()) {
+						result = false;
+						errorData[4] = 1;
+					} else {
+						errorData[4] = 0;
+					}
 				}
 				return result;
 			}
@@ -361,9 +370,10 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 					flag = true;
 				}
 			}
-			if (outputTank.fill(recipe.getOutputFluid(), FluidAction.EXECUTE) > 0) {
-				flag = true;
-			}
+			if (!recipe.getOutputFluid().isEmpty())
+				if (outputTank.fill(recipe.getOutputFluid(), FluidAction.EXECUTE) > 0) {
+					flag = true;
+				}
 			if (flag) {
 				this.setChanged(level, pos, state);
 			}
@@ -423,22 +433,22 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 
 	public static final int TANK_CAP = 4000;
 	// dummy
-	public DCTank inputTank = new DCTank(0);
+	public DCTank inputTank = new DCDummyTank();
 	public DCTank outputTank = new DCTank(TANK_CAP);
 
 	@Override
 	public int getTanks() {
-		return 1;
+		return 2;
 	}
 
 	@Override
 	public DCTank getTank(int id) {
-		return outputTank;
+		return id == 0 ? inputTank : outputTank;
 	}
 
 	@Override
 	public DCTank getTank(Direction dir) {
-		return outputTank;
+		return dir == Direction.UP ? inputTank : outputTank;
 	}
 
 	@Override

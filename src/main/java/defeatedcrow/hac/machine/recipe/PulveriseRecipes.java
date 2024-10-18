@@ -186,7 +186,7 @@ public class PulveriseRecipes {
 
 		DeviceRecipeList.addPulverizeRecipe(2, RecipeTypeDC.PULVERISE,
 				new ItemStack(MagicInit.DROP_WHITE.get(), 3), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
-				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_OSUMANTHUS)));
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_OSMANTHUS)));
 
 		// orchid
 		DeviceRecipeList.addPulverizeRecipe(2, RecipeTypeDC.PULVERISE,
@@ -465,6 +465,10 @@ public class PulveriseRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.GEM_RUBY)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
+				new ItemStack(CoreInit.DUST_LITHIUM.get(), 1), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.GEM_KUNZITE)));
+
+		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
 				new ItemStack(CoreInit.DUST_DIAMOND.get(), 1), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(Tags.Items.GEMS_DIAMOND)));
 
@@ -635,11 +639,11 @@ public class PulveriseRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_BLUE_DEEP)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,
-				new ItemStack(CoreInit.GEM_VIVIANITE.get(), 2), new ItemStack(CoreInit.GEM_FANG.get()), 30, new ItemStack(CoreInit.GEM_OPAL.get()), 3, FluidStack.EMPTY,
+				new ItemStack(CoreInit.GEM_VIVIANITE.get(), 2), new ItemStack(CoreInit.GEM_FANG.get()), 30, new ItemStack(CoreInit.GEM_KUNZITE.get()), 3, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_BLACK)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,
-				new ItemStack(CoreInit.GEM_FANG.get(), 2), new ItemStack(CoreInit.GEM_OPAL.get()), 30, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				new ItemStack(CoreInit.GEM_FANG.get(), 2), new ItemStack(CoreInit.GEM_KUNZITE.get()), 30, new ItemStack(CoreInit.GEM_TOURMALINE.get()), 2, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_BLACK_DEEP)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,

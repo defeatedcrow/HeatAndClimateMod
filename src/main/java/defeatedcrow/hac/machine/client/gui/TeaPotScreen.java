@@ -113,7 +113,7 @@ public class TeaPotScreen extends AbstractContainerScreen<TeaPotMenu> {
 
 		if (!this.menu.getInputFluid().isEmpty()) {
 			int amo = this.menu.getInputFluidGauge();
-			renderFluid(pose, this.menu.getInputFluid(), i + w1, j + h1, 12, 40, amo);
+			PortableTankScreen.renderFluid(pose, this.menu.getInputFluid(), i + w1, j + h1, 12, 40, amo);
 		}
 
 	}

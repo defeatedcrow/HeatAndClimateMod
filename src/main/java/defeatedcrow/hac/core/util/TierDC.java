@@ -61,6 +61,10 @@ public enum TierDC implements Tier {
 		return this.level;
 	}
 
+	public int getBreakRange() {
+		return this.level + 1;
+	}
+
 	@Override
 	public int getEnchantmentValue() {
 		return this.enchantmentValue;

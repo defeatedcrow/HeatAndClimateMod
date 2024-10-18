@@ -55,6 +55,15 @@ public class RollCrusherScreen extends AbstractContainerScreen<RollCrusherMenu> 
 			list.add(Component.literal(s));
 		}
 
+		if (this.isHovering(146, 37, 12, 40, mx, my)) {
+			if (!this.menu.getOutputFluid().isEmpty()) {
+				list.add(this.menu.getOutputFluidName());
+				list.add(this.menu.getOutputFluidAmount());
+			} else {
+				list.add(this.menu.getOutputFluidName());
+			}
+		}
+
 		if (this.menu.errorPrimary() && this.isHovering(62, 61, 24, 17, mx, my)) {
 			list.add(Component.translatable("dcs.tip.process_error.no_1"));
 		}
@@ -115,11 +124,16 @@ public class RollCrusherScreen extends AbstractContainerScreen<RollCrusherMenu> 
 		}
 
 		if (this.menu.errorFluid()) {
-			this.blit(pose, i + 118, j + 23, 201, 95, 48, 61);
+			this.blit(pose, i + 118, j + 23, 201, 34, 48, 61);
 		}
 
 		if (this.menu.errorContainer()) {
-			this.blit(pose, i + 9, j + 24, 201, 18, 26, 25);
+			this.blit(pose, i + 9, j + 24, 201, 95, 26, 25);
+		}
+
+		if (!this.menu.getOutputFluid().isEmpty()) {
+			int amo = this.menu.getOutputFluidGauge();
+			PortableTankScreen.renderFluid(pose, this.menu.getOutputFluid(), i + 146, j + 37, 12, 40, amo);
 		}
 	}
 

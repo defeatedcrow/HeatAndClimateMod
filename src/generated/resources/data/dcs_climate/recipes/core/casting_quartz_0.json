@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ores/gipsum"
+    },
+    "Y": {
+      "tag": "forge:dusts/crystal"
+    }
+  },
+  "pattern": [
+    "XYX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/casting_mold_quartz_raw"
+  }
+}

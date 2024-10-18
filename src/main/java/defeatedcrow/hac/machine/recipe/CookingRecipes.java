@@ -752,7 +752,7 @@ public class CookingRecipes {
 				boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_CORN), Ingredient.of(FoodInit.FOOD_BECHAMEL_SAUCE.get()), Ingredient.of(TagDC.ItemTag.BATTER), Ingredient.of(TagDC.ItemTag.BREAD)));
 
-		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DEEPFRY_CROQUETTE_CORN.get(), 1), ItemStack.EMPTY, 0,
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DEEPFRY_CROQUETTE_CRAB.get(), 1), ItemStack.EMPTY, 0,
 				new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
 				boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CRAB), Ingredient.of(FoodInit.FOOD_BECHAMEL_SAUCE.get()), Ingredient.of(TagDC.ItemTag.BATTER), Ingredient.of(TagDC.ItemTag.BREAD)));
@@ -892,11 +892,11 @@ public class CookingRecipes {
 				ImmutableList.of(TagDC.FluidTag.BRINE.location().toString()),
 				ImmutableList.of());
 
-		DeviceRecipeList.addCookingRecipe(3, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_SALT.get(), 2), new ItemStack(CoreInit.DUST_TRONA.get()), 100, FluidStack.EMPTY, boil,
-				tags,
-				ImmutableList.of(Ingredient.of(CoreInit.BRINE.getBucket().get())));
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_TRONA.get(), 2), new ItemStack(CoreInit.DUST_LITHIUM.get()), 50, FluidStack.EMPTY, boil,
+				ImmutableList.of(TagDC.FluidTag.BRINE.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_NATRON)));
 
-		DeviceRecipeList.addCookingRecipe(4, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_SALT.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_SALT.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.WATER)));
 

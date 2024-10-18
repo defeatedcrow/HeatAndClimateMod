@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "base": "dcs_climate:block/machine/casting_mold",
+    "top": "minecraft:item/quartz"
+  },
+  "parent": "dcs_climate:block/main/casting_mold"
+}

@@ -21,6 +21,7 @@ public class EntityModelLoader implements ResourceManagerReloadListener {
 	public static ModelThinArmor MODEL_OVERSUITS;
 	public static ModelThinArmor MODEL_SUITS;
 	public static ModelThinArmor MODEL_HAT;
+	public static ModelThinArmor MODEL_HAIR;
 	public static ModelThinArmor MODEL_DRESS;
 
 	public static ModelMagicWing MODEL_WING;
@@ -37,6 +38,7 @@ public class EntityModelLoader implements ResourceManagerReloadListener {
 		MODEL_OVERSUITS = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(OVERSUITS.getLayerLocation()));
 		MODEL_SUITS = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(SUITS.getLayerLocation()));
 		MODEL_HAT = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(HAT.getLayerLocation()));
+		MODEL_HAIR = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(HAIR.getLayerLocation()));
 		MODEL_DRESS = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(LONG.getLayerLocation()));
 		MODEL_WING = new ModelMagicWing(Minecraft.getInstance().getEntityModels().bakeLayer(WING.getLayerLocation()));
 		MODEL_FIN = new ModelMagicFin(Minecraft.getInstance().getEntityModels().bakeLayer(FIN.getLayerLocation()));
@@ -51,6 +53,7 @@ public class EntityModelLoader implements ResourceManagerReloadListener {
 	public static final EntityRenderData OVERSUITS = new EntityRenderData("armor/suits_cloth", 1F, 0F);
 	public static final EntityRenderData SUITS = new EntityRenderData("armor/suits_linen", 1F, 0F);
 	public static final EntityRenderData HAT = new EntityRenderData("armor/hat_linen", 1F, 0F);
+	public static final EntityRenderData HAIR = new EntityRenderData("armor/hair_linen", 1F, 0F);
 	public static final EntityRenderData LONG = new EntityRenderData("armor/long_linen", 1F, 0F);
 
 	public static final EntityRenderData WING = new EntityRenderData("magic/magic_wing", 1F, 0F);

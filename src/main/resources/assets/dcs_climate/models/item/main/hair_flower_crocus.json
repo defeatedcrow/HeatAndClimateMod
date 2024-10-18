@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/armor/hair_flower_crocus"
+  },
+  "parent": "minecraft:item/generated"
+}

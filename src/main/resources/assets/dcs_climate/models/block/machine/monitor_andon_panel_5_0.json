@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/machine/monitor_andon_panel_5_item"
+  },
+  "parent": "dcs_climate:block/dcs_dummy"
+}

@@ -70,6 +70,7 @@
   "item.dcs_climate.main.gem_iolite":"菫青石",
   "item.dcs_climate.main.gem_sakura":"桜石",
   "item.dcs_climate.main.gem_fang":"牙の化石",
+  "item.dcs_climate.main.gem_kunzite":"クンツァイト",
   "item.dcs_climate.main.gem_opal":"オパール",
   "item.dcs_climate.main.gem_dragonseye":"ドラゴンズアイ",
   "item.dcs_climate.main.gem_desertrose":"砂漠のバラ",
@@ -166,6 +167,7 @@
   "item.dcs_climate.machine.crusher_blade_sanitary":"ブレードロール(サニタリー)",
   "item.dcs_climate.machine.crusher_blade_alumina":"ブレードロール(アルミナ)",
   "item.dcs_climate.machine.crusher_blade_screen":"ブレードロール(宝石ふるい)",
+  "item.dcs_climate.machine.memory_coord":"座標記録カード",
 
     "## items_magic":"magic",
 
@@ -913,6 +915,11 @@
   "item.dcs_climate.main.hat_cloth_blue":"布の帽子(青)",
   "item.dcs_climate.main.hat_cloth_green":"布の帽子(緑)",
 
+  "item.dcs_climate.main.hair_cloth":"ヘッドドレス",
+  "item.dcs_climate.main.hair_cloth_black":"ヘッドドレス(黒)",
+  "item.dcs_climate.main.hair_cloth_blue":"ヘッドドレス(青)",
+  "item.dcs_climate.main.hair_cloth_red":"ヘッドドレス(マゼンタ)",
+
   "item.dcs_climate.main.jacket_linen":"リネンのベスト",
   "item.dcs_climate.main.jacket_linen_black":"リネンのベスト(黒)",
   "item.dcs_climate.main.jacket_linen_gray":"リネンのベスト(灰色)",
@@ -990,6 +997,28 @@
   "item.dcs_climate.main.dress_maid_black":"メイド服(黒)",
   "item.dcs_climate.main.dress_maid_gray":"メイド服(灰色)",
   "item.dcs_climate.main.dress_maid_brown":"メイド服(茶)",
+
+  "item.dcs_climate.main.hair_flower_aster":"髪飾り(菊)",
+  "item.dcs_climate.main.hair_flower_pyrethrum":"髪飾り(除虫菊)",
+  "item.dcs_climate.main.hair_flower_camellia":"髪飾り(ツバキ)",
+  "item.dcs_climate.main.hair_flower_schima":"髪飾り(イジュ)",
+  "item.dcs_climate.main.hair_flower_heath":"髪飾り(ヒース)",
+  "item.dcs_climate.main.hair_flower_rhododendron":"髪飾り(シャクナゲ)",
+  "item.dcs_climate.main.hair_flower_lavender":"髪飾り(ラベンダー)",
+  "item.dcs_climate.main.hair_flower_crocus":"髪飾り(クロッカス)",
+  "item.dcs_climate.main.hair_flower_iris":"髪飾り(アヤメ)",
+  "item.dcs_climate.main.hair_flower_mallow":"髪飾り(ブルーマロウ)",
+  "item.dcs_climate.main.hair_flower_tropical":"髪飾り(ハイビスカス)",
+  "item.dcs_climate.main.hair_flower_bindweed":"髪飾り(ハマヒルガオ)",
+  "item.dcs_climate.main.hair_flower_morning":"髪飾り(朝顔)",
+  "item.dcs_climate.main.hair_flower_osmanthus":"髪飾り(キンモクセイ)",
+  "item.dcs_climate.main.hair_flower_spiranthes":"髪飾り(ネジバナ)",
+  "item.dcs_climate.main.hair_flower_cymbidium":"髪飾り(シンビジウム)",
+  "item.dcs_climate.main.hair_flower_cattleya":"髪飾り(カトレヤ)",
+  "item.dcs_climate.main.hair_flower_delphinium":"髪飾り(デルフィニウム)",
+  "item.dcs_climate.main.hair_flower_clematis":"髪飾り(クレマチス)",
+  "item.dcs_climate.main.hair_flower_monkshood":"髪飾り(トリカブト)",
+  "item.dcs_climate.main.hair_flower_damaschena":"髪飾り(ダマスクローズ)",
 
     "## blocks":"main",
 
@@ -1083,6 +1112,11 @@
 
   "block.dcs_climate.main.dustblock_rubber":"生のゴムブロック",
   "block.dcs_climate.main.block_rubber":"加硫ゴムブロック",
+
+  "block.dcs_climate.main.casting_mold_quartz_raw":"クウォーツの鋳型",
+  "block.dcs_climate.main.casting_mold_quartz":"人工クウォーツ",
+  "block.dcs_climate.main.casting_mold_tourmarine_raw":"電振晶の鋳型",
+  "block.dcs_climate.main.casting_mold_tourmarine":"人工電振晶",
 
     "## blocks_food":"food",
 
@@ -1689,6 +1723,15 @@
   "block.dcs_climate.machine.monitor_comparator_lamp":"遠隔インベントリインジケーター",
   "block.dcs_climate.machine.monitor_rs_pilot":"遠隔RSパイロットランプ",
   "block.dcs_climate.machine.monitor_andon_lamp":"アンドン三色ランプ",
+  "block.dcs_climate.machine.monitor_andon_panel_1":"番号表示アンドン No.1",
+  "block.dcs_climate.machine.monitor_andon_panel_2":"番号表示アンドン No.2",
+  "block.dcs_climate.machine.monitor_andon_panel_3":"番号表示アンドン No.3",
+  "block.dcs_climate.machine.monitor_andon_panel_4":"番号表示アンドン No.4",
+  "block.dcs_climate.machine.monitor_andon_panel_5":"番号表示アンドン No.5",
+  "block.dcs_climate.machine.monitor_andon_panel_6":"番号表示アンドン No.6",
+  "block.dcs_climate.machine.monitor_andon_panel_7":"番号表示アンドン No.7",
+  "block.dcs_climate.machine.monitor_andon_panel_8":"番号表示アンドン No.8",
+  "block.dcs_climate.machine.monitor_andon_panel_9":"番号表示アンドン No.9",
   "block.dcs_climate.machine.monitor_energy":"遠隔エネルギーメーター",
   "block.dcs_climate.machine.monitor_temp":"遠隔温度計",
   "block.dcs_climate.machine.stormglass":"ストームグラス",
@@ -1829,6 +1872,7 @@
   "dcs.tip.soap_magic":"アイテムに付与されたエンチャントを落とします。",
   "dcs.tip.stormglass":"ワールドの天候によって中身が変化します。",
   "dcs.tip.hydro_turbine":"前方に落水が触れているとき、動力を生成します。",
+  "dcs.tip.memory_coord":"座標登録機能があるHaCマシンに使用: 記憶した座標をHaCマシンに登録します。",
 
   "dcs.tip.flow.tier1":"[Tier1] 流速: 32 /t",
   "dcs.tip.flow.tier2":"[Tier2] 流速: 128 /t",
@@ -1889,6 +1933,17 @@
   "dcs.tip.andon.red":"赤ランプのしきい値を設定します。",
   "dcs.tip.andon.yellow":"黄ランプのしきい値を設定します。",
 
+  "dcs.tip.andon.alart_message":"警告! ",
+  "dcs.tip.andon.alart_message_no1":"No.1 警報 ",
+  "dcs.tip.andon.alart_message_no2":"No.2 警報 ",
+  "dcs.tip.andon.alart_message_no3":"No.3 警報 ",
+  "dcs.tip.andon.alart_message_no4":"No.4 警報 ",
+  "dcs.tip.andon.alart_message_no5":"No.5 警報 ",
+  "dcs.tip.andon.alart_message_no6":"No.6 警報 ",
+  "dcs.tip.andon.alart_message_no7":"No.7 警報 ",
+  "dcs.tip.andon.alart_message_no8":"No.8 警報 ",
+  "dcs.tip.andon.alart_message_no9":"No.9 警報 ",
+
   "dcs.tip.foodtaste.1":"風味: ★",
   "dcs.tip.foodtaste.2":"風味: ★★",
   "dcs.tip.foodtaste.3":"風味: ★★★",
@@ -1923,6 +1978,7 @@
   "dcs.tip.bellow":"スニーク+右クリック: 燃焼チャンバーに風を送ります。",
   "dcs.tip.mosquito_coil":"インベントリに入れておくと、ファントムや虫を撃退します。",
   "dcs.tip.seedbag.desc":"ランダムに種を入手します:",
+  "dcs.tip.sap":"樹液タンクを使って集めることが出来ます。",
 
   "dcs.tip.inert_element":"条件に合う環境でプレイヤーが経験値を得ると、結晶が成長します。",
   "dcs.tip.inert_element.white":"『明るい日の下』",

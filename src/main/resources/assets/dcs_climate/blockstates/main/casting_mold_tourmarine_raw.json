@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "dcs_climate:block/main/casting_mold_tourmarine_raw_0", "y": 270
+    },
+    "facing=north": {
+      "model": "dcs_climate:block/main/casting_mold_tourmarine_raw_0", "y": 180
+    },
+    "facing=south": {
+      "model": "dcs_climate:block/main/casting_mold_tourmarine_raw_0"
+    },
+    "facing=west": {
+      "model": "dcs_climate:block/main/casting_mold_tourmarine_raw_0", "y": 90
+    }
+  }
+}

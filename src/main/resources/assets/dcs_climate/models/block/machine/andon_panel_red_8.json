@@ -1,0 +1,10 @@
+{
+    "parent": "dcs_climate:block/machine/andon_panel_base",
+    "textures": {
+        "base": "dcs_climate:block/build/slab_top_mortar",
+        "panel": "dcs_climate:block/machine/monitor_rs_black",
+        "lamp": "dcs_climate:block/machine/monitor_rs_on",
+        "num": "dcs_climate:block/machine/monitor_rs_8",
+        "particle": "dcs_climate:block/build/slab_top_mortar"
+    }
+}

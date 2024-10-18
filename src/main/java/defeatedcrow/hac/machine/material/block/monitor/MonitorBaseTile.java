@@ -123,6 +123,19 @@ public abstract class MonitorBaseTile extends OwnableBaseTileDC implements IIntR
 	@Override
 	public void loadTag(CompoundTag tag) {
 		super.loadTag(tag);
+		loadCoordTag(tag);
+	}
+
+	@Override
+	public void writeTag(CompoundTag tag) {
+		super.writeTag(tag);
+		tag.putInt(TagKeyDC.POS_X, pairPos.getX());
+		tag.putInt(TagKeyDC.POS_Y, pairPos.getY());
+		tag.putInt(TagKeyDC.POS_Z, pairPos.getZ());
+		tag.putInt(TagKeyDC.DIRECTION, side.get3DDataValue());
+	}
+
+	public void loadCoordTag(CompoundTag tag) {
 		int x = 0;
 		if (tag.contains(TagKeyDC.POS_X))
 			x = tag.getInt(TagKeyDC.POS_X);
@@ -139,15 +152,6 @@ public abstract class MonitorBaseTile extends OwnableBaseTileDC implements IIntR
 		if (dir >= 0) {
 			side = Direction.from3DDataValue(dir);
 		}
-	}
-
-	@Override
-	public void writeTag(CompoundTag tag) {
-		super.writeTag(tag);
-		tag.putInt(TagKeyDC.POS_X, pairPos.getX());
-		tag.putInt(TagKeyDC.POS_Y, pairPos.getY());
-		tag.putInt(TagKeyDC.POS_Z, pairPos.getZ());
-		tag.putInt(TagKeyDC.DIRECTION, side.get3DDataValue());
 	}
 
 	@Override

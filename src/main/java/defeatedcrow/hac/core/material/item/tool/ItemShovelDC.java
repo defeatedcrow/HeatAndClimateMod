@@ -24,4 +24,9 @@ public class ItemShovelDC extends ShovelItem implements IItemDC, ITierItem {
 		return tag;
 	}
 
+	@Override
+	public TierDC getTier() {
+		return tier;
+	}
+
 }

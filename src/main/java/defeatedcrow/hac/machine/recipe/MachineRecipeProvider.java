@@ -685,6 +685,57 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH))
 				.save(cons, "dcs_climate:machine/monitor_andon_lamp_0");
 
+		ShapelessRecipeBuilder.shapeless(MachineInit.MONITOR_ANDON_PANEL_1.get(), 1)
+				.requires(MachineInit.MONITOR_ANDON_LAMP.get())
+				.requires(Tags.Items.GLASS)
+				.unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+				.save(cons, "dcs_climate:machine/andon_panel_1");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.MONITOR_ANDON_PANEL_2.get(), 1)
+				.requires(MachineInit.MONITOR_ANDON_PANEL_1.get())
+				.unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+				.save(cons, "dcs_climate:machine/andon_panel_2");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.MONITOR_ANDON_PANEL_3.get(), 1)
+				.requires(MachineInit.MONITOR_ANDON_PANEL_2.get())
+				.unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+				.save(cons, "dcs_climate:machine/andon_panel_3");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.MONITOR_ANDON_PANEL_4.get(), 1)
+				.requires(MachineInit.MONITOR_ANDON_PANEL_3.get())
+				.unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+				.save(cons, "dcs_climate:machine/andon_panel_4");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.MONITOR_ANDON_PANEL_5.get(), 1)
+				.requires(MachineInit.MONITOR_ANDON_PANEL_4.get())
+				.unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+				.save(cons, "dcs_climate:machine/andon_panel_5");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.MONITOR_ANDON_PANEL_6.get(), 1)
+				.requires(MachineInit.MONITOR_ANDON_PANEL_5.get())
+				.unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+				.save(cons, "dcs_climate:machine/andon_panel_6");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.MONITOR_ANDON_PANEL_7.get(), 1)
+				.requires(MachineInit.MONITOR_ANDON_PANEL_6.get())
+				.unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+				.save(cons, "dcs_climate:machine/andon_panel_7");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.MONITOR_ANDON_PANEL_8.get(), 1)
+				.requires(MachineInit.MONITOR_ANDON_PANEL_7.get())
+				.unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+				.save(cons, "dcs_climate:machine/andon_panel_8");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.MONITOR_ANDON_PANEL_9.get(), 1)
+				.requires(MachineInit.MONITOR_ANDON_PANEL_8.get())
+				.unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+				.save(cons, "dcs_climate:machine/andon_panel_9");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.MONITOR_ANDON_PANEL_1.get(), 1)
+				.requires(MachineInit.MONITOR_ANDON_PANEL_9.get())
+				.unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+				.save(cons, "dcs_climate:machine/andon_panel_1_2");
+
 		ShapedRecipeBuilder.shaped(MachineInit.MONITOR_TEMP.get(), 1)
 				.pattern("XZX")
 				.pattern("YYY")
@@ -710,6 +761,19 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.requires(TagDC.ItemTag.WATER)
 				.unlockedBy("has_niter_dust", has(TagDC.ItemTag.DUST_NITER))
 				.save(cons, "dcs_climate:machine/stormglass_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.MEMORY_COORD.get(), 1)
+				.requires(TagDC.ItemTag.DUST_BISMUTH)
+				.requires(TagDC.ItemTag.DUST_GOLD)
+				.requires(TagDC.ItemTag.DUST_CRYSTAL)
+				.requires(Items.PAPER)
+				.unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH))
+				.save(cons, "dcs_climate:machine/memory_coord_0");
+
+		ShapelessRecipeBuilder.shapeless(MachineInit.MEMORY_COORD.get(), 1)
+				.requires(MachineInit.MEMORY_COORD.get())
+				.unlockedBy("has_memory_coord", has(MachineInit.MEMORY_COORD.get()))
+				.save(cons, "dcs_climate:machine/memory_coord_reset_0");
 
 	}
 

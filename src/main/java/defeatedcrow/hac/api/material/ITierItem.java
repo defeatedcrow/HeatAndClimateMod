@@ -1,9 +1,9 @@
 package defeatedcrow.hac.api.material;
 
-import net.minecraft.world.item.Tier;
+import defeatedcrow.hac.core.util.TierDC;
 
 public interface ITierItem {
 
-	Tier getTier();
+	TierDC getTier();
 
 }
