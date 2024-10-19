@@ -31,28 +31,29 @@ public class ConveyorSmeltingTile extends ConveyorTile {
 		if (!DCUtil.isEmpty(this.getItem(0))) {
 			ItemStack target = this.getItem(0).copy();
 			ClimateSupplier sup = new ClimateSupplier(getLevel(), getBlockPos());
-			boolean hasRecipe = DCRecipes.getSmeltingRecipe(sup, target)
-					.filter(recipe -> recipe.additionalRequire(getLevel(), getBlockPos())).map(recipe -> {
-						ItemStack output = recipe.getOutput();
-						getLevel().playSound(null, getBlockPos(), getSE(sup.get()), SoundSource.BLOCKS, 0.8F, 1.5F);
-						this.getInventory().setItem(0, output);
-						this.setChanged();
-						return true;
-					}).orElse(false);
-			if (!hasRecipe) {
-				if (DCRecipes.hasAnyHeatTreatmentRecipe(target.getItem()).isPresent()) {
-					hasRecipe = DCRecipes.getHeatTreatmentRecipe(sup, target)
-							.filter(recipe -> {
-								ItemStack check = recipe.getCurrentOutput(target, sup.get());
-								return !DCUtil.isEmpty(check) && !check.is(recipe.getFail().asItem());
-							}).map(recipe -> {
-								ItemStack output = recipe.getCurrentOutput(target, sup.get()).copy();
-								getLevel().playSound(null, getBlockPos(), getSE(sup.get()), SoundSource.BLOCKS, 0.8F, 1.5F);
-								this.getInventory().setItem(0, output);
-								this.setChanged();
-								return true;
-							}).orElse(false);
-				} else {
+			boolean hasMetalRecipe = false;
+			if (DCRecipes.hasAnyHeatTreatmentRecipe(target.getItem()).isPresent()) {
+				hasMetalRecipe = DCRecipes.getHeatTreatmentRecipe(sup, target)
+						.filter(recipe -> {
+							ItemStack check = recipe.getCurrentOutput(target, sup.get());
+							return !DCUtil.isEmpty(check) && !check.is(recipe.getFail().asItem());
+						}).map(recipe -> {
+							ItemStack output = recipe.getCurrentOutput(target, sup.get()).copy();
+							getLevel().playSound(null, getBlockPos(), getSE(sup.get()), SoundSource.BLOCKS, 0.8F, 1.5F);
+							this.getInventory().setItem(0, output);
+							this.setChanged();
+							return true;
+						}).orElse(false);
+			} else {
+				boolean hasRecipe = DCRecipes.getSmeltingRecipe(sup, target)
+						.filter(recipe -> recipe.additionalRequire(getLevel(), getBlockPos())).map(recipe -> {
+							ItemStack output = recipe.getOutput();
+							getLevel().playSound(null, getBlockPos(), getSE(sup.get()), SoundSource.BLOCKS, 0.8F, 1.5F);
+							this.getInventory().setItem(0, output);
+							this.setChanged();
+							return true;
+						}).orElse(false);
+				if (!hasRecipe) {
 					SmeltingRecipe recipe = quickCheck.getRecipeFor(getInventory(), getLevel()).orElse(null);
 					if (recipe != null && DCHeatTier.smeltingTemp().contains(sup.get().getHeat()) && DCHumidity.notWet().contains(sup.get().getHumidity())
 							&& DCAirflow.underRoofs().contains(sup.get().getAirflow())) {
@@ -65,6 +66,7 @@ public class ConveyorSmeltingTile extends ConveyorTile {
 					}
 				}
 			}
+
 		}
 		return true;
 	}

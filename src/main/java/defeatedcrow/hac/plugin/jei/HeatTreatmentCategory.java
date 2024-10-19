@@ -129,7 +129,7 @@ public class HeatTreatmentCategory implements IRecipeCategory<IHeatTreatment> {
 
 			List<DCHumidity> hums3 = recipe.getAnnealingHum();
 			for (DCHumidity hum : hums3) {
-				builder.addSlot(RecipeIngredientRole.INPUT, 51 + hum.getID() * 21, 77).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
+				builder.addSlot(RecipeIngredientRole.INPUT, 51 + hum.getID() * 21, 79).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
 						new HumidityRenderer(21, 3));
 			}
 
