@@ -107,6 +107,7 @@ public class SilkySmallBombEntity extends OwnableMagicEntity {
 								BlockState state = sl.getBlockState(p2);
 								if (state.getMaterial().isLiquid()) {
 									sl.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
+									checkAroundFluid(sl, p2, minX, maxX, minZ, maxZ);
 								} else if (!state.is(BlockTags.FEATURES_CANNOT_REPLACE)) {
 									checkAroundFluid(sl, p2, minX, maxX, minZ, maxZ);
 									BlockEntity be = sl.getBlockEntity(p2);
@@ -154,7 +155,7 @@ public class SilkySmallBombEntity extends OwnableMagicEntity {
 				if (state.getMaterial() == Material.LAVA) {
 					level.setBlock(pos, Blocks.STONE.defaultBlockState(), 2);
 				} else {
-					level.setBlock(pos, Blocks.PACKED_ICE.defaultBlockState(), 2);
+					level.setBlock(pos, Blocks.GLASS.defaultBlockState(), 2);
 				}
 			}
 		}
