@@ -25,16 +25,15 @@ public class CardWhiteT1 extends MagicCardBase {
 
 	@Override
 	public boolean onUsing(Level level, Player player, BlockPos pos, Direction dir, ItemStack card, float f) {
-		float boost = 1F + (f * 0.5F);
 		DCUtil.removeBadPotion(player);
-		player.heal(10.0F * boost);
+		player.heal(10.0F * f);
 		List<Entity> list = level.getEntities(player, new AABB(pos.getX() - 8D, pos.getY() - 2D, pos.getZ() - 8D, pos.getX() + 8D, pos.getY() + 2D, pos.getZ() + 8D),
-			EntitySelector.LIVING_ENTITY_STILL_ALIVE);
+				EntitySelector.LIVING_ENTITY_STILL_ALIVE);
 		if (list != null && !list.isEmpty()) {
 			for (Entity entity : list) {
 				if (entity instanceof LivingEntity living && !(entity instanceof Enemy)) {
 					DCUtil.removeBadPotion(living);
-					living.heal(10.0F * boost);
+					living.heal(10.0F * f);
 					level.levelEvent(1505, living.blockPosition().above(), 0);
 				}
 			}

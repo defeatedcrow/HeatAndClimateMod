@@ -34,7 +34,7 @@ public class CardRedBlue extends MagicCardBase {
 
 	@Override
 	public boolean onUsing(Level level, Player player, BlockPos pos, Direction dir, ItemStack card, float f) {
-		float boost = 1F + f;
+		float boost = f < 0 ? 0.5F : f;
 		double d = 32D + (16D * f);
 
 		List<Mob> list = level.getNearbyEntities(Mob.class, TargetingConditions.forCombat().range(d).ignoreLineOfSight(), player, player.getBoundingBox().inflate(d));

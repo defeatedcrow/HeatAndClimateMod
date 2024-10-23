@@ -103,9 +103,20 @@ public class GoldPendant extends MagicJewelBase {
 						set = ImmutableList.of(pos);
 					}
 					int count = 0;
+					ItemStack copy = owner.getMainHandItem().copy();
 					for (BlockPos p2 : set) {
-						owner.level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
-						count++;
+						BlockState target = owner.level.getBlockState(p2);
+						if (target.is(BlockTags.LOGS)) {
+							count++;
+							owner.level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
+						} else {
+							target.getBlock().destroy(owner.level, p2, target);
+							if (owner instanceof Player player) {
+								target.getBlock().playerDestroy(owner.level, player, p2, target, null, copy);
+							}
+							owner.level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
+						}
+
 					}
 
 					while (count > 0) {

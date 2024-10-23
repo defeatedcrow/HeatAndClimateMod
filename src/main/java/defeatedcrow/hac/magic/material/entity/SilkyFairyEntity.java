@@ -74,28 +74,28 @@ public class SilkyFairyEntity extends OwnableMagicEntity {
 				int maxZ = sp.maxBlockZ();
 				int minY = sp.minBlockY();
 				BlockPos.betweenClosedStream(minX, minY + y, minZ, maxX, minY + y, maxZ)
-					.filter(p -> p.getY() > sl.getMinBuildHeight() && p.getY() < sl.getMaxBuildHeight())
-					.filter(p -> sl.getBlockState(p).getMaterial() != Material.AIR)
-					.forEach((p2) -> {
-						BlockState state = sl.getBlockState(p2);
-						if (state.getMaterial().isLiquid()) {
-							sl.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
-						} else if (!state.is(BlockTags.FEATURES_CANNOT_REPLACE)) {
-							checkAroundFluid(sl, p2, minX, maxX, minZ, maxZ);
-							BlockEntity be = sl.getBlockEntity(p2);
-							LootContext.Builder builder = (new LootContext.Builder(sl))
-								.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
-								.withParameter(LootContextParams.BLOCK_STATE, state)
-								.withOptionalParameter(LootContextParams.BLOCK_ENTITY, be)
-								.withOptionalParameter(LootContextParams.THIS_ENTITY, owner)
-								.withParameter(LootContextParams.TOOL, tool);
-							List<ItemStack> list = state.getDrops(builder);
-							list.forEach((item) -> {
-								Block.popResource(sl, p2, item);
-							});
-							sl.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
-						}
-					});
+						.filter(p -> p.getY() > sl.getMinBuildHeight() && p.getY() < sl.getMaxBuildHeight())
+						.filter(p -> sl.getBlockState(p).getMaterial() != Material.AIR)
+						.forEach((p2) -> {
+							BlockState state = sl.getBlockState(p2);
+							if (state.getMaterial().isLiquid()) {
+								sl.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
+							} else if (!state.is(BlockTags.FEATURES_CANNOT_REPLACE)) {
+								checkAroundFluid(sl, p2, minX, maxX, minZ, maxZ);
+								BlockEntity be = sl.getBlockEntity(p2);
+								LootContext.Builder builder = (new LootContext.Builder(sl))
+										.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
+										.withParameter(LootContextParams.BLOCK_STATE, state)
+										.withOptionalParameter(LootContextParams.BLOCK_ENTITY, be)
+										.withOptionalParameter(LootContextParams.THIS_ENTITY, owner)
+										.withParameter(LootContextParams.TOOL, tool);
+								List<ItemStack> list = state.getDrops(builder);
+								list.forEach((item) -> {
+									Block.popResource(sl, p2, item);
+								});
+								sl.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
+							}
+						});
 				y--;
 				count = 5;
 			} else {

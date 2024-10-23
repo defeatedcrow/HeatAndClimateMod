@@ -112,10 +112,13 @@ public class MsgEffectToC implements IPacketDC {
 				level.addParticle(CoreInit.FOOD_PARTICLE.get(), x, y, z, 0.0D, 0.0D, 0.0D);
 				break;
 			case 4: // Smoke Particle
-				double d0 = -0.25D + level.getRandom().nextDouble() * 0.5D;
-				double d1 = -0.25D + level.getRandom().nextDouble() * 0.5D;
-				double d2 = -0.25D + level.getRandom().nextDouble() * 0.5D;
 				level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y, z, 0.0D, 0.05D, 0.0D);
+				break;
+			case 5: // Explosion Particle
+				level.addParticle(ParticleTypes.EXPLOSION, x, y, z, 1.0D, 0.0D, 0.0D);
+				break;
+			case 6: // Small Smoke Particle
+				level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.05D, 0.0D);
 				break;
 			}
 			switch (se) {
@@ -132,6 +135,12 @@ public class MsgEffectToC implements IPacketDC {
 				break;
 			case 4: // POP SE
 				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 1.5F);
+				break;
+			case 5: // BOMB SE
+				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0F, 1.0F);
+				break;
+			case 6: // FUSE SE
+				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
 				break;
 			}
 		}

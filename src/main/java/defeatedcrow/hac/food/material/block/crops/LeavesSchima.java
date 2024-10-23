@@ -142,7 +142,7 @@ public class LeavesSchima extends LeavesCropBlockDC {
 			ItemStack ret = new ItemStack(FoodInit.FLOWER_SCHIMA.get());
 			return ImmutableList.of(ret);
 		} else {
-			ItemStack ret = new ItemStack(getSeedItem(getTier()));
+			ItemStack ret = new ItemStack(getCropItem(getTier()));
 			return ImmutableList.of(ret);
 		}
 	}

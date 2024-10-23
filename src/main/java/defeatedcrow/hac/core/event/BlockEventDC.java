@@ -12,6 +12,7 @@ import defeatedcrow.hac.core.material.block.building.SlabWoodDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.food.material.block.crops.LeavesCropBlockDC;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorBaseTile;
 import defeatedcrow.hac.magic.MagicUtil;
@@ -154,7 +155,7 @@ public class BlockEventDC {
 
 	private static boolean canHarvestCrop(Level level, BlockPos pos, BlockState state) {
 		if (state.getBlock() instanceof IClimateCrop climateCrop) {
-			return climateCrop.canHarvest(state);
+			return climateCrop.canHarvest(state) || state.getBlock() instanceof LeavesCropBlockDC;
 		} else if (state.getBlock() instanceof StemBlock) {
 			return false;
 		} else if (state.getBlock() instanceof CropBlock crop) {

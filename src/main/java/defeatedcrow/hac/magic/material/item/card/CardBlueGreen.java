@@ -22,7 +22,7 @@ public class CardBlueGreen extends MagicCardBase {
 	public boolean onUsing(Level level, Player player, BlockPos pos, Direction dir, ItemStack card, float f) {
 		BlockState state = level.getBlockState(pos);
 		if (state != null && state.getBlock() instanceof IClimateCrop crop) {
-			if (crop.onMutation(level, pos, state, level.random, 5 + Mth.floor(f))) {
+			if (crop.onMutation(level, pos, state, level.random, 5 * Mth.floor(f))) {
 				return true;
 			}
 		}

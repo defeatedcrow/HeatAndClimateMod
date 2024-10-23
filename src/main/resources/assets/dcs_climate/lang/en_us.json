@@ -1802,6 +1802,7 @@
   "entity.dcs_climate.bind_electric":"Electric Bind",
   "entity.dcs_climate.phoenix_light":"Sealing Light",
   "entity.dcs_climate.silky_fairy":"Silky Fairy",
+  "entity.dcs_climate.silky_bomb":"Mining Explosives",
   "entity.dcs_climate.crow_turret":"Crow Turret",
 
     "## tips":"",
@@ -1816,6 +1817,7 @@
   "dcs.tip.comparator":"Comparator Signal",
   "dcs.tip.energy":"Energy",
   "dcs.tip.amount":"Amount",
+  "dcs.tip.enchantability":"Magic　Affinity",
 
   "dcs.tip.shift":"Lshift Key: expand tooltip",
 
@@ -1990,12 +1992,12 @@
   "dcs.tip.magic_arrow.name.blue":"Freezing",
   "dcs.tip.magic_arrow.name.black":"Warp",
   "dcs.tip.magic_arrow.name.red":"Blast",
-  "dcs.tip.magic_arrow.name.green":"Penetration",
+  "dcs.tip.magic_arrow.name.green":"Binding",
   "dcs.tip.magic_arrow.desc.white":"Place a light block at the point of impact.",
   "dcs.tip.magic_arrow.desc.blue":"Place a Packed Ice block at the point of impact.",
   "dcs.tip.magic_arrow.desc.black":"Warp to the point of impact.",
   "dcs.tip.magic_arrow.desc.red":"Blow up the impact point.",
-  "dcs.tip.magic_arrow.desc.green":"Damage through multiple mobs.",
+  "dcs.tip.magic_arrow.desc.green":"Binds the target mob for 1 minute.",
 
   "dcs.tip.magic_card.name.white_common":"Cure",
   "dcs.tip.magic_card.desc.white_common":"Cures damage and bad potion effects of nearby players and mobs.",
@@ -2003,8 +2005,8 @@
   "dcs.tip.magic_card.desc.blue_common":"Register a respawn point. (Valid outside Overworld.)",
   "dcs.tip.magic_card.name.black_common":"Tracker",
   "dcs.tip.magic_card.desc.black_common":"Gain potion effect of tracking.",
-  "dcs.tip.magic_card.name.red_common":"Blast",
-  "dcs.tip.magic_card.desc.red_common":"Fires an arrow that explodes on impact.",
+  "dcs.tip.magic_card.name.red_common":"Mining",
+  "dcs.tip.magic_card.desc.red_common":"Place a small mining explosive.",
   "dcs.tip.magic_card.name.green_common":"Grow",
   "dcs.tip.magic_card.desc.green_common":"Grow plants around the player.",
 
@@ -2016,8 +2018,8 @@
   "dcs.tip.magic_card.desc.black_uncommon":"Steals any armor worn by the target.",
   "dcs.tip.magic_card.name.red_uncommon":"Flag Bearer",
   "dcs.tip.magic_card.desc.red_uncommon":"The user becomes the target of attacks by surrounding enemies.",
-  "dcs.tip.magic_card.name.green_uncommon":"Binding",
-  "dcs.tip.magic_card.desc.green_uncommon":"Binds the target mob for 1 minute.",
+  "dcs.tip.magic_card.name.green_uncommon":"Weather Manipulation",
+  "dcs.tip.magic_card.desc.green_uncommon":"Changes the weather in the world.",
 
   "dcs.tip.magic_card.name.white_red":"Sealing Light",
   "dcs.tip.magic_card.desc.white_red":"Suppresses monster spawning in 25 block radius.",

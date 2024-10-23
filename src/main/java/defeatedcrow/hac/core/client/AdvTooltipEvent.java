@@ -27,6 +27,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -71,6 +73,14 @@ public class AdvTooltipEvent {
 			float regC = DCItemUtil.getItemResistantData(target, true);
 			if (regH != 0 || regC != 0) {
 				MutableComponent ret = Component.translatable("dcs.tip.resistance").append(": " + String.format("%.1f", regH) + "/" + String.format("%.1f", regC));
+				list.add(ret);
+			}
+
+			if (target.getItem() instanceof ArmorItem armor) {
+				ArmorMaterial mat = armor.getMaterial();
+				int a = mat.getEnchantmentValue();
+				float aff = a / 10F;
+				MutableComponent ret = Component.translatable("dcs.tip.enchantability").append(": " + String.format("%.2f", aff));
 				list.add(ret);
 			}
 

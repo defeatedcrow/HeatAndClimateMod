@@ -147,7 +147,7 @@ public class LeavesCamellia extends LeavesCropBlockDC {
 			ItemStack ret = new ItemStack(FoodInit.FLOWER_CAMELLIA.get());
 			return ImmutableList.of(ret);
 		} else {
-			ItemStack ret = new ItemStack(getSeedItem(getTier()));
+			ItemStack ret = new ItemStack(getCropItem(getTier()));
 			return ImmutableList.of(ret);
 		}
 	}

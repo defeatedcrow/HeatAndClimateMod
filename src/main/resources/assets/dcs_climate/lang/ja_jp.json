@@ -1804,6 +1804,7 @@
   "entity.dcs_climate.bind_electric":"おしおき電気罠",
   "entity.dcs_climate.phoenix_light":"災払いの火",
   "entity.dcs_climate.silky_fairy":"フェアリー採掘隊",
+  "entity.dcs_climate.silky_bomb":"採掘用爆薬",
   "entity.dcs_climate.crow_turret":"カラスマンタレット",
 
     "## tips":"",
@@ -1818,6 +1819,7 @@
   "dcs.tip.comparator":"コンパレータ信号",
   "dcs.tip.energy":"エネルギー",
   "dcs.tip.amount":"水量",
+  "dcs.tip.enchantability":"魔法適正",
 
   "dcs.tip.shift":"Lshiftキー: 詳細を表示",
 
@@ -1992,12 +1994,12 @@
   "dcs.tip.magic_arrow.name.blue":"氷結",
   "dcs.tip.magic_arrow.name.black":"転移",
   "dcs.tip.magic_arrow.name.red":"破裂",
-  "dcs.tip.magic_arrow.name.green":"貫通",
+  "dcs.tip.magic_arrow.name.green":"束縛",
   "dcs.tip.magic_arrow.desc.white":"着弾地点に光源ブロックを設置します。",
   "dcs.tip.magic_arrow.desc.blue":"着弾地点に氷ブロックを設置します。",
   "dcs.tip.magic_arrow.desc.black":"着弾地点にワープします。",
   "dcs.tip.magic_arrow.desc.red":"着弾地点に爆発を起こします。",
-  "dcs.tip.magic_arrow.desc.green":"複数のモブを貫通してダメージを与えます。",
+  "dcs.tip.magic_arrow.desc.green":"対象のモブを1分間拘束します。",
 
   "dcs.tip.magic_card.name.white_common":"治癒",
   "dcs.tip.magic_card.desc.white_common":"周囲のプレイヤーやモブのダメージ・悪性ポーション効果を治療する。",
@@ -2005,8 +2007,8 @@
   "dcs.tip.magic_card.desc.blue_common":"リスポーン地点を登録する。(Overworld外でも有効。)",
   "dcs.tip.magic_card.name.black_common":"追跡者",
   "dcs.tip.magic_card.desc.black_common":"追跡のポーション効果を得る。",
-  "dcs.tip.magic_card.name.red_common":"爆風",
-  "dcs.tip.magic_card.desc.red_common":"着弾地点で爆発する矢を放つ。",
+  "dcs.tip.magic_card.name.red_common":"採掘",
+  "dcs.tip.magic_card.desc.red_common":"シルクタッチ効果でブロックを採掘する小爆弾を設置。",
   "dcs.tip.magic_card.name.green_common":"成長",
   "dcs.tip.magic_card.desc.green_common":"周囲の植物を成長させる。",
 
@@ -2018,8 +2020,8 @@
   "dcs.tip.magic_card.desc.black_uncommon":"対象が身につけている防具を奪う。",
   "dcs.tip.magic_card.name.red_uncommon":"旗手",
   "dcs.tip.magic_card.desc.red_uncommon":"敵性モブの攻撃対象を使用者に集める。",
-  "dcs.tip.magic_card.name.green_uncommon":"拘束",
-  "dcs.tip.magic_card.desc.green_uncommon":"対象のモブを1分間拘束する。",
+  "dcs.tip.magic_card.name.green_uncommon":"天候",
+  "dcs.tip.magic_card.desc.green_uncommon":"ワールドの天候を変更する。",
 
   "dcs.tip.magic_card.name.white_red":"灯火",
   "dcs.tip.magic_card.desc.white_red":"半径25blockの範囲でモンスターのスポーンを抑制する燭台を設置する。",

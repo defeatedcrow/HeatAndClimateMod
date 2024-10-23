@@ -25,7 +25,7 @@ public class CardGreenT1 extends MagicCardBase {
 	@Override
 	public boolean onUsing(Level level, Player player, BlockPos pos, Direction dir, ItemStack card, float boost) {
 		BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
-		int range = 8 + Mth.floor(boost);
+		int range = 8 * Mth.floor(boost);
 		for (int x = -range; x < range; x++) {
 			for (int z = -range; z < range; z++) {
 				for (int y = -2; y < 3; y++) {

@@ -1,7 +1,9 @@
 package defeatedcrow.hac.magic.material.item.arrow;
 
 import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.entity.ArrowGreen;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
@@ -16,7 +18,8 @@ public class GreenArrowItem extends BaseArrowItem {
 	@Override
 	public AbstractArrow createArrow(Level level, ItemStack stack, LivingEntity living) {
 		ArrowGreen arrow = new ArrowGreen(level, living);
-		arrow.setBaseDamage(4.0F);
+		float boost = MagicUtil.getMagicBooster(living);
+		arrow.setMaxAge(Mth.floor(1200 * boost));
 		return arrow;
 	}
 

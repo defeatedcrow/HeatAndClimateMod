@@ -11,13 +11,13 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public enum MaterialsDC implements ArmorMaterial {
-	LINEN("linen", 4, new int[] { 1, 1, 2, 1 }, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, -0.1F, () -> {
+	LINEN("linen", 4, new int[] { 1, 1, 2, 1 }, 10, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, -0.1F, () -> {
 		return Ingredient.of(TagDC.ItemTag.CLOTH_PLANT);
 	}),
-	CLOTH("cloth", 4, new int[] { 1, 1, 2, 1 }, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, -0.1F, () -> {
+	CLOTH("cloth", 4, new int[] { 1, 1, 2, 1 }, 10, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, -0.1F, () -> {
 		return Ingredient.of(TagDC.ItemTag.CLOTH_COTTON);
 	}),
-	WOOL("wool", 4, new int[] { 1, 1, 2, 1 }, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, -0.1F, () -> {
+	WOOL("wool", 4, new int[] { 1, 1, 2, 1 }, 12, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, -0.1F, () -> {
 		return Ingredient.of(TagDC.ItemTag.CLOTH_WOOL);
 	}),
 	SILK("silk", 4, new int[] { 1, 1, 2, 1 }, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, -0.1F, () -> {
@@ -26,7 +26,7 @@ public enum MaterialsDC implements ArmorMaterial {
 	BRONZE("bronze", 18, new int[] { 2, 4, 5, 2 }, 8, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
 		return TagUtil.BRONZE_OR_BRASS;
 	}),
-	STEEL("steel", 30, new int[] { 3, 6, 7, 2 }, 8, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
+	STEEL("steel", 30, new int[] { 3, 6, 7, 2 }, 9, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
 		return Ingredient.of(TagDC.ItemTag.INGOT_STEEL);
 	}),
 	RUBBER("rubber", 12, new int[] { 4, 5, 5, 4 }, 10, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.1F, () -> {

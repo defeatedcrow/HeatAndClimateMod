@@ -15,12 +15,15 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.material.entity.OwnableMagicEntity;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.entity.EntityTypeTest;
@@ -159,9 +162,25 @@ public class MagicUtil {
 	}
 
 	public static float getMagicBooster(LivingEntity living) {
-		int count = 0;
+		float count = 1.0F;
+		float affinity = 1.0F;
 		count += hasCharmItem(living, Ingredient.of(TagDC.ItemTag.MAGIC_BOOSTER));
-		return count;
+		// armorInvWrapper
+		IItemHandler handler = living.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH).orElse(null);
+		if (handler != null) {
+			for (int i = 0; i < handler.getSlots(); i++) {
+				ItemStack check = handler.getStackInSlot(i);
+				if (check.getItem() instanceof ArmorItem armor) {
+					ArmorMaterial mat = armor.getMaterial();
+					int a = mat.getEnchantmentValue();
+					float aff = a / 10F;
+					affinity *= aff;
+				}
+			}
+		}
+		if (affinity < 0.5F)
+			affinity = 0.5F;
+		return count * affinity;
 	}
 
 }

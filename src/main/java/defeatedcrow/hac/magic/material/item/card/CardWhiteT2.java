@@ -20,7 +20,7 @@ public class CardWhiteT2 extends MagicCardBase {
 
 	@Override
 	public boolean onUsing(Level level, Player player, BlockPos pos, Direction dir, ItemStack card, float f) {
-		player.addEffect(new MobEffectInstance(CoreInit.BIRD.get(), Mth.floor(12000 * (1F + (f * 0.5F))), 0));
+		player.addEffect(new MobEffectInstance(CoreInit.BIRD.get(), Mth.floor(12000 * f), 0));
 		return true;
 	}
 

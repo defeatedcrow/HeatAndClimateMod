@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.FertileBlock;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
+import defeatedcrow.hac.food.material.block.crops.LeavesCropBlockDC;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,6 +20,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.entity.animal.horse.Llama;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
@@ -91,11 +93,18 @@ public class ClickEventDC {
 						event.setCancellationResult(InteractionResult.SUCCESS);
 						event.setUseItem(Result.ALLOW);
 					}
-				} else if (target.getBlock() instanceof ClimateCropBaseBlock) {
+				} else if (target.getBlock() instanceof ClimateCropBaseBlock || target.getBlock() instanceof LeavesCropBlockDC) {
 					if (!level.isClientSide) {
 						// 確実に種を取れる
-						if (target.getBlock() instanceof ClimateCropBaseBlock) {
-							((ClimateCropBaseBlock) target.getBlock()).breakAndDropSeed(level, event.getPos(), target);
+						if (target.getBlock() instanceof ClimateCropBaseBlock crop) {
+							crop.breakAndDropSeed(level, event.getPos(), target);
+						} else if (target.getBlock() instanceof LeavesCropBlockDC leaves) {
+							ItemStack seed = new ItemStack(leaves.getSeedItem(leaves.getTier()));
+							ItemEntity drop = new ItemEntity(level, event.getPos().getX() + 0.5D, event.getPos().getY() + 0.15D, event.getPos().getZ() + 0.5D, seed);
+							if (drop != null && !level.isClientSide) {
+								level.addFreshEntity(drop);
+								level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 2);
+							}
 						} else {
 							level.setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
 						}

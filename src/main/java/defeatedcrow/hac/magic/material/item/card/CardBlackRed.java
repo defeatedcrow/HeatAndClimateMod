@@ -27,7 +27,7 @@ public class CardBlackRed extends MagicCardBase {
 		doll.setPos(Vec3.atBottomCenterOf(pos.relative(dir)));
 		doll.setDeltaMovement(0D, 0D, 0D);
 		doll.setBodyPose(rot);
-		doll.setRange(4.0F + f);
+		doll.setRange(4.0F * f);
 		level.addFreshEntity(doll);
 		return true;
 	}
