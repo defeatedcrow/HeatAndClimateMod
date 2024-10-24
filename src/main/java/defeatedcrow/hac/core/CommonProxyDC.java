@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.google.common.collect.ImmutableMap;
 
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.config.ConfigLoadEventDC;
 import defeatedcrow.hac.core.config.CoreConfigDC;
 import defeatedcrow.hac.core.event.AnvilEventDC;
@@ -85,7 +86,8 @@ public class CommonProxyDC {
 
 		FoodProxy.commonInit();
 
-		registerVillagerFoods();
+		if (ConfigCommonBuilder.INSTANCE.enVillagerEatToHeal.get())
+			registerVillagerFoods();
 	}
 
 	public void updatePlayerClimate() {}

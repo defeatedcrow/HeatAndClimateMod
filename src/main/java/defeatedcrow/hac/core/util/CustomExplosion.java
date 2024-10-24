@@ -56,7 +56,7 @@ public class CustomExplosion extends Explosion {
 		int j2 = Mth.floor(vec.z - f2 - 1.0D);
 		int j1 = Mth.floor(vec.z + f2 + 1.0D);
 		List<Entity> list = lev.getEntities(bom, new AABB(k1, i2, j2, l1, i1, j1))
-			.stream().filter(e -> !e.equals(igniter) && !e.equals(bom)).filter(e -> !isSafety || e instanceof Enemy).toList();
+				.stream().filter(e -> !e.equals(igniter) && !e.equals(bom)).filter(e -> !isSafety || e instanceof Enemy).toList();
 
 		net.minecraftforge.event.ForgeEventFactory.onExplosionDetonate(lev, this, list, f2);
 
@@ -81,6 +81,8 @@ public class CustomExplosion extends Explosion {
 								damage *= 3.0F;
 							}
 						}
+						// 無敵時間剥がし
+						target.invulnerableTime = 0;
 						target.hurt(this.getDamageSource(), damage);
 						double d11 = d10;
 						if (target instanceof LivingEntity) {
