@@ -2229,6 +2229,7 @@
   "dcs.container.generator.with_owner":"%1$s の 発電機",
   "dcs.container.boiler_biomass":"バイオマスボイラ",
   "dcs.container.boiler_biomass.with_owner":"%1$s の バイオマスボイラ",
+  "dcs.container.black_rod":"フクロウの杖",
 
   "## gui_misc":"misc",
 

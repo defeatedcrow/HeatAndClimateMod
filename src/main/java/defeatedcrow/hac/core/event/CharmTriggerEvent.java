@@ -322,6 +322,7 @@ public class CharmTriggerEvent {
 				&& level instanceof ServerLevel serverLevel) {
 			int lim = ConfigCommonBuilder.INSTANCE.vTimberLimit.get();
 			Set<BlockPos> set = DCUtil.getConnectedTargetList(level, pos, state.getBlock(), lim);
+			set.add(pos);
 			set.forEach((p2) -> {
 				BlockState s2 = level.getBlockState(p2);
 				BlockEntity e2 = level.getBlockEntity(p2);

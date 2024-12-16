@@ -2227,6 +2227,7 @@
   "dcs.container.generator.with_owner":"%1$s 's Generator",
   "dcs.container.boiler_biomass":"Biomass Boiler",
   "dcs.container.boiler_biomass.with_owner":"%1$s 's Biomass Boiler",
+  "dcs.container.black_rod":"Qwl Wing Rod",
 
   "## gui_misc":"misc",
 
