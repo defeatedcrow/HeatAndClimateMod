@@ -38,12 +38,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.Vanishable;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -115,6 +115,7 @@ public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 				// 範囲毛刈り
 				AABB aabb = new AABB(pos).inflate(tier.getLevel());
 				List<LivingEntity> list = entity.getLevel().getNearbyEntities(LivingEntity.class, TargetingConditions.DEFAULT, entity, aabb);
+				list.add(entity);
 				boolean consume = false;
 				ItemStack dummy = new ItemStack(Items.SHEARS);
 				for (LivingEntity liv : list) {
@@ -154,11 +155,10 @@ public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tasteName = Component.translatable("dcs.tip.scythe");
 		tasteName.withStyle(ChatFormatting.YELLOW);
 		list.add(tasteName);
-		super.appendHoverText(item, level, list, flag);
 	}
 
 	@Override

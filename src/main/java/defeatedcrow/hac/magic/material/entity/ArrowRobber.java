@@ -1,5 +1,6 @@
 package defeatedcrow.hac.magic.material.entity;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -21,6 +22,7 @@ import net.minecraft.world.phys.Vec3;
 public class ArrowRobber extends AbstractArrow {
 
 	private boolean dealtDamage;
+	private int count = 1;
 
 	public ArrowRobber(EntityType<? extends ArrowRobber> type, Level level) {
 		super(type, level);
@@ -32,6 +34,10 @@ public class ArrowRobber extends AbstractArrow {
 
 	public ArrowRobber(Level level, double x, double y, double z) {
 		super(MagicInit.ARROW_ROBBER_ENTITY.get(), x, y, z, level);
+	}
+
+	public void setCount(int a) {
+		count = a;
 	}
 
 	@Override
@@ -78,6 +84,12 @@ public class ArrowRobber extends AbstractArrow {
 				if (!liv.getItemBySlot(EquipmentSlot.FEET).isEmpty()) {
 					list.add(EquipmentSlot.FEET);
 				}
+				if (!liv.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty()) {
+					list.add(EquipmentSlot.MAINHAND);
+				}
+				if (!liv.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty()) {
+					list.add(EquipmentSlot.OFFHAND);
+				}
 				if (list.size() > 0) {
 					if (list.size() == 1) {
 						ItemStack item = liv.getItemBySlot(list.get(0));
@@ -87,14 +99,15 @@ public class ArrowRobber extends AbstractArrow {
 							liv.setItemSlot(list.get(0), ItemStack.EMPTY);
 						}
 					} else {
-						int i = level.getRandom().nextInt(list.size());
-						ItemStack item = liv.getItemBySlot(list.get(i));
-						if (!level.isClientSide && !item.isEmpty()) {
-							ItemEntity drop = new ItemEntity(level, liv.position().x, liv.position().y + 0.1D, liv.position().z, item.copy());
-							level.addFreshEntity(drop);
-							liv.setItemSlot(list.get(i), ItemStack.EMPTY);
+						Collections.shuffle(list);
+						for (int c = 0; c < count; c++) {
+							ItemStack item = liv.getItemBySlot(list.get(c));
+							if (!level.isClientSide && !item.isEmpty()) {
+								ItemEntity drop = new ItemEntity(level, liv.position().x, liv.position().y + 0.1D, liv.position().z, item.copy());
+								level.addFreshEntity(drop);
+								liv.setItemSlot(list.get(c), ItemStack.EMPTY);
+							}
 						}
-
 					}
 				}
 			}

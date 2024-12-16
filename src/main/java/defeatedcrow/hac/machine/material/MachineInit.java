@@ -14,6 +14,8 @@ import defeatedcrow.hac.machine.client.gui.FluidChamberMenu;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberMenu;
 import defeatedcrow.hac.machine.client.gui.HopperFilterMenu;
 import defeatedcrow.hac.machine.client.gui.KichenBenchMenu;
+import defeatedcrow.hac.machine.client.gui.KichenOvenMenu;
+import defeatedcrow.hac.machine.client.gui.KichenStoveMenu;
 import defeatedcrow.hac.machine.client.gui.MillMenu;
 import defeatedcrow.hac.machine.client.gui.MonitorAndonMenu;
 import defeatedcrow.hac.machine.client.gui.PortableTankMenu;
@@ -46,6 +48,10 @@ import defeatedcrow.hac.machine.material.block.machine.ItemAspiratorBlock;
 import defeatedcrow.hac.machine.material.block.machine.ItemAspiratorTile;
 import defeatedcrow.hac.machine.material.block.machine.KichenBenchBlock;
 import defeatedcrow.hac.machine.material.block.machine.KichenBenchTile;
+import defeatedcrow.hac.machine.material.block.machine.KichenOvenBlock;
+import defeatedcrow.hac.machine.material.block.machine.KichenOvenTile;
+import defeatedcrow.hac.machine.material.block.machine.KichenStoveBlock;
+import defeatedcrow.hac.machine.material.block.machine.KichenStoveTile;
 import defeatedcrow.hac.machine.material.block.machine.RollCrusherBlock;
 import defeatedcrow.hac.machine.material.block.machine.RollCrusherTile;
 import defeatedcrow.hac.machine.material.block.machine.SpileCupBlock;
@@ -123,11 +129,27 @@ public class MachineInit {
 	public static final RegistryObject<Block> CHAMBER_BRICK_B = regBlock("chamber_brick_b", () -> new BrickChamberBlock("chamber_brick_b"), null);
 	public static final RegistryObject<Block> CHAMBER_IRON = regBlock("chamber_iron", () -> new HeatingChamberBlock("chamber_iron"), null);
 	public static final RegistryObject<Block> FUEL_BURNER = regBlock("fuel_burner", () -> new FluidChamberBlock("fuel_burner"), null);
+	public static final RegistryObject<Block> KICHEN_STOVE = regBlock("kitchen_stove", () -> new KichenStoveBlock("kitchen_stove"), null);
+	public static final RegistryObject<Block> KICHEN_OVEN_WOOD = regBlock("kitchen_oven_wood", () -> new KichenOvenBlock("kitchen_oven_wood"), null);
+	public static final RegistryObject<Block> KICHEN_OVEN_BLACK = regBlock("kitchen_oven_black", () -> new KichenOvenBlock("kitchen_oven_black"), null);
+	public static final RegistryObject<Block> KICHEN_OVEN_LAB = regBlock("kitchen_oven_lab", () -> new KichenOvenBlock("kitchen_oven_lab"), null);
 
-	public static final RegistryObject<Block> KICHEN_BENCH_BRICK = regBlock("kichen_bench_brick", () -> new KichenBenchBlock("kichen_bench_brick"), null);
+	public static final RegistryObject<Block> KICHEN_BENCH_BRICK = regBlock("kitchen_bench_brick", () -> new KichenBenchBlock("kitchen_bench_brick"), null);
+	public static final RegistryObject<Block> KICHEN_BENCH_SUS = regBlock("kitchen_bench_sus", () -> new KichenBenchBlock("kitchen_bench_sus"), null);
+	public static final RegistryObject<Block> KICHEN_BENCH_WOOD_A = regBlock("kitchen_bench_wood_a", () -> new KichenBenchBlock("kitchen_bench_wood_a"), null);
+	public static final RegistryObject<Block> KICHEN_BENCH_WOOD_B = regBlock("kitchen_bench_wood_b", () -> new KichenBenchBlock("kitchen_bench_wood_b"), null);
+	public static final RegistryObject<Block> KICHEN_BENCH_BLACK_A = regBlock("kitchen_bench_black_a", () -> new KichenBenchBlock("kitchen_bench_black_a"), null);
+	public static final RegistryObject<Block> KICHEN_BENCH_BLACK_B = regBlock("kitchen_bench_black_b", () -> new KichenBenchBlock("kitchen_bench_black_b"), null);
+	public static final RegistryObject<Block> KICHEN_BENCH_LAB_A = regBlock("kitchen_bench_lab_a", () -> new KichenBenchBlock("kitchen_bench_lab_a"), null);
+	public static final RegistryObject<Block> KICHEN_BENCH_LAB_B = regBlock("kitchen_bench_lab_b", () -> new KichenBenchBlock("kitchen_bench_lab_b"), null);
 
 	public static final RegistryObject<Block> KICHEN_SINK_BRICK = regBlock("fluid_sink_brick", () -> new FluidSinkBlock_Brick("fluid_sink_brick", false), null);
 	public static final RegistryObject<Block> HALF_SINK_BRICK = regBlock("half_sink_brick", () -> new FluidSinkBlock_Brick("half_sink_brick", true), null);
+	public static final RegistryObject<Block> KICHEN_SINK_SUS = regBlock("fluid_sink_sus", () -> new FluidSinkBlock_Brick("fluid_sink_sus", false), null);
+	public static final RegistryObject<Block> HALF_SINK_SUS = regBlock("half_sink_sus", () -> new FluidSinkBlock_Brick("half_sink_sus", true), null);
+	public static final RegistryObject<Block> KICHEN_SINK_WOOD = regBlock("fluid_sink_wood", () -> new FluidSinkBlock_Brick("fluid_sink_wood", false), null);
+	public static final RegistryObject<Block> KICHEN_SINK_BLACK = regBlock("fluid_sink_black", () -> new FluidSinkBlock_Brick("fluid_sink_black", false), null);
+	public static final RegistryObject<Block> KICHEN_SINK_LAB = regBlock("fluid_sink_lab", () -> new FluidSinkBlock_Brick("fluid_sink_lab", false), null);
 
 	public static final RegistryObject<Block> HOPPER_FILTER = regBlock("hopper_filter", () -> new HopperFilterBlock("hopper_filter"), null);
 	public static final RegistryObject<Block> HOPPER_GOLD = regBlock("hopper_gold", () -> new HopperGoldBlock("hopper_gold"), null);
@@ -171,12 +193,12 @@ public class MachineInit {
 	public static final RegistryObject<Block> TEA_POT_RED = regBlock("tea_pot_red", () -> new TeaPotBlock("tea_pot_red"), null);
 	public static final RegistryObject<Block> TEA_POT_GREEN = regBlock("tea_pot_green", () -> new TeaPotBlock("tea_pot_green"), null);
 
-	public static final RegistryObject<Block> FERMANTATION_JAR_NORMAL = regBlock("fermentation_jar_normal", () -> new FermentationJarBlock("fermentation_jar_normal", false), null);
-	public static final RegistryObject<Block> FERMANTATION_JAR_WHITE = regBlock("fermentation_jar_white", () -> new FermentationJarBlock("fermentation_jar_white", false), null);
-	public static final RegistryObject<Block> FERMANTATION_JAR_BLUE = regBlock("fermentation_jar_blue", () -> new FermentationJarBlock("fermentation_jar_blue", true), null);
-	public static final RegistryObject<Block> FERMANTATION_JAR_BLACK = regBlock("fermentation_jar_black", () -> new FermentationJarBlock("fermentation_jar_black", false), null);
-	public static final RegistryObject<Block> FERMANTATION_JAR_RED = regBlock("fermentation_jar_red", () -> new FermentationJarBlock("fermentation_jar_red", true), null);
-	public static final RegistryObject<Block> FERMANTATION_JAR_GREEN = regBlock("fermentation_jar_green", () -> new FermentationJarBlock("fermentation_jar_green", true), null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_NORMAL = regBlock("fermentation_jar_normal", () -> new FermentationJarBlock("fermentation_jar_normal", false), null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_WHITE = regBlock("fermentation_jar_white", () -> new FermentationJarBlock("fermentation_jar_white", false), null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_BLUE = regBlock("fermentation_jar_blue", () -> new FermentationJarBlock("fermentation_jar_blue", true), null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_BLACK = regBlock("fermentation_jar_black", () -> new FermentationJarBlock("fermentation_jar_black", false), null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_RED = regBlock("fermentation_jar_red", () -> new FermentationJarBlock("fermentation_jar_red", true), null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_GREEN = regBlock("fermentation_jar_green", () -> new FermentationJarBlock("fermentation_jar_green", true), null);
 
 	public static final RegistryObject<Block> WATER_PUMP = regBlock("water_pump", () -> new WaterPumpBlock("water_pump"), null);
 	public static final RegistryObject<Block> STONE_MILL = regBlock("stone_mill", () -> new StoneMillBlock("stone_mill"), null);
@@ -242,6 +264,12 @@ public class MachineInit {
 	public static final RegistryObject<BlockEntityType<FluidChamberTile>> FUEL_BURNER_TILE = CoreInit.BLOCK_ENTITIES.register("fuel_burner_tile",
 			() -> BlockEntityType.Builder.of(FluidChamberTile::new, new Block[] { FUEL_BURNER.get() }).build(null));
 
+	public static final RegistryObject<BlockEntityType<KichenStoveTile>> KICHEN_STOVE_TILE = CoreInit.BLOCK_ENTITIES.register("kitchen_stove_tile",
+			() -> BlockEntityType.Builder.of(KichenStoveTile::new, new Block[] { KICHEN_STOVE.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<KichenOvenTile>> KICHEN_OVEN_TILE = CoreInit.BLOCK_ENTITIES.register("kitchen_oven_tile",
+			() -> BlockEntityType.Builder.of(KichenOvenTile::new, new Block[] { KICHEN_OVEN_LAB.get(), KICHEN_OVEN_WOOD.get(), KICHEN_OVEN_BLACK.get() }).build(null));
+
 	public static final RegistryObject<BlockEntityType<HopperFilterTile>> HOPPER_FILTER_TILE = CoreInit.BLOCK_ENTITIES.register("hopper_filter_tile",
 			() -> BlockEntityType.Builder.of(HopperFilterTile::new, new Block[] { HOPPER_FILTER.get() }).build(null));
 
@@ -289,10 +317,9 @@ public class MachineInit {
 			() -> BlockEntityType.Builder.of(TeaPotTile::new, new Block[] { TEA_POT_NORMAL.get(), TEA_POT_WHITE.get(), TEA_POT_BLUE.get(), TEA_POT_BLACK.get(), TEA_POT_RED.get(), TEA_POT_GREEN
 					.get() }).build(null));
 
-	public static final RegistryObject<BlockEntityType<FermentationJarTile>> FERMANTATION_JAR_TILE = CoreInit.BLOCK_ENTITIES.register("fermentation_jar_tile",
-			() -> BlockEntityType.Builder.of(FermentationJarTile::new, new Block[] { FERMANTATION_JAR_NORMAL.get(), FERMANTATION_JAR_WHITE.get(), FERMANTATION_JAR_BLUE.get(), FERMANTATION_JAR_BLACK
-					.get(),
-				FERMANTATION_JAR_RED.get(), FERMANTATION_JAR_GREEN.get() }).build(null));
+	public static final RegistryObject<BlockEntityType<FermentationJarTile>> FERMENTATION_JAR_TILE = CoreInit.BLOCK_ENTITIES.register("fermentation_jar_tile",
+			() -> BlockEntityType.Builder.of(FermentationJarTile::new, new Block[] { FERMENTATION_JAR_NORMAL.get(), FERMENTATION_JAR_WHITE.get(), FERMENTATION_JAR_BLUE.get(),
+				FERMENTATION_JAR_BLACK.get(), FERMENTATION_JAR_RED.get(), FERMENTATION_JAR_GREEN.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<StoneMillTile>> MILL_TILE = CoreInit.BLOCK_ENTITIES.register("mill_tile",
 			() -> BlockEntityType.Builder.of(StoneMillTile::new, new Block[] { STONE_MILL.get() }).build(null));
@@ -350,11 +377,14 @@ public class MachineInit {
 	public static final RegistryObject<BlockEntityType<StormglassTile>> STORMGLASS_TILE = CoreInit.BLOCK_ENTITIES.register("stormglass_tile",
 			() -> BlockEntityType.Builder.of(StormglassTile::new, new Block[] { STORMGLASS.get() }).build(null));
 
-	public static final RegistryObject<BlockEntityType<KichenBenchTile>> KICHEN_BENCH_TILE = CoreInit.BLOCK_ENTITIES.register("kichen_bench_tile",
-			() -> BlockEntityType.Builder.of(KichenBenchTile::new, new Block[] { KICHEN_BENCH_BRICK.get() }).build(null));
+	public static final RegistryObject<BlockEntityType<KichenBenchTile>> KICHEN_BENCH_TILE = CoreInit.BLOCK_ENTITIES.register("kitchen_bench_tile",
+			() -> BlockEntityType.Builder.of(KichenBenchTile::new, new Block[] { KICHEN_BENCH_BRICK.get(), KICHEN_BENCH_LAB_A.get(), KICHEN_BENCH_LAB_B.get(),
+				KICHEN_BENCH_WOOD_A.get(), KICHEN_BENCH_WOOD_B.get(), KICHEN_BENCH_BLACK_A.get(), KICHEN_BENCH_BLACK_B.get(), KICHEN_BENCH_SUS.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<FluidSinkTile>> FLUID_SINK_TILE = CoreInit.BLOCK_ENTITIES.register("fluid_sink_tile",
-			() -> BlockEntityType.Builder.of(FluidSinkTile::new, new Block[] { KICHEN_SINK_BRICK.get(), HALF_SINK_BRICK.get() }).build(null));
+			() -> BlockEntityType.Builder.of(FluidSinkTile::new, new Block[] { KICHEN_SINK_BRICK.get(), HALF_SINK_BRICK.get(), KICHEN_SINK_SUS.get(), HALF_SINK_SUS.get(),
+				KICHEN_SINK_LAB.get(), KICHEN_SINK_WOOD.get(), KICHEN_SINK_BLACK.get() })
+					.build(null));
 
 	// Menu
 	public static final RegistryObject<MenuType<HeatingChamberMenu>> CHAMBER_MENU = CoreInit.register("dcs_chamber_item", (IContainerFactory<HeatingChamberMenu>) (id, playerInv, data) -> {
@@ -365,6 +395,16 @@ public class MachineInit {
 	public static final RegistryObject<MenuType<FluidChamberMenu>> FLUID_CHAMBER_MENU = CoreInit.register("dcs_chamber_fluid", (IContainerFactory<FluidChamberMenu>) (id, playerInv, data) -> {
 		FluidChamberTile cont = (FluidChamberTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
 		return FluidChamberMenu.getMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<KichenStoveMenu>> KICHEN_STOVE_MENU = CoreInit.register("dcs_chamber_kitchen", (IContainerFactory<KichenStoveMenu>) (id, playerInv, data) -> {
+		KichenStoveTile cont = (KichenStoveTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return KichenStoveMenu.getMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<KichenOvenMenu>> KICHEN_OVEN_MENU = CoreInit.register("dcs_chamber_oven", (IContainerFactory<KichenOvenMenu>) (id, playerInv, data) -> {
+		KichenOvenTile cont = (KichenOvenTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return KichenOvenMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<PortableTankMenu>> FLUID_MENU = CoreInit.register("dcs_fluid_tank", (IContainerFactory<PortableTankMenu>) (id, playerInv, data) -> {
@@ -438,7 +478,7 @@ public class MachineInit {
 		return ConveyorSorterMenu.getMenu(id, playerInv, cont);
 	});
 
-	public static final RegistryObject<MenuType<KichenBenchMenu>> KICHEN_BENCH_MENU = CoreInit.register("dcs_kichen_bench", (IContainerFactory<KichenBenchMenu>) (id, playerInv,
+	public static final RegistryObject<MenuType<KichenBenchMenu>> KICHEN_BENCH_MENU = CoreInit.register("dcs_kitchen_bench", (IContainerFactory<KichenBenchMenu>) (id, playerInv,
 			data) -> {
 		KichenBenchTile cont = (KichenBenchTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
 		return KichenBenchMenu.getMenu(id, playerInv, cont);

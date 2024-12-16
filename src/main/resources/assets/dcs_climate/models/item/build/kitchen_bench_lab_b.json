@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/build/kitchen_bench_lab_b_item"
+  },
+  "parent": "minecraft:item/generated"
+}

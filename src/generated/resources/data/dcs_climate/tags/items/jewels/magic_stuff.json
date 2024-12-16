@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:magic/rod_white_red",
+    "dcs_climate:magic/rod_blue_black",
+    "dcs_climate:magic/rod_black_white",
+    "dcs_climate:magic/rod_red_blue",
+    "dcs_climate:magic/rod_red_blue_activated",
+    "dcs_climate:magic/rod_green_white"
+  ]
+}

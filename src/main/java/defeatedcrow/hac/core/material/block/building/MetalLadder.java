@@ -10,6 +10,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
+import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.block.BlockDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.ChatFormatting;
@@ -24,7 +25,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -58,6 +58,12 @@ public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 
 	public MetalLadder(String s) {
 		super(getProp());
+		name = s;
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.FLAG, false).setValue(DCState.TOP, false).setValue(WATERLOGGED, false));
+	}
+
+	public MetalLadder(String s, BlockBehaviour.Properties prop) {
+		super(prop);
 		name = s;
 		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.FLAG, false).setValue(DCState.TOP, false).setValue(WATERLOGGED, false));
 	}
@@ -153,7 +159,8 @@ public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 				if ((hitRes.getLocation().y - hitRes.getBlockPos().getY()) <= 0.5D) {
 					below = true;
 				}
-				if (below) {
+				// vineは下方向のみ
+				if (below || held.getItem() == BuildInit.LADDER_VINE.get().asItem()) {
 					for (int y = 1; y < 64; y++) {
 						BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
 						mpos.setWithOffset(pos, 0, -y, 0);
@@ -243,7 +250,7 @@ public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.metal_building_blocks").withStyle(ChatFormatting.GRAY);
 		list.add(tex1);
 	}

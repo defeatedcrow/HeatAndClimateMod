@@ -132,8 +132,8 @@ public class MagicSmallLight extends BlockDC implements SimpleWaterloggedBlock {
 	public BlockState getStateForPlacement(BlockPlaceContext cont) {
 		BlockGetter level = cont.getLevel();
 		BlockPos pos = cont.getClickedPos();
-		FluidState fluidstate = level.getFluidState(pos);
 		Direction dir = cont.getClickedFace();
+		FluidState fluidstate = level.getFluidState(pos);
 		return super.getStateForPlacement(cont).setValue(DCState.DIRECTION, dir.getOpposite()).setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 

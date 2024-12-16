@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/aluminum"
+    },
+    "Y": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "Y  ",
+    "XY ",
+    " XY"
+  ],
+  "result": {
+    "count": 2,
+    "item": "dcs_climate:build/slim_stairs_metal"
+  }
+}

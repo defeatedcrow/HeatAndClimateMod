@@ -361,6 +361,24 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
 				.save(cons, "dcs_climate:build/metal_stairs_2");
 
+		ShapedRecipeBuilder.shaped(BuildInit.STAIRS_SLIM_METAL.get(), 2)
+				.pattern("Y  ")
+				.pattern("XY ")
+				.pattern(" XY")
+				.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+				.define('Y', ItemTags.PLANKS)
+				.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+				.save(cons, "dcs_climate:build/slim_metal_stairs_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.STAIRS_SLIM_METAL.get(), 2)
+				.pattern("  Y")
+				.pattern(" YX")
+				.pattern("YX ")
+				.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+				.define('Y', ItemTags.PLANKS)
+				.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+				.save(cons, "dcs_climate:build/slim_metal_stairs_2");
+
 		ShapedRecipeBuilder.shaped(BuildInit.ROOF_METAL_GRAY.get(), 6)
 				.pattern("X  ")
 				.pattern("XX ")
@@ -1149,23 +1167,71 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_gold", has(Tags.Items.INGOTS_GOLD))
 				.save(cons, "dcs_climate:build/chain_gold_0");
 
+		ShapedRecipeBuilder.shaped(BuildInit.CHAIN_VINE.get(), 1)
+				.pattern("X")
+				.pattern("X")
+				.pattern("X")
+				.define('X', TagDC.ItemTag.VINE)
+				.unlockedBy("has_vine", has(TagDC.ItemTag.VINE))
+				.save(cons, "dcs_climate:build/chain_vine_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.LADDER_VINE.get(), 3)
+				.pattern("X X")
+				.pattern("XXX")
+				.pattern("X X")
+				.define('X', TagDC.ItemTag.VINE)
+				.unlockedBy("has_vine", has(TagDC.ItemTag.VINE))
+				.save(cons, "dcs_climate:build/ladder_vine_0");
+
 		ShapedRecipeBuilder.shaped(BuildInit.TOOL_HOOK.get(), 1)
 				.pattern("Z")
 				.pattern("Y")
 				.pattern("X")
 				.define('X', ItemTags.PLANKS)
 				.define('Y', Tags.Items.RODS_WOODEN)
-				.define('Z', TagDC.ItemTag.INGOT_BRASS)
-				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+				.define('Z', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
+				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS_OR_BRONZE))
 				.save(cons, "dcs_climate:build/wall_hook_0");
 
 		ShapedRecipeBuilder.shaped(BuildInit.DISPLAY_SHELF.get(), 1)
 				.pattern("Z Z")
 				.pattern("XXX")
 				.define('X', ItemTags.PLANKS)
-				.define('Z', TagDC.ItemTag.INGOT_BRASS)
-				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+				.define('Z', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
+				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS_OR_BRONZE))
 				.save(cons, "dcs_climate:build/display_shelf_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.DISPLAY_SHELF_IRON.get(), 1)
+				.pattern("XZX")
+				.pattern("XZX")
+				.define('X', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
+				.define('Z', Items.IRON_BARS)
+				.unlockedBy("has_brass", has(Items.IRON_BARS))
+				.save(cons, "dcs_climate:build/display_shelf_iron_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.DISPLAY_SHELF_IRON.get(), 1)
+				.pattern("XZX")
+				.pattern("XZX")
+				.define('X', Tags.Items.INGOTS_IRON)
+				.define('Z', Items.IRON_BARS)
+				.unlockedBy("has_brass", has(Items.IRON_BARS))
+				.save(cons, "dcs_climate:build/display_shelf_iron_2");
+
+		ShapedRecipeBuilder.shaped(BuildInit.DISPLAY_SHELF_LAB.get(), 1)
+				.pattern("XZX")
+				.pattern("XZX")
+				.define('X', TagDC.ItemTag.BUILDING_LINOLEUM)
+				.define('Z', Items.IRON_BARS)
+				.unlockedBy("has_brass", has(Items.IRON_BARS))
+				.save(cons, "dcs_climate:build/display_shelf_lab_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.DISPLAY_SHELF_GLASS.get(), 1)
+				.pattern("XZX")
+				.pattern("XZX")
+				.define('X', TagDC.ItemTag.BUILDING_LINOLEUM)
+				.define('Z', Tags.Items.GLASS)
+				.unlockedBy("has_brass", has(Tags.Items.GLASS))
+				.save(cons, "dcs_climate:build/display_shelf_glass_0");
 
 		ShapedRecipeBuilder.shaped(BuildInit.CARPET_LINEN.get(), 1)
 				.pattern("Y")
@@ -1291,6 +1357,56 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('Y', ItemTags.WOODEN_FENCES)
 				.unlockedBy("has_wooden_fence", has(ItemTags.WOODEN_FENCES))
 				.save(cons, "dcs_climate:build/chair_wood_2");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAIR_ROUND_WHITE.get(), 1)
+				.pattern("Z")
+				.pattern("X")
+				.pattern("Y")
+				.define('X', TagDC.ItemTag.CLOTHS)
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.define('Z', Tags.Items.DYES_WHITE)
+				.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+				.save(cons, "dcs_climate:build/chair_round_white_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAIR_ROUND_BLUE.get(), 1)
+				.pattern("Z")
+				.pattern("X")
+				.pattern("Y")
+				.define('X', TagDC.ItemTag.CLOTHS)
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.define('Z', Tags.Items.DYES_BLUE)
+				.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+				.save(cons, "dcs_climate:build/chair_round_blue_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAIR_ROUND_BLACK.get(), 1)
+				.pattern("Z")
+				.pattern("X")
+				.pattern("Y")
+				.define('X', TagDC.ItemTag.CLOTHS)
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.define('Z', Tags.Items.DYES_BLACK)
+				.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+				.save(cons, "dcs_climate:build/chair_round_black_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAIR_ROUND_RED.get(), 1)
+				.pattern("Z")
+				.pattern("X")
+				.pattern("Y")
+				.define('X', TagDC.ItemTag.CLOTHS)
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.define('Z', Tags.Items.DYES_RED)
+				.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+				.save(cons, "dcs_climate:build/chair_round_red_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CHAIR_ROUND_GREEN.get(), 1)
+				.pattern("Z")
+				.pattern("X")
+				.pattern("Y")
+				.define('X', TagDC.ItemTag.CLOTHS)
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.define('Z', Tags.Items.DYES_GREEN)
+				.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+				.save(cons, "dcs_climate:build/chair_round_green_1");
 
 		ShapelessRecipeBuilder.shapeless(BuildInit.TABLE_LINEN.get(), 1)
 				.requires(TagDC.ItemTag.CLOTH_PLANT)
@@ -1733,42 +1849,42 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(CoreInit.AXE_BRASS.get(), 1)
 				.pattern("YYX")
 				.pattern(" XX")
-				.define('X', TagUtil.BRONZE_OR_BRASS)
+				.define('X', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
 				.define('Y', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS_OR_BRONZE))
 				.save(cons, "dcs_climate:core/axeitem_brass");
 
 		ShapedRecipeBuilder.shaped(CoreInit.PICKAXE_BRASS.get(), 1)
 				.pattern("  X")
 				.pattern("YYX")
 				.pattern("  X")
-				.define('X', TagUtil.BRONZE_OR_BRASS)
+				.define('X', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
 				.define('Y', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS_OR_BRONZE))
 				.save(cons, "dcs_climate:core/pickaxeitem_brass");
 
 		ShapedRecipeBuilder.shaped(CoreInit.SHOVEL_BRASS.get(), 1)
 				.pattern("YYX")
-				.define('X', TagUtil.BRONZE_OR_BRASS)
+				.define('X', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
 				.define('Y', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS_OR_BRONZE))
 				.save(cons, "dcs_climate:core/shovelitem_brass");
 
 		ShapedRecipeBuilder.shaped(CoreInit.HOE_BRASS.get(), 1)
 				.pattern("YYX")
 				.pattern("  X")
-				.define('X', TagUtil.BRONZE_OR_BRASS)
+				.define('X', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
 				.define('Y', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS_OR_BRONZE))
 				.save(cons, "dcs_climate:core/hoeitem_brass");
 
 		ShapedRecipeBuilder.shaped(CoreInit.SCYTHE_BRASS.get(), 1)
 				.pattern("YYX")
 				.pattern("  X")
 				.pattern(" X ")
-				.define('X', TagUtil.BRONZE_OR_BRASS)
+				.define('X', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
 				.define('Y', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS))
+				.unlockedBy("has_brass", has(TagDC.ItemTag.INGOT_BRASS_OR_BRONZE))
 				.save(cons, "dcs_climate:core/scytheitem_brass");
 
 		ShapedRecipeBuilder.shaped(CoreInit.AXE_STEEL.get(), 1)
@@ -2159,7 +2275,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(CoreInit.MET_BRONZE.get(), 1)
 				.pattern("XXX")
 				.pattern("XYX")
-				.define('X', TagUtil.BRONZE_OR_BRASS)
+				.define('X', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
 				.define('Y', TagDC.ItemTag.CLOTHS)
 				.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
 				.save(cons, "dcs_climate:clothing/helmet_bronze");
@@ -2168,7 +2284,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.pattern("XYX")
 				.pattern("XXX")
 				.pattern("XXX")
-				.define('X', TagUtil.BRONZE_OR_BRASS)
+				.define('X', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
 				.define('Y', TagDC.ItemTag.CLOTHS)
 				.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
 				.save(cons, "dcs_climate:clothing/plate_bronze");
@@ -2177,7 +2293,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.pattern("XXX")
 				.pattern("XYX")
 				.pattern("X X")
-				.define('X', TagUtil.BRONZE_OR_BRASS)
+				.define('X', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
 				.define('Y', TagDC.ItemTag.CLOTHS)
 				.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
 				.save(cons, "dcs_climate:clothing/chain_mail_bronze");
@@ -2185,7 +2301,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(CoreInit.BOOTS_BRONZE.get(), 1)
 				.pattern("X X")
 				.pattern("XYX")
-				.define('X', TagUtil.BRONZE_OR_BRASS)
+				.define('X', TagDC.ItemTag.INGOT_BRASS_OR_BRONZE)
 				.define('Y', TagDC.ItemTag.CLOTHS)
 				.unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
 				.save(cons, "dcs_climate:clothing/boots_bronze");
@@ -2807,6 +2923,8 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		smeltingRecipe(cons, Ingredient.of(BuildInit.FENCE_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_fence_metal", BuildInit.FENCE_METAL.get().asItem(), "has_fence_metal");
 		smeltingRecipe(cons, Ingredient.of(BuildInit.LADDER_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_ladder_metal", BuildInit.LADDER_METAL.get().asItem(), "has_ladder_metal");
 		smeltingRecipe(cons, Ingredient.of(BuildInit.STAIRS_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_stairs_metal", BuildInit.STAIRS_METAL.get().asItem(), "has_stairs_metal");
+		smeltingRecipe(cons, Ingredient.of(BuildInit.STAIRS_SLIM_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_slim_stairs_metal", BuildInit.STAIRS_SLIM_METAL.get().asItem(),
+				"has_slim_stairs_metal");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.ALMINUM_ROOFS), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_roof_metal", BuildInit.ROOF_METAL_GRAY.get().asItem(), "has_roof_metal");
 	}
 

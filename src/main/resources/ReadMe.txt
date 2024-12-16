@@ -187,6 +187,11 @@
   ・Coldダメージの軽減 / Cold damage reduction
    - HaCの耐寒ポーション cold resistance potion of HaC
 
+ ● Hardmode AIRFLOWの影響 / About AIRFLOW hardmode config
+
+ 　ハードモードの"Tight in Deep"を有効化していると、TIGHTの通気の環境では空気ゲージが減少します。
+  If the "Tight in Deep" in the hard mode config is enabled, The air gauge will decrease in a TIGHT airflow environment.
+
  ● Hardmode WETの影響 / About WET hardmode config
 
  　ハードモードの"Humidity Effect"を有効化していると、プレイヤーが水に濡れる時に『ずぶ濡れ』ポーション効果を受けます。
@@ -421,6 +426,16 @@
 
   一部のジュエルはプレイヤーにのみ効果があります。
   Some jewels only affect the player.
+
+ ● 魔法の腕輪 / Magical Bracelet
+
+  プレイヤーのオフハンドスロットにあるとき、効果を発揮します。
+  Effect activates when placed in the top row of the player's off-hand slot.
+
+ ● 魔法の杖 / Magical Rod
+
+  プレイヤーがメインハンドに持ち、クリックで使用することで効果を発揮します。
+  If a player holds this in their main hand and uses it, the effect will be activated.
 
 ****************************************************************************************************
 
@@ -714,7 +729,28 @@
 
 #### 更新履歴 / Change log ####
 
-○v4-beta17
+○v4-beta18
+ add: 長ネギ
+ add: オープン階段
+ add: ロープ
+ add: ロープのはしご
+ add: 飾り棚のバリエーション
+ add: キッチン作業台、シンクのバリエーション
+ add: オーブン付きコンロ
+ add: 魔法の腕輪
+ add: 魔法の杖
+ change: 気候計算時、屋根判定から除外するブロックをTagで指定できるように
+ change: タマネギ使用レシピの一部をネギに変更
+ change: 気候精練でEntity食べ物を料理したとき、風味に応じたEXPをドロップする
+ change: 吸気ファンのモデルの描画位置を壁寄りに修正
+ change: ジャンプ力上昇ポーションの効果中に耕地を踏んでも土に変わらなくなった
+ change: 村人が耕地を踏んでも土に変わらなくなった
+ change: ツールチップの追加方法を内部的に変更
+ fix: 水上作物を水上に植えるときの動作を修正した
+ fix: マシンGUIの表示のズレを修正
+ fix: 緑のバッジの効果が発動しない問題を修正
+
+○v4-beta17 (2024.10.24)
  change: 魔法の効果量に防具のエンチャント適正値が影響する
  change: 赤、緑の一部魔法アイテムの効果内容を変更
  change: HaC樹木の葉ブロックにクワを使用すると苗木を取れるようにした

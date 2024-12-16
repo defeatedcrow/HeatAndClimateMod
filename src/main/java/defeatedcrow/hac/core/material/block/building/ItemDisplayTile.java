@@ -58,12 +58,13 @@ public abstract class ItemDisplayTile extends OwnableBaseTileDC implements World
 			return false;
 		} else {
 			count = 9;
-			boolean lit = false;
+			int lit = 0;
 			for (int i = 0; i < getContainerSize(); i++) {
 				if (!DCUtil.isEmpty(getDisplay(i)) && getDisplay(i).getItem() instanceof BlockItem blockitem) {
 					Block block = blockitem.getBlock();
-					if (block.defaultBlockState().getLightEmission(level, pos) > 0) {
-						lit = true;
+					int l = block.defaultBlockState().getLightEmission(level, pos);
+					if (l > lit) {
+						lit = l;
 					}
 				}
 
@@ -77,7 +78,7 @@ public abstract class ItemDisplayTile extends OwnableBaseTileDC implements World
 		return false;
 	}
 
-	protected void changeLitState(Level level, BlockPos pos, boolean lit) {}
+	protected void changeLitState(Level level, BlockPos pos, int lit) {}
 
 	public InventoryDC inventory = new InventoryDC(getContainerSize(), this);
 

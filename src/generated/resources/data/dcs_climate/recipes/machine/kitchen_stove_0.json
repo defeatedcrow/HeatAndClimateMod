@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/sus"
+    },
+    "Y": {
+      "item": "dcs_climate:machine/fuel_burner"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "X X"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/kitchen_stove"
+  }
+}

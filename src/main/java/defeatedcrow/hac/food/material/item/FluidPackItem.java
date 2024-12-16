@@ -21,8 +21,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.capabilities.Capability;
@@ -42,7 +41,7 @@ public class FluidPackItem extends FoodMaterialItemDC {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		if (type != null && type != EMPTY) {
 			FluidStack fluid = type.fluid().get();
 			if (fluid.isEmpty()) {
@@ -54,7 +53,6 @@ public class FluidPackItem extends FoodMaterialItemDC {
 				list.add(com);
 			}
 		}
-		super.appendHoverText(item, level, list, flag);
 	}
 
 	@Override

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/machine/kitchen_stove_item"
+  },
+  "parent": "dcs_climate:block/dcs_dummy"
+}

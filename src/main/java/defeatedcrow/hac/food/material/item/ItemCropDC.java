@@ -17,8 +17,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 
 public class ItemCropDC extends ItemDC {
 
@@ -79,13 +78,12 @@ public class ItemCropDC extends ItemDC {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		if (poisonous) {
 			MutableComponent tasteName = Component.translatable("dcs.tip.not_eaten_crop");
 			tasteName.withStyle(ChatFormatting.RED);
 			list.add(tasteName);
 		}
-		super.appendHoverText(item, level, list, flag);
 	}
 
 }

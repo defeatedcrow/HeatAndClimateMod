@@ -49,6 +49,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_epic_crop13": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/crop_allium_epic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_epic_crop2": {
       "conditions": {
         "items": [
@@ -197,6 +209,9 @@
     ],
     [
       "has_epic_crop12"
+    ],
+    [
+      "has_epic_crop13"
     ]
   ]
 }

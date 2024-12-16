@@ -29,7 +29,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -218,21 +217,19 @@ public class CropAspiratorBlock extends RedstoneMachineBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.energy.machine").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD);
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.machine.desc");
 		MutableComponent tex3 = Component.translatable("dcs.tip.energy.rs_signal_machine");
 		MutableComponent tex4 = Component.translatable("dcs.tip.energy.crop_aspirator.desc").withStyle(ChatFormatting.GRAY);
-		if (ClimateCore.proxy.keyShiftPushed()) {
+		if (flag) {
 			list.add(tex1);
 			list.add(tex2);
 			list.add(tex3);
 			list.add(tex4);
 		} else {
 			list.add(tex1);
-			list.add(Component.translatable("dcs.tip.shift"));
 		}
-		super.appendHoverText(stack, level, list, flag);
 	}
 
 }

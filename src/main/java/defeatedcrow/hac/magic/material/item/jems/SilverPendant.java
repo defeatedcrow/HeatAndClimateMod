@@ -9,7 +9,6 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.api.magic.MagicColor;
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.tag.TagDC;
@@ -37,13 +36,12 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -216,26 +214,24 @@ public class SilverPendant extends MagicJewelBase {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tier = Component.translatable(getColor().name() + " " + item.getRarity());
 		tier.withStyle(getColor().chatColor);
 		list.add(tier);
+		if (ConfigCommonBuilder.INSTANCE.enMagicCost.get()) {
+			if (getColor().isBlue || getColor().isBlack || getColor().isGreen) {
+				int i = this.getMagicCostEXP(item);
+				MutableComponent cost = Component.literal("COST: " + i + "Xp");
+				list.add(cost);
+			}
+		}
 		MutableComponent itemName = Component.translatable("dcs.tip.pendant_s.name." + getColor().toString());
 		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
-		if (ClimateCore.proxy.keyShiftPushed()) {
+		if (flag) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.pendant_s.desc." + getColor().toString());
 			list.add(itemTip);
-
-			if (ConfigCommonBuilder.INSTANCE.enMagicCost.get()) {
-				if (getColor().isBlue || getColor().isBlack || getColor().isGreen) {
-					int i = this.getMagicCostEXP(item);
-					MutableComponent cost = Component.literal("COST: " + i + "Xp");
-					list.add(cost);
-				}
-			}
 		}
-		super.appendHoverText(item, level, list, flag);
 	}
 
 }

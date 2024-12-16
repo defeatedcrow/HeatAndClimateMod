@@ -5,10 +5,13 @@ import java.util.function.Supplier;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
+import defeatedcrow.hac.core.material.block.NoTabBlockItemDC;
 import defeatedcrow.hac.core.material.entity.ChairEntity;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Magic;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.magic.client.gui.BlackRodMenu;
 import defeatedcrow.hac.magic.client.gui.BoringMenu;
+import defeatedcrow.hac.magic.material.block.MagicScaffolding;
 import defeatedcrow.hac.magic.material.block.MagicSmallLight;
 import defeatedcrow.hac.magic.material.entity.ArrowBindPlant;
 import defeatedcrow.hac.magic.material.entity.ArrowBlack;
@@ -53,7 +56,14 @@ import defeatedcrow.hac.magic.material.item.card.CardWhiteT1;
 import defeatedcrow.hac.magic.material.item.card.CardWhiteT2;
 import defeatedcrow.hac.magic.material.item.jems.GoldPendant;
 import defeatedcrow.hac.magic.material.item.jems.GoldRing;
+import defeatedcrow.hac.magic.material.item.jems.RodBlack;
+import defeatedcrow.hac.magic.material.item.jems.RodBlue;
+import defeatedcrow.hac.magic.material.item.jems.RodGreen;
+import defeatedcrow.hac.magic.material.item.jems.RodRed;
+import defeatedcrow.hac.magic.material.item.jems.RodRed_Activated;
+import defeatedcrow.hac.magic.material.item.jems.RodWhite;
 import defeatedcrow.hac.magic.material.item.jems.SilverBadge;
+import defeatedcrow.hac.magic.material.item.jems.SilverBracelet;
 import defeatedcrow.hac.magic.material.item.jems.SilverPendant;
 import defeatedcrow.hac.magic.material.item.jems.SilverRing;
 import net.minecraft.tags.TagKey;
@@ -230,13 +240,32 @@ public class MagicInit {
 	public static final RegistryObject<Item> BADGE_SILVER_RED = regItem("badge_s_red", () -> new SilverBadge(MagicColor.RED));
 	public static final RegistryObject<Item> BADGE_SILVER_GREEN = regItem("badge_s_green", () -> new SilverBadge(MagicColor.GREEN));
 
+	public static final RegistryObject<Item> BRACELET_SILVER_WHITE = regItem("bracelet_s_white", () -> new SilverBracelet(MagicColor.WHITE_BLUE));
+	public static final RegistryObject<Item> BRACELET_SILVER_BLUE = regItem("bracelet_s_blue", () -> new SilverBracelet(MagicColor.BLUE_GREEN));
+	public static final RegistryObject<Item> BRACELET_SILVER_BLACK = regItem("bracelet_s_black", () -> new SilverBracelet(MagicColor.BLACK_RED));
+	public static final RegistryObject<Item> BRACELET_SILVER_RED = regItem("bracelet_s_red", () -> new SilverBracelet(MagicColor.RED_GREEN));
+	public static final RegistryObject<Item> BRACELET_SILVER_GREEN = regItem("bracelet_s_green", () -> new SilverBracelet(MagicColor.GREEN_BLACK));
+
+	public static final RegistryObject<Item> ROD_WHITE = regItem("rod_white_red", () -> new RodWhite());
+	public static final RegistryObject<Item> ROD_BLUE = regItem("rod_blue_black", () -> new RodBlue());
+	public static final RegistryObject<Item> ROD_BLACK = regItem("rod_black_white", () -> new RodBlack());
+	public static final RegistryObject<Item> ROD_RED = regItem("rod_red_blue", () -> new RodRed());
+	public static final RegistryObject<Item> ROD_RED_ACTIVE = regItem("rod_red_blue_activated", () -> new RodRed_Activated());
+	public static final RegistryObject<Item> ROD_GREEN = regItem("rod_green_white", () -> new RodGreen());
+
 	public static final RegistryObject<Item> DOCUMENT_BORING = regItem("document_boring_survey", () -> new BoringSurveyItem());
 
-	public static final RegistryObject<Block> SMALL_LIGHT = regBlock("magic_small_light", () -> new MagicSmallLight(), null);
+	public static final RegistryObject<Block> SMALL_LIGHT = regNoTabBlock("magic_small_light", () -> new MagicSmallLight(), null);
+	public static final RegistryObject<Block> SCAFFOLDING = regNoTabBlock("magic_scaffolding", () -> new MagicScaffolding(), null);
 
 	public static final RegistryObject<MenuType<BoringMenu>> BORING_SURVEY_MENU = register("dcs_boring_menu", (IContainerFactory<BoringMenu>) (id, playerInv, data) -> {
 		ItemStack held = playerInv.player.getMainHandItem();
 		return BoringMenu.getMenu(id, held, playerInv.player);
+	});
+
+	public static final RegistryObject<MenuType<BlackRodMenu>> BLACK_ROD_MENU = register("black_rod_menu", (IContainerFactory<BlackRodMenu>) (id, playerInv, data) -> {
+		ItemStack held = playerInv.player.getMainHandItem();
+		return BlackRodMenu.getMenu(id, held, playerInv.player);
 	});
 
 	public static RegistryObject<Item> regItem(String name, Supplier<Item> item) {
@@ -246,6 +275,12 @@ public class MagicInit {
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("magic/" + name, block);
 		regItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(MAGIC), tag));
+		return obj;
+	}
+
+	public static RegistryObject<Block> regNoTabBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
+		RegistryObject<Block> obj = CoreInit.BLOCKS.register("magic/" + name, block);
+		regItem(name, () -> new NoTabBlockItemDC(name, obj.get(), new Item.Properties().tab(MAGIC), tag));
 		return obj;
 	}
 

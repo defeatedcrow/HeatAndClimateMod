@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.client.gui.SimpleInventoryScreen;
 import defeatedcrow.hac.core.client.gui.UnlockedInventoryScreen;
 import defeatedcrow.hac.core.climate.ClientClimateData;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
+import defeatedcrow.hac.core.event.CharmTriggerEvent;
 import defeatedcrow.hac.core.event.ClientTickEventDC;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
@@ -29,12 +30,15 @@ import defeatedcrow.hac.machine.client.gui.FluidChamberScreen;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberScreen;
 import defeatedcrow.hac.machine.client.gui.HopperFilterScreen;
 import defeatedcrow.hac.machine.client.gui.KichenBenchScreen;
+import defeatedcrow.hac.machine.client.gui.KichenOvenScreen;
+import defeatedcrow.hac.machine.client.gui.KichenStoveScreen;
 import defeatedcrow.hac.machine.client.gui.MillScreen;
 import defeatedcrow.hac.machine.client.gui.MonitorAndonScreen;
 import defeatedcrow.hac.machine.client.gui.PortableTankScreen;
 import defeatedcrow.hac.machine.client.gui.RollCrusherScreen;
 import defeatedcrow.hac.machine.client.gui.TeaPotScreen;
 import defeatedcrow.hac.machine.material.MachineInit;
+import defeatedcrow.hac.magic.client.gui.BlackRodScreen;
 import defeatedcrow.hac.magic.client.gui.BoringScreen;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.client.Minecraft;
@@ -66,6 +70,7 @@ public class ClientProxyDC extends CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(RenderPlayerEventDC::renderWings);
 		MinecraftForge.EVENT_BUS.addListener(DCTextureStitch::register);
 		MinecraftForge.EVENT_BUS.addListener(AdvTooltipEvent::render);
+		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onPotionEffectColor);
 	}
 
 	@Override
@@ -76,8 +81,11 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(CoreInit.SIMPLE_DOUBLE.get(), DoubleInventoryScreen::new);
 		MenuScreens.register(CoreInit.UNLOCKED_DOUBLE.get(), UnlockedInventoryScreen::new);
 		MenuScreens.register(BuildInit.DISPLAY_SHELF_MENU.get(), DisplayShelfScreen::new);
+		MenuScreens.register(BuildInit.DISPLAY_DOUBLE_SHELF_MENU.get(), DisplayShelfScreen::new);
 		MenuScreens.register(MachineInit.CHAMBER_MENU.get(), HeatingChamberScreen::new);
 		MenuScreens.register(MachineInit.FLUID_CHAMBER_MENU.get(), FluidChamberScreen::new);
+		MenuScreens.register(MachineInit.KICHEN_STOVE_MENU.get(), KichenStoveScreen::new);
+		MenuScreens.register(MachineInit.KICHEN_OVEN_MENU.get(), KichenOvenScreen::new);
 		MenuScreens.register(MachineInit.FLUID_MENU.get(), PortableTankScreen::new);
 		MenuScreens.register(MachineInit.FLUID_MENU_LARGE.get(), PortableTankScreen::new);
 		MenuScreens.register(MachineInit.POT_MENU.get(), CookingPotScreen::new);
@@ -95,6 +103,7 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(MachineInit.KICHEN_BENCH_MENU.get(), KichenBenchScreen::new);
 		MenuScreens.register(MachineInit.MONITOR_ANDON_MENU.get(), MonitorAndonScreen::new);
 		MenuScreens.register(MagicInit.BORING_SURVEY_MENU.get(), BoringScreen::new);
+		MenuScreens.register(MagicInit.BLACK_ROD_MENU.get(), BlackRodScreen::new);
 
 		ClientRegisterInit.registerRenderTypes();
 	}

@@ -38,10 +38,10 @@ public class DeviceFermentationCategory implements IRecipeCategory<IDeviceRecipe
 	protected IDrawable icon;
 
 	public DeviceFermentationCategory(IGuiHelper guiHelper) {
-		icon = guiHelper.createDrawableItemStack(new ItemStack(MachineInit.FERMANTATION_JAR_NORMAL.get()));
+		icon = guiHelper.createDrawableItemStack(new ItemStack(MachineInit.FERMENTATION_JAR_NORMAL.get()));
 		background = guiHelper.drawableBuilder(PluginTexDC.FERMENTATION.getLocation(), 15, 6, 142, 92)
-			.addPadding(0, 0, 8, 3)
-			.build();
+				.addPadding(0, 0, 8, 3)
+				.build();
 	}
 
 	@Override
@@ -97,7 +97,7 @@ public class DeviceFermentationCategory implements IRecipeCategory<IDeviceRecipe
 		}
 		for (DCHeatTier heat : heats) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 38 + heat.getID() * 6, 66).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
-				new HeatTierRenderer(6, 3));
+					new HeatTierRenderer(6, 3));
 		}
 
 		List<DCHumidity> hums = recipe.requiredHum();
@@ -106,7 +106,7 @@ public class DeviceFermentationCategory implements IRecipeCategory<IDeviceRecipe
 		}
 		for (DCHumidity hum : hums) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 38 + hum.getID() * 21, 75).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
-				new HumidityRenderer(21, 3));
+					new HumidityRenderer(21, 3));
 		}
 
 		List<DCAirflow> airs = recipe.requiredAir();
@@ -115,7 +115,7 @@ public class DeviceFermentationCategory implements IRecipeCategory<IDeviceRecipe
 		}
 		for (DCAirflow air : airs) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 38 + air.getID() * 21, 85).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW,
-				new AirflowRenderer(21, 3));
+					new AirflowRenderer(21, 3));
 		}
 	}
 

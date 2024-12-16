@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "dcs_climate:color_elements/red"
+    },
+    "Y": {
+      "tag": "dcs_climate:color_elements/green"
+    },
+    "Z": {
+      "tag": "forge:ingots/silver"
+    }
+  },
+  "pattern": [
+    " X ",
+    "ZZZ",
+    " Y "
+  ],
+  "result": {
+    "item": "dcs_climate:magic/bracelet_s_red"
+  }
+}

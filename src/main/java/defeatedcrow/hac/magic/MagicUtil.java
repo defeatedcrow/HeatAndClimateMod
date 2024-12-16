@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewel;
+import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.magic.MagicType;
 import defeatedcrow.hac.api.magic.SearchPlayerCharmEvent;
@@ -115,6 +116,16 @@ public class MagicUtil {
 		return ret;
 	}
 
+	public static ItemStack getHandCharms(LivingEntity living, CharmType type) {
+		if (living != null) {
+			ItemStack off = living.getOffhandItem();
+			if (isHandCharmItem(off, type)) {
+				return off.copy();
+			}
+		}
+		return ItemStack.EMPTY;
+	}
+
 	private static boolean isCharmItem(ItemStack check, CharmType type) {
 		if (!check.isEmpty()) {
 			if (type == null) {
@@ -122,6 +133,20 @@ public class MagicUtil {
 			} else if (check.getItem() instanceof IJewel) {
 				IJewel charm = (IJewel) check.getItem();
 				if (charm.getType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	private static boolean isHandCharmItem(ItemStack check, CharmType type) {
+		if (!check.isEmpty()) {
+			if (type == null) {
+				return true;
+			} else if (check.getItem() instanceof IJewel) {
+				IJewel charm = (IJewel) check.getItem();
+				if (charm.getType() == MagicType.OFFHAND && charm.getCharmType().match(type)) {
 					return true;
 				}
 			}
@@ -143,6 +168,19 @@ public class MagicUtil {
 			}
 		}
 		return count;
+	}
+
+	public static boolean hasHandCharms(LivingEntity living, ItemStack item) {
+		ArrayList<ItemStack> ret = Lists.newArrayList();
+		if (living != null && !item.isEmpty() && item.getItem() instanceof IJewelCharm charm) {
+			if (charm.isActive(living, item)) {
+				ItemStack off = living.getOffhandItem();
+				if (!off.isEmpty() && DCItemUtil.isSameItem(off, item, false)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public static int hasCharmItem(LivingEntity living, Ingredient target) {

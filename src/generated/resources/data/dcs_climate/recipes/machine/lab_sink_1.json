@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "dcs_climate:building_stones/linoleum"
+    },
+    "Y": {
+      "item": "minecraft:bucket"
+    },
+    "Z": {
+      "item": "dcs_climate:machine/pipe_brass"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XZX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/fluid_sink_lab"
+  }
+}

@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.util.TagKeyDC;
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -33,7 +32,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
@@ -54,6 +53,9 @@ public class SilverBadge extends MagicJewelBase {
 		}
 		if (c.isBlack) {
 			return CharmType.ATTACK;
+		}
+		if (c.isGreen) {
+			return CharmType.DEFFENCE;
 		}
 		return CharmType.SPECIAL;
 	}
@@ -76,7 +78,7 @@ public class SilverBadge extends MagicJewelBase {
 					flag = true;
 				} else if (attacker instanceof Player player) {
 					Monster monster = player.getLevel().getNearestEntity(Monster.class, TargetingConditions.forCombat().range(16D),
-						target, target.getX(), target.getY(), target.getZ(), player.getBoundingBox().inflate(16D));
+							target, target.getX(), target.getY(), target.getZ(), player.getBoundingBox().inflate(16D));
 					if (monster != null) {
 						source = DamageSource.mobAttack(monster);
 					} else {
@@ -158,28 +160,22 @@ public class SilverBadge extends MagicJewelBase {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tier = Component.translatable(getColor().name() + " " + item.getRarity());
 		tier.withStyle(getColor().chatColor);
 		list.add(tier);
+		if (ConfigCommonBuilder.INSTANCE.enMagicCost.get()) {
+			if (!getColor().isBlue) {
+				int i = this.getMagicCostEXP(item);
+				MutableComponent cost = Component.literal("COST: " + i + "Xp");
+				list.add(cost);
+			}
+		}
 		MutableComponent itemName = Component.translatable("dcs.tip.badge_s.name." + getColor().toString());
 		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
-		if (!DCUtil.isEmpty(item) && getColor().isBlue) {
-			if (item.hasTag() && item.getTag().contains(TagKeyDC.DIM_LOCATION)) {
-				CompoundTag tag = item.getTag();
-				String s1 = tag.getString(TagKeyDC.DIM_LOCATION);
-				int dx = tag.getInt(TagKeyDC.POS_X);
-				int dy = tag.getInt(TagKeyDC.POS_Y);
-				int dz = tag.getInt(TagKeyDC.POS_Z);
-				list.add(Component.translatable("dcs.tip.coodinate").withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("DIM: " + s1).withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("X: " + dx).withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("Y: " + dy).withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("Z: " + dz).withStyle(ChatFormatting.GRAY));
-			}
-		}
-		if (ClimateCore.proxy.keyShiftPushed()) {
+
+		if (flag) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.badge_s.desc." + getColor().toString());
 			list.add(itemTip);
 
@@ -188,15 +184,21 @@ public class SilverBadge extends MagicJewelBase {
 				list.add(itemTip2);
 			}
 
-			if (ConfigCommonBuilder.INSTANCE.enMagicCost.get()) {
-				if (!getColor().isBlue) {
-					int i = this.getMagicCostEXP(item);
-					MutableComponent cost = Component.literal("COST: " + i + "Xp");
-					list.add(cost);
+			if (!DCUtil.isEmpty(item) && getColor().isBlue) {
+				if (item.hasTag() && item.getTag().contains(TagKeyDC.DIM_LOCATION)) {
+					CompoundTag tag = item.getTag();
+					String s1 = tag.getString(TagKeyDC.DIM_LOCATION);
+					int dx = tag.getInt(TagKeyDC.POS_X);
+					int dy = tag.getInt(TagKeyDC.POS_Y);
+					int dz = tag.getInt(TagKeyDC.POS_Z);
+					list.add(Component.translatable("dcs.tip.coodinate").withStyle(ChatFormatting.GRAY));
+					list.add(Component.literal("DIM: " + s1).withStyle(ChatFormatting.GRAY));
+					list.add(Component.literal("X: " + dx).withStyle(ChatFormatting.GRAY));
+					list.add(Component.literal("Y: " + dy).withStyle(ChatFormatting.GRAY));
+					list.add(Component.literal("Z: " + dz).withStyle(ChatFormatting.GRAY));
 				}
 			}
 		}
-		super.appendHoverText(item, level, list, flag);
 	}
 
 }

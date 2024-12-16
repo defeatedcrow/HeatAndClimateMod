@@ -67,6 +67,10 @@ public class FluidChamberScreen extends AbstractContainerScreen<FluidChamberMenu
 				list.add(this.menu.getFluidName());
 			}
 		}
+		if (this.isHovering(114, 69, 10, 10, mx, my)) {
+			String s = this.menu.isRS() ? "ON" : "OFF";
+			list.add(Component.translatable("dcs.tip.device.energy.rs").append(s));
+		}
 		this.renderComponentTooltip(pose, list, mx, my);
 	}
 
@@ -98,13 +102,17 @@ public class FluidChamberScreen extends AbstractContainerScreen<FluidChamberMenu
 			this.blit(pose, i + 80, j + 22, 190, aj, 38, 33);
 		}
 
+		if (this.menu.isRS()) {
+			this.blit(pose, i + 114, j + 69, 176, 112, 10, 10);
+		}
+
 		int l = this.menu.getBurnProgress();
 		if (l > 0)
 			this.blit(pose, i + 91, j + 58 + l, 176, 42 + l, 14, 14 - l);
 
 		if (!this.menu.getFluid().isEmpty()) {
 			if (l > 0) {
-				this.blit(pose, i + 58, j + 72, 190, 67, 49, 7);
+				this.blit(pose, i + 58, j + 71, 190, 66, 49, 7);
 			}
 
 			int amo = this.menu.getFluidGauge();

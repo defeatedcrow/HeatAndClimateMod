@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "side": "dcs_climate:block/tree/plank_reed_sorghum",
+    "panel": "dcs_climate:block/tree/plank_reed_sorghum"
+  },
+  "parent": "dcs_climate:block/dcs_stairs_slim"
+}

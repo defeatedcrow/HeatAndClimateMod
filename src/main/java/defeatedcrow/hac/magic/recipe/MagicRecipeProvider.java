@@ -9,6 +9,7 @@ import com.google.common.collect.Sets;
 import com.google.gson.JsonObject;
 
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.magic.material.MagicInit;
@@ -536,6 +537,113 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.define('Z', TagDC.ItemTag.INGOT_SILVER)
 				.unlockedBy("has_element_green", has(TagDC.ItemTag.ELEMENT_GREEN))
 				.save(cons, "dcs_climate:magic/craft_badge_silver_green");
+
+		// bracelet
+		ShapedRecipeBuilder.shaped(MagicInit.BRACELET_SILVER_WHITE.get(), 1)
+				.pattern(" X ")
+				.pattern("ZZZ")
+				.pattern(" Y ")
+				.define('X', TagDC.ItemTag.ELEMENT_WHITE)
+				.define('Y', TagDC.ItemTag.ELEMENT_BLUE)
+				.define('Z', TagDC.ItemTag.INGOT_SILVER)
+				.unlockedBy("has_element_white", has(TagDC.ItemTag.ELEMENT_WHITE))
+				.save(cons, "dcs_climate:magic/craft_bracelet_silver_white");
+
+		ShapedRecipeBuilder.shaped(MagicInit.BRACELET_SILVER_BLUE.get(), 1)
+				.pattern(" X ")
+				.pattern("ZZZ")
+				.pattern(" Y ")
+				.define('X', TagDC.ItemTag.ELEMENT_BLUE)
+				.define('Y', TagDC.ItemTag.ELEMENT_GREEN)
+				.define('Z', TagDC.ItemTag.INGOT_SILVER)
+				.unlockedBy("has_element_blue", has(TagDC.ItemTag.ELEMENT_BLUE))
+				.save(cons, "dcs_climate:magic/craft_bracelet_silver_blue");
+
+		ShapedRecipeBuilder.shaped(MagicInit.BRACELET_SILVER_BLACK.get(), 1)
+				.pattern(" X ")
+				.pattern("ZZZ")
+				.pattern(" Y ")
+				.define('X', TagDC.ItemTag.ELEMENT_BLACK)
+				.define('Y', TagDC.ItemTag.ELEMENT_RED)
+				.define('Z', TagDC.ItemTag.INGOT_SILVER)
+				.unlockedBy("has_element_black", has(TagDC.ItemTag.ELEMENT_BLACK))
+				.save(cons, "dcs_climate:magic/craft_bracelet_silver_black");
+
+		ShapedRecipeBuilder.shaped(MagicInit.BRACELET_SILVER_RED.get(), 1)
+				.pattern(" X ")
+				.pattern("ZZZ")
+				.pattern(" Y ")
+				.define('X', TagDC.ItemTag.ELEMENT_RED)
+				.define('Y', TagDC.ItemTag.ELEMENT_GREEN)
+				.define('Z', TagDC.ItemTag.INGOT_SILVER)
+				.unlockedBy("has_element_red", has(TagDC.ItemTag.ELEMENT_RED))
+				.save(cons, "dcs_climate:magic/craft_bracelet_silver_red");
+
+		ShapedRecipeBuilder.shaped(MagicInit.BRACELET_SILVER_GREEN.get(), 1)
+				.pattern(" X ")
+				.pattern("ZZZ")
+				.pattern(" Y ")
+				.define('X', TagDC.ItemTag.ELEMENT_GREEN)
+				.define('Y', TagDC.ItemTag.ELEMENT_BLACK)
+				.define('Z', TagDC.ItemTag.INGOT_SILVER)
+				.unlockedBy("has_element_green", has(TagDC.ItemTag.ELEMENT_GREEN))
+				.save(cons, "dcs_climate:magic/craft_bracelet_silver_green");
+
+		// rod
+		ShapedRecipeBuilder.shaped(MagicInit.ROD_WHITE.get(), 1)
+				.pattern("XWY")
+				.pattern(" Z ")
+				.pattern(" Z ")
+				.define('W', Items.GLOWSTONE_DUST)
+				.define('X', TagDC.ItemTag.ELEMENT_WHITE)
+				.define('Y', TagDC.ItemTag.ELEMENT_RED)
+				.define('Z', Tags.Items.RODS_WOODEN)
+				.unlockedBy("has_element_white", has(TagDC.ItemTag.ELEMENT_WHITE))
+				.save(cons, "dcs_climate:magic/craft_rod_white");
+
+		ShapedRecipeBuilder.shaped(MagicInit.ROD_BLUE.get(), 1)
+				.pattern("XWY")
+				.pattern(" Z ")
+				.pattern(" Z ")
+				.define('W', BuildInit.GLASS_CRYSTAL.get())
+				.define('X', TagDC.ItemTag.ELEMENT_BLUE)
+				.define('Y', TagDC.ItemTag.ELEMENT_BLACK)
+				.define('Z', Tags.Items.INGOTS_GOLD)
+				.unlockedBy("has_element_blue", has(TagDC.ItemTag.ELEMENT_BLUE))
+				.save(cons, "dcs_climate:magic/craft_rod_blue");
+
+		ShapedRecipeBuilder.shaped(MagicInit.ROD_BLACK.get(), 1)
+				.pattern("XWY")
+				.pattern(" Z ")
+				.pattern(" Z ")
+				.define('W', TagDC.ItemTag.GEM_DRAGONSEYE)
+				.define('X', TagDC.ItemTag.ELEMENT_BLACK)
+				.define('Y', TagDC.ItemTag.ELEMENT_WHITE)
+				.define('Z', TagDC.ItemTag.INGOT_SILVER)
+				.unlockedBy("has_element_black", has(TagDC.ItemTag.ELEMENT_BLACK))
+				.save(cons, "dcs_climate:magic/craft_rod_black");
+
+		ShapedRecipeBuilder.shaped(MagicInit.ROD_RED.get(), 1)
+				.pattern("XWY")
+				.pattern(" Z ")
+				.pattern(" Z ")
+				.define('W', TagDC.ItemTag.GEM_TOURMALINE)
+				.define('X', TagDC.ItemTag.ELEMENT_RED)
+				.define('Y', TagDC.ItemTag.ELEMENT_BLUE)
+				.define('Z', TagDC.ItemTag.INGOT_STEEL)
+				.unlockedBy("has_element_red", has(TagDC.ItemTag.ELEMENT_RED))
+				.save(cons, "dcs_climate:magic/craft_rod_red");
+
+		ShapedRecipeBuilder.shaped(MagicInit.ROD_GREEN.get(), 1)
+				.pattern("XWY")
+				.pattern(" Z ")
+				.pattern(" Z ")
+				.define('W', Items.GRASS_BLOCK)
+				.define('X', TagDC.ItemTag.ELEMENT_GREEN)
+				.define('Y', TagDC.ItemTag.ELEMENT_WHITE)
+				.define('Z', Tags.Items.RODS_WOODEN)
+				.unlockedBy("has_element_green", has(TagDC.ItemTag.ELEMENT_GREEN))
+				.save(cons, "dcs_climate:magic/craft_rod_green");
 	}
 
 	static void mortarRecipes(Consumer<FinishedRecipe> cons) {

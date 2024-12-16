@@ -84,6 +84,7 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 				.addCriterion("has_epic_crop10", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_CH_ALMOND.get()))
 				.addCriterion("has_epic_crop11", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_CT_PEPPER.get()))
 				.addCriterion("has_epic_crop12", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_SU_PISTACHIO.get()))
+				.addCriterion("has_epic_crop13", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_AL_LEEK.get()))
 				.requirements(RequirementsStrategy.AND).save(t, "dcs_climate:main/epic_crops");
 
 		Advancement a10 = Advancement.Builder.advancement().parent(a4).display(FoodInit.FOOD_ROCKFISH.get(), Component.translatable("advancements.dcs_climate.main.fish.title"),
@@ -118,13 +119,18 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 				Component.translatable("advancements.dcs_climate.main.cooking_pot.desc"), null, FrameType.TASK, true, true, false)
 				.addCriterion("has_cooking_pot", InventoryChangeTrigger.TriggerInstance.hasItems(MachineInit.COOKING_POT_NORMAL.get()))
 				.addCriterion("has_tea_pot", InventoryChangeTrigger.TriggerInstance.hasItems(MachineInit.TEA_POT_NORMAL.get()))
-				.addCriterion("has_fermentation_jar", InventoryChangeTrigger.TriggerInstance.hasItems(MachineInit.FERMANTATION_JAR_NORMAL.get()))
+				.addCriterion("has_fermentation_jar", InventoryChangeTrigger.TriggerInstance.hasItems(MachineInit.FERMENTATION_JAR_NORMAL.get()))
 				.requirements(RequirementsStrategy.OR).save(t, "dcs_climate:main/cooking_pot");
 
 		Advancement b6 = Advancement.Builder.advancement().parent(b5).display(FoodInit.TEA_APPLE_MILK.get(), Component.translatable("advancements.dcs_climate.main.apple_milk_tea.title"),
 				Component.translatable("advancements.dcs_climate.main.apple_milk_tea.desc"), null, FrameType.CHALLENGE, true, true, true)
 				.addCriterion("has_apple_milk_tea", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.TEA_APPLE_MILK.get()))
 				.save(t, "dcs_climate:main/apple_milk_tea");
+
+		Advancement b7 = Advancement.Builder.advancement().parent(b5).display(FoodInit.RAMEN_TONKOTSU.get(), Component.translatable("advancements.dcs_climate.main.tonkotsu.title"),
+				Component.translatable("advancements.dcs_climate.main.tonkotsu.desc"), null, FrameType.CHALLENGE, true, true, true)
+				.addCriterion("has_tonkotsu_ramen", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(FoodInit.RAMEN_TONKOTSU.get()).hasNbt(tag).build()))
+				.save(t, "dcs_climate:main/tonkotsu");
 	}
 
 }

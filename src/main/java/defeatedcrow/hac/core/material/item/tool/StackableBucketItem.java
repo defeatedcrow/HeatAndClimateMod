@@ -29,7 +29,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -197,10 +197,10 @@ public class StackableBucketItem extends CraftingItemDC {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		if (!DCUtil.isEmpty(stack) && stack.hasTag()) {
-			if (stack.getTag().contains(TagKeyDC.getTankKey(1), 10)) {
-				CompoundTag tankTag = stack.getTag().getCompound(TagKeyDC.getTankKey(1));
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+		if (!DCUtil.isEmpty(item) && item.hasTag()) {
+			if (item.getTag().contains(TagKeyDC.getTankKey(1), 10)) {
+				CompoundTag tankTag = item.getTag().getCompound(TagKeyDC.getTankKey(1));
 				FluidStack fluid = FluidStack.loadFluidStackFromNBT(tankTag);
 				if (fluid.isEmpty()) {
 					MutableComponent com = Component.literal("EMPTY").withStyle(ChatFormatting.GRAY);

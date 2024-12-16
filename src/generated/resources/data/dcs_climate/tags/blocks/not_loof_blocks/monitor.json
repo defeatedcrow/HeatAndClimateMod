@@ -1,0 +1,20 @@
+{
+  "values": [
+    "dcs_climate:machine/monitor_andon_lamp",
+    "dcs_climate:machine/monitor_andon_panel_1",
+    "dcs_climate:machine/monitor_andon_panel_2",
+    "dcs_climate:machine/monitor_andon_panel_3",
+    "dcs_climate:machine/monitor_andon_panel_4",
+    "dcs_climate:machine/monitor_andon_panel_5",
+    "dcs_climate:machine/monitor_andon_panel_6",
+    "dcs_climate:machine/monitor_andon_panel_7",
+    "dcs_climate:machine/monitor_andon_panel_8",
+    "dcs_climate:machine/monitor_andon_panel_9",
+    "dcs_climate:machine/monitor_comparator_lamp",
+    "dcs_climate:machine/monitor_energy",
+    "dcs_climate:machine/monitor_rs_lamp",
+    "dcs_climate:machine/monitor_rs_pilot",
+    "dcs_climate:machine/monitor_temp",
+    "dcs_climate:machine/stormglass"
+  ]
+}

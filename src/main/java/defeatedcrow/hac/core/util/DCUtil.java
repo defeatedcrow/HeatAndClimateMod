@@ -199,6 +199,9 @@ public class DCUtil {
 		List<BlockPos> nextTargets = new ArrayList<>();
 		nextTargets.add(pos);
 		Set<BlockPos> founds = new LinkedHashSet<>();
+		if (limit < 1) {
+			return founds;
+		}
 		do {
 			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative))
 					.filter(fixedPos -> world.getBlockState(fixedPos).getBlock().equals(block)).limit(limit - founds

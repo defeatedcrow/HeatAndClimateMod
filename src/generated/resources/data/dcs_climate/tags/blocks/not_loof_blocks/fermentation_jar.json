@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:machine/fermentation_jar_normal",
+    "dcs_climate:machine/fermentation_jar_white",
+    "dcs_climate:machine/fermentation_jar_blue",
+    "dcs_climate:machine/fermentation_jar_black",
+    "dcs_climate:machine/fermentation_jar_red",
+    "dcs_climate:machine/fermentation_jar_green"
+  ]
+}

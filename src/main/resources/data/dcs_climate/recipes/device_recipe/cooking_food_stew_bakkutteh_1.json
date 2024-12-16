@@ -13,7 +13,7 @@
       "tag": "forge:crops/radish"
     },
     {
-      "tag": "forge:crops/onions"
+      "tag": "forge:crops/leeks"
     },
     {
       "tag": "forge:crops/ginger"
@@ -22,7 +22,7 @@
       "tag": "forge:ingredients/soysauce"
     },
     {
-      "tag": "forge:crops/coriander"
+      "tag": "forge:crops/clove"
     }
   ],
   "heat": [

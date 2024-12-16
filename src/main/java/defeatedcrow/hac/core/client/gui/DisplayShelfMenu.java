@@ -1,7 +1,7 @@
 package defeatedcrow.hac.core.client.gui;
 
 import defeatedcrow.hac.core.material.BuildInit;
-import defeatedcrow.hac.core.material.block.building.DisplayShelfTile;
+import defeatedcrow.hac.core.material.block.building.ItemDisplayTile;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -11,35 +11,47 @@ import net.minecraft.world.item.ItemStack;
 
 public class DisplayShelfMenu extends AbstractContainerMenu {
 
-	private final DisplayShelfTile container;
+	private final ItemDisplayTile container;
 	public final boolean isOwner;
 
 	private int h1 = 37;
 	private int h2 = 95;
 	private int h3 = 153;
 
-	public DisplayShelfTile getContainer() {
+	public ItemDisplayTile getContainer() {
 		return container;
 	}
 
-	public static DisplayShelfMenu getMenu(int i, Inventory playerInv, DisplayShelfTile cont) {
-		return new DisplayShelfMenu(BuildInit.DISPLAY_SHELF_MENU.get(), i, playerInv, cont);
+	public static DisplayShelfMenu getMenu(int i, Inventory playerInv, ItemDisplayTile cont) {
+		return new DisplayShelfMenu(BuildInit.DISPLAY_SHELF_MENU.get(), i, playerInv, cont, false);
 	}
 
-	public DisplayShelfMenu(MenuType<?> type, int s, Inventory playerInv, DisplayShelfTile cont) {
+	public static DisplayShelfMenu getDoubleMenu(int i, Inventory playerInv, ItemDisplayTile cont) {
+		return new DisplayShelfMenu(BuildInit.DISPLAY_DOUBLE_SHELF_MENU.get(), i, playerInv, cont, true);
+	}
+
+	public DisplayShelfMenu(MenuType<?> type, int s, Inventory playerInv, ItemDisplayTile cont, boolean d) {
 		super(type, s);
-		checkContainerSize(cont, 5);
+		checkContainerSize(cont, d ? 10 : 5);
 		container = cont;
 		container.startOpen(playerInv.player);
 		isOwner = cont.isOwner(playerInv.player);
 
 		if (cont.canOpen(playerInv.player)) {
 
-			this.addSlot(new Slot(container, 0, 44 + 0 * 18, h1));
-			this.addSlot(new Slot(container, 1, 44 + 1 * 18, h1 + 8));
-			this.addSlot(new Slot(container, 2, 44 + 2 * 18, h1));
-			this.addSlot(new Slot(container, 3, 44 + 3 * 18, h1 + 8));
-			this.addSlot(new Slot(container, 4, 44 + 4 * 18, h1));
+			if (d) {
+				h1 = 27;
+				for (int i = 0; i < 5; i++) {
+					this.addSlot(new Slot(container, i, 44 + i * 18, (i & 1) == 0 ? h1 : h1 + 4));
+				}
+				for (int i = 5; i < 10; i++) {
+					this.addSlot(new Slot(container, i, 44 + i * 18 - 90, (i & 1) == 0 ? h1 + 29 : h1 + 25));
+				}
+			} else {
+				for (int i = 0; i < 5; i++) {
+					this.addSlot(new Slot(container, i, 44 + i * 18, (i & 1) == 0 ? h1 : h1 + 8));
+				}
+			}
 
 			for (int l = 0; l < 3; ++l) {
 				for (int j1 = 0; j1 < 9; ++j1) {
@@ -57,14 +69,15 @@ public class DisplayShelfMenu extends AbstractContainerMenu {
 	public ItemStack quickMoveStack(Player player, int s) {
 		ItemStack stack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(s);
+		int max = container.getContainerSize();
 		if (slot != null && slot.hasItem()) {
 			ItemStack check = slot.getItem();
 			stack = check.copy();
-			if (s < 5) {
-				if (!this.moveItemStackTo(check, 5, this.slots.size(), true)) {
+			if (s < max) {
+				if (!this.moveItemStackTo(check, max, this.slots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
-			} else if (!this.moveItemStackTo(check, 0, 5, false)) {
+			} else if (!this.moveItemStackTo(check, 0, max, false)) {
 				return ItemStack.EMPTY;
 			}
 

@@ -1,0 +1,20 @@
+{
+ "variants": {
+  "facing=west": {
+   "model": "dcs_climate:block/build/slim_stairs_morus_mulberry",
+   "y": 90
+  },
+  "facing=north": {
+   "model": "dcs_climate:block/build/slim_stairs_morus_mulberry",
+   "y": 180
+  },
+  "facing=south": {
+   "model": "dcs_climate:block/build/slim_stairs_morus_mulberry",
+   "y": 0
+  },
+  "facing=east": {
+   "model": "dcs_climate:block/build/slim_stairs_morus_mulberry",
+   "y": 270
+  }
+ }
+}

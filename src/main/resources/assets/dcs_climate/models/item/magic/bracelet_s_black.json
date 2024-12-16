@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/magic/arm_wing_black"
+  },
+  "parent": "dcs_climate:item/magic/bracelet_s_white"
+}

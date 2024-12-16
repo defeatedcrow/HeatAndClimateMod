@@ -17,7 +17,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 
 public abstract class ItemDC extends Item implements IJsonDataDC, IItemDC {
 
@@ -59,7 +59,7 @@ public abstract class ItemDC extends Item implements IJsonDataDC, IItemDC {
 		return tag == null ? TagDC.ItemTag.DUMMY : tag;
 	}
 
-	public void advTooltipText(ItemStack item, @Nullable Level level, List<Component> list) {}
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {}
 
 	@Override
 	public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {

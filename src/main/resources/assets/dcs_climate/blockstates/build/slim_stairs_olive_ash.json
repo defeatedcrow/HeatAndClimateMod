@@ -1,0 +1,20 @@
+{
+ "variants": {
+  "facing=west": {
+   "model": "dcs_climate:block/build/slim_stairs_olive_ash",
+   "y": 90
+  },
+  "facing=north": {
+   "model": "dcs_climate:block/build/slim_stairs_olive_ash",
+   "y": 180
+  },
+  "facing=south": {
+   "model": "dcs_climate:block/build/slim_stairs_olive_ash",
+   "y": 0
+  },
+  "facing=east": {
+   "model": "dcs_climate:block/build/slim_stairs_olive_ash",
+   "y": 270
+  }
+ }
+}

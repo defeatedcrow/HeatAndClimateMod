@@ -23,8 +23,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.phys.AABB;
 
 public class RawFishItem extends FoodMaterialItemDC {
@@ -67,7 +66,7 @@ public class RawFishItem extends FoodMaterialItemDC {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent s0 = Component.translatable("dcs.tip.fishdata.luck").withStyle(ChatFormatting.GRAY);
 		list.add(s0);
 		MutableComponent s1 = Component.literal("=== Fish Data ===").withStyle(ChatFormatting.AQUA);
@@ -110,7 +109,6 @@ public class RawFishItem extends FoodMaterialItemDC {
 		}
 		MutableComponent s5 = Component.literal("================").withStyle(ChatFormatting.AQUA);
 		list.add(s5);
-		super.appendHoverText(item, level, list, flag);
 	}
 
 }

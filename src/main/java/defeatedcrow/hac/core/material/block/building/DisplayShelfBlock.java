@@ -49,7 +49,7 @@ public class DisplayShelfBlock extends ContainerTileBlock {
 	public DisplayShelfBlock(String s) {
 		super(getProp());
 		name = s;
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.LIT, Boolean.valueOf(false))
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.LIT_LEVEL, Integer.valueOf(0))
 				.setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
@@ -81,22 +81,20 @@ public class DisplayShelfBlock extends ContainerTileBlock {
 
 	@Override
 	public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
-		if (DCState.getBool(state, DCState.LIT)) {
-			return 12;
-		}
-		return 0;
+		int lit = DCState.getInt(state, DCState.LIT_LEVEL);
+		return lit > 0 ? lit : 0;
 	}
 
-	public static void changeLisState(Level level, BlockPos pos, boolean lit) {
+	public static void changeLisState(Level level, BlockPos pos, int lit) {
 		BlockState state = level.getBlockState(pos);
-		if (state.getBlock() instanceof DisplayShelfBlock && lit != DCState.getBool(state, DCState.LIT)) {
-			level.setBlock(pos, state.setValue(DCState.LIT, Boolean.valueOf(lit)), 3);
+		if (state.getBlock() instanceof DisplayShelfBlock && lit != DCState.getInt(state, DCState.LIT_LEVEL)) {
+			level.setBlock(pos, state.setValue(DCState.LIT_LEVEL, lit), 3);
 		}
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
-		state.add(DCState.FACING, DCState.LIT, WATERLOGGED);
+		state.add(DCState.FACING, DCState.LIT_LEVEL, WATERLOGGED);
 	}
 
 	@Override

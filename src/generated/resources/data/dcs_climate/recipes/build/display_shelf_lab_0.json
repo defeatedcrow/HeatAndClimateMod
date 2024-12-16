@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "dcs_climate:building_stones/linoleum"
+    },
+    "Z": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "pattern": [
+    "XZX",
+    "XZX"
+  ],
+  "result": {
+    "item": "dcs_climate:build/display_shelf_lab"
+  }
+}

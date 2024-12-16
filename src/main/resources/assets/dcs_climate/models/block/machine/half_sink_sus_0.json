@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/machine/half_sink_sus_item"
+  },
+  "parent": "dcs_climate:block/dcs_dummy"
+}

@@ -1,0 +1,7 @@
+{
+ "variants": {
+    "": {
+      "model": "dcs_climate:block/machine/half_sink_sus_0"
+    }
+  }
+}

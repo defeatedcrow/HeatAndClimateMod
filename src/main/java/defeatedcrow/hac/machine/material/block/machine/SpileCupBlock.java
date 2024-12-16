@@ -214,11 +214,11 @@ public class SpileCupBlock extends BlockDC {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/machine/spilecup_base")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/machine/spilecup_sap1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/machine/spilecup_sap2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/machine/spilecup_sap3")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/machine/spilecup_sap4")));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/machine/spilecup_base")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/machine/spilecup_sap1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/machine/spilecup_sap2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/machine/spilecup_sap3")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/machine/spilecup_sap4")));
 	}
 
 	@Override
@@ -270,7 +270,7 @@ public class SpileCupBlock extends BlockDC {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable Level level, List<Component> list) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.spile", "logs_can_collect_sap");
 		list.add(tex1);
 	}

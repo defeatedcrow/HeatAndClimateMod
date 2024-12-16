@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Y": {
+      "item": "dcs_climate:machine/kitchen_stove"
+    },
+    "Z": {
+      "item": "dcs_climate:machine/chamber_iron"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XZX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/kitchen_oven_wood"
+  }
+}

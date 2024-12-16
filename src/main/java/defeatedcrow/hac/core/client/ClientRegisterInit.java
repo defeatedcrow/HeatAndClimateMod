@@ -7,6 +7,9 @@ import defeatedcrow.hac.core.client.entity.model.BlockChandelier3Model;
 import defeatedcrow.hac.core.client.entity.model.BlockChandelierModel;
 import defeatedcrow.hac.core.client.entity.model.BlockLockerModel;
 import defeatedcrow.hac.core.client.entity.model.BlockLuggageModel;
+import defeatedcrow.hac.core.client.entity.model.BlockRoundChairModel;
+import defeatedcrow.hac.core.client.entity.model.BlockShelfIronModel;
+import defeatedcrow.hac.core.client.entity.model.BlockShelfLabModel;
 import defeatedcrow.hac.core.client.entity.model.ChairBindModel;
 import defeatedcrow.hac.core.client.entity.model.CutleryModel;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicFin;
@@ -18,11 +21,14 @@ import defeatedcrow.hac.core.client.entity.renderer.RenderFork;
 import defeatedcrow.hac.core.client.entity.renderer.RenderHarpoon;
 import defeatedcrow.hac.core.client.entity.renderer.RenderSpoon;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererCabinet;
+import defeatedcrow.hac.core.client.entity.renderer.TileRendererChairRound;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererChandelier;
+import defeatedcrow.hac.core.client.entity.renderer.TileRendererDisplayDoubleShelf;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererDisplayShelf;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLocker;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLuggage;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererToolHook;
+import defeatedcrow.hac.core.client.particle.BubbleParticleDC;
 import defeatedcrow.hac.core.client.particle.LeakageParticleDC;
 import defeatedcrow.hac.core.client.particle.LightOrbDC;
 import defeatedcrow.hac.core.client.particle.SimpleParticleDC;
@@ -31,7 +37,9 @@ import defeatedcrow.hac.core.client.particle.SparkleParticleDC;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.building.CabinetTile;
+import defeatedcrow.hac.core.material.block.building.ChairRoundTile;
 import defeatedcrow.hac.core.material.block.building.ChandelierTile;
+import defeatedcrow.hac.core.material.block.building.DisplayDoubleShelfTile;
 import defeatedcrow.hac.core.material.block.building.LockerTile;
 import defeatedcrow.hac.core.material.block.building.LuggageTile;
 import defeatedcrow.hac.core.material.item.tool.CutleryChopsticksItem;
@@ -212,9 +220,17 @@ import defeatedcrow.hac.machine.client.entity.FermentationJarModel_B;
 import defeatedcrow.hac.machine.client.entity.HydroTurbineModel;
 import defeatedcrow.hac.machine.client.entity.IBCModel;
 import defeatedcrow.hac.machine.client.entity.IntakeFanModel;
+import defeatedcrow.hac.machine.client.entity.KichenBenchLabModel_A;
+import defeatedcrow.hac.machine.client.entity.KichenBenchLabModel_B;
+import defeatedcrow.hac.machine.client.entity.KichenBenchSUSModel;
+import defeatedcrow.hac.machine.client.entity.KichenOvenModel;
+import defeatedcrow.hac.machine.client.entity.KichenStoveModel;
 import defeatedcrow.hac.machine.client.entity.MonitorPanelModel;
 import defeatedcrow.hac.machine.client.entity.PortableCanModel;
 import defeatedcrow.hac.machine.client.entity.RollCrusherModel;
+import defeatedcrow.hac.machine.client.entity.SinkLabModel;
+import defeatedcrow.hac.machine.client.entity.SinkSUSHalfModel;
+import defeatedcrow.hac.machine.client.entity.SinkSUSModel;
 import defeatedcrow.hac.machine.client.entity.StoneMillModel;
 import defeatedcrow.hac.machine.client.entity.StormglassModel;
 import defeatedcrow.hac.machine.client.entity.TeaPotModel_A;
@@ -231,11 +247,15 @@ import defeatedcrow.hac.machine.client.entity.TileRendererFermentationJar;
 import defeatedcrow.hac.machine.client.entity.TileRendererHydroTurbine;
 import defeatedcrow.hac.machine.client.entity.TileRendererIBC;
 import defeatedcrow.hac.machine.client.entity.TileRendererIntakeFan;
+import defeatedcrow.hac.machine.client.entity.TileRendererKichenBench;
+import defeatedcrow.hac.machine.client.entity.TileRendererKichenOven;
+import defeatedcrow.hac.machine.client.entity.TileRendererKichenStove;
 import defeatedcrow.hac.machine.client.entity.TileRendererMeterEnergy;
 import defeatedcrow.hac.machine.client.entity.TileRendererMeterTemp;
 import defeatedcrow.hac.machine.client.entity.TileRendererPipeAlloy;
 import defeatedcrow.hac.machine.client.entity.TileRendererPortableCan;
 import defeatedcrow.hac.machine.client.entity.TileRendererRollCrusher;
+import defeatedcrow.hac.machine.client.entity.TileRendererSink;
 import defeatedcrow.hac.machine.client.entity.TileRendererStoneMill;
 import defeatedcrow.hac.machine.client.entity.TileRendererStormglass;
 import defeatedcrow.hac.machine.client.entity.TileRendererTeaPot;
@@ -246,10 +266,13 @@ import defeatedcrow.hac.machine.material.block.machine.CookingPotTile;
 import defeatedcrow.hac.machine.material.block.machine.FermentationJarTile;
 import defeatedcrow.hac.machine.material.block.machine.HydroTurbineTile;
 import defeatedcrow.hac.machine.material.block.machine.IntakeFanTile;
+import defeatedcrow.hac.machine.material.block.machine.KichenBenchTile;
+import defeatedcrow.hac.machine.material.block.machine.KichenOvenTile;
 import defeatedcrow.hac.machine.material.block.machine.RollCrusherTile;
 import defeatedcrow.hac.machine.material.block.machine.StoneMillTile;
 import defeatedcrow.hac.machine.material.block.machine.TeaPotTile;
 import defeatedcrow.hac.machine.material.block.transport.FaucetTile;
+import defeatedcrow.hac.machine.material.block.transport.FluidSinkTile;
 import defeatedcrow.hac.machine.material.block.transport.IBCTile;
 import defeatedcrow.hac.machine.material.block.transport.PortableCanTile;
 import defeatedcrow.hac.magic.client.entity.RenderBindPlant;
@@ -286,6 +309,12 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(ChandelierTile.IRON.getLayerLocation(), BlockChandelier2Model::createBodyLayer);
 		event.registerLayerDefinition(ChandelierTile.CANDLE.getLayerLocation(), BlockChandelier3Model::createBodyLayer);
 
+		event.registerLayerDefinition(ChairRoundTile.BLUE.getLayerLocation(), BlockRoundChairModel::createBodyLayer);
+		event.registerLayerDefinition(ChairRoundTile.BLACK.getLayerLocation(), BlockRoundChairModel::createBodyLayer);
+		event.registerLayerDefinition(ChairRoundTile.RED.getLayerLocation(), BlockRoundChairModel::createBodyLayer);
+		event.registerLayerDefinition(ChairRoundTile.GREEN.getLayerLocation(), BlockRoundChairModel::createBodyLayer);
+		event.registerLayerDefinition(ChairRoundTile.WHITE.getLayerLocation(), BlockRoundChairModel::createBodyLayer);
+
 		event.registerLayerDefinition(LuggageTile.NORMAL.getLayerLocation(), BlockLuggageModel::createBodyLayer);
 		event.registerLayerDefinition(LuggageTile.BLUE.getLayerLocation(), BlockLuggageModel::createBodyLayer);
 		event.registerLayerDefinition(LuggageTile.BLACK.getLayerLocation(), BlockLuggageModel::createBodyLayer);
@@ -307,8 +336,32 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(LockerTile.GREEN.getLayerLocation(), BlockLockerModel::createBodyLayer);
 		event.registerLayerDefinition(LockerTile.WHITE.getLayerLocation(), BlockLockerModel::createBodyLayer);
 
+		event.registerLayerDefinition(DisplayDoubleShelfTile.IRON.getLayerLocation(), BlockShelfIronModel::createBodyLayer);
+		event.registerLayerDefinition(DisplayDoubleShelfTile.LAB.getLayerLocation(), BlockShelfLabModel::createBodyLayer);
+		event.registerLayerDefinition(DisplayDoubleShelfTile.GLASS.getLayerLocation(), BlockShelfLabModel::createBodyLayer);
+
 		event.registerLayerDefinition(TileRendererChamberIron.DATA.getLayerLocation(), BlockChamberIronModel::createBodyLayer);
 		event.registerLayerDefinition(TileRendererChamberFuel.DATA.getLayerLocation(), BlockChamberFuelModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererKichenStove.DATA.getLayerLocation(), KichenStoveModel::createBodyLayer);
+
+		event.registerLayerDefinition(KichenOvenTile.WOOD_OFF.getLayerLocation(), KichenOvenModel::createBodyLayer);
+		event.registerLayerDefinition(KichenOvenTile.WOOD_ON.getLayerLocation(), KichenOvenModel::createBodyLayer);
+		event.registerLayerDefinition(KichenOvenTile.BLACK_OFF.getLayerLocation(), KichenOvenModel::createBodyLayer);
+		event.registerLayerDefinition(KichenOvenTile.BLACK_ON.getLayerLocation(), KichenOvenModel::createBodyLayer);
+		event.registerLayerDefinition(KichenOvenTile.LAB_OFF.getLayerLocation(), KichenOvenModel::createBodyLayer);
+		event.registerLayerDefinition(KichenOvenTile.LAB_ON.getLayerLocation(), KichenOvenModel::createBodyLayer);
+
+		event.registerLayerDefinition(KichenBenchTile.WOOD_A.getLayerLocation(), KichenBenchLabModel_A::createBodyLayer);
+		event.registerLayerDefinition(KichenBenchTile.WOOD_B.getLayerLocation(), KichenBenchLabModel_B::createBodyLayer);
+		event.registerLayerDefinition(KichenBenchTile.BLACK_A.getLayerLocation(), KichenBenchLabModel_A::createBodyLayer);
+		event.registerLayerDefinition(KichenBenchTile.BLACK_B.getLayerLocation(), KichenBenchLabModel_B::createBodyLayer);
+		event.registerLayerDefinition(KichenBenchTile.LAB_A.getLayerLocation(), KichenBenchLabModel_A::createBodyLayer);
+		event.registerLayerDefinition(KichenBenchTile.LAB_B.getLayerLocation(), KichenBenchLabModel_B::createBodyLayer);
+		event.registerLayerDefinition(KichenBenchTile.SUS.getLayerLocation(), KichenBenchSUSModel::createBodyLayer);
+
+		event.registerLayerDefinition(FluidSinkTile.LAB.getLayerLocation(), SinkLabModel::createBodyLayer);
+		event.registerLayerDefinition(FluidSinkTile.SUS.getLayerLocation(), SinkSUSModel::createBodyLayer);
+		event.registerLayerDefinition(FluidSinkTile.SUS_HALF.getLayerLocation(), SinkSUSHalfModel::createBodyLayer);
 
 		event.registerLayerDefinition(PortableCanTile.NORMAL.getLayerLocation(), PortableCanModel::createBodyLayer);
 		event.registerLayerDefinition(PortableCanTile.WHITE.getLayerLocation(), PortableCanModel::createBodyLayer);
@@ -757,18 +810,24 @@ public class ClientRegisterInit {
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		// TESR
 		event.registerBlockEntityRenderer(BuildInit.CHANDELIER_TILE.get(), TileRendererChandelier::new);
+		event.registerBlockEntityRenderer(BuildInit.CHAIR_ROUND_TILE.get(), TileRendererChairRound::new);
 		event.registerBlockEntityRenderer(BuildInit.LUGGAGE_TILE.get(), TileRendererLuggage::new);
 		event.registerBlockEntityRenderer(BuildInit.CABINET_TILE.get(), TileRendererCabinet::new);
 		event.registerBlockEntityRenderer(BuildInit.LOCKER_TILE.get(), TileRendererLocker::new);
 		event.registerBlockEntityRenderer(BuildInit.TOOLHOOK_TILE.get(), TileRendererToolHook::new);
 		event.registerBlockEntityRenderer(BuildInit.DISPLAY_SHELF_TILE.get(), TileRendererDisplayShelf::new);
+		event.registerBlockEntityRenderer(BuildInit.DISPLAY_DOUBLE_SHELF_TILE.get(), TileRendererDisplayDoubleShelf::new);
 		event.registerBlockEntityRenderer(MachineInit.CHAMBER_BRICK_TILE.get(), TileRendererChamberFuel::new);
 		event.registerBlockEntityRenderer(MachineInit.CHAMBER_IRON_TILE.get(), TileRendererChamberIron::new);
+		event.registerBlockEntityRenderer(MachineInit.KICHEN_STOVE_TILE.get(), TileRendererKichenStove::new);
+		event.registerBlockEntityRenderer(MachineInit.KICHEN_OVEN_TILE.get(), TileRendererKichenOven::new);
+		event.registerBlockEntityRenderer(MachineInit.KICHEN_BENCH_TILE.get(), TileRendererKichenBench::new);
+		event.registerBlockEntityRenderer(MachineInit.FLUID_SINK_TILE.get(), TileRendererSink::new);
 		event.registerBlockEntityRenderer(MachineInit.PORTABLE_CAN_TILE.get(), TileRendererPortableCan::new);
 		event.registerBlockEntityRenderer(MachineInit.IBC_TILE.get(), TileRendererIBC::new);
 		event.registerBlockEntityRenderer(MachineInit.COOKING_POT_TILE.get(), TileRendererCookingPot::new);
 		event.registerBlockEntityRenderer(MachineInit.TEA_POT_TILE.get(), TileRendererTeaPot::new);
-		event.registerBlockEntityRenderer(MachineInit.FERMANTATION_JAR_TILE.get(), TileRendererFermentationJar::new);
+		event.registerBlockEntityRenderer(MachineInit.FERMENTATION_JAR_TILE.get(), TileRendererFermentationJar::new);
 		event.registerBlockEntityRenderer(MachineInit.MILL_TILE.get(), TileRendererStoneMill::new);
 		event.registerBlockEntityRenderer(MachineInit.CRUSHER_TILE.get(), TileRendererRollCrusher::new);
 		event.registerBlockEntityRenderer(MachineInit.CABLE_COPPER_TILE.get(), TileRendererCopperCable::new);
@@ -877,6 +936,7 @@ public class ClientRegisterInit {
 		event.register(CoreInit.LEAKAGE.get(), LeakageParticleDC.Provider::new);
 		event.register(CoreInit.FOOD_PARTICLE.get(), SimpleParticleDC.Provider::new);
 		event.register(CoreInit.SPARKLE.get(), SparkleParticleDC.Provider::new);
+		event.register(CoreInit.BUBBLE_BLACK.get(), BubbleParticleDC.Provider::new);
 	}
 
 	public static void registerClientReloadListeners(RegisterClientReloadListenersEvent event) {

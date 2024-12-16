@@ -730,7 +730,7 @@ public class CoreInit {
 	public static final RegistryObject<SimpleParticleType> LIGHT_ORB_BLUE = PARTICLE_TYPE.register("light_orb_blue", () -> new SimpleParticleType(false));
 
 	public static final RegistryObject<SimpleParticleType> SPARKLE = PARTICLE_TYPE.register("sparkle", () -> new SimpleParticleType(false));
-
+	public static final RegistryObject<SimpleParticleType> BUBBLE_BLACK = PARTICLE_TYPE.register("bubble_black", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> LEAKAGE = PARTICLE_TYPE.register("leakage", () -> new SimpleParticleType(false));
 
 	public static final RegistryObject<SimpleParticleType> FOOD_PARTICLE = PARTICLE_TYPE.register("food_particle", () -> new SimpleParticleType(false));

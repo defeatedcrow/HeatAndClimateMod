@@ -23,7 +23,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -212,7 +211,7 @@ public class MetalStairs extends BlockDC implements SimpleWaterloggedBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.metal_building_blocks").withStyle(ChatFormatting.GRAY);
 		list.add(tex1);
 	}

@@ -14,6 +14,7 @@ import defeatedcrow.hac.machine.client.gui.BoilerBiomassScreen;
 import defeatedcrow.hac.machine.client.gui.CookingPotScreen;
 import defeatedcrow.hac.machine.client.gui.FermentationJarScreen;
 import defeatedcrow.hac.machine.client.gui.FluidChamberScreen;
+import defeatedcrow.hac.machine.client.gui.KichenOvenScreen;
 import defeatedcrow.hac.machine.client.gui.MillScreen;
 import defeatedcrow.hac.machine.client.gui.RollCrusherScreen;
 import defeatedcrow.hac.machine.client.gui.TeaPotScreen;
@@ -27,6 +28,7 @@ import defeatedcrow.hac.plugin.jei.ingredients.JeiHeatTierHelper;
 import defeatedcrow.hac.plugin.jei.ingredients.JeiHumidityHelper;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IModIngredientRegistration;
@@ -114,12 +116,12 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.TEA_POT_RED.get()), TEA_DATA);
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.TEA_POT_GREEN.get()), TEA_DATA);
 
-		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_NORMAL.get()), FERMENTATION_DATA);
-		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_WHITE.get()), FERMENTATION_DATA);
-		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_BLUE.get()), FERMENTATION_DATA);
-		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_BLACK.get()), FERMENTATION_DATA);
-		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_RED.get()), FERMENTATION_DATA);
-		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMANTATION_JAR_GREEN.get()), FERMENTATION_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMENTATION_JAR_NORMAL.get()), FERMENTATION_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMENTATION_JAR_WHITE.get()), FERMENTATION_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMENTATION_JAR_BLUE.get()), FERMENTATION_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMENTATION_JAR_BLACK.get()), FERMENTATION_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMENTATION_JAR_RED.get()), FERMENTATION_DATA);
+		registration.addRecipeCatalyst(new ItemStack(MachineInit.FERMENTATION_JAR_GREEN.get()), FERMENTATION_DATA);
 
 		registration.addRecipeCatalyst(new ItemStack(MachineInit.STONE_MILL.get()), MILL_DATA);
 
@@ -139,6 +141,7 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipeClickArea(FluidChamberScreen.class, 92, 59, 13, 13, FLUID_FUEL_DATA);
 		registration.addRecipeClickArea(MillScreen.class, 67, 54, 12, 12, MILL_DATA);
 		registration.addRecipeClickArea(RollCrusherScreen.class, 42, 49, 12, 12, CRUSHER_PULVERISE_DATA, CRUSHER_SQUEEZE_DATA, CRUSHER_SIEVE_DATA);
+		registration.addRecipeClickArea(KichenOvenScreen.class, 78, 84, 52, 7, RecipeTypes.SMELTING);
 	}
 
 	public static final ResourceLocation SMELTING_ID = new ResourceLocation(ClimateCore.MOD_ID, "smelting_data");

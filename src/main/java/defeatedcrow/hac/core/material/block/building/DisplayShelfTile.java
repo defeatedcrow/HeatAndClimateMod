@@ -16,7 +16,7 @@ public class DisplayShelfTile extends ItemDisplayTile {
 	}
 
 	@Override
-	protected void changeLitState(Level level, BlockPos pos, boolean lit) {
+	protected void changeLitState(Level level, BlockPos pos, int lit) {
 		DisplayShelfBlock.changeLisState(level, pos, lit);
 	}
 

@@ -3,6 +3,7 @@ package defeatedcrow.hac.core.event;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.google.common.collect.Lists;
 
@@ -11,14 +12,19 @@ import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.network.packet.message.MsgLeftClickToS;
 import defeatedcrow.hac.core.util.DCItemUtil;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import defeatedcrow.hac.magic.material.item.InertElementItem;
+import defeatedcrow.hac.magic.material.item.jems.RodBlack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -40,13 +46,16 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.PotionColorCalculationEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -98,6 +107,32 @@ public class CharmTriggerEvent {
 
 		boolean b1 = false;
 		float dif = 1.0F;
+
+		if (source == DamageSource.WITHER || source == DamageSource.MAGIC) {
+			if (MagicUtil.hasHandCharms(living, new ItemStack(MagicInit.BRACELET_SILVER_GREEN.get()))) {
+				living.heal(amount);
+				event.setCanceled(true);
+				return;
+			}
+		}
+
+		if (source == DamageSource.LIGHTNING_BOLT) {
+			if (!DCUtil.isEmpty(living.getMainHandItem())) {
+				if (living.getMainHandItem().getItem() == MagicInit.ROD_RED.get()) {
+					ItemStack activated = new ItemStack(MagicInit.ROD_RED_ACTIVE.get());
+					if (living.getMainHandItem().getTag() != null) {
+						CompoundTag tag = living.getMainHandItem().getTag();
+						activated.setTag(tag);
+					}
+					living.setItemInHand(InteractionHand.MAIN_HAND, activated);
+					event.setCanceled(true);
+					return;
+				} else if (living.getMainHandItem().getItem() == MagicInit.ROD_RED_ACTIVE.get()) {
+					event.setCanceled(true);
+					return;
+				}
+			}
+		}
 
 		ArrayList<ItemStack> difCharms = MagicUtil.getCharms(living, CharmType.DEFFENCE);
 		for (ItemStack c1 : difCharms) {
@@ -265,6 +300,7 @@ public class CharmTriggerEvent {
 		if (level.isClientSide || player.isCrouching() || !level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS))
 			return;
 
+		boolean ret = false;
 		ArrayList<ItemStack> charms = MagicUtil.getCharms(player, CharmType.DIG);
 		for (ItemStack c : charms) {
 			if (!c.isEmpty() && c.getItem() instanceof IJewelCharm charm) {
@@ -272,25 +308,21 @@ public class CharmTriggerEvent {
 					if (charm.onToolUsing(player, pos, state, c)) {
 						charm.onConsumeResource(player, c);
 						event.setCanceled(true);
+						ret = true;
 						break;
 					}
 				}
 			}
 		}
+		if (ret)
+			return;
 
-		int range = 0;
-		int count = 2 * MagicUtil.hasCharmItem(player, new ItemStack(MagicInit.BADGE_SILVER_RED.get()));
-		if (count > 0 && level instanceof ServerLevel serverLevel) {
-			Direction dir = player.getDirection();
-			if (player.getXRot() > 45F) {
-				dir = Direction.UP;
-			}
-			if (player.getXRot() < -45F) {
-				dir = Direction.DOWN;
-			}
-
-			List<BlockPos> targetPosList = getTargetPos(pos, dir, count);
-			targetPosList.forEach((p2) -> {
+		if (!CollectBlackList(state) && !state.hasBlockEntity() && !player.getMainHandItem().isEmpty()
+				&& MagicUtil.hasHandCharms(player, new ItemStack(MagicInit.BRACELET_SILVER_BLACK.get()))
+				&& level instanceof ServerLevel serverLevel) {
+			int lim = ConfigCommonBuilder.INSTANCE.vTimberLimit.get();
+			Set<BlockPos> set = DCUtil.getConnectedTargetList(level, pos, state.getBlock(), lim);
+			set.forEach((p2) -> {
 				BlockState s2 = level.getBlockState(p2);
 				BlockEntity e2 = level.getBlockEntity(p2);
 				LootContext.Builder builder = (new LootContext.Builder(serverLevel))
@@ -300,7 +332,7 @@ public class CharmTriggerEvent {
 						.withOptionalParameter(LootContextParams.THIS_ENTITY, player)
 						.withParameter(LootContextParams.TOOL, player.getMainHandItem());
 				s2.getDrops(builder).forEach((item) -> {
-					Block.popResource(serverLevel, p2, item);
+					Block.popResource(serverLevel, player.blockPosition(), item);
 				});
 				s2.getBlock().destroy(serverLevel, p2, s2);
 				serverLevel.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
@@ -309,8 +341,43 @@ public class CharmTriggerEvent {
 			player.getMainHandItem().hurtAndBreak(2, player, (p) -> {
 				p.broadcastBreakEvent(EquipmentSlot.MAINHAND);
 			});
-
 			event.setCanceled(true);
+
+		} else {
+			int range = 0;
+			int count = 2 * MagicUtil.hasCharmItem(player, new ItemStack(MagicInit.BADGE_SILVER_RED.get()));
+			if (count > 0 && level instanceof ServerLevel serverLevel) {
+				Direction dir = player.getDirection();
+				if (player.getXRot() > 45F) {
+					dir = Direction.UP;
+				}
+				if (player.getXRot() < -45F) {
+					dir = Direction.DOWN;
+				}
+
+				List<BlockPos> targetPosList = getTargetPos(pos, dir, count);
+				targetPosList.forEach((p2) -> {
+					BlockState s2 = level.getBlockState(p2);
+					BlockEntity e2 = level.getBlockEntity(p2);
+					LootContext.Builder builder = (new LootContext.Builder(serverLevel))
+							.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
+							.withParameter(LootContextParams.BLOCK_STATE, s2)
+							.withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2)
+							.withOptionalParameter(LootContextParams.THIS_ENTITY, player)
+							.withParameter(LootContextParams.TOOL, player.getMainHandItem());
+					s2.getDrops(builder).forEach((item) -> {
+						Block.popResource(serverLevel, p2, item);
+					});
+					s2.getBlock().destroy(serverLevel, p2, s2);
+					serverLevel.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
+				});
+
+				player.getMainHandItem().hurtAndBreak(2, player, (p) -> {
+					p.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+				});
+
+				event.setCanceled(true);
+			}
 		}
 	}
 
@@ -343,11 +410,43 @@ public class CharmTriggerEvent {
 		}
 	}
 
+	private static boolean CollectBlackList(BlockState state) {
+		return state.getMaterial() == Material.GRASS || state.is(BlockTags.DIRT) || state.is(Tags.Blocks.STONE) || state.is(Tags.Blocks.SAND);
+	}
+
 	@SubscribeEvent
 	public static void onPotionEffectColor(PotionColorCalculationEvent event) {
 		if (event.getEffects() != null && !event.getEffects().isEmpty()) {
-			if (event.getEffects().size() == 1 && event.getEffects().stream().anyMatch((e) -> e.getEffect() == CoreInit.WET.get())) {
+			if (event.getEffects().size() < 2 && event.getEffects().stream().anyMatch((e) -> e.getEffect() == CoreInit.WET.get())) {
 				event.shouldHideParticles(true);
+				event.setCanceled(true);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void onBlockLeftClick(PlayerInteractEvent.LeftClickBlock event) {
+		Player player = event.getEntity();
+		if (player != null && player.isAlive()) {
+			ItemStack held = event.getItemStack();
+			BlockPos pos = event.getPos();
+			Direction dir = event.getFace();
+			if (!DCUtil.isEmpty(held) && held.getItem() instanceof RodBlack rod) {
+				if (player.getLevel() instanceof ServerLevel level) {
+					rod.onBlockHit(level, player, event.getHand(), held, pos, dir);
+				}
+				event.setCanceled(true);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void onEmptyLeftClick(PlayerInteractEvent.LeftClickEmpty event) {
+		Player player = event.getEntity();
+		if (player != null && player.isAlive()) {
+			ItemStack held = event.getItemStack();
+			if (!DCUtil.isEmpty(held) && held.getItem() instanceof RodBlack rod) {
+				MsgLeftClickToS.sendToServer(player, event.getHand(), 0);
 			}
 		}
 	}

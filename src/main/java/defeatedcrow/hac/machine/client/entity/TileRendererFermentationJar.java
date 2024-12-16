@@ -41,7 +41,7 @@ public class TileRendererFermentationJar implements BlockEntityRenderer<Fermenta
 			Direction dir = DCState.getFace(tile.getBlockState(), DCState.FACING);
 			float f1 = data.getModelScale();
 			float f2 = data.getAdjustY();
-			boolean isB = block == MachineInit.FERMANTATION_JAR_NORMAL.get() || block == MachineInit.FERMANTATION_JAR_BLACK.get() || block == MachineInit.FERMANTATION_JAR_WHITE.get();
+			boolean isB = block == MachineInit.FERMENTATION_JAR_NORMAL.get() || block == MachineInit.FERMENTATION_JAR_BLACK.get() || block == MachineInit.FERMENTATION_JAR_WHITE.get();
 
 			poseStack.pushPose();
 			poseStack.translate(0.5F, 0.5F + f2, 0.5F);

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "tag": "forge:gems/dragons_eye"
+    },
+    "X": {
+      "tag": "dcs_climate:color_elements/black"
+    },
+    "Y": {
+      "tag": "dcs_climate:color_elements/white"
+    },
+    "Z": {
+      "tag": "forge:ingots/silver"
+    }
+  },
+  "pattern": [
+    "XWY",
+    " Z ",
+    " Z "
+  ],
+  "result": {
+    "item": "dcs_climate:magic/rod_black_white"
+  }
+}

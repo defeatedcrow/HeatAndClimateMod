@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "dcs_climate:build/glass_crystal"
+    },
+    "X": {
+      "tag": "dcs_climate:color_elements/blue"
+    },
+    "Y": {
+      "tag": "dcs_climate:color_elements/black"
+    },
+    "Z": {
+      "tag": "forge:ingots/gold"
+    }
+  },
+  "pattern": [
+    "XWY",
+    " Z ",
+    " Z "
+  ],
+  "result": {
+    "item": "dcs_climate:magic/rod_blue_black"
+  }
+}

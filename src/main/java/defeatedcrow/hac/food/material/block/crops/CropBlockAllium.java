@@ -143,6 +143,8 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 			return FoodInit.BLOCK_AL_ONION.get();
 		case RARE:
 			return FoodInit.BLOCK_AL_GARLIC.get();
+		case EPIC:
+			return FoodInit.BLOCK_AL_LEEK.get();
 		default:
 			return FoodInit.BLOCK_AL_WILD.get();
 		}
@@ -155,6 +157,8 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 			return FoodInit.CROP_AL_ONION.get();
 		case RARE:
 			return FoodInit.CROP_AL_GARLIC.get();
+		case EPIC:
+			return FoodInit.CROP_AL_LEEK.get();
 		default:
 			return FoodInit.CROP_AL_WILD.get();
 		}
@@ -169,6 +173,8 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 			return Optional.of(FoodInit.BLOCK_AL_ONION.get());
 		case RARE:
 			return Optional.of(FoodInit.BLOCK_AL_GARLIC.get());
+		case EPIC:
+			return Optional.of(FoodInit.BLOCK_AL_LEEK.get());
 		default:
 			return Optional.empty();
 		}
@@ -186,7 +192,7 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
-		if (t == CropTier.COMMON) {
+		if (t == CropTier.COMMON || t == CropTier.EPIC) {
 			return ImmutableList.of(DCHeatTier.FROSTBITE, DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
 		} else if (t == CropTier.RARE) {
 			return ImmutableList.of(DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL);
@@ -233,6 +239,8 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 			return "onion";
 		if (tier == CropTier.RARE)
 			return "garlic";
+		if (tier == CropTier.EPIC)
+			return "leek";
 		return "wild";
 	}
 

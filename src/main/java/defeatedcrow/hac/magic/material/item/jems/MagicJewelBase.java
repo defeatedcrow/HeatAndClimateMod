@@ -139,10 +139,10 @@ public abstract class MagicJewelBase extends ItemDC implements IJewelCharm {
 			int base = ConfigCommonBuilder.INSTANCE.vMagicCost.get();
 			switch (rarity) {
 			case EPIC:
-				base *= 10;
+				base *= 5;
 				break;
 			case RARE:
-				base *= 5;
+				base *= 4;
 				break;
 			case UNCOMMON:
 				base *= 2;

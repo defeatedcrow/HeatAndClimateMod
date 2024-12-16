@@ -24,9 +24,11 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -59,7 +61,10 @@ public class BlockEventDC {
 			return;
 
 		if (entity instanceof LivingEntity living) {
-			if (living.hasEffect(CoreInit.BIRD.get())) {
+			if (living.hasEffect(CoreInit.BIRD.get()) || living.hasEffect(MobEffects.JUMP)) {
+				event.setCanceled(true);
+			}
+			if (living instanceof Villager) {
 				event.setCanceled(true);
 			}
 		}

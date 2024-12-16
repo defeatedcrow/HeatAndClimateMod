@@ -33,6 +33,11 @@ public class ChainBlockDC extends ChainBlock implements IBlockDC, IJsonDataDC {
 		name = n;
 	}
 
+	public ChainBlockDC(String n, BlockBehaviour.Properties prop) {
+		super(prop);
+		name = n;
+	}
+
 	@Override
 	public String getRegistryName() {
 		return "build/chain_" + name;

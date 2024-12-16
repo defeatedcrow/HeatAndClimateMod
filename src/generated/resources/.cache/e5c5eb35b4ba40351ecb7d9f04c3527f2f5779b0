@@ -1,4 +1,4 @@
-// 1.19.2	2024-06-06T01:28:21.2349668	Advancements
+// 1.19.2	2024-10-27T23:37:38.8804084	Advancements
 68697141ec0eb7920c91bfac93ea8b98fdad42e5 data/dcs_climate/advancements/magic/bird.json
 de6a103b02f61d751df843c44e26ce649f72bd8c data/dcs_climate/advancements/magic/element.json
 ab2d163066c56123a5b84a20c9a5edb1697012e9 data/dcs_climate/advancements/magic/gem.json
@@ -12,7 +12,7 @@ d674e3b3d26bb47b93e300bbcc3a5ced9e4c2918 data/dcs_climate/advancements/main/brea
 eab0ca1443801dad4ea7531eafd1abb349e0433a data/dcs_climate/advancements/main/cooking_pot.json
 27e4bd281ea53296d439ccc634ffed5904de2470 data/dcs_climate/advancements/main/damage.json
 e79667ec513917b0b6d783707361e80f20b2038b data/dcs_climate/advancements/main/delicious.json
-7bfda42bc7882f84898260f40e0adf96d2dee6be data/dcs_climate/advancements/main/epic_crops.json
+0c71d2226189be180983dd9c3718a0600d411d99 data/dcs_climate/advancements/main/epic_crops.json
 33b6a295114d712a49259dce42b0b513639a17a8 data/dcs_climate/advancements/main/fertilizer.json
 3f73c0162a0388c776ed0a8f395b9d2ca6cbd8c2 data/dcs_climate/advancements/main/fish.json
 4bcdfd210fe00043e418ffb4ee1e9694c2a46ee5 data/dcs_climate/advancements/main/mosquito_coil.json
@@ -20,6 +20,7 @@ e79667ec513917b0b6d783707361e80f20b2038b data/dcs_climate/advancements/main/deli
 814c96fc66960a415db9de66712e02f223a2b5a4 data/dcs_climate/advancements/main/rare_crops.json
 17c51e9f6e84243dd4187e54c78818876d43b352 data/dcs_climate/advancements/main/root.json
 236fab3ba4e0d0f94753f6f97b2c7d35ae8f5b4f data/dcs_climate/advancements/main/table.json
+3d81fb4421aed3cd5b574cd54710372f6b80d7a1 data/dcs_climate/advancements/main/tonkotsu.json
 6c351a50eefc99e4baa478c327c62ced3e9c6284 data/dcs_climate/advancements/main/tree_crops.json
 fc4a9aae2d00c557c1706a0e6c5d5192cf9bc805 data/dcs_climate/advancements/main/wear.json
 03b70fe5b6f20052dc4c80e20a901be4362b1569 data/dcs_climate/advancements/main/wild_crops.json

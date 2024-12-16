@@ -22,6 +22,7 @@ import defeatedcrow.hac.core.network.packet.message.MsgEffectToC;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicUtil;
+import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
@@ -55,8 +56,9 @@ public class LivingTickEventDC {
 					onLivingClimateUpdate(living);
 				}
 			}
-			if (living.level.getGameTime() % 20 == 0) {
-				if (!living.level.isClientSide) {
+			if (!living.level.isClientSide) {
+				if (living.level.getGameTime() % 20 == 0) {
+
 					if (living instanceof Player && ConfigCommonBuilder.INSTANCE.enPotionSharing.get()) {
 						onLivingPotionSharing(living);
 					}
@@ -65,12 +67,15 @@ public class LivingTickEventDC {
 						onVillagerUpdate(villager);
 					}
 				}
+			} else {
+				onLivingEffectUpdate(living);
 			}
 		}
 	}
 
 	public static void onLivingUpdate(LivingEntity living) {
-		if (living.hasEffect(MobEffects.JUMP) || living.hasEffect(CoreInit.BIRD.get())) {
+		if (living.hasEffect(MobEffects.JUMP) || living.hasEffect(CoreInit.BIRD.get())
+				|| MagicUtil.hasHandCharms(living, new ItemStack(MagicInit.BRACELET_SILVER_RED.get()))) {
 			living.fallDistance = 0.0F;
 		}
 		if (living.hasEffect(CoreInit.FISH.get()) && living.getAirSupply() < living.getMaxAirSupply()) {
@@ -109,10 +114,31 @@ public class LivingTickEventDC {
 			charm.constantEffect(living, item2);
 		}
 		charms.clear();
+
+		ItemStack handcharm = MagicUtil.getHandCharms(living, CharmType.CONSTANT);
+		if (!handcharm.isEmpty()) {
+			IJewelCharm charm = (IJewelCharm) handcharm.getItem();
+			charm.constantEffect(living, handcharm);
+		}
+
 	}
 
 	public static void onLivingEffectUpdate(LivingEntity living) {
-
+		if (MagicUtil.hasHandCharms(living, new ItemStack(MagicInit.BRACELET_SILVER_RED.get()))) {
+			if (living.horizontalCollision) {
+				Vec3 v = living.getDeltaMovement();
+				double d1 = v.x;
+				double d2 = 0.15D;
+				double d3 = v.z;
+				if (living.isCrouching()) {
+					d1 *= 0.5D;
+					d2 = 0.0D;
+					d3 *= 0.5D;
+				}
+				Vec3 v2 = new Vec3(d1, d2, d3);
+				living.setDeltaMovement(v2);
+			}
+		}
 	}
 
 	public static void onLivingClimateUpdate(LivingEntity living) {

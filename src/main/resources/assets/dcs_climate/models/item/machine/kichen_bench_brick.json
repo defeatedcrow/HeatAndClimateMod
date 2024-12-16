@@ -1,6 +1,0 @@
-{
-  "textures": {
-    "layer0": "dcs_climate:block/machine/kichen_bench_brick_item"
-  },
-  "parent": "minecraft:item/generated"
-}

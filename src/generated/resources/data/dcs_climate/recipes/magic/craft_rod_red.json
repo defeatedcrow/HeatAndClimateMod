@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "tag": "forge:gems/tourmaline"
+    },
+    "X": {
+      "tag": "dcs_climate:color_elements/red"
+    },
+    "Y": {
+      "tag": "dcs_climate:color_elements/blue"
+    },
+    "Z": {
+      "tag": "forge:ingots/steel"
+    }
+  },
+  "pattern": [
+    "XWY",
+    " Z ",
+    " Z "
+  ],
+  "result": {
+    "item": "dcs_climate:magic/rod_red_blue"
+  }
+}

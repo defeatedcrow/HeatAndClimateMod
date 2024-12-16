@@ -56,7 +56,12 @@ public class DisplayShelfScreen extends AbstractContainerScreen<DisplayShelfMenu
 	protected void renderBg(PoseStack pose, float f, int mx, int my) {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-		RenderSystem.setShaderTexture(0, DCTexturePath.GUI_DISPLAY_SHELF.getLocation());
+		if (this.getMenu().getContainer().getContainerSize() == 10) {
+			RenderSystem.setShaderTexture(0, DCTexturePath.GUI_DISPLAY_DOUBLE_SHELF.getLocation());
+		} else {
+			RenderSystem.setShaderTexture(0, DCTexturePath.GUI_DISPLAY_SHELF.getLocation());
+		}
+
 		int i = (this.width - this.imageWidth) / 2;
 		int j = (this.height - this.imageHeight) / 2;
 		this.blit(pose, i, j, 0, 0, this.imageWidth, this.imageHeight);

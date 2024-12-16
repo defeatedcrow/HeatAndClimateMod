@@ -1,0 +1,37 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "render_type": "cutout",
+    "textures": {
+        "inner": "dcs_climate:block/magic/scaffolding_inner",
+        "outer": "dcs_climate:block/magic/scaffolding_outer",
+        "particle": "dcs_climate:block/magic/scaffolding_outer"
+    },
+    "elements": [
+        {
+            "from": [0, 0, 0],
+            "to": [16, 16, 16],
+            "faces": {
+                "north": {"uv": [0, 0, 16, 16], "texture": "#outer"},
+                "east": {"uv": [0, 0, 16, 16], "texture": "#outer"},
+                "south": {"uv": [0, 0, 16, 16], "texture": "#outer"},
+                "west": {"uv": [0, 0, 16, 16], "texture": "#outer"},
+                "up": {"uv": [0, 0, 16, 16], "texture": "#outer"},
+                "down": {"uv": [0, 0, 16, 16], "texture": "#outer"}
+            }
+        },
+        {
+            "from": [0.5, 0.5, 0.5],
+            "to": [15.5, 15.5, 15.5],
+            "shade":false,
+            "faces": {
+                "north": {"uv": [0, 0, 15, 15], "texture": "#inner"},
+                "east": {"uv": [0, 0, 15, 15], "texture": "#inner"},
+                "south": {"uv": [0, 0, 15, 15], "texture": "#inner"},
+                "west": {"uv": [0, 0, 15, 15], "texture": "#inner"},
+                "up": {"uv": [0, 0, 15, 15], "texture": "#inner"},
+                "down": {"uv": [0, 0, 15, 15], "texture": "#inner"}
+            }
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:grass_block"
+    },
+    "X": {
+      "tag": "dcs_climate:color_elements/green"
+    },
+    "Y": {
+      "tag": "dcs_climate:color_elements/white"
+    },
+    "Z": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "XWY",
+    " Z ",
+    " Z "
+  ],
+  "result": {
+    "item": "dcs_climate:magic/rod_green_white"
+  }
+}

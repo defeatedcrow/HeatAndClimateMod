@@ -8,7 +8,7 @@
       "tag": "forge:rods/wooden"
     },
     "Z": {
-      "tag": "forge:ingots/brass"
+      "tag": "forge:ingots/brass_or_bronze"
     }
   },
   "pattern": [

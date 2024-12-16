@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:machine/cooking_pot_normal",
+    "dcs_climate:machine/cooking_pot_white",
+    "dcs_climate:machine/cooking_pot_blue",
+    "dcs_climate:machine/cooking_pot_black",
+    "dcs_climate:machine/cooking_pot_red",
+    "dcs_climate:machine/cooking_pot_green"
+  ]
+}

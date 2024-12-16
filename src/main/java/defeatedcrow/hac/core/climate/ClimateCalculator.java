@@ -14,6 +14,7 @@ import defeatedcrow.hac.api.climate.IHumidityTile;
 import defeatedcrow.hac.api.event.BlockHeatTierEvent;
 import defeatedcrow.hac.api.material.IPosLinkTile;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
+import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -418,7 +419,7 @@ public class ClimateCalculator implements IClimateCalculator {
 		while (pos2.getY() < lim && pos2.getY() < level.getHeight()) {
 			BlockState state = level.getBlockState(pos2);
 			Block block = level.getBlockState(pos2).getBlock();
-			if (!level.isEmptyBlock(pos2) && state.getMaterial().blocksMotion()) {
+			if (!level.isEmptyBlock(pos2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.getMaterial().blocksMotion()) {
 				return true;
 			}
 			pos2 = pos2.above();
@@ -443,7 +444,7 @@ public class ClimateCalculator implements IClimateCalculator {
 			BlockPos p2 = pos.above(i);
 			BlockState state = level.getBlockState(p2);
 			Block block = level.getBlockState(p2).getBlock();
-			if (!level.isEmptyBlock(p2) && state.getMaterial().blocksMotion()) {
+			if (!level.isEmptyBlock(p2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.getMaterial().blocksMotion()) {
 				break;
 			} else {
 				count++;
@@ -456,7 +457,7 @@ public class ClimateCalculator implements IClimateCalculator {
 			BlockPos p2 = pos.below(i);
 			BlockState state = level.getBlockState(p2);
 			Block block = level.getBlockState(p2).getBlock();
-			if (!level.isEmptyBlock(p2) && state.getMaterial().blocksMotion()) {
+			if (!level.isEmptyBlock(p2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.getMaterial().blocksMotion()) {
 				break;
 			} else {
 				count++;

@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.material.block.IBlockDC.ToolType;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import defeatedcrow.hac.machine.material.MachineInit;
+import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
@@ -159,7 +160,8 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(BlockTags.FENCES).add(BuildInit.FENCE_METAL.get());
 
-		tag(BlockTags.CLIMBABLE).add(BuildInit.LADDER_METAL.get());
+		tag(BlockTags.CLIMBABLE).add(BuildInit.LADDER_METAL.get(), BuildInit.LADDER_VINE.get(), MagicInit.SCAFFOLDING.get());
+		tag(BlockTags.FALL_DAMAGE_RESETTING).add(MagicInit.SCAFFOLDING.get());
 
 		tag(BlockTags.WALLS).add(BuildInit.WALL_MUD.get(), BuildInit.WALL_GYPSUM.get(), BuildInit.WALL_SERPENTINE.get(),
 				BuildInit.WALL_GREISEN.get(), BuildInit.WALL_SKARN.get(), BuildInit.WALL_HORNFELS.get(),
@@ -268,6 +270,32 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.FLUID_PIPE).add(MachineInit.PIPE_BRASS.get());
 
 		tag(TagDC.BlockTag.ENERGY_CABLE).add(MachineInit.CABLE_COPPER.get(), MachineInit.CABLE_COPPER_COATED.get());
+
+		tag(TagDC.BlockTag.NOT_LOOF).add(Blocks.TORCH, Blocks.WALL_TORCH, Blocks.REDSTONE_TORCH, Blocks.REDSTONE_WALL_TORCH, Blocks.SOUL_TORCH, Blocks.SOUL_WALL_TORCH,
+				Blocks.FLOWER_POT);
+
+		tag(TagDC.BlockTag.COOKING_POT).add(MachineInit.COOKING_POT_NORMAL.get(), MachineInit.COOKING_POT_WHITE.get(), MachineInit.COOKING_POT_BLUE.get(),
+				MachineInit.COOKING_POT_BLACK.get(), MachineInit.COOKING_POT_RED.get(), MachineInit.COOKING_POT_GREEN.get());
+
+		tag(TagDC.BlockTag.TEA_POT).add(MachineInit.TEA_POT_NORMAL.get(), MachineInit.TEA_POT_WHITE.get(), MachineInit.TEA_POT_BLUE.get(),
+				MachineInit.TEA_POT_BLACK.get(), MachineInit.TEA_POT_RED.get(), MachineInit.TEA_POT_GREEN.get());
+
+		tag(TagDC.BlockTag.FERMENTATION_JAR).add(MachineInit.FERMENTATION_JAR_NORMAL.get(), MachineInit.FERMENTATION_JAR_WHITE.get(), MachineInit.FERMENTATION_JAR_BLUE.get(),
+				MachineInit.FERMENTATION_JAR_BLACK.get(), MachineInit.FERMENTATION_JAR_RED.get(), MachineInit.FERMENTATION_JAR_GREEN.get());
+
+		tag(TagDC.BlockTag.MONITOR).add(MachineInit.MONITOR_ANDON_LAMP.get(), MachineInit.MONITOR_ANDON_PANEL_1.get(), MachineInit.MONITOR_ANDON_PANEL_2.get(),
+				MachineInit.MONITOR_ANDON_PANEL_3.get(), MachineInit.MONITOR_ANDON_PANEL_4.get(), MachineInit.MONITOR_ANDON_PANEL_5.get(),
+				MachineInit.MONITOR_ANDON_PANEL_6.get(), MachineInit.MONITOR_ANDON_PANEL_7.get(), MachineInit.MONITOR_ANDON_PANEL_8.get(),
+				MachineInit.MONITOR_ANDON_PANEL_9.get(), MachineInit.MONITOR_COMPARATOR.get(), MachineInit.MONITOR_ENERGY.get(),
+				MachineInit.MONITOR_RS.get(), MachineInit.MONITOR_RS_PILOT.get(), MachineInit.MONITOR_TEMP.get(), MachineInit.STORMGLASS.get());
+
+		tag(TagDC.BlockTag.FAUSET).add(MachineInit.FAUCET_A.get(), MachineInit.FAUCET_B.get(), MachineInit.FAUCET_C.get(), MachineInit.FAUCET_D.get());
+
+		tag(TagDC.BlockTag.WALL_LAMP).add(BuildInit.CHAL_LAMP_TABLE.get(), BuildInit.CHAL_LAMP_FLUORITE.get(), BuildInit.CHAL_LAMP_JET.get(),
+				BuildInit.CHAL_LAMP_DESERTROSE.get(), BuildInit.CHAL_LAMP_SERPENTINE.get(), BuildInit.CANDLESTICK.get());
+
+		tag(TagDC.BlockTag.NOT_LOOF).addTags(TagDC.BlockTag.COOKING_POT, TagDC.BlockTag.TEA_POT, TagDC.BlockTag.FERMENTATION_JAR, TagDC.BlockTag.FAUSET,
+				TagDC.BlockTag.MONITOR, TagDC.BlockTag.WALL_LAMP, BlockTags.FENCES, BlockTags.SIGNS, BlockTags.BANNERS, BlockTags.BUTTONS);
 
 		// // climate
 		//

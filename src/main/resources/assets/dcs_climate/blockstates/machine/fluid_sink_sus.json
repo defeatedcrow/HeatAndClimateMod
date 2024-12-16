@@ -1,0 +1,7 @@
+{
+ "variants": {
+    "": {
+      "model": "dcs_climate:block/machine/fluid_sink_sus_0"
+    }
+  }
+}

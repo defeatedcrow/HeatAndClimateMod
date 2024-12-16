@@ -120,6 +120,14 @@ public class MsgEffectToC implements IPacketDC {
 			case 6: // Small Smoke Particle
 				level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.05D, 0.0D);
 				break;
+			case 7: // black bubble
+				for (int i = 0; i < 8; i++) {
+					double d0 = -0.5D + level.getRandom().nextDouble();
+					double d1 = -0.5D + level.getRandom().nextDouble();
+					double d2 = -0.5D + level.getRandom().nextDouble();
+					level.addParticle(CoreInit.BUBBLE_BLACK.get(), x + d0, y + d1, z + d2, d0 * 0.02D, d1 * 0.03D, d2 * 0.02D);
+				}
+				break;
 			}
 			switch (se) {
 			case 0: // No SE
@@ -141,6 +149,9 @@ public class MsgEffectToC implements IPacketDC {
 				break;
 			case 6: // FUSE SE
 				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+				break;
+			case 7: // BUBLE SE
+				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.AMBIENT_UNDERWATER_ENTER, SoundSource.BLOCKS, 1.0F, 0.7F);
 				break;
 			}
 		}

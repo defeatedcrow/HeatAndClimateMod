@@ -68,6 +68,15 @@ public class AdvTooltipEvent {
 			}
 		}
 
+		List<Component> advanced = Lists.newArrayList();
+		if (target.getItem() instanceof ItemDC item) {
+			item.advTooltipText(target, Minecraft.getInstance().level, advanced, ClimateCore.proxy.keyShiftPushed());
+		} else if (target.getItem() instanceof BlockItemDC blockitem) {
+			if (blockitem.getBlock() instanceof BlockDC block) {
+				block.advTooltipText(target, Minecraft.getInstance().level, advanced, ClimateCore.proxy.keyShiftPushed());
+			}
+		}
+
 		if (!target.isEmpty() && ConfigClientBuilder.INSTANCE.showAltTip.get()) {
 			float regH = DCItemUtil.getItemResistantData(target, false);
 			float regC = DCItemUtil.getItemResistantData(target, true);
@@ -100,13 +109,7 @@ public class AdvTooltipEvent {
 				});
 			}
 
-			if (target.getItem() instanceof ItemDC item) {
-				item.advTooltipText(target, Minecraft.getInstance().level, list2);
-			} else if (target.getItem() instanceof BlockItemDC blockitem) {
-				if (blockitem.getBlock() instanceof BlockDC block) {
-					block.advTooltipText(target, Minecraft.getInstance().level, list2);
-				}
-			}
+			list2.addAll(advanced);
 
 			if (!target.getTags().toList().isEmpty()) {
 				list2.add(Component.literal("=== Tags ==="));
@@ -127,6 +130,7 @@ public class AdvTooltipEvent {
 		if (!list2.isEmpty()) {
 			if (!ClimateCore.proxy.keyShiftPushed()) {
 				list2.clear();
+				list2.addAll(advanced);
 				list2.add(Component.translatable("dcs.tip.shift"));
 			}
 

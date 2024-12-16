@@ -16,7 +16,7 @@ public class ToolHookTile extends ItemDisplayTile {
 	}
 
 	@Override
-	protected void changeLitState(Level level, BlockPos pos, boolean lit) {
+	protected void changeLitState(Level level, BlockPos pos, int lit) {
 		ToolHookBlock.changeLisState(level, pos, lit);
 	}
 

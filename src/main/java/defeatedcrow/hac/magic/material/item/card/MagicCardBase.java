@@ -10,7 +10,6 @@ import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.ICardMagic;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.magic.MagicType;
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
@@ -33,7 +32,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
@@ -183,26 +182,17 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tier = Component.literal(color.isBasic ? color.name() + " " + item.getRarity() : color.name());
 		tier.withStyle(color.chatColor);
 		list.add(tier);
 		MutableComponent itemName = Component.translatable("dcs.tip.magic_card.name." + name);
 		itemName.withStyle(color.chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
-		if (ClimateCore.proxy.keyShiftPushed()) {
+		if (flag) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.magic_card.desc." + name);
 			list.add(itemTip);
 		}
-		super.appendHoverText(item, level, list, flag);
-	}
-
-	@Override
-	public void advTooltipText(ItemStack item, @Nullable Level level, List<Component> list) {
-		// if (ClimateCore.proxy.keyShiftPushed() && !getColor().isBasic) {
-		// MutableComponent itemTip = Component.translatable("dcs.tip.magic_card.flavor." + name);
-		// list.add(itemTip);
-		// }
 	}
 
 }

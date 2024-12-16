@@ -19,9 +19,11 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -56,10 +58,15 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 						count--;
 					} else if (count <= 0) {
 						ItemStack ret = currentRecipe.getOutput().copy();
-						copyTaste(ret, getItem());
+						int taste = copyTaste(ret, getItem());
 						this.setItem(ret);
 						level.playSound(null, this, SoundEvents.LAVA_EXTINGUISH, SoundSource.AMBIENT, 1.0F, 1.0F);
 						level.addParticle(ParticleTypes.SMOKE, this.getRandomX(0.1D), this.getRandomY() * 0.5D, this.getRandomZ(0.1D), 0D, 0.003D, 0D);
+						float exp = 10.0F + 2.0F * (1.0F + level.random.nextFloat()) * taste;
+						if (exp > 0.0F) {
+							ExperienceOrb orb = new ExperienceOrb(level, this.getX(), this.getY(), this.getZ(), Mth.ceil(exp));
+							level.addFreshEntity(orb);
+						}
 					}
 
 				} else {
@@ -92,12 +99,15 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 		}
 	}
 
-	private void copyTaste(ItemStack ret, ItemStack in) {
+	private int copyTaste(ItemStack ret, ItemStack in) {
 		if (!ret.isEmpty() && !in.isEmpty() && in.getTag() != null) {
 			if (in.getItem() instanceof IFoodTaste && ret.getItem() instanceof IFoodTaste) {
-				((IFoodTaste) ret.getItem()).setTaste(ret, ((IFoodTaste) in.getItem()).getTaste(in));
+				int taste = ((IFoodTaste) in.getItem()).getTaste(in);
+				((IFoodTaste) ret.getItem()).setTaste(ret, taste);
+				return taste;
 			}
 		}
+		return 0;
 	}
 
 	@Override

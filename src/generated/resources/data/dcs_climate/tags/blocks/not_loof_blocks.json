@@ -1,0 +1,21 @@
+{
+  "values": [
+    "minecraft:torch",
+    "minecraft:wall_torch",
+    "minecraft:redstone_torch",
+    "minecraft:redstone_wall_torch",
+    "minecraft:soul_torch",
+    "minecraft:soul_wall_torch",
+    "minecraft:flower_pot",
+    "#dcs_climate:not_loof_blocks/cooking_pot",
+    "#dcs_climate:not_loof_blocks/tea_pot",
+    "#dcs_climate:not_loof_blocks/fermentation_jar",
+    "#dcs_climate:not_loof_blocks/fauset",
+    "#dcs_climate:not_loof_blocks/monitor",
+    "#dcs_climate:not_loof_blocks/wall_lamp",
+    "#minecraft:fences",
+    "#minecraft:signs",
+    "#minecraft:banners",
+    "#minecraft:buttons"
+  ]
+}

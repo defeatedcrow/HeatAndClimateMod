@@ -13,10 +13,9 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 
 public class MagicElementItem extends MagicMaterialItemDC {
 
@@ -39,13 +38,12 @@ public class MagicElementItem extends MagicMaterialItemDC {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent t1 = Component.translatable("dcs.tip.active_element").withStyle(ChatFormatting.GRAY);
 		list.add(t1);
 		MutableComponent t2 = Component.empty().append(getEnchantment().getFullname(1));
 		t2.withStyle(getColor().chatColor);
 		list.add(t2);
-		super.appendHoverText(item, level, list, flag);
 	}
 
 }

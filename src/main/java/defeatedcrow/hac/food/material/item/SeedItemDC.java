@@ -17,13 +17,11 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -50,16 +48,17 @@ public class SeedItemDC extends BlockItemDC {
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+	public InteractionResult useOn(UseOnContext use) {
 		if (data.getSoilTypes(tier).contains(SoilType.WATER)) {
-			BlockHitResult res1 = getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);
+			BlockHitResult res1 = getPlayerPOVHitResult(use.getLevel(), use.getPlayer(), ClipContext.Fluid.SOURCE_ONLY);
 			if (res1 != null) {
-				BlockHitResult res2 = res1.withPosition(res1.getBlockPos().above());
-				InteractionResult result = super.useOn(new UseOnContext(player, hand, res2));
-				return new InteractionResultHolder<>(result, player.getItemInHand(hand));
+				BlockHitResult res = res1.withPosition(res1.getBlockPos().above());
+				BlockPlaceContext cont = new BlockPlaceContext(use.getLevel(), use.getPlayer(), use.getHand(), use.getItemInHand(), res);
+				InteractionResult result = super.place(cont);
+				return result;
 			}
 		}
-		return super.use(level, player, hand);
+		return super.useOn(use);
 	}
 
 	@Override

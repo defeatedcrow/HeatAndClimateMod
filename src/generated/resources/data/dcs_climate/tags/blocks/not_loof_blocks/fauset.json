@@ -1,0 +1,8 @@
+{
+  "values": [
+    "dcs_climate:machine/faucet_a",
+    "dcs_climate:machine/faucet_b",
+    "dcs_climate:machine/faucet_c",
+    "dcs_climate:machine/faucet_d"
+  ]
+}

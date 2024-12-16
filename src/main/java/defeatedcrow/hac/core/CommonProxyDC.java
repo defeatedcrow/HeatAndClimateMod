@@ -69,8 +69,9 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onHurt);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onDeath);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onDig);
-		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onPotionEffectColor);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onXpPickup);
+		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onBlockLeftClick);
+		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onEmptyLeftClick);
 		MinecraftForge.EVENT_BUS.addListener(FishingEventDC::onFishing);
 		MinecraftForge.EVENT_BUS.addListener(AnvilEventDC::onEvent);
 		MinecraftForge.EVENT_BUS.addListener(WandererTradeEventDC::onLoadingTrade);

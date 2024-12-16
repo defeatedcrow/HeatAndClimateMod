@@ -7,6 +7,8 @@ import defeatedcrow.hac.core.network.packet.DCPacket;
 import defeatedcrow.hac.core.network.packet.IPacketDC;
 import defeatedcrow.hac.machine.material.block.machine.EnergyMachineBaseDC;
 import defeatedcrow.hac.machine.material.block.machine.EnergyMachineBlock;
+import defeatedcrow.hac.machine.material.block.machine.ProcessTileBaseDC;
+import defeatedcrow.hac.machine.material.block.machine.ProcessTileBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.FriendlyByteBuf;
@@ -76,6 +78,12 @@ public class MsgTileBatteryGuiKeyToS implements IPacketDC {
 					BlockState state = player.getLevel().getBlockState(pos);
 					boolean b = DCState.getBool(state, DCState.FLAG);
 					EnergyMachineBlock.changePowerState(player.getLevel(), pos, !b);
+				}
+			}
+			if (entity instanceof ProcessTileBaseDC tile && button > 0) {
+				if (button > 0) {
+					BlockState state = player.getLevel().getBlockState(pos);
+					ProcessTileBlock.changePowerState(player.getLevel(), pos, (button & 1) != 0);
 				}
 			}
 		}

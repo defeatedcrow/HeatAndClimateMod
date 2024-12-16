@@ -20,8 +20,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 
 public class ItemEdibleCropDC extends ItemCropDC implements IFoodTaste {
 
@@ -91,13 +90,12 @@ public class ItemEdibleCropDC extends ItemCropDC implements IFoodTaste {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		if (this.isEdible()) {
 			MutableComponent tasteName = Component.translatable("dcs.tip.raw_eaten_crop");
 			tasteName.withStyle(ChatFormatting.AQUA);
 			list.add(tasteName);
 		}
-		super.appendHoverText(item, level, list, flag);
 	}
 
 }

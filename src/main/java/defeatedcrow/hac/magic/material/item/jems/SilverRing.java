@@ -6,7 +6,6 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.MagicColor;
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -20,8 +19,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 
 public class SilverRing extends MagicJewelBase {
 
@@ -60,18 +58,17 @@ public class SilverRing extends MagicJewelBase {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tier = Component.translatable(getColor().name() + " " + item.getRarity());
 		tier.withStyle(getColor().chatColor);
 		list.add(tier);
 		MutableComponent itemName = Component.translatable("dcs.tip.ring_s.name." + getColor().toString());
 		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
-		if (ClimateCore.proxy.keyShiftPushed()) {
+		if (flag) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.ring_s.desc." + getColor().toString());
 			list.add(itemTip);
 		}
-		super.appendHoverText(item, level, list, flag);
 	}
 
 }

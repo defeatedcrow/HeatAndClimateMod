@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "X": {
+      "tag": "dcs_climate:color_elements/white"
+    },
+    "Y": {
+      "tag": "dcs_climate:color_elements/red"
+    },
+    "Z": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "XWY",
+    " Z ",
+    " Z "
+  ],
+  "result": {
+    "item": "dcs_climate:magic/rod_white_red"
+  }
+}

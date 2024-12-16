@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": [
+      {
+        "item": "dcs_climate:main/stone_granite"
+      },
+      {
+        "item": "minecraft:basalt"
+      },
+      {
+        "item": "minecraft:blackstone"
+      }
+    ],
+    "Y": {
+      "item": "minecraft:bucket"
+    },
+    "Z": {
+      "item": "dcs_climate:machine/pipe_brass"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XZX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/fluid_sink_black"
+  }
+}

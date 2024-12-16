@@ -44,5 +44,25 @@ public enum MagicColor {
 		return name().toLowerCase();
 	}
 
+	public MagicColor getMainColor() {
+		if (isBasic) {
+			return this;
+		} else {
+			if (this == WHITE_BLUE || this == WHITE_RED) {
+				return WHITE;
+			} else if (this == BLUE_BLACK || this == BLUE_GREEN) {
+				return BLUE;
+			} else if (this == BLACK_RED || this == BLACK_WHITE) {
+				return BLACK;
+			} else if (this == RED_GREEN || this == RED_BLUE) {
+				return RED;
+			} else if (this == GREEN_WHITE || this == GREEN_BLACK) {
+				return GREEN;
+			} else {
+				return WHITE;
+			}
+		}
+	}
+
 	public static MagicColor[] BASIC_COLOERS = { RED, GREEN, BLUE, WHITE, BLACK };
 }

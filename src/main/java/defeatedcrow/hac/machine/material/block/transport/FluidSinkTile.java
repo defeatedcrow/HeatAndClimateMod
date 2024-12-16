@@ -4,11 +4,14 @@ import javax.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 
+import defeatedcrow.hac.api.material.EntityRenderData;
+import defeatedcrow.hac.api.material.IRenderBlockData;
 import defeatedcrow.hac.machine.material.MachineInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -17,7 +20,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
-public class FluidSinkTile extends BlockEntity {
+public class FluidSinkTile extends BlockEntity implements IRenderBlockData {
 
 	public FluidSinkTile(BlockPos pos, BlockState state) {
 		super(MachineInit.FLUID_SINK_TILE.get(), pos, state);
@@ -105,5 +108,24 @@ public class FluidSinkTile extends BlockEntity {
 		}
 
 	}
+
+	@Override
+	public EntityRenderData getRenderData(Block block) {
+		if (block == MachineInit.KICHEN_SINK_WOOD.get())
+			return WOOD;
+		if (block == MachineInit.KICHEN_SINK_BLACK.get())
+			return BLACK;
+		if (block == MachineInit.KICHEN_SINK_SUS.get())
+			return SUS;
+		if (block == MachineInit.HALF_SINK_SUS.get())
+			return SUS_HALF;
+		return LAB;
+	}
+
+	public static final EntityRenderData WOOD = new EntityRenderData("tile/sink_wood", 1F, -0.5F);
+	public static final EntityRenderData BLACK = new EntityRenderData("tile/sink_black", 1F, -0.5F);
+	public static final EntityRenderData LAB = new EntityRenderData("tile/sink_lab", 1F, -0.5F);
+	public static final EntityRenderData SUS = new EntityRenderData("tile/sink_sus", 1F, -0.5F);
+	public static final EntityRenderData SUS_HALF = new EntityRenderData("tile/sink_sus_half", 1F, -0.5F);
 
 }

@@ -59,8 +59,15 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 		if (!level.isClientSide) {
 			boolean pow = level.hasNeighborSignal(pos);
 			if (pow != DCState.getBool(state, DCState.POWERED)) {
-				level.setBlock(pos, state.setValue(DCState.POWERED, Boolean.valueOf(pow)), 2);
+				level.setBlock(pos, state.setValue(DCState.POWERED, Boolean.valueOf(pow)), 3);
 			}
+		}
+	}
+
+	public static void changePowerState(Level level, BlockPos pos, boolean pow) {
+		BlockState state = level.getBlockState(pos);
+		if (state.getBlock() instanceof ProcessTileBlock && DCState.getBool(state, DCState.FLAG) != pow) {
+			level.setBlock(pos, state.setValue(DCState.FLAG, pow), 3);
 		}
 	}
 

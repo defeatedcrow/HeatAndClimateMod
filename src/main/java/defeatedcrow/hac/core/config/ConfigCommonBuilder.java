@@ -42,6 +42,7 @@ public class ConfigCommonBuilder {
 	public final ForgeConfigSpec.BooleanValue enDropSmelting;
 	public final ForgeConfigSpec.IntValue vTimberLimit;
 	public final ForgeConfigSpec.BooleanValue enTimberBreakLeaves;
+	public final ForgeConfigSpec.BooleanValue enFlavorText;
 
 	// hardmode
 	public final ForgeConfigSpec.BooleanValue enInferno;
@@ -202,6 +203,10 @@ public class ConfigCommonBuilder {
 		this.vSpringFeature = builder
 				.comment("Sets the HaC springs generation rate per chunk. (0.X%. If 0, it will not be generated.)")
 				.defineInRange("Amount of Spring Gen Rate", 3, 0, 100);
+
+		this.enFlavorText = builder
+				.comment("Enables displaying flavor text for items.")
+				.define("Enable Item Flavor Text", true);
 
 		builder.pop();
 

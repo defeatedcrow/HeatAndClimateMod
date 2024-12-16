@@ -1,0 +1,38 @@
+{
+  "parent": "dcs_climate:main/cooking_pot",
+  "criteria": {
+    "has_tonkotsu_ramen": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/ramen_tonkotsu"
+            ],
+            "nbt": "{dcs.taste:2}"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.main.tonkotsu.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "dcs_climate:food/ramen_tonkotsu"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.main.tonkotsu.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_tonkotsu_ramen"
+    ]
+  ]
+}

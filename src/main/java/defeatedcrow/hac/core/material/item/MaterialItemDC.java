@@ -18,8 +18,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 
 public class MaterialItemDC extends ItemDC {
 
@@ -57,13 +56,12 @@ public class MaterialItemDC extends ItemDC {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		if (!DCUtil.isEmpty(item) && item.is(TagDC.ItemTag.SAPS)) {
 			MutableComponent text1 = Component.translatable("dcs.tip.sap");
 			text1.withStyle(ChatFormatting.GRAY);
 			list.add(text1);
 		}
-		super.appendHoverText(item, level, list, flag);
 	}
 
 }

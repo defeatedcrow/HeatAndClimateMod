@@ -6,6 +6,7 @@ import java.util.function.Function;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.network.packet.message.MsgCharmKeyToS;
 import defeatedcrow.hac.core.network.packet.message.MsgEffectToC;
+import defeatedcrow.hac.core.network.packet.message.MsgLeftClickToS;
 import defeatedcrow.hac.core.network.packet.message.MsgTileBatteryGuiKeyToS;
 import defeatedcrow.hac.core.network.packet.message.MsgTileClimateToC;
 import defeatedcrow.hac.core.network.packet.message.MsgTileDisplayItemToC;
@@ -51,6 +52,7 @@ public class DCPacket {
 		registerCtoS(MsgTileSimpleIntegerToS.class, MsgTileSimpleIntegerToS::decode);
 		registerStoC(MsgEffectToC.class, MsgEffectToC::decode);
 		registerCtoS(MsgTileSorterGuiKeyToS.class, MsgTileSorterGuiKeyToS::decode);
+		registerCtoS(MsgLeftClickToS.class, MsgLeftClickToS::decode);
 	}
 
 	private static <MSG extends IPacketDC> void registerStoC(Class<MSG> clazz, Function<FriendlyByteBuf, MSG> decoder) {

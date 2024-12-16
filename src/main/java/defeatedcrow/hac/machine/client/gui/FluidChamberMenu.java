@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine.client.gui;
 
+import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.client.gui.MachineResultSlot;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.block.machine.FluidChamberTile;
@@ -143,6 +144,10 @@ public class FluidChamberMenu extends AbstractContainerMenu {
 		if (i > 0 && ret == 0)
 			return 1;
 		return ret;
+	}
+
+	public boolean isRS() {
+		return DCState.getBool(container.getBlockState(), DCState.POWERED);
 	}
 
 }

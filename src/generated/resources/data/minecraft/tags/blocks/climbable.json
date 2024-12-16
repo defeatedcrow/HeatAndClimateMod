@@ -1,5 +1,7 @@
 {
   "values": [
-    "dcs_climate:build/metal_ladder"
+    "dcs_climate:build/metal_ladder",
+    "dcs_climate:build/vine_ladder",
+    "dcs_climate:magic/magic_scaffolding"
   ]
 }

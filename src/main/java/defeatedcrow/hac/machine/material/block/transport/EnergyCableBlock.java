@@ -28,7 +28,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -332,26 +331,25 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.energy.cable").withStyle(ChatFormatting.GREEN).withStyle(ChatFormatting.BOLD);
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.cable.desc");
 		MutableComponent tex3 = Component.translatable("dcs.tip.energy.leakage").withStyle(ChatFormatting.RED).withStyle(ChatFormatting.BOLD);
 		MutableComponent tex4 = Component.translatable("dcs.tip.energy.leakage.desc");
 
-		if (ClimateCore.proxy.keyShiftPushed()) {
+		if (flag) {
 			list.add(tex1);
 			list.add(tex2);
-			if (!DCUtil.isEmpty(stack) && stack.is(TagDC.ItemTag.LEAKAGE_MACHINE)) {
+			if (!DCUtil.isEmpty(item) && item.is(TagDC.ItemTag.LEAKAGE_MACHINE)) {
 				list.add(tex3);
 				list.add(tex4);
 			}
 		} else {
 			list.add(tex1);
-			if (!DCUtil.isEmpty(stack) && stack.is(TagDC.ItemTag.LEAKAGE_MACHINE)) {
+			if (!DCUtil.isEmpty(item) && item.is(TagDC.ItemTag.LEAKAGE_MACHINE)) {
 				list.add(tex3);
 			}
 		}
-		super.appendHoverText(stack, level, list, flag);
 	}
 
 }

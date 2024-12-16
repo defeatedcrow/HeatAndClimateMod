@@ -45,7 +45,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTankTileDC, IRenderBlockData {
 
 	public FermentationJarTile(BlockPos pos, BlockState state) {
-		this(MachineInit.FERMANTATION_JAR_TILE.get(), pos, state);
+		this(MachineInit.FERMENTATION_JAR_TILE.get(), pos, state);
 	}
 
 	public FermentationJarTile(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -451,17 +451,17 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 
 	@Override
 	public EntityRenderData getRenderData(Block block) {
-		if (block == MachineInit.FERMANTATION_JAR_BLUE.get())
+		if (block == MachineInit.FERMENTATION_JAR_BLUE.get())
 			return BLUE;
-		if (block == MachineInit.FERMANTATION_JAR_BLACK.get())
+		if (block == MachineInit.FERMENTATION_JAR_BLACK.get())
 			return BLACK;
-		if (block == MachineInit.FERMANTATION_JAR_RED.get())
+		if (block == MachineInit.FERMENTATION_JAR_RED.get())
 			return RED;
-		if (block == MachineInit.FERMANTATION_JAR_GREEN.get())
+		if (block == MachineInit.FERMENTATION_JAR_GREEN.get())
 			return GREEN;
-		if (block == MachineInit.FERMANTATION_JAR_WHITE.get())
+		if (block == MachineInit.FERMENTATION_JAR_WHITE.get())
 			return WHITE;
-		if (block == MachineInit.FERMANTATION_JAR_NORMAL.get())
+		if (block == MachineInit.FERMENTATION_JAR_NORMAL.get())
 			return NORMAL;
 		return NORMAL;
 	}

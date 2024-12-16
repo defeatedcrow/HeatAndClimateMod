@@ -9,7 +9,6 @@ import com.google.common.collect.ImmutableList;
 
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.MagicColor;
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -29,13 +28,12 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -116,7 +114,6 @@ public class GoldPendant extends MagicJewelBase {
 							}
 							owner.level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
 						}
-
 					}
 
 					while (count > 0) {
@@ -183,14 +180,14 @@ public class GoldPendant extends MagicJewelBase {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tier = Component.translatable(getColor().name() + " " + item.getRarity());
 		tier.withStyle(getColor().chatColor);
 		list.add(tier);
 		MutableComponent itemName = Component.translatable("dcs.tip.pendant_g.name." + getColor().toString());
 		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
-		if (ClimateCore.proxy.keyShiftPushed()) {
+		if (flag) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.pendant_g.desc." + getColor().toString());
 			list.add(itemTip);
 
@@ -202,7 +199,6 @@ public class GoldPendant extends MagicJewelBase {
 				}
 			}
 		}
-		super.appendHoverText(item, level, list, flag);
 	}
 
 }

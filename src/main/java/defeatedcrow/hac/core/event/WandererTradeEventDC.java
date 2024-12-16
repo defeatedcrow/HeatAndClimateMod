@@ -21,7 +21,7 @@ public class WandererTradeEventDC {
 		List<ItemListing> generic = event.getGenericTrades();
 		List<ItemListing> rare = event.getRareTrades();
 		// 両替
-		generic.add(new ForItems(new ItemStack(Items.GOLD_INGOT, 3), 2, 3));
+		generic.add(new ForItems(new ItemStack(Items.GOLD_INGOT, 3), 1, 3));
 		// 種袋
 		generic.add(new ForEmeralds(new ItemStack(CoreInit.SHIRT_LINEN_CYAN.get()), 1, 3));
 		generic.add(new ForEmeralds(new ItemStack(CoreInit.COIL_CASE.get()), 5, 12));

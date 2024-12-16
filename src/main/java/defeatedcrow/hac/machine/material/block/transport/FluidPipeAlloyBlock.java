@@ -8,7 +8,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.machine.material.MachineInit;
@@ -16,7 +15,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
@@ -98,16 +96,15 @@ public class FluidPipeAlloyBlock extends FluidPipeBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex2 = Component.translatable("dcs.tip.fluid_pipe");
 		MutableComponent tex1 = Component.translatable("dcs.tip.flow.tier1");
-		if (ClimateCore.proxy.keyShiftPushed()) {
+		if (flag) {
 			list.add(tex1);
 			list.add(tex2);
 		} else {
 			list.add(tex1);
 		}
-		super.appendHoverText(stack, level, list, flag);
 
 	}
 

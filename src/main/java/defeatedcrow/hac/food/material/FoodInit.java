@@ -870,6 +870,7 @@ public class FoodInit {
 	public static final RegistryObject<Item> CROP_AL_WILD = regCrop(CropTier.WILD, CropType.ALLIUM, TagDC.ItemTag.CROP_CHIVES);
 	public static final RegistryObject<Item> CROP_AL_ONION = regCrop(CropTier.COMMON, CropType.ALLIUM, TagDC.ItemTag.CROP_ONION);
 	public static final RegistryObject<Item> CROP_AL_GARLIC = regCrop(CropTier.RARE, CropType.ALLIUM, TagDC.ItemTag.CROP_GARLIC);
+	public static final RegistryObject<Item> CROP_AL_LEEK = regCrop(CropTier.EPIC, CropType.ALLIUM, TagDC.ItemTag.CROP_LEEK);
 	public static final RegistryObject<Item> CROP_AM_GOOSEFOOT = regCrop(CropTier.WILD, CropType.AMARANTH, TagDC.ItemTag.CROP_GOOSEFOOT);
 	public static final RegistryObject<Item> CROP_AM_GLASSWORT = regCrop(CropTier.COMMON, CropType.AMARANTH, TagDC.ItemTag.CROP_GLASSWORT);
 	public static final RegistryObject<Item> CROP_AM_SPINACH = regCrop(CropTier.RARE, CropType.AMARANTH, TagDC.ItemTag.CROP_SPINACH);
@@ -990,6 +991,7 @@ public class FoodInit {
 	public static final RegistryObject<Block> BLOCK_AL_WILD = regSeed(CropTier.WILD, CropType.ALLIUM, () -> new CropBlockAllium(CropTier.WILD), TagDC.ItemTag.SEED_CHIVES);
 	public static final RegistryObject<Block> BLOCK_AL_ONION = regSeed(CropTier.COMMON, CropType.ALLIUM, () -> new CropBlockAllium(CropTier.COMMON), TagDC.ItemTag.SEED_ONION);
 	public static final RegistryObject<Block> BLOCK_AL_GARLIC = regSeed(CropTier.RARE, CropType.ALLIUM, () -> new CropBlockAllium(CropTier.RARE), TagDC.ItemTag.SEED_GARLIC);
+	public static final RegistryObject<Block> BLOCK_AL_LEEK = regSeed(CropTier.EPIC, CropType.ALLIUM, () -> new CropBlockAllium(CropTier.EPIC), TagDC.ItemTag.SEED_LEEK);
 	public static final RegistryObject<Block> BLOCK_AM_GOOSEFOOT = regSeed(CropTier.WILD, CropType.AMARANTH, () -> new CropBlockAmaranth(CropTier.WILD), TagDC.ItemTag.SEED_GOOSEFOOT);
 	public static final RegistryObject<Block> BLOCK_AM_GLASSWORT = regSeed(CropTier.COMMON, CropType.AMARANTH, () -> new CropBlockAmaranth(CropTier.COMMON), TagDC.ItemTag.SEED_GLASSWORT);
 	public static final RegistryObject<Block> BLOCK_AM_SPINACH = regSeed(CropTier.RARE, CropType.AMARANTH, () -> new CropBlockAmaranth(CropTier.RARE), TagDC.ItemTag.SEED_SPINACH);

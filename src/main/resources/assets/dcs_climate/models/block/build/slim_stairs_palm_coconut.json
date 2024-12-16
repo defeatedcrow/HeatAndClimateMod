@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "side": "dcs_climate:block/tree/plank_palm_coconut",
+    "panel": "dcs_climate:block/tree/plank_palm_coconut"
+  },
+  "parent": "dcs_climate:block/dcs_stairs_slim"
+}

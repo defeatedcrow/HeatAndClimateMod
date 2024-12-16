@@ -14,8 +14,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraftforge.fluids.FluidStack;
 
 public abstract class FluidItemDC extends ItemDC {
@@ -25,9 +24,9 @@ public abstract class FluidItemDC extends ItemDC {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		if (!DCUtil.isEmpty(stack) && stack.hasTag() && stack.getTag().contains(TagKeyDC.getTankKey(1), 10)) {
-			CompoundTag tankTag = stack.getTag().getCompound(TagKeyDC.getTankKey(1));
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+		if (!DCUtil.isEmpty(item) && item.hasTag() && item.getTag().contains(TagKeyDC.getTankKey(1), 10)) {
+			CompoundTag tankTag = item.getTag().getCompound(TagKeyDC.getTankKey(1));
 			FluidStack fluid = FluidStack.loadFluidStackFromNBT(tankTag);
 			if (fluid.isEmpty()) {
 				MutableComponent com = Component.literal("EMPTY");

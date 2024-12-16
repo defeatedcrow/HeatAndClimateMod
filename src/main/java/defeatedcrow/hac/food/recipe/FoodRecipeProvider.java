@@ -803,7 +803,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_WHITE.get(), 2)
 				.requires(Ingredient.of(TagDC.ItemTag.FISH_WHITE))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS))
 				.unlockedBy("has_white_fish", has(TagDC.ItemTag.FISH_WHITE))
 				.save(cons, "dcs_climate:food/sashimi_white_1");
 
@@ -815,7 +815,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_SALMON.get(), 2)
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_SALMON))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS))
 				.unlockedBy("has_salmon_fish", has(TagDC.ItemTag.RAW_SALMON))
 				.save(cons, "dcs_climate:food/sashimi_salmon_1");
 
@@ -827,7 +827,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_BLUE.get(), 2)
 				.requires(Ingredient.of(TagDC.ItemTag.FISH_BLUE))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS))
 				.unlockedBy("has_blue_fish", has(TagDC.ItemTag.FISH_BLUE))
 				.save(cons, "dcs_climate:food/sashimi_blue_1");
 
@@ -839,7 +839,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_TUNA.get(), 3)
 				.requires(Ingredient.of(TagDC.ItemTag.TUNA))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS))
 				.unlockedBy("has_tuna_fish", has(TagDC.ItemTag.TUNA))
 				.save(cons, "dcs_climate:food/sashimi_tuna_1");
 
@@ -851,7 +851,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.SASHIMI_SQUID.get(), 2)
 				.requires(Ingredient.of(TagDC.ItemTag.SQUID))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS))
 				.unlockedBy("has_squid", has(TagDC.ItemTag.SQUID))
 				.save(cons, "dcs_climate:food/sashimi_squid_1");
 
@@ -1549,7 +1549,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.requires(Ingredient.of(FoodInit.FOOD_SHRIMP_PASTE.get()))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
 				.unlockedBy("has_shrimp_paste", has(FoodInit.FOOD_SHRIMP_PASTE.get()))
 				.save(cons, "dcs_climate:food/foodmaterial_tomyum_paste");
@@ -1559,7 +1559,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_CORIANDER))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
 				.unlockedBy("has_shrimp_paste", has(FoodInit.FOOD_SHRIMP_PASTE.get()))
 				.save(cons, "dcs_climate:food/foodmaterial_thai_curry_paste");
@@ -1707,6 +1707,24 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.define('X', wood.plankBlock().get())
 				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
 				.save(cons, "dcs_climate:build/stairs3_" + wood.name());
+
+		ShapedRecipeBuilder.shaped(wood.slimStairsBlock().get(), 3)
+				.pattern("X  ")
+				.pattern("YX ")
+				.pattern(" YX")
+				.define('X', wood.plankBlock().get())
+				.define('Y', Tags.Items.RODS_WOODEN)
+				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
+				.save(cons, "dcs_climate:build/slim_stairs2_" + wood.name());
+
+		ShapedRecipeBuilder.shaped(wood.slimStairsBlock().get(), 3)
+				.pattern("  X")
+				.pattern(" XY")
+				.pattern("XY ")
+				.define('X', wood.plankBlock().get())
+				.define('Y', Tags.Items.RODS_WOODEN)
+				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
+				.save(cons, "dcs_climate:build/slim_stairs3_" + wood.name());
 
 		ShapedRecipeBuilder.shaped(wood.slabBlock().get(), 6)
 				.pattern("XXX")

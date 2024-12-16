@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:machine/tea_pot_normal",
+    "dcs_climate:machine/tea_pot_white",
+    "dcs_climate:machine/tea_pot_blue",
+    "dcs_climate:machine/tea_pot_black",
+    "dcs_climate:machine/tea_pot_red",
+    "dcs_climate:machine/tea_pot_green"
+  ]
+}
