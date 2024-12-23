@@ -3,7 +3,7 @@
     "ambientocclusion": false,
     "render_type": "cutout",
     "textures": {
-        "particle": "#all"
+        "particle": "dcs_climate:block/destroy_effect"
     },
     "elements": []
 }

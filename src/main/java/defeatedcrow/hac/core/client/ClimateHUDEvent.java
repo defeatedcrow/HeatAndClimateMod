@@ -3,6 +3,7 @@ package defeatedcrow.hac.core.client;
 import java.util.List;
 
 import com.google.common.collect.Lists;
+import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
@@ -19,17 +20,23 @@ import defeatedcrow.hac.core.climate.ClientClimateData;
 import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.climate.WeatherChecker;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.material.MagicInit;
+import defeatedcrow.hac.magic.material.item.jems.RodBlack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
@@ -169,6 +176,29 @@ public class ClimateHUDEvent {
 									renderOverlay(DCTexturePath.HOT_DISP.getLocation(), 0.5F, event.getWindow().getGuiScaledWidth(), event.getWindow().getGuiScaledHeight());
 								} else if (i7 < 2) {
 									renderOverlay(DCTexturePath.COLD_DISP.getLocation(), 0.5F, event.getWindow().getGuiScaledWidth(), event.getWindow().getGuiScaledHeight());
+								}
+							}
+						}
+
+						// owl rod magic
+						if (!player.getMainHandItem().isEmpty() && player.getMainHandItem().getItem() == MagicInit.ROD_BLACK.get()) {
+							if (player.getMainHandItem().hasTag()) {
+								RodBlack rod = (RodBlack) player.getMainHandItem().getItem();
+								int num = rod.getSelectNum(player.getMainHandItem());
+								NonNullList<ItemStack> list = rod.getItemData(player.getMainHandItem());
+								ItemStack card = list.get(num);
+
+								int widX = event.getWindow().getGuiScaledWidth() / 2;
+								int underY = event.getWindow().getGuiScaledHeight();
+								drawTexturedModalRect(pose.last().pose(), widX + 100, underY - 30, 0, 130, 20, 20);
+								drawTexturedModalRect(pose.last().pose(), widX + 116, underY - 34, 20 + 7 * num, 130, 7, 9);
+								if (!DCUtil.isEmpty(card)) {
+									Lighting.setupFor3DItems();
+									RenderSystem.enableDepthTest();
+									ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+									itemRenderer.renderGuiItem(card, widX + 102, underY - 28);
+									Lighting.setupForFlatItems();
+									RenderSystem.disableDepthTest();
 								}
 							}
 						}

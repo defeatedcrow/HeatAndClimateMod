@@ -239,13 +239,21 @@ public class VanillaRecipeProvider extends RecipeProvider {
 	}
 
 	private static void mortarOtherRecipes(Consumer<FinishedRecipe> cons) {
-		ShapelessRecipeBuilder.shapeless(Items.QUARTZ, 4)
+		ShapelessRecipeBuilder.shapeless(Items.QUARTZ, 1)
 				.requires(CoreInit.STONE_QUARTZ.get())
 				.requires(CoreInit.MORTAR.get())
 				.requires(CoreInit.SIEVE.get())
 				.group("crusher_mortar")
 				.unlockedBy("has_stone_quartz", has(CoreInit.STONE_QUARTZ.get()))
 				.save(cons, "dcs_climate:core/sieve_stone_quartz");
+
+		ShapelessRecipeBuilder.shapeless(Items.QUARTZ, 4)
+				.requires(Blocks.QUARTZ_BLOCK)
+				.requires(CoreInit.MORTAR.get())
+				.requires(CoreInit.SIEVE.get())
+				.group("crusher_mortar")
+				.unlockedBy("has_block_quartz", has(Blocks.QUARTZ_BLOCK))
+				.save(cons, "dcs_climate:core/sieve_block_quartz");
 	}
 
 	private static void mortarMillsRecipes(Consumer<FinishedRecipe> cons, MillsDC.Crops mill) {
@@ -2917,6 +2925,12 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_GOLD), Items.GOLD_INGOT, 200, "ingot_gold", CoreInit.OREDUST_WHITE2.get(), "has_dust_gold");
 
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUSTBLOCK_STEEL), Items.IRON_BLOCK, 200, "container_iron", CoreInit.DUSTBLOCK_STEEL.get().asItem(), "has_dustblock_iron");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUSTBLOCK_BRASS), CoreInit.METALBLOCK_BRASS.get().asItem(), 200, "container_brass", CoreInit.DUSTBLOCK_BRASS.get().asItem(),
+				"has_dustblock_brass");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUSTBLOCK_BRONZE), CoreInit.METALBLOCK_BRONZE.get().asItem(), 200, "container_bronze", CoreInit.DUSTBLOCK_BRONZE.get().asItem(),
+				"has_dustblock_bronze");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUSTBLOCK_SILVER), CoreInit.METALBLOCK_SILVER.get().asItem(), 200, "container_silver", CoreInit.DUSTBLOCK_SILVER.get().asItem(),
+				"has_dustblock_silver");
 
 		// アルミ建材の還元
 		smeltingRecipe(cons, Ingredient.of(BuildInit.SLAB_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_slab_metal", BuildInit.SLAB_METAL.get().asItem(), "has_slab_metal");

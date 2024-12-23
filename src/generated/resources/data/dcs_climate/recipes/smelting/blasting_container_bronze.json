@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredient": {
+    "tag": "forge:dust_blocks/bronze"
+  },
+  "result": "dcs_climate:main/metalblock_bronze"
+}

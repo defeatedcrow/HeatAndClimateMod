@@ -54,24 +54,31 @@ public class ItemEdibleCropDC extends ItemCropDC implements IFoodTaste {
 	public int getTaste(ItemStack item) {
 		if (DCUtil.isEmpty(item))
 			return 0;
-		if (item.getTag() != null && item.getTag().contains(TagKeyDC.TASTE)) {
-			int taste = item.getTag().getInt(TagKeyDC.TASTE);
-			taste = Mth.clamp(taste, -2, 2);
-			return taste;
+		CompoundTag tag = item.getOrCreateTag();
+		if (item.getTag().contains(TagKeyDC.TASTE)) {
+			int tagTaste = item.getTag().getInt(TagKeyDC.TASTE);
+			tagTaste = Mth.clamp(tagTaste, -2, 2);
+			return tagTaste;
 		} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR)) {
+			int tagTaste = 0;
 			if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR5)) {
-				return 2;
+				tagTaste = 2;
 			} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR4)) {
-				return 1;
+				tagTaste = 1;
 			} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR3)) {
-				return 0;
+				tagTaste = 0;
 			} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR2)) {
-				return -1;
+				tagTaste = -1;
 			} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR1)) {
-				return -2;
+				tagTaste = -2;
 			}
+			setTaste(item, tagTaste);
+			return tagTaste;
+		} else {
+			int tagTaste = taste > -3 ? taste : tier.getTaste();
+			setTaste(item, tagTaste);
+			return tagTaste;
 		}
-		return taste > -3 ? taste : tier.getTaste();
 	}
 
 	@Override
