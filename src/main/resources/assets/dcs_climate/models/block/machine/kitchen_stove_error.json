@@ -3,7 +3,7 @@
     "render_type": "cutout",
     "textures": {
         "flame": "dcs_climate:block/machine/fuel_burner_fire_incomplete",
-        "particle": "dcs_climate:block/machine/fuel_burner_fier_incomplete"
+        "particle": "dcs_climate:block/machine/fuel_burner_fire_incomplete"
     },
     "elements": [
         {

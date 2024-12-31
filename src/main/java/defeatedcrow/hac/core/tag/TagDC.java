@@ -320,6 +320,7 @@ public class TagDC {
 		public static final TagKey<Item> GEM_CHALCEDONY = itemTag("gems/chalcedony");
 		public static final TagKey<Item> GEM_CRYSTAL = itemTag("gems/crystal");
 		public static final TagKey<Item> GEM_THUNDEREGG = itemTag("gems/thunder_egg");
+		public static final TagKey<Item> GEM_CATSEYE = itemTag("gems/cats_eye");
 		public static final TagKey<Item> GEM_CELESTITE = itemTag("gems/celestite");
 		public static final TagKey<Item> GEM_SAPPHIRE = itemTag("gems/sapphire");
 		public static final TagKey<Item> GEM_VIVIANITE = itemTag("gems/vivianite");
@@ -346,6 +347,7 @@ public class TagDC {
 		public static final TagKey<Item> GEM_SPINEL = itemTag("gems/spinel");
 		public static final TagKey<Item> GEM_AMAZONITE = itemTag("gems/amazonite");
 		public static final TagKey<Item> GEM_JADEITE = itemTag("gems/jadeite");
+		public static final TagKey<Item> GEM_DEMANTOID = itemTag("gems/demantoid");
 		public static final TagKey<Item> GEM_TOURMALINE = itemTag("gems/tourmaline");
 
 		public static final TagKey<Item> GEM_GARNET = itemTag("gems/garnet");
@@ -681,6 +683,7 @@ public class TagDC {
 		public static final TagKey<Item> FISH_BLUE = itemTag("ingredients/blue_fishes");
 		public static final TagKey<Item> FISH_WHITE = itemTag("ingredients/white_fishes");
 		public static final TagKey<Item> FISH_WITH_ROE = itemTag("ingredients/fishes_with_roe");
+		public static final TagKey<Item> FISH_SHELL = itemTag("ingredients/shellfish");
 		public static final TagKey<Item> ROE = itemTag("ingredients/roe");
 
 		public static final TagKey<Item> OFFAL = itemTag("ingredients/offal");
@@ -716,6 +719,7 @@ public class TagDC {
 		public static final TagKey<Item> ANKO = itemTag("ingredients/anko");
 		public static final TagKey<Item> TOFU = itemTag("ingredients/tofu");
 		public static final TagKey<Item> FRIED_TOFU = itemTag("ingredients/fried_tofu");
+		public static final TagKey<Item> RICE_CAKE = itemTag("ingredients/rice_cake");
 
 		public static final TagKey<Item> COW_MILK = itemTag("ingredients/cow_milk");
 		public static final TagKey<Item> SOY_MILK = itemTag("ingredients/soy_milk");

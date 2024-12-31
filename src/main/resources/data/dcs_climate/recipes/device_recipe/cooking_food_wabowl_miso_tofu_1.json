@@ -2,7 +2,7 @@
   "type": "dcs_climate:device_recipe",
   "group": "cooking",
   "result": {
-    "item": "dcs_climate:food/stew_miso_eggplant",
+    "item": "dcs_climate:food/wabowl_miso_tofu",
     "count": 3
   },
   "ingredients": [
@@ -13,7 +13,13 @@
       "tag": "forge:ingredients/miso"
     },
     {
-      "tag": "forge:crops/egg_plant"
+      "tag": "forge:ingredients/tofu"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "tag": "forge:crops/leeks"
     }
   ],
   "heat": [

@@ -623,11 +623,11 @@ public class PulveriseRecipes {
 		// sieve
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,
-				new ItemStack(CoreInit.GEM_CRYSTAL.get(), 2), new ItemStack(CoreInit.GEM_THUNDEREGG.get()), 30, new ItemStack(Items.DIAMOND), 3, FluidStack.EMPTY,
+				new ItemStack(CoreInit.GEM_CRYSTAL.get(), 2), new ItemStack(CoreInit.GEM_THUNDEREGG.get()), 30, new ItemStack(CoreInit.GEM_CATSEYE.get()), 3, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_WHITE)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,
-				new ItemStack(CoreInit.GEM_THUNDEREGG.get(), 2), new ItemStack(Items.DIAMOND), 30, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				new ItemStack(CoreInit.GEM_THUNDEREGG.get(), 2), new ItemStack(CoreInit.GEM_CATSEYE.get()), 30, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_WHITE_DEEP)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,
@@ -655,11 +655,11 @@ public class PulveriseRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_RED_DEEP)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,
-				new ItemStack(CoreInit.GEM_MALACHITE.get(), 2), new ItemStack(CoreInit.GEM_OLIVINE.get()), 30, new ItemStack(Items.EMERALD), 3, FluidStack.EMPTY,
+				new ItemStack(CoreInit.GEM_MALACHITE.get(), 2), new ItemStack(CoreInit.GEM_OLIVINE.get()), 30, new ItemStack(CoreInit.GEM_DEMANTOID.get()), 3, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_GREEN)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,
-				new ItemStack(CoreInit.GEM_OLIVINE.get(), 2), new ItemStack(Items.EMERALD), 30, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				new ItemStack(CoreInit.GEM_OLIVINE.get(), 2), new ItemStack(CoreInit.GEM_DEMANTOID.get()), 30, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_GREEN_DEEP)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,
@@ -671,7 +671,7 @@ public class PulveriseRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_HELIODOR)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,
-				new ItemStack(CoreInit.GEM_TOPAZ.get(), 2), new ItemStack(Items.DIAMOND), 10, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				new ItemStack(CoreInit.GEM_TOPAZ.get(), 2), new ItemStack(CoreInit.GEM_CATSEYE.get()), 10, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_TOPAZ)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,
@@ -719,7 +719,7 @@ public class PulveriseRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_AMAZONITE)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,
-				new ItemStack(CoreInit.GEM_JADEITE.get(), 2), new ItemStack(Items.EMERALD), 10, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				new ItemStack(CoreInit.GEM_JADEITE.get(), 2), new ItemStack(CoreInit.GEM_DEMANTOID.get()), 10, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_JADEITE)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SIEVE,

@@ -4,7 +4,7 @@
         "base": "block/bricks",
         "sink": "block/terracotta",
         "drain": "dcs_climate:block/build/sink_bottom",
-        "front": "dcs_climate:block/build/kichen_cabinet",
+        "front": "dcs_climate:block/build/kitchen_cabinet",
         "particle": "block/bricks"
     },
     "elements": [

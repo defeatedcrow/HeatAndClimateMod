@@ -2,7 +2,7 @@
   "type": "dcs_climate:device_recipe",
   "group": "cooking",
   "result": {
-    "item": "dcs_climate:food/stew_miso_mushroom",
+    "item": "dcs_climate:food/wabowl_miso_mushroom",
     "count": 3
   },
   "ingredients": [

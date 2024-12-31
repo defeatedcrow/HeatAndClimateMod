@@ -178,6 +178,7 @@ public class CoreInit {
 	public static final RegistryObject<Item> GEM_HELIODOR = regItem("gem_heliodor", () -> new ItemGemDC(Rarity.UNCOMMON, "gem_heliodor", TagDC.ItemTag.GEM_HELIODOR));
 	public static final RegistryObject<Item> GEM_THUNDEREGG = regItem("gem_thunderegg", () -> new ItemGemDC(Rarity.UNCOMMON, "gem_thunderegg", TagDC.ItemTag.GEM_THUNDEREGG));
 	public static final RegistryObject<Item> GEM_TOPAZ = regItem("gem_topaz", () -> new ItemGemDC(Rarity.RARE, "gem_topaz", TagDC.ItemTag.GEM_TOPAZ));
+	public static final RegistryObject<Item> GEM_CATSEYE = regItem("gem_catseye", () -> new ItemGemDC(Rarity.RARE, "gem_catseye", TagDC.ItemTag.GEM_CATSEYE));
 	public static final RegistryObject<Item> GEM_FLUORITE = regItem("gem_fluorite", () -> new ItemGemDC(Rarity.COMMON, "gem_fluorite", TagDC.ItemTag.GEM_FLUORITE));
 	public static final RegistryObject<Item> GEM_LARIMAR = regItem("gem_larimar", () -> new ItemGemDC(Rarity.UNCOMMON, "gem_larimar", TagDC.ItemTag.GEM_LARIMAR));
 	public static final RegistryObject<Item> GEM_CELESTITE = regItem("gem_celestite", () -> new ItemGemDC(Rarity.UNCOMMON, "gem_celestite", TagDC.ItemTag.GEM_CELESTITE));
@@ -202,6 +203,7 @@ public class CoreInit {
 	public static final RegistryObject<Item> GEM_AMAZONITE = regItem("gem_amazonite", () -> new ItemGemDC(Rarity.UNCOMMON, "gem_amazonite", TagDC.ItemTag.GEM_AMAZONITE));
 	public static final RegistryObject<Item> GEM_OLIVINE = regItem("gem_olivine", () -> new ItemGemDC(Rarity.UNCOMMON, "gem_olivine", TagDC.ItemTag.GEM_OLIVINE));
 	public static final RegistryObject<Item> GEM_JADEITE = regItem("gem_jadeite", () -> new ItemGemDC(Rarity.RARE, "gem_jadeite", TagDC.ItemTag.GEM_JADEITE));
+	public static final RegistryObject<Item> GEM_DEMANTOID = regItem("gem_demantoid", () -> new ItemGemDC(Rarity.RARE, "gem_demantoid", TagDC.ItemTag.GEM_DEMANTOID));
 	public static final RegistryObject<Item> GEM_TOURMALINE = regItem("gem_nervous_tourmaline", () -> new ItemGemDC(Rarity.RARE, "gem_nervous_tourmaline", TagDC.ItemTag.GEM_TOURMALINE));
 
 	public static final RegistryObject<Item> GEM_SALT = regItem("gem_salt", () -> new ItemGemDC(Rarity.COMMON, "gem_salt", TagDC.ItemTag.GEM_SALT));

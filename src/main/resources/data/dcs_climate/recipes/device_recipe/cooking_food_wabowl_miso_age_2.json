@@ -2,7 +2,7 @@
   "type": "dcs_climate:device_recipe",
   "group": "cooking",
   "result": {
-    "item": "dcs_climate:food/stew_miso_pork",
+    "item": "dcs_climate:food/wabowl_miso_age",
     "count": 3
   },
   "ingredients": [
@@ -13,16 +13,13 @@
       "tag": "forge:ingredients/miso"
     },
     {
-      "tag": "forge:ingredients/raw_pork"
+      "tag": "forge:ingredients/fried_tofu"
     },
     {
-      "tag": "forge:crops/carrot"
+      "tag": "forge:crops/green_leafs"
     },
     {
-      "tag": "forge:mushrooms"
-    },
-    {
-      "tag": "forge:crops/radish"
+      "tag": "forge:ingredients/sprout"
     }
   ],
   "heat": [

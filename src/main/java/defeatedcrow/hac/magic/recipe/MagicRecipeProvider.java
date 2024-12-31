@@ -744,6 +744,11 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_crop_ash", has(TagDC.ItemTag.CROP_ASH))
 				.save(cons, "dcs_climate:magic/mortar_crop_ash");
 
+		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_MANA.get(), 8)
+				.requires(TagDC.ItemTag.MANA_EXTRACT)
+				.unlockedBy("has_extrast_mana", has(MagicInit.EXTRACT_MANA.get()))
+				.save(cons, "dcs_climate:magic/mana_extract_to_drop");
+
 		ShapedRecipeBuilder.shaped(MagicInit.EXTRACT_WHITE.get(), 1)
 				.pattern("XXX")
 				.pattern("X X")
@@ -791,6 +796,13 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.define('X', MagicInit.DROP_MANA.get())
 				.unlockedBy("has_drop_mana", has(MagicInit.DROP_MANA.get()))
 				.save(cons, "dcs_climate:magic/craft_extract_mana");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.EXTRACT_MANA.get(), 1)
+				.requires(TagDC.ItemTag.DUST_DIAMOND)
+				.requires(TagDC.ItemTag.DUST_CRYSTAL)
+				.requires(Items.GLOW_INK_SAC)
+				.unlockedBy("has_glow_ink", has(Items.GLOW_INK_SAC))
+				.save(cons, "dcs_climate:magic/craft_extract_mana_2");
 
 		ShapelessRecipeBuilder.shapeless(MagicInit.PIGMENT_WHITE.get(), 1)
 				.requires(MagicInit.EXTRACT_MANA.get())
@@ -842,7 +854,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_WHITE_INERT.get(), 1)
 				.requires(MagicInit.ELEMENT_MANA.get())
 				.requires(MagicInit.PIGMENT_WHITE.get())
-				.requires(Tags.Items.GEMS_DIAMOND)
+				.requires(TagDC.ItemTag.GEM_CATSEYE)
 				.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
 				.save(cons, "dcs_climate:magic/craft_element_white_inart_2");
 
@@ -905,7 +917,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(MagicInit.ELEMENT_GREEN_INERT.get(), 1)
 				.requires(MagicInit.ELEMENT_MANA.get())
 				.requires(MagicInit.PIGMENT_GREEN.get())
-				.requires(Tags.Items.GEMS_EMERALD)
+				.requires(TagDC.ItemTag.GEM_DEMANTOID)
 				.unlockedBy("has_element_mana", has(MagicInit.ELEMENT_MANA.get()))
 				.save(cons, "dcs_climate:magic/craft_element_green_inart_2");
 

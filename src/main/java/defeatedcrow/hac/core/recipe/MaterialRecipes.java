@@ -21,25 +21,23 @@ public class MaterialRecipes {
 	public static void init() {}
 
 	public static final Color WHITE = new Color("white", MagicColor.WHITE, () -> CoreInit.ORE_WHITE.get(), () -> CoreInit.ORE_WHITE_DEEP.get(), () -> CoreInit.GEM_CRYSTAL
-			.get(), () -> CoreInit.GEM_THUNDEREGG
-					.get(), () -> Items.DIAMOND, () -> CoreInit.OREITEM_WHITE1.get(), () -> CoreInit.OREITEM_WHITE2.get(), () -> CoreInit.OREITEM_WHITE3.get(), () -> CoreInit.OREDUST_WHITE1
-							.get(), () -> CoreInit.OREDUST_WHITE2.get(), () -> CoreInit.OREDUST_WHITE3.get());
+			.get(), () -> CoreInit.GEM_THUNDEREGG.get(), () -> CoreInit.GEM_CATSEYE.get(), () -> CoreInit.OREITEM_WHITE1.get(), () -> CoreInit.OREITEM_WHITE2.get(), () -> CoreInit.OREITEM_WHITE3
+					.get(), () -> CoreInit.OREDUST_WHITE1.get(), () -> CoreInit.OREDUST_WHITE2.get(), () -> CoreInit.OREDUST_WHITE3.get());
 
 	public static final Color BLUE = new Color("blue", MagicColor.BLUE, () -> CoreInit.ORE_BLUE.get(), () -> CoreInit.ORE_BLUE_DEEP.get(), () -> Items.LAPIS_LAZULI, () -> CoreInit.GEM_CELESTITE
 			.get(), () -> CoreInit.GEM_SAPPHIRE.get(), () -> CoreInit.OREITEM_BLUE1.get(), () -> CoreInit.OREITEM_BLUE2.get(), () -> CoreInit.OREITEM_BLUE3.get(), () -> CoreInit.OREDUST_BLUE1
 					.get(), () -> CoreInit.OREDUST_BLUE2.get(), () -> CoreInit.OREDUST_BLUE3.get());
 
 	public static final Color BLACK = new Color("black", MagicColor.BLACK, () -> CoreInit.ORE_BLACK.get(), () -> CoreInit.ORE_BLACK_DEEP.get(), () -> CoreInit.GEM_VIVIANITE
-			.get(), () -> CoreInit.GEM_FANG
-					.get(), () -> CoreInit.GEM_OPAL.get(), () -> CoreInit.OREITEM_BLACK1.get(), () -> CoreInit.OREITEM_BLACK2.get(), () -> CoreInit.OREITEM_BLACK3.get(), () -> CoreInit.OREDUST_BLACK1
-							.get(), () -> CoreInit.OREDUST_BLACK2.get(), () -> CoreInit.OREDUST_BLACK3.get());
+			.get(), () -> CoreInit.GEM_FANG.get(), () -> CoreInit.GEM_OPAL.get(), () -> CoreInit.OREITEM_BLACK1.get(), () -> CoreInit.OREITEM_BLACK2.get(), () -> CoreInit.OREITEM_BLACK3.get(),
+			() -> CoreInit.OREDUST_BLACK1.get(), () -> CoreInit.OREDUST_BLACK2.get(), () -> CoreInit.OREDUST_BLACK3.get());
 
 	public static final Color RED = new Color("red", MagicColor.RED, () -> CoreInit.ORE_RED.get(), () -> CoreInit.ORE_RED_DEEP.get(), () -> CoreInit.GEM_JASPER.get(), () -> CoreInit.GEM_ALMANDINE
 			.get(), () -> CoreInit.GEM_RUBY.get(), () -> CoreInit.OREITEM_RED1.get(), () -> CoreInit.OREITEM_RED2.get(), () -> CoreInit.OREITEM_RED3.get(), () -> CoreInit.OREDUST_RED1
 					.get(), () -> CoreInit.OREDUST_RED2.get(), () -> CoreInit.OREDUST_RED3.get());
 
 	public static final Color GREEN = new Color("green", MagicColor.GREEN, () -> CoreInit.ORE_GREEN.get(), () -> CoreInit.ORE_GREEN_DEEP.get(), () -> CoreInit.GEM_MALACHITE
-			.get(), () -> CoreInit.GEM_OLIVINE.get(), () -> Items.EMERALD, () -> CoreInit.OREITEM_GREEN1.get(), () -> CoreInit.OREITEM_GREEN2.get(), () -> CoreInit.OREITEM_GREEN3
+			.get(), () -> CoreInit.GEM_OLIVINE.get(), () -> CoreInit.GEM_DEMANTOID.get(), () -> CoreInit.OREITEM_GREEN1.get(), () -> CoreInit.OREITEM_GREEN2.get(), () -> CoreInit.OREITEM_GREEN3
 					.get(), () -> CoreInit.OREDUST_GREEN1.get(), () -> CoreInit.OREDUST_GREEN2.get(), () -> CoreInit.OREDUST_GREEN3.get());
 
 	public static final Color[] COLOR_VARIANT = { WHITE, BLUE, BLACK, RED, GREEN };

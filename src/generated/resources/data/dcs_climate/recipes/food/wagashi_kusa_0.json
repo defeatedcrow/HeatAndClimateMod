@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/rice_cake"
+    },
+    {
+      "tag": "forge:ingredients/anko"
+    },
+    {
+      "tag": "forge:crops/artemisia"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/wagashi_kusa"
+  }
+}

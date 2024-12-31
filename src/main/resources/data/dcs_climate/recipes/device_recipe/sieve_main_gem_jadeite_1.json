@@ -6,7 +6,7 @@
     "count": 2
   },
   "secondary": {
-    "item": "minecraft:emerald",
+    "item": "dcs_climate:main/gem_demantoid",
     "count": 1
   },
   "secondary_rate": 10,

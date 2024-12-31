@@ -60,6 +60,7 @@
   "item.dcs_climate.main.gem_heliodor":"Heliodor",
   "item.dcs_climate.main.gem_thunderegg":"Thunder Egg",
   "item.dcs_climate.main.gem_topaz":"Topaz",
+  "item.dcs_climate.main.gem_catseye":"Cat's Eye'",
   "item.dcs_climate.main.gem_fluorite":"Fluorite",
   "item.dcs_climate.main.gem_larimar":"Larimar",
   "item.dcs_climate.main.gem_celestite":"Celestite",
@@ -84,6 +85,7 @@
   "item.dcs_climate.main.gem_amazonite":"Amazonite",
   "item.dcs_climate.main.gem_olivine":"Olivine",
   "item.dcs_climate.main.gem_jadeite":"Jadeite",
+  "item.dcs_climate.main.gem_demantoid":"Demantoid",
   "item.dcs_climate.main.gem_nervous_tourmaline":"Nervous Tourmaline",
 
   "item.dcs_climate.main.gem_salt":"Rock Salt",
@@ -476,6 +478,7 @@
   "item.dcs_climate.food.food_sauerkraut":"Sauerkraut",
   "item.dcs_climate.food.food_tofu":"Tofu",
   "item.dcs_climate.food.food_oage":"Fried Tofu",
+  "item.dcs_climate.food.food_mochi":"Mochi",
   "item.dcs_climate.food.food_umeboshi":"Umeboshi",
   "item.dcs_climate.food.food_tsukemono":"Tsukemono",
   "item.dcs_climate.food.food_kimchi":"Kimchi",
@@ -636,6 +639,9 @@
   "item.dcs_climate.food.cake_cream_mango":"Mango Pudding",
   "item.dcs_climate.food.cake_cream_sesami":"Sesami Pudding",
 
+  "item.dcs_climate.food.wagashi_bota":"Botamochi",
+  "item.dcs_climate.food.wagashi_kusa":"Kusamochi",
+
   "item.dcs_climate.food.porridge_simple":"Porridge",
   "item.dcs_climate.food.porridge_milk":"Milk Porridge",
   "item.dcs_climate.food.porridge_saffron":"Millanese Risotto",
@@ -712,10 +718,13 @@
   "item.dcs_climate.food.stew_tomyumgai":"Tom Yum Gai",
   "item.dcs_climate.food.stew_bakkutteh":"Bak Kut Teh",
   "item.dcs_climate.food.stew_offal":"Offal and Leek Soup",
-  "item.dcs_climate.food.stew_miso_tofu":"Miso Soup (Tofu)",
-  "item.dcs_climate.food.stew_miso_eggplant":"Miso Soup (Eggplant)",
-  "item.dcs_climate.food.stew_miso_mushroom":"Miso Soup (Mushroom)",
-  "item.dcs_climate.food.stew_miso_pork":"Butajiru",
+
+  "item.dcs_climate.food.wabowl_miso_tofu":"Miso Soup (Tofu)",
+  "item.dcs_climate.food.wabowl_miso_age":"Miso Soup (Fried Tofu)",
+  "item.dcs_climate.food.wabowl_miso_eggplant":"Miso Soup (Eggplant)",
+  "item.dcs_climate.food.wabowl_miso_mushroom":"Miso Soup (Mushroom)",
+  "item.dcs_climate.food.wabowl_miso_pork":"Butajiru",
+  "item.dcs_climate.food.wabowl_shiruko":"Shiruko",
 
   "item.dcs_climate.food.curry_vegi":"Sambal",
   "item.dcs_climate.food.curry_beans":"Dal Curry",

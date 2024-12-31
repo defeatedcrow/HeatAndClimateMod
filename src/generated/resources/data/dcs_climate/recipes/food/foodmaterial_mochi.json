@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:foods/boiled_rice"
+    },
+    {
+      "tag": "forge:foods/boiled_rice"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "dcs_climate:food/food_mochi"
+  }
+}

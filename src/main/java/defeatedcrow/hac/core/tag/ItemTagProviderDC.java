@@ -179,7 +179,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		// magic
 		tag(TagDC.ItemTag.GEM_WHITE).addTags(TagDC.ItemTag.GEM_CHALCEDONY, TagDC.ItemTag.GEM_CRYSTAL, TagDC.ItemTag.GEM_HELIODOR,
-				TagDC.ItemTag.GEM_THUNDEREGG, TagDC.ItemTag.GEM_TOPAZ, Tags.Items.GEMS_DIAMOND);
+				TagDC.ItemTag.GEM_THUNDEREGG, TagDC.ItemTag.GEM_TOPAZ, TagDC.ItemTag.GEM_CATSEYE);
 
 		tag(TagDC.ItemTag.GEM_BLUE).addTags(TagDC.ItemTag.GEM_FLUORITE, TagDC.ItemTag.GEM_LARIMAR, TagDC.ItemTag.GEM_CELESTITE,
 				TagDC.ItemTag.GEM_AQUAMARINE, TagDC.ItemTag.GEM_SAPPHIRE, Tags.Items.GEMS_LAPIS);
@@ -191,7 +191,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 				TagDC.ItemTag.GEM_ALMANDINE, TagDC.ItemTag.GEM_SPINEL, TagDC.ItemTag.GEM_RUBY);
 
 		tag(TagDC.ItemTag.GEM_GREEN).addTags(TagDC.ItemTag.GEM_SERPENTINE, TagDC.ItemTag.GEM_MALACHITE, TagDC.ItemTag.GEM_AMAZONITE,
-				TagDC.ItemTag.GEM_OLIVINE, TagDC.ItemTag.GEM_JADEITE, Tags.Items.GEMS_EMERALD);
+				TagDC.ItemTag.GEM_OLIVINE, TagDC.ItemTag.GEM_JADEITE, TagDC.ItemTag.GEM_DEMANTOID);
 
 		tag(TagDC.ItemTag.COLOR_GEMS).addTags(TagDC.ItemTag.GEM_WHITE, TagDC.ItemTag.GEM_BLUE, TagDC.ItemTag.GEM_BLACK,
 				TagDC.ItemTag.GEM_RED, TagDC.ItemTag.GEM_GREEN);
@@ -491,6 +491,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 				TagDC.ItemTag.GROUPER, TagDC.ItemTag.SEABREAM, TagDC.ItemTag.FLOUNDER, TagDC.ItemTag.MULLET);
 
 		tag(TagDC.ItemTag.FISH_WITH_ROE).addTags(TagDC.ItemTag.RAW_COD, TagDC.ItemTag.RAW_SALMON, TagDC.ItemTag.MACKEREL, TagDC.ItemTag.MULLET, TagDC.ItemTag.SMELT);
+
+		tag(TagDC.ItemTag.FISH_SHELL).addTags(TagDC.ItemTag.PRAWN, TagDC.ItemTag.CRAB, TagDC.ItemTag.SQUID);
 
 		tag(TagDC.ItemTag.FISH_VANILLA).add(Items.COD, Items.SALMON, Items.PUFFERFISH, Items.TROPICAL_FISH);
 

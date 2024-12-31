@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "dcs_climate:mana_extracts"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "item": "dcs_climate:magic/drop_mana"
+  }
+}

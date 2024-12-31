@@ -42,11 +42,11 @@ public class RiceBowlItem extends ItemEntityFood implements IPotFoods {
 		return NORMAL_LAYER;
 	}
 
-	public static final EntityRenderData NORMAL = new EntityRenderData("food/rice_boiled", 0.8F, 0F);
-	public static final EntityRenderData BARLEY = new EntityRenderData("food/rice_barley", 0.8F, 0F);
-	public static final EntityRenderData SEKI = new EntityRenderData("food/rice_seki", 0.8F, 0F);
-	public static final EntityRenderData NAPA = new EntityRenderData("food/rice_napa", 0.8F, 0F);
-	public static final EntityRenderData FISH = new EntityRenderData("food/rice_fish", 0.8F, 0F);
+	public static final EntityRenderData NORMAL = new EntityRenderData("food/rice_boiled", 0.75F, 0F);
+	public static final EntityRenderData BARLEY = new EntityRenderData("food/rice_barley", 0.75F, 0F);
+	public static final EntityRenderData SEKI = new EntityRenderData("food/rice_seki", 0.75F, 0F);
+	public static final EntityRenderData NAPA = new EntityRenderData("food/rice_napa", 0.75F, 0F);
+	public static final EntityRenderData FISH = new EntityRenderData("food/rice_fish", 0.75F, 0F);
 
 	public static final EntityRenderData NORMAL_LAYER = new EntityRenderData("food/layer/rice_boiled_layer", 1F, 0F);
 	public static final EntityRenderData BARLEY_LAYER = new EntityRenderData("food/layer/rice_barley_layer", 1F, 0F);

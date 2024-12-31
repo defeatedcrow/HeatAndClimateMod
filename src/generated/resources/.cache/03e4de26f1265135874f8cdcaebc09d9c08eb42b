@@ -1,4 +1,4 @@
-// 1.19.2	2024-12-15T01:48:37.558684	Tags for minecraft:item
+// 1.19.2	2024-12-31T19:46:48.3057225	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
@@ -101,7 +101,7 @@ ef7f9d4aca38f5474634dcbda534e3e750228ba2 data/dcs_climate/tags/items/fishes/trop
 b1410710e34489f1aaf507b94633525d197cbc1f data/dcs_climate/tags/items/food_taste.json
 7f01ab18c3c16b58225da18b1317b0b94d955870 data/dcs_climate/tags/items/food_taste/tier1.json
 a66811404705a08067a8c69113c25769d34f5836 data/dcs_climate/tags/items/food_taste/tier2.json
-e836340a1be22e478ef9bdb0123670b07df8a9b4 data/dcs_climate/tags/items/food_taste/tier3.json
+9c1a88b26e715943125dacece61303d096f8670b data/dcs_climate/tags/items/food_taste/tier3.json
 1b91dbdb8e462b2737b42cd2b7e6771a8ccb2ff7 data/dcs_climate/tags/items/food_taste/tier4.json
 3465787b73f298eac6f037f6ceb358825347d2ee data/dcs_climate/tags/items/food_taste/tier5.json
 8d8b6ae97ecdc0080c2f91383f4cda476ab357ed data/dcs_climate/tags/items/fuels.json
@@ -109,9 +109,9 @@ e836340a1be22e478ef9bdb0123670b07df8a9b4 data/dcs_climate/tags/items/food_taste/
 f9be281231ab0be930b60bee688dcf542f800e3a data/dcs_climate/tags/items/gems.json
 389505bf9bb01293cfefc170ca1233c267ddeb10 data/dcs_climate/tags/items/gems/black.json
 6c95c82ad6e4ad2d79917dde4952dc2660b9331b data/dcs_climate/tags/items/gems/blue.json
-717866aa09166edec1fe66aa17c2353a923a2128 data/dcs_climate/tags/items/gems/green.json
+ebb4b68dd1d070761eb7100523f8bc3c0e426475 data/dcs_climate/tags/items/gems/green.json
 cd6d18dc51b62418c5466f9fba750545c3b74e79 data/dcs_climate/tags/items/gems/red.json
-fa6626c4d374bc0da9891eb041c6a80385f76161 data/dcs_climate/tags/items/gems/white.json
+9e08d0d90c93165404de20e547237f7c0b933fca data/dcs_climate/tags/items/gems/white.json
 edc53fe07b6cc91a4dc3d15cc04f5b2f1b0442d7 data/dcs_climate/tags/items/hoppers.json
 54057d6a734f0270d772afc38d85be2443fe48b5 data/dcs_climate/tags/items/hoppers/filter_hopper.json
 9b0d1233fd3bfdad3dcd63637527196a96a8e2e3 data/dcs_climate/tags/items/impellers.json
@@ -162,8 +162,8 @@ ac87e05f51a4cd378c8694a197232eee334a18fa data/dcs_climate/tags/items/meals/porri
 127b31fca65ebc75785c2198d04ec9fb2bb1ac2e data/dcs_climate/tags/items/meals/salad.json
 c06efd5deb7cbb8091cc1185f2c67fad470ea2f5 data/dcs_climate/tags/items/meals/side_dish.json
 17d98d08a251c9d1c908bc51967772eb2109cd77 data/dcs_climate/tags/items/meals/skewered.json
-484ebc7087fea21ddeacdfc1f2d848b4a0f61a7c data/dcs_climate/tags/items/meals/soup.json
-65a0c77db88410671727e848898bc629f29dbe97 data/dcs_climate/tags/items/meals/sweets.json
+8fe610d79a113c5320909654704bcef0fbaef556 data/dcs_climate/tags/items/meals/soup.json
+f88a48cb95b7d10c47d669251e7b00d29027a801 data/dcs_climate/tags/items/meals/sweets.json
 60f0025f98b7ec0daeecae59c4d6b5009a30f29e data/dcs_climate/tags/items/meals/tart.json
 bd479884d6c127ea78bbe38fe3a4df6a2c5c72b7 data/dcs_climate/tags/items/meals/tempura.json
 4a518f658c214b6035179b95d3f6d745440df29a data/dcs_climate/tags/items/metal_roofs.json
@@ -403,15 +403,17 @@ e0f0a00ac0a0bb6be332292160ee171f8fac6320 data/forge/tags/items/foods/cooked_pork
 6bda0b31e05f29de3a64aa7e96b54a6131c162cb data/forge/tags/items/foods/dough.json
 6430e7f3f25f7f3c9e6b2a594c30c863c1abc31e data/forge/tags/items/foods/drinks.json
 1c36e857735a1d0e40bb810ef705900fc0fca276 data/forge/tags/items/foods/liquor.json
-daeaa04d4ed8e9bdf4c44ffecb77fe5dc1feb4fe data/forge/tags/items/gems.json
+f856a20c549995b7573681f13cef0b0c1141489b data/forge/tags/items/gems.json
 1dc28a103e837335c4ea900b117ec729a81f35b9 data/forge/tags/items/gems/agates.json
 538eddc0d54519c15055c7ac3be348ec752f07f8 data/forge/tags/items/gems/almandine.json
 eee7e50584a51c7b04cdc7f739fe6e0ee3667224 data/forge/tags/items/gems/amazonite.json
 61e7ac51e011a3fd3e4d482c3aacf1069c8d926d data/forge/tags/items/gems/aquamarine.json
+3996277cdfbd3a60e292a5a61e4fc19b349b275c data/forge/tags/items/gems/cats_eye.json
 e6172926c828b9e84b8000a3a606ccdb09811f7e data/forge/tags/items/gems/celestite.json
 639b9c4c4192387a628b91f32163e5f77c2c3ebc data/forge/tags/items/gems/chalcedony.json
 05abdd0d8560b0671f8c122f795fcb1bc2155276 data/forge/tags/items/gems/coal.json
 53cf37c0e819f527819c18dda8970895674dc30a data/forge/tags/items/gems/crystal.json
+2fcd388bf1e19e43606445a09b8981c2b7989583 data/forge/tags/items/gems/demantoid.json
 e8fd57431b12ed05b0c8514b68fd06eb7ee634a6 data/forge/tags/items/gems/desertrose.json
 aadc73fe1a192044d7e6f809d5b84b26fc0f229e data/forge/tags/items/gems/dragons_eye.json
 f99bb94c0ddc70fd277418e1bba5967b8808be7e data/forge/tags/items/gems/fang.json
@@ -554,12 +556,14 @@ bd928ddfbd630ca3abfd792d4214fab0a6d9f54a data/forge/tags/items/ingredients/raw_s
 0f876700ab1971ba1bf1d3ea507d6ef40770c357 data/forge/tags/items/ingredients/residues.json
 14baec8a5da10c79cdc928a2f94b5d3815701000 data/forge/tags/items/ingredients/rice.json
 53e27b384ae930eadb30b6ba0114631bfb717ffd data/forge/tags/items/ingredients/rices.json
+8f0fe0558fa0b10265135a174f22425419b7d329 data/forge/tags/items/ingredients/rice_cake.json
 dcbdeef42e7b64c33e8951a52ffc2a6745f8797b data/forge/tags/items/ingredients/rockfish.json
 f662d554b05307a14bb5b2fc11fc8ed83257589d data/forge/tags/items/ingredients/roe.json
 2b6a0a0e24c914a745420f85bc16058ebe31629a data/forge/tags/items/ingredients/rye.json
 c5bc782a83b28d4aafcea825708a2945ffc5cb94 data/forge/tags/items/ingredients/salsa.json
 62edbe3d616da408f530abeb150e93acc74be71a data/forge/tags/items/ingredients/sardine.json
 b7b8fedf6c24c31f3f63847a12a1b8872c8b2ee1 data/forge/tags/items/ingredients/seabream.json
+86c3b9adadca8064066c8199b11f232cce7cbd37 data/forge/tags/items/ingredients/shellfish.json
 044d3afbd8d6425adba3a5e8365be684284cf979 data/forge/tags/items/ingredients/smelt.json
 5534d5c028f6e92da37aaa43fb2b8e687cb818a7 data/forge/tags/items/ingredients/sorghum.json
 7079c2b946c7bd9c1c3d4327415ea13d690a0015 data/forge/tags/items/ingredients/soysauce.json

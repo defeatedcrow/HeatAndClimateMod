@@ -270,6 +270,19 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_cake", has(FoodInit.CAKE_BUTTER.get()))
 				.save(cons, "dcs_climate:food/cake_lemon_0");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.WAGASHI_BOTA.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.RICE_CAKE))
+				.requires(Ingredient.of(TagDC.ItemTag.ANKO))
+				.unlockedBy("has_anko", has(TagDC.ItemTag.ANKO))
+				.save(cons, "dcs_climate:food/wagashi_bota_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.WAGASHI_KUSA.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.RICE_CAKE))
+				.requires(Ingredient.of(TagDC.ItemTag.ANKO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_ARTEMISIA))
+				.unlockedBy("has_anko", has(TagDC.ItemTag.ANKO))
+				.save(cons, "dcs_climate:food/wagashi_kusa_0");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.STICK_BEEF_RAW.get(), 1)
 				.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_BEEF))
@@ -1470,6 +1483,12 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.requires(Ingredient.of(TagDC.ItemTag.WATER))
 				.unlockedBy("has_dust_rices", has(TagDC.ItemTag.DUST_RICES))
 				.save(cons, "dcs_climate:food/foodmaterial_rice_noodle");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MOCHI.get(), 2)
+				.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
+				.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
+				.unlockedBy("has_boiled_rices", has(TagDC.ItemTag.BOILED_RICE))
+				.save(cons, "dcs_climate:food/foodmaterial_mochi");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_CREAM.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.COW_MILK))

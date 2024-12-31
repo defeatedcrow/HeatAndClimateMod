@@ -216,6 +216,10 @@ public class CharmTriggerEvent {
 		}
 
 		if (source.isFall()) {
+			if (living.hasEffect(CoreInit.BIRD.get()) || living.hasEffect(MobEffects.JUMP)
+					|| MagicUtil.hasHandCharms(living, new ItemStack(MagicInit.BRACELET_SILVER_RED.get()))) {
+				f2 = 0F;
+			}
 			if (DCItemUtil.isWearArmorItem(CoreInit.BOOTS_SAFETY.get(), living, EquipmentSlot.FEET)) {
 				f2 *= 0.5F;
 			}

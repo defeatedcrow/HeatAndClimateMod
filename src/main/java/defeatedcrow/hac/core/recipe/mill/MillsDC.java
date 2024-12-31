@@ -79,7 +79,7 @@ public class MillsDC {
 		list2.add(new Miscs("magma", 1, () -> TagDC.ItemTag.MAGMA, () -> Items.BLAZE_POWDER, () -> Items.BLAZE_POWDER));
 		list2.add(new Miscs("bone", 5, () -> Tags.Items.BONES, () -> Items.BONE_MEAL, () -> Items.BONE_MEAL));
 		list2.add(new Miscs("sugar_cane", 3, () -> TagDC.ItemTag.CROP_SUGAR, () -> Items.SUGAR, FoodInit.FOOD_SYRUP));
-		list2.add(new Miscs("sandstone", 1, () -> Tags.Items.SANDSTONE, () -> Items.SAND, CoreInit.DUST_LIME));
+		list2.add(new Miscs("sandstone", 4, () -> Tags.Items.SANDSTONE, () -> Items.SAND, CoreInit.DUST_LIME));
 
 		list2.add(new Miscs("gem_salt", 2, () -> TagDC.ItemTag.GEM_SALT, CoreInit.DUST_SALT, CoreInit.DUST_SALT));
 		list2.add(new Miscs("gem_niter", 2, () -> TagDC.ItemTag.GEM_NITER, CoreInit.DUST_NITER, CoreInit.DUST_NITER));
@@ -89,6 +89,7 @@ public class MillsDC {
 		list2.add(new Miscs("ore_travertine", 1, () -> TagDC.ItemTag.ORES_TRAVERTINE, CoreInit.DUST_LIME, CoreInit.DUST_SULFUR));
 		list2.add(new Miscs("gem_agates", 1, () -> TagDC.ItemTag.GEM_AGATES, CoreInit.DUST_CRYSTAL, CoreInit.DUST_CRYSTAL));
 		list2.add(new Miscs("gem_coal", 1, () -> TagDC.ItemTag.GEM_COAL, CoreInit.DUST_COAL, CoreInit.DUST_COAL));
+		list2.add(new Miscs("gem_diamond", 1, () -> Tags.Items.GEMS_DIAMOND, CoreInit.DUST_DIAMOND, CoreInit.DUST_DIAMOND));
 		list2.add(new Miscs("dripstones", 1, () -> TagDC.ItemTag.DRIPSTONES, CoreInit.DUST_LIME, CoreInit.DUST_LIME));
 		list2.add(new Miscs("planks", 1, () -> ItemTags.PLANKS, FoodInit.DUST_WOOD, FoodInit.DUST_WOOD));
 		list2.add(new Miscs("weeds", 1, () -> TagDC.ItemTag.WEED, FoodInit.DUST_PLANT, FoodInit.DUST_PLANT));

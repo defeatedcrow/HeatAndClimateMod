@@ -1,0 +1,36 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/wabowl_shiruko",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/anko"
+    },
+    {
+      "tag": "forge:ingredients/rice_cake"
+    },
+    {
+      "tag": "forge:ingredients/rice_cake"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

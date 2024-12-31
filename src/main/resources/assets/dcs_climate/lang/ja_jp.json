@@ -60,6 +60,7 @@
   "item.dcs_climate.main.gem_heliodor":"ヘリオドール",
   "item.dcs_climate.main.gem_thunderegg":"サンダーエッグ",
   "item.dcs_climate.main.gem_topaz":"トパーズ",
+  "item.dcs_climate.main.gem_catseye":"キャッツアイ",
   "item.dcs_climate.main.gem_fluorite":"蛍石",
   "item.dcs_climate.main.gem_larimar":"ラリマー",
   "item.dcs_climate.main.gem_celestite":"セレスタイト",
@@ -84,6 +85,7 @@
   "item.dcs_climate.main.gem_amazonite":"アマゾナイト",
   "item.dcs_climate.main.gem_olivine":"オリビン",
   "item.dcs_climate.main.gem_jadeite":"翡翠",
+  "item.dcs_climate.main.gem_demantoid":"デマントイド",
   "item.dcs_climate.main.gem_nervous_tourmaline":"電振晶",
 
   "item.dcs_climate.main.gem_salt":"岩塩",
@@ -475,6 +477,7 @@
   "item.dcs_climate.food.food_sauerkraut":"ザワークラウト",
   "item.dcs_climate.food.food_tofu":"豆腐",
   "item.dcs_climate.food.food_oage":"油揚げ",
+  "item.dcs_climate.food.food_mochi":"餅",
   "item.dcs_climate.food.food_umeboshi":"梅干し",
   "item.dcs_climate.food.food_tsukemono":"お漬物",
   "item.dcs_climate.food.food_kimchi":"キムチ",
@@ -634,6 +637,9 @@
   "item.dcs_climate.food.cake_cream_mango":"マンゴープリン",
   "item.dcs_climate.food.cake_cream_sesami":"ごまプリン",
 
+  "item.dcs_climate.food.wagashi_bota":"ぼたもち",
+  "item.dcs_climate.food.wagashi_kusa":"草餅",
+
   "item.dcs_climate.food.porridge_simple":"お粥",
   "item.dcs_climate.food.porridge_milk":"ミルク粥",
   "item.dcs_climate.food.porridge_saffron":"サフランのリゾット",
@@ -710,10 +716,13 @@
   "item.dcs_climate.food.stew_tomyumgai":"トムヤムガイ",
   "item.dcs_climate.food.stew_bakkutteh":"肉骨茶",
   "item.dcs_climate.food.stew_offal":"ホルモンスープ",
-  "item.dcs_climate.food.stew_miso_tofu":"豆腐の味噌汁",
-  "item.dcs_climate.food.stew_miso_eggplant":"ナスの味噌汁",
-  "item.dcs_climate.food.stew_miso_mushroom":"キノコの味噌汁",
-  "item.dcs_climate.food.stew_miso_pork":"豚汁",
+
+  "item.dcs_climate.food.wabowl_miso_tofu":"豆腐の味噌汁",
+  "item.dcs_climate.food.wabowl_miso_age":"油揚げの味噌汁",
+  "item.dcs_climate.food.wabowl_miso_eggplant":"ナスの味噌汁",
+  "item.dcs_climate.food.wabowl_miso_mushroom":"キノコの味噌汁",
+  "item.dcs_climate.food.wabowl_miso_pork":"豚汁",
+  "item.dcs_climate.food.wabowl_shiruko":"おしるこ",
 
   "item.dcs_climate.food.curry_vegi":"サンバル",
   "item.dcs_climate.food.curry_beans":"ダールカレー",
