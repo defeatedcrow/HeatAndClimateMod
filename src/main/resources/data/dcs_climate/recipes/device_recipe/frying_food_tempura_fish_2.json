@@ -2,7 +2,7 @@
   "type": "dcs_climate:device_recipe",
   "group": "frying",
   "result": {
-    "item": "dcs_climate:food/deepfry_croquette_fish",
+    "item": "dcs_climate:food/tempura_fish",
     "count": 1
   },
   "result_fluid": {
@@ -14,19 +14,7 @@
       "item": "minecraft:tropical_fish"
     },
     {
-      "tag": "forge:crops/potato"
-    },
-    {
-      "tag": "forge:ingredients/milks"
-    },
-    {
-      "tag": "forge:crops/herbs"
-    },
-    {
       "tag": "forge:ingredients/batter"
-    },
-    {
-      "tag": "forge:foods/bread"
     }
   ],
   "input_fluids": [

@@ -544,6 +544,9 @@ public class CookingRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.MILKS), Ingredient.of(TagDC.ItemTag.CROP_SESAMI), Ingredient.of(TagDC.ItemTag.SUGARS),
 						Ingredient.of(TagDC.ItemTag.GELATINE)));
 
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.TACO_QUESADILLA.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()), Ingredient.of(TagDC.ItemTag.CHEESE)));
+
 		// ingredients
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_MASA.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				ImmutableList.of(FluidTags.WATER.location().toString()),
@@ -733,6 +736,10 @@ public class CookingRecipes {
 				200), boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.SMELT), Ingredient.of(TagDC.ItemTag.BATTER)));
 
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.FRYING, new ItemStack(FoodInit.TEMPURA_FISH.get(), 1), ItemStack.EMPTY, 0, new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(),
+				200), boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+				ImmutableList.of(Ingredient.of(Items.TROPICAL_FISH), Ingredient.of(TagDC.ItemTag.BATTER)));
+
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DEEPFRY_TONKATSU.get(), 1), ItemStack.EMPTY, 0, new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(),
 				200), boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.RAW_PORK), Ingredient.of(TagDC.ItemTag.BATTER), Ingredient.of(TagDC.ItemTag.BREAD)));
@@ -770,12 +777,6 @@ public class CookingRecipes {
 				new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
 				boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.FISH_WHITE), Ingredient.of(Tags.Items.CROPS_POTATO), Ingredient.of(TagDC.ItemTag.MILKS),
-						Ingredient.of(TagDC.ItemTag.CROP_HERBS), Ingredient.of(TagDC.ItemTag.BATTER), Ingredient.of(TagDC.ItemTag.BREAD)));
-
-		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DEEPFRY_CROQUETTE_FISH.get(), 1), ItemStack.EMPTY, 0,
-				new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
-				boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
-				ImmutableList.of(Ingredient.of(Items.TROPICAL_FISH), Ingredient.of(Tags.Items.CROPS_POTATO), Ingredient.of(TagDC.ItemTag.MILKS),
 						Ingredient.of(TagDC.ItemTag.CROP_HERBS), Ingredient.of(TagDC.ItemTag.BATTER), Ingredient.of(TagDC.ItemTag.BREAD)));
 
 		// tea

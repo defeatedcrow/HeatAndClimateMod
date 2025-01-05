@@ -3,6 +3,7 @@ package defeatedcrow.hac.food.material.entity;
 import java.util.Optional;
 
 import defeatedcrow.hac.api.climate.ClimateSupplier;
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
@@ -122,20 +123,24 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 					this.kill();
 				}
 			} else if (getItem().getItem() == FoodInit.BREAD_TORTILLA_BAKED_ITEM.get() && player.getItemInHand(hand).is(TagDC.ItemTag.CHEESE)) {
-				FoodEntityBase food = FoodInit.QUESADILLA.get().create(getLevel());
-				food.setPos(this.getEyePosition());
-				food.setDeltaMovement(0D, 0D, 0D);
-				food.setYRot(this.yRotO);
-				food.setOwner(this.getOwner());
-				player.getItemInHand(hand).split(1);
-				ItemStack quesadilla = new ItemStack(FoodInit.TACO_QUESADILLA.get());
-				int taste = DCUtil.getFoodTaste(player.getItemInHand(hand)) + DCUtil.getFoodTaste(getItem());
-				DCUtil.setFoodTaste(quesadilla, taste);
-				food.setItem(quesadilla);
-				if (level.addFreshEntity(food)) {
-					level.playSound(null, this, SoundEvents.LAVA_EXTINGUISH, SoundSource.AMBIENT, 1.0F, 1.0F);
-					this.kill();
-					level.gameEvent(food, GameEvent.ENTITY_PLACE, food.getPosition(0F));
+				ClimateSupplier supplier = new ClimateSupplier(level, blockPosition());
+				IClimate clm = supplier.get();
+				if (clm.getHeat().getTier() > DCHeatTier.BOIL.getTier()) {
+					FoodEntityBase food = FoodInit.QUESADILLA.get().create(getLevel());
+					food.setPos(this.getEyePosition());
+					food.setDeltaMovement(0D, 0D, 0D);
+					food.setYRot(this.yRotO);
+					food.setOwner(this.getOwner());
+					player.getItemInHand(hand).split(1);
+					ItemStack quesadilla = new ItemStack(FoodInit.TACO_QUESADILLA.get());
+					int taste = DCUtil.getFoodTaste(player.getItemInHand(hand)) + DCUtil.getFoodTaste(getItem());
+					DCUtil.setFoodTaste(quesadilla, taste);
+					food.setItem(quesadilla);
+					if (level.addFreshEntity(food)) {
+						level.playSound(null, this, SoundEvents.LAVA_EXTINGUISH, SoundSource.AMBIENT, 1.0F, 1.0F);
+						this.kill();
+						level.gameEvent(food, GameEvent.ENTITY_PLACE, food.getPosition(0F));
+					}
 				}
 			} else if (getItem().getItem() == FoodInit.STICK_CHICKEN_COOKED.get()) {
 				if (player.getLevel().dimension() == Level.NETHER) {

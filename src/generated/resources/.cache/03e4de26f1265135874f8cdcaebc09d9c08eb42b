@@ -1,4 +1,4 @@
-// 1.19.2	2025-01-04T23:30:16.5246272	Tags for minecraft:item
+// 1.19.2	2025-01-05T22:25:04.0291868	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
@@ -394,7 +394,7 @@ a2365aef1cbc334b1fe049e17958cd44325cacca data/forge/tags/items/fertilizer_advanc
 72cd747584a66cb67794090324650af393390836 data/forge/tags/items/foods/cooked_beef.json
 119310121e87f0a58d088ee738e9a7322cc95541 data/forge/tags/items/foods/cooked_chicken.json
 e2dd92f6b67f2992b259b3435fba67ac775aba2e data/forge/tags/items/foods/cooked_cod.json
-48a35a6ccb492aee2ac5c3e71fdb170bd7e46b56 data/forge/tags/items/foods/cooked_fishes.json
+7315cb943516d9c26281e01767b9a496082b4707 data/forge/tags/items/foods/cooked_fishes.json
 7d02f6fd2593e6084fddd325b9f7ac9c81e52498 data/forge/tags/items/foods/cooked_meats.json
 92025ee32776efe5f9457fdbba726e7159264af5 data/forge/tags/items/foods/cooked_mutton.json
 26292180db0e97bf10babe9b376372f834911de8 data/forge/tags/items/foods/cooked_offal.json

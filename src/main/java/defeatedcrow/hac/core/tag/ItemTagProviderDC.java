@@ -379,7 +379,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.ALL_RAW_MEAT).addTags(TagDC.ItemTag.RAW_MEAT, TagDC.ItemTag.RAW_PLANT_MEAT);
 
 		tag(TagDC.ItemTag.COOKED_FISH).addTags(TagDC.ItemTag.COOKED_COD, TagDC.ItemTag.COOKED_SALMON)
-				.add(FoodInit.STICK_FISH_COOKED.get(), FoodInit.GRILLED_WHITE_FISH.get(), FoodInit.DEEPFRY_CROQUETTE_FISH.get());
+				.add(FoodInit.STICK_FISH_COOKED.get(), FoodInit.GRILLED_WHITE_FISH.get(), FoodInit.TEMPURA_FISH.get());
 
 		tag(Tags.Items.BONES).addTags(TagDC.ItemTag.BONE_COW, TagDC.ItemTag.BONE_PIG, TagDC.ItemTag.BONE_CHICKEN);
 
