@@ -3,6 +3,7 @@ package defeatedcrow.hac.food.event;
 import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Container;
@@ -25,7 +26,7 @@ public class CraftingFoodEvent {
 					if (check.is(TagDC.ItemTag.HAC_SEASONING)) {
 						taste += 3;
 					} else {
-						taste += IFoodTaste.getFoodTaste(check);
+						taste += DCUtil.getFoodTaste(check);
 					}
 					if (check.getTag() != null && check.getTag().contains(TagKeyDC.UNSAFE)) {
 						if (check.getTag().getBoolean(TagKeyDC.UNSAFE)) {
@@ -62,7 +63,7 @@ public class CraftingFoodEvent {
 				if (check.is(TagDC.ItemTag.HAC_SEASONING)) {
 					taste += 3;
 				} else {
-					taste += IFoodTaste.getFoodTaste(check);
+					taste += DCUtil.getFoodTaste(check);
 				}
 			}
 		}

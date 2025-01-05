@@ -87,7 +87,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 	private int lastClimate = 0;
 
 	public void updateClimate(Level level, BlockPos pos) {
-		if (count <= 0) {
+		if (count < 0) {
 			count = 19;
 
 			if (heatTime <= 0 && receivingHeat != DCHeatTier.NORMAL) {

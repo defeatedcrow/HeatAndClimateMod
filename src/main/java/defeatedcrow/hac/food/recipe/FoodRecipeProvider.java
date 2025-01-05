@@ -174,6 +174,52 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_bread", has(TagDC.ItemTag.BREAD))
 				.save(cons, "dcs_climate:food/sandwich_salmon_2");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.TACO_MEAT.get(), 1)
+				.requires(Ingredient.of(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()))
+				.requires(Ingredient.of(TagDC.ItemTag.COOKED_MEAT))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS))
+				.requires(Ingredient.of(TagDC.ItemTag.SALSA))
+				.unlockedBy("has_tortilla", has(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()))
+				.save(cons, "dcs_climate:food/tortilla_meat_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TACO_AVOCADO.get(), 1)
+				.requires(Ingredient.of(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_AVOCADO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TOMATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_PAPRIKA))
+				.requires(Ingredient.of(TagDC.ItemTag.SALSA))
+				.unlockedBy("has_tortilla", has(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()))
+				.save(cons, "dcs_climate:food/tortilla_avocado_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TACO_AVOCADO.get(), 1)
+				.requires(Ingredient.of(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_AVOCADO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TOMATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_CACTUS))
+				.requires(Ingredient.of(TagDC.ItemTag.SALSA))
+				.unlockedBy("has_tortilla", has(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()))
+				.save(cons, "dcs_climate:food/tortilla_avocado_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TACO_FISH.get(), 1)
+				.requires(Ingredient.of(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()))
+				.requires(Ingredient.of(TagDC.ItemTag.COOKED_FISH))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
+				.requires(Ingredient.of(TagDC.ItemTag.SALSA))
+				.requires(Ingredient.of(TagDC.ItemTag.MAYONNAISE))
+				.unlockedBy("has_tortilla", has(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()))
+				.save(cons, "dcs_climate:food/tortilla_fish_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TACO_FISH.get(), 1)
+				.requires(Ingredient.of(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()))
+				.requires(Ingredient.of(TagDC.ItemTag.COOKED_FISH))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_AVOCADO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
+				.requires(Ingredient.of(TagDC.ItemTag.SALSA))
+				.requires(Ingredient.of(TagDC.ItemTag.MAYONNAISE))
+				.unlockedBy("has_tortilla", has(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()))
+				.save(cons, "dcs_climate:food/tortilla_fish_2");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.PIZZA_TOMATO_RAW_ITEM.get(), 1)
 				.requires(Ingredient.of(FoodInit.BREAD_FLAT_RAW_ITEM.get()))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_TOMATO))

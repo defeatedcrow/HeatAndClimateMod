@@ -30,6 +30,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.Hopper;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 
 public class FoodEntityBase extends ObjectEntityBaseDC {
 
@@ -102,8 +103,8 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 	private int copyTaste(ItemStack ret, ItemStack in) {
 		if (!ret.isEmpty() && !in.isEmpty() && in.getTag() != null) {
 			if (in.getItem() instanceof IFoodTaste && ret.getItem() instanceof IFoodTaste) {
-				int taste = ((IFoodTaste) in.getItem()).getTaste(in);
-				((IFoodTaste) ret.getItem()).setTaste(ret, taste);
+				int taste = DCUtil.getFoodTaste(in);
+				DCUtil.setFoodTaste(ret, taste);
 				return taste;
 			}
 		}
@@ -112,19 +113,37 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 
 	@Override
 	public InteractionResult interact(Player player, InteractionHand hand) {
-		if (!getItem().isEmpty() && player != null && player.getItemInHand(hand).is(TagDC.ItemTag.CUTLERY)) {
-			ItemStack food = getItem().copy();
-			if (food.isEdible()) {
-				player.eat(getLevel(), food);
-				getLevel().playSound(player, this.getX(), this.getY(), this.getZ(), SoundEvents.CHICKEN_EGG, SoundSource.PLAYERS, 0.5F, getLevel().random.nextFloat() * 0.2F + 0.8F);
-				this.kill();
+		if (!getItem().isEmpty() && player != null) {
+			if (player.getItemInHand(hand).is(TagDC.ItemTag.CUTLERY)) {
+				ItemStack food = getItem().copy();
+				if (food.isEdible()) {
+					player.eat(getLevel(), food);
+					getLevel().playSound(player, this.getX(), this.getY(), this.getZ(), SoundEvents.CHICKEN_EGG, SoundSource.PLAYERS, 0.5F, getLevel().random.nextFloat() * 0.2F + 0.8F);
+					this.kill();
+				}
+			} else if (getItem().getItem() == FoodInit.BREAD_TORTILLA_BAKED_ITEM.get() && player.getItemInHand(hand).is(TagDC.ItemTag.CHEESE)) {
+				FoodEntityBase food = FoodInit.QUESADILLA.get().create(getLevel());
+				food.setPos(this.getEyePosition());
+				food.setDeltaMovement(0D, 0D, 0D);
+				food.setYRot(this.yRotO);
+				food.setOwner(this.getOwner());
+				player.getItemInHand(hand).split(1);
+				ItemStack quesadilla = new ItemStack(FoodInit.TACO_QUESADILLA.get());
+				int taste = DCUtil.getFoodTaste(player.getItemInHand(hand)) + DCUtil.getFoodTaste(getItem());
+				DCUtil.setFoodTaste(quesadilla, taste);
+				food.setItem(quesadilla);
+				if (level.addFreshEntity(food)) {
+					level.playSound(null, this, SoundEvents.LAVA_EXTINGUISH, SoundSource.AMBIENT, 1.0F, 1.0F);
+					this.kill();
+					level.gameEvent(food, GameEvent.ENTITY_PLACE, food.getPosition(0F));
+				}
+			} else if (getItem().getItem() == FoodInit.STICK_CHICKEN_COOKED.get()) {
+				if (player.getLevel().dimension() == Level.NETHER) {
+					ClimateCore.proxy.triggerAdvancement(player, "main/nether_chicken");
+				}
 			}
 		}
-		if (!getItem().isEmpty() && getItem().getItem() == FoodInit.STICK_CHICKEN_COOKED.get() && player != null) {
-			if (player.getLevel().dimension() == Level.NETHER) {
-				ClimateCore.proxy.triggerAdvancement(player, "main/nether_chicken");
-			}
-		}
+
 		return super.interact(player, hand);
 	}
 

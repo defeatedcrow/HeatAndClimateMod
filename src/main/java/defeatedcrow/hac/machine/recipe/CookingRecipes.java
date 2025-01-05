@@ -772,6 +772,12 @@ public class CookingRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.FISH_WHITE), Ingredient.of(Tags.Items.CROPS_POTATO), Ingredient.of(TagDC.ItemTag.MILKS),
 						Ingredient.of(TagDC.ItemTag.CROP_HERBS), Ingredient.of(TagDC.ItemTag.BATTER), Ingredient.of(TagDC.ItemTag.BREAD)));
 
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DEEPFRY_CROQUETTE_FISH.get(), 1), ItemStack.EMPTY, 0,
+				new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+				boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+				ImmutableList.of(Ingredient.of(Items.TROPICAL_FISH), Ingredient.of(Tags.Items.CROPS_POTATO), Ingredient.of(TagDC.ItemTag.MILKS),
+						Ingredient.of(TagDC.ItemTag.CROP_HERBS), Ingredient.of(TagDC.ItemTag.BATTER), Ingredient.of(TagDC.ItemTag.BREAD)));
+
 		// tea
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.TEA, new ItemStack(FoodInit.DRINK_APPLE.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, cool,
 				ImmutableList.of(FluidTags.WATER.location().toString()),

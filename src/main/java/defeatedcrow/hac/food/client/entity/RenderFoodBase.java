@@ -31,11 +31,16 @@ public class RenderFoodBase<T extends FoodEntityBase> extends EntityRenderer<T> 
 		return BreadRoundItem.BREAD_ROUND_RAW.getTextureLocation();
 	}
 
+	public EntityModel<T> getModel(T entity, IEntityItem item) {
+		return model;
+	}
+
 	@Override
 	public void render(T entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		if (entity != null) {
 			Item item = entity.getItem().getItem();
 			if (item instanceof IEntityItem && ((IEntityItem) item).getRenderData(item) != null) {
+				EntityModel<T> model2 = getModel(entity, (IEntityItem) item);
 				EntityRenderData data = ((IEntityItem) item).getRenderData(item);
 				ResourceLocation tex = data.getTextureLocation();
 				float f1 = data.getModelScale();
@@ -46,9 +51,9 @@ public class RenderFoodBase<T extends FoodEntityBase> extends EntityRenderer<T> 
 				poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - yaw));
 				poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
 				poseStack.scale(f1, f1, f1);
-				model.setupAnim(entity, 180.0F - yaw, partialTicks, packedLight, f1, f2);
-				VertexConsumer vertex = buffer.getBuffer(model.renderType(tex));
-				this.model.renderToBuffer(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+				model2.setupAnim(entity, 180.0F - yaw, partialTicks, packedLight, f1, f2);
+				VertexConsumer vertex = buffer.getBuffer(model2.renderType(tex));
+				model2.renderToBuffer(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 				poseStack.popPose();
 			}
 		}

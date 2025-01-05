@@ -84,11 +84,11 @@ public enum TierDC implements Tier {
 	public TagKey<Block> getTag() {
 		switch (this) {
 		case AGATE:
-			return BlockTags.NEEDS_IRON_TOOL;
+			return BlockTags.NEEDS_DIAMOND_TOOL;
 		case FLINT:
 			return BlockTags.NEEDS_STONE_TOOL;
 		case BRASS:
-			return BlockTags.NEEDS_DIAMOND_TOOL;
+			return BlockTags.NEEDS_IRON_TOOL;
 		case STEEL:
 			return BlockTags.NEEDS_DIAMOND_TOOL;
 		default:

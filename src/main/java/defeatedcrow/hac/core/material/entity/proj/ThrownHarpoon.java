@@ -112,18 +112,25 @@ public class ThrownHarpoon extends AbstractArrow {
 	@Override
 	protected void onHitEntity(EntityHitResult res) {
 		Entity entity = res.getEntity();
+		Entity owner = this.getOwner();
 		float f = 5.0F;
 		if (!getItem().isEmpty() && getItem().getItem() instanceof HarpoonItem harpoon) {
 			f += harpoon.tier.getAttackDamageBonus();
-			if (entity instanceof LivingEntity livingentity) {
+			if (entity instanceof LivingEntity living) {
 				float f2 = 1F;
-				f2 += EnchantmentHelper.getDamageBonus(getItem(), livingentity.getMobType());
+				f2 += EnchantmentHelper.getDamageBonus(getItem(), living.getMobType());
 				f *= f2;
+
+				// ワープさせる
+				if (owner != null && this.isAcceptibleReturnOwner()) {
+					living.teleportTo(owner.getX(), owner.getY() + 0.015D, owner.getZ());
+					if (this.level.isClientSide) {
+						living.yOld = living.getY();
+					}
+				}
 			}
 
-			Entity owner = this.getOwner();
 			DamageSource damagesource = DamageSource.trident(this, owner == null ? this : owner);
-
 			SoundEvent soundevent = SoundEvents.TRIDENT_HIT;
 			if (entity.hurt(damagesource, f)) {
 				if (entity.getType() == EntityType.ENDERMAN) {
@@ -132,13 +139,6 @@ public class ThrownHarpoon extends AbstractArrow {
 
 				if (entity instanceof LivingEntity) {
 					LivingEntity liv = (LivingEntity) entity;
-					// ワープさせる
-					if (this.isAcceptibleReturnOwner()) {
-						liv.teleportTo(owner.getX(), owner.getY() + 0.015D, owner.getZ());
-						if (this.level.isClientSide) {
-							liv.yOld = liv.getY();
-						}
-					}
 
 					if (owner instanceof LivingEntity) {
 						EnchantmentHelper.doPostHurtEffects(liv, owner);

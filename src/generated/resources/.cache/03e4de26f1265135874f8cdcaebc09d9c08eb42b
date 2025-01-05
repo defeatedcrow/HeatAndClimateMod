@@ -1,4 +1,4 @@
-// 1.19.2	2024-12-31T19:46:48.3057225	Tags for minecraft:item
+// 1.19.2	2025-01-04T23:30:16.5246272	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
@@ -146,7 +146,7 @@ b3fc13c49ceba790a6bc75eccbfe847875ff9770 data/dcs_climate/tags/items/meals.json
 364c5462a2a6589abdbfc986a88b3c40f777ba18 data/dcs_climate/tags/items/meals/bread.json
 ff0f240b7985a775d14f744a4053d1510e5437ec data/dcs_climate/tags/items/meals/bread/pizza.json
 0ea2d1892912990f9a0c558a986fd734baa959e0 data/dcs_climate/tags/items/meals/bread/plane.json
-8d8c863de08d8f937c70d8be740beb85f122c0cc data/dcs_climate/tags/items/meals/bread/sandwich.json
+9a0164d8fca827ec3d3e2123daa57d4eab1f7b19 data/dcs_climate/tags/items/meals/bread/sandwich.json
 f1f402ff9d0fe77400e94b25851c4a3a9254fa03 data/dcs_climate/tags/items/meals/casserole.json
 7e4e9fb2eacb8dacabc935cbc73aa3e138f1b4ee data/dcs_climate/tags/items/meals/curry.json
 a2292d583acc1fc9804dceff1c14f44b73161c62 data/dcs_climate/tags/items/meals/drinks.json
@@ -394,9 +394,10 @@ a2365aef1cbc334b1fe049e17958cd44325cacca data/forge/tags/items/fertilizer_advanc
 72cd747584a66cb67794090324650af393390836 data/forge/tags/items/foods/cooked_beef.json
 119310121e87f0a58d088ee738e9a7322cc95541 data/forge/tags/items/foods/cooked_chicken.json
 e2dd92f6b67f2992b259b3435fba67ac775aba2e data/forge/tags/items/foods/cooked_cod.json
-1fb249ff5c310cfe691ad621465c5ef53d1308da data/forge/tags/items/foods/cooked_fishes.json
-9face1e125eeaa249ce87ddd10e2ff76012fed5e data/forge/tags/items/foods/cooked_meats.json
+48a35a6ccb492aee2ac5c3e71fdb170bd7e46b56 data/forge/tags/items/foods/cooked_fishes.json
+7d02f6fd2593e6084fddd325b9f7ac9c81e52498 data/forge/tags/items/foods/cooked_meats.json
 92025ee32776efe5f9457fdbba726e7159264af5 data/forge/tags/items/foods/cooked_mutton.json
+26292180db0e97bf10babe9b376372f834911de8 data/forge/tags/items/foods/cooked_offal.json
 e0f0a00ac0a0bb6be332292160ee171f8fac6320 data/forge/tags/items/foods/cooked_pork.json
 9f77948b8bcc8ff9ce8d4f192f7156c733795ab7 data/forge/tags/items/foods/cooked_rabbit.json
 606f7f87c60718be3fdbf8a3491ad3fb2edf83b4 data/forge/tags/items/foods/cooked_salmon.json

@@ -21,6 +21,7 @@ import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -31,6 +32,8 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -58,7 +61,7 @@ public class AdvTooltipEvent {
 				if (unsafe) {
 					list.add(Component.translatable("dcs.tip.unsafe_food").withStyle(ChatFormatting.RED));
 				} else {
-					int taste = IFoodTaste.getFoodTaste(target) + 3;
+					int taste = DCUtil.getFoodTaste(target) + 3;
 					if (taste > 0) {
 						MutableComponent tasteName = Component.translatable("dcs.tip.foodtaste." + taste);
 						tasteName.withStyle(ChatFormatting.YELLOW);
@@ -82,6 +85,13 @@ public class AdvTooltipEvent {
 			float regC = DCItemUtil.getItemResistantData(target, true);
 			if (regH != 0 || regC != 0) {
 				MutableComponent ret = Component.translatable("dcs.tip.resistance").append(": " + String.format("%.1f", regH) + "/" + String.format("%.1f", regC));
+				list.add(ret);
+			}
+
+			if (target.getItem() instanceof TieredItem tool) {
+				Tier tier = tool.getTier();
+				int a = tier.getLevel();
+				MutableComponent ret = Component.literal("Tier").append(": " + a);
 				list.add(ret);
 			}
 

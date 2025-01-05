@@ -9,6 +9,7 @@ import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.climate.DCTimeHelper;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.BlockPos;
@@ -45,7 +46,7 @@ public class InertElementItem extends MagicMaterialItemDC {
 		if (tag.contains(TagKeyDC.ENERGY)) {
 			amo = tag.getInt(TagKeyDC.ENERGY);
 		}
-		return Math.round(amo * 13.0F / 1000F);
+		return Math.round(amo * 13.0F / getMaxEXP());
 	}
 
 	@Override
@@ -55,7 +56,7 @@ public class InertElementItem extends MagicMaterialItemDC {
 		if (tag.contains(TagKeyDC.ENERGY)) {
 			amo = tag.getInt(TagKeyDC.ENERGY);
 		}
-		float f = Math.max(0.0F, amo / 1000F);
+		float f = Math.max(0.0F, 1.0F * amo / getMaxEXP());
 		return Mth.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
 	}
 
@@ -65,7 +66,7 @@ public class InertElementItem extends MagicMaterialItemDC {
 		if (getColor().isBlue)
 			return player.isInWater();
 		if (getColor().isBlack)
-			return player.blockPosition().getY() < 0 && !player.getLevel().canSeeSky(player.blockPosition().above()) && player.getLevel().getLightEmission(player.blockPosition()) < 5.0F;
+			return player.blockPosition().getY() < 0 && !player.getLevel().canSeeSky(player.blockPosition().above()) && player.getLevel().getLightEmission(player.blockPosition()) < 8.0F;
 		if (getColor().isRed)
 			return new ClimateSupplier(player.getLevel(), player.blockPosition()).get().getHeat().getTier() > 3;
 		if (getColor().isGreen) {
@@ -91,10 +92,10 @@ public class InertElementItem extends MagicMaterialItemDC {
 			amo = tag.getInt(TagKeyDC.ENERGY);
 		}
 		amo += e;
-		amo = Math.min(amo, 1000);
+		amo = Math.min(amo, getMaxEXP());
 		tag.putInt(TagKeyDC.ENERGY, amo);
 		stack.setTag(tag);
-		return amo == 1000;
+		return amo >= getMaxEXP();
 
 	}
 
@@ -110,6 +111,10 @@ public class InertElementItem extends MagicMaterialItemDC {
 		if (getColor().isGreen)
 			return MagicInit.ELEMENT_GREEN;
 		return () -> Items.AIR;
+	}
+
+	public static int getMaxEXP() {
+		return ConfigCommonBuilder.INSTANCE.vMagicElementalEXP.get();
 	}
 
 	@Override

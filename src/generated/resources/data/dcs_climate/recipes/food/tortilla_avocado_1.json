@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/bread_tortilla_baked"
+    },
+    {
+      "tag": "forge:crops/avocado"
+    },
+    {
+      "tag": "forge:crops/tomato"
+    },
+    {
+      "tag": "forge:crops/paprika"
+    },
+    {
+      "tag": "forge:ingredients/salsa"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/taco_avocado"
+  }
+}

@@ -4,6 +4,7 @@
     "#forge:foods/cooked_pork",
     "#forge:foods/cooked_chicken",
     "#forge:foods/cooked_mutton",
-    "#forge:foods/cooked_rabbit"
+    "#forge:foods/cooked_rabbit",
+    "#forge:foods/cooked_offal"
   ]
 }

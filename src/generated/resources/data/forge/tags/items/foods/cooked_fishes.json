@@ -2,6 +2,8 @@
   "values": [
     "#forge:foods/cooked_cod",
     "#forge:foods/cooked_salmon",
-    "dcs_climate:food/stick_fish_cooked"
+    "dcs_climate:food/stick_fish_cooked",
+    "dcs_climate:food/grilled_white_fish",
+    "dcs_climate:food/deepfry_croquette_fish"
   ]
 }

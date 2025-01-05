@@ -15,7 +15,6 @@ import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.block.ContainerTileBlock;
 import defeatedcrow.hac.core.material.block.EntityBlockDC;
 import defeatedcrow.hac.core.material.block.InventoryDC;
-import defeatedcrow.hac.core.material.block.OwnableContainerBaseTileDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
@@ -146,9 +145,9 @@ public class DisplayShelfBlock extends ContainerTileBlock {
 			}
 
 			ret.add(getMainDrop());
-			if (tile instanceof OwnableContainerBaseTileDC base) {
+			if (tile instanceof ItemDisplayTile base) {
 				// 中身をその場に散らかす
-				InventoryDC inv = base.getInventory();
+				InventoryDC inv = base.inventory;
 				ret.addAll(inv.inv);
 			}
 		} else {

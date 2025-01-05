@@ -117,6 +117,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.COOKED_PORK).add(Items.COOKED_PORKCHOP, FoodInit.STICK_PORK_COOKED.get());
 		tag(TagDC.ItemTag.COOKED_CHICKEN).add(Items.COOKED_CHICKEN, FoodInit.STICK_CHICKEN_COOKED.get());
 		tag(TagDC.ItemTag.COOKED_MUTTON).add(Items.COOKED_MUTTON, FoodInit.STICK_MUTTON_COOKED.get());
+		tag(TagDC.ItemTag.COOKED_OFFAL).add(FoodInit.STICK_OFFAL_COOKED.get());
 		tag(TagDC.ItemTag.COOKED_RABBIT).add(Items.COOKED_RABBIT);
 
 		tag(TagDC.ItemTag.RAW_COD).add(Items.COD);
@@ -373,11 +374,12 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 				TagDC.ItemTag.RAW_MUTTON, TagDC.ItemTag.RAW_RABBIT, TagDC.ItemTag.FROG);
 
 		tag(TagDC.ItemTag.COOKED_MEAT).addTags(TagDC.ItemTag.COOKED_BEEF, TagDC.ItemTag.COOKED_PORK, TagDC.ItemTag.COOKED_CHICKEN,
-				TagDC.ItemTag.COOKED_MUTTON, TagDC.ItemTag.COOKED_RABBIT);
+				TagDC.ItemTag.COOKED_MUTTON, TagDC.ItemTag.COOKED_RABBIT, TagDC.ItemTag.COOKED_OFFAL);
 
 		tag(TagDC.ItemTag.ALL_RAW_MEAT).addTags(TagDC.ItemTag.RAW_MEAT, TagDC.ItemTag.RAW_PLANT_MEAT);
 
-		tag(TagDC.ItemTag.COOKED_FISH).addTags(TagDC.ItemTag.COOKED_COD, TagDC.ItemTag.COOKED_SALMON).add(FoodInit.STICK_FISH_COOKED.get());
+		tag(TagDC.ItemTag.COOKED_FISH).addTags(TagDC.ItemTag.COOKED_COD, TagDC.ItemTag.COOKED_SALMON)
+				.add(FoodInit.STICK_FISH_COOKED.get(), FoodInit.GRILLED_WHITE_FISH.get(), FoodInit.DEEPFRY_CROQUETTE_FISH.get());
 
 		tag(Tags.Items.BONES).addTags(TagDC.ItemTag.BONE_COW, TagDC.ItemTag.BONE_PIG, TagDC.ItemTag.BONE_CHICKEN);
 

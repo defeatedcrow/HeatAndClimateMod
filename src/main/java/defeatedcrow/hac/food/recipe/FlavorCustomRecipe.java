@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
@@ -66,8 +67,8 @@ public class FlavorCustomRecipe extends CustomRecipe {
 		if (!meal.isEmpty() && !seasoning.isEmpty() && list.size() == 2) {
 			IFoodTaste food = (IFoodTaste) meal.getItem();
 			meal.setCount(1);
-			int ret = food.getTaste(meal) > 0 ? 2 : 1;
-			food.setTaste(meal, ret);
+			int ret = DCUtil.getFoodTaste(seasoning) > 0 ? 2 : 1;
+			DCUtil.setFoodTaste(meal, ret);
 			return meal;
 		} else {
 			return ItemStack.EMPTY;

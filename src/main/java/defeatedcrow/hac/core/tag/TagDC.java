@@ -855,6 +855,7 @@ public class TagDC {
 		public static final TagKey<Item> COOKED_CHICKEN = itemTag("foods/cooked_chicken");
 		public static final TagKey<Item> COOKED_MUTTON = itemTag("foods/cooked_mutton");
 		public static final TagKey<Item> COOKED_RABBIT = itemTag("foods/cooked_rabbit");
+		public static final TagKey<Item> COOKED_OFFAL = itemTag("foods/cooked_offal");
 		public static final TagKey<Item> COOKED_MEAT = itemTag("foods/cooked_meats");
 
 		public static final TagKey<Item> RAW_COD = itemTag("ingredients/raw_cod");

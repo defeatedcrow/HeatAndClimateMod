@@ -627,6 +627,11 @@
   "item.dcs_climate.food.sandwich_salad":"Salad Sandwich",
   "item.dcs_climate.food.sandwich_salmon":"Salmon Sandwich",
 
+  "item.dcs_climate.food.taco_meat":"Meat Taco",
+  "item.dcs_climate.food.taco_avocado":"Avocado Taco",
+  "item.dcs_climate.food.taco_fish":"Fish Taco",
+  "item.dcs_climate.food.taco_quesadilla":"Quesadilla",
+
   "item.dcs_climate.food.cake_butter":"Butter Cake",
   "item.dcs_climate.food.cake_berry":"Berry Cake",
   "item.dcs_climate.food.cake_chocolate":"Chocolate Cake",
@@ -1020,7 +1025,7 @@
   "item.dcs_climate.main.dress_maid_brown":"Maid Dress(Brown)",
 
   "item.dcs_climate.main.hair_flower_aster":"Hair Accessory(Garden Mum)",
-  "item.dcs_climate.main.hair_flower_pyrethrum":"Hair Accessory(除虫菊)",
+  "item.dcs_climate.main.hair_flower_pyrethrum":"Hair Accessory(Pyrethrum)",
   "item.dcs_climate.main.hair_flower_camellia":"Hair Accessory(Camellia)",
   "item.dcs_climate.main.hair_flower_schima":"Hair Accessory(Schima)",
   "item.dcs_climate.main.hair_flower_heath":"Hair Accessory(Heath)",

@@ -15,6 +15,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -88,7 +89,9 @@ public class OreBlockGemDC extends LayerStoneBlock {
 
 	@Override
 	public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
-		return silkTouchLevel == 0 && getMainDrop().is(Tags.Items.GEMS) ? UniformInt.of(2, 5).sample(randomSource) : 0;
+		int f = fortuneLevel + 1;
+		int tier = getMainDrop().getRarity() == Rarity.COMMON || getMainDrop().getRarity() == Rarity.UNCOMMON ? 1 : 2;
+		return silkTouchLevel == 0 && getMainDrop().is(Tags.Items.GEMS) ? UniformInt.of(2, 5).sample(randomSource) * f * tier : 0;
 	}
 
 }

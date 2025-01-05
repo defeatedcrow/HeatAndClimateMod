@@ -10,7 +10,6 @@ import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
 import defeatedcrow.hac.core.tag.TagDC;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.TagKey;
@@ -57,20 +56,11 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 		return BlockType.ITEM;
 	}
 
-	// @Override
-	// public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-	// int taste = getTaste(item) + 3;
-	// MutableComponent tasteName = Component.translatable("dcs.tip.foodtaste." + taste);
-	// tasteName.withStyle(ChatFormatting.YELLOW);
-	// list.add(tasteName);
-	// super.appendHoverText(item, level, list, flag);
-	// }
-
 	/* FoodDC */
 
 	@Override
 	public int getTaste(ItemStack item) {
-		if (DCUtil.isEmpty(item))
+		if (item.isEmpty())
 			return 0;
 		if (item.getTag() != null && item.getTag().contains(TagKeyDC.TASTE)) {
 			int taste = item.getTag().getInt(TagKeyDC.TASTE);
@@ -94,7 +84,7 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 
 	@Override
 	public void setTaste(ItemStack item, int i) {
-		if (!DCUtil.isEmpty(item)) {
+		if (!item.isEmpty()) {
 			int taste = Mth.clamp(i, -2, 2);
 			CompoundTag tag = item.getOrCreateTag();
 			tag.putInt(TagKeyDC.TASTE, taste);
@@ -120,15 +110,6 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 			return 64;
 		}
 	}
-
-	// @Override
-	// public ItemStack finishUsingItem(ItemStack item, Level level, LivingEntity liv) {
-	// int taste = getTaste(item);
-	// if (taste == 2 && !level.isClientSide) {
-	// liv.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
-	// }
-	// return super.finishUsingItem(item, level, liv);
-	// }
 
 	@Override
 	public boolean isSeasoning() {

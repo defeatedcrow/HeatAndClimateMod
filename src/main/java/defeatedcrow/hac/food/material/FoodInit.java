@@ -126,6 +126,7 @@ import defeatedcrow.hac.food.material.entity.PlateLegsItem;
 import defeatedcrow.hac.food.material.entity.PlateMeatItem;
 import defeatedcrow.hac.food.material.entity.PlatePumpkinItem;
 import defeatedcrow.hac.food.material.entity.PlateStuffedVegiItem;
+import defeatedcrow.hac.food.material.entity.QuesadillaItem;
 import defeatedcrow.hac.food.material.entity.RamenItem;
 import defeatedcrow.hac.food.material.entity.SaladItem;
 import defeatedcrow.hac.food.material.entity.SandwichItem;
@@ -137,6 +138,7 @@ import defeatedcrow.hac.food.material.entity.StickCornItem;
 import defeatedcrow.hac.food.material.entity.StickFishItem;
 import defeatedcrow.hac.food.material.entity.StickMeatItem;
 import defeatedcrow.hac.food.material.entity.StickVegiItem;
+import defeatedcrow.hac.food.material.entity.TacoItem;
 import defeatedcrow.hac.food.material.entity.TartItem;
 import defeatedcrow.hac.food.material.entity.TempuraFishItem;
 import defeatedcrow.hac.food.material.entity.TempuraIkatenItem;
@@ -193,7 +195,11 @@ public class FoodInit {
 	public static final RegistryObject<EntityType<FoodEntityBase>> BREAD_SAUSAGE = CoreInit.ENTITIES.register("bread_sausage",
 			() -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC).sized(0.375F, 0.2F).updateInterval(5).build("bread_sausage"));
 	public static final RegistryObject<EntityType<FoodEntityBase>> SANDWICH = CoreInit.ENTITIES.register("sandwich",
-			() -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC).sized(0.5F, 0.25F).updateInterval(5).build("sandwich"));
+			() -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC).sized(0.4F, 0.25F).updateInterval(5).build("sandwich"));
+	public static final RegistryObject<EntityType<FoodEntityBase>> TACO = CoreInit.ENTITIES.register("taco",
+			() -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC).sized(0.4F, 0.2F).updateInterval(5).build("taco"));
+	public static final RegistryObject<EntityType<FoodEntityBase>> QUESADILLA = CoreInit.ENTITIES.register("quesadilla",
+			() -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC).sized(0.4F, 0.1F).updateInterval(5).build("quesadilla"));
 
 	public static final RegistryObject<EntityType<FoodEntityBase>> PIZZA = CoreInit.ENTITIES.register("pizza",
 			() -> EntityType.Builder.<FoodEntityBase>of(FoodEntityBase::new, MobCategory.MISC).sized(0.5F, 0.1F).updateInterval(5).build("pizza"));
@@ -384,6 +390,11 @@ public class FoodInit {
 	public static final RegistryObject<Item> SANDWICH_EGG_ITEM = regItem("sandwich_egg", () -> new SandwichItem("sandwich_egg", 6, 0.4F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
 	public static final RegistryObject<Item> SANDWICH_SALAD_ITEM = regItem("sandwich_salad", () -> new SandwichItem("sandwich_salad", 6, 0.4F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
 	public static final RegistryObject<Item> SANDWICH_SALMON_ITEM = regItem("sandwich_salmon", () -> new SandwichItem("sandwich_salmon", 6, 0.4F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
+
+	public static final RegistryObject<Item> TACO_MEAT = regItem("taco_meat", () -> new TacoItem("taco_meat", 16, 0.5F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
+	public static final RegistryObject<Item> TACO_AVOCADO = regItem("taco_avocado", () -> new TacoItem("taco_avocado", 14, 0.5F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
+	public static final RegistryObject<Item> TACO_FISH = regItem("taco_fish", () -> new TacoItem("taco_fish", 15, 0.5F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
+	public static final RegistryObject<Item> TACO_QUESADILLA = regItem("taco_quesadilla", () -> new QuesadillaItem("taco_quesadilla", 8, 0.5F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
 
 	public static final RegistryObject<Item> PIZZA_TOMATO_RAW_ITEM = regItem("pizza_tomato_raw", () -> new PizzaItem("pizza_tomato_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> PIZZA_TOMATO_BAKED_ITEM = regItem("pizza_tomato_baked", () -> new PizzaItem("pizza_tomato_baked", 8, 0.5F, TagDC.ItemTag.HAC_PIZZA));

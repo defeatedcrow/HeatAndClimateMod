@@ -67,14 +67,14 @@ public class WeatherChecker {
 			if (sunCountMap.getOrDefault(dimName, 0) != 0)
 				sunCountMap.put(dimName, 0);
 			// DCLogger.debugLog("dim " + dim.registry() + " raining");
-		} else if (drought > 0) {
+		} else if (drought >= 0) {
 			if (flag) {
 				sunTime++;
 				if (sunTime > drought) {
 					// DCLogger.debugLog("dim " + dim.registry() + " drought");
 				}
 				if (sunTime > drought * 2) {
-					sunTime = DCUtil.rand.nextInt(sunTime);
+					sunTime = DCUtil.rand.nextInt(drought);
 				}
 				sunCountMap.put(dimName, sunTime);
 			}

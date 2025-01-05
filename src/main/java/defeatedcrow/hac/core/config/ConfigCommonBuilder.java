@@ -43,6 +43,7 @@ public class ConfigCommonBuilder {
 	public final ForgeConfigSpec.IntValue vTimberLimit;
 	public final ForgeConfigSpec.BooleanValue enTimberBreakLeaves;
 	public final ForgeConfigSpec.BooleanValue enFlavorText;
+	public final ForgeConfigSpec.IntValue vMagicElementalEXP;
 
 	// hardmode
 	public final ForgeConfigSpec.BooleanValue enInferno;
@@ -207,6 +208,10 @@ public class ConfigCommonBuilder {
 		this.enFlavorText = builder
 				.comment("Enables displaying flavor text for items.")
 				.define("Enable Item Flavor Text", true);
+
+		this.vMagicElementalEXP = builder
+				.comment("Sets the EXP required to grow inactive color elements.")
+				.defineInRange("Magic Element Grow EXP", 1000, 1, 10000);
 
 		builder.pop();
 

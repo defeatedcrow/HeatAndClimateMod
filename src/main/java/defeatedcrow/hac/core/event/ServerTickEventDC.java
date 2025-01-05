@@ -15,14 +15,13 @@ public class ServerTickEventDC {
 	@SubscribeEvent
 	public static void onTickEvent(TickEvent.LevelTickEvent event) {
 		if (event.level != null) {
-			ResourceLocation dim = event.level.dimension().registry();
-			int time = DCTimeHelper.realSecond();
-			if (time != lastSec) {
-				lastSec = time;
-
-				// 10秒ごと
-				if (!event.level.isClientSide && event.side == LogicalSide.SERVER && event.level instanceof ServerLevel server) {
-					if (time % 9 == 0) {
+			if (!event.level.isClientSide && event.side == LogicalSide.SERVER && event.level instanceof ServerLevel server) {
+				ResourceLocation dim = event.level.dimension().registry();
+				int time = DCTimeHelper.realSecond();
+				if (time % 5 == 0) {
+					// 5秒ごと
+					if (time != lastSec) {
+						lastSec = time;
 						WeatherChecker.INSTANCE.setWeather(server);
 					}
 				}

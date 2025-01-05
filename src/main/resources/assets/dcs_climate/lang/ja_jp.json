@@ -625,6 +625,11 @@
   "item.dcs_climate.food.sandwich_salad":"肉と野菜のサンド",
   "item.dcs_climate.food.sandwich_salmon":"サーモンサンド",
 
+  "item.dcs_climate.food.taco_meat":"ミートタコス",
+  "item.dcs_climate.food.taco_avocado":"アボカドのタコス",
+  "item.dcs_climate.food.taco_fish":"フィッシュタコス",
+  "item.dcs_climate.food.taco_quesadilla":"ケサディーヤ",
+
   "item.dcs_climate.food.cake_butter":"バターケーキ",
   "item.dcs_climate.food.cake_berry":"ベリーショートケーキ",
   "item.dcs_climate.food.cake_chocolate":"チョコレートケーキ",
