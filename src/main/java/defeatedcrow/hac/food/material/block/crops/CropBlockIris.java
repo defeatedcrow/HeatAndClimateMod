@@ -16,22 +16,37 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.food.material.FoodInit;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class CropBlockIris extends ClimateCropBaseBlock {
 
 	public CropBlockIris(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5, DCState.WILD);
+		def.add(DCState.STAGE6, DCState.WILD);
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext col) {
+		int stage = DCState.getInt(state, DCState.STAGE6);
+		if (stage == 0) {
+			return Block.box(2.0D, 0.0D, 2.0D, 14.0D, 2.0D, 14.0D);
+		} else if (getTier() != CropTier.RARE) {
+			return Block.box(2.0D, 0.0D, 2.0D, 14.0D, 8.0D, 14.0D);
+		}
+		return super.getShape(state, level, pos, col);
 	}
 
 	/* model */
@@ -44,16 +59,22 @@ public class CropBlockIris extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/iris_0")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/iris_1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/iris_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/iris_" + getSpeciesName(cropTier) + "_3")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/iris_" + getSpeciesName(cropTier) + "_f")));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/iris_0")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/iris_1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/iris_2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/iris_" + getSpeciesName(cropTier) + "_3")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/iris_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/iris_d")));
 	}
 
 	@Override
 	public List<String> getModelNameSuffix() {
-		return ImmutableList.of("0", "1", "2", "3", "4");
+		return ImmutableList.of("0", "1", "2", "3", "4", "5");
+	}
+
+	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("stage6=0", "stage6=1", "stage6=2", "stage6=3", "stage6=4", "stage6=5");
 	}
 
 	@Override
@@ -71,6 +92,11 @@ public class CropBlockIris extends ClimateCropBaseBlock {
 	@Override
 	public CropGrowType getGrowType(CropTier t) {
 		return CropGrowType.SINGLE;
+	}
+
+	@Override
+	public int getContinuousRegistance(CropTier t) {
+		return 4;
 	}
 
 	@Override

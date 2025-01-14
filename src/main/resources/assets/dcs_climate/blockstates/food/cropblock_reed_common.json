@@ -1,34 +1,40 @@
 {
   "variants": {
-    "double=false,stage5=0": {
+    "double=false,stage6=0": {
       "model": "dcs_climate:block/food/cropblock_reed_common_false_0"
     },
-    "double=false,stage5=1": {
+    "double=false,stage6=1": {
       "model": "dcs_climate:block/food/cropblock_reed_common_false_1"
     },
-    "double=false,stage5=2": {
+    "double=false,stage6=2": {
       "model": "dcs_climate:block/food/cropblock_reed_common_false_2"
     },
-    "double=false,stage5=3": {
+    "double=false,stage6=3": {
       "model": "dcs_climate:block/food/cropblock_reed_common_false_3"
     },
-    "double=false,stage5=4": {
+    "double=false,stage6=4": {
       "model": "dcs_climate:block/food/cropblock_reed_common_false_4"
     },
-    "double=true,stage5=0": {
+    "double=false,stage6=5": {
+      "model": "dcs_climate:block/food/cropblock_reed_common_false_5"
+    },
+    "double=true,stage6=0": {
       "model": "dcs_climate:block/food/cropblock_reed_common_true_0"
     },
-    "double=true,stage5=1": {
+    "double=true,stage6=1": {
       "model": "dcs_climate:block/food/cropblock_reed_common_true_1"
     },
-    "double=true,stage5=2": {
+    "double=true,stage6=2": {
       "model": "dcs_climate:block/food/cropblock_reed_common_true_2"
     },
-    "double=true,stage5=3": {
+    "double=true,stage6=3": {
       "model": "dcs_climate:block/food/cropblock_reed_common_true_3"
     },
-    "double=true,stage5=4": {
+    "double=true,stage6=4": {
       "model": "dcs_climate:block/food/cropblock_reed_common_true_4"
+    },
+    "double=true,stage6=5": {
+      "model": "dcs_climate:block/food/cropblock_reed_common_true_5"
     }
   }
 }

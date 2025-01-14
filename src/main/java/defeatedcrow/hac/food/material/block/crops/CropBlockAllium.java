@@ -29,19 +29,19 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 
 	public CropBlockAllium(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5, DCState.WILD);
+		def.add(DCState.STAGE6, DCState.WILD);
 	}
 
 	/* 収穫物の後に花が咲くタイプ */
 
 	@Override
 	public CropStage getCurrentStage(BlockState state) {
-		int stage = DCState.getInt(state, DCState.STAGE5);
+		int stage = DCState.getInt(state, DCState.STAGE6);
 		if (stage == 0) {
 			return CropStage.GROUND;
 		} else if (stage == 3) {
@@ -55,7 +55,7 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(2)).setValue(DCState.WILD, true);
 	}
 
 	@Override
@@ -81,10 +81,10 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 		} else if (stage == CropStage.FLOWER) {
 			return false;
 		} else {
-			int age = DCState.getInt(thisState, DCState.STAGE5);
+			int age = DCState.getInt(thisState, DCState.STAGE6);
 			if (age >= 0 && age < 4) {
 				age++;
-				BlockState next = thisState.setValue(DCState.STAGE5, age);
+				BlockState next = thisState.setValue(DCState.STAGE6, age);
 				return world.setBlock(pos, next, 3);
 			}
 		}
@@ -111,17 +111,23 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_1")),
 				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_2")),
 				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_f")));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
 	public List<String> getModelNameSuffix() {
-		return ImmutableList.of("0", "1", "2", "3", "4");
+		return ImmutableList.of("0", "1", "2", "3", "4", "5");
 	}
 
 	@Override
 	public JsonModelDC getItemModel() {
 		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_allium_" + getSpeciesName(cropTier)));
+	}
+
+	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("stage6=0", "stage6=1", "stage6=2", "stage6=3", "stage6=4", "stage6=5");
 	}
 
 	/* ICropData */
@@ -134,6 +140,11 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 	@Override
 	public CropGrowType getGrowType(CropTier t) {
 		return CropGrowType.SINGLE;
+	}
+
+	@Override
+	public int getContinuousRegistance(CropTier t) {
+		return 5;
 	}
 
 	@Override

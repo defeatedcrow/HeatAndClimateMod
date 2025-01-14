@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/crop/morningglory_bindweed_d"
+  },
+  "parent": "dcs_climate:block/dcs_cross"
+}

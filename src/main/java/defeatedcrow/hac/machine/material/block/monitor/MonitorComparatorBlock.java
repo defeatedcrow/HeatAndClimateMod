@@ -57,7 +57,7 @@ public class MonitorComparatorBlock extends EntityBlockDC implements ITileNBTHol
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.METAL).requiresCorrectToolForDrops().strength(2.0F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.METAL).requiresCorrectToolForDrops().strength(2.0F, 540.0F).noOcclusion();
 	}
 
 	@Override
@@ -158,7 +158,7 @@ public class MonitorComparatorBlock extends EntityBlockDC implements ITileNBTHol
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.NONE;
+		return ToolType.PICKAXE;
 	}
 
 	@Override

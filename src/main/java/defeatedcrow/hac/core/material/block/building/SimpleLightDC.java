@@ -46,7 +46,7 @@ public class SimpleLightDC extends BlockDC {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(3.0F, 6.0F).noOcclusion().lightLevel((state) -> {
+		return BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.STONE).strength(3.0F, 6.0F).noOcclusion().lightLevel((state) -> {
 			return 15;
 		});
 	}
@@ -93,7 +93,7 @@ public class SimpleLightDC extends BlockDC {
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.NONE;
+		return ToolType.PICKAXE;
 	}
 
 	@Override

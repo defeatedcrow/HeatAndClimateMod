@@ -38,12 +38,12 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 
 	public CropBlockMallow(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, Boolean.valueOf(false)).setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, Boolean.valueOf(false)).setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.DOUBLE, DCState.STAGE5, DCState.WILD);
+		def.add(DCState.DOUBLE, DCState.STAGE6, DCState.WILD);
 	}
 
 	/* double */
@@ -63,7 +63,7 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 	protected boolean mayPlaceOn(BlockState under, BlockGetter level, BlockPos pos) {
 		if (under != null && under.getBlock() == this) {
 			BlockState avobe = level.getBlockState(pos.above());
-			return DCState.getBool(avobe, DCState.DOUBLE) && DCState.getInt(under, DCState.STAGE5) > 1;
+			return DCState.getBool(avobe, DCState.DOUBLE) && DCState.getInt(under, DCState.STAGE6) > 1;
 		}
 		return super.mayPlaceOn(under, level, pos);
 	}
@@ -75,7 +75,7 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getHarvestedState(BlockState state) {
-		return getTier() != CropTier.RARE ? state.setValue(DCState.STAGE5, 0) : state.setValue(DCState.STAGE5, 2);
+		return getTier() != CropTier.RARE ? state.setValue(DCState.STAGE6, 0) : state.setValue(DCState.STAGE6, 2);
 	}
 
 	@Override
@@ -88,11 +88,11 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 		} else if (DCState.getBool(thisState, DCState.DOUBLE)) {
 			return false;
 		} else {
-			int age = DCState.getInt(thisState, DCState.STAGE5);
+			int age = DCState.getInt(thisState, DCState.STAGE6);
 			BlockState upper = world.getBlockState(pos.above());
 			if (age == 1 && upper.getBlock() == Blocks.AIR) {
 				if (upper.getBlock() == Blocks.AIR) {
-					BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(DCState.STAGE5, 2);
+					BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(DCState.STAGE6, 2);
 					world.setBlock(pos, up, 3);
 				}
 			}
@@ -100,11 +100,11 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 				age++;
 				if (age > 1) {
 					if (upper.getBlock() == Blocks.AIR || upper.getBlock() == this) {
-						BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(DCState.STAGE5, age);
+						BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(DCState.STAGE6, age);
 						world.setBlock(pos.above(), up, 3);
 					}
 				}
-				BlockState next = thisState.setValue(DCState.STAGE5, age);
+				BlockState next = thisState.setValue(DCState.STAGE6, age);
 				return world.setBlock(pos, next, 3);
 			}
 		}
@@ -113,7 +113,7 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 
 	@Override
 	public boolean canHarvest(BlockState thisState) {
-		return getTier() == CropTier.RARE || getTier() == CropTier.EPIC ? DCState.getInt(thisState, DCState.STAGE5) > 2 : super.canHarvest(thisState);
+		return getTier() == CropTier.RARE || getTier() == CropTier.EPIC ? DCState.getInt(thisState, DCState.STAGE6) > 2 : super.canHarvest(thisState);
 	}
 
 	@Override
@@ -148,21 +148,29 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_f")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_c")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_f")),
-			new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_c")));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_c")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_d")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_c")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/mallow_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
 	public List<String> getModelNameSuffix() {
-		return ImmutableList.of("false_0", "false_1", "false_2", "false_3", "false_4", "true_0", "true_1", "true_2", "true_3", "true_4");
+		return ImmutableList.of("false_0", "false_1", "false_2", "false_3", "false_4", "false_5", "true_0", "true_1", "true_2", "true_3", "true_4", "true_5");
+	}
+
+	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("double=false,stage6=0", "double=false,stage6=1", "double=false,stage6=2", "double=false,stage6=3", "double=false,stage6=4", "double=false,stage6=5",
+				"double=true,stage6=0", "double=true,stage6=1", "double=true,stage6=2", "double=true,stage6=3", "double=true,stage6=4", "double=true,stage6=5");
 	}
 
 	@Override
@@ -180,6 +188,16 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 	@Override
 	public CropGrowType getGrowType(CropTier t) {
 		return CropGrowType.DOUBLE;
+	}
+
+	@Override
+	public int getContinuousRegistance(CropTier t) {
+		switch (t) {
+		case WILD:
+			return 2;
+		default:
+			return 3;
+		}
 	}
 
 	@Override

@@ -34,11 +34,17 @@ public interface ICropData {
 
 	List<String> getGeneratedBiomeTag(CropTier tier);
 
+	int getContinuousRegistance(CropTier tier);
+
 	default List<String> getAvoidBiomeTag(CropTier tier) {
 		return Lists.newArrayList();
 	}
 
 	String getSpeciesName(CropTier tier);
+
+	default boolean isAquaticPlant(CropTier tier) {
+		return false;
+	}
 
 	public enum SoilType {
 		FARMLAND,

@@ -26,12 +26,12 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 
 	public CropBlockCereals(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5, DCState.WILD);
+		def.add(DCState.STAGE6, DCState.WILD);
 	}
 
 	/* model */
@@ -44,16 +44,22 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_0")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_1")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_2")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_" + getSpeciesName(cropTier) + "_f")),
-			new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_" + getSpeciesName(cropTier) + "_c")));
+				new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_0")),
+				new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_1")),
+				new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_2")),
+				new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_" + getSpeciesName(cropTier) + "_c")),
+				new JsonModelDC("dcs_climate:block/dcs_crop", ImmutableMap.of("crop", "dcs_climate:block/crop/cereals_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
 	public List<String> getModelNameSuffix() {
-		return ImmutableList.of("0", "1", "2", "3", "4");
+		return ImmutableList.of("0", "1", "2", "3", "4", "5");
+	}
+
+	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("stage6=0", "stage6=1", "stage6=2", "stage6=3", "stage6=4", "stage6=5");
 	}
 
 	@Override
@@ -71,6 +77,11 @@ public class CropBlockCereals extends ClimateCropBaseBlock {
 	@Override
 	public CropGrowType getGrowType(CropTier t) {
 		return CropGrowType.SINGLE;
+	}
+
+	@Override
+	public int getContinuousRegistance(CropTier t) {
+		return 5;
 	}
 
 	@Override

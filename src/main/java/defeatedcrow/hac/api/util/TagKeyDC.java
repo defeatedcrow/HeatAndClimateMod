@@ -5,6 +5,7 @@ public class TagKeyDC {
 	public static final String TASTE = "dcs.taste";
 	public static final String AGE = "dcs.age";
 	public static final String MAX_AGE = "dcs.max_age";
+	public static final String YEAR = "dcs.year";
 	public static final String OWNER_NAME = "dcs.owner_name";
 	public static final String OWNER_UUID = "dcs.owner_uuid";
 	public static final String ITEM = "dcs.item";
@@ -27,6 +28,8 @@ public class TagKeyDC {
 	public static final String POS_Z = "dcs.pos_z";
 	public static final String DIRECTION = "dcs.dir";
 	public static final String UNSAFE = "dcs.unsafe_food";
+	public static final String CROP = "dcs.crop_type";
+	public static final String CROP_CONTINUOUS = "dcs.crop_continuous";
 
 	public static final String getTankKey(int id) {
 		return "dcs.tank_" + id;

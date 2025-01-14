@@ -34,24 +34,27 @@ public class CropBlockOrchid_Epiphyte extends CropBaseEpiphyte {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/orchid_0")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/orchid_1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/orchid_" + getSpeciesName(cropTier) + "_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/orchid_" + getSpeciesName(cropTier) + "_3")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/orchid_" + getSpeciesName(cropTier) + "_f")),
-			new JsonModelDC("dcs_climate:block/dcs_crop_epiphyte", ImmutableMap.of("crop", "dcs_climate:block/crop/orchid_0", "side", "dcs_climate:block/crop/orchid_side_0")),
-			new JsonModelDC("dcs_climate:block/dcs_crop_epiphyte", ImmutableMap.of("crop", "dcs_climate:block/crop/orchid_1", "side", "dcs_climate:block/crop/orchid_side_1")),
-			new JsonModelDC("dcs_climate:block/dcs_crop_epiphyte", ImmutableMap.of("crop", "dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_2", "side",
-				"dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_side_2")),
-			new JsonModelDC("dcs_climate:block/dcs_crop_epiphyte", ImmutableMap.of("crop", "dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_3", "side",
-				"dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_side_3")),
-			new JsonModelDC("dcs_climate:block/dcs_crop_epiphyte", ImmutableMap.of("crop", "dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_f", "side",
-				"dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_side_f")));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/orchid_0")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/orchid_1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_3")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_d")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_epiphyte", ImmutableMap.of("crop", "dcs_climate:block/crop/orchid_0", "side", "dcs_climate:block/crop/orchid_side_0")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_epiphyte", ImmutableMap.of("crop", "dcs_climate:block/crop/orchid_1", "side", "dcs_climate:block/crop/orchid_side_1")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_epiphyte", ImmutableMap.of("crop", "dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_2", "side",
+						"dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_side_2")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_epiphyte", ImmutableMap.of("crop", "dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_3", "side",
+						"dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_side_3")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_epiphyte", ImmutableMap.of("crop", "dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_f", "side",
+						"dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_side_f")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_epiphyte", ImmutableMap.of("crop", "dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_d", "side",
+						"dcs_climate:block/crop/orchid_" + getSpeciesName(cropTier) + "_side_d")));
 	}
 
 	@Override
 	public List<String> getModelNameSuffix() {
-		return ImmutableList.of("0", "1", "2", "3", "f", "side_0", "side_1", "side_2", "side_3", "side_f");
+		return ImmutableList.of("0", "1", "2", "3", "f", "d", "side_0", "side_1", "side_2", "side_3", "side_f", "side_d");
 	}
 
 	@Override
@@ -64,6 +67,11 @@ public class CropBlockOrchid_Epiphyte extends CropBaseEpiphyte {
 	@Override
 	public CropType getFamily() {
 		return CropType.ORCHID;
+	}
+
+	@Override
+	public int getContinuousRegistance(CropTier t) {
+		return 5;
 	}
 
 	@Override

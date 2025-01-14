@@ -13,15 +13,15 @@
         "OR": [
           {
             "up": "true",
-            "stage5": 0
+            "stage6": 0
           },
           {
             "up": "true",
-            "stage5": 1
+            "stage6": 1
           },
           {
             "up": "true",
-            "stage5": 2
+            "stage6": 2
           }
         ]
       }
@@ -32,7 +32,7 @@
       },
       "when": {
         "up": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -41,7 +41,16 @@
       },
       "when": {
         "up": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_rare_top_d"
+      },
+      "when": {
+        "up": "true",
+        "stage6": 5
       }
     },
     {
@@ -54,7 +63,7 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 0
+        "stage6": 0
       }
     },
     {
@@ -67,7 +76,7 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 1
+        "stage6": 1
       }
     },
     {
@@ -80,7 +89,7 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 2
+        "stage6": 2
       }
     },
     {
@@ -93,7 +102,7 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -106,7 +115,20 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_rare_d"
+      },
+      "when": {
+        "up": "false",
+        "north": "false",
+        "east": "false",
+        "south": "false",
+        "west": "false",
+        "stage6": 5
       }
     },
     {
@@ -117,15 +139,15 @@
         "OR": [
           {
             "north": "true",
-            "stage5": 0
+            "stage6": 0
           },
           {
             "north": "true",
-            "stage5": 1
+            "stage6": 1
           },
           {
             "north": "true",
-            "stage5": 2
+            "stage6": 2
           }
         ]
       }
@@ -136,7 +158,7 @@
       },
       "when": {
         "north": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -145,7 +167,16 @@
       },
       "when": {
         "north": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_rare_side_d"
+      },
+      "when": {
+        "north": "true",
+        "stage6": 5
       }
     },
     {
@@ -157,15 +188,15 @@
         "OR": [
           {
             "east": "true",
-            "stage5": 0
+            "stage6": 0
           },
           {
             "east": "true",
-            "stage5": 1
+            "stage6": 1
           },
           {
             "east": "true",
-            "stage5": 2
+            "stage6": 2
           }
         ]
       }
@@ -177,7 +208,7 @@
       },
       "when": {
         "east": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -187,7 +218,17 @@
       },
       "when": {
         "east": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_rare_side_d",
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "stage6": 5
       }
     },
     {
@@ -199,15 +240,15 @@
         "OR": [
           {
             "south": "true",
-            "stage5": 0
+            "stage6": 0
           },
           {
             "south": "true",
-            "stage5": 1
+            "stage6": 1
           },
           {
             "south": "true",
-            "stage5": 2
+            "stage6": 2
           }
         ]
       }
@@ -219,7 +260,7 @@
       },
       "when": {
         "south": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -229,7 +270,17 @@
       },
       "when": {
         "south": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_rare_side_d",
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "stage6": 5
       }
     },
     {
@@ -241,15 +292,15 @@
         "OR": [
           {
             "west": "true",
-            "stage5": 0
+            "stage6": 0
           },
           {
             "west": "true",
-            "stage5": 1
+            "stage6": 1
           },
           {
             "west": "true",
-            "stage5": 2
+            "stage6": 2
           }
         ]
       }
@@ -261,7 +312,7 @@
       },
       "when": {
         "west": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -271,7 +322,17 @@
       },
       "when": {
         "west": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_gourd_rare_side_d",
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "stage6": 5
       }
     }
   ]

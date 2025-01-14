@@ -48,9 +48,9 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 
 	public CropDataCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(FoodInit.CROP_AL_WILD.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.CROP.getLocation(), 21, 18, 134, 123)
-			.addPadding(0, 0, 10, 8)
-			.build();
+		background = guiHelper.drawableBuilder(PluginTexDC.CROP.getLocation(), 21, 19, 134, 127)
+				.addPadding(0, 0, 10, 8)
+				.build();
 	}
 
 	@Override
@@ -84,36 +84,36 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 		// mutation
 		Optional<Block> wild = recipe.getMutationTarget(CropTier.WILD);
 		if (wild.isPresent())
-			builder.addSlot(RecipeIngredientRole.OUTPUT, 27, 88).addItemStack(new ItemStack(wild.get()));
+			builder.addSlot(RecipeIngredientRole.OUTPUT, 27, 95).addItemStack(new ItemStack(wild.get()));
 
 		Optional<Block> common = recipe.getMutationTarget(CropTier.COMMON);
 		if (common.isPresent())
-			builder.addSlot(RecipeIngredientRole.OUTPUT, 60, 88).addItemStack(new ItemStack(common.get()));
+			builder.addSlot(RecipeIngredientRole.OUTPUT, 60, 95).addItemStack(new ItemStack(common.get()));
 
 		Optional<Block> rare = recipe.getMutationTarget(CropTier.RARE);
 		if (rare.isPresent())
-			builder.addSlot(RecipeIngredientRole.OUTPUT, 81, 88).addItemStack(new ItemStack(rare.get()));
+			builder.addSlot(RecipeIngredientRole.OUTPUT, 81, 95).addItemStack(new ItemStack(rare.get()));
 
 		Optional<Block> epic = recipe.getMutationTarget(CropTier.EPIC);
 		if (epic.isPresent())
-			builder.addSlot(RecipeIngredientRole.OUTPUT, 102, 88).addItemStack(new ItemStack(epic.get()));
+			builder.addSlot(RecipeIngredientRole.OUTPUT, 102, 95).addItemStack(new ItemStack(epic.get()));
 
 		List<DCHeatTier> heats = recipe.getSuitableTemp(tier);
 		for (DCHeatTier heat : heats) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 42 + heat.getID() * 6, 34).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
-				new HeatTierRenderer(6, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 42 + heat.getID() * 6, 41).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
+					new HeatTierRenderer(6, 3));
 		}
 
 		List<DCHumidity> hums = recipe.getSuitableHum(tier);
 		for (DCHumidity hum : hums) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 42 + hum.getID() * 21, 40).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
-				new HumidityRenderer(21, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 42 + hum.getID() * 21, 47).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
+					new HumidityRenderer(21, 3));
 		}
 
 		List<DCAirflow> airs = recipe.getSuitableAir(tier);
 		for (DCAirflow air : airs) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 42 + air.getID() * 21, 46).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW,
-				new AirflowRenderer(21, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 42 + air.getID() * 21, 53).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW,
+					new AirflowRenderer(21, 3));
 		}
 	}
 
@@ -125,7 +125,11 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 
 		List<SoilType> soils = recipe.getSoilTypes(tier);
 
-		if (mouseX > 16 && mouseX < 25 && mouseY > 105 && mouseY < 114) {
+		if (mouseX > 25 && mouseX < 80 && mouseY > 30 && mouseY < 38) {
+			list.add(Component.translatable("dcs.gui.jei.crop_continuous"));
+		}
+
+		if (mouseX > 16 && mouseX < 25 && mouseY > 113 && mouseY < 122) {
 			list.add(Component.translatable("dcs.gui.jei.crop_soil"));
 			list.add(Component.translatable("dcs.gui.jei.crop_tip2"));
 		}
@@ -137,31 +141,31 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 			}
 
 		if (soils.contains(SoilType.DIRT))
-			if (mouseX > 52 && mouseX < 68 && mouseY > 53 && mouseY < 69) {
+			if (mouseX > 52 && mouseX < 68 && mouseY > 60 && mouseY < 76) {
 				list.add(Component.translatable("dcs.gui.jei.crop_soil"));
 				list.add(Component.translatable("dcs.gui.jei.crop_dirt"));
 			}
 
 		if (soils.contains(SoilType.SAND))
-			if (mouseX > 69 && mouseX < 85 && mouseY > 53 && mouseY < 69) {
+			if (mouseX > 69 && mouseX < 85 && mouseY > 60 && mouseY < 76) {
 				list.add(Component.translatable("dcs.gui.jei.crop_soil"));
 				list.add(Component.translatable("dcs.gui.jei.crop_sand"));
 			}
 
 		if (soils.contains(SoilType.MUD))
-			if (mouseX > 86 && mouseX < 102 && mouseY > 53 && mouseY < 69) {
+			if (mouseX > 86 && mouseX < 102 && mouseY > 60 && mouseY < 76) {
 				list.add(Component.translatable("dcs.gui.jei.crop_soil"));
 				list.add(Component.translatable("dcs.gui.jei.crop_mud"));
 			}
 
 		if (soils.contains(SoilType.WATER))
-			if (mouseX > 103 && mouseX < 119 && mouseY > 53 && mouseY < 69) {
+			if (mouseX > 103 && mouseX < 119 && mouseY > 60 && mouseY < 76) {
 				list.add(Component.translatable("dcs.gui.jei.crop_soil"));
 				list.add(Component.translatable("dcs.gui.jei.crop_water"));
 			}
 
 		if (soils.contains(SoilType.LOGS))
-			if (mouseX > 103 && mouseX < 119 && mouseY > 53 && mouseY < 69) {
+			if (mouseX > 103 && mouseX < 119 && mouseY > 60 && mouseY < 76) {
 				list.add(Component.translatable("dcs.gui.jei.crop_soil"));
 				list.add(Component.translatable("dcs.gui.jei.crop_epiphyte"));
 			}
@@ -194,7 +198,7 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 			c = ChatFormatting.DARK_AQUA.getColor();
 			com.append(" EPIC");
 		}
-		font.draw(stack, com, 65, 21, c);
+		font.draw(stack, com, 65, 20, c);
 
 		boolean common = ConfigCommonBuilder.INSTANCE.enCommonCrop.get() && recipe.getTier() == CropTier.COMMON;
 		MutableComponent text4 = Component.translatable("dcs.gui.jei.habitat");
@@ -206,20 +210,20 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 		} else {
 			text4.append(" ").append(Component.translatable("dcs.gui.jei.no_habitat"));
 		}
-		font.draw(stack, text4, 25, 72, 0xFF000000);
+		font.draw(stack, text4, 25, 80, 0xFF000000);
 
 		int chance1 = CropTier.COMMON.getMutationChance();
 		String text = chance1 + "%";
-		font.draw(stack, text, 60, 106, 0xFF000000);
+		font.draw(stack, text, 60, 113, 0xFF000000);
 
 		int chance2 = CropTier.RARE.getMutationChance();
 		String text2 = chance2 + "%";
-		font.draw(stack, text2, 81, 106, 0xFF000000);
+		font.draw(stack, text2, 81, 113, 0xFF000000);
 
 		if (recipe.getMutationTarget(CropTier.EPIC).isPresent()) {
 			int chance3 = CropTier.EPIC.getMutationChance();
 			String text3 = chance3 + "%";
-			font.draw(stack, text3, 102, 106, 0xFF000000);
+			font.draw(stack, text3, 102, 113, 0xFF000000);
 		}
 
 		RenderSystem.setShaderTexture(0, PluginTexDC.CROP.getLocation());
@@ -228,18 +232,28 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 		List<SoilType> soils = recipe.getSoilTypes(tier);
 		for (SoilType soil : soils) {
 			if (soil == SoilType.FARMLAND) {
-				drawTexturedModalRect(stack.last().pose(), 35, 53, 0, 182, 16, 16);
+				drawTexturedModalRect(stack.last().pose(), 35, 60, 0, 182, 16, 16);
 			} else if (soil == SoilType.DIRT) {
-				drawTexturedModalRect(stack.last().pose(), 52, 53, 16, 182, 16, 16);
+				drawTexturedModalRect(stack.last().pose(), 52, 60, 16, 182, 16, 16);
 			} else if (soil == SoilType.SAND) {
-				drawTexturedModalRect(stack.last().pose(), 69, 53, 32, 182, 16, 16);
+				drawTexturedModalRect(stack.last().pose(), 69, 60, 32, 182, 16, 16);
 			} else if (soil == SoilType.MUD) {
-				drawTexturedModalRect(stack.last().pose(), 86, 53, 48, 182, 16, 16);
+				drawTexturedModalRect(stack.last().pose(), 86, 60, 48, 182, 16, 16);
 			} else if (soil == SoilType.WATER) {
-				drawTexturedModalRect(stack.last().pose(), 103, 53, 64, 182, 16, 16);
+				drawTexturedModalRect(stack.last().pose(), 103, 60, 64, 182, 16, 16);
 			} else if (soil == SoilType.LOGS) {
-				drawTexturedModalRect(stack.last().pose(), 103, 53, 80, 182, 16, 16);
+				drawTexturedModalRect(stack.last().pose(), 103, 60, 80, 182, 16, 16);
 			}
+		}
+
+		int registanceC = recipe.getContinuousRegistance(tier);
+		if (registanceC > 0 && ConfigCommonBuilder.INSTANCE.enContinuousFailure.get()) {
+			for (int i = 0; i < registanceC; i++) {
+				int ad = i * 9;
+				drawTexturedModalRect(stack.last().pose(), ad + 37, 29, 90 + ad, 170, 8, 8);
+			}
+		} else {
+			drawTexturedModalRect(stack.last().pose(), 26, 29, 90, 180, 55, 8);
 		}
 
 	}

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/crop/herb_lavender_d"
+  },
+  "parent": "dcs_climate:block/dcs_cross"
+}

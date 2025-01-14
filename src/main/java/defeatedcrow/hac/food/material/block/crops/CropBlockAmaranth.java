@@ -26,12 +26,12 @@ public class CropBlockAmaranth extends ClimateCropBaseBlock {
 
 	public CropBlockAmaranth(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5, DCState.WILD);
+		def.add(DCState.STAGE6, DCState.WILD);
 	}
 
 	/* model */
@@ -44,16 +44,22 @@ public class CropBlockAmaranth extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_0")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/amaranth_" + getSpeciesName(cropTier) + "_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/amaranth_" + getSpeciesName(cropTier) + "_f")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/amaranth_" + getSpeciesName(cropTier) + "_c")));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_0")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/amaranth_" + getSpeciesName(cropTier) + "_2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/amaranth_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/amaranth_" + getSpeciesName(cropTier) + "_c")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/amaranth_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
 	public List<String> getModelNameSuffix() {
-		return ImmutableList.of("0", "1", "2", "3", "4");
+		return ImmutableList.of("0", "1", "2", "3", "4", "5");
+	}
+
+	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("stage6=0", "stage6=1", "stage6=2", "stage6=3", "stage6=4", "stage6=5");
 	}
 
 	@Override
@@ -71,6 +77,16 @@ public class CropBlockAmaranth extends ClimateCropBaseBlock {
 	@Override
 	public CropGrowType getGrowType(CropTier t) {
 		return CropGrowType.SINGLE;
+	}
+
+	@Override
+	public int getContinuousRegistance(CropTier t) {
+		switch (t) {
+		case RARE:
+			return 2;
+		default:
+			return 5;
+		}
 	}
 
 	@Override

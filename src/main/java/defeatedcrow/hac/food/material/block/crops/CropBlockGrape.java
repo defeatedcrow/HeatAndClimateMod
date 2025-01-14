@@ -34,23 +34,28 @@ public class CropBlockGrape extends CropBaseVine {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_0")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_f")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_c")),
-			new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_g")),
-			new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_b")),
-			new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_n")),
-			new JsonModelDC("dcs_climate:block/dcs_crop_side_overlay", ImmutableMap.of("overlay", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_f")),
-			new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_f")),
-			new JsonModelDC("dcs_climate:block/dcs_crop_side_overlay", ImmutableMap.of("overlay", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_c")),
-			new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_c")));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_0")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_c")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_d")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_g")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_g_d")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_b")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_b_d")),
+				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_n")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_side_overlay", ImmutableMap.of("overlay", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_f")),
+				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_f")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_side_overlay", ImmutableMap.of("overlay", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_c")),
+				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_c")),
+				new JsonModelDC("dcs_climate:block/dcs_crop_side_overlay", ImmutableMap.of("overlay", "dcs_climate:block/crop/vine/grape_o_d")),
+				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_o_d")));
 	}
 
 	@Override
 	public List<String> getModelNameSuffix() {
-		return ImmutableList.of("0", "1", "2", "f", "c", "ground", "side", "top", "overlay_f", "top_f", "overlay_c", "top_c");
+		return ImmutableList.of("0", "1", "2", "f", "c", "d", "ground", "ground_d", "side", "side_d", "top", "overlay_f", "top_f", "overlay_c", "top_c", "overlay_d", "top_d");
 	}
 
 	@Override
@@ -63,6 +68,11 @@ public class CropBlockGrape extends CropBaseVine {
 	@Override
 	public CropType getFamily() {
 		return CropType.GRAPE;
+	}
+
+	@Override
+	public int getContinuousRegistance(CropTier t) {
+		return 5;
 	}
 
 	@Override

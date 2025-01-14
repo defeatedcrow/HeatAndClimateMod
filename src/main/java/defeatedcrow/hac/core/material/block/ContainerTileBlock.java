@@ -96,7 +96,7 @@ public abstract class ContainerTileBlock extends EntityBlockDC {
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.NONE;
+		return ToolType.AXE;
 	}
 
 	@Override

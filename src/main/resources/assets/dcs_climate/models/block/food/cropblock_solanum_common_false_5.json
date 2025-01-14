@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/crop/solanum_eggplant_d"
+  },
+  "parent": "dcs_climate:block/dcs_cross_under"
+}

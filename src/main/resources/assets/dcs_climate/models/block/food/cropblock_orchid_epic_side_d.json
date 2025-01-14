@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "crop": "dcs_climate:block/crop/orchid_cattleya_d",
+    "side": "dcs_climate:block/crop/orchid_cattleya_side_d"
+  },
+  "parent": "dcs_climate:block/dcs_crop_epiphyte"
+}

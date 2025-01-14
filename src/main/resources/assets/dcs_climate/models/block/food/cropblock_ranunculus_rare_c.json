@@ -1,6 +1,6 @@
 {
   "textures": {
-    "cross": "dcs_climate:block/crop/ranunculus_clematis_c"
+    "cross": "dcs_climate:block/crop/vine/ranunculus_clematis_c"
   },
   "parent": "dcs_climate:block/dcs_cross"
 }

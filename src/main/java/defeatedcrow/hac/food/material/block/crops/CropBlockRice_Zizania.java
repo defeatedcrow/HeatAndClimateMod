@@ -19,6 +19,7 @@ import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -27,22 +28,67 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class CropBlockRice_Zizania extends ClimateCropBaseBlock {
+public class CropBlockRice_Zizania extends ClimateCropBaseBlock implements SimpleWaterloggedBlock {
+
+	private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	public CropBlockRice_Zizania(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, Boolean.valueOf(false)).setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any()
+				.setValue(DCState.DOUBLE, Boolean.valueOf(false))
+				.setValue(DCState.STAGE6, Integer.valueOf(0))
+				.setValue(WATERLOGGED, false)
+				.setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.DOUBLE, DCState.STAGE5, DCState.WILD);
+		def.add(DCState.DOUBLE, DCState.STAGE6, WATERLOGGED, DCState.WILD);
+	}
+
+	/* waterlogged */
+
+	@Override
+	public BlockState updateShape(BlockState state, Direction dir, BlockState state2, LevelAccessor level, BlockPos p1, BlockPos p2) {
+		if (state.getValue(WATERLOGGED)) {
+			level.scheduleTick(p1, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+		}
+		return super.updateShape(state, dir, state2, level, p1, p2);
+	}
+
+	@Override
+	public FluidState getFluidState(BlockState state) {
+		return DCState.getBool(state, WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+	}
+
+	@Override
+	public boolean canPlaceLiquid(BlockGetter level, BlockPos pos, BlockState state, Fluid water) {
+		return !state.getValue(BlockStateProperties.WATERLOGGED) && water == Fluids.WATER;
+	}
+
+	@Override
+	public boolean placeLiquid(LevelAccessor level, BlockPos pos, BlockState state, FluidState water) {
+		if (!state.getValue(BlockStateProperties.WATERLOGGED) && water.getType() == Fluids.WATER) {
+			if (!level.isClientSide()) {
+				level.setBlock(pos, state.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(true)), 3);
+				level.scheduleTick(pos, water.getType(), water.getType().getTickDelay(level));
+			}
+			return true;
+		}
+		return false;
 	}
 
 	/* double */
@@ -62,7 +108,7 @@ public class CropBlockRice_Zizania extends ClimateCropBaseBlock {
 	protected boolean mayPlaceOn(BlockState under, BlockGetter level, BlockPos pos) {
 		if (under != null && under.getBlock() == this) {
 			BlockState avobe = level.getBlockState(pos.above());
-			return DCState.getBool(avobe, DCState.DOUBLE) && DCState.getInt(under, DCState.STAGE5) > 1;
+			return DCState.getBool(avobe, DCState.DOUBLE) && DCState.getInt(under, DCState.STAGE6) > 1;
 		}
 		return super.mayPlaceOn(under, level, pos);
 	}
@@ -87,11 +133,11 @@ public class CropBlockRice_Zizania extends ClimateCropBaseBlock {
 		} else if (DCState.getBool(thisState, DCState.DOUBLE)) {
 			return false;
 		} else {
-			int age = DCState.getInt(thisState, DCState.STAGE5);
+			int age = DCState.getInt(thisState, DCState.STAGE6);
 			BlockState upper = world.getBlockState(pos.above());
 			if (age == 1 && upper.getBlock() == Blocks.AIR) {
 				if (upper.getBlock() == Blocks.AIR) {
-					BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(DCState.STAGE5, 2);
+					BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(WATERLOGGED, false).setValue(DCState.STAGE6, 2);
 					world.setBlock(pos, up, 3);
 				}
 			}
@@ -99,11 +145,11 @@ public class CropBlockRice_Zizania extends ClimateCropBaseBlock {
 				age++;
 				if (age > 1) {
 					if (upper.getBlock() == Blocks.AIR || upper.getBlock() == this) {
-						BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(DCState.STAGE5, age);
+						BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(WATERLOGGED, false).setValue(DCState.STAGE6, age);
 						world.setBlock(pos.above(), up, 3);
 					}
 				}
-				BlockState next = thisState.setValue(DCState.STAGE5, age);
+				BlockState next = thisState.setValue(DCState.STAGE6, age);
 				return world.setBlock(pos, next, 3);
 			}
 		}
@@ -143,16 +189,24 @@ public class CropBlockRice_Zizania extends ClimateCropBaseBlock {
 				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_2")),
 				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_f")),
 				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_c")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_d")),
 				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_0")),
 				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_1")),
 				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_2")),
 				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_f")),
-				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_c")));
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_c")),
+				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/rice_zizania_d")));
 	}
 
 	@Override
 	public List<String> getModelNameSuffix() {
-		return ImmutableList.of("false_0", "false_1", "false_2", "false_3", "false_4", "true_0", "true_1", "true_2", "true_3", "true_4");
+		return ImmutableList.of("false_0", "false_1", "false_2", "false_3", "false_4", "false_5", "true_0", "true_1", "true_2", "true_3", "true_4", "true_5");
+	}
+
+	@Override
+	public List<String> getStateNameSuffix() {
+		return ImmutableList.of("double=false,stage6=0", "double=false,stage6=1", "double=false,stage6=2", "double=false,stage6=3", "double=false,stage6=4", "double=false,stage6=5",
+				"double=true,stage6=0", "double=true,stage6=1", "double=true,stage6=2", "double=true,stage6=3", "double=true,stage6=4", "double=true,stage6=5");
 	}
 
 	@Override
@@ -164,7 +218,7 @@ public class CropBlockRice_Zizania extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(2)).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
@@ -177,6 +231,16 @@ public class CropBlockRice_Zizania extends ClimateCropBaseBlock {
 	@Override
 	public CropGrowType getGrowType(CropTier t) {
 		return CropGrowType.DOUBLE;
+	}
+
+	@Override
+	public int getContinuousRegistance(CropTier t) {
+		return 5;
+	}
+
+	@Override
+	public boolean isAquaticPlant(CropTier tier) {
+		return tier == CropTier.WILD;
 	}
 
 	@Override
@@ -223,7 +287,7 @@ public class CropBlockRice_Zizania extends ClimateCropBaseBlock {
 		case COMMON:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.MUD);
 		case WILD:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.MUD, SoilType.WATER);
+			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.MUD, SoilType.SAND);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.MUD);
 		}

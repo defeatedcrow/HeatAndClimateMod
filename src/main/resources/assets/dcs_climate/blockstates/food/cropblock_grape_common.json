@@ -13,15 +13,15 @@
         "OR": [
           {
             "up": "true",
-            "stage5": 0
+            "stage6": 0
           },
           {
             "up": "true",
-            "stage5": 1
+            "stage6": 1
           },
           {
             "up": "true",
-            "stage5": 2
+            "stage6": 2
           }
         ]
       }
@@ -32,7 +32,7 @@
       },
       "when": {
         "up": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -41,7 +41,16 @@
       },
       "when": {
         "up": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_top_d"
+      },
+      "when": {
+        "up": "true",
+        "stage6": 5
       }
     },
     {
@@ -54,7 +63,7 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 0
+        "stage6": 0
       }
     },
     {
@@ -67,7 +76,7 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 1
+        "stage6": 1
       }
     },
     {
@@ -82,7 +91,7 @@
             "east": "false",
             "south": "false",
             "west": "false",
-            "stage5": 2
+            "stage6": 2
           },
           {
             "up": "false",
@@ -90,7 +99,7 @@
             "east": "false",
             "south": "false",
             "west": "false",
-            "stage5": 3
+            "stage6": 3
           },
           {
             "up": "false",
@@ -98,9 +107,22 @@
             "east": "false",
             "south": "false",
             "west": "false",
-            "stage5": 4
+            "stage6": 4
           }
         ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_d"
+      },
+      "when": {
+        "up": "false",
+        "north": "false",
+        "east": "false",
+        "south": "false",
+        "west": "false",
+        "stage6": 5
       }
     },
     {
@@ -108,8 +130,43 @@
         "model": "dcs_climate:block/food/cropblock_grape_common_ground"
       },
       "when": {
+      "OR": [
+          {
+            "down": "true",
+            "north": "true",
+            "stage6": 0
+          },
+          {
+            "down": "true",
+            "north": "true",
+            "stage6": 1
+          },
+          {
+            "down": "true",
+            "north": "true",
+            "stage6": 2
+          },
+          {
+            "down": "true",
+            "north": "true",
+            "stage6": 3
+          },
+          {
+            "down": "true",
+            "north": "true",
+            "stage6": 4
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_ground_d"
+      },
+      "when": {
         "down": "true",
-        "north": "true"
+        "north": "true",
+        "stage6": 5
       }
     },
     {
@@ -117,8 +174,43 @@
         "model": "dcs_climate:block/food/cropblock_grape_common_side"
       },
       "when": {
+      "OR": [
+          {
+            "down": "false",
+            "north": "true",
+            "stage6": 0
+          },
+          {
+            "down":"false",
+            "north": "true",
+            "stage6": 1
+          },
+          {
+            "down": "false",
+            "north": "true",
+            "stage6": 2
+          },
+          {
+            "down": "false",
+            "north": "true",
+            "stage6": 3
+          },
+          {
+            "down": "false",
+            "north": "true",
+            "stage6": 4
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_side_d"
+      },
+      "when": {
         "down": "false",
-        "north": "true"
+        "north": "true",
+        "stage6": 5
       }
     },
     {
@@ -127,7 +219,7 @@
       },
       "when": {
         "north": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -136,7 +228,16 @@
       },
       "when": {
         "north": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_overlay_d"
+      },
+      "when": {
+        "north": "true",
+        "stage6": 5
       }
     },
     {
@@ -145,8 +246,44 @@
         "y": 90
       },
       "when": {
+      "OR": [
+          {
+            "down": "true",
+            "east": "true",
+            "stage6": 0
+          },
+          {
+            "down": "true",
+            "east": "true",
+            "stage6": 1
+          },
+          {
+            "down": "true",
+            "east": "true",
+            "stage6": 2
+          },
+          {
+            "down": "true",
+            "east": "true",
+            "stage6": 3
+          },
+          {
+            "down": "true",
+            "east": "true",
+            "stage6": 4
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_ground_d",
+        "y": 90
+      },
+      "when": {
         "down": "true",
-        "east": "true"
+        "east": "true",
+        "stage6": 5
       }
     },
     {
@@ -155,8 +292,44 @@
         "y": 90
       },
       "when": {
+      "OR": [
+          {
+            "down": "false",
+            "east": "true",
+            "stage6": 0
+          },
+          {
+            "down":"false",
+            "east": "true",
+            "stage6": 1
+          },
+          {
+            "down": "false",
+            "east": "true",
+            "stage6": 2
+          },
+          {
+            "down": "false",
+            "east": "true",
+            "stage6": 3
+          },
+          {
+            "down": "false",
+            "east": "true",
+            "stage6": 4
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_side_d",
+        "y": 90
+      },
+      "when": {
         "down": "false",
-        "east": "true"
+        "east": "true",
+        "stage6": 5
       }
     },
     {
@@ -166,7 +339,7 @@
       },
       "when": {
         "east": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -176,17 +349,63 @@
       },
       "when": {
         "east": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_overlay_d",
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "stage6": 5
       }
     },
     {
       "apply": {
         "model": "dcs_climate:block/food/cropblock_grape_common_ground",
+        "y":180
+      },
+      "when": {
+      "OR": [
+          {
+            "down": "true",
+            "south": "true",
+            "stage6": 0
+          },
+          {
+            "down": "true",
+            "south": "true",
+            "stage6": 1
+          },
+          {
+            "down": "true",
+            "south": "true",
+            "stage6": 2
+          },
+          {
+            "down": "true",
+            "south": "true",
+            "stage6": 3
+          },
+          {
+            "down": "true",
+            "south": "true",
+            "stage6": 4
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_ground_d",
         "y": 180
       },
       "when": {
         "down": "true",
-        "south": "true"
+        "south": "true",
+        "stage6": 5
       }
     },
     {
@@ -195,8 +414,44 @@
         "y": 180
       },
       "when": {
+      "OR": [
+          {
+            "down": "false",
+            "south": "true",
+            "stage6": 0
+          },
+          {
+            "down":"false",
+            "south": "true",
+            "stage6": 1
+          },
+          {
+            "down": "false",
+            "south": "true",
+            "stage6": 2
+          },
+          {
+            "down": "false",
+            "south": "true",
+            "stage6": 3
+          },
+          {
+            "down": "false",
+            "south": "true",
+            "stage6": 4
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_side_d",
+        "y": 180
+      },
+      "when": {
         "down": "false",
-        "south": "true"
+        "south": "true",
+        "stage6": 5
       }
     },
     {
@@ -206,7 +461,7 @@
       },
       "when": {
         "south": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -216,17 +471,63 @@
       },
       "when": {
         "south": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_overlay_d",
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "stage6": 5
       }
     },
     {
       "apply": {
         "model": "dcs_climate:block/food/cropblock_grape_common_ground",
+        "y":270
+      },
+      "when": {
+      "OR": [
+          {
+            "down": "true",
+            "west": "true",
+            "stage6": 0
+          },
+          {
+            "down": "true",
+            "west": "true",
+            "stage6": 1
+          },
+          {
+            "down": "true",
+            "west": "true",
+            "stage6": 2
+          },
+          {
+            "down": "true",
+            "west": "true",
+            "stage6": 3
+          },
+          {
+            "down": "true",
+            "west": "true",
+            "stage6": 4
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_ground_d",
         "y": 270
       },
       "when": {
         "down": "true",
-        "west": "true"
+        "west": "true",
+        "stage6": 5
       }
     },
     {
@@ -235,8 +536,44 @@
         "y": 270
       },
       "when": {
+      "OR": [
+          {
+            "down": "false",
+            "west": "true",
+            "stage6": 0
+          },
+          {
+            "down":"false",
+            "west": "true",
+            "stage6": 1
+          },
+          {
+            "down": "false",
+            "west": "true",
+            "stage6": 2
+          },
+          {
+            "down": "false",
+            "west": "true",
+            "stage6": 3
+          },
+          {
+            "down": "false",
+            "west": "true",
+            "stage6": 4
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_side_d",
+        "y": 270
+      },
+      "when": {
         "down": "false",
-        "west": "true"
+        "west": "true",
+        "stage6": 5
       }
     },
     {
@@ -246,7 +583,7 @@
       },
       "when": {
         "west": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -256,7 +593,17 @@
       },
       "when": {
         "west": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_grape_common_overlay_d",
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "stage6": 5
       }
     }
   ]

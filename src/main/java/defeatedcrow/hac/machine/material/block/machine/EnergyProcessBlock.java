@@ -139,7 +139,7 @@ public abstract class EnergyProcessBlock extends EntityBlockDC {
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.NONE;
+		return ToolType.PICKAXE;
 	}
 
 	@Override

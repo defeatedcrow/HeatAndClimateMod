@@ -13,6 +13,7 @@ import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Food;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.food.material.block.DummyDianthusBlock;
 import defeatedcrow.hac.food.material.block.FertileBlock;
+import defeatedcrow.hac.food.material.block.FertileBlockTile;
 import defeatedcrow.hac.food.material.block.FertilePlanterBlock;
 import defeatedcrow.hac.food.material.block.LeafMoldBlock;
 import defeatedcrow.hac.food.material.block.containers.CropContBlock;
@@ -172,6 +173,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -1254,6 +1256,9 @@ public class FoodInit {
 	public static final RegistryObject<Block> CONT_CROP_SUGARCANE = regCont("woodbox_sugarcane", () -> new CropContBlock("woodbox", "sugarcane"), TagDC.ItemTag.CONT_SUGARCANE);
 	public static final RegistryObject<Block> CONT_CROP_COCOA = regCont("woodbox_cocoa", () -> new CropContBlock("woodbox", "cocoa"), TagDC.ItemTag.CONT_COCOA);
 	public static final RegistryObject<Block> CONT_CROP_BUSHBERRY = regCont("woodbox_bushberry", () -> new CropContBlock("woodbox", "bushberry"), TagDC.ItemTag.CONT_BUSHBERRY);
+
+	public static final RegistryObject<BlockEntityType<FertileBlockTile>> FERTILE_TILE = CoreInit.BLOCK_ENTITIES.register("fertile_block_tile",
+			() -> BlockEntityType.Builder.of(FertileBlockTile::new, new Block[] { FERTILE.get(), FERTILE_PLANTER.get(), FERTILE_PLANTER_GEM.get() }).build(null));
 
 	public static RegistryObject<Item> regCrop(CropTier tier, CropType type, TagKey<Item> tag) {
 		String name = "crop_" + type.toString() + "_" + tier.toString();

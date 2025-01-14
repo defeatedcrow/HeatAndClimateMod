@@ -119,7 +119,7 @@ public abstract class ProcessTileBlock extends EntityBlockDC {
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.NONE;
+		return ToolType.PICKAXE;
 	}
 
 	@Override

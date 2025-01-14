@@ -1,34 +1,22 @@
 {
   "variants": {
-    "stage5=0,wild=false": {
+    "stage6=0": {
       "model": "dcs_climate:block/food/cropblock_palm_rare_0"
     },
-    "stage5=0,wild=true": {
-      "model": "dcs_climate:block/food/cropblock_palm_rare_0"
-    },
-    "stage5=1,wild=false": {
+    "stage6=1": {
       "model": "dcs_climate:block/food/cropblock_palm_rare_1"
     },
-    "stage5=1,wild=true": {
-      "model": "dcs_climate:block/food/cropblock_palm_rare_1"
-    },
-    "stage5=2,wild=false": {
+    "stage6=2": {
       "model": "dcs_climate:block/food/cropblock_palm_rare_2"
     },
-    "stage5=2,wild=true": {
-      "model": "dcs_climate:block/food/cropblock_palm_rare_2"
-    },
-    "stage5=3,wild=false": {
+    "stage6=3": {
       "model": "dcs_climate:block/food/cropblock_palm_rare_3"
     },
-    "stage5=3,wild=true": {
-      "model": "dcs_climate:block/food/cropblock_palm_rare_3"
-    },
-    "stage5=4,wild=false": {
+    "stage6=4": {
       "model": "dcs_climate:block/food/cropblock_palm_rare_4"
     },
-    "stage5=4,wild=true": {
-      "model": "dcs_climate:block/food/cropblock_palm_rare_4"
+    "stage6=5": {
+      "model": "dcs_climate:block/food/cropblock_palm_rare_5"
     }
   }
 }

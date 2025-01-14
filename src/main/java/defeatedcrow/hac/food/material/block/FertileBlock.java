@@ -32,17 +32,21 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
-public class FertileBlock extends FarmBlock implements IFertileBlock, IBlockDC, IJsonDataDC {
+public class FertileBlock extends FarmBlock implements EntityBlock, IFertileBlock, IBlockDC, IJsonDataDC {
 
+	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	public static final IntegerProperty FERTILE = DCState.FERTILE;
 
 	public FertileBlock() {
@@ -52,18 +56,22 @@ public class FertileBlock extends FarmBlock implements IFertileBlock, IBlockDC, 
 
 	@Override
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+		int water = DCState.getInt(state, MOISTURE);
+		if (DCState.getBool(state, WATERLOGGED)) {
+			water = 7;
+			level.setBlockAndUpdate(pos, state.setValue(MOISTURE, water));
+		}
 		if (DCState.getInt(state, FERTILE) <= 0) {
-			int i = DCState.getInt(state, MOISTURE);
-			level.setBlockAndUpdate(pos, Blocks.FARMLAND.defaultBlockState().setValue(MOISTURE, i));
+			level.setBlockAndUpdate(pos, Blocks.FARMLAND.defaultBlockState().setValue(MOISTURE, water));
 		}
 		super.tick(state, level, pos, random);
 	}
 
-	/* return 0 ~ 3 */
+	/* return 1 ~ 4 */
 	public static int getFertile(Level world, BlockPos pos, BlockState state) {
 		int ret = 0;
 		if (state.getBlock() instanceof IFertileBlock) {
-			return ((IFertileBlock) state.getBlock()).getFertile(world, pos, state);
+			return ((IFertileBlock) state.getBlock()).getFertile(world, pos, state) + 1;
 		}
 		return ret;
 	}
@@ -156,6 +164,13 @@ public class FertileBlock extends FarmBlock implements IFertileBlock, IBlockDC, 
 			list.add(Component.translatable("dcs.tip.shift"));
 		}
 		super.appendHoverText(stack, level, list, flag);
+	}
+
+	/* EntityBlock */
+
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new FertileBlockTile(pos, state);
 	}
 
 }

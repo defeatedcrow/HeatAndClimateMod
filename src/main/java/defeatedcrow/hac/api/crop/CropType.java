@@ -51,6 +51,16 @@ public enum CropType {
 		return Component.translatable("dcs.enum.croptype.name");
 	}
 
+	public static CropType getFromName(String name) {
+		if (name != null)
+			for (CropType crop : CropType.values()) {
+				if (crop.toString().equalsIgnoreCase(name)) {
+					return crop;
+				}
+			}
+		return TRADING;
+	}
+
 	@Override
 	public String toString() {
 		return name().toLowerCase();

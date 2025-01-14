@@ -24,6 +24,7 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.block.FertileBlock;
+import defeatedcrow.hac.food.material.block.FertileBlockTile;
 import defeatedcrow.hac.food.material.item.ItemEdibleCropDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -53,6 +54,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -72,6 +74,11 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		cropTier = t;
 	}
 
+	public ClimateCropBaseBlock(CropTier t, BlockBehaviour.Properties prop) {
+		super(prop);
+		cropTier = t;
+	}
+
 	/* 基本データ */
 	protected static BlockBehaviour.Properties getProp() {
 		return BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP);
@@ -79,7 +86,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext col) {
-		int stage = DCState.getInt(state, DCState.STAGE5);
+		int stage = DCState.getInt(state, DCState.STAGE6);
 		if (stage == 0) {
 			return Block.box(2.0D, 0.0D, 2.0D, 14.0D, 2.0D, 14.0D);
 		} else if (stage == 1) {
@@ -98,6 +105,39 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		if (!level.isAreaLoaded(pos, 2))
 			return;
 		CropStage stage = getCurrentStage(state);
+
+		int count = this.getContinuousRegistance(getTier());
+		if (ConfigCommonBuilder.INSTANCE.enContinuousFailure.get() && state.getMaterial() != Material.LEAVES && count < 5 && count > 0) {
+			if (level.getRandom().nextInt(count + 1) == 0) {
+				if ((stage == CropStage.DEAD)) {
+					// 伝染
+					Direction dir = Direction.getRandom(level.getRandom());
+					BlockState target = level.getBlockState(pos.relative(dir));
+					if (target.getBlock() == this && DCState.getInt(target, DCState.STAGE6) > 1) {
+						BlockState failure = getFailureState(target);
+						level.setBlock(pos.relative(dir), failure, 2);
+					}
+					return;
+				} else if (DCState.getInt(state, DCState.STAGE6) > 1) {
+					BlockState soil = level.getBlockState(pos.below());
+					BlockEntity soilTile = level.getBlockEntity(pos.below());
+					if (soil.getBlock() == this) {
+						soil = level.getBlockState(pos.below(2));
+						soilTile = level.getBlockEntity(pos.below(2));
+					}
+					if (state.getBlock() instanceof IClimateCrop crop && soilTile instanceof FertileBlockTile fertile) {
+						// 連作チェック
+						if (fertile.isContinuousFailure(crop)) {
+							BlockState failure = getFailureState(state);
+							level.setBlock(pos, failure, 2);
+							return;
+						} else {
+							fertile.updateContinuous(state);
+						}
+					}
+				}
+			}
+		}
 
 		int c2 = getGrowingChance(level, pos, state);
 		if (c2 > 0 && random.nextInt(c2) == 0) {
@@ -121,7 +161,12 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	public void checkAndDropBlock(Level world, BlockPos pos, BlockState state) {
 		if (!isSuitablePlace(world, pos.below(), world.getBlockState(pos.below()))) {
 			dropResources(state, world, pos);
-			world.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+			if (DCState.getBool(state, BlockStateProperties.WATERLOGGED)) {
+				world.setBlock(pos, Blocks.WATER.defaultBlockState(), 2);
+			} else {
+				world.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+			}
+
 		}
 	}
 
@@ -130,7 +175,11 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		ItemEntity drop = new ItemEntity(world, pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D, seed);
 		if (drop != null && !world.isClientSide) {
 			world.addFreshEntity(drop);
-			world.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+			if (DCState.getBool(state, BlockStateProperties.WATERLOGGED)) {
+				world.setBlock(pos, Blocks.WATER.defaultBlockState(), 2);
+			} else {
+				world.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+			}
 		}
 	}
 
@@ -224,7 +273,14 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	// 破壊処理とシェイプ更新を兼ねているよくわからないメソッド
 	@Override
 	public BlockState updateShape(BlockState state, Direction face, BlockState other, LevelAccessor level, BlockPos pos, BlockPos pos2) {
-		return !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, face, other, level, pos, pos2);
+		if (!state.canSurvive(level, pos)) {
+			if (DCState.getBool(state, BlockStateProperties.WATERLOGGED)) {
+				return Blocks.WATER.defaultBlockState();
+			} else {
+				return Blocks.AIR.defaultBlockState();
+			}
+		}
+		return super.updateShape(state, face, other, level, pos, pos2);
 	}
 
 	@Override
@@ -289,7 +345,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	@Override
 	public ItemStack getMainDrop() {
-		return this.getSeedItem(getGrownState());
+		return this.getSeedItem(getGrownState(this.defaultBlockState()));
 	}
 
 	@Override
@@ -304,7 +360,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.NONE;
+		return ToolType.HOE;
 	}
 
 	@Override
@@ -331,13 +387,16 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	@Override
 	public CropStage getCurrentStage(BlockState state) {
-		int stage = DCState.getInt(state, DCState.STAGE5);
+		int stage = DCState.getInt(state, DCState.STAGE6);
 		if (stage == 0) {
 			return CropStage.GROUND;
 		} else if (stage == 3) {
 			return CropStage.FLOWER;
-		} else if (stage == 4)
+		} else if (stage == 4) {
 			return CropStage.GROWN;
+		} else if (stage == 5) {
+			return CropStage.DEAD;
+		}
 		return CropStage.YOUNG;
 	}
 
@@ -354,17 +413,22 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(4)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(4)).setValue(DCState.WILD, true);
 	}
 
 	@Override
-	public BlockState getGrownState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(4));
+	public BlockState getGrownState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(4));
 	}
 
 	@Override
 	public BlockState getHarvestedState(BlockState state) {
-		return this.defaultBlockState();
+		return state.setValue(DCState.STAGE6, Integer.valueOf(0));
+	}
+
+	@Override
+	public BlockState getFailureState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(5));
 	}
 
 	@Override
@@ -377,7 +441,10 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		CropStage stage = this.getCurrentStage(thisState);
 		if (stage != CropStage.GROWN && stage != CropStage.DEAD) {
 			boolean clm = isSuitableForGrowing(world, pos, thisState);
-			int ret = clm ? 12 : 80;
+			int ret = clm ? 24 : 80;
+			if (ConfigCommonBuilder.INSTANCE.enHardCrop.get()) {
+				ret = clm ? 24 : 0;
+			}
 			BlockState under = world.getBlockState(pos.below());
 			if (isFarmland(under)) {
 				ret /= 2;
@@ -386,8 +453,8 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			if (f > 0) {
 				ret /= f;
 			}
-			if (ret <= 0)
-				ret = 1;
+			if (ret < 0)
+				ret = 0;
 			return ret;
 		}
 		return 0;
@@ -401,10 +468,10 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		} else if (stage == CropStage.GROWN) {
 			return false;
 		} else {
-			int age = DCState.getInt(thisState, DCState.STAGE5);
+			int age = DCState.getInt(thisState, DCState.STAGE6);
 			if (age >= 0 && age < 4) {
 				age++;
-				BlockState next = thisState.setValue(DCState.STAGE5, age);
+				BlockState next = thisState.setValue(DCState.STAGE6, age);
 				return world.setBlock(pos, next, 3);
 			}
 		}

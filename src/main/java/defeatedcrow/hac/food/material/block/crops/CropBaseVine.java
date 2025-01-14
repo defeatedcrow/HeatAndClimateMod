@@ -28,19 +28,19 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 
 	public CropBaseVine(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0))
-			.setValue(DCState.NORTH, false)
-			.setValue(DCState.SOUTH, false)
-			.setValue(DCState.EAST, false)
-			.setValue(DCState.WEST, false)
-			.setValue(DCState.UP, false)
-			.setValue(DCState.DOWN, false)
-			.setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0))
+				.setValue(DCState.NORTH, false)
+				.setValue(DCState.SOUTH, false)
+				.setValue(DCState.EAST, false)
+				.setValue(DCState.WEST, false)
+				.setValue(DCState.UP, false)
+				.setValue(DCState.DOWN, false)
+				.setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5, DCState.NORTH, DCState.SOUTH, DCState.EAST, DCState.WEST, DCState.UP, DCState.DOWN, DCState.WILD);
+		def.add(DCState.STAGE6, DCState.NORTH, DCState.SOUTH, DCState.EAST, DCState.WEST, DCState.UP, DCState.DOWN, DCState.WILD);
 	}
 
 	@Override
@@ -144,7 +144,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 		boolean west = level.getBlockState(pos.west()).getMaterial().isSolid();
 		boolean flag = down || checkFlag(level, pos);
 		return next.setValue(DCState.DOWN, down).setValue(DCState.UP, up).setValue(DCState.NORTH, north).setValue(DCState.SOUTH, south)
-			.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
+				.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
 	}
 
 	@Override
@@ -158,14 +158,14 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 		boolean west = level.getBlockState(pos.west()).getMaterial().isSolid();
 		boolean flag = down || checkFlag(level, pos);
 		next = next.setValue(DCState.DOWN, down).setValue(DCState.UP, up).setValue(DCState.NORTH, north).setValue(DCState.SOUTH, south)
-			.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
+				.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
 		return flag || up || north || south || east || west ? next : super.updateShape(state, dir, state2, level, pos, pos2);
 	}
 
 	@Override
 	public boolean onGrow(Level world, BlockPos pos, BlockState state) {
 		// 伸長
-		int stage = DCState.getInt(state, DCState.STAGE5);
+		int stage = DCState.getInt(state, DCState.STAGE6);
 		int i = this.getGrowingChance(world, pos, state) * 2;
 		if (i > 0 && stage > 1 && world.random.nextInt(i) == 0) {
 			boolean b = false;
@@ -183,7 +183,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 				BlockState check = world.getBlockState(pos.relative(dir));
 				if (check.getMaterial() == Material.AIR && checkVineSupport(world, pos.relative(dir), false)) {
 					BlockState put = this.updateShape(this.defaultBlockState(), dir, state, world, pos.relative(dir), pos.relative(dir));
-					world.setBlock(pos.relative(dir), this.defaultBlockState().setValue(DCState.STAGE5, 2), 3);
+					world.setBlock(pos.relative(dir), this.defaultBlockState().setValue(DCState.STAGE6, 2), 3);
 				}
 			}
 		}
@@ -192,7 +192,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(2)).setValue(DCState.WILD, true);
 	}
 
 	@Override
@@ -205,7 +205,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getHarvestedState(BlockState state) {
-		return state.setValue(DCState.STAGE5, 2);
+		return state.setValue(DCState.STAGE6, 2);
 	}
 
 	@Override

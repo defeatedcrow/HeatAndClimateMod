@@ -297,7 +297,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	@Override
 	public ItemStack getMainDrop() {
-		return this.getSeedItem(getGrownState());
+		return this.getSeedItem(getGrownState(this.defaultBlockState()));
 	}
 
 	@Override
@@ -312,7 +312,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.NONE;
+		return ToolType.AXE;
 	}
 
 	@Override
@@ -326,6 +326,11 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	}
 
 	/* IClimateCrop */
+
+	@Override
+	public int getContinuousRegistance(CropTier t) {
+		return 5;
+	}
 
 	@Override
 	public boolean isSuitableForGrowing(Level world, BlockPos pos, BlockState thisState) {
@@ -364,13 +369,18 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	}
 
 	@Override
-	public BlockState getGrownState() {
-		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(5));
+	public BlockState getGrownState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(5));
 	}
 
 	@Override
 	public BlockState getHarvestedState(BlockState state) {
 		return this.defaultBlockState();
+	}
+
+	@Override
+	public BlockState getFailureState(BlockState state) {
+		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(3));
 	}
 
 	@Override

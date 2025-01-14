@@ -27,7 +27,7 @@ public abstract class CropBaseEpiphyte extends ClimateCropBaseBlock {
 
 	public CropBaseEpiphyte(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0))
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0))
 				.setValue(DCState.NORTH, false)
 				.setValue(DCState.SOUTH, false)
 				.setValue(DCState.EAST, false)
@@ -37,7 +37,7 @@ public abstract class CropBaseEpiphyte extends ClimateCropBaseBlock {
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5, DCState.NORTH, DCState.SOUTH, DCState.EAST, DCState.WEST, DCState.WILD);
+		def.add(DCState.STAGE6, DCState.NORTH, DCState.SOUTH, DCState.EAST, DCState.WEST, DCState.WILD);
 	}
 
 	@Override
@@ -135,12 +135,12 @@ public abstract class CropBaseEpiphyte extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(2)).setValue(DCState.WILD, true);
 	}
 
 	@Override
 	public BlockState getHarvestedState(BlockState state) {
-		return state.setValue(DCState.STAGE5, 2);
+		return state.setValue(DCState.STAGE6, 2);
 	}
 
 	@Override

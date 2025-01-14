@@ -117,7 +117,7 @@ public class DummyDianthusBlock extends BlockDC {
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.NONE;
+		return ToolType.HOE;
 	}
 
 	@Override

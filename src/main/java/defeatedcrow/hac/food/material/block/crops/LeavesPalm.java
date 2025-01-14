@@ -65,7 +65,7 @@ public class LeavesPalm extends LeavesCropBlockDC {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")));
+				new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/palm_leaves")));
 	}
 
 	@Override
@@ -155,7 +155,7 @@ public class LeavesPalm extends LeavesCropBlockDC {
 	}
 
 	@Override
-	public BlockState getGrownState() {
+	public BlockState getGrownState(BlockState state) {
 		return this.defaultBlockState();
 	}
 

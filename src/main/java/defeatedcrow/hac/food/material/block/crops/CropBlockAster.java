@@ -27,12 +27,12 @@ public class CropBlockAster extends ClimateCropBaseBlock {
 
 	public CropBlockAster(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5, DCState.WILD);
+		def.add(DCState.STAGE6, DCState.WILD);
 	}
 
 	/* model */
@@ -45,21 +45,22 @@ public class CropBlockAster extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aster_0")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aster_1")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aster_" + getSpeciesName(cropTier) + "_2")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aster_" + getSpeciesName(cropTier) + "_3")),
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aster_" + getSpeciesName(cropTier) + "_f")));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aster_0")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aster_1")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aster_" + getSpeciesName(cropTier) + "_2")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aster_" + getSpeciesName(cropTier) + "_3")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aster_" + getSpeciesName(cropTier) + "_f")),
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aster_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
 	public List<String> getModelNameSuffix() {
-		return ImmutableList.of("0", "1", "2", "3", "4");
+		return ImmutableList.of("0", "1", "2", "3", "4", "5");
 	}
 
 	@Override
 	public List<String> getStateNameSuffix() {
-		return ImmutableList.of("stage5=0", "stage5=1", "stage5=2", "stage5=3", "stage5=4");
+		return ImmutableList.of("stage6=0", "stage6=1", "stage6=2", "stage6=3", "stage6=4", "stage6=5");
 	}
 
 	@Override
@@ -71,7 +72,7 @@ public class CropBlockAster extends ClimateCropBaseBlock {
 
 	@Override
 	public CropStage getCurrentStage(BlockState state) {
-		int stage = DCState.getInt(state, DCState.STAGE5);
+		int stage = DCState.getInt(state, DCState.STAGE6);
 		if (getTier() == CropTier.COMMON) {
 			if (stage == 3) {
 				return CropStage.FLOWER;
@@ -89,7 +90,7 @@ public class CropBlockAster extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(3)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(3)).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
@@ -102,6 +103,16 @@ public class CropBlockAster extends ClimateCropBaseBlock {
 	@Override
 	public CropGrowType getGrowType(CropTier t) {
 		return CropGrowType.SINGLE;
+	}
+
+	@Override
+	public int getContinuousRegistance(CropTier t) {
+		switch (t) {
+		case WILD:
+			return 5;
+		default:
+			return 2;
+		}
 	}
 
 	@Override

@@ -107,7 +107,7 @@ public class MagicScaffolding extends BlockDC {
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.NONE;
+		return ToolType.AXE;
 	}
 
 	@Override

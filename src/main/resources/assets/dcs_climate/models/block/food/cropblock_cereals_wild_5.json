@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "crop": "dcs_climate:block/crop/cereals_oat_d"
+  },
+  "parent": "dcs_climate:block/dcs_crop"
+}

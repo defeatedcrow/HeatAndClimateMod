@@ -56,6 +56,11 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 	/* 苗木なのでコレ自体は成長しない */
 
 	@Override
+	public int getContinuousRegistance(CropTier t) {
+		return 5;
+	}
+
+	@Override
 	public CropStage getCurrentStage(BlockState state) {
 		return CropStage.SAPLING;
 	}
@@ -66,8 +71,13 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public BlockState getGrownState() {
+	public BlockState getGrownState(BlockState state) {
 		return this.defaultBlockState();
+	}
+
+	@Override
+	public BlockState getFailureState(BlockState state) {
+		return state;
 	}
 
 	@Override
@@ -115,7 +125,7 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/sapling_" + getFamily().toString() + "_" + getSpeciesName(cropTier))));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/sapling_" + getFamily().toString() + "_" + getSpeciesName(cropTier))));
 	}
 
 	@Override

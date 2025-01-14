@@ -2055,6 +2055,8 @@
   "dcs.tip.seedbag.desc":"ランダムに種を入手します:",
   "dcs.tip.sap":"樹液タンクを使って集めることが出来ます。",
 
+  "## magic_item_text":"",
+
   "dcs.tip.inert_element":"条件に合う環境でプレイヤーが経験値を得ると、結晶が成長します。",
   "dcs.tip.inert_element.white":"『明るい日の下』",
   "dcs.tip.inert_element.blue":"『水中』",
@@ -2324,6 +2326,7 @@
   "dcs.gui.jei.crop_mud":"泥",
   "dcs.gui.jei.crop_water":"水上",
   "dcs.gui.jei.crop_epiphyte":"着生",
+  "dcs.gui.jei.crop_continuous":"連作耐性",
   "dcs.gui.jei.crop_tip1":"= Crop Mutation =",
   "dcs.gui.jei.crop_tip2":"WILD作物は、施肥された耕地の上で育てると、Tierの高い作物に変異する可能性があります。",
   "dcs.gui.jei.tree_flower":"花期",
@@ -2332,11 +2335,14 @@
     "## gui_waila":"waila",
 
   "dcs.tip.waila.crop_stage":"Stage: ",
+  "dcs.tip.waila.crop_failure":"病気状態(収穫できません。)",
   "dcs.tip.waila.crop_harvest":"収穫できます",
   "dcs.tip.waila.crop_bad_environment":"成長に適した気候ではありません。",
   "dcs.tip.waila.crop_green_matures":"クワを使うと、緑肥としてすき込みができます。",
   "dcs.tip.waila.crop_hoe":"クワを使うと、苗を破壊して種を得ます。",
   "dcs.tip.waila.fertile_block":"施肥: ",
+  "dcs.tip.waila.fertile_block.continuous":"連作中: %s",
+  "dcs.tip.waila.fertile_block.year":"連作 %d 年目",
   "dcs.tip.waila.smelting_suitable":"気候精錬の条件を満たしています",
   "dcs.tip.waila.smelting_tick_scheduled":"ブロック更新予定あり",
   "dcs.tip.waila.smelting_tick_not_scheduled":"ブロック更新なし",

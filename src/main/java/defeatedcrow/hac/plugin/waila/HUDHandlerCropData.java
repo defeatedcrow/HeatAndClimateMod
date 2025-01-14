@@ -30,10 +30,12 @@ public class HUDHandlerCropData implements IBlockComponentProvider {
 
 		if (config.getBoolean(CROP) && level.getBlock() instanceof ClimateCropBaseBlock) {
 			ClimateCropBaseBlock crop = (ClimateCropBaseBlock) level.getBlock();
-			int stage5 = DCState.getInt(level.getBlockState(), DCState.STAGE5);
-			if (stage5 >= 0) {
-				float stage = stage5 / 4.0F;
+			int stage6 = DCState.getInt(level.getBlockState(), DCState.STAGE6);
+			if (stage6 >= 0 && stage6 < 5) {
+				float stage = stage6 / 4.0F;
 				tooltip.addLine(new PairComponent(Component.translatable("dcs.tip.waila.crop_stage"), Component.translatable(String.format("%.0f %%", stage * 100F))));
+			} else if (stage6 == 5) {
+				tooltip.addLine(Component.translatable("dcs.tip.waila.crop_failure").withStyle(ChatFormatting.RED));
 			}
 			if (!crop.isSuitableForGrowing(level.getWorld(), level.getPosition(), level.getBlockState())) {
 				tooltip.addLine(Component.translatable("dcs.tip.waila.crop_bad_environment").withStyle(ChatFormatting.RED));
@@ -44,7 +46,7 @@ public class HUDHandlerCropData implements IBlockComponentProvider {
 			if (DCState.getBool(level.getBlockState(), DCState.WILD)) {
 				tooltip.addLine(Component.literal("WILD CROP").withStyle(ChatFormatting.GOLD));
 			} else {
-				if (level.getBlockState().is(TagDC.BlockTag.CROP_GREEN_MANURES) && stage5 > 1) {
+				if (level.getBlockState().is(TagDC.BlockTag.CROP_GREEN_MANURES) && stage6 > 1) {
 					BlockState below = level.getWorld().getBlockState(level.getPosition().below());
 					if ((below.is(BlockTags.DIRT) || below.is(TagDC.BlockTag.FARMLAND)) && FertileBlock.getFertile(level.getWorld(), level.getPosition().below(), below) < 3)
 						tooltip.addLine(Component.translatable("dcs.tip.waila.crop_green_matures").withStyle(ChatFormatting.AQUA));

@@ -14,7 +14,7 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 0
+        "stage6": 0
       }
     },
     {
@@ -26,7 +26,7 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 1
+        "stage6": 1
       }
     },
     {
@@ -38,7 +38,7 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 2
+        "stage6": 2
       }
     },
     {
@@ -50,7 +50,7 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -62,7 +62,19 @@
         "east": "false",
         "south": "false",
         "west": "false",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_orchid_epic_d"
+      },
+      "when": {
+        "north": "false",
+        "east": "false",
+        "south": "false",
+        "west": "false",
+        "stage6": 5
       }
     },
     {
@@ -71,7 +83,7 @@
       },
       "when": {
         "north": "true",
-        "stage5": 0
+        "stage6": 0
       }
     },
     {
@@ -80,7 +92,7 @@
       },
       "when": {
         "north": "true",
-        "stage5": 1
+        "stage6": 1
       }
     },
     {
@@ -89,7 +101,7 @@
       },
       "when": {
         "north": "true",
-        "stage5": 2
+        "stage6": 2
       }
     },
     {
@@ -98,7 +110,7 @@
       },
       "when": {
         "north": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -107,7 +119,16 @@
       },
       "when": {
         "north": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_orchid_epic_side_d"
+      },
+      "when": {
+        "north": "true",
+        "stage6": 5
       }
     },
     {
@@ -117,7 +138,7 @@
       },
       "when": {
         "east": "true",
-        "stage5": 0
+        "stage6": 0
       }
     },
     {
@@ -127,7 +148,7 @@
       },
       "when": {
         "east": "true",
-        "stage5": 1
+        "stage6": 1
       }
     },
     {
@@ -137,7 +158,7 @@
       },
       "when": {
         "east": "true",
-        "stage5": 2
+        "stage6": 2
       }
     },
     {
@@ -147,7 +168,7 @@
       },
       "when": {
         "east": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -157,7 +178,17 @@
       },
       "when": {
         "east": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_orchid_epic_side_d",
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "stage6": 5
       }
     },
     {
@@ -167,7 +198,7 @@
       },
       "when": {
         "south": "true",
-        "stage5": 0
+        "stage6": 0
       }
     },
     {
@@ -177,7 +208,7 @@
       },
       "when": {
         "south": "true",
-        "stage5": 1
+        "stage6": 1
       }
     },
     {
@@ -187,7 +218,7 @@
       },
       "when": {
         "south": "true",
-        "stage5": 2
+        "stage6": 2
       }
     },
     {
@@ -197,7 +228,7 @@
       },
       "when": {
         "south": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -207,7 +238,17 @@
       },
       "when": {
         "south": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    },
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_orchid_epic_side_d",
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "stage6": 5
       }
     },
     {
@@ -217,7 +258,7 @@
       },
       "when": {
         "west": "true",
-        "stage5": 0
+        "stage6": 0
       }
     },
     {
@@ -227,7 +268,7 @@
       },
       "when": {
         "west": "true",
-        "stage5": 1
+        "stage6": 1
       }
     },
     {
@@ -237,7 +278,7 @@
       },
       "when": {
         "west": "true",
-        "stage5": 2
+        "stage6": 2
       }
     },
     {
@@ -247,7 +288,7 @@
       },
       "when": {
         "west": "true",
-        "stage5": 3
+        "stage6": 3
       }
     },
     {
@@ -257,7 +298,18 @@
       },
       "when": {
         "west": "true",
-        "stage5": 4
+        "stage6": 4
+      }
+    }
+    ,
+    {
+      "apply": {
+        "model": "dcs_climate:block/food/cropblock_orchid_epic_side_d",
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "stage6": 5
       }
     }
   ]

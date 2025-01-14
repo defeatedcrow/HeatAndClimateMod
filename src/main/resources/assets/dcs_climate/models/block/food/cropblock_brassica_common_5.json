@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/crop/brassica_green_d"
+  },
+  "parent": "dcs_climate:block/dcs_cross"
+}

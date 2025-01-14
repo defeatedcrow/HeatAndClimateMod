@@ -85,7 +85,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		boolean tree = random.nextInt(100) < 30;
 		if (tree) {
 			// 村には生成しないように
-			if (level.getLevel().isCloseToVillage(pos, 3)) {
+			if (level.getLevel().isCloseToVillage(pos, 8)) {
 				return false;
 			} else {
 				targets = TargetCropList.INSTANCE.targetTreeList.stream().filter((b) -> matchBiome(biome, pos.getY(), b)).toList();
@@ -119,7 +119,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 						BlockPos p1 = pos.relative(dir, 2 + k).above(y);
 						BlockState soil = level.getBlockState(p1);
 						BlockState air = level.getBlockState(p1.above());
-						if (suitableSoil(crop, level, p1, soil) && canReplaceBlock(air)) {
+						if (suitableSoil(crop, level, p1, soil) && canReplaceBlock(crop, air)) {
 							BlockState nextState = crop.getFeatureState();
 
 							if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW)
@@ -137,11 +137,12 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 							mpos.set(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
 							BlockState soil = level.getBlockState(mpos);
 							BlockState air = level.getBlockState(mpos.above());
+							BlockState air2 = level.getBlockState(mpos.above(2));
 							double dist = pos.distSqr(mpos);
 							int d = 3 + Mth.absFloor(dist);
 							boolean f = random.nextInt(d) == 0;
 
-							if (f && suitableSoil(crop, level, mpos, soil) && canReplaceBlock(air)) {
+							if (f && suitableSoil(crop, level, mpos, soil) && canReplaceBlock(crop, air) && air2.isAir()) {
 								BlockState nextState = crop.getFeatureState();
 
 								if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW)
@@ -180,7 +181,10 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		return crop.isSuitablePlace(level, p, soil) || soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW;
 	}
 
-	private static boolean canReplaceBlock(BlockState state) {
+	private static boolean canReplaceBlock(ClimateCropBaseBlock crop, BlockState state) {
+		if (crop.isAquaticPlant(crop.getTier())) {
+			return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && (state.getMaterial().isReplaceable() || state.getMaterial() == Material.TOP_SNOW);
+		}
 		return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && (state.getMaterial().isReplaceable() || state.getMaterial() == Material.TOP_SNOW) && !state.getMaterial().isLiquid() && !(state
 				.getBlock() instanceof LiquidBlock);
 	}

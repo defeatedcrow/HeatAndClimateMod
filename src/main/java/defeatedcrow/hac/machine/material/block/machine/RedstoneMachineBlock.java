@@ -108,7 +108,7 @@ public abstract class RedstoneMachineBlock extends EntityBlockDC {
 
 	@Override
 	public ToolType getToolType() {
-		return ToolType.NONE;
+		return ToolType.PICKAXE;
 	}
 
 	@Override

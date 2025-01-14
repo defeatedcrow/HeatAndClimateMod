@@ -52,7 +52,8 @@ public class ConfigCommonBuilder {
 	public final ForgeConfigSpec.BooleanValue enTightEffect;
 	public final ForgeConfigSpec.BooleanValue enHeatTreatment;
 	public final ForgeConfigSpec.BooleanValue enTempuraFire;
-
+	public final ForgeConfigSpec.BooleanValue enHardCrop;
+	public final ForgeConfigSpec.BooleanValue enContinuousFailure;
 	public final ForgeConfigSpec.BooleanValue enMagicCost;
 	public final ForgeConfigSpec.IntValue vMagicCost;
 
@@ -147,6 +148,14 @@ public class ConfigCommonBuilder {
 		this.enTempuraFire = builder
 				.comment("Vegetable oil in a pan can spontaneously combust if it becomes overheated.")
 				.define("Hardmode Tempura Fire", false);
+
+		this.enHardCrop = builder
+				.comment("HaC crops will stop growing if the climate is not suitable.")
+				.define("Hardmode Cropping", false);
+
+		this.enContinuousFailure = builder
+				.comment("If the same crop is grown on the same farmland for multiple years, the crop will become diseased.")
+				.define("Continuous Crop Failure", false);
 
 		this.enMagicCost = builder
 				.comment("When enabled, EXP is consumed to cast the magic.")
