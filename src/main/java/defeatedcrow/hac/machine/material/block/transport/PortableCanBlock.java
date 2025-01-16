@@ -57,7 +57,7 @@ public class PortableCanBlock extends PortableFluidTankBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.STONE).strength(0.1F, 540.0F).noOcclusion();
 	}
 
 	@Override

@@ -64,7 +64,7 @@ public class MonitorAndonPanelBlock extends EntityBlockDC implements ITileNBTHol
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.METAL).requiresCorrectToolForDrops().strength(2.0F, 540.0F).noOcclusion().lightLevel(emission(8));
+		return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.METAL).strength(0.2F, 540.0F).noOcclusion().lightLevel(emission(8));
 	}
 
 	public static ToIntFunction<BlockState> emission(int light) {

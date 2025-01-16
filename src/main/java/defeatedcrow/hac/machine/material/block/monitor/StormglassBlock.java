@@ -55,7 +55,7 @@ public class StormglassBlock extends EntityBlockDC {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.METAL).requiresCorrectToolForDrops().strength(2.0F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.METAL).strength(0.2F, 540.0F).noOcclusion();
 	}
 
 	@Override
