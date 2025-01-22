@@ -35,6 +35,15 @@ public class PulveriseRecipes {
 				new ItemStack(FoodInit.FOOD_SYRUP.get(), 2), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_PARSNIP)));
 
+		// aroids
+		DeviceRecipeList.addPulverizeRecipe(2, RecipeTypeDC.PULVERISE,
+				new ItemStack(Items.GREEN_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_BUCE)));
+
+		DeviceRecipeList.addPulverizeRecipe(3, RecipeTypeDC.PULVERISE,
+				new ItemStack(MagicInit.DROP_BLACK.get(), 3), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.KONJAC_FLOWER)));
+
 		// aster
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
 				new ItemStack(Items.GREEN_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
@@ -84,6 +93,14 @@ public class PulveriseRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_BARLEY)));
 
 		// cherry
+		DeviceRecipeList.addPulverizeRecipe(6, RecipeTypeDC.PULVERISE,
+				new ItemStack(Items.PINK_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(FoodInit.FLOWER_CHERRY.get())));
+
+		DeviceRecipeList.addPulverizeRecipe(7, RecipeTypeDC.PULVERISE,
+				new ItemStack(Items.RED_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(FoodInit.FLOWER_PLUM.get())));
+
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SQUEEZE,
 				new ItemStack(FoodInit.FOOD_ALMOND_MILK.get(), 2), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_ALMOND)));

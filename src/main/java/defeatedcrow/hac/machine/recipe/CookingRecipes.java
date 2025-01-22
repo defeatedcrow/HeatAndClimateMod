@@ -612,6 +612,10 @@ public class CookingRecipes {
 				tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.SOY_MILK), Ingredient.of(TagDC.ItemTag.DUST_TRONA)));
 
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_KONJAC.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_KONJAC), Ingredient.of(TagDC.ItemTag.DUST_LIME)));
+
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_SOY_MILK.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				ImmutableList.of(FluidTags.WATER.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_SOY)));

@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "crop": "dcs_climate:block/crop/aroids_konjac_2",
+    "leaves": "dcs_climate:block/crop/aroids_konjac_leaves1"
+  },
+  "parent": "dcs_climate:block/dcs_crop_large_leaves"
+}

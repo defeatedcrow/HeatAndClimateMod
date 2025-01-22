@@ -127,6 +127,10 @@ public enum DCHumidity {
 		return ret;
 	}
 
+	public static List<DCHumidity> exceptDry() {
+		return ImmutableList.of(NORMAL, WET, UNDERWATER);
+	}
+
 	public static List<DCHumidity> exceptUnderwater() {
 		return ImmutableList.of(DRY, NORMAL, WET);
 	}

@@ -1,0 +1,8 @@
+{
+  "textures": {
+    "crop": "dcs_climate:block/crop/aroids_buce_f",
+    "leaves1": "dcs_climate:block/crop/aroids_buce_leaves1",
+    "leaves2": "dcs_climate:block/crop/aroids_buce_leaves2"
+  },
+  "parent": "dcs_climate:block/dcs_crop_rosette"
+}

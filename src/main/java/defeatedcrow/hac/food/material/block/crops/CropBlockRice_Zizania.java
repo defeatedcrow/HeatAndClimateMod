@@ -305,7 +305,7 @@ public class CropBlockRice_Zizania extends ClimateCropBaseBlock implements Simpl
 
 	@Override
 	public List<DCAirflow> getSuitableAir(CropTier t) {
-		return ImmutableList.of(DCAirflow.NORMAL, DCAirflow.FLOW, DCAirflow.WIND);
+		return DCAirflow.elements();
 	}
 
 	@Override

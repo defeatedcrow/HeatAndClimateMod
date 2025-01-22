@@ -66,9 +66,12 @@ public class MillsDC {
 		list1.add(new Crops("almond", FoodInit.CROP_CH_ALMOND, FoodInit.FOOD_ALMOND_MILK, FoodInit.DUST_PLANT));
 		list1.add(new Crops("date", FoodInit.CROP_PL_DATE, FoodInit.FOOD_SYRUP, FoodInit.DUST_PLANT));
 		list1.add(new Crops("oil_palm", FoodInit.CROP_PL_OIL, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
+		list1.add(new Crops("cherry_flower", FoodInit.FLOWER_CHERRY, () -> Items.PINK_DYE, FoodInit.DUST_PLANT));
+		list1.add(new Crops("plum_flower", FoodInit.FLOWER_PLUM, () -> Items.RED_DYE, FoodInit.DUST_PLANT));
 		list1.add(new Crops("camellia_flower", FoodInit.FLOWER_CAMELLIA, () -> Items.RED_DYE, FoodInit.DUST_PLANT));
 		list1.add(new Crops("schima_flower", FoodInit.FLOWER_SCHIMA, () -> Items.WHITE_DYE, FoodInit.DUST_PLANT));
 		list1.add(new Crops("artemisia", FoodInit.CROP_AS_ARTEMISIA, () -> Items.GREEN_DYE, FoodInit.DUST_PLANT));
+		list1.add(new Crops("buce", FoodInit.CROP_AR_BUCE, () -> Items.GREEN_DYE, FoodInit.DUST_PLANT));
 
 		list2.add(new Miscs("ore_iron", 1, () -> Tags.Items.ORES_IRON, () -> Items.RAW_IRON, () -> Items.RAW_IRON));
 		list2.add(new Miscs("ore_copper", 1, () -> Tags.Items.ORES_COPPER, () -> Items.RAW_COPPER, () -> Items.RAW_COPPER));

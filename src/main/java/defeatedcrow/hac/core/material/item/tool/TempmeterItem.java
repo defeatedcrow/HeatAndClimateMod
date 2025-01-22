@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.ChatFormatting;
@@ -45,9 +46,16 @@ public class TempmeterItem extends CraftingItemDC {
 	public InteractionResultHolder<ItemStack> onBlockHit(Level level, Player player, InteractionHand hand, ItemStack card, BlockHitResult res) {
 		player.startUsingItem(hand);
 		if (res != null) {
+			// debug log
+			ClimateSupplier sup = new ClimateSupplier(level, res.getBlockPos());
+			IClimate climate = sup.get();
+			DCLogger.infoLog("====== climate data ======");
+			DCLogger.infoLog("HeatTier: " + climate.getHeat());
+			DCLogger.infoLog("Heumidity: " + climate.getHumidity());
+			DCLogger.infoLog("Airflow: " + climate.getAirflow());
+			DCLogger.infoLog("==========================");
+
 			if (!level.isClientSide && player instanceof ServerPlayer sp) {
-				ClimateSupplier sup = new ClimateSupplier(level, res.getBlockPos());
-				IClimate climate = sup.get();
 				MutableComponent mes = Component.translatable("dcs.tip.temp").append(Component.literal(" " + climate.getHeat().name())).withStyle(climate.getHeat().getChatColor());
 				sp.sendSystemMessage(mes);
 				player.swing(hand, true);

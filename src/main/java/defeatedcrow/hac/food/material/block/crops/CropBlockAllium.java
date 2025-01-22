@@ -15,6 +15,7 @@ import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
@@ -63,7 +64,10 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 		CropStage stage = this.getCurrentStage(thisState);
 		if (stage != CropStage.FLOWER && stage != CropStage.DEAD) {
 			boolean clm = isSuitableForGrowing(world, pos, thisState);
-			int ret = clm ? 8 : 50;
+			int ret = clm ? 24 : 80;
+			if (ConfigCommonBuilder.INSTANCE.enHardCrop.get()) {
+				ret = clm ? 24 : 0;
+			}
 			BlockState under = world.getBlockState(pos.below());
 			if (isFarmland(under)) {
 				ret /= 2;

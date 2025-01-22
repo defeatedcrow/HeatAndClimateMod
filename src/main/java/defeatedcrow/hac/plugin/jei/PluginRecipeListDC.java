@@ -52,6 +52,10 @@ public class PluginRecipeListDC {
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_PARSNIP.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_CORIANDER.get());
 
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AR_BUCE.get());
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AR_TARO.get());
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AR_KONJAC.get());
+
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AS_ARTEMISIA.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AS_LETTUCE.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AS_PYRETHRUM.get());

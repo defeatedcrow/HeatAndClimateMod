@@ -21,6 +21,7 @@ public class TargetCropList {
 		INSTANCE.targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AL_WILD.get());
 		INSTANCE.targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AM_GOOSEFOOT.get());
 		INSTANCE.targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_CELERY.get());
+		INSTANCE.targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AR_BUCE.get());
 		INSTANCE.targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AS_ARTEMISIA.get());
 		INSTANCE.targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_BR_RAPESEED.get());
 		INSTANCE.targetList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CA_CHILI.get());
@@ -58,6 +59,7 @@ public class TargetCropList {
 			INSTANCE.commonList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AL_ONION.get());
 			INSTANCE.commonList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AM_GLASSWORT.get());
 			INSTANCE.commonList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_FENNEL.get());
+			INSTANCE.commonList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AR_TARO.get());
 			INSTANCE.commonList.add((ClimateCropBaseBlock) FoodInit.BLOCK_AS_LETTUCE.get());
 			INSTANCE.commonList.add((ClimateCropBaseBlock) FoodInit.BLOCK_BR_GREEN.get());
 			INSTANCE.commonList.add((ClimateCropBaseBlock) FoodInit.BLOCK_CA_BELL.get());

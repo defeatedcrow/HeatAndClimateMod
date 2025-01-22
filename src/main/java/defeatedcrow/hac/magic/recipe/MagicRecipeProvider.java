@@ -685,6 +685,13 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.save(cons, "dcs_climate:magic/mortar_crop_iris");
 
 		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_BLACK.get(), 1)
+				.requires(TagDC.ItemTag.KONJAC_FLOWER)
+				.requires(CoreInit.MORTAR.get())
+				.group("crusher_mortar")
+				.unlockedBy("has_flower_konjac", has(TagDC.ItemTag.KONJAC_FLOWER))
+				.save(cons, "dcs_climate:magic/mortar_flower_konjac");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.DROP_BLACK.get(), 1)
 				.requires(TagDC.ItemTag.CROP_DEVILSCLAW)
 				.requires(CoreInit.MORTAR.get())
 				.group("crusher_mortar")

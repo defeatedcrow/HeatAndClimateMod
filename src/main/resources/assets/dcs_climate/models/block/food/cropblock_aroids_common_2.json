@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/crop/aroids_taro_2"
+  },
+  "parent": "dcs_climate:block/dcs_cross"
+}

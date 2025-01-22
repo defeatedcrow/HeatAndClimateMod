@@ -308,7 +308,10 @@ public class CropBlockReed extends ClimateCropBaseBlock implements SimpleWaterlo
 
 	@Override
 	public List<DCAirflow> getSuitableAir(CropTier t) {
-		return ImmutableList.of(DCAirflow.FLOW, DCAirflow.WIND);
+		if (t == CropTier.WILD) {
+			return DCAirflow.elements();
+		}
+		return DCAirflow.exceptTight();
 	}
 
 	@Override

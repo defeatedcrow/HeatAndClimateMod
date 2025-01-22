@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.tag.TagUtil;
+import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -119,7 +120,8 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 						BlockPos p1 = pos.relative(dir, 2 + k).above(y);
 						BlockState soil = level.getBlockState(p1);
 						BlockState air = level.getBlockState(p1.above());
-						if (suitableSoil(crop, level, p1, soil) && canReplaceBlock(crop, air)) {
+						BlockState air2 = level.getBlockState(p1.above(2));
+						if (suitableSoil(crop, level, p1, soil) && canReplaceBlock(crop, air, air2)) {
 							BlockState nextState = crop.getFeatureState();
 
 							if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW)
@@ -142,7 +144,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 							int d = 3 + Mth.absFloor(dist);
 							boolean f = random.nextInt(d) == 0;
 
-							if (f && suitableSoil(crop, level, mpos, soil) && canReplaceBlock(crop, air) && air2.isAir()) {
+							if (f && suitableSoil(crop, level, mpos, soil) && canReplaceBlock(crop, air, air2)) {
 								BlockState nextState = crop.getFeatureState();
 
 								if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW)
@@ -181,12 +183,14 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		return crop.isSuitablePlace(level, p, soil) || soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW;
 	}
 
-	private static boolean canReplaceBlock(ClimateCropBaseBlock crop, BlockState state) {
-		if (crop.isAquaticPlant(crop.getTier())) {
-			return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && (state.getMaterial().isReplaceable() || state.getMaterial() == Material.TOP_SNOW);
+	private static boolean canReplaceBlock(ClimateCropBaseBlock crop, BlockState state, BlockState air) {
+		if (crop == FoodInit.BLOCK_AR_BUCE.get()) {
+			return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && state.getMaterial().isReplaceable();
 		}
-		return !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && (state.getMaterial().isReplaceable() || state.getMaterial() == Material.TOP_SNOW) && !state.getMaterial().isLiquid() && !(state
-				.getBlock() instanceof LiquidBlock);
+		if (air.isAir() && !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && (state.getMaterial().isReplaceable() || state.getMaterial() == Material.TOP_SNOW)) {
+			return crop.isAquaticPlant(crop.getTier()) || (!state.getMaterial().isLiquid() && !(state.getBlock() instanceof LiquidBlock));
+		}
+		return false;
 	}
 
 	private static boolean matchBiome(Holder<Biome> biome, int height, ClimateCropBaseBlock block) {

@@ -1,6 +1,9 @@
 {
   "textures": {
-    "cross": "dcs_climate:block/crop/aster_lettuce_3"
+    "crop": "dcs_climate:block/crop/aster_1",
+    "round": "dcs_climate:block/crop/aster_lettuce_round",
+    "leaves1": "dcs_climate:block/crop/aster_lettuce_leaves1",
+    "leaves2": "dcs_climate:block/crop/aster_lettuce_leaves2"
   },
-  "parent": "dcs_climate:block/dcs_cross"
+  "parent": "dcs_climate:block/dcs_crop_round"
 }

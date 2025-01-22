@@ -10,12 +10,15 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.crop.CropGrowType;
+import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class LeavesCherry extends LeavesCropBlockDC {
 
@@ -100,6 +103,30 @@ public class LeavesCherry extends LeavesCropBlockDC {
 	@Override
 	public String getSpeciesName(CropTier tier) {
 		return "wild";
+	}
+
+	/* 花の収穫ができる */
+	@Override
+	public boolean canHarvest(BlockState thisState) {
+		CropStage stage = this.getCurrentStage(thisState);
+		if (getTier() == CropTier.WILD || getTier() == CropTier.COMMON)
+			return stage == CropStage.FLOWER || stage == CropStage.GROWN;
+		return stage == CropStage.GROWN;
+	}
+
+	@Override
+	public List<ItemStack> getCropItems(BlockState state, int fortune) {
+		CropStage stage = this.getCurrentStage(state);
+		if (getTier() == CropTier.WILD && stage == CropStage.FLOWER) {
+			ItemStack ret = new ItemStack(FoodInit.FLOWER_CHERRY.get());
+			return ImmutableList.of(ret);
+		} else if (getTier() == CropTier.COMMON && stage == CropStage.FLOWER) {
+			ItemStack ret = new ItemStack(FoodInit.FLOWER_PLUM.get());
+			return ImmutableList.of(ret);
+		} else {
+			ItemStack ret = new ItemStack(getCropItem(getTier()));
+			return ImmutableList.of(ret);
+		}
 	}
 
 }
