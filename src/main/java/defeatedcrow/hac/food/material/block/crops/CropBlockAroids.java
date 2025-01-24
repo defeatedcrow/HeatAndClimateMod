@@ -233,8 +233,8 @@ public class CropBlockAroids extends ClimateCropBaseBlock implements SimpleWater
 	}
 
 	@Override
-	public boolean isAquaticPlant(CropTier tier) {
-		return tier == CropTier.WILD;
+	public AquaticType isAquaticPlant(CropTier tier) {
+		return tier == CropTier.WILD ? AquaticType.SUBMERGED : AquaticType.NONE;
 	}
 
 	@Override

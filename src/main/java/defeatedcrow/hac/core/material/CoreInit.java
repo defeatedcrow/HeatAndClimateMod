@@ -467,7 +467,7 @@ public class CoreInit {
 			() -> new ArmorItemDC("hair_flower_pyrethrum", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_KONJAC = regItem("hair_flower_konjac",
 			() -> new ArmorItemDC("hair_flower_konjac", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
-	public static final RegistryObject<Item> HAIR_FLOWER_CHRRRY = regItem("hair_flower_cherry",
+	public static final RegistryObject<Item> HAIR_FLOWER_CHERRY = regItem("hair_flower_cherry",
 			() -> new ArmorItemDC("hair_flower_cherry", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_PLUM = regItem("hair_flower_plum",
 			() -> new ArmorItemDC("hair_flower_plum", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));

@@ -1121,7 +1121,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.requires(TagDC.ItemTag.CROP_MANGO)
 				.group("drink_craft")
 				.unlockedBy("has_yogult", has(TagDC.ItemTag.YOGULT))
-				.save(cons, "dcs_climate:core/drink_lassi_plane_1");
+				.save(cons, "dcs_climate:core/drink_lassi_mango_1");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.DRINK_LASSI_CITRUS.get(), 1)
 				.requires(TagDC.ItemTag.YOGULT)

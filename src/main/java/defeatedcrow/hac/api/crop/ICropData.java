@@ -42,8 +42,8 @@ public interface ICropData {
 
 	String getSpeciesName(CropTier tier);
 
-	default boolean isAquaticPlant(CropTier tier) {
-		return false;
+	default AquaticType isAquaticPlant(CropTier tier) {
+		return AquaticType.NONE;
 	}
 
 	public enum SoilType {
@@ -53,6 +53,15 @@ public interface ICropData {
 		MUD,
 		WATER,
 		LOGS;
+	}
+
+	public enum AquaticType {
+		NONE,
+		EMERGED,
+		SUBMERGED,
+		FLOATING,
+		FORCED_EMERGED,
+		FORCED_SUBMERGED;
 	}
 
 }

@@ -32,6 +32,9 @@ public class PlantRecipes {
 		list1.add(new Seeding(FoodInit.BLOCK_AP_FENNEL, FoodInit.CROP_AP_FENNEL, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AP_PARSNIP, FoodInit.CROP_AP_PARSNIP, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AP_CORIANDER, FoodInit.CROP_AP_CORIANDER, 1));
+		list1.add(new Seeding(FoodInit.BLOCK_AR_BUCE, FoodInit.CROP_AR_BUCE, 1));
+		list1.add(new Seeding(FoodInit.BLOCK_AR_TARO, FoodInit.CROP_AR_TARO, 1));
+		list1.add(new Seeding(FoodInit.BLOCK_AR_KONJAC, FoodInit.CROP_AR_KONJAC, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AS_ARTEMISIA, FoodInit.CROP_AS_ARTEMISIA, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AS_LETTUCE, FoodInit.CROP_AS_LETTUCE, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AS_PYRETHRUM, FoodInit.CROP_AS_PYRETHRUM, 1));

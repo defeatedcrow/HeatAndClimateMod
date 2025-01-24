@@ -1,6 +1,7 @@
 {
   "values": [
     "#forge:seeds/celery",
+    "#forge:seeds/buce",
     "#forge:seeds/bindweed",
     "#forge:seeds/reed",
     "#forge:seeds/zizania",

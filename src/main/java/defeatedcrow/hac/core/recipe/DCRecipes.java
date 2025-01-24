@@ -47,7 +47,7 @@ public class DCRecipes {
 
 	public static void clear() {
 		SMELTING.clear();
-		HEAT_TREATMENT.clear();
+		// HEAT_TREATMENT.clear();
 		PULVERISE.clear();
 		SQUEEZE.clear();
 		FERMENTATION.clear();

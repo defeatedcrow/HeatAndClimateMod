@@ -92,6 +92,11 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public AquaticType isAquaticPlant(CropTier tier) {
+		return tier == CropTier.COMMON ? AquaticType.FLOATING : AquaticType.NONE;
+	}
+
+	@Override
 	public ItemLike getSeedItem(CropTier t) {
 		switch (t) {
 		case COMMON:

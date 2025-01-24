@@ -233,8 +233,8 @@ public class CropBlockReed extends ClimateCropBaseBlock implements SimpleWaterlo
 	}
 
 	@Override
-	public boolean isAquaticPlant(CropTier tier) {
-		return tier == CropTier.WILD;
+	public AquaticType isAquaticPlant(CropTier tier) {
+		return tier == CropTier.WILD ? AquaticType.EMERGED : AquaticType.NONE;
 	}
 
 	@Override

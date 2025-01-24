@@ -2576,6 +2576,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_crop_pyrethrum", has(TagDC.ItemTag.CROP_PYRETHRUM))
 				.save(cons, "dcs_climate:clothing/hair_flower_pyrethrum_0");
 
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_KONJAC.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.KONJAC_FLOWER)
+				.unlockedBy("has_flower_konjac", has(TagDC.ItemTag.KONJAC_FLOWER))
+				.save(cons, "dcs_climate:clothing/hair_flower_konjac_0");
+
 		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_CAMELLIA.get(), 1)
 				.requires(CoreInit.PATTERN_HAT.get())
 				.requires(TagDC.ItemTag.CROP_SCHIMA)
@@ -2591,6 +2599,22 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(FoodInit.FLOWER_SCHIMA.get())
 				.unlockedBy("has_flower_schima", has(FoodInit.FLOWER_SCHIMA.get()))
 				.save(cons, "dcs_climate:clothing/hair_flower_schima_0");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_CHERRY.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.CHERRY_FLOWER)
+				.unlockedBy("has_flower_cherry", has(TagDC.ItemTag.CHERRY_FLOWER))
+				.save(cons, "dcs_climate:clothing/hair_flower_cherry_0");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_PLUM.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.PLUM_FLOWER)
+				.unlockedBy("has_flower_plum", has(TagDC.ItemTag.PLUM_FLOWER))
+				.save(cons, "dcs_climate:clothing/hair_flower_plum_0");
 
 		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_HEATH.get(), 1)
 				.requires(CoreInit.PATTERN_HAT.get())

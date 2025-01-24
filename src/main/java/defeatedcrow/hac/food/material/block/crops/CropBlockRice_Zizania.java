@@ -239,8 +239,8 @@ public class CropBlockRice_Zizania extends ClimateCropBaseBlock implements Simpl
 	}
 
 	@Override
-	public boolean isAquaticPlant(CropTier tier) {
-		return tier == CropTier.WILD;
+	public AquaticType isAquaticPlant(CropTier tier) {
+		return tier == CropTier.WILD ? AquaticType.EMERGED : AquaticType.NONE;
 	}
 
 	@Override
