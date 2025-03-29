@@ -1798,6 +1798,7 @@
   "block.dcs_climate.machine.fluid_sink_black":"黒の流し台",
   "block.dcs_climate.machine.fluid_sink_lab":"ラボ風の流し台",
   "block.dcs_climate.machine.half_sink_brick":"レンガのハーフ流し台",
+  "block.dcs_climate.machine.half_sink_sus":"ステンレスのハーフ流し台",
   "block.dcs_climate.machine.hopper_filter":"フィルターホッパー",
   "block.dcs_climate.machine.hopper_gold":"金のホッパー",
   "block.dcs_climate.machine.hopper_filter_gold":"金のフィルターホッパー",

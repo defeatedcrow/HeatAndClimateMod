@@ -1793,6 +1793,7 @@
   "block.dcs_climate.machine.fluid_sink_brick":"Bricks Kitchen Sink",
   "block.dcs_climate.machine.half_sink_brick":"Bricks Half Sink",
   "block.dcs_climate.machine.fluid_sink_sus":"Metal Kitchen Sin",
+  "block.dcs_climate.machine.half_sink_sus":"Metal Half Sink",
   "block.dcs_climate.machine.fluid_sink_wood":"Wooden Kitchen Sin",
   "block.dcs_climate.machine.fluid_sink_black":"Black Kitchen Sin",
   "block.dcs_climate.machine.fluid_sink_lab":"Lab Kitchen Sin",

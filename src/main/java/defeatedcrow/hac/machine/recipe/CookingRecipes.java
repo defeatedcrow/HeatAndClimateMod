@@ -601,11 +601,11 @@ public class CookingRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.MIXED_SPICES), Ingredient.of(TagDC.ItemTag.CROP_TOMATO), Ingredient.of(TagDC.ItemTag.RAW_PORK),
 						Ingredient.of(TagDC.ItemTag.CROP_ONIONS), Ingredient.of(TagDC.ItemTag.CROP_GARLIC), Ingredient.of(TagDC.ItemTag.VINEGAR)));
 
-		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.CURRY_BIRIYANI.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.CURRY_BIRIYANI.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.DUST_AROMA_RICE), Ingredient.of(TagDC.ItemTag.HAC_CURRY), Ingredient.of(TagDC.ItemTag.RAW_CHICKEN),
 						Ingredient.of(TagDC.ItemTag.CROP_SAFFRON), Ingredient.of(TagDC.ItemTag.CROP_MINT), Ingredient.of(TagDC.ItemTag.YOGULT)));
 
-		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.CURRY_BIRIYANI.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.CURRY_BIRIYANI.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.DUST_AROMA_RICE), Ingredient.of(TagDC.ItemTag.HAC_CURRY), Ingredient.of(TagDC.ItemTag.RAW_MUTTON),
 						Ingredient.of(TagDC.ItemTag.CROP_SAFFRON), Ingredient.of(TagDC.ItemTag.CROP_MINT), Ingredient.of(TagDC.ItemTag.YOGULT)));
 

@@ -30,7 +30,7 @@ public class OmeletItem extends ItemEntityFood {
 		return BASIC;
 	}
 
-	public static final EntityRenderData BASIC = new EntityRenderData("food/omelet_basic", 0.85F, 0F);
-	public static final EntityRenderData VEGI = new EntityRenderData("food/omelet_vegi", 0.85F, 0F);
+	public static final EntityRenderData BASIC = new EntityRenderData("food/omelet_basic", 1.0F, 0F);
+	public static final EntityRenderData VEGI = new EntityRenderData("food/omelet_vegi", 1.0F, 0F);
 
 }

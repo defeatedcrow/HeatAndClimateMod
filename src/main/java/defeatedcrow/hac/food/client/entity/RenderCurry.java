@@ -51,7 +51,6 @@ public class RenderCurry<T extends FoodEntityBase> extends RenderFoodBase {
 
 			}
 		}
-		super.render(entity, yaw, partialTicks, poseStack, buffer, packedLight);
 	}
 
 	public static final EntityRenderData BOWL_METAL = new EntityRenderData("food/large_bowl_metal", 0.75F, 0F);

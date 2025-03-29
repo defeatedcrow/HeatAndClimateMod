@@ -61,7 +61,6 @@ public class RenderChazuke<T extends FoodEntityBase> extends RenderFoodBase {
 				poseStack.popPose();
 			}
 		}
-		super.render(entity, yaw, partialTicks, poseStack, buffer, packedLight);
 	}
 
 }

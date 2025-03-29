@@ -60,18 +60,18 @@ public class SauteItem extends ItemEntityFood {
 		return GREEN;
 	}
 
-	public static final EntityRenderData GREEN = new EntityRenderData("food/saute_green", 0.85F, 0F);
-	public static final EntityRenderData GREEN_SQUID = new EntityRenderData("food/saute_green_squid", 0.85F, 0F);
-	public static final EntityRenderData MABO = new EntityRenderData("food/saute_mabo_tofu", 0.85F, 0F);
-	public static final EntityRenderData NASU = new EntityRenderData("food/saute_yuxiang_qiezi", 0.85F, 0F);
-	public static final EntityRenderData MEAT = new EntityRenderData("food/saute_yuxiang_rousi", 0.85F, 0F);
-	public static final EntityRenderData FISH = new EntityRenderData("food/saute_gan_shao_yu", 0.85F, 0F);
-	public static final EntityRenderData PRAWN = new EntityRenderData("food/saute_gan_shao_xia", 0.85F, 0F);
-	public static final EntityRenderData WHITE_CHICKEN = new EntityRenderData("food/saute_baiqieji", 0.85F, 0F);
-	public static final EntityRenderData HOT_CHICKEN = new EntityRenderData("food/saute_koushuiji", 0.85F, 0F);
-	public static final EntityRenderData SANBEIJI = new EntityRenderData("food/saute_sanbeiji", 0.85F, 0F);
-	public static final EntityRenderData CRAB_EGG = new EntityRenderData("food/saute_fuyung_dan", 0.85F, 0F);
-	public static final EntityRenderData CASHEW_CHICKEN = new EntityRenderData("food/saute_cashew_chicken", 0.85F, 0F);
+	public static final EntityRenderData GREEN = new EntityRenderData("food/saute_green", 1.0F, 0F);
+	public static final EntityRenderData GREEN_SQUID = new EntityRenderData("food/saute_green_squid", 1.0F, 0F);
+	public static final EntityRenderData MABO = new EntityRenderData("food/saute_mabo_tofu", 1.0F, 0F);
+	public static final EntityRenderData NASU = new EntityRenderData("food/saute_yuxiang_qiezi", 1.0F, 0F);
+	public static final EntityRenderData MEAT = new EntityRenderData("food/saute_yuxiang_rousi", 1.0F, 0F);
+	public static final EntityRenderData FISH = new EntityRenderData("food/saute_gan_shao_yu", 1.0F, 0F);
+	public static final EntityRenderData PRAWN = new EntityRenderData("food/saute_gan_shao_xia", 1.0F, 0F);
+	public static final EntityRenderData WHITE_CHICKEN = new EntityRenderData("food/saute_baiqieji", 1.0F, 0F);
+	public static final EntityRenderData HOT_CHICKEN = new EntityRenderData("food/saute_koushuiji", 1.0F, 0F);
+	public static final EntityRenderData SANBEIJI = new EntityRenderData("food/saute_sanbeiji", 1.0F, 0F);
+	public static final EntityRenderData CRAB_EGG = new EntityRenderData("food/saute_fuyung_dan", 1.0F, 0F);
+	public static final EntityRenderData CASHEW_CHICKEN = new EntityRenderData("food/saute_cashew_chicken", 1.0F, 0F);
 
 	public static enum ModelType {
 		TOFU,

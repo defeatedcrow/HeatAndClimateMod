@@ -977,7 +977,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_squid", has(TagDC.ItemTag.SQUID))
 				.save(cons, "dcs_climate:food/sashimi_squid_2");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.CURRY_RICE.get(), 3)
+		ShapelessRecipeBuilder.shapeless(FoodInit.CURRY_RICE.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.HAC_CURRY))
 				.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
 				.unlockedBy("has_curry", has(TagDC.ItemTag.HAC_CURRY))
