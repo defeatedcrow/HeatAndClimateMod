@@ -1,0 +1,48 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/kobachi_flower",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/green_leafs"
+    },
+    {
+      "tag": "forge:crops/chrysanthemum"
+    },
+    {
+      "tag": "forge:ingredients/sprout"
+    },
+    {
+      "tag": "forge:mushrooms"
+    },
+    {
+      "tag": "forge:ingredients/vinegar"
+    },
+    {
+      "tag": "forge:ingredients/mentsuyu_soup"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

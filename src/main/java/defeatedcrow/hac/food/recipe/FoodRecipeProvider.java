@@ -329,6 +329,20 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_anko", has(TagDC.ItemTag.ANKO))
 				.save(cons, "dcs_climate:food/wagashi_kusa_0");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.WAGASHI_SAKURA.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.RICE_CAKE))
+				.requires(Ingredient.of(TagDC.ItemTag.ANKO))
+				.requires(Ingredient.of(TagDC.ItemTag.CHERRY_FLOWER))
+				.unlockedBy("has_anko", has(TagDC.ItemTag.ANKO))
+				.save(cons, "dcs_climate:food/wagashi_sakura_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.WAGASHI_DAIHUKU.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.RICE_CAKE))
+				.requires(Ingredient.of(TagDC.ItemTag.ANKO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_BEANS))
+				.unlockedBy("has_anko", has(TagDC.ItemTag.ANKO))
+				.save(cons, "dcs_climate:food/wagashi_daihuku_0");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.STICK_BEEF_RAW.get(), 1)
 				.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_BEEF))
@@ -835,6 +849,49 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
 				.unlockedBy("has_yogult", has(TagDC.ItemTag.YOGULT))
 				.save(cons, "dcs_climate:food/soup_tarator_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.KOBACHI_NAMASU.get(), 3)
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_RADISH))
+				.requires(Ingredient.of(Tags.Items.CROPS_CARROT))
+				.requires(Ingredient.of(TagDC.ItemTag.VINEGAR))
+				.requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+				.unlockedBy("has_vinegar", has(TagDC.ItemTag.VINEGAR))
+				.save(cons, "dcs_climate:food/kobachi_namasu_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.KOBACHI_YAKKO.get(), 3)
+				.requires(Ingredient.of(TagDC.ItemTag.TOFU))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS))
+				.requires(Ingredient.of(TagDC.ItemTag.SOYSAUCE))
+				.unlockedBy("has_tofu", has(TagDC.ItemTag.TOFU))
+				.save(cons, "dcs_climate:food/kobachi_yakko_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.KOBACHI_NAMEROU.get(), 3)
+				.requires(Ingredient.of(TagDC.ItemTag.FISH_BLUE))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER))
+				.requires(Ingredient.of(TagDC.ItemTag.MISO))
+				.unlockedBy("has_blue_fish", has(TagDC.ItemTag.FISH_BLUE))
+				.save(cons, "dcs_climate:food/kobachi_namerou_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.KOBACHI_TUNA_AVOCADO.get(), 3)
+				.requires(Ingredient.of(TagDC.ItemTag.TUNA))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_AVOCADO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_GARLIC))
+				.requires(Ingredient.of(TagDC.ItemTag.SOYSAUCE))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEMON))
+				.unlockedBy("has_tuna", has(TagDC.ItemTag.TUNA))
+				.save(cons, "dcs_climate:food/kobachi_tuna_avocado_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SAUTE_HOT_CHICKEN.get(), 1)
+				.requires(Ingredient.of(FoodInit.SAUTE_WHITE_CHICKEN.get()))
+				.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_SICHUAN_PEPPER))
+				.requires(Ingredient.of(TagDC.ItemTag.LIQUOR))
+				.requires(Ingredient.of(TagDC.ItemTag.SOYSAUCE))
+				.unlockedBy("has_white_chicken", has(FoodInit.SAUTE_WHITE_CHICKEN.get()))
+				.save(cons, "dcs_climate:food/boiled_spicy_chicken_0");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.LARGE_BOWL_CARPACCIO.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_BEEF))

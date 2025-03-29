@@ -1,0 +1,39 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/kobachi_radish_squid",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/radish"
+    },
+    {
+      "tag": "forge:ingredients/squid"
+    },
+    {
+      "tag": "forge:ingredients/mentsuyu_soup"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

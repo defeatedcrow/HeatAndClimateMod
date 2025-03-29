@@ -1,0 +1,45 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/ramen_okinawa",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/food_noodle_brine"
+    },
+    {
+      "tag": "forge:ingredients/basesoup"
+    },
+    {
+      "item": "dcs_climate:food/kobachi_pork"
+    },
+    {
+      "tag": "forge:crops/leeks"
+    },
+    {
+      "tag": "forge:crops/ginger"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

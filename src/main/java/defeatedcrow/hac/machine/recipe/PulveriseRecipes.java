@@ -343,6 +343,14 @@ public class PulveriseRecipes {
 				new ItemStack(Items.SUGAR, 5), new ItemStack(FoodInit.FOOD_BAGASSE.get()), 100, new ItemStack(FoodInit.FOOD_SYRUP.get()), 50, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_SUGAR)));
 
+		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
+				new ItemStack(FoodInit.DUST_PLANT.get(), 2), new ItemStack(Items.STICK, 1), 20, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(ItemTags.SAPLINGS)));
+
+		DeviceRecipeList.addPulverizeRecipe(2, RecipeTypeDC.PULVERISE,
+				new ItemStack(FoodInit.DUST_PLANT.get(), 1), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(ItemTags.LEAVES)));
+
 		// ores
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,

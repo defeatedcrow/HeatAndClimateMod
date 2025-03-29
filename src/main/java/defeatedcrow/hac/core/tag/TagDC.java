@@ -719,12 +719,15 @@ public class TagDC {
 		public static final TagKey<Item> MIXED_SPICES = itemTag("ingredients/mixed_spices");
 		public static final TagKey<Item> HUMMUS = itemTag("ingredients/hummus");
 		public static final TagKey<Item> SALSA = itemTag("ingredients/salsa");
+		public static final TagKey<Item> DOUBANJIANG = itemTag("ingredients/doubanjiang");
 		public static final TagKey<Item> VINEGAR = itemTag("ingredients/vinegar");
 
 		public static final TagKey<Item> SUGARS = itemTag("ingredients/sugars");
 		public static final TagKey<Item> JAM = itemTag("ingredients/fluit_jam");
 		public static final TagKey<Item> MARMALADE = itemTag("ingredients/marmalade");
 		public static final TagKey<Item> CUSTARD = itemTag("ingredients/custard");
+		public static final TagKey<Item> YUXIANG = itemTag("ingredients/yuxiang_sauce");
+		public static final TagKey<Item> MENTSUYU = itemTag("ingredients/mentsuyu_soup");
 		public static final TagKey<Item> ANKO = itemTag("ingredients/anko");
 		public static final TagKey<Item> TOFU = itemTag("ingredients/tofu");
 		public static final TagKey<Item> FRIED_TOFU = itemTag("ingredients/fried_tofu");
@@ -828,6 +831,8 @@ public class TagDC {
 		public static final TagKey<Item> HAC_PLATE_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/plate_meal"));
 		public static final TagKey<Item> HAC_SIDE_DISH = ItemTags.create(new ResourceLocation("dcs_climate", "meals/side_dish"));
 		public static final TagKey<Item> HAC_TEMPURA = ItemTags.create(new ResourceLocation("dcs_climate", "meals/tempura"));
+		public static final TagKey<Item> HAC_SAUTE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/saute"));
+		public static final TagKey<Item> HAC_KOBACHI = ItemTags.create(new ResourceLocation("dcs_climate", "meals/kobachi"));
 		public static final TagKey<Item> HAC_TART = ItemTags.create(new ResourceLocation("dcs_climate", "meals/tart"));
 		public static final TagKey<Item> HAC_SWEETS = ItemTags.create(new ResourceLocation("dcs_climate", "meals/sweets"));
 

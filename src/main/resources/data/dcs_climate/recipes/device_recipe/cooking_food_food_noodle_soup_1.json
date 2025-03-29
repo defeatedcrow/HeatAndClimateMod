@@ -1,0 +1,39 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/food_noodle_soup",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/basesoup"
+    },
+    {
+      "tag": "forge:ingredients/soysauce"
+    },
+    {
+      "tag": "forge:foods/liquor"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    }
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

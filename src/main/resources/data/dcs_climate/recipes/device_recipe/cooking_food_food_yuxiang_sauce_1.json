@@ -1,0 +1,45 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/food_yuxiang_sauce",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/soysauce"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    },
+    {
+      "tag": "forge:ingredients/vinegar"
+    },
+    {
+      "tag": "forge:ingredients/doubanjiang"
+    },
+    {
+      "tag": "forge:crops/leeks"
+    },
+    {
+      "tag": "forge:crops/chili"
+    }
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

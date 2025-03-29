@@ -1,0 +1,36 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/kobachi_bamboo",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/bamboo_shoot"
+    },
+    {
+      "tag": "forge:ingredients/mentsuyu_soup"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

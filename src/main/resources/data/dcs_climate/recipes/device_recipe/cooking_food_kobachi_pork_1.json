@@ -1,0 +1,42 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/kobachi_pork",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/raw_pork"
+    },
+    {
+      "tag": "forge:ingredients/soysauce"
+    },
+    {
+      "tag": "forge:foods/liquor"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

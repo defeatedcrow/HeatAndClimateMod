@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dcs_climate:food/boiled_spicy_chicken_0"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_chicken": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/saute_baiqieji"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_white_chicken",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dcs_climate:food/boiled_spicy_chicken_0"
+    ]
+  }
+}

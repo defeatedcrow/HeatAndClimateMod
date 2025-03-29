@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/tuna"
+    },
+    {
+      "tag": "forge:crops/avocado"
+    },
+    {
+      "tag": "forge:crops/onions"
+    },
+    {
+      "tag": "forge:crops/garlic"
+    },
+    {
+      "tag": "forge:ingredients/soysauce"
+    },
+    {
+      "tag": "forge:crops/lemon"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/kobachi_tuna_avocado"
+  }
+}

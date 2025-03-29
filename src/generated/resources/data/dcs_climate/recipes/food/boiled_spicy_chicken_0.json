@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/saute_baiqieji"
+    },
+    {
+      "tag": "forge:ingredients/plant_oil"
+    },
+    {
+      "tag": "forge:crops/chili"
+    },
+    {
+      "tag": "forge:crops/sichuan_pepper"
+    },
+    {
+      "tag": "forge:foods/liquor"
+    },
+    {
+      "tag": "forge:ingredients/soysauce"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/saute_koushuiji"
+  }
+}

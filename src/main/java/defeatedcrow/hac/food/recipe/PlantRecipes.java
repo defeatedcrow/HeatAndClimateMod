@@ -25,6 +25,7 @@ public class PlantRecipes {
 		list1.add(new Seeding(FoodInit.BLOCK_AL_WILD, FoodInit.CROP_AL_WILD, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AL_ONION, FoodInit.CROP_AL_ONION, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AL_GARLIC, FoodInit.CROP_AL_GARLIC, 1));
+		list1.add(new Seeding(FoodInit.BLOCK_AL_LEEK, FoodInit.CROP_AL_LEEK, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AM_GOOSEFOOT, FoodInit.CROP_AM_GOOSEFOOT, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AM_GLASSWORT, FoodInit.CROP_AM_GLASSWORT, 1));
 		list1.add(new Seeding(FoodInit.BLOCK_AM_SPINACH, FoodInit.CROP_AM_SPINACH, 1));

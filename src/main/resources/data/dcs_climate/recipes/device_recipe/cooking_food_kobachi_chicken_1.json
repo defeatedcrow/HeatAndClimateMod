@@ -1,0 +1,45 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/kobachi_chicken",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/raw_chicken"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:ingredients/soysauce"
+    },
+    {
+      "tag": "forge:ingredients/vinegar"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

@@ -77,6 +77,8 @@ public class WaBowlItem extends ItemEntityFood implements IPotFoods {
 			return MISO_MUSHROOM;
 		if (item == FoodInit.WABOWL_MISO_PORK.get())
 			return MISO_PORK;
+		if (item == FoodInit.WABOWL_MISO_CARP.get())
+			return MISO_CARP;
 		if (item == FoodInit.WABOWL_SHIRUKO.get())
 			return SHIRUKO;
 		return MISO_TOFU;
@@ -94,6 +96,8 @@ public class WaBowlItem extends ItemEntityFood implements IPotFoods {
 			return MISO_MUSHROOM_LAYER;
 		if (item == FoodInit.WABOWL_MISO_PORK.get())
 			return MISO_PORK_LAYER;
+		if (item == FoodInit.WABOWL_MISO_CARP.get())
+			return MISO_CARP_LAYER;
 		if (item == FoodInit.WABOWL_SHIRUKO.get())
 			return SHIRUKO_LAYER;
 		return MISO_TOFU_LAYER;
@@ -104,6 +108,7 @@ public class WaBowlItem extends ItemEntityFood implements IPotFoods {
 	public static final EntityRenderData MISO_EGGPLANT = new EntityRenderData("food/wabowl_miso_eggplant", 0.65F, 0F);
 	public static final EntityRenderData MISO_MUSHROOM = new EntityRenderData("food/wabowl_miso_mushroom", 0.65F, 0F);
 	public static final EntityRenderData MISO_PORK = new EntityRenderData("food/wabowl_miso_pork", 0.65F, 0F);
+	public static final EntityRenderData MISO_CARP = new EntityRenderData("food/wabowl_miso_carp", 0.65F, 0F);
 	public static final EntityRenderData SHIRUKO = new EntityRenderData("food/wabowl_shiruko", 0.65F, 0F);
 
 	public static final EntityRenderData MISO_TOFU_LAYER = new EntityRenderData("food/layer/wabowl_miso_tofu_layer", 0.75F, 0F);
@@ -111,6 +116,7 @@ public class WaBowlItem extends ItemEntityFood implements IPotFoods {
 	public static final EntityRenderData MISO_EGGPLANT_LAYER = new EntityRenderData("food/layer/wabowl_miso_eggplant_layer", 0.75F, 0F);
 	public static final EntityRenderData MISO_MUSHROOM_LAYER = new EntityRenderData("food/layer/wabowl_miso_mushroom_layer", 0.75F, 0F);
 	public static final EntityRenderData MISO_PORK_LAYER = new EntityRenderData("food/layer/wabowl_miso_pork_layer", 0.75F, 0F);
+	public static final EntityRenderData MISO_CARP_LAYER = new EntityRenderData("food/layer/wabowl_miso_carp_layer", 0.75F, 0F);
 	public static final EntityRenderData SHIRUKO_LAYER = new EntityRenderData("food/layer/wabowl_shiruko_layer", 0.75F, 0F);
 
 }

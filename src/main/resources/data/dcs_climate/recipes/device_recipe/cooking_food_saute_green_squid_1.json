@@ -1,0 +1,42 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/saute_green_squid",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/plant_oil"
+    },
+    {
+      "tag": "forge:crops/green_leafs"
+    },
+    {
+      "tag": "forge:ingredients/squid"
+    },
+    {
+      "tag": "forge:crops/chili"
+    },
+    {
+      "tag": "forge:crops/garlic"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

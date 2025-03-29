@@ -1,0 +1,39 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/kobachi_age",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/green_leafs"
+    },
+    {
+      "tag": "forge:ingredients/fried_tofu"
+    },
+    {
+      "tag": "forge:ingredients/mentsuyu_soup"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

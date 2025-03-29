@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/blue_fishes"
+    },
+    {
+      "tag": "forge:crops/leeks"
+    },
+    {
+      "tag": "forge:crops/ginger"
+    },
+    {
+      "tag": "forge:ingredients/miso"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/kobachi_namerou"
+  }
+}

@@ -12,13 +12,12 @@ import defeatedcrow.hac.food.material.entity.SobaItem;
 import defeatedcrow.hac.food.material.entity.UdonItem;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderUdon<T extends FoodEntityBase> extends EntityRenderer<T> {
+public class RenderUdon<T extends FoodEntityBase> extends RenderFoodBase {
 
 	protected SobaModel model;
 
@@ -28,12 +27,12 @@ public class RenderUdon<T extends FoodEntityBase> extends EntityRenderer<T> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(T entity) {
+	public ResourceLocation getTextureLocation(FoodEntityBase entity) {
 		return UdonItem.SIMPLE.getTextureLocation();
 	}
 
 	@Override
-	public void render(T entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+	public void render(FoodEntityBase entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		if (entity != null) {
 			Item item = entity.getItem().getItem();
 			if (item instanceof IEntityItem && ((IEntityItem) item).getRenderData(item) != null) {

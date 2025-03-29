@@ -10,13 +10,12 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.food.client.model.LargeBowlModel;
 import defeatedcrow.hac.food.material.entity.FoodEntityBase;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderCurry<T extends FoodEntityBase> extends EntityRenderer<T> {
+public class RenderCurry<T extends FoodEntityBase> extends RenderFoodBase {
 
 	protected LargeBowlModel model;
 
@@ -26,12 +25,12 @@ public class RenderCurry<T extends FoodEntityBase> extends EntityRenderer<T> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(T entity) {
+	public ResourceLocation getTextureLocation(FoodEntityBase entity) {
 		return BOWL_METAL.getTextureLocation();
 	}
 
 	@Override
-	public void render(T entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+	public void render(FoodEntityBase entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		if (entity != null) {
 			Item item = entity.getItem().getItem();
 			if (item instanceof IEntityItem && ((IEntityItem) item).getRenderData(item) != null) {

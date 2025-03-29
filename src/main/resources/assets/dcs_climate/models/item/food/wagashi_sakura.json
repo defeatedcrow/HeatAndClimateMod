@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/wagashi_sakura"
+  },
+  "parent": "minecraft:item/generated"
+}

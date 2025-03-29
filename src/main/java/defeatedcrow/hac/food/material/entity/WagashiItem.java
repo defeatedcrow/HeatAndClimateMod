@@ -53,11 +53,17 @@ public class WagashiItem extends ItemEntityFood {
 			return BOTA;
 		if (item == FoodInit.WAGASHI_KUSA.get())
 			return KUSA;
+		if (item == FoodInit.WAGASHI_SAKURA.get())
+			return SAKURA;
+		if (item == FoodInit.WAGASHI_DAIHUKU.get())
+			return DAIHUKU;
 
 		return BOTA;
 	}
 
 	public static final EntityRenderData BOTA = new EntityRenderData("food/wagashi_bota", 0.75F, 0F);
 	public static final EntityRenderData KUSA = new EntityRenderData("food/wagashi_kusa", 0.75F, 0F);
+	public static final EntityRenderData SAKURA = new EntityRenderData("food/wagashi_sakura", 0.75F, 0F);
+	public static final EntityRenderData DAIHUKU = new EntityRenderData("food/wagashi_daihuku", 0.75F, 0F);
 
 }

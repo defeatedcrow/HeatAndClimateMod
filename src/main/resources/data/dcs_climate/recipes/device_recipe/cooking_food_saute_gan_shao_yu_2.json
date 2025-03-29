@@ -1,0 +1,39 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/saute_gan_shao_yu",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/plant_oil"
+    },
+    {
+      "tag": "forge:ingredients/carp"
+    },
+    {
+      "tag": "forge:ingredients/raw_pork"
+    },
+    {
+      "tag": "forge:ingredients/yuxiang_sauce"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

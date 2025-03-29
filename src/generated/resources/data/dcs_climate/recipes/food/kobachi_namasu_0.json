@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/radish"
+    },
+    {
+      "tag": "forge:crops/carrot"
+    },
+    {
+      "tag": "forge:ingredients/vinegar"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/kobachi_namasu"
+  }
+}

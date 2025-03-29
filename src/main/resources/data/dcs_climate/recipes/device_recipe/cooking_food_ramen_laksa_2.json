@@ -1,0 +1,48 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/ramen_laksa",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/food_noodle_rice"
+    },
+    {
+      "tag": "forge:ingredients/basesoup"
+    },
+    {
+      "tag": "forge:ingredients/prawn"
+    },
+    {
+      "tag": "forge:ingredients/fried_tofu"
+    },
+    {
+      "tag": "forge:ingredients/coconut_milk"
+    },
+    {
+      "tag": "forge:ingredients/mixed_spices"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/zarusoba_tea",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/food_noodle_buckwheat"
+    },
+    {
+      "tag": "forge:ingredients/mentsuyu_soup"
+    },
+    {
+      "tag": "forge:crops/leeks"
+    },
+    {
+      "tag": "forge:ingredients/tea_leaves_green"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

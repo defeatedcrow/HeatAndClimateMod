@@ -1,7 +1,11 @@
 package defeatedcrow.hac.food.material.item;
 
+import com.google.common.collect.ImmutableMap;
+
 import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.util.TagKeyDC;
+import defeatedcrow.hac.core.json.JsonModelDC;
+import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.item.MaterialItemDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -88,6 +92,11 @@ public class FoodMaterialItemDC extends MaterialItemDC implements IFoodTaste {
 	@Override
 	public boolean isSeasoning() {
 		return seasoning;
+	}
+
+	@Override
+	public JsonModelSimpleDC getItemModel() {
+		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/material/" + name));
 	}
 
 }

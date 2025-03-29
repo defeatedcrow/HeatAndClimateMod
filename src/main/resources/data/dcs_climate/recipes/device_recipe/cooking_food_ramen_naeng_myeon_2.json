@@ -1,0 +1,48 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/ramen_naeng_myeon",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/food_noodle_buckwheat"
+    },
+    {
+      "item": "dcs_climate:food/food_basesoup_beef"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:crops/cucumber"
+    },
+    {
+      "item": "dcs_climate:food/sashimi_white"
+    },
+    {
+      "item": "dcs_climate:food/food_kimchi"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

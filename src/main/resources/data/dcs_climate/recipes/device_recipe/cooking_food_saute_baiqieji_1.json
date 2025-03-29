@@ -1,0 +1,47 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/saute_baiqieji",
+    "count": 1
+  },
+  "secondary": {
+    "item": "dcs_climate:food/food_basesoup_chicken",
+    "count": 1
+  },
+  "secondary_rate": 100,
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/raw_chicken"
+    },
+    {
+      "tag": "forge:crops/leeks"
+    },
+    {
+      "tag": "forge:crops/ginger"
+    },
+    {
+      "tag": "forge:foods/liquor"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

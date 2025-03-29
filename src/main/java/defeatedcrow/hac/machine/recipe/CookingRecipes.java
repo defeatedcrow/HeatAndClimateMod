@@ -187,6 +187,20 @@ public class CookingRecipes {
 				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_BUCKWHEAT.get()), Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS),
 						Ingredient.of(TagDC.ItemTag.HAC_TEMPURA)));
 
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.ZARUSOBA_SIMPLE.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_BUCKWHEAT.get()), Ingredient.of(TagDC.ItemTag.MENTSUYU), Ingredient.of(TagDC.ItemTag.CROP_LEEKS)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.ZARUSOBA_TEA.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_BUCKWHEAT.get()), Ingredient.of(TagDC.ItemTag.MENTSUYU), Ingredient.of(TagDC.ItemTag.CROP_LEEKS),
+						Ingredient.of(TagDC.ItemTag.TEA_LEAVES_GREEN)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.ZARUSOBA_SISO.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_BUCKWHEAT.get()), Ingredient.of(TagDC.ItemTag.MENTSUYU), Ingredient.of(TagDC.ItemTag.CROP_LEEKS),
+						Ingredient.of(TagDC.ItemTag.CROP_PERILLA)));
+
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RAMEN_SHOYU.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
 				ImmutableList.of(FluidTags.WATER.location().toString()),
 				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_BRINE.get()), Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.SOYSAUCE),
@@ -207,6 +221,16 @@ public class CookingRecipes {
 				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_BRINE.get()), Ingredient.of(FoodInit.BASESOUP_PORK.get()), Ingredient.of(TagDC.ItemTag.CROP_LEEKS),
 						Ingredient.of(TagDC.ItemTag.CROP_GINGER), Ingredient.of(Tags.Items.EGGS), Ingredient.of(TagDC.ItemTag.RAW_PORK)));
 
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RAMEN_OKINAWA.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_BRINE.get()), Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(FoodInit.KOBACHI_PORK.get()),
+						Ingredient.of(TagDC.ItemTag.CROP_LEEKS), Ingredient.of(TagDC.ItemTag.CROP_GINGER)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RAMEN_HOUTOU.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_WHEAT.get()), Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(Tags.Items.MUSHROOMS),
+						Ingredient.of(TagDC.ItemTag.CROP_PUMPKIN), Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS), Ingredient.of(TagDC.ItemTag.MISO)));
+
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RAMEN_TANTAN.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
 				ImmutableList.of(FluidTags.WATER.location().toString()),
 				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_BRINE.get()), Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.CROP_CHILI),
@@ -221,6 +245,31 @@ public class CookingRecipes {
 				ImmutableList.of(FluidTags.WATER.location().toString()),
 				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_BRINE.get()), Ingredient.of(FoodInit.BASESOUP_BEEF.get()), Ingredient.of(TagDC.ItemTag.CROP_CHILI),
 						Ingredient.of(TagDC.ItemTag.CROP_CORIANDER), Ingredient.of(Tags.Items.EGGS), Ingredient.of(TagDC.ItemTag.RAW_BEEF)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RAMEN_REIMEN.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_BUCKWHEAT.get()), Ingredient.of(FoodInit.BASESOUP_BEEF.get()), Ingredient.of(Tags.Items.EGGS),
+						Ingredient.of(TagDC.ItemTag.CROP_CUCUMBER), Ingredient.of(TagDC.ItemTag.COOKED_BEEF), Ingredient.of(FoodInit.FOOD_KIMCHI.get())));
+
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RAMEN_REIMEN.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_BUCKWHEAT.get()), Ingredient.of(FoodInit.BASESOUP_BEEF.get()), Ingredient.of(Tags.Items.EGGS),
+						Ingredient.of(TagDC.ItemTag.CROP_CUCUMBER), Ingredient.of(FoodInit.SASHIMI_WHITE.get()), Ingredient.of(FoodInit.FOOD_KIMCHI.get())));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RAMEN_LAKSA.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_WHEAT.get()), Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.PRAWN),
+						Ingredient.of(TagDC.ItemTag.FRIED_TOFU), Ingredient.of(TagDC.ItemTag.COCONUT_MILK), Ingredient.of(TagDC.ItemTag.MIXED_SPICES)));
+
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RAMEN_LAKSA.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_RICE.get()), Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.PRAWN),
+						Ingredient.of(TagDC.ItemTag.FRIED_TOFU), Ingredient.of(TagDC.ItemTag.COCONUT_MILK), Ingredient.of(TagDC.ItemTag.MIXED_SPICES)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RAMEN_TOMYUM.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(FoodInit.NOODLE_RICE.get()), Ingredient.of(FoodInit.STEW_TOMYUMGOONG.get()), Ingredient.of(TagDC.ItemTag.PRAWN),
+						Ingredient.of(Tags.Items.EGGS), Ingredient.of(TagDC.ItemTag.CROP_CORIANDER)));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SOUP_CREAM_POTATO.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(Tags.Items.CROPS_POTATO), Ingredient.of(TagDC.ItemTag.CREAMS),
@@ -390,12 +439,139 @@ public class CookingRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.MISO), Ingredient.of(TagDC.ItemTag.RAW_PORK),
 						Ingredient.of(Tags.Items.CROPS_CARROT), Ingredient.of(Tags.Items.MUSHROOMS), Ingredient.of(TagDC.ItemTag.CROP_RADISH)));
 
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.WABOWL_MISO_CARP.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.MISO), Ingredient.of(TagDC.ItemTag.LIQUOR), Ingredient.of(TagDC.ItemTag.CARP),
+						Ingredient.of(TagDC.ItemTag.CROP_LEEKS)));
+
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.WABOWL_SHIRUKO.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_ADZUKI), Ingredient.of(TagDC.ItemTag.RICE_CAKE), Ingredient.of(TagDC.ItemTag.RICE_CAKE),
 						Ingredient.of(TagDC.ItemTag.SUGARS)));
 
 		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.WABOWL_SHIRUKO.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.ANKO), Ingredient.of(TagDC.ItemTag.RICE_CAKE), Ingredient.of(TagDC.ItemTag.RICE_CAKE)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.KOBACHI_PUMPKIN.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_PUMPKIN), Ingredient.of(TagDC.ItemTag.MENTSUYU)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.KOBACHI_TARO.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_TARO), Ingredient.of(TagDC.ItemTag.MENTSUYU)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.KOBACHI_TARO_SQUID.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_TARO), Ingredient.of(TagDC.ItemTag.SQUID), Ingredient.of(TagDC.ItemTag.MENTSUYU)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.KOBACHI_RADISH_SQUID.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_RADISH), Ingredient.of(TagDC.ItemTag.SQUID), Ingredient.of(TagDC.ItemTag.MENTSUYU)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.KOBACHI_BAMBOO.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.BAMBOO_SHOOT), Ingredient.of(TagDC.ItemTag.MENTSUYU)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.KOBACHI_TIKUZEN.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.RAW_CHICKEN), Ingredient.of(TagDC.ItemTag.KONJAC), Ingredient.of(TagDC.ItemTag.CROP_TARO),
+						Ingredient.of(Tags.Items.CROPS_CARROT), Ingredient.of(Tags.Items.MUSHROOMS), Ingredient.of(TagDC.ItemTag.MENTSUYU)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.KOBACHI_CHICKEN.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.RAW_CHICKEN), Ingredient.of(Tags.Items.EGGS), Ingredient.of(TagDC.ItemTag.SOYSAUCE),
+						Ingredient.of(TagDC.ItemTag.VINEGAR), Ingredient.of(TagDC.ItemTag.SUGARS)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.KOBACHI_PORK.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.RAW_PORK), Ingredient.of(TagDC.ItemTag.SOYSAUCE),
+						Ingredient.of(TagDC.ItemTag.LIQUOR), Ingredient.of(TagDC.ItemTag.SUGARS)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.KOBACHI_AGE.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS), Ingredient.of(TagDC.ItemTag.FRIED_TOFU), Ingredient.of(TagDC.ItemTag.MENTSUYU)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.KOBACHI_FLOWER.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS), Ingredient.of(TagDC.ItemTag.CROP_CHRYSANTHEMUM), Ingredient.of(TagDC.ItemTag.SPROUT),
+						Ingredient.of(Tags.Items.MUSHROOMS), Ingredient.of(TagDC.ItemTag.VINEGAR), Ingredient.of(TagDC.ItemTag.MENTSUYU)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.KOBACHI_WHITE.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.TOFU), Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS), Ingredient.of(TagDC.ItemTag.KONJAC),
+						Ingredient.of(Tags.Items.CROPS_CARROT), Ingredient.of(TagDC.ItemTag.CROP_SESAMI), Ingredient.of(TagDC.ItemTag.MISO)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.OMELET_BASIC.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(Tags.Items.EGGS), Ingredient.of(TagDC.ItemTag.FOOD_FAT)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.OMELET_VEGI.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(Tags.Items.EGGS), Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS), Ingredient.of(TagDC.ItemTag.CROP_TOMATO),
+						Ingredient.of(TagDC.ItemTag.FOOD_FAT)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_CHILI_GREEN.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS), Ingredient.of(TagDC.ItemTag.CROP_CHILI),
+						Ingredient.of(TagDC.ItemTag.CROP_GARLIC)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_GREEN_SQUID.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS), Ingredient.of(TagDC.ItemTag.SQUID),
+						Ingredient.of(TagDC.ItemTag.CROP_CHILI), Ingredient.of(TagDC.ItemTag.CROP_GARLIC)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_MABO.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.TOFU),
+						Ingredient.of(TagDC.ItemTag.RAW_PORK), Ingredient.of(TagDC.ItemTag.DOUBANJIANG), Ingredient.of(TagDC.ItemTag.CROP_SICHUAN_PEPPER)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_CHILI_NASU.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.CROP_EGGPLANT), Ingredient.of(TagDC.ItemTag.RAW_PORK),
+						Ingredient.of(TagDC.ItemTag.YUXIANG)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_CHILI_MEAT.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.RAW_PORK), Ingredient.of(TagDC.ItemTag.BAMBOO_SHOOT),
+						Ingredient.of(Tags.Items.MUSHROOMS), Ingredient.of(TagDC.ItemTag.CROP_BELL), Ingredient.of(TagDC.ItemTag.YUXIANG)));
+
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_CHILI_MEAT.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.RAW_PORK), Ingredient.of(TagDC.ItemTag.BAMBOO_SHOOT),
+						Ingredient.of(Tags.Items.MUSHROOMS), Ingredient.of(TagDC.ItemTag.CROP_PAPRIKA), Ingredient.of(TagDC.ItemTag.YUXIANG)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_CHILI_FISH.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.FISH_WHITE), Ingredient.of(TagDC.ItemTag.RAW_PORK),
+						Ingredient.of(TagDC.ItemTag.YUXIANG)));
+
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_CHILI_FISH.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.CARP), Ingredient.of(TagDC.ItemTag.RAW_PORK),
+						Ingredient.of(TagDC.ItemTag.YUXIANG)));
+
+		DeviceRecipeList.addCookingRecipe(3, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_CHILI_FISH.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.TROUT), Ingredient.of(TagDC.ItemTag.RAW_PORK),
+						Ingredient.of(TagDC.ItemTag.YUXIANG)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_CHILI_PRAWN.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.PRAWN), Ingredient.of(TagDC.ItemTag.CROP_LEEKS),
+						Ingredient.of(TagDC.ItemTag.CROP_GARLIC), Ingredient.of(TagDC.ItemTag.CROP_SICHUAN_PEPPER), Ingredient.of(TagDC.ItemTag.DOUBANJIANG)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_WHITE_CHICKEN.get(), 1),
+				new ItemStack(FoodInit.BASESOUP_CHICKEN.get(), 1), 100, FluidStack.EMPTY, heat,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.RAW_CHICKEN), Ingredient.of(TagDC.ItemTag.CROP_LEEKS), Ingredient.of(TagDC.ItemTag.CROP_GINGER),
+						Ingredient.of(TagDC.ItemTag.LIQUOR)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_SANBEIJI.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.RAW_CHICKEN), Ingredient.of(TagDC.ItemTag.SOYSAUCE),
+						Ingredient.of(TagDC.ItemTag.LIQUOR), Ingredient.of(TagDC.ItemTag.CROP_CHILI), Ingredient.of(TagDC.ItemTag.CROP_BASIL)));
+
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_SANBEIJI.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.FROG), Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.SOYSAUCE),
+						Ingredient.of(TagDC.ItemTag.LIQUOR), Ingredient.of(TagDC.ItemTag.CROP_CHILI), Ingredient.of(TagDC.ItemTag.CROP_BASIL)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_CASHEW_CHICKEN.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.RAW_CHICKEN), Ingredient.of(TagDC.ItemTag.CROP_BELL),
+						Ingredient.of(TagDC.ItemTag.CASHEW_NUTS), Ingredient.of(TagDC.ItemTag.SOYSAUCE), Ingredient.of(TagDC.ItemTag.BASESOUP)));
+
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_CASHEW_CHICKEN.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.PLANT_OIL), Ingredient.of(TagDC.ItemTag.RAW_CHICKEN), Ingredient.of(TagDC.ItemTag.CROP_PAPRIKA),
+						Ingredient.of(TagDC.ItemTag.CASHEW_NUTS), Ingredient.of(TagDC.ItemTag.SOYSAUCE), Ingredient.of(TagDC.ItemTag.BASESOUP)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SAUTE_CRAB_EGG.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+				ImmutableList.of(Ingredient.of(Tags.Items.EGGS), Ingredient.of(TagDC.ItemTag.CRAB), Ingredient.of(TagDC.ItemTag.CROP_GREEN_PEAS),
+						Ingredient.of(Tags.Items.MUSHROOMS), Ingredient.of(TagDC.ItemTag.CROP_LEEKS), Ingredient.of(TagDC.ItemTag.BASESOUP)));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.CURRY_VEGI.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.MIXED_SPICES), Ingredient.of(TagDC.ItemTag.CROP_TOMATO), Ingredient.of(TagDC.ItemTag.CROP_BEANS),
@@ -600,6 +776,14 @@ public class CookingRecipes {
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_BECHAMEL_SAUCE.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.FOOD_FAT), Ingredient.of(TagDC.ItemTag.DUST_WHEAT), Ingredient.of(TagDC.ItemTag.MILKS)));
 
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_YUXIANG_SAUCE.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.SOYSAUCE), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(TagDC.ItemTag.VINEGAR),
+						Ingredient.of(TagDC.ItemTag.DOUBANJIANG), Ingredient.of(TagDC.ItemTag.CROP_LEEKS), Ingredient.of(TagDC.ItemTag.CROP_CHILI)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_NOODLE_SOUP.get()), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.SOYSAUCE), Ingredient.of(TagDC.ItemTag.LIQUOR),
+						Ingredient.of(TagDC.ItemTag.SUGARS)));
+
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_CHEESE.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.COW_MILK), Ingredient.of(TagDC.ItemTag.RENNET)));
@@ -695,6 +879,11 @@ public class CookingRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_TOMATO), Ingredient.of(TagDC.ItemTag.CROP_CHILI), Ingredient.of(TagDC.ItemTag.CROP_ONION),
 						Ingredient.of(TagDC.ItemTag.CROP_PAPRIKA), Ingredient.of(TagDC.ItemTag.CROP_HERBS), Ingredient.of(TagDC.ItemTag.CROP_LEMON)));
 
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_DOUBANJIANG.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+				tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_CHILI), Ingredient.of(TagDC.ItemTag.CROP_BEANS), Ingredient.of(TagDC.ItemTag.DUST_SALT),
+						Ingredient.of(TagDC.ItemTag.DUST_WHEAT)));
+
 		// other
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(Items.BROWN_DYE, 8), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				ImmutableList.of(FluidTags.WATER.location().toString()),
@@ -782,6 +971,11 @@ public class CookingRecipes {
 				boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.FISH_WHITE), Ingredient.of(Tags.Items.CROPS_POTATO), Ingredient.of(TagDC.ItemTag.MILKS),
 						Ingredient.of(TagDC.ItemTag.CROP_HERBS), Ingredient.of(TagDC.ItemTag.BATTER), Ingredient.of(TagDC.ItemTag.BREAD)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.KOBACHI_POTATO.get(), 1), ItemStack.EMPTY, 0,
+				new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+				boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_SWEET_POTATO), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(TagDC.ItemTag.CROP_SESAMI)));
 
 		// tea
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.TEA, new ItemStack(FoodInit.DRINK_APPLE.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, cool,

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/kobachi_tuna_avocado"
+  },
+  "parent": "minecraft:item/generated"
+}

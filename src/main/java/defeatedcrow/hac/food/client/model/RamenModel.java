@@ -48,6 +48,16 @@ public class RamenModel<T extends Entity> extends EntityModel<T> {
 				.texOffs(19, 19).addBox(-3.0F, 2.9F, -3.0F, 6.0F, 0.0F, 6.0F, new CubeDeformation(0.0F))
 				.texOffs(52, 10).addBox(-1.5F, 2.8F, -1.5F, 3.0F, 1.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -8.0F, 0.0F));
 
+		PartDefinition prawn4_r1 = meal.addOrReplaceChild("prawn4_r1", CubeListBuilder.create()
+				.texOffs(46, 29).addBox(-1.0F, 3.2F, -4.0F, 2.0F, 0.0F, 3.0F, new CubeDeformation(0.0F))
+				.texOffs(42, 25).addBox(-1.0F, 3.0F, -1.0F, 2.0F, 1.0F, 2.0F, new CubeDeformation(0.0F))
+				.texOffs(42, 29).addBox(-1.0F, 3.0F, -3.0F, 1.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, -0.5236F, 0.2618F, 0.0F));
+
+		PartDefinition prawn3_r1 = meal.addOrReplaceChild("prawn3_r1", CubeListBuilder.create()
+				.texOffs(46, 29).addBox(-1.5F, 3.7F, -5.0F, 2.0F, 0.0F, 3.0F, new CubeDeformation(0.0F))
+				.texOffs(42, 25).addBox(-1.5F, 3.5F, -2.0F, 2.0F, 1.0F, 2.0F, new CubeDeformation(0.0F))
+				.texOffs(42, 29).addBox(-1.5F, 3.5F, -4.0F, 1.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, -0.5236F, 0.6109F, 0.0F));
+
 		PartDefinition na2_r1 = meal.addOrReplaceChild("na2", CubeListBuilder.create()
 				.texOffs(38, 20).addBox(-2.0F, 4.2F, -4.0F, 3.0F, 0.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, -0.6981F, 0.6109F, 0.0F));
 

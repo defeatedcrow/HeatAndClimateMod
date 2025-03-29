@@ -123,10 +123,10 @@ public class BoilerBiomassTile extends HeatSourceTile implements IPowerSource, I
 				flag = FluidUtil.getFluidHandler(copy)
 						.map(handler -> {
 							FluidStack fluid = handler.getFluidInTank(0);
-							if (fluid.isEmpty() || tank.isFull()) {
+							if (fluid.isEmpty() && !tank.isEmpty()) {
 								int space = Math.min(tank.getFluidAmount(), handler.getTankCapacity(0));
 								int d = handler.fill(tank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
-								if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
+								if (d > 0 && inventory.canInsertResult(handler.getContainer().copy(), 8, 8) != 0) {
 									// drain
 									tank.drain(d, FluidAction.EXECUTE);
 									ItemStack ret = handler.getContainer().copy();
@@ -140,7 +140,7 @@ public class BoilerBiomassTile extends HeatSourceTile implements IPowerSource, I
 							} else if (handler.isFluidValid(8000, fluid)) {
 								FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
 								int f = tank.fill(drain, FluidAction.SIMULATE);
-								if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
+								if (f > 0 && inventory.canInsertResult(handler.getContainer().copy(), 8, 8) != 0) {
 									// fill
 									drain.setAmount(f);
 									tank.fill(drain, FluidAction.EXECUTE);
@@ -188,7 +188,7 @@ public class BoilerBiomassTile extends HeatSourceTile implements IPowerSource, I
 
 	@Override
 	public int getContainerSize() {
-		return 8;
+		return 9;
 	}
 
 	@Override

@@ -24,6 +24,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -164,6 +165,9 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 
 									if (crop.getGrowType(crop.getTier()) == CropGrowType.VINE || crop.getGrowType(crop.getTier()) == CropGrowType.EPIPHYTE) {
 										nextState = crop.updateShape(nextState, Direction.DOWN, nextState, level, mpos.above(), mpos);
+									}
+									if (isWater(air) && nextState.hasProperty(BlockStateProperties.WATERLOGGED)) {
+										nextState = nextState.setValue(BlockStateProperties.WATERLOGGED, true);
 									}
 									level.setBlock(mpos.above(), nextState, 2);
 									// 二段作物は二段の状態で生えてくる

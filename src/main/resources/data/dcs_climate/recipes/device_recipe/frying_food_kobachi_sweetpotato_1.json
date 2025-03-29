@@ -1,0 +1,43 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "frying",
+  "result": {
+    "item": "dcs_climate:food/kobachi_sweetpotato",
+    "count": 1
+  },
+  "result_fluid": {
+    "fluid": "dcs_climate:used_plant_oil",
+    "amount": 200
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/sweet_potato"
+    },
+    {
+      "tag": "forge:ingredients/sugars"
+    },
+    {
+      "tag": "forge:crops/sesami"
+    }
+  ],
+  "input_fluids": [
+    "forge:plant_oil"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

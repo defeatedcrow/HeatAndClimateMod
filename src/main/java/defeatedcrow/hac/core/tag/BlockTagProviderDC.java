@@ -229,8 +229,7 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 				FoodInit.CONT_LOG_ACACIA.get(), FoodInit.CONT_LOG_DARKOAK.get(), FoodInit.CONT_LOG_MANGROVE.get(), FoodInit.CONT_LOG_CRIMSON.get(), FoodInit.CONT_LOG_WARPED.get(),
 				FoodInit.CONT_LOG_BH_COMMON.get(), FoodInit.CONT_LOG_BH_WALNUT.get(), FoodInit.CONT_LOG_BH_SWEET.get(), FoodInit.CONT_LOG_CH_WILD.get(), FoodInit.CONT_LOG_CN_CAMPHOR.get(),
 				FoodInit.CONT_LOG_CN_CINNAMON.get(), FoodInit.CONT_LOG_CT_POMELO.get(), FoodInit.CONT_LOG_MR_MULBERRY.get(), FoodInit.CONT_LOG_MR_PAPER.get(), FoodInit.CONT_LOG_MR_RUBBER.get(),
-				FoodInit.CONT_LOG_OL_ASH.get(), FoodInit.CONT_LOG_PL_COCONUT.get(), FoodInit.CONT_LOG_SU_LACQUER.get(), FoodInit.CONT_LOG_SU_MANGO.get(), FoodInit.CONT_LOG_CHARCOAL.get(),
-				FoodInit.CONT_LOG_MY_EUCALYPTUS.get());
+				FoodInit.CONT_LOG_OL_ASH.get(), FoodInit.CONT_LOG_PL_COCONUT.get(), FoodInit.CONT_LOG_SU_LACQUER.get(), FoodInit.CONT_LOG_SU_MANGO.get(), FoodInit.CONT_LOG_MY_EUCALYPTUS.get());
 
 		tag(TagDC.BlockTag.CONT_CHARCOAL).add(FoodInit.CONT_LOG_CHARCOAL.get());
 

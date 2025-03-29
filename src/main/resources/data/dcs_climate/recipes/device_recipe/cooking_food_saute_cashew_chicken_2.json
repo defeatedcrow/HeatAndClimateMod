@@ -1,0 +1,45 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/saute_cashew_chicken",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/plant_oil"
+    },
+    {
+      "tag": "forge:ingredients/raw_chicken"
+    },
+    {
+      "tag": "forge:crops/paprika"
+    },
+    {
+      "tag": "forge:ingredients/cashew_nuts"
+    },
+    {
+      "tag": "forge:ingredients/soysauce"
+    },
+    {
+      "tag": "forge:ingredients/basesoup"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}
