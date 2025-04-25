@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.api.magic.IColorDC;
 import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.api.magic.MagicType;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.item.MaterialItemDC;
@@ -29,6 +30,11 @@ public class MagicMaterialItemDC extends MaterialItemDC implements IColorDC {
 	@Override
 	public MagicColor getColor() {
 		return color;
+	}
+
+	@Override
+	public MagicType getMagicType() {
+		return MagicType.INSTANT;
 	}
 
 	@Override

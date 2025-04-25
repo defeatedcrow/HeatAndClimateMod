@@ -23,12 +23,14 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -203,6 +205,16 @@ public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 			}
 		}
 		return InteractionResult.sidedSuccess(level.isClientSide);
+	}
+
+	@Override
+	public boolean isLadder(BlockState state, LevelReader level, BlockPos pos, LivingEntity entity) {
+		return true;
+	}
+
+	@Override
+	public boolean makesOpenTrapdoorAboveClimbable(BlockState state, LevelReader level, BlockPos pos, BlockState trapdoorState) {
+		return true;
 	}
 
 	@Override

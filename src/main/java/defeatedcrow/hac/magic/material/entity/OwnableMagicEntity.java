@@ -6,7 +6,9 @@ import java.util.UUID;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.magic.IColorDC;
 import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.api.magic.MagicType;
 import defeatedcrow.hac.api.material.IItemDropEntity;
 import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.ClimateCore;
@@ -29,7 +31,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public abstract class OwnableMagicEntity extends Entity implements IItemDropEntity, OwnableEntity {
+public abstract class OwnableMagicEntity extends Entity implements IColorDC, IItemDropEntity, OwnableEntity {
 
 	public static final UUID EMPTY_OWNER = UUID.fromString("613A8757-2068-4EA5-8EB1-5CB9A41111BF");
 	protected String ownerName = "NO OWNER";
@@ -59,7 +61,13 @@ public abstract class OwnableMagicEntity extends Entity implements IItemDropEnti
 	@Nonnull
 	public abstract ItemStack getDropItem();
 
+	@Override
 	public abstract MagicColor getColor();
+
+	@Override
+	public MagicType getMagicType() {
+		return MagicType.ENTITY;
+	}
 
 	@Override
 	public boolean canBeCollidedWith() {

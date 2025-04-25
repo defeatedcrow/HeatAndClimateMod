@@ -1,0 +1,9 @@
+{
+  "textures": {
+    "bottom": "dcs_climate:block/build/panel_wood",
+    "cloth": "dcs_climate:block/build/bed_cloth_red",
+    "frame": "dcs_climate:block/build/bed_frame_wood",
+    "top": "dcs_climate:block/build/bed_cloth_red_top"
+  },
+  "parent": "dcs_climate:block/dcs_bed_foot"
+}

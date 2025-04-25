@@ -286,6 +286,8 @@
   "item.dcs_climate.magic.rod_red_blue_activated":"活性化した海蛇の杖",
   "item.dcs_climate.magic.rod_green_white":"大地の杖",
 
+  "item.dcs_climate.magic.picture_item_white_red":"絵画 (夏の鳥)",
+
   "item.dcs_climate.magic.document_boring_survey":"地質調査の結果",
 
     "## items_food":"food",
@@ -655,7 +657,7 @@
   "item.dcs_climate.food.wagashi_bota":"ぼたもち",
   "item.dcs_climate.food.wagashi_kusa":"草餅",
   "item.dcs_climate.food.wagashi_sakura":"桜餅",
-  "item.dcs_climate.food.wagashi_daihuku":"豆大福",
+  "item.dcs_climate.food.wagashi_daifuku":"豆大福",
 
   "item.dcs_climate.food.porridge_simple":"お粥",
   "item.dcs_climate.food.porridge_milk":"ミルク粥",
@@ -1743,6 +1745,13 @@
   "block.dcs_climate.build.chair_round_red":"赤のラボチェア",
   "block.dcs_climate.build.chair_round_green":"緑のラボチェア",
 
+  "block.dcs_climate.build.bed_linen":"セーブしないベッド(リネン)",
+  "block.dcs_climate.build.bed_white":"セーブしないベッド(白)",
+  "block.dcs_climate.build.bed_blue":"セーブしないベッド(青)",
+  "block.dcs_climate.build.bed_black":"セーブしないベッド(黒)",
+  "block.dcs_climate.build.bed_red":"セーブしないベッド(赤)",
+  "block.dcs_climate.build.bed_green":"セーブしないベッド(緑)",
+
   "block.dcs_climate.build.luggage_normal":"キャリーバッグ",
   "block.dcs_climate.build.luggage_white":"キャリーバッグ(白)",
   "block.dcs_climate.build.luggage_blue":"キャリーバッグ(青)",
@@ -2276,6 +2285,10 @@
   "dcs.tip.rod.name.green_white":"足場",
   "dcs.tip.rod.desc.green_white":"右クリック: 建築足場ブロックを設置する。",
   "dcs.tip.rod.flavor.green_white":"花の妖精達は、人間の仕事を手伝うのを好むという。",
+
+  "dcs.tip.picture.name.white_red":"夏の鳥",
+  "dcs.tip.picture.desc.white_red":"このEntityがロードされている限り、このワールドは夏である。",
+  "dcs.tip.picture.flavor.white_red":"夏になると鳥が渡るのではなく、鳥が渡るから夏になるのだ。",
 
   "## gui_inv":"inventory",
 

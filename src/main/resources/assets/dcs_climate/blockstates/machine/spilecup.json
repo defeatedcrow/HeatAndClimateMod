@@ -1,200 +1,244 @@
 {
- "multipart": [
-    {
-      "apply": {
-        "model": "dcs_climate:block/dcs_crop_dummy"
-      }
+  "variants": {
+    "facing=east,sap_type=lacquer,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_base"
-      },
-      "when": {
-        "facing": "north"
-      }
+    "facing=east,sap_type=lacquer,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_1", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_base",
-        "y": 180
-      },
-      "when": {
-        "facing": "south"
-      }
+    "facing=east,sap_type=lacquer,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_2", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_base",
-        "y": 270
-      },
-      "when": {
-        "facing": "west"
-      }
+    "facing=east,sap_type=lacquer,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_3", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_base",
-        "y": 90
-      },
-      "when": {
-        "facing": "east"
-      }
+    "facing=east,sap_type=lacquer,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_4", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap1"
-      },
-      "when": {
-        "facing": "north",
-        "stage5": 1
-      }
+    "facing=east,sap_type=latex,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap2"
-      },
-      "when": {
-        "facing": "north",
-        "stage5": 2
-      }
+    "facing=east,sap_type=latex,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_latex_1", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap3"
-      },
-      "when": {
-        "facing": "north",
-        "stage5": 3
-      }
+    "facing=east,sap_type=latex,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_latex_2", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap4"
-      },
-      "when": {
-        "facing": "north",
-        "stage5": 4
-      }
+    "facing=east,sap_type=latex,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_latex_3", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap1",
-        "y": 180
-      },
-      "when": {
-        "facing": "south",
-        "stage5": 1
-      }
+    "facing=east,sap_type=latex,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_latex_4", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap2",
-        "y": 180
-      },
-      "when": {
-        "facing": "south",
-        "stage5": 2
-      }
+    "facing=east,sap_type=resin,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap3",
-        "y": 180
-      },
-      "when": {
-        "facing": "south",
-        "stage5": 3
-      }
+    "facing=east,sap_type=resin,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_resin_1", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap4",
-        "y": 180
-      },
-      "when": {
-        "facing": "south",
-        "stage5": 4
-      }
+    "facing=east,sap_type=resin,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_resin_2", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap1",
-        "y": 270
-      },
-      "when": {
-        "facing": "west",
-        "stage5": 1
-      }
+    "facing=east,sap_type=resin,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_resin_3", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap2",
-        "y": 270
-      },
-      "when": {
-        "facing": "west",
-        "stage5": 2
-      }
+    "facing=east,sap_type=resin,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_resin_4", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap3",
-        "y": 270
-      },
-      "when": {
-        "facing": "west",
-        "stage5": 3
-      }
+    "facing=east,sap_type=sweet,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap4",
-        "y": 270
-      },
-      "when": {
-        "facing": "west",
-        "stage5": 4
-      }
+    "facing=east,sap_type=sweet,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_1", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap1",
-        "y": 90
-      },
-      "when": {
-        "facing": "east",
-        "stage5": 1
-      }
+    "facing=east,sap_type=sweet,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_2", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap2",
-        "y": 90
-      },
-      "when": {
-        "facing": "east",
-        "stage5": 2
-      }
+    "facing=east,sap_type=sweet,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_3", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap3",
-        "y": 90
-      },
-      "when": {
-        "facing": "east",
-        "stage5": 3
-      }
+    "facing=east,sap_type=sweet,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_4", "y": 90
     },
-    {
-      "apply": {
-        "model": "dcs_climate:block/machine/spilecup_sap4",
-        "y": 90
-      },
-      "when": {
-        "facing": "east",
-        "stage5": 4
-      }
+    "facing=north,sap_type=lacquer,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base"
+    },
+    "facing=north,sap_type=lacquer,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_1"
+    },
+    "facing=north,sap_type=lacquer,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_2"
+    },
+    "facing=north,sap_type=lacquer,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_3"
+    },
+    "facing=north,sap_type=lacquer,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_4"
+    },
+    "facing=north,sap_type=latex,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base"
+    },
+    "facing=north,sap_type=latex,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_latex_1"
+    },
+    "facing=north,sap_type=latex,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_latex_2"
+    },
+    "facing=north,sap_type=latex,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_latex_3"
+    },
+    "facing=north,sap_type=latex,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_latex_4"
+    },
+    "facing=north,sap_type=resin,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base"
+    },
+    "facing=north,sap_type=resin,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_resin_1"
+    },
+    "facing=north,sap_type=resin,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_resin_2"
+    },
+    "facing=north,sap_type=resin,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_resin_3"
+    },
+    "facing=north,sap_type=resin,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_resin_4"
+    },
+    "facing=north,sap_type=sweet,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base"
+    },
+    "facing=north,sap_type=sweet,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_1"
+    },
+    "facing=north,sap_type=sweet,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_2"
+    },
+    "facing=north,sap_type=sweet,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_3"
+    },
+    "facing=north,sap_type=sweet,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_4"
+    },
+    "facing=south,sap_type=lacquer,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 180
+    },
+    "facing=south,sap_type=lacquer,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_1", "y": 180
+    },
+    "facing=south,sap_type=lacquer,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_2", "y": 180
+    },
+    "facing=south,sap_type=lacquer,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_3", "y": 180
+    },
+    "facing=south,sap_type=lacquer,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_4", "y": 180
+    },
+    "facing=south,sap_type=latex,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 180
+    },
+    "facing=south,sap_type=latex,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_latex_1", "y": 180
+    },
+    "facing=south,sap_type=latex,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_latex_2", "y": 180
+    },
+    "facing=south,sap_type=latex,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_latex_3", "y": 180
+    },
+    "facing=south,sap_type=latex,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_latex_4", "y": 180
+    },
+    "facing=south,sap_type=resin,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 180
+    },
+    "facing=south,sap_type=resin,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_resin_1", "y": 180
+    },
+    "facing=south,sap_type=resin,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_resin_2", "y": 180
+    },
+    "facing=south,sap_type=resin,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_resin_3", "y": 180
+    },
+    "facing=south,sap_type=resin,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_resin_4", "y": 180
+    },
+    "facing=south,sap_type=sweet,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 180
+    },
+    "facing=south,sap_type=sweet,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_1", "y": 180
+    },
+    "facing=south,sap_type=sweet,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_2", "y": 180
+    },
+    "facing=south,sap_type=sweet,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_3", "y": 180
+    },
+    "facing=south,sap_type=sweet,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_4", "y": 180
+    },
+    "facing=west,sap_type=lacquer,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 270
+    },
+    "facing=west,sap_type=lacquer,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_1", "y": 270
+    },
+    "facing=west,sap_type=lacquer,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_2", "y": 270
+    },
+    "facing=west,sap_type=lacquer,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_3", "y": 270
+    },
+    "facing=west,sap_type=lacquer,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_lacquer_4", "y": 270
+    },
+    "facing=west,sap_type=latex,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 270
+    },
+    "facing=west,sap_type=latex,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_latex_1", "y": 270
+    },
+    "facing=west,sap_type=latex,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_latex_2", "y": 270
+    },
+    "facing=west,sap_type=latex,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_latex_3", "y": 270
+    },
+    "facing=west,sap_type=latex,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_latex_4", "y": 270
+    },
+    "facing=west,sap_type=resin,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 270
+    },
+    "facing=west,sap_type=resin,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_resin_1", "y": 270
+    },
+    "facing=west,sap_type=resin,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_resin_2", "y": 270
+    },
+    "facing=west,sap_type=resin,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_resin_3", "y": 270
+    },
+    "facing=west,sap_type=resin,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_resin_4", "y": 270
+    },
+    "facing=west,sap_type=sweet,stage5=0": {
+      "model": "dcs_climate:block/machine/spilecup_base", "y": 270
+    },
+    "facing=west,sap_type=sweet,stage5=1": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_1", "y": 270
+    },
+    "facing=west,sap_type=sweet,stage5=2": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_2", "y": 270
+    },
+    "facing=west,sap_type=sweet,stage5=3": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_3", "y": 270
+    },
+    "facing=west,sap_type=sweet,stage5=4": {
+      "model": "dcs_climate:block/machine/spilecup_sweet_4", "y": 270
     }
-  ]
+  }
 }

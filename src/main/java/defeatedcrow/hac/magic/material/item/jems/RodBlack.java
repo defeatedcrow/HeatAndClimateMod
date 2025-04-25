@@ -54,7 +54,7 @@ public class RodBlack extends MagicJewelBase implements MenuProvider {
 	}
 
 	@Override
-	public MagicType getType() {
+	public MagicType getMagicType() {
 		return MagicType.MAINHAND;
 	}
 

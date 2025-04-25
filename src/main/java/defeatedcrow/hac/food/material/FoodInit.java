@@ -700,7 +700,7 @@ public class FoodInit {
 	public static final RegistryObject<Item> WAGASHI_BOTA = regItem("wagashi_bota", () -> new WagashiItem("wagashi_bota", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> WAGASHI_KUSA = regItem("wagashi_kusa", () -> new WagashiItem("wagashi_kusa", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> WAGASHI_SAKURA = regItem("wagashi_sakura", () -> new WagashiItem("wagashi_sakura", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> WAGASHI_DAIHUKU = regItem("wagashi_daihuku", () -> new WagashiItem("wagashi_daihuku", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> WAGASHI_DAIHUKU = regItem("wagashi_daifuku", () -> new WagashiItem("wagashi_daifuku", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 
 	// ドリンク
 	public static final RegistryObject<Item> DRINK_APPLE = regItem("drink_apple", () -> new DrinkColdItem("drink_apple", 4, 0F, 2, TagDC.ItemTag.HAC_DRINK_COLD));

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:build/bed_linen",
+    "dcs_climate:build/bed_white",
+    "dcs_climate:build/bed_blue",
+    "dcs_climate:build/bed_black",
+    "dcs_climate:build/bed_red",
+    "dcs_climate:build/bed_green"
+  ]
+}

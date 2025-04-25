@@ -73,7 +73,7 @@ public class CuriosPluginDC {
 				return true;
 			} else if (check.getItem() instanceof IJewel) {
 				IJewel charm = (IJewel) check.getItem();
-				if (charm.getType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
+				if (charm.getMagicType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
 					return true;
 				}
 			}

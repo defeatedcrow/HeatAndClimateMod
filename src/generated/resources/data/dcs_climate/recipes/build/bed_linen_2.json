@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:clothes"
+    },
+    "Y": {
+      "tag": "minecraft:wooden_fences"
+    },
+    "Z": {
+      "tag": "forge:crops/cotton"
+    }
+  },
+  "pattern": [
+    "XZX",
+    "YYY"
+  ],
+  "result": {
+    "item": "dcs_climate:build/bed_linen"
+  }
+}

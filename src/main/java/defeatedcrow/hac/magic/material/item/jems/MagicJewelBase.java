@@ -61,7 +61,7 @@ public abstract class MagicJewelBase extends ItemDC implements IJewelCharm {
 	abstract public CharmType getCharmType();
 
 	@Override
-	public MagicType getType() {
+	public MagicType getMagicType() {
 		return MagicType.INVENTORY_TOP;
 	}
 

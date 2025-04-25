@@ -55,6 +55,7 @@ import defeatedcrow.hac.machine.material.block.machine.KichenStoveTile;
 import defeatedcrow.hac.machine.material.block.machine.RollCrusherBlock;
 import defeatedcrow.hac.machine.material.block.machine.RollCrusherTile;
 import defeatedcrow.hac.machine.material.block.machine.SpileCupBlock;
+import defeatedcrow.hac.machine.material.block.machine.SpileCupTile;
 import defeatedcrow.hac.machine.material.block.machine.StoneMillBlock;
 import defeatedcrow.hac.machine.material.block.machine.StoneMillTile;
 import defeatedcrow.hac.machine.material.block.machine.TeaPotBlock;
@@ -307,6 +308,9 @@ public class MachineInit {
 
 	public static final RegistryObject<BlockEntityType<FaucetTile>> FAUCET_TILE = CoreInit.BLOCK_ENTITIES.register("faucet_tile",
 			() -> BlockEntityType.Builder.of(FaucetTile::new, new Block[] { FAUCET_A.get(), FAUCET_B.get(), FAUCET_C.get(), FAUCET_D.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<SpileCupTile>> SPILE_TILE = CoreInit.BLOCK_ENTITIES.register("spilecup_tile",
+			() -> BlockEntityType.Builder.of(SpileCupTile::new, new Block[] { SPILE.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<CookingPotTile>> COOKING_POT_TILE = CoreInit.BLOCK_ENTITIES.register("cooking_pot_tile",
 			() -> BlockEntityType.Builder.of(CookingPotTile::new, new Block[] { COOKING_POT_NORMAL.get(), COOKING_POT_WHITE.get(), COOKING_POT_BLUE.get(), COOKING_POT_BLACK.get(), COOKING_POT_RED

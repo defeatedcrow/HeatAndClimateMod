@@ -2,6 +2,7 @@ package defeatedcrow.hac.magic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
@@ -15,6 +16,7 @@ import defeatedcrow.hac.api.magic.SearchPlayerCharmEvent;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.material.entity.MagicPictureEntity;
 import defeatedcrow.hac.magic.material.entity.OwnableMagicEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -43,6 +45,15 @@ public class MagicUtil {
 		return (e) -> {
 			return e instanceof OwnableMagicEntity && ((OwnableMagicEntity) e).getColor() == color;
 		};
+	}
+
+	public static List<? extends MagicPictureEntity> getPictureEntity(ServerLevel level) {
+		List<? extends MagicPictureEntity> list = level.getEntities(EntityTypeTest.forClass(MagicPictureEntity.class), Entity::isAlive);
+		return list;
+	}
+
+	public static Optional<? extends MagicPictureEntity> isPictureEntityInWorld(ServerLevel level, MagicColor color) {
+		return level.getEntities(EntityTypeTest.forClass(MagicPictureEntity.class), checkColor(color)).stream().findAny();
 	}
 
 	public static ArrayList<ItemStack> getCharms(LivingEntity living, CharmType type) {
@@ -132,7 +143,7 @@ public class MagicUtil {
 				return true;
 			} else if (check.getItem() instanceof IJewel) {
 				IJewel charm = (IJewel) check.getItem();
-				if (charm.getType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
+				if (charm.getMagicType() == MagicType.INVENTORY_TOP && charm.getCharmType().match(type)) {
 					return true;
 				}
 			}
@@ -146,7 +157,7 @@ public class MagicUtil {
 				return true;
 			} else if (check.getItem() instanceof IJewel) {
 				IJewel charm = (IJewel) check.getItem();
-				if (charm.getType() == MagicType.OFFHAND && charm.getCharmType().match(type)) {
+				if (charm.getMagicType() == MagicType.OFFHAND && charm.getCharmType().match(type)) {
 					return true;
 				}
 			}

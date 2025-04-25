@@ -304,11 +304,14 @@ import defeatedcrow.hac.magic.client.entity.RenderColorArrow;
 import defeatedcrow.hac.magic.client.entity.RenderCrowTurret;
 import defeatedcrow.hac.magic.client.entity.RenderEmpty;
 import defeatedcrow.hac.magic.client.entity.RenderLightCauldron;
+import defeatedcrow.hac.magic.client.entity.RenderMagicPicture;
 import defeatedcrow.hac.magic.client.entity.RenderSilkySmallBomb;
 import defeatedcrow.hac.magic.client.model.CrowTurretModel;
 import defeatedcrow.hac.magic.client.model.LightCauldronModel;
+import defeatedcrow.hac.magic.client.model.MagicPictureModel;
 import defeatedcrow.hac.magic.client.model.SilkyBombModel;
 import defeatedcrow.hac.magic.material.MagicInit;
+import defeatedcrow.hac.magic.material.item.entity.PictureItemWR;
 import net.minecraft.client.model.TridentModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -475,6 +478,7 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(RenderLightCauldron.TEX.getLayerLocation(), LightCauldronModel::createBodyLayer);
 		event.registerLayerDefinition(RenderCrowTurret.TEX.getLayerLocation(), CrowTurretModel::createBodyLayer);
 		event.registerLayerDefinition(RenderSilkySmallBomb.TEX.getLayerLocation(), SilkyBombModel::createBodyLayer);
+		event.registerLayerDefinition(PictureItemWR.PICTURE_WR.getLayerLocation(), MagicPictureModel::createBodyLayer);
 
 		event.registerLayerDefinition(BreadRoundItem.BREAD_ROUND_RAW.getLayerLocation(), BreadRoundModel::createBodyLayer);
 		event.registerLayerDefinition(BreadRoundItem.BREAD_ROUND_BAKED.getLayerLocation(), BreadRoundModel::createBodyLayer);
@@ -1012,6 +1016,7 @@ public class ClientRegisterInit {
 		event.registerEntityRenderer(MagicInit.SILKY_FAIRY_ENTITY.get(), RenderEmpty::new);
 		event.registerEntityRenderer(MagicInit.SILKY_BOMB_ENTITY.get(), RenderSilkySmallBomb::new);
 		event.registerEntityRenderer(MagicInit.CROW_TURRET.get(), RenderCrowTurret::new);
+		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_WR.get(), RenderMagicPicture::new);
 	}
 
 	public static void registerLayers(EntityRenderersEvent.AddLayers event) {

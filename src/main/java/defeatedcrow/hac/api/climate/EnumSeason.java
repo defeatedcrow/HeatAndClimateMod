@@ -15,7 +15,9 @@ public enum EnumSeason {
 	WINTER_EARLY(DyeColor.LIGHT_BLUE, 6, 3, true, "winter"),
 	WINTER_LATE(DyeColor.LIGHT_BLUE, 7, 3, false, "winter"),
 	SCORCHER(DyeColor.RED, 8, 4, false, "scorcher"),
-	ARCTIC(DyeColor.BLUE, 9, 5, false, "arctic");
+	ABSOLUTE(DyeColor.BLUE, 9, 5, false, "absolute"),
+	FLOWER(DyeColor.PINK, 10, 6, false, "flower"),
+	HARVEST(DyeColor.YELLOW, 11, 7, false, "harvest");
 
 	public final DyeColor color;
 	public final int id;
@@ -65,7 +67,11 @@ public enum EnumSeason {
 		case 8:
 			return SCORCHER;
 		case 9:
-			return ARCTIC;
+			return ABSOLUTE;
+		case 10:
+			return FLOWER;
+		case 11:
+			return HARVEST;
 		default:
 			return SPRING_EARLY;
 		}

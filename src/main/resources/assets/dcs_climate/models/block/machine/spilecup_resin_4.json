@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "base": "dcs_climate:block/machine/spilecup",
+    "sap": "dcs_climate:block/machine/spilecup_sap_resin"
+  },
+  "parent": "dcs_climate:block/machine/spilecup_4"
+}

@@ -1544,6 +1544,54 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_sofa", has(TagDC.ItemTag.HAC_SOFA))
 				.save(cons, "dcs_climate:clothing/sofa_white_bleaching_0");
 
+		ShapedRecipeBuilder.shaped(BuildInit.BED_LINEN.get(), 1)
+				.pattern("XZX")
+				.pattern("YYY")
+				.define('X', TagDC.ItemTag.CLOTHS)
+				.define('Y', ItemTags.WOODEN_FENCES)
+				.define('Z', ItemTags.WOOL)
+				.unlockedBy("has_wooden_fence", has(ItemTags.WOODEN_FENCES))
+				.save(cons, "dcs_climate:build/bed_linen_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.BED_LINEN.get(), 1)
+				.pattern("XZX")
+				.pattern("YYY")
+				.define('X', TagDC.ItemTag.CLOTHS)
+				.define('Y', ItemTags.WOODEN_FENCES)
+				.define('Z', TagDC.ItemTag.CROP_COTTON)
+				.unlockedBy("has_wooden_fence", has(ItemTags.WOODEN_FENCES))
+				.save(cons, "dcs_climate:build/bed_linen_2");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.BED_WHITE.get(), 1)
+				.requires(TagDC.ItemTag.EXTRACT_WHITE)
+				.requires(TagDC.ItemTag.HAC_BED)
+				.unlockedBy("has_bed", has(TagDC.ItemTag.HAC_BED))
+				.save(cons, "dcs_climate:clothing/bed_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.BED_BLUE.get(), 1)
+				.requires(TagDC.ItemTag.EXTRACT_BLUE)
+				.requires(TagDC.ItemTag.HAC_BED)
+				.unlockedBy("has_bed", has(TagDC.ItemTag.HAC_BED))
+				.save(cons, "dcs_climate:clothing/bed_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.BED_BLACK.get(), 1)
+				.requires(TagDC.ItemTag.EXTRACT_BLACK)
+				.requires(TagDC.ItemTag.HAC_BED)
+				.unlockedBy("has_bed", has(TagDC.ItemTag.HAC_BED))
+				.save(cons, "dcs_climate:clothing/bed_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.BED_RED.get(), 1)
+				.requires(TagDC.ItemTag.EXTRACT_RED)
+				.requires(TagDC.ItemTag.HAC_BED)
+				.unlockedBy("has_bed", has(TagDC.ItemTag.HAC_BED))
+				.save(cons, "dcs_climate:clothing/bed_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.BED_GREEN.get(), 1)
+				.requires(TagDC.ItemTag.EXTRACT_GREEN)
+				.requires(TagDC.ItemTag.HAC_BED)
+				.unlockedBy("has_bed", has(TagDC.ItemTag.HAC_BED))
+				.save(cons, "dcs_climate:clothing/bed_green_0");
+
 		ShapedRecipeBuilder.shaped(BuildInit.CABINET_NORMAL.get(), 1)
 				.pattern("XXX")
 				.pattern(" Y ")

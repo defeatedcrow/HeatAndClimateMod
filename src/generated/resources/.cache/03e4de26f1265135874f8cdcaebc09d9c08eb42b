@@ -1,7 +1,8 @@
-// 1.19.2	2025-03-29T22:35:26.1699714	Tags for minecraft:item
+// 1.19.2	2025-04-23T22:18:48.0487721	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
+4daf75917f6756b62ac41cc59093013ab3b36b88 data/dcs_climate/tags/items/beds.json
 c00abac73627a132ad2f9e171b0eb04c4ec5ac92 data/dcs_climate/tags/items/building_stones.json
 c7f96f68fcca93bc6fe2450a3d1f1b41ea5b9021 data/dcs_climate/tags/items/building_stones/bricks.json
 37b81f1ced017a5998c0ddd9ad9756d1bd2cce97 data/dcs_climate/tags/items/building_stones/chiseled.json
@@ -139,6 +140,7 @@ f91a01cafa4241db2f9d972e8c17c3b9a614695f data/dcs_climate/tags/items/magic/tier3
 18693f8762776180171770992989e15666e10425 data/dcs_climate/tags/items/magic_arrows.json
 ca0f47ac39b19e49977153f3027507ff755e5df5 data/dcs_climate/tags/items/magic_boost_item.json
 ddf63601841c399b3b24f1adabfa1c0d4433d639 data/dcs_climate/tags/items/magic_cards.json
+91555b446a7752e77e960e7d30610d0bbf49be0c data/dcs_climate/tags/items/magic_pictures.json
 6430da8ed20b60e93622f4512219d1ff14aefcd8 data/dcs_climate/tags/items/mana_drops.json
 8c9f062dc20a9f733b8ed31f95dcfd702f331056 data/dcs_climate/tags/items/mana_elements.json
 14cef5e12e14cfde96c79f6a0d3142b02c0730a3 data/dcs_climate/tags/items/mana_extracts.json
@@ -165,7 +167,7 @@ ac87e05f51a4cd378c8694a197232eee334a18fa data/dcs_climate/tags/items/meals/porri
 c06efd5deb7cbb8091cc1185f2c67fad470ea2f5 data/dcs_climate/tags/items/meals/side_dish.json
 17d98d08a251c9d1c908bc51967772eb2109cd77 data/dcs_climate/tags/items/meals/skewered.json
 3fcef1e51d32257ef82a73f259d696b61f3e443a data/dcs_climate/tags/items/meals/soup.json
-08c8dce44b7796ccebd59bfd059d188f06f85cca data/dcs_climate/tags/items/meals/sweets.json
+43789d16fd3a3c812d18e1ecda3ab886bb628aed data/dcs_climate/tags/items/meals/sweets.json
 60f0025f98b7ec0daeecae59c4d6b5009a30f29e data/dcs_climate/tags/items/meals/tart.json
 bd479884d6c127ea78bbe38fe3a4df6a2c5c72b7 data/dcs_climate/tags/items/meals/tempura.json
 4a518f658c214b6035179b95d3f6d745440df29a data/dcs_climate/tags/items/metal_roofs.json

@@ -39,7 +39,7 @@ public class SilverBracelet extends MagicJewelBase {
 	}
 
 	@Override
-	public MagicType getType() {
+	public MagicType getMagicType() {
 		return MagicType.OFFHAND;
 	}
 

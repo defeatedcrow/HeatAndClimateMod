@@ -37,6 +37,8 @@ import defeatedcrow.hac.core.material.block.building.LuggageTile;
 import defeatedcrow.hac.core.material.block.building.MetalLadder;
 import defeatedcrow.hac.core.material.block.building.MetalSlab;
 import defeatedcrow.hac.core.material.block.building.MetalStairs;
+import defeatedcrow.hac.core.material.block.building.NoSaveBedBlock;
+import defeatedcrow.hac.core.material.block.building.NoSaveBedTile;
 import defeatedcrow.hac.core.material.block.building.PillarStoneDC;
 import defeatedcrow.hac.core.material.block.building.SidedLightDC;
 import defeatedcrow.hac.core.material.block.building.SimpleLightDC;
@@ -459,6 +461,13 @@ public class BuildInit {
 	public static final RegistryObject<Block> SOFA_PINK = regBlock("sofa_pink", () -> new SofaBlock("sofa_pink"), TagDC.ItemTag.HAC_SOFA);
 	public static final RegistryObject<Block> SOFA_GREEN = regBlock("sofa_green", () -> new SofaBlock("sofa_green"), TagDC.ItemTag.HAC_SOFA);
 
+	public static final RegistryObject<Block> BED_LINEN = regBlock("bed_linen", () -> new NoSaveBedBlock("bed_linen"), TagDC.ItemTag.HAC_BED);
+	public static final RegistryObject<Block> BED_WHITE = regBlock("bed_white", () -> new NoSaveBedBlock("bed_white"), TagDC.ItemTag.HAC_BED);
+	public static final RegistryObject<Block> BED_BLUE = regBlock("bed_blue", () -> new NoSaveBedBlock("bed_blue"), TagDC.ItemTag.HAC_BED);
+	public static final RegistryObject<Block> BED_BLACK = regBlock("bed_black", () -> new NoSaveBedBlock("bed_black"), TagDC.ItemTag.HAC_BED);
+	public static final RegistryObject<Block> BED_RED = regBlock("bed_red", () -> new NoSaveBedBlock("bed_red"), TagDC.ItemTag.HAC_BED);
+	public static final RegistryObject<Block> BED_GREEN = regBlock("bed_green", () -> new NoSaveBedBlock("bed_green"), TagDC.ItemTag.HAC_BED);
+
 	public static final RegistryObject<Block> LUGGAGE_NORMAL = regBlock("luggage_normal", () -> new LuggageBlock("luggage_normal"), TagDC.ItemTag.HAC_LUGGAGE);
 	public static final RegistryObject<Block> LUGGAGE_WHITE = regBlock("luggage_white", () -> new LuggageBlock("luggage_white"), TagDC.ItemTag.HAC_LUGGAGE);
 	public static final RegistryObject<Block> LUGGAGE_BLUE = regBlock("luggage_blue", () -> new LuggageBlock("luggage_blue"), TagDC.ItemTag.HAC_LUGGAGE);
@@ -509,6 +518,9 @@ public class BuildInit {
 
 	public static final RegistryObject<BlockEntityType<DisplayDoubleShelfTile>> DISPLAY_DOUBLE_SHELF_TILE = CoreInit.BLOCK_ENTITIES.register("display_double_shelf_tile",
 			() -> BlockEntityType.Builder.of(DisplayDoubleShelfTile::new, new Block[] { DISPLAY_SHELF_IRON.get(), DISPLAY_SHELF_LAB.get(), DISPLAY_SHELF_GLASS.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<NoSaveBedTile>> NO_SAVE_BED_TILE = CoreInit.BLOCK_ENTITIES.register("no_save_bed_tile",
+			() -> BlockEntityType.Builder.of(NoSaveBedTile::new, new Block[] { BED_LINEN.get() }).build(null));
 
 	// Menu
 	public static final RegistryObject<MenuType<DisplayShelfMenu>> DISPLAY_SHELF_MENU = CoreInit.register("dcs_display_shelf", (IContainerFactory<DisplayShelfMenu>) (id, playerInv, data) -> {

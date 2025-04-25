@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "dcs_climate:color_extracts/blue"
+    },
+    {
+      "tag": "dcs_climate:beds"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/bed_blue"
+  }
+}

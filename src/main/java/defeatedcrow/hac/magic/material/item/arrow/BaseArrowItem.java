@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.magic.IColorDC;
 import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.api.magic.MagicType;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
@@ -42,6 +43,11 @@ public abstract class BaseArrowItem extends ArrowItem implements IJsonDataDC, II
 	@Override
 	public MagicColor getColor() {
 		return color;
+	}
+
+	@Override
+	public MagicType getMagicType() {
+		return MagicType.ARROW;
 	}
 
 	@Override

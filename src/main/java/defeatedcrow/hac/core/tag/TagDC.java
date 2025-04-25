@@ -5,6 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -185,19 +186,19 @@ public class TagDC {
 
 		private static void init() {}
 
-		public static final TagKey<Item> ORES_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "color_ores/white"));
-		public static final TagKey<Item> ORES_BLUE = ItemTags.create(new ResourceLocation("dcs_climate", "color_ores/blue"));
-		public static final TagKey<Item> ORES_BLACK = ItemTags.create(new ResourceLocation("dcs_climate", "color_ores/black"));
-		public static final TagKey<Item> ORES_RED = ItemTags.create(new ResourceLocation("dcs_climate", "color_ores/red"));
-		public static final TagKey<Item> ORES_GREEN = ItemTags.create(new ResourceLocation("dcs_climate", "color_ores/green"));
+		public static final TagKey<Item> ORES_WHITE = itemHaCTag("color_ores/white");
+		public static final TagKey<Item> ORES_BLUE = itemHaCTag("color_ores/blue");
+		public static final TagKey<Item> ORES_BLACK = itemHaCTag("color_ores/black");
+		public static final TagKey<Item> ORES_RED = itemHaCTag("color_ores/red");
+		public static final TagKey<Item> ORES_GREEN = itemHaCTag("color_ores/green");
 
-		public static final TagKey<Item> ORES_WHITE_DEEP = ItemTags.create(new ResourceLocation("dcs_climate", "color_ores/deep_white"));
-		public static final TagKey<Item> ORES_BLUE_DEEP = ItemTags.create(new ResourceLocation("dcs_climate", "color_ores/deep_blue"));
-		public static final TagKey<Item> ORES_BLACK_DEEP = ItemTags.create(new ResourceLocation("dcs_climate", "color_ores/deep_black"));
-		public static final TagKey<Item> ORES_RED_DEEP = ItemTags.create(new ResourceLocation("dcs_climate", "color_ores/deep_red"));
-		public static final TagKey<Item> ORES_GREEN_DEEP = ItemTags.create(new ResourceLocation("dcs_climate", "color_ores/deep_green"));
+		public static final TagKey<Item> ORES_WHITE_DEEP = itemHaCTag("color_ores/deep_white");
+		public static final TagKey<Item> ORES_BLUE_DEEP = itemHaCTag("color_ores/deep_blue");
+		public static final TagKey<Item> ORES_BLACK_DEEP = itemHaCTag("color_ores/deep_black");
+		public static final TagKey<Item> ORES_RED_DEEP = itemHaCTag("color_ores/deep_red");
+		public static final TagKey<Item> ORES_GREEN_DEEP = itemHaCTag("color_ores/deep_green");
 
-		public static final TagKey<Item> ORES_COLOR = ItemTags.create(new ResourceLocation("dcs_climate", "color_ores"));
+		public static final TagKey<Item> ORES_COLOR = itemHaCTag("color_ores");
 
 		public static final TagKey<Item> ORES_CHALCEDONY = itemTag("ores/chalcedony");
 		public static final TagKey<Item> ORES_FLUORITE = itemTag("ores/fluorite");
@@ -237,7 +238,7 @@ public class TagDC {
 		public static final TagKey<Item> RAW_NICKEL = itemTag("raw_materials/nickel");
 		public static final TagKey<Item> RAW_CHROMIUM = itemTag("raw_materials/chromium");
 
-		public static final TagKey<Item> RAW_MATERIALS_COLOR = ItemTags.create(new ResourceLocation("dcs_climate", "color_raw_materials"));
+		public static final TagKey<Item> RAW_MATERIALS_COLOR = itemHaCTag("color_raw_materials");
 
 		public static final TagKey<Item> DUST_COPPER = itemTag("dusts/copper");
 		public static final TagKey<Item> DUST_GOLD = itemTag("dusts/gold");
@@ -255,7 +256,7 @@ public class TagDC {
 		public static final TagKey<Item> DUST_NICKEL = itemTag("dusts/nickel");
 		public static final TagKey<Item> DUST_CHROMIUM = itemTag("dusts/chromium");
 
-		public static final TagKey<Item> DUST_COLOR = ItemTags.create(new ResourceLocation("dcs_climate", "dusts"));
+		public static final TagKey<Item> DUST_COLOR = itemHaCTag("dusts");
 
 		public static final TagKey<Item> DUST_COAL = itemTag("dusts/coal");
 		public static final TagKey<Item> DUST_SALT = itemTag("dusts/salt");
@@ -360,21 +361,21 @@ public class TagDC {
 		public static final TagKey<Item> GEM_COAL = itemTag("gems/coal");
 		public static final TagKey<Item> GEM_FLINT = itemTag("gems/flint");
 
-		public static final TagKey<Item> ALL_WILD = ItemTags.create(new ResourceLocation("dcs_climate", "crops/wild"));
-		public static final TagKey<Item> ALL_COMMON = ItemTags.create(new ResourceLocation("dcs_climate", "crops/common"));
-		public static final TagKey<Item> ALL_RARE = ItemTags.create(new ResourceLocation("dcs_climate", "crops/rare"));
-		public static final TagKey<Item> ALL_EPIC = ItemTags.create(new ResourceLocation("dcs_climate", "crops/epic"));
-		public static final TagKey<Item> CROP_WILD = ItemTags.create(new ResourceLocation("dcs_climate", "crops/plant_wild"));
-		public static final TagKey<Item> CROP_COMMON = ItemTags.create(new ResourceLocation("dcs_climate", "crops/plant_common"));
-		public static final TagKey<Item> CROP_RARE = ItemTags.create(new ResourceLocation("dcs_climate", "crops/plant_rare"));
-		public static final TagKey<Item> CROP_EPIC = ItemTags.create(new ResourceLocation("dcs_climate", "crops/plant_epic"));
-		public static final TagKey<Item> TREE_WILD = ItemTags.create(new ResourceLocation("dcs_climate", "crops/tree_wild"));
-		public static final TagKey<Item> TREE_COMMON = ItemTags.create(new ResourceLocation("dcs_climate", "crops/tree_common"));
-		public static final TagKey<Item> TREE_RARE = ItemTags.create(new ResourceLocation("dcs_climate", "crops/tree_rare"));
-		public static final TagKey<Item> TREE_EPIC = ItemTags.create(new ResourceLocation("dcs_climate", "crops/tree_epic"));
-		public static final TagKey<Item> ALL_CROPS = ItemTags.create(new ResourceLocation("dcs_climate", "crops"));
+		public static final TagKey<Item> ALL_WILD = itemHaCTag("crops/wild");
+		public static final TagKey<Item> ALL_COMMON = itemHaCTag("crops/common");
+		public static final TagKey<Item> ALL_RARE = itemHaCTag("crops/rare");
+		public static final TagKey<Item> ALL_EPIC = itemHaCTag("crops/epic");
+		public static final TagKey<Item> CROP_WILD = itemHaCTag("crops/plant_wild");
+		public static final TagKey<Item> CROP_COMMON = itemHaCTag("crops/plant_common");
+		public static final TagKey<Item> CROP_RARE = itemHaCTag("crops/plant_rare");
+		public static final TagKey<Item> CROP_EPIC = itemHaCTag("crops/plant_epic");
+		public static final TagKey<Item> TREE_WILD = itemHaCTag("crops/tree_wild");
+		public static final TagKey<Item> TREE_COMMON = itemHaCTag("crops/tree_common");
+		public static final TagKey<Item> TREE_RARE = itemHaCTag("crops/tree_rare");
+		public static final TagKey<Item> TREE_EPIC = itemHaCTag("crops/tree_epic");
+		public static final TagKey<Item> ALL_CROPS = itemHaCTag("crops");
 
-		public static final TagKey<Item> CROP_GREEN_MANURES = ItemTags.create(new ResourceLocation("dcs_climate", "green_manures"));
+		public static final TagKey<Item> CROP_GREEN_MANURES = itemHaCTag("green_manures");
 
 		public static final TagKey<Item> CROP_CHIVES = itemTag("crops/chives");
 		public static final TagKey<Item> CROP_ONION = itemTag("crops/onion");
@@ -522,9 +523,9 @@ public class TagDC {
 		public static final TagKey<Item> CROP_ALL_GRAPES = itemTag("crops/all_grapes");
 		public static final TagKey<Item> CROP_TSUKEMONO = itemTag("crops/tsukemono_vegi");
 
-		public static final TagKey<Item> CROP_STRAWS = ItemTags.create(new ResourceLocation("dcs_climate", "crops/straws"));
-		public static final TagKey<Item> CROP_STICKS = ItemTags.create(new ResourceLocation("dcs_climate", "crops/sticks"));
-		public static final TagKey<Item> CROP_OILS = ItemTags.create(new ResourceLocation("dcs_climate", "crops/oils"));
+		public static final TagKey<Item> CROP_STRAWS = itemHaCTag("crops/straws");
+		public static final TagKey<Item> CROP_STICKS = itemHaCTag("crops/sticks");
+		public static final TagKey<Item> CROP_OILS = itemHaCTag("crops/oils");
 
 		public static final TagKey<Item> SEED_CHIVES = itemTag("seeds/chives");
 		public static final TagKey<Item> SEED_ONION = itemTag("seeds/onion");
@@ -803,48 +804,48 @@ public class TagDC {
 		public static final TagKey<Item> LIQUOR = itemTag("foods/liquor");
 		public static final TagKey<Item> DRINK = itemTag("foods/drinks");
 
-		public static final TagKey<Item> HAC_SEASONING = ItemTags.create(new ResourceLocation("dcs_climate", "seasoning"));
+		public static final TagKey<Item> HAC_SEASONING = itemHaCTag("seasoning");
 
-		public static final TagKey<Item> HAC_FOOD_FLAVOR1 = ItemTags.create(new ResourceLocation("dcs_climate", "food_taste/tier1"));
-		public static final TagKey<Item> HAC_FOOD_FLAVOR2 = ItemTags.create(new ResourceLocation("dcs_climate", "food_taste/tier2"));
-		public static final TagKey<Item> HAC_FOOD_FLAVOR3 = ItemTags.create(new ResourceLocation("dcs_climate", "food_taste/tier3"));
-		public static final TagKey<Item> HAC_FOOD_FLAVOR4 = ItemTags.create(new ResourceLocation("dcs_climate", "food_taste/tier4"));
-		public static final TagKey<Item> HAC_FOOD_FLAVOR5 = ItemTags.create(new ResourceLocation("dcs_climate", "food_taste/tier5"));
-		public static final TagKey<Item> HAC_FOOD_FLAVOR = ItemTags.create(new ResourceLocation("dcs_climate", "food_taste"));
-		public static final TagKey<Item> HAC_UNSAFE_FOODS = ItemTags.create(new ResourceLocation("dcs_climate", "unsafe_foods"));
+		public static final TagKey<Item> HAC_FOOD_FLAVOR1 = itemHaCTag("food_taste/tier1");
+		public static final TagKey<Item> HAC_FOOD_FLAVOR2 = itemHaCTag("food_taste/tier2");
+		public static final TagKey<Item> HAC_FOOD_FLAVOR3 = itemHaCTag("food_taste/tier3");
+		public static final TagKey<Item> HAC_FOOD_FLAVOR4 = itemHaCTag("food_taste/tier4");
+		public static final TagKey<Item> HAC_FOOD_FLAVOR5 = itemHaCTag("food_taste/tier5");
+		public static final TagKey<Item> HAC_FOOD_FLAVOR = itemHaCTag("food_taste");
+		public static final TagKey<Item> HAC_UNSAFE_FOODS = itemHaCTag("unsafe_foods");
 
-		public static final TagKey<Item> HAC_MEALS = ItemTags.create(new ResourceLocation("dcs_climate", "meals"));
-		public static final TagKey<Item> HAC_BREAD = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread"));
-		public static final TagKey<Item> HAC_BREAD_PLANE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread/plane"));
-		public static final TagKey<Item> HAC_BREAD_SANDWICH = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread/sandwich"));
-		public static final TagKey<Item> HAC_PIZZA = ItemTags.create(new ResourceLocation("dcs_climate", "meals/bread/pizza"));
-		public static final TagKey<Item> HAC_SOUP = ItemTags.create(new ResourceLocation("dcs_climate", "meals/soup"));
-		public static final TagKey<Item> HAC_CURRY = ItemTags.create(new ResourceLocation("dcs_climate", "meals/curry"));
-		public static final TagKey<Item> HAC_PORRIDGE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/porridge"));
-		public static final TagKey<Item> HAC_CASSEROLE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/casserole"));
-		public static final TagKey<Item> HAC_FISH_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/fish_meal"));
-		public static final TagKey<Item> HAC_MEAT_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/meat_meal"));
-		public static final TagKey<Item> HAC_RICE_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/rice_meal"));
-		public static final TagKey<Item> HAC_NOODLE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/noodle"));
-		public static final TagKey<Item> HAC_SALAD = ItemTags.create(new ResourceLocation("dcs_climate", "meals/salad"));
-		public static final TagKey<Item> HAC_SKEWERED = ItemTags.create(new ResourceLocation("dcs_climate", "meals/skewered"));
-		public static final TagKey<Item> HAC_PLATE_MEAL = ItemTags.create(new ResourceLocation("dcs_climate", "meals/plate_meal"));
-		public static final TagKey<Item> HAC_SIDE_DISH = ItemTags.create(new ResourceLocation("dcs_climate", "meals/side_dish"));
-		public static final TagKey<Item> HAC_TEMPURA = ItemTags.create(new ResourceLocation("dcs_climate", "meals/tempura"));
-		public static final TagKey<Item> HAC_SAUTE = ItemTags.create(new ResourceLocation("dcs_climate", "meals/saute"));
-		public static final TagKey<Item> HAC_KOBACHI = ItemTags.create(new ResourceLocation("dcs_climate", "meals/kobachi"));
-		public static final TagKey<Item> HAC_TART = ItemTags.create(new ResourceLocation("dcs_climate", "meals/tart"));
-		public static final TagKey<Item> HAC_SWEETS = ItemTags.create(new ResourceLocation("dcs_climate", "meals/sweets"));
+		public static final TagKey<Item> HAC_MEALS = itemHaCTag("meals");
+		public static final TagKey<Item> HAC_BREAD = itemHaCTag("meals/bread");
+		public static final TagKey<Item> HAC_BREAD_PLANE = itemHaCTag("meals/bread/plane");
+		public static final TagKey<Item> HAC_BREAD_SANDWICH = itemHaCTag("meals/bread/sandwich");
+		public static final TagKey<Item> HAC_PIZZA = itemHaCTag("meals/bread/pizza");
+		public static final TagKey<Item> HAC_SOUP = itemHaCTag("meals/soup");
+		public static final TagKey<Item> HAC_CURRY = itemHaCTag("meals/curry");
+		public static final TagKey<Item> HAC_PORRIDGE = itemHaCTag("meals/porridge");
+		public static final TagKey<Item> HAC_CASSEROLE = itemHaCTag("meals/casserole");
+		public static final TagKey<Item> HAC_FISH_MEAL = itemHaCTag("meals/fish_meal");
+		public static final TagKey<Item> HAC_MEAT_MEAL = itemHaCTag("meals/meat_meal");
+		public static final TagKey<Item> HAC_RICE_MEAL = itemHaCTag("meals/rice_meal");
+		public static final TagKey<Item> HAC_NOODLE = itemHaCTag("meals/noodle");
+		public static final TagKey<Item> HAC_SALAD = itemHaCTag("meals/salad");
+		public static final TagKey<Item> HAC_SKEWERED = itemHaCTag("meals/skewered");
+		public static final TagKey<Item> HAC_PLATE_MEAL = itemHaCTag("meals/plate_meal");
+		public static final TagKey<Item> HAC_SIDE_DISH = itemHaCTag("meals/side_dish");
+		public static final TagKey<Item> HAC_TEMPURA = itemHaCTag("meals/tempura");
+		public static final TagKey<Item> HAC_SAUTE = itemHaCTag("meals/saute");
+		public static final TagKey<Item> HAC_KOBACHI = itemHaCTag("meals/kobachi");
+		public static final TagKey<Item> HAC_TART = itemHaCTag("meals/tart");
+		public static final TagKey<Item> HAC_SWEETS = itemHaCTag("meals/sweets");
 
-		public static final TagKey<Item> HAC_LIQUOR = ItemTags.create(new ResourceLocation("dcs_climate", "meals/liquor"));
-		public static final TagKey<Item> HAC_DRINK = ItemTags.create(new ResourceLocation("dcs_climate", "meals/drinks"));
-		public static final TagKey<Item> HAC_DRINK_HOT = ItemTags.create(new ResourceLocation("dcs_climate", "meals/drinks/hot"));
-		public static final TagKey<Item> HAC_DRINK_COLD = ItemTags.create(new ResourceLocation("dcs_climate", "meals/drinks/cold"));
+		public static final TagKey<Item> HAC_LIQUOR = itemHaCTag("meals/liquor");
+		public static final TagKey<Item> HAC_DRINK = itemHaCTag("meals/drinks");
+		public static final TagKey<Item> HAC_DRINK_HOT = itemHaCTag("meals/drinks/hot");
+		public static final TagKey<Item> HAC_DRINK_COLD = itemHaCTag("meals/drinks/cold");
 
-		public static final TagKey<Item> HAC_ANIMAL = ItemTags.create(new ResourceLocation("dcs_climate", "ingredient/animal_base"));
+		public static final TagKey<Item> HAC_ANIMAL = itemHaCTag("ingredient/animal_base");
 
-		public static final TagKey<Item> FUEL_BIOMASS = ItemTags.create(new ResourceLocation("dcs_climate", "fuels/biomass"));
-		public static final TagKey<Item> HAC_FUELS = ItemTags.create(new ResourceLocation("dcs_climate", "fuels"));
+		public static final TagKey<Item> FUEL_BIOMASS = itemHaCTag("fuels/biomass");
+		public static final TagKey<Item> HAC_FUELS = itemHaCTag("fuels");
 
 		// vanilla
 		public static final TagKey<Item> CROP_APPLE = itemTag("crops/apple");
@@ -886,39 +887,39 @@ public class TagDC {
 		public static final TagKey<Item> DRIPSTONES = itemTag("dripstones");
 		public static final TagKey<Item> WEED = itemTag("weed");
 
-		public static final TagKey<Item> RAW_FOOD = ItemTags.create(new ResourceLocation("dcs_climate", "raw_foods"));
+		public static final TagKey<Item> RAW_FOOD = itemHaCTag("raw_foods");
 
 		// magic
-		public static final TagKey<Item> SEED_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/white"));
-		public static final TagKey<Item> SEED_BLUE = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/blue"));
-		public static final TagKey<Item> SEED_BLACK = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/black"));
-		public static final TagKey<Item> SEED_RED = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/red"));
-		public static final TagKey<Item> SEED_GREEN = ItemTags.create(new ResourceLocation("dcs_climate", "color_seeds/green"));
+		public static final TagKey<Item> SEED_WHITE = itemHaCTag("color_seeds/white");
+		public static final TagKey<Item> SEED_BLUE = itemHaCTag("color_seeds/blue");
+		public static final TagKey<Item> SEED_BLACK = itemHaCTag("color_seeds/black");
+		public static final TagKey<Item> SEED_RED = itemHaCTag("color_seeds/red");
+		public static final TagKey<Item> SEED_GREEN = itemHaCTag("color_seeds/green");
 
 		// fish
-		public static final TagKey<Item> FISH_ALL = ItemTags.create(new ResourceLocation("dcs_climate", "fishes"));
-		public static final TagKey<Item> FISH_VANILLA = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/vanilla"));
-		public static final TagKey<Item> FISH_HAC = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/hac"));
-		public static final TagKey<Item> FISH_LOD = ItemTags.create(new ResourceLocation("dcs_climate", "can_fish_with_lod"));
+		public static final TagKey<Item> FISH_ALL = itemHaCTag("fishes");
+		public static final TagKey<Item> FISH_VANILLA = itemHaCTag("fishes/vanilla");
+		public static final TagKey<Item> FISH_HAC = itemHaCTag("fishes/hac");
+		public static final TagKey<Item> FISH_LOD = itemHaCTag("can_fish_with_lod");
 
-		public static final TagKey<Item> FISH_RIVER = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/river"));
-		public static final TagKey<Item> FISH_BEACH = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/beach"));
-		public static final TagKey<Item> FISH_MANGROVE = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/mangrove"));
-		public static final TagKey<Item> FISH_OCEAN = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/ocean"));
-		public static final TagKey<Item> FISH_DEEP_OCEAN = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/deep_ocean"));
+		public static final TagKey<Item> FISH_RIVER = itemHaCTag("fishes/river");
+		public static final TagKey<Item> FISH_BEACH = itemHaCTag("fishes/beach");
+		public static final TagKey<Item> FISH_MANGROVE = itemHaCTag("fishes/mangrove");
+		public static final TagKey<Item> FISH_OCEAN = itemHaCTag("fishes/ocean");
+		public static final TagKey<Item> FISH_DEEP_OCEAN = itemHaCTag("fishes/deep_ocean");
 
-		public static final TagKey<Item> FISH_COLD_WATER = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/cold_water_only"));
-		public static final TagKey<Item> FISH_TROPICAL = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/tropical_only"));
+		public static final TagKey<Item> FISH_COLD_WATER = itemHaCTag("fishes/cold_water_only");
+		public static final TagKey<Item> FISH_TROPICAL = itemHaCTag("fishes/tropical_only");
 
-		public static final TagKey<Item> FISH_NIGHT = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/night"));
-		public static final TagKey<Item> FISH_DAY = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/day"));
+		public static final TagKey<Item> FISH_NIGHT = itemHaCTag("fishes/night");
+		public static final TagKey<Item> FISH_DAY = itemHaCTag("fishes/day");
 
-		public static final TagKey<Item> FISH_SHALLOW = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/shallow"));
-		public static final TagKey<Item> FISH_FLOOR = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/floor"));
+		public static final TagKey<Item> FISH_SHALLOW = itemHaCTag("fishes/shallow");
+		public static final TagKey<Item> FISH_FLOOR = itemHaCTag("fishes/floor");
 
-		public static final TagKey<Item> FISH_SMALL = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/small_size"));
-		public static final TagKey<Item> FISH_MIDDLE = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/middle_size"));
-		public static final TagKey<Item> FISH_LARGE = ItemTags.create(new ResourceLocation("dcs_climate", "fishes/large_size"));
+		public static final TagKey<Item> FISH_SMALL = itemHaCTag("fishes/small_size");
+		public static final TagKey<Item> FISH_MIDDLE = itemHaCTag("fishes/middle_size");
+		public static final TagKey<Item> FISH_LARGE = itemHaCTag("fishes/large_size");
 
 		// container
 		public static final TagKey<Item> CONT_LEAVES = itemTag("storage_blocks/leaves");
@@ -943,128 +944,135 @@ public class TagDC {
 		public static final TagKey<Item> CONT_TREEWAX = itemTag("storage_blocks/treewax");
 
 		// magic
-		public static final TagKey<Item> COLOR_DROPS = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops"));
-		public static final TagKey<Item> DROP_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops/white"));
-		public static final TagKey<Item> DROP_BLUE = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops/blue"));
-		public static final TagKey<Item> DROP_BLACK = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops/black"));
-		public static final TagKey<Item> DROP_RED = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops/red"));
-		public static final TagKey<Item> DROP_GREEN = ItemTags.create(new ResourceLocation("dcs_climate", "color_drops/green"));
+		public static final TagKey<Item> COLOR_DROPS = itemHaCTag("color_drops");
+		public static final TagKey<Item> DROP_WHITE = itemHaCTag("color_drops/white");
+		public static final TagKey<Item> DROP_BLUE = itemHaCTag("color_drops/blue");
+		public static final TagKey<Item> DROP_BLACK = itemHaCTag("color_drops/black");
+		public static final TagKey<Item> DROP_RED = itemHaCTag("color_drops/red");
+		public static final TagKey<Item> DROP_GREEN = itemHaCTag("color_drops/green");
 
-		public static final TagKey<Item> COLOR_EXTRACTS = ItemTags.create(new ResourceLocation("dcs_climate", "color_extracts"));
-		public static final TagKey<Item> EXTRACT_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "color_extracts/white"));
-		public static final TagKey<Item> EXTRACT_BLUE = ItemTags.create(new ResourceLocation("dcs_climate", "color_extracts/blue"));
-		public static final TagKey<Item> EXTRACT_BLACK = ItemTags.create(new ResourceLocation("dcs_climate", "color_extracts/black"));
-		public static final TagKey<Item> EXTRACT_RED = ItemTags.create(new ResourceLocation("dcs_climate", "color_extracts/red"));
-		public static final TagKey<Item> EXTRACT_GREEN = ItemTags.create(new ResourceLocation("dcs_climate", "color_extracts/green"));
+		public static final TagKey<Item> COLOR_EXTRACTS = itemHaCTag("color_extracts");
+		public static final TagKey<Item> EXTRACT_WHITE = itemHaCTag("color_extracts/white");
+		public static final TagKey<Item> EXTRACT_BLUE = itemHaCTag("color_extracts/blue");
+		public static final TagKey<Item> EXTRACT_BLACK = itemHaCTag("color_extracts/black");
+		public static final TagKey<Item> EXTRACT_RED = itemHaCTag("color_extracts/red");
+		public static final TagKey<Item> EXTRACT_GREEN = itemHaCTag("color_extracts/green");
 
-		public static final TagKey<Item> COLOR_PIGMENTS = ItemTags.create(new ResourceLocation("dcs_climate", "color_pigments"));
-		public static final TagKey<Item> PIGMENT_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "color_pigments/white"));
-		public static final TagKey<Item> PIGMENT_BLUE = ItemTags.create(new ResourceLocation("dcs_climate", "color_pigments/blue"));
-		public static final TagKey<Item> PIGMENT_BLACK = ItemTags.create(new ResourceLocation("dcs_climate", "color_pigments/black"));
-		public static final TagKey<Item> PIGMENT_RED = ItemTags.create(new ResourceLocation("dcs_climate", "color_pigments/red"));
-		public static final TagKey<Item> PIGMENT_GREEN = ItemTags.create(new ResourceLocation("dcs_climate", "color_pigments/green"));
+		public static final TagKey<Item> COLOR_PIGMENTS = itemHaCTag("color_pigments");
+		public static final TagKey<Item> PIGMENT_WHITE = itemHaCTag("color_pigments/white");
+		public static final TagKey<Item> PIGMENT_BLUE = itemHaCTag("color_pigments/blue");
+		public static final TagKey<Item> PIGMENT_BLACK = itemHaCTag("color_pigments/black");
+		public static final TagKey<Item> PIGMENT_RED = itemHaCTag("color_pigments/red");
+		public static final TagKey<Item> PIGMENT_GREEN = itemHaCTag("color_pigments/green");
 
-		public static final TagKey<Item> COLOR_ELEMENTS = ItemTags.create(new ResourceLocation("dcs_climate", "color_elements"));
-		public static final TagKey<Item> ELEMENT_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "color_elements/white"));
-		public static final TagKey<Item> ELEMENT_BLUE = ItemTags.create(new ResourceLocation("dcs_climate", "color_elements/blue"));
-		public static final TagKey<Item> ELEMENT_BLACK = ItemTags.create(new ResourceLocation("dcs_climate", "color_elements/black"));
-		public static final TagKey<Item> ELEMENT_RED = ItemTags.create(new ResourceLocation("dcs_climate", "color_elements/red"));
-		public static final TagKey<Item> ELEMENT_GREEN = ItemTags.create(new ResourceLocation("dcs_climate", "color_elements/green"));
+		public static final TagKey<Item> COLOR_ELEMENTS = itemHaCTag("color_elements");
+		public static final TagKey<Item> ELEMENT_WHITE = itemHaCTag("color_elements/white");
+		public static final TagKey<Item> ELEMENT_BLUE = itemHaCTag("color_elements/blue");
+		public static final TagKey<Item> ELEMENT_BLACK = itemHaCTag("color_elements/black");
+		public static final TagKey<Item> ELEMENT_RED = itemHaCTag("color_elements/red");
+		public static final TagKey<Item> ELEMENT_GREEN = itemHaCTag("color_elements/green");
 
-		public static final TagKey<Item> COLOR_GEMS = ItemTags.create(new ResourceLocation("dcs_climate", "gems"));
-		public static final TagKey<Item> GEM_WHITE = ItemTags.create(new ResourceLocation("dcs_climate", "gems/white"));
-		public static final TagKey<Item> GEM_BLUE = ItemTags.create(new ResourceLocation("dcs_climate", "gems/blue"));
-		public static final TagKey<Item> GEM_BLACK = ItemTags.create(new ResourceLocation("dcs_climate", "gems/black"));
-		public static final TagKey<Item> GEM_RED = ItemTags.create(new ResourceLocation("dcs_climate", "gems/red"));
-		public static final TagKey<Item> GEM_GREEN = ItemTags.create(new ResourceLocation("dcs_climate", "gems/green"));
+		public static final TagKey<Item> COLOR_GEMS = itemHaCTag("gems");
+		public static final TagKey<Item> GEM_WHITE = itemHaCTag("gems/white");
+		public static final TagKey<Item> GEM_BLUE = itemHaCTag("gems/blue");
+		public static final TagKey<Item> GEM_BLACK = itemHaCTag("gems/black");
+		public static final TagKey<Item> GEM_RED = itemHaCTag("gems/red");
+		public static final TagKey<Item> GEM_GREEN = itemHaCTag("gems/green");
 
-		public static final TagKey<Item> MANA_DROPS = ItemTags.create(new ResourceLocation("dcs_climate", "mana_drops"));
-		public static final TagKey<Item> MANA_EXTRACT = ItemTags.create(new ResourceLocation("dcs_climate", "mana_extracts"));
-		public static final TagKey<Item> MANA_ELEMENT = ItemTags.create(new ResourceLocation("dcs_climate", "mana_elements"));
+		public static final TagKey<Item> MANA_DROPS = itemHaCTag("mana_drops");
+		public static final TagKey<Item> MANA_EXTRACT = itemHaCTag("mana_extracts");
+		public static final TagKey<Item> MANA_ELEMENT = itemHaCTag("mana_elements");
 
-		public static final TagKey<Item> ELEMENT_INERT = ItemTags.create(new ResourceLocation("dcs_climate", "color_elements/inert"));
+		public static final TagKey<Item> ELEMENT_INERT = itemHaCTag("color_elements/inert");
 
-		public static final TagKey<Item> MAGIC_CARD = ItemTags.create(new ResourceLocation("dcs_climate", "magic_cards"));
+		public static final TagKey<Item> MAGIC_CARD = itemHaCTag("magic_cards");
 
-		public static final TagKey<Item> MAGIC_ARROW = ItemTags.create(new ResourceLocation("dcs_climate", "magic_arrows"));
+		public static final TagKey<Item> MAGIC_ARROW = itemHaCTag("magic_arrows");
 
-		public static final TagKey<Item> MAGIC_JEWEL = ItemTags.create(new ResourceLocation("dcs_climate", "jewels"));
-		public static final TagKey<Item> MAGIC_RING = ItemTags.create(new ResourceLocation("dcs_climate", "jewels/magic_rings"));
-		public static final TagKey<Item> MAGIC_PENDANT = ItemTags.create(new ResourceLocation("dcs_climate", "jewels/magic_pendants"));
-		public static final TagKey<Item> MAGIC_BADGE = ItemTags.create(new ResourceLocation("dcs_climate", "jewels/magic_badges"));
-		public static final TagKey<Item> MAGIC_BRACELET = ItemTags.create(new ResourceLocation("dcs_climate", "jewels/magic_bracelet"));
-		public static final TagKey<Item> MAGIC_STUFF = ItemTags.create(new ResourceLocation("dcs_climate", "jewels/magic_stuff"));
+		public static final TagKey<Item> MAGIC_PICTURE = itemHaCTag("magic_pictures");
 
-		public static final TagKey<Item> MAGIC_BOOSTER = ItemTags.create(new ResourceLocation("dcs_climate", "magic_boost_item"));
+		public static final TagKey<Item> MAGIC_JEWEL = itemHaCTag("jewels");
+		public static final TagKey<Item> MAGIC_RING = itemHaCTag("jewels/magic_rings");
+		public static final TagKey<Item> MAGIC_PENDANT = itemHaCTag("jewels/magic_pendants");
+		public static final TagKey<Item> MAGIC_BADGE = itemHaCTag("jewels/magic_badges");
+		public static final TagKey<Item> MAGIC_BRACELET = itemHaCTag("jewels/magic_bracelet");
+		public static final TagKey<Item> MAGIC_STUFF = itemHaCTag("jewels/magic_stuff");
 
-		public static final TagKey<Item> MAGIC_ALL = ItemTags.create(new ResourceLocation("dcs_climate", "magic"));
-		public static final TagKey<Item> MAGIC_TIER1 = ItemTags.create(new ResourceLocation("dcs_climate", "magic/tier1"));
-		public static final TagKey<Item> MAGIC_TIER2 = ItemTags.create(new ResourceLocation("dcs_climate", "magic/tier2"));
-		public static final TagKey<Item> MAGIC_TIER3 = ItemTags.create(new ResourceLocation("dcs_climate", "magic/tier3"));
-		public static final TagKey<Item> MAGIC_TIER4 = ItemTags.create(new ResourceLocation("dcs_climate", "magic/tier4"));
+		public static final TagKey<Item> MAGIC_BOOSTER = itemHaCTag("magic_boost_item");
 
-		public static final TagKey<Item> LOG_SWEET = ItemTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap/sweet_sap"));
-		public static final TagKey<Item> LOG_RESIN = ItemTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap/resin"));
-		public static final TagKey<Item> LOG_LATEX = ItemTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap/latex"));
-		public static final TagKey<Item> LOG_LACQUER = ItemTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap/lacquer"));
-		public static final TagKey<Item> LOG_SAP = ItemTags.create(new ResourceLocation("dcs_climate", "logs_can_collect_sap"));
+		public static final TagKey<Item> MAGIC_ALL = itemHaCTag("magic");
+		public static final TagKey<Item> MAGIC_TIER1 = itemHaCTag("magic/tier1");
+		public static final TagKey<Item> MAGIC_TIER2 = itemHaCTag("magic/tier2");
+		public static final TagKey<Item> MAGIC_TIER3 = itemHaCTag("magic/tier3");
+		public static final TagKey<Item> MAGIC_TIER4 = itemHaCTag("magic/tier4");
 
-		public static final TagKey<Item> BUILDING_STONE = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones"));
-		public static final TagKey<Item> BUILDING_BRICKS = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones/bricks"));
-		public static final TagKey<Item> BUILDING_PILLAR = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones/pillar"));
-		public static final TagKey<Item> BUILDING_CHISELED = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones/chiseled"));
-		public static final TagKey<Item> BUILDING_LINOLEUM = ItemTags.create(new ResourceLocation("dcs_climate", "building_stones/linoleum"));
+		public static final TagKey<Item> LOG_SWEET = itemHaCTag("logs_can_collect_sap/sweet_sap");
+		public static final TagKey<Item> LOG_RESIN = itemHaCTag("logs_can_collect_sap/resin");
+		public static final TagKey<Item> LOG_LATEX = itemHaCTag("logs_can_collect_sap/latex");
+		public static final TagKey<Item> LOG_LACQUER = itemHaCTag("logs_can_collect_sap/lacquer");
+		public static final TagKey<Item> LOG_SAP = itemHaCTag("logs_can_collect_sap");
 
-		public static final TagKey<Item> ALMINUM_ROOFS = ItemTags.create(new ResourceLocation("dcs_climate", "metal_roofs"));
+		public static final TagKey<Item> BUILDING_STONE = itemHaCTag("building_stones");
+		public static final TagKey<Item> BUILDING_BRICKS = itemHaCTag("building_stones/bricks");
+		public static final TagKey<Item> BUILDING_PILLAR = itemHaCTag("building_stones/pillar");
+		public static final TagKey<Item> BUILDING_CHISELED = itemHaCTag("building_stones/chiseled");
+		public static final TagKey<Item> BUILDING_LINOLEUM = itemHaCTag("building_stones/linoleum");
 
-		public static final TagKey<Item> DIRT_SLABS = ItemTags.create(new ResourceLocation("dcs_climate", "dirt_slab"));
+		public static final TagKey<Item> ALMINUM_ROOFS = itemHaCTag("metal_roofs");
 
-		public static final TagKey<Item> DUMMY = ItemTags.create(new ResourceLocation("dcs_climate", "dummy"));
+		public static final TagKey<Item> DIRT_SLABS = itemHaCTag("dirt_slab");
+
+		public static final TagKey<Item> DUMMY = itemHaCTag("dummy");
 
 		// machine
-		public static final TagKey<Item> MOTORS = ItemTags.create(new ResourceLocation("dcs_climate", "motors"));
-		public static final TagKey<Item> MOTOR_T1 = ItemTags.create(new ResourceLocation("dcs_climate", "motors/small"));
-		public static final TagKey<Item> MOTOR_T2 = ItemTags.create(new ResourceLocation("dcs_climate", "motors/middle"));
+		public static final TagKey<Item> MOTORS = itemHaCTag("motors");
+		public static final TagKey<Item> MOTOR_T1 = itemHaCTag("motors/small");
+		public static final TagKey<Item> MOTOR_T2 = itemHaCTag("motors/middle");
 
-		public static final TagKey<Item> IMPELLERS = ItemTags.create(new ResourceLocation("dcs_climate", "impellers"));
-		public static final TagKey<Item> IMPELLER_T1 = ItemTags.create(new ResourceLocation("dcs_climate", "impellers/small"));
-		public static final TagKey<Item> IMPELLER_T2 = ItemTags.create(new ResourceLocation("dcs_climate", "impellers/middle"));
+		public static final TagKey<Item> IMPELLERS = itemHaCTag("impellers");
+		public static final TagKey<Item> IMPELLER_T1 = itemHaCTag("impellers/small");
+		public static final TagKey<Item> IMPELLER_T2 = itemHaCTag("impellers/middle");
 
-		public static final TagKey<Item> BATTERY_T1 = ItemTags.create(new ResourceLocation("dcs_climate", "battery_items/small"));
-		public static final TagKey<Item> BATTERY_T2 = ItemTags.create(new ResourceLocation("dcs_climate", "battery_items/middle"));
+		public static final TagKey<Item> BATTERY_T1 = itemHaCTag("battery_items/small");
+		public static final TagKey<Item> BATTERY_T2 = itemHaCTag("battery_items/middle");
 
-		public static final TagKey<Item> CRUSHER_BLADE = ItemTags.create(new ResourceLocation("dcs_climate", "crusher_blade"));
-		public static final TagKey<Item> BLADE_SANITARY = ItemTags.create(new ResourceLocation("dcs_climate", "crusher_blade/sanitary"));
-		public static final TagKey<Item> BLADE_SCREEN = ItemTags.create(new ResourceLocation("dcs_climate", "crusher_blade/screen"));
-		public static final TagKey<Item> BLADE_ALUMINA = ItemTags.create(new ResourceLocation("dcs_climate", "crusher_blade/alumina"));
+		public static final TagKey<Item> CRUSHER_BLADE = itemHaCTag("crusher_blade");
+		public static final TagKey<Item> BLADE_SANITARY = itemHaCTag("crusher_blade/sanitary");
+		public static final TagKey<Item> BLADE_SCREEN = itemHaCTag("crusher_blade/screen");
+		public static final TagKey<Item> BLADE_ALUMINA = itemHaCTag("crusher_blade/alumina");
 
-		public static final TagKey<Item> LEAKAGE_MACHINE = ItemTags.create(new ResourceLocation("dcs_climate", "leakage_machine"));
+		public static final TagKey<Item> LEAKAGE_MACHINE = itemHaCTag("leakage_machine");
 
-		public static final TagKey<Item> FLUID_PIPE = ItemTags.create(new ResourceLocation("dcs_climate", "pipe_fluid"));
-		public static final TagKey<Item> ENERGY_CABLE = ItemTags.create(new ResourceLocation("dcs_climate", "cable_energy"));
+		public static final TagKey<Item> FLUID_PIPE = itemHaCTag("pipe_fluid");
+		public static final TagKey<Item> ENERGY_CABLE = itemHaCTag("cable_energy");
 
-		public static final TagKey<Item> HOPPER = ItemTags.create(new ResourceLocation("dcs_climate", "hoppers"));
-		public static final TagKey<Item> HOPPER_FILTER = ItemTags.create(new ResourceLocation("dcs_climate", "hoppers/filter_hopper"));
+		public static final TagKey<Item> HOPPER = itemHaCTag("hoppers");
+		public static final TagKey<Item> HOPPER_FILTER = itemHaCTag("hoppers/filter_hopper");
 
 		// for soap
-		public static final TagKey<Item> COLORED_WOOL = ItemTags.create(new ResourceLocation("dcs_climate", "colored/wool"));
-		public static final TagKey<Item> COLORED_TERRACOTTA = ItemTags.create(new ResourceLocation("dcs_climate", "colored/terracotta"));
-		public static final TagKey<Item> COLORED_GLASS = ItemTags.create(new ResourceLocation("dcs_climate", "colored/glass"));
-		public static final TagKey<Item> COLORED_GLASS_PLATE = ItemTags.create(new ResourceLocation("dcs_climate", "colored/glass_panel"));
-		public static final TagKey<Item> COLORED_CANDLE = ItemTags.create(new ResourceLocation("dcs_climate", "colored/candle"));
+		public static final TagKey<Item> COLORED_WOOL = itemHaCTag("colored/wool");
+		public static final TagKey<Item> COLORED_TERRACOTTA = itemHaCTag("colored/terracotta");
+		public static final TagKey<Item> COLORED_GLASS = itemHaCTag("colored/glass");
+		public static final TagKey<Item> COLORED_GLASS_PLATE = itemHaCTag("colored/glass_panel");
+		public static final TagKey<Item> COLORED_CANDLE = itemHaCTag("colored/candle");
 
-		public static final TagKey<Item> HAC_LANTERN = ItemTags.create(new ResourceLocation("dcs_climate", "lanterns"));
-		public static final TagKey<Item> HAC_ANDON = ItemTags.create(new ResourceLocation("dcs_climate", "andons"));
-		public static final TagKey<Item> HAC_CARPET = ItemTags.create(new ResourceLocation("dcs_climate", "carpets"));
-		public static final TagKey<Item> HAC_CHAIR = ItemTags.create(new ResourceLocation("dcs_climate", "chairs"));
-		public static final TagKey<Item> HAC_SOFA = ItemTags.create(new ResourceLocation("dcs_climate", "sofas"));
-		public static final TagKey<Item> HAC_TABLE = ItemTags.create(new ResourceLocation("dcs_climate", "tables"));
-		public static final TagKey<Item> HAC_LUGGAGE = ItemTags.create(new ResourceLocation("dcs_climate", "luggages"));
-		public static final TagKey<Item> HAC_LOCKER = ItemTags.create(new ResourceLocation("dcs_climate", "lockers"));
-		public static final TagKey<Item> HAC_CABINET = ItemTags.create(new ResourceLocation("dcs_climate", "cabinets"));
+		public static final TagKey<Item> HAC_LANTERN = itemHaCTag("lanterns");
+		public static final TagKey<Item> HAC_ANDON = itemHaCTag("andons");
+		public static final TagKey<Item> HAC_CARPET = itemHaCTag("carpets");
+		public static final TagKey<Item> HAC_CHAIR = itemHaCTag("chairs");
+		public static final TagKey<Item> HAC_SOFA = itemHaCTag("sofas");
+		public static final TagKey<Item> HAC_BED = itemHaCTag("beds");
+		public static final TagKey<Item> HAC_TABLE = itemHaCTag("tables");
+		public static final TagKey<Item> HAC_LUGGAGE = itemHaCTag("luggages");
+		public static final TagKey<Item> HAC_LOCKER = itemHaCTag("lockers");
+		public static final TagKey<Item> HAC_CABINET = itemHaCTag("cabinets");
 
 		private static TagKey<Item> itemTag(String name) {
 			return ItemTags.create(new ResourceLocation("forge", name));
+		}
+
+		private static TagKey<Item> itemHaCTag(String name) {
+			return ItemTags.create(new ResourceLocation("dcs_climate", name));
 		}
 
 	}
@@ -1092,22 +1100,31 @@ public class TagDC {
 
 		private static void init() {}
 
-		public static final TagKey<Fluid> BRINE = biomeTag("brine");
-		public static final TagKey<Fluid> HOT_SPRING = biomeTag("hotspring");
-		public static final TagKey<Fluid> SPARKLING = biomeTag("sparkling");
-		public static final TagKey<Fluid> ALL_MILK = biomeTag("milks");
-		public static final TagKey<Fluid> ALL_WATER = biomeTag("waters");
-		public static final TagKey<Fluid> DRINK_WATER = biomeTag("drink_waters");
-		public static final TagKey<Fluid> PLANT_OIL = biomeTag("plant_oil");
-		public static final TagKey<Fluid> USED_PLANT_OIL = biomeTag("used_plant_oil");
-		public static final TagKey<Fluid> FUEL = biomeTag("fuel_oil");
-		public static final TagKey<Fluid> AIR = biomeTag("air");
-		public static final TagKey<Fluid> FLAMMABLE = biomeTag("flammable_oil");
+		public static final TagKey<Fluid> BRINE = fruidTag("brine");
+		public static final TagKey<Fluid> HOT_SPRING = fruidTag("hotspring");
+		public static final TagKey<Fluid> SPARKLING = fruidTag("sparkling");
+		public static final TagKey<Fluid> ALL_MILK = fruidTag("milks");
+		public static final TagKey<Fluid> ALL_WATER = fruidTag("waters");
+		public static final TagKey<Fluid> DRINK_WATER = fruidTag("drink_waters");
+		public static final TagKey<Fluid> PLANT_OIL = fruidTag("plant_oil");
+		public static final TagKey<Fluid> USED_PLANT_OIL = fruidTag("used_plant_oil");
+		public static final TagKey<Fluid> FUEL = fruidTag("fuel_oil");
+		public static final TagKey<Fluid> AIR = fruidTag("air");
+		public static final TagKey<Fluid> FLAMMABLE = fruidTag("flammable_oil");
 
-		private static TagKey<Fluid> biomeTag(String name) {
+		private static TagKey<Fluid> fruidTag(String name) {
 			return TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation("forge", name));
 		}
 
+	}
+
+	public static class EntityTag {
+		public static final TagKey<EntityType<?>> SPAWN_SUPPRESSOR = entityTag("spawn_suppressor");
+		public static final TagKey<EntityType<?>> MAGIC_PICTURE = entityTag("magic_picture");
+
+		private static TagKey<EntityType<?>> entityTag(String name) {
+			return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation("dcs_climate", name));
+		}
 	}
 
 }

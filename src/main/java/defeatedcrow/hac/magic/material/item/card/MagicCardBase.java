@@ -72,7 +72,7 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 	}
 
 	@Override
-	public MagicType getType() {
+	public MagicType getMagicType() {
 		return MagicType.INSTANT;
 	}
 

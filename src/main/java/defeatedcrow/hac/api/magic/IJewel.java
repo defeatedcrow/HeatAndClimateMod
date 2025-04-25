@@ -9,7 +9,8 @@ public abstract interface IJewel extends IColorDC {
 
 	CharmType getCharmType();
 
-	MagicType getType();
+	@Override
+	MagicType getMagicType();
 
 	@Override
 	MagicColor getColor();

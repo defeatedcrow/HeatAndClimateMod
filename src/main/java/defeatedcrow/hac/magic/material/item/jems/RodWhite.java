@@ -43,7 +43,7 @@ public class RodWhite extends MagicJewelBase {
 	}
 
 	@Override
-	public MagicType getType() {
+	public MagicType getMagicType() {
 		return MagicType.MAINHAND;
 	}
 

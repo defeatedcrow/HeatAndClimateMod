@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.OwnableBaseTileDC;
+import defeatedcrow.hac.core.material.block.building.NoSaveBedBlock;
 import defeatedcrow.hac.core.material.block.building.SlabWoodDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -47,6 +48,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerSetSpawnEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.level.BlockEvent.FarmlandTrampleEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
@@ -245,6 +247,18 @@ public class BlockEventDC {
 
 	private static boolean isMirrorTarget(BlockState state) {
 		return state.is(TagDC.BlockTag.HOPPER) || state.getBlock() instanceof SlabWoodDC;
+	}
+
+	@SubscribeEvent
+	public static void onSetSpawnPoint(PlayerSetSpawnEvent event) {
+		Player p = event.getEntity();
+		BlockPos pos = event.getNewSpawn();
+		if (p instanceof ServerPlayer player) {
+			BlockState state = player.getLevel().getBlockState(pos);
+			if (state.getBlock() instanceof NoSaveBedBlock) {
+				event.setCanceled(true);
+			}
+		}
 	}
 
 }

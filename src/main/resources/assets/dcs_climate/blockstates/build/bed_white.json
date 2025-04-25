@@ -1,0 +1,36 @@
+{
+ "variants": {
+  "facing=west,flag=false": {
+   "model": "dcs_climate:block/build/bed_white_head",
+   "y": 270
+  },
+  "facing=north,flag=false": {
+   "model": "dcs_climate:block/build/bed_white_head",
+   "y": 0
+  },
+  "facing=south,flag=false": {
+   "model": "dcs_climate:block/build/bed_white_head",
+   "y": 180
+  },
+  "facing=east,flag=false": {
+   "model": "dcs_climate:block/build/bed_white_head",
+   "y": 90
+  },
+  "facing=west,flag=true": {
+   "model": "dcs_climate:block/build/bed_white_foot",
+   "y": 270
+  },
+  "facing=north,flag=true": {
+   "model": "dcs_climate:block/build/bed_white_foot",
+   "y": 0
+  },
+  "facing=south,flag=true": {
+   "model": "dcs_climate:block/build/bed_white_foot",
+   "y": 180
+  },
+  "facing=east,flag=true": {
+   "model": "dcs_climate:block/build/bed_white_foot",
+   "y": 90
+  }
+ }
+}

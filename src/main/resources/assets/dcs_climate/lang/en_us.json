@@ -287,6 +287,8 @@
   "item.dcs_climate.magic.rod_red_blue_activated":"Lamprey Rod (Activated)",
   "item.dcs_climate.magic.rod_green_white":"Earth Rod",
 
+  "item.dcs_climate.magic.picture_item_white_red":"Magic Picture (Summer)",
+
   "item.dcs_climate.magic.document_boring_survey":"Document of Boring Survey",
 
     "## items_food":"food",
@@ -657,7 +659,7 @@
   "item.dcs_climate.food.wagashi_bota":"Botamochi",
   "item.dcs_climate.food.wagashi_kusa":"Kusamochi",
   "item.dcs_climate.food.wagashi_sakura":"Sakuramochi",
-  "item.dcs_climate.food.wagashi_daihuku":"Daihuku",
+  "item.dcs_climate.food.wagashi_daifuku":"Daifuku",
 
   "item.dcs_climate.food.porridge_simple":"Porridge",
   "item.dcs_climate.food.porridge_milk":"Milk Porridge",
@@ -1741,6 +1743,13 @@
   "block.dcs_climate.build.chair_round_red":"Red Lab Stool",
   "block.dcs_climate.build.chair_round_green":"Green Lab Stool",
 
+  "block.dcs_climate.build.bed_linen":"No Save Bed (Linen)",
+  "block.dcs_climate.build.bed_white":"No Save Bed (White)",
+  "block.dcs_climate.build.bed_blue":"No Save Bed (Blue)",
+  "block.dcs_climate.build.bed_black":"No Save Bed (Black)",
+  "block.dcs_climate.build.bed_red":"No Save Bed (Red)",
+  "block.dcs_climate.build.bed_green":"No Save Bed (Green)",
+
   "block.dcs_climate.build.luggage_normal":"Luggage",
   "block.dcs_climate.build.luggage_white":"White Luggage",
   "block.dcs_climate.build.luggage_blue":"Blue Luggage",
@@ -2273,6 +2282,10 @@
   "dcs.tip.rod.desc.green_white":"Right-click: Place a magic scaffolding blocks.",
   "dcs.tip.rod.flavor.green_white":"Flower fairies seem to enjoy helping humans with their work.",
 
+  "dcs.tip.picture.name.white_red":"The Bird of Summer",
+  "dcs.tip.picture.desc.white_red":"As long as this entity is loaded, the world will be summer.",
+  "dcs.tip.picture.flavor.white_red":"Summer does not cause migratory birds, migratory birds cause summer.",
+
   "## gui_inv":"inventory",
 
   "dcs.container.simple":"Luggage",
@@ -2492,7 +2505,7 @@
   "dcs.enum.autumn":"AUTUMN",
   "dcs.enum.winter":"WINTER",
   "dcs.enum.scorcher":"SCORCHER",
-  "dcs.enum.arctic":"ARCTIC",
+  "dcs.enum.absolute":"ABSOLUTE",
   "dcs.enum.spring_early":"EARLY SPRING",
   "dcs.enum.summer_early":"EARLY SUMMER",
   "dcs.enum.autumn_early":"EARLY AUTUMN",
@@ -2501,6 +2514,8 @@
   "dcs.enum.summer_late":"LATE SUMMER",
   "dcs.enum.autumn_late":"LATE AUTUMN",
   "dcs.enum.winter_late":"LATE WINTER",
+  "dcs.enum.flower":"FLOWER",
+  "dcs.enum.harvest":"HARVEST",
 
   "dcs.enum.heat_name":"Heat Tier",
   "dcs.enum.heat_name2":"TEMP",

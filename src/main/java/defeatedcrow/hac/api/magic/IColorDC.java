@@ -4,4 +4,6 @@ public interface IColorDC {
 
 	MagicColor getColor();
 
+	MagicType getMagicType();
+
 }

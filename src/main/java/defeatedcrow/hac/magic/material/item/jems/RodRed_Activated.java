@@ -98,7 +98,7 @@ public class RodRed_Activated extends MagicJewelBase {
 	}
 
 	@Override
-	public MagicType getType() {
+	public MagicType getMagicType() {
 		return MagicType.MAINHAND;
 	}
 

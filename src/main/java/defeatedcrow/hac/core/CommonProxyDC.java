@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.event.BlockUpdateEventDC;
 import defeatedcrow.hac.core.event.CharmTriggerEvent;
 import defeatedcrow.hac.core.event.LivingEventDC;
 import defeatedcrow.hac.core.event.LivingTickEventDC;
+import defeatedcrow.hac.core.event.MagicPictureEvent;
 import defeatedcrow.hac.core.event.ServerTickEventDC;
 import defeatedcrow.hac.core.event.ThunderstruckEventDC;
 import defeatedcrow.hac.core.event.WandererTradeEventDC;
@@ -65,6 +66,7 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(BlockEventDC::onDig);
 		MinecraftForge.EVENT_BUS.addListener(BlockEventDC::onBreakBlock);
 		MinecraftForge.EVENT_BUS.addListener(BlockEventDC::onClickBlock);
+		MinecraftForge.EVENT_BUS.addListener(BlockEventDC::onSetSpawnPoint);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onAttack);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onHurt);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onDeath);
@@ -72,6 +74,7 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onXpPickup);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onBlockLeftClick);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onEmptyLeftClick);
+		MinecraftForge.EVENT_BUS.addListener(MagicPictureEvent::onCheckSeason);
 		MinecraftForge.EVENT_BUS.addListener(FishingEventDC::onFishing);
 		MinecraftForge.EVENT_BUS.addListener(AnvilEventDC::onEvent);
 		MinecraftForge.EVENT_BUS.addListener(WandererTradeEventDC::onLoadingTrade);

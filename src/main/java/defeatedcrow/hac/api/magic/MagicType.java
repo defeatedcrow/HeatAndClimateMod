@@ -6,6 +6,8 @@ public enum MagicType {
 	INVENTORY_TOP,
 	ARMOR,
 	OFFHAND,
-	MAINHAND;
+	MAINHAND,
+	ARROW,
+	ENTITY;
 
 }
