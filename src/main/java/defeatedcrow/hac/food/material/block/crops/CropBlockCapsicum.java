@@ -80,6 +80,11 @@ public class CropBlockCapsicum extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public BlockState getFlowerState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+	}
+
+	@Override
 	public CropGrowType getGrowType(CropTier t) {
 		return CropGrowType.SINGLE;
 	}

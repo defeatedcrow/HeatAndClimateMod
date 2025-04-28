@@ -8,6 +8,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.ClimateSupplier;
+import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.crop.CropGrowType;
 import defeatedcrow.hac.api.crop.CropStage;
@@ -17,6 +18,7 @@ import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.crop.ICropData;
 import defeatedcrow.hac.api.material.IRapidCollectables;
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
@@ -148,6 +150,13 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0) {
 				onMutation(level, pos, state, random, c1);
+			}
+
+			EnumSeason season = DCTimeHelper.getSeasonEnum(level);
+			if (season == EnumSeason.FLOWER && stage != CropStage.FLOWER && stage != CropStage.SAPLING) {
+				BlockState flower = this.getFlowerState(state);
+				level.setBlock(pos, flower, c1);
+				return;
 			}
 
 			onGrow(level, pos, level.getBlockState(pos));
@@ -419,6 +428,11 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	@Override
 	public BlockState getGrownState(BlockState state) {
 		return state.setValue(DCState.STAGE6, Integer.valueOf(4));
+	}
+
+	@Override
+	public BlockState getFlowerState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
 	}
 
 	@Override

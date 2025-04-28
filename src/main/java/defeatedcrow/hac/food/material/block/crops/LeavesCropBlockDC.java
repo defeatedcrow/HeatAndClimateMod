@@ -374,6 +374,11 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	}
 
 	@Override
+	public BlockState getFlowerState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(4));
+	}
+
+	@Override
 	public BlockState getHarvestedState(BlockState state) {
 		return this.defaultBlockState();
 	}
@@ -420,9 +425,9 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 				return EnumSeason.AUTUMN_EARLY.getSeasonLimitedID();
 		}
 
-		if (cropSeasons.contains(season))
+		if (season == EnumSeason.HARVEST || cropSeasons.contains(season))
 			return 5;
-		else if (flowerSeasons.contains(season))
+		else if (season == EnumSeason.FLOWER || flowerSeasons.contains(season))
 			return 4;
 		else if (defoliation)
 			return season.getSeasonLimitedID();

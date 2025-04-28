@@ -1,4 +1,4 @@
-// 1.19.2	2025-04-23T22:18:48.0487721	Tags for minecraft:item
+// 1.19.2	2025-04-27T00:07:35.9979284	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
@@ -140,7 +140,7 @@ f91a01cafa4241db2f9d972e8c17c3b9a614695f data/dcs_climate/tags/items/magic/tier3
 18693f8762776180171770992989e15666e10425 data/dcs_climate/tags/items/magic_arrows.json
 ca0f47ac39b19e49977153f3027507ff755e5df5 data/dcs_climate/tags/items/magic_boost_item.json
 ddf63601841c399b3b24f1adabfa1c0d4433d639 data/dcs_climate/tags/items/magic_cards.json
-91555b446a7752e77e960e7d30610d0bbf49be0c data/dcs_climate/tags/items/magic_pictures.json
+c54795a013bc260bb6555034af6124a5de4c042f data/dcs_climate/tags/items/magic_pictures.json
 6430da8ed20b60e93622f4512219d1ff14aefcd8 data/dcs_climate/tags/items/mana_drops.json
 8c9f062dc20a9f733b8ed31f95dcfd702f331056 data/dcs_climate/tags/items/mana_elements.json
 14cef5e12e14cfde96c79f6a0d3142b02c0730a3 data/dcs_climate/tags/items/mana_extracts.json

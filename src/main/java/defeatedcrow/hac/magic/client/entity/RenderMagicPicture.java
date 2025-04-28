@@ -22,12 +22,12 @@ public class RenderMagicPicture extends EntityRenderer<MagicPictureEntity> {
 
 	public RenderMagicPicture(Context ctx) {
 		super(ctx);
-		this.model = new MagicPictureModel(ctx.bakeLayer(PictureItemWR.PICTURE_WR.getLayerLocation()));
+		this.model = new MagicPictureModel(ctx.bakeLayer(PictureItemWR.PICTURE.getLayerLocation()));
 	}
 
 	@Override
 	public ResourceLocation getTextureLocation(MagicPictureEntity entity) {
-		return PictureItemWR.PICTURE_WR.getTextureLocation();
+		return PictureItemWR.PICTURE.getTextureLocation();
 	}
 
 	@Override

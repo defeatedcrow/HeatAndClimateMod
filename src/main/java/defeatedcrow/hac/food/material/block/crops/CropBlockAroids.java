@@ -228,6 +228,14 @@ public class CropBlockAroids extends ClimateCropBaseBlock implements SimpleWater
 	}
 
 	@Override
+	public BlockState getFlowerState(BlockState state) {
+		if (getTier() == CropTier.RARE) {
+			return state.setValue(DCState.STAGE6, Integer.valueOf(5));
+		}
+		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+	}
+
+	@Override
 	public int getContinuousRegistance(CropTier t) {
 		return 3;
 	}

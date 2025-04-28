@@ -286,7 +286,10 @@
   "item.dcs_climate.magic.rod_red_blue_activated":"活性化した海蛇の杖",
   "item.dcs_climate.magic.rod_green_white":"大地の杖",
 
-  "item.dcs_climate.magic.picture_item_white_red":"絵画 (夏の鳥)",
+  "item.dcs_climate.magic.picture_item_white_blue":"白・青の絵画",
+  "item.dcs_climate.magic.picture_item_white_red":"白・赤の絵画",
+  "item.dcs_climate.magic.picture_item_blue_green":"青・緑の絵画",
+  "item.dcs_climate.magic.picture_item_red_green":"赤・緑の絵画",
 
   "item.dcs_climate.magic.document_boring_survey":"地質調査の結果",
 
@@ -1949,6 +1952,10 @@
   "entity.dcs_climate.silky_fairy":"フェアリー採掘隊",
   "entity.dcs_climate.silky_bomb":"採掘用爆薬",
   "entity.dcs_climate.crow_turret":"カラスマンタレット",
+  "entity.dcs_climate.magic_picture_wu":"白・青の絵画",
+  "entity.dcs_climate.magic_picture_wr":"白・赤の絵画",
+  "entity.dcs_climate.magic_picture_bg":"青・緑の絵画",
+  "entity.dcs_climate.magic_picture_rg":"赤・緑の絵画",
 
     "## tips":"",
 
@@ -2286,9 +2293,18 @@
   "dcs.tip.rod.desc.green_white":"右クリック: 建築足場ブロックを設置する。",
   "dcs.tip.rod.flavor.green_white":"花の妖精達は、人間の仕事を手伝うのを好むという。",
 
+  "dcs.tip.picture.name.white_blue":"冬の鳥",
+  "dcs.tip.picture.desc.white_blue":"このEntityがロードされている限り、このワールドは冬である。",
+  "dcs.tip.picture.flavor.white_blue":"あの鳥を撃ち落とせば、冬は永遠に来なくなるのだろうか？",
   "dcs.tip.picture.name.white_red":"夏の鳥",
   "dcs.tip.picture.desc.white_red":"このEntityがロードされている限り、このワールドは夏である。",
   "dcs.tip.picture.flavor.white_red":"夏になると鳥が渡るのではなく、鳥が渡るから夏になるのだ。",
+  "dcs.tip.picture.name.blue_green":"妖精の花園",
+  "dcs.tip.picture.desc.blue_green":"このEntityがロードされている限り、このワールドは花の季節である。",
+  "dcs.tip.picture.flavor.blue_green":"妖精の花園では、あらゆる季節の花が咲いているという。",
+  "dcs.tip.picture.name.red_green":"豊穣",
+  "dcs.tip.picture.desc.red_green":"このEntityがロードされている限り、このワールドは収穫の季節である。",
+  "dcs.tip.picture.flavor.red_green":"作物の成長すら掌握できるなら、もはやこの国に敵は無いだろうな。",
 
   "## gui_inv":"inventory",
 

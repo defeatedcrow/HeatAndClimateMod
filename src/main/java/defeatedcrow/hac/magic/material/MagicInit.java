@@ -22,7 +22,10 @@ import defeatedcrow.hac.magic.material.entity.ArrowRobber;
 import defeatedcrow.hac.magic.material.entity.ArrowWhite;
 import defeatedcrow.hac.magic.material.entity.CrowTurretEntity;
 import defeatedcrow.hac.magic.material.entity.PhoenixLightEntity;
+import defeatedcrow.hac.magic.material.entity.PictureEntityBG;
+import defeatedcrow.hac.magic.material.entity.PictureEntityRG;
 import defeatedcrow.hac.magic.material.entity.PictureEntityWR;
+import defeatedcrow.hac.magic.material.entity.PictureEntityWU;
 import defeatedcrow.hac.magic.material.entity.SilkyFairyEntity;
 import defeatedcrow.hac.magic.material.entity.SilkySmallBombEntity;
 import defeatedcrow.hac.magic.material.item.BoringSurveyItem;
@@ -55,7 +58,10 @@ import defeatedcrow.hac.magic.material.item.card.CardWhiteBlue;
 import defeatedcrow.hac.magic.material.item.card.CardWhiteRed;
 import defeatedcrow.hac.magic.material.item.card.CardWhiteT1;
 import defeatedcrow.hac.magic.material.item.card.CardWhiteT2;
+import defeatedcrow.hac.magic.material.item.entity.PictureItemBG;
+import defeatedcrow.hac.magic.material.item.entity.PictureItemRG;
 import defeatedcrow.hac.magic.material.item.entity.PictureItemWR;
+import defeatedcrow.hac.magic.material.item.entity.PictureItemWU;
 import defeatedcrow.hac.magic.material.item.jems.GoldPendant;
 import defeatedcrow.hac.magic.material.item.jems.GoldRing;
 import defeatedcrow.hac.magic.material.item.jems.RodBlack;
@@ -125,8 +131,14 @@ public class MagicInit {
 	public static final RegistryObject<EntityType<CrowTurretEntity>> CROW_TURRET = CoreInit.ENTITIES.register("crow_turret", () -> EntityType.Builder.<CrowTurretEntity>of(CrowTurretEntity::new,
 			MobCategory.CREATURE).sized(1.0F, 1.0F).clientTrackingRange(32).updateInterval(5).build("crow_turret"));
 
+	public static final RegistryObject<EntityType<PictureEntityWU>> MAGIC_PICTURE_WU = CoreInit.ENTITIES.register("magic_picture_wu", () -> EntityType.Builder.<PictureEntityWU>of(PictureEntityWU::new,
+			MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_wu"));
 	public static final RegistryObject<EntityType<PictureEntityWR>> MAGIC_PICTURE_WR = CoreInit.ENTITIES.register("magic_picture_wr", () -> EntityType.Builder.<PictureEntityWR>of(PictureEntityWR::new,
 			MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_wr"));
+	public static final RegistryObject<EntityType<PictureEntityBG>> MAGIC_PICTURE_BG = CoreInit.ENTITIES.register("magic_picture_bg", () -> EntityType.Builder.<PictureEntityBG>of(PictureEntityBG::new,
+			MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_bg"));
+	public static final RegistryObject<EntityType<PictureEntityRG>> MAGIC_PICTURE_RG = CoreInit.ENTITIES.register("magic_picture_rg", () -> EntityType.Builder.<PictureEntityRG>of(PictureEntityRG::new,
+			MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_rg"));
 
 	public static final RegistryObject<Item> DROP_WHITE = regItem("drop_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "drop_w", Rarity.COMMON, TagDC.ItemTag.DROP_WHITE).setDomain("magic"));
 	public static final RegistryObject<Item> DROP_BLUE = regItem("drop_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "drop_u", Rarity.COMMON, TagDC.ItemTag.DROP_BLUE).setDomain("magic"));
@@ -258,7 +270,10 @@ public class MagicInit {
 	public static final RegistryObject<Item> ROD_RED_ACTIVE = regItem("rod_red_blue_activated", () -> new RodRed_Activated());
 	public static final RegistryObject<Item> ROD_GREEN = regItem("rod_green_white", () -> new RodGreen());
 
+	public static final RegistryObject<Item> PICTURE_WU = regItem("picture_item_white_blue", () -> new PictureItemWU("white_blue"));
 	public static final RegistryObject<Item> PICTURE_WR = regItem("picture_item_white_red", () -> new PictureItemWR("white_red"));
+	public static final RegistryObject<Item> PICTURE_BG = regItem("picture_item_blue_green", () -> new PictureItemBG("blue_green"));
+	public static final RegistryObject<Item> PICTURE_RG = regItem("picture_item_red_green", () -> new PictureItemRG("red_green"));
 
 	public static final RegistryObject<Item> DOCUMENT_BORING = regItem("document_boring_survey", () -> new BoringSurveyItem());
 

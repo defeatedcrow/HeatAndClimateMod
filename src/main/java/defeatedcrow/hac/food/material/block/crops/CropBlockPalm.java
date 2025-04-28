@@ -94,6 +94,11 @@ public class CropBlockPalm extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public BlockState getFlowerState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(1));
+	}
+
+	@Override
 	public int getContinuousRegistance(CropTier t) {
 		return 5;
 	}

@@ -287,7 +287,10 @@
   "item.dcs_climate.magic.rod_red_blue_activated":"Lamprey Rod (Activated)",
   "item.dcs_climate.magic.rod_green_white":"Earth Rod",
 
-  "item.dcs_climate.magic.picture_item_white_red":"Magic Picture (Summer)",
+  "item.dcs_climate.magic.picture_item_white_blue":"White Blue Painting",
+  "item.dcs_climate.magic.picture_item_white_red":"White Red Painting",
+  "item.dcs_climate.magic.picture_item_blue_green":"Blue Green Painting",
+  "item.dcs_climate.magic.picture_item_red_green":"Red_Green Painting",
 
   "item.dcs_climate.magic.document_boring_survey":"Document of Boring Survey",
 
@@ -1743,12 +1746,12 @@
   "block.dcs_climate.build.chair_round_red":"Red Lab Stool",
   "block.dcs_climate.build.chair_round_green":"Green Lab Stool",
 
-  "block.dcs_climate.build.bed_linen":"No Save Bed (Linen)",
-  "block.dcs_climate.build.bed_white":"No Save Bed (White)",
-  "block.dcs_climate.build.bed_blue":"No Save Bed (Blue)",
-  "block.dcs_climate.build.bed_black":"No Save Bed (Black)",
-  "block.dcs_climate.build.bed_red":"No Save Bed (Red)",
-  "block.dcs_climate.build.bed_green":"No Save Bed (Green)",
+  "block.dcs_climate.build.bed_linen":"Non-Saving Bed (Linen)",
+  "block.dcs_climate.build.bed_white":"Non-Saving Bed (White)",
+  "block.dcs_climate.build.bed_blue":"Non-Saving Bed (Blue)",
+  "block.dcs_climate.build.bed_black":"Non-Saving Bed (Black)",
+  "block.dcs_climate.build.bed_red":"Non-Saving Bed (Red)",
+  "block.dcs_climate.build.bed_green":"Non-Saving Bed (Green)",
 
   "block.dcs_climate.build.luggage_normal":"Luggage",
   "block.dcs_climate.build.luggage_white":"White Luggage",
@@ -1947,6 +1950,10 @@
   "entity.dcs_climate.silky_fairy":"Silky Fairy",
   "entity.dcs_climate.silky_bomb":"Mining Explosives",
   "entity.dcs_climate.crow_turret":"Crow Turret",
+  "entity.dcs_climate.magic_picture_wu":"White Blue Painting",
+  "entity.dcs_climate.magic_picture_wr":"White Red Painting",
+  "entity.dcs_climate.magic_picture_bg":"Blue Green Painting",
+  "entity.dcs_climate.magic_picture_rg":"Red Green Painting",
 
     "## tips":"",
 
@@ -2282,9 +2289,18 @@
   "dcs.tip.rod.desc.green_white":"Right-click: Place a magic scaffolding blocks.",
   "dcs.tip.rod.flavor.green_white":"Flower fairies seem to enjoy helping humans with their work.",
 
+  "dcs.tip.picture.name.white_blue":"The Bird of Winter",
+  "dcs.tip.picture.desc.white_blue":"As long as this entity is loaded, the world will be winter.",
+  "dcs.tip.picture.flavor.white_blue":"If we shoot down the winter bird, will winter never come again?",
   "dcs.tip.picture.name.white_red":"The Bird of Summer",
   "dcs.tip.picture.desc.white_red":"As long as this entity is loaded, the world will be summer.",
   "dcs.tip.picture.flavor.white_red":"Summer does not cause migratory birds, migratory birds cause summer.",
+  "dcs.tip.picture.name.blue_green":"Fairy's Garden'",
+  "dcs.tip.picture.desc.blue_green":"As long as this entity is loaded, All HaC crop will flower.",
+  "dcs.tip.picture.flavor.blue_green":"In the fairy garden, flowers of every season bloom.",
+  "dcs.tip.picture.name.red_green":"Abundance",
+  "dcs.tip.picture.desc.red_green":"As long as this entity is loaded, All HaC crop will ripen.",
+  "dcs.tip.picture.flavor.red_green":"Now we can even control the harvest seasons. Our country is invincible.",
 
   "## gui_inv":"inventory",
 

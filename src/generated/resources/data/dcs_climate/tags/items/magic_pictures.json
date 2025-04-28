@@ -1,5 +1,8 @@
 {
   "values": [
-    "dcs_climate:magic/picture_item_white_red"
+    "dcs_climate:magic/picture_item_white_blue",
+    "dcs_climate:magic/picture_item_white_red",
+    "dcs_climate:magic/picture_item_blue_green",
+    "dcs_climate:magic/picture_item_red_green"
   ]
 }

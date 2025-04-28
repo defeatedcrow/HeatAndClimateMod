@@ -12,11 +12,13 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
+import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class CropBlockGrape extends CropBaseVine {
 
@@ -68,6 +70,11 @@ public class CropBlockGrape extends CropBaseVine {
 	@Override
 	public CropType getFamily() {
 		return CropType.GRAPE;
+	}
+
+	@Override
+	public BlockState getFlowerState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
 	}
 
 	@Override

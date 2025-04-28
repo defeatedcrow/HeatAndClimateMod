@@ -87,6 +87,11 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public BlockState getFlowerState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+	}
+
+	@Override
 	public int getContinuousRegistance(CropTier t) {
 		return 5;
 	}

@@ -6,10 +6,12 @@ import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.event.DCBlockUpdateEvent;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.api.recipe.IHeatTreatment;
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.block.building.GrassSlab;
@@ -48,6 +50,7 @@ public class BlockUpdateEventDC {
 
 			ClimateSupplier clm = new ClimateSupplier(world, p);
 			ClimateSupplier clm_down = new ClimateSupplier(world, p.below());
+			EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 
 			if (ConfigCommonBuilder.INSTANCE.enVanillaCrop.get()) {
 				// 寒冷地では成長しづらい

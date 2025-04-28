@@ -84,6 +84,10 @@ public enum EnumSeason {
 			i = 1;
 		if (i == 5)
 			i = 3;
+		if (i == 6)
+			i = 0;
+		if (i == 7)
+			i = 1;
 		return i;
 	}
 

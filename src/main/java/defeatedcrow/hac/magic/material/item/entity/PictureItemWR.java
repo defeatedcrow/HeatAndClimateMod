@@ -19,7 +19,7 @@ public class PictureItemWR extends MagicPictureItem {
 
 	@Override
 	public EntityRenderData getRenderData(Item item) {
-		return PICTURE_WR;
+		return PICTURE;
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class PictureItemWR extends MagicPictureItem {
 		return PICTURE_WR_OL;
 	}
 
-	public static final EntityRenderData PICTURE_WR = new EntityRenderData("magic/magic_picture_white_red", 1.0F, 0F);
+	public static final EntityRenderData PICTURE = new EntityRenderData("magic/magic_picture_white_red", 1.0F, 0F);
 
 	public static final EntityRenderData PICTURE_WR_OL = new EntityRenderData("magic/painting/magic_picture_white_red", 1.0F, 0F);
 

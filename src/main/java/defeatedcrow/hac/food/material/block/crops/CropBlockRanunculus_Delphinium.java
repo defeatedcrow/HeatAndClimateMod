@@ -188,6 +188,11 @@ public class CropBlockRanunculus_Delphinium extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public BlockState getFlowerState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(4));
+	}
+
+	@Override
 	public int getContinuousRegistance(CropTier t) {
 		return 5;
 	}

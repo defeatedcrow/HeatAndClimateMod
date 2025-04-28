@@ -99,7 +99,7 @@ public class LivingEventDC {
 	public static void onSpawnCheck(LivingSpawnEvent.CheckSpawn event) {
 		LivingEntity entity = event.getEntity();
 		if (event.getLevel() instanceof ServerLevel && entity instanceof Enemy && (event.getSpawnReason() == MobSpawnType.NATURAL || event.getSpawnReason() == MobSpawnType.JOCKEY || event
-			.getSpawnReason() == MobSpawnType.MOB_SUMMONED)) {
+				.getSpawnReason() == MobSpawnType.MOB_SUMMONED)) {
 			boolean flag = false;
 			ServerLevel ls = (ServerLevel) event.getLevel();
 			List<? extends OwnableMagicEntity> list = MagicUtil.getMagicEntity(ls, MagicColor.WHITE);

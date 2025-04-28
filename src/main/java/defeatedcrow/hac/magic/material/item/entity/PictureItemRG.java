@@ -6,15 +6,15 @@ import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 
-public class PictureItemWU extends MagicPictureItem {
+public class PictureItemRG extends MagicPictureItem {
 
-	public PictureItemWU(String s) {
-		super(s, MagicColor.WHITE_BLUE);
+	public PictureItemRG(String s) {
+		super(s, MagicColor.RED_GREEN);
 	}
 
 	@Override
 	public EntityType<?> getType() {
-		return MagicInit.MAGIC_PICTURE_WU.get();
+		return MagicInit.MAGIC_PICTURE_RG.get();
 	}
 
 	@Override
@@ -24,11 +24,11 @@ public class PictureItemWU extends MagicPictureItem {
 
 	@Override
 	public EntityRenderData getOuterRenderData(Item item) {
-		return PICTURE_WU_OL;
+		return PICTURE_RG_OL;
 	}
 
-	public static final EntityRenderData PICTURE = new EntityRenderData("magic/magic_picture_white_blue", 1.0F, 0F);
+	public static final EntityRenderData PICTURE = new EntityRenderData("magic/magic_picture_red_green", 1.0F, 0F);
 
-	public static final EntityRenderData PICTURE_WU_OL = new EntityRenderData("magic/painting/magic_picture_white_blue", 1.0F, 0F);
+	public static final EntityRenderData PICTURE_RG_OL = new EntityRenderData("magic/painting/magic_picture_red_green", 1.0F, 0F);
 
 }

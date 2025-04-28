@@ -87,6 +87,11 @@ public class CropBlockPedalia extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public BlockState getFlowerState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+	}
+
+	@Override
 	public int getContinuousRegistance(CropTier t) {
 		switch (t) {
 		case RARE:

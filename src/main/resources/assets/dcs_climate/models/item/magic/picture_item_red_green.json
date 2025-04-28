@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/magic/picture_item_red_green"
+  },
+  "parent": "minecraft:item/generated"
+}

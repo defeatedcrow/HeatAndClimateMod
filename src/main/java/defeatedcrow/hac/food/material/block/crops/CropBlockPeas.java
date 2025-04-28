@@ -49,7 +49,7 @@ public class CropBlockPeas extends ClimateCropBaseBlock {
 				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/peas_" + getSpeciesName(cropTier) + "_2")),
 				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/peas_" + getSpeciesName(cropTier) + "_f")),
 				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/peas_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/peas_" + getSpeciesName(cropTier) + "_f")));
+				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/peas_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
@@ -77,6 +77,11 @@ public class CropBlockPeas extends ClimateCropBaseBlock {
 	@Override
 	public CropGrowType getGrowType(CropTier t) {
 		return CropGrowType.SINGLE;
+	}
+
+	@Override
+	public BlockState getFlowerState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
 	}
 
 	@Override

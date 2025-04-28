@@ -52,6 +52,11 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 		return CropStage.YOUNG;
 	}
 
+	@Override
+	public BlockState getFlowerState(BlockState state) {
+		return state.setValue(DCState.STAGE6, Integer.valueOf(4));
+	}
+
 	/* IClimateCrop */
 
 	@Override

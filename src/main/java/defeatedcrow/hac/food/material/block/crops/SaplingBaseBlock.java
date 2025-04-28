@@ -76,6 +76,11 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public BlockState getFlowerState(BlockState state) {
+		return this.defaultBlockState();
+	}
+
+	@Override
 	public BlockState getFailureState(BlockState state) {
 		return state;
 	}

@@ -80,6 +80,14 @@ public class CropBlockAmaranth extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public BlockState getFlowerState(BlockState state) {
+		if (getTier() == CropTier.COMMON) {
+			return state.setValue(DCState.STAGE6, Integer.valueOf(4));
+		}
+		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+	}
+
+	@Override
 	public int getContinuousRegistance(CropTier t) {
 		switch (t) {
 		case RARE:
