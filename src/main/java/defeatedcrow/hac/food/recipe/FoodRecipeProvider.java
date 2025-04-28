@@ -1704,6 +1704,25 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_clove", has(TagDC.ItemTag.CROP_CLOVE))
 				.save(cons, "dcs_climate:food/foodmaterial_mixed_spice");
 
+		// pack
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MILK.get(), 4)
+				.requires(Ingredient.of(Items.MILK_BUCKET))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK))
+				.save(cons, "dcs_climate:food/foodmaterial_pack_milk");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_WATER.get(), 4)
+				.requires(Ingredient.of(Items.WATER_BUCKET))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK))
+				.save(cons, "dcs_climate:food/foodmaterial_pack_water");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_SPARKLING.get(), 4)
 				.requires(Ingredient.of(CoreInit.SPARKLING.getBucket().get()))
 				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
@@ -1712,6 +1731,24 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
 				.unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK))
 				.save(cons, "dcs_climate:food/foodmaterial_pack_sparkling");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_PLANT_OIL.get(), 4)
+				.requires(Ingredient.of(CoreInit.SPARKLING.getBucket().get()))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK))
+				.save(cons, "dcs_climate:food/foodmaterial_pack_plant_oil");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_HONEY.get(), 4)
+				.requires(Ingredient.of(Blocks.HONEY_BLOCK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
+				.unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK))
+				.save(cons, "dcs_climate:food/foodmaterial_pack_honey");
 
 		// leaves
 		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_LEAVES.get(), 1)

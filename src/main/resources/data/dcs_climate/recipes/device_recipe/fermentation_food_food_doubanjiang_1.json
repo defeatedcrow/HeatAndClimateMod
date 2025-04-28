@@ -1,6 +1,6 @@
 {
   "type": "dcs_climate:device_recipe",
-  "group": "cooking",
+  "group": "fermentation",
   "result": {
     "item": "dcs_climate:food/food_doubanjiang",
     "count": 1
@@ -14,26 +14,17 @@
     },
     {
       "tag": "forge:dusts/salt"
-    },
-    {
-      "tag": "forge:ingredients/wheat"
     }
   ],
   "heat": [
-    "BOIL",
-    "OVEN",
-    "KILN"
+    "WARM",
+    "HOT"
   ],
   "hum": [
-    "UNDERWATER",
-    "WET",
     "NORMAL",
-    "DRY"
+    "WET"
   ],
   "air": [
-    "TIGHT",
-    "NORMAL",
-    "FLOW",
-    "WIND"
+    "NORMAL"
   ]
 }

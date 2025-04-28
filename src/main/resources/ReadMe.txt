@@ -437,6 +437,12 @@
   プレイヤーがメインハンドに持ち、クリックで使用することで効果を発揮します。
   If a player holds this in their main hand and uses it, the effect will be activated.
 
+ ● 魔法の絵画 / Magical Painting
+
+ 　Entityとして設置されます。 It is placed as an entity.
+ 　絵画がEntityとしてロードされている間、魔法の効果を発揮します。
+  It has magical effects while it is loaded as an entity.
+
 ****************************************************************************************************
 
 ◎ 電気とマシン / Electricity and Machines
@@ -734,8 +740,9 @@
  add: 魔法の絵画4種
  change: 樹液カップの中身をホッパーで搬出可能にした
  change: 特殊な季節の追加
- change: Serverの気候データの更新タイミングを5秒から3秒に短縮
+ change: サーバーの気候データの更新タイミングを5秒から3秒に短縮
  change: 魔法アイテムの内部仕様の変更
+ change: 特殊な季節がHaC作物の成長に影響を与えるように
  fix: 大福の内部名称のゆれ
 
 ○v4-beta24

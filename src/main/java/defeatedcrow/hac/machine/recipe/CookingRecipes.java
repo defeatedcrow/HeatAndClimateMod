@@ -879,11 +879,6 @@ public class CookingRecipes {
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_TOMATO), Ingredient.of(TagDC.ItemTag.CROP_CHILI), Ingredient.of(TagDC.ItemTag.CROP_ONION),
 						Ingredient.of(TagDC.ItemTag.CROP_PAPRIKA), Ingredient.of(TagDC.ItemTag.CROP_HERBS), Ingredient.of(TagDC.ItemTag.CROP_LEMON)));
 
-		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_DOUBANJIANG.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
-				tags,
-				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_CHILI), Ingredient.of(TagDC.ItemTag.CROP_BEANS), Ingredient.of(TagDC.ItemTag.DUST_SALT),
-						Ingredient.of(TagDC.ItemTag.DUST_WHEAT)));
-
 		// other
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(Items.BROWN_DYE, 8), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				ImmutableList.of(FluidTags.WATER.location().toString()),
@@ -1213,6 +1208,10 @@ public class CookingRecipes {
 		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FOOD_SHRIMP_PASTE.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.KRILL), Ingredient.of(TagDC.ItemTag.DUST_SALT)));
+
+		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FOOD_DOUBANJIANG.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_CHILI), Ingredient.of(TagDC.ItemTag.CROP_BEANS), Ingredient.of(TagDC.ItemTag.DUST_SALT)));
 
 		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FOOD_MISO.get(), 1), new ItemStack(FoodInit.FOOD_SOYSAUCE.get(), 1), 100, FluidStack.EMPTY,
 				tags,

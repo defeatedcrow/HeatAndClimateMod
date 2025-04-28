@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "tag": "forge:gems/diamond"
+    },
+    "X": {
+      "tag": "dcs_climate:color_elements/white"
+    },
+    "Y": {
+      "item": "minecraft:painting"
+    },
+    "Z": {
+      "tag": "dcs_climate:color_elements/blue"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "WYW",
+    "ZZZ"
+  ],
+  "result": {
+    "item": "dcs_climate:magic/picture_item_white_blue"
+  }
+}
