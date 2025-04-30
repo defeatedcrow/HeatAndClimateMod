@@ -11,7 +11,6 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.crop.CropGrowType;
-import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.crop.IClimateCrop;
@@ -79,35 +78,10 @@ public class CropBlockRanunculus_Delphinium extends ClimateCropBaseBlock {
 
 	@Override
 	public boolean onGrow(Level world, BlockPos pos, BlockState thisState) {
-		CropStage stage = this.getCurrentStage(thisState);
-		if (stage == CropStage.DEAD) {
+		if (DCState.getBool(thisState, DCState.DOUBLE)) {
 			return false;
-		} else if (stage == CropStage.GROWN) {
-			return false;
-		} else if (DCState.getBool(thisState, DCState.DOUBLE)) {
-			return false;
-		} else {
-			int age = DCState.getInt(thisState, DCState.STAGE6);
-			BlockState upper = world.getBlockState(pos.above());
-			if (age == 1 && upper.getBlock() == Blocks.AIR) {
-				if (upper.getBlock() == Blocks.AIR) {
-					BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(DCState.STAGE6, 2);
-					world.setBlock(pos, up, 3);
-				}
-			}
-			if (age >= 0 && age < 4) {
-				age++;
-				if (age > 1) {
-					if (upper.getBlock() == Blocks.AIR || upper.getBlock() == this) {
-						BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(DCState.STAGE6, age);
-						world.setBlock(pos.above(), up, 3);
-					}
-				}
-				BlockState next = thisState.setValue(DCState.STAGE6, age);
-				return world.setBlock(pos, next, 3);
-			}
 		}
-		return false;
+		return super.onGrow(world, pos, thisState);
 	}
 
 	@Override

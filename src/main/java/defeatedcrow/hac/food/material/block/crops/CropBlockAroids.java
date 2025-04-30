@@ -111,19 +111,13 @@ public class CropBlockAroids extends ClimateCropBaseBlock implements SimpleWater
 	}
 
 	@Override
-	public boolean onGrow(Level world, BlockPos pos, BlockState thisState) {
-		CropStage stage = this.getCurrentStage(thisState);
+	protected BlockState getNextState(Level level, BlockPos pos, BlockState thisState, CropStage stage) {
 		int age = DCState.getInt(thisState, DCState.STAGE6);
-		if (age == 2) {
-			int chance = this.getGrowingChance(world, pos, thisState);
-			BlockState next = this.getGrownState(thisState);
-			// FLOWERステートは低確率で出現
-			if (chance > 0 && world.getRandom().nextInt(chance) == 0) {
-				next = thisState.setValue(DCState.STAGE6, Integer.valueOf(3));
-			}
-			return world.setBlock(pos, next, 3);
+		// FLOWERステートは低確率で出現
+		if (age == 2 && level.getRandom().nextInt(12) == 0) {
+			return thisState.setValue(DCState.STAGE6, Integer.valueOf(3));
 		}
-		return super.onGrow(world, pos, thisState);
+		return super.getNextState(level, pos, thisState, stage);
 	}
 
 	/* 花の収穫ができる */

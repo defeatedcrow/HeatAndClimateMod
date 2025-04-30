@@ -71,6 +71,7 @@ public abstract class MagicPictureEntity extends OwnableMagicEntity {
 	@Override
 	public void addAdditionalSaveData(CompoundTag tag) {
 		tag.putByte(TagKeyDC.DIRECTION, (byte) this.direction.get3DDataValue());
+		super.addAdditionalSaveData(tag);
 	}
 
 	@Override
@@ -78,6 +79,7 @@ public abstract class MagicPictureEntity extends OwnableMagicEntity {
 		if (tag.contains(TagKeyDC.DIRECTION)) {
 			Direction dir = Direction.from3DDataValue(tag.getByte(TagKeyDC.DIRECTION));
 		}
+		super.readAdditionalSaveData(tag);
 	}
 
 }

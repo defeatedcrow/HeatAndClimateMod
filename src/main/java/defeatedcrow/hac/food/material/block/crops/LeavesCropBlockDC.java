@@ -412,6 +412,11 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 		ClimateSupplier spr = new ClimateSupplier(world, pos);
 		IClimate climate = spr.get();
 
+		if (season == EnumSeason.HARVEST || cropSeasons.contains(season))
+			return 5;
+		else if (season == EnumSeason.FLOWER || flowerSeasons.contains(season))
+			return 4;
+
 		// 暑すぎる場合
 		if (tooHot(climate.getHeat())) {
 			return EnumSeason.SUMMER_EARLY.getSeasonLimitedID();
@@ -425,11 +430,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 				return EnumSeason.AUTUMN_EARLY.getSeasonLimitedID();
 		}
 
-		if (season == EnumSeason.HARVEST || cropSeasons.contains(season))
-			return 5;
-		else if (season == EnumSeason.FLOWER || flowerSeasons.contains(season))
-			return 4;
-		else if (defoliation)
+		if (defoliation)
 			return season.getSeasonLimitedID();
 		else
 			return 0; // 春固定

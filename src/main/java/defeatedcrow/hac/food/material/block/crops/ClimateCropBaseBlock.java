@@ -111,12 +111,19 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		int count = this.getContinuousRegistance(getTier());
 		if (ConfigCommonBuilder.INSTANCE.enContinuousFailure.get() && state.getMaterial() != Material.LEAVES && count < 5 && count > 0) {
 			if (level.getRandom().nextInt(count + 1) == 0) {
-				if ((stage == CropStage.DEAD)) {
+				if (stage == CropStage.DEAD) {
 					// 伝染
 					Direction dir = Direction.getRandom(level.getRandom());
 					BlockState target = level.getBlockState(pos.relative(dir));
 					if (target.getBlock() == this && DCState.getInt(target, DCState.STAGE6) > 1) {
 						BlockState failure = getFailureState(target);
+						if (failure.hasProperty(DCState.DOUBLE)) {
+							if (dir == Direction.DOWN) {
+								failure.setValue(DCState.DOUBLE, false);
+							} else if (dir == Direction.UP) {
+								failure.setValue(DCState.DOUBLE, true);
+							}
+						}
 						level.setBlock(pos.relative(dir), failure, 2);
 					}
 					return;
@@ -150,13 +157,6 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0) {
 				onMutation(level, pos, state, random, c1);
-			}
-
-			EnumSeason season = DCTimeHelper.getSeasonEnum(level);
-			if (season == EnumSeason.FLOWER && stage != CropStage.FLOWER && stage != CropStage.SAPLING) {
-				BlockState flower = this.getFlowerState(state);
-				level.setBlock(pos, flower, c1);
-				return;
 			}
 
 			onGrow(level, pos, level.getBlockState(pos));
@@ -335,7 +335,10 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
 		if (DCState.getBool(state, DCState.DOUBLE)) {
 			state = level.getBlockState(pos.below());
-			pos = pos.below();
+			BlockState bel = level.getBlockState(pos.below());
+			if (bel != null && bel.getBlock() == this) {
+				pos = pos.below();
+			}
 		}
 
 		CropStage stage = getCurrentStage(state);
@@ -347,7 +350,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			}
 		}
 
-		this.onGrow(level, pos, level.getBlockState(pos));
+		this.onGrow(level, pos, state);
 	}
 
 	/* IBlockDC */
@@ -453,7 +456,19 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	@Override
 	public int getGrowingChance(Level world, BlockPos pos, BlockState thisState) {
 		CropStage stage = this.getCurrentStage(thisState);
-		if (stage != CropStage.GROWN && stage != CropStage.DEAD) {
+		EnumSeason season = DCTimeHelper.getSeasonEnum(world);
+		if (season == EnumSeason.FLOWER && season == EnumSeason.HARVEST) {
+			int ret = 24;
+			BlockState under = world.getBlockState(pos.below());
+			if (isFarmland(under)) {
+				ret /= 2;
+			}
+			int f = FertileBlock.getFertile(world, pos.below(), under) + 1;
+			if (f > 0) {
+				ret /= f;
+			}
+			return ret;
+		} else if (stage != CropStage.GROWN && stage != CropStage.DEAD) {
 			boolean clm = isSuitableForGrowing(world, pos, thisState);
 			int ret = clm ? 24 : 80;
 			if (ConfigCommonBuilder.INSTANCE.enHardCrop.get()) {
@@ -477,19 +492,48 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	@Override
 	public boolean onGrow(Level world, BlockPos pos, BlockState thisState) {
 		CropStage stage = this.getCurrentStage(thisState);
-		if (stage == CropStage.DEAD) {
-			return false;
-		} else if (stage == CropStage.GROWN) {
-			return false;
-		} else {
-			int age = DCState.getInt(thisState, DCState.STAGE6);
-			if (age >= 0 && age < 4) {
-				age++;
-				BlockState next = thisState.setValue(DCState.STAGE6, age);
-				return world.setBlock(pos, next, 3);
+		BlockState next = getNextState(world, pos, thisState, stage);
+		if (next != null && !next.equals(thisState)) {
+			if (thisState.hasProperty(DCState.DOUBLE)) {
+				int age = DCState.getInt(next, DCState.STAGE6);
+				if (age > 1 && !DCState.getBool(thisState, DCState.DOUBLE)) {
+					BlockState upper = world.getBlockState(pos.above());
+					if (upper.getBlock() == Blocks.AIR || upper.getBlock() == this) {
+						BlockState next2 = next.setValue(DCState.DOUBLE, true);
+						if (upper.getFluidState().isEmpty() && next2.hasProperty(BlockStateProperties.WATERLOGGED)) {
+							next2 = next2.setValue(BlockStateProperties.WATERLOGGED, false);
+						}
+						world.setBlock(pos.above(), next2, 2);
+					}
+				}
 			}
+			return world.setBlock(pos, next, 2);
 		}
 		return false;
+	}
+
+	protected BlockState getNextState(Level level, BlockPos pos, BlockState thisState, CropStage stage) {
+		EnumSeason season = DCTimeHelper.getSeasonEnum(level);
+		if (season == EnumSeason.FLOWER && stage != CropStage.SAPLING) {
+			return this.getFlowerState(thisState);
+		} else {
+			if (stage == CropStage.DEAD) {
+				if (season == EnumSeason.HARVEST) {
+					return thisState.setValue(DCState.STAGE6, 0);
+				}
+				return thisState;
+			} else if (stage == CropStage.GROWN) {
+				return thisState;
+			} else {
+				int age = DCState.getInt(thisState, DCState.STAGE6);
+				if (age >= 0 && age < 4) {
+					age++;
+					BlockState next = thisState.setValue(DCState.STAGE6, age);
+					return thisState.setValue(DCState.STAGE6, age);
+				}
+			}
+		}
+		return thisState;
 	}
 
 	@Override

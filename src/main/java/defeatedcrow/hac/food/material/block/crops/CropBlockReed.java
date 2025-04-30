@@ -126,35 +126,10 @@ public class CropBlockReed extends ClimateCropBaseBlock implements SimpleWaterlo
 
 	@Override
 	public boolean onGrow(Level world, BlockPos pos, BlockState thisState) {
-		CropStage stage = this.getCurrentStage(thisState);
-		if (stage == CropStage.DEAD) {
+		if (DCState.getBool(thisState, DCState.DOUBLE)) {
 			return false;
-		} else if (stage == CropStage.GROWN) {
-			return false;
-		} else if (DCState.getBool(thisState, DCState.DOUBLE)) {
-			return false;
-		} else {
-			int age = DCState.getInt(thisState, DCState.STAGE6);
-			BlockState upper = world.getBlockState(pos.above());
-			if (age == 1 && upper.getBlock() == Blocks.AIR) {
-				if (upper.getBlock() == Blocks.AIR) {
-					BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(WATERLOGGED, false).setValue(DCState.STAGE6, 2);
-					world.setBlock(pos, up, 3);
-				}
-			}
-			if (age >= 0 && age < 4) {
-				age++;
-				if (age > 1) {
-					if (upper.getBlock() == Blocks.AIR || upper.getBlock() == this) {
-						BlockState up = thisState.setValue(DCState.DOUBLE, true).setValue(WATERLOGGED, false).setValue(DCState.STAGE6, age);
-						world.setBlock(pos.above(), up, 3);
-					}
-				}
-				BlockState next = thisState.setValue(DCState.STAGE6, age);
-				return world.setBlock(pos, next, 3);
-			}
 		}
-		return false;
+		return super.onGrow(world, pos, thisState);
 	}
 
 	@Override
