@@ -97,7 +97,9 @@ public abstract class MagicPictureItem extends ItemDC implements IEntityItem, IC
 			pic.setYRot(targetDir.get2DDataValue() * 90F);
 			pic.setDeltaMovement(0D, 0D, 0D);
 			pic.setOwnerUUID(player.getUUID());
-			level.addFreshEntity(pic);
+			if (level.addFreshEntity(pic)) {
+				item.split(1);
+			}
 			level.gameEvent(pic, GameEvent.ENTITY_PLACE, vec);
 			return true;
 		}

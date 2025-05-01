@@ -91,6 +91,7 @@ public abstract class OwnableMagicEntity extends Entity implements IColorDC, IIt
 	@Override
 	public void tick() {
 		if (this.isRemoved()) {
+			this.onRemoved();
 			this.discard();
 		}
 
@@ -121,6 +122,7 @@ public abstract class OwnableMagicEntity extends Entity implements IColorDC, IIt
 			if (this.getLocked() && !this.isOwnerOrOP(player)) {
 				return InteractionResult.SUCCESS;
 			}
+			this.onRemoved();
 			this.discard();
 		}
 		return InteractionResult.SUCCESS;
@@ -132,6 +134,7 @@ public abstract class OwnableMagicEntity extends Entity implements IColorDC, IIt
 		if (attacker != null) {
 			if (attacker instanceof Player player && !source.isExplosion() && !source.isProjectile()) {
 				if (!this.getLocked() || this.isOwnerOrOP(player)) {
+					this.onRemoved();
 					this.discard();
 				}
 			}
