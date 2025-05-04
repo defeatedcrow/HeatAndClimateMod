@@ -43,6 +43,7 @@ import defeatedcrow.hac.core.material.item.tool.ItemMosquitoCoil;
 import defeatedcrow.hac.core.material.item.tool.ItemPickaxeDC;
 import defeatedcrow.hac.core.material.item.tool.ItemScythe;
 import defeatedcrow.hac.core.material.item.tool.ItemShovelDC;
+import defeatedcrow.hac.core.material.item.tool.LureItem;
 import defeatedcrow.hac.core.material.item.tool.ScrewdriverItem;
 import defeatedcrow.hac.core.material.item.tool.SeedingPotItem;
 import defeatedcrow.hac.core.material.item.tool.SoapItem;
@@ -254,11 +255,11 @@ public class CoreInit {
 
 	public static final RegistryObject<Item> FISHING_ROD_STEEL = regItem("fishing_rod_steel", () -> new FishingRodItemDC(TierDC.STEEL, Tags.Items.TOOLS_FISHING_RODS));
 	public static final RegistryObject<Item> LURE_FISHING_HOOK = regItem("lure_fishing_hook", () -> new MaterialItemDC(MACHINE, "lure_fishing_hook", null));
-	public static final RegistryObject<Item> LURE_JIG_IRON = regItem("lure_jig_iron", () -> new MaterialItemDC(MACHINE, "lure_jig_iron", TagDC.ItemTag.LURE));
-	public static final RegistryObject<Item> LURE_JIG_GLITTER = regItem("lure_jig_glitter", () -> new MaterialItemDC(MACHINE, "lure_jig_glitter", TagDC.ItemTag.LURE));
-	public static final RegistryObject<Item> LURE_EGI_FIRE = regItem("lure_egi_fire", () -> new MaterialItemDC(MACHINE, "lure_egi_fire", TagDC.ItemTag.LURE));
-	public static final RegistryObject<Item> LURE_WORM_CLAW = regItem("lure_worm_craw", () -> new MaterialItemDC(MACHINE, "lure_worm_craw", TagDC.ItemTag.LURE));
-	public static final RegistryObject<Item> LURE_MAGNET = regItem("lure_magnet", () -> new MaterialItemDC(MACHINE, "lure_magnet", TagDC.ItemTag.LURE));
+	public static final RegistryObject<Item> LURE_JIG_IRON = regItem("lure_jig_iron", () -> new LureItem(MACHINE, "lure_jig_iron", TagDC.ItemTag.LURE));
+	public static final RegistryObject<Item> LURE_JIG_GLITTER = regItem("lure_jig_glitter", () -> new LureItem(MACHINE, "lure_jig_glitter", TagDC.ItemTag.LURE));
+	public static final RegistryObject<Item> LURE_EGI_FIRE = regItem("lure_egi_fire", () -> new LureItem(MACHINE, "lure_egi_fire", TagDC.ItemTag.LURE));
+	public static final RegistryObject<Item> LURE_WORM_CLAW = regItem("lure_worm_craw", () -> new LureItem(MACHINE, "lure_worm_craw", TagDC.ItemTag.LURE));
+	public static final RegistryObject<Item> LURE_MAGNET = regItem("lure_magnet", () -> new LureItem(MACHINE, "lure_magnet", TagDC.ItemTag.LURE));
 
 	public static final RegistryObject<Item> CALABASH_BUCKET = regItem("bucket_calabash", () -> new StackableBucketItem("bucket_calabash", TagDC.ItemTag.CRAFT_CALABASH));
 	public static final RegistryObject<Item> SPOON = regItem("cutlery_spoon", () -> new CutlerySpoonItem("cutlery_spoon"));

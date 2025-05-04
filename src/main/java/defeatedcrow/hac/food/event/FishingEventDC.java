@@ -171,6 +171,31 @@ public class FishingEventDC {
 						}
 					}
 					event.setCanceled(true);
+				} else {
+					ItemStack fish = ItemStack.EMPTY;
+					if (isMangrove && fish.is(TagDC.ItemTag.FISH_MANGROVE))
+						fish = new ItemStack(Items.TROPICAL_FISH);
+					if (isBeach && fish.is(TagDC.ItemTag.FISH_BEACH))
+						fish = new ItemStack(Items.PUFFERFISH);
+					if (isOcean && fish.is(TagDC.ItemTag.FISH_OCEAN))
+						fish = new ItemStack(Items.PUFFERFISH);
+					if (isDeepOcean && fish.is(TagDC.ItemTag.FISH_DEEP_OCEAN))
+						fish = new ItemStack(Items.COD);
+					if (isRiver && fish.is(TagDC.ItemTag.FISH_RIVER))
+						fish = new ItemStack(Items.SALMON);
+					if (!level.isClientSide) {
+						ItemEntity drop = new ItemEntity(level, event.getHookEntity().getX(), event.getHookEntity().getY(), event.getHookEntity().getZ(), fish);
+						double d0 = event.getEntity().getX() - event.getHookEntity().getX();
+						double d1 = event.getEntity().getY() - event.getHookEntity().getY();
+						double d2 = event.getEntity().getZ() - event.getHookEntity().getZ();
+						double d3 = 0.1D;
+						drop.setDeltaMovement(d0 * 0.1D, d1 * 0.1D + Math.sqrt(Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2)) * 0.08D, d2 * 0.1D);
+						level.addFreshEntity(drop);
+						level.addFreshEntity(new ExperienceOrb(level, event.getEntity().getX(), event.getEntity().getY() + 0.5D, event.getEntity().getZ() + 0.5D, level.random.nextInt(6) + 1));
+						if (fish.is(ItemTags.FISHES)) {
+							event.getEntity().awardStat(Stats.FISH_CAUGHT, 1);
+						}
+					}
 				}
 
 			} else if (item.is(Items.FISHING_ROD)) {
