@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Y": {
+      "item": "dcs_climate:main/lure_fishing_hook"
+    },
+    "Z": {
+      "item": "minecraft:blaze_powder"
+    }
+  },
+  "pattern": [
+    "Y  ",
+    " XZ",
+    " ZX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/lure_egi_fire"
+  }
+}

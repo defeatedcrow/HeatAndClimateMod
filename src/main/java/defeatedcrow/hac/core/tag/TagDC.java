@@ -630,6 +630,7 @@ public class TagDC {
 		public static final TagKey<Item> HARPOON = itemTag("tools/harpoon");
 		public static final TagKey<Item> CUTLERY = itemTag("tools/cutlery");
 		public static final TagKey<Item> FIRESTARTER = itemTag("tools/firestarter");
+		public static final TagKey<Item> LURE = itemTag("tools/lure");
 
 		public static final TagKey<Item> DUST_AMARANTH = itemTag("ingredients/amaranth");
 		public static final TagKey<Item> DUST_OAT = itemTag("ingredients/oat");
@@ -682,6 +683,7 @@ public class TagDC {
 		public static final TagKey<Item> FLOUNDER = itemTag("ingredients/flounder");
 		public static final TagKey<Item> MULLET = itemTag("ingredients/mullet");
 		public static final TagKey<Item> SMELT = itemTag("ingredients/smelt");
+		public static final TagKey<Item> SKIPJACK = itemTag("ingredients/skipjack");
 		public static final TagKey<Item> TUNA = itemTag("ingredients/tuna");
 		public static final TagKey<Item> TROUT = itemTag("ingredients/trout");
 		public static final TagKey<Item> CARP = itemTag("ingredients/carp");
@@ -900,7 +902,7 @@ public class TagDC {
 		public static final TagKey<Item> FISH_ALL = itemHaCTag("fishes");
 		public static final TagKey<Item> FISH_VANILLA = itemHaCTag("fishes/vanilla");
 		public static final TagKey<Item> FISH_HAC = itemHaCTag("fishes/hac");
-		public static final TagKey<Item> FISH_LOD = itemHaCTag("can_fish_with_lod");
+		public static final TagKey<Item> FISH_ROD = itemHaCTag("can_fish_with_rod");
 
 		public static final TagKey<Item> FISH_RIVER = itemHaCTag("fishes/river");
 		public static final TagKey<Item> FISH_BEACH = itemHaCTag("fishes/beach");

@@ -92,6 +92,7 @@ public class ClimateCore {
 		CoreInit.FLUIDS.register(bus);
 		CoreInit.EFFECTS.register(bus);
 		CoreInit.POTIONS.register(bus);
+		CoreInit.ENCHANTMENT.register(bus);
 		CoreInit.ENTITIES.register(bus);
 		CoreInit.RECIPE_TYPE.register(bus);
 		CoreInit.RECIPE_SEREALIZER.register(bus);

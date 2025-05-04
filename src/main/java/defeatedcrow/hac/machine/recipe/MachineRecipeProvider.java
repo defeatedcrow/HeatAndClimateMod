@@ -39,12 +39,11 @@ public class MachineRecipeProvider extends RecipeProvider {
 	static void craftRecipes(Consumer<FinishedRecipe> cons) {
 		ShapedRecipeBuilder.shaped(MachineInit.MOTOR_TIER1.get(), 1)
 				.pattern("XYX")
-				.pattern("ZYZ")
-				.pattern("ZYZ")
-				.define('X', TagDC.ItemTag.RAW_MAGNETITE)
+				.pattern("XYX")
+				.pattern("XYX")
 				.define('Y', Tags.Items.INGOTS_IRON)
-				.define('Z', Tags.Items.INGOTS_COPPER)
-				.unlockedBy("has_raw_magnetite", has(TagDC.ItemTag.RAW_MAGNETITE))
+				.define('X', Tags.Items.INGOTS_COPPER)
+				.unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER))
 				.save(cons, "dcs_climate:machine/small_motor_0");
 
 		ShapedRecipeBuilder.shaped(MachineInit.MOTOR_TIER2.get(), 1)

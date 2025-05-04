@@ -15,6 +15,7 @@ import defeatedcrow.hac.core.material.block.building.SimpleChestDC;
 import defeatedcrow.hac.core.material.effects.MobEffectBird;
 import defeatedcrow.hac.core.material.effects.MobEffectDC;
 import defeatedcrow.hac.core.material.effects.MobEffectFlag;
+import defeatedcrow.hac.core.material.enchantment.FishingEnchantment;
 import defeatedcrow.hac.core.material.entity.ChairEntity;
 import defeatedcrow.hac.core.material.entity.ObjectEntityBaseDC;
 import defeatedcrow.hac.core.material.entity.proj.ThrownHarpoon;
@@ -30,6 +31,7 @@ import defeatedcrow.hac.core.material.item.tool.CutleryChopsticksItem;
 import defeatedcrow.hac.core.material.item.tool.CutleryForkItem;
 import defeatedcrow.hac.core.material.item.tool.CutlerySpoonItem;
 import defeatedcrow.hac.core.material.item.tool.EnergymeterItem;
+import defeatedcrow.hac.core.material.item.tool.FishingRodItemDC;
 import defeatedcrow.hac.core.material.item.tool.FlowmeterItem;
 import defeatedcrow.hac.core.material.item.tool.GemSieveItem;
 import defeatedcrow.hac.core.material.item.tool.HandSpindleItem;
@@ -89,6 +91,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SimpleRecipeSerializer;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Fluid;
@@ -110,6 +113,7 @@ public class CoreInit {
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, ClimateCore.MOD_ID);
 	public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, ClimateCore.MOD_ID);
+	public static final DeferredRegister<Enchantment> ENCHANTMENT = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<RecipeType<?>> RECIPE_TYPE = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, ClimateCore.MOD_ID);
 	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SEREALIZER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<MenuType<?>> MENU_TYPE = DeferredRegister.create(ForgeRegistries.MENU_TYPES, ClimateCore.MOD_ID);
@@ -247,6 +251,14 @@ public class CoreInit {
 
 	public static final RegistryObject<Item> HARPOON_FLINT = regItem("harpoon_flint", () -> new HarpoonItem("flint", TierDC.FLINT, TagDC.ItemTag.HARPOON));
 	public static final RegistryObject<Item> HARPOON_STEEL = regItem("harpoon_steel", () -> new HarpoonItem("steel", TierDC.STEEL, TagDC.ItemTag.HARPOON));
+
+	public static final RegistryObject<Item> FISHING_ROD_STEEL = regItem("fishing_rod_steel", () -> new FishingRodItemDC(TierDC.STEEL, Tags.Items.TOOLS_FISHING_RODS));
+	public static final RegistryObject<Item> LURE_FISHING_HOOK = regItem("lure_fishing_hook", () -> new MaterialItemDC(MACHINE, "lure_fishing_hook", null));
+	public static final RegistryObject<Item> LURE_JIG_IRON = regItem("lure_jig_iron", () -> new MaterialItemDC(MACHINE, "lure_jig_iron", TagDC.ItemTag.LURE));
+	public static final RegistryObject<Item> LURE_JIG_GLITTER = regItem("lure_jig_glitter", () -> new MaterialItemDC(MACHINE, "lure_jig_glitter", TagDC.ItemTag.LURE));
+	public static final RegistryObject<Item> LURE_EGI_FIRE = regItem("lure_egi_fire", () -> new MaterialItemDC(MACHINE, "lure_egi_fire", TagDC.ItemTag.LURE));
+	public static final RegistryObject<Item> LURE_WORM_CLAW = regItem("lure_worm_craw", () -> new MaterialItemDC(MACHINE, "lure_worm_craw", TagDC.ItemTag.LURE));
+	public static final RegistryObject<Item> LURE_MAGNET = regItem("lure_magnet", () -> new MaterialItemDC(MACHINE, "lure_magnet", TagDC.ItemTag.LURE));
 
 	public static final RegistryObject<Item> CALABASH_BUCKET = regItem("bucket_calabash", () -> new StackableBucketItem("bucket_calabash", TagDC.ItemTag.CRAFT_CALABASH));
 	public static final RegistryObject<Item> SPOON = regItem("cutlery_spoon", () -> new CutlerySpoonItem("cutlery_spoon"));
@@ -643,6 +655,8 @@ public class CoreInit {
 	public static final RegistryObject<EntityType<ChairEntity>> CHAIR_ENTITY = ENTITIES.register("chair_entity", () -> EntityType.Builder.<ChairEntity>of(ChairEntity::new,
 			MobCategory.MISC).sized(0.5F, 0.1F).updateInterval(10).build("chair_entity"));
 
+	// effect
+
 	public static final RegistryObject<MobEffect> COLD_RESISTANCE = regPotionEffect("effect_cold_resistance", () -> new MobEffectDC("effect_cold_resistance", MobEffectCategory.BENEFICIAL, 0x0050FF)
 			.setIconIndex(1, 1));
 	public static final RegistryObject<Potion> COLD_RES_POTION = regPotion("cold_resistance", () -> new Potion("cold_resistance", new MobEffectInstance(COLD_RESISTANCE.get(), 3600)));
@@ -711,7 +725,10 @@ public class CoreInit {
 
 	public static final GasTypeFluidDC AIR = new GasTypeFluidDC("compressed_air", 0xC040B0FF, false, "fluid/sparkling_still");
 
-	// reflex
+	// enchantment
+	public static final RegistryObject<Enchantment> BIG_GAME_FISHING = regEnchantment("dcs_big_game_fishing", () -> new FishingEnchantment(EquipmentSlot.MAINHAND));
+	public static final RegistryObject<Enchantment> BOTTOM_FISHING = regEnchantment("dcs_bottom_fishing", () -> new FishingEnchantment(EquipmentSlot.MAINHAND));
+	public static final RegistryObject<Enchantment> SQUID_FISHING = regEnchantment("dcs_squid_fishing", () -> new FishingEnchantment(EquipmentSlot.MAINHAND));
 
 	// menu
 	public static final RegistryObject<MenuType<SimpleInventoryMenu>> SIMPLE_SINGLE = register("dcs_simple_single", (IContainerFactory<SimpleInventoryMenu>) (id, playerInv, data) -> {
@@ -759,6 +776,10 @@ public class CoreInit {
 
 	public static RegistryObject<Potion> regPotion(String name, Supplier<Potion> potion) {
 		return POTIONS.register(name, potion);
+	}
+
+	public static RegistryObject<Enchantment> regEnchantment(String name, Supplier<Enchantment> effect) {
+		return ENCHANTMENT.register(name, effect);
 	}
 
 	public static final RegistryObject<RecipeType<DummySmelting>> SMELTING = RECIPE_TYPE.register("climate_smelting", () -> new RecipeType<DummySmelting>() {});

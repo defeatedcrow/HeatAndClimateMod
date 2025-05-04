@@ -10,6 +10,9 @@
     "minecraft:pufferfish",
     "minecraft:tropical_fish",
     "dcs_climate:food/fish_flathead",
-    "dcs_climate:food/fish_gurnard"
+    "dcs_climate:food/fish_gurnard",
+    "dcs_climate:food/fish_skipjack",
+    "dcs_climate:food/fish_red_seabream",
+    "dcs_climate:food/fish_hongkong_grouper"
   ]
 }

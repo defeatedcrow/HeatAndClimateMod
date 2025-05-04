@@ -5,9 +5,12 @@
     "dcs_climate:food/fish_grouper",
     "dcs_climate:food/fish_gurnard",
     "dcs_climate:food/fish_tuna",
+    "dcs_climate:food/fish_skipjack",
     "dcs_climate:food/fish_krill",
     "dcs_climate:food/fish_crab",
     "dcs_climate:food/fish_squid",
-    "minecraft:cod"
+    "minecraft:cod",
+    "dcs_climate:food/fish_red_seabream",
+    "dcs_climate:food/fish_hongkong_grouper"
   ]
 }

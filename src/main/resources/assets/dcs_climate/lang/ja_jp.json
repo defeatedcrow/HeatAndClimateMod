@@ -140,6 +140,14 @@
   "item.dcs_climate.main.harpoon_flint":"火打ち石の銛",
   "item.dcs_climate.main.harpoon_steel":"鋼の銛",
 
+  "item.dcs_climate.main.fishing_rod_steel":"鋼の釣り竿",
+  "item.dcs_climate.main.lure_fishing_hook":"釣り針",
+  "item.dcs_climate.main.lure_jig_iron":"メタルジグ",
+  "item.dcs_climate.main.lure_jig_glitter":"きらめくジグ",
+  "item.dcs_climate.main.lure_egi_fire":"炎のエギ",
+  "item.dcs_climate.main.lure_worm_craw":"弾むワームホッグ",
+  "item.dcs_climate.main.lure_magnet":"宝探しマグネット",
+
   "item.dcs_climate.main.bucket_calabash":"ヒョウタンの水筒",
 
   "item.dcs_climate.main.cutlery_chopsticks":"箸",
@@ -461,10 +469,13 @@
   "item.dcs_climate.food.fish_mackerel":"生のアジ",
   "item.dcs_climate.food.fish_rockfish":"生のメバル",
   "item.dcs_climate.food.fish_seabream":"生のチヌ",
+  "item.dcs_climate.food.fish_red_seabream":"生のマダイ",
   "item.dcs_climate.food.fish_flounder":"生のヒラメ",
+  "item.dcs_climate.food.fish_hongkong_grouper":"生のキジハタ",
   "item.dcs_climate.food.fish_grouper":"生のクエ",
   "item.dcs_climate.food.fish_flathead":"生のマゴチ",
   "item.dcs_climate.food.fish_gurnard":"生のホウボウ",
+  "item.dcs_climate.food.fish_skipjack":"生のカツオ",
   "item.dcs_climate.food.fish_tuna":"生のマグロ",
   "item.dcs_climate.food.fish_krill":"生のオキアミ",
   "item.dcs_climate.food.fish_prawn":"生のテナガエビ",
@@ -2388,6 +2399,10 @@
   "effect.dcs_climate.effect_nimble.description": "使用者の攻撃速度を上昇させます。 (効果量: 0.25F x レベル)",
   "effect.dcs_climate.effect_heavyboots.description": "使用者のノックバック耐性を上昇させます。 (効果量: 20% x レベル)",
   "effect.dcs_climate.effect_proj_resistance.description": "使用者の射撃ダメージを軽減します。 (効果量: 20% x レベル)",
+
+  "enchantment.dcs_climate.dcs_big_game_fishing": "大物狙い",
+  "enchantment.dcs_climate.dcs_bottom_fishing": "底物狙い",
+  "enchantment.dcs_climate.dcs_squid_fishing": "イカ狙い",
 
     "## gui_jei":"jei",
 

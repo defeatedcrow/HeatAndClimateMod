@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:gems/fang"
+    },
+    {
+      "item": "dcs_climate:magic/extract_b"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:magic/pigment_b"
+  }
+}

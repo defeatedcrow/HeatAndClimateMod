@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:gems/celestite"
+    },
+    {
+      "item": "dcs_climate:magic/extract_u"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:magic/pigment_u"
+  }
+}

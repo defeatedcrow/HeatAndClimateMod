@@ -6,6 +6,8 @@
     "dcs_climate:food/fish_mackerel",
     "dcs_climate:food/fish_trout",
     "dcs_climate:food/fish_tuna",
+    "dcs_climate:food/fish_skipjack",
+    "dcs_climate:food/fish_krill",
     "minecraft:salmon",
     "minecraft:pufferfish",
     "minecraft:tropical_fish"

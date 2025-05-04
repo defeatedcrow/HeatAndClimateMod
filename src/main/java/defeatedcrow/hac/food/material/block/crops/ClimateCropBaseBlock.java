@@ -496,6 +496,9 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		if (next != null && !next.equals(thisState)) {
 			if (thisState.hasProperty(DCState.DOUBLE)) {
 				int age = DCState.getInt(next, DCState.STAGE6);
+				if (DCState.getBool(thisState, DCState.DOUBLE)) {
+					return false;
+				}
 				if (age > 1 && !DCState.getBool(thisState, DCState.DOUBLE)) {
 					BlockState upper = world.getBlockState(pos.above());
 					if (upper.getBlock() == Blocks.AIR || upper.getBlock() == this) {

@@ -801,6 +801,15 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_extrast_mana", has(MagicInit.EXTRACT_MANA.get()))
 				.save(cons, "dcs_climate:magic/mana_extract_to_drop");
 
+		ShapedRecipeBuilder.shaped(MagicInit.DROP_MANA.get(), 1)
+				.pattern("XXX")
+				.pattern("XYX")
+				.pattern("XXX")
+				.define('X', Items.GLOW_BERRIES)
+				.define('Y', CoreInit.MORTAR.get())
+				.unlockedBy("has_crop_glowberry", has(Items.GLOW_BERRIES))
+				.save(cons, "dcs_climate:magic/mortar_crop_glowberry");
+
 		ShapedRecipeBuilder.shaped(MagicInit.EXTRACT_WHITE.get(), 1)
 				.pattern("XXX")
 				.pattern("X X")
@@ -885,6 +894,66 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.requires(MagicInit.EXTRACT_GREEN.get())
 				.unlockedBy("has_extrast_mana", has(MagicInit.EXTRACT_MANA.get()))
 				.save(cons, "dcs_climate:magic/craft_pigment_green");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.PIGMENT_WHITE.get(), 1)
+				.requires(TagDC.ItemTag.GEM_HELIODOR)
+				.requires(MagicInit.EXTRACT_WHITE.get())
+				.unlockedBy("has_gem_heliodor", has(TagDC.ItemTag.GEM_HELIODOR))
+				.save(cons, "dcs_climate:magic/craft_pigment_white_2");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.PIGMENT_WHITE.get(), 1)
+				.requires(TagDC.ItemTag.GEM_THUNDEREGG)
+				.requires(MagicInit.EXTRACT_WHITE.get())
+				.unlockedBy("has_gem_thunderegg", has(TagDC.ItemTag.GEM_THUNDEREGG))
+				.save(cons, "dcs_climate:magic/craft_pigment_white_3");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.PIGMENT_BLUE.get(), 1)
+				.requires(TagDC.ItemTag.GEM_LARIMAR)
+				.requires(MagicInit.EXTRACT_BLUE.get())
+				.unlockedBy("has_gem_larimar", has(TagDC.ItemTag.GEM_LARIMAR))
+				.save(cons, "dcs_climate:magic/craft_pigment_blue_2");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.PIGMENT_BLUE.get(), 1)
+				.requires(TagDC.ItemTag.GEM_CELESTITE)
+				.requires(MagicInit.EXTRACT_BLUE.get())
+				.unlockedBy("has_gem_celestite", has(TagDC.ItemTag.GEM_CELESTITE))
+				.save(cons, "dcs_climate:magic/craft_pigment_blue_3");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.PIGMENT_BLACK.get(), 1)
+				.requires(TagDC.ItemTag.GEM_IOLITE)
+				.requires(MagicInit.EXTRACT_BLACK.get())
+				.unlockedBy("has_gem_iolite", has(TagDC.ItemTag.GEM_IOLITE))
+				.save(cons, "dcs_climate:magic/craft_pigment_black_2");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.PIGMENT_BLACK.get(), 1)
+				.requires(TagDC.ItemTag.GEM_FANG)
+				.requires(MagicInit.EXTRACT_BLACK.get())
+				.unlockedBy("has_gem_fang", has(TagDC.ItemTag.GEM_FANG))
+				.save(cons, "dcs_climate:magic/craft_pigment_black_3");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.PIGMENT_RED.get(), 1)
+				.requires(TagDC.ItemTag.GEM_ALMANDINE)
+				.requires(MagicInit.EXTRACT_RED.get())
+				.unlockedBy("has_gem_almandine", has(TagDC.ItemTag.GEM_ALMANDINE))
+				.save(cons, "dcs_climate:magic/craft_pigment_red_2");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.PIGMENT_RED.get(), 1)
+				.requires(TagDC.ItemTag.GEM_ROSINCA)
+				.requires(MagicInit.EXTRACT_RED.get())
+				.unlockedBy("has_gem_rosinca", has(TagDC.ItemTag.GEM_ROSINCA))
+				.save(cons, "dcs_climate:magic/craft_pigment_red_3");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.PIGMENT_GREEN.get(), 1)
+				.requires(TagDC.ItemTag.GEM_AMAZONITE)
+				.requires(MagicInit.EXTRACT_GREEN.get())
+				.unlockedBy("has_gem_amazonte", has(TagDC.ItemTag.GEM_AMAZONITE))
+				.save(cons, "dcs_climate:magic/craft_pigment_green_2");
+
+		ShapelessRecipeBuilder.shapeless(MagicInit.PIGMENT_GREEN.get(), 1)
+				.requires(TagDC.ItemTag.GEM_OLIVINE)
+				.requires(MagicInit.EXTRACT_GREEN.get())
+				.unlockedBy("has_gem_olivine", has(TagDC.ItemTag.GEM_OLIVINE))
+				.save(cons, "dcs_climate:magic/craft_pigment_green_3");
 
 		ShapedRecipeBuilder.shaped(MagicInit.ELEMENT_MANA.get(), 1)
 				.pattern("ZXZ")

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:clothes/rubber"
+    },
+    "Y": {
+      "item": "dcs_climate:main/lure_fishing_hook"
+    },
+    "Z": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "Y  ",
+    " XZ",
+    " ZX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/lure_worm_craw"
+  }
+}

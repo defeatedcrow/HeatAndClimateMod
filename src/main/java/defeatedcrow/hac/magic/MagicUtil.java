@@ -19,6 +19,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.material.entity.MagicPictureEntity;
 import defeatedcrow.hac.magic.material.entity.OwnableMagicEntity;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.Entity;
@@ -29,6 +30,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.eventbus.api.Event.Result;
@@ -230,6 +232,26 @@ public class MagicUtil {
 		if (affinity < 0.5F)
 			affinity = 0.5F;
 		return count * affinity;
+	}
+
+	public static List<MagicColor> getBiomeColor(Holder<Biome> biome) {
+		ArrayList<MagicColor> ret = Lists.newArrayList();
+		if (biome.is(TagDC.BiomeTag.WHITE_BIOME)) {
+			ret.add(MagicColor.WHITE);
+		}
+		if (biome.is(TagDC.BiomeTag.BLUE_BIOME)) {
+			ret.add(MagicColor.BLUE);
+		}
+		if (biome.is(TagDC.BiomeTag.BLACK_BIOME)) {
+			ret.add(MagicColor.BLACK);
+		}
+		if (biome.is(TagDC.BiomeTag.RED_BIOME)) {
+			ret.add(MagicColor.RED);
+		}
+		if (biome.is(TagDC.BiomeTag.GREEN_BIOME)) {
+			ret.add(MagicColor.GREEN);
+		}
+		return ret;
 	}
 
 }

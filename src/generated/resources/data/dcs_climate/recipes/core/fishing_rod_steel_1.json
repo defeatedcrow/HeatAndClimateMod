@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "tag": "forge:string"
+    }
+  },
+  "pattern": [
+    "  X",
+    " XY",
+    "X Y"
+  ],
+  "result": {
+    "item": "dcs_climate:main/fishing_rod_steel"
+  }
+}

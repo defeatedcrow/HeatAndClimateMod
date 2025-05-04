@@ -2033,6 +2033,73 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
 				.save(cons, "dcs_climate:core/harpoon_steel_2");
 
+		ShapedRecipeBuilder.shaped(CoreInit.FISHING_ROD_STEEL.get(), 1)
+				.pattern("  X")
+				.pattern(" XY")
+				.pattern("X Y")
+				.define('X', TagDC.ItemTag.INGOT_STEEL)
+				.define('Y', Tags.Items.STRING)
+				.unlockedBy("has_ingot_steel", has(TagDC.ItemTag.INGOT_STEEL))
+				.save(cons, "dcs_climate:core/fishing_rod_steel_1");
+
+		ShapedRecipeBuilder.shaped(CoreInit.LURE_FISHING_HOOK.get(), 1)
+				.pattern("  X")
+				.pattern("X X")
+				.pattern("XYX")
+				.define('X', Tags.Items.NUGGETS_IRON)
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_ingot_iron", has(Tags.Items.INGOTS_IRON))
+				.save(cons, "dcs_climate:core/lure_fishing_hook_1");
+
+		ShapedRecipeBuilder.shaped(CoreInit.LURE_JIG_IRON.get(), 1)
+				.pattern("Y  ")
+				.pattern(" XX")
+				.pattern(" XX")
+				.define('X', Tags.Items.INGOTS_IRON)
+				.define('Y', CoreInit.LURE_FISHING_HOOK.get())
+				.unlockedBy("has_fishing_hook", has(CoreInit.LURE_FISHING_HOOK.get()))
+				.save(cons, "dcs_climate:core/lure_metal_jig_1");
+
+		ShapedRecipeBuilder.shaped(CoreInit.LURE_JIG_GLITTER.get(), 1)
+				.pattern("Y  ")
+				.pattern(" XZ")
+				.pattern(" ZX")
+				.define('X', Tags.Items.INGOTS_IRON)
+				.define('Y', CoreInit.LURE_FISHING_HOOK.get())
+				.define('Z', Tags.Items.DUSTS_GLOWSTONE)
+				.unlockedBy("has_fishing_hook", has(CoreInit.LURE_FISHING_HOOK.get()))
+				.save(cons, "dcs_climate:core/lure_glitter_jig_1");
+
+		ShapedRecipeBuilder.shaped(CoreInit.LURE_EGI_FIRE.get(), 1)
+				.pattern("Y  ")
+				.pattern(" XZ")
+				.pattern(" ZX")
+				.define('X', ItemTags.PLANKS)
+				.define('Y', CoreInit.LURE_FISHING_HOOK.get())
+				.define('Z', Items.BLAZE_POWDER)
+				.unlockedBy("has_fishing_hook", has(CoreInit.LURE_FISHING_HOOK.get()))
+				.save(cons, "dcs_climate:core/lure_fire_egi_1");
+
+		ShapedRecipeBuilder.shaped(CoreInit.LURE_WORM_CLAW.get(), 1)
+				.pattern("Y  ")
+				.pattern(" XZ")
+				.pattern(" ZX")
+				.define('X', TagDC.ItemTag.CLOTH_RUBBER)
+				.define('Y', CoreInit.LURE_FISHING_HOOK.get())
+				.define('Z', Tags.Items.DUSTS_REDSTONE)
+				.unlockedBy("has_fishing_hook", has(CoreInit.LURE_FISHING_HOOK.get()))
+				.save(cons, "dcs_climate:core/lure_craw_worm_1");
+
+		ShapedRecipeBuilder.shaped(CoreInit.LURE_MAGNET.get(), 1)
+				.pattern("Y  ")
+				.pattern(" XZ")
+				.pattern(" ZX")
+				.define('X', TagDC.ItemTag.INGOT_MAGNET)
+				.define('Y', CoreInit.LURE_FISHING_HOOK.get())
+				.define('Z', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_fishing_hook", has(CoreInit.LURE_FISHING_HOOK.get()))
+				.save(cons, "dcs_climate:core/lure_magnet_1");
+
 		ShapelessRecipeBuilder.shapeless(CoreInit.CALABASH_BUCKET.get(), 1)
 				.requires(TagDC.ItemTag.CROP_CALABASH)
 				.requires(TagDC.ItemTag.SAP_LACQUER)
@@ -2987,6 +3054,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 	private static void smeltingRecipes(Consumer<FinishedRecipe> cons) {
 
+		smeltingRecipe(cons, Ingredient.of(Tags.Items.GRAVEL), Items.FLINT, 200, "gem_flint", Items.GRAVEL, "has_gravel");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.GEM_FLINT), CoreInit.GEM_CHALCEDONY.get(), 200, "gem_chalcedony", Items.FLINT, "has_flint");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_CRYSTAL), BuildInit.GLASS_CRYSTAL.get().asItem(), 200, "dust_crystal", CoreInit.DUST_CRYSTAL.get(), "has_dust_crystal");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.DUST_PLANT), FoodInit.DUST_ASH.get(), 200, "dust_ash", FoodInit.DUST_PLANT.get(), "has_dust_plant");

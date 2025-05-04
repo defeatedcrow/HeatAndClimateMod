@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/material/lure_fishing_hook"
+  },
+  "parent": "minecraft:item/generated"
+}

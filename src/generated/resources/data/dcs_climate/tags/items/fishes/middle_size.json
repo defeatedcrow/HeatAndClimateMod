@@ -7,6 +7,8 @@
     "dcs_climate:food/fish_flathead",
     "dcs_climate:food/fish_gurnard",
     "dcs_climate:food/fish_crab",
-    "dcs_climate:food/fish_squid"
+    "dcs_climate:food/fish_squid",
+    "dcs_climate:food/fish_red_seabream",
+    "dcs_climate:food/fish_hongkong_grouper"
   ]
 }

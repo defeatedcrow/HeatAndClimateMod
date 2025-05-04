@@ -1,0 +1,14 @@
+{
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "dcs_climate:item/tool/fishing_rod_steel"
+	},
+	"overrides": [
+        {
+            "predicate": {
+                "cast": 1
+            },
+            "model": "dcs_climate:item/main/fishing_rod_steel_cast"
+        }
+    ]
+}

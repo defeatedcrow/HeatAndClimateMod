@@ -351,6 +351,10 @@ public class PulveriseRecipes {
 				new ItemStack(FoodInit.DUST_PLANT.get(), 1), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(ItemTags.LEAVES)));
 
+		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
+				new ItemStack(MagicInit.DROP_MANA.get(), 2), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(Items.GLOW_BERRIES)));
+
 		// ores
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,

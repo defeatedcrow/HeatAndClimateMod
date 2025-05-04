@@ -799,8 +799,13 @@ public class FoodInit {
 	public static final RegistryObject<Item> FOOD_CARP = regItem("fish_carp", () -> new RawFishItem("fish_carp", Rarity.UNCOMMON, TagDC.ItemTag.CARP).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_MACKEREL = regItem("fish_mackerel", () -> new RawFishItem("fish_mackerel", Rarity.UNCOMMON, TagDC.ItemTag.MACKEREL).taste(2).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_ROCKFISH = regItem("fish_rockfish", () -> new RawFishItem("fish_rockfish", Rarity.UNCOMMON, TagDC.ItemTag.ROCKFISH).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_SEABREAM = regItem("fish_seabream", () -> new RawFishItem("fish_seabream", Rarity.UNCOMMON, TagDC.ItemTag.SEABREAM).taste(1).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_GURNARD = regItem("fish_gurnard", () -> new RawFishItem("fish_gurnard", Rarity.UNCOMMON, TagDC.ItemTag.GURNARD).taste(2).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_SEABREAM = regItem("fish_seabream", () -> new RawFishItem("fish_seabream", Rarity.RARE, TagDC.ItemTag.SEABREAM).taste(1).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_HONGKONG_GROUPER = regItem("fish_hongkong_grouper", () -> new RawFishItem("fish_hongkong_grouper", Rarity.UNCOMMON, TagDC.ItemTag.GROUPER)
+			.taste(1).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_SKIPJACK = regItem("fish_skipjack", () -> new RawFishItem("fish_skipjack", Rarity.UNCOMMON, TagDC.ItemTag.SKIPJACK).taste(1).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_RED_SEABREAM = regItem("fish_red_seabream", () -> new RawFishItem("fish_red_seabream", Rarity.RARE, TagDC.ItemTag.SEABREAM)
+			.taste(2).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_FLOUNDER = regItem("fish_flounder", () -> new RawFishItem("fish_flounder", Rarity.RARE, TagDC.ItemTag.FLOUNDER).taste(1).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_GROUPER = regItem("fish_grouper", () -> new RawFishItem("fish_grouper", Rarity.RARE, TagDC.ItemTag.GROUPER).taste(2).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_TUNA = regItem("fish_tuna", () -> new RawFishItem("fish_tuna", Rarity.RARE, TagDC.ItemTag.TUNA).taste(2).setDomain("food"));

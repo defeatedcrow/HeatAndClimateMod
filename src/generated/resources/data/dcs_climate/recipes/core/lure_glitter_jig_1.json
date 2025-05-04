@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/iron"
+    },
+    "Y": {
+      "item": "dcs_climate:main/lure_fishing_hook"
+    },
+    "Z": {
+      "tag": "forge:dusts/glowstone"
+    }
+  },
+  "pattern": [
+    "Y  ",
+    " XZ",
+    " ZX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/lure_jig_glitter"
+  }
+}

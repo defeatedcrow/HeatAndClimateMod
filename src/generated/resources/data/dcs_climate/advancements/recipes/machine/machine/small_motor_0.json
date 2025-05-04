@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_magnetite": {
+    "has_ingot_copper": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:raw_materials/magnetite"
+            "tag": "forge:ingots/copper"
           }
         ]
       },
@@ -20,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_raw_magnetite",
+      "has_ingot_copper",
       "has_the_recipe"
     ]
   ],

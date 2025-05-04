@@ -323,6 +323,8 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.FishingRodItem;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -1060,6 +1062,19 @@ public class ClientRegisterInit {
 
 		ItemProperties.register(CoreInit.HARPOON_FLINT.get(), new ResourceLocation("throwing"), (stack, level, living, i) -> {
 			return living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F;
+		});
+
+		ItemProperties.register(CoreInit.FISHING_ROD_STEEL.get(), new ResourceLocation("cast"), (stack, level, living, i) -> {
+			if (living == null) {
+				return 0.0F;
+			} else {
+				boolean flag = living.getMainHandItem() == stack;
+				boolean flag1 = living.getOffhandItem() == stack;
+				if (living.getMainHandItem().getItem() instanceof FishingRodItem) {
+					flag1 = false;
+				}
+				return (flag || flag1) && living instanceof Player && ((Player) living).fishing != null ? 1.0F : 0.0F;
+			}
 		});
 
 		ItemProperties.register(CoreInit.ALTIMETER.get(), new ResourceLocation("angle"), (stack, level, liv, i) -> {

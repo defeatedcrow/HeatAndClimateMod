@@ -2,12 +2,15 @@ package defeatedcrow.hac.core.event;
 
 import java.util.Map;
 
+import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -79,6 +82,33 @@ public class AnvilEventDC {
 					if (a < 3) {
 						a++;
 						map.put(Enchantments.MOB_LOOTING, a);
+						ret = left.copy();
+						EnchantmentHelper.setEnchantments(map, ret);
+						event.setOutput(ret);
+						event.setMaterialCost(1);
+						event.setCost(a);
+						event.setResult(Result.ALLOW);
+					}
+				}
+			}
+			if (left.is(Tags.Items.TOOLS_FISHING_RODS) && right.is(TagDC.ItemTag.LURE)) {
+				Enchantment target = null;
+				if (right.getItem() == CoreInit.LURE_JIG_IRON.get()) {
+					target = Enchantments.FISHING_SPEED;
+				} else if (right.getItem() == CoreInit.LURE_JIG_GLITTER.get()) {
+					target = CoreInit.BIG_GAME_FISHING.get();
+				} else if (right.getItem() == CoreInit.LURE_EGI_FIRE.get()) {
+					target = CoreInit.SQUID_FISHING.get();
+				} else if (right.getItem() == CoreInit.LURE_WORM_CLAW.get()) {
+					target = CoreInit.BOTTOM_FISHING.get();
+				} else if (right.getItem() == CoreInit.LURE_MAGNET.get()) {
+					target = Enchantments.FISHING_LUCK;
+				}
+				if (target != null) {
+					int a = left.getEnchantmentLevel(target);
+					if (a < target.getMaxLevel() && (a > 0 || EnchantmentHelper.isEnchantmentCompatible(map.keySet(), target))) {
+						a++;
+						map.put(target, a);
 						ret = left.copy();
 						EnchantmentHelper.setEnchantments(map, ret);
 						event.setOutput(ret);
