@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/metal/gemblock_jasper"
+  },
+  "parent": "minecraft:block/cube_all"
+}

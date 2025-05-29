@@ -5,11 +5,13 @@ import java.util.Optional;
 import com.mojang.blaze3d.platform.InputConstants;
 
 import defeatedcrow.hac.core.client.AdvTooltipEvent;
+import defeatedcrow.hac.core.client.BlockHitEffectsEvent;
 import defeatedcrow.hac.core.client.ClientRegisterInit;
 import defeatedcrow.hac.core.client.ClimateHUDEvent;
 import defeatedcrow.hac.core.client.ColorHandlerRegister;
 import defeatedcrow.hac.core.client.DCTextureStitch;
 import defeatedcrow.hac.core.client.RenderPlayerEventDC;
+import defeatedcrow.hac.core.client.SoundMufflerEvent;
 import defeatedcrow.hac.core.client.gui.DisplayShelfScreen;
 import defeatedcrow.hac.core.client.gui.DoubleInventoryScreen;
 import defeatedcrow.hac.core.client.gui.SimpleInventoryScreen;
@@ -71,6 +73,8 @@ public class ClientProxyDC extends CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(DCTextureStitch::register);
 		MinecraftForge.EVENT_BUS.addListener(AdvTooltipEvent::render);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onPotionEffectColor);
+		MinecraftForge.EVENT_BUS.addListener(SoundMufflerEvent::onClientPlaySound);
+		MinecraftForge.EVENT_BUS.addListener(BlockHitEffectsEvent::onBlockHitEffects);
 	}
 
 	@Override

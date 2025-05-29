@@ -1,6 +1,8 @@
 package defeatedcrow.hac.core.network.packet.message;
 
 import defeatedcrow.hac.api.climate.EnumSeason;
+import defeatedcrow.hac.core.client.BlockHitEffectsEvent;
+import defeatedcrow.hac.core.client.SoundMufflerEvent;
 import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.climate.WeatherChecker;
 import defeatedcrow.hac.core.network.packet.DCPacket;
@@ -23,11 +25,13 @@ public class MsgWeatherToC implements IPacketDC {
 	protected int day;
 	protected int dayI;
 	protected int time;
+	protected boolean muf;
+	protected boolean digging;
 	protected String date;
 
 	public MsgWeatherToC() {}
 
-	public MsgWeatherToC(ResourceLocation d, float r, int rC, int sC, int s, int dt, int di, int t, String dp) {
+	public MsgWeatherToC(ResourceLocation d, float r, int rC, int sC, int s, int dt, int di, int t, boolean m, boolean dig, String dp) {
 		dim = d;
 		rain = r;
 		rainCount = rC;
@@ -36,6 +40,8 @@ public class MsgWeatherToC implements IPacketDC {
 		day = dt;
 		dayI = di;
 		time = t;
+		muf = m;
+		digging = dig;
 		date = dp;
 	}
 
@@ -49,6 +55,8 @@ public class MsgWeatherToC implements IPacketDC {
 		buf.writeInt(day);
 		buf.writeInt(dayI);
 		buf.writeInt(time);
+		buf.writeBoolean(muf);
+		buf.writeBoolean(digging);
 		buf.writeUtf(date);
 	}
 
@@ -61,8 +69,10 @@ public class MsgWeatherToC implements IPacketDC {
 		int dt = buf.readInt();
 		int di = buf.readInt();
 		int t = buf.readInt();
+		boolean m = buf.readBoolean();
+		boolean dig = buf.readBoolean();
 		String dp = buf.readUtf();
-		return new MsgWeatherToC(d, r, rC, sC, s, dt, di, t, dp);
+		return new MsgWeatherToC(d, r, rC, sC, s, dt, di, t, m, dig, dp);
 	}
 
 	@Override
@@ -70,13 +80,15 @@ public class MsgWeatherToC implements IPacketDC {
 		if (FMLEnvironment.dist == Dist.CLIENT && dim != null) {
 			WeatherChecker.INSTANCE.setWeather(dim, rain, rainCount, sunCount);
 			DCTimeHelper.setClientData(EnumSeason.getSeasonFromID(season), day, dayI, time, date);
+			SoundMufflerEvent.setMuffler(muf);
+			BlockHitEffectsEvent.setBooster(digging);
 		}
 	}
 
-	public static void sendToClient(ServerLevel level, float r, int rC, int sC, int s, int dt, int di, int t, String disp) {
+	public static void sendToClient(ServerLevel level, float r, int rC, int sC, int s, int dt, int di, int t, boolean muf, boolean dig, String disp) {
 		// DCLogger.debugInfoLog("dim: " + d.toString() + " / rain: " + r);
 		if (level != null) {
-			MsgWeatherToC packet = new MsgWeatherToC(level.dimension().location(), r, rC, sC, s, dt, di, t, disp);
+			MsgWeatherToC packet = new MsgWeatherToC(level.dimension().location(), r, rC, sC, s, dt, di, t, muf, dig, disp);
 			level.players().forEach(player -> {
 				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
 			});

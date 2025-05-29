@@ -2,7 +2,13 @@
   "values": [
     "dcs_climate:magic/picture_item_white_blue",
     "dcs_climate:magic/picture_item_white_red",
+    "dcs_climate:magic/picture_item_blue_black",
     "dcs_climate:magic/picture_item_blue_green",
-    "dcs_climate:magic/picture_item_red_green"
+    "dcs_climate:magic/picture_item_black_red",
+    "dcs_climate:magic/picture_item_black_white",
+    "dcs_climate:magic/picture_item_red_green",
+    "dcs_climate:magic/picture_item_red_blue",
+    "dcs_climate:magic/picture_item_green_white",
+    "dcs_climate:magic/picture_item_green_black"
   ]
 }

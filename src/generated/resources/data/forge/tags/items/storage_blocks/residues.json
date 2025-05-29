@@ -1,0 +1,11 @@
+{
+  "values": [
+    "dcs_climate:container/container_defatted_soy",
+    "dcs_climate:container/container_press_cake",
+    "dcs_climate:container/container_bran",
+    "dcs_climate:container/container_germ",
+    "dcs_climate:container/container_bagasse",
+    "dcs_climate:container/container_dust_wood",
+    "dcs_climate:container/container_dust_plant"
+  ]
+}

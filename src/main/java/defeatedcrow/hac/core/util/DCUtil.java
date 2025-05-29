@@ -59,6 +59,10 @@ public class DCUtil {
 		return item.getItem() == null || item.getItem() == Items.AIR || item.isEmpty();
 	}
 
+	public static boolean canEditPos(Level level, BlockPos pos) {
+		return pos.getY() <= level.getMaxBuildHeight() && pos.getY() >= level.getMinBuildHeight() && level.isLoaded(pos);
+	}
+
 	public static Optional<ResourceLocation> getRes(Item item) {
 		return Optional.ofNullable(ForgeRegistries.ITEMS.getKey(item));
 	}

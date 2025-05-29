@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "flag=true": {
+      "model": "dcs_climate:block/container/cardboard_pork_0",
+      "y": 90
+    },
+    "flag=false": {
+      "model": "dcs_climate:block/container/cardboard_pork_0"
+    }
+  }
+}

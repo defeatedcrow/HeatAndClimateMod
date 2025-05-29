@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cbatteryitem_t1": {
+    "has_batteryitem_t1": {
       "conditions": {
         "items": [
           {
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_cbatteryitem_t1",
+      "has_batteryitem_t1",
       "has_the_recipe"
     ]
   ],

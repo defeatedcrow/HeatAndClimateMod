@@ -1,7 +1,12 @@
 package defeatedcrow.hac.machine.material.block.machine;
 
+import java.util.stream.Stream;
+
 import defeatedcrow.hac.api.machine.FaceIO;
+import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.event.MagicPictureEvent;
+import defeatedcrow.hac.magic.material.entity.MagicPictureEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.inventory.ContainerData;
@@ -114,6 +119,14 @@ public abstract class EnergyMachineBaseDC extends EnergyTileBaseDC {
 			int m = getStoredEnergyLevel();
 			EnergyMachineBlock.changeLitState(getLevel(), getBlockPos(), m);
 		}
+
+		// 魔法要素
+		Stream<MagicPictureEntity> picList = MagicPictureEvent.getList().stream().filter(MagicPictureEvent.checkColor(MagicColor.RED_BLUE));
+		picList.filter(pic -> pic.blockPosition().closerThan(getBlockPos(), 8D)).forEach(pic -> {
+			if (this.isActive(level, pos, state)) {
+				getEnergyHandler().generateEnergy(1);
+			}
+		});
 
 		return false;
 	}

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "texture": "dcs_climate:block/metal/gemblock_chalcedony"
+  },
+  "parent": "minecraft:block/pressure_plate_up"
+}

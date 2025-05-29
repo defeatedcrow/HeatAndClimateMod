@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "base": "dcs_climate:block/build/window_frame_none",
+    "glass": "dcs_climate:block/build/window_glass_net"
+  },
+  "parent": "dcs_climate:block/build/window_frame_top"
+}

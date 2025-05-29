@@ -1,0 +1,16 @@
+{
+  "values": [
+    "dcs_climate:build/louver_horizontal_none",
+    "dcs_climate:build/louver_horizontal_white",
+    "dcs_climate:build/louver_horizontal_blue",
+    "dcs_climate:build/louver_horizontal_black",
+    "dcs_climate:build/louver_horizontal_red",
+    "dcs_climate:build/louver_horizontal_green",
+    "dcs_climate:build/louver_vertical_none",
+    "dcs_climate:build/louver_vertical_white",
+    "dcs_climate:build/louver_vertical_blue",
+    "dcs_climate:build/louver_vertical_black",
+    "dcs_climate:build/louver_vertical_red",
+    "dcs_climate:build/louver_vertical_green"
+  ]
+}

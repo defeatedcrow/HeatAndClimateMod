@@ -18,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -30,6 +31,10 @@ public class FluidPipeAlloyTile extends FluidPipeTileBaseDC {
 
 	public FluidPipeAlloyTile(BlockPos pos, BlockState state) {
 		super(MachineInit.PIPE_BRASS_TILE.get(), pos, state);
+	}
+
+	public FluidPipeAlloyTile(BlockEntityType<?> tile, BlockPos pos, BlockState state) {
+		super(tile, pos, state);
 	}
 
 	int count = 9;

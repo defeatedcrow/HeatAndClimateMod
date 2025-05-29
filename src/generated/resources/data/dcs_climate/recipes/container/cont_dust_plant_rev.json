@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:container/container_dust_plant"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "dcs_climate:main/dust_plant"
+  }
+}

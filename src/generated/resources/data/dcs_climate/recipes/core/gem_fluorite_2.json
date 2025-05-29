@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "storage_unpack",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/gemblock_fluorite"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "dcs_climate:main/gem_fluorite"
+  }
+}

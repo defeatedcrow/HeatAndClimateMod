@@ -11,6 +11,7 @@ import defeatedcrow.hac.api.event.GetSeasonEvent;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.magic.material.entity.MagicPictureEntity;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.PlayLevelSoundEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -32,14 +33,15 @@ public class MagicPictureEvent {
 		if (event.getWorld() != null) {
 			Level level = event.getWorld();
 			EnumSeason season = event.currentSeason();
+			List<MagicPictureEntity> list = getList();
 
-			if (PictureList.stream().anyMatch(checkColor(MagicColor.WHITE_BLUE))) {
+			if (list.stream().anyMatch(checkColor(MagicColor.WHITE_BLUE))) {
 				season = EnumSeason.WINTER_LATE;
-			} else if (PictureList.stream().anyMatch(checkColor(MagicColor.WHITE_RED))) {
+			} else if (list.stream().anyMatch(checkColor(MagicColor.WHITE_RED))) {
 				season = EnumSeason.SUMMER_LATE;
-			} else if (PictureList.stream().anyMatch(checkColor(MagicColor.BLUE_GREEN))) {
+			} else if (list.stream().anyMatch(checkColor(MagicColor.BLUE_GREEN))) {
 				season = EnumSeason.FLOWER;
-			} else if (PictureList.stream().anyMatch(checkColor(MagicColor.RED_GREEN))) {
+			} else if (list.stream().anyMatch(checkColor(MagicColor.RED_GREEN))) {
 				season = EnumSeason.HARVEST;
 			} else if (level.dimension() == Level.NETHER) {
 				season = EnumSeason.SCORCHER;
@@ -54,7 +56,31 @@ public class MagicPictureEvent {
 		}
 	}
 
-	private static Predicate<MagicPictureEntity> checkColor(MagicColor color) {
+	@SubscribeEvent
+	public static void onPlaySound(PlayLevelSoundEvent.AtPosition event) {
+		if (event.getLevel() != null) {
+			Level level = event.getLevel();
+			List<MagicPictureEntity> list = getList();
+
+			if (list.stream().anyMatch(checkColor(MagicColor.BLUE_BLACK))) {
+				event.setCanceled(true);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void onPlayEntitySound(PlayLevelSoundEvent.AtEntity event) {
+		if (event.getLevel() != null) {
+			Level level = event.getLevel();
+			List<MagicPictureEntity> list = getList();
+
+			if (list.stream().anyMatch(checkColor(MagicColor.BLUE_BLACK))) {
+				event.setCanceled(true);
+			}
+		}
+	}
+
+	public static Predicate<MagicPictureEntity> checkColor(MagicColor color) {
 		return (e) -> {
 			return e.getColor() == color;
 		};

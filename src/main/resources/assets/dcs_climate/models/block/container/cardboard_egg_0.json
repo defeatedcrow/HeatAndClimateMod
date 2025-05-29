@@ -1,0 +1,9 @@
+{
+  "textures": {
+    "top": "dcs_climate:block/container/cardboard_t",
+    "bottom": "dcs_climate:block/container/cardboard_b",
+    "front": "dcs_climate:block/container/cardboard_f_egg",
+    "side": "dcs_climate:block/container/cardboard_s"
+  },
+  "parent": "dcs_climate:block/dcs_cardboard"
+}

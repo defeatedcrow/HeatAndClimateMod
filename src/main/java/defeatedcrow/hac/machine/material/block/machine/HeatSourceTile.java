@@ -72,7 +72,7 @@ public abstract class HeatSourceTile extends ProcessTileBaseDC implements IIntRe
 
 	@Override
 	public boolean canLink(Level level, BlockPos pos, IPosLinkTile.Type type) {
-		return type == getLinkType() && pos != null && getBlockPos().closerThan(pos, 8.0D);
+		return type == getLinkType() && pos != null && getBlockPos().closerThan(pos, 16.0D);
 	}
 
 	private BlockPos link = null;

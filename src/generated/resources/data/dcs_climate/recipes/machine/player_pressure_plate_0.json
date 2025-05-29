@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:storage_blocks/chalcedony"
+    }
+  },
+  "pattern": [
+    "XX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/player_pressure_plate"
+  }
+}

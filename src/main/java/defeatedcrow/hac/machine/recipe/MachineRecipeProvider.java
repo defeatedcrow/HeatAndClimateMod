@@ -384,6 +384,15 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
 				.save(cons, "dcs_climate:machine/conveyor_filler_0");
 
+		ShapedRecipeBuilder.shaped(MachineInit.SPRINKLER.get(), 1)
+				.pattern(" Y ")
+				.pattern("XZX")
+				.define('X', Items.STONE_SLAB)
+				.define('Y', MachineInit.PIPE_BRASS.get())
+				.define('Z', TagDC.ItemTag.IMPELLER_T1)
+				.unlockedBy("has_impeller_t1", has(TagDC.ItemTag.IMPELLER_T1))
+				.save(cons, "dcs_climate:machine/sprinkler_0");
+
 		ShapedRecipeBuilder.shaped(MachineInit.FAUCET_A.get(), 1)
 				.pattern("XYX")
 				.pattern("ZZZ")
@@ -625,11 +634,32 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER))
 				.save(cons, "dcs_climate:machine/copper_cable_coated_0");
 
+		ShapelessRecipeBuilder.shapeless(MachineInit.CABLE_COPPER_COATED.get(), 1)
+				.requires(MachineInit.CABLE_COPPER.get())
+				.requires(TagDC.ItemTag.CLOTH_RUBBER)
+				.unlockedBy("has_cable_copper", has(MachineInit.CABLE_COPPER.get()))
+				.save(cons, "dcs_climate:machine/copper_cable_coated_2");
+
+		ShapedRecipeBuilder.shaped(MachineInit.CABLE_ALUMINUM_COATED.get(), 8)
+				.pattern("YYY")
+				.pattern("XXX")
+				.pattern("YYY")
+				.define('Y', TagDC.ItemTag.CLOTH_RUBBER)
+				.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+				.unlockedBy("has_ingot_alminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+				.save(cons, "dcs_climate:machine/alminum_cable_coated_0");
+
 		ShapedRecipeBuilder.shaped(MachineInit.PIPE_BRASS.get(), 8)
 				.pattern("XXX")
 				.define('X', TagDC.ItemTag.INGOT_BRASS)
 				.unlockedBy("has_ingot_brass", has(TagDC.ItemTag.INGOT_BRASS))
 				.save(cons, "dcs_climate:machine/brass_pipe_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.PIPE_NICKELSILVER.get(), 8)
+				.pattern("XXX")
+				.define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER)
+				.unlockedBy("has_ingot_nickelsilver", has(TagDC.ItemTag.INGOT_NICKEL_SILVER))
+				.save(cons, "dcs_climate:machine/nickelsilver_pipe_0");
 
 		ShapedRecipeBuilder.shaped(MachineInit.BATTERY_SMALL.get(), 1)
 				.pattern("XXX")
@@ -656,7 +686,7 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.define('X', TagDC.ItemTag.INGOT_STEEL)
 				.define('Y', MachineInit.BATTERYITEM_TIER1.get())
 				.define('Z', TagDC.ItemTag.IMPELLER_T1)
-				.unlockedBy("has_cbatteryitem_t1", has(MachineInit.BATTERYITEM_TIER1.get()))
+				.unlockedBy("has_batteryitem_t1", has(MachineInit.BATTERYITEM_TIER1.get()))
 				.save(cons, "dcs_climate:machine/generator_small_0");
 
 		ShapedRecipeBuilder.shaped(MachineInit.BOILER_BIOMASS.get(), 1)
@@ -897,6 +927,12 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.requires(TagDC.ItemTag.WATER)
 				.unlockedBy("has_niter_dust", has(TagDC.ItemTag.DUST_NITER))
 				.save(cons, "dcs_climate:machine/stormglass_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.PLAYER_PRESSURE_PLATE.get(), 1)
+				.pattern("XX")
+				.define('X', TagDC.ItemTag.GEMBLOCK_CHALCEDONY)
+				.unlockedBy("has_block_chalcedony", has(TagDC.ItemTag.GEMBLOCK_CHALCEDONY))
+				.save(cons, "dcs_climate:machine/player_pressure_plate_0");
 
 		ShapelessRecipeBuilder.shapeless(MachineInit.MEMORY_COORD.get(), 1)
 				.requires(TagDC.ItemTag.DUST_BISMUTH)

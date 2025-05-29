@@ -1,0 +1,68 @@
+{
+ "variants": {
+  "facing=north,bottom=false,top=false": {
+   "model": "dcs_climate:block/build/window/window_flower_white_single",
+   "y": 0
+  },
+  "facing=south,bottom=false,top=false": {
+   "model": "dcs_climate:block/build/window/window_flower_white_single",
+   "y": 180
+  },
+  "facing=east,bottom=false,top=false": {
+   "model": "dcs_climate:block/build/window/window_flower_white_single",
+   "y": 90
+  },
+  "facing=west,,bottom=false,top=false": {
+   "model": "dcs_climate:block/build/window/window_flower_white_single",
+   "y": 270
+  },
+  "facing=north,bottom=true,top=false": {
+   "model": "dcs_climate:block/build/window/window_flower_white_top",
+   "y": 0
+  },
+  "facing=south,bottom=true,top=false": {
+   "model": "dcs_climate:block/build/window/window_flower_white_top",
+   "y": 180
+  },
+  "facing=east,bottom=true,top=false": {
+   "model": "dcs_climate:block/build/window/window_flower_white_top",
+   "y": 90
+  },
+  "facing=west,,bottom=true,top=false": {
+   "model": "dcs_climate:block/build/window/window_flower_white_top",
+   "y": 270
+  },
+  "facing=north,bottom=true,top=true": {
+   "model": "dcs_climate:block/build/window/window_flower_white_middle",
+   "y": 0
+  },
+  "facing=south,bottom=true,top=true": {
+   "model": "dcs_climate:block/build/window/window_flower_white_middle",
+   "y": 180
+  },
+  "facing=east,bottom=true,top=true": {
+   "model": "dcs_climate:block/build/window/window_flower_white_middle",
+   "y": 90
+  },
+  "facing=west,,bottom=true,top=true": {
+   "model": "dcs_climate:block/build/window/window_flower_white_middle",
+   "y": 270
+  },
+  "facing=north,bottom=false,top=true": {
+   "model": "dcs_climate:block/build/window/window_flower_white_bottom",
+   "y": 0
+  },
+  "facing=south,bottom=false,top=true": {
+   "model": "dcs_climate:block/build/window/window_flower_white_bottom",
+   "y": 180
+  },
+  "facing=east,bottom=false,top=true": {
+   "model": "dcs_climate:block/build/window/window_flower_white_bottom",
+   "y": 90
+  },
+  "facing=west,,bottom=false,top=true": {
+   "model": "dcs_climate:block/build/window/window_flower_white_bottom",
+   "y": 270
+  }
+ }
+}

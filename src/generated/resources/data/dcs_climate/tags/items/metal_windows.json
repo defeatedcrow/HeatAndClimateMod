@@ -1,0 +1,16 @@
+{
+  "values": [
+    "dcs_climate:build/window_simple_none",
+    "dcs_climate:build/window_simple_black",
+    "dcs_climate:build/window_simple_white",
+    "dcs_climate:build/window_flower_none",
+    "dcs_climate:build/window_flower_black",
+    "dcs_climate:build/window_flower_white",
+    "dcs_climate:build/window_gothic_none",
+    "dcs_climate:build/window_gothic_black",
+    "dcs_climate:build/window_gothic_white",
+    "dcs_climate:build/window_net_none",
+    "dcs_climate:build/window_net_black",
+    "dcs_climate:build/window_net_white"
+  ]
+}

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "dcs_climate:fluid/bucket_sparkling"
+      "item": "dcs_climate:fluid/bucket_plant_oil"
     },
     {
       "tag": "forge:ingredients/empty_pack"

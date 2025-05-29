@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "base": "dcs_climate:block/build/window_frame_green"
+  },
+  "parent": "dcs_climate:block/build/louver_horizontal_top"
+}

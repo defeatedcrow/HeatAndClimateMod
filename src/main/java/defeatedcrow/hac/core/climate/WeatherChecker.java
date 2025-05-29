@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import defeatedcrow.hac.api.climate.EnumSeason;
+import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
+import defeatedcrow.hac.core.event.MagicPictureEvent;
 import defeatedcrow.hac.core.network.packet.message.MsgWeatherToC;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.resources.ResourceKey;
@@ -44,6 +46,8 @@ public class WeatherChecker {
 		int dayD = DCTimeHelper.getDisplayDay(world);
 		int time = DCTimeHelper.currentTime(world);
 		String date = DCTimeHelper.getDate(world);
+		boolean muf = MagicPictureEvent.getList().stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLUE_BLACK));
+		boolean dig = MagicPictureEvent.getList().stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.GREEN_BLACK));
 		boolean flag = false;
 		if (day != lastDay) {
 			lastDay = day;
@@ -82,7 +86,7 @@ public class WeatherChecker {
 				rainCountMap.put(dimName, 0);
 		}
 
-		MsgWeatherToC.sendToClient(world, rain, rainTime, sunTime, season.id, day, dayD, time, date);
+		MsgWeatherToC.sendToClient(world, rain, rainTime, sunTime, season.id, day, dayD, time, muf, dig, date);
 	}
 
 	@OnlyIn(Dist.CLIENT)

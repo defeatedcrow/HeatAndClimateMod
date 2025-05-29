@@ -8,8 +8,10 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.block.machine.EnergyMachineBaseDC;
 import defeatedcrow.hac.machine.material.block.machine.EnergyMachineBlock;
@@ -100,6 +102,18 @@ public class BatterySmallBlock extends EnergyMachineBlock {
 
 	@Override
 	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+		if (!DCUtil.isEmpty(item) && item.hasTag()) {
+			if (item.getTag().contains(TagKeyDC.ENERGY)) {
+				int en = item.getTag().getInt(TagKeyDC.ENERGY);
+				MutableComponent tex3 = Component.translatable("dcs.tip.device.energy.battery.amount");
+				tex3.append(en + " FE");
+				list.add(tex3);
+			}
+		} else {
+			MutableComponent tex3 = Component.translatable("dcs.tip.device.energy.battery.amount");
+			tex3.append("0 FE");
+			list.add(tex3);
+		}
 		MutableComponent tex1 = Component.translatable("dcs.tip.energy.battery").withStyle(ChatFormatting.LIGHT_PURPLE).withStyle(ChatFormatting.BOLD);
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.battery.desc");
 		if (flag) {

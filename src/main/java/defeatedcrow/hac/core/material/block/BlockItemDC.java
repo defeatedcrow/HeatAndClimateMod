@@ -73,6 +73,9 @@ public class BlockItemDC extends BlockItem implements IJsonDataDC, IItemDC {
 			if (stack.is(TagDC.ItemTag.CONT_CHARCOAL)) {
 				return 16000;
 			}
+			if (stack.is(TagDC.ItemTag.CONT_BRIQUET)) {
+				return 16000;
+			}
 		}
 		return -1;
 	}

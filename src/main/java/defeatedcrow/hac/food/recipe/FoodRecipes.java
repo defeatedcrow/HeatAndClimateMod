@@ -74,6 +74,8 @@ public class FoodRecipes {
 
 		ImmutableList.Builder<SmeltingBlock> list2 = ImmutableList.builder();
 		list2.add(new SmeltingBlock(FoodInit.CONT_LOG_CHARCOAL, () -> TagDC.ItemTag.CONT_LOGS, 120));
+		list2.add(new SmeltingBlock(FoodInit.CONT_LOG_BRIQUET, () -> TagDC.ItemTag.CONT_RAW_BRIQUET, 120));
+		list2.add(new SmeltingBlock(FoodInit.CONT_CROP_BAKED_POTATO, () -> TagDC.ItemTag.CONT_POTATO, 120));
 		SmeltingBlocks = list2.build();
 	}
 

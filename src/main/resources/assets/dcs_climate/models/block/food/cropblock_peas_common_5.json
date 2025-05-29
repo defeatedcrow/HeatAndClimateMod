@@ -1,6 +1,6 @@
 {
   "textures": {
-    "cross": "dcs_climate:block/crop/peas_garbanzo_f"
+    "cross": "dcs_climate:block/crop/peas_garbanzo_d"
   },
   "parent": "dcs_climate:block/dcs_cross"
 }

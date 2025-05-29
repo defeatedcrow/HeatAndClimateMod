@@ -75,6 +75,8 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onBlockLeftClick);
 		MinecraftForge.EVENT_BUS.addListener(CharmTriggerEvent::onEmptyLeftClick);
 		MinecraftForge.EVENT_BUS.addListener(MagicPictureEvent::onCheckSeason);
+		MinecraftForge.EVENT_BUS.addListener(MagicPictureEvent::onPlaySound);
+		MinecraftForge.EVENT_BUS.addListener(MagicPictureEvent::onPlayEntitySound);
 		MinecraftForge.EVENT_BUS.addListener(FishingEventDC::onFishing);
 		MinecraftForge.EVENT_BUS.addListener(AnvilEventDC::onEvent);
 		MinecraftForge.EVENT_BUS.addListener(WandererTradeEventDC::onLoadingTrade);

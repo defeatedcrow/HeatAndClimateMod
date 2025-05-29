@@ -73,6 +73,10 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			alloyRecipes(cons, alloy);
 		}
 
+		for (MaterialRecipes.GemBlock gem : MaterialRecipes.GEMBLOCK_VARIANT) {
+			gemBlockRecipes(cons, gem);
+		}
+
 		for (MaterialRecipes.Stone stone : MaterialRecipes.STONE_VARIANT) {
 			stoneRecipes(cons, stone);
 		}
@@ -147,6 +151,24 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 		}
 
+	}
+
+	private static void gemBlockRecipes(Consumer<FinishedRecipe> cons, MaterialRecipes.GemBlock gem) {
+
+		ShapedRecipeBuilder.shaped(gem.block().get())
+				.pattern("XXX")
+				.pattern("XXX")
+				.pattern("XXX")
+				.define('X', gem.tag().get())
+				.group("storage_pack")
+				.unlockedBy("has_" + gem.name() + "_gem", has(gem.tag().get()))
+				.save(cons, "dcs_climate:core/gemblock_" + gem.name() + "_2");
+
+		ShapelessRecipeBuilder.shapeless(gem.gem().get(), 9)
+				.requires(gem.block().get())
+				.group("storage_unpack")
+				.unlockedBy("has_" + gem.name() + "_block", has(gem.block().get()))
+				.save(cons, "dcs_climate:core/gem_" + gem.name() + "_2");
 	}
 
 	private static void mortarMetalRecipes(Consumer<FinishedRecipe> cons, MaterialRecipes.Color color) {
@@ -377,6 +399,147 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('Y', ItemTags.PLANKS)
 				.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
 				.save(cons, "dcs_climate:build/slim_metal_stairs_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.LOUVER_HOL_METAL.get(), 3)
+				.pattern("XXX")
+				.pattern("YYY")
+				.pattern("XXX")
+				.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+				.define('Y', Items.IRON_BARS)
+				.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+				.save(cons, "dcs_climate:build/louver_hol_metal_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOUVER_HOL_WHITE.get(), 1)
+				.requires(BuildInit.LOUVER_HOL_METAL.get())
+				.requires(Tags.Items.DYES_WHITE)
+				.unlockedBy("has_hol_louver", has(BuildInit.LOUVER_HOL_METAL.get()))
+				.save(cons, "dcs_climate:build/louver_hol_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOUVER_HOL_BLUE.get(), 1)
+				.requires(BuildInit.LOUVER_HOL_METAL.get())
+				.requires(Tags.Items.DYES_BLUE)
+				.unlockedBy("has_hol_louver", has(BuildInit.LOUVER_HOL_METAL.get()))
+				.save(cons, "dcs_climate:build/louver_hol_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOUVER_HOL_BLACK.get(), 1)
+				.requires(BuildInit.LOUVER_HOL_METAL.get())
+				.requires(Tags.Items.DYES_BLACK)
+				.unlockedBy("has_hol_louver", has(BuildInit.LOUVER_HOL_METAL.get()))
+				.save(cons, "dcs_climate:build/louver_hol_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOUVER_HOL_RED.get(), 1)
+				.requires(BuildInit.LOUVER_HOL_METAL.get())
+				.requires(Tags.Items.DYES_RED)
+				.unlockedBy("has_hol_louver", has(BuildInit.LOUVER_HOL_METAL.get()))
+				.save(cons, "dcs_climate:build/louver_hol_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOUVER_HOL_GREEN.get(), 1)
+				.requires(BuildInit.LOUVER_HOL_METAL.get())
+				.requires(Tags.Items.DYES_GREEN)
+				.unlockedBy("has_hol_louver", has(BuildInit.LOUVER_HOL_METAL.get()))
+				.save(cons, "dcs_climate:build/louver_hol_green_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.LOUVER_VER_METAL.get(), 3)
+				.pattern("XYX")
+				.pattern("XYX")
+				.pattern("XYX")
+				.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+				.define('Y', Items.IRON_BARS)
+				.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+				.save(cons, "dcs_climate:build/louver_ver_metal_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOUVER_VER_WHITE.get(), 1)
+				.requires(BuildInit.LOUVER_VER_METAL.get())
+				.requires(Tags.Items.DYES_WHITE)
+				.unlockedBy("has_ver_louver", has(BuildInit.LOUVER_VER_METAL.get()))
+				.save(cons, "dcs_climate:build/louver_ver_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOUVER_VER_BLUE.get(), 1)
+				.requires(BuildInit.LOUVER_VER_METAL.get())
+				.requires(Tags.Items.DYES_BLUE)
+				.unlockedBy("has_ver_louver", has(BuildInit.LOUVER_VER_METAL.get()))
+				.save(cons, "dcs_climate:build/louver_ver_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOUVER_VER_BLACK.get(), 1)
+				.requires(BuildInit.LOUVER_VER_METAL.get())
+				.requires(Tags.Items.DYES_BLACK)
+				.unlockedBy("has_ver_louver", has(BuildInit.LOUVER_VER_METAL.get()))
+				.save(cons, "dcs_climate:build/louver_ver_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOUVER_VER_RED.get(), 1)
+				.requires(BuildInit.LOUVER_VER_METAL.get())
+				.requires(Tags.Items.DYES_RED)
+				.unlockedBy("has_ver_louver", has(BuildInit.LOUVER_VER_METAL.get()))
+				.save(cons, "dcs_climate:build/louver_ver_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.LOUVER_VER_GREEN.get(), 1)
+				.requires(BuildInit.LOUVER_VER_METAL.get())
+				.requires(Tags.Items.DYES_GREEN)
+				.unlockedBy("has_ver_louver", has(BuildInit.LOUVER_VER_METAL.get()))
+				.save(cons, "dcs_climate:build/louver_ver_green_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.WINDOW_SIMPLE_METAL.get(), 6)
+				.pattern("XXX")
+				.pattern("YYY")
+				.pattern("XXX")
+				.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+				.define('Y', Tags.Items.GLASS)
+				.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+				.save(cons, "dcs_climate:build/window_simple_metal_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.WINDOW_FLOWER_METAL.get(), 1)
+				.requires(BuildInit.WINDOW_SIMPLE_METAL.get())
+				.requires(ItemTags.FLOWERS)
+				.unlockedBy("has_metal_simple_window", has(BuildInit.WINDOW_SIMPLE_METAL.get()))
+				.save(cons, "dcs_climate:build/window_flower_metal_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.WINDOW_GOTHIC_METAL.get(), 1)
+				.requires(BuildInit.WINDOW_SIMPLE_METAL.get())
+				.requires(Tags.Items.GEMS_EMERALD)
+				.unlockedBy("has_metal_simple_window", has(BuildInit.WINDOW_SIMPLE_METAL.get()))
+				.save(cons, "dcs_climate:build/window_gothic_metal_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.WINDOW_NET_METAL.get(), 1)
+				.requires(BuildInit.WINDOW_SIMPLE_METAL.get())
+				.requires(Items.IRON_BARS)
+				.unlockedBy("has_metal_simple_window", has(BuildInit.WINDOW_SIMPLE_METAL.get()))
+				.save(cons, "dcs_climate:build/window_net_metal_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.WINDOW_FLOWER_WHITE.get(), 1)
+				.requires(BuildInit.WINDOW_FLOWER_METAL.get())
+				.requires(Tags.Items.DYES_WHITE)
+				.unlockedBy("has_metal_flower_window", has(BuildInit.WINDOW_FLOWER_METAL.get()))
+				.save(cons, "dcs_climate:build/window_flower_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.WINDOW_GOTHIC_WHITE.get(), 1)
+				.requires(BuildInit.WINDOW_GOTHIC_METAL.get())
+				.requires(Tags.Items.DYES_WHITE)
+				.unlockedBy("has_metal_gothic_window", has(BuildInit.WINDOW_GOTHIC_METAL.get()))
+				.save(cons, "dcs_climate:build/window_gothic_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.WINDOW_NET_WHITE.get(), 1)
+				.requires(BuildInit.WINDOW_NET_METAL.get())
+				.requires(Tags.Items.DYES_WHITE)
+				.unlockedBy("has_metal_net_window", has(BuildInit.WINDOW_NET_METAL.get()))
+				.save(cons, "dcs_climate:build/window_net_white_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.WINDOW_FLOWER_BLACK.get(), 1)
+				.requires(BuildInit.WINDOW_FLOWER_METAL.get())
+				.requires(Tags.Items.DYES_BLACK)
+				.unlockedBy("has_metal_flower_window", has(BuildInit.WINDOW_FLOWER_METAL.get()))
+				.save(cons, "dcs_climate:build/window_flower_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.WINDOW_GOTHIC_BLACK.get(), 1)
+				.requires(BuildInit.WINDOW_GOTHIC_METAL.get())
+				.requires(Tags.Items.DYES_BLACK)
+				.unlockedBy("has_metal_gothic_window", has(BuildInit.WINDOW_GOTHIC_METAL.get()))
+				.save(cons, "dcs_climate:build/window_gothic_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.WINDOW_NET_BLACK.get(), 1)
+				.requires(BuildInit.WINDOW_NET_METAL.get())
+				.requires(Tags.Items.DYES_BLACK)
+				.unlockedBy("has_metal_net_window", has(BuildInit.WINDOW_NET_METAL.get()))
+				.save(cons, "dcs_climate:build/window_net_black_0");
 
 		ShapedRecipeBuilder.shaped(BuildInit.STAIRS_SLIM_METAL.get(), 2)
 				.pattern("  Y")
@@ -3079,6 +3242,9 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		smeltingRecipe(cons, Ingredient.of(BuildInit.STAIRS_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_stairs_metal", BuildInit.STAIRS_METAL.get().asItem(), "has_stairs_metal");
 		smeltingRecipe(cons, Ingredient.of(BuildInit.STAIRS_SLIM_METAL.get()), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_slim_stairs_metal", BuildInit.STAIRS_SLIM_METAL.get().asItem(),
 				"has_slim_stairs_metal");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.ALMINUM_LOUVERS), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_louver_metal", BuildInit.LOUVER_HOL_METAL.get().asItem(), "has_louver_metal");
+		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.ALMINUM_WINDOWS), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_window_metal", BuildInit.WINDOW_SIMPLE_METAL.get().asItem(),
+				"has_window_metal");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.ALMINUM_ROOFS), CoreInit.INGOT_ALUMINUM.get(), 200, "reduction_roof_metal", BuildInit.ROOF_METAL_GRAY.get().asItem(), "has_roof_metal");
 	}
 

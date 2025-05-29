@@ -1,5 +1,6 @@
 {
   "values": [
+    "dcs_climate:container/logcont_briquet",
     "#dcs_climate:fuels/biomass"
   ]
 }

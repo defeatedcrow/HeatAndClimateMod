@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
+import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
@@ -17,6 +18,7 @@ import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
+import defeatedcrow.hac.magic.material.entity.MagicPictureEntity;
 import defeatedcrow.hac.magic.material.item.InertElementItem;
 import defeatedcrow.hac.magic.material.item.jems.RodBlack;
 import net.minecraft.core.BlockPos;
@@ -32,10 +34,12 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.monster.Phantom;
+import net.minecraft.world.entity.npc.Npc;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -268,8 +272,16 @@ public class CharmTriggerEvent {
 	public static void onDeath(LivingDeathEvent event) {
 		LivingEntity living = event.getEntity();
 		if (living != null) {
-			ArrayList<ItemStack> charms = MagicUtil.getCharms(living, CharmType.DEFFENCE);
 			int count = 0;
+
+			if (living instanceof Npc || (living instanceof OwnableEntity ownable && ownable.getOwner() != null)) {
+				List<MagicPictureEntity> picList = MagicPictureEvent.getList();
+				if (picList.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.GREEN_WHITE))) {
+					count += 3;
+				}
+			}
+
+			ArrayList<ItemStack> charms = MagicUtil.getCharms(living, CharmType.DEFFENCE);
 			for (ItemStack c : charms) {
 				if (!c.isEmpty() && c.getItem() == MagicInit.BADGE_SILVER_GREEN.get()) {
 					IJewelCharm charm = (IJewelCharm) c.getItem();
@@ -279,6 +291,7 @@ public class CharmTriggerEvent {
 					}
 				}
 			}
+
 			if (count > 0) {
 				living.setHealth(count * 2.0F);
 				event.setCanceled(true);

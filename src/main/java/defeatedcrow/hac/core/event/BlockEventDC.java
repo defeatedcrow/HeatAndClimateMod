@@ -1,5 +1,7 @@
 package defeatedcrow.hac.core.event;
 
+import java.util.Optional;
+
 import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.material.ITierItem;
 import defeatedcrow.hac.api.util.DCState;
@@ -76,6 +78,7 @@ public class BlockEventDC {
 	public static void onDig(PlayerEvent.BreakSpeed event) {
 		Player player = event.getEntity();
 		float f = event.getOriginalSpeed();
+		Optional<BlockPos> pos = event.getPosition();
 		if (player == null || !player.isAlive())
 			return;
 

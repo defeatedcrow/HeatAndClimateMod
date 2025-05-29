@@ -1,6 +1,6 @@
 {
   "textures": {
-    "layer0": "dcs_climate:item/crop/crop_allium_epic"
+    "layer0": "dcs_climate:item/crop/crop_allium_leek"
   },
   "parent": "minecraft:item/generated"
 }

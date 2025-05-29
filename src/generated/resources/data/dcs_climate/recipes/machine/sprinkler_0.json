@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:stone_slab"
+    },
+    "Y": {
+      "item": "dcs_climate:machine/pipe_brass"
+    },
+    "Z": {
+      "tag": "dcs_climate:impellers/small"
+    }
+  },
+  "pattern": [
+    " Y ",
+    "XZX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/sprinkler"
+  }
+}

@@ -15,6 +15,7 @@ import defeatedcrow.hac.api.damage.ClimateDamageEvent.DamageSet;
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
+import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
@@ -23,6 +24,7 @@ import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
+import defeatedcrow.hac.magic.material.entity.MagicPictureEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
@@ -36,11 +38,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -65,6 +70,9 @@ public class LivingTickEventDC {
 					onLivingUpdate(living);
 					if (living instanceof Villager villager) {
 						onVillagerUpdate(villager);
+					}
+					if (living instanceof Enemy monster) {
+						onMonsterUpdate(living);
 					}
 				}
 			} else {
@@ -317,6 +325,14 @@ public class LivingTickEventDC {
 			}
 		}
 		return -1;
+	}
+
+	public static void onMonsterUpdate(LivingEntity monster) {
+		List<MagicPictureEntity> list = MagicPictureEvent.getList();
+		if (list.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLACK_RED)) && monster instanceof Phantom) {
+			monster.getLevel().explode(monster, monster.getX(), monster.getY(), monster.getZ(), 6.0F, Explosion.BlockInteraction.NONE);
+			monster.discard();
+		}
 	}
 
 }

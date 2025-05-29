@@ -51,16 +51,22 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 							tag(Tags.Items.DUSTS).addTag(item.getPairTag());
 						}
 
-						if (TagUtil.isMatch("forge", "gems", item.getPairTag())) {
+						if (TagUtil.isMatch("forge", "gems", item.getPairTag())
+								&& !TagUtil.isMatch("forge", "storage_blocks", item.getPairTag())) {
 							tag(Tags.Items.GEMS).addTag(item.getPairTag());
 						}
 
-						if (TagUtil.isMatch("forge", "crops", item.getPairTag())) {
+						if (TagUtil.isMatch("forge", "crops", item.getPairTag())
+								&& !TagUtil.isMatch("forge", "storage_blocks", item.getPairTag())) {
 							tag(Tags.Items.CROPS).addTag(item.getPairTag());
 						}
 
 						if (TagUtil.isMatch("forge", "seeds", item.getPairTag())) {
 							tag(Tags.Items.SEEDS).addTag(item.getPairTag());
+						}
+
+						if (TagUtil.isMatch("forge", "storage_blocks", item.getPairTag())) {
+							tag(Tags.Items.STORAGE_BLOCKS).addTag(item.getPairTag());
 						}
 
 					}
@@ -468,7 +474,9 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.MAGIC_TIER3).addTags(TagDC.ItemTag.MAGIC_BADGE);
 
-		tag(TagDC.ItemTag.MAGIC_ALL).addTags(TagDC.ItemTag.MAGIC_TIER1, TagDC.ItemTag.MAGIC_TIER2, TagDC.ItemTag.MAGIC_TIER3);
+		tag(TagDC.ItemTag.MAGIC_TIER4).addTags(TagDC.ItemTag.MAGIC_BRACELET, TagDC.ItemTag.MAGIC_STUFF, TagDC.ItemTag.MAGIC_PICTURE);
+
+		tag(TagDC.ItemTag.MAGIC_ALL).addTags(TagDC.ItemTag.MAGIC_TIER1, TagDC.ItemTag.MAGIC_TIER2, TagDC.ItemTag.MAGIC_TIER3, TagDC.ItemTag.MAGIC_TIER4);
 
 		tag(TagDC.ItemTag.MAGIC_JEWEL).addTags(TagDC.ItemTag.MAGIC_RING, TagDC.ItemTag.MAGIC_PENDANT, TagDC.ItemTag.MAGIC_BADGE);
 
@@ -566,6 +574,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 				FoodInit.SORGHUM_STICK.get(), FoodInit.BEESWAX.get(), FoodInit.TREEWAX.get(), FoodInit.FOOD_DEFATTED_SOY.get(), FoodInit.FOOD_PRESS_CAKE.get(),
 				FoodInit.FOOD_BRAN.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.FEED_HAY.get(), FoodInit.FEED_STRAW.get(), FoodInit.FOOD_GERM.get());
 
+		tag(TagDC.ItemTag.HAC_FUELS).add(FoodInit.CONT_LOG_BRIQUET.get().asItem());
+
 		tag(TagDC.ItemTag.HAC_FUELS).addTags(TagDC.ItemTag.FUEL_BIOMASS);
 
 		// blocks
@@ -634,6 +644,38 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		copy(TagDC.BlockTag.METALBLOCK_HASTELLOY, TagDC.ItemTag.METALBLOCK_HASTELLOY);
 		copy(TagDC.BlockTag.METALBLOCK_BSCCO, TagDC.ItemTag.METALBLOCK_BSCCO);
 		copy(TagDC.BlockTag.BLOCK_RUBBER, TagDC.ItemTag.BLOCK_RUBBER);
+
+		copy(TagDC.BlockTag.GEMBLOCK_CHALCEDONY, TagDC.ItemTag.GEMBLOCK_CHALCEDONY);
+		copy(TagDC.BlockTag.GEMBLOCK_CRYSTAL, TagDC.ItemTag.GEMBLOCK_CRYSTAL);
+		copy(TagDC.BlockTag.GEMBLOCK_THUNDEREGG, TagDC.ItemTag.GEMBLOCK_THUNDEREGG);
+		copy(TagDC.BlockTag.GEMBLOCK_CATSEYE, TagDC.ItemTag.GEMBLOCK_CATSEYE);
+		copy(TagDC.BlockTag.GEMBLOCK_CELESTITE, TagDC.ItemTag.GEMBLOCK_CELESTITE);
+		copy(TagDC.BlockTag.GEMBLOCK_SAPPHIRE, TagDC.ItemTag.GEMBLOCK_SAPPHIRE);
+		copy(TagDC.BlockTag.GEMBLOCK_VIVIANITE, TagDC.ItemTag.GEMBLOCK_VIVIANITE);
+		copy(TagDC.BlockTag.GEMBLOCK_FANG, TagDC.ItemTag.GEMBLOCK_FANG);
+		copy(TagDC.BlockTag.GEMBLOCK_DRAGONSEYE, TagDC.ItemTag.GEMBLOCK_DRAGONSEYE);
+		copy(TagDC.BlockTag.GEMBLOCK_JASPER, TagDC.ItemTag.GEMBLOCK_JASPER);
+		copy(TagDC.BlockTag.GEMBLOCK_ALMANDINE, TagDC.ItemTag.GEMBLOCK_ALMANDINE);
+		copy(TagDC.BlockTag.GEMBLOCK_RUBY, TagDC.ItemTag.GEMBLOCK_RUBY);
+		copy(TagDC.BlockTag.GEMBLOCK_MALACHITE, TagDC.ItemTag.GEMBLOCK_MALACHITE);
+		copy(TagDC.BlockTag.GEMBLOCK_OLIVINE, TagDC.ItemTag.GEMBLOCK_OLIVINE);
+		copy(TagDC.BlockTag.GEMBLOCK_FLUORITE, TagDC.ItemTag.GEMBLOCK_FLUORITE);
+		copy(TagDC.BlockTag.GEMBLOCK_JET, TagDC.ItemTag.GEMBLOCK_JET);
+		copy(TagDC.BlockTag.GEMBLOCK_DESERTROSE, TagDC.ItemTag.GEMBLOCK_DESERTROSE);
+		copy(TagDC.BlockTag.GEMBLOCK_SERPENTINE, TagDC.ItemTag.GEMBLOCK_SERPENTINE);
+		copy(TagDC.BlockTag.GEMBLOCK_HELIODOR, TagDC.ItemTag.GEMBLOCK_HELIODOR);
+		copy(TagDC.BlockTag.GEMBLOCK_TOPAZ, TagDC.ItemTag.GEMBLOCK_TOPAZ);
+		copy(TagDC.BlockTag.GEMBLOCK_LARIMAR, TagDC.ItemTag.GEMBLOCK_LARIMAR);
+		copy(TagDC.BlockTag.GEMBLOCK_AQUAMARINE, TagDC.ItemTag.GEMBLOCK_AQUAMARINE);
+		copy(TagDC.BlockTag.GEMBLOCK_IOLITE, TagDC.ItemTag.GEMBLOCK_IOLITE);
+		copy(TagDC.BlockTag.GEMBLOCK_SAKURA, TagDC.ItemTag.GEMBLOCK_SAKURA);
+		copy(TagDC.BlockTag.GEMBLOCK_KUNZITE, TagDC.ItemTag.GEMBLOCK_KUNZITE);
+		copy(TagDC.BlockTag.GEMBLOCK_OPAL, TagDC.ItemTag.GEMBLOCK_OPAL);
+		copy(TagDC.BlockTag.GEMBLOCK_ROSINCA, TagDC.ItemTag.GEMBLOCK_ROSINCA);
+		copy(TagDC.BlockTag.GEMBLOCK_SPINEL, TagDC.ItemTag.GEMBLOCK_SPINEL);
+		copy(TagDC.BlockTag.GEMBLOCK_AMAZONITE, TagDC.ItemTag.GEMBLOCK_AMAZONITE);
+		copy(TagDC.BlockTag.GEMBLOCK_JADEITE, TagDC.ItemTag.GEMBLOCK_JADEITE);
+		copy(TagDC.BlockTag.GEMBLOCK_DEMANTOID, TagDC.ItemTag.GEMBLOCK_DEMANTOID);
 
 		copy(TagDC.BlockTag.CONT_LEAVES, TagDC.ItemTag.CONT_LEAVES);
 		copy(TagDC.BlockTag.CONT_LOGS, TagDC.ItemTag.CONT_LOGS);

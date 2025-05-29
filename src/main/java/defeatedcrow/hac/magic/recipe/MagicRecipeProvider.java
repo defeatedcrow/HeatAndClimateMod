@@ -667,7 +667,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_element_white", has(TagDC.ItemTag.ELEMENT_WHITE))
 				.save(cons, "dcs_climate:magic/craft_white_red_painting");
 
-		ShapedRecipeBuilder.shaped(MagicInit.PICTURE_BG.get(), 1)
+		ShapedRecipeBuilder.shaped(MagicInit.PICTURE_UG.get(), 1)
 				.pattern("XXX")
 				.pattern("WYW")
 				.pattern("ZZZ")

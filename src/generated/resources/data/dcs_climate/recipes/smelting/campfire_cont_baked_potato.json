@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "cookingtime": 600,
+  "experience": 0.0,
+  "ingredient": {
+    "tag": "forge:storage_blocks/crops/potato"
+  },
+  "result": "dcs_climate:container/burntbox_baked_potato"
+}

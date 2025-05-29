@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "storage_pack",
+  "key": {
+    "X": {
+      "tag": "forge:gems/demantoid"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/gemblock_demantoid"
+  }
+}

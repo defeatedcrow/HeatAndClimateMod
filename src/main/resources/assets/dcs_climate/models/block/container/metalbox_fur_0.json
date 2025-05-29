@@ -1,0 +1,8 @@
+{
+  "textures": {
+    "top": "dcs_climate:block/container/metalbox_t_fur",
+    "bottom": "dcs_climate:block/container/metalbox_b",
+    "side": "dcs_climate:block/container/metalbox_s"
+  },
+  "parent": "dcs_climate:block/dcs_container"
+}

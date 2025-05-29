@@ -9,6 +9,7 @@
     "dcs_climate:container/woodbox_cactus",
     "dcs_climate:container/woodbox_cocoa",
     "dcs_climate:container/woodbox_sugarcane",
-    "dcs_climate:container/woodbox_bushberry"
+    "dcs_climate:container/woodbox_bushberry",
+    "dcs_climate:container/woodbox_glowberry"
   ]
 }

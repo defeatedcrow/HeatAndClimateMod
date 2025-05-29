@@ -329,6 +329,16 @@ public class PulveriseRecipes {
 				new FluidStack(CoreInit.PLANT_OIL.getStillFluid().get(), 250),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.GERM)));
 
+		DeviceRecipeList.addPulverizeRecipe(11, RecipeTypeDC.SQUEEZE,
+				new ItemStack(FoodInit.FOOD_PLANT_OIL.get(), 6), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0,
+				new FluidStack(CoreInit.PLANT_OIL.getStillFluid().get(), 2000),
+				ImmutableList.of(Ingredient.of(FoodInit.CONT_BRAN.get())));
+
+		DeviceRecipeList.addPulverizeRecipe(12, RecipeTypeDC.SQUEEZE,
+				new ItemStack(FoodInit.FOOD_PLANT_OIL.get(), 6), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0,
+				new FluidStack(CoreInit.PLANT_OIL.getStillFluid().get(), 2000),
+				ImmutableList.of(Ingredient.of(FoodInit.CONT_GERM.get())));
+
 		// vanilla
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.SQUEEZE,
@@ -351,9 +361,13 @@ public class PulveriseRecipes {
 				new ItemStack(FoodInit.DUST_PLANT.get(), 1), ItemStack.EMPTY, 0, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(ItemTags.LEAVES)));
 
-		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
+		DeviceRecipeList.addPulverizeRecipe(3, RecipeTypeDC.PULVERISE,
 				new ItemStack(MagicInit.DROP_MANA.get(), 2), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				ImmutableList.of(Ingredient.of(Items.GLOW_BERRIES)));
+
+		DeviceRecipeList.addPulverizeRecipe(4, RecipeTypeDC.PULVERISE,
+				new ItemStack(MagicInit.EXTRACT_MANA.get(), 2), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				ImmutableList.of(Ingredient.of(FoodInit.CONT_CROP_GLOWBERRY.get())));
 
 		// ores
 

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/metal/gemblock_amazonite"
+  },
+  "parent": "minecraft:block/cube_all"
+}

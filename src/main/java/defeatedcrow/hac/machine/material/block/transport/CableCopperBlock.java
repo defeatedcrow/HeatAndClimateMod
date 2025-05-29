@@ -15,6 +15,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -94,12 +95,18 @@ public class CableCopperBlock extends EnergyCableBlock {
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
 		return !level.isClientSide ? createTickerHelper(type, MachineInit.CABLE_COPPER_TILE.get(), CableCopperTile::serverTick) : createTickerHelper(type, MachineInit.CABLE_COPPER_TILE.get(),
-			CableCopperTile::clientTick);
+				CableCopperTile::clientTick);
 	}
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+		Rarity rare = stack.getRarity();
 		MutableComponent tex2 = Component.translatable("dcs.tip.flow.tier1");
+		if (rare == Rarity.UNCOMMON) {
+			tex2 = Component.translatable("dcs.tip.flow.tier2");
+		} else if (rare == Rarity.RARE) {
+			tex2 = Component.translatable("dcs.tip.flow.tier3");
+		}
 		list.add(tex2);
 		super.appendHoverText(stack, level, list, flag);
 	}

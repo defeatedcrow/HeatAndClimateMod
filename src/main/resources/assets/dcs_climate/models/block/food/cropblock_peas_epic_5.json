@@ -1,6 +1,6 @@
 {
   "textures": {
-    "cross": "dcs_climate:block/crop/peas_azuki_f"
+    "cross": "dcs_climate:block/crop/peas_azuki_d"
   },
   "parent": "dcs_climate:block/dcs_cross"
 }

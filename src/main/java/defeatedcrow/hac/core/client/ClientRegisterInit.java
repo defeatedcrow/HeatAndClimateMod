@@ -260,6 +260,7 @@ import defeatedcrow.hac.machine.client.entity.StormglassModel;
 import defeatedcrow.hac.machine.client.entity.TeaPotModel_A;
 import defeatedcrow.hac.machine.client.entity.TeaPotModel_B;
 import defeatedcrow.hac.machine.client.entity.TeaPotModel_C;
+import defeatedcrow.hac.machine.client.entity.TileRendererAluminumCable;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberFuel;
 import defeatedcrow.hac.machine.client.entity.TileRendererChamberIron;
 import defeatedcrow.hac.machine.client.entity.TileRendererConveyor;
@@ -277,6 +278,7 @@ import defeatedcrow.hac.machine.client.entity.TileRendererKichenStove;
 import defeatedcrow.hac.machine.client.entity.TileRendererMeterEnergy;
 import defeatedcrow.hac.machine.client.entity.TileRendererMeterTemp;
 import defeatedcrow.hac.machine.client.entity.TileRendererPipeAlloy;
+import defeatedcrow.hac.machine.client.entity.TileRendererPipeNickelsilver;
 import defeatedcrow.hac.machine.client.entity.TileRendererPortableCan;
 import defeatedcrow.hac.machine.client.entity.TileRendererRollCrusher;
 import defeatedcrow.hac.machine.client.entity.TileRendererSink;
@@ -311,8 +313,14 @@ import defeatedcrow.hac.magic.client.model.LightCauldronModel;
 import defeatedcrow.hac.magic.client.model.MagicPictureModel;
 import defeatedcrow.hac.magic.client.model.SilkyBombModel;
 import defeatedcrow.hac.magic.material.MagicInit;
-import defeatedcrow.hac.magic.material.item.entity.PictureItemBG;
+import defeatedcrow.hac.magic.material.item.entity.PictureItemBR;
+import defeatedcrow.hac.magic.material.item.entity.PictureItemBW;
+import defeatedcrow.hac.magic.material.item.entity.PictureItemGB;
+import defeatedcrow.hac.magic.material.item.entity.PictureItemGW;
 import defeatedcrow.hac.magic.material.item.entity.PictureItemRG;
+import defeatedcrow.hac.magic.material.item.entity.PictureItemRU;
+import defeatedcrow.hac.magic.material.item.entity.PictureItemUB;
+import defeatedcrow.hac.magic.material.item.entity.PictureItemUG;
 import defeatedcrow.hac.magic.material.item.entity.PictureItemWR;
 import defeatedcrow.hac.magic.material.item.entity.PictureItemWU;
 import net.minecraft.client.model.TridentModel;
@@ -448,9 +456,17 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(TileRendererCopperCable.COPPER_COATED_OUTLET.getLayerLocation(), CableModel::createBodyLayer);
 		event.registerLayerDefinition(TileRendererCopperCable.COPPER_COATED_POWERED.getLayerLocation(), CableModel::createBodyLayer);
 
+		event.registerLayerDefinition(TileRendererAluminumCable.ALUMINUM_COATED.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererAluminumCable.ALUMINUM_COATED_INPUT.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererAluminumCable.ALUMINUM_COATED_OUTLET.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererAluminumCable.ALUMINUM_COATED_POWERED.getLayerLocation(), CableModel::createBodyLayer);
+
 		event.registerLayerDefinition(TileRendererPipeAlloy.BRASS.getLayerLocation(), CableModel::createBodyLayer);
 		event.registerLayerDefinition(TileRendererPipeAlloy.BRASS_INPUT.getLayerLocation(), CableModel::createBodyLayer);
 		event.registerLayerDefinition(TileRendererPipeAlloy.BRASS_OUTLET.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererPipeNickelsilver.NICKELSILVER.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererPipeNickelsilver.NICKELSILVER_INPUT.getLayerLocation(), CableModel::createBodyLayer);
+		event.registerLayerDefinition(TileRendererPipeNickelsilver.NICKELSILVER_OUTLET.getLayerLocation(), CableModel::createBodyLayer);
 
 		event.registerLayerDefinition(HydroTurbineTile.NORMAL.getLayerLocation(), HydroTurbineModel::createBodyLayer);
 
@@ -485,8 +501,14 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(RenderSilkySmallBomb.TEX.getLayerLocation(), SilkyBombModel::createBodyLayer);
 		event.registerLayerDefinition(PictureItemWU.PICTURE.getLayerLocation(), MagicPictureModel::createBodyLayer);
 		event.registerLayerDefinition(PictureItemWR.PICTURE.getLayerLocation(), MagicPictureModel::createBodyLayer);
-		event.registerLayerDefinition(PictureItemBG.PICTURE.getLayerLocation(), MagicPictureModel::createBodyLayer);
+		event.registerLayerDefinition(PictureItemUB.PICTURE.getLayerLocation(), MagicPictureModel::createBodyLayer);
+		event.registerLayerDefinition(PictureItemUG.PICTURE.getLayerLocation(), MagicPictureModel::createBodyLayer);
+		event.registerLayerDefinition(PictureItemBR.PICTURE.getLayerLocation(), MagicPictureModel::createBodyLayer);
+		event.registerLayerDefinition(PictureItemBW.PICTURE.getLayerLocation(), MagicPictureModel::createBodyLayer);
 		event.registerLayerDefinition(PictureItemRG.PICTURE.getLayerLocation(), MagicPictureModel::createBodyLayer);
+		event.registerLayerDefinition(PictureItemRU.PICTURE.getLayerLocation(), MagicPictureModel::createBodyLayer);
+		event.registerLayerDefinition(PictureItemGW.PICTURE.getLayerLocation(), MagicPictureModel::createBodyLayer);
+		event.registerLayerDefinition(PictureItemGB.PICTURE.getLayerLocation(), MagicPictureModel::createBodyLayer);
 
 		event.registerLayerDefinition(BreadRoundItem.BREAD_ROUND_RAW.getLayerLocation(), BreadRoundModel::createBodyLayer);
 		event.registerLayerDefinition(BreadRoundItem.BREAD_ROUND_BAKED.getLayerLocation(), BreadRoundModel::createBodyLayer);
@@ -926,7 +948,9 @@ public class ClientRegisterInit {
 		event.registerBlockEntityRenderer(MachineInit.MILL_TILE.get(), TileRendererStoneMill::new);
 		event.registerBlockEntityRenderer(MachineInit.CRUSHER_TILE.get(), TileRendererRollCrusher::new);
 		event.registerBlockEntityRenderer(MachineInit.CABLE_COPPER_TILE.get(), TileRendererCopperCable::new);
+		event.registerBlockEntityRenderer(MachineInit.CABLE_ALUMINUM_TILE.get(), TileRendererAluminumCable::new);
 		event.registerBlockEntityRenderer(MachineInit.PIPE_BRASS_TILE.get(), TileRendererPipeAlloy::new);
+		event.registerBlockEntityRenderer(MachineInit.PIPE_NICKELSILVER_TILE.get(), TileRendererPipeNickelsilver::new);
 		event.registerBlockEntityRenderer(MachineInit.WATER_PUMP_TILE.get(), TileRendererWaterPump::new);
 		event.registerBlockEntityRenderer(MachineInit.STORMGLASS_TILE.get(), TileRendererStormglass::new);
 		event.registerBlockEntityRenderer(MachineInit.MONITOR_TEMP_TILE.get(), TileRendererMeterTemp::new);
@@ -1026,8 +1050,14 @@ public class ClientRegisterInit {
 		event.registerEntityRenderer(MagicInit.CROW_TURRET.get(), RenderCrowTurret::new);
 		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_WU.get(), RenderMagicPicture::new);
 		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_WR.get(), RenderMagicPicture::new);
-		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_BG.get(), RenderMagicPicture::new);
+		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_UB.get(), RenderMagicPicture::new);
+		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_UG.get(), RenderMagicPicture::new);
+		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_BR.get(), RenderMagicPicture::new);
+		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_BW.get(), RenderMagicPicture::new);
 		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_RG.get(), RenderMagicPicture::new);
+		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_RU.get(), RenderMagicPicture::new);
+		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_GW.get(), RenderMagicPicture::new);
+		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_GB.get(), RenderMagicPicture::new);
 	}
 
 	public static void registerLayers(EntityRenderersEvent.AddLayers event) {

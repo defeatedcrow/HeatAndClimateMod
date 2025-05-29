@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/aluminum"
+    },
+    "Y": {
+      "tag": "forge:clothes/rubber"
+    }
+  },
+  "pattern": [
+    "YYY",
+    "XXX",
+    "YYY"
+  ],
+  "result": {
+    "count": 8,
+    "item": "dcs_climate:machine/cable_aluminum_coated"
+  }
+}

@@ -65,7 +65,7 @@ public class FluidSinkTile extends BlockEntity implements IRenderBlockData {
 		this.fluidhandler = LazyOptional.of(() -> tank);
 	}
 
-	protected class FluidSink implements IFluidHandler {
+	public static class FluidSink implements IFluidHandler {
 
 		protected FluidSink() {}
 

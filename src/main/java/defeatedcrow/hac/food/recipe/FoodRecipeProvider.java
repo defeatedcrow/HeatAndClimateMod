@@ -1506,6 +1506,19 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_residues", has(TagDC.ItemTag.RESIDUES))
 				.save(cons, "dcs_climate:food/craft_bio_briquet_raw");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_LOG_RAW_BRIQUET.get(), 2)
+				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
+				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
+				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
+				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
+				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
+				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
+				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
+				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
+				.requires(Ingredient.of(TagDC.ItemTag.DUST_ALKALI))
+				.unlockedBy("has_residues", has(TagDC.ItemTag.RESIDUES))
+				.save(cons, "dcs_climate:food/craft_cont_briquet_raw");
+
 		ShapelessRecipeBuilder.shapeless(Blocks.DIRT, 1)
 				.requires(Ingredient.of(TagDC.ItemTag.LEAF_MOLD))
 				.requires(Ingredient.of(ItemTags.SAND))
@@ -1733,7 +1746,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.save(cons, "dcs_climate:food/foodmaterial_pack_sparkling");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_PLANT_OIL.get(), 4)
-				.requires(Ingredient.of(CoreInit.SPARKLING.getBucket().get()))
+				.requires(Ingredient.of(CoreInit.PLANT_OIL.getBucket().get()))
 				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
 				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
 				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
@@ -1972,10 +1985,14 @@ public class FoodRecipeProvider extends RecipeProvider {
 		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.CROP_TEA), FoodInit.GREEN_TEA_LEAVES.get(), 200, "crop_tea", FoodInit.GREEN_TEA_LEAVES.get(), "has_crop_tea");
 		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.PALM_FLOWER), FoodInit.FOOD_SYRUP.get(), 200, "palm_syrup", FoodInit.FOOD_PALM_FLOWER.get(), "has_flower_palm");
 		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.SAP_SWEET), FoodInit.FOOD_SYRUP.get(), 200, "sap_syrup", FoodInit.SAP_SWEET.get(), "has_sweet_sap");
+		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_POTATO), FoodInit.CONT_CROP_BAKED_POTATO.get(), 200, "cont_baked_potato", FoodInit.CONT_CROP_POTATO.get(), "has_cont_potato");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LEAVES), FoodInit.DUST_ASH.get(), 200, "dust_ash1", FoodInit.CONT_LEAVES.get(), "has_cont_leaves");
 		smokingRecipe(cons, Ingredient.of(TagDC.ItemTag.RAW_SAUSAGE), FoodInit.SMOKED_SAUSAGE.get(), 200, "smoked_sausage", FoodInit.RAW_SAUSAGE.get(), "has_raw_sausage");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LOGS), FoodInit.CONT_LOG_CHARCOAL.get(), 200, "charcoal_container", TagDC.ItemTag.CONT_LOGS, "has_log_cont");
 		smeltingRecipe(cons, Ingredient.of(FoodInit.BIOMASS_PELLET.get()), FoodInit.BIOMASS_BRIQUET.get(), 200, "biomass_briquet", FoodInit.BIOMASS_PELLET.get(), "has_biomass_pellet");
+		smeltingRecipe(cons, Ingredient.of(FoodInit.CONT_LOG_RAW_BRIQUET.get()), FoodInit.CONT_LOG_BRIQUET.get(), 200, "container_briquet", FoodInit.CONT_LOG_RAW_BRIQUET.get(),
+				"has_container_pellet");
+		smeltingRecipe(cons, Ingredient.of(FoodInit.CONT_DUST_PLANT.get()), FoodInit.CONT_ASH.get(), 200, "container_ash", FoodInit.CONT_DUST_PLANT.get(), "has_container_plant");
 	}
 
 	private static void cookingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, ItemLike output, int time, String name, ItemLike unlockTarget, String unlockName) {

@@ -97,6 +97,38 @@ public class TagDC {
 		public static final TagKey<Block> METALBLOCK_BSCCO = blockTag("storage_blocks/bscco");
 		public static final TagKey<Block> BLOCK_RUBBER = blockTag("storage_blocks/rubber");
 
+		public static final TagKey<Block> GEMBLOCK_CHALCEDONY = blockTag("storage_blocks/chalcedony");
+		public static final TagKey<Block> GEMBLOCK_CRYSTAL = blockTag("storage_blocks/crystal");
+		public static final TagKey<Block> GEMBLOCK_THUNDEREGG = blockTag("storage_blocks/thunder_egg");
+		public static final TagKey<Block> GEMBLOCK_CATSEYE = blockTag("storage_blocks/cats_eye");
+		public static final TagKey<Block> GEMBLOCK_CELESTITE = blockTag("storage_blocks/celestite");
+		public static final TagKey<Block> GEMBLOCK_SAPPHIRE = blockTag("storage_blocks/sapphire");
+		public static final TagKey<Block> GEMBLOCK_VIVIANITE = blockTag("storage_blocks/vivianite");
+		public static final TagKey<Block> GEMBLOCK_FANG = blockTag("storage_blocks/fang");
+		public static final TagKey<Block> GEMBLOCK_DRAGONSEYE = blockTag("storage_blocks/dragons_eye");
+		public static final TagKey<Block> GEMBLOCK_JASPER = blockTag("storage_blocks/jasper");
+		public static final TagKey<Block> GEMBLOCK_ALMANDINE = blockTag("storage_blocks/almandine");
+		public static final TagKey<Block> GEMBLOCK_RUBY = blockTag("storage_blocks/ruby");
+		public static final TagKey<Block> GEMBLOCK_MALACHITE = blockTag("storage_blocks/malachite");
+		public static final TagKey<Block> GEMBLOCK_OLIVINE = blockTag("storage_blocks/olivine");
+		public static final TagKey<Block> GEMBLOCK_FLUORITE = blockTag("storage_blocks/fluorite");
+		public static final TagKey<Block> GEMBLOCK_JET = blockTag("storage_blocks/jet");
+		public static final TagKey<Block> GEMBLOCK_DESERTROSE = blockTag("storage_blocks/desertrose");
+		public static final TagKey<Block> GEMBLOCK_SERPENTINE = blockTag("storage_blocks/serpentine");
+		public static final TagKey<Block> GEMBLOCK_HELIODOR = blockTag("storage_blocks/heliodor");
+		public static final TagKey<Block> GEMBLOCK_TOPAZ = blockTag("storage_blocks/topaz");
+		public static final TagKey<Block> GEMBLOCK_LARIMAR = blockTag("storage_blocks/larimar");
+		public static final TagKey<Block> GEMBLOCK_AQUAMARINE = blockTag("storage_blocks/aquamarine");
+		public static final TagKey<Block> GEMBLOCK_IOLITE = blockTag("storage_blocks/iolite");
+		public static final TagKey<Block> GEMBLOCK_SAKURA = blockTag("storage_blocks/sakura");
+		public static final TagKey<Block> GEMBLOCK_KUNZITE = blockTag("storage_blocks/kunzite");
+		public static final TagKey<Block> GEMBLOCK_OPAL = blockTag("storage_blocks/opal");
+		public static final TagKey<Block> GEMBLOCK_ROSINCA = blockTag("storage_blocks/rosinca");
+		public static final TagKey<Block> GEMBLOCK_SPINEL = blockTag("storage_blocks/spinel");
+		public static final TagKey<Block> GEMBLOCK_AMAZONITE = blockTag("storage_blocks/amazonite");
+		public static final TagKey<Block> GEMBLOCK_JADEITE = blockTag("storage_blocks/jadeite");
+		public static final TagKey<Block> GEMBLOCK_DEMANTOID = blockTag("storage_blocks/demantoid");
+
 		public static final TagKey<Block> CONT_LEAVES = blockTag("storage_blocks/leaves");
 		public static final TagKey<Block> CONT_LOGS = blockTag("storage_blocks/logs");
 		public static final TagKey<Block> CONT_CHARCOAL = blockTag("storage_blocks/charcoal");
@@ -147,34 +179,6 @@ public class TagDC {
 		public static final TagKey<Block> HOPPER_FILTER = BlockTags.create(new ResourceLocation("dcs_climate", "hoppers/filter_hopper"));
 
 		public static final TagKey<Block> NOT_LOOF = BlockTags.create(new ResourceLocation("dcs_climate", "not_loof_blocks"));
-
-		// public static final TagKey<Block> HEAT_TIER = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier"));
-		// public static final TagKey<Block> ABSOLUTE = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/absolute"));
-		// public static final TagKey<Block> CRYOGENIC = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/cryogenic"));
-		// public static final TagKey<Block> FROSTBITE = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/frostbite"));
-		// public static final TagKey<Block> COLD = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/cold"));
-		// public static final TagKey<Block> COOL = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/cool"));
-		// public static final TagKey<Block> NORMAL = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/normal"));
-		// public static final TagKey<Block> WARM = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/warm"));
-		// public static final TagKey<Block> HOT = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/hot"));
-		// public static final TagKey<Block> BOIL = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/boil"));
-		// public static final TagKey<Block> OVEN = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/oven"));
-		// public static final TagKey<Block> KILN = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/kiln"));
-		// public static final TagKey<Block> SMELTING = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/smelting"));
-		// public static final TagKey<Block> UHT = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/uht"));
-		// public static final TagKey<Block> INFERNO = BlockTags.create(new ResourceLocation("dcs_climate", "climate_heat_tier/inferno"));
-		//
-		// public static final TagKey<Block> HUMIDITY = BlockTags.create(new ResourceLocation("dcs_climate", "climate_humidity"));
-		// public static final TagKey<Block> DRY = BlockTags.create(new ResourceLocation("dcs_climate", "climate_humidity/dry"));
-		// public static final TagKey<Block> NORMAL_HUM = BlockTags.create(new ResourceLocation("dcs_climate", "climate_humidity/normal"));
-		// public static final TagKey<Block> WET = BlockTags.create(new ResourceLocation("dcs_climate", "climate_humidity/wet"));
-		// public static final TagKey<Block> UNDERWATER = BlockTags.create(new ResourceLocation("dcs_climate", "climate_humidity/underwater"));
-		//
-		// public static final TagKey<Block> AIRFLOW = BlockTags.create(new ResourceLocation("dcs_climate", "climate_airflow"));
-		// public static final TagKey<Block> TIGHT = BlockTags.create(new ResourceLocation("dcs_climate", "climate_airflow/tight"));
-		// public static final TagKey<Block> NORMAL_AIR = BlockTags.create(new ResourceLocation("dcs_climate", "climate_airflow/normal"));
-		// public static final TagKey<Block> FLOW = BlockTags.create(new ResourceLocation("dcs_climate", "climate_airflow/flow"));
-		// public static final TagKey<Block> WIND = BlockTags.create(new ResourceLocation("dcs_climate", "climate_airflow/wind"));
 
 		private static TagKey<Block> blockTag(String name) {
 			return BlockTags.create(new ResourceLocation("forge", name));
@@ -360,6 +364,38 @@ public class TagDC {
 		public static final TagKey<Item> GEM_SULFUR = itemTag("gems/sulfur");
 		public static final TagKey<Item> GEM_COAL = itemTag("gems/coal");
 		public static final TagKey<Item> GEM_FLINT = itemTag("gems/flint");
+
+		public static final TagKey<Item> GEMBLOCK_CHALCEDONY = itemTag("storage_blocks/chalcedony");
+		public static final TagKey<Item> GEMBLOCK_CRYSTAL = itemTag("storage_blocks/crystal");
+		public static final TagKey<Item> GEMBLOCK_THUNDEREGG = itemTag("storage_blocks/thunder_egg");
+		public static final TagKey<Item> GEMBLOCK_CATSEYE = itemTag("storage_blocks/cats_eye");
+		public static final TagKey<Item> GEMBLOCK_CELESTITE = itemTag("storage_blocks/celestite");
+		public static final TagKey<Item> GEMBLOCK_SAPPHIRE = itemTag("storage_blocks/sapphire");
+		public static final TagKey<Item> GEMBLOCK_VIVIANITE = itemTag("storage_blocks/vivianite");
+		public static final TagKey<Item> GEMBLOCK_FANG = itemTag("storage_blocks/fang");
+		public static final TagKey<Item> GEMBLOCK_DRAGONSEYE = itemTag("storage_blocks/dragons_eye");
+		public static final TagKey<Item> GEMBLOCK_JASPER = itemTag("storage_blocks/jasper");
+		public static final TagKey<Item> GEMBLOCK_ALMANDINE = itemTag("storage_blocks/almandine");
+		public static final TagKey<Item> GEMBLOCK_RUBY = itemTag("storage_blocks/ruby");
+		public static final TagKey<Item> GEMBLOCK_MALACHITE = itemTag("storage_blocks/malachite");
+		public static final TagKey<Item> GEMBLOCK_OLIVINE = itemTag("storage_blocks/olivine");
+		public static final TagKey<Item> GEMBLOCK_FLUORITE = itemTag("storage_blocks/fluorite");
+		public static final TagKey<Item> GEMBLOCK_JET = itemTag("storage_blocks/jet");
+		public static final TagKey<Item> GEMBLOCK_DESERTROSE = itemTag("storage_blocks/desertrose");
+		public static final TagKey<Item> GEMBLOCK_SERPENTINE = itemTag("storage_blocks/serpentine");
+		public static final TagKey<Item> GEMBLOCK_HELIODOR = itemTag("storage_blocks/heliodor");
+		public static final TagKey<Item> GEMBLOCK_TOPAZ = itemTag("storage_blocks/topaz");
+		public static final TagKey<Item> GEMBLOCK_LARIMAR = itemTag("storage_blocks/larimar");
+		public static final TagKey<Item> GEMBLOCK_AQUAMARINE = itemTag("storage_blocks/aquamarine");
+		public static final TagKey<Item> GEMBLOCK_IOLITE = itemTag("storage_blocks/iolite");
+		public static final TagKey<Item> GEMBLOCK_SAKURA = itemTag("storage_blocks/sakura");
+		public static final TagKey<Item> GEMBLOCK_KUNZITE = itemTag("storage_blocks/kunzite");
+		public static final TagKey<Item> GEMBLOCK_OPAL = itemTag("storage_blocks/opal");
+		public static final TagKey<Item> GEMBLOCK_ROSINCA = itemTag("storage_blocks/rosinca");
+		public static final TagKey<Item> GEMBLOCK_SPINEL = itemTag("storage_blocks/spinel");
+		public static final TagKey<Item> GEMBLOCK_AMAZONITE = itemTag("storage_blocks/amazonite");
+		public static final TagKey<Item> GEMBLOCK_JADEITE = itemTag("storage_blocks/jadeite");
+		public static final TagKey<Item> GEMBLOCK_DEMANTOID = itemTag("storage_blocks/demantoid");
 
 		public static final TagKey<Item> ALL_WILD = itemHaCTag("crops/wild");
 		public static final TagKey<Item> ALL_COMMON = itemHaCTag("crops/common");
@@ -928,8 +964,12 @@ public class TagDC {
 		public static final TagKey<Item> CONT_WASTE = itemTag("storage_blocks/wastes");
 		public static final TagKey<Item> CONT_LOGS = itemTag("storage_blocks/logs");
 		public static final TagKey<Item> CONT_CHARCOAL = itemTag("storage_blocks/charcoal");
+		public static final TagKey<Item> CONT_RAW_BRIQUET = itemTag("storage_blocks/raw_briquet");
+		public static final TagKey<Item> CONT_BRIQUET = itemTag("storage_blocks/briquet");
 		public static final TagKey<Item> CONT_CROPS = itemTag("storage_blocks/crops");
 		public static final TagKey<Item> CONT_WAX = itemTag("storage_blocks/wax");
+		public static final TagKey<Item> CONT_RESIDUES = itemTag("storage_blocks/residues");
+		public static final TagKey<Item> CONT_ASH = itemTag("storage_blocks/ash");
 
 		public static final TagKey<Item> CONT_APPLE = itemTag("storage_blocks/crops/apple");
 		public static final TagKey<Item> CONT_CARROT = itemTag("storage_blocks/crops/carrot");
@@ -941,6 +981,27 @@ public class TagDC {
 		public static final TagKey<Item> CONT_SUGARCANE = itemTag("storage_blocks/crops/sugarcane");
 		public static final TagKey<Item> CONT_COCOA = itemTag("storage_blocks/crops/cocoa");
 		public static final TagKey<Item> CONT_BUSHBERRY = itemTag("storage_blocks/crops/bushberry");
+		public static final TagKey<Item> CONT_GLOWBERRY = itemTag("storage_blocks/crops/glowberry");
+		public static final TagKey<Item> CONT_BAKED_POTATO = itemTag("storage_blocks/crops/baked_potato");
+
+		public static final TagKey<Item> CONT_BEEF = itemTag("storage_blocks/beef");
+		public static final TagKey<Item> CONT_PORK = itemTag("storage_blocks/pork");
+		public static final TagKey<Item> CONT_CHICKEN = itemTag("storage_blocks/chicken");
+		public static final TagKey<Item> CONT_MUTTON = itemTag("storage_blocks/mutton");
+		public static final TagKey<Item> CONT_RABBIT = itemTag("storage_blocks/rabbit");
+		public static final TagKey<Item> CONT_FROG = itemTag("storage_blocks/frog");
+		public static final TagKey<Item> CONT_EGG = itemTag("storage_blocks/egg");
+		public static final TagKey<Item> CONT_WOOL = itemTag("storage_blocks/wool");
+
+		public static final TagKey<Item> CONT_LEATHER = itemTag("storage_blocks/leather");
+		public static final TagKey<Item> CONT_FUR = itemTag("storage_blocks/fur");
+		public static final TagKey<Item> CONT_FEATHER = itemTag("storage_blocks/feather");
+		public static final TagKey<Item> CONT_ROTTEN = itemTag("storage_blocks/rotten");
+		public static final TagKey<Item> CONT_BONE = itemTag("storage_blocks/bone");
+		public static final TagKey<Item> CONT_POWDER = itemTag("storage_blocks/powder");
+		public static final TagKey<Item> CONT_SPIDER_EYE = itemTag("storage_blocks/spider_eye");
+		public static final TagKey<Item> CONT_ENDER = itemTag("storage_blocks/ender_pearl");
+		public static final TagKey<Item> CONT_BLAZE = itemTag("storage_blocks/blaze_rod");
 
 		public static final TagKey<Item> CONT_BEESWAX = itemTag("storage_blocks/beeswax");
 		public static final TagKey<Item> CONT_TREEWAX = itemTag("storage_blocks/treewax");
@@ -1020,6 +1081,8 @@ public class TagDC {
 		public static final TagKey<Item> BUILDING_CHISELED = itemHaCTag("building_stones/chiseled");
 		public static final TagKey<Item> BUILDING_LINOLEUM = itemHaCTag("building_stones/linoleum");
 
+		public static final TagKey<Item> ALMINUM_LOUVERS = itemHaCTag("metal_louvers");
+		public static final TagKey<Item> ALMINUM_WINDOWS = itemHaCTag("metal_windows");
 		public static final TagKey<Item> ALMINUM_ROOFS = itemHaCTag("metal_roofs");
 
 		public static final TagKey<Item> DIRT_SLABS = itemHaCTag("dirt_slab");

@@ -235,7 +235,7 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(TagDC.BlockTag.CONT_CROPS).add(FoodInit.CONT_CROP_APPLE.get(), FoodInit.CONT_CROP_CARROT.get(), FoodInit.CONT_CROP_POTATO.get(),
 				FoodInit.CONT_CROP_BEET.get(), FoodInit.CONT_CROP_PUMPKIN.get(), FoodInit.CONT_CROP_MELON.get(), FoodInit.CONT_CROP_CACTUS.get(),
-				FoodInit.CONT_CROP_COCOA.get(), FoodInit.CONT_CROP_SUGARCANE.get(), FoodInit.CONT_CROP_BUSHBERRY.get());
+				FoodInit.CONT_CROP_COCOA.get(), FoodInit.CONT_CROP_SUGARCANE.get(), FoodInit.CONT_CROP_BUSHBERRY.get(), FoodInit.CONT_CROP_GLOWBERRY.get());
 
 		tag(TagDC.BlockTag.CONT_WAX).add(FoodInit.CONT_BEESWAX.get(), FoodInit.CONT_TREEWAX.get());
 

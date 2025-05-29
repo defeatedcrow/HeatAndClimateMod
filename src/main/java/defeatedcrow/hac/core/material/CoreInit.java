@@ -629,6 +629,38 @@ public class CoreInit {
 	public static final RegistryObject<Block> METAL_HASTELLOY_COOLING = regBlock("metal_hastelloy_cooling", () -> new AlloyHeatTreatmentBlock("metal_hastelloy_cooling", 2, false), null);
 	public static final RegistryObject<Block> METAL_HASTELLOY_FAIL = regBlock("metal_hastelloy_fail", () -> new AlloyHeatTreatmentBlock("metal_hastelloy_fail", 0, false), null);
 
+	public static final RegistryObject<Block> GEMBLOCK_CHALCEDONY = regBlock("gemblock_chalcedony", () -> new MetalBlockDC("gemblock_chalcedony"), TagDC.ItemTag.GEMBLOCK_CHALCEDONY);
+	public static final RegistryObject<Block> GEMBLOCK_CRYSTAL = regBlock("gemblock_crystal", () -> new MetalBlockDC("gemblock_crystal"), TagDC.ItemTag.GEMBLOCK_CRYSTAL);
+	public static final RegistryObject<Block> GEMBLOCK_HELIODOR = regBlock("gemblock_heliodor", () -> new MetalBlockDC("gemblock_heliodor"), TagDC.ItemTag.GEMBLOCK_HELIODOR);
+	public static final RegistryObject<Block> GEMBLOCK_THUNDEREGG = regBlock("gemblock_thunderegg", () -> new MetalBlockDC("gemblock_thunderegg"), TagDC.ItemTag.GEMBLOCK_THUNDEREGG);
+	public static final RegistryObject<Block> GEMBLOCK_TOPAZ = regBlock("gemblock_topaz", () -> new MetalBlockDC("gemblock_topaz"), TagDC.ItemTag.GEMBLOCK_TOPAZ);
+	public static final RegistryObject<Block> GEMBLOCK_CATSEYE = regBlock("gemblock_catseye", () -> new MetalBlockDC("gemblock_catseye"), TagDC.ItemTag.GEMBLOCK_CATSEYE);
+	public static final RegistryObject<Block> GEMBLOCK_FLUORITE = regBlock("gemblock_fluorite", () -> new MetalBlockDC("gemblock_fluorite"), TagDC.ItemTag.GEMBLOCK_FLUORITE);
+	public static final RegistryObject<Block> GEMBLOCK_LARIMAR = regBlock("gemblock_larimar", () -> new MetalBlockDC("gemblock_larimar"), TagDC.ItemTag.GEMBLOCK_LARIMAR);
+	public static final RegistryObject<Block> GEMBLOCK_CELESTITE = regBlock("gemblock_celestite", () -> new MetalBlockDC("gemblock_celestite"), TagDC.ItemTag.GEMBLOCK_CELESTITE);
+	public static final RegistryObject<Block> GEMBLOCK_AQUAMARINE = regBlock("gemblock_aquamarine", () -> new MetalBlockDC("gemblock_aquamarine"), TagDC.ItemTag.GEMBLOCK_AQUAMARINE);
+	public static final RegistryObject<Block> GEMBLOCK_SAPPHIRE = regBlock("gemblock_sapphire", () -> new MetalBlockDC("gemblock_sapphire"), TagDC.ItemTag.GEMBLOCK_SAPPHIRE);
+	public static final RegistryObject<Block> GEMBLOCK_JET = regBlock("gemblock_jet", () -> new MetalBlockDC("gemblock_jet"), TagDC.ItemTag.GEMBLOCK_JET);
+	public static final RegistryObject<Block> GEMBLOCK_VIVIANITE = regBlock("gemblock_vivianite", () -> new MetalBlockDC("gemblock_vivianite"), TagDC.ItemTag.GEMBLOCK_VIVIANITE);
+	public static final RegistryObject<Block> GEMBLOCK_IOLITE = regBlock("gemblock_iolite", () -> new MetalBlockDC("gemblock_iolite"), TagDC.ItemTag.GEMBLOCK_IOLITE);
+	public static final RegistryObject<Block> GEMBLOCK_SAKURA = regBlock("gemblock_sakura", () -> new MetalBlockDC("gemblock_sakura"), TagDC.ItemTag.GEMBLOCK_SAKURA);
+	public static final RegistryObject<Block> GEMBLOCK_FANG = regBlock("gemblock_fang", () -> new MetalBlockDC("gemblock_fang"), TagDC.ItemTag.GEMBLOCK_FANG);
+	public static final RegistryObject<Block> GEMBLOCK_KUNZITE = regBlock("gemblock_kunzite", () -> new MetalBlockDC("gemblock_kunzite"), TagDC.ItemTag.GEMBLOCK_KUNZITE);
+	public static final RegistryObject<Block> GEMBLOCK_OPAL = regBlock("gemblock_opal", () -> new MetalBlockDC("gemblock_opal"), TagDC.ItemTag.GEMBLOCK_OPAL);
+	public static final RegistryObject<Block> GEMBLOCK_DRAGONSEYE = regBlock("gemblock_dragonseye", () -> new MetalBlockDC("gemblock_dragonseye"), TagDC.ItemTag.GEMBLOCK_DRAGONSEYE);
+	public static final RegistryObject<Block> GEMBLOCK_DESERTROSE = regBlock("gemblock_desertrose", () -> new MetalBlockDC("gemblock_desertrose"), TagDC.ItemTag.GEMBLOCK_DESERTROSE);
+	public static final RegistryObject<Block> GEMBLOCK_JASPER = regBlock("gemblock_jasper", () -> new MetalBlockDC("gemblock_jasper"), TagDC.ItemTag.GEMBLOCK_JASPER);
+	public static final RegistryObject<Block> GEMBLOCK_ROSINCA = regBlock("gemblock_rosinca", () -> new MetalBlockDC("gemblock_rosinca"), TagDC.ItemTag.GEMBLOCK_ROSINCA);
+	public static final RegistryObject<Block> GEMBLOCK_ALMANDINE = regBlock("gemblock_almandine", () -> new MetalBlockDC("gemblock_almandine"), TagDC.ItemTag.GEMBLOCK_ALMANDINE);
+	public static final RegistryObject<Block> GEMBLOCK_SPINEL = regBlock("gemblock_spinel", () -> new MetalBlockDC("gemblock_spinel"), TagDC.ItemTag.GEMBLOCK_SPINEL);
+	public static final RegistryObject<Block> GEMBLOCK_RUBY = regBlock("gemblock_ruby", () -> new MetalBlockDC("gemblock_ruby"), TagDC.ItemTag.GEMBLOCK_RUBY);
+	public static final RegistryObject<Block> GEMBLOCK_SERPENTINE = regBlock("gemblock_serpentine", () -> new MetalBlockDC("gemblock_serpentine"), TagDC.ItemTag.GEMBLOCK_SERPENTINE);
+	public static final RegistryObject<Block> GEMBLOCK_MALACHITE = regBlock("gemblock_malachite", () -> new MetalBlockDC("gemblock_malachite"), TagDC.ItemTag.GEMBLOCK_MALACHITE);
+	public static final RegistryObject<Block> GEMBLOCK_AMAZONITE = regBlock("gemblock_amazonite", () -> new MetalBlockDC("gemblock_amazonite"), TagDC.ItemTag.GEMBLOCK_AMAZONITE);
+	public static final RegistryObject<Block> GEMBLOCK_OLIVINE = regBlock("gemblock_olivine", () -> new MetalBlockDC("gemblock_olivine"), TagDC.ItemTag.GEMBLOCK_OLIVINE);
+	public static final RegistryObject<Block> GEMBLOCK_JADEITE = regBlock("gemblock_jadeite", () -> new MetalBlockDC("gemblock_jadeite"), TagDC.ItemTag.GEMBLOCK_JADEITE);
+	public static final RegistryObject<Block> GEMBLOCK_DEMANTOID = regBlock("gemblock_demantoid", () -> new MetalBlockDC("gemblock_demantoid"), TagDC.ItemTag.GEMBLOCK_DEMANTOID);
+
 	public static final RegistryObject<Block> DUSTBLOCK_RUBBER = regBlock("dustblock_rubber", () -> new AlloyDustBlockDC("dustblock_rubber"), TagDC.ItemTag.DUSTBLOCK_RUBBER);
 	public static final RegistryObject<Block> BLOCK_RUBBER = regBlock("block_rubber", () -> new MetalBlockDC("block_rubber"), TagDC.ItemTag.BLOCK_RUBBER);
 

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "tag": "dcs_climate:metal_windows"
+  },
+  "result": "dcs_climate:main/ingot_aluminum"
+}

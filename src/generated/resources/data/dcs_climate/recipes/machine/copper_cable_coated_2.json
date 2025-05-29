@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:machine/cable_copper"
+    },
+    {
+      "tag": "forge:clothes/rubber"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:machine/cable_copper_coated"
+  }
+}

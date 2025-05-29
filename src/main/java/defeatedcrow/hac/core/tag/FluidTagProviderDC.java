@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Nullable;
 import defeatedcrow.hac.core.material.CoreInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.FluidTagsProvider;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -26,10 +27,12 @@ public class FluidTagProviderDC extends FluidTagsProvider {
 		tag(TagDC.FluidTag.FUEL).add(CoreInit.FUEL_OIL.getStillFluid().get());
 		tag(TagDC.FluidTag.AIR).add(Fluids.EMPTY, CoreInit.AIR.getStillFluid().get());
 
-		tag(TagDC.FluidTag.ALL_WATER).add(Fluids.WATER, CoreInit.BRINE.getStillFluid().get(),
-				CoreInit.HOTSPRING.getStillFluid().get(), CoreInit.SPARKLING.getStillFluid().get());
+		tag(TagDC.FluidTag.ALL_WATER).add(CoreInit.BRINE.getStillFluid().get(),
+				CoreInit.HOTSPRING.getStillFluid().get(), CoreInit.SPARKLING.getStillFluid().get())
+				.addTag(FluidTags.WATER);
 
-		tag(TagDC.FluidTag.DRINK_WATER).add(Fluids.WATER, CoreInit.SPARKLING.getStillFluid().get());
+		tag(TagDC.FluidTag.DRINK_WATER).add(CoreInit.SPARKLING.getStillFluid().get())
+				.addTag(FluidTags.WATER);
 
 		tag(TagDC.FluidTag.ALL_MILK).add(ForgeMod.MILK.get());
 

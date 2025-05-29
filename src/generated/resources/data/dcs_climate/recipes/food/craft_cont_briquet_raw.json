@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/residues"
+    },
+    {
+      "tag": "forge:storage_blocks/residues"
+    },
+    {
+      "tag": "forge:storage_blocks/residues"
+    },
+    {
+      "tag": "forge:storage_blocks/residues"
+    },
+    {
+      "tag": "forge:storage_blocks/residues"
+    },
+    {
+      "tag": "forge:storage_blocks/residues"
+    },
+    {
+      "tag": "forge:storage_blocks/residues"
+    },
+    {
+      "tag": "forge:storage_blocks/residues"
+    },
+    {
+      "tag": "forge:dusts/alkali"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "dcs_climate:container/logcont_raw_briquet"
+  }
+}

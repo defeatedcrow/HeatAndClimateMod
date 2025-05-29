@@ -16,6 +16,7 @@ import defeatedcrow.hac.food.material.block.FertileBlock;
 import defeatedcrow.hac.food.material.block.FertileBlockTile;
 import defeatedcrow.hac.food.material.block.FertilePlanterBlock;
 import defeatedcrow.hac.food.material.block.LeafMoldBlock;
+import defeatedcrow.hac.food.material.block.containers.CardboardContBlock;
 import defeatedcrow.hac.food.material.block.containers.CropContBlock;
 import defeatedcrow.hac.food.material.block.containers.LeavesContBlock;
 import defeatedcrow.hac.food.material.block.containers.LogContBlock;
@@ -607,10 +608,10 @@ public class FoodInit {
 
 	// 揚げ物
 	public static final RegistryObject<Item> TEMPURA_VEGI = regItem("tempura_vegi", () -> new TempuraVegiItem("tempura_vegi", 6, 0.3F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> TEMPURA_PRAWN = regItem("tempura_prawn", () -> new TempuraPrawnItem("tempura_prawn", 6, 0.3F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> TEMPURA_UMESISO = regItem("tempura_umesiso", () -> new TempuraIkatenItem("tempura_umesiso", 6, 0.3F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> TEMPURA_IKATEN = regItem("tempura_ikaten", () -> new TempuraIkatenItem("tempura_ikaten", 6, 0.3F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> TEMPURA_FISH = regItem("tempura_fish", () -> new TempuraFishItem("tempura_fish", 6, 0.3F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> TEMPURA_PRAWN = regItem("tempura_prawn", () -> new TempuraPrawnItem("tempura_prawn", 10, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> TEMPURA_UMESISO = regItem("tempura_umesiso", () -> new TempuraIkatenItem("tempura_umesiso", 11, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> TEMPURA_IKATEN = regItem("tempura_ikaten", () -> new TempuraIkatenItem("tempura_ikaten", 9, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> TEMPURA_FISH = regItem("tempura_fish", () -> new TempuraFishItem("tempura_fish", 8, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
 
 	public static final RegistryObject<Item> DEEPFRY_TONKATSU = regItem("deepfry_tonkatsu",
 			() -> new DeepfryTonkatsuItem("deepfry_tonkatsu", 13, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
@@ -1292,6 +1293,15 @@ public class FoodInit {
 
 	public static final RegistryObject<Block> DUMMY_DIANTHUS = regBlock("dummy_dianthus", () -> new DummyDianthusBlock(), null);
 
+	public static final RegistryObject<Block> CONT_DEFATTED_SOY = regCont("container_defatted_soy", () -> new LeafMoldBlock("container_defatted_soy"), TagDC.ItemTag.CONT_RESIDUES);
+	public static final RegistryObject<Block> CONT_PRESS_CAKE = regCont("container_press_cake", () -> new LeafMoldBlock("container_press_cake"), TagDC.ItemTag.CONT_RESIDUES);
+	public static final RegistryObject<Block> CONT_BRAN = regCont("container_bran", () -> new LeafMoldBlock("container_bran"), TagDC.ItemTag.CONT_RESIDUES);
+	public static final RegistryObject<Block> CONT_GERM = regCont("container_germ", () -> new LeafMoldBlock("container_germ"), TagDC.ItemTag.CONT_RESIDUES);
+	public static final RegistryObject<Block> CONT_BAGASSE = regCont("container_bagasse", () -> new LeafMoldBlock("container_bagasse"), TagDC.ItemTag.CONT_RESIDUES);
+	public static final RegistryObject<Block> CONT_DUST_WOOD = regCont("container_dust_wood", () -> new LeafMoldBlock("container_dust_wood"), TagDC.ItemTag.CONT_RESIDUES);
+	public static final RegistryObject<Block> CONT_DUST_PLANT = regCont("container_dust_plant", () -> new LeafMoldBlock("container_dust_plant"), TagDC.ItemTag.CONT_RESIDUES);
+	public static final RegistryObject<Block> CONT_ASH = regCont("container_ash", () -> new LeafMoldBlock("container_ash"), TagDC.ItemTag.CONT_ASH);
+
 	public static final RegistryObject<Block> CONT_LEAVES = regCont("container_leaves", () -> new LeavesContBlock("container_leaves"), TagDC.ItemTag.CONT_LEAVES);
 	public static final RegistryObject<Block> CONT_WASTE = regCont("container_plant_wastes", () -> new LeavesContBlock("container_plant_wastes"), TagDC.ItemTag.CONT_LEAVES);
 	public static final RegistryObject<Block> CONT_LEAF_MOLD = regCont("container_leaf_mold", () -> new LeafMoldBlock("container_leaf_mold"), null);
@@ -1326,6 +1336,8 @@ public class FoodInit {
 	public static final RegistryObject<Block> CONT_LOG_SU_MANGO = regCont("logcont_sumac_mango", () -> new LogContBlock("sumac_mango"), TagDC.ItemTag.CONT_LOGS);
 
 	public static final RegistryObject<Block> CONT_LOG_CHARCOAL = regCont("logcont_charcoal", () -> new LogContBlock("charcoal"), TagDC.ItemTag.CONT_CHARCOAL);
+	public static final RegistryObject<Block> CONT_LOG_BRIQUET = regCont("logcont_briquet", () -> new LogContBlock("briquet"), TagDC.ItemTag.CONT_BRIQUET);
+	public static final RegistryObject<Block> CONT_LOG_RAW_BRIQUET = regCont("logcont_raw_briquet", () -> new LogContBlock("raw_briquet"), TagDC.ItemTag.CONT_RAW_BRIQUET);
 
 	public static final RegistryObject<Block> CONT_CROP_APPLE = regCont("woodbox_apple", () -> new CropContBlock("woodbox", "apple"), TagDC.ItemTag.CONT_APPLE);
 	public static final RegistryObject<Block> CONT_CROP_CARROT = regCont("woodbox_carrot", () -> new CropContBlock("woodbox", "carrot"), TagDC.ItemTag.CONT_CARROT);
@@ -1337,6 +1349,26 @@ public class FoodInit {
 	public static final RegistryObject<Block> CONT_CROP_SUGARCANE = regCont("woodbox_sugarcane", () -> new CropContBlock("woodbox", "sugarcane"), TagDC.ItemTag.CONT_SUGARCANE);
 	public static final RegistryObject<Block> CONT_CROP_COCOA = regCont("woodbox_cocoa", () -> new CropContBlock("woodbox", "cocoa"), TagDC.ItemTag.CONT_COCOA);
 	public static final RegistryObject<Block> CONT_CROP_BUSHBERRY = regCont("woodbox_bushberry", () -> new CropContBlock("woodbox", "bushberry"), TagDC.ItemTag.CONT_BUSHBERRY);
+	public static final RegistryObject<Block> CONT_CROP_GLOWBERRY = regCont("woodbox_glowberry", () -> new CropContBlock("woodbox", "glowberry"), TagDC.ItemTag.CONT_GLOWBERRY);
+	public static final RegistryObject<Block> CONT_CROP_BAKED_POTATO = regCont("burntbox_baked_potato", () -> new CropContBlock("burntbox", "baked_potato"), TagDC.ItemTag.CONT_BAKED_POTATO);
+
+	public static final RegistryObject<Block> CARDBOARD_BEEF = regCont("cardboard_beef", () -> new CardboardContBlock("cardboard", "beef"), TagDC.ItemTag.CONT_BEEF);
+	public static final RegistryObject<Block> CARDBOARD_PORK = regCont("cardboard_pork", () -> new CardboardContBlock("cardboard", "pork"), TagDC.ItemTag.CONT_PORK);
+	public static final RegistryObject<Block> CARDBOARD_CHICKEN = regCont("cardboard_chicken", () -> new CardboardContBlock("cardboard", "chicken"), TagDC.ItemTag.CONT_CHICKEN);
+	public static final RegistryObject<Block> CARDBOARD_MUTTON = regCont("cardboard_mutton", () -> new CardboardContBlock("cardboard", "mutton"), TagDC.ItemTag.CONT_MUTTON);
+	public static final RegistryObject<Block> CARDBOARD_RABBIT = regCont("cardboard_rabbit", () -> new CardboardContBlock("cardboard", "rabbit"), TagDC.ItemTag.CONT_RABBIT);
+	public static final RegistryObject<Block> CARDBOARD_EGG = regCont("cardboard_egg", () -> new CardboardContBlock("cardboard", "egg"), TagDC.ItemTag.CONT_EGG);
+	public static final RegistryObject<Block> CARDBOARD_WOOL = regCont("cardboard_wool", () -> new CardboardContBlock("cardboard", "wool"), TagDC.ItemTag.CONT_WOOL);
+
+	public static final RegistryObject<Block> CONT_DROP_LEATHER = regCont("metalbox_leather", () -> new CropContBlock("metalbox", "leather"), TagDC.ItemTag.CONT_LEATHER);
+	public static final RegistryObject<Block> CONT_DROP_FUR = regCont("metalbox_fur", () -> new CropContBlock("metalbox", "fur"), TagDC.ItemTag.CONT_FUR);
+	public static final RegistryObject<Block> CONT_DROP_FEATHER = regCont("metalbox_feather", () -> new CropContBlock("metalbox", "feather"), TagDC.ItemTag.CONT_FEATHER);
+	public static final RegistryObject<Block> CONT_DROP_ROTTEN = regCont("metalbox_rotten", () -> new CropContBlock("metalbox", "rotten"), TagDC.ItemTag.CONT_ROTTEN);
+	public static final RegistryObject<Block> CONT_DROP_BONE = regCont("metalbox_bone", () -> new CropContBlock("metalbox", "bone"), TagDC.ItemTag.CONT_BONE);
+	public static final RegistryObject<Block> CONT_DROP_POWDER = regCont("metalbox_powder", () -> new CropContBlock("metalbox", "powder"), TagDC.ItemTag.CONT_POWDER);
+	public static final RegistryObject<Block> CONT_DROP_SPIDER_EYE = regCont("metalbox_spider", () -> new CropContBlock("metalbox", "spider"), TagDC.ItemTag.CONT_SPIDER_EYE);
+	public static final RegistryObject<Block> CONT_DROP_ENDER = regCont("metalbox_ender", () -> new CropContBlock("metalbox", "ender"), TagDC.ItemTag.CONT_ENDER);
+	public static final RegistryObject<Block> CONT_DROP_BLAZE = regCont("metalbox_blaze", () -> new CropContBlock("metalbox", "blaze"), TagDC.ItemTag.CONT_BLAZE);
 
 	public static final RegistryObject<BlockEntityType<FertileBlockTile>> FERTILE_TILE = CoreInit.BLOCK_ENTITIES.register("fertile_block_tile",
 			() -> BlockEntityType.Builder.of(FertileBlockTile::new, new Block[] { FERTILE.get(), FERTILE_PLANTER.get(), FERTILE_PLANTER_GEM.get() }).build(null));

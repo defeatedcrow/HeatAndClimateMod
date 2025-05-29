@@ -74,10 +74,13 @@ import defeatedcrow.hac.machine.material.block.monitor.MonitorRSBlock;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorRSTile;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorTempBlock;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorTempTile;
+import defeatedcrow.hac.machine.material.block.monitor.PlayerPressurePlateBlock;
 import defeatedcrow.hac.machine.material.block.monitor.StormglassBlock;
 import defeatedcrow.hac.machine.material.block.monitor.StormglassTile;
 import defeatedcrow.hac.machine.material.block.transport.BatteryMiddleBlock;
 import defeatedcrow.hac.machine.material.block.transport.BatterySmallBlock;
+import defeatedcrow.hac.machine.material.block.transport.CableAluminumBlock;
+import defeatedcrow.hac.machine.material.block.transport.CableAluminumTile;
 import defeatedcrow.hac.machine.material.block.transport.CableCopperBlock;
 import defeatedcrow.hac.machine.material.block.transport.CableCopperTile;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorDropperBlock;
@@ -96,6 +99,8 @@ import defeatedcrow.hac.machine.material.block.transport.FaucetBlock;
 import defeatedcrow.hac.machine.material.block.transport.FaucetTile;
 import defeatedcrow.hac.machine.material.block.transport.FluidPipeAlloyBlock;
 import defeatedcrow.hac.machine.material.block.transport.FluidPipeAlloyTile;
+import defeatedcrow.hac.machine.material.block.transport.FluidPipeNickelsilverBlock;
+import defeatedcrow.hac.machine.material.block.transport.FluidPipeNickelsilverTile;
 import defeatedcrow.hac.machine.material.block.transport.FluidSinkBlock_Brick;
 import defeatedcrow.hac.machine.material.block.transport.FluidSinkTile;
 import defeatedcrow.hac.machine.material.block.transport.HopperBaseTile;
@@ -110,6 +115,8 @@ import defeatedcrow.hac.machine.material.block.transport.IBCTile;
 import defeatedcrow.hac.machine.material.block.transport.PortableCanBlock;
 import defeatedcrow.hac.machine.material.block.transport.PortableCanTile;
 import defeatedcrow.hac.machine.material.block.transport.PortableFluidTankTile;
+import defeatedcrow.hac.machine.material.block.transport.SprinklerBlock;
+import defeatedcrow.hac.machine.material.block.transport.SprinklerTile;
 import defeatedcrow.hac.machine.material.fluid.FluidBlockItemDC;
 import defeatedcrow.hac.machine.material.item.MachineMaterialItem;
 import defeatedcrow.hac.machine.material.item.MemoryCoordItem;
@@ -126,100 +133,103 @@ public class MachineInit {
 
 	public static void init() {}
 
-	public static final RegistryObject<Block> CHAMBER_BRICK_A = regBlock("chamber_brick_a", () -> new BrickChamberBlock("chamber_brick_a"), null);
-	public static final RegistryObject<Block> CHAMBER_BRICK_B = regBlock("chamber_brick_b", () -> new BrickChamberBlock("chamber_brick_b"), null);
-	public static final RegistryObject<Block> CHAMBER_IRON = regBlock("chamber_iron", () -> new HeatingChamberBlock("chamber_iron"), null);
-	public static final RegistryObject<Block> FUEL_BURNER = regBlock("fuel_burner", () -> new FluidChamberBlock("fuel_burner"), null);
-	public static final RegistryObject<Block> KICHEN_STOVE = regBlock("kitchen_stove", () -> new KichenStoveBlock("kitchen_stove"), null);
-	public static final RegistryObject<Block> KICHEN_OVEN_WOOD = regBlock("kitchen_oven_wood", () -> new KichenOvenBlock("kitchen_oven_wood"), null);
-	public static final RegistryObject<Block> KICHEN_OVEN_BLACK = regBlock("kitchen_oven_black", () -> new KichenOvenBlock("kitchen_oven_black"), null);
-	public static final RegistryObject<Block> KICHEN_OVEN_LAB = regBlock("kitchen_oven_lab", () -> new KichenOvenBlock("kitchen_oven_lab"), null);
+	public static final RegistryObject<Block> CHAMBER_BRICK_A = regBlock("chamber_brick_a", () -> new BrickChamberBlock("chamber_brick_a"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> CHAMBER_BRICK_B = regBlock("chamber_brick_b", () -> new BrickChamberBlock("chamber_brick_b"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> CHAMBER_IRON = regBlock("chamber_iron", () -> new HeatingChamberBlock("chamber_iron"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> FUEL_BURNER = regBlock("fuel_burner", () -> new FluidChamberBlock("fuel_burner"), Rarity.RARE, null);
+	public static final RegistryObject<Block> KICHEN_STOVE = regBlock("kitchen_stove", () -> new KichenStoveBlock("kitchen_stove"), Rarity.RARE, null);
+	public static final RegistryObject<Block> KICHEN_OVEN_WOOD = regBlock("kitchen_oven_wood", () -> new KichenOvenBlock("kitchen_oven_wood"), Rarity.RARE, null);
+	public static final RegistryObject<Block> KICHEN_OVEN_BLACK = regBlock("kitchen_oven_black", () -> new KichenOvenBlock("kitchen_oven_black"), Rarity.RARE, null);
+	public static final RegistryObject<Block> KICHEN_OVEN_LAB = regBlock("kitchen_oven_lab", () -> new KichenOvenBlock("kitchen_oven_lab"), Rarity.RARE, null);
 
-	public static final RegistryObject<Block> KICHEN_BENCH_BRICK = regBlock("kitchen_bench_brick", () -> new KichenBenchBlock("kitchen_bench_brick"), null);
-	public static final RegistryObject<Block> KICHEN_BENCH_SUS = regBlock("kitchen_bench_sus", () -> new KichenBenchBlock("kitchen_bench_sus"), null);
-	public static final RegistryObject<Block> KICHEN_BENCH_WOOD_A = regBlock("kitchen_bench_wood_a", () -> new KichenBenchBlock("kitchen_bench_wood_a"), null);
-	public static final RegistryObject<Block> KICHEN_BENCH_WOOD_B = regBlock("kitchen_bench_wood_b", () -> new KichenBenchBlock("kitchen_bench_wood_b"), null);
-	public static final RegistryObject<Block> KICHEN_BENCH_BLACK_A = regBlock("kitchen_bench_black_a", () -> new KichenBenchBlock("kitchen_bench_black_a"), null);
-	public static final RegistryObject<Block> KICHEN_BENCH_BLACK_B = regBlock("kitchen_bench_black_b", () -> new KichenBenchBlock("kitchen_bench_black_b"), null);
-	public static final RegistryObject<Block> KICHEN_BENCH_LAB_A = regBlock("kitchen_bench_lab_a", () -> new KichenBenchBlock("kitchen_bench_lab_a"), null);
-	public static final RegistryObject<Block> KICHEN_BENCH_LAB_B = regBlock("kitchen_bench_lab_b", () -> new KichenBenchBlock("kitchen_bench_lab_b"), null);
+	public static final RegistryObject<Block> KICHEN_BENCH_BRICK = regBlock("kitchen_bench_brick", () -> new KichenBenchBlock("kitchen_bench_brick"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> KICHEN_BENCH_SUS = regBlock("kitchen_bench_sus", () -> new KichenBenchBlock("kitchen_bench_sus"), Rarity.RARE, null);
+	public static final RegistryObject<Block> KICHEN_BENCH_WOOD_A = regBlock("kitchen_bench_wood_a", () -> new KichenBenchBlock("kitchen_bench_wood_a"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> KICHEN_BENCH_WOOD_B = regBlock("kitchen_bench_wood_b", () -> new KichenBenchBlock("kitchen_bench_wood_b"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> KICHEN_BENCH_BLACK_A = regBlock("kitchen_bench_black_a", () -> new KichenBenchBlock("kitchen_bench_black_a"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> KICHEN_BENCH_BLACK_B = regBlock("kitchen_bench_black_b", () -> new KichenBenchBlock("kitchen_bench_black_b"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> KICHEN_BENCH_LAB_A = regBlock("kitchen_bench_lab_a", () -> new KichenBenchBlock("kitchen_bench_lab_a"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> KICHEN_BENCH_LAB_B = regBlock("kitchen_bench_lab_b", () -> new KichenBenchBlock("kitchen_bench_lab_b"), Rarity.COMMON, null);
 
-	public static final RegistryObject<Block> KICHEN_SINK_BRICK = regBlock("fluid_sink_brick", () -> new FluidSinkBlock_Brick("fluid_sink_brick", false), null);
-	public static final RegistryObject<Block> HALF_SINK_BRICK = regBlock("half_sink_brick", () -> new FluidSinkBlock_Brick("half_sink_brick", true), null);
-	public static final RegistryObject<Block> KICHEN_SINK_SUS = regBlock("fluid_sink_sus", () -> new FluidSinkBlock_Brick("fluid_sink_sus", false), null);
-	public static final RegistryObject<Block> HALF_SINK_SUS = regBlock("half_sink_sus", () -> new FluidSinkBlock_Brick("half_sink_sus", true), null);
-	public static final RegistryObject<Block> KICHEN_SINK_WOOD = regBlock("fluid_sink_wood", () -> new FluidSinkBlock_Brick("fluid_sink_wood", false), null);
-	public static final RegistryObject<Block> KICHEN_SINK_BLACK = regBlock("fluid_sink_black", () -> new FluidSinkBlock_Brick("fluid_sink_black", false), null);
-	public static final RegistryObject<Block> KICHEN_SINK_LAB = regBlock("fluid_sink_lab", () -> new FluidSinkBlock_Brick("fluid_sink_lab", false), null);
+	public static final RegistryObject<Block> KICHEN_SINK_BRICK = regBlock("fluid_sink_brick", () -> new FluidSinkBlock_Brick("fluid_sink_brick", false), Rarity.COMMON, null);
+	public static final RegistryObject<Block> HALF_SINK_BRICK = regBlock("half_sink_brick", () -> new FluidSinkBlock_Brick("half_sink_brick", true), Rarity.COMMON, null);
+	public static final RegistryObject<Block> KICHEN_SINK_SUS = regBlock("fluid_sink_sus", () -> new FluidSinkBlock_Brick("fluid_sink_sus", false), Rarity.RARE, null);
+	public static final RegistryObject<Block> HALF_SINK_SUS = regBlock("half_sink_sus", () -> new FluidSinkBlock_Brick("half_sink_sus", true), Rarity.RARE, null);
+	public static final RegistryObject<Block> KICHEN_SINK_WOOD = regBlock("fluid_sink_wood", () -> new FluidSinkBlock_Brick("fluid_sink_wood", false), Rarity.COMMON, null);
+	public static final RegistryObject<Block> KICHEN_SINK_BLACK = regBlock("fluid_sink_black", () -> new FluidSinkBlock_Brick("fluid_sink_black", false), Rarity.COMMON, null);
+	public static final RegistryObject<Block> KICHEN_SINK_LAB = regBlock("fluid_sink_lab", () -> new FluidSinkBlock_Brick("fluid_sink_lab", false), Rarity.COMMON, null);
 
-	public static final RegistryObject<Block> HOPPER_FILTER = regBlock("hopper_filter", () -> new HopperFilterBlock("hopper_filter"), null);
-	public static final RegistryObject<Block> HOPPER_GOLD = regBlock("hopper_gold", () -> new HopperGoldBlock("hopper_gold"), null);
-	public static final RegistryObject<Block> HOPPER_FILTER_GOLD = regBlock("hopper_filter_gold", () -> new HopperFilterGoldBlock("hopper_filter_gold"), null);
+	public static final RegistryObject<Block> HOPPER_FILTER = regBlock("hopper_filter", () -> new HopperFilterBlock("hopper_filter"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> HOPPER_GOLD = regBlock("hopper_gold", () -> new HopperGoldBlock("hopper_gold"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> HOPPER_FILTER_GOLD = regBlock("hopper_filter_gold", () -> new HopperFilterGoldBlock("hopper_filter_gold"), Rarity.COMMON, null);
 
-	public static final RegistryObject<Block> CONVEYOR = regBlock("conveyor", () -> new ConveyorNormalBlock("conveyor"), null);
-	public static final RegistryObject<Block> CONVEYOR_SMELTING = regBlock("conveyor_smelting", () -> new ConveyorSmeltingBlock("conveyor_smelting"), null);
-	public static final RegistryObject<Block> CONVEYOR_DROPPER = regBlock("conveyor_dropper", () -> new ConveyorDropperBlock("conveyor_dropper"), null);
-	public static final RegistryObject<Block> CONVEYOR_SORTER = regBlock("conveyor_sorter", () -> new ConveyorSortingBlock("conveyor_sorter"), null);
-	public static final RegistryObject<Block> CONVEYOR_FILLER = regBlock("conveyor_filler", () -> new ConveyorFillerBlock("conveyor_filler"), null);
+	public static final RegistryObject<Block> CONVEYOR = regBlock("conveyor", () -> new ConveyorNormalBlock("conveyor"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> CONVEYOR_SMELTING = regBlock("conveyor_smelting", () -> new ConveyorSmeltingBlock("conveyor_smelting"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> CONVEYOR_DROPPER = regBlock("conveyor_dropper", () -> new ConveyorDropperBlock("conveyor_dropper"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> CONVEYOR_SORTER = regBlock("conveyor_sorter", () -> new ConveyorSortingBlock("conveyor_sorter"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> CONVEYOR_FILLER = regBlock("conveyor_filler", () -> new ConveyorFillerBlock("conveyor_filler"), Rarity.UNCOMMON, null);
 
-	public static final RegistryObject<Block> PORTABLE_CAN = regFluidBlock("portable_can", () -> new PortableCanBlock("portable_can"), 18000);
-	public static final RegistryObject<Block> PORTABLE_CAN_WHITE = regFluidBlock("portable_can_white", () -> new PortableCanBlock("portable_can_white"), 18000);
-	public static final RegistryObject<Block> PORTABLE_CAN_BLUE = regFluidBlock("portable_can_blue", () -> new PortableCanBlock("portable_can_blue"), 18000);
-	public static final RegistryObject<Block> PORTABLE_CAN_BLACK = regFluidBlock("portable_can_black", () -> new PortableCanBlock("portable_can_black"), 18000);
-	public static final RegistryObject<Block> PORTABLE_CAN_RED = regFluidBlock("portable_can_red", () -> new PortableCanBlock("portable_can_red"), 18000);
-	public static final RegistryObject<Block> PORTABLE_CAN_GREEN = regFluidBlock("portable_can_green", () -> new PortableCanBlock("portable_can_green"), 18000);
+	public static final RegistryObject<Block> PORTABLE_CAN = regFluidBlock("portable_can", () -> new PortableCanBlock("portable_can"), Rarity.COMMON, 18000);
+	public static final RegistryObject<Block> PORTABLE_CAN_WHITE = regFluidBlock("portable_can_white", () -> new PortableCanBlock("portable_can_white"), Rarity.COMMON, 18000);
+	public static final RegistryObject<Block> PORTABLE_CAN_BLUE = regFluidBlock("portable_can_blue", () -> new PortableCanBlock("portable_can_blue"), Rarity.COMMON, 18000);
+	public static final RegistryObject<Block> PORTABLE_CAN_BLACK = regFluidBlock("portable_can_black", () -> new PortableCanBlock("portable_can_black"), Rarity.COMMON, 18000);
+	public static final RegistryObject<Block> PORTABLE_CAN_RED = regFluidBlock("portable_can_red", () -> new PortableCanBlock("portable_can_red"), Rarity.COMMON, 18000);
+	public static final RegistryObject<Block> PORTABLE_CAN_GREEN = regFluidBlock("portable_can_green", () -> new PortableCanBlock("portable_can_green"), Rarity.COMMON, 18000);
 
-	public static final RegistryObject<Block> IBC = regFluidBlock("ibc", () -> new IBCBlock("ibc"), 1000000);
+	public static final RegistryObject<Block> IBC = regFluidBlock("ibc", () -> new IBCBlock("ibc"), Rarity.UNCOMMON, 1000000);
 
-	public static final RegistryObject<Block> PIPE_BRASS = regBlock("pipe_brass", () -> new FluidPipeAlloyBlock("pipe_brass"), null);
+	public static final RegistryObject<Block> PIPE_BRASS = regBlock("pipe_brass", () -> new FluidPipeAlloyBlock("pipe_brass"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> PIPE_NICKELSILVER = regBlock("pipe_nickelsilver", () -> new FluidPipeNickelsilverBlock("pipe_nickelsilver"), Rarity.UNCOMMON, null);
 
-	public static final RegistryObject<Block> FAUCET_A = regBlock("faucet_a", () -> new FaucetBlock("faucet_a"), null);
-	public static final RegistryObject<Block> FAUCET_B = regBlock("faucet_b", () -> new FaucetBlock("faucet_b"), null);
-	public static final RegistryObject<Block> FAUCET_C = regBlock("faucet_c", () -> new FaucetBlock("faucet_c"), null);
-	public static final RegistryObject<Block> FAUCET_D = regBlock("faucet_d", () -> new FaucetBlock("faucet_d"), null);
+	public static final RegistryObject<Block> SPRINKLER = regBlock("sprinkler", () -> new SprinklerBlock("sprinkler"), Rarity.UNCOMMON, null);
 
-	public static final RegistryObject<Block> SPILE = regBlock("spilecup", () -> new SpileCupBlock("spilecup"), null);
+	public static final RegistryObject<Block> FAUCET_A = regBlock("faucet_a", () -> new FaucetBlock("faucet_a"), Rarity.RARE, null);
+	public static final RegistryObject<Block> FAUCET_B = regBlock("faucet_b", () -> new FaucetBlock("faucet_b"), Rarity.RARE, null);
+	public static final RegistryObject<Block> FAUCET_C = regBlock("faucet_c", () -> new FaucetBlock("faucet_c"), Rarity.RARE, null);
+	public static final RegistryObject<Block> FAUCET_D = regBlock("faucet_d", () -> new FaucetBlock("faucet_d"), Rarity.RARE, null);
 
-	public static final RegistryObject<Block> COOKING_POT_NORMAL = regBlock("cooking_pot_normal", () -> new CookingPotBlock("cooking_pot_normal"), null);
-	public static final RegistryObject<Block> COOKING_POT_WHITE = regBlock("cooking_pot_white", () -> new CookingPotBlock("cooking_pot_white"), null);
-	public static final RegistryObject<Block> COOKING_POT_BLUE = regBlock("cooking_pot_blue", () -> new CookingPotBlock("cooking_pot_blue"), null);
-	public static final RegistryObject<Block> COOKING_POT_BLACK = regBlock("cooking_pot_black", () -> new CookingPotBlock("cooking_pot_black"), null);
-	public static final RegistryObject<Block> COOKING_POT_RED = regBlock("cooking_pot_red", () -> new CookingPotBlock("cooking_pot_red"), null);
-	public static final RegistryObject<Block> COOKING_POT_GREEN = regBlock("cooking_pot_green", () -> new CookingPotBlock("cooking_pot_green"), null);
+	public static final RegistryObject<Block> SPILE = regBlock("spilecup", () -> new SpileCupBlock("spilecup"), Rarity.COMMON, null);
 
-	public static final RegistryObject<Block> TEA_POT_NORMAL = regBlock("tea_pot_normal", () -> new TeaPotBlock("tea_pot_normal"), null);
-	public static final RegistryObject<Block> TEA_POT_WHITE = regBlock("tea_pot_white", () -> new TeaPotBlock("tea_pot_white"), null);
-	public static final RegistryObject<Block> TEA_POT_BLUE = regBlock("tea_pot_blue", () -> new TeaPotBlock("tea_pot_blue"), null);
-	public static final RegistryObject<Block> TEA_POT_BLACK = regBlock("tea_pot_black", () -> new TeaPotBlock("tea_pot_black"), null);
-	public static final RegistryObject<Block> TEA_POT_RED = regBlock("tea_pot_red", () -> new TeaPotBlock("tea_pot_red"), null);
-	public static final RegistryObject<Block> TEA_POT_GREEN = regBlock("tea_pot_green", () -> new TeaPotBlock("tea_pot_green"), null);
+	public static final RegistryObject<Block> COOKING_POT_NORMAL = regBlock("cooking_pot_normal", () -> new CookingPotBlock("cooking_pot_normal"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> COOKING_POT_WHITE = regBlock("cooking_pot_white", () -> new CookingPotBlock("cooking_pot_white"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> COOKING_POT_BLUE = regBlock("cooking_pot_blue", () -> new CookingPotBlock("cooking_pot_blue"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> COOKING_POT_BLACK = regBlock("cooking_pot_black", () -> new CookingPotBlock("cooking_pot_black"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> COOKING_POT_RED = regBlock("cooking_pot_red", () -> new CookingPotBlock("cooking_pot_red"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> COOKING_POT_GREEN = regBlock("cooking_pot_green", () -> new CookingPotBlock("cooking_pot_green"), Rarity.UNCOMMON, null);
 
-	public static final RegistryObject<Block> FERMENTATION_JAR_NORMAL = regBlock("fermentation_jar_normal", () -> new FermentationJarBlock("fermentation_jar_normal", false), null);
-	public static final RegistryObject<Block> FERMENTATION_JAR_WHITE = regBlock("fermentation_jar_white", () -> new FermentationJarBlock("fermentation_jar_white", false), null);
-	public static final RegistryObject<Block> FERMENTATION_JAR_BLUE = regBlock("fermentation_jar_blue", () -> new FermentationJarBlock("fermentation_jar_blue", true), null);
-	public static final RegistryObject<Block> FERMENTATION_JAR_BLACK = regBlock("fermentation_jar_black", () -> new FermentationJarBlock("fermentation_jar_black", false), null);
-	public static final RegistryObject<Block> FERMENTATION_JAR_RED = regBlock("fermentation_jar_red", () -> new FermentationJarBlock("fermentation_jar_red", true), null);
-	public static final RegistryObject<Block> FERMENTATION_JAR_GREEN = regBlock("fermentation_jar_green", () -> new FermentationJarBlock("fermentation_jar_green", true), null);
+	public static final RegistryObject<Block> TEA_POT_NORMAL = regBlock("tea_pot_normal", () -> new TeaPotBlock("tea_pot_normal"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> TEA_POT_WHITE = regBlock("tea_pot_white", () -> new TeaPotBlock("tea_pot_white"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> TEA_POT_BLUE = regBlock("tea_pot_blue", () -> new TeaPotBlock("tea_pot_blue"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> TEA_POT_BLACK = regBlock("tea_pot_black", () -> new TeaPotBlock("tea_pot_black"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> TEA_POT_RED = regBlock("tea_pot_red", () -> new TeaPotBlock("tea_pot_red"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> TEA_POT_GREEN = regBlock("tea_pot_green", () -> new TeaPotBlock("tea_pot_green"), Rarity.UNCOMMON, null);
 
-	public static final RegistryObject<Block> WATER_PUMP = regBlock("water_pump", () -> new WaterPumpBlock("water_pump"), null);
-	public static final RegistryObject<Block> STONE_MILL = regBlock("stone_mill", () -> new StoneMillBlock("stone_mill"), null);
-	public static final RegistryObject<Block> ROLL_CRUSHER = regBlock("roll_crusher", () -> new RollCrusherBlock("roll_crusher"), null);
-	public static final RegistryObject<Block> INTAKE_FAN = regBlock("intake_fan", () -> new IntakeFanBlock("intake_fan"), null);
-	public static final RegistryObject<Block> EXHAUST_VENT = regBlock("exhaust_vent", () -> new ExhaustVentBlock("exhaust_vent"), null);
-	public static final RegistryObject<Block> ITEM_ASPIRATOR = regBlock("item_aspirator", () -> new ItemAspiratorBlock("item_aspirator"), null);
-	public static final RegistryObject<Block> CROP_ASPIRATOR = regBlock("crop_aspirator", () -> new CropAspiratorBlock("crop_aspirator"), null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_NORMAL = regBlock("fermentation_jar_normal", () -> new FermentationJarBlock("fermentation_jar_normal", false), Rarity.COMMON, null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_WHITE = regBlock("fermentation_jar_white", () -> new FermentationJarBlock("fermentation_jar_white", false), Rarity.COMMON, null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_BLUE = regBlock("fermentation_jar_blue", () -> new FermentationJarBlock("fermentation_jar_blue", true), Rarity.COMMON, null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_BLACK = regBlock("fermentation_jar_black", () -> new FermentationJarBlock("fermentation_jar_black", false), Rarity.COMMON, null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_RED = regBlock("fermentation_jar_red", () -> new FermentationJarBlock("fermentation_jar_red", true), Rarity.COMMON, null);
+	public static final RegistryObject<Block> FERMENTATION_JAR_GREEN = regBlock("fermentation_jar_green", () -> new FermentationJarBlock("fermentation_jar_green", true), Rarity.COMMON, null);
 
-	public static final RegistryObject<Block> GENERATOR_SMALL = regEnergyBlock("generator_small", () -> new GeneratorSmallBlock("generator_small"), 4000);
+	public static final RegistryObject<Block> WATER_PUMP = regBlock("water_pump", () -> new WaterPumpBlock("water_pump"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> STONE_MILL = regBlock("stone_mill", () -> new StoneMillBlock("stone_mill"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> ROLL_CRUSHER = regBlock("roll_crusher", () -> new RollCrusherBlock("roll_crusher"), Rarity.RARE, null);
+	public static final RegistryObject<Block> INTAKE_FAN = regBlock("intake_fan", () -> new IntakeFanBlock("intake_fan"), Rarity.RARE, null);
+	public static final RegistryObject<Block> EXHAUST_VENT = regBlock("exhaust_vent", () -> new ExhaustVentBlock("exhaust_vent"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> ITEM_ASPIRATOR = regBlock("item_aspirator", () -> new ItemAspiratorBlock("item_aspirator"), Rarity.RARE, null);
+	public static final RegistryObject<Block> CROP_ASPIRATOR = regBlock("crop_aspirator", () -> new CropAspiratorBlock("crop_aspirator"), Rarity.RARE, null);
 
-	public static final RegistryObject<Block> BOILER_BIOMASS = regBlock("boiler_biomass", () -> new BoilerBiomassBlock("boiler_biomass"), null);
-	public static final RegistryObject<Block> HYDRO_TURBINE = regBlock("hydro_turbine", () -> new HydroTurbineBlock("hydro_turbine"), null);
+	public static final RegistryObject<Block> GENERATOR_SMALL = regEnergyBlock("generator_small", () -> new GeneratorSmallBlock("generator_small"), Rarity.UNCOMMON, 4000);
 
-	public static final RegistryObject<Block> BATTERY_SMALL = regEnergyBlock("battery_small", () -> new BatterySmallBlock("battery_small"), 32000);
-	public static final RegistryObject<Block> BATTERY_MIDDLE = regEnergyBlock("battery_middle", () -> new BatteryMiddleBlock("battery_small"), 128000);
+	public static final RegistryObject<Block> BOILER_BIOMASS = regBlock("boiler_biomass", () -> new BoilerBiomassBlock("boiler_biomass"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> HYDRO_TURBINE = regBlock("hydro_turbine", () -> new HydroTurbineBlock("hydro_turbine"), Rarity.RARE, null);
 
-	public static final RegistryObject<Block> CABLE_COPPER = regBlock("cable_copper", () -> new CableCopperBlock("cable_copper"), TagDC.ItemTag.LEAKAGE_MACHINE);
+	public static final RegistryObject<Block> BATTERY_SMALL = regEnergyBlock("battery_small", () -> new BatterySmallBlock("battery_small"), Rarity.UNCOMMON, 32000);
+	public static final RegistryObject<Block> BATTERY_MIDDLE = regEnergyBlock("battery_middle", () -> new BatteryMiddleBlock("battery_small"), Rarity.RARE, 128000);
 
-	public static final RegistryObject<Block> CABLE_COPPER_COATED = regBlock("cable_copper_coated", () -> new CableCopperBlock("cable_copper_coated"), null);
+	public static final RegistryObject<Block> CABLE_COPPER = regBlock("cable_copper", () -> new CableCopperBlock("cable_copper"), Rarity.COMMON, TagDC.ItemTag.LEAKAGE_MACHINE);
+	public static final RegistryObject<Block> CABLE_COPPER_COATED = regBlock("cable_copper_coated", () -> new CableCopperBlock("cable_copper_coated"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> CABLE_ALUMINUM_COATED = regBlock("cable_aluminum_coated", () -> new CableAluminumBlock("cable_aluminum_coated"), Rarity.UNCOMMON, null);
 
 	public static final RegistryObject<Block> MONITOR_RS = regMonitorBlock("monitor_rs_lamp", () -> new MonitorRSBlock("monitor_rs_lamp"));
 	public static final RegistryObject<Block> MONITOR_RS_PILOT = regMonitorBlock("monitor_rs_pilot", () -> new MonitorRSBlock("monitor_rs_pilot"));
@@ -238,7 +248,9 @@ public class MachineInit {
 	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_8 = regMonitorBlock("monitor_andon_panel_8", () -> new MonitorAndonPanelBlock(8));
 	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_9 = regMonitorBlock("monitor_andon_panel_9", () -> new MonitorAndonPanelBlock(9));
 
-	public static final RegistryObject<Block> STORMGLASS = regBlock("stormglass", () -> new StormglassBlock("stormglass"), null);
+	public static final RegistryObject<Block> STORMGLASS = regBlock("stormglass", () -> new StormglassBlock("stormglass"), Rarity.COMMON, null);
+
+	public static final RegistryObject<Block> PLAYER_PRESSURE_PLATE = regBlock("player_pressure_plate", () -> new PlayerPressurePlateBlock("player_pressure_plate"), Rarity.COMMON, null);
 
 	public static final RegistryObject<Item> MOTOR_TIER1 = regItem("motor_small", () -> new MachineMaterialItem(Rarity.COMMON, "motor_small", TagDC.ItemTag.MOTOR_T1));
 	public static final RegistryObject<Item> MOTOR_TIER2 = regItem("motor_middle", () -> new MachineMaterialItem(Rarity.UNCOMMON, "motor_middle", TagDC.ItemTag.MOTOR_T2));
@@ -306,8 +318,14 @@ public class MachineInit {
 	public static final RegistryObject<BlockEntityType<FluidPipeAlloyTile>> PIPE_BRASS_TILE = CoreInit.BLOCK_ENTITIES.register("pipe_brass_tile",
 			() -> BlockEntityType.Builder.of(FluidPipeAlloyTile::new, new Block[] { PIPE_BRASS.get() }).build(null));
 
+	public static final RegistryObject<BlockEntityType<FluidPipeNickelsilverTile>> PIPE_NICKELSILVER_TILE = CoreInit.BLOCK_ENTITIES.register("pipe_nickelsilver_tile",
+			() -> BlockEntityType.Builder.of(FluidPipeNickelsilverTile::new, new Block[] { PIPE_NICKELSILVER.get() }).build(null));
+
 	public static final RegistryObject<BlockEntityType<FaucetTile>> FAUCET_TILE = CoreInit.BLOCK_ENTITIES.register("faucet_tile",
 			() -> BlockEntityType.Builder.of(FaucetTile::new, new Block[] { FAUCET_A.get(), FAUCET_B.get(), FAUCET_C.get(), FAUCET_D.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<SprinklerTile>> SPRINKLER_TILE = CoreInit.BLOCK_ENTITIES.register("sprinkler_tile",
+			() -> BlockEntityType.Builder.of(SprinklerTile::new, new Block[] { SPRINKLER.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<SpileCupTile>> SPILE_TILE = CoreInit.BLOCK_ENTITIES.register("spilecup_tile",
 			() -> BlockEntityType.Builder.of(SpileCupTile::new, new Block[] { SPILE.get() }).build(null));
@@ -360,6 +378,9 @@ public class MachineInit {
 
 	public static final RegistryObject<BlockEntityType<CableCopperTile>> CABLE_COPPER_TILE = CoreInit.BLOCK_ENTITIES.register("cable_copper_tile",
 			() -> BlockEntityType.Builder.of(CableCopperTile::new, new Block[] { CABLE_COPPER.get(), CABLE_COPPER_COATED.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<CableAluminumTile>> CABLE_ALUMINUM_TILE = CoreInit.BLOCK_ENTITIES.register("cable_aluminum_tile",
+			() -> BlockEntityType.Builder.of(CableAluminumTile::new, new Block[] { CABLE_ALUMINUM_COATED.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<MonitorRSTile>> MONITOR_RS_TILE = CoreInit.BLOCK_ENTITIES.register("monitor_rs_tile",
 			() -> BlockEntityType.Builder.of(MonitorRSTile::new, new Block[] { MONITOR_RS.get(), MONITOR_RS_PILOT.get() }).build(null));
@@ -494,21 +515,21 @@ public class MachineInit {
 		return MonitorAndonMenu.getMenu(id, playerInv, cont);
 	});
 
-	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
+	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, Rarity rare, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("machine/" + name, block);
-		regItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE), tag));
+		regItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE).rarity(rare), tag));
 		return obj;
 	}
 
-	public static RegistryObject<Block> regFluidBlock(String name, Supplier<Block> block, int cap) {
+	public static RegistryObject<Block> regFluidBlock(String name, Supplier<Block> block, Rarity rare, int cap) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("machine/" + name, block);
-		regItem(name, () -> new FluidBlockItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE), null).setCap(cap));
+		regItem(name, () -> new FluidBlockItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE).rarity(rare), null).setCap(cap));
 		return obj;
 	}
 
-	public static RegistryObject<Block> regEnergyBlock(String name, Supplier<Block> block, int cap) {
+	public static RegistryObject<Block> regEnergyBlock(String name, Supplier<Block> block, Rarity rare, int cap) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("machine/" + name, block);
-		regItem(name, () -> new EnergyTankItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE), null).setCap(cap));
+		regItem(name, () -> new EnergyTankItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE).rarity(rare), null).setCap(cap));
 		return obj;
 	}
 
