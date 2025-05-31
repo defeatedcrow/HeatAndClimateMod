@@ -12,6 +12,7 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.fluid.DCFluidUtil;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -117,28 +118,22 @@ public class SprinklerTile extends OwnableBaseTileDC implements IIntReceiver {
 		tile.onClientProcess(level, pos, state);
 	}
 
-	public float rad = 0F;
+	public double rad = 0F;
 
 	public boolean onClientProcess(Level level, BlockPos pos, BlockState state) {
-		if (count > 0) {
-			count--;
-		} else {
-			count = 4;
+		if (level instanceof ClientLevel cl) {
 			if (this.isActive(level, pos, state) && power > 0) {
-				rad += 0.2F;
-				if (rad > 6F)
-					rad -= 6F;
+				rad += 0.05D;
+				if (rad > 2D * Math.PI)
+					rad -= 2D * Math.PI;
 				double r = Math.toRadians(rad);
-				int count = 5;
-				for (int i = 0; i < 5; i++) {
-					double p = 0.2D * power * (0.5D + getLevel().getRandom().nextDouble());
-					double dx = p * Math.sin(rad);
-					double dy = 0D;
-					double dz = p * Math.cos(rad);
-					Vec3 vec = Vec3.atBottomCenterOf(pos.above());
-					getLevel().addParticle(ParticleTypes.SPLASH, vec.x, vec.y + 0.125D, vec.z, dx, dy, dz);
-					getLevel().addParticle(ParticleTypes.SPLASH, vec.x, vec.y + 0.125D, vec.z, -dx, dy, -dz);
-				}
+				double p = 0.2D * power * (0.5D + getLevel().getRandom().nextDouble());
+				double dx = p * Math.sin(rad);
+				double dy = 0D;
+				double dz = p * Math.cos(rad);
+				Vec3 vec = Vec3.atBottomCenterOf(pos.above());
+				getLevel().addParticle(ParticleTypes.SPLASH, vec.x, vec.y + 0.2D, vec.z, dx, dy, dz);
+				getLevel().addParticle(ParticleTypes.SPLASH, vec.x, vec.y + 0.2D, vec.z, -dx, dy, -dz);
 			}
 		}
 		return false;

@@ -667,6 +667,17 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_element_white", has(TagDC.ItemTag.ELEMENT_WHITE))
 				.save(cons, "dcs_climate:magic/craft_white_red_painting");
 
+		ShapedRecipeBuilder.shaped(MagicInit.PICTURE_UB.get(), 1)
+				.pattern("XXX")
+				.pattern("WYW")
+				.pattern("ZZZ")
+				.define('W', Tags.Items.GEMS_DIAMOND)
+				.define('X', TagDC.ItemTag.ELEMENT_BLUE)
+				.define('Z', TagDC.ItemTag.ELEMENT_BLACK)
+				.define('Y', Items.PAINTING)
+				.unlockedBy("has_element_blue", has(TagDC.ItemTag.ELEMENT_BLUE))
+				.save(cons, "dcs_climate:magic/craft_blue_black_painting");
+
 		ShapedRecipeBuilder.shaped(MagicInit.PICTURE_UG.get(), 1)
 				.pattern("XXX")
 				.pattern("WYW")
@@ -678,6 +689,28 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_element_blue", has(TagDC.ItemTag.ELEMENT_BLUE))
 				.save(cons, "dcs_climate:magic/craft_blue_green_painting");
 
+		ShapedRecipeBuilder.shaped(MagicInit.PICTURE_BR.get(), 1)
+				.pattern("XXX")
+				.pattern("WYW")
+				.pattern("ZZZ")
+				.define('W', Tags.Items.GEMS_DIAMOND)
+				.define('X', TagDC.ItemTag.ELEMENT_BLACK)
+				.define('Z', TagDC.ItemTag.ELEMENT_RED)
+				.define('Y', Items.PAINTING)
+				.unlockedBy("has_element_black", has(TagDC.ItemTag.ELEMENT_BLACK))
+				.save(cons, "dcs_climate:magic/craft_black_red_painting");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PICTURE_BW.get(), 1)
+				.pattern("XXX")
+				.pattern("WYW")
+				.pattern("ZZZ")
+				.define('W', Tags.Items.GEMS_DIAMOND)
+				.define('X', TagDC.ItemTag.ELEMENT_BLACK)
+				.define('Z', TagDC.ItemTag.ELEMENT_WHITE)
+				.define('Y', Items.PAINTING)
+				.unlockedBy("has_element_black", has(TagDC.ItemTag.ELEMENT_BLACK))
+				.save(cons, "dcs_climate:magic/craft_black_white_painting");
+
 		ShapedRecipeBuilder.shaped(MagicInit.PICTURE_RG.get(), 1)
 				.pattern("XXX")
 				.pattern("WYW")
@@ -688,6 +721,39 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.define('Y', Items.PAINTING)
 				.unlockedBy("has_element_red", has(TagDC.ItemTag.ELEMENT_RED))
 				.save(cons, "dcs_climate:magic/craft_red_green_painting");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PICTURE_RU.get(), 1)
+				.pattern("XXX")
+				.pattern("WYW")
+				.pattern("ZZZ")
+				.define('W', Tags.Items.GEMS_DIAMOND)
+				.define('X', TagDC.ItemTag.ELEMENT_RED)
+				.define('Z', TagDC.ItemTag.ELEMENT_BLUE)
+				.define('Y', Items.PAINTING)
+				.unlockedBy("has_element_red", has(TagDC.ItemTag.ELEMENT_RED))
+				.save(cons, "dcs_climate:magic/craft_red_blue_painting");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PICTURE_GW.get(), 1)
+				.pattern("XXX")
+				.pattern("WYW")
+				.pattern("ZZZ")
+				.define('W', Tags.Items.GEMS_DIAMOND)
+				.define('X', TagDC.ItemTag.ELEMENT_GREEN)
+				.define('Z', TagDC.ItemTag.ELEMENT_WHITE)
+				.define('Y', Items.PAINTING)
+				.unlockedBy("has_element_green", has(TagDC.ItemTag.ELEMENT_GREEN))
+				.save(cons, "dcs_climate:magic/craft_green_white_painting");
+
+		ShapedRecipeBuilder.shaped(MagicInit.PICTURE_GB.get(), 1)
+				.pattern("XXX")
+				.pattern("WYW")
+				.pattern("ZZZ")
+				.define('W', Tags.Items.GEMS_DIAMOND)
+				.define('X', TagDC.ItemTag.ELEMENT_GREEN)
+				.define('Z', TagDC.ItemTag.ELEMENT_BLACK)
+				.define('Y', Items.PAINTING)
+				.unlockedBy("has_element_green", has(TagDC.ItemTag.ELEMENT_GREEN))
+				.save(cons, "dcs_climate:magic/craft_green_black_painting");
 
 	}
 

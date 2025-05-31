@@ -498,9 +498,9 @@
   電気を送るためのブロックです。
   A block for transmitting electricity.
 
-  ケーブルのTierに応じた送電速度に制限があります。現在は　Tier1 (32FE/t) のみ実装されています。
+  ケーブルのTierに応じた送電速度に制限があります。現在は　Tier1 (32FE/t) とTier2 (128FE/t) が実装されています。
   There is a limit to the power transmission speed depending on the cable tier.
-  Currently only Tier1 (32FE/t) is implemented.
+  Currently Tier1 (32FE/t) and Tier2 (128FE/t) is implemented.
 
   むき出しのケーブルにはリスクがあります。ゴムで被覆することで安全に扱えます。
   Exposed cables are dangerous. Covering it with rubber makes it safe to handle.
@@ -649,6 +649,16 @@
   蛇口を開いている間、下にある流体タンクに 128 mB/t で水を注入します。
   While the tap is open, water is pumped into the fluid tank below at 128 mB/t.
 
+ ● スプリンクラー / Sprinkler
+
+  真下から水が流入すると動作します。動作には十分な『水頭』が必要です。
+  It works when water flows in from directly below. It needs a sufficient "water head" to work.
+
+  『水頭』に応じた広さの耕地に水を与えます。
+  It wets an area of ​​farmland according to the "water head".
+
+
+
 
 ****************************************************************************************************
 
@@ -735,7 +745,7 @@
 
 #### 更新履歴 / Change log ####
 
-○v4-beta28
+○v4-beta28 (2025.5.31)
  add: 窓とルーバー
  add: バイオマス豆炭、食品残渣の圧縮ブロック
  add: グロウベリーの圧縮箱
@@ -748,6 +758,9 @@
  fix: マシンのツールチップの不足情報を追加
  fix: 植物油パックのレシピを修正
  fix: 梅の花を収穫できない
+ fix: 骨粉で成長させた作物が変異できない
+ fix: 液体パイプの接続動作を修正
+ fix: 流量計で液体パイプの情報を確認できない
 
 ○v4-beta27 (2025.5.4)
 　add: 鋼の釣り竿

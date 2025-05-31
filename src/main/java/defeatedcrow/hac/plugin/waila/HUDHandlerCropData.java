@@ -61,7 +61,7 @@ public class HUDHandlerCropData implements IBlockComponentProvider {
 		if (config.getBoolean(FERTILE) && level.getBlock() instanceof FertileBlock) {
 			int f = FertileBlock.getFertile(level.getWorld(), level.getPosition(), level.getBlockState());
 			if (f >= 0) {
-				float stage = f / 3.0F;
+				float stage = f / 4.0F;
 				tooltip.addLine(new PairComponent(Component.translatable("dcs.tip.waila.fertile_block"), Component.translatable(String.format("%.0f %%", stage * 100F))));
 			}
 			return;

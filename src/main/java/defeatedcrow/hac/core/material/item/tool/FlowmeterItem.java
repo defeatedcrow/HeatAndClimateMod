@@ -6,6 +6,9 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.machine.material.block.transport.FluidPipeTileBaseDC;
+import defeatedcrow.hac.machine.material.fluid.DCFluidUtil;
+import defeatedcrow.hac.machine.material.fluid.DCHeadTank;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -20,6 +23,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.fluids.FluidUtil;
@@ -44,17 +48,30 @@ public class FlowmeterItem extends CraftingItemDC {
 	public InteractionResultHolder<ItemStack> onBlockHit(Level level, Player player, InteractionHand hand, ItemStack card, BlockHitResult res) {
 		player.startUsingItem(hand);
 		if (res != null) {
-			FluidUtil.getFluidHandler(level, res.getBlockPos(), res.getDirection()).ifPresent(handler -> {
+			BlockEntity tile = level.getBlockEntity(res.getBlockPos());
+			if (tile instanceof FluidPipeTileBaseDC pipe) {
 				if (!level.isClientSide && player instanceof ServerPlayer sp) {
-					int cap = handler.getTankCapacity(0);
-					int fluid = handler.getFluidInTank(0) == null ? 0 : handler.getFluidInTank(0).getAmount();
-					MutableComponent mes = Component.translatable("dcs.tip.amount").append(Component.literal(": ")).append(Component.literal(fluid + "/" + cap + "mB")).withStyle(ChatFormatting.AQUA);
+					DCHeadTank tank = pipe.getFluidHandler();
+					int fluid = tank.getFluidAmount();
+					int head = DCFluidUtil.getHead(tank.getFluid());
+					MutableComponent mes = Component.translatable("dcs.tip.amount").append(Component.literal(": ")).append(Component.literal(fluid + "mB / Water Head: " + head)).withStyle(
+							ChatFormatting.AQUA);
 					sp.sendSystemMessage(mes);
 					player.swing(hand, true);
-				} else {
-					level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 				}
-			});
+			} else {
+				FluidUtil.getFluidHandler(level, res.getBlockPos(), res.getDirection()).ifPresent(handler -> {
+					if (!level.isClientSide && player instanceof ServerPlayer sp) {
+						int cap = handler.getTankCapacity(0);
+						int fluid = handler.getFluidInTank(0) == null ? 0 : handler.getFluidInTank(0).getAmount();
+						MutableComponent mes = Component.translatable("dcs.tip.amount").append(Component.literal(": ")).append(Component.literal(fluid + "/" + cap + "mB")).withStyle(
+								ChatFormatting.AQUA);
+						sp.sendSystemMessage(mes);
+						player.swing(hand, true);
+					}
+				});
+			}
+			level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 			return InteractionResultHolder.success(card);
 		}
 		return InteractionResultHolder.pass(card);
