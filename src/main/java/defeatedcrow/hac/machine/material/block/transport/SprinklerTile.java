@@ -131,11 +131,13 @@ public class SprinklerTile extends OwnableBaseTileDC implements IIntReceiver {
 				double r = Math.toRadians(rad);
 				int count = 5;
 				for (int i = 0; i < 5; i++) {
-					double dx = 0.2D * power * (0.5D + getLevel().getRandom().nextDouble()) * Math.sin(rad);
+					double p = 0.2D * power * (0.5D + getLevel().getRandom().nextDouble());
+					double dx = p * Math.sin(rad);
 					double dy = 0D;
-					double dz = 0.2D * power * (0.5D + getLevel().getRandom().nextDouble()) * Math.cos(rad);
+					double dz = p * Math.cos(rad);
 					Vec3 vec = Vec3.atBottomCenterOf(pos.above());
-					getLevel().addParticle(ParticleTypes.SPLASH, vec.x, vec.y, vec.z, dx, dy, dz);
+					getLevel().addParticle(ParticleTypes.SPLASH, vec.x, vec.y + 0.125D, vec.z, dx, dy, dz);
+					getLevel().addParticle(ParticleTypes.SPLASH, vec.x, vec.y + 0.125D, vec.z, -dx, dy, -dz);
 				}
 			}
 		}

@@ -109,19 +109,14 @@ public class LeavesCherry extends LeavesCropBlockDC {
 	@Override
 	public boolean canHarvest(BlockState thisState) {
 		CropStage stage = this.getCurrentStage(thisState);
-		if (getTier() == CropTier.WILD || getTier() == CropTier.COMMON)
-			return stage == CropStage.FLOWER || stage == CropStage.GROWN;
-		return stage == CropStage.GROWN;
+		return stage == CropStage.FLOWER || stage == CropStage.GROWN;
 	}
 
 	@Override
 	public List<ItemStack> getCropItems(BlockState state, int fortune) {
 		CropStage stage = this.getCurrentStage(state);
-		if (getTier() == CropTier.WILD && stage == CropStage.FLOWER) {
+		if (stage == CropStage.FLOWER) {
 			ItemStack ret = new ItemStack(FoodInit.FLOWER_CHERRY.get());
-			return ImmutableList.of(ret);
-		} else if (getTier() == CropTier.COMMON && stage == CropStage.FLOWER) {
-			ItemStack ret = new ItemStack(FoodInit.FLOWER_PLUM.get());
 			return ImmutableList.of(ret);
 		} else {
 			ItemStack ret = new ItemStack(getCropItem(getTier()));

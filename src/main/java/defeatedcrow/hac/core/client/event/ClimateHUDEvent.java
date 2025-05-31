@@ -1,4 +1,4 @@
-package defeatedcrow.hac.core.client;
+package defeatedcrow.hac.core.client.event;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.client.DCTexturePath;
 import defeatedcrow.hac.core.climate.ClientClimateData;
 import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.climate.WeatherChecker;

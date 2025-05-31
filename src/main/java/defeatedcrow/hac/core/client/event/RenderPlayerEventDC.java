@@ -1,4 +1,4 @@
-package defeatedcrow.hac.core.client;
+package defeatedcrow.hac.core.client.event;
 
 import java.util.Calendar;
 

@@ -345,12 +345,12 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		if (stage == CropStage.GROUND || stage == CropStage.SAPLING) {
 			int c1 = getMutationChance(level, pos, state);
 			random.nextInt(100);
-			if ((stage == CropStage.GROUND || stage == CropStage.SAPLING) && getTier() == CropTier.WILD && c1 > 0) {
+			if (getTier() == CropTier.WILD && c1 > 0) {
 				onMutation(level, pos, state, random, c1);
 			}
 		}
 
-		this.onGrow(level, pos, state);
+		this.onGrow(level, pos, level.getBlockState(pos));
 	}
 
 	/* IBlockDC */

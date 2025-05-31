@@ -1,4 +1,4 @@
-package defeatedcrow.hac.core.client;
+package defeatedcrow.hac.core.client.event;
 
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;

@@ -87,12 +87,12 @@ public abstract class FluidPipeBlock extends EntityBlockDC {
 		BlockState s5 = level.getBlockState(p5);
 		BlockState s6 = level.getBlockState(p6);
 		return this.defaultBlockState()
-				.setValue(DCState.NORTH, this.connectsTo(s1, level, p1, Direction.NORTH, true))
-				.setValue(DCState.EAST, this.connectsTo(s2, level, p2, Direction.EAST, true))
-				.setValue(DCState.SOUTH, this.connectsTo(s3, level, p3, Direction.SOUTH, true))
-				.setValue(DCState.WEST, this.connectsTo(s4, level, p4, Direction.WEST, true))
-				.setValue(DCState.UP, this.connectsTo(s5, level, p5, Direction.UP, true))
-				.setValue(DCState.DOWN, this.connectsTo(s6, level, p6, Direction.DOWN, true))
+				.setValue(DCState.NORTH, this.connectsTo(s1, level, p1, Direction.SOUTH, true))
+				.setValue(DCState.EAST, this.connectsTo(s2, level, p2, Direction.WEST, true))
+				.setValue(DCState.SOUTH, this.connectsTo(s3, level, p3, Direction.NORTH, true))
+				.setValue(DCState.WEST, this.connectsTo(s4, level, p4, Direction.EAST, true))
+				.setValue(DCState.UP, this.connectsTo(s5, level, p5, Direction.DOWN, true))
+				.setValue(DCState.DOWN, this.connectsTo(s6, level, p6, Direction.UP, true))
 				.setValue(DCState.POWERED, Boolean.valueOf(pow))
 				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}

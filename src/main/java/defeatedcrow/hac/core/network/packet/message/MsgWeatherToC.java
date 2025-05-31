@@ -1,8 +1,8 @@
 package defeatedcrow.hac.core.network.packet.message;
 
 import defeatedcrow.hac.api.climate.EnumSeason;
-import defeatedcrow.hac.core.client.BlockHitEffectsEvent;
-import defeatedcrow.hac.core.client.SoundMufflerEvent;
+import defeatedcrow.hac.core.client.event.BlockHitEffectsEvent;
+import defeatedcrow.hac.core.client.event.SoundMufflerEvent;
 import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.climate.WeatherChecker;
 import defeatedcrow.hac.core.network.packet.DCPacket;

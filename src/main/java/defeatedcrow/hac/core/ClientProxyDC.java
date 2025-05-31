@@ -4,14 +4,14 @@ import java.util.Optional;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
-import defeatedcrow.hac.core.client.AdvTooltipEvent;
-import defeatedcrow.hac.core.client.BlockHitEffectsEvent;
 import defeatedcrow.hac.core.client.ClientRegisterInit;
-import defeatedcrow.hac.core.client.ClimateHUDEvent;
 import defeatedcrow.hac.core.client.ColorHandlerRegister;
 import defeatedcrow.hac.core.client.DCTextureStitch;
-import defeatedcrow.hac.core.client.RenderPlayerEventDC;
-import defeatedcrow.hac.core.client.SoundMufflerEvent;
+import defeatedcrow.hac.core.client.event.AdvTooltipEvent;
+import defeatedcrow.hac.core.client.event.BlockHitEffectsEvent;
+import defeatedcrow.hac.core.client.event.ClimateHUDEvent;
+import defeatedcrow.hac.core.client.event.RenderPlayerEventDC;
+import defeatedcrow.hac.core.client.event.SoundMufflerEvent;
 import defeatedcrow.hac.core.client.gui.DisplayShelfScreen;
 import defeatedcrow.hac.core.client.gui.DoubleInventoryScreen;
 import defeatedcrow.hac.core.client.gui.SimpleInventoryScreen;

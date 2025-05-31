@@ -15,7 +15,6 @@ import defeatedcrow.hac.api.damage.ClimateDamageEvent.DamageSet;
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
-import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
@@ -26,6 +25,8 @@ import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import defeatedcrow.hac.magic.material.entity.MagicPictureEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.SimpleContainer;
@@ -43,9 +44,10 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.FireworkRocketEntity;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -327,12 +329,36 @@ public class LivingTickEventDC {
 		return -1;
 	}
 
+	// ファントムが爆発する
 	public static void onMonsterUpdate(LivingEntity monster) {
 		List<MagicPictureEntity> list = MagicPictureEvent.getList();
-		if (list.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLACK_RED)) && monster instanceof Phantom) {
-			monster.getLevel().explode(monster, monster.getX(), monster.getY(), monster.getZ(), 6.0F, Explosion.BlockInteraction.NONE);
+		if (/* list.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLACK_RED)) && */ monster instanceof Phantom) {
+			CompoundTag explosion = new CompoundTag();
+			int rand = monster.getLevel().getRandom().nextInt(64);
+			explosion.putByte("Type", (byte) (1 + rand & 3));
+			List<Integer> colors = Lists.newArrayList();
+			colors.add(fireworkColors[rand & 7].getFireworkColor());
+			if (rand > 31) {
+				colors.add(fireworkColors2[rand & 7].getFireworkColor());
+			}
+			explosion.putIntArray("Colors", colors);
+			if (rand > 47) {
+				explosion.putBoolean("Flicker", true);
+			}
+
+			ItemStack rocket = new ItemStack(Items.FIREWORK_ROCKET);
+			CompoundTag basetag = rocket.getOrCreateTagElement("Fireworks");
+			basetag.putByte("Flight", (byte) 1);
+			ListTag listtag = new ListTag();
+			listtag.add(explosion);
+			basetag.put("Explosions", listtag);
+
+			FireworkRocketEntity firework = new FireworkRocketEntity(monster.getLevel(), null, monster.getX(), monster.getY() + 1.0D, monster.getZ(), rocket);
+			monster.getLevel().addFreshEntity(firework);
 			monster.discard();
 		}
 	}
 
+	private static DyeColor[] fireworkColors = { DyeColor.BLUE, DyeColor.LIGHT_BLUE, DyeColor.LIME, DyeColor.MAGENTA, DyeColor.ORANGE, DyeColor.PURPLE, DyeColor.RED, DyeColor.YELLOW };
+	private static DyeColor[] fireworkColors2 = { DyeColor.LIGHT_BLUE, DyeColor.CYAN, DyeColor.GREEN, DyeColor.ORANGE, DyeColor.RED, DyeColor.PINK, DyeColor.YELLOW, DyeColor.LIME };
 }
