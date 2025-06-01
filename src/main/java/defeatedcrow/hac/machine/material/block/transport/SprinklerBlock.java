@@ -157,7 +157,7 @@ public class SprinklerBlock extends EntityBlockDC {
 			list.add(tex2);
 			list.add(tex3);
 		} else {
-			list.add(Component.translatable("dcs.tip.shift"));
+			list.add(tex2);
 		}
 	}
 

@@ -15,6 +15,7 @@ import defeatedcrow.hac.api.damage.ClimateDamageEvent.DamageSet;
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
+import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
@@ -332,7 +333,7 @@ public class LivingTickEventDC {
 	// ファントムが爆発する
 	public static void onMonsterUpdate(LivingEntity monster) {
 		List<MagicPictureEntity> list = MagicPictureEvent.getList();
-		if (/* list.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLACK_RED)) && */ monster instanceof Phantom) {
+		if (list.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLACK_RED)) && monster instanceof Phantom) {
 			CompoundTag explosion = new CompoundTag();
 			int rand = monster.getLevel().getRandom().nextInt(64);
 			explosion.putByte("Type", (byte) (1 + rand & 3));
