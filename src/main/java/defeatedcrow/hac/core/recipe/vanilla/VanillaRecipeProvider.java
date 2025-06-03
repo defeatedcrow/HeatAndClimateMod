@@ -269,6 +269,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_stone_quartz", has(CoreInit.STONE_QUARTZ.get()))
 				.save(cons, "dcs_climate:core/sieve_stone_quartz");
 
+		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_CRYSTAL.get(), 1)
+				.requires(CoreInit.STONE_QUARTZ.get())
+				.requires(CoreInit.MORTAR.get())
+				.group("crusher_mortar")
+				.unlockedBy("has_stone_quartz", has(CoreInit.STONE_QUARTZ.get()))
+				.save(cons, "dcs_climate:core/mortar_stone_quartz");
+
 		ShapelessRecipeBuilder.shapeless(Items.QUARTZ, 4)
 				.requires(Blocks.QUARTZ_BLOCK)
 				.requires(CoreInit.MORTAR.get())
@@ -276,6 +283,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.group("crusher_mortar")
 				.unlockedBy("has_block_quartz", has(Blocks.QUARTZ_BLOCK))
 				.save(cons, "dcs_climate:core/sieve_block_quartz");
+
 	}
 
 	private static void mortarMillsRecipes(Consumer<FinishedRecipe> cons, MillsDC.Crops mill) {
@@ -2356,7 +2364,16 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('X', TagDC.ItemTag.STICK_SORGHUM)
 				.define('Y', Tags.Items.STRING)
 				.unlockedBy("has_rod_sorghum", has(TagDC.ItemTag.STICK_SORGHUM))
-				.save(cons, "dcs_climate:core/scaffolding_another_0");
+				.save(cons, "dcs_climate:core/scaffolding_another_1");
+
+		ShapedRecipeBuilder.shaped(Items.SCAFFOLDING, 4)
+				.pattern("XYX")
+				.pattern("X X")
+				.pattern("X X")
+				.define('X', Tags.Items.RODS_WOODEN)
+				.define('Y', TagDC.ItemTag.VINE)
+				.unlockedBy("has_vine", has(TagDC.ItemTag.VINE))
+				.save(cons, "dcs_climate:core/scaffolding_another_2");
 
 		ShapedRecipeBuilder.shaped(Items.BOW, 1)
 				.pattern(" XY")

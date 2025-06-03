@@ -20,6 +20,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.network.packet.message.MsgEffectToC;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicUtil;
@@ -333,6 +334,11 @@ public class LivingTickEventDC {
 	// ファントムが爆発する
 	public static void onMonsterUpdate(LivingEntity monster) {
 		List<MagicPictureEntity> list = MagicPictureEvent.getList();
+		if (list.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLACK_WHITE))
+				&& !monster.getType().is(TagDC.EntityTag.SPAWN_SUPPRESSOR_BLACKLIST)) {
+			monster.discard();
+			return;
+		}
 		if (list.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLACK_RED)) && monster instanceof Phantom) {
 			CompoundTag explosion = new CompoundTag();
 			int rand = monster.getLevel().getRandom().nextInt(64);

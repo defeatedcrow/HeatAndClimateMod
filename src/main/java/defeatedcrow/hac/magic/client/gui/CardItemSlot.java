@@ -1,6 +1,6 @@
 package defeatedcrow.hac.magic.client.gui;
 
-import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.api.magic.ICardMagic;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
@@ -18,7 +18,7 @@ public class CardItemSlot extends Slot {
 	}
 
 	protected boolean isMagicCard(ItemStack item) {
-		return !DCUtil.isEmpty(item) && item.is(TagDC.ItemTag.MAGIC_CARD);
+		return !DCUtil.isEmpty(item) && item.getItem() instanceof ICardMagic;
 	}
 
 }

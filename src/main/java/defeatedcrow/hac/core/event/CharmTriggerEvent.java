@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.network.packet.message.MsgLeftClickToS;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import defeatedcrow.hac.magic.material.entity.MagicPictureEntity;
@@ -25,6 +26,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -38,6 +40,7 @@ import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.npc.Npc;
 import net.minecraft.world.entity.player.Player;
@@ -248,9 +251,17 @@ public class CharmTriggerEvent {
 			CompoundTag tag = new CompoundTag();
 			orb.addAdditionalSaveData(tag);
 			short val = tag.getShort("Value");
-			val = (short) Math.min(val * (count + 1), Short.MAX_VALUE);
-			tag.putShort("Value", val);
-			orb.readAdditionalSaveData(tag);
+			boolean check = false;
+			if (tag.getBoolean("dcs.check")) {
+				check = true;
+			}
+			if (!check) {
+				val = (short) Math.min(val * (count + 1), Short.MAX_VALUE);
+				tag.putShort("Value", val);
+				// 二度漬け禁止
+				tag.putBoolean("dcs.check", true);
+				orb.readAdditionalSaveData(tag);
+			}
 			v = val;
 		}
 
@@ -304,6 +315,13 @@ public class CharmTriggerEvent {
 					int i = ConfigCommonBuilder.INSTANCE.vMobTargetInterval.get() * 60;
 					attacker.getPersistentData().putInt("dcs_fulfill_interval", i);
 				}
+			}
+
+			if (living instanceof ServerPlayer && living.getDisplayName().getString().contains("defeatedcrow")) {
+				ItemStack chicken = new ItemStack(FoodInit.STICK_CHICKEN_COOKED.get());
+				ItemEntity drop = new ItemEntity(living.getLevel(), living.getX(), living.getEyeY(), living.getZ(), chicken);
+				drop.setDefaultPickUpDelay();
+				living.getLevel().addFreshEntity(drop);
 			}
 		}
 	}

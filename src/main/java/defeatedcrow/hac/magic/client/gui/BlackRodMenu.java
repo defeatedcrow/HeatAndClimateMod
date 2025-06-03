@@ -63,32 +63,35 @@ public class BlackRodMenu extends AbstractContainerMenu {
 
 	@Override
 	public ItemStack quickMoveStack(Player player, int s) {
-		ItemStack stack = ItemStack.EMPTY;
-		Slot slot = this.slots.get(s);
-		int max = container.getContainerSize();
-		if (s != selected && slot != null && slot.hasItem()) {
-			ItemStack check = slot.getItem();
-			stack = check.copy();
-			if (s < max) {
-				if (!this.moveItemStackTo(check, max, this.slots.size(), true)) {
-					return ItemStack.EMPTY;
-				}
-			} else if (slot.mayPlace(stack) && !this.moveItemStackTo(check, 0, max, false)) {
-				return ItemStack.EMPTY;
-			}
-
-			if (check.isEmpty()) {
-				slot.set(ItemStack.EMPTY);
-			} else {
-				slot.setChanged();
-			}
-
-			if (check.getCount() == stack.getCount()) {
-				return ItemStack.EMPTY;
-			}
-
-			slot.onTake(player, check);
-		}
+		// ItemStack stack = ItemStack.EMPTY;
+		// Slot slot = this.slots.get(s);
+		// if (s != selected && slot != null && slot.hasItem()) {
+		// ItemStack check = slot.getItem();
+		// stack = check.copy();
+		// if (s < 5) {
+		// if (!this.moveItemStackTo(check, 5, this.slots.size(), true)) {
+		// return ItemStack.EMPTY;
+		// }
+		// } else {
+		// for (int k = 0; k < 4; k++) {
+		// if (this.slots.get(k).mayPlace(stack) && !this.moveItemStackTo(check, k, k + 1, false)) {
+		// return ItemStack.EMPTY;
+		// }
+		// }
+		// }
+		//
+		// if (check.isEmpty()) {
+		// slot.set(ItemStack.EMPTY);
+		// } else {
+		// slot.setChanged();
+		// }
+		//
+		// if (check.getCount() == stack.getCount()) {
+		// return ItemStack.EMPTY;
+		// }
+		//
+		// slot.onTake(player, check);
+		// }
 
 		return stack;
 	}

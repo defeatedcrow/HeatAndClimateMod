@@ -11,6 +11,7 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.crop.CropGrowType;
+import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
@@ -94,6 +95,16 @@ public class CropBlockAmaranth extends ClimateCropBaseBlock {
 			return 2;
 		default:
 			return 5;
+		}
+	}
+
+	@Override
+	public boolean canHarvest(BlockState state) {
+		CropStage stage = this.getCurrentStage(state);
+		if (this.getTier() == CropTier.RARE) {
+			return stage == CropStage.GROWN || stage == CropStage.FLOWER;
+		} else {
+			return stage == CropStage.GROWN;
 		}
 	}
 

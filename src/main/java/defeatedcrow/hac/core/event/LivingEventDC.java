@@ -4,6 +4,7 @@ import java.util.List;
 
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.material.item.tool.HarpoonItem;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
@@ -99,11 +100,12 @@ public class LivingEventDC {
 	@SubscribeEvent
 	public static void onSpawnCheck(LivingSpawnEvent.CheckSpawn event) {
 		LivingEntity entity = event.getEntity();
-		if (event.getLevel() instanceof ServerLevel && entity instanceof Enemy && (event.getSpawnReason() == MobSpawnType.NATURAL
-				|| event.getSpawnReason() == MobSpawnType.JOCKEY
-				|| event.getSpawnReason() == MobSpawnType.MOB_SUMMONED
-				|| event.getSpawnReason() == MobSpawnType.SPAWNER
-				|| event.getSpawnReason() == MobSpawnType.EVENT)) {
+		if (event.getLevel() instanceof ServerLevel && entity instanceof Enemy && !entity.getType().is(TagDC.EntityTag.SPAWN_SUPPRESSOR_BLACKLIST)
+				&& (event.getSpawnReason() == MobSpawnType.NATURAL
+						|| event.getSpawnReason() == MobSpawnType.JOCKEY
+						|| event.getSpawnReason() == MobSpawnType.MOB_SUMMONED
+						|| event.getSpawnReason() == MobSpawnType.SPAWNER
+						|| event.getSpawnReason() == MobSpawnType.EVENT)) {
 			boolean flag = false;
 			List<MagicPictureEntity> picList = MagicPictureEvent.getList();
 			if (picList.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLACK_WHITE))) {

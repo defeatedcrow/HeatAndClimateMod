@@ -39,7 +39,7 @@ public class LureItem extends MaterialItemDC {
 			enchantment = CoreInit.BOTTOM_FISHING.get();
 		}
 		if (item.getItem() == CoreInit.LURE_MAGNET.get()) {
-			enchantment = Enchantments.FISHING_SPEED;
+			enchantment = Enchantments.FISHING_LUCK;
 		}
 		if (enchantment != null) {
 			MutableComponent t1 = Component.translatable("dcs.tip.active_element").withStyle(ChatFormatting.GRAY);

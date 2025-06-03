@@ -11,6 +11,7 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.crop.CropGrowType;
+import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.crop.IClimateCrop;
@@ -78,8 +79,13 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public boolean canHarvest(BlockState thisState) {
-		return getTier() == CropTier.RARE || getTier() == CropTier.EPIC ? DCState.getInt(thisState, DCState.STAGE6) > 2 : super.canHarvest(thisState);
+	public boolean canHarvest(BlockState state) {
+		CropStage stage = this.getCurrentStage(state);
+		if (this.getTier() == CropTier.RARE || this.getTier() == CropTier.EPIC) {
+			return stage == CropStage.GROWN || stage == CropStage.FLOWER;
+		} else {
+			return stage == CropStage.GROWN;
+		}
 	}
 
 	@Override

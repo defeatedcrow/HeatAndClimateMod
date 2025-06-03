@@ -1184,7 +1184,7 @@ public class TagDC {
 	}
 
 	public static class EntityTag {
-		public static final TagKey<EntityType<?>> SPAWN_SUPPRESSOR = entityTag("spawn_suppressor");
+		public static final TagKey<EntityType<?>> SPAWN_SUPPRESSOR_BLACKLIST = entityTag("spawn_suppressor_blacklist");
 		public static final TagKey<EntityType<?>> MAGIC_PICTURE = entityTag("magic_picture");
 
 		private static TagKey<EntityType<?>> entityTag(String name) {

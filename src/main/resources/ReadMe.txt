@@ -403,7 +403,7 @@
   宝石や作物から『色の魔法の素』を取り出し、魔法のアイテムの素材に使用します。
   Color extracts are extracted from crops and gems, and used as a material for magic items.
 
-  コンフィグで魔法ハードモードが有効化されている場合、カードやアクセサリーの魔法にはコスト（EXP）を支払う必要があります。
+  コンフィグで魔法ハードモードが有効化されている場合、カードやアクセサリーの魔法にはコスト(EXP)を支払う必要があります。
   If Magic Hard Mode is enabled in config, player must pay a cost (EXP) to use a card or jewel.
 
 　● 魔法の矢 / Magical Arrow
@@ -744,7 +744,14 @@
 
 #### 更新履歴 / Change log ####
 
-○v4-beta29
+○v4-beta30
+ change: 黒白の絵画に、既に湧いたモンスターを消去する機能を追加
+ change: いくつかのアナザーレシピを追加
+ fix: フクロウの杖のGUI操作によるアイテム消滅対策を実施
+ fix: 一部の作物の収穫条件がおかしくなっている
+ fix: 魔法のネックレスによる経験値増幅効果を修正
+
+○v4-beta29 (2025.6.1)
  fix: ファントムが無条件で爆発した
 
 ○v4-beta28 (2025.5.31)
