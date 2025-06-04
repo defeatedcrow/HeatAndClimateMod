@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class LeavesClove extends LeavesCropBlockDC {
 
 	public LeavesClove() {
-		super(CropType.MYRTLE, CropTier.COMMON, false);
+		super(CropType.MYRTLE, CropTier.RARE, false);
 		this.setSeason(EnumSeason.SUMMER_LATE, EnumSeason.AUTUMN_EARLY);
 		flowerSeasons.add(EnumSeason.WINTER_LATE);
 		cropSeasons.add(EnumSeason.SPRING_EARLY);

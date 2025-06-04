@@ -67,8 +67,8 @@ public class PluginRecipeListDC {
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_BR_RADISH.get());
 
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_CA_CHILI.get());
-			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_CA_PAPRIKA.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_CA_BELL.get());
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_CA_PAPRIKA.get());
 
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_CR_OAT.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_CR_RYE.get());
