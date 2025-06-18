@@ -13,6 +13,7 @@ public class ConfigClientBuilder {
 	public final ForgeConfigSpec.BooleanValue showDamEffect;
 	public final ForgeConfigSpec.BooleanValue showHUD;
 	public final ForgeConfigSpec.BooleanValue showTasteTip;
+	public final ForgeConfigSpec.BooleanValue disablePotionEffect;
 
 	public final ForgeConfigSpec.IntValue HUD_c;
 
@@ -41,8 +42,12 @@ public class ConfigClientBuilder {
 				.define("Show Damage Effect", true);
 
 		this.showHUD = builder
-				.comment(" Show climate info on HUD.")
+				.comment("Show climate info on HUD.")
 				.define("Show Climate HUD", true);
+
+		this.disablePotionEffect = builder
+				.comment("Disable potion effects particles in first person view.")
+				.define("Disable potion particles in FPV", true);
 
 		builder.pop();
 

@@ -15,7 +15,9 @@
     "AttackTargetGoalMixin",
     "VillagerMixin"
   ],
-  "client": [],
+  "client": [
+    "ParticleEngineMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1

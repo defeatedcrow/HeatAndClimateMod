@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "hand_spindle",
+  "key": {
+    "X": {
+      "item": "minecraft:cobweb"
+    },
+    "Y": {
+      "item": "dcs_climate:main/hand_spindle"
+    }
+  },
+  "pattern": [
+    " X ",
+    "XYX",
+    " X "
+  ],
+  "result": {
+    "count": 4,
+    "item": "dcs_climate:food/string_wool"
+  }
+}

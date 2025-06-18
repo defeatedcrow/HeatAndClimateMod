@@ -1315,6 +1315,16 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_wool", has(ItemTags.WOOL))
 				.save(cons, "dcs_climate:core/spindle_string_wool");
 
+		ShapedRecipeBuilder.shaped(FoodInit.STRING_WOOL.get(), 4)
+				.pattern(" X ")
+				.pattern("XYX")
+				.pattern(" X ")
+				.define('X', Items.COBWEB)
+				.define('Y', CoreInit.HAND_SPINDLE.get())
+				.group("hand_spindle")
+				.unlockedBy("has_cobweb", has(Items.COBWEB))
+				.save(cons, "dcs_climate:core/spindle_string_wool_2");
+
 		ShapelessRecipeBuilder.shapeless(Items.STRING, 1)
 				.requires(Tags.Items.STRING)
 				.unlockedBy("has_string", has(Tags.Items.STRING))
@@ -1342,11 +1352,6 @@ public class FoodRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_PLANT.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_JUTE))
 				.unlockedBy("has_jute", has(TagDC.ItemTag.CROP_JUTE))
-				.save(cons, "dcs_climate:food/jute_fiber_plant");
-
-		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_PLANT.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.WEED))
-				.unlockedBy("has_weed", has(TagDC.ItemTag.WEED))
 				.save(cons, "dcs_climate:food/jute_fiber_plant");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1)

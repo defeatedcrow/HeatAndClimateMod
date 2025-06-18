@@ -726,13 +726,14 @@
    送り先が見つからないとき、コンベアの下に落とします。
    When it can't find a destination, it drops it under the conveyor.
 
-   『Phrase』モードでは、金床で変更したアイテムの名前をフィルターに利用できます。
-   In "Phrase" mode, the anvil-modified item name can be used for filtering.
-
   ・ 仕分けコンベア / Sorter Conveyor
 
    通過するアイテムをフィルタリングし、搬出先を切替えます。
    The destination will change depending on the item set in the filter.
+
+
+   『Phrase』モードでは、金床で変更したアイテムの名前をフィルターに利用できます。
+   In "Phrase" mode, the anvil-modified item name can be used for filtering.
 
   ・ 充填コンベア / Filler Conveyor
 
@@ -743,6 +744,12 @@
 ****************************************************************************************************
 
 #### 更新履歴 / Change log ####
+
+○v4-beta31
+ change: いくつかのアナザーレシピの追加
+ change: 一人称視点でのポーションエフェクトのパーティクルを非表示にするコンフィグを追加
+ fix: マシンやチェストに付けたカスタムネームが設置時に引き継がれるように
+ fix: 負荷対策のため、赤の矢がアンロードされるとき、代わりに消滅するようにした
 
 ○v4-beta30
  change: 黒白の絵画に、既に湧いたモンスターを消去する機能を追加

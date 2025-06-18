@@ -152,6 +152,9 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 			CompoundTag tag = item.getOrCreateTag();
 			basetile.writeTag(tag);
 			item.setTag(tag);
+			if (basetile.getCustomName() != null) {
+				item.setHoverName(basetile.getCustomName());
+			}
 		}
 		return item;
 	}
@@ -161,6 +164,9 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 		if (!DCUtil.isEmpty(item) && item.hasTag() && tile instanceof OwnableBaseTileDC basetile) {
 			CompoundTag tag = item.getTag();
 			basetile.load(tag);
+			if (item.hasCustomHoverName()) {
+				basetile.setCustomName(item.getHoverName());
+			}
 		}
 	}
 
