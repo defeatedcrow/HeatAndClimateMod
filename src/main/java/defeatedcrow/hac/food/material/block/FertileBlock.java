@@ -156,7 +156,7 @@ public class FertileBlock extends FarmBlock implements EntityBlock, IFertileBloc
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.fertile.fertile");
-		MutableComponent tex2 = Component.translatable("dcs.tip.fertilr.mutation.on").withStyle(ChatFormatting.GREEN);
+		MutableComponent tex2 = Component.translatable("dcs.tip.fertile.mutation.on").withStyle(ChatFormatting.GREEN);
 		if (ClimateCore.proxy.keyShiftPushed()) {
 			list.add(tex1);
 			list.add(tex2);

@@ -8,6 +8,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import net.minecraft.ChatFormatting;
@@ -157,11 +158,18 @@ public class FertilePlanterBlock extends FertileBlock {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
-		MutableComponent tex1 = Component.translatable("dcs.tip.fertile.fertile");
-		list.add(tex1);
-		if (!mutable) {
-			MutableComponent tex2 = Component.translatable("dcs.tip.fertile.mutation.off").withStyle(ChatFormatting.DARK_GREEN);
-			list.add(tex2);
+		if (ClimateCore.proxy.keyShiftPushed()) {
+			MutableComponent tex1 = Component.translatable("dcs.tip.fertile.fertile");
+			list.add(tex1);
+			if (!mutable) {
+				MutableComponent tex2 = Component.translatable("dcs.tip.fertile.mutation.off").withStyle(ChatFormatting.DARK_GREEN);
+				list.add(tex2);
+			} else {
+				MutableComponent tex2 = Component.translatable("dcs.tip.fertile.mutation.on").withStyle(ChatFormatting.GREEN);
+				list.add(tex2);
+			}
+		} else {
+			list.add(Component.translatable("dcs.tip.shift"));
 		}
 	}
 

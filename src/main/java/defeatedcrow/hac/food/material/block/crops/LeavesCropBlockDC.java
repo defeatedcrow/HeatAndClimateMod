@@ -406,7 +406,8 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 		BlockState nextState = state.setValue(DCState.STAGE6, next);
 		level.setBlock(pos, nextState, 2);
 		if (defoliation && next == EnumSeason.WINTER_EARLY.getSeasonLimitedID()) {
-
+			// Generate fallen leaves
+			onDefoliation(level, pos, nextState);
 		}
 		return current != next;
 	}
