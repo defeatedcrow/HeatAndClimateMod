@@ -16,6 +16,7 @@ public class EntityTagProviderDC extends EntityTypeTagsProvider {
 		super(gen, "dcs_climate", helper);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void addTags() {
 		tag(EntityTypeTags.ARROWS).add(MagicInit.ARROW_WHITE_ENTITY.get(), MagicInit.ARROW_BLUE_ENTITY.get(),

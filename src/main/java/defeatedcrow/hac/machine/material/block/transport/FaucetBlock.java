@@ -149,6 +149,7 @@ public class FaucetBlock extends EntityBlockDC {
 			boolean pow = level.hasNeighborSignal(pos);
 			if (pow != DCState.getBool(state, DCState.POWERED)) {
 				level.setBlock(pos, state.setValue(DCState.POWERED, Boolean.valueOf(pow)), 2);
+				level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.8F, 1.5F);
 			}
 		}
 	}
@@ -158,6 +159,7 @@ public class FaucetBlock extends EntityBlockDC {
 		if (state.getBlock() instanceof FaucetBlock) {
 			boolean l = !DCState.getBool(state, DCState.POWERED);
 			level.setBlock(pos, state.setValue(DCState.POWERED, Boolean.valueOf(l)), 3);
+			level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.8F, 1.5F);
 		}
 	}
 

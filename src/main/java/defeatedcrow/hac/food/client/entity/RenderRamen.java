@@ -16,9 +16,9 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderRamen<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderRamen<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected RamenModel model;
+	protected RamenModel<FoodEntityBase> model;
 
 	public RenderRamen(Context ctx) {
 		super(ctx);

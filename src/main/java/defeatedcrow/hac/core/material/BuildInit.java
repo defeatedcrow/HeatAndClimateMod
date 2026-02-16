@@ -31,6 +31,7 @@ import defeatedcrow.hac.core.material.block.building.FenceWoodDC;
 import defeatedcrow.hac.core.material.block.building.GrassSlab;
 import defeatedcrow.hac.core.material.block.building.GroundSlab;
 import defeatedcrow.hac.core.material.block.building.LanternLight;
+import defeatedcrow.hac.core.material.block.building.LanternLight.LampType;
 import defeatedcrow.hac.core.material.block.building.LockerBlock;
 import defeatedcrow.hac.core.material.block.building.LockerTile;
 import defeatedcrow.hac.core.material.block.building.LuggageBlock;
@@ -427,17 +428,17 @@ public class BuildInit {
 	public static final RegistryObject<Block> CANDLESTICK = regBlock("candlestick", () -> new Candlestick("candlestick"), null);
 	public static final RegistryObject<Block> CHANDELIER_CANDLE = regBlock("chandelier_candle", () -> new ChandelierCandle("candle"), null);
 
-	public static final RegistryObject<Block> BERRY_LANTERN_WHITE = regBlock("berry_lantern_white", () -> new LanternLight("berry_lantern_white"), TagDC.ItemTag.HAC_LANTERN);
-	public static final RegistryObject<Block> BERRY_LANTERN_BLUE = regBlock("berry_lantern_blue", () -> new LanternLight("berry_lantern_blue"), TagDC.ItemTag.HAC_LANTERN);
-	public static final RegistryObject<Block> BERRY_LANTERN_BLACK = regBlock("berry_lantern_black", () -> new LanternLight("berry_lantern_black"), TagDC.ItemTag.HAC_LANTERN);
-	public static final RegistryObject<Block> BERRY_LANTERN_RED = regBlock("berry_lantern_red", () -> new LanternLight("berry_lantern_red"), TagDC.ItemTag.HAC_LANTERN);
-	public static final RegistryObject<Block> BERRY_LANTERN_GREEN = regBlock("berry_lantern_green", () -> new LanternLight("berry_lantern_green"), TagDC.ItemTag.HAC_LANTERN);
+	public static final RegistryObject<Block> BERRY_LANTERN_WHITE = regBlock("berry_lantern_white", () -> new LanternLight("berry_lantern_white", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
+	public static final RegistryObject<Block> BERRY_LANTERN_BLUE = regBlock("berry_lantern_blue", () -> new LanternLight("berry_lantern_blue", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
+	public static final RegistryObject<Block> BERRY_LANTERN_BLACK = regBlock("berry_lantern_black", () -> new LanternLight("berry_lantern_black", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
+	public static final RegistryObject<Block> BERRY_LANTERN_RED = regBlock("berry_lantern_red", () -> new LanternLight("berry_lantern_red", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
+	public static final RegistryObject<Block> BERRY_LANTERN_GREEN = regBlock("berry_lantern_green", () -> new LanternLight("berry_lantern_green", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
 
-	public static final RegistryObject<Block> ANDON_LANTERN_WHITE = regBlock("andon_lantern_white", () -> new LanternLight("andon_lantern_white"), TagDC.ItemTag.HAC_ANDON);
-	public static final RegistryObject<Block> ANDON_LANTERN_BLUE = regBlock("andon_lantern_blue", () -> new LanternLight("andon_lantern_blue"), TagDC.ItemTag.HAC_ANDON);
-	public static final RegistryObject<Block> ANDON_LANTERN_BLACK = regBlock("andon_lantern_black", () -> new LanternLight("andon_lantern_black"), TagDC.ItemTag.HAC_ANDON);
-	public static final RegistryObject<Block> ANDON_LANTERN_RED = regBlock("andon_lantern_red", () -> new LanternLight("andon_lantern_red"), TagDC.ItemTag.HAC_ANDON);
-	public static final RegistryObject<Block> ANDON_LANTERN_GREEN = regBlock("andon_lantern_green", () -> new LanternLight("andon_lantern_green"), TagDC.ItemTag.HAC_ANDON);
+	public static final RegistryObject<Block> ANDON_LANTERN_WHITE = regBlock("andon_lantern_white", () -> new LanternLight("andon_lantern_white", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
+	public static final RegistryObject<Block> ANDON_LANTERN_BLUE = regBlock("andon_lantern_blue", () -> new LanternLight("andon_lantern_blue", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
+	public static final RegistryObject<Block> ANDON_LANTERN_BLACK = regBlock("andon_lantern_black", () -> new LanternLight("andon_lantern_black", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
+	public static final RegistryObject<Block> ANDON_LANTERN_RED = regBlock("andon_lantern_red", () -> new LanternLight("andon_lantern_red", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
+	public static final RegistryObject<Block> ANDON_LANTERN_GREEN = regBlock("andon_lantern_green", () -> new LanternLight("andon_lantern_green", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
 
 	public static final RegistryObject<Block> CHAIN_GOLD = regBlock("chain_gold", () -> new ChainBlockDC("gold"), null);
 	public static final RegistryObject<Block> CHAIN_VINE = regBlock("chain_vine", () -> new ChainBlockDC("vine", BlockBehaviour.Properties.copy(Blocks.ORANGE_WOOL)), null);
@@ -472,11 +473,11 @@ public class BuildInit {
 	public static final RegistryObject<Block> CHAIR_RED = regBlock("chair_red", () -> new ChairBlock("chair_red"), TagDC.ItemTag.HAC_CHAIR);
 	public static final RegistryObject<Block> CHAIR_GREEN = regBlock("chair_green", () -> new ChairBlock("chair_green"), TagDC.ItemTag.HAC_CHAIR);
 
-	public static final RegistryObject<Block> CHAIR_ROUND_WHITE = regBlock("chair_round_white", () -> new ChairRoundBlock("chair_round_white"), null);
-	public static final RegistryObject<Block> CHAIR_ROUND_BLUE = regBlock("chair_round_blue", () -> new ChairRoundBlock("chair_round_blue"), null);
-	public static final RegistryObject<Block> CHAIR_ROUND_BLACK = regBlock("chair_round_black", () -> new ChairRoundBlock("chair_round_black"), null);
-	public static final RegistryObject<Block> CHAIR_ROUND_RED = regBlock("chair_round_red", () -> new ChairRoundBlock("chair_round_red"), null);
-	public static final RegistryObject<Block> CHAIR_ROUND_GREEN = regBlock("chair_round_green", () -> new ChairRoundBlock("chair_round_green"), null);
+	public static final RegistryObject<Block> CHAIR_ROUND_WHITE = regBlock("chair_round_white", () -> new ChairRoundBlock("chair_round_white"), TagDC.ItemTag.HAC_ROUND_CHAIR);
+	public static final RegistryObject<Block> CHAIR_ROUND_BLUE = regBlock("chair_round_blue", () -> new ChairRoundBlock("chair_round_blue"), TagDC.ItemTag.HAC_ROUND_CHAIR);
+	public static final RegistryObject<Block> CHAIR_ROUND_BLACK = regBlock("chair_round_black", () -> new ChairRoundBlock("chair_round_black"), TagDC.ItemTag.HAC_ROUND_CHAIR);
+	public static final RegistryObject<Block> CHAIR_ROUND_RED = regBlock("chair_round_red", () -> new ChairRoundBlock("chair_round_red"), TagDC.ItemTag.HAC_ROUND_CHAIR);
+	public static final RegistryObject<Block> CHAIR_ROUND_GREEN = regBlock("chair_round_green", () -> new ChairRoundBlock("chair_round_green"), TagDC.ItemTag.HAC_ROUND_CHAIR);
 
 	public static final RegistryObject<Block> SOFA_WHITE = regBlock("sofa_white", () -> new SofaBlock("sofa_white"), TagDC.ItemTag.HAC_SOFA);
 	public static final RegistryObject<Block> SOFA_ORANGE = regBlock("sofa_orange", () -> new SofaBlock("sofa_orange"), TagDC.ItemTag.HAC_SOFA);

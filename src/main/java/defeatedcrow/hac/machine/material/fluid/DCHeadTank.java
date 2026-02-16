@@ -54,6 +54,10 @@ public class DCHeadTank extends DCTank implements IFluidPipe, IFacingTile, ICapa
 		return flowRate;
 	}
 
+	public boolean isAlmostFull() {
+		return (fluid != null) && (fluid.getAmount() + flowRate >= capacity);
+	}
+
 	@Override
 	public FaceIO getFace(Direction dir) {
 		int i = dir.get3DDataValue();
@@ -120,7 +124,7 @@ public class DCHeadTank extends DCTank implements IFluidPipe, IFacingTile, ICapa
 	@Override
 	public int fill(FluidStack get, FluidAction action) {
 		if (!get.isEmpty() && isFluidValid(get)) {
-			int vac = capacity - this.getFluidAmount();
+			int vac = getCapacity() - this.getFluidAmount();
 			int ret = Math.min(vac, get.getAmount());
 			// ret = Math.min(ret, flowRate);
 			if (!action.simulate() && ret > 0) {
@@ -144,7 +148,7 @@ public class DCHeadTank extends DCTank implements IFluidPipe, IFacingTile, ICapa
 	public @NotNull FluidStack drain(int maxDrain, FluidAction action) {
 		if (!fluid.isEmpty()) {
 			int ret = Math.min(maxDrain, fluid.getAmount());
-			ret = Math.min(ret, flowRate);
+			ret = Math.min(ret, getFlowRate());
 			if (ret > 0) {
 				FluidStack f = fluid.copy();
 				f.setAmount(ret);
@@ -170,29 +174,28 @@ public class DCHeadTank extends DCTank implements IFluidPipe, IFacingTile, ICapa
 	}
 
 	@Override
-	public int fill(FluidStack get, FluidAction action, Direction dir) {
-		if (getFace(dir).canReceive()) {
-			return fill(get, action);
+	public int fill(FluidStack get, FluidAction action, Direction from) {
+		if (getFace(from).canReceive()) {
+			if (from != Direction.DOWN || DCFluidUtil.getHead(get) > 0 || DCFluidUtil.isGas(get)) {
+				FluidStack copy = DCFluidUtil.addHead(get.copy(), DCFluidUtil.getDirectionHead(from.getOpposite()));
+				return fill(copy, action);
+			}
 		}
 		return 0;
 	}
 
 	@Override
-	public @NotNull FluidStack drain(FluidStack resource, FluidAction action, Direction dir) {
+	public @NotNull FluidStack drain(FluidStack resource, FluidAction action, Direction to) {
 		if (DCFluidUtil.isSameFluid(fluid, resource)) {
-			return drain(resource.getAmount(), action, dir);
+			return drain(resource.getAmount(), action, to);
 		}
 		return FluidStack.EMPTY;
 	}
 
 	@Override
-	public @NotNull FluidStack drain(int maxDrain, FluidAction action, Direction dir) {
-		if (getFace(dir).canExtract()) {
-			if (dir != Direction.UP || DCFluidUtil.getHead(fluid) > 0 || DCFluidUtil.isGas(fluid)) {
-				FluidStack ret = drain(maxDrain, action);
-				ret = DCFluidUtil.addHead(ret, DCFluidUtil.getDirectionHead(dir));
-				return ret;
-			}
+	public @NotNull FluidStack drain(int maxDrain, FluidAction action, Direction to) {
+		if (getFace(to).canExtract()) {
+			return drain(maxDrain, action);
 		}
 		return FluidStack.EMPTY;
 	}
@@ -201,9 +204,7 @@ public class DCHeadTank extends DCTank implements IFluidPipe, IFacingTile, ICapa
 
 	@Override
 	public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction dir) {
-		if (dir == null) {
-			return ForgeCapabilities.FLUID_HANDLER.orEmpty(cap, holder);
-		} else if (getFace(dir) != FaceIO.NONE) {
+		if (dir == null || getFace(dir) != FaceIO.NONE) {
 			return ForgeCapabilities.FLUID_HANDLER.orEmpty(cap, holder);
 		}
 		return LazyOptional.empty();

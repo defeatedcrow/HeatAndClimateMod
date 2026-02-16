@@ -75,6 +75,7 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Nullable
 	protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> type, BlockEntityType<E> type2, BlockEntityTicker<? super E> ticker) {
 		return type2 == type ? (BlockEntityTicker<A>) ticker : null;
@@ -100,9 +101,9 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 					}
 				}
 			}
-			return InteractionResult.sidedSuccess(level.isClientSide);
+			return InteractionResult.FAIL;
 		} else {
-			return InteractionResult.sidedSuccess(level.isClientSide);
+			return InteractionResult.FAIL;
 		}
 	}
 

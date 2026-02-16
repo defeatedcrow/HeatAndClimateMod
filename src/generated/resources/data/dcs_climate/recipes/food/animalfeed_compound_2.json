@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/press_cake"
+    },
+    {
+      "tag": "forge:ingredients/bran"
+    },
+    {
+      "tag": "forge:crops/millets"
+    }
+  ],
+  "result": {
+    "count": 5,
+    "item": "dcs_climate:food/animalfeed_compound"
+  }
+}

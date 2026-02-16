@@ -15,9 +15,9 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderCurryMeat extends RenderCurry {
+public class RenderCurryMeat extends RenderCurry<FoodEntityBase> {
 
-	protected LargeBowlModel_Meat curryModel;
+	protected LargeBowlModel_Meat<FoodEntityBase> curryModel;
 
 	public RenderCurryMeat(Context ctx) {
 		super(ctx);

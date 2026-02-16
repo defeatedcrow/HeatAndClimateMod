@@ -180,6 +180,19 @@ public class TagDC {
 
 		public static final TagKey<Block> NOT_LOOF = BlockTags.create(new ResourceLocation("dcs_climate", "not_loof_blocks"));
 
+		public static final TagKey<Block> HAC_LANTERN = BlockTags.create(new ResourceLocation("dcs_climate", "lanterns"));
+		public static final TagKey<Block> HAC_ANDON = BlockTags.create(new ResourceLocation("dcs_climate", "andons"));
+		public static final TagKey<Block> HAC_CARPET = BlockTags.create(new ResourceLocation("dcs_climate", "carpets"));
+		public static final TagKey<Block> HAC_CHAIR = BlockTags.create(new ResourceLocation("dcs_climate", "chairs"));
+		public static final TagKey<Block> HAC_ROUND_CHAIR = BlockTags.create(new ResourceLocation("dcs_climate", "round_chairs"));
+		public static final TagKey<Block> HAC_SOFA = BlockTags.create(new ResourceLocation("dcs_climate", "sofas"));
+		public static final TagKey<Block> HAC_BED = BlockTags.create(new ResourceLocation("dcs_climate", "beds"));
+		public static final TagKey<Block> HAC_TABLE = BlockTags.create(new ResourceLocation("dcs_climate", "tables"));
+		public static final TagKey<Block> HAC_LUGGAGE = BlockTags.create(new ResourceLocation("dcs_climate", "luggages"));
+		public static final TagKey<Block> HAC_LOCKER = BlockTags.create(new ResourceLocation("dcs_climate", "lockers"));
+		public static final TagKey<Block> HAC_CABINET = BlockTags.create(new ResourceLocation("dcs_climate", "cabinets"));
+		public static final TagKey<Block> HAC_SLIM_STAIRS = BlockTags.create(new ResourceLocation("dcs_climate", "slim_stairs"));
+
 		private static TagKey<Block> blockTag(String name) {
 			return BlockTags.create(new ResourceLocation("forge", name));
 		}
@@ -825,8 +838,12 @@ public class TagDC {
 
 		public static final TagKey<Item> FEED_HAY = itemTag("animal_feeds/hay");
 		public static final TagKey<Item> FEED_STRAW = itemTag("animal_feeds/straw");
+		public static final TagKey<Item> FEED_SILAGE = itemTag("animal_feeds/silage");
 		public static final TagKey<Item> FEED_COMPOUND = itemTag("animal_feeds/compound");
 		public static final TagKey<Item> FEEDS = itemTag("animal_feeds");
+
+		public static final TagKey<Item> FALLEN_LEAVES = itemTag("fallen_leaves");
+		public static final TagKey<Item> GRASSES = itemTag("grasses");
 
 		public static final TagKey<Item> SOAP_OIL = itemTag("soaps/olive");
 		public static final TagKey<Item> SOAP_MAGIC = itemTag("soaps/magic");
@@ -1125,12 +1142,14 @@ public class TagDC {
 		public static final TagKey<Item> HAC_ANDON = itemHaCTag("andons");
 		public static final TagKey<Item> HAC_CARPET = itemHaCTag("carpets");
 		public static final TagKey<Item> HAC_CHAIR = itemHaCTag("chairs");
+		public static final TagKey<Item> HAC_ROUND_CHAIR = itemHaCTag("round_chairs");
 		public static final TagKey<Item> HAC_SOFA = itemHaCTag("sofas");
 		public static final TagKey<Item> HAC_BED = itemHaCTag("beds");
 		public static final TagKey<Item> HAC_TABLE = itemHaCTag("tables");
 		public static final TagKey<Item> HAC_LUGGAGE = itemHaCTag("luggages");
 		public static final TagKey<Item> HAC_LOCKER = itemHaCTag("lockers");
 		public static final TagKey<Item> HAC_CABINET = itemHaCTag("cabinets");
+		public static final TagKey<Item> HAC_SLIM_STAIRS = itemHaCTag("slim_stairs");
 
 		private static TagKey<Item> itemTag(String name) {
 			return ItemTags.create(new ResourceLocation("forge", name));

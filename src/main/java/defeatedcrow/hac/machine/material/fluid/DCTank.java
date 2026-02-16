@@ -64,7 +64,7 @@ public class DCTank implements IFluidHandler, IFluidTank {
 	}
 
 	public int getSpace() {
-		return Math.max(0, capacity - fluid.getAmount());
+		return Math.max(0, getCapacity() - fluid.getAmount());
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class DCTank implements IFluidHandler, IFluidTank {
 	@Override
 	public int fill(FluidStack get, FluidAction action) {
 		if (!get.isEmpty() && isFluidValid(get)) {
-			int vac = capacity - this.getFluidAmount();
+			int vac = getCapacity() - this.getFluidAmount();
 			int ret = Math.min(vac, get.getAmount());
 			if (!action.simulate() && vac > 0) {
 				if (fluid.isEmpty()) {

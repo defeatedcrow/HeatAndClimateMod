@@ -9,12 +9,12 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderSaute<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderSaute<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected SauteModel tofuModel;
-	protected SauteModel eggModel;
-	protected SauteModel nasuModel;
-	protected SauteModel chickenModel;
+	protected SauteModel<FoodEntityBase> tofuModel;
+	protected SauteModel<FoodEntityBase> eggModel;
+	protected SauteModel<FoodEntityBase> nasuModel;
+	protected SauteModel<FoodEntityBase> chickenModel;
 
 	public RenderSaute(Context ctx) {
 		super(ctx);

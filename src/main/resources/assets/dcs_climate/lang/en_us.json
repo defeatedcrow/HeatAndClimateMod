@@ -600,6 +600,7 @@
   "item.dcs_climate.food.animalfeed_hay":"Hay",
   "item.dcs_climate.food.animalfeed_straw":"Straw",
   "item.dcs_climate.food.animalfeed_compound":"Compound Feed",
+  "item.dcs_climate.food.animalfeed_silage":"Silage",
 
   "item.dcs_climate.food.fertilizer_mixed":"Mixed Fertilizer",
 
@@ -1262,6 +1263,7 @@
   "block.dcs_climate.food.fertile":"Fertilized Farm Block",
   "block.dcs_climate.food.fertile_planter":"Gardening Pot",
   "block.dcs_climate.food.fertile_planter_gem":"Breeding Pot",
+  "block.dcs_climate.food.meal_feeder":"Animal Feeder",
 
   "block.dcs_climate.food.cropblock_allium_wild":"Garlic Chives",
   "block.dcs_climate.food.cropblock_allium_common":"Onion",

@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderSquareSashimi<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderSquareSashimi<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderSquareSashimi(Context ctx) {
 		super(ctx);

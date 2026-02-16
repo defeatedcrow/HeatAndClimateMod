@@ -1,7 +1,6 @@
 package defeatedcrow.hac.machine.material.block.transport;
 
 import defeatedcrow.hac.machine.material.MachineInit;
-import defeatedcrow.hac.machine.material.fluid.DCHeadTank;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -12,10 +11,10 @@ public class FluidPipeNickelsilverTile extends FluidPipeAlloyTile {
 	}
 
 	// caps
-	public DCHeadTank headtank = new DCHeadTank(2400, 128);
+	public PipeTank headtank = new PipeTank(2400, 128, this);
 
 	@Override
-	public DCHeadTank getFluidHandler() {
+	public PipeTank getFluidHandler() {
 		return headtank;
 	}
 

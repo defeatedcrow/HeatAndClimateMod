@@ -1,0 +1,196 @@
+{
+  "variants": {
+    "stage16=0,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=1,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=2,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=3,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=4,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=5,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=6,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=7,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=8,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=9,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=10,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=11,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=12,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=13,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=14,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=15,type4=0": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=0,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=1,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_1"
+    },
+    "stage16=2,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_1"
+    },
+    "stage16=3,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_1"
+    },
+    "stage16=4,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_2"
+    },
+    "stage16=5,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_2"
+    },
+    "stage16=6,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_2"
+    },
+    "stage16=7,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_2"
+    },
+    "stage16=8,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_3"
+    },
+    "stage16=9,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_3"
+    },
+    "stage16=10,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_3"
+    },
+    "stage16=11,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_3"
+    },
+    "stage16=12,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_4"
+    },
+    "stage16=13,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_4"
+    },
+    "stage16=14,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_4"
+    },
+    "stage16=15,type4=1": {
+      "model": "dcs_climate:block/food/meal_feeder_hay_5"
+    },
+    "stage16=0,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=1,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_1"
+    },
+    "stage16=2,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_1"
+    },
+    "stage16=3,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_1"
+    },
+    "stage16=4,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_2"
+    },
+    "stage16=5,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_2"
+    },
+    "stage16=6,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_2"
+    },
+    "stage16=7,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_2"
+    },
+    "stage16=8,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_3"
+    },
+    "stage16=9,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_3"
+    },
+    "stage16=10,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_3"
+    },
+    "stage16=11,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_3"
+    },
+    "stage16=12,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_4"
+    },
+    "stage16=13,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_4"
+    },
+    "stage16=14,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_4"
+    },
+    "stage16=15,type4=2": {
+      "model": "dcs_climate:block/food/meal_feeder_seed_5"
+    },
+    "stage16=0,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_0"
+    },
+    "stage16=1,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_1"
+    },
+    "stage16=2,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_1"
+    },
+    "stage16=3,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_1"
+    },
+    "stage16=4,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_2"
+    },
+    "stage16=5,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_2"
+    },
+    "stage16=6,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_2"
+    },
+    "stage16=7,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_2"
+    },
+    "stage16=8,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_3"
+    },
+    "stage16=9,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_3"
+    },
+    "stage16=10,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_3"
+    },
+    "stage16=11,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_3"
+    },
+    "stage16=12,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_4"
+    },
+    "stage16=13,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_4"
+    },
+    "stage16=14,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_4"
+    },
+    "stage16=15,type4=3": {
+      "model": "dcs_climate:block/food/meal_feeder_base_5"
+    }
+  }
+}

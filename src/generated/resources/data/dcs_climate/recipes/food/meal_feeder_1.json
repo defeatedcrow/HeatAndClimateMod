@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:animal_feeds"
+    },
+    "Y": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "YXY",
+    "YYY"
+  ],
+  "result": {
+    "item": "dcs_climate:food/meal_feeder"
+  }
+}

@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderSquareFish<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderSquareFish<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderSquareFish(Context ctx) {
 		super(ctx);

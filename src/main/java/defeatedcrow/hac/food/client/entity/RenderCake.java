@@ -14,10 +14,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 
-public class RenderCake<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderCake<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderCake(Context ctx) {
 		super(ctx);
@@ -47,7 +46,7 @@ public class RenderCake<T extends FoodEntityBase> extends RenderFoodBase {
 					poseStack.scale(f1, f1, f1);
 					model.setupAnim(entity, 360.0F - yaw, partialTicks, packedLight, f1, f2);
 					VertexConsumer vertex = buffer.getBuffer(model.renderType(tex));
-					((CakeModel<Entity>) this.model).renderJelly1(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+					((CakeModel<FoodEntityBase>) this.model).renderJelly1(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 					poseStack.popPose();
 
 					poseStack.pushPose();
@@ -57,7 +56,7 @@ public class RenderCake<T extends FoodEntityBase> extends RenderFoodBase {
 					poseStack.scale(f1, f1, f1);
 					model.setupAnim(entity, 360.0F - yaw, partialTicks, packedLight, f1, f2);
 					VertexConsumer vertex2 = buffer.getBuffer(RenderType.entityTranslucent(tex));
-					((CakeModel<Entity>) this.model).renderJelly2(poseStack, vertex2, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.75F);
+					((CakeModel<FoodEntityBase>) this.model).renderJelly2(poseStack, vertex2, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.75F);
 					poseStack.popPose();
 
 				} else {

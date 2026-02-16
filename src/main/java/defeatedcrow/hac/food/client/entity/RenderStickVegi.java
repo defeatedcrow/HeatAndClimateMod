@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.StickVegiItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderStickVegi<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderStickVegi<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderStickVegi(Context ctx) {
 		super(ctx);

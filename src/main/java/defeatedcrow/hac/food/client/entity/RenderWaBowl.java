@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.potfoods.WaBowlItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderWaBowl<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderWaBowl<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderWaBowl(Context ctx) {
 		super(ctx);

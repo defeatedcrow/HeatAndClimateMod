@@ -7,7 +7,6 @@ import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.material.block.building.ItemDisplayTile;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -23,11 +22,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class TileRendererDisplayShelf implements BlockEntityRenderer<ItemDisplayTile> {
 
-	private BlockRenderDispatcher renderer;
 	private final ItemRenderer itemRenderer;
 
 	public TileRendererDisplayShelf(BlockEntityRendererProvider.Context ctx) {
-		renderer = ctx.getBlockRenderDispatcher();
 		this.itemRenderer = ctx.getItemRenderer();
 	}
 

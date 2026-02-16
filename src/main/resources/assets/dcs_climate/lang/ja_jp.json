@@ -598,6 +598,7 @@
   "item.dcs_climate.food.animalfeed_hay":"干し草",
   "item.dcs_climate.food.animalfeed_straw":"ワラ",
   "item.dcs_climate.food.animalfeed_compound":"配合飼料",
+  "item.dcs_climate.food.animalfeed_silage":"サイレージ",
 
   "item.dcs_climate.food.fertilizer_mixed":"肥料",
 
@@ -1263,6 +1264,7 @@
   "block.dcs_climate.food.fertile":"施肥された耕地ブロック",
   "block.dcs_climate.food.fertile_planter":"栽培プランター",
   "block.dcs_climate.food.fertile_planter_gem":"改良プランター",
+  "block.dcs_climate.food.meal_feeder":"フィードボックス",
 
   "block.dcs_climate.food.cropblock_allium_wild":"ノビル",
   "block.dcs_climate.food.cropblock_allium_common":"タマネギ",

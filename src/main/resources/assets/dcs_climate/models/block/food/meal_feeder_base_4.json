@@ -1,0 +1,124 @@
+{
+    "parent": "minecraft:block/block",
+    "textures": {
+        "body": "dcs_climate:block/machine/meal_feeder",
+        "forage": "dcs_climate:block/machine/feeder_forage_compound"
+    },
+    "elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [2, 2, 2],
+			"faces": {
+				"north": {"uv": [14, 14, 16, 16], "texture": "#body"},
+				"east": {"uv": [12, 14, 14, 16], "texture": "#body"},
+				"south": {"uv": [0, 14, 2, 16], "texture": "#body"},
+				"west": {"uv": [2, 14, 4, 16], "texture": "#body"},
+				"down": {"uv": [14, 14, 16, 16], "texture": "#body"}
+			}
+		},
+		{
+			"from": [0, 0, 14],
+			"to": [2, 2, 16],
+			"faces": {
+				"north": {"uv": [14, 14, 16, 16], "texture": "#body"},
+				"east": {"uv": [2, 14, 4, 16], "texture": "#body"},
+				"south": {"uv": [0, 14, 2, 16], "texture": "#body"},
+				"west": {"uv": [12, 14, 14, 16], "texture": "#body"},
+				"down": {"uv": [14, 14, 16, 16], "texture": "#body"}
+			}
+		},
+		{
+			"from": [14, 0, 0],
+			"to": [16, 2, 2],
+			"faces": {
+				"north": {"uv": [0, 14, 2, 16], "texture": "#body"},
+				"east": {"uv": [12, 14, 14, 16], "texture": "#body"},
+				"south": {"uv": [12, 14, 14, 16], "texture": "#body"},
+				"west": {"uv": [2, 14, 4, 16], "texture": "#body"},
+				"down": {"uv": [0, 14, 2, 16], "texture": "#body"}
+			}
+		},
+		{
+			"from": [14, 0, 14],
+			"to": [16, 2, 16],
+			"faces": {
+				"north": {"uv": [0, 14, 2, 16], "texture": "#body"},
+				"east": {"uv": [2, 14, 4, 16], "texture": "#body"},
+				"south": {"uv": [14, 14, 16, 16], "texture": "#body"},
+				"west": {"uv": [12, 14, 14, 16], "texture": "#body"},
+				"down": {"uv": [0, 14, 2, 16], "texture": "#body"}
+			}
+		},
+		{
+			"from": [0, 2, 0],
+			"to": [16, 3, 8],
+			"faces": {
+				"north": {"uv": [0, 13, 16, 14], "texture": "#body"},
+				"east": {"uv": [8, 13, 16, 14], "texture": "#body"},
+				"south": {"uv": [0, 13, 16, 14], "texture": "#body"},
+				"west": {"uv": [0, 13, 8, 14], "texture": "#body"},
+				"up": {"uv": [0, 2, 16, 10], "texture": "#body"},
+				"down": {"uv": [0, 2, 16, 10], "rotation": 180, "texture": "#body"}
+			}
+		},
+		{
+			"from": [0, 2, 8],
+			"to": [16, 3, 16],
+			"faces": {
+				"north": {"uv": [0, 13, 16, 14], "texture": "#body"},
+				"east": {"uv": [0, 13, 8, 14], "texture": "#body"},
+				"south": {"uv": [0, 13, 16, 14], "texture": "#body"},
+				"west": {"uv": [8, 13, 16, 14], "texture": "#body"},
+				"up": {"uv": [0, 6, 16, 14], "texture": "#body"},
+				"down": {"uv": [0, 6, 16, 14], "rotation": 180, "texture": "#body"}
+			}
+		},
+		{
+			"from": [0, 3, 0],
+			"to": [16, 8, 1],
+			"faces": {
+				"north": {"uv": [0, 2, 16, 7], "texture": "#body"},
+				"east": {"uv": [15, 2, 16, 7], "texture": "#body"},
+				"south": {"uv": [0, 2, 16, 7], "texture": "#body"},
+				"west": {"uv": [0, 2, 1, 7], "texture": "#body"},
+				"up": {"uv": [0, 2, 16, 3], "texture": "#body"}
+			}
+		},
+		{
+			"from": [0, 3, 15],
+			"to": [16, 8, 16],
+			"faces": {
+				"north": {"uv": [0, 2, 16, 7], "texture": "#body"},
+				"east": {"uv": [0, 2, 1, 7], "texture": "#body"},
+				"south": {"uv": [0, 2, 16, 7], "texture": "#body"},
+				"west": {"uv": [15, 2, 16, 7], "texture": "#body"},
+				"up": {"uv": [0, 13, 16, 14], "texture": "#body"}
+			}
+		},
+		{
+			"from": [0, 3, 1],
+			"to": [1, 8, 15],
+			"faces": {
+				"east": {"uv": [3, 2, 13, 7], "texture": "#body"},
+				"west": {"uv": [1, 2, 15, 7], "texture": "#body"},
+				"up": {"uv": [0, 3, 1, 13], "texture": "#body"}
+			}
+		},
+		{
+			"from": [15, 3, 1],
+			"to": [16, 8, 15],
+			"faces": {
+				"east": {"uv": [1, 2, 15, 7], "texture": "#body"},
+				"west": {"uv": [3, 2, 13, 7], "texture": "#body"},
+				"up": {"uv": [15, 3, 16, 13], "texture": "#body"}
+			}
+		},
+		{
+			"from": [1, 7, 1],
+			"to": [15, 7, 15],
+			"faces": {
+				"up": {"uv": [1, 1, 15, 15], "texture": "#forage"}
+			}
+		}
+	]
+}

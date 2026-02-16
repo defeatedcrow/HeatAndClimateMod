@@ -29,6 +29,7 @@ import defeatedcrow.hac.core.material.block.BlockDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -404,7 +405,27 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 		int next = this.getSeasonLeafStage(level, pos, state);
 		BlockState nextState = state.setValue(DCState.STAGE6, next);
 		level.setBlock(pos, nextState, 2);
+		if (defoliation && next == EnumSeason.WINTER_EARLY.getSeasonLimitedID()) {
+
+		}
 		return current != next;
+	}
+
+	protected void onDefoliation(Level level, BlockPos pos, BlockState state) {
+		if (level.getBlockState(pos.below()).isAir()) {
+			int y = 1;
+			BlockState target = null;
+			while (target == null && y < 10) {
+				y++;
+				BlockState ground = level.getBlockState(pos.below(y));
+				if (!ground.isAir()) {
+					target = ground;
+				}
+			}
+			if (target != null && target.isFaceSturdy(level, pos.below(y), Direction.UP)) {
+				level.setBlock(pos.below(y - 1), FoodInit.FALLEN_LEAVES.get().defaultBlockState(), 2);
+			}
+		}
 	}
 
 	public int getSeasonLeafStage(Level world, BlockPos pos, BlockState state) {

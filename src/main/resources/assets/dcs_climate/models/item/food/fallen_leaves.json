@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/tree/fallen_leaves"
+  },
+  "parent": "minecraft:item/generated"
+}

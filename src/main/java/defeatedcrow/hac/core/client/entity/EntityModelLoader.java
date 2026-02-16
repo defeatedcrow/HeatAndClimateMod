@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.client.entity.model.ModelThinArmor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
+import net.minecraft.world.entity.LivingEntity;
 
 public class EntityModelLoader implements ResourceManagerReloadListener {
 
@@ -24,8 +25,8 @@ public class EntityModelLoader implements ResourceManagerReloadListener {
 	public static ModelThinArmor MODEL_HAIR;
 	public static ModelThinArmor MODEL_DRESS;
 
-	public static ModelMagicWing MODEL_WING;
-	public static ModelMagicFin MODEL_FIN;
+	public static ModelMagicWing<LivingEntity> MODEL_WING;
+	public static ModelMagicFin<LivingEntity> MODEL_FIN;
 
 	@Override
 	public void onResourceManagerReload(ResourceManager res) {
@@ -40,8 +41,8 @@ public class EntityModelLoader implements ResourceManagerReloadListener {
 		MODEL_HAT = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(HAT.getLayerLocation()));
 		MODEL_HAIR = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(HAIR.getLayerLocation()));
 		MODEL_DRESS = new ModelThinArmor(Minecraft.getInstance().getEntityModels().bakeLayer(LONG.getLayerLocation()));
-		MODEL_WING = new ModelMagicWing(Minecraft.getInstance().getEntityModels().bakeLayer(WING.getLayerLocation()));
-		MODEL_FIN = new ModelMagicFin(Minecraft.getInstance().getEntityModels().bakeLayer(FIN.getLayerLocation()));
+		MODEL_WING = new ModelMagicWing<>(Minecraft.getInstance().getEntityModels().bakeLayer(WING.getLayerLocation()));
+		MODEL_FIN = new ModelMagicFin<>(Minecraft.getInstance().getEntityModels().bakeLayer(FIN.getLayerLocation()));
 	}
 
 	public static final EntityRenderData BOOTS = new EntityRenderData("armor/boots_linen", 1F, 0F);

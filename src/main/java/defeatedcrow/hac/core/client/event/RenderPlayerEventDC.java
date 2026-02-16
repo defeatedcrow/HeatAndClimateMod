@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -47,7 +48,7 @@ public class RenderPlayerEventDC {
 					pose.mulPose(Vector3f.YP.rotationDegrees(f));
 					pose.mulPose(Vector3f.XP.rotationDegrees(180.0F + f2));
 					pose.scale(1.5F, 1.5F, 1.5F);
-					ModelMagicWing model = EntityModelLoader.INSTANCE.MODEL_WING;
+					ModelMagicWing<LivingEntity> model = EntityModelLoader.INSTANCE.MODEL_WING;
 					model.setupAnim(player, 0F, 0F, event.getPartialTick(), 0F, 0F);
 					VertexConsumer vertex = event.getMultiBufferSource().getBuffer(model.renderType(getWingTex()));
 					model.renderToBuffer(pose, vertex, event.getPackedLight(), OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
@@ -66,7 +67,7 @@ public class RenderPlayerEventDC {
 					pose.mulPose(Vector3f.YP.rotationDegrees(f));
 					pose.mulPose(Vector3f.XP.rotationDegrees(180.0F + f2));
 					pose.scale(2F, 2F, 2F);
-					ModelMagicFin model = EntityModelLoader.INSTANCE.MODEL_FIN;
+					ModelMagicFin<LivingEntity> model = EntityModelLoader.INSTANCE.MODEL_FIN;
 					model.setupAnim(player, 0F, 0F, event.getPartialTick(), 0F, 0F);
 					VertexConsumer vertex = event.getMultiBufferSource().getBuffer(model.renderType(FIN_LOCATION));
 					model.renderToBuffer(pose, vertex, event.getPackedLight(), OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);

@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderSandwich<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderSandwich<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderSandwich(Context ctx) {
 		super(ctx);

@@ -1233,13 +1233,43 @@ public class CookingRecipes {
 				tags,
 				ImmutableList.of(Ingredient.of(FoodInit.BOTTLE_WINE_WHITE.get())));
 
-		DeviceRecipeList.addFermentationRecipe(3, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.OOLONG_TEA_LEAVES.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.OOLONG_TEA_LEAVES.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				tags,
 				ImmutableList.of(Ingredient.of(FoodInit.GREEN_TEA_LEAVES.get())));
 
-		DeviceRecipeList.addFermentationRecipe(3, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.BLACK_TEA_LEAVES.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.BLACK_TEA_LEAVES.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				tags,
 				ImmutableList.of(Ingredient.of(FoodInit.OOLONG_TEA_LEAVES.get())));
+
+		// animalfeeds
+
+		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FEED_SILAGE.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				tags,
+				ImmutableList.of(Ingredient.of(FoodInit.FEED_HAY.get())));
+
+		DeviceRecipeList.addFermentationRecipe(2, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FEED_SILAGE.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				tags,
+				ImmutableList.of(Ingredient.of(FoodInit.FEED_STRAW.get())));
+
+		DeviceRecipeList.addFermentationRecipe(3, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FEED_SILAGE.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				tags,
+				ImmutableList.of(Ingredient.of(FoodInit.FOOD_BAGASSE.get())));
+
+		DeviceRecipeList.addFermentationRecipe(4, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FEED_SILAGE.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_SORGHUM)));
+
+		DeviceRecipeList.addFermentationRecipe(5, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FEED_SILAGE.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_CORN)));
+
+		DeviceRecipeList.addFermentationRecipe(5, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FEED_SILAGE.get(), 2), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				tags,
+				ImmutableList.of(Ingredient.of(Items.SUGAR_CANE)));
+
+		DeviceRecipeList.addFermentationRecipe(6, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FEED_SILAGE.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+				tags,
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.GRASSES)));
 
 	}
 

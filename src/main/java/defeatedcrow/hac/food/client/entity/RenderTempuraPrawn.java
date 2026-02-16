@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.TempuraPrawnItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderTempuraPrawn<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderTempuraPrawn<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderTempuraPrawn(Context ctx) {
 		super(ctx);

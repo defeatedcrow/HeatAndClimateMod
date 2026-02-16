@@ -13,6 +13,7 @@
     "dcs_climate:food/dust_bagasse",
     "dcs_climate:food/animalfeed_hay",
     "dcs_climate:food/animalfeed_straw",
-    "dcs_climate:food/dust_germ"
+    "dcs_climate:food/dust_germ",
+    "dcs_climate:food/fallen_leaves"
   ]
 }

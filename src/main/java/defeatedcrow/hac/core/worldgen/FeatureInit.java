@@ -17,12 +17,16 @@ public class FeatureInit {
 	public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.Keys.FEATURES, ClimateCore.MOD_ID);
 	public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, ClimateCore.MOD_ID);
 
+	@SuppressWarnings("rawtypes")
 	public static final RegistryObject<Feature> ORE_VEIN = register("ore_vein_dc", () -> new OreveinFeature(NoneFeatureConfiguration.CODEC));
+	@SuppressWarnings("rawtypes")
 	public static final RegistryObject<Feature> SPRING = register("spring_dc", () -> new SpringFeature(NoneFeatureConfiguration.CODEC));
+	@SuppressWarnings("rawtypes")
 	public static final RegistryObject<Feature> WILD_CROP = register("wild_crop_dc", () -> new WildCropFeature(NoneFeatureConfiguration.CODEC));
 
 	public static void init() {}
 
+	@SuppressWarnings("rawtypes")
 	public static RegistryObject<Feature> register(String name, Supplier<Feature> item) {
 		return FEATURES.register(name, item);
 	}

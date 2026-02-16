@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.StickBeefItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderStickBeef<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderStickBeef<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderStickBeef(Context ctx) {
 		super(ctx);

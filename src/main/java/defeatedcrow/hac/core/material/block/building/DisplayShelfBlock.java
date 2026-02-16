@@ -1,6 +1,7 @@
 package defeatedcrow.hac.core.material.block.building;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.Nullable;
 
@@ -8,6 +9,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
@@ -154,6 +156,18 @@ public class DisplayShelfBlock extends ContainerTileBlock {
 			ret.add(getMainDrop());
 		}
 		return ret;
+	}
+
+	// colord block
+
+	@Override
+	public MagicColor getAvaiableColor(ItemStack item) {
+		return MagicColor.NONE;
+	}
+
+	@Override
+	public Optional<Block> getReplaceBlock(MagicColor color) {
+		return Optional.empty();
 	}
 
 }

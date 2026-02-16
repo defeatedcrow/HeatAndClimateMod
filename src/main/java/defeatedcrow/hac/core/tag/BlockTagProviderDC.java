@@ -27,6 +27,7 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		super(gen, "dcs_climate", helper);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void addTags() {
 

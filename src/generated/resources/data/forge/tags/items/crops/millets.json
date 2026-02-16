@@ -1,5 +1,6 @@
 {
   "values": [
-    "#forge:crops/sorghum"
+    "#forge:crops/sorghum",
+    "#forge:crops/corn"
   ]
 }

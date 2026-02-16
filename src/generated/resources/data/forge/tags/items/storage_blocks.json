@@ -54,6 +54,7 @@
     "#forge:storage_blocks/ash",
     "#forge:storage_blocks/leaves",
     "#forge:storage_blocks/leaves",
+    "#forge:storage_blocks/leaves",
     "#forge:storage_blocks/beeswax",
     "#forge:storage_blocks/treewax",
     "#forge:storage_blocks/logs",

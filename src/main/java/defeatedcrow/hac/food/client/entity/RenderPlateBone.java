@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.PlateBoneMarrowItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderPlateBone<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderPlateBone<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderPlateBone(Context ctx) {
 		super(ctx);

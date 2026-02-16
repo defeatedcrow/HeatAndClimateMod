@@ -26,6 +26,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		super(gen, provider, "dcs_climate", helper);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void addTags() {
 
@@ -135,6 +136,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.FERTILIZER).add(Items.BONE_MEAL);
 
 		tag(TagDC.ItemTag.FIRESTARTER).add(Items.FLINT_AND_STEEL);
+
+		tag(TagDC.ItemTag.GRASSES).add(Items.TALL_GRASS, Items.GRASS, Items.FERN, Items.LARGE_FERN, Items.SEAGRASS, Items.KELP, Items.DEAD_BUSH, Items.NETHER_SPROUTS);
 
 		tag(TagDC.ItemTag.MAGMA).add(Items.MAGMA_BLOCK);
 		tag(TagDC.ItemTag.DRIPSTONES).add(Items.DRIPSTONE_BLOCK, Items.POINTED_DRIPSTONE);
@@ -252,7 +255,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.CROP_CEREALS).addTags(TagDC.ItemTag.CROP_OAT, TagDC.ItemTag.CROP_RYE, TagDC.ItemTag.CROP_BARLEY,
 				TagDC.ItemTag.CROP_WILD_RICE, TagDC.ItemTag.CROP_RICE, TagDC.ItemTag.CROP_AROMA_RICE, Tags.Items.CROPS_WHEAT);
 
-		tag(TagDC.ItemTag.CROP_MILLETS).addTags(TagDC.ItemTag.CROP_SORGHUM);
+		tag(TagDC.ItemTag.CROP_MILLETS).addTags(TagDC.ItemTag.CROP_SORGHUM, TagDC.ItemTag.CROP_CORN);
 
 		tag(TagDC.ItemTag.CROP_PSEUDOCEREALS).addTags(TagDC.ItemTag.CROP_GOOSEFOOT, TagDC.ItemTag.CROP_BUCKWHEAT);
 
@@ -350,7 +353,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.DUST_CEREALS).addTags(TagDC.ItemTag.DUST_OAT, TagDC.ItemTag.DUST_RYE, TagDC.ItemTag.DUST_BARLEY,
 				TagDC.ItemTag.DUST_ZIZANIA, TagDC.ItemTag.DUST_RICE, TagDC.ItemTag.DUST_AROMA_RICE, TagDC.ItemTag.DUST_WHEAT);
 
-		tag(TagDC.ItemTag.DUST_MILLETS).addTags(TagDC.ItemTag.DUST_SORGHUM);
+		tag(TagDC.ItemTag.DUST_MILLETS).addTags(TagDC.ItemTag.DUST_SORGHUM, TagDC.ItemTag.DUST_MASA);
 
 		tag(TagDC.ItemTag.DUST_PSEUDOCEREALS).addTags(TagDC.ItemTag.DUST_AMARANTH, TagDC.ItemTag.DUST_BUCKWHEAT);
 
@@ -392,7 +395,9 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.FERTILIZER).addTags(TagDC.ItemTag.FISH_POWDER, TagDC.ItemTag.PRESS_CAKE, TagDC.ItemTag.LEAF_MOLD, TagDC.ItemTag.FERTILIZER_ADV);
 
 		tag(TagDC.ItemTag.RESIDUES).addTags(TagDC.ItemTag.DUST_PLANT, TagDC.ItemTag.PRESS_CAKE, TagDC.ItemTag.DEFATTED_SOY, TagDC.ItemTag.DUST_WOOD,
-				TagDC.ItemTag.BRAN, TagDC.ItemTag.GERM, TagDC.ItemTag.BAGASSE, TagDC.ItemTag.FEED_HAY, TagDC.ItemTag.FEED_STRAW, ItemTags.LEAVES);
+				TagDC.ItemTag.BRAN, TagDC.ItemTag.GERM, TagDC.ItemTag.BAGASSE, TagDC.ItemTag.FEED_HAY, TagDC.ItemTag.FEED_STRAW, TagDC.ItemTag.FALLEN_LEAVES, ItemTags.LEAVES);
+
+		tag(TagDC.ItemTag.FEEDS).addTags(TagDC.ItemTag.FEED_COMPOUND, TagDC.ItemTag.FEED_HAY, TagDC.ItemTag.FEED_STRAW, TagDC.ItemTag.FEED_SILAGE);
 
 		tag(Tags.Items.STRING).addTags(TagDC.ItemTag.STRING_PLANT, TagDC.ItemTag.STRING_COTTON, TagDC.ItemTag.STRING_WOOL);
 		tag(TagDC.ItemTag.CLOTHS).addTags(TagDC.ItemTag.CLOTH_PLANT, TagDC.ItemTag.CLOTH_COTTON, TagDC.ItemTag.CLOTH_WOOL);
@@ -572,7 +577,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.FUEL_BIOMASS).add(FoodInit.DUST_WOOD.get(), FoodInit.DUST_PLANT.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.VINE.get(),
 				FoodInit.SORGHUM_STICK.get(), FoodInit.BEESWAX.get(), FoodInit.TREEWAX.get(), FoodInit.FOOD_DEFATTED_SOY.get(), FoodInit.FOOD_PRESS_CAKE.get(),
-				FoodInit.FOOD_BRAN.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.FEED_HAY.get(), FoodInit.FEED_STRAW.get(), FoodInit.FOOD_GERM.get());
+				FoodInit.FOOD_BRAN.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.FEED_HAY.get(), FoodInit.FEED_STRAW.get(), FoodInit.FOOD_GERM.get(),
+				FoodInit.FALLEN_LEAVES.get().asItem());
 
 		tag(TagDC.ItemTag.HAC_FUELS).add(FoodInit.CONT_LOG_BRIQUET.get().asItem());
 
@@ -706,6 +712,19 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		copy(TagDC.BlockTag.BUILDING_PILLAR, TagDC.ItemTag.BUILDING_PILLAR);
 		copy(TagDC.BlockTag.BUILDING_CHISELED, TagDC.ItemTag.BUILDING_CHISELED);
 		copy(TagDC.BlockTag.BUILDING_STONE, TagDC.ItemTag.BUILDING_STONE);
+
+		copy(TagDC.BlockTag.HAC_LANTERN, TagDC.ItemTag.HAC_LANTERN);
+		copy(TagDC.BlockTag.HAC_ANDON, TagDC.ItemTag.HAC_ANDON);
+		copy(TagDC.BlockTag.HAC_CARPET, TagDC.ItemTag.HAC_CARPET);
+		copy(TagDC.BlockTag.HAC_CHAIR, TagDC.ItemTag.HAC_CHAIR);
+		copy(TagDC.BlockTag.HAC_ROUND_CHAIR, TagDC.ItemTag.HAC_ROUND_CHAIR);
+		copy(TagDC.BlockTag.HAC_SOFA, TagDC.ItemTag.HAC_SOFA);
+		copy(TagDC.BlockTag.HAC_BED, TagDC.ItemTag.HAC_BED);
+		copy(TagDC.BlockTag.HAC_TABLE, TagDC.ItemTag.HAC_TABLE);
+		copy(TagDC.BlockTag.HAC_LUGGAGE, TagDC.ItemTag.HAC_LUGGAGE);
+		copy(TagDC.BlockTag.HAC_LOCKER, TagDC.ItemTag.HAC_LOCKER);
+		copy(TagDC.BlockTag.HAC_CABINET, TagDC.ItemTag.HAC_CABINET);
+		copy(TagDC.BlockTag.HAC_SLIM_STAIRS, TagDC.ItemTag.HAC_SLIM_STAIRS);
 
 		copy(Tags.Blocks.ORES, Tags.Items.ORES);
 

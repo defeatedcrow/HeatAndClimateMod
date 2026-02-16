@@ -1,15 +1,21 @@
 package defeatedcrow.hac.core.material.block.building;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.api.material.IColordBlock;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
+import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.BlockDC;
 import defeatedcrow.hac.core.material.entity.ChairEntity;
+import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -38,7 +44,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class ChairBlock extends BlockDC implements SimpleWaterloggedBlock {
+public class ChairBlock extends BlockDC implements SimpleWaterloggedBlock, IColordBlock {
 
 	protected static final VoxelShape W_AABB = Block.box(13.0D, 0.0D, 3.0D, 15.0D, 16.0D, 13.0D);
 	protected static final VoxelShape E_AABB = Block.box(1.0D, 0.0D, 3.0D, 3.0D, 16.0D, 13.0D);
@@ -79,6 +85,12 @@ public class ChairBlock extends BlockDC implements SimpleWaterloggedBlock {
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitRes) {
 		if (player != null) {
+			ItemStack held = player.getItemInHand(hand);
+			if (getAvaiableColor(held) != MagicColor.NONE) {
+				replace(level, pos, player, held, getAvaiableColor(held));
+				held.shrink(1);
+				return InteractionResult.sidedSuccess(level.isClientSide);
+			}
 			ChairEntity bind = CoreInit.CHAIR_ENTITY.get().create(level);
 			bind.setPos(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D);
 			bind.setDeltaMovement(0D, 0D, 0D);
@@ -168,6 +180,53 @@ public class ChairBlock extends BlockDC implements SimpleWaterloggedBlock {
 	@Override
 	public FluidState getFluidState(BlockState state) {
 		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+	}
+
+	// colord block
+
+	@Override
+	public MagicColor getAvaiableColor(ItemStack item) {
+		if (DCUtil.isEmpty(item))
+			return MagicColor.NONE;
+		if (item.is(TagDC.ItemTag.EXTRACT_WHITE))
+			return MagicColor.WHITE;
+		if (item.is(TagDC.ItemTag.EXTRACT_BLUE))
+			return MagicColor.BLUE;
+		if (item.is(TagDC.ItemTag.EXTRACT_BLACK))
+			return MagicColor.BLACK;
+		if (item.is(TagDC.ItemTag.EXTRACT_RED))
+			return MagicColor.RED;
+		if (item.is(TagDC.ItemTag.EXTRACT_GREEN))
+			return MagicColor.GREEN;
+		return MagicColor.NONE;
+	}
+
+	@Override
+	public Optional<Block> getReplaceBlock(MagicColor color) {
+		if (color.isWhite)
+			return Optional.of(BuildInit.CHAIR_WHITE.get());
+		if (color.isBlue)
+			return Optional.of(BuildInit.CHAIR_BLUE.get());
+		if (color.isBlack)
+			return Optional.of(BuildInit.CHAIR_BLACK.get());
+		if (color.isRed)
+			return Optional.of(BuildInit.CHAIR_RED.get());
+		if (color.isGreen)
+			return Optional.of(BuildInit.CHAIR_GREEN.get());
+		return Optional.empty();
+	}
+
+	@Override
+	public void replace(Level level, BlockPos pos, Player player, ItemStack held, MagicColor color) {
+		BlockState target = level.getBlockState(pos);
+		if (target != null && target.getBlock() instanceof ChairBlock chair && target.getBlock() != BuildInit.CHAIR_LINEN.get() && target.getBlock() != BuildInit.CHAIR_WOOD.get()) {
+			chair.getReplaceBlock(color).ifPresent(block -> {
+				Direction face = DCState.getFace(target, DCState.FACING);
+				boolean water = DCState.getBool(target, WATERLOGGED);
+				BlockState replace = block.defaultBlockState().setValue(DCState.FACING, face).setValue(WATERLOGGED, water);
+				level.setBlock(pos, replace, 2);
+			});
+		}
 	}
 
 }

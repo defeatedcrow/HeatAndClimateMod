@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.OmeletItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderOmelet<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderOmelet<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase>{
 
 	public RenderOmelet(Context ctx) {
 		super(ctx);

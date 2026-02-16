@@ -1,6 +1,7 @@
 package defeatedcrow.hac.core.material.block.building;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.Nullable;
 
@@ -8,6 +9,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.BuildInit;
@@ -79,6 +81,22 @@ public class LuggageBlock extends ContainerTileBlock {
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
 		return level.isClientSide ? createTickerHelper(type, BuildInit.LUGGAGE_TILE.get(), LuggageTile::lidAnimateTick) : null;
+	}
+
+	// colord block
+	@Override
+	public Optional<Block> getReplaceBlock(MagicColor color) {
+		if (color.isWhite)
+			return Optional.of(BuildInit.LUGGAGE_WHITE.get());
+		if (color.isBlue)
+			return Optional.of(BuildInit.LUGGAGE_BLUE.get());
+		if (color.isBlack)
+			return Optional.of(BuildInit.LUGGAGE_BLACK.get());
+		if (color.isRed)
+			return Optional.of(BuildInit.LUGGAGE_RED.get());
+		if (color.isGreen)
+			return Optional.of(BuildInit.LUGGAGE_GREEN.get());
+		return Optional.empty();
 	}
 
 }

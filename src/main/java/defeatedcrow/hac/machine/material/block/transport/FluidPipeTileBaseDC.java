@@ -80,7 +80,7 @@ public abstract class FluidPipeTileBaseDC extends OwnableBaseTileDC implements I
 
 	private LazyOptional<? extends IFluidPipe> tank = LazyOptional.of(() -> getFluidHandler());
 
-	public abstract DCHeadTank getFluidHandler();
+	public abstract PipeTank getFluidHandler();
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
@@ -111,6 +111,44 @@ public abstract class FluidPipeTileBaseDC extends OwnableBaseTileDC implements I
 	@Override
 	protected Component getDefaultName() {
 		return this.hasOwner() ? Component.translatable("dcs.container.fluid_pipe.with_owner", this.ownerName) : Component.translatable("dcs.container.fluid_pipe");
+	}
+
+	public class PipeTank extends DCHeadTank {
+		final FluidPipeAlloyTile pipe;
+
+		protected PipeTank(int cap, int flow, FluidPipeAlloyTile pipeIn) {
+			super(cap, flow);
+			pipe = pipeIn;
+		}
+
+		// @Override
+		// public int fill(FluidStack get, FluidAction action, Direction from) {
+		// if (get == null || get.isEmpty() || get.getAmount() == 0)
+		// return 0;
+		// int amo = get.getAmount();
+		// int ret = super.fill(get, action, from);
+		// if (ret == amo)
+		// return ret;
+		// // overflow
+		// else if (from != Direction.UP && isAlmostFull()) {
+		// FluidStack copy = get.copy();
+		// copy.setAmount(amo - ret);
+		// BlockEntity upwardEntity = getLevel().getBlockEntity(pipe.getBlockPos().above());
+		//
+		// DCFluidUtil.addHead(copy, DCFluidUtil.getDirectionHead(from.getOpposite()));
+		// if (upwardEntity != null) {
+		// int ret2 = upwardEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.DOWN).map(targetHandler -> {
+		// if (targetHandler instanceof IFluidPipe pipe) {
+		// return pipe.getFace(Direction.DOWN).canReceive() ? pipe.fill(copy, action, Direction.DOWN) : 0;
+		// } else {
+		// return targetHandler.fill(get, action);
+		// }
+		// }).orElse(0);
+		// return ret = ret2;
+		// }
+		// }
+		// return ret;
+		// }
 	}
 
 }

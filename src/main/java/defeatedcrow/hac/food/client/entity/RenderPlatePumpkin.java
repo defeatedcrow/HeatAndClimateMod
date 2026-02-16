@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.PlatePumpkinItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderPlatePumpkin<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderPlatePumpkin<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderPlatePumpkin(Context ctx) {
 		super(ctx);

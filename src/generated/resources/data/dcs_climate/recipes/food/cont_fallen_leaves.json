@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:fallen_leaves"
+    },
+    {
+      "tag": "forge:fallen_leaves"
+    },
+    {
+      "tag": "forge:fallen_leaves"
+    },
+    {
+      "tag": "forge:fallen_leaves"
+    },
+    {
+      "tag": "forge:fallen_leaves"
+    },
+    {
+      "tag": "forge:fallen_leaves"
+    },
+    {
+      "tag": "forge:fallen_leaves"
+    },
+    {
+      "tag": "forge:fallen_leaves"
+    },
+    {
+      "tag": "forge:fallen_leaves"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:container/container_fallen_leaves"
+  }
+}

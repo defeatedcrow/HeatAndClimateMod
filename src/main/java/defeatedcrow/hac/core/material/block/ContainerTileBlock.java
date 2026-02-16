@@ -1,9 +1,14 @@
 package defeatedcrow.hac.core.material.block;
 
+import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.api.material.IColordBlock;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.material.block.building.SimpleChestDC;
+import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
@@ -13,6 +18,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -33,7 +39,7 @@ import net.minecraftforge.network.NetworkHooks;
  * 汎用チェストベースクラス (SimpleChestDCに対応)<br>
  * - Owner登録、開閉アニメーションあり
  */
-public abstract class ContainerTileBlock extends EntityBlockDC {
+public abstract class ContainerTileBlock extends EntityBlockDC implements IColordBlock {
 
 	public ContainerTileBlock(Properties prop) {
 		super(prop);
@@ -55,6 +61,14 @@ public abstract class ContainerTileBlock extends EntityBlockDC {
 		}
 		if (check == InteractionResult.PASS) {
 			return InteractionResult.PASS;
+		}
+		if (player != null) {
+			ItemStack held = player.getItemInHand(hand);
+			if (getAvaiableColor(held) != MagicColor.NONE) {
+				replace(level, pos, player, held, getAvaiableColor(held));
+				held.shrink(1);
+				return InteractionResult.sidedSuccess(level.isClientSide);
+			}
 		}
 		if (tile instanceof OwnableBaseTileDC chest) {
 			if (level.isClientSide || !chest.hasMenu()) {
@@ -145,6 +159,43 @@ public abstract class ContainerTileBlock extends EntityBlockDC {
 		if (blockentity instanceof SimpleChestDC) {
 			((SimpleChestDC) blockentity).recheckOpen();
 		}
+	}
+
+	// colord block
+
+	@Override
+	public MagicColor getAvaiableColor(ItemStack item) {
+		if (DCUtil.isEmpty(item))
+			return MagicColor.NONE;
+		if (item.is(TagDC.ItemTag.EXTRACT_WHITE))
+			return MagicColor.WHITE;
+		if (item.is(TagDC.ItemTag.EXTRACT_BLUE))
+			return MagicColor.BLUE;
+		if (item.is(TagDC.ItemTag.EXTRACT_BLACK))
+			return MagicColor.BLACK;
+		if (item.is(TagDC.ItemTag.EXTRACT_RED))
+			return MagicColor.RED;
+		if (item.is(TagDC.ItemTag.EXTRACT_GREEN))
+			return MagicColor.GREEN;
+		return MagicColor.NONE;
+	}
+
+	@Override
+	public void replace(Level level, BlockPos pos, Player player, ItemStack held, MagicColor color) {
+		BlockState target = level.getBlockState(pos);
+		if (target != null && target.getBlock() instanceof ContainerTileBlock cont) {
+			cont.getReplaceBlock(color).ifPresent(block -> {
+				BlockEntity tile = level.getBlockEntity(pos);
+				CompoundTag tag = tile.saveWithFullMetadata();
+				Direction face = DCState.getFace(target, DCState.FACING);
+				boolean water = DCState.getBool(target, WATERLOGGED);
+				BlockState replace = block.defaultBlockState().setValue(DCState.FACING, face).setValue(WATERLOGGED, water);
+				level.setBlock(pos, replace, 2);
+				BlockEntity newTile = level.getBlockEntity(pos);
+				newTile.load(tag);
+			});
+		}
+
 	}
 
 }

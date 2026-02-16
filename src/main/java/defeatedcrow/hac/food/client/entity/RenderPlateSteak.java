@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.PlateBeefItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderPlateSteak<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderPlateSteak<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderPlateSteak(Context ctx) {
 		super(ctx);

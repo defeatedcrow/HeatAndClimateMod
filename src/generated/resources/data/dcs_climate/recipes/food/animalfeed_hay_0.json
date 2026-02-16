@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:grasses"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/animalfeed_hay"
+  }
+}

@@ -1,6 +1,7 @@
 package defeatedcrow.hac.core.material.block.building;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.Nullable;
 
@@ -8,6 +9,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.api.material.IColordBlock;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.BuildInit;
@@ -18,6 +21,7 @@ import defeatedcrow.hac.core.material.block.OwnableContainerBaseTileDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -29,7 +33,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
-public class CabinetBlock extends ContainerTileBlock {
+public class CabinetBlock extends ContainerTileBlock implements IColordBlock {
 
 	final String name;
 
@@ -100,6 +104,22 @@ public class CabinetBlock extends ContainerTileBlock {
 			ret.add(getMainDrop());
 		}
 		return ret;
+	}
+
+	// colord block
+	@Override
+	public Optional<Block> getReplaceBlock(MagicColor color) {
+		if (color.isWhite)
+			return Optional.of(BuildInit.CABINET_WHITE.get());
+		if (color.isBlue)
+			return Optional.of(BuildInit.CABINET_BLUE.get());
+		if (color.isBlack)
+			return Optional.of(BuildInit.CABINET_BLACK.get());
+		if (color.isRed)
+			return Optional.of(BuildInit.CABINET_RED.get());
+		if (color.isGreen)
+			return Optional.of(BuildInit.CABINET_GREEN.get());
+		return Optional.empty();
 	}
 
 }

@@ -110,6 +110,7 @@ public class JsonBlockStateDC {
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
 	private static <T extends Comparable<T>> String getName(Property<T> prop, Comparable<?> val) {
 		return prop.getName((T) val);
 	}

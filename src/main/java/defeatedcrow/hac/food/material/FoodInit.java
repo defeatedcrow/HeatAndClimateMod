@@ -11,11 +11,12 @@ import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Agri;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Cont;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Food;
 import defeatedcrow.hac.core.tag.TagDC;
-import defeatedcrow.hac.food.material.block.DummyDianthusBlock;
+import defeatedcrow.hac.food.material.block.FallenLeavesBlock;
 import defeatedcrow.hac.food.material.block.FertileBlock;
 import defeatedcrow.hac.food.material.block.FertileBlockTile;
 import defeatedcrow.hac.food.material.block.FertilePlanterBlock;
 import defeatedcrow.hac.food.material.block.LeafMoldBlock;
+import defeatedcrow.hac.food.material.block.MealFeederBlock;
 import defeatedcrow.hac.food.material.block.containers.CardboardContBlock;
 import defeatedcrow.hac.food.material.block.containers.CropContBlock;
 import defeatedcrow.hac.food.material.block.containers.LeavesContBlock;
@@ -958,12 +959,22 @@ public class FoodInit {
 
 	public static final RegistryObject<Item> FEED_HAY = regItem("animalfeed_hay", () -> new MaterialItemDC(AGRI, "animalfeed_hay", TagDC.ItemTag.FEED_HAY).setDomain("food"));
 	public static final RegistryObject<Item> FEED_STRAW = regItem("animalfeed_straw", () -> new MaterialItemDC(AGRI, "animalfeed_straw", TagDC.ItemTag.FEED_STRAW).setDomain("food"));
+	public static final RegistryObject<Item> FEED_SILAGE = regItem("animalfeed_silage", () -> new MaterialItemDC(AGRI, "animalfeed_silage", TagDC.ItemTag.FEED_SILAGE).setDomain("food"));
 	public static final RegistryObject<Item> FEED_COMPOUND = regItem("animalfeed_compound", () -> new MaterialItemDC(AGRI, "animalfeed_compound", TagDC.ItemTag.FEED_COMPOUND).setDomain("food"));
 
 	public static final RegistryObject<Item> FERTILIZER_MIXED = regItem("fertilizer_mixed", () -> new FertilizerItemDC(AGRI, "fertilizer_mixed", TagDC.ItemTag.FERTILIZER_ADV).setDomain("food"));
 
 	public static final RegistryObject<Item> BIOMASS_PELLET = regItem("bio_briquet_raw", () -> new MaterialItemDC(AGRI, "bio_briquet_raw", null).setDomain("food"));
 	public static final RegistryObject<Item> BIOMASS_BRIQUET = regItem("bio_briquet", () -> new MaterialItemDC(AGRI, "bio_briquet", null).setDomain("food"));
+
+	// agriculture
+	public static final RegistryObject<Block> FERTILE = regBlock("fertile", () -> new FertileBlock(), null);
+	public static final RegistryObject<Block> FERTILE_PLANTER = regBlock("fertile_planter", () -> new FertilePlanterBlock(false), null);
+	public static final RegistryObject<Block> FERTILE_PLANTER_GEM = regBlock("fertile_planter_gem", () -> new FertilePlanterBlock(true), null);
+
+	public static final RegistryObject<Block> MEAL_FEEDER = regBlock("meal_feeder", () -> new MealFeederBlock(), null);
+
+	// public static final RegistryObject<Block> DUMMY_DIANTHUS = regBlock("dummy_dianthus", () -> new DummyDianthusBlock(), null);
 
 	// crops
 	public static final RegistryObject<Item> CROP_AL_WILD = regCrop(CropTier.WILD, CropType.ALLIUM, TagDC.ItemTag.CROP_CHIVES);
@@ -1253,6 +1264,8 @@ public class FoodInit {
 	public static final RegistryObject<Block> LEAVES_SU_CASHEW = regBlock("leaves_sumac_cashew", () -> new LeavesCashew(), ItemTags.LEAVES);
 	public static final RegistryObject<Block> LEAVES_SU_PISTACHIO = regBlock("leaves_sumac_pistachio", () -> new LeavesPistachio(), ItemTags.LEAVES);
 
+	public static final RegistryObject<Block> FALLEN_LEAVES = regBlock("fallen_leaves", () -> new FallenLeavesBlock("fallen_leaves"), TagDC.ItemTag.FALLEN_LEAVES);
+
 	public static final RegistryObject<Block> CROPBLOCK_PL_COCONUT = regSeed(CropTier.WILD, CropType.PALM, () -> new CropBlockPalm(CropTier.WILD), null);
 	public static final RegistryObject<Block> CROPBLOCK_PL_DATE = regSeed(CropTier.COMMON, CropType.PALM, () -> new CropBlockPalm(CropTier.COMMON), null);
 	public static final RegistryObject<Block> CROPBLOCK_PL_OIL = regSeed(CropTier.RARE, CropType.PALM, () -> new CropBlockPalm(CropTier.RARE), null);
@@ -1287,12 +1300,6 @@ public class FoodInit {
 	public static final RegistryObject<Block> PLANK_RE_SORGHUM = regBlock("plank_reed_sorghum", () -> new PlankBlockDC("plank_reed_sorghum"), ItemTags.PLANKS);
 	public static final RegistryObject<Block> PLANK_LACQUERWARE = regBlock("plank_lacquerware", () -> new PlankBlockDC("plank_lacquerware"), ItemTags.PLANKS);
 
-	public static final RegistryObject<Block> FERTILE = regBlock("fertile", () -> new FertileBlock(), null);
-	public static final RegistryObject<Block> FERTILE_PLANTER = regBlock("fertile_planter", () -> new FertilePlanterBlock(false), null);
-	public static final RegistryObject<Block> FERTILE_PLANTER_GEM = regBlock("fertile_planter_gem", () -> new FertilePlanterBlock(true), null);
-
-	public static final RegistryObject<Block> DUMMY_DIANTHUS = regBlock("dummy_dianthus", () -> new DummyDianthusBlock(), null);
-
 	public static final RegistryObject<Block> CONT_DEFATTED_SOY = regCont("container_defatted_soy", () -> new LeafMoldBlock("container_defatted_soy"), TagDC.ItemTag.CONT_RESIDUES);
 	public static final RegistryObject<Block> CONT_PRESS_CAKE = regCont("container_press_cake", () -> new LeafMoldBlock("container_press_cake"), TagDC.ItemTag.CONT_RESIDUES);
 	public static final RegistryObject<Block> CONT_BRAN = regCont("container_bran", () -> new LeafMoldBlock("container_bran"), TagDC.ItemTag.CONT_RESIDUES);
@@ -1303,6 +1310,7 @@ public class FoodInit {
 	public static final RegistryObject<Block> CONT_ASH = regCont("container_ash", () -> new LeafMoldBlock("container_ash"), TagDC.ItemTag.CONT_ASH);
 
 	public static final RegistryObject<Block> CONT_LEAVES = regCont("container_leaves", () -> new LeavesContBlock("container_leaves"), TagDC.ItemTag.CONT_LEAVES);
+	public static final RegistryObject<Block> CONT_FALLEN_LEAVES = regCont("container_fallen_leaves", () -> new LeavesContBlock("container_fallen_leaves"), TagDC.ItemTag.CONT_LEAVES);
 	public static final RegistryObject<Block> CONT_WASTE = regCont("container_plant_wastes", () -> new LeavesContBlock("container_plant_wastes"), TagDC.ItemTag.CONT_LEAVES);
 	public static final RegistryObject<Block> CONT_LEAF_MOLD = regCont("container_leaf_mold", () -> new LeafMoldBlock("container_leaf_mold"), null);
 

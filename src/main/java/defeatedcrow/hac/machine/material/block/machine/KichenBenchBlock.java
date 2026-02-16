@@ -1,6 +1,7 @@
 package defeatedcrow.hac.machine.material.block.machine;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.Nullable;
 
@@ -8,11 +9,14 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.ContainerTileBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -74,6 +78,18 @@ public class KichenBenchBlock extends ContainerTileBlock {
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
 		return null;
+	}
+
+	// colord block
+
+	@Override
+	public MagicColor getAvaiableColor(ItemStack item) {
+		return MagicColor.NONE;
+	}
+
+	@Override
+	public Optional<Block> getReplaceBlock(MagicColor color) {
+		return Optional.empty();
 	}
 
 }

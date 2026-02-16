@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.TartItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderTart<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderTart<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderTart(Context ctx) {
 		super(ctx);

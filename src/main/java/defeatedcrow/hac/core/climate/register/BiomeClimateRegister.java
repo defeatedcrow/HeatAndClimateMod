@@ -41,8 +41,8 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 	private static IForgeRegistry<Biome> reg = ForgeRegistries.BIOMES;
 
 	private BiomeClimateRegister() {
-		this.regMap = new HashMap<ResourceLocation, Climate>();
-		this.seasons = new ArrayList<ResourceLocation>();
+		BiomeClimateRegister.regMap = new HashMap<ResourceLocation, Climate>();
+		BiomeClimateRegister.seasons = new ArrayList<ResourceLocation>();
 	}
 
 	@Override

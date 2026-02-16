@@ -22,7 +22,7 @@ public abstract class ParticleEngineMixin {
 
 	@Inject(method = "createParticle", at = @At(value = "HEAD"), cancellable = true)
 	public void hookCreateParticle(ParticleOptions option, double x, double y, double z, double d1, double d2, double d3, CallbackInfoReturnable<Particle> callback) {
-		ParticleType type = option.getType();
+		ParticleType<?> type = option.getType();
 		boolean ret = false;
 		if (ConfigClientBuilder.INSTANCE.disablePotionEffect.get() && type == ParticleTypes.ENTITY_EFFECT) {
 			Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();

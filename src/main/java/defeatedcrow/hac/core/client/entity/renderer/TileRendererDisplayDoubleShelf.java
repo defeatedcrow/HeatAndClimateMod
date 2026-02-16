@@ -11,7 +11,6 @@ import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.block.building.DisplayDoubleShelfTile;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -29,13 +28,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class TileRendererDisplayDoubleShelf implements BlockEntityRenderer<DisplayDoubleShelfTile> {
 
-	private BlockRenderDispatcher renderer;
 	private final ItemRenderer itemRenderer;
 	protected BlockShelfIronModel model_A;
 	protected BlockShelfLabModel model_B;
 
 	public TileRendererDisplayDoubleShelf(BlockEntityRendererProvider.Context ctx) {
-		renderer = ctx.getBlockRenderDispatcher();
 		this.itemRenderer = ctx.getItemRenderer();
 		this.model_A = new BlockShelfIronModel(ctx.bakeLayer(DisplayDoubleShelfTile.IRON.getLayerLocation()));
 		this.model_B = new BlockShelfLabModel(ctx.bakeLayer(DisplayDoubleShelfTile.LAB.getLayerLocation()));

@@ -9,6 +9,7 @@
     "#forge:ingredients/bagasse",
     "#forge:animal_feeds/hay",
     "#forge:animal_feeds/straw",
+    "#forge:fallen_leaves",
     "#minecraft:leaves"
   ]
 }

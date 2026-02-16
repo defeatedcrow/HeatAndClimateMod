@@ -16,9 +16,9 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderSoup<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderSoup<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected BowlSoupModel model;
+	protected BowlSoupModel<FoodEntityBase> model;
 
 	public RenderSoup(Context ctx) {
 		super(ctx);

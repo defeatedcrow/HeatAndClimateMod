@@ -16,6 +16,7 @@ public class FluidTagProviderDC extends FluidTagsProvider {
 		super(gen, "dcs_climate", helper);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void addTags() {
 

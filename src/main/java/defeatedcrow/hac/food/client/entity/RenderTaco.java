@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.TacoItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderTaco<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderTaco<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderTaco(Context ctx) {
 		super(ctx);

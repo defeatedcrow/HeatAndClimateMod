@@ -17,9 +17,9 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderUdon<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderUdon<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected SobaModel model;
+	protected SobaModel<FoodEntityBase> model;
 
 	public RenderUdon(Context ctx) {
 		super(ctx);

@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.ZarusobaItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderZarusoba<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderZarusoba<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderZarusoba(Context ctx) {
 		super(ctx);

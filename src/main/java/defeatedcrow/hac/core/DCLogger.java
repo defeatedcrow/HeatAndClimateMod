@@ -71,7 +71,7 @@ public class DCLogger {
 					InputStreamReader isr = new InputStreamReader(fis);
 					JsonReader jsr = new JsonReader(isr);
 					Gson gson = new Gson();
-					Map get = gson.fromJson(jsr, Map.class);
+					Map<?, ?> get = gson.fromJson(jsr, Map.class);
 
 					isr.close();
 					fis.close();

@@ -16,9 +16,9 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderChazuke<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderChazuke<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected ChazukeModel model;
+	protected ChazukeModel<FoodEntityBase> model;
 
 	public RenderChazuke(Context ctx) {
 		super(ctx);

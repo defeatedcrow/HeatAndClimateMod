@@ -15,7 +15,7 @@ public class AttackTargetGoalMixin {
 
 	@Inject(method = "canUse", at = @At(value = "HEAD"), cancellable = true, remap = true)
 	public void hookUseGoal(@Nonnull CallbackInfoReturnable<Boolean> callback) {
-		NearestAttackableTargetGoal goal = NearestAttackableTargetGoal.class.cast(this);
+		NearestAttackableTargetGoal<?> goal = NearestAttackableTargetGoal.class.cast(this);
 		if (ConfigCommonBuilder.INSTANCE.enMobTarget.get()) {
 			if (goal.mob != null) {
 				int i = goal.mob.getPersistentData().getInt("dcs_fulfill_interval");

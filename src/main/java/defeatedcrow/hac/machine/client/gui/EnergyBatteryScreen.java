@@ -75,7 +75,7 @@ public class EnergyBatteryScreen extends AbstractContainerScreen<EnergyBatteryMe
 		for (int k = 0; k < 6; k++)
 			if (this.isHovering(120, 32 + (13 * k), 27, 8, mx, my)) {
 				String s = "none";
-				switch (this.menu.getFaceIO(0)) {
+				switch (this.menu.getFaceIO(k)) {
 				case 1:
 					s = "outlet";
 					break;

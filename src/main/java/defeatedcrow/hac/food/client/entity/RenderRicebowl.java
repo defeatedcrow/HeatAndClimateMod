@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.potfoods.RiceBowlItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderRicebowl<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderRicebowl<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderRicebowl(Context ctx) {
 		super(ctx);

@@ -37,6 +37,7 @@ public enum EnumVein {
 	public final MagicColor color;
 	public final List<TagKey<Biome>> biomes = Lists.newArrayList();
 
+	@SafeVarargs
 	EnumVein(int i, MagicColor c, TagKey<Biome>... tags) {
 		id = i;
 		color = c;

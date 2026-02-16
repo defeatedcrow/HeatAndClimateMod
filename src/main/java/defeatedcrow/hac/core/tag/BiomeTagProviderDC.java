@@ -14,6 +14,7 @@ public class BiomeTagProviderDC extends BiomeTagsProvider {
 		super(gen, "dcs_climate", helper);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void addTags() {
 

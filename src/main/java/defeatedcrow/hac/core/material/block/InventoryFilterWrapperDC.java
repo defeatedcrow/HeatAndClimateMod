@@ -13,6 +13,7 @@ public class InventoryFilterWrapperDC extends SidedInvWrapper {
 
 	final int[] filterdSlot;
 
+	@SuppressWarnings("unchecked")
 	public static LazyOptional<IItemHandlerModifiable>[] create(WorldlyContainer inv, int[] slots, Direction... sides) {
 		LazyOptional<IItemHandlerModifiable>[] ret = new LazyOptional[sides.length];
 		for (int x = 0; x < sides.length; x++) {

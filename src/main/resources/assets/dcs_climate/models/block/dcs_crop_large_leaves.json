@@ -1,5 +1,5 @@
 {
-    "ambientocclusion": true,
+    "parent": "block/block",
     "render_type": "cutout",
     "textures": {
         "particle": "#leaves"

@@ -9,12 +9,12 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderKobachi<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderKobachi<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected KobachiModel mainModel;
-	protected KobachiModel pasteModel;
-	protected KobachiModel tunaModel;
-	protected KobachiModel chickenModel;
+	protected KobachiModel<FoodEntityBase> mainModel;
+	protected KobachiModel<FoodEntityBase> pasteModel;
+	protected KobachiModel<FoodEntityBase> tunaModel;
+	protected KobachiModel<FoodEntityBase> chickenModel;
 
 	public RenderKobachi(Context ctx) {
 		super(ctx);

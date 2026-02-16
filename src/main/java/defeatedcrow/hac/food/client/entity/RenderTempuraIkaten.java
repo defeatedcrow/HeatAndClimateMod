@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.TempuraIkatenItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderTempuraIkaten<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderTempuraIkaten<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderTempuraIkaten(Context ctx) {
 		super(ctx);

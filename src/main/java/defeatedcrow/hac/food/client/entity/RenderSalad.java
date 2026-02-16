@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.SaladItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderSalad<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderSalad<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderSalad(Context ctx) {
 		super(ctx);

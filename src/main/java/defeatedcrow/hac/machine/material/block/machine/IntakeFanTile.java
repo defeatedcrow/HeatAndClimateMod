@@ -1,5 +1,7 @@
 package defeatedcrow.hac.machine.material.block.machine;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.api.machine.IFluidPipe;
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IPosLinkTile;
@@ -9,6 +11,9 @@ import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.machine.energy.SidedEnergyReceiver;
 import defeatedcrow.hac.machine.energy.SidedEnergyTankDC;
 import defeatedcrow.hac.machine.material.MachineInit;
+import defeatedcrow.hac.machine.material.fluid.DCDummyTank;
+import defeatedcrow.hac.machine.material.fluid.DCTank;
+import defeatedcrow.hac.machine.material.fluid.IFluidTankTileDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -21,11 +26,14 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 
-public class IntakeFanTile extends EnergyMachineBaseDC implements IRenderBlockData {
+public class IntakeFanTile extends EnergyMachineBaseDC implements IRenderBlockData, IFluidTankTileDC {
 
 	public IntakeFanTile(BlockPos pos, BlockState state) {
 		super(MachineInit.INTAKE_FAN_TILE.get(), pos, state);
@@ -72,8 +80,8 @@ public class IntakeFanTile extends EnergyMachineBaseDC implements IRenderBlockDa
 				} else if (backEntity != null) {
 					flag = backEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, dir.getOpposite()).map(handler -> {
 						if (handler instanceof IFluidPipe sided) {
-							if (sided.getFace(dir.getOpposite()).canReceive()) {
-								return sided.fill(air, FluidAction.EXECUTE, dir.getOpposite()) > 0;
+							if (sided.getFace(dir).canReceive()) {
+								return sided.fill(air, FluidAction.EXECUTE, dir) > 0;
 							}
 						} else if (handler != null) {
 							return handler.fill(air, FluidAction.EXECUTE) > 0;
@@ -141,5 +149,49 @@ public class IntakeFanTile extends EnergyMachineBaseDC implements IRenderBlockDa
 	}
 
 	public static final EntityRenderData NORMAL = new EntityRenderData("tile/intake_fan", 1F, -0.5F);
+
+	// fluid
+
+	protected DCDummyTank tank = new DCDummyTank();
+
+	@Override
+	public int getTanks() {
+		return 1;
+	}
+
+	@Override
+	public DCTank getTank(int id) {
+		return tank;
+	}
+
+	@Override
+	public DCTank getTank(Direction dir) {
+		return tank;
+	}
+
+	// cap
+
+	LazyOptional<? extends IFluidHandler> fluidhandler = LazyOptional.of(() -> tank);
+
+	@Override
+	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction dirIn) {
+		Direction dir = DCState.getFace(getBlockState(), DCState.FACING);
+		if (!this.remove && capability == ForgeCapabilities.FLUID_HANDLER && dirIn == dir.getOpposite()) {
+			return fluidhandler.cast();
+		}
+		return super.getCapability(capability, dir);
+	}
+
+	@Override
+	public void invalidateCaps() {
+		super.invalidateCaps();
+		fluidhandler.invalidate();
+	}
+
+	@Override
+	public void reviveCaps() {
+		super.reviveCaps();
+		this.fluidhandler = LazyOptional.of(() -> tank);
+	}
 
 }

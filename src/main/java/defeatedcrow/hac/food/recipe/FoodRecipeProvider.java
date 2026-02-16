@@ -1562,6 +1562,14 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_gem_agates", has(TagDC.ItemTag.GEM_AGATES))
 				.save(cons, "dcs_climate:food/fertile_planter_gem_1");
 
+		ShapedRecipeBuilder.shaped(FoodInit.MEAL_FEEDER.get(), 1)
+				.pattern("YXY")
+				.pattern("YYY")
+				.define('X', TagDC.ItemTag.FEEDS)
+				.define('Y', ItemTags.PLANKS)
+				.unlockedBy("has_planks", has(ItemTags.PLANKS))
+				.save(cons, "dcs_climate:food/meal_feeder_1");
+
 		// food materials
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_PASTRY.get(), 1)
@@ -1782,6 +1790,19 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_leaves", has(ItemTags.LEAVES))
 				.save(cons, "dcs_climate:food/cont_leaves");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_FALLEN_LEAVES.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
+				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
+				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
+				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
+				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
+				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
+				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
+				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
+				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
+				.unlockedBy("has_fallen_leaves", has(TagDC.ItemTag.FALLEN_LEAVES))
+				.save(cons, "dcs_climate:food/cont_fallen_leaves");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_WASTE.get(), 1)
 				.requires(Ingredient.of(Tags.Items.CROPS))
 				.requires(Ingredient.of(Tags.Items.CROPS))
@@ -1808,6 +1829,25 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_residues", has(TagDC.ItemTag.PRESS_CAKE))
 				.save(cons, "dcs_climate:food/cont_plant_wastes_2");
 
+		// feed
+		ShapelessRecipeBuilder.shapeless(FoodInit.FEED_HAY.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.GRASSES))
+				.unlockedBy("has_grasses", has(TagDC.ItemTag.GRASSES))
+				.save(cons, "dcs_climate:food/animalfeed_hay_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FEED_COMPOUND.get(), 3)
+				.requires(Ingredient.of(TagDC.ItemTag.PRESS_CAKE))
+				.requires(Ingredient.of(TagDC.ItemTag.BRAN))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_CEREALS))
+				.unlockedBy("has_press_cakes", has(TagDC.ItemTag.PRESS_CAKE))
+				.save(cons, "dcs_climate:food/animalfeed_compound_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FEED_COMPOUND.get(), 5)
+				.requires(Ingredient.of(TagDC.ItemTag.PRESS_CAKE))
+				.requires(Ingredient.of(TagDC.ItemTag.BRAN))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_MILLETS))
+				.unlockedBy("has_press_cakes", has(TagDC.ItemTag.PRESS_CAKE))
+				.save(cons, "dcs_climate:food/animalfeed_compound_2");
 	}
 
 	static void copperRecipes(Consumer<FinishedRecipe> cons) {

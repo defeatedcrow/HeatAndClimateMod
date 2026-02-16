@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.PlateGarlicItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderPlateGarlic<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderPlateGarlic<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderPlateGarlic(Context ctx) {
 		super(ctx);

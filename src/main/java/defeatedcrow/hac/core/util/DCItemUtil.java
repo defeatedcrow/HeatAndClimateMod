@@ -143,7 +143,7 @@ public class DCItemUtil {
 				for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
 					ItemStack check = player.getInventory().getItem(i);
 					if (target.test(check)) {
-						return new SimpleEntry(i, check);
+						return new SimpleEntry<>(i, check);
 					}
 				}
 			} else if (living instanceof AbstractVillager) {
@@ -151,7 +151,7 @@ public class DCItemUtil {
 				for (int i = 0; i < inv.getContainerSize(); i++) {
 					ItemStack check = inv.getItem(i);
 					if (target.test(check)) {
-						return new SimpleEntry(i, check);
+						return new SimpleEntry<>(i, check);
 					}
 				}
 			} else {
@@ -160,13 +160,13 @@ public class DCItemUtil {
 					for (int i = 0; i < handler.getSlots(); i++) {
 						ItemStack check = handler.getStackInSlot(i);
 						if (target.test(check)) {
-							return new SimpleEntry(i, check);
+							return new SimpleEntry<>(i, check);
 						}
 					}
 				}
 			}
 		}
-		return new SimpleEntry(-1, ItemStack.EMPTY);
+		return new SimpleEntry<>(-1, ItemStack.EMPTY);
 	}
 
 	public static float getArmorResistant(LivingEntity living, boolean isCold) {
@@ -219,6 +219,7 @@ public class DCItemUtil {
 		return Optional.empty();
 	}
 
+	@SuppressWarnings("unchecked")
 	public static ArrayList<ItemStack> getProcessedList(Object obj) {
 		ArrayList<ItemStack> ret = Lists.newArrayList();
 		if (obj == null) {
@@ -228,7 +229,7 @@ public class DCItemUtil {
 			ret.addAll(getOres((String) obj));
 		} else if (obj instanceof TagKey<?>) {
 			Registry.ITEM.getTagOrEmpty((TagKey<Item>) obj).forEach(holder -> ret.add(new ItemStack(holder)));
-		} else if (obj instanceof List && !((List) obj).isEmpty()) {
+		} else if (obj instanceof List && !((List<?>) obj).isEmpty()) {
 			ret.addAll((List<ItemStack>) obj);
 		} else if (obj instanceof ItemStack) {
 			if (!((ItemStack) obj).isEmpty())
@@ -243,6 +244,7 @@ public class DCItemUtil {
 		return ret;
 	}
 
+	@SuppressWarnings("unchecked")
 	public static Ingredient getIngredient(Object obj) {
 		if (obj == null) {
 			return Ingredient.EMPTY;
@@ -252,8 +254,9 @@ public class DCItemUtil {
 		} else if (obj instanceof String) {
 			return Ingredient.of(getOres((String) obj).stream());
 		} else if (obj instanceof TagKey<?>) {
+			TagKey<?> tag = (TagKey<?>) obj;
 			return Ingredient.of((TagKey<Item>) obj);
-		} else if (obj instanceof List && !((List) obj).isEmpty()) {
+		} else if (obj instanceof List && !((List<?>) obj).isEmpty()) {
 			return Ingredient.of(((List<ItemStack>) obj).stream());
 		} else if (obj instanceof ItemStack) {
 			if (!((ItemStack) obj).isEmpty())

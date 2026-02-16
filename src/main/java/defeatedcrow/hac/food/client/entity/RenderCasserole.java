@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.FoodEntityBase;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderCasserole<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderCasserole<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderCasserole(Context ctx) {
 		super(ctx);

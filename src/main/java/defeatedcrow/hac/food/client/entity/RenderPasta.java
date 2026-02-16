@@ -6,7 +6,7 @@ import defeatedcrow.hac.food.material.entity.PastaItem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderPasta<T extends FoodEntityBase> extends RenderFoodBase {
+public class RenderPasta<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
 	public RenderPasta(Context ctx) {
 		super(ctx);

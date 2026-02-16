@@ -189,7 +189,7 @@ public class BlockEventDC {
 					event.setUseItem(Result.ALLOW);
 					event.setCanceled(true);
 				} else if (isRotateTarget(state)) {
-					BlockState next = state.rotate(Rotation.CLOCKWISE_90);
+					BlockState next = state.rotate(event.getLevel(), pos, Rotation.CLOCKWISE_90);
 					event.getLevel().setBlock(pos, next, 3);
 					event.getEntity().swing(event.getHand(), true);
 					event.setUseItem(Result.ALLOW);
