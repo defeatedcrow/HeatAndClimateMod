@@ -1426,6 +1426,8 @@
   "block.dcs_climate.food.leaves_sumac_mango":"Mango Leaves",
   "block.dcs_climate.food.leaves_sumac_cashew":"Cashew Leaves",
   "block.dcs_climate.food.leaves_sumac_pistachio":"Pistachio Leaves",
+  
+  "block.dcs_climate.food.fallen_leaves":"Fallen Leaves",
 
   "block.dcs_climate.food.log_beech_common":"Beech Log",
   "block.dcs_climate.food.log_beech_walnut":"Walnut Log",
@@ -2127,6 +2129,7 @@
   "dcs.tip.fertile.fertile":"You can fertilize this block to promoting crop growth.",
   "dcs.tip.fertile.mutation.on":"Crop Mutations: Enabled",
   "dcs.tip.fertile.mutation.off":"Crop Mutations: Disabled",
+  "dcs.tip.feeder.desc":"When there is forages inside, it restores animals HP and promotes breeding.",
 
   "dcs.tip.flow.tier1":"[Tier1] Flow Rate: 32 /t",
   "dcs.tip.flow.tier2":"[Tier2] Flow Rate: 128 /t",

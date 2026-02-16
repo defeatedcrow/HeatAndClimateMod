@@ -1427,6 +1427,8 @@
   "block.dcs_climate.food.leaves_sumac_mango":"マンゴーの葉",
   "block.dcs_climate.food.leaves_sumac_cashew":"カシューの葉",
   "block.dcs_climate.food.leaves_sumac_pistachio":"ピスタチオの葉",
+  
+  "block.dcs_climate.food.fallen_leaves":"落ち葉",
 
   "block.dcs_climate.food.log_beech_common":"ブナの原木",
   "block.dcs_climate.food.log_beech_walnut":"クルミの原木",
@@ -2124,6 +2126,7 @@
   "dcs.tip.fertile.fertile":"施肥することで作物の成長を促進します。",
   "dcs.tip.fertile.mutation.on":"WILD作物の変異:あり",
   "dcs.tip.fertile.mutation.off":"WILD作物の変異:なし",
+  "dcs.tip.feeder.desc":"家畜の餌を入れると、家畜のHPを回復させ、繁殖を促進します。",
 
   "dcs.tip.chamber.temp":"温度範囲: ",
   "dcs.tip.chamber.wind":"通気の良い場所や、ふいごの使用により、温度が上昇します。",
