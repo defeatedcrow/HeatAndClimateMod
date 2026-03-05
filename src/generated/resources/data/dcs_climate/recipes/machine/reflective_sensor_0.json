@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:stone"
+    },
+    "Y": {
+      "tag": "dcs_climate:sensors/optical"
+    },
+    "Z": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XZX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/reflective_sensor"
+  }
+}

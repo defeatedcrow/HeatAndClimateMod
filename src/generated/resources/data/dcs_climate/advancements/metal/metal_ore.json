@@ -1,0 +1,35 @@
+{
+  "parent": "dcs_climate:metal/metal_mortar",
+  "criteria": {
+    "has_drops": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "dcs_climate:color_raw_materials"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.metal.ore.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "dcs_climate:main/oreitem_blue_2"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.metal.ore.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_drops"
+    ]
+  ]
+}

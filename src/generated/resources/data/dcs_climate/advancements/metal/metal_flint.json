@@ -1,0 +1,37 @@
+{
+  "parent": "dcs_climate:metal/root",
+  "criteria": {
+    "has_flint": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:flint"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dcs_climate.metal.flint.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:flint"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dcs_climate.metal.flint.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_flint"
+    ]
+  ]
+}

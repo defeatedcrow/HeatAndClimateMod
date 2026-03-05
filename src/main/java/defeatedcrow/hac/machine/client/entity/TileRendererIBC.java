@@ -57,9 +57,9 @@ public class TileRendererIBC implements BlockEntityRenderer<IBCTile> {
 			this.model.renderToBuffer(poseStack, buffer.getBuffer(model.renderType(tex)), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 			poseStack.popPose();
 
-			if (!tile.tank.getFluid().isEmpty()) {
-				FluidStack copy = tile.tank.getFluid().copy();
-				float h = copy.getAmount() * 0.9F / tile.tank.getCapacity();
+			if (!tile.getTank().getFluid().isEmpty()) {
+				FluidStack copy = tile.getTank().getFluid().copy();
+				float h = copy.getAmount() * 0.9F / tile.getTank().getCapacity();
 				renderFluid(poseStack, buffer, copy, packedLight, 0.5F, 0.05F, 0.5F, 0.45F, h);
 			}
 

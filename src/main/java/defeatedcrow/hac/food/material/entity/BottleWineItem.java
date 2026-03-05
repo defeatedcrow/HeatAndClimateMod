@@ -34,7 +34,7 @@ public class BottleWineItem extends BottleBeerItem {
 			return WINE;
 		if (item == FoodInit.BOTTLE_WINE_WHITE.get())
 			return WINE_WHITE;
-		return BEER;
+		return WINE;
 	}
 
 	public static final EntityRenderData WINE = new EntityRenderData("food/bottle_wine", 1F, 0F);

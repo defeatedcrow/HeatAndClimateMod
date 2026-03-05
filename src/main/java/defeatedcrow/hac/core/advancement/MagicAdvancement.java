@@ -10,20 +10,28 @@ import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.EffectsChangedTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.MobEffectsPredicate;
+import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 
 public class MagicAdvancement implements Consumer<Consumer<Advancement>> {
 
 	@Override
 	public void accept(Consumer<Advancement> t) {
-		Advancement m1 = Advancement.Builder.advancement().display(MagicInit.EXTRACT_BLUE.get(), Component.translatable("advancements.dcs_climate.magic.root.title"),
-				Component.translatable("advancements.dcs_climate.magic.root.desc"),
-				new ResourceLocation("dcs_climate:textures/gui/advancement/magic.png"), FrameType.TASK, true, true, false)
+
+		Advancement v1 = Advancement.Builder.advancement()
+				.display(MagicInit.PENDANT_GOLD_RED.get(), Component.translatable("advancements.dcs_climate.magic.root.title"), Component
+						.translatable("advancements.dcs_climate.magic.root.desc"), new ResourceLocation("dcs_climate:textures/gui/advancement/magic.png"), FrameType.TASK, false, false, false)
+				.addCriterion("in_overworld", PlayerTrigger.TriggerInstance.located(LocationPredicate.inDimension(Level.OVERWORLD))).save(t, "dcs_climate:magic/root");
+
+		Advancement m1 = Advancement.Builder.advancement().parent(v1)
+				.display(MagicInit.EXTRACT_BLUE.get(), Component.translatable("advancements.dcs_climate.magic.extract.title"), Component.translatable("advancements.dcs_climate.magic.extract.desc"), null, FrameType.TASK, true, true, false)
 				.addCriterion("has_drops", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(TagDC.ItemTag.COLOR_EXTRACTS).build())).save(t,
-						"dcs_climate:magic/magic_root");
+						"dcs_climate:magic/magic_extract");
 
 		Advancement m2 = Advancement.Builder.advancement().parent(m1).display(MagicInit.ARROW_BLACK.get(), Component.translatable("advancements.dcs_climate.magic.arrow.title"),
 				Component.translatable("advancements.dcs_climate.magic.arrow.desc"), null, FrameType.TASK, true, true, false)

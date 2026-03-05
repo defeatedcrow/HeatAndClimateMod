@@ -731,7 +731,6 @@
    通過するアイテムをフィルタリングし、搬出先を切替えます。
    The destination will change depending on the item set in the filter.
 
-
    『Phrase』モードでは、金床で変更したアイテムの名前をフィルターに利用できます。
    In "Phrase" mode, the anvil-modified item name can be used for filtering.
 
@@ -745,7 +744,21 @@
 
 #### 更新履歴 / Change log ####
 
-○v4-beta31
+○v4-beta32
+ add: 光センサー
+ add: 反射型センサーブロック
+ add: エンティティ検知カメラ
+ add: 自動ミルク絞り機
+ add: 序盤向けの料理5種
+ add: 木こり効果のポーションエフェクトの追加
+ change: ビール、茶の飲用時効果を変更。
+ change: 土レンガをバニラレンガのレシピに使用できるようにした。
+ change: 序盤の実績を見直し、より導線をわかりやすくした。
+ change: 鋳型で作成した宝石をクラフトで取り出すレシピを追加。
+ fix: クワを使ってHaC作物を破壊すると確実に種を得られるように修正した。
+ fix: 落ち葉ブロックの翻訳を修正。
+
+○v4-beta31 (2026.2.17)
  add: 家畜用オートフィーダー
  add: サイレージ
  add: 落ち葉ブロック

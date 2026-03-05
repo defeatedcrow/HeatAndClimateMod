@@ -62,6 +62,7 @@ import defeatedcrow.hac.machine.material.block.machine.TeaPotBlock;
 import defeatedcrow.hac.machine.material.block.machine.TeaPotTile;
 import defeatedcrow.hac.machine.material.block.machine.WaterPumpBlock;
 import defeatedcrow.hac.machine.material.block.machine.WaterPumpTile;
+import defeatedcrow.hac.machine.material.block.monitor.EntityCameraBlock;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorAndonBlock;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorAndonPanelBlock;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorAndonTile;
@@ -75,8 +76,11 @@ import defeatedcrow.hac.machine.material.block.monitor.MonitorRSTile;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorTempBlock;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorTempTile;
 import defeatedcrow.hac.machine.material.block.monitor.PlayerPressurePlateBlock;
+import defeatedcrow.hac.machine.material.block.monitor.ReflectiveSensorBlock;
 import defeatedcrow.hac.machine.material.block.monitor.StormglassBlock;
 import defeatedcrow.hac.machine.material.block.monitor.StormglassTile;
+import defeatedcrow.hac.machine.material.block.transport.AutoMilkerBlock;
+import defeatedcrow.hac.machine.material.block.transport.AutoMilkerTank;
 import defeatedcrow.hac.machine.material.block.transport.BatteryMiddleBlock;
 import defeatedcrow.hac.machine.material.block.transport.BatterySmallBlock;
 import defeatedcrow.hac.machine.material.block.transport.CableAluminumBlock;
@@ -178,6 +182,8 @@ public class MachineInit {
 
 	public static final RegistryObject<Block> IBC = regFluidBlock("ibc", () -> new IBCBlock("ibc"), Rarity.UNCOMMON, 1000000);
 
+	public static final RegistryObject<Block> AUTO_MILKER = regFluidBlock("auto_milker", () -> new AutoMilkerBlock("auto_milker"), Rarity.RARE, 16000);
+
 	public static final RegistryObject<Block> PIPE_BRASS = regBlock("pipe_brass", () -> new FluidPipeAlloyBlock("pipe_brass"), Rarity.COMMON, null);
 	public static final RegistryObject<Block> PIPE_NICKELSILVER = regBlock("pipe_nickelsilver", () -> new FluidPipeNickelsilverBlock("pipe_nickelsilver"), Rarity.UNCOMMON, null);
 
@@ -248,6 +254,9 @@ public class MachineInit {
 	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_8 = regMonitorBlock("monitor_andon_panel_8", () -> new MonitorAndonPanelBlock(8));
 	public static final RegistryObject<Block> MONITOR_ANDON_PANEL_9 = regMonitorBlock("monitor_andon_panel_9", () -> new MonitorAndonPanelBlock(9));
 
+	public static final RegistryObject<Block> REFLECTIVE_SENSOR = regBlock("reflective_sensor", () -> new ReflectiveSensorBlock(), Rarity.RARE, null);
+	public static final RegistryObject<Block> ENTITY_CAMERA = regBlock("entity_camera", () -> new EntityCameraBlock(), Rarity.RARE, null);
+
 	public static final RegistryObject<Block> STORMGLASS = regBlock("stormglass", () -> new StormglassBlock("stormglass"), Rarity.COMMON, null);
 
 	public static final RegistryObject<Block> PLAYER_PRESSURE_PLATE = regBlock("player_pressure_plate", () -> new PlayerPressurePlateBlock("player_pressure_plate"), Rarity.COMMON, null);
@@ -264,6 +273,8 @@ public class MachineInit {
 	public static final RegistryObject<Item> BLADE_SUS = regItem("crusher_blade_sanitary", () -> new MachineMaterialItem(Rarity.UNCOMMON, "crusher_blade_sanitary", TagDC.ItemTag.BLADE_SANITARY));
 	public static final RegistryObject<Item> BLADE_ALUMINA = regItem("crusher_blade_alumina", () -> new MachineMaterialItem(Rarity.RARE, "crusher_blade_alumina", TagDC.ItemTag.BLADE_ALUMINA));
 	public static final RegistryObject<Item> BLADE_SCREEN = regItem("crusher_blade_screen", () -> new MachineMaterialItem(Rarity.UNCOMMON, "crusher_blade_screen", TagDC.ItemTag.BLADE_SCREEN));
+
+	public static final RegistryObject<Item> OPTICAL_SENSOR = regItem("optical_sensor", () -> new MachineMaterialItem(Rarity.RARE, "optical_sensor", TagDC.ItemTag.SENSOR_OPTICAL));
 
 	public static final RegistryObject<Item> MEMORY_COORD = regItem("memory_coord", () -> new MemoryCoordItem(Rarity.COMMON, "memory_coord"));
 
@@ -314,6 +325,9 @@ public class MachineInit {
 
 	public static final RegistryObject<BlockEntityType<IBCTile>> IBC_TILE = CoreInit.BLOCK_ENTITIES.register("ibc_tile",
 			() -> BlockEntityType.Builder.of(IBCTile::new, new Block[] { IBC.get() }).build(null));
+
+	public static final RegistryObject<BlockEntityType<AutoMilkerTank>> AUTO_MILKER_TILE = CoreInit.BLOCK_ENTITIES
+			.register("auto_milker_tile", () -> BlockEntityType.Builder.of(AutoMilkerTank::new, new Block[] { AUTO_MILKER.get() }).build(null));
 
 	public static final RegistryObject<BlockEntityType<FluidPipeAlloyTile>> PIPE_BRASS_TILE = CoreInit.BLOCK_ENTITIES.register("pipe_brass_tile",
 			() -> BlockEntityType.Builder.of(FluidPipeAlloyTile::new, new Block[] { PIPE_BRASS.get() }).build(null));

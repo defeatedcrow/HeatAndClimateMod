@@ -34,13 +34,9 @@ public class PlayerPressurePlateBlock extends WeightedPressurePlateBlock impleme
 		name = n;
 	}
 
-	@Override
-	protected int getSignalStrength(Level level, BlockPos pos) {
-		int i = Math.min(level.getEntitiesOfClass(Player.class, TOUCH_AABB.move(pos)).size(), 1);
-		if (i > 0) {
-			return 15;
-		} else {
-			return 0;
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+		if (entity instanceof Player) {
+			super.entityInside(state, level, pos, entity);
 		}
 	}
 

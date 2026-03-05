@@ -377,7 +377,7 @@ public class CharmTriggerEvent {
 			player.getMainHandItem().hurtAndBreak(2, player, (p) -> {
 				p.broadcastBreakEvent(EquipmentSlot.MAINHAND);
 			});
-			event.setCanceled(true);
+			ret = true;
 
 		} else {
 			int range = 0;
@@ -412,8 +412,12 @@ public class CharmTriggerEvent {
 					p.broadcastBreakEvent(EquipmentSlot.MAINHAND);
 				});
 
-				event.setCanceled(true);
+				ret = true;
 			}
+		}
+		if (ret) {
+			event.setCanceled(true);
+			return;
 		}
 	}
 

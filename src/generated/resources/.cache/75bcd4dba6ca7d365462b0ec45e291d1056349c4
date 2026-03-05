@@ -1,4 +1,4 @@
-// 1.19.2	2026-02-16T20:56:19.281851	Tags for minecraft:block
+// 1.19.2	2026-03-05T00:45:35.5955348	Tags for minecraft:block
 10483793c64468d4f5b52de535ddf0ddc8dba771 data/dcs_climate/tags/blocks/bamboo_shoot.json
 b094b4912df19dd03d0bc38d7fcdda0e799a0911 data/dcs_climate/tags/blocks/building_stones.json
 06b949bc461b20f8740141f309397037604998bb data/dcs_climate/tags/blocks/building_stones/bricks.json
@@ -103,7 +103,7 @@ f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/blocks/weed.json
 bd193a01ac93741e2332229222c247034aaa1f6c data/minecraft/tags/blocks/leaves.json
 8a807ae1842a64558c93aba23fc7b51ca278457c data/minecraft/tags/blocks/logs_that_burn.json
 4390eab9eeb16b311ac6b01e324c55ecc4fabd6a data/minecraft/tags/blocks/mineable/axe.json
-132e69f6bbba37e83708d57f8a94cfebf45fcb4a data/minecraft/tags/blocks/mineable/pickaxe.json
+04c37dd2142bd82dc1b2ea870e727947e8b8e040 data/minecraft/tags/blocks/mineable/pickaxe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/needs_diamond_tool.json
 333b0e2ade270e3c2c54c0ec974c8027fbda16bd data/minecraft/tags/blocks/needs_iron_tool.json
 ff3c31bdf7dff218aa77300df78853fc9cb52b46 data/minecraft/tags/blocks/needs_stone_tool.json

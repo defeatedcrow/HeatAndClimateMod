@@ -1,5 +1,5 @@
 {
-  "parent": "dcs_climate:metal/mortar",
+  "parent": "dcs_climate:metal/dust",
   "criteria": {
     "has_brass": {
       "conditions": {

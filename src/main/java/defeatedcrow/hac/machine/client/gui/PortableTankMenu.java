@@ -106,20 +106,20 @@ public class PortableTankMenu extends AbstractContainerMenu {
 	}
 
 	public FluidStack getFluid() {
-		return container.tank.getFluid();
+		return container.getTank().getFluid();
 	}
 
 	public Component getFluidName() {
-		return container.tank.getFluid().isEmpty() ? Component.literal("EMPTY") : container.tank.getFluid().getDisplayName();
+		return container.getTank().getFluid().isEmpty() ? Component.literal("EMPTY") : container.getTank().getFluid().getDisplayName();
 	}
 
 	public Component getFluidAmount() {
-		return Component.literal(container.tank.getFluidAmount() + " mB");
+		return Component.literal(container.getTank().getFluidAmount() + " mB");
 	}
 
 	public int getFluidGauge() {
-		int i = container.tank.getFluidAmount();
-		int j = container.tank.getCapacity();
+		int i = container.getTank().getFluidAmount();
+		int j = container.getTank().getCapacity();
 		if (j == 0 || i == 0)
 			return 0;
 		int ret = i * 40 / j;

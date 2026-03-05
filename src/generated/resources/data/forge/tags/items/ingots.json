@@ -11,6 +11,7 @@
     "#forge:ingots/magnet",
     "#forge:ingots/cobalt_alloy",
     "#forge:ingots/hastelloy",
-    "#forge:ingots/bscco"
+    "#forge:ingots/bscco",
+    "#forge:ingots/brick"
   ]
 }

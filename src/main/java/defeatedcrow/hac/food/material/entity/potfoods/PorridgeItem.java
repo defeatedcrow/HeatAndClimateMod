@@ -75,6 +75,8 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 			return PORRIDGE_SAFFRON;
 		if (item == FoodInit.PORRIDGE_SQUID.get())
 			return PORRIDGE_SQUID;
+		if (item == FoodInit.OATMEAL_MILK.get())
+			return OAT_MILK;
 		if (item == FoodInit.MUESLI.get())
 			return MUESLI;
 		if (item == FoodInit.STEW_BORSCH.get())
@@ -120,6 +122,8 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 			return PORRIDGE_SAFFRON_LAYER;
 		if (item == FoodInit.PORRIDGE_SQUID.get())
 			return PORRIDGE_SQUID_LAYER;
+		if (item == FoodInit.OATMEAL_MILK.get())
+			return OAT_MILK_LAYER;
 		if (item == FoodInit.MUESLI.get())
 			return MUESLI_LAYER;
 		if (item == FoodInit.STEW_BORSCH.get())
@@ -159,6 +163,7 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 	public static final EntityRenderData PORRIDGE_MILK = new EntityRenderData("food/porridge_milk", 0.75F, 0F, "outer");
 	public static final EntityRenderData PORRIDGE_SAFFRON = new EntityRenderData("food/porridge_saffron", 0.75F, 0F, "outer");
 	public static final EntityRenderData PORRIDGE_SQUID = new EntityRenderData("food/porridge_squid", 0.75F, 0F, "outer");
+	public static final EntityRenderData OAT_MILK = new EntityRenderData("food/oat_milk", 0.75F, 0F, "outer");
 	public static final EntityRenderData MUESLI = new EntityRenderData("food/muesli", 0.75F, 0F, "outer");
 	public static final EntityRenderData STEW_BORSCH = new EntityRenderData("food/stew_borsch", 0.75F, 0F);
 	public static final EntityRenderData STEW_IRISH = new EntityRenderData("food/stew_irish", 0.75F, 0F);
@@ -180,6 +185,7 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 	public static final EntityRenderData PORRIDGE_MILK_LAYER = new EntityRenderData("food/layer/porridge_milk_layer", 1F, 0F);
 	public static final EntityRenderData PORRIDGE_SAFFRON_LAYER = new EntityRenderData("food/layer/porridge_saffron_layer", 0.75F, 0F);
 	public static final EntityRenderData PORRIDGE_SQUID_LAYER = new EntityRenderData("food/layer/porridge_squid_layer", 1F, 0F);
+	public static final EntityRenderData OAT_MILK_LAYER = new EntityRenderData("food/layer/oat_milk_layer", 0.75F, 0F, "outer");
 	public static final EntityRenderData MUESLI_LAYER = new EntityRenderData("food/layer/muesli_layer", 1F, 0F);
 	public static final EntityRenderData STEW_BORSCH_LAYER = new EntityRenderData("food/layer/stew_borsch_layer", 0.75F, 0F);
 	public static final EntityRenderData STEW_IRISH_LAYER = new EntityRenderData("food/layer/stew_irish_layer", 0.75F, 0F);

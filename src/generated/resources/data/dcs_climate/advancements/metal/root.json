@@ -1,18 +1,24 @@
 {
   "criteria": {
-    "has_drops": {
+    "in_overworld": {
       "conditions": {
-        "items": [
+        "player": [
           {
-            "tag": "dcs_climate:color_raw_materials"
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "dimension": "minecraft:overworld"
+              }
+            }
           }
         ]
       },
-      "trigger": "minecraft:inventory_changed"
+      "trigger": "minecraft:location"
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "background": "dcs_climate:textures/gui/advancement/metal.png",
     "description": {
       "translate": "advancements.dcs_climate.metal.root.desc"
@@ -20,16 +26,16 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "dcs_climate:main/oreitem_blue_2"
+      "item": "dcs_climate:main/screwdriver"
     },
-    "show_toast": true,
+    "show_toast": false,
     "title": {
       "translate": "advancements.dcs_climate.metal.root.title"
     }
   },
   "requirements": [
     [
-      "has_drops"
+      "in_overworld"
     ]
   ]
 }

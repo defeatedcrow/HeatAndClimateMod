@@ -76,7 +76,7 @@ public class BottleBeerItem extends ItemEntityFood {
 
 	protected MobEffect getPotion(Item item) {
 		if (item == FoodInit.BOTTLE_BEER.get())
-			return MobEffects.DIG_SPEED;
+			return CoreInit.LUMBERJACK.get();
 		if (item == FoodInit.BOTTLE_SAKE.get())
 			return CoreInit.PROJ_RESISTANCE.get();
 		return MobEffects.DIG_SPEED;

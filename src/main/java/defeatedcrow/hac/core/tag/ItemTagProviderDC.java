@@ -430,6 +430,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.HAC_UNSAFE_FOODS).add(Items.ROTTEN_FLESH, Items.SPIDER_EYE, Items.POISONOUS_POTATO,
 				FoodInit.CROP_RA_MONKSHOOD.get(), FoodInit.CROP_SL_NIGHTSHADE.get());
 
+		// flavor
+
 		tag(TagDC.ItemTag.HAC_FOOD_FLAVOR1).addTags(TagDC.ItemTag.HAC_UNSAFE_FOODS);
 
 		tag(TagDC.ItemTag.HAC_FOOD_FLAVOR2).add(Items.PUFFERFISH, Items.TROPICAL_FISH, Items.CHORUS_FRUIT, Items.NETHER_WART, Items.GLOW_BERRIES);
@@ -573,6 +575,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		// machine
 		tag(TagDC.ItemTag.MOTORS).addTags(TagDC.ItemTag.MOTOR_T1, TagDC.ItemTag.MOTOR_T2);
 		tag(TagDC.ItemTag.IMPELLERS).addTags(TagDC.ItemTag.IMPELLER_T1, TagDC.ItemTag.IMPELLER_T2);
+		tag(TagDC.ItemTag.BATTERYS).addTags(TagDC.ItemTag.BATTERY_T1, TagDC.ItemTag.BATTERY_T2);
+		tag(TagDC.ItemTag.SENSORS).addTags(TagDC.ItemTag.SENSOR_OPTICAL);
 		tag(TagDC.ItemTag.CRUSHER_BLADE).addTags(TagDC.ItemTag.BLADE_SANITARY, TagDC.ItemTag.BLADE_ALUMINA, TagDC.ItemTag.BLADE_SCREEN);
 
 		tag(TagDC.ItemTag.FUEL_BIOMASS).add(FoodInit.DUST_WOOD.get(), FoodInit.DUST_PLANT.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.VINE.get(),

@@ -1115,8 +1115,12 @@ public class TagDC {
 		public static final TagKey<Item> IMPELLER_T1 = itemHaCTag("impellers/small");
 		public static final TagKey<Item> IMPELLER_T2 = itemHaCTag("impellers/middle");
 
+		public static final TagKey<Item> BATTERYS = itemHaCTag("battery_items");
 		public static final TagKey<Item> BATTERY_T1 = itemHaCTag("battery_items/small");
 		public static final TagKey<Item> BATTERY_T2 = itemHaCTag("battery_items/middle");
+
+		public static final TagKey<Item> SENSORS = itemHaCTag("sensors");
+		public static final TagKey<Item> SENSOR_OPTICAL = itemHaCTag("sensors/optical");
 
 		public static final TagKey<Item> CRUSHER_BLADE = itemHaCTag("crusher_blade");
 		public static final TagKey<Item> BLADE_SANITARY = itemHaCTag("crusher_blade/sanitary");

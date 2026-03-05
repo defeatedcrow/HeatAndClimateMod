@@ -947,6 +947,48 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_memory_coord", has(MachineInit.MEMORY_COORD.get()))
 				.save(cons, "dcs_climate:machine/memory_coord_reset_0");
 
+		ShapedRecipeBuilder.shaped(MachineInit.OPTICAL_SENSOR.get(), 1)
+				.pattern("X")
+				.pattern("Y")
+				.pattern("Z")
+				.define('X', TagDC.ItemTag.GEM_FLUORITE)
+				.define('Y', Items.DAYLIGHT_DETECTOR)
+				.define('Z', TagDC.ItemTag.GEM_TOURMALINE)
+				.unlockedBy("has_gem_tourmaline", has(TagDC.ItemTag.GEM_TOURMALINE))
+				.save(cons, "dcs_climate:machine/optical_sensor_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.REFLECTIVE_SENSOR.get(), 1)
+				.pattern("XXX")
+				.pattern("XYX")
+				.pattern("XZX")
+				.define('X', Tags.Items.STONE)
+				.define('Y', TagDC.ItemTag.SENSOR_OPTICAL)
+				.define('Z', Tags.Items.DUSTS_REDSTONE)
+				.unlockedBy("has_optical_sensor", has(TagDC.ItemTag.SENSOR_OPTICAL))
+				.save(cons, "dcs_climate:machine/reflective_sensor_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.ENTITY_CAMERA.get(), 1)
+				.pattern("XXX")
+				.pattern("ZYW")
+				.pattern("XXX")
+				.define('X', TagDC.ItemTag.INGOT_SUS)
+				.define('Y', TagDC.ItemTag.SENSOR_OPTICAL)
+				.define('Z', Tags.Items.ENDER_PEARLS)
+				.define('W', Items.REDSTONE_LAMP)
+				.unlockedBy("has_optical_sensor", has(TagDC.ItemTag.SENSOR_OPTICAL))
+				.save(cons, "dcs_climate:machine/entity_camera_0");
+
+		ShapedRecipeBuilder.shaped(MachineInit.AUTO_MILKER.get(), 1)
+				.pattern("ZYW")
+				.pattern("VXV")
+				.define('X', Items.BUCKET)
+				.define('Y', TagDC.ItemTag.MOTOR_T1)
+				.define('Z', TagDC.ItemTag.SENSOR_OPTICAL)
+				.define('W', Items.REDSTONE_TORCH)
+				.define('V', Tags.Items.GLASS)
+				.unlockedBy("has_optical_sensor", has(TagDC.ItemTag.SENSOR_OPTICAL))
+				.save(cons, "dcs_climate:machine/auto_milker_0");
+
 	}
 
 	@Override

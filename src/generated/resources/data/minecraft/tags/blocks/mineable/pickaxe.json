@@ -302,6 +302,7 @@
     "dcs_climate:machine/portable_can_red",
     "dcs_climate:machine/portable_can_green",
     "dcs_climate:machine/ibc",
+    "dcs_climate:machine/auto_milker",
     "dcs_climate:machine/pipe_brass",
     "dcs_climate:machine/pipe_nickelsilver",
     "dcs_climate:machine/sprinkler",
@@ -358,6 +359,8 @@
     "dcs_climate:machine/monitor_andon_panel_7",
     "dcs_climate:machine/monitor_andon_panel_8",
     "dcs_climate:machine/monitor_andon_panel_9",
+    "dcs_climate:machine/reflective_sensor",
+    "dcs_climate:machine/entity_camera",
     "dcs_climate:machine/stormglass",
     "dcs_climate:machine/player_pressure_plate",
     "dcs_climate:magic/magic_small_light"

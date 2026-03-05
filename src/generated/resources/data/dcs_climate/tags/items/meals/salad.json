@@ -1,9 +1,11 @@
 {
   "values": [
     "dcs_climate:food/sweetpotato_cooked",
+    "dcs_climate:food/salad_simple",
     "dcs_climate:food/salad_green",
     "dcs_climate:food/salad_potato",
     "dcs_climate:food/salad_nuts",
+    "dcs_climate:food/salad_citrus",
     "dcs_climate:food/salad_melon",
     "dcs_climate:food/salad_salmon",
     "dcs_climate:food/salad_tofu",

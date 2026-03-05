@@ -1,6 +1,9 @@
 package defeatedcrow.hac.core.event;
 
+import java.util.List;
 import java.util.Optional;
+
+import com.google.common.collect.ImmutableList;
 
 import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.material.ITierItem;
@@ -8,6 +11,7 @@ import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.OwnableBaseTileDC;
 import defeatedcrow.hac.core.material.block.building.NoSaveBedBlock;
@@ -27,6 +31,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -48,6 +53,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerSetSpawnEvent;
@@ -155,6 +161,54 @@ public class BlockEventDC {
 						}
 					}
 				}
+			}
+
+			if (b) {
+				event.setCanceled(true);
+			}
+		} else if (!DCUtil.isEmpty(held) && held.is(Tags.Items.TOOLS_AXES) && player.hasEffect(CoreInit.LUMBERJACK.get())) {
+			ItemStack item = new ItemStack(state.getBlock());
+			boolean b = false;
+			if (state.is(BlockTags.LOGS)) {
+				int lim = ConfigCommonBuilder.INSTANCE.vTimberLimit.get();
+				List<BlockPos> set = DCUtil.findLog(level, pos, state.getBlock(), lim, ConfigCommonBuilder.INSTANCE.enTimberBreakLeaves.get());
+				if (set.isEmpty()) {
+					set = ImmutableList.of(pos);
+				}
+				int count = 0;
+				ItemStack copy = player.getMainHandItem().copy();
+				for (BlockPos p2 : set) {
+					BlockState target = level.getBlockState(p2);
+					if (target.is(BlockTags.LOGS)) {
+						count++;
+						level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
+					} else {
+						target.getBlock().destroy(level, p2, target);
+						target.getBlock().playerDestroy(level, player, p2, target, null, copy);
+						level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
+					}
+				}
+
+				while (count > 0) {
+					int i = 0;
+					if (count > 64) {
+						i = 64;
+					} else {
+						i = count;
+					}
+					count -= i;
+					ItemStack drop = item.copy();
+					drop.setCount(i);
+					ItemEntity dropE = new ItemEntity(level, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, drop);
+					if (level.addFreshEntity(dropE))
+						level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+				}
+
+				ItemStack cop = held.copy();
+				held.mineBlock(level, state, pos, player);
+				if (held.isEmpty() && !cop.isEmpty())
+					net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(player, cop, InteractionHand.MAIN_HAND);
+				b = true;
 			}
 
 			if (b) {

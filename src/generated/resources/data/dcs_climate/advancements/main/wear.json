@@ -1,5 +1,5 @@
 {
-  "parent": "dcs_climate:main/damage",
+  "parent": "dcs_climate:main/string",
   "criteria": {
     "impossible": {
       "trigger": "minecraft:impossible"
@@ -13,7 +13,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "minecraft:leather_helmet",
+      "item": "dcs_climate:main/hat_linen_red",
       "nbt": "{Damage:0}"
     },
     "show_toast": true,

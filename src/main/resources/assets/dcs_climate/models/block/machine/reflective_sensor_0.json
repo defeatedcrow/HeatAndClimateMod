@@ -1,0 +1,7 @@
+{
+  "parent": "dcs_climate:block/dcs_front",
+  "textures": {
+    "base": "dcs_climate:block/machine/reflective_sensor_base",
+    "front": "dcs_climate:block/machine/reflective_sensor_front"
+  }
+}

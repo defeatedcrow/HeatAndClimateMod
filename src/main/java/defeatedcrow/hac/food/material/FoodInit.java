@@ -464,9 +464,11 @@ public class FoodInit {
 			() -> new CasseroleItem("casserole_stuffing_baked", 10, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
 
 	// サラダ
+	public static final RegistryObject<Item> SALAD_SIMPLE = regItem("salad_simple", () -> new SaladItem("salad_simple", 4, 0.4F, TagDC.ItemTag.HAC_SALAD));
 	public static final RegistryObject<Item> SALAD_GREEN = regItem("salad_green", () -> new SaladItem("salad_green", 6, 0.4F, TagDC.ItemTag.HAC_SALAD));
 	public static final RegistryObject<Item> SALAD_POTATO = regItem("salad_potato", () -> new SaladItem("salad_potato", 10, 0.4F, TagDC.ItemTag.HAC_SALAD));
 	public static final RegistryObject<Item> SALAD_NUTS = regItem("salad_nuts", () -> new SaladItem("salad_nuts", 8, 0.4F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SALAD_CITRUS = regItem("salad_citrus", () -> new SaladItem("salad_citrus", 7, 0.4F, TagDC.ItemTag.HAC_SALAD));
 	public static final RegistryObject<Item> SALAD_MELON = regItem("salad_melon", () -> new SaladItem("salad_melon", 7, 0.4F, TagDC.ItemTag.HAC_SALAD));
 	public static final RegistryObject<Item> SALAD_SALMON = regItem("salad_salmon", () -> new SaladItem("salad_salmon", 10, 0.4F, TagDC.ItemTag.HAC_SALAD));
 	public static final RegistryObject<Item> SALAD_TOFU = regItem("salad_tofu", () -> new SaladItem("salad_tofu", 8, 0.4F, TagDC.ItemTag.HAC_SALAD));
@@ -480,6 +482,8 @@ public class FoodInit {
 	public static final RegistryObject<Item> SOUP_CREAM_SHRIMP = regItem("soup_cream_shrimp", () -> new SoupItem("soup_cream_shrimp", 10, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> SOUP_CHINESE_EGG = regItem("soup_chinese_egg", () -> new SoupItem("soup_chinese_egg", 8, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> SOUP_CHINESE_CRAB = regItem("soup_chinese_crab", () -> new SoupItem("soup_chinese_crab", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_LEAVES = regItem("soup_leaves", () -> new SoupItem("soup_leaves", 6, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_LEEK = regItem("soup_leek", () -> new SoupItem("soup_leek", 6, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> SOUP_JUTE = regItem("soup_jute", () -> new SoupItem("soup_jute", 8, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> SOUP_GASPACHO = regItem("soup_gaspacho", () -> new SoupItem("soup_gaspacho", 8, 0.6F, true, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> SOUP_TARATOR = regItem("soup_tarator", () -> new SoupItem("soup_tarator", 6, 0.6F, true, TagDC.ItemTag.HAC_SOUP));
@@ -568,8 +572,9 @@ public class FoodInit {
 	public static final RegistryObject<Item> LARGE_BOWL_BEEF = regItem("large_bowl_beef", () -> new CurryItem_Meat("large_bowl_beef", 12, 0.7F, false, TagDC.ItemTag.HAC_MEAT_MEAL));
 
 	// おかゆ
-	public static final RegistryObject<Item> PORRIDGE = regItem("porridge_simple", () -> new PorridgeItem("porridge_simple", 4, 0.6F, true, TagDC.ItemTag.HAC_PORRIDGE));
-	public static final RegistryObject<Item> PORRIDGE_MILK = regItem("porridge_milk", () -> new PorridgeItem("porridge_milk", 6, 0.6F, true, TagDC.ItemTag.HAC_PORRIDGE));
+	public static final RegistryObject<Item> PORRIDGE = regItem("porridge_simple", () -> new PorridgeItem("porridge_simple", 4, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
+	public static final RegistryObject<Item> PORRIDGE_MILK = regItem("porridge_milk", () -> new PorridgeItem("porridge_milk", 6, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
+	public static final RegistryObject<Item> OATMEAL_MILK = regItem("oat_milk", () -> new PorridgeItem("oat_milk", 6, 0.4F, true, TagDC.ItemTag.HAC_PORRIDGE));
 	public static final RegistryObject<Item> MUESLI = regItem("muesli", () -> new PorridgeItem("muesli", 12, 0.4F, true, TagDC.ItemTag.HAC_PORRIDGE));
 	public static final RegistryObject<Item> PORRIDGE_SAFFRON = regItem("porridge_saffron", () -> new PorridgeItem("porridge_saffron", 10, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
 	public static final RegistryObject<Item> PORRIDGE_SQUID = regItem("porridge_squid", () -> new PorridgeItem("porridge_squid", 10, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));

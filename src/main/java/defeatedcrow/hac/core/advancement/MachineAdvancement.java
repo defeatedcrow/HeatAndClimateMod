@@ -15,28 +15,42 @@ import net.minecraft.advancements.critereon.ItemInteractWithBlockTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.PlacedBlockTrigger;
+import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 
 public class MachineAdvancement implements Consumer<Consumer<Advancement>> {
 
 	@Override
 	public void accept(Consumer<Advancement> t) {
-		Advancement m1 = Advancement.Builder.advancement().display(CoreInit.OREITEM_BLUE2.get(), Component.translatable("advancements.dcs_climate.metal.root.title"),
-				Component.translatable("advancements.dcs_climate.metal.root.desc"),
-				new ResourceLocation("dcs_climate:textures/gui/advancement/metal.png"), FrameType.TASK, true, true, false)
-				.addCriterion("has_drops", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(TagDC.ItemTag.RAW_MATERIALS_COLOR).build())).save(t,
-						"dcs_climate:metal/metal_root");
 
-		Advancement m2 = Advancement.Builder.advancement().parent(m1).display(CoreInit.MORTAR.get(), Component.translatable("advancements.dcs_climate.metal.mortar.title"),
-				Component.translatable("advancements.dcs_climate.metal.mortar.desc"), null, FrameType.TASK, true, true, false)
+		Advancement v1 = Advancement.Builder.advancement()
+				.display(CoreInit.SCREWDRIVER.get(), Component.translatable("advancements.dcs_climate.metal.root.title"), Component
+						.translatable("advancements.dcs_climate.metal.root.desc"), new ResourceLocation("dcs_climate:textures/gui/advancement/metal.png"), FrameType.TASK, false, false, false)
+				.addCriterion("in_overworld", PlayerTrigger.TriggerInstance.located(LocationPredicate.inDimension(Level.OVERWORLD))).save(t, "dcs_climate:metal/root");
+
+		Advancement m0 = Advancement.Builder.advancement().parent(v1).display(Items.FLINT, Component.translatable("advancements.dcs_climate.metal.flint.title"), Component
+				.translatable("advancements.dcs_climate.metal.flint.desc"), null, FrameType.TASK, true, true, false)
+				.addCriterion("has_flint", InventoryChangeTrigger.TriggerInstance.hasItems(Items.FLINT)).save(t, "dcs_climate:metal/metal_flint");
+
+		Advancement m0_2 = Advancement.Builder.advancement().parent(m0)
+				.display(CoreInit.MORTAR.get(), Component.translatable("advancements.dcs_climate.metal.mortar.title"), Component.translatable("advancements.dcs_climate.metal.mortar.desc"), null, FrameType.TASK, true, true, false)
+				.addCriterion("has_mortar", InventoryChangeTrigger.TriggerInstance.hasItems(CoreInit.MORTAR.get())).save(t, "dcs_climate:metal/metal_mortar");
+
+		Advancement m1 = Advancement.Builder.advancement().parent(m0_2)
+				.display(CoreInit.OREITEM_BLUE2.get(), Component.translatable("advancements.dcs_climate.metal.ore.title"), Component.translatable("advancements.dcs_climate.metal.ore.desc"), null, FrameType.TASK, true, true, false)
+				.addCriterion("has_drops", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(TagDC.ItemTag.RAW_MATERIALS_COLOR).build())).save(t, "dcs_climate:metal/metal_ore");
+
+		Advancement m2 = Advancement.Builder.advancement().parent(m1)
+				.display(CoreInit.OREDUST_BLUE2.get(), Component.translatable("advancements.dcs_climate.metal.dust.title"), Component.translatable("advancements.dcs_climate.metal.dust.desc"), null, FrameType.TASK, true, true, false)
 				.addCriterion("has_dust_copper", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(TagDC.ItemTag.DUST_COPPER).build()))
 				.addCriterion("has_dust_zinc", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(TagDC.ItemTag.DUST_ZINC).build()))
 				.addCriterion("has_dust_magnetite", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(TagDC.ItemTag.DUST_MAGNETITE).build()))
 				.addCriterion("has_dust_tin", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(TagDC.ItemTag.DUST_TIN).build()))
 				.addCriterion("has_dust_iron", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(TagDC.ItemTag.DUST_IRON).build()))
-				.requirements(RequirementsStrategy.OR).save(t, "dcs_climate:metal/mortar");
+				.requirements(RequirementsStrategy.OR).save(t, "dcs_climate:metal/dust");
 
 		Advancement m3 = Advancement.Builder.advancement().parent(m2).display(CoreInit.METALBLOCK_BRASS.get(), Component.translatable("advancements.dcs_climate.metal.brass.title"),
 				Component.translatable("advancements.dcs_climate.metal.brass.desc"), null, FrameType.TASK, true, true, false)

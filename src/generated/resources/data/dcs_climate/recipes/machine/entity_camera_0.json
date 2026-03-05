@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:redstone_lamp"
+    },
+    "X": {
+      "tag": "forge:ingots/sus"
+    },
+    "Y": {
+      "tag": "dcs_climate:sensors/optical"
+    },
+    "Z": {
+      "tag": "forge:ender_pearls"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "ZYW",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/entity_camera"
+  }
+}

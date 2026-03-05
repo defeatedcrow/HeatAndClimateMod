@@ -1,5 +1,5 @@
 {
-  "parent": "dcs_climate:main/table",
+  "parent": "dcs_climate:main/root",
   "criteria": {
     "has_wild_crop": {
       "conditions": {

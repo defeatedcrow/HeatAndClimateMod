@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/milks"
+    },
+    {
+      "tag": "forge:ingredients/oat"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/oat_milk"
+  }
+}

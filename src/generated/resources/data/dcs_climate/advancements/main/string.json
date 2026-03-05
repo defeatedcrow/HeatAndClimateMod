@@ -1,13 +1,11 @@
 {
-  "parent": "dcs_climate:main/wood",
+  "parent": "dcs_climate:main/spindle",
   "criteria": {
-    "has_crafting_table": {
+    "has_string": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:crafting_table"
-            ]
+            "tag": "forge:string"
           }
         ]
       },
@@ -17,21 +15,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.dcs_climate.main.table.desc"
+      "translate": "advancements.dcs_climate.main.string.desc"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "minecraft:crafting_table"
+      "item": "dcs_climate:food/string_cotton"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.dcs_climate.main.table.title"
+      "translate": "advancements.dcs_climate.main.string.title"
     }
   },
   "requirements": [
     [
-      "has_crafting_table"
+      "has_string"
     ]
   ]
 }

@@ -732,6 +732,12 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_bread", has(TagDC.ItemTag.BREAD))
 				.save(cons, "dcs_climate:food/casserole_stuffing_2");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.OATMEAL_MILK.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.MILKS))
+				.requires(Ingredient.of(TagDC.ItemTag.DUST_OAT))
+				.unlockedBy("has_oat", has(TagDC.ItemTag.CROP_OAT))
+				.save(cons, "dcs_climate:food/oatmeal_milk");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.MUESLI.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.MILKS))
 				.requires(Ingredient.of(TagDC.ItemTag.DUST_OAT))
@@ -983,6 +989,12 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_curry", has(TagDC.ItemTag.HAC_CURRY))
 				.save(cons, "dcs_climate:food/curry_rice_0");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.SALAD_SIMPLE.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
+				.unlockedBy("has_green_leaves", has(TagDC.ItemTag.CROP_GREEN_LEAFS))
+				.save(cons, "dcs_climate:food/salad_simple_0");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.SALAD_GREEN.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_EDIBLE_RAW_VEGGIE))
@@ -1003,6 +1015,13 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_BEANS))
 				.unlockedBy("has_green_leaves", has(TagDC.ItemTag.CROP_GREEN_LEAFS))
 				.save(cons, "dcs_climate:food/salad_nuts_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SALAD_CITRUS.get(), 1)
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
+				.requires(Ingredient.of(Tags.Items.CROPS_CARROT))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+				.unlockedBy("has_green_leaves", has(TagDC.ItemTag.CROP_GREEN_LEAFS))
+				.save(cons, "dcs_climate:food/salad_citrus_0");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.SALAD_MELON.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))

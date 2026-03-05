@@ -1,5 +1,5 @@
 {
-  "parent": "dcs_climate:magic/magic_root",
+  "parent": "dcs_climate:magic/magic_extract",
   "criteria": {
     "has_gems": {
       "conditions": {

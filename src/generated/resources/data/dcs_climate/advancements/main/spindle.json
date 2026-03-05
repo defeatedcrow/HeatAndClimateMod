@@ -1,11 +1,13 @@
 {
-  "parent": "dcs_climate:main/root",
+  "parent": "dcs_climate:main/damage",
   "criteria": {
-    "has_logs": {
+    "has_spindle": {
       "conditions": {
         "items": [
           {
-            "tag": "minecraft:logs_that_burn"
+            "items": [
+              "dcs_climate:main/hand_spindle"
+            ]
           }
         ]
       },
@@ -15,21 +17,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.dcs_climate.main.wood.desc"
+      "translate": "advancements.dcs_climate.main.spindle.desc"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "minecraft:oak_log"
+      "item": "dcs_climate:main/hand_spindle"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.dcs_climate.main.wood.title"
+      "translate": "advancements.dcs_climate.main.spindle.title"
     }
   },
   "requirements": [
     [
-      "has_logs"
+      "has_spindle"
     ]
   ]
 }

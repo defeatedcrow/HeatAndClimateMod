@@ -1,5 +1,5 @@
 {
-  "parent": "dcs_climate:metal/metal_root",
+  "parent": "dcs_climate:metal/metal_ore",
   "criteria": {
     "has_dust_copper": {
       "conditions": {
@@ -55,16 +55,16 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.dcs_climate.metal.mortar.desc"
+      "translate": "advancements.dcs_climate.metal.dust.desc"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "dcs_climate:main/agate_mortar"
+      "item": "dcs_climate:main/oredust_blue_2"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.dcs_climate.metal.mortar.title"
+      "translate": "advancements.dcs_climate.metal.dust.title"
     }
   },
   "requirements": [

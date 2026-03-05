@@ -47,12 +47,16 @@ public class SaladItem extends ItemEntityFood {
 
 	@Override
 	public EntityRenderData getRenderData(Item item) {
+		if (item == FoodInit.SALAD_SIMPLE.get())
+			return SIMPLE;
 		if (item == FoodInit.SALAD_GREEN.get())
 			return GREEN;
 		if (item == FoodInit.SALAD_POTATO.get())
 			return POTATO;
 		if (item == FoodInit.SALAD_NUTS.get())
 			return NUTS;
+		if (item == FoodInit.SALAD_CITRUS.get())
+			return CITRUS;
 		if (item == FoodInit.SALAD_MELON.get())
 			return MELON;
 		if (item == FoodInit.SALAD_TOFU.get())
@@ -62,9 +66,11 @@ public class SaladItem extends ItemEntityFood {
 		return GREEN;
 	}
 
+	public static final EntityRenderData SIMPLE = new EntityRenderData("food/salad_simple", 0.85F, 0F);
 	public static final EntityRenderData GREEN = new EntityRenderData("food/salad_green", 0.85F, 0F);
 	public static final EntityRenderData POTATO = new EntityRenderData("food/salad_potato", 0.85F, 0F);
 	public static final EntityRenderData NUTS = new EntityRenderData("food/salad_nuts", 0.85F, 0F);
+	public static final EntityRenderData CITRUS = new EntityRenderData("food/salad_citrus", 0.85F, 0F);
 	public static final EntityRenderData MELON = new EntityRenderData("food/salad_watermelon", 0.85F, 0F);
 	public static final EntityRenderData TOFU = new EntityRenderData("food/salad_tofu", 0.85F, 0F);
 	public static final EntityRenderData SALMON = new EntityRenderData("food/salad_salmon", 0.85F, 0F);

@@ -4,6 +4,7 @@ import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IRenderBlockData;
 import defeatedcrow.hac.machine.client.gui.PortableTankMenu;
 import defeatedcrow.hac.machine.material.MachineInit;
+import defeatedcrow.hac.machine.material.fluid.DCTank;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -20,6 +21,10 @@ public class IBCTile extends PortableFluidTankTile implements IRenderBlockData {
 	public int getTankCap() {
 		return 1000000;
 	}
+
+	public DCTank getTank() {
+		return tank;
+	};
 
 	@Override
 	protected AbstractContainerMenu createMenu(int i, Inventory inv) {

@@ -1,0 +1,196 @@
+{
+  "variants": {
+    "facing=east,lit_level=0": {
+      "model": "dcs_climate:block/machine/entity_camera_0", "y": 90
+    },
+    "facing=east,lit_level=1": {
+      "model": "dcs_climate:block/machine/entity_camera_1", "y": 90
+    },
+    "facing=east,lit_level=10": {
+      "model": "dcs_climate:block/machine/entity_camera_10", "y": 90
+    },
+    "facing=east,lit_level=11": {
+      "model": "dcs_climate:block/machine/entity_camera_11", "y": 90
+    },
+    "facing=east,lit_level=12": {
+      "model": "dcs_climate:block/machine/entity_camera_12", "y": 90
+    },
+    "facing=east,lit_level=13": {
+      "model": "dcs_climate:block/machine/entity_camera_13", "y": 90
+    },
+    "facing=east,lit_level=14": {
+      "model": "dcs_climate:block/machine/entity_camera_14", "y": 90
+    },
+    "facing=east,lit_level=15": {
+      "model": "dcs_climate:block/machine/entity_camera_15", "y": 90
+    },
+    "facing=east,lit_level=2": {
+      "model": "dcs_climate:block/machine/entity_camera_2", "y": 90
+    },
+    "facing=east,lit_level=3": {
+      "model": "dcs_climate:block/machine/entity_camera_3", "y": 90
+    },
+    "facing=east,lit_level=4": {
+      "model": "dcs_climate:block/machine/entity_camera_4", "y": 90
+    },
+    "facing=east,lit_level=5": {
+      "model": "dcs_climate:block/machine/entity_camera_5", "y": 90
+    },
+    "facing=east,lit_level=6": {
+      "model": "dcs_climate:block/machine/entity_camera_6", "y": 90
+    },
+    "facing=east,lit_level=7": {
+      "model": "dcs_climate:block/machine/entity_camera_7", "y": 90
+    },
+    "facing=east,lit_level=8": {
+      "model": "dcs_climate:block/machine/entity_camera_8", "y": 90
+    },
+    "facing=east,lit_level=9": {
+      "model": "dcs_climate:block/machine/entity_camera_9", "y": 90
+    },
+    "facing=north,lit_level=0": {
+      "model": "dcs_climate:block/machine/entity_camera_0"
+    },
+    "facing=north,lit_level=1": {
+      "model": "dcs_climate:block/machine/entity_camera_1"
+    },
+    "facing=north,lit_level=10": {
+      "model": "dcs_climate:block/machine/entity_camera_10"
+    },
+    "facing=north,lit_level=11": {
+      "model": "dcs_climate:block/machine/entity_camera_11"
+    },
+    "facing=north,lit_level=12": {
+      "model": "dcs_climate:block/machine/entity_camera_12"
+    },
+    "facing=north,lit_level=13": {
+      "model": "dcs_climate:block/machine/entity_camera_13"
+    },
+    "facing=north,lit_level=14": {
+      "model": "dcs_climate:block/machine/entity_camera_14"
+    },
+    "facing=north,lit_level=15": {
+      "model": "dcs_climate:block/machine/entity_camera_15"
+    },
+    "facing=north,lit_level=2": {
+      "model": "dcs_climate:block/machine/entity_camera_2"
+    },
+    "facing=north,lit_level=3": {
+      "model": "dcs_climate:block/machine/entity_camera_3"
+    },
+    "facing=north,lit_level=4": {
+      "model": "dcs_climate:block/machine/entity_camera_4"
+    },
+    "facing=north,lit_level=5": {
+      "model": "dcs_climate:block/machine/entity_camera_5"
+    },
+    "facing=north,lit_level=6": {
+      "model": "dcs_climate:block/machine/entity_camera_6"
+    },
+    "facing=north,lit_level=7": {
+      "model": "dcs_climate:block/machine/entity_camera_7"
+    },
+    "facing=north,lit_level=8": {
+      "model": "dcs_climate:block/machine/entity_camera_8"
+    },
+    "facing=north,lit_level=9": {
+      "model": "dcs_climate:block/machine/entity_camera_9"
+    },
+    "facing=south,lit_level=0": {
+      "model": "dcs_climate:block/machine/entity_camera_0", "y": 180
+    },
+    "facing=south,lit_level=1": {
+      "model": "dcs_climate:block/machine/entity_camera_1", "y": 180
+    },
+    "facing=south,lit_level=10": {
+      "model": "dcs_climate:block/machine/entity_camera_10", "y": 180
+    },
+    "facing=south,lit_level=11": {
+      "model": "dcs_climate:block/machine/entity_camera_11", "y": 180
+    },
+    "facing=south,lit_level=12": {
+      "model": "dcs_climate:block/machine/entity_camera_12", "y": 180
+    },
+    "facing=south,lit_level=13": {
+      "model": "dcs_climate:block/machine/entity_camera_13", "y": 180
+    },
+    "facing=south,lit_level=14": {
+      "model": "dcs_climate:block/machine/entity_camera_14", "y": 180
+    },
+    "facing=south,lit_level=15": {
+      "model": "dcs_climate:block/machine/entity_camera_15", "y": 180
+    },
+    "facing=south,lit_level=2": {
+      "model": "dcs_climate:block/machine/entity_camera_2", "y": 180
+    },
+    "facing=south,lit_level=3": {
+      "model": "dcs_climate:block/machine/entity_camera_3", "y": 180
+    },
+    "facing=south,lit_level=4": {
+      "model": "dcs_climate:block/machine/entity_camera_4", "y": 180
+    },
+    "facing=south,lit_level=5": {
+      "model": "dcs_climate:block/machine/entity_camera_5", "y": 180
+    },
+    "facing=south,lit_level=6": {
+      "model": "dcs_climate:block/machine/entity_camera_6", "y": 180
+    },
+    "facing=south,lit_level=7": {
+      "model": "dcs_climate:block/machine/entity_camera_7", "y": 180
+    },
+    "facing=south,lit_level=8": {
+      "model": "dcs_climate:block/machine/entity_camera_8", "y": 180
+    },
+    "facing=south,lit_level=9": {
+      "model": "dcs_climate:block/machine/entity_camera_9", "y": 180
+    },
+    "facing=west,lit_level=0": {
+      "model": "dcs_climate:block/machine/entity_camera_0",  "y": 270
+    },
+    "facing=west,lit_level=1": {
+      "model": "dcs_climate:block/machine/entity_camera_1",  "y": 270
+    },
+    "facing=west,lit_level=10": {
+      "model": "dcs_climate:block/machine/entity_camera_10",  "y": 270
+    },
+    "facing=west,lit_level=11": {
+      "model": "dcs_climate:block/machine/entity_camera_11",  "y": 270
+    },
+    "facing=west,lit_level=12": {
+      "model": "dcs_climate:block/machine/entity_camera_12",  "y": 270
+    },
+    "facing=west,lit_level=13": {
+      "model": "dcs_climate:block/machine/entity_camera_13",  "y": 270
+    },
+    "facing=west,lit_level=14": {
+      "model": "dcs_climate:block/machine/entity_camera_14",  "y": 270
+    },
+    "facing=west,lit_level=15": {
+      "model": "dcs_climate:block/machine/entity_camera_15",  "y": 270
+    },
+    "facing=west,lit_level=2": {
+      "model": "dcs_climate:block/machine/entity_camera_2",  "y": 270
+    },
+    "facing=west,lit_level=3": {
+      "model": "dcs_climate:block/machine/entity_camera_3",  "y": 270
+    },
+    "facing=west,lit_level=4": {
+      "model": "dcs_climate:block/machine/entity_camera_4",  "y": 270
+    },
+    "facing=west,lit_level=5": {
+      "model": "dcs_climate:block/machine/entity_camera_5",  "y": 270
+    },
+    "facing=west,lit_level=6": {
+      "model": "dcs_climate:block/machine/entity_camera_6",  "y": 270
+    },
+    "facing=west,lit_level=7": {
+      "model": "dcs_climate:block/machine/entity_camera_7",  "y": 270
+    },
+    "facing=west,lit_level=8": {
+      "model": "dcs_climate:block/machine/entity_camera_8",  "y": 270
+    },
+    "facing=west,lit_level=9": {
+      "model": "dcs_climate:block/machine/entity_camera_9",  "y": 270
+    }
+  }
+}

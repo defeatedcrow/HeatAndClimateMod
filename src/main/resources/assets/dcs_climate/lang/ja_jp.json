@@ -178,6 +178,7 @@
   "item.dcs_climate.machine.crusher_blade_alumina":"ブレードロール(アルミナ)",
   "item.dcs_climate.machine.crusher_blade_screen":"ブレードロール(宝石ふるい)",
   "item.dcs_climate.machine.memory_coord":"座標記録カード",
+  "item.dcs_climate.machine.optical_sensor":"光センサー",
 
     "## items_magic":"magic",
 
@@ -684,6 +685,7 @@
   "item.dcs_climate.food.porridge_milk":"ミルク粥",
   "item.dcs_climate.food.porridge_saffron":"サフランのリゾット",
   "item.dcs_climate.food.porridge_squid":"イカスミのリゾット",
+  "item.dcs_climate.food.oat_milk":"オートミールとミルク",
   "item.dcs_climate.food.muesli":"ミューズリー",
   "item.dcs_climate.food.rice_boiled":"ご飯",
   "item.dcs_climate.food.rice_barley":"麦飯",
@@ -741,6 +743,8 @@
   "item.dcs_climate.food.soup_cream_spinach":"ホウレンソウのポタージュ",
   "item.dcs_climate.food.soup_cream_parsnip":"パースニップのポタージュ",
   "item.dcs_climate.food.soup_cream_shrimp":"ビスク",
+  "item.dcs_climate.food.soup_leaves":"青菜のスープ",
+  "item.dcs_climate.food.soup_leek":"ネギのスープ",
   "item.dcs_climate.food.soup_jute":"モロヘイヤのスープ",
   "item.dcs_climate.food.soup_chinese_egg":"たまごスープ",
   "item.dcs_climate.food.soup_chinese_crab":"かに玉スープ",
@@ -913,9 +917,11 @@
   "item.dcs_climate.food.casserole_stuffing_raw":"スタッフィング",
   "item.dcs_climate.food.casserole_stuffing_baked":"焼いたスタッフィング",
 
+  "item.dcs_climate.food.salad_simple":"リーフサラダ",
   "item.dcs_climate.food.salad_green":"野菜サラダ",
   "item.dcs_climate.food.salad_potato":"ポテトサラダ",
   "item.dcs_climate.food.salad_nuts":"ナッツと豆のサラダ",
+  "item.dcs_climate.food.salad_citrus":"柑橘とニンジンのサラダ",
   "item.dcs_climate.food.salad_melon":"スイカとトマトのサラダ",
   "item.dcs_climate.food.salad_salmon":"サーモンのサラダ",
   "item.dcs_climate.food.salad_tofu":"豆腐と海藻のサラダ",
@@ -1473,6 +1479,7 @@
   "block.dcs_climate.container.container_dust_plant":"圧縮した植物くず",
   "block.dcs_climate.container.container_ash":"圧縮した灰",
   "block.dcs_climate.container.container_leaves":"圧縮した葉ブロック",
+  "block.dcs_climate.container.container_fallen_leaves":"圧縮した落ち葉ブロック",
   "block.dcs_climate.container.container_plant_wastes":"圧縮した野菜くず",
   "block.dcs_climate.container.container_leaf_mold":"腐葉土ブロック",
 
@@ -1998,6 +2005,9 @@
   "block.dcs_climate.machine.monitor_temp":"遠隔温度計",
   "block.dcs_climate.machine.stormglass":"ストームグラス",
   "block.dcs_climate.machine.player_pressure_plate":"プレイヤー感圧版",
+  "block.dcs_climate.machine.reflective_sensor":"反射型センサーブロック",
+  "block.dcs_climate.machine.entity_camera":"エンティティ検知カメラ",
+  "block.dcs_climate.machine.auto_milker":"自動搾乳機",
 
     "## magic":"",
 
@@ -2152,6 +2162,9 @@
   "dcs.tip.memory_coord":"座標登録機能があるHaCマシンに使用: 記憶した座標をHaCマシンに登録します。",
   "dcs.tip.sprinkler.desc":"動作のために十分な水圧が必要です!",
   "dcs.tip.sprinkler.desc2":"水を消費して、周囲の耕地を湿らせます。",
+  "dcs.tip.reflective_sensor":"前方の障害物までの距離に応じたRS信号を発生します。",
+  "dcs.tip.entity_camera":"前方5x3x5ブロックの範囲内にいるエンティティの数をカウントし、RS信号を発生します。",
+  "dcs.tip.auto_milker":"近くのウシやヤギからミルクを集めます。",
 
   "dcs.tip.flow.tier1":"[Tier1] 流速: 32 /t",
   "dcs.tip.flow.tier2":"[Tier2] 流速: 128 /t",
@@ -2522,6 +2535,7 @@
   "effect.dcs_climate.effect_nimble":"早業",
   "effect.dcs_climate.effect_heavyboots":"ヘビーブーツ",
   "effect.dcs_climate.effect_proj_resistance":"射撃耐性",
+  "effect.dcs_climate.effect_lumberjack":"樹精の祝福",
 
   "effect.dcs_climate.effect_cold_resistance.description": "HaCの低温ダメージ、バニラのしもやけダメージを軽減します。 (軽減量: 4.0F x レベル)",
   "effect.dcs_climate.effect_wet.description": "HaC高温ダメージを軽減し、HaC低温ダメージを上昇します。 (変化量: 1.0F)",
@@ -2533,6 +2547,7 @@
   "effect.dcs_climate.effect_nimble.description": "使用者の攻撃速度を上昇させます。 (効果量: 0.25F x レベル)",
   "effect.dcs_climate.effect_heavyboots.description": "使用者のノックバック耐性を上昇させます。 (効果量: 20% x レベル)",
   "effect.dcs_climate.effect_proj_resistance.description": "使用者の射撃ダメージを軽減します。 (効果量: 20% x レベル)",
+  "effect.dcs_climate.effect_lumberjack.description": "斧で原木を破壊するとき、一括破壊できます。",
 
   "enchantment.dcs_climate.dcs_big_game_fishing": "大物狙い",
   "enchantment.dcs_climate.dcs_bottom_fishing": "底物狙い",
@@ -2591,14 +2606,15 @@
 
   "advancements.dcs_climate.main.root.title":"HeatAndClimateへようこそ!",
   "advancements.dcs_climate.main.root.desc":"HeatAndClimateを始めよう!",
-  "advancements.dcs_climate.main.wood.title":"木を手に入れる",
-  "advancements.dcs_climate.main.wood.desc":"原木ブロックを壊して木を手に入れよう!",
-  "advancements.dcs_climate.main.table.title":"作業台をつくる",
-  "advancements.dcs_climate.main.table.desc":"プレイヤーの持ち物画面を開いて、クラフトスロットに木材を詰める。",
+  "advancements.dcs_climate.main.spindle.title":"糸紡ぎ",
+  "advancements.dcs_climate.main.spindle.desc":"紡錘をクラフトする。",
+  "advancements.dcs_climate.main.string.title":"衣服の材料",
+  "advancements.dcs_climate.main.string.desc":"紡錘を羊毛ブロックや植物繊維とクラフトすると、糸素材を得られる。",
   "advancements.dcs_climate.main.damage.title":"やけど注意!",
   "advancements.dcs_climate.main.damage.desc":"高温のダメージを受ける",
   "advancements.dcs_climate.main.wear.title":"服を着て高温のダメージからを守る。",
   "advancements.dcs_climate.main.wear.desc":"気候ダメージを軽減する防具を着て、高熱ダメージを防ぐ。",
+  
   "advancements.dcs_climate.main.wild_crops.title":"食べられる野草",
   "advancements.dcs_climate.main.wild_crops.desc":"野生の作物は右クリックやドロップで収穫できる。",
   "advancements.dcs_climate.main.fertilizer.title":"畑に肥料をやる",
@@ -2630,8 +2646,10 @@
 
     "## advancement2":"magic",
 
-  "advancements.dcs_climate.magic.root.title":"魔法の素",
-  "advancements.dcs_climate.magic.root.desc":"色のエキスを手に入れる。",
+  "advancements.dcs_climate.magic.root.title":"宝石の魔法",
+  "advancements.dcs_climate.magic.root.desc":"宝石は『気候エネルギー』を蓄積しており、魔法によってそれを取り出すことができる。",
+  "advancements.dcs_climate.magic.extract.title":"魔法の素",
+  "advancements.dcs_climate.magic.extract.desc":"色のエキスを手に入れる。",
   "advancements.dcs_climate.magic.arrow.title":"色の魔法使い",
   "advancements.dcs_climate.magic.arrow.desc":"COMMONの色魔法アイテムを入手する。",
   "advancements.dcs_climate.magic.tier2.title":"上位の魔法",
@@ -2647,10 +2665,16 @@
 
     "## advancement3":"metal",
 
-  "advancements.dcs_climate.metal.root.title":"カラフルな鉱物",
-  "advancements.dcs_climate.metal.root.desc":"色の鉱石を手に入れる。",
-  "advancements.dcs_climate.metal.mortar.title":"粉砕",
-  "advancements.dcs_climate.metal.mortar.desc":"色の鉱物を粉砕して、金属の粉末を得る。",
+  "advancements.dcs_climate.metal.root.title":"HaCの機械",
+  "advancements.dcs_climate.metal.root.desc":"機械はエネルギーや自動化を扱う。",
+  "advancements.dcs_climate.metal.flint.title":"はじまりは火打ち石から",
+  "advancements.dcs_climate.metal.flint.desc":"火打ち石を精錬すると、玉髄を得られる。",
+  "advancements.dcs_climate.metal.mortar.title":"粉砕する道具",
+  "advancements.dcs_climate.metal.mortar.desc":"乳鉢は色々なアイテムを粉砕できる。",
+  "advancements.dcs_climate.metal.ore.title":"カラフルな鉱物",
+  "advancements.dcs_climate.metal.ore.desc":"色の鉱石を手に入れる。",
+  "advancements.dcs_climate.metal.dust.title":"金属の粉末",
+  "advancements.dcs_climate.metal.dust.desc":"色の鉱物を粉砕して、金属の粉末を得る。",
   "advancements.dcs_climate.metal.brass.title":"気候精錬",
   "advancements.dcs_climate.metal.brass.desc":"HeatTier:KILN、Airflow:TIGHTの空間を作って、そこに真鍮粉ブロックを置き、真鍮を得る。",
   "advancements.dcs_climate.metal.brass_tool.title":"鉄とダイヤモンドのあいだ",

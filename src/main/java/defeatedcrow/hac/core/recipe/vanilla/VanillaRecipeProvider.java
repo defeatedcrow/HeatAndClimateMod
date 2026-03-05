@@ -2309,6 +2309,11 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_dust_crystal", has(TagDC.ItemTag.DUST_CRYSTAL))
 				.save(cons, "dcs_climate:core/casting_quartz_0");
 
+		ShapelessRecipeBuilder.shapeless(Items.QUARTZ, 1)
+				.requires(CoreInit.CASTING_QUARTZ.get())
+				.unlockedBy("has_casting_quartz", has(CoreInit.CASTING_QUARTZ.get()))
+				.save(cons, "dcs_climate:core/casting_quartz_open_0");
+
 		ShapedRecipeBuilder.shaped(CoreInit.CASTING_TOURMARINE_RAW.get())
 				.pattern("XYX")
 				.pattern("WZV")
@@ -2320,6 +2325,11 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('Z', TagDC.ItemTag.DUST_LITHIUM)
 				.unlockedBy("has_dust_lithium", has(TagDC.ItemTag.DUST_LITHIUM))
 				.save(cons, "dcs_climate:core/casting_tourmarine_0");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.GEM_TOURMALINE.get(), 1)
+				.requires(CoreInit.CASTING_TOURMARINE.get())
+				.unlockedBy("has_casting_tourmarine", has(CoreInit.CASTING_TOURMARINE.get()))
+				.save(cons, "dcs_climate:core/casting_tourmarine_open_0");
 
 		// vanilla another
 
@@ -2415,6 +2425,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
 				.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
 				.save(cons, "dcs_climate:core/bucket_another_0");
+
+		ShapedRecipeBuilder.shaped(Items.FLOWER_POT, 1)
+				.pattern("X X")
+				.pattern(" X ")
+				.define('X', Tags.Items.INGOTS_BRICK)
+				.unlockedBy("has_ingot_brick", has(Tags.Items.INGOTS_BRICK))
+				.save(cons, "dcs_climate:core/flower_pot_another_0");
 
 		ShapedRecipeBuilder.shaped(Items.TORCH, 4)
 				.pattern("X")

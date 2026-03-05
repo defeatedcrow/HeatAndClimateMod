@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/green_leafs"
+    },
+    {
+      "tag": "forge:crops/green_leafs"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/salad_simple"
+  }
+}

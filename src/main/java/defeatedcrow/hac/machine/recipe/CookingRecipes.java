@@ -310,6 +310,15 @@ public class CookingRecipes {
 				ImmutableList.of(Ingredient.of(FoodInit.BASESOUP_CHICKEN.get()), Ingredient.of(Tags.Items.EGGS), Ingredient.of(TagDC.ItemTag.CRAB),
 						Ingredient.of(TagDC.ItemTag.CROP_CORN), Ingredient.of(TagDC.ItemTag.CROP_LEEKS)));
 
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SOUP_LEAVES.get(), 2), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags, ImmutableList
+				.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS)));
+
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SOUP_LEEK.get(), 2), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags, ImmutableList
+				.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.CROP_LEEKS)));
+
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SOUP_LEEK.get(), 2), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags, ImmutableList
+				.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.CROP_ONION)));
+
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.SOUP_JUTE.get(), 2), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.CROP_JUTE), Ingredient.of(TagDC.ItemTag.CROP_GARLIC),
 						Ingredient.of(TagDC.ItemTag.FOOD_FAT), Ingredient.of(TagDC.ItemTag.SEED_CORIANDER)));

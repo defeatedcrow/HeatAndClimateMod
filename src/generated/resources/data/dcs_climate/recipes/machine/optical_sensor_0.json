@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:gems/fluorite"
+    },
+    "Y": {
+      "item": "minecraft:daylight_detector"
+    },
+    "Z": {
+      "tag": "forge:gems/tourmaline"
+    }
+  },
+  "pattern": [
+    "X",
+    "Y",
+    "Z"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/optical_sensor"
+  }
+}

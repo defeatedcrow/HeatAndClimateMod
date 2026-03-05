@@ -66,6 +66,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.PlantType;
+import net.minecraftforge.common.Tags;
 
 public abstract class ClimateCropBaseBlock extends BushBlock implements IClimateCrop, BonemealableBlock, IBlockDC, IJsonDataDC, ICropData, IRapidCollectables {
 
@@ -210,6 +211,9 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			CropTier tier = crop.getTier();
 
 			float seedChance = 0.4F + stage.id * 0.2F;
+			if (!tool.isEmpty() && tool.is(Tags.Items.TOOLS_HOES)) {
+				seedChance = 1.0F;
+			}
 			if (DCState.getBool(state, DCState.WILD) || level.random.nextFloat() <= seedChance) {
 				ret.add(crop.getSeedItem(state));
 			}

@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "type8=0": {"model": "dcs_climate:block/machine/auto_milker_0"},
+    "type8=1": {"model": "dcs_climate:block/machine/auto_milker_1"},
+    "type8=2": {"model": "dcs_climate:block/machine/auto_milker_2"},
+    "type8=3": {"model": "dcs_climate:block/machine/auto_milker_3"},
+    "type8=4": {"model": "dcs_climate:block/machine/auto_milker_4"},
+    "type8=5": {"model": "dcs_climate:block/machine/auto_milker_5"},
+    "type8=6": {"model": "dcs_climate:block/machine/auto_milker_6"},
+    "type8=7": {"model": "dcs_climate:block/machine/auto_milker_7"}
+  }
+}

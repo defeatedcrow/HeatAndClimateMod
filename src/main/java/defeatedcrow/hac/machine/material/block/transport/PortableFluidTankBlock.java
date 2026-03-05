@@ -36,14 +36,14 @@ public abstract class PortableFluidTankBlock extends ProcessTileBlock {
 		BlockEntity tile = level.getBlockEntity(pos);
 		if (tile instanceof PortableFluidTankTile tank) {
 			if (ClimateCore.isDebug && player.isCrouching()) {
-				DCLogger.debugInfoLog("### Fluid: " + tank.tank.getFluid().getDisplayName().getString() + "/" + tank.tank.getFluid().getAmount() + " ###");
+				DCLogger.debugInfoLog("### Fluid: " + tank.getTank().getFluid().getDisplayName().getString() + "/" + tank.getTank().getFluid().getAmount() + " ###");
 			}
 			ItemStack held = player.getItemInHand(hand);
 			if (level.isClientSide) {
 				return InteractionResult.SUCCESS;
 			} else {
 				if (!DCUtil.isEmpty(held) && FluidUtil.getFluidHandler(held.copy()).isPresent()) {
-					if (DCFluidUtil.exchangeFluid(level, player.position(), tank.tank, held)) {
+					if (DCFluidUtil.exchangeFluid(level, player.position(), tank.getTank(), held)) {
 						tile.setChanged();
 						player.getInventory().setChanged();
 						level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1.0F, 1.2F);

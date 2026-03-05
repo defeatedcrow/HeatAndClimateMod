@@ -1,10 +1,13 @@
 {
+  "parent": "dcs_climate:metal/metal_flint",
   "criteria": {
-    "has_drops": {
+    "has_mortar": {
       "conditions": {
         "items": [
           {
-            "tag": "dcs_climate:color_extracts"
+            "items": [
+              "dcs_climate:main/agate_mortar"
+            ]
           }
         ]
       },
@@ -13,23 +16,22 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "dcs_climate:textures/gui/advancement/magic.png",
     "description": {
-      "translate": "advancements.dcs_climate.magic.root.desc"
+      "translate": "advancements.dcs_climate.metal.mortar.desc"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "dcs_climate:magic/extract_u"
+      "item": "dcs_climate:main/agate_mortar"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.dcs_climate.magic.root.title"
+      "translate": "advancements.dcs_climate.metal.mortar.title"
     }
   },
   "requirements": [
     [
-      "has_drops"
+      "has_mortar"
     ]
   ]
 }

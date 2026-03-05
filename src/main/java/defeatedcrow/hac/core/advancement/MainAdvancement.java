@@ -20,10 +20,10 @@ import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 
 public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 
@@ -34,23 +34,25 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 				new ResourceLocation("dcs_climate:textures/gui/advancement/main.png"), FrameType.TASK, false, false, false)
 				.addCriterion("in_overworld", PlayerTrigger.TriggerInstance.located(LocationPredicate.inDimension(Level.OVERWORLD))).save(t, "dcs_climate:main/root");
 
-		Advancement v2 = Advancement.Builder.advancement().parent(v1).display(Blocks.OAK_LOG, Component.translatable("advancements.dcs_climate.main.wood.title"),
-				Component.translatable("advancements.dcs_climate.main.wood.desc"), null, FrameType.TASK, true, true, false)
-				.addCriterion("has_logs", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(ItemTags.LOGS_THAT_BURN).build())).save(t, "dcs_climate:main/wood");
-
-		Advancement a1 = Advancement.Builder.advancement().parent(v2).display(Blocks.CRAFTING_TABLE, Component.translatable("advancements.dcs_climate.main.table.title"),
-				Component.translatable("advancements.dcs_climate.main.table.desc"), null, FrameType.TASK, true, true, false)
-				.addCriterion("has_crafting_table", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.CRAFTING_TABLE)).save(t, "dcs_climate:main/table");
-
-		Advancement a2 = Advancement.Builder.advancement().parent(a1).display(CoreInit.ICON_BURN.get(), Component.translatable("advancements.dcs_climate.main.damage.title"),
-				Component.translatable("advancements.dcs_climate.main.damage.desc"), null, FrameType.TASK, true, true, false)
+		Advancement a2 = Advancement.Builder.advancement().parent(v1)
+				.display(CoreInit.ICON_BURN.get(), Component.translatable("advancements.dcs_climate.main.damage.title"), Component.translatable("advancements.dcs_climate.main.damage.desc"), null, FrameType.TASK, true, true, false)
 				.addCriterion("impossible", new ImpossibleTrigger.TriggerInstance()).save(t, "dcs_climate:main/damage");
 
-		Advancement a3 = Advancement.Builder.advancement().parent(a2).display(Items.LEATHER_HELMET, Component.translatable("advancements.dcs_climate.main.wear.title"),
+		Advancement v2 = Advancement.Builder.advancement().parent(a2)
+				.display(CoreInit.HAND_SPINDLE.get(), Component.translatable("advancements.dcs_climate.main.spindle.title"), Component.translatable("advancements.dcs_climate.main.spindle.desc"), null, FrameType.TASK, true, true, false)
+				.addCriterion("has_spindle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(CoreInit.HAND_SPINDLE.get()).build())).save(t, "dcs_climate:main/spindle");
+
+		Advancement a1 = Advancement.Builder.advancement().parent(v2)
+				.display(FoodInit.STRING_COTTON.get(), Component.translatable("advancements.dcs_climate.main.string.title"), Component.translatable("advancements.dcs_climate.main.string.desc"), null, FrameType.TASK, true, true, false)
+				.addCriterion("has_string", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(Tags.Items.STRING).build())).save(t, "dcs_climate:main/string");
+
+		Advancement a3 = Advancement.Builder.advancement().parent(a1).display(CoreInit.HAT_LINEN_RED.get(), Component
+				.translatable("advancements.dcs_climate.main.wear.title"),
 				Component.translatable("advancements.dcs_climate.main.wear.desc"), null, FrameType.TASK, true, true, false)
 				.addCriterion("impossible", new ImpossibleTrigger.TriggerInstance()).save(t, "dcs_climate:main/wear");
 
-		Advancement a4 = Advancement.Builder.advancement().parent(a1).display(FoodInit.CROP_AL_WILD.get(), Component.translatable("advancements.dcs_climate.main.wild_crops.title"),
+		Advancement a4 = Advancement.Builder.advancement().parent(v1).display(FoodInit.CROP_AL_WILD.get(), Component
+				.translatable("advancements.dcs_climate.main.wild_crops.title"),
 				Component.translatable("advancements.dcs_climate.main.wild_crops.desc"), null, FrameType.TASK, true, true, false)
 				.addCriterion("has_wild_crop", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(TagDC.ItemTag.CROP_WILD).build())).save(t,
 						"dcs_climate:main/wild_crops");

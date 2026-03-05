@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "V": {
+      "tag": "forge:glass"
+    },
+    "W": {
+      "item": "minecraft:redstone_torch"
+    },
+    "X": {
+      "item": "minecraft:bucket"
+    },
+    "Y": {
+      "tag": "dcs_climate:motors/small"
+    },
+    "Z": {
+      "tag": "dcs_climate:sensors/optical"
+    }
+  },
+  "pattern": [
+    "ZYW",
+    "VXV"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/auto_milker"
+  }
+}

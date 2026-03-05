@@ -40,9 +40,9 @@ public class DrinkCupItem extends ItemEntityFood {
 		final int a = taste > 0 ? taste : 0;
 
 		if (id == 1)
-			return () -> new MobEffectInstance(CoreInit.COLD_RESISTANCE.get(), d);
+			return () -> new MobEffectInstance(MobEffects.DIG_SPEED, d);
 		if (id == 2)
-			return () -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, d);
+			return () -> new MobEffectInstance(CoreInit.LUMBERJACK.get(), d);
 		if (id == 3)
 			return () -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, d, a);
 		if (id == 4)

@@ -229,7 +229,7 @@ public class CoreInit {
 
 	public static final RegistryObject<Item> CLOTH_RUBBER = regItem("cloth_rubber", () -> new MaterialItemDC("cloth_rubber", TagDC.ItemTag.CLOTH_RUBBER));
 
-	public static final RegistryObject<Item> ADOBE_BRICK_ITEM = regItem("adobe_brick_item", () -> new MaterialItemDC("adobe_brick_item", null));
+	public static final RegistryObject<Item> ADOBE_BRICK_ITEM = regItem("adobe_brick_item", () -> new MaterialItemDC("adobe_brick_item", Tags.Items.INGOTS_BRICK));
 
 	public static final RegistryObject<Item> SOAP_OIL = regItem("soap_olive", () -> new SoapItem("soap_olive", TagDC.ItemTag.SOAP_OIL));
 	public static final RegistryObject<Item> SOAP_MAGIC = regItem("soap_magic", () -> new SoapItem("soap_magic", TagDC.ItemTag.SOAP_MAGIC));
@@ -709,6 +709,7 @@ public class CoreInit {
 
 	public static final RegistryObject<MobEffect> WET = regPotionEffect("effect_wet", () -> new MobEffectDC("effect_wet", MobEffectCategory.NEUTRAL, 0x90E0FF).setIconIndex(1, 2));
 	public static final RegistryObject<MobEffect> FLAG = regPotionEffect("effect_flag", () -> new MobEffectFlag("effect_flag", MobEffectCategory.NEUTRAL, 0xFF0050).setIconIndex(3, 2));
+	public static final RegistryObject<MobEffect> LUMBERJACK = regPotionEffect("effect_lumberjack", () -> new MobEffectFlag("effect_lumberjack", MobEffectCategory.NEUTRAL, 0x00FF30).setIconIndex(5, 2));
 
 	public static final WaterTypeFluidDC BRINE = new WaterTypeFluidDC("brine", 0xE000F0C0);
 	public static final WaterTypeFluidDC HOTSPRING = new WaterTypeFluidDC("hotspring", 0xFFAEFFDE, 353);

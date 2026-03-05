@@ -88,14 +88,14 @@ public class EmptyPackItem extends MaterialItemDC {
 	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand) {
 		ItemStack itemstack = player.getItemInHand(hand);
 		if (entity instanceof Cow || entity instanceof Llama || entity instanceof Goat) {
-			if (entity.level.isClientSide)
-				return InteractionResult.SUCCESS;
-			BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
-			if (!((Animal) entity).isBaby()) {
-				player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
-				ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_MILK.get()), false);
+			if (!player.level.isClientSide) {
+				BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
+				if (!((Animal) entity).isBaby()) {
+					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
+					ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_MILK.get()), false);
+				}
 			}
-			return net.minecraft.world.InteractionResult.SUCCESS;
+			return net.minecraft.world.InteractionResult.sidedSuccess(player.level.isClientSide);
 		}
 		return net.minecraft.world.InteractionResult.PASS;
 	}
