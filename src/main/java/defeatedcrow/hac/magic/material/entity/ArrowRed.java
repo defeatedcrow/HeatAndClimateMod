@@ -111,9 +111,4 @@ public class ArrowRed extends AbstractArrow {
 		return false;
 	}
 
-	@Override
-	public void onRemovedFromWorld() {
-		this.discard();
-	}
-
 }

@@ -346,6 +346,9 @@ public class CrowTurretEntity extends LivingEntity {
 	public void tick() {
 		super.tick();
 
+		if (this.touchingUnloadedChunk())
+			return;
+
 		Rotations rotations1 = this.entityData.get(DATA_BODY_POSE);
 		if (!this.bodyPose.equals(rotations1)) {
 			this.setBodyPose(rotations1);
@@ -353,7 +356,7 @@ public class CrowTurretEntity extends LivingEntity {
 
 		if (target != null) {
 			// 見えなくなったら諦める
-			if (!target.isAlive()) {
+			if (!target.isAlive() || target.isRemoved() || target.touchingUnloadedChunk()) {
 				target = null;
 			} else if (this.distanceToSqr(target) > 9D && !this.hasLineOfSight(target)) {
 				target = null;
@@ -377,7 +380,6 @@ public class CrowTurretEntity extends LivingEntity {
 					count--;
 				}
 			}
-
 		} else {
 			if (count <= 0) {
 				if (!level.isClientSide) {
