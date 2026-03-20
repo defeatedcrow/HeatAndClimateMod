@@ -84,7 +84,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	/* 基本データ */
 	protected static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP);
+		return BlockBehaviour.Properties.of(Material.PLANT).noOcclusion().noCollission().randomTicks().instabreak().sound(SoundType.CROP);
 	}
 
 	@Override
@@ -150,7 +150,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		}
 
 		int c2 = getGrowingChance(level, pos, state);
-		if (c2 > 0 && random.nextInt(c2) == 0) {
+		if (c2 > 0 && random.nextInt(c2) == 0 && hasGrowingChance(stage)) {
 
 			// チャンスは一度だけ
 			int c1 = getMutationChance(level, pos, state);
@@ -164,8 +164,30 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			return;
 		}
 
+		if (stage == CropStage.GROWN && !(state.getBlock() instanceof LeavesCropBlockDC) && getFamily() != CropType.PALM)
+			spreadWildCrop(level, pos, state, c2);
+
 		checkAndDropBlock(level, pos, state);
 
+	}
+
+	protected boolean hasGrowingChance(CropStage stage) {
+		return stage != CropStage.DEAD && stage != CropStage.GROWN;
+	}
+
+	public void spreadWildCrop(Level world, BlockPos pos, BlockState state, int chance) {
+		if (DCState.getBool(state, DCState.WILD) && getTier() == CropTier.WILD && ConfigCommonBuilder.INSTANCE.enWildOvergrouth.get()) {
+			for (Direction dir : Direction.Plane.HORIZONTAL) {
+				BlockPos pos2 = pos.relative(dir);
+				if (world.getBlockState(pos2).isAir() && isSuitablePlace(world, pos2.below(), world.getBlockState(pos2.below())) && world.random.nextInt(chance) == 0) {
+					world.setBlock(pos2, getFeatureState(), 2);
+					if (state.hasProperty(DCState.DOUBLE)) {
+						BlockState upper = getFeatureState().setValue(DCState.DOUBLE, true);
+						world.setBlock(pos2.above(), upper, 2);
+					}
+				}
+			}
+		}
 	}
 
 	public void checkAndDropBlock(Level world, BlockPos pos, BlockState state) {
@@ -472,7 +494,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 				ret /= f;
 			}
 			return ret;
-		} else if (stage != CropStage.GROWN && stage != CropStage.DEAD) {
+		} else if (stage != CropStage.DEAD) {
 			boolean clm = isSuitableForGrowing(world, pos, thisState);
 			int ret = clm ? 24 : 80;
 			if (ConfigCommonBuilder.INSTANCE.enHardCrop.get()) {
@@ -528,8 +550,6 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 				if (season == EnumSeason.HARVEST) {
 					return thisState.setValue(DCState.STAGE6, 0);
 				}
-				return thisState;
-			} else if (stage == CropStage.GROWN) {
 				return thisState;
 			} else {
 				int age = DCState.getInt(thisState, DCState.STAGE6);

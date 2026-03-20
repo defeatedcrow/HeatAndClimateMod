@@ -95,8 +95,9 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		}
 		if (ConfigCommonBuilder.INSTANCE.enCommonCrop.get() && random.nextInt(100) < 20) {
 			// 20%の確率
-			targets = tree ? TargetCropList.INSTANCE.commonTreeList.stream().filter((b) -> matchBiome(biome, pos.getY(), b)).toList() : TargetCropList.INSTANCE.commonList.stream().filter((
-					b) -> matchBiome(biome, pos.getY(), b)).toList();
+			targets = tree ? TargetCropList.INSTANCE.commonTreeList.stream().filter((b) -> matchBiome(biome, pos.getY(), b)).toList()
+					: TargetCropList.INSTANCE.commonList.stream().filter((
+							b) -> matchBiome(biome, pos.getY(), b)).toList();
 		}
 
 		// DCLogger.debugInfoLog("=== target size: " + targets.size() + " " + tree + " ===");
@@ -193,7 +194,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 	}
 
 	private static boolean isSoil(BlockState soil) {
-		return soil.getMaterial() == Material.DIRT || soil.getMaterial() == Material.SAND || soil.getMaterial() == Material.GRASS
+		return soil.is(BlockTags.DIRT) || soil.is(BlockTags.SAND) || soil.getMaterial() == Material.DIRT || soil.getMaterial() == Material.GRASS
 				|| soil.getMaterial() == Material.WATER;
 	}
 

@@ -16,13 +16,16 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.api.util.TagKeyDC;
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.climate.DCTimeHelper;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.tag.TagUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -34,12 +37,17 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -229,6 +237,142 @@ public class DCUtil {
 			tag.putInt(TagKeyDC.TASTE, taste);
 			item.setTag(tag);
 		}
+	}
+
+	static final List<ItemStack> fishList = Lists.newArrayList();
+
+	public static List<ItemStack> getFish(Level level, Holder<Biome> biome, LivingEntity living, ItemStack held) {
+		List<ItemStack> fishes = Lists.newArrayList();
+		if (fishList.isEmpty()) {
+			// 一度だけ取得する
+			fishList.addAll(TagUtil.getItemList(TagDC.ItemTag.FISH_ROD));
+		}
+
+		boolean isMangrove = biome.is(Biomes.MANGROVE_SWAMP);
+		boolean isBeach = biome.is(BiomeTags.IS_BEACH) || biome.is(Biomes.STONY_SHORE);
+		boolean isOcean = biome.is(BiomeTags.IS_OCEAN);
+		boolean isDeepOcean = biome.is(BiomeTags.IS_DEEP_OCEAN);
+		boolean isRiver = !isMangrove && !isBeach && !isOcean && !isDeepOcean;
+
+		int big = held.getEnchantmentLevel(CoreInit.BIG_GAME_FISHING.get());
+		int bottom = held.getEnchantmentLevel(CoreInit.BOTTOM_FISHING.get());
+		int squid = held.getEnchantmentLevel(CoreInit.SQUID_FISHING.get());
+		int luck = held.getEnchantmentLevel(Enchantments.FISHING_SPEED);
+		if (living.hasEffect(MobEffects.LUCK)) {
+			luck++;
+		}
+
+		int time = DCTimeHelper.currentTime(level);
+		boolean day = time > 7 && time < 17;
+		boolean night = time < 5 || time > 19;
+
+		float temp = biome.get().getBaseTemperature();
+		boolean cold = temp < 0.3F && biome.is(Tags.Biomes.IS_COLD);
+		boolean warm = temp > 0.3F && biome.is(Tags.Biomes.IS_HOT);
+
+		int rand = level.random.nextInt(100);
+		if (!day && !night) {
+			// マズメは確率アップ
+			rand -= 10;
+		}
+		if (level.isRaining()) {
+			// 雨天時
+			rand -= 10;
+		}
+		rand -= luck * 10;
+
+		List<ItemStack> cL = Lists.newArrayList();
+		List<ItemStack> uL = Lists.newArrayList();
+		List<ItemStack> rL = Lists.newArrayList();
+		for (ItemStack fish : fishList) {
+			if (night && fish.is(TagDC.ItemTag.FISH_DAY))
+				continue;
+			else if (day && fish.is(TagDC.ItemTag.FISH_NIGHT))
+				continue;
+			if (cold && fish.is(TagDC.ItemTag.FISH_TROPICAL))
+				continue;
+			else if (warm && fish.is(TagDC.ItemTag.FISH_COLD_WATER))
+				continue;
+
+			if (big > 0 && level.getRandom().nextInt(big + 1) > 0 && !fish.is(TagDC.ItemTag.FISH_LARGE)) {
+				continue;
+			} else if (bottom > 0 && level.getRandom().nextInt(bottom + 1) > 0 && !fish.is(TagDC.ItemTag.FISH_FLOOR)) {
+				continue;
+			} else if (squid > 0 && level.getRandom().nextInt(squid + 1) > 0 && !fish.is(TagDC.ItemTag.SQUID)) {
+				continue;
+			}
+
+			boolean flag = false;
+			if (isMangrove && fish.is(TagDC.ItemTag.FISH_MANGROVE))
+				flag = true;
+			if (isBeach && fish.is(TagDC.ItemTag.FISH_BEACH))
+				flag = true;
+			if (isOcean && fish.is(TagDC.ItemTag.FISH_OCEAN))
+				flag = true;
+			if (isDeepOcean && fish.is(TagDC.ItemTag.FISH_DEEP_OCEAN))
+				flag = true;
+			if (isRiver && fish.is(TagDC.ItemTag.FISH_RIVER))
+				flag = true;
+
+			if (flag) {
+				if (fish.getRarity() == Rarity.RARE)
+					rL.add(fish.copy());
+				else if (fish.getRarity() == Rarity.UNCOMMON)
+					uL.add(fish.copy());
+				else
+					cL.add(fish.copy());
+			}
+
+			DCLogger.debugInfoLog("*** HaC fishing ***");
+			DCLogger.debugInfoLog("Fishing rand" + rand);
+			if (rand < 15 || big > 0 || bottom > 0 || squid > 0) {
+				if (!rL.isEmpty()) {
+					fishes.addAll(rL);
+				}
+				if (!uL.isEmpty()) {
+					fishes.addAll(uL);
+				}
+				if (!cL.isEmpty()) {
+					fishes.addAll(cL);
+				}
+			} else if (rand < 50) {
+				if (!uL.isEmpty()) {
+					fishes.addAll(uL);
+				}
+				if (!cL.isEmpty()) {
+					fishes.addAll(cL);
+				}
+			} else if (!cL.isEmpty()) {
+				fishes.addAll(cL);
+			}
+		}
+
+		DCLogger.debugInfoLog("Fish list: " + (fishes.isEmpty() ? "empty" : fishes.size()));
+		if (!fishes.isEmpty()) {
+			for (ItemStack choice : fishes) {
+				DCLogger.debugInfoLog(choice.getDisplayName().getString());
+			}
+		}
+		if (fishes.isEmpty()) {
+			ItemStack replace = ItemStack.EMPTY;
+			if (isMangrove)
+				replace = new ItemStack(Items.TROPICAL_FISH);
+			else if (isBeach)
+				replace = new ItemStack(Items.PUFFERFISH);
+			else if (isOcean)
+				replace = new ItemStack(Items.COD);
+			else if (isDeepOcean)
+				replace = new ItemStack(Items.COD);
+			else if (isRiver)
+				replace = new ItemStack(Items.SALMON);
+			else
+				replace = new ItemStack(Items.STRING);
+			if (!replace.isEmpty()) {
+				fishes.add(replace);
+			}
+		}
+
+		return fishes;
 	}
 
 	/**

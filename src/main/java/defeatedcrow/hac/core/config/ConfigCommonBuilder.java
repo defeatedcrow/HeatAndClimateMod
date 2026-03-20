@@ -53,6 +53,7 @@ public class ConfigCommonBuilder {
 	public final ForgeConfigSpec.BooleanValue enHeatTreatment;
 	public final ForgeConfigSpec.BooleanValue enTempuraFire;
 	public final ForgeConfigSpec.BooleanValue enHardCrop;
+	public final ForgeConfigSpec.BooleanValue enWildOvergrouth;
 	public final ForgeConfigSpec.BooleanValue enContinuousFailure;
 	public final ForgeConfigSpec.BooleanValue enMagicCost;
 	public final ForgeConfigSpec.IntValue vMagicCost;
@@ -152,6 +153,10 @@ public class ConfigCommonBuilder {
 		this.enHardCrop = builder
 				.comment("HaC crops will stop growing if the climate is not suitable.")
 				.define("Hardmode Cropping", false);
+
+		this.enWildOvergrouth = builder
+				.comment("HaC wild crops spread to adjacent blocks.")
+				.define("Hardmode Wild Crop Overgrouth", false);
 
 		this.enContinuousFailure = builder
 				.comment("If the same crop is grown on the same farmland for multiple years, the crop will become diseased.")

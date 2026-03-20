@@ -11,13 +11,19 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.crop.CropGrowType;
+import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.food.material.FoodInit;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -26,7 +32,7 @@ public class CropBlockPedalia extends ClimateCropBaseBlock {
 
 	public CropBlockPedalia(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, 0).setValue(DCState.WILD, false));
 	}
 
 	@Override
@@ -43,13 +49,12 @@ public class CropBlockPedalia extends ClimateCropBaseBlock {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_0")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_1")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_2")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_f")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_d")));
+		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_0")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_1")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_2")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/pedalia_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
@@ -67,11 +72,20 @@ public class CropBlockPedalia extends ClimateCropBaseBlock {
 		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_pedalia_" + getSpeciesName(cropTier)));
 	}
 
+	/* Damage */
+
+	@Override
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+		if (getCurrentStage(state) == CropStage.GROWN && !level.isClientSide() && entity instanceof LivingEntity living && living.getHealth() > 1.0F) {
+			living.hurt(DamageSource.CACTUS, 1.0F);
+		}
+	}
+
 	/* IClimateCrop */
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(2)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, 2).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
@@ -88,55 +102,43 @@ public class CropBlockPedalia extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFlowerState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+		return state.setValue(DCState.STAGE6, 3);
 	}
 
 	@Override
 	public int getContinuousRegistance(CropTier t) {
-		switch (t) {
-		case RARE:
-			return 5;
-		default:
-			return 3;
-		}
+		return switch (t) {
+		case RARE -> 5;
+		default -> 3;
+		};
 	}
 
 	@Override
 	public ItemLike getSeedItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.BLOCK_PD_SESAMI.get();
-		case RARE:
-			return FoodInit.BLOCK_PD_DEVILSCLAW.get();
-		default:
-			return FoodInit.BLOCK_PD_ROGERIA.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.BLOCK_PD_SESAMI.get();
+		case RARE -> FoodInit.BLOCK_PD_DEVILSCLAW.get();
+		default -> FoodInit.BLOCK_PD_ROGERIA.get();
+		};
 	}
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_PD_SESAMI.get();
-		case RARE:
-			return FoodInit.CROP_PD_DEVILSCLAW.get();
-		default:
-			return FoodInit.CROP_PD_ROGERIA.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_PD_SESAMI.get();
+		case RARE -> FoodInit.CROP_PD_DEVILSCLAW.get();
+		default -> FoodInit.CROP_PD_ROGERIA.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_PD_ROGERIA.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_PD_SESAMI.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_PD_DEVILSCLAW.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_PD_ROGERIA.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_PD_SESAMI.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_PD_DEVILSCLAW.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -161,22 +163,18 @@ public class CropBlockPedalia extends ClimateCropBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("SANDY", "SAVANNA");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("SANDY", "SAVANNA");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("COLD", "WET");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("COLD", "WET");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

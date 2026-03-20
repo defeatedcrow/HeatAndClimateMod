@@ -46,7 +46,7 @@ public class ClickEventDC {
 
 			// fertilizer
 			if (!item.isEmpty() && item.is(TagDC.ItemTag.FERTILIZER)) {
-				int f = FertileBlock.getFertile(level, event.getPos(), target);
+				int f = FertileBlock.getFertile(level, event.getPos(), target) - 1;
 				if (target.is(TagDC.BlockTag.FARMLAND) && f < 3) {
 					if (!level.isClientSide) {
 						if (player instanceof ServerPlayer)
@@ -72,7 +72,7 @@ public class ClickEventDC {
 					// 下のブロック
 					BlockState below = level.getBlockState(event.getPos().below());
 					if (below.is(BlockTags.DIRT) || below.is(TagDC.BlockTag.FARMLAND)) {
-						int f = FertileBlock.getFertile(level, event.getPos().below(), below);
+						int f = FertileBlock.getFertile(level, event.getPos().below(), below) - 1;
 						if (!level.isClientSide && f < 3) {
 							// 緑肥をすき込む
 							if (target.getBlock() instanceof ClimateCropBaseBlock) {
@@ -84,7 +84,7 @@ public class ClickEventDC {
 							level.setBlockAndUpdate(event.getPos().below(), next);
 							if (player != null) {
 								item.hurtAndBreak(1, player, (c) -> {
-									c.broadcastBreakEvent(event.getHand());
+								    c.broadcastBreakEvent(event.getHand());
 								});
 							}
 							level.playSound(player, event.getPos(), SoundEvents.HOE_TILL, SoundSource.BLOCKS, 0.5F, 1.0F);
@@ -110,7 +110,7 @@ public class ClickEventDC {
 						}
 						if (player != null) {
 							item.hurtAndBreak(1, player, (c) -> {
-								c.broadcastBreakEvent(event.getHand());
+							    c.broadcastBreakEvent(event.getHand());
 							});
 						}
 						level.playSound(player, event.getPos(), SoundEvents.HOE_TILL, SoundSource.BLOCKS, 0.5F, 1.0F);
@@ -148,7 +148,7 @@ public class ClickEventDC {
 					level.playSound(player, event.getPos(), SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);
 					if (player != null) {
 						item.hurtAndBreak(1, player, (p) -> {
-							p.broadcastBreakEvent(event.getHand());
+						    p.broadcastBreakEvent(event.getHand());
 						});
 					}
 					event.setUseItem(Result.ALLOW);

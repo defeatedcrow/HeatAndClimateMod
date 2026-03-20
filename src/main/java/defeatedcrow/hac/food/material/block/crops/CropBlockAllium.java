@@ -15,7 +15,6 @@ import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
@@ -65,21 +64,8 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public int getGrowingChance(Level world, BlockPos pos, BlockState thisState) {
-		CropStage stage = this.getCurrentStage(thisState);
-		if (stage != CropStage.FLOWER && stage != CropStage.DEAD) {
-			boolean clm = isSuitableForGrowing(world, pos, thisState);
-			int ret = clm ? 24 : 80;
-			if (ConfigCommonBuilder.INSTANCE.enHardCrop.get()) {
-				ret = clm ? 24 : 0;
-			}
-			BlockState under = world.getBlockState(pos.below());
-			if (isFarmland(under)) {
-				ret /= 2;
-			}
-			return ret;
-		}
-		return 0;
+	protected boolean hasGrowingChance(CropStage stage) {
+		return stage != CropStage.DEAD && stage != CropStage.FLOWER;
 	}
 
 	@Override
@@ -115,13 +101,12 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_0")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_1")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_2")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_f")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_d")));
+		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_0")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_1")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_2")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
