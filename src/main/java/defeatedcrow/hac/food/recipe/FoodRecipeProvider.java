@@ -65,6 +65,8 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 	}
 
+//	@formatter:off
+	
 	static void foodRecipes(Consumer<FinishedRecipe> cons) {
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.BREAD_ROUND_RAW_ITEM.get(), 3)
@@ -417,49 +419,49 @@ public class FoodRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLATE_BEEF_RAW.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_BEEF))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.unlockedBy("has_beef", has(TagDC.ItemTag.RAW_BEEF))
 				.save(cons, "dcs_climate:food/plate_steak_beef");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLATE_MEAT_RAW.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_PORK))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.unlockedBy("has_pork", has(TagDC.ItemTag.RAW_PORK))
 				.save(cons, "dcs_climate:food/plate_meat_pork");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLATE_MEAT_RAW.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_MUTTON))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.unlockedBy("has_mutton", has(TagDC.ItemTag.RAW_MUTTON))
 				.save(cons, "dcs_climate:food/plate_meat_mutton");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLATE_MEAT_RAW.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_PLANT_MEAT))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.unlockedBy("has_plant_meat", has(TagDC.ItemTag.RAW_PLANT_MEAT))
 				.save(cons, "dcs_climate:food/plate_meat_plant");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLATE_LEGS_RAW.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_CHICKEN))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.unlockedBy("has_chicken", has(TagDC.ItemTag.RAW_CHICKEN))
 				.save(cons, "dcs_climate:food/plate_legs_chicken");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLATE_LEGS_RAW.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_RABBIT))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.unlockedBy("has_rabbit", has(TagDC.ItemTag.RAW_RABBIT))
 				.save(cons, "dcs_climate:food/plate_legs_rabbit");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLATE_LEGS_RAW.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.FROG))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.unlockedBy("has_frog", has(TagDC.ItemTag.FROG))
 				.save(cons, "dcs_climate:food/plate_legs_frog");
 
@@ -479,7 +481,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLATE_FISH_RAW.get(), 1)
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_EDIBLE_FISH))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.unlockedBy("has_fish", has(TagDC.ItemTag.RAW_EDIBLE_FISH))
 				.save(cons, "dcs_climate:food/plate_fish");
 
@@ -512,10 +514,10 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.save(cons, "dcs_climate:food/plate_stuffed_pumpkin");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLATE_POTATO_RAW.get(), 1)
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
 				.requires(Ingredient.of(TagDC.ItemTag.CHEESE))
-				.unlockedBy("crop_potato", has(Tags.Items.CROPS_POTATO))
+				.unlockedBy("crop_potato", has(TagDC.ItemTag.CROP_TUBERS))
 				.save(cons, "dcs_climate:food/plate_potato");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.TART_APPLE_RAW_ITEM.get(), 1)
@@ -605,7 +607,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.save(cons, "dcs_climate:food/tart_quiche_raw_0");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_SHEPHERDS_PIE_RAW_ITEM.get(), 1)
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.requires(Ingredient.of(Tags.Items.CROPS_CARROT))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_MUTTON))
@@ -616,7 +618,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.save(cons, "dcs_climate:food/casserole_shepherds_pie_raw_1");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_SHEPHERDS_PIE_RAW_ITEM.get(), 1)
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.requires(Ingredient.of(Tags.Items.CROPS_CARROT))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_BEEF))
@@ -627,7 +629,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.save(cons, "dcs_climate:food/casserole_shepherds_pie_raw_2");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_SHEPHERDS_PIE_RAW_ITEM.get(), 1)
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.requires(Ingredient.of(Tags.Items.CROPS_CARROT))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
 				.requires(Ingredient.of(TagDC.ItemTag.RAW_PLANT_MEAT))
@@ -687,7 +689,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_EGGPLANT))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_TOMATO))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
 				.requires(Ingredient.of(FoodInit.FOOD_BECHAMEL_SAUCE.get()))
 				.unlockedBy("has_bechamel_sauce", has(FoodInit.FOOD_BECHAMEL_SAUCE.get()))
@@ -705,7 +707,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.CASSEROLE_JANSSONS_FRESTELESE_RAW_ITEM.get(), 1)
 				.requires(Ingredient.of(FoodInit.FOOD_ANCHOVY.get()))
-				.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+				.requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 				.requires(Ingredient.of(TagDC.ItemTag.CROP_ONION))
 				.requires(Ingredient.of(TagDC.ItemTag.CREAMS))
 				.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
@@ -1267,732 +1269,314 @@ public class FoodRecipeProvider extends RecipeProvider {
 	static void mortarRecipes(Consumer<FinishedRecipe> cons) {
 		// mortar
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_WHEAT.get(), 1)
-				.requires(Tags.Items.CROPS_WHEAT)
-				.requires(CoreInit.MORTAR.get())
-				.group("crusher_mortar")
-				.unlockedBy("has_wheat", has(Tags.Items.CROPS_WHEAT))
-				.save(cons, "dcs_climate:core/mortar_wheat");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_WHEAT.get(), 1).requires(Tags.Items.CROPS_WHEAT).requires(CoreInit.MORTAR.get()).group("crusher_mortar").unlockedBy("has_wheat", has(Tags.Items.CROPS_WHEAT)).save(cons,
+		    "dcs_climate:core/mortar_wheat");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_HONEY.get(), 1)
-				.requires(Items.HONEYCOMB)
-				.requires(CoreInit.MORTAR.get())
-				.group("crusher_mortar")
-				.unlockedBy("has_honey", has(Items.HONEYCOMB))
-				.save(cons, "dcs_climate:core/mortar_honey");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_HONEY.get(), 1).requires(Items.HONEYCOMB).requires(CoreInit.MORTAR.get()).group("crusher_mortar").unlockedBy("has_honey", has(Items.HONEYCOMB)).save(cons,
+		    "dcs_climate:core/mortar_honey");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.CROP_CN_CINNAMON.get(), 1)
-				.requires(FoodInit.LOG_CN_CINNAMON.get())
-				.requires(CoreInit.MORTAR.get())
-				.group("crusher_mortar")
-				.unlockedBy("has_log_cinnamon", has(FoodInit.LOG_CN_CINNAMON.get()))
-				.save(cons, "dcs_climate:core/mortar_cinnamon");
+		ShapelessRecipeBuilder.shapeless(FoodInit.CROP_CN_CINNAMON.get(), 1).requires(FoodInit.LOG_CN_CINNAMON.get()).requires(CoreInit.MORTAR.get()).group("crusher_mortar").unlockedBy("has_log_cinnamon",
+		    has(FoodInit.LOG_CN_CINNAMON.get())).save(cons, "dcs_climate:core/mortar_cinnamon");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_WOOD.get(), 3)
-				.requires(FoodInit.LOG_MR_PAPER.get())
-				.requires(CoreInit.MORTAR.get())
-				.group("crusher_mortar")
-				.unlockedBy("has_log_paper", has(FoodInit.LOG_MR_PAPER.get()))
-				.save(cons, "dcs_climate:core/mortar_fiber_wood");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_WOOD.get(), 3).requires(FoodInit.LOG_MR_PAPER.get()).requires(CoreInit.MORTAR.get()).group("crusher_mortar").unlockedBy("has_log_paper", has(FoodInit.LOG_MR_PAPER.get())).save(cons,
+		    "dcs_climate:core/mortar_fiber_wood");
 
 		// spindle
 
-		ShapedRecipeBuilder.shaped(FoodInit.STRING_PLANT.get(), 4)
-				.pattern("XXX")
-				.pattern("XYX")
-				.pattern("XXX")
-				.define('X', TagDC.ItemTag.FIBER_PLANT)
-				.define('Y', CoreInit.HAND_SPINDLE.get())
-				.group("hand_spindle")
-				.unlockedBy("has_fiber_plant", has(TagDC.ItemTag.FIBER_PLANT))
-				.save(cons, "dcs_climate:core/spindle_string_plant");
+		ShapedRecipeBuilder.shaped(FoodInit.STRING_PLANT.get(), 4).pattern("XXX").pattern("XYX").pattern("XXX").define('X', TagDC.ItemTag.FIBER_PLANT).define('Y', CoreInit.HAND_SPINDLE.get()).group("hand_spindle").unlockedBy(
+		    "has_fiber_plant", has(TagDC.ItemTag.FIBER_PLANT)).save(cons, "dcs_climate:core/spindle_string_plant");
 
-		ShapedRecipeBuilder.shaped(FoodInit.STRING_TREE.get(), 4)
-				.pattern("XXX")
-				.pattern("XYX")
-				.pattern("XXX")
-				.define('X', TagDC.ItemTag.FIBER_WOOD)
-				.define('Y', CoreInit.HAND_SPINDLE.get())
-				.group("hand_spindle")
-				.unlockedBy("has_fiber_wood", has(TagDC.ItemTag.FIBER_WOOD))
-				.save(cons, "dcs_climate:core/spindle_string_wood");
+		ShapedRecipeBuilder.shaped(FoodInit.STRING_TREE.get(), 4).pattern("XXX").pattern("XYX").pattern("XXX").define('X', TagDC.ItemTag.FIBER_WOOD).define('Y', CoreInit.HAND_SPINDLE.get()).group("hand_spindle").unlockedBy("has_fiber_wood",
+		    has(TagDC.ItemTag.FIBER_WOOD)).save(cons, "dcs_climate:core/spindle_string_wood");
 
-		ShapedRecipeBuilder.shaped(FoodInit.STRING_COTTON.get(), 4)
-				.pattern("XXX")
-				.pattern("XYX")
-				.pattern("XXX")
-				.define('X', TagDC.ItemTag.CROP_COTTON)
-				.define('Y', CoreInit.HAND_SPINDLE.get())
-				.group("hand_spindle")
-				.unlockedBy("has_cotton", has(TagDC.ItemTag.CROP_COTTON))
-				.save(cons, "dcs_climate:core/spindle_string_cotton");
+		ShapedRecipeBuilder.shaped(FoodInit.STRING_COTTON.get(), 4).pattern("XXX").pattern("XYX").pattern("XXX").define('X', TagDC.ItemTag.CROP_COTTON).define('Y', CoreInit.HAND_SPINDLE.get()).group("hand_spindle").unlockedBy("has_cotton",
+		    has(TagDC.ItemTag.CROP_COTTON)).save(cons, "dcs_climate:core/spindle_string_cotton");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.STRING_WOOL.get(), 2)
-				.requires(ItemTags.WOOL)
-				.requires(CoreInit.HAND_SPINDLE.get())
-				.group("hand_spindle")
-				.unlockedBy("has_wool", has(ItemTags.WOOL))
-				.save(cons, "dcs_climate:core/spindle_string_wool");
+		ShapelessRecipeBuilder.shapeless(FoodInit.STRING_WOOL.get(), 2).requires(ItemTags.WOOL).requires(CoreInit.HAND_SPINDLE.get()).group("hand_spindle").unlockedBy("has_wool", has(ItemTags.WOOL)).save(cons,
+		    "dcs_climate:core/spindle_string_wool");
 
-		ShapedRecipeBuilder.shaped(FoodInit.STRING_WOOL.get(), 4)
-				.pattern(" X ")
-				.pattern("XYX")
-				.pattern(" X ")
-				.define('X', Items.COBWEB)
-				.define('Y', CoreInit.HAND_SPINDLE.get())
-				.group("hand_spindle")
-				.unlockedBy("has_cobweb", has(Items.COBWEB))
-				.save(cons, "dcs_climate:core/spindle_string_wool_2");
+		ShapedRecipeBuilder.shaped(FoodInit.STRING_WOOL.get(), 4).pattern(" X ").pattern("XYX").pattern(" X ").define('X', Items.COBWEB).define('Y', CoreInit.HAND_SPINDLE.get()).group("hand_spindle").unlockedBy("has_cobweb",
+		    has(Items.COBWEB)).save(cons, "dcs_climate:core/spindle_string_wool_2");
 
-		ShapelessRecipeBuilder.shapeless(Items.STRING, 1)
-				.requires(Tags.Items.STRING)
-				.unlockedBy("has_string", has(Tags.Items.STRING))
-				.save(cons, "dcs_climate:core/craft_string_hac");
+		ShapelessRecipeBuilder.shapeless(Items.STRING, 1).requires(Tags.Items.STRING).unlockedBy("has_string", has(Tags.Items.STRING)).save(cons, "dcs_climate:core/craft_string_hac");
 
-		ShapelessRecipeBuilder.shapeless(Items.LEAD, 1)
-				.requires(TagDC.ItemTag.VINE)
-				.requires(TagDC.ItemTag.VINE)
-				.requires(TagDC.ItemTag.VINE)
-				.requires(CoreInit.HAND_SPINDLE.get())
-				.group("hand_spindle")
-				.unlockedBy("has_vine", has(TagDC.ItemTag.VINE))
-				.save(cons, "dcs_climate:core/spindle_vanilla_lead");
+		ShapelessRecipeBuilder.shapeless(Items.LEAD, 1).requires(TagDC.ItemTag.VINE).requires(TagDC.ItemTag.VINE).requires(TagDC.ItemTag.VINE).requires(CoreInit.HAND_SPINDLE.get()).group("hand_spindle").unlockedBy("has_vine",
+		    has(TagDC.ItemTag.VINE)).save(cons, "dcs_climate:core/spindle_vanilla_lead");
 	}
 
 	static void materialRecipes(Consumer<FinishedRecipe> cons) {
 
 		// material
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_PLANT.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_REED))
-				.unlockedBy("has_reed", has(TagDC.ItemTag.CROP_REED))
-				.save(cons, "dcs_climate:food/reed_fiber_plant");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_PLANT.get(), 1).requires(Ingredient.of(TagDC.ItemTag.CROP_REED)).unlockedBy("has_reed", has(TagDC.ItemTag.CROP_REED)).save(cons, "dcs_climate:food/reed_fiber_plant");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_PLANT.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_JUTE))
-				.unlockedBy("has_jute", has(TagDC.ItemTag.CROP_JUTE))
-				.save(cons, "dcs_climate:food/jute_fiber_plant");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_PLANT.get(), 1).requires(Ingredient.of(TagDC.ItemTag.CROP_JUTE)).unlockedBy("has_jute", has(TagDC.ItemTag.CROP_JUTE)).save(cons, "dcs_climate:food/jute_fiber_plant");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_BINDWEED))
-				.unlockedBy("has_bindweed", has(TagDC.ItemTag.CROP_BINDWEED))
-				.save(cons, "dcs_climate:food/bindweed_vine");
+		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.CROP_BINDWEED)).unlockedBy("has_bindweed", has(TagDC.ItemTag.CROP_BINDWEED)).save(cons, "dcs_climate:food/bindweed_vine");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CLEMATIS))
-				.unlockedBy("has_clematis", has(TagDC.ItemTag.CROP_BINDWEED))
-				.save(cons, "dcs_climate:food/clematis_vine");
+		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.CROP_CLEMATIS)).unlockedBy("has_clematis", has(TagDC.ItemTag.CROP_BINDWEED)).save(cons, "dcs_climate:food/clematis_vine");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1)
-				.requires(Ingredient.of(Items.VINE))
-				.unlockedBy("has_vine", has(Items.VINE))
-				.save(cons, "dcs_climate:food/vanilla_vine");
+		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1).requires(Ingredient.of(Items.VINE)).unlockedBy("has_vine", has(Items.VINE)).save(cons, "dcs_climate:food/vanilla_vine");
 
-		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_PLANT.get(), 1)
-				.pattern(" X ")
-				.pattern("X X")
-				.pattern(" X ")
-				.define('X', Ingredient.of(TagDC.ItemTag.STRING_PLANT))
-				.unlockedBy("has_plant_string", has(TagDC.ItemTag.STRING_PLANT))
-				.save(cons, "dcs_climate:core/cloth_plant");
+		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_PLANT.get(), 1).pattern(" X ").pattern("X X").pattern(" X ").define('X', Ingredient.of(TagDC.ItemTag.STRING_PLANT)).unlockedBy("has_plant_string", has(TagDC.ItemTag.STRING_PLANT)).save(cons,
+		    "dcs_climate:core/cloth_plant");
 
-		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_COTTON.get(), 1)
-				.pattern(" X ")
-				.pattern("X X")
-				.pattern(" X ")
-				.define('X', Ingredient.of(TagDC.ItemTag.STRING_COTTON))
-				.unlockedBy("has_cotton_string", has(TagDC.ItemTag.STRING_COTTON))
-				.save(cons, "dcs_climate:core/cloth_cotton");
+		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_COTTON.get(), 1).pattern(" X ").pattern("X X").pattern(" X ").define('X', Ingredient.of(TagDC.ItemTag.STRING_COTTON)).unlockedBy("has_cotton_string", has(TagDC.ItemTag.STRING_COTTON)).save(
+		    cons, "dcs_climate:core/cloth_cotton");
 
-		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_WOOL.get(), 1)
-				.pattern(" X ")
-				.pattern("X X")
-				.pattern(" X ")
-				.define('X', Ingredient.of(TagDC.ItemTag.STRING_WOOL))
-				.unlockedBy("has_plant_string", has(TagDC.ItemTag.STRING_WOOL))
-				.save(cons, "dcs_climate:core/cloth_wool");
+		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_WOOL.get(), 1).pattern(" X ").pattern("X X").pattern(" X ").define('X', Ingredient.of(TagDC.ItemTag.STRING_WOOL)).unlockedBy("has_plant_string", has(TagDC.ItemTag.STRING_WOOL)).save(cons,
+		    "dcs_climate:core/cloth_wool");
 
 		// misc
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_CN_CAMPHOR.get(), 4)
-				.requires(Ingredient.of(FoodInit.LOG_CN_CINNAMON.get()))
-				.unlockedBy("has_cinnamon_log", has(FoodInit.LOG_CN_CINNAMON.get()))
-				.save(cons, "dcs_climate:food/planks_camphor_from_cinnamon");
+		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_CN_CAMPHOR.get(), 4).requires(Ingredient.of(FoodInit.LOG_CN_CINNAMON.get())).unlockedBy("has_cinnamon_log", has(FoodInit.LOG_CN_CINNAMON.get())).save(cons,
+		    "dcs_climate:food/planks_camphor_from_cinnamon");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_MR_MULBERRY.get(), 4)
-				.requires(Ingredient.of(FoodInit.LOG_MR_PAPER.get()))
-				.unlockedBy("has_kaji_log", has(FoodInit.LOG_MR_PAPER.get()))
-				.save(cons, "dcs_climate:food/planks_morus_from_kaji");
+		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_MR_MULBERRY.get(), 4).requires(Ingredient.of(FoodInit.LOG_MR_PAPER.get())).unlockedBy("has_kaji_log", has(FoodInit.LOG_MR_PAPER.get())).save(cons,
+		    "dcs_climate:food/planks_morus_from_kaji");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_MR_MULBERRY.get(), 4)
-				.requires(Ingredient.of(FoodInit.LOG_MR_RUBBER.get()))
-				.unlockedBy("has_rubber_log", has(FoodInit.LOG_MR_RUBBER.get()))
-				.save(cons, "dcs_climate:food/planks_morus_from_rubber");
+		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_MR_MULBERRY.get(), 4).requires(Ingredient.of(FoodInit.LOG_MR_RUBBER.get())).unlockedBy("has_rubber_log", has(FoodInit.LOG_MR_RUBBER.get())).save(cons,
+		    "dcs_climate:food/planks_morus_from_rubber");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_SU_LACQUER.get(), 4)
-				.requires(Ingredient.of(FoodInit.LOG_SU_MANGO.get()))
-				.unlockedBy("has_mango_log", has(FoodInit.LOG_SU_MANGO.get()))
-				.save(cons, "dcs_climate:food/planks_sumac_from_mango");
+		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_SU_LACQUER.get(), 4).requires(Ingredient.of(FoodInit.LOG_SU_MANGO.get())).unlockedBy("has_mango_log", has(FoodInit.LOG_SU_MANGO.get())).save(cons,
+		    "dcs_climate:food/planks_sumac_from_mango");
 
-		ShapedRecipeBuilder.shaped(FoodInit.PLANK_RE_SORGHUM.get(), 1)
-				.pattern("XX")
-				.pattern("XX")
-				.define('X', FoodInit.SORGHUM_STICK.get())
-				.unlockedBy("has_stick_sorghum", has(FoodInit.SORGHUM_STICK.get()))
-				.save(cons, "dcs_climate:build/planks_sorghum");
+		ShapedRecipeBuilder.shaped(FoodInit.PLANK_RE_SORGHUM.get(), 1).pattern("XX").pattern("XX").define('X', FoodInit.SORGHUM_STICK.get()).unlockedBy("has_stick_sorghum", has(FoodInit.SORGHUM_STICK.get())).save(cons,
+		    "dcs_climate:build/planks_sorghum");
 
-		ShapedRecipeBuilder.shaped(FoodInit.FOOD_EMPTY_PACK.get(), 16)
-				.pattern(" X ")
-				.pattern("X X")
-				.pattern(" X ")
-				.define('X', Items.PAPER)
-				.unlockedBy("has_paper", has(Items.PAPER))
-				.save(cons, "dcs_climate:food/craft_empty_pack");
+		ShapedRecipeBuilder.shaped(FoodInit.FOOD_EMPTY_PACK.get(), 16).pattern(" X ").pattern("X X").pattern(" X ").define('X', Items.PAPER).unlockedBy("has_paper", has(Items.PAPER)).save(cons, "dcs_climate:food/craft_empty_pack");
 
-		ShapedRecipeBuilder.shaped(Items.PAPER, 4)
-				.pattern("XXX")
-				.define('X', TagDC.ItemTag.BAGASSE)
-				.unlockedBy("has_bagasse", has(TagDC.ItemTag.BAGASSE))
-				.save(cons, "dcs_climate:core/paper_hac_recipe");
+		ShapedRecipeBuilder.shaped(Items.PAPER, 4).pattern("XXX").define('X', TagDC.ItemTag.BAGASSE).unlockedBy("has_bagasse", has(TagDC.ItemTag.BAGASSE)).save(cons, "dcs_climate:core/paper_hac_recipe");
 
-		ShapedRecipeBuilder.shaped(Items.PAPER, 4)
-				.pattern("XXX")
-				.define('X', Ingredient.of(TagDC.ItemTag.FEED_STRAW))
-				.unlockedBy("has_straw", has(TagDC.ItemTag.FEED_STRAW))
-				.save(cons, "dcs_climate:core/paper_from_straw");
+		ShapedRecipeBuilder.shaped(Items.PAPER, 4).pattern("XXX").define('X', Ingredient.of(TagDC.ItemTag.FEED_STRAW)).unlockedBy("has_straw", has(TagDC.ItemTag.FEED_STRAW)).save(cons, "dcs_climate:core/paper_from_straw");
 
-		ShapedRecipeBuilder.shaped(Items.PAPER, 4)
-				.pattern("XXX")
-				.define('X', Ingredient.of(TagDC.ItemTag.DUST_WOOD))
-				.unlockedBy("has_dust_wood", has(TagDC.ItemTag.DUST_WOOD))
-				.save(cons, "dcs_climate:core/paper_from_wood");
+		ShapedRecipeBuilder.shaped(Items.PAPER, 4).pattern("XXX").define('X', Ingredient.of(TagDC.ItemTag.DUST_WOOD)).unlockedBy("has_dust_wood", has(TagDC.ItemTag.DUST_WOOD)).save(cons, "dcs_climate:core/paper_from_wood");
 
-		ShapedRecipeBuilder.shaped(Items.PAPER, 4)
-				.pattern("XXX")
-				.define('X', Ingredient.of(TagDC.ItemTag.FIBER_WOOD))
-				.unlockedBy("has_bark", has(TagDC.ItemTag.FIBER_WOOD))
-				.save(cons, "dcs_climate:core/paper_from_bark");
+		ShapedRecipeBuilder.shaped(Items.PAPER, 4).pattern("XXX").define('X', Ingredient.of(TagDC.ItemTag.FIBER_WOOD)).unlockedBy("has_bark", has(TagDC.ItemTag.FIBER_WOOD)).save(cons, "dcs_climate:core/paper_from_bark");
 
-		ShapedRecipeBuilder.shaped(FoodInit.PLANK_LACQUERWARE.get(), 8)
-				.pattern("XXX")
-				.pattern("XYX")
-				.pattern("XXX")
-				.define('X', ItemTags.PLANKS)
-				.define('Y', TagDC.ItemTag.SAP_LACQUER)
-				.unlockedBy("has_lacquer_sap", has(TagDC.ItemTag.SAP_LACQUER))
-				.save(cons, "dcs_climate:food/lacquerware_planks");
+		ShapedRecipeBuilder.shaped(FoodInit.PLANK_LACQUERWARE.get(), 8).pattern("XXX").pattern("XYX").pattern("XXX").define('X', ItemTags.PLANKS).define('Y', TagDC.ItemTag.SAP_LACQUER).unlockedBy("has_lacquer_sap",
+		    has(TagDC.ItemTag.SAP_LACQUER)).save(cons, "dcs_climate:food/lacquerware_planks");
 
-		ShapedRecipeBuilder.shaped(Items.CANDLE, 1)
-				.pattern("X")
-				.pattern("Y")
-				.define('X', Tags.Items.STRING)
-				.define('Y', TagDC.ItemTag.FOOD_WAX)
-				.unlockedBy("has_wax", has(TagDC.ItemTag.FOOD_WAX))
-				.save(cons, "dcs_climate:food/vanilla_candle");
+		ShapedRecipeBuilder.shaped(Items.CANDLE, 1).pattern("X").pattern("Y").define('X', Tags.Items.STRING).define('Y', TagDC.ItemTag.FOOD_WAX).unlockedBy("has_wax", has(TagDC.ItemTag.FOOD_WAX)).save(cons,
+		    "dcs_climate:food/vanilla_candle");
 
 		// agri
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 2)
-				.requires(Ingredient.of(TagDC.ItemTag.FISH_POWDER))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_ASH))
-				.unlockedBy("has_fish_powder", has(TagDC.ItemTag.FISH_POWDER))
-				.save(cons, "dcs_climate:food/craft_fertilizer_mixed");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 2).requires(Ingredient.of(TagDC.ItemTag.FISH_POWDER)).requires(Ingredient.of(TagDC.ItemTag.DUST_ASH)).unlockedBy("has_fish_powder",
+		    has(TagDC.ItemTag.FISH_POWDER)).save(cons, "dcs_climate:food/craft_fertilizer_mixed");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.PRESS_CAKE))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_ASH))
-				.unlockedBy("has_press_cake", has(TagDC.ItemTag.PRESS_CAKE))
-				.save(cons, "dcs_climate:food/craft_fertilizer_mixed_2");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 1).requires(Ingredient.of(TagDC.ItemTag.PRESS_CAKE)).requires(Ingredient.of(TagDC.ItemTag.DUST_ASH)).unlockedBy("has_press_cake", has(TagDC.ItemTag.PRESS_CAKE)).save(
+		    cons, "dcs_climate:food/craft_fertilizer_mixed_2");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.LEAF_MOLD))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_ASH))
-				.unlockedBy("has_leaf_mold", has(TagDC.ItemTag.LEAF_MOLD))
-				.save(cons, "dcs_climate:food/craft_fertilizer_mixed3");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 1).requires(Ingredient.of(TagDC.ItemTag.LEAF_MOLD)).requires(Ingredient.of(TagDC.ItemTag.DUST_ASH)).unlockedBy("has_leaf_mold", has(TagDC.ItemTag.LEAF_MOLD)).save(
+		    cons, "dcs_climate:food/craft_fertilizer_mixed3");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 4)
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_NITER))
-				.requires(Ingredient.of(TagDC.ItemTag.FISH_POWDER))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_ASH))
-				.unlockedBy("has_dust_niter", has(TagDC.ItemTag.DUST_NITER))
-				.save(cons, "dcs_climate:food/craft_fertilizer_mixed4");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FERTILIZER_MIXED.get(), 4).requires(Ingredient.of(TagDC.ItemTag.DUST_NITER)).requires(Ingredient.of(TagDC.ItemTag.FISH_POWDER)).requires(Ingredient.of(TagDC.ItemTag.DUST_ASH)).unlockedBy(
+		    "has_dust_niter", has(TagDC.ItemTag.DUST_NITER)).save(cons, "dcs_climate:food/craft_fertilizer_mixed4");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.BIOMASS_PELLET.get(), 2)
-				.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_ALKALI))
-				.unlockedBy("has_residues", has(TagDC.ItemTag.RESIDUES))
-				.save(cons, "dcs_climate:food/craft_bio_briquet_raw");
+		ShapelessRecipeBuilder.shapeless(FoodInit.BIOMASS_PELLET.get(), 2).requires(Ingredient.of(TagDC.ItemTag.RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.RESIDUES)).requires(
+		    Ingredient.of(TagDC.ItemTag.RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.RESIDUES)).requires(
+		        Ingredient.of(TagDC.ItemTag.RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.DUST_ALKALI)).unlockedBy("has_residues", has(TagDC.ItemTag.RESIDUES)).save(cons, "dcs_climate:food/craft_bio_briquet_raw");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_LOG_RAW_BRIQUET.get(), 2)
-				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_ALKALI))
-				.unlockedBy("has_residues", has(TagDC.ItemTag.RESIDUES))
-				.save(cons, "dcs_climate:food/craft_cont_briquet_raw");
+		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_LOG_RAW_BRIQUET.get(), 2).requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES)).requires(
+		    Ingredient.of(TagDC.ItemTag.CONT_RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES)).requires(
+		        Ingredient.of(TagDC.ItemTag.CONT_RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.CONT_RESIDUES)).requires(Ingredient.of(TagDC.ItemTag.DUST_ALKALI)).unlockedBy("has_residues", has(TagDC.ItemTag.RESIDUES)).save(cons,
+		            "dcs_climate:food/craft_cont_briquet_raw");
 
-		ShapelessRecipeBuilder.shapeless(Blocks.DIRT, 1)
-				.requires(Ingredient.of(TagDC.ItemTag.LEAF_MOLD))
-				.requires(Ingredient.of(ItemTags.SAND))
-				.unlockedBy("has_leaf_mold", has(TagDC.ItemTag.LEAF_MOLD))
-				.save(cons, "dcs_climate:core/dirt_another_0");
+		ShapelessRecipeBuilder.shapeless(Blocks.DIRT, 1).requires(Ingredient.of(TagDC.ItemTag.LEAF_MOLD)).requires(Ingredient.of(ItemTags.SAND)).unlockedBy("has_leaf_mold", has(TagDC.ItemTag.LEAF_MOLD)).save(cons,
+		    "dcs_climate:core/dirt_another_0");
 
-		ShapelessRecipeBuilder.shapeless(Items.GUNPOWDER, 1)
-				.requires(TagDC.ItemTag.DUST_NITER)
-				.requires(TagDC.ItemTag.DUST_NITER)
-				.requires(TagDC.ItemTag.DUST_COAL)
-				.requires(TagDC.ItemTag.DUST_SULFUR)
-				.unlockedBy("has_dust_niter", has(TagDC.ItemTag.DUST_NITER))
-				.save(cons, "dcs_climate:core/gunpowder_another_0");
+		ShapelessRecipeBuilder.shapeless(Items.GUNPOWDER, 1).requires(TagDC.ItemTag.DUST_NITER).requires(TagDC.ItemTag.DUST_NITER).requires(TagDC.ItemTag.DUST_COAL).requires(TagDC.ItemTag.DUST_SULFUR).unlockedBy("has_dust_niter",
+		    has(TagDC.ItemTag.DUST_NITER)).save(cons, "dcs_climate:core/gunpowder_another_0");
 
-		ShapedRecipeBuilder.shaped(FoodInit.FERTILE_PLANTER.get(), 1)
-				.pattern("YXY")
-				.pattern("YYY")
-				.define('X', ItemTags.DIRT)
-				.define('Y', Tags.Items.INGOTS_BRICK)
-				.unlockedBy("has_bricks", has(Tags.Items.INGOTS_BRICK))
-				.save(cons, "dcs_climate:food/fertile_planter_block_1");
+		ShapedRecipeBuilder.shaped(FoodInit.FERTILE_PLANTER.get(), 1).pattern("YXY").pattern("YYY").define('X', ItemTags.DIRT).define('Y', Tags.Items.INGOTS_BRICK).unlockedBy("has_bricks", has(Tags.Items.INGOTS_BRICK)).save(cons,
+		    "dcs_climate:food/fertile_planter_block_1");
 
-		ShapedRecipeBuilder.shaped(FoodInit.FERTILE_PLANTER.get(), 1)
-				.pattern("YXY")
-				.pattern("YYY")
-				.define('X', ItemTags.DIRT)
-				.define('Y', ItemTags.TERRACOTTA)
-				.unlockedBy("has_terracotta", has(ItemTags.TERRACOTTA))
-				.save(cons, "dcs_climate:food/fertile_planter_block_2");
+		ShapedRecipeBuilder.shaped(FoodInit.FERTILE_PLANTER.get(), 1).pattern("YXY").pattern("YYY").define('X', ItemTags.DIRT).define('Y', ItemTags.TERRACOTTA).unlockedBy("has_terracotta", has(ItemTags.TERRACOTTA)).save(cons,
+		    "dcs_climate:food/fertile_planter_block_2");
 
-		ShapedRecipeBuilder.shaped(FoodInit.FERTILE_PLANTER_GEM.get(), 1)
-				.pattern("YXY")
-				.pattern("YYY")
-				.define('X', ItemTags.DIRT)
-				.define('Y', TagDC.ItemTag.GEM_AGATES)
-				.unlockedBy("has_gem_agates", has(TagDC.ItemTag.GEM_AGATES))
-				.save(cons, "dcs_climate:food/fertile_planter_gem_1");
+		ShapedRecipeBuilder.shaped(FoodInit.FERTILE_PLANTER_GEM.get(), 1).pattern("YXY").pattern("YYY").define('X', ItemTags.DIRT).define('Y', TagDC.ItemTag.GEM_AGATES).unlockedBy("has_gem_agates", has(TagDC.ItemTag.GEM_AGATES)).save(cons,
+		    "dcs_climate:food/fertile_planter_gem_1");
 
-		ShapedRecipeBuilder.shaped(FoodInit.MEAL_FEEDER.get(), 1)
-				.pattern("YXY")
-				.pattern("YYY")
-				.define('X', TagDC.ItemTag.FEEDS)
-				.define('Y', ItemTags.PLANKS)
-				.unlockedBy("has_planks", has(ItemTags.PLANKS))
-				.save(cons, "dcs_climate:food/meal_feeder_1");
+		ShapedRecipeBuilder.shaped(FoodInit.MEAL_FEEDER.get(), 1).pattern("YXY").pattern("YYY").define('X', TagDC.ItemTag.FEEDS).define('Y', ItemTags.PLANKS).unlockedBy("has_planks", has(ItemTags.PLANKS)).save(cons,
+		    "dcs_climate:food/meal_feeder_1");
 
 		// food materials
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_PASTRY.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
-				.requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
-				.requires(Ingredient.of(Tags.Items.EGGS))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
-				.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
-				.save(cons, "dcs_climate:food/foodmaterial_pastry");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_PASTRY.get(), 1).requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT)).requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT)).requires(Ingredient.of(Tags.Items.EGGS)).requires(
+		    Ingredient.of(TagDC.ItemTag.DUST_SALT)).unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT)).save(cons, "dcs_climate:food/foodmaterial_pastry");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_PASTA.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
-				.requires(Ingredient.of(TagDC.ItemTag.WATER))
-				.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
-				.save(cons, "dcs_climate:food/foodmaterial_pasta");
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_PASTA.get(), 1).requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT)).requires(Ingredient.of(TagDC.ItemTag.WATER)).unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT)).save(cons,
+		    "dcs_climate:food/foodmaterial_pasta");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_WHEAT.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
-				.requires(Ingredient.of(TagDC.ItemTag.WATER))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
-				.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
-				.save(cons, "dcs_climate:food/foodmaterial_wheat");
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_WHEAT.get(), 1).requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT)).requires(Ingredient.of(TagDC.ItemTag.WATER)).requires(Ingredient.of(TagDC.ItemTag.DUST_SALT)).unlockedBy(
+		    "has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT)).save(cons, "dcs_climate:food/foodmaterial_wheat");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_BRINE.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
-				.requires(Ingredient.of(TagDC.ItemTag.WATER))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_TRONA))
-				.unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
-				.save(cons, "dcs_climate:food/foodmaterial_chinese_noodle");
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_BRINE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT)).requires(Ingredient.of(TagDC.ItemTag.WATER)).requires(Ingredient.of(TagDC.ItemTag.DUST_TRONA)).unlockedBy(
+		    "has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT)).save(cons, "dcs_climate:food/foodmaterial_chinese_noodle");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_BUCKWHEAT.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_BUCKWHEAT))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
-				.requires(Ingredient.of(TagDC.ItemTag.WATER))
-				.unlockedBy("has_dust_buckwheat", has(TagDC.ItemTag.DUST_BUCKWHEAT))
-				.save(cons, "dcs_climate:food/foodmaterial_buckwheat_noodle");
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_BUCKWHEAT.get(), 1).requires(Ingredient.of(TagDC.ItemTag.DUST_BUCKWHEAT)).requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT)).requires(Ingredient.of(TagDC.ItemTag.WATER)).unlockedBy(
+		    "has_dust_buckwheat", has(TagDC.ItemTag.DUST_BUCKWHEAT)).save(cons, "dcs_climate:food/foodmaterial_buckwheat_noodle");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_RICE.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_RICES))
-				.requires(Ingredient.of(TagDC.ItemTag.WATER))
-				.unlockedBy("has_dust_rices", has(TagDC.ItemTag.DUST_RICES))
-				.save(cons, "dcs_climate:food/foodmaterial_rice_noodle");
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_RICE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.DUST_RICES)).requires(Ingredient.of(TagDC.ItemTag.WATER)).unlockedBy("has_dust_rices", has(TagDC.ItemTag.DUST_RICES)).save(cons,
+		    "dcs_climate:food/foodmaterial_rice_noodle");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MOCHI.get(), 2)
-				.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
-				.requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
-				.unlockedBy("has_boiled_rices", has(TagDC.ItemTag.BOILED_RICE))
-				.save(cons, "dcs_climate:food/foodmaterial_mochi");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MOCHI.get(), 2).requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE)).requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE)).unlockedBy("has_boiled_rices",
+		    has(TagDC.ItemTag.BOILED_RICE)).save(cons, "dcs_climate:food/foodmaterial_mochi");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_CREAM.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.COW_MILK))
-				.unlockedBy("has_cow_milk", has(TagDC.ItemTag.COW_MILK))
-				.save(cons, "dcs_climate:food/foodmaterial_cream");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_CREAM.get(), 1).requires(Ingredient.of(TagDC.ItemTag.COW_MILK)).unlockedBy("has_cow_milk", has(TagDC.ItemTag.COW_MILK)).save(cons, "dcs_climate:food/foodmaterial_cream");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_BUTTER.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CREAM))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
-				.unlockedBy("has_cream", has(TagDC.ItemTag.CREAM))
-				.save(cons, "dcs_climate:food/foodmaterial_butter");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_BUTTER.get(), 1).requires(Ingredient.of(TagDC.ItemTag.CREAM)).requires(Ingredient.of(TagDC.ItemTag.DUST_SALT)).unlockedBy("has_cream", has(TagDC.ItemTag.CREAM)).save(cons,
+		    "dcs_climate:food/foodmaterial_butter");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MARGARINE.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
-				.unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL))
-				.save(cons, "dcs_climate:food/foodmaterial_margarine");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MARGARINE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL)).requires(Ingredient.of(TagDC.ItemTag.DUST_SALT)).unlockedBy("has_plant_oil", has(TagDC.ItemTag.PLANT_OIL)).save(
+		    cons, "dcs_climate:food/foodmaterial_margarine");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MAKOMOTAKE.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_WILD_RICE))
-				.unlockedBy("has_zizania", has(TagDC.ItemTag.CROP_WILD_RICE))
-				.save(cons, "dcs_climate:food/makomodake_zizania");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MAKOMOTAKE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.CROP_WILD_RICE)).unlockedBy("has_zizania", has(TagDC.ItemTag.CROP_WILD_RICE)).save(cons,
+		    "dcs_climate:food/makomodake_zizania");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.RAW_SAUSAGE.get(), 3)
-				.requires(Ingredient.of(TagDC.ItemTag.RAW_MEAT))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS))
-				.requires(Ingredient.of(TagDC.ItemTag.OFFAL))
-				.unlockedBy("has_offal", has(TagDC.ItemTag.OFFAL))
-				.save(cons, "dcs_climate:food/raw_sausage_meat");
+		ShapelessRecipeBuilder.shapeless(FoodInit.RAW_SAUSAGE.get(), 3).requires(Ingredient.of(TagDC.ItemTag.RAW_MEAT)).requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS)).requires(Ingredient.of(TagDC.ItemTag.OFFAL)).unlockedBy("has_offal",
+		    has(TagDC.ItemTag.OFFAL)).save(cons, "dcs_climate:food/raw_sausage_meat");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.RAW_SAUSAGE.get(), 2)
-				.requires(Ingredient.of(TagDC.ItemTag.RAW_ROTTEN))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS))
-				.requires(Ingredient.of(TagDC.ItemTag.OFFAL))
-				.unlockedBy("has_offal", has(TagDC.ItemTag.OFFAL))
-				.save(cons, "dcs_climate:food/raw_sausage_rotten");
+		ShapelessRecipeBuilder.shapeless(FoodInit.RAW_SAUSAGE.get(), 2).requires(Ingredient.of(TagDC.ItemTag.RAW_ROTTEN)).requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS)).requires(Ingredient.of(TagDC.ItemTag.OFFAL)).unlockedBy("has_offal",
+		    has(TagDC.ItemTag.OFFAL)).save(cons, "dcs_climate:food/raw_sausage_rotten");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.RAW_SAUSAGE.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS))
-				.requires(Ingredient.of(TagDC.ItemTag.OFFAL))
-				.unlockedBy("has_offal", has(TagDC.ItemTag.OFFAL))
-				.save(cons, "dcs_climate:food/raw_sausage_offal");
+		ShapelessRecipeBuilder.shapeless(FoodInit.RAW_SAUSAGE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS)).requires(Ingredient.of(TagDC.ItemTag.OFFAL)).unlockedBy("has_offal", has(TagDC.ItemTag.OFFAL)).save(cons,
+		    "dcs_climate:food/raw_sausage_offal");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.RAW_SAUSAGE.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.FISH_WHITE))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS))
-				.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
-				.unlockedBy("has_white_fish", has(TagDC.ItemTag.FISH_WHITE))
-				.save(cons, "dcs_climate:food/raw_sausage_fish");
+		ShapelessRecipeBuilder.shapeless(FoodInit.RAW_SAUSAGE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.FISH_WHITE)).requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS)).requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL)).unlockedBy(
+		    "has_white_fish", has(TagDC.ItemTag.FISH_WHITE)).save(cons, "dcs_climate:food/raw_sausage_fish");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_RENNET.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.OFFAL))
-				.unlockedBy("has_offal", has(TagDC.ItemTag.OFFAL))
-				.save(cons, "dcs_climate:food/foodmaterial_rennet");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_RENNET.get(), 1).requires(Ingredient.of(TagDC.ItemTag.OFFAL)).unlockedBy("has_offal", has(TagDC.ItemTag.OFFAL)).save(cons, "dcs_climate:food/foodmaterial_rennet");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_ROE.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.FISH_WITH_ROE))
-				.unlockedBy("has_fish_with_roe", has(TagDC.ItemTag.FISH_WITH_ROE))
-				.save(cons, "dcs_climate:food/foodmaterial_fish_roe");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_ROE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.FISH_WITH_ROE)).unlockedBy("has_fish_with_roe", has(TagDC.ItemTag.FISH_WITH_ROE)).save(cons,
+		    "dcs_climate:food/foodmaterial_fish_roe");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MAYONNAISE.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.VINEGAR))
-				.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
-				.requires(Ingredient.of(Tags.Items.EGGS))
-				.unlockedBy("has_eggs", has(Tags.Items.EGGS))
-				.save(cons, "dcs_climate:food/foodmaterial_mayonnaise");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MAYONNAISE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.VINEGAR)).requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL)).requires(Ingredient.of(Tags.Items.EGGS)).unlockedBy("has_eggs",
+		    has(Tags.Items.EGGS)).save(cons, "dcs_climate:food/foodmaterial_mayonnaise");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MAYONNAISE.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEMON))
-				.requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL))
-				.requires(Ingredient.of(Tags.Items.EGGS))
-				.unlockedBy("has_eggs", has(Tags.Items.EGGS))
-				.save(cons, "dcs_climate:food/foodmaterial_mayonnaise_2");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MAYONNAISE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.CROP_LEMON)).requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL)).requires(Ingredient.of(Tags.Items.EGGS)).unlockedBy("has_eggs",
+		    has(Tags.Items.EGGS)).save(cons, "dcs_climate:food/foodmaterial_mayonnaise_2");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_TOMYUM_PASTE.get(), 1)
-				.requires(Ingredient.of(FoodInit.FOOD_FISH_SAUSE.get()))
-				.requires(Ingredient.of(FoodInit.FOOD_SHRIMP_PASTE.get()))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
-				.unlockedBy("has_shrimp_paste", has(FoodInit.FOOD_SHRIMP_PASTE.get()))
-				.save(cons, "dcs_climate:food/foodmaterial_tomyum_paste");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_TOMYUM_PASTE.get(), 1).requires(Ingredient.of(FoodInit.FOOD_FISH_SAUSE.get())).requires(Ingredient.of(FoodInit.FOOD_SHRIMP_PASTE.get())).requires(
+		    Ingredient.of(TagDC.ItemTag.CROP_GINGER)).requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI)).requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS)).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS)).unlockedBy("has_shrimp_paste",
+		        has(FoodInit.FOOD_SHRIMP_PASTE.get())).save(cons, "dcs_climate:food/foodmaterial_tomyum_paste");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_THAI_CURRY_PASTE.get(), 1)
-				.requires(Ingredient.of(FoodInit.FOOD_SHRIMP_PASTE.get()))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CORIANDER))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
-				.unlockedBy("has_shrimp_paste", has(FoodInit.FOOD_SHRIMP_PASTE.get()))
-				.save(cons, "dcs_climate:food/foodmaterial_thai_curry_paste");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_THAI_CURRY_PASTE.get(), 1).requires(Ingredient.of(FoodInit.FOOD_SHRIMP_PASTE.get())).requires(Ingredient.of(TagDC.ItemTag.CROP_CORIANDER)).requires(
+		    Ingredient.of(TagDC.ItemTag.CROP_GINGER)).requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI)).requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS)).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS)).unlockedBy("has_shrimp_paste",
+		        has(FoodInit.FOOD_SHRIMP_PASTE.get())).save(cons, "dcs_climate:food/foodmaterial_thai_curry_paste");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_HERB_SALT.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_SPICES))
-				.unlockedBy("has_salt", has(TagDC.ItemTag.DUST_SALT))
-				.save(cons, "dcs_climate:food/foodmaterial_herb_salt");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_HERB_SALT.get(), 1).requires(Ingredient.of(TagDC.ItemTag.DUST_SALT)).requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS)).requires(Ingredient.of(TagDC.ItemTag.CROP_SPICES)).unlockedBy(
+		    "has_salt", has(TagDC.ItemTag.DUST_SALT)).save(cons, "dcs_climate:food/foodmaterial_herb_salt");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MIXED_SPICES.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CARDAMOM))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CINNAMON))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CLOVE))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI))
-				.requires(Ingredient.of(TagDC.ItemTag.SEED_APIUM))
-				.requires(Ingredient.of(TagDC.ItemTag.SEED_FENNEL))
-				.unlockedBy("has_clove", has(TagDC.ItemTag.CROP_CLOVE))
-				.save(cons, "dcs_climate:food/foodmaterial_mixed_spice");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MIXED_SPICES.get(), 1).requires(Ingredient.of(TagDC.ItemTag.CROP_CARDAMOM)).requires(Ingredient.of(TagDC.ItemTag.CROP_CINNAMON)).requires(
+		    Ingredient.of(TagDC.ItemTag.CROP_CLOVE)).requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER)).requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI)).requires(Ingredient.of(TagDC.ItemTag.SEED_APIUM)).requires(
+		        Ingredient.of(TagDC.ItemTag.SEED_FENNEL)).unlockedBy("has_clove", has(TagDC.ItemTag.CROP_CLOVE)).save(cons, "dcs_climate:food/foodmaterial_mixed_spice");
 
 		// pack
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MILK.get(), 4)
-				.requires(Ingredient.of(Items.MILK_BUCKET))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK))
-				.save(cons, "dcs_climate:food/foodmaterial_pack_milk");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MILK.get(), 4).requires(Ingredient.of(Items.MILK_BUCKET)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(
+		    Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK)).save(cons, "dcs_climate:food/foodmaterial_pack_milk");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_WATER.get(), 4)
-				.requires(Ingredient.of(Items.WATER_BUCKET))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK))
-				.save(cons, "dcs_climate:food/foodmaterial_pack_water");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_WATER.get(), 4).requires(Ingredient.of(Items.WATER_BUCKET)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(
+		    Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK)).save(cons, "dcs_climate:food/foodmaterial_pack_water");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_SPARKLING.get(), 4)
-				.requires(Ingredient.of(CoreInit.SPARKLING.getBucket().get()))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK))
-				.save(cons, "dcs_climate:food/foodmaterial_pack_sparkling");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_SPARKLING.get(), 4).requires(Ingredient.of(CoreInit.SPARKLING.getBucket().get())).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(
+		    Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK)).save(cons,
+		        "dcs_climate:food/foodmaterial_pack_sparkling");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_PLANT_OIL.get(), 4)
-				.requires(Ingredient.of(CoreInit.PLANT_OIL.getBucket().get()))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK))
-				.save(cons, "dcs_climate:food/foodmaterial_pack_plant_oil");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_PLANT_OIL.get(), 4).requires(Ingredient.of(CoreInit.PLANT_OIL.getBucket().get())).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(
+		    Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK)).save(cons,
+		        "dcs_climate:food/foodmaterial_pack_plant_oil");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_HONEY.get(), 4)
-				.requires(Ingredient.of(Blocks.HONEY_BLOCK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK))
-				.unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK))
-				.save(cons, "dcs_climate:food/foodmaterial_pack_honey");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_HONEY.get(), 4).requires(Ingredient.of(Blocks.HONEY_BLOCK)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(
+		    Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).requires(Ingredient.of(TagDC.ItemTag.EMPTY_PACK)).unlockedBy("has_empty_pack", has(TagDC.ItemTag.EMPTY_PACK)).save(cons, "dcs_climate:food/foodmaterial_pack_honey");
 
 		// leaves
-		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_LEAVES.get(), 1)
-				.requires(Ingredient.of(ItemTags.LEAVES))
-				.requires(Ingredient.of(ItemTags.LEAVES))
-				.requires(Ingredient.of(ItemTags.LEAVES))
-				.requires(Ingredient.of(ItemTags.LEAVES))
-				.requires(Ingredient.of(ItemTags.LEAVES))
-				.requires(Ingredient.of(ItemTags.LEAVES))
-				.requires(Ingredient.of(ItemTags.LEAVES))
-				.requires(Ingredient.of(ItemTags.LEAVES))
-				.requires(Ingredient.of(ItemTags.LEAVES))
-				.unlockedBy("has_leaves", has(ItemTags.LEAVES))
-				.save(cons, "dcs_climate:food/cont_leaves");
+		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_LEAVES.get(), 1).requires(Ingredient.of(ItemTags.LEAVES)).requires(Ingredient.of(ItemTags.LEAVES)).requires(Ingredient.of(ItemTags.LEAVES)).requires(
+		    Ingredient.of(ItemTags.LEAVES)).requires(Ingredient.of(ItemTags.LEAVES)).requires(Ingredient.of(ItemTags.LEAVES)).requires(Ingredient.of(ItemTags.LEAVES)).requires(Ingredient.of(ItemTags.LEAVES)).requires(
+		        Ingredient.of(ItemTags.LEAVES)).unlockedBy("has_leaves", has(ItemTags.LEAVES)).save(cons, "dcs_climate:food/cont_leaves");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_FALLEN_LEAVES.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
-				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
-				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
-				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
-				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
-				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
-				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
-				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
-				.requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES))
-				.unlockedBy("has_fallen_leaves", has(TagDC.ItemTag.FALLEN_LEAVES))
-				.save(cons, "dcs_climate:food/cont_fallen_leaves");
+		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_FALLEN_LEAVES.get(), 1).requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES)).requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES)).requires(
+		    Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES)).requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES)).requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES)).requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES)).requires(
+		        Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES)).requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES)).requires(Ingredient.of(TagDC.ItemTag.FALLEN_LEAVES)).unlockedBy("has_fallen_leaves", has(TagDC.ItemTag.FALLEN_LEAVES)).save(
+		            cons, "dcs_climate:food/cont_fallen_leaves");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_WASTE.get(), 1)
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(TagDC.ItemTag.BRAN))
-				.unlockedBy("has_residues", has(TagDC.ItemTag.BRAN))
-				.save(cons, "dcs_climate:food/cont_plant_wastes_1");
+		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_WASTE.get(), 1).requires(Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(
+		    Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(
+		        Ingredient.of(TagDC.ItemTag.BRAN)).unlockedBy("has_residues", has(TagDC.ItemTag.BRAN)).save(cons, "dcs_climate:food/cont_plant_wastes_1");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_WASTE.get(), 1)
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(Tags.Items.CROPS))
-				.requires(Ingredient.of(TagDC.ItemTag.PRESS_CAKE))
-				.unlockedBy("has_residues", has(TagDC.ItemTag.PRESS_CAKE))
-				.save(cons, "dcs_climate:food/cont_plant_wastes_2");
+		ShapelessRecipeBuilder.shapeless(FoodInit.CONT_WASTE.get(), 1).requires(Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(
+		    Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(Ingredient.of(Tags.Items.CROPS)).requires(
+		        Ingredient.of(TagDC.ItemTag.PRESS_CAKE)).unlockedBy("has_residues", has(TagDC.ItemTag.PRESS_CAKE)).save(cons, "dcs_climate:food/cont_plant_wastes_2");
 
 		// feed
-		ShapelessRecipeBuilder.shapeless(FoodInit.FEED_HAY.get(), 1)
-				.requires(Ingredient.of(TagDC.ItemTag.GRASSES))
-				.unlockedBy("has_grasses", has(TagDC.ItemTag.GRASSES))
-				.save(cons, "dcs_climate:food/animalfeed_hay_0");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FEED_HAY.get(), 1).requires(Ingredient.of(TagDC.ItemTag.GRASSES)).unlockedBy("has_grasses", has(TagDC.ItemTag.GRASSES)).save(cons, "dcs_climate:food/animalfeed_hay_0");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FEED_COMPOUND.get(), 3)
-				.requires(Ingredient.of(TagDC.ItemTag.PRESS_CAKE))
-				.requires(Ingredient.of(TagDC.ItemTag.BRAN))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CEREALS))
-				.unlockedBy("has_press_cakes", has(TagDC.ItemTag.PRESS_CAKE))
-				.save(cons, "dcs_climate:food/animalfeed_compound_1");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FEED_COMPOUND.get(), 3).requires(Ingredient.of(TagDC.ItemTag.PRESS_CAKE)).requires(Ingredient.of(TagDC.ItemTag.BRAN)).requires(Ingredient.of(TagDC.ItemTag.CROP_CEREALS)).unlockedBy(
+		    "has_press_cakes", has(TagDC.ItemTag.PRESS_CAKE)).save(cons, "dcs_climate:food/animalfeed_compound_1");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FEED_COMPOUND.get(), 5)
-				.requires(Ingredient.of(TagDC.ItemTag.PRESS_CAKE))
-				.requires(Ingredient.of(TagDC.ItemTag.BRAN))
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_MILLETS))
-				.unlockedBy("has_press_cakes", has(TagDC.ItemTag.PRESS_CAKE))
-				.save(cons, "dcs_climate:food/animalfeed_compound_2");
+		ShapelessRecipeBuilder.shapeless(FoodInit.FEED_COMPOUND.get(), 5).requires(Ingredient.of(TagDC.ItemTag.PRESS_CAKE)).requires(Ingredient.of(TagDC.ItemTag.BRAN)).requires(Ingredient.of(TagDC.ItemTag.CROP_MILLETS)).unlockedBy(
+		    "has_press_cakes", has(TagDC.ItemTag.PRESS_CAKE)).save(cons, "dcs_climate:food/animalfeed_compound_2");
 	}
 
 	static void copperRecipes(Consumer<FinishedRecipe> cons) {
-		ShapelessRecipeBuilder.shapeless(Blocks.COPPER_BLOCK, 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
-				.requires(Ingredient.of(Blocks.OXIDIZED_COPPER))
-				.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
-				.save(cons, "dcs_climate:food/repair_oxidised_block");
+		ShapelessRecipeBuilder.shapeless(Blocks.COPPER_BLOCK, 1).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS)).requires(Ingredient.of(Blocks.OXIDIZED_COPPER)).unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS)).save(cons,
+		    "dcs_climate:food/repair_oxidised_block");
 
-		ShapelessRecipeBuilder.shapeless(Blocks.CUT_COPPER, 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
-				.requires(Ingredient.of(Blocks.OXIDIZED_CUT_COPPER))
-				.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
-				.save(cons, "dcs_climate:food/repair_oxidised_cutted");
+		ShapelessRecipeBuilder.shapeless(Blocks.CUT_COPPER, 1).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS)).requires(Ingredient.of(Blocks.OXIDIZED_CUT_COPPER)).unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS)).save(cons,
+		    "dcs_climate:food/repair_oxidised_cutted");
 
-		ShapelessRecipeBuilder.shapeless(Blocks.CUT_COPPER_SLAB, 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
-				.requires(Ingredient.of(Blocks.OXIDIZED_CUT_COPPER_SLAB))
-				.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
-				.save(cons, "dcs_climate:food/repair_oxidised_slab");
+		ShapelessRecipeBuilder.shapeless(Blocks.CUT_COPPER_SLAB, 1).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS)).requires(Ingredient.of(Blocks.OXIDIZED_CUT_COPPER_SLAB)).unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS)).save(
+		    cons, "dcs_climate:food/repair_oxidised_slab");
 
-		ShapelessRecipeBuilder.shapeless(Blocks.CUT_COPPER_STAIRS, 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
-				.requires(Ingredient.of(Blocks.OXIDIZED_CUT_COPPER_STAIRS))
-				.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
-				.save(cons, "dcs_climate:food/repair_oxidised_stair");
+		ShapelessRecipeBuilder.shapeless(Blocks.CUT_COPPER_STAIRS, 1).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS)).requires(Ingredient.of(Blocks.OXIDIZED_CUT_COPPER_STAIRS)).unlockedBy("has_citrus",
+		    has(TagDC.ItemTag.CROP_CITRUS)).save(cons, "dcs_climate:food/repair_oxidised_stair");
 
-		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_COPPER_BLOCK, 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
-				.requires(Ingredient.of(Blocks.WAXED_OXIDIZED_COPPER))
-				.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
-				.save(cons, "dcs_climate:food/repair_oxidised_block_waxed");
+		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_COPPER_BLOCK, 1).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS)).requires(Ingredient.of(Blocks.WAXED_OXIDIZED_COPPER)).unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS)).save(
+		    cons, "dcs_climate:food/repair_oxidised_block_waxed");
 
-		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_CUT_COPPER, 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
-				.requires(Ingredient.of(Blocks.WAXED_OXIDIZED_CUT_COPPER))
-				.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
-				.save(cons, "dcs_climate:food/repair_oxidised_cut_waxed");
+		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_CUT_COPPER, 1).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS)).requires(Ingredient.of(Blocks.WAXED_OXIDIZED_CUT_COPPER)).unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS)).save(
+		    cons, "dcs_climate:food/repair_oxidised_cut_waxed");
 
-		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_CUT_COPPER_SLAB, 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
-				.requires(Ingredient.of(Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB))
-				.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
-				.save(cons, "dcs_climate:food/repair_oxidised_slab_waxed");
+		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_CUT_COPPER_SLAB, 1).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS)).requires(Ingredient.of(Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB)).unlockedBy("has_citrus",
+		    has(TagDC.ItemTag.CROP_CITRUS)).save(cons, "dcs_climate:food/repair_oxidised_slab_waxed");
 
-		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_CUT_COPPER_STAIRS, 1)
-				.requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
-				.requires(Ingredient.of(Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS))
-				.unlockedBy("has_citrus", has(TagDC.ItemTag.CROP_CITRUS))
-				.save(cons, "dcs_climate:food/repair_oxidised_stairs_waxed");
+		ShapelessRecipeBuilder.shapeless(Blocks.WAXED_CUT_COPPER_STAIRS, 1).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS)).requires(Ingredient.of(Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS)).unlockedBy("has_citrus",
+		    has(TagDC.ItemTag.CROP_CITRUS)).save(cons, "dcs_climate:food/repair_oxidised_stairs_waxed");
 	}
 
 	private static void woodRecipes(Consumer<FinishedRecipe> cons, PlantRecipes.Wood wood) {
 
 		if (wood.logBlock().get() != null) {
-			ShapelessRecipeBuilder.shapeless(wood.plankBlock().get(), 4)
-					.requires(wood.logBlock().get())
-					.unlockedBy("has_" + wood.name() + "_log", has(wood.logBlock().get()))
-					.save(cons, "dcs_climate:food/planks_" + wood.name());
+			ShapelessRecipeBuilder.shapeless(wood.plankBlock().get(), 4).requires(wood.logBlock().get()).unlockedBy("has_" + wood.name() + "_log", has(wood.logBlock().get())).save(cons, "dcs_climate:food/planks_" + wood.name());
 		}
 
-		ShapedRecipeBuilder.shaped(wood.stairsBlock().get(), 4)
-				.pattern("X  ")
-				.pattern("XX ")
-				.pattern("XXX")
-				.define('X', wood.plankBlock().get())
-				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
-				.save(cons, "dcs_climate:build/stairs2_" + wood.name());
+		ShapedRecipeBuilder.shaped(wood.stairsBlock().get(), 4).pattern("X  ").pattern("XX ").pattern("XXX").define('X', wood.plankBlock().get()).unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get())).save(cons,
+		    "dcs_climate:build/stairs2_" + wood.name());
 
-		ShapedRecipeBuilder.shaped(wood.stairsBlock().get(), 4)
-				.pattern("  X")
-				.pattern(" XX")
-				.pattern("XXX")
-				.define('X', wood.plankBlock().get())
-				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
-				.save(cons, "dcs_climate:build/stairs3_" + wood.name());
+		ShapedRecipeBuilder.shaped(wood.stairsBlock().get(), 4).pattern("  X").pattern(" XX").pattern("XXX").define('X', wood.plankBlock().get()).unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get())).save(cons,
+		    "dcs_climate:build/stairs3_" + wood.name());
 
-		ShapedRecipeBuilder.shaped(wood.slimStairsBlock().get(), 3)
-				.pattern("X  ")
-				.pattern("YX ")
-				.pattern(" YX")
-				.define('X', wood.plankBlock().get())
-				.define('Y', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
-				.save(cons, "dcs_climate:build/slim_stairs2_" + wood.name());
+		ShapedRecipeBuilder.shaped(wood.slimStairsBlock().get(), 3).pattern("X  ").pattern("YX ").pattern(" YX").define('X', wood.plankBlock().get()).define('Y', Tags.Items.RODS_WOODEN).unlockedBy("has_" + wood.name() + "_planks",
+		    has(wood.plankBlock().get())).save(cons, "dcs_climate:build/slim_stairs2_" + wood.name());
 
-		ShapedRecipeBuilder.shaped(wood.slimStairsBlock().get(), 3)
-				.pattern("  X")
-				.pattern(" XY")
-				.pattern("XY ")
-				.define('X', wood.plankBlock().get())
-				.define('Y', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
-				.save(cons, "dcs_climate:build/slim_stairs3_" + wood.name());
+		ShapedRecipeBuilder.shaped(wood.slimStairsBlock().get(), 3).pattern("  X").pattern(" XY").pattern("XY ").define('X', wood.plankBlock().get()).define('Y', Tags.Items.RODS_WOODEN).unlockedBy("has_" + wood.name() + "_planks",
+		    has(wood.plankBlock().get())).save(cons, "dcs_climate:build/slim_stairs3_" + wood.name());
 
-		ShapedRecipeBuilder.shaped(wood.slabBlock().get(), 6)
-				.pattern("XXX")
-				.define('X', wood.plankBlock().get())
-				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
-				.save(cons, "dcs_climate:build/slab2_" + wood.name());
+		ShapedRecipeBuilder.shaped(wood.slabBlock().get(), 6).pattern("XXX").define('X', wood.plankBlock().get()).unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get())).save(cons,
+		    "dcs_climate:build/slab2_" + wood.name());
 
-		ShapedRecipeBuilder.shaped(wood.fenceBlock().get(), 6)
-				.pattern("XYX")
-				.pattern("XYX")
-				.define('X', wood.plankBlock().get())
-				.define('Y', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
-				.save(cons, "dcs_climate:build/fence2_" + wood.name());
+		ShapedRecipeBuilder.shaped(wood.fenceBlock().get(), 6).pattern("XYX").pattern("XYX").define('X', wood.plankBlock().get()).define('Y', Tags.Items.RODS_WOODEN).unlockedBy("has_" + wood.name() + "_planks",
+		    has(wood.plankBlock().get())).save(cons, "dcs_climate:build/fence2_" + wood.name());
 
 		if (wood.doorBlock().get() != null) {
-			ShapedRecipeBuilder.shaped(wood.doorBlock().get(), 3)
-					.pattern("XX")
-					.pattern("XX")
-					.pattern("XX")
-					.define('X', wood.plankBlock().get())
-					.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
-					.save(cons, "dcs_climate:build/door2_" + wood.name());
+			ShapedRecipeBuilder.shaped(wood.doorBlock().get(), 3).pattern("XX").pattern("XX").pattern("XX").define('X', wood.plankBlock().get()).unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get())).save(cons,
+			    "dcs_climate:build/door2_" + wood.name());
 		}
 
 		if (wood.trapdoorBlock().get() != null) {
-			ShapedRecipeBuilder.shaped(wood.trapdoorBlock().get(), 3)
-					.pattern("XXX")
-					.pattern("XXX")
-					.define('X', wood.plankBlock().get())
-					.unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get()))
-					.save(cons, "dcs_climate:build/trapdoor2_" + wood.name());
+			ShapedRecipeBuilder.shaped(wood.trapdoorBlock().get(), 3).pattern("XXX").pattern("XXX").define('X', wood.plankBlock().get()).unlockedBy("has_" + wood.name() + "_planks", has(wood.plankBlock().get())).save(cons,
+			    "dcs_climate:build/trapdoor2_" + wood.name());
 		}
 
 	}
@@ -2001,44 +1585,24 @@ public class FoodRecipeProvider extends RecipeProvider {
 		if (seed.output().get() instanceof ClimateCropBaseBlock) {
 			String name = ((ClimateCropBaseBlock) seed.output().get()).getFamily().toString() + "_" + ((ClimateCropBaseBlock) seed.output().get()).getTier().toString();
 
-			ShapelessRecipeBuilder.shapeless(seed.output().get(), seed.count())
-					.requires(seed.input().get())
-					.requires(CoreInit.SEEDING_POT.get())
-					.group("seeding")
-					.unlockedBy("has_seeding_pot", has(CoreInit.SEEDING_POT.get()))
-					.save(cons, "dcs_climate:food/seeding/seeding_" + name);
+			ShapelessRecipeBuilder.shapeless(seed.output().get(), seed.count()).requires(seed.input().get()).requires(CoreInit.SEEDING_POT.get()).group("seeding").unlockedBy("has_seeding_pot", has(CoreInit.SEEDING_POT.get())).save(cons,
+			    "dcs_climate:food/seeding/seeding_" + name);
 		}
 	}
 
 	static void contRecipes(Consumer<FinishedRecipe> cons, ContainerRecipes.Cont pair) {
 		if (pair.inputTag().get() != TagDC.ItemTag.DUMMY) {
 
-			ShapedRecipeBuilder.shaped(pair.output().get(), 1)
-					.pattern("XXX")
-					.pattern("XXX")
-					.pattern("XXX")
-					.define('X', pair.inputTag().get())
-					.unlockedBy("has_" + pair.name(), has(pair.inputTag().get()))
-					.save(cons, "dcs_climate:container/cont_" + pair.name());
+			ShapedRecipeBuilder.shaped(pair.output().get(), 1).pattern("XXX").pattern("XXX").pattern("XXX").define('X', pair.inputTag().get()).unlockedBy("has_" + pair.name(), has(pair.inputTag().get())).save(cons,
+			    "dcs_climate:container/cont_" + pair.name());
 
-			ShapelessRecipeBuilder.shapeless(pair.input().get(), 9)
-					.requires(pair.output().get())
-					.unlockedBy("has_" + pair.name(), has(pair.inputTag().get()))
-					.save(cons, "dcs_climate:container/cont_" + pair.name() + "_rev");
+			ShapelessRecipeBuilder.shapeless(pair.input().get(), 9).requires(pair.output().get()).unlockedBy("has_" + pair.name(), has(pair.inputTag().get())).save(cons, "dcs_climate:container/cont_" + pair.name() + "_rev");
 		} else {
 
-			ShapedRecipeBuilder.shaped(pair.output().get(), 1)
-					.pattern("XXX")
-					.pattern("XXX")
-					.pattern("XXX")
-					.define('X', pair.input().get())
-					.unlockedBy("has_" + pair.name(), has(pair.input().get()))
-					.save(cons, "dcs_climate:container/cont_" + pair.name());
+			ShapedRecipeBuilder.shaped(pair.output().get(), 1).pattern("XXX").pattern("XXX").pattern("XXX").define('X', pair.input().get()).unlockedBy("has_" + pair.name(), has(pair.input().get())).save(cons,
+			    "dcs_climate:container/cont_" + pair.name());
 
-			ShapelessRecipeBuilder.shapeless(pair.input().get(), 9)
-					.requires(pair.output().get())
-					.unlockedBy("has_" + pair.name(), has(pair.input().get()))
-					.save(cons, "dcs_climate:container/cont_" + pair.name() + "_rev");
+			ShapelessRecipeBuilder.shapeless(pair.input().get(), 9).requires(pair.output().get()).unlockedBy("has_" + pair.name(), has(pair.input().get())).save(cons, "dcs_climate:container/cont_" + pair.name() + "_rev");
 		}
 	}
 
@@ -2055,51 +1619,37 @@ public class FoodRecipeProvider extends RecipeProvider {
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LOGS), FoodInit.CONT_LOG_CHARCOAL.get(), 200, "charcoal_container", TagDC.ItemTag.CONT_LOGS, "has_log_cont");
 		smeltingRecipe(cons, Ingredient.of(FoodInit.BIOMASS_PELLET.get()), FoodInit.BIOMASS_BRIQUET.get(), 200, "biomass_briquet", FoodInit.BIOMASS_PELLET.get(), "has_biomass_pellet");
 		smeltingRecipe(cons, Ingredient.of(FoodInit.CONT_LOG_RAW_BRIQUET.get()), FoodInit.CONT_LOG_BRIQUET.get(), 200, "container_briquet", FoodInit.CONT_LOG_RAW_BRIQUET.get(),
-				"has_container_pellet");
+		    "has_container_pellet");
 		smeltingRecipe(cons, Ingredient.of(FoodInit.CONT_DUST_PLANT.get()), FoodInit.CONT_ASH.get(), 200, "container_ash", FoodInit.CONT_DUST_PLANT.get(), "has_container_plant");
 	}
 
 	private static void cookingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, ItemLike output, int time, String name, ItemLike unlockTarget, String unlockName) {
-		SimpleCookingRecipeBuilder.campfireCooking(input, output, 0F, time * 3)
-				.unlockedBy(unlockName, has(unlockTarget))
-				.save(cons, "dcs_climate:smelting/campfire_" + name);
+		SimpleCookingRecipeBuilder.campfireCooking(input, output, 0F, time * 3).unlockedBy(unlockName, has(unlockTarget)).save(cons, "dcs_climate:smelting/campfire_" + name);
 
-		SimpleCookingRecipeBuilder.smelting(input, output, 0F, time)
-				.unlockedBy(unlockName, has(unlockTarget))
-				.save(cons, "dcs_climate:smelting/smelting_" + name);
+		SimpleCookingRecipeBuilder.smelting(input, output, 0F, time).unlockedBy(unlockName, has(unlockTarget)).save(cons, "dcs_climate:smelting/smelting_" + name);
 	}
 
 	private static void smeltingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, ItemLike output, int time, String name, ItemLike unlockTarget, String unlockName) {
-		SimpleCookingRecipeBuilder.smelting(input, output, 0F, time)
-				.unlockedBy(unlockName, has(unlockTarget))
-				.save(cons, "dcs_climate:smelting/smelting_" + name);
+		SimpleCookingRecipeBuilder.smelting(input, output, 0F, time).unlockedBy(unlockName, has(unlockTarget)).save(cons, "dcs_climate:smelting/smelting_" + name);
 
-		SimpleCookingRecipeBuilder.blasting(input, output, 0F, time / 2)
-				.unlockedBy(unlockName, has(unlockTarget))
-				.save(cons, "dcs_climate:smelting/blasting_" + name);
+		SimpleCookingRecipeBuilder.blasting(input, output, 0F, time / 2).unlockedBy(unlockName, has(unlockTarget)).save(cons, "dcs_climate:smelting/blasting_" + name);
 	}
 
 	private static void smeltingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, ItemLike output, int time, String name, TagKey<Item> unlockTarget, String unlockName) {
-		SimpleCookingRecipeBuilder.smelting(input, output, 0F, time)
-				.unlockedBy(unlockName, has(unlockTarget))
-				.save(cons, "dcs_climate:smelting/smelting_" + name);
+		SimpleCookingRecipeBuilder.smelting(input, output, 0F, time).unlockedBy(unlockName, has(unlockTarget)).save(cons, "dcs_climate:smelting/smelting_" + name);
 
-		SimpleCookingRecipeBuilder.blasting(input, output, 0F, time / 2)
-				.unlockedBy(unlockName, has(unlockTarget))
-				.save(cons, "dcs_climate:smelting/blasting_" + name);
+		SimpleCookingRecipeBuilder.blasting(input, output, 0F, time / 2).unlockedBy(unlockName, has(unlockTarget)).save(cons, "dcs_climate:smelting/blasting_" + name);
 	}
 
 	private static void smokingRecipe(Consumer<FinishedRecipe> cons, Ingredient input, ItemLike output, int time, String name, ItemLike unlockTarget, String unlockName) {
-		SimpleCookingRecipeBuilder.smoking(input, output, 0F, time)
-				.unlockedBy(unlockName, has(unlockTarget))
-				.save(cons, "dcs_climate:smelting/smoking_" + name);
+		SimpleCookingRecipeBuilder.smoking(input, output, 0F, time).unlockedBy(unlockName, has(unlockTarget)).save(cons, "dcs_climate:smelting/smoking_" + name);
 	}
 
 	@Override
 	public void run(CachedOutput cache) {
 
 		Set<ResourceLocation> set = Sets.newHashSet();
-		buildCraftingRecipes((recipe) -> {
+		buildCraftingRecipes(recipe -> {
 			if (!set.add(recipe.getId())) {
 				// throw new IllegalStateException("Duplicate recipe " + recipe.getId());
 			} else {

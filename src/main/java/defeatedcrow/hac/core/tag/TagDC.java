@@ -571,6 +571,7 @@ public class TagDC {
 		public static final TagKey<Item> CROP_RED_GRAPES = itemTag("crops/red_grapes");
 		public static final TagKey<Item> CROP_ALL_GRAPES = itemTag("crops/all_grapes");
 		public static final TagKey<Item> CROP_TSUKEMONO = itemTag("crops/tsukemono_vegi");
+		public static final TagKey<Item> CROP_TUBERS = itemTag("crops/tubers");
 
 		public static final TagKey<Item> CROP_STRAWS = itemHaCTag("crops/straws");
 		public static final TagKey<Item> CROP_STICKS = itemHaCTag("crops/sticks");
