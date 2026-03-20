@@ -24,6 +24,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 
+//@formatter:off
 public class MagicRecipeProvider extends RecipeProvider {
 
 	public MagicRecipeProvider(DataGenerator generator) {
@@ -1242,7 +1243,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 	public void run(CachedOutput cache) {
 
 		Set<ResourceLocation> set = Sets.newHashSet();
-		buildCraftingRecipes((recipe) -> {
+		buildCraftingRecipes(recipe -> {
 			if (!set.add(recipe.getId())) {
 				// throw new IllegalStateException("Duplicate recipe " + recipe.getId());
 			} else {

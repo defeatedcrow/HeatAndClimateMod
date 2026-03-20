@@ -818,7 +818,9 @@ public class TagDC {
 		public static final TagKey<Item> SAP_LACQUER = itemTag("saps/lacquer");
 		public static final TagKey<Item> SAPS = itemTag("saps");
 
-		public static final TagKey<Item> STRING_PLANT = itemTag("strings/plant");
+		public static final TagKey<Item> STRING_GRASS = itemTag("strings/grass");
+		public static final TagKey<Item> STRING_TREE = itemTag("strings/tree");
+		public static final TagKey<Item> STRING_PLANTS = itemTag("strings/plants");
 		public static final TagKey<Item> STRING_COTTON = itemTag("strings/cotton");
 		public static final TagKey<Item> STRING_WOOL = itemTag("strings/wool");
 

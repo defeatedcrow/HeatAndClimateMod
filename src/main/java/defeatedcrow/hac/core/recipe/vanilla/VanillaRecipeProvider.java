@@ -38,6 +38,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 
+//@formatter:off
 public class VanillaRecipeProvider extends RecipeProvider {
 
 	public VanillaRecipeProvider(DataGenerator generator) {
@@ -3286,7 +3287,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 	public void run(CachedOutput cache) {
 
 		Set<ResourceLocation> set = Sets.newHashSet();
-		buildCraftingRecipes((recipe) -> {
+		buildCraftingRecipes(recipe -> {
 			if (!set.add(recipe.getId())) {
 				throw new IllegalStateException("Duplicate recipe " + recipe.getId());
 			} else {

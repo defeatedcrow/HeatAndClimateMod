@@ -398,7 +398,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.FEEDS).addTags(TagDC.ItemTag.FEED_COMPOUND, TagDC.ItemTag.FEED_HAY, TagDC.ItemTag.FEED_STRAW, TagDC.ItemTag.FEED_SILAGE);
 
-		tag(Tags.Items.STRING).addTags(TagDC.ItemTag.STRING_PLANT, TagDC.ItemTag.STRING_COTTON, TagDC.ItemTag.STRING_WOOL);
+		tag(TagDC.ItemTag.STRING_PLANTS).addTags(TagDC.ItemTag.STRING_GRASS, TagDC.ItemTag.STRING_TREE);
+		tag(Tags.Items.STRING).addTags(TagDC.ItemTag.STRING_PLANTS, TagDC.ItemTag.STRING_COTTON, TagDC.ItemTag.STRING_WOOL);
 		tag(TagDC.ItemTag.CLOTHS).addTags(TagDC.ItemTag.CLOTH_PLANT, TagDC.ItemTag.CLOTH_COTTON, TagDC.ItemTag.CLOTH_WOOL);
 
 		tag(Tags.Items.RODS_WOODEN).addTags(TagDC.ItemTag.STICK_SORGHUM);

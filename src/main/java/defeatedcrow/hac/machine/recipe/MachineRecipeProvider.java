@@ -25,6 +25,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 
+//@formatter:off
 public class MachineRecipeProvider extends RecipeProvider {
 
 	public MachineRecipeProvider(DataGenerator generator) {
@@ -995,7 +996,7 @@ public class MachineRecipeProvider extends RecipeProvider {
 	public void run(CachedOutput cache) {
 
 		Set<ResourceLocation> set = Sets.newHashSet();
-		buildCraftingRecipes((recipe) -> {
+		buildCraftingRecipes(recipe -> {
 			if (!set.add(recipe.getId())) {
 				// throw new IllegalStateException("Duplicate recipe " + recipe.getId());
 			} else {
