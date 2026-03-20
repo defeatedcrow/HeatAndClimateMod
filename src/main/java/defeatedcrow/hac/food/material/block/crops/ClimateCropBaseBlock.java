@@ -82,6 +82,11 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		cropTier = t;
 	}
 
+	public ClimateCropBaseBlock setOffset(OffsetType offset) {
+		this.properties.offsetType(offset);
+		return this;
+	}
+
 	/* 基本データ */
 	protected static BlockBehaviour.Properties getProp() {
 		return BlockBehaviour.Properties.of(Material.PLANT).noOcclusion().noCollission().randomTicks().instabreak().sound(SoundType.CROP);
@@ -451,27 +456,27 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(4)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, 4).setValue(DCState.WILD, true);
 	}
 
 	@Override
 	public BlockState getGrownState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(4));
+		return state.setValue(DCState.STAGE6, 4);
 	}
 
 	@Override
 	public BlockState getFlowerState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+		return state.setValue(DCState.STAGE6, 3);
 	}
 
 	@Override
 	public BlockState getHarvestedState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(0));
+		return state.setValue(DCState.STAGE6, 0);
 	}
 
 	@Override
 	public BlockState getFailureState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(5));
+		return state.setValue(DCState.STAGE6, 5);
 	}
 
 	@Override
@@ -545,19 +550,17 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		EnumSeason season = DCTimeHelper.getSeasonEnum(level);
 		if (season == EnumSeason.FLOWER && stage != CropStage.SAPLING) {
 			return this.getFlowerState(thisState);
+		} else if (stage == CropStage.DEAD) {
+			if (season == EnumSeason.HARVEST) {
+				return thisState.setValue(DCState.STAGE6, 0);
+			}
+			return thisState;
 		} else {
-			if (stage == CropStage.DEAD) {
-				if (season == EnumSeason.HARVEST) {
-					return thisState.setValue(DCState.STAGE6, 0);
-				}
-				return thisState;
-			} else {
-				int age = DCState.getInt(thisState, DCState.STAGE6);
-				if (age >= 0 && age < 4) {
-					age++;
-					BlockState next = thisState.setValue(DCState.STAGE6, age);
-					return thisState.setValue(DCState.STAGE6, age);
-				}
+			int age = DCState.getInt(thisState, DCState.STAGE6);
+			if (age >= 0 && age < 4) {
+				age++;
+				BlockState next = thisState.setValue(DCState.STAGE6, age);
+				return thisState.setValue(DCState.STAGE6, age);
 			}
 		}
 		return thisState;
@@ -619,10 +622,8 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 						if (d) {
 							if (canHarvest(world.getBlockState(pos.below())))
 								onHarvest(world, pos.below(), world.getBlockState(pos.below()), player);
-						} else {
-							if (canHarvest(world.getBlockState(pos.above())))
-								onHarvest(world, pos.above(), world.getBlockState(pos.above()), player);
-						}
+						} else if (canHarvest(world.getBlockState(pos.above())))
+							onHarvest(world, pos.above(), world.getBlockState(pos.above()), player);
 					}
 				}
 				return ret;
