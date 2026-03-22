@@ -89,7 +89,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	/* 基本データ */
 	protected static BlockBehaviour.Properties getProp(CropTier t) {
-		return BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP).offsetType(t == CropTier.WILD ? OffsetType.XZ : OffsetType.NONE);
+		return BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP).offsetType(state -> (DCState.getBool(state, DCState.WILD) ? OffsetType.XZ : OffsetType.NONE));
 	}
 
 	@Override

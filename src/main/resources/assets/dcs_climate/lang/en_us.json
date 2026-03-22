@@ -2244,6 +2244,7 @@
   "dcs.tip.reflective_sensor":"RS signal is emitted according to the distance to the obstacle ahead.",
   "dcs.tip.entity_camera":"This device counts the number of mobs within a 5x3x5 block range in front and generates an RS signal.",
   "dcs.tip.auto_milker":"Collect milk from nearby cows and goats.",
+  "dcs.tip.water_intake":"Water can be stored when it receives water flow or rain from above.",
 
   "dcs.tip.foodtaste.1":"Taste: ★",
   "dcs.tip.foodtaste.2":"Taste: ★★",

@@ -2176,6 +2176,7 @@
   "dcs.tip.reflective_sensor":"前方の障害物までの距離に応じたRS信号を発生します。",
   "dcs.tip.entity_camera":"前方5x3x5ブロックの範囲内にいるエンティティの数をカウントし、RS信号を発生します。",
   "dcs.tip.auto_milker":"近くのウシやヤギからミルクを集めます。",
+  "dcs.tip.water_intake":"上面から水や雨を受けると、水を貯めることができます。",
 
   "dcs.tip.flow.tier1":"[Tier1] 流速: 32 /t",
   "dcs.tip.flow.tier2":"[Tier2] 流速: 128 /t",

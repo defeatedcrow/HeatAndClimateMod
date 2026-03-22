@@ -108,7 +108,7 @@ public class WaterIntakeBasinBlock extends SimpleBasinBlock {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
-		MutableComponent tex1 = Component.translatable("dcs.tip.water_intake").withStyle(ChatFormatting.GRAY);
+		MutableComponent tex1 = Component.translatable("dcs.tip.water_intake_basin").withStyle(ChatFormatting.GRAY);
 		if (ClimateCore.proxy.keyShiftPushed()) {
 			list.add(tex1);
 		} else {
