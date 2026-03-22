@@ -181,7 +181,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	}
 
 	public void spreadWildCrop(Level world, BlockPos pos, BlockState state, int chance) {
-		if (DCState.getBool(state, DCState.WILD) && getTier() == CropTier.WILD && ConfigCommonBuilder.INSTANCE.enWildOvergrouth.get()) {
+		if (DCState.getBool(state, DCState.WILD) && getTier() == CropTier.WILD && ConfigCommonBuilder.INSTANCE.enWildOvergrouth.get() && chance > 0) {
 			for (Direction dir : Direction.Plane.HORIZONTAL) {
 				BlockPos pos2 = pos.relative(dir);
 				if (world.getBlockState(pos2).isAir() && isSuitablePlace(world, pos2.below(), world.getBlockState(pos2.below())) && world.random.nextInt(chance) == 0) {
