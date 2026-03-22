@@ -101,6 +101,7 @@
   "item.dcs_climate.main.dust_diamond":"ダイヤモンドの粉",
   "item.dcs_climate.main.dust_lime":"石灰の粉",
   "item.dcs_climate.main.dust_trona":"トロナ",
+  "item.dcs_climate.main.dust_baking_soda":"重曹",
   "item.dcs_climate.main.dust_borax":"硼砂",
   "item.dcs_climate.main.dust_lithium":"リチウムの粉",
   "item.dcs_climate.main.dust_ash":"草木灰",
@@ -457,6 +458,7 @@
   "item.dcs_climate.food.food_butter":"バター",
   "item.dcs_climate.food.food_margarine":"マーガリン",
   "item.dcs_climate.food.food_cheese":"チーズ",
+  "item.dcs_climate.food.food_fresh_cheese":"フレッシュチーズ",
   "item.dcs_climate.food.food_offal":"もつ",
   "item.dcs_climate.food.food_gelatine":"ゼラチン",
   "item.dcs_climate.food.food_rennet":"レンネット",
@@ -614,6 +616,8 @@
   "item.dcs_climate.food.bread_flat_baked":"平パン",
   "item.dcs_climate.food.bread_tortilla_raw":"トルティーヤ生地",
   "item.dcs_climate.food.bread_tortilla_baked":"トルティーヤ",
+  "item.dcs_climate.food.bread_corn_raw":"コーンブレッド生地",
+  "item.dcs_climate.food.bread_corn_baked":"コーンブレッド",
   "item.dcs_climate.food.bread_nuts_raw":"ナッツとフルーツのパン生地",
   "item.dcs_climate.food.bread_nuts_baked":"ナッツとフルーツのパン",
   "item.dcs_climate.food.bread_cinnamon_raw":"シナモンロール生地",
@@ -1802,6 +1806,10 @@
   "block.dcs_climate.build.glass_crystal":"石英ガラス",
   "block.dcs_climate.build.glass_light":"発光石英ガラス",
   "block.dcs_climate.build.glass_dark":"遮光石英ガラス",
+  
+  "block.dcs_climate.build.small_light_wood":"ダウンライト",
+  "block.dcs_climate.build.small_light_white":"ダウンライト(白)",
+  "block.dcs_climate.build.small_light_black":"ダウンライト(黒)",
 
   "block.dcs_climate.build.chal_lamp":"玉髄のライトブロック",
   "block.dcs_climate.build.chal_lamp_glass":"玉髄のガラスライト",
@@ -1906,6 +1914,8 @@
   "block.dcs_climate.build.display_shelf_iron":"飾り棚(メタルラック)",
   "block.dcs_climate.build.display_shelf_lab":"飾り棚(ラボ)",
   "block.dcs_climate.build.display_shelf_glass":"飾り棚(ガラス戸)",
+  
+  "block.dcs_climate.build.ditch":"側溝",
 
     "## machine":"",
 
@@ -2008,6 +2018,7 @@
   "block.dcs_climate.machine.reflective_sensor":"反射型センサーブロック",
   "block.dcs_climate.machine.entity_camera":"エンティティ検知カメラ",
   "block.dcs_climate.machine.auto_milker":"自動搾乳機",
+  "block.dcs_climate.machine.water_basin":"取水マス",
 
     "## magic":"",
 

@@ -1,5 +1,6 @@
 {
   "values": [
-    "dcs_climate:food/food_cheese"
+    "dcs_climate:food/food_cheese",
+    "dcs_climate:food/food_fresh_cheese"
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:build/mortar"
+    },
+    "Y": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/water_basin"
+  }
+}

@@ -225,6 +225,7 @@ public class CoreInit {
 	public static final RegistryObject<Item> DUST_DIAMOND = regItem("dust_diamond", () -> new MaterialItemDC("dust_diamond", TagDC.ItemTag.DUST_DIAMOND));
 	public static final RegistryObject<Item> DUST_LIME = regItem("dust_lime", () -> new MaterialItemDC("dust_lime", TagDC.ItemTag.DUST_LIME));
 	public static final RegistryObject<Item> DUST_TRONA = regItem("dust_trona", () -> new MaterialItemDC("dust_trona", TagDC.ItemTag.DUST_TRONA));
+	public static final RegistryObject<Item> DUST_BAKING_SODA = regItem("dust_baking_soda", () -> new MaterialItemDC("dust_baking_soda", TagDC.ItemTag.DUST_BAKING_SODA));
 	public static final RegistryObject<Item> DUST_BORAX = regItem("dust_borax", () -> new MaterialItemDC("dust_borax", TagDC.ItemTag.DUST_BORAX));
 
 	public static final RegistryObject<Item> CLOTH_RUBBER = regItem("cloth_rubber", () -> new MaterialItemDC("cloth_rubber", TagDC.ItemTag.CLOTH_RUBBER));
@@ -290,46 +291,35 @@ public class CoreInit {
 	public static final RegistryObject<Item> PATTERN_SUITS = regItem("pattern_paper_suits", () -> new MaterialItemDC(CLOTH, "pattern_paper_suits", null));
 	public static final RegistryObject<Item> PATTERN_PANTS = regItem("pattern_paper_pants", () -> new MaterialItemDC(CLOTH, "pattern_paper_pants", null));
 
-	public static final RegistryObject<Item> MET_BRONZE = regItem("helmet_bronze", () -> new ArmorItemDC("helmet_bronze", MaterialsDC.BRONZE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.DEFAULT)
-			.setArmorName());
-	public static final RegistryObject<Item> CHEST_BRONZE = regItem("plate_bronze", () -> new ArmorItemDC("plate_bronze", MaterialsDC.BRONZE, EquipmentSlot.CHEST, ArmorItemDC.ModelType.DEFAULT)
-			.setArmorName());
+	public static final RegistryObject<Item> MET_BRONZE = regItem("helmet_bronze", () -> new ArmorItemDC("helmet_bronze", MaterialsDC.BRONZE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.DEFAULT).setArmorName());
+	public static final RegistryObject<Item> CHEST_BRONZE = regItem("plate_bronze", () -> new ArmorItemDC("plate_bronze", MaterialsDC.BRONZE, EquipmentSlot.CHEST, ArmorItemDC.ModelType.DEFAULT).setArmorName());
 	public static final RegistryObject<Item> LEGGINS_BRONZE = regItem("chain_mail_bronze",
-			() -> new ArmorItemDC("chain_mail_bronze", MaterialsDC.BRONZE, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
-	public static final RegistryObject<Item> BOOTS_BRONZE = regItem("boots_bronze", () -> new ArmorItemDC("boots_bronze", MaterialsDC.BRONZE, EquipmentSlot.FEET, ArmorItemDC.ModelType.DEFAULT)
-			.setArmorName());
+	    () -> new ArmorItemDC("chain_mail_bronze", MaterialsDC.BRONZE, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
+	public static final RegistryObject<Item> BOOTS_BRONZE = regItem("boots_bronze", () -> new ArmorItemDC("boots_bronze", MaterialsDC.BRONZE, EquipmentSlot.FEET, ArmorItemDC.ModelType.DEFAULT).setArmorName());
 
-	public static final RegistryObject<Item> MET_STEEL = regItem("helmet_steel", () -> new ArmorItemDC("helmet_steel", MaterialsDC.STEEL, EquipmentSlot.HEAD, ArmorItemDC.ModelType.DEFAULT)
-			.setArmorName());
-	public static final RegistryObject<Item> CHEST_STEEL = regItem("plate_steel", () -> new ArmorItemDC("plate_steel", MaterialsDC.STEEL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.DEFAULT)
-			.setArmorName());
+	public static final RegistryObject<Item> MET_STEEL = regItem("helmet_steel", () -> new ArmorItemDC("helmet_steel", MaterialsDC.STEEL, EquipmentSlot.HEAD, ArmorItemDC.ModelType.DEFAULT).setArmorName());
+	public static final RegistryObject<Item> CHEST_STEEL = regItem("plate_steel", () -> new ArmorItemDC("plate_steel", MaterialsDC.STEEL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.DEFAULT).setArmorName());
 	public static final RegistryObject<Item> LEGGINS_STEEL = regItem("chain_mail_steel", () -> new ArmorItemDC("chain_mail_steel", MaterialsDC.STEEL, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
-	public static final RegistryObject<Item> BOOTS_STEEL = regItem("boots_steel", () -> new ArmorItemDC("boots_steel", MaterialsDC.STEEL, EquipmentSlot.FEET, ArmorItemDC.ModelType.DEFAULT)
-			.setArmorName());
+	public static final RegistryObject<Item> BOOTS_STEEL = regItem("boots_steel", () -> new ArmorItemDC("boots_steel", MaterialsDC.STEEL, EquipmentSlot.FEET, ArmorItemDC.ModelType.DEFAULT).setArmorName());
 
-	public static final RegistryObject<Item> HAT_SAFETY = regItem("helmet_safety", () -> new ArmorItemDC("helmet_safety", MaterialsDC.RUBBER, EquipmentSlot.HEAD, ArmorItemDC.ModelType.DEFAULT)
-			.setArmorName("armor_safety"));
+	public static final RegistryObject<Item> HAT_SAFETY = regItem("helmet_safety", () -> new ArmorItemDC("helmet_safety", MaterialsDC.RUBBER, EquipmentSlot.HEAD, ArmorItemDC.ModelType.DEFAULT).setArmorName("armor_safety"));
 	public static final RegistryObject<Item> LEGGINS_WADERS = regItem("waders_rubber",
-			() -> new ArmorItemDC("waders_rubber", MaterialsDC.RUBBER, EquipmentSlot.CHEST, ArmorItemDC.ModelType.OVERSUITS));
-	public static final RegistryObject<Item> BOOTS_SAFETY = regItem("boots_safety", () -> new ArmorItemDC("boots_safety", MaterialsDC.RUBBER, EquipmentSlot.FEET, ArmorItemDC.ModelType.DEFAULT)
-			.setArmorName("armor_safety"));
+	    () -> new ArmorItemDC("waders_rubber", MaterialsDC.RUBBER, EquipmentSlot.CHEST, ArmorItemDC.ModelType.OVERSUITS));
+	public static final RegistryObject<Item> BOOTS_SAFETY = regItem("boots_safety", () -> new ArmorItemDC("boots_safety", MaterialsDC.RUBBER, EquipmentSlot.FEET, ArmorItemDC.ModelType.DEFAULT).setArmorName("armor_safety"));
 
 	public static final RegistryObject<Item> FUR_SHAWL = regItem("shawl_fur", () -> new ArmorItemDC("shawl_fur", ArmorMaterials.LEATHER, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
-	public static final RegistryObject<Item> FUR_SHAWL_BLACK = regItem("shawl_fur_black", () -> new ArmorItemDC("shawl_fur_black", ArmorMaterials.LEATHER, EquipmentSlot.CHEST,
-			ArmorItemDC.ModelType.JACKET));
-	public static final RegistryObject<Item> FUR_SHAWL_SILVER = regItem("shawl_fur_silver", () -> new ArmorItemDC("shawl_fur_silver", ArmorMaterials.LEATHER, EquipmentSlot.CHEST,
-			ArmorItemDC.ModelType.JACKET));
-	public static final RegistryObject<Item> FUR_SHAWL_WHITE = regItem("shawl_fur_white", () -> new ArmorItemDC("shawl_fur_white", ArmorMaterials.LEATHER, EquipmentSlot.CHEST,
-			ArmorItemDC.ModelType.JACKET));
+	public static final RegistryObject<Item> FUR_SHAWL_BLACK = regItem("shawl_fur_black", () -> new ArmorItemDC("shawl_fur_black", ArmorMaterials.LEATHER, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	public static final RegistryObject<Item> FUR_SHAWL_SILVER = regItem("shawl_fur_silver", () -> new ArmorItemDC("shawl_fur_silver", ArmorMaterials.LEATHER, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	public static final RegistryObject<Item> FUR_SHAWL_WHITE = regItem("shawl_fur_white", () -> new ArmorItemDC("shawl_fur_white", ArmorMaterials.LEATHER, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 
 	public static final RegistryObject<Item> FUR_LOINCLOTH = regItem("loincloth_fur",
-			() -> new ArmorItemDC("loincloth_fur", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT).setArmorName("loincloth_fur"));
+	    () -> new ArmorItemDC("loincloth_fur", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT).setArmorName("loincloth_fur"));
 	public static final RegistryObject<Item> FUR_LOINCLOTH_BLACK = regItem("loincloth_fur_black",
-			() -> new ArmorItemDC("loincloth_fur_black", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT).setArmorName("loincloth_fur_black"));
+	    () -> new ArmorItemDC("loincloth_fur_black", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT).setArmorName("loincloth_fur_black"));
 	public static final RegistryObject<Item> FUR_LOINCLOTH_SILVER = regItem("loincloth_fur_silver",
-			() -> new ArmorItemDC("loincloth_fur_silver", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT).setArmorName("loincloth_fur_silver"));
+	    () -> new ArmorItemDC("loincloth_fur_silver", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT).setArmorName("loincloth_fur_silver"));
 	public static final RegistryObject<Item> FUR_LOINCLOTH_WHITE = regItem("loincloth_fur_white",
-			() -> new ArmorItemDC("loincloth_fur_white", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT).setArmorName("loincloth_fur_white"));
+	    () -> new ArmorItemDC("loincloth_fur_white", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT).setArmorName("loincloth_fur_white"));
 
 	public static final RegistryObject<Item> HAT_LINEN = regItem("hat_linen", () -> new ArmorItemDC("hat_linen", MaterialsDC.LINEN, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAT));
 	public static final RegistryObject<Item> HAT_LINEN_RED = regItem("hat_linen_red", () -> new ArmorItemDC("hat_linen_red", MaterialsDC.LINEN, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAT));
@@ -342,186 +332,168 @@ public class CoreInit {
 	public static final RegistryObject<Item> HAT_CLOTH_GREEN = regItem("hat_cloth_green", () -> new ArmorItemDC("hat_cloth_green", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAT));
 
 	public static final RegistryObject<Item> HAIR_CLOTH = regItem("hair_cloth",
-			() -> new ArmorItemDC("hair_cloth", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_cloth", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_CLOTH_BLACK = regItem("hair_cloth_black",
-			() -> new ArmorItemDC("hair_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_CLOTH_RED = regItem("hair_cloth_red",
-			() -> new ArmorItemDC("hair_cloth_red", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_cloth_red", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_CLOTH_BLUE = regItem("hair_cloth_blue",
-			() -> new ArmorItemDC("hair_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 
 	public static final RegistryObject<Item> JACKET_LINEN = regItem("jacket_linen", () -> new ArmorItemDC("jacket_linen", MaterialsDC.LINEN, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 	public static final RegistryObject<Item> JACKET_LINEN_BLACK = regItem("jacket_linen_black",
-			() -> new ArmorItemDC("jacket_linen_black", MaterialsDC.LINEN, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	    () -> new ArmorItemDC("jacket_linen_black", MaterialsDC.LINEN, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 	public static final RegistryObject<Item> JACKET_LINEN_GRAY = regItem("jacket_linen_gray",
-			() -> new ArmorItemDC("jacket_linen_gray", MaterialsDC.LINEN, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	    () -> new ArmorItemDC("jacket_linen_gray", MaterialsDC.LINEN, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 	public static final RegistryObject<Item> JACKET_LINEN_BLUE = regItem("jacket_linen_blue",
-			() -> new ArmorItemDC("jacket_linen_blue", MaterialsDC.LINEN, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	    () -> new ArmorItemDC("jacket_linen_blue", MaterialsDC.LINEN, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 
 	public static final RegistryObject<Item> JACKET_CLOTH = regItem("jacket_cloth", () -> new ArmorItemDC("jacket_cloth", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 	public static final RegistryObject<Item> JACKET_CLOTH_BLACK = regItem("jacket_cloth_black",
-			() -> new ArmorItemDC("jacket_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	    () -> new ArmorItemDC("jacket_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 	public static final RegistryObject<Item> JACKET_CLOTH_GRAY = regItem("jacket_cloth_gray",
-			() -> new ArmorItemDC("jacket_cloth_gray", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	    () -> new ArmorItemDC("jacket_cloth_gray", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 	public static final RegistryObject<Item> JACKET_CLOTH_BLUE = regItem("jacket_cloth_blue",
-			() -> new ArmorItemDC("jacket_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	    () -> new ArmorItemDC("jacket_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 
 	public static final RegistryObject<Item> JACKET_WOOL = regItem("jacket_wool", () -> new ArmorItemDC("jacket_wool", MaterialsDC.WOOL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 	public static final RegistryObject<Item> JACKET_WOOL_CYAN = regItem("jacket_wool_cyan",
-			() -> new ArmorItemDC("jacket_wool_cyan", MaterialsDC.WOOL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	    () -> new ArmorItemDC("jacket_wool_cyan", MaterialsDC.WOOL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 	public static final RegistryObject<Item> JACKET_WOOL_LIGHTBLUE = regItem("jacket_wool_lightblue",
-			() -> new ArmorItemDC("jacket_wool_lightblue", MaterialsDC.WOOL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	    () -> new ArmorItemDC("jacket_wool_lightblue", MaterialsDC.WOOL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 	public static final RegistryObject<Item> JACKET_WOOL_RED = regItem("jacket_wool_red",
-			() -> new ArmorItemDC("jacket_wool_red", MaterialsDC.WOOL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
+	    () -> new ArmorItemDC("jacket_wool_red", MaterialsDC.WOOL, EquipmentSlot.CHEST, ArmorItemDC.ModelType.JACKET));
 
 	public static final RegistryObject<Item> TUNIC_CLOTH = regItem("tunic_cloth", () -> new ArmorItemDC("tunic_cloth", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.TUNIC));
-	public static final RegistryObject<Item> TUNIC_CLOTH_BLACK = regItem("tunic_cloth_black", () -> new ArmorItemDC("tunic_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.CHEST,
-			ArmorItemDC.ModelType.TUNIC));
-	public static final RegistryObject<Item> TUNIC_CLOTH_GREEN = regItem("tunic_cloth_green", () -> new ArmorItemDC("tunic_cloth_green", MaterialsDC.CLOTH, EquipmentSlot.CHEST,
-			ArmorItemDC.ModelType.TUNIC));
-	public static final RegistryObject<Item> TUNIC_CLOTH_ORANGE = regItem("tunic_cloth_orange", () -> new ArmorItemDC("tunic_cloth_orange", MaterialsDC.CLOTH, EquipmentSlot.CHEST,
-			ArmorItemDC.ModelType.TUNIC));
+	public static final RegistryObject<Item> TUNIC_CLOTH_BLACK = regItem("tunic_cloth_black", () -> new ArmorItemDC("tunic_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.TUNIC));
+	public static final RegistryObject<Item> TUNIC_CLOTH_GREEN = regItem("tunic_cloth_green", () -> new ArmorItemDC("tunic_cloth_green", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.TUNIC));
+	public static final RegistryObject<Item> TUNIC_CLOTH_ORANGE = regItem("tunic_cloth_orange", () -> new ArmorItemDC("tunic_cloth_orange", MaterialsDC.CLOTH, EquipmentSlot.CHEST, ArmorItemDC.ModelType.TUNIC));
 
 	public static final RegistryObject<Item> SHIRT_LINEN = regItem("shirt_linen", () -> new ArmorItemDC("shirt_linen", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
 	public static final RegistryObject<Item> SHIRT_LINEN_CYAN = regItem("shirt_linen_cyan",
-			() -> new ArmorItemDC("shirt_linen_cyan", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
+	    () -> new ArmorItemDC("shirt_linen_cyan", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
 	public static final RegistryObject<Item> SHIRT_LINEN_PINK = regItem("shirt_linen_pink",
-			() -> new ArmorItemDC("shirt_linen_pink", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
+	    () -> new ArmorItemDC("shirt_linen_pink", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
 	public static final RegistryObject<Item> SHIRT_LINEN_GREEN = regItem("shirt_linen_green",
-			() -> new ArmorItemDC("shirt_linen_green", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
+	    () -> new ArmorItemDC("shirt_linen_green", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
 
 	public static final RegistryObject<Item> SHIRT_CLOTH = regItem("shirt_cloth", () -> new ArmorItemDC("shirt_cloth", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
 	public static final RegistryObject<Item> SHIRT_CLOTH_BLACK = regItem("shirt_cloth_black",
-			() -> new ArmorItemDC("shirt_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
+	    () -> new ArmorItemDC("shirt_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
 	public static final RegistryObject<Item> SHIRT_CLOTH_RED = regItem("shirt_cloth_red", () -> new ArmorItemDC("shirt_cloth_red", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
 	public static final RegistryObject<Item> SHIRT_CLOTH_LIGHTBLUE = regItem("shirt_cloth_lightblue",
-			() -> new ArmorItemDC("shirt_cloth_lightblue", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
+	    () -> new ArmorItemDC("shirt_cloth_lightblue", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SHIRT));
 
 	public static final RegistryObject<Item> SKIRT_LINEN = regItem("skirt_linen", () -> new ArmorItemDC("skirt_linen", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> SKIRT_LINEN_PINK = regItem("skirt_linen_pink", () -> new ArmorItemDC("skirt_linen_pink", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> SKIRT_LINEN_GRAY = regItem("skirt_linen_gray", () -> new ArmorItemDC("skirt_linen_gray", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> SKIRT_LINEN_BLUE = regItem("skirt_linen_blue", () -> new ArmorItemDC("skirt_linen_blue", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> SKIRT_LINEN_GREEN = regItem("skirt_linen_green", () -> new ArmorItemDC("skirt_linen_green", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> SKIRT_LINEN_PINK = regItem("skirt_linen_pink", () -> new ArmorItemDC("skirt_linen_pink", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> SKIRT_LINEN_GRAY = regItem("skirt_linen_gray", () -> new ArmorItemDC("skirt_linen_gray", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> SKIRT_LINEN_BLUE = regItem("skirt_linen_blue", () -> new ArmorItemDC("skirt_linen_blue", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> SKIRT_LINEN_GREEN = regItem("skirt_linen_green", () -> new ArmorItemDC("skirt_linen_green", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
 
 	public static final RegistryObject<Item> PANTS_LINEN = regItem("pants_linen", () -> new ArmorItemDC("pants_linen", MaterialsDC.LINEN, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 	public static final RegistryObject<Item> PANTS_GREEN = regItem("pants_linen_green",
-			() -> new ArmorItemDC("pants_linen_green", MaterialsDC.LINEN, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
+	    () -> new ArmorItemDC("pants_linen_green", MaterialsDC.LINEN, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 	public static final RegistryObject<Item> PANTS_ORANGE = regItem("pants_linen_orange",
-			() -> new ArmorItemDC("pants_linen_orange", MaterialsDC.LINEN, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
+	    () -> new ArmorItemDC("pants_linen_orange", MaterialsDC.LINEN, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 	public static final RegistryObject<Item> PANTS_WHITE = regItem("pants_linen_white",
-			() -> new ArmorItemDC("pants_linen_white", MaterialsDC.LINEN, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
+	    () -> new ArmorItemDC("pants_linen_white", MaterialsDC.LINEN, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 
 	public static final RegistryObject<Item> PANTS_CLOTH = regItem("pants_cloth", () -> new ArmorItemDC("pants_cloth", MaterialsDC.CLOTH, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 	public static final RegistryObject<Item> PANTS_CLOTH_BLUE = regItem("pants_cloth_blue",
-			() -> new ArmorItemDC("pants_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
+	    () -> new ArmorItemDC("pants_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 	public static final RegistryObject<Item> PANTS_CLOTH_LIGHTBLUE = regItem("pants_cloth_lightblue",
-			() -> new ArmorItemDC("pants_cloth_lightblue", MaterialsDC.CLOTH, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
+	    () -> new ArmorItemDC("pants_cloth_lightblue", MaterialsDC.CLOTH, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 	public static final RegistryObject<Item> PANTS_CLOTH_GRAY = regItem("pants_cloth_gray",
-			() -> new ArmorItemDC("pants_cloth_gray", MaterialsDC.CLOTH, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
+	    () -> new ArmorItemDC("pants_cloth_gray", MaterialsDC.CLOTH, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 
 	public static final RegistryObject<Item> TIGHTS_WOOL = regItem("tights_knit", () -> new ArmorItemDC("tights_knit", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
-	public static final RegistryObject<Item> TIGHTS_WOOL_BLACK = regItem("tights_knit_black", () -> new ArmorItemDC("tights_knit_black", MaterialsDC.WOOL, EquipmentSlot.FEET,
-			ArmorItemDC.ModelType.LEGGINS));
-	public static final RegistryObject<Item> TIGHTS_WOOL_RED = regItem("tights_knit_red", () -> new ArmorItemDC("tights_knit_red", MaterialsDC.WOOL, EquipmentSlot.FEET,
-			ArmorItemDC.ModelType.LEGGINS));
-	public static final RegistryObject<Item> TIGHTS_WOOL_BLUE = regItem("tights_knit_blue", () -> new ArmorItemDC("tights_knit_blue", MaterialsDC.WOOL, EquipmentSlot.FEET,
-			ArmorItemDC.ModelType.LEGGINS));
+	public static final RegistryObject<Item> TIGHTS_WOOL_BLACK = regItem("tights_knit_black", () -> new ArmorItemDC("tights_knit_black", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
+	public static final RegistryObject<Item> TIGHTS_WOOL_RED = regItem("tights_knit_red", () -> new ArmorItemDC("tights_knit_red", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
+	public static final RegistryObject<Item> TIGHTS_WOOL_BLUE = regItem("tights_knit_blue", () -> new ArmorItemDC("tights_knit_blue", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 
 	public static final RegistryObject<Item> DRESS_LINEN = regItem("dress_linen", () -> new ArmorItemDC("dress_linen", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_LINEN_BLACK = regItem("dress_linen_black", () -> new ArmorItemDC("dress_linen_black", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_LINEN_GREEN = regItem("dress_linen_green", () -> new ArmorItemDC("dress_linen_green", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_LINEN_CYAN = regItem("dress_linen_cyan", () -> new ArmorItemDC("dress_linen_cyan", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_LINEN_MAGENTA = regItem("dress_linen_magenta", () -> new ArmorItemDC("dress_linen_magenta", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_LINEN_WHITE = regItem("dress_linen_white", () -> new ArmorItemDC("dress_linen_white", MaterialsDC.LINEN, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_LINEN_BLACK = regItem("dress_linen_black", () -> new ArmorItemDC("dress_linen_black", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_LINEN_GREEN = regItem("dress_linen_green", () -> new ArmorItemDC("dress_linen_green", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_LINEN_CYAN = regItem("dress_linen_cyan", () -> new ArmorItemDC("dress_linen_cyan", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_LINEN_MAGENTA = regItem("dress_linen_magenta", () -> new ArmorItemDC("dress_linen_magenta", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_LINEN_WHITE = regItem("dress_linen_white", () -> new ArmorItemDC("dress_linen_white", MaterialsDC.LINEN, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
 
 	public static final RegistryObject<Item> DRESS_CLOTH = regItem("dress_cloth", () -> new ArmorItemDC("dress_cloth", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_CLOTH_BLACK = regItem("dress_cloth_black", () -> new ArmorItemDC("dress_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_CLOTH_PINK = regItem("dress_cloth_pink", () -> new ArmorItemDC("dress_cloth_pink", MaterialsDC.CLOTH, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
-	public static final RegistryObject<Item> DRESS_CLOTH_LIGHTBLUE = regItem("dress_cloth_lightblue", () -> new ArmorItemDC("dress_cloth_lightblue", MaterialsDC.CLOTH, EquipmentSlot.LEGS,
-			ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_CLOTH_BLACK = regItem("dress_cloth_black", () -> new ArmorItemDC("dress_cloth_black", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_CLOTH_PINK = regItem("dress_cloth_pink", () -> new ArmorItemDC("dress_cloth_pink", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
+	public static final RegistryObject<Item> DRESS_CLOTH_LIGHTBLUE = regItem("dress_cloth_lightblue", () -> new ArmorItemDC("dress_cloth_lightblue", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SKIRT));
 
 	public static final RegistryObject<Item> LONG_MAID = regItem("dress_maid", () -> new ArmorItemDC("dress_maid", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
 	public static final RegistryObject<Item> LONG_MAID_BLACK = regItem("dress_maid_black",
-			() -> new ArmorItemDC("dress_maid_black", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
+	    () -> new ArmorItemDC("dress_maid_black", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
 	public static final RegistryObject<Item> LONG_MAID_GRAY = regItem("dress_maid_gray", () -> new ArmorItemDC("dress_maid_gray", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
 	public static final RegistryObject<Item> LONG_MAID_BROWN = regItem("dress_maid_brown",
-			() -> new ArmorItemDC("dress_maid_brown", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
+	    () -> new ArmorItemDC("dress_maid_brown", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.LONG));
 
 	public static final RegistryObject<Item> SUITS_LEATHER = regItem("suits_leather", () -> new ArmorItemDC("suits_leather", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 	public static final RegistryObject<Item> SUITS_LEATHER_BLACK = regItem("suits_leather_black",
-			() -> new ArmorItemDC("suits_leather_black", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
+	    () -> new ArmorItemDC("suits_leather_black", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 	public static final RegistryObject<Item> SUITS_LEATHER_BROWN = regItem("suits_leather_brown",
-			() -> new ArmorItemDC("suits_leather_brown", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
+	    () -> new ArmorItemDC("suits_leather_brown", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 	public static final RegistryObject<Item> SUITS_LEATHER_WHITE = regItem("suits_leather_white",
-			() -> new ArmorItemDC("suits_leather_white", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
+	    () -> new ArmorItemDC("suits_leather_white", ArmorMaterials.LEATHER, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 
 	public static final RegistryObject<Item> SUITS_CLOTH = regItem("suits_cloth", () -> new ArmorItemDC("suits_cloth", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 	public static final RegistryObject<Item> SUITS_CLOTH_GREEN = regItem("suits_cloth_green",
-			() -> new ArmorItemDC("suits_cloth_green", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
+	    () -> new ArmorItemDC("suits_cloth_green", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 	public static final RegistryObject<Item> SUITS_CLOTH_BROWN = regItem("suits_cloth_brown",
-			() -> new ArmorItemDC("suits_cloth_brown", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
+	    () -> new ArmorItemDC("suits_cloth_brown", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 	public static final RegistryObject<Item> SUITS_CLOTH_BLUE = regItem("suits_cloth_blue",
-			() -> new ArmorItemDC("suits_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
+	    () -> new ArmorItemDC("suits_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 
 	public static final RegistryObject<Item> HAIR_FLOWER_ASTER = regItem("hair_flower_aster",
-			() -> new ArmorItemDC("hair_flower_aster", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_aster", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_PYRETHRUM = regItem("hair_flower_pyrethrum",
-			() -> new ArmorItemDC("hair_flower_pyrethrum", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_pyrethrum", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_KONJAC = regItem("hair_flower_konjac",
-			() -> new ArmorItemDC("hair_flower_konjac", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_konjac", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_CHERRY = regItem("hair_flower_cherry",
-			() -> new ArmorItemDC("hair_flower_cherry", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_cherry", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_PLUM = regItem("hair_flower_plum",
-			() -> new ArmorItemDC("hair_flower_plum", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_plum", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_CAMELLIA = regItem("hair_flower_camellia",
-			() -> new ArmorItemDC("hair_flower_camellia", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_camellia", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_SCHIMA = regItem("hair_flower_schima",
-			() -> new ArmorItemDC("hair_flower_schima", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_schima", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_HEATH = regItem("hair_flower_heath",
-			() -> new ArmorItemDC("hair_flower_heath", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_heath", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_RHODODENDRON = regItem("hair_flower_rhododendron",
-			() -> new ArmorItemDC("hair_flower_rhododendron", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_rhododendron", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_LAVENDER = regItem("hair_flower_lavender",
-			() -> new ArmorItemDC("hair_flower_lavender", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_lavender", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_CROCUS = regItem("hair_flower_crocus",
-			() -> new ArmorItemDC("hair_flower_crocus", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_crocus", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_IRIS = regItem("hair_flower_iris",
-			() -> new ArmorItemDC("hair_flower_iris", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_iris", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_MALLOW = regItem("hair_flower_mallow",
-			() -> new ArmorItemDC("hair_flower_mallow", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_mallow", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_TROPICAL = regItem("hair_flower_tropical",
-			() -> new ArmorItemDC("hair_flower_tropical", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_tropical", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_BINDWEED = regItem("hair_flower_bindweed",
-			() -> new ArmorItemDC("hair_flower_bindweed", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_bindweed", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_MORNING = regItem("hair_flower_morning",
-			() -> new ArmorItemDC("hair_flower_morning", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_morning", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_OSMANTHUS = regItem("hair_flower_osmanthus",
-			() -> new ArmorItemDC("hair_flower_osmanthus", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_osmanthus", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_SPIRANTHES = regItem("hair_flower_spiranthes",
-			() -> new ArmorItemDC("hair_flower_spiranthes", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_spiranthes", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_CYMBIDIUM = regItem("hair_flower_cymbidium",
-			() -> new ArmorItemDC("hair_flower_cymbidium", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_cymbidium", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_CATTLEYA = regItem("hair_flower_cattleya",
-			() -> new ArmorItemDC("hair_flower_cattleya", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_cattleya", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_DELPHINIUM = regItem("hair_flower_delphinium",
-			() -> new ArmorItemDC("hair_flower_delphinium", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_delphinium", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_CLEMATIS = regItem("hair_flower_clematis",
-			() -> new ArmorItemDC("hair_flower_clematis", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_clematis", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_MONKSHOOD = regItem("hair_flower_monkshood",
-			() -> new ArmorItemDC("hair_flower_monkshood", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_monkshood", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_DAMASCHENA = regItem("hair_flower_damaschena",
-			() -> new ArmorItemDC("hair_flower_damaschena", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	    () -> new ArmorItemDC("hair_flower_damaschena", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 
 	public static final RegistryObject<Item> NULL_ITEM = regItem("null_item", () -> new NullItemDC("null_item"));
 	public static final RegistryObject<Item> ICON_HAC = regItem("icon_hac", () -> new NoTabItemDC("icon_hac"));
@@ -565,30 +537,21 @@ public class CoreInit {
 	public static final RegistryObject<Block> STONE_NATRON = regBlock("stone_natron", () -> new LayerStoneBlock("stone_natron"), TagDC.ItemTag.ORES_NATRON);
 
 	public static final RegistryObject<Block> ORE_WHITE = regBlock("ore_white", () -> new OreBlockGemDC(OREITEM_WHITE1, "ore_white").setSecondary(GEM_CRYSTAL), TagDC.ItemTag.ORES_WHITE);
-	public static final RegistryObject<Block> ORE_WHITE_DEEP = regBlock("ore_white_deep", () -> new OreBlockGemDC(OREITEM_WHITE2, "ore_white_deep")
-			.setSecondary(GEM_THUNDEREGG).setTier(2), TagDC.ItemTag.ORES_WHITE_DEEP);
-	public static final RegistryObject<Block> ORE_BLUE = regBlock("ore_blue", () -> new OreBlockGemDC(OREITEM_BLUE1, "ore_blue")
-			.setSecondary(() -> Items.LAPIS_LAZULI), TagDC.ItemTag.ORES_BLUE);
-	public static final RegistryObject<Block> ORE_BLUE_DEEP = regBlock("ore_blue_deep", () -> new OreBlockGemDC(OREITEM_BLUE2, "ore_blue_deep")
-			.setSecondary(GEM_CELESTITE).setTier(2), TagDC.ItemTag.ORES_BLUE_DEEP);
-	public static final RegistryObject<Block> ORE_BLACK = regBlock("ore_black", () -> new OreBlockGemDC(OREITEM_BLACK1, "ore_black")
-			.setSecondary(GEM_VIVIANITE), TagDC.ItemTag.ORES_BLACK);
-	public static final RegistryObject<Block> ORE_BLACK_DEEP = regBlock("ore_black_deep", () -> new OreBlockGemDC(OREITEM_BLACK2, "ore_black_deep")
-			.setSecondary(GEM_FANG).setTier(2), TagDC.ItemTag.ORES_BLACK_DEEP);
-	public static final RegistryObject<Block> ORE_RED = regBlock("ore_red", () -> new OreBlockGemDC(OREITEM_RED1, "ore_red")
-			.setSecondary(GEM_JASPER), TagDC.ItemTag.ORES_RED);
-	public static final RegistryObject<Block> ORE_RED_DEEP = regBlock("ore_red_deep", () -> new OreBlockGemDC(OREITEM_RED2, "ore_red_deep")
-			.setSecondary(GEM_ALMANDINE).setTier(2), TagDC.ItemTag.ORES_RED_DEEP);
-	public static final RegistryObject<Block> ORE_GREEN = regBlock("ore_green", () -> new OreBlockGemDC(OREITEM_GREEN1, "ore_green")
-			.setSecondary(GEM_MALACHITE), TagDC.ItemTag.ORES_GREEN);
-	public static final RegistryObject<Block> ORE_GREEN_DEEP = regBlock("ore_green_deep", () -> new OreBlockGemDC(OREITEM_GREEN2, "ore_green_deep")
-			.setSecondary(GEM_OLIVINE).setTier(2), TagDC.ItemTag.ORES_GREEN_DEEP);
+	public static final RegistryObject<Block> ORE_WHITE_DEEP = regBlock("ore_white_deep", () -> new OreBlockGemDC(OREITEM_WHITE2, "ore_white_deep").setSecondary(GEM_THUNDEREGG).setTier(2), TagDC.ItemTag.ORES_WHITE_DEEP);
+	public static final RegistryObject<Block> ORE_BLUE = regBlock("ore_blue", () -> new OreBlockGemDC(OREITEM_BLUE1, "ore_blue").setSecondary(() -> Items.LAPIS_LAZULI), TagDC.ItemTag.ORES_BLUE);
+	public static final RegistryObject<Block> ORE_BLUE_DEEP = regBlock("ore_blue_deep", () -> new OreBlockGemDC(OREITEM_BLUE2, "ore_blue_deep").setSecondary(GEM_CELESTITE).setTier(2), TagDC.ItemTag.ORES_BLUE_DEEP);
+	public static final RegistryObject<Block> ORE_BLACK = regBlock("ore_black", () -> new OreBlockGemDC(OREITEM_BLACK1, "ore_black").setSecondary(GEM_VIVIANITE), TagDC.ItemTag.ORES_BLACK);
+	public static final RegistryObject<Block> ORE_BLACK_DEEP = regBlock("ore_black_deep", () -> new OreBlockGemDC(OREITEM_BLACK2, "ore_black_deep").setSecondary(GEM_FANG).setTier(2), TagDC.ItemTag.ORES_BLACK_DEEP);
+	public static final RegistryObject<Block> ORE_RED = regBlock("ore_red", () -> new OreBlockGemDC(OREITEM_RED1, "ore_red").setSecondary(GEM_JASPER), TagDC.ItemTag.ORES_RED);
+	public static final RegistryObject<Block> ORE_RED_DEEP = regBlock("ore_red_deep", () -> new OreBlockGemDC(OREITEM_RED2, "ore_red_deep").setSecondary(GEM_ALMANDINE).setTier(2), TagDC.ItemTag.ORES_RED_DEEP);
+	public static final RegistryObject<Block> ORE_GREEN = regBlock("ore_green", () -> new OreBlockGemDC(OREITEM_GREEN1, "ore_green").setSecondary(GEM_MALACHITE), TagDC.ItemTag.ORES_GREEN);
+	public static final RegistryObject<Block> ORE_GREEN_DEEP = regBlock("ore_green_deep", () -> new OreBlockGemDC(OREITEM_GREEN2, "ore_green_deep").setSecondary(GEM_OLIVINE).setTier(2), TagDC.ItemTag.ORES_GREEN_DEEP);
 
 	public static final RegistryObject<Block> DUSTBLOCK_BRASS = regBlock("dustblock_brass", () -> new AlloyDustBlockDC("dustblock_brass"), TagDC.ItemTag.DUSTBLOCK_BRASS);
 	public static final RegistryObject<Block> DUSTBLOCK_BRONZE = regBlock("dustblock_bronze", () -> new AlloyDustBlockDC("dustblock_bronze"), TagDC.ItemTag.DUSTBLOCK_BRONZE);
 	public static final RegistryObject<Block> DUSTBLOCK_SILVER = regBlock("dustblock_silver", () -> new AlloyDustBlockDC("dustblock_silver"), TagDC.ItemTag.DUSTBLOCK_SILVER);
 	public static final RegistryObject<Block> DUSTBLOCK_NICKEL_SILVER = regBlock("dustblock_nickel_silver", () -> new AlloyDustBlockDC("dustblock_nickel_silver"),
-			TagDC.ItemTag.DUSTBLOCK_NICKEL_SILVER);
+	    TagDC.ItemTag.DUSTBLOCK_NICKEL_SILVER);
 	public static final RegistryObject<Block> DUSTBLOCK_ALUMINUM = regBlock("dustblock_aluminum", () -> new AlloyDustBlockDC("dustblock_aluminum"), TagDC.ItemTag.DUSTBLOCK_ALUMINUM);
 	public static final RegistryObject<Block> DUSTBLOCK_MAGNET = regBlock("dustblock_magnet", () -> new AlloyDustBlockDC("dustblock_magnet"), TagDC.ItemTag.DUSTBLOCK_MAGNET);
 	public static final RegistryObject<Block> DUSTBLOCK_BSCCO = regBlock("dustblock_bscco", () -> new AlloyDustBlockDC("dustblock_bscco"), TagDC.ItemTag.DUSTBLOCK_BSCCO);
@@ -603,7 +566,7 @@ public class CoreInit {
 	public static final RegistryObject<Block> METALBLOCK_BRONZE = regBlock("metalblock_bronze", () -> new MetalBlockDC("metalblock_bronze"), TagDC.ItemTag.METALBLOCK_BRONZE);
 	public static final RegistryObject<Block> METALBLOCK_SILVER = regBlock("metalblock_silver", () -> new MetalBlockDC("metalblock_silver"), TagDC.ItemTag.METALBLOCK_SILVER);
 	public static final RegistryObject<Block> METALBLOCK_NICKEL_SILVER = regBlock("metalblock_nickel_silver", () -> new MetalBlockDC("metalblock_nickel_silver"),
-			TagDC.ItemTag.METALBLOCK_NICKEL_SILVER);
+	    TagDC.ItemTag.METALBLOCK_NICKEL_SILVER);
 	public static final RegistryObject<Block> METALBLOCK_ALUMINUM = regBlock("metalblock_aluminum", () -> new MetalBlockDC("metalblock_aluminum"), TagDC.ItemTag.METALBLOCK_ALUMINUM);
 	public static final RegistryObject<Block> METALBLOCK_MAGNET = regBlock("metalblock_magnet", () -> new MetalBlockDC("metalblock_magnet"), TagDC.ItemTag.METALBLOCK_MAGNET);
 	public static final RegistryObject<Block> METALBLOCK_BSCCO = regBlock("metalblock_bscco", () -> new MetalBlockDC("metalblock_bscco"), TagDC.ItemTag.METALBLOCK_BSCCO);
@@ -665,47 +628,46 @@ public class CoreInit {
 	public static final RegistryObject<Block> BLOCK_RUBBER = regBlock("block_rubber", () -> new MetalBlockDC("block_rubber"), TagDC.ItemTag.BLOCK_RUBBER);
 
 	public static final RegistryObject<Block> CASTING_QUARTZ_RAW = regBlock("casting_mold_quartz_raw",
-			() -> new CastingMoldBlock("casting_mold_quartz_raw", CoreInit.DUST_CRYSTAL, true), null);
+	    () -> new CastingMoldBlock("casting_mold_quartz_raw", CoreInit.DUST_CRYSTAL, true), null);
 	public static final RegistryObject<Block> CASTING_QUARTZ = regBlock("casting_mold_quartz",
-			() -> new CastingMoldBlock("casting_mold_quartz", () -> Items.QUARTZ, false), null);
+	    () -> new CastingMoldBlock("casting_mold_quartz", () -> Items.QUARTZ, false), null);
 	public static final RegistryObject<Block> CASTING_TOURMARINE_RAW = regBlock("casting_mold_tourmarine_raw",
-			() -> new CastingMoldBlock("casting_mold_tourmarine_raw", CoreInit.DUST_ALUMINA, true), null);
+	    () -> new CastingMoldBlock("casting_mold_tourmarine_raw", CoreInit.DUST_ALUMINA, true), null);
 	public static final RegistryObject<Block> CASTING_TOURMARINE = regBlock("casting_mold_tourmarine",
-			() -> new CastingMoldBlock("casting_mold_tourmarine", CoreInit.GEM_TOURMALINE, false), null);
+	    () -> new CastingMoldBlock("casting_mold_tourmarine", CoreInit.GEM_TOURMALINE, false), null);
 
-	public static final RegistryObject<EntityType<ThrownHarpoon>> HARPOON = ENTITIES.register("harpoon", () -> EntityType.Builder.<ThrownHarpoon>of(ThrownHarpoon::new, MobCategory.MISC)
-			.sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("harpoon"));
+	public static final RegistryObject<EntityType<ThrownHarpoon>> HARPOON
+	    = ENTITIES.register("harpoon", () -> EntityType.Builder.<ThrownHarpoon> of(ThrownHarpoon::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("harpoon"));
 
-	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_CHOPSTICKS = ENTITIES.register("cutlery_chopsticks", () -> EntityType.Builder.<ObjectEntityBaseDC>of(
-			ObjectEntityBaseDC::new, MobCategory.MISC).sized(0.25F, 0.25F).updateInterval(5).build("cutlery_chopsticks"));
+	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_CHOPSTICKS = ENTITIES.register("cutlery_chopsticks", () -> EntityType.Builder.<ObjectEntityBaseDC> of(
+	    ObjectEntityBaseDC::new, MobCategory.MISC).sized(0.25F, 0.25F).updateInterval(5).build("cutlery_chopsticks"));
 
-	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_SPOON = ENTITIES.register("cutlery_spoon", () -> EntityType.Builder.<ObjectEntityBaseDC>of(ObjectEntityBaseDC::new,
-			MobCategory.MISC).sized(0.25F, 0.25F).updateInterval(5).build("cutlery_spoon"));
+	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_SPOON = ENTITIES.register("cutlery_spoon", () -> EntityType.Builder.<ObjectEntityBaseDC> of(ObjectEntityBaseDC::new,
+	    MobCategory.MISC).sized(0.25F, 0.25F).updateInterval(5).build("cutlery_spoon"));
 
-	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_FORK = ENTITIES.register("cutlery_fork", () -> EntityType.Builder.<ObjectEntityBaseDC>of(ObjectEntityBaseDC::new,
-			MobCategory.MISC).sized(0.25F, 0.25F).updateInterval(5).build("cutlery_fork"));
+	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_FORK = ENTITIES.register("cutlery_fork", () -> EntityType.Builder.<ObjectEntityBaseDC> of(ObjectEntityBaseDC::new,
+	    MobCategory.MISC).sized(0.25F, 0.25F).updateInterval(5).build("cutlery_fork"));
 
-	public static final RegistryObject<EntityType<ChairEntity>> CHAIR_ENTITY = ENTITIES.register("chair_entity", () -> EntityType.Builder.<ChairEntity>of(ChairEntity::new,
-			MobCategory.MISC).sized(0.5F, 0.1F).updateInterval(10).build("chair_entity"));
+	public static final RegistryObject<EntityType<ChairEntity>> CHAIR_ENTITY = ENTITIES.register("chair_entity", () -> EntityType.Builder.<ChairEntity> of(ChairEntity::new,
+	    MobCategory.MISC).sized(0.5F, 0.1F).updateInterval(10).build("chair_entity"));
 
 	// effect
 
-	public static final RegistryObject<MobEffect> COLD_RESISTANCE = regPotionEffect("effect_cold_resistance", () -> new MobEffectDC("effect_cold_resistance", MobEffectCategory.BENEFICIAL, 0x0050FF)
-			.setIconIndex(1, 1));
+	public static final RegistryObject<MobEffect> COLD_RESISTANCE = regPotionEffect("effect_cold_resistance", () -> new MobEffectDC("effect_cold_resistance", MobEffectCategory.BENEFICIAL, 0x0050FF).setIconIndex(1, 1));
 	public static final RegistryObject<Potion> COLD_RES_POTION = regPotion("cold_resistance", () -> new Potion("cold_resistance", new MobEffectInstance(COLD_RESISTANCE.get(), 3600)));
 	public static final RegistryObject<Potion> COLD_RES_LONG = regPotion("long_cold_resistance", () -> new Potion("long_cold_resistance", new MobEffectInstance(COLD_RESISTANCE.get(), 9600)));
 
 	public static final RegistryObject<MobEffect> BIRD = regPotionEffect("effect_bird", () -> new MobEffectBird(false, "effect_bird", MobEffectCategory.BENEFICIAL, 0xFFD050).setIconIndex(1, 0));
 	public static final RegistryObject<MobEffect> FISH = regPotionEffect("effect_fish", () -> new MobEffectBird(true, "effect_fish", MobEffectCategory.BENEFICIAL, 0x5080FF).setIconIndex(2, 0));
-	public static final RegistryObject<MobEffect> NIMBLE = regPotionEffect("effect_nimble", () -> new MobEffectDC("effect_nimble", MobEffectCategory.BENEFICIAL, 0xFF90E0).setIconIndex(2, 1)
-			.addAttributeModifier(Attributes.ATTACK_SPEED, MobEffectDC.ATTACK_SPEED_MODIFIER.toString(), 0.25F, AttributeModifier.Operation.ADDITION));
-	public static final RegistryObject<MobEffect> HEAVY = regPotionEffect("effect_heavyboots", () -> new MobEffectDC("effect_heavyboots", MobEffectCategory.BENEFICIAL, 0x00D050).setIconIndex(0, 1)
-			.addAttributeModifier(Attributes.KNOCKBACK_RESISTANCE, MobEffectDC.NOCKBACK_MODIFIER.toString(), 0.2F, AttributeModifier.Operation.ADDITION));
+	public static final RegistryObject<MobEffect> NIMBLE = regPotionEffect("effect_nimble", () -> new MobEffectDC("effect_nimble", MobEffectCategory.BENEFICIAL, 0xFF90E0).setIconIndex(2, 1).addAttributeModifier(Attributes.ATTACK_SPEED,
+	    MobEffectDC.ATTACK_SPEED_MODIFIER.toString(), 0.25F, AttributeModifier.Operation.ADDITION));
+	public static final RegistryObject<MobEffect> HEAVY
+	    = regPotionEffect("effect_heavyboots", () -> new MobEffectDC("effect_heavyboots", MobEffectCategory.BENEFICIAL, 0x00D050).setIconIndex(0, 1).addAttributeModifier(Attributes.KNOCKBACK_RESISTANCE,
+	        MobEffectDC.NOCKBACK_MODIFIER.toString(), 0.2F, AttributeModifier.Operation.ADDITION));
 	public static final RegistryObject<MobEffect> TRACER = regPotionEffect("effect_tracer", () -> new MobEffectDC("effect_tracer", MobEffectCategory.BENEFICIAL, 0x500050).setIconIndex(2, 2));
 	public static final RegistryObject<MobEffect> CLAIR = regPotionEffect("effect_clairvoyance", () -> new MobEffectFlag("effect_clairvoyance", MobEffectCategory.BENEFICIAL, 0x90A0E0).setIconIndex(0,
-			2));
-	public static final RegistryObject<MobEffect> PROJ_RESISTANCE = regPotionEffect("effect_proj_resistance", () -> new MobEffectFlag("effect_proj_resistance", MobEffectCategory.BENEFICIAL, 0xA0A0A0)
-			.setIconIndex(3, 0));
+	    2));
+	public static final RegistryObject<MobEffect> PROJ_RESISTANCE = regPotionEffect("effect_proj_resistance", () -> new MobEffectFlag("effect_proj_resistance", MobEffectCategory.BENEFICIAL, 0xA0A0A0).setIconIndex(3, 0));
 
 	public static final RegistryObject<MobEffect> WET = regPotionEffect("effect_wet", () -> new MobEffectDC("effect_wet", MobEffectCategory.NEUTRAL, 0x90E0FF).setIconIndex(1, 2));
 	public static final RegistryObject<MobEffect> FLAG = regPotionEffect("effect_flag", () -> new MobEffectFlag("effect_flag", MobEffectCategory.NEUTRAL, 0xFF0050).setIconIndex(3, 2));
@@ -713,49 +675,18 @@ public class CoreInit {
 
 	public static final WaterTypeFluidDC BRINE = new WaterTypeFluidDC("brine", 0xE000F0C0);
 	public static final WaterTypeFluidDC HOTSPRING = new WaterTypeFluidDC("hotspring", 0xFFAEFFDE, 353);
-	public static final WaterTypeFluidDC PLANT_OIL = new WaterTypeFluidDC("plant_oil", 0xFFAFC000, FluidType.Properties.create()
-			.canSwim(false)
-			.fallDistanceModifier(0F)
-			.motionScale(0.007D)
-			.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-			.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
-			.sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
-			.canHydrate(false)
-			.density(900)
-			.viscosity(6000)
-			.temperature(298));
-	public static final WaterTypeFluidDC USED_PLANT_OIL = new WaterTypeFluidDC("used_plant_oil", 0xFFA08020, FluidType.Properties.create()
-			.canSwim(false)
-			.fallDistanceModifier(0F)
-			.motionScale(0.007D)
-			.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-			.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
-			.sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
-			.canHydrate(false)
-			.density(900)
-			.viscosity(6000)
-			.temperature(298));
-	public static final WaterTypeFluidDC FUEL_OIL = new WaterTypeFluidDC("fuel_oil", 0xFFF8E000, FluidType.Properties.create()
-			.canSwim(false)
-			.fallDistanceModifier(0F)
-			.motionScale(0.007D)
-			.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-			.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
-			.sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
-			.canHydrate(false)
-			.density(800)
-			.viscosity(1500)
-			.temperature(298));
-	public static final WaterTypeFluidDC SPARKLING = new WaterTypeFluidDC("sparkling", 0xFF40B0FF, FluidType.Properties.create()
-			.fallDistanceModifier(0F)
-			.canExtinguish(true)
-			.canConvertToSource(true)
-			.supportsBoating(true)
-			.sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-			.sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
-			.sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
-			.canHydrate(true)
-			.temperature(283), "fluid/sparkling_still");
+	public static final WaterTypeFluidDC PLANT_OIL
+	    = new WaterTypeFluidDC("plant_oil", 0xFFAFC000, FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY,
+	        SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(900).viscosity(6000).temperature(298));
+	public static final WaterTypeFluidDC USED_PLANT_OIL
+	    = new WaterTypeFluidDC("used_plant_oil", 0xFFA08020, FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY,
+	        SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(900).viscosity(6000).temperature(298));
+	public static final WaterTypeFluidDC FUEL_OIL
+	    = new WaterTypeFluidDC("fuel_oil", 0xFFF8E000, FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY,
+	        SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(800).viscosity(1500).temperature(298));
+	public static final WaterTypeFluidDC SPARKLING
+	    = new WaterTypeFluidDC("sparkling", 0xFF40B0FF, FluidType.Properties.create().fallDistanceModifier(0F).canExtinguish(true).canConvertToSource(true).supportsBoating(true).sound(SoundActions.BUCKET_FILL,
+	        SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(true).temperature(283), "fluid/sparkling_still");
 
 	public static final GasTypeFluidDC AIR = new GasTypeFluidDC("compressed_air", 0xC040B0FF, false, "fluid/sparkling_still");
 
@@ -817,21 +748,21 @@ public class CoreInit {
 	}
 
 	public static final RegistryObject<RecipeType<DummySmelting>> SMELTING = RECIPE_TYPE.register("climate_smelting", () -> new RecipeType<DummySmelting>() {});
-	public static final RegistryObject<RecipeSerializer<DummySmelting>> SMELTING_SEREALIZER = RECIPE_SEREALIZER.register("climate_smelting", () -> new DummySmeltingSerealizer());
+	public static final RegistryObject<RecipeSerializer<DummySmelting>> SMELTING_SEREALIZER = RECIPE_SEREALIZER.register("climate_smelting", DummySmeltingSerealizer::new);
 
 	public static final RegistryObject<RecipeType<DummyDeviceRecipe>> DEVICE_RECIPE = RECIPE_TYPE.register("device_recipe", () -> new RecipeType<DummyDeviceRecipe>() {});
-	public static final RegistryObject<RecipeSerializer<DummyDeviceRecipe>> DEVICE_RECIPE_SEREALIZER = RECIPE_SEREALIZER.register("device_recipe", () -> new DummyDeviceRecipeSerealizer());
+	public static final RegistryObject<RecipeSerializer<DummyDeviceRecipe>> DEVICE_RECIPE_SEREALIZER = RECIPE_SEREALIZER.register("device_recipe", DummyDeviceRecipeSerealizer::new);
 
 	public static final RegistryObject<RecipeType<DummyFuel>> DEVICE_FUEL = RECIPE_TYPE.register("device_fuel", () -> new RecipeType<DummyFuel>() {});
-	public static final RegistryObject<RecipeSerializer<DummyFuel>> DEVICE_FUEL_SEREALIZER = RECIPE_SEREALIZER.register("device_fuel", () -> new DummyFuelSerealizer());
+	public static final RegistryObject<RecipeSerializer<DummyFuel>> DEVICE_FUEL_SEREALIZER = RECIPE_SEREALIZER.register("device_fuel", DummyFuelSerealizer::new);
 
 	public static final RegistryObject<RecipeType<FlavorCustomRecipe>> FLAVOR = RECIPE_TYPE.register("food_customize", () -> new RecipeType<FlavorCustomRecipe>() {});
 	public static final RegistryObject<RecipeSerializer<FlavorCustomRecipe>> FLAVOR_SEREALIZER = RECIPE_SEREALIZER.register("food_customize",
-			() -> new SimpleRecipeSerializer<>(FlavorCustomRecipe::new));
+	    () -> new SimpleRecipeSerializer<>(FlavorCustomRecipe::new));
 
 	public static final RegistryObject<RecipeType<ClearEnchantmrntRecipe>> CLEAR_ENCHANTMENT = RECIPE_TYPE.register("clear_enchantment", () -> new RecipeType<ClearEnchantmrntRecipe>() {});
 	public static final RegistryObject<RecipeSerializer<ClearEnchantmrntRecipe>> CLEAR_ENCHANTMENT_SEREALIZER = RECIPE_SEREALIZER.register("clear_enchantment",
-			() -> new SimpleRecipeSerializer<>(ClearEnchantmrntRecipe::new));
+	    () -> new SimpleRecipeSerializer<>(ClearEnchantmrntRecipe::new));
 
 	public static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> register(String name, MenuType.MenuSupplier<T> supplier) {
 		return MENU_TYPE.register(name, () -> new MenuType<>(supplier));

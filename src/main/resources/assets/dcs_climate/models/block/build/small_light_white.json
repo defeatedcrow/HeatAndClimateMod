@@ -1,0 +1,8 @@
+{
+	"parent": "dcs_climate:block/build/small_light_black",
+    "textures": {
+        "light": "dcs_climate:block/build/lamp_chal",
+        "frame": "dcs_climate:block/build/window_frame_white",
+        "particle": "dcs_climate:block/build/window_frame_white"
+    }
+}

@@ -79,7 +79,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 		cropType = f;
 		cropTier = t;
 		defoliation = isDefoliation;
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.FLAG, false).setValue(DCState.DIST, Integer.valueOf(0)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, 0).setValue(DCState.FLAG, false).setValue(DCState.DIST, 0));
 	}
 
 	public LeavesCropBlockDC setSeason(EnumSeason flower, EnumSeason crop) {
@@ -98,29 +98,26 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	public List<JsonModelDC> getBlockModel() {
 		if (defoliation) {
 			return ImmutableList.of(
-					new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_spr")),
-					new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_smr")),
-					new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_aut")),
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_wtr")),
-					new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_f")),
-					new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_c")));
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_spr")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_smr")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_aut")),
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_wtr")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_f")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_c")));
 		} else {
 			return ImmutableList.of(
-					new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
-					new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
-					new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
-					new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_d")),
-					new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_f")),
-					new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_c")));
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_d")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_f")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_c")));
 		}
 	}
 
 	@Override
 	public List<String> getModelNameSuffix() {
-		if (defoliation)
-			return Lists.newArrayList("0", "1", "2", "3", "4", "5");
-		else
-			return Lists.newArrayList("0", "0", "0", "d", "f", "c");
+		return defoliation ? Lists.newArrayList("0", "1", "2", "3", "4", "5") : Lists.newArrayList("0", "0", "0", "d", "f", "c");
 	}
 
 	@Override
@@ -371,12 +368,12 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	@Override
 	public BlockState getGrownState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(5));
+		return state.setValue(DCState.STAGE6, 5);
 	}
 
 	@Override
 	public BlockState getFlowerState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(4));
+		return state.setValue(DCState.STAGE6, 4);
 	}
 
 	@Override
@@ -386,7 +383,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	@Override
 	public BlockState getFailureState(BlockState state) {
-		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(3));
+		return this.defaultBlockState().setValue(DCState.STAGE6, 3);
 	}
 
 	@Override
@@ -445,17 +442,10 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 		}
 		// 寒すぎる場合
 		if (tooCold(climate.getHeat())) {
-			int cur = DCState.getInt(state, DCState.STAGE6);
-			if (cur == EnumSeason.AUTUMN_EARLY.getSeasonLimitedID())
-				return EnumSeason.WINTER_EARLY.getSeasonLimitedID();
-			else
-				return EnumSeason.AUTUMN_EARLY.getSeasonLimitedID();
+			return EnumSeason.WINTER_EARLY.getSeasonLimitedID();
 		}
 
-		if (defoliation)
-			return season.getSeasonLimitedID();
-		else
-			return 0; // 春固定
+		return defoliation ? season.getSeasonLimitedID() : 0; // 春固定
 	}
 
 	private boolean tooHot(DCHeatTier heat) {

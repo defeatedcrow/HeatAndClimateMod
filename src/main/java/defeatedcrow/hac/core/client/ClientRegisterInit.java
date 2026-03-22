@@ -285,6 +285,7 @@ import defeatedcrow.hac.machine.client.entity.TileRendererSink;
 import defeatedcrow.hac.machine.client.entity.TileRendererStoneMill;
 import defeatedcrow.hac.machine.client.entity.TileRendererStormglass;
 import defeatedcrow.hac.machine.client.entity.TileRendererTeaPot;
+import defeatedcrow.hac.machine.client.entity.TileRendererWaterBasin;
 import defeatedcrow.hac.machine.client.entity.TileRendererWaterPump;
 import defeatedcrow.hac.machine.client.entity.WaterPumpModel;
 import defeatedcrow.hac.machine.material.MachineInit;
@@ -481,19 +482,19 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(CutlerySpoonItem.SPOON.getLayerLocation(), CutleryModel::createLayer);
 		event.registerLayerDefinition(CutleryForkItem.FORK.getLayerLocation(), CutleryModel::createLayer);
 
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.BOOTS.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.45F)));
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.LEGGINS.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.35F)));
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.SHIRT.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.45F)));
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.JACKET.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.5F)));
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.OVERSUITS.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.5F)));
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.SUITS.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.4F)));
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.HAT.getLayerLocation(), () -> ModelThinArmor.createHatMesh());
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.HAIR.getLayerLocation(), () -> ModelThinArmor.createHairMesh());
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.LONG.getLayerLocation(), () -> ModelThinArmor.createLongMesh());
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.SKIRT.getLayerLocation(), () -> ModelThinArmor.createSkirtMesh());
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.TUNIC.getLayerLocation(), () -> ModelThinArmor.createTunicMesh());
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.WING.getLayerLocation(), () -> ModelMagicWing.createWingMesh());
-		event.registerLayerDefinition(EntityModelLoader.INSTANCE.FIN.getLayerLocation(), () -> ModelMagicFin.createFinMesh());
+		event.registerLayerDefinition(EntityModelLoader.BOOTS.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.45F)));
+		event.registerLayerDefinition(EntityModelLoader.LEGGINS.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.35F)));
+		event.registerLayerDefinition(EntityModelLoader.SHIRT.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.45F)));
+		event.registerLayerDefinition(EntityModelLoader.JACKET.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.5F)));
+		event.registerLayerDefinition(EntityModelLoader.OVERSUITS.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.5F)));
+		event.registerLayerDefinition(EntityModelLoader.SUITS.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.4F)));
+		event.registerLayerDefinition(EntityModelLoader.HAT.getLayerLocation(), ModelThinArmor::createHatMesh);
+		event.registerLayerDefinition(EntityModelLoader.HAIR.getLayerLocation(), ModelThinArmor::createHairMesh);
+		event.registerLayerDefinition(EntityModelLoader.LONG.getLayerLocation(), ModelThinArmor::createLongMesh);
+		event.registerLayerDefinition(EntityModelLoader.SKIRT.getLayerLocation(), ModelThinArmor::createSkirtMesh);
+		event.registerLayerDefinition(EntityModelLoader.TUNIC.getLayerLocation(), ModelThinArmor::createTunicMesh);
+		event.registerLayerDefinition(EntityModelLoader.WING.getLayerLocation(), ModelMagicWing::createWingMesh);
+		event.registerLayerDefinition(EntityModelLoader.FIN.getLayerLocation(), ModelMagicFin::createFinMesh);
 
 		event.registerLayerDefinition(RenderBindPlant.PLANT.getLayerLocation(), ChairBindModel::createBodyLayer);
 		event.registerLayerDefinition(RenderLightCauldron.TEX.getLayerLocation(), LightCauldronModel::createBodyLayer);
@@ -942,6 +943,7 @@ public class ClientRegisterInit {
 		event.registerBlockEntityRenderer(MachineInit.FLUID_SINK_TILE.get(), TileRendererSink::new);
 		event.registerBlockEntityRenderer(MachineInit.PORTABLE_CAN_TILE.get(), TileRendererPortableCan::new);
 		event.registerBlockEntityRenderer(MachineInit.IBC_TILE.get(), TileRendererIBC::new);
+		event.registerBlockEntityRenderer(MachineInit.WATER_BASIN_TILE.get(), TileRendererWaterBasin::new);
 		event.registerBlockEntityRenderer(MachineInit.COOKING_POT_TILE.get(), TileRendererCookingPot::new);
 		event.registerBlockEntityRenderer(MachineInit.TEA_POT_TILE.get(), TileRendererTeaPot::new);
 		event.registerBlockEntityRenderer(MachineInit.FERMENTATION_JAR_TILE.get(), TileRendererFermentationJar::new);
@@ -1090,9 +1092,7 @@ public class ClientRegisterInit {
 		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getStillFluid().get(), RenderType.translucent());
 		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getFlowingFluid().get(), RenderType.translucent());
 
-		ItemProperties.register(CoreInit.HARPOON_FLINT.get(), new ResourceLocation("throwing"), (stack, level, living, i) -> {
-			return living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F;
-		});
+		ItemProperties.register(CoreInit.HARPOON_FLINT.get(), new ResourceLocation("throwing"), (stack, level, living, i) -> (living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F));
 
 		ItemProperties.register(CoreInit.FISHING_ROD_STEEL.get(), new ResourceLocation("cast"), (stack, level, living, i) -> {
 			if (living == null) {

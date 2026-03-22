@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/cornmeal"
+    },
+    {
+      "tag": "forge:ingredients/milks"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:dusts/baking_soda"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/bread_corn_raw"
+  }
+}

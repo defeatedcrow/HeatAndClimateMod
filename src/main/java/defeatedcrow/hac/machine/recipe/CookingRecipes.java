@@ -19,6 +19,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.fluids.FluidStack;
 
+//@formatter:off
 public class CookingRecipes {
 	public static CookingRecipes INSTANCE = new CookingRecipes() {};
 
@@ -29,8 +30,6 @@ public class CookingRecipes {
 		List<DCHumidity> e_hum = ImmutableList.of();
 		List<DCAirflow> e_air = ImmutableList.of();
 		List<String> tags = ImmutableList.of();
-
-//		@formatter:off
 		
 		// foods
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.PORRIDGE.get(), 2), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
@@ -64,6 +63,9 @@ public class CookingRecipes {
 
 		DeviceRecipeList.addCookingRecipe(4, RecipeTypeDC.COOKING, new ItemStack(FoodInit.PORRIDGE_MILK.get(), 2), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.MILKS), Ingredient.of(TagDC.ItemTag.DUST_PSEUDOCEREALS), Ingredient.of(TagDC.ItemTag.SUGARS)));
+		
+		DeviceRecipeList.addCookingRecipe(5, RecipeTypeDC.COOKING, new ItemStack(FoodInit.PORRIDGE_MILK.get(), 2), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.MILKS), Ingredient.of(TagDC.ItemTag.DUST_CORNMEAL), Ingredient.of(TagDC.ItemTag.SUGARS)));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.PORRIDGE_SAFFRON.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.DUST_BARLEY), Ingredient.of(TagDC.ItemTag.BONE_COW),
@@ -802,6 +804,14 @@ public class CookingRecipes {
 		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_CHEESE.get(), 4), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				ImmutableList.of(Tags.Fluids.MILK.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.RENNET)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_FRESH_CHEESE.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+			tags,
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.COW_MILK), Ingredient.of(TagDC.ItemTag.CROP_CITRUS)));
+
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_FRESH_CHEESE.get(), 4), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+			ImmutableList.of(Tags.Fluids.MILK.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_CITRUS)));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.FOOD_TOFU.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				tags,

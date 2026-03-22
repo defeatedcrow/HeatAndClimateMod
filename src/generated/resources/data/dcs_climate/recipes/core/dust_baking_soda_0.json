@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dusts/trona"
+    },
+    {
+      "tag": "forge:dusts/lime"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/dust_baking_soda"
+  }
+}

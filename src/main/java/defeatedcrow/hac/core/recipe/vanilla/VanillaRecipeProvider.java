@@ -803,6 +803,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(TagDC.ItemTag.WATER)
 				.unlockedBy("has_ore_gypsum", has(TagDC.ItemTag.ORES_GYPSUM))
 				.save(cons, "dcs_climate:build/mortar_2");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.DITCH.get(), 3)
+				.pattern("X X")
+				.pattern("XXX")
+				.define('X', BuildInit.MORTAR.get())
+				.unlockedBy("has_mortar_block", has(BuildInit.MORTAR.get()))
+				.save(cons, "dcs_climate:core/ditch_block");
 
 		ShapedRecipeBuilder.shaped(BuildInit.CLAYBRICKS_BLACK.get(), 4)
 				.pattern("XX")
@@ -1138,6 +1145,27 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('Y', BuildInit.CHAL_LAMP.get())
 				.unlockedBy("has_chal_lamp", has(BuildInit.CHAL_LAMP.get()))
 				.save(cons, "dcs_climate:build/chalcedony_lamp_glass");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.DOWNLIGHT_WOOD.get(), 1)
+				.pattern(" X ")
+				.pattern("XYX")
+				.pattern(" X ")
+				.define('X', Tags.Items.RODS_WOODEN)
+				.define('Y', BuildInit.CHAL_LAMP.get())
+				.unlockedBy("has_chal_lamp", has(BuildInit.CHAL_LAMP.get()))
+				.save(cons, "dcs_climate:build/downlight_wood");
+		
+		ShapelessRecipeBuilder.shapeless(BuildInit.DOWNLIGHT_WHITE.get(), 1)
+				.requires(Tags.Items.DYES_WHITE)
+				.requires(BuildInit.DOWNLIGHT_WOOD.get())
+				.unlockedBy("has_downlight", has(BuildInit.DOWNLIGHT_WOOD.get()))
+				.save(cons, "dcs_climate:build/downlight_white");
+		
+		ShapelessRecipeBuilder.shapeless(BuildInit.DOWNLIGHT_BLACK.get(), 1)
+				.requires(Tags.Items.DYES_BLACK)
+				.requires(BuildInit.DOWNLIGHT_WOOD.get())
+				.unlockedBy("has_downlight", has(BuildInit.DOWNLIGHT_WOOD.get()))
+				.save(cons, "dcs_climate:build/downlight_black");
 
 		ShapedRecipeBuilder.shaped(BuildInit.CHAL_LAMP_TABLE.get(), 1)
 				.pattern(" X ")
@@ -2331,6 +2359,12 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(CoreInit.CASTING_TOURMARINE.get())
 				.unlockedBy("has_casting_tourmarine", has(CoreInit.CASTING_TOURMARINE.get()))
 				.save(cons, "dcs_climate:core/casting_tourmarine_open_0");
+		
+		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_BAKING_SODA.get(), 1)
+				.requires(TagDC.ItemTag.DUST_TRONA)
+				.requires(TagDC.ItemTag.DUST_LIME)
+				.unlockedBy("has_dust_trona", has(TagDC.ItemTag.DUST_TRONA))
+				.save(cons, "dcs_climate:core/dust_baking_soda_0");
 
 		// vanilla another
 

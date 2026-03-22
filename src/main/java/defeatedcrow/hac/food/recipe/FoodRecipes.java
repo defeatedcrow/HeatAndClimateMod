@@ -22,6 +22,7 @@ public class FoodRecipes {
 		ImmutableList.Builder<Smelting> list = ImmutableList.builder();
 		list.add(new Smelting(FoodInit.BREAD_ROUND_BAKED_ITEM, FoodInit.BREAD_ROUND_RAW_ITEM, 120));
 		list.add(new Smelting(FoodInit.BREAD_SQUARE_BAKED_ITEM, FoodInit.BREAD_SQUARE_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.BREAD_CORN_BAKED_ITEM, FoodInit.BREAD_CORN_RAW_ITEM, 120));
 		list.add(new Smelting(FoodInit.BREAD_NUTS_BAKED_ITEM, FoodInit.BREAD_NUTS_RAW_ITEM, 120));
 		list.add(new Smelting(FoodInit.BREAD_CINNAMON_BAKED_ITEM, FoodInit.BREAD_CINNAMON_RAW_ITEM, 120));
 		list.add(new Smelting(FoodInit.BREAD_ANKO_BAKED_ITEM, FoodInit.BREAD_ANKO_RAW_ITEM, 120));
@@ -80,11 +81,11 @@ public class FoodRecipes {
 	}
 
 	public record Smelting(
-			Supplier<Item> output,
-			Supplier<Item> input, int time) {}
+	    Supplier<Item> output,
+	    Supplier<Item> input, int time) {}
 
 	public record SmeltingBlock(
-			Supplier<Block> output,
-			Supplier<TagKey<Item>> input, int time) {}
+	    Supplier<Block> output,
+	    Supplier<TagKey<Item>> input, int time) {}
 
 }

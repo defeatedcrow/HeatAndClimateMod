@@ -101,6 +101,7 @@
   "item.dcs_climate.main.dust_diamond":"Diamond Dust",
   "item.dcs_climate.main.dust_lime":"Lime Dust",
   "item.dcs_climate.main.dust_trona":"Trona",
+  "item.dcs_climate.main.dust_baking_soda":"Baking Soda",
   "item.dcs_climate.main.dust_borax":"Borax",
   "item.dcs_climate.main.dust_lithium":"Lithium Dust",
   "item.dcs_climate.main.dust_ash":"Ash",
@@ -458,6 +459,7 @@
   "item.dcs_climate.food.food_butter":"Butter",
   "item.dcs_climate.food.food_margarine":"Margarine",
   "item.dcs_climate.food.food_cheese":"Cheese",
+  "item.dcs_climate.food.food_fresh_cheese":"Fresh Cheese",
   "item.dcs_climate.food.food_offal":"Offal",
   "item.dcs_climate.food.food_gelatine":"Gelatine",
   "item.dcs_climate.food.food_rennet":"Rennet",
@@ -616,6 +618,8 @@
   "item.dcs_climate.food.bread_flat_baked":"Flatbread",
   "item.dcs_climate.food.bread_tortilla_raw":"Raw Tortilla",
   "item.dcs_climate.food.bread_tortilla_baked":"Tortilla",
+  "item.dcs_climate.food.bread_corn_raw":"Raw Cornbread",
+  "item.dcs_climate.food.bread_corn_baked":"Cornbread",
   "item.dcs_climate.food.bread_nuts_raw":"Fruit & Nut Bread Dough",
   "item.dcs_climate.food.bread_nuts_baked":"Fruit & Nut Bread",
   "item.dcs_climate.food.bread_cinnamon_raw":"Cinnamon Roll Dough",
@@ -1800,6 +1804,10 @@
   "block.dcs_climate.build.glass_crystal":"Quartz Glass",
   "block.dcs_climate.build.glass_light":"Iluminous Quartz Glass",
   "block.dcs_climate.build.glass_dark":"Blackout Quartz Glass",
+  
+  "block.dcs_climate.build.small_light_wood":"Downlight",
+  "block.dcs_climate.build.small_light_white":"White Downlight",
+  "block.dcs_climate.build.small_light_black":"Black Downlight",
 
   "block.dcs_climate.build.chal_lamp":"Chaccedony Light Block",
   "block.dcs_climate.build.chal_lamp_glass":"Chalcedony Glass Light",
@@ -1904,6 +1912,8 @@
   "block.dcs_climate.build.display_shelf_iron":"Metal Display Shelf",
   "block.dcs_climate.build.display_shelf_lab":"White Display Shelf",
   "block.dcs_climate.build.display_shelf_glass":"Glass Display Shelf",
+  
+  "block.dcs_climate.build.ditch":"Mortar Ditch",
 
     "## machine":"",
 
@@ -2006,6 +2016,7 @@
   "block.dcs_climate.machine.reflective_sensor":"Retro-reflective Sensor",
   "block.dcs_climate.machine.entity_camera":"Entity Detector Camera",
   "block.dcs_climate.machine.auto_milker":"Auto Milker",
+  "block.dcs_climate.machine.water_basin":"Water Intake Basin",
 
     "## magic":"",
 

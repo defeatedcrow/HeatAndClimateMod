@@ -1,0 +1,75 @@
+{
+    "parent": "block/block",
+    "render_type": "cutout",
+    "textures": {
+        "mortar": "dcs_climate:block/build/mortar",
+        "top": "dcs_climate:block/build/plate_grating",
+        "particle": "dcs_climate:block/build/mortar"
+    },
+    "elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 2, 16],
+			"faces": {
+				"north": {"uv": [0, 14, 16, 16], "texture": "#mortar"},
+				"east": {"uv": [0, 14, 16, 16], "texture": "#mortar"},
+				"south": {"uv": [0, 14, 16, 16], "texture": "#mortar"},
+				"west": {"uv": [0, 14, 16, 16], "texture": "#mortar"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#mortar"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#mortar"}
+			}
+		},
+		{
+			"from": [0, 2, 0],
+			"to": [16, 15, 2],
+			"faces": {
+				"north": {"uv": [0, 1, 16, 14], "texture": "#mortar"},
+				"east": {"uv": [14, 1, 16, 14], "texture": "#mortar"},
+				"south": {"uv": [0, 1, 16, 14], "texture": "#mortar"},
+				"west": {"uv": [0, 1, 2, 14], "texture": "#mortar"},
+				"up": {"uv": [0, 0, 16, 2], "texture": "#mortar"}
+			}
+		},
+		{
+			"from": [0, 2, 14],
+			"to": [16, 15, 16],
+			"faces": {
+				"north": {"uv": [0, 1, 16, 14], "texture": "#mortar"},
+				"east": {"uv": [0, 1, 2, 14], "texture": "#mortar"},
+				"south": {"uv": [0, 1, 16, 14], "texture": "#mortar"},
+				"west": {"uv": [14, 1, 16, 14], "texture": "#mortar"},
+				"up": {"uv": [0, 0, 16, 2], "texture": "#mortar"}
+			}
+		},
+		{
+			"from": [0, 2, 2],
+			"to": [2, 15, 14],
+			"faces": {
+				"east": {"uv": [2, 1, 14, 14], "texture": "#mortar"},
+				"west": {"uv": [2, 1, 14, 14], "texture": "#mortar"},
+				"up": {"uv": [0, 2, 2, 14], "texture": "#mortar"}
+			}
+		},
+		{
+			"from": [14, 2, 2],
+			"to": [16, 15, 14],
+			"faces": {
+				"east": {"uv": [2, 1, 14, 14], "texture": "#mortar"},
+				"west": {"uv": [2, 1, 14, 14], "texture": "#mortar"},
+				"up": {"uv": [0, 2, 2, 14], "texture": "#mortar"}
+			}
+		},
+		{
+			"from": [0, 15, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 1], "texture": "#top"},
+				"east": {"uv": [0, 0, 16, 1], "texture": "#top"},
+				"south": {"uv": [0, 0, 16, 1], "texture": "#top"},
+				"west": {"uv": [0, 0, 16, 1], "texture": "#top"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#top"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#top"}
+			}
+		}
+	]
+}

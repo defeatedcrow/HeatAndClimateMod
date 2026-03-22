@@ -9,6 +9,7 @@ import com.google.common.collect.Sets;
 import com.google.gson.JsonObject;
 
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
@@ -989,6 +990,14 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.define('V', Tags.Items.GLASS)
 				.unlockedBy("has_optical_sensor", has(TagDC.ItemTag.SENSOR_OPTICAL))
 				.save(cons, "dcs_climate:machine/auto_milker_0");
+		
+		ShapedRecipeBuilder.shaped(MachineInit.WATER_BASIN.get(), 1)
+		.pattern("XYX")
+		.pattern("XXX")
+		.define('X', BuildInit.MORTAR.get())
+		.define('Y', Items.IRON_BARS)
+		.unlockedBy("has_mortar_block", has(BuildInit.MORTAR.get()))
+		.save(cons, "dcs_climate:machine/water_intake_basin_0");
 
 	}
 

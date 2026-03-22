@@ -25,6 +25,7 @@ public class BiomeTagProviderDC extends BiomeTagsProvider {
 		tag(TagDC.BiomeTag.GREEN_BIOME).addTags(Tags.Biomes.IS_DENSE, BiomeTags.IS_FOREST, BiomeTags.IS_JUNGLE, Tags.Biomes.IS_LUSH);
 
 		tag(TagDC.BiomeTag.GEN).addTags(BiomeTags.IS_OVERWORLD, BiomeTags.IS_NETHER);
+
 	}
 
 }

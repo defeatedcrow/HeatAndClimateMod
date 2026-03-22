@@ -24,10 +24,16 @@ public class BreadSquareItem extends ItemEntityFood {
 			return BREAD_SQUARE_RAW;
 		if (item == FoodInit.BREAD_SQUARE_BAKED_ITEM.get())
 			return BREAD_SQUARE_BAKED;
+		if (item == FoodInit.BREAD_CORN_RAW_ITEM.get())
+			return BREAD_CORN_RAW;
+		if (item == FoodInit.BREAD_CORN_BAKED_ITEM.get())
+			return BREAD_CORN_BAKED;
 		return BREAD_SQUARE_RAW;
 	}
 
 	public static final EntityRenderData BREAD_SQUARE_RAW = new EntityRenderData("food/bread_square_raw", 0.8F, 0F);
 	public static final EntityRenderData BREAD_SQUARE_BAKED = new EntityRenderData("food/bread_square_baked", 1.0F, 0F);
+	public static final EntityRenderData BREAD_CORN_RAW = new EntityRenderData("food/bread_corn_raw", 0.8F, 0F);
+	public static final EntityRenderData BREAD_CORN_BAKED = new EntityRenderData("food/bread_corn_baked", 1.0F, 0F);
 
 }

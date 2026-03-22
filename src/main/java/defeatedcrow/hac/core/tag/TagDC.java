@@ -284,6 +284,7 @@ public class TagDC {
 		public static final TagKey<Item> DUST_DIAMOND = itemTag("dusts/diamond");
 		public static final TagKey<Item> DUST_LIME = itemTag("dusts/lime");
 		public static final TagKey<Item> DUST_TRONA = itemTag("dusts/trona");
+		public static final TagKey<Item> DUST_BAKING_SODA = itemTag("dusts/baking_soda");
 		public static final TagKey<Item> DUST_BORAX = itemTag("dusts/borax");
 		public static final TagKey<Item> DUST_LITHIUM = itemTag("dusts/lithium");
 		public static final TagKey<Item> DUST_ASH = itemTag("dusts/ash");

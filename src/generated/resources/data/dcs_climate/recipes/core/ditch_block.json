@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:build/mortar"
+    }
+  },
+  "pattern": [
+    "X X",
+    "XXX"
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:build/ditch"
+  }
+}

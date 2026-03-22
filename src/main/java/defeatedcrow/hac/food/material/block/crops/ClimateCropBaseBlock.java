@@ -73,7 +73,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	final CropTier cropTier;
 
 	public ClimateCropBaseBlock(CropTier t) {
-		super(getProp());
+		super(getProp(t));
 		cropTier = t;
 	}
 
@@ -88,8 +88,8 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	}
 
 	/* 基本データ */
-	protected static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.PLANT).noOcclusion().noCollission().randomTicks().instabreak().sound(SoundType.CROP);
+	protected static BlockBehaviour.Properties getProp(CropTier t) {
+		return BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP).offsetType(t == CropTier.WILD ? OffsetType.XZ : OffsetType.NONE);
 	}
 
 	@Override

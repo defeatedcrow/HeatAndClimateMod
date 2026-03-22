@@ -1,0 +1,21 @@
+{
+	"parent": "block/block",
+	"render_type": "cutout",
+	"textures": {
+		"base": "dcs_climate:block/build/mortar",
+		"top": "dcs_climate:block/build/plate_grating",
+		"particle": "#base"
+	},
+	"elements": [
+		{
+			"name": "cube_s",
+			"from": [2, 2, 14],
+			"to": [14, 15, 16],
+			"faces": {
+				"north": {"uv": [2, 1, 14, 14], "texture": "#base"},
+				"south": {"uv": [2, 1, 14, 14], "texture": "#base"},
+				"up": {"uv": [2, 14, 14, 16], "texture": "#base"}
+			}
+		}
+	]
+}
