@@ -1,4 +1,4 @@
-// 1.19.2	2026-03-22T23:21:02.4934947	Tags for minecraft:item
+// 1.19.2	2026-03-23T23:35:36.2984686	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 05c427bae6c42fa3468413da8a796681e5a20abb data/dcs_climate/tags/items/battery_items.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
@@ -86,14 +86,14 @@ e13e1ca62ba8d0058adef3d77a32488118af2b87 data/dcs_climate/tags/items/dusts.json
 156a66e91a84e08593a36b5dc773b74a8930ba7f data/dcs_climate/tags/items/fishes.json
 3c518a847c0153a0730dcd2c7f76831187b4a67b data/dcs_climate/tags/items/fishes/beach.json
 846854fee8d69b5ad09f87083f5085d0dff2b9b5 data/dcs_climate/tags/items/fishes/cold_water_only.json
-8912f99b599e6e6ef184bd43079eaed3e39c00f4 data/dcs_climate/tags/items/fishes/day.json
+69fea46ffa6661fdb58aa4e25a2c79bed53c49c3 data/dcs_climate/tags/items/fishes/day.json
 5ca6d4cd18fa5308ba041c423dcc51034d8add58 data/dcs_climate/tags/items/fishes/deep_ocean.json
 c244fa3f1d31adcd6dcaf71f6519963ddccd9b55 data/dcs_climate/tags/items/fishes/floor.json
 41284e173bbb0bb7ff024537c2905606e24626a7 data/dcs_climate/tags/items/fishes/hac.json
 a4341604864ed227d3fd968cc5c83ed5845f1811 data/dcs_climate/tags/items/fishes/large_size.json
 25a5a05ac30266e0715bf70304aced35f7f764e5 data/dcs_climate/tags/items/fishes/mangrove.json
 f7c603be7abb93fdf71d5c60920bf445c1f81f02 data/dcs_climate/tags/items/fishes/middle_size.json
-088f309961f5bd5d1b75d8e19e9ececc1c8c7057 data/dcs_climate/tags/items/fishes/night.json
+30721f66aeabc9539989687760ee4f61dd4a77dc data/dcs_climate/tags/items/fishes/night.json
 aea60eb8f0cd872c66f631436a17accf7bf0c13f data/dcs_climate/tags/items/fishes/ocean.json
 474378dabc24faffef59654b5723ae7e0a131f75 data/dcs_climate/tags/items/fishes/river.json
 de5a2ec5f5593a6a661476ddc75bca9bf2826ab2 data/dcs_climate/tags/items/fishes/shallow.json

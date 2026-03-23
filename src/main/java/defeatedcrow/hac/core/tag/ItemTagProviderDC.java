@@ -514,11 +514,11 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		    FoodInit.FOOD_FLATHEAD.get(), FoodInit.FOOD_GURNARD.get(), FoodInit.FOOD_TUNA.get(), FoodInit.FOOD_SKIPJACK.get(), FoodInit.FOOD_RED_SEABREAM.get(),
 		    FoodInit.FOOD_HONGKONG_GROUPER.get());
 
-		tag(TagDC.ItemTag.FISH_NIGHT).add(FoodInit.FOOD_ROCKFISH.get(), FoodInit.FOOD_FLOUNDER.get(), FoodInit.FOOD_GROUPER.get(), FoodInit.FOOD_GURNARD.get(), FoodInit.FOOD_SQUID.get());
+		tag(TagDC.ItemTag.FISH_NIGHT).add(FoodInit.FOOD_ROCKFISH.get(), FoodInit.FOOD_FLOUNDER.get(), FoodInit.FOOD_GROUPER.get(), FoodInit.FOOD_GURNARD.get(),
+		    FoodInit.FOOD_SQUID.get(), FoodInit.FOOD_PRAWN.get());
 
-		tag(TagDC.ItemTag.FISH_DAY).add(FoodInit.FOOD_MULLET.get(), FoodInit.FOOD_SMELT.get(), FoodInit.FOOD_SARDINE.get(), FoodInit.FOOD_TROUT.get(),
-		    FoodInit.FOOD_CARP.get(), FoodInit.FOOD_KRILL.get(), FoodInit.FOOD_PRAWN.get(), FoodInit.FOOD_CRAB.get(), FoodInit.FOOD_TUNA.get(),
-		    FoodInit.FOOD_SKIPJACK.get(), Items.COD, Items.PUFFERFISH, Items.TROPICAL_FISH);
+		tag(TagDC.ItemTag.FISH_DAY).add(FoodInit.FOOD_SMELT.get(), FoodInit.FOOD_SARDINE.get(), FoodInit.FOOD_CARP.get(), FoodInit.FOOD_TROUT.get(),
+		    FoodInit.FOOD_KRILL.get(), FoodInit.FOOD_TUNA.get(), FoodInit.FOOD_SKIPJACK.get(), Items.COD, Items.PUFFERFISH, Items.TROPICAL_FISH);
 
 		tag(TagDC.ItemTag.FISH_RIVER).add(FoodInit.FOOD_MULLET.get(), FoodInit.FOOD_SMELT.get(), FoodInit.FOOD_CARP.get(), FoodInit.FOOD_PRAWN.get(),
 		    FoodInit.FOOD_TROUT.get(), FoodInit.FOOD_CRAB.get(), Items.SALMON);

@@ -49,13 +49,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
 
 public class DCUtil {
 
-	private static final IForgeRegistry<Item> regItem = ForgeRegistries.ITEMS;
-
 	public static Random rand = new Random();
+
+	public static int getRandomSign() {
+		return rand.nextBoolean() ? 1 : -1;
+	}
 
 	public static final ResourceLocation DUMMY = new ResourceLocation("dcs_climate:empty");
 
@@ -84,15 +85,11 @@ public class DCUtil {
 	}
 
 	public static String getName(Item item) {
-		return getRes(item).map((res) -> {
-			return res.getPath();
-		}).orElse("empty");
+		return getRes(item).map(ResourceLocation::getPath).orElse("empty");
 	}
 
 	public static String getName(Block block) {
-		return getRes(block).map((res) -> {
-			return res.getPath();
-		}).orElse("empty");
+		return getRes(block).map(ResourceLocation::getPath).orElse("empty");
 	}
 
 	public static String getName(TagKey<Item> tag) {
@@ -100,17 +97,11 @@ public class DCUtil {
 	}
 
 	public static Optional<ResourceLocation> getLocationName(Holder<?> holder) {
-		return holder.unwrap().map((res) -> {
-			return Optional.ofNullable(res.location());
-		}, (b) -> {
-			return Optional.empty();
-		});
+		return holder.unwrap().map(res -> Optional.ofNullable(res.location()), b -> Optional.empty());
 	}
 
 	public static String getBlockRegName(Block block) {
-		return getRes(block).map((res) -> {
-			return res.getNamespace() + ":" + res.getPath();
-		}).orElse("empty");
+		return getRes(block).map(res -> (res.getNamespace() + ":" + res.getPath())).orElse("empty");
 	}
 
 	public static Boolean getFalse(BlockState state, BlockGetter level, BlockPos pos) {
@@ -118,8 +109,7 @@ public class DCUtil {
 	}
 
 	public static boolean setBlockIfReplaceable(Level level, BlockPos pos, BlockState set, boolean needAir) {
-		if (!level.getBlockState(pos).is(BlockTags.FEATURES_CANNOT_REPLACE) && level.getBlockState(pos).getMaterial().isReplaceable() && (!needAir || level.getBlockState(pos)
-				.getBlock() == Blocks.AIR)) {
+		if (!level.getBlockState(pos).is(BlockTags.FEATURES_CANNOT_REPLACE) && level.getBlockState(pos).getMaterial().isReplaceable() && (!needAir || level.getBlockState(pos).getBlock() == Blocks.AIR)) {
 			return level.setBlock(pos, set, 2);
 		}
 		return false;
@@ -193,7 +183,7 @@ public class DCUtil {
 		return Direction.DOWN;
 	}
 
-	public static Direction[] PipeScanList = new Direction[] { Direction.DOWN, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST, Direction.UP };
+	public static Direction[] PipeScanList = { Direction.DOWN, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST, Direction.UP };
 
 	public static double absMin(double a, double b) {
 		if (a < 0.0D) {
@@ -261,6 +251,9 @@ public class DCUtil {
 		if (living.hasEffect(MobEffects.LUCK)) {
 			luck++;
 		}
+		if (held.is(TagDC.ItemTag.MAGIC_CARD)) {
+			luck += 3;
+		}
 
 		int time = DCTimeHelper.currentTime(level);
 		boolean day = time > 7 && time < 17;
@@ -322,35 +315,35 @@ public class DCUtil {
 				else
 					cL.add(fish.copy());
 			}
+		}
 
-			DCLogger.debugInfoLog("*** HaC fishing ***");
-			DCLogger.debugInfoLog("Fishing rand" + rand);
-			if (rand < 15 || big > 0 || bottom > 0 || squid > 0) {
-				if (!rL.isEmpty()) {
-					fishes.addAll(rL);
-				}
-				if (!uL.isEmpty()) {
-					fishes.addAll(uL);
-				}
-				if (!cL.isEmpty()) {
-					fishes.addAll(cL);
-				}
-			} else if (rand < 50) {
-				if (!uL.isEmpty()) {
-					fishes.addAll(uL);
-				}
-				if (!cL.isEmpty()) {
-					fishes.addAll(cL);
-				}
-			} else if (!cL.isEmpty()) {
+		DCLogger.debugInfoLog("*** HaC fishing ***");
+		DCLogger.debugInfoLog("Fishing rand" + rand);
+		if (rand < 15 || big > 0 || bottom > 0 || squid > 0) {
+			if (!rL.isEmpty()) {
+				fishes.addAll(rL);
+			}
+			if (!uL.isEmpty()) {
+				fishes.addAll(uL);
+			}
+			if (!cL.isEmpty()) {
 				fishes.addAll(cL);
 			}
+		} else if (rand < 50) {
+			if (!uL.isEmpty()) {
+				fishes.addAll(uL);
+			}
+			if (!cL.isEmpty()) {
+				fishes.addAll(cL);
+			}
+		} else if (!cL.isEmpty()) {
+			fishes.addAll(cL);
 		}
 
 		DCLogger.debugInfoLog("Fish list: " + (fishes.isEmpty() ? "empty" : fishes.size()));
 		if (!fishes.isEmpty()) {
 			for (ItemStack choice : fishes) {
-				DCLogger.debugInfoLog(choice.getDisplayName().getString());
+				DCLogger.debugInfoLog("fish:" + choice.getDisplayName().getString());
 			}
 		}
 		if (fishes.isEmpty()) {
@@ -377,7 +370,6 @@ public class DCUtil {
 
 	/**
 	 * ruby氏に感謝!
-	 *
 	 * @date 2020.02.04
 	 * @author ruby
 	 */
@@ -389,9 +381,8 @@ public class DCUtil {
 			return founds;
 		}
 		do {
-			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative))
-					.filter(fixedPos -> world.getBlockState(fixedPos).getBlock().equals(block)).limit(limit - founds
-							.size()).filter(founds::add).collect(Collectors.toList());
+			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative)).filter(fixedPos -> world.getBlockState(fixedPos).getBlock().equals(block)).limit(limit - founds.size()).filter(
+			    founds::add).collect(Collectors.toList());
 
 		} while (founds.size() <= limit && !nextTargets.isEmpty());
 
@@ -404,9 +395,8 @@ public class DCUtil {
 		List<BlockPos> logs = new ArrayList<>();
 		Set<BlockPos> founds = new LinkedHashSet<>();
 		do {
-			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative))
-					.filter(fixedPos -> (world.getBlockState(fixedPos).is(BlockTags.LEAVES) || world.getBlockState(fixedPos).is(BlockTags.LOGS)))
-					.limit(limit - founds.size()).filter(founds::add).collect(Collectors.toList());
+			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative)).filter(
+			    fixedPos -> (world.getBlockState(fixedPos).is(BlockTags.LEAVES) || world.getBlockState(fixedPos).is(BlockTags.LOGS))).limit(limit - founds.size()).filter(founds::add).collect(Collectors.toList());
 
 		} while (founds.size() <= limit && logs.isEmpty() && !nextTargets.isEmpty());
 
@@ -448,12 +438,12 @@ public class DCUtil {
 	private static String getStringFromBytes(byte[] b) {
 
 		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < b.length; i++) {
+		for (byte element : b) {
 
-			if ((b[i] & 0xff) < 0x10) {
+			if ((element & 0xff) < 0x10) {
 				builder.append("0");
 			}
-			builder.append(Integer.toHexString(0xff & b[i]));
+			builder.append(Integer.toHexString(0xff & element));
 		}
 
 		return builder.toString();

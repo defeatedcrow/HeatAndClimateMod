@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 
 public class RenderBindPlant extends EntityRenderer<ChairEntity> {
@@ -27,6 +28,11 @@ public class RenderBindPlant extends EntityRenderer<ChairEntity> {
 	@Override
 	public ResourceLocation getTextureLocation(ChairEntity entity) {
 		return PLANT.getTextureLocation();
+	}
+
+	@Override
+	protected int getBlockLightLevel(ChairEntity entity, BlockPos pos) {
+		return 15;
 	}
 
 	@Override

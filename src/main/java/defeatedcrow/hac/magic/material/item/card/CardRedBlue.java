@@ -42,10 +42,10 @@ public class CardRedBlue extends MagicCardBase {
 	@Override
 	public boolean onUsing(Level level, Player player, BlockPos pos, Direction dir, ItemStack card, float f) {
 		float boost = f < 0 ? 0.5F : f;
-		double d = 32D + (16D * f);
+		double d = 32D + 16D * f;
 
 		List<Mob> list = level.getNearbyEntities(Mob.class, TargetingConditions.forCombat().range(d).ignoreLineOfSight(), player, player.getBoundingBox().inflate(d));
-		list.stream().filter(mob -> mob instanceof Enemy && !mob.getType().is(Tags.EntityTypes.BOSSES)).forEach((mob) -> {
+		list.stream().filter(mob -> mob instanceof Enemy && !mob.getType().is(Tags.EntityTypes.BOSSES) || mob.isInWater()).forEach(mob -> {
 			mob.hurt(DamageSource.LIGHTNING_BOLT, 12.0F * boost);
 			if (mob.getVehicle() != null) {
 				mob.removeVehicle();
@@ -59,20 +59,20 @@ public class CardRedBlue extends MagicCardBase {
 			level.addFreshEntity(bind);
 		});
 
-		if (player.isInWater()) {
-			List<ItemStack> replace = Lists.newArrayList();
-			Holder<Biome> biome = level.getBiome(pos);
-			replace.addAll(DCUtil.getFish(level, biome, player, card));
-			if (!replace.isEmpty()) {
-				BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
-				boolean flag = false;
-				int chance = Mth.ceil(8 * boost);
-				for (int c = 0; c < chance; c++) {
-					int x = level.getRandom().nextInt(5);
-					int y = level.getRandom().nextInt(5);
-					int z = level.getRandom().nextInt(5);
-					mpos.set(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
-					if (level.getFluidState(mpos).isSourceOfType(Fluids.WATER)) {
+		if (player.isInWater() && !level.isClientSide) {
+			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
+			boolean flag = false;
+			int chance = Mth.ceil(8 * boost);
+			for (int c = 0; c < chance; c++) {
+				int x = level.getRandom().nextInt(5) * DCUtil.getRandomSign();
+				int y = level.getRandom().nextInt(2) * DCUtil.getRandomSign();
+				int z = level.getRandom().nextInt(5) * DCUtil.getRandomSign();
+				mpos.set(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
+				if (level.getFluidState(mpos).isSourceOfType(Fluids.WATER)) {
+					List<ItemStack> replace = Lists.newArrayList();
+					Holder<Biome> biome = level.getBiome(pos);
+					replace.addAll(DCUtil.getFish(level, biome, player, card));
+					if (!replace.isEmpty()) {
 						ItemStack fish = ItemStack.EMPTY;
 						if (replace.size() > 1) {
 							int i = level.random.nextInt(replace.size());
@@ -80,19 +80,22 @@ public class CardRedBlue extends MagicCardBase {
 						} else {
 							fish = replace.get(0).copy();
 						}
-						if (!level.isClientSide) {
-							ItemEntity drop = new ItemEntity(level, mpos.getX() + 0.5D, mpos.getY() + 0.5D, mpos.getZ() + 0.5D, fish);
-							double d0 = 0D;
-							double d1 = 0.1D;
-							double d2 = 0D;
-							drop.setDeltaMovement(d0, d1, d2);
-							level.addFreshEntity(drop);
-						}
+
+						ItemEntity drop = new ItemEntity(level, mpos.getX() + 0.5D, mpos.getY() + 0.5D, mpos.getZ() + 0.5D, fish);
+						double d0 = 0D;
+						double d1 = 0.1D;
+						double d2 = 0D;
+						drop.setDeltaMovement(d0, d1, d2);
+						level.addFreshEntity(drop);
 					}
 				}
 			}
-			player.playSound(SoundEvents.LIGHTNING_BOLT_THUNDER, 2.0F, 1.0F);
-			player.hurt(DamageSource.LIGHTNING_BOLT, 2.0F * boost);
+
+			// 自分に落ちる
+			LightningBolt thunder = EntityType.LIGHTNING_BOLT.create(level);
+			thunder.moveTo(player.position());
+			level.addFreshEntity(thunder);
+
 		} else {
 			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
 			boolean flag = false;
@@ -106,7 +109,7 @@ public class CardRedBlue extends MagicCardBase {
 							if (state.getBlock() instanceof LightningRodBlock) {
 								LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(level);
 								lightningbolt.moveTo(Vec3.atBottomCenterOf(mpos.above()));
-								lightningbolt.setCause(player instanceof ServerPlayer ? (ServerPlayer) player : null);
+								lightningbolt.setCause(player instanceof ServerPlayer s ? s : null);
 								level.addFreshEntity(lightningbolt);
 								flag = true;
 							}
@@ -116,12 +119,8 @@ public class CardRedBlue extends MagicCardBase {
 			}
 			if (!flag) {
 				for (int i = 0; i < 3; i++) {
-					double d1 = 2.0D + level.random.nextDouble() * 6.0D;
-					double d2 = 2.0D + level.random.nextDouble() * 6.0D;
-					if (level.random.nextBoolean())
-						d1 *= -1D;
-					if (level.random.nextBoolean())
-						d2 *= -1D;
+					double d1 = 2.0D + level.random.nextDouble() * 6.0D * DCUtil.getRandomSign();
+					double d2 = 2.0D + level.random.nextDouble() * 6.0D * DCUtil.getRandomSign();
 					LightningBolt thunder = EntityType.LIGHTNING_BOLT.create(level);
 					thunder.moveTo(player.position().add(d1, 0D, d2));
 					level.addFreshEntity(thunder);
