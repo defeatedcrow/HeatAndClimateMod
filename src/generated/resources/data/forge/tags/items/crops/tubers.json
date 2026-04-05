@@ -2,6 +2,8 @@
   "values": [
     "#forge:crops/taro",
     "#forge:crops/sweet_potato",
+    "#forge:crops/lily_root",
+    "#forge:crops/cassava",
     "#forge:crops/potato"
   ]
 }

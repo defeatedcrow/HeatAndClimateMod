@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "crop": "dcs_climate:block/crop/euphorbia_cassava_f",
+    "leaves": "dcs_climate:block/crop/euphorbia_cassava_leaves1"
+  },
+  "parent": "dcs_climate:block/dcs_crop_large_leaves"
+}

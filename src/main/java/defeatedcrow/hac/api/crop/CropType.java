@@ -7,6 +7,7 @@ public enum CropType {
 
 	ALLIUM, // ネギ
 	AMARANTH, // アカザ
+	AMARYLLIS, // アマリリス
 	APIUM, // セリ
 	AROIDS, // サトイモ
 	ASTER, // キク
@@ -19,12 +20,14 @@ public enum CropType {
 	CINNAMON, // クスノキ
 	CITRUS, // カンキツ
 	ERICA, // ツツジ
+	EUPHORBIA, // トウダイグサ
 	GINGER, // ショウガ
 	GOURD, // ウリ
 	GRAPE, // ブドウ
-	KNOTWEED, // タデ
 	HERB, // シソ
 	IRIS, // アヤメ
+	KNOTWEED, // タデ
+	LILY, // ユリ
 	LOTUS, // ハス
 	MALLOW, // アオイ
 	MORNINGGLORY, // ヒルガオ
@@ -39,8 +42,10 @@ public enum CropType {
 	REED, // アシ
 	RICE, // イネ
 	ROSE, // バラ
+	RUBIA, // アカネ
 	SOLANUM, // ナス
 	SUMAC, // ウルシ
+	YAM, // ヤマイモ
 	TRADING; // 交易限定種
 
 	public MutableComponent localize() {

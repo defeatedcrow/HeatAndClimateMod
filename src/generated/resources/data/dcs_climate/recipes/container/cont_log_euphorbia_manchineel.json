@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:food/log_euphorbia_manchineel_dry"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:container/logcont_euphorbia_manchineel"
+  }
+}

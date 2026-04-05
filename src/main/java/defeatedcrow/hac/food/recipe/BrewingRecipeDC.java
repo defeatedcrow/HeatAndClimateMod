@@ -22,28 +22,35 @@ public class BrewingRecipeDC {
 
 	public static void init() {
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)), Ingredient.of(TagDC.ItemTag.CROP_NIGHTSHADE),
-			PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WEAKNESS));
+		    PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WEAKNESS));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Potions.WATER)), Ingredient.of(TagDC.ItemTag.CROP_NIGHTSHADE),
-			PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Potions.WEAKNESS));
+		    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Potions.WEAKNESS));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), Potions.WATER)), Ingredient.of(TagDC.ItemTag.CROP_NIGHTSHADE),
-			PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), Potions.WEAKNESS));
+		    PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), Potions.WEAKNESS));
 
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)), Ingredient.of(TagDC.ItemTag.CROP_LANTERN),
-			PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.FIRE_RESISTANCE));
+		    PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.FIRE_RESISTANCE));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Potions.AWKWARD)), Ingredient.of(TagDC.ItemTag.CROP_LANTERN),
-			PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Potions.FIRE_RESISTANCE));
+		    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Potions.FIRE_RESISTANCE));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), Potions.AWKWARD)), Ingredient.of(TagDC.ItemTag.CROP_LANTERN),
-			PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), Potions.FIRE_RESISTANCE));
+		    PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), Potions.FIRE_RESISTANCE));
 
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)), Ingredient.of(TagDC.ItemTag.CROP_LAVENDER),
-			PotionUtils.setPotion(new ItemStack(Items.POTION), CoreInit.COLD_RES_POTION.get()));
+		    PotionUtils.setPotion(new ItemStack(Items.POTION), CoreInit.COLD_RES_POTION.get()));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Potions.AWKWARD)), Ingredient.of(TagDC.ItemTag.CROP_LAVENDER),
-			PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), CoreInit.COLD_RES_POTION.get()));
+		    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), CoreInit.COLD_RES_POTION.get()));
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), Potions.AWKWARD)), Ingredient.of(TagDC.ItemTag.CROP_LAVENDER),
-			PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), CoreInit.COLD_RES_POTION.get()));
+		    PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), CoreInit.COLD_RES_POTION.get()));
+
+		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)), Ingredient.of(TagDC.ItemTag.SAP_POISON),
+		    PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.STRONG_POISON));
+		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Potions.AWKWARD)), Ingredient.of(TagDC.ItemTag.SAP_POISON),
+		    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Potions.STRONG_POISON));
+		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), Potions.AWKWARD)), Ingredient.of(TagDC.ItemTag.SAP_POISON),
+		    PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), Potions.STRONG_POISON));
 
 		BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), CoreInit.COLD_RES_POTION.get())), Ingredient.of(Tags.Items.DUSTS_REDSTONE),
-			PotionUtils.setPotion(new ItemStack(Items.POTION), CoreInit.COLD_RES_LONG.get()));
+		    PotionUtils.setPotion(new ItemStack(Items.POTION), CoreInit.COLD_RES_LONG.get()));
 
 		// BrewingRecipeRegistry.addRecipe(INSTANCE.new Recipe(TagDC.ItemTag.CROP_LANTERN, () -> Potions.AWKWARD, false));
 	}

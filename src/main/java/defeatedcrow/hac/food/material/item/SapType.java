@@ -13,10 +13,8 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 
 public enum SapType implements StringRepresentable {
 
-	SWEET(0, "sweet", FoodInit.SAP_SWEET, TagDC.BlockTag.LOG_SWEET),
-	RESIN(1, "resin", FoodInit.SAP_RESIN, TagDC.BlockTag.LOG_RESIN),
-	LATEX(2, "latex", FoodInit.SAP_LATEX, TagDC.BlockTag.LOG_LATEX),
-	LACQUER(3, "lacquer", FoodInit.SAP_SUMAC, TagDC.BlockTag.LOG_LACQUER);
+	SWEET(0, "sweet", FoodInit.SAP_SWEET, TagDC.BlockTag.LOG_SWEET), RESIN(1, "resin", FoodInit.SAP_RESIN, TagDC.BlockTag.LOG_RESIN), LATEX(2, "latex", FoodInit.SAP_LATEX, TagDC.BlockTag.LOG_LATEX), LACQUER(3, "lacquer", FoodInit.SAP_SUMAC,
+	    TagDC.BlockTag.LOG_LACQUER);
 
 	private final int id;
 	private final Supplier<Item> drop;

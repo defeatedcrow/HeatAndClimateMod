@@ -3,17 +3,7 @@ package defeatedcrow.hac.api.recipe;
 import com.google.common.collect.ImmutableList;
 
 public enum RecipeTypeDC {
-	PULVERISE,
-	FOOD_MILL,
-	SQUEEZE,
-	SIEVE,
-	CHEM_DISTILL,
-	CHEM_CATALYST,
-	CHEM_ELECTROLYZE,
-	FERMENTATION,
-	COOKING,
-	FRYING,
-	TEA;
+	PULVERISE, MILL, SQUEEZE, SIEVE, CHEM_DISTILL, CHEM_CATALYST, CHEM_ELECTROLYZE, FERMENTATION, COOKING, FRYING, TEA;
 
 	public static RecipeTypeDC getType(String name) {
 		if (name != null)
@@ -32,15 +22,15 @@ public enum RecipeTypeDC {
 
 	public static ImmutableList<RecipeTypeDC> elements() {
 		return ImmutableList.of(PULVERISE,
-				FOOD_MILL,
-				SQUEEZE,
-				SIEVE,
-				CHEM_DISTILL,
-				CHEM_CATALYST,
-				CHEM_ELECTROLYZE,
-				FERMENTATION,
-				COOKING,
-				FRYING,
-				TEA);
+		    MILL,
+		    SQUEEZE,
+		    SIEVE,
+		    CHEM_DISTILL,
+		    CHEM_CATALYST,
+		    CHEM_ELECTROLYZE,
+		    FERMENTATION,
+		    COOKING,
+		    FRYING,
+		    TEA);
 	}
 }

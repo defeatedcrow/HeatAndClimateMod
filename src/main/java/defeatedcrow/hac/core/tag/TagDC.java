@@ -434,6 +434,10 @@ public class TagDC {
 		public static final TagKey<Item> CROP_GOOSEFOOT = itemTag("crops/goosefoot");
 		public static final TagKey<Item> CROP_GLASSWORT = itemTag("crops/glasswort");
 		public static final TagKey<Item> CROP_SPINACH = itemTag("crops/spinach");
+		public static final TagKey<Item> CROP_SNOWDROP = itemTag("crops/snowdrop");
+		public static final TagKey<Item> CROP_AMARYLLIS = itemTag("crops/amaryllis");
+		public static final TagKey<Item> CROP_DAFFODIL = itemTag("crops/daffodil");
+		public static final TagKey<Item> CROP_LYCORIS = itemTag("crops/lycoris");
 		public static final TagKey<Item> CROP_FENNEL = itemTag("crops/fennel");
 		public static final TagKey<Item> CROP_CELERY = itemTag("crops/celery");
 		public static final TagKey<Item> CROP_PARSNIP = itemTag("crops/parsnip");
@@ -471,6 +475,9 @@ public class TagDC {
 		public static final TagKey<Item> CROP_CROCUS = itemTag("crops/crocus");
 		public static final TagKey<Item> CROP_SAFFRON = itemTag("crops/saffron");
 		public static final TagKey<Item> CROP_IRIS = itemTag("crops/iris");
+		public static final TagKey<Item> CROP_AMANA = itemTag("crops/amana");
+		public static final TagKey<Item> CROP_FAWN = itemTag("crops/fawn");
+		public static final TagKey<Item> CROP_GOLDBAND = itemTag("crops/goldband");
 		public static final TagKey<Item> CROP_SORREL = itemTag("crops/sorrel");
 		public static final TagKey<Item> CROP_BUCKWHEAT = itemTag("crops/buckwheat");
 		public static final TagKey<Item> CROP_INDIGO = itemTag("crops/indigo");
@@ -529,12 +536,16 @@ public class TagDC {
 		public static final TagKey<Item> CROP_HEATH = itemTag("crops/heath");
 		public static final TagKey<Item> CROP_RHODODENDRON = itemTag("crops/rhododendron");
 		public static final TagKey<Item> CROP_BLUEBERRY = itemTag("crops/blueberry");
+		public static final TagKey<Item> CROP_KUKUI = itemTag("crops/kukui");
+		public static final TagKey<Item> CROP_CASSAVA = itemTag("crops/cassava");
+		public static final TagKey<Item> CROP_MANCHINEEL = itemTag("crops/manchineel");
 		public static final TagKey<Item> CROP_MULBERRY = itemTag("crops/mulberry");
 		public static final TagKey<Item> CROP_KAJI = itemTag("crops/kaji");
 		public static final TagKey<Item> CROP_RUBBER = itemTag("crops/rubber");
 		public static final TagKey<Item> CROP_ASH = itemTag("crops/ash");
 		public static final TagKey<Item> CROP_OLIVE = itemTag("crops/olive");
 		public static final TagKey<Item> CROP_OSMANTHUS = itemTag("crops/osmanthus");
+		public static final TagKey<Item> CROP_JASMINE = itemTag("crops/jasmine");
 		public static final TagKey<Item> CROP_COCONUT = itemTag("crops/coconut");
 		public static final TagKey<Item> CROP_DATE = itemTag("crops/date");
 		public static final TagKey<Item> CROP_OIL_PALM = itemTag("crops/oil_palm");
@@ -545,12 +556,16 @@ public class TagDC {
 		public static final TagKey<Item> CROP_MANGO = itemTag("crops/mango");
 		public static final TagKey<Item> CROP_CASHEW = itemTag("crops/cashew");
 		public static final TagKey<Item> CROP_PISTACHIO = itemTag("crops/pistachio");
+		public static final TagKey<Item> CROP_GARDENIA = itemTag("crops/gardenia");
+		public static final TagKey<Item> CROP_COFFEE = itemTag("crops/coffee");
+		public static final TagKey<Item> CROP_IXORA = itemTag("crops/ixora");
 
 		public static final TagKey<Item> CHERRY_FLOWER = itemTag("crops/cherry_flower");
 		public static final TagKey<Item> PLUM_FLOWER = itemTag("crops/plum_flower");
 		public static final TagKey<Item> CAMELLIA_FLOWER = itemTag("crops/camellia_flower");
 		public static final TagKey<Item> SCHIMA_FLOWER = itemTag("crops/schima_flower");
 		public static final TagKey<Item> KONJAC_FLOWER = itemTag("crops/konjac_flower");
+		public static final TagKey<Item> GARDENIA_FLOWER = itemTag("crops/gardenia_flower");
 
 		public static final TagKey<Item> CROP_CEREALS = itemTag("crops/cereals");
 		public static final TagKey<Item> CROP_MILLETS = itemTag("crops/millets");
@@ -572,6 +587,7 @@ public class TagDC {
 		public static final TagKey<Item> CROP_RED_GRAPES = itemTag("crops/red_grapes");
 		public static final TagKey<Item> CROP_ALL_GRAPES = itemTag("crops/all_grapes");
 		public static final TagKey<Item> CROP_TSUKEMONO = itemTag("crops/tsukemono_vegi");
+		public static final TagKey<Item> CROP_LILY_ROOT = itemTag("crops/lily_root");
 		public static final TagKey<Item> CROP_TUBERS = itemTag("crops/tubers");
 
 		public static final TagKey<Item> CROP_STRAWS = itemHaCTag("crops/straws");
@@ -585,6 +601,10 @@ public class TagDC {
 		public static final TagKey<Item> SEED_GOOSEFOOT = itemTag("seeds/goosefoot");
 		public static final TagKey<Item> SEED_GLASSWORT = itemTag("seeds/glasswort");
 		public static final TagKey<Item> SEED_SPINACH = itemTag("seeds/spinach");
+		public static final TagKey<Item> SEED_SNOWDROP = itemTag("seeds/snowdrop");
+		public static final TagKey<Item> SEED_AMARYLLIS = itemTag("seeds/amaryllis");
+		public static final TagKey<Item> SEED_DAFFODIL = itemTag("seeds/daffodil");
+		public static final TagKey<Item> SEED_LYCORIS = itemTag("seeds/lycoris");
 		public static final TagKey<Item> SEED_FENNEL = itemTag("seeds/fennel");
 		public static final TagKey<Item> SEED_CELERY = itemTag("seeds/celery");
 		public static final TagKey<Item> SEED_PARSNIP = itemTag("seeds/parsnip");
@@ -606,6 +626,7 @@ public class TagDC {
 		public static final TagKey<Item> SEED_LETTUCE = itemTag("seeds/lettuce");
 		public static final TagKey<Item> SEED_PYRETHRUM = itemTag("seeds/pyrethrum");
 		public static final TagKey<Item> SEED_CHRYSANTHEMUM = itemTag("seeds/chrysanthemum");
+		public static final TagKey<Item> SEED_CASSAVA = itemTag("seeds/cassava");
 		public static final TagKey<Item> SEED_GINGER = itemTag("seeds/ginger");
 		public static final TagKey<Item> SEED_CARDAMOM = itemTag("seeds/cardamom");
 		public static final TagKey<Item> SEED_TURMERIC = itemTag("seeds/turmeric");
@@ -625,6 +646,9 @@ public class TagDC {
 		public static final TagKey<Item> SEED_SORREL = itemTag("seeds/sorrel");
 		public static final TagKey<Item> SEED_BUCKWHEAT = itemTag("seeds/buckwheat");
 		public static final TagKey<Item> SEED_INDIGO = itemTag("seeds/indigo");
+		public static final TagKey<Item> SEED_AMANA = itemTag("seeds/amana");
+		public static final TagKey<Item> SEED_FAWN = itemTag("seeds/fawn");
+		public static final TagKey<Item> SEED_GOLDBAND = itemTag("seeds/goldband");
 		public static final TagKey<Item> SEED_JUTE = itemTag("seeds/jute");
 		public static final TagKey<Item> SEED_COTTON = itemTag("seeds/cotton");
 		public static final TagKey<Item> SEED_BLUE_MALLOW = itemTag("seeds/blue_mallow");
@@ -705,9 +729,12 @@ public class TagDC {
 		public static final TagKey<Item> TEA_LEAVES_GREEN = itemTag("ingredients/tea_leaves_green");
 		public static final TagKey<Item> TEA_LEAVES_OOLONG = itemTag("ingredients/tea_leaves_oolong");
 		public static final TagKey<Item> TEA_LEAVES_BLACK = itemTag("ingredients/tea_leaves_black");
+		public static final TagKey<Item> COFFEE_ROASTED = itemTag("ingredients/roasted_coffee");
+		public static final TagKey<Item> COFFEE_POWDER = itemTag("ingredients/powder_coffee");
 		public static final TagKey<Item> VANILLA_CURED = itemTag("ingredients/vanilla_cured");
 		public static final TagKey<Item> CASHEW_NUTS = itemTag("ingredients/cashew_nuts");
 		public static final TagKey<Item> ALMOND_NUTS = itemTag("ingredients/almond_nuts");
+		public static final TagKey<Item> KUKUI_NUTS = itemTag("ingredients/kukui_nuts");
 		public static final TagKey<Item> SPROUT = itemTag("ingredients/sprout");
 
 		public static final TagKey<Item> DUST_BREAD_GRAINS = itemTag("ingredients/bread_grains");
@@ -817,6 +844,7 @@ public class TagDC {
 		public static final TagKey<Item> SAP_RESIN = itemTag("saps/resin");
 		public static final TagKey<Item> SAP_LATEX = itemTag("saps/latex");
 		public static final TagKey<Item> SAP_LACQUER = itemTag("saps/lacquer");
+		public static final TagKey<Item> SAP_POISON = itemTag("saps/poison");
 		public static final TagKey<Item> SAPS = itemTag("saps");
 
 		public static final TagKey<Item> STRING_GRASS = itemTag("strings/grass");

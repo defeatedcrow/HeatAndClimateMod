@@ -7,6 +7,10 @@
     "#forge:seeds/goosefoot",
     "#forge:seeds/glasswort",
     "#forge:seeds/spinach",
+    "#forge:seeds/snowdrop",
+    "#forge:seeds/amaryllis",
+    "#forge:seeds/daffodil",
+    "#forge:seeds/lycoris",
     "#forge:seeds/celery",
     "#forge:seeds/fennel",
     "#forge:seeds/parsnip",
@@ -47,6 +51,9 @@
     "#forge:seeds/sorrel",
     "#forge:seeds/buckwheat",
     "#forge:seeds/indigo",
+    "#forge:seeds/amana",
+    "#forge:seeds/fawn",
+    "#forge:seeds/goldband",
     "#forge:seeds/jute",
     "#forge:seeds/cotton",
     "#forge:seeds/blue_mallow",
@@ -79,6 +86,7 @@
     "#forge:seeds/nightshade",
     "#forge:seeds/egg_plant",
     "#forge:seeds/tomato",
-    "#forge:seeds/lantern"
+    "#forge:seeds/lantern",
+    "#forge:seeds/cassava"
   ]
 }

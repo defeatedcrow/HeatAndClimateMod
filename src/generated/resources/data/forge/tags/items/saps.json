@@ -3,6 +3,7 @@
     "#forge:saps/sweet_sap",
     "#forge:saps/resin",
     "#forge:saps/latex",
-    "#forge:saps/lacquer"
+    "#forge:saps/lacquer",
+    "#forge:saps/poison"
   ]
 }

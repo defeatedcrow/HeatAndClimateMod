@@ -1,0 +1,41 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "squeeze",
+  "result": {
+    "item": "dcs_climate:food/food_starch",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/lily_root"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

@@ -47,6 +47,11 @@ public class PluginRecipeListDC {
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AM_GLASSWORT.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AM_SPINACH.get());
 
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AMR_SNOWDROP.get());
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AMR_AMARYLLIS.get());
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AMR_DAFFODIL.get());
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AMR_LYCORIS.get());
+
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_CELERY.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_FENNEL.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_AP_PARSNIP.get());
@@ -74,6 +79,8 @@ public class PluginRecipeListDC {
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_CR_RYE.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_CR_BARLEY.get());
 
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_EU_CASSAVA.get());
+
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_GN_COMMON.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_GN_CARDAMOM.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_GN_TURMERIC.get());
@@ -98,6 +105,10 @@ public class PluginRecipeListDC {
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_KN_SORREL.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_KN_BUCKWHEAT.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_KN_INDIGO.get());
+
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_LI_AMANA.get());
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_LI_FAWN.get());
+			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_LI_GOLDBAND.get());
 
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_ML_JUTE.get());
 			CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_ML_COTTON.get());
@@ -173,6 +184,9 @@ public class PluginRecipeListDC {
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_ER_RHODODENDRON.get());
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_ER_BLUEBERRY.get());
 
+			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_EU_KUKUI.get());
+			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_EU_MANCHINEEL.get());
+
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MR_MULBERRY.get());
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MR_PAPER.get());
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MR_RUBBER.get());
@@ -184,10 +198,15 @@ public class PluginRecipeListDC {
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_ASH.get());
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_OLIVE.get());
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_OSMANTHUS.get());
+			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_JASMINE.get());
 
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_RO_RUGOSA.get());
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_RO_RASPBERRY.get());
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_RO_DAMASCHENA.get());
+
+			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_RU_GARDENIA.get());
+			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_RU_COFFEE.get());
+			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_RU_IXORA.get());
 
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_SU_LACQUER.get());
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_SU_MANGO.get());
@@ -196,42 +215,42 @@ public class PluginRecipeListDC {
 		}
 
 		if (SMELTING_LIST.isEmpty())
-			SMELTING_LIST.addAll(DCRecipes.INSTANCE.SMELTING.values());
+			SMELTING_LIST.addAll(DCRecipes.SMELTING.values());
 
 		if (HEAT_TREATMENT_LIST.isEmpty())
-			HEAT_TREATMENT_LIST.addAll(DCRecipes.INSTANCE.HEAT_TREATMENT.values());
+			HEAT_TREATMENT_LIST.addAll(DCRecipes.HEAT_TREATMENT.values());
 
 		if (COOKING_LIST.isEmpty())
-			COOKING_LIST.addAll(DCRecipes.INSTANCE.COOKING.values());
+			COOKING_LIST.addAll(DCRecipes.COOKING.values());
 
 		if (FRYING_LIST.isEmpty())
-			FRYING_LIST.addAll(DCRecipes.INSTANCE.FRYING.values());
+			FRYING_LIST.addAll(DCRecipes.FRYING.values());
 
 		if (TEA_LIST.isEmpty())
-			TEA_LIST.addAll(DCRecipes.INSTANCE.TEA.values());
+			TEA_LIST.addAll(DCRecipes.TEA.values());
 
 		if (FERMENTATION_LIST.isEmpty())
-			FERMENTATION_LIST.addAll(DCRecipes.INSTANCE.FERMENTATION.values());
+			FERMENTATION_LIST.addAll(DCRecipes.FERMENTATION.values());
 
 		if (PULVERISER_LIST.isEmpty()) {
-			PULVERISER_LIST.addAll(DCRecipes.INSTANCE.PULVERISE.values());
-			PULVERISER_LIST.addAll(DCRecipes.INSTANCE.SQUEEZE.values());
+			PULVERISER_LIST.addAll(DCRecipes.PULVERISE.values());
+			PULVERISER_LIST.addAll(DCRecipes.SQUEEZE.values());
 		}
 
 		if (CRUSHER_PULVERISE_LIST.isEmpty())
-			CRUSHER_PULVERISE_LIST.addAll(DCRecipes.INSTANCE.PULVERISE.values());
+			CRUSHER_PULVERISE_LIST.addAll(DCRecipes.PULVERISE.values());
 
 		if (CRUSHER_SQUEEZE_LIST.isEmpty())
-			CRUSHER_SQUEEZE_LIST.addAll(DCRecipes.INSTANCE.SQUEEZE.values());
+			CRUSHER_SQUEEZE_LIST.addAll(DCRecipes.SQUEEZE.values());
 
 		if (CRUSHER_SIEVE_LIST.isEmpty())
-			CRUSHER_SIEVE_LIST.addAll(DCRecipes.INSTANCE.SIEVE.values());
+			CRUSHER_SIEVE_LIST.addAll(DCRecipes.SIEVE.values());
 
 		if (BIOMASS_FUEL_LIST.isEmpty())
-			BIOMASS_FUEL_LIST.addAll(DCRecipes.INSTANCE.BIOMASS_FUEL.values());
+			BIOMASS_FUEL_LIST.addAll(DCRecipes.BIOMASS_FUEL.values());
 
 		if (FLUID_FUEL_LIST.isEmpty())
-			FLUID_FUEL_LIST.addAll(DCRecipes.INSTANCE.FLUID_FUEL.values());
+			FLUID_FUEL_LIST.addAll(DCRecipes.FLUID_FUEL.values());
 	}
 
 }

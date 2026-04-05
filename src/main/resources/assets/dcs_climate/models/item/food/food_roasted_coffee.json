@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/material/food_roasted_coffee"
+  },
+  "parent": "minecraft:item/generated"
+}

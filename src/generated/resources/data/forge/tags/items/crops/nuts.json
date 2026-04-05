@@ -8,6 +8,7 @@
     "#forge:crops/coconut",
     "#forge:crops/pistachio",
     "#forge:ingredients/almond_nuts",
-    "#forge:ingredients/cashew_nuts"
+    "#forge:ingredients/cashew_nuts",
+    "#forge:ingredients/kukui_nuts"
   ]
 }

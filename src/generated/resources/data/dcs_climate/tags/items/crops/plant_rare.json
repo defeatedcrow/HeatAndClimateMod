@@ -22,6 +22,8 @@
     "dcs_climate:food/crop_grape_rare",
     "dcs_climate:food/crop_iris_rare",
     "dcs_climate:food/crop_orchid_rare",
-    "dcs_climate:food/crop_ranunculus_rare"
+    "dcs_climate:food/crop_ranunculus_rare",
+    "dcs_climate:food/crop_amaryllis_rare",
+    "dcs_climate:food/crop_lily_rare"
   ]
 }

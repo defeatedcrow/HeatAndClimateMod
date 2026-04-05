@@ -22,6 +22,8 @@
     "dcs_climate:food/crop_grape_wild",
     "dcs_climate:food/crop_iris_wild",
     "dcs_climate:food/crop_orchid_wild",
-    "dcs_climate:food/crop_ranunculus_wild"
+    "dcs_climate:food/crop_ranunculus_wild",
+    "dcs_climate:food/crop_amaryllis_wild",
+    "dcs_climate:food/crop_lily_wild"
   ]
 }

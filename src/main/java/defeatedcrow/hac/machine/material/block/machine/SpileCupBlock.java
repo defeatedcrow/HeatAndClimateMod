@@ -66,11 +66,7 @@ public class SpileCupBlock extends EntityBlockDC {
 	public SpileCupBlock(String s) {
 		super(getProp());
 		name = s;
-		this.registerDefaultState(this.stateDefinition.any()
-				.setValue(DCState.FACING, Direction.NORTH)
-				.setValue(TYPE, SapType.SWEET)
-				.setValue(DCState.STAGE5, Integer.valueOf(0))
-				.setValue(EntityBlockDC.WATERLOGGED, Boolean.valueOf(false)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(TYPE, SapType.SWEET).setValue(DCState.STAGE5, 0).setValue(EntityBlockDC.WATERLOGGED, false));
 	}
 
 	public static BlockBehaviour.Properties getProp() {
@@ -90,18 +86,13 @@ public class SpileCupBlock extends EntityBlockDC {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext cont) {
 		Direction dir = DCState.getFace(state, DCState.FACING);
-		switch (dir) {
-		case NORTH:
-			return N_AABB;
-		case SOUTH:
-			return S_AABB;
-		case EAST:
-			return E_AABB;
-		case WEST:
-			return W_AABB;
-		default:
-			return N_AABB;
-		}
+		return switch (dir) {
+		case NORTH -> N_AABB;
+		case SOUTH -> S_AABB;
+		case EAST -> E_AABB;
+		case WEST -> W_AABB;
+		default -> N_AABB;
+		};
 	}
 
 	@Override
@@ -223,29 +214,29 @@ public class SpileCupBlock extends EntityBlockDC {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-				new JsonModelDC("dcs_climate:block/machine/spilecup_0", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_1", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_2", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_3", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_4", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_1", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_resin")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_2", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_resin")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_3", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_resin")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_4", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_resin")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_1", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_latex")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_2", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_latex")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_3", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_latex")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_4", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_latex")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_1", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_lacquer")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_2", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_lacquer")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_3", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_lacquer")),
-				new JsonModelDC("dcs_climate:block/machine/spilecup_4", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_lacquer")));
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_0", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_1", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_2", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_3", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_4", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_1", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_resin")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_2", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_resin")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_3", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_resin")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_4", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_resin")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_1", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_latex")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_2", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_latex")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_3", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_latex")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_4", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_latex")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_1", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_lacquer")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_2", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_lacquer")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_3", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_lacquer")),
+		    new JsonModelDC("dcs_climate:block/machine/spilecup_4", ImmutableMap.of("base", "dcs_climate:block/machine/spilecup", "sap", "dcs_climate:block/machine/spilecup_sap_lacquer")));
 	}
 
 	@Override
 	public List<String> getModelNameSuffix() {
 		return ImmutableList.of("base", "sweet_1", "sweet_2", "sweet_3", "sweet_4", "resin_1", "resin_2", "resin_3", "resin_4",
-				"latex_1", "latex_2", "latex_3", "latex_4", "lacquer_1", "lacquer_2", "lacquer_3", "lacquer_4");
+		    "latex_1", "latex_2", "latex_3", "latex_4", "lacquer_1", "lacquer_2", "lacquer_3", "lacquer_4");
 	}
 
 	@Override
@@ -317,7 +308,7 @@ public class SpileCupBlock extends EntityBlockDC {
 	@Override
 	public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
 		int i = DCState.getInt(state, DCState.STAGE5);
-		return i == 0 ? 0 : (i * 4) - 1;
+		return i == 0 ? 0 : i * 4 - 1;
 	}
 
 }

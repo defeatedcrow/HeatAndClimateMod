@@ -72,6 +72,13 @@ public class MillsDC {
 		list1.add(new Crops("schima_flower", FoodInit.FLOWER_SCHIMA, () -> Items.WHITE_DYE, FoodInit.DUST_PLANT));
 		list1.add(new Crops("artemisia", FoodInit.CROP_AS_ARTEMISIA, () -> Items.GREEN_DYE, FoodInit.DUST_PLANT));
 		list1.add(new Crops("buce", FoodInit.CROP_AR_BUCE, () -> Items.GREEN_DYE, FoodInit.DUST_PLANT));
+		list1.add(new Crops("snowdrop", FoodInit.CROP_AMR_SNOWDROP, () -> Items.WHITE_DYE, FoodInit.DUST_PLANT));
+		list1.add(new Crops("amaryllis", FoodInit.CROP_AMR_AMARYLLIS, () -> Items.MAGENTA_DYE, FoodInit.DUST_PLANT));
+		list1.add(new Crops("amana", FoodInit.CROP_LI_AMANA, () -> Items.LIGHT_GRAY_DYE, FoodInit.DUST_PLANT));
+		list1.add(new Crops("fawn", FoodInit.CROP_LI_FAWN, () -> Items.PURPLE_DYE, FoodInit.DUST_PLANT));
+		list1.add(new Crops("kukui", FoodInit.CROP_EU_KUKUI, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
+		list1.add(new Crops("cassava", FoodInit.CROP_EU_CASSAVA, FoodInit.FOOD_STARCH, FoodInit.DUST_PLANT));
+		list1.add(new Crops("taro", FoodInit.CROP_AR_TARO, FoodInit.FOOD_STARCH, FoodInit.DUST_PLANT));
 
 		list2.add(new Miscs("ore_iron", 1, () -> Tags.Items.ORES_IRON, () -> Items.RAW_IRON, () -> Items.RAW_IRON));
 		list2.add(new Miscs("ore_copper", 1, () -> Tags.Items.ORES_COPPER, () -> Items.RAW_COPPER, () -> Items.RAW_COPPER));
@@ -102,6 +109,7 @@ public class MillsDC {
 		list2.add(new Miscs("ore_sulfur", 1, () -> TagDC.ItemTag.ORES_SULFUR, CoreInit.GEM_SULFUR, CoreInit.GEM_SULFUR));
 
 		list2.add(new Miscs("fish_powder", 1, () -> TagDC.ItemTag.RAW_ALL_FISH, FoodInit.FOOD_FISH_POWDER, FoodInit.FOOD_FISH_POWDER));
+		list2.add(new Miscs("lily_root", 1, () -> TagDC.ItemTag.CROP_LILY_ROOT, FoodInit.FOOD_STARCH, FoodInit.FOOD_STARCH));
 
 		list3.add(new Sieve("ore_coal", 1, () -> Tags.Items.ORES_COAL, () -> Items.COAL, () -> Items.COAL));
 		list3.add(new Sieve("ore_lapis", 8, () -> Tags.Items.ORES_LAPIS, () -> Items.LAPIS_LAZULI, () -> Items.LAPIS_LAZULI));
@@ -115,23 +123,23 @@ public class MillsDC {
 	}
 
 	public record Crops(
-			String name,
-			Supplier<Item> input,
-			Supplier<Item> outputPri,
-			Supplier<Item> outputSec) {}
+	    String name,
+	    Supplier<Item> input,
+	    Supplier<Item> outputPri,
+	    Supplier<Item> outputSec) {}
 
 	public record Miscs(
-			String name,
-			int outputCount,
-			Supplier<TagKey<Item>> input,
-			Supplier<Item> outputPri,
-			Supplier<Item> outputSec) {}
+	    String name,
+	    int outputCount,
+	    Supplier<TagKey<Item>> input,
+	    Supplier<Item> outputPri,
+	    Supplier<Item> outputSec) {}
 
 	public record Sieve(
-			String name,
-			int outputCount,
-			Supplier<TagKey<Item>> input,
-			Supplier<Item> outputPri,
-			Supplier<Item> outputSec) {}
+	    String name,
+	    int outputCount,
+	    Supplier<TagKey<Item>> input,
+	    Supplier<Item> outputPri,
+	    Supplier<Item> outputSec) {}
 
 }

@@ -316,6 +316,8 @@ public class BuildInit {
 	    ItemTags.WOODEN_SLABS);
 	public static final RegistryObject<Block> SLAB_CITRUS = regBlock("slab_citrus_pomelo", () -> new SlabWoodDC("citrus_pomelo", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)),
 	    ItemTags.WOODEN_SLABS);
+	public static final RegistryObject<Block> SLAB_KUKUI = regBlock("slab_euphorbia_kukui", () -> new SlabWoodDC("euphorbia_kukui", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)),
+	    ItemTags.WOODEN_SLABS);
 	public static final RegistryObject<Block> SLAB_MORUS = regBlock("slab_morus_mulberry", () -> new SlabWoodDC("morus_mulberry", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)),
 	    ItemTags.WOODEN_SLABS);
 	public static final RegistryObject<Block> SLAB_EUCALYPTUS = regBlock("slab_myrtle_eucalyptus", () -> new SlabWoodDC("myrtle_eucalyptus", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)),
@@ -341,6 +343,8 @@ public class BuildInit {
 	    Blocks.OAK_PLANKS), FoodInit.PLANK_CN_CAMPHOR), ItemTags.WOODEN_STAIRS);
 	public static final RegistryObject<Block> STAIRS_CITRUS = regBlock("stairs_citrus_pomelo", () -> new StairsWoodDC("citrus_pomelo", BlockBehaviour.Properties.copy(
 	    Blocks.OAK_PLANKS), FoodInit.PLANK_CT_POMELO), ItemTags.WOODEN_STAIRS);
+	public static final RegistryObject<Block> STAIRS_KUKUI = regBlock("stairs_euphorbia_kukui", () -> new StairsWoodDC("euphorbia_kukui", BlockBehaviour.Properties.copy(
+	    Blocks.OAK_PLANKS), FoodInit.PLANK_CT_POMELO), ItemTags.WOODEN_STAIRS);
 	public static final RegistryObject<Block> STAIRS_MORUS = regBlock("stairs_morus_mulberry", () -> new StairsWoodDC("morus_mulberry", BlockBehaviour.Properties.copy(
 	    Blocks.OAK_PLANKS), FoodInit.PLANK_MR_MULBERRY), ItemTags.WOODEN_STAIRS);
 	public static final RegistryObject<Block> STAIRS_EUCALYPTUS = regBlock("stairs_myrtle_eucalyptus", () -> new StairsWoodDC("myrtle_eucalyptus", BlockBehaviour.Properties.copy(
@@ -362,6 +366,7 @@ public class BuildInit {
 	public static final RegistryObject<Block> SLIM_STAIRS_CHERRY = regBlock("slim_stairs_cherry_wild", () -> new SlimStairs("cherry_wild", false), null);
 	public static final RegistryObject<Block> SLIM_STAIRS_CAMPHOR = regBlock("slim_stairs_cinnamon_camphor", () -> new SlimStairs("cinnamon_camphor", false), null);
 	public static final RegistryObject<Block> SLIM_STAIRS_CITRUS = regBlock("slim_stairs_citrus_pomelo", () -> new SlimStairs("citrus_pomelo", false), null);
+	public static final RegistryObject<Block> SLIM_STAIRS_KUKUI = regBlock("slim_stairs_euphorbia_kukui", () -> new SlimStairs("euphorbia_kukui", false), null);
 	public static final RegistryObject<Block> SLIM_STAIRS_MORUS = regBlock("slim_stairs_morus_mulberry", () -> new SlimStairs("morus_mulberry", false), null);
 	public static final RegistryObject<Block> SLIM_STAIRS_EUCALYPTUS = regBlock("slim_stairs_myrtle_eucalyptus", () -> new SlimStairs("myrtle_eucalyptus", false), null);
 	public static final RegistryObject<Block> SLIM_STAIRS_ASH = regBlock("slim_stairs_olive_ash", () -> new SlimStairs("olive_ash", false), null);
@@ -376,6 +381,7 @@ public class BuildInit {
 	public static final RegistryObject<Block> FENCE_CHERRY = regBlock("fence_cherry_wild", () -> new FenceWoodDC("cherry_wild"), ItemTags.WOODEN_FENCES);
 	public static final RegistryObject<Block> FENCE_CAMPHOR = regBlock("fence_cinnamon_camphor", () -> new FenceWoodDC("cinnamon_camphor"), ItemTags.WOODEN_FENCES);
 	public static final RegistryObject<Block> FENCE_CITRUS = regBlock("fence_citrus_pomelo", () -> new FenceWoodDC("citrus_pomelo"), ItemTags.WOODEN_FENCES);
+	public static final RegistryObject<Block> FENCE_KUKUI = regBlock("fence_euphorbia_kukui", () -> new FenceWoodDC("euphorbia_kukui"), ItemTags.WOODEN_FENCES);
 	public static final RegistryObject<Block> FENCE_MORUS = regBlock("fence_morus_mulberry", () -> new FenceWoodDC("morus_mulberry"), ItemTags.WOODEN_FENCES);
 	public static final RegistryObject<Block> FENCE_EUCALYPTUS = regBlock("fence_myrtle_eucalyptus", () -> new FenceWoodDC("myrtle_eucalyptus"), ItemTags.WOODEN_FENCES);
 	public static final RegistryObject<Block> FENCE_ASH = regBlock("fence_olive_ash", () -> new FenceWoodDC("olive_ash"), ItemTags.WOODEN_FENCES);
@@ -390,6 +396,7 @@ public class BuildInit {
 	public static final RegistryObject<Block> DOOR_CHERRY = regDoorBlock("door_cherry", () -> new DoorWoodDC("cherry"), ItemTags.WOODEN_DOORS);
 	public static final RegistryObject<Block> DOOR_CAMPHOR = regDoorBlock("door_camphor", () -> new DoorWoodDC("camphor"), ItemTags.WOODEN_DOORS);
 	public static final RegistryObject<Block> DOOR_CITRUS = regDoorBlock("door_citrus", () -> new DoorWoodDC("citrus"), ItemTags.WOODEN_DOORS);
+	public static final RegistryObject<Block> DOOR_KUKUI = regDoorBlock("door_kukui", () -> new DoorWoodDC("kukui"), ItemTags.WOODEN_DOORS);
 	public static final RegistryObject<Block> DOOR_MORUS = regDoorBlock("door_mulberry", () -> new DoorWoodDC("mulberry"), ItemTags.WOODEN_DOORS);
 	public static final RegistryObject<Block> DOOR_EUCALYPTUS = regDoorBlock("door_eucalyptus", () -> new DoorWoodDC("eucalyptus"), ItemTags.WOODEN_DOORS);
 	public static final RegistryObject<Block> DOOR_ASH = regDoorBlock("door_ash", () -> new DoorWoodDC("ash"), ItemTags.WOODEN_DOORS);
@@ -402,6 +409,7 @@ public class BuildInit {
 	public static final RegistryObject<Block> TRAPDOOR_CHERRY = regBlock("trapdoor_cherry", () -> new TrapdoorWoodDC("cherry"), ItemTags.WOODEN_TRAPDOORS);
 	public static final RegistryObject<Block> TRAPDOOR_CAMPHOR = regBlock("trapdoor_camphor", () -> new TrapdoorWoodDC("camphor"), ItemTags.WOODEN_TRAPDOORS);
 	public static final RegistryObject<Block> TRAPDOOR_CITRUS = regBlock("trapdoor_citrus", () -> new TrapdoorWoodDC("citrus"), ItemTags.WOODEN_TRAPDOORS);
+	public static final RegistryObject<Block> TRAPDOOR_KUKUI = regBlock("trapdoor_kukui", () -> new TrapdoorWoodDC("kukui"), ItemTags.WOODEN_TRAPDOORS);
 	public static final RegistryObject<Block> TRAPDOOR_MORUS = regBlock("trapdoor_mulberry", () -> new TrapdoorWoodDC("mulberry"), ItemTags.WOODEN_TRAPDOORS);
 	public static final RegistryObject<Block> TRAPDOOR_EUCALYPTUS = regBlock("trapdoor_eucalyptus", () -> new TrapdoorWoodDC("eucalyptus"), ItemTags.WOODEN_TRAPDOORS);
 	public static final RegistryObject<Block> TRAPDOOR_ASH = regBlock("trapdoor_ash", () -> new TrapdoorWoodDC("ash"), ItemTags.WOODEN_TRAPDOORS);

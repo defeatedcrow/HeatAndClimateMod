@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/tree/euphorbia_kukui_leaves_d"
+  },
+  "parent": "dcs_climate:block/dcs_cross"
+}

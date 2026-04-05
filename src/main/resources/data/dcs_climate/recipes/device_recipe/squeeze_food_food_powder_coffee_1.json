@@ -1,0 +1,41 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "squeeze",
+  "result": {
+    "item": "dcs_climate:food/food_powder_coffee",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/food_roasted_coffee"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

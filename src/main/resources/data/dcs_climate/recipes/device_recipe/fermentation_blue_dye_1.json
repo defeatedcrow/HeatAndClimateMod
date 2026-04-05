@@ -1,0 +1,24 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "fermentation",
+  "result": {
+    "item": "minecraft:blue_dye",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/gardenia"
+    }
+  ],
+  "heat": [
+    "WARM",
+    "HOT"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "NORMAL"
+  ]
+}

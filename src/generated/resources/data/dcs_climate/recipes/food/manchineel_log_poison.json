@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/log_euphorbia_manchineel"
+    },
+    {
+      "tag": "forge:crafting_tools/mortar"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/sap_poison"
+  }
+}

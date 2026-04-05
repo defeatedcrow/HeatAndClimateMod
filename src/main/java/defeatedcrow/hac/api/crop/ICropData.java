@@ -34,7 +34,13 @@ public interface ICropData {
 
 	List<String> getGeneratedBiomeTag(CropTier tier);
 
-	int getContinuousRegistance(CropTier tier);
+	default int getContinuousRegistance(CropTier tier) {
+		return 5;
+	}
+
+	default float wildCropSpreadChance() {
+		return 0.05F;
+	}
 
 	default List<String> getAvoidBiomeTag(CropTier tier) {
 		return Lists.newArrayList();
@@ -47,21 +53,11 @@ public interface ICropData {
 	}
 
 	public enum SoilType {
-		FARMLAND,
-		DIRT,
-		SAND,
-		MUD,
-		WATER,
-		LOGS;
+		FARMLAND, DIRT, SAND, MUD, WATER, LOGS;
 	}
 
 	public enum AquaticType {
-		NONE,
-		EMERGED,
-		SUBMERGED,
-		FLOATING,
-		FORCED_EMERGED,
-		FORCED_SUBMERGED;
+		NONE, EMERGED, SUBMERGED, FLOATING, FORCED_EMERGED, FORCED_SUBMERGED;
 	}
 
 }

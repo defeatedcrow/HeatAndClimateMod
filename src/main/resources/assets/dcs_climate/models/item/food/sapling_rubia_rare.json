@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/crop/seed_rubia_ixora"
+  },
+  "parent": "minecraft:item/generated"
+}

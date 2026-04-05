@@ -1148,6 +1148,10 @@ public class CookingRecipes {
 		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FOOD_LEAF_MOLD.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CONT_LEAVES)));
+		
+		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(Items.BLUE_DYE, 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+			tags,
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_GARDENIA)));
 
 		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.SPROUT.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				tags,
@@ -1286,6 +1290,12 @@ public class CookingRecipes {
 		DeviceRecipeList.addFermentationRecipe(6, RecipeTypeDC.FERMENTATION, new ItemStack(FoodInit.FEED_SILAGE.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
 				tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.GRASSES)));
+		
+		// other
+		
+		DeviceRecipeList.addFermentationRecipe(1, RecipeTypeDC.FERMENTATION, new ItemStack(Items.FERMENTED_SPIDER_EYE, 1), ItemStack.EMPTY, 0, FluidStack.EMPTY,
+			tags,
+			ImmutableList.of(Ingredient.of(Items.SPIDER_EYE)));
 
 	}
 

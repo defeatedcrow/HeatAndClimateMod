@@ -37,6 +37,8 @@ public class ContainerRecipes {
 		list.add(new Cont("log_cinnamon_camphor", FoodInit.CONT_LOG_CN_CAMPHOR, () -> FoodInit.LOG_CN_CAMPHOR.get().asItem(), () -> TagDC.ItemTag.DUMMY));
 		list.add(new Cont("log_cinnamon_true", FoodInit.CONT_LOG_CN_CINNAMON, () -> FoodInit.LOG_CN_CINNAMON.get().asItem(), () -> TagDC.ItemTag.DUMMY));
 		list.add(new Cont("log_citrus_pomelo", FoodInit.CONT_LOG_CT_POMELO, () -> FoodInit.LOG_CT_POMELO.get().asItem(), () -> TagDC.ItemTag.DUMMY));
+		list.add(new Cont("log_euphorbia_kukui", FoodInit.CONT_LOG_EU_KUKUI, () -> FoodInit.LOG_EU_KUKUI.get().asItem(), () -> TagDC.ItemTag.DUMMY));
+		list.add(new Cont("log_euphorbia_manchineel", FoodInit.CONT_LOG_EU_MANCHINEEL, () -> FoodInit.LOG_EU_MANCHINEEL_DRY.get().asItem(), () -> TagDC.ItemTag.DUMMY));
 		list.add(new Cont("log_morus_mulberry", FoodInit.CONT_LOG_MR_MULBERRY, () -> FoodInit.LOG_MR_MULBERRY.get().asItem(), () -> TagDC.ItemTag.DUMMY));
 		list.add(new Cont("log_morus_paper", FoodInit.CONT_LOG_MR_PAPER, () -> FoodInit.LOG_MR_PAPER.get().asItem(), () -> TagDC.ItemTag.DUMMY));
 		list.add(new Cont("log_morus_rubber", FoodInit.CONT_LOG_MR_RUBBER, () -> FoodInit.LOG_MR_RUBBER.get().asItem(), () -> TagDC.ItemTag.DUMMY));
@@ -95,9 +97,9 @@ public class ContainerRecipes {
 	}
 
 	public record Cont(
-			String name,
-			Supplier<Block> output,
-			Supplier<Item> input,
-			Supplier<TagKey<Item>> inputTag) {}
+	    String name,
+	    Supplier<Block> output,
+	    Supplier<Item> input,
+	    Supplier<TagKey<Item>> inputTag) {}
 
 }

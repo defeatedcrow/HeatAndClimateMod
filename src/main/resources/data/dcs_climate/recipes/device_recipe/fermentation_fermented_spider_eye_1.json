@@ -1,0 +1,24 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "fermentation",
+  "result": {
+    "item": "minecraft:fermented_spider_eye",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:spider_eye"
+    }
+  ],
+  "heat": [
+    "WARM",
+    "HOT"
+  ],
+  "hum": [
+    "NORMAL",
+    "WET"
+  ],
+  "air": [
+    "NORMAL"
+  ]
+}

@@ -34,28 +34,23 @@ public class SaplingOlive extends SaplingBaseBlock {
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_OL_OLIVE.get();
-		case RARE:
-			return FoodInit.CROP_OL_OSMANTHUS.get();
-		default:
-			return FoodInit.CROP_OL_ASH.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_OL_OLIVE.get();
+		case RARE -> FoodInit.CROP_OL_OSMANTHUS.get();
+		case EPIC -> FoodInit.CROP_OL_JASMINE.get();
+		default -> FoodInit.CROP_OL_ASH.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_OL_ASH.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_OL_OLIVE.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_OL_OSMANTHUS.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_OL_ASH.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_OL_OLIVE.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_OL_OSMANTHUS.get());
+		case EPIC -> Optional.of(FoodInit.BLOCK_OL_JASMINE.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -65,11 +60,17 @@ public class SaplingOlive extends SaplingBaseBlock {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
+		if (t == CropTier.EPIC) {
+			return ImmutableList.of(DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL);
+		}
 		return ImmutableList.of(DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
 	}
 
 	@Override
 	public List<DCHumidity> getSuitableHum(CropTier t) {
+		if (t == CropTier.EPIC) {
+			return ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET);
+		}
 		return ImmutableList.of(DCHumidity.DRY, DCHumidity.NORMAL, DCHumidity.WET);
 	}
 
@@ -80,26 +81,20 @@ public class SaplingOlive extends SaplingBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("FOREST", "COLD", "CONIFEROUS");
-		case COMMON:
-			return ImmutableList.of("DRY", "PLAINS");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("FOREST", "COLD", "CONIFEROUS");
+		case COMMON -> ImmutableList.of("DRY", "PLAINS");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("WET", "HOT");
-		case COMMON:
-			return ImmutableList.of("WET", "COLD");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("WET", "HOT");
+		case COMMON -> ImmutableList.of("WET", "COLD");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
@@ -108,6 +103,8 @@ public class SaplingOlive extends SaplingBaseBlock {
 			return "olive";
 		if (tier == CropTier.RARE)
 			return "osmanthus";
+		if (tier == CropTier.EPIC)
+			return "jasmine";
 		return "ash";
 	}
 
@@ -125,7 +122,11 @@ public class SaplingOlive extends SaplingBaseBlock {
 			r = 3;
 		} else if (t == CropTier.RARE) {
 			leaves = FoodInit.LEAVES_OL_OSMANTHUS.get().defaultBlockState().setValue(DCState.FLAG, true);
-			h = 2 + level.random.nextInt(3);
+			h = 3 + level.random.nextInt(3);
+			r = 2;
+		} else if (t == CropTier.EPIC) {
+			leaves = FoodInit.LEAVES_OL_JASMINE.get().defaultBlockState().setValue(DCState.FLAG, true);
+			h = 1 + level.random.nextInt(3);
 			r = 2;
 		}
 
@@ -140,7 +141,9 @@ public class SaplingOlive extends SaplingBaseBlock {
 			if (replaceCheck(level, pos, h))
 				return;
 
-			if (h > 8) {
+			if (t == CropTier.EPIC) {
+				growSmallTree(level, pos, h, log, leaves);
+			} else if (h > 8) {
 				SaplingBeech.growBigTree2(level, pos, h, log, leaves);
 			} else if (h > 5) {
 				SaplingBeech.growBigTree(level, pos, h, log, leaves);

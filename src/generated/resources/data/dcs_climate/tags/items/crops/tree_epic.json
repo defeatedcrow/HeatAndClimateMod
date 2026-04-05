@@ -2,6 +2,7 @@
   "values": [
     "dcs_climate:food/crop_cherry_epic",
     "dcs_climate:food/crop_citrus_epic",
-    "dcs_climate:food/crop_sumac_epic"
+    "dcs_climate:food/crop_sumac_epic",
+    "dcs_climate:food/crop_olive_epic"
   ]
 }

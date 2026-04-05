@@ -13,6 +13,14 @@
     "#forge:crops/spiranthes",
     "#forge:crops/cymbidium",
     "#forge:crops/cattleya",
+    "#forge:crops/snowdrop",
+    "#forge:crops/amaryllis",
+    "#forge:crops/daffodil",
+    "#forge:crops/lycoris",
+    "#forge:crops/amana",
+    "#forge:crops/fawn",
+    "#forge:crops/goldband",
+    "#forge:crops/ixora",
     "#forge:crops/anemone",
     "#forge:crops/delphinium",
     "#forge:crops/clematis",
@@ -20,8 +28,10 @@
     "#forge:crops/heath",
     "#forge:crops/rhododendron",
     "#forge:crops/osmanthus",
+    "#forge:crops/jasmine",
     "#forge:crops/damaschena",
     "#forge:crops/camellia_flower",
-    "#forge:crops/schima_flower"
+    "#forge:crops/schima_flower",
+    "#forge:crops/gardenia_flower"
   ]
 }

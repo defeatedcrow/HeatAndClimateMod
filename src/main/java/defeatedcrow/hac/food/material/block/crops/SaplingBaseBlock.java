@@ -130,7 +130,7 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/sapling_" + getFamily().toString() + "_" + getSpeciesName(cropTier))));
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/sapling_" + getFamily().toString() + "_" + getSpeciesName(cropTier))));
 	}
 
 	@Override
@@ -177,14 +177,19 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 		}
 
 		// 葉
+		int h2 = h < 3 ? 0 : 1;
 		level.setBlock(pos.above(h), leaves, 2);
-		for (int j = 1; j < h; j++) {
+		for (int j = h2; j < h + 1; j++) {
 			for (int k = -1; k <= 1; k++) {
 				for (int l = -1; l <= 1; l++) {
 					BlockPos p1 = pos.offset(k, j, l);
 					BlockPos p2 = pos.offset(0, j, 0);
+					double lim = 4D;
+					if (j == h) {
+						lim = 1.5D;
+					}
 
-					if (p1.equals(p2))
+					if (p1.equals(p2) || p1.distSqr(p2) > lim)
 						continue;
 
 					int dist = Math.min(6, Mth.floor(p1.distSqr(p2)));
@@ -205,7 +210,7 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 		// 葉
 		level.setBlock(pos.above(h), leaves, 2);
 		int h2 = 2;
-		for (int j = (h - h2); j < h + 1; j++) {
+		for (int j = h - h2; j < h + 1; j++) {
 			for (int k = -2; k <= 2; k++) {
 				for (int l = -2; l <= 2; l++) {
 					double lim = 6D;
@@ -238,7 +243,7 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 		if (d2 == d1)
 			d2 = d1.getClockWise();
 		if (d3 == d1 || d3 == d2)
-			d3 = (d2 == d1.getOpposite()) ? d1.getClockWise() : d1.getOpposite();
+			d3 = d2 == d1.getOpposite() ? d1.getClockWise() : d1.getOpposite();
 		List<BlockPos> leavesPos = Lists.newArrayList();
 
 		// 幹
@@ -253,13 +258,12 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 			int az1 = d1.getStepZ();
 			int ax2 = d1.getClockWise().getStepX();
 			int az2 = d1.getClockWise().getStepZ();
-			BlockState log2 = d1.getAxis() == Direction.Axis.X ? log.setValue(BlockStateProperties.AXIS, Direction.Axis.X) :
-					log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
+			BlockState log2 = d1.getAxis() == Direction.Axis.X ? log.setValue(BlockStateProperties.AXIS, Direction.Axis.X) : log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
 			level.setBlock(mpos.setWithOffset(pos, ax1, h1, az1), log2, 2);
 			level.setBlock(mpos.setWithOffset(pos, ax1 * 2, h1, az1 * 2), log2, 2);
 			level.setBlock(mpos.setWithOffset(pos, ax1 * 2, h1 + 1, az1 * 2), log2, 2);
-			level.setBlock(mpos.setWithOffset(pos, (ax1 * 2) + ax2, h1 + 1, (az1 * 2) + az2), log, 2);
-			level.setBlock(mpos.setWithOffset(pos, (ax1 * 2) + ax2, h1 + 2, (az1 * 2) + az2), log, 2);
+			level.setBlock(mpos.setWithOffset(pos, ax1 * 2 + ax2, h1 + 1, az1 * 2 + az2), log, 2);
+			level.setBlock(mpos.setWithOffset(pos, ax1 * 2 + ax2, h1 + 2, az1 * 2 + az2), log, 2);
 			leavesPos.add(pos.offset(ax1 * 2, h1, az1 * 2));
 		}
 
@@ -268,13 +272,12 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 			int az1 = d2.getStepZ();
 			int ax2 = d2.getClockWise().getStepX();
 			int az2 = d2.getClockWise().getStepZ();
-			BlockState log2 = d2.getAxis() == Direction.Axis.X ? log.setValue(BlockStateProperties.AXIS, Direction.Axis.X) :
-					log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
+			BlockState log2 = d2.getAxis() == Direction.Axis.X ? log.setValue(BlockStateProperties.AXIS, Direction.Axis.X) : log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
 			level.setBlock(mpos.setWithOffset(pos, ax1, h2, az1), log2, 2);
 			level.setBlock(mpos.setWithOffset(pos, ax1 * 2, h2, az1 * 2), log2, 2);
 			level.setBlock(mpos.setWithOffset(pos, ax1 * 2, h2 + 1, az1 * 2), log2, 2);
-			level.setBlock(mpos.setWithOffset(pos, (ax1 * 2) + ax2, h2 + 1, (az1 * 2) + az2), log, 2);
-			level.setBlock(mpos.setWithOffset(pos, (ax1 * 2) + ax2, h2 + 2, (az1 * 2) + az2), log, 2);
+			level.setBlock(mpos.setWithOffset(pos, ax1 * 2 + ax2, h2 + 1, az1 * 2 + az2), log, 2);
+			level.setBlock(mpos.setWithOffset(pos, ax1 * 2 + ax2, h2 + 2, az1 * 2 + az2), log, 2);
 			leavesPos.add(pos.offset(ax1 * 2, h2, az1 * 2));
 		}
 
@@ -283,13 +286,12 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 			int az1 = d3.getStepZ();
 			int ax2 = d3.getClockWise().getStepX();
 			int az2 = d3.getClockWise().getStepZ();
-			BlockState log2 = d3.getAxis() == Direction.Axis.X ? log.setValue(BlockStateProperties.AXIS, Direction.Axis.X) :
-					log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
+			BlockState log2 = d3.getAxis() == Direction.Axis.X ? log.setValue(BlockStateProperties.AXIS, Direction.Axis.X) : log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
 			level.setBlock(mpos.setWithOffset(pos, ax1, h3, az1), log2, 2);
 			level.setBlock(mpos.setWithOffset(pos, ax1 * 2, h3, az1 * 2), log2, 2);
 			level.setBlock(mpos.setWithOffset(pos, ax1 * 2, h3 + 1, az1 * 2), log2, 2);
-			level.setBlock(mpos.setWithOffset(pos, (ax1 * 2) + ax2, h3 + 1, (az1 * 2) + az2), log, 2);
-			level.setBlock(mpos.setWithOffset(pos, (ax1 * 2) + ax2, h3 + 2, (az1 * 2) + az2), log, 2);
+			level.setBlock(mpos.setWithOffset(pos, ax1 * 2 + ax2, h3 + 1, az1 * 2 + az2), log, 2);
+			level.setBlock(mpos.setWithOffset(pos, ax1 * 2 + ax2, h3 + 2, az1 * 2 + az2), log, 2);
 			leavesPos.add(pos.offset(ax1 * 2, h3, az1 * 2));
 		}
 
@@ -410,7 +412,7 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 						lim = 4D;
 					}
 					if (j == h + 1) {
-						lim = 3D;
+						lim = 2D;
 					}
 
 					BlockPos p1 = pos.offset(k, j, l);
@@ -431,6 +433,133 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 						double lim = 6D;
 						if (j == -2 || j > 2) {
 							lim = 2D;
+						}
+
+						BlockPos p1 = pl.offset(k, j, l);
+						BlockPos p2 = pl.offset(0, j, 0);
+
+						if (p1.distSqr(p2) < lim) {
+							int dist = Math.min(6, Mth.floor(p1.distSqr(p2)));
+							placeLeaves(level, p1, dist, leaves);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// ドーム形 4+
+	public static void growSmallDomeTree(Level level, BlockPos pos, int h, BlockState log, BlockState leaves) {
+		int h1 = h - 2;
+		BlockState logX = log.setValue(BlockStateProperties.AXIS, Direction.Axis.X);
+		BlockState logZ = log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
+
+		// 幹
+		for (int i = 0; i < h; i++) {
+			level.setBlock(pos.above(i), log, 2);
+		}
+
+		MutableBlockPos mpos = new BlockPos.MutableBlockPos();
+		// 枝
+
+		level.setBlock(mpos.setWithOffset(pos, 1, h1, 0), logX, 2);
+		level.setBlock(mpos.setWithOffset(pos, -1, h1, 0), logX, 2);
+		level.setBlock(mpos.setWithOffset(pos, 0, h1, 1), logZ, 2);
+		level.setBlock(mpos.setWithOffset(pos, 0, h1, -1), logZ, 2);
+
+		// 葉
+		level.setBlock(pos.above(h), leaves, 2);
+		for (int j = h - 3; j < h + 2; j++) {
+			double lim = 10D + level.random.nextInt(2);
+			for (int k = -5; k <= 5; k++) {
+				for (int l = -5; l <= 5; l++) {
+					if (j == h) {
+						lim = 4D;
+					}
+					if (j == h + 1) {
+						lim = 2D;
+					}
+
+					BlockPos p1 = pos.offset(k, j, l);
+					BlockPos p2 = pos.offset(0, j, 0);
+
+					if (p1.distSqr(p2) < lim) {
+						int dist = Math.min(6, Mth.floor(p1.distSqr(p2)));
+						placeLeaves(level, p1, dist, leaves);
+					}
+				}
+			}
+		}
+	}
+
+	// ドーム形 6+
+	public static void growDomeTree(Level level, BlockPos pos, int h, BlockState log, BlockState leaves) {
+		int b = 3;
+		int h1 = h - b + level.random.nextInt(2);
+		int h2 = h - b + level.random.nextInt(2);
+		int h3 = h - b + level.random.nextInt(2);
+		int h4 = h - b + level.random.nextInt(2);
+		List<BlockPos> leavesPos = Lists.newArrayList();
+		BlockState logX = log.setValue(BlockStateProperties.AXIS, Direction.Axis.X);
+		BlockState logZ = log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
+
+		// 幹
+		for (int i = 0; i < h; i++) {
+			level.setBlock(pos.above(i), log, 2);
+		}
+
+		MutableBlockPos mpos = new BlockPos.MutableBlockPos();
+		// 枝
+
+		level.setBlock(mpos.setWithOffset(pos, 1, h1, 0), logX, 2);
+		level.setBlock(mpos.setWithOffset(pos, 2, h1, 0), logX, 2);
+		level.setBlock(mpos.setWithOffset(pos, 3, h1, 0), logX, 2);
+		level.setBlock(mpos.setWithOffset(pos, -1, h3, 0), logX, 2);
+		level.setBlock(mpos.setWithOffset(pos, -2, h3, 0), logX, 2);
+		level.setBlock(mpos.setWithOffset(pos, -3, h3, 0), logX, 2);
+		level.setBlock(mpos.setWithOffset(pos, 0, h2, 1), logZ, 2);
+		level.setBlock(mpos.setWithOffset(pos, 0, h2, 2), logZ, 2);
+		level.setBlock(mpos.setWithOffset(pos, 0, h2, 3), logZ, 2);
+		level.setBlock(mpos.setWithOffset(pos, 0, h4, -1), logZ, 2);
+		level.setBlock(mpos.setWithOffset(pos, 0, h4, -2), logZ, 2);
+		level.setBlock(mpos.setWithOffset(pos, 0, h4, -3), logZ, 2);
+
+		leavesPos.add(pos.offset(2, h1, 0));
+		leavesPos.add(pos.offset(-2, h3, 0));
+		leavesPos.add(pos.offset(0, h2, 2));
+		leavesPos.add(pos.offset(0, h4, -2));
+
+		// 葉
+		level.setBlock(pos.above(h), leaves, 2);
+		for (int j = h - 2; j < h + 2; j++) {
+			double lim = 4D + level.random.nextInt(3);
+			for (int k = -3; k <= 3; k++) {
+				for (int l = -3; l <= 3; l++) {
+					if (j == h) {
+						lim = 4D;
+					}
+					if (j == h + 1) {
+						lim = 2D;
+					}
+
+					BlockPos p1 = pos.offset(k, j, l);
+					BlockPos p2 = pos.offset(0, j, 0);
+
+					if (p1.distSqr(p2) < lim) {
+						int dist = Math.min(6, Mth.floor(p1.distSqr(p2)));
+						placeLeaves(level, p1, dist, leaves);
+					}
+				}
+			}
+		}
+
+		for (BlockPos pl : leavesPos) {
+			for (int j = -1; j < 2; j++) {
+				for (int k = -3; k <= 3; k++) {
+					for (int l = -3; l <= 3; l++) {
+						double lim = 6D;
+						if (j == 1) {
+							lim = 3D;
 						}
 
 						BlockPos p1 = pl.offset(k, j, l);
