@@ -6,13 +6,13 @@
     "count": 1
   },
   "secondary": {
-    "item": "dcs_climate:food/dust_press_cake",
+    "item": "dcs_climate:main/dust_plant",
     "count": 1
   },
   "secondary_rate": 50,
   "ingredients": [
     {
-      "tag": "forge:crops/sesami"
+      "item": "dcs_climate:food/crop_cinnamon_rare"
     }
   ],
   "heat": [

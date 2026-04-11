@@ -128,6 +128,10 @@ public class StonemillRecipes {
 		    new ItemStack(FoodInit.CROP_CN_CINNAMON.get(), 1), new ItemStack(FoodInit.DUST_WOOD.get(), 4), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 		    ImmutableList.of(Ingredient.of(FoodInit.LOG_CN_CINNAMON.get())));
 
+		DeviceRecipeList.addPulverizeRecipe(14, RecipeTypeDC.MILL,
+		    new ItemStack(FoodInit.FOOD_PLANT_OIL.get(), 1), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 50, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+		    ImmutableList.of(Ingredient.of(FoodInit.CROP_CN_AVOCADO.get())));
+
 		// erica
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.MILL,
 		    new ItemStack(Items.GRAY_DYE, 2), new ItemStack(FoodInit.DUST_PLANT.get()), 50, ItemStack.EMPTY, 0, FluidStack.EMPTY,
@@ -293,7 +297,7 @@ public class StonemillRecipes {
 		    ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_ROGERIA)));
 
 		DeviceRecipeList.addPulverizeRecipe(6, RecipeTypeDC.MILL,
-		    new ItemStack(FoodInit.FOOD_PLANT_OIL.get(), 1), new ItemStack(FoodInit.FOOD_PRESS_CAKE.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+		    new ItemStack(FoodInit.FOOD_PLANT_OIL.get(), 1), new ItemStack(FoodInit.FOOD_PRESS_CAKE.get()), 50, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 		    ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_SESAMI)));
 
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.MILL,
@@ -679,8 +683,8 @@ public class StonemillRecipes {
 		    new ItemStack(Items.YELLOW_DYE, 2), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 50, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 		    ImmutableList.of(Ingredient.of(Items.DANDELION)));
 
-		DeviceRecipeList.addPulverizeRecipe(5, RecipeTypeDC.MILL,
-		    new ItemStack(Items.YELLOW_DYE, 2), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 50, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+		DeviceRecipeList.addPulverizeRecipe(15, RecipeTypeDC.MILL,
+		    new ItemStack(FoodInit.FOOD_PLANT_OIL.get(), 1), new ItemStack(Items.YELLOW_DYE, 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 		    ImmutableList.of(Ingredient.of(Items.SUNFLOWER)));
 
 		DeviceRecipeList.addPulverizeRecipe(4, RecipeTypeDC.MILL,

@@ -1,18 +1,22 @@
 {
   "type": "dcs_climate:device_recipe",
-  "group": "mill",
+  "group": "squeeze",
   "result": {
-    "item": "minecraft:yellow_dye",
+    "item": "dcs_climate:food/pack_plant_oil",
     "count": 2
   },
   "secondary": {
     "item": "dcs_climate:main/dust_plant",
     "count": 1
   },
-  "secondary_rate": 50,
+  "secondary_rate": 100,
+  "result_fluid": {
+    "fluid": "dcs_climate:plant_oil",
+    "amount": 500
+  },
   "ingredients": [
     {
-      "item": "minecraft:sunflower"
+      "item": "dcs_climate:food/crop_cinnamon_rare"
     }
   ],
   "heat": [

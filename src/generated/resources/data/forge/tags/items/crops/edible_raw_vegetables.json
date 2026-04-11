@@ -22,6 +22,7 @@
     "#forge:crops/pumpkin",
     "#forge:crops/carrot",
     "#forge:crops/beetroot",
-    "#forge:crops/coriander"
+    "#forge:crops/coriander",
+    "#forge:ingredients/sprout"
   ]
 }

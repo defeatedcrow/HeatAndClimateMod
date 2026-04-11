@@ -131,6 +131,11 @@ public class PulveriseRecipes {
 		    new ItemStack(FoodInit.CROP_CN_CINNAMON.get(), 2), new ItemStack(FoodInit.DUST_WOOD.get(), 4), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 		    ImmutableList.of(Ingredient.of(FoodInit.LOG_CN_CINNAMON.get())));
 
+		DeviceRecipeList.addPulverizeRecipe(14, RecipeTypeDC.SQUEEZE,
+		    new ItemStack(FoodInit.FOOD_PLANT_OIL.get(), 2), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 100, ItemStack.EMPTY, 0,
+		    new FluidStack(CoreInit.PLANT_OIL.getStillFluid().get(), 500),
+		    ImmutableList.of(Ingredient.of(FoodInit.CROP_CN_AVOCADO.get())));
+
 		// erica
 		DeviceRecipeList.addPulverizeRecipe(1, RecipeTypeDC.PULVERISE,
 		    new ItemStack(Items.GRAY_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get()), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
@@ -692,8 +697,8 @@ public class PulveriseRecipes {
 		    new ItemStack(Items.YELLOW_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 		    ImmutableList.of(Ingredient.of(Items.DANDELION)));
 
-		DeviceRecipeList.addPulverizeRecipe(5, RecipeTypeDC.PULVERISE,
-		    new ItemStack(Items.YELLOW_DYE, 3), new ItemStack(FoodInit.DUST_PLANT.get(), 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
+		DeviceRecipeList.addPulverizeRecipe(15, RecipeTypeDC.PULVERISE,
+		    new ItemStack(FoodInit.FOOD_PLANT_OIL.get(), 2), new ItemStack(Items.YELLOW_DYE, 1), 100, ItemStack.EMPTY, 0, FluidStack.EMPTY,
 		    ImmutableList.of(Ingredient.of(Items.SUNFLOWER)));
 
 		DeviceRecipeList.addPulverizeRecipe(4, RecipeTypeDC.PULVERISE,

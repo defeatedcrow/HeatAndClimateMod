@@ -2255,7 +2255,7 @@
 
   "dcs.tip.conveyor.transport":"アイテムの輸送を行います。",
   "dcs.tip.conveyor.smelt":"[気候精錬]",
-  "dcs.tip.conveyor.smelt.desc":"通過したアイテムを気候精錬します。SMELTING以上の高温と、低い通気のとき、バニラ精錬を行います。",
+  "dcs.tip.conveyor.smelt.desc":"通過したアイテムを気候精錬します。KILN以上の高温と、低い通気のとき、バニラ精錬を行います。",
   "dcs.tip.conveyor.dropper":"[アイテム挿入]",
   "dcs.tip.conveyor.dropper.desc":"真下のブロックにインベントリがあるとき、通過したアイテムを下のインベントリに挿入します。",
   "dcs.tip.conveyor.filler":"[流体充填]",

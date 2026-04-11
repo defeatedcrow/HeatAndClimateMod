@@ -11,6 +11,7 @@ import com.google.common.collect.ImmutableList;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IBiomeClimateRegister;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.event.WorldHeatTierEvent;
@@ -41,8 +42,8 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 	private static IForgeRegistry<Biome> reg = ForgeRegistries.BIOMES;
 
 	private BiomeClimateRegister() {
-		BiomeClimateRegister.regMap = new HashMap<ResourceLocation, Climate>();
-		BiomeClimateRegister.seasons = new ArrayList<ResourceLocation>();
+		BiomeClimateRegister.regMap = new HashMap<>();
+		BiomeClimateRegister.seasons = new ArrayList<>();
 	}
 
 	@Override
@@ -114,7 +115,7 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 			Holder<Biome> b = world.getBiome(pos);
 			ResourceLocation dim = world.dimension().location();
 			Optional<DCHeatTier> ret = getRegisteredHeatTier(reg.getKey(b.get()));
-			float temp = ret.map(h -> h.getBiomeTemp()).orElse(b.get().getBaseTemperature());
+			float temp = ret.map(DCHeatTier::getBiomeTemp).orElse(b.get().getBaseTemperature());
 			boolean isNether = world.getBiome(pos).is(BiomeTags.IS_NETHER);
 			boolean isEnd = world.getBiome(pos).is(BiomeTags.IS_END);
 
@@ -131,15 +132,16 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 			float offset2 = DCTimeHelper.getTimeOffset(world, b);
 			temp += offset2;
 
+			if (isNether) {
+				temp += ConfigCommonBuilder.INSTANCE.getSeasonTempOffset(EnumSeason.SCORCHER);
+			} else if (isEnd) {
+				temp += ConfigCommonBuilder.INSTANCE.getSeasonTempOffset(EnumSeason.ABSOLUTE);
+			}
+
 			DCHeatTier current = DCHeatTier.getTypeByBiomeTemp(temp);
 
-			if (isNether) {
-				if (ConfigCommonBuilder.INSTANCE.enInferno.get())
-					current = DCHeatTier.INFERNO;
-				else
-					current = current.addTier(1);
-			} else if (isEnd) {
-				current = current.addTier(-1);
+			if (isNether && ConfigCommonBuilder.INSTANCE.enInferno.get()) {
+				current = DCHeatTier.INFERNO;
 			}
 
 			WorldHeatTierEvent event = new WorldHeatTierEvent(world, pos, current, true);
@@ -186,19 +188,19 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 	@Override
 	public Optional<DCHeatTier> getRegisteredHeatTier(ResourceLocation biomeID) {
 		Optional<IClimate> clm = getClimateFromList(biomeID);
-		return clm.map(ret -> ret.getHeat());
+		return clm.map(IClimate::getHeat);
 	}
 
 	@Override
 	public Optional<DCAirflow> getRegisteredAirflow(ResourceLocation biomeID) {
 		Optional<IClimate> clm = getClimateFromList(biomeID);
-		return clm.map(ret -> ret.getAirflow());
+		return clm.map(IClimate::getAirflow);
 	}
 
 	@Override
 	public Optional<DCHumidity> getRegisteredHumidity(ResourceLocation biomeID) {
 		Optional<IClimate> clm = getClimateFromList(biomeID);
-		return clm.map(ret -> ret.getHumidity());
+		return clm.map(IClimate::getHumidity);
 	}
 
 }

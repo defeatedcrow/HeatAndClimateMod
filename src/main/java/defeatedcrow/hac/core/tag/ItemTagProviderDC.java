@@ -376,7 +376,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.CREAMS).addTags(TagDC.ItemTag.CREAM, TagDC.ItemTag.WHIP);
 
-		tag(TagDC.ItemTag.SAPS).addTags(TagDC.ItemTag.SAP_SWEET, TagDC.ItemTag.SAP_RESIN, TagDC.ItemTag.SAP_LATEX, TagDC.ItemTag.SAP_LACQUER, TagDC.ItemTag.SAP_POISON);
+		tag(TagDC.ItemTag.SAPS).addTags(TagDC.ItemTag.SAP_SWEET, TagDC.ItemTag.SAP_RESIN, TagDC.ItemTag.SAP_LATEX, TagDC.ItemTag.SAP_LACQUER);
 
 		tag(TagDC.ItemTag.FOOD_WAX).addTags(TagDC.ItemTag.FOOD_BEESWAX, TagDC.ItemTag.FOOD_TREEWAX);
 

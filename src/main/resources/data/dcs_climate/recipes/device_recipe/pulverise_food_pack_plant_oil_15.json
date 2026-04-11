@@ -2,11 +2,11 @@
   "type": "dcs_climate:device_recipe",
   "group": "pulverise",
   "result": {
-    "item": "minecraft:yellow_dye",
-    "count": 3
+    "item": "dcs_climate:food/pack_plant_oil",
+    "count": 2
   },
   "secondary": {
-    "item": "dcs_climate:main/dust_plant",
+    "item": "minecraft:yellow_dye",
     "count": 1
   },
   "secondary_rate": 100,

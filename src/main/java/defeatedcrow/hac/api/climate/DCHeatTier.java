@@ -34,33 +34,33 @@ import net.minecraft.util.Mth;
  * HOT以下のレシピはKILNでは高すぎて適応できない。また、SMELT以上のレシピは加熱不足で適応できない。
  */
 public enum DCHeatTier {
-	// absolute
+    // absolute
 	ABSOLUTE(-273, -5, 0, 0x0000A0, -6.0F),
-	// extreme cooling
+    // extreme cooling
 	CRYOGENIC(-150, -4, 1, 0x0020FF, -3.0F),
-	// icecream making and cooling
+    // icecream making and cooling
 	FROSTBITE(-50, -3, 2, 0x00A0FF, -1.0F),
-	// cold climate biome
+    // cold climate biome
 	COLD(-20, -2, 3, 0x00FFFF, -0.5F),
-	// cool climate biome
+    // cool climate biome
 	COOL(0, -1, 4, 0x70FFFF, 0F),
-	// electric or mechanical energy require
+    // electric or mechanical energy require
 	NORMAL(20, 0, 5, 0x00E115, 0.5F),
-	// warm climate biome
+    // warm climate biome
 	WARM(35, 1, 6, 0xA0FF00, 0.9F),
-	// drying or brewing
+    // drying or brewing
 	HOT(50, 2, 7, 0xFFE000, 1.3F),
-	// boiling temperature
+    // boiling temperature
 	BOIL(100, 3, 8, 0xFFA000, 2.1F),
-	// cooking
+    // cooking
 	OVEN(220, 4, 9, 0xFF5000, 4.5F),
-	// making charcoal, bronze, burn dust
+    // making charcoal, bronze, burn dust
 	KILN(800, 5, 10, 0xD00000, 16.0F),
-	// making iron or another metal
+    // making iron or another metal
 	SMELTING(1500, 6, 11, 0xFF00FF, 30.0F),
-	// special alloy
+    // special alloy
 	UHT(3000, 7, 12, 0xFFA0FF, 60.0F),
-	// only on data
+    // only on data
 	INFERNO(8000, 8, 13, 0x500000, 150.0F);
 
 	private final int temp;
@@ -82,36 +82,22 @@ public enum DCHeatTier {
 			tier = -5;
 		if (tier > 8)
 			tier = 8;
-		switch (tier) {
-		case -5:
-			return ABSOLUTE;
-		case -4:
-			return CRYOGENIC;
-		case -3:
-			return FROSTBITE;
-		case -2:
-			return COLD;
-		case -1:
-			return COOL;
-		case 1:
-			return WARM;
-		case 2:
-			return HOT;
-		case 3:
-			return BOIL;
-		case 4:
-			return OVEN;
-		case 5:
-			return KILN;
-		case 6:
-			return SMELTING;
-		case 7:
-			return UHT;
-		case 8:
-			return INFERNO;
-		default:
-			return NORMAL;
-		}
+		return switch (tier) {
+		case -5 -> ABSOLUTE;
+		case -4 -> CRYOGENIC;
+		case -3 -> FROSTBITE;
+		case -2 -> COLD;
+		case -1 -> COOL;
+		case 1 -> WARM;
+		case 2 -> HOT;
+		case 3 -> BOIL;
+		case 4 -> OVEN;
+		case 5 -> KILN;
+		case 6 -> SMELTING;
+		case 7 -> UHT;
+		case 8 -> INFERNO;
+		default -> NORMAL;
+		};
 	}
 
 	public DCHeatTier addTier(int i) {
@@ -163,8 +149,8 @@ public enum DCHeatTier {
 	}
 
 	public int[] getColor() {
-		int r = (color >> 16) & 255;
-		int g = (color >> 8) & 255;
+		int r = color >> 16 & 255;
+		int g = color >> 8 & 255;
 		int b = color & 255;
 		return new int[] { r, g, b };
 	}
@@ -294,7 +280,7 @@ public enum DCHeatTier {
 	}
 
 	public static List<DCHeatTier> smeltingTemp() {
-		return ImmutableList.of(SMELTING, UHT, INFERNO);
+		return ImmutableList.of(KILN, SMELTING, UHT, INFERNO);
 	}
 
 	public static MutableComponent basename() {

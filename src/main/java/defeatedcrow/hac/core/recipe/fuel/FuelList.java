@@ -26,8 +26,8 @@ public class FuelList {
 		addBiomassFuel(ItemTags.SAPLINGS, 100);
 		addBiomassFuel(TagDC.ItemTag.FUEL_BIOMASS, 200);
 		addBiomassFuel(TagDC.ItemTag.CONT_RESIDUES, 1600);
-		addFluidFuel(TagDC.FluidTag.PLANT_OIL, 80);
-		addFluidFuel(TagDC.FluidTag.USED_PLANT_OIL, 80);
+		addFluidFuel(TagDC.FluidTag.PLANT_OIL, 30);
+		addFluidFuel(TagDC.FluidTag.USED_PLANT_OIL, 30);
 		addFluidFuel(TagDC.FluidTag.FUEL, 240);
 	}
 

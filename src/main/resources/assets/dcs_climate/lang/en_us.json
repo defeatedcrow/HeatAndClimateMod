@@ -2231,7 +2231,7 @@
 
   "dcs.tip.conveyor.transport":"Transport Item",
   "dcs.tip.conveyor.smelt":"[Smelting]",
-  "dcs.tip.conveyor.smelt.desc":"Climate smelting the passing item. At above SMETING temp and lower airflow, try vanilla smelting.",
+  "dcs.tip.conveyor.smelt.desc":"Climate smelting the passing item. At above KILN temp and lower airflow, try vanilla smelting.",
   "dcs.tip.conveyor.dropper":"[Insert Item]",
   "dcs.tip.conveyor.dropper.desc":"Try to insert the passing item into the inventory of the block below.",
   "dcs.tip.conveyor.filler":"[Fluid Filler]",
