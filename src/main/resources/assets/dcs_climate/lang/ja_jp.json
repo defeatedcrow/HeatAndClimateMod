@@ -148,6 +148,8 @@
   "item.dcs_climate.main.lure_egi_fire":"炎のエギ",
   "item.dcs_climate.main.lure_worm_craw":"弾むワームホッグ",
   "item.dcs_climate.main.lure_magnet":"宝探しマグネット",
+  
+  "item.dcs_climate.main.canoe_kukui":"アウトリガー・カヌー",
 
   "item.dcs_climate.main.bucket_calabash":"ヒョウタンの水筒",
 
@@ -817,9 +819,12 @@
   "item.dcs_climate.food.kobachi_white":"白和え",
   "item.dcs_climate.food.kobachi_namerou":"なめろう",
   "item.dcs_climate.food.kobachi_tuna_avocado":"マグロとアボカドのポケ",
+  "item.dcs_climate.food.kobachi_skipjack_avocado":"カツオとアボカドのポケ",
+  "item.dcs_climate.food.kobachi_poisson_cru":"タヒチ風ポワソン・クリュ",
 
   "item.dcs_climate.food.omelet_basic":"プレーンオムレツ",
   "item.dcs_climate.food.omelet_vegi":"野菜のオムレツ",
+  "item.dcs_climate.food.fried_egg":"めだまやき",
 
   "item.dcs_climate.food.saute_green":"炒青菜",
   "item.dcs_climate.food.saute_green_squid":"魷魚炒青菜",
@@ -894,8 +899,14 @@
   "item.dcs_climate.food.stick_fish_cooked":"串焼き魚",
   "item.dcs_climate.food.stick_vegi_raw":"生の野菜串",
   "item.dcs_climate.food.stick_vegi_cooked":"串焼き野菜",
+  "item.dcs_climate.food.stick_potato_raw":"生のいも串",
+  "item.dcs_climate.food.stick_potato_cooked":"串焼きいも",
+  "item.dcs_climate.food.stick_eggplant_raw":"生のナス串",
+  "item.dcs_climate.food.stick_eggplant_cooked":"串焼きナス",
   "item.dcs_climate.food.stick_corn_raw":"生のコーン串",
   "item.dcs_climate.food.stick_corn_cooked":"串焼きコーン",
+  "item.dcs_climate.food.stick_lettuce_raw":"生のレタス串",
+  "item.dcs_climate.food.stick_lettuce_cooked":"串焼きレタス",
 
   "item.dcs_climate.food.sweetpotato_raw":"紙包みのサツマイモ",
   "item.dcs_climate.food.sweetpotato_cooked":"焼き芋",
@@ -981,12 +992,15 @@
   "item.dcs_climate.food.drink_soda_guava":"グァバソーダ",
 
   "item.dcs_climate.food.cup_tea_green":"緑茶",
+  "item.dcs_climate.food.cup_tea_green_sakura":"さくら緑茶",
   "item.dcs_climate.food.cup_tea_blue":"烏龍茶",
+  "item.dcs_climate.food.cup_tea_blue_jasmine":"ジャスミンティー",
   "item.dcs_climate.food.cup_tea_black":"紅茶",
   "item.dcs_climate.food.cup_tea_lemon":"レモンティー",
   "item.dcs_climate.food.cup_tea_apple":"アップルティー",
   "item.dcs_climate.food.cup_tea_berry":"ベリーティー",
   "item.dcs_climate.food.cup_tea_chai":"チャイ",
+  "item.dcs_climate.food.cup_coffee":"コーヒー",
   "item.dcs_climate.food.cup_cocoa":"ココア",
   "item.dcs_climate.food.cup_mint":"ミントティー",
   "item.dcs_climate.food.cup_mallow":"マロウティー",
@@ -999,6 +1013,7 @@
   "item.dcs_climate.food.cup_tea_black_milk":"ミルクティー",
   "item.dcs_climate.food.cup_tea_apple_milk":"アップルミルクティー",
   "item.dcs_climate.food.cup_tea_berry_milk":"ベリーミルクティー",
+  "item.dcs_climate.food.cup_coffee_milk":"カフェオレ",
   "item.dcs_climate.food.cup_cocoa_milk":"ミルクココア",
 
   "item.dcs_climate.food.bottle_beer":"ビール",
@@ -2094,6 +2109,7 @@
   "entity.dcs_climate.cutlery_spoon":"スプーン",
   "entity.dcs_climate.cutlery_fork":"フォーク",
   "entity.dcs_climate.chair_entity":"椅子",
+  "entity.dcs_climate.canoe_entity":"アウトリガー・カヌー",
 
   "entity.dcs_climate.bread_round":"パン",
   "entity.dcs_climate.bread_square":"食パン",
@@ -2110,6 +2126,7 @@
   "entity.dcs_climate.stick_fish":"串焼き",
   "entity.dcs_climate.stick_corn":"串焼き",
   "entity.dcs_climate.stick_vegi":"串焼き",
+  "entity.dcs_climate.stick_potato":"串焼き",
   "entity.dcs_climate.cooked_sweetpotato":"焼き芋",
   "entity.dcs_climate.casserole":"キャセロール",
   "entity.dcs_climate.plate_steak":"ステーキプレート",
@@ -2313,6 +2330,8 @@
   "dcs.tip.empty_pack":"右クリック:水やミルクを汲むことが出来ます。",
   "dcs.tip.remove_bad_potion":"悪性ポーション効果を解除します。",
   "dcs.tip.healing":"即時回復",
+  "dcs.tip.seasoning":"[調味料]",
+  "dcs.tip.seasoning.desc":"食べ物とクラフトすると、食べ物の風味が良くなります。",
   "dcs.tip.coodinate":"=== 登録座標 ===",
 
   "dcs.tip.fishdata.biome":"生息域: ",

@@ -32,6 +32,7 @@ public class DCRecipes {
 	public static final Map<ResourceLocation, IClimateSmelting> SMELTING = new HashMap<>();
 	public static final Map<ResourceLocation, IHeatTreatment> HEAT_TREATMENT = new HashMap<>();
 
+	public static final Map<ResourceLocation, IDeviceRecipe> MILL = new HashMap<>();
 	public static final Map<ResourceLocation, IDeviceRecipe> PULVERISE = new HashMap<>();
 	public static final Map<ResourceLocation, IDeviceRecipe> SQUEEZE = new HashMap<>();
 	public static final Map<ResourceLocation, IDeviceRecipe> SIEVE = new HashMap<>();
@@ -48,6 +49,7 @@ public class DCRecipes {
 	public static void clear() {
 		SMELTING.clear();
 		// HEAT_TREATMENT.clear();
+		MILL.clear();
 		PULVERISE.clear();
 		SQUEEZE.clear();
 		FERMENTATION.clear();
@@ -202,9 +204,7 @@ public class DCRecipes {
 	}
 
 	public static Optional<IDeviceRecipe> getMillRecipe(List<ItemStack> inputs) {
-		Map<ResourceLocation, IDeviceRecipe> mills = new HashMap<>();
-		mills.putAll(INSTANCE.PULVERISE);
-		mills.putAll(INSTANCE.SQUEEZE);
+		Map<ResourceLocation, IDeviceRecipe> mills = new HashMap<>(INSTANCE.MILL);
 		for (IDeviceRecipe recipe : mills.values()) {
 			if (recipe.matcheInput(inputs).length > 0) {
 				return Optional.of(recipe);

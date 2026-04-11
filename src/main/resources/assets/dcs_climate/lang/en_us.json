@@ -148,6 +148,8 @@
   "item.dcs_climate.main.lure_egi_fire":"Fire Egi Jig",
   "item.dcs_climate.main.lure_worm_craw":"Rubber Craw Worm",
   "item.dcs_climate.main.lure_magnet":"Treasure Magnet",
+  
+  "item.dcs_climate.main.canoe_kukui":"Outrigger Canoe",
 
   "item.dcs_climate.main.bucket_calabash":"Calabash Water Bottle",
 
@@ -601,7 +603,7 @@
   "item.dcs_climate.food.sap_resin":"Resin",
   "item.dcs_climate.food.sap_latex":"Latex",
   "item.dcs_climate.food.sap_sumac":"Lacquer",
-  "item.dcs_climate.food.sap_poison":"Poison Sap",
+  "item.dcs_climate.food.sap_poison":"Poisonous Sap",
 
   "item.dcs_climate.food.string_plant":"Plant String",
   "item.dcs_climate.food.string_tree":"Bark String",
@@ -819,9 +821,12 @@
   "item.dcs_climate.food.kobachi_white":"Japanese Tofu Salad",
   "item.dcs_climate.food.kobachi_namerou":"Namero",
   "item.dcs_climate.food.kobachi_tuna_avocado":"Tuna Avokado Poke",
+  "item.dcs_climate.food.kobachi_skipjack_avocado":"Skipjack Avokado Poke",
+  "item.dcs_climate.food.kobachi_poisson_cru":"Tahitian Poisson Cru",
 
   "item.dcs_climate.food.omelet_basic":"Basic Omelet",
   "item.dcs_climate.food.omelet_vegi":"Vegetable Omelet",
+  "item.dcs_climate.food.fried_egg":"Fried Egg",
 
   "item.dcs_climate.food.saute_green":"Sauteed Asian Greens",
   "item.dcs_climate.food.saute_green_squid":"Sauteed Squid And Asian Greens",
@@ -896,8 +901,14 @@
   "item.dcs_climate.food.stick_fish_cooked":"Grilled Fish Skewer",
   "item.dcs_climate.food.stick_vegi_raw":"Raw Vegetable Skewer",
   "item.dcs_climate.food.stick_vegi_cooked":"Grilled Vegetable Skewer",
+  "item.dcs_climate.food.stick_potato_raw":"Raw Potato Skewer",
+  "item.dcs_climate.food.stick_potato_cooked":"Grilled Potato Skewer",
+  "item.dcs_climate.food.stick_eggplant_raw":"Raw Eggplant Skewer",
+  "item.dcs_climate.food.stick_eggplant_cooked":"Grilled Eggplant Skewer",
   "item.dcs_climate.food.stick_corn_raw":"Raw Corn Skewer",
   "item.dcs_climate.food.stick_corn_cooked":"Grilled Corn Skewer",
+  "item.dcs_climate.food.stick_lettuce_raw":"Raw Lettuce Skewer",
+  "item.dcs_climate.food.stick_lettuce_cooked":"Grilled Lettuce Skewer",
 
   "item.dcs_climate.food.sweetpotato_raw":"Paper-wrapped Sweet Potato",
   "item.dcs_climate.food.sweetpotato_cooked":"Roasted Sweet Potato",
@@ -983,12 +994,15 @@
   "item.dcs_climate.food.drink_soda_guava":"Guava Soda",
 
   "item.dcs_climate.food.cup_tea_green":"Green Tea",
+  "item.dcs_climate.food.cup_tea_green_sakura":"Sakura Green Tea",
   "item.dcs_climate.food.cup_tea_blue":"Oolong Tea",
+  "item.dcs_climate.food.cup_tea_blue_jasmine":"Jasmine Tea",
   "item.dcs_climate.food.cup_tea_black":"Black Tea",
   "item.dcs_climate.food.cup_tea_lemon":"Lemon Tea",
   "item.dcs_climate.food.cup_tea_apple":"Apple Tea",
   "item.dcs_climate.food.cup_tea_berry":"Berry Tea",
   "item.dcs_climate.food.cup_tea_chai":"Chai",
+  "item.dcs_climate.food.cup_coffee":"Coffee",
   "item.dcs_climate.food.cup_cocoa":"Cocoa",
   "item.dcs_climate.food.cup_mint":"Milt Tea",
   "item.dcs_climate.food.cup_mallow":"Mallow Tea",
@@ -1001,6 +1015,7 @@
   "item.dcs_climate.food.cup_tea_black_milk":"Milk Tea",
   "item.dcs_climate.food.cup_tea_apple_milk":"AppleMilk Tea",
   "item.dcs_climate.food.cup_tea_berry_milk":"BerryMilk Tea",
+  "item.dcs_climate.food.cup_coffee_milk":"Cafe au lait",
   "item.dcs_climate.food.cup_cocoa_milk":"Milk Cocoa",
 
   "item.dcs_climate.food.bottle_beer":"Beer",
@@ -2092,6 +2107,7 @@
   "entity.dcs_climate.cutlery_spoon":"Spoon",
   "entity.dcs_climate.cutlery_fork":"Fork",
   "entity.dcs_climate.chair_entity":"Chair",
+  "entity.dcs_climate.canoe_entity":"Outrigger Canoe",
 
   "entity.dcs_climate.bread_round":"Bread",
   "entity.dcs_climate.bread_square":"Plain Bread",
@@ -2105,6 +2121,7 @@
   "entity.dcs_climate.stick_fish":"Fish Skewer",
   "entity.dcs_climate.stick_corn":"Corn Skewer",
   "entity.dcs_climate.stick_vegi":"Vegetable Skewer",
+  "entity.dcs_climate.stick_potato":"Vegetable Skewer",
   "entity.dcs_climate.cooked_sweetpotato":"Roasted Sweet Potato",
   "entity.dcs_climate.salad":"Salad",
   "entity.dcs_climate.soup":"Soup Bowl",
@@ -2311,6 +2328,8 @@
   "dcs.tip.empty_pack":"Right-click: Can be filled with water or milk.",
   "dcs.tip.remove_bad_potion":"Removes bad potion effects.",
   "dcs.tip.healing":"Instant Healing",
+  "dcs.tip.seasoning":"[SEASONING]",
+  "dcs.tip.seasoning.desc":"Crafting this with food will improve its flavor.",
   "dcs.tip.coodinate":"=== Registered Coodinate ===",
 
   "dcs.tip.fishdata.biome":"Biome: ",

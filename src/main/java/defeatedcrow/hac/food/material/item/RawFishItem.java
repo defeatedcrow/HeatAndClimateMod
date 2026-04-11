@@ -32,7 +32,7 @@ public class RawFishItem extends FoodMaterialItemDC {
 
 	@Override
 	public boolean onEntityItemUpdate(ItemStack stack, ItemEntity drop) {
-		if (drop != null && !DCUtil.isEmpty(stack) && drop.getThrower() != null && drop.getAge() > 100) {
+		if (drop != null && !DCUtil.isEmpty(stack) && drop.getItem().getTag().contains("Released_Fish") && drop.getThrower() != null && drop.getAge() > 100) {
 			Player owner = drop.getThrower() != null ? drop.getLevel().getPlayerByUUID(drop.getThrower()) : null;
 			float f = drop.getEyeHeight();
 			if (owner != null && drop.isInWater() && drop.getFluidHeight(FluidTags.WATER) > f) {
@@ -44,13 +44,11 @@ public class RawFishItem extends FoodMaterialItemDC {
 					serverlevel.sendParticles(ParticleTypes.SPLASH, drop.getX(), d3, drop.getZ(), (int) (1.0F + drop.getBbWidth() * 20.0F), (double) drop.getBbWidth(), 0.0D, (double) drop.getBbWidth(), (double) 0.2F);
 
 					// playerに幸運を与える
-					if (stack.is(TagDC.ItemTag.KRILL) || drop.getLevel().random.nextInt(8) == 0) {
-						int i = 600;
-						if (owner.hasEffect(MobEffects.LUCK)) {
-							i += owner.getEffect(MobEffects.LUCK).getDuration();
-						}
-						owner.addEffect(new MobEffectInstance(MobEffects.LUCK, i));
+					int i = 600;
+					if (owner.hasEffect(MobEffects.LUCK)) {
+						i += owner.getEffect(MobEffects.LUCK).getDuration();
 					}
+					owner.addEffect(new MobEffectInstance(MobEffects.LUCK, i));
 				}
 				drop.setItem(ItemStack.EMPTY);
 			}

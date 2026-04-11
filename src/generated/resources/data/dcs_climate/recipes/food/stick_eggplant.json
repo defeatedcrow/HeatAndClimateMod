@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:rods/wooden"
+    },
+    {
+      "tag": "forge:crops/egg_plant"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/stick_eggplant_raw"
+  }
+}

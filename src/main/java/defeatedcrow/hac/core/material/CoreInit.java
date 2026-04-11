@@ -18,6 +18,7 @@ import defeatedcrow.hac.core.material.effects.MobEffectFlag;
 import defeatedcrow.hac.core.material.enchantment.FishingEnchantment;
 import defeatedcrow.hac.core.material.entity.ChairEntity;
 import defeatedcrow.hac.core.material.entity.ObjectEntityBaseDC;
+import defeatedcrow.hac.core.material.entity.proj.CanoeEntity;
 import defeatedcrow.hac.core.material.entity.proj.ThrownHarpoon;
 import defeatedcrow.hac.core.material.item.ItemGemDC;
 import defeatedcrow.hac.core.material.item.MaterialItemDC;
@@ -27,6 +28,7 @@ import defeatedcrow.hac.core.material.item.NullItemDC;
 import defeatedcrow.hac.core.material.item.armor.ArmorItemDC;
 import defeatedcrow.hac.core.material.item.tool.AgateMortarItem;
 import defeatedcrow.hac.core.material.item.tool.AltimeterItem;
+import defeatedcrow.hac.core.material.item.tool.CanoeItem;
 import defeatedcrow.hac.core.material.item.tool.CutleryChopsticksItem;
 import defeatedcrow.hac.core.material.item.tool.CutleryForkItem;
 import defeatedcrow.hac.core.material.item.tool.CutlerySpoonItem;
@@ -261,6 +263,8 @@ public class CoreInit {
 	public static final RegistryObject<Item> LURE_EGI_FIRE = regItem("lure_egi_fire", () -> new LureItem(MACHINE, "lure_egi_fire", TagDC.ItemTag.LURE));
 	public static final RegistryObject<Item> LURE_WORM_CLAW = regItem("lure_worm_craw", () -> new LureItem(MACHINE, "lure_worm_craw", TagDC.ItemTag.LURE));
 	public static final RegistryObject<Item> LURE_MAGNET = regItem("lure_magnet", () -> new LureItem(MACHINE, "lure_magnet", TagDC.ItemTag.LURE));
+
+	public static final RegistryObject<Item> CANOE_ITEM = regItem("canoe_kukui", CanoeItem::new);
 
 	public static final RegistryObject<Item> CALABASH_BUCKET = regItem("bucket_calabash", () -> new StackableBucketItem("bucket_calabash", TagDC.ItemTag.CRAFT_CALABASH));
 	public static final RegistryObject<Item> SPOON = regItem("cutlery_spoon", () -> new CutlerySpoonItem("cutlery_spoon"));
@@ -650,6 +654,9 @@ public class CoreInit {
 
 	public static final RegistryObject<EntityType<ChairEntity>> CHAIR_ENTITY = ENTITIES.register("chair_entity", () -> EntityType.Builder.<ChairEntity> of(ChairEntity::new,
 	    MobCategory.MISC).sized(0.5F, 0.1F).updateInterval(10).build("chair_entity"));
+
+	public static final RegistryObject<EntityType<CanoeEntity>> CANOE
+	    = ENTITIES.register("canoe_entity", () -> EntityType.Builder.<CanoeEntity> of(CanoeEntity::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build("canoe_entity"));
 
 	// effect
 

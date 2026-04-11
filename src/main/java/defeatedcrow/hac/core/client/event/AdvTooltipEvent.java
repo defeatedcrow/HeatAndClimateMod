@@ -49,7 +49,7 @@ public class AdvTooltipEvent {
 		List<Component> list = Lists.newArrayList();
 		List<Component> list2 = Lists.newArrayList();
 		if (!target.isEmpty()) {
-			if ((ConfigClientBuilder.INSTANCE.showTasteTip.get() && target.is(TagDC.ItemTag.HAC_FOOD_FLAVOR)) || target.getItem() instanceof IFoodTaste) {
+			if (ConfigClientBuilder.INSTANCE.showTasteTip.get() && target.is(TagDC.ItemTag.HAC_FOOD_FLAVOR) || target.getItem() instanceof IFoodTaste) {
 				boolean unsafe = false;
 				if (target.getTag() != null && target.getTag().contains(TagKeyDC.UNSAFE)) {
 					if (target.getTag().getBoolean(TagKeyDC.UNSAFE)) {
@@ -68,6 +68,11 @@ public class AdvTooltipEvent {
 						list.add(tasteName);
 					}
 				}
+			}
+
+			if (target.is(TagDC.ItemTag.HAC_SEASONING)) {
+				list.add(Component.translatable("dcs.tip.seasoning").withStyle(ChatFormatting.GREEN).withStyle(ChatFormatting.BOLD));
+				list.add(Component.translatable("dcs.tip.seasoning.dist").withStyle(ChatFormatting.GRAY));
 			}
 		}
 
@@ -125,15 +130,13 @@ public class AdvTooltipEvent {
 				list2.add(Component.literal("=== Tags ==="));
 			}
 			target.getTags().forEach(tag -> {
-				list2.add(Component.literal(tag.location().toString()));
+			    list2.add(Component.literal(tag.location().toString()));
 			});
 
 		}
 
 		if (!list.isEmpty()) {
-			List<Either<FormattedText, TooltipComponent>> elements = list.stream()
-					.map((Function<FormattedText, Either<FormattedText, TooltipComponent>>) Either::left)
-					.collect(Collectors.toCollection(ArrayList::new));
+			List<Either<FormattedText, TooltipComponent>> elements = list.stream().map((Function<FormattedText, Either<FormattedText, TooltipComponent>>) Either::left).collect(Collectors.toCollection(ArrayList::new));
 			event.getTooltipElements().addAll(elements);
 		}
 
@@ -144,9 +147,7 @@ public class AdvTooltipEvent {
 				list2.add(Component.translatable("dcs.tip.shift"));
 			}
 
-			List<Either<FormattedText, TooltipComponent>> elements = list2.stream()
-					.map((Function<FormattedText, Either<FormattedText, TooltipComponent>>) Either::left)
-					.collect(Collectors.toCollection(ArrayList::new));
+			List<Either<FormattedText, TooltipComponent>> elements = list2.stream().map((Function<FormattedText, Either<FormattedText, TooltipComponent>>) Either::left).collect(Collectors.toCollection(ArrayList::new));
 			event.getTooltipElements().addAll(elements);
 		}
 

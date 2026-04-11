@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:food/plank_euphorbia_kukui"
+    },
+    "Y": {
+      "tag": "minecraft:logs_that_burn"
+    }
+  },
+  "pattern": [
+    " Y ",
+    "X X",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/canoe_kukui"
+  }
+}

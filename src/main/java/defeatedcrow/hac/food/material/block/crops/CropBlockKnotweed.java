@@ -36,7 +36,7 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 
 	public CropBlockKnotweed(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, Boolean.valueOf(false)).setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, false).setValue(DCState.STAGE6, 0).setValue(DCState.WILD, false));
 	}
 
 	@Override
@@ -112,18 +112,18 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_1")),
-				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_2")),
-				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_f")),
-				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_d")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_1")),
-				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_2")),
-				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_f")),
-				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_d")));
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_1")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_2")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_d")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_1")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_2")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
@@ -134,7 +134,7 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 	@Override
 	public List<String> getStateNameSuffix() {
 		return ImmutableList.of("double=false,stage6=0", "double=false,stage6=1", "double=false,stage6=2", "double=false,stage6=3", "double=false,stage6=4", "double=false,stage6=5",
-				"double=true,stage6=0", "double=true,stage6=1", "double=true,stage6=2", "double=true,stage6=3", "double=true,stage6=4", "double=true,stage6=5");
+		    "double=true,stage6=0", "double=true,stage6=1", "double=true,stage6=2", "double=true,stage6=3", "double=true,stage6=4", "double=true,stage6=5");
 	}
 
 	@Override
@@ -146,7 +146,7 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(2)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, 2).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
@@ -164,67 +164,53 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 	@Override
 	public BlockState getFlowerState(BlockState state) {
 		if (this.getTier() == CropTier.WILD) {
-			return state.setValue(DCState.STAGE6, Integer.valueOf(4));
+			return state.setValue(DCState.STAGE6, 4);
 		}
-		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+		return state.setValue(DCState.STAGE6, 3);
 	}
 
 	@Override
 	public int getContinuousRegistance(CropTier t) {
-		switch (t) {
-		case WILD:
-			return 5;
-		default:
-			return 3;
-		}
+		return switch (t) {
+		case WILD -> 5;
+		default -> 3;
+		};
 	}
 
 	@Override
 	public ItemLike getSeedItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.BLOCK_KN_BUCKWHEAT.get();
-		case RARE:
-			return FoodInit.BLOCK_KN_INDIGO.get();
-		default:
-			return FoodInit.BLOCK_KN_SORREL.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.BLOCK_KN_BUCKWHEAT.get();
+		case RARE -> FoodInit.BLOCK_KN_INDIGO.get();
+		default -> FoodInit.BLOCK_KN_SORREL.get();
+		};
 	}
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_KN_BUCKWHEAT.get();
-		case RARE:
-			return FoodInit.CROP_KN_INDIGO.get();
-		default:
-			return FoodInit.CROP_KN_SORREL.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_KN_BUCKWHEAT.get();
+		case RARE -> FoodInit.CROP_KN_INDIGO.get();
+		default -> FoodInit.CROP_KN_SORREL.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_KN_SORREL.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_KN_BUCKWHEAT.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_KN_INDIGO.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_KN_SORREL.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_KN_BUCKWHEAT.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_KN_INDIGO.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
-		default:
-			return ImmutableList.of(SoilType.FARMLAND);
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
+		default -> ImmutableList.of(SoilType.FARMLAND);
+		};
 	}
 
 	@Override
@@ -250,26 +236,20 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("PLAINS", "MOUNTAIN");
-		case COMMON:
-			return ImmutableList.of("COLD", "DRY");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("PLAINS", "MOUNTAIN");
+		case COMMON -> ImmutableList.of("COLD", "DRY");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("DENCE", "DRY");
-		case COMMON:
-			return ImmutableList.of("SANDY", "HOT", "WET");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("DENCE", "DRY");
+		case COMMON -> ImmutableList.of("SANDY", "HOT", "WET", "WATER");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

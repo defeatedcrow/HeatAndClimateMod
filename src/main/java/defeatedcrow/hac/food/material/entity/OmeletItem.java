@@ -27,10 +27,23 @@ public class OmeletItem extends ItemEntityFood {
 	public EntityRenderData getRenderData(Item item) {
 		if (item == FoodInit.OMELET_VEGI.get())
 			return VEGI;
+		if (item == FoodInit.FRIED_EGG.get())
+			return FRIED_EGG;
 		return BASIC;
 	}
 
-	public static final EntityRenderData BASIC = new EntityRenderData("food/omelet_basic", 1.0F, 0F);
-	public static final EntityRenderData VEGI = new EntityRenderData("food/omelet_vegi", 1.0F, 0F);
+	public static final EntityRenderData BASIC = new EntityRenderData("food/plate_omelet_basic", 1.0F, 0F);
+	public static final EntityRenderData VEGI = new EntityRenderData("food/plate_omelet_vegi", 1.0F, 0F);
+	public static final EntityRenderData FRIED_EGG = new EntityRenderData("food/plate_fried_egg", 1.0F, 0F);
+
+	public static enum ModelType {
+		OMELET, EGG;
+
+		public static ModelType getType(Item item) {
+			if (item == FoodInit.FRIED_EGG.get())
+				return EGG;
+			return OMELET;
+		}
+	}
 
 }

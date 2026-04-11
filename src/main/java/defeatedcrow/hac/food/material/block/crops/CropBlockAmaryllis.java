@@ -90,6 +90,11 @@ public class CropBlockAmaryllis extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public float wildCropSpreadChance() {
+		return 0.01F;
+	}
+
+	@Override
 	public ItemLike getSeedItem(CropTier t) {
 		return switch (t) {
 		case WILD -> FoodInit.BLOCK_AMR_SNOWDROP.get();

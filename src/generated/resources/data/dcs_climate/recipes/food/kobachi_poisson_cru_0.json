@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/raw_fishes_edible"
+    },
+    {
+      "tag": "forge:crops/coconut"
+    },
+    {
+      "tag": "forge:crops/onions"
+    },
+    {
+      "tag": "forge:crops/carrot"
+    },
+    {
+      "tag": "forge:crops/lemon"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/kobachi_poisson_cru"
+  }
+}

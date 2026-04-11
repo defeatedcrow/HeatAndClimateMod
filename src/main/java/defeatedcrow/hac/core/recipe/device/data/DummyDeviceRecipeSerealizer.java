@@ -42,6 +42,10 @@ public class DummyDeviceRecipeSerealizer implements RecipeSerializer<DummyDevice
 			DeviceRecipe recipe = new DeviceRecipe(group, ret, sec, sR, ter, tR, retF, heat, hum, air, inF, ings);
 			if (recipe != null) {
 				RecipeTypeDC id = RecipeTypeDC.getType(group);
+				if (id == RecipeTypeDC.MILL && !DCRecipes.INSTANCE.MILL.containsKey(res)) {
+					DCRecipes.INSTANCE.MILL.put(res, recipe);
+					DCLogger.traceLog("Mill recipe loaded from json: " + res);
+				}
 				if (id == RecipeTypeDC.PULVERISE && !DCRecipes.INSTANCE.PULVERISE.containsKey(res)) {
 					DCRecipes.INSTANCE.PULVERISE.put(res, recipe);
 					DCLogger.traceLog("Pulverise recipe loaded from json: " + res);

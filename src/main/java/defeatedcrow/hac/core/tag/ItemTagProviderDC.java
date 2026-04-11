@@ -464,18 +464,17 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.SEED_WHITE).addTags(TagDC.ItemTag.SEED_CHIVES, TagDC.ItemTag.SEED_GOOSEFOOT, TagDC.ItemTag.SEED_ARTEMISIA,
 		    TagDC.ItemTag.SEED_RAPESEED, TagDC.ItemTag.SEED_CHILI, TagDC.ItemTag.SEED_SORREL).add(FoodInit.BLOCK_MY_EUCALYPTUS.get().asItem());
 
-		tag(TagDC.ItemTag.SEED_BLUE).addTags(TagDC.ItemTag.SEED_OAT, TagDC.ItemTag.SEED_MINT, TagDC.ItemTag.SEED_CROCUS, TagDC.ItemTag.SEED_ANEMONE).add(FoodInit.BLOCK_BH_COMMON.get().asItem(), FoodInit.BLOCK_ER_HEATH.get().asItem(),
-		    FoodInit.BLOCK_OL_ASH.get().asItem());
+		tag(TagDC.ItemTag.SEED_BLUE).addTags(TagDC.ItemTag.SEED_OAT, TagDC.ItemTag.SEED_MINT, TagDC.ItemTag.SEED_CROCUS, TagDC.ItemTag.SEED_ANEMONE, TagDC.ItemTag.SEED_SNOWDROP).add(FoodInit.BLOCK_BH_COMMON.get().asItem(),
+		    FoodInit.BLOCK_ER_HEATH.get().asItem(), FoodInit.BLOCK_OL_ASH.get().asItem());
 
 		tag(TagDC.ItemTag.SEED_BLACK).addTags(TagDC.ItemTag.SEED_CELERY, TagDC.ItemTag.SEED_BUCE, TagDC.ItemTag.SEED_BINDWEED,
-		    TagDC.ItemTag.SEED_REED, TagDC.ItemTag.SEED_WILD_RICE, TagDC.ItemTag.SEED_NIGHTSHADE).add(FoodInit.BLOCK_RO_RUGOSA.get().asItem());
+		    TagDC.ItemTag.SEED_REED, TagDC.ItemTag.SEED_WILD_RICE, TagDC.ItemTag.SEED_NIGHTSHADE).add(FoodInit.BLOCK_RO_RUGOSA.get().asItem(), FoodInit.BLOCK_EU_KUKUI.get().asItem());
 
 		tag(TagDC.ItemTag.SEED_RED).addTags(TagDC.ItemTag.SEED_JUTE, TagDC.ItemTag.SEED_ROGERIA, TagDC.ItemTag.SEED_WILD_GRAPE).add(FoodInit.BLOCK_CH_WILD.get().asItem(), FoodInit.BLOCK_CM_OIL.get().asItem(),
-		    FoodInit.BLOCK_SU_LACQUER.get().asItem()).add(FoodInit.BLOCK_SU_LACQUER.get().asItem());
+		    FoodInit.BLOCK_SU_LACQUER.get().asItem(), FoodInit.BLOCK_RU_GARDENIA.get().asItem());
 
-		tag(TagDC.ItemTag.SEED_GREEN).addTags(TagDC.ItemTag.SEED_GINGER, TagDC.ItemTag.SEED_GREEN_PEAS, TagDC.ItemTag.SEED_CALABASH, TagDC.ItemTag.SEED_SPIRANTHES).add(FoodInit.BLOCK_CT_POMELO.get().asItem(),
-		    FoodInit.BLOCK_CN_CAMPHOR.get().asItem(),
-		    FoodInit.BLOCK_MR_MULBERRY.get().asItem(), FoodInit.BLOCK_PL_COCONUT.get().asItem());
+		tag(TagDC.ItemTag.SEED_GREEN).addTags(TagDC.ItemTag.SEED_GINGER, TagDC.ItemTag.SEED_GREEN_PEAS, TagDC.ItemTag.SEED_CALABASH, TagDC.ItemTag.SEED_SPIRANTHES, TagDC.ItemTag.SEED_AMANA).add(FoodInit.BLOCK_CT_POMELO.get().asItem(),
+		    FoodInit.BLOCK_CN_CAMPHOR.get().asItem(), FoodInit.BLOCK_MR_MULBERRY.get().asItem(), FoodInit.BLOCK_PL_COCONUT.get().asItem());
 
 		tag(TagDC.ItemTag.MAGIC_TIER1).addTags(TagDC.ItemTag.MAGIC_ARROW, TagDC.ItemTag.MAGIC_RING).add(MagicInit.CARD_BLACK_1.get(), MagicInit.CARD_BLUE_1.get(), MagicInit.CARD_GREEN_1.get(), MagicInit.CARD_RED_1.get(),
 		    MagicInit.CARD_WHITE_1.get(),

@@ -4,6 +4,7 @@
     "#forge:seeds/mint",
     "#forge:seeds/crocus",
     "#forge:seeds/anemone",
+    "#forge:seeds/snowdrop",
     "dcs_climate:food/sapling_beech_wild",
     "dcs_climate:food/sapling_erica_wild",
     "dcs_climate:food/sapling_olive_wild"

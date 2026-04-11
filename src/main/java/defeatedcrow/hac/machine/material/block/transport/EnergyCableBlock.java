@@ -61,15 +61,9 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 
 	public EnergyCableBlock(Properties prop) {
 		super(prop);
-		this.registerDefaultState(this.stateDefinition.any()
-				.setValue(DCState.NORTH, false)
-				.setValue(DCState.SOUTH, false)
-				.setValue(DCState.EAST, false)
-				.setValue(DCState.WEST, false)
-				.setValue(DCState.UP, false)
-				.setValue(DCState.DOWN, false)
-				.setValue(DCState.POWERED, Boolean.valueOf(false))
-				.setValue(WATERLOGGED, Boolean.valueOf(false)));
+		this.registerDefaultState(
+		    this.stateDefinition.any().setValue(DCState.NORTH, false).setValue(DCState.SOUTH, false).setValue(DCState.EAST, false).setValue(DCState.WEST, false).setValue(DCState.UP, false).setValue(DCState.DOWN, false).setValue(
+		        DCState.POWERED, false).setValue(WATERLOGGED, false));
 	}
 
 	@Override
@@ -90,15 +84,9 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 		BlockState s4 = level.getBlockState(p4);
 		BlockState s5 = level.getBlockState(p5);
 		BlockState s6 = level.getBlockState(p6);
-		return this.defaultBlockState()
-				.setValue(DCState.NORTH, this.connectsTo(s1, level, p1, Direction.NORTH, true))
-				.setValue(DCState.EAST, this.connectsTo(s2, level, p2, Direction.EAST, true))
-				.setValue(DCState.SOUTH, this.connectsTo(s3, level, p3, Direction.SOUTH, true))
-				.setValue(DCState.WEST, this.connectsTo(s4, level, p4, Direction.WEST, true))
-				.setValue(DCState.UP, this.connectsTo(s5, level, p5, Direction.UP, true))
-				.setValue(DCState.DOWN, this.connectsTo(s6, level, p6, Direction.DOWN, true))
-				.setValue(DCState.POWERED, Boolean.valueOf(pow))
-				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+		return this.defaultBlockState().setValue(DCState.NORTH, this.connectsTo(s1, level, p1, Direction.NORTH, true)).setValue(DCState.EAST, this.connectsTo(s2, level, p2, Direction.EAST, true)).setValue(DCState.SOUTH,
+		    this.connectsTo(s3, level, p3, Direction.SOUTH, true)).setValue(DCState.WEST, this.connectsTo(s4, level, p4, Direction.WEST, true)).setValue(DCState.UP, this.connectsTo(s5, level, p5, Direction.UP, true)).setValue(DCState.DOWN,
+		        this.connectsTo(s6, level, p6, Direction.DOWN, true)).setValue(DCState.POWERED, pow).setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
 	}
 
 	@Override
@@ -204,7 +192,7 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 		if (!level.isClientSide) {
 			boolean pow = level.hasNeighborSignal(pos);
 			if (pow != DCState.getBool(state, DCState.POWERED)) {
-				level.setBlock(pos, state.setValue(DCState.POWERED, Boolean.valueOf(pow)), 2);
+				level.setBlock(pos, state.setValue(DCState.POWERED, pow), 2);
 			}
 		}
 	}
@@ -230,22 +218,20 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 					if (level instanceof ServerLevel)
 						MsgTileFaceIOToC.sendToClient((ServerLevel) level, pos, dir.get3DDataValue(), next.getID());
 					if (next == FaceIO.NONE) {
-						level.setBlock(pos, state.setValue(DCState.getFacingProperty(dir), Boolean.valueOf(false)), 3);
+						level.setBlock(pos, state.setValue(DCState.getFacingProperty(dir), false), 3);
 					} else {
-						level.setBlock(pos, state.setValue(DCState.getFacingProperty(dir), Boolean.valueOf(true)), 3);
+						level.setBlock(pos, state.setValue(DCState.getFacingProperty(dir), true), 3);
 					}
 					MutableComponent mes = Component.literal("Connection " + dir + ":" + next);
 					player.displayClientMessage(mes, true);
 					return InteractionResult.SUCCESS;
 				}
 
-			} else {
-				if (dir != null) {
-					FaceIO io = cable.getEnergyHandler().getFace(dir);
-					DCLogger.debugInfoLog("cable io: " + dir + " / " + io);
-					if (CableCopperTile.isLeaking(level, pos, state, cable)) {
-						DCLogger.debugInfoLog("Current leakage!");
-					}
+			} else if (dir != null) {
+				FaceIO io = cable.getEnergyHandler().getFace(dir);
+				DCLogger.debugInfoLog("cable io: " + dir + " / " + io);
+				if (CableCopperTile.isLeaking(level, pos, state, cable)) {
+					DCLogger.debugInfoLog("Current leakage!");
 				}
 			}
 		}
@@ -332,7 +318,7 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 
 	@Override
 	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
-		MutableComponent tex1 = Component.translatable("dcs.tip.energy.cable").withStyle(ChatFormatting.GREEN).withStyle(ChatFormatting.BOLD);
+		MutableComponent tex1 = Component.translatable("dcs.tip.energy.cable").withStyle(ChatFormatting.BLUE).withStyle(ChatFormatting.BOLD);
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.cable.desc");
 		MutableComponent tex3 = Component.translatable("dcs.tip.energy.leakage").withStyle(ChatFormatting.RED).withStyle(ChatFormatting.BOLD);
 		MutableComponent tex4 = Component.translatable("dcs.tip.energy.leakage.desc");

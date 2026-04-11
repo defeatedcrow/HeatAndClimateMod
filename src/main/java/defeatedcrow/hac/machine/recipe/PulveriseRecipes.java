@@ -146,7 +146,7 @@ public class PulveriseRecipes {
 
 		// euphorbia
 		DeviceRecipeList.addPulverizeRecipe(13, RecipeTypeDC.SQUEEZE,
-		    new ItemStack(FoodInit.FOOD_PLANT_OIL.get(), 1), new ItemStack(FoodInit.FOOD_DEFATTED_SOY.get()), 50, new ItemStack(FoodInit.DUST_PLANT.get()), 30,
+		    new ItemStack(FoodInit.FOOD_PLANT_OIL.get(), 1), new ItemStack(FoodInit.FOOD_PRESS_CAKE.get()), 50, new ItemStack(FoodInit.DUST_PLANT.get()), 30,
 		    new FluidStack(CoreInit.PLANT_OIL.getStillFluid().get(), 500),
 		    ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_KUKUI)));
 

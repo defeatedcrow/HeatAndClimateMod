@@ -43,10 +43,7 @@ public class CropBlockAroids extends ClimateCropBaseBlock implements SimpleWater
 
 	public CropBlockAroids(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any()
-				.setValue(DCState.STAGE6, Integer.valueOf(0))
-				.setValue(WATERLOGGED, false)
-				.setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, 0).setValue(WATERLOGGED, false).setValue(DCState.WILD, false));
 	}
 
 	@Override
@@ -94,7 +91,7 @@ public class CropBlockAroids extends ClimateCropBaseBlock implements SimpleWater
 		if (getTier() == CropTier.WILD) {
 			if (!state.getValue(WATERLOGGED) && water.getType() == Fluids.WATER) {
 				if (!level.isClientSide()) {
-					level.setBlock(pos, state.setValue(WATERLOGGED, Boolean.valueOf(true)), 3);
+					level.setBlock(pos, state.setValue(WATERLOGGED, true), 3);
 					level.scheduleTick(pos, water.getType(), water.getType().getTickDelay(level));
 				}
 				return true;
@@ -107,7 +104,7 @@ public class CropBlockAroids extends ClimateCropBaseBlock implements SimpleWater
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(4)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, 4).setValue(DCState.WILD, true);
 	}
 
 	@Override
@@ -115,7 +112,7 @@ public class CropBlockAroids extends ClimateCropBaseBlock implements SimpleWater
 		int age = DCState.getInt(thisState, DCState.STAGE6);
 		// FLOWERステートは低確率で出現
 		if (age == 2 && level.getRandom().nextInt(12) == 0) {
-			return thisState.setValue(DCState.STAGE6, Integer.valueOf(3));
+			return thisState.setValue(DCState.STAGE6, 3);
 		}
 		return super.getNextState(level, pos, thisState, stage);
 	}
@@ -154,43 +151,37 @@ public class CropBlockAroids extends ClimateCropBaseBlock implements SimpleWater
 	public List<JsonModelDC> getBlockModel() {
 		if (getTier() == CropTier.WILD) {
 			return ImmutableList.of(
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_0")),
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_1")),
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2")),
-					new JsonModelDC("dcs_climate:block/dcs_crop_rosette",
-							ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_f",
-									"leaves1", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1",
-									"leaves2", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves2")),
-					new JsonModelDC("dcs_climate:block/dcs_crop_rosette",
-							ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2",
-									"leaves1", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1",
-									"leaves2", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves2")),
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_d")));
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_0")),
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_1")),
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2")),
+			    new JsonModelDC("dcs_climate:block/dcs_crop_rosette", ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_f",
+			        "leaves1", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1",
+			        "leaves2", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves2")),
+			    new JsonModelDC("dcs_climate:block/dcs_crop_rosette", ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2",
+			        "leaves1", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1",
+			        "leaves2", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves2")),
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_d")));
 
 		} else if (getTier() == CropTier.RARE) {
 			return ImmutableList.of(
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_0")),
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_1")),
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2")),
-					new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves",
-							ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2",
-									"leaves", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1")),
-					new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves",
-							ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2",
-									"leaves", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1")),
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_f")));
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_0")),
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_1")),
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2")),
+			    new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves", ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2",
+			        "leaves", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1")),
+			    new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves", ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2",
+			        "leaves", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1")),
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_f")));
 		} else {
 			return ImmutableList.of(
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_0")),
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_1")),
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2")),
-					new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves",
-							ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_f",
-									"leaves", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1")),
-					new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves",
-							ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2",
-									"leaves", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1")),
-					new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_d")));
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_0")),
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_1")),
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2")),
+			    new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves", ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_f",
+			        "leaves", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1")),
+			    new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves", ImmutableMap.of("crop", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_2",
+			        "leaves", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_leaves1")),
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_" + getSpeciesName(cropTier) + "_d")));
 		}
 	}
 
@@ -224,14 +215,19 @@ public class CropBlockAroids extends ClimateCropBaseBlock implements SimpleWater
 	@Override
 	public BlockState getFlowerState(BlockState state) {
 		if (getTier() == CropTier.RARE) {
-			return state.setValue(DCState.STAGE6, Integer.valueOf(5));
+			return state.setValue(DCState.STAGE6, 5);
 		}
-		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+		return state.setValue(DCState.STAGE6, 3);
 	}
 
 	@Override
 	public int getContinuousRegistance(CropTier t) {
 		return 3;
+	}
+
+	@Override
+	public float wildCropSpreadChance() {
+		return 0.01F;
 	}
 
 	@Override
@@ -241,52 +237,39 @@ public class CropBlockAroids extends ClimateCropBaseBlock implements SimpleWater
 
 	@Override
 	public ItemLike getSeedItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.BLOCK_AR_TARO.get();
-		case RARE:
-			return FoodInit.BLOCK_AR_KONJAC.get();
-		default:
-			return FoodInit.BLOCK_AR_BUCE.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.BLOCK_AR_TARO.get();
+		case RARE -> FoodInit.BLOCK_AR_KONJAC.get();
+		default -> FoodInit.BLOCK_AR_BUCE.get();
+		};
 	}
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_AR_TARO.get();
-		case RARE:
-			return FoodInit.CROP_AR_KONJAC.get();
-		default:
-			return FoodInit.CROP_AR_BUCE.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_AR_TARO.get();
+		case RARE -> FoodInit.CROP_AR_KONJAC.get();
+		default -> FoodInit.CROP_AR_BUCE.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_AR_BUCE.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_AR_TARO.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_AR_KONJAC.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_AR_BUCE.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_AR_TARO.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_AR_KONJAC.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.MUD, SoilType.SAND);
-		case COMMON:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
-		default:
-			return ImmutableList.of(SoilType.FARMLAND);
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.MUD, SoilType.SAND);
+		case COMMON -> ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
+		default -> ImmutableList.of(SoilType.FARMLAND);
+		};
 	}
 
 	@Override
@@ -296,44 +279,35 @@ public class CropBlockAroids extends ClimateCropBaseBlock implements SimpleWater
 
 	@Override
 	public List<DCHumidity> getSuitableHum(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of(DCHumidity.WET, DCHumidity.UNDERWATER);
-		default:
-			return ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET);
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of(DCHumidity.WET, DCHumidity.UNDERWATER);
+		default -> ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET);
+		};
 	}
 
 	@Override
 	public List<DCAirflow> getSuitableAir(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of(DCAirflow.TIGHT, DCAirflow.NORMAL, DCAirflow.FLOW);
-		default:
-			return ImmutableList.of(DCAirflow.NORMAL, DCAirflow.FLOW, DCAirflow.WIND);
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of(DCAirflow.TIGHT, DCAirflow.NORMAL, DCAirflow.FLOW);
+		default -> ImmutableList.of(DCAirflow.NORMAL, DCAirflow.FLOW, DCAirflow.WIND);
+		};
 	}
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("JUNGLE", "SWAMP", "RIVER");
-		case COMMON:
-			return ImmutableList.of("JUNGLE", "SWAMP");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("JUNGLE", "SWAMP", "RIVER");
+		case COMMON -> ImmutableList.of("JUNGLE", "SWAMP");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("COLD", "DRY", "MOUNTAIN");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("COLD", "DRY", "MOUNTAIN");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

@@ -114,6 +114,11 @@ public class CropBlockPedalia extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public float wildCropSpreadChance() {
+		return 0.03F;
+	}
+
+	@Override
 	public ItemLike getSeedItem(CropTier t) {
 		return switch (t) {
 		case COMMON -> FoodInit.BLOCK_PD_SESAMI.get();

@@ -233,8 +233,7 @@ public class PluginRecipeListDC {
 			FERMENTATION_LIST.addAll(DCRecipes.FERMENTATION.values());
 
 		if (PULVERISER_LIST.isEmpty()) {
-			PULVERISER_LIST.addAll(DCRecipes.PULVERISE.values());
-			PULVERISER_LIST.addAll(DCRecipes.SQUEEZE.values());
+			PULVERISER_LIST.addAll(DCRecipes.MILL.values());
 		}
 
 		if (CRUSHER_PULVERISE_LIST.isEmpty())

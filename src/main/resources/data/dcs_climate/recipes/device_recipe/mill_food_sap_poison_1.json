@@ -1,0 +1,46 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "mill",
+  "result": {
+    "item": "dcs_climate:food/sap_poison",
+    "count": 1
+  },
+  "secondary": {
+    "item": "dcs_climate:main/dust_wood",
+    "count": 4
+  },
+  "secondary_rate": 100,
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/log_euphorbia_manchineel"
+    }
+  ],
+  "heat": [
+    "ABSOLUTE",
+    "CRYOGENIC",
+    "FROSTBITE",
+    "COLD",
+    "COOL",
+    "NORMAL",
+    "WARM",
+    "HOT",
+    "BOIL",
+    "OVEN",
+    "KILN",
+    "SMELTING",
+    "UHT",
+    "INFERNO"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

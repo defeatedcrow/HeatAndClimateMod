@@ -83,7 +83,7 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("OCEAN", "BEACH", "LUSH");
+		case WILD -> ImmutableList.of("WATER", "BEACH", "LUSH");
 		case COMMON -> ImmutableList.of("SAVANNA", "SANDY", "JUNGLE");
 		default -> Lists.newArrayList();
 		};
@@ -92,7 +92,7 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("COLD", "DRY", "MOUNTAIN");
+		case WILD -> ImmutableList.of("SNOWY", "DRY", "MOUNTAIN");
 		case COMMON -> ImmutableList.of("COLD", "WATER", "SWAMP");
 		default -> Lists.newArrayList();
 		};

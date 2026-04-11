@@ -1056,10 +1056,18 @@ public class CookingRecipes {
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.TEA, new ItemStack(FoodInit.TEA_GREEN.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				ImmutableList.of(FluidTags.WATER.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.TEA_LEAVES_GREEN)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.TEA, new ItemStack(FoodInit.TEA_GREEN_SAKURA.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.TEA_LEAVES_GREEN), Ingredient.of(TagDC.ItemTag.CHERRY_FLOWER)));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.TEA, new ItemStack(FoodInit.TEA_BLUE.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				ImmutableList.of(FluidTags.WATER.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.TEA_LEAVES_OOLONG)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.TEA, new ItemStack(FoodInit.TEA_BLUE_JASMINE.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.TEA_LEAVES_OOLONG), Ingredient.of(TagDC.ItemTag.CROP_JASMINE)));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.TEA, new ItemStack(FoodInit.TEA_BLACK.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				ImmutableList.of(FluidTags.WATER.location().toString()),
@@ -1080,6 +1088,10 @@ public class CookingRecipes {
 		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.TEA, new ItemStack(FoodInit.TEA_CHAI.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				ImmutableList.of(Tags.Fluids.MILK.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.TEA_LEAVES_BLACK), Ingredient.of(TagDC.ItemTag.CROP_CARDAMOM), Ingredient.of(TagDC.ItemTag.CROP_CLOVE)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.TEA, new ItemStack(FoodInit.TEA_COFFEE.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+				ImmutableList.of(FluidTags.WATER.location().toString()),
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.COFFEE_POWDER)));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.TEA, new ItemStack(FoodInit.TEA_COCOA.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
 				ImmutableList.of(FluidTags.WATER.location().toString()),

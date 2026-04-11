@@ -26,9 +26,7 @@ public class DeviceMillCategory implements IRecipeCategory<IDeviceRecipe> {
 
 	public DeviceMillCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(MachineInit.STONE_MILL.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.MILL.getLocation(), 20, 10, 135, 60)
-				.addPadding(0, 0, 0, 0)
-				.build();
+		background = guiHelper.drawableBuilder(PluginTexDC.MILL.getLocation(), 20, 10, 135, 60).addPadding(0, 0, 0, 0).build();
 	}
 
 	@Override
@@ -57,11 +55,6 @@ public class DeviceMillCategory implements IRecipeCategory<IDeviceRecipe> {
 		builder.addSlot(RecipeIngredientRole.INPUT, 11, 4).addIngredients(recipe.getInputs().get(0));
 
 		ItemStack output = recipe.getOutput().copy();
-		if (output.getCount() > 4) {
-			output.shrink(2);
-		} else if (output.getCount() > 1) {
-			output.shrink(1);
-		}
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 80, 32).addItemStack(output);
 
 		if (!recipe.getSecondaryOutput().isEmpty())
@@ -78,7 +71,7 @@ public class DeviceMillCategory implements IRecipeCategory<IDeviceRecipe> {
 	public void draw(IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
 		Minecraft minecraft = Minecraft.getInstance();
 		Font font = minecraft.font;
-		int chance1 = recipe.getSecondaryRate() / 2;
+		int chance1 = recipe.getSecondaryRate();
 		if (chance1 > 0) {
 			String text = chance1 + "%";
 			font.draw(stack, text, 108, 16, 0xFF000000);

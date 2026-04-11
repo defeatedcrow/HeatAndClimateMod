@@ -36,23 +36,23 @@ public class CropBlockGrape extends CropBaseVine {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_0")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_1")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_2")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_f")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_d")),
-				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_g")),
-				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_g_d")),
-				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_b")),
-				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_b_d")),
-				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_n")),
-				new JsonModelDC("dcs_climate:block/dcs_crop_side_overlay", ImmutableMap.of("overlay", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_f")),
-				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_f")),
-				new JsonModelDC("dcs_climate:block/dcs_crop_side_overlay", ImmutableMap.of("overlay", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_c")),
-				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_c")),
-				new JsonModelDC("dcs_climate:block/dcs_crop_side_overlay", ImmutableMap.of("overlay", "dcs_climate:block/crop/vine/grape_o_d")),
-				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_o_d")));
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_0")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_1")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_2")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_d")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_g")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_g_d")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_b")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/grape_b_d")),
+		    new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_n")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_side_overlay", ImmutableMap.of("overlay", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_side_overlay", ImmutableMap.of("overlay", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_o_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_side_overlay", ImmutableMap.of("overlay", "dcs_climate:block/crop/vine/grape_o_d")),
+		    new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_o_d")));
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class CropBlockGrape extends CropBaseVine {
 
 	@Override
 	public BlockState getFlowerState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+		return state.setValue(DCState.STAGE6, 3);
 	}
 
 	@Override
@@ -83,51 +83,44 @@ public class CropBlockGrape extends CropBaseVine {
 	}
 
 	@Override
+	public float wildCropSpreadChance() {
+		return 0.01F;
+	}
+
+	@Override
 	public ItemLike getSeedItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.BLOCK_GR_COMMON.get();
-		case RARE:
-			return FoodInit.BLOCK_GR_WHITE.get();
-		default:
-			return FoodInit.BLOCK_GR_WILD.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.BLOCK_GR_COMMON.get();
+		case RARE -> FoodInit.BLOCK_GR_WHITE.get();
+		default -> FoodInit.BLOCK_GR_WILD.get();
+		};
 	}
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_GR_COMMON.get();
-		case RARE:
-			return FoodInit.CROP_GR_WHITE.get();
-		default:
-			return FoodInit.CROP_GR_WILD.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_GR_COMMON.get();
+		case RARE -> FoodInit.CROP_GR_WHITE.get();
+		default -> FoodInit.CROP_GR_WILD.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_GR_WILD.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_GR_COMMON.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_GR_WHITE.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_GR_WILD.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_GR_COMMON.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_GR_WHITE.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
 	public List<SoilType> getSoilTypes(CropTier tier) {
-		switch (tier) {
-		case WILD, COMMON:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
-		default:
-			return ImmutableList.of(SoilType.FARMLAND);
-		}
+		return switch (tier) {
+		case WILD, COMMON -> ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
+		default -> ImmutableList.of(SoilType.FARMLAND);
+		};
 	}
 
 	@Override
@@ -147,12 +140,10 @@ public class CropBlockGrape extends CropBaseVine {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("MOUNTAIN", "FOREST");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("MOUNTAIN", "FOREST");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

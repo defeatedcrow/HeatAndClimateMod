@@ -25,6 +25,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
@@ -114,7 +115,7 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 		return recipe != null;
 	}
 
-	protected int[] consume = new int[0];
+	protected int[] consume = {};
 
 	private ItemStack getSecondaryOrContainer() {
 		if (recipe != null && consume != null) {
@@ -128,15 +129,14 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 						if (!check.getCraftingRemainingItem().isEmpty()) {
 							return check.getCraftingRemainingItem().copy();
 						} else if (FluidUtil.getFluidContained(check).isPresent()) {
-							ItemStack ret = FluidUtil.getFluidHandler(check)
-									.map(handler -> {
-										FluidStack fluid = handler.getFluidInTank(0);
-										if (!fluid.isEmpty()) {
-											handler.drain(fluid, FluidAction.EXECUTE);
-											return handler.getContainer().copy();
-										}
-										return ItemStack.EMPTY;
-									}).orElse(ItemStack.EMPTY);
+							ItemStack ret = FluidUtil.getFluidHandler(check).map(handler -> {
+								FluidStack fluid = handler.getFluidInTank(0);
+								if (!fluid.isEmpty()) {
+									handler.drain(fluid, FluidAction.EXECUTE);
+									return handler.getContainer().copy();
+								}
+								return ItemStack.EMPTY;
+							}).orElse(ItemStack.EMPTY);
 							if (!DCUtil.isEmpty(ret)) {
 								return ret;
 							}
@@ -144,8 +144,8 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 					}
 				}
 			}
-			// Millの場合はセカンダリ確率が半分になる
-			if (recipe.getSecondaryRate() > 0 && level.random.nextInt(200) < recipe.getSecondaryRate()) {
+
+			if (recipe.getSecondaryRate() > 0) {
 				return recipe.getSecondaryOutput().copy();
 			}
 		}
@@ -165,10 +165,6 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 
 			if (check.isPresent()) {
 				ItemStack ret = recipe.getOutput().copy();
-				if (ret.getCount() > 4)
-					ret.shrink(2);
-				else if (ret.getCount() > 1)
-					ret.shrink(1);
 				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxOutSlot()) > 0;
 				if (recipe.getSecondaryRate() > 0 && inventory.canInsertResult(recipe.getSecondaryOutput(), maxInSlot() + 1, maxOutSlot()) == 0) {
 					result = false;
@@ -192,10 +188,6 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 		if (recipe != null) {
 			boolean flag = false;
 			ItemStack res = recipe.getOutput();
-			if (res.getCount() > 4)
-				res.shrink(2);
-			else if (res.getCount() > 1)
-				res.shrink(1);
 			if (!res.isEmpty() && res.getItem() instanceof IFoodTaste food) {
 				int taste = CraftingFoodEvent.getResultTaste(inputs, consume);
 				food.setTaste(res, taste);
@@ -216,7 +208,7 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 				flag = true;
 			}
 			if (flag) {
-				this.setChanged(level, pos, state);
+				BlockEntity.setChanged(level, pos, state);
 			}
 			return flag;
 		}

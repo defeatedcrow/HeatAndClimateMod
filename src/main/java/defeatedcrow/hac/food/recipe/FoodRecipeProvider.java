@@ -438,6 +438,42 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_CORN))
 		    .unlockedBy("has_corn", has(TagDC.ItemTag.CROP_CORN))
 		    .save(cons,"dcs_climate:food/stick_corn");
+		
+		ShapelessRecipeBuilder
+			.shapeless(FoodInit.STICK_POTATO_RAW.get(), 1)
+			.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
+			.requires(Ingredient.of(Tags.Items.CROPS_POTATO))
+			.unlockedBy("has_potato", has(Tags.Items.CROPS_POTATO))
+			.save(cons,"dcs_climate:food/stick_potato_1");
+		
+		ShapelessRecipeBuilder
+	    	.shapeless(FoodInit.STICK_POTATO_RAW.get(), 1)
+	    	.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
+	    	.requires(Ingredient.of(TagDC.ItemTag.CROP_SWEET_POTATO))
+	    	.unlockedBy("has_sweet_potato", has(TagDC.ItemTag.CROP_SWEET_POTATO))
+	    	.save(cons,"dcs_climate:food/stick_potato_2");
+		
+		ShapelessRecipeBuilder
+	    	.shapeless(FoodInit.STICK_POTATO_RAW.get(), 1)
+	    	.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
+	    	.requires(Ingredient.of(TagDC.ItemTag.CROP_TARO))
+	    	.unlockedBy("has_taro", has(TagDC.ItemTag.CROP_TARO))
+	    	.save(cons,"dcs_climate:food/stick_potato_3");
+		
+		ShapelessRecipeBuilder
+	    	.shapeless(FoodInit.STICK_EGGPLANT_RAW.get(), 1)
+	    	.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
+	    	.requires(Ingredient.of(TagDC.ItemTag.CROP_EGGPLANT))
+	    	.unlockedBy("has_eggplant", has(TagDC.ItemTag.CROP_EGGPLANT))
+	    	.save(cons,"dcs_climate:food/stick_eggplant");
+		
+		ShapelessRecipeBuilder
+    		.shapeless(FoodInit.STICK_LETTUCE_RAW.get(), 1)
+    		.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
+    		.requires(Ingredient.of(TagDC.ItemTag.CROP_LETTUCE))
+    		.requires(Ingredient.of(TagDC.ItemTag.RAW_PORK))
+    		.unlockedBy("has_lettuce", has(TagDC.ItemTag.CROP_LETTUCE))
+    		.save(cons,"dcs_climate:food/stick_lettuce");
 
 		ShapelessRecipeBuilder
 		    .shapeless(FoodInit.STICK_VEGI_RAW.get(), 1)
@@ -1016,13 +1052,62 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .requires(Ingredient.of(TagDC.ItemTag.TUNA))
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_AVOCADO))
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
-		    .requires(
-		        Ingredient.of(TagDC.ItemTag.CROP_GARLIC))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_GARLIC))
 		    .requires(Ingredient.of(TagDC.ItemTag.SOYSAUCE))
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_LEMON))
 		    .unlockedBy("has_tuna", has(TagDC.ItemTag.TUNA))
-		    .save(cons,
-		        "dcs_climate:food/kobachi_tuna_avocado_0");
+		    .save(cons,"dcs_climate:food/kobachi_tuna_avocado_0");
+		
+		ShapelessRecipeBuilder
+	    	.shapeless(FoodInit.KOBACHI_TUNA_AVOCADO.get(), 3)
+	    	.requires(Ingredient.of(TagDC.ItemTag.TUNA))
+	    	.requires(Ingredient.of(TagDC.ItemTag.CROP_AVOCADO))
+	    	.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+	    	.requires(Ingredient.of(TagDC.ItemTag.KUKUI_NUTS))
+	    	.requires(Ingredient.of(TagDC.ItemTag.SOYSAUCE))
+	    	.unlockedBy("has_tuna", has(TagDC.ItemTag.TUNA))
+	    	.save(cons,"dcs_climate:food/kobachi_tuna_avocado_2");
+		
+		ShapelessRecipeBuilder
+	    	.shapeless(FoodInit.KOBACHI_SKIPJACK_AVOCADO.get(), 3)
+	    	.requires(Ingredient.of(TagDC.ItemTag.SKIPJACK))
+	    	.requires(Ingredient.of(TagDC.ItemTag.CROP_AVOCADO))
+	    	.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+	    	.requires(Ingredient.of(TagDC.ItemTag.CROP_GARLIC))
+	    	.requires(Ingredient.of(TagDC.ItemTag.SOYSAUCE))
+	    	.requires(Ingredient.of(TagDC.ItemTag.CROP_LEMON))
+	    	.unlockedBy("has_skipjack", has(TagDC.ItemTag.SKIPJACK))
+	    	.save(cons,"dcs_climate:food/kobachi_skipjack_avocado_0");
+		
+		ShapelessRecipeBuilder
+	    	.shapeless(FoodInit.KOBACHI_SKIPJACK_AVOCADO.get(), 3)
+	    	.requires(Ingredient.of(TagDC.ItemTag.SKIPJACK))
+	    	.requires(Ingredient.of(TagDC.ItemTag.CROP_AVOCADO))
+	    	.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+	    	.requires(Ingredient.of(TagDC.ItemTag.KUKUI_NUTS))
+	    	.requires(Ingredient.of(TagDC.ItemTag.SOYSAUCE))
+	    	.unlockedBy("has_skipjack", has(TagDC.ItemTag.SKIPJACK))
+	    	.save(cons,"dcs_climate:food/kobachi_skipjack_avocado_2");
+		
+		ShapelessRecipeBuilder
+    		.shapeless(FoodInit.KOBACHI_POISSON_CRU.get(), 3)
+    		.requires(Ingredient.of(TagDC.ItemTag.RAW_EDIBLE_FISH))
+    		.requires(Ingredient.of(TagDC.ItemTag.CROP_COCONUT))
+    		.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+    		.requires(Ingredient.of(Tags.Items.CROPS_CARROT))
+    		.requires(Ingredient.of(TagDC.ItemTag.CROP_LEMON))
+    		.unlockedBy("has_raw_edible_fish", has(TagDC.ItemTag.RAW_EDIBLE_FISH))
+    		.save(cons,"dcs_climate:food/kobachi_poisson_cru_0");
+		
+		ShapelessRecipeBuilder
+			.shapeless(FoodInit.KOBACHI_POISSON_CRU.get(), 3)
+			.requires(Ingredient.of(TagDC.ItemTag.RAW_EDIBLE_FISH))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_COCONUT))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_ONIONS))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_CUCUMBER))
+			.requires(Ingredient.of(TagDC.ItemTag.CROP_LEMON))
+			.unlockedBy("has_raw_edible_fish", has(TagDC.ItemTag.RAW_EDIBLE_FISH))
+			.save(cons,"dcs_climate:food/kobachi_poisson_cru_2");
 
 		ShapelessRecipeBuilder
 		    .shapeless(FoodInit.SAUTE_HOT_CHICKEN.get(), 1)
@@ -1504,6 +1589,15 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_milks", has(TagDC.ItemTag.MILKS))
 		    .save(cons,
 		        "dcs_climate:core/drink_cocoa_milk_0");
+		
+		ShapelessRecipeBuilder
+	    	.shapeless(FoodInit.TEA_COFFEE_MILK.get(), 1)
+	    	.requires(FoodInit.TEA_COFFEE.get())
+	    	.requires(TagDC.ItemTag.MILKS)
+	    	.group("drink_craft")
+	    	.unlockedBy("has_milks", has(TagDC.ItemTag.MILKS))
+	    	.save(cons,
+	        "dcs_climate:core/drink_coffee_milk_0");
 	}
 
 	static void mortarRecipes(Consumer<FinishedRecipe> cons) {
@@ -2504,6 +2598,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_POTATO), FoodInit.CONT_CROP_BAKED_POTATO.get(), 200, "cont_baked_potato", FoodInit.CONT_CROP_POTATO.get(), "has_cont_potato");
 		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.CROP_COFFEE), FoodInit.ROASTED_COFFEE.get(), 200, "roasted_coffee", FoodInit.CROP_RU_COFFEE.get(), "has_crop_coffee");
 		cookingRecipe(cons, Ingredient.of(FoodInit.LOG_EU_MANCHINEEL.get()), FoodInit.LOG_EU_MANCHINEEL_DRY.get(), 200, "dried_manchineel_log", FoodInit.LOG_EU_MANCHINEEL.get(), "has_log_manchineel");
+		cookingRecipe(cons, Ingredient.of(Tags.Items.EGGS), FoodInit.FRIED_EGG.get(), 200, "fried_egg", Items.EGG, "has_egg");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LEAVES), FoodInit.DUST_ASH.get(), 200, "dust_ash1", FoodInit.CONT_LEAVES.get(), "has_cont_leaves");
 		smokingRecipe(cons, Ingredient.of(TagDC.ItemTag.RAW_SAUSAGE), FoodInit.SMOKED_SAUSAGE.get(), 200, "smoked_sausage", FoodInit.RAW_SAUSAGE.get(), "has_raw_sausage");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LOGS), FoodInit.CONT_LOG_CHARCOAL.get(), 200, "charcoal_container", TagDC.ItemTag.CONT_LOGS, "has_log_cont");

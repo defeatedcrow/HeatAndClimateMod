@@ -2299,6 +2299,15 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('Z', Tags.Items.INGOTS_IRON)
 				.unlockedBy("has_fishing_hook", has(CoreInit.LURE_FISHING_HOOK.get()))
 				.save(cons, "dcs_climate:core/lure_magnet_1");
+		
+		ShapedRecipeBuilder.shaped(CoreInit.CANOE_ITEM.get(), 1)
+				.pattern(" Y ")
+				.pattern("X X")
+				.pattern("XXX")
+				.define('X', FoodInit.PLANK_EU_KUKUI.get())
+				.define('Y', ItemTags.LOGS_THAT_BURN)
+				.unlockedBy("has_kukui_planks", has(FoodInit.PLANK_EU_KUKUI.get()))
+				.save(cons, "dcs_climate:core/kukui_canoe");
 
 		ShapelessRecipeBuilder.shapeless(CoreInit.CALABASH_BUCKET.get(), 1)
 				.requires(TagDC.ItemTag.CROP_CALABASH)
@@ -2367,6 +2376,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.save(cons, "dcs_climate:core/dust_baking_soda_0");
 
 		// vanilla another
+		
+		ShapedRecipeBuilder.shaped(Items.OAK_BOAT, 1)
+		.pattern("X X")
+		.pattern("XXX")
+		.define('X', ItemTags.PLANKS)
+		.unlockedBy("has_planks", has(ItemTags.PLANKS))
+		.save(cons, "dcs_climate:core/boat_another_0");
 
 		ShapedRecipeBuilder.shaped(Items.PAINTING, 1)
 				.pattern("YYY")

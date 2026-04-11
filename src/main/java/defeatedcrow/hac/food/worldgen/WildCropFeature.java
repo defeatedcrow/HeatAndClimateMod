@@ -33,11 +33,9 @@ import net.minecraft.world.level.material.Material;
 
 public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 
-	private boolean isForced = false;
-
 	public WildCropFeature(Codec<NoneFeatureConfiguration> codec) {
 		super(codec);
-		isForced = false;
+		boolean isForced = false;
 	}
 
 	@Override
@@ -83,21 +81,20 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		random.nextInt(100);
 		// サークル状に生成
 		Holder<Biome> biome = level.getBiome(pos);
-		List<ClimateCropBaseBlock> targets = TargetCropList.INSTANCE.targetList.stream().filter((b) -> matchBiome(biome, pos.getY(), b)).toList();
+		List<ClimateCropBaseBlock> targets = TargetCropList.targetList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList();
 		boolean tree = random.nextInt(100) < 30;
 		if (tree) {
 			// 村には生成しないように
 			if (level.getLevel().isCloseToVillage(pos, 8)) {
 				return false;
 			} else {
-				targets = TargetCropList.INSTANCE.targetTreeList.stream().filter((b) -> matchBiome(biome, pos.getY(), b)).toList();
+				targets = TargetCropList.targetTreeList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList();
 			}
 		}
 		if (ConfigCommonBuilder.INSTANCE.enCommonCrop.get() && random.nextInt(100) < 20) {
 			// 20%の確率
-			targets = tree ? TargetCropList.INSTANCE.commonTreeList.stream().filter((b) -> matchBiome(biome, pos.getY(), b)).toList()
-					: TargetCropList.INSTANCE.commonList.stream().filter((
-							b) -> matchBiome(biome, pos.getY(), b)).toList();
+			targets = tree ? TargetCropList.commonTreeList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList()
+			    : TargetCropList.commonList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList();
 		}
 
 		// DCLogger.debugInfoLog("=== target size: " + targets.size() + " " + tree + " ===");
@@ -150,7 +147,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 								BlockState nextState = crop.getFeatureState();
 
 								boolean w = true;
-								if (crop.isAquaticPlant(crop.getTier()) == AquaticType.SUBMERGED && !isWater(air)) {
+								if (crop.isAquaticPlant(crop.getTier()) == AquaticType.FORCED_SUBMERGED && !isWater(air)) {
 									// 水辺にしか生えない
 									w = false;
 									for (Direction side : Direction.Plane.HORIZONTAL) {
@@ -190,12 +187,12 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 
 	private static boolean isSurface(BlockState state) {
 		return state.getFluidState().isEmpty() && !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && !state.getMaterial().isLiquid()
-				&& (state.getMaterial().isReplaceable() || state.getMaterial() == Material.LEAVES || state.getMaterial() == Material.PLANT);
+		    && (state.getMaterial().isReplaceable() || state.getMaterial() == Material.LEAVES || state.getMaterial() == Material.PLANT);
 	}
 
 	private static boolean isSoil(BlockState soil) {
 		return soil.is(BlockTags.DIRT) || soil.is(BlockTags.SAND) || soil.getMaterial() == Material.DIRT || soil.getMaterial() == Material.GRASS
-				|| soil.getMaterial() == Material.WATER;
+		    || soil.getMaterial() == Material.WATER;
 	}
 
 	private static boolean suitableSoil(ClimateCropBaseBlock crop, WorldGenLevel level, BlockPos p, BlockState soil) {
@@ -212,8 +209,8 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		if (aquatic == AquaticType.FORCED_EMERGED || aquatic == AquaticType.FORCED_SUBMERGED) {
 			air1 = isWater(avobe);
 		} else if (air1) {
-			air1 = (aquatic == AquaticType.EMERGED || aquatic == AquaticType.SUBMERGED)
-					|| (!avobe.getMaterial().isLiquid() && avobe.getFluidState().isEmpty() && !(avobe.getBlock() instanceof LiquidBlock));
+			air1 = aquatic == AquaticType.EMERGED || aquatic == AquaticType.SUBMERGED
+			    || !avobe.getMaterial().isLiquid() && avobe.getFluidState().isEmpty() && !(avobe.getBlock() instanceof LiquidBlock);
 		}
 		return air1 && air2;
 	}
@@ -229,6 +226,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		}
 		boolean b1 = false;
 		boolean b2 = false;
+		float humid = biome.get().getDownfall();
 		for (String s : block.getGeneratedBiomeTag(block.getTier())) {
 			if (TagUtil.matchTag(s.toLowerCase(), biome).isPresent()) {
 				b1 = true;
@@ -236,16 +234,28 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 			} else if (s.contains("MOUNTAIN") && height > 130) {
 				b1 = true;
 				break;
+			} else if (s.contains("DRY") && humid < 0.35F) {
+				b1 = true;
+				break;
+			} else if ((s.contains("WET") || s.contains("WATER")) && humid > 0.8F) {
+				b1 = true;
+				break;
 			}
 		}
-		for (String s : block.getAvoidBiomeTag(block.getTier())) {
-			if (TagUtil.matchTag(s.toLowerCase(), biome).isPresent()) {
+		for (String s2 : block.getAvoidBiomeTag(block.getTier())) {
+			if (TagUtil.matchTag(s2.toLowerCase(), biome).isPresent()) {
 				b2 = true;
 				break;
-			} else if (s.contains("MOUNTAIN") && height > 130) {
+			} else if (s2.contains("MOUNTAIN") && height > 130) {
 				b2 = true;
 				break;
-			} else if (s.contains("LOWLAND") && height < 90) {
+			} else if (s2.contains("LOWLAND") && height < 90) {
+				b2 = true;
+				break;
+			} else if (s2.contains("DRY") && humid < 0.35F) {
+				b2 = true;
+				break;
+			} else if ((s2.contains("WET") || s2.contains("WATER")) && humid > 0.8F) {
 				b2 = true;
 				break;
 			}

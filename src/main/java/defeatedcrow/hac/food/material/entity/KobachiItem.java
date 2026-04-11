@@ -52,6 +52,10 @@ public class KobachiItem extends ItemEntityFood {
 			return NAMEROU;
 		if (item == FoodInit.KOBACHI_TUNA_AVOCADO.get())
 			return TUNA_AVOCADO;
+		if (item == FoodInit.KOBACHI_SKIPJACK_AVOCADO.get())
+			return SKIPJACK_AVOCADO;
+		if (item == FoodInit.KOBACHI_POISSON_CRU.get())
+			return POISSON_CRU;
 		return PUMPKIN;
 	}
 
@@ -71,12 +75,11 @@ public class KobachiItem extends ItemEntityFood {
 	public static final EntityRenderData YAKKO = new EntityRenderData("food/kobachi_yakko", 0.6F, 0F);
 	public static final EntityRenderData NAMEROU = new EntityRenderData("food/kobachi_namerou", 0.6F, 0F);
 	public static final EntityRenderData TUNA_AVOCADO = new EntityRenderData("food/kobachi_tuna_avocado", 0.6F, 0F);
+	public static final EntityRenderData SKIPJACK_AVOCADO = new EntityRenderData("food/kobachi_skipjack_avocado", 0.6F, 0F);
+	public static final EntityRenderData POISSON_CRU = new EntityRenderData("food/kobachi_poisson_cru", 0.6F, 0F);
 
 	public static enum ModelType {
-		MAIN,
-		PASTE,
-		TUNA,
-		CHICKEN;
+		MAIN, PASTE, TUNA, CHICKEN;
 
 		public static ModelType getType(Item item) {
 			if (item == FoodInit.KOBACHI_PUMPKIN.get())
@@ -110,6 +113,10 @@ public class KobachiItem extends ItemEntityFood {
 			if (item == FoodInit.KOBACHI_NAMEROU.get())
 				return PASTE;
 			if (item == FoodInit.KOBACHI_TUNA_AVOCADO.get())
+				return TUNA;
+			if (item == FoodInit.KOBACHI_SKIPJACK_AVOCADO.get())
+				return TUNA;
+			if (item == FoodInit.KOBACHI_POISSON_CRU.get())
 				return TUNA;
 			return MAIN;
 		}

@@ -155,6 +155,7 @@ import defeatedcrow.hac.food.material.entity.StickBeefItem;
 import defeatedcrow.hac.food.material.entity.StickCornItem;
 import defeatedcrow.hac.food.material.entity.StickFishItem;
 import defeatedcrow.hac.food.material.entity.StickMeatItem;
+import defeatedcrow.hac.food.material.entity.StickPotatoItem;
 import defeatedcrow.hac.food.material.entity.StickVegiItem;
 import defeatedcrow.hac.food.material.entity.TacoItem;
 import defeatedcrow.hac.food.material.entity.TartItem;
@@ -245,6 +246,8 @@ public class FoodInit {
 	    () -> EntityType.Builder.<FoodEntityBase> of(FoodEntityBase::new, MobCategory.MISC).sized(0.3F, 0.75F).updateInterval(5).build("stick_corn"));
 	public static final RegistryObject<EntityType<FoodEntityBase>> STICK_VEGI = CoreInit.ENTITIES.register("stick_vegi",
 	    () -> EntityType.Builder.<FoodEntityBase> of(FoodEntityBase::new, MobCategory.MISC).sized(0.3F, 0.75F).updateInterval(5).build("stick_vegi"));
+	public static final RegistryObject<EntityType<FoodEntityBase>> STICK_POTATO = CoreInit.ENTITIES.register("stick_potato",
+	    () -> EntityType.Builder.<FoodEntityBase> of(FoodEntityBase::new, MobCategory.MISC).sized(0.3F, 0.75F).updateInterval(5).build("stick_potato"));
 
 	public static final RegistryObject<EntityType<FoodEntityBase>> PLATE_STEAK = CoreInit.ENTITIES.register("plate_steak",
 	    () -> EntityType.Builder.<FoodEntityBase> of(FoodEntityBase::new, MobCategory.MISC).sized(0.75F, 0.3F).updateInterval(5).build("plate_steak"));
@@ -360,10 +363,16 @@ public class FoodInit {
 	public static final RegistryObject<Item> STICK_OFFAL_COOKED = regItem("stick_offal_cooked", () -> new StickMeatItem("stick_offal_cooked", 8, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_FISH_RAW = regItem("stick_fish_raw", () -> new StickFishItem("stick_fish_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> STICK_FISH_COOKED = regItem("stick_fish_cooked", () -> new StickFishItem("stick_fish_cooked", 6, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
-	public static final RegistryObject<Item> STICK_VEGI_RAW = regItem("stick_vegi_raw", () -> new StickVegiItem("stick_vegi_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_VEGI_COOKED = regItem("stick_vegi_cooked", () -> new StickVegiItem("stick_vegi_cooked", 10, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_POTATO_RAW = regItem("stick_potato_raw", () -> new StickPotatoItem("stick_potato_raw", 0, 0F, null).setRawFood());
+	public static final RegistryObject<Item> STICK_POTATO_COOKED = regItem("stick_potato_cooked", () -> new StickPotatoItem("stick_potato_cooked", 5, 0.4F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_CORN_RAW = regItem("stick_corn_raw", () -> new StickCornItem("stick_corn_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> STICK_CORN_COOKED = regItem("stick_corn_cooked", () -> new StickCornItem("stick_corn_cooked", 6, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_EGGPLANT_RAW = regItem("stick_eggplant_raw", () -> new StickPotatoItem("stick_eggplant_raw", 0, 0F, null).setRawFood());
+	public static final RegistryObject<Item> STICK_EGGPLANT_COOKED = regItem("stick_eggplant_cooked", () -> new StickPotatoItem("stick_eggplant_cooked", 4, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_VEGI_RAW = regItem("stick_vegi_raw", () -> new StickVegiItem("stick_vegi_raw", 0, 0F, null).setRawFood());
+	public static final RegistryObject<Item> STICK_VEGI_COOKED = regItem("stick_vegi_cooked", () -> new StickVegiItem("stick_vegi_cooked", 10, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_LETTUCE_RAW = regItem("stick_lettuce_raw", () -> new StickPotatoItem("stick_lettuce_raw", 0, 0F, null).setRawFood());
+	public static final RegistryObject<Item> STICK_LETTUCE_COOKED = regItem("stick_lettuce_cooked", () -> new StickPotatoItem("stick_lettuce_cooked", 6, 0.2F, TagDC.ItemTag.HAC_SKEWERED));
 
 	// 鉄板焼
 	public static final RegistryObject<Item> PLATE_BEEF_RAW = regItem("plate_beef_raw", () -> new PlateBeefItem("plate_beef_raw", 0, 0F, null).setRawFood());
@@ -543,7 +552,10 @@ public class FoodInit {
 	public static final RegistryObject<Item> KOBACHI_YAKKO = regItem("kobachi_yakko", () -> new KobachiItem("kobachi_yakko", 8, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
 	public static final RegistryObject<Item> KOBACHI_NAMEROU = regItem("kobachi_namerou", () -> new KobachiItem("kobachi_namerou", 8, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
 	public static final RegistryObject<Item> KOBACHI_TUNA_AVOCADO = regItem("kobachi_tuna_avocado", () -> new KobachiItem("kobachi_tuna_avocado", 10, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_SKIPJACK_AVOCADO = regItem("kobachi_skipjack_avocado", () -> new KobachiItem("kobachi_skipjack_avocado", 10, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_POISSON_CRU = regItem("kobachi_poisson_cru", () -> new KobachiItem("kobachi_poisson_cru", 10, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
 
+	public static final RegistryObject<Item> FRIED_EGG = regItem("fried_egg", () -> new OmeletItem("fried_egg", 7, 0.6F, TagDC.ItemTag.HAC_SAUTE));
 	public static final RegistryObject<Item> OMELET_BASIC = regItem("omelet_basic", () -> new OmeletItem("omelet_basic", 8, 0.8F, TagDC.ItemTag.HAC_SAUTE));
 	public static final RegistryObject<Item> OMELET_VEGI = regItem("omelet_vegi", () -> new OmeletItem("omelet_vegi", 12, 0.8F, TagDC.ItemTag.HAC_SAUTE));
 
@@ -753,12 +765,15 @@ public class FoodInit {
 	public static final RegistryObject<Item> DRINK_GUAVA_SODA = regItem("drink_soda_guava", () -> new DrinkColdItem("drink_soda_guava", 4, 0F, 5, TagDC.ItemTag.HAC_DRINK_COLD));
 
 	public static final RegistryObject<Item> TEA_GREEN = regItem("cup_tea_green", () -> new DrinkCupItem("cup_tea_green", 4, 0F, 1, false, TagDC.ItemTag.HAC_DRINK_HOT));
+	public static final RegistryObject<Item> TEA_GREEN_SAKURA = regItem("cup_tea_green_sakura", () -> new DrinkCupItem("cup_tea_green_sakura", 4, 0F, 1, true, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_BLUE = regItem("cup_tea_blue", () -> new DrinkCupItem("cup_tea_blue", 4, 0F, 1, false, TagDC.ItemTag.HAC_DRINK_HOT));
+	public static final RegistryObject<Item> TEA_BLUE_JASMINE = regItem("cup_tea_blue_jasmine", () -> new DrinkCupItem("cup_tea_blue_jasmine", 4, 0F, 1, true, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_BLACK = regItem("cup_tea_black", () -> new DrinkCupItem("cup_tea_black", 4, 0F, 1, false, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_BLACK_LEMON = regItem("cup_tea_lemon", () -> new DrinkCupItem("cup_tea_lemon", 4, 0F, 3, false, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_APPLE = regItem("cup_tea_apple", () -> new DrinkCupItem("cup_tea_apple", 4, 0F, 3, false, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_BERRY = regItem("cup_tea_berry", () -> new DrinkCupItem("cup_tea_berry", 4, 0F, 8, false, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_CHAI = regItem("cup_tea_chai", () -> new DrinkCupItem("cup_tea_chai", 4, 0F, 4, false, TagDC.ItemTag.HAC_DRINK_HOT));
+	public static final RegistryObject<Item> TEA_COFFEE = regItem("cup_coffee", () -> new DrinkCupItem("cup_coffee", 4, 0F, 1, false, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_COCOA = regItem("cup_cocoa", () -> new DrinkCupItem("cup_cocoa", 4, 0F, 1, false, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_MINT = regItem("cup_mint", () -> new DrinkCupItem("cup_mint", 4, 0F, 5, false, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_MALLOW = regItem("cup_mallow", () -> new DrinkCupItem("cup_mallow", 4, 0F, 6, false, TagDC.ItemTag.HAC_DRINK_HOT));
@@ -771,6 +786,7 @@ public class FoodInit {
 	public static final RegistryObject<Item> TEA_BLACK_MILK = regItem("cup_tea_black_milk", () -> new DrinkCupItem("cup_tea_black_milk", 4, 0F, 1, true, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_APPLE_MILK = regItem("cup_tea_apple_milk", () -> new DrinkCupItem("cup_tea_apple_milk", 4, 0F, 3, true, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_BERRY_MILK = regItem("cup_tea_berry_milk", () -> new DrinkCupItem("cup_tea_berry_milk", 4, 0F, 8, true, TagDC.ItemTag.HAC_DRINK_HOT));
+	public static final RegistryObject<Item> TEA_COFFEE_MILK = regItem("cup_coffee_milk", () -> new DrinkCupItem("cup_coffee_milk", 4, 0F, 1, true, TagDC.ItemTag.HAC_DRINK_HOT));
 	public static final RegistryObject<Item> TEA_COCOA_MILK = regItem("cup_cocoa_milk", () -> new DrinkCupItem("cup_cocoa_milk", 4, 0F, 1, true, TagDC.ItemTag.HAC_DRINK_HOT));
 
 	public static final RegistryObject<Item> BOTTLE_BEER = regItem("bottle_beer", () -> new BottleBeerItem("bottle_beer", 4, 0F, TagDC.ItemTag.HAC_LIQUOR));

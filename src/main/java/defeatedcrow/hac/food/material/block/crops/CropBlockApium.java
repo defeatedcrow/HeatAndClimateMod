@@ -26,7 +26,7 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 
 	public CropBlockApium(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, 0).setValue(DCState.WILD, false));
 	}
 
 	@Override
@@ -44,12 +44,12 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_0")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/apium_1")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/apium_" + getSpeciesName(cropTier) + "_2")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/apium_" + getSpeciesName(cropTier) + "_f")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/apium_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/apium_" + getSpeciesName(cropTier) + "_d")));
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_0")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/apium_1")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/apium_" + getSpeciesName(cropTier) + "_2")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/apium_" + getSpeciesName(cropTier) + "_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/apium_" + getSpeciesName(cropTier) + "_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/apium_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(2)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, 2).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
@@ -88,7 +88,7 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFlowerState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(4));
+		return state.setValue(DCState.STAGE6, 4);
 	}
 
 	@Override
@@ -97,59 +97,48 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public float wildCropSpreadChance() {
+		return 0.02F;
+	}
+
+	@Override
 	public ItemLike getSeedItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.BLOCK_AP_FENNEL.get();
-		case RARE:
-			return FoodInit.BLOCK_AP_PARSNIP.get();
-		case EPIC:
-			return FoodInit.BLOCK_AP_CORIANDER.get();
-		default:
-			return FoodInit.BLOCK_AP_CELERY.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.BLOCK_AP_FENNEL.get();
+		case RARE -> FoodInit.BLOCK_AP_PARSNIP.get();
+		case EPIC -> FoodInit.BLOCK_AP_CORIANDER.get();
+		default -> FoodInit.BLOCK_AP_CELERY.get();
+		};
 	}
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_AP_FENNEL.get();
-		case RARE:
-			return FoodInit.CROP_AP_PARSNIP.get();
-		case EPIC:
-			return FoodInit.CROP_AP_CORIANDER.get();
-		default:
-			return FoodInit.CROP_AP_CELERY.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_AP_FENNEL.get();
+		case RARE -> FoodInit.CROP_AP_PARSNIP.get();
+		case EPIC -> FoodInit.CROP_AP_CORIANDER.get();
+		default -> FoodInit.CROP_AP_CELERY.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_AP_CELERY.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_AP_FENNEL.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_AP_PARSNIP.get());
-		case EPIC:
-			return Optional.of(FoodInit.BLOCK_AP_CORIANDER.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_AP_CELERY.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_AP_FENNEL.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_AP_PARSNIP.get());
+		case EPIC -> Optional.of(FoodInit.BLOCK_AP_CORIANDER.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.SAND);
-		case WILD:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
-		default:
-			return ImmutableList.of(SoilType.FARMLAND);
-		}
+		return switch (t) {
+		case COMMON -> ImmutableList.of(SoilType.FARMLAND, SoilType.SAND);
+		case WILD -> ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
+		default -> ImmutableList.of(SoilType.FARMLAND);
+		};
 	}
 
 	@Override
@@ -171,24 +160,19 @@ public class CropBlockApium extends ClimateCropBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("SWAMP", "RIVER");
-		case COMMON:
-			return ImmutableList.of("RIVER", "BEACH");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("SWAMP", "RIVER");
+		case COMMON -> ImmutableList.of("RIVER", "BEACH");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("COLD", "DRY");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("COLD", "DRY");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

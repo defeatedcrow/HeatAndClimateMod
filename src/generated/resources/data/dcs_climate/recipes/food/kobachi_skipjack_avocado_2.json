@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/skipjack"
+    },
+    {
+      "tag": "forge:crops/avocado"
+    },
+    {
+      "tag": "forge:crops/onions"
+    },
+    {
+      "tag": "forge:ingredients/kukui_nuts"
+    },
+    {
+      "tag": "forge:ingredients/soysauce"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/kobachi_skipjack_avocado"
+  }
+}

@@ -40,7 +40,7 @@ public class DrinkCupItem extends ItemEntityFood {
 		final int a = taste > 0 ? taste : 0;
 
 		if (id == 1)
-			return () -> new MobEffectInstance(MobEffects.DIG_SPEED, d);
+			return () -> new MobEffectInstance(MobEffects.DIG_SPEED, d, a);
 		if (id == 2)
 			return () -> new MobEffectInstance(CoreInit.LUMBERJACK.get(), d);
 		if (id == 3)
@@ -54,7 +54,7 @@ public class DrinkCupItem extends ItemEntityFood {
 		if (id == 7)
 			return () -> new MobEffectInstance(CoreInit.HEAVY.get(), d, a);
 		if (id == 8)
-			return () -> new MobEffectInstance(MobEffects.NIGHT_VISION, d, a);
+			return () -> new MobEffectInstance(MobEffects.NIGHT_VISION, d);
 
 		return () -> new MobEffectInstance(MobEffects.REGENERATION, d, a);
 	}
@@ -94,10 +94,14 @@ public class DrinkCupItem extends ItemEntityFood {
 	public EntityRenderData getRenderData(Item item) {
 		if (item == FoodInit.TEA_GREEN.get())
 			return TEA_GREEN;
+		if (item == FoodInit.TEA_GREEN_SAKURA.get())
+			return TEA_GREEN_SAKURA;
 		if (item == FoodInit.TEA_GREEN_MILK.get())
 			return TEA_GREEN_MILK;
 		if (item == FoodInit.TEA_BLUE.get())
 			return TEA_BLUE;
+		if (item == FoodInit.TEA_BLUE_JASMINE.get())
+			return TEA_BLUE_JASMINE;
 		if (item == FoodInit.TEA_BLUE_MILK.get())
 			return TEA_BLUE_MILK;
 		if (item == FoodInit.TEA_BLACK.get())
@@ -116,6 +120,10 @@ public class DrinkCupItem extends ItemEntityFood {
 			return TEA_APPLE;
 		if (item == FoodInit.TEA_APPLE_MILK.get())
 			return TEA_APPLE_MILK;
+		if (item == FoodInit.TEA_COFFEE.get())
+			return TEA_COFFEE;
+		if (item == FoodInit.TEA_COFFEE_MILK.get())
+			return TEA_COFFEE_MILK;
 		if (item == FoodInit.TEA_COCOA.get())
 			return TEA_COCOA;
 		if (item == FoodInit.TEA_COCOA_MILK.get())
@@ -136,8 +144,10 @@ public class DrinkCupItem extends ItemEntityFood {
 	}
 
 	public static final EntityRenderData TEA_GREEN = new EntityRenderData("food/cup_tea_green", 0.5F, 0F);
+	public static final EntityRenderData TEA_GREEN_SAKURA = new EntityRenderData("food/cup_tea_green_sakura", 0.5F, 0F);
 	public static final EntityRenderData TEA_GREEN_MILK = new EntityRenderData("food/cup_tea_green_milk", 0.5F, 0F);
 	public static final EntityRenderData TEA_BLUE = new EntityRenderData("food/cup_tea_blue", 0.5F, 0F);
+	public static final EntityRenderData TEA_BLUE_JASMINE = new EntityRenderData("food/cup_tea_blue_jasmine", 0.5F, 0F);
 	public static final EntityRenderData TEA_BLUE_MILK = new EntityRenderData("food/cup_tea_blue_milk", 0.5F, 0F);
 	public static final EntityRenderData TEA_BLACK = new EntityRenderData("food/cup_tea_black", 0.5F, 0F);
 	public static final EntityRenderData TEA_BLACK_MILK = new EntityRenderData("food/cup_tea_black_milk", 0.5F, 0F);
@@ -147,6 +157,8 @@ public class DrinkCupItem extends ItemEntityFood {
 	public static final EntityRenderData TEA_APPLE = new EntityRenderData("food/cup_tea_apple", 0.5F, 0F);
 	public static final EntityRenderData TEA_APPLE_MILK = new EntityRenderData("food/cup_tea_apple_milk", 0.5F, 0F);
 	public static final EntityRenderData TEA_CHAI = new EntityRenderData("food/cup_tea_black_milk", 0.5F, 0F);
+	public static final EntityRenderData TEA_COFFEE = new EntityRenderData("food/cup_coffee", 0.5F, 0F);
+	public static final EntityRenderData TEA_COFFEE_MILK = new EntityRenderData("food/cup_coffee_milk", 0.5F, 0F);
 	public static final EntityRenderData TEA_COCOA = new EntityRenderData("food/cup_cocoa", 0.5F, 0F);
 	public static final EntityRenderData TEA_COCOA_MILK = new EntityRenderData("food/cup_cocoa_milk", 0.5F, 0F);
 	public static final EntityRenderData TEA_MINT = new EntityRenderData("food/cup_mint", 0.5F, 0F);
