@@ -72,7 +72,7 @@ public class AdvTooltipEvent {
 
 			if (target.is(TagDC.ItemTag.HAC_SEASONING)) {
 				list.add(Component.translatable("dcs.tip.seasoning").withStyle(ChatFormatting.GREEN).withStyle(ChatFormatting.BOLD));
-				list.add(Component.translatable("dcs.tip.seasoning.dist").withStyle(ChatFormatting.GRAY));
+				list.add(Component.translatable("dcs.tip.seasoning.desc").withStyle(ChatFormatting.GRAY));
 			}
 		}
 

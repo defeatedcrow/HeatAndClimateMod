@@ -94,10 +94,10 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .save(cons, "dcs_climate:food/bread_corn");
 
 		ShapedRecipeBuilder.shaped(FoodInit.BREAD_FLAT_RAW_ITEM.get(), 3)
-		.pattern("XXX")
-		.define('X', TagDC.ItemTag.DOUGH)
-		.unlockedBy("has_dough", has(TagDC.ItemTag.DOUGH))
-		.save(cons, "dcs_climate:food/bread_flat");
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.DOUGH)
+			.unlockedBy("has_dough", has(TagDC.ItemTag.DOUGH))
+			.save(cons, "dcs_climate:food/bread_flat");
 
 		ShapelessRecipeBuilder
 		    .shapeless(FoodInit.BREAD_TORTILLA_RAW_ITEM.get(), 3)
@@ -468,7 +468,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 	    	.save(cons,"dcs_climate:food/stick_eggplant");
 		
 		ShapelessRecipeBuilder
-    		.shapeless(FoodInit.STICK_LETTUCE_RAW.get(), 1)
+    		.shapeless(FoodInit.STICK_LETTUCE_RAW.get(), 2)
     		.requires(Ingredient.of(Tags.Items.RODS_WOODEN))
     		.requires(Ingredient.of(TagDC.ItemTag.CROP_LETTUCE))
     		.requires(Ingredient.of(TagDC.ItemTag.RAW_PORK))
@@ -1752,7 +1752,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 		        "dcs_climate:core/cloth_plant");
 
 		ShapedRecipeBuilder
-		    .shaped(FoodInit.CLOTH_PLANT.get(), 1)
+		    .shaped(FoodInit.CLOTH_TREE.get(), 1)
 		    .pattern(" X ")
 		    .pattern("X X")
 		    .pattern(" X ")
@@ -1854,10 +1854,10 @@ public class FoodRecipeProvider extends RecipeProvider {
 				.save(cons, "dcs_climate:core/paper_from_wood");
 
 		ShapedRecipeBuilder.shaped(Items.PAPER, 4)
-		.pattern("XXX")
-		.define('X', Ingredient.of(TagDC.ItemTag.FIBER_WOOD))
-		.unlockedBy("has_bark", has(TagDC.ItemTag.FIBER_WOOD))
-		.save(cons, "dcs_climate:core/paper_from_bark");
+				.pattern("XXX")
+				.define('X', Ingredient.of(TagDC.ItemTag.FIBER_WOOD))
+				.unlockedBy("has_bark", has(TagDC.ItemTag.FIBER_WOOD))
+				.save(cons, "dcs_climate:core/paper_from_bark");
 
 		ShapedRecipeBuilder
 		    .shaped(FoodInit.PLANK_LACQUERWARE.get(), 8)
