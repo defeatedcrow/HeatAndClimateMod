@@ -249,7 +249,8 @@ public class DCUtil {
 		int squid = held.getEnchantmentLevel(CoreInit.SQUID_FISHING.get());
 		int luck = held.getEnchantmentLevel(Enchantments.FISHING_SPEED);
 		if (living.hasEffect(MobEffects.LUCK)) {
-			luck++;
+			MobEffectInstance li = living.getEffect(MobEffects.LUCK);
+			luck += li.getAmplifier() + 1;
 		}
 		if (held.is(TagDC.ItemTag.MAGIC_CARD)) {
 			luck += 3;

@@ -31,6 +31,7 @@ import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingConfig;
 import defeatedcrow.hac.core.recipe.smelting.ClimateSmeltingList;
 import defeatedcrow.hac.food.FoodProxy;
 import defeatedcrow.hac.food.event.FishingEventDC;
+import defeatedcrow.hac.food.event.ItemTossEventDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.resources.ResourceLocation;
@@ -82,6 +83,7 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(WandererTradeEventDC::onLoadingTrade);
 		MinecraftForge.EVENT_BUS.addListener(ThunderstruckEventDC::onLodUpdate);
 		MinecraftForge.EVENT_BUS.addListener(DCRecipes::serverStop);
+		MinecraftForge.EVENT_BUS.addListener(ItemTossEventDC::onItemToss);
 
 		FoodProxy.registerEvent();
 	}
@@ -99,7 +101,7 @@ public class CommonProxyDC {
 	public void updatePlayerClimate() {}
 
 	public void registerRecipes() {
-		DCRecipes.INSTANCE.clear();
+		DCRecipes.clear();
 
 		ClimateSmeltingList.init();
 		ClimateSmeltingConfig.initFile();
@@ -111,7 +113,7 @@ public class CommonProxyDC {
 
 		FuelList.init();
 		FuelConfig.initFile();
-	};
+	}
 
 	public boolean keyShiftPushed() {
 		return false;
@@ -150,8 +152,7 @@ public class CommonProxyDC {
 	}
 
 	public void triggerAdvancement(LivingEntity player, String res) {
-		if (player instanceof ServerPlayer) {
-			ServerPlayer serverplayer = (ServerPlayer) player;
+		if (player instanceof ServerPlayer serverplayer) {
 			Advancement adv = serverplayer.server.getAdvancements().getAdvancement(new ResourceLocation(ClimateCore.MOD_ID + ":" + res));
 			if (adv != null)
 				((ServerPlayer) player).getAdvancements().award(adv, "impossible");
@@ -159,8 +160,7 @@ public class CommonProxyDC {
 	}
 
 	public boolean isAdvancementDone(LivingEntity player, String res) {
-		if (player instanceof ServerPlayer) {
-			ServerPlayer serverplayer = (ServerPlayer) player;
+		if (player instanceof ServerPlayer serverplayer) {
 			Advancement adv = serverplayer.server.getAdvancements().getAdvancement(new ResourceLocation(ClimateCore.MOD_ID + ":" + res));
 			if (adv != null && adv.getDisplay() != null) {
 				PlayerAdvancements advs = serverplayer.server.getPlayerList().getPlayerAdvancements(serverplayer);

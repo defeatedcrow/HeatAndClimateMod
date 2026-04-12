@@ -10,12 +10,12 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class ItemTossEventDC {
 
 	@SubscribeEvent
-	public static void onClickEntity(ItemTossEvent event) {
+	public static void onItemToss(ItemTossEvent event) {
 		Player player = event.getPlayer();
 		ItemEntity target = event.getEntity();
 		if (player != null && target != null && !target.getItem().isEmpty()) {
 			if (target.getItem().getItem() instanceof RawFishItem) {
-				CompoundTag tag = target.getItem().getTag();
+				CompoundTag tag = target.getItem().getOrCreateTag();
 				tag.putBoolean("Released_Fish", true);
 				target.getItem().setTag(tag);
 
