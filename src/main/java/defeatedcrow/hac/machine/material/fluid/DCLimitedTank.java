@@ -17,7 +17,7 @@ public class DCLimitedTank extends DCTank {
 
 	@Override
 	public boolean isFluidValid(FluidStack stack) {
-		return fluid.isEmpty() || (!stack.isEmpty() && stack.getFluid() == limit);
+		return fluid.isEmpty() || !stack.isEmpty() && stack.getFluid() == limit;
 	}
 
 }

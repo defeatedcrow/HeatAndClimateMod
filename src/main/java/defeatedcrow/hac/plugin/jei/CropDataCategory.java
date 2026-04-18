@@ -48,9 +48,7 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 
 	public CropDataCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(FoodInit.CROP_AL_WILD.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.CROP.getLocation(), 21, 19, 134, 127)
-				.addPadding(0, 0, 10, 8)
-				.build();
+		background = guiHelper.drawableBuilder(PluginTexDC.CROP.getLocation(), 21, 19, 134, 124).addPadding(0, 0, 10, 8).build();
 	}
 
 	@Override
@@ -101,19 +99,19 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 		List<DCHeatTier> heats = recipe.getSuitableTemp(tier);
 		for (DCHeatTier heat : heats) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 42 + heat.getID() * 6, 41).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
-					new HeatTierRenderer(6, 3));
+			    new HeatTierRenderer(6, 3));
 		}
 
 		List<DCHumidity> hums = recipe.getSuitableHum(tier);
 		for (DCHumidity hum : hums) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 42 + hum.getID() * 21, 47).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
-					new HumidityRenderer(21, 3));
+			    new HumidityRenderer(21, 3));
 		}
 
 		List<DCAirflow> airs = recipe.getSuitableAir(tier);
 		for (DCAirflow air : airs) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 42 + air.getID() * 21, 53).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW,
-					new AirflowRenderer(21, 3));
+			    new AirflowRenderer(21, 3));
 		}
 	}
 

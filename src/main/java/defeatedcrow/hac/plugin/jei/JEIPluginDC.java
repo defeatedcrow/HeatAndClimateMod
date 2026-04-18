@@ -37,6 +37,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.biome.Biome;
 
 @JeiPlugin
 public class JEIPluginDC implements IModPlugin {
@@ -56,6 +57,7 @@ public class JEIPluginDC implements IModPlugin {
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
 		PluginRecipeListDC.init();
+		registration.addRecipes(BIOME_DATA, PluginRecipeListDC.BIOME_LIST);
 		registration.addRecipes(SMELTING_DATA, PluginRecipeListDC.SMELTING_LIST);
 		registration.addRecipes(HEAT_TREATMENT_DATA, PluginRecipeListDC.HEAT_TREATMENT_LIST);
 		registration.addRecipes(COOKING_DATA, PluginRecipeListDC.COOKING_LIST);
@@ -74,6 +76,7 @@ public class JEIPluginDC implements IModPlugin {
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registration) {
+		registration.addRecipeCategories(new BiomeDataCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new ClimateSmeltingCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new HeatTreatmentCategory(registration.getJeiHelpers().getGuiHelper()));
 		registration.addRecipeCategories(new CropDataCategory(registration.getJeiHelpers().getGuiHelper()));
@@ -145,45 +148,48 @@ public class JEIPluginDC implements IModPlugin {
 	}
 
 	public static final ResourceLocation SMELTING_ID = new ResourceLocation(ClimateCore.MOD_ID, "smelting_data");
-	public static final RecipeType<IClimateSmelting> SMELTING_DATA = new RecipeType<IClimateSmelting>(SMELTING_ID, IClimateSmelting.class);
+	public static final RecipeType<IClimateSmelting> SMELTING_DATA = new RecipeType<>(SMELTING_ID, IClimateSmelting.class);
 
 	public static final ResourceLocation HEAT_TREATMENT_ID = new ResourceLocation(ClimateCore.MOD_ID, "heat_treatment_data");
-	public static final RecipeType<IHeatTreatment> HEAT_TREATMENT_DATA = new RecipeType<IHeatTreatment>(HEAT_TREATMENT_ID, IHeatTreatment.class);
+	public static final RecipeType<IHeatTreatment> HEAT_TREATMENT_DATA = new RecipeType<>(HEAT_TREATMENT_ID, IHeatTreatment.class);
 
 	public static final ResourceLocation CROP_ID = new ResourceLocation(ClimateCore.MOD_ID, "crop_data");
-	public static final RecipeType<ClimateCropBaseBlock> CROP_DATA = new RecipeType<ClimateCropBaseBlock>(CROP_ID, ClimateCropBaseBlock.class);
+	public static final RecipeType<ClimateCropBaseBlock> CROP_DATA = new RecipeType<>(CROP_ID, ClimateCropBaseBlock.class);
 
 	public static final ResourceLocation TREE_ID = new ResourceLocation(ClimateCore.MOD_ID, "tree_data");
-	public static final RecipeType<LeavesCropBlockDC> TREE_DATA = new RecipeType<LeavesCropBlockDC>(TREE_ID, LeavesCropBlockDC.class);
+	public static final RecipeType<LeavesCropBlockDC> TREE_DATA = new RecipeType<>(TREE_ID, LeavesCropBlockDC.class);
 
 	public static final ResourceLocation COOKING_ID = new ResourceLocation(ClimateCore.MOD_ID, "cooking_data");
-	public static final RecipeType<IDeviceRecipe> COOKING_DATA = new RecipeType<IDeviceRecipe>(COOKING_ID, IDeviceRecipe.class);
+	public static final RecipeType<IDeviceRecipe> COOKING_DATA = new RecipeType<>(COOKING_ID, IDeviceRecipe.class);
 
 	public static final ResourceLocation FRYING_ID = new ResourceLocation(ClimateCore.MOD_ID, "frying_data");
-	public static final RecipeType<IDeviceRecipe> FRYING_DATA = new RecipeType<IDeviceRecipe>(FRYING_ID, IDeviceRecipe.class);
+	public static final RecipeType<IDeviceRecipe> FRYING_DATA = new RecipeType<>(FRYING_ID, IDeviceRecipe.class);
 
 	public static final ResourceLocation TEA_ID = new ResourceLocation(ClimateCore.MOD_ID, "tea_data");
-	public static final RecipeType<IDeviceRecipe> TEA_DATA = new RecipeType<IDeviceRecipe>(TEA_ID, IDeviceRecipe.class);
+	public static final RecipeType<IDeviceRecipe> TEA_DATA = new RecipeType<>(TEA_ID, IDeviceRecipe.class);
 
 	public static final ResourceLocation FERMENTATION_ID = new ResourceLocation(ClimateCore.MOD_ID, "fermentation_data");
-	public static final RecipeType<IDeviceRecipe> FERMENTATION_DATA = new RecipeType<IDeviceRecipe>(FERMENTATION_ID, IDeviceRecipe.class);
+	public static final RecipeType<IDeviceRecipe> FERMENTATION_DATA = new RecipeType<>(FERMENTATION_ID, IDeviceRecipe.class);
 
 	public static final ResourceLocation MILL_ID = new ResourceLocation(ClimateCore.MOD_ID, "mill_data");
-	public static final RecipeType<IDeviceRecipe> MILL_DATA = new RecipeType<IDeviceRecipe>(MILL_ID, IDeviceRecipe.class);
+	public static final RecipeType<IDeviceRecipe> MILL_DATA = new RecipeType<>(MILL_ID, IDeviceRecipe.class);
 
 	public static final ResourceLocation CRUSHER_PULVERISE_ID = new ResourceLocation(ClimateCore.MOD_ID, "crusher_pulverise_data");
-	public static final RecipeType<IDeviceRecipe> CRUSHER_PULVERISE_DATA = new RecipeType<IDeviceRecipe>(CRUSHER_PULVERISE_ID, IDeviceRecipe.class);
+	public static final RecipeType<IDeviceRecipe> CRUSHER_PULVERISE_DATA = new RecipeType<>(CRUSHER_PULVERISE_ID, IDeviceRecipe.class);
 
 	public static final ResourceLocation CRUSHER_SQUEEZE_ID = new ResourceLocation(ClimateCore.MOD_ID, "crusher_squeeze_data");
-	public static final RecipeType<IDeviceRecipe> CRUSHER_SQUEEZE_DATA = new RecipeType<IDeviceRecipe>(CRUSHER_SQUEEZE_ID, IDeviceRecipe.class);
+	public static final RecipeType<IDeviceRecipe> CRUSHER_SQUEEZE_DATA = new RecipeType<>(CRUSHER_SQUEEZE_ID, IDeviceRecipe.class);
 
 	public static final ResourceLocation CRUSHER_SIEVE_ID = new ResourceLocation(ClimateCore.MOD_ID, "crusher_sieve_data");
-	public static final RecipeType<IDeviceRecipe> CRUSHER_SIEVE_DATA = new RecipeType<IDeviceRecipe>(CRUSHER_SIEVE_ID, IDeviceRecipe.class);
+	public static final RecipeType<IDeviceRecipe> CRUSHER_SIEVE_DATA = new RecipeType<>(CRUSHER_SIEVE_ID, IDeviceRecipe.class);
 
 	public static final ResourceLocation BIOMASS_FUEL_ID = new ResourceLocation(ClimateCore.MOD_ID, "fuel_biomass_data");
-	public static final RecipeType<IDeviceFuel> BIOMASS_FUEL_DATA = new RecipeType<IDeviceFuel>(BIOMASS_FUEL_ID, IDeviceFuel.class);
+	public static final RecipeType<IDeviceFuel> BIOMASS_FUEL_DATA = new RecipeType<>(BIOMASS_FUEL_ID, IDeviceFuel.class);
 
 	public static final ResourceLocation FLUID_FUEL_ID = new ResourceLocation(ClimateCore.MOD_ID, "fuel_fluid_data");
-	public static final RecipeType<IDeviceFuel> FLUID_FUEL_DATA = new RecipeType<IDeviceFuel>(FLUID_FUEL_ID, IDeviceFuel.class);
+	public static final RecipeType<IDeviceFuel> FLUID_FUEL_DATA = new RecipeType<>(FLUID_FUEL_ID, IDeviceFuel.class);
+
+	public static final ResourceLocation BIOME_ID = new ResourceLocation(ClimateCore.MOD_ID, "biome_data");
+	public static final RecipeType<Biome> BIOME_DATA = new RecipeType<>(BIOME_ID, Biome.class);
 
 }

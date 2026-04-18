@@ -50,9 +50,7 @@ public class TreeDataCategory implements IRecipeCategory<LeavesCropBlockDC> {
 
 	public TreeDataCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(FoodInit.CROP_BH_SWEET.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.TREE.getLocation(), 21, 19, 134, 127)
-			.addPadding(0, 0, 10, 8)
-			.build();
+		background = guiHelper.drawableBuilder(PluginTexDC.TREE.getLocation(), 21, 19, 134, 124).addPadding(0, 0, 10, 8).build();
 	}
 
 	@Override
@@ -104,19 +102,19 @@ public class TreeDataCategory implements IRecipeCategory<LeavesCropBlockDC> {
 		List<DCHeatTier> heats = recipe.getSuitableTemp(tier);
 		for (DCHeatTier heat : heats) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 42 + heat.getID() * 6, 41).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
-				new HeatTierRenderer(6, 3));
+			    new HeatTierRenderer(6, 3));
 		}
 
 		List<DCHumidity> hums = recipe.getSuitableHum(tier);
 		for (DCHumidity hum : hums) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 42 + hum.getID() * 21, 47).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
-				new HumidityRenderer(21, 3));
+			    new HumidityRenderer(21, 3));
 		}
 
 		List<DCAirflow> airs = recipe.getSuitableAir(tier);
 		for (DCAirflow air : airs) {
 			builder.addSlot(RecipeIngredientRole.INPUT, 42 + air.getID() * 21, 53).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW,
-				new AirflowRenderer(21, 3));
+			    new AirflowRenderer(21, 3));
 		}
 	}
 
@@ -245,12 +243,12 @@ public class TreeDataCategory implements IRecipeCategory<LeavesCropBlockDC> {
 		}
 
 		for (EnumSeason s : recipe.flowerSeasons) {
-			int ad = s.season + (s.id * 4);
+			int ad = s.season + s.id * 4;
 			drawTexturedModalRect(stack.last().pose(), ad + 37, 29, 90 + ad, 170, 4, 8);
 		}
 
 		for (EnumSeason s : recipe.cropSeasons) {
-			int ad = s.season + (s.id * 4);
+			int ad = s.season + s.id * 4;
 			drawTexturedModalRect(stack.last().pose(), ad + 88, 29, 90 + ad, 170, 4, 8);
 		}
 

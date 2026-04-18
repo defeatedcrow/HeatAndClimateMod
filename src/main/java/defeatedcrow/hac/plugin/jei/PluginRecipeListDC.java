@@ -8,10 +8,13 @@ import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.api.recipe.IDeviceFuel;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.api.recipe.IHeatTreatment;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import defeatedcrow.hac.food.material.block.crops.LeavesCropBlockDC;
+import net.minecraft.core.Registry;
+import net.minecraft.world.level.biome.Biome;
 
 public class PluginRecipeListDC {
 
@@ -31,6 +34,7 @@ public class PluginRecipeListDC {
 	public static final List<IDeviceFuel> FLUID_FUEL_LIST = Lists.newArrayList();
 	public static final List<ClimateCropBaseBlock> CROP_LIST = Lists.newArrayList();
 	public static final List<LeavesCropBlockDC> TREE_LIST = Lists.newArrayList();
+	public static final List<Biome> BIOME_LIST = Lists.newArrayList();
 
 	public static void init() {
 		loadFood();
@@ -250,6 +254,11 @@ public class PluginRecipeListDC {
 
 		if (FLUID_FUEL_LIST.isEmpty())
 			FLUID_FUEL_LIST.addAll(DCRecipes.FLUID_FUEL.values());
+
+		if (BIOME_LIST.isEmpty() && ClimateCore.proxy.getClientLevel().isPresent()) {
+			Registry<Biome> biomeReg = ClimateCore.proxy.getClientLevel().get().registryAccess().registryOrThrow(Registry.BIOME_REGISTRY);
+			BIOME_LIST.addAll(biomeReg.stream().toList());
+		}
 	}
 
 }

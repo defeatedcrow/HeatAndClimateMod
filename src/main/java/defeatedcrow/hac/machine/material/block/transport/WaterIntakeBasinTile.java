@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.client.gui.PortableTankMenu;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.fluid.DCDummyTank;
+import defeatedcrow.hac.machine.material.fluid.DCFluidUtil;
 import defeatedcrow.hac.machine.material.fluid.DCLimitedTank;
 import defeatedcrow.hac.machine.material.fluid.DCTank;
 import defeatedcrow.hac.machine.material.fluid.SidedFluidWrapper;
@@ -66,15 +67,22 @@ public class WaterIntakeBasinTile extends PortableFluidTankTile {
 
 			// Collect Water
 			if (!getTank().isFull()) {
+				int head = checkHead(level, pos);
 				if (level.getFluidState(pos).is(FluidTags.WATER)) {
-					getTank().fill(new FluidStack(Fluids.WATER, 16000), FluidAction.EXECUTE);
+					FluidStack fill = new FluidStack(Fluids.WATER, 16000);
+					DCFluidUtil.setHead(fill, head);
+					getTank().fill(fill, FluidAction.EXECUTE);
 				} else {
 					FluidState above = level.getFluidState(pos.above());
 					int flow = above.getAmount();
+					FluidStack fill = new FluidStack(Fluids.WATER, 1000);
+					DCFluidUtil.setHead(fill, head);
 					if (above.is(FluidTags.WATER) && flow > 0) {
-						getTank().fill(new FluidStack(Fluids.WATER, 250 * flow), FluidAction.EXECUTE);
+						fill.setAmount(250 * flow);
+						getTank().fill(fill, FluidAction.EXECUTE);
 					} else if (level.isRaining() && level.canSeeSky(pos.above())) {
-						getTank().fill(new FluidStack(Fluids.WATER, 50), FluidAction.EXECUTE);
+						fill.setAmount(50);
+						getTank().fill(fill, FluidAction.EXECUTE);
 					}
 				}
 			}
@@ -86,7 +94,7 @@ public class WaterIntakeBasinTile extends PortableFluidTankTile {
 				copy.setCount(1);
 				flag = FluidUtil.getFluidHandler(copy).map(handler -> {
 					FluidStack fluid = handler.getFluidInTank(0);
-					if (fluid.isEmpty() || getTank().isFull()) {
+					if (fluid.isEmpty() || !getTank().isEmpty()) {
 						int space = Math.min(getTank().getFluidAmount(), handler.getTankCapacity(0));
 						int d = handler.fill(getTank().drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
 						if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
@@ -124,6 +132,20 @@ public class WaterIntakeBasinTile extends PortableFluidTankTile {
 			}
 			return flag;
 		}
+	}
+
+	private int checkHead(Level level, BlockPos pos) {
+		int head = 0;
+		BlockPos.MutableBlockPos p = new BlockPos.MutableBlockPos();
+		for (int i = 1; i + pos.getY() < level.getMaxBuildHeight(); i++) {
+			p.set(pos.getX(), pos.getY() + i, pos.getZ());
+			if (level.getFluidState(p).is(FluidTags.WATER) && level.getFluidState(p).isSource()) {
+				head++;
+			} else {
+				break;
+			}
+		}
+		return head;
 	}
 
 	// cap

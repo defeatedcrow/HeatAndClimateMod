@@ -42,7 +42,7 @@ public class DCTank implements IFluidHandler, IFluidTank {
 	}
 
 	public boolean isFull() {
-		return (fluid != null) && (fluid.getAmount() == capacity);
+		return fluid != null && fluid.getAmount() == capacity;
 	}
 
 	public Fluid getFluidType() {
@@ -81,7 +81,9 @@ public class DCTank implements IFluidHandler, IFluidTank {
 				if (fluid.isEmpty()) {
 					setFluid(get);
 				} else {
+					CompoundTag tag = DCFluidUtil.combineTag(fluid, get);
 					fluid.grow(ret);
+					fluid.setTag(tag);
 				}
 			}
 			return ret;

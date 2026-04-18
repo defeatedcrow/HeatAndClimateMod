@@ -50,8 +50,8 @@ public class RawFishItem extends FoodMaterialItemDC {
 							i += owner.getEffect(MobEffects.LUCK).getDuration();
 						}
 						owner.addEffect(new MobEffectInstance(MobEffects.LUCK, i));
+						drop.setItem(ItemStack.EMPTY);
 					}
-					drop.setItem(ItemStack.EMPTY);
 				}
 		}
 		return false;

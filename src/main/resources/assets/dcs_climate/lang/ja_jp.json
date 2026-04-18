@@ -2637,6 +2637,7 @@
 
     "## gui_jei":"jei",
 
+  "dcs.gui.jei.biome_data":"バイオーム図鑑",
   "dcs.gui.jei.smelting_data":"気候精錬",
   "dcs.gui.jei.heat_treatment_data":"金属熱処理",
   "dcs.gui.jei.cooking_data":"料理",

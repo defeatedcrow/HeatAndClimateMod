@@ -1,7 +1,9 @@
 package defeatedcrow.hac.core;
 
+import java.util.List;
 import java.util.Optional;
 
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.platform.InputConstants;
 
 import defeatedcrow.hac.core.client.ClientRegisterInit;
@@ -45,8 +47,12 @@ import defeatedcrow.hac.magic.client.gui.BoringScreen;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.phys.Vec2;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -165,6 +171,22 @@ public class ClientProxyDC extends CommonProxyDC {
 	@Override
 	public boolean isOP(Player player) {
 		return true;
+	}
+
+	/**
+	 * @date 2026.4.18 @author Hiiragi283 Thanks!
+	 */
+	@Override
+	public List<TagKey<Biome>> getBiomeTags(Level level, Biome biome) {
+		List<TagKey<Biome>> list = Lists.newArrayList();
+		if (getClientLevel().isPresent()) {
+			Registry<Biome> registry = getClientLevel().get().registryAccess().registryOrThrow(Registry.BIOME_REGISTRY);
+			Optional<ResourceKey<Biome>> key = registry.getResourceKey(biome);
+			key.ifPresent(k -> {
+			    registry.getHolder(k).ifPresent(holder -> holder.getTagKeys().forEach(tag -> list.add(tag)));
+			});
+		}
+		return list;
 	}
 
 	// @Override

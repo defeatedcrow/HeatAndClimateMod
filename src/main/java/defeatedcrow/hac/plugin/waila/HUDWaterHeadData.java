@@ -28,7 +28,7 @@ public class HUDWaterHeadData implements IBlockComponentProvider {
 			return;
 		if (config.getBoolean(FLUID_HEAD)) {
 			BlockEntity tile = level.getBlockEntity();
-			tile.getCapability(ForgeCapabilities.FLUID_HANDLER).filter(handler -> isPipe(handler)).ifPresent(handler -> {
+			tile.getCapability(ForgeCapabilities.FLUID_HANDLER).filter(HUDWaterHeadData::isPipe).ifPresent(handler -> {
 				FluidStack fluid = handler.getFluidInTank(0);
 				int head = DCFluidUtil.getHead(fluid);
 				if (!fluid.isEmpty())
@@ -45,7 +45,8 @@ public class HUDWaterHeadData implements IBlockComponentProvider {
 
 		try {
 			registrar.addFeatureConfig(FLUID_HEAD, true);
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 
 		registrar.addComponent(INSTANCE, TAIL, FluidPipeBlock.class);
 

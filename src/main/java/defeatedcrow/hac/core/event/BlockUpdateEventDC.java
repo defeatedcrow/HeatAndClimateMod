@@ -24,6 +24,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.SnowyDirtBlock;
 import net.minecraft.world.level.block.SpreadingSnowyDirtBlock;
@@ -42,36 +43,46 @@ public class BlockUpdateEventDC {
 			BlockState st = event.getState();
 			Block block = st.getBlock();
 
-			// for (Block b : CoreConfigDC.blackListBlock) {
-			// if (block == b) {
-			// return;
-			// }
-			// }
-
 			ClimateSupplier clm = new ClimateSupplier(world, p);
 			ClimateSupplier clm_down = new ClimateSupplier(world, p.below());
 			EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 
 			if (ConfigCommonBuilder.INSTANCE.enVanillaCrop.get()) {
-				// 寒冷地では成長しづらい
-				if (clm.get().getHeat().isCold()) {
-					int c = 5 + clm.get().getHeat().getTier();
-					if (c < 2 || world.random.nextInt(c) == 0)
-						event.setResult(Result.DENY);
-				} else if ((clm.get().getHeat() == DCHeatTier.WARM || clm.get().getHeat() == DCHeatTier.HOT) && clm_down.get().getHumidity() == DCHumidity.WET) {
-					// WETの参照posを真下に
-					// WARMかつWETの場合に成長が促進される
-					int fertile = FertileBlock.getFertile(world, p.below(), world.getBlockState(p.below()));
-					if (world.random.nextInt(5 - fertile) == 0) {
-						event.setResult(Result.ALLOW);
-					} else {
-						event.setResult(Result.DEFAULT);
-					}
+
+				// 温度補正
+				float effect = 1.0F;
+				if (clm.get().getHeat().isCold() && !isColdBiomeCrop(st)) {
+					effect -= 0.5F;
+				} else if (clm.get().getHeat() == DCHeatTier.NORMAL || clm.get().getHeat() == DCHeatTier.WARM) {
+					effect += 0.2F;
+				} else if (clm.get().getHeat() == DCHeatTier.HOT && !isColdBiomeCrop(st)) {
+					effect += 0.1F;
 				}
-				return;
+
+				// 湿度補正
+				if (clm.get().getHumidity() == DCHumidity.WET) {
+					effect += 0.1F;
+				}
+
+				// 肥料補正
+				int fertile = FertileBlock.getFertile(world, p.below(), world.getBlockState(p.below()));
+				effect += 0.1F * fertile;
+
+				// 寒冷地では成長しづらい
+				if (effect < 1.0F && world.random.nextFloat() > effect) {
+					event.setResult(Result.DENY);
+				} else if (1F + world.random.nextFloat() < effect) {
+					event.setResult(Result.ALLOW);
+				} else {
+					event.setResult(Result.DEFAULT);
+				}
 			}
 
 		}
+	}
+
+	private static boolean isColdBiomeCrop(BlockState st) {
+		return st.getBlock() == Blocks.POTATOES || st.getBlock() == Blocks.BEETROOTS || st.getBlock() == Blocks.BIRCH_SAPLING || st.getBlock() == Blocks.SPRUCE_SAPLING;
 	}
 
 	public static void onBlockUpdate(DCBlockUpdateEvent event) {
@@ -87,7 +98,7 @@ public class BlockUpdateEventDC {
 				DCHumidity hum2 = clm.get().getHumidity();
 				// 耕地はWET以上の湿度では湿る
 				if (hum.getID() > 1 || hum2.getID() > 1) {
-					BlockState next = st.setValue(BlockStateProperties.MOISTURE, Integer.valueOf(7));
+					BlockState next = st.setValue(BlockStateProperties.MOISTURE, 7);
 					world.setBlock(p, next, 2);
 					event.setCanceled(true);
 				}
@@ -103,19 +114,19 @@ public class BlockUpdateEventDC {
 					Direction dir = Direction.Plane.HORIZONTAL.getRandomDirection(world.getRandom());
 					BlockPos p2 = p.relative(dir);
 					if (world.getBlockState(p2).is(BuildInit.SLAB_DIRT.get()) && GrassSlab.canBeGrass(world, p2) && !world.getFluidState(p2).is(FluidTags.WATER)) {
-						world.setBlockAndUpdate(p2, BuildInit.SLAB_GRASS.get().defaultBlockState().setValue(GrassSlab.SNOWY, Boolean.valueOf(DCState.getBool(st, SnowyDirtBlock.SNOWY))));
+						world.setBlockAndUpdate(p2, BuildInit.SLAB_GRASS.get().defaultBlockState().setValue(GrassSlab.SNOWY, DCState.getBool(st, SnowyDirtBlock.SNOWY)));
 						event.setCanceled(true);
 					} else {
 						BlockPos p3 = p.relative(dir).above();
 						if (world.getBlockState(p3).is(BuildInit.SLAB_DIRT.get()) && GrassSlab.canBeGrass(world, p3) && !world.getFluidState(p3).is(FluidTags.WATER)) {
-							world.setBlockAndUpdate(p3, BuildInit.SLAB_GRASS.get().defaultBlockState().setValue(GrassSlab.SNOWY, Boolean.valueOf(DCState.getBool(st, SnowyDirtBlock.SNOWY))));
+							world.setBlockAndUpdate(p3, BuildInit.SLAB_GRASS.get().defaultBlockState().setValue(GrassSlab.SNOWY, DCState.getBool(st, SnowyDirtBlock.SNOWY)));
 							event.setCanceled(true);
 						}
 					}
 				}
 			}
 
-			if (SnowLayerBlock.class.isInstance(block)) {
+			if ((block instanceof SnowLayerBlock)) {
 				if (world.getBiome(p).get().warmEnoughToRain(p)) {
 					ClimateSupplier clm = new ClimateSupplier(world, p);
 					if (clm.get().getHeat().getTier() > DCHeatTier.COLD.getTier()) {
@@ -136,11 +147,11 @@ public class BlockUpdateEventDC {
 			BlockSnapshot snap = event.getBlockSnapshot();
 			Optional<IClimateSmelting> recipe = DCRecipes.hasAnySmeltingRecipe(place.getBlock());
 			recipe.ifPresent(ret -> {
-				placer.getLevel().scheduleTick(snap.getPos(), place.getBlock(), ret.recipeFrequency());
+			    placer.getLevel().scheduleTick(snap.getPos(), place.getBlock(), ret.recipeFrequency());
 			});
 			Optional<IHeatTreatment> recipe2 = DCRecipes.hasAnyHeatTreatmentRecipe(place.getBlock());
 			recipe2.ifPresent(ret -> {
-				placer.getLevel().scheduleTick(snap.getPos(), place.getBlock(), ret.getHeatingTime());
+			    placer.getLevel().scheduleTick(snap.getPos(), place.getBlock(), ret.getHeatingTime());
 			});
 		}
 	}

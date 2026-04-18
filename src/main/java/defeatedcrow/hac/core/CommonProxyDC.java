@@ -1,10 +1,12 @@
 package defeatedcrow.hac.core;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.config.ConfigLoadEventDC;
@@ -34,16 +36,20 @@ import defeatedcrow.hac.food.event.FishingEventDC;
 import defeatedcrow.hac.food.event.ItemTossEventDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.PlayerAdvancements;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.phys.Vec2;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -205,6 +211,18 @@ public class CommonProxyDC {
 		} else {
 			Villager.FOOD_POINTS.putAll(map);
 		}
+	}
+
+	public List<TagKey<Biome>> getBiomeTags(Level level, Biome biome) {
+		List<TagKey<Biome>> list = Lists.newArrayList();
+		if (level != null && level instanceof ServerLevel serverlevel) {
+			Registry<Biome> registry = serverlevel.registryAccess().registryOrThrow(Registry.BIOME_REGISTRY);
+			Optional<ResourceKey<Biome>> key = registry.getResourceKey(biome);
+			key.ifPresent(k -> {
+			    registry.getHolder(k).ifPresent(holder -> holder.getTagKeys().forEach(tag -> list.add(tag)));
+			});
+		}
+		return list;
 	}
 
 }

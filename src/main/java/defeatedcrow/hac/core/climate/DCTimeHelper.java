@@ -48,13 +48,13 @@ public class DCTimeHelper {
 
 	public static int realMinute() {
 		Calendar cal = Calendar.getInstance();
-		int min = cal.get(cal.MINUTE);
+		int min = cal.get(Calendar.MINUTE);
 		return min;
 	}
 
 	public static int realSecond() {
 		Calendar cal = Calendar.getInstance();
-		int sec = cal.get(cal.SECOND);
+		int sec = cal.get(Calendar.SECOND);
 		return sec;
 	}
 
@@ -69,13 +69,13 @@ public class DCTimeHelper {
 	}
 
 	public static int getCount(Level world) {
-		long i = (totalTime(world) % ConfigCommonBuilder.INSTANCE.vUpdateInterval.get());
+		long i = totalTime(world) % ConfigCommonBuilder.INSTANCE.vUpdateInterval.get();
 		return (int) i;
 	}
 
 	public static int getCount2(Level world) {
 		long f = 1200L / 5;
-		long i = (totalTime(world) % f);
+		long i = totalTime(world) % f;
 		return (int) i;
 	}
 
@@ -86,7 +86,7 @@ public class DCTimeHelper {
 		}
 		if (ConfigServerBuilder.INSTANCE.enRealTime.get()) {
 			if (ConfigServerBuilder.INSTANCE.dateFormat.length() < 1) {
-				ConfigServerBuilder.INSTANCE.setDateFormat();
+				ConfigServerBuilder.setDateFormat();
 			}
 			Calendar cal = Calendar.getInstance();
 			Date date = cal.getTime();
@@ -110,7 +110,7 @@ public class DCTimeHelper {
 		}
 		if (ConfigServerBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
-			return cal.get(cal.DAY_OF_YEAR);
+			return cal.get(Calendar.DAY_OF_YEAR);
 		}
 		long day = totalTime(world) / 24000L;
 		return DCDay.getDay(day);
@@ -122,7 +122,7 @@ public class DCTimeHelper {
 		}
 		if (ConfigServerBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
-			return cal.get(cal.DAY_OF_YEAR);
+			return cal.get(Calendar.DAY_OF_YEAR);
 		}
 		long day = totalTime(world) / 24000L;
 		return DCDay.getDisplayDay(day);
@@ -134,7 +134,7 @@ public class DCTimeHelper {
 		}
 		if (ConfigServerBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
-			return cal.get(cal.DAY_OF_WEEK);
+			return cal.get(Calendar.DAY_OF_WEEK);
 		}
 		int day = getDay(world);
 		return DCDay.getWeek(day);
@@ -143,7 +143,7 @@ public class DCTimeHelper {
 	public static int getYear(Level world) {
 		if (ConfigServerBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
-			return cal.get(cal.YEAR);
+			return cal.get(Calendar.YEAR);
 		}
 		int day = getDay(world);
 		return DCDay.getYear(day);
@@ -169,7 +169,7 @@ public class DCTimeHelper {
 	}
 
 	// eventで改変されていないSeason
-	public static EnumSeason staticSeason = null;
+	public static EnumSeason staticSeason = EnumSeason.SPRING_EARLY;
 
 	public static float getTimeOffset(Level world, Holder<Biome> b) {
 		if (world.dimensionType().hasFixedTime()) {

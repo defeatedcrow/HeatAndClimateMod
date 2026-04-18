@@ -2633,7 +2633,8 @@
   "enchantment.dcs_climate.dcs_squid_fishing": "Squid Fishing",
 
     "## gui_jei":"jei",
-
+    
+  "dcs.gui.jei.biome_data":"Biome Data",
   "dcs.gui.jei.smelting_data":"Climate Smelting Data",
   "dcs.gui.jei.heat_treatment_data":"Metal Heat Treatment Data",
   "dcs.gui.jei.cooking_data":"Cooking Data",

@@ -42,92 +42,96 @@ public class CardRedBlue extends MagicCardBase {
 	@Override
 	public boolean onUsing(Level level, Player player, BlockPos pos, Direction dir, ItemStack card, float f) {
 		float boost = f < 0 ? 0.5F : f;
-		double d = 32D + 16D * f;
+		double d = 16D + 16D * f;
 
-		List<Mob> list = level.getNearbyEntities(Mob.class, TargetingConditions.forCombat().range(d).ignoreLineOfSight(), player, player.getBoundingBox().inflate(d));
-		list.stream().filter(mob -> mob instanceof Enemy && !mob.getType().is(Tags.EntityTypes.BOSSES) || mob.isInWater()).forEach(mob -> {
-			mob.hurt(DamageSource.LIGHTNING_BOLT, 12.0F * boost);
-			if (mob.getVehicle() != null) {
-				mob.removeVehicle();
-			}
-			ChairEntity bind = MagicInit.BIND_ELECTRIC_ENTITY.get().create(level);
-			bind.setPos(mob.position());
-			bind.setDeltaMovement(0D, 0D, 0D);
-			bind.setMaxAge(Mth.floor(200 * boost));
-			bind.setOwner(player.getUUID());
-			mob.startRiding(bind);
-			level.addFreshEntity(bind);
-		});
+		if (!level.isClientSide()) {
+			List<Mob> list = level.getNearbyEntities(Mob.class, TargetingConditions.forCombat().range(d).ignoreLineOfSight(), player, player.getBoundingBox().inflate(d));
+			list.stream().filter(mob -> mob instanceof Enemy && !mob.getType().is(Tags.EntityTypes.BOSSES) || mob.isInWater()).forEach(mob -> {
+				if (!(mob instanceof Enemy) && mob.position().distanceTo(player.position()) > d / 4D) {
+					return;
+				}
+				mob.hurt(DamageSource.LIGHTNING_BOLT, 12.0F * boost);
+				if (mob.getVehicle() != null) {
+					mob.removeVehicle();
+				}
+				ChairEntity bind = MagicInit.BIND_ELECTRIC_ENTITY.get().create(level);
+				bind.setPos(mob.position());
+				bind.setDeltaMovement(0D, 0D, 0D);
+				bind.setMaxAge(Mth.floor(200 * boost));
+				bind.setOwner(player.getUUID());
+				mob.startRiding(bind);
+				level.addFreshEntity(bind);
+			});
 
-		if (player.isInWater() && !level.isClientSide) {
-			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
-			boolean flag = false;
-			int chance = Mth.ceil(8 * boost);
-			for (int c = 0; c < chance; c++) {
-				int x = level.getRandom().nextInt(5) * DCUtil.getRandomSign();
-				int y = level.getRandom().nextInt(2) * DCUtil.getRandomSign();
-				int z = level.getRandom().nextInt(5) * DCUtil.getRandomSign();
-				mpos.set(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
-				if (level.getFluidState(mpos).isSourceOfType(Fluids.WATER)) {
-					List<ItemStack> replace = Lists.newArrayList();
-					Holder<Biome> biome = level.getBiome(pos);
-					replace.addAll(DCUtil.getFish(level, biome, player, card));
-					if (!replace.isEmpty()) {
-						ItemStack fish = ItemStack.EMPTY;
-						if (replace.size() > 1) {
-							int i = level.random.nextInt(replace.size());
-							fish = replace.get(i).copy();
-						} else {
-							fish = replace.get(0).copy();
+			if (player.isInWater()) {
+				// 自分に落ちる
+				LightningBolt thunder = EntityType.LIGHTNING_BOLT.create(level);
+				thunder.moveTo(player.position());
+				level.addFreshEntity(thunder);
+
+				List<ItemStack> replace = Lists.newArrayList();
+				Holder<Biome> biome = level.getBiome(pos);
+				replace.addAll(DCUtil.getFish(level, biome, player, card));
+				if (!replace.isEmpty()) {
+					BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
+					boolean flag = false;
+					int chance = Mth.ceil(16 * boost);
+					for (int c = 0; c < chance; c++) {
+						int x = level.getRandom().nextInt(3) * DCUtil.getRandomSign();
+						int y = level.getRandom().nextInt(2) * DCUtil.getRandomSign();
+						int z = level.getRandom().nextInt(3) * DCUtil.getRandomSign();
+						mpos.set(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
+						if (level.getFluidState(mpos).is(Fluids.WATER)) {
+							ItemStack fish = ItemStack.EMPTY;
+							if (replace.size() > 1) {
+								int i = level.random.nextInt(replace.size());
+								fish = replace.get(i).copy();
+							} else {
+								fish = replace.get(0).copy();
+							}
+
+							ItemEntity drop = new ItemEntity(level, mpos.getX() + 0.5D, mpos.getY() + 0.5D, mpos.getZ() + 0.5D, fish);
+							double d0 = 0D;
+							double d1 = 0.15D;
+							double d2 = 0D;
+							drop.setDeltaMovement(d0, d1, d2);
+							level.addFreshEntity(drop);
 						}
-
-						ItemEntity drop = new ItemEntity(level, mpos.getX() + 0.5D, mpos.getY() + 0.5D, mpos.getZ() + 0.5D, fish);
-						double d0 = 0D;
-						double d1 = 0.1D;
-						double d2 = 0D;
-						drop.setDeltaMovement(d0, d1, d2);
-						level.addFreshEntity(drop);
 					}
 				}
-			}
-
-			// 自分に落ちる
-			LightningBolt thunder = EntityType.LIGHTNING_BOLT.create(level);
-			thunder.moveTo(player.position());
-			level.addFreshEntity(thunder);
-
-		} else {
-			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
-			boolean flag = false;
-			int range = 8 + Mth.floor(boost);
-			for (int x = -range; x < range; x++) {
-				for (int z = -range; z < range; z++) {
-					for (int y = 0; y < range * 2; y++) {
-						mpos.set(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
-						if (mpos.getY() > level.getMinBuildHeight() && mpos.getY() < level.getMaxBuildHeight()) {
-							BlockState state = level.getBlockState(mpos);
-							if (state.getBlock() instanceof LightningRodBlock) {
-								LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(level);
-								lightningbolt.moveTo(Vec3.atBottomCenterOf(mpos.above()));
-								lightningbolt.setCause(player instanceof ServerPlayer s ? s : null);
-								level.addFreshEntity(lightningbolt);
-								flag = true;
+			} else {
+				BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
+				boolean flag = false;
+				int range = 8 + Mth.floor(boost);
+				for (int x = -range; x < range; x++) {
+					for (int z = -range; z < range; z++) {
+						for (int y = 0; y < range * 2; y++) {
+							mpos.set(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
+							if (mpos.getY() > level.getMinBuildHeight() && mpos.getY() < level.getMaxBuildHeight()) {
+								BlockState state = level.getBlockState(mpos);
+								if (state.getBlock() instanceof LightningRodBlock) {
+									LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(level);
+									lightningbolt.moveTo(Vec3.atBottomCenterOf(mpos.above()));
+									lightningbolt.setCause(player instanceof ServerPlayer s ? s : null);
+									level.addFreshEntity(lightningbolt);
+									flag = true;
+								}
 							}
 						}
 					}
 				}
-			}
-			if (!flag) {
-				for (int i = 0; i < 3; i++) {
-					double d1 = 2.0D + level.random.nextDouble() * 6.0D * DCUtil.getRandomSign();
-					double d2 = 2.0D + level.random.nextDouble() * 6.0D * DCUtil.getRandomSign();
-					LightningBolt thunder = EntityType.LIGHTNING_BOLT.create(level);
-					thunder.moveTo(player.position().add(d1, 0D, d2));
-					level.addFreshEntity(thunder);
-					flag = true;
+				if (!flag) {
+					for (int i = 0; i < 3; i++) {
+						double d1 = 2.0D + level.random.nextDouble() * 6.0D * DCUtil.getRandomSign();
+						double d2 = 2.0D + level.random.nextDouble() * 6.0D * DCUtil.getRandomSign();
+						LightningBolt thunder = EntityType.LIGHTNING_BOLT.create(level);
+						thunder.moveTo(player.position().add(d1, 0D, d2));
+						level.addFreshEntity(thunder);
+						flag = true;
+					}
 				}
+				player.playSound(SoundEvents.TRIDENT_THUNDER, 2.0F, 1.0F);
 			}
-			player.playSound(SoundEvents.TRIDENT_THUNDER, 2.0F, 1.0F);
 		}
 
 		return true;
