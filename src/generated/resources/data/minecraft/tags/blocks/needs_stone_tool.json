@@ -95,9 +95,6 @@
     "dcs_climate:build/chiseled_schist_nether",
     "dcs_climate:build/bricks_granite",
     "dcs_climate:build/chiseled_granite",
-    "dcs_climate:build/mortar",
-    "dcs_climate:build/bricks_mortar",
-    "dcs_climate:build/chiseled_mortar",
     "dcs_climate:build/flintbricks",
     "dcs_climate:build/flintbricks_white",
     "dcs_climate:build/flintbricks_black",
@@ -106,7 +103,6 @@
     "dcs_climate:build/mosaic_blue",
     "dcs_climate:build/mosaic_yellow",
     "dcs_climate:build/mosaic_red",
-    "dcs_climate:build/adobe_bricks",
     "dcs_climate:build/claybricks_black",
     "dcs_climate:build/claybricks_red",
     "dcs_climate:build/claybricks_green",
@@ -139,6 +135,10 @@
     "dcs_climate:build/linoleum_magenta",
     "dcs_climate:build/linoleum_orange",
     "dcs_climate:build/linoleum_white",
+    "dcs_climate:build/adobe_bricks",
+    "dcs_climate:build/mortar",
+    "dcs_climate:build/bricks_mortar",
+    "dcs_climate:build/chiseled_mortar",
     "dcs_climate:machine/chamber_iron",
     "dcs_climate:machine/fuel_burner",
     "dcs_climate:machine/kitchen_stove",
@@ -148,6 +148,7 @@
     "dcs_climate:machine/hopper_filter",
     "dcs_climate:machine/hopper_gold",
     "dcs_climate:machine/hopper_filter_gold",
+    "dcs_climate:machine/hopper_exp",
     "dcs_climate:machine/boiler_biomass"
   ]
 }

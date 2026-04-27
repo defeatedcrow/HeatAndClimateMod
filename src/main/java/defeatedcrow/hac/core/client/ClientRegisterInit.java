@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.client.entity.model.CutleryModel;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicFin;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicWing;
 import defeatedcrow.hac.core.client.entity.model.ModelThinArmor;
+import defeatedcrow.hac.core.client.entity.model.VillagerChestModel;
 import defeatedcrow.hac.core.client.entity.renderer.RenderCanoe;
 import defeatedcrow.hac.core.client.entity.renderer.RenderChair;
 import defeatedcrow.hac.core.client.entity.renderer.RenderChopsticks;
@@ -30,6 +31,7 @@ import defeatedcrow.hac.core.client.entity.renderer.TileRendererDisplayShelf;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLocker;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLuggage;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererToolHook;
+import defeatedcrow.hac.core.client.entity.renderer.TileRendererVillagerChest;
 import defeatedcrow.hac.core.client.particle.BubbleParticleDC;
 import defeatedcrow.hac.core.client.particle.LeakageParticleDC;
 import defeatedcrow.hac.core.client.particle.LightOrbDC;
@@ -44,6 +46,7 @@ import defeatedcrow.hac.core.material.block.building.ChandelierTile;
 import defeatedcrow.hac.core.material.block.building.DisplayDoubleShelfTile;
 import defeatedcrow.hac.core.material.block.building.LockerTile;
 import defeatedcrow.hac.core.material.block.building.LuggageTile;
+import defeatedcrow.hac.core.material.block.building.VillagerChestTile;
 import defeatedcrow.hac.core.material.item.tool.CanoeItem;
 import defeatedcrow.hac.core.material.item.tool.CutleryChopsticksItem;
 import defeatedcrow.hac.core.material.item.tool.CutleryForkItem;
@@ -335,6 +338,7 @@ import net.minecraft.client.model.TridentModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -387,6 +391,8 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(DisplayDoubleShelfTile.IRON.getLayerLocation(), BlockShelfIronModel::createBodyLayer);
 		event.registerLayerDefinition(DisplayDoubleShelfTile.LAB.getLayerLocation(), BlockShelfLabModel::createBodyLayer);
 		event.registerLayerDefinition(DisplayDoubleShelfTile.GLASS.getLayerLocation(), BlockShelfLabModel::createBodyLayer);
+
+		event.registerLayerDefinition(VillagerChestTile.NORMAL.getLayerLocation(), VillagerChestModel::createBodyLayer);
 
 		event.registerLayerDefinition(TileRendererChamberIron.DATA.getLayerLocation(), BlockChamberIronModel::createBodyLayer);
 		event.registerLayerDefinition(TileRendererChamberFuel.DATA.getLayerLocation(), BlockChamberFuelModel::createBodyLayer);
@@ -957,6 +963,7 @@ public class ClientRegisterInit {
 		event.registerBlockEntityRenderer(BuildInit.TOOLHOOK_TILE.get(), TileRendererToolHook::new);
 		event.registerBlockEntityRenderer(BuildInit.DISPLAY_SHELF_TILE.get(), TileRendererDisplayShelf::new);
 		event.registerBlockEntityRenderer(BuildInit.DISPLAY_DOUBLE_SHELF_TILE.get(), TileRendererDisplayDoubleShelf::new);
+		event.registerBlockEntityRenderer(BuildInit.VILLAGER_CHEST_TILE.get(), TileRendererVillagerChest::new);
 		event.registerBlockEntityRenderer(MachineInit.CHAMBER_BRICK_TILE.get(), TileRendererChamberFuel::new);
 		event.registerBlockEntityRenderer(MachineInit.CHAMBER_IRON_TILE.get(), TileRendererChamberIron::new);
 		event.registerBlockEntityRenderer(MachineInit.KICHEN_STOVE_TILE.get(), TileRendererKichenStove::new);
@@ -1084,6 +1091,7 @@ public class ClientRegisterInit {
 		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_RU.get(), RenderMagicPicture::new);
 		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_GW.get(), RenderMagicPicture::new);
 		event.registerEntityRenderer(MagicInit.MAGIC_PICTURE_GB.get(), RenderMagicPicture::new);
+		event.registerEntityRenderer(MagicInit.SOLID_ORB.get(), ThrownItemRenderer::new);
 	}
 
 	public static void registerLayers(EntityRenderersEvent.AddLayers event) {

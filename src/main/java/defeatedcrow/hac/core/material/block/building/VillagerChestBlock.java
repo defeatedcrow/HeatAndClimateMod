@@ -14,7 +14,12 @@ import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.block.ContainerTileBlock;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -35,7 +40,7 @@ public class VillagerChestBlock extends ContainerTileBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_GRAY).strength(0.1F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.GOLD).strength(0.1F, 540.0F).noOcclusion();
 	}
 
 	@Override
@@ -65,29 +70,25 @@ public class VillagerChestBlock extends ContainerTileBlock {
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new LockerTile(pos, state);
+		return new VillagerChestTile(pos, state);
 	}
 
 	@Override
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-		return level.isClientSide ? createTickerHelper(type, BuildInit.LOCKER_TILE.get(), LockerTile::lidAnimateTick) : null;
+		return level.isClientSide ? createTickerHelper(type, BuildInit.VILLAGER_CHEST_TILE.get(), VillagerChestTile::lidAnimateTick) : createTickerHelper(type, BuildInit.VILLAGER_CHEST_TILE.get(), VillagerChestTile::serverTick);
 	}
 
 	// colord block
 	@Override
 	public Optional<Block> getReplaceBlock(MagicColor color) {
-		if (color.isWhite)
-			return Optional.of(BuildInit.LOCKER_WHITE.get());
-		if (color.isBlue)
-			return Optional.of(BuildInit.LOCKER_BLUE.get());
-		if (color.isBlack)
-			return Optional.of(BuildInit.LOCKER_BLACK.get());
-		if (color.isRed)
-			return Optional.of(BuildInit.LOCKER_RED.get());
-		if (color.isGreen)
-			return Optional.of(BuildInit.LOCKER_GREEN.get());
 		return Optional.empty();
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+		MutableComponent tex1 = Component.translatable("dcs.tip.villager_chest").withStyle(ChatFormatting.GRAY);
+		list.add(tex1);
 	}
 
 }

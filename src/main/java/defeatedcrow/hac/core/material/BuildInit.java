@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.client.gui.DisplayShelfMenu;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.block.DoorItemDC;
 import defeatedcrow.hac.core.material.block.LayerStoneBlock;
+import defeatedcrow.hac.core.material.block.WoodenSimpleBlock;
 import defeatedcrow.hac.core.material.block.building.AdobeBlock;
 import defeatedcrow.hac.core.material.block.building.AdobeWetBlock;
 import defeatedcrow.hac.core.material.block.building.CabinetBlock;
@@ -41,16 +42,19 @@ import defeatedcrow.hac.core.material.block.building.MetalLadder;
 import defeatedcrow.hac.core.material.block.building.MetalLouverBlock;
 import defeatedcrow.hac.core.material.block.building.MetalSlab;
 import defeatedcrow.hac.core.material.block.building.MetalStairs;
+import defeatedcrow.hac.core.material.block.building.MetalThinPlate;
 import defeatedcrow.hac.core.material.block.building.MetalWindowBlock;
 import defeatedcrow.hac.core.material.block.building.NoSaveBedBlock;
 import defeatedcrow.hac.core.material.block.building.NoSaveBedTile;
 import defeatedcrow.hac.core.material.block.building.PillarStoneDC;
 import defeatedcrow.hac.core.material.block.building.SidedLightDC;
+import defeatedcrow.hac.core.material.block.building.SidedLightGlass;
 import defeatedcrow.hac.core.material.block.building.SimpleLightDC;
 import defeatedcrow.hac.core.material.block.building.SlabStoneDC;
 import defeatedcrow.hac.core.material.block.building.SlabWoodDC;
 import defeatedcrow.hac.core.material.block.building.SlimStairs;
 import defeatedcrow.hac.core.material.block.building.SmallLight;
+import defeatedcrow.hac.core.material.block.building.SmallTable;
 import defeatedcrow.hac.core.material.block.building.SofaBlock;
 import defeatedcrow.hac.core.material.block.building.StairsMetalRoof;
 import defeatedcrow.hac.core.material.block.building.StairsStoneDC;
@@ -58,6 +62,8 @@ import defeatedcrow.hac.core.material.block.building.StairsWoodDC;
 import defeatedcrow.hac.core.material.block.building.ToolHookBlock;
 import defeatedcrow.hac.core.material.block.building.ToolHookTile;
 import defeatedcrow.hac.core.material.block.building.TrapdoorWoodDC;
+import defeatedcrow.hac.core.material.block.building.VillagerChestBlock;
+import defeatedcrow.hac.core.material.block.building.VillagerChestTile;
 import defeatedcrow.hac.core.material.block.building.WallStoneDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.food.material.FoodInit;
@@ -164,57 +170,6 @@ public class BuildInit {
 	public static final RegistryObject<Block> SLAB_GRANITE = regBlock("slab_granite", () -> new SlabStoneDC("granite"), ItemTags.SLABS);
 	public static final RegistryObject<Block> WALL_GRANITE = regBlock("wall_granite", () -> new WallStoneDC("granite"), ItemTags.WALLS);
 
-	public static final RegistryObject<Block> MORTAR = regBlock("mortar", () -> new LayerStoneBlock("mortar").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
-	public static final RegistryObject<Block> BRICKS_MORTAR = regBlock("bricks_mortar", () -> new LayerStoneBlock("bricks_mortar").setDomain("build").setTexDir("build"),
-	    TagDC.ItemTag.BUILDING_BRICKS);
-	public static final RegistryObject<Block> PILLAR_MORTAR = regBlock("pillar_mortar", () -> new PillarStoneDC("mortar").setDomain("build"), TagDC.ItemTag.BUILDING_PILLAR);
-	public static final RegistryObject<Block> CHISELED_MORTAR = regBlock("chiseled_mortar", () -> new LayerStoneBlock("chiseled_mortar").setDomain("build").setTexDir("build"),
-	    TagDC.ItemTag.BUILDING_CHISELED);
-	public static final RegistryObject<Block> STAIRS_MORTAR = regBlock("stairs_mortar", () -> new StairsStoneDC("mortar", CoreInit.STONE_GRANITE), ItemTags.STAIRS);
-	public static final RegistryObject<Block> SLAB_MORTAR = regBlock("slab_mortar", () -> new SlabStoneDC("mortar"), ItemTags.SLABS);
-	public static final RegistryObject<Block> WALL_MORTAR = regBlock("wall_mortar", () -> new WallStoneDC("mortar", true), ItemTags.WALLS);
-	public static final RegistryObject<Block> DITCH = regBlock("ditch", () -> new DitchBlock("ditch"), null);
-
-	public static final RegistryObject<Block> STAIRS_METAL = regBlock("metal_stairs", () -> new MetalStairs("metal_stairs"), null);
-	public static final RegistryObject<Block> SLAB_METAL = regBlock("metal_slab", () -> new MetalSlab("metal_slab"), null);
-	public static final RegistryObject<Block> FENCE_METAL = regBlock("fence_metal", () -> new FenceMetal("metal"), ItemTags.FENCES);
-	public static final RegistryObject<Block> LADDER_METAL = regBlock("metal_ladder", () -> new MetalLadder("metal_ladder"), null);
-	public static final RegistryObject<Block> STAIRS_SLIM_METAL = regBlock("slim_stairs_metal", () -> new SlimStairs("metal", true), null);
-
-	public static final RegistryObject<Block> LOUVER_HOL_METAL = regBlock("louver_horizontal_none", () -> new MetalLouverBlock("horizontal", MagicColor.NONE), TagDC.ItemTag.ALMINUM_LOUVERS);
-	public static final RegistryObject<Block> LOUVER_HOL_WHITE = regBlock("louver_horizontal_white", () -> new MetalLouverBlock("horizontal", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_LOUVERS);
-	public static final RegistryObject<Block> LOUVER_HOL_BLUE = regBlock("louver_horizontal_blue", () -> new MetalLouverBlock("horizontal", MagicColor.BLUE), TagDC.ItemTag.ALMINUM_LOUVERS);
-	public static final RegistryObject<Block> LOUVER_HOL_BLACK = regBlock("louver_horizontal_black", () -> new MetalLouverBlock("horizontal", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_LOUVERS);
-	public static final RegistryObject<Block> LOUVER_HOL_RED = regBlock("louver_horizontal_red", () -> new MetalLouverBlock("horizontal", MagicColor.RED), TagDC.ItemTag.ALMINUM_LOUVERS);
-	public static final RegistryObject<Block> LOUVER_HOL_GREEN = regBlock("louver_horizontal_green", () -> new MetalLouverBlock("horizontal", MagicColor.GREEN), TagDC.ItemTag.ALMINUM_LOUVERS);
-
-	public static final RegistryObject<Block> LOUVER_VER_METAL = regBlock("louver_vertical_none", () -> new MetalLouverBlock("vertical", MagicColor.NONE), TagDC.ItemTag.ALMINUM_LOUVERS);
-	public static final RegistryObject<Block> LOUVER_VER_WHITE = regBlock("louver_vertical_white", () -> new MetalLouverBlock("vertical", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_LOUVERS);
-	public static final RegistryObject<Block> LOUVER_VER_BLUE = regBlock("louver_vertical_blue", () -> new MetalLouverBlock("vertical", MagicColor.BLUE), TagDC.ItemTag.ALMINUM_LOUVERS);
-	public static final RegistryObject<Block> LOUVER_VER_BLACK = regBlock("louver_vertical_black", () -> new MetalLouverBlock("vertical", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_LOUVERS);
-	public static final RegistryObject<Block> LOUVER_VER_RED = regBlock("louver_vertical_red", () -> new MetalLouverBlock("vertical", MagicColor.RED), TagDC.ItemTag.ALMINUM_LOUVERS);
-	public static final RegistryObject<Block> LOUVER_VER_GREEN = regBlock("louver_vertical_green", () -> new MetalLouverBlock("vertical", MagicColor.GREEN), TagDC.ItemTag.ALMINUM_LOUVERS);
-
-	public static final RegistryObject<Block> WINDOW_SIMPLE_METAL = regBlock("window_simple_none", () -> new MetalWindowBlock("simple", MagicColor.NONE), TagDC.ItemTag.ALMINUM_WINDOWS);
-	public static final RegistryObject<Block> WINDOW_SIMPLE_BLACK = regBlock("window_simple_black", () -> new MetalWindowBlock("simple", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_WINDOWS);
-	public static final RegistryObject<Block> WINDOW_SIMPLE_WHITE = regBlock("window_simple_white", () -> new MetalWindowBlock("simple", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_WINDOWS);
-	public static final RegistryObject<Block> WINDOW_FLOWER_METAL = regBlock("window_flower_none", () -> new MetalWindowBlock("flower", MagicColor.NONE), TagDC.ItemTag.ALMINUM_WINDOWS);
-	public static final RegistryObject<Block> WINDOW_FLOWER_BLACK = regBlock("window_flower_black", () -> new MetalWindowBlock("flower", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_WINDOWS);
-	public static final RegistryObject<Block> WINDOW_FLOWER_WHITE = regBlock("window_flower_white", () -> new MetalWindowBlock("flower", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_WINDOWS);
-	public static final RegistryObject<Block> WINDOW_GOTHIC_METAL = regBlock("window_gothic_none", () -> new MetalWindowBlock("gothic", MagicColor.NONE), TagDC.ItemTag.ALMINUM_WINDOWS);
-	public static final RegistryObject<Block> WINDOW_GOTHIC_BLACK = regBlock("window_gothic_black", () -> new MetalWindowBlock("gothic", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_WINDOWS);
-	public static final RegistryObject<Block> WINDOW_GOTHIC_WHITE = regBlock("window_gothic_white", () -> new MetalWindowBlock("gothic", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_WINDOWS);
-	public static final RegistryObject<Block> WINDOW_NET_METAL = regBlock("window_net_none", () -> new MetalWindowBlock("net", MagicColor.NONE), TagDC.ItemTag.ALMINUM_WINDOWS);
-	public static final RegistryObject<Block> WINDOW_NET_BLACK = regBlock("window_net_black", () -> new MetalWindowBlock("net", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_WINDOWS);
-	public static final RegistryObject<Block> WINDOW_NET_WHITE = regBlock("window_net_white", () -> new MetalWindowBlock("net", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_WINDOWS);
-
-	public static final RegistryObject<Block> ROOF_METAL_GRAY = regBlock("stairs_roof_gray", () -> new StairsMetalRoof("roof_gray", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
-	public static final RegistryObject<Block> ROOF_METAL_YELLOW = regBlock("stairs_roof_yellow", () -> new StairsMetalRoof("roof_yellow", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
-	public static final RegistryObject<Block> ROOF_METAL_BLUE = regBlock("stairs_roof_blue", () -> new StairsMetalRoof("roof_blue", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
-	public static final RegistryObject<Block> ROOF_METAL_BLACK = regBlock("stairs_roof_black", () -> new StairsMetalRoof("roof_black", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
-	public static final RegistryObject<Block> ROOF_METAL_RED = regBlock("stairs_roof_red", () -> new StairsMetalRoof("roof_red", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
-	public static final RegistryObject<Block> ROOF_METAL_GREEN = regBlock("stairs_roof_green", () -> new StairsMetalRoof("roof_green", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
-
 	public static final RegistryObject<Block> FLINTBRICKS = regBlock("flintbricks", () -> new LayerStoneBlock("flintbricks").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
 	public static final RegistryObject<Block> FLINTBRICKS_WHITE = regBlock("flintbricks_white", () -> new LayerStoneBlock("flintbricks_white").setDomain("build").setTexDir("build"),
 	    TagDC.ItemTag.BUILDING_STONE);
@@ -227,13 +182,6 @@ public class BuildInit {
 	public static final RegistryObject<Block> MOSAIC_BLUE = regBlock("mosaic_blue", () -> new LayerStoneBlock("mosaic_blue").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
 	public static final RegistryObject<Block> MOSAIC_YELLOW = regBlock("mosaic_yellow", () -> new LayerStoneBlock("mosaic_yellow").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
 	public static final RegistryObject<Block> MOSAIC_RED = regBlock("mosaic_red", () -> new LayerStoneBlock("mosaic_red").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
-
-	public static final RegistryObject<Block> ADOBE_BLOCK_WET = regBlock("adobe_block_wet", () -> new AdobeWetBlock("adobe_block_wet").setDomain("build"), null);
-	public static final RegistryObject<Block> ADOBE_BLOCK = regBlock("adobe_block", () -> new AdobeBlock("adobe_block").setDomain("build").setTexDir("build"), null);
-	public static final RegistryObject<Block> ADOBE_BRICKS = regBlock("adobe_bricks", () -> new LayerStoneBlock("adobe_bricks").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_BRICKS);
-	public static final RegistryObject<Block> STAIRS_ADOBE = regBlock("stairs_adobe", () -> new StairsStoneDC("adobe", CoreInit.STONE_GRANITE), ItemTags.STAIRS);
-	public static final RegistryObject<Block> SLAB_ADOBE = regBlock("slab_adobe", () -> new SlabStoneDC("adobe"), ItemTags.SLABS);
-	public static final RegistryObject<Block> WALL_ADOBE = regBlock("wall_adobe", () -> new WallStoneDC("adobe"), ItemTags.WALLS);
 
 	public static final RegistryObject<Block> SLAB_DIRT = regBlock("dirt_slab", () -> new GroundSlab("dirt_slab"), TagDC.ItemTag.DIRT_SLABS);
 	public static final RegistryObject<Block> SLAB_GRASS = regBlock("grass_slab", () -> new GrassSlab("grass_slab"), TagDC.ItemTag.DIRT_SLABS);
@@ -305,6 +253,61 @@ public class BuildInit {
 	    TagDC.ItemTag.BUILDING_LINOLEUM);
 	public static final RegistryObject<Block> LINOLEUM_WHITE = regBlock("linoleum_white", () -> new LayerStoneBlock("linoleum_white").setDomain("build").setTexDir("build"),
 	    TagDC.ItemTag.BUILDING_LINOLEUM);
+
+	public static final RegistryObject<Block> ADOBE_BLOCK_WET = regBlock("adobe_block_wet", () -> new AdobeWetBlock("adobe_block_wet").setDomain("build"), null);
+	public static final RegistryObject<Block> ADOBE_BLOCK = regBlock("adobe_block", () -> new AdobeBlock("adobe_block").setDomain("build").setTexDir("build"), null);
+	public static final RegistryObject<Block> ADOBE_BRICKS = regBlock("adobe_bricks", () -> new LayerStoneBlock("adobe_bricks").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_BRICKS);
+	public static final RegistryObject<Block> STAIRS_ADOBE = regBlock("stairs_adobe", () -> new StairsStoneDC("adobe", CoreInit.STONE_GRANITE), ItemTags.STAIRS);
+	public static final RegistryObject<Block> SLAB_ADOBE = regBlock("slab_adobe", () -> new SlabStoneDC("adobe"), ItemTags.SLABS);
+	public static final RegistryObject<Block> WALL_ADOBE = regBlock("wall_adobe", () -> new WallStoneDC("adobe"), ItemTags.WALLS);
+
+	public static final RegistryObject<Block> GLASS_CRYSTAL = regBlock("glass_crystal", () -> new ConnectedGlassBlock("crystal", 0), Tags.Items.GLASS);
+	public static final RegistryObject<Block> GLASS_LIGHT = regBlock("glass_light", () -> new ConnectedGlassBlock("light", 15), null);
+	public static final RegistryObject<Block> GLASS_DARK = regBlock("glass_dark", () -> new ConnectedGlassBlock("dark"), null);
+
+	public static final RegistryObject<Block> CHAL_LAMP = regBlock("chal_lamp", () -> new SimpleLightDC("chal_lamp"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_GLASS = regBlock("chal_lamp_glass", () -> new SimpleLightDC("chal_lamp_glass"), null);
+
+	public static final RegistryObject<Block> DOWNLIGHT_WOOD = regBlock("small_light_wood", () -> new SmallLight("wood"), null);
+	public static final RegistryObject<Block> DOWNLIGHT_WHITE = regBlock("small_light_white", () -> new SmallLight("white"), null);
+	public static final RegistryObject<Block> DOWNLIGHT_BLACK = regBlock("small_light_black", () -> new SmallLight("black"), null);
+
+	public static final RegistryObject<Block> CHAL_LAMP_TABLE = regBlock("chal_lamp_table", () -> new SidedLightDC("chal_lamp_table"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_FLUORITE = regBlock("chal_lamp_fluorite", () -> new SidedLightDC("chal_lamp_fluorite"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_JET = regBlock("chal_lamp_jet", () -> new SidedLightDC("chal_lamp_jet"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_DESERTROSE = regBlock("chal_lamp_desertrose", () -> new SidedLightDC("chal_lamp_desertrose"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_SERPENTINE = regBlock("chal_lamp_serpentine", () -> new SidedLightDC("chal_lamp_serpentine"), null);
+	public static final RegistryObject<Block> CHAL_LAMP_TABLE_GLASS = regBlock("chal_lamp_table_glass", () -> new SidedLightGlass("chal_lamp_table_glass"), null);
+
+	public static final RegistryObject<Block> CHANDELIER_IRON = regBlock("chandelier_iron", () -> new ChandelierLamp("iron"), null);
+	public static final RegistryObject<Block> CHANDELIER_LAMP = regBlock("chandelier_crystal", () -> new ChandelierLamp("crystal"), null);
+	public static final RegistryObject<Block> CHANDELIER_FLUORITE = regBlock("chandelier_fluorite", () -> new ChandelierLamp("fluorite"), null);
+	public static final RegistryObject<Block> CHANDELIER_JET = regBlock("chandelier_jet", () -> new ChandelierLamp("jet"), null);
+	public static final RegistryObject<Block> CHANDELIER_DESERTROSE = regBlock("chandelier_desertrose", () -> new ChandelierLamp("desertrose"), null);
+	public static final RegistryObject<Block> CHANDELIER_SERPENTINE = regBlock("chandelier_serpentine", () -> new ChandelierLamp("serpentine"), null);
+
+	public static final RegistryObject<Block> CANDLESTICK = regBlock("candlestick", () -> new Candlestick("candlestick"), null);
+	public static final RegistryObject<Block> CHANDELIER_CANDLE = regBlock("chandelier_candle", () -> new ChandelierCandle("candle"), null);
+
+	public static final RegistryObject<Block> BERRY_LANTERN_WHITE = regBlock("berry_lantern_white", () -> new LanternLight("berry_lantern_white", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
+	public static final RegistryObject<Block> BERRY_LANTERN_BLUE = regBlock("berry_lantern_blue", () -> new LanternLight("berry_lantern_blue", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
+	public static final RegistryObject<Block> BERRY_LANTERN_BLACK = regBlock("berry_lantern_black", () -> new LanternLight("berry_lantern_black", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
+	public static final RegistryObject<Block> BERRY_LANTERN_RED = regBlock("berry_lantern_red", () -> new LanternLight("berry_lantern_red", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
+	public static final RegistryObject<Block> BERRY_LANTERN_GREEN = regBlock("berry_lantern_green", () -> new LanternLight("berry_lantern_green", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
+
+	public static final RegistryObject<Block> ANDON_LANTERN_WHITE = regBlock("andon_lantern_white", () -> new LanternLight("andon_lantern_white", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
+	public static final RegistryObject<Block> ANDON_LANTERN_BLUE = regBlock("andon_lantern_blue", () -> new LanternLight("andon_lantern_blue", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
+	public static final RegistryObject<Block> ANDON_LANTERN_BLACK = regBlock("andon_lantern_black", () -> new LanternLight("andon_lantern_black", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
+	public static final RegistryObject<Block> ANDON_LANTERN_RED = regBlock("andon_lantern_red", () -> new LanternLight("andon_lantern_red", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
+	public static final RegistryObject<Block> ANDON_LANTERN_GREEN = regBlock("andon_lantern_green", () -> new LanternLight("andon_lantern_green", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
+
+	public static final RegistryObject<Block> WOODEN_WALL_BEECH = regBlock("wooden_wall_beech", () -> new WoodenSimpleBlock("wooden_wall_beech").setDomain("build"), null);
+	public static final RegistryObject<Block> WOODEN_WALL_WALNUT = regBlock("wooden_wall_walnut", () -> new WoodenSimpleBlock("wooden_wall_walnut").setDomain("build"), null);
+	public static final RegistryObject<Block> WOODEN_WALL_SWEET = regBlock("wooden_wall_sweet", () -> new WoodenSimpleBlock("wooden_wall_sweet").setDomain("build"), null);
+
+	public static final RegistryObject<Block> HERRINGBONE_BEECH = regBlock("herringbone_beech", () -> new WoodenSimpleBlock("herringbone_beech").setDomain("build"), null);
+	public static final RegistryObject<Block> HERRINGBONE_WALNUT = regBlock("herringbone_walnut", () -> new WoodenSimpleBlock("herringbone_walnut").setDomain("build"), null);
+	public static final RegistryObject<Block> HERRINGBONE_SWEET = regBlock("herringbone_sweet", () -> new WoodenSimpleBlock("herringbone_sweet").setDomain("build"), null);
 
 	public static final RegistryObject<Block> SLAB_BEECH = regBlock("slab_beech_common", () -> new SlabWoodDC("beech_common", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)),
 	    ItemTags.WOODEN_SLABS);
@@ -416,54 +419,64 @@ public class BuildInit {
 	public static final RegistryObject<Block> TRAPDOOR_SUMAC = regBlock("trapdoor_lacquer", () -> new TrapdoorWoodDC("lacquer"), ItemTags.WOODEN_TRAPDOORS);
 	public static final RegistryObject<Block> TRAPDOOR_LACQUER = regBlock("trapdoor_lacquerware", () -> new TrapdoorWoodDC("lacquerware"), ItemTags.WOODEN_TRAPDOORS);
 
-	public static final RegistryObject<Block> GLASS_CRYSTAL = regBlock("glass_crystal", () -> new ConnectedGlassBlock("crystal", 0), Tags.Items.GLASS);
-	public static final RegistryObject<Block> GLASS_LIGHT = regBlock("glass_light", () -> new ConnectedGlassBlock("light", 15), null);
-	public static final RegistryObject<Block> GLASS_DARK = regBlock("glass_dark", () -> new ConnectedGlassBlock("dark"), null);
+	public static final RegistryObject<Block> MORTAR = regBlock("mortar", () -> new LayerStoneBlock("mortar").setDomain("build").setTexDir("build"), TagDC.ItemTag.BUILDING_STONE);
+	public static final RegistryObject<Block> BRICKS_MORTAR = regBlock("bricks_mortar", () -> new LayerStoneBlock("bricks_mortar").setDomain("build").setTexDir("build"),
+	    TagDC.ItemTag.BUILDING_BRICKS);
+	public static final RegistryObject<Block> PILLAR_MORTAR = regBlock("pillar_mortar", () -> new PillarStoneDC("mortar").setDomain("build"), TagDC.ItemTag.BUILDING_PILLAR);
+	public static final RegistryObject<Block> CHISELED_MORTAR = regBlock("chiseled_mortar", () -> new LayerStoneBlock("chiseled_mortar").setDomain("build").setTexDir("build"),
+	    TagDC.ItemTag.BUILDING_CHISELED);
+	public static final RegistryObject<Block> STAIRS_MORTAR = regBlock("stairs_mortar", () -> new StairsStoneDC("mortar", CoreInit.STONE_GRANITE), ItemTags.STAIRS);
+	public static final RegistryObject<Block> SLAB_MORTAR = regBlock("slab_mortar", () -> new SlabStoneDC("mortar"), ItemTags.SLABS);
+	public static final RegistryObject<Block> WALL_MORTAR = regBlock("wall_mortar", () -> new WallStoneDC("mortar", true), ItemTags.WALLS);
+	public static final RegistryObject<Block> DITCH = regBlock("ditch", () -> new DitchBlock("ditch"), null);
 
-	public static final RegistryObject<Block> CHAL_LAMP = regBlock("chal_lamp", () -> new SimpleLightDC("chal_lamp"), null);
-	public static final RegistryObject<Block> CHAL_LAMP_GLASS = regBlock("chal_lamp_glass", () -> new SimpleLightDC("chal_lamp_glass"), null);
+	public static final RegistryObject<Block> PLATE_METAL = regBlock("plate_steel", () -> new MetalThinPlate("plate_steel"), null);
+	public static final RegistryObject<Block> PLATE_MESH = regBlock("plate_mesh", () -> new MetalThinPlate("plate_mesh"), null);
 
-	public static final RegistryObject<Block> DOWNLIGHT_WOOD = regBlock("small_light_wood", () -> new SmallLight("wood"), null);
-	public static final RegistryObject<Block> DOWNLIGHT_WHITE = regBlock("small_light_white", () -> new SmallLight("white"), null);
-	public static final RegistryObject<Block> DOWNLIGHT_BLACK = regBlock("small_light_black", () -> new SmallLight("black"), null);
+	public static final RegistryObject<Block> STAIRS_METAL = regBlock("metal_stairs", () -> new MetalStairs("metal_stairs"), null);
+	public static final RegistryObject<Block> SLAB_METAL = regBlock("metal_slab", () -> new MetalSlab("metal_slab"), null);
+	public static final RegistryObject<Block> FENCE_METAL = regBlock("fence_metal", () -> new FenceMetal("metal"), ItemTags.FENCES);
+	public static final RegistryObject<Block> LADDER_METAL = regBlock("metal_ladder", () -> new MetalLadder("metal_ladder"), null);
+	public static final RegistryObject<Block> STAIRS_SLIM_METAL = regBlock("slim_stairs_metal", () -> new SlimStairs("metal", true), null);
 
-	public static final RegistryObject<Block> CHAL_LAMP_TABLE = regBlock("chal_lamp_table", () -> new SidedLightDC("chal_lamp_table"), null);
-	public static final RegistryObject<Block> CHAL_LAMP_FLUORITE = regBlock("chal_lamp_fluorite", () -> new SidedLightDC("chal_lamp_fluorite"), null);
-	public static final RegistryObject<Block> CHAL_LAMP_JET = regBlock("chal_lamp_jet", () -> new SidedLightDC("chal_lamp_jet"), null);
-	public static final RegistryObject<Block> CHAL_LAMP_DESERTROSE = regBlock("chal_lamp_desertrose", () -> new SidedLightDC("chal_lamp_desertrose"), null);
-	public static final RegistryObject<Block> CHAL_LAMP_SERPENTINE = regBlock("chal_lamp_serpentine", () -> new SidedLightDC("chal_lamp_serpentine"), null);
+	public static final RegistryObject<Block> LOUVER_HOL_METAL = regBlock("louver_horizontal_none", () -> new MetalLouverBlock("horizontal", MagicColor.NONE), TagDC.ItemTag.ALMINUM_LOUVERS);
+	public static final RegistryObject<Block> LOUVER_HOL_WHITE = regBlock("louver_horizontal_white", () -> new MetalLouverBlock("horizontal", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_LOUVERS);
+	public static final RegistryObject<Block> LOUVER_HOL_BLUE = regBlock("louver_horizontal_blue", () -> new MetalLouverBlock("horizontal", MagicColor.BLUE), TagDC.ItemTag.ALMINUM_LOUVERS);
+	public static final RegistryObject<Block> LOUVER_HOL_BLACK = regBlock("louver_horizontal_black", () -> new MetalLouverBlock("horizontal", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_LOUVERS);
+	public static final RegistryObject<Block> LOUVER_HOL_RED = regBlock("louver_horizontal_red", () -> new MetalLouverBlock("horizontal", MagicColor.RED), TagDC.ItemTag.ALMINUM_LOUVERS);
+	public static final RegistryObject<Block> LOUVER_HOL_GREEN = regBlock("louver_horizontal_green", () -> new MetalLouverBlock("horizontal", MagicColor.GREEN), TagDC.ItemTag.ALMINUM_LOUVERS);
 
-	public static final RegistryObject<Block> CHANDELIER_IRON = regBlock("chandelier_iron", () -> new ChandelierLamp("iron"), null);
-	public static final RegistryObject<Block> CHANDELIER_LAMP = regBlock("chandelier_crystal", () -> new ChandelierLamp("crystal"), null);
-	public static final RegistryObject<Block> CHANDELIER_FLUORITE = regBlock("chandelier_fluorite", () -> new ChandelierLamp("fluorite"), null);
-	public static final RegistryObject<Block> CHANDELIER_JET = regBlock("chandelier_jet", () -> new ChandelierLamp("jet"), null);
-	public static final RegistryObject<Block> CHANDELIER_DESERTROSE = regBlock("chandelier_desertrose", () -> new ChandelierLamp("desertrose"), null);
-	public static final RegistryObject<Block> CHANDELIER_SERPENTINE = regBlock("chandelier_serpentine", () -> new ChandelierLamp("serpentine"), null);
+	public static final RegistryObject<Block> LOUVER_VER_METAL = regBlock("louver_vertical_none", () -> new MetalLouverBlock("vertical", MagicColor.NONE), TagDC.ItemTag.ALMINUM_LOUVERS);
+	public static final RegistryObject<Block> LOUVER_VER_WHITE = regBlock("louver_vertical_white", () -> new MetalLouverBlock("vertical", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_LOUVERS);
+	public static final RegistryObject<Block> LOUVER_VER_BLUE = regBlock("louver_vertical_blue", () -> new MetalLouverBlock("vertical", MagicColor.BLUE), TagDC.ItemTag.ALMINUM_LOUVERS);
+	public static final RegistryObject<Block> LOUVER_VER_BLACK = regBlock("louver_vertical_black", () -> new MetalLouverBlock("vertical", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_LOUVERS);
+	public static final RegistryObject<Block> LOUVER_VER_RED = regBlock("louver_vertical_red", () -> new MetalLouverBlock("vertical", MagicColor.RED), TagDC.ItemTag.ALMINUM_LOUVERS);
+	public static final RegistryObject<Block> LOUVER_VER_GREEN = regBlock("louver_vertical_green", () -> new MetalLouverBlock("vertical", MagicColor.GREEN), TagDC.ItemTag.ALMINUM_LOUVERS);
 
-	public static final RegistryObject<Block> CANDLESTICK = regBlock("candlestick", () -> new Candlestick("candlestick"), null);
-	public static final RegistryObject<Block> CHANDELIER_CANDLE = regBlock("chandelier_candle", () -> new ChandelierCandle("candle"), null);
+	public static final RegistryObject<Block> WINDOW_SIMPLE_METAL = regBlock("window_simple_none", () -> new MetalWindowBlock("simple", MagicColor.NONE), TagDC.ItemTag.ALMINUM_WINDOWS);
+	public static final RegistryObject<Block> WINDOW_SIMPLE_BLACK = regBlock("window_simple_black", () -> new MetalWindowBlock("simple", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_WINDOWS);
+	public static final RegistryObject<Block> WINDOW_SIMPLE_WHITE = regBlock("window_simple_white", () -> new MetalWindowBlock("simple", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_WINDOWS);
+	public static final RegistryObject<Block> WINDOW_FLOWER_METAL = regBlock("window_flower_none", () -> new MetalWindowBlock("flower", MagicColor.NONE), TagDC.ItemTag.ALMINUM_WINDOWS);
+	public static final RegistryObject<Block> WINDOW_FLOWER_BLACK = regBlock("window_flower_black", () -> new MetalWindowBlock("flower", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_WINDOWS);
+	public static final RegistryObject<Block> WINDOW_FLOWER_WHITE = regBlock("window_flower_white", () -> new MetalWindowBlock("flower", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_WINDOWS);
+	public static final RegistryObject<Block> WINDOW_GOTHIC_METAL = regBlock("window_gothic_none", () -> new MetalWindowBlock("gothic", MagicColor.NONE), TagDC.ItemTag.ALMINUM_WINDOWS);
+	public static final RegistryObject<Block> WINDOW_GOTHIC_BLACK = regBlock("window_gothic_black", () -> new MetalWindowBlock("gothic", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_WINDOWS);
+	public static final RegistryObject<Block> WINDOW_GOTHIC_WHITE = regBlock("window_gothic_white", () -> new MetalWindowBlock("gothic", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_WINDOWS);
+	public static final RegistryObject<Block> WINDOW_NET_METAL = regBlock("window_net_none", () -> new MetalWindowBlock("net", MagicColor.NONE), TagDC.ItemTag.ALMINUM_WINDOWS);
+	public static final RegistryObject<Block> WINDOW_NET_BLACK = regBlock("window_net_black", () -> new MetalWindowBlock("net", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_WINDOWS);
+	public static final RegistryObject<Block> WINDOW_NET_WHITE = regBlock("window_net_white", () -> new MetalWindowBlock("net", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_WINDOWS);
 
-	public static final RegistryObject<Block> BERRY_LANTERN_WHITE = regBlock("berry_lantern_white", () -> new LanternLight("berry_lantern_white", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
-	public static final RegistryObject<Block> BERRY_LANTERN_BLUE = regBlock("berry_lantern_blue", () -> new LanternLight("berry_lantern_blue", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
-	public static final RegistryObject<Block> BERRY_LANTERN_BLACK = regBlock("berry_lantern_black", () -> new LanternLight("berry_lantern_black", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
-	public static final RegistryObject<Block> BERRY_LANTERN_RED = regBlock("berry_lantern_red", () -> new LanternLight("berry_lantern_red", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
-	public static final RegistryObject<Block> BERRY_LANTERN_GREEN = regBlock("berry_lantern_green", () -> new LanternLight("berry_lantern_green", LampType.BERRY), TagDC.ItemTag.HAC_LANTERN);
-
-	public static final RegistryObject<Block> ANDON_LANTERN_WHITE = regBlock("andon_lantern_white", () -> new LanternLight("andon_lantern_white", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
-	public static final RegistryObject<Block> ANDON_LANTERN_BLUE = regBlock("andon_lantern_blue", () -> new LanternLight("andon_lantern_blue", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
-	public static final RegistryObject<Block> ANDON_LANTERN_BLACK = regBlock("andon_lantern_black", () -> new LanternLight("andon_lantern_black", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
-	public static final RegistryObject<Block> ANDON_LANTERN_RED = regBlock("andon_lantern_red", () -> new LanternLight("andon_lantern_red", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
-	public static final RegistryObject<Block> ANDON_LANTERN_GREEN = regBlock("andon_lantern_green", () -> new LanternLight("andon_lantern_green", LampType.PAPER), TagDC.ItemTag.HAC_ANDON);
+	public static final RegistryObject<Block> ROOF_METAL_GRAY = regBlock("stairs_roof_gray", () -> new StairsMetalRoof("roof_gray", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
+	public static final RegistryObject<Block> ROOF_METAL_YELLOW = regBlock("stairs_roof_yellow", () -> new StairsMetalRoof("roof_yellow", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
+	public static final RegistryObject<Block> ROOF_METAL_BLUE = regBlock("stairs_roof_blue", () -> new StairsMetalRoof("roof_blue", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
+	public static final RegistryObject<Block> ROOF_METAL_BLACK = regBlock("stairs_roof_black", () -> new StairsMetalRoof("roof_black", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
+	public static final RegistryObject<Block> ROOF_METAL_RED = regBlock("stairs_roof_red", () -> new StairsMetalRoof("roof_red", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
+	public static final RegistryObject<Block> ROOF_METAL_GREEN = regBlock("stairs_roof_green", () -> new StairsMetalRoof("roof_green", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
 
 	public static final RegistryObject<Block> CHAIN_GOLD = regBlock("chain_gold", () -> new ChainBlockDC("gold"), null);
+	public static final RegistryObject<Block> CHAIN_COPPER = regBlock("chain_copper", () -> new ChainBlockDC("copper"), null);
 	public static final RegistryObject<Block> CHAIN_VINE = regBlock("chain_vine", () -> new ChainBlockDC("vine", BlockBehaviour.Properties.copy(Blocks.ORANGE_WOOL)), null);
 	public static final RegistryObject<Block> LADDER_VINE = regBlock("vine_ladder", () -> new MetalLadder("vine_ladder"), null);
-
-	public static final RegistryObject<Block> TOOL_HOOK = regBlock("toolhook", () -> new ToolHookBlock("toolhook"), null);
-	public static final RegistryObject<Block> DISPLAY_SHELF = regBlock("display_shelf", () -> new DisplayShelfBlock("display_shelf"), null);
-	public static final RegistryObject<Block> DISPLAY_SHELF_IRON = regBlock("display_shelf_iron", () -> new DisplayDoubleShelfBlock("display_shelf_iron"), null);
-	public static final RegistryObject<Block> DISPLAY_SHELF_LAB = regBlock("display_shelf_lab", () -> new DisplayDoubleShelfBlock("display_shelf_lab"), null);
-	public static final RegistryObject<Block> DISPLAY_SHELF_GLASS = regBlock("display_shelf_glass", () -> new DisplayDoubleShelfBlock("display_shelf_glass"), null);
 
 	public static final RegistryObject<Block> CARPET_LINEN = regBlock("carpet_linen", () -> new CarpetPlanks("carpet_linen"), null);
 	public static final RegistryObject<Block> CARPET_WHITE = regBlock("carpet_white", () -> new CarpetPlanks("carpet_white"), TagDC.ItemTag.HAC_CARPET);
@@ -479,6 +492,18 @@ public class BuildInit {
 	public static final RegistryObject<Block> TABLE_BLACK = regBlock("table_black", () -> new CarpetPlanks("table_black"), TagDC.ItemTag.HAC_TABLE);
 	public static final RegistryObject<Block> TABLE_RED = regBlock("table_red", () -> new CarpetPlanks("table_red"), TagDC.ItemTag.HAC_TABLE);
 	public static final RegistryObject<Block> TABLE_GREEN = regBlock("table_green", () -> new CarpetPlanks("table_green"), TagDC.ItemTag.HAC_TABLE);
+
+	public static final RegistryObject<Block> TABLE_ROUND = regBlock("table_round_wood", () -> new SmallTable("wood", false), null);
+	public static final RegistryObject<Block> TABLE_ROUND_MUD = regBlock("table_round_mud", () -> new SmallTable("mud", false), null);
+	public static final RegistryObject<Block> TABLE_ROUND_GYPSUM = regBlock("table_round_gypsum", () -> new SmallTable("gypsum", false), null);
+	public static final RegistryObject<Block> TABLE_ROUND_SERPENTINE = regBlock("table_round_serpentine", () -> new SmallTable("serpentine", false), null);
+	public static final RegistryObject<Block> TABLE_ROUND_GREISEN = regBlock("table_round_greisen", () -> new SmallTable("greisen", false), null);
+	public static final RegistryObject<Block> TABLE_ROUND_SKARN = regBlock("table_round_skarn", () -> new SmallTable("skarn", false), null);
+	public static final RegistryObject<Block> TABLE_ROUND_HORNFELS = regBlock("table_round_hornfels", () -> new SmallTable("hornfels", false), null);
+	public static final RegistryObject<Block> TABLE_ROUND_MARBLE = regBlock("table_round_marble", () -> new SmallTable("marble", false), null);
+	public static final RegistryObject<Block> TABLE_ROUND_SCHIST_BLUE = regBlock("table_round_schist_blue", () -> new SmallTable("schist_blue", false), null);
+	public static final RegistryObject<Block> TABLE_ROUND_NETHER = regBlock("table_round_nether", () -> new SmallTable("nether", false), null);
+	public static final RegistryObject<Block> TABLE_ROUND_GRANITE = regBlock("table_round_granite", () -> new SmallTable("granite", false), null);
 
 	public static final RegistryObject<Block> CHAIR_WOOD = regBlock("chair_wood", () -> new ChairBlock("chair_wood"), null);
 	public static final RegistryObject<Block> CHAIR_LINEN = regBlock("chair_linen", () -> new ChairBlock("chair_linen"), null);
@@ -529,6 +554,14 @@ public class BuildInit {
 	public static final RegistryObject<Block> CABINET_RED = regBlock("cabinet_red", () -> new CabinetBlock("cabinet_red"), TagDC.ItemTag.HAC_CABINET);
 	public static final RegistryObject<Block> CABINET_GREEN = regBlock("cabinet_green", () -> new CabinetBlock("cabinet_green"), TagDC.ItemTag.HAC_CABINET);
 
+	public static final RegistryObject<Block> TOOL_HOOK = regBlock("toolhook", () -> new ToolHookBlock("toolhook"), null);
+	public static final RegistryObject<Block> DISPLAY_SHELF = regBlock("display_shelf", () -> new DisplayShelfBlock("display_shelf"), null);
+	public static final RegistryObject<Block> DISPLAY_SHELF_IRON = regBlock("display_shelf_iron", () -> new DisplayDoubleShelfBlock("display_shelf_iron"), null);
+	public static final RegistryObject<Block> DISPLAY_SHELF_LAB = regBlock("display_shelf_lab", () -> new DisplayDoubleShelfBlock("display_shelf_lab"), null);
+	public static final RegistryObject<Block> DISPLAY_SHELF_GLASS = regBlock("display_shelf_glass", () -> new DisplayDoubleShelfBlock("display_shelf_glass"), null);
+
+	public static final RegistryObject<Block> VILLAGER_CHEST = regBlock("villager_chest_block", () -> new VillagerChestBlock("villager_chest_block"), null);
+
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<ChandelierTile>> CHANDELIER_TILE = CoreInit.BLOCK_ENTITIES.register("chandelier_crystal_tile",
 	    () -> BlockEntityType.Builder.of(ChandelierTile::new, CHANDELIER_LAMP.get(), CHANDELIER_FLUORITE.get(), CHANDELIER_JET.get(), CHANDELIER_DESERTROSE.get(), CHANDELIER_SERPENTINE.get(), CHANDELIER_IRON.get(),
@@ -554,6 +587,9 @@ public class BuildInit {
 
 	public static final RegistryObject<BlockEntityType<DisplayDoubleShelfTile>> DISPLAY_DOUBLE_SHELF_TILE = CoreInit.BLOCK_ENTITIES.register("display_double_shelf_tile",
 	    () -> BlockEntityType.Builder.of(DisplayDoubleShelfTile::new, DISPLAY_SHELF_IRON.get(), DISPLAY_SHELF_LAB.get(), DISPLAY_SHELF_GLASS.get()).build(null));
+
+	public static final RegistryObject<BlockEntityType<VillagerChestTile>> VILLAGER_CHEST_TILE = CoreInit.BLOCK_ENTITIES.register("villager_chest_tile",
+	    () -> BlockEntityType.Builder.of(VillagerChestTile::new, VILLAGER_CHEST.get()).build(null));
 
 	public static final RegistryObject<BlockEntityType<NoSaveBedTile>> NO_SAVE_BED_TILE = CoreInit.BLOCK_ENTITIES.register("no_save_bed_tile",
 	    () -> BlockEntityType.Builder.of(NoSaveBedTile::new, BED_LINEN.get()).build(null));

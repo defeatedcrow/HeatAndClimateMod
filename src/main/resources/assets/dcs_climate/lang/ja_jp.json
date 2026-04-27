@@ -218,6 +218,8 @@
   "item.dcs_climate.magic.drop_mana":"マナの雫",
   "item.dcs_climate.magic.extract_mana":"マナの抽出液",
   "item.dcs_climate.magic.element_mana":"マナの結晶",
+  
+  "item.dcs_climate.magic.exp_solid_orb":"固形化EXPオーブ",
 
   "item.dcs_climate.magic.seedbag_white":"白の種袋",
   "item.dcs_climate.magic.seedbag_blue":"青の種袋",
@@ -1685,6 +1687,13 @@
   "block.dcs_climate.build.wall_granite":"御影石の塀",
   "block.dcs_climate.build.wall_mortar":"モルタルの塀",
   "block.dcs_climate.build.wall_adobe":"日干しレンガの塀",
+  
+  "block.dcs_climate.build.wooden_wall_beech":"ブナの壁材",
+  "block.dcs_climate.build.wooden_wall_walnut":"クルミの壁材",
+  "block.dcs_climate.build.wooden_wall_sweet":"ミズナラの壁材",
+  "block.dcs_climate.build.herringbone_beech":"ブナのヘリンボーン壁材",
+  "block.dcs_climate.build.herringbone_walnut":"クルミのヘリンボーン壁材",
+  "block.dcs_climate.build.herringbone_sweet":"ミズナラのヘリンボーン壁材",
 
   "block.dcs_climate.build.stairs_beech_common":"ブナの階段",
   "block.dcs_climate.build.stairs_beech_walnut":"クルミの階段",
@@ -1777,6 +1786,9 @@
   "block.dcs_climate.build.metal_slab":"アルミの半ブロック",
   "block.dcs_climate.build.metal_stairs":"アルミの階段",
   "block.dcs_climate.build.slim_stairs_metal":"アルミのオープン階段",
+  
+  "block.dcs_climate.build.plate_steel":"鉄板の床",
+  "block.dcs_climate.build.plate_mesh":"金網の床",
 
   "block.dcs_climate.build.louver_vertical_none":"アルミの縦型ルーバー",
   "block.dcs_climate.build.louver_vertical_white":"アルミの縦型ルーバー (白)",
@@ -1884,6 +1896,7 @@
   "block.dcs_climate.build.chal_lamp_jet":"黒玉のランプ",
   "block.dcs_climate.build.chal_lamp_desertrose":"砂漠のバラのランプ",
   "block.dcs_climate.build.chal_lamp_serpentine":"蛇紋石のランプ",
+  "block.dcs_climate.build.chal_lamp_table_glass":"ガラスのランプ",
 
   "block.dcs_climate.build.chandelier_candle":"キャンドルのシャンデリア",
   "block.dcs_climate.build.chandelier_iron":"鉄のシャンデリア",
@@ -1921,6 +1934,18 @@
   "block.dcs_climate.build.table_black":"黒のクロスのテーブル",
   "block.dcs_climate.build.table_red":"赤のクロスのテーブル",
   "block.dcs_climate.build.table_green":"緑のクロスのテーブル",
+  
+  "block.dcs_climate.build.table_round_wood":"木製のカフェテーブル",
+  "block.dcs_climate.build.table_round_mud":"泥岩のカフェテーブル",
+  "block.dcs_climate.build.table_round_gypsum":"石膏のカフェテーブル",
+  "block.dcs_climate.build.table_round_serpentine":"蛇紋岩のカフェテーブル",
+  "block.dcs_climate.build.table_round_greisen":"グライゼンのカフェテーブル",
+  "block.dcs_climate.build.table_round_skarn":"スカルンのカフェテーブル",
+  "block.dcs_climate.build.table_round_hornfels":"ホルンフェルスのカフェテーブル",
+  "block.dcs_climate.build.table_round_marble":"大理石のカフェテーブル",
+  "block.dcs_climate.build.table_round_schist_blue":"青色片岩のカフェテーブル",
+  "block.dcs_climate.build.table_round_nether":"ネザー片岩のカフェテーブル",
+  "block.dcs_climate.build.table_round_granite":"御影石のカフェテーブル",
 
   "block.dcs_climate.build.chair_wood":"木製のイス",
   "block.dcs_climate.build.chair_linen":"リネンのイス",
@@ -1970,8 +1995,11 @@
   "block.dcs_climate.build.cabinet_black":"キャビネット(黒)",
   "block.dcs_climate.build.cabinet_red":"キャビネット(赤)",
   "block.dcs_climate.build.cabinet_green":"キャビネット(緑)",
+  
+  "block.dcs_climate.build.villager_chest_block":"村人チェスト",
 
   "block.dcs_climate.build.chain_gold":"金の鎖",
+  "block.dcs_climate.build.chain_copper":"銅の鎖",
   "block.dcs_climate.build.chain_vine":"ロープ",
   "block.dcs_climate.build.vine_ladder":"ロープのはしご",
 
@@ -2011,6 +2039,7 @@
   "block.dcs_climate.machine.hopper_filter":"フィルターホッパー",
   "block.dcs_climate.machine.hopper_gold":"金のホッパー",
   "block.dcs_climate.machine.hopper_filter_gold":"金のフィルターホッパー",
+  "block.dcs_climate.machine.hopper_exp":"経験値回収ホッパー",
   "block.dcs_climate.machine.conveyor":"コンベア",
   "block.dcs_climate.machine.conveyor_smelting":"コンベア(精錬)",
   "block.dcs_climate.machine.conveyor_dropper":"コンベア(ドロッパー)",
@@ -2231,6 +2260,7 @@
   "dcs.tip.hopper.gold":"輸送速度: 1 item / tick",
   "dcs.tip.hopper.filter":"フィルター付き",
   "dcs.tip.hopper.filter.desc":"フィルタースロットに入れたアイテムは横方向へ、それ以外は上下方向へ輸送します。",
+  "dcs.tip.hopper.exp":"経験値オーブを回収します。ゲージが満タンになると固形化経験値オーブを生成します。",
   "dcs.tip.helmet_safety":"爆発や落下物のダメージを軽減します。",
   "dcs.tip.boots_safety":"落下や足下のダメージを軽減します。",
   "dcs.tip.waders_rubber":"濡れ状態を防止し、粉雪のダメージを軽減します。",
@@ -2245,6 +2275,7 @@
   "dcs.tip.entity_camera":"前方5x3x5ブロックの範囲内にいるエンティティの数をカウントし、RS信号を発生します。",
   "dcs.tip.auto_milker":"近くのウシやヤギからミルクを集めます。",
   "dcs.tip.water_intake":"上面から水や雨を受けると、水を貯めることができます。",
+  "dcs.tip.villager_chest":"近くにいる村人から、余剰のアイテムを集めます。",
 
   "dcs.tip.flow.tier1":"[Tier1] 流速: 32 /t",
   "dcs.tip.flow.tier2":"[Tier2] 流速: 128 /t",
@@ -2354,6 +2385,7 @@
   "dcs.tip.mosquito_coil":"インベントリに入れておくと、ファントムや虫を撃退します。",
   "dcs.tip.seedbag.desc":"ランダムに種を入手します:",
   "dcs.tip.sap":"樹液タンクを使って集めることが出来ます。",
+  "dcs.tip.exp_solid_orb":"100 EXP",
 
   "## magic_item_text":"",
 

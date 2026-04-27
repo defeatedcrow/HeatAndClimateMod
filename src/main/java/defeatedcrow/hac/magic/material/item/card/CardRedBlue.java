@@ -66,6 +66,7 @@ public class CardRedBlue extends MagicCardBase {
 			if (player.isInWater()) {
 				// 自分に落ちる
 				LightningBolt thunder = EntityType.LIGHTNING_BOLT.create(level);
+				thunder.setVisualOnly(true);
 				thunder.moveTo(player.position());
 				level.addFreshEntity(thunder);
 

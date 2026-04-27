@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/gold"
+    },
+    "Y": {
+      "tag": "forge:chests"
+    },
+    "Z": {
+      "tag": "forge:gems/emerald"
+    }
+  },
+  "pattern": [
+    "XZX",
+    " Y ",
+    "X X"
+  ],
+  "result": {
+    "item": "dcs_climate:build/villager_chest_block"
+  }
+}

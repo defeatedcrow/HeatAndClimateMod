@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/wooden_wall_walnut"
+  },
+  "parent": "minecraft:block/cube_all"
+}

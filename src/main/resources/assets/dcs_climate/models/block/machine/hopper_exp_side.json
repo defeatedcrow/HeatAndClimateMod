@@ -1,0 +1,9 @@
+{
+  "parent": "block/hopper_side",
+  "textures": {
+    "particle": "dcs_climate:block/machine/hopper_exp_outside",
+        "top": "dcs_climate:block/machine/hopper_exp_top",
+        "side": "dcs_climate:block/machine/hopper_exp_outside",
+        "inside": "dcs_climate:block/machine/hopper_exp_inside"
+  }
+}

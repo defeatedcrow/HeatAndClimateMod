@@ -12,6 +12,7 @@ import defeatedcrow.hac.machine.client.gui.EnergyBatteryMenu;
 import defeatedcrow.hac.machine.client.gui.FermentationJarMenu;
 import defeatedcrow.hac.machine.client.gui.FluidChamberMenu;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberMenu;
+import defeatedcrow.hac.machine.client.gui.HopperEXPMenu;
 import defeatedcrow.hac.machine.client.gui.HopperFilterMenu;
 import defeatedcrow.hac.machine.client.gui.KichenBenchMenu;
 import defeatedcrow.hac.machine.client.gui.KichenOvenMenu;
@@ -108,6 +109,8 @@ import defeatedcrow.hac.machine.material.block.transport.FluidPipeNickelsilverTi
 import defeatedcrow.hac.machine.material.block.transport.FluidSinkBlock_Brick;
 import defeatedcrow.hac.machine.material.block.transport.FluidSinkTile;
 import defeatedcrow.hac.machine.material.block.transport.HopperBaseTile;
+import defeatedcrow.hac.machine.material.block.transport.HopperEXPBlock;
+import defeatedcrow.hac.machine.material.block.transport.HopperEXPTile;
 import defeatedcrow.hac.machine.material.block.transport.HopperFilterBlock;
 import defeatedcrow.hac.machine.material.block.transport.HopperFilterGoldBlock;
 import defeatedcrow.hac.machine.material.block.transport.HopperFilterGoldTile;
@@ -168,6 +171,7 @@ public class MachineInit {
 	public static final RegistryObject<Block> HOPPER_FILTER = regBlock("hopper_filter", () -> new HopperFilterBlock("hopper_filter"), Rarity.COMMON, null);
 	public static final RegistryObject<Block> HOPPER_GOLD = regBlock("hopper_gold", () -> new HopperGoldBlock("hopper_gold"), Rarity.COMMON, null);
 	public static final RegistryObject<Block> HOPPER_FILTER_GOLD = regBlock("hopper_filter_gold", () -> new HopperFilterGoldBlock("hopper_filter_gold"), Rarity.COMMON, null);
+	public static final RegistryObject<Block> HOPPER_EXP = regBlock("hopper_exp", () -> new HopperEXPBlock("hopper_exp"), Rarity.UNCOMMON, null);
 
 	public static final RegistryObject<Block> CONVEYOR = regBlock("conveyor", () -> new ConveyorNormalBlock("conveyor"), Rarity.UNCOMMON, null);
 	public static final RegistryObject<Block> CONVEYOR_SMELTING = regBlock("conveyor_smelting", () -> new ConveyorSmeltingBlock("conveyor_smelting"), Rarity.UNCOMMON, null);
@@ -306,6 +310,9 @@ public class MachineInit {
 
 	public static final RegistryObject<BlockEntityType<HopperFilterGoldTile>> HOPPER_FILTER_GOLD_TILE = CoreInit.BLOCK_ENTITIES.register("hopper_filter_gold_tile",
 	    () -> BlockEntityType.Builder.of(HopperFilterGoldTile::new, HOPPER_FILTER_GOLD.get()).build(null));
+
+	public static final RegistryObject<BlockEntityType<HopperEXPTile>> HOPPER_EXP_TILE = CoreInit.BLOCK_ENTITIES.register("hopper_exp_tile",
+	    () -> BlockEntityType.Builder.of(HopperEXPTile::new, HOPPER_EXP.get()).build(null));
 
 	public static final RegistryObject<BlockEntityType<ConveyorTile>> CONVEYOR_TILE = CoreInit.BLOCK_ENTITIES.register("conveyor_tile",
 	    () -> BlockEntityType.Builder.of(ConveyorTile::new, CONVEYOR.get()).build(null));
@@ -509,6 +516,11 @@ public class MachineInit {
 	    data) -> {
 		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
 		return HopperFilterMenu.filterGoldMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<HopperEXPMenu>> HOPPER_EXP_MENU = CoreInit.register("dcs_exp_hopper", (IContainerFactory<HopperEXPMenu>) (id, playerInv, data) -> {
+		HopperEXPTile cont = (HopperEXPTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return HopperEXPMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<ConveyorSorterMenu>> CONVEYOR_SORTER_MENU = CoreInit.register("dcs_conveyor_sorter", (IContainerFactory<ConveyorSorterMenu>) (id, playerInv, data) -> {

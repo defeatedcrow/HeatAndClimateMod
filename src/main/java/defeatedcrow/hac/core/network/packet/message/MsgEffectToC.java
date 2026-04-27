@@ -67,7 +67,7 @@ public class MsgEffectToC implements IPacketDC {
 		if (level != null) {
 			MsgEffectToC packet = new MsgEffectToC(pos, i);
 			level.players().forEach(player -> {
-				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+			    DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
 			});
 		}
 	}
@@ -76,7 +76,7 @@ public class MsgEffectToC implements IPacketDC {
 		if (level != null) {
 			MsgEffectToC packet = new MsgEffectToC(pos, i);
 			level.players().forEach(player -> {
-				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+			    DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
 			});
 		}
 	}
@@ -142,16 +142,19 @@ public class MsgEffectToC implements IPacketDC {
 				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 1.0F, 1.5F);
 				break;
 			case 4: // POP SE
-				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 1.5F);
+				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.ITEM_PICKUP, SoundSource.NEUTRAL, 1.0F, 1.5F);
 				break;
 			case 5: // BOMB SE
-				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0F, 1.0F);
+				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.GENERIC_EXPLODE, SoundSource.NEUTRAL, 1.0F, 1.0F);
 				break;
 			case 6: // FUSE SE
-				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.TNT_PRIMED, SoundSource.NEUTRAL, 1.0F, 1.0F);
 				break;
 			case 7: // BUBLE SE
-				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.AMBIENT_UNDERWATER_ENTER, SoundSource.BLOCKS, 1.0F, 0.7F);
+				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.AMBIENT_UNDERWATER_ENTER, SoundSource.NEUTRAL, 1.0F, 0.7F);
+				break;
+			case 8: // GLASS SE
+				level.playSound(player, pos.x, pos.y, pos.z, SoundEvents.SPLASH_POTION_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
 				break;
 			}
 		}

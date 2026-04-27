@@ -1,0 +1,7 @@
+{
+    "parent": "dcs_climate:block/dcs_table_round",
+    "textures": {
+        "base": "dcs_climate:block/build/wood_build",
+        "top": "dcs_climate:block/build/wood_build"
+    }
+}

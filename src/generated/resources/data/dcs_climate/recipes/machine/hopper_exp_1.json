@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:hopper"
+    },
+    "Y": {
+      "tag": "dcs_climate:mana_extracts"
+    }
+  },
+  "pattern": [
+    "Y",
+    "X"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/hopper_exp"
+  }
+}

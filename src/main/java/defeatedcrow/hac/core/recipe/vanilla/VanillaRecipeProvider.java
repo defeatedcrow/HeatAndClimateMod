@@ -377,6 +377,20 @@ public class VanillaRecipeProvider extends RecipeProvider {
 	}
 
 	private static void buildingRecipes(Consumer<FinishedRecipe> cons) {
+		
+		ShapedRecipeBuilder.shaped(BuildInit.PLATE_METAL.get(), 2)
+			.pattern("XYX")
+			.define('X', Tags.Items.INGOTS_IRON)
+			.define('Y', Items.IRON_BARS)
+			.unlockedBy("has_iron", has(Tags.Items.INGOTS_IRON))
+			.save(cons, "dcs_climate:build/plate_metal_1");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.PLATE_MESH.get(), 2)
+			.pattern("XYX")
+			.define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+			.define('Y', Items.IRON_BARS)
+			.unlockedBy("has_aluminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
+			.save(cons, "dcs_climate:build/plate_mesh_1");
 
 		ShapedRecipeBuilder.shaped(BuildInit.SLAB_METAL.get(), 3)
 				.pattern("XXX")
@@ -1146,6 +1160,16 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_chal_lamp", has(BuildInit.CHAL_LAMP.get()))
 				.save(cons, "dcs_climate:build/chalcedony_lamp_glass");
 		
+		ShapedRecipeBuilder.shaped(BuildInit.CHAL_LAMP_TABLE_GLASS.get(), 1)
+				.pattern(" X ")
+				.pattern("XYX")
+				.pattern(" Z ")
+				.define('X', Tags.Items.GLASS)
+				.define('Y', BuildInit.CHAL_LAMP.get())
+				.define('Z', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_chal_lamp", has(BuildInit.CHAL_LAMP.get()))
+				.save(cons, "dcs_climate:build/chalcedony_lamp_table_glass");
+		
 		ShapedRecipeBuilder.shaped(BuildInit.DOWNLIGHT_WOOD.get(), 1)
 				.pattern(" X ")
 				.pattern("XYX")
@@ -1365,6 +1389,48 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(TagDC.ItemTag.SOAP_OIL)
 				.unlockedBy("has_andon_lantern", has(TagDC.ItemTag.HAC_ANDON))
 				.save(cons, "dcs_climate:build/andon_lantern_blieaching_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.WOODEN_WALL_BEECH.get(), 4)
+			.pattern("XX")
+			.pattern("XX")
+			.define('X', FoodInit.PLANK_BH_COMMON.get())
+			.unlockedBy("has_plank_beech", has(FoodInit.PLANK_BH_COMMON.get()))
+			.save(cons, "dcs_climate:core/wooden_wall_beech_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.HERRINGBONE_BEECH.get(), 4)
+			.pattern("XX")
+			.pattern("XX")
+			.define('X', BuildInit.WOODEN_WALL_BEECH.get())
+			.unlockedBy("has_wall_beech", has(BuildInit.WOODEN_WALL_BEECH.get()))
+			.save(cons, "dcs_climate:core/herringbone_beech_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.WOODEN_WALL_WALNUT.get(), 4)
+			.pattern("XX")
+			.pattern("XX")
+			.define('X', FoodInit.PLANK_BH_WALNUT.get())
+			.unlockedBy("has_plank_walnut", has(FoodInit.PLANK_BH_WALNUT.get()))
+			.save(cons, "dcs_climate:core/wooden_wall_walnut_0");
+	
+		ShapedRecipeBuilder.shaped(BuildInit.HERRINGBONE_WALNUT.get(), 4)
+			.pattern("XX")
+			.pattern("XX")
+			.define('X', BuildInit.WOODEN_WALL_WALNUT.get())
+			.unlockedBy("has_wall_walnut", has(BuildInit.WOODEN_WALL_WALNUT.get()))
+			.save(cons, "dcs_climate:core/herringbone_walnut_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.WOODEN_WALL_SWEET.get(), 4)
+			.pattern("XX")
+			.pattern("XX")
+			.define('X', FoodInit.PLANK_BH_SWEET.get())
+			.unlockedBy("has_plank_sweet", has(FoodInit.PLANK_BH_SWEET.get()))
+			.save(cons, "dcs_climate:core/wooden_wall_sweet_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.HERRINGBONE_SWEET.get(), 4)
+			.pattern("XX")
+			.pattern("XX")
+			.define('X', BuildInit.WOODEN_WALL_SWEET.get())
+			.unlockedBy("has_wall_sweet", has(BuildInit.WOODEN_WALL_SWEET.get()))
+			.save(cons, "dcs_climate:core/herringbone_sweet_0");
 
 		ShapedRecipeBuilder.shaped(BuildInit.CHAIN_GOLD.get(), 1)
 				.pattern("X")
@@ -1374,6 +1440,15 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('Y', Tags.Items.INGOTS_GOLD)
 				.unlockedBy("has_gold", has(Tags.Items.INGOTS_GOLD))
 				.save(cons, "dcs_climate:build/chain_gold_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.CHAIN_COPPER.get(), 1)
+				.pattern("X")
+				.pattern("Y")
+				.pattern("X")
+				.define('X', Tags.Items.NUGGETS_IRON)
+				.define('Y', Tags.Items.INGOTS_COPPER)
+				.unlockedBy("has_copper", has(Tags.Items.INGOTS_COPPER))
+				.save(cons, "dcs_climate:build/chain_copper_0");
 
 		ShapedRecipeBuilder.shaped(BuildInit.CHAIN_VINE.get(), 1)
 				.pattern("X")
@@ -1440,6 +1515,16 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('Z', Tags.Items.GLASS)
 				.unlockedBy("has_brass", has(Tags.Items.GLASS))
 				.save(cons, "dcs_climate:build/display_shelf_glass_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.VILLAGER_CHEST.get(), 1)
+				.pattern("XZX")
+				.pattern(" Y ")
+				.pattern("X X")
+				.define('X', Tags.Items.INGOTS_GOLD)
+				.define('Y', Tags.Items.CHESTS)
+				.define('Z', Tags.Items.GEMS_EMERALD)
+				.unlockedBy("has_emerald", has(Tags.Items.GEMS_EMERALD))
+				.save(cons, "dcs_climate:build/villager_chest_0");
 
 		ShapedRecipeBuilder.shaped(BuildInit.CARPET_LINEN.get(), 1)
 				.pattern("Y")
@@ -1547,6 +1632,105 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('Y', ItemTags.WOODEN_FENCES)
 				.unlockedBy("has_wooden_fence", has(ItemTags.WOODEN_FENCES))
 				.save(cons, "dcs_climate:build/table_wood_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.TABLE_ROUND.get(), 1)
+				.pattern("XXX")
+				.pattern(" Y ")
+				.pattern(" Y ")
+				.define('X', ItemTags.PLANKS)
+				.define('Y', ItemTags.WOODEN_FENCES)
+				.unlockedBy("has_wooden_fence", has(ItemTags.WOODEN_FENCES))
+				.save(cons, "dcs_climate:build/table_round_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.TABLE_ROUND_MUD.get(), 1)
+				.pattern("XXX")
+				.pattern(" Y ")
+				.pattern(" Y ")
+				.define('X', CoreInit.STONE_MUD.get())
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_stone_mud", has(CoreInit.STONE_MUD.get()))
+				.save(cons, "dcs_climate:build/table_round_mud_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.TABLE_ROUND_GYPSUM.get(), 1)
+				.pattern("XXX")
+				.pattern(" Y ")
+				.pattern(" Y ")
+				.define('X', CoreInit.STONE_GYPSUM.get())
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_stone_gypsum", has(CoreInit.STONE_GYPSUM.get()))
+				.save(cons, "dcs_climate:build/table_round_gypsum_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.TABLE_ROUND_SERPENTINE.get(), 1)
+				.pattern("XXX")
+				.pattern(" Y ")
+				.pattern(" Y ")
+				.define('X', CoreInit.STONE_SERPENTINE.get())
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_stone_serpentine", has(CoreInit.STONE_SERPENTINE.get()))
+				.save(cons, "dcs_climate:build/table_round_serpentine_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.TABLE_ROUND_GREISEN.get(), 1)
+				.pattern("XXX")
+				.pattern(" Y ")
+				.pattern(" Y ")
+				.define('X', CoreInit.STONE_GREISEN.get())
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_stone_greisen", has(CoreInit.STONE_GREISEN.get()))
+				.save(cons, "dcs_climate:build/table_round_greisen_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.TABLE_ROUND_SKARN.get(), 1)
+				.pattern("XXX")
+				.pattern(" Y ")
+				.pattern(" Y ")
+				.define('X', CoreInit.STONE_SKARN.get())
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_stone_skarn", has(CoreInit.STONE_SKARN.get()))
+				.save(cons, "dcs_climate:build/table_round_skarn_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.TABLE_ROUND_HORNFELS.get(), 1)
+				.pattern("XXX")
+				.pattern(" Y ")
+				.pattern(" Y ")
+				.define('X', CoreInit.STONE_HORNFELS.get())
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_stone_hornfels", has(CoreInit.STONE_HORNFELS.get()))
+				.save(cons, "dcs_climate:build/table_round_hornfels_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.TABLE_ROUND_MARBLE.get(), 1)
+				.pattern("XXX")
+				.pattern(" Y ")
+				.pattern(" Y ")
+				.define('X', CoreInit.STONE_MARBLE.get())
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_stone_marble", has(CoreInit.STONE_MARBLE.get()))
+				.save(cons, "dcs_climate:build/table_round_marble_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.TABLE_ROUND_SCHIST_BLUE.get(), 1)
+				.pattern("XXX")
+				.pattern(" Y ")
+				.pattern(" Y ")
+				.define('X', CoreInit.STONE_SCHIST_BLUE.get())
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_stone_schist_blue", has(CoreInit.STONE_SCHIST_BLUE.get()))
+				.save(cons, "dcs_climate:build/table_round_schist_blue_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.TABLE_ROUND_NETHER.get(), 1)
+				.pattern("XXX")
+				.pattern(" Y ")
+				.pattern(" Y ")
+				.define('X', CoreInit.STONE_SCHIST_NETHER.get())
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_stone_nether", has(CoreInit.STONE_SCHIST_NETHER.get()))
+				.save(cons, "dcs_climate:build/table_round_nether_0");
+		
+		ShapedRecipeBuilder.shaped(BuildInit.TABLE_ROUND_GRANITE.get(), 1)
+				.pattern("XXX")
+				.pattern(" Y ")
+				.pattern(" Y ")
+				.define('X', CoreInit.STONE_GRANITE.get())
+				.define('Y', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_stone_granite", has(CoreInit.STONE_GRANITE.get()))
+				.save(cons, "dcs_climate:build/table_round_granite_0");
 
 		ShapedRecipeBuilder.shaped(BuildInit.CHAIR_WOOD.get(), 1)
 				.pattern("  X")

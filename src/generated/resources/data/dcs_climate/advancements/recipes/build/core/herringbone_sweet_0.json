@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dcs_climate:core/herringbone_sweet_0"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wall_sweet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:build/wooden_wall_sweet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_wall_sweet",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dcs_climate:core/herringbone_sweet_0"
+    ]
+  }
+}

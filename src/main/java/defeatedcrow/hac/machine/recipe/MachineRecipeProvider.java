@@ -353,6 +353,14 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.define('Y', Items.IRON_BARS)
 				.unlockedBy("has_hopper_gold", has(MachineInit.HOPPER_GOLD.get()))
 				.save(cons, "dcs_climate:machine/hopper_filter_gold_2");
+		
+		ShapedRecipeBuilder.shaped(MachineInit.HOPPER_EXP.get(), 1)
+				.pattern("Y")
+				.pattern("X")
+				.define('X', Items.HOPPER)
+				.define('Y', TagDC.ItemTag.MANA_EXTRACT)
+				.unlockedBy("has_extract_mana", has(TagDC.ItemTag.MANA_EXTRACT))
+				.save(cons, "dcs_climate:machine/hopper_exp_1");
 
 		ShapedRecipeBuilder.shaped(MachineInit.CONVEYOR.get(), 8)
 				.pattern("XYX")

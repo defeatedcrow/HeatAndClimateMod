@@ -1,6 +1,5 @@
 {
   "values": [
-    "dcs_climate:build/mortar",
     "dcs_climate:build/flintbricks",
     "dcs_climate:build/flintbricks_white",
     "dcs_climate:build/flintbricks_black",
@@ -25,6 +24,7 @@
     "dcs_climate:build/claybricks_magenta",
     "dcs_climate:build/claybricks_orange",
     "dcs_climate:build/claybricks_white",
+    "dcs_climate:build/mortar",
     "#dcs_climate:building_stones/bricks",
     "#dcs_climate:building_stones/chiseled",
     "#dcs_climate:building_stones/linoleum",

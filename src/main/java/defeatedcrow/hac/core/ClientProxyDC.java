@@ -32,6 +32,7 @@ import defeatedcrow.hac.machine.client.gui.EnergyGeneratorScreen;
 import defeatedcrow.hac.machine.client.gui.FermentationJarScreen;
 import defeatedcrow.hac.machine.client.gui.FluidChamberScreen;
 import defeatedcrow.hac.machine.client.gui.HeatingChamberScreen;
+import defeatedcrow.hac.machine.client.gui.HopperEXPScreen;
 import defeatedcrow.hac.machine.client.gui.HopperFilterScreen;
 import defeatedcrow.hac.machine.client.gui.KichenBenchScreen;
 import defeatedcrow.hac.machine.client.gui.KichenOvenScreen;
@@ -109,6 +110,7 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(MachineInit.HOPPER_FILTER_MENU.get(), HopperFilterScreen::new);
 		MenuScreens.register(MachineInit.HOPPER_GOLD_MENU.get(), HopperFilterScreen::new);
 		MenuScreens.register(MachineInit.HOPPER_FILTER_GOLD_MENU.get(), HopperFilterScreen::new);
+		MenuScreens.register(MachineInit.HOPPER_EXP_MENU.get(), HopperEXPScreen::new);
 		MenuScreens.register(MachineInit.CONVEYOR_SORTER_MENU.get(), ConveyorSorterScreen::new);
 		MenuScreens.register(MachineInit.KICHEN_BENCH_MENU.get(), KichenBenchScreen::new);
 		MenuScreens.register(MachineInit.MONITOR_ANDON_MENU.get(), MonitorAndonScreen::new);

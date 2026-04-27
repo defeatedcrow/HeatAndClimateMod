@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/herringbone_beech"
+  },
+  "parent": "minecraft:block/cube_all"
+}

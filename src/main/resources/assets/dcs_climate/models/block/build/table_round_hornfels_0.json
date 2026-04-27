@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "base": "dcs_climate:block/build/plate_steel",
+    "top": "dcs_climate:block/ore/stone_hornfels"
+  },
+  "parent": "dcs_climate:block/dcs_table_round"
+}
