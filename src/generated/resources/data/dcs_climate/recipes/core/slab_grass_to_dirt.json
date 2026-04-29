@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:build/grass_slab"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/dirt_slab"
+  }
+}

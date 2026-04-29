@@ -20,33 +20,22 @@ public class RenderArmorDC implements IClientItemExtensions {
 	@Override
 	@NotNull
 	public HumanoidModel<?> getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel<?> original) {
-		if (EntityModelLoader.INSTANCE.MODEL_BOOTS != null && !DCUtil.isEmpty(stack) && stack.getItem() instanceof ArmorItemDC armor) {
-			switch (armor.getType()) {
-			case BOOTS:
-				return EntityModelLoader.INSTANCE.MODEL_BOOTS;
-			case SKIRT:
-				return EntityModelLoader.INSTANCE.MODEL_SKIRT;
-			case HAT:
-				return EntityModelLoader.INSTANCE.MODEL_HAT;
-			case HAIR:
-				return EntityModelLoader.INSTANCE.MODEL_HAIR;
-			case JACKET:
-				return EntityModelLoader.INSTANCE.MODEL_JACKET;
-			case TUNIC:
-				return EntityModelLoader.INSTANCE.MODEL_TUNIC;
-			case LEGGINS:
-				return EntityModelLoader.INSTANCE.MODEL_LEGGINS;
-			case SHIRT:
-				return EntityModelLoader.INSTANCE.MODEL_SHIRT;
-			case OVERSUITS:
-				return EntityModelLoader.INSTANCE.MODEL_OVERSUITS;
-			case SUITS:
-				return EntityModelLoader.INSTANCE.MODEL_SUITS;
-			case LONG:
-				return EntityModelLoader.INSTANCE.MODEL_DRESS;
-			default:
-				return original;
-			}
+		if (EntityModelLoader.MODEL_BOOTS != null && !DCUtil.isEmpty(stack) && stack.getItem() instanceof ArmorItemDC armor) {
+			return switch (armor.getType()) {
+			case BOOTS -> EntityModelLoader.MODEL_BOOTS;
+			case SKIRT -> EntityModelLoader.MODEL_SKIRT;
+			case HAT -> EntityModelLoader.MODEL_HAT;
+			case HAIR -> EntityModelLoader.MODEL_HAIR;
+			case HAIR2 -> EntityModelLoader.MODEL_HAIR2;
+			case JACKET -> EntityModelLoader.MODEL_JACKET;
+			case TUNIC -> EntityModelLoader.MODEL_TUNIC;
+			case LEGGINS -> EntityModelLoader.MODEL_LEGGINS;
+			case SHIRT -> EntityModelLoader.MODEL_SHIRT;
+			case OVERSUITS -> EntityModelLoader.MODEL_OVERSUITS;
+			case SUITS -> EntityModelLoader.MODEL_SUITS;
+			case LONG -> EntityModelLoader.MODEL_DRESS;
+			default -> original;
+			};
 		}
 		return original;
 	}
@@ -57,22 +46,22 @@ public class RenderArmorDC implements IClientItemExtensions {
 		HumanoidModel<?> rep = getHumanoidArmorModel(living, stack, slot, original);
 		if (rep != original) {
 			ForgeHooksClient.copyModelProperties(original, rep);
-			if (rep == EntityModelLoader.INSTANCE.MODEL_SKIRT || rep == EntityModelLoader.INSTANCE.MODEL_LEGGINS) {
+			if (rep == EntityModelLoader.MODEL_SKIRT || rep == EntityModelLoader.MODEL_LEGGINS) {
 				rep.body.visible = true;
 				rep.rightArm.visible = false;
 				rep.leftArm.visible = false;
 				rep.rightLeg.visible = true;
 				rep.leftLeg.visible = true;
 			}
-			if (rep == EntityModelLoader.INSTANCE.MODEL_SHIRT) {
+			if (rep == EntityModelLoader.MODEL_SHIRT) {
 				rep.body.visible = true;
 				rep.rightArm.visible = true;
 				rep.leftArm.visible = true;
 				rep.rightLeg.visible = false;
 				rep.leftLeg.visible = false;
 			}
-			if (rep == EntityModelLoader.INSTANCE.MODEL_SUITS || rep == EntityModelLoader.INSTANCE.MODEL_TUNIC ||
-					rep == EntityModelLoader.INSTANCE.MODEL_OVERSUITS || rep == EntityModelLoader.INSTANCE.MODEL_DRESS) {
+			if (rep == EntityModelLoader.MODEL_SUITS || rep == EntityModelLoader.MODEL_TUNIC ||
+			    rep == EntityModelLoader.MODEL_OVERSUITS || rep == EntityModelLoader.MODEL_DRESS) {
 				rep.body.visible = true;
 				rep.rightArm.visible = true;
 				rep.leftArm.visible = true;

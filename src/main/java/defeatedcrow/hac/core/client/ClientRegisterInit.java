@@ -505,6 +505,7 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(EntityModelLoader.SUITS.getLayerLocation(), () -> ModelThinArmor.createArmorMesh(new CubeDeformation(0.4F)));
 		event.registerLayerDefinition(EntityModelLoader.HAT.getLayerLocation(), ModelThinArmor::createHatMesh);
 		event.registerLayerDefinition(EntityModelLoader.HAIR.getLayerLocation(), ModelThinArmor::createHairMesh);
+		event.registerLayerDefinition(EntityModelLoader.HAIR2.getLayerLocation(), ModelThinArmor::createHair2Mesh);
 		event.registerLayerDefinition(EntityModelLoader.LONG.getLayerLocation(), ModelThinArmor::createLongMesh);
 		event.registerLayerDefinition(EntityModelLoader.SKIRT.getLayerLocation(), ModelThinArmor::createSkirtMesh);
 		event.registerLayerDefinition(EntityModelLoader.TUNIC.getLayerLocation(), ModelThinArmor::createTunicMesh);

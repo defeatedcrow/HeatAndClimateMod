@@ -36,7 +36,7 @@ public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 	protected String armorName;
 
 	public ArmorItemDC(String n, ArmorMaterial mat, EquipmentSlot slot, ModelType t) {
-		super(mat, slot, (new Item.Properties()).tab(CoreInit.CLOTH));
+		super(mat, slot, new Item.Properties().tab(CoreInit.CLOTH));
 		name = n;
 		type = t;
 		material = mat;
@@ -129,18 +129,7 @@ public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 	}
 
 	public enum ModelType {
-		BOOTS,
-		SKIRT,
-		LEGGINS,
-		SHIRT,
-		JACKET,
-		TUNIC,
-		OVERSUITS,
-		SUITS,
-		LONG,
-		HAT,
-		HAIR,
-		DEFAULT
+		BOOTS, SKIRT, LEGGINS, SHIRT, JACKET, TUNIC, OVERSUITS, SUITS, LONG, HAT, HAIR, HAIR2, DEFAULT
 	}
 
 }

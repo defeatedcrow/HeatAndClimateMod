@@ -450,6 +450,14 @@ public class CoreInit {
 	public static final RegistryObject<Item> SUITS_CLOTH_BLUE = regItem("suits_cloth_blue",
 	    () -> new ArmorItemDC("suits_cloth_blue", MaterialsDC.CLOTH, EquipmentSlot.LEGS, ArmorItemDC.ModelType.SUITS));
 
+	public static final RegistryObject<Item> HAIR_FLOWER_SNOWDROP = regItem("hair_flower_snowdrop",
+	    () -> new ArmorItemDC("hair_flower_snowdrop", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR2));
+	public static final RegistryObject<Item> HAIR_FLOWER_DAFFODIL = regItem("hair_flower_daffodil",
+	    () -> new ArmorItemDC("hair_flower_daffodil", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR2));
+	public static final RegistryObject<Item> HAIR_FLOWER_AMARYLLIS = regItem("hair_flower_amaryllis",
+	    () -> new ArmorItemDC("hair_flower_amaryllis", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR2));
+	public static final RegistryObject<Item> HAIR_FLOWER_LYCORIS = regItem("hair_flower_lycoris",
+	    () -> new ArmorItemDC("hair_flower_lycoris", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR2));
 	public static final RegistryObject<Item> HAIR_FLOWER_ASTER = regItem("hair_flower_aster",
 	    () -> new ArmorItemDC("hair_flower_aster", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_PYRETHRUM = regItem("hair_flower_pyrethrum",
@@ -474,6 +482,12 @@ public class CoreInit {
 	    () -> new ArmorItemDC("hair_flower_crocus", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_IRIS = regItem("hair_flower_iris",
 	    () -> new ArmorItemDC("hair_flower_iris", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_AMANA = regItem("hair_flower_amana",
+	    () -> new ArmorItemDC("hair_flower_amana", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR2));
+	public static final RegistryObject<Item> HAIR_FLOWER_FAWN = regItem("hair_flower_fawn",
+	    () -> new ArmorItemDC("hair_flower_fawn", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR2));
+	public static final RegistryObject<Item> HAIR_FLOWER_LILY = regItem("hair_flower_lily",
+	    () -> new ArmorItemDC("hair_flower_lily", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR2));
 	public static final RegistryObject<Item> HAIR_FLOWER_MALLOW = regItem("hair_flower_mallow",
 	    () -> new ArmorItemDC("hair_flower_mallow", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_TROPICAL = regItem("hair_flower_tropical",
@@ -484,6 +498,8 @@ public class CoreInit {
 	    () -> new ArmorItemDC("hair_flower_morning", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_OSMANTHUS = regItem("hair_flower_osmanthus",
 	    () -> new ArmorItemDC("hair_flower_osmanthus", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_JASMINE = regItem("hair_flower_jasmine",
+	    () -> new ArmorItemDC("hair_flower_jasmine", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR2));
 	public static final RegistryObject<Item> HAIR_FLOWER_SPIRANTHES = regItem("hair_flower_spiranthes",
 	    () -> new ArmorItemDC("hair_flower_spiranthes", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_CYMBIDIUM = regItem("hair_flower_cymbidium",
@@ -498,6 +514,10 @@ public class CoreInit {
 	    () -> new ArmorItemDC("hair_flower_monkshood", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
 	public static final RegistryObject<Item> HAIR_FLOWER_DAMASCHENA = regItem("hair_flower_damaschena",
 	    () -> new ArmorItemDC("hair_flower_damaschena", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR));
+	public static final RegistryObject<Item> HAIR_FLOWER_GARDENIA = regItem("hair_flower_gardenia",
+	    () -> new ArmorItemDC("hair_flower_gardenia", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR2));
+	public static final RegistryObject<Item> HAIR_FLOWER_IXORA = regItem("hair_flower_ixora",
+	    () -> new ArmorItemDC("hair_flower_ixora", MaterialsDC.AGATE, EquipmentSlot.HEAD, ArmorItemDC.ModelType.HAIR2));
 
 	public static final RegistryObject<Item> NULL_ITEM = regItem("null_item", () -> new NullItemDC("null_item"));
 	public static final RegistryObject<Item> ICON_HAC = regItem("icon_hac", () -> new NoTabItemDC("icon_hac"));

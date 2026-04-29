@@ -745,6 +745,16 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.define('X', BuildInit.SLAB_DIRT.get())
 				.unlockedBy("has_dirt_slab", has(BuildInit.SLAB_DIRT.get()))
 				.save(cons, "dcs_climate:core/dirt_from_slabs");
+		
+		ShapelessRecipeBuilder.shapeless(BuildInit.SLAB_DIRT.get(), 1)
+				.requires( BuildInit.SLAB_PATH.get())
+				.unlockedBy("has_slab_path", has(BuildInit.SLAB_PATH.get()))
+				.save(cons, "dcs_climate:core/slab_path_to_dirt");
+		
+		ShapelessRecipeBuilder.shapeless(BuildInit.SLAB_DIRT.get(), 1)
+				.requires(BuildInit.SLAB_GRASS.get())
+				.unlockedBy("has_slab_grass", has(BuildInit.SLAB_GRASS.get()))
+				.save(cons, "dcs_climate:core/slab_grass_to_dirt");
 
 		ShapedRecipeBuilder.shaped(BuildInit.SLAB_GRAVEL.get(), 6)
 				.pattern("XXX")
@@ -3106,6 +3116,38 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(Tags.Items.STRING)
 				.unlockedBy("has_cotton_cloth", has(TagDC.ItemTag.CLOTH_COTTON))
 				.save(cons, "dcs_climate:clothing/dress_maid");
+		
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_SNOWDROP.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.CROP_SNOWDROP)
+				.unlockedBy("has_crop_snowdrop", has(TagDC.ItemTag.CROP_SNOWDROP))
+				.save(cons, "dcs_climate:clothing/hair_flower_snowdrop_0");
+		
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_AMARYLLIS.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.CROP_AMARYLLIS)
+				.unlockedBy("has_crop_amaryllis", has(TagDC.ItemTag.CROP_AMARYLLIS))
+				.save(cons, "dcs_climate:clothing/hair_flower_amaryllis_0");
+		
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_DAFFODIL.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.CROP_DAFFODIL)
+				.unlockedBy("has_crop_daffodil", has(TagDC.ItemTag.CROP_DAFFODIL))
+				.save(cons, "dcs_climate:clothing/hair_flower_daffodil_0");
+		
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_LYCORIS.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.CROP_LYCORIS)
+				.unlockedBy("has_crop_lycoris", has(TagDC.ItemTag.CROP_LYCORIS))
+				.save(cons, "dcs_climate:clothing/hair_flower_lycoris_0");
 
 		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_ASTER.get(), 1)
 				.requires(CoreInit.PATTERN_HAT.get())
@@ -3202,6 +3244,30 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(TagDC.ItemTag.CROP_IRIS)
 				.unlockedBy("has_crop_iris", has(TagDC.ItemTag.CROP_IRIS))
 				.save(cons, "dcs_climate:clothing/hair_flower_iris_0");
+		
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_AMANA.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.CROP_AMANA)
+				.unlockedBy("has_crop_amana", has(TagDC.ItemTag.CROP_AMANA))
+				.save(cons, "dcs_climate:clothing/hair_flower_amana_0");
+		
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_FAWN.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.CROP_FAWN)
+				.unlockedBy("has_crop_fawn", has(TagDC.ItemTag.CROP_FAWN))
+				.save(cons, "dcs_climate:clothing/hair_flower_fawn_0");
+		
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_LILY.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.CROP_GOLDBAND)
+				.unlockedBy("has_crop_goldband", has(TagDC.ItemTag.CROP_GOLDBAND))
+				.save(cons, "dcs_climate:clothing/hair_flower_goldband_0");
 
 		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_MALLOW.get(), 1)
 				.requires(CoreInit.PATTERN_HAT.get())
@@ -3242,6 +3308,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(TagDC.ItemTag.CROP_OSMANTHUS)
 				.unlockedBy("has_crop_osmanthus", has(TagDC.ItemTag.CROP_OSMANTHUS))
 				.save(cons, "dcs_climate:clothing/hair_flower_osmanthus_0");
+		
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_JASMINE.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.CROP_JASMINE)
+				.unlockedBy("has_crop_jasmine", has(TagDC.ItemTag.CROP_JASMINE))
+				.save(cons, "dcs_climate:clothing/hair_flower_jasmine_0");
 
 		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_SPIRANTHES.get(), 1)
 				.requires(CoreInit.PATTERN_HAT.get())
@@ -3298,6 +3372,22 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.requires(TagDC.ItemTag.CROP_DAMASCHENA)
 				.unlockedBy("has_crop_damaschena", has(TagDC.ItemTag.CROP_DAMASCHENA))
 				.save(cons, "dcs_climate:clothing/hair_flower_damaschena_0");
+		
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_GARDENIA.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.CROP_GARDENIA)
+				.unlockedBy("has_crop_gardenia", has(TagDC.ItemTag.CROP_GARDENIA))
+				.save(cons, "dcs_climate:clothing/hair_flower_gardenia_0");
+		
+		ShapelessRecipeBuilder.shapeless(CoreInit.HAIR_FLOWER_IXORA.get(), 1)
+				.requires(CoreInit.PATTERN_HAT.get())
+				.requires(TagDC.ItemTag.CROP_SCHIMA)
+				.requires(Tags.Items.STRING)
+				.requires(TagDC.ItemTag.CROP_IXORA)
+				.unlockedBy("has_crop_ixora", has(TagDC.ItemTag.CROP_IXORA))
+				.save(cons, "dcs_climate:clothing/hair_flower_ixora_0");
 
 		clothColorRecipe(cons, CoreInit.HAT_LINEN.get(), CoreInit.HAT_LINEN_BLUE.get(), Tags.Items.DYES_BLUE, "blue", "linen_hat");
 		clothColorRecipe(cons, CoreInit.HAT_LINEN.get(), CoreInit.HAT_LINEN_PINK.get(), Tags.Items.DYES_PINK, "pink", "linen_hat");
