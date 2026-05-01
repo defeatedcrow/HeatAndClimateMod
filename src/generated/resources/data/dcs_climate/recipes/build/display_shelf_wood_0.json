@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Z": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "pattern": [
+    "XZX",
+    "XZX"
+  ],
+  "result": {
+    "item": "dcs_climate:build/display_shelf_wood"
+  }
+}

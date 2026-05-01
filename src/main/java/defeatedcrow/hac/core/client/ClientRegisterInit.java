@@ -391,6 +391,7 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(DisplayDoubleShelfTile.IRON.getLayerLocation(), BlockShelfIronModel::createBodyLayer);
 		event.registerLayerDefinition(DisplayDoubleShelfTile.LAB.getLayerLocation(), BlockShelfLabModel::createBodyLayer);
 		event.registerLayerDefinition(DisplayDoubleShelfTile.GLASS.getLayerLocation(), BlockShelfLabModel::createBodyLayer);
+		event.registerLayerDefinition(DisplayDoubleShelfTile.WOOD.getLayerLocation(), BlockShelfLabModel::createBodyLayer);
 
 		event.registerLayerDefinition(VillagerChestTile.NORMAL.getLayerLocation(), VillagerChestModel::createBodyLayer);
 

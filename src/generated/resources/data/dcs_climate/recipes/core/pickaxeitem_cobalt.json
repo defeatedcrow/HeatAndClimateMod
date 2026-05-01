@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/cobalt_alloy"
+    },
+    "Y": {
+      "tag": "forge:ingots/titanium"
+    }
+  },
+  "pattern": [
+    "  X",
+    "YYX",
+    "  X"
+  ],
+  "result": {
+    "item": "dcs_climate:main/pickaxe_cobalt"
+  }
+}

@@ -1,6 +1,7 @@
 {
   "values": [
     "dcs_climate:main/shovel_brass",
-    "dcs_climate:main/shovel_steel"
+    "dcs_climate:main/shovel_steel",
+    "dcs_climate:main/shovel_cobalt"
   ]
 }

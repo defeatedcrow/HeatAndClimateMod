@@ -1,11 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_flower_gardenia": {
+    "has_brass": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:crops/gardenia_flower"
+            "items": [
+              "minecraft:iron_bars"
+            ]
           }
         ]
       },
@@ -13,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:clothing/hair_flower_gardenia_0"
+        "recipe": "dcs_climate:build/display_shelf_wood_0"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_flower_gardenia",
+      "has_brass",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:clothing/hair_flower_gardenia_0"
+      "dcs_climate:build/display_shelf_wood_0"
     ]
   }
 }

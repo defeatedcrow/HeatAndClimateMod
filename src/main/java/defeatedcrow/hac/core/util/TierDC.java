@@ -12,18 +12,11 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
 public enum TierDC implements Tier {
-	FLINT(1, 128, 4.0F, 1.0F, 4, () -> {
-		return Ingredient.of(TagDC.ItemTag.GEM_FLINT);
-	}),
-	BRASS(2, 450, 6.0F, 2.0F, 8, () -> {
-		return Ingredient.of(TagDC.ItemTag.INGOT_BRASS);
-	}),
-	STEEL(3, 750, 8.0F, 5.0F, 6, () -> {
-		return Ingredient.of(TagDC.ItemTag.INGOT_STEEL);
-	}),
-	AGATE(2, 33, 5.0F, 2.0F, 18, () -> {
-		return Ingredient.of(TagDC.ItemTag.GEM_AGATES);
-	});
+	FLINT(1, 128, 4.0F, 1.0F, 4, () -> Ingredient.of(TagDC.ItemTag.GEM_FLINT)),
+	BRASS(2, 450, 6.0F, 2.0F, 8, () -> Ingredient.of(TagDC.ItemTag.INGOT_BRASS)),
+	STEEL(3, 750, 8.0F, 5.0F, 6, () -> Ingredient.of(TagDC.ItemTag.INGOT_STEEL)),
+	COBALT(4, 2400, 11.0F, 8.0F, 12, () -> Ingredient.of(TagDC.ItemTag.INGOT_COBALT)),
+	AGATE(2, 33, 5.0F, 2.0F, 18, () -> Ingredient.of(TagDC.ItemTag.GEM_AGATES));
 
 	private final int level;
 	private final int uses;
@@ -82,18 +75,13 @@ public enum TierDC implements Tier {
 	@Override
 	@Nullable
 	public TagKey<Block> getTag() {
-		switch (this) {
-		case AGATE:
-			return BlockTags.NEEDS_DIAMOND_TOOL;
-		case FLINT:
-			return BlockTags.NEEDS_STONE_TOOL;
-		case BRASS:
-			return BlockTags.NEEDS_IRON_TOOL;
-		case STEEL:
-			return BlockTags.NEEDS_DIAMOND_TOOL;
-		default:
-			return BlockTags.NEEDS_IRON_TOOL;
-
-		}
+		return switch (this) {
+		case AGATE -> BlockTags.NEEDS_DIAMOND_TOOL;
+		case FLINT -> BlockTags.NEEDS_STONE_TOOL;
+		case BRASS -> BlockTags.NEEDS_IRON_TOOL;
+		case STEEL -> BlockTags.NEEDS_DIAMOND_TOOL;
+		case COBALT -> BlockTags.NEEDS_DIAMOND_TOOL;
+		default -> BlockTags.NEEDS_IRON_TOOL;
+		};
 	}
 }

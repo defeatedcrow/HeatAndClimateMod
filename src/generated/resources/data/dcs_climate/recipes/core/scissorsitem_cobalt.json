@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/cobalt_alloy"
+    }
+  },
+  "pattern": [
+    "X ",
+    " X"
+  ],
+  "result": {
+    "item": "dcs_climate:main/scissors_cobalt"
+  }
+}

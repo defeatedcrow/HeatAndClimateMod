@@ -135,9 +135,15 @@
   "item.dcs_climate.main.pickaxe_steel":"鋼のツルハシ",
   "item.dcs_climate.main.shovel_steel":"鋼のシャベル",
   "item.dcs_climate.main.hoe_steel":"鋼の鍬",
+  "item.dcs_climate.main.axe_cobalt":"コバルト合金の斧",
+  "item.dcs_climate.main.pickaxe_cobalt":"コバルト合金のツルハシ",
+  "item.dcs_climate.main.shovel_cobalt":"コバルト合金のシャベル",
+  "item.dcs_climate.main.hoe_cobalt":"コバルト合金の鍬",
   "item.dcs_climate.main.scythe_flint":"火打ち石の大鎌",
   "item.dcs_climate.main.scythe_brass":"真鍮の大鎌",
   "item.dcs_climate.main.scythe_steel":"鋼の大鎌",
+  "item.dcs_climate.main.scythe_cobalt":"コバルト合金の大鎌",
+  "item.dcs_climate.main.scissors_cobalt":"コバルト合金のハサミ",
   "item.dcs_climate.main.harpoon_flint":"火打ち石の銛",
   "item.dcs_climate.main.harpoon_steel":"鋼の銛",
 
@@ -2016,6 +2022,7 @@
   "block.dcs_climate.build.toolhook":"アイテム壁掛けフック",
   "block.dcs_climate.build.display_shelf":"飾り棚",
   "block.dcs_climate.build.display_shelf_iron":"飾り棚(メタルラック)",
+  "block.dcs_climate.build.display_shelf_wood":"飾り棚(木目)",
   "block.dcs_climate.build.display_shelf_lab":"飾り棚(ラボ)",
   "block.dcs_climate.build.display_shelf_glass":"飾り棚(ガラス戸)",
   
@@ -2391,6 +2398,7 @@
   "dcs.tip.fishdata.luck":"水に投げ込むとリリースできます。",
 
   "dcs.tip.scythe":"右クリック: HaC作物を範囲収穫します。",
+  "dcs.tip.pickaxe_cobalt":"岩盤をスニーク+右クリックすると、耐久値を消費して岩盤を回収できます。",
   "dcs.tip.bellow":"スニーク+右クリック: 燃焼チャンバーに風を送ります。",
   "dcs.tip.mosquito_coil":"インベントリに入れておくと、ファントムや虫を撃退します。",
   "dcs.tip.seedbag.desc":"ランダムに種を入手します:",

@@ -52,11 +52,15 @@ public class DisplayDoubleShelfTile extends ItemDisplayTile implements IRenderBl
 		if (block == BuildInit.DISPLAY_SHELF_GLASS.get()) {
 			return GLASS;
 		}
+		if (block == BuildInit.DISPLAY_SHELF_WOOD.get()) {
+			return WOOD;
+		}
 		return IRON;
 	}
 
 	public static final EntityRenderData IRON = new EntityRenderData("tile/display_shelf_iron", 1F, -0.5F);
 	public static final EntityRenderData LAB = new EntityRenderData("tile/display_shelf_lab", 1F, -0.5F);
 	public static final EntityRenderData GLASS = new EntityRenderData("tile/display_shelf_glass", 1F, -0.5F);
+	public static final EntityRenderData WOOD = new EntityRenderData("tile/display_shelf_wood", 1F, -0.5F);
 
 }

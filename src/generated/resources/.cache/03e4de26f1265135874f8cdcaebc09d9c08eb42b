@@ -1,4 +1,4 @@
-// 1.19.2	2026-04-21T00:11:08.4690986	Tags for minecraft:item
+// 1.19.2	2026-05-01T17:31:46.2573926	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 05c427bae6c42fa3468413da8a796681e5a20abb data/dcs_climate/tags/items/battery_items.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
@@ -783,6 +783,7 @@ c91aa78c9f89369dbec3a9a51e2d2addd000bae5 data/forge/tags/items/seeds/water_spina
 591b90b4edad3d173f654fe53c148d3687ca43a3 data/forge/tags/items/seeds/white_grape.json
 64ec576859c6d78c8071cb3d70f341a044fbc54a data/forge/tags/items/seeds/wild_grape.json
 313af14f1af6d0c218245a71349dc96df40ec794 data/forge/tags/items/seeds/zizania.json
+fc6723cf57dbbe205fa25c542007e4907277ea5c data/forge/tags/items/shears.json
 d008aafae145de3f68713ad4c0dc017f11ade104 data/forge/tags/items/soaps.json
 69a564f2648b5b46ce683320ba14ad5b2e6ea771 data/forge/tags/items/soaps/magic.json
 6e36aac6c9c4b9b6b6ce4dcde367d4e978fa6ac4 data/forge/tags/items/soaps/olive.json
@@ -876,16 +877,16 @@ a8126db29823278515c04aa0e10ec16e72069f1d data/forge/tags/items/strings/grass.jso
 8eb6f1210033508ee101009c0a0dc07a5465b8b2 data/forge/tags/items/strings/plants.json
 f9b6121e25995fb640ab5460dbe57435a7de1b60 data/forge/tags/items/strings/tree.json
 f9e2731ef013b8cbb4cb5e48fa5e33c399ee1489 data/forge/tags/items/strings/wool.json
-328a165aff818adfcd9eb9a7e98c7d5e4c4276a1 data/forge/tags/items/tools/axes.json
+259122a76846b27367563a645cd6ec96bcad84b3 data/forge/tags/items/tools/axes.json
 ec25bf6f3a902db76c0c4deda002323da66a2b75 data/forge/tags/items/tools/cutlery.json
 ea5453bb23292a045408ae8581a1bcde5230ac72 data/forge/tags/items/tools/firestarter.json
 8ed42e5ac951de30a559332697c59cf47482997c data/forge/tags/items/tools/fishing_rods.json
 e269b8cd8da37045c2db781d6f4861a803e874e6 data/forge/tags/items/tools/harpoon.json
-bcc189e8978c2f13896ee9fbdb769e5607f2c78f data/forge/tags/items/tools/hoes.json
+de55e3bc141a6c7c652839513d1088f25d8307a3 data/forge/tags/items/tools/hoes.json
 6eadd2a1cebdbfc8dcdc4aa725d299ebe129cc62 data/forge/tags/items/tools/lure.json
-de98ccc62c06e18b0ecd6dffbc6a7d8200610517 data/forge/tags/items/tools/pickaxes.json
-19809fc0844957cf77a803014c483aa57b4aed91 data/forge/tags/items/tools/scythes.json
-5018bd14cf5bd3ce6f4889a2bfa5d703e6a6c2ce data/forge/tags/items/tools/shovels.json
+1b097378589fa8865bc999833d8acf029eabb58d data/forge/tags/items/tools/pickaxes.json
+dcd6038aa809310c3c5948b42d0a4e270dc6ec0a data/forge/tags/items/tools/scythes.json
+b09813e5f532ede20063601054ad2a9512b194b8 data/forge/tags/items/tools/shovels.json
 f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/items/weed.json
 dbf9023ad17b399103b373c5e2c87f229008aeb6 data/minecraft/tags/items/arrows.json
 a993675cd6d4b3ad999000d25441be803db3a7b4 data/minecraft/tags/items/boats.json

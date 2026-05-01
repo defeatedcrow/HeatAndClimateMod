@@ -135,9 +135,15 @@
   "item.dcs_climate.main.pickaxe_steel":"Steel Pickaxe",
   "item.dcs_climate.main.shovel_steel":"Steel Shovel",
   "item.dcs_climate.main.hoe_steel":"Steel Hoe",
+  "item.dcs_climate.main.axe_cobalt":"Cobalt Alloy Axe",
+  "item.dcs_climate.main.pickaxe_cobalt":"Cobalt Alloy Pickaxe",
+  "item.dcs_climate.main.shovel_cobalt":"Cobalt Alloy Shovel",
+  "item.dcs_climate.main.hoe_cobalt":"Cobalt Alloy Hoe",
   "item.dcs_climate.main.scythe_flint":"Flint Scythe",
   "item.dcs_climate.main.scythe_brass":"Brass Scythe",
   "item.dcs_climate.main.scythe_steel":"Steel Scythe",
+  "item.dcs_climate.main.scythe_cobalt":"Cobalt Alloy Scyth",
+  "item.dcs_climate.main.scissors_cobalt":"Cobalt Alloy Scissors",
   "item.dcs_climate.main.harpoon_flint":"Fishing Harpoon",
   "item.dcs_climate.main.harpoon_steel":"Steel Harpoon",
 
@@ -2014,6 +2020,7 @@
   "block.dcs_climate.build.toolhook":"Wall Hook",
   "block.dcs_climate.build.display_shelf":"Display Shelf",
   "block.dcs_climate.build.display_shelf_iron":"Metal Display Shelf",
+  "block.dcs_climate.build.display_shelf_wood":"Wooden Display Shelf",
   "block.dcs_climate.build.display_shelf_lab":"White Display Shelf",
   "block.dcs_climate.build.display_shelf_glass":"Glass Display Shelf",
   
@@ -2388,7 +2395,8 @@
   "dcs.tip.fishdata.day":"Daytime",
   "dcs.tip.fishdata.luck":"You can release this fish by throwing it into the water.",
 
-  "dcs.tip.scythe":"Right-click: Harvest HaC crops within range.",
+  "dcs.tip.scythe":"Right-click: Harvests HaC crops within range.",
+  "dcs.tip.pickaxe_cobalt":"Right-click to Bedrock: Drops it as an item.",
   "dcs.tip.bellow":"Sneaking + Right-click: Blow air into the heating chambers.",
   "dcs.tip.mosquito_coil":"When in the player inventory, it repels phantoms and bugs.",
   "dcs.tip.seedbag.desc":"Randomly obtain one of the following seeds:",

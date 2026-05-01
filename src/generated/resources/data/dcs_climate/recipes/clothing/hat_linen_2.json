@@ -5,16 +5,13 @@
       "item": "dcs_climate:main/pattern_paper_wear"
     },
     {
-      "tag": "forge:crops/schima"
+      "tag": "forge:animal_feeds/hay"
     },
     {
       "tag": "forge:string"
-    },
-    {
-      "tag": "forge:crops/gardenia_flower"
     }
   ],
   "result": {
-    "item": "dcs_climate:main/hair_flower_gardenia"
+    "item": "dcs_climate:main/hat_linen"
   }
 }

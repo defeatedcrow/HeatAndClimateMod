@@ -79,6 +79,7 @@ public class MillsDC {
 		list1.add(new Crops("kukui", FoodInit.CROP_EU_KUKUI, FoodInit.FOOD_PLANT_OIL, FoodInit.FOOD_PRESS_CAKE));
 		list1.add(new Crops("cassava", FoodInit.CROP_EU_CASSAVA, FoodInit.FOOD_STARCH, FoodInit.DUST_PLANT));
 		list1.add(new Crops("taro", FoodInit.CROP_AR_TARO, FoodInit.FOOD_STARCH, FoodInit.DUST_PLANT));
+		list1.add(new Crops("gardenia", FoodInit.CROP_RU_GARDENIA, () -> Items.YELLOW_DYE, FoodInit.DUST_PLANT));
 
 		list2.add(new Miscs("ore_iron", 1, () -> Tags.Items.ORES_IRON, () -> Items.RAW_IRON, () -> Items.RAW_IRON));
 		list2.add(new Miscs("ore_copper", 1, () -> Tags.Items.ORES_COPPER, () -> Items.RAW_COPPER, () -> Items.RAW_COPPER));
@@ -122,24 +123,10 @@ public class MillsDC {
 		sieveRecipe = list3.build();
 	}
 
-	public record Crops(
-	    String name,
-	    Supplier<Item> input,
-	    Supplier<Item> outputPri,
-	    Supplier<Item> outputSec) {}
+	public record Crops(String name, Supplier<Item> input, Supplier<Item> outputPri, Supplier<Item> outputSec) {}
 
-	public record Miscs(
-	    String name,
-	    int outputCount,
-	    Supplier<TagKey<Item>> input,
-	    Supplier<Item> outputPri,
-	    Supplier<Item> outputSec) {}
+	public record Miscs(String name, int outputCount, Supplier<TagKey<Item>> input, Supplier<Item> outputPri, Supplier<Item> outputSec) {}
 
-	public record Sieve(
-	    String name,
-	    int outputCount,
-	    Supplier<TagKey<Item>> input,
-	    Supplier<Item> outputPri,
-	    Supplier<Item> outputSec) {}
+	public record Sieve(String name, int outputCount, Supplier<TagKey<Item>> input, Supplier<Item> outputPri, Supplier<Item> outputSec) {}
 
 }

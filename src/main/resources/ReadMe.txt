@@ -619,8 +619,8 @@
  　一定量の流体を貯められるタンクです。
   Tanks that can store fluid.
 
-  ・ ポリタンク / Portable Can : Max 18 Bucket
-  ・ IBC : Max 1000 Bucket
+  ・ ポリタンク / Portable Can : Max 18 Bucket (18,000 mB)
+  ・ IBC : Max 1000 Bucket (1,000,000 mB)
 
  ● パイプ / Brass Pipe
 
@@ -657,6 +657,14 @@
 
   『水頭』に応じた広さの耕地に水を与えます。
   It wets an area of ​​farmland according to the "water head".
+  
+ ● 取水ます / Water Intake Basin
+ 
+  ブロックの内部または真上に水源ブロックがあるとき、内部タンクに水を回収します。
+  When there is a water source block inside or directly above it, it will collect water in its internal tank.
+  
+  パイプを使って水を取り出すことが出来ます。
+  You can use a pipe to extract water from it.
 
 
 ****************************************************************************************************
@@ -678,6 +686,14 @@
    - キャリーバッグ / Luggage... Owner Register ○ : Inventory Retention ○
    - ロッカー / Locker ... Owner Register ○ : Inventory Retention ○
    - キャビネット / Cabinet ... Owner Register ○ : IInventory Retention ×
+   
+   ・ 村人チェスト / Villager's Chest
+
+    チェストを中心に16x16ブロックの範囲内にいる村人エンティティのインベントリをサーチして、余剰なアイテムを回収します。
+    This tool searches the inventory of villager entities within a 16x16 block radius centered on a chest, and collects any "excess" items.
+  
+    "余剰"とは、アイテムの最大スタック数の半分よりも多い場合です。
+    "Excess" refers to a number greater than half of the maximum stack size.
 
  ● 特殊ホッパー / Special Hopper
 
@@ -702,6 +718,12 @@
 
     輸送速度が速いホッパーです。 1個/tick の速度でアイテムを輸送します。
     A hopper with fast transportation speed. Transports items at a rate of 1 item/tick.
+    
+   ・ 経験値ホッパー / EXP Hopper
+
+    アイテムを回収せず、経験値オーブのみを集めます。集めた経験値が100集まるごとに経験値をアイテム化して搬出します。
+    This hopper collects only experience orbs, without collecting any items. 
+    It converts the collected experience points into items every time it reaches 100.
 
  ● コンベア / Conveyor
 
@@ -748,13 +770,18 @@
  add: 木製の建材
  add: 銅の鎖
  add: 薄い金属床
+ add: 飾り棚(木目)
  add: EXPの結晶オーブ
  add: EXPホッパー
  add: 村人チェスト
  add: カフェテーブル
  add: ガラスのテーブルランプ
+ add: コバルト合金のツール
  change: バニラ作物の成長促進仕様を変更し、温度、湿度、肥料を個別に適用するようにした。
  change: 赤青のカードを水中で使用するとよりたくさんの魚が出るようにした。
+ change: 赤青のカードが発生させる雷を視覚効果のみにした。
+ change: 麦わら帽子を干し草やワラで作成できるようにした。
+ change: buildingクリエイティブタブのアイテムの並び順を変更した。
  fix: 赤青のカードを水中で使用しても魚が出にくい。
  ex: JEIプラグインにBiome図鑑を追加。
  

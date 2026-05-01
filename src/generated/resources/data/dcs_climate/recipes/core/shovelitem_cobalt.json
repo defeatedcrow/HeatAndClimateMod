@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/cobalt_alloy"
+    },
+    "Y": {
+      "tag": "forge:ingots/titanium"
+    }
+  },
+  "pattern": [
+    "YYX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/shovel_cobalt"
+  }
+}
