@@ -20,6 +20,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
@@ -101,7 +102,9 @@ public class BatterySmallBlock extends EnergyMachineBlock {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+		MutableComponent tex1 = Component.translatable("dcs.tip.energy.battery").withStyle(ChatFormatting.LIGHT_PURPLE).withStyle(ChatFormatting.BOLD);
+		list.add(tex1);
 		if (!DCUtil.isEmpty(item) && item.hasTag()) {
 			if (item.getTag().contains(TagKeyDC.ENERGY)) {
 				int en = item.getTag().getInt(TagKeyDC.ENERGY);
@@ -114,13 +117,14 @@ public class BatterySmallBlock extends EnergyMachineBlock {
 			tex3.append("0 FE");
 			list.add(tex3);
 		}
-		MutableComponent tex1 = Component.translatable("dcs.tip.energy.battery").withStyle(ChatFormatting.LIGHT_PURPLE).withStyle(ChatFormatting.BOLD);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.battery.desc");
 		if (flag) {
-			list.add(tex1);
 			list.add(tex2);
-		} else {
-			list.add(tex1);
 		}
 	}
 

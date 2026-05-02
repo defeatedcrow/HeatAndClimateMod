@@ -23,6 +23,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -148,18 +149,20 @@ public class ItemAspiratorBlock extends RedstoneMachineBlock {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.energy.machine").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD);
+		list.add(tex1);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.machine.desc");
 		MutableComponent tex3 = Component.translatable("dcs.tip.energy.rs_signal_machine");
 		MutableComponent tex4 = Component.translatable("dcs.tip.energy.item_aspirator.desc").withStyle(ChatFormatting.GRAY);
 		if (flag) {
-			list.add(tex1);
 			list.add(tex2);
 			list.add(tex3);
 			list.add(tex4);
-		} else {
-			list.add(tex1);
 		}
 	}
 

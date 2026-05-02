@@ -31,6 +31,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -116,7 +117,7 @@ public class RodRed extends MagicJewelBase {
 						BlockState state = level.getBlockState(pos);
 						if (state != null && !state.isAir()) {
 							BlockHitResult res = new BlockHitResult(vec, dir, pos, true);
-							state.getBlock().use(state, level, pos, player, hand, res);
+							state.use(serverLevel, player, hand, res);
 							MsgEffectToC.sendToClient(serverLevel, player.getEyePosition(), 41);
 							MsgEffectToC.sendToClient(serverLevel, pos, 41);
 							this.onConsumeResource(player, charm);
@@ -134,7 +135,7 @@ public class RodRed extends MagicJewelBase {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tier = Component.translatable(getColor().name() + " " + item.getRarity());
 		tier.withStyle(getColor().chatColor);
 		list.add(tier);
@@ -146,7 +147,10 @@ public class RodRed extends MagicJewelBase {
 		MutableComponent itemName = Component.translatable("dcs.tip.rod.name." + getColor().toString());
 		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
+	}
 
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		if (flag) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.rod.desc." + getColor().toString());
 			list.add(itemTip);

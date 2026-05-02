@@ -27,7 +27,7 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 
 	public CropBlockBrassica(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, 0).setValue(DCState.WILD, false));
 	}
 
 	@Override
@@ -44,13 +44,12 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_0")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_1")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_2")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/brassica_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/brassica_" + getSpeciesName(cropTier) + "_f")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/brassica_" + getSpeciesName(cropTier) + "_d")));
+		return ImmutableList
+		    .of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_0")), new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_1")),
+		        new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_2")),
+		        new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/brassica_" + getSpeciesName(cropTier) + "_c")),
+		        new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/brassica_" + getSpeciesName(cropTier) + "_f")),
+		        new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/brassica_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
@@ -72,7 +71,7 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(3)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, 3).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
@@ -90,20 +89,22 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 	@Override
 	public BlockState getFlowerState(BlockState state) {
 		if (getTier() == CropTier.WILD)
-			return state.setValue(DCState.STAGE6, Integer.valueOf(3));
-		return state.setValue(DCState.STAGE6, Integer.valueOf(4));
+			return state.setValue(DCState.STAGE6, 3);
+		return state.setValue(DCState.STAGE6, 4);
 	}
 
 	@Override
 	public int getContinuousRegistance(CropTier t) {
-		switch (t) {
-		case RARE:
-			return 3;
-		case EPIC:
-			return 3;
-		default:
-			return 2;
-		}
+		return switch (t) {
+		case RARE -> 3;
+		case EPIC -> 3;
+		default -> 2;
+		};
+	}
+
+	@Override
+	public float wildCropSpreadChance() {
+		return 0.03F;
 	}
 
 	@Override
@@ -118,56 +119,41 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 
 	@Override
 	public ItemLike getSeedItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.BLOCK_BR_GREEN.get();
-		case RARE:
-			return FoodInit.BLOCK_BR_CABBAGE.get();
-		case EPIC:
-			return FoodInit.BLOCK_BR_RADISH.get();
-		default:
-			return FoodInit.BLOCK_BR_RAPESEED.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.BLOCK_BR_GREEN.get();
+		case RARE -> FoodInit.BLOCK_BR_CABBAGE.get();
+		case EPIC -> FoodInit.BLOCK_BR_RADISH.get();
+		default -> FoodInit.BLOCK_BR_RAPESEED.get();
+		};
 	}
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_BR_GREEN.get();
-		case RARE:
-			return FoodInit.CROP_BR_CABBAGE.get();
-		case EPIC:
-			return FoodInit.CROP_BR_RADISH.get();
-		default:
-			return FoodInit.CROP_BR_RAPESEED.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_BR_GREEN.get();
+		case RARE -> FoodInit.CROP_BR_CABBAGE.get();
+		case EPIC -> FoodInit.CROP_BR_RADISH.get();
+		default -> FoodInit.CROP_BR_RAPESEED.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_BR_RAPESEED.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_BR_GREEN.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_BR_CABBAGE.get());
-		case EPIC:
-			return Optional.of(FoodInit.BLOCK_BR_RADISH.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_BR_RAPESEED.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_BR_GREEN.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_BR_CABBAGE.get());
+		case EPIC -> Optional.of(FoodInit.BLOCK_BR_RADISH.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
-		default:
-			return ImmutableList.of(SoilType.FARMLAND);
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
+		default -> ImmutableList.of(SoilType.FARMLAND);
+		};
 	}
 
 	@Override
@@ -187,22 +173,18 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("PLAINS");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("PLAINS");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("DRY");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("DRY");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

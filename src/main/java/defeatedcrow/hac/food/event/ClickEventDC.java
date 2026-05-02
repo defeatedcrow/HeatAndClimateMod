@@ -83,9 +83,7 @@ public class ClickEventDC {
 							BlockState next = FertileBlock.fertileSoil(f + 1, below);
 							level.setBlockAndUpdate(event.getPos().below(), next);
 							if (player != null) {
-								item.hurtAndBreak(1, player, (c) -> {
-								    c.broadcastBreakEvent(event.getHand());
-								});
+								item.hurtAndBreak(1, player, c -> { c.broadcastBreakEvent(event.getHand()); });
 							}
 							level.playSound(player, event.getPos(), SoundEvents.HOE_TILL, SoundSource.BLOCKS, 0.5F, 1.0F);
 							level.levelEvent(1505, event.getPos(), 0);
@@ -109,9 +107,7 @@ public class ClickEventDC {
 							level.setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
 						}
 						if (player != null) {
-							item.hurtAndBreak(1, player, (c) -> {
-							    c.broadcastBreakEvent(event.getHand());
-							});
+							item.hurtAndBreak(1, player, c -> { c.broadcastBreakEvent(event.getHand()); });
 						}
 						level.playSound(player, event.getPos(), SoundEvents.HOE_TILL, SoundSource.BLOCKS, 0.5F, 1.0F);
 						level.levelEvent(1505, event.getPos(), 0);
@@ -147,9 +143,7 @@ public class ClickEventDC {
 				if (consume) {
 					level.playSound(player, event.getPos(), SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);
 					if (player != null) {
-						item.hurtAndBreak(1, player, (p) -> {
-						    p.broadcastBreakEvent(event.getHand());
-						});
+						item.hurtAndBreak(1, player, p -> { p.broadcastBreakEvent(event.getHand()); });
 					}
 					event.setUseItem(Result.ALLOW);
 				}
@@ -157,7 +151,7 @@ public class ClickEventDC {
 		}
 	}
 
-	@SubscribeEvent
+	//@SubscribeEvent
 	public static void onClickEntity(PlayerInteractEvent.EntityInteract event) {
 		Player player = event.getEntity();
 		Entity target = event.getTarget();

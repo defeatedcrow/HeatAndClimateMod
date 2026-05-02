@@ -2303,6 +2303,7 @@
   "dcs.tip.process.error.no_3":"Process Error: Tertiary product item is stuck!",
   "dcs.tip.process.error.no_4":"Process Error: Product fluid is stuck!",
 
+  "dcs.tip.energy.heatsource":"[HEAT SOURCE]",
   "dcs.tip.energy.battery":"[BATTERY]",
   "dcs.tip.energy.battery.desc":"This machine stores energy and transmits and receives energy to and from adjacent machines and cables.",
   "dcs.tip.energy.generator":"[GENERATOR]",

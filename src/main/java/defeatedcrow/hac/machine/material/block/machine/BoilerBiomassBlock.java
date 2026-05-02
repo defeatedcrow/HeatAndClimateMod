@@ -26,6 +26,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
@@ -109,23 +110,24 @@ public class BoilerBiomassBlock extends HeatSourceBlock {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent TEMP1 = DCHeatTier.BOIL.localize().withStyle(ChatFormatting.GOLD);
 		MutableComponent TEMP2 = DCHeatTier.KILN.localize().withStyle(ChatFormatting.RED);
 		MutableComponent tex1 = Component.translatable("dcs.tip.chamber.temp").append(TEMP1).append(" - ").append(TEMP2);
-		MutableComponent tex2 = Component.translatable("dcs.tip.chamber.wind");
 		MutableComponent tex3 = Component.translatable("dcs.tip.energy.powersource").withStyle(ChatFormatting.AQUA).withStyle(ChatFormatting.BOLD);
+		list.add(tex3);
+		list.add(tex1);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+		MutableComponent tex2 = Component.translatable("dcs.tip.chamber.wind");
 		MutableComponent tex4 = Component.translatable("dcs.tip.energy.powersource.desc");
 		MutableComponent tex5 = Component.translatable("dcs.tip.boiler");
 		if (flag) {
-			list.add(tex1);
 			list.add(tex2);
-			list.add(tex3);
 			list.add(tex4);
 			list.add(tex5);
-		} else {
-			list.add(tex1);
-			list.add(tex3);
 		}
 	}
 
@@ -139,17 +141,15 @@ public class BoilerBiomassBlock extends HeatSourceBlock {
 			ItemStack held = player.getItemInHand(hand);
 			if (level.isClientSide) {
 				return InteractionResult.SUCCESS;
-			} else {
-				if (!DCUtil.isEmpty(held) && FluidUtil.getFluidHandler(held.copy()).isPresent()) {
-					if (DCFluidUtil.exchangeFluid(level, player.position(), tank.tank, held)) {
-						tile.setChanged();
-						player.getInventory().setChanged();
-						level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1.0F, 1.2F);
-					}
-					return InteractionResult.CONSUME;
-				} else {
-					super.use(state, level, pos, player, hand, hitRes);
+			} else if (!DCUtil.isEmpty(held) && FluidUtil.getFluidHandler(held.copy()).isPresent()) {
+				if (DCFluidUtil.exchangeFluid(level, player.position(), tank.tank, held)) {
+					tile.setChanged();
+					player.getInventory().setChanged();
+					level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1.0F, 1.2F);
 				}
+				return InteractionResult.CONSUME;
+			} else {
+				super.use(state, level, pos, player, hand, hitRes);
 			}
 		}
 		return InteractionResult.sidedSuccess(level.isClientSide);

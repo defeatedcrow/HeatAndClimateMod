@@ -12,10 +12,15 @@ import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WeightedPressurePlateBlock;
@@ -34,6 +39,7 @@ public class PlayerPressurePlateBlock extends WeightedPressurePlateBlock impleme
 		name = n;
 	}
 
+	@Override
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 		if (entity instanceof Player) {
 			super.entityInside(state, level, pos, entity);
@@ -51,8 +57,9 @@ public class PlayerPressurePlateBlock extends WeightedPressurePlateBlock impleme
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(new JsonModelDC("minecraft:block/pressure_plate_up", ImmutableMap.of("texture", "dcs_climate:block/metal/gemblock_chalcedony")),
-				new JsonModelDC("minecraft:block/pressure_plate_down", ImmutableMap.of("texture", "dcs_climate:block/metal/gemblock_chalcedony")));
+		return ImmutableList
+		    .of(new JsonModelDC("minecraft:block/pressure_plate_up", ImmutableMap.of("texture", "dcs_climate:block/metal/gemblock_chalcedony")),
+		        new JsonModelDC("minecraft:block/pressure_plate_down", ImmutableMap.of("texture", "dcs_climate:block/metal/gemblock_chalcedony")));
 	}
 
 	@Override
@@ -94,6 +101,12 @@ public class PlayerPressurePlateBlock extends WeightedPressurePlateBlock impleme
 	@Override
 	public int getToolTier() {
 		return 0;
+	}
+
+	@Override
+	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+		MutableComponent tex1 = Component.translatable("dcs.tip.energy.indicator").withStyle(ChatFormatting.GREEN).withStyle(ChatFormatting.BOLD);
+		list.add(tex1);
 	}
 
 }

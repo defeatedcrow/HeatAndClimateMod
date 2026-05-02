@@ -36,7 +36,7 @@ public class ItemPickaxeDC extends PickaxeItem implements IItemDC, ITierItem {
 	final TagKey<Item> tag;
 
 	public ItemPickaxeDC(TierDC tierIn, TagKey<Item> pair) {
-		super(tierIn, (int) tierIn.getAttackDamageBonus(), -2.8F, new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE));
+		super(tierIn, 0, -2.8F, new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE));
 		tier = tierIn;
 		tag = pair;
 	}

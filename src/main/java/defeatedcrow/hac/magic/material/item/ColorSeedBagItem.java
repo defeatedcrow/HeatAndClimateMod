@@ -27,6 +27,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -95,10 +96,14 @@ public class ColorSeedBagItem extends ItemDC {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tier = Component.literal(color.name());
 		tier.withStyle(color.chatColor);
 		list.add(tier);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		if (flag) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.seedbag.desc");
 			list.add(itemTip);

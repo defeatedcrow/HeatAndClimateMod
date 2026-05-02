@@ -15,7 +15,7 @@ public enum TierDC implements Tier {
 	FLINT(1, 128, 4.0F, 1.0F, 4, () -> Ingredient.of(TagDC.ItemTag.GEM_FLINT)),
 	BRASS(2, 450, 6.0F, 2.0F, 8, () -> Ingredient.of(TagDC.ItemTag.INGOT_BRASS)),
 	STEEL(3, 750, 8.0F, 5.0F, 6, () -> Ingredient.of(TagDC.ItemTag.INGOT_STEEL)),
-	COBALT(4, 2400, 11.0F, 8.0F, 12, () -> Ingredient.of(TagDC.ItemTag.INGOT_COBALT)),
+	COBALT(4, 2400, 10.0F, 12.0F, 12, () -> Ingredient.of(TagDC.ItemTag.INGOT_COBALT)),
 	AGATE(2, 33, 5.0F, 2.0F, 18, () -> Ingredient.of(TagDC.ItemTag.GEM_AGATES));
 
 	private final int level;

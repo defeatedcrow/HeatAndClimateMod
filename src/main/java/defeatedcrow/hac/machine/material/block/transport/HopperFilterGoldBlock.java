@@ -16,6 +16,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
@@ -97,17 +98,18 @@ public class HopperFilterGoldBlock extends HopperBaseBlockDC {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.hopper.gold").withStyle(ChatFormatting.YELLOW);
 		MutableComponent tex2 = Component.translatable("dcs.tip.hopper.filter").withStyle(ChatFormatting.YELLOW);
+		list.add(tex1);
+		list.add(tex2);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex3 = Component.translatable("dcs.tip.hopper.filter.desc").withStyle(ChatFormatting.GRAY);
 		if (flag) {
-			list.add(tex1);
-			list.add(tex2);
 			list.add(tex3);
-		} else {
-			list.add(tex1);
-			list.add(tex2);
 		}
 	}
 

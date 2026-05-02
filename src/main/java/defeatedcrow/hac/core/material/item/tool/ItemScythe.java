@@ -58,7 +58,7 @@ public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 		super(new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE), pair);
 		tier = tierIn;
 		ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", tier.getAttackDamageBonus() + 3.0D, AttributeModifier.Operation.ADDITION));
+		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", tier.getAttackDamageBonus() + 5.0D, AttributeModifier.Operation.ADDITION));
 		builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -3.0D, AttributeModifier.Operation.ADDITION));
 		this.defaultModifiers = builder.build();
 	}
@@ -82,9 +82,7 @@ public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 	@Override
 	public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity liv) {
 		if (!level.isClientSide && !state.is(BlockTags.FIRE)) {
-			stack.hurtAndBreak(1, liv, (entity) -> {
-				entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-			});
+			stack.hurtAndBreak(1, liv, entity -> { entity.broadcastBreakEvent(EquipmentSlot.MAINHAND); });
 		}
 		return state.is(TagDC.BlockTag.SCYTHE_BREAKABLE) || state.getBlock() instanceof IForgeShearable ? true : super.mineBlock(stack, level, state, pos, liv);
 	}
@@ -120,8 +118,7 @@ public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 				for (LivingEntity liv : list) {
 					if (liv instanceof IForgeShearable target2)
 						if (target2.isShearable(dummy, playerIn.level, pos)) {
-							List<ItemStack> drops = target2.onSheared(playerIn, dummy, entity.getLevel(), pos,
-									EnchantmentHelper.getTagEnchantmentLevel(Enchantments.BLOCK_FORTUNE, stack));
+							List<ItemStack> drops = target2.onSheared(playerIn, dummy, entity.getLevel(), pos, EnchantmentHelper.getTagEnchantmentLevel(Enchantments.BLOCK_FORTUNE, stack));
 							RandomSource rand = playerIn.level.random;
 							drops.forEach(d -> {
 								ItemEntity ent = liv.spawnAtLocation(d, 1.0F);

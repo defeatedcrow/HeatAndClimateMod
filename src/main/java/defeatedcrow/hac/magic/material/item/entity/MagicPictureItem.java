@@ -28,6 +28,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -69,7 +70,7 @@ public abstract class MagicPictureItem extends ItemDC implements IEntityItem, IC
 		Vec3 vec = context.getClickLocation();
 		if (!face.getAxis().isVertical() && canSpawnHere(level, pos.relative(face))) {
 			vec = Vec3.atBottomCenterOf(pos);
-			Vec3 place = new Vec3(vec.x + (face.getStepX() * 0.5125D), vec.y, vec.z + (face.getStepZ() * 0.5125D));
+			Vec3 place = new Vec3(vec.x + face.getStepX() * 0.5125D, vec.y, vec.z + face.getStepZ() * 0.5125D);
 			ItemStack item = context.getItemInHand();
 			if (!level.isClientSide)
 				spawnPlacementEntity(level, player, place, face.getOpposite(), item);
@@ -89,8 +90,7 @@ public abstract class MagicPictureItem extends ItemDC implements IEntityItem, IC
 		if (getType() == null)
 			return false;
 		Entity entity = getType().create(level);
-		if (entity instanceof MagicPictureEntity) {
-			MagicPictureEntity pic = (MagicPictureEntity) entity;
+		if (entity instanceof MagicPictureEntity pic) {
 			BlockPos pos = new BlockPos(vec);
 			pic.setPos(vec);
 			pic.setXRot(0F);
@@ -122,13 +122,17 @@ public abstract class MagicPictureItem extends ItemDC implements IEntityItem, IC
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tier = Component.literal(color.isBasic ? color.name() + " " + item.getRarity() : color.name());
 		tier.withStyle(color.chatColor);
 		list.add(tier);
 		MutableComponent itemName = Component.translatable("dcs.tip.picture.name." + name);
 		itemName.withStyle(color.chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		if (flag) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.picture.desc." + name);
 			list.add(itemTip);

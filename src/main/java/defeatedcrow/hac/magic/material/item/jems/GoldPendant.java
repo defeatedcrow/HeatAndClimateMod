@@ -28,12 +28,14 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -146,8 +148,7 @@ public class GoldPendant extends MagicJewelBase {
 				List<ItemStack> drops = Block.getDrops(state, server, pos, server.getBlockEntity(pos));
 				if (!drops.isEmpty()) {
 					for (ItemStack item : drops) {
-						Optional<SmeltingRecipe> recipe = server.getServer().getRecipeManager().getAllRecipesFor(RecipeType.SMELTING).stream()
-								.filter((r) -> matchRecipe(r, item)).findFirst();
+						Optional<SmeltingRecipe> recipe = server.getServer().getRecipeManager().getAllRecipesFor(RecipeType.SMELTING).stream().filter(r -> matchRecipe(r, item)).findFirst();
 						recipe.ifPresentOrElse(r -> {
 							ItemStack out = r.getResultItem();
 							ItemEntity dropE = new ItemEntity(owner.level, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, out.copy());
@@ -180,24 +181,27 @@ public class GoldPendant extends MagicJewelBase {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tier = Component.translatable(getColor().name() + " " + item.getRarity());
 		tier.withStyle(getColor().chatColor);
 		list.add(tier);
 		MutableComponent itemName = Component.translatable("dcs.tip.pendant_g.name." + getColor().toString());
 		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
+		if (ConfigCommonBuilder.INSTANCE.enMagicCost.get()) {
+			if (!getColor().isBlue) {
+				int i = this.getMagicCostEXP(item);
+				MutableComponent cost = Component.literal("COST: " + i + "Xp");
+				list.add(cost);
+			}
+		}
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		if (flag) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.pendant_g.desc." + getColor().toString());
 			list.add(itemTip);
-
-			if (ConfigCommonBuilder.INSTANCE.enMagicCost.get()) {
-				if (!getColor().isBlue) {
-					int i = this.getMagicCostEXP(item);
-					MutableComponent cost = Component.literal("COST: " + i + "Xp");
-					list.add(cost);
-				}
-			}
 		}
 	}
 

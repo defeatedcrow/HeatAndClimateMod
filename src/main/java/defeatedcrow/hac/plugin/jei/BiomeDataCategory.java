@@ -227,7 +227,12 @@ public class BiomeDataCategory implements IRecipeCategory<Biome> {
 		ResourceLocation key = biomeReg.getKey(recipe);
 
 		MutableComponent name = Component.translatable("biome." + key.getNamespace() + "." + key.getPath());
-		font.draw(stack, name, 22, 10, 0xFF000000);
+		if (name != null && !name.getString().isBlank()) {
+			font.draw(stack, name, 22, 10, 0xFF000000);
+		} else {
+			Component.literal(key.getPath());
+			font.draw(stack, name, 22, 10, 0xFF000000);
+		}
 
 		String mod_id = key.getNamespace();
 		font.draw(stack, mod_id, 22, 22, 0xFF000000);

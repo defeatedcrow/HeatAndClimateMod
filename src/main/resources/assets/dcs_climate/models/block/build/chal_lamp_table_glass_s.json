@@ -35,7 +35,6 @@
 		{
 			"from": [7.5, 2, 7.5],
 			"to": [8.5, 8, 8.5],
-			"shade": false,
 			"faces": {
 				"north": {"uv": [0, 9, 1, 15], "texture": "#base"},
 				"east": {"uv": [0, 9, 1, 15], "texture": "#base"},
@@ -48,6 +47,7 @@
 		{
 			"from": [6, 8, 6],
 			"to": [10, 12, 10],
+			"shade": false,
 			"faces": {
 				"north": {"uv": [0, 0, 4, 4], "texture": "#lamp"},
 				"east": {"uv": [0, 0, 4, 4], "texture": "#lamp"},

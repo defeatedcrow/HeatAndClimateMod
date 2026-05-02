@@ -13,7 +13,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
 public class AltimeterItem extends CraftingItemDC {
 
@@ -22,8 +23,8 @@ public class AltimeterItem extends CraftingItemDC {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
-		if (!DCUtil.isEmpty(item)) {
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		if (!DCUtil.isEmpty(stack)) {
 			ClimateCore.proxy.getClientPlayer().ifPresent(player -> {
 				MutableComponent tasteName = Component.translatable("dcs.tip.altitude").append(": " + player.getBlockY());
 				tasteName.withStyle(ChatFormatting.AQUA);

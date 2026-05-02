@@ -25,11 +25,11 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.entity.animal.horse.Llama;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -72,12 +72,22 @@ public class EmptyPackItem extends MaterialItemDC {
 				BlockState state = level.getBlockState(pos);
 				if (state.getFluidState().is(Fluids.WATER) && state.getFluidState().isSource()) {
 					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
-					ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_WATER.get()), false);
-					return InteractionResultHolder.sidedSuccess(ret.copy(), level.isClientSide());
+					ItemStack ret = new ItemStack(FoodInit.FOOD_WATER.get());
+					if (!player.level.isClientSide) {
+						ItemEntity drop = new ItemEntity(player.level, player.getX(), player.getY(), player.getZ(), ret);
+						player.level.addFreshEntity(drop);
+						itemstack.shrink(1);
+					}
+					return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
 				} else if (state.getFluidState().is(CoreInit.SPARKLING.getStillFluid().get())) {
 					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
-					ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_SPARKLING.get()), false);
-					return InteractionResultHolder.sidedSuccess(ret.copy(), level.isClientSide());
+					ItemStack ret = new ItemStack(FoodInit.FOOD_SPARKLING.get());
+					if (!player.level.isClientSide) {
+						ItemEntity drop = new ItemEntity(player.level, player.getX(), player.getY(), player.getZ(), ret);
+						player.level.addFreshEntity(drop);
+						itemstack.shrink(1);
+					}
+					return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
 				}
 			}
 		}
@@ -88,11 +98,13 @@ public class EmptyPackItem extends MaterialItemDC {
 	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand) {
 		ItemStack itemstack = player.getItemInHand(hand);
 		if (entity instanceof Cow || entity instanceof Llama || entity instanceof Goat) {
-			if (!player.level.isClientSide) {
-				BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
-				if (!((Animal) entity).isBaby()) {
-					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
-					ItemStack ret = ItemUtils.createFilledResult(itemstack, player, new ItemStack(FoodInit.FOOD_MILK.get()), false);
+			BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
+			if (!((Animal) entity).isBaby()) {
+				player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
+				if (!player.level.isClientSide) {
+					ItemEntity drop = new ItemEntity(player.level, player.getX(), player.getY(), player.getZ(), new ItemStack(FoodInit.FOOD_MILK.get()));
+					player.level.addFreshEntity(drop);
+					itemstack.shrink(1);
 				}
 			}
 			return net.minecraft.world.InteractionResult.sidedSuccess(player.level.isClientSide);

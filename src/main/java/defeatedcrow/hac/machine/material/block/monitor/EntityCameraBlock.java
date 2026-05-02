@@ -23,6 +23,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -44,17 +45,15 @@ public class EntityCameraBlock extends BlockDC {
 
 	public EntityCameraBlock() {
 		super(getProp());
-		this.registerDefaultState(this.stateDefinition.any()
-				.setValue(DCState.FACING, Direction.NORTH)
-				.setValue(DCState.LIT_LEVEL, Integer.valueOf(0)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.LIT_LEVEL, 0));
 		name = "entity_camera";
 	}
-
 
 	public static BlockBehaviour.Properties getProp() {
 		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SNOW).sound(SoundType.STONE).strength(0.3F).randomTicks().noOcclusion();
 	}
 
+	@Override
 	public void onPlace(BlockState state, Level level, BlockPos pos, BlockState state2, boolean b) {
 		if (!level.isClientSide)
 			level.scheduleTick(pos, state.getBlock(), 4);
@@ -172,14 +171,16 @@ public class EntityCameraBlock extends BlockDC {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.energy.indicator").withStyle(ChatFormatting.GREEN).withStyle(ChatFormatting.BOLD);
+		list.add(tex1);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex2 = Component.translatable("dcs.tip.entity_camera").withStyle(ChatFormatting.GRAY);
 		if (ClimateCore.proxy.keyShiftPushed()) {
-			list.add(tex1);
 			list.add(tex2);
-		} else {
-			list.add(tex1);
 		}
 	}
 

@@ -19,7 +19,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 public class EXPSolidOrbItem extends MagicMaterialItemDC {
@@ -47,7 +47,7 @@ public class EXPSolidOrbItem extends MagicMaterialItemDC {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		MutableComponent t1 = Component.translatable("dcs.tip.exp_solid_orb").withStyle(ChatFormatting.AQUA);
 		list.add(t1);
 	}

@@ -89,7 +89,13 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	/* 基本データ */
 	protected static BlockBehaviour.Properties getProp(CropTier t) {
-		return BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP).offsetType(state -> (DCState.getBool(state, DCState.WILD) ? OffsetType.XZ : OffsetType.NONE));
+		return BlockBehaviour.Properties
+		    .of(Material.PLANT)
+		    .noCollission()
+		    .randomTicks()
+		    .instabreak()
+		    .sound(SoundType.CROP)
+		    .offsetType(state -> !DCState.getBool(state, DCState.WILD) && state.getBlock() instanceof CropBaseVine ? OffsetType.NONE : OffsetType.XZ);
 	}
 
 	@Override
@@ -181,7 +187,11 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	}
 
 	public void spreadWildCrop(Level world, BlockPos pos, BlockState state, int chance) {
-		if (DCState.getBool(state, DCState.WILD) && getTier() == CropTier.WILD && ConfigCommonBuilder.INSTANCE.enWildOvergrouth.get() && chance > 0) {
+		if (DCState.getBool(state, DCState.WILD) && getTier() == CropTier.WILD && !DCState.getBool(world.getBlockState(pos), DCState.DOUBLE) && ConfigCommonBuilder.INSTANCE.enWildOvergrouth.get() && chance > 0) {
+			// 密度チェック
+			List<BlockPos> posList = BlockPos.betweenClosedStream(pos.offset(-2, 0, -2), pos.offset(2, 1, 2)).filter(p -> isSameCrop(world, p, state)).toList();
+			if (posList.size() > 7)
+				return;
 			float chance2 = this.wildCropSpreadChance() * (25F / chance);
 			for (Direction dir : Direction.Plane.HORIZONTAL) {
 				BlockPos pos2 = pos.relative(dir);
@@ -195,6 +205,10 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 				}
 			}
 		}
+	}
+
+	private static boolean isSameCrop(Level world, BlockPos pos, BlockState target) {
+		return world.getBlockState(pos) != null && world.getBlockState(pos).getBlock() == target.getBlock() && !DCState.getBool(world.getBlockState(pos), DCState.DOUBLE);
 	}
 
 	public void checkAndDropBlock(Level world, BlockPos pos, BlockState state) {

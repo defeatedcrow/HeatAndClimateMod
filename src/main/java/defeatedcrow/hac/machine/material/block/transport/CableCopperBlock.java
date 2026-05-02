@@ -11,6 +11,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.machine.material.MachineInit;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -94,8 +95,7 @@ public class CableCopperBlock extends EnergyCableBlock {
 	@Override
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-		return !level.isClientSide ? createTickerHelper(type, MachineInit.CABLE_COPPER_TILE.get(), CableCopperTile::serverTick) : createTickerHelper(type, MachineInit.CABLE_COPPER_TILE.get(),
-				CableCopperTile::clientTick);
+		return !level.isClientSide ? createTickerHelper(type, MachineInit.CABLE_COPPER_TILE.get(), CableCopperTile::serverTick) : createTickerHelper(type, MachineInit.CABLE_COPPER_TILE.get(), CableCopperTile::clientTick);
 	}
 
 	@Override
@@ -103,9 +103,9 @@ public class CableCopperBlock extends EnergyCableBlock {
 		Rarity rare = stack.getRarity();
 		MutableComponent tex2 = Component.translatable("dcs.tip.flow.tier1");
 		if (rare == Rarity.UNCOMMON) {
-			tex2 = Component.translatable("dcs.tip.flow.tier2");
+			tex2 = Component.translatable("dcs.tip.flow.tier2").withStyle(ChatFormatting.YELLOW);
 		} else if (rare == Rarity.RARE) {
-			tex2 = Component.translatable("dcs.tip.flow.tier3");
+			tex2 = Component.translatable("dcs.tip.flow.tier3").withStyle(ChatFormatting.AQUA);
 		}
 		list.add(tex2);
 		super.appendHoverText(stack, level, list, flag);

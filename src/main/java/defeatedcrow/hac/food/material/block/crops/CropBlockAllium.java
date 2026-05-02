@@ -101,12 +101,12 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_0")),
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_1")),
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_2")),
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_c")),
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_f")),
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_d")));
+		return ImmutableList
+		    .of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_0")), new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_1")),
+		        new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_2")),
+		        new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_c")),
+		        new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_f")),
+		        new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/allium_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
@@ -139,6 +139,11 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 	@Override
 	public int getContinuousRegistance(CropTier t) {
 		return 4;
+	}
+
+	@Override
+	public float wildCropSpreadChance() {
+		return 0.03F;
 	}
 
 	@Override

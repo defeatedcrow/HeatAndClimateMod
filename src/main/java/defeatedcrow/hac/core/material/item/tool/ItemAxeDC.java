@@ -14,7 +14,7 @@ public class ItemAxeDC extends AxeItem implements IItemDC, ITierItem {
 	final TagKey<Item> tag;
 
 	public ItemAxeDC(TierDC tierIn, TagKey<Item> pair) {
-		super(tierIn, tierIn.getAttackDamageBonus(), -3.0F, new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE));
+		super(tierIn, 6, -3.2F, new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE));
 		tier = tierIn;
 		tag = pair;
 	}

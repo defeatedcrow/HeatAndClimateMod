@@ -29,6 +29,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -82,53 +83,52 @@ public class CropAspiratorBlock extends RedstoneMachineBlock {
 				MsgEffectToC.sendToClient(level, pos, 10);
 				// 前方 9x9x9
 				for (int y = 4; y > -4; y--) {
-					BlockPos.betweenClosedStream(new AABB(pos.relative(dir, 4).above(y)).move(0.5D, 0.0D, 0.5D).inflate(4.5D, 0.0D, 4.5D))
-							.filter((p) -> level.getBlockState(p) != null && !level.getBlockState(p).isAir()).forEach(p -> {
-								BlockState st = level.getBlockState(p);
-								if (st.getBlock() instanceof IClimateCrop crop) {
-									if (crop.canHarvest(st)) {
-										dropTargetItem(level, pos.relative(dir.getOpposite()), crop.getCropItems(st, 0));
-										crop.afterHarvest(level, p, st);
-									}
-								} else if (st.getBlock() instanceof StemBlock) {
+					BlockPos.betweenClosedStream(new AABB(pos.relative(dir, 4).above(y)).move(0.5D, 0.0D, 0.5D).inflate(4.5D, 0.0D, 4.5D)).filter(p -> level.getBlockState(p) != null && !level.getBlockState(p).isAir()).forEach(p -> {
+						BlockState st = level.getBlockState(p);
+						if (st.getBlock() instanceof IClimateCrop crop) {
+							if (crop.canHarvest(st)) {
+								dropTargetItem(level, pos.relative(dir.getOpposite()), crop.getCropItems(st, 0));
+								crop.afterHarvest(level, p, st);
+							}
+						} else if (st.getBlock() instanceof StemBlock) {
 
-								} else if (st.is(TagDC.BlockTag.CROP_MELON) || st.is(TagDC.BlockTag.CROP_PUMPKIN)) {
-									if (level.getBlockState(p.below()).getBlock() == st.getBlock()) {
-										List<ItemStack> drops = ImmutableList.of(new ItemStack(st.getBlock()));
-										if (dropTargetItem(level, pos.relative(dir.getOpposite()), drops)) {
-											level.setBlock(p, Blocks.AIR.defaultBlockState(), 3);
-										}
-									}
-								} else if (st.getBlock() instanceof CropBlock crop) {
-									if (crop.isMaxAge(st)) {
-										LootContext.Builder builder = (new LootContext.Builder(level))
-												.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p))
-												.withParameter(LootContextParams.BLOCK_STATE, st)
-												.withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(p))
-												.withOptionalParameter(LootContextParams.THIS_ENTITY, owner)
-												.withParameter(LootContextParams.TOOL, held);
-										dropTargetItem(level, pos.relative(dir.getOpposite()), st.getDrops(builder));
-										level.setBlock(p, crop.defaultBlockState(), 3);
-									}
-								} else if (st.is(TagDC.BlockTag.CROP_TALL)) {
-									if (level.getBlockState(p.below()).getBlock() == st.getBlock()) {
-										List<ItemStack> drops = ImmutableList.of(new ItemStack(st.getBlock()));
-										dropTargetItem(level, pos.relative(dir.getOpposite()), drops);
-										level.setBlock(p, Blocks.AIR.defaultBlockState(), 3);
-									}
-								} else if (st.getBlock() instanceof BonemealableBlock crop && !HarvestBlackList.contains(st.getBlock())) {
-									if (!crop.isValidBonemealTarget(level, p, st, false)) {
-										LootContext.Builder builder = (new LootContext.Builder(level))
-												.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p))
-												.withParameter(LootContextParams.BLOCK_STATE, st)
-												.withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(p))
-												.withOptionalParameter(LootContextParams.THIS_ENTITY, owner)
-												.withParameter(LootContextParams.TOOL, held);
-										dropTargetItem(level, pos.relative(dir.getOpposite()), st.getDrops(builder));
-										level.setBlock(p, Blocks.AIR.defaultBlockState(), 3);
-									}
+						} else if (st.is(TagDC.BlockTag.CROP_MELON) || st.is(TagDC.BlockTag.CROP_PUMPKIN)) {
+							if (level.getBlockState(p.below()).getBlock() == st.getBlock()) {
+								List<ItemStack> drops = ImmutableList.of(new ItemStack(st.getBlock()));
+								if (dropTargetItem(level, pos.relative(dir.getOpposite()), drops)) {
+									level.setBlock(p, Blocks.AIR.defaultBlockState(), 3);
 								}
-							});
+							}
+						} else if (st.getBlock() instanceof CropBlock crop) {
+							if (crop.isMaxAge(st)) {
+								LootContext.Builder builder = new LootContext.Builder(level)
+								    .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p))
+								    .withParameter(LootContextParams.BLOCK_STATE, st)
+								    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(p))
+								    .withOptionalParameter(LootContextParams.THIS_ENTITY, owner)
+								    .withParameter(LootContextParams.TOOL, held);
+								dropTargetItem(level, pos.relative(dir.getOpposite()), st.getDrops(builder));
+								level.setBlock(p, crop.defaultBlockState(), 3);
+							}
+						} else if (st.is(TagDC.BlockTag.CROP_TALL)) {
+							if (level.getBlockState(p.below()).getBlock() == st.getBlock()) {
+								List<ItemStack> drops = ImmutableList.of(new ItemStack(st.getBlock()));
+								dropTargetItem(level, pos.relative(dir.getOpposite()), drops);
+								level.setBlock(p, Blocks.AIR.defaultBlockState(), 3);
+							}
+						} else if (st.getBlock() instanceof BonemealableBlock crop && !HarvestBlackList.contains(st.getBlock())) {
+							if (!crop.isValidBonemealTarget(level, p, st, false)) {
+								LootContext.Builder builder = new LootContext.Builder(level)
+								    .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p))
+								    .withParameter(LootContextParams.BLOCK_STATE, st)
+								    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(p))
+								    .withOptionalParameter(LootContextParams.THIS_ENTITY, owner)
+								    .withParameter(LootContextParams.TOOL, held);
+								dropTargetItem(level, pos.relative(dir.getOpposite()), st.getDrops(builder));
+								level.setBlock(p, Blocks.AIR.defaultBlockState(), 3);
+							}
+						}
+					});
 				}
 			}
 		}
@@ -217,18 +217,20 @@ public class CropAspiratorBlock extends RedstoneMachineBlock {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.energy.machine").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD);
+		list.add(tex1);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.machine.desc");
 		MutableComponent tex3 = Component.translatable("dcs.tip.energy.rs_signal_machine");
 		MutableComponent tex4 = Component.translatable("dcs.tip.energy.crop_aspirator.desc").withStyle(ChatFormatting.GRAY);
 		if (flag) {
-			list.add(tex1);
 			list.add(tex2);
 			list.add(tex3);
 			list.add(tex4);
-		} else {
-			list.add(tex1);
 		}
 	}
 

@@ -23,6 +23,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -51,8 +52,7 @@ public class StormglassBlock extends EntityBlockDC {
 	public StormglassBlock(String s) {
 		super(getProp());
 		name = s;
-		this.registerDefaultState(this.stateDefinition.any()
-				.setValue(WATERLOGGED, Boolean.valueOf(false)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
 	}
 
 	public static BlockBehaviour.Properties getProp() {
@@ -170,14 +170,16 @@ public class StormglassBlock extends EntityBlockDC {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.energy.indicator").withStyle(ChatFormatting.GREEN).withStyle(ChatFormatting.BOLD);
+		list.add(tex1);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex2 = Component.translatable("dcs.tip.stormglass").withStyle(ChatFormatting.GRAY);
 		if (ClimateCore.proxy.keyShiftPushed()) {
-			list.add(tex1);
 			list.add(tex2);
-		} else {
-			list.add(tex1);
 		}
 	}
 }

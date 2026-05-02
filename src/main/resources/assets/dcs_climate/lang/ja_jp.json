@@ -2312,6 +2312,7 @@
   "dcs.tip.conveyor.sorter.desc":"フィルターにセットしたアイテムによって、アイテムの送り先を切替えます。",
   "dcs.tip.conveyor.sorter.desc2":"送り先が見つからないとき、コンベアの下に落とします。",
 
+  "dcs.tip.energy.heatsource":"[熱源]",
   "dcs.tip.energy.battery":"[充電池]",
   "dcs.tip.energy.battery.desc":"エネルギーを貯蔵し、隣接するマシンやケーブルとエネルギーの送受信を行います。",
   "dcs.tip.energy.generator":"[発電機]",

@@ -36,12 +36,14 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -188,7 +190,7 @@ public class SilverPendant extends MagicJewelBase {
 	public boolean onUsing(ServerPlayer owner, ItemStack charm) {
 		MagicColor c = getColor();
 		if (c.isBlue) {
-			double d = 8D + (4D * charm.getCount());
+			double d = 8D + 4D * charm.getCount();
 			DCLogger.debugInfoLog("### TargetAI Jammer activated ###");
 			List<LivingEntity> list = owner.level.getEntitiesOfClass(LivingEntity.class, owner.getBoundingBox().inflate(d), EntitySelector.ENTITY_STILL_ALIVE);
 			if (list != null && !list.isEmpty()) {
@@ -214,7 +216,7 @@ public class SilverPendant extends MagicJewelBase {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tier = Component.translatable(getColor().name() + " " + item.getRarity());
 		tier.withStyle(getColor().chatColor);
 		list.add(tier);
@@ -228,6 +230,10 @@ public class SilverPendant extends MagicJewelBase {
 		MutableComponent itemName = Component.translatable("dcs.tip.pendant_s.name." + getColor().toString());
 		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		if (flag) {
 			MutableComponent itemTip = Component.translatable("dcs.tip.pendant_s.desc." + getColor().toString());
 			list.add(itemTip);

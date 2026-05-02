@@ -20,6 +20,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -55,18 +56,13 @@ public class IntakeFanBlock extends EnergyMachineBlock implements IAirflowTile {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext cont) {
 		Direction dir = DCState.getFace(state, DCState.FACING);
-		switch (dir) {
-		case NORTH:
-			return S_AABB;
-		case SOUTH:
-			return N_AABB;
-		case EAST:
-			return W_AABB;
-		case WEST:
-			return E_AABB;
-		default:
-			return S_AABB;
-		}
+		return switch (dir) {
+		case NORTH -> S_AABB;
+		case SOUTH -> N_AABB;
+		case EAST -> W_AABB;
+		case WEST -> E_AABB;
+		default -> S_AABB;
+		};
 	}
 
 	@Override
@@ -122,23 +118,24 @@ public class IntakeFanBlock extends EnergyMachineBlock implements IAirflowTile {
 	@Override
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-		return !level.isClientSide ? createTickerHelper(type, MachineInit.INTAKE_FAN_TILE.get(), EnergyMachineBaseDC::serverTick) : createTickerHelper(type, MachineInit.INTAKE_FAN_TILE.get(),
-				IntakeFanTile::clientTick);
+		return !level.isClientSide ? createTickerHelper(type, MachineInit.INTAKE_FAN_TILE.get(), EnergyMachineBaseDC::serverTick) : createTickerHelper(type, MachineInit.INTAKE_FAN_TILE.get(), IntakeFanTile::clientTick);
+	}
+
+	@Override
+	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
+		MutableComponent tex1 = Component.translatable("dcs.tip.energy.machine").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD);
+		list.add(tex1);
 	}
 
 	@Override
 	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
-		MutableComponent tex1 = Component.translatable("dcs.tip.energy.machine").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD);
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.machine.desc");
 		MutableComponent tex3 = Component.translatable("dcs.tip.energy.intake_fan.desc").withStyle(ChatFormatting.GRAY);
 		MutableComponent tex4 = Component.translatable("dcs.tip.energy.intake_fan.desc2").withStyle(ChatFormatting.GRAY);
 		if (flag) {
-			list.add(tex1);
 			list.add(tex2);
 			list.add(tex3);
 			list.add(tex4);
-		} else {
-			list.add(tex1);
 		}
 	}
 

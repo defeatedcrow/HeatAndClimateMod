@@ -26,6 +26,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -63,10 +64,7 @@ public class FaucetBlock extends EntityBlockDC {
 	public FaucetBlock(String s) {
 		super(getProp());
 		name = s;
-		this.registerDefaultState(this.stateDefinition.any()
-				.setValue(DCState.FACING, Direction.NORTH)
-				.setValue(DCState.POWERED, Boolean.valueOf(false))
-				.setValue(WATERLOGGED, Boolean.valueOf(false)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.POWERED, false).setValue(WATERLOGGED, false));
 	}
 
 	public static BlockBehaviour.Properties getProp() {
@@ -76,18 +74,13 @@ public class FaucetBlock extends EntityBlockDC {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext cont) {
 		Direction dir = DCState.getFace(state, DCState.FACING);
-		switch (dir) {
-		case NORTH:
-			return N_AABB;
-		case SOUTH:
-			return S_AABB;
-		case EAST:
-			return E_AABB;
-		case WEST:
-			return W_AABB;
-		default:
-			return N_AABB;
-		}
+		return switch (dir) {
+		case NORTH -> N_AABB;
+		case SOUTH -> S_AABB;
+		case EAST -> E_AABB;
+		case WEST -> W_AABB;
+		default -> N_AABB;
+		};
 	}
 
 	@Override
@@ -99,8 +92,7 @@ public class FaucetBlock extends EntityBlockDC {
 	public BlockState getStateForPlacement(BlockPlaceContext cont) {
 		FluidState fluidstate = cont.getLevel().getFluidState(cont.getClickedPos());
 		Direction face = cont.getHorizontalDirection();
-		return this.defaultBlockState().setValue(DCState.FACING, face)
-				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+		return this.defaultBlockState().setValue(DCState.FACING, face).setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
 	}
 
 	@Override
@@ -111,35 +103,33 @@ public class FaucetBlock extends EntityBlockDC {
 				changeLisState(level, pos);
 			level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.8F, 1.5F);
 			return InteractionResult.sidedSuccess(level.isClientSide);
-		} else {
-			if (FluidUtil.getFluidHandler(held.copy()).isPresent()) {
-				ItemStack copy = held.copy();
-				copy.setCount(1);
-				if (FluidUtil.getFluidHandler(copy).map(handler -> {
-					FluidStack fluid = handler.getFluidInTank(0);
-					if (fluid.isEmpty()) {
-						FluidStack drain = new FluidStack(Fluids.WATER, 1000);
-						int d = handler.fill(drain, FluidAction.EXECUTE);
-						if (d > 0) {
-							ItemStack ret = handler.getContainer().copy();
-							if (!ret.isEmpty()) {
-								held.shrink(1);
-								ret.setCount(1);
-								ItemEntity drop = new ItemEntity(level, player.getX() + 0.5D, player.getY() + 0.25D, player.getZ() + 0.5D, ret);
-								level.addFreshEntity(drop);
-								return true;
-							}
+		} else if (FluidUtil.getFluidHandler(held.copy()).isPresent()) {
+			ItemStack copy = held.copy();
+			copy.setCount(1);
+			if (FluidUtil.getFluidHandler(copy).map(handler -> {
+				FluidStack fluid = handler.getFluidInTank(0);
+				if (fluid.isEmpty()) {
+					FluidStack drain = new FluidStack(Fluids.WATER, 1000);
+					int d = handler.fill(drain, FluidAction.EXECUTE);
+					if (d > 0) {
+						ItemStack ret = handler.getContainer().copy();
+						if (!ret.isEmpty()) {
+							held.shrink(1);
+							ret.setCount(1);
+							ItemEntity drop = new ItemEntity(level, player.getX() + 0.5D, player.getY() + 0.25D, player.getZ() + 0.5D, ret);
+							level.addFreshEntity(drop);
+							return true;
 						}
 					}
-					return false;
-				}).orElse(false)) {
-					player.getInventory().setChanged();
-					level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1.0F, 1.2F);
 				}
-				return InteractionResult.CONSUME;
-			} else {
-				return super.use(state, level, pos, player, hand, hitRes);
+				return false;
+			}).orElse(false)) {
+				player.getInventory().setChanged();
+				level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1.0F, 1.2F);
 			}
+			return InteractionResult.CONSUME;
+		} else {
+			return super.use(state, level, pos, player, hand, hitRes);
 		}
 	}
 
@@ -148,7 +138,7 @@ public class FaucetBlock extends EntityBlockDC {
 		if (!level.isClientSide) {
 			boolean pow = level.hasNeighborSignal(pos);
 			if (pow != DCState.getBool(state, DCState.POWERED)) {
-				level.setBlock(pos, state.setValue(DCState.POWERED, Boolean.valueOf(pow)), 2);
+				level.setBlock(pos, state.setValue(DCState.POWERED, pow), 2);
 				level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.8F, 1.5F);
 			}
 		}
@@ -158,7 +148,7 @@ public class FaucetBlock extends EntityBlockDC {
 		BlockState state = level.getBlockState(pos);
 		if (state.getBlock() instanceof FaucetBlock) {
 			boolean l = !DCState.getBool(state, DCState.POWERED);
-			level.setBlock(pos, state.setValue(DCState.POWERED, Boolean.valueOf(l)), 3);
+			level.setBlock(pos, state.setValue(DCState.POWERED, l), 3);
 			level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.8F, 1.5F);
 		}
 	}
@@ -239,16 +229,18 @@ public class FaucetBlock extends EntityBlockDC {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.flow.tier2").withStyle(ChatFormatting.YELLOW);
+		list.add(tex1);
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.rs_signal_machine");
 		MutableComponent tex3 = Component.translatable("dcs.tip.faucet.desc").withStyle(ChatFormatting.GRAY);
 		if (flag) {
-			list.add(tex1);
 			list.add(tex2);
 			list.add(tex3);
-		} else {
-			list.add(tex1);
 		}
 	}
 

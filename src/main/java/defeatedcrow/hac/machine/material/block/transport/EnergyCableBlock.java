@@ -28,6 +28,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -61,9 +62,17 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 
 	public EnergyCableBlock(Properties prop) {
 		super(prop);
-		this.registerDefaultState(
-		    this.stateDefinition.any().setValue(DCState.NORTH, false).setValue(DCState.SOUTH, false).setValue(DCState.EAST, false).setValue(DCState.WEST, false).setValue(DCState.UP, false).setValue(DCState.DOWN, false).setValue(
-		        DCState.POWERED, false).setValue(WATERLOGGED, false));
+		this
+		    .registerDefaultState(this.stateDefinition
+		        .any()
+		        .setValue(DCState.NORTH, false)
+		        .setValue(DCState.SOUTH, false)
+		        .setValue(DCState.EAST, false)
+		        .setValue(DCState.WEST, false)
+		        .setValue(DCState.UP, false)
+		        .setValue(DCState.DOWN, false)
+		        .setValue(DCState.POWERED, false)
+		        .setValue(WATERLOGGED, false));
 	}
 
 	@Override
@@ -84,9 +93,16 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 		BlockState s4 = level.getBlockState(p4);
 		BlockState s5 = level.getBlockState(p5);
 		BlockState s6 = level.getBlockState(p6);
-		return this.defaultBlockState().setValue(DCState.NORTH, this.connectsTo(s1, level, p1, Direction.NORTH, true)).setValue(DCState.EAST, this.connectsTo(s2, level, p2, Direction.EAST, true)).setValue(DCState.SOUTH,
-		    this.connectsTo(s3, level, p3, Direction.SOUTH, true)).setValue(DCState.WEST, this.connectsTo(s4, level, p4, Direction.WEST, true)).setValue(DCState.UP, this.connectsTo(s5, level, p5, Direction.UP, true)).setValue(DCState.DOWN,
-		        this.connectsTo(s6, level, p6, Direction.DOWN, true)).setValue(DCState.POWERED, pow).setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
+		return this
+		    .defaultBlockState()
+		    .setValue(DCState.NORTH, this.connectsTo(s1, level, p1, Direction.NORTH, true))
+		    .setValue(DCState.EAST, this.connectsTo(s2, level, p2, Direction.EAST, true))
+		    .setValue(DCState.SOUTH, this.connectsTo(s3, level, p3, Direction.SOUTH, true))
+		    .setValue(DCState.WEST, this.connectsTo(s4, level, p4, Direction.WEST, true))
+		    .setValue(DCState.UP, this.connectsTo(s5, level, p5, Direction.UP, true))
+		    .setValue(DCState.DOWN, this.connectsTo(s6, level, p6, Direction.DOWN, true))
+		    .setValue(DCState.POWERED, pow)
+		    .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
 	}
 
 	@Override
@@ -317,23 +333,24 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 	}
 
 	@Override
-	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
+	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.energy.cable").withStyle(ChatFormatting.BLUE).withStyle(ChatFormatting.BOLD);
+		list.add(tex1);
+		if (!DCUtil.isEmpty(item) && item.is(TagDC.ItemTag.LEAKAGE_MACHINE)) {
+			MutableComponent tex3 = Component.translatable("dcs.tip.energy.leakage").withStyle(ChatFormatting.RED).withStyle(ChatFormatting.BOLD);
+			list.add(tex3);
+		}
+	}
+
+	@Override
+	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.cable.desc");
-		MutableComponent tex3 = Component.translatable("dcs.tip.energy.leakage").withStyle(ChatFormatting.RED).withStyle(ChatFormatting.BOLD);
 		MutableComponent tex4 = Component.translatable("dcs.tip.energy.leakage.desc");
 
 		if (flag) {
-			list.add(tex1);
 			list.add(tex2);
 			if (!DCUtil.isEmpty(item) && item.is(TagDC.ItemTag.LEAKAGE_MACHINE)) {
-				list.add(tex3);
 				list.add(tex4);
-			}
-		} else {
-			list.add(tex1);
-			if (!DCUtil.isEmpty(item) && item.is(TagDC.ItemTag.LEAKAGE_MACHINE)) {
-				list.add(tex3);
 			}
 		}
 	}
