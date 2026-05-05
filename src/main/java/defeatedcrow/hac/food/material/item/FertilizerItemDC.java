@@ -2,6 +2,7 @@ package defeatedcrow.hac.food.material.item;
 
 import defeatedcrow.hac.core.material.item.MaterialItemDC;
 import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
@@ -28,13 +29,14 @@ public class FertilizerItemDC extends MaterialItemDC {
 		Level level = cont.getLevel();
 		BlockPos pos = cont.getClickedPos();
 		ItemStack use = cont.getItemInHand();
-		BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
+
 		Player player = cont.getPlayer();
 		boolean success = false;
 		BlockState block = level.getBlockState(pos);
 		if (block.is(TagDC.BlockTag.FARMLAND)) {
 			return InteractionResult.sidedSuccess(level.isClientSide);
-		} else {
+		} else if (!DCUtil.isEmpty(use) && use.is(TagDC.ItemTag.FERTILIZER_ADV)) {
+			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
 			for (int x = -2; x < 2; x++) {
 				for (int z = -2; z < 2; z++) {
 					for (int y = -2; y < 2; y++) {
@@ -45,7 +47,6 @@ public class FertilizerItemDC extends MaterialItemDC {
 							int hook = net.minecraftforge.event.ForgeEventFactory.onApplyBonemeal(player, level, mpos, crop, meal);
 							if (hook != 0)
 								continue;
-
 							if (crop.getBlock() instanceof BonemealableBlock && crop.getMaterial() != Material.GRASS) {
 								BonemealableBlock target = (BonemealableBlock) crop.getBlock();
 								if (target.isValidBonemealTarget(level, mpos, crop, level.isClientSide)) {
@@ -60,6 +61,23 @@ public class FertilizerItemDC extends MaterialItemDC {
 									}
 								}
 							}
+						}
+					}
+				}
+			}
+		} else {
+			ItemStack meal = new ItemStack(Items.BONE_MEAL);
+			int hook = net.minecraftforge.event.ForgeEventFactory.onApplyBonemeal(player, level, pos, block, meal);
+			if (hook != 0 && block.getBlock() instanceof BonemealableBlock) {
+				BonemealableBlock target = (BonemealableBlock) block.getBlock();
+				if (target.isValidBonemealTarget(level, pos, block, level.isClientSide)) {
+					if (level instanceof ServerLevel) {
+						if (target.isBonemealSuccess(level, level.random, pos, block)) {
+							target.performBonemeal((ServerLevel) level, level.random, pos, block);
+							if (!level.isClientSide) {
+								level.levelEvent(1505, pos, 0);
+							}
+							success = true;
 						}
 					}
 				}

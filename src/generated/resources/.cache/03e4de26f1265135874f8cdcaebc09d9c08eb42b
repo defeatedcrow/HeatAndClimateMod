@@ -1,4 +1,4 @@
-// 1.19.2	2026-05-01T17:31:46.2573926	Tags for minecraft:item
+// 1.19.2	2026-05-05T19:57:40.3165979	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 05c427bae6c42fa3468413da8a796681e5a20abb data/dcs_climate/tags/items/battery_items.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
@@ -61,6 +61,7 @@ e2477cdf4cf67128225135d2ee485f53f1bd99e6 data/dcs_climate/tags/items/color_raw_m
 914aa771433fb71551029a2c82226470c48a9970 data/dcs_climate/tags/items/color_seeds/green.json
 2b68adac39e6b168956fea51cbcc60d6ea0b8232 data/dcs_climate/tags/items/color_seeds/red.json
 efb54a213f3b6df64df5c890aab2eb99409fcd16 data/dcs_climate/tags/items/color_seeds/white.json
+cf36241a88cf2240c767c96495e0f2a967ad4e6b data/dcs_climate/tags/items/counter_chairs.json
 26d85d22288145a1018523a20deaf20967f151a9 data/dcs_climate/tags/items/crops.json
 8acd2a46a26054ad823e155f2cb6f1d87a4639c8 data/dcs_climate/tags/items/crops/common.json
 4e660559fdbd7e8bb03158c9ebc61c427543ca2b data/dcs_climate/tags/items/crops/epic.json
@@ -103,7 +104,7 @@ de5a2ec5f5593a6a661476ddc75bca9bf2826ab2 data/dcs_climate/tags/items/fishes/shal
 b1410710e34489f1aaf507b94633525d197cbc1f data/dcs_climate/tags/items/food_taste.json
 7f01ab18c3c16b58225da18b1317b0b94d955870 data/dcs_climate/tags/items/food_taste/tier1.json
 69c4be539e3bbcfefb6eab390fd4d2ac142aa945 data/dcs_climate/tags/items/food_taste/tier2.json
-4376580c9302b0a11f23f7399e8985fc46fbc2e8 data/dcs_climate/tags/items/food_taste/tier3.json
+313d61462d9144ebc1bcb0b1f328af4a6b9cdb3c data/dcs_climate/tags/items/food_taste/tier3.json
 e210c390b6bf2a49340bdb06e9acea1a0da122d6 data/dcs_climate/tags/items/food_taste/tier4.json
 af3d58376f3dd5688be494ec6e3cefc482521d47 data/dcs_climate/tags/items/food_taste/tier5.json
 87e4efc7bd9416d95a0f3b266f681d73f9f4a8e8 data/dcs_climate/tags/items/fuels.json
@@ -169,8 +170,8 @@ c45a1be359307638f49831bb1aaef310d70cbca1 data/dcs_climate/tags/items/meals/saute
 c06efd5deb7cbb8091cc1185f2c67fad470ea2f5 data/dcs_climate/tags/items/meals/side_dish.json
 23ea4b87d0debc16d63606d7244593de5572b292 data/dcs_climate/tags/items/meals/skewered.json
 32f7c1941656a9f0a63399970dc061760c612796 data/dcs_climate/tags/items/meals/soup.json
-43789d16fd3a3c812d18e1ecda3ab886bb628aed data/dcs_climate/tags/items/meals/sweets.json
-60f0025f98b7ec0daeecae59c4d6b5009a30f29e data/dcs_climate/tags/items/meals/tart.json
+ca7888f477fee8100c4df5fdaa7c1d06305658d9 data/dcs_climate/tags/items/meals/sweets.json
+f361845788d63289f4eeb92684cd4866e1654262 data/dcs_climate/tags/items/meals/tart.json
 bd479884d6c127ea78bbe38fe3a4df6a2c5c72b7 data/dcs_climate/tags/items/meals/tempura.json
 545747b98b58abe6090a8d2f51441f8cd7a8d5fd data/dcs_climate/tags/items/metal_louvers.json
 4a518f658c214b6035179b95d3f6d745440df29a data/dcs_climate/tags/items/metal_roofs.json
@@ -179,7 +180,7 @@ bd479884d6c127ea78bbe38fe3a4df6a2c5c72b7 data/dcs_climate/tags/items/meals/tempu
 d097701fe3472faa82108c234f386b57084d0a12 data/dcs_climate/tags/items/motors/middle.json
 152dbc221c9dff2f573eec4b5d6b264eada13aeb data/dcs_climate/tags/items/motors/small.json
 ea87dddaf131cef22fdeafd24a3a9421b7b97368 data/dcs_climate/tags/items/pipe_fluid.json
-06b1aad92bd3f144a36d5238b15cbad3ff079cb2 data/dcs_climate/tags/items/raw_foods.json
+f789fce850647d61bd617b21f3f4228822035ed2 data/dcs_climate/tags/items/raw_foods.json
 a2820f249d876999e4ccfa22c19e5a9addfbd8fa data/dcs_climate/tags/items/round_chairs.json
 b46bf9cdc3f2579ba6e4484e7a451ceffd59c4a5 data/dcs_climate/tags/items/seasoning.json
 e400062afd2766caf956795c3c06dd4629812b6c data/dcs_climate/tags/items/sensors.json
@@ -522,6 +523,7 @@ c132f42bec7448cf84f31d99f4601dd3254dda86 data/forge/tags/items/ingredients/bone_
 11d306c85e971475428486ab917e79e40d5eb1bd data/forge/tags/items/ingredients/bread_grains.json
 7f9a94274273b8c608a0835dbc99f48473a271c3 data/forge/tags/items/ingredients/buckwheat.json
 10fe51ead2ba137817409292e721591f8e0774b4 data/forge/tags/items/ingredients/butter.json
+83e5ef56517e82b004e9790a9bd10781aea13dec data/forge/tags/items/ingredients/cake_batter.json
 9cf6166f935aa1efa329b8d0d0649ce9ef840e7f data/forge/tags/items/ingredients/camphor.json
 f7686a7f9a496b5d055d2d3113a818965cbced9d data/forge/tags/items/ingredients/carp.json
 100cc4a74463c913b70ca4835ca69d465475dc90 data/forge/tags/items/ingredients/cashew_nuts.json
@@ -840,7 +842,7 @@ fbac1108894d33336c912a18cd2554761750346f data/forge/tags/items/storage_blocks/ku
 e25103449d06df1d167ca7d4db426ba13d484913 data/forge/tags/items/storage_blocks/larimar.json
 4bb0ff1a00c6fa6760aadbe634b4df17ecafaa64 data/forge/tags/items/storage_blocks/leather.json
 a6f5155120ab55d221adff383bfd57f3cb0b66ee data/forge/tags/items/storage_blocks/leaves.json
-556f2db9d3a5d7748d469012af2972b022b55b62 data/forge/tags/items/storage_blocks/logs.json
+fbf62696757ef57be4a2b4209f2bab26047f68c1 data/forge/tags/items/storage_blocks/logs.json
 2bd2156091ef77d462af17bb94fa7ae003888674 data/forge/tags/items/storage_blocks/magnet.json
 247dd57fbcc46158a32b2ce389bfd016b086043e data/forge/tags/items/storage_blocks/malachite.json
 6f0e7e1e85ff7b0baa4c37e7066748d6a9ec574c data/forge/tags/items/storage_blocks/mutton.json
@@ -893,8 +895,8 @@ a993675cd6d4b3ad999000d25441be803db3a7b4 data/minecraft/tags/items/boats.json
 0c66697fb072599561fc62082ec9457347694d33 data/minecraft/tags/items/fences.json
 3217a7e87da0d6a9b72c982002854fd5ea86be7f data/minecraft/tags/items/fishes.json
 5ee7f6137705b796a2b17e71224eb7ddfc0a6ce2 data/minecraft/tags/items/freeze_immune_wearables.json
-d031e5992b931b0f9e4f762b1352d1ba4d9abaeb data/minecraft/tags/items/leaves.json
-97260722a2a90267937bda1b4918c0cdea59197e data/minecraft/tags/items/logs_that_burn.json
+38daf92662b874926c4b139f4d7c3a20a260b620 data/minecraft/tags/items/leaves.json
+6915a35cf1f7f8cd2ceb457d1225a80eddea0d66 data/minecraft/tags/items/logs_that_burn.json
 61e420eefe8c3ab3fa965d457834294e3089d94f data/minecraft/tags/items/planks.json
 2d19f8299b6ba5f192d9e25799e9236bba9856f5 data/minecraft/tags/items/saplings.json
 4622117b8ea0453d2960985a02e1a4fb0f024018 data/minecraft/tags/items/slabs.json

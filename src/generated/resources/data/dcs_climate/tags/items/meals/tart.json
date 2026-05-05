@@ -6,6 +6,9 @@
     "dcs_climate:food/tart_lemon_baked",
     "dcs_climate:food/tart_cocoa_baked",
     "dcs_climate:food/tart_pistachio_baked",
+    "dcs_climate:food/tart_quiche_potato_baked",
+    "dcs_climate:food/tart_quiche_cod_baked",
+    "dcs_climate:food/tart_quiche_salmon_baked",
     "dcs_climate:food/tart_quiche_baked"
   ]
 }

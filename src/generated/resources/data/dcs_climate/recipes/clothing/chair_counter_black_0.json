@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dyes/black"
+    },
+    {
+      "item": "dcs_climate:build/chair_counter_leather"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/chair_counter_black"
+  }
+}

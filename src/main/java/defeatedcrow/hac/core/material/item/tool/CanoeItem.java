@@ -8,7 +8,7 @@ import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.CoreInit;
-import defeatedcrow.hac.core.material.entity.proj.CanoeEntity;
+import defeatedcrow.hac.core.material.entity.CanoeEntity;
 import defeatedcrow.hac.core.material.item.ItemDC;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;

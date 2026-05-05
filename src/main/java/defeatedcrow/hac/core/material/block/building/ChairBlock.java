@@ -58,28 +58,27 @@ public class ChairBlock extends BlockDC implements SimpleWaterloggedBlock, IColo
 	public ChairBlock(String s) {
 		super(getProp());
 		name = s;
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(WATERLOGGED, false));
+		this.registerDefaultState(this.stateDefinition.any()
+		    .setValue(DCState.FACING, Direction.NORTH)
+		    .setValue(WATERLOGGED, false));
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(1.0F, 15.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD)
+		    .strength(1.0F, 15.0F)
+		    .noOcclusion();
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext cont) {
 		Direction dir = DCState.getFace(state, DCState.FACING);
-		switch (dir) {
-		case NORTH:
-			return Shapes.or(N_AABB, BASE_AABB);
-		case SOUTH:
-			return Shapes.or(S_AABB, BASE_AABB);
-		case EAST:
-			return Shapes.or(E_AABB, BASE_AABB);
-		case WEST:
-			return Shapes.or(W_AABB, BASE_AABB);
-		default:
-			return Shapes.or(N_AABB, BASE_AABB);
-		}
+		return switch (dir) {
+		case NORTH -> Shapes.or(N_AABB, BASE_AABB);
+		case SOUTH -> Shapes.or(S_AABB, BASE_AABB);
+		case EAST -> Shapes.or(E_AABB, BASE_AABB);
+		case WEST -> Shapes.or(W_AABB, BASE_AABB);
+		default -> Shapes.or(N_AABB, BASE_AABB);
+		};
 	}
 
 	@Override
@@ -91,7 +90,8 @@ public class ChairBlock extends BlockDC implements SimpleWaterloggedBlock, IColo
 				held.shrink(1);
 				return InteractionResult.sidedSuccess(level.isClientSide);
 			}
-			ChairEntity bind = CoreInit.CHAIR_ENTITY.get().create(level);
+			ChairEntity bind = CoreInit.CHAIR_ENTITY.get()
+			    .create(level);
 			bind.setPos(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D);
 			bind.setDeltaMovement(0D, 0D, 0D);
 			player.startRiding(bind);
@@ -165,8 +165,10 @@ public class ChairBlock extends BlockDC implements SimpleWaterloggedBlock, IColo
 		BlockGetter level = cont.getLevel();
 		BlockPos pos = cont.getClickedPos();
 		FluidState fluidstate = level.getFluidState(pos);
-		Direction dir = cont.getHorizontalDirection().getOpposite();
-		return super.getStateForPlacement(cont).setValue(DCState.FACING, dir).setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+		Direction dir = cont.getHorizontalDirection()
+		    .getOpposite();
+		return super.getStateForPlacement(cont).setValue(DCState.FACING, dir)
+		    .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
 	}
 
 	@Override
@@ -220,12 +222,15 @@ public class ChairBlock extends BlockDC implements SimpleWaterloggedBlock, IColo
 	public void replace(Level level, BlockPos pos, Player player, ItemStack held, MagicColor color) {
 		BlockState target = level.getBlockState(pos);
 		if (target != null && target.getBlock() instanceof ChairBlock chair && target.getBlock() != BuildInit.CHAIR_LINEN.get() && target.getBlock() != BuildInit.CHAIR_WOOD.get()) {
-			chair.getReplaceBlock(color).ifPresent(block -> {
-				Direction face = DCState.getFace(target, DCState.FACING);
-				boolean water = DCState.getBool(target, WATERLOGGED);
-				BlockState replace = block.defaultBlockState().setValue(DCState.FACING, face).setValue(WATERLOGGED, water);
-				level.setBlock(pos, replace, 2);
-			});
+			chair.getReplaceBlock(color)
+			    .ifPresent(block -> {
+				    Direction face = DCState.getFace(target, DCState.FACING);
+				    boolean water = DCState.getBool(target, WATERLOGGED);
+				    BlockState replace = block.defaultBlockState()
+				        .setValue(DCState.FACING, face)
+				        .setValue(WATERLOGGED, water);
+				    level.setBlock(pos, replace, 2);
+			    });
 		}
 	}
 

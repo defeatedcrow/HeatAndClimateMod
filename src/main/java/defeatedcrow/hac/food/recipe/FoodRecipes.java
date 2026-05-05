@@ -66,6 +66,9 @@ public class FoodRecipes {
 		list.add(new Smelting(FoodInit.TART_COCOA_BAKED_ITEM, FoodInit.TART_COCOA_RAW_ITEM, 120));
 		list.add(new Smelting(FoodInit.TART_PISTACHIO_BAKED_ITEM, FoodInit.TART_PISTACHIO_RAW_ITEM, 120));
 		list.add(new Smelting(FoodInit.TART_QUICHE_BAKED_ITEM, FoodInit.TART_QUICHE_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.TART_QUICHE_POTATO_BAKED_ITEM, FoodInit.TART_QUICHE_POTATO_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.TART_QUICHE_COD_BAKED_ITEM, FoodInit.TART_QUICHE_COD_RAW_ITEM, 120));
+		list.add(new Smelting(FoodInit.TART_QUICHE_SALMON_BAKED_ITEM, FoodInit.TART_QUICHE_SALMON_RAW_ITEM, 120));
 		list.add(new Smelting(FoodInit.CASSEROLE_DORIA_BAKED_ITEM, FoodInit.CASSEROLE_DORIA_RAW_ITEM, 120));
 		list.add(new Smelting(FoodInit.CASSEROLE_GRATIN_SHRIMP_BAKED_ITEM, FoodInit.CASSEROLE_GRATIN_SHRIMP_RAW_ITEM, 120));
 		list.add(new Smelting(FoodInit.CASSEROLE_GRATIN_ONION_BAKED_ITEM, FoodInit.CASSEROLE_GRATIN_ONION_RAW_ITEM, 120));
@@ -83,12 +86,8 @@ public class FoodRecipes {
 		SmeltingBlocks = list2.build();
 	}
 
-	public record Smelting(
-	    Supplier<Item> output,
-	    Supplier<Item> input, int time) {}
+	public record Smelting(Supplier<Item> output, Supplier<Item> input, int time) {}
 
-	public record SmeltingBlock(
-	    Supplier<Block> output,
-	    Supplier<TagKey<Item>> input, int time) {}
+	public record SmeltingBlock(Supplier<Block> output, Supplier<TagKey<Item>> input, int time) {}
 
 }

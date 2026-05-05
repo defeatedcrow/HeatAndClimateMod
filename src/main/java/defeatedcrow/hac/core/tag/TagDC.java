@@ -789,6 +789,7 @@ public class TagDC {
 		public static final TagKey<Item> NOODLE = itemTag("ingredients/noodle");
 		public static final TagKey<Item> PASTRY = itemTag("ingredients/pastry");
 		public static final TagKey<Item> BATTER = itemTag("ingredients/batter");
+		public static final TagKey<Item> CAKE_BATTER = itemTag("ingredients/cake_batter");
 		public static final TagKey<Item> STAFFING = itemTag("ingredients/staffing");
 
 		public static final TagKey<Item> SOYSAUCE = itemTag("ingredients/soysauce");
@@ -1178,6 +1179,7 @@ public class TagDC {
 		public static final TagKey<Item> HAC_ANDON = itemHaCTag("andons");
 		public static final TagKey<Item> HAC_CARPET = itemHaCTag("carpets");
 		public static final TagKey<Item> HAC_CHAIR = itemHaCTag("chairs");
+		public static final TagKey<Item> HAC_COUNTER_CHAIR = itemHaCTag("counter_chairs");
 		public static final TagKey<Item> HAC_ROUND_CHAIR = itemHaCTag("round_chairs");
 		public static final TagKey<Item> HAC_SOFA = itemHaCTag("sofas");
 		public static final TagKey<Item> HAC_BED = itemHaCTag("beds");

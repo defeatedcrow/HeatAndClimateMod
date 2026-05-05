@@ -1,0 +1,9 @@
+{
+  "values": [
+    "dcs_climate:build/chair_counter_white",
+    "dcs_climate:build/chair_counter_blue",
+    "dcs_climate:build/chair_counter_black",
+    "dcs_climate:build/chair_counter_red",
+    "dcs_climate:build/chair_counter_green"
+  ]
+}

@@ -46,7 +46,7 @@ public class RenderArmorDC implements IClientItemExtensions {
 		HumanoidModel<?> rep = getHumanoidArmorModel(living, stack, slot, original);
 		if (rep != original) {
 			ForgeHooksClient.copyModelProperties(original, rep);
-			if (rep == EntityModelLoader.MODEL_SKIRT || rep == EntityModelLoader.MODEL_LEGGINS) {
+			if (rep == EntityModelLoader.MODEL_SKIRT || rep == EntityModelLoader.MODEL_LEGGINS || rep == EntityModelLoader.MODEL_BOOTS) {
 				rep.body.visible = true;
 				rep.rightArm.visible = false;
 				rep.leftArm.visible = false;
@@ -60,8 +60,7 @@ public class RenderArmorDC implements IClientItemExtensions {
 				rep.rightLeg.visible = false;
 				rep.leftLeg.visible = false;
 			}
-			if (rep == EntityModelLoader.MODEL_SUITS || rep == EntityModelLoader.MODEL_TUNIC ||
-			    rep == EntityModelLoader.MODEL_OVERSUITS || rep == EntityModelLoader.MODEL_DRESS) {
+			if (rep == EntityModelLoader.MODEL_SUITS || rep == EntityModelLoader.MODEL_TUNIC || rep == EntityModelLoader.MODEL_OVERSUITS || rep == EntityModelLoader.MODEL_DRESS) {
 				rep.body.visible = true;
 				rep.rightArm.visible = true;
 				rep.leftArm.visible = true;

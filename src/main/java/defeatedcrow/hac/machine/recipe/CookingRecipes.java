@@ -987,7 +987,52 @@ public class CookingRecipes {
 				new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
 				boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_SWEET_POTATO), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(TagDC.ItemTag.CROP_SESAMI)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DONUT_SUGER.get(), 1), ItemStack.EMPTY, 0,
+			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+			boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CAKE_BATTER), Ingredient.of(TagDC.ItemTag.SUGARS)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DONUT_COCOA.get(), 1), ItemStack.EMPTY, 0,
+			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+			boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CAKE_BATTER), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(TagDC.ItemTag.CROP_COCOA)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DONUT_COCONUT.get(), 1), ItemStack.EMPTY, 0,
+			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+			boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CAKE_BATTER), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(TagDC.ItemTag.CROP_COCOA), Ingredient.of(TagDC.ItemTag.CROP_COCONUT)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DONUT_BERRY.get(), 1), ItemStack.EMPTY, 0,
+			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+			boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CAKE_BATTER), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(TagDC.ItemTag.CROP_COCOA), Ingredient.of(TagDC.ItemTag.CROP_BERRY)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DONUT_MINT.get(), 1), ItemStack.EMPTY, 0,
+			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+			boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CAKE_BATTER), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(TagDC.ItemTag.CROP_COCOA), Ingredient.of(TagDC.ItemTag.CROP_MINT)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DONUT_JELLY.get(), 1), ItemStack.EMPTY, 0,
+			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+			boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CAKE_BATTER), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(TagDC.ItemTag.JAM)));
+		
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DONUT_JELLY.get(), 1), ItemStack.EMPTY, 0,
+			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+			boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CAKE_BATTER), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(TagDC.ItemTag.MARMALADE)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DONUT_ROSE.get(), 1), ItemStack.EMPTY, 0,
+			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+			boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CAKE_BATTER), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(FoodInit.FOOD_ROSE_JAM.get()), Ingredient.of(TagDC.ItemTag.CROP_DAMASCHENA)));
 
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DONUT_ROSE.get(), 1), ItemStack.EMPTY, 0,
+			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+			boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CAKE_BATTER), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(FoodInit.FOOD_ROSE_JAM.get()), Ingredient.of(Items.ROSE_BUSH)));
+		
 		// tea
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.TEA, new ItemStack(FoodInit.DRINK_APPLE.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, cool,
 				ImmutableList.of(FluidTags.WATER.location().toString()),

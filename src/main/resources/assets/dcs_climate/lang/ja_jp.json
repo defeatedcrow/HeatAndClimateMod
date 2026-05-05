@@ -473,6 +473,7 @@
 
   "item.dcs_climate.food.food_pastry":"ペストリー生地",
   "item.dcs_climate.food.food_batter":"バッター液",
+  "item.dcs_climate.food.food_cake_batter":"ケーキバッター",
   "item.dcs_climate.food.food_noodle_pasta":"パスタ",
   "item.dcs_climate.food.food_noodle_wheat":"小麦麺",
   "item.dcs_climate.food.food_noodle_brine":"中華麺",
@@ -685,6 +686,12 @@
   "item.dcs_climate.food.tart_pistachio_baked":"ピスタチオとベリーのタルト",
   "item.dcs_climate.food.tart_quiche_raw":"生のトマトのキッシュ",
   "item.dcs_climate.food.tart_quiche_baked":"トマトのキッシュ",
+  "item.dcs_climate.food.tart_quiche_potato_raw":"生の芋のキッシュ",
+  "item.dcs_climate.food.tart_quiche_potato_baked":"芋のキッシュ",
+  "item.dcs_climate.food.tart_quiche_cod_raw":"生の白身魚のキッシュ",
+  "item.dcs_climate.food.tart_quiche_cod_baked":"白身魚のキッシュ",
+  "item.dcs_climate.food.tart_quiche_salmon_raw":"生の鮭のキッシュ",
+  "item.dcs_climate.food.tart_quiche_salmon_baked":"鮭のキッシュ",
 
   "item.dcs_climate.food.sandwich_fruit":"ジャムサンド",
   "item.dcs_climate.food.sandwich_marmalade":"マーマレードサンド",
@@ -696,6 +703,14 @@
   "item.dcs_climate.food.taco_avocado":"アボカドのタコス",
   "item.dcs_climate.food.taco_fish":"フィッシュタコス",
   "item.dcs_climate.food.taco_quesadilla":"ケサディーヤ",
+  
+  "item.dcs_climate.food.donut_sugar":"ドーナツ",
+  "item.dcs_climate.food.donut_cocoa":"チョコドーナツ",
+  "item.dcs_climate.food.donut_coconut":"ココナッツチョコドーナツ",
+  "item.dcs_climate.food.donut_berry":"ベリーチョコドーナツ",
+  "item.dcs_climate.food.donut_mint":"チョコミントドーナツ",
+  "item.dcs_climate.food.donut_jelly":"ジェリードーナツ",
+  "item.dcs_climate.food.donut_rose":"ポンチキ",
 
   "item.dcs_climate.food.cake_butter":"バターケーキ",
   "item.dcs_climate.food.cake_berry":"ベリーショートケーキ",
@@ -1118,6 +1133,9 @@
   "item.dcs_climate.main.pants_linen_green":"リネンのズボン(緑)",
   "item.dcs_climate.main.pants_linen_orange":"リネンのズボン(橙)",
   "item.dcs_climate.main.pants_linen_white":"リネンのズボン(白)",
+  "item.dcs_climate.main.pants_linen_black":"リネンのズボン(黒)",
+  "item.dcs_climate.main.pants_linen_gray":"リネンのズボン(灰)",
+  "item.dcs_climate.main.pants_linen_blue":"リネンのズボン(青)",
 
   "item.dcs_climate.main.pants_cloth":"ジーパン",
   "item.dcs_climate.main.pants_cloth_blue":"ジーパン(青)",
@@ -1128,6 +1146,10 @@
   "item.dcs_climate.main.tights_knit_black":"ニットのタイツ(黒)",
   "item.dcs_climate.main.tights_knit_red":"ニットのタイツ(赤)",
   "item.dcs_climate.main.tights_knit_blue":"ニットのタイツ(青)",
+  
+  "item.dcs_climate.main.chaps_leather":"レザーのチャップス",
+  "item.dcs_climate.main.chaps_leather_black":"レザーのチャップス(黒)",
+  "item.dcs_climate.main.chaps_leather_white":"レザーのチャップス(白)",
 
   "item.dcs_climate.main.suits_leather":"レザーのスーツ",
   "item.dcs_climate.main.suits_leather_black":"レザーのスーツ(黒)",
@@ -1977,6 +1999,13 @@
   "block.dcs_climate.build.sofa_black":"黒のソファ",
   "block.dcs_climate.build.sofa_pink":"赤のソファ",
   "block.dcs_climate.build.sofa_green":"緑のソファ",
+  
+  "block.dcs_climate.build.chair_counter_leather":"革張りのカウンターチェア",
+  "block.dcs_climate.build.chair_counter_white":"白のカウンターチェア",
+  "block.dcs_climate.build.chair_counter_blue":"青のカウンターチェア",
+  "block.dcs_climate.build.chair_counter_black":"黒のカウンターチェア",
+  "block.dcs_climate.build.chair_counter_red":"赤のカウンターチェア",
+  "block.dcs_climate.build.chair_counter_green":"緑のカウンターチェア",
 
   "block.dcs_climate.build.chair_round_white":"白のラボチェア",
   "block.dcs_climate.build.chair_round_blue":"青のラボチェア",

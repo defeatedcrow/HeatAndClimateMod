@@ -53,6 +53,9 @@
     "dcs_climate:food/tart_lemon_raw",
     "dcs_climate:food/tart_cocoa_raw",
     "dcs_climate:food/tart_pistachio_raw",
+    "dcs_climate:food/tart_quiche_potato_raw",
+    "dcs_climate:food/tart_quiche_cod_raw",
+    "dcs_climate:food/tart_quiche_salmon_raw",
     "dcs_climate:food/tart_quiche_raw"
   ]
 }

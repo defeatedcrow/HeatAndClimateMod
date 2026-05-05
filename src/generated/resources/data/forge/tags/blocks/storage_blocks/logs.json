@@ -23,6 +23,8 @@
     "dcs_climate:container/logcont_palm_coconut",
     "dcs_climate:container/logcont_sumac_lacquer",
     "dcs_climate:container/logcont_sumac_mango",
-    "dcs_climate:container/logcont_myrtle_eucalyptus"
+    "dcs_climate:container/logcont_myrtle_eucalyptus",
+    "dcs_climate:container/logcont_euphorbia_kukui",
+    "dcs_climate:container/logcont_euphorbia_manchineel"
   ]
 }

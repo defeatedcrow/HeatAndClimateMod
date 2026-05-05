@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "cookingtime": 600,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "dcs_climate:food/food_cake_batter"
+  },
+  "result": "dcs_climate:food/cake_butter"
+}

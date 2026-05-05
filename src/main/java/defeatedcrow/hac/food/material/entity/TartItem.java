@@ -48,6 +48,18 @@ public class TartItem extends ItemEntityFood {
 			return TART_QUICHE_RAW;
 		if (item == FoodInit.TART_QUICHE_BAKED_ITEM.get())
 			return TART_QUICHE_BAKED;
+		if (item == FoodInit.TART_QUICHE_POTATO_RAW_ITEM.get())
+			return TART_QUICHE_POTATO_RAW;
+		if (item == FoodInit.TART_QUICHE_POTATO_BAKED_ITEM.get())
+			return TART_QUICHE_POTATO_BAKED;
+		if (item == FoodInit.TART_QUICHE_COD_RAW_ITEM.get())
+			return TART_QUICHE_COD_RAW;
+		if (item == FoodInit.TART_QUICHE_COD_BAKED_ITEM.get())
+			return TART_QUICHE_COD_BAKED;
+		if (item == FoodInit.TART_QUICHE_SALMON_RAW_ITEM.get())
+			return TART_QUICHE_SALMON_RAW;
+		if (item == FoodInit.TART_QUICHE_SALMON_BAKED_ITEM.get())
+			return TART_QUICHE_SALMON_BAKED;
 		return TART_APPLE_RAW;
 	}
 
@@ -65,5 +77,11 @@ public class TartItem extends ItemEntityFood {
 	public static final EntityRenderData TART_PISTACHIO_BAKED = new EntityRenderData("food/tart_pistachio_baked", 1.0F, 0F);
 	public static final EntityRenderData TART_QUICHE_RAW = new EntityRenderData("food/tart_quiche_raw", 1.0F, 0F);
 	public static final EntityRenderData TART_QUICHE_BAKED = new EntityRenderData("food/tart_quiche_baked", 1.0F, 0F);
+	public static final EntityRenderData TART_QUICHE_POTATO_RAW = new EntityRenderData("food/tart_quiche_potato_raw", 1.0F, 0F);
+	public static final EntityRenderData TART_QUICHE_POTATO_BAKED = new EntityRenderData("food/tart_quiche_potato_baked", 1.0F, 0F);
+	public static final EntityRenderData TART_QUICHE_COD_RAW = new EntityRenderData("food/tart_quiche_cod_raw", 1.0F, 0F);
+	public static final EntityRenderData TART_QUICHE_COD_BAKED = new EntityRenderData("food/tart_quiche_cod_baked", 1.0F, 0F);
+	public static final EntityRenderData TART_QUICHE_SALMON_RAW = new EntityRenderData("food/tart_quiche_salmon_raw", 1.0F, 0F);
+	public static final EntityRenderData TART_QUICHE_SALMON_BAKED = new EntityRenderData("food/tart_quiche_salmon_baked", 1.0F, 0F);
 
 }

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/donut_coconut"
+  },
+  "parent": "minecraft:item/generated"
+}

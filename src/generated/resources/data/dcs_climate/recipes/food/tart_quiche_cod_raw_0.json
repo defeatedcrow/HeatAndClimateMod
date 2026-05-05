@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/pastry"
+    },
+    {
+      "tag": "forge:ingredients/white_fishes"
+    },
+    {
+      "tag": "forge:crops/green_leafs"
+    },
+    {
+      "tag": "forge:mushrooms"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:ingredients/creams"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/tart_quiche_cod_raw"
+  }
+}

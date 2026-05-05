@@ -1,5 +1,12 @@
 {
   "values": [
+    "dcs_climate:food/donut_sugar",
+    "dcs_climate:food/donut_cocoa",
+    "dcs_climate:food/donut_coconut",
+    "dcs_climate:food/donut_berry",
+    "dcs_climate:food/donut_mint",
+    "dcs_climate:food/donut_jelly",
+    "dcs_climate:food/donut_rose",
     "dcs_climate:food/cake_butter",
     "dcs_climate:food/cake_berry",
     "dcs_climate:food/cake_chocolate",
