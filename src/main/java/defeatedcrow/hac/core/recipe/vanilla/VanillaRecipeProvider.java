@@ -1639,6 +1639,18 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_emerald", has(Tags.Items.GEMS_EMERALD))
 		    .save(cons, "dcs_climate:build/villager_chest_0");
 
+		ShapedRecipeBuilder.shaped(BuildInit.STRAW_MAT.get(), 1)
+		    .pattern("XXX")
+		    .define('X', TagDC.ItemTag.FEED_HAY)
+		    .unlockedBy("has_hay", has(TagDC.ItemTag.FEED_HAY))
+		    .save(cons, "dcs_climate:build/straw_mat_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.STRAW_MAT.get(), 1)
+		    .pattern("XXX")
+		    .define('X', TagDC.ItemTag.FEED_STRAW)
+		    .unlockedBy("has_straw", has(TagDC.ItemTag.FEED_STRAW))
+		    .save(cons, "dcs_climate:build/straw_mat_2");
+
 		ShapedRecipeBuilder.shaped(BuildInit.CARPET_LINEN.get(), 1)
 		    .pattern("Y")
 		    .pattern("X")
@@ -2802,6 +2814,14 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
 		    .save(cons, "dcs_climate:core/bed_another_0");
 
+		ShapedRecipeBuilder.shaped(Items.YELLOW_BED, 1)
+		    .pattern("XXX")
+		    .pattern("YYY")
+		    .define('X', BuildInit.STRAW_MAT.get())
+		    .define('Y', ItemTags.PLANKS)
+		    .unlockedBy("has_straw_mat", has(BuildInit.STRAW_MAT.get()))
+		    .save(cons, "dcs_climate:core/bed_another_2");
+
 		ShapedRecipeBuilder.shaped(Items.WHITE_BANNER, 1)
 		    .pattern("XXX")
 		    .pattern("XXX")
@@ -2912,6 +2932,11 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		    .define('X', TagDC.ItemTag.GEM_AGATES)
 		    .unlockedBy("has_agate", has(TagDC.ItemTag.GEM_AGATES))
 		    .save(cons, "dcs_climate:core/arrow_another_0");
+
+		ShapelessRecipeBuilder.shapeless(Items.FLINT, 1)
+		    .requires(Tags.Items.GRAVEL)
+		    .unlockedBy("has_gravel", has(Tags.Items.GRAVEL))
+		    .save(cons, "dcs_climate:core/flint_another_0");
 
 		ShapelessRecipeBuilder.shapeless(Items.FLINT_AND_STEEL, 1)
 		    .requires(Tags.Items.INGOTS_IRON)

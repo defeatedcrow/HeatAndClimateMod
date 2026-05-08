@@ -1,7 +1,7 @@
 {
   "parent": "dcs_climate:block/build/chair_counter_leather_0",
   "textures": {
-        "lether": "dcs_climate:block/build/chair_leather_black",
+        "leather": "dcs_climate:block/build/chair_leather_black",
         "base": "dcs_climate:block/build/plate_steel"
     }
 }

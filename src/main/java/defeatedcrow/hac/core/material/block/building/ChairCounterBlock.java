@@ -46,11 +46,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class ChairCounterBlock extends BlockDC implements SimpleWaterloggedBlock, IColordBlock {
 
-	protected static final VoxelShape W_AABB = Block.box(11.0D, 8.0D, 4.0D, 12.0D, 13.0D, 12.0D);
-	protected static final VoxelShape E_AABB = Block.box(4.0D, 8.0D, 4.0D, 5.0D, 13.0D, 12.0D);
-	protected static final VoxelShape S_AABB = Block.box(4.0D, 8.0D, 4.0D, 12.0D, 13.0D, 5.0D);
-	protected static final VoxelShape N_AABB = Block.box(4.0D, 8.0D, 11.0D, 12.0D, 13.0D, 12.0D);
-	protected static final VoxelShape BASE_AABB = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 8.0D, 12.0D);
+	protected static final VoxelShape W_AABB = Block.box(11.0D, 10.0D, 4.0D, 12.0D, 15.0D, 12.0D);
+	protected static final VoxelShape E_AABB = Block.box(4.0D, 10.0D, 4.0D, 5.0D, 15.0D, 12.0D);
+	protected static final VoxelShape S_AABB = Block.box(4.0D, 10.0D, 4.0D, 12.0D, 15.0D, 5.0D);
+	protected static final VoxelShape N_AABB = Block.box(4.0D, 10.0D, 11.0D, 12.0D, 15.0D, 12.0D);
+	protected static final VoxelShape BASE_AABB = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D);
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	final String name;
@@ -92,7 +92,7 @@ public class ChairCounterBlock extends BlockDC implements SimpleWaterloggedBlock
 			}
 			ChairEntity bind = CoreInit.CHAIR_ENTITY.get()
 			    .create(level);
-			bind.setPos(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D);
+			bind.setPos(pos.getX() + 0.5D, pos.getY() + 0.625D, pos.getZ() + 0.5D);
 			bind.setDeltaMovement(0D, 0D, 0D);
 			player.startRiding(bind);
 			level.addFreshEntity(bind);

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dcs_climate:build/straw_mat"
+    },
+    "Y": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "YYY"
+  ],
+  "result": {
+    "item": "minecraft:yellow_bed"
+  }
+}

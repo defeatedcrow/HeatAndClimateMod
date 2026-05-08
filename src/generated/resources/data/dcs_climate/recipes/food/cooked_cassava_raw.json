@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "tag": "forge:crops/cassava"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/sweetpotato_cassava_raw"
+  }
+}

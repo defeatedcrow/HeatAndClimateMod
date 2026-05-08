@@ -30,6 +30,7 @@ public class RenderArmorDC implements IClientItemExtensions {
 			case JACKET -> EntityModelLoader.MODEL_JACKET;
 			case TUNIC -> EntityModelLoader.MODEL_TUNIC;
 			case LEGGINS -> EntityModelLoader.MODEL_LEGGINS;
+			case LEGGINS_TIGHT -> EntityModelLoader.MODEL_LEGGINS_TIGHT;
 			case SHIRT -> EntityModelLoader.MODEL_SHIRT;
 			case OVERSUITS -> EntityModelLoader.MODEL_OVERSUITS;
 			case SUITS -> EntityModelLoader.MODEL_SUITS;
@@ -46,7 +47,7 @@ public class RenderArmorDC implements IClientItemExtensions {
 		HumanoidModel<?> rep = getHumanoidArmorModel(living, stack, slot, original);
 		if (rep != original) {
 			ForgeHooksClient.copyModelProperties(original, rep);
-			if (rep == EntityModelLoader.MODEL_SKIRT || rep == EntityModelLoader.MODEL_LEGGINS || rep == EntityModelLoader.MODEL_BOOTS) {
+			if (rep == EntityModelLoader.MODEL_SKIRT || rep == EntityModelLoader.MODEL_LEGGINS || rep == EntityModelLoader.MODEL_LEGGINS_TIGHT || rep == EntityModelLoader.MODEL_BOOTS) {
 				rep.body.visible = true;
 				rep.rightArm.visible = false;
 				rep.leftArm.visible = false;

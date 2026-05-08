@@ -1,4 +1,4 @@
-// 1.19.2	2026-05-05T19:57:40.3165979	Tags for minecraft:item
+// 1.19.2	2026-05-07T00:08:39.2849356	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 05c427bae6c42fa3468413da8a796681e5a20abb data/dcs_climate/tags/items/battery_items.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
@@ -163,14 +163,14 @@ c7a479ff2e9559452b0ab5031c3e3016efecd757 data/dcs_climate/tags/items/meals/kobac
 ed2d73671100613feee8307cf322df34079521b9 data/dcs_climate/tags/items/meals/meat_meal.json
 88cc1155190157f739d4a615cc83453c823cb197 data/dcs_climate/tags/items/meals/noodle.json
 f62cf479982b73d1c97c112b07e762586ae8c414 data/dcs_climate/tags/items/meals/plate_meal.json
-32df1c78b031979bac3f68d1edb31f89b72bf511 data/dcs_climate/tags/items/meals/porridge.json
+cc1e79ecda1f1b720cd71414c306e3136a8975f9 data/dcs_climate/tags/items/meals/porridge.json
 3ba173e5ed89080f13982b7d9a23433c9eb20dff data/dcs_climate/tags/items/meals/rice_meal.json
-375521fda9b4ccd50e994180607c6859b777ed2a data/dcs_climate/tags/items/meals/salad.json
+0ea4d8af78aa0a4cf7d780d0e1aa1de645f351f7 data/dcs_climate/tags/items/meals/salad.json
 c45a1be359307638f49831bb1aaef310d70cbca1 data/dcs_climate/tags/items/meals/saute.json
 c06efd5deb7cbb8091cc1185f2c67fad470ea2f5 data/dcs_climate/tags/items/meals/side_dish.json
 23ea4b87d0debc16d63606d7244593de5572b292 data/dcs_climate/tags/items/meals/skewered.json
-32f7c1941656a9f0a63399970dc061760c612796 data/dcs_climate/tags/items/meals/soup.json
-ca7888f477fee8100c4df5fdaa7c1d06305658d9 data/dcs_climate/tags/items/meals/sweets.json
+bd9f1ec494cba89d81d736f4c992076b7bd71c09 data/dcs_climate/tags/items/meals/soup.json
+b0ce33c7c1f63f4fbd08cad73362f1cef1a2bbe2 data/dcs_climate/tags/items/meals/sweets.json
 f361845788d63289f4eeb92684cd4866e1654262 data/dcs_climate/tags/items/meals/tart.json
 bd479884d6c127ea78bbe38fe3a4df6a2c5c72b7 data/dcs_climate/tags/items/meals/tempura.json
 545747b98b58abe6090a8d2f51441f8cd7a8d5fd data/dcs_climate/tags/items/metal_louvers.json
@@ -180,7 +180,7 @@ bd479884d6c127ea78bbe38fe3a4df6a2c5c72b7 data/dcs_climate/tags/items/meals/tempu
 d097701fe3472faa82108c234f386b57084d0a12 data/dcs_climate/tags/items/motors/middle.json
 152dbc221c9dff2f573eec4b5d6b264eada13aeb data/dcs_climate/tags/items/motors/small.json
 ea87dddaf131cef22fdeafd24a3a9421b7b97368 data/dcs_climate/tags/items/pipe_fluid.json
-f789fce850647d61bd617b21f3f4228822035ed2 data/dcs_climate/tags/items/raw_foods.json
+db8703ec3f4d239b016fd8a8155be8ec277345f8 data/dcs_climate/tags/items/raw_foods.json
 a2820f249d876999e4ccfa22c19e5a9addfbd8fa data/dcs_climate/tags/items/round_chairs.json
 b46bf9cdc3f2579ba6e4484e7a451ceffd59c4a5 data/dcs_climate/tags/items/seasoning.json
 e400062afd2766caf956795c3c06dd4629812b6c data/dcs_climate/tags/items/sensors.json
@@ -572,7 +572,7 @@ f1fedde0ea7e58aca9ad63fda1492b22e4462df1 data/forge/tags/items/ingredients/masa.
 3d053d61533b20afe7b6554b91c2374c2a7700fa data/forge/tags/items/ingredients/mentsuyu_soup.json
 1971129ae1af42b0335bb6614dad76ebb0e61a08 data/forge/tags/items/ingredients/milks.json
 3ef33af8463f512a3c429718ba6da4435def576f data/forge/tags/items/ingredients/milk_cream.json
-74b213618435fa57b1ef980ac2a7db8084511abb data/forge/tags/items/ingredients/millets.json
+fd45bf16ab112d614ecde1e7c87de1fd9e80fc60 data/forge/tags/items/ingredients/millets.json
 3fb071b7c41e1eb1c40992b853c9a2d9b61f4087 data/forge/tags/items/ingredients/miso.json
 f329ab35dd7921fbcf0b7c908d56eaf749878a24 data/forge/tags/items/ingredients/mixed_spices.json
 f2d4aaa3859452d35e207f4db4892536c3d04af2 data/forge/tags/items/ingredients/mullet.json

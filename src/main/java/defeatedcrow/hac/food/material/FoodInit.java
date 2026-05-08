@@ -129,6 +129,7 @@ import defeatedcrow.hac.food.material.entity.DeepfryTonkatsuItem;
 import defeatedcrow.hac.food.material.entity.DonutItem;
 import defeatedcrow.hac.food.material.entity.DrinkColdItem;
 import defeatedcrow.hac.food.material.entity.DrinkCupItem;
+import defeatedcrow.hac.food.material.entity.DumplingItem;
 import defeatedcrow.hac.food.material.entity.FoodEntityBase;
 import defeatedcrow.hac.food.material.entity.KobachiItem;
 import defeatedcrow.hac.food.material.entity.NoodleItem;
@@ -261,11 +262,14 @@ public class FoodInit {
 	    .sized(0.5F, 0.25F)
 	    .updateInterval(5)
 	    .build("wagashi"));
-
 	public static final RegistryObject<EntityType<FoodEntityBase>> SWEETPOTATO = CoreInit.ENTITIES.register("cooked_sweetpotato", () -> EntityType.Builder.<FoodEntityBase> of(FoodEntityBase::new, MobCategory.MISC)
 	    .sized(0.375F, 0.2F)
 	    .updateInterval(5)
 	    .build("cooked_sweetpotato"));
+	public static final RegistryObject<EntityType<FoodEntityBase>> DUMPLING = CoreInit.ENTITIES.register("dumpling", () -> EntityType.Builder.<FoodEntityBase> of(FoodEntityBase::new, MobCategory.MISC)
+	    .sized(0.5F, 0.2F)
+	    .updateInterval(5)
+	    .build("dumpling"));
 
 	public static final RegistryObject<EntityType<FoodEntityBase>> STICK_BEEF = CoreInit.ENTITIES.register("stick_beef", () -> EntityType.Builder.<FoodEntityBase> of(FoodEntityBase::new, MobCategory.MISC)
 	    .sized(0.3F, 0.75F)
@@ -529,6 +533,8 @@ public class FoodInit {
 
 	public static final RegistryObject<Item> SWEETPOTATO_RAW = regItem("sweetpotato_raw", () -> new CookedSweetpotatoItem("sweetpotato_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> SWEETPOTATO_COOKED = regItem("sweetpotato_cooked", () -> new CookedSweetpotatoItem("sweetpotato_cooked", 6, 0.2F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SWEETPOTATO_CASSAVA_RAW = regItem("sweetpotato_cassava_raw", () -> new CookedSweetpotatoItem("sweetpotato_cassava_raw", 0, 0F, null).setRawFood());
+	public static final RegistryObject<Item> SWEETPOTATO_CASSAVA_COOKED = regItem("sweetpotato_cassava_cooked", () -> new CookedSweetpotatoItem("sweetpotato_cassava_cooked", 6, 0.2F, TagDC.ItemTag.HAC_SALAD));
 
 	// パン
 	public static final RegistryObject<Item> BREAD_ROUND_RAW_ITEM = regItem("bread_round_raw", () -> new BreadRoundItem("bread_round_raw", 0, 0F, TagDC.ItemTag.DOUGH).setRawFood());
@@ -631,8 +637,10 @@ public class FoodInit {
 	public static final RegistryObject<Item> STEW_CREAM_SHRIMP = regItem("stew_cream_shrimp", () -> new PorridgeItem("stew_cream_shrimp", 10, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> STEW_CULLEN_SKINK = regItem("stew_cullenskink", () -> new PorridgeItem("stew_cullenskink", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> STEW_KHARCHO = regItem("stew_kharcho", () -> new PorridgeItem("stew_kharcho", 14, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_GOULASH = regItem("stew_goulash", () -> new PorridgeItem("stew_goulash", 14, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> STEW_ERWTEN = regItem("stew_erwten", () -> new PorridgeItem("stew_erwten", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> STEW_LAMPREDOTTO = regItem("stew_lampredotto", () -> new PorridgeItem("stew_lampredotto", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_PALMNUTS = regItem("stew_palmnuts", () -> new PorridgeItem("stew_palmnuts", 14, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> STEW_TOMYUMGOONG = regItem("stew_tomyumgoong", () -> new PorridgeItem("stew_tomyumgoong", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> STEW_TOMYUMPLA = regItem("stew_tomyumpla", () -> new PorridgeItem("stew_tomyumpla", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> STEW_TOMYUMGAI = regItem("stew_tomyumgai", () -> new PorridgeItem("stew_tomyumgai", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
@@ -713,6 +721,10 @@ public class FoodInit {
 	public static final RegistryObject<Item> MUESLI = regItem("muesli", () -> new PorridgeItem("muesli", 12, 0.4F, true, TagDC.ItemTag.HAC_PORRIDGE));
 	public static final RegistryObject<Item> PORRIDGE_SAFFRON = regItem("porridge_saffron", () -> new PorridgeItem("porridge_saffron", 10, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
 	public static final RegistryObject<Item> PORRIDGE_SQUID = regItem("porridge_squid", () -> new PorridgeItem("porridge_squid", 10, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
+
+	public static final RegistryObject<Item> DUMPLING_TUBERS = regItem("dumpling_tubers", () -> new DumplingItem("dumpling_tubers", 6, 0.4F, TagDC.ItemTag.HAC_PORRIDGE));
+	public static final RegistryObject<Item> DUMPLING_CEREALS = regItem("dumpling_cereals", () -> new DumplingItem("dumpling_cereals", 6, 0.4F, TagDC.ItemTag.HAC_PORRIDGE));
+	public static final RegistryObject<Item> DUMPLING_BUCKWHEAT = regItem("dumpling_buckwheat", () -> new DumplingItem("dumpling_buckwheat", 6, 0.4F, TagDC.ItemTag.HAC_PORRIDGE));
 
 	// ごはん
 	public static final RegistryObject<Item> BOILED_RICE = regItem("rice_boiled", () -> new RiceBowlItem("rice_boiled", 6, 0.4F, TagDC.ItemTag.BOILED_RICE));
@@ -824,6 +836,7 @@ public class FoodInit {
 
 	// お菓子
 	public static final RegistryObject<Item> DONUT_SUGER = regItem("donut_sugar", () -> new DonutItem("donut_sugar", 6, 0.1F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> DONUT_CINNAMON = regItem("donut_cinnamon", () -> new DonutItem("donut_cinnamon", 7, 0.1F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> DONUT_COCOA = regItem("donut_cocoa", () -> new DonutItem("donut_cocoa", 7, 0.1F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> DONUT_COCONUT = regItem("donut_coconut", () -> new DonutItem("donut_coconut", 8, 0.1F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> DONUT_BERRY = regItem("donut_berry", () -> new DonutItem("donut_berry", 8, 0.1F, TagDC.ItemTag.HAC_SWEETS));

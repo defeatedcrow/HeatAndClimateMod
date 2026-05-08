@@ -87,9 +87,13 @@ public class CookingRecipes {
 				ImmutableList.of(FluidTags.WATER.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.DUST_RICES)));
 
-		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RICE_BARLEY.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RICE_BARLEY.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
 				ImmutableList.of(FluidTags.WATER.location().toString()),
-				ImmutableList.of(Ingredient.of(TagDC.ItemTag.DUST_RICES), Ingredient.of(TagDC.ItemTag.DUST_BARLEY)));
+				ImmutableList.of(Ingredient.of(TagDC.ItemTag.DUST_BARLEY)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RICE_BARLEY.get(), 2), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
+			ImmutableList.of(FluidTags.WATER.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.DUST_RICES), Ingredient.of(TagDC.ItemTag.DUST_BARLEY)));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.RICE_SEKI.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat,
 				ImmutableList.of(FluidTags.WATER.location().toString()),
@@ -392,6 +396,18 @@ public class CookingRecipes {
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.STEW_MOTU.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.OFFAL), Ingredient.of(TagDC.ItemTag.CROP_LEEKS),
 						Ingredient.of(TagDC.ItemTag.CROP_CHILI)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.STEW_GOULASH.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.RAW_BEEF), Ingredient.of(TagDC.ItemTag.CROP_TOMATO),
+					Ingredient.of(TagDC.ItemTag.CROP_ONIONS), Ingredient.of(Tags.Items.CROPS_CARROT), Ingredient.of(TagDC.ItemTag.CROP_PAPRIKA)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.STEW_PALMNUTS.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.RAW_MEAT), Ingredient.of(TagDC.ItemTag.CROP_OIL_PALM),
+					Ingredient.of(TagDC.ItemTag.CROP_TOMATO), Ingredient.of(TagDC.ItemTag.CROP_ONIONS), Ingredient.of(TagDC.ItemTag.CROP_CHILI)));
+		
+		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(FoodInit.STEW_PALMNUTS.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.BASESOUP), Ingredient.of(TagDC.ItemTag.FISH_WHITE), Ingredient.of(TagDC.ItemTag.CROP_OIL_PALM),
+					Ingredient.of(TagDC.ItemTag.CROP_TOMATO), Ingredient.of(TagDC.ItemTag.CROP_ONIONS), Ingredient.of(TagDC.ItemTag.CROP_CHILI)));
 
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(FoodInit.STEW_TOMYUMGOONG.get(), 3), ItemStack.EMPTY, 0, FluidStack.EMPTY, heat, tags,
 				ImmutableList.of(Ingredient.of(FoodInit.FOOD_TOMYUM_PASTE.get()), Ingredient.of(TagDC.ItemTag.PRAWN), Ingredient.of(Tags.Items.MUSHROOMS),
@@ -992,6 +1008,11 @@ public class CookingRecipes {
 			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
 			boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
 			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CAKE_BATTER), Ingredient.of(TagDC.ItemTag.SUGARS)));
+		
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DONUT_CINNAMON.get(), 1), ItemStack.EMPTY, 0,
+			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),
+			boil, ImmutableList.of(TagDC.FluidTag.PLANT_OIL.location().toString()),
+			ImmutableList.of(Ingredient.of(TagDC.ItemTag.CAKE_BATTER), Ingredient.of(TagDC.ItemTag.SUGARS), Ingredient.of(TagDC.ItemTag.CROP_CINNAMON)));
 		
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.DONUT_COCOA.get(), 1), ItemStack.EMPTY, 0,
 			new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),

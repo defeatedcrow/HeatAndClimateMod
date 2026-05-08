@@ -129,7 +129,20 @@ public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 	}
 
 	public enum ModelType {
-		BOOTS, SKIRT, LEGGINS, SHIRT, JACKET, TUNIC, OVERSUITS, SUITS, LONG, HAT, HAIR, HAIR2, DEFAULT
+		BOOTS,
+		SKIRT,
+		LEGGINS,
+		LEGGINS_TIGHT,
+		SHIRT,
+		JACKET,
+		TUNIC,
+		OVERSUITS,
+		SUITS,
+		LONG,
+		HAT,
+		HAIR,
+		HAIR2,
+		DEFAULT
 	}
 
 }

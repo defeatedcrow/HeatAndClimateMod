@@ -5,6 +5,9 @@
     "dcs_climate:food/oat_milk",
     "dcs_climate:food/muesli",
     "dcs_climate:food/porridge_saffron",
-    "dcs_climate:food/porridge_squid"
+    "dcs_climate:food/porridge_squid",
+    "dcs_climate:food/dumpling_tubers",
+    "dcs_climate:food/dumpling_cereals",
+    "dcs_climate:food/dumpling_buckwheat"
   ]
 }

@@ -454,6 +454,43 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_sweetpotato", has(TagDC.ItemTag.CROP_SWEET_POTATO))
 		    .save(cons, "dcs_climate:food/cooked_sweetpotato_raw");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.SWEETPOTATO_CASSAVA_RAW.get(), 1)
+		    .requires(Ingredient.of(Items.PAPER))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_CASSAVA))
+		    .unlockedBy("has_cassava", has(TagDC.ItemTag.CROP_CASSAVA))
+		    .save(cons, "dcs_climate:food/cooked_cassava_raw");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.DUMPLING_TUBERS.get(), 1)
+		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
+		    .unlockedBy("has_tubers", has(TagDC.ItemTag.CROP_TUBERS))
+		    .save(cons, "dcs_climate:food/dumpling_tubers_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.DUMPLING_TUBERS.get(), 2)
+		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
+		    .requires(Ingredient.of(TagDC.ItemTag.DUST_CEREALS))
+		    .unlockedBy("has_tubers", has(TagDC.ItemTag.CROP_TUBERS))
+		    .save(cons, "dcs_climate:food/dumpling_tubers_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.DUMPLING_CEREALS.get(), 1)
+		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .requires(Ingredient.of(TagDC.ItemTag.DUST_CEREALS))
+		    .unlockedBy("has_dust_cereals", has(TagDC.ItemTag.DUST_CEREALS))
+		    .save(cons, "dcs_climate:food/dumpling_cereals_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.DUMPLING_CEREALS.get(), 1)
+		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .requires(Ingredient.of(TagDC.ItemTag.DUST_MILLETS))
+		    .unlockedBy("has_dust_millets", has(TagDC.ItemTag.DUST_MILLETS))
+		    .save(cons, "dcs_climate:food/dumpling_cereals_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.DUMPLING_BUCKWHEAT.get(), 1)
+		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .requires(Ingredient.of(TagDC.ItemTag.DUST_BUCKWHEAT))
+		    .unlockedBy("has_dust_buckwheat", has(TagDC.ItemTag.DUST_BUCKWHEAT))
+		    .save(cons, "dcs_climate:food/dumpling_buckwheat_0");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.PLATE_BEEF_RAW.get(), 1)
 		    .requires(Ingredient.of(TagDC.ItemTag.RAW_BEEF))
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_VEGETABLES))

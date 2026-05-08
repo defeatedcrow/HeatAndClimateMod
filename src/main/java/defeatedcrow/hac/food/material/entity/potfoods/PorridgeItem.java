@@ -35,9 +35,18 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 
 	private static Properties prop(int nut, float sat, boolean isCold) {
 		if (isCold)
-			return new Item.Properties().tab(FoodInit.FOOD).food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().build());
+			return new Item.Properties().tab(FoodInit.FOOD)
+			    .food(new FoodProperties.Builder().nutrition(nut)
+			        .saturationMod(sat)
+			        .alwaysEat()
+			        .build());
 		else
-			return new Item.Properties().tab(FoodInit.FOOD).food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().effect(hot(), 1.0F).build());
+			return new Item.Properties().tab(FoodInit.FOOD)
+			    .food(new FoodProperties.Builder().nutrition(nut)
+			        .saturationMod(sat)
+			        .alwaysEat()
+			        .effect(hot(), 1.0F)
+			        .build());
 	}
 
 	private static Supplier<MobEffectInstance> hot() {
@@ -109,6 +118,10 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 			return STEW_LAMPREDOTTO;
 		if (item == FoodInit.STEW_MOTU.get())
 			return STEW_OFFAL;
+		if (item == FoodInit.STEW_GOULASH.get())
+			return STEW_GOULASH;
+		if (item == FoodInit.STEW_PALMNUTS.get())
+			return STEW_PALMNUTS;
 		return PORRIDGE;
 	}
 
@@ -156,6 +169,10 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 			return STEW_LAMPREDOTTO_LAYER;
 		if (item == FoodInit.STEW_MOTU.get())
 			return STEW_OFFAL_LAYER;
+		if (item == FoodInit.STEW_GOULASH.get())
+			return STEW_GOULASH_LAYER;
+		if (item == FoodInit.STEW_PALMNUTS.get())
+			return STEW_PALMNUTS_LAYER;
 		return PORRIDGE_LAYER;
 	}
 
@@ -180,6 +197,8 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 	public static final EntityRenderData STEW_ERWTEN = new EntityRenderData("food/stew_erwten", 0.75F, 0F);
 	public static final EntityRenderData STEW_LAMPREDOTTO = new EntityRenderData("food/stew_lampredotto", 0.75F, 0F);
 	public static final EntityRenderData STEW_OFFAL = new EntityRenderData("food/stew_offal", 0.75F, 0F, "outer");
+	public static final EntityRenderData STEW_GOULASH = new EntityRenderData("food/stew_goulash", 0.75F, 0F);
+	public static final EntityRenderData STEW_PALMNUTS = new EntityRenderData("food/stew_palmnuts", 0.75F, 0F);
 
 	public static final EntityRenderData PORRIDGE_LAYER = new EntityRenderData("food/layer/porridge_simple_layer", 1F, 0F);
 	public static final EntityRenderData PORRIDGE_MILK_LAYER = new EntityRenderData("food/layer/porridge_milk_layer", 1F, 0F);
@@ -202,5 +221,7 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 	public static final EntityRenderData STEW_ERWTEN_LAYER = new EntityRenderData("food/layer/stew_erwten_layer", 0.75F, 0F);
 	public static final EntityRenderData STEW_LAMPREDOTTO_LAYER = new EntityRenderData("food/layer/stew_lampredotto_layer", 0.75F, 0F);
 	public static final EntityRenderData STEW_OFFAL_LAYER = new EntityRenderData("food/layer/stew_offal_layer", 0.75F, 0F, "outer");
+	public static final EntityRenderData STEW_GOULASH_LAYER = new EntityRenderData("food/layer/stew_goulash_layer", 0.75F, 0F);
+	public static final EntityRenderData STEW_PALMNUTS_LAYER = new EntityRenderData("food/layer/stew_palmnuts_layer", 0.75F, 0F);
 
 }

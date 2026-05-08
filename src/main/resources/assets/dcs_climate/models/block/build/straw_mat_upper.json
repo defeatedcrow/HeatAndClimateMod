@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/straw_mat"
+  },
+  "parent": "dcs_climate:block/dcs_thin_plate_upper"
+}

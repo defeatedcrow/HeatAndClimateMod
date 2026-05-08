@@ -705,6 +705,7 @@
   "item.dcs_climate.food.taco_quesadilla":"ケサディーヤ",
   
   "item.dcs_climate.food.donut_sugar":"ドーナツ",
+  "item.dcs_climate.food.donut_cinnamon":"シナモンドーナツ",
   "item.dcs_climate.food.donut_cocoa":"チョコドーナツ",
   "item.dcs_climate.food.donut_coconut":"ココナッツチョコドーナツ",
   "item.dcs_climate.food.donut_berry":"ベリーチョコドーナツ",
@@ -735,6 +736,9 @@
   "item.dcs_climate.food.porridge_squid":"イカスミのリゾット",
   "item.dcs_climate.food.oat_milk":"オートミールとミルク",
   "item.dcs_climate.food.muesli":"ミューズリー",
+  "item.dcs_climate.food.dumpling_tubers":"芋だんご",
+  "item.dcs_climate.food.dumpling_cereals":"だんご",
+  "item.dcs_climate.food.dumpling_buckwheat":"そばがき",
   "item.dcs_climate.food.rice_boiled":"ご飯",
   "item.dcs_climate.food.rice_barley":"麦飯",
   "item.dcs_climate.food.rice_seki":"赤飯",
@@ -817,6 +821,8 @@
   "item.dcs_climate.food.stew_tomyumgai":"トムヤムガイ",
   "item.dcs_climate.food.stew_bakkutteh":"肉骨茶",
   "item.dcs_climate.food.stew_offal":"ホルモンスープ",
+  "item.dcs_climate.food.stew_goulash":"グヤーシュ",
+  "item.dcs_climate.food.stew_palmnuts":"バンガスープ",
 
   "item.dcs_climate.food.wabowl_miso_tofu":"豆腐の味噌汁",
   "item.dcs_climate.food.wabowl_miso_age":"油揚げの味噌汁",
@@ -933,6 +939,8 @@
 
   "item.dcs_climate.food.sweetpotato_raw":"紙包みのサツマイモ",
   "item.dcs_climate.food.sweetpotato_cooked":"焼き芋",
+  "item.dcs_climate.food.sweetpotato_cassava_raw":"紙包みのキャッサバ",
+  "item.dcs_climate.food.sweetpotato_cassava_cooked":"焼きキャッサバ",
 
   "item.dcs_climate.food.plate_beef_raw":"生のステーキプレート",
   "item.dcs_climate.food.plate_beef_cooked":"ステーキプレート",
@@ -2019,6 +2027,8 @@
   "block.dcs_climate.build.bed_black":"セーブしないベッド(黒)",
   "block.dcs_climate.build.bed_red":"セーブしないベッド(赤)",
   "block.dcs_climate.build.bed_green":"セーブしないベッド(緑)",
+  
+  "block.dcs_climate.build.straw_mat":"ござ",
 
   "block.dcs_climate.build.luggage_normal":"キャリーバッグ",
   "block.dcs_climate.build.luggage_white":"キャリーバッグ(白)",

@@ -48,6 +48,8 @@ public class DonutItem extends ItemEntityFood {
 
 	@Override
 	public EntityRenderData getRenderData(Item item) {
+		if (item == FoodInit.DONUT_CINNAMON.get())
+			return CINNAMON;
 		if (item == FoodInit.DONUT_COCOA.get())
 			return COCOA;
 		if (item == FoodInit.DONUT_BERRY.get())
@@ -64,8 +66,9 @@ public class DonutItem extends ItemEntityFood {
 	}
 
 	public static final EntityRenderData SUGAR = new EntityRenderData("food/donut_sugar", 1.0F, 0F);
+	public static final EntityRenderData CINNAMON = new EntityRenderData("food/donut_cinnamon", 1.0F, 0F);
 	public static final EntityRenderData COCOA = new EntityRenderData("food/donut_cocoa", 1.0F, 0F);
-	public static final EntityRenderData BERRY = new EntityRenderData("food/donut_pink", 1.0F, 0F);
+	public static final EntityRenderData BERRY = new EntityRenderData("food/donut_berry", 1.0F, 0F);
 	public static final EntityRenderData MINT = new EntityRenderData("food/donut_mint", 1.0F, 0F);
 	public static final EntityRenderData COCONUT = new EntityRenderData("food/donut_coconut", 1.0F, 0F);
 	public static final EntityRenderData JELLY = new EntityRenderData("food/donut_jelly", 1.0F, 0F);

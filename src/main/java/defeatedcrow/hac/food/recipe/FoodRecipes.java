@@ -48,6 +48,7 @@ public class FoodRecipes {
 		list.add(new Smelting(FoodInit.STICK_EGGPLANT_COOKED, FoodInit.STICK_EGGPLANT_RAW, 120));
 		list.add(new Smelting(FoodInit.STICK_LETTUCE_COOKED, FoodInit.STICK_LETTUCE_RAW, 120));
 		list.add(new Smelting(FoodInit.SWEETPOTATO_COOKED, FoodInit.SWEETPOTATO_RAW, 120));
+		list.add(new Smelting(FoodInit.SWEETPOTATO_CASSAVA_COOKED, FoodInit.SWEETPOTATO_CASSAVA_RAW, 120));
 		list.add(new Smelting(FoodInit.PLATE_BEEF_COOKED, FoodInit.PLATE_BEEF_RAW, 120));
 		list.add(new Smelting(FoodInit.PLATE_MEAT_COOKED, FoodInit.PLATE_MEAT_RAW, 120));
 		list.add(new Smelting(FoodInit.PLATE_LEGS_COOKED, FoodInit.PLATE_LEGS_RAW, 120));

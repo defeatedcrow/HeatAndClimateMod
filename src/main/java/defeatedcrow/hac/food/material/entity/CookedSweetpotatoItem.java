@@ -24,10 +24,16 @@ public class CookedSweetpotatoItem extends ItemEntityFood {
 			return RAW;
 		if (item == FoodInit.SWEETPOTATO_COOKED.get())
 			return COOKED;
+		if (item == FoodInit.SWEETPOTATO_CASSAVA_RAW.get())
+			return CASSAVA_RAW;
+		if (item == FoodInit.SWEETPOTATO_CASSAVA_COOKED.get())
+			return CASSAVA_COOKED;
 		return RAW;
 	}
 
 	public static final EntityRenderData RAW = new EntityRenderData("food/sweetpotato_raw", 1F, 0F);
 	public static final EntityRenderData COOKED = new EntityRenderData("food/sweetpotato_cooked", 1F, 0F);
+	public static final EntityRenderData CASSAVA_RAW = new EntityRenderData("food/sweetpotato_raw", 1F, 0F);
+	public static final EntityRenderData CASSAVA_COOKED = new EntityRenderData("food/sweetpotato_cooked", 1F, 0F);
 
 }

@@ -44,11 +44,24 @@ public class MetalThinPlate extends BlockDC implements SimpleWaterloggedBlock {
 	public MetalThinPlate(String s) {
 		super(getProp());
 		name = s;
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FLAG, false).setValue(WATERLOGGED, false));
+		this.registerDefaultState(this.stateDefinition.any()
+		    .setValue(DCState.FLAG, false)
+		    .setValue(WATERLOGGED, false));
+	}
+
+	public MetalThinPlate(String s, BlockBehaviour.Properties prop) {
+		super(prop);
+		name = s;
+		this.registerDefaultState(this.stateDefinition.any()
+		    .setValue(DCState.FLAG, false)
+		    .setValue(WATERLOGGED, false));
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).sound(SoundType.METAL).strength(3.0F, 30.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE)
+		    .sound(SoundType.METAL)
+		    .strength(3.0F, 30.0F)
+		    .noOcclusion();
 	}
 
 	@Override
@@ -132,7 +145,8 @@ public class MetalThinPlate extends BlockDC implements SimpleWaterloggedBlock {
 		FluidState fluidstate = level.getFluidState(pos);
 		Direction dir = cont.getClickedFace();
 		boolean flag = dir == Direction.DOWN || dir != Direction.UP && cont.getClickLocation().y - pos.getY() > 0.5D;
-		return super.getStateForPlacement(cont).setValue(DCState.FLAG, flag).setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
+		return super.getStateForPlacement(cont).setValue(DCState.FLAG, flag)
+		    .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
 	}
 
 	@Override

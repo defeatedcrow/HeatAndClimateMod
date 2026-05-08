@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/dumpling_tubers"
+  },
+  "parent": "minecraft:item/generated"
+}

@@ -74,8 +74,11 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.network.IContainerFactory;
 import net.minecraftforge.registries.RegistryObject;
@@ -467,6 +470,11 @@ public class BuildInit {
 	public static final RegistryObject<Block> CHAIN_COPPER = regBlock("chain_copper", () -> new ChainBlockDC("copper"), null);
 	public static final RegistryObject<Block> CHAIN_VINE = regBlock("chain_vine", () -> new ChainBlockDC("vine", BlockBehaviour.Properties.copy(Blocks.ORANGE_WOOL)), null);
 	public static final RegistryObject<Block> LADDER_VINE = regBlock("vine_ladder", () -> new MetalLadder("vine_ladder"), null);
+
+	public static final RegistryObject<Block> STRAW_MAT = regBlock("straw_mat", () -> new MetalThinPlate("straw_mat", BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_ORANGE)
+	    .sound(SoundType.GRASS)
+	    .strength(1.0F, 5.0F)
+	    .noOcclusion()), null);
 
 	public static final RegistryObject<Block> CARPET_LINEN = regBlock("carpet_linen", () -> new CarpetPlanks("carpet_linen"), null);
 	public static final RegistryObject<Block> CARPET_WHITE = regBlock("carpet_white", () -> new CarpetPlanks("carpet_white"), TagDC.ItemTag.HAC_CARPET);

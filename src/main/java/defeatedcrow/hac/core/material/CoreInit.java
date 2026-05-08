@@ -394,10 +394,10 @@ public class CoreInit {
 	public static final RegistryObject<Item> PANTS_CLOTH_LIGHTBLUE = regItem("pants_cloth_lightblue", () -> new ArmorItemDC("pants_cloth_lightblue", MaterialsDC.CLOTH, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 	public static final RegistryObject<Item> PANTS_CLOTH_GRAY = regItem("pants_cloth_gray", () -> new ArmorItemDC("pants_cloth_gray", MaterialsDC.CLOTH, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
 
-	public static final RegistryObject<Item> TIGHTS_WOOL = regItem("tights_knit", () -> new ArmorItemDC("tights_knit", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
-	public static final RegistryObject<Item> TIGHTS_WOOL_BLACK = regItem("tights_knit_black", () -> new ArmorItemDC("tights_knit_black", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
-	public static final RegistryObject<Item> TIGHTS_WOOL_RED = regItem("tights_knit_red", () -> new ArmorItemDC("tights_knit_red", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
-	public static final RegistryObject<Item> TIGHTS_WOOL_BLUE = regItem("tights_knit_blue", () -> new ArmorItemDC("tights_knit_blue", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS));
+	public static final RegistryObject<Item> TIGHTS_WOOL = regItem("tights_knit", () -> new ArmorItemDC("tights_knit", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS_TIGHT));
+	public static final RegistryObject<Item> TIGHTS_WOOL_BLACK = regItem("tights_knit_black", () -> new ArmorItemDC("tights_knit_black", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS_TIGHT));
+	public static final RegistryObject<Item> TIGHTS_WOOL_RED = regItem("tights_knit_red", () -> new ArmorItemDC("tights_knit_red", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS_TIGHT));
+	public static final RegistryObject<Item> TIGHTS_WOOL_BLUE = regItem("tights_knit_blue", () -> new ArmorItemDC("tights_knit_blue", MaterialsDC.WOOL, EquipmentSlot.FEET, ArmorItemDC.ModelType.LEGGINS_TIGHT));
 
 	public static final RegistryObject<Item> CHAPS_LEATHER = regItem("chaps_leather", () -> new ArmorItemDC("chaps_leather", ArmorMaterials.LEATHER, EquipmentSlot.FEET, ArmorItemDC.ModelType.BOOTS));
 	public static final RegistryObject<Item> CHAPS_LEATHER_BLACK = regItem("chaps_leather_black", () -> new ArmorItemDC("chaps_leather_black", ArmorMaterials.LEATHER, EquipmentSlot.FEET, ArmorItemDC.ModelType.BOOTS));

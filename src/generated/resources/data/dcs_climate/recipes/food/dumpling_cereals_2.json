@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/water"
+    },
+    {
+      "tag": "forge:ingredients/millets"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/dumpling_cereals"
+  }
+}
