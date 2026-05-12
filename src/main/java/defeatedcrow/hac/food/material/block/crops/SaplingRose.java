@@ -34,28 +34,21 @@ public class SaplingRose extends SaplingBaseBlock {
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_RO_RUGOSA.get();
-		case RARE:
-			return FoodInit.CROP_RO_RASPBERRY.get();
-		default:
-			return FoodInit.CROP_RO_DAMASCHENA.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_RO_RUGOSA.get();
+		case RARE -> FoodInit.CROP_RO_RASPBERRY.get();
+		default -> FoodInit.CROP_RO_DAMASCHENA.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_RO_RUGOSA.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_RO_RASPBERRY.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_RO_DAMASCHENA.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_RO_RUGOSA.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_RO_RASPBERRY.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_RO_DAMASCHENA.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -86,26 +79,20 @@ public class SaplingRose extends SaplingBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("OCEAN", "BEACH", "PLAINS");
-		case COMMON:
-			return ImmutableList.of("FOREST", "MOUNTAIN");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("OCEAN", "BEACH", "PLAINS");
+		case COMMON -> ImmutableList.of("FOREST", "MOUNTAIN");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("HOT");
-		case COMMON:
-			return ImmutableList.of("HOT", "LOWLAND");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("HOT");
+		case COMMON -> ImmutableList.of("HOT", "LOWLAND");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
@@ -118,16 +105,31 @@ public class SaplingRose extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return FoodInit.LOG_BH_COMMON.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LEAVES_RO_RASPBERRY.get()
+		    .defaultBlockState();
+		case RARE -> FoodInit.LEAVES_RO_DAMASCHENA.get()
+		    .defaultBlockState();
+		default -> FoodInit.LEAVES_RO_RUGOSA.get()
+		    .defaultBlockState();
+		};
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		level.random.nextInt(2);
 		int h = 1;
 		int r = 2;
-		BlockState leaves = FoodInit.LEAVES_RO_RUGOSA.get().defaultBlockState();
-		if (t == CropTier.COMMON) {
-			leaves = FoodInit.LEAVES_RO_RASPBERRY.get().defaultBlockState();
-		} else if (t == CropTier.RARE) {
-			leaves = FoodInit.LEAVES_RO_DAMASCHENA.get().defaultBlockState();
-		}
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);

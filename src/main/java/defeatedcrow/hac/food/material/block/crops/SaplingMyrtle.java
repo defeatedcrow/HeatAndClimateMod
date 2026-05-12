@@ -34,28 +34,21 @@ public class SaplingMyrtle extends SaplingBaseBlock {
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_MY_GUAVA.get();
-		case RARE:
-			return FoodInit.CROP_MY_CLOVE.get();
-		default:
-			return Item.BY_BLOCK.get(FoodInit.BLOCK_MY_EUCALYPTUS.get());
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_MY_GUAVA.get();
+		case RARE -> FoodInit.CROP_MY_CLOVE.get();
+		default -> Item.BY_BLOCK.get(FoodInit.BLOCK_MY_EUCALYPTUS.get());
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_MY_EUCALYPTUS.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_MY_GUAVA.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_MY_CLOVE.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_MY_EUCALYPTUS.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_MY_GUAVA.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_MY_CLOVE.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -85,24 +78,19 @@ public class SaplingMyrtle extends SaplingBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("SAVANNA, RIVER, SWAMP");
-		case COMMON:
-			return ImmutableList.of("JUNGLE");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("SAVANNA, RIVER, SWAMP");
+		case COMMON -> ImmutableList.of("JUNGLE");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("SNOWY", "COLD");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("SNOWY", "COLD");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
@@ -115,18 +103,38 @@ public class SaplingMyrtle extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return FoodInit.LOG_MY_EUCALYPTUS.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LEAVES_MY_GUAVA.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_MY_CLOVE.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		default -> FoodInit.LEAVES_MY_EUCALYPTUS.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		};
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		// 各種サイズが違う
 		level.random.nextInt(5);
 		int h = 10 + level.random.nextInt(5);
 		int r = 4;
-		BlockState log = FoodInit.LOG_MY_EUCALYPTUS.get().defaultBlockState();
-		BlockState leaves = FoodInit.LEAVES_MY_EUCALYPTUS.get().defaultBlockState().setValue(DCState.FLAG, true);
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
 		if (t == CropTier.COMMON) {
-			leaves = FoodInit.LEAVES_MY_GUAVA.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 4 + level.random.nextInt(2);
 		} else if (t == CropTier.RARE) {
-			leaves = FoodInit.LEAVES_MY_CLOVE.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 4 + level.random.nextInt(2);
 		}
 

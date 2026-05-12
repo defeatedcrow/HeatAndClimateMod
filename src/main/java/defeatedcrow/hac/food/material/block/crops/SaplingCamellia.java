@@ -47,28 +47,21 @@ public class SaplingCamellia extends SaplingBaseBlock {
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_CM_SCHIMA.get();
-		case RARE:
-			return FoodInit.CROP_CM_TEA.get();
-		default:
-			return FoodInit.CROP_CM_OIL.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_CM_SCHIMA.get();
+		case RARE -> FoodInit.CROP_CM_TEA.get();
+		default -> FoodInit.CROP_CM_OIL.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_CM_OIL.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_CM_SCHIMA.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_CM_TEA.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_CM_OIL.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_CM_SCHIMA.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_CM_TEA.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -96,26 +89,20 @@ public class SaplingCamellia extends SaplingBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("MOUNTAIN", "COLD");
-		case COMMON:
-			return ImmutableList.of("MOUNTAIN", "JUNGLE");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("MOUNTAIN", "COLD");
+		case COMMON -> ImmutableList.of("MOUNTAIN", "JUNGLE");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("HOT", "DRY", "CONIFEROUS");
-		case COMMON:
-			return ImmutableList.of("COLD", "CONIFEROUS");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("HOT", "DRY", "CONIFEROUS");
+		case COMMON -> ImmutableList.of("COLD", "CONIFEROUS");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
@@ -128,17 +115,35 @@ public class SaplingCamellia extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return FoodInit.LOG_BH_COMMON.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LEAVES_CM_SCHIMA.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_CM_TEA.get()
+		    .defaultBlockState();
+		default -> FoodInit.LEAVES_CM_OIL.get()
+		    .defaultBlockState();
+		};
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		level.random.nextInt(2);
 		int h = 1 + level.random.nextInt(2);
 		int r = 2;
-		BlockState log = FoodInit.LOG_BH_COMMON.get().defaultBlockState();
-		BlockState leaves = FoodInit.LEAVES_CM_OIL.get().defaultBlockState();
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
 		if (t == CropTier.COMMON) {
-			leaves = FoodInit.LEAVES_CM_SCHIMA.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 2 + level.random.nextInt(3);
 		} else if (t == CropTier.RARE) {
-			leaves = FoodInit.LEAVES_CM_TEA.get().defaultBlockState();
 			h = 1;
 		}
 
@@ -174,7 +179,8 @@ public class SaplingCamellia extends SaplingBaseBlock {
 							if (p1.equals(p2) || p1.distSqr(p2) > lim)
 								continue;
 
-							if (level.getBlockState(p1).getBlock() == Blocks.AIR) {
+							if (level.getBlockState(p1)
+							    .getBlock() == Blocks.AIR) {
 								level.setBlock(p1, leaves, 2);
 							}
 

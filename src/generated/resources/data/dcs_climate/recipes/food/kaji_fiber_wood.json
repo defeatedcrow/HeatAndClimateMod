@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/bark_morus_paper"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/fiber_wood"
+  }
+}

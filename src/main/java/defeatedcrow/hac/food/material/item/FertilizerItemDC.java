@@ -68,7 +68,9 @@ public class FertilizerItemDC extends MaterialItemDC {
 		} else {
 			ItemStack meal = new ItemStack(Items.BONE_MEAL);
 			int hook = net.minecraftforge.event.ForgeEventFactory.onApplyBonemeal(player, level, pos, block, meal);
-			if (hook != 0 && block.getBlock() instanceof BonemealableBlock) {
+			if (hook != 0)
+				success = true;
+			else if (block.getBlock() instanceof BonemealableBlock) {
 				BonemealableBlock target = (BonemealableBlock) block.getBlock();
 				if (target.isValidBonemealTarget(level, pos, block, level.isClientSide)) {
 					if (level instanceof ServerLevel) {

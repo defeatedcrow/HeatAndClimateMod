@@ -8,17 +8,21 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
@@ -27,8 +31,18 @@ public class LogBlockDC extends RotatedPillarBlock implements IBlockDC, IJsonDat
 	final String name;
 
 	public LogBlockDC(String s) {
-		super(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD));
+		super(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD)
+		    .strength(2.0F)
+		    .sound(SoundType.WOOD));
 		name = s;
+		this.registerDefaultState(this.stateDefinition.any()
+		    .setValue(AXIS, Direction.Axis.Y)
+		    .setValue(DCState.WILD, false));
+	}
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
+		def.add(AXIS, DCState.WILD);
 	}
 
 	@Override
@@ -38,11 +52,8 @@ public class LogBlockDC extends RotatedPillarBlock implements IBlockDC, IJsonDat
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-			new JsonModelDC("minecraft:block/cube_column", ImmutableMap.of("end", "dcs_climate:block/tree/" + name + "_log_top",
-				"side", "dcs_climate:block/tree/" + name + "_log_side")),
-			new JsonModelDC("minecraft:block/cube_column_horizontal", ImmutableMap.of("end", "dcs_climate:block/tree/" + name + "_log_top",
-				"side", "dcs_climate:block/tree/" + name + "_log_side")));
+		return ImmutableList.of(new JsonModelDC("minecraft:block/cube_column", ImmutableMap.of("end", "dcs_climate:block/tree/" + name + "_log_top", "side", "dcs_climate:block/tree/" + name + "_log_side")),
+		    new JsonModelDC("minecraft:block/cube_column_horizontal", ImmutableMap.of("end", "dcs_climate:block/tree/" + name + "_log_top", "side", "dcs_climate:block/tree/" + name + "_log_side")));
 	}
 
 	@Override

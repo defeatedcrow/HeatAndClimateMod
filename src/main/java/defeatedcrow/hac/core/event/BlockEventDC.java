@@ -20,6 +20,7 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.crops.LeavesCropBlockDC;
+import defeatedcrow.hac.food.material.block.crops.LogBlockDC;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.block.monitor.MonitorBaseTile;
 import defeatedcrow.hac.magic.MagicUtil;
@@ -121,15 +122,18 @@ public class BlockEventDC {
 			}
 		}
 
-		if (level.isClientSide || player.isCrouching() || player.isSpectator() || !level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS))
+		if (level.isClientSide || player.isCrouching() || player.isSpectator() || !level.getGameRules()
+		    .getBoolean(GameRules.RULE_DOBLOCKDROPS))
 			return;
 
 		if (!DCUtil.isEmpty(held) && held.is(TagDC.ItemTag.SCYTHES)) {
 			int range = 2;
 			if (held.getItem() instanceof ITierItem tool) {
-				range = tool.getTier().getBreakRange();
+				range = tool.getTier()
+				    .getBreakRange();
 			} else if (held.getItem() instanceof TieredItem tool) {
-				range = tool.getTier().getLevel();
+				range = tool.getTier()
+				    .getLevel();
 			}
 			boolean b = false;
 			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
@@ -143,11 +147,12 @@ public class BlockEventDC {
 						if (level.getBlockEntity(mpos) != null || !target.canHarvestBlock(level, mpos, player))
 							continue;
 
-						if (target.is(TagDC.BlockTag.SCYTHE_BREAKABLE) || target.is(BlockTags.FLOWERS) || target.is(TagDC.BlockTag.WEED)
-								|| target.getBlock() instanceof IClimateCrop) {
+						if (target.is(TagDC.BlockTag.SCYTHE_BREAKABLE) || target.is(BlockTags.FLOWERS) || target.is(TagDC.BlockTag.WEED) || target.getBlock() instanceof IClimateCrop) {
 							if (canHarvestCrop(level, mpos, target) && target.onDestroyedByPlayer(level, mpos, player, true, level.getFluidState(mpos))) {
-								target.getBlock().destroy(level, mpos, target);
-								target.getBlock().playerDestroy(level, player, mpos, target, null, copy);
+								target.getBlock()
+								    .destroy(level, mpos, target);
+								target.getBlock()
+								    .playerDestroy(level, player, mpos, target, null, copy);
 								b = true;
 							}
 						}
@@ -166,55 +171,62 @@ public class BlockEventDC {
 			if (b) {
 				event.setCanceled(true);
 			}
-		} else if (!DCUtil.isEmpty(held) && held.is(Tags.Items.TOOLS_AXES) && player.hasEffect(CoreInit.LUMBERJACK.get())) {
+		} else if (canLumberjack(player, held, state)) {
 			ItemStack item = new ItemStack(state.getBlock());
-			boolean b = false;
-			if (state.is(BlockTags.LOGS)) {
-				int lim = ConfigCommonBuilder.INSTANCE.vTimberLimit.get();
-				List<BlockPos> set = DCUtil.findLog(level, pos, state.getBlock(), lim, ConfigCommonBuilder.INSTANCE.enTimberBreakLeaves.get());
-				if (set.isEmpty()) {
-					set = ImmutableList.of(pos);
+			int lim = ConfigCommonBuilder.INSTANCE.vTimberLimit.get();
+			List<BlockPos> set = DCUtil.findLog(level, pos, state.getBlock(), lim, ConfigCommonBuilder.INSTANCE.enTimberBreakLeaves.get());
+			if (set.isEmpty()) {
+				set = ImmutableList.of(pos);
+			}
+			int count = 0;
+			ItemStack copy = player.getMainHandItem()
+			    .copy();
+			for (BlockPos p2 : set) {
+				BlockState target = level.getBlockState(p2);
+				if (target.is(BlockTags.LOGS)) {
+					count++;
+					level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
+				} else {
+					target.getBlock()
+					    .destroy(level, p2, target);
+					target.getBlock()
+					    .playerDestroy(level, player, p2, target, null, copy);
+					level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
 				}
-				int count = 0;
-				ItemStack copy = player.getMainHandItem().copy();
-				for (BlockPos p2 : set) {
-					BlockState target = level.getBlockState(p2);
-					if (target.is(BlockTags.LOGS)) {
-						count++;
-						level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
-					} else {
-						target.getBlock().destroy(level, p2, target);
-						target.getBlock().playerDestroy(level, player, p2, target, null, copy);
-						level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
-					}
-				}
-
-				while (count > 0) {
-					int i = 0;
-					if (count > 64) {
-						i = 64;
-					} else {
-						i = count;
-					}
-					count -= i;
-					ItemStack drop = item.copy();
-					drop.setCount(i);
-					ItemEntity dropE = new ItemEntity(level, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, drop);
-					if (level.addFreshEntity(dropE))
-						level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
-				}
-
-				ItemStack cop = held.copy();
-				held.mineBlock(level, state, pos, player);
-				if (held.isEmpty() && !cop.isEmpty())
-					net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(player, cop, InteractionHand.MAIN_HAND);
-				b = true;
 			}
 
-			if (b) {
-				event.setCanceled(true);
+			while (count > 0) {
+				int i = 0;
+				if (count > 64) {
+					i = 64;
+				} else {
+					i = count;
+				}
+				count -= i;
+				ItemStack drop = item.copy();
+				drop.setCount(i);
+				ItemEntity dropE = new ItemEntity(level, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, drop);
+				if (level.addFreshEntity(dropE))
+					level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
 			}
+
+			ItemStack cop = held.copy();
+			held.mineBlock(level, state, pos, player);
+			if (held.isEmpty() && !cop.isEmpty())
+				net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(player, cop, InteractionHand.MAIN_HAND);
+
+			event.setCanceled(true);
 		}
+	}
+
+	private static boolean canLumberjack(Player player, ItemStack held, BlockState target) {
+		if (!DCUtil.isEmpty(held) && held.is(Tags.Items.TOOLS_AXES) && target.is(BlockTags.LOGS)) {
+			if (target.getBlock() instanceof LogBlockDC && DCState.getBool(target, DCState.WILD)) {
+				return true;
+			} else if (player != null && player.hasEffect(CoreInit.LUMBERJACK.get()) && target.is(BlockTags.LOGS))
+				return true;
+		}
+		return false;
 	}
 
 	private static boolean canHarvestCrop(Level level, BlockPos pos, BlockState state) {
@@ -233,26 +245,41 @@ public class BlockEventDC {
 	public static void onClickBlock(PlayerInteractEvent.RightClickBlock event) {
 		if (event.getEntity() != null && event.getHitVec() != null) {
 			BlockPos pos = event.getPos();
-			if (event.getEntity().isCrouching() && event.getItemStack().is(TagDC.ItemTag.CRAFT_DRIVER)) {
+			if (event.getEntity()
+			    .isCrouching()
+			    && event.getItemStack()
+			        .is(TagDC.ItemTag.CRAFT_DRIVER)) {
 				DCLogger.debugInfoLog("pos " + pos.toShortString());
-				BlockState state = event.getLevel().getBlockState(pos);
+				BlockState state = event.getLevel()
+				    .getBlockState(pos);
 				if (isMirrorTarget(state)) {
 					BlockState next = state.mirror(Mirror.FRONT_BACK);
-					event.getLevel().setBlock(pos, next, 3);
-					event.getEntity().swing(event.getHand(), true);
+					event.getLevel()
+					    .setBlock(pos, next, 3);
+					event.getEntity()
+					    .swing(event.getHand(), true);
 					event.setUseItem(Result.ALLOW);
 					event.setCanceled(true);
 				} else if (isRotateTarget(state)) {
 					BlockState next = state.rotate(event.getLevel(), pos, Rotation.CLOCKWISE_90);
-					event.getLevel().setBlock(pos, next, 3);
-					event.getEntity().swing(event.getHand(), true);
+					event.getLevel()
+					    .setBlock(pos, next, 3);
+					event.getEntity()
+					    .swing(event.getHand(), true);
 					event.setUseItem(Result.ALLOW);
 					event.setCanceled(true);
 				}
-			} else if (event.getEntity().isCrouching() && event.getItemStack().is(Items.NAME_TAG) && event.getLevel().getBlockEntity(pos) instanceof OwnableBaseTileDC ownable) {
+			} else if (event.getEntity()
+			    .isCrouching()
+			    && event.getItemStack()
+			        .is(Items.NAME_TAG)
+			    && event.getLevel()
+			        .getBlockEntity(pos) instanceof OwnableBaseTileDC ownable) {
 				if (event.getEntity() instanceof ServerPlayer sp) {
-					if (sp.getMainHandItem().is(Items.NAME_TAG) && ClimateCore.proxy.isOP(sp)) {
-						Component name = sp.getMainHandItem().getHoverName();
+					if (sp.getMainHandItem()
+					    .is(Items.NAME_TAG) && ClimateCore.proxy.isOP(sp)) {
+						Component name = sp.getMainHandItem()
+						    .getHoverName();
 						Player target = ClimateCore.proxy.getPlayer(sp.getLevel(), name.getString());
 						if (target != null) {
 							ownable.setOwner(target.getUUID());
@@ -263,23 +290,31 @@ public class BlockEventDC {
 				}
 				event.setUseItem(Result.ALLOW);
 				event.setCanceled(true);
-			} else if (event.getItemStack().is(MachineInit.MEMORY_COORD.get())) {
-				CompoundTag tag = event.getItemStack().getOrCreateTag();
-				BlockEntity target = event.getLevel().getBlockEntity(pos);
+			} else if (event.getItemStack()
+			    .is(MachineInit.MEMORY_COORD.get())) {
+				CompoundTag tag = event.getItemStack()
+				    .getOrCreateTag();
+				BlockEntity target = event.getLevel()
+				    .getBlockEntity(pos);
 				if (tag.contains(TagKeyDC.POS_X)) {
 					if (target instanceof MonitorBaseTile monitor) {
 						monitor.loadCoordTag(tag);
-						event.getEntity().swing(event.getHand(), true);
+						event.getEntity()
+						    .swing(event.getHand(), true);
 						event.setUseItem(Result.ALLOW);
 						event.setCanceled(true);
 					}
 				} else if (event.getLevel() instanceof ServerLevel serverLevel) {
-					BlockPos p = pos.relative(event.getFace().getOpposite());
-					tag.putInt(TagKeyDC.DIRECTION, event.getFace().getOpposite().get3DDataValue());
+					BlockPos p = pos.relative(event.getFace()
+					    .getOpposite());
+					tag.putInt(TagKeyDC.DIRECTION, event.getFace()
+					    .getOpposite()
+					    .get3DDataValue());
 					tag.putInt(TagKeyDC.POS_X, p.getX());
 					tag.putInt(TagKeyDC.POS_Y, p.getY());
 					tag.putInt(TagKeyDC.POS_Z, p.getZ());
-					event.getItemStack().setTag(tag);
+					event.getItemStack()
+					    .setTag(tag);
 
 					if (event.getEntity() instanceof ServerPlayer sp) {
 						MutableComponent mes = Component.translatable("dcs.tip.coodinate");
@@ -290,7 +325,8 @@ public class BlockEventDC {
 						sp.sendSystemMessage(mes2);
 					}
 
-					event.getEntity().swing(event.getHand(), true);
+					event.getEntity()
+					    .swing(event.getHand(), true);
 					event.setUseItem(Result.ALLOW);
 					event.setCanceled(true);
 				}
@@ -311,7 +347,8 @@ public class BlockEventDC {
 		Player p = event.getEntity();
 		BlockPos pos = event.getNewSpawn();
 		if (p instanceof ServerPlayer player) {
-			BlockState state = player.getLevel().getBlockState(pos);
+			BlockState state = player.getLevel()
+			    .getBlockState(pos);
 			if (state.getBlock() instanceof NoSaveBedBlock) {
 				event.setCanceled(true);
 			}

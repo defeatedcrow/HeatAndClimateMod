@@ -25,29 +25,29 @@ import net.minecraft.world.level.BlockGetter;
 public class ItemEdibleCropDC extends ItemCropDC implements IFoodTaste {
 
 	public ItemEdibleCropDC(CropTier rare, CropType t, String s, TagKey<Item> pair) {
-		super(new Item.Properties().rarity(rare.getRarity()).tab(FoodInit.AGRI), rare, t, s, pair, false);
+		super(new Item.Properties().rarity(rare.getRarity())
+		    .tab(FoodInit.AGRI), rare, t, s, pair, false);
 	}
 
 	public ItemEdibleCropDC(CropTier rare, CropType t, String s, TagKey<Item> pair, int nut, float sat) {
-		super(new Item.Properties().rarity(rare.getRarity()).tab(FoodInit.AGRI).food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().build()), rare, t, s, pair, false);
+		super(new Item.Properties().rarity(rare.getRarity())
+		    .tab(FoodInit.AGRI)
+		    .food(new FoodProperties.Builder().nutrition(nut)
+		        .saturationMod(sat)
+		        .alwaysEat()
+		        .build()), rare, t, s, pair, false);
 	}
 
 	public TagKey<Item> getFlavorTag() {
 		int t = taste > -3 ? taste : tier.getTaste();
-		switch (t) {
-		case -2:
-			return TagDC.ItemTag.HAC_FOOD_FLAVOR1;
-		case -1:
-			return TagDC.ItemTag.HAC_FOOD_FLAVOR2;
-		case 0:
-			return TagDC.ItemTag.HAC_FOOD_FLAVOR3;
-		case 1:
-			return TagDC.ItemTag.HAC_FOOD_FLAVOR4;
-		case 2:
-			return TagDC.ItemTag.HAC_FOOD_FLAVOR5;
-		default:
-			return TagDC.ItemTag.HAC_FOOD_FLAVOR3;
-		}
+		return switch (t) {
+		case -2 -> TagDC.ItemTag.HAC_FOOD_FLAVOR1;
+		case -1 -> TagDC.ItemTag.HAC_FOOD_FLAVOR2;
+		case 0 -> TagDC.ItemTag.HAC_FOOD_FLAVOR3;
+		case 1 -> TagDC.ItemTag.HAC_FOOD_FLAVOR4;
+		case 2 -> TagDC.ItemTag.HAC_FOOD_FLAVOR5;
+		default -> TagDC.ItemTag.HAC_FOOD_FLAVOR3;
+		};
 	}
 
 	@Override
@@ -55,8 +55,10 @@ public class ItemEdibleCropDC extends ItemCropDC implements IFoodTaste {
 		if (DCUtil.isEmpty(item))
 			return 0;
 		CompoundTag tag = item.getOrCreateTag();
-		if (item.getTag().contains(TagKeyDC.TASTE)) {
-			int tagTaste = item.getTag().getInt(TagKeyDC.TASTE);
+		if (item.getTag()
+		    .contains(TagKeyDC.TASTE)) {
+			int tagTaste = item.getTag()
+			    .getInt(TagKeyDC.TASTE);
 			tagTaste = Mth.clamp(tagTaste, -2, 2);
 			return tagTaste;
 		} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR)) {

@@ -34,28 +34,21 @@ public class SaplingErica extends SaplingBaseBlock {
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_ER_RHODODENDRON.get();
-		case RARE:
-			return FoodInit.CROP_ER_BLUEBERRY.get();
-		default:
-			return FoodInit.CROP_ER_HEATH.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_ER_RHODODENDRON.get();
+		case RARE -> FoodInit.CROP_ER_BLUEBERRY.get();
+		default -> FoodInit.CROP_ER_HEATH.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_ER_HEATH.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_ER_RHODODENDRON.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_ER_BLUEBERRY.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_ER_HEATH.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_ER_RHODODENDRON.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_ER_BLUEBERRY.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -83,26 +76,20 @@ public class SaplingErica extends SaplingBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("CONIFEROUS", "COLD", "MOUNTAIN");
-		case COMMON:
-			return ImmutableList.of("CONIFEROUS", "JUNGLE", "MOUNTAIN");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("CONIFEROUS", "COLD", "MOUNTAIN");
+		case COMMON -> ImmutableList.of("CONIFEROUS", "JUNGLE", "MOUNTAIN");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("HOT", "OCEAN");
-		case COMMON:
-			return ImmutableList.of("LOWLAND");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("HOT", "OCEAN");
+		case COMMON -> ImmutableList.of("LOWLAND");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
@@ -115,17 +102,35 @@ public class SaplingErica extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return FoodInit.LOG_BH_COMMON.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LEAVES_ER_RHODODENDRON.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_ER_BLUEBERRY.get()
+		    .defaultBlockState();
+		default -> FoodInit.LEAVES_ER_HEATH.get()
+		    .defaultBlockState();
+		};
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		level.random.nextInt(2);
 		int h = 1;
 		int r = 2;
-		BlockState log = FoodInit.LOG_BH_COMMON.get().defaultBlockState();
-		BlockState leaves = FoodInit.LEAVES_ER_HEATH.get().defaultBlockState();
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
 		if (t == CropTier.COMMON) {
-			leaves = FoodInit.LEAVES_ER_RHODODENDRON.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 2 + level.random.nextInt(3);
 		} else if (t == CropTier.RARE) {
-			leaves = FoodInit.LEAVES_ER_BLUEBERRY.get().defaultBlockState();
 			h = 1 + level.random.nextInt(2);
 		}
 

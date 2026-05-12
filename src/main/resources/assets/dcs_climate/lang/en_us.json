@@ -613,6 +613,10 @@
   "item.dcs_climate.food.sap_latex":"Latex",
   "item.dcs_climate.food.sap_sumac":"Lacquer",
   "item.dcs_climate.food.sap_poison":"Poisonous Sap",
+  
+  "item.dcs_climate.food.bark_cherry_wild":"Cherry Bark",
+  "item.dcs_climate.food.bark_morus_paper":"Mulberry Bark",
+  "item.dcs_climate.food.bark_birch":"Birch Bark",
 
   "item.dcs_climate.food.string_plant":"Plant String",
   "item.dcs_climate.food.string_tree":"Bark String",
@@ -1559,6 +1563,10 @@
   "block.dcs_climate.food.log_palm_coconut":"Palm Log",
   "block.dcs_climate.food.log_sumac_lacquer":"Lacquer Tree Log",
   "block.dcs_climate.food.log_sumac_mango":"Sumac Log",
+  
+  "block.dcs_climate.food.log_cherry_wild_stripped":"Stripped Cherry Log",
+  "block.dcs_climate.food.log_cinnamon_true_stripped":"tripped Cinnamon Log",
+  "block.dcs_climate.food.log_morus_paper_stripped":"tripped Paper Mulberry Log",
 
   "block.dcs_climate.food.plank_beech_common":"Beech Planks",
   "block.dcs_climate.food.plank_beech_walnut":"Walnut Planks",

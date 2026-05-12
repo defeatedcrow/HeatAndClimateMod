@@ -1,0 +1,45 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "minecraft:pink_dye",
+    "count": 8
+  },
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/bark_cherry_wild"
+    },
+    {
+      "item": "dcs_climate:food/bark_cherry_wild"
+    },
+    {
+      "item": "dcs_climate:food/bark_cherry_wild"
+    },
+    {
+      "tag": "forge:dusts/aluminum"
+    },
+    {
+      "tag": "forge:ingredients/vinegar"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

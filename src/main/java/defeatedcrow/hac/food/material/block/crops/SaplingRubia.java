@@ -107,17 +107,34 @@ public class SaplingRubia extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return FoodInit.LOG_BH_COMMON.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LEAVES_RU_COFFEE.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_RU_IXORA.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		default -> FoodInit.LEAVES_RU_GARDENIA.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		};
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		level.random.nextInt(2);
 		int h = 1 + level.random.nextInt(3);
 		int r = 2;
-		BlockState log = FoodInit.LOG_BH_COMMON.get().defaultBlockState();
-		BlockState leaves = FoodInit.LEAVES_RU_GARDENIA.get().defaultBlockState().setValue(DCState.FLAG, true);
-		if (t == CropTier.COMMON) {
-			leaves = FoodInit.LEAVES_RU_COFFEE.get().defaultBlockState().setValue(DCState.FLAG, true);
-		} else if (t == CropTier.RARE) {
-			leaves = FoodInit.LEAVES_RU_IXORA.get().defaultBlockState().setValue(DCState.FLAG, true);
-		}
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);

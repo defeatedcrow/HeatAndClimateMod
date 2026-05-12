@@ -34,28 +34,21 @@ public class SaplingMorus extends SaplingBaseBlock {
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_MR_PAPER.get();
-		case RARE:
-			return FoodInit.CROP_MR_RUBBER.get();
-		default:
-			return FoodInit.CROP_MR_MULBERRY.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_MR_PAPER.get();
+		case RARE -> FoodInit.CROP_MR_RUBBER.get();
+		default -> FoodInit.CROP_MR_MULBERRY.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_MR_MULBERRY.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_MR_PAPER.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_MR_RUBBER.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_MR_MULBERRY.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_MR_PAPER.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_MR_RUBBER.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -80,24 +73,19 @@ public class SaplingMorus extends SaplingBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("JUNGLE", "SWAMP");
-		case COMMON:
-			return ImmutableList.of("JUNGLE", "MOUNTAIN");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("JUNGLE", "SWAMP");
+		case COMMON -> ImmutableList.of("JUNGLE", "MOUNTAIN");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("CONIFEROUS", "COLD");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("CONIFEROUS", "COLD");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
@@ -110,19 +98,44 @@ public class SaplingMorus extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LOG_MR_PAPER.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+		case RARE -> FoodInit.LOG_MR_RUBBER.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+		default -> FoodInit.LOG_MR_MULBERRY.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+		};
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LEAVES_MR_PAPER.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_MR_RUBBER.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		default -> FoodInit.LEAVES_MR_MULBERRY.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		};
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		// 各種サイズが違う
 		level.random.nextInt(4);
 		int h = 3 + level.random.nextInt(4);
 		int r = 3;
-		BlockState log = FoodInit.LOG_MR_MULBERRY.get().defaultBlockState();
-		BlockState leaves = FoodInit.LEAVES_MR_MULBERRY.get().defaultBlockState().setValue(DCState.FLAG, true);
-		if (t == CropTier.COMMON) {
-			log = FoodInit.LOG_MR_PAPER.get().defaultBlockState();
-			leaves = FoodInit.LEAVES_MR_PAPER.get().defaultBlockState().setValue(DCState.FLAG, true);
-		} else if (t == CropTier.RARE) {
-			log = FoodInit.LOG_MR_RUBBER.get().defaultBlockState();
-			leaves = FoodInit.LEAVES_MR_RUBBER.get().defaultBlockState().setValue(DCState.FLAG, true);
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
+		if (t == CropTier.RARE) {
 			h = 8 + level.random.nextInt(5);
 			r = 4;
 		}

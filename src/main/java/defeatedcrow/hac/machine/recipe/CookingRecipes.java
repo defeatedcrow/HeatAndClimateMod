@@ -931,6 +931,11 @@ public class CookingRecipes {
 				ImmutableList.of(FluidTags.WATER.location().toString()),
 				ImmutableList.of(Ingredient.of(TagDC.ItemTag.CROP_ACORN), Ingredient.of(TagDC.ItemTag.CROP_ACORN), Ingredient.of(TagDC.ItemTag.CROP_ACORN),
 						Ingredient.of(TagDC.ItemTag.DUST_IRON), Ingredient.of(TagDC.ItemTag.VINEGAR)));
+		
+		DeviceRecipeList.addCookingRecipe(3, RecipeTypeDC.COOKING, new ItemStack(Items.PINK_DYE, 8), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil,
+			ImmutableList.of(FluidTags.WATER.location().toString()),
+			ImmutableList.of(Ingredient.of(FoodInit.BARK_CHERRY.get()), Ingredient.of(FoodInit.BARK_CHERRY.get()), Ingredient.of(FoodInit.BARK_CHERRY.get()),
+					Ingredient.of(TagDC.ItemTag.DUST_ALUMINUM), Ingredient.of(TagDC.ItemTag.VINEGAR)));
 
 		// frying
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.FRYING, new ItemStack(FoodInit.FOOD_OAGE.get(), 1), ItemStack.EMPTY, 0, new FluidStack(CoreInit.USED_PLANT_OIL.getStillFluid().get(), 200),

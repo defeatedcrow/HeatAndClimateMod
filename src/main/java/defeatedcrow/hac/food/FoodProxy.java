@@ -16,7 +16,7 @@ public class FoodProxy {
 
 	public static void registerEvent() {
 		MinecraftForge.EVENT_BUS.addListener(ClickEventDC::onClickBlock);
-		//MinecraftForge.EVENT_BUS.addListener(ClickEventDC::onClickEntity);
+		MinecraftForge.EVENT_BUS.addListener(ClickEventDC::onAxeStrip);
 		MinecraftForge.EVENT_BUS.addListener(CraftingFoodEvent::onCraft);
 
 	}
@@ -29,7 +29,11 @@ public class FoodProxy {
 	}
 
 	static void registerDispenser() {
-		CoreInit.ITEMS.getEntries().stream().filter(item -> item.get() instanceof ItemEntityFood).map(RegistryObject::get).forEach(i -> { DispenserBlock.registerBehavior(i, new HaCDispenseItemBehavior()); });
+		CoreInit.ITEMS.getEntries()
+		    .stream()
+		    .filter(item -> item.get() instanceof ItemEntityFood)
+		    .map(RegistryObject::get)
+		    .forEach(i -> { DispenserBlock.registerBehavior(i, new HaCDispenseItemBehavior()); });
 	}
 
 }

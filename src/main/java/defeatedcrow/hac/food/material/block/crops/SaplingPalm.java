@@ -48,28 +48,21 @@ public class SaplingPalm extends SaplingBaseBlock {
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_PL_DATE.get();
-		case RARE:
-			return FoodInit.CROP_PL_OIL.get();
-		default:
-			return FoodInit.CROP_PL_COCONUT.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_PL_DATE.get();
+		case RARE -> FoodInit.CROP_PL_OIL.get();
+		default -> FoodInit.CROP_PL_COCONUT.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_PL_COCONUT.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_PL_DATE.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_PL_OIL.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_PL_COCONUT.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_PL_DATE.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_PL_OIL.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -94,24 +87,19 @@ public class SaplingPalm extends SaplingBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("OCEAN", "BEACH", "JUNGLE");
-		case COMMON:
-			return ImmutableList.of("DESERT", "SAVANNA");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("OCEAN", "BEACH", "JUNGLE");
+		case COMMON -> ImmutableList.of("DESERT", "SAVANNA");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("COLD", "RIVER");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("COLD", "RIVER");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
@@ -124,16 +112,33 @@ public class SaplingPalm extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return FoodInit.LOG_PL_COCONUT.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return FoodInit.LEAVES_PL_COMMON.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		level.random.nextInt(4);
 		int h = 3 + level.random.nextInt(4);
-		BlockState log = FoodInit.LOG_PL_COCONUT.get().defaultBlockState();
-		BlockState leaves = FoodInit.LEAVES_PL_COMMON.get().defaultBlockState().setValue(DCState.FLAG, true);
-		BlockState crop = FoodInit.CROPBLOCK_PL_COCONUT.get().defaultBlockState();
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
+		BlockState crop = FoodInit.CROPBLOCK_PL_COCONUT.get()
+		    .defaultBlockState();
 		if (t == CropTier.COMMON) {
-			crop = FoodInit.CROPBLOCK_PL_DATE.get().defaultBlockState();
+			crop = FoodInit.CROPBLOCK_PL_DATE.get()
+			    .defaultBlockState();
 		} else if (t == CropTier.RARE) {
-			crop = FoodInit.CROPBLOCK_PL_OIL.get().defaultBlockState();
+			crop = FoodInit.CROPBLOCK_PL_OIL.get()
+			    .defaultBlockState();
 		}
 
 		// 安全性チェック
@@ -161,8 +166,16 @@ public class SaplingPalm extends SaplingBaseBlock {
 				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX() * 3, h + 2, dir.getStepZ() * 3), leaves, true);
 				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX() * 4, h + 1, dir.getStepZ() * 4), leaves, true);
 
-				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX() + dir.getClockWise().getStepX(), h + 2, dir.getStepZ() + dir.getClockWise().getStepZ()), leaves, true);
-				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX() + dir.getClockWise().getStepX(), h + 3, dir.getStepZ() + dir.getClockWise().getStepZ()), leaves, true);
+				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX() + dir.getClockWise()
+				    .getStepX(), h + 2, dir.getStepZ()
+				        + dir.getClockWise()
+				            .getStepZ()),
+				    leaves, true);
+				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX() + dir.getClockWise()
+				    .getStepX(), h + 3, dir.getStepZ()
+				        + dir.getClockWise()
+				            .getStepZ()),
+				    leaves, true);
 
 				DCUtil.setBlockIfReplaceable(level, pos.offset(dir.getStepX(), h, dir.getStepZ()), crop, true);
 			}

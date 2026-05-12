@@ -129,8 +129,7 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/sapling_" + getFamily().toString() + "_" + getSpeciesName(cropTier))));
+		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/sapling_" + getFamily().toString() + "_" + getSpeciesName(cropTier))));
 	}
 
 	@Override
@@ -160,11 +159,19 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 		return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 	}
 
+	protected abstract BlockState getLogState(CropTier t);
+
+	protected abstract BlockState getLeavesState(CropTier t);
+
 	protected abstract void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t);
 
 	protected static boolean replaceCheck(Level level, BlockPos pos, int height) {
 		for (int i = 1; i < height; i++) {
-			if (!level.getBlockState(pos.above(i)).getMaterial().isReplaceable() && !level.getBlockState(pos.above(i)).is(BlockTags.LEAVES))
+			if (!level.getBlockState(pos.above(i))
+			    .getMaterial()
+			    .isReplaceable()
+			    && !level.getBlockState(pos.above(i))
+			        .is(BlockTags.LEAVES))
 				return true;
 		}
 		return false;
@@ -256,8 +263,10 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 		if (h > 6) {
 			int ax1 = d1.getStepX();
 			int az1 = d1.getStepZ();
-			int ax2 = d1.getClockWise().getStepX();
-			int az2 = d1.getClockWise().getStepZ();
+			int ax2 = d1.getClockWise()
+			    .getStepX();
+			int az2 = d1.getClockWise()
+			    .getStepZ();
 			BlockState log2 = d1.getAxis() == Direction.Axis.X ? log.setValue(BlockStateProperties.AXIS, Direction.Axis.X) : log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
 			level.setBlock(mpos.setWithOffset(pos, ax1, h1, az1), log2, 2);
 			level.setBlock(mpos.setWithOffset(pos, ax1 * 2, h1, az1 * 2), log2, 2);
@@ -270,8 +279,10 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 		if (h > 5) {
 			int ax1 = d2.getStepX();
 			int az1 = d2.getStepZ();
-			int ax2 = d2.getClockWise().getStepX();
-			int az2 = d2.getClockWise().getStepZ();
+			int ax2 = d2.getClockWise()
+			    .getStepX();
+			int az2 = d2.getClockWise()
+			    .getStepZ();
 			BlockState log2 = d2.getAxis() == Direction.Axis.X ? log.setValue(BlockStateProperties.AXIS, Direction.Axis.X) : log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
 			level.setBlock(mpos.setWithOffset(pos, ax1, h2, az1), log2, 2);
 			level.setBlock(mpos.setWithOffset(pos, ax1 * 2, h2, az1 * 2), log2, 2);
@@ -284,8 +295,10 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 		if (h > 4) {
 			int ax1 = d3.getStepX();
 			int az1 = d3.getStepZ();
-			int ax2 = d3.getClockWise().getStepX();
-			int az2 = d3.getClockWise().getStepZ();
+			int ax2 = d3.getClockWise()
+			    .getStepX();
+			int az2 = d3.getClockWise()
+			    .getStepZ();
 			BlockState log2 = d3.getAxis() == Direction.Axis.X ? log.setValue(BlockStateProperties.AXIS, Direction.Axis.X) : log.setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
 			level.setBlock(mpos.setWithOffset(pos, ax1, h3, az1), log2, 2);
 			level.setBlock(mpos.setWithOffset(pos, ax1 * 2, h3, az1 * 2), log2, 2);
@@ -576,7 +589,8 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 	}
 
 	private static void placeLeaves(Level level, BlockPos pos, int dist, BlockState leaves) {
-		if (level.getBlockState(pos).getBlock() == Blocks.AIR) {
+		if (level.getBlockState(pos)
+		    .getBlock() == Blocks.AIR) {
 			level.setBlock(pos, DCState.setInt(leaves, DCState.DIST, dist), 2);
 		}
 	}

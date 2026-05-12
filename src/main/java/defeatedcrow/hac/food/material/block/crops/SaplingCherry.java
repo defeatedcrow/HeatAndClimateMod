@@ -35,32 +35,23 @@ public class SaplingCherry extends SaplingBaseBlock {
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_CH_PLUM.get();
-		case RARE:
-			return FoodInit.CROP_CH_PEACH.get();
-		case EPIC:
-			return FoodInit.CROP_CH_ALMOND.get();
-		default:
-			return FoodInit.CROP_CH_WILD.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_CH_PLUM.get();
+		case RARE -> FoodInit.CROP_CH_PEACH.get();
+		case EPIC -> FoodInit.CROP_CH_ALMOND.get();
+		default -> FoodInit.CROP_CH_WILD.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_CH_WILD.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_CH_PLUM.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_CH_PEACH.get());
-		case EPIC:
-			return Optional.of(FoodInit.BLOCK_CH_ALMOND.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_CH_WILD.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_CH_PLUM.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_CH_PEACH.get());
+		case EPIC -> Optional.of(FoodInit.BLOCK_CH_ALMOND.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -91,24 +82,19 @@ public class SaplingCherry extends SaplingBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("MOUNTAIN", "FOREST");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("MOUNTAIN", "FOREST");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("CONIFEROUS", "HOT", "LOWLAND");
-		case COMMON:
-			return ImmutableList.of("CONIFEROUS", "HOT");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("CONIFEROUS", "HOT", "LOWLAND");
+		case COMMON -> ImmutableList.of("CONIFEROUS", "HOT");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
@@ -123,20 +109,38 @@ public class SaplingCherry extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return FoodInit.LOG_CH_WILD.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LEAVES_CH_PLUM.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_CH_PEACH.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case EPIC -> FoodInit.LEAVES_CH_ALMOND.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		default -> FoodInit.LEAVES_BH_COMMON.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		};
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		// 高さ3~6、幅5
 		level.random.nextInt(3);
 		int h = 3 + level.random.nextInt(3);
 		int r = 2;
-		BlockState log = FoodInit.LOG_CH_WILD.get().defaultBlockState();
-		BlockState leaves = FoodInit.LEAVES_CH_WILD.get().defaultBlockState().setValue(DCState.FLAG, true);
-		if (t == CropTier.COMMON) {
-			leaves = FoodInit.LEAVES_CH_PLUM.get().defaultBlockState().setValue(DCState.FLAG, true);
-		} else if (t == CropTier.RARE) {
-			leaves = FoodInit.LEAVES_CH_PEACH.get().defaultBlockState().setValue(DCState.FLAG, true);
-		} else if (t == CropTier.EPIC) {
-			leaves = FoodInit.LEAVES_CH_ALMOND.get().defaultBlockState().setValue(DCState.FLAG, true);
-		}
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);
@@ -157,7 +161,7 @@ public class SaplingCherry extends SaplingBaseBlock {
 			// 葉
 			level.setBlock(pos.above(h), leaves, 2);
 			int h2 = 2;
-			for (int j = (h - h2); j < h + 1; j++) {
+			for (int j = h - h2; j < h + 1; j++) {
 				for (int k = -r; k <= r; k++) {
 					for (int l = -r; l <= r; l++) {
 						double lim = 6D;
@@ -170,7 +174,8 @@ public class SaplingCherry extends SaplingBaseBlock {
 						if (p1.equals(p2) || p1.distSqr(p2) > lim)
 							continue;
 
-						if (level.getBlockState(p1).getBlock() == Blocks.AIR) {
+						if (level.getBlockState(p1)
+						    .getBlock() == Blocks.AIR) {
 							level.setBlock(p1, leaves, 2);
 						}
 

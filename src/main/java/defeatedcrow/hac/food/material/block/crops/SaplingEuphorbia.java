@@ -108,16 +108,36 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return switch (t) {
+		case RARE -> FoodInit.LOG_EU_MANCHINEEL.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+		default -> FoodInit.LOG_EU_KUKUI.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+		};
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LEAVES_EU_MANCHINEEL.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		default -> FoodInit.LEAVES_EU_KUKUI.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		};
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		// 高さ5~8、幅5
 		int h = 5 + level.random.nextInt(4);
 		int r = 2;
-		BlockState log = FoodInit.LOG_EU_KUKUI.get().defaultBlockState();
-		BlockState leaves = FoodInit.LEAVES_EU_KUKUI.get().defaultBlockState().setValue(DCState.FLAG, true);
-		if (t == CropTier.RARE) {
-			log = FoodInit.LOG_EU_MANCHINEEL.get().defaultBlockState();
-			leaves = FoodInit.LEAVES_EU_MANCHINEEL.get().defaultBlockState().setValue(DCState.FLAG, true);
-		}
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);

@@ -25,12 +25,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.TieredItem;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.level.BlockEvent.BlockToolModificationEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -42,7 +46,8 @@ public class ClickEventDC {
 			Level level = event.getLevel();
 			Player player = event.getEntity();
 			ItemStack item = event.getItemStack();
-			BlockState target = event.getLevel().getBlockState(event.getPos());
+			BlockState target = event.getLevel()
+			    .getBlockState(event.getPos());
 
 			// fertilizer
 			if (!item.isEmpty() && item.is(TagDC.ItemTag.FERTILIZER)) {
@@ -59,7 +64,8 @@ public class ClickEventDC {
 						BlockState next = FertileBlock.fertileSoil(f2, target);
 						level.setBlockAndUpdate(event.getPos(), next);
 						item.shrink(1);
-						level.levelEvent(1505, event.getPos().above(), 0);
+						level.levelEvent(1505, event.getPos()
+						    .above(), 0);
 
 					}
 					event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
@@ -70,9 +76,11 @@ public class ClickEventDC {
 				int m = DCState.getInt(target, DCState.STAGE5);
 				if (target.is(TagDC.BlockTag.CROP_GREEN_MANURES) && (m == -1 || m > 1)) {
 					// 下のブロック
-					BlockState below = level.getBlockState(event.getPos().below());
+					BlockState below = level.getBlockState(event.getPos()
+					    .below());
 					if (below.is(BlockTags.DIRT) || below.is(TagDC.BlockTag.FARMLAND)) {
-						int f = FertileBlock.getFertile(level, event.getPos().below(), below) - 1;
+						int f = FertileBlock.getFertile(level, event.getPos()
+						    .below(), below) - 1;
 						if (!level.isClientSide && f < 3) {
 							// 緑肥をすき込む
 							if (target.getBlock() instanceof ClimateCropBaseBlock) {
@@ -81,7 +89,8 @@ public class ClickEventDC {
 								level.setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
 							}
 							BlockState next = FertileBlock.fertileSoil(f + 1, below);
-							level.setBlockAndUpdate(event.getPos().below(), next);
+							level.setBlockAndUpdate(event.getPos()
+							    .below(), next);
 							if (player != null) {
 								item.hurtAndBreak(1, player, c -> { c.broadcastBreakEvent(event.getHand()); });
 							}
@@ -98,7 +107,12 @@ public class ClickEventDC {
 							crop.breakAndDropSeed(level, event.getPos(), target);
 						} else if (target.getBlock() instanceof LeavesCropBlockDC leaves) {
 							ItemStack seed = new ItemStack(leaves.getSeedItem(leaves.getTier()));
-							ItemEntity drop = new ItemEntity(level, event.getPos().getX() + 0.5D, event.getPos().getY() + 0.15D, event.getPos().getZ() + 0.5D, seed);
+							ItemEntity drop = new ItemEntity(level, event.getPos()
+							    .getX()
+							    + 0.5D, event.getPos()
+							        .getY()
+							        + 0.15D, event.getPos()
+							            .getZ() + 0.5D, seed);
 							if (drop != null && !level.isClientSide) {
 								level.addFreshEntity(drop);
 								level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 2);
@@ -119,7 +133,8 @@ public class ClickEventDC {
 				BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
 				int r = 2;
 				if (item.getItem() instanceof TieredItem tiered) {
-					r = tiered.getTier().getLevel();
+					r = tiered.getTier()
+					    .getLevel();
 				} else if (item.getItem() instanceof ItemScythe scythe) {
 					r = scythe.tier.getLevel();
 				}
@@ -127,7 +142,12 @@ public class ClickEventDC {
 				for (int x = -r; x < r + 1; x++) {
 					for (int z = -r; z < r + 1; z++) {
 						for (int y = r; y >= -r; y--) {
-							mpos.set(event.getPos().getX() + x, event.getPos().getY() + y, event.getPos().getZ() + z);
+							mpos.set(event.getPos()
+							    .getX() + x,
+							    event.getPos()
+							        .getY() + y,
+							    event.getPos()
+							        .getZ() + z);
 							BlockState s2 = level.getBlockState(mpos);
 							Block b2 = s2.getBlock();
 							if (b2 instanceof IRapidCollectables rap) {
@@ -147,6 +167,57 @@ public class ClickEventDC {
 					}
 					event.setUseItem(Result.ALLOW);
 				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void onAxeStrip(BlockToolModificationEvent event) {
+		Player player = event.getPlayer();
+		UseOnContext target = event.getContext();
+		ItemStack tool = event.getHeldItemStack();
+		if (player != null && target != null && event.getToolAction() == ToolActions.AXE_STRIP) {
+			Level playerLevel = player.getLevel();
+			BlockState log = target.getLevel()
+			    .getBlockState(target.getClickedPos());
+			if (log.getBlock() == FoodInit.LOG_CH_WILD.get()) {
+				ItemStack bark = new ItemStack(FoodInit.BARK_CHERRY.get());
+				ItemEntity drop = new ItemEntity(playerLevel, player.getX(), player.getY(), player.getZ(), bark);
+				if (!playerLevel.isClientSide()) {
+					playerLevel.addFreshEntity(drop);
+				}
+				event.setFinalState(FoodInit.LOG_CH_WILD_STRIPPED.get()
+				    .defaultBlockState()
+				    .setValue(RotatedPillarBlock.AXIS, log.getValue(RotatedPillarBlock.AXIS))
+				    .setValue(DCState.WILD, log.getValue(DCState.WILD)));
+			} else if (log.getBlock() == FoodInit.LOG_CN_CINNAMON.get()) {
+				ItemStack bark = new ItemStack(FoodInit.CROP_CN_CINNAMON.get());
+				ItemEntity drop = new ItemEntity(playerLevel, player.getX(), player.getY(), player.getZ(), bark);
+				if (!playerLevel.isClientSide()) {
+					playerLevel.addFreshEntity(drop);
+				}
+				event.setFinalState(FoodInit.LOG_CN_CINNAMON_STRIPPED.get()
+				    .defaultBlockState()
+				    .setValue(RotatedPillarBlock.AXIS, log.getValue(RotatedPillarBlock.AXIS))
+				    .setValue(DCState.WILD, log.getValue(DCState.WILD)));
+			} else if (log.getBlock() == FoodInit.LOG_MR_PAPER.get()) {
+				ItemStack bark = new ItemStack(FoodInit.BARK_PAPER.get());
+				ItemEntity drop = new ItemEntity(playerLevel, player.getX(), player.getY(), player.getZ(), bark);
+				if (!playerLevel.isClientSide()) {
+					playerLevel.addFreshEntity(drop);
+				}
+				event.setFinalState(FoodInit.LOG_MR_PAPER_STRIPPED.get()
+				    .defaultBlockState()
+				    .setValue(RotatedPillarBlock.AXIS, log.getValue(RotatedPillarBlock.AXIS))
+				    .setValue(DCState.WILD, log.getValue(DCState.WILD)));
+			} else if (log.getBlock() == Blocks.BIRCH_LOG) {
+				ItemStack bark = new ItemStack(FoodInit.BARK_BIRCH.get());
+				ItemEntity drop = new ItemEntity(playerLevel, player.getX(), player.getY(), player.getZ(), bark);
+				if (!playerLevel.isClientSide()) {
+					playerLevel.addFreshEntity(drop);
+				}
+				event.setFinalState(Blocks.STRIPPED_BIRCH_LOG.defaultBlockState()
+				    .setValue(RotatedPillarBlock.AXIS, log.getValue(RotatedPillarBlock.AXIS)));
 			}
 		}
 	}

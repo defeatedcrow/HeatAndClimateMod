@@ -103,19 +103,42 @@ public class SaplingBeech extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LOG_BH_WALNUT.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+		case RARE -> FoodInit.LOG_BH_SWEET.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+		default -> FoodInit.LOG_BH_COMMON.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+		};
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LEAVES_BH_WALNUT.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_BH_SWEET.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		default -> FoodInit.LEAVES_BH_COMMON.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		};
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		// 高さ8~12
 		level.random.nextInt(2);
 		int h = 8 + level.random.nextInt(5);
-		BlockState log = FoodInit.LOG_BH_COMMON.get().defaultBlockState();
-		BlockState leaves = FoodInit.LEAVES_BH_COMMON.get().defaultBlockState().setValue(DCState.FLAG, true);
-		if (t == CropTier.COMMON) {
-			log = FoodInit.LOG_BH_WALNUT.get().defaultBlockState();
-			leaves = FoodInit.LEAVES_BH_WALNUT.get().defaultBlockState().setValue(DCState.FLAG, true);
-		} else if (t == CropTier.RARE) {
-			log = FoodInit.LOG_BH_SWEET.get().defaultBlockState();
-			leaves = FoodInit.LEAVES_BH_SWEET.get().defaultBlockState().setValue(DCState.FLAG, true);
-		}
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);

@@ -194,7 +194,8 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(BlockTags.LOGS_THAT_BURN).add(FoodInit.LOG_BH_COMMON.get(), FoodInit.LOG_BH_WALNUT.get(), FoodInit.LOG_BH_SWEET.get(), FoodInit.LOG_CH_WILD.get(), FoodInit.LOG_CN_CAMPHOR.get(), FoodInit.LOG_CN_CINNAMON.get(),
 		    FoodInit.LOG_CT_POMELO.get(), FoodInit.LOG_MR_MULBERRY.get(), FoodInit.LOG_MR_PAPER.get(), FoodInit.LOG_MR_RUBBER.get(), FoodInit.LOG_MY_EUCALYPTUS.get(), FoodInit.LOG_OL_ASH.get(), FoodInit.LOG_PL_COCONUT.get(),
-		    FoodInit.LOG_SU_LACQUER.get(), FoodInit.LOG_SU_MANGO.get(), FoodInit.LOG_EU_KUKUI.get(), FoodInit.LOG_EU_MANCHINEEL.get(), FoodInit.LOG_EU_MANCHINEEL_DRY.get());
+		    FoodInit.LOG_SU_LACQUER.get(), FoodInit.LOG_SU_MANGO.get(), FoodInit.LOG_EU_KUKUI.get(), FoodInit.LOG_EU_MANCHINEEL.get(), FoodInit.LOG_EU_MANCHINEEL_DRY.get(), FoodInit.LOG_CH_WILD_STRIPPED.get(),
+		    FoodInit.LOG_CN_CINNAMON_STRIPPED.get(), FoodInit.LOG_MR_PAPER_STRIPPED.get());
 
 		tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(FoodInit.LOG_BH_COMMON.get(), FoodInit.LOG_BH_WALNUT.get(), FoodInit.LOG_BH_SWEET.get(), FoodInit.LOG_CH_WILD.get(), FoodInit.LOG_CN_CAMPHOR.get(), FoodInit.LOG_CN_CINNAMON.get(),
 		    FoodInit.LOG_CT_POMELO.get(), FoodInit.LOG_MR_MULBERRY.get(), FoodInit.LOG_MR_PAPER.get(), FoodInit.LOG_MR_RUBBER.get(), FoodInit.LOG_MY_EUCALYPTUS.get(), FoodInit.LOG_OL_ASH.get(), FoodInit.LOG_PL_COCONUT.get(),

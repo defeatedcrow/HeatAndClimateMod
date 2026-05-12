@@ -848,6 +848,8 @@ public class TagDC {
 		public static final TagKey<Item> SAP_POISON = itemTag("saps/poison");
 		public static final TagKey<Item> SAPS = itemTag("saps");
 
+		public static final TagKey<Item> BARKS = itemTag("barks");
+
 		public static final TagKey<Item> STRING_GRASS = itemTag("strings/grass");
 		public static final TagKey<Item> STRING_TREE = itemTag("strings/tree");
 		public static final TagKey<Item> STRING_PLANTS = itemTag("strings/plants");

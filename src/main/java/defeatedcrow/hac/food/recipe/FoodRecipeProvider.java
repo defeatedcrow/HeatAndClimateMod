@@ -1549,6 +1549,16 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_jute", has(TagDC.ItemTag.CROP_JUTE))
 		    .save(cons, "dcs_climate:food/jute_fiber_plant");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_WOOD.get(), 1)
+		    .requires(Ingredient.of(FoodInit.BARK_PAPER.get()))
+		    .unlockedBy("has_mulberry_bark", has(FoodInit.BARK_PAPER.get()))
+		    .save(cons, "dcs_climate:food/kaji_fiber_wood");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FIBER_WOOD.get(), 1)
+		    .requires(Ingredient.of(FoodInit.BARK_BIRCH.get()))
+		    .unlockedBy("has_birch_bark", has(FoodInit.BARK_PAPER.get()))
+		    .save(cons, "dcs_climate:food/birch_fiber_wood");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1)
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_BINDWEED))
 		    .unlockedBy("has_bindweed", has(TagDC.ItemTag.CROP_BINDWEED))
@@ -1622,6 +1632,21 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .requires(Ingredient.of(FoodInit.LOG_SU_MANGO.get()))
 		    .unlockedBy("has_mango_log", has(FoodInit.LOG_SU_MANGO.get()))
 		    .save(cons, "dcs_climate:food/planks_sumac_from_mango");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_CH_WILD.get(), 4)
+		    .requires(Ingredient.of(FoodInit.LOG_CH_WILD_STRIPPED.get()))
+		    .unlockedBy("has_stripped_cherry_log", has(FoodInit.LOG_CH_WILD_STRIPPED.get()))
+		    .save(cons, "dcs_climate:food/planks_cherry_from_stripped_cherry");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_CN_CAMPHOR.get(), 4)
+		    .requires(Ingredient.of(FoodInit.LOG_CN_CINNAMON_STRIPPED.get()))
+		    .unlockedBy("has_stripped_cinnamon_log", has(FoodInit.LOG_CN_CINNAMON_STRIPPED.get()))
+		    .save(cons, "dcs_climate:food/planks_camphor_from_stripped_cinnamon");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.PLANK_MR_MULBERRY.get(), 4)
+		    .requires(Ingredient.of(FoodInit.LOG_MR_PAPER_STRIPPED.get()))
+		    .unlockedBy("has_stripped_kaji_log", has(FoodInit.LOG_MR_PAPER_STRIPPED.get()))
+		    .save(cons, "dcs_climate:food/planks_morus_from_stripped_kaji");
 
 		ShapedRecipeBuilder.shaped(FoodInit.PLANK_RE_SORGHUM.get(), 1)
 		    .pattern("XX")
@@ -1806,6 +1831,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_PASTA.get(), 1)
 		    .requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
 		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .requires(Ingredient.of(Tags.Items.EGGS))
 		    .unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
 		    .save(cons, "dcs_climate:food/foodmaterial_pasta");
 

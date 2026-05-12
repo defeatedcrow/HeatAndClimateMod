@@ -34,32 +34,23 @@ public class SaplingSumac extends SaplingBaseBlock {
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_SU_MANGO.get();
-		case RARE:
-			return FoodInit.CROP_SU_CASHEW.get();
-		case EPIC:
-			return FoodInit.CROP_SU_PISTACHIO.get();
-		default:
-			return FoodInit.CROP_SU_LACQUER.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_SU_MANGO.get();
+		case RARE -> FoodInit.CROP_SU_CASHEW.get();
+		case EPIC -> FoodInit.CROP_SU_PISTACHIO.get();
+		default -> FoodInit.CROP_SU_LACQUER.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_SU_LACQUER.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_SU_MANGO.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_SU_CASHEW.get());
-		case EPIC:
-			return Optional.of(FoodInit.BLOCK_SU_PISTACHIO.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_SU_LACQUER.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_SU_MANGO.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_SU_CASHEW.get());
+		case EPIC -> Optional.of(FoodInit.BLOCK_SU_PISTACHIO.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -98,26 +89,20 @@ public class SaplingSumac extends SaplingBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("MOUNTAIN", "FOREST");
-		case COMMON:
-			return ImmutableList.of("JUNGLE");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("MOUNTAIN", "FOREST");
+		case COMMON -> ImmutableList.of("JUNGLE");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("CONIFEROUS", "SNOWY", "HOT");
-		case COMMON:
-			return ImmutableList.of("CONIFEROUS", "COLD");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("CONIFEROUS", "SNOWY", "HOT");
+		case COMMON -> ImmutableList.of("CONIFEROUS", "COLD");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
@@ -132,22 +117,48 @@ public class SaplingSumac extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return switch (t) {
+		case WILD -> FoodInit.LOG_SU_LACQUER.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+		default -> FoodInit.LOG_SU_MANGO.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+		};
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return switch (t) {
+		case WILD -> FoodInit.LEAVES_SU_MANGO.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_SU_CASHEW.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case EPIC -> FoodInit.LEAVES_SU_PISTACHIO.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		default -> FoodInit.LEAVES_SU_LACQUER.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		};
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		// 各種サイズが違う
 		level.random.nextInt(4);
 		int h = 5 + level.random.nextInt(6);
 		int r = 4;
-		BlockState log = FoodInit.LOG_SU_MANGO.get().defaultBlockState();
-		BlockState leaves = FoodInit.LEAVES_SU_MANGO.get().defaultBlockState().setValue(DCState.FLAG, true);
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
 		if (t == CropTier.WILD) {
-			log = FoodInit.LOG_SU_LACQUER.get().defaultBlockState();
-			leaves = FoodInit.LEAVES_SU_LACQUER.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 5 + level.random.nextInt(4);
 		} else if (t == CropTier.RARE) {
-			leaves = FoodInit.LEAVES_SU_CASHEW.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 5 + level.random.nextInt(4);
 		} else if (t == CropTier.EPIC) {
-			leaves = FoodInit.LEAVES_SU_PISTACHIO.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 4 + level.random.nextInt(4);
 		}
 

@@ -612,6 +612,10 @@
   "item.dcs_climate.food.sap_latex":"ラテックス",
   "item.dcs_climate.food.sap_sumac":"生漆",
   "item.dcs_climate.food.sap_poison":"毒の樹液",
+  
+  "item.dcs_climate.food.bark_cherry_wild":"桜の樹皮",
+  "item.dcs_climate.food.bark_morus_paper":"梶の樹皮",
+  "item.dcs_climate.food.bark_birch":"白樺の樹皮",
 
   "item.dcs_climate.food.string_plant":"草花の糸",
   "item.dcs_climate.food.string_tree":"樹皮の糸",
@@ -1560,6 +1564,10 @@
   "block.dcs_climate.food.log_palm_coconut":"ヤシの原木",
   "block.dcs_climate.food.log_sumac_lacquer":"ウルシの原木",
   "block.dcs_climate.food.log_sumac_mango":"マンゴーの原木",
+  
+  "block.dcs_climate.food.log_cherry_wild_stripped":"樹皮を剥いだ桜の原木",
+  "block.dcs_climate.food.log_cinnamon_true_stripped":"樹皮を剥いだシナモンの原木",
+  "block.dcs_climate.food.log_morus_paper_stripped":"樹皮を剥いだ梶の原木",
 
   "block.dcs_climate.food.plank_beech_common":"ブナ材",
   "block.dcs_climate.food.plank_beech_walnut":"クルミ材",

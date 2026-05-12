@@ -109,23 +109,45 @@ public class SaplingOlive extends SaplingBaseBlock {
 	}
 
 	@Override
+	protected BlockState getLogState(CropTier t) {
+		return FoodInit.LOG_OL_ASH.get()
+		    .defaultBlockState()
+		    .setValue(DCState.WILD, true);
+	}
+
+	@Override
+	protected BlockState getLeavesState(CropTier t) {
+		return switch (t) {
+		case COMMON -> FoodInit.LEAVES_OL_OLIVE.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_OL_OSMANTHUS.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		case EPIC -> FoodInit.LEAVES_OL_JASMINE.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		default -> FoodInit.LEAVES_OL_ASH.get()
+		    .defaultBlockState()
+		    .setValue(DCState.FLAG, true);
+		};
+	}
+
+	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
 		// 各種サイズが違う
 		level.random.nextInt(5);
 		int h = 8 + level.random.nextInt(5);
 		int r = 4;
-		BlockState log = FoodInit.LOG_OL_ASH.get().defaultBlockState();
-		BlockState leaves = FoodInit.LEAVES_OL_ASH.get().defaultBlockState().setValue(DCState.FLAG, true);
+		BlockState log = getLogState(t);
+		BlockState leaves = getLeavesState(t);
 		if (t == CropTier.COMMON) {
-			leaves = FoodInit.LEAVES_OL_OLIVE.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 5 + level.random.nextInt(4);
 			r = 3;
 		} else if (t == CropTier.RARE) {
-			leaves = FoodInit.LEAVES_OL_OSMANTHUS.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 3 + level.random.nextInt(3);
 			r = 2;
 		} else if (t == CropTier.EPIC) {
-			leaves = FoodInit.LEAVES_OL_JASMINE.get().defaultBlockState().setValue(DCState.FLAG, true);
 			h = 1 + level.random.nextInt(3);
 			r = 2;
 		}

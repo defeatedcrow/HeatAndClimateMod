@@ -79,7 +79,10 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 		cropType = f;
 		cropTier = t;
 		defoliation = isDefoliation;
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, 0).setValue(DCState.FLAG, false).setValue(DCState.DIST, 0));
+		this.registerDefaultState(this.stateDefinition.any()
+		    .setValue(DCState.STAGE6, 0)
+		    .setValue(DCState.FLAG, false)
+		    .setValue(DCState.DIST, 0));
 	}
 
 	public LeavesCropBlockDC setSeason(EnumSeason flower, EnumSeason crop) {
@@ -97,16 +100,14 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		if (defoliation) {
-			return ImmutableList.of(
-			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_spr")),
+			return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_spr")),
 			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_smr")),
 			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_aut")),
 			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_wtr")),
 			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_f")),
 			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_c")));
 		} else {
-			return ImmutableList.of(
-			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
+			return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
 			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
 			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
 			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_d")),
@@ -137,7 +138,13 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	/* 基本データ */
 	protected static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isSuffocating(DCUtil::getFalse).isViewBlocking(DCUtil::getFalse);
+		return BlockBehaviour.Properties.of(Material.LEAVES)
+		    .strength(0.2F)
+		    .randomTicks()
+		    .sound(SoundType.GRASS)
+		    .noOcclusion()
+		    .isSuffocating(DCUtil::getFalse)
+		    .isViewBlocking(DCUtil::getFalse);
 	}
 
 	@Override
@@ -217,7 +224,8 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 		if (state == null || builder == null) {
 			ret.addAll(super.getDrops(state, builder));
 		} else if (state.getBlock() instanceof IClimateCrop) {
-			LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+			LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state)
+			    .create(LootContextParamSets.BLOCK);
 			IClimateCrop crop = (IClimateCrop) state.getBlock();
 			ServerLevel level = cont.getLevel();
 			ItemStack tool = ItemStack.EMPTY;
@@ -245,12 +253,13 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	}
 
 	protected float getSeedChance() {
-		return 0.05F;
+		return 0.01F;
 	}
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult res) {
-		if (player.getItemInHand(hand).isEmpty()) {
+		if (player.getItemInHand(hand)
+		    .isEmpty()) {
 			if (onHarvest(level, pos, state, player))
 				return InteractionResult.SUCCESS;
 		}
@@ -288,7 +297,8 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	@Override
 	public boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos) {
-		return state.getFluidState().isEmpty();
+		return state.getFluidState()
+		    .isEmpty();
 	}
 
 	/* IBlockDC */
@@ -334,9 +344,12 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	public boolean isSuitableForGrowing(Level world, BlockPos pos, BlockState thisState) {
 		ClimateSupplier spr = new ClimateSupplier(world, pos);
 		IClimate climate = spr.get();
-		boolean temp = this.getSuitableTemp(cropTier).contains(climate.getHeat());
-		boolean hum = this.getSuitableHum(cropTier).contains(climate.getHumidity());
-		boolean air = this.getSuitableAir(cropTier).contains(climate.getAirflow());
+		boolean temp = this.getSuitableTemp(cropTier)
+		    .contains(climate.getHeat());
+		boolean hum = this.getSuitableHum(cropTier)
+		    .contains(climate.getHumidity());
+		boolean air = this.getSuitableAir(cropTier)
+		    .contains(climate.getAirflow());
 		return temp && hum && air;
 	}
 
@@ -383,7 +396,8 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	@Override
 	public BlockState getFailureState(BlockState state) {
-		return this.defaultBlockState().setValue(DCState.STAGE6, 3);
+		return this.defaultBlockState()
+		    .setValue(DCState.STAGE6, 3);
 	}
 
 	@Override
@@ -410,7 +424,8 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	}
 
 	protected void onDefoliation(Level level, BlockPos pos, BlockState state) {
-		if (level.getBlockState(pos.below()).isAir()) {
+		if (level.getBlockState(pos.below())
+		    .isAir()) {
 			int y = 1;
 			BlockState target = null;
 			while (target == null && y < 10) {
@@ -421,7 +436,8 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 				}
 			}
 			if (target != null && target.isFaceSturdy(level, pos.below(y), Direction.UP)) {
-				level.setBlock(pos.below(y - 1), FoodInit.FALLEN_LEAVES.get().defaultBlockState(), 2);
+				level.setBlock(pos.below(y - 1), FoodInit.FALLEN_LEAVES.get()
+				    .defaultBlockState(), 2);
 			}
 		}
 	}
@@ -475,8 +491,10 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
 			if (canHarvest(thisState)) {
 				int f = 0;
-				if (player != null && !player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
-					f = player.getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
+				if (player != null && !player.getItemInHand(InteractionHand.MAIN_HAND)
+				    .isEmpty()) {
+					f = player.getItemInHand(InteractionHand.MAIN_HAND)
+					    .getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
 				}
 				List<ItemStack> crops = this.getCropItems(thisState, f);
 				boolean ret = false;
@@ -516,7 +534,8 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 			BlockState next = this.getHarvestedState(thisState);
 			int m = this.getSeasonLeafStage(world, pos, next);
 			if (m > 3) {
-				m = DCTimeHelper.getSeasonEnum(world).getSeasonLimitedID();
+				m = DCTimeHelper.getSeasonEnum(world)
+				    .getSeasonLimitedID();
 			}
 			world.setBlock(pos, next.setValue(DCState.STAGE6, m), 2);
 		}

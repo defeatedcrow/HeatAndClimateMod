@@ -17,6 +17,9 @@
     "dcs_climate:food/log_sumac_mango",
     "dcs_climate:food/log_euphorbia_kukui",
     "dcs_climate:food/log_euphorbia_manchineel",
-    "dcs_climate:food/log_euphorbia_manchineel_dry"
+    "dcs_climate:food/log_euphorbia_manchineel_dry",
+    "dcs_climate:food/log_cherry_wild_stripped",
+    "dcs_climate:food/log_cinnamon_true_stripped",
+    "dcs_climate:food/log_morus_paper_stripped"
   ]
 }
