@@ -131,7 +131,7 @@ public class SaplingSumac extends SaplingBaseBlock {
 	@Override
 	protected BlockState getLeavesState(CropTier t) {
 		return switch (t) {
-		case WILD -> FoodInit.LEAVES_SU_MANGO.get()
+		case COMMON -> FoodInit.LEAVES_SU_MANGO.get()
 		    .defaultBlockState()
 		    .setValue(DCState.FLAG, true);
 		case RARE -> FoodInit.LEAVES_SU_CASHEW.get()
