@@ -616,6 +616,7 @@
   "item.dcs_climate.food.bark_cherry_wild":"桜の樹皮",
   "item.dcs_climate.food.bark_morus_paper":"梶の樹皮",
   "item.dcs_climate.food.bark_birch":"白樺の樹皮",
+  "item.dcs_climate.food.bark_oak":"樹皮",
 
   "item.dcs_climate.food.string_plant":"草花の糸",
   "item.dcs_climate.food.string_tree":"樹皮の糸",
@@ -1880,6 +1881,8 @@
   "block.dcs_climate.build.stairs_roof_black":"アルミの屋根 (黒)",
   "block.dcs_climate.build.stairs_roof_red":"アルミの屋根 (赤)",
   "block.dcs_climate.build.stairs_roof_green":"アルミの屋根 (緑)",
+  
+  "block.dcs_climate.build.stairs_wood_bark":"こけらの屋根",
 
   "block.dcs_climate.build.flintbricks":"火打ち石レンガ",
   "block.dcs_climate.build.flintbricks_black":"火打ち石レンガ(黒)",

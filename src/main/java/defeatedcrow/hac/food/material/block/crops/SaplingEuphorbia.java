@@ -122,7 +122,9 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 	@Override
 	protected BlockState getLeavesState(CropTier t) {
 		return switch (t) {
-		case COMMON -> FoodInit.LEAVES_EU_MANCHINEEL.get()
+		case COMMON -> FoodInit.BLOCK_EU_CASSAVA.get()
+		    .defaultBlockState();
+		case RARE -> FoodInit.LEAVES_EU_MANCHINEEL.get()
 		    .defaultBlockState()
 		    .setValue(DCState.FLAG, true);
 		default -> FoodInit.LEAVES_EU_KUKUI.get()
@@ -147,6 +149,10 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 			return;
 
 		if (!level.isClientSide) {
+			if (t == CropTier.COMMON) {
+				level.setBlock(pos.above(), leaves, 2);
+			}
+
 			if (replaceCheck(level, pos, h))
 				return;
 

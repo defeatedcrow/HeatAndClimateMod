@@ -659,6 +659,15 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_metal_net_window", has(BuildInit.WINDOW_NET_METAL.get()))
 		    .save(cons, "dcs_climate:build/window_net_black_0");
 
+		ShapedRecipeBuilder.shaped(BuildInit.STAIRS_BARK.get(), 3)
+		    .pattern("  Y")
+		    .pattern(" YX")
+		    .pattern("YX ")
+		    .define('X', ItemTags.PLANKS)
+		    .define('Y', TagDC.ItemTag.BARKS)
+		    .unlockedBy("has_barks", has(TagDC.ItemTag.BARKS))
+		    .save(cons, "dcs_climate:build/bark_stairs");
+
 		ShapedRecipeBuilder.shaped(BuildInit.STAIRS_SLIM_METAL.get(), 2)
 		    .pattern("  Y")
 		    .pattern(" YX")

@@ -12,9 +12,12 @@ import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -52,7 +55,7 @@ public class FenceWoodDC extends FenceBlock implements IBlockDC, IJsonDataDC {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(new JsonModelDC("minecraft:block/fence_post", ImmutableMap.of("texture", "dcs_climate:block/" + texDir + name)),
-			new JsonModelDC("minecraft:block/fence_side", ImmutableMap.of("texture", "dcs_climate:block/" + texDir + name)));
+		    new JsonModelDC("minecraft:block/fence_side", ImmutableMap.of("texture", "dcs_climate:block/" + texDir + name)));
 	}
 
 	@Override
@@ -77,7 +80,8 @@ public class FenceWoodDC extends FenceBlock implements IBlockDC, IJsonDataDC {
 			ret.addAll(super.getDrops(state, builder));
 		} else {
 			if (state.getBlock() instanceof IBlockDC) {
-				LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+				LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state)
+				    .create(LootContextParamSets.BLOCK);
 				IBlockDC block = (IBlockDC) state.getBlock();
 				Entity breaker = null;
 				ItemStack tool = ItemStack.EMPTY;
@@ -88,7 +92,8 @@ public class FenceWoodDC extends FenceBlock implements IBlockDC, IJsonDataDC {
 					breaker = cont.getParamOrNull(LootContextParams.THIS_ENTITY);
 				}
 				// シルクタッチの場合は処理を中断
-				if (!block.getSilkyDrop().isEmpty() && tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
+				if (!block.getSilkyDrop()
+				    .isEmpty() && tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
 					ret.add(getSilkyDrop());
 					return ret;
 				}
@@ -128,6 +133,17 @@ public class FenceWoodDC extends FenceBlock implements IBlockDC, IJsonDataDC {
 	@Override
 	public int getToolTier() {
 		return 0;
+	}
+
+	// flammable
+	@Override
+	public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 20;
+	}
+
+	@Override
+	public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 5;
 	}
 
 }

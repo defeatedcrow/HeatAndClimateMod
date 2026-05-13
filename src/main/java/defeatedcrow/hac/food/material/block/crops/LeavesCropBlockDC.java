@@ -253,7 +253,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	}
 
 	protected float getSeedChance() {
-		return 0.01F;
+		return 0.015F;
 	}
 
 	@Override
@@ -587,6 +587,17 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	@Override
 	public boolean doCollect(Level level, BlockPos pos, BlockState state, @Nullable Player player, ItemStack tool) {
 		return this.onHarvest(level, pos, state, player);
+	}
+
+	// flammable
+	@Override
+	public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 60;
+	}
+
+	@Override
+	public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 30;
 	}
 
 }

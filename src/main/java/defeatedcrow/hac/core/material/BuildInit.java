@@ -459,6 +459,7 @@ public class BuildInit {
 	public static final RegistryObject<Block> WINDOW_NET_BLACK = regBlock("window_net_black", () -> new MetalWindowBlock("net", MagicColor.BLACK), TagDC.ItemTag.ALMINUM_WINDOWS);
 	public static final RegistryObject<Block> WINDOW_NET_WHITE = regBlock("window_net_white", () -> new MetalWindowBlock("net", MagicColor.WHITE), TagDC.ItemTag.ALMINUM_WINDOWS);
 
+	public static final RegistryObject<Block> STAIRS_BARK = regBlock("stairs_wood_bark", () -> new StairsWoodDC("wood_bark", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_BH_COMMON), ItemTags.WOODEN_STAIRS);
 	public static final RegistryObject<Block> ROOF_METAL_GRAY = regBlock("stairs_roof_gray", () -> new StairsMetalRoof("roof_gray", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
 	public static final RegistryObject<Block> ROOF_METAL_YELLOW = regBlock("stairs_roof_yellow", () -> new StairsMetalRoof("roof_yellow", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);
 	public static final RegistryObject<Block> ROOF_METAL_BLUE = regBlock("stairs_roof_blue", () -> new StairsMetalRoof("roof_blue", CoreInit.METALBLOCK_ALUMINUM), TagDC.ItemTag.ALMINUM_ROOFS);

@@ -1,4 +1,4 @@
-// 1.19.2	2026-05-12T00:43:17.6779973	Tags for minecraft:item
+// 1.19.2	2026-05-13T22:54:27.6932641	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 05c427bae6c42fa3468413da8a796681e5a20abb data/dcs_climate/tags/items/battery_items.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
@@ -194,7 +194,7 @@ a9152ef66ad53c0dc476507a71766cb55a07d58d data/forge/tags/items/animal_feeds.json
 0332ee57f7973ff3aa0e5f810558555ce7563caf data/forge/tags/items/animal_feeds/hay.json
 70864e18e0f52d0d9a159d2fb77d3a69aebeb492 data/forge/tags/items/animal_feeds/silage.json
 7f473b6b18af20cad07cd66ab6dce77e93ea4f56 data/forge/tags/items/animal_feeds/straw.json
-5fcb6ac527a4ea3279b0d22e36bdf41e7fc7d274 data/forge/tags/items/barks.json
+d3bdfe2e50768566585605e769b52d63c8d8ae0d data/forge/tags/items/barks.json
 d673abe514b8497e051af0ae88941b292f686d8e data/forge/tags/items/bones.json
 16f0c29d53c26e277a717e116af209100cafa85d data/forge/tags/items/clothes.json
 518917c86ad0f68a4b941321fa200bf24bea8795 data/forge/tags/items/clothes/cotton.json
@@ -906,5 +906,5 @@ b7e70db15da11c82785cc09bcb8f32b688201c2c data/minecraft/tags/items/logs_that_bur
 10999a6537a603d5458a952fcc7b50c3c8c2c523 data/minecraft/tags/items/wooden_doors.json
 65fc004e3ff0b9e678207d0b462c7926f7efdf2c data/minecraft/tags/items/wooden_fences.json
 5cee97f943ffe96575c757b72a650d62da1dddf5 data/minecraft/tags/items/wooden_slabs.json
-3f9da3b31cc1a58ad37e186785510d6b7462c8fa data/minecraft/tags/items/wooden_stairs.json
+1b36128e76f9ca490e3731bf18453edae7b91c36 data/minecraft/tags/items/wooden_stairs.json
 6a24263da1d628ab54d5a0899e7fdec862b41a97 data/minecraft/tags/items/wooden_trapdoors.json

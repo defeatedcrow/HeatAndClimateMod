@@ -34,6 +34,7 @@ public class ConfigCommonBuilder {
 	public final ForgeConfigSpec.BooleanValue enSnow;
 	public final ForgeConfigSpec.BooleanValue enCropTaste;
 	public final ForgeConfigSpec.BooleanValue enCommonCrop;
+	public final ForgeConfigSpec.BooleanValue enLogChain;
 	public final ForgeConfigSpec.BooleanValue enCustomSpring;
 	public final ForgeConfigSpec.IntValue vCropFeature;
 	public final ForgeConfigSpec.IntValue vSpringFeature;
@@ -68,213 +69,177 @@ public class ConfigCommonBuilder {
 
 	ConfigCommonBuilder(ForgeConfigSpec.Builder builder) {
 
-		builder.comment("========= Climate Setting ========", "Setting for the climate function.").push("climate_config");
+		builder.comment("========= Climate Setting ========", "Setting for the climate function.")
+		    .push("climate_config");
 
-		this.enTempDamage = builder
-				.comment("Enable damage from hot or cold climate.")
-				.define("Enable Climate Damage", true);
+		this.enTempDamage = builder.comment("Enable damage from hot or cold climate.")
+		    .define("Enable Climate Damage", true);
 
-		this.enPeacefulDamage = builder
-				.comment("Enables climate damage in peaceful mode.")
-				.define("Enable Peaceful Climate Damage", true);
+		this.enPeacefulDamage = builder.comment("Enables climate damage in peaceful mode.")
+		    .define("Enable Peaceful Climate Damage", true);
 
-		this.enMobDamage = builder
-				.comment("Enables climate damage to mobs. If disabled, only the player will take damage.")
-				.define("Enable Mob Climate Damage", true);
+		this.enMobDamage = builder.comment("Enables climate damage to mobs. If disabled, only the player will take damage.")
+		    .define("Enable Mob Climate Damage", true);
 
-		this.vDifficulty = builder
-				.comment("Set difficulty of climate damage. 0:sweet 1:normal 2:bitter")
-				.defineInRange("Damage Difficulty", 1, 0, 2);
+		this.vDifficulty = builder.comment("Set difficulty of climate damage. 0:sweet 1:normal 2:bitter")
+		    .defineInRange("Damage Difficulty", 1, 0, 2);
 
-		this.vUpdateInterval = builder
-				.comment("Set the number of tick of entity update interval.")
-				.defineInRange("Climate Damage Interval Tick", 60, 20, 3600);
+		this.vUpdateInterval = builder.comment("Set the number of tick of entity update interval.")
+		    .defineInRange("Climate Damage Interval Tick", 60, 20, 3600);
 
-		this.vSeasonSpr = builder
-				.comment("Set the value of temperature variation. (Spring)")
-				.defineInRange("Spring Temperature", 0.05D, -6.0D, 120.0D);
+		this.vSeasonSpr = builder.comment("Set the value of temperature variation. (Spring)")
+		    .defineInRange("Spring Temperature", 0.05D, -6.0D, 120.0D);
 
-		this.vSeasonSmr = builder
-				.comment("Set the value of the temperature variation. (Summer)")
-				.defineInRange("Summer Temperature", 0.4D, -6.0D, 120.0D);
+		this.vSeasonSmr = builder.comment("Set the value of the temperature variation. (Summer)")
+		    .defineInRange("Summer Temperature", 0.4D, -6.0D, 120.0D);
 
-		this.vSeasonAut = builder
-				.comment("Set the value of the temperature variation. (Autumn)")
-				.defineInRange("Autumn Temperature", 0.0D, -6.0D, 120.0D);
+		this.vSeasonAut = builder.comment("Set the value of the temperature variation. (Autumn)")
+		    .defineInRange("Autumn Temperature", 0.0D, -6.0D, 120.0D);
 
-		this.vSeasonWtr = builder
-				.comment("Set the value of the temperature variation. (Winter)")
-				.defineInRange("Winter Temperature", -0.4D, -6.0D, 120.0D);
+		this.vSeasonWtr = builder.comment("Set the value of the temperature variation. (Winter)")
+		    .defineInRange("Winter Temperature", -0.4D, -6.0D, 120.0D);
 
-		this.vSeasonHell = builder
-				.comment("Set the value of the temperature variation. (Nether)")
-				.defineInRange("Nether Temperature", 2.0D, -6.0D, 120.0D);
+		this.vSeasonHell = builder.comment("Set the value of the temperature variation. (Nether)")
+		    .defineInRange("Nether Temperature", 2.0D, -6.0D, 120.0D);
 
-		this.vSeasonArc = builder
-				.comment("Set the value of the temperature variation. (End)")
-				.defineInRange("End Temperature", -2.0D, -6.0D, 120.0D);
+		this.vSeasonArc = builder.comment("Set the value of the temperature variation. (End)")
+		    .defineInRange("End Temperature", -2.0D, -6.0D, 120.0D);
 
-		this.vWeatherRain = builder
-				.comment("Set the value of the temperature drop dur to rain.")
-				.defineInRange("Rain Temperature", -0.2D, -6.0D, 120.0D);
+		this.vWeatherRain = builder.comment("Set the value of the temperature drop dur to rain.")
+		    .defineInRange("Rain Temperature", -0.2D, -6.0D, 120.0D);
 
-		this.vNight = builder
-				.comment("Set the value of nighttime temperature drop.")
-				.defineInRange("Night Temperature", -0.2D, -6.0D, 120.0D);
+		this.vNight = builder.comment("Set the value of nighttime temperature drop.")
+		    .defineInRange("Night Temperature", -0.2D, -6.0D, 120.0D);
 
 		builder.pop();
 
-		builder.comment("========= Hardmode Setting ========", "Setting for Hard Mode.").push("hardmode_config");
+		builder.comment("========= Hardmode Setting ========", "Setting for Hard Mode.")
+		    .push("hardmode_config");
 
-		this.enInferno = builder
-				.comment("Set the temperature of Nether to maximum.")
-				.define("Infernal Inferno", false);
+		this.enInferno = builder.comment("Set the temperature of Nether to maximum.")
+		    .define("Infernal Inferno", false);
 
-		this.enWetEffect = builder
-				.comment("Enable humidity effect that affects the player's perceived temperature.")
-				.define("Humidity Effect", false);
+		this.enWetEffect = builder.comment("Enable humidity effect that affects the player's perceived temperature.")
+		    .define("Humidity Effect", false);
 
-		this.enTightEffect = builder
-				.comment("Enable suffocation effect when mobs or players in tight space.")
-				.define("Tight Effect", false);
+		this.enTightEffect = builder.comment("Enable suffocation effect when mobs or players in tight space.")
+		    .define("Tight Effect", false);
 
-		this.enTightDeep = builder
-				.comment("When enabled, the airflow in the room is TIGHT in deep caves (Y<0).")
-				.define("Tight in Deep", false);
+		this.enTightDeep = builder.comment("When enabled, the airflow in the room is TIGHT in deep caves (Y<0).")
+		    .define("Tight in Deep", false);
 
-		this.enHeatTreatment = builder
-				.comment("The metal is refined in the more difficult heat treatment mode.")
-				.define("Hardmode Metal Refining", false);
+		this.enHeatTreatment = builder.comment("The metal is refined in the more difficult heat treatment mode.")
+		    .define("Hardmode Metal Refining", false);
 
-		this.enTempuraFire = builder
-				.comment("Vegetable oil in a pan can spontaneously combust if it becomes overheated.")
-				.define("Hardmode Tempura Fire", false);
+		this.enTempuraFire = builder.comment("Vegetable oil in a pan can spontaneously combust if it becomes overheated.")
+		    .define("Hardmode Tempura Fire", false);
 
-		this.enHardCrop = builder
-				.comment("HaC crops will stop growing if the climate is not suitable.")
-				.define("Hardmode Cropping", false);
+		this.enHardCrop = builder.comment("HaC crops will stop growing if the climate is not suitable.")
+		    .define("Hardmode Cropping", false);
 
-		this.enWildOvergrouth = builder
-				.comment("HaC wild crops spread to adjacent blocks.")
-				.define("Hardmode Wild Crop Overgrouth", false);
+		this.enWildOvergrouth = builder.comment("HaC wild crops spread to adjacent blocks.")
+		    .define("Hardmode Wild Crop Overgrouth", false);
 
-		this.enContinuousFailure = builder
-				.comment("If the same crop is grown on the same farmland for multiple years, the crop will become diseased.")
-				.define("Continuous Crop Failure", false);
+		this.enContinuousFailure = builder.comment("If the same crop is grown on the same farmland for multiple years, the crop will become diseased.")
+		    .define("Continuous Crop Failure", false);
 
-		this.enMagicCost = builder
-				.comment("When enabled, EXP is consumed to cast the magic.")
-				.define("Magic EXP Cost", false);
+		this.enMagicCost = builder.comment("When enabled, EXP is consumed to cast the magic.")
+		    .define("Magic EXP Cost", false);
 
-		this.vMagicCost = builder
-				.comment("Sets the amount of EXP consumed by magic. (When MagicEXPCost is enebled.)")
-				.defineInRange("Amount of EXP Cost", 1, 0, 100);
+		this.vMagicCost = builder.comment("Sets the amount of EXP consumed by magic. (When MagicEXPCost is enebled.)")
+		    .defineInRange("Amount of EXP Cost", 1, 0, 100);
 
 		builder.pop();
 
-		builder.comment("========= Block and Item Setting ========", "Setting for block and item effects.").push("block_and_item_config");
+		builder.comment("========= Block and Item Setting ========", "Setting for block and item effects.")
+		    .push("block_and_item_config");
 
-		this.enFarmland = builder
-				.comment("Enable to moisture farmland in WET humidity.")
-				.define("Enable Farmland Effect", true);
+		this.enFarmland = builder.comment("Enable to moisture farmland in WET humidity.")
+		    .define("Enable Farmland Effect", true);
 
-		this.enVanillaCrop = builder
-				.comment("Enables the growth-promoting effect of vanilla crops.")
-				.define("Enable Vanilla Crop Effect", true);
+		this.enVanillaCrop = builder.comment("Enables the growth-promoting effect of vanilla crops.")
+		    .define("Enable Vanilla Crop Effect", true);
 
-		this.enSnow = builder
-				.comment("Enables the climate to affect the snow layer.")
-				.define("Enable Snow Layer Effect", true);
+		this.enSnow = builder.comment("Enables the climate to affect the snow layer.")
+		    .define("Enable Snow Layer Effect", true);
 
-		this.enDropSmelting = builder
-				.comment("*Optional* Enabling configs increases the load on the computer.")
-				.comment("Enable all climate smelting and vanilla smelting in drop item state.")
-				.define("Enable Drop Item Smelting", false);
+		this.enDropSmelting = builder.comment("*Optional* Enabling configs increases the load on the computer.")
+		    .comment("Enable all climate smelting and vanilla smelting in drop item state.")
+		    .define("Enable Drop Item Smelting", false);
 
-		this.enCropTaste = builder
-				.comment("The taste of crops varies depending on fertilizer and climate.")
-				.define("Enable Unstable Crop Taste", true);
+		this.enCropTaste = builder.comment("The taste of crops varies depending on fertilizer and climate.")
+		    .define("Enable Unstable Crop Taste", true);
 
-		this.enCommonCrop = builder
-				.comment("Enable natural generation of common crops.")
-				.define("Enable Common Crop Generation", false);
+		this.enCommonCrop = builder.comment("Enable natural generation of common crops.")
+		    .define("Enable Common Crop Generation", false);
 
-		this.vCropFeature = builder
-				.comment("Sets the wild crop generation rate per chunk. (If 0, it will not be generated.)")
-				.defineInRange("Amount of Crop Gen Rate", 10, 0, 100);
+		this.vCropFeature = builder.comment("Sets the wild crop generation rate per chunk. (If 0, it will not be generated.)")
+		    .defineInRange("Amount of Crop Gen Rate", 10, 0, 100);
 
-		this.enTimberBreakLeaves = builder
-				.comment("Enables leaf destruction with the lumberjack effect (green gold pendant).")
-				.define("Enable Lunberjack Effect Break Leaves", false);
+		this.enLogChain = builder.comment("Enable the lumberjack effect of HaC tree logs produced from seedlings.")
+		    .define("Enable Innate Lumberjack Effect", true);
 
-		this.vTimberLimit = builder
-				.comment("Sets the limit for the number of blocks scanned by the lumberjack effect.")
-				.defineInRange("Lumberjack Block Limit", 512, 32, 2048);
+		this.enTimberBreakLeaves = builder.comment("Enables leaf destruction with the lumberjack effect (green gold pendant).")
+		    .define("Enable Lunberjack Effect Break Leaves", false);
 
-		this.enCustomSpring = builder
-				.comment("Enable natural generation of custom springs in Overworld.")
-				.define("Enable Custom Spring Generation", true);
+		this.vTimberLimit = builder.comment("Sets the limit for the number of blocks scanned by the lumberjack effect.")
+		    .defineInRange("Lumberjack Block Limit", 512, 32, 2048);
 
-		this.vSpringFeature = builder
-				.comment("Sets the HaC springs generation rate per chunk. (0.X%. If 0, it will not be generated.)")
-				.defineInRange("Amount of Spring Gen Rate", 3, 0, 100);
+		this.enCustomSpring = builder.comment("Enable natural generation of custom springs in Overworld.")
+		    .define("Enable Custom Spring Generation", true);
 
-		this.enFlavorText = builder
-				.comment("Enables displaying flavor text for items.")
-				.define("Enable Item Flavor Text", true);
+		this.vSpringFeature = builder.comment("Sets the HaC springs generation rate per chunk. (0.X%. If 0, it will not be generated.)")
+		    .defineInRange("Amount of Spring Gen Rate", 3, 0, 100);
 
-		this.vMagicElementalEXP = builder
-				.comment("Sets the EXP required to grow inactive color elements.")
-				.defineInRange("Magic Element Grow EXP", 1000, 1, 10000);
+		this.enFlavorText = builder.comment("Enables displaying flavor text for items.")
+		    .define("Enable Item Flavor Text", true);
+
+		this.vMagicElementalEXP = builder.comment("Sets the EXP required to grow inactive color elements.")
+		    .defineInRange("Magic Element Grow EXP", 1000, 1, 10000);
 
 		builder.pop();
 
-		builder.comment("========= Internal Setting ========", "Setting for other internal specifications.").push("internal_config");
+		builder.comment("========= Internal Setting ========", "Setting for other internal specifications.")
+		    .push("internal_config");
 
-		this.enMobTarget = builder
-				.comment("Adds an interval time when mobs attack wild animals.")
-				.define("Enable Animal Hanting Interval", false);
+		this.enMobTarget = builder.comment("Adds an interval time when mobs attack wild animals.")
+		    .define("Enable Animal Hanting Interval", false);
 
-		this.vMobTargetInterval = builder
-				.comment("Set the interval minute when mobs attack wild animals.")
-				.defineInRange("Setting Hanting Interval", 10, 1, 60);
+		this.vMobTargetInterval = builder.comment("Set the interval minute when mobs attack wild animals.")
+		    .defineInRange("Setting Hanting Interval", 10, 1, 60);
 
-		this.enPotionSharing = builder
-				.comment("Enable sharing potion effects with riding mob.")
-				.define("Enable Sharing Potion Effect", true);
+		this.enPotionSharing = builder.comment("Enable sharing potion effects with riding mob.")
+		    .define("Enable Sharing Potion Effect", true);
 
-		this.enVillagerEatToHeal = builder
-				.comment("Enables villagers to consume food to regain health.")
-				.define("Enable Villager Eat Food", true);
+		this.enVillagerEatToHeal = builder.comment("Enables villagers to consume food to regain health.")
+		    .define("Enable Villager Eat Food", true);
 
 		builder.pop();
 
 	}
 
 	static {
-		Pair<ConfigCommonBuilder, ForgeConfigSpec> pair = new ForgeConfigSpec.Builder()
-				.configure(ConfigCommonBuilder::new);
+		Pair<ConfigCommonBuilder, ForgeConfigSpec> pair = new ForgeConfigSpec.Builder().configure(ConfigCommonBuilder::new);
 		CONFIG_COMMON = pair.getRight();
 		INSTANCE = pair.getLeft();
 	}
 
 	public float getSeasonTempOffset(EnumSeason season) {
-		switch (season.season) {
-		case 2:
-			return vSeasonAut.get().floatValue();
-		case 0:
-			return vSeasonSpr.get().floatValue();
-		case 1:
-			return vSeasonSmr.get().floatValue();
-		case 3:
-			return vSeasonWtr.get().floatValue();
-		case 4:
-			return vSeasonHell.get().floatValue();
-		case 5:
-			return vSeasonArc.get().floatValue();
-		default:
-			return vSeasonSpr.getDefault().floatValue();
-
-		}
+		return switch (season.season) {
+		case 2 -> vSeasonAut.get()
+		    .floatValue();
+		case 0 -> vSeasonSpr.get()
+		    .floatValue();
+		case 1 -> vSeasonSmr.get()
+		    .floatValue();
+		case 3 -> vSeasonWtr.get()
+		    .floatValue();
+		case 4 -> vSeasonHell.get()
+		    .floatValue();
+		case 5 -> vSeasonArc.get()
+		    .floatValue();
+		default -> vSeasonSpr.getDefault()
+		    .floatValue();
+		};
 	}
 }

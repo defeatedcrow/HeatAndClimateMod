@@ -2,5 +2,5 @@
   "textures": {
     "cross": "dcs_climate:block/crop/morningglory_flower_f"
   },
-  "parent": "dcs_climate:block/dcs_cross"
+  "parent": "dcs_climate:block/dcs_cross_upper"
 }

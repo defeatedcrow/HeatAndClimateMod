@@ -1,22 +1,40 @@
 {
   "variants": {
-    "stage6=0": {
-      "model": "dcs_climate:block/food/cropblock_morningglory_epic_0"
+    "double=false,stage6=0": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_false_0"
     },
-    "stage6=1": {
-      "model": "dcs_climate:block/food/cropblock_morningglory_epic_1"
+    "double=false,stage6=1": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_false_1"
     },
-    "stage6=2": {
-      "model": "dcs_climate:block/food/cropblock_morningglory_epic_2"
+    "double=false,stage6=2": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_false_2"
     },
-    "stage6=3": {
-      "model": "dcs_climate:block/food/cropblock_morningglory_epic_3"
+    "double=false,stage6=3": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_false_3"
     },
-    "stage6=4": {
-      "model": "dcs_climate:block/food/cropblock_morningglory_epic_4"
+    "double=false,stage6=4": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_false_4"
     },
-    "stage6=5": {
-      "model": "dcs_climate:block/food/cropblock_morningglory_epic_5"
+    "double=false,stage6=5": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_false_5"
+    },
+    "double=true,stage6=0": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_true_0"
+    },
+    "double=true,stage6=1": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_true_1"
+    },
+    "double=true,stage6=2": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_true_2"
+    },
+    "double=true,stage6=3": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_true_3"
+    },
+    "double=true,stage6=4": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_true_4"
+    },
+    "double=true,stage6=5": {
+      "model": "dcs_climate:block/food/cropblock_morningglory_epic_true_5"
     }
   }
-}
+}}

@@ -21,6 +21,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -44,7 +45,8 @@ public class LogContBlock extends ClimateBlock implements IRapidCollectables {
 
 	public LogContBlock(String s) {
 		super(getProp(), true);
-		this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y));
+		this.registerDefaultState(this.defaultBlockState()
+		    .setValue(AXIS, Direction.Axis.Y));
 		name = s;
 	}
 
@@ -54,7 +56,10 @@ public class LogContBlock extends ClimateBlock implements IRapidCollectables {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(1.0F, 8.0F).sound(SoundType.WOOD).randomTicks();
+		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD)
+		    .strength(1.0F, 8.0F)
+		    .sound(SoundType.WOOD)
+		    .randomTicks();
 	}
 
 	@Override
@@ -69,7 +74,9 @@ public class LogContBlock extends ClimateBlock implements IRapidCollectables {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis());
+		return this.defaultBlockState()
+		    .setValue(AXIS, context.getClickedFace()
+		        .getAxis());
 	}
 
 	/* BlockDC */
@@ -97,10 +104,8 @@ public class LogContBlock extends ClimateBlock implements IRapidCollectables {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		String tex = "dcs_climate:block/container/logcont_" + name;
-		return ImmutableList.of(
-			new JsonModelDC("dcs_climate:block/dcs_piller_hol", ImmutableMap.of("top", tex + "_t", "side", tex + "_s")),
-			new JsonModelDC("dcs_climate:block/dcs_piller_var", ImmutableMap.of("top", tex + "_t", "side", tex + "_s")),
-			new JsonModelDC("dcs_climate:block/dcs_piller_hol", ImmutableMap.of("top", tex + "_t", "side", tex + "_s")));
+		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_piller_hol", ImmutableMap.of("top", tex + "_t", "side", tex + "_s")),
+		    new JsonModelDC("dcs_climate:block/dcs_piller_var", ImmutableMap.of("top", tex + "_t", "side", tex + "_s")), new JsonModelDC("dcs_climate:block/dcs_piller_hol", ImmutableMap.of("top", tex + "_t", "side", tex + "_s")));
 	}
 
 	@Override
@@ -159,6 +164,17 @@ public class LogContBlock extends ClimateBlock implements IRapidCollectables {
 			level.removeBlock(pos, false);
 		}
 		return true;
+	}
+
+	// flammable
+	@Override
+	public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 5;
+	}
+
+	@Override
+	public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 5;
 	}
 
 }

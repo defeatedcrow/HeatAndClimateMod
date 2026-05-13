@@ -1,6 +1,6 @@
 {
   "textures": {
-    "cross": "dcs_climate:block/crop/morningglory_flower_d"
+    "cross": "dcs_climate:block/crop/leaf_1"
   },
   "parent": "dcs_climate:block/dcs_cross"
 }

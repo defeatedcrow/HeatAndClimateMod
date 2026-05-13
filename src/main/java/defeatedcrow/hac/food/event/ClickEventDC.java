@@ -22,6 +22,7 @@ import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.TieredItem;
@@ -216,8 +217,12 @@ public class ClickEventDC {
 				if (!playerLevel.isClientSide()) {
 					playerLevel.addFreshEntity(drop);
 				}
-				event.setFinalState(Blocks.STRIPPED_BIRCH_LOG.defaultBlockState()
-				    .setValue(RotatedPillarBlock.AXIS, log.getValue(RotatedPillarBlock.AXIS)));
+			} else if (log.is(BlockTags.OVERWORLD_NATURAL_LOGS) && AxeItem.getAxeStrippingState(log) != null) {
+				ItemStack bark = new ItemStack(FoodInit.BARK_OAK.get());
+				ItemEntity drop = new ItemEntity(playerLevel, player.getX(), player.getY(), player.getZ(), bark);
+				if (!playerLevel.isClientSide()) {
+					playerLevel.addFreshEntity(drop);
+				}
 			}
 		}
 	}

@@ -13,12 +13,14 @@ import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.ClimateBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -39,7 +41,10 @@ public class LeavesContBlock extends ClimateBlock implements IRapidCollectables 
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.GRASS).strength(1.0F, 1.0F).sound(SoundType.GRASS).randomTicks();
+		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.GRASS)
+		    .strength(1.0F, 1.0F)
+		    .sound(SoundType.GRASS)
+		    .randomTicks();
 	}
 
 	@Override
@@ -123,6 +128,17 @@ public class LeavesContBlock extends ClimateBlock implements IRapidCollectables 
 			level.removeBlock(pos, false);
 		}
 		return true;
+	}
+
+	// flammable
+	@Override
+	public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 60;
+	}
+
+	@Override
+	public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 30;
 	}
 
 }

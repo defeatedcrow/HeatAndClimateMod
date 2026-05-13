@@ -617,6 +617,7 @@
   "item.dcs_climate.food.bark_cherry_wild":"Cherry Bark",
   "item.dcs_climate.food.bark_morus_paper":"Mulberry Bark",
   "item.dcs_climate.food.bark_birch":"Birch Bark",
+  "item.dcs_climate.food.bark_oak":"Bark",
 
   "item.dcs_climate.food.string_plant":"Plant String",
   "item.dcs_climate.food.string_tree":"Bark String",
@@ -1878,6 +1879,8 @@
   "block.dcs_climate.build.stairs_roof_black":"Metal Roof Block (Black)",
   "block.dcs_climate.build.stairs_roof_red":"Metal Roof Block (Red)",
   "block.dcs_climate.build.stairs_roof_green":"Metal Roof Block (Green)",
+  
+  "block.dcs_climate.build.stairs_wood_bark":"Bark Roof Block",
 
   "block.dcs_climate.build.flintbricks":"Flint Bricks",
   "block.dcs_climate.build.flintbricks_black":"Black Flint Bricks",

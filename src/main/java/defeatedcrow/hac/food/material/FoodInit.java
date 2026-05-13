@@ -41,6 +41,7 @@ import defeatedcrow.hac.food.material.block.crops.CropBlockKnotweed;
 import defeatedcrow.hac.food.material.block.crops.CropBlockLily;
 import defeatedcrow.hac.food.material.block.crops.CropBlockMallow;
 import defeatedcrow.hac.food.material.block.crops.CropBlockMorningGlory;
+import defeatedcrow.hac.food.material.block.crops.CropBlockMorningGlory_Flower;
 import defeatedcrow.hac.food.material.block.crops.CropBlockOrchid;
 import defeatedcrow.hac.food.material.block.crops.CropBlockOrchid_Epiphyte;
 import defeatedcrow.hac.food.material.block.crops.CropBlockPalm;
@@ -1146,6 +1147,7 @@ public class FoodInit {
 	public static final RegistryObject<Item> BARK_CHERRY = regItem("bark_cherry_wild", () -> new MaterialItemDC(AGRI, "bark_cherry_wild", TagDC.ItemTag.BARKS).setDomain("food"));
 	public static final RegistryObject<Item> BARK_PAPER = regItem("bark_morus_paper", () -> new MaterialItemDC(AGRI, "bark_morus_paper", TagDC.ItemTag.BARKS).setDomain("food"));
 	public static final RegistryObject<Item> BARK_BIRCH = regItem("bark_birch", () -> new MaterialItemDC(AGRI, "bark_birch", TagDC.ItemTag.BARKS).setDomain("food"));
+	public static final RegistryObject<Item> BARK_OAK = regItem("bark_oak", () -> new MaterialItemDC(AGRI, "bark_oak", TagDC.ItemTag.BARKS).setDomain("food"));
 
 	// clothes
 	public static final RegistryObject<Item> STRING_PLANT = regItem("string_plant", () -> new MaterialItemDC(CoreInit.CLOTH, "string_plant", TagDC.ItemTag.STRING_GRASS).setDomain("food"));
@@ -1393,7 +1395,7 @@ public class FoodInit {
 	public static final RegistryObject<Block> BLOCK_MO_BINDWEED = regSeed(CropTier.WILD, CropType.MORNINGGLORY, () -> new CropBlockMorningGlory(CropTier.WILD), TagDC.ItemTag.SEED_BINDWEED);
 	public static final RegistryObject<Block> BLOCK_MO_WATER = regSeed(CropTier.COMMON, CropType.MORNINGGLORY, () -> new CropBlockMorningGlory(CropTier.COMMON), TagDC.ItemTag.SEED_WATER_SPINACH);
 	public static final RegistryObject<Block> BLOCK_MO_POTATO = regSeed(CropTier.RARE, CropType.MORNINGGLORY, () -> new CropBlockMorningGlory(CropTier.RARE), TagDC.ItemTag.SEED_SWEET_POTATO);
-	public static final RegistryObject<Block> BLOCK_MO_FLOWER = regSeed(CropTier.EPIC, CropType.MORNINGGLORY, () -> new CropBlockMorningGlory(CropTier.EPIC), TagDC.ItemTag.SEED_MORNING_GLORY);
+	public static final RegistryObject<Block> BLOCK_MO_FLOWER = regSeed(CropTier.EPIC, CropType.MORNINGGLORY, () -> new CropBlockMorningGlory_Flower(CropTier.EPIC), TagDC.ItemTag.SEED_MORNING_GLORY);
 	public static final RegistryObject<Block> BLOCK_OR_SPIRANTHES = regSeed(CropTier.WILD, CropType.ORCHID, () -> new CropBlockOrchid(CropTier.WILD), TagDC.ItemTag.SEED_SPIRANTHES);
 	public static final RegistryObject<Block> BLOCK_OR_CYMBIDIUM = regSeed(CropTier.COMMON, CropType.ORCHID, () -> new CropBlockOrchid(CropTier.COMMON), TagDC.ItemTag.SEED_CYMBIDIUM);
 	public static final RegistryObject<Block> BLOCK_OR_VANILLA = regSeed(CropTier.RARE, CropType.ORCHID, () -> new CropBlockOrchid_Epiphyte(CropTier.RARE), TagDC.ItemTag.SEED_VANILLA);

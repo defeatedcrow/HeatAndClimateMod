@@ -64,6 +64,12 @@ public abstract class ItemDC extends Item implements IJsonDataDC, IItemDC {
 	@Override
 	public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {
 		if (!DCUtil.isEmpty(stack)) {
+			if (stack.is(TagDC.ItemTag.FEED_STRAW)) {
+				return 100;
+			}
+			if (stack.is(TagDC.ItemTag.BARKS)) {
+				return 200;
+			}
 			if (stack.is(TagDC.ItemTag.PLANT_OIL)) {
 				return 800;
 			}

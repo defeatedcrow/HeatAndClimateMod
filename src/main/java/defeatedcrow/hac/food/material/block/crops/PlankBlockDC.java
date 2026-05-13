@@ -11,8 +11,11 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.BlockDC;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -30,7 +33,9 @@ public class PlankBlockDC extends BlockDC {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.SAND).strength(2.0F, 3.0F).sound(SoundType.WOOD);
+		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.SAND)
+		    .strength(2.0F, 3.0F)
+		    .sound(SoundType.WOOD);
 	}
 
 	@Override
@@ -81,6 +86,17 @@ public class PlankBlockDC extends BlockDC {
 	@Override
 	public int getToolTier() {
 		return 0;
+	}
+
+	// flammable
+	@Override
+	public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 20;
+	}
+
+	@Override
+	public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 5;
 	}
 
 }

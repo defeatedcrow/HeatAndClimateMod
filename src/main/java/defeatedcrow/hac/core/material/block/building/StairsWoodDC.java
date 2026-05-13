@@ -13,9 +13,12 @@ import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -31,7 +34,8 @@ public class StairsWoodDC extends StairBlock implements IBlockDC, IJsonDataDC {
 	private String texDir = "tree/plank_";
 
 	public StairsWoodDC(String n, Properties prop, RegistryObject<Block> baseBlock) {
-		super(() -> baseBlock.get().defaultBlockState(), prop);
+		super(() -> baseBlock.get()
+		    .defaultBlockState(), prop);
 		name = n;
 	}
 
@@ -48,8 +52,8 @@ public class StairsWoodDC extends StairBlock implements IBlockDC, IJsonDataDC {
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_stairs_normal", ImmutableMap.of("all", "dcs_climate:block/" + texDir + name)),
-			new JsonModelDC("dcs_climate:block/dcs_stairs_inner", ImmutableMap.of("all", "dcs_climate:block/" + texDir + name)),
-			new JsonModelDC("dcs_climate:block/dcs_stairs_outer", ImmutableMap.of("all", "dcs_climate:block/" + texDir + name)));
+		    new JsonModelDC("dcs_climate:block/dcs_stairs_inner", ImmutableMap.of("all", "dcs_climate:block/" + texDir + name)),
+		    new JsonModelDC("dcs_climate:block/dcs_stairs_outer", ImmutableMap.of("all", "dcs_climate:block/" + texDir + name)));
 	}
 
 	@Override
@@ -74,7 +78,8 @@ public class StairsWoodDC extends StairBlock implements IBlockDC, IJsonDataDC {
 			ret.addAll(super.getDrops(state, builder));
 		} else {
 			if (state.getBlock() instanceof IBlockDC) {
-				LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+				LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state)
+				    .create(LootContextParamSets.BLOCK);
 				IBlockDC block = (IBlockDC) state.getBlock();
 				Entity breaker = null;
 				ItemStack tool = ItemStack.EMPTY;
@@ -85,7 +90,8 @@ public class StairsWoodDC extends StairBlock implements IBlockDC, IJsonDataDC {
 					breaker = cont.getParamOrNull(LootContextParams.THIS_ENTITY);
 				}
 				// シルクタッチの場合は処理を中断
-				if (!block.getSilkyDrop().isEmpty() && tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
+				if (!block.getSilkyDrop()
+				    .isEmpty() && tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
 					ret.add(getSilkyDrop());
 					return ret;
 				}
@@ -125,6 +131,17 @@ public class StairsWoodDC extends StairBlock implements IBlockDC, IJsonDataDC {
 	@Override
 	public int getToolTier() {
 		return 0;
+	}
+
+	// flammable
+	@Override
+	public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 20;
+	}
+
+	@Override
+	public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return 5;
 	}
 
 }
