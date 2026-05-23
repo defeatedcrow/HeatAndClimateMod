@@ -127,7 +127,7 @@ public class SaplingCherry extends SaplingBaseBlock {
 		case EPIC -> FoodInit.LEAVES_CH_ALMOND.get()
 		    .defaultBlockState()
 		    .setValue(DCState.FLAG, true);
-		default -> FoodInit.LEAVES_BH_COMMON.get()
+		default -> FoodInit.LEAVES_CH_WILD.get()
 		    .defaultBlockState()
 		    .setValue(DCState.FLAG, true);
 		};
