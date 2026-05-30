@@ -40,16 +40,18 @@ public class KichenStoveScreen extends AbstractContainerScreen<KichenStoveMenu> 
 		this.renderTooltip(pose, mx, my);
 
 		List<Component> list = Lists.newArrayList();
-		boolean lock = this.getMenu().getContainer().isLocked();
+		boolean lock = this.getMenu()
+		    .getContainer()
+		    .isLocked();
 		if (this.isHovering(156, 3, 12, 20, mx, my)) {
 			if (lock) {
-				list.add(Component.translatable("dcs.tip.container.ownable_locked", this.getMenu().getContainer().getOwnerName()));
-			} else {
-				if (ClimateCore.proxy.keyShiftPushed())
-					list.add(Component.translatable("dcs.tip.container.ownable"));
-				else
-					list.add(Component.translatable("dcs.tip.container.ownable_short"));
-			}
+				list.add(Component.translatable("dcs.tip.container.ownable_locked", this.getMenu()
+				    .getContainer()
+				    .getOwnerName()));
+			} else if (ClimateCore.proxy.keyShiftPushed())
+				list.add(Component.translatable("dcs.tip.container.ownable"));
+			else
+				list.add(Component.translatable("dcs.tip.container.ownable_short"));
 		}
 		if (this.isHovering(7, 29, 14, 14, mx, my)) {
 			DCAirflow air = DCAirflow.getTypeByID(this.menu.getAirID());
@@ -60,7 +62,8 @@ public class KichenStoveScreen extends AbstractContainerScreen<KichenStoveMenu> 
 			list.add(Component.translatable("dcs.tip.device.heat", temp.localize()));
 		}
 		if (this.isHovering(57, 27, 12, 40, mx, my)) {
-			if (!this.menu.getFluid().isEmpty()) {
+			if (!this.menu.getFluid()
+			    .isEmpty()) {
 				list.add(this.menu.getFluidName());
 				list.add(this.menu.getFluidAmount());
 			} else {
@@ -69,7 +72,8 @@ public class KichenStoveScreen extends AbstractContainerScreen<KichenStoveMenu> 
 		}
 		if (this.isHovering(130, 46, 10, 10, mx, my)) {
 			String s = this.menu.isRS() ? "ON" : "OFF";
-			list.add(Component.translatable("dcs.tip.device.energy.rs").append(s));
+			list.add(Component.translatable("dcs.tip.device.energy.rs")
+			    .append(s));
 		}
 		this.renderComponentTooltip(pose, list, mx, my);
 	}
@@ -83,7 +87,9 @@ public class KichenStoveScreen extends AbstractContainerScreen<KichenStoveMenu> 
 		int j = (this.height - this.imageHeight) / 2;
 		this.blit(pose, i, j, 0, 0, this.imageWidth, this.imageHeight);
 
-		boolean lock = this.getMenu().getContainer().isLocked();
+		boolean lock = this.getMenu()
+		    .getContainer()
+		    .isLocked();
 		if (lock) {
 			this.blit(pose, i + 156, j + 3, 176, 21, 12, 21);
 		} else {
@@ -103,14 +109,15 @@ public class KichenStoveScreen extends AbstractContainerScreen<KichenStoveMenu> 
 		}
 
 		if (this.menu.isRS()) {
-			this.blit(pose, i + 131, j + 47, 176, 112, 10, 10);
+			this.blit(pose, i + 130, j + 46, 176, 112, 10, 10);
 		}
 
 		int l = this.menu.getBurnProgress();
 		if (l > 0)
 			this.blit(pose, i + 98, j + 42 + l, 176, 42 + l, 14, 14 - l);
 
-		if (!this.menu.getFluid().isEmpty()) {
+		if (!this.menu.getFluid()
+		    .isEmpty()) {
 			if (l > 0) {
 				this.blit(pose, i + 73, j + 57, 190, 28, 40, 5);
 			}
@@ -129,10 +136,17 @@ public class KichenStoveScreen extends AbstractContainerScreen<KichenStoveMenu> 
 		double dx = x - (i + 156);
 		double dy = y - (j + 3);
 		if (dx >= 0.0D && dy >= 0.0D && dx < 112.0D && dy < 21.0D) {
-			if (this.getMenu().getContainer() != null && this.getMenu().isOwner) {
-				boolean b = this.getMenu().getContainer().toggleLock();
-				MsgTileOwnerKeyToS.sendToServer(this.minecraft.player, this.getMenu().getContainer().getBlockPos(), b);
-				Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.IRON_DOOR_OPEN, 1.0F));
+			if (this.getMenu()
+			    .getContainer() != null && this.getMenu().isOwner) {
+				boolean b = this.getMenu()
+				    .getContainer()
+				    .toggleLock();
+				MsgTileOwnerKeyToS.sendToServer(this.minecraft.player, this.getMenu()
+				    .getContainer()
+				    .getBlockPos(), b);
+				Minecraft.getInstance()
+				    .getSoundManager()
+				    .play(SimpleSoundInstance.forUI(SoundEvents.IRON_DOOR_OPEN, 1.0F));
 				return true;
 			}
 		}

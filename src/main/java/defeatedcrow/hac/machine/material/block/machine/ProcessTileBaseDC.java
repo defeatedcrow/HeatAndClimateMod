@@ -64,7 +64,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 					if (tile.currentProgress >= tile.totalProgress && tile.finishProcess(level, pos, state)) {
 						tile.consumeInputs();
 						tile.resetProcess();
-						tile.setChanged(level, pos, state);
+						BlockEntity.setChanged(level, pos, state);
 					} else {
 						tile.lastProgress = tile.currentProgress;
 						tile.currentProgress++;
@@ -75,7 +75,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 			}
 			if (!tile.isInProcess()) {
 				if (tile.startProcess(level, pos, state)) {
-					tile.setChanged(level, pos, state);
+					BlockEntity.setChanged(level, pos, state);
 				}
 			}
 		}
@@ -113,7 +113,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 			int i = resultClimate().getClimateInt();
 			if (i != lastClimate) {
 				lastClimate = i;
-				this.setChanged(level, pos, getBlockState());
+				BlockEntity.setChanged(level, pos, getBlockState());
 				if (level instanceof ServerLevel)
 					MsgTileClimateToC.sendToClient((ServerLevel) this.getLevel(), pos, i);
 			}
@@ -217,7 +217,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 			receivingHum = hum;
 			humTime = 3;
 		}
-	};
+	}
 
 	@Override
 	public void receiveAirflow(DCAirflow air) {
@@ -225,7 +225,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 			receivingAir = air;
 			airTime = 3;
 		}
-	};
+	}
 
 	public IClimate clientClimate = ClimateAPI.helper.getDefaultClimate();
 
@@ -262,6 +262,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 		receivingHeat = receiving.getHeat();
 		receivingHum = receiving.getHumidity();
 		receivingAir = receiving.getAirflow();
+		lastClimate = tag.getInt(TagKeyDC.CLIMATE_INT);
 
 	}
 
@@ -278,6 +279,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 		tag.putInt("dcs_air_time", airTime);
 		IClimate receiving = ClimateAPI.helper.getClimateFromParam(receivingHeat, receivingHum, receivingAir);
 		ClimateAPI.helper.setClimateToNBT(tag, receiving);
+		tag.putInt(TagKeyDC.CLIMATE_INT, lastClimate);
 	}
 
 	// caps
@@ -300,8 +302,8 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 	@Override
 	public void invalidateCaps() {
 		super.invalidateCaps();
-		for (int x = 0; x < handlers.length; x++)
-			handlers[x].invalidate();
+		for (LazyOptional<? extends IItemHandler> handler : handlers)
+			handler.invalidate();
 	}
 
 	@Override
