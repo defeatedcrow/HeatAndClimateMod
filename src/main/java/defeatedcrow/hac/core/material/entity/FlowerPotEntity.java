@@ -215,6 +215,7 @@ public class FlowerPotEntity extends ObjectEntityBaseDC {
 		FLOWER_MAP.add(new Flower(FoodInit.CROP_OL_OSMANTHUS, FoodInit.LEAVES_OL_OSMANTHUS, 4));
 		FLOWER_MAP.add(new Flower(FoodInit.CROP_OL_JASMINE, FoodInit.LEAVES_OL_JASMINE, 4));
 		FLOWER_MAP.add(new Flower(FoodInit.FLOWER_GARDENIA, FoodInit.LEAVES_RU_GARDENIA, 4));
+		FLOWER_MAP.add(new Flower(FoodInit.CROP_RO_DAMASCHENA, FoodInit.LEAVES_RO_DAMASCHENA, 4));
 		FLOWER_MAP.add(new Flower(FoodInit.CROP_RU_IXORA, FoodInit.LEAVES_RU_IXORA, 4));
 	}
 
