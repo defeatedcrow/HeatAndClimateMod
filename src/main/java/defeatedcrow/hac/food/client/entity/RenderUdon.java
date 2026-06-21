@@ -34,7 +34,8 @@ public class RenderUdon<T extends FoodEntityBase> extends RenderFoodBase<FoodEnt
 	@Override
 	public void render(FoodEntityBase entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		if (entity != null) {
-			Item item = entity.getItem().getItem();
+			Item item = entity.getItem()
+			    .getItem();
 			if (item instanceof IEntityItem && ((IEntityItem) item).getRenderData(item) != null) {
 				EntityRenderData data = ((IEntityItem) item).getRenderData(item);
 				ResourceLocation tex = data.getTextureLocation();
@@ -61,7 +62,7 @@ public class RenderUdon<T extends FoodEntityBase> extends RenderFoodBase<FoodEnt
 				poseStack.scale(f1, f1, f1);
 				model.setupAnim(entity, 360.0F - yaw, partialTicks, packedLight, f1, f2);
 				VertexConsumer vertex2 = buffer.getBuffer(RenderType.entityTranslucent(tex));
-				this.model.renderSoup(poseStack, vertex2, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+				this.model.renderTranslucent(poseStack, vertex2, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 				poseStack.popPose();
 			}
 		}

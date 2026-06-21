@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:foods/bread"
+    },
+    {
+      "tag": "forge:crops/lettuce"
+    },
+    {
+      "tag": "forge:crops/tomato"
+    },
+    {
+      "tag": "forge:ingredients/bacon"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/sandwich_blt"
+  }
+}

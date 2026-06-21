@@ -1,0 +1,39 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/sausage_curry",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/cooked_sausage"
+    },
+    {
+      "tag": "forge:ingredients/ketchup"
+    },
+    {
+      "tag": "forge:ingredients/mixed_spices"
+    },
+    {
+      "tag": "forge:foods/cooked_potato"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

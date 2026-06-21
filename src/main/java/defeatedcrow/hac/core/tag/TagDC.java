@@ -890,6 +890,8 @@ public class TagDC {
 
 		public static final TagKey<Item> RAW_SAUSAGE = itemTag("ingredients/raw_sausage");
 		public static final TagKey<Item> COOKED_SAUSAGE = itemTag("ingredients/cooked_sausage");
+		public static final TagKey<Item> SALT_MEAT = itemTag("ingredients/salt_meat");
+		public static final TagKey<Item> BACON = itemTag("ingredients/bacon");
 
 		public static final TagKey<Item> LIQUOR = itemTag("foods/liquor");
 		public static final TagKey<Item> DRINK = itemTag("foods/drinks");
@@ -926,6 +928,7 @@ public class TagDC {
 		public static final TagKey<Item> HAC_KOBACHI = itemHaCTag("meals/kobachi");
 		public static final TagKey<Item> HAC_TART = itemHaCTag("meals/tart");
 		public static final TagKey<Item> HAC_SWEETS = itemHaCTag("meals/sweets");
+		public static final TagKey<Item> HAC_ICECREAMS = itemHaCTag("meals/ice_creams");
 
 		public static final TagKey<Item> HAC_LIQUOR = itemHaCTag("meals/liquor");
 		public static final TagKey<Item> HAC_DRINK = itemHaCTag("meals/drinks");
@@ -972,6 +975,8 @@ public class TagDC {
 		public static final TagKey<Item> COOKED_COD = itemTag("foods/cooked_cod");
 		public static final TagKey<Item> COOKED_SALMON = itemTag("foods/cooked_salmon");
 		public static final TagKey<Item> COOKED_FISH = itemTag("foods/cooked_fishes");
+
+		public static final TagKey<Item> COOKED_POTATO = itemTag("foods/cooked_potato");
 
 		public static final TagKey<Item> MAGMA = itemTag("magma");
 		public static final TagKey<Item> DRIPSTONES = itemTag("dripstones");
@@ -1185,6 +1190,7 @@ public class TagDC {
 		public static final TagKey<Item> HAC_ROUND_CHAIR = itemHaCTag("round_chairs");
 		public static final TagKey<Item> HAC_SOFA = itemHaCTag("sofas");
 		public static final TagKey<Item> HAC_BED = itemHaCTag("beds");
+		public static final TagKey<Item> HAC_CURTAIN = itemHaCTag("curtains");
 		public static final TagKey<Item> HAC_TABLE = itemHaCTag("tables");
 		public static final TagKey<Item> HAC_LUGGAGE = itemHaCTag("luggages");
 		public static final TagKey<Item> HAC_LOCKER = itemHaCTag("lockers");

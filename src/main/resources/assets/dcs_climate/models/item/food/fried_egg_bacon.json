@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/fried_egg_bacon"
+  },
+  "parent": "minecraft:item/generated"
+}

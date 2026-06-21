@@ -14,6 +14,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ambient.Bat;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
@@ -28,7 +29,8 @@ public abstract class LivingEntityMixin implements IForgeLivingEntity {
 	@Inject(method = "baseTick", at = @At(value = "TAIL"))
 	public void onBaseTick(CallbackInfo callback) {
 		LivingEntity liv = LivingEntity.class.cast(this);
-		if (liv.isAlive() && ConfigCommonBuilder.INSTANCE.enTightEffect.get() && liv.getType().getCategory() != MobCategory.MONSTER && !(liv instanceof Bat) && !(liv instanceof WaterAnimal)) {
+		if (liv.isAlive() && ConfigCommonBuilder.INSTANCE.enTightEffect.get() && liv.getType()
+		    .getCategory() != MobCategory.MONSTER && !(liv instanceof Bat) && !(liv instanceof WaterAnimal)) {
 			BlockPos pos = new BlockPos(liv.getX(), liv.getEyeY(), liv.getZ());
 			IClimate clm = new ClimateSupplier(liv.getLevel(), pos).get();
 			if (clm.getAirflow() == DCAirflow.TIGHT) {
@@ -37,7 +39,8 @@ public abstract class LivingEntityMixin implements IForgeLivingEntity {
 				if (flag1) {
 					int i = EnchantmentHelper.getRespiration(liv);
 					int air = liv.getAirSupply();
-					if (i < 1 || liv.getRandom().nextInt(i + 1) == 0) {
+					if (i < 1 || liv.getRandom()
+					    .nextInt(i + 1) == 0) {
 						air -= 1;
 					}
 					liv.setAirSupply(air);
@@ -53,7 +56,8 @@ public abstract class LivingEntityMixin implements IForgeLivingEntity {
 	@Override
 	public boolean canDrownInFluidType(FluidType type) {
 		LivingEntity liv = LivingEntity.class.cast(this);
-		if (liv.isAlive() && ConfigCommonBuilder.INSTANCE.enTightEffect.get() && liv.getType().getCategory() != MobCategory.MONSTER && !(liv instanceof Bat) && !(liv instanceof WaterAnimal)) {
+		if (liv.isAlive() && ConfigCommonBuilder.INSTANCE.enTightEffect.get() && liv.getType()
+		    .getCategory() != MobCategory.MONSTER && !(liv instanceof Bat) && !(liv instanceof WaterAnimal)) {
 			BlockPos pos = new BlockPos(liv.getX(), liv.getEyeY(), liv.getZ());
 			IClimate clm = new ClimateSupplier(liv.getLevel(), pos).get();
 			if (clm.getAirflow() == DCAirflow.TIGHT) {
@@ -61,7 +65,7 @@ public abstract class LivingEntityMixin implements IForgeLivingEntity {
 			}
 		}
 		if (type == ForgeMod.WATER_TYPE.get())
-			return !liv.canBreatheUnderwater();
+			return liv.getMobType() != MobType.UNDEAD;
 		return type.canDrownIn(self());
 	}
 

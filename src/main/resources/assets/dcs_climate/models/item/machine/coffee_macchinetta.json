@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/machine/coffee_macchinetta_item"
+  },
+  "parent": "minecraft:item/generated"
+}

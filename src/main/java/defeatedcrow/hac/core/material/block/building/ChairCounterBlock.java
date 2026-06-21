@@ -3,6 +3,7 @@ package defeatedcrow.hac.core.material.block.building;
 import java.util.List;
 import java.util.Optional;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.magic.MagicColor;
@@ -122,7 +123,7 @@ public class ChairCounterBlock extends BlockDC implements SimpleWaterloggedBlock
 
 	@Override
 	public JsonModelSimpleDC getItemModel() {
-		return new JsonModelSimpleDC("dcs_climate:block/build/" + name + "_0");
+		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:block/build/" + name + "_item"));
 	}
 
 	@Override

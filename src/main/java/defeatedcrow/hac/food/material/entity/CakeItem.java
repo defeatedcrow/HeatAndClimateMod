@@ -67,6 +67,10 @@ public class CakeItem extends ItemEntityFood {
 			return GRAPE;
 		if (item == FoodInit.CAKE_ROSE.get())
 			return ROSE;
+		if (item == FoodInit.CAKE_CASSATA.get())
+			return CASSATA;
+		if (item == FoodInit.CAKE_BAKLAVA.get())
+			return BAKLAVA;
 		if (item == FoodInit.CAKE_CREAM_VANILLA.get())
 			return CREAM_VANILLA;
 		if (item == FoodInit.CAKE_CREAM_MANGO.get())
@@ -84,6 +88,8 @@ public class CakeItem extends ItemEntityFood {
 	public static final EntityRenderData GRAPE = new EntityRenderData("food/cake_jelly_grape", 0.6F, 0F);
 	public static final EntityRenderData ROSE = new EntityRenderData("food/cake_jelly_rose", 0.6F, 0F);
 	public static final EntityRenderData APPLE = new EntityRenderData("food/cake_tarte_tatin", 0.6F, 0F);
+	public static final EntityRenderData CASSATA = new EntityRenderData("food/cake_cassata", 0.6F, 0F);
+	public static final EntityRenderData BAKLAVA = new EntityRenderData("food/cake_baklava", 0.6F, 0F);
 	public static final EntityRenderData CREAM_VANILLA = new EntityRenderData("food/cake_cream_vanilla", 0.6F, 0F);
 	public static final EntityRenderData CREAM_MANGO = new EntityRenderData("food/cake_cream_mango", 0.6F, 0F);
 	public static final EntityRenderData CREAM_SESAMI = new EntityRenderData("food/cake_cream_sesami", 0.6F, 0F);

@@ -1,0 +1,36 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "tea",
+  "result": {
+    "item": "dcs_climate:food/cup_coffee_cardamom",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/powder_coffee"
+    },
+    {
+      "tag": "forge:crops/cardamom"
+    }
+  ],
+  "input_fluids": [
+    "minecraft:water"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

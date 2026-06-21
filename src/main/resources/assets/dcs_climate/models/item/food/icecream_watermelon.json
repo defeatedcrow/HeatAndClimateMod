@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/icecream_watermelon"
+  },
+  "parent": "minecraft:item/generated"
+}

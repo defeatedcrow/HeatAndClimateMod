@@ -35,23 +35,26 @@ public class FaucetTile extends BlockEntity implements IRenderBlockData {
 	}
 
 	public boolean isActive() {
-		return DCState.getBool(this.getBlockState(), DCState.POWERED);
+		return DCState.getBool(this.getBlockState(), DCState.POWERED) || DCState.getBool(this.getBlockState(), DCState.FLAG);
 	}
 
 	public boolean onTickProcess(Level level, BlockPos pos, BlockState state) {
 		if (isActive()) {
-			BlockPos p2 = this.getBlockPos().below();
+			BlockPos p2 = this.getBlockPos()
+			    .below();
 			BlockEntity targetEntity = getLevel().getBlockEntity(p2);
 			if (targetEntity != null) {
-				targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP).ifPresent(handler -> {
-					if (handler instanceof IFluidPipe sided) {
-						if (sided.getFace(Direction.UP).canReceive()) {
-							int ret = sided.fill(tank.fluid.copy(), FluidAction.EXECUTE, Direction.UP);
-						}
-					} else if (handler != null) {
-						int ret = handler.fill(tank.fluid.copy(), FluidAction.EXECUTE);
-					}
-				});
+				targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP)
+				    .ifPresent(handler -> {
+					    if (handler instanceof IFluidPipe sided) {
+						    if (sided.getFace(Direction.UP)
+						        .canReceive()) {
+							    int ret = sided.fill(tank.fluid.copy(), FluidAction.EXECUTE, Direction.UP);
+						    }
+					    } else if (handler != null) {
+						    int ret = handler.fill(tank.fluid.copy(), FluidAction.EXECUTE);
+					    }
+				    });
 			}
 		}
 		return false;

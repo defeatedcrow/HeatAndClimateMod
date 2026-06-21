@@ -542,6 +542,8 @@
 
   "item.dcs_climate.food.food_sausage_raw":"生のソーセージ",
   "item.dcs_climate.food.food_sausage_smoked":"燻製ソーセージ",
+  "item.dcs_climate.food.food_salt_pork":"生ハム",
+  "item.dcs_climate.food.food_smoked_bacon":"燻製ベーコン",
 
   "item.dcs_climate.food.food_basesoup_vegi":"野菜スープ",
   "item.dcs_climate.food.food_basesoup_beef":"牛骨スープ",
@@ -703,6 +705,8 @@
   "item.dcs_climate.food.sandwich_egg":"たまごサンド",
   "item.dcs_climate.food.sandwich_salad":"肉と野菜のサンド",
   "item.dcs_climate.food.sandwich_salmon":"サーモンサンド",
+  "item.dcs_climate.food.sandwich_blt":"BLTサンド",
+  "item.dcs_climate.food.sandwich_reuben":"ルーベンサンド",
 
   "item.dcs_climate.food.taco_meat":"ミートタコス",
   "item.dcs_climate.food.taco_avocado":"アボカドのタコス",
@@ -717,6 +721,8 @@
   "item.dcs_climate.food.donut_mint":"チョコミントドーナツ",
   "item.dcs_climate.food.donut_jelly":"ジェリードーナツ",
   "item.dcs_climate.food.donut_rose":"ポンチキ",
+  
+  "item.dcs_climate.food.pancake":"パンケーキ",
 
   "item.dcs_climate.food.cake_butter":"バターケーキ",
   "item.dcs_climate.food.cake_berry":"ベリーショートケーキ",
@@ -726,9 +732,28 @@
   "item.dcs_climate.food.cake_lemon":"レモンケーキ",
   "item.dcs_climate.food.cake_jelly_grape":"ブドウのゼリーケーキ",
   "item.dcs_climate.food.cake_jelly_rose":"バラのゼリーケーキ",
+  "item.dcs_climate.food.cake_cassata":"カッサータ・シチリアーナ",
+  "item.dcs_climate.food.cake_baklava":"バクラヴァ",
   "item.dcs_climate.food.cake_cream_vanilla":"バニラプリン",
   "item.dcs_climate.food.cake_cream_mango":"マンゴープリン",
   "item.dcs_climate.food.cake_cream_sesami":"ごまプリン",
+  
+  "item.dcs_climate.food.icecream_vanilla":"バニラアイス",
+  "item.dcs_climate.food.icecream_nuts":"ハニーナッツアイス",
+  "item.dcs_climate.food.icecream_cocoa":"チョコアイス",
+  "item.dcs_climate.food.icecream_berry":"ベリーアイス",
+  "item.dcs_climate.food.icecream_watermelon":"スイカシャーベット",
+  "item.dcs_climate.food.icecream_melon":"メロンシャーベット",
+  "item.dcs_climate.food.icecream_grape":"グレープシャーベット",
+  "item.dcs_climate.food.icecream_citrus":"シトラスシャーベット",
+  "item.dcs_climate.food.icecream_mango":"マンゴーシャーベット",
+  "item.dcs_climate.food.icecream_guava":"グアバシャーベット",
+  "item.dcs_climate.food.icecream_pudding":"プリンアラモード",
+  "item.dcs_climate.food.sundae_cocoa":"チョコサンデー",
+  "item.dcs_climate.food.sundae_peach":"ピーチメルバ",
+  "item.dcs_climate.food.sundae_affogato":"アフォガート",
+  "item.dcs_climate.food.creamsoda_melon":"メロンのクリームソーダ",
+  "item.dcs_climate.food.creamsoda_mallow":"ブルーマロウのクリームソーダ",
 
   "item.dcs_climate.food.wagashi_bota":"ぼたもち",
   "item.dcs_climate.food.wagashi_kusa":"草餅",
@@ -753,6 +778,15 @@
   "item.dcs_climate.food.chazuke_sake":"鮭茶漬け",
   "item.dcs_climate.food.chazuke_tai":"鯛茶漬け",
   "item.dcs_climate.food.chazuke_tarako":"たらこ茶漬け",
+  
+  "item.dcs_climate.food.rice_chaofan":"炒飯",
+  "item.dcs_climate.food.rice_ketchup":"チキンライス",
+  "item.dcs_climate.food.rice_omerice":"オムライス",
+  "item.dcs_climate.food.rice_hainan_chicken":"海南鶏飯",
+  "item.dcs_climate.food.rice_pilav":"ピラフ",
+  "item.dcs_climate.food.rice_jambalaya":"ジャンバラヤ",
+  "item.dcs_climate.food.rice_jollof":"ジョロフライス",
+  "item.dcs_climate.food.rice_paellia":"パエリア",
 
   "item.dcs_climate.food.pasta_oil":"ペペロンチーノ",
   "item.dcs_climate.food.pasta_basil":"ジェノベーゼのパスタ",
@@ -764,6 +798,8 @@
   "item.dcs_climate.food.pasta_squid":"イカスミのパスタ",
   "item.dcs_climate.food.pasta_cod":"白身魚のクリームパスタ",
   "item.dcs_climate.food.pasta_roe":"タラコのパスタ",
+  "item.dcs_climate.food.pasta_ketchup":"ナポリタン",
+  "item.dcs_climate.food.pasta_carbonara":"カルボナーラ",
 
   "item.dcs_climate.food.phat_thai_prawn":"エビのパッタイ",
   "item.dcs_climate.food.phat_thai_chicken":"チキンのパッタイ",
@@ -859,6 +895,9 @@
   "item.dcs_climate.food.omelet_basic":"プレーンオムレツ",
   "item.dcs_climate.food.omelet_vegi":"野菜のオムレツ",
   "item.dcs_climate.food.fried_egg":"めだまやき",
+  "item.dcs_climate.food.fried_egg_bacon":"ベーコンエッグ",
+  "item.dcs_climate.food.sausage_saute":"ソーセージソテー",
+  "item.dcs_climate.food.sausage_curry":"カリーヴルスト",
 
   "item.dcs_climate.food.saute_green":"炒青菜",
   "item.dcs_climate.food.saute_green_squid":"魷魚炒青菜",
@@ -1026,7 +1065,8 @@
   "item.dcs_climate.food.drink_soda_citrus":"シトラスソーダ",
   "item.dcs_climate.food.drink_soda_mango":"マンゴーソーダ",
   "item.dcs_climate.food.drink_soda_guava":"グァバソーダ",
-
+  
+  "item.dcs_climate.food.cup_hot_milk":"ホットミルク",
   "item.dcs_climate.food.cup_tea_green":"緑茶",
   "item.dcs_climate.food.cup_tea_green_sakura":"さくら緑茶",
   "item.dcs_climate.food.cup_tea_blue":"烏龍茶",
@@ -1037,6 +1077,7 @@
   "item.dcs_climate.food.cup_tea_berry":"ベリーティー",
   "item.dcs_climate.food.cup_tea_chai":"チャイ",
   "item.dcs_climate.food.cup_coffee":"コーヒー",
+  "item.dcs_climate.food.cup_coffee_cardamom":"カルダモンコーヒー",
   "item.dcs_climate.food.cup_cocoa":"ココア",
   "item.dcs_climate.food.cup_mint":"ミントティー",
   "item.dcs_climate.food.cup_mallow":"マロウティー",
@@ -1051,6 +1092,12 @@
   "item.dcs_climate.food.cup_tea_berry_milk":"ベリーミルクティー",
   "item.dcs_climate.food.cup_coffee_milk":"カフェオレ",
   "item.dcs_climate.food.cup_cocoa_milk":"ミルクココア",
+  "item.dcs_climate.food.demitasse_espresso":"エスプレッソ",
+  "item.dcs_climate.food.cup_caffe_latte":"カフェラテ",
+  "item.dcs_climate.food.cup_cappuccino":"カプチーノ",
+  "item.dcs_climate.food.cup_cappuccino_nuts":"ナッツ入りカプチーノ",
+  "item.dcs_climate.food.cup_cappuccino_cocoa":"ココアカプチーノ",
+  "item.dcs_climate.food.cup_cappuccino_syrup":"バニラカプチーノ",
 
   "item.dcs_climate.food.bottle_beer":"ビール",
   "item.dcs_climate.food.bottle_sake":"日本酒",
@@ -2039,6 +2086,13 @@
   "block.dcs_climate.build.bed_red":"セーブしないベッド(赤)",
   "block.dcs_climate.build.bed_green":"セーブしないベッド(緑)",
   
+  "block.dcs_climate.build.kitchen_curtain_white":"白のカフェカーテン",
+  "block.dcs_climate.build.kitchen_curtain_yellow":"黄色のカフェカーテン",
+  "block.dcs_climate.build.kitchen_curtain_blue":"青のカフェカーテン",
+  "block.dcs_climate.build.kitchen_curtain_black":"黒のカフェカーテン",
+  "block.dcs_climate.build.kitchen_curtain_red":"赤のカフェカーテン",
+  "block.dcs_climate.build.kitchen_curtain_green":"緑のカフェカーテン",
+  
   "block.dcs_climate.build.straw_mat":"ござ",
 
   "block.dcs_climate.build.luggage_normal":"キャリーバッグ",
@@ -2077,6 +2131,12 @@
   "block.dcs_climate.build.display_shelf_glass":"飾り棚(ガラス戸)",
   
   "block.dcs_climate.build.ditch":"側溝",
+  
+  "block.dcs_climate.build.dishplate_white":"白い大皿",
+  "block.dcs_climate.build.dishplate_silver":"銀の大皿",
+  
+  "item.dcs_climate.build.flower_pot_white":"玉髄の花瓶",
+  "item.dcs_climate.build.flower_pot_clay":"素焼きの花瓶",
 
     "## machine":"",
 
@@ -2181,6 +2241,8 @@
   "block.dcs_climate.machine.entity_camera":"エンティティ検知カメラ",
   "block.dcs_climate.machine.auto_milker":"自動搾乳機",
   "block.dcs_climate.machine.water_basin":"取水マス",
+  "block.dcs_climate.machine.coffee_siphon":"サイフォン式コーヒーメーカー",
+  "block.dcs_climate.machine.coffee_macchinetta":"マキネッタ",
 
     "## magic":"",
 
@@ -2206,6 +2268,7 @@
   "entity.dcs_climate.cutlery_fork":"フォーク",
   "entity.dcs_climate.chair_entity":"椅子",
   "entity.dcs_climate.canoe_entity":"アウトリガー・カヌー",
+  "entity.dcs_climate.flower_pot_entity":"花瓶",
 
   "entity.dcs_climate.bread_round":"パン",
   "entity.dcs_climate.bread_square":"食パン",
@@ -2343,6 +2406,8 @@
   "dcs.tip.auto_milker":"近くのウシやヤギからミルクを集めます。",
   "dcs.tip.water_intake":"上面から水や雨を受けると、水を貯めることができます。",
   "dcs.tip.villager_chest":"近くにいる村人から、余剰のアイテムを集めます。",
+  "dcs.tip.coffee_siphon":"コーヒー粉と水を入れて加熱するとコーヒーができます。",
+  "dcs.tip.entity_flowerpot":"花を持って右クリックすると、花を飾ることが出来ます。",
 
   "dcs.tip.flow.tier1":"[Tier1] 流速: 32 /t",
   "dcs.tip.flow.tier2":"[Tier2] 流速: 128 /t",
@@ -2428,6 +2493,7 @@
   "dcs.tip.food_entity_cutlery":"食べ物アイテムに使用すると、それを食べることが出来ます。",
   "dcs.tip.empty_pack":"右クリック:水やミルクを汲むことが出来ます。",
   "dcs.tip.remove_bad_potion":"悪性ポーション効果を解除します。",
+  "dcs.tip.remove_all_potion":"すべてのポーション効果を解除します。",
   "dcs.tip.healing":"即時回復",
   "dcs.tip.seasoning":"[調味料]",
   "dcs.tip.seasoning.desc":"食べ物とクラフトすると、食べ物の風味が良くなります。",
@@ -2678,6 +2744,8 @@
   "dcs.container.boiler_biomass":"バイオマスボイラ",
   "dcs.container.boiler_biomass.with_owner":"%1$s の バイオマスボイラ",
   "dcs.container.black_rod":"フクロウの杖",
+  "dcs.container.coffee_maker":"コーヒーメーカー",
+  "dcs.container.coffee_maker.with_owner":"%1$s の コーヒーメーカー",
 
   "## gui_misc":"misc",
 

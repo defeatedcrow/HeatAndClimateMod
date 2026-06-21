@@ -7,9 +7,6 @@
   },
   "ingredients": [
     {
-      "tag": "forge:crops/flavored"
-    },
-    {
       "item": "minecraft:dried_kelp"
     },
     {

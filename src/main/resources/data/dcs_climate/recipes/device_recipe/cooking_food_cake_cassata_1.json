@@ -1,0 +1,42 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/cake_cassata",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/cheese"
+    },
+    {
+      "tag": "forge:crops/berries"
+    },
+    {
+      "tag": "forge:crops/all_grapes"
+    },
+    {
+      "tag": "forge:crops/peach"
+    },
+    {
+      "tag": "forge:crops/nuts"
+    }
+  ],
+  "heat": [
+    "FROSTBITE",
+    "COLD",
+    "COOL"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

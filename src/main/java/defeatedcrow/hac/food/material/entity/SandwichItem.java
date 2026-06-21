@@ -30,6 +30,10 @@ public class SandwichItem extends ItemEntityFood {
 			return SALAD;
 		if (item == FoodInit.SANDWICH_SALMON_ITEM.get())
 			return SALMON;
+		if (item == FoodInit.SANDWICH_BLT_ITEM.get())
+			return BLT;
+		if (item == FoodInit.SANDWICH_REUBEN_ITEM.get())
+			return REUBEN;
 		return FRUIT;
 	}
 
@@ -38,5 +42,7 @@ public class SandwichItem extends ItemEntityFood {
 	public static final EntityRenderData EGG = new EntityRenderData("food/sandwich_egg", 0.75F, 0F);
 	public static final EntityRenderData SALAD = new EntityRenderData("food/sandwich_salad", 0.75F, 0F);
 	public static final EntityRenderData SALMON = new EntityRenderData("food/sandwich_salmon", 0.75F, 0F);
+	public static final EntityRenderData BLT = new EntityRenderData("food/sandwich_blt", 0.75F, 0F);
+	public static final EntityRenderData REUBEN = new EntityRenderData("food/sandwich_reuben", 0.75F, 0F);
 
 }

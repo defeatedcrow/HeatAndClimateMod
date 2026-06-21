@@ -1,0 +1,7 @@
+{
+    "parent": "dcs_climate:block/build/kitchen_curtain_white_0",
+    "textures": {
+		"wood": "dcs_climate:block/build/wood_build",
+		"cloth": "dcs_climate:block/build/kitchen_curtain_black"
+	}
+}

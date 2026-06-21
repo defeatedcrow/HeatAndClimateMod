@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/build/kitchen_curtain_white"
+  },
+  "parent": "minecraft:item/generated"
+}

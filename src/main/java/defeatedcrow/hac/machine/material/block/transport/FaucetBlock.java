@@ -64,11 +64,18 @@ public class FaucetBlock extends EntityBlockDC {
 	public FaucetBlock(String s) {
 		super(getProp());
 		name = s;
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.POWERED, false).setValue(WATERLOGGED, false));
+		this.registerDefaultState(this.stateDefinition.any()
+		    .setValue(DCState.FACING, Direction.NORTH)
+		    .setValue(DCState.FLAG, false)
+		    .setValue(DCState.POWERED, false)
+		    .setValue(WATERLOGGED, false));
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).requiresCorrectToolForDrops().strength(2.0F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL)
+		    .requiresCorrectToolForDrops()
+		    .strength(2.0F, 540.0F)
+		    .noOcclusion();
 	}
 
 	@Override
@@ -90,9 +97,12 @@ public class FaucetBlock extends EntityBlockDC {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext cont) {
-		FluidState fluidstate = cont.getLevel().getFluidState(cont.getClickedPos());
+		FluidState fluidstate = cont.getLevel()
+		    .getFluidState(cont.getClickedPos());
 		Direction face = cont.getHorizontalDirection();
-		return this.defaultBlockState().setValue(DCState.FACING, face).setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
+		return this.defaultBlockState()
+		    .setValue(DCState.FACING, face)
+		    .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
 	}
 
 	@Override
@@ -100,31 +110,36 @@ public class FaucetBlock extends EntityBlockDC {
 		ItemStack held = player.getItemInHand(hand);
 		if (DCUtil.isEmpty(held)) {
 			if (!level.isClientSide)
-				changeLisState(level, pos);
+				changeLitState(level, pos);
 			level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.8F, 1.5F);
 			return InteractionResult.sidedSuccess(level.isClientSide);
-		} else if (FluidUtil.getFluidHandler(held.copy()).isPresent()) {
+		} else if (FluidUtil.getFluidHandler(held.copy())
+		    .isPresent()) {
 			ItemStack copy = held.copy();
 			copy.setCount(1);
-			if (FluidUtil.getFluidHandler(copy).map(handler -> {
-				FluidStack fluid = handler.getFluidInTank(0);
-				if (fluid.isEmpty()) {
-					FluidStack drain = new FluidStack(Fluids.WATER, 1000);
-					int d = handler.fill(drain, FluidAction.EXECUTE);
-					if (d > 0) {
-						ItemStack ret = handler.getContainer().copy();
-						if (!ret.isEmpty()) {
-							held.shrink(1);
-							ret.setCount(1);
-							ItemEntity drop = new ItemEntity(level, player.getX() + 0.5D, player.getY() + 0.25D, player.getZ() + 0.5D, ret);
-							level.addFreshEntity(drop);
-							return true;
-						}
-					}
-				}
-				return false;
-			}).orElse(false)) {
-				player.getInventory().setChanged();
+			if (FluidUtil.getFluidHandler(copy)
+			    .map(handler -> {
+				    FluidStack fluid = handler.getFluidInTank(0);
+				    if (fluid.isEmpty()) {
+					    FluidStack drain = new FluidStack(Fluids.WATER, 1000);
+					    int d = handler.fill(drain, FluidAction.EXECUTE);
+					    if (d > 0) {
+						    ItemStack ret = handler.getContainer()
+						        .copy();
+						    if (!ret.isEmpty()) {
+							    held.shrink(1);
+							    ret.setCount(1);
+							    ItemEntity drop = new ItemEntity(level, player.getX() + 0.5D, player.getY() + 0.25D, player.getZ() + 0.5D, ret);
+							    level.addFreshEntity(drop);
+							    return true;
+						    }
+					    }
+				    }
+				    return false;
+			    })
+			    .orElse(false)) {
+				player.getInventory()
+				    .setChanged();
 				level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1.0F, 1.2F);
 			}
 			return InteractionResult.CONSUME;
@@ -144,11 +159,11 @@ public class FaucetBlock extends EntityBlockDC {
 		}
 	}
 
-	public static void changeLisState(Level level, BlockPos pos) {
+	public static void changeLitState(Level level, BlockPos pos) {
 		BlockState state = level.getBlockState(pos);
 		if (state.getBlock() instanceof FaucetBlock) {
-			boolean l = !DCState.getBool(state, DCState.POWERED);
-			level.setBlock(pos, state.setValue(DCState.POWERED, l), 3);
+			boolean l = !DCState.getBool(state, DCState.FLAG);
+			level.setBlock(pos, state.setValue(DCState.FLAG, l), 3);
 			level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.8F, 1.5F);
 		}
 	}
@@ -167,7 +182,7 @@ public class FaucetBlock extends EntityBlockDC {
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
-		state.add(DCState.FACING, DCState.POWERED, WATERLOGGED);
+		state.add(DCState.FACING, DCState.FLAG, DCState.POWERED, WATERLOGGED);
 	}
 
 	@Override
@@ -230,14 +245,16 @@ public class FaucetBlock extends EntityBlockDC {
 
 	@Override
 	public void appendHoverText(ItemStack item, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
-		MutableComponent tex1 = Component.translatable("dcs.tip.flow.tier2").withStyle(ChatFormatting.YELLOW);
+		MutableComponent tex1 = Component.translatable("dcs.tip.flow.tier2")
+		    .withStyle(ChatFormatting.YELLOW);
 		list.add(tex1);
 	}
 
 	@Override
 	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.rs_signal_machine");
-		MutableComponent tex3 = Component.translatable("dcs.tip.faucet.desc").withStyle(ChatFormatting.GRAY);
+		MutableComponent tex3 = Component.translatable("dcs.tip.faucet.desc")
+		    .withStyle(ChatFormatting.GRAY);
 		if (flag) {
 			list.add(tex2);
 			list.add(tex3);

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:clothes"
+    },
+    "Y": {
+      "tag": "forge:ingots/sus"
+    }
+  },
+  "pattern": [
+    "YYY",
+    "YXY"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/coffee_macchinetta"
+  }
+}

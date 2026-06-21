@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:build/kitchen_curtain_white",
+    "dcs_climate:build/kitchen_curtain_yellow",
+    "dcs_climate:build/kitchen_curtain_blue",
+    "dcs_climate:build/kitchen_curtain_black",
+    "dcs_climate:build/kitchen_curtain_red",
+    "dcs_climate:build/kitchen_curtain_green"
+  ]
+}

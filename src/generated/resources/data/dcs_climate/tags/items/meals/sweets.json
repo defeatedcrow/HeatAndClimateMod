@@ -8,6 +8,7 @@
     "dcs_climate:food/donut_mint",
     "dcs_climate:food/donut_jelly",
     "dcs_climate:food/donut_rose",
+    "dcs_climate:food/pancake",
     "dcs_climate:food/cake_butter",
     "dcs_climate:food/cake_berry",
     "dcs_climate:food/cake_chocolate",
@@ -16,12 +17,21 @@
     "dcs_climate:food/cake_lemon",
     "dcs_climate:food/cake_jelly_grape",
     "dcs_climate:food/cake_jelly_rose",
+    "dcs_climate:food/cake_cassata",
+    "dcs_climate:food/cake_baklava",
     "dcs_climate:food/cake_cream_vanilla",
     "dcs_climate:food/cake_cream_mango",
     "dcs_climate:food/cake_cream_sesami",
     "dcs_climate:food/wagashi_bota",
     "dcs_climate:food/wagashi_kusa",
     "dcs_climate:food/wagashi_sakura",
-    "dcs_climate:food/wagashi_daifuku"
+    "dcs_climate:food/wagashi_daifuku",
+    "dcs_climate:food/sundae_cocoa",
+    "dcs_climate:food/sundae_peach",
+    "dcs_climate:food/sundae_affogato",
+    "dcs_climate:food/icecream_pudding",
+    "dcs_climate:food/creamsoda_melon",
+    "dcs_climate:food/creamsoda_mallow",
+    "#dcs_climate:meals/ice_creams"
   ]
 }

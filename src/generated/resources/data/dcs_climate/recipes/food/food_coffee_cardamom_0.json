@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/cup_coffee"
+    },
+    {
+      "tag": "forge:crops/cardamom"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/cup_coffee_cardamom"
+  }
+}

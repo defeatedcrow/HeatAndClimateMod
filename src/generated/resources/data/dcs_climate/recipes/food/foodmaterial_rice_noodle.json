@@ -6,6 +6,9 @@
     },
     {
       "tag": "forge:ingredients/water"
+    },
+    {
+      "tag": "forge:ingredients/starch"
     }
   ],
   "result": {

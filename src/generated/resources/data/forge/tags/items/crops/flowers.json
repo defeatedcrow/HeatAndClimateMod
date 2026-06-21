@@ -30,6 +30,10 @@
     "#forge:crops/osmanthus",
     "#forge:crops/jasmine",
     "#forge:crops/damaschena",
+    "#forge:ingredients/palm_flower",
+    "#forge:crops/konjac_flower",
+    "#forge:crops/cherry_flower",
+    "#forge:crops/plum_flower",
     "#forge:crops/camellia_flower",
     "#forge:crops/schima_flower",
     "#forge:crops/gardenia_flower"

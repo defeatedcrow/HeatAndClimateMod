@@ -1,5 +1,7 @@
 {
   "values": [
+    "dcs_climate:food/sausage_saute",
+    "dcs_climate:food/sausage_curry",
     "dcs_climate:food/large_bowl_cabbage",
     "dcs_climate:food/large_bowl_lamb",
     "dcs_climate:food/large_bowl_beef",

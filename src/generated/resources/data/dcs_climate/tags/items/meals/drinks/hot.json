@@ -1,5 +1,6 @@
 {
   "values": [
+    "dcs_climate:food/cup_hot_milk",
     "dcs_climate:food/cup_tea_green",
     "dcs_climate:food/cup_tea_green_sakura",
     "dcs_climate:food/cup_tea_blue",
@@ -10,6 +11,7 @@
     "dcs_climate:food/cup_tea_berry",
     "dcs_climate:food/cup_tea_chai",
     "dcs_climate:food/cup_coffee",
+    "dcs_climate:food/cup_coffee_cardamom",
     "dcs_climate:food/cup_cocoa",
     "dcs_climate:food/cup_mint",
     "dcs_climate:food/cup_mallow",
@@ -23,6 +25,12 @@
     "dcs_climate:food/cup_tea_apple_milk",
     "dcs_climate:food/cup_tea_berry_milk",
     "dcs_climate:food/cup_coffee_milk",
-    "dcs_climate:food/cup_cocoa_milk"
+    "dcs_climate:food/cup_cocoa_milk",
+    "dcs_climate:food/demitasse_espresso",
+    "dcs_climate:food/cup_caffe_latte",
+    "dcs_climate:food/cup_cappuccino",
+    "dcs_climate:food/cup_cappuccino_nuts",
+    "dcs_climate:food/cup_cappuccino_cocoa",
+    "dcs_climate:food/cup_cappuccino_syrup"
   ]
 }

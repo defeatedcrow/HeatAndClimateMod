@@ -40,6 +40,10 @@ public class PastaItem extends ItemEntityFood {
 			return KRILL;
 		if (item == FoodInit.PASTA_ROE.get())
 			return ROE;
+		if (item == FoodInit.PASTA_KETCHUP.get())
+			return KETCHUP;
+		if (item == FoodInit.PASTA_CARBONARA.get())
+			return CARBONARA;
 		return OIL;
 	}
 
@@ -53,5 +57,7 @@ public class PastaItem extends ItemEntityFood {
 	public static final EntityRenderData COD = new EntityRenderData("food/pasta_cod", 0.85F, 0F);
 	public static final EntityRenderData KRILL = new EntityRenderData("food/pasta_krill", 0.85F, 0F);
 	public static final EntityRenderData ROE = new EntityRenderData("food/pasta_roe", 0.85F, 0F);
+	public static final EntityRenderData KETCHUP = new EntityRenderData("food/pasta_ketchup", 0.85F, 0F);
+	public static final EntityRenderData CARBONARA = new EntityRenderData("food/pasta_carbonara", 0.85F, 0F);
 
 }

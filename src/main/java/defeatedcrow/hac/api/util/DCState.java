@@ -49,22 +49,15 @@ public class DCState {
 	public static BooleanProperty EMPTY = BooleanProperty.create("none");
 
 	public static BooleanProperty getFacingProperty(Direction dir) {
-		switch (dir) {
-		case DOWN:
-			return DOWN;
-		case EAST:
-			return EAST;
-		case NORTH:
-			return NORTH;
-		case SOUTH:
-			return SOUTH;
-		case UP:
-			return UP;
-		case WEST:
-			return WEST;
-		default:
-			return NORTH;
-		}
+		return switch (dir) {
+		case DOWN -> DOWN;
+		case EAST -> EAST;
+		case NORTH -> NORTH;
+		case SOUTH -> SOUTH;
+		case UP -> UP;
+		case WEST -> WEST;
+		default -> NORTH;
+		};
 	}
 
 	public static int getInt(BlockState state, IntegerProperty prop) {
@@ -92,7 +85,8 @@ public class DCState {
 	}
 
 	public static BlockState setInt(BlockState state, IntegerProperty prop, int i) {
-		if (state != null && state.hasProperty(prop) && prop.getPossibleValues().contains(Integer.valueOf(i))) {
+		if (state != null && state.hasProperty(prop) && prop.getPossibleValues()
+		    .contains(Integer.valueOf(i))) {
 			return state.setValue(prop, i);
 		} else {
 			return state;
@@ -100,7 +94,8 @@ public class DCState {
 	}
 
 	public static BlockState setBool(BlockState state, BooleanProperty prop, boolean i) {
-		if (state != null && state.hasProperty(prop) && prop.getPossibleValues().contains(Boolean.valueOf(i))) {
+		if (state != null && state.hasProperty(prop) && prop.getPossibleValues()
+		    .contains(Boolean.valueOf(i))) {
 			return state.setValue(prop, i);
 		} else {
 			return state;
@@ -108,7 +103,8 @@ public class DCState {
 	}
 
 	public static BlockState setFace(BlockState state, DirectionProperty prop, Direction i) {
-		if (state != null && state.hasProperty(prop) && prop.getPossibleValues().contains(i)) {
+		if (state != null && state.hasProperty(prop) && prop.getPossibleValues()
+		    .contains(i)) {
 			return state.setValue(prop, i);
 		} else {
 			return state;

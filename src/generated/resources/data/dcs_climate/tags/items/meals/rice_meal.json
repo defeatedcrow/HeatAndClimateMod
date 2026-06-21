@@ -1,5 +1,13 @@
 {
   "values": [
+    "dcs_climate:food/rice_chaofan",
+    "dcs_climate:food/rice_ketchup",
+    "dcs_climate:food/rice_omerice",
+    "dcs_climate:food/rice_hainan_chicken",
+    "dcs_climate:food/rice_pilav",
+    "dcs_climate:food/rice_jambalaya",
+    "dcs_climate:food/rice_jollof",
+    "dcs_climate:food/rice_paellia",
     "dcs_climate:food/curry_biriyani",
     "dcs_climate:food/curry_rice",
     "dcs_climate:food/rice_napa",

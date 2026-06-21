@@ -1,0 +1,39 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/sundae_peach",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "dcs_climate:meals/ice_creams"
+    },
+    {
+      "tag": "forge:crops/peach"
+    },
+    {
+      "tag": "forge:crops/raspberry"
+    },
+    {
+      "tag": "forge:ingredients/almond_nuts"
+    }
+  ],
+  "heat": [
+    "FROSTBITE",
+    "COLD",
+    "COOL"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

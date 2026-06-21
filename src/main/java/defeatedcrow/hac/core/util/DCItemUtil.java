@@ -64,7 +64,7 @@ public class DCItemUtil {
 		if (ins.isEmpty() || slot.isEmpty()) {
 			return false;
 		} else if (ins.getItem() == slot.getItem()) {
-			return !nbtSensitive || ins.tagMatches(ins, slot);
+			return !nbtSensitive || ItemStack.tagMatches(ins, slot);
 		}
 		return false;
 	}
@@ -73,18 +73,23 @@ public class DCItemUtil {
 		if (!ins.isEmpty() && slot.isEmpty()) {
 			return true;
 		} else {
-			return isSameItem(ins, slot, true) && ins.getCount() <= (slot.getMaxStackSize() - slot.getCount());
+			return isSameItem(ins, slot, true) && ins.getCount() <= slot.getMaxStackSize() - slot.getCount();
 		}
 	}
 
 	public static boolean hasSameTag(ItemStack item, ItemStack check) {
 		if (!item.isEmpty() && !check.isEmpty()) {
-			IReverseTag<Item> tags = ForgeRegistries.ITEMS.tags().getReverseTag(item.getItem()).orElse(null);
-			IReverseTag<Item> tags2 = ForgeRegistries.ITEMS.tags().getReverseTag(check.getItem()).orElse(null);
+			IReverseTag<Item> tags = ForgeRegistries.ITEMS.tags()
+			    .getReverseTag(item.getItem())
+			    .orElse(null);
+			IReverseTag<Item> tags2 = ForgeRegistries.ITEMS.tags()
+			    .getReverseTag(check.getItem())
+			    .orElse(null);
 			if (tags == null || tags2 == null) {
 				return false;
 			}
-			for (TagKey<Item> t : tags.getTagKeys().toList()) {
+			for (TagKey<Item> t : tags.getTagKeys()
+			    .toList()) {
 				if (tags2.containsTag(t))
 					return true;
 			}
@@ -104,7 +109,8 @@ public class DCItemUtil {
 		if (item.isEmpty() || player == null)
 			return false;
 
-		if (!player.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty()) {
+		if (!player.getItemBySlot(EquipmentSlot.MAINHAND)
+		    .isEmpty()) {
 			if (isSameItem(item, player.getItemBySlot(EquipmentSlot.MAINHAND), false))
 				return true;
 		}
@@ -119,8 +125,10 @@ public class DCItemUtil {
 	public static boolean isWearArmorItem(Item item, LivingEntity liv, EquipmentSlot slot) {
 		if (item == null || liv == null)
 			return false;
-		if (!liv.getItemBySlot(slot).isEmpty()) {
-			if (liv.getItemBySlot(slot).is(item))
+		if (!liv.getItemBySlot(slot)
+		    .isEmpty()) {
+			if (liv.getItemBySlot(slot)
+			    .is(item))
 				return true;
 		}
 		return false;
@@ -129,8 +137,10 @@ public class DCItemUtil {
 	public static boolean isWearArmorItem(TagKey<Item> tag, LivingEntity liv, EquipmentSlot slot) {
 		if (tag == null || liv == null)
 			return false;
-		if (!liv.getItemBySlot(slot).isEmpty()) {
-			if (liv.getItemBySlot(slot).is(tag))
+		if (!liv.getItemBySlot(slot)
+		    .isEmpty()) {
+			if (liv.getItemBySlot(slot)
+			    .is(tag))
 				return true;
 		}
 		return false;
@@ -138,10 +148,11 @@ public class DCItemUtil {
 
 	public static SimpleEntry<Integer, ItemStack> getItem(LivingEntity living, Ingredient target) {
 		if (living != null && target != null && !target.isEmpty()) {
-			if (living instanceof Player) {
-				Player player = (Player) living;
-				for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
-					ItemStack check = player.getInventory().getItem(i);
+			if (living instanceof Player player) {
+				for (int i = 0; i < player.getInventory()
+				    .getContainerSize(); i++) {
+					ItemStack check = player.getInventory()
+					    .getItem(i);
 					if (target.test(check)) {
 						return new SimpleEntry<>(i, check);
 					}
@@ -155,7 +166,8 @@ public class DCItemUtil {
 					}
 				}
 			} else {
-				IItemHandler handler = living.getCapability(ForgeCapabilities.ITEM_HANDLER, null).orElse(null);
+				IItemHandler handler = living.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+				    .orElse(null);
 				if (handler != null) {
 					for (int i = 0; i < handler.getSlots(); i++) {
 						ItemStack check = handler.getStackInSlot(i);
@@ -171,7 +183,8 @@ public class DCItemUtil {
 
 	public static float getArmorResistant(LivingEntity living, boolean isCold) {
 		float ret = 0F;
-		IItemHandler handler = living.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH).orElse(null);
+		IItemHandler handler = living.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH)
+		    .orElse(null);
 		if (handler != null) {
 			for (int i = 0; i < handler.getSlots(); i++) {
 				ItemStack check = handler.getStackInSlot(i);
@@ -219,7 +232,7 @@ public class DCItemUtil {
 		return Optional.empty();
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked" })
 	public static ArrayList<ItemStack> getProcessedList(Object obj) {
 		ArrayList<ItemStack> ret = Lists.newArrayList();
 		if (obj == null) {
@@ -228,7 +241,8 @@ public class DCItemUtil {
 		if (obj instanceof String) {
 			ret.addAll(getOres((String) obj));
 		} else if (obj instanceof TagKey<?>) {
-			Registry.ITEM.getTagOrEmpty((TagKey<Item>) obj).forEach(holder -> ret.add(new ItemStack(holder)));
+			Registry.ITEM.getTagOrEmpty((TagKey<Item>) obj)
+			    .forEach(holder -> ret.add(new ItemStack(holder)));
 		} else if (obj instanceof List && !((List<?>) obj).isEmpty()) {
 			ret.addAll((List<ItemStack>) obj);
 		} else if (obj instanceof ItemStack) {
@@ -253,8 +267,7 @@ public class DCItemUtil {
 			return (Ingredient) obj;
 		} else if (obj instanceof String) {
 			return Ingredient.of(getOres((String) obj).stream());
-		} else if (obj instanceof TagKey<?>) {
-			TagKey<?> tag = (TagKey<?>) obj;
+		} else if (obj instanceof TagKey<?> tag) {
 			return Ingredient.of((TagKey<Item>) obj);
 		} else if (obj instanceof List && !((List<?>) obj).isEmpty()) {
 			return Ingredient.of(((List<ItemStack>) obj).stream());
@@ -274,9 +287,17 @@ public class DCItemUtil {
 		if (str == null)
 			return ret;
 		ResourceLocation tagname = new ResourceLocation(str);
-		ForgeRegistries.ITEMS.tags().getTagNames().filter((r) -> r.location().equals(tagname) || r.location().toString().contains(str)).forEach(key -> {
-			Registry.ITEM.getTagOrEmpty(key).forEach(holder -> ret.add(new ItemStack(holder)));
-		});
+		ForgeRegistries.ITEMS.tags()
+		    .getTagNames()
+		    .filter(r -> r.location()
+		        .equals(tagname)
+		        || r.location()
+		            .toString()
+		            .contains(str))
+		    .forEach(key -> {
+		        Registry.ITEM.getTagOrEmpty(key)
+		            .forEach(holder -> ret.add(new ItemStack(holder)));
+		    });
 		return ret;
 	}
 
@@ -285,9 +306,17 @@ public class DCItemUtil {
 		if (domain == null || name == null)
 			return ret;
 		ResourceLocation tagname = new ResourceLocation(domain, name);
-		ForgeRegistries.ITEMS.tags().getTagNames().filter((r) -> r.location().equals(tagname) || r.location().toString().contains(name)).forEach(key -> {
-			Registry.ITEM.getTagOrEmpty(key).forEach(holder -> ret.add(new ItemStack(holder)));
-		});
+		ForgeRegistries.ITEMS.tags()
+		    .getTagNames()
+		    .filter(r -> r.location()
+		        .equals(tagname)
+		        || r.location()
+		            .toString()
+		            .contains(name))
+		    .forEach(key -> {
+		        Registry.ITEM.getTagOrEmpty(key)
+		            .forEach(holder -> ret.add(new ItemStack(holder)));
+		    });
 		return ret;
 	}
 
@@ -296,7 +325,15 @@ public class DCItemUtil {
 		if (domain == null || name == null)
 			return TagDC.ItemTag.DUMMY;
 		ResourceLocation tagname = new ResourceLocation(domain, name);
-		return ForgeRegistries.ITEMS.tags().getTagNames().filter((r) -> r.location().equals(tagname) || r.location().toString().contains(name)).findAny().orElse(TagDC.ItemTag.DUMMY);
+		return ForgeRegistries.ITEMS.tags()
+		    .getTagNames()
+		    .filter(r -> r.location()
+		        .equals(tagname)
+		        || r.location()
+		            .toString()
+		            .contains(name))
+		    .findAny()
+		    .orElse(TagDC.ItemTag.DUMMY);
 	}
 
 	public static Block getBlockFromString(String name) {
@@ -399,7 +436,8 @@ public class DCItemUtil {
 			for (String name : names) {
 				if (name != null) {
 					ResourceLocation res = new ResourceLocation(name);
-					if (res.getNamespace().equalsIgnoreCase("minecraft")) {
+					if (res.getNamespace()
+					    .equalsIgnoreCase("minecraft")) {
 						String n = res.getPath();
 						res = new ResourceLocation(n);
 					}

@@ -1,0 +1,33 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/sundae_affogato",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "dcs_climate:meals/ice_creams"
+    },
+    {
+      "item": "dcs_climate:food/demitasse_espresso"
+    }
+  ],
+  "heat": [
+    "FROSTBITE",
+    "COLD",
+    "COOL"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

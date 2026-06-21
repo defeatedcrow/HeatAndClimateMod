@@ -1,0 +1,33 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "tea",
+  "result": {
+    "item": "dcs_climate:food/cup_hot_milk",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/sugars"
+    }
+  ],
+  "input_fluids": [
+    "forge:milk"
+  ],
+  "heat": [
+    "BOIL",
+    "OVEN",
+    "KILN"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

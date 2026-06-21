@@ -25,6 +25,7 @@ import defeatedcrow.hac.core.event.ClientTickEventDC;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.machine.client.gui.BoilerBiomassScreen;
+import defeatedcrow.hac.machine.client.gui.CoffeeMakerScreen;
 import defeatedcrow.hac.machine.client.gui.ConveyorSorterScreen;
 import defeatedcrow.hac.machine.client.gui.CookingPotScreen;
 import defeatedcrow.hac.machine.client.gui.EnergyBatteryScreen;
@@ -101,6 +102,7 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(MachineInit.FLUID_MENU_LARGE.get(), PortableTankScreen::new);
 		MenuScreens.register(MachineInit.POT_MENU.get(), CookingPotScreen::new);
 		MenuScreens.register(MachineInit.TEA_POT_MENU.get(), TeaPotScreen::new);
+		MenuScreens.register(MachineInit.COFFEE_MAKER_MENU.get(), CoffeeMakerScreen::new);
 		MenuScreens.register(MachineInit.JAR_MENU.get(), FermentationJarScreen::new);
 		MenuScreens.register(MachineInit.MILL_MENU.get(), MillScreen::new);
 		MenuScreens.register(MachineInit.CRUSHER_MENU.get(), RollCrusherScreen::new);
@@ -127,17 +129,23 @@ public class ClientProxyDC extends CommonProxyDC {
 
 	@Override
 	public boolean keyShiftPushed() {
-		return InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), 340) || InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), 344);
+		return InputConstants.isKeyDown(Minecraft.getInstance()
+		    .getWindow()
+		    .getWindow(), ConfigClientBuilder.INSTANCE.key_Desc.get());
 	}
 
 	@Override
 	public boolean keyHUDPushed() {
-		return InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), ConfigClientBuilder.INSTANCE.key_HUD.get());
+		return InputConstants.isKeyDown(Minecraft.getInstance()
+		    .getWindow()
+		    .getWindow(), ConfigClientBuilder.INSTANCE.key_HUD.get());
 	}
 
 	@Override
 	public boolean keyCharmPushed() {
-		return InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), ConfigClientBuilder.INSTANCE.key_Charm.get());
+		return InputConstants.isKeyDown(Minecraft.getInstance()
+		    .getWindow()
+		    .getWindow(), ConfigClientBuilder.INSTANCE.key_Charm.get());
 	}
 
 	@Override
@@ -182,10 +190,14 @@ public class ClientProxyDC extends CommonProxyDC {
 	public List<TagKey<Biome>> getBiomeTags(Level level, Biome biome) {
 		List<TagKey<Biome>> list = Lists.newArrayList();
 		if (getClientLevel().isPresent()) {
-			Registry<Biome> registry = getClientLevel().get().registryAccess().registryOrThrow(Registry.BIOME_REGISTRY);
+			Registry<Biome> registry = getClientLevel().get()
+			    .registryAccess()
+			    .registryOrThrow(Registry.BIOME_REGISTRY);
 			Optional<ResourceKey<Biome>> key = registry.getResourceKey(biome);
 			key.ifPresent(k -> {
-			    registry.getHolder(k).ifPresent(holder -> holder.getTagKeys().forEach(tag -> list.add(tag)));
+			    registry.getHolder(k)
+			        .ifPresent(holder -> holder.getTagKeys()
+			            .forEach(tag -> list.add(tag)));
 			});
 		}
 		return list;

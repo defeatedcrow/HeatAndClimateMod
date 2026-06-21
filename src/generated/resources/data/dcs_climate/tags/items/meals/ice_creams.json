@@ -1,0 +1,14 @@
+{
+  "values": [
+    "dcs_climate:food/icecream_vanilla",
+    "dcs_climate:food/icecream_nuts",
+    "dcs_climate:food/icecream_cocoa",
+    "dcs_climate:food/icecream_berry",
+    "dcs_climate:food/icecream_watermelon",
+    "dcs_climate:food/icecream_melon",
+    "dcs_climate:food/icecream_grape",
+    "dcs_climate:food/icecream_citrus",
+    "dcs_climate:food/icecream_mango",
+    "dcs_climate:food/icecream_guava"
+  ]
+}

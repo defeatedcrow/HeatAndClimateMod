@@ -133,6 +133,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.COOKED_COD).add(Items.COOKED_COD);
 		tag(TagDC.ItemTag.COOKED_SALMON).add(Items.COOKED_SALMON);
 
+		tag(TagDC.ItemTag.COOKED_POTATO).add(Items.BAKED_POTATO, FoodInit.STICK_POTATO_COOKED.get(), FoodInit.SWEETPOTATO_COOKED.get(), FoodInit.SWEETPOTATO_CASSAVA_COOKED.get());
+
 		tag(TagDC.ItemTag.FERTILIZER).add(Items.BONE_MEAL);
 
 		tag(TagDC.ItemTag.FIRESTARTER).add(Items.FLINT_AND_STEEL);
@@ -274,7 +276,10 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		    TagDC.ItemTag.CROP_BLUE_MALLOW, TagDC.ItemTag.CROP_TROPICAL, TagDC.ItemTag.CROP_CROCUS, TagDC.ItemTag.CROP_IRIS, TagDC.ItemTag.CROP_SPIRANTHES, TagDC.ItemTag.CROP_CYMBIDIUM, TagDC.ItemTag.CROP_CATTLEYA,
 		    TagDC.ItemTag.CROP_SNOWDROP, TagDC.ItemTag.CROP_AMARYLLIS, TagDC.ItemTag.CROP_DAFFODIL, TagDC.ItemTag.CROP_LYCORIS, TagDC.ItemTag.CROP_AMANA, TagDC.ItemTag.CROP_FAWN, TagDC.ItemTag.CROP_GOLDBAND, TagDC.ItemTag.CROP_IXORA,
 		    TagDC.ItemTag.CROP_ANEMONE, TagDC.ItemTag.CROP_DELPHINIUM, TagDC.ItemTag.CROP_CLEMATIS, TagDC.ItemTag.CROP_MONKSHOOD, TagDC.ItemTag.CROP_HEATH, TagDC.ItemTag.CROP_RHODODENDRON, TagDC.ItemTag.CROP_OSMANTHUS,
-		    TagDC.ItemTag.CROP_JASMINE, TagDC.ItemTag.CROP_DAMASCHENA, TagDC.ItemTag.CAMELLIA_FLOWER, TagDC.ItemTag.SCHIMA_FLOWER, TagDC.ItemTag.GARDENIA_FLOWER);
+		    TagDC.ItemTag.CROP_JASMINE, TagDC.ItemTag.CROP_DAMASCHENA, TagDC.ItemTag.PALM_FLOWER, TagDC.ItemTag.KONJAC_FLOWER, TagDC.ItemTag.CHERRY_FLOWER, TagDC.ItemTag.PLUM_FLOWER, TagDC.ItemTag.CAMELLIA_FLOWER,
+		    TagDC.ItemTag.SCHIMA_FLOWER, TagDC.ItemTag.GARDENIA_FLOWER);
+
+		tag(ItemTags.FLOWERS).addTags(TagDC.ItemTag.CROP_FLOWERS);
 
 		tag(TagDC.ItemTag.CROP_FRUITS).addTags(TagDC.ItemTag.CROP_LANTERN, TagDC.ItemTag.CROP_WILD_GRAPE, TagDC.ItemTag.CROP_RED_GRAPE, TagDC.ItemTag.CROP_WHITE_GRAPE, TagDC.ItemTag.CROP_CANTALOUP, TagDC.ItemTag.CROP_CHERRY,
 		    TagDC.ItemTag.CROP_PLUM, TagDC.ItemTag.CROP_PEACH, TagDC.ItemTag.CROP_BLUEBERRY, TagDC.ItemTag.CROP_MULBERRY, TagDC.ItemTag.CROP_KAJI, TagDC.ItemTag.CROP_DATE, TagDC.ItemTag.CROP_RASPBERRY, TagDC.ItemTag.CROP_APPLE,
@@ -384,6 +389,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.HAC_SEASONING).addTags(TagDC.ItemTag.SOYSAUCE, TagDC.ItemTag.MISO, TagDC.ItemTag.MIXED_SPICES, TagDC.ItemTag.KETCHUP, TagDC.ItemTag.MAYONNAISE, TagDC.ItemTag.HOT_SAUSE, TagDC.ItemTag.VINEGAR, TagDC.ItemTag.HUMMUS,
 		    TagDC.ItemTag.SALSA, TagDC.ItemTag.HERB_SALT, TagDC.ItemTag.SUGARS);
+
+		tag(TagDC.ItemTag.HAC_SWEETS).addTags(TagDC.ItemTag.HAC_ICECREAMS);
 
 		// unsafe foods
 

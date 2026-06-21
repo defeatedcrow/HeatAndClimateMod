@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/build/dishplate_silver"
+  },
+  "parent": "dcs_climate:block/build/dishplate_white_0"
+}

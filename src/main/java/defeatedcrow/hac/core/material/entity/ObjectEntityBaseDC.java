@@ -46,7 +46,8 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 
 	@Override
 	protected void defineSynchedData() {
-		this.getEntityData().define(ITEM, ItemStack.EMPTY);
+		this.getEntityData()
+		    .define(ITEM, ItemStack.EMPTY);
 	}
 
 	@Override
@@ -71,7 +72,8 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 
 	@Override
 	public void tick() {
-		if (this.getItem().isEmpty() || this.isRemoved()) {
+		if (this.getItem()
+		    .isEmpty() || this.isRemoved()) {
 			this.discard();
 		}
 		super.tick();
@@ -90,18 +92,22 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 		} else if (this.isInLava() && this.getFluidHeight(FluidTags.LAVA) > f) {
 			this.setUnderFluidMovement();
 		} else if (!this.isNoGravity()) {
-			this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.04D, 0.0D));
+			this.setDeltaMovement(this.getDeltaMovement()
+			    .add(0.0D, -0.04D, 0.0D));
 		}
 
 		// 落下
-		if (!this.onGround || this.getDeltaMovement().length() > 0.0001F) {
+		if (!this.onGround || this.getDeltaMovement()
+		    .length() > 0.0001F) {
 			this.move(MoverType.SELF, this.getDeltaMovement());
 			float f1 = 0.98F;
 			if (this.onGround) {
-				f1 = level.getBlockState(new BlockPos(this.getX(), this.getY() - 1.0D, this.getZ())).getFriction(level, new BlockPos(this.getX(), this.getY() - 1.0D, this.getZ()), this) * 0.98F;
+				f1 = level.getBlockState(new BlockPos(this.getX(), this.getY() - 1.0D, this.getZ()))
+				    .getFriction(level, new BlockPos(this.getX(), this.getY() - 1.0D, this.getZ()), this) * 0.98F;
 			}
 
-			this.setDeltaMovement(this.getDeltaMovement().multiply(f1, 0.98D, f1));
+			this.setDeltaMovement(this.getDeltaMovement()
+			    .multiply(f1, 0.98D, f1));
 			if (this.onGround) {
 				Vec3 vec31 = this.getDeltaMovement();
 				if (vec31.y < 0.0D) {
@@ -128,7 +134,8 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 			if (player.isCrouching()) {
 				ItemStack held = player.getItemInHand(hand);
 				if (!DCUtil.isEmpty(held) && held.getItem() instanceof IEntityItem food) {
-					Vec3 vec3 = this.position().add(0D, this.getBbHeight() + 0.2D, 0D);
+					Vec3 vec3 = this.position()
+					    .add(0D, this.getBbHeight() + 0.2D, 0D);
 					food.spawnPlacementEntity(getLevel(), player, vec3, held);
 				}
 				return InteractionResult.FAIL;
@@ -149,7 +156,8 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 			return false;
 		if (this.isInvulnerableTo(source)) {
 			return false;
-		} else if (!source.isExplosion() && !this.getItem().isEmpty()) {
+		} else if (!source.isExplosion() && !this.getItem()
+		    .isEmpty()) {
 			this.dropItem(position());
 			this.kill();
 			this.markHurt();
@@ -178,8 +186,10 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 			tag.putUUID(TagKeyDC.OWNER_UUID, this.getOwner());
 		}
 
-		if (!this.getItem().isEmpty()) {
-			tag.put(TagKeyDC.ITEM, this.getItem().save(new CompoundTag()));
+		if (!this.getItem()
+		    .isEmpty()) {
+			tag.put(TagKeyDC.ITEM, this.getItem()
+			    .save(new CompoundTag()));
 		}
 
 	}
@@ -193,10 +203,10 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 
 		CompoundTag compoundtag = tag.getCompound(TagKeyDC.ITEM);
 		this.setItem(ItemStack.of(compoundtag));
-		if (this.getItem().isEmpty()) {
+		if (this.getItem()
+		    .isEmpty()) {
 			this.discard();
 		}
-
 	}
 
 	@Override
@@ -205,11 +215,13 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 	}
 
 	public ItemStack getItem() {
-		return this.getEntityData().get(ITEM);
+		return this.getEntityData()
+		    .get(ITEM);
 	}
 
 	public void setItem(ItemStack item) {
-		this.getEntityData().set(ITEM, item);
+		this.getEntityData()
+		    .set(ITEM, item);
 	}
 
 	@Nullable

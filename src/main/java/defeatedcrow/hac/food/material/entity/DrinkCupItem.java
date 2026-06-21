@@ -12,7 +12,9 @@ import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.item.ItemEntityFood;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -68,12 +70,17 @@ public class DrinkCupItem extends ItemEntityFood {
 	public ItemStack finishUsingItem(ItemStack item, Level level, LivingEntity liv) {
 		int taste = getTaste(item);
 		if (taste > -2 && !level.isClientSide) {
-			MobEffectInstance effect = potion(potionId, milk, taste).get();
-			if (liv.hasEffect(effect.getEffect())) {
-				int d = liv.getEffect(effect.getEffect()).getDuration() + effect.getDuration();
-				effect = new MobEffectInstance(effect.getEffect(), d, effect.getAmplifier());
+			if (item.is(FoodInit.TEA_MILK.get())) {
+				DCUtil.removeAllPotion(liv);
+			} else {
+				MobEffectInstance effect = potion(potionId, milk, taste).get();
+				if (liv.hasEffect(effect.getEffect())) {
+					int d = liv.getEffect(effect.getEffect())
+					    .getDuration() + effect.getDuration();
+					effect = new MobEffectInstance(effect.getEffect(), d, effect.getAmplifier());
+				}
+				liv.addEffect(effect);
 			}
-			liv.addEffect(effect);
 		}
 		return super.finishUsingItem(item, level, liv);
 	}
@@ -81,17 +88,25 @@ public class DrinkCupItem extends ItemEntityFood {
 	@Override
 	public void appendHoverText(ItemStack item, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		if (!DCUtil.isEmpty(item)) {
-			ItemStack stack = item.copy();
-			int taste = getTaste(stack);
-			MobEffectInstance effect = potion(potionId, milk, taste).get();
-			PotionUtils.setCustomEffects(stack, ImmutableList.of(effect));
-			PotionUtils.addPotionTooltip(stack, list, 1.0F);
+			if (item.is(FoodInit.TEA_MILK.get())) {
+				MutableComponent st = Component.translatable("dcs.tip.remove_all_potion");
+				st.withStyle(ChatFormatting.GRAY);
+				list.add(st);
+			} else {
+				ItemStack stack = item.copy();
+				int taste = getTaste(stack);
+				MobEffectInstance effect = potion(potionId, milk, taste).get();
+				PotionUtils.setCustomEffects(stack, ImmutableList.of(effect));
+				PotionUtils.addPotionTooltip(stack, list, 1.0F);
+			}
 		}
 		super.appendHoverText(item, level, list, flag);
 	}
 
 	@Override
 	public EntityRenderData getRenderData(Item item) {
+		if (item == FoodInit.TEA_MILK.get())
+			return TEA_MILK;
 		if (item == FoodInit.TEA_GREEN.get())
 			return TEA_GREEN;
 		if (item == FoodInit.TEA_GREEN_SAKURA.get())
@@ -122,6 +137,8 @@ public class DrinkCupItem extends ItemEntityFood {
 			return TEA_APPLE_MILK;
 		if (item == FoodInit.TEA_COFFEE.get())
 			return TEA_COFFEE;
+		if (item == FoodInit.TEA_COFFEE_CARDAMOM.get())
+			return TEA_COFFEE_CARDAMOM;
 		if (item == FoodInit.TEA_COFFEE_MILK.get())
 			return TEA_COFFEE_MILK;
 		if (item == FoodInit.TEA_COCOA.get())
@@ -158,6 +175,7 @@ public class DrinkCupItem extends ItemEntityFood {
 	public static final EntityRenderData TEA_APPLE_MILK = new EntityRenderData("food/cup_tea_apple_milk", 0.5F, 0F);
 	public static final EntityRenderData TEA_CHAI = new EntityRenderData("food/cup_tea_black_milk", 0.5F, 0F);
 	public static final EntityRenderData TEA_COFFEE = new EntityRenderData("food/cup_coffee", 0.5F, 0F);
+	public static final EntityRenderData TEA_COFFEE_CARDAMOM = new EntityRenderData("food/cup_coffee_cardamom", 0.5F, 0F);
 	public static final EntityRenderData TEA_COFFEE_MILK = new EntityRenderData("food/cup_coffee_milk", 0.5F, 0F);
 	public static final EntityRenderData TEA_COCOA = new EntityRenderData("food/cup_cocoa", 0.5F, 0F);
 	public static final EntityRenderData TEA_COCOA_MILK = new EntityRenderData("food/cup_cocoa_milk", 0.5F, 0F);
@@ -167,5 +185,6 @@ public class DrinkCupItem extends ItemEntityFood {
 	public static final EntityRenderData TEA_SAFFRON = new EntityRenderData("food/cup_saffron", 0.5F, 0F);
 	public static final EntityRenderData TEA_ROSEHIP = new EntityRenderData("food/cup_rosehip", 0.5F, 0F);
 	public static final EntityRenderData TEA_HIBISCUS = new EntityRenderData("food/cup_hibiscus", 0.5F, 0F);
+	public static final EntityRenderData TEA_MILK = new EntityRenderData("food/cup_hot_milk", 0.5F, 0F);
 
 }

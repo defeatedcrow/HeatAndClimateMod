@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/demitasse_espresso"
+    },
+    {
+      "tag": "forge:ingredients/milks"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/cup_cappuccino"
+  }
+}

@@ -1,4 +1,4 @@
-// 1.19.2	2026-05-13T22:54:27.6932641	Tags for minecraft:item
+// 1.19.2	2026-06-21T01:33:05.7428583	Tags for minecraft:item
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 05c427bae6c42fa3468413da8a796681e5a20abb data/dcs_climate/tags/items/battery_items.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
@@ -82,6 +82,7 @@ ce66ece7ca33b2b6e3af9aa37d5cb47d6435747d data/dcs_climate/tags/items/crops/wild.
 fd9c02ab3ea42a83cc55a4bef9af424de7affe7c data/dcs_climate/tags/items/crusher_blade/alumina.json
 141e097a54181a0ccd7818036b496b9e9b6249d3 data/dcs_climate/tags/items/crusher_blade/sanitary.json
 091a9beb56c03c776405cf3c2c0ad2fd5f6d20c1 data/dcs_climate/tags/items/crusher_blade/screen.json
+7bb61b2a4a125342db312ab0a8e0ed7a8fedd6c1 data/dcs_climate/tags/items/curtains.json
 a63db1306fcdd0b567295629850118a684df7aef data/dcs_climate/tags/items/dirt_slab.json
 e13e1ca62ba8d0058adef3d77a32488118af2b87 data/dcs_climate/tags/items/dusts.json
 156a66e91a84e08593a36b5dc773b74a8930ba7f data/dcs_climate/tags/items/fishes.json
@@ -104,7 +105,7 @@ de5a2ec5f5593a6a661476ddc75bca9bf2826ab2 data/dcs_climate/tags/items/fishes/shal
 b1410710e34489f1aaf507b94633525d197cbc1f data/dcs_climate/tags/items/food_taste.json
 7f01ab18c3c16b58225da18b1317b0b94d955870 data/dcs_climate/tags/items/food_taste/tier1.json
 69c4be539e3bbcfefb6eab390fd4d2ac142aa945 data/dcs_climate/tags/items/food_taste/tier2.json
-81603767e336a88393aa2410c1c3999d4b195a3b data/dcs_climate/tags/items/food_taste/tier3.json
+9cd971e2ce904c76d90f6b422abbd5caa51cd125 data/dcs_climate/tags/items/food_taste/tier3.json
 e210c390b6bf2a49340bdb06e9acea1a0da122d6 data/dcs_climate/tags/items/food_taste/tier4.json
 af3d58376f3dd5688be494ec6e3cefc482521d47 data/dcs_climate/tags/items/food_taste/tier5.json
 87e4efc7bd9416d95a0f3b266f681d73f9f4a8e8 data/dcs_climate/tags/items/fuels.json
@@ -151,26 +152,27 @@ b3fc13c49ceba790a6bc75eccbfe847875ff9770 data/dcs_climate/tags/items/meals.json
 364c5462a2a6589abdbfc986a88b3c40f777ba18 data/dcs_climate/tags/items/meals/bread.json
 ff0f240b7985a775d14f744a4053d1510e5437ec data/dcs_climate/tags/items/meals/bread/pizza.json
 069b2d7932e3a31dea5657733dd1653439f9fd58 data/dcs_climate/tags/items/meals/bread/plane.json
-9a0164d8fca827ec3d3e2123daa57d4eab1f7b19 data/dcs_climate/tags/items/meals/bread/sandwich.json
+1f6d9300cb12e6d5d0b6fec4cf4174dc41bcdf31 data/dcs_climate/tags/items/meals/bread/sandwich.json
 f1f402ff9d0fe77400e94b25851c4a3a9254fa03 data/dcs_climate/tags/items/meals/casserole.json
 7e4e9fb2eacb8dacabc935cbc73aa3e138f1b4ee data/dcs_climate/tags/items/meals/curry.json
 a2292d583acc1fc9804dceff1c14f44b73161c62 data/dcs_climate/tags/items/meals/drinks.json
 e02b7007ae2ba050e6d36e77e7154719ce415643 data/dcs_climate/tags/items/meals/drinks/cold.json
-120aeaaa7d7e10d15f9534eaa3b237bd35ba0e18 data/dcs_climate/tags/items/meals/drinks/hot.json
+637597005bec6cc4c34d22cedd7a0a1ba2993d06 data/dcs_climate/tags/items/meals/drinks/hot.json
 7ada19c50742a40bd9fac059e2933cdc62fb2b17 data/dcs_climate/tags/items/meals/fish_meal.json
-c7a479ff2e9559452b0ab5031c3e3016efecd757 data/dcs_climate/tags/items/meals/kobachi.json
+6a43f3936fd90c2d50e2769fd0b32ac772d56f6c data/dcs_climate/tags/items/meals/ice_creams.json
+d2ae1a39ef163dc880f97bafb5750f09245bc521 data/dcs_climate/tags/items/meals/kobachi.json
 321ed8b42214c3e1c90042670daf92ff9cdaaa61 data/dcs_climate/tags/items/meals/liquor.json
-ed2d73671100613feee8307cf322df34079521b9 data/dcs_climate/tags/items/meals/meat_meal.json
-88cc1155190157f739d4a615cc83453c823cb197 data/dcs_climate/tags/items/meals/noodle.json
+100ab2581d498a126c6f4d19f302def285b8004d data/dcs_climate/tags/items/meals/meat_meal.json
+e7bb117ed546c2e28b40546efc68d1e8a49a34e2 data/dcs_climate/tags/items/meals/noodle.json
 f62cf479982b73d1c97c112b07e762586ae8c414 data/dcs_climate/tags/items/meals/plate_meal.json
-cc1e79ecda1f1b720cd71414c306e3136a8975f9 data/dcs_climate/tags/items/meals/porridge.json
-3ba173e5ed89080f13982b7d9a23433c9eb20dff data/dcs_climate/tags/items/meals/rice_meal.json
+08dc12e5863e3c4d665373d4b5502973de252d1a data/dcs_climate/tags/items/meals/porridge.json
+16dcfed159772da5080cd1619f08908c8588f56e data/dcs_climate/tags/items/meals/rice_meal.json
 0ea4d8af78aa0a4cf7d780d0e1aa1de645f351f7 data/dcs_climate/tags/items/meals/salad.json
-c45a1be359307638f49831bb1aaef310d70cbca1 data/dcs_climate/tags/items/meals/saute.json
+8e34b2d1aa970cdcbe19c80f40f4399fbefe63af data/dcs_climate/tags/items/meals/saute.json
 c06efd5deb7cbb8091cc1185f2c67fad470ea2f5 data/dcs_climate/tags/items/meals/side_dish.json
 23ea4b87d0debc16d63606d7244593de5572b292 data/dcs_climate/tags/items/meals/skewered.json
 bd9f1ec494cba89d81d736f4c992076b7bd71c09 data/dcs_climate/tags/items/meals/soup.json
-b0ce33c7c1f63f4fbd08cad73362f1cef1a2bbe2 data/dcs_climate/tags/items/meals/sweets.json
+b78082769cdf025ca19ed69ccbcdf0640ad458ae data/dcs_climate/tags/items/meals/sweets.json
 f361845788d63289f4eeb92684cd4866e1654262 data/dcs_climate/tags/items/meals/tart.json
 bd479884d6c127ea78bbe38fe3a4df6a2c5c72b7 data/dcs_climate/tags/items/meals/tempura.json
 545747b98b58abe6090a8d2f51441f8cd7a8d5fd data/dcs_climate/tags/items/metal_louvers.json
@@ -276,7 +278,7 @@ f195c18e50539e9092fb253365f794ec121a7547 data/forge/tags/items/crops/edible_raw_
 bc52d69d51db4facbe791db8c090a39b0e902ef0 data/forge/tags/items/crops/fawn.json
 76ae546ea96cfe7cee89c996ec0d424d7c9443f1 data/forge/tags/items/crops/fennel.json
 f1fbe0ba57c6ea766638c1151fd3708d56f42053 data/forge/tags/items/crops/flavored.json
-fb3833947bad896112028aa5a74e76b19a3af51d data/forge/tags/items/crops/flowers.json
+085ab8333fb55a0c3b9e4b1fc52978a7f689c443 data/forge/tags/items/crops/flowers.json
 2e5cd721150016fb2ad10e5c3b468915d8bf6a27 data/forge/tags/items/crops/fruits.json
 dce5ecbdc8d7707998ec28cd4bb9720cbfc7c3ab data/forge/tags/items/crops/garbanzo.json
 faec9fc85b02687783e622c05aa13353fb806cbc data/forge/tags/items/crops/gardenia.json
@@ -440,6 +442,7 @@ e2dd92f6b67f2992b259b3435fba67ac775aba2e data/forge/tags/items/foods/cooked_cod.
 92025ee32776efe5f9457fdbba726e7159264af5 data/forge/tags/items/foods/cooked_mutton.json
 26292180db0e97bf10babe9b376372f834911de8 data/forge/tags/items/foods/cooked_offal.json
 e0f0a00ac0a0bb6be332292160ee171f8fac6320 data/forge/tags/items/foods/cooked_pork.json
+f41da129358fb1744bac124c3f2d3f1f382be0b6 data/forge/tags/items/foods/cooked_potato.json
 9f77948b8bcc8ff9ce8d4f192f7156c733795ab7 data/forge/tags/items/foods/cooked_rabbit.json
 606f7f87c60718be3fdbf8a3491ad3fb2edf83b4 data/forge/tags/items/foods/cooked_salmon.json
 6bda0b31e05f29de3a64aa7e96b54a6131c162cb data/forge/tags/items/foods/dough.json
@@ -510,6 +513,7 @@ d3b550483f19afea8b512600d266ea1c0c617c17 data/forge/tags/items/ingots/steel.json
 293668f54e837eea20c37cd843d28a2745ffe09c data/forge/tags/items/ingredients/amaranth.json
 b7a1f487a9ea53992619f74e53191409bb435cda data/forge/tags/items/ingredients/anko.json
 95e633e6cf17d7c46d9dc5443a222b21782af13c data/forge/tags/items/ingredients/aroma_rice.json
+29f04ee2b19f29f1c3add1db803db9ee116ae52b data/forge/tags/items/ingredients/bacon.json
 d952ef1b1fe160e61738f8b06d0dbd20ef27af4d data/forge/tags/items/ingredients/bagasse.json
 01eb075209d2e07cecc5a3f66bc5a14c8b5eb820 data/forge/tags/items/ingredients/bamboo_shoot.json
 c8ae00487769cc8af31edfa00b8ec67148460290 data/forge/tags/items/ingredients/barley.json
@@ -612,6 +616,7 @@ dcbdeef42e7b64c33e8951a52ffc2a6745f8797b data/forge/tags/items/ingredients/rockf
 f662d554b05307a14bb5b2fc11fc8ed83257589d data/forge/tags/items/ingredients/roe.json
 2b6a0a0e24c914a745420f85bc16058ebe31629a data/forge/tags/items/ingredients/rye.json
 c5bc782a83b28d4aafcea825708a2945ffc5cb94 data/forge/tags/items/ingredients/salsa.json
+69d61449bfc8c860c70a6da9e634d092a7265004 data/forge/tags/items/ingredients/salt_meat.json
 62edbe3d616da408f530abeb150e93acc74be71a data/forge/tags/items/ingredients/sardine.json
 bf69eb96682ed83c1f6643b1e6f215a9e5697e14 data/forge/tags/items/ingredients/seabream.json
 86c3b9adadca8064066c8199b11f232cce7cbd37 data/forge/tags/items/ingredients/shellfish.json
@@ -895,6 +900,7 @@ dbf9023ad17b399103b373c5e2c87f229008aeb6 data/minecraft/tags/items/arrows.json
 a993675cd6d4b3ad999000d25441be803db3a7b4 data/minecraft/tags/items/boats.json
 0c66697fb072599561fc62082ec9457347694d33 data/minecraft/tags/items/fences.json
 3217a7e87da0d6a9b72c982002854fd5ea86be7f data/minecraft/tags/items/fishes.json
+563e18c2280b90b56428550e4fb35d91786354c9 data/minecraft/tags/items/flowers.json
 5ee7f6137705b796a2b17e71224eb7ddfc0a6ce2 data/minecraft/tags/items/freeze_immune_wearables.json
 38daf92662b874926c4b139f4d7c3a20a260b620 data/minecraft/tags/items/leaves.json
 b7e70db15da11c82785cc09bcb8f32b688201c2c data/minecraft/tags/items/logs_that_burn.json

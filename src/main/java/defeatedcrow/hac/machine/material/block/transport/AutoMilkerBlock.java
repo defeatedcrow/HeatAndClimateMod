@@ -45,12 +45,12 @@ public class AutoMilkerBlock extends PortableFluidTankBlock {
 	public AutoMilkerBlock(String s) {
 		super(getProp());
 		this.registerDefaultState(this.stateDefinition.any()
-				.setValue(DCState.FACING, Direction.NORTH)
-				.setValue(DCState.FLAG, Boolean.valueOf(false))
-				.setValue(DCState.LIT, Boolean.valueOf(false))
-				.setValue(DCState.POWERED, Boolean.valueOf(false))
-				.setValue(DCState.TYPE8, Integer.valueOf(0))
-				.setValue(WATERLOGGED, Boolean.valueOf(false)));
+		    .setValue(DCState.FACING, Direction.NORTH)
+		    .setValue(DCState.FLAG, false)
+		    .setValue(DCState.LIT, false)
+		    .setValue(DCState.POWERED, false)
+		    .setValue(DCState.TYPE8, 0)
+		    .setValue(WATERLOGGED, false));
 		name = s;
 	}
 
@@ -60,7 +60,9 @@ public class AutoMilkerBlock extends PortableFluidTankBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.BUILDABLE_GLASS, MaterialColor.SNOW).strength(0.1F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.BUILDABLE_GLASS, MaterialColor.SNOW)
+		    .strength(0.1F, 540.0F)
+		    .noOcclusion();
 	}
 
 	public static void changeLitState(Level level, BlockPos pos, int lit) {
@@ -131,8 +133,10 @@ public class AutoMilkerBlock extends PortableFluidTankBlock {
 		return !level.isClientSide ? createTickerHelper(type, MachineInit.AUTO_MILKER_TILE.get(), ProcessTileBaseDC::serverTick) : null;
 	}
 
+	@Override
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
-		MutableComponent tex1 = Component.translatable("dcs.tip.auto_milker").withStyle(ChatFormatting.GRAY);
+		MutableComponent tex1 = Component.translatable("dcs.tip.auto_milker")
+		    .withStyle(ChatFormatting.GRAY);
 		if (ClimateCore.proxy.keyShiftPushed()) {
 			list.add(tex1);
 		} else {

@@ -25,7 +25,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class DCRecipes {
 
-	private DCRecipes() {};
+	private DCRecipes() {}
 
 	public static DCRecipes INSTANCE = new DCRecipes();
 
@@ -63,7 +63,7 @@ public class DCRecipes {
 
 	@SubscribeEvent
 	public static void serverStop(ServerStoppedEvent event) {
-		INSTANCE.clear();
+		DCRecipes.clear();
 	}
 
 	public static Optional<IClimateSmelting> getSmeltingRecipe(Supplier<IClimate> clm, ItemStack item) {
@@ -71,12 +71,12 @@ public class DCRecipes {
 	}
 
 	public static Optional<IClimateSmelting> getSmeltingRecipe(ResourceLocation res) {
-		IClimateSmelting recipe = INSTANCE.SMELTING.get(res);
+		IClimateSmelting recipe = DCRecipes.SMELTING.get(res);
 		return recipe == null ? Optional.of(recipe) : Optional.empty();
 	}
 
 	public static Optional<IClimateSmelting> getSmeltingRecipe(IClimate clm, ItemStack item) {
-		for (IClimateSmelting recipe : INSTANCE.SMELTING.values()) {
+		for (IClimateSmelting recipe : DCRecipes.SMELTING.values()) {
 			if (recipe.matcheInput(item) && recipe.matchClimate(clm)) {
 				return Optional.of(recipe);
 			}
@@ -85,7 +85,7 @@ public class DCRecipes {
 	}
 
 	public static Optional<IClimateSmelting> hasAnySmeltingRecipe(ItemLike item) {
-		for (IClimateSmelting recipe : INSTANCE.SMELTING.values()) {
+		for (IClimateSmelting recipe : DCRecipes.SMELTING.values()) {
 			if (recipe.matcheInput(new ItemStack(item))) {
 				return Optional.of(recipe);
 			}
@@ -98,12 +98,12 @@ public class DCRecipes {
 	}
 
 	public static Optional<IHeatTreatment> getHeatTreatmentRecipe(ResourceLocation res) {
-		IHeatTreatment recipe = INSTANCE.HEAT_TREATMENT.get(res);
+		IHeatTreatment recipe = DCRecipes.HEAT_TREATMENT.get(res);
 		return recipe == null ? Optional.of(recipe) : Optional.empty();
 	}
 
 	public static Optional<IHeatTreatment> getHeatTreatmentRecipe(IClimate clm, ItemStack item) {
-		for (IHeatTreatment recipe : INSTANCE.HEAT_TREATMENT.values()) {
+		for (IHeatTreatment recipe : DCRecipes.HEAT_TREATMENT.values()) {
 			ItemStack ret = recipe.getCurrentOutput(item, clm);
 			if (!ret.isEmpty() && !ret.is(item.getItem())) {
 				return Optional.of(recipe);
@@ -113,12 +113,16 @@ public class DCRecipes {
 	}
 
 	public static Optional<IHeatTreatment> hasAnyHeatTreatmentRecipe(ItemLike item) {
-		for (IHeatTreatment recipe : INSTANCE.HEAT_TREATMENT.values()) {
+		for (IHeatTreatment recipe : DCRecipes.HEAT_TREATMENT.values()) {
 			ItemStack check = new ItemStack(item);
-			if (recipe.getHeatingInput().test(check)
-					|| recipe.getHeatingOutput().asItem() == item.asItem()
-					|| recipe.getCoolingOutput().asItem() == item.asItem()
-					|| recipe.getFail().asItem() == item.asItem()) {
+			if (recipe.getHeatingInput()
+			    .test(check)
+			    || recipe.getHeatingOutput()
+			        .asItem() == item.asItem()
+			    || recipe.getCoolingOutput()
+			        .asItem() == item.asItem()
+			    || recipe.getFail()
+			        .asItem() == item.asItem()) {
 				return Optional.of(recipe);
 			}
 		}
@@ -128,7 +132,7 @@ public class DCRecipes {
 	public static Optional<IDeviceRecipe> getCookingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inF) {
 		int c = 0;
 		IDeviceRecipe keep = null;
-		for (IDeviceRecipe recipe : INSTANCE.COOKING.values()) {
+		for (IDeviceRecipe recipe : DCRecipes.COOKING.values()) {
 			if (recipe.matcheInput(inputs).length > 0 && recipe.matcheInputFluid(inF, FluidStack.EMPTY) && recipe.matchClimate(clm)) {
 				if (recipe.getPriority() > c) {
 					c = recipe.getPriority();
@@ -145,7 +149,7 @@ public class DCRecipes {
 	public static Optional<IDeviceRecipe> getFermentationRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inF) {
 		int c = 0;
 		IDeviceRecipe keep = null;
-		for (IDeviceRecipe recipe : INSTANCE.FERMENTATION.values()) {
+		for (IDeviceRecipe recipe : DCRecipes.FERMENTATION.values()) {
 			if (recipe.matcheInput(inputs).length > 0 && recipe.matcheInputFluid(inF, FluidStack.EMPTY) && recipe.matchClimate(clm)) {
 				if (recipe.getPriority() > c) {
 					c = recipe.getPriority();
@@ -162,7 +166,7 @@ public class DCRecipes {
 	public static Optional<IDeviceRecipe> getTeaRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inF) {
 		int c = 0;
 		IDeviceRecipe keep = null;
-		for (IDeviceRecipe recipe : INSTANCE.TEA.values()) {
+		for (IDeviceRecipe recipe : DCRecipes.TEA.values()) {
 			if (recipe.matcheInput(inputs).length > 0 && recipe.matcheInputFluid(inF, FluidStack.EMPTY) && recipe.matchClimate(clm)) {
 				if (recipe.getPriority() > c) {
 					c = recipe.getPriority();
@@ -179,7 +183,7 @@ public class DCRecipes {
 	public static Optional<IDeviceRecipe> getFryingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inF) {
 		int c = 0;
 		IDeviceRecipe keep = null;
-		for (IDeviceRecipe recipe : INSTANCE.FRYING.values()) {
+		for (IDeviceRecipe recipe : DCRecipes.FRYING.values()) {
 			if (recipe.matcheInput(inputs).length > 0 && recipe.matcheInputFluid(inF, FluidStack.EMPTY) && recipe.matchClimate(clm)) {
 				if (recipe.getPriority() > c) {
 					c = recipe.getPriority();
@@ -195,16 +199,25 @@ public class DCRecipes {
 
 	public static Optional<IDeviceRecipe> getCrusherRecipe(List<ItemStack> inputs, @Nonnull ItemStack catalyst) {
 		if (catalyst.is(TagDC.ItemTag.BLADE_ALUMINA))
-			return INSTANCE.PULVERISE.values().stream().filter(recipe -> recipe.matcheInput(inputs).length > 0).findAny();
+			return DCRecipes.PULVERISE.values()
+			    .stream()
+			    .filter(recipe -> recipe.matcheInput(inputs).length > 0)
+			    .findAny();
 		if (catalyst.is(TagDC.ItemTag.BLADE_SANITARY))
-			return INSTANCE.SQUEEZE.values().stream().filter(recipe -> recipe.matcheInput(inputs).length > 0).findAny();
+			return DCRecipes.SQUEEZE.values()
+			    .stream()
+			    .filter(recipe -> recipe.matcheInput(inputs).length > 0)
+			    .findAny();
 		if (catalyst.is(TagDC.ItemTag.BLADE_SCREEN))
-			return INSTANCE.SIEVE.values().stream().filter(recipe -> recipe.matcheInput(inputs).length > 0).findAny();
+			return DCRecipes.SIEVE.values()
+			    .stream()
+			    .filter(recipe -> recipe.matcheInput(inputs).length > 0)
+			    .findAny();
 		return Optional.empty();
 	}
 
 	public static Optional<IDeviceRecipe> getMillRecipe(List<ItemStack> inputs) {
-		Map<ResourceLocation, IDeviceRecipe> mills = new HashMap<>(INSTANCE.MILL);
+		Map<ResourceLocation, IDeviceRecipe> mills = new HashMap<>(DCRecipes.MILL);
 		for (IDeviceRecipe recipe : mills.values()) {
 			if (recipe.matcheInput(inputs).length > 0) {
 				return Optional.of(recipe);
@@ -215,14 +228,14 @@ public class DCRecipes {
 
 	public static int getFuelBurnTime(FuelTypeDC type, ItemStack input) {
 		if (type == FuelTypeDC.BIOMASS && !DCUtil.isEmpty(input)) {
-			for (IDeviceFuel recipe : INSTANCE.BIOMASS_FUEL.values()) {
+			for (IDeviceFuel recipe : DCRecipes.BIOMASS_FUEL.values()) {
 				if (recipe.matcheInput(input)) {
 					return recipe.getBurnTime();
 				}
 			}
 		}
 		if (type == FuelTypeDC.THERMAL && !DCUtil.isEmpty(input)) {
-			for (IDeviceFuel recipe : INSTANCE.THERMAL_FUEL.values()) {
+			for (IDeviceFuel recipe : DCRecipes.THERMAL_FUEL.values()) {
 				if (recipe.matcheInput(input)) {
 					return recipe.getBurnTime();
 				}
@@ -233,14 +246,14 @@ public class DCRecipes {
 
 	public static int getFluidFuelBurnTime(FuelTypeDC type, FluidStack input) {
 		if (type == FuelTypeDC.FLUID && input != null && !input.isEmpty()) {
-			for (IDeviceFuel recipe : INSTANCE.FLUID_FUEL.values()) {
+			for (IDeviceFuel recipe : DCRecipes.FLUID_FUEL.values()) {
 				if (recipe.matcheInputFluid(input)) {
 					return recipe.getBurnTime();
 				}
 			}
 		}
 		if (type == FuelTypeDC.GAS && input != null && !input.isEmpty()) {
-			for (IDeviceFuel recipe : INSTANCE.GAS_FUEL.values()) {
+			for (IDeviceFuel recipe : DCRecipes.GAS_FUEL.values()) {
 				if (recipe.matcheInputFluid(input)) {
 					return recipe.getBurnTime();
 				}

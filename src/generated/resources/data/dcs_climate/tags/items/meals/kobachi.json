@@ -17,6 +17,10 @@
     "dcs_climate:food/kobachi_namerou",
     "dcs_climate:food/kobachi_tuna_avocado",
     "dcs_climate:food/kobachi_skipjack_avocado",
-    "dcs_climate:food/kobachi_poisson_cru"
+    "dcs_climate:food/kobachi_poisson_cru",
+    "dcs_climate:food/food_sauerkraut",
+    "dcs_climate:food/food_tsukemono",
+    "dcs_climate:food/food_kimchi",
+    "dcs_climate:food/food_umeboshi"
   ]
 }

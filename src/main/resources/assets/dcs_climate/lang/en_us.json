@@ -543,6 +543,8 @@
 
   "item.dcs_climate.food.food_sausage_raw":"Raw Sausage",
   "item.dcs_climate.food.food_sausage_smoked":"Smoked Sausage",
+  "item.dcs_climate.food.food_salt_pork":"Salt Pork",
+  "item.dcs_climate.food.food_smoked_bacon":"Smoked Bacon",
 
   "item.dcs_climate.food.food_basesoup_vegi":"Vegitable Stock",
   "item.dcs_climate.food.food_basesoup_beef":"Beef Stock",
@@ -705,6 +707,8 @@
   "item.dcs_climate.food.sandwich_egg":"Egg Sandwich",
   "item.dcs_climate.food.sandwich_salad":"Salad Sandwich",
   "item.dcs_climate.food.sandwich_salmon":"Salmon Sandwich",
+  "item.dcs_climate.food.sandwich_blt":"BLT Sandwich",
+  "item.dcs_climate.food.sandwich_reuben":"Reuben Sandwich",
 
   "item.dcs_climate.food.taco_meat":"Meat Taco",
   "item.dcs_climate.food.taco_avocado":"Avocado Taco",
@@ -719,6 +723,8 @@
   "item.dcs_climate.food.donut_mint":"Mint Chocolate Donut",
   "item.dcs_climate.food.donut_jelly":"Jelly Donut",
   "item.dcs_climate.food.donut_rose":"Paczki",
+  
+  "item.dcs_climate.food.pancake":"Pancake",
 
   "item.dcs_climate.food.cake_butter":"Butter Cake",
   "item.dcs_climate.food.cake_berry":"Berry Cake",
@@ -728,9 +734,28 @@
   "item.dcs_climate.food.cake_lemon":"Lemon Jelly Cake",
   "item.dcs_climate.food.cake_jelly_grape":"Grape Jelly Cake",
   "item.dcs_climate.food.cake_jelly_rose":"Rose Jelly Cake",
+  "item.dcs_climate.food.cake_cassata":"Cassata Siciliana",
+  "item.dcs_climate.food.cake_baklava":"Baklava",
   "item.dcs_climate.food.cake_cream_vanilla":"Caramel Pudding",
   "item.dcs_climate.food.cake_cream_mango":"Mango Pudding",
   "item.dcs_climate.food.cake_cream_sesami":"Sesami Pudding",
+    
+  "item.dcs_climate.food.icecream_vanilla":"Vanilla Ice Cream",
+  "item.dcs_climate.food.icecream_nuts":"Honey NutsIce Cream",
+  "item.dcs_climate.food.icecream_cocoa":"Cocoa Ice Cream",
+  "item.dcs_climate.food.icecream_berry":"Berry Ice Cream",
+  "item.dcs_climate.food.icecream_watermelon":"Watermelon Ice Cream",
+  "item.dcs_climate.food.icecream_melon":"Melon Ice Cream",
+  "item.dcs_climate.food.icecream_grape":"Grape Ice Cream",
+  "item.dcs_climate.food.icecream_citrus":"Citrus Ice Cream",
+  "item.dcs_climate.food.icecream_mango":"mMango Ice Cream",
+  "item.dcs_climate.food.icecream_guava":"Guava Ice Cream",
+  "item.dcs_climate.food.icecream_pudding":"Pudding a la mode",
+  "item.dcs_climate.food.sundae_cocoa":"Chocolate Sundae",
+  "item.dcs_climate.food.sundae_peach":"Peach Melva",
+  "item.dcs_climate.food.sundae_affogato":"Affogato",
+  "item.dcs_climate.food.creamsoda_melon":"Melon Soda Float",
+  "item.dcs_climate.food.creamsoda_mallow":"Blue Soda Float",
 
   "item.dcs_climate.food.wagashi_bota":"Botamochi",
   "item.dcs_climate.food.wagashi_kusa":"Kusamochi",
@@ -755,6 +780,15 @@
   "item.dcs_climate.food.chazuke_sake":"Salmon Chazuke",
   "item.dcs_climate.food.chazuke_tai":"Seabream Chazuke",
   "item.dcs_climate.food.chazuke_tarako":"Roe Chazuke",
+  
+  "item.dcs_climate.food.rice_chaofan":"Chaofan",
+  "item.dcs_climate.food.rice_ketchup":"Ketchup Rice",
+  "item.dcs_climate.food.rice_omerice":"Omerice",
+  "item.dcs_climate.food.rice_hainan_chicken":"Hainan Chicken Rice",
+  "item.dcs_climate.food.rice_pilav":"Pilav",
+  "item.dcs_climate.food.rice_jambalaya":"Jambalaya",
+  "item.dcs_climate.food.rice_jollof":"Jollof Rice",
+  "item.dcs_climate.food.rice_paellia":"Paellia",
 
   "item.dcs_climate.food.pasta_oil":"Aglio Olioe e peperoncino",
   "item.dcs_climate.food.pasta_basil":"Pesto Genovese Pasta",
@@ -766,6 +800,8 @@
   "item.dcs_climate.food.pasta_squid":"Squid Ink Pasta",
   "item.dcs_climate.food.pasta_cod":"Creamy Fish Pasta",
   "item.dcs_climate.food.pasta_roe":"Creamy Mentaico Pasta",
+  "item.dcs_climate.food.pasta_ketchup":"Ketchup Pasta",
+  "item.dcs_climate.food.pasta_carbonara":"Carbonara",
 
   "item.dcs_climate.food.phat_thai_prawn":"Prawn Phat Thai",
   "item.dcs_climate.food.phat_thai_chicken":"Chicken Phat Thai",
@@ -861,6 +897,9 @@
   "item.dcs_climate.food.omelet_basic":"Basic Omelet",
   "item.dcs_climate.food.omelet_vegi":"Vegetable Omelet",
   "item.dcs_climate.food.fried_egg":"Fried Egg",
+  "item.dcs_climate.food.fried_egg_bacon":"Bacon and Egg",
+  "item.dcs_climate.food.sausage_saute":"Sausage Saute",
+  "item.dcs_climate.food.sausage_curry":"Currywurst",
 
   "item.dcs_climate.food.saute_green":"Sauteed Asian Greens",
   "item.dcs_climate.food.saute_green_squid":"Sauteed Squid And Asian Greens",
@@ -1029,6 +1068,7 @@
   "item.dcs_climate.food.drink_soda_mango":"Mango Soda",
   "item.dcs_climate.food.drink_soda_guava":"Guava Soda",
 
+  "item.dcs_climate.food.cup_hot_milk":"Hot Milk",
   "item.dcs_climate.food.cup_tea_green":"Green Tea",
   "item.dcs_climate.food.cup_tea_green_sakura":"Sakura Green Tea",
   "item.dcs_climate.food.cup_tea_blue":"Oolong Tea",
@@ -1039,6 +1079,7 @@
   "item.dcs_climate.food.cup_tea_berry":"Berry Tea",
   "item.dcs_climate.food.cup_tea_chai":"Chai",
   "item.dcs_climate.food.cup_coffee":"Coffee",
+  "item.dcs_climate.food.cup_coffee_cardamom":"Cardamom Coffee",
   "item.dcs_climate.food.cup_cocoa":"Cocoa",
   "item.dcs_climate.food.cup_mint":"Milt Tea",
   "item.dcs_climate.food.cup_mallow":"Mallow Tea",
@@ -1053,6 +1094,12 @@
   "item.dcs_climate.food.cup_tea_berry_milk":"BerryMilk Tea",
   "item.dcs_climate.food.cup_coffee_milk":"Cafe au lait",
   "item.dcs_climate.food.cup_cocoa_milk":"Milk Cocoa",
+  "item.dcs_climate.food.demitasse_espresso":"Espresso",
+  "item.dcs_climate.food.cup_caffe_latte":"Caffe Latte",
+  "item.dcs_climate.food.cup_cappuccino":"Cappuccino",
+  "item.dcs_climate.food.cup_cappuccino_nuts":"Cappuccino with Nuts",
+  "item.dcs_climate.food.cup_cappuccino_cocoa":"Cocoa Cappuccino",
+  "item.dcs_climate.food.cup_cappuccino_syrup":"Vanilla Cappuccino",
 
   "item.dcs_climate.food.bottle_beer":"Beer",
   "item.dcs_climate.food.bottle_sake":"Sake",
@@ -2036,6 +2083,13 @@
   "block.dcs_climate.build.bed_black":"Non-Saving Bed (Black)",
   "block.dcs_climate.build.bed_red":"Non-Saving Bed (Red)",
   "block.dcs_climate.build.bed_green":"Non-Saving Bed (Green)",
+  
+  "block.dcs_climate.build.kitchen_curtain_white":"White Kitchen Curtain",
+  "block.dcs_climate.build.kitchen_curtain_yellow":"Yellow Kitchen Curtain",
+  "block.dcs_climate.build.kitchen_curtain_blue":"Blue Kitchen Curtain",
+  "block.dcs_climate.build.kitchen_curtain_black":"Black Kitchen Curtain",
+  "block.dcs_climate.build.kitchen_curtain_red":"Red Kitchen Curtain",
+  "block.dcs_climate.build.kitchen_curtain_green":"Green Kitchen Curtain",
 
   "block.dcs_climate.build.straw_mat":"Straw Mat",
 
@@ -2075,6 +2129,12 @@
   "block.dcs_climate.build.display_shelf_glass":"Glass Display Shelf",
   
   "block.dcs_climate.build.ditch":"Mortar Ditch",
+  
+  "block.dcs_climate.build.dishplate_white":"White Dish Plate",
+  "block.dcs_climate.build.dishplate_silver":"Silver Dish Plate",
+  
+  "item.dcs_climate.build.flower_pot_white":"Quartz Flower Pot",
+  "item.dcs_climate.build.flower_pot_clay":"Clay Flower Pot",
 
     "## machine":"",
 
@@ -2179,6 +2239,8 @@
   "block.dcs_climate.machine.entity_camera":"Entity Detector Camera",
   "block.dcs_climate.machine.auto_milker":"Auto Milker",
   "block.dcs_climate.machine.water_basin":"Water Intake Basin",
+  "block.dcs_climate.machine.coffee_siphon":"Vacuum Coffee Maker",
+  "block.dcs_climate.machine.coffee_macchinetta":"Moka Pot",
 
     "## magic":"",
 
@@ -2204,6 +2266,7 @@
   "entity.dcs_climate.cutlery_fork":"Fork",
   "entity.dcs_climate.chair_entity":"Chair",
   "entity.dcs_climate.canoe_entity":"Outrigger Canoe",
+  "entity.dcs_climate.flower_pot_entity":"Flower Vase",
 
   "entity.dcs_climate.bread_round":"Bread",
   "entity.dcs_climate.bread_square":"Plain Bread",
@@ -2412,6 +2475,8 @@
   "dcs.tip.auto_milker":"Collect milk from nearby cows and goats.",
   "dcs.tip.water_intake":"Water can be stored when it receives water flow or rain from above.",
   "dcs.tip.villager_chest":"Collect any surplus items held by the surrounding villagers.",
+  "dcs.tip.coffee_siphon":"Add coffee grounds and water to it, heat it up, and then enjoy!",
+  "dcs.tip.entity_flowerpot":"Hold a flower and right-click on the vase: it will be placed.",
 
   "dcs.tip.foodtaste.1":"Taste: ★",
   "dcs.tip.foodtaste.2":"Taste: ★★",
@@ -2426,6 +2491,7 @@
   "dcs.tip.food_entity_cutlery":"When used on a food item, you can eat it.",
   "dcs.tip.empty_pack":"Right-click: Can be filled with water or milk.",
   "dcs.tip.remove_bad_potion":"Removes bad potion effects.",
+  "dcs.tip.remove_all_potion":"Removes all potion effects.",
   "dcs.tip.healing":"Instant Healing",
   "dcs.tip.seasoning":"[SEASONING]",
   "dcs.tip.seasoning.desc":"Crafting this with food will improve its flavor.",
@@ -2674,6 +2740,8 @@
   "dcs.container.boiler_biomass":"Biomass Boiler",
   "dcs.container.boiler_biomass.with_owner":"%1$s 's Biomass Boiler",
   "dcs.container.black_rod":"Owl Wing Rod",
+  "dcs.container.coffee_maker":"Coffee Maker",
+  "dcs.container.coffee_maker.with_owner":"%1$s 's Coffee Maker'",
 
   "## gui_misc":"misc",
 

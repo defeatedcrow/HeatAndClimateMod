@@ -1,0 +1,8 @@
+{
+  "values": [
+    "minecraft:baked_potato",
+    "dcs_climate:food/stick_potato_cooked",
+    "dcs_climate:food/sweetpotato_cooked",
+    "dcs_climate:food/sweetpotato_cassava_cooked"
+  ]
+}

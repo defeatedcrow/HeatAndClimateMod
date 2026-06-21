@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "tag": "forge:clothes"
+    },
+    "X": {
+      "tag": "forge:glass"
+    },
+    "Y": {
+      "tag": "forge:ingots/steel"
+    },
+    "Z": {
+      "tag": "minecraft:candles"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "YWY",
+    "YZY"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/coffee_siphon"
+  }
+}

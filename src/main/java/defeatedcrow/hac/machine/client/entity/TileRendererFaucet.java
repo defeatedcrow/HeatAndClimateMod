@@ -35,12 +35,14 @@ public class TileRendererFaucet implements BlockEntityRenderer<FaucetTile> {
 	@Override
 	public void render(FaucetTile tile, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int i2) {
 		if (tile != null && tile.getBlockState() != null) {
-			Block block = tile.getBlockState().getBlock();
+			Block block = tile.getBlockState()
+			    .getBlock();
 			EntityRenderData data = tile.getRenderData(block);
 			ResourceLocation tex = data.getTextureLocation();
 			ResourceLocation tex2 = data.getTextureLocation();
-			Direction dir = DCState.getFace(tile.getBlockState(), DCState.FACING).getOpposite();
-			boolean flag = DCState.getBool(tile.getBlockState(), DCState.POWERED);
+			Direction dir = DCState.getFace(tile.getBlockState(), DCState.FACING)
+			    .getOpposite();
+			boolean flag = DCState.getBool(tile.getBlockState(), DCState.POWERED) || DCState.getBool(tile.getBlockState(), DCState.FLAG);
 			float f1 = data.getModelScale();
 			float f2 = data.getAdjustY();
 

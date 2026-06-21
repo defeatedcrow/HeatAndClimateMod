@@ -183,6 +183,22 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_bread", has(TagDC.ItemTag.BREAD))
 		    .save(cons, "dcs_climate:food/sandwich_salmon_2");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.SANDWICH_BLT_ITEM.get(), 3)
+		    .requires(Ingredient.of(TagDC.ItemTag.BREAD))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_LETTUCE))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_TOMATO))
+		    .requires(Ingredient.of(TagDC.ItemTag.BACON))
+		    .unlockedBy("has_bread", has(TagDC.ItemTag.BREAD))
+		    .save(cons, "dcs_climate:food/sandwich_blt_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.SANDWICH_REUBEN_ITEM.get(), 3)
+		    .requires(Ingredient.of(TagDC.ItemTag.BREAD))
+		    .requires(Ingredient.of(FoodInit.MINIDISH_SAUERKRAUT.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.CHEESE))
+		    .requires(Ingredient.of(TagDC.ItemTag.COOKED_BEEF))
+		    .unlockedBy("has_bread", has(TagDC.ItemTag.BREAD))
+		    .save(cons, "dcs_climate:food/sandwich_reuben_0");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.TACO_MEAT.get(), 1)
 		    .requires(Ingredient.of(FoodInit.BREAD_TORTILLA_BAKED_ITEM.get()))
 		    .requires(Ingredient.of(TagDC.ItemTag.COOKED_MEAT))
@@ -465,6 +481,12 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 		    .unlockedBy("has_tubers", has(TagDC.ItemTag.CROP_TUBERS))
 		    .save(cons, "dcs_climate:food/dumpling_tubers_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.DUMPLING_TUBERS.get(), 1)
+		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .requires(Ingredient.of(TagDC.ItemTag.DUST_STARCH))
+		    .unlockedBy("has_tubers", has(TagDC.ItemTag.CROP_TUBERS))
+		    .save(cons, "dcs_climate:food/dumpling_tubers_1");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.DUMPLING_TUBERS.get(), 2)
 		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
@@ -869,7 +891,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(FoodInit.CHAZUKE_UME.get(), 1)
 		    .requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
 		    .requires(Ingredient.of(FoodInit.TEA_GREEN.get()))
-		    .requires(Ingredient.of(FoodInit.FOOD_UMEBOSHI.get()))
+		    .requires(Ingredient.of(FoodInit.MINIDISH_UMEBOSHI.get()))
 		    .requires(Ingredient.of(Items.DRIED_KELP))
 		    .unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
 		    .save(cons, "dcs_climate:food/ume_chazuke_1");
@@ -877,8 +899,8 @@ public class FoodRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(FoodInit.CHAZUKE_UME.get(), 1)
 		    .requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
 		    .requires(Ingredient.of(FoodInit.TEA_GREEN.get()))
-		    .requires(Ingredient.of(FoodInit.FOOD_UMEBOSHI.get()))
-		    .requires(Ingredient.of(FoodInit.FOOD_TSUKEMONO.get()))
+		    .requires(Ingredient.of(FoodInit.MINIDISH_UMEBOSHI.get()))
+		    .requires(Ingredient.of(FoodInit.MINIDISH_TSUKEMONO.get()))
 		    .unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
 		    .save(cons, "dcs_climate:food/ume_chazuke_2");
 
@@ -894,7 +916,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
 		    .requires(Ingredient.of(FoodInit.TEA_GREEN.get()))
 		    .requires(Ingredient.of(TagDC.ItemTag.COOKED_SALMON))
-		    .requires(Ingredient.of(FoodInit.FOOD_TSUKEMONO.get()))
+		    .requires(Ingredient.of(FoodInit.MINIDISH_TSUKEMONO.get()))
 		    .unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
 		    .save(cons, "dcs_climate:food/sake_chazuke_2");
 
@@ -912,7 +934,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .requires(Ingredient.of(FoodInit.TEA_GREEN.get()))
 		    .requires(Ingredient.of(TagDC.ItemTag.SEABREAM))
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_SESAMI))
-		    .requires(Ingredient.of(FoodInit.FOOD_TSUKEMONO.get()))
+		    .requires(Ingredient.of(FoodInit.MINIDISH_TSUKEMONO.get()))
 		    .unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
 		    .save(cons, "dcs_climate:food/tai_chazuke_2");
 
@@ -928,7 +950,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
 		    .requires(Ingredient.of(FoodInit.TEA_GREEN.get()))
 		    .requires(Ingredient.of(TagDC.ItemTag.ROE))
-		    .requires(Ingredient.of(FoodInit.FOOD_TSUKEMONO.get()))
+		    .requires(Ingredient.of(FoodInit.MINIDISH_TSUKEMONO.get()))
 		    .unlockedBy("has_boiled_rice", has(TagDC.ItemTag.BOILED_RICE))
 		    .save(cons, "dcs_climate:food/tarako_chazuke_2");
 
@@ -1157,7 +1179,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(FoodInit.SALAD_POTATO.get(), 1)
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
 		    .requires(Ingredient.of(Tags.Items.EGGS))
-		    .requires(Ingredient.of(Items.BAKED_POTATO))
+		    .requires(Ingredient.of(TagDC.ItemTag.COOKED_POTATO))
 		    .unlockedBy("has_green_leaves", has(TagDC.ItemTag.CROP_GREEN_LEAFS))
 		    .save(cons, "dcs_climate:food/salad_potato_0");
 
@@ -1219,6 +1241,59 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .requires(Ingredient.of(Tags.Items.EGGS))
 		    .unlockedBy("has_wheat", has(TagDC.ItemTag.DUST_WHEAT))
 		    .save(cons, "dcs_climate:food/food_cake_batter_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.ICECREAM_PUDDING.get(), 1)
+		    .requires(Ingredient.of(TagDC.ItemTag.HAC_ICECREAMS))
+		    .requires(Ingredient.of(FoodInit.CAKE_CREAM_VANILLA.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_APPLE))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_CHERRY))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_CANTALOUP))
+		    .requires(Ingredient.of(Items.COOKIE))
+		    .requires(Ingredient.of(TagDC.ItemTag.CREAMS))
+		    .unlockedBy("has_icecream", has(TagDC.ItemTag.HAC_ICECREAMS))
+		    .save(cons, "dcs_climate:food/food_icecream_pudding_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.TEA_COFFEE_CARDAMOM.get(), 1)
+		    .requires(Ingredient.of(FoodInit.TEA_COFFEE.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_CARDAMOM))
+		    .unlockedBy("has_coffee", has(FoodInit.TEA_COFFEE.get()))
+		    .save(cons, "dcs_climate:food/food_coffee_cardamom_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.COFFEE_CAPPUCCINO.get(), 1)
+		    .requires(Ingredient.of(FoodInit.ESPRESSO.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.MILKS))
+		    .unlockedBy("has_espresso", has(FoodInit.ESPRESSO.get()))
+		    .save(cons, "dcs_climate:food/food_cappuccino_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.COFFEE_LATTE.get(), 1)
+		    .requires(Ingredient.of(FoodInit.ESPRESSO.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.MILKS))
+		    .requires(Ingredient.of(TagDC.ItemTag.MILKS))
+		    .unlockedBy("has_espresso", has(FoodInit.ESPRESSO.get()))
+		    .save(cons, "dcs_climate:food/food_latte_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.COFFEE_CAPPUCCINO_COCOA.get(), 1)
+		    .requires(Ingredient.of(FoodInit.ESPRESSO.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.MILKS))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_COCOA))
+		    .unlockedBy("has_espresso", has(FoodInit.ESPRESSO.get()))
+		    .save(cons, "dcs_climate:food/food_cappuccino_cocoa_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.COFFEE_CAPPUCCINO_NUTS.get(), 1)
+		    .requires(Ingredient.of(FoodInit.ESPRESSO.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.MILKS))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_NUTS))
+		    .unlockedBy("has_espresso", has(FoodInit.ESPRESSO.get()))
+		    .save(cons, "dcs_climate:food/food_cappuccino_nuts_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.COFFEE_CAPPUCCINO_SYRUP.get(), 1)
+		    .requires(Ingredient.of(FoodInit.ESPRESSO.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.MILKS))
+		    .requires(Ingredient.of(TagDC.ItemTag.SYRUP))
+		    .requires(Ingredient.of(TagDC.ItemTag.VANILLA_CURED))
+		    .unlockedBy("has_espresso", has(FoodInit.ESPRESSO.get()))
+		    .save(cons, "dcs_climate:food/food_cappuccino_syrup_0");
 
 		// vanilla
 
@@ -1859,6 +1934,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_RICE.get(), 1)
 		    .requires(Ingredient.of(TagDC.ItemTag.DUST_RICES))
 		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .requires(Ingredient.of(TagDC.ItemTag.DUST_STARCH))
 		    .unlockedBy("has_dust_rices", has(TagDC.ItemTag.DUST_RICES))
 		    .save(cons, "dcs_climate:food/foodmaterial_rice_noodle");
 
@@ -2338,6 +2414,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 		cookingRecipe(cons, Ingredient.of(FoodInit.LOG_EU_MANCHINEEL.get()), FoodInit.LOG_EU_MANCHINEEL_DRY.get(), 200, "dried_manchineel_log", FoodInit.LOG_EU_MANCHINEEL.get(), "has_log_manchineel");
 		cookingRecipe(cons, Ingredient.of(Tags.Items.EGGS), FoodInit.FRIED_EGG.get(), 200, "fried_egg", Items.EGG, "has_egg");
 		cookingRecipe(cons, Ingredient.of(FoodInit.FOOD_CAKE_BATTER.get()), FoodInit.CAKE_BUTTER.get(), 200, "cake_butter", FoodInit.FOOD_CAKE_BATTER.get(), "has_cake_batter");
+		smokingRecipe(cons, Ingredient.of(FoodInit.SALT_PORK.get()), FoodInit.SMOKED_BACON.get(), 200, "smoked_bacon", FoodInit.SALT_PORK.get(), "has_salt_pork");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LEAVES), FoodInit.DUST_ASH.get(), 200, "dust_ash1", FoodInit.CONT_LEAVES.get(), "has_cont_leaves");
 		smokingRecipe(cons, Ingredient.of(TagDC.ItemTag.RAW_SAUSAGE), FoodInit.SMOKED_SAUSAGE.get(), 200, "smoked_sausage", FoodInit.RAW_SAUSAGE.get(), "has_raw_sausage");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LOGS), FoodInit.CONT_LOG_CHARCOAL.get(), 200, "charcoal_container", TagDC.ItemTag.CONT_LOGS, "has_log_cont");

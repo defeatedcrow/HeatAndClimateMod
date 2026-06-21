@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "dcs_climate:meals/ice_creams"
+    },
+    {
+      "item": "dcs_climate:food/cake_cream_vanilla"
+    },
+    {
+      "tag": "forge:crops/apple"
+    },
+    {
+      "tag": "forge:crops/cherry"
+    },
+    {
+      "tag": "forge:crops/citrus"
+    },
+    {
+      "tag": "forge:crops/cantaloup"
+    },
+    {
+      "item": "minecraft:cookie"
+    },
+    {
+      "tag": "forge:ingredients/creams"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/icecream_pudding"
+  }
+}

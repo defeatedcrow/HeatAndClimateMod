@@ -2292,6 +2292,87 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_locker", has(BuildInit.LOCKER_NORMAL.get()))
 		    .save(cons, "dcs_climate:clothing/locker_green_0");
 
+		ShapedRecipeBuilder.shaped(BuildInit.DISHPLATE_WHITE.get(), 1)
+		    .pattern("X X")
+		    .pattern(" X ")
+		    .define('X', TagDC.ItemTag.GEM_AGATES)
+		    .unlockedBy("has_agates", has(TagDC.ItemTag.GEM_AGATES))
+		    .save(cons, "dcs_climate:build/dishplate_white_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.DISHPLATE_SILVER.get(), 1)
+		    .pattern("X X")
+		    .pattern(" X ")
+		    .define('X', TagDC.ItemTag.INGOT_SILVER)
+		    .unlockedBy("has_silver", has(TagDC.ItemTag.INGOT_SILVER))
+		    .save(cons, "dcs_climate:build/dishplate_silver_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.DISHPLATE_SILVER.get(), 1)
+		    .pattern("X X")
+		    .pattern(" X ")
+		    .define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER)
+		    .unlockedBy("has_silver", has(TagDC.ItemTag.INGOT_NICKEL_SILVER))
+		    .save(cons, "dcs_climate:build/dishplate_silver_2");
+
+		ShapedRecipeBuilder.shaped(BuildInit.FLOWERPOT_WHITE.get(), 1)
+		    .pattern("XYX")
+		    .pattern(" X ")
+		    .define('X', TagDC.ItemTag.GEM_AGATES)
+		    .define('Y', ItemTags.FLOWERS)
+		    .unlockedBy("has_agates", has(TagDC.ItemTag.GEM_AGATES))
+		    .save(cons, "dcs_climate:build/flowerpot_white_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.FLOWERPOT_CLAY.get(), 1)
+		    .pattern("XYX")
+		    .pattern(" X ")
+		    .define('X', Tags.Items.INGOTS_BRICK)
+		    .define('Y', ItemTags.FLOWERS)
+		    .unlockedBy("has_bricks", has(Tags.Items.INGOTS_BRICK))
+		    .save(cons, "dcs_climate:build/flowerpot_clay_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.KITCHEN_CURTAIN_WHITE.get(), 1)
+		    .pattern("XXX")
+		    .pattern("YYY")
+		    .define('X', Tags.Items.RODS_WOODEN)
+		    .define('Y', TagDC.ItemTag.CLOTHS)
+		    .unlockedBy("has_clothes", has(TagDC.ItemTag.CLOTHS))
+		    .save(cons, "dcs_climate:build/kitchen_curtain_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.KITCHEN_CURTAIN_YELLOW.get(), 1)
+		    .requires(Tags.Items.DYES_YELLOW)
+		    .requires(BuildInit.KITCHEN_CURTAIN_WHITE.get())
+		    .unlockedBy("has_kitchen_curtain", has(BuildInit.KITCHEN_CURTAIN_WHITE.get()))
+		    .save(cons, "dcs_climate:clothing/kitchen_curtain_yellow_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.KITCHEN_CURTAIN_BLUE.get(), 1)
+		    .requires(Tags.Items.DYES_BLUE)
+		    .requires(BuildInit.KITCHEN_CURTAIN_WHITE.get())
+		    .unlockedBy("has_kitchen_curtain", has(BuildInit.KITCHEN_CURTAIN_WHITE.get()))
+		    .save(cons, "dcs_climate:clothing/kitchen_curtain_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.KITCHEN_CURTAIN_BLACK.get(), 1)
+		    .requires(Tags.Items.DYES_BLACK)
+		    .requires(BuildInit.KITCHEN_CURTAIN_WHITE.get())
+		    .unlockedBy("has_kitchen_curtain", has(BuildInit.KITCHEN_CURTAIN_WHITE.get()))
+		    .save(cons, "dcs_climate:clothing/kitchen_curtain_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.KITCHEN_CURTAIN_RED.get(), 1)
+		    .requires(Tags.Items.DYES_RED)
+		    .requires(BuildInit.KITCHEN_CURTAIN_WHITE.get())
+		    .unlockedBy("has_kitchen_curtain", has(BuildInit.KITCHEN_CURTAIN_WHITE.get()))
+		    .save(cons, "dcs_climate:clothing/kitchen_curtain_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.KITCHEN_CURTAIN_GREEN.get(), 1)
+		    .requires(Tags.Items.DYES_GREEN)
+		    .requires(BuildInit.KITCHEN_CURTAIN_WHITE.get())
+		    .unlockedBy("has_kitchen_curtain", has(BuildInit.KITCHEN_CURTAIN_WHITE.get()))
+		    .save(cons, "dcs_climate:clothing/kitchen_curtain_green_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.KITCHEN_CURTAIN_WHITE.get(), 1)
+		    .requires(TagDC.ItemTag.SOAP_OIL)
+		    .requires(TagDC.ItemTag.HAC_CURTAIN)
+		    .unlockedBy("has_curtains", has(TagDC.ItemTag.HAC_CURTAIN))
+		    .save(cons, "dcs_climate:clothing/kitchen_curtain_bleaching_0");
+
 	}
 
 	private static void otherRecipes(Consumer<FinishedRecipe> cons) {

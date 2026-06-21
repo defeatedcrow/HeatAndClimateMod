@@ -15,7 +15,11 @@ public class OmeletItem extends ItemEntityFood {
 	}
 
 	private static Properties prop(int nut, float sat) {
-		return new Item.Properties().tab(FoodInit.FOOD).food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().build());
+		return new Item.Properties().tab(FoodInit.FOOD)
+		    .food(new FoodProperties.Builder().nutrition(nut)
+		        .saturationMod(sat)
+		        .alwaysEat()
+		        .build());
 	}
 
 	@Override
@@ -27,21 +31,28 @@ public class OmeletItem extends ItemEntityFood {
 	public EntityRenderData getRenderData(Item item) {
 		if (item == FoodInit.OMELET_VEGI.get())
 			return VEGI;
-		if (item == FoodInit.FRIED_EGG.get())
-			return FRIED_EGG;
+		if (item == FoodInit.SAUSAGE_SAUTE.get())
+			return SAUSAGE;
+		if (item == FoodInit.SAUSAGE_CURRY.get())
+			return SAUSAGE_CURRY;
 		return BASIC;
 	}
 
 	public static final EntityRenderData BASIC = new EntityRenderData("food/plate_omelet_basic", 1.0F, 0F);
 	public static final EntityRenderData VEGI = new EntityRenderData("food/plate_omelet_vegi", 1.0F, 0F);
-	public static final EntityRenderData FRIED_EGG = new EntityRenderData("food/plate_fried_egg", 1.0F, 0F);
+	public static final EntityRenderData SAUSAGE = new EntityRenderData("food/plate_sausage_saute", 1.0F, 0F);
+	public static final EntityRenderData SAUSAGE_CURRY = new EntityRenderData("food/plate_sausage_curry", 1.0F, 0F);
 
 	public static enum ModelType {
-		OMELET, EGG;
+		OMELET,
+		SAUSAGE,
+		CURRY;
 
 		public static ModelType getType(Item item) {
-			if (item == FoodInit.FRIED_EGG.get())
-				return EGG;
+			if (item == FoodInit.SAUSAGE_SAUTE.get())
+				return SAUSAGE;
+			if (item == FoodInit.SAUSAGE_CURRY.get())
+				return CURRY;
 			return OMELET;
 		}
 	}

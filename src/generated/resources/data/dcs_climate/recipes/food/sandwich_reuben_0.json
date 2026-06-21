@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:foods/bread"
+    },
+    {
+      "item": "dcs_climate:food/food_sauerkraut"
+    },
+    {
+      "tag": "forge:ingredients/cheese"
+    },
+    {
+      "tag": "forge:foods/cooked_beef"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:food/sandwich_reuben"
+  }
+}

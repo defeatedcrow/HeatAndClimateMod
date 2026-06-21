@@ -6,11 +6,13 @@ import com.mojang.math.Vector3f;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IEntityItem;
+import defeatedcrow.hac.food.client.TranslucentPartModel;
 import defeatedcrow.hac.food.client.model.BreadRoundModel;
 import defeatedcrow.hac.food.material.entity.BreadRoundItem;
 import defeatedcrow.hac.food.material.entity.FoodEntityBase;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -38,23 +40,38 @@ public class RenderFoodBase<T extends FoodEntityBase> extends EntityRenderer<T> 
 	@Override
 	public void render(T entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		if (entity != null) {
-			Item item = entity.getItem().getItem();
+			Item item = entity.getItem()
+			    .getItem();
 			if (item instanceof IEntityItem && ((IEntityItem) item).getRenderData(item) != null) {
 				EntityModel<T> model2 = getModel(entity, (IEntityItem) item);
-				EntityRenderData data = ((IEntityItem) item).getRenderData(item);
-				ResourceLocation tex = data.getTextureLocation();
-				float f1 = data.getModelScale();
-				float f2 = data.getAdjustY();
+				if (model2 != null) {
+					EntityRenderData data = ((IEntityItem) item).getRenderData(item);
+					ResourceLocation tex = data.getTextureLocation();
+					float f1 = data.getModelScale();
+					float f2 = data.getAdjustY();
 
-				poseStack.pushPose();
-				poseStack.translate(0F, f2, 0F);
-				poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - yaw));
-				poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-				poseStack.scale(f1, f1, f1);
-				model2.setupAnim(entity, 180.0F - yaw, partialTicks, packedLight, f1, f2);
-				VertexConsumer vertex = buffer.getBuffer(model2.renderType(tex));
-				model2.renderToBuffer(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
-				poseStack.popPose();
+					poseStack.pushPose();
+					poseStack.translate(0F, f2, 0F);
+					poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - yaw));
+					poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+					poseStack.scale(f1, f1, f1);
+					model2.setupAnim(entity, 180.0F - yaw, partialTicks, packedLight, f1, f2);
+					VertexConsumer vertex = buffer.getBuffer(model2.renderType(tex));
+					model2.renderToBuffer(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+					poseStack.popPose();
+
+					if (model2 instanceof TranslucentPartModel) {
+						poseStack.pushPose();
+						poseStack.translate(0F, f2, 0F);
+						poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - yaw));
+						poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+						poseStack.scale(f1, f1, f1);
+						model2.setupAnim(entity, 180.0F - yaw, partialTicks, packedLight, f1, f2);
+						VertexConsumer vertex2 = buffer.getBuffer(RenderType.entityTranslucent(tex));
+						((TranslucentPartModel) model2).renderTranslucent(poseStack, vertex2, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.75F);
+						poseStack.popPose();
+					}
+				}
 			}
 		}
 		super.render(entity, yaw, partialTicks, poseStack, buffer, packedLight);

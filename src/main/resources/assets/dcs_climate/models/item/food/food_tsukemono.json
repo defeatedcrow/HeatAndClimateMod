@@ -1,6 +1,6 @@
 {
   "textures": {
-    "layer0": "dcs_climate:item/material/food_tsukemono"
+    "layer0": "dcs_climate:item/food/food_tsukemono"
   },
   "parent": "minecraft:item/generated"
 }

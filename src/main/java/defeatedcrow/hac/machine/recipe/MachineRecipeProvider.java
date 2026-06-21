@@ -576,6 +576,25 @@ public class MachineRecipeProvider extends RecipeProvider {
 				.requires(TagDC.ItemTag.EXTRACT_GREEN)
 				.unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get()))
 				.save(cons, "dcs_climate:machine/tea_pot_green_0");
+		
+		ShapedRecipeBuilder.shaped(MachineInit.COFFEE_SIPHON.get(), 1)
+		.pattern("XXX")
+		.pattern("YWY")
+		.pattern("YZY")
+		.define('X', Tags.Items.GLASS)
+		.define('Y', TagDC.ItemTag.INGOT_STEEL)
+		.define('Z', ItemTags.CANDLES)
+		.define('W', TagDC.ItemTag.CLOTHS)
+		.unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
+		.save(cons, "dcs_climate:machine/coffee_siphon_0");
+		
+		ShapedRecipeBuilder.shaped(MachineInit.COFFEE_MACCHINETTA.get(), 1)
+		.pattern("YYY")
+		.pattern("YXY")
+		.define('X', TagDC.ItemTag.CLOTHS)
+		.define('Y', TagDC.ItemTag.INGOT_SUS)
+		.unlockedBy("has_sus", has(TagDC.ItemTag.INGOT_SUS))
+		.save(cons, "dcs_climate:machine/coffee_maccinetta_0");
 
 		ShapedRecipeBuilder.shaped(MachineInit.FERMENTATION_JAR_NORMAL.get(), 1)
 				.pattern(" X ")

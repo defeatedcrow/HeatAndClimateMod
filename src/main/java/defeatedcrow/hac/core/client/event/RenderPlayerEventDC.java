@@ -48,9 +48,10 @@ public class RenderPlayerEventDC {
 					pose.mulPose(Vector3f.YP.rotationDegrees(f));
 					pose.mulPose(Vector3f.XP.rotationDegrees(180.0F + f2));
 					pose.scale(1.5F, 1.5F, 1.5F);
-					ModelMagicWing<LivingEntity> model = EntityModelLoader.INSTANCE.MODEL_WING;
+					ModelMagicWing<LivingEntity> model = EntityModelLoader.MODEL_WING;
 					model.setupAnim(player, 0F, 0F, event.getPartialTick(), 0F, 0F);
-					VertexConsumer vertex = event.getMultiBufferSource().getBuffer(model.renderType(getWingTex()));
+					VertexConsumer vertex = event.getMultiBufferSource()
+					    .getBuffer(model.renderType(getWingTex()));
 					model.renderToBuffer(pose, vertex, event.getPackedLight(), OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 					pose.popPose();
 				}
@@ -67,9 +68,10 @@ public class RenderPlayerEventDC {
 					pose.mulPose(Vector3f.YP.rotationDegrees(f));
 					pose.mulPose(Vector3f.XP.rotationDegrees(180.0F + f2));
 					pose.scale(2F, 2F, 2F);
-					ModelMagicFin<LivingEntity> model = EntityModelLoader.INSTANCE.MODEL_FIN;
+					ModelMagicFin<LivingEntity> model = EntityModelLoader.MODEL_FIN;
 					model.setupAnim(player, 0F, 0F, event.getPartialTick(), 0F, 0F);
-					VertexConsumer vertex = event.getMultiBufferSource().getBuffer(model.renderType(FIN_LOCATION));
+					VertexConsumer vertex = event.getMultiBufferSource()
+					    .getBuffer(model.renderType(FIN_LOCATION));
 					model.renderToBuffer(pose, vertex, event.getPackedLight(), OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 					pose.popPose();
 				}
@@ -83,10 +85,10 @@ public class RenderPlayerEventDC {
 
 	private static ResourceLocation getWingTex() {
 		Calendar cal = Calendar.getInstance();
-		if (cal.get(cal.MONTH) == 3 && cal.get(cal.DATE) == 1) {
+		if (cal.get(Calendar.MONTH) == 3 && cal.get(Calendar.DATE) == 1) {
 			return WINGS_LOCATION_BLACK;
 		}
-		if (cal.get(cal.MONTH) == 9 && cal.get(cal.DATE) > 28) {
+		if (cal.get(Calendar.MONTH) == 9 && cal.get(Calendar.DATE) > 28) {
 			return WINGS_LOCATION_HALLOWEEN;
 		}
 		if (ClimateCore.isDebug) {

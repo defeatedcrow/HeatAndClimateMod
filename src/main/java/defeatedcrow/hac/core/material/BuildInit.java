@@ -23,6 +23,7 @@ import defeatedcrow.hac.core.material.block.building.ChandelierCandle;
 import defeatedcrow.hac.core.material.block.building.ChandelierLamp;
 import defeatedcrow.hac.core.material.block.building.ChandelierTile;
 import defeatedcrow.hac.core.material.block.building.ConnectedGlassBlock;
+import defeatedcrow.hac.core.material.block.building.DishPlate;
 import defeatedcrow.hac.core.material.block.building.DisplayDoubleShelfBlock;
 import defeatedcrow.hac.core.material.block.building.DisplayDoubleShelfTile;
 import defeatedcrow.hac.core.material.block.building.DisplayShelfBlock;
@@ -33,6 +34,7 @@ import defeatedcrow.hac.core.material.block.building.FenceMetal;
 import defeatedcrow.hac.core.material.block.building.FenceWoodDC;
 import defeatedcrow.hac.core.material.block.building.GrassSlab;
 import defeatedcrow.hac.core.material.block.building.GroundSlab;
+import defeatedcrow.hac.core.material.block.building.KitchenCurtainBlock;
 import defeatedcrow.hac.core.material.block.building.LanternLight;
 import defeatedcrow.hac.core.material.block.building.LanternLight.LampType;
 import defeatedcrow.hac.core.material.block.building.LockerBlock;
@@ -66,10 +68,14 @@ import defeatedcrow.hac.core.material.block.building.TrapdoorWoodDC;
 import defeatedcrow.hac.core.material.block.building.VillagerChestBlock;
 import defeatedcrow.hac.core.material.block.building.VillagerChestTile;
 import defeatedcrow.hac.core.material.block.building.WallStoneDC;
+import defeatedcrow.hac.core.material.entity.FlowerPotEntity;
+import defeatedcrow.hac.core.material.item.tool.FlowerPotItem;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -512,7 +518,7 @@ public class BuildInit {
 	public static final RegistryObject<Block> CHAIR_RED = regBlock("chair_red", () -> new ChairBlock("chair_red"), TagDC.ItemTag.HAC_CHAIR);
 	public static final RegistryObject<Block> CHAIR_GREEN = regBlock("chair_green", () -> new ChairBlock("chair_green"), TagDC.ItemTag.HAC_CHAIR);
 
-	public static final RegistryObject<Block> CHAIR_COUNTER_LEATHER = regBlock("chair_counter_leather", () -> new ChairCounterBlock("chair_counter_laether"), null);
+	public static final RegistryObject<Block> CHAIR_COUNTER_LEATHER = regBlock("chair_counter_leather", () -> new ChairCounterBlock("chair_counter_leather"), null);
 	public static final RegistryObject<Block> CHAIR_COUNTER_WHITE = regBlock("chair_counter_white", () -> new ChairCounterBlock("chair_counter_white"), TagDC.ItemTag.HAC_COUNTER_CHAIR);
 	public static final RegistryObject<Block> CHAIR_COUNTER_BLUE = regBlock("chair_counter_blue", () -> new ChairCounterBlock("chair_counter_blue"), TagDC.ItemTag.HAC_COUNTER_CHAIR);
 	public static final RegistryObject<Block> CHAIR_COUNTER_BLACK = regBlock("chair_counter_black", () -> new ChairCounterBlock("chair_counter_black"), TagDC.ItemTag.HAC_COUNTER_CHAIR);
@@ -538,6 +544,13 @@ public class BuildInit {
 	public static final RegistryObject<Block> BED_BLACK = regBlock("bed_black", () -> new NoSaveBedBlock("bed_black"), TagDC.ItemTag.HAC_BED);
 	public static final RegistryObject<Block> BED_RED = regBlock("bed_red", () -> new NoSaveBedBlock("bed_red"), TagDC.ItemTag.HAC_BED);
 	public static final RegistryObject<Block> BED_GREEN = regBlock("bed_green", () -> new NoSaveBedBlock("bed_green"), TagDC.ItemTag.HAC_BED);
+
+	public static final RegistryObject<Block> KITCHEN_CURTAIN_WHITE = regBlock("kitchen_curtain_white", () -> new KitchenCurtainBlock("kitchen_curtain_white", MagicColor.NONE), TagDC.ItemTag.HAC_CURTAIN);
+	public static final RegistryObject<Block> KITCHEN_CURTAIN_YELLOW = regBlock("kitchen_curtain_yellow", () -> new KitchenCurtainBlock("kitchen_curtain_yellow", MagicColor.WHITE), TagDC.ItemTag.HAC_CURTAIN);
+	public static final RegistryObject<Block> KITCHEN_CURTAIN_BLUE = regBlock("kitchen_curtain_blue", () -> new KitchenCurtainBlock("kitchen_curtain_blue", MagicColor.BLUE), TagDC.ItemTag.HAC_CURTAIN);
+	public static final RegistryObject<Block> KITCHEN_CURTAIN_BLACK = regBlock("kitchen_curtain_black", () -> new KitchenCurtainBlock("kitchen_curtain_black", MagicColor.BLACK), TagDC.ItemTag.HAC_CURTAIN);
+	public static final RegistryObject<Block> KITCHEN_CURTAIN_RED = regBlock("kitchen_curtain_red", () -> new KitchenCurtainBlock("kitchen_curtain_red", MagicColor.RED), TagDC.ItemTag.HAC_CURTAIN);
+	public static final RegistryObject<Block> KITCHEN_CURTAIN_GREEN = regBlock("kitchen_curtain_green", () -> new KitchenCurtainBlock("kitchen_curtain_green", MagicColor.GREEN), TagDC.ItemTag.HAC_CURTAIN);
 
 	public static final RegistryObject<Block> LUGGAGE_NORMAL = regBlock("luggage_normal", () -> new LuggageBlock("luggage_normal"), TagDC.ItemTag.HAC_LUGGAGE);
 	public static final RegistryObject<Block> LUGGAGE_WHITE = regBlock("luggage_white", () -> new LuggageBlock("luggage_white"), TagDC.ItemTag.HAC_LUGGAGE);
@@ -568,6 +581,12 @@ public class BuildInit {
 	public static final RegistryObject<Block> DISPLAY_SHELF_GLASS = regBlock("display_shelf_glass", () -> new DisplayDoubleShelfBlock("display_shelf_glass"), null);
 
 	public static final RegistryObject<Block> VILLAGER_CHEST = regBlock("villager_chest_block", () -> new VillagerChestBlock("villager_chest_block"), null);
+
+	public static final RegistryObject<Block> DISHPLATE_WHITE = regBlock("dishplate_white", () -> new DishPlate("dishplate_white"), null);
+	public static final RegistryObject<Block> DISHPLATE_SILVER = regBlock("dishplate_silver", () -> new DishPlate("dishplate_silver"), null);
+
+	public static final RegistryObject<Item> FLOWERPOT_WHITE = regItem("flower_pot_white", () -> new FlowerPotItem("flower_pot_white"));
+	public static final RegistryObject<Item> FLOWERPOT_CLAY = regItem("flower_pot_clay", () -> new FlowerPotItem("flower_pot_clay"));
 
 	// TileEntity
 	public static final RegistryObject<BlockEntityType<ChandelierTile>> CHANDELIER_TILE = CoreInit.BLOCK_ENTITIES.register("chandelier_crystal_tile",
@@ -605,6 +624,13 @@ public class BuildInit {
 
 	public static final RegistryObject<BlockEntityType<NoSaveBedTile>> NO_SAVE_BED_TILE = CoreInit.BLOCK_ENTITIES.register("no_save_bed_tile", () -> BlockEntityType.Builder.of(NoSaveBedTile::new, BED_LINEN.get())
 	    .build(null));
+
+	// Entity
+
+	public static final RegistryObject<EntityType<FlowerPotEntity>> FLOWER_POT = CoreInit.ENTITIES.register("flower_pot_entity", () -> EntityType.Builder.<FlowerPotEntity> of(FlowerPotEntity::new, MobCategory.MISC)
+	    .sized(0.25F, 0.25F)
+	    .updateInterval(5)
+	    .build("flower_pot_entity"));
 
 	// Menu
 	public static final RegistryObject<MenuType<DisplayShelfMenu>> DISPLAY_SHELF_MENU = CoreInit.register("dcs_display_shelf", (IContainerFactory<DisplayShelfMenu>) (id, playerInv, data) -> {

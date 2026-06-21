@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "cookingtime": 200,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "dcs_climate:food/food_salt_pork"
+  },
+  "result": "dcs_climate:food/food_smoked_bacon"
+}

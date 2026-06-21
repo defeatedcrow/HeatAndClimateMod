@@ -1,0 +1,36 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/sausage_saute",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/cooked_sausage"
+    },
+    {
+      "tag": "forge:foods/cooked_potato"
+    },
+    {
+      "item": "dcs_climate:food/food_sauerkraut"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

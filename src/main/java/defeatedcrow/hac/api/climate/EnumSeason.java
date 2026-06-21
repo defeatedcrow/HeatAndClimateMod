@@ -47,34 +47,21 @@ public enum EnumSeason {
 	}
 
 	public static EnumSeason getSeasonFromID(int i) {
-		switch (i) {
-		case 0:
-			return SPRING_EARLY;
-		case 1:
-			return SPRING_LATE;
-		case 2:
-			return SUMMER_EARLY;
-		case 3:
-			return SUMMER_LATE;
-		case 4:
-			return AUTUMN_EARLY;
-		case 5:
-			return AUTUMN_LATE;
-		case 6:
-			return WINTER_EARLY;
-		case 7:
-			return WINTER_LATE;
-		case 8:
-			return SCORCHER;
-		case 9:
-			return ABSOLUTE;
-		case 10:
-			return FLOWER;
-		case 11:
-			return HARVEST;
-		default:
-			return SPRING_EARLY;
-		}
+		return switch (i) {
+		case 0 -> SPRING_EARLY;
+		case 1 -> SPRING_LATE;
+		case 2 -> SUMMER_EARLY;
+		case 3 -> SUMMER_LATE;
+		case 4 -> AUTUMN_EARLY;
+		case 5 -> AUTUMN_LATE;
+		case 6 -> WINTER_EARLY;
+		case 7 -> WINTER_LATE;
+		case 8 -> SCORCHER;
+		case 9 -> ABSOLUTE;
+		case 10 -> FLOWER;
+		case 11 -> HARVEST;
+		default -> SPRING_EARLY;
+		};
 	}
 
 	// 通常季節のIDのみを返す (0~3)
@@ -85,9 +72,9 @@ public enum EnumSeason {
 		if (i == 5)
 			i = 3;
 		if (i == 6)
-			i = 0;
+			i = 4;
 		if (i == 7)
-			i = 1;
+			i = 5;
 		return i;
 	}
 

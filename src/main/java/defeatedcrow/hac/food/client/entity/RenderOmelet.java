@@ -1,8 +1,9 @@
 package defeatedcrow.hac.food.client.entity;
 
 import defeatedcrow.hac.api.material.IEntityItem;
-import defeatedcrow.hac.food.client.model.FriedEggModel;
 import defeatedcrow.hac.food.client.model.OmeletModel;
+import defeatedcrow.hac.food.client.model.SausageCurryModel;
+import defeatedcrow.hac.food.client.model.SausageModel;
 import defeatedcrow.hac.food.material.entity.FoodEntityBase;
 import defeatedcrow.hac.food.material.entity.OmeletItem;
 import net.minecraft.client.model.EntityModel;
@@ -12,13 +13,14 @@ import net.minecraft.world.item.Item;
 
 public class RenderOmelet<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected OmeletModel<FoodEntityBase> omeletModel;
-	protected FriedEggModel<FoodEntityBase> eggModel;
+	protected SausageModel<FoodEntityBase> sausageModel;
+	protected SausageCurryModel<FoodEntityBase> sausageCurryModel;
 
 	public RenderOmelet(Context ctx) {
 		super(ctx);
-		omeletModel = new OmeletModel<>(ctx.bakeLayer(OmeletItem.BASIC.getLayerLocation()));
-		eggModel = new FriedEggModel<>(ctx.bakeLayer(OmeletItem.FRIED_EGG.getLayerLocation()));
+		this.model = new OmeletModel<>(ctx.bakeLayer(OmeletItem.BASIC.getLayerLocation()));
+		this.sausageModel = new SausageModel<>(ctx.bakeLayer(OmeletItem.SAUSAGE.getLayerLocation()));
+		this.sausageCurryModel = new SausageCurryModel<>(ctx.bakeLayer(OmeletItem.SAUSAGE_CURRY.getLayerLocation()));
 	}
 
 	@Override
@@ -29,10 +31,12 @@ public class RenderOmelet<T extends FoodEntityBase> extends RenderFoodBase<FoodE
 	@Override
 	public EntityModel<FoodEntityBase> getModel(FoodEntityBase entity, IEntityItem item) {
 		OmeletItem.ModelType type = OmeletItem.ModelType.getType((Item) item);
-		if (type == OmeletItem.ModelType.EGG) {
-			return eggModel;
+		if (type == OmeletItem.ModelType.SAUSAGE) {
+			return sausageModel;
+		} else if (type == OmeletItem.ModelType.CURRY) {
+			return sausageCurryModel;
 		} else {
-			return omeletModel;
+			return model;
 		}
 	}
 

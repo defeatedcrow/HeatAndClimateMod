@@ -1,6 +1,7 @@
 {
   "values": [
     "dcs_climate:food/fried_egg",
+    "dcs_climate:food/fried_egg_bacon",
     "dcs_climate:food/omelet_basic",
     "dcs_climate:food/omelet_vegi",
     "dcs_climate:food/saute_green",
