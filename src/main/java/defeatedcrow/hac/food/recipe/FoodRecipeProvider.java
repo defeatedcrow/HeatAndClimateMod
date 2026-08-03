@@ -305,14 +305,6 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_bread_flat", has(FoodInit.BREAD_FLAT_RAW_ITEM.get()))
 		    .save(cons, "dcs_climate:food/pizza_mentai_0");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.CAKE_BUTTER.get(), 1)
-		    .requires(Ingredient.of(TagDC.ItemTag.DUST_BREAD_GRAINS))
-		    .requires(Ingredient.of(TagDC.ItemTag.SUGARS))
-		    .requires(Ingredient.of(Tags.Items.EGGS))
-		    .requires(Ingredient.of(TagDC.ItemTag.BUTTER))
-		    .unlockedBy("has_bread_grains", has(TagDC.ItemTag.DUST_BREAD_GRAINS))
-		    .save(cons, "dcs_climate:food/cake_butter_0");
-
 		ShapelessRecipeBuilder.shapeless(FoodInit.CAKE_BERRY.get(), 1)
 		    .requires(Ingredient.of(FoodInit.CAKE_BUTTER.get()))
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_BERRY))
@@ -1225,9 +1217,11 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_wheat", has(TagDC.ItemTag.DUST_WHEAT))
 		    .save(cons, "dcs_climate:food/food_batter_0");
 
-		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_BATTER.get(), 3)
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_CRAPE_BATTER.get(), 3)
 		    .requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
-		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .requires(Ingredient.of(TagDC.ItemTag.MILKS))
+		    .requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+		    .requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
 		    .requires(Ingredient.of(Tags.Items.EGGS))
 		    .unlockedBy("has_wheat", has(TagDC.ItemTag.DUST_WHEAT))
 		    .save(cons, "dcs_climate:food/food_batter_0");
@@ -1589,10 +1583,10 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .pattern(" X ")
 		    .pattern("XYX")
 		    .pattern(" X ")
-		    .define('X', Items.COBWEB)
+		    .define('X', TagDC.ItemTag.COBWEB)
 		    .define('Y', CoreInit.HAND_SPINDLE.get())
 		    .group("hand_spindle")
-		    .unlockedBy("has_cobweb", has(Items.COBWEB))
+		    .unlockedBy("has_cobweb", has(TagDC.ItemTag.COBWEB))
 		    .save(cons, "dcs_climate:core/spindle_string_wool_2");
 
 		ShapelessRecipeBuilder.shapeless(Items.STRING, 1)
@@ -1645,8 +1639,8 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .save(cons, "dcs_climate:food/clematis_vine");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.VINE.get(), 1)
-		    .requires(Ingredient.of(Items.VINE))
-		    .unlockedBy("has_vine", has(Items.VINE))
+		    .requires(Ingredient.of(TagDC.ItemTag.VINE_PLANT))
+		    .unlockedBy("has_vine", has(TagDC.ItemTag.VINE_PLANT))
 		    .save(cons, "dcs_climate:food/vanilla_vine");
 
 		ShapedRecipeBuilder.shaped(FoodInit.CLOTH_PLANT.get(), 1)
@@ -1905,7 +1899,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_PASTA.get(), 1)
 		    .requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
-		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
 		    .requires(Ingredient.of(Tags.Items.EGGS))
 		    .unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
 		    .save(cons, "dcs_climate:food/foodmaterial_pasta");

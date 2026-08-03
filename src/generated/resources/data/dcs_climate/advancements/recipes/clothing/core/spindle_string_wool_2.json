@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:cobweb"
-            ]
+            "tag": "forge:cobweb"
           }
         ]
       },

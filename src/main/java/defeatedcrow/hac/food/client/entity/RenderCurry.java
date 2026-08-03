@@ -17,8 +17,6 @@ import net.minecraft.world.item.Item;
 
 public class RenderCurry<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected LargeBowlModel<FoodEntityBase> model;
-
 	public RenderCurry(Context ctx) {
 		super(ctx);
 		this.model = new LargeBowlModel<>(ctx.bakeLayer(BOWL_METAL.getLayerLocation()));
@@ -32,10 +30,12 @@ public class RenderCurry<T extends FoodEntityBase> extends RenderFoodBase<FoodEn
 	@Override
 	public void render(FoodEntityBase entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		if (entity != null) {
-			Item item = entity.getItem().getItem();
+			Item item = entity.getItem()
+			    .getItem();
 			if (item instanceof IEntityItem && ((IEntityItem) item).getRenderData(item) != null) {
 				EntityRenderData data = ((IEntityItem) item).getRenderData(item);
-				ResourceLocation tex = entity.getItem().is(TagDC.ItemTag.HAC_CURRY) ? BOWL_METAL.getTextureLocation() : BOWL_WHITE.getTextureLocation();
+				ResourceLocation tex = entity.getItem()
+				    .is(TagDC.ItemTag.HAC_CURRY) ? BOWL_METAL.getTextureLocation() : BOWL_WHITE.getTextureLocation();
 				float f1 = data.getModelScale();
 				float f2 = data.getAdjustY();
 

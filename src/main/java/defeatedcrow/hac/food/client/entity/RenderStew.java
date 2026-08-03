@@ -8,8 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 
 public class RenderStew<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected BowlStewModel<FoodEntityBase> model;
-
 	public RenderStew(Context ctx) {
 		super(ctx);
 		this.model = new BowlStewModel<>(ctx.bakeLayer(PorridgeItem.PORRIDGE.getLayerLocation()));

@@ -55,7 +55,7 @@ public class DCHeadTank extends DCTank implements IFluidPipe, IFacingTile, ICapa
 	}
 
 	public boolean isAlmostFull() {
-		return (fluid != null) && (fluid.getAmount() + flowRate >= capacity);
+		return fluid != null && fluid.getAmount() + flowRate >= capacity;
 	}
 
 	@Override
@@ -100,24 +100,33 @@ public class DCHeadTank extends DCTank implements IFluidPipe, IFacingTile, ICapa
 	public void readFromNBT(CompoundTag nbt) {
 		FluidStack f = FluidStack.loadFluidStackFromNBT(nbt);
 		fluid = f;
+
 		for (int i = 0; i < 6; i++) {
 			if (nbt.contains(TagKeyDC.FACE_IO + i)) {
 				int id = nbt.getInt(TagKeyDC.FACE_IO + i);
 				faces.set(i, FaceIO.getIO(id));
 			}
 		}
+
+		int head = nbt.getInt(TagKeyDC.HEAD);
+		DCFluidUtil.setHead(fluid, head);
 	}
 
 	@Override
 	public CompoundTag writeToNBT(CompoundTag nbt) {
 		fluid.writeToNBT(nbt);
+
 		for (int i = 0; i < 6; i++) {
 			if (faces.size() <= i) {
 				faces.add(i, FaceIO.NONE);
 			}
-			int id = faces.get(i).getID();
+			int id = faces.get(i)
+			    .getID();
 			nbt.putInt(TagKeyDC.FACE_IO + i, id);
 		}
+
+		int head = DCFluidUtil.getHead(fluid);
+		nbt.putInt(TagKeyDC.HEAD, head);
 		return nbt;
 	}
 

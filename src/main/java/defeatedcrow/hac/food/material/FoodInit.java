@@ -1110,6 +1110,7 @@ public class FoodInit {
 
 	public static final RegistryObject<Item> FOOD_PASTRY = regItem("food_pastry", () -> new FoodMaterialItemDC(FOOD, "food_pastry", TagDC.ItemTag.PASTRY).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_BATTER = regItem("food_batter", () -> new FoodMaterialItemDC(FOOD, "food_batter", TagDC.ItemTag.BATTER).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_CRAPE_BATTER = regItem("food_crape_batter", () -> new FoodMaterialItemDC(FOOD, "food_crape_batter", TagDC.ItemTag.CRAPE_BATTER).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_CAKE_BATTER = regItem("food_cake_batter", () -> new FoodMaterialItemDC(FOOD, "food_cake_batter", TagDC.ItemTag.CAKE_BATTER).setDomain("food"));
 
 	public static final RegistryObject<Item> FOOD_JAM = regItem("food_fruit_jam", () -> new FoodMaterialItemDC(FOOD, "food_fruit_jam", TagDC.ItemTag.JAM).setDomain("food"));

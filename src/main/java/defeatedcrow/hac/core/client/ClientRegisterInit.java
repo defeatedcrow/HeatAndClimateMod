@@ -12,8 +12,10 @@ import defeatedcrow.hac.core.client.entity.model.BlockShelfIronModel;
 import defeatedcrow.hac.core.client.entity.model.BlockShelfLabModel;
 import defeatedcrow.hac.core.client.entity.model.CanoeModel;
 import defeatedcrow.hac.core.client.entity.model.ChairBindModel;
+import defeatedcrow.hac.core.client.entity.model.CushionSquareModel;
 import defeatedcrow.hac.core.client.entity.model.CutleryModel;
 import defeatedcrow.hac.core.client.entity.model.FlowerPotModel;
+import defeatedcrow.hac.core.client.entity.model.HammockModel;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicFin;
 import defeatedcrow.hac.core.client.entity.model.ModelMagicWing;
 import defeatedcrow.hac.core.client.entity.model.ModelThinArmor;
@@ -21,6 +23,7 @@ import defeatedcrow.hac.core.client.entity.model.VillagerChestModel;
 import defeatedcrow.hac.core.client.entity.renderer.RenderCanoe;
 import defeatedcrow.hac.core.client.entity.renderer.RenderChair;
 import defeatedcrow.hac.core.client.entity.renderer.RenderChopsticks;
+import defeatedcrow.hac.core.client.entity.renderer.RenderCushion;
 import defeatedcrow.hac.core.client.entity.renderer.RenderFlowerPot;
 import defeatedcrow.hac.core.client.entity.renderer.RenderFork;
 import defeatedcrow.hac.core.client.entity.renderer.RenderHarpoon;
@@ -28,8 +31,10 @@ import defeatedcrow.hac.core.client.entity.renderer.RenderSpoon;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererCabinet;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererChairRound;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererChandelier;
+import defeatedcrow.hac.core.client.entity.renderer.TileRendererDisplayCase;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererDisplayDoubleShelf;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererDisplayShelf;
+import defeatedcrow.hac.core.client.entity.renderer.TileRendererHammock;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLocker;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererLuggage;
 import defeatedcrow.hac.core.client.entity.renderer.TileRendererToolHook;
@@ -50,6 +55,7 @@ import defeatedcrow.hac.core.material.block.building.LockerTile;
 import defeatedcrow.hac.core.material.block.building.LuggageTile;
 import defeatedcrow.hac.core.material.block.building.VillagerChestTile;
 import defeatedcrow.hac.core.material.item.tool.CanoeItem;
+import defeatedcrow.hac.core.material.item.tool.CushionItem;
 import defeatedcrow.hac.core.material.item.tool.CutleryChopsticksItem;
 import defeatedcrow.hac.core.material.item.tool.CutleryForkItem;
 import defeatedcrow.hac.core.material.item.tool.CutlerySpoonItem;
@@ -281,6 +287,7 @@ import defeatedcrow.hac.machine.client.entity.BlockChamberIronModel;
 import defeatedcrow.hac.machine.client.entity.CableModel;
 import defeatedcrow.hac.machine.client.entity.CoffeeMacchinettaModel;
 import defeatedcrow.hac.machine.client.entity.CoffeeSiphonModel;
+import defeatedcrow.hac.machine.client.entity.ConveyorVerticalModel;
 import defeatedcrow.hac.machine.client.entity.CookingPotModel_A;
 import defeatedcrow.hac.machine.client.entity.CookingPotModel_B;
 import defeatedcrow.hac.machine.client.entity.CookingPotModel_C;
@@ -317,6 +324,7 @@ import defeatedcrow.hac.machine.client.entity.TileRendererCoffeeMacchinetta;
 import defeatedcrow.hac.machine.client.entity.TileRendererCoffeeSiphon;
 import defeatedcrow.hac.machine.client.entity.TileRendererConveyor;
 import defeatedcrow.hac.machine.client.entity.TileRendererConveyorSorter;
+import defeatedcrow.hac.machine.client.entity.TileRendererConveyorVertical;
 import defeatedcrow.hac.machine.client.entity.TileRendererCookingPot;
 import defeatedcrow.hac.machine.client.entity.TileRendererCopperCable;
 import defeatedcrow.hac.machine.client.entity.TileRendererFaucet;
@@ -430,6 +438,8 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(LockerTile.GREEN.getLayerLocation(), BlockLockerModel::createBodyLayer);
 		event.registerLayerDefinition(LockerTile.WHITE.getLayerLocation(), BlockLockerModel::createBodyLayer);
 
+		event.registerLayerDefinition(TileRendererHammock.TEX.getLayerLocation(), HammockModel::createBodyLayer);
+
 		event.registerLayerDefinition(DisplayDoubleShelfTile.IRON.getLayerLocation(), BlockShelfIronModel::createBodyLayer);
 		event.registerLayerDefinition(DisplayDoubleShelfTile.LAB.getLayerLocation(), BlockShelfLabModel::createBodyLayer);
 		event.registerLayerDefinition(DisplayDoubleShelfTile.GLASS.getLayerLocation(), BlockShelfLabModel::createBodyLayer);
@@ -459,6 +469,8 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(FluidSinkTile.LAB.getLayerLocation(), SinkLabModel::createBodyLayer);
 		event.registerLayerDefinition(FluidSinkTile.SUS.getLayerLocation(), SinkSUSModel::createBodyLayer);
 		event.registerLayerDefinition(FluidSinkTile.SUS_HALF.getLayerLocation(), SinkSUSHalfModel::createBodyLayer);
+
+		event.registerLayerDefinition(TileRendererConveyorVertical.DATA.getLayerLocation(), ConveyorVerticalModel::createBodyLayer);
 
 		event.registerLayerDefinition(PortableCanTile.NORMAL.getLayerLocation(), PortableCanModel::createBodyLayer);
 		event.registerLayerDefinition(PortableCanTile.WHITE.getLayerLocation(), PortableCanModel::createBodyLayer);
@@ -540,6 +552,13 @@ public class ClientRegisterInit {
 		event.registerLayerDefinition(CutleryChopsticksItem.CHOPSTICKS.getLayerLocation(), CutleryModel::createLayer);
 		event.registerLayerDefinition(CutlerySpoonItem.SPOON.getLayerLocation(), CutleryModel::createLayer);
 		event.registerLayerDefinition(CutleryForkItem.FORK.getLayerLocation(), CutleryModel::createLayer);
+
+		event.registerLayerDefinition(CushionItem.LINEN.getLayerLocation(), CushionSquareModel::createBodyLayer);
+		event.registerLayerDefinition(CushionItem.WHITE.getLayerLocation(), CushionSquareModel::createBodyLayer);
+		event.registerLayerDefinition(CushionItem.BLUE.getLayerLocation(), CushionSquareModel::createBodyLayer);
+		event.registerLayerDefinition(CushionItem.BLACK.getLayerLocation(), CushionSquareModel::createBodyLayer);
+		event.registerLayerDefinition(CushionItem.RED.getLayerLocation(), CushionSquareModel::createBodyLayer);
+		event.registerLayerDefinition(CushionItem.GREEN.getLayerLocation(), CushionSquareModel::createBodyLayer);
 
 		event.registerLayerDefinition(FlowerPotItem.WHITE.getLayerLocation(), FlowerPotModel::createBodyLayer);
 		event.registerLayerDefinition(FlowerPotItem.CLAY.getLayerLocation(), FlowerPotModel::createBodyLayer);
@@ -1100,12 +1119,14 @@ public class ClientRegisterInit {
 		// TESR
 		event.registerBlockEntityRenderer(BuildInit.CHANDELIER_TILE.get(), TileRendererChandelier::new);
 		event.registerBlockEntityRenderer(BuildInit.CHAIR_ROUND_TILE.get(), TileRendererChairRound::new);
+		event.registerBlockEntityRenderer(BuildInit.NO_SAVE_HAMMOCK_TILE.get(), TileRendererHammock::new);
 		event.registerBlockEntityRenderer(BuildInit.LUGGAGE_TILE.get(), TileRendererLuggage::new);
 		event.registerBlockEntityRenderer(BuildInit.CABINET_TILE.get(), TileRendererCabinet::new);
 		event.registerBlockEntityRenderer(BuildInit.LOCKER_TILE.get(), TileRendererLocker::new);
 		event.registerBlockEntityRenderer(BuildInit.TOOLHOOK_TILE.get(), TileRendererToolHook::new);
 		event.registerBlockEntityRenderer(BuildInit.DISPLAY_SHELF_TILE.get(), TileRendererDisplayShelf::new);
 		event.registerBlockEntityRenderer(BuildInit.DISPLAY_DOUBLE_SHELF_TILE.get(), TileRendererDisplayDoubleShelf::new);
+		event.registerBlockEntityRenderer(BuildInit.DISPLAY_CASE_TILE.get(), TileRendererDisplayCase::new);
 		event.registerBlockEntityRenderer(BuildInit.VILLAGER_CHEST_TILE.get(), TileRendererVillagerChest::new);
 		event.registerBlockEntityRenderer(MachineInit.CHAMBER_BRICK_TILE.get(), TileRendererChamberFuel::new);
 		event.registerBlockEntityRenderer(MachineInit.CHAMBER_IRON_TILE.get(), TileRendererChamberIron::new);
@@ -1130,6 +1151,7 @@ public class ClientRegisterInit {
 		event.registerBlockEntityRenderer(MachineInit.MONITOR_TEMP_TILE.get(), TileRendererMeterTemp::new);
 		event.registerBlockEntityRenderer(MachineInit.MONITOR_ENERGY_TILE.get(), TileRendererMeterEnergy::new);
 		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_TILE.get(), TileRendererConveyor::new);
+		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_VERTICAL_TILE.get(), TileRendererConveyorVertical::new);
 		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_SMELTING_TILE.get(), TileRendererConveyor::new);
 		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_DROPPER_TILE.get(), TileRendererConveyor::new);
 		event.registerBlockEntityRenderer(MachineInit.CONVEYOR_FILLER_TILE.get(), TileRendererConveyor::new);
@@ -1148,6 +1170,7 @@ public class ClientRegisterInit {
 		event.registerEntityRenderer(CoreInit.CHAIR_ENTITY.get(), RenderChair::new);
 		event.registerEntityRenderer(CoreInit.CANOE.get(), RenderCanoe::new);
 		event.registerEntityRenderer(BuildInit.FLOWER_POT.get(), RenderFlowerPot::new);
+		event.registerEntityRenderer(BuildInit.CUSHION.get(), RenderCushion::new);
 
 		event.registerEntityRenderer(FoodInit.BREAD_ROUND.get(), RenderFoodBase::new);
 		event.registerEntityRenderer(FoodInit.BREAD_SQUARE.get(), RenderBreadSquare::new);
@@ -1285,9 +1308,10 @@ public class ClientRegisterInit {
 		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getFlowingFluid()
 		    .get(), RenderType.translucent());
 
-		ItemProperties.register(CoreInit.HARPOON_FLINT.get(), new ResourceLocation("throwing"), (stack, level, living, i) -> (living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F));
+		ItemProperties.register(CoreInit.HARPOON_FLINT.get(), ResourceLocation.fromNamespaceAndPath("minecraft", "throwing"),
+		    (stack, level, living, i) -> (living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F));
 
-		ItemProperties.register(CoreInit.FISHING_ROD_STEEL.get(), new ResourceLocation("cast"), (stack, level, living, i) -> {
+		ItemProperties.register(CoreInit.FISHING_ROD_STEEL.get(), ResourceLocation.fromNamespaceAndPath("minecraft", "cast"), (stack, level, living, i) -> {
 			if (living == null) {
 				return 0.0F;
 			} else {
@@ -1301,7 +1325,7 @@ public class ClientRegisterInit {
 			}
 		});
 
-		ItemProperties.register(CoreInit.ALTIMETER.get(), new ResourceLocation("angle"), (stack, level, liv, i) -> {
+		ItemProperties.register(CoreInit.ALTIMETER.get(), ResourceLocation.fromNamespaceAndPath("minecraft", "angle"), (stack, level, liv, i) -> {
 			Entity entity = liv == null ? stack.getEntityRepresentation() : liv;
 			return entity == null ? 0.0F : entity.blockPosition()
 			    .getY() >= 192 ? 1.0F : Mth.clamp(

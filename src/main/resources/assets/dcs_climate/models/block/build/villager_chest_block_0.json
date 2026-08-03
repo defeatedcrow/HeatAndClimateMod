@@ -1,6 +1,6 @@
 {
   "textures": {
-    "all": "dcs_climate:block/build/villager_chest_block_item"
+    "all": "dcs_climate:block/build/villager_chest_item"
   },
   "parent": "dcs_climate:block/dcs_dummy"
 }

@@ -1,0 +1,15 @@
+{
+  "values": [
+    "minecraft:vine",
+    "minecraft:twisting_vines",
+    "minecraft:weeping_vines",
+    {
+      "id": "biomesoplenty:willow_vine",
+      "required": false
+    },
+    {
+      "id": "atmospheric:passion_vine",
+      "required": false
+    }
+  ]
+}

@@ -50,29 +50,28 @@ public class DisplayShelfBlock extends ContainerTileBlock {
 	public DisplayShelfBlock(String s) {
 		super(getProp());
 		name = s;
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(DCState.LIT_LEVEL, Integer.valueOf(0))
-				.setValue(WATERLOGGED, Boolean.valueOf(false)));
+		this.registerDefaultState(this.stateDefinition.any()
+		    .setValue(DCState.FACING, Direction.NORTH)
+		    .setValue(DCState.LIT_LEVEL, 0)
+		    .setValue(WATERLOGGED, false));
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext cont) {
 		Direction dir = DCState.getFace(state, DCState.FACING);
-		switch (dir) {
-		case NORTH:
-			return N_AABB;
-		case SOUTH:
-			return S_AABB;
-		case EAST:
-			return E_AABB;
-		case WEST:
-			return W_AABB;
-		default:
-			return N_AABB;
-		}
+		return switch (dir) {
+		case NORTH -> N_AABB;
+		case SOUTH -> S_AABB;
+		case EAST -> E_AABB;
+		case WEST -> W_AABB;
+		default -> N_AABB;
+		};
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(0.1F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD)
+		    .strength(0.1F, 540.0F)
+		    .noOcclusion();
 	}
 
 	@Override
@@ -140,7 +139,8 @@ public class DisplayShelfBlock extends ContainerTileBlock {
 	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (state.getBlock() instanceof EntityBlockDC cont && builder != null) {
-			LootContext context = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+			LootContext context = builder.withParameter(LootContextParams.BLOCK_STATE, state)
+			    .create(LootContextParamSets.BLOCK);
 			BlockEntity tile = null;
 			if (context.hasParam(LootContextParams.BLOCK_ENTITY)) {
 				tile = context.getParam(LootContextParams.BLOCK_ENTITY);

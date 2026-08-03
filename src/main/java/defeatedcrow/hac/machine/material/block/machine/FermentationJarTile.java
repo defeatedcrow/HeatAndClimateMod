@@ -31,6 +31,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
@@ -58,12 +59,10 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 	public final ContainerData dataAccess = new ContainerData() {
 		@Override
 		public int get(int id) {
-			switch (id) {
-			case 0:
-				return FermentationJarTile.this.currentProgress;
-			default:
-				return 0;
-			}
+			return switch (id) {
+			case 0 -> FermentationJarTile.this.currentProgress;
+			default -> 0;
+			};
 		}
 
 		@Override
@@ -78,7 +77,7 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 
 		@Override
 		public int getCount() {
-			return 1;
+			return 2;
 		}
 	};
 
@@ -126,7 +125,7 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 		return recipe != null;
 	}
 
-	protected int[] consume = new int[0];
+	protected int[] consume = {};
 
 	private ItemStack getSecondaryOrContainer() {
 		if (recipe != null && consume != null) {
@@ -134,21 +133,29 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 			// container優先
 			if (consume.length > 0) {
 				for (int i = 0; i < consume.length && i < inputs.size(); i++) {
-					if (!inputs.get(i).isEmpty()) {
-						ItemStack check = inputs.get(i).copy();
+					if (!inputs.get(i)
+					    .isEmpty()) {
+						ItemStack check = inputs.get(i)
+						    .copy();
 						check.setCount(1);
-						if (!check.getCraftingRemainingItem().isEmpty()) {
-							return check.getCraftingRemainingItem().copy();
-						} else if (FluidUtil.getFluidContained(check).isPresent()) {
+						if (!check.getCraftingRemainingItem()
+						    .isEmpty()) {
+							return check.getCraftingRemainingItem()
+							    .copy();
+						} else if (FluidUtil.getFluidContained(check)
+						    .isPresent()) {
 							ItemStack ret = FluidUtil.getFluidHandler(check)
-									.map(handler -> {
-										FluidStack fluid = handler.getFluidInTank(0);
-										if (!fluid.isEmpty()) {
-											handler.drain(fluid, FluidAction.EXECUTE);
-											return handler.getContainer().copy();
-										}
-										return handler.getContainer().copy();
-									}).orElse(ItemStack.EMPTY);
+							    .map(handler -> {
+								    FluidStack fluid = handler.getFluidInTank(0);
+								    if (!fluid.isEmpty()) {
+									    handler.drain(fluid, FluidAction.EXECUTE);
+									    return handler.getContainer()
+									        .copy();
+								    }
+								    return handler.getContainer()
+								        .copy();
+							    })
+							    .orElse(ItemStack.EMPTY);
 							if (!DCUtil.isEmpty(ret)) {
 								return ret;
 							}
@@ -157,7 +164,8 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 				}
 			}
 			if (recipe.getSecondaryRate() > 0 && level.random.nextInt(100) < recipe.getSecondaryRate()) {
-				return recipe.getSecondaryOutput().copy();
+				return recipe.getSecondaryOutput()
+				    .copy();
 			}
 		}
 		return ItemStack.EMPTY;
@@ -170,10 +178,10 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 			NonNullList<ItemStack> inputs = this.inventory.getSizedList(0, maxInSlot());
 			Optional<IDeviceRecipe> check = DCRecipes.getFermentationRecipe(currentClimate, inputs, inputTank.getFluid());
 
-			if (check.isPresent() && check.get().getPriority() == recipe.getPriority()) {
-				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxInSlot() + 2) > 0 && outputTank.fill(recipe.getOutputFluid(), FluidAction.SIMULATE) >= recipe
-						.getOutputFluid()
-						.getAmount();
+			if (check.isPresent() && check.get()
+			    .getPriority() == recipe.getPriority()) {
+				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxInSlot() + 2) > 0 && outputTank.fill(recipe.getOutputFluid(), FluidAction.SIMULATE) >= recipe.getOutputFluid()
+				    .getAmount();
 				if (recipe.getSecondaryRate() > 0 && inventory.canInsertResult(recipe.getSecondaryOutput(), maxInSlot() + 1, maxInSlot() + 2) == 0) {
 					result = false;
 				}
@@ -214,7 +222,7 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 				flag = true;
 			}
 			if (flag) {
-				this.setChanged(level, pos, state);
+				BlockEntity.setChanged(level, pos, state);
 			}
 			return flag;
 		}
@@ -228,9 +236,12 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 				inventory.removeItem(i, consume[i]);
 			}
 		}
-		if (!recipe.getInputFluids().isEmpty()) {
-			TagKey<Fluid> tag = recipe.getInputFluids().get(0);
-			if (!inputTank.isEmpty() && inputTank.getFluidType().is(tag)) {
+		if (!recipe.getInputFluids()
+		    .isEmpty()) {
+			TagKey<Fluid> tag = recipe.getInputFluids()
+			    .get(0);
+			if (!inputTank.isEmpty() && inputTank.getFluidType()
+			    .is(tag)) {
 				inputTank.drain(1000, FluidAction.EXECUTE);
 			}
 		}
@@ -272,96 +283,104 @@ public class FermentationJarTile extends ProcessTileBaseDC implements IFluidTank
 
 			boolean flag = false;
 			if (!DCUtil.isEmpty(this.inventory.getItem(intankS1)) && !this.inventory.isMaxStack(intankS2)) {
-				ItemStack copy = this.inventory.getItem(intankS1).copy();
+				ItemStack copy = this.inventory.getItem(intankS1)
+				    .copy();
 				copy.setCount(1);
 				flag = FluidUtil.getFluidHandler(copy)
-						.map(handler -> {
-							FluidStack fluid = handler.getFluidInTank(0);
-							if (fluid.isEmpty() || inputTank.isFull()) {
-								int space = Math.min(inputTank.getFluidAmount(), handler.getTankCapacity(0));
-								int d = handler.fill(inputTank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
-								if (d > 0 && inventory.canInsertResult(handler.getContainer(), intankS2, intankS2) != 0) {
-									// drain
-									inputTank.drain(d, FluidAction.EXECUTE);
-									ItemStack ret = handler.getContainer();
-									if (!ret.isEmpty()) {
-										ret.setCount(1);
-										inventory.incrStackInSlot(intankS2, ret);
-									}
-									inventory.removeItem(intankS1, 1);
-									return true;
-								}
-							} else if (handler.isFluidValid(TANK_CAP, fluid)) {
-								FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
-								int f = inputTank.fill(drain, FluidAction.SIMULATE);
-								if (f > 0 && inventory.canInsertResult(handler.getContainer(), intankS2, intankS2) != 0) {
-									// fill
-									drain.setAmount(f);
-									inputTank.fill(drain, FluidAction.EXECUTE);
-									handler.drain(drain, FluidAction.EXECUTE);
-									ItemStack ret = handler.getContainer().copy();
-									if (!ret.isEmpty()) {
-										ret.setCount(1);
-										inventory.incrStackInSlot(intankS2, ret);
-									}
-									inventory.removeItem(intankS1, 1);
-									return true;
-								}
-							}
-							return false;
-						}).orElse(false);
+				    .map(handler -> {
+					    FluidStack fluid = handler.getFluidInTank(0);
+					    if (fluid.isEmpty() || inputTank.isFull()) {
+						    int space = Math.min(inputTank.getFluidAmount(), handler.getTankCapacity(0));
+						    int d = handler.fill(inputTank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
+						    if (d > 0 && inventory.canInsertResult(handler.getContainer(), intankS2, intankS2) != 0) {
+							    // drain
+							    inputTank.drain(d, FluidAction.EXECUTE);
+							    ItemStack ret = handler.getContainer();
+							    if (!ret.isEmpty()) {
+								    ret.setCount(1);
+								    inventory.incrStackInSlot(intankS2, ret);
+							    }
+							    inventory.removeItem(intankS1, 1);
+							    return true;
+						    }
+					    } else if (handler.isFluidValid(TANK_CAP, fluid)) {
+						    FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
+						    int f = inputTank.fill(drain, FluidAction.SIMULATE);
+						    if (f > 0 && inventory.canInsertResult(handler.getContainer(), intankS2, intankS2) != 0) {
+							    // fill
+							    drain.setAmount(f);
+							    inputTank.fill(drain, FluidAction.EXECUTE);
+							    handler.drain(drain, FluidAction.EXECUTE);
+							    ItemStack ret = handler.getContainer()
+							        .copy();
+							    if (!ret.isEmpty()) {
+								    ret.setCount(1);
+								    inventory.incrStackInSlot(intankS2, ret);
+							    }
+							    inventory.removeItem(intankS1, 1);
+							    return true;
+						    }
+					    }
+					    return false;
+				    })
+				    .orElse(false);
 			}
 
 			if (!DCUtil.isEmpty(this.inventory.getItem(outtankS1)) && !this.inventory.isMaxStack(11)) {
-				ItemStack copy = this.inventory.getItem(outtankS1).copy();
+				ItemStack copy = this.inventory.getItem(outtankS1)
+				    .copy();
 				copy.setCount(1);
 				flag = FluidUtil.getFluidHandler(copy)
-						.map(handler -> {
-							FluidStack fluid = handler.getFluidInTank(0);
-							if (fluid.isEmpty() || outputTank.isFull()) {
-								int space = Math.min(outputTank.getFluidAmount(), handler.getTankCapacity(0));
-								int d = handler.fill(outputTank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
-								if (d > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
-									// drain
-									outputTank.drain(d, FluidAction.EXECUTE);
-									ItemStack ret = handler.getContainer();
-									if (!ret.isEmpty()) {
-										ret.setCount(1);
-										inventory.incrStackInSlot(outtankS2, ret);
-									}
-									inventory.removeItem(outtankS1, 1);
-									return true;
-								}
-							} else if (handler.isFluidValid(TANK_CAP, fluid)) {
-								FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
-								int f = outputTank.fill(drain, FluidAction.SIMULATE);
-								if (f > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
-									// fill
-									drain.setAmount(f);
-									outputTank.fill(drain, FluidAction.EXECUTE);
-									handler.drain(drain, FluidAction.EXECUTE);
-									ItemStack ret = handler.getContainer().copy();
-									if (!ret.isEmpty()) {
-										ret.setCount(1);
-										inventory.incrStackInSlot(outtankS2, ret);
-									}
-									inventory.removeItem(outtankS1, 1);
-									return true;
-								}
-							}
-							return false;
-						}).orElse(false);
+				    .map(handler -> {
+					    FluidStack fluid = handler.getFluidInTank(0);
+					    if (fluid.isEmpty() || outputTank.isFull()) {
+						    int space = Math.min(outputTank.getFluidAmount(), handler.getTankCapacity(0));
+						    int d = handler.fill(outputTank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
+						    if (d > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
+							    // drain
+							    outputTank.drain(d, FluidAction.EXECUTE);
+							    ItemStack ret = handler.getContainer();
+							    if (!ret.isEmpty()) {
+								    ret.setCount(1);
+								    inventory.incrStackInSlot(outtankS2, ret);
+							    }
+							    inventory.removeItem(outtankS1, 1);
+							    return true;
+						    }
+					    } else if (handler.isFluidValid(TANK_CAP, fluid)) {
+						    FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
+						    int f = outputTank.fill(drain, FluidAction.SIMULATE);
+						    if (f > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
+							    // fill
+							    drain.setAmount(f);
+							    outputTank.fill(drain, FluidAction.EXECUTE);
+							    handler.drain(drain, FluidAction.EXECUTE);
+							    ItemStack ret = handler.getContainer()
+							        .copy();
+							    if (!ret.isEmpty()) {
+								    ret.setCount(1);
+								    inventory.incrStackInSlot(outtankS2, ret);
+							    }
+							    inventory.removeItem(outtankS1, 1);
+							    return true;
+						    }
+					    }
+					    return false;
+				    })
+				    .orElse(false);
 			}
 
-			int hash1 = inputTank.getFluid().hashCode() + inputTank.getFluidAmount();
-			int hash2 = outputTank.getFluid().hashCode() + outputTank.getFluidAmount();
+			int hash1 = inputTank.getFluid()
+			    .hashCode() + inputTank.getFluidAmount();
+			int hash2 = outputTank.getFluid()
+			    .hashCode() + outputTank.getFluidAmount();
 			if (lastHash1 != hash1 + hash2) {
 				lastHash1 = hash1 + hash2;
 				flag = true;
 			}
 
 			if (flag && level instanceof ServerLevel) {
-				this.setChanged(level, pos, state);
+				BlockEntity.setChanged(level, pos, state);
 				NonNullList<FluidStack> list = NonNullList.withSize(3, FluidStack.EMPTY);
 				list.set(0, inputTank.getFluid());
 				list.set(1, outputTank.getFluid());

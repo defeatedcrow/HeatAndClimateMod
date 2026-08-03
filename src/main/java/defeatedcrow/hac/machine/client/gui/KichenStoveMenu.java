@@ -71,10 +71,8 @@ public class KichenStoveMenu extends AbstractContainerMenu {
 				if (!this.moveItemStackTo(check, 0, 1, false)) {
 					return ItemStack.EMPTY;
 				}
-			} else {
-				if (!this.moveItemStackTo(check, 2, this.slots.size(), true)) {
-					return ItemStack.EMPTY;
-				}
+			} else if (!this.moveItemStackTo(check, 2, this.slots.size(), true)) {
+				return ItemStack.EMPTY;
 			}
 
 			if (check.isEmpty()) {
@@ -116,11 +114,14 @@ public class KichenStoveMenu extends AbstractContainerMenu {
 	}
 
 	public int getTempID() {
-		return container.getHeatTier().getID();
+		return container.getHeatTier()
+		    .getID();
 	}
 
 	public int getAirID() {
-		return container.clientClimate.getAirflow().getID();
+		return container.getClientClimate()
+		    .getAirflow()
+		    .getID();
 	}
 
 	public FluidStack getFluid() {
@@ -128,7 +129,10 @@ public class KichenStoveMenu extends AbstractContainerMenu {
 	}
 
 	public Component getFluidName() {
-		return container.tank.getFluid().isEmpty() ? Component.literal("EMPTY") : container.tank.getFluid().getDisplayName();
+		return container.tank.getFluid()
+		    .isEmpty() ? Component.literal("EMPTY")
+		        : container.tank.getFluid()
+		            .getDisplayName();
 	}
 
 	public Component getFluidAmount() {

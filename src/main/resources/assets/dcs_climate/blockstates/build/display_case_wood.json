@@ -1,0 +1,100 @@
+{
+    "multipart": [
+        {
+        	"when": { "facing": "north" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_base" }
+        },
+        {
+        	"when": { "facing": "south" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_base", "y": 180 }
+        },
+        {
+        	"when": { "facing": "west" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_base", "y": 270  }
+        },
+        {
+        	"when": { "facing": "east" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_base", "y": 90  }
+        },
+        {
+        	"when": { "facing": "north", "down": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_bottom" }
+        },
+        {
+        	"when": { "facing": "south", "down": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_bottom", "y": 180 }
+        },
+        {
+        	"when": { "facing": "west", "down": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_bottom", "y": 270  }
+        },
+        {
+        	"when": { "facing": "east", "down": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_bottom", "y": 90  }
+        },
+        {
+        	"when": { "north": "false", "up": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_nu" }
+        },
+        {
+        	"when": { "north": "false", "west": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_nw" }
+        },
+        {
+        	"when": { "north": "false", "east": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_ne" }
+        },
+        {
+        	"when": { "south": "false", "up": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_su" }
+        },
+        {
+        	"when": { "south": "false", "west": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_sw" }
+        },
+        {
+        	"when": { "south": "false", "east": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_se" }
+        },
+        {
+        	"when": { "west": "false", "up": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_wu" }
+        },
+        {
+        	"when": { "east": "false", "up": "false" },
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_eu" }
+        },
+        {
+        	"when": {"OR": [ {"north": "false", "down": "false" }, {"north": "false", "east": "false"}, {"east": "false", "down": "false"} ]},
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_ned" }
+        },
+        {
+        	"when": {"OR": [ {"north": "false", "up": "false" }, {"north": "false", "east": "false"}, {"east": "false", "up": "false"} ]},
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_neu" }
+        },
+        {
+        	"when": {"OR": [ {"south": "false", "down": "false" }, {"south": "false", "east": "false"}, {"east": "false", "down": "false"} ]},
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_sed" }
+        },
+        {
+        	"when": {"OR": [ {"south": "false", "up": "false" }, {"south": "false", "east": "false"}, {"east": "false", "up": "false"} ]},
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_seu" }
+        },
+        {
+        	"when": {"OR": [ {"north": "false", "down": "false" }, {"north": "false", "west": "false"}, {"west": "false", "down": "false"} ]},
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_nwd" }
+        },
+        {
+        	"when": {"OR": [ {"north": "false", "up": "false" }, {"north": "false", "west": "false"}, {"west": "false", "up": "false"} ]},
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_nwu" }
+        },
+        {
+        	"when": {"OR": [ {"south": "false", "down": "false" }, {"south": "false", "west": "false"}, {"west": "false", "down": "false"} ]},
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_swd" }
+        },
+        {
+        	"when": {"OR": [ {"south": "false", "up": "false" }, {"south": "false", "west": "false"}, {"west": "false", "up": "false"} ]},
+        	"apply": { "model": "dcs_climate:block/build/showcase/display_case_wood_swu" }
+        }
+    ]
+}

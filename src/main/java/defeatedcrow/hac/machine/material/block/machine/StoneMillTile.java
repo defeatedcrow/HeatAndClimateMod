@@ -123,20 +123,28 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 			// container優先
 			if (consume.length > 0) {
 				for (int i = 0; i < consume.length && i < inputs.size(); i++) {
-					if (!inputs.get(i).isEmpty()) {
-						ItemStack check = inputs.get(i).copy();
+					if (!inputs.get(i)
+					    .isEmpty()) {
+						ItemStack check = inputs.get(i)
+						    .copy();
 						check.setCount(1);
-						if (!check.getCraftingRemainingItem().isEmpty()) {
-							return check.getCraftingRemainingItem().copy();
-						} else if (FluidUtil.getFluidContained(check).isPresent()) {
-							ItemStack ret = FluidUtil.getFluidHandler(check).map(handler -> {
-								FluidStack fluid = handler.getFluidInTank(0);
-								if (!fluid.isEmpty()) {
-									handler.drain(fluid, FluidAction.EXECUTE);
-									return handler.getContainer().copy();
-								}
-								return ItemStack.EMPTY;
-							}).orElse(ItemStack.EMPTY);
+						if (!check.getCraftingRemainingItem()
+						    .isEmpty()) {
+							return check.getCraftingRemainingItem()
+							    .copy();
+						} else if (FluidUtil.getFluidContained(check)
+						    .isPresent()) {
+							ItemStack ret = FluidUtil.getFluidHandler(check)
+							    .map(handler -> {
+								    FluidStack fluid = handler.getFluidInTank(0);
+								    if (!fluid.isEmpty()) {
+									    handler.drain(fluid, FluidAction.EXECUTE);
+									    return handler.getContainer()
+									        .copy();
+								    }
+								    return ItemStack.EMPTY;
+							    })
+							    .orElse(ItemStack.EMPTY);
 							if (!DCUtil.isEmpty(ret)) {
 								return ret;
 							}
@@ -146,7 +154,9 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 			}
 
 			if (recipe.getSecondaryRate() > 0) {
-				return recipe.getSecondaryOutput().copy();
+				if (recipe.getSecondaryRate() > level.getRandom()
+				    .nextInt(100))
+					return recipe.getSecondaryOutput();
 			}
 		}
 		return ItemStack.EMPTY;
@@ -164,7 +174,7 @@ public class StoneMillTile extends EnergyProcessTile implements IRenderBlockData
 			Optional<IDeviceRecipe> check = DCRecipes.getMillRecipe(inputs);
 
 			if (check.isPresent()) {
-				ItemStack ret = recipe.getOutput().copy();
+				ItemStack ret = recipe.getOutput();
 				boolean result = inventory.canInsertResult(recipe.getOutput(), maxInSlot() + 1, maxOutSlot()) > 0;
 				if (recipe.getSecondaryRate() > 0 && inventory.canInsertResult(recipe.getSecondaryOutput(), maxInSlot() + 1, maxOutSlot()) == 0) {
 					result = false;

@@ -80,10 +80,8 @@ public class FermentationJarMenu extends AbstractContainerMenu {
 				if (!this.moveItemStackTo(check, 0, 2, false)) {
 					return ItemStack.EMPTY;
 				}
-			} else {
-				if (!this.moveItemStackTo(check, 9, this.slots.size(), true)) {
-					return ItemStack.EMPTY;
-				}
+			} else if (!this.moveItemStackTo(check, 9, this.slots.size(), true)) {
+				return ItemStack.EMPTY;
 			}
 
 			if (check.isEmpty()) {
@@ -118,7 +116,10 @@ public class FermentationJarMenu extends AbstractContainerMenu {
 	}
 
 	public Component getInputFluidName() {
-		return container.inputTank.getFluid().isEmpty() ? Component.literal("EMPTY") : container.inputTank.getFluid().getDisplayName();
+		return container.inputTank.getFluid()
+		    .isEmpty() ? Component.literal("EMPTY")
+		        : container.inputTank.getFluid()
+		            .getDisplayName();
 	}
 
 	public Component getInputFluidAmount() {
@@ -141,7 +142,10 @@ public class FermentationJarMenu extends AbstractContainerMenu {
 	}
 
 	public Component getOutputFluidName() {
-		return container.outputTank.getFluid().isEmpty() ? Component.literal("EMPTY") : container.outputTank.getFluid().getDisplayName();
+		return container.outputTank.getFluid()
+		    .isEmpty() ? Component.literal("EMPTY")
+		        : container.outputTank.getFluid()
+		            .getDisplayName();
 	}
 
 	public Component getOutputFluidAmount() {
@@ -170,15 +174,21 @@ public class FermentationJarMenu extends AbstractContainerMenu {
 	}
 
 	public int getTempID() {
-		return container.clientClimate.getHeat().getID();
+		return container.getClientClimate()
+		    .getHeat()
+		    .getID();
 	}
 
 	public int getHumID() {
-		return container.clientClimate.getHumidity().getID();
+		return container.getClientClimate()
+		    .getHumidity()
+		    .getID();
 	}
 
 	public int getAirID() {
-		return container.clientClimate.getAirflow().getID();
+		return container.getClientClimate()
+		    .getAirflow()
+		    .getID();
 	}
 
 }

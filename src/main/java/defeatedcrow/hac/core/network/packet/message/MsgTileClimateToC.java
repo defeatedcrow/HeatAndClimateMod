@@ -57,12 +57,14 @@ public class MsgTileClimateToC implements IPacketDC {
 
 	@Override
 	public void handle(NetworkEvent.Context ctx) {
-		if (FMLEnvironment.dist.isClient() && ClimateCore.proxy.getClientLevel().isPresent()) {
+		if (FMLEnvironment.dist.isClient() && ClimateCore.proxy.getClientLevel()
+		    .isPresent()) {
 			BlockPos pos = new BlockPos(x, y, z);
-			Level level = ClimateCore.proxy.getClientLevel().get();
+			Level level = ClimateCore.proxy.getClientLevel()
+			    .get();
 			BlockEntity entity = level.getBlockEntity(pos);
 			if (entity instanceof IClimateReceiver tile) {
-				tile.currentClimate(climate);
+				tile.setClientClimate(climate);
 			}
 		}
 	}
@@ -70,9 +72,11 @@ public class MsgTileClimateToC implements IPacketDC {
 	public static void sendToClient(ServerLevel level, BlockPos pos, int i) {
 		if (level != null) {
 			MsgTileClimateToC packet = new MsgTileClimateToC(pos, i);
-			level.players().forEach(player -> {
-				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
-			});
+			level.players()
+			    .forEach(player -> {
+			        DCPacket.INSTANCE.getChannel()
+			            .sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+			    });
 		}
 	}
 

@@ -1120,7 +1120,7 @@ public class CookingRecipes {
 		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_SALT.get(), 2), new ItemStack(CoreInit.DUST_TRONA.get()), 100, FluidStack.EMPTY, boil, ImmutableList.of(TagDC.FluidTag.BRINE.location()
 		    .toString()), ImmutableList.of());
 
-		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_TRONA.get(), 2), new ItemStack(CoreInit.DUST_LITHIUM.get()), 50, FluidStack.EMPTY, boil, ImmutableList.of(TagDC.FluidTag.BRINE.location()
+		DeviceRecipeList.addCookingRecipe(1, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_TRONA.get(), 2), new ItemStack(CoreInit.DUST_LITHIUM.get()), 100, FluidStack.EMPTY, boil, ImmutableList.of(TagDC.FluidTag.BRINE.location()
 		    .toString()), ImmutableList.of(Ingredient.of(TagDC.ItemTag.ORES_NATRON)));
 
 		DeviceRecipeList.addCookingRecipe(2, RecipeTypeDC.COOKING, new ItemStack(CoreInit.DUST_SALT.get(), 1), ItemStack.EMPTY, 0, FluidStack.EMPTY, boil, tags, ImmutableList.of(Ingredient.of(TagDC.ItemTag.WATER)));

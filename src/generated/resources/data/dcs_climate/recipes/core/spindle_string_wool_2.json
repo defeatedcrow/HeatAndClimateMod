@@ -3,7 +3,7 @@
   "group": "hand_spindle",
   "key": {
     "X": {
-      "item": "minecraft:cobweb"
+      "tag": "forge:cobweb"
     },
     "Y": {
       "item": "dcs_climate:main/hand_spindle"

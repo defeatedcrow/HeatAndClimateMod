@@ -1,0 +1,9 @@
+{
+  "values": [
+    "dcs_climate:build/cushion_white",
+    "dcs_climate:build/cushion_blue",
+    "dcs_climate:build/cushion_black",
+    "dcs_climate:build/cushion_red",
+    "dcs_climate:build/cushion_green"
+  ]
+}

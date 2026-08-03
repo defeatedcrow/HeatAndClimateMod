@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "tag": "dcs_climate:impellers/middle"
+    },
+    "X": {
+      "tag": "forge:ingots/nickel_silver"
+    },
+    "Y": {
+      "tag": "dcs_climate:pipe_fluid"
+    },
+    "Z": {
+      "tag": "dcs_climate:motors/middle"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XZX",
+    "XWX"
+  ],
+  "result": {
+    "item": "dcs_climate:machine/volute_pump"
+  }
+}

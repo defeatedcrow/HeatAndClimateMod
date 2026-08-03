@@ -35,24 +35,31 @@ public class HUDHandlerCropData implements IBlockComponentProvider {
 				float stage = stage6 / 4.0F;
 				tooltip.addLine(new PairComponent(Component.translatable("dcs.tip.waila.crop_stage"), Component.translatable(String.format("%.0f %%", stage * 100F))));
 			} else if (stage6 == 5) {
-				tooltip.addLine(Component.translatable("dcs.tip.waila.crop_failure").withStyle(ChatFormatting.RED));
+				tooltip.addLine(Component.translatable("dcs.tip.waila.crop_failure")
+				    .withStyle(ChatFormatting.RED));
 			}
 			if (!crop.isSuitableForGrowing(level.getWorld(), level.getPosition(), level.getBlockState())) {
-				tooltip.addLine(Component.translatable("dcs.tip.waila.crop_bad_environment").withStyle(ChatFormatting.RED));
+				tooltip.addLine(Component.translatable("dcs.tip.waila.crop_bad_environment")
+				    .withStyle(ChatFormatting.RED));
 			}
 			if (crop.canHarvest(level.getBlockState())) {
-				tooltip.addLine(Component.translatable("dcs.tip.waila.crop_harvest").withStyle(ChatFormatting.AQUA));
+				tooltip.addLine(Component.translatable("dcs.tip.waila.crop_harvest")
+				    .withStyle(ChatFormatting.AQUA));
 			}
 			if (DCState.getBool(level.getBlockState(), DCState.WILD)) {
-				tooltip.addLine(Component.literal("WILD CROP").withStyle(ChatFormatting.GOLD));
+				tooltip.addLine(Component.literal("WILD CROP")
+				    .withStyle(ChatFormatting.GOLD));
+			} else if (level.getBlockState()
+			    .is(TagDC.BlockTag.CROP_GREEN_MANURES) && stage6 > 1) {
+				BlockState below = level.getWorld()
+				    .getBlockState(level.getPosition()
+				        .below());
+				if ((below.is(BlockTags.DIRT) || below.is(TagDC.BlockTag.FARMLAND)) && FertileBlock.getFertile(level.getWorld(), level.getPosition()
+				    .below(), below) < 3)
+					tooltip.addLine(Component.translatable("dcs.tip.waila.crop_green_matures")
+					    .withStyle(ChatFormatting.AQUA));
 			} else {
-				if (level.getBlockState().is(TagDC.BlockTag.CROP_GREEN_MANURES) && stage6 > 1) {
-					BlockState below = level.getWorld().getBlockState(level.getPosition().below());
-					if ((below.is(BlockTags.DIRT) || below.is(TagDC.BlockTag.FARMLAND)) && FertileBlock.getFertile(level.getWorld(), level.getPosition().below(), below) < 3)
-						tooltip.addLine(Component.translatable("dcs.tip.waila.crop_green_matures").withStyle(ChatFormatting.AQUA));
-				} else {
-					tooltip.addLine(Component.translatable("dcs.tip.waila.crop_hoe"));
-				}
+				tooltip.addLine(Component.translatable("dcs.tip.waila.crop_hoe"));
 			}
 
 			return;
@@ -64,7 +71,6 @@ public class HUDHandlerCropData implements IBlockComponentProvider {
 				float stage = f / 4.0F;
 				tooltip.addLine(new PairComponent(Component.translatable("dcs.tip.waila.fertile_block"), Component.translatable(String.format("%.0f %%", stage * 100F))));
 			}
-			return;
 		}
 	}
 
@@ -73,15 +79,16 @@ public class HUDHandlerCropData implements IBlockComponentProvider {
 		try {
 			registrar.addFeatureConfig(CROP, true);
 			registrar.addFeatureConfig(FERTILE, true);
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 
 		registrar.addComponent(INSTANCE, TAIL, ClimateCropBaseBlock.class);
 		registrar.addComponent(INSTANCE, TAIL, FertileBlock.class);
 
 	}
 
-	public static final ResourceLocation CROP = new ResourceLocation("dcs_climate", "show_cropdata");
-	public static final ResourceLocation FARMLAND = new ResourceLocation("dcs_climate", "show_farmland_moisture");
-	public static final ResourceLocation FERTILE = new ResourceLocation("dcs_climate", "show_farmland_fertile");
+	public static final ResourceLocation CROP = ResourceLocation.fromNamespaceAndPath("dcs_climate", "show_cropdata");
+	public static final ResourceLocation FARMLAND = ResourceLocation.fromNamespaceAndPath("dcs_climate", "show_farmland_moisture");
+	public static final ResourceLocation FERTILE = ResourceLocation.fromNamespaceAndPath("dcs_climate", "show_farmland_fertile");
 
 }

@@ -19,11 +19,11 @@ import net.minecraft.world.item.Item;
 
 public class RenderUdon<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected SobaModel<FoodEntityBase> model;
+	protected SobaModel<FoodEntityBase> noodleModel;
 
 	public RenderUdon(Context ctx) {
 		super(ctx);
-		this.model = new SobaModel<>(ctx.bakeLayer(UdonItem.SIMPLE.getLayerLocation()));
+		this.noodleModel = new SobaModel<>(ctx.bakeLayer(UdonItem.SIMPLE.getLayerLocation()));
 	}
 
 	@Override
@@ -47,11 +47,11 @@ public class RenderUdon<T extends FoodEntityBase> extends RenderFoodBase<FoodEnt
 				poseStack.mulPose(Vector3f.YP.rotationDegrees(360.0F - yaw));
 				poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
 				poseStack.scale(f1, f1, f1);
-				model.setupAnim(entity, 360.0F - yaw, partialTicks, packedLight, f1, f2);
-				VertexConsumer vertex = buffer.getBuffer(model.renderType(tex));
-				this.model.renderToBuffer(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+				noodleModel.setupAnim(entity, 360.0F - yaw, partialTicks, packedLight, f1, f2);
+				VertexConsumer vertex = buffer.getBuffer(noodleModel.renderType(tex));
+				this.noodleModel.renderToBuffer(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 				if (data == SobaItem.TENPURA || data == UdonItem.TENPURA) {
-					this.model.renderTempura(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+					this.noodleModel.renderTempura(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 				}
 				poseStack.popPose();
 
@@ -60,9 +60,9 @@ public class RenderUdon<T extends FoodEntityBase> extends RenderFoodBase<FoodEnt
 				poseStack.mulPose(Vector3f.YP.rotationDegrees(360.0F - yaw));
 				poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
 				poseStack.scale(f1, f1, f1);
-				model.setupAnim(entity, 360.0F - yaw, partialTicks, packedLight, f1, f2);
+				noodleModel.setupAnim(entity, 360.0F - yaw, partialTicks, packedLight, f1, f2);
 				VertexConsumer vertex2 = buffer.getBuffer(RenderType.entityTranslucent(tex));
-				this.model.renderTranslucent(poseStack, vertex2, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+				this.noodleModel.renderTranslucent(poseStack, vertex2, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 				poseStack.popPose();
 			}
 		}

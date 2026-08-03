@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north,flag=false,powered=true": {"model": "dcs_climate:block/machine/volute_pump_off"},
+    "facing=south,flag=false,powered=true": {"model": "dcs_climate:block/machine/volute_pump_off","y": 180},
+    "facing=east,flag=false,powered=true": {"model": "dcs_climate:block/machine/volute_pump_off", "y": 90},
+    "facing=west,flag=false,powered=true": {"model": "dcs_climate:block/machine/volute_pump_off", "y": 270},
+    "facing=north,flag=true,powered=true": {"model": "dcs_climate:block/machine/volute_pump_off"},
+    "facing=south,flag=true,powered=true": {"model": "dcs_climate:block/machine/volute_pump_off","y": 180},
+    "facing=east,flag=true,powered=true": {"model": "dcs_climate:block/machine/volute_pump_off", "y": 90},
+    "facing=west,flag=true,powered=true": {"model": "dcs_climate:block/machine/volute_pump_off", "y": 270},
+    "facing=north,flag=false,powered=false": {"model": "dcs_climate:block/machine/volute_pump_stop"},
+    "facing=south,flag=false,powered=false": {"model": "dcs_climate:block/machine/volute_pump_stop","y": 180},
+    "facing=east,flag=false,powered=false": {"model": "dcs_climate:block/machine/volute_pump_stop", "y": 90},
+    "facing=west,flag=false,powered=false": {"model": "dcs_climate:block/machine/volute_pump_stop", "y": 270},
+    "facing=north,flag=true,powered=false": {"model": "dcs_climate:block/machine/volute_pump_on"},
+    "facing=south,flag=true,powered=false": {"model": "dcs_climate:block/machine/volute_pump_on","y": 180},
+    "facing=east,flag=true,powered=false": {"model": "dcs_climate:block/machine/volute_pump_on", "y": 90},
+    "facing=west,flag=true,powered=false": {"model": "dcs_climate:block/machine/volute_pump_on", "y": 270}
+  }
+}

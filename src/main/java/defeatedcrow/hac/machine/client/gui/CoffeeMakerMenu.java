@@ -142,7 +142,8 @@ public class CoffeeMakerMenu extends AbstractContainerMenu {
 	}
 
 	public int getTempID() {
-		return container.clientClimate.getHeat()
+		return container.getClientClimate()
+		    .getHeat()
 		    .getID();
 	}
 

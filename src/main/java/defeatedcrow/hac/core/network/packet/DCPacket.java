@@ -28,11 +28,11 @@ public class DCPacket {
 	public static final String PROTOCOL_VERSION = "4.0.0";
 
 	private static SimpleChannel createChannel() {
-		return NetworkRegistry.ChannelBuilder.named(new ResourceLocation(ClimateCore.MOD_ID, "core"))
-				.networkProtocolVersion(() -> PROTOCOL_VERSION)
-				.serverAcceptedVersions(PROTOCOL_VERSION::equals)
-				.clientAcceptedVersions(PROTOCOL_VERSION::equals)
-				.simpleChannel();
+		return NetworkRegistry.ChannelBuilder.named(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "core"))
+		    .networkProtocolVersion(() -> PROTOCOL_VERSION)
+		    .serverAcceptedVersions(PROTOCOL_VERSION::equals)
+		    .clientAcceptedVersions(PROTOCOL_VERSION::equals)
+		    .simpleChannel();
 	}
 
 	private static int id = 0;

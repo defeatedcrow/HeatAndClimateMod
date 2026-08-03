@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class NoSaveBedTile extends BlockEntity {
@@ -14,6 +15,10 @@ public class NoSaveBedTile extends BlockEntity {
 
 	public NoSaveBedTile(BlockPos pos, BlockState state) {
 		super(BuildInit.NO_SAVE_BED_TILE.get(), pos, state);
+	}
+
+	public NoSaveBedTile(BlockEntityType<?> tile, BlockPos pos, BlockState state) {
+		super(tile, pos, state);
 	}
 
 	public void setSleepPos(BlockPos pos) {

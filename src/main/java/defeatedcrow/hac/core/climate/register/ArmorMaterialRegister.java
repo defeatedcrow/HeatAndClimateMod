@@ -57,14 +57,38 @@ public class ArmorMaterialRegister implements IArmorMaterialRegister {
 
 	@Override
 	public float getHeatPreventAmount(ArmorMaterial material) {
-		Optional<ParamMaterial> ret = regList.stream().filter((p) -> p.materialName.equals(material.getName())).findAny();
-		return ret.map(p -> p.heatResistance).orElse(0.25F);
+		try {
+			Optional<ParamMaterial> ret = regList.stream()
+			    .filter(p -> p.materialName.equals(material.getName()))
+			    .findAny();
+			return ret.map(p -> p.heatResistance)
+			    .orElse(0.25F);
+		} catch (Exception | Error e) {
+			Optional<ParamMaterial> ret = regList.stream()
+			    .filter(p -> p.materialName.equals(material.toString()
+			        .toLowerCase()))
+			    .findAny();
+			return ret.map(p -> p.heatResistance)
+			    .orElse(0.25F);
+		}
 	}
 
 	@Override
 	public float getColdPreventAmount(ArmorMaterial material) {
-		Optional<ParamMaterial> ret = regList.stream().filter((p) -> p.materialName.equals(material.getName())).findAny();
-		return ret.map(p -> p.coldResistance).orElse(0.25F);
+		try {
+			Optional<ParamMaterial> ret = regList.stream()
+			    .filter(p -> p.materialName.equals(material.getName()))
+			    .findAny();
+			return ret.map(p -> p.coldResistance)
+			    .orElse(0.25F);
+		} catch (Exception | Error e) {
+			Optional<ParamMaterial> ret = regList.stream()
+			    .filter(p -> p.materialName.equals(material.toString()
+			        .toLowerCase()))
+			    .findAny();
+			return ret.map(p -> p.coldResistance)
+			    .orElse(0.25F);
+		}
 	}
 
 	public static void loadFiles() {
@@ -72,7 +96,8 @@ public class ArmorMaterialRegister implements IArmorMaterialRegister {
 
 			File dir = new File(ClimateCore.configDir, "/material_resistance/");
 			if (dir.getParentFile() != null) {
-				dir.getParentFile().mkdirs();
+				dir.getParentFile()
+				    .mkdirs();
 			}
 
 			try {
@@ -100,7 +125,7 @@ public class ArmorMaterialRegister implements IArmorMaterialRegister {
 						}
 					}
 
-			} catch (IOException e) {
+			} catch (Exception | Error e) {
 				e.printStackTrace();
 			}
 		}
@@ -112,7 +137,8 @@ public class ArmorMaterialRegister implements IArmorMaterialRegister {
 
 			File dir = new File(ClimateCore.configDir, "/material_resistance/sample.json");
 			if (dir.getParentFile() != null) {
-				dir.getParentFile().mkdirs();
+				dir.getParentFile()
+				    .mkdirs();
 			}
 
 			try {
@@ -127,7 +153,9 @@ public class ArmorMaterialRegister implements IArmorMaterialRegister {
 					OutputStreamWriter osw = new OutputStreamWriter(fos);
 					JsonWriter jsw = new JsonWriter(osw);
 					jsw.setIndent(" ");
-					Gson gson = new GsonBuilder().serializeNulls().disableHtmlEscaping().create();
+					Gson gson = new GsonBuilder().serializeNulls()
+					    .disableHtmlEscaping()
+					    .create();
 					gson.toJson(ret, ParamMaterial.class, jsw);
 
 					osw.close();

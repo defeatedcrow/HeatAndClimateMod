@@ -30,7 +30,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 
 public class WaterPumpTile extends EnergyMachineBaseDC {
@@ -69,7 +68,8 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 								if (dir == Direction.DOWN)
 									continue;
 								BlockPos p3 = lastPos.relative(dir);
-								FluidState check = getLevel().getBlockState(p3).getFluidState();
+								FluidState check = getLevel().getBlockState(p3)
+								    .getFluidState();
 								if (isPumpableWater(check)) {
 									if (check.getAmount() > last.getAmount()) {
 										last = check;
@@ -109,64 +109,80 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 
 			BlockEntity target = getLevel().getBlockEntity(getBlockPos().above());
 			// 方向偽装
-			if (getEnergyHandler().getEnergyStored() >= 8 && target != null && target.getCapability(ForgeCapabilities.FLUID_HANDLER).isPresent()) {
+			if (getEnergyHandler().getEnergyStored() >= 8 && target != null && target.getCapability(ForgeCapabilities.FLUID_HANDLER)
+			    .isPresent()) {
 				if (!tank.isEmpty()) {
-					boolean b = target.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP).filter(handler -> !(handler instanceof IFluidPipe)).map((handler) -> {
-						FluidStack drain = tank.getFluid().copy();
-						if (drain.getAmount() > 1000) {
-							drain.setAmount(1000);
-						}
-						int ret = handler.fill(drain, FluidAction.SIMULATE);
-						if (ret > 0) {
-							drain.setAmount(ret);
-							int consume = handler.fill(drain, FluidAction.EXECUTE);
-							tank.drain(consume, FluidAction.EXECUTE);
-							getEnergyHandler().consumeEnergy(8);
-							return true;
-						}
-						return false;
-					}).orElse(false);
+					boolean b = target.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP)
+					    .filter(handler -> !(handler instanceof IFluidPipe))
+					    .map(handler -> {
+						    FluidStack drain = tank.getFluid()
+						        .copy();
+						    if (drain.getAmount() > 1000) {
+							    drain.setAmount(1000);
+						    }
+						    DCFluidUtil.addHead(drain, 6);
+						    int ret = handler.fill(drain, FluidAction.SIMULATE);
+						    if (ret > 0) {
+							    drain.setAmount(ret);
+							    int consume = handler.fill(drain, FluidAction.EXECUTE);
+							    tank.drain(consume, FluidAction.EXECUTE);
+							    getEnergyHandler().consumeEnergy(8);
+							    return true;
+						    }
+						    return false;
+					    })
+					    .orElse(false);
 
 					if (!b) {
-						target.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.DOWN).filter(handler -> handler instanceof IFluidPipe).ifPresent(handler -> {
-							IFluidPipe pipe = (DCHeadTank) handler;
-							FluidStack drain = tank.getFluid().copy();
-							if (drain.getAmount() > 1000) {
-								drain.setAmount(1000);
-							}
-							int ret = pipe.fill(drain, FluidAction.SIMULATE, Direction.DOWN);
-							if (ret > 0) {
-								// head
-								int add = 0;
-								// water depth
-								for (int i = 0; i < 10; i++) {
-									FluidState above = getLevel().getFluidState(getBlockPos().above(i));
-									if (above.is(Fluids.WATER)) {
-										add++;
-									} else {
-										break;
-									}
-								}
-								float f1 = 1F - (add * 0.05F);
-								float h = add * f1;
-								// viscosity
-								float f2 = (17000F - drain.getFluid().getFluidType().getViscosity(drain)) / 16000F;
-								if (f2 < 0.0625F)
-									f2 = 0.0625F;
-								if (f2 > 4F)
-									f2 = 4F;
-								h *= f2;
-								int cost = Mth.ceil(10F / f2);
-								int head = Mth.ceil(h) + 6;
-								if (head > 0) {
-									drain.setAmount(ret);
-									drain = DCFluidUtil.addHead(drain, head);
-									int consume = handler.fill(drain, FluidAction.EXECUTE);
-									tank.drain(consume, FluidAction.EXECUTE);
-									getEnergyHandler().consumeEnergy(cost);
-								}
-							}
-						});
+						target.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.DOWN)
+						    .filter(IFluidPipe.class::isInstance)
+						    .ifPresent(handler -> {
+							    IFluidPipe pipe = (DCHeadTank) handler;
+							    FluidStack drain = tank.getFluid()
+							        .copy();
+							    if (drain.getAmount() > 1000) {
+								    drain.setAmount(1000);
+							    }
+							    drain = DCFluidUtil.addHead(drain, 1);
+							    int ret = pipe.fill(drain, FluidAction.SIMULATE, Direction.DOWN);
+							    if (ret > 0) {
+								    // head
+								    int add = 0;
+								    // water depth
+								    for (int i = 0; i < 10; i++) {
+									    FluidState above = getLevel().getFluidState(getBlockPos().above(i));
+									    if (above.is(Fluids.WATER)) {
+										    add++;
+									    } else {
+										    break;
+									    }
+								    }
+								    float f1 = 1F - add * 0.05F;
+								    float h = add * f1;
+								    // viscosity
+								    float f2 = (17000F - drain.getFluid()
+								        .getFluidType()
+								        .getViscosity(drain)) / 16000F;
+								    if (f2 < 0.0625F)
+									    f2 = 0.0625F;
+								    if (f2 > 4F)
+									    f2 = 4F;
+								    h *= f2;
+								    int cost = Mth.ceil(10F / f2);
+								    int head = Mth.ceil(h) + 6;
+								    int vol = Mth.ceil(ret * f2);
+								    if (vol > 1000) {
+									    vol = 1000;
+								    }
+								    if (head > 0) {
+									    drain.setAmount(vol);
+									    drain = DCFluidUtil.addHead(drain, head);
+									    int consume = handler.fill(drain, FluidAction.EXECUTE);
+									    tank.drain(consume, FluidAction.EXECUTE);
+									    getEnergyHandler().consumeEnergy(cost);
+								    }
+							    }
+						    });
 					}
 				}
 
@@ -176,7 +192,8 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 	}
 
 	private static boolean isPumpableWater(FluidState fluid) {
-		return !fluid.isEmpty() && !fluid.getFluidType().isLighterThanAir();
+		return !fluid.isEmpty() && !fluid.getFluidType()
+		    .isLighterThanAir();
 	}
 
 	public SidedEnergyTankDC battery = new SidedEnergyReceiver(this, getMaxEnergy(), 128);
@@ -190,7 +207,7 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 		return battery;
 	}
 
-	public DCHeadTank tank = new DCHeadTank(4000, 1000).setDefaultFace(NonNullList.of(FaceIO.OUTPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT));
+	public PumpTank tank = new PumpTank(4000, 1000);
 
 	@Override
 	public void loadTag(CompoundTag tag) {
@@ -209,7 +226,7 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 		tag.put(TagKeyDC.getTankKey(1), tankTag);
 	}
 
-	LazyOptional<? extends IFluidHandler> fluidhandler = LazyOptional.of(() -> tank);
+	LazyOptional<? extends IFluidPipe> fluidhandler = LazyOptional.of(() -> tank);
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
@@ -245,6 +262,31 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 	@Override
 	protected Component getDefaultName() {
 		return this.hasOwner() ? Component.translatable("dcs.container.machine.with_owner", this.ownerName) : Component.translatable("dcs.container.machine");
+	}
+
+	public class PumpTank extends DCHeadTank {
+		protected final NonNullList<FaceIO> pumpFaces = NonNullList.of(FaceIO.OUTPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT);
+
+		protected PumpTank(int cap, int flow) {
+			super(cap, flow);
+		}
+
+		@Override
+		public FaceIO getFace(Direction dir) {
+			int i = dir.get3DDataValue();
+			if (i >= 0 && i < 6) {
+				if (pumpFaces.size() <= i) {
+					pumpFaces.add(i, FaceIO.NONE);
+				}
+				return pumpFaces.get(i);
+			}
+			return FaceIO.NONE;
+		}
+
+		@Override
+		public NonNullList<FaceIO> getFaces() {
+			return pumpFaces;
+		}
 	}
 
 }

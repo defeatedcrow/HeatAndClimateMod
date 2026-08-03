@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/build/bed_hammock_item"
+  },
+  "parent": "minecraft:item/generated"
+}

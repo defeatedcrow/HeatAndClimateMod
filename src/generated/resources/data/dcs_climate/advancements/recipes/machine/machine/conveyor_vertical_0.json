@@ -1,11 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bread_grains": {
+    "has_conveyor": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:ingredients/bread_grains"
+            "items": [
+              "dcs_climate:machine/conveyor"
+            ]
           }
         ]
       },
@@ -13,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:food/cake_butter_0"
+        "recipe": "dcs_climate:machine/conveyor_vertical_0"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_bread_grains",
+      "has_conveyor",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:food/cake_butter_0"
+      "dcs_climate:machine/conveyor_vertical_0"
     ]
   }
 }

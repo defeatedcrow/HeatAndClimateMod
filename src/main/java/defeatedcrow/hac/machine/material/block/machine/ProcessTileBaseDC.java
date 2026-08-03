@@ -84,7 +84,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 	}
 
 	private int count = 19;
-	private int lastClimate = 0;
+	protected int lastClimate = 0;
 
 	public void updateClimate(Level level, BlockPos pos) {
 		if (count < 0) {
@@ -230,8 +230,13 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 	public IClimate clientClimate = ClimateAPI.helper.getDefaultClimate();
 
 	@Override
-	public void currentClimate(int clm) {
+	public void setClientClimate(int clm) {
 		clientClimate = ClimateAPI.helper.getClimateFromInt(clm);
+	}
+
+	@Override
+	public IClimate getClientClimate() {
+		return clientClimate;
 	}
 
 	IClimate currentClimate = ClimateAPI.helper.getDefaultClimate();
@@ -263,7 +268,7 @@ public abstract class ProcessTileBaseDC extends OwnableContainerBaseTileDC imple
 		receivingHum = receiving.getHumidity();
 		receivingAir = receiving.getAirflow();
 		lastClimate = tag.getInt(TagKeyDC.CLIMATE_INT);
-
+		setClientClimate(lastClimate);
 	}
 
 	@Override

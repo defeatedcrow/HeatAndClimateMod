@@ -1,0 +1,20 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"bar": "dcs_climate:block/build/window_frame_none",
+		"particle": "dcs_climate:block/build/wood_build"
+	},
+	"elements": [
+		{
+			"name": "E_NU",
+			"from": [1, 15, 0],
+			"to": [15, 16, 1],
+			"faces": {
+				"north": {"uv": [1, 0, 15, 1], "texture": "#bar"},
+				"south": {"uv": [1, 0, 15, 1], "texture": "#bar"},
+				"up": {"uv": [1, 0, 15, 1], "texture": "#bar"},
+				"down": {"uv": [1, 15, 15, 16], "texture": "#bar"}
+			}
+		}
+	]
+}

@@ -72,58 +72,56 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 
 	@Override
 	public void tick() {
-		if (this.getItem()
-		    .isEmpty() || this.isRemoved()) {
-			this.discard();
+		if (getItem().isEmpty() || isRemoved()) {
+			discard();
 		}
 		super.tick();
-		this.xo = this.getX();
-		this.yo = this.getY();
-		this.zo = this.getZ();
-		Vec3 vec3 = this.getDeltaMovement();
-		float f = this.getEyeHeight() - 0.2F;
+		xo = getX();
+		yo = getY();
+		zo = getZ();
+		Vec3 vec3 = getDeltaMovement();
+		float f = getEyeHeight() - 0.2F;
 
 		// 液体には浮かぶ
-		net.minecraftforge.fluids.FluidType fluidType = this.getMaxHeightFluidType();
-		if (!fluidType.isAir() && !fluidType.isVanilla() && this.getFluidTypeHeight(fluidType) > f) {
-			this.setUnderFluidMovement();
-		} else if (this.isInWater() && this.getFluidHeight(FluidTags.WATER) > f) {
-			this.setUnderFluidMovement();
-		} else if (this.isInLava() && this.getFluidHeight(FluidTags.LAVA) > f) {
-			this.setUnderFluidMovement();
-		} else if (!this.isNoGravity()) {
-			this.setDeltaMovement(this.getDeltaMovement()
-			    .add(0.0D, -0.04D, 0.0D));
+		net.minecraftforge.fluids.FluidType fluidType = getMaxHeightFluidType();
+		if (!fluidType.isAir() && !fluidType.isVanilla() && getFluidTypeHeight(fluidType) > f) {
+			setUnderFluidMovement();
+		} else if (isInWater() && getFluidHeight(FluidTags.WATER) > f) {
+			setUnderFluidMovement();
+		} else if (isInLava() && getFluidHeight(FluidTags.LAVA) > f) {
+			setUnderFluidMovement();
+		} else if (this.isInWall()) {
+			setDeltaMovement(getDeltaMovement().add(0.0D, 0.05D, 0.0D));
+		} else if (!isNoGravity()) {
+			setDeltaMovement(getDeltaMovement().add(0.0D, -0.04D, 0.0D));
 		}
 
 		// 落下
-		if (!this.onGround || this.getDeltaMovement()
-		    .length() > 0.0001F) {
-			this.move(MoverType.SELF, this.getDeltaMovement());
+		if (!onGround || getDeltaMovement().length() > 0.0001F) {
+			move(MoverType.SELF, getDeltaMovement());
 			float f1 = 0.98F;
-			if (this.onGround) {
-				f1 = level.getBlockState(new BlockPos(this.getX(), this.getY() - 1.0D, this.getZ()))
-				    .getFriction(level, new BlockPos(this.getX(), this.getY() - 1.0D, this.getZ()), this) * 0.98F;
+			if (onGround) {
+				f1 = level.getBlockState(new BlockPos(getX(), getY() - 1.0D, getZ()))
+				    .getFriction(level, new BlockPos(getX(), getY() - 1.0D, getZ()), this) * 0.98F;
 			}
 
-			this.setDeltaMovement(this.getDeltaMovement()
-			    .multiply(f1, 0.98D, f1));
-			if (this.onGround) {
-				Vec3 vec31 = this.getDeltaMovement();
+			setDeltaMovement(getDeltaMovement().multiply(f1, 0.98D, f1));
+			if (onGround) {
+				Vec3 vec31 = getDeltaMovement();
 				if (vec31.y < 0.0D) {
-					this.setDeltaMovement(vec31.multiply(1.0D, -0.5D, 1.0D));
+					setDeltaMovement(vec31.multiply(1.0D, -0.5D, 1.0D));
 				}
 			}
 		}
 
-		if (this.age < 32768) {
-			++this.age;
+		if (age < 32768) {
+			++age;
 		}
 	}
 
 	private void setUnderFluidMovement() {
 		Vec3 vec3 = this.getDeltaMovement();
-		this.setDeltaMovement(vec3.x * 0.96F, vec3.y + (vec3.y < 0.06F ? 5.0E-4F : 0.0F), vec3.z * 0.96F);
+		this.setDeltaMovement(vec3.x * 0.96F, vec3.y + (vec3.y > 0.06F ? 0.05F : 0.0F), vec3.z * 0.96F);
 	}
 
 	@Override

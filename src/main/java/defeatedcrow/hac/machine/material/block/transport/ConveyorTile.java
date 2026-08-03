@@ -95,24 +95,20 @@ public class ConveyorTile extends OwnableBaseTileDC implements WorldlyContainer,
 						f = true;
 					}
 				}
-			} else {
-				if (move < MAX_MOVE) {
-					if (move == 4) {
-						if (onMiddlePosition()) {
-							move++;
-						}
-						f = true;
-					} else {
+			} else if (move < MAX_MOVE) {
+				if (move == 4) {
+					if (onMiddlePosition()) {
 						move++;
 					}
+					f = true;
 				} else {
-					// 送り出し
-					if (releaseItem()) {
-						f = true;
-						move = 0;
-					}
+					move++;
 				}
+			} else if (move >= MAX_MOVE && (releaseItem() || dropItem())) {
+				f = true;
+				move = 0;
 			}
+
 			if (f) {
 				this.setChanged();
 			}
@@ -126,38 +122,45 @@ public class ConveyorTile extends OwnableBaseTileDC implements WorldlyContainer,
 	}
 
 	protected boolean insertItem() {
-		if (!DCUtil.isEmpty(this.getItem(0)))
+		if (!DCUtil.isEmpty(getItem(0)))
 			return false;
 
-		Direction side = getBlockDir().getOpposite();
-		BlockEntity input = getLevel().getBlockEntity(getBlockPos().relative(side));
+		BlockEntity input = getLevel().getBlockEntity(getInsertPos());
 
 		// DOWNからの搬出を偽装
 		if (input != null && !(input instanceof ConveyorTile) && !(input instanceof Hopper)) {
 			return input.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.DOWN)
-					.map(handler -> {
-						int slot = -1;
-						for (int j = 0; j < handler.getSlots(); j++) {
-							if (!handler.extractItem(j, 1, true).isEmpty()) {
-								slot = j;
-								break;
-							}
-						}
-						if (slot >= 0) {
-							ItemStack take = handler.extractItem(slot, 1, true).copy();
-							int i = this.getInventory().canIncrSlot(0, take);
-							if (i > 0) {
-								this.getInventory().incrStackInSlot(0, take);
-								handler.extractItem(slot, 1, false);
-								this.setChanged();
-								input.setChanged();
-								return true;
-							}
-						}
-						return false;
-					}).orElse(false);
+			    .map(handler -> {
+				    int slot = -1;
+				    for (int j = 0; j < handler.getSlots(); j++) {
+					    if (!handler.extractItem(j, 1, true)
+					        .isEmpty()) {
+						    slot = j;
+						    break;
+					    }
+				    }
+				    if (slot >= 0) {
+					    ItemStack take = handler.extractItem(slot, 1, true)
+					        .copy();
+					    int i = getInventory().canIncrSlot(0, take);
+					    if (i > 0) {
+						    getInventory().incrStackInSlot(0, take);
+						    handler.extractItem(slot, 1, false);
+						    setChanged();
+						    input.setChanged();
+						    return true;
+					    }
+				    }
+				    return false;
+			    })
+			    .orElse(false);
 		}
 		return false;
+	}
+
+	protected BlockPos getInsertPos() {
+		Direction side = getBlockDir();
+		return getBlockPos().relative(side.getOpposite());
 	}
 
 	protected BlockPos getForwardPos() {
@@ -166,33 +169,48 @@ public class ConveyorTile extends OwnableBaseTileDC implements WorldlyContainer,
 	}
 
 	protected boolean releaseItem() {
-		if (DCUtil.isEmpty(this.getItem(0)))
+		if (DCUtil.isEmpty(getItem(0)))
 			return false;
 
 		BlockPos next = getForwardPos();
 		BlockEntity outlet = getLevel().getBlockEntity(next);
 		boolean flag = false;
 		if (outlet != null) {
-			flag = outlet.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.UP).map(handler -> {
-				ItemStack take = this.getItem(0).copy();
-				take.setCount(1);
-				for (int j = 0; j < handler.getSlots(); j++) {
-					ItemStack ret = handler.insertItem(j, take, true);
-					if (DCUtil.isEmpty(ret)) {
-						handler.insertItem(j, take, false);
-						this.getInventory().removeItem(0, 1);
-						this.setChanged();
-						outlet.setChanged();
-						break;
-					}
-				}
-				return DCUtil.isEmpty(this.getItem(0));
-			}).orElse(false);
+			flag = outlet.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.UP)
+			    .map(handler -> {
+				    ItemStack take = getItem(0).copy();
+				    take.setCount(1);
+				    for (int j = 0; j < handler.getSlots(); j++) {
+					    ItemStack ret = handler.insertItem(j, take, true);
+					    if (DCUtil.isEmpty(ret)) {
+						    handler.insertItem(j, take, false);
+						    getInventory().removeItem(0, 1);
+						    setChanged();
+						    outlet.setChanged();
+						    break;
+					    }
+				    }
+				    return DCUtil.isEmpty(this.getItem(0));
+			    })
+			    .orElse(false);
 		}
-		if (!flag && !DCUtil.isEmpty(this.getItem(0)) && getLevel().getBlockState(next).isAir()) {
-			ItemEntity drop = new ItemEntity(getLevel(), next.getX() + 0.5D, next.getY() + 0.5D, next.getZ() + 0.5D, this.getItem(0).copy());
+		return flag;
+	}
+
+	protected boolean dropItem() {
+		if (DCUtil.isEmpty(this.getItem(0)))
+			return false;
+
+		BlockPos next = getForwardPos();
+		BlockEntity outlet = getLevel().getBlockEntity(next);
+		boolean flag = false;
+		if (!flag && !DCUtil.isEmpty(this.getItem(0)) && getLevel().getBlockState(next)
+		    .isAir()) {
+			ItemEntity drop = new ItemEntity(getLevel(), next.getX() + 0.5D, next.getY() + 0.5D, next.getZ() + 0.5D, this.getItem(0)
+			    .copy());
 			if (getLevel().addFreshEntity(drop)) {
-				this.getInventory().setItem(0, ItemStack.EMPTY);
+				this.getInventory()
+				    .setItem(0, ItemStack.EMPTY);
 				this.setChanged();
 				flag = true;
 			}
@@ -208,7 +226,8 @@ public class ConveyorTile extends OwnableBaseTileDC implements WorldlyContainer,
 	public SoundEvent getSE(IClimate climate) {
 		if (climate.getHumidity() == DCHumidity.UNDERWATER)
 			return SoundEvents.BUCKET_FILL;
-		return climate.getHeat().isCold() ? SoundEvents.GLASS_BREAK : SoundEvents.LAVA_EXTINGUISH;
+		return climate.getHeat()
+		    .isCold() ? SoundEvents.GLASS_BREAK : SoundEvents.LAVA_EXTINGUISH;
 	}
 
 	/* Inventory */
@@ -310,8 +329,8 @@ public class ConveyorTile extends OwnableBaseTileDC implements WorldlyContainer,
 	@Override
 	public void invalidateCaps() {
 		super.invalidateCaps();
-		for (int x = 0; x < handlers.length; x++)
-			handlers[x].invalidate();
+		for (LazyOptional<? extends IItemHandler> handler : handlers)
+			handler.invalidate();
 	}
 
 	@Override

@@ -34,12 +34,16 @@ public class HUDHandlerClimateData implements IBlockComponentProvider {
 		if (level.getBlock() == Blocks.AIR)
 			return;
 
-		if (config.getBoolean(CLIMATE_SMELTING) && DCRecipes.INSTANCE.hasAnySmeltingRecipe(level.getBlock()).isPresent()) {
+		if (config.getBoolean(CLIMATE_SMELTING) && DCRecipes.hasAnySmeltingRecipe(level.getBlock())
+		    .isPresent()) {
 
 			ClimateSupplier clm = new ClimateSupplier(level.getWorld(), level.getPosition());
-			if (DCRecipes.INSTANCE.getSmeltingRecipe(clm, new ItemStack(level.getBlock())).isPresent()) {
-				tooltip.addLine(Component.translatable("dcs.tip.waila.smelting_suitable").withStyle(ChatFormatting.AQUA));
-				if (level.getBlock().isRandomlyTicking(level.getBlockState())) {
+			if (DCRecipes.getSmeltingRecipe(clm, new ItemStack(level.getBlock()))
+			    .isPresent()) {
+				tooltip.addLine(Component.translatable("dcs.tip.waila.smelting_suitable")
+				    .withStyle(ChatFormatting.AQUA));
+				if (level.getBlock()
+				    .isRandomlyTicking(level.getBlockState())) {
 					tooltip.addLine(Component.translatable("dcs.tip.waila.smelting_tick_scheduled"));
 				} else {
 					tooltip.addLine(Component.translatable("dcs.tip.waila.smelting_tick_not_scheduled"));
@@ -48,12 +52,16 @@ public class HUDHandlerClimateData implements IBlockComponentProvider {
 			return;
 		}
 
-		if (config.getBoolean(CLIMATE_SMELTING) && DCRecipes.INSTANCE.hasAnyHeatTreatmentRecipe(level.getBlock()).isPresent()) {
+		if (config.getBoolean(CLIMATE_SMELTING) && DCRecipes.hasAnyHeatTreatmentRecipe(level.getBlock())
+		    .isPresent()) {
 
 			ClimateSupplier clm = new ClimateSupplier(level.getWorld(), level.getPosition());
-			if (DCRecipes.INSTANCE.getHeatTreatmentRecipe(clm, new ItemStack(level.getBlock())).isPresent()) {
-				tooltip.addLine(Component.translatable("dcs.tip.waila.smelting_suitable").withStyle(ChatFormatting.AQUA));
-				if (level.getBlock().isRandomlyTicking(level.getBlockState())) {
+			if (DCRecipes.getHeatTreatmentRecipe(clm, new ItemStack(level.getBlock()))
+			    .isPresent()) {
+				tooltip.addLine(Component.translatable("dcs.tip.waila.smelting_suitable")
+				    .withStyle(ChatFormatting.AQUA));
+				if (level.getBlock()
+				    .isRandomlyTicking(level.getBlockState())) {
 					tooltip.addLine(Component.translatable("dcs.tip.waila.smelting_tick_scheduled"));
 				} else {
 					tooltip.addLine(Component.translatable("dcs.tip.waila.smelting_tick_not_scheduled"));
@@ -64,40 +72,48 @@ public class HUDHandlerClimateData implements IBlockComponentProvider {
 
 		if (config.getBoolean(CLIMATE) && ClimateAPI.registerBlock.isRegisteredBlock(level.getBlockState())) {
 
-			ClimateAPI.registerBlock.getHeatTier(level.getBlockState()).ifPresent(heat -> {
-				if (heat != DCHeatTier.NORMAL)
-					tooltip.addLine(new PairComponent(DCHeatTier.basename2().withStyle(heat.getChatColor()), heat.localize()));
-			});
-			ClimateAPI.registerBlock.getHumidity(level.getBlockState()).ifPresent(hum -> {
-				if (hum != DCHumidity.NORMAL)
-					tooltip.addLine(new PairComponent(DCHumidity.basename2().withStyle(hum.getChatColor()), hum.localize()));
-			});
-			ClimateAPI.registerBlock.getAirflow(level.getBlockState()).ifPresent(air -> {
-				if (air != DCAirflow.TIGHT)
-					tooltip.addLine(new PairComponent(DCAirflow.basename2().withStyle(air.getChatColor()), air.localize()));
-			});
+			ClimateAPI.registerBlock.getHeatTier(level.getBlockState())
+			    .ifPresent(heat -> {
+				    if (heat != DCHeatTier.NORMAL)
+					    tooltip.addLine(new PairComponent(DCHeatTier.basename2()
+					        .withStyle(heat.getChatColor()), heat.localize()));
+			    });
+			ClimateAPI.registerBlock.getHumidity(level.getBlockState())
+			    .ifPresent(hum -> {
+				    if (hum != DCHumidity.NORMAL)
+					    tooltip.addLine(new PairComponent(DCHumidity.basename2()
+					        .withStyle(hum.getChatColor()), hum.localize()));
+			    });
+			ClimateAPI.registerBlock.getAirflow(level.getBlockState())
+			    .ifPresent(air -> {
+				    if (air != DCAirflow.TIGHT)
+					    tooltip.addLine(new PairComponent(DCAirflow.basename2()
+					        .withStyle(air.getChatColor()), air.localize()));
+			    });
 			return;
 		}
 
 		if (config.getBoolean(CLIMATE) && level.getBlock() instanceof IHeatTile tile) {
 			DCHeatTier heat = tile.getHeatTier(level.getWorld(), level.getPosition(), level.getPosition());
 			if (heat != DCHeatTier.NORMAL)
-				tooltip.addLine(new PairComponent(DCHeatTier.basename2().withStyle(heat.getChatColor()), heat.localize()));
+				tooltip.addLine(new PairComponent(DCHeatTier.basename2()
+				    .withStyle(heat.getChatColor()), heat.localize()));
 			return;
 		}
 
 		if (config.getBoolean(CLIMATE) && level.getBlock() instanceof IHumidityTile tile) {
 			DCHumidity hum = tile.getHumidity(level.getWorld(), level.getPosition(), level.getPosition());
 			if (hum != DCHumidity.NORMAL)
-				tooltip.addLine(new PairComponent(DCHumidity.basename2().withStyle(hum.getChatColor()), hum.localize()));
+				tooltip.addLine(new PairComponent(DCHumidity.basename2()
+				    .withStyle(hum.getChatColor()), hum.localize()));
 			return;
 		}
 
 		if (config.getBoolean(CLIMATE) && level.getBlock() instanceof IAirflowTile tile) {
 			DCAirflow air = tile.getAirflow(level.getWorld(), level.getPosition(), level.getPosition());
 			if (air != DCAirflow.TIGHT)
-				tooltip.addLine(new PairComponent(DCAirflow.basename2().withStyle(air.getChatColor()), air.localize()));
-			return;
+				tooltip.addLine(new PairComponent(DCAirflow.basename2()
+				    .withStyle(air.getChatColor()), air.localize()));
 		}
 
 	}
@@ -115,7 +131,7 @@ public class HUDHandlerClimateData implements IBlockComponentProvider {
 
 	}
 
-	public static final ResourceLocation CLIMATE = new ResourceLocation("dcs_climate", "show_climate");
-	public static final ResourceLocation CLIMATE_SMELTING = new ResourceLocation("dcs_climate", "show_climate_smelting_target");
+	public static final ResourceLocation CLIMATE = ResourceLocation.fromNamespaceAndPath("dcs_climate", "show_climate");
+	public static final ResourceLocation CLIMATE_SMELTING = ResourceLocation.fromNamespaceAndPath("dcs_climate", "show_climate_smelting_target");
 
 }

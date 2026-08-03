@@ -16,6 +16,8 @@ public enum DCTexturePath {
 	GUI_INV_DOUBLE("textures/gui/simple_inv_double.png"),
 	GUI_DISPLAY_SHELF("textures/gui/display_shelf_inv.png"),
 	GUI_DISPLAY_DOUBLE_SHELF("textures/gui/display_shelf_double_inv.png"),
+	GUI_DISPLAY_CASE_OWNER("textures/gui/display_case_owner_inv.png"),
+	GUI_DISPLAY_CASE_TRADE("textures/gui/display_case_trade_inv.png"),
 	GUI_KICHEN_BENCH("textures/gui/kitchen_bench_inv.png"),
 	GUI_CHAMBER_ITEM("textures/gui/chamber_item_inv.png"),
 	GUI_CHAMBER_FLUID("textures/gui/chamber_fluid_inv.png"),
@@ -52,12 +54,12 @@ public enum DCTexturePath {
 	}
 
 	public ResourceLocation getLocation() {
-		return new ResourceLocation("dcs_climate", name);
+		return ResourceLocation.fromNamespaceAndPath("dcs_climate", name);
 	}
 
 	public static List<DCTexturePath> elements() {
 		return ImmutableList.of(POTION, HUD, GRAY, HOT_DISP, COLD_DISP, GUI_INV_SINGLE, GUI_INV_DOUBLE, GUI_DISPLAY_SHELF, GUI_CHAMBER_ITEM, GUI_CHAMBER_FLUID, GUI_FLUID_TANK, GUI_FLUID_TANK_LARGE, GUI_COOKING_POT, GUI_TEA_POT,
 		    GUI_FERMENTATION_JAR, GUI_MILL, GUI_CRUSHER, GUI_BATTERY, GUI_GENERATOR, GUI_BOILER_BIOMASS, GUI_HOPPER_FILTER, GUI_HOPPER_GOLD, GUI_HOPPER_GOLD_FILTER, GUI_CONVEYOR_SORTER, GUI_KICHEN_BENCH, GUI_MONITOR_ANDON, GUI_BORING,
-		    GUI_DISPLAY_DOUBLE_SHELF, GUI_CHAMBER_KICHEN, GUI_CHAMBER_OVEN, GUI_BLACK_ROD, GUI_HOPPER_EXP, GUI_COFFEE_MAKER);
+		    GUI_DISPLAY_DOUBLE_SHELF, GUI_CHAMBER_KICHEN, GUI_CHAMBER_OVEN, GUI_BLACK_ROD, GUI_HOPPER_EXP, GUI_COFFEE_MAKER, GUI_DISPLAY_CASE_OWNER, GUI_DISPLAY_CASE_TRADE);
 	}
 }

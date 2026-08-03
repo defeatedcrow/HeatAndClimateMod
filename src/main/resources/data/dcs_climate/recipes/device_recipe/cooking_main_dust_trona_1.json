@@ -9,7 +9,7 @@
     "item": "dcs_climate:main/dust_lithium",
     "count": 1
   },
-  "secondary_rate": 50,
+  "secondary_rate": 100,
   "ingredients": [
     {
       "tag": "forge:ores/natron"

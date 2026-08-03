@@ -3,6 +3,7 @@ package defeatedcrow.hac.core.material;
 import java.util.function.Supplier;
 
 import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.core.client.gui.DisplayCaseMenu_Owner;
 import defeatedcrow.hac.core.client.gui.DisplayShelfMenu;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.block.DoorItemDC;
@@ -24,6 +25,7 @@ import defeatedcrow.hac.core.material.block.building.ChandelierLamp;
 import defeatedcrow.hac.core.material.block.building.ChandelierTile;
 import defeatedcrow.hac.core.material.block.building.ConnectedGlassBlock;
 import defeatedcrow.hac.core.material.block.building.DishPlate;
+import defeatedcrow.hac.core.material.block.building.DisplayCaseTile;
 import defeatedcrow.hac.core.material.block.building.DisplayDoubleShelfBlock;
 import defeatedcrow.hac.core.material.block.building.DisplayDoubleShelfTile;
 import defeatedcrow.hac.core.material.block.building.DisplayShelfBlock;
@@ -49,6 +51,8 @@ import defeatedcrow.hac.core.material.block.building.MetalThinPlate;
 import defeatedcrow.hac.core.material.block.building.MetalWindowBlock;
 import defeatedcrow.hac.core.material.block.building.NoSaveBedBlock;
 import defeatedcrow.hac.core.material.block.building.NoSaveBedTile;
+import defeatedcrow.hac.core.material.block.building.NoSaveHammockBlock;
+import defeatedcrow.hac.core.material.block.building.NoSaveHammockTile;
 import defeatedcrow.hac.core.material.block.building.PillarStoneDC;
 import defeatedcrow.hac.core.material.block.building.SidedLightDC;
 import defeatedcrow.hac.core.material.block.building.SidedLightGlass;
@@ -68,7 +72,9 @@ import defeatedcrow.hac.core.material.block.building.TrapdoorWoodDC;
 import defeatedcrow.hac.core.material.block.building.VillagerChestBlock;
 import defeatedcrow.hac.core.material.block.building.VillagerChestTile;
 import defeatedcrow.hac.core.material.block.building.WallStoneDC;
+import defeatedcrow.hac.core.material.entity.CushionEntity;
 import defeatedcrow.hac.core.material.entity.FlowerPotEntity;
+import defeatedcrow.hac.core.material.item.tool.CushionItem;
 import defeatedcrow.hac.core.material.item.tool.FlowerPotItem;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.food.material.FoodInit;
@@ -538,6 +544,17 @@ public class BuildInit {
 	public static final RegistryObject<Block> SOFA_PINK = regBlock("sofa_pink", () -> new SofaBlock("sofa_pink"), TagDC.ItemTag.HAC_SOFA);
 	public static final RegistryObject<Block> SOFA_GREEN = regBlock("sofa_green", () -> new SofaBlock("sofa_green"), TagDC.ItemTag.HAC_SOFA);
 
+	public static final RegistryObject<Block> SOFA_LEATHER = regBlock("sofa_leather", () -> new SofaBlock("sofa_leather"), TagDC.ItemTag.HAC_LEATHER_SOFA);
+	public static final RegistryObject<Block> SOFA_LEATHER_BLACK = regBlock("sofa_leather_black", () -> new SofaBlock("sofa_leather_black"), TagDC.ItemTag.HAC_LEATHER_SOFA);
+	public static final RegistryObject<Block> SOFA_LEATHER_RED = regBlock("sofa_leather_red", () -> new SofaBlock("sofa_leather_red"), TagDC.ItemTag.HAC_LEATHER_SOFA);
+
+	public static final RegistryObject<Item> CUSHION_WHITE = regItem("cushion_white", () -> new CushionItem("cushion_white"));
+	public static final RegistryObject<Item> CUSHION_BLUE = regItem("cushion_blue", () -> new CushionItem("cushion_blue"));
+	public static final RegistryObject<Item> CUSHION_BLACK = regItem("cushion_black", () -> new CushionItem("cushion_black"));
+	public static final RegistryObject<Item> CUSHION_RED = regItem("cushion_red", () -> new CushionItem("cushion_red"));
+	public static final RegistryObject<Item> CUSHION_GREEN = regItem("cushion_green", () -> new CushionItem("cushion_green"));
+
+	public static final RegistryObject<Block> BED_HAMMOCK = regBlock("bed_hammock", () -> new NoSaveHammockBlock("bed_hammock"), null);
 	public static final RegistryObject<Block> BED_LINEN = regBlock("bed_linen", () -> new NoSaveBedBlock("bed_linen"), TagDC.ItemTag.HAC_BED);
 	public static final RegistryObject<Block> BED_WHITE = regBlock("bed_white", () -> new NoSaveBedBlock("bed_white"), TagDC.ItemTag.HAC_BED);
 	public static final RegistryObject<Block> BED_BLUE = regBlock("bed_blue", () -> new NoSaveBedBlock("bed_blue"), TagDC.ItemTag.HAC_BED);
@@ -580,6 +597,10 @@ public class BuildInit {
 	public static final RegistryObject<Block> DISPLAY_SHELF_LAB = regBlock("display_shelf_lab", () -> new DisplayDoubleShelfBlock("display_shelf_lab"), null);
 	public static final RegistryObject<Block> DISPLAY_SHELF_GLASS = regBlock("display_shelf_glass", () -> new DisplayDoubleShelfBlock("display_shelf_glass"), null);
 
+	//	public static final RegistryObject<Block> DISPLAY_CASE = regBlock("display_case_wood", () -> new DisplayCaseBlock("display_case_wood"), null);
+	//	public static final RegistryObject<Block> DISPLAY_CASE_WHITE = regBlock("display_case_white", () -> new DisplayCaseBlock("display_case_white"), null);
+	//	public static final RegistryObject<Block> DISPLAY_CASE_BLACK = regBlock("display_case_black", () -> new DisplayCaseBlock("display_case_black"), null);
+
 	public static final RegistryObject<Block> VILLAGER_CHEST = regBlock("villager_chest_block", () -> new VillagerChestBlock("villager_chest_block"), null);
 
 	public static final RegistryObject<Block> DISHPLATE_WHITE = regBlock("dishplate_white", () -> new DishPlate("dishplate_white"), null);
@@ -619,13 +640,40 @@ public class BuildInit {
 	    = CoreInit.BLOCK_ENTITIES.register("display_double_shelf_tile", () -> BlockEntityType.Builder.of(DisplayDoubleShelfTile::new, DISPLAY_SHELF_IRON.get(), DISPLAY_SHELF_LAB.get(), DISPLAY_SHELF_GLASS.get(), DISPLAY_SHELF_WOOD.get())
 	        .build(null));
 
+	public static final RegistryObject<BlockEntityType<DisplayCaseTile>> DISPLAY_CASE_TILE = CoreInit.BLOCK_ENTITIES.register("display_case_tile", () -> BlockEntityType.Builder.of(DisplayCaseTile::new /*
+	                                                                                                                                                                                                      * DISPLAY_CASE
+	                                                                                                                                                                                                      * .
+	                                                                                                                                                                                                      * get
+	                                                                                                                                                                                                      * (
+	                                                                                                                                                                                                      * )
+	                                                                                                                                                                                                      * ,
+	                                                                                                                                                                                                      * DISPLAY_CASE_WHITE
+	                                                                                                                                                                                                      * .
+	                                                                                                                                                                                                      * get
+	                                                                                                                                                                                                      * (
+	                                                                                                                                                                                                      * )
+	                                                                                                                                                                                                      * ,
+	                                                                                                                                                                                                      * DISPLAY_CASE_BLACK
+	                                                                                                                                                                                                      * .
+	                                                                                                                                                                                                      * get
+	                                                                                                                                                                                                      * (
+	                                                                                                                                                                                                      * )
+	                                                                                                                                                                                                      */)
+	    .build(null));
+
 	public static final RegistryObject<BlockEntityType<VillagerChestTile>> VILLAGER_CHEST_TILE = CoreInit.BLOCK_ENTITIES.register("villager_chest_tile", () -> BlockEntityType.Builder.of(VillagerChestTile::new, VILLAGER_CHEST.get())
 	    .build(null));
 
+	public static final RegistryObject<BlockEntityType<NoSaveHammockTile>> NO_SAVE_HAMMOCK_TILE = CoreInit.BLOCK_ENTITIES.register("no_save_hammock_tile", () -> BlockEntityType.Builder.of(NoSaveHammockTile::new, BED_HAMMOCK.get())
+	    .build(null));
 	public static final RegistryObject<BlockEntityType<NoSaveBedTile>> NO_SAVE_BED_TILE = CoreInit.BLOCK_ENTITIES.register("no_save_bed_tile", () -> BlockEntityType.Builder.of(NoSaveBedTile::new, BED_LINEN.get())
 	    .build(null));
 
 	// Entity
+	public static final RegistryObject<EntityType<CushionEntity>> CUSHION = CoreInit.ENTITIES.register("cushion_entity", () -> EntityType.Builder.<CushionEntity> of(CushionEntity::new, MobCategory.MISC)
+	    .sized(0.5F, 0.125F)
+	    .updateInterval(5)
+	    .build("cushion_entity"));
 
 	public static final RegistryObject<EntityType<FlowerPotEntity>> FLOWER_POT = CoreInit.ENTITIES.register("flower_pot_entity", () -> EntityType.Builder.<FlowerPotEntity> of(FlowerPotEntity::new, MobCategory.MISC)
 	    .sized(0.25F, 0.25F)
@@ -641,6 +689,11 @@ public class BuildInit {
 	public static final RegistryObject<MenuType<DisplayShelfMenu>> DISPLAY_DOUBLE_SHELF_MENU = CoreInit.register("dcs_display_double_shelf", (IContainerFactory<DisplayShelfMenu>) (id, playerInv, data) -> {
 		DisplayDoubleShelfTile cont = (DisplayDoubleShelfTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
 		return DisplayShelfMenu.getDoubleMenu(id, playerInv, cont);
+	});
+
+	public static final RegistryObject<MenuType<DisplayCaseMenu_Owner>> DISPLAY_CASE_OWNER_MENU = CoreInit.register("dcs_display_case_owner", (IContainerFactory<DisplayCaseMenu_Owner>) (id, playerInv, data) -> {
+		DisplayCaseTile cont = (DisplayCaseTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		return DisplayCaseMenu_Owner.getMenu(id, playerInv, cont);
 	});
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {

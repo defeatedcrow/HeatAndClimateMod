@@ -83,10 +83,8 @@ public class CookingPotMenu extends AbstractContainerMenu {
 				if (!this.moveItemStackTo(check, 0, 5, false)) {
 					return ItemStack.EMPTY;
 				}
-			} else {
-				if (!this.moveItemStackTo(check, 12, this.slots.size(), true)) {
-					return ItemStack.EMPTY;
-				}
+			} else if (!this.moveItemStackTo(check, 12, this.slots.size(), true)) {
+				return ItemStack.EMPTY;
 			}
 
 			if (check.isEmpty()) {
@@ -121,7 +119,10 @@ public class CookingPotMenu extends AbstractContainerMenu {
 	}
 
 	public Component getInputFluidName() {
-		return container.inputTank.getFluid().isEmpty() ? Component.literal("EMPTY") : container.inputTank.getFluid().getDisplayName();
+		return container.inputTank.getFluid()
+		    .isEmpty() ? Component.literal("EMPTY")
+		        : container.inputTank.getFluid()
+		            .getDisplayName();
 	}
 
 	public Component getInputFluidAmount() {
@@ -144,7 +145,10 @@ public class CookingPotMenu extends AbstractContainerMenu {
 	}
 
 	public Component getOutputFluidName() {
-		return container.outputTank.getFluid().isEmpty() ? Component.literal("EMPTY") : container.outputTank.getFluid().getDisplayName();
+		return container.outputTank.getFluid()
+		    .isEmpty() ? Component.literal("EMPTY")
+		        : container.outputTank.getFluid()
+		            .getDisplayName();
 	}
 
 	public Component getOutputFluidAmount() {
@@ -173,7 +177,9 @@ public class CookingPotMenu extends AbstractContainerMenu {
 	}
 
 	public int getTempID() {
-		return container.clientClimate.getHeat().getID();
+		return container.getClientClimate()
+		    .getHeat()
+		    .getID();
 	}
 
 	public boolean isOverheated() {

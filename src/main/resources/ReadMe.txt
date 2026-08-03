@@ -1,4 +1,4 @@
-#### Heat&Climate Mod v4 Beta for Minecraft 1.19.2 ####
+#### Heat&Climate Mod v4.0.1 for Minecraft 1.19.2 ####
 
 # 導入環境 / Introduction conditions
 
@@ -9,9 +9,6 @@
 
 ・HaCv4では、HeatAndClimateLibを必要としません。
  HaCv4 does not require HeatAndClimateLib.
-
-・このmodはWIPであり、現在はベータバージョンです。導入前にテスト環境で試すことをおすすめします。
- This mod is WIP and is a beta version. We recommend testing in a test environment before deployment.
 
 ・マルチサーバーについては、起動確認のみ行い、作者によるデバッグテストが行われていません。
  For multi-server, only startup confirmation is performed, and no debugging test is performed by the author.
@@ -767,6 +764,23 @@
 #### 更新履歴 / Change log ####
 
 ○v4.0.1
+ add: ハンモック
+ add: 革張りのソファ
+ add: クッション
+ add: 渦巻ポンプ
+ add: 垂直コンベア
+ change: ソファのモデルを修正
+ change: ツタと蜘蛛の巣にアイテムタグを付与し、一部の他modアイテムをレシピに使えるようにした。
+ change: スプリンクラーに作物の成長促進機能を追加。
+ change: 水中ポンプへの流体粘度の影響の計算式を微修正。
+ fix: 電動石臼のレシピの副生物が確定で出現するのを修正。
+ fix: 調理レシピの副生物が一定確率で出てこないのを修正。
+ fix: 特定のmodのArmorMaterialを参照できない問題に対処。
+ fix: 調理マシンの気候データのサーバー同期処理を修正。
+ fix: パスタとバッター液のクラフトレシピが被っているのを修正。
+ fix: 一部の料理Entityのモデル表示を修正。
+
+○v4.0.0pre
  add: コーヒーサイフォン
  add: マキネッタ
  add: 生ハムとベーコン

@@ -2118,6 +2118,86 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_sofa", has(TagDC.ItemTag.HAC_SOFA))
 		    .save(cons, "dcs_climate:clothing/sofa_white_bleaching_0");
 
+		ShapedRecipeBuilder.shaped(BuildInit.SOFA_LEATHER.get(), 1)
+		    .pattern("XXX")
+		    .pattern("Y Y")
+		    .define('X', Tags.Items.LEATHER)
+		    .define('Y', ItemTags.WOODEN_FENCES)
+		    .unlockedBy("has_leather", has(Tags.Items.LEATHER))
+		    .save(cons, "dcs_climate:build/sofa_leather_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.SOFA_LEATHER_BLACK.get(), 1)
+		    .requires(Tags.Items.DYES_BLACK)
+		    .requires(BuildInit.SOFA_LEATHER.get())
+		    .unlockedBy("has_white_sofa", has(BuildInit.SOFA_LEATHER.get()))
+		    .save(cons, "dcs_climate:clothing/sofa_leather_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.SOFA_LEATHER_RED.get(), 1)
+		    .requires(Tags.Items.DYES_RED)
+		    .requires(BuildInit.SOFA_LEATHER.get())
+		    .unlockedBy("has_white_sofa", has(BuildInit.SOFA_LEATHER.get()))
+		    .save(cons, "dcs_climate:clothing/sofa_leather_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.SOFA_LEATHER.get(), 1)
+		    .requires(TagDC.ItemTag.SOAP_OIL)
+		    .requires(TagDC.ItemTag.HAC_LEATHER_SOFA)
+		    .unlockedBy("has_leather_sofa", has(TagDC.ItemTag.HAC_LEATHER_SOFA))
+		    .save(cons, "dcs_climate:clothing/sofa_leather_bleaching_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CUSHION_WHITE.get(), 1)
+		    .pattern("X")
+		    .pattern("Y")
+		    .define('X', TagDC.ItemTag.CLOTHS)
+		    .define('Y', ItemTags.WOOL)
+		    .unlockedBy("has_cloth", has(TagDC.ItemTag.CLOTHS))
+		    .save(cons, "dcs_climate:build/cushion_white_1");
+
+		ShapedRecipeBuilder.shaped(BuildInit.CUSHION_WHITE.get(), 1)
+		    .pattern("X")
+		    .pattern("Y")
+		    .define('X', TagDC.ItemTag.CLOTHS)
+		    .define('Y', TagDC.ItemTag.CROP_COTTON)
+		    .unlockedBy("has_cloth", has(TagDC.ItemTag.CLOTHS))
+		    .save(cons, "dcs_climate:build/cushion_white_2");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.CUSHION_BLUE.get(), 1)
+		    .requires(Tags.Items.DYES_BLUE)
+		    .requires(BuildInit.CUSHION_WHITE.get())
+		    .unlockedBy("has_white_cushion", has(BuildInit.CUSHION_WHITE.get()))
+		    .save(cons, "dcs_climate:clothing/cushion_blue_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.CUSHION_BLACK.get(), 1)
+		    .requires(Tags.Items.DYES_BLACK)
+		    .requires(BuildInit.CUSHION_WHITE.get())
+		    .unlockedBy("has_white_cushion", has(BuildInit.CUSHION_WHITE.get()))
+		    .save(cons, "dcs_climate:clothing/cushion_black_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.CUSHION_RED.get(), 1)
+		    .requires(Tags.Items.DYES_RED)
+		    .requires(BuildInit.CUSHION_WHITE.get())
+		    .unlockedBy("has_white_cushion", has(BuildInit.CUSHION_WHITE.get()))
+		    .save(cons, "dcs_climate:clothing/cushion_red_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.CUSHION_GREEN.get(), 1)
+		    .requires(Tags.Items.DYES_GREEN)
+		    .requires(BuildInit.CUSHION_WHITE.get())
+		    .unlockedBy("has_white_cushion", has(BuildInit.CUSHION_WHITE.get()))
+		    .save(cons, "dcs_climate:clothing/cushion_green_0");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.CUSHION_WHITE.get(), 1)
+		    .requires(TagDC.ItemTag.SOAP_OIL)
+		    .requires(TagDC.ItemTag.HAC_CUSHION)
+		    .unlockedBy("has_cushion", has(TagDC.ItemTag.HAC_CUSHION))
+		    .save(cons, "dcs_climate:clothing/cushion_white_bleaching_0");
+
+		ShapedRecipeBuilder.shaped(BuildInit.BED_HAMMOCK.get(), 1)
+		    .pattern("XXX")
+		    .pattern("YYY")
+		    .define('X', TagDC.ItemTag.VINE)
+		    .define('Y', Tags.Items.RODS_WOODEN)
+		    .unlockedBy("has_vine", has(TagDC.ItemTag.VINE))
+		    .save(cons, "dcs_climate:build/bed_hammock_0");
+
 		ShapedRecipeBuilder.shaped(BuildInit.BED_LINEN.get(), 1)
 		    .pattern("XZX")
 		    .pattern("YYY")
@@ -3443,6 +3523,15 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		    .requires(Tags.Items.STRING)
 		    .unlockedBy("has_lether", has(Tags.Items.LEATHER))
 		    .save(cons, "dcs_climate:clothing/suits_lether");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.SUITS_LEATHER.get(), 1)
+		    .requires(CoreInit.PATTERN_SUITS.get())
+		    .requires(Tags.Items.LEATHER)
+		    .requires(Tags.Items.LEATHER)
+		    .requires(TagDC.ItemTag.CLOTHS)
+		    .requires(Tags.Items.STRING)
+		    .unlockedBy("has_lether", has(Tags.Items.LEATHER))
+		    .save(cons, "dcs_climate:clothing/suits_lether_2");
 
 		ShapelessRecipeBuilder.shapeless(CoreInit.CHAPS_LEATHER.get(), 1)
 		    .requires(CoreInit.PATTERN_PANTS.get())

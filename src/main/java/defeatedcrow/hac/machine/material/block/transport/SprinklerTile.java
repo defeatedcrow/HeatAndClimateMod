@@ -10,6 +10,7 @@ import defeatedcrow.hac.core.network.packet.message.IIntReceiver;
 import defeatedcrow.hac.core.network.packet.message.MsgTileSimpleIntegerToC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.material.block.FertileBlock;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.fluid.DCFluidUtil;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -22,6 +23,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -68,37 +70,62 @@ public class SprinklerTile extends OwnableBaseTileDC implements IIntReceiver {
 				// 耕地をぬらす
 				if (power > 0) {
 					double r = 2D + power * 2;
-					BlockPos.betweenClosedStream(new AABB(getBlockPos().below(2)).inflate(r, 1, r))
-							.filter(p -> {
-								return DCUtil.canEditPos(getLevel(), p);
-							})
-							.filter(p -> {
-								return getLevel().getBlockState(p).is(TagDC.BlockTag.FARMLAND);
-							}).forEach((p) -> {
-								BlockState farmland = getLevel().getBlockState(p);
-								if (farmland.getProperties().contains(BlockStateProperties.MOISTURE)) {
-									BlockState next = farmland.setValue(BlockStateProperties.MOISTURE, Integer.valueOf(7));
-									level.setBlock(p, next, 2);
-								}
-							});
+					BlockPos.betweenClosedStream(new AABB(getBlockPos()).inflate(r, 2, r))
+					    .filter(p -> (DCUtil.canEditPos(getLevel(), p) && DCUtil.canEditPos(getLevel(), p.above(2))))
+					    .filter(p -> getLevel().getBlockState(p)
+					        .is(TagDC.BlockTag.FARMLAND))
+					    .forEach(p -> {
+						    BlockState farmland = getLevel().getBlockState(p);
+						    int water = DCState.getInt(farmland, BlockStateProperties.MOISTURE);
+						    if (water >= 0 && water < 7) {
+							    BlockState next = farmland.setValue(BlockStateProperties.MOISTURE, 7);
+							    level.setBlock(p, next, 2);
+						    }
+
+						    if (getLevel() instanceof ServerLevel) {
+							    int chance = 12 - FertileBlock.getFertile(getLevel(), p, farmland) * 2;
+							    BlockState plant = getLevel().getBlockState(p.above());
+							    if (getLevel().getRandom()
+							        .nextInt(chance) == 0 && plant.getBlock() instanceof BonemealableBlock crop) {
+								    if (crop.isValidBonemealTarget(getLevel(), p.above(), plant, false)) {
+									    crop.performBonemeal((ServerLevel) getLevel(), getLevel().getRandom(), p.above(), plant);
+								    }
+							    }
+							    BlockState plant2 = getLevel().getBlockState(p.above(2));
+							    if (getLevel().getRandom()
+							        .nextInt(chance) == 0 && plant2.getBlock() instanceof BonemealableBlock crop2) {
+								    if (crop2.isValidBonemealTarget(getLevel(), p.above(2), plant2, false)) {
+									    crop2.performBonemeal((ServerLevel) getLevel(), getLevel().getRandom(), p.above(2), plant2);
+								    }
+							    }
+						    }
+					    });
 				}
 
 				// 水量チェック
-				BlockPos p2 = this.getBlockPos().below();
+				BlockPos p2 = this.getBlockPos()
+				    .below();
 				BlockEntity targetEntity = getLevel().getBlockEntity(p2);
 				power = 0;
 				if (targetEntity != null) {
-					targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP).ifPresent(handler -> {
-						if (handler != null) {
-							// 抜き取りモード
-							FluidStack drain = handler.drain(32, FluidAction.SIMULATE).copy();
-							if (!drain.isEmpty() && drain.getFluid() == Fluids.WATER && drain.getAmount() == 32) {
-								power = DCFluidUtil.getHead(drain) + 1;
-								handler.drain(32, FluidAction.EXECUTE);
-							}
-						}
-					});
-				} else if (!getLevel().getFluidState(p2).isEmpty() && (getLevel().getFluidState(p2).is(Fluids.WATER) || getLevel().getFluidState(p2).is(Fluids.FLOWING_WATER))) {
+					targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP)
+					    .ifPresent(handler -> {
+						    if (handler != null) {
+							    // 抜き取りモード
+							    FluidStack drain = handler.drain(32, FluidAction.SIMULATE)
+							        .copy();
+							    if (!drain.isEmpty() && drain.getFluid() == Fluids.WATER && drain.getAmount() == 32) {
+								    power = DCFluidUtil.getHead(drain) + 1;
+								    handler.drain(32, FluidAction.EXECUTE);
+							    }
+						    }
+					    });
+				} else if (!getLevel().getFluidState(p2)
+				    .isEmpty()
+				    && (getLevel().getFluidState(p2)
+				        .is(Fluids.WATER)
+				        || getLevel().getFluidState(p2)
+				            .is(Fluids.FLOWING_WATER))) {
 					power = 1;
 				}
 			} else {
@@ -127,7 +154,8 @@ public class SprinklerTile extends OwnableBaseTileDC implements IIntReceiver {
 				if (rad > 2D * Math.PI)
 					rad -= 2D * Math.PI;
 				double r = Math.toRadians(rad);
-				double p = 0.2D * power * (0.5D + getLevel().getRandom().nextDouble());
+				double p = 0.2D * power * (0.5D + getLevel().getRandom()
+				    .nextDouble());
 				double dx = p * Math.sin(rad);
 				double dy = 0D;
 				double dz = p * Math.cos(rad);

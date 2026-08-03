@@ -2064,6 +2064,10 @@
   "block.dcs_climate.build.sofa_pink":"Red Sofa",
   "block.dcs_climate.build.sofa_green":"Green Sofa",
   
+  "block.dcs_climate.build.sofa_leather":"Leather Sofa",
+  "block.dcs_climate.build.sofa_leather_black":"Black Leather Sofa",
+  "block.dcs_climate.build.sofa_leather_red":"Red Leather Sofa",
+  
   "block.dcs_climate.build.chair_counter_leather":"Leather Counter Chair",
   "block.dcs_climate.build.chair_counter_white":"White Counter Chair",
   "block.dcs_climate.build.chair_counter_blue":"Blue Counter Chair",
@@ -2077,6 +2081,7 @@
   "block.dcs_climate.build.chair_round_red":"Red Lab Stool",
   "block.dcs_climate.build.chair_round_green":"Green Lab Stool",
 
+  "block.dcs_climate.build.bed_hammock":"Non-Saving Hammock",
   "block.dcs_climate.build.bed_linen":"Non-Saving Bed (Linen)",
   "block.dcs_climate.build.bed_white":"Non-Saving Bed (White)",
   "block.dcs_climate.build.bed_blue":"Non-Saving Bed (Blue)",
@@ -2135,6 +2140,12 @@
   
   "item.dcs_climate.build.flower_pot_white":"Quartz Flower Pot",
   "item.dcs_climate.build.flower_pot_clay":"Clay Flower Pot",
+    
+  "item.dcs_climate.build.cushion_white":"White Cushion",
+  "item.dcs_climate.build.cushion_blue":"Blue Cushion",
+  "item.dcs_climate.build.cushion_black":"Black Cushion",
+  "item.dcs_climate.build.cushion_red":"Red Cushion",
+  "item.dcs_climate.build.cushion_green":"Green Cushion",
 
     "## machine":"",
 
@@ -2166,6 +2177,7 @@
   "block.dcs_climate.machine.hopper_filter_gold":"Gold Finter Hopper",
   "block.dcs_climate.machine.hopper_exp":"EXP Hopper",
   "block.dcs_climate.machine.conveyor":"Conveyor",
+  "block.dcs_climate.machine.conveyor_vertical":"Conveyor Lift",
   "block.dcs_climate.machine.conveyor_smelting":"Smelter Conveyor",
   "block.dcs_climate.machine.conveyor_dropper":"Dropper Conveyor",
   "block.dcs_climate.machine.conveyor_sorter":"Sorter Conveyor",
@@ -2206,6 +2218,7 @@
   "block.dcs_climate.machine.stone_mill":"Electric Stone Mill",
   "block.dcs_climate.machine.roll_crusher":"Roll Crusher",
   "block.dcs_climate.machine.water_pump":"Underwater Pump",
+  "block.dcs_climate.machine.volute_pump":"Volute Pump",
   "block.dcs_climate.machine.intake_fan":"Intake Fan",
   "block.dcs_climate.machine.exhaust_vent":"Exhaust Vent",
   "block.dcs_climate.machine.item_aspirator":"Item Aspirator",
@@ -2267,6 +2280,7 @@
   "entity.dcs_climate.chair_entity":"Chair",
   "entity.dcs_climate.canoe_entity":"Outrigger Canoe",
   "entity.dcs_climate.flower_pot_entity":"Flower Vase",
+  "entity.dcs_climate.cushion_entity":"Cushion",
 
   "entity.dcs_climate.bread_round":"Bread",
   "entity.dcs_climate.bread_square":"Plain Bread",
@@ -2404,6 +2418,8 @@
   "dcs.tip.energy.roll_crusher.desc":"Three types of blade rolls each handle different recipes.",
   "dcs.tip.energy.water_pump.desc":"It sucks up nearby fluid sources.",
   "dcs.tip.energy.water_pump.desc2":"HEAD: 6 block",
+    "dcs.tip.energy.volute_pump.desc":"It draws fluid from an adjacent tank.",
+  "dcs.tip.energy.volute_pump.desc2":"HEAD: 32 block (affected by fluid viscosity.)",
   "dcs.tip.energy.intake_fan.desc":"It sends air to a combustion chamber in a 5x5x5 block range in front of it.",
   "dcs.tip.energy.intake_fan.desc2":"The machine will stop if there is an obstruction in front or behind it.",
   "dcs.tip.exhaust_vent.desc":"While holding the compressed air, it raises the surrounding airflow.",

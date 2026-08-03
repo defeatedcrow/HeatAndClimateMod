@@ -2,6 +2,14 @@
   "values": [
     "#forge:crops/pomelo",
     "#forge:crops/mandarin",
-    "#forge:crops/lemon"
+    "#forge:crops/lemon",
+    {
+      "id": "atmospheric:orange",
+      "required": false
+    },
+    {
+      "id": "atmospheric:blood_orange",
+      "required": false
+    }
   ]
 }

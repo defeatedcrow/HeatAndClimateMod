@@ -103,6 +103,9 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.CROP_BERRY).add(Items.SWEET_BERRIES);
 		tag(TagDC.ItemTag.CROP_SUGAR).add(Items.SUGAR_CANE);
 
+		tag(TagDC.ItemTag.VINE_PLANT).add(Items.VINE, Items.TWISTING_VINES, Items.WEEPING_VINES);
+		tag(TagDC.ItemTag.COBWEB).add(Items.COBWEB);
+
 		tag(TagDC.ItemTag.BREAD).add(Items.BREAD);
 		tag(TagDC.ItemTag.CROP_NUTS).add(Items.PUMPKIN_SEEDS, Items.SUNFLOWER);
 
@@ -707,10 +710,17 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		copy(TagDC.BlockTag.ENERGY_CABLE, TagDC.ItemTag.ENERGY_CABLE);
 
 		// plugin
-		tag(TagDC.ItemTag.CROP_BARLEY).addOptional(new ResourceLocation("biomesoplenty", "barley"));
-		tag(TagDC.ItemTag.CROP_LAVENDER).addOptional(new ResourceLocation("biomesoplenty", "lavender"));
-		tag(TagDC.ItemTag.CROP_LAVENDER).addOptional(new ResourceLocation("biomesoplenty", "tall_lavender"));
-		tag(TagDC.ItemTag.CROP_REED).addOptional(new ResourceLocation("biomesoplenty", "reed"));
+		tag(TagDC.ItemTag.CROP_BARLEY).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "barley"));
+		tag(TagDC.ItemTag.CROP_LAVENDER).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "lavender"));
+		tag(TagDC.ItemTag.CROP_LAVENDER).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "tall_lavender"));
+		tag(TagDC.ItemTag.CROP_REED).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "reed"));
+		tag(TagDC.ItemTag.VINE_PLANT).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "willow_vine"));
+		tag(TagDC.ItemTag.COBWEB).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "hanging_cobweb"));
+		tag(TagDC.ItemTag.COBWEB).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "stringy_cobweb"));
+
+		tag(TagDC.ItemTag.VINE_PLANT).addOptional(ResourceLocation.fromNamespaceAndPath("atmospheric", "passion_vine"));
+		tag(TagDC.ItemTag.CROP_CITRUS).addOptional(ResourceLocation.fromNamespaceAndPath("atmospheric", "orange"));
+		tag(TagDC.ItemTag.CROP_CITRUS).addOptional(ResourceLocation.fromNamespaceAndPath("atmospheric", "blood_orange"));
 	}
 
 }

@@ -66,6 +66,8 @@ import defeatedcrow.hac.machine.material.block.machine.StoneMillBlock;
 import defeatedcrow.hac.machine.material.block.machine.StoneMillTile;
 import defeatedcrow.hac.machine.material.block.machine.TeaPotBlock;
 import defeatedcrow.hac.machine.material.block.machine.TeaPotTile;
+import defeatedcrow.hac.machine.material.block.machine.VolutePumpBlock;
+import defeatedcrow.hac.machine.material.block.machine.VolutePumpTile;
 import defeatedcrow.hac.machine.material.block.machine.WaterPumpBlock;
 import defeatedcrow.hac.machine.material.block.machine.WaterPumpTile;
 import defeatedcrow.hac.machine.material.block.monitor.EntityCameraBlock;
@@ -103,6 +105,8 @@ import defeatedcrow.hac.machine.material.block.transport.ConveyorSmeltingTile;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorSortingBlock;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorSortingTile;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorTile;
+import defeatedcrow.hac.machine.material.block.transport.ConveyorVerticalBlock;
+import defeatedcrow.hac.machine.material.block.transport.ConveyorVerticalTile;
 import defeatedcrow.hac.machine.material.block.transport.EnergyBatteryTile;
 import defeatedcrow.hac.machine.material.block.transport.EnergyMiddleBatteryTile;
 import defeatedcrow.hac.machine.material.block.transport.FaucetBlock;
@@ -179,6 +183,7 @@ public class MachineInit {
 	public static final RegistryObject<Block> HOPPER_EXP = regBlock("hopper_exp", () -> new HopperEXPBlock("hopper_exp"), Rarity.UNCOMMON, null);
 
 	public static final RegistryObject<Block> CONVEYOR = regBlock("conveyor", () -> new ConveyorNormalBlock("conveyor"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> CONVEYOR_VERTICAL = regBlock("conveyor_vertical", () -> new ConveyorVerticalBlock("conveyor_vertical"), Rarity.UNCOMMON, null);
 	public static final RegistryObject<Block> CONVEYOR_SMELTING = regBlock("conveyor_smelting", () -> new ConveyorSmeltingBlock("conveyor_smelting"), Rarity.UNCOMMON, null);
 	public static final RegistryObject<Block> CONVEYOR_DROPPER = regBlock("conveyor_dropper", () -> new ConveyorDropperBlock("conveyor_dropper"), Rarity.UNCOMMON, null);
 	public static final RegistryObject<Block> CONVEYOR_SORTER = regBlock("conveyor_sorter", () -> new ConveyorSortingBlock("conveyor_sorter"), Rarity.UNCOMMON, null);
@@ -234,6 +239,7 @@ public class MachineInit {
 	public static final RegistryObject<Block> FERMENTATION_JAR_GREEN = regBlock("fermentation_jar_green", () -> new FermentationJarBlock("fermentation_jar_green", true), Rarity.COMMON, null);
 
 	public static final RegistryObject<Block> WATER_PUMP = regBlock("water_pump", () -> new WaterPumpBlock("water_pump"), Rarity.UNCOMMON, null);
+	public static final RegistryObject<Block> VOLUTE_PUMP = regBlock("volute_pump", () -> new VolutePumpBlock("volute_pump"), Rarity.RARE, null);
 	public static final RegistryObject<Block> STONE_MILL = regBlock("stone_mill", () -> new StoneMillBlock("stone_mill"), Rarity.UNCOMMON, null);
 	public static final RegistryObject<Block> ROLL_CRUSHER = regBlock("roll_crusher", () -> new RollCrusherBlock("roll_crusher"), Rarity.RARE, null);
 	public static final RegistryObject<Block> INTAKE_FAN = regBlock("intake_fan", () -> new IntakeFanBlock("intake_fan"), Rarity.RARE, null);
@@ -328,6 +334,10 @@ public class MachineInit {
 	public static final RegistryObject<BlockEntityType<ConveyorTile>> CONVEYOR_TILE = CoreInit.BLOCK_ENTITIES.register("conveyor_tile", () -> BlockEntityType.Builder.of(ConveyorTile::new, CONVEYOR.get())
 	    .build(null));
 
+	public static final RegistryObject<BlockEntityType<ConveyorVerticalTile>> CONVEYOR_VERTICAL_TILE
+	    = CoreInit.BLOCK_ENTITIES.register("conveyor_vertical_tile", () -> BlockEntityType.Builder.of(ConveyorVerticalTile::new, CONVEYOR_VERTICAL.get())
+	        .build(null));
+
 	public static final RegistryObject<BlockEntityType<ConveyorSmeltingTile>> CONVEYOR_SMELTING_TILE
 	    = CoreInit.BLOCK_ENTITIES.register("conveyor_smelting_tile", () -> BlockEntityType.Builder.of(ConveyorSmeltingTile::new, CONVEYOR_SMELTING.get())
 	        .build(null));
@@ -399,6 +409,9 @@ public class MachineInit {
 	    .build(null));
 
 	public static final RegistryObject<BlockEntityType<WaterPumpTile>> WATER_PUMP_TILE = CoreInit.BLOCK_ENTITIES.register("water_pump_tile", () -> BlockEntityType.Builder.of(WaterPumpTile::new, WATER_PUMP.get())
+	    .build(null));
+
+	public static final RegistryObject<BlockEntityType<VolutePumpTile>> VOLUTE_PUMP_TILE = CoreInit.BLOCK_ENTITIES.register("volute_pump_tile", () -> BlockEntityType.Builder.of(VolutePumpTile::new, VOLUTE_PUMP.get())
 	    .build(null));
 
 	public static final RegistryObject<BlockEntityType<IntakeFanTile>> INTAKE_FAN_TILE = CoreInit.BLOCK_ENTITIES.register("intake_fan_tile", () -> BlockEntityType.Builder.of(IntakeFanTile::new, INTAKE_FAN.get())

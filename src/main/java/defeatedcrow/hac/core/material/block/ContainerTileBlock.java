@@ -43,13 +43,19 @@ public abstract class ContainerTileBlock extends EntityBlockDC implements IColor
 
 	public ContainerTileBlock(Properties prop) {
 		super(prop);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.valueOf(false)));
+		this.registerDefaultState(this.stateDefinition.any()
+		    .setValue(DCState.FACING, Direction.NORTH)
+		    .setValue(WATERLOGGED, false));
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext cont) {
-		FluidState fluidstate = cont.getLevel().getFluidState(cont.getClickedPos());
-		return this.defaultBlockState().setValue(DCState.FACING, cont.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+		FluidState fluidstate = cont.getLevel()
+		    .getFluidState(cont.getClickedPos());
+		return this.defaultBlockState()
+		    .setValue(DCState.FACING, cont.getHorizontalDirection()
+		        .getOpposite())
+		    .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
 	}
 
 	@Override
@@ -184,16 +190,19 @@ public abstract class ContainerTileBlock extends EntityBlockDC implements IColor
 	public void replace(Level level, BlockPos pos, Player player, ItemStack held, MagicColor color) {
 		BlockState target = level.getBlockState(pos);
 		if (target != null && target.getBlock() instanceof ContainerTileBlock cont) {
-			cont.getReplaceBlock(color).ifPresent(block -> {
-				BlockEntity tile = level.getBlockEntity(pos);
-				CompoundTag tag = tile.saveWithFullMetadata();
-				Direction face = DCState.getFace(target, DCState.FACING);
-				boolean water = DCState.getBool(target, WATERLOGGED);
-				BlockState replace = block.defaultBlockState().setValue(DCState.FACING, face).setValue(WATERLOGGED, water);
-				level.setBlock(pos, replace, 2);
-				BlockEntity newTile = level.getBlockEntity(pos);
-				newTile.load(tag);
-			});
+			cont.getReplaceBlock(color)
+			    .ifPresent(block -> {
+				    BlockEntity tile = level.getBlockEntity(pos);
+				    CompoundTag tag = tile.saveWithFullMetadata();
+				    Direction face = DCState.getFace(target, DCState.FACING);
+				    boolean water = DCState.getBool(target, WATERLOGGED);
+				    BlockState replace = block.defaultBlockState()
+				        .setValue(DCState.FACING, face)
+				        .setValue(WATERLOGGED, water);
+				    level.setBlock(pos, replace, 2);
+				    BlockEntity newTile = level.getBlockEntity(pos);
+				    newTile.load(tag);
+			    });
 		}
 
 	}

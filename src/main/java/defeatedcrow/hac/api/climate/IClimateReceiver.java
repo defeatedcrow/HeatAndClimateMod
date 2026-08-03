@@ -12,7 +12,9 @@ public interface IClimateReceiver {
 
 	void receiveAirflow(DCAirflow air);
 
-	void currentClimate(int clm);
+	void setClientClimate(int clm);
+
+	IClimate getClientClimate();
 
 	IClimate resultClimate();
 }

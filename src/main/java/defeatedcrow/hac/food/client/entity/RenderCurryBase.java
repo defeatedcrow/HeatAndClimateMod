@@ -9,15 +9,16 @@ import defeatedcrow.hac.api.material.IEntityItem;
 import defeatedcrow.hac.food.client.model.LargeBowlModel_Base;
 import defeatedcrow.hac.food.material.entity.FoodEntityBase;
 import defeatedcrow.hac.food.material.entity.potfoods.CurryItem;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class RenderCurryBase extends RenderCurry<FoodEntityBase> {
+public class RenderCurryBase<T extends FoodEntityBase> extends RenderCurry<FoodEntityBase> {
 
-	protected LargeBowlModel_Base<FoodEntityBase> curryModel;
+	protected EntityModel<FoodEntityBase> curryModel;
 
 	public RenderCurryBase(Context ctx) {
 		super(ctx);
@@ -32,7 +33,8 @@ public class RenderCurryBase extends RenderCurry<FoodEntityBase> {
 	@Override
 	public void render(FoodEntityBase entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 		if (entity != null) {
-			Item item = entity.getItem().getItem();
+			Item item = entity.getItem()
+			    .getItem();
 			if (item instanceof IEntityItem && ((IEntityItem) item).getRenderData(item) != null) {
 				EntityRenderData data = ((IEntityItem) item).getRenderData(item);
 				ResourceLocation tex = data.getTextureLocation();

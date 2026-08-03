@@ -8,8 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 
 public class RenderRamen<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected RamenModel<FoodEntityBase> model;
-
 	public RenderRamen(Context ctx) {
 		super(ctx);
 		this.model = new RamenModel<>(ctx.bakeLayer(RamenItem.SHOYU.getLayerLocation()));

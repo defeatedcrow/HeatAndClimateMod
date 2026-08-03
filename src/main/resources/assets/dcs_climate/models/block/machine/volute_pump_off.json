@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+        "north": "dcs_climate:block/machine/volute_pump_front_off",
+        "south": "dcs_climate:block/machine/volute_pump_side",
+        "east": "dcs_climate:block/machine/volute_pump_side",
+        "west": "dcs_climate:block/machine/volute_pump_side",
+        "up": "dcs_climate:block/machine/volute_pump_top",
+        "down": "dcs_climate:block/machine/volute_pump_bottom",
+        "particle": "dcs_climate:block/machine/volute_pump_front_off"
+    }
+}

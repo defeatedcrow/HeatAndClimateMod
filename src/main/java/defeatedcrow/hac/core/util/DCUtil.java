@@ -58,7 +58,7 @@ public class DCUtil {
 		return rand.nextBoolean() ? 1 : -1;
 	}
 
-	public static final ResourceLocation DUMMY = new ResourceLocation("dcs_climate:empty");
+	public static final ResourceLocation DUMMY = ResourceLocation.fromNamespaceAndPath("dcs_climate", "empty");
 
 	public static boolean isEmpty(ItemStack item) {
 		if (item == null) {

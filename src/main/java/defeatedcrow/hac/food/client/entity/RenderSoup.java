@@ -8,8 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 
 public class RenderSoup<T extends FoodEntityBase> extends RenderFoodBase<FoodEntityBase> {
 
-	protected BowlSoupModel<FoodEntityBase> model;
-
 	public RenderSoup(Context ctx) {
 		super(ctx);
 		this.model = new BowlSoupModel<>(ctx.bakeLayer(SoupItem.SOUP_CREAM_POTATO.getLayerLocation()));

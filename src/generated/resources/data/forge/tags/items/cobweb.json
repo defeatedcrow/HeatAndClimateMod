@@ -1,0 +1,13 @@
+{
+  "values": [
+    "minecraft:cobweb",
+    {
+      "id": "biomesoplenty:hanging_cobweb",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:stringy_cobweb",
+      "required": false
+    }
+  ]
+}

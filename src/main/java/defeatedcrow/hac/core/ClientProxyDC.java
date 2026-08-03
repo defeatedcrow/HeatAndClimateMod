@@ -14,6 +14,7 @@ import defeatedcrow.hac.core.client.event.BlockHitEffectsEvent;
 import defeatedcrow.hac.core.client.event.ClimateHUDEvent;
 import defeatedcrow.hac.core.client.event.RenderPlayerEventDC;
 import defeatedcrow.hac.core.client.event.SoundMufflerEvent;
+import defeatedcrow.hac.core.client.gui.DisplayCaseScreen_Owner;
 import defeatedcrow.hac.core.client.gui.DisplayShelfScreen;
 import defeatedcrow.hac.core.client.gui.DoubleInventoryScreen;
 import defeatedcrow.hac.core.client.gui.SimpleInventoryScreen;
@@ -94,6 +95,7 @@ public class ClientProxyDC extends CommonProxyDC {
 		MenuScreens.register(CoreInit.UNLOCKED_DOUBLE.get(), UnlockedInventoryScreen::new);
 		MenuScreens.register(BuildInit.DISPLAY_SHELF_MENU.get(), DisplayShelfScreen::new);
 		MenuScreens.register(BuildInit.DISPLAY_DOUBLE_SHELF_MENU.get(), DisplayShelfScreen::new);
+		MenuScreens.register(BuildInit.DISPLAY_CASE_OWNER_MENU.get(), DisplayCaseScreen_Owner::new);
 		MenuScreens.register(MachineInit.CHAMBER_MENU.get(), HeatingChamberScreen::new);
 		MenuScreens.register(MachineInit.FLUID_CHAMBER_MENU.get(), FluidChamberScreen::new);
 		MenuScreens.register(MachineInit.KICHEN_STOVE_MENU.get(), KichenStoveScreen::new);
