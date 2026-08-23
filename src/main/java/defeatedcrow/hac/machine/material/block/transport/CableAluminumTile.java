@@ -12,11 +12,11 @@ public class CableAluminumTile extends CableCopperTile {
 		super(MachineInit.CABLE_ALUMINUM_TILE.get(), pos, state);
 	}
 
-	public SidedEnergyTankDC battery = new SidedEnergyTankDC(this, getMaxEnergy(), 128).setAllFases(FaceIO.NONE);
+	public SidedEnergyTankDC battery = new SidedEnergyTankDC(this, getMaxEnergy(), 1024).setAllFases(FaceIO.NONE);
 
 	@Override
 	protected int getMaxEnergy() {
-		return 1280;
+		return 4096;
 	}
 
 	@Override

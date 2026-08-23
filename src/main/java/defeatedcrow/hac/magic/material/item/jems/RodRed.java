@@ -73,14 +73,17 @@ public class RodRed extends MagicJewelBase {
 		if (!DCUtil.isEmpty(charm) && level instanceof ServerLevel serverLevel) {
 			Vec3 vec3 = Vec3.atCenterOf(res.getBlockPos());
 			BlockPos p1 = new BlockPos(vec3);
-			if (!level.getBlockState(p1).isAir()) {
+			if (!level.getBlockState(p1)
+			    .isAir()) {
 				ResourceKey<Level> dim = serverLevel.dimension();
 				CompoundTag tag = charm.getOrCreateTag();
-				tag.putString(TagKeyDC.DIM_LOCATION, dim.location().toString());
+				tag.putString(TagKeyDC.DIM_LOCATION, dim.location()
+				    .toString());
 				tag.putInt(TagKeyDC.POS_X, p1.getX());
 				tag.putInt(TagKeyDC.POS_Y, p1.getY());
 				tag.putInt(TagKeyDC.POS_Z, p1.getZ());
-				tag.putInt(TagKeyDC.DIRECTION, res.getDirection().get3DDataValue());
+				tag.putInt(TagKeyDC.DIRECTION, res.getDirection()
+				    .get3DDataValue());
 				charm.setTag(tag);
 
 				if (player instanceof ServerPlayer sp) {
@@ -98,7 +101,8 @@ public class RodRed extends MagicJewelBase {
 
 	public InteractionResultHolder<ItemStack> onEmptyHit(Level level, Player player, InteractionHand hand, ItemStack charm) {
 		if (!DCUtil.isEmpty(charm) && isActive(player, charm) && level instanceof ServerLevel serverLevel) {
-			if (charm.hasTag() && charm.getTag().contains(TagKeyDC.DIM_LOCATION)) {
+			if (charm.hasTag() && charm.getTag()
+			    .contains(TagKeyDC.DIM_LOCATION)) {
 				CompoundTag tag = charm.getTag();
 				String s1 = tag.getString(TagKeyDC.DIM_LOCATION);
 				int dx = tag.getInt(TagKeyDC.POS_X);
@@ -106,8 +110,9 @@ public class RodRed extends MagicJewelBase {
 				int dz = tag.getInt(TagKeyDC.POS_Z);
 				int d = tag.getInt(TagKeyDC.DIRECTION);
 				Direction dir = Direction.from3DDataValue(d);
-				ResourceKey<Level> dim = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(s1));
-				if (!serverLevel.dimension().equals(dim)) {
+				ResourceKey<Level> dim = ResourceKey.create(Registry.DIMENSION_REGISTRY, ResourceLocation.parse(s1));
+				if (!serverLevel.dimension()
+				    .equals(dim)) {
 					MutableComponent mes = Component.translatable("dcs.tip.rod.red.error1");
 					return InteractionResultHolder.success(charm);
 				} else {
@@ -145,7 +150,8 @@ public class RodRed extends MagicJewelBase {
 			list.add(cost);
 		}
 		MutableComponent itemName = Component.translatable("dcs.tip.rod.name." + getColor().toString());
-		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
+		itemName.withStyle(getColor().chatColor)
+		    .withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
 	}
 
@@ -161,11 +167,13 @@ public class RodRed extends MagicJewelBase {
 
 			if (ConfigCommonBuilder.INSTANCE.enFlavorText.get()) {
 				MutableComponent itemTip2 = Component.translatable("dcs.tip.rod.flavor." + getColor().toString());
-				itemTip2.withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.GRAY);
+				itemTip2.withStyle(ChatFormatting.ITALIC)
+				    .withStyle(ChatFormatting.GRAY);
 				list.add(itemTip2);
 			}
 
-			if (item.hasTag() && item.getTag().contains(TagKeyDC.DIM_LOCATION)) {
+			if (item.hasTag() && item.getTag()
+			    .contains(TagKeyDC.DIM_LOCATION)) {
 				CompoundTag tag = item.getTag();
 				String s1 = tag.getString(TagKeyDC.DIM_LOCATION);
 				int dx = tag.getInt(TagKeyDC.POS_X);
@@ -173,12 +181,18 @@ public class RodRed extends MagicJewelBase {
 				int dz = tag.getInt(TagKeyDC.POS_Z);
 				int d = tag.getInt(TagKeyDC.DIRECTION);
 				Direction dir = Direction.from3DDataValue(d);
-				list.add(Component.translatable("dcs.tip.coodinate").withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("DIM: " + s1).withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("X: " + dx).withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("Y: " + dy).withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("Z: " + dz).withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("Direction: " + dir).withStyle(ChatFormatting.GRAY));
+				list.add(Component.translatable("dcs.tip.coodinate")
+				    .withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("DIM: " + s1)
+				    .withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("X: " + dx)
+				    .withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("Y: " + dy)
+				    .withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("Z: " + dz)
+				    .withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("Direction: " + dir)
+				    .withStyle(ChatFormatting.GRAY));
 			}
 		}
 	}

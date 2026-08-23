@@ -76,13 +76,20 @@ public class RodBlue extends MagicJewelBase {
 
 	public InteractionResultHolder<ItemStack> onBlockHit(Level level, Player player, InteractionHand hand, ItemStack charm, BlockHitResult res) {
 		if (!DCUtil.isEmpty(charm) && level instanceof ServerLevel serverLevel) {
-			Vec3 vec3 = Vec3.atBottomCenterOf(res.getBlockPos().relative(res.getDirection()));
+			Vec3 vec3 = Vec3.atBottomCenterOf(res.getBlockPos()
+			    .relative(res.getDirection()));
 			BlockPos p1 = new BlockPos(vec3);
 			BlockPos p2 = p1.above();
-			if (level.getBlockState(p1).getMaterial().isReplaceable() && level.getBlockState(p2).getMaterial().isReplaceable()) {
+			if (level.getBlockState(p1)
+			    .getMaterial()
+			    .isReplaceable()
+			    && level.getBlockState(p2)
+			        .getMaterial()
+			        .isReplaceable()) {
 				ResourceKey<Level> dim = serverLevel.dimension();
 				CompoundTag tag = charm.getOrCreateTag();
-				tag.putString(TagKeyDC.DIM_LOCATION, dim.location().toString());
+				tag.putString(TagKeyDC.DIM_LOCATION, dim.location()
+				    .toString());
 				tag.putInt(TagKeyDC.POS_X, p1.getX());
 				tag.putInt(TagKeyDC.POS_Y, p1.getY());
 				tag.putInt(TagKeyDC.POS_Z, p1.getZ());
@@ -104,20 +111,25 @@ public class RodBlue extends MagicJewelBase {
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack charm, Player player, LivingEntity entity, InteractionHand hand) {
 		if (entity != null && entity.isAlive() && player.getLevel() instanceof ServerLevel serverLevel) {
-			if (charm.hasTag() && charm.getTag().contains(TagKeyDC.DIM_LOCATION) && isActive(player, charm)) {
+			if (charm.hasTag() && charm.getTag()
+			    .contains(TagKeyDC.DIM_LOCATION) && isActive(player, charm)) {
 				Vec3 origin = entity.getEyePosition();
 				CompoundTag tag = charm.getTag();
 				String s1 = tag.getString(TagKeyDC.DIM_LOCATION);
 				double dx = tag.getInt(TagKeyDC.POS_X) + 0.5D;
 				double dy = tag.getInt(TagKeyDC.POS_Y) + 0.05D;
 				double dz = tag.getInt(TagKeyDC.POS_Z) + 0.5D;
-				ResourceKey<Level> dim = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(s1));
-				if (!serverLevel.dimension().equals(dim)) {
-					ServerLevel nextLevel = serverLevel.getServer().getLevel(dim);
-					nextLevel.getProfiler().push("portal");
+				ResourceKey<Level> dim = ResourceKey.create(Registry.DIMENSION_REGISTRY, ResourceLocation.parse(s1));
+				if (!serverLevel.dimension()
+				    .equals(dim)) {
+					ServerLevel nextLevel = serverLevel.getServer()
+					    .getLevel(dim);
+					nextLevel.getProfiler()
+					    .push("portal");
 					entity.setPortalCooldown();
 					entity.changeDimension(nextLevel);
-					nextLevel.getProfiler().pop();
+					nextLevel.getProfiler()
+					    .pop();
 				}
 				entity.teleportToWithTicket(dx, dy, dz);
 				entity.resetFallDistance();
@@ -140,7 +152,8 @@ public class RodBlue extends MagicJewelBase {
 			list.add(cost);
 		}
 		MutableComponent itemName = Component.translatable("dcs.tip.rod.name." + getColor().toString());
-		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
+		itemName.withStyle(getColor().chatColor)
+		    .withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
 	}
 
@@ -154,21 +167,28 @@ public class RodBlue extends MagicJewelBase {
 
 			if (ConfigCommonBuilder.INSTANCE.enFlavorText.get()) {
 				MutableComponent itemTip2 = Component.translatable("dcs.tip.rod.flavor." + getColor().toString());
-				itemTip2.withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.GRAY);
+				itemTip2.withStyle(ChatFormatting.ITALIC)
+				    .withStyle(ChatFormatting.GRAY);
 				list.add(itemTip2);
 			}
 
-			if (item.hasTag() && item.getTag().contains(TagKeyDC.DIM_LOCATION)) {
+			if (item.hasTag() && item.getTag()
+			    .contains(TagKeyDC.DIM_LOCATION)) {
 				CompoundTag tag = item.getTag();
 				String s1 = tag.getString(TagKeyDC.DIM_LOCATION);
 				int dx = tag.getInt(TagKeyDC.POS_X);
 				int dy = tag.getInt(TagKeyDC.POS_Y);
 				int dz = tag.getInt(TagKeyDC.POS_Z);
-				list.add(Component.translatable("dcs.tip.coodinate").withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("DIM: " + s1).withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("X: " + dx).withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("Y: " + dy).withStyle(ChatFormatting.GRAY));
-				list.add(Component.literal("Z: " + dz).withStyle(ChatFormatting.GRAY));
+				list.add(Component.translatable("dcs.tip.coodinate")
+				    .withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("DIM: " + s1)
+				    .withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("X: " + dx)
+				    .withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("Y: " + dy)
+				    .withStyle(ChatFormatting.GRAY));
+				list.add(Component.literal("Z: " + dz)
+				    .withStyle(ChatFormatting.GRAY));
 			}
 		}
 	}

@@ -42,9 +42,9 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 	private Map<BlockSet, DCAirflow> airs;
 
 	public BlockClimateRegister() {
-		this.heats = new HashMap<BlockSet, DCHeatTier>();
-		this.hums = new HashMap<BlockSet, DCHumidity>();
-		this.airs = new HashMap<BlockSet, DCAirflow>();
+		this.heats = new HashMap<>();
+		this.hums = new HashMap<>();
+		this.airs = new HashMap<>();
 		init();
 	}
 
@@ -108,7 +108,8 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 		if (b != null) {
 			return Optional.ofNullable(heats.get(b));
 		}
-		return BlockClimateData.getData(block.getBlock()).map(ret -> ret.getHeat());
+		return BlockClimateData.getData(block.getBlock())
+		    .map(BlockClimateData::getHeat);
 
 	}
 
@@ -120,7 +121,8 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 		if (b != null) {
 			return Optional.ofNullable(hums.get(b));
 		}
-		return BlockClimateData.getData(block.getBlock()).map(ret -> ret.getHumidity());
+		return BlockClimateData.getData(block.getBlock())
+		    .map(BlockClimateData::getHumidity);
 	}
 
 	@Override
@@ -131,25 +133,29 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 		if (b != null) {
 			return Optional.ofNullable(airs.get(b));
 		}
-		return BlockClimateData.getData(block.getBlock()).map(ret -> ret.getAirflow());
+		return BlockClimateData.getData(block.getBlock())
+		    .map(BlockClimateData::getAirflow);
 	}
 
 	@Override
 	public boolean isRegisteredHeat(BlockState block) {
 		Set<BlockSet> s = heats.keySet();
-		return this.include(s, block) != null || BlockClimateData.getData(block.getBlock()).isPresent();
+		return this.include(s, block) != null || BlockClimateData.getData(block.getBlock())
+		    .isPresent();
 	}
 
 	@Override
 	public boolean isRegisteredHum(BlockState block) {
 		Set<BlockSet> s = hums.keySet();
-		return this.include(s, block) != null || BlockClimateData.getData(block.getBlock()).isPresent();
+		return this.include(s, block) != null || BlockClimateData.getData(block.getBlock())
+		    .isPresent();
 	}
 
 	@Override
 	public boolean isRegisteredAir(BlockState block) {
 		Set<BlockSet> s = airs.keySet();
-		return this.include(s, block) != null || BlockClimateData.getData(block.getBlock()).isPresent();
+		return this.include(s, block) != null || BlockClimateData.getData(block.getBlock())
+		    .isPresent();
 	}
 
 	@Override
@@ -180,7 +186,7 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 	/* json */
 	public static void registerBlockClimate(ParamBlock param) {
 		if (param != null && param.blockName != null) {
-			ResourceLocation res = new ResourceLocation(param.blockName);
+			ResourceLocation res = ResourceLocation.parse(param.blockName);
 			Block b = ForgeRegistries.BLOCKS.getValue(res);
 			if (b != null && b != Blocks.AIR) {
 				BlockSet set = new BlockSet(b, param.property, param.values);
@@ -200,7 +206,6 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 				}
 			} else {
 				DCLogger.warnLog("fail to register target block from json: " + param.blockName);
-				return;
 			}
 		}
 	}
@@ -210,7 +215,8 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 
 			File dir = new File(ClimateCore.configDir, "/block_climate/");
 			if (dir.getParentFile() != null) {
-				dir.getParentFile().mkdirs();
+				dir.getParentFile()
+				    .mkdirs();
 			}
 
 			try {
@@ -250,7 +256,8 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 
 			File dir = new File(ClimateCore.configDir, "/block_climate/sample.json");
 			if (dir.getParentFile() != null) {
-				dir.getParentFile().mkdirs();
+				dir.getParentFile()
+				    .mkdirs();
 			}
 
 			try {
@@ -258,15 +265,16 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 					return;
 				}
 
-				ParamBlock ret = new ParamBlock("sample_mod_id:sample_block_name", "PropertyName", ImmutableList
-					.of("sampleValue"), DCHeatTier.HOT, DCHumidity.NORMAL, DCAirflow.TIGHT);
+				ParamBlock ret = new ParamBlock("sample_mod_id:sample_block_name", "PropertyName", ImmutableList.of("sampleValue"), DCHeatTier.HOT, DCHumidity.NORMAL, DCAirflow.TIGHT);
 
 				if (dir.canWrite()) {
 					FileOutputStream fos = new FileOutputStream(dir.getPath());
 					OutputStreamWriter osw = new OutputStreamWriter(fos);
 					JsonWriter jsw = new JsonWriter(osw);
 					jsw.setIndent(" ");
-					Gson gson = new GsonBuilder().serializeNulls().disableHtmlEscaping().create();
+					Gson gson = new GsonBuilder().serializeNulls()
+					    .disableHtmlEscaping()
+					    .create();
 					gson.toJson(ret, ParamBlock.class, jsw);
 
 					osw.close();
@@ -287,22 +295,26 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 	@Override
 	public List<BlockSet> getRegisteredBlocks() {
 		List<BlockSet> ret = Lists.newArrayList();
-		heats.keySet().forEach(b -> {
-			if (!ret.contains(b))
-				ret.add(b);
-		});
-		hums.keySet().forEach(b -> {
-			if (!ret.contains(b))
-				ret.add(b);
-		});
-		airs.keySet().forEach(b -> {
-			if (!ret.contains(b))
-				ret.add(b);
-		});
-		Stream.of(BlockClimateData.values()).forEach(data -> {
-			if (!ret.contains(data.getBlockSet()))
-				ret.add(data.getBlockSet());
-		});
+		heats.keySet()
+		    .forEach(b -> {
+			    if (!ret.contains(b))
+				    ret.add(b);
+		    });
+		hums.keySet()
+		    .forEach(b -> {
+			    if (!ret.contains(b))
+				    ret.add(b);
+		    });
+		airs.keySet()
+		    .forEach(b -> {
+			    if (!ret.contains(b))
+				    ret.add(b);
+		    });
+		Stream.of(BlockClimateData.values())
+		    .forEach(data -> {
+			    if (!ret.contains(data.getBlockSet()))
+				    ret.add(data.getBlockSet());
+		    });
 		return ret;
 	}
 

@@ -21,11 +21,11 @@ public class WeatherChecker {
 
 	private WeatherChecker() {}
 
-	public static final Map<ResourceLocation, Float> rainPowerMap = new HashMap<ResourceLocation, Float>();
+	public static final Map<ResourceLocation, Float> rainPowerMap = new HashMap<>();
 
-	public static final Map<ResourceLocation, Integer> rainCountMap = new HashMap<ResourceLocation, Integer>();
+	public static final Map<ResourceLocation, Integer> rainCountMap = new HashMap<>();
 
-	public static final Map<ResourceLocation, Integer> sunCountMap = new HashMap<ResourceLocation, Integer>();
+	public static final Map<ResourceLocation, Integer> sunCountMap = new HashMap<>();
 
 	private static final int drought = 30;
 
@@ -46,19 +46,24 @@ public class WeatherChecker {
 		int dayD = DCTimeHelper.getDisplayDay(world);
 		int time = DCTimeHelper.currentTime(world);
 		String date = DCTimeHelper.getDate(world);
-		boolean muf = MagicPictureEvent.getList().stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLUE_BLACK));
-		boolean dig = MagicPictureEvent.getList().stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.GREEN_BLACK));
+		boolean muf = MagicPictureEvent.getList()
+		    .stream()
+		    .anyMatch(MagicPictureEvent.checkColor(MagicColor.BLUE_BLACK));
+		boolean dig = MagicPictureEvent.getList()
+		    .stream()
+		    .anyMatch(MagicPictureEvent.checkColor(MagicColor.GREEN_BLACK));
 		boolean flag = false;
 		if (day != lastDay) {
 			lastDay = day;
 			flag = true;
 		}
 
-		// DCLogger.debugLog("=current weather info=");
-		// DCLogger.debugLog("dim:" + dim.registry() + " " + dimName);
-		// DCLogger.debugLog("rain:" + rain + " time:" + rainTime);
-		// DCLogger.debugLog("thunder:" + world.thunderLevel);
-		// DCLogger.debugLog("sun time:" + sunTime);
+		// DCLogger.debugInfoLog("=current weather info=");
+		// DCLogger.debugInfoLog("dim:" + dim.registry() + " " + dimName);
+		// DCLogger.debugInfoLog("rain:" + rain + " time:" + rainTime);
+		// DCLogger.debugInfoLog("thunder:" + world.thunderLevel);
+		// DCLogger.debugInfoLog("sun time:" + sunTime);
+		// DCLogger.debugInfoLog("season:" + season);
 
 		rainPowerMap.put(dimName, rain);
 		boolean r = rain > 0.25F;
@@ -112,13 +117,20 @@ public class WeatherChecker {
 		}
 		if (drought > 0 && sun > drought && !isHell) {
 			// 日照り気味
-			return -1F * ConfigCommonBuilder.INSTANCE.vWeatherRain.get().floatValue();
+			return -1F * ConfigCommonBuilder.INSTANCE.vWeatherRain.get()
+			    .floatValue();
 		}
 		if (count > 0 && rain > 0.25F) {
-			return isHell ? -1F * ConfigCommonBuilder.INSTANCE.vWeatherRain.get().floatValue() : ConfigCommonBuilder.INSTANCE.vWeatherRain.get().floatValue();
+			return isHell ? -1F * ConfigCommonBuilder.INSTANCE.vWeatherRain.get()
+			    .floatValue()
+			    : ConfigCommonBuilder.INSTANCE.vWeatherRain.get()
+			        .floatValue();
 		}
 		if (rain > 0.85F) {
-			return isHell ? -1F * ConfigCommonBuilder.INSTANCE.vWeatherRain.get().floatValue() : ConfigCommonBuilder.INSTANCE.vWeatherRain.get().floatValue();
+			return isHell ? -1F * ConfigCommonBuilder.INSTANCE.vWeatherRain.get()
+			    .floatValue()
+			    : ConfigCommonBuilder.INSTANCE.vWeatherRain.get()
+			        .floatValue();
 		}
 
 		return 0;

@@ -7,4 +7,12 @@ public interface IPotFoods {
 
 	EntityRenderData getPotTexture(Item item);
 
+	LayerType getPotLayerModel(Item item);
+
+	public static enum LayerType {
+		LAYER,
+		FISH,
+		POT;
+	}
+
 }

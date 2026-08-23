@@ -35,6 +35,8 @@ public class OmeletItem extends ItemEntityFood {
 			return SAUSAGE;
 		if (item == FoodInit.SAUSAGE_CURRY.get())
 			return SAUSAGE_CURRY;
+		if (item == FoodInit.GALETTE.get())
+			return GALETTE;
 		return BASIC;
 	}
 
@@ -42,17 +44,21 @@ public class OmeletItem extends ItemEntityFood {
 	public static final EntityRenderData VEGI = new EntityRenderData("food/plate_omelet_vegi", 1.0F, 0F);
 	public static final EntityRenderData SAUSAGE = new EntityRenderData("food/plate_sausage_saute", 1.0F, 0F);
 	public static final EntityRenderData SAUSAGE_CURRY = new EntityRenderData("food/plate_sausage_curry", 1.0F, 0F);
+	public static final EntityRenderData GALETTE = new EntityRenderData("food/galette_complete", 1.0F, 0F);
 
 	public static enum ModelType {
 		OMELET,
 		SAUSAGE,
-		CURRY;
+		CURRY,
+		GALETTE;
 
 		public static ModelType getType(Item item) {
 			if (item == FoodInit.SAUSAGE_SAUTE.get())
 				return SAUSAGE;
 			if (item == FoodInit.SAUSAGE_CURRY.get())
 				return CURRY;
+			if (item == FoodInit.GALETTE.get())
+				return GALETTE;
 			return OMELET;
 		}
 	}

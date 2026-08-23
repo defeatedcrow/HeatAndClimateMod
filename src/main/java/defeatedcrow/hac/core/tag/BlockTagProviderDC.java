@@ -252,11 +252,11 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.HOPPER).addTag(TagDC.BlockTag.HOPPER_FILTER)
 		    .add(Blocks.HOPPER, MachineInit.HOPPER_GOLD.get());
 
-		tag(TagDC.BlockTag.LEAKAGE_MACHINE).add(MachineInit.CABLE_COPPER.get());
-
 		tag(TagDC.BlockTag.FLUID_PIPE).add(MachineInit.PIPE_BRASS.get());
 
 		tag(TagDC.BlockTag.ENERGY_CABLE).add(MachineInit.CABLE_COPPER.get(), MachineInit.CABLE_COPPER_COATED.get());
+
+		tag(TagDC.BlockTag.HAC_MACHINE).addTags(TagDC.BlockTag.ENERGY_MACHINE, TagDC.BlockTag.CLIMATE_MACHINE, TagDC.BlockTag.DISPLAY_MACHINE, TagDC.BlockTag.LEAKAGE_MACHINE, TagDC.BlockTag.FLUID_PIPE, TagDC.BlockTag.ENERGY_CABLE);
 
 		tag(TagDC.BlockTag.NOT_LOOF).add(Blocks.TORCH, Blocks.WALL_TORCH, Blocks.REDSTONE_TORCH, Blocks.REDSTONE_WALL_TORCH, Blocks.SOUL_TORCH, Blocks.SOUL_WALL_TORCH, Blocks.FLOWER_POT);
 
@@ -272,6 +272,14 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		    MachineInit.MONITOR_ANDON_PANEL_4.get(), MachineInit.MONITOR_ANDON_PANEL_5.get(), MachineInit.MONITOR_ANDON_PANEL_6.get(), MachineInit.MONITOR_ANDON_PANEL_7.get(), MachineInit.MONITOR_ANDON_PANEL_8.get(),
 		    MachineInit.MONITOR_ANDON_PANEL_9.get(), MachineInit.MONITOR_COMPARATOR.get(), MachineInit.MONITOR_ENERGY.get(), MachineInit.MONITOR_RS.get(), MachineInit.MONITOR_RS_PILOT.get(), MachineInit.MONITOR_TEMP.get(),
 		    MachineInit.STORMGLASS.get());
+
+		tag(TagDC.BlockTag.LEAKAGE_MACHINE).add(MachineInit.CABLE_COPPER.get());
+
+		tag(TagDC.BlockTag.ENERGY_MACHINE).add(MachineInit.BATTERY_SMALL.get(), MachineInit.BATTERY_MIDDLE.get(), MachineInit.GENERATOR_SMALL.get());
+
+		tag(TagDC.BlockTag.CLIMATE_MACHINE).add(MachineInit.KICHEN_STOVE.get(), MachineInit.FUEL_BURNER.get(), MachineInit.CHAMBER_IRON.get(), MachineInit.CHAMBER_BRICK_A.get(), MachineInit.CHAMBER_BRICK_B.get());
+
+		tag(TagDC.BlockTag.DISPLAY_MACHINE).add(MachineInit.STORMGLASS.get(), MachineInit.ENTITY_CAMERA.get(), MachineInit.REFLECTIVE_SENSOR.get(), MachineInit.PLAYER_PRESSURE_PLATE.get());
 
 		tag(TagDC.BlockTag.FAUSET).add(MachineInit.FAUCET_A.get(), MachineInit.FAUCET_B.get(), MachineInit.FAUCET_C.get(), MachineInit.FAUCET_D.get());
 
@@ -293,8 +301,8 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		// plugins
 
-		tag(TagDC.BlockTag.CROP_GREEN_MANURES).addOptional(new ResourceLocation("biomesoplenty", "clover"));
-		tag(TagDC.BlockTag.CROP_GREEN_MANURES).addOptional(new ResourceLocation("biomesoplenty", "dune_grass"));
+		tag(TagDC.BlockTag.CROP_GREEN_MANURES).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "clover"));
+		tag(TagDC.BlockTag.CROP_GREEN_MANURES).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "dune_grass"));
 
 	}
 

@@ -62,7 +62,7 @@ public class FaucetTile extends BlockEntity implements IRenderBlockData {
 
 	// cap
 
-	protected FluidFauset tank = new FluidFauset(1000);
+	protected FluidFauset tank = new FluidFauset(4096);
 
 	LazyOptional<? extends IFluidHandler> fluidhandler = LazyOptional.of(() -> tank);
 
@@ -116,7 +116,7 @@ public class FaucetTile extends BlockEntity implements IRenderBlockData {
 
 		@Override
 		public int getTankCapacity(int tank) {
-			return 128;
+			return 1024;
 		}
 
 		@Override

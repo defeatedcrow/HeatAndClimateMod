@@ -29,20 +29,24 @@ public class DataUtilDC {
 
 	public static List<Ingredient> getIngs(JsonObject json) {
 		List<Ingredient> ret = Lists.newArrayList();
-		if (GsonHelper.isValidNode(json, "ingredients") && json.get("ingredients").isJsonArray()) {
+		if (GsonHelper.isValidNode(json, "ingredients") && json.get("ingredients")
+		    .isJsonArray()) {
 			JsonArray array = GsonHelper.getAsJsonArray(json, "ingredients");
-			StreamSupport.stream(array.spliterator(), false).filter(e -> !e.isJsonNull()).forEach(e -> ret.add(Ingredient.fromJson(e.getAsJsonObject())));
+			StreamSupport.stream(array.spliterator(), false)
+			    .filter(e -> !e.isJsonNull())
+			    .forEach(e -> ret.add(Ingredient.fromJson(e.getAsJsonObject())));
 		}
 		return ret;
 	}
 
 	public static ItemStack getStackOrEmpty(JsonObject json, String key) {
 		ItemStack stack = ItemStack.EMPTY;
-		if (GsonHelper.isValidNode(json, key) && json.get(key).isJsonObject())
+		if (GsonHelper.isValidNode(json, key) && json.get(key)
+		    .isJsonObject())
 			stack = net.minecraftforge.common.crafting.CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, key), true, true);
 		else if (json.has(key)) {
 			String s1 = GsonHelper.getAsString(json, key);
-			ResourceLocation res = new ResourceLocation(s1);
+			ResourceLocation res = ResourceLocation.parse(s1);
 			if (ForgeRegistries.ITEMS.containsKey(res))
 				stack = new ItemStack(ForgeRegistries.ITEMS.getValue(res));
 		}
@@ -51,11 +55,12 @@ public class DataUtilDC {
 
 	public static ItemStack getStack(JsonObject json, String key) {
 		ItemStack stack = new ItemStack(CoreInit.NULL_ITEM.get());
-		if (GsonHelper.isValidNode(json, key) && json.get(key).isJsonObject())
+		if (GsonHelper.isValidNode(json, key) && json.get(key)
+		    .isJsonObject())
 			stack = net.minecraftforge.common.crafting.CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, key), true, true);
 		else if (json.has(key)) {
 			String s1 = GsonHelper.getAsString(json, key);
-			ResourceLocation res = new ResourceLocation(s1);
+			ResourceLocation res = ResourceLocation.parse(s1);
 			if (ForgeRegistries.ITEMS.containsKey(res))
 				stack = new ItemStack(ForgeRegistries.ITEMS.getValue(res));
 		}
@@ -64,10 +69,11 @@ public class DataUtilDC {
 
 	public static FluidStack getFluidStack(JsonObject json, String key) {
 		FluidStack stack = FluidStack.EMPTY;
-		if (GsonHelper.isValidNode(json, key) && json.get(key).isJsonObject()) {
+		if (GsonHelper.isValidNode(json, key) && json.get(key)
+		    .isJsonObject()) {
 			JsonObject obj = GsonHelper.getAsJsonObject(json, key);
 			String fluidName = GsonHelper.getAsString(obj, "fluid");
-			ResourceLocation res = new ResourceLocation(fluidName);
+			ResourceLocation res = ResourceLocation.parse(fluidName);
 			if (ForgeRegistries.FLUIDS.containsKey(res)) {
 				Fluid fluid = ForgeRegistries.FLUIDS.getValue(res);
 				int amo = GsonHelper.getAsInt(obj, "amount", 1000);
@@ -79,9 +85,13 @@ public class DataUtilDC {
 
 	public static List<String> getList(JsonObject json, String key) {
 		List<String> ret = Lists.newArrayList();
-		if (GsonHelper.isValidNode(json, key) && json.get(key).isJsonArray()) {
+		if (GsonHelper.isValidNode(json, key) && json.get(key)
+		    .isJsonArray()) {
 			JsonArray array = GsonHelper.getAsJsonArray(json, key);
-			StreamSupport.stream(array.spliterator(), false).filter(e -> e.isJsonPrimitive()).forEach(e -> ret.add(e.getAsJsonPrimitive().getAsString()));
+			StreamSupport.stream(array.spliterator(), false)
+			    .filter(JsonElement::isJsonPrimitive)
+			    .forEach(e -> ret.add(e.getAsJsonPrimitive()
+			        .getAsString()));
 		}
 		return ret;
 	}

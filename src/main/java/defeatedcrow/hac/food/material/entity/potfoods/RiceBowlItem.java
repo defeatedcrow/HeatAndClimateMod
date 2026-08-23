@@ -38,8 +38,19 @@ public class RiceBowlItem extends ItemEntityFood implements IPotFoods {
 			return BARLEY_LAYER;
 		if (item == FoodInit.RICE_SEKI.get())
 			return SEKI_LAYER;
+		if (item == FoodInit.RICE_MUSHROOM.get())
+			return MUSHROOM_LAYER;
+		if (item == FoodInit.RICE_TAIMESHI.get())
+			return TAIMESHI_LAYER;
 
 		return NORMAL_LAYER;
+	}
+
+	@Override
+	public LayerType getPotLayerModel(Item item) {
+		if (item == FoodInit.RICE_TAIMESHI.get())
+			return LayerType.FISH;
+		return LayerType.LAYER;
 	}
 
 	public static final EntityRenderData NORMAL = new EntityRenderData("food/rice_boiled", 0.75F, 0F);
@@ -47,9 +58,13 @@ public class RiceBowlItem extends ItemEntityFood implements IPotFoods {
 	public static final EntityRenderData SEKI = new EntityRenderData("food/rice_seki", 0.75F, 0F);
 	public static final EntityRenderData NAPA = new EntityRenderData("food/rice_napa", 0.75F, 0F);
 	public static final EntityRenderData FISH = new EntityRenderData("food/rice_fish", 0.75F, 0F);
+	public static final EntityRenderData TAIMESHI = new EntityRenderData("food/rice_mushroom", 0.75F, 0F);
+	public static final EntityRenderData MUSHROOM = new EntityRenderData("food/rice_taimeshi", 0.75F, 0F);
 
 	public static final EntityRenderData NORMAL_LAYER = new EntityRenderData("food/layer/rice_boiled_layer", 1F, 0F);
 	public static final EntityRenderData BARLEY_LAYER = new EntityRenderData("food/layer/rice_barley_layer", 1F, 0F);
 	public static final EntityRenderData SEKI_LAYER = new EntityRenderData("food/layer/rice_seki_layer", 1F, 0F);
+	public static final EntityRenderData MUSHROOM_LAYER = new EntityRenderData("food/layer/rice_mushroom_layer", 1F, 0F);
+	public static final EntityRenderData TAIMESHI_LAYER = new EntityRenderData("food/layer/rice_taimeshi_layer", 1F, 0F);
 
 }

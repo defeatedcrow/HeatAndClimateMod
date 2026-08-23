@@ -31,8 +31,8 @@ public class DeviceRecipe implements IDeviceRecipe {
 
 	private final RecipeTypeDC type;
 
-	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
-	private List<String> inputFluid = new ArrayList<String>();
+	private List<Ingredient> ingredients = new ArrayList<>();
+	private List<String> inputFluid = new ArrayList<>();
 
 	private ItemStack result = ItemStack.EMPTY;
 	private ItemStack secondary = ItemStack.EMPTY;
@@ -41,20 +41,17 @@ public class DeviceRecipe implements IDeviceRecipe {
 	private int tertiaryRate = 0;
 	private FluidStack resultFluid = FluidStack.EMPTY;
 
-	private List<DCHeatTier> heat = new ArrayList<DCHeatTier>();
-	private List<DCHumidity> hum = new ArrayList<DCHumidity>();
-	private List<DCAirflow> air = new ArrayList<DCAirflow>();
+	private List<DCHeatTier> heat = new ArrayList<>();
+	private List<DCHumidity> hum = new ArrayList<>();
+	private List<DCAirflow> air = new ArrayList<>();
 
 	private int priority = 1;
 
-	public DeviceRecipe(String group, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<String> t, List<String> h, List<String> a, List<String> inF,
-			List<Ingredient> in) {
+	public DeviceRecipe(String group, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<String> t, List<String> h, List<String> a, List<String> inF, List<Ingredient> in) {
 		this(RecipeTypeDC.getType(group), o, sec, secRate, ter, terRate, oF, DCHeatTier.getListFromName(t), DCHumidity.getListFromName(h), DCAirflow.getListFromName(a), inF, in);
 	}
 
-	public DeviceRecipe(RecipeTypeDC typeIn, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a,
-			List<String> inF,
-			List<Ingredient> in) {
+	public DeviceRecipe(RecipeTypeDC typeIn, ItemStack o, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack oF, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, List<String> inF, List<Ingredient> in) {
 		type = typeIn;
 		int c = 0;
 		if (in != null && !in.isEmpty()) {
@@ -139,7 +136,7 @@ public class DeviceRecipe implements IDeviceRecipe {
 	public List<TagKey<Fluid>> getInputFluids() {
 		List<TagKey<Fluid>> ret = Lists.newArrayList();
 		for (String name : inputFluid) {
-			ResourceLocation res = new ResourceLocation(name);
+			ResourceLocation res = ResourceLocation.parse(name);
 			TagKey<Fluid> tagkey = TagKey.create(Registry.FLUID_REGISTRY, res);
 			if (tagkey != null)
 				ret.add(tagkey);
@@ -198,13 +195,16 @@ public class DeviceRecipe implements IDeviceRecipe {
 			return input1.isEmpty();
 		} else if (getInputFluids().size() == 1) {
 			TagKey<Fluid> tag1 = getInputFluids().get(0);
-			f1 = !input1.isEmpty() && input1.getFluid().is(tag1);
+			f1 = !input1.isEmpty() && input1.getFluid()
+			    .is(tag1);
 			f2 = true;
 		} else if (getInputFluids().size() > 1) {
 			TagKey<Fluid> tag1 = getInputFluids().get(0);
 			TagKey<Fluid> tag2 = getInputFluids().get(1);
-			f1 = !input1.isEmpty() && input1.getFluid().is(tag1);
-			f2 = !input2.isEmpty() && input2.getFluid().is(tag2);
+			f1 = !input1.isEmpty() && input1.getFluid()
+			    .is(tag1);
+			f2 = !input2.isEmpty() && input2.getFluid()
+			    .is(tag2);
 		}
 		return f1 && f2;
 	}
@@ -251,14 +251,16 @@ public class DeviceRecipe implements IDeviceRecipe {
 
 		if (!result.isEmpty()) {
 			JsonObject ret = new JsonObject();
-			ret.addProperty("item", ForgeRegistries.ITEMS.getKey(result.getItem()).toString());
+			ret.addProperty("item", ForgeRegistries.ITEMS.getKey(result.getItem())
+			    .toString());
 			ret.addProperty("count", result.getCount());
 			json.add("result", ret);
 		}
 
 		if (!secondary.isEmpty()) {
 			JsonObject sec = new JsonObject();
-			sec.addProperty("item", ForgeRegistries.ITEMS.getKey(secondary.getItem()).toString());
+			sec.addProperty("item", ForgeRegistries.ITEMS.getKey(secondary.getItem())
+			    .toString());
 			sec.addProperty("count", secondary.getCount());
 			json.add("secondary", sec);
 
@@ -267,7 +269,8 @@ public class DeviceRecipe implements IDeviceRecipe {
 
 		if (!tertiary.isEmpty()) {
 			JsonObject ter = new JsonObject();
-			ter.addProperty("item", ForgeRegistries.ITEMS.getKey(tertiary.getItem()).toString());
+			ter.addProperty("item", ForgeRegistries.ITEMS.getKey(tertiary.getItem())
+			    .toString());
 			ter.addProperty("count", tertiary.getCount());
 			json.add("tertiary", ter);
 
@@ -276,7 +279,8 @@ public class DeviceRecipe implements IDeviceRecipe {
 
 		if (!resultFluid.isEmpty()) {
 			JsonObject retF = new JsonObject();
-			retF.addProperty("fluid", ForgeRegistries.FLUIDS.getKey(resultFluid.getFluid()).toString());
+			retF.addProperty("fluid", ForgeRegistries.FLUIDS.getKey(resultFluid.getFluid())
+			    .toString());
 			retF.addProperty("amount", resultFluid.getAmount());
 			json.add("result_fluid", retF);
 		}

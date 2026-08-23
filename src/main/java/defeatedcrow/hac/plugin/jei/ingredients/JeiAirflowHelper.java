@@ -32,7 +32,7 @@ public class JeiAirflowHelper implements IIngredientHelper<DCAirflow> {
 
 	@Override
 	public ResourceLocation getResourceLocation(DCAirflow ingredient) {
-		return new ResourceLocation(ClimateCore.MOD_ID, "airflow/" + ingredient.toString());
+		return ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "airflow/" + ingredient.toString());
 	}
 
 	@Override

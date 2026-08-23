@@ -35,13 +35,17 @@ public class MagicPictureEvent {
 			EnumSeason season = event.currentSeason();
 			List<MagicPictureEntity> list = getList();
 
-			if (list.stream().anyMatch(checkColor(MagicColor.WHITE_BLUE))) {
+			if (list.stream()
+			    .anyMatch(checkColor(MagicColor.WHITE_BLUE))) {
 				season = EnumSeason.WINTER_LATE;
-			} else if (list.stream().anyMatch(checkColor(MagicColor.WHITE_RED))) {
+			} else if (list.stream()
+			    .anyMatch(checkColor(MagicColor.WHITE_RED))) {
 				season = EnumSeason.SUMMER_LATE;
-			} else if (list.stream().anyMatch(checkColor(MagicColor.BLUE_GREEN))) {
+			} else if (list.stream()
+			    .anyMatch(checkColor(MagicColor.BLUE_GREEN))) {
 				season = EnumSeason.FLOWER;
-			} else if (list.stream().anyMatch(checkColor(MagicColor.RED_GREEN))) {
+			} else if (list.stream()
+			    .anyMatch(checkColor(MagicColor.RED_GREEN))) {
 				season = EnumSeason.HARVEST;
 			} else if (level.dimension() == Level.NETHER) {
 				season = EnumSeason.SCORCHER;
@@ -49,10 +53,8 @@ public class MagicPictureEvent {
 				season = EnumSeason.ABSOLUTE;
 			}
 
-			if (event.currentSeason() != season) {
-				event.setNewSeason(season);
-				event.setResult(Result.ALLOW);
-			}
+			event.setNewSeason(season);
+			event.setResult(Result.ALLOW);
 		}
 	}
 
@@ -62,7 +64,8 @@ public class MagicPictureEvent {
 			Level level = event.getLevel();
 			List<MagicPictureEntity> list = getList();
 
-			if (list.stream().anyMatch(checkColor(MagicColor.BLUE_BLACK))) {
+			if (list.stream()
+			    .anyMatch(checkColor(MagicColor.BLUE_BLACK))) {
 				event.setCanceled(true);
 			}
 		}
@@ -74,16 +77,15 @@ public class MagicPictureEvent {
 			Level level = event.getLevel();
 			List<MagicPictureEntity> list = getList();
 
-			if (list.stream().anyMatch(checkColor(MagicColor.BLUE_BLACK))) {
+			if (list.stream()
+			    .anyMatch(checkColor(MagicColor.BLUE_BLACK))) {
 				event.setCanceled(true);
 			}
 		}
 	}
 
 	public static Predicate<MagicPictureEntity> checkColor(MagicColor color) {
-		return (e) -> {
-			return e.getColor() == color;
-		};
+		return e -> (e.getColor() == color);
 	}
 
 }

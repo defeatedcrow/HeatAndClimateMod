@@ -1,0 +1,9 @@
+{
+  "type": "dcs_climate:device_fuel",
+  "group": "biomass",
+  "ingredient": {
+    "tag": "forge:fallen_leaves"
+  },
+  "input_fluid": "empty",
+  "burn_time": 100
+}

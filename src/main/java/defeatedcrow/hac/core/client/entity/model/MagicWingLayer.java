@@ -19,7 +19,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class MagicWingLayer extends RenderLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
-	private static final ResourceLocation WINGS_LOCATION = new ResourceLocation("dcs_climate:textures/entity/magic/magic_wing.png");
+	private static final ResourceLocation WINGS_LOCATION = ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/entity/magic/magic_wing.png");
 	private final ModelMagicWing<LivingEntity> wingModel;
 
 	public MagicWingLayer(RenderLayerParent<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> render, EntityModelSet modelSet) {

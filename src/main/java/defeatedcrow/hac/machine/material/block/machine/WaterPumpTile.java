@@ -2,6 +2,8 @@ package defeatedcrow.hac.machine.material.block.machine;
 
 import javax.annotation.Nullable;
 
+import org.jetbrains.annotations.NotNull;
+
 import defeatedcrow.hac.api.machine.FaceIO;
 import defeatedcrow.hac.api.machine.IFluidPipe;
 import defeatedcrow.hac.api.util.DCState;
@@ -49,15 +51,32 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 				int cost = 0;
 				// WATER
 				if (DCState.getBool(getBlockState(), EntityBlockDC.WATERLOGGED) || pumpState.is(Fluids.WATER) || pumpState.is(Fluids.FLOWING_WATER)) {
-					fill = new FluidStack(Fluids.WATER, getEnergyHandler().getEnergyStored()).copy();
-					if (fill.getAmount() > 32) {
-						// 水のみ吸い上げにエネルギーを必要としない
-						fill.setAmount(32);
+					fill = new FluidStack(Fluids.WATER, 1000);
+					if (fill != null && !fill.isEmpty()) {
+						int amount = tank.fill(fill.copy(), FluidAction.SIMULATE);
+						// head
+						int add = 0;
+						// water depth
+						for (int i = 1; i < 17; i++) {
+							FluidState above = getLevel().getFluidState(getBlockPos().above(i));
+							if (above.is(Fluids.WATER)) {
+								add++;
+							} else {
+								break;
+							}
+						}
+						int head = add + 8;
+						DCFluidUtil.addHead(fill, head);
+						if (amount > 256) {
+							amount = 256;
+						}
+						fill.setAmount(amount);
 					}
-				} else if (getEnergyHandler().getEnergyStored() >= 100) {
+				} else if (getEnergyHandler().getEnergyStored() >= 32) {
 					// LIQUID
 					if (isPumpableWater(pumpState)) {
 						fill = new FluidStack(pumpState.getType(), 1000);
+						DCFluidUtil.addHead(fill, 8);
 					} else {
 						// Scan
 						int count = 16;
@@ -82,7 +101,7 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 							}
 							if (!last.isEmpty() && last.isSource()) {
 								fill = new FluidStack(last.getType(), 1000);
-								cost = 100;
+								cost = 32;
 							}
 							if (lastPos.equals(p2)) {
 								break;
@@ -92,9 +111,29 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 							count--;
 						}
 					}
+
+					if (fill != null && !fill.isEmpty()) {
+						FluidStack drain = fill.copy();
+						// head
+						float h = 8;
+						// viscosity
+						float f2 = (17000F - drain.getFluid()
+						    .getFluidType()
+						    .getViscosity(drain)) / 16000F;
+						if (f2 < 0.0625F)
+							f2 = 0.0625F;
+						if (f2 > 4F)
+							f2 = 4F;
+						h *= f2;
+						int head = Mth.ceil(h);
+						cost = 32 * Mth.ceil(1F / f2);
+						if (head > 0) {
+							DCFluidUtil.addHead(fill, head);
+						}
+					}
 				}
 
-				if (!fill.isEmpty()) {
+				if (!fill.isEmpty() && fill.getAmount() > 0) {
 					int ret = tank.fill(fill, FluidAction.SIMULATE);
 					if (ret == fill.getAmount()) {
 						tank.fill(fill, FluidAction.EXECUTE);
@@ -102,7 +141,8 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 						if (fill.getFluid() != Fluids.WATER && s2.getBlock() instanceof BucketPickup pickup) {
 							pickup.pickupBlock(getLevel(), lastPos, s2);
 						}
-						getEnergyHandler().consumeEnergy(cost);
+						if (cost > 0)
+							getEnergyHandler().consumeEnergy(cost);
 					}
 				}
 			}
@@ -120,7 +160,6 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 						    if (drain.getAmount() > 1000) {
 							    drain.setAmount(1000);
 						    }
-						    DCFluidUtil.addHead(drain, 6);
 						    int ret = handler.fill(drain, FluidAction.SIMULATE);
 						    if (ret > 0) {
 							    drain.setAmount(ret);
@@ -143,44 +182,12 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 							    if (drain.getAmount() > 1000) {
 								    drain.setAmount(1000);
 							    }
-							    drain = DCFluidUtil.addHead(drain, 1);
 							    int ret = pipe.fill(drain, FluidAction.SIMULATE, Direction.DOWN);
 							    if (ret > 0) {
-								    // head
-								    int add = 0;
-								    // water depth
-								    for (int i = 0; i < 10; i++) {
-									    FluidState above = getLevel().getFluidState(getBlockPos().above(i));
-									    if (above.is(Fluids.WATER)) {
-										    add++;
-									    } else {
-										    break;
-									    }
-								    }
-								    float f1 = 1F - add * 0.05F;
-								    float h = add * f1;
-								    // viscosity
-								    float f2 = (17000F - drain.getFluid()
-								        .getFluidType()
-								        .getViscosity(drain)) / 16000F;
-								    if (f2 < 0.0625F)
-									    f2 = 0.0625F;
-								    if (f2 > 4F)
-									    f2 = 4F;
-								    h *= f2;
-								    int cost = Mth.ceil(10F / f2);
-								    int head = Mth.ceil(h) + 6;
-								    int vol = Mth.ceil(ret * f2);
-								    if (vol > 1000) {
-									    vol = 1000;
-								    }
-								    if (head > 0) {
-									    drain.setAmount(vol);
-									    drain = DCFluidUtil.addHead(drain, head);
-									    int consume = handler.fill(drain, FluidAction.EXECUTE);
-									    tank.drain(consume, FluidAction.EXECUTE);
-									    getEnergyHandler().consumeEnergy(cost);
-								    }
+								    drain.setAmount(ret);
+								    int consume = handler.fill(drain, FluidAction.EXECUTE);
+								    tank.drain(consume, FluidAction.EXECUTE);
+								    getEnergyHandler().consumeEnergy(8);
 							    }
 						    });
 					}
@@ -265,10 +272,11 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 	}
 
 	public class PumpTank extends DCHeadTank {
-		protected final NonNullList<FaceIO> pumpFaces = NonNullList.of(FaceIO.OUTPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT);
+		protected final NonNullList<FaceIO> pumpFaces;
 
 		protected PumpTank(int cap, int flow) {
 			super(cap, flow);
+			pumpFaces = NonNullList.of(FaceIO.OUTPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT);
 		}
 
 		@Override
@@ -276,11 +284,27 @@ public class WaterPumpTile extends EnergyMachineBaseDC {
 			int i = dir.get3DDataValue();
 			if (i >= 0 && i < 6) {
 				if (pumpFaces.size() <= i) {
-					pumpFaces.add(i, FaceIO.NONE);
+					return FaceIO.NONE;
 				}
 				return pumpFaces.get(i);
 			}
 			return FaceIO.NONE;
+		}
+
+		@Override
+		public int fill(FluidStack get, FluidAction action, Direction from) {
+			if (from == Direction.UP) {
+				return 0;
+			}
+			return super.fill(get, action, from);
+		}
+
+		@Override
+		public @NotNull FluidStack drain(FluidStack resource, FluidAction action, Direction to) {
+			if (to != Direction.UP) {
+				return FluidStack.EMPTY;
+			}
+			return super.drain(resource, action, to);
 		}
 
 		@Override

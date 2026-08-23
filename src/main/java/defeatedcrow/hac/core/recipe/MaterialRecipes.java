@@ -143,66 +143,31 @@ public class MaterialRecipes {
 	public static final GemBlock B_OLIVINE = new GemBlock("olivine", CoreInit.GEMBLOCK_OLIVINE, CoreInit.GEM_OLIVINE, () -> TagDC.ItemTag.GEM_OLIVINE);
 	public static final GemBlock B_DEMANTOID = new GemBlock("demantoid", CoreInit.GEMBLOCK_DEMANTOID, CoreInit.GEM_DEMANTOID, () -> TagDC.ItemTag.GEM_DEMANTOID);
 
-	public static final GemBlock[] GEMBLOCK_VARIANT = { B_CHALCEDONY, B_HELIODOR, B_TOPAZ, B_FLUORITE, B_LARIMAR, B_AQUAMARINE, B_JET, B_IOLITE, B_SAKURA, B_OPAL,
-	    B_DRAGONSEYE, B_DESERT_ROSE, B_ROSINCA, B_SPINEL, B_SERPENTINE, B_AMAZONITE, B_JADEITE, B_CRYSTAL, B_THUNDEREGG, B_CATSEYE,
-	    B_CELESTITE, B_SAPPHIRE, B_VIVIANITE, B_FANG, B_KUNZITE, B_JASPER, B_ALMANDINE, B_RUBY, B_MALACHITE, B_OLIVINE, B_DEMANTOID };
+	public static final GemBlock[] GEMBLOCK_VARIANT = { B_CHALCEDONY, B_HELIODOR, B_TOPAZ, B_FLUORITE, B_LARIMAR, B_AQUAMARINE, B_JET, B_IOLITE, B_SAKURA, B_OPAL, B_DRAGONSEYE, B_DESERT_ROSE, B_ROSINCA, B_SPINEL, B_SERPENTINE, B_AMAZONITE,
+	    B_JADEITE, B_CRYSTAL, B_THUNDEREGG, B_CATSEYE, B_CELESTITE, B_SAPPHIRE, B_VIVIANITE, B_FANG, B_KUNZITE, B_JASPER, B_ALMANDINE, B_RUBY, B_MALACHITE, B_OLIVINE, B_DEMANTOID };
 
-	public record Color(
-	    String name,
-	    MagicColor color,
-	    Supplier<Block> block,
-	    Supplier<Block> blockDeep,
-	    Supplier<Item> gemPri,
-	    Supplier<Item> gemSec,
-	    Supplier<Item> gemTert,
-	    Supplier<Item> orePri,
-	    Supplier<Item> oreSec,
-	    Supplier<Item> oreTert,
-	    Supplier<Item> dustPri,
-	    Supplier<Item> dustSec,
-	    Supplier<Item> dustTert) {
+	public record Color(String name, MagicColor color, Supplier<Block> block, Supplier<Block> blockDeep, Supplier<Item> gemPri, Supplier<Item> gemSec, Supplier<Item> gemTert, Supplier<Item> orePri, Supplier<Item> oreSec,
+	    Supplier<Item> oreTert, Supplier<Item> dustPri, Supplier<Item> dustSec, Supplier<Item> dustTert) {
 
 		public TagKey<Item> getTag(String str) {
-			return ItemTags.create(new ResourceLocation("forge", str + "/" + name));
+			return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", str + "/" + name));
 		}
 
 	}
 
-	public record Alloy(
-	    String name, Rarity rarity,
-	    Supplier<Block> metalBlock,
-	    Supplier<Block> dustBlock,
-	    Supplier<Item> ingotItem,
-	    Supplier<TagKey<Item>> dustPrimary,
-	    Supplier<TagKey<Item>> dustSecondary,
+	public record Alloy(String name, Rarity rarity, Supplier<Block> metalBlock, Supplier<Block> dustBlock, Supplier<Item> ingotItem, Supplier<TagKey<Item>> dustPrimary, Supplier<TagKey<Item>> dustSecondary,
 	    Supplier<TagKey<Item>> dustTertiary) {
 
 		public TagKey<Item> getTag(String str) {
-			return ItemTags.create(new ResourceLocation("forge", str + "/" + name));
+			return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", str + "/" + name));
 		}
 	}
 
-	public record Gem(
-	    String name, Rarity rarity,
-	    MagicColor color,
-	    Supplier<Block> ore,
-	    Supplier<Item> gem) {}
+	public record Gem(String name, Rarity rarity, MagicColor color, Supplier<Block> ore, Supplier<Item> gem) {}
 
-	public record Stone(
-	    String name,
-	    Supplier<Block> stoneBlock,
-	    Supplier<Block> bricksBlock,
-	    Supplier<Block> pillarBlock,
-	    Supplier<Block> chiseledBlock,
-	    Supplier<Block> stairsBlock,
-	    Supplier<Block> slabBlock,
-	    Supplier<Block> wallBlock) {}
+	public record Stone(String name, Supplier<Block> stoneBlock, Supplier<Block> bricksBlock, Supplier<Block> pillarBlock, Supplier<Block> chiseledBlock, Supplier<Block> stairsBlock, Supplier<Block> slabBlock, Supplier<Block> wallBlock) {}
 
-	public record GemBlock(
-	    String name,
-	    Supplier<Block> block,
-	    Supplier<Item> gem,
-	    Supplier<TagKey<Item>> tag) {}
+	public record GemBlock(String name, Supplier<Block> block, Supplier<Item> gem, Supplier<TagKey<Item>> tag) {}
 
 	public static Optional<TagKey<Item>> getTagDC(Item item) {
 		if (item instanceof IItemDC) {

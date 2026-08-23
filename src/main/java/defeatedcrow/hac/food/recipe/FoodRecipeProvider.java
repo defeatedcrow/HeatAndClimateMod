@@ -333,6 +333,80 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_cake", has(FoodInit.CAKE_BUTTER.get()))
 		    .save(cons, "dcs_climate:food/cake_lemon_0");
 
+		ShapelessRecipeBuilder.shapeless(FoodInit.CRAPE_SUGAR.get(), 1)
+		    .requires(Ingredient.of(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+		    .requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+		    .unlockedBy("has_crape", has(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .save(cons, "dcs_climate:food/crape_sugar_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CRAPE_CREAM.get(), 1)
+		    .requires(Ingredient.of(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.CREAMS))
+		    .requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+		    .requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+		    .unlockedBy("has_crape", has(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .save(cons, "dcs_climate:food/crape_cream_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CRAPE_CREAM.get(), 1)
+		    .requires(Ingredient.of(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.CUSTARD))
+		    .unlockedBy("has_crape", has(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .save(cons, "dcs_climate:food/crape_cream_2");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CRAPE_CARAMEL.get(), 1)
+		    .requires(Ingredient.of(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.CREAMS))
+		    .requires(Ingredient.of(TagDC.ItemTag.SUGARS))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_NUTS))
+		    .requires(Ingredient.of(TagDC.ItemTag.HAC_ICECREAMS))
+		    .unlockedBy("has_crape", has(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .save(cons, "dcs_climate:food/crape_caramel_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CRAPE_COCOA.get(), 1)
+		    .requires(Ingredient.of(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.CREAMS))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_COCOA))
+		    .requires(Ingredient.of(TagDC.ItemTag.HAC_ICECREAMS))
+		    .unlockedBy("has_crape", has(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .save(cons, "dcs_climate:food/crape_cocoa_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CRAPE_BERRY.get(), 1)
+		    .requires(Ingredient.of(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.CREAMS))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_BERRY))
+		    .requires(Ingredient.of(TagDC.ItemTag.JAM))
+		    .requires(Ingredient.of(TagDC.ItemTag.HAC_ICECREAMS))
+		    .unlockedBy("has_crape", has(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .save(cons, "dcs_climate:food/crape_berry_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CRAPE_APPLE.get(), 1)
+		    .requires(Ingredient.of(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.CREAMS))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_CINNAMON))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_APPLE))
+		    .requires(Ingredient.of(TagDC.ItemTag.HAC_ICECREAMS))
+		    .unlockedBy("has_crape", has(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .save(cons, "dcs_climate:food/crape_apple_0");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CRAPE_TUNA.get(), 1)
+		    .requires(Ingredient.of(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+		    .requires(Ingredient.of(TagDC.ItemTag.TUNA))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
+		    .requires(Ingredient.of(TagDC.ItemTag.MAYONNAISE))
+		    .unlockedBy("has_crape", has(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .save(cons, "dcs_climate:food/crape_tuna_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.CRAPE_TUNA.get(), 1)
+		    .requires(Ingredient.of(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
+		    .requires(Ingredient.of(TagDC.ItemTag.SKIPJACK))
+		    .requires(Ingredient.of(TagDC.ItemTag.CROP_GREEN_LEAFS))
+		    .requires(Ingredient.of(TagDC.ItemTag.MAYONNAISE))
+		    .unlockedBy("has_crape", has(FoodInit.BREAD_CRAPE_BAKED_ITEM.get()))
+		    .save(cons, "dcs_climate:food/crape_tuna_2");
+
 		ShapelessRecipeBuilder.shapeless(FoodInit.WAGASHI_BOTA.get(), 1)
 		    .requires(Ingredient.of(TagDC.ItemTag.RICE_CAKE))
 		    .requires(Ingredient.of(TagDC.ItemTag.ANKO))
@@ -1221,10 +1295,16 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
 		    .requires(Ingredient.of(TagDC.ItemTag.MILKS))
 		    .requires(Ingredient.of(TagDC.ItemTag.SUGARS))
-		    .requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT))
 		    .requires(Ingredient.of(Tags.Items.EGGS))
 		    .unlockedBy("has_wheat", has(TagDC.ItemTag.DUST_WHEAT))
-		    .save(cons, "dcs_climate:food/food_batter_0");
+		    .save(cons, "dcs_climate:food/food_crape_batter_1");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_CRAPE_BATTER.get(), 2)
+		    .requires(Ingredient.of(TagDC.ItemTag.DUST_BUCKWHEAT))
+		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .requires(Ingredient.of(Tags.Items.EGGS))
+		    .unlockedBy("has_buckwheat", has(TagDC.ItemTag.DUST_WHEAT))
+		    .save(cons, "dcs_climate:food/food_crape_batter_2");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_CAKE_BATTER.get(), 3)
 		    .requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
@@ -1773,6 +1853,14 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_wax", has(TagDC.ItemTag.FOOD_WAX))
 		    .save(cons, "dcs_climate:food/vanilla_candle");
 
+		ShapedRecipeBuilder.shaped(Items.CANDLE, 1)
+		    .pattern("X")
+		    .pattern("Y")
+		    .define('X', Tags.Items.STRING)
+		    .define('Y', TagDC.ItemTag.ANIMAL_FAT)
+		    .unlockedBy("has_animal_fat", has(TagDC.ItemTag.ANIMAL_FAT))
+		    .save(cons, "dcs_climate:food/animal_fat_candle");
+
 		ShapedRecipeBuilder.shaped(FoodInit.SAP_POISON.get(), 1)
 		    .pattern("XXX")
 		    .pattern("XYX")
@@ -1899,7 +1987,6 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_PASTA.get(), 1)
 		    .requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT))
-		    .requires(Ingredient.of(TagDC.ItemTag.DUST_SALT))
 		    .requires(Ingredient.of(Tags.Items.EGGS))
 		    .unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT))
 		    .save(cons, "dcs_climate:food/foodmaterial_pasta");
@@ -1931,6 +2018,12 @@ public class FoodRecipeProvider extends RecipeProvider {
 		    .requires(Ingredient.of(TagDC.ItemTag.DUST_STARCH))
 		    .unlockedBy("has_dust_rices", has(TagDC.ItemTag.DUST_RICES))
 		    .save(cons, "dcs_climate:food/foodmaterial_rice_noodle");
+
+		ShapelessRecipeBuilder.shapeless(FoodInit.NOODLE_GLASS.get(), 1)
+		    .requires(Ingredient.of(TagDC.ItemTag.DUST_STARCH))
+		    .requires(Ingredient.of(TagDC.ItemTag.WATER))
+		    .unlockedBy("has_dust_starch", has(TagDC.ItemTag.DUST_STARCH))
+		    .save(cons, "dcs_climate:food/foodmaterial_glass_noodle");
 
 		ShapelessRecipeBuilder.shapeless(FoodInit.FOOD_MOCHI.get(), 2)
 		    .requires(Ingredient.of(TagDC.ItemTag.BOILED_RICE))
@@ -2407,7 +2500,9 @@ public class FoodRecipeProvider extends RecipeProvider {
 		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.CROP_COFFEE), FoodInit.ROASTED_COFFEE.get(), 200, "roasted_coffee", FoodInit.CROP_RU_COFFEE.get(), "has_crop_coffee");
 		cookingRecipe(cons, Ingredient.of(FoodInit.LOG_EU_MANCHINEEL.get()), FoodInit.LOG_EU_MANCHINEEL_DRY.get(), 200, "dried_manchineel_log", FoodInit.LOG_EU_MANCHINEEL.get(), "has_log_manchineel");
 		cookingRecipe(cons, Ingredient.of(Tags.Items.EGGS), FoodInit.FRIED_EGG.get(), 200, "fried_egg", Items.EGG, "has_egg");
+		cookingRecipe(cons, Ingredient.of(TagDC.ItemTag.CRAB), FoodInit.GRILLED_CRAB.get(), 200, "grilled_crab", FoodInit.FOOD_CRAB.get(), "has_crab");
 		cookingRecipe(cons, Ingredient.of(FoodInit.FOOD_CAKE_BATTER.get()), FoodInit.CAKE_BUTTER.get(), 200, "cake_butter", FoodInit.FOOD_CAKE_BATTER.get(), "has_cake_batter");
+		cookingRecipe(cons, Ingredient.of(FoodInit.FOOD_CRAPE_BATTER.get()), FoodInit.BREAD_CRAPE_BAKED_ITEM.get(), 200, "crape_baked", FoodInit.FOOD_CRAPE_BATTER.get(), "has_crape_batter");
 		smokingRecipe(cons, Ingredient.of(FoodInit.SALT_PORK.get()), FoodInit.SMOKED_BACON.get(), 200, "smoked_bacon", FoodInit.SALT_PORK.get(), "has_salt_pork");
 		smeltingRecipe(cons, Ingredient.of(TagDC.ItemTag.CONT_LEAVES), FoodInit.DUST_ASH.get(), 200, "dust_ash1", FoodInit.CONT_LEAVES.get(), "has_cont_leaves");
 		smokingRecipe(cons, Ingredient.of(TagDC.ItemTag.RAW_SAUSAGE), FoodInit.SMOKED_SAUSAGE.get(), 200, "smoked_sausage", FoodInit.RAW_SAUSAGE.get(), "has_raw_sausage");

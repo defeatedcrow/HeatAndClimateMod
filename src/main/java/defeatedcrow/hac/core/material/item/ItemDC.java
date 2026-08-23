@@ -70,10 +70,31 @@ public abstract class ItemDC extends Item implements IJsonDataDC, IItemDC {
 			if (stack.is(TagDC.ItemTag.BARKS)) {
 				return 200;
 			}
+			if (stack.is(TagDC.ItemTag.FALLEN_LEAVES)) {
+				return 200;
+			}
+			if (stack.is(TagDC.ItemTag.CONT_LEAVES)) {
+				return 1600;
+			}
+			if (stack.is(TagDC.ItemTag.CROP_OILS)) {
+				return 200;
+			}
+			if (stack.is(TagDC.ItemTag.CROP_LACQUER)) {
+				return 200;
+			}
 			if (stack.is(TagDC.ItemTag.PLANT_OIL)) {
 				return 800;
 			}
+			if (stack.is(TagDC.ItemTag.FOOD_WAX)) {
+				return 800;
+			}
+			if (stack.is(TagDC.ItemTag.CONT_WAX)) {
+				return 6400;
+			}
 			if (stack.is(FoodInit.BIOMASS_BRIQUET.get())) {
+				return 1600;
+			}
+			if (stack.is(FoodInit.FOOD_ANIMAL_FAT.get())) {
 				return 1600;
 			}
 		}

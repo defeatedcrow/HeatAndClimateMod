@@ -158,7 +158,7 @@ public class CoffeeMakerBlock extends ProcessTileBlock {
 
 	@Override
 	public void advTooltipText(ItemStack item, @Nullable BlockGetter level, List<Component> list, boolean flag) {
-		MutableComponent tex1 = Component.translatable("dcs.tip.coffe_siphon");
+		MutableComponent tex1 = Component.translatable("dcs.tip.coffee_siphon");
 		list.add(tex1);
 	}
 

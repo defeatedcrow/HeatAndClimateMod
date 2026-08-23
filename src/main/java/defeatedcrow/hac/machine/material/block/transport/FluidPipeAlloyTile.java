@@ -96,28 +96,31 @@ public class FluidPipeAlloyTile extends FluidPipeTileBaseDC {
 			// Suction
 			for (Direction dir : DCUtil.PipeScanList) {
 				Direction opposite = dir.getOpposite();
-				BlockPos p2 = this.getBlockPos().relative(dir);
+				BlockPos p2 = this.getBlockPos()
+				    .relative(dir);
 				if (getFluidHandler().getFace(dir) == FaceIO.INPUT) {
 					BlockState targetState = getLevel().getBlockState(p2);
 					BlockEntity targetEntity = getLevel().getBlockEntity(p2);
 					if (targetEntity != null) {
-						targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.DOWN).ifPresent(handler -> {
-							if (handler != null && !(handler instanceof IFluidPipe)) {
-								// 抜き取りモード
-								int cap = getFluidHandler().getCapacity() - getFluidHandler().getFluidAmount();
-								int amo = Math.min(cap, getFluidHandler().getFlowRate());
-								FluidStack drain = handler.drain(amo, FluidAction.SIMULATE).copy();
-								if (!drain.isEmpty()) {
-									if (dir == Direction.UP)
-										drain = DCFluidUtil.addHead(drain, 1);
-									int ret = getFluidHandler().fill(drain, FluidAction.SIMULATE, dir);
-									if (ret > 0) {
-										getFluidHandler().fill(drain, FluidAction.EXECUTE, dir);
-										handler.drain(ret, FluidAction.EXECUTE);
-									}
-								}
-							}
-						});
+						targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.DOWN)
+						    .ifPresent(handler -> {
+							    if (handler != null && !(handler instanceof IFluidPipe)) {
+								    // 抜き取りモード
+								    int cap = getFluidHandler().getCapacity() - getFluidHandler().getFluidAmount();
+								    int amo = Math.min(cap, getFluidHandler().getFlowRate());
+								    FluidStack drain = handler.drain(amo, FluidAction.SIMULATE)
+								        .copy();
+								    if (!drain.isEmpty()) {
+									    if (dir == Direction.UP)
+										    drain = DCFluidUtil.addHead(drain, 1);
+									    int ret = getFluidHandler().fill(drain, FluidAction.SIMULATE, dir);
+									    if (ret > 0) {
+										    getFluidHandler().fill(drain, FluidAction.EXECUTE, dir);
+										    handler.drain(ret, FluidAction.EXECUTE);
+									    }
+								    }
+							    }
+						    });
 					} else if (targetState.getBlock() instanceof LayeredCauldronBlock cauldron) {
 						if (cauldron == Blocks.WATER_CAULDRON && cauldron.isFull(targetState)) {
 							FluidStack drain = new FluidStack(Fluids.WATER, 1000);
@@ -145,85 +148,95 @@ public class FluidPipeAlloyTile extends FluidPipeTileBaseDC {
 	}
 
 	private FlowType isCollectSendTarget(Direction dir) {
-		if (!getFluidHandler().getFace(dir).canExtract())
+		if (!getFluidHandler().getFace(dir)
+		    .canExtract())
 			return FlowType.NONE;
 		boolean isGas = DCFluidUtil.isGas(getFluidHandler().getFluid());
-		BlockPos p2 = this.getBlockPos().relative(dir);
+		BlockPos p2 = this.getBlockPos()
+		    .relative(dir);
 		BlockEntity targetEntity = getLevel().getBlockEntity(p2);
 		Direction opposite = dir.getOpposite();
 		if (targetEntity != null) {
-			return targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, opposite).map(handler -> {
-				if (handler instanceof IFluidPipe pipe) {
-					if (pipe.getFace(opposite).canReceive()) {
-						if (getFluidHandler().getFace(dir) == FaceIO.OUTPUT) {
-							return FlowType.ALL;
-						} else {
-							if (pipe.getFace(opposite) == FaceIO.INPUT) {
-								return FlowType.ALL;
-							} else {
-								// PIPE to PIPE
-								int sourceCap = getFluidHandler().getCapacity() - getFluidHandler().getFluidAmount();
-								int destCap = pipe.getTankCapacity(0) - pipe.getFluidAmount();
-								if (dir == Direction.DOWN) {
-									if (isGas && sourceCap <= destCap) {
-										return FlowType.NONE;
-									} else if (isGas || (destCap <= pipe.getFlowRate() && sourceCap > destCap)) {
-										return FlowType.AVERAGE;
-									} else {
-										return FlowType.ALL;
-									}
-								} else if (dir == Direction.UP) {
-									if (isGas || sourceCap <= pipe.getFlowRate()) {
-										return FlowType.AVERAGE;
-									} else {
-										return FlowType.NONE;
-									}
-								} else {
-									if (destCap > sourceCap) {
-										return FlowType.AVERAGE;
-									} else {
-										return FlowType.NONE;
-									}
-								}
-							}
-						}
-					}
-				} else {
-					return FlowType.ALL;
-				}
-				return FlowType.NONE;
-			}).orElse(FlowType.NONE);
+			return targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, opposite)
+			    .map(handler -> {
+				    if (handler instanceof IFluidPipe pipe) {
+					    if (pipe.getFace(opposite)
+					        .canReceive()) {
+						    if (getFluidHandler().getFace(dir) == FaceIO.OUTPUT) {
+							    return FlowType.ALL;
+						    } else if (pipe.getFace(opposite) == FaceIO.INPUT) {
+							    return FlowType.ALL;
+						    } else {
+							    // PIPE to PIPE
+							    int sourceCap = getFluidHandler().getCapacity() - getFluidHandler().getFluidAmount();
+							    int destCap = pipe.getTankCapacity(0) - pipe.getFluidAmount();
+							    if (dir == Direction.DOWN) {
+								    if (isGas && sourceCap <= destCap) {
+									    return FlowType.NONE;
+								    } else if (isGas || destCap <= pipe.getFlowRate() && sourceCap > destCap) {
+									    return FlowType.AVERAGE;
+								    } else {
+									    return FlowType.ALL;
+								    }
+							    } else if (dir == Direction.UP) {
+								    if (isGas || sourceCap <= pipe.getFlowRate()) {
+									    return FlowType.AVERAGE;
+								    } else {
+									    return FlowType.NONE;
+								    }
+							    } else {
+								    if (destCap > sourceCap) {
+									    return FlowType.AVERAGE;
+								    } else {
+									    return FlowType.NONE;
+								    }
+							    }
+						    }
+					    }
+				    } else {
+					    return FlowType.ALL;
+				    }
+				    return FlowType.NONE;
+			    })
+			    .orElse(FlowType.NONE);
 		}
 		return FlowType.NONE;
 	}
 
 	private int flowAll(Direction dir, int flow) {
-		BlockPos p2 = this.getBlockPos().relative(dir);
+		BlockPos p2 = this.getBlockPos()
+		    .relative(dir);
 		int amount = 0;
-		if (getFluidHandler().getFace(dir).canExtract()) {
+		if (getFluidHandler().getFace(dir)
+		    .canExtract()) {
 			BlockEntity targetEntity = getLevel().getBlockEntity(p2);
 			if (targetEntity != null) {
-				amount = targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, dir.getOpposite()).map(handler -> {
-					if (handler instanceof IFluidPipe sided) {
-						if (sided.getFace(dir.getOpposite()).canReceive()) {
-							int amo = Math.min(getFluidHandler().getFluidAmount(), flow);
-							FluidStack drain = getFluidHandler().drain(amo, FluidAction.SIMULATE, dir);
-							// 満タンまで流れる
-							if (!drain.isEmpty()) {
-								int ret = sided.fill(drain, FluidAction.EXECUTE, dir.getOpposite());
-								return getFluidHandler().drain(ret, FluidAction.EXECUTE, dir).getAmount();
-							}
-						}
-					} else if (handler != null) {
-						int amo = Math.min(getFluidHandler().getFluidAmount(), flow);
-						FluidStack drain = getFluidHandler().drain(amo, FluidAction.SIMULATE, dir);
-						if (!drain.isEmpty()) {
-							int ret = handler.fill(drain, FluidAction.EXECUTE);
-							return getFluidHandler().drain(ret, FluidAction.EXECUTE, dir).getAmount();
-						}
-					}
-					return 0;
-				}).orElse(0);
+				amount = targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, dir.getOpposite())
+				    .map(handler -> {
+					    if (handler instanceof IFluidPipe sided) {
+						    if (sided.getFace(dir.getOpposite())
+						        .canReceive()) {
+							    int amo = Math.min(getFluidHandler().getFluidAmount(), flow);
+							    FluidStack drain = getFluidHandler().drain(amo, FluidAction.SIMULATE, dir);
+							    // 満タンまで流れる
+							    if (!drain.isEmpty()) {
+								    int ret = sided.fill(drain, FluidAction.EXECUTE, dir.getOpposite());
+								    return getFluidHandler().drain(ret, FluidAction.EXECUTE, dir)
+								        .getAmount();
+							    }
+						    }
+					    } else if (handler != null) {
+						    int amo = Math.min(getFluidHandler().getFluidAmount(), flow);
+						    FluidStack drain = getFluidHandler().drain(amo, FluidAction.SIMULATE, dir);
+						    if (!drain.isEmpty()) {
+							    int ret = handler.fill(drain, FluidAction.EXECUTE);
+							    return getFluidHandler().drain(ret, FluidAction.EXECUTE, dir)
+							        .getAmount();
+						    }
+					    }
+					    return 0;
+				    })
+				    .orElse(0);
 			}
 		}
 		return amount;
@@ -231,40 +244,46 @@ public class FluidPipeAlloyTile extends FluidPipeTileBaseDC {
 
 	private int flowAverage(Direction dir, int flow) {
 		Direction opposite = dir.getOpposite();
-		BlockPos p2 = this.getBlockPos().relative(dir);
+		BlockPos p2 = this.getBlockPos()
+		    .relative(dir);
 		int amount = 0;
 		BlockEntity targetEntity = getLevel().getBlockEntity(p2);
 		if (targetEntity != null) {
-			amount = targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, opposite).map(handler -> {
-				int cap1 = getFluidHandler().getCapacity() - getFluidHandler().getFluidAmount();
-				int cap2 = handler.getTankCapacity(0) - handler.getFluidInTank(0).getAmount();
-				if (handler instanceof IFluidPipe sided) {
-					// 空きが多い方から少ない方へ
-					if (cap2 > cap1) {
-						int amo = Math.min((cap2 - cap1) + 1 / 2, flow);
-						amo = Math.max(amo, 1);
-						FluidStack drain = getFluidHandler().drain(amo, FluidAction.SIMULATE, dir);
-						int ret = sided.fill(drain, FluidAction.SIMULATE, opposite);
-						if (ret > 0) {
-							sided.fill(drain, FluidAction.EXECUTE, opposite);
-							return getFluidHandler().drain(ret, FluidAction.EXECUTE, dir).getAmount();
-						}
-					}
-				} else if (handler != null) {
-					// 空きが多い方から少ない方へ
-					if (cap2 > cap1) {
-						int amo = Math.min((cap2 - cap1) + 1 / 2, flow);
-						amo = Math.max(amo, 1);
-						FluidStack drain = getFluidHandler().drain(amo, FluidAction.SIMULATE, dir);
-						int ret = handler.fill(drain, FluidAction.SIMULATE);
-						if (ret > 0) {
-							handler.fill(drain, FluidAction.EXECUTE);
-							return getFluidHandler().drain(ret, FluidAction.EXECUTE, dir).getAmount();
-						}
-					}
-				}
-				return 0;
-			}).orElse(0);
+			amount = targetEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, opposite)
+			    .map(handler -> {
+				    int cap1 = getFluidHandler().getCapacity() - getFluidHandler().getFluidAmount();
+				    int cap2 = handler.getTankCapacity(0) - handler.getFluidInTank(0)
+				        .getAmount();
+				    if (handler instanceof IFluidPipe sided) {
+					    // 空きが多い方から少ない方へ
+					    if (cap2 > cap1) {
+						    int amo = Math.min(cap2 - cap1 + 1 / 2, flow);
+						    amo = Math.max(amo, 1);
+						    FluidStack drain = getFluidHandler().drain(amo, FluidAction.SIMULATE, dir);
+						    int ret = sided.fill(drain, FluidAction.SIMULATE, opposite);
+						    if (ret > 0) {
+							    sided.fill(drain, FluidAction.EXECUTE, opposite);
+							    return getFluidHandler().drain(ret, FluidAction.EXECUTE, dir)
+							        .getAmount();
+						    }
+					    }
+				    } else if (handler != null) {
+					    // 空きが多い方から少ない方へ
+					    if (cap2 > cap1) {
+						    int amo = Math.min(cap2 - cap1 + 1 / 2, flow);
+						    amo = Math.max(amo, 1);
+						    FluidStack drain = getFluidHandler().drain(amo, FluidAction.SIMULATE, dir);
+						    int ret = handler.fill(drain, FluidAction.SIMULATE);
+						    if (ret > 0) {
+							    handler.fill(drain, FluidAction.EXECUTE);
+							    return getFluidHandler().drain(ret, FluidAction.EXECUTE, dir)
+							        .getAmount();
+						    }
+					    }
+				    }
+				    return 0;
+			    })
+			    .orElse(0);
 		}
 		return amount;
 	}
@@ -286,7 +305,7 @@ public class FluidPipeAlloyTile extends FluidPipeTileBaseDC {
 	}
 
 	// caps
-	public PipeTank headtank = new PipeTank(2400, 32, this);
+	public PipeTank headtank = new PipeTank(2400, 256, this);
 
 	@Override
 	public PipeTank getFluidHandler() {

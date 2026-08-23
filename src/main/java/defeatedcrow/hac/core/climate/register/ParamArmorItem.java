@@ -18,7 +18,7 @@ public class ParamArmorItem {
 	}
 
 	public Optional<Item> getItem() {
-		Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName));
+		Item item = ForgeRegistries.ITEMS.getValue(ResourceLocation.parse(itemName));
 		if (item != null) {
 			return Optional.of(item);
 		}
@@ -27,8 +27,7 @@ public class ParamArmorItem {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj != null && obj instanceof ParamArmorItem) {
-			ParamArmorItem target = (ParamArmorItem) obj;
+		if (obj != null && obj instanceof ParamArmorItem target) {
 			return itemName.equals(target.itemName) && heatResistance == target.heatResistance && coldResistance == target.coldResistance;
 		}
 		return false;

@@ -23,7 +23,7 @@ public class TileNBTFunction extends LootItemConditionalFunction {
 		if (instance != null) {
 			return;
 		}
-		instance = Registry.register(Registry.LOOT_FUNCTION_TYPE, new ResourceLocation("dcs_climate:nbt_tile"), new LootItemFunctionType(new Serializer()));
+		instance = Registry.register(Registry.LOOT_FUNCTION_TYPE, ResourceLocation.fromNamespaceAndPath("dcs_climate", "nbt_tile"), new LootItemFunctionType(new Serializer()));
 	}
 
 	protected TileNBTFunction(LootItemCondition[] conditions) {
@@ -38,8 +38,7 @@ public class TileNBTFunction extends LootItemConditionalFunction {
 	@Override
 	protected ItemStack run(ItemStack item, LootContext context) {
 		BlockEntity tile = context.getParamOrNull(LootContextParams.BLOCK_ENTITY);
-		if (tile instanceof ITileNBTHolder) {
-			ITileNBTHolder holder = (ITileNBTHolder) tile;
+		if (tile instanceof ITileNBTHolder holder) {
 			return holder.getDropItem(item, tile);
 		}
 
@@ -49,8 +48,7 @@ public class TileNBTFunction extends LootItemConditionalFunction {
 	public static class Serializer extends LootItemConditionalFunction.Serializer<TileNBTFunction> {
 
 		@Override
-		public TileNBTFunction deserialize(JsonObject object, JsonDeserializationContext context,
-				LootItemCondition[] conditions) {
+		public TileNBTFunction deserialize(JsonObject object, JsonDeserializationContext context, LootItemCondition[] conditions) {
 			return new TileNBTFunction(conditions);
 		}
 

@@ -29,7 +29,7 @@ public class ParamBlock {
 	}
 
 	public Optional<BlockSet> getBlock() {
-		Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(blockName));
+		Block block = ForgeRegistries.BLOCKS.getValue(ResourceLocation.parse(blockName));
 		if (block != null) {
 			return Optional.of(new BlockSet(block, property, values));
 		}

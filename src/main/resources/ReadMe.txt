@@ -88,8 +88,8 @@
 
  ・昇温ブロック / Heating Block
 
- 温度調整のために役立つブロックが追加されています。
- HaC adds several heat source devices.
+ 　温度調整のために役立つブロックが追加されています。
+ 　HaC adds several heat source devices.
 
   - 加熱チャンバー / Heating Chamber
 
@@ -180,9 +180,11 @@
   ・Heatダメージの軽減 / Heat damage reduction
    - 防具の耐火エンチャント Armor fire protection enchantment
    - 耐火ポーション fire resistance potion
+   - 暑さに強い衣服 (植物繊維、皮革など) Heat-resistant clothing (plant fibers, leather, etc.)
 
   ・Coldダメージの軽減 / Cold damage reduction
    - HaCの耐寒ポーション cold resistance potion of HaC
+   - 寒さに強い衣服 (木綿、毛織物、毛皮など) Cold-resistant clothing (cotton, wool, fur, etc.)
 
  ● Hardmode AIRFLOWの影響 / About AIRFLOW hardmode config
 
@@ -276,26 +278,46 @@
 
  ・ 作物の変異 / Crop Mutation
 
- 　・施肥された耕地 / Fertilized farmland
+ ● 施肥された耕地 / Fertilized farmland
+ 
    - 耕地ブロックに肥料を与えると、『施肥された耕地』に変わります。3回まで施肥できます。
      Fertilizing a farmland block turns it into a "Fertilized Farmland". You can fertilize up to 3 times.
    - バニラの骨粉や、HaCで追加される肥料を使用できます。
      You can use vanilla bonemeal or HaC fertilizer.
    - 『緑肥』のTagを持つ作物をクワで右クリックすることでも、施肥された耕地を作ることが出来ます。
      It can also be created by right-clicking a plant with the "GREEN_MANURE" tag with a hoe.
+     
+  ・施肥された耕地は乾燥によって破壊されません。
+   Fertilized farmland does not crumble even when dry.
 
   ・施肥された耕地にWILD作物を植えると、レア度の高い作物に変化します。
   　施肥の回数が多いと、レアな作物の出現率が少し上昇します。
    Planting WILD crops on fertilized farmland will transform them into rarer crops.
    The more often you fertilize, the more rare crops appear.
+   
+ ● 栽培プランター / Gardening Pot
+ 
+  踏まれても破壊されない耕地です。
+  This is farmland that is not destroyed even when stepped on.
+  
+  WILD作物を変異させずに育てることが出来ます。
+  WILD crops grow without mutating.
+  
+ ● 改良型プランター / Breeding Pot
+ 
+  踏まれても破壊されない耕地です。
+  This is farmland that is not destroyed even when stepped on.
+  
+  WILD作物は施肥された耕地と同じように変異します。
+  Wild crops undergo mutations just like fertilized farmland.
 
- ・ 樹木 / Trees
+ ● 樹木 / Trees
 
-   樹木は、花期と収穫期が季節によって制限されます。
-   Trees are seasonally restricted in their flowering and harvesting periods.
+  樹木は、花期と収穫期が季節によって制限されます。
+  Trees are seasonally restricted in their flowering and harvesting periods.
 
-   適さない気温では、花や作物が得られなくなります。
-   At unfavorable temperatures, the leaves of the tree will not bear flowers or fruits.
+  適さない気温では、花や作物が得られなくなります。
+  At unfavorable temperatures, the leaves of the tree will not bear flowers or fruits.
 
  ● 釣り / Fishing
 
@@ -356,6 +378,11 @@
 
 　● 色々な調理デバイス / Devices for ingredients
 
+ ・ バニラの火と溶岩 / Vanilla Fire and Lava
+ 
+   肉の串やパン生地など、ワールド上に置ける食材は、バニラの熱源を使用して調理できます。
+   Food items that can be placed in the world, such as meat skewers and dough, can be cooked using vanilla heat sources.
+
 　・　鍋 / Cooking Pot
 
 　　 環境の熱を利用して、食べ物を調理します。
@@ -364,7 +391,7 @@
    スニーク+右クリックでフタを開閉します。
    Sneak + right-click to toggle the pot lid.
 
- ・　ティーポット / Tea Pot
+ ・　ティーポット / Tea Pot, コーヒーメーカー / Vacuum Coffee Maker, マキネッタ/ Moka Pot
 
 　　 環境の熱を利用して、飲み物を調理します。
    Tea Pots use ambient heat to make drink.
@@ -496,9 +523,9 @@
   電気を送るためのブロックです。
   A block for transmitting electricity.
 
-  ケーブルのTierに応じた送電速度に制限があります。現在は　Tier1 (32FE/t) とTier2 (128FE/t) が実装されています。
+  ケーブルのTierに応じた送電速度に制限があります。現在は　Tier1 (256FE/t) とTier2 (1024FE/t) が実装されています。
   There is a limit to the power transmission speed depending on the cable tier.
-  Currently Tier1 (32FE/t) and Tier2 (128FE/t) is implemented.
+  Currently Tier1 (256FE/t) and Tier2 (1024FE/t) is implemented.
 
   むき出しのケーブルにはリスクがあります。ゴムで被覆することで安全に扱えます。
   Exposed cables are dangerous. Covering it with rubber makes it safe to handle.
@@ -546,6 +573,14 @@
 
    汲み上げた流体は、真上にパイプなどをつなげた場合、水頭 6ブロック で送られます。
    If you connect a pipe directly above the pumped fluid, it will be sent with a water head of 6 blocks.
+   
+  ・ 渦巻きポンプ / Volute Pump
+ 
+   隣接する流体タンクやマシンから流体を回収します。このときFEを消費しません。
+   Collects fluid from adjacent fluid tanks or machines. This process does not consume FE.
+    
+   32FE/tを消費し、回収した流体を真上のパイプに 水頭 32ブロック で送り出します。
+   It consumes 32 FE/t and pumps the collected fluid into the pipe directly above with a head of 32 blocks.
 
   ・ 吸気ファン / Intake Fan
 
@@ -644,7 +679,7 @@
   RS信号または右クリックで動作します。
   Operates with RS signal or right click.
 
-  蛇口を開いている間、下にある流体タンクに 128 mB/t で水を注入します。
+  蛇口を開いている間、下にある流体タンクに 1024 mB/t で水を注入します。
   While the tap is open, water is pumped into the fluid tank below at 128 mB/t.
 
  ● スプリンクラー / Sprinkler
@@ -728,6 +763,14 @@
 
    隣接するインベントリからアイテムを引き出し、1個 / 8tick の速度で輸送します。
    Takes an item from an adjacent inventory and transports it at a speed of 1 item/8 ticks.
+   
+   接触したエンティティを移動させる性質があります。
+   It has the property of moving entities that come into contact with it.
+   
+   ・ コンベアリフト / Conveyor Lift
+
+   ノーマルコンベアと性能は同じです。上方向にアイテムを運搬します。
+   Its performance is the same as that of a normal conveyor. It transports items upwards.
 
   ・ 精錬コンベア / Normal Conveyor
 
@@ -761,24 +804,136 @@
 
 ****************************************************************************************************
 
+◎ その他のマシン / Other Machines
+
+ ● インジケーター / Indicator
+ 
+  手に持った状態でブロックを右クリックすると、クリックしたブロックの座標と方向を登録します。
+  Right-clicking any block while holding the item registers the coordinates and orientation of the clicked block.
+  
+  登録された座標のブロックの状態を表示します。
+  Displays the status of the block at the registered coordinates.
+  
+  状態に応じたコンパレータ信号を発生します。
+  Generates a comparator signal based on the state.
+  
+  ・ アンドン / Andon
+  
+   RS信号強度に応じてランプの色が変化します。
+   The lamp color changes according to the RS signal strength.
+   
+   色が変化する閾値や、赤色に変化したときにエラーチャットを発生する機能を、GUIによって制御できます。
+   You can use the GUI to control the threshold for color changes and the function that triggers an error message when the color changes to red.
+   
+  ・ ストームグラス / Storm Glass
+  
+   気温や天候の影響を受けて、結晶の状態が変化します。
+   The state of the crystals changes in response to temperature and weather conditions.
+  
+  ・ 反射型センサー / Retro-reflective Sensor
+  
+   前方にレーザーを発し、反射物の距離に応じたRS信号を発生します。
+   It emits a laser beam forward and generates an RS signal based on the distance to the reflecting object.
+   
+   5tick間隔でレーザーを発するため、素早く動くエンティティを検知できない場合があります。
+   Since the laser fires at 5-tick intervals, it may fail to detect fast-moving entities.
+   
+  ・ エンティティ検知カメラ / Entity Detector Camera
+  
+   前方5×3×5ブロック範囲内にいるエンティティの数をカウントします。
+   Counts the number of entities within a 5×3×5 block area in front.
+   
+   エンティティの数に応じたRS信号を発生します。
+   Generates an RS signal based on the number of entities.
+
+
+****************************************************************************************************
+
+◎ 便利なアイテム / Utility Items
+
+ ● 石鹸 / Soap
+ 
+  染色されたブロックや、染色されたHaC衣服を脱色します。
+  Bleaches dyed blocks and dyed HaC clothing.
+  
+ ● 魔法の石鹸 / Magical Soap
+ 
+  金床で使用すると、アイテムに付与されたエンチャントを削除します。
+  Use it on an anvil. It removes enchantments applied to an item.
+  
+ ● 大鎌 / Scythe
+ 
+  右クリックで使用します。
+  Use by right-clicking.
+  
+   - 範囲内のHaC作物ブロックを一括で収穫します。 Harvests HaC crop blocks within a specific range.
+   - 範囲内の草ブロックを一括で破壊します。 Destroys grass blocks within a specific range.
+   
+ ● 銛 / Harpoon
+ 
+  右クリック長押しで投擲します。
+  Hold down the right mouse button to throw.
+  
+  ヒットした対象エンティティを引き寄せます。
+  Pulls the hit target entity.
+  
+ ● カトラリー / Cutleries
+ 
+  右クリックで使用します。
+  Use by right-clicking.
+  
+  設置されている料理エンティティを食べるために使用します。
+  Use this to eat a placed food entity.
+  
+ ● 蚊取り線香 / Mosquito Coil
+ 
+  インベントリに入れておくと、自動的に効果を発揮します。
+  It takes effect when kept in your inventory.
+  
+  ファントムまたは虫モンスターから攻撃を受けたとき、攻撃を防ぎ、攻撃者を撃退します。
+  When attacked by a Phantom or an insect monster, it blocks the attack and eliminates the attacker.
+
+
+****************************************************************************************************
+
 #### 更新履歴 / Change log ####
 
 ○v4.0.1
  add: ハンモック
  add: 革張りのソファ
  add: クッション
+ add: ブラウス
+ add: スリーピーススーツ
+ add: 茸飯、鯛飯
+ add: クレープ
+ add: ガレット
+ add: 鍋料理
+ add: 春雨麺
+ add: 獣脂
  add: 渦巻ポンプ
- add: 垂直コンベア
- change: ソファのモデルを修正
+ add: コンベアリフト
+ change: ネザー、エンドの基礎気温を調整した。
+ change: HUDに現在のバイオーム気温(推定値)を表示した。
+ change: biome気温からHeatTierに変換する計算式を修正した。
+ change: HaC耕地は乾いても破壊されない。
+ change: ドロップアイテム状態での精錬が可能になる機能を実装。
+ change: ソファのモデルを修正。
  change: ツタと蜘蛛の巣にアイテムタグを付与し、一部の他modアイテムをレシピに使えるようにした。
+ change: リネンのスカートのモデルに上半身部分を追加。
  change: スプリンクラーに作物の成長促進機能を追加。
  change: 水中ポンプへの流体粘度の影響の計算式を微修正。
+ change: 水中ポンプの内部動作を改良。
+ change: 流体パイプ、電力ケーブルの流速を上方修正した。
+ change: HaCマシンのためのアイテムタグを追加。
+ change: いくつかの食べ物の空腹度回復量を修正。
+ fix: World生成時の季節が冬になっている。
  fix: 電動石臼のレシピの副生物が確定で出現するのを修正。
  fix: 調理レシピの副生物が一定確率で出てこないのを修正。
  fix: 特定のmodのArmorMaterialを参照できない問題に対処。
  fix: 調理マシンの気候データのサーバー同期処理を修正。
  fix: パスタとバッター液のクラフトレシピが被っているのを修正。
- fix: 一部の料理Entityのモデル表示を修正。
+ fix: 一部の料理Entityのモデルが正しく表示されない問題を修正。
+ fix: 魔法の石鹸を金床で使用できるようにした。
 
 ○v4.0.0pre
  add: コーヒーサイフォン

@@ -41,7 +41,7 @@ public abstract class BlockClassMixin implements IForgeBlock {
 	@Override
 	public boolean isFertile(BlockState state, BlockGetter level, BlockPos pos) {
 		if (state.is(TagDC.BlockTag.FARMLAND))
-			return DCState.getInt(state, FarmBlock.MOISTURE) > 0;
+			return DCState.getInt(state, FarmBlock.MOISTURE) > 0 || DCState.getInt(state, DCState.FERTILE) >= 0;
 
 		return false;
 	}

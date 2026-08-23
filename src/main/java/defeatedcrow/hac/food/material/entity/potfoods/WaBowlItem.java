@@ -35,9 +35,18 @@ public class WaBowlItem extends ItemEntityFood implements IPotFoods {
 
 	private static Properties prop(int nut, float sat, boolean isCold) {
 		if (isCold)
-			return new Item.Properties().tab(FoodInit.FOOD).food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().build());
+			return new Item.Properties().tab(FoodInit.FOOD)
+			    .food(new FoodProperties.Builder().nutrition(nut)
+			        .saturationMod(sat)
+			        .alwaysEat()
+			        .build());
 		else
-			return new Item.Properties().tab(FoodInit.FOOD).food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().effect(hot(), 1.0F).build());
+			return new Item.Properties().tab(FoodInit.FOOD)
+			    .food(new FoodProperties.Builder().nutrition(nut)
+			        .saturationMod(sat)
+			        .alwaysEat()
+			        .effect(hot(), 1.0F)
+			        .build());
 	}
 
 	private static Supplier<MobEffectInstance> hot() {
@@ -101,6 +110,11 @@ public class WaBowlItem extends ItemEntityFood implements IPotFoods {
 		if (item == FoodInit.WABOWL_SHIRUKO.get())
 			return SHIRUKO_LAYER;
 		return MISO_TOFU_LAYER;
+	}
+
+	@Override
+	public LayerType getPotLayerModel(Item item) {
+		return LayerType.LAYER;
 	}
 
 	public static final EntityRenderData MISO_TOFU = new EntityRenderData("food/wabowl_miso_tofu", 0.65F, 0F);

@@ -34,7 +34,12 @@ public class SoupItem extends ItemEntityFood implements IPotFoods {
 	}
 
 	private static Properties prop(int nut, float sat, boolean isCold) {
-		return new Item.Properties().tab(FoodInit.FOOD).food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().effect(isCold ? hot() : cold(), 1.0F).build());
+		return new Item.Properties().tab(FoodInit.FOOD)
+		    .food(new FoodProperties.Builder().nutrition(nut)
+		        .saturationMod(sat)
+		        .alwaysEat()
+		        .effect(isCold ? hot() : cold(), 1.0F)
+		        .build());
 	}
 
 	private static Supplier<MobEffectInstance> hot() {
@@ -134,6 +139,11 @@ public class SoupItem extends ItemEntityFood implements IPotFoods {
 		if (item == FoodInit.SOUP_SORREL.get())
 			return SOUP_SORREL_LAYER;
 		return SOUP_LAYER;
+	}
+
+	@Override
+	public LayerType getPotLayerModel(Item item) {
+		return LayerType.LAYER;
 	}
 
 	public static final EntityRenderData SOUP_CREAM_POTATO = new EntityRenderData("food/soup_cream_potato", 0.75F, 0F, "outer");

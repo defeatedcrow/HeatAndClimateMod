@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#dcs_climate:machines/energy",
+    "#dcs_climate:machines/climate",
+    "#dcs_climate:machines/display",
+    "#dcs_climate:machines/leakage",
+    "#dcs_climate:machines/pipe_fluid",
+    "#dcs_climate:machines/cable_energy"
+  ]
+}

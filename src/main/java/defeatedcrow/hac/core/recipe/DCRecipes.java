@@ -8,17 +8,26 @@ import java.util.function.Supplier;
 
 import javax.annotation.Nonnull;
 
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.recipe.FuelTypeDC;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.api.recipe.IDeviceFuel;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.api.recipe.IHeatTreatment;
+import defeatedcrow.hac.core.material.block.InventoryDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
@@ -64,6 +73,27 @@ public class DCRecipes {
 	@SubscribeEvent
 	public static void serverStop(ServerStoppedEvent event) {
 		DCRecipes.clear();
+	}
+
+	private final static RecipeManager.CachedCheck<Container, SmeltingRecipe> quickCheck = RecipeManager.createCheck(RecipeType.SMELTING);
+
+	private static InventoryDC dummyInv = new InventoryDC(1, null);
+
+	public static Optional<ItemStack> getVanillaSmeltingRecipe(IClimate clm, ItemStack item, Level level) {
+		dummyInv.inv.set(0, item);
+		SmeltingRecipe recipe = quickCheck.getRecipeFor(dummyInv, level)
+		    .orElse(null);
+		if (recipe != null && DCHeatTier.smeltingTemp()
+		    .contains(clm.getHeat()) && DCHumidity.notWet()
+		        .contains(clm.getHumidity())
+		    && DCAirflow.underRoofs()
+		        .contains(clm.getAirflow())) {
+			ItemStack output = recipe.assemble(dummyInv);
+			if (!DCUtil.isEmpty(output)) {
+				return Optional.of(output);
+			}
+		}
+		return Optional.empty();
 	}
 
 	public static Optional<IClimateSmelting> getSmeltingRecipe(Supplier<IClimate> clm, ItemStack item) {

@@ -43,7 +43,7 @@ public class RenderBindPlant extends EntityRenderer<ChairEntity> {
 			if (entity.getType() == MagicInit.BIND_ELECTRIC_ENTITY.get()) {
 				texName = "dcs_climate:textures/entity/magic/chair_electric_" + count + ".png";
 			}
-			ResourceLocation tex = new ResourceLocation(texName);
+			ResourceLocation tex = ResourceLocation.parse(texName);
 
 			poseStack.pushPose();
 			poseStack.translate(0F, 0.0F, 0F);

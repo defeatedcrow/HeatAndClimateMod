@@ -474,18 +474,21 @@
 
   "item.dcs_climate.food.food_pastry":"Pastry",
   "item.dcs_climate.food.food_batter":"Frying Batter",
+  "item.dcs_climate.food.food_crape_batter":"Crape Batter",
   "item.dcs_climate.food.food_cake_batter":"Cake Batter",
   "item.dcs_climate.food.food_noodle_pasta":"Pasta",
   "item.dcs_climate.food.food_noodle_wheat":"Wheat Noodle",
   "item.dcs_climate.food.food_noodle_brine":"Chinese Noodle",
   "item.dcs_climate.food.food_noodle_buckwheat":"Buckwheat Noodle",
   "item.dcs_climate.food.food_noodle_rice":"Rice Noodle",
+  "item.dcs_climate.food.food_noodle_glass":"Glass Noodle",
 
   "item.dcs_climate.food.food_butter":"Butter",
   "item.dcs_climate.food.food_margarine":"Margarine",
   "item.dcs_climate.food.food_cheese":"Cheese",
   "item.dcs_climate.food.food_fresh_cheese":"Fresh Cheese",
-  "item.dcs_climate.food.food_offal":"Offal",
+  "item.dcs_climate.food.food_offal":"Giblets",
+  "item.dcs_climate.food.food_animal_fat":"Tallow",
   "item.dcs_climate.food.food_gelatine":"Gelatine",
   "item.dcs_climate.food.food_rennet":"Rennet",
   "item.dcs_climate.food.bone_cow":"Beef Bones",
@@ -667,6 +670,7 @@
   "item.dcs_climate.food.bread_cream_baked":"Custard Filled Bread",
   "item.dcs_climate.food.bread_sausage_raw":"Sausage Bread Dough",
   "item.dcs_climate.food.bread_sausage_baked":"Sausage Bread",
+  "item.dcs_climate.food.crape_baked":"Crape",
 
   "item.dcs_climate.food.pizza_tomato_raw":"Raw Pizza Marinara",
   "item.dcs_climate.food.pizza_tomato_baked":"Pizza Marinara",
@@ -725,6 +729,14 @@
   "item.dcs_climate.food.donut_rose":"Paczki",
   
   "item.dcs_climate.food.pancake":"Pancake",
+  
+  "item.dcs_climate.food.crape_sugar":"Sugar Butter Crape",
+  "item.dcs_climate.food.crape_cream":"Custard Cream Crape",
+  "item.dcs_climate.food.crape_caramel":"Caramel Nuts Crape",
+  "item.dcs_climate.food.crape_cocoa":"Chocolate Crape",
+  "item.dcs_climate.food.crape_berry":"Berry Crape",
+  "item.dcs_climate.food.crape_apple":"Apple Cinnamon Crape",
+  "item.dcs_climate.food.crape_tuna":"Tuna Mayo Crape",
 
   "item.dcs_climate.food.cake_butter":"Butter Cake",
   "item.dcs_climate.food.cake_berry":"Berry Cake",
@@ -776,6 +788,8 @@
   "item.dcs_climate.food.rice_seki":"Red Bean Rice",
   "item.dcs_climate.food.rice_napa":"Nameshi",
   "item.dcs_climate.food.rice_fish":"Tuna and Ginger Rice",
+  "item.dcs_climate.food.rice_mushroom":"Mushroom Rice",
+  "item.dcs_climate.food.rice_taimeshi":"Seabream Rice",
   "item.dcs_climate.food.chazuke_ume":"Ume Chazuke",
   "item.dcs_climate.food.chazuke_sake":"Salmon Chazuke",
   "item.dcs_climate.food.chazuke_tai":"Seabream Chazuke",
@@ -874,6 +888,11 @@
   "item.dcs_climate.food.wabowl_miso_pork":"Butajiru",
   "item.dcs_climate.food.wabowl_miso_carp":"Miso Soup (Carp)",
   "item.dcs_climate.food.wabowl_shiruko":"Shiruko",
+  
+  "item.dcs_climate.food.hotpot_tofu":"Yudofu",
+  "item.dcs_climate.food.hotpot_chicken":"Tori-Nabe",
+  "item.dcs_climate.food.hotpot_crab":"Crab Sukiyaki",
+  "item.dcs_climate.food.hotpot_malatang":"Mala Hot Pot",
 
   "item.dcs_climate.food.kobachi_pumpkin":"Simmered Pumpkin",
   "item.dcs_climate.food.kobachi_taro":"Simmered Taro",
@@ -898,8 +917,10 @@
   "item.dcs_climate.food.omelet_vegi":"Vegetable Omelet",
   "item.dcs_climate.food.fried_egg":"Fried Egg",
   "item.dcs_climate.food.fried_egg_bacon":"Bacon and Egg",
+  "item.dcs_climate.food.grilled_crab":"Grilled Crab",
   "item.dcs_climate.food.sausage_saute":"Sausage Saute",
   "item.dcs_climate.food.sausage_curry":"Currywurst",
+  "item.dcs_climate.food.galette_complete":"Galette Complete",
 
   "item.dcs_climate.food.saute_green":"Sauteed Asian Greens",
   "item.dcs_climate.food.saute_green_squid":"Sauteed Squid And Asian Greens",
@@ -1090,8 +1111,8 @@
   "item.dcs_climate.food.cup_tea_green_milk":"Green Milk Tea",
   "item.dcs_climate.food.cup_tea_blue_milk":"Oolong Milk Tea",
   "item.dcs_climate.food.cup_tea_black_milk":"Milk Tea",
-  "item.dcs_climate.food.cup_tea_apple_milk":"AppleMilk Tea",
-  "item.dcs_climate.food.cup_tea_berry_milk":"BerryMilk Tea",
+  "item.dcs_climate.food.cup_tea_apple_milk":"Apple Milk Tea",
+  "item.dcs_climate.food.cup_tea_berry_milk":"Berry Milk Tea",
   "item.dcs_climate.food.cup_coffee_milk":"Cafe au lait",
   "item.dcs_climate.food.cup_cocoa_milk":"Milk Cocoa",
   "item.dcs_climate.food.demitasse_espresso":"Espresso",
@@ -1165,6 +1186,11 @@
   "item.dcs_climate.main.jacket_wool_cyan":"Cardigan(Cyan)",
   "item.dcs_climate.main.jacket_wool_lightblue":"Cardigan(Light Blue)",
   "item.dcs_climate.main.jacket_wool_red":"Cardigan(Red)",
+  
+  "item.dcs_climate.main.blouse_cloth":"Cotton Blouse",
+  "item.dcs_climate.main.blouse_cloth_black":"Cotton Blouse(Black)",
+  "item.dcs_climate.main.blouse_cloth_pink":"Cotton Blouse(Pink)",
+  "item.dcs_climate.main.blouse_cloth_blue":"Cotton Blouse(Blue)",
 
   "item.dcs_climate.main.tunic_cloth":"Cloth Tunic",
   "item.dcs_climate.main.tunic_cloth_black":"Cloth Tunic(Black)",
@@ -1218,6 +1244,11 @@
   "item.dcs_climate.main.suits_cloth_blue":"Quilted Doublet(Blue)",
   "item.dcs_climate.main.suits_cloth_brown":"Quilted Doublet(Brown)",
   "item.dcs_climate.main.suits_cloth_green":"Quilted Doublet(Green)",
+  
+  "item.dcs_climate.main.suits_wool":"Three Piece Suits",
+  "item.dcs_climate.main.suits_wool_black":"Three Piece Suits(Black)",
+  "item.dcs_climate.main.suits_wool_yellow":"Three Piece Suits(Yellow)",
+  "item.dcs_climate.main.suits_wool_blue":"Three Piece Suits(Blue)",
 
   "item.dcs_climate.main.dress_linen":"Linen Dress",
   "item.dcs_climate.main.dress_linen_black":"Linen Dress(Black)",
@@ -2394,9 +2425,9 @@
   "dcs.tip.fertile.mutation.off":"Crop Mutations: Disabled",
   "dcs.tip.feeder.desc":"When there is forages inside, it restores animals HP and promotes breeding.",
 
-  "dcs.tip.flow.tier1":"[Tier1] Flow Rate: 32 /t",
-  "dcs.tip.flow.tier2":"[Tier2] Flow Rate: 128 /t",
-  "dcs.tip.flow.tier3":"[Tier3] Flow Rate: 512 /t",
+  "dcs.tip.flow.tier1":"[Tier1] Flow Rate: 256 /t",
+  "dcs.tip.flow.tier2":"[Tier2] Flow Rate: 1024 /t",
+  "dcs.tip.flow.tier3":"[Tier3] Flow Rate: 4096 /t",
 
   "dcs.tip.sprinkler.desc":"Need enough water head for operation!",
   "dcs.tip.sprinkler.desc2":"Consume water to moisten the surrounding farmland.",

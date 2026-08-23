@@ -44,7 +44,7 @@ public class ConfigServerBuilder {
 		    .defineInRange("Start of Winter", 181, 1, 365);
 
 		this.vStartDate = builder.comment("Sets the in-game date at server start.")
-		    .defineInRange("Game Start Date", 181, 1, 365);
+		    .defineInRange("Game Start Date", 1, 1, 365);
 
 		this.vOverYear = builder.comment("Sets the id of season for the biginning of the years.")
 		    .defineInRange("Biginning Year Season ID", 3, 0, 3);

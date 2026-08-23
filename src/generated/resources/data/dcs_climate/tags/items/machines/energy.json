@@ -1,0 +1,19 @@
+{
+  "values": [
+    "dcs_climate:machine/water_pump",
+    "dcs_climate:machine/volute_pump",
+    "dcs_climate:machine/stone_mill",
+    "dcs_climate:machine/roll_crusher",
+    "dcs_climate:machine/intake_fan",
+    "dcs_climate:machine/item_aspirator",
+    "dcs_climate:machine/crop_aspirator",
+    "dcs_climate:machine/generator_small",
+    "dcs_climate:machine/boiler_biomass",
+    "dcs_climate:machine/hydro_turbine",
+    "dcs_climate:machine/battery_small",
+    "dcs_climate:machine/battery_middle",
+    "dcs_climate:machine/battery_small",
+    "dcs_climate:machine/battery_middle",
+    "dcs_climate:machine/generator_small"
+  ]
+}

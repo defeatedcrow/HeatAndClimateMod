@@ -7,7 +7,7 @@
   },
   "ingredients": [
     {
-      "tag": "forge:ingredients/offal"
+      "tag": "forge:ingredients/giblets"
     },
     {
       "tag": "forge:crops/celery"

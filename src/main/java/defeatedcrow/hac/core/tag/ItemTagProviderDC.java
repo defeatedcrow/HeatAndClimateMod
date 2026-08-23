@@ -347,7 +347,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.SOAPS).addTags(TagDC.ItemTag.SOAP_OIL, TagDC.ItemTag.SOAP_MAGIC);
 
-		tag(TagDC.ItemTag.FOOD_FAT).addTags(TagDC.ItemTag.BUTTER, TagDC.ItemTag.MARGARINE);
+		tag(TagDC.ItemTag.FOOD_FAT).addTags(TagDC.ItemTag.BUTTER, TagDC.ItemTag.MARGARINE, TagDC.ItemTag.ANIMAL_FAT);
 
 		tag(TagDC.ItemTag.NOODLE).addTags(TagDC.ItemTag.PASTA);
 
@@ -364,6 +364,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		    .add(FoodInit.STICK_FISH_COOKED.get(), FoodInit.GRILLED_WHITE_FISH.get(), FoodInit.TEMPURA_FISH.get());
 
 		tag(Tags.Items.BONES).addTags(TagDC.ItemTag.BONE_COW, TagDC.ItemTag.BONE_PIG, TagDC.ItemTag.BONE_CHICKEN);
+
+		tag(TagDC.ItemTag.GIBLETS).add(FoodInit.FOOD_OFFAL.get());
 
 		tag(TagDC.ItemTag.FERTILIZER).addTags(TagDC.ItemTag.FISH_POWDER, TagDC.ItemTag.PRESS_CAKE, TagDC.ItemTag.LEAF_MOLD, TagDC.ItemTag.FERTILIZER_ADV);
 
@@ -550,14 +552,16 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.SENSORS).addTags(TagDC.ItemTag.SENSOR_OPTICAL);
 		tag(TagDC.ItemTag.CRUSHER_BLADE).addTags(TagDC.ItemTag.BLADE_SANITARY, TagDC.ItemTag.BLADE_ALUMINA, TagDC.ItemTag.BLADE_SCREEN);
 
-		tag(TagDC.ItemTag.FUEL_BIOMASS).add(FoodInit.DUST_WOOD.get(), FoodInit.DUST_PLANT.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.VINE.get(), FoodInit.SORGHUM_STICK.get(), FoodInit.BEESWAX.get(), FoodInit.TREEWAX.get(),
-		    FoodInit.FOOD_DEFATTED_SOY.get(), FoodInit.FOOD_PRESS_CAKE.get(), FoodInit.FOOD_BRAN.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.FEED_HAY.get(), FoodInit.FEED_STRAW.get(), FoodInit.FOOD_GERM.get(), FoodInit.FALLEN_LEAVES.get()
+		tag(TagDC.ItemTag.FUEL_BIOMASS).add(FoodInit.DUST_WOOD.get(), FoodInit.DUST_PLANT.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.VINE.get(), FoodInit.SORGHUM_STICK.get(), FoodInit.FOOD_DEFATTED_SOY.get(),
+		    FoodInit.FOOD_PRESS_CAKE.get(), FoodInit.FOOD_BRAN.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.FEED_HAY.get(), FoodInit.FEED_STRAW.get(), FoodInit.FOOD_GERM.get(), FoodInit.FALLEN_LEAVES.get()
 		        .asItem());
 
 		tag(TagDC.ItemTag.HAC_FUELS).add(FoodInit.CONT_LOG_BRIQUET.get()
 		    .asItem());
 
-		tag(TagDC.ItemTag.HAC_FUELS).addTags(TagDC.ItemTag.FUEL_BIOMASS);
+		tag(TagDC.ItemTag.HAC_FUELS).addTags(TagDC.ItemTag.FUEL_BIOMASS, TagDC.ItemTag.FOOD_WAX);
+
+		tag(TagDC.ItemTag.HAC_MACHINE).addTags(TagDC.ItemTag.ENERGY_MACHINE, TagDC.ItemTag.CLIMATE_MACHINE, TagDC.ItemTag.DISPLAY_MACHINE, TagDC.ItemTag.LEAKAGE_MACHINE, TagDC.ItemTag.FLUID_PIPE, TagDC.ItemTag.ENERGY_CABLE);
 
 		// blocks
 		copy(TagDC.BlockTag.ORES_WHITE, TagDC.ItemTag.ORES_WHITE);
@@ -708,6 +712,12 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		copy(TagDC.BlockTag.FLUID_PIPE, TagDC.ItemTag.FLUID_PIPE);
 		copy(TagDC.BlockTag.ENERGY_CABLE, TagDC.ItemTag.ENERGY_CABLE);
+
+		copy(TagDC.BlockTag.HAC_MACHINE, TagDC.ItemTag.HAC_MACHINE);
+		copy(TagDC.BlockTag.ENERGY_MACHINE, TagDC.ItemTag.ENERGY_MACHINE);
+		copy(TagDC.BlockTag.CLIMATE_MACHINE, TagDC.ItemTag.CLIMATE_MACHINE);
+		copy(TagDC.BlockTag.DISPLAY_MACHINE, TagDC.ItemTag.DISPLAY_MACHINE);
+		copy(TagDC.BlockTag.LEAKAGE_MACHINE, TagDC.ItemTag.LEAKAGE_MACHINE);
 
 		// plugin
 		tag(TagDC.ItemTag.CROP_BARLEY).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "barley"));

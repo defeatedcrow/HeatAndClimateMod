@@ -45,23 +45,23 @@ public enum DCHeatTier {
     // cool climate biome
 	COOL(0, -1, 4, 0x70FFFF, 0F),
     // electric or mechanical energy require
-	NORMAL(20, 0, 5, 0x00E115, 0.5F),
+	NORMAL(20, 0, 5, 0x00E115, 0.4F),
     // warm climate biome
 	WARM(35, 1, 6, 0xA0FF00, 0.9F),
     // drying or brewing
-	HOT(50, 2, 7, 0xFFE000, 1.3F),
+	HOT(50, 2, 7, 0xFFE000, 1.8F),
     // boiling temperature
-	BOIL(100, 3, 8, 0xFFA000, 2.1F),
+	BOIL(100, 3, 8, 0xFFA000, 4.0F),
     // cooking
-	OVEN(220, 4, 9, 0xFF5000, 4.5F),
+	OVEN(220, 4, 9, 0xFF5000, 8.8F),
     // making charcoal, bronze, burn dust
-	KILN(800, 5, 10, 0xD00000, 16.0F),
+	KILN(800, 5, 10, 0xD00000, 32.0F),
     // making iron or another metal
-	SMELTING(1500, 6, 11, 0xFF00FF, 30.0F),
+	SMELTING(1500, 6, 11, 0xFF00FF, 60F),
     // special alloy
-	UHT(3000, 7, 12, 0xFFA0FF, 60.0F),
+	UHT(3000, 7, 12, 0xFFA0FF, 120F),
     // only on data
-	INFERNO(8000, 8, 13, 0x500000, 150.0F);
+	INFERNO(8000, 8, 13, 0x500000, 240.0F);
 
 	private final int temp;
 	private final int tier;
@@ -180,29 +180,29 @@ public enum DCHeatTier {
 	}
 
 	public static DCHeatTier getTypeByTemperature(int temp) {
-		if (temp >= 5300)
+		if (temp >= 6000)
 			return DCHeatTier.INFERNO;
-		else if (temp >= 3300)
+		else if (temp >= 3270)
 			return DCHeatTier.UHT;
-		else if (temp >= 1500)
+		else if (temp >= 1770)
 			return DCHeatTier.SMELTING;
-		else if (temp >= 1000)
+		else if (temp >= 1020)
 			return DCHeatTier.KILN;
-		else if (temp >= 500)
+		else if (temp >= 430)
 			return DCHeatTier.OVEN;
-		else if (temp >= 390)
+		else if (temp >= 370)
 			return DCHeatTier.BOIL;
-		else if (temp >= 350)
-			return DCHeatTier.HOT;
 		else if (temp >= 320)
+			return DCHeatTier.HOT;
+		else if (temp >= 305)
 			return DCHeatTier.WARM;
-		else if (temp >= 290)
+		else if (temp >= 280)
 			return DCHeatTier.NORMAL;
-		else if (temp >= 250)
+		else if (temp >= 270)
 			return DCHeatTier.COOL;
-		else if (temp >= 200)
+		else if (temp >= 220)
 			return DCHeatTier.COLD;
-		else if (temp >= 130)
+		else if (temp >= 120)
 			return DCHeatTier.FROSTBITE;
 		else if (temp >= 40)
 			return DCHeatTier.CRYOGENIC;
@@ -211,40 +211,46 @@ public enum DCHeatTier {
 	}
 
 	public static DCHeatTier getTypeByBiomeTemp(float temp) {
-		if (temp > 99.5F)
+		if (temp > 240.0F)
 			return DCHeatTier.INFERNO;
-		else if (temp > 59.5F)
+		else if (temp > 120.0F)
 			return DCHeatTier.UHT;
-		else if (temp > 29.5F)
+		else if (temp > 60.0F)
 			return DCHeatTier.SMELTING;
-		else if (temp > 15.5F)
+		else if (temp > 30.0F)
 			return DCHeatTier.KILN;
-		else if (temp > 3.9F)
+		else if (temp > 6.2F)
 			return DCHeatTier.OVEN;
-		else if (temp > 2.1F)
+		else if (temp > 3.4F)
 			return DCHeatTier.BOIL;
-		else if (temp > 1.4F)
+		else if (temp > 1.9F)
 			return DCHeatTier.HOT;
 		else if (temp > 0.9F)
 			return DCHeatTier.WARM;
 		else if (temp > 0.4F)
 			return DCHeatTier.NORMAL;
-		else if (temp > 0.0F)
+		else if (temp > -0.2F)
 			return DCHeatTier.COOL;
-		else if (temp > -0.5F)
+		else if (temp > -0.6F)
 			return DCHeatTier.COLD;
-		else if (temp > -1.0F)
+		else if (temp > -1.2F)
 			return DCHeatTier.FROSTBITE;
-		else if (temp > -3.0F)
+		else if (temp > -3.2F)
 			return DCHeatTier.CRYOGENIC;
 		else
 			return DCHeatTier.ABSOLUTE;
 	}
 
+	public static float getCelsiusByBiomeTemp(float temp) {
+		temp += 0.2F;
+		return temp > 0.2F ? temp * 25F : temp * 50F;
+	}
+
 	public static DCHeatTier getFromName(String name) {
 		if (name != null)
 			for (DCHeatTier t : DCHeatTier.elements()) {
-				if (t.name().equalsIgnoreCase(name)) {
+				if (t.name()
+				    .equalsIgnoreCase(name)) {
 					return t;
 				}
 			}
@@ -254,7 +260,8 @@ public enum DCHeatTier {
 	public static DCHeatTier getFromNameOrNull(String name) {
 		if (name != null)
 			for (DCHeatTier t : DCHeatTier.elements()) {
-				if (t.name().equalsIgnoreCase(name)) {
+				if (t.name()
+				    .equalsIgnoreCase(name)) {
 					return t;
 				}
 			}
@@ -270,7 +277,8 @@ public enum DCHeatTier {
 				for (String name : names)
 					if (name != null && !name.isEmpty())
 						for (DCHeatTier t : DCHeatTier.elements()) {
-							if (t.name().equalsIgnoreCase(name)) {
+							if (t.name()
+							    .equalsIgnoreCase(name)) {
 								ret.add(t);
 								break;
 							}

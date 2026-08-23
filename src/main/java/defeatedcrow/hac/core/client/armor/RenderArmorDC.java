@@ -28,6 +28,7 @@ public class RenderArmorDC implements IClientItemExtensions {
 			case HAIR -> EntityModelLoader.MODEL_HAIR;
 			case HAIR2 -> EntityModelLoader.MODEL_HAIR2;
 			case JACKET -> EntityModelLoader.MODEL_JACKET;
+			case BLOUSE -> EntityModelLoader.MODEL_BLOUSE;
 			case TUNIC -> EntityModelLoader.MODEL_TUNIC;
 			case LEGGINS -> EntityModelLoader.MODEL_LEGGINS;
 			case LEGGINS_TIGHT -> EntityModelLoader.MODEL_LEGGINS_TIGHT;

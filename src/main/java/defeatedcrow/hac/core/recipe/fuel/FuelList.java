@@ -24,7 +24,15 @@ public class FuelList {
 		addBiomassFuel(new ItemStack(FoodInit.CONT_LOG_BRIQUET.get()), 14400);
 		addBiomassFuel(ItemTags.LEAVES, 100);
 		addBiomassFuel(ItemTags.SAPLINGS, 100);
+		addBiomassFuel(TagDC.ItemTag.BARKS, 100);
+		addBiomassFuel(TagDC.ItemTag.FALLEN_LEAVES, 100);
 		addBiomassFuel(TagDC.ItemTag.FUEL_BIOMASS, 200);
+		addBiomassFuel(TagDC.ItemTag.CROP_OILS, 200);
+		addBiomassFuel(TagDC.ItemTag.CROP_LACQUER, 200);
+		addBiomassFuel(TagDC.ItemTag.FOOD_WAX, 800);
+		addBiomassFuel(TagDC.ItemTag.CONT_LEAVES, 800);
+		addBiomassFuel(TagDC.ItemTag.ANIMAL_FAT, 1600);
+		addBiomassFuel(TagDC.ItemTag.CONT_WAX, 6400);
 		addBiomassFuel(TagDC.ItemTag.CONT_RESIDUES, 1600);
 		addFluidFuel(TagDC.FluidTag.PLANT_OIL, 30);
 		addFluidFuel(TagDC.FluidTag.USED_PLANT_OIL, 30);
@@ -32,39 +40,47 @@ public class FuelList {
 	}
 
 	private static void addBiomassFuel(ItemStack input, int time) {
-		ResourceLocation res = DCUtil.getRes(input.getItem()).orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
-		String fName = res.getPath().replace('/', '_');
-		FuelConfig.INSTANCE.addRecipe(fName, new DeviceFuel(FuelTypeDC.BIOMASS.toString(), time, "empty", Ingredient.of(input)));
+		ResourceLocation res = DCUtil.getRes(input.getItem())
+		    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
+		String fName = res.getPath()
+		    .replace('/', '_');
+		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.BIOMASS.toString(), time, "empty", Ingredient.of(input)));
 	}
 
 	private static void addBiomassFuel(TagKey<Item> input, int time) {
 		ResourceLocation res = input.location();
-		String fName = res.getPath().replace('/', '_');
-		FuelConfig.INSTANCE.addRecipe(fName, new DeviceFuel(FuelTypeDC.BIOMASS.toString(), time, "empty", Ingredient.of(input)));
+		String fName = res.getPath()
+		    .replace('/', '_');
+		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.BIOMASS.toString(), time, "empty", Ingredient.of(input)));
 	}
 
 	private static void addThermalFuel(ItemStack input, int time) {
-		ResourceLocation res = DCUtil.getRes(input.getItem()).orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
-		String fName = res.getPath().replace('/', '_');
-		FuelConfig.INSTANCE.addRecipe(fName, new DeviceFuel(FuelTypeDC.THERMAL.toString(), time, "empty", Ingredient.of(input)));
+		ResourceLocation res = DCUtil.getRes(input.getItem())
+		    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
+		String fName = res.getPath()
+		    .replace('/', '_');
+		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.THERMAL.toString(), time, "empty", Ingredient.of(input)));
 	}
 
 	private static void addThermalFuel(TagKey<Item> input, int time) {
 		ResourceLocation res = input.location();
-		String fName = res.getPath().replace('/', '_');
-		FuelConfig.INSTANCE.addRecipe(fName, new DeviceFuel(FuelTypeDC.THERMAL.toString(), time, "empty", Ingredient.of(input)));
+		String fName = res.getPath()
+		    .replace('/', '_');
+		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.THERMAL.toString(), time, "empty", Ingredient.of(input)));
 	}
 
 	private static void addFluidFuel(TagKey<Fluid> fluid, int time) {
 		ResourceLocation res = fluid.location();
-		String fName = res.getPath().replace('/', '_');
-		FuelConfig.INSTANCE.addRecipe(fName, new DeviceFuel(FuelTypeDC.FLUID.toString(), time, res.toString(), Ingredient.of(new ItemStack(CoreInit.NULL_ITEM.get()))));
+		String fName = res.getPath()
+		    .replace('/', '_');
+		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.FLUID.toString(), time, res.toString(), Ingredient.of(new ItemStack(CoreInit.NULL_ITEM.get()))));
 	}
 
 	private static void addGasFuel(TagKey<Fluid> fluid, int time) {
 		ResourceLocation res = fluid.location();
-		String fName = res.getPath().replace('/', '_');
-		FuelConfig.INSTANCE.addRecipe(fName, new DeviceFuel(FuelTypeDC.GAS.toString(), time, res.toString(), Ingredient.of(new ItemStack(CoreInit.NULL_ITEM.get()))));
+		String fName = res.getPath()
+		    .replace('/', '_');
+		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.GAS.toString(), time, res.toString(), Ingredient.of(new ItemStack(CoreInit.NULL_ITEM.get()))));
 	}
 
 }

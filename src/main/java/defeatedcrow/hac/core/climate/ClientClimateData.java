@@ -11,6 +11,7 @@ import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
+import defeatedcrow.hac.core.climate.register.BiomeClimateRegister;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -37,7 +38,7 @@ public class ClientClimateData {
 
 	public static final ClientClimateData INSTANCE = new ClientClimateData();
 
-	// 表示用データ
+	private static float biomeRealTemp = 20.0F;
 	private static IClimate climate = null;
 	private static int tempTier = 0;
 	private static int iconTier = 2;
@@ -53,10 +54,12 @@ public class ClientClimateData {
 		BlockPos pos = player.blockPosition();
 		if (pos != null && world.isLoaded(pos)) {
 			climate = ClimateAPI.calculator.getClimate(world, pos);
+			biomeRealTemp = BiomeClimateRegister.INSTANCE.getBiomeTemp(world, pos);
 		}
 
 		if (climate != null) {
-			tempTier = climate.getHeat().getTier();
+			tempTier = climate.getHeat()
+			    .getTier();
 		}
 
 		float conf_prev = 3F - ConfigCommonBuilder.INSTANCE.vDifficulty.get();
@@ -67,7 +70,8 @@ public class ClientClimateData {
 		heatPrev = DCUtil.getPotionResistantData(player, false);
 		coldPrev = DCUtil.getPotionResistantData(player, true);
 		// 防具の計算
-		IItemHandler handler = player.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH).orElse(null);
+		IItemHandler handler = player.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH)
+		    .orElse(null);
 		if (handler != null) {
 			for (int s = 0; s < handler.getSlots(); s++) {
 				ItemStack item = handler.getStackInSlot(s);
@@ -83,8 +87,7 @@ public class ClientClimateData {
 
 		// charm
 		List<ItemStack> charms = MagicUtil.getCharms(player, CharmType.ALL);
-		DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage :
-				DamageSourceClimate.climateColdDamage;
+		DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage : DamageSourceClimate.climateColdDamage;
 		for (ItemStack check : charms) {
 			IJewelCharm charm = (IJewelCharm) check.getItem();
 			if (isCold)
@@ -117,12 +120,10 @@ public class ClientClimateData {
 			} else if (damage >= 1F) {
 				iconTier = 3;
 			}
-		} else {
-			if (damage <= -2F) {
-				iconTier = 0;
-			} else if (damage <= -1F) {
-				iconTier = 1;
-			}
+		} else if (damage <= -2F) {
+			iconTier = 0;
+		} else if (damage <= -1F) {
+			iconTier = 1;
 		}
 
 		// Holder<Biome> biome = world.getBiome(pos);
@@ -149,20 +150,25 @@ public class ClientClimateData {
 		return coldPrev;
 	}
 
+	public float getBiomeTemp() {
+		return biomeRealTemp;
+	}
+
 	public IClimate getClimate() {
-		return climate == null ?
-				ClimateAPI.helper.getClimateFromParam(DCHeatTier.NORMAL, DCHumidity.NORMAL, DCAirflow.FLOW) : climate;
+		return climate == null ? ClimateAPI.helper.getClimateFromParam(DCHeatTier.NORMAL, DCHumidity.NORMAL, DCAirflow.FLOW) : climate;
 	}
 
 	private static DCHeatTier getBlockTemp(BlockState block, Level world, BlockPos pos) {
 		if (ClimateAPI.registerBlock.isRegisteredHeat(block)) {
-			return ClimateAPI.registerBlock.getHeatTier(block).orElse(DCHeatTier.NORMAL);
+			return ClimateAPI.registerBlock.getHeatTier(block)
+			    .orElse(DCHeatTier.NORMAL);
 		} else if (block instanceof IHeatTile) {
 			return ((IHeatTile) block).getHeatTier(world, pos, pos);
 		} else if (block instanceof IFluidBlock) {
 			Fluid f = ((IFluidBlock) block).getFluid();
 			if (f != null) {
-				return DCHeatTier.getTypeByTemperature(f.getFluidType().getTemperature());
+				return DCHeatTier.getTypeByTemperature(f.getFluidType()
+				    .getTemperature());
 			}
 		}
 		return DCHeatTier.NORMAL;

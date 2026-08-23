@@ -1,0 +1,7 @@
+{
+  "values": [
+    "dcs_climate:machine/battery_small",
+    "dcs_climate:machine/battery_middle",
+    "dcs_climate:machine/generator_small"
+  ]
+}

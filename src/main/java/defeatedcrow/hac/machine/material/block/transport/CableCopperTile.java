@@ -80,14 +80,14 @@ public class CableCopperTile extends EnergyTileBaseDC {
 	}
 
 	public static boolean isLeaking(Level level, BlockPos pos, BlockState state, EnergyTileBaseDC tile) {
-		return state.is(TagDC.BlockTag.LEAKAGE_MACHINE) && (tile.getEnergyHandler().getEnergyStored() > 0 || level.isClientSide) && (DCState.getBool(state, BlockStateProperties.WATERLOGGED) || level.isRainingAt(pos
-			.above()));
+		return state.is(TagDC.BlockTag.LEAKAGE_MACHINE) && (tile.getEnergyHandler()
+		    .getEnergyStored() > 0 || level.isClientSide) && (DCState.getBool(state, BlockStateProperties.WATERLOGGED) || level.isRainingAt(pos.above()));
 	}
 
-	public SidedEnergyTankDC battery = new SidedEnergyTankDC(this, getMaxEnergy(), 32).setAllFases(FaceIO.NONE);
+	public SidedEnergyTankDC battery = new SidedEnergyTankDC(this, getMaxEnergy(), 256).setAllFases(FaceIO.NONE);
 
 	protected int getMaxEnergy() {
-		return 320;
+		return 1024;
 	}
 
 	@Override

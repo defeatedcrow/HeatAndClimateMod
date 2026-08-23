@@ -33,10 +33,24 @@ public class FriedEggItem extends ItemEntityFood {
 			return FRIED_EGG;
 		if (item == FoodInit.BACON_EGG.get())
 			return BACON_EGG;
+		if (item == FoodInit.GRILLED_CRAB.get())
+			return GRILLED_CRAB;
 		return FRIED_EGG;
 	}
 
 	public static final EntityRenderData FRIED_EGG = new EntityRenderData("food/plate_fried_egg", 1.0F, 0F);
 	public static final EntityRenderData BACON_EGG = new EntityRenderData("food/plate_bacon_egg", 1.0F, 0F);
+	public static final EntityRenderData GRILLED_CRAB = new EntityRenderData("food/grilled_crab", 1.0F, 0F);
+
+	public static enum ModelType {
+		EGG,
+		CRAB;
+
+		public static ModelType getType(Item item) {
+			if (item == FoodInit.GRILLED_CRAB.get())
+				return CRAB;
+			return EGG;
+		}
+	}
 
 }

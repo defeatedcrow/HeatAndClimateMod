@@ -2,6 +2,8 @@ package defeatedcrow.hac.machine.material.block.machine;
 
 import javax.annotation.Nullable;
 
+import org.jetbrains.annotations.NotNull;
+
 import defeatedcrow.hac.api.machine.FaceIO;
 import defeatedcrow.hac.api.machine.IFluidPipe;
 import defeatedcrow.hac.api.util.DCState;
@@ -58,8 +60,23 @@ public class VolutePumpTile extends EnergyMachineBaseDC {
 							    int ret = tank.fill(drain, FluidAction.SIMULATE);
 							    if (ret > 0) {
 								    drain.setAmount(ret);
-								    handler.drain(drain, FluidAction.EXECUTE);
-								    ret = tank.fill(drain, FluidAction.EXECUTE);
+								    // default head: 32block
+								    float h = 32F + DCFluidUtil.getHead(drain);
+								    // viscosity
+								    float f2 = (2000F - drain.getFluid()
+								        .getFluidType()
+								        .getViscosity(drain)) / 1000F;
+								    if (f2 < 0.25F)
+									    f2 = 0F;
+								    if (f2 > 4F)
+									    f2 = 4F;
+								    h *= f2;
+								    int head = Mth.ceil(h);
+								    if (head > 0) {
+									    DCFluidUtil.addHead(drain, head);
+									    handler.drain(drain, FluidAction.EXECUTE);
+									    ret = tank.fill(drain, FluidAction.EXECUTE);
+								    }
 							    }
 						    }
 					    });
@@ -80,7 +97,6 @@ public class VolutePumpTile extends EnergyMachineBaseDC {
 						    if (drain.getAmount() > 1000) {
 							    drain.setAmount(1000);
 						    }
-						    DCFluidUtil.addHead(drain, 32);
 						    int ret = handler.fill(drain, FluidAction.SIMULATE);
 						    if (ret > 0) {
 							    drain.setAmount(ret);
@@ -103,30 +119,13 @@ public class VolutePumpTile extends EnergyMachineBaseDC {
 							    if (drain.getAmount() > 1000) {
 								    drain.setAmount(1000);
 							    }
-							    drain = DCFluidUtil.addHead(drain, 1);
 							    int ret = pipe.fill(drain, FluidAction.SIMULATE, Direction.DOWN);
 							    if (ret > 0) {
-								    // default head: 32block
-								    float h = 31F;
-								    // viscosity
-								    float f2 = (2000F - drain.getFluid()
-								        .getFluidType()
-								        .getViscosity(drain)) / 1000F;
-								    if (f2 < 0.25F)
-									    return false;
-								    if (f2 > 4F)
-									    f2 = 4F;
-								    h *= f2;
-								    int cost = Mth.ceil(32F / f2);
-								    int head = Mth.ceil(h);
-								    if (head > 0) {
-									    drain.setAmount(ret);
-									    drain = DCFluidUtil.addHead(drain, head);
-									    int consume = handler.fill(drain, FluidAction.EXECUTE);
-									    tank.drain(consume, FluidAction.EXECUTE);
-									    getEnergyHandler().consumeEnergy(cost);
-									    return true;
-								    }
+								    drain.setAmount(ret);
+								    int consume = handler.fill(drain, FluidAction.EXECUTE);
+								    tank.drain(consume, FluidAction.EXECUTE);
+								    getEnergyHandler().consumeEnergy(32);
+								    return true;
 							    }
 							    return false;
 						    })
@@ -218,10 +217,11 @@ public class VolutePumpTile extends EnergyMachineBaseDC {
 	}
 
 	public class PumpTank extends DCHeadTank {
-		protected final NonNullList<FaceIO> pumpFaces = NonNullList.of(FaceIO.OUTPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT);
+		protected final NonNullList<FaceIO> pumpFaces;
 
 		protected PumpTank(int cap, int flow) {
 			super(cap, flow);
+			pumpFaces = NonNullList.of(FaceIO.OUTPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT, FaceIO.INPUT);
 		}
 
 		@Override
@@ -229,11 +229,27 @@ public class VolutePumpTile extends EnergyMachineBaseDC {
 			int i = dir.get3DDataValue();
 			if (i >= 0 && i < 6) {
 				if (pumpFaces.size() <= i) {
-					pumpFaces.add(i, FaceIO.NONE);
+					return FaceIO.NONE;
 				}
 				return pumpFaces.get(i);
 			}
 			return FaceIO.NONE;
+		}
+
+		@Override
+		public int fill(FluidStack get, FluidAction action, Direction from) {
+			if (from == Direction.UP) {
+				return 0;
+			}
+			return super.fill(get, action, from);
+		}
+
+		@Override
+		public @NotNull FluidStack drain(FluidStack resource, FluidAction action, Direction to) {
+			if (to != Direction.UP) {
+				return FluidStack.EMPTY;
+			}
+			return super.drain(resource, action, to);
 		}
 
 		@Override

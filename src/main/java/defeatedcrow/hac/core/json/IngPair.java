@@ -29,17 +29,23 @@ public class IngPair {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof IngPair))
+		if (!(obj instanceof IngPair target))
 			return false;
-		IngPair target = (IngPair) obj;
-		return target.getType().equals(type) && target.getName().equals(name);
+		return target.getType()
+		    .equals(type)
+		    && target.getName()
+		        .equals(name);
 	}
 
 	public boolean match(Item item) {
-		IReverseTag<Item> tags = ForgeRegistries.ITEMS.tags().getReverseTag(item).orElse(null);
+		IReverseTag<Item> tags = ForgeRegistries.ITEMS.tags()
+		    .getReverseTag(item)
+		    .orElse(null);
 		if (tags != null) {
-			for (TagKey<Item> t : tags.getTagKeys().toList()) {
-				String s = t.location().toString();
+			for (TagKey<Item> t : tags.getTagKeys()
+			    .toList()) {
+				String s = t.location()
+				    .toString();
 				if ((s.contains(type) || type.equals("none")) && s.contains(name))
 					return true;
 			}
@@ -51,11 +57,11 @@ public class IngPair {
 		if (type.equalsIgnoreCase("tag") || type.equalsIgnoreCase("dic_name")) {
 			return name;
 		} else if (type.equalsIgnoreCase("item")) {
-			ResourceLocation res = new ResourceLocation(name);
+			ResourceLocation res = ResourceLocation.parse(name);
 			Item ret = ForgeRegistries.ITEMS.getValue(res);
 			return ret;
 		} else if (type.equalsIgnoreCase("block")) {
-			ResourceLocation res = new ResourceLocation(name);
+			ResourceLocation res = ResourceLocation.parse(name);
 			Block ret = ForgeRegistries.BLOCKS.getValue(res);
 			return ret;
 		}
@@ -64,11 +70,11 @@ public class IngPair {
 
 	public ItemStack getItem() {
 		if (type.equalsIgnoreCase("item")) {
-			ResourceLocation res = new ResourceLocation(name);
+			ResourceLocation res = ResourceLocation.parse(name);
 			Item ret = ForgeRegistries.ITEMS.getValue(res);
 			return new ItemStack(ret);
 		} else if (type.equalsIgnoreCase("block")) {
-			ResourceLocation res = new ResourceLocation(name);
+			ResourceLocation res = ResourceLocation.parse(name);
 			Block ret = ForgeRegistries.BLOCKS.getValue(res);
 			return new ItemStack(ret);
 		}

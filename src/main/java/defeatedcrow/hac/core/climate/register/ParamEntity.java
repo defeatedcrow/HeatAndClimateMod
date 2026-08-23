@@ -18,7 +18,7 @@ public class ParamEntity {
 	}
 
 	public Optional<EntityType<?>> getEntityType() {
-		EntityType<?> ret = ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(entityName));
+		EntityType<?> ret = ForgeRegistries.ENTITY_TYPES.getValue(ResourceLocation.parse(entityName));
 		if (ret != null) {
 			return Optional.of(ret);
 		}
@@ -27,8 +27,7 @@ public class ParamEntity {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj != null && obj instanceof ParamEntity) {
-			ParamEntity target = (ParamEntity) obj;
+		if (obj != null && obj instanceof ParamEntity target) {
 			return entityName.equals(target.entityName) && heatResistance == target.heatResistance && coldResistance == target.coldResistance;
 		}
 		return false;

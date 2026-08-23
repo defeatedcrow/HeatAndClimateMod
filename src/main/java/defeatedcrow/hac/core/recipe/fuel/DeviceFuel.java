@@ -43,7 +43,7 @@ public class DeviceFuel implements IDeviceFuel {
 	public TagKey<Fluid> getInputFluid() {
 		if (isEmptyFluid(inputFluidName))
 			return FluidTag.AIR;
-		ResourceLocation res = new ResourceLocation(inputFluidName);
+		ResourceLocation res = ResourceLocation.parse(inputFluidName);
 		TagKey<Fluid> tagkey = TagKey.create(Registry.FLUID_REGISTRY, res);
 		if (tagkey != null)
 			return tagkey;
@@ -70,7 +70,8 @@ public class DeviceFuel implements IDeviceFuel {
 		if (tag == FluidTag.AIR) {
 			return input.isEmpty();
 		} else {
-			return !input.isEmpty() && input.getFluid().is(tag);
+			return !input.isEmpty() && input.getFluid()
+			    .is(tag);
 		}
 	}
 

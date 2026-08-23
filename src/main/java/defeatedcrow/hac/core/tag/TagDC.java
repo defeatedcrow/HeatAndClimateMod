@@ -163,10 +163,17 @@ public class TagDC {
 
 		public static final TagKey<Block> DIRT_SLABS = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "dirt_slab"));
 
-		public static final TagKey<Block> LEAKAGE_MACHINE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "leakage_machine"));
+		public static final TagKey<Block> HAC_MACHINE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "machines"));
+		public static final TagKey<Block> ENERGY_MACHINE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "machines/energy"));
+		public static final TagKey<Block> CLIMATE_MACHINE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "machines/climate"));
+		public static final TagKey<Block> DISPLAY_MACHINE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "machines/display"));
+		public static final TagKey<Block> LEAKAGE_MACHINE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "machines/leakage"));
 
-		public static final TagKey<Block> FLUID_PIPE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "pipe_fluid"));
-		public static final TagKey<Block> ENERGY_CABLE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "cable_energy"));
+		public static final TagKey<Block> FLUID_PIPE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "machines/pipe_fluid"));
+		public static final TagKey<Block> ENERGY_CABLE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "machines/cable_energy"));
+
+		public static final TagKey<Block> HOPPER = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "hoppers"));
+		public static final TagKey<Block> HOPPER_FILTER = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "hoppers/filter_hopper"));
 
 		public static final TagKey<Block> COOKING_POT = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "not_loof_blocks/cooking_pot"));
 		public static final TagKey<Block> TEA_POT = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "not_loof_blocks/tea_pot"));
@@ -174,9 +181,6 @@ public class TagDC {
 		public static final TagKey<Block> FAUSET = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "not_loof_blocks/fauset"));
 		public static final TagKey<Block> MONITOR = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "not_loof_blocks/monitor"));
 		public static final TagKey<Block> WALL_LAMP = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "not_loof_blocks/wall_lamp"));
-
-		public static final TagKey<Block> HOPPER = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "hoppers"));
-		public static final TagKey<Block> HOPPER_FILTER = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "hoppers/filter_hopper"));
 
 		public static final TagKey<Block> NOT_LOOF = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "not_loof_blocks"));
 
@@ -745,6 +749,7 @@ public class TagDC {
 
 		public static final TagKey<Item> BUTTER = itemTag("ingredients/butter");
 		public static final TagKey<Item> MARGARINE = itemTag("ingredients/margarine");
+		public static final TagKey<Item> ANIMAL_FAT = itemTag("ingredients/animal_fat");
 		public static final TagKey<Item> FOOD_FAT = itemTag("ingredients/fat");
 		public static final TagKey<Item> CHEESE = itemTag("ingredients/cheese");
 		public static final TagKey<Item> YOGULT = itemTag("ingredients/yogult");
@@ -776,6 +781,7 @@ public class TagDC {
 		public static final TagKey<Item> FISH_SHELL = itemTag("ingredients/shellfish");
 		public static final TagKey<Item> ROE = itemTag("ingredients/roe");
 
+		public static final TagKey<Item> GIBLETS = itemTag("ingredients/giblets");
 		public static final TagKey<Item> OFFAL = itemTag("ingredients/offal");
 		public static final TagKey<Item> GELATINE = itemTag("ingredients/geratine");
 		public static final TagKey<Item> RENNET = itemTag("ingredients/rennet");
@@ -1170,10 +1176,14 @@ public class TagDC {
 		public static final TagKey<Item> BLADE_SCREEN = itemHaCTag("crusher_blade/screen");
 		public static final TagKey<Item> BLADE_ALUMINA = itemHaCTag("crusher_blade/alumina");
 
-		public static final TagKey<Item> LEAKAGE_MACHINE = itemHaCTag("leakage_machine");
+		public static final TagKey<Item> HAC_MACHINE = itemHaCTag("machines");
+		public static final TagKey<Item> ENERGY_MACHINE = itemHaCTag("machines/energy");
+		public static final TagKey<Item> CLIMATE_MACHINE = itemHaCTag("machines/climate");
+		public static final TagKey<Item> DISPLAY_MACHINE = itemHaCTag("machines/display");
+		public static final TagKey<Item> LEAKAGE_MACHINE = itemHaCTag("machines/leakage");
 
-		public static final TagKey<Item> FLUID_PIPE = itemHaCTag("pipe_fluid");
-		public static final TagKey<Item> ENERGY_CABLE = itemHaCTag("cable_energy");
+		public static final TagKey<Item> FLUID_PIPE = itemHaCTag("machines/pipe_fluid");
+		public static final TagKey<Item> ENERGY_CABLE = itemHaCTag("machines/cable_energy");
 
 		public static final TagKey<Item> HOPPER = itemHaCTag("hoppers");
 		public static final TagKey<Item> HOPPER_FILTER = itemHaCTag("hoppers/filter_hopper");

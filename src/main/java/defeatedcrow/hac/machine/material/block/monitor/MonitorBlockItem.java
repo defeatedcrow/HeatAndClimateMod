@@ -37,7 +37,8 @@ public class MonitorBlockItem extends BlockItemDC {
 	@Override
 	public InteractionResult place(BlockPlaceContext cont) {
 		if (cont != null && cont.getPlayer() != null) {
-			if (cont.getPlayer().isCrouching()) {
+			if (cont.getPlayer()
+			    .isCrouching()) {
 				return super.place(cont);
 			} else {
 				return onBlockHit(cont.getLevel(), cont.getPlayer(), cont.getHand(), cont.getItemInHand(), cont.getClickedPos(), cont.getClickedFace()).getResult();
@@ -51,7 +52,8 @@ public class MonitorBlockItem extends BlockItemDC {
 		if (!DCUtil.isEmpty(stack) && level instanceof ServerLevel serverLevel) {
 			CompoundTag tag = stack.getOrCreateTag();
 			BlockPos p = pos.relative(dir.getOpposite());
-			tag.putInt(TagKeyDC.DIRECTION, dir.getOpposite().get3DDataValue());
+			tag.putInt(TagKeyDC.DIRECTION, dir.getOpposite()
+			    .get3DDataValue());
 			tag.putInt(TagKeyDC.POS_X, p.getX());
 			tag.putInt(TagKeyDC.POS_Y, p.getY());
 			tag.putInt(TagKeyDC.POS_Z, p.getZ());
@@ -72,7 +74,9 @@ public class MonitorBlockItem extends BlockItemDC {
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(stack, level, list, flag);
-		MutableComponent tex1 = Component.translatable("dcs.tip.energy.indicator").withStyle(ChatFormatting.GREEN).withStyle(ChatFormatting.BOLD);
+		MutableComponent tex1 = Component.translatable("dcs.tip.energy.indicator")
+		    .withStyle(ChatFormatting.GREEN)
+		    .withStyle(ChatFormatting.BOLD);
 		MutableComponent tex2 = Component.translatable("dcs.tip.energy.indicator.desc");
 		if (ClimateCore.proxy.keyShiftPushed()) {
 			list.add(tex1);
@@ -100,7 +104,7 @@ public class MonitorBlockItem extends BlockItemDC {
 					}
 
 					MutableComponent mes = Component.translatable("dcs.tip.coodinate");
-					MutableComponent mes2 = (Component.literal("" + x));
+					MutableComponent mes2 = Component.literal("" + x);
 					mes2.append(Component.literal("," + y));
 					mes2.append(Component.literal("," + z));
 					mes2.append(Component.literal("," + side));
@@ -114,7 +118,6 @@ public class MonitorBlockItem extends BlockItemDC {
 
 		} else {
 			list.add(tex1);
-			list.add(Component.translatable("dcs.tip.shift"));
 		}
 
 	}

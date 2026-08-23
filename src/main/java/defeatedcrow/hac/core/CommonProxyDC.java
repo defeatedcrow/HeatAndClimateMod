@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.event.BiomeBaseTempEventDC;
 import defeatedcrow.hac.core.event.BlockEventDC;
 import defeatedcrow.hac.core.event.BlockUpdateEventDC;
 import defeatedcrow.hac.core.event.CharmTriggerEvent;
+import defeatedcrow.hac.core.event.DropItemSmeltingEvent;
 import defeatedcrow.hac.core.event.LivingEventDC;
 import defeatedcrow.hac.core.event.LivingTickEventDC;
 import defeatedcrow.hac.core.event.MagicPictureEvent;
@@ -91,6 +92,7 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(ThunderstruckEventDC::onLodUpdate);
 		MinecraftForge.EVENT_BUS.addListener(DCRecipes::serverStop);
 		MinecraftForge.EVENT_BUS.addListener(ItemTossEventDC::onItemToss);
+		MinecraftForge.EVENT_BUS.addListener(DropItemSmeltingEvent::onItemUpdate);
 
 		FoodProxy.registerEvent();
 	}

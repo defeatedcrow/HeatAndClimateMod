@@ -88,7 +88,8 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 	public Optional<IClimate> getClimateFromBiome(Level world, BlockPos pos) {
 		if (world.isLoaded(pos)) {
 			Holder<Biome> biome = world.getBiome(pos);
-			ResourceLocation name = DCUtil.getLocationName(biome).orElse(DCUtil.DUMMY);
+			ResourceLocation name = DCUtil.getLocationName(biome)
+			    .orElse(DCUtil.DUMMY);
 			return getClimateFromBiome(name);
 		}
 		return Optional.empty();
@@ -112,35 +113,15 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 	@Override
 	public DCHeatTier getHeatTier(Level world, BlockPos pos) {
 		if (world.isLoaded(pos)) {
-			Holder<Biome> b = world.getBiome(pos);
-			ResourceLocation dim = world.dimension().location();
-			Optional<DCHeatTier> ret = getRegisteredHeatTier(reg.getKey(b.get()));
-			float temp = ret.map(DCHeatTier::getBiomeTemp).orElse(b.get().getBaseTemperature());
-			boolean isNether = world.getBiome(pos).is(BiomeTags.IS_NETHER);
-			boolean isEnd = world.getBiome(pos).is(BiomeTags.IS_END);
-
-			// 高度補正
-			float f1 = (float) (TEMPERATURE_NOISE.getValue(pos.getX() / 8.0F, pos.getZ() / 8.0F, false) * 8.0D);
-			float f2 = (f1 + pos.getY() - 80.0F) * 0.05F / 40.0F;
-			if (f2 < -1.0F)
-				f2 = -1.0F;
-			temp -= f2;
-
-			float offset = WeatherChecker.getTempOffsetFloat(dim, isNether);
-			temp += offset;
-
-			float offset2 = DCTimeHelper.getTimeOffset(world, b);
-			temp += offset2;
-
-			if (isNether) {
-				temp += ConfigCommonBuilder.INSTANCE.getSeasonTempOffset(EnumSeason.SCORCHER);
-			} else if (isEnd) {
-				temp += ConfigCommonBuilder.INSTANCE.getSeasonTempOffset(EnumSeason.ABSOLUTE);
-			}
+			boolean isNether = world.getBiome(pos)
+			    .is(BiomeTags.IS_NETHER);
+			boolean isEnd = world.getBiome(pos)
+			    .is(BiomeTags.IS_END);
+			float temp = getBiomeTemp(world, pos);
 
 			DCHeatTier current = DCHeatTier.getTypeByBiomeTemp(temp);
 
-			if (isNether && ConfigCommonBuilder.INSTANCE.enInferno.get()) {
+			if (isNether && temp == 240F) {
 				current = DCHeatTier.INFERNO;
 			}
 
@@ -151,6 +132,49 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 
 		} else {
 			return DCHeatTier.NORMAL;
+		}
+	}
+
+	public float getBiomeTemp(Level world, BlockPos pos) {
+		if (world.isLoaded(pos)) {
+			Holder<Biome> b = world.getBiome(pos);
+			ResourceLocation dim = world.dimension()
+			    .location();
+			Optional<DCHeatTier> ret = getRegisteredHeatTier(reg.getKey(b.get()));
+			float temp = ret.map(DCHeatTier::getBiomeTemp)
+			    .orElse(b.get()
+			        .getBaseTemperature());
+			boolean isNether = world.getBiome(pos)
+			    .is(BiomeTags.IS_NETHER);
+			boolean isEnd = world.getBiome(pos)
+			    .is(BiomeTags.IS_END);
+
+			if (isNether) {
+				if (ConfigCommonBuilder.INSTANCE.enInferno.get())
+					temp = 240F;
+				else
+					temp += 4.0F + ConfigCommonBuilder.INSTANCE.getSeasonTempOffset(EnumSeason.SCORCHER);
+			} else if (isEnd) {
+				temp += -2.0F + ConfigCommonBuilder.INSTANCE.getSeasonTempOffset(EnumSeason.ABSOLUTE);
+			} else {
+				// 高度補正
+				float f1 = (float) (TEMPERATURE_NOISE.getValue(pos.getX() / 8.0F, pos.getZ() / 8.0F, false) * 8.0D);
+				float f2 = (f1 + pos.getY() - 80.0F) * 0.05F / 40.0F;
+				if (f2 < -1.0F)
+					f2 = -1.0F;
+				temp -= f2;
+
+				float offset = WeatherChecker.getTempOffsetFloat(dim, isNether);
+				temp += offset;
+
+				float offset2 = DCTimeHelper.getTimeOffset(world, b);
+				temp += offset2;
+			}
+
+			return temp;
+
+		} else {
+			return 0.6F;
 		}
 	}
 
@@ -174,9 +198,11 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 			Holder<Biome> biome = world.getBiome(pos);
 			DCHumidity hum = getRegisteredHumidity(reg.getKey(biome.get())).orElse(DCHumidity.NORMAL);
 			if (hum == DCHumidity.NORMAL) {
-				if (biome.is(Biomes.IS_WATER) || biome.is(Biomes.IS_WET) || biome.get().getDownfall() > 0.8F) {
+				if (biome.is(Biomes.IS_WATER) || biome.is(Biomes.IS_WET) || biome.get()
+				    .getDownfall() > 0.8F) {
 					return DCHumidity.WET;
-				} else if (biome.is(Biomes.IS_DRY) || biome.get().getDownfall() <= 0.3F) {
+				} else if (biome.is(Biomes.IS_DRY) || biome.get()
+				    .getDownfall() <= 0.3F) {
 					return DCHumidity.DRY;
 				}
 			}

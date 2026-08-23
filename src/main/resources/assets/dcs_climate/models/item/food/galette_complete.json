@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/galette_complete"
+  },
+  "parent": "minecraft:item/generated"
+}

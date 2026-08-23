@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -117,6 +118,15 @@ public class AnvilEventDC {
 						event.setResult(Result.ALLOW);
 					}
 				}
+			}
+			if (right.is(TagDC.ItemTag.SOAP_MAGIC) && !left.is(Items.ENCHANTED_BOOK)) {
+				ret = left.copy();
+				map.clear();
+				EnchantmentHelper.setEnchantments(map, ret);
+				event.setOutput(ret);
+				event.setMaterialCost(1);
+				event.setCost(1);
+				event.setResult(Result.ALLOW);
 			}
 		}
 	}

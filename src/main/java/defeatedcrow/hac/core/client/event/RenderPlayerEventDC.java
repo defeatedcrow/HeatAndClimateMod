@@ -26,10 +26,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class RenderPlayerEventDC {
 
-	private static final ResourceLocation WINGS_LOCATION = new ResourceLocation("dcs_climate:textures/entity/magic/magic_wing.png");
-	private static final ResourceLocation FIN_LOCATION = new ResourceLocation("dcs_climate:textures/entity/magic/magic_fin.png");
-	private static final ResourceLocation WINGS_LOCATION_BLACK = new ResourceLocation("dcs_climate:textures/entity/magic/magic_wing_black.png");
-	private static final ResourceLocation WINGS_LOCATION_HALLOWEEN = new ResourceLocation("dcs_climate:textures/entity/magic/magic_wing_halloween.png");
+	private static final ResourceLocation WINGS_LOCATION = ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/entity/magic/magic_wing.png");
+	private static final ResourceLocation FIN_LOCATION = ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/entity/magic/magic_fin.png");
+	private static final ResourceLocation WINGS_LOCATION_BLACK = ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/entity/magic/magic_wing_black.png");
+	private static final ResourceLocation WINGS_LOCATION_HALLOWEEN = ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/entity/magic/magic_wing_halloween.png");
 
 	@SubscribeEvent
 	public static void renderWings(RenderPlayerEvent.Post event) {

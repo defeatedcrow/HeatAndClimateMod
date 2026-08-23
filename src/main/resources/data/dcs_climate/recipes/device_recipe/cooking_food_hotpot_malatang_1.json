@@ -1,0 +1,45 @@
+{
+  "type": "dcs_climate:device_recipe",
+  "group": "cooking",
+  "result": {
+    "item": "dcs_climate:food/hotpot_malatang",
+    "count": 4
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/animal_fat"
+    },
+    {
+      "tag": "forge:crops/chili"
+    },
+    {
+      "tag": "forge:crops/sichuan_pepper"
+    },
+    {
+      "tag": "forge:ingredients/giblets"
+    },
+    {
+      "tag": "forge:ingredients/all_raw_meats"
+    },
+    {
+      "tag": "forge:crops/spices"
+    }
+  ],
+  "heat": [
+    "OVEN",
+    "KILN",
+    "SMELTING"
+  ],
+  "hum": [
+    "UNDERWATER",
+    "WET",
+    "NORMAL",
+    "DRY"
+  ],
+  "air": [
+    "TIGHT",
+    "NORMAL",
+    "FLOW",
+    "WIND"
+  ]
+}

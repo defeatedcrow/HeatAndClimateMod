@@ -9,7 +9,9 @@ import com.mojang.math.Vector3f;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.food.material.entity.potfoods.HotPotItem;
 import defeatedcrow.hac.food.material.entity.potfoods.IPotFoods;
+import defeatedcrow.hac.food.material.entity.potfoods.IPotFoods.LayerType;
 import defeatedcrow.hac.food.material.entity.potfoods.RiceBowlItem;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.machine.material.block.machine.CookingPotTile;
@@ -38,14 +40,20 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 	protected CookingPotModel_A model_A;
 	protected CookingPotModel_B model_B;
 	protected CookingPotModel_C model_C;
-	protected CookingPotModel_Layer model_layer;
+
 	private BlockRenderDispatcher renderer;
+
+	public CookingPotModel_Layer LAYER_MODEL;
+	public CookingPotModel_FishLayer FISH_MODEL;
+	public CookingPotModel_HotPotLayer HOTPOT_MODEL;
 
 	public TileRendererCookingPot(BlockEntityRendererProvider.Context ctx) {
 		this.model_A = new CookingPotModel_A(ctx.bakeLayer(CookingPotTile.NORMAL.getLayerLocation()));
 		this.model_B = new CookingPotModel_B(ctx.bakeLayer(CookingPotTile.BLUE.getLayerLocation()));
 		this.model_C = new CookingPotModel_C(ctx.bakeLayer(CookingPotTile.BLACK.getLayerLocation()));
-		this.model_layer = new CookingPotModel_Layer(ctx.bakeLayer(RiceBowlItem.NORMAL_LAYER.getLayerLocation()));
+		this.LAYER_MODEL = new CookingPotModel_Layer(ctx.bakeLayer(RiceBowlItem.NORMAL_LAYER.getLayerLocation()));
+		this.FISH_MODEL = new CookingPotModel_FishLayer(ctx.bakeLayer(RiceBowlItem.TAIMESHI_LAYER.getLayerLocation()));
+		this.HOTPOT_MODEL = new CookingPotModel_HotPotLayer(ctx.bakeLayer(HotPotItem.TOFU_LAYER.getLayerLocation()));
 		renderer = ctx.getBlockRenderDispatcher();
 	}
 
@@ -90,7 +98,7 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 			if (!lit) {
 				ItemStack output = tile.getItem(6);
 				if (output.getItem() instanceof IPotFoods) {
-					renderOutputItem(poseStack, buffer, output.copy(), packedLight, isB);
+					renderOutputItem(poseStack, buffer, output.copy(), packedLight, isB, dir);
 				} else {
 					FluidStack fluid = tile.outputTank.getFluid();
 					if (fluid.isEmpty()) {
@@ -101,9 +109,12 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 						if (isC) {
 							float h = copy.getAmount() * 0.25F / FermentationJarTile.TANK_CAP;
 							renderFluid(poseStack, buffer, copy, packedLight, 0.5F, 0.125F, 0.5F, 0.305F, h);
+						} else if (isB) {
+							float h = copy.getAmount() * 0.20F / FermentationJarTile.TANK_CAP;
+							renderFluid(poseStack, buffer, copy, packedLight, 0.5F, 0.125F, 0.5F, 0.375F, h);
 						} else {
 							float h = copy.getAmount() * 0.35F / FermentationJarTile.TANK_CAP;
-							renderFluid(poseStack, buffer, copy, packedLight, 0.5F, 0.075F, 0.5F, isB ? 0.375F : 0.305F, h);
+							renderFluid(poseStack, buffer, copy, packedLight, 0.5F, 0.075F, 0.5F, 0.305F, h);
 						}
 					}
 				}
@@ -136,20 +147,27 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 		pose.popPose();
 	}
 
-	public void renderOutputItem(PoseStack pose, MultiBufferSource buffer, ItemStack item, int light, boolean isB) {
+	public void renderOutputItem(PoseStack pose, MultiBufferSource buffer, ItemStack item, int light, boolean isB, Direction dir) {
 		if (item.getItem() instanceof IPotFoods food) {
 			EntityRenderData data = food.getPotTexture(item.getItem());
 			ResourceLocation tex = data.getTextureLocation();
+			LayerType type = food.getPotLayerModel(item.getItem());
 
 			pose.pushPose();
 			pose.translate(0.5F, 0F, 0.5F);
 			pose.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+			pose.mulPose(Vector3f.YP.rotationDegrees(dir.toYRot()));
 			if (isB)
 				pose.scale(0.75F, 1F, 0.75F);
 			else
 				pose.scale(0.625F, 1F, 0.625F);
 
-			this.model_layer.renderToBuffer(pose, buffer.getBuffer(model_layer.renderType(tex)), light, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+			if (type == LayerType.LAYER)
+				LAYER_MODEL.renderToBuffer(pose, buffer.getBuffer(LAYER_MODEL.renderType(tex)), light, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+			else if (type == LayerType.FISH)
+				FISH_MODEL.renderToBuffer(pose, buffer.getBuffer(LAYER_MODEL.renderType(tex)), light, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+			else if (type == LayerType.POT)
+				HOTPOT_MODEL.renderToBuffer(pose, buffer.getBuffer(LAYER_MODEL.renderType(tex)), light, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 
 			pose.popPose();
 		}

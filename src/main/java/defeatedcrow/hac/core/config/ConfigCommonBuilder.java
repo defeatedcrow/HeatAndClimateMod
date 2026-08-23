@@ -88,28 +88,28 @@ public class ConfigCommonBuilder {
 		    .defineInRange("Climate Damage Interval Tick", 60, 20, 3600);
 
 		this.vSeasonSpr = builder.comment("Set the value of temperature variation. (Spring)")
-		    .defineInRange("Spring Temperature", 0.05D, -6.0D, 120.0D);
+		    .defineInRange("Spring Temperature", 0.05D, -5.6D, 200.0D);
 
 		this.vSeasonSmr = builder.comment("Set the value of the temperature variation. (Summer)")
-		    .defineInRange("Summer Temperature", 0.4D, -6.0D, 120.0D);
+		    .defineInRange("Summer Temperature", 0.4D, -5.6D, 200.0D);
 
 		this.vSeasonAut = builder.comment("Set the value of the temperature variation. (Autumn)")
-		    .defineInRange("Autumn Temperature", 0.0D, -6.0D, 120.0D);
+		    .defineInRange("Autumn Temperature", 0.0D, -5.6D, 200.0D);
 
 		this.vSeasonWtr = builder.comment("Set the value of the temperature variation. (Winter)")
-		    .defineInRange("Winter Temperature", -0.4D, -6.0D, 120.0D);
+		    .defineInRange("Winter Temperature", -0.4D, -5.6D, 200.0D);
 
 		this.vSeasonHell = builder.comment("Set the value of the temperature variation. (Nether)")
-		    .defineInRange("Nether Temperature", 2.0D, -6.0D, 120.0D);
+		    .defineInRange("Nether Temperature", 3.0D, -5.6D, 200.0D);
 
 		this.vSeasonArc = builder.comment("Set the value of the temperature variation. (End)")
-		    .defineInRange("End Temperature", -2.0D, -6.0D, 120.0D);
+		    .defineInRange("End Temperature", -3.0D, -5.6D, 200.0D);
 
 		this.vWeatherRain = builder.comment("Set the value of the temperature drop dur to rain.")
-		    .defineInRange("Rain Temperature", -0.2D, -6.0D, 120.0D);
+		    .defineInRange("Rain Temperature", -0.2D, -5.6D, 200.0D);
 
 		this.vNight = builder.comment("Set the value of nighttime temperature drop.")
-		    .defineInRange("Night Temperature", -0.2D, -6.0D, 120.0D);
+		    .defineInRange("Night Temperature", -0.2D, -5.6D, 200.0D);
 
 		builder.pop();
 

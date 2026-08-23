@@ -44,7 +44,7 @@ public class JEIPluginDC implements IModPlugin {
 
 	@Override
 	public ResourceLocation getPluginUid() {
-		return new ResourceLocation(ClimateCore.MOD_ID, "core");
+		return ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "core");
 	}
 
 	@Override

@@ -11,6 +11,7 @@
     "BlockUpdateMixin_Farm",
     "BlockUpdateMixin_Snow",
     "BlockUpdateMixin_Grass",
+    "ItemUpdateMixin",
     "LivingEntityMixin",
     "AttackTargetGoalMixin",
     "VillagerMixin"

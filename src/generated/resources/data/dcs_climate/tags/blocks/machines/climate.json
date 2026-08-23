@@ -1,0 +1,9 @@
+{
+  "values": [
+    "dcs_climate:machine/kitchen_stove",
+    "dcs_climate:machine/fuel_burner",
+    "dcs_climate:machine/chamber_iron",
+    "dcs_climate:machine/chamber_brick_a",
+    "dcs_climate:machine/chamber_brick_b"
+  ]
+}

@@ -19,6 +19,7 @@ public class EntityModelLoader implements ResourceManagerReloadListener {
 	public static ModelThinArmor MODEL_LEGGINS_TIGHT;
 	public static ModelThinArmor MODEL_SHIRT;
 	public static ModelThinArmor MODEL_JACKET;
+	public static ModelThinArmor MODEL_BLOUSE;
 	public static ModelThinArmor MODEL_TUNIC;
 	public static ModelThinArmor MODEL_OVERSUITS;
 	public static ModelThinArmor MODEL_SUITS;
@@ -50,6 +51,9 @@ public class EntityModelLoader implements ResourceManagerReloadListener {
 		MODEL_JACKET = new ModelThinArmor(Minecraft.getInstance()
 		    .getEntityModels()
 		    .bakeLayer(JACKET.getLayerLocation()));
+		MODEL_BLOUSE = new ModelThinArmor(Minecraft.getInstance()
+		    .getEntityModels()
+		    .bakeLayer(BLOUSE.getLayerLocation()));
 		MODEL_TUNIC = new ModelThinArmor(Minecraft.getInstance()
 		    .getEntityModels()
 		    .bakeLayer(TUNIC.getLayerLocation()));
@@ -85,6 +89,7 @@ public class EntityModelLoader implements ResourceManagerReloadListener {
 	public static final EntityRenderData LEGGINS_TIGHT = new EntityRenderData("armor/tights_knit", 1F, 0F);
 	public static final EntityRenderData SHIRT = new EntityRenderData("armor/shirt_linen", 1F, 0F);
 	public static final EntityRenderData JACKET = new EntityRenderData("armor/jacket_linen", 1F, 0F);
+	public static final EntityRenderData BLOUSE = new EntityRenderData("armor/blouse_cloth", 1F, 0F);
 	public static final EntityRenderData TUNIC = new EntityRenderData("armor/tunic_cloth", 1F, 0F);
 	public static final EntityRenderData OVERSUITS = new EntityRenderData("armor/suits_cloth", 1F, 0F);
 	public static final EntityRenderData SUITS = new EntityRenderData("armor/suits_linen", 1F, 0F);

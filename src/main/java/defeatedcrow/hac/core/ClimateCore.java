@@ -62,29 +62,37 @@ public class ClimateCore {
 
 	public ClimateCore() {
 		initAPI();
-		configDir = new File(FMLPaths.CONFIGDIR.get().toFile() + "/heat_and_climate");
+		configDir = new File(FMLPaths.CONFIGDIR.get()
+		    .toFile() + "/heat_and_climate");
 		isDebug = DCLogger.checkDebugModePass();
 
 		if (isDebug) {
 			Path path = FMLPaths.GAMEDIR.get();
-			if (path.toString().contains("run")) {
-				assetsDir = new File(path.toFile().getParent() + "/src/main/resources/assets/dcs_climate/");
-				dataDir = new File(path.toFile().getParent() + "/src/main/resources/data/dcs_climate/");
+			if (path.toString()
+			    .contains("run")) {
+				assetsDir = new File(path.toFile()
+				    .getParent() + "/src/main/resources/assets/dcs_climate/");
+				dataDir = new File(path.toFile()
+				    .getParent() + "/src/main/resources/data/dcs_climate/");
 				DCLogger.debugInfoLog("path test1: " + assetsDir.getPath());
 				DCLogger.debugInfoLog("path test2: " + dataDir.getPath());
 			}
 		}
 
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigClientBuilder.CONFIG_CLIENT);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigCommonBuilder.CONFIG_COMMON);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ConfigServerBuilder.CONFIG_SERVER);
+		ModLoadingContext.get()
+		    .registerConfig(ModConfig.Type.CLIENT, ConfigClientBuilder.CONFIG_CLIENT);
+		ModLoadingContext.get()
+		    .registerConfig(ModConfig.Type.COMMON, ConfigCommonBuilder.CONFIG_COMMON);
+		ModLoadingContext.get()
+		    .registerConfig(ModConfig.Type.SERVER, ConfigServerBuilder.CONFIG_SERVER);
 
 		TagDC.init();
 		CoreInit.init();
 		FeatureInit.init();
 		TriggersDC.init();
 
-		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		final IEventBus bus = FMLJavaModLoadingContext.get()
+		    .getModEventBus();
 		CoreInit.BLOCKS.register(bus);
 		CoreInit.BLOCK_ENTITIES.register(bus);
 		CoreInit.ITEMS.register(bus);
@@ -139,8 +147,8 @@ public class ClimateCore {
 	}
 
 	public void attributeRegister(EntityAttributeCreationEvent event) {
-
-		event.put(MagicInit.CROW_TURRET.get(), CrowTurretEntity.createAttributes().build());
+		event.put(MagicInit.CROW_TURRET.get(), CrowTurretEntity.createAttributes()
+		    .build());
 	}
 
 	public void gatherData(GatherDataEvent event) {

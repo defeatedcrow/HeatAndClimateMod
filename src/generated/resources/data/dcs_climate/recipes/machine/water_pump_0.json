@@ -8,7 +8,7 @@
       "tag": "forge:ingots/nickel_silver"
     },
     "Y": {
-      "tag": "dcs_climate:pipe_fluid"
+      "tag": "dcs_climate:machines/pipe_fluid"
     },
     "Z": {
       "item": "minecraft:bucket"

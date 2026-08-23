@@ -176,6 +176,11 @@ public class PorridgeItem extends ItemEntityFood implements IPotFoods {
 		return PORRIDGE_LAYER;
 	}
 
+	@Override
+	public LayerType getPotLayerModel(Item item) {
+		return LayerType.LAYER;
+	}
+
 	public static final EntityRenderData PORRIDGE = new EntityRenderData("food/porridge_simple", 0.75F, 0F, "outer");
 	public static final EntityRenderData PORRIDGE_MILK = new EntityRenderData("food/porridge_milk", 0.75F, 0F, "outer");
 	public static final EntityRenderData PORRIDGE_SAFFRON = new EntityRenderData("food/porridge_saffron", 0.75F, 0F, "outer");

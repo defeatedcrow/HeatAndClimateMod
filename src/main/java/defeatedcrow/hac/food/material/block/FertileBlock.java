@@ -8,6 +8,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.climate.ClimateSupplier;
+import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.crop.IFertileBlock;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.ClimateCore;
@@ -50,8 +52,13 @@ public class FertileBlock extends FarmBlock implements EntityBlock, IFertileBloc
 	public static final IntegerProperty FERTILE = DCState.FERTILE;
 
 	public FertileBlock() {
-		super(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT).randomTicks().strength(1.0F, 1.0F).noOcclusion());
-		this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, Integer.valueOf(0)).setValue(FERTILE, Integer.valueOf(0)));
+		super(BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT)
+		    .randomTicks()
+		    .strength(1.0F, 1.0F)
+		    .noOcclusion());
+		this.registerDefaultState(this.stateDefinition.any()
+		    .setValue(MOISTURE, 0)
+		    .setValue(FERTILE, 0));
 	}
 
 	@Override
@@ -62,9 +69,40 @@ public class FertileBlock extends FarmBlock implements EntityBlock, IFertileBloc
 			level.setBlockAndUpdate(pos, state.setValue(MOISTURE, water));
 		}
 		if (DCState.getInt(state, FERTILE) <= 0) {
-			level.setBlockAndUpdate(pos, Blocks.FARMLAND.defaultBlockState().setValue(MOISTURE, water));
+			level.setBlockAndUpdate(pos, Blocks.FARMLAND.defaultBlockState()
+			    .setValue(MOISTURE, water));
 		}
 		super.tick(state, level, pos, random);
+	}
+
+	// 乾燥による破壊なし
+	@Override
+	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+		int i = state.getValue(MOISTURE);
+		if (!isNearWater(level, pos) && !level.isRainingAt(pos.above())) {
+			if (i > 0) {
+				level.setBlock(pos, state.setValue(MOISTURE, i - 1), 2);
+			}
+		} else if (i < 7) {
+			level.setBlock(pos, state.setValue(MOISTURE, 7), 2);
+		}
+	}
+
+	private static boolean isNearWater(ServerLevel level, BlockPos pos) {
+		BlockState state = level.getBlockState(pos);
+		for (BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, 0, -4), pos.offset(4, 1, 4))) {
+			if (state.canBeHydrated(level, pos, level.getFluidState(blockpos), blockpos)) {
+				return true;
+			}
+		}
+		ClimateSupplier supplier = new ClimateSupplier(level, pos);
+		if (DCHumidity.wet()
+		    .contains(supplier.get()
+		        .getHumidity())) {
+			return true;
+		}
+
+		return net.minecraftforge.common.FarmlandWaterManager.hasBlockWaterTicket(level, pos);
 	}
 
 	/* return 1 ~ 4 */
@@ -80,7 +118,8 @@ public class FertileBlock extends FarmBlock implements EntityBlock, IFertileBloc
 		if (state.getBlock() instanceof IFertileBlock) {
 			return ((IFertileBlock) state.getBlock()).fertileTargetSoil(i, state);
 		} else if (state.is(TagDC.BlockTag.FARMLAND) || state.is(BlockTags.DIRT)) {
-			return ((IFertileBlock) FoodInit.FERTILE.get()).fertileTargetSoil(i, FoodInit.FERTILE.get().defaultBlockState());
+			return ((IFertileBlock) FoodInit.FERTILE.get()).fertileTargetSoil(i, FoodInit.FERTILE.get()
+			    .defaultBlockState());
 		}
 		return state;
 	}
@@ -98,7 +137,8 @@ public class FertileBlock extends FarmBlock implements EntityBlock, IFertileBloc
 	@Override
 	public BlockState fertileTargetSoil(int fertile, BlockState state) {
 		int f = Mth.clamp(fertile, 0, 3);
-		return state.setValue(FERTILE, f).setValue(MOISTURE, 7);
+		return state.setValue(FERTILE, f)
+		    .setValue(MOISTURE, 7);
 	}
 
 	@Override
@@ -123,9 +163,8 @@ public class FertileBlock extends FarmBlock implements EntityBlock, IFertileBloc
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-				new JsonModelDC("minecraft:block/template_farmland", ImmutableMap.of("dirt", "minecraft:block/dirt", "top", "dcs_climate:block/crop/fertile_dry")),
-				new JsonModelDC("minecraft:block/template_farmland", ImmutableMap.of("dirt", "minecraft:block/dirt", "top", "dcs_climate:block/crop/fertile_moist")));
+		return ImmutableList.of(new JsonModelDC("minecraft:block/template_farmland", ImmutableMap.of("dirt", "minecraft:block/dirt", "top", "dcs_climate:block/crop/fertile_dry")),
+		    new JsonModelDC("minecraft:block/template_farmland", ImmutableMap.of("dirt", "minecraft:block/dirt", "top", "dcs_climate:block/crop/fertile_moist")));
 	}
 
 	@Override
@@ -156,7 +195,8 @@ public class FertileBlock extends FarmBlock implements EntityBlock, IFertileBloc
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
 		MutableComponent tex1 = Component.translatable("dcs.tip.fertile.fertile");
-		MutableComponent tex2 = Component.translatable("dcs.tip.fertile.mutation.on").withStyle(ChatFormatting.GREEN);
+		MutableComponent tex2 = Component.translatable("dcs.tip.fertile.mutation.on")
+		    .withStyle(ChatFormatting.GREEN);
 		if (ClimateCore.proxy.keyShiftPushed()) {
 			list.add(tex1);
 			list.add(tex2);

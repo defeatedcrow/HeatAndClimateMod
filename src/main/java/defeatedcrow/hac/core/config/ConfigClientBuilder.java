@@ -16,6 +16,8 @@ public class ConfigClientBuilder {
 	public final ForgeConfigSpec.BooleanValue disablePotionEffect;
 
 	public final ForgeConfigSpec.IntValue HUD_c;
+	public final ForgeConfigSpec.BooleanValue HUD_name;
+	public final ForgeConfigSpec.BooleanValue HUD_temp;
 
 	public final ForgeConfigSpec.IntValue offset_x;
 	public final ForgeConfigSpec.IntValue offset_y;
@@ -53,6 +55,12 @@ public class ConfigClientBuilder {
 
 		this.HUD_c = builder.comment("Select a color number for the climate HUD.")
 		    .defineInRange("HUD Color Select", 0, 0, 4);
+
+		this.HUD_name = builder.comment("Show biome name in the climate HUD.")
+		    .define("HUD Biome Name", true);
+
+		this.HUD_temp = builder.comment("Show biome temperature in the climate HUD.")
+		    .define("HUD Biome Temp", true);
 
 		this.offset_x = builder.comment(" Adjust the display position of the HUD.")
 		    .defineInRange("HUD X Offset", 3, -100, 400);

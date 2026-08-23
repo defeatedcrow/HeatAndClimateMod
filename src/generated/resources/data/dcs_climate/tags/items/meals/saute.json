@@ -2,8 +2,10 @@
   "values": [
     "dcs_climate:food/fried_egg",
     "dcs_climate:food/fried_egg_bacon",
+    "dcs_climate:food/grilled_crab",
     "dcs_climate:food/omelet_basic",
     "dcs_climate:food/omelet_vegi",
+    "dcs_climate:food/galette_complete",
     "dcs_climate:food/saute_green",
     "dcs_climate:food/saute_green_squid",
     "dcs_climate:food/saute_mabo_tofu",

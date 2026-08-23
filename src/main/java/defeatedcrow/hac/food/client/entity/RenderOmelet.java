@@ -1,6 +1,7 @@
 package defeatedcrow.hac.food.client.entity;
 
 import defeatedcrow.hac.api.material.IEntityItem;
+import defeatedcrow.hac.food.client.model.GaletteModel;
 import defeatedcrow.hac.food.client.model.OmeletModel;
 import defeatedcrow.hac.food.client.model.SausageCurryModel;
 import defeatedcrow.hac.food.client.model.SausageModel;
@@ -15,12 +16,14 @@ public class RenderOmelet<T extends FoodEntityBase> extends RenderFoodBase<FoodE
 
 	protected SausageModel<FoodEntityBase> sausageModel;
 	protected SausageCurryModel<FoodEntityBase> sausageCurryModel;
+	protected GaletteModel<FoodEntityBase> galetteModel;
 
 	public RenderOmelet(Context ctx) {
 		super(ctx);
 		this.model = new OmeletModel<>(ctx.bakeLayer(OmeletItem.BASIC.getLayerLocation()));
 		this.sausageModel = new SausageModel<>(ctx.bakeLayer(OmeletItem.SAUSAGE.getLayerLocation()));
 		this.sausageCurryModel = new SausageCurryModel<>(ctx.bakeLayer(OmeletItem.SAUSAGE_CURRY.getLayerLocation()));
+		this.galetteModel = new GaletteModel<>(ctx.bakeLayer(OmeletItem.GALETTE.getLayerLocation()));
 	}
 
 	@Override
@@ -35,6 +38,8 @@ public class RenderOmelet<T extends FoodEntityBase> extends RenderFoodBase<FoodE
 			return sausageModel;
 		} else if (type == OmeletItem.ModelType.CURRY) {
 			return sausageCurryModel;
+		} else if (type == OmeletItem.ModelType.GALETTE) {
+			return galetteModel;
 		} else {
 			return model;
 		}

@@ -40,6 +40,10 @@
     "dcs_climate:food/wabowl_miso_pork",
     "dcs_climate:food/wabowl_miso_carp",
     "dcs_climate:food/wabowl_shiruko",
+    "dcs_climate:food/hotpot_tofu",
+    "dcs_climate:food/hotpot_chicken",
+    "dcs_climate:food/hotpot_crab",
+    "dcs_climate:food/hotpot_malatang",
     "dcs_climate:food/large_bowl_acqua_pazza",
     "dcs_climate:food/large_bowl_fish"
   ]

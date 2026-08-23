@@ -1,6 +1,7 @@
 {
   "values": [
     "#forge:ingredients/butter",
-    "#forge:ingredients/margarine"
+    "#forge:ingredients/margarine",
+    "#forge:ingredients/animal_fat"
   ]
 }

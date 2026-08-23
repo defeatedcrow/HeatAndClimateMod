@@ -1,10 +1,9 @@
-// 1.19.2	2026-08-03T23:29:09.2994938	Tags for minecraft:block
+// 1.19.2	2026-08-14T23:07:25.3723924	Tags for minecraft:block
 10483793c64468d4f5b52de535ddf0ddc8dba771 data/dcs_climate/tags/blocks/bamboo_shoot.json
 b094b4912df19dd03d0bc38d7fcdda0e799a0911 data/dcs_climate/tags/blocks/building_stones.json
 06b949bc461b20f8740141f309397037604998bb data/dcs_climate/tags/blocks/building_stones/bricks.json
 f0332bf8fa15d83dd07f1eecdcef7bea47060259 data/dcs_climate/tags/blocks/building_stones/chiseled.json
 c20746768ee949c582bfb37046af710101ad0a02 data/dcs_climate/tags/blocks/building_stones/pillar.json
-af01e42317f63dc3a54da95dfc59def9ec8cf6a1 data/dcs_climate/tags/blocks/cable_energy.json
 c27613bc70b1102eddea4f03976d58392658a01f data/dcs_climate/tags/blocks/color_ores.json
 5973775ffcba4d39743586a99d401b242edfd861 data/dcs_climate/tags/blocks/color_ores/black.json
 08bdd9cd9a09b6f638cd8ea54bec26923da04737 data/dcs_climate/tags/blocks/color_ores/blue.json
@@ -21,12 +20,18 @@ f94d0af61e853e714398aa2fd20e319610b0b44f data/dcs_climate/tags/blocks/color_ores
 75c7dc675e3c7734d0421b53b3e2fb77912ac24c data/dcs_climate/tags/blocks/green_manures.json
 edc53fe07b6cc91a4dc3d15cc04f5b2f1b0442d7 data/dcs_climate/tags/blocks/hoppers.json
 54057d6a734f0270d772afc38d85be2443fe48b5 data/dcs_climate/tags/blocks/hoppers/filter_hopper.json
-94ff6238538ed033196035f110b10721b2cf337f data/dcs_climate/tags/blocks/leakage_machine.json
 4907e6cc62f45960f628e6078eedd050a85e4d75 data/dcs_climate/tags/blocks/logs_can_collect_sap.json
 995780b538ec0d5ba35266df7b1cc561e7a7d15c data/dcs_climate/tags/blocks/logs_can_collect_sap/lacquer.json
 8c8d04e6558e83e86b428523fa5055683822b260 data/dcs_climate/tags/blocks/logs_can_collect_sap/latex.json
 52e92430406456214703fe01a475b44c40a39a6c data/dcs_climate/tags/blocks/logs_can_collect_sap/resin.json
 f2cdc97a774fb6bb826cc512d5fda718518ef3ab data/dcs_climate/tags/blocks/logs_can_collect_sap/sweet_sap.json
+25cf27c7785a28d845320d9f4d412840726754c1 data/dcs_climate/tags/blocks/machines.json
+af01e42317f63dc3a54da95dfc59def9ec8cf6a1 data/dcs_climate/tags/blocks/machines/cable_energy.json
+7ba979d0ec6c9206653864ba5791aaeffda3a375 data/dcs_climate/tags/blocks/machines/climate.json
+897964d576c6e085a81336660fa2bfb22ada6e39 data/dcs_climate/tags/blocks/machines/display.json
+5de2e0e4c59a26dd61799ef7f2ad20e8f16a3b7d data/dcs_climate/tags/blocks/machines/energy.json
+94ff6238538ed033196035f110b10721b2cf337f data/dcs_climate/tags/blocks/machines/leakage.json
+ea87dddaf131cef22fdeafd24a3a9421b7b97368 data/dcs_climate/tags/blocks/machines/pipe_fluid.json
 230616b7b3c6b414bb5b51b346f2555e205fae16 data/dcs_climate/tags/blocks/not_loof_blocks.json
 9e7038e1e7eac8e4c4d44ec95d92118f664a9003 data/dcs_climate/tags/blocks/not_loof_blocks/cooking_pot.json
 f462741c4cd4f7271897f81dfa32efab2deb6cfd data/dcs_climate/tags/blocks/not_loof_blocks/fauset.json
@@ -34,7 +39,6 @@ f462741c4cd4f7271897f81dfa32efab2deb6cfd data/dcs_climate/tags/blocks/not_loof_b
 c639d896aaeb82613a27ad9dafa0663d74399ca7 data/dcs_climate/tags/blocks/not_loof_blocks/monitor.json
 84da9f10ac506e32c1b514fd346d5331cf01074b data/dcs_climate/tags/blocks/not_loof_blocks/tea_pot.json
 e15b1c0b1a3f93e45a226448e0d60f6836b28bff data/dcs_climate/tags/blocks/not_loof_blocks/wall_lamp.json
-ea87dddaf131cef22fdeafd24a3a9421b7b97368 data/dcs_climate/tags/blocks/pipe_fluid.json
 5c59a22166febcd8e5dbc057af9238804006c4e3 data/dcs_climate/tags/blocks/scythe_breakable.json
 40fc28555ba86485c2fdf3bc327bb05602bd7cb5 data/forge/tags/blocks/crops/cactus.json
 814fe5838791d700256cfa0273c5d62387b04b5d data/forge/tags/blocks/crops/melon.json

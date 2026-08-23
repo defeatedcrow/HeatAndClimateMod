@@ -36,8 +36,9 @@ public class AirflowRenderer implements IIngredientRenderer<DCAirflow> {
 	public void render(PoseStack stack, DCAirflow ingredient) {
 		RenderSystem.enableBlend();
 
-		RenderSystem.setShaderTexture(0, new ResourceLocation(ClimateCore.MOD_ID, "textures/gui/icon_base.png"));
-		Matrix4f matrix = stack.last().pose();
+		RenderSystem.setShaderTexture(0, ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/gui/icon_base.png"));
+		Matrix4f matrix = stack.last()
+		    .pose();
 		setGLColorFromInt(ingredient.getColorInt());
 
 		drawTexturedModalRect(matrix, 0, 0, 0, 0, 21, 3);
@@ -74,13 +75,23 @@ public class AirflowRenderer implements IIngredientRenderer<DCAirflow> {
 	private static void drawTexturedModalRect(Matrix4f mat, int x, int y, int tX, int tY, int wid, int hei) {
 		float f = 1F / 16F;
 		float f1 = 1F / 16F;
-		BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
+		BufferBuilder bufferbuilder = Tesselator.getInstance()
+		    .getBuilder();
 		bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-		bufferbuilder.vertex(mat, x + 0, y + hei, 90.0F).uv((tX + 0) * f, (tY + 16) * f1).endVertex();
-		bufferbuilder.vertex(mat, x + wid, y + hei, 90.0F).uv((tX + 16) * f, (tY + 16) * f1).endVertex();
-		bufferbuilder.vertex(mat, x + wid, y + 0, 90.0F).uv((tX + 16) * f, (tY + 0) * f1).endVertex();
-		bufferbuilder.vertex(mat, x + 0, y + 0, 90.0F).uv((tX + 0) * f, (tY + 0) * f1).endVertex();
-		Tesselator.getInstance().end();
+		bufferbuilder.vertex(mat, x + 0, y + hei, 90.0F)
+		    .uv((tX + 0) * f, (tY + 16) * f1)
+		    .endVertex();
+		bufferbuilder.vertex(mat, x + wid, y + hei, 90.0F)
+		    .uv((tX + 16) * f, (tY + 16) * f1)
+		    .endVertex();
+		bufferbuilder.vertex(mat, x + wid, y + 0, 90.0F)
+		    .uv((tX + 16) * f, (tY + 0) * f1)
+		    .endVertex();
+		bufferbuilder.vertex(mat, x + 0, y + 0, 90.0F)
+		    .uv((tX + 0) * f, (tY + 0) * f1)
+		    .endVertex();
+		Tesselator.getInstance()
+		    .end();
 	}
 
 }

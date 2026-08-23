@@ -473,18 +473,21 @@
 
   "item.dcs_climate.food.food_pastry":"ペストリー生地",
   "item.dcs_climate.food.food_batter":"バッター液",
+  "item.dcs_climate.food.food_crape_batter":"クレープバッター",
   "item.dcs_climate.food.food_cake_batter":"ケーキバッター",
   "item.dcs_climate.food.food_noodle_pasta":"パスタ",
   "item.dcs_climate.food.food_noodle_wheat":"小麦麺",
   "item.dcs_climate.food.food_noodle_brine":"中華麺",
   "item.dcs_climate.food.food_noodle_buckwheat":"蕎麦切り",
   "item.dcs_climate.food.food_noodle_rice":"米粉麺",
+  "item.dcs_climate.food.food_noodle_glass":"春雨",
 
   "item.dcs_climate.food.food_butter":"バター",
   "item.dcs_climate.food.food_margarine":"マーガリン",
   "item.dcs_climate.food.food_cheese":"チーズ",
   "item.dcs_climate.food.food_fresh_cheese":"フレッシュチーズ",
   "item.dcs_climate.food.food_offal":"もつ",
+  "item.dcs_climate.food.food_animal_fat":"獣脂",
   "item.dcs_climate.food.food_gelatine":"ゼラチン",
   "item.dcs_climate.food.food_rennet":"レンネット",
   "item.dcs_climate.food.bone_cow":"牛骨",
@@ -665,6 +668,7 @@
   "item.dcs_climate.food.bread_cream_baked":"クリームパン",
   "item.dcs_climate.food.bread_sausage_raw":"ソーセージパン生地",
   "item.dcs_climate.food.bread_sausage_baked":"ソーセージパン",
+  "item.dcs_climate.food.crape_baked":"クレープ",
 
   "item.dcs_climate.food.pizza_tomato_raw":"生のピッツァ・マリナーラ",
   "item.dcs_climate.food.pizza_tomato_baked":"ピッツァ・マリナーラ",
@@ -723,6 +727,14 @@
   "item.dcs_climate.food.donut_rose":"ポンチキ",
   
   "item.dcs_climate.food.pancake":"パンケーキ",
+  
+  "item.dcs_climate.food.crape_sugar":"シュガーバタークレープ",
+  "item.dcs_climate.food.crape_cream":"焦がしカスタードクレープ",
+  "item.dcs_climate.food.crape_caramel":"キャラメルナッツクレープ",
+  "item.dcs_climate.food.crape_cocoa":"チョコクレープ",
+  "item.dcs_climate.food.crape_berry":"ベリークレープ",
+  "item.dcs_climate.food.crape_apple":"アップルシナモンクレープ",
+  "item.dcs_climate.food.crape_tuna":"ツナマヨクレープ",
 
   "item.dcs_climate.food.cake_butter":"バターケーキ",
   "item.dcs_climate.food.cake_berry":"ベリーショートケーキ",
@@ -774,6 +786,8 @@
   "item.dcs_climate.food.rice_seki":"赤飯",
   "item.dcs_climate.food.rice_napa":"菜飯",
   "item.dcs_climate.food.rice_fish":"魚と生姜の混ぜご飯",
+  "item.dcs_climate.food.rice_mushroom":"キノコご飯",
+  "item.dcs_climate.food.rice_taimeshi":"鯛飯",
   "item.dcs_climate.food.chazuke_ume":"梅茶漬け",
   "item.dcs_climate.food.chazuke_sake":"鮭茶漬け",
   "item.dcs_climate.food.chazuke_tai":"鯛茶漬け",
@@ -872,6 +886,11 @@
   "item.dcs_climate.food.wabowl_miso_pork":"豚汁",
   "item.dcs_climate.food.wabowl_miso_carp":"鯉こく",
   "item.dcs_climate.food.wabowl_shiruko":"おしるこ",
+  
+  "item.dcs_climate.food.hotpot_tofu":"湯豆腐",
+  "item.dcs_climate.food.hotpot_chicken":"鶏の水炊き",
+  "item.dcs_climate.food.hotpot_crab":"カニ鍋",
+  "item.dcs_climate.food.hotpot_malatang":"麻辣火鍋",
 
   "item.dcs_climate.food.kobachi_pumpkin":"カボチャの煮物",
   "item.dcs_climate.food.kobachi_taro":"里芋の煮物",
@@ -896,8 +915,10 @@
   "item.dcs_climate.food.omelet_vegi":"野菜のオムレツ",
   "item.dcs_climate.food.fried_egg":"めだまやき",
   "item.dcs_climate.food.fried_egg_bacon":"ベーコンエッグ",
+  "item.dcs_climate.food.grilled_crab":"焼きガニ",
   "item.dcs_climate.food.sausage_saute":"ソーセージソテー",
   "item.dcs_climate.food.sausage_curry":"カリーヴルスト",
+  "item.dcs_climate.food.galette_complete":"ガレット",
 
   "item.dcs_climate.food.saute_green":"炒青菜",
   "item.dcs_climate.food.saute_green_squid":"魷魚炒青菜",
@@ -1167,6 +1188,11 @@
   "item.dcs_climate.main.jacket_wool_cyan":"カーディガン(シアン)",
   "item.dcs_climate.main.jacket_wool_lightblue":"カーディガン(水色)",
   "item.dcs_climate.main.jacket_wool_red":"カーディガン(赤)",
+  
+  "item.dcs_climate.main.blouse_cloth":"木綿のブラウス",
+  "item.dcs_climate.main.blouse_cloth_black":"木綿のブラウス(黒)",
+  "item.dcs_climate.main.blouse_cloth_pink":"木綿のブラウス(ピンク)",
+  "item.dcs_climate.main.blouse_cloth_blue":"木綿のブラウス(青)",
 
   "item.dcs_climate.main.tunic_cloth":"木綿のチュニック",
   "item.dcs_climate.main.tunic_cloth_black":"木綿のチュニック(黒)",
@@ -1220,6 +1246,11 @@
   "item.dcs_climate.main.suits_cloth_blue":"キルトのダブレット(青)",
   "item.dcs_climate.main.suits_cloth_brown":"キルトのダブレット(茶)",
   "item.dcs_climate.main.suits_cloth_green":"キルトのダブレット(緑)",
+  
+  "item.dcs_climate.main.suits_wool":"ウールのスリーピース",
+  "item.dcs_climate.main.suits_wool_black":"ウールのスリーピース(黒)",
+  "item.dcs_climate.main.suits_wool_yellow":"ウールのスリーピース(黄)",
+  "item.dcs_climate.main.suits_wool_blue":"ウールのスリーピース(青)",
 
   "item.dcs_climate.main.dress_linen":"リネンのワンピース",
   "item.dcs_climate.main.dress_linen_black":"リネンのワンピース(黒)",
@@ -2423,9 +2454,9 @@
   "dcs.tip.coffee_siphon":"コーヒー粉と水を入れて加熱するとコーヒーができます。",
   "dcs.tip.entity_flowerpot":"花を持って右クリックすると、花を飾ることが出来ます。",
 
-  "dcs.tip.flow.tier1":"[Tier1] 流速: 32 /t",
-  "dcs.tip.flow.tier2":"[Tier2] 流速: 128 /t",
-  "dcs.tip.flow.tier3":"[Tier3] 流速: 512 /t",
+  "dcs.tip.flow.tier1":"[Tier1] 流速: 256 /t",
+  "dcs.tip.flow.tier2":"[Tier2] 流速: 1024 /t",
+  "dcs.tip.flow.tier3":"[Tier3] 流速: 4096 /t",
 
   "dcs.tip.faucet.desc":"水を生成し、真下の液体タンク・パイプに送ります。",
   "dcs.tip.fluid_sink.desc":"投入された流体を削除します。",

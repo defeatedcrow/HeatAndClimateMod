@@ -27,7 +27,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> implements RecipeUpdateListener {
-	private static final ResourceLocation RECIPE_BUTTON_LOCATION = new ResourceLocation("textures/gui/recipe_button.png");
+	private static final ResourceLocation RECIPE_BUTTON_LOCATION = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/gui/recipe_button.png");
 	private final RecipeBookComponent recipeBookComponent = new RecipeBookComponent();
 	private boolean widthTooNarrow;
 
@@ -46,7 +46,7 @@ public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> 
 		this.widthTooNarrow = this.width < 379;
 		this.recipeBookComponent.init(this.width, this.height, this.minecraft, this.widthTooNarrow, this.menu);
 		this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
-		this.addRenderableWidget(new ImageButton(this.leftPos + 8, this.height / 2 - 48, 20, 18, 0, 0, 19, RECIPE_BUTTON_LOCATION, (button) -> {
+		this.addRenderableWidget(new ImageButton(this.leftPos + 8, this.height / 2 - 48, 20, 18, 0, 0, 19, RECIPE_BUTTON_LOCATION, button -> {
 			this.recipeBookComponent.toggleVisibility();
 			this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
 			((ImageButton) button).setPosition(this.leftPos + 8, this.height / 2 - 48);
@@ -76,16 +76,18 @@ public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> 
 		}
 
 		List<Component> list = Lists.newArrayList();
-		boolean lock = this.getMenu().getContainer().isLocked();
+		boolean lock = this.getMenu()
+		    .getContainer()
+		    .isLocked();
 		if (this.isHovering(156, 3, 12, 20, mx, my)) {
 			if (lock) {
-				list.add(Component.translatable("dcs.tip.container.ownable_locked", this.getMenu().getContainer().getOwnerName()));
-			} else {
-				if (ClimateCore.proxy.keyShiftPushed())
-					list.add(Component.translatable("dcs.tip.container.ownable"));
-				else
-					list.add(Component.translatable("dcs.tip.container.ownable_short"));
-			}
+				list.add(Component.translatable("dcs.tip.container.ownable_locked", this.getMenu()
+				    .getContainer()
+				    .getOwnerName()));
+			} else if (ClimateCore.proxy.keyShiftPushed())
+				list.add(Component.translatable("dcs.tip.container.ownable"));
+			else
+				list.add(Component.translatable("dcs.tip.container.ownable_short"));
 		}
 
 		this.renderTooltip(pose, mx, my);
@@ -102,7 +104,9 @@ public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> 
 		int j = (this.height - this.imageHeight) / 2;
 		this.blit(pose, i, j, 0, 0, this.imageWidth, this.imageHeight);
 
-		boolean lock = this.getMenu().getContainer().isLocked();
+		boolean lock = this.getMenu()
+		    .getContainer()
+		    .isLocked();
 		if (lock) {
 			this.blit(pose, i + 156, j + 3, 176, 21, 12, 21);
 		} else {
@@ -123,10 +127,17 @@ public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> 
 		double dx = x - (i + 156);
 		double dy = y - (j + 3);
 		if (dx >= 0.0D && dy >= 0.0D && dx < 112.0D && dy < 21.0D) {
-			if (this.getMenu().getContainer() != null && this.getMenu().isOwner) {
-				boolean b = this.getMenu().getContainer().toggleLock();
-				MsgTileOwnerKeyToS.sendToServer(this.minecraft.player, this.getMenu().getContainer().getBlockPos(), b);
-				Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.IRON_DOOR_OPEN, 1.0F));
+			if (this.getMenu()
+			    .getContainer() != null && this.getMenu().isOwner) {
+				boolean b = this.getMenu()
+				    .getContainer()
+				    .toggleLock();
+				MsgTileOwnerKeyToS.sendToServer(this.minecraft.player, this.getMenu()
+				    .getContainer()
+				    .getBlockPos(), b);
+				Minecraft.getInstance()
+				    .getSoundManager()
+				    .play(SimpleSoundInstance.forUI(SoundEvents.IRON_DOOR_OPEN, 1.0F));
 				return true;
 			}
 		}

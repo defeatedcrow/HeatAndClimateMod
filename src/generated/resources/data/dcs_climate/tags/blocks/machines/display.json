@@ -1,0 +1,8 @@
+{
+  "values": [
+    "dcs_climate:machine/stormglass",
+    "dcs_climate:machine/entity_camera",
+    "dcs_climate:machine/reflective_sensor",
+    "dcs_climate:machine/player_pressure_plate"
+  ]
+}

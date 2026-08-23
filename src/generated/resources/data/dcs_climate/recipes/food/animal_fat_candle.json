@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:string"
+    },
+    "Y": {
+      "tag": "forge:ingredients/animal_fat"
+    }
+  },
+  "pattern": [
+    "X",
+    "Y"
+  ],
+  "result": {
+    "item": "minecraft:candle"
+  }
+}

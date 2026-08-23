@@ -86,7 +86,6 @@ public class MsgWeatherToC implements IPacketDC {
 	}
 
 	public static void sendToClient(ServerLevel level, float r, int rC, int sC, int s, int dt, int di, int t, boolean muf, boolean dig, String disp) {
-		// DCLogger.debugInfoLog("dim: " + d.toString() + " / rain: " + r);
 		if (level != null) {
 			MsgWeatherToC packet = new MsgWeatherToC(level.dimension().location(), r, rC, sC, s, dt, di, t, muf, dig, disp);
 			level.players().forEach(player -> {

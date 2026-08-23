@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/food/rice_taimeshi"
+  },
+  "parent": "minecraft:item/generated"
+}

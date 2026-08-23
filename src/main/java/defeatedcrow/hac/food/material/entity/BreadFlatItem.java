@@ -28,6 +28,8 @@ public class BreadFlatItem extends ItemEntityFood {
 			return BREAD_TORTILLA_RAW;
 		if (item == FoodInit.BREAD_TORTILLA_BAKED_ITEM.get())
 			return BREAD_TORTILLA_BAKED;
+		if (item == FoodInit.BREAD_CRAPE_BAKED_ITEM.get())
+			return BREAD_CRAPE_BAKED;
 		return BREAD_FLAT_RAW;
 	}
 
@@ -35,5 +37,6 @@ public class BreadFlatItem extends ItemEntityFood {
 	public static final EntityRenderData BREAD_FLAT_BAKED = new EntityRenderData("food/bread_flat_baked", 1.0F, 0F);
 	public static final EntityRenderData BREAD_TORTILLA_RAW = new EntityRenderData("food/bread_tortilla_raw", 0.8F, 0F);
 	public static final EntityRenderData BREAD_TORTILLA_BAKED = new EntityRenderData("food/bread_tortilla_baked", 1.0F, 0F);
+	public static final EntityRenderData BREAD_CRAPE_BAKED = new EntityRenderData("food/crape_baked", 1.0F, 0F);
 
 }

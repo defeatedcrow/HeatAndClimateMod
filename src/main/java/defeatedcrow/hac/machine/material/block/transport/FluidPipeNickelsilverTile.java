@@ -11,7 +11,7 @@ public class FluidPipeNickelsilverTile extends FluidPipeAlloyTile {
 	}
 
 	// caps
-	public PipeTank headtank = new PipeTank(2400, 128, this);
+	public PipeTank headtank = new PipeTank(2400, 1024, this);
 
 	@Override
 	public PipeTank getFluidHandler() {
