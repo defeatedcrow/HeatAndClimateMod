@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingredients/buckwheat"
+    },
+    {
+      "tag": "forge:ingredients/water"
+    },
+    {
+      "tag": "forge:eggs"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "dcs_climate:food/food_crepe_batter"
+  }
+}

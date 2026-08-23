@@ -795,7 +795,7 @@ public class TagDC {
 		public static final TagKey<Item> NOODLE = itemTag("ingredients/noodle");
 		public static final TagKey<Item> PASTRY = itemTag("ingredients/pastry");
 		public static final TagKey<Item> BATTER = itemTag("ingredients/batter");
-		public static final TagKey<Item> CRAPE_BATTER = itemTag("ingredients/crape_batter");
+		public static final TagKey<Item> CREPE_BATTER = itemTag("ingredients/crepe_batter");
 		public static final TagKey<Item> CAKE_BATTER = itemTag("ingredients/cake_batter");
 		public static final TagKey<Item> STAFFING = itemTag("ingredients/staffing");
 

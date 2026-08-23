@@ -7,7 +7,7 @@
   },
   "ingredients": [
     {
-      "item": "dcs_climate:food/crape_baked"
+      "item": "dcs_climate:food/crepe_baked"
     },
     {
       "tag": "forge:eggs"

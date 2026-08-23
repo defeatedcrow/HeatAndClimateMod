@@ -474,7 +474,7 @@
 
   "item.dcs_climate.food.food_pastry":"Pastry",
   "item.dcs_climate.food.food_batter":"Frying Batter",
-  "item.dcs_climate.food.food_crape_batter":"Crape Batter",
+  "item.dcs_climate.food.food_crepe_batter":"Crepe Batter",
   "item.dcs_climate.food.food_cake_batter":"Cake Batter",
   "item.dcs_climate.food.food_noodle_pasta":"Pasta",
   "item.dcs_climate.food.food_noodle_wheat":"Wheat Noodle",
@@ -670,7 +670,7 @@
   "item.dcs_climate.food.bread_cream_baked":"Custard Filled Bread",
   "item.dcs_climate.food.bread_sausage_raw":"Sausage Bread Dough",
   "item.dcs_climate.food.bread_sausage_baked":"Sausage Bread",
-  "item.dcs_climate.food.crape_baked":"Crape",
+  "item.dcs_climate.food.crepe_baked":"Crepe",
 
   "item.dcs_climate.food.pizza_tomato_raw":"Raw Pizza Marinara",
   "item.dcs_climate.food.pizza_tomato_baked":"Pizza Marinara",
@@ -730,13 +730,13 @@
   
   "item.dcs_climate.food.pancake":"Pancake",
   
-  "item.dcs_climate.food.crape_sugar":"Sugar Butter Crape",
-  "item.dcs_climate.food.crape_cream":"Custard Cream Crape",
-  "item.dcs_climate.food.crape_caramel":"Caramel Nuts Crape",
-  "item.dcs_climate.food.crape_cocoa":"Chocolate Crape",
-  "item.dcs_climate.food.crape_berry":"Berry Crape",
-  "item.dcs_climate.food.crape_apple":"Apple Cinnamon Crape",
-  "item.dcs_climate.food.crape_tuna":"Tuna Mayo Crape",
+  "item.dcs_climate.food.crepe_sugar":"Sugar Butter Crepe",
+  "item.dcs_climate.food.crepe_cream":"Custard Cream Crepe",
+  "item.dcs_climate.food.crepe_caramel":"Caramel Nuts Crepe",
+  "item.dcs_climate.food.crepe_cocoa":"Chocolate Crepe",
+  "item.dcs_climate.food.crepe_berry":"Berry Crepe",
+  "item.dcs_climate.food.crepe_apple":"Apple Cinnamon Crepe",
+  "item.dcs_climate.food.crepe_tuna":"Tuna Mayo Crepe",
 
   "item.dcs_climate.food.cake_butter":"Butter Cake",
   "item.dcs_climate.food.cake_berry":"Berry Cake",

@@ -1,6 +1,0 @@
-{
-  "textures": {
-    "layer0": "dcs_climate:item/food/crape_caramel"
-  },
-  "parent": "minecraft:item/generated"
-}

@@ -1,6 +1,7 @@
 {
   "values": [
     "dcs_climate:container/logcont_briquet",
-    "#dcs_climate:fuels/biomass"
+    "#dcs_climate:fuels/biomass",
+    "#forge:ingredients/wax"
   ]
 }

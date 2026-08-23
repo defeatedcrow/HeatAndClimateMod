@@ -67,12 +67,12 @@ public class CrapeItem extends ItemEntityFood {
 		return SUGAR;
 	}
 
-	public static final EntityRenderData SUGAR = new EntityRenderData("food/crape_sugar", 0.6F, 0F);
-	public static final EntityRenderData CREAM = new EntityRenderData("food/crape_cream", 0.6F, 0F);
-	public static final EntityRenderData CARAMEL = new EntityRenderData("food/crape_caramel", 0.6F, 0F);
-	public static final EntityRenderData COCOA = new EntityRenderData("food/crape_cocoa", 0.6F, 0F);
-	public static final EntityRenderData BERRY = new EntityRenderData("food/crape_berry", 0.6F, 0F);
-	public static final EntityRenderData APPLE = new EntityRenderData("food/crape_apple", 0.6F, 0F);
-	public static final EntityRenderData TUNA = new EntityRenderData("food/crape_tuna", 0.6F, 0F);
+	public static final EntityRenderData SUGAR = new EntityRenderData("food/crepe_sugar", 0.6F, 0F);
+	public static final EntityRenderData CREAM = new EntityRenderData("food/crepe_cream", 0.6F, 0F);
+	public static final EntityRenderData CARAMEL = new EntityRenderData("food/crepe_caramel", 0.6F, 0F);
+	public static final EntityRenderData COCOA = new EntityRenderData("food/crepe_cocoa", 0.6F, 0F);
+	public static final EntityRenderData BERRY = new EntityRenderData("food/crepe_berry", 0.6F, 0F);
+	public static final EntityRenderData APPLE = new EntityRenderData("food/crepe_apple", 0.6F, 0F);
+	public static final EntityRenderData TUNA = new EntityRenderData("food/crepe_tuna", 0.6F, 0F);
 
 }

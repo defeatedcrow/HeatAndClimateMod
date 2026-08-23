@@ -473,7 +473,7 @@
 
   "item.dcs_climate.food.food_pastry":"ペストリー生地",
   "item.dcs_climate.food.food_batter":"バッター液",
-  "item.dcs_climate.food.food_crape_batter":"クレープバッター",
+  "item.dcs_climate.food.food_crepe_batter":"クレープバッター",
   "item.dcs_climate.food.food_cake_batter":"ケーキバッター",
   "item.dcs_climate.food.food_noodle_pasta":"パスタ",
   "item.dcs_climate.food.food_noodle_wheat":"小麦麺",
@@ -668,7 +668,7 @@
   "item.dcs_climate.food.bread_cream_baked":"クリームパン",
   "item.dcs_climate.food.bread_sausage_raw":"ソーセージパン生地",
   "item.dcs_climate.food.bread_sausage_baked":"ソーセージパン",
-  "item.dcs_climate.food.crape_baked":"クレープ",
+  "item.dcs_climate.food.crepe_baked":"クレープ",
 
   "item.dcs_climate.food.pizza_tomato_raw":"生のピッツァ・マリナーラ",
   "item.dcs_climate.food.pizza_tomato_baked":"ピッツァ・マリナーラ",
@@ -728,13 +728,13 @@
   
   "item.dcs_climate.food.pancake":"パンケーキ",
   
-  "item.dcs_climate.food.crape_sugar":"シュガーバタークレープ",
-  "item.dcs_climate.food.crape_cream":"焦がしカスタードクレープ",
-  "item.dcs_climate.food.crape_caramel":"キャラメルナッツクレープ",
-  "item.dcs_climate.food.crape_cocoa":"チョコクレープ",
-  "item.dcs_climate.food.crape_berry":"ベリークレープ",
-  "item.dcs_climate.food.crape_apple":"アップルシナモンクレープ",
-  "item.dcs_climate.food.crape_tuna":"ツナマヨクレープ",
+  "item.dcs_climate.food.crepe_sugar":"シュガーバタークレープ",
+  "item.dcs_climate.food.crepe_cream":"焦がしカスタードクレープ",
+  "item.dcs_climate.food.crepe_caramel":"キャラメルナッツクレープ",
+  "item.dcs_climate.food.crepe_cocoa":"チョコクレープ",
+  "item.dcs_climate.food.crepe_berry":"ベリークレープ",
+  "item.dcs_climate.food.crepe_apple":"アップルシナモンクレープ",
+  "item.dcs_climate.food.crepe_tuna":"ツナマヨクレープ",
 
   "item.dcs_climate.food.cake_butter":"バターケーキ",
   "item.dcs_climate.food.cake_berry":"ベリーショートケーキ",

@@ -281,10 +281,10 @@ public class FoodInit {
 	    .sized(0.25F, 0.375F)
 	    .updateInterval(5)
 	    .build("icecream"));
-	public static final RegistryObject<EntityType<FoodEntityBase>> CRAPE = CoreInit.ENTITIES.register("crape", () -> EntityType.Builder.<FoodEntityBase> of(FoodEntityBase::new, MobCategory.MISC)
+	public static final RegistryObject<EntityType<FoodEntityBase>> CRAPE = CoreInit.ENTITIES.register("crepe", () -> EntityType.Builder.<FoodEntityBase> of(FoodEntityBase::new, MobCategory.MISC)
 	    .sized(0.375F, 0.5F)
 	    .updateInterval(5)
-	    .build("crape"));
+	    .build("crepe"));
 
 	public static final RegistryObject<EntityType<FoodEntityBase>> SWEETPOTATO = CoreInit.ENTITIES.register("cooked_sweetpotato", () -> EntityType.Builder.<FoodEntityBase> of(FoodEntityBase::new, MobCategory.MISC)
 	    .sized(0.375F, 0.2F)
@@ -605,7 +605,7 @@ public class FoodInit {
 	public static final RegistryObject<Item> BREAD_CREAM_BAKED_ITEM = regItem("bread_cream_baked", () -> new BreadCreamItem("bread_cream_baked", 6, 0.4F, TagDC.ItemTag.HAC_BREAD));
 	public static final RegistryObject<Item> BREAD_SAUSAGE_RAW_ITEM = regItem("bread_sausage_raw", () -> new BreadSausageItem("bread_sausage_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> BREAD_SAUSAGE_BAKED_ITEM = regItem("bread_sausage_baked", () -> new BreadSausageItem("bread_sausage_baked", 7, 0.6F, TagDC.ItemTag.HAC_BREAD));
-	public static final RegistryObject<Item> BREAD_CRAPE_BAKED_ITEM = regItem("crape_baked", () -> new BreadFlatItem("crape_baked", 4, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> BREAD_CRAPE_BAKED_ITEM = regItem("crepe_baked", () -> new BreadFlatItem("crepe_baked", 4, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 
 	// サンドイッチ
 	public static final RegistryObject<Item> SANDWICH_FRUIT_ITEM = regItem("sandwich_fruit", () -> new SandwichItem("sandwich_fruit", 5, 0.3F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
@@ -927,13 +927,13 @@ public class FoodInit {
 
 	public static final RegistryObject<Item> PANCAKE_HONEY = regItem("pancake", () -> new PancakeItem("pancake", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 
-	public static final RegistryObject<Item> CRAPE_SUGAR = regItem("crape_sugar", () -> new CrapeItem("crape_sugar", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CRAPE_CREAM = regItem("crape_cream", () -> new CrapeItem("crape_cream", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CRAPE_CARAMEL = regItem("crape_caramel", () -> new CrapeItem("crape_caramel", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CRAPE_COCOA = regItem("crape_cocoa", () -> new CrapeItem("crape_cocoa", 12, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CRAPE_BERRY = regItem("crape_berry", () -> new CrapeItem("crape_berry", 12, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CRAPE_APPLE = regItem("crape_apple", () -> new CrapeItem("crape_apple", 12, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CRAPE_TUNA = regItem("crape_tuna", () -> new CrapeItem("crape_tuna", 14, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_SUGAR = regItem("crepe_sugar", () -> new CrapeItem("crepe_sugar", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_CREAM = regItem("crepe_cream", () -> new CrapeItem("crepe_cream", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_CARAMEL = regItem("crepe_caramel", () -> new CrapeItem("crepe_caramel", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_COCOA = regItem("crepe_cocoa", () -> new CrapeItem("crepe_cocoa", 12, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_BERRY = regItem("crepe_berry", () -> new CrapeItem("crepe_berry", 12, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_APPLE = regItem("crepe_apple", () -> new CrapeItem("crepe_apple", 12, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_TUNA = regItem("crepe_tuna", () -> new CrapeItem("crepe_tuna", 14, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 
 	public static final RegistryObject<Item> CAKE_BUTTER = regItem("cake_butter", () -> new CakeItem("cake_butter", 4, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> CAKE_BERRY = regItem("cake_berry", () -> new CakeItem("cake_berry", 6, 0.2F, TagDC.ItemTag.HAC_SWEETS));
@@ -1140,7 +1140,7 @@ public class FoodInit {
 
 	public static final RegistryObject<Item> FOOD_PASTRY = regItem("food_pastry", () -> new FoodMaterialItemDC(FOOD, "food_pastry", TagDC.ItemTag.PASTRY).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_BATTER = regItem("food_batter", () -> new FoodMaterialItemDC(FOOD, "food_batter", TagDC.ItemTag.BATTER).setDomain("food"));
-	public static final RegistryObject<Item> FOOD_CRAPE_BATTER = regItem("food_crape_batter", () -> new FoodMaterialItemDC(FOOD, "food_crape_batter", TagDC.ItemTag.CRAPE_BATTER).setDomain("food"));
+	public static final RegistryObject<Item> FOOD_CRAPE_BATTER = regItem("food_crepe_batter", () -> new FoodMaterialItemDC(FOOD, "food_crepe_batter", TagDC.ItemTag.CREPE_BATTER).setDomain("food"));
 	public static final RegistryObject<Item> FOOD_CAKE_BATTER = regItem("food_cake_batter", () -> new FoodMaterialItemDC(FOOD, "food_cake_batter", TagDC.ItemTag.CAKE_BATTER).setDomain("food"));
 
 	public static final RegistryObject<Item> FOOD_JAM = regItem("food_fruit_jam", () -> new FoodMaterialItemDC(FOOD, "food_fruit_jam", TagDC.ItemTag.JAM).setDomain("food"));
