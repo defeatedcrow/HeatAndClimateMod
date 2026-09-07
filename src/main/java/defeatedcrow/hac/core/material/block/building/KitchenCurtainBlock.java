@@ -28,8 +28,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -54,7 +53,7 @@ public class KitchenCurtainBlock extends BlockDC implements SimpleWaterloggedBlo
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.CLOTH_DECORATION, MaterialColor.WOOL)
+		return BlockBehaviour.Properties.of().mapColor(MapColor.WOOL)
 		    .sound(SoundType.WOOL)
 		    .strength(0.3F, 15.0F)
 		    .noOcclusion();

@@ -50,24 +50,24 @@ public class ArrowRed extends AbstractArrow {
 
 	@Override
 	public void tick() {
-		if (this.tickCount > 2 && this.inGroundTime > 2 || this.getY() < this.getLevel().getMinBuildHeight() || this.isInLava()) {
+		if (this.tickCount > 2 && this.inGroundTime > 2 || this.getY() < this.level().getMinBuildHeight() || this.isInLava()) {
 			this.dealtDamage = true;
 		}
 
 		if (this.dealtDamage) {
-			CustomExplosion exp = new CustomExplosion(level, this, this.getX(), this.getY(), this.getZ(), explodeRenge, isSafety);
-			if (net.minecraftforge.event.ForgeEventFactory.onExplosionStart(level, exp))
+				CustomExplosion exp = new CustomExplosion(level(), this, this.getX(), this.getY(), this.getZ(), explodeRenge, isSafety);
+				if (net.minecraftforge.event.ForgeEventFactory.onExplosionStart(level(), exp))
 				return;
 			exp.explode();
 			exp.finalizeExplosion(true);
-			if (this.level instanceof ServerLevel server)
+			if (this.level() instanceof ServerLevel server)
 				MsgEffectToC.sendToClient(server, this.position(), 55);
 			this.discard();
 		}
 
 		super.tick();
-		if (this.level.isClientSide && !this.inGround) {
-			this.level.addParticle(ParticleTypes.INSTANT_EFFECT, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+		if (this.level().isClientSide && !this.inGround) {
+			this.level().addParticle(ParticleTypes.INSTANT_EFFECT, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 		}
 
 	}
@@ -86,12 +86,12 @@ public class ArrowRed extends AbstractArrow {
 	@Override
 	protected void doPostHurtEffects(LivingEntity liv) {
 		super.doPostHurtEffects(liv);
-		CustomExplosion exp = new CustomExplosion(level, this, this.getX(), this.getY(), this.getZ(), explodeRenge, isSafety);
-		if (ForgeEventFactory.onExplosionStart(level, exp))
+				CustomExplosion exp = new CustomExplosion(level(), this, this.getX(), this.getY(), this.getZ(), explodeRenge, isSafety);
+				if (ForgeEventFactory.onExplosionStart(level(), exp))
 			return;
 		exp.explode();
 		exp.finalizeExplosion(true);
-		if (this.level instanceof ServerLevel server)
+		if (this.level() instanceof ServerLevel server)
 			MsgEffectToC.sendToClient(server, this.position(), 55);
 		this.dealtDamage = true;
 	}

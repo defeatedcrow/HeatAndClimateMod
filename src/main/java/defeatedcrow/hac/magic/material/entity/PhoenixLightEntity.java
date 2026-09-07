@@ -24,12 +24,12 @@ public class PhoenixLightEntity extends OwnableMagicEntity {
 
 	@Override
 	public void tick() {
-		if (this.level.isClientSide) {
-			if (this.level.random.nextBoolean()) {
-				double d0 = this.position().x - 0.05D + this.level.random.nextDouble() * 0.1D;
+		if (this.level().isClientSide) {
+			if (this.level().random.nextBoolean()) {
+				double d0 = this.position().x - 0.05D + this.level().random.nextDouble() * 0.1D;
 				double d1 = this.position().y + 0.4D;
-				double d2 = this.position().z - 0.05D + this.level.random.nextDouble() * 0.1D;
-				level.addParticle(CoreInit.LIGHT_ORB_WHITE.get(), d0, d1, d2, 0.0D, 0.05D, 0.0D);
+				double d2 = this.position().z - 0.05D + this.level().random.nextDouble() * 0.1D;
+				level().addParticle(CoreInit.LIGHT_ORB_WHITE.get(), d0, d1, d2, 0.0D, 0.05D, 0.0D);
 			}
 		}
 	}

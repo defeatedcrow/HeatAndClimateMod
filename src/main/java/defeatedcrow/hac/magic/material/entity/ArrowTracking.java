@@ -53,7 +53,7 @@ public class ArrowTracking extends AbstractArrow {
 
 	public static LivingEntity getTarget(LivingEntity player) {
 		AABB aabb = new AABB(player.blockPosition()).inflate(64F);
-		List<LivingEntity> list = player.getLevel().getEntitiesOfClass(LivingEntity.class, aabb, (target) -> {
+		List<LivingEntity> list = player.level().getEntitiesOfClass(LivingEntity.class, aabb, (target) -> {
 			return player.hasLineOfSight(target);
 		});
 		double d = 128D;

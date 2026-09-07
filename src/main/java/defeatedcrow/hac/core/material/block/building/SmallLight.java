@@ -27,8 +27,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -45,7 +44,7 @@ public class SmallLight extends BlockDC implements SimpleWaterloggedBlock {
 	final String name;
 
 	public SmallLight(String n) {
-		super(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(1.0F, 8.0F).noOcclusion().noLootTable().lightLevel(state -> 15));
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(1.0F, 8.0F).noOcclusion().noLootTable().lightLevel(state -> 15));
 		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DIRECTION, Direction.DOWN).setValue(WATERLOGGED, false));
 		name = n;
 	}

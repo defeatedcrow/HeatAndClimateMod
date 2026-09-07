@@ -38,10 +38,10 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -65,7 +65,7 @@ public class NoSaveBedBlock extends EntityBlockDC {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(0.2F, 30.0F);
+		return BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.2F, 30.0F);
 	}
 
 	@Override
@@ -221,7 +221,7 @@ public class NoSaveBedBlock extends EntityBlockDC {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (!DCState.getBool(state, DCState.FLAG)) {
 			ret.add(new ItemStack(this));

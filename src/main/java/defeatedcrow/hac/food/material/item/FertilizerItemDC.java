@@ -1,10 +1,13 @@
 package defeatedcrow.hac.food.material.item;
 
+import java.util.function.Supplier;
+
 import defeatedcrow.hac.core.material.item.MaterialItemDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -14,13 +17,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 
 public class FertilizerItemDC extends MaterialItemDC {
 
-	public FertilizerItemDC(CreativeModeTab tab, String s, TagKey<Item> pair) {
+	public FertilizerItemDC(Supplier<CreativeModeTab> tab, String s, TagKey<Item> pair) {
 		super(tab, s, pair);
 	}
 
@@ -47,7 +50,7 @@ public class FertilizerItemDC extends MaterialItemDC {
 							int hook = net.minecraftforge.event.ForgeEventFactory.onApplyBonemeal(player, level, mpos, crop, meal);
 							if (hook != 0)
 								continue;
-							if (crop.getBlock() instanceof BonemealableBlock && crop.getMaterial() != Material.GRASS) {
+							if (crop.getBlock() instanceof BonemealableBlock && !crop.is(Blocks.GRASS_BLOCK)) {
 								BonemealableBlock target = (BonemealableBlock) crop.getBlock();
 								if (target.isValidBonemealTarget(level, mpos, crop, level.isClientSide)) {
 									if (level instanceof ServerLevel) {

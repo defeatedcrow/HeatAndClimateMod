@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.DCTexturePath;
@@ -32,7 +32,7 @@ public class RollCrusherScreen extends AbstractContainerScreen<RollCrusherMenu> 
 	}
 
 	@Override
-	public void render(PoseStack pose, int mx, int my, float f) {
+	public void render(GuiGraphics pose, int mx, int my, float f) {
 		this.renderBackground(pose);
 		super.render(pose, mx, my, f);
 		this.renderTooltip(pose, mx, my);
@@ -84,51 +84,51 @@ public class RollCrusherScreen extends AbstractContainerScreen<RollCrusherMenu> 
 			list.add(Component.translatable("dcs.tip.process_error.no_4"));
 		}
 
-		this.renderComponentTooltip(pose, list, mx, my);
+		pose.renderComponentTooltip(this.font, list, mx, my);
 	}
 
 	@Override
-	protected void renderBg(PoseStack pose, float f, int mx, int my) {
+	protected void renderBg(GuiGraphics pose, float f, int mx, int my) {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, DCTexturePath.GUI_CRUSHER.getLocation());
 		int i = (this.width - this.imageWidth) / 2;
 		int j = (this.height - this.imageHeight) / 2;
-		this.blit(pose, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		pose.blit(DCTexturePath.GUI_CRUSHER.getLocation(), i, j, 0, 0, this.imageWidth, this.imageHeight);
 
 		boolean lock = this.getMenu().getContainer().isLocked();
 		if (lock) {
-			this.blit(pose, i + 156, j + 3, 176, 21, 12, 21);
+			pose.blit(DCTexturePath.GUI_CRUSHER.getLocation(), i + 156, j + 3, 176, 21, 12, 21);
 		} else {
-			this.blit(pose, i + 156, j + 3, 176, 0, 12, 21);
+			pose.blit(DCTexturePath.GUI_CRUSHER.getLocation(), i + 156, j + 3, 176, 0, 12, 21);
 		}
 
 		int l = this.menu.getBurnProgress();
 		if (l > 0)
-			this.blit(pose, i + 42, j + 49, 189, l * 12, 12, 12);
+			pose.blit(DCTexturePath.GUI_CRUSHER.getLocation(), i + 42, j + 49, 189, l * 12, 12, 12);
 
 		int m = this.menu.getBatteryCount();
 		if (m > 0)
-			this.blit(pose, i + 12, j + 108 - m * 2, 176, 42, 12, m * 2);
+			pose.blit(DCTexturePath.GUI_CRUSHER.getLocation(), i + 12, j + 108 - m * 2, 176, 42, 12, m * 2);
 
 		if (this.menu.isRS()) {
-			this.blit(pose, i + 13, j + 73, 176, 58, 10, 10);
+			pose.blit(DCTexturePath.GUI_CRUSHER.getLocation(), i + 13, j + 73, 176, 58, 10, 10);
 		}
 
 		if (this.menu.errorPrimary()) {
-			this.blit(pose, i + 62, j + 61, 201, 0, 24, 17);
+			pose.blit(DCTexturePath.GUI_CRUSHER.getLocation(), i + 62, j + 61, 201, 0, 24, 17);
 		}
 
 		if (this.menu.errorSecondary() || this.menu.errorTertiary()) {
-			this.blit(pose, i + 88, j + 61, 201, 0, 24, 17);
+			pose.blit(DCTexturePath.GUI_CRUSHER.getLocation(), i + 88, j + 61, 201, 0, 24, 17);
 		}
 
 		if (this.menu.errorFluid()) {
-			this.blit(pose, i + 118, j + 23, 201, 34, 48, 61);
+			pose.blit(DCTexturePath.GUI_CRUSHER.getLocation(), i + 118, j + 23, 201, 34, 48, 61);
 		}
 
 		if (this.menu.errorContainer()) {
-			this.blit(pose, i + 9, j + 24, 201, 95, 26, 25);
+			pose.blit(DCTexturePath.GUI_CRUSHER.getLocation(), i + 9, j + 24, 201, 95, 26, 25);
 		}
 
 		if (!this.menu.getOutputFluid().isEmpty()) {

@@ -32,7 +32,7 @@ public class JeiHeatTierHelper implements IIngredientHelper<DCHeatTier> {
 
 	@Override
 	public ResourceLocation getResourceLocation(DCHeatTier ingredient) {
-		return ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "heattier/" + ingredient.toString());
+		return new ResourceLocation(ClimateCore.MOD_ID, "heattier/" + ingredient.toString());
 	}
 
 	@Override

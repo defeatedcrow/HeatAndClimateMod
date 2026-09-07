@@ -17,7 +17,9 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -240,12 +242,12 @@ public class CrowTurretEntity extends LivingEntity {
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
-		if (!this.level.isClientSide && !this.isRemoved()) {
-			if (DamageSource.OUT_OF_WORLD.equals(source)) {
+		if (!this.level().isClientSide && !this.isRemoved()) {
+			if (source.is(DamageTypes.FELL_OUT_OF_WORLD)) {
 				this.kill();
 				return false;
 			} else if (!this.isInvulnerableTo(source) && !this.invisible) {
-				if (DamageSource.IN_FIRE.equals(source)) {
+				if (source.is(DamageTypes.IN_FIRE)) {
 					if (this.isOnFire()) {
 						if (causeDamage(source, 0.5F)) {
 							this.onBroken(true);
@@ -254,7 +256,7 @@ public class CrowTurretEntity extends LivingEntity {
 						this.setSecondsOnFire(5);
 					}
 					return false;
-				} else if (DamageSource.ON_FIRE.equals(source)) {
+				} else if (source.is(DamageTypes.ON_FIRE)) {
 					if (causeDamage(source, 0.5F)) {
 						this.onBroken(true);
 					}
@@ -267,16 +269,16 @@ public class CrowTurretEntity extends LivingEntity {
 				} else {
 					Entity attacker = source.getEntity();
 					if (attacker != null) {
-						if (attacker instanceof LivingEntity && !source.isNoAggro()) {
+						if (attacker instanceof LivingEntity && !source.is(DamageTypeTags.NO_ANGER)) {
 							this.setLastHurtByMob((LivingEntity) attacker);
 						}
-						if (attacker instanceof Player && !source.isExplosion() && !source.isProjectile()) {
+						if (attacker instanceof Player && !source.is(DamageTypeTags.IS_EXPLOSION) && !source.is(DamageTypeTags.IS_PROJECTILE)) {
 							this.onBroken(false);
 						}
 					}
 
 					if (causeDamage(source, amount * 0.5F)) {
-						this.level.broadcastEntityEvent(this, (byte) 32);
+						this.level().broadcastEntityEvent(this, (byte) 32);
 						this.onBroken(true);
 					}
 					return false;
@@ -305,7 +307,7 @@ public class CrowTurretEntity extends LivingEntity {
 	private void onBroken(boolean flag) {
 		this.playBrokenSound();
 		if (flag) {
-			CustomExplosion explosion = new CustomExplosion(level, this, this.getX(), this.getY(), this.getZ(), 6.0F, true);
+			CustomExplosion explosion = new CustomExplosion(level(), this, this.getX(), this.getY(), this.getZ(), 6.0F, true);
 			explosion.explode();
 			explosion.finalizeExplosion(true);
 		}
@@ -319,15 +321,15 @@ public class CrowTurretEntity extends LivingEntity {
 	}
 
 	private void playBrokenSound() {
-		this.level.playSound((Player) null, this.getX(), this.getY(), this.getZ(), getDeathSound(), this.getSoundSource(), 1.0F, 1.0F);
+		this.level().playSound((Player) null, this.getX(), this.getY(), this.getZ(), getDeathSound(), this.getSoundSource(), 1.0F, 1.0F);
 	}
 
 	@Override
 	public void handleEntityEvent(byte b0) {
 		if (b0 == 32) {
-			if (this.level.isClientSide) {
-				this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.ARMOR_STAND_HIT, this.getSoundSource(), 0.3F, 1.0F, false);
-				this.lastHit = this.level.getGameTime();
+			if (this.level().isClientSide) {
+				this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.ARMOR_STAND_HIT, this.getSoundSource(), 0.3F, 1.0F, false);
+				this.lastHit = this.level().getGameTime();
 			}
 		} else {
 			super.handleEntityEvent(b0);
@@ -382,7 +384,7 @@ public class CrowTurretEntity extends LivingEntity {
 			}
 		} else {
 			if (count <= 0) {
-				if (!level.isClientSide) {
+				if (!level().isClientSide) {
 					target = getTarget();
 				}
 				count = 5;
@@ -395,16 +397,16 @@ public class CrowTurretEntity extends LivingEntity {
 	}
 
 	private void fire() {
-		if (!level.isClientSide) {
+		if (!level().isClientSide) {
 			ArrowItem arrowitem = (ArrowItem) (MagicInit.ARROW_RED.get());
-			ArrowRed red = (ArrowRed) arrowitem.createArrow(level, new ItemStack(arrowitem), this);
+				ArrowRed red = (ArrowRed) arrowitem.createArrow(level(), new ItemStack(arrowitem), this);
 			red.shootFromRotation(this, this.getXRot(), this.getYRot(), 0.0F, 3.0F, 1.0F);
 			red.setCritArrow(true);
 			red.setBaseDamage(red.getBaseDamage());
 			red.setRange(getRange());
 			red.setSafety();
 			red.pickup = AbstractArrow.Pickup.DISALLOWED;
-			level.addFreshEntity(red);
+				level().addFreshEntity(red);
 		}
 	}
 
@@ -433,7 +435,7 @@ public class CrowTurretEntity extends LivingEntity {
 			}
 		}
 
-		List<LivingEntity> list = level.getNearbyEntities(LivingEntity.class, TargetingConditions.forCombat().range(48F), this, this.getBoundingBox().inflate(48F, 16F, 48F))
+						List<LivingEntity> list = level().getNearbyEntities(LivingEntity.class, TargetingConditions.forCombat().range(48F), this, this.getBoundingBox().inflate(48F, 16F, 48F))
 			.stream().filter(mob -> mob instanceof Enemy).toList();
 
 		double dist = Double.MAX_VALUE;

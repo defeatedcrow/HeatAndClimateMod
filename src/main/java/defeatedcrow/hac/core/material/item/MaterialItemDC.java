@@ -1,6 +1,7 @@
 package defeatedcrow.hac.core.material.item;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
@@ -9,6 +10,7 @@ import com.google.common.collect.ImmutableMap;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.material.tabs.CreativeTabDC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.ChatFormatting;
@@ -26,12 +28,14 @@ public class MaterialItemDC extends ItemDC {
 	protected String domain = "main";
 
 	public MaterialItemDC(String s, TagKey<Item> pair) {
-		super(new Item.Properties().tab(CoreInit.CORE), pair);
+		super(new Item.Properties(), pair);
+		CreativeTabDC.add(CoreInit.CORE, this);
 		name = s;
 	}
 
-	public MaterialItemDC(CreativeModeTab tab, String s, TagKey<Item> pair) {
-		super(new Item.Properties().tab(tab), pair);
+	public MaterialItemDC(Supplier<CreativeModeTab> tab, String s, TagKey<Item> pair) {
+		super(new Item.Properties(), pair);
+		CreativeTabDC.add(tab, this);
 		name = s;
 	}
 

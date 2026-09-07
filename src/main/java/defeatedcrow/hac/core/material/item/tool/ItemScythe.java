@@ -55,7 +55,8 @@ public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 	private final Multimap<Attribute, AttributeModifier> defaultModifiers;
 
 	public ItemScythe(TierDC tierIn, TagKey<Item> pair) {
-		super(new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE), pair);
+		super(new Item.Properties().durability(tierIn.getUses()), pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 		tier = tierIn;
 		ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
 		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", tier.getAttackDamageBonus() + 5.0D, AttributeModifier.Operation.ADDITION));
@@ -107,19 +108,19 @@ public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack stack, Player playerIn, LivingEntity entity, InteractionHand hand) {
 		if (entity instanceof IForgeShearable target) {
-			if (!playerIn.level.isClientSide) {
-				BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
+			if (!playerIn.level().isClientSide) {
+				BlockPos pos = BlockPos.containing(entity.getX(), entity.getY(), entity.getZ());
 				// 範囲毛刈り
 				AABB aabb = new AABB(pos).inflate(tier.getLevel());
-				List<LivingEntity> list = entity.getLevel().getNearbyEntities(LivingEntity.class, TargetingConditions.DEFAULT, entity, aabb);
+				List<LivingEntity> list = entity.level().getNearbyEntities(LivingEntity.class, TargetingConditions.DEFAULT, entity, aabb);
 				list.add(entity);
 				boolean consume = false;
 				ItemStack dummy = new ItemStack(Items.SHEARS);
 				for (LivingEntity liv : list) {
 					if (liv instanceof IForgeShearable target2)
-						if (target2.isShearable(dummy, playerIn.level, pos)) {
-							List<ItemStack> drops = target2.onSheared(playerIn, dummy, entity.getLevel(), pos, EnchantmentHelper.getTagEnchantmentLevel(Enchantments.BLOCK_FORTUNE, stack));
-							RandomSource rand = playerIn.level.random;
+						if (target2.isShearable(dummy, playerIn.level(), pos)) {
+							List<ItemStack> drops = target2.onSheared(playerIn, dummy, entity.level(), pos, EnchantmentHelper.getTagEnchantmentLevel(Enchantments.BLOCK_FORTUNE, stack));
+							RandomSource rand = playerIn.level().random;
 							drops.forEach(d -> {
 								ItemEntity ent = liv.spawnAtLocation(d, 1.0F);
 								ent.setDeltaMovement(ent.getDeltaMovement().add((rand.nextFloat() - rand.nextFloat()) * 0.1F, rand.nextFloat() * 0.05F, (rand.nextFloat() - rand.nextFloat()) * 0.1F));
@@ -131,7 +132,7 @@ public class ItemScythe extends ItemDC implements ITierItem, Vanishable {
 					stack.hurtAndBreak(1, playerIn, e -> e.broadcastBreakEvent(hand));
 				}
 			}
-			return net.minecraft.world.InteractionResult.sidedSuccess(playerIn.level.isClientSide);
+			return net.minecraft.world.InteractionResult.sidedSuccess(playerIn.level().isClientSide);
 		}
 		return net.minecraft.world.InteractionResult.PASS;
 	}

@@ -3,9 +3,9 @@ package defeatedcrow.hac.machine.client.entity;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Matrix3f;
-import com.mojang.math.Matrix4f;
-import com.mojang.math.Vector3f;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.util.DCState;
@@ -50,8 +50,8 @@ public class TileRendererCoffeeSiphon implements BlockEntityRenderer<CoffeeMaker
 
 			poseStack.pushPose();
 			poseStack.translate(0.5F, 0.0F, 0.5F);
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-			poseStack.mulPose(Vector3f.YP.rotationDegrees(dir.toYRot()));
+			poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+			poseStack.mulPose(Axis.YP.rotationDegrees(dir.toYRot()));
 			poseStack.scale(1F, 1F, 1F);
 			this.model.renderToBuffer(poseStack, buffer.getBuffer(model.renderType(NORMAL.getTextureLocation())), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 			switch (stage) {
@@ -91,8 +91,8 @@ public class TileRendererCoffeeSiphon implements BlockEntityRenderer<CoffeeMaker
 
 			poseStack.pushPose();
 			poseStack.translate(0.5F, 0.0F, 0.5F);
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-			poseStack.mulPose(Vector3f.YP.rotationDegrees(dir.toYRot()));
+			poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+			poseStack.mulPose(Axis.YP.rotationDegrees(dir.toYRot()));
 			poseStack.scale(1F, 1F, 1F);
 			this.model.renderGlass(poseStack, buffer.getBuffer(RenderType.entityTranslucent(NORMAL.getTextureLocation())), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.5F);
 			poseStack.popPose();
@@ -134,13 +134,13 @@ public class TileRendererCoffeeSiphon implements BlockEntityRenderer<CoffeeMaker
 		RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
 
 		drawQuad(m4f, m3f, vertex, light, colors, -w, 0, -w, w, h, w, tex);
-		pose.mulPose(Vector3f.YP.rotationDegrees(90.0F));
+		pose.mulPose(Axis.YP.rotationDegrees(90.0F));
 		drawQuad(m4f, m3f, vertex, light, colors, -w, 0, -w, w, h, w, tex);
-		pose.mulPose(Vector3f.YP.rotationDegrees(90.0F));
+		pose.mulPose(Axis.YP.rotationDegrees(90.0F));
 		drawQuad(m4f, m3f, vertex, light, colors, -w, 0, -w, w, h, w, tex);
-		pose.mulPose(Vector3f.YP.rotationDegrees(90.0F));
+		pose.mulPose(Axis.YP.rotationDegrees(90.0F));
 		drawQuad(m4f, m3f, vertex, light, colors, -w, 0, -w, w, h, w, tex);
-		pose.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+		pose.mulPose(Axis.ZP.rotationDegrees(90.0F));
 		drawQuad(m4f, m3f, vertex, light, colors, 0, -w, -w, h, w, w, tex);
 
 		pose.popPose();

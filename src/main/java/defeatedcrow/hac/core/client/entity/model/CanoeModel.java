@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class CanoeModel extends BoatModel {
 
 	public CanoeModel(ModelPart root) {
-		super(root, false);
+		super(root);
 	}
 
 	public static LayerDefinition createCanoeLayer() {

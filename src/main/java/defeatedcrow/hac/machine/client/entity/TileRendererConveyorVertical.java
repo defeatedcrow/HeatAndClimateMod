@@ -1,14 +1,14 @@
 package defeatedcrow.hac.machine.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.material.block.transport.ConveyorTile;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -54,16 +54,16 @@ public class TileRendererConveyorVertical implements BlockEntityRenderer<Conveyo
 				poseStack.translate(0.5D, 0.5D, 0.5D);
 				float f = 90 - dir.toYRot();
 				poseStack.translate(0.0D, offsetY + 0.25F, 0.0D);
-				poseStack.mulPose(Vector3f.YP.rotationDegrees(f));
+				poseStack.mulPose(Axis.YP.rotationDegrees(f));
 				poseStack.scale(0.5F, 0.5F, 0.5F);
-				this.itemRenderer.renderStatic(disp, ItemTransforms.TransformType.FIXED, packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, i);
+				this.itemRenderer.renderStatic(disp, ItemDisplayContext.FIXED, packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, tile.getLevel(), i);
 				poseStack.popPose();
 
 				poseStack.pushPose();
 				poseStack.translate(0.5D, 0.5D, 0.5D);
 				poseStack.translate(0.0D, offsetY, 0.0D);
-				poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-				poseStack.mulPose(Vector3f.YP.rotationDegrees(dir.toYRot()));
+				poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+				poseStack.mulPose(Axis.YP.rotationDegrees(dir.toYRot()));
 				this.model.renderToBuffer(poseStack, buffer.getBuffer(model.renderType(DATA.getTextureLocation())), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 				poseStack.popPose();
 
@@ -77,16 +77,16 @@ public class TileRendererConveyorVertical implements BlockEntityRenderer<Conveyo
 				poseStack.translate(0.5D, 0.5D, 0.5D);
 				float f = 90 - dir.toYRot();
 				poseStack.translate(0.0D, offsetY + 0.25F, 0.0D);
-				poseStack.mulPose(Vector3f.YP.rotationDegrees(f));
+				poseStack.mulPose(Axis.YP.rotationDegrees(f));
 				poseStack.scale(0.5F, 0.5F, 0.5F);
-				this.itemRenderer.renderStatic(disp, ItemTransforms.TransformType.FIXED, packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, i);
+				this.itemRenderer.renderStatic(disp, ItemDisplayContext.FIXED, packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, tile.getLevel(), i);
 				poseStack.popPose();
 
 				poseStack.pushPose();
 				poseStack.translate(0.5D, 0.5D, 0.5D);
 				poseStack.translate(0.0D, offsetY, 0.0D);
-				poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-				poseStack.mulPose(Vector3f.YP.rotationDegrees(dir.toYRot()));
+				poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+				poseStack.mulPose(Axis.YP.rotationDegrees(dir.toYRot()));
 				this.model.renderToBuffer(poseStack, buffer.getBuffer(model.renderType(DATA.getTextureLocation())), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 				poseStack.popPose();
 			}

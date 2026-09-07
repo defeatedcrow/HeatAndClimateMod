@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 
 import defeatedcrow.hac.core.material.block.ITileNBTHolder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -23,7 +24,7 @@ public class TileNBTFunction extends LootItemConditionalFunction {
 		if (instance != null) {
 			return;
 		}
-		instance = Registry.register(Registry.LOOT_FUNCTION_TYPE, ResourceLocation.fromNamespaceAndPath("dcs_climate", "nbt_tile"), new LootItemFunctionType(new Serializer()));
+		instance = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, new ResourceLocation("dcs_climate", "nbt_tile"), new LootItemFunctionType(new Serializer()));
 	}
 
 	protected TileNBTFunction(LootItemCondition[] conditions) {

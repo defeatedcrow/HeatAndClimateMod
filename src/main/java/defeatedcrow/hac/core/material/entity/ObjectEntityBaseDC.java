@@ -11,11 +11,13 @@ import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -97,16 +99,16 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 		}
 
 		// 落下
-		if (!onGround || getDeltaMovement().length() > 0.0001F) {
+		if (!onGround() || getDeltaMovement().length() > 0.0001F) {
 			move(MoverType.SELF, getDeltaMovement());
 			float f1 = 0.98F;
-			if (onGround) {
-				f1 = level.getBlockState(new BlockPos(getX(), getY() - 1.0D, getZ()))
-				    .getFriction(level, new BlockPos(getX(), getY() - 1.0D, getZ()), this) * 0.98F;
+			if (onGround()) {
+				f1 = level().getBlockState(BlockPos.containing(getX(), getY() - 1.0D, getZ()))
+				    .getFriction(level(), BlockPos.containing(getX(), getY() - 1.0D, getZ()), this) * 0.98F;
 			}
 
 			setDeltaMovement(getDeltaMovement().multiply(f1, 0.98D, f1));
-			if (onGround) {
+			if (onGround()) {
 				Vec3 vec31 = getDeltaMovement();
 				if (vec31.y < 0.0D) {
 					setDeltaMovement(vec31.multiply(1.0D, -0.5D, 1.0D));
@@ -134,7 +136,7 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 				if (!DCUtil.isEmpty(held) && held.getItem() instanceof IEntityItem food) {
 					Vec3 vec3 = this.position()
 					    .add(0D, this.getBbHeight() + 0.2D, 0D);
-					food.spawnPlacementEntity(getLevel(), player, vec3, held);
+					food.spawnPlacementEntity(level(), player, vec3, held);
 				}
 				return InteractionResult.FAIL;
 			}
@@ -150,11 +152,11 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 
 	@Override
 	public boolean hurt(DamageSource source, float damage) {
-		if (level.isClientSide || this.isRemoved())
+		if (level().isClientSide || this.isRemoved())
 			return false;
 		if (this.isInvulnerableTo(source)) {
 			return false;
-		} else if (!source.isExplosion() && !this.getItem()
+		} else if (!source.is(DamageTypeTags.IS_EXPLOSION) && !this.getItem()
 		    .isEmpty()) {
 			this.dropItem(position());
 			this.kill();
@@ -166,9 +168,9 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 	}
 
 	public void dropItem(Vec3 pos) {
-		if (!level.isClientSide && !getItem().isEmpty()) {
-			ItemEntity drop = new ItemEntity(level, pos.x, pos.y + 0.1D, pos.z, getItem().copy());
-			level.addFreshEntity(drop);
+		if (!level().isClientSide && !getItem().isEmpty()) {
+			ItemEntity drop = new ItemEntity(level(), pos.x, pos.y + 0.1D, pos.z, getItem().copy());
+			level().addFreshEntity(drop);
 		}
 	}
 
@@ -208,7 +210,7 @@ public class ObjectEntityBaseDC extends Entity implements IItemDropEntity {
 	}
 
 	@Override
-	public Packet<?> getAddEntityPacket() {
+	public Packet<ClientGamePacketListener> getAddEntityPacket() {
 		return new ClientboundAddEntityPacket(this);
 	}
 

@@ -27,8 +27,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
@@ -40,7 +39,7 @@ public class ChandelierCandle extends ChandelierLamp implements IHeatTile {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F, 6.0F).noOcclusion().lightLevel(Candlestick.emission(12));
+		return BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(0.1F, 6.0F).noOcclusion().lightLevel(Candlestick.emission(12));
 	}
 
 	@Override

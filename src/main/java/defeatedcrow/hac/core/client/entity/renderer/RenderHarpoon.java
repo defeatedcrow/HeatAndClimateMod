@@ -2,7 +2,7 @@ package defeatedcrow.hac.core.client.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.core.material.entity.proj.ThrownHarpoon;
 import defeatedcrow.hac.core.material.item.tool.HarpoonItem;
@@ -30,8 +30,8 @@ public class RenderHarpoon extends EntityRenderer<ThrownHarpoon> {
 	@Override
 	public void render(ThrownHarpoon harpoon, float yaw, float part, PoseStack pose, MultiBufferSource buffer, int light) {
 		pose.pushPose();
-		pose.mulPose(Vector3f.YP.rotationDegrees(Mth.lerp(part, harpoon.yRotO, harpoon.getYRot()) - 90.0F));
-		pose.mulPose(Vector3f.ZP.rotationDegrees(Mth.lerp(part, harpoon.xRotO, harpoon.getXRot()) + 90.0F));
+		pose.mulPose(Axis.YP.rotationDegrees(Mth.lerp(part, harpoon.yRotO, harpoon.getYRot()) - 90.0F));
+		pose.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(part, harpoon.xRotO, harpoon.getXRot()) + 90.0F));
 		VertexConsumer vertexconsumer = ItemRenderer.getFoilBufferDirect(buffer, this.model.renderType(this.getTextureLocation(harpoon)), false, false);
 		this.model.renderToBuffer(pose, vertexconsumer, light, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 		pose.popPose();

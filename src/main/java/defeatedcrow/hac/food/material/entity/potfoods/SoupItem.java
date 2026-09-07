@@ -30,11 +30,12 @@ public class SoupItem extends ItemEntityFood implements IPotFoods {
 
 	public SoupItem(String s, int nut, float sat, boolean cold, TagKey<Item> pair) {
 		super(s, prop(nut, sat, cold), !cold, pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(FoodInit.FOOD, this);
 		isCold = cold;
 	}
 
 	private static Properties prop(int nut, float sat, boolean isCold) {
-		return new Item.Properties().tab(FoodInit.FOOD)
+		return new Item.Properties()
 		    .food(new FoodProperties.Builder().nutrition(nut)
 		        .saturationMod(sat)
 		        .alwaysEat()

@@ -150,7 +150,7 @@ public class MaterialRecipes {
 	    Supplier<Item> oreTert, Supplier<Item> dustPri, Supplier<Item> dustSec, Supplier<Item> dustTert) {
 
 		public TagKey<Item> getTag(String str) {
-			return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", str + "/" + name));
+			return ItemTags.create(new ResourceLocation("forge", str + "/" + name));
 		}
 
 	}
@@ -159,7 +159,7 @@ public class MaterialRecipes {
 	    Supplier<TagKey<Item>> dustTertiary) {
 
 		public TagKey<Item> getTag(String str) {
-			return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", str + "/" + name));
+			return ItemTags.create(new ResourceLocation("forge", str + "/" + name));
 		}
 	}
 

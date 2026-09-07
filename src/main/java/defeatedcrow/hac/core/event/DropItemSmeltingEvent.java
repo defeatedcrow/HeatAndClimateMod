@@ -25,11 +25,11 @@ public class DropItemSmeltingEvent {
 	@SubscribeEvent
 	public static void onItemUpdate(DCItemUpdateEvent event) {
 		ItemEntity drop = event.entity;
-		if (drop != null && !drop.getLevel()
+		if (drop != null && !drop.level()
 		    .isClientSide() && !DCUtil.isEmpty(drop.getItem())) {
-			Level level = drop.getLevel();
+			Level level = drop.level();
 			Vec3 p = drop.getEyePosition();
-			BlockPos pos = new BlockPos(p);
+			BlockPos pos = BlockPos.containing(p.x, p.y, p.z);
 			ItemStack item = drop.getItem();
 
 			// 20tickおき

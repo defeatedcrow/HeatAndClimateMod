@@ -34,7 +34,8 @@ public abstract class MagicJewelBase extends ItemDC implements IJewelCharm {
 	private final Rarity rarity;
 
 	public MagicJewelBase(String n, MagicColor c, Rarity rare, TagKey<Item> pair) {
-		super(new Item.Properties().tab(MagicInit.MAGIC).stacksTo(1).rarity(rare), pair);
+		super(new Item.Properties().stacksTo(1).rarity(rare), pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(MagicInit.MAGIC, this);
 		name = n;
 		color = c;
 		rarity = rare;
@@ -160,7 +161,7 @@ public abstract class MagicJewelBase extends ItemDC implements IJewelCharm {
 		int count = 0;
 		List<ItemStack> charms = MagicUtil.getCharms(owner, CharmType.ALL).stream().filter(c -> c.is(TagDC.ItemTag.MAGIC_BOOSTER)).toList();
 		count += charms.size();
-		if (owner.getLevel() instanceof ServerLevel sl) {
+		if (owner.level() instanceof ServerLevel sl) {
 			if (!MagicUtil.getMagicEntity(sl, MagicColor.BLACK_WHITE).isEmpty())
 				count++;
 		}

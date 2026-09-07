@@ -14,6 +14,7 @@ import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.ClimateBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -33,8 +34,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 
 public class LogContBlock extends ClimateBlock implements IRapidCollectables {
@@ -56,7 +56,7 @@ public class LogContBlock extends ClimateBlock implements IRapidCollectables {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD)
+		return BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
 		    .strength(1.0F, 8.0F)
 		    .sound(SoundType.WOOD)
 		    .randomTicks();
@@ -142,7 +142,7 @@ public class LogContBlock extends ClimateBlock implements IRapidCollectables {
 
 	@Override
 	public TagKey<Item> collectableToolTag() {
-		return Tags.Items.TOOLS_AXES;
+		return ItemTags.AXES;
 	}
 
 	@Override

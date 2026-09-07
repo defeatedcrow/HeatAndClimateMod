@@ -15,6 +15,7 @@ import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.BlockDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -29,8 +30,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 
 public class CardboardContBlock extends BlockDC implements IRapidCollectables {
@@ -52,7 +52,7 @@ public class CardboardContBlock extends BlockDC implements IRapidCollectables {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(0.2F, 8.0F).sound(SoundType.WOOD);
+		return BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.2F, 8.0F).sound(SoundType.WOOD);
 	}
 
 	@Override
@@ -128,7 +128,7 @@ public class CardboardContBlock extends BlockDC implements IRapidCollectables {
 
 	@Override
 	public TagKey<Item> collectableToolTag() {
-		return Tags.Items.TOOLS_SHOVELS;
+		return ItemTags.SHOVELS;
 	}
 
 	@Override

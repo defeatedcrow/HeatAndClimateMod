@@ -21,7 +21,8 @@ import net.minecraft.world.level.Level;
 public class MagicElementItem extends MagicMaterialItemDC {
 
 	public MagicElementItem(MagicColor c, String s, TagKey<Item> pair) {
-		super(new Item.Properties().tab(MagicInit.MAGIC).rarity(Rarity.RARE).stacksTo(1), c, s, pair);
+		super(new Item.Properties().rarity(Rarity.RARE).stacksTo(1), c, s, pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(MagicInit.MAGIC, this);
 	}
 
 	public Enchantment getEnchantment() {

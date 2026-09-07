@@ -10,12 +10,14 @@ import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.ICropData.AquaticType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
@@ -29,7 +31,6 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.material.Material;
 
 public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 
@@ -123,7 +124,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 						if (suitableSoil(crop, level, p1, soil) && canReplaceBlock(crop, air, air2)) {
 							BlockState nextState = crop.getFeatureState();
 
-							if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW)
+							if (soil.is(Blocks.SNOW_BLOCK) || soil.is(Blocks.POWDER_SNOW))
 								level.setBlock(p1, Blocks.DIRT.defaultBlockState(), 2);
 
 							level.setBlock(p1.above(), nextState, 2);
@@ -140,7 +141,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 							BlockState air = level.getBlockState(mpos.above());
 							BlockState air2 = level.getBlockState(mpos.above(2));
 							double dist = pos.distSqr(mpos);
-							int d = 3 + Mth.absFloor(dist);
+							int d = 3 + Mth.floor(Math.abs(dist));
 							boolean f = random.nextInt(d) == 0;
 
 							if (f && suitableSoil(crop, level, mpos, soil) && canReplaceBlock(crop, air, air2)) {
@@ -158,7 +159,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 								}
 
 								if (w) {
-									if (soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW)
+									if (soil.is(Blocks.SNOW_BLOCK) || soil.is(Blocks.POWDER_SNOW))
 										level.setBlock(mpos, Blocks.DIRT.defaultBlockState(), 2);
 
 									if (crop.getGrowType(crop.getTier()) == CropGrowType.VINE || crop.getGrowType(crop.getTier()) == CropGrowType.EPIPHYTE) {
@@ -186,17 +187,17 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 	}
 
 	private static boolean isSurface(BlockState state) {
-		return state.getFluidState().isEmpty() && !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && !state.getMaterial().isLiquid()
-		    && (state.getMaterial().isReplaceable() || state.getMaterial() == Material.LEAVES || state.getMaterial() == Material.PLANT);
+		return state.getFluidState().isEmpty() && !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && !state.liquid()
+		    && (state.canBeReplaced() || state.is(BlockTags.LEAVES) || state.is(TagDC.BlockTag.WEED) || state.is(BlockTags.CROPS) || state.is(BlockTags.SAPLINGS) || state.is(BlockTags.FLOWERS));
 	}
 
 	private static boolean isSoil(BlockState soil) {
-		return soil.is(BlockTags.DIRT) || soil.is(BlockTags.SAND) || soil.getMaterial() == Material.DIRT || soil.getMaterial() == Material.GRASS
-		    || soil.getMaterial() == Material.WATER;
+		return soil.is(BlockTags.DIRT) || soil.is(BlockTags.SAND) || soil.is(Blocks.FARMLAND) || soil.is(Blocks.GRASS_BLOCK)
+		    || soil.getFluidState().is(FluidTags.WATER);
 	}
 
 	private static boolean suitableSoil(ClimateCropBaseBlock crop, WorldGenLevel level, BlockPos p, BlockState soil) {
-		return crop.isSuitablePlace(level, p, soil) || soil.getMaterial() == Material.SNOW || soil.getMaterial() == Material.POWDER_SNOW;
+		return crop.isSuitablePlace(level, p, soil) || soil.is(Blocks.SNOW_BLOCK) || soil.is(Blocks.POWDER_SNOW);
 	}
 
 	private static boolean canReplaceBlock(ClimateCropBaseBlock crop, BlockState avobe, BlockState air) {
@@ -205,18 +206,18 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		if (isWater(air)) {
 			air2 = aquatic == AquaticType.SUBMERGED || aquatic == AquaticType.FORCED_SUBMERGED;
 		}
-		boolean air1 = !avobe.is(BlockTags.FEATURES_CANNOT_REPLACE) && avobe.getMaterial().isReplaceable();
+		boolean air1 = !avobe.is(BlockTags.FEATURES_CANNOT_REPLACE) && avobe.canBeReplaced();
 		if (aquatic == AquaticType.FORCED_EMERGED || aquatic == AquaticType.FORCED_SUBMERGED) {
 			air1 = isWater(avobe);
 		} else if (air1) {
 			air1 = aquatic == AquaticType.EMERGED || aquatic == AquaticType.SUBMERGED
-			    || !avobe.getMaterial().isLiquid() && avobe.getFluidState().isEmpty() && !(avobe.getBlock() instanceof LiquidBlock);
+			    || !avobe.liquid() && avobe.getFluidState().isEmpty() && !(avobe.getBlock() instanceof LiquidBlock);
 		}
 		return air1 && air2;
 	}
 
 	private static boolean isWater(BlockState state) {
-		return state.getMaterial() == Material.WATER && !state.getFluidState().isEmpty() && state.getFluidState().isSource();
+		return state.getFluidState().is(FluidTags.WATER) && !state.getFluidState().isEmpty() && state.getFluidState().isSource();
 	}
 
 	private static boolean matchBiome(Holder<Biome> biome, int height, ClimateCropBaseBlock block) {
@@ -226,7 +227,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		}
 		boolean b1 = false;
 		boolean b2 = false;
-		float humid = biome.get().getDownfall();
+			float humid = biome.get().getModifiedClimateSettings().downfall();
 		for (String s : block.getGeneratedBiomeTag(block.getTier())) {
 			if (TagUtil.matchTag(s.toLowerCase(), biome).isPresent()) {
 				b1 = true;

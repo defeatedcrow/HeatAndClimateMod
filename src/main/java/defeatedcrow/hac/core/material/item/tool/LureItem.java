@@ -1,6 +1,7 @@
 package defeatedcrow.hac.core.material.item.tool;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
@@ -19,7 +20,7 @@ import net.minecraft.world.level.BlockGetter;
 
 public class LureItem extends MaterialItemDC {
 
-	public LureItem(CreativeModeTab tab, String s, TagKey<Item> pair) {
+	public LureItem(Supplier<CreativeModeTab> tab, String s, TagKey<Item> pair) {
 		super(tab, s, pair);
 	}
 

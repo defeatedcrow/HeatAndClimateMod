@@ -13,6 +13,7 @@ import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import defeatedcrow.hac.food.material.block.crops.LeavesCropBlockDC;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -96,9 +97,9 @@ public class FlowerPotEntity extends ObjectEntityBaseDC {
 	}
 
 	public void dropFlowerItem(Vec3 pos) {
-		if (!level.isClientSide && !getFlowerItem().isEmpty()) {
-			ItemEntity drop = new ItemEntity(level, pos.x, pos.y + 0.1D, pos.z, getFlowerItem().copy());
-			level.addFreshEntity(drop);
+		if (!level().isClientSide && !getFlowerItem().isEmpty()) {
+			ItemEntity drop = new ItemEntity(level(), pos.x, pos.y + 0.1D, pos.z, getFlowerItem().copy());
+			level().addFreshEntity(drop);
 		}
 	}
 
@@ -119,7 +120,7 @@ public class FlowerPotEntity extends ObjectEntityBaseDC {
 	}
 
 	@Override
-	public Packet<?> getAddEntityPacket() {
+	public Packet<ClientGamePacketListener> getAddEntityPacket() {
 		return new ClientboundAddEntityPacket(this);
 	}
 

@@ -89,7 +89,7 @@ public class MsgWeatherToC implements IPacketDC {
 		if (level != null) {
 			MsgWeatherToC packet = new MsgWeatherToC(level.dimension().location(), r, rC, sC, s, dt, di, t, muf, dig, disp);
 			level.players().forEach(player -> {
-				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
 			});
 		}
 	}

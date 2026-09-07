@@ -1,7 +1,7 @@
 package defeatedcrow.hac.machine.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.util.DCState;
@@ -48,8 +48,8 @@ public class TileRendererFaucet implements BlockEntityRenderer<FaucetTile> {
 
 			poseStack.pushPose();
 			poseStack.translate(0.5F, 0F + f2, 0.5F);
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-			poseStack.mulPose(Vector3f.YP.rotationDegrees(dir.toYRot()));
+			poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+			poseStack.mulPose(Axis.YP.rotationDegrees(dir.toYRot()));
 			poseStack.scale(f1, f1, f1);
 
 			if (block == MachineInit.FAUCET_A.get()) {

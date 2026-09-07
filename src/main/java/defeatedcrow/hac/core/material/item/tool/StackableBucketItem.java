@@ -40,7 +40,6 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -54,7 +53,8 @@ public class StackableBucketItem extends CraftingItemDC {
 	private String domain = "main";
 
 	public StackableBucketItem(String n, TagKey<Item> pair) {
-		super(n, new Item.Properties().tab(CoreInit.MACHINE), pair);
+		super(n, new Item.Properties(), pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	static Supplier<Item> getSup() {
@@ -158,7 +158,6 @@ public class StackableBucketItem extends CraftingItemDC {
 		} else {
 			BlockState state = level.getBlockState(pos);
 			Block block = state.getBlock();
-			Material material = state.getMaterial();
 			boolean flag = state.canBeReplaced(fluid.getFluid());
 			boolean flag1 = state.isAir() || flag || block instanceof LiquidBlockContainer && ((LiquidBlockContainer) block).canPlaceLiquid(level, pos, state, fluid.getFluid());
 			if (!flag1) {
@@ -180,7 +179,7 @@ public class StackableBucketItem extends CraftingItemDC {
 				});
 				return true;
 			} else {
-				if (!level.isClientSide && flag && !material.isLiquid()) {
+				if (!level.isClientSide && flag && !state.liquid()) {
 					level.destroyBlock(pos, true);
 				}
 

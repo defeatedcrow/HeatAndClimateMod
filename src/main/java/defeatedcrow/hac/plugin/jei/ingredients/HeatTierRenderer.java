@@ -6,14 +6,14 @@ import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.math.Matrix4f;
+import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.ClimateCore;
 import mezz.jei.api.ingredients.IIngredientRenderer;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -34,13 +34,12 @@ public class HeatTierRenderer implements IIngredientRenderer<DCHeatTier> {
 	}
 
 	@Override
-	public void render(PoseStack stack, DCHeatTier ingredient) {
+	public void render(GuiGraphics graphics, DCHeatTier ingredient) {
 		RenderSystem.enableBlend();
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 
-		RenderSystem.setShaderTexture(0, ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/gui/icon_base.png"));
-		Matrix4f matrix = stack.last()
-		    .pose();
+		RenderSystem.setShaderTexture(0, new ResourceLocation(ClimateCore.MOD_ID, "textures/gui/icon_base.png"));
+		Matrix4f matrix = graphics.pose().last().pose();
 		setGLColorFromInt(ingredient.getColorInt());
 
 		drawTexturedModalRect(matrix, 0, 0, 0, 0, 6, 3);

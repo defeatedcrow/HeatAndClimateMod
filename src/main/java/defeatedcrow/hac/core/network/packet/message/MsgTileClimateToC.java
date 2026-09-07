@@ -75,7 +75,7 @@ public class MsgTileClimateToC implements IPacketDC {
 			level.players()
 			    .forEach(player -> {
 			        DCPacket.INSTANCE.getChannel()
-			            .sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+			            .sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
 			    });
 		}
 	}

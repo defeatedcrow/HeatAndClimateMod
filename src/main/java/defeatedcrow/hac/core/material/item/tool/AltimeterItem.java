@@ -19,7 +19,8 @@ import net.minecraft.world.level.Level;
 public class AltimeterItem extends CraftingItemDC {
 
 	public AltimeterItem(String n) {
-		super(n, new Item.Properties().tab(CoreInit.MACHINE).stacksTo(1), TagDC.ItemTag.CRAFT_ALTIMETER);
+		super(n, new Item.Properties().stacksTo(1), TagDC.ItemTag.CRAFT_ALTIMETER);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	@Override

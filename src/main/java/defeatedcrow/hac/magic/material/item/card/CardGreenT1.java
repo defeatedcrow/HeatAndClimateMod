@@ -6,15 +6,16 @@ import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 
 public class CardGreenT1 extends MagicCardBase {
 
@@ -37,7 +38,7 @@ public class CardGreenT1 extends MagicCardBase {
 						if (hook != 0)
 							continue;
 						if (crop.getBlock() instanceof BonemealableBlock) {
-							if (crop.getMaterial() == Material.DIRT || crop.getMaterial() == Material.GRASS || crop.is(TagDC.BlockTag.WEED))
+							if (crop.is(BlockTags.DIRT) || crop.is(Blocks.GRASS_BLOCK) || crop.is(TagDC.BlockTag.WEED))
 								continue;
 							BonemealableBlock target = (BonemealableBlock) crop.getBlock();
 							if (target.isValidBonemealTarget(level, mpos, crop, false)) {

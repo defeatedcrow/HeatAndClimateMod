@@ -9,7 +9,8 @@ import net.minecraft.world.item.Rarity;
 public class MachineMaterialItem extends MaterialItemDC {
 
 	public MachineMaterialItem(Rarity rare, String s, TagKey<Item> pair) {
-		super(new Item.Properties().tab(CoreInit.MACHINE).rarity(rare), s, pair);
+		super(new Item.Properties().rarity(rare), s, pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 		domain = "machine";
 	}
 

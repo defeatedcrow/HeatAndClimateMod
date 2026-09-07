@@ -14,6 +14,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -70,23 +71,23 @@ public class SilverBadge extends MagicJewelBase {
 				if (attacker instanceof OwnableEntity ownable) {
 					Entity owner = ownable.getOwner();
 					if (owner instanceof Player player) {
-						source = DamageSource.playerAttack(player);
+						source = player.level().damageSources().playerAttack(player);
 					} else if (owner instanceof LivingEntity mob) {
-						source = DamageSource.mobAttack(mob);
+						source = mob.level().damageSources().mobAttack(mob);
 					} else {
-						source = DamageSource.MAGIC;
+						source = attacker.level().damageSources().magic();
 					}
 					flag = true;
 				} else if (attacker instanceof Player player) {
-					Monster monster = player.getLevel()
+					Monster monster = player.level()
 					    .getNearestEntity(Monster.class, TargetingConditions.forCombat()
 					        .range(16D), target, target.getX(), target.getY(), target.getZ(),
 					        player.getBoundingBox()
 					            .inflate(16D));
 					if (monster != null) {
-						source = DamageSource.mobAttack(monster);
+						source = monster.level().damageSources().mobAttack(monster);
 					} else {
-						source = DamageSource.MAGIC;
+						source = attacker.level().damageSources().magic();
 					}
 					flag = true;
 				}
@@ -113,14 +114,12 @@ public class SilverBadge extends MagicJewelBase {
 	public InteractionResultHolder<ItemStack> onBlockHit(Level level, Player player, InteractionHand hand, ItemStack charm, BlockPos pos, Direction dir) {
 		if (!DCUtil.isEmpty(charm) && getColor().isBlue && level instanceof ServerLevel serverLevel) {
 			Vec3 vec3 = Vec3.atBottomCenterOf(pos.relative(dir));
-			BlockPos p1 = new BlockPos(vec3);
+			BlockPos p1 = BlockPos.containing(vec3.x, vec3.y, vec3.z);
 			BlockPos p2 = p1.above();
 			if (level.getBlockState(p1)
-			    .getMaterial()
-			    .isReplaceable()
+			    .canBeReplaced()
 			    && level.getBlockState(p2)
-			        .getMaterial()
-			        .isReplaceable()) {
+			        .canBeReplaced()) {
 				ResourceKey<Level> dim = serverLevel.dimension();
 				CompoundTag tag = charm.getOrCreateTag();
 				tag.putString(TagKeyDC.DIM_LOCATION, dim.location()
@@ -146,7 +145,7 @@ public class SilverBadge extends MagicJewelBase {
 	@Override
 	public boolean onUsing(ServerPlayer owner, ItemStack charm) {
 		if (!DCUtil.isEmpty(charm) && getColor().isBlue) {
-			ServerLevel serverLevel = owner.getLevel();
+			ServerLevel serverLevel = owner.serverLevel();
 			if (charm.hasTag() && charm.getTag()
 			    .contains(TagKeyDC.DIM_LOCATION)) {
 				CompoundTag tag = charm.getTag();
@@ -154,7 +153,7 @@ public class SilverBadge extends MagicJewelBase {
 				double dx = tag.getInt(TagKeyDC.POS_X) + 0.5D;
 				double dy = tag.getInt(TagKeyDC.POS_Y) + 0.05D;
 				double dz = tag.getInt(TagKeyDC.POS_Z) + 0.5D;
-				ResourceKey<Level> dim = ResourceKey.create(Registry.DIMENSION_REGISTRY, ResourceLocation.parse(s1));
+				ResourceKey<Level> dim = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(s1));
 				if (!serverLevel.dimension()
 				    .equals(dim)) {
 					ServerLevel nextLevel = serverLevel.getServer()

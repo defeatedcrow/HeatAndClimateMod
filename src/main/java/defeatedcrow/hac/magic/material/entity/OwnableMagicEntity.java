@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.climate.DCTimeHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -23,9 +24,11 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -103,8 +106,8 @@ public abstract class OwnableMagicEntity extends Entity implements IColorDC, IIt
 			this.discard();
 		}
 
-		int day = DCTimeHelper.getDay(level);
-		int hour = DCTimeHelper.currentTime(level);
+		int day = DCTimeHelper.getDay(level());
+		int hour = DCTimeHelper.currentTime(level());
 		if (age < day && hour >= 6) {
 			this.setAge(day);
 			this.onDayCount(day);
@@ -132,7 +135,7 @@ public abstract class OwnableMagicEntity extends Entity implements IColorDC, IIt
 	public boolean hurt(DamageSource source, float damage) {
 		Entity attacker = source.getEntity();
 		if (attacker != null) {
-			if (attacker instanceof Player player && !source.isExplosion() && !source.isProjectile()) {
+			if (attacker instanceof Player player && !source.is(DamageTypeTags.IS_EXPLOSION) && !source.is(DamageTypeTags.IS_PROJECTILE)) {
 				if (!this.getLocked() || this.isOwnerOrOP(player)) {
 					this.onRemoved();
 					this.discard();
@@ -175,7 +178,7 @@ public abstract class OwnableMagicEntity extends Entity implements IColorDC, IIt
 	}
 
 	@Override
-	public Packet<?> getAddEntityPacket() {
+	public Packet<ClientGamePacketListener> getAddEntityPacket() {
 		return new ClientboundAddEntityPacket(this);
 	}
 
@@ -220,14 +223,14 @@ public abstract class OwnableMagicEntity extends Entity implements IColorDC, IIt
 	public Player getOwnerPlayer() {
 		try {
 			UUID uuid = this.getOwnerUUID();
-			return uuid == null ? null : this.level.getPlayerByUUID(uuid);
+			return uuid == null ? null : this.level().getPlayerByUUID(uuid);
 		} catch (IllegalArgumentException exception) {
 			return null;
 		}
 	}
 
 	@Override
-	public Entity getOwner() {
+	public LivingEntity getOwner() {
 		return getOwnerPlayer();
 	}
 

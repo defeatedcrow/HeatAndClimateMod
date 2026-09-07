@@ -25,7 +25,8 @@ import net.minecraft.world.level.Level;
 public class EXPSolidOrbItem extends MagicMaterialItemDC {
 
 	public EXPSolidOrbItem() {
-		super(new Item.Properties().tab(MagicInit.MAGIC).rarity(Rarity.UNCOMMON), MagicColor.WHITE, "exp_solid_orb", null);
+		super(new Item.Properties().rarity(Rarity.UNCOMMON), MagicColor.WHITE, "exp_solid_orb", null);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(MagicInit.MAGIC, this);
 	}
 
 	@Override

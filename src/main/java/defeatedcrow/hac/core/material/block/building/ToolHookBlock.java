@@ -39,10 +39,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -150,13 +150,13 @@ public class ToolHookBlock extends EntityBlockDC {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (state.getBlock() instanceof EntityBlockDC block && builder != null) {
-			LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+			LootParams cont = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
 			BlockEntity tile = null;
 			if (cont.hasParam(LootContextParams.BLOCK_ENTITY)) {
-				tile = cont.getParam(LootContextParams.BLOCK_ENTITY);
+				tile = cont.getParameter(LootContextParams.BLOCK_ENTITY);
 			}
 
 			ret.add(getMainDrop());
@@ -174,7 +174,7 @@ public class ToolHookBlock extends EntityBlockDC {
 	/* BlockDC */
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).strength(0.1F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.1F, 540.0F).noOcclusion();
 	}
 
 	@Override

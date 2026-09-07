@@ -97,7 +97,7 @@ public class ClientClimateData {
 		}
 		charms.clear();
 
-		if (player.level.getDifficulty() != Difficulty.PEACEFUL || ConfigCommonBuilder.INSTANCE.enPeacefulDamage.get()) {
+		if (player.level().getDifficulty() != Difficulty.PEACEFUL || ConfigCommonBuilder.INSTANCE.enPeacefulDamage.get()) {
 			if (isCold) {
 				damage = (tempTier + conf_prev) * 2;
 				damage += coldPrev;

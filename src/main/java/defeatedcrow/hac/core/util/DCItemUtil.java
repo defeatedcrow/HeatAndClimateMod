@@ -64,7 +64,7 @@ public class DCItemUtil {
 		if (ins.isEmpty() || slot.isEmpty()) {
 			return false;
 		} else if (ins.getItem() == slot.getItem()) {
-			return !nbtSensitive || ItemStack.tagMatches(ins, slot);
+			return !nbtSensitive || ItemStack.isSameItemSameTags(ins, slot);
 		}
 		return false;
 	}
@@ -241,7 +241,7 @@ public class DCItemUtil {
 		if (obj instanceof String) {
 			ret.addAll(getOres((String) obj));
 		} else if (obj instanceof TagKey<?>) {
-			Registry.ITEM.getTagOrEmpty((TagKey<Item>) obj)
+			ForgeRegistries.ITEMS.tags().getTag((TagKey<Item>) obj)
 			    .forEach(holder -> ret.add(new ItemStack(holder)));
 		} else if (obj instanceof List && !((List<?>) obj).isEmpty()) {
 			ret.addAll((List<ItemStack>) obj);
@@ -286,7 +286,7 @@ public class DCItemUtil {
 		List<ItemStack> ret = new ArrayList<>();
 		if (str == null)
 			return ret;
-		ResourceLocation tagname = ResourceLocation.bySeparator(str, ':');
+			ResourceLocation tagname = new ResourceLocation(str);
 		ForgeRegistries.ITEMS.tags()
 		    .getTagNames()
 		    .filter(r -> r.location()
@@ -295,8 +295,8 @@ public class DCItemUtil {
 		            .toString()
 		            .contains(str))
 		    .forEach(key -> {
-		        Registry.ITEM.getTagOrEmpty(key)
-		            .forEach(holder -> ret.add(new ItemStack(holder)));
+			ForgeRegistries.ITEMS.tags().getTag(key)
+			    .forEach(holder -> ret.add(new ItemStack(holder)));
 		    });
 		return ret;
 	}
@@ -305,7 +305,7 @@ public class DCItemUtil {
 		List<ItemStack> ret = new ArrayList<>();
 		if (domain == null || name == null)
 			return ret;
-		ResourceLocation tagname = ResourceLocation.fromNamespaceAndPath(domain, name);
+		ResourceLocation tagname = new ResourceLocation(domain, name);
 		ForgeRegistries.ITEMS.tags()
 		    .getTagNames()
 		    .filter(r -> r.location()
@@ -314,8 +314,8 @@ public class DCItemUtil {
 		            .toString()
 		            .contains(name))
 		    .forEach(key -> {
-		        Registry.ITEM.getTagOrEmpty(key)
-		            .forEach(holder -> ret.add(new ItemStack(holder)));
+			ForgeRegistries.ITEMS.tags().getTag(key)
+			    .forEach(holder -> ret.add(new ItemStack(holder)));
 		    });
 		return ret;
 	}
@@ -324,7 +324,7 @@ public class DCItemUtil {
 		List<ItemStack> ret = new ArrayList<>();
 		if (domain == null || name == null)
 			return TagDC.ItemTag.DUMMY;
-		ResourceLocation tagname = ResourceLocation.fromNamespaceAndPath(domain, name);
+		ResourceLocation tagname = new ResourceLocation(domain, name);
 		return ForgeRegistries.ITEMS.tags()
 		    .getTagNames()
 		    .filter(r -> r.location()
@@ -355,7 +355,7 @@ public class DCItemUtil {
 				}
 			}
 
-			Block block = ForgeRegistries.BLOCKS.getValue(ResourceLocation.fromNamespaceAndPath(modid, itemName));
+			Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, itemName));
 			if (block != null && block != Blocks.AIR) {
 				// DCLogger.debugTrace("Find target: " + modid + ":" + itemName);
 				return block;
@@ -385,7 +385,7 @@ public class DCItemUtil {
 						}
 					}
 
-					Block block = ForgeRegistries.BLOCKS.getValue(ResourceLocation.fromNamespaceAndPath(modid, itemName));
+					Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, itemName));
 					if (block != null && block != Blocks.AIR) {
 						DCLogger.infoLog(logname + " add target: " + modid + ":" + itemName);
 						list.add(block);
@@ -417,7 +417,7 @@ public class DCItemUtil {
 						}
 					}
 
-					Item item = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath(modid, itemName));
+					Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(modid, itemName));
 					if (item != null && item != Items.AIR) {
 						DCLogger.infoLog(logname + " add target: " + modid + ":" + itemName);
 						list.add(item);
@@ -435,11 +435,11 @@ public class DCItemUtil {
 		if (names != null && names.length > 0) {
 			for (String name : names) {
 				if (name != null) {
-					ResourceLocation res = ResourceLocation.bySeparator(name, ':');
+					ResourceLocation res = new ResourceLocation(name);
 					if (res.getNamespace()
 					    .equalsIgnoreCase("minecraft")) {
 						String n = res.getPath();
-						res = ResourceLocation.fromNamespaceAndPath("minecraft", n);
+						res = new ResourceLocation("minecraft", n);
 					}
 					if (ForgeRegistries.ENTITY_TYPES.containsKey(res)) {
 						EntityType<?> entity = ForgeRegistries.ENTITY_TYPES.getValue(res);

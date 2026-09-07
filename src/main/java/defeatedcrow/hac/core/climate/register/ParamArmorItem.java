@@ -18,7 +18,7 @@ public class ParamArmorItem {
 	}
 
 	public Optional<Item> getItem() {
-		Item item = ForgeRegistries.ITEMS.getValue(ResourceLocation.parse(itemName));
+		Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName));
 		if (item != null) {
 			return Optional.of(item);
 		}

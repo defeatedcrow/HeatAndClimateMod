@@ -29,8 +29,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -57,7 +56,7 @@ public class MonitorComparatorBlock extends EntityBlockDC implements ITileNBTHol
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.METAL).strength(0.2F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.2F, 540.0F).noOcclusion();
 	}
 
 	@Override

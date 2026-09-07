@@ -1,6 +1,9 @@
 package defeatedcrow.hac.api.damage;
 
+import net.minecraft.core.Holder;
+import net.minecraft.world.damagesource.DamageScaling;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
 
 /**
  * 気候によるダメージのDamageSource<br>
@@ -9,21 +12,21 @@ import net.minecraft.world.damagesource.DamageSource;
 public class DamageSourceClimate extends DamageSource {
 
 	public static DamageSourceClimate climateHeatDamage = new DamageSourceClimate(
-			"dcs_heat").setHeatDamage().setBypassesArmor();
+			Holder.direct(new DamageType("dcs_heat", DamageScaling.ALWAYS, 0.1F))).setHeatDamage();
 	public static DamageSourceClimate climateColdDamage = new DamageSourceClimate(
-			"dcs_cold").setHeatDamage().setNegativeDamage().setBypassesArmor();
+			Holder.direct(new DamageType("dcs_cold", DamageScaling.ALWAYS, 0.1F))).setHeatDamage().setNegativeDamage();
 	public static DamageSourceClimate climateWaterDamage = new DamageSourceClimate(
-			"dcs_water").setHumDamage().setBypassesArmor();
+			Holder.direct(new DamageType("dcs_water", DamageScaling.ALWAYS, 0.1F))).setHumDamage();
 	public static DamageSourceClimate climateDryDamage = new DamageSourceClimate(
-			"dcs_dry").setHumDamage().setNegativeDamage().setBypassesArmor();
+			Holder.direct(new DamageType("dcs_dry", DamageScaling.ALWAYS, 0.1F))).setHumDamage().setNegativeDamage();
 	public static DamageSourceClimate climateWindDamage = new DamageSourceClimate(
-			"dcs_wind").setAirDamage().setBypassesArmor();
+			Holder.direct(new DamageType("dcs_wind", DamageScaling.ALWAYS, 0.1F))).setAirDamage();
 	public static DamageSourceClimate climateSuffocationDamage = new DamageSourceClimate(
-			"dcs_suffocation").setAirDamage().setNegativeDamage().setBypassesArmor();
-	public static DamageSource machineDamage = new DamageSource("dcs_machine");
+			Holder.direct(new DamageType("dcs_suffocation", DamageScaling.ALWAYS, 0.1F))).setAirDamage().setNegativeDamage();
+	public static DamageSource machineDamage = new DamageSource(Holder.direct(new DamageType("dcs_machine", DamageScaling.ALWAYS, 0.1F)));
 
-	public DamageSourceClimate(String damageTypeIn) {
-		super(damageTypeIn);
+	public DamageSourceClimate(Holder<DamageType> type) {
+		super(type);
 	}
 
 	public boolean isHeat;
@@ -32,7 +35,6 @@ public class DamageSourceClimate extends DamageSource {
 	public boolean isAir;
 
 	private DamageSourceClimate setBypassesArmor() {
-		super.bypassArmor();
 		return this;
 	}
 

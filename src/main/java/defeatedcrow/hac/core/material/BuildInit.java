@@ -89,8 +89,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.network.IContainerFactory;
 import net.minecraftforge.registries.RegistryObject;
@@ -484,7 +483,7 @@ public class BuildInit {
 	public static final RegistryObject<Block> CHAIN_VINE = regBlock("chain_vine", () -> new ChainBlockDC("vine", BlockBehaviour.Properties.copy(Blocks.ORANGE_WOOL)), null);
 	public static final RegistryObject<Block> LADDER_VINE = regBlock("vine_ladder", () -> new MetalLadder("vine_ladder"), null);
 
-	public static final RegistryObject<Block> STRAW_MAT = regBlock("straw_mat", () -> new MetalThinPlate("straw_mat", BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_ORANGE)
+	public static final RegistryObject<Block> STRAW_MAT = regBlock("straw_mat", () -> new MetalThinPlate("straw_mat", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE)
 	    .sound(SoundType.GRASS)
 	    .strength(1.0F, 5.0F)
 	    .noOcclusion()), null);
@@ -682,29 +681,29 @@ public class BuildInit {
 
 	// Menu
 	public static final RegistryObject<MenuType<DisplayShelfMenu>> DISPLAY_SHELF_MENU = CoreInit.register("dcs_display_shelf", (IContainerFactory<DisplayShelfMenu>) (id, playerInv, data) -> {
-		DisplayShelfTile cont = (DisplayShelfTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		DisplayShelfTile cont = (DisplayShelfTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return DisplayShelfMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<DisplayShelfMenu>> DISPLAY_DOUBLE_SHELF_MENU = CoreInit.register("dcs_display_double_shelf", (IContainerFactory<DisplayShelfMenu>) (id, playerInv, data) -> {
-		DisplayDoubleShelfTile cont = (DisplayDoubleShelfTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		DisplayDoubleShelfTile cont = (DisplayDoubleShelfTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return DisplayShelfMenu.getDoubleMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<DisplayCaseMenu_Owner>> DISPLAY_CASE_OWNER_MENU = CoreInit.register("dcs_display_case_owner", (IContainerFactory<DisplayCaseMenu_Owner>) (id, playerInv, data) -> {
-		DisplayCaseTile cont = (DisplayCaseTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		DisplayCaseTile cont = (DisplayCaseTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return DisplayCaseMenu_Owner.getMenu(id, playerInv, cont);
 	});
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("build/" + name, block);
-		regItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.BUILD), tag));
+		regItem(name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new BlockItemDC(name, obj.get(), new Item.Properties(), tag), CoreInit.BUILD));
 		return obj;
 	}
 
 	public static RegistryObject<Block> regDoorBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("build/" + name, block);
-		regItem(name, () -> new DoorItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.BUILD)));
+		regItem(name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new DoorItemDC(name, obj.get(), new Item.Properties()), CoreInit.BUILD));
 		return obj;
 	}
 

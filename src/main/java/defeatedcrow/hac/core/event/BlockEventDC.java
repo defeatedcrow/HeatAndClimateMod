@@ -32,6 +32,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -98,7 +99,7 @@ public class BlockEventDC {
 			f *= 2.5F;
 		}
 
-		if (!player.isOnGround() && !player.isInWaterOrRain() && player.hasEffect(CoreInit.BIRD.get())) {
+		if (!player.onGround() && !player.isInWaterOrRain() && player.hasEffect(CoreInit.BIRD.get())) {
 			f *= 2.5F;
 		}
 
@@ -111,7 +112,7 @@ public class BlockEventDC {
 		Player player = event.getPlayer();
 		BlockState state = event.getState();
 		BlockPos pos = event.getPos();
-		Level level = player.level;
+		Level level = player.level();
 		ItemStack held = player.getMainHandItem();
 		BlockEntity tile = level.getBlockEntity(pos);
 
@@ -220,7 +221,7 @@ public class BlockEventDC {
 	}
 
 	private static boolean canLumberjack(Player player, ItemStack held, BlockState target) {
-		if (!DCUtil.isEmpty(held) && held.is(Tags.Items.TOOLS_AXES) && target.is(BlockTags.LOGS)) {
+		if (!DCUtil.isEmpty(held) && held.is(ItemTags.AXES) && target.is(BlockTags.LOGS)) {
 			if (target.getBlock() instanceof LogBlockDC && DCState.getBool(target, DCState.WILD)) {
 				return true;
 			} else if (player != null && player.hasEffect(CoreInit.LUMBERJACK.get()) && target.is(BlockTags.LOGS))
@@ -280,7 +281,7 @@ public class BlockEventDC {
 					    .is(Items.NAME_TAG) && ClimateCore.proxy.isOP(sp)) {
 						Component name = sp.getMainHandItem()
 						    .getHoverName();
-						Player target = ClimateCore.proxy.getPlayer(sp.getLevel(), name.getString());
+						Player target = ClimateCore.proxy.getPlayer(sp.serverLevel(), name.getString());
 						if (target != null) {
 							ownable.setOwner(target.getUUID());
 							ownable.setOwnerName(target.getScoreboardName());
@@ -347,7 +348,7 @@ public class BlockEventDC {
 		Player p = event.getEntity();
 		BlockPos pos = event.getNewSpawn();
 		if (p instanceof ServerPlayer player) {
-			BlockState state = player.getLevel()
+			BlockState state = player.level()
 			    .getBlockState(pos);
 			if (state.getBlock() instanceof NoSaveBedBlock) {
 				event.setCanceled(true);

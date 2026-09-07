@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[43,)"
+loaderVersion="[47,)"
 license="All rights reserved, Please see homepage."
 issueTrackerURL="https://github.com/defeatedcrow/HeatAndClimateMod/issues"
 [[mods]]
@@ -18,12 +18,12 @@ Take advantage of the climate and have fun!
 [[dependencies.dcs_climate]] #optional
     modId="forge"
     mandatory=true
-    versionRange="[43.4,)"
+    versionRange="[47.2.0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.dcs_climate]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.2,1.20)"
+    versionRange="[1.20.1,1.21)"
     ordering="NONE"
     side="BOTH"

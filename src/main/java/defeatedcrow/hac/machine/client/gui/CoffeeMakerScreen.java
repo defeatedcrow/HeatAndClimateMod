@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.ClimateCore;
@@ -38,7 +38,7 @@ public class CoffeeMakerScreen extends AbstractContainerScreen<CoffeeMakerMenu> 
 	}
 
 	@Override
-	public void render(PoseStack pose, int mx, int my, float f) {
+	public void render(GuiGraphics pose, int mx, int my, float f) {
 		this.renderBackground(pose);
 		super.render(pose, mx, my, f);
 		this.renderTooltip(pose, mx, my);
@@ -76,37 +76,37 @@ public class CoffeeMakerScreen extends AbstractContainerScreen<CoffeeMakerMenu> 
 			list.add(Component.translatable("dcs.tip.device.heat", temp.localize()));
 		}
 
-		this.renderComponentTooltip(pose, list, mx, my);
+		pose.renderComponentTooltip(this.font, list, mx, my);
 	}
 
 	@Override
-	protected void renderBg(PoseStack pose, float f, int mx, int my) {
+	protected void renderBg(GuiGraphics pose, float f, int mx, int my) {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, DCTexturePath.GUI_COFFEE_MAKER.getLocation());
 
 		int i = (this.width - this.imageWidth) / 2;
 		int j = (this.height - this.imageHeight) / 2;
-		this.blit(pose, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		pose.blit(DCTexturePath.GUI_COFFEE_MAKER.getLocation(), i, j, 0, 0, this.imageWidth, this.imageHeight);
 
 		boolean lock = this.getMenu()
 		    .getContainer()
 		    .isLocked();
 		if (lock) {
-			this.blit(pose, i + 156, j + 3, 176, 21, 12, 21);
+			pose.blit(DCTexturePath.GUI_COFFEE_MAKER.getLocation(), i + 156, j + 3, 176, 21, 12, 21);
 		} else {
-			this.blit(pose, i + 156, j + 3, 176, 0, 12, 21);
+			pose.blit(DCTexturePath.GUI_COFFEE_MAKER.getLocation(), i + 156, j + 3, 176, 0, 12, 21);
 		}
 
 		int tempID = this.menu.getTempID();
-		this.blit(pose, i + 98, j + 89, 190, tempID * 14, 14, 14);
+		pose.blit(DCTexturePath.GUI_COFFEE_MAKER.getLocation(), i + 98, j + 89, 190, tempID * 14, 14, 14);
 
 		int l = this.menu.getBurnProgress();
 		if (l > 0) {
 			if (tempID > DCHeatTier.COOL.getID()) {
-				this.blit(pose, i + 80, j + 89 + 14 - l, 176, 42 + 14 - l, 14, l);
+				pose.blit(DCTexturePath.GUI_COFFEE_MAKER.getLocation(), i + 80, j + 89 + 14 - l, 176, 42 + 14 - l, 14, l);
 			} else {
-				this.blit(pose, i + 80, j + 89 + 14 - l, 176, 56 + 14 - l, 14, l);
+				pose.blit(DCTexturePath.GUI_COFFEE_MAKER.getLocation(), i + 80, j + 89 + 14 - l, 176, 56 + 14 - l, 14, l);
 			}
 		}
 

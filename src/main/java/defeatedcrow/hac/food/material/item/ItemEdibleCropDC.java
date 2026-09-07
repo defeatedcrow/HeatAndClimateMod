@@ -25,17 +25,17 @@ import net.minecraft.world.level.BlockGetter;
 public class ItemEdibleCropDC extends ItemCropDC implements IFoodTaste {
 
 	public ItemEdibleCropDC(CropTier rare, CropType t, String s, TagKey<Item> pair) {
-		super(new Item.Properties().rarity(rare.getRarity())
-		    .tab(FoodInit.AGRI), rare, t, s, pair, false);
+		super(new Item.Properties().rarity(rare.getRarity()), rare, t, s, pair, false);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(FoodInit.AGRI, this);
 	}
 
 	public ItemEdibleCropDC(CropTier rare, CropType t, String s, TagKey<Item> pair, int nut, float sat) {
 		super(new Item.Properties().rarity(rare.getRarity())
-		    .tab(FoodInit.AGRI)
 		    .food(new FoodProperties.Builder().nutrition(nut)
 		        .saturationMod(sat)
 		        .alwaysEat()
 		        .build()), rare, t, s, pair, false);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(FoodInit.AGRI, this);
 	}
 
 	public TagKey<Item> getFlavorTag() {

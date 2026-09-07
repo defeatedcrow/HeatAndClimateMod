@@ -34,7 +34,8 @@ public abstract class BaseArrowItem extends ArrowItem implements IJsonDataDC, II
 	private final MagicColor color;
 
 	public BaseArrowItem(MagicColor c, String s, TagKey<Item> pair) {
-		super(new Item.Properties().tab(MagicInit.MAGIC));
+		super(new Item.Properties());
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(MagicInit.MAGIC, this);
 		tag = pair;
 		color = c;
 		name = s;

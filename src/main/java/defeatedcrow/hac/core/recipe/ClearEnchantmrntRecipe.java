@@ -6,17 +6,19 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 
 public class ClearEnchantmrntRecipe extends CustomRecipe {
 
-	public ClearEnchantmrntRecipe(ResourceLocation res) {
-		super(res);
+	public ClearEnchantmrntRecipe(ResourceLocation res, CraftingBookCategory cat) {
+		super(res, cat);
 	}
 
 	@Override
@@ -42,7 +44,7 @@ public class ClearEnchantmrntRecipe extends CustomRecipe {
 	}
 
 	@Override
-	public ItemStack assemble(CraftingContainer cont) {
+	public ItemStack assemble(CraftingContainer cont, RegistryAccess access) {
 		List<ItemStack> list = Lists.newArrayList();
 		ItemStack tool = ItemStack.EMPTY;
 		ItemStack soap = ItemStack.EMPTY;
@@ -62,7 +64,7 @@ public class ClearEnchantmrntRecipe extends CustomRecipe {
 
 		if (!tool.isEmpty() && !soap.isEmpty() && list.size() == 2) {
 			ItemStack ret = tool.copy();
-			ret.removeTagKey("Enchantments");
+			ret.getOrCreateTag().remove("Enchantments");
 			return ret;
 		} else {
 			return ItemStack.EMPTY;

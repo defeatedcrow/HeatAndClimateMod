@@ -5,10 +5,9 @@ import java.util.List;
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.math.Matrix4f;
+import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.recipe.IDeviceFuel;
 import defeatedcrow.hac.core.tag.TagUtil;
@@ -23,6 +22,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.tags.TagKey;
@@ -79,12 +79,12 @@ public class FuelFluidCategory implements IRecipeCategory<IDeviceFuel> {
 	}
 
 	@Override
-	public void draw(IDeviceFuel recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
+	public void draw(IDeviceFuel recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
 		Minecraft minecraft = Minecraft.getInstance();
 		Font font = minecraft.font;
 
 		MutableComponent time = Component.literal(recipe.getBurnTime() + "Tick");
-		font.draw(stack, time, 50, 12, 0xFF000000);
+		graphics.drawString(font, time, 50, 12, 0xFF000000);
 	}
 
 	private static void drawTexturedModalRect(Matrix4f mat, int x, int y, int tX, int tY, int wid, int hei) {

@@ -27,10 +27,11 @@ public class CurryItem extends ItemEntityFood {
 
 	public CurryItem(String s, int nut, float sat, boolean curry, TagKey<Item> pair) {
 		super(s, prop(nut, sat, curry), true, pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(FoodInit.FOOD, this);
 	}
 
 	private static Properties prop(int nut, float sat, boolean isCurry) {
-		return new Item.Properties().tab(FoodInit.FOOD).food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().effect(hot(), 1.0F).build());
+		return new Item.Properties().food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().effect(hot(), 1.0F).build());
 	}
 
 	private static Supplier<MobEffectInstance> hot() {

@@ -37,7 +37,7 @@ public class ArrowBindPlant extends AbstractArrow {
 
 	@Override
 	public void tick() {
-		if (this.dealtDamage || this.inGroundTime > 2 || this.getY() < this.getLevel().getMinBuildHeight() || this.isInLava()) {
+		if (this.dealtDamage || this.inGroundTime > 2 || this.getY() < this.level().getMinBuildHeight() || this.isInLava()) {
 			this.discard();
 		}
 		super.tick();
@@ -64,11 +64,11 @@ public class ArrowBindPlant extends AbstractArrow {
 			LivingEntity liv = (LivingEntity) entity;
 
 			this.dealtDamage = true;
-			if (liv != null && !level.isClientSide) {
+			if (liv != null && !level().isClientSide) {
 				if (liv.getVehicle() != null) {
 					liv.removeVehicle();
 				}
-				ChairEntity bind = MagicInit.BIND_PLANT_ENTITY.get().create(level);
+				ChairEntity bind = MagicInit.BIND_PLANT_ENTITY.get().create(level());
 				bind.setPos(liv.position());
 				bind.setDeltaMovement(0D, 0D, 0D);
 				bind.setMaxAge(maxAge);
@@ -76,7 +76,7 @@ public class ArrowBindPlant extends AbstractArrow {
 					bind.setOwner(player.getUUID());
 				}
 				liv.startRiding(bind);
-				level.addFreshEntity(bind);
+				level().addFreshEntity(bind);
 			}
 
 			this.playSound(this.getHitGroundSoundEvent(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));

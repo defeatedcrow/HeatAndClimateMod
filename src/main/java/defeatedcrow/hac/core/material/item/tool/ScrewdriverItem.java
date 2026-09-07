@@ -16,7 +16,8 @@ import net.minecraft.world.level.BlockGetter;
 public class ScrewdriverItem extends CraftingItemDC {
 
 	public ScrewdriverItem(String n) {
-		super(n, new Item.Properties().tab(CoreInit.MACHINE).stacksTo(1), TagDC.ItemTag.CRAFT_DRIVER);
+		super(n, new Item.Properties().stacksTo(1), TagDC.ItemTag.CRAFT_DRIVER);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	@Override

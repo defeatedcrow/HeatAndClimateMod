@@ -2,6 +2,8 @@ package defeatedcrow.hac.core;
 
 import java.io.File;
 import java.nio.file.Path;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.core.advancement.AdvancementProviderDC;
@@ -18,6 +20,7 @@ import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.config.ConfigServerBuilder;
 import defeatedcrow.hac.core.json.TileNBTFunction;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.material.tabs.CreativeTabDC;
 import defeatedcrow.hac.core.network.packet.DCPacket;
 import defeatedcrow.hac.core.recipe.MaterialRecipes;
 import defeatedcrow.hac.core.recipe.vanilla.VanillaRecipeProvider;
@@ -33,7 +36,10 @@ import defeatedcrow.hac.magic.material.MagicInit;
 import defeatedcrow.hac.magic.material.entity.CrowTurretEntity;
 import defeatedcrow.hac.magic.recipe.MagicRecipeProvider;
 import defeatedcrow.hac.plugin.PluginDC;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -94,6 +100,7 @@ public class ClimateCore {
 		final IEventBus bus = FMLJavaModLoadingContext.get()
 		    .getModEventBus();
 		CoreInit.BLOCKS.register(bus);
+		CoreInit.TABS.register(bus);
 		CoreInit.BLOCK_ENTITIES.register(bus);
 		CoreInit.ITEMS.register(bus);
 		CoreInit.FLUID_TYPES.register(bus);
@@ -116,6 +123,7 @@ public class ClimateCore {
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
 		bus.addListener(this::attributeRegister);
+		bus.addListener(CreativeTabDC::fillTab);
 
 		proxy.addListener(bus);
 
@@ -153,19 +161,21 @@ public class ClimateCore {
 
 	public void gatherData(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
+		PackOutput output = generator.getPackOutput();
+		CompletableFuture<HolderLookup.Provider> lookup = event.getLookupProvider();
 		ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-		BlockTagProviderDC blockTag = new BlockTagProviderDC(generator, existingFileHelper);
+		BlockTagProviderDC blockTag = new BlockTagProviderDC(output, lookup, existingFileHelper);
 		generator.addProvider(event.includeServer(), blockTag);
-		generator.addProvider(event.includeServer(), new ItemTagProviderDC(generator, blockTag, existingFileHelper));
-		generator.addProvider(event.includeServer(), new BiomeTagProviderDC(generator, existingFileHelper));
-		generator.addProvider(event.includeServer(), new FluidTagProviderDC(generator, existingFileHelper));
+		generator.addProvider(event.includeServer(), new ItemTagProviderDC(output, lookup, blockTag.contentsGetter(), existingFileHelper));
+		generator.addProvider(event.includeServer(), new BiomeTagProviderDC(output, lookup, existingFileHelper));
+		generator.addProvider(event.includeServer(), new FluidTagProviderDC(output, lookup, existingFileHelper));
 
-		generator.addProvider(event.includeServer(), new VanillaRecipeProvider(generator));
-		generator.addProvider(event.includeServer(), new FoodRecipeProvider(generator));
-		generator.addProvider(event.includeServer(), new MagicRecipeProvider(generator));
-		generator.addProvider(event.includeServer(), new MachineRecipeProvider(generator));
+		generator.addProvider(event.includeServer(), new VanillaRecipeProvider(output));
+		generator.addProvider(event.includeServer(), new FoodRecipeProvider(output));
+		generator.addProvider(event.includeServer(), new MagicRecipeProvider(output));
+		generator.addProvider(event.includeServer(), new MachineRecipeProvider(output));
 
-		generator.addProvider(event.includeServer(), new AdvancementProviderDC(generator, existingFileHelper));
+		generator.addProvider(event.includeServer(), new AdvancementProvider(output, lookup, List.of(new AdvancementProviderDC())));
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {

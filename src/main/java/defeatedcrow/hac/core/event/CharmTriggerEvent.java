@@ -28,8 +28,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -52,8 +54,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.Tags;
@@ -114,7 +116,7 @@ public class CharmTriggerEvent {
 		boolean b1 = false;
 		float dif = 1.0F;
 
-		if (source == DamageSource.WITHER || source == DamageSource.MAGIC) {
+		if (source.is(DamageTypes.WITHER) || source.is(DamageTypes.MAGIC)) {
 			if (MagicUtil.hasHandCharms(living, new ItemStack(MagicInit.BRACELET_SILVER_GREEN.get()))) {
 				living.heal(amount);
 				event.setCanceled(true);
@@ -122,7 +124,7 @@ public class CharmTriggerEvent {
 			}
 		}
 
-		if (source == DamageSource.LIGHTNING_BOLT) {
+		if (source.is(DamageTypes.LIGHTNING_BOLT)) {
 			if (!DCUtil.isEmpty(living.getMainHandItem())) {
 				if (living.getMainHandItem()
 				    .getItem() == MagicInit.ROD_RED.get()) {
@@ -173,14 +175,14 @@ public class CharmTriggerEvent {
 				SimpleEntry<Integer, ItemStack> coil = DCItemUtil.getItem(player, Ingredient.of(CoreInit.COIL_CASE.get()));
 				if (!coil.getValue()
 				    .isEmpty()) {
-					if (!living.level.isClientSide && coil.getValue()
+					if (!living.level().isClientSide && coil.getValue()
 					    .hurt(1, living.getRandom(), null)) {
 						player.getInventory()
 						    .setItem(coil.getKey(), new ItemStack(CoreInit.EMPTY_COIL_CASE.get()));
 						player.getInventory()
 						    .setChanged();
 					}
-					attacker.hurt(DamageSource.playerAttack(player), 20F);
+					attacker.hurt(player.level().damageSources().playerAttack(player), 20F);
 					event.setAmount(0F);
 
 					if (player != null && attacker instanceof Phantom) {
@@ -194,7 +196,7 @@ public class CharmTriggerEvent {
 
 		// potion
 		float f2 = 1.0F;
-		if (source.isProjectile()) {
+		if (source.is(DamageTypeTags.IS_PROJECTILE)) {
 			if (living.hasEffect(CoreInit.PROJ_RESISTANCE.get())) {
 				MobEffectInstance eff = living.getEffect(CoreInit.PROJ_RESISTANCE.get());
 				f2 = 1F - eff.getAmplifier() * 0.20F;
@@ -203,13 +205,13 @@ public class CharmTriggerEvent {
 			}
 		}
 
-		if (source.isExplosion() || source.isDamageHelmet()) {
+		if (source.is(DamageTypeTags.IS_EXPLOSION) || source.is(DamageTypeTags.DAMAGES_HELMET)) {
 			if (DCItemUtil.isWearArmorItem(CoreInit.HAT_SAFETY.get(), living, EquipmentSlot.HEAD)) {
 				f2 *= 0.5F;
 			}
 		}
 
-		if (source == DamageSource.FREEZE) {
+		if (source.is(DamageTypes.FREEZE)) {
 			float armor = DCItemUtil.getArmorResistant(living, true);
 			if (armor > 1.0F) {
 				amount -= armor;
@@ -224,13 +226,13 @@ public class CharmTriggerEvent {
 			}
 		}
 
-		if (source == DamageSource.CACTUS || source == DamageSource.HOT_FLOOR || source == DamageSource.SWEET_BERRY_BUSH) {
+		if (source.is(DamageTypes.CACTUS) || source.is(DamageTypes.HOT_FLOOR) || source.is(DamageTypes.SWEET_BERRY_BUSH)) {
 			if (DCItemUtil.isWearArmorItem(CoreInit.BOOTS_SAFETY.get(), living, EquipmentSlot.FEET)) {
 				f2 = 0F;
 			}
 		}
 
-		if (source.isFall()) {
+		if (source.is(DamageTypeTags.IS_FALL)) {
 			if (living.hasEffect(CoreInit.BIRD.get()) || living.hasEffect(MobEffects.JUMP) || MagicUtil.hasHandCharms(living, new ItemStack(MagicInit.BRACELET_SILVER_RED.get()))) {
 				f2 = 0F;
 			}
@@ -265,7 +267,7 @@ public class CharmTriggerEvent {
 				ItemStack item = player.getInventory()
 				    .getItem(i);
 				if (!item.isEmpty()) {
-					if (!player.level.isClientSide && item.getItem() instanceof InertElementItem element) {
+					if (!player.level().isClientSide && item.getItem() instanceof InertElementItem element) {
 						if (element.isSuitablePlace(player) && element.charge(v, item) && element.getActivatedElement()
 						    .get() != Items.AIR) {
 							player.getInventory()
@@ -326,9 +328,9 @@ public class CharmTriggerEvent {
 			    .getString()
 			    .contains("defeatedcrow")) {
 				ItemStack chicken = new ItemStack(FoodInit.STICK_CHICKEN_COOKED.get());
-				ItemEntity drop = new ItemEntity(living.getLevel(), living.getX(), living.getEyeY(), living.getZ(), chicken);
+				ItemEntity drop = new ItemEntity(living.level(), living.getX(), living.getEyeY(), living.getZ(), chicken);
 				drop.setDefaultPickUpDelay();
-				living.getLevel()
+				living.level()
 				    .addFreshEntity(drop);
 			}
 		}
@@ -339,7 +341,7 @@ public class CharmTriggerEvent {
 		Player player = event.getPlayer();
 		BlockState state = event.getState();
 		BlockPos pos = event.getPos();
-		Level level = player.level;
+		Level level = player.level();
 		if (level.isClientSide || player.isCrouching() || !level.getGameRules()
 		    .getBoolean(GameRules.RULE_DOBLOCKDROPS))
 			return;
@@ -369,7 +371,7 @@ public class CharmTriggerEvent {
 			set.forEach(p2 -> {
 				BlockState s2 = level.getBlockState(p2);
 				BlockEntity e2 = level.getBlockEntity(p2);
-				LootContext.Builder builder = new LootContext.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
+				LootParams.Builder builder = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
 				    .withParameter(LootContextParams.BLOCK_STATE, s2)
 				    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2)
 				    .withOptionalParameter(LootContextParams.THIS_ENTITY, player)
@@ -401,7 +403,7 @@ public class CharmTriggerEvent {
 				targetPosList.forEach(p2 -> {
 					BlockState s2 = level.getBlockState(p2);
 					BlockEntity e2 = level.getBlockEntity(p2);
-					LootContext.Builder builder = new LootContext.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
+					LootParams.Builder builder = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
 					    .withParameter(LootContextParams.BLOCK_STATE, s2)
 					    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2)
 					    .withOptionalParameter(LootContextParams.THIS_ENTITY, player)
@@ -454,7 +456,7 @@ public class CharmTriggerEvent {
 	}
 
 	private static boolean CollectBlackList(BlockState state) {
-		return state.getMaterial() == Material.GRASS || state.is(BlockTags.DIRT) || state.is(Tags.Blocks.STONE) || state.is(Tags.Blocks.SAND);
+		return state.is(Blocks.GRASS_BLOCK) || state.is(BlockTags.DIRT) || state.is(Tags.Blocks.STONE) || state.is(Tags.Blocks.SAND);
 	}
 
 	@SubscribeEvent
@@ -479,7 +481,7 @@ public class CharmTriggerEvent {
 			BlockPos pos = event.getPos();
 			Direction dir = event.getFace();
 			if (!DCUtil.isEmpty(held) && held.getItem() instanceof RodBlack rod) {
-				if (player.getLevel() instanceof ServerLevel level) {
+				if (player.level() instanceof ServerLevel level) {
 					rod.onBlockHit(level, player, event.getHand(), held, pos, dir);
 				}
 				event.setCanceled(true);

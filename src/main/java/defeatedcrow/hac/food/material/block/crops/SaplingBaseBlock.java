@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.PlantType;
@@ -109,7 +110,7 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		ret.add(new ItemStack(this));
 		return ret;
@@ -168,8 +169,7 @@ public abstract class SaplingBaseBlock extends ClimateCropBaseBlock {
 	protected static boolean replaceCheck(Level level, BlockPos pos, int height) {
 		for (int i = 1; i < height; i++) {
 			if (!level.getBlockState(pos.above(i))
-			    .getMaterial()
-			    .isReplaceable()
+			    .canBeReplaced()
 			    && !level.getBlockState(pos.above(i))
 			        .is(BlockTags.LEAVES))
 				return true;

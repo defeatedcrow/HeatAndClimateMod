@@ -42,7 +42,7 @@ public class ArrowRobber extends AbstractArrow {
 
 	@Override
 	public void tick() {
-		if (this.dealtDamage || this.inGroundTime > 2 || this.getY() < this.getLevel().getMinBuildHeight() || this.isInLava()) {
+		if (this.dealtDamage || this.inGroundTime > 2 || this.getY() < this.level().getMinBuildHeight() || this.isInLava()) {
 			this.discard();
 		}
 		super.tick();
@@ -93,18 +93,18 @@ public class ArrowRobber extends AbstractArrow {
 				if (list.size() > 0) {
 					if (list.size() == 1) {
 						ItemStack item = liv.getItemBySlot(list.get(0));
-						if (!level.isClientSide && !item.isEmpty()) {
-							ItemEntity drop = new ItemEntity(level, liv.position().x, liv.position().y + 0.1D, liv.position().z, item.copy());
-							level.addFreshEntity(drop);
+			if (!level().isClientSide && !item.isEmpty()) {
+				ItemEntity drop = new ItemEntity(level(), liv.position().x, liv.position().y + 0.1D, liv.position().z, item.copy());
+				level().addFreshEntity(drop);
 							liv.setItemSlot(list.get(0), ItemStack.EMPTY);
 						}
 					} else {
 						Collections.shuffle(list);
 						for (int c = 0; c < count; c++) {
 							ItemStack item = liv.getItemBySlot(list.get(c));
-							if (!level.isClientSide && !item.isEmpty()) {
-								ItemEntity drop = new ItemEntity(level, liv.position().x, liv.position().y + 0.1D, liv.position().z, item.copy());
-								level.addFreshEntity(drop);
+							if (!level().isClientSide && !item.isEmpty()) {
+								ItemEntity drop = new ItemEntity(level(), liv.position().x, liv.position().y + 0.1D, liv.position().z, item.copy());
+								level().addFreshEntity(drop);
 								liv.setItemSlot(list.get(c), ItemStack.EMPTY);
 							}
 						}

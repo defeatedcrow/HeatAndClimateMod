@@ -29,8 +29,7 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -45,7 +44,7 @@ public class ItemAspiratorBlock extends RedstoneMachineBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).strength(0.5F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.5F, 540.0F).noOcclusion();
 	}
 
 	@Override
@@ -84,7 +83,7 @@ public class ItemAspiratorBlock extends RedstoneMachineBlock {
 									}
 									return target == null || !target.isAlive() || target.getItem().isEmpty();
 								}).orElse(false);
-								if (!flag && !level.getBlockState(pos.relative(dir.getOpposite())).getMaterial().blocksMotion()) {
+								if (!flag && !level.getBlockState(pos.relative(dir.getOpposite())).blocksMotion()) {
 									target.moveTo(Vec3.atCenterOf(pos.relative(dir.getOpposite())));
 								}
 							}

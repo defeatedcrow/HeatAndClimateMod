@@ -1,8 +1,11 @@
 package defeatedcrow.hac.core.tag;
 
+import java.util.concurrent.CompletableFuture;
+
 import org.jetbrains.annotations.Nullable;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.tags.BiomeTags;
 import net.minecraftforge.common.Tags;
@@ -10,13 +13,13 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class BiomeTagProviderDC extends BiomeTagsProvider {
 
-	public BiomeTagProviderDC(DataGenerator gen, @Nullable ExistingFileHelper helper) {
-		super(gen, "dcs_climate", helper);
+	public BiomeTagProviderDC(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup, @Nullable ExistingFileHelper helper) {
+		super(output, lookup, "dcs_climate", helper);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected void addTags() {
+	protected void addTags(HolderLookup.Provider provider) {
 
 		tag(TagDC.BiomeTag.WHITE_BIOME).addTags(Tags.Biomes.IS_PLAINS, Tags.Biomes.IS_SPARSE, BiomeTags.IS_SAVANNA);
 		tag(TagDC.BiomeTag.BLUE_BIOME).addTags(Tags.Biomes.IS_COLD, BiomeTags.IS_TAIGA, BiomeTags.IS_HILL, Tags.Biomes.IS_CONIFEROUS);

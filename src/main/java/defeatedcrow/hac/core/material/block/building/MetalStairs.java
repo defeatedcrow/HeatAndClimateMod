@@ -38,8 +38,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -66,7 +65,7 @@ public class MetalStairs extends BlockDC implements SimpleWaterloggedBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).sound(SoundType.METAL).strength(3.0F, 30.0F).noOcclusion();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.METAL).strength(3.0F, 30.0F).noOcclusion();
 	}
 
 	@Override
@@ -101,19 +100,19 @@ public class MetalStairs extends BlockDC implements SimpleWaterloggedBlock {
 					BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
 					mpos.setWithOffset(pos, 0, -1, 0);
 					mpos.move(dir.getOpposite());
-					if (level.getBlockState(mpos).getMaterial().isReplaceable()) {
+					if (level.getBlockState(mpos).canBeReplaced()) {
 						next = pos.below().relative(dir.getOpposite());
 					}
 				} else {
 					BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
 					mpos.setWithOffset(pos, 0, 1, 0);
 					mpos.move(dir);
-					if (level.getBlockState(mpos).getMaterial().isReplaceable()) {
+					if (level.getBlockState(mpos).canBeReplaced()) {
 						next = pos.above().relative(dir);
 					}
 				}
 				if (!next.equals(pos)) {
-					boolean top = level.getBlockState(next.above()).getMaterial().isReplaceable();
+					boolean top = level.getBlockState(next.above()).canBeReplaced();
 					boolean clamp = level.getBlockState(next.relative(dir)).isFaceSturdy(level, pos.relative(dir), dir.getOpposite());
 					FluidState fluidstate = level.getFluidState(next);
 					BlockState place = this.defaultBlockState().setValue(DCState.FACING, dir).setValue(WATERLOGGED, Boolean.valueOf(fluidstate

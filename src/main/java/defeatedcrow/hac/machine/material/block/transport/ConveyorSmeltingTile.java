@@ -57,7 +57,7 @@ public class ConveyorSmeltingTile extends ConveyorTile {
 					SmeltingRecipe recipe = quickCheck.getRecipeFor(getInventory(), getLevel()).orElse(null);
 					if (recipe != null && DCHeatTier.smeltingTemp().contains(sup.get().getHeat()) && DCHumidity.notWet().contains(sup.get().getHumidity())
 							&& DCAirflow.underRoofs().contains(sup.get().getAirflow())) {
-						ItemStack output = recipe.assemble(getInventory());
+						ItemStack output = recipe.assemble(getInventory(), getLevel().registryAccess());
 						if (!DCUtil.isEmpty(output)) {
 							getLevel().playSound(null, getBlockPos(), SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 0.8F, 1.5F);
 							this.getInventory().setItem(0, output);

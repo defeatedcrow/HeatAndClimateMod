@@ -79,9 +79,9 @@ public class ThrownHarpoon extends AbstractArrow {
 	}
 
 	public void dropItem(Vec3 pos) {
-		if (!level.isClientSide && !getItem().isEmpty()) {
-			ItemEntity drop = new ItemEntity(level, pos.x, pos.y + 0.1D, pos.z, this.getPickupItem());
-			level.addFreshEntity(drop);
+			if (!level().isClientSide && !getItem().isEmpty()) {
+			ItemEntity drop = new ItemEntity(level(), pos.x, pos.y + 0.1D, pos.z, this.getPickupItem());
+			level().addFreshEntity(drop);
 		}
 	}
 
@@ -124,13 +124,13 @@ public class ThrownHarpoon extends AbstractArrow {
 				// ワープさせる
 				if (owner != null && this.isAcceptibleReturnOwner()) {
 					living.teleportTo(owner.getX(), owner.getY() + 0.015D, owner.getZ());
-					if (this.level.isClientSide) {
+					if (this.level().isClientSide) {
 						living.yOld = living.getY();
 					}
 				}
 			}
 
-			DamageSource damagesource = DamageSource.trident(this, owner == null ? this : owner);
+			DamageSource damagesource = this.level().damageSources().trident(this, owner == null ? this : owner);
 			SoundEvent soundevent = SoundEvents.TRIDENT_HIT;
 			if (entity.hurt(damagesource, f)) {
 				if (entity.getType() == EntityType.ENDERMAN) {

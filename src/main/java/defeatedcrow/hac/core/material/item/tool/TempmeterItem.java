@@ -29,7 +29,8 @@ import net.minecraft.world.phys.HitResult;
 public class TempmeterItem extends CraftingItemDC {
 
 	public TempmeterItem(String n) {
-		super(n, new Item.Properties().tab(CoreInit.MACHINE).stacksTo(1), TagDC.ItemTag.CRAFT_TEMPMETER);
+		super(n, new Item.Properties().stacksTo(1), TagDC.ItemTag.CRAFT_TEMPMETER);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	@Override

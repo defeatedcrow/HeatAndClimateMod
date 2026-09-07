@@ -14,6 +14,7 @@ import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import defeatedcrow.hac.food.material.block.crops.LeavesCropBlockDC;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.biome.Biome;
 
 public class PluginRecipeListDC {
@@ -256,7 +257,7 @@ public class PluginRecipeListDC {
 			FLUID_FUEL_LIST.addAll(DCRecipes.FLUID_FUEL.values());
 
 		if (BIOME_LIST.isEmpty() && ClimateCore.proxy.getClientLevel().isPresent()) {
-			Registry<Biome> biomeReg = ClimateCore.proxy.getClientLevel().get().registryAccess().registryOrThrow(Registry.BIOME_REGISTRY);
+			Registry<Biome> biomeReg = ClimateCore.proxy.getClientLevel().get().registryAccess().registryOrThrow(Registries.BIOME);
 			BIOME_LIST.addAll(biomeReg.stream().toList());
 		}
 	}

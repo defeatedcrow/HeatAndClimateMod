@@ -2,7 +2,7 @@ package defeatedcrow.hac.magic.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.core.client.entity.model.ChairBindModel;
@@ -43,12 +43,12 @@ public class RenderBindPlant extends EntityRenderer<ChairEntity> {
 			if (entity.getType() == MagicInit.BIND_ELECTRIC_ENTITY.get()) {
 				texName = "dcs_climate:textures/entity/magic/chair_electric_" + count + ".png";
 			}
-			ResourceLocation tex = ResourceLocation.parse(texName);
+			ResourceLocation tex = new ResourceLocation(texName);
 
 			poseStack.pushPose();
 			poseStack.translate(0F, 0.0F, 0F);
-			poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - yaw));
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+			poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - yaw));
+			poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
 			poseStack.scale(1.5F, 1.5F, 1.5F);
 			model.setupAnim(entity, 180.0F - yaw, partialTicks, packedLight, partialTicks, 0F);
 			VertexConsumer vertex = buffer.getBuffer(model.renderType(tex));

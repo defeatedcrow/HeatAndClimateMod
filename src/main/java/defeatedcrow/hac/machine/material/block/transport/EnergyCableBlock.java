@@ -147,7 +147,7 @@ public abstract class EnergyCableBlock extends EntityBlockDC {
 			if (state.is(TagDC.BlockTag.LEAKAGE_MACHINE)) {
 				int leakage = tile.getEnergyHandler().extractEnergy(320, false);
 				if (leakage >= 5) {
-					target.hurt(DamageSource.LIGHTNING_BOLT, leakage * 0.1F);
+					target.hurt(target.level().damageSources().lightningBolt(), leakage * 0.1F);
 					if (target instanceof Player player) {
 						ClimateCore.proxy.triggerAdvancement(player, "metal/cable_danger");
 					}

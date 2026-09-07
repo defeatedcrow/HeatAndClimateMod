@@ -38,7 +38,7 @@ public class ArrowWhite extends AbstractArrow {
 
 	@Override
 	public void tick() {
-		if (this.inGroundTime > 0 || this.getY() < this.getLevel().getMinBuildHeight() || this.isInLava()) {
+		if (this.inGroundTime > 0 || this.getY() < this.level().getMinBuildHeight() || this.isInLava()) {
 			this.dealtDamage = true;
 		}
 
@@ -64,21 +64,21 @@ public class ArrowWhite extends AbstractArrow {
 		super.onHitBlock(hit);
 		BlockPos pos = hit.getBlockPos();
 		Direction dir = hit.getDirection();
-		BlockState state = level.getBlockState(pos.relative(dir));
-		if (state.getMaterial().isReplaceable()) {
+		BlockState state = level().getBlockState(pos.relative(dir));
+		if (state.canBeReplaced()) {
 			BlockState light = MagicInit.SMALL_LIGHT.get().defaultBlockState().setValue(DCState.DIRECTION, dir.getOpposite());
-			level.setBlock(pos.relative(dir), light, 3);
+			level().setBlock(pos.relative(dir), light, 3);
 			this.putLight = true;
-			if (this.level.isClientSide && !this.inGround) {
-				this.level.addParticle(ParticleTypes.INSTANT_EFFECT, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+			if (this.level().isClientSide && !this.inGround) {
+				this.level().addParticle(ParticleTypes.INSTANT_EFFECT, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}
 
 	public void dropItem(Vec3 pos) {
-		if (!level.isClientSide && !getPickupItem().isEmpty()) {
-			ItemEntity drop = new ItemEntity(level, pos.x, pos.y + 0.1D, pos.z, this.getPickupItem());
-			level.addFreshEntity(drop);
+		if (!level().isClientSide && !getPickupItem().isEmpty()) {
+					ItemEntity drop = new ItemEntity(level(), pos.x, pos.y + 0.1D, pos.z, this.getPickupItem());
+			level().addFreshEntity(drop);
 		}
 	}
 

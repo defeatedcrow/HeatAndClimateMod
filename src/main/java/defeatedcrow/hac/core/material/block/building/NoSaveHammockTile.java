@@ -13,6 +13,6 @@ public class NoSaveHammockTile extends NoSaveBedTile {
 
 	@Override
 	public AABB getRenderBoundingBox() {
-		return new AABB(getBlockPos().offset(-2.25D, 0D, -2.25D), getBlockPos().offset(2.25D, 1D, 2.25D));
+		return new AABB(getBlockPos().getX() - 2.25D, getBlockPos().getY() + 0D, getBlockPos().getZ() - 2.25D, getBlockPos().getX() + 2.25D, getBlockPos().getY() + 1D, getBlockPos().getZ() + 2.25D);
 	}
 }

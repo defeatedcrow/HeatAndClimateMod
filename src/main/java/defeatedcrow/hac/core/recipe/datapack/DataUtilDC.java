@@ -46,7 +46,7 @@ public class DataUtilDC {
 			stack = net.minecraftforge.common.crafting.CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, key), true, true);
 		else if (json.has(key)) {
 			String s1 = GsonHelper.getAsString(json, key);
-			ResourceLocation res = ResourceLocation.parse(s1);
+			ResourceLocation res = new ResourceLocation(s1);
 			if (ForgeRegistries.ITEMS.containsKey(res))
 				stack = new ItemStack(ForgeRegistries.ITEMS.getValue(res));
 		}
@@ -60,7 +60,7 @@ public class DataUtilDC {
 			stack = net.minecraftforge.common.crafting.CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, key), true, true);
 		else if (json.has(key)) {
 			String s1 = GsonHelper.getAsString(json, key);
-			ResourceLocation res = ResourceLocation.parse(s1);
+			ResourceLocation res = new ResourceLocation(s1);
 			if (ForgeRegistries.ITEMS.containsKey(res))
 				stack = new ItemStack(ForgeRegistries.ITEMS.getValue(res));
 		}
@@ -73,7 +73,7 @@ public class DataUtilDC {
 		    .isJsonObject()) {
 			JsonObject obj = GsonHelper.getAsJsonObject(json, key);
 			String fluidName = GsonHelper.getAsString(obj, "fluid");
-			ResourceLocation res = ResourceLocation.parse(fluidName);
+			ResourceLocation res = new ResourceLocation(fluidName);
 			if (ForgeRegistries.FLUIDS.containsKey(res)) {
 				Fluid fluid = ForgeRegistries.FLUIDS.getValue(res);
 				int amo = GsonHelper.getAsInt(obj, "amount", 1000);

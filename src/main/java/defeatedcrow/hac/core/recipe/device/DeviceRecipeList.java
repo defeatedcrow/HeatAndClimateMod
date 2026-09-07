@@ -104,10 +104,10 @@ public class DeviceRecipeList {
 	public static void addRecipe(int id, RecipeTypeDC type, ItemStack output, ItemStack sec, int secRate, ItemStack ter, int terRate, FluidStack outF, List<DCHeatTier> heat, List<DCHumidity> hum, List<DCAirflow> air, List<String> inF,
 	    List<Ingredient> input) {
 		ResourceLocation res = DCUtil.getRes(output.getItem())
-		    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
+		    .orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
 		if (DCUtil.isEmpty(output)) {
 			res = DCUtil.getRes(outF.getFluid())
-			    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
+			    .orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
 		}
 		StringBuilder fName = new StringBuilder().append(type.toString())
 		    .append("_")

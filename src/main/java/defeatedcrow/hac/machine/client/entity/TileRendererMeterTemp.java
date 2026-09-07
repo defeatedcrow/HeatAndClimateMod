@@ -1,7 +1,7 @@
 package defeatedcrow.hac.machine.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.util.DCState;
@@ -81,8 +81,8 @@ public class TileRendererMeterTemp implements BlockEntityRenderer<MonitorTempTil
 
 			poseStack.pushPose();
 			poseStack.translate(0.5F, 0.5F, 0.5F);
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-			poseStack.mulPose(Vector3f.YP.rotationDegrees(dir.toYRot()));
+			poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+			poseStack.mulPose(Axis.YP.rotationDegrees(dir.toYRot()));
 			poseStack.scale(1F, 1F, 1F);
 
 			this.model.setupAnim(rot);

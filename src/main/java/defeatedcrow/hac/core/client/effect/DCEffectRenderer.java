@@ -4,10 +4,10 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.BufferUploader;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.math.Matrix4f;
+import net.minecraft.client.gui.GuiGraphics;
+import org.joml.Matrix4f;
 
 import defeatedcrow.hac.core.client.DCTexturePath;
 import defeatedcrow.hac.core.material.effects.MobEffectDC;
@@ -21,12 +21,12 @@ import net.minecraftforge.client.extensions.common.IClientMobEffectExtensions;
 public class DCEffectRenderer implements IClientMobEffectExtensions {
 
 	@Override
-	public boolean renderInventoryIcon(MobEffectInstance instance, EffectRenderingInventoryScreen<?> screen, PoseStack poseStack, int x, int y, int blit) {
+	public boolean renderInventoryIcon(MobEffectInstance instance, EffectRenderingInventoryScreen<?> screen, GuiGraphics graphics, int x, int y, int blit) {
 		MobEffect effect = instance.getEffect();
 		if (effect instanceof MobEffectDC) {
 			MobEffectDC dc = (MobEffectDC) effect;
 			RenderSystem.setShaderTexture(0, DCTexturePath.POTION.getLocation());
-			blit(poseStack.last().pose(), x, y + 8, blit, dc.getIconX(), dc.getIconY());
+			blit(graphics.pose().last().pose(), x, y + 8, blit, dc.getIconX(), dc.getIconY());
 			return true;
 		}
 
@@ -34,19 +34,19 @@ public class DCEffectRenderer implements IClientMobEffectExtensions {
 	}
 
 	@Override
-	public boolean renderInventoryText(MobEffectInstance instance, EffectRenderingInventoryScreen<?> screen, PoseStack poseStack, int x, int y, int blit) {
+	public boolean renderInventoryText(MobEffectInstance instance, EffectRenderingInventoryScreen<?> screen, GuiGraphics graphics, int x, int y, int blit) {
 		// TODO +10レベル以上の場合
 		return false;
 	}
 
 	@Override
-	public boolean renderGuiIcon(MobEffectInstance instance, Gui gui, PoseStack poseStack, int x, int y, float z, float alpha) {
+	public boolean renderGuiIcon(MobEffectInstance instance, Gui gui, GuiGraphics graphics, int x, int y, float z, float alpha) {
 		MobEffect effect = instance.getEffect();
 		if (effect instanceof MobEffectDC) {
 			MobEffectDC dc = (MobEffectDC) effect;
 			RenderSystem.setShaderTexture(0, DCTexturePath.POTION.getLocation());
 			RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, alpha);
-			blit(poseStack.last().pose(), x + 3, y + 3, z, dc.getIconX(), dc.getIconY());
+			blit(graphics.pose().last().pose(), x + 3, y + 3, z, dc.getIconX(), dc.getIconY());
 			return true;
 		}
 

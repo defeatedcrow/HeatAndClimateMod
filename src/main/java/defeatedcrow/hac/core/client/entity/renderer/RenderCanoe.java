@@ -5,6 +5,7 @@ import com.mojang.datafixers.util.Pair;
 import defeatedcrow.hac.core.client.entity.model.CanoeModel;
 import defeatedcrow.hac.core.material.item.tool.CanoeItem;
 import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.ListModel;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -22,7 +23,7 @@ public class RenderCanoe extends BoatRenderer {
 	}
 
 	@Override
-	public Pair<ResourceLocation, BoatModel> getModelWithLocation(Boat boat) {
+	public Pair<ResourceLocation, ListModel<Boat>> getModelWithLocation(Boat boat) {
 		return Pair.of(CanoeItem.KUKUI.getTextureLocation(), model);
 	}
 }

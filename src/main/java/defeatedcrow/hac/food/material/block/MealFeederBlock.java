@@ -47,8 +47,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -181,7 +180,7 @@ public class MealFeederBlock extends BlockDC {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(0.2F, 8.0F).sound(SoundType.WOOD).noOcclusion().randomTicks();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.2F, 8.0F).sound(SoundType.WOOD).noOcclusion().randomTicks();
 	}
 
 	@Override

@@ -22,8 +22,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 public class LockerBlock extends ContainerTileBlock {
 
@@ -35,7 +34,7 @@ public class LockerBlock extends ContainerTileBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_GRAY).strength(0.1F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(0.1F, 540.0F).noOcclusion();
 	}
 
 	@Override

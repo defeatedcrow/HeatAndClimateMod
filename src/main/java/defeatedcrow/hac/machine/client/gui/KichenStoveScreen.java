@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -34,7 +34,7 @@ public class KichenStoveScreen extends AbstractContainerScreen<KichenStoveMenu> 
 	}
 
 	@Override
-	public void render(PoseStack pose, int mx, int my, float f) {
+	public void render(GuiGraphics pose, int mx, int my, float f) {
 		this.renderBackground(pose);
 		super.render(pose, mx, my, f);
 		this.renderTooltip(pose, mx, my);
@@ -75,29 +75,29 @@ public class KichenStoveScreen extends AbstractContainerScreen<KichenStoveMenu> 
 			list.add(Component.translatable("dcs.tip.device.energy.rs")
 			    .append(s));
 		}
-		this.renderComponentTooltip(pose, list, mx, my);
+		pose.renderComponentTooltip(this.font, list, mx, my);
 	}
 
 	@Override
-	protected void renderBg(PoseStack pose, float f, int mx, int my) {
+	protected void renderBg(GuiGraphics pose, float f, int mx, int my) {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, DCTexturePath.GUI_CHAMBER_KICHEN.getLocation());
 		int i = (this.width - this.imageWidth) / 2;
 		int j = (this.height - this.imageHeight) / 2;
-		this.blit(pose, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		pose.blit(DCTexturePath.GUI_CHAMBER_KICHEN.getLocation(), i, j, 0, 0, this.imageWidth, this.imageHeight);
 
 		boolean lock = this.getMenu()
 		    .getContainer()
 		    .isLocked();
 		if (lock) {
-			this.blit(pose, i + 156, j + 3, 176, 21, 12, 21);
+			pose.blit(DCTexturePath.GUI_CHAMBER_KICHEN.getLocation(), i + 156, j + 3, 176, 21, 12, 21);
 		} else {
-			this.blit(pose, i + 156, j + 3, 176, 0, 12, 21);
+			pose.blit(DCTexturePath.GUI_CHAMBER_KICHEN.getLocation(), i + 156, j + 3, 176, 0, 12, 21);
 		}
 
 		int airID = Math.min(3, this.menu.getAirID());
-		this.blit(pose, i + 7, j + 28, 176, 56 + airID * 14, 14, 14);
+		pose.blit(DCTexturePath.GUI_CHAMBER_KICHEN.getLocation(), i + 7, j + 28, 176, 56 + airID * 14, 14, 14);
 
 		int tempID = this.menu.getTempID();
 		if (tempID > DCHeatTier.OVEN.getID()) {
@@ -105,21 +105,21 @@ public class KichenStoveScreen extends AbstractContainerScreen<KichenStoveMenu> 
 			if (tempID > DCHeatTier.SMELTING.getID()) {
 				aj = 14;
 			}
-			this.blit(pose, i + 83, j + 27, 190, aj, 43, 14);
+			pose.blit(DCTexturePath.GUI_CHAMBER_KICHEN.getLocation(), i + 83, j + 27, 190, aj, 43, 14);
 		}
 
 		if (this.menu.isRS()) {
-			this.blit(pose, i + 130, j + 46, 176, 112, 10, 10);
+			pose.blit(DCTexturePath.GUI_CHAMBER_KICHEN.getLocation(), i + 130, j + 46, 176, 112, 10, 10);
 		}
 
 		int l = this.menu.getBurnProgress();
 		if (l > 0)
-			this.blit(pose, i + 98, j + 42 + l, 176, 42 + l, 14, 14 - l);
+			pose.blit(DCTexturePath.GUI_CHAMBER_KICHEN.getLocation(), i + 98, j + 42 + l, 176, 42 + l, 14, 14 - l);
 
 		if (!this.menu.getFluid()
 		    .isEmpty()) {
 			if (l > 0) {
-				this.blit(pose, i + 73, j + 57, 190, 28, 40, 5);
+				pose.blit(DCTexturePath.GUI_CHAMBER_KICHEN.getLocation(), i + 73, j + 57, 190, 28, 40, 5);
 			}
 
 			int amo = this.menu.getFluidGauge();

@@ -23,8 +23,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 
@@ -71,16 +71,16 @@ public class SilkySmallBombEntity extends OwnableMagicEntity {
 
 			this.move(MoverType.SELF, this.getDeltaMovement());
 			this.setDeltaMovement(this.getDeltaMovement().scale(0.98D));
-			if (this.onGround) {
+			if (this.onGround()) {
 				this.setDeltaMovement(this.getDeltaMovement().multiply(0.7D, -0.5D, 0.7D));
 			}
 
 		}
-		if (this.level.isClientSide) {
+		if (this.level().isClientSide) {
 			if (count > 0) {
 				count--;
 			}
-		} else if (level instanceof ServerLevel sl) {
+		} else if (this.level() instanceof ServerLevel sl) {
 			if (count > 0) {
 				if (count == 75)
 					MsgEffectToC.sendToClient(sl, this.position(), 66);
@@ -101,17 +101,17 @@ public class SilkySmallBombEntity extends OwnableMagicEntity {
 					int minY = this.blockPosition().getY() - size;
 					BlockPos.betweenClosedStream(minX, minY + y, minZ, maxX, minY + y, maxZ)
 							.filter(p -> p.getY() > sl.getMinBuildHeight() && p.getY() < sl.getMaxBuildHeight())
-							.filter(p -> sl.getBlockState(p).getMaterial() != Material.AIR)
+							.filter(p -> !sl.getBlockState(p).isAir())
 							.filter(p -> !sl.getBlockState(p).hasBlockEntity())
 							.forEach((p2) -> {
 								BlockState state = sl.getBlockState(p2);
-								if (state.getMaterial().isLiquid()) {
+								if (state.liquid()) {
 									sl.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
 									checkAroundFluid(sl, p2, minX, maxX, minZ, maxZ);
 								} else if (!state.is(BlockTags.FEATURES_CANNOT_REPLACE)) {
 									checkAroundFluid(sl, p2, minX, maxX, minZ, maxZ);
 									BlockEntity be = sl.getBlockEntity(p2);
-									LootContext.Builder builder = (new LootContext.Builder(sl))
+									LootParams.Builder builder = (new LootParams.Builder(sl))
 											.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
 											.withParameter(LootContextParams.BLOCK_STATE, state)
 											.withOptionalParameter(LootContextParams.BLOCK_ENTITY, be)
@@ -151,8 +151,8 @@ public class SilkySmallBombEntity extends OwnableMagicEntity {
 	private void checkFluid(ServerLevel level, BlockPos pos) {
 		if (level.isLoaded(pos)) {
 			BlockState state = level.getBlockState(pos);
-			if (state.getMaterial().isReplaceable() && !state.getFluidState().isEmpty()) {
-				if (state.getMaterial() == Material.LAVA) {
+			if (state.canBeReplaced() && !state.getFluidState().isEmpty()) {
+				if (state.is(Blocks.LAVA)) {
 					level.setBlock(pos, Blocks.STONE.defaultBlockState(), 2);
 				} else {
 					level.setBlock(pos, Blocks.GLASS.defaultBlockState(), 2);

@@ -13,6 +13,7 @@ import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.inventory.TransientCraftingContainer;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.RecipeBookMenu;
 import net.minecraft.world.inventory.RecipeBookType;
@@ -27,7 +28,7 @@ import net.minecraft.world.level.Level;
 
 public class KichenBenchMenu extends RecipeBookMenu<CraftingContainer> {
 
-	private final CraftingContainer craftSlots = new CraftingContainer(this, 3, 3);
+	private final CraftingContainer craftSlots = new TransientCraftingContainer(this, 3, 3);
 	private final ResultContainer resultSlots = new ResultContainer();
 	private final ContainerLevelAccess access;
 	private final Player player;
@@ -95,7 +96,7 @@ public class KichenBenchMenu extends RecipeBookMenu<CraftingContainer> {
 			if (optional.isPresent()) {
 				CraftingRecipe craftingrecipe = optional.get();
 				if (slot.setRecipeUsed(level, serverplayer, craftingrecipe)) {
-					itemstack = craftingrecipe.assemble(cont);
+					itemstack = craftingrecipe.assemble(cont, level.registryAccess());
 				}
 			}
 
@@ -128,7 +129,7 @@ public class KichenBenchMenu extends RecipeBookMenu<CraftingContainer> {
 
 	@Override
 	public boolean recipeMatches(Recipe<? super CraftingContainer> recipe) {
-		return recipe.matches(this.craftSlots, this.player.level);
+		return recipe.matches(this.craftSlots, this.player.level());
 	}
 
 	@Override

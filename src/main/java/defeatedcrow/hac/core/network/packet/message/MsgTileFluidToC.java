@@ -84,7 +84,7 @@ public class MsgTileFluidToC implements IPacketDC {
 		if (level != null) {
 			MsgTileFluidToC packet = new MsgTileFluidToC(pos, fluids);
 			level.players().forEach(player -> {
-				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
 			});
 		}
 	}

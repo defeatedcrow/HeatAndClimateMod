@@ -2,7 +2,7 @@ package defeatedcrow.hac.magic.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.magic.client.model.SilkyBombModel;
@@ -32,8 +32,8 @@ public class RenderSilkySmallBomb extends EntityRenderer<SilkySmallBombEntity> {
 		if (entity != null) {
 			poseStack.pushPose();
 			poseStack.translate(0F, 0F, 0F);
-			poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - yaw));
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+			poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - yaw));
+			poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
 			float i = 0.5F + entity.getSize() * 0.25F;
 			int f = entity.getCount();
 			float scale = 1.0F;

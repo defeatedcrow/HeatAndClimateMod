@@ -67,7 +67,7 @@ public class MsgTileSimpleIntegerToC implements IPacketDC {
 		if (level != null && level instanceof ServerLevel) {
 			MsgTileSimpleIntegerToC packet = new MsgTileSimpleIntegerToC(pos, i);
 			level.players().forEach(player -> {
-				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
 			});
 		}
 	}

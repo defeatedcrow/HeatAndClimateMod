@@ -33,6 +33,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -57,9 +58,10 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -89,12 +91,12 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	/* 基本データ */
 	protected static BlockBehaviour.Properties getProp(CropTier t) {
-		return BlockBehaviour.Properties.of(Material.PLANT)
+		return BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
 		    .noCollission()
 		    .randomTicks()
 		    .instabreak()
 		    .sound(SoundType.CROP)
-		    .offsetType(state -> !DCState.getBool(state, DCState.WILD) && state.getBlock() instanceof CropBaseVine ? OffsetType.NONE : OffsetType.XZ);
+		    .offsetType(OffsetType.XZ);
 	}
 
 	@Override
@@ -120,7 +122,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		CropStage stage = getCurrentStage(state);
 
 		int count = this.getContinuousRegistance(getTier());
-		if (ConfigCommonBuilder.INSTANCE.enContinuousFailure.get() && state.getMaterial() != Material.LEAVES && count < 5 && count > 0) {
+		if (ConfigCommonBuilder.INSTANCE.enContinuousFailure.get() && !state.is(BlockTags.LEAVES) && count < 5 && count > 0) {
 			if (level.getRandom()
 			    .nextInt(count + 1) == 0) {
 				if (stage == CropStage.DEAD) {
@@ -241,25 +243,25 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (state == null || builder == null) {
 			ret.addAll(super.getDrops(state, builder));
 		} else if (state.getBlock() instanceof IClimateCrop) {
-			LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state)
+			LootParams cont = builder.withParameter(LootContextParams.BLOCK_STATE, state)
 			    .create(LootContextParamSets.BLOCK);
 			IClimateCrop crop = (IClimateCrop) state.getBlock();
 			ServerLevel level = cont.getLevel();
 			ItemStack tool = ItemStack.EMPTY;
 			if (cont.hasParam(LootContextParams.TOOL) && !DCUtil.isEmpty(cont.getParamOrNull(LootContextParams.TOOL))) {
-				tool = cont.getParam(LootContextParams.TOOL);
+				tool = cont.getParameter(LootContextParams.TOOL);
 			}
 
 			CropStage stage = crop.getCurrentStage(state);
 			CropTier tier = crop.getTier();
 
 			float seedChance = 0.4F + stage.id * 0.2F;
-			if (!tool.isEmpty() && tool.is(Tags.Items.TOOLS_HOES)) {
+			if (!tool.isEmpty() && tool.is(ItemTags.HOES)) {
 				seedChance = 1.0F;
 			}
 			if (DCState.getBool(state, DCState.WILD) || level.random.nextFloat() <= seedChance) {
@@ -379,7 +381,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	/* Bonemeal */
 
 	@Override
-	public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean b) {
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean b) {
 		CropStage stage = this.getCurrentStage(state);
 		return stage.canUseBonemeal();
 	}

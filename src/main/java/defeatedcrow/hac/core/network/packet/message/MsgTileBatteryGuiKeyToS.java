@@ -67,23 +67,23 @@ public class MsgTileBatteryGuiKeyToS implements IPacketDC {
 		if (ctx.getSender() != null && ctx.getSender().getUUID().equals(id)) {
 			ServerPlayer player = ctx.getSender();
 			BlockPos pos = new BlockPos(x, y, z);
-			BlockEntity entity = player.getLevel().getBlockEntity(pos);
+			BlockEntity entity = player.level().getBlockEntity(pos);
 			if (entity instanceof EnergyMachineBaseDC tile) {
 				if (button >= 0 && button < 6) {
 					Direction dir = Direction.from3DDataValue(button);
 					tile.getEnergyHandler().switchFace(dir);
-					player.getLevel().updateNeighborsAt(pos, player.getLevel().getBlockState(pos).getBlock());
-					player.getLevel().updateNeighborsAt(pos.relative(dir), player.getLevel().getBlockState(pos).getBlock());
+					player.level().updateNeighborsAt(pos, player.level().getBlockState(pos).getBlock());
+					player.level().updateNeighborsAt(pos.relative(dir), player.level().getBlockState(pos).getBlock());
 				} else {
-					BlockState state = player.getLevel().getBlockState(pos);
+					BlockState state = player.level().getBlockState(pos);
 					boolean b = DCState.getBool(state, DCState.FLAG);
-					EnergyMachineBlock.changePowerState(player.getLevel(), pos, !b);
+					EnergyMachineBlock.changePowerState(player.level(), pos, !b);
 				}
 			}
 			if (entity instanceof ProcessTileBaseDC tile && button > 0) {
 				if (button > 0) {
-					BlockState state = player.getLevel().getBlockState(pos);
-					ProcessTileBlock.changePowerState(player.getLevel(), pos, (button & 1) != 0);
+					BlockState state = player.level().getBlockState(pos);
+					ProcessTileBlock.changePowerState(player.level(), pos, (button & 1) != 0);
 				}
 			}
 		}

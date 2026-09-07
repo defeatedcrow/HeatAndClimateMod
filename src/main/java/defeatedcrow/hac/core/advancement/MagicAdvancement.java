@@ -25,7 +25,7 @@ public class MagicAdvancement implements Consumer<Consumer<Advancement>> {
 
 		Advancement v1 = Advancement.Builder.advancement()
 		    .display(MagicInit.PENDANT_GOLD_RED.get(), Component.translatable("advancements.dcs_climate.magic.root.title"), Component.translatable("advancements.dcs_climate.magic.root.desc"),
-		        ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/gui/advancement/magic.png"), FrameType.TASK, false, false, false)
+		        new ResourceLocation("dcs_climate", "textures/gui/advancement/magic.png"), FrameType.TASK, false, false, false)
 		    .addCriterion("in_overworld", PlayerTrigger.TriggerInstance.located(LocationPredicate.inDimension(Level.OVERWORLD)))
 		    .save(t, "dcs_climate:magic/root");
 

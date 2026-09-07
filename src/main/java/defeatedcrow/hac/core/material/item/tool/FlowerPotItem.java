@@ -33,7 +33,8 @@ import net.minecraft.world.phys.Vec3;
 public class FlowerPotItem extends CraftingItemDC implements IEntityItem {
 
 	public FlowerPotItem(String n) {
-		super(n, new Item.Properties().tab(CoreInit.BUILD), null);
+		super(n, new Item.Properties(), null);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.BUILD, this);
 	}
 
 	@Override
@@ -73,7 +74,6 @@ public class FlowerPotItem extends CraftingItemDC implements IEntityItem {
 		boolean b1 = level.getBlockState(pos)
 		    .isFaceSturdy(level, pos, Direction.UP, SupportType.CENTER);
 		boolean b2 = !level.getBlockState(pos.above())
-		    .getMaterial()
 		    .blocksMotion();
 		return true; // b1 && b2;
 	}

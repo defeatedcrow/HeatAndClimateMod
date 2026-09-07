@@ -19,6 +19,7 @@ import defeatedcrow.hac.api.recipe.RecipeTypeDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
@@ -136,8 +137,8 @@ public class DeviceRecipe implements IDeviceRecipe {
 	public List<TagKey<Fluid>> getInputFluids() {
 		List<TagKey<Fluid>> ret = Lists.newArrayList();
 		for (String name : inputFluid) {
-			ResourceLocation res = ResourceLocation.parse(name);
-			TagKey<Fluid> tagkey = TagKey.create(Registry.FLUID_REGISTRY, res);
+			ResourceLocation res = new ResourceLocation(name);
+			TagKey<Fluid> tagkey = TagKey.create(Registries.FLUID, res);
 			if (tagkey != null)
 				ret.add(tagkey);
 		}

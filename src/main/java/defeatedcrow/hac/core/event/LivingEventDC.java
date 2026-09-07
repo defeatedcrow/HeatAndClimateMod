@@ -31,8 +31,7 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
-import net.minecraftforge.eventbus.api.Event.Result;
+import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class LivingEventDC {
@@ -44,12 +43,12 @@ public class LivingEventDC {
 			LivingEntity target = event.getEntity();
 			int f = event.getLootingLevel() * 10;
 			List<ItemStack> list = animalDropItem(target);
-			RandomSource rand = target.getLevel()
+			RandomSource rand = target.level()
 			    .getRandom();
 			if (!list.isEmpty()) {
 				for (ItemStack item : list) {
 					if (rand.nextInt(100) < 50 + f) {
-						ItemEntity drop = new ItemEntity(target.getLevel(), target.getX(), target.getY() + 0.15D, target.getZ(), item);
+						ItemEntity drop = new ItemEntity(target.level(), target.getX(), target.getY() + 0.15D, target.getZ(), item);
 						event.getDrops()
 						    .add(drop);
 					}
@@ -110,12 +109,12 @@ public class LivingEventDC {
 	}
 
 	@SubscribeEvent
-	public static void onSpawnCheck(LivingSpawnEvent.CheckSpawn event) {
+	public static void onSpawnCheck(MobSpawnEvent.FinalizeSpawn event) {
 		LivingEntity entity = event.getEntity();
 		if (event.getLevel() instanceof ServerLevel && entity instanceof Enemy && !entity.getType()
 		    .is(TagDC.EntityTag.SPAWN_SUPPRESSOR_BLACKLIST)
-		    && (event.getSpawnReason() == MobSpawnType.NATURAL || event.getSpawnReason() == MobSpawnType.JOCKEY || event.getSpawnReason() == MobSpawnType.MOB_SUMMONED || event.getSpawnReason() == MobSpawnType.SPAWNER
-		        || event.getSpawnReason() == MobSpawnType.EVENT)) {
+		    && (event.getSpawnType() == MobSpawnType.NATURAL || event.getSpawnType() == MobSpawnType.JOCKEY || event.getSpawnType() == MobSpawnType.MOB_SUMMONED || event.getSpawnType() == MobSpawnType.SPAWNER
+		        || event.getSpawnType() == MobSpawnType.EVENT)) {
 			boolean flag = false;
 			List<MagicPictureEntity> picList = MagicPictureEvent.getList();
 			if (picList.stream()
@@ -136,7 +135,7 @@ public class LivingEventDC {
 				}
 			}
 			if (flag) {
-				event.setResult(Result.DENY);
+				event.setSpawnCancelled(true);
 			}
 		}
 	}

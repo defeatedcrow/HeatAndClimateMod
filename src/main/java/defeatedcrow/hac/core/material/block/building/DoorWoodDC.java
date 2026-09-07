@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 
 public class DoorWoodDC extends DoorBlock implements IBlockDC, IJsonDataDC {
 
@@ -28,7 +28,7 @@ public class DoorWoodDC extends DoorBlock implements IBlockDC, IJsonDataDC {
 	private String texDir = "build/door_";
 
 	public DoorWoodDC(String n) {
-		super(BlockBehaviour.Properties.of(Material.WOOD, Blocks.OAK_PLANKS.defaultMaterialColor()).strength(3.0F).sound(SoundType.WOOD).noOcclusion());
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion(), net.minecraft.world.level.block.state.properties.BlockSetType.OAK);
 		name = n;
 	}
 

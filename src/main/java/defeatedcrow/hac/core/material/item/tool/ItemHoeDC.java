@@ -14,7 +14,8 @@ public class ItemHoeDC extends HoeItem implements IItemDC, ITierItem {
 	final TagKey<Item> tag;
 
 	public ItemHoeDC(TierDC tierIn, TagKey<Item> pair) {
-		super(tierIn, 3, -2.6F, new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE));
+		super(tierIn, 3, -2.6F, new Item.Properties().durability(tierIn.getUses()));
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 		tier = tierIn;
 		tag = pair;
 	}

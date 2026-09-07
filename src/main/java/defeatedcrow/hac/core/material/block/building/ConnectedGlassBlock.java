@@ -24,8 +24,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 public class ConnectedGlassBlock extends BlockDC {
 
@@ -33,7 +32,7 @@ public class ConnectedGlassBlock extends BlockDC {
 	boolean isDark = false;
 
 	public ConnectedGlassBlock(String s, int light) {
-		super(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.QUARTZ).strength(1.0F, 8.0F).noOcclusion().lightLevel((state) -> {
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(1.0F, 8.0F).noOcclusion().lightLevel((state) -> {
 			return light;
 		}));
 		name = s;
@@ -47,7 +46,7 @@ public class ConnectedGlassBlock extends BlockDC {
 	}
 
 	public ConnectedGlassBlock(String s) {
-		super(BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.QUARTZ).noOcclusion().strength(1.0F, 8.0F));
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).noOcclusion().strength(1.0F, 8.0F));
 		name = s;
 		isDark = true;
 		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.NORTH, false).setValue(DCState.SOUTH, false).setValue(DCState.EAST, false)

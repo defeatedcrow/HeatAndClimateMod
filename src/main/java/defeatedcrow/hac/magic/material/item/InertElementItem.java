@@ -31,7 +31,8 @@ import net.minecraft.world.level.block.state.BlockState;
 public class InertElementItem extends MagicMaterialItemDC {
 
 	public InertElementItem(MagicColor c, String s, TagKey<Item> pair) {
-		super(new Item.Properties().tab(MagicInit.MAGIC).rarity(Rarity.RARE).stacksTo(1), c, s, pair);
+		super(new Item.Properties().rarity(Rarity.RARE).stacksTo(1), c, s, pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(MagicInit.MAGIC, this);
 	}
 
 	@Override
@@ -62,15 +63,15 @@ public class InertElementItem extends MagicMaterialItemDC {
 
 	public boolean isSuitablePlace(Player player) {
 		if (getColor().isWhite)
-			return !player.isInWater() && player.getLevel().canSeeSky(player.blockPosition().above()) && DCTimeHelper.isDayTime(player.getLevel());
+			return !player.isInWater() && player.level().canSeeSky(player.blockPosition().above()) && DCTimeHelper.isDayTime(player.level());
 		if (getColor().isBlue)
 			return player.isInWater();
 		if (getColor().isBlack)
-			return player.blockPosition().getY() < 0 && !player.getLevel().canSeeSky(player.blockPosition().above()) && player.getLevel().getLightEmission(player.blockPosition()) < 8.0F;
+			return player.blockPosition().getY() < 0 && !player.level().canSeeSky(player.blockPosition().above()) && player.level().getLightEmission(player.blockPosition()) < 8.0F;
 		if (getColor().isRed)
-			return new ClimateSupplier(player.getLevel(), player.blockPosition()).get().getHeat().getTier() > 3;
+			return new ClimateSupplier(player.level(), player.blockPosition()).get().getHeat().getTier() > 3;
 		if (getColor().isGreen) {
-			return isGreenEnvironment(player.getLevel(), player.blockPosition().above());
+			return isGreenEnvironment(player.level(), player.blockPosition().above());
 		}
 		return false;
 	}

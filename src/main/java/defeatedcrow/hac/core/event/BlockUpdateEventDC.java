@@ -141,17 +141,17 @@ public class BlockUpdateEventDC {
 
 	// 気候精錬のスターター
 	public static void onBlockPlacement(BlockEvent.EntityPlaceEvent event) {
-		if (event.getEntity() instanceof Player && !event.getEntity().getLevel().isClientSide) {
+		if (event.getEntity() instanceof Player && !event.getEntity().level().isClientSide) {
 			Player placer = (Player) event.getEntity();
 			BlockState place = event.getPlacedBlock();
 			BlockSnapshot snap = event.getBlockSnapshot();
 			Optional<IClimateSmelting> recipe = DCRecipes.hasAnySmeltingRecipe(place.getBlock());
 			recipe.ifPresent(ret -> {
-			    placer.getLevel().scheduleTick(snap.getPos(), place.getBlock(), ret.recipeFrequency());
+			    placer.level().scheduleTick(snap.getPos(), place.getBlock(), ret.recipeFrequency());
 			});
 			Optional<IHeatTreatment> recipe2 = DCRecipes.hasAnyHeatTreatmentRecipe(place.getBlock());
 			recipe2.ifPresent(ret -> {
-			    placer.getLevel().scheduleTick(snap.getPos(), place.getBlock(), ret.getHeatingTime());
+			    placer.level().scheduleTick(snap.getPos(), place.getBlock(), ret.getHeatingTime());
 			});
 		}
 	}

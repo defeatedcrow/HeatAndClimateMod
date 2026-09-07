@@ -27,8 +27,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -54,7 +53,7 @@ public class DishPlate extends BlockDC implements SimpleWaterloggedBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE)
+		return BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
 		    .sound(SoundType.METAL)
 		    .strength(3.0F, 30.0F)
 		    .noOcclusion();

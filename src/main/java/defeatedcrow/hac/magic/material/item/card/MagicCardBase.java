@@ -46,7 +46,8 @@ public class MagicCardBase extends ItemDC implements ICardMagic {
 	private final Rarity rarity;
 
 	public MagicCardBase(MagicColor c, Rarity rare, TagKey<Item> pair) {
-		super(new Item.Properties().tab(MagicInit.MAGIC).stacksTo(16).rarity(rare), pair);
+		super(new Item.Properties().stacksTo(16).rarity(rare), pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(MagicInit.MAGIC, this);
 		name = c.isBasic ? c.toString() + "_" + rare.toString().toLowerCase() : c.toString();
 		color = c;
 		rarity = rare;

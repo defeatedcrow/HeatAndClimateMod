@@ -3,9 +3,9 @@ package defeatedcrow.hac.machine.client.entity;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Matrix3f;
-import com.mojang.math.Matrix4f;
-import com.mojang.math.Vector3f;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.material.block.EntityBlockDC;
@@ -59,7 +59,7 @@ public class TileRendererWaterBasin implements BlockEntityRenderer<WaterIntakeBa
 		VertexConsumer vertex = buffer.getBuffer(RenderType.translucent());
 		RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
 
-		pose.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+		pose.mulPose(Axis.ZP.rotationDegrees(90.0F));
 		drawQuad(m4f, m3f, vertex, light, colors, 0, -w, -w, h, w, w, tex);
 
 		pose.popPose();

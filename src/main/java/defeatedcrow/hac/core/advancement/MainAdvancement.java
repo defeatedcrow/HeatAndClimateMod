@@ -13,7 +13,7 @@ import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.ItemInteractWithBlockTrigger;
+import net.minecraft.advancements.critereon.ItemUsedOnLocationTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.PlayerTrigger;
@@ -31,7 +31,7 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 	public void accept(Consumer<Advancement> t) {
 		Advancement v1 = Advancement.Builder.advancement()
 		    .display(CoreInit.ICON_HAC.get(), Component.translatable("advancements.dcs_climate.main.root.title"), Component.translatable("advancements.dcs_climate.main.root.desc"),
-		        ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/gui/advancement/main.png"), FrameType.TASK, false, false, false)
+		        new ResourceLocation("dcs_climate", "textures/gui/advancement/main.png"), FrameType.TASK, false, false, false)
 		    .addCriterion("in_overworld", PlayerTrigger.TriggerInstance.located(LocationPredicate.inDimension(Level.OVERWORLD)))
 		    .save(t, "dcs_climate:main/root");
 
@@ -74,7 +74,7 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		Advancement a5 = Advancement.Builder.advancement()
 		    .parent(a4)
 		    .display(Items.BONE_MEAL, Component.translatable("advancements.dcs_climate.main.fertilizer.title"), Component.translatable("advancements.dcs_climate.main.fertilizer.desc"), null, FrameType.TASK, true, true, false)
-		    .addCriterion("use_fertilizer", ItemInteractWithBlockTrigger.TriggerInstance.itemUsedOnBlock(LocationPredicate.Builder.location()
+		    .addCriterion("use_fertilizer", ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(LocationPredicate.Builder.location()
 		        .setBlock(BlockPredicate.Builder.block()
 		            .of(Blocks.FARMLAND)
 		            .build()),

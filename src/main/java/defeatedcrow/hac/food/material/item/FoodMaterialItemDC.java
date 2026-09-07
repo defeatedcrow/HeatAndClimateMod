@@ -1,5 +1,7 @@
 package defeatedcrow.hac.food.material.item;
 
+import java.util.function.Supplier;
+
 import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.api.material.IFoodTaste;
@@ -21,7 +23,7 @@ public class FoodMaterialItemDC extends MaterialItemDC implements IFoodTaste {
 	private int taste = 0;
 	private boolean seasoning = false;
 
-	public FoodMaterialItemDC(CreativeModeTab tab, String s, TagKey<Item> pair) {
+	public FoodMaterialItemDC(Supplier<CreativeModeTab> tab, String s, TagKey<Item> pair) {
 		super(tab, s, pair);
 	}
 

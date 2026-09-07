@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 
 import net.minecraft.advancements.critereon.AbstractCriterionTriggerInstance;
 import net.minecraft.advancements.critereon.DeserializationContext;
-import net.minecraft.advancements.critereon.EntityPredicate;
+import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,7 +22,7 @@ public class PlayerTriggerDC extends SimpleCriterionTrigger<PlayerTriggerDC.Trig
 	}
 
 	@Override
-	public PlayerTriggerDC.TriggerInstance createInstance(JsonObject json, EntityPredicate.Composite com, DeserializationContext cont) {
+	public PlayerTriggerDC.TriggerInstance createInstance(JsonObject json, ContextAwarePredicate com, DeserializationContext cont) {
 		return new PlayerTriggerDC.TriggerInstance(this.id, com);
 	}
 
@@ -33,12 +33,12 @@ public class PlayerTriggerDC extends SimpleCriterionTrigger<PlayerTriggerDC.Trig
 	}
 
 	public static class TriggerInstance extends AbstractCriterionTriggerInstance {
-		public TriggerInstance(ResourceLocation res, EntityPredicate.Composite com) {
+		public TriggerInstance(ResourceLocation res, ContextAwarePredicate com) {
 			super(res, com);
 		}
 
 		public static PlayerTriggerDC.TriggerInstance heatDamage() {
-			return new PlayerTriggerDC.TriggerInstance(TriggersDC.HEAT_DAMAGE.getId(), EntityPredicate.Composite.ANY);
+			return new PlayerTriggerDC.TriggerInstance(TriggersDC.HEAT_DAMAGE.getId(), ContextAwarePredicate.ANY);
 		}
 
 	}

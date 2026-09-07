@@ -46,7 +46,7 @@ public class MsgCharmKeyToS implements IPacketDC {
 				if (item.getItem() instanceof IJewelCharm charm) {
 					if (charm.isActive(player, item) && charm.onUsing(player, item)) {
 						charm.onConsumeResource(player, item);
-						player.level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 0.8F);
+						player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 0.8F);
 					}
 				}
 			}

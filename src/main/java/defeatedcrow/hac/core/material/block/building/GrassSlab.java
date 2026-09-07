@@ -20,6 +20,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -42,11 +43,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.lighting.LayerLightEngine;
+import net.minecraft.world.level.lighting.LightEngine;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -67,7 +67,7 @@ public class GrassSlab extends BlockDC implements SimpleWaterloggedBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.GRASS).sound(SoundType.GRASS).strength(0.3F).randomTicks();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.GRASS).sound(SoundType.GRASS).strength(0.3F).randomTicks();
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class GrassSlab extends BlockDC implements SimpleWaterloggedBlock {
 				return InteractionResult.SUCCESS;
 			} else {
 				ItemStack held = player.getItemInHand(hand);
-				if (!DCUtil.isEmpty(held) && held.is(Tags.Items.TOOLS_SHOVELS)) {
+				if (!DCUtil.isEmpty(held) && held.is(ItemTags.SHOVELS)) {
 					BlockState next = BuildInit.SLAB_PATH.get().defaultBlockState();
 					level.setBlock(pos, next, 2);
 					level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -110,7 +110,7 @@ public class GrassSlab extends BlockDC implements SimpleWaterloggedBlock {
 		} else if (upper.getFluidState().getAmount() == 8) {
 			return false;
 		} else {
-			int i = LayerLightEngine.getLightBlockInto(level, level.getBlockState(pos), pos, upper, above, Direction.UP, upper.getLightBlock(level, above));
+			int i = LightEngine.getLightBlockInto(level, level.getBlockState(pos), pos, upper, above, Direction.UP, upper.getLightBlock(level, above));
 			return i < level.getMaxLightLevel();
 		}
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.core.worldgen.vein.OreGenPos.OreVein;
 import net.minecraft.core.BlockPos;
@@ -18,7 +19,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.material.Material;
 
 public class OreveinFeature extends Feature<NoneFeatureConfiguration> {
 
@@ -64,8 +64,8 @@ public class OreveinFeature extends Feature<NoneFeatureConfiguration> {
 
 	static boolean isPlaceable(BlockState block) {
 		if (!block.hasBlockEntity() && !block.is(BlockTags.FEATURES_CANNOT_REPLACE))
-			if (block.getMaterial() == Material.STONE || block.getMaterial() == Material.SAND || block.getMaterial() == Material.CLAY || block
-				.getMaterial() == Material.DIRT) {
+			if (block.is(BlockTags.BASE_STONE_OVERWORLD) || block.is(BlockTags.SAND) || block.is(Blocks.CLAY) || block
+				.is(BlockTags.DIRT)) {
 				if (TagUtil.matchTag("ores", block.getBlock().asItem()).isEmpty() && block.getBlock() != Blocks.POINTED_DRIPSTONE) {
 					return true;
 				}
@@ -74,8 +74,8 @@ public class OreveinFeature extends Feature<NoneFeatureConfiguration> {
 	}
 
 	static boolean avobeCheck(BlockState block) {
-		if (block.getMaterial() == Material.PLANT || block.getMaterial() == Material.WATER_PLANT || block.getMaterial() == Material.BAMBOO || block
-			.getMaterial() == Material.BAMBOO_SAPLING) {
+		if (block.is(TagDC.BlockTag.WEED) || block.is(BlockTags.CROPS) || block.is(BlockTags.SAPLINGS) || block.is(BlockTags.FLOWERS) || block.is(Blocks.SEAGRASS) || block.is(Blocks.TALL_SEAGRASS) || block.is(Blocks.KELP) || block
+			.is(Blocks.KELP_PLANT) || block.is(Blocks.BAMBOO) || block.is(Blocks.BAMBOO_SAPLING)) {
 			return true;
 		}
 		return false;

@@ -22,8 +22,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -34,7 +33,7 @@ public class CarpetPlanks extends BlockDC {
 	final String name;
 
 	public CarpetPlanks(String s) {
-		super(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(1.0F, 15.0F).noOcclusion());
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(1.0F, 15.0F).noOcclusion());
 		name = s;
 		this.registerDefaultState(this.stateDefinition.any()
 			.setValue(DCState.NORTH, false)

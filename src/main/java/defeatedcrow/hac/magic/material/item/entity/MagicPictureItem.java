@@ -43,12 +43,13 @@ public abstract class MagicPictureItem extends ItemDC implements IEntityItem, IC
 
 	public MagicPictureItem(String s, MagicColor c) {
 		super(prop(), TagDC.ItemTag.MAGIC_PICTURE);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(MagicInit.MAGIC, this);
 		name = s;
 		color = c;
 	}
 
 	private static Properties prop() {
-		return new Item.Properties().tab(MagicInit.MAGIC).stacksTo(1).rarity(Rarity.EPIC);
+		return new Item.Properties().stacksTo(1).rarity(Rarity.EPIC);
 	}
 
 	@Override
@@ -91,7 +92,7 @@ public abstract class MagicPictureItem extends ItemDC implements IEntityItem, IC
 			return false;
 		Entity entity = getType().create(level);
 		if (entity instanceof MagicPictureEntity pic) {
-			BlockPos pos = new BlockPos(vec);
+			BlockPos pos = BlockPos.containing(vec.x, vec.y, vec.z);
 			pic.setPos(vec);
 			pic.setXRot(0F);
 			pic.setYRot(targetDir.get2DDataValue() * 90F);

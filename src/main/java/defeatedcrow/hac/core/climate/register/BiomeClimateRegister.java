@@ -199,10 +199,10 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 			DCHumidity hum = getRegisteredHumidity(reg.getKey(biome.get())).orElse(DCHumidity.NORMAL);
 			if (hum == DCHumidity.NORMAL) {
 				if (biome.is(Biomes.IS_WATER) || biome.is(Biomes.IS_WET) || biome.get()
-				    .getDownfall() > 0.8F) {
+				    .getModifiedClimateSettings().downfall() > 0.8F) {
 					return DCHumidity.WET;
 				} else if (biome.is(Biomes.IS_DRY) || biome.get()
-				    .getDownfall() <= 0.3F) {
+				    .getModifiedClimateSettings().downfall() <= 0.3F) {
 					return DCHumidity.DRY;
 				}
 			}

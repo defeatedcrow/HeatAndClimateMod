@@ -35,7 +35,7 @@ public class FluidPackItem extends FoodMaterialItemDC {
 
 	private final Type type;
 
-	public FluidPackItem(CreativeModeTab tab, String s, TagKey<Item> pair, Type t) {
+	public FluidPackItem(Supplier<CreativeModeTab> tab, String s, TagKey<Item> pair, Type t) {
 		super(tab, s, pair);
 		type = t;
 	}

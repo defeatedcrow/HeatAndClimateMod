@@ -16,8 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 public class GeneratorHandyBlock extends BlockDC {
 
@@ -41,7 +40,7 @@ public class GeneratorHandyBlock extends BlockDC {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).strength(8.0F, 6.0F);
+		return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(8.0F, 6.0F);
 	}
 
 	@Override

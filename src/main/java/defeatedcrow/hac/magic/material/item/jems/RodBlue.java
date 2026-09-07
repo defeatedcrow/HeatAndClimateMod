@@ -15,6 +15,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -78,14 +79,12 @@ public class RodBlue extends MagicJewelBase {
 		if (!DCUtil.isEmpty(charm) && level instanceof ServerLevel serverLevel) {
 			Vec3 vec3 = Vec3.atBottomCenterOf(res.getBlockPos()
 			    .relative(res.getDirection()));
-			BlockPos p1 = new BlockPos(vec3);
+			BlockPos p1 = BlockPos.containing(vec3.x, vec3.y, vec3.z);
 			BlockPos p2 = p1.above();
 			if (level.getBlockState(p1)
-			    .getMaterial()
-			    .isReplaceable()
+			    .canBeReplaced()
 			    && level.getBlockState(p2)
-			        .getMaterial()
-			        .isReplaceable()) {
+			        .canBeReplaced()) {
 				ResourceKey<Level> dim = serverLevel.dimension();
 				CompoundTag tag = charm.getOrCreateTag();
 				tag.putString(TagKeyDC.DIM_LOCATION, dim.location()
@@ -110,7 +109,7 @@ public class RodBlue extends MagicJewelBase {
 
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack charm, Player player, LivingEntity entity, InteractionHand hand) {
-		if (entity != null && entity.isAlive() && player.getLevel() instanceof ServerLevel serverLevel) {
+		if (entity != null && entity.isAlive() && player.level() instanceof ServerLevel serverLevel) {
 			if (charm.hasTag() && charm.getTag()
 			    .contains(TagKeyDC.DIM_LOCATION) && isActive(player, charm)) {
 				Vec3 origin = entity.getEyePosition();
@@ -119,7 +118,7 @@ public class RodBlue extends MagicJewelBase {
 				double dx = tag.getInt(TagKeyDC.POS_X) + 0.5D;
 				double dy = tag.getInt(TagKeyDC.POS_Y) + 0.05D;
 				double dz = tag.getInt(TagKeyDC.POS_Z) + 0.5D;
-				ResourceKey<Level> dim = ResourceKey.create(Registry.DIMENSION_REGISTRY, ResourceLocation.parse(s1));
+				ResourceKey<Level> dim = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(s1));
 				if (!serverLevel.dimension()
 				    .equals(dim)) {
 					ServerLevel nextLevel = serverLevel.getServer()
