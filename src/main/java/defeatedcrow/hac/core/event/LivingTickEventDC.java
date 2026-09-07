@@ -185,8 +185,8 @@ public class LivingTickEventDC {
 			}
 			float damTemp = Math.abs(heat.getTier()) * 1.0F; // hot 0F ~ 8.0F / cold 0F ~ 10.0F
 			boolean isCold = heat.getTier() < 0;
-			DamageSourceClimate source = isCold ? DamageSourceClimate.climateColdDamage :
-					DamageSourceClimate.climateHeatDamage;
+			DamageSourceClimate source = isCold ? DamageSourceClimate.climateColdDamage(living.level().registryAccess()) :
+					DamageSourceClimate.climateHeatDamage(living.level().registryAccess());
 
 			// 基礎ダメージ
 			if (isCold) {

@@ -87,13 +87,13 @@ public class ClientClimateData {
 
 		// charm
 		List<ItemStack> charms = MagicUtil.getCharms(player, CharmType.ALL);
-		DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage : DamageSourceClimate.climateColdDamage;
+		DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage(player.level().registryAccess()) : DamageSourceClimate.climateColdDamage(player.level().registryAccess());
 		for (ItemStack check : charms) {
 			IJewelCharm charm = (IJewelCharm) check.getItem();
 			if (isCold)
-				coldPrev += charm.reduceDamage(player, DamageSourceClimate.climateColdDamage, damage, check);
+				coldPrev += charm.reduceDamage(player, DamageSourceClimate.climateColdDamage(player.level().registryAccess()), damage, check);
 			else
-				heatPrev += charm.reduceDamage(player, DamageSourceClimate.climateHeatDamage, damage, check);
+				heatPrev += charm.reduceDamage(player, DamageSourceClimate.climateHeatDamage(player.level().registryAccess()), damage, check);
 		}
 		charms.clear();
 

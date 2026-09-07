@@ -3,18 +3,26 @@
   "criteria": {
     "screwdriver_to_cable": {
       "conditions": {
-        "item": {
-          "items": [
-            "dcs_climate:main/screwdriver"
-          ]
-        },
-        "location": {
-          "block": {
-            "blocks": [
-              "dcs_climate:machine/cable_copper"
-            ]
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "dcs_climate:machine/cable_copper"
+                ]
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "dcs_climate:main/screwdriver"
+              ]
+            }
           }
-        }
+        ]
       },
       "trigger": "minecraft:item_used_on_block"
     }

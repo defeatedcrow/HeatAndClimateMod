@@ -37,9 +37,16 @@ import defeatedcrow.hac.magic.material.entity.CrowTurretEntity;
 import defeatedcrow.hac.magic.recipe.MagicRecipeProvider;
 import defeatedcrow.hac.plugin.PluginDC;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.advancements.AdvancementProvider;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.tags.TagBuilder;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -166,16 +173,43 @@ public class ClimateCore {
 		ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 		BlockTagProviderDC blockTag = new BlockTagProviderDC(output, lookup, existingFileHelper);
 		generator.addProvider(event.includeServer(), blockTag);
-		generator.addProvider(event.includeServer(), new ItemTagProviderDC(output, lookup, blockTag.contentsGetter(), existingFileHelper));
+		generator.addProvider(event.includeServer(), new ItemTagProviderDC(output, lookup, safeBlockTags(blockTag.contentsGetter()), existingFileHelper));
 		generator.addProvider(event.includeServer(), new BiomeTagProviderDC(output, lookup, existingFileHelper));
 		generator.addProvider(event.includeServer(), new FluidTagProviderDC(output, lookup, existingFileHelper));
 
-		generator.addProvider(event.includeServer(), new VanillaRecipeProvider(output));
-		generator.addProvider(event.includeServer(), new FoodRecipeProvider(output));
-		generator.addProvider(event.includeServer(), new MagicRecipeProvider(output));
-		generator.addProvider(event.includeServer(), new MachineRecipeProvider(output));
+		generator.addProvider(event.includeServer(), wrapRecipe(output, new VanillaRecipeProvider(output), "Recipes: Vanilla"));
+		generator.addProvider(event.includeServer(), wrapRecipe(output, new FoodRecipeProvider(output), "Recipes: Food"));
+		generator.addProvider(event.includeServer(), wrapRecipe(output, new MagicRecipeProvider(output), "Recipes: Magic"));
+		generator.addProvider(event.includeServer(), wrapRecipe(output, new MachineRecipeProvider(output), "Recipes: Machine"));
 
 		generator.addProvider(event.includeServer(), new AdvancementProvider(output, lookup, List.of(new AdvancementProviderDC())));
+	}
+
+	// 1.20.1のRecipeProvider#getName()はfinalで全て"Recipes"を返すため、
+	// 複数プロバイダをそのまま登録するとDataGeneratorでDuplicate providerエラーになる。
+	// run()を委譲し名前だけ変えたラッパで回避する。
+	private static DataProvider wrapRecipe(PackOutput output, RecipeProvider inner, String name) {
+		return new DataProvider() {
+			@Override
+			public java.util.concurrent.CompletableFuture<?> run(CachedOutput cache) {
+				return inner.run(cache);
+			}
+
+			@Override
+			public String getName() {
+				return name;
+			}
+		};
+	}
+	// 旧来Blockタグ未定義のcopyが48箇所あり、1.19.2ではno-opだったが1.20.1ではMissing block tagで失敗する。
+	// ItemTag側48行を触らず、欠損時は空Tagとして扱うlookupラッパで旧出力を維持する。
+	//TODO runDataを行う際にエラーとなるので、一旦コレで回避してる。advancementの "tag":の旧記述に関しても修正したほうが良さそう。
+	private static java.util.concurrent.CompletableFuture<TagsProvider.TagLookup<Block>> safeBlockTags(
+			java.util.concurrent.CompletableFuture<TagsProvider.TagLookup<Block>> inner) {
+		return inner.thenApply(lookup -> (TagKey<Block> key) -> {
+			java.util.Optional<TagBuilder> found = lookup.apply(key);
+			return found.isPresent() ? found : java.util.Optional.of(TagBuilder.create());
+		});
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {

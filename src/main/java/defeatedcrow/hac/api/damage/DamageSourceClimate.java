@@ -1,7 +1,10 @@
 package defeatedcrow.hac.api.damage;
 
 import net.minecraft.core.Holder;
-import net.minecraft.world.damagesource.DamageScaling;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 
@@ -11,19 +14,51 @@ import net.minecraft.world.damagesource.DamageType;
  */
 public class DamageSourceClimate extends DamageSource {
 
-	public static DamageSourceClimate climateHeatDamage = new DamageSourceClimate(
-			Holder.direct(new DamageType("dcs_heat", DamageScaling.ALWAYS, 0.1F))).setHeatDamage();
-	public static DamageSourceClimate climateColdDamage = new DamageSourceClimate(
-			Holder.direct(new DamageType("dcs_cold", DamageScaling.ALWAYS, 0.1F))).setHeatDamage().setNegativeDamage();
-	public static DamageSourceClimate climateWaterDamage = new DamageSourceClimate(
-			Holder.direct(new DamageType("dcs_water", DamageScaling.ALWAYS, 0.1F))).setHumDamage();
-	public static DamageSourceClimate climateDryDamage = new DamageSourceClimate(
-			Holder.direct(new DamageType("dcs_dry", DamageScaling.ALWAYS, 0.1F))).setHumDamage().setNegativeDamage();
-	public static DamageSourceClimate climateWindDamage = new DamageSourceClimate(
-			Holder.direct(new DamageType("dcs_wind", DamageScaling.ALWAYS, 0.1F))).setAirDamage();
-	public static DamageSourceClimate climateSuffocationDamage = new DamageSourceClimate(
-			Holder.direct(new DamageType("dcs_suffocation", DamageScaling.ALWAYS, 0.1F))).setAirDamage().setNegativeDamage();
-	public static DamageSource machineDamage = new DamageSource(Holder.direct(new DamageType("dcs_machine", DamageScaling.ALWAYS, 0.1F)));
+	public static final String MOD_ID = "dcs_climate";
+
+	public static final ResourceKey<DamageType> HEAT = key("dcs_heat");
+	public static final ResourceKey<DamageType> COLD = key("dcs_cold");
+	public static final ResourceKey<DamageType> WATER = key("dcs_water");
+	public static final ResourceKey<DamageType> DRY = key("dcs_dry");
+	public static final ResourceKey<DamageType> WIND = key("dcs_wind");
+	public static final ResourceKey<DamageType> SUFFOCATION = key("dcs_suffocation");
+	public static final ResourceKey<DamageType> MACHINE = key("dcs_machine");
+
+	private static ResourceKey<DamageType> key(String name) {
+		return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(MOD_ID, name));
+	}
+
+	private static Holder<DamageType> holder(RegistryAccess access, ResourceKey<DamageType> key) {
+		return access.registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(key);
+	}
+
+	public static DamageSourceClimate climateHeatDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, HEAT)).setHeatDamage();
+	}
+
+	public static DamageSourceClimate climateColdDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, COLD)).setHeatDamage().setNegativeDamage();
+	}
+
+	public static DamageSourceClimate climateWaterDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, WATER)).setHumDamage();
+	}
+
+	public static DamageSourceClimate climateDryDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, DRY)).setHumDamage().setNegativeDamage();
+	}
+
+	public static DamageSourceClimate climateWindDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, WIND)).setAirDamage();
+	}
+
+	public static DamageSourceClimate climateSuffocationDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, SUFFOCATION)).setAirDamage().setNegativeDamage();
+	}
+
+	public static DamageSource machineDamage(RegistryAccess access) {
+		return new DamageSource(holder(access, MACHINE));
+	}
 
 	public DamageSourceClimate(Holder<DamageType> type) {
 		super(type);

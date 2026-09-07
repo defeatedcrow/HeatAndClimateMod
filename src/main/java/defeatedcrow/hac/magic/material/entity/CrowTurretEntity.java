@@ -261,7 +261,7 @@ public class CrowTurretEntity extends LivingEntity {
 						this.onBroken(true);
 					}
 					return false;
-				} else if (DamageSourceClimate.climateHeatDamage.equals(source) && amount > 3.0F) {
+				} else if (source.is(DamageSourceClimate.HEAT) && amount > 3.0F) {
 					if (causeDamage(source, 0.5F)) {
 						this.onBroken(true);
 					}
