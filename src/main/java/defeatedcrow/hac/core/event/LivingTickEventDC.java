@@ -12,7 +12,6 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.damage.ClimateDamageEvent;
 import defeatedcrow.hac.api.damage.ClimateDamageEvent.DamageSet;
-import defeatedcrow.hac.api.damage.DamageTypeClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.api.magic.MagicColor;
@@ -30,12 +29,10 @@ import defeatedcrow.hac.magic.material.entity.MagicPictureEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -187,7 +184,7 @@ public class LivingTickEventDC {
 			}
 			float damTemp = Math.abs(heat.getTier()) * 1.0F; // hot 0F ~ 8.0F / cold 0F ~ 10.0F
 			boolean isCold = heat.getTier() < 0;
-			ResourceKey<DamageType> source = isCold ? DamageTypeClimate.CLIMATE_COLD : DamageTypeClimate.CLIMATE_HEAT;
+			DamageSource source = DamageSourceClimate.getInstance(living.level()).getClimateDamage(isCold);
 
 			// 基礎ダメージ
 			if (isCold) {
@@ -325,7 +322,7 @@ public class LivingTickEventDC {
 		SimpleContainer container = vil.getInventory();
 		for (int i = 0; i < container.getContainerSize(); i++) {
 			ItemStack item = container.getItem(i);
-			if (!DCUtil.isEmpty(item) && Villager.FOOD_POINTS.keySet().contains(item.getItem())) {
+			if (!DCUtil.isEmpty(item) && Villager.FOOD_POINTS.containsKey(item.getItem())) {
 				return i;
 			}
 		}

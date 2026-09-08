@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import defeatedcrow.hac.api.damage.DamageSourceClimate;
+import defeatedcrow.hac.api.damage.DamageTypeClimate;
 import defeatedcrow.hac.core.util.CustomExplosion;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.NonNullList;
@@ -16,8 +16,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
@@ -87,26 +87,21 @@ public class CrowTurretEntity extends LivingEntity {
 
 	@Override
 	public ItemStack getItemBySlot(EquipmentSlot slot) {
-		switch (slot.getType()) {
-		case HAND:
-			return this.handItems.get(slot.getIndex());
-		case ARMOR:
-			return this.armorItems.get(slot.getIndex());
-		default:
-			return ItemStack.EMPTY;
-		}
+		return switch (slot.getType()) {
+		case HAND -> this.handItems.get(slot.getIndex());
+		case ARMOR -> this.armorItems.get(slot.getIndex());
+		default -> ItemStack.EMPTY;
+		};
 	}
 
 	@Override
 	public void setItemSlot(EquipmentSlot slot, ItemStack stack) {
 		this.verifyEquippedItem(stack);
 		switch (slot.getType()) {
-		case HAND:
-			this.onEquipItem(slot, this.handItems.set(slot.getIndex(), stack), stack);
-			break;
-		case ARMOR:
-			this.onEquipItem(slot, this.armorItems.set(slot.getIndex(), stack), stack);
+		case HAND -> this.onEquipItem(slot, this.handItems.set(slot.getIndex(), stack), stack);
+		case ARMOR -> this.onEquipItem(slot, this.armorItems.set(slot.getIndex(), stack), stack);
 		}
+		;
 
 	}
 
@@ -206,7 +201,7 @@ public class CrowTurretEntity extends LivingEntity {
 	}
 
 	public void setRange(float r) {
-		this.entityData.set(EXPLOSION_POWER, Float.valueOf(r));
+		this.entityData.set(EXPLOSION_POWER, r);
 	}
 
 	public float getRange() {
@@ -261,7 +256,7 @@ public class CrowTurretEntity extends LivingEntity {
 						this.onBroken(true);
 					}
 					return false;
-				} else if (source.is(DamageSourceClimate.HEAT) && amount > 3.0F) {
+				} else if (source.is(DamageTypeClimate.CLIMATE_HEAT) && amount > 3.0F) {
 					if (causeDamage(source, 0.5F)) {
 						this.onBroken(true);
 					}
@@ -382,31 +377,28 @@ public class CrowTurretEntity extends LivingEntity {
 					count--;
 				}
 			}
-		} else {
-			if (count <= 0) {
-				if (!level().isClientSide) {
-					target = getTarget();
-				}
-				count = 5;
-			} else {
-				count--;
+		} else if (count <= 0) {
+			if (!level().isClientSide) {
+				target = getTarget();
 			}
-
+			count = 5;
+		} else {
+			count--;
 		}
 
 	}
 
 	private void fire() {
 		if (!level().isClientSide) {
-			ArrowItem arrowitem = (ArrowItem) (MagicInit.ARROW_RED.get());
-				ArrowRed red = (ArrowRed) arrowitem.createArrow(level(), new ItemStack(arrowitem), this);
+			ArrowItem arrowitem = (ArrowItem) MagicInit.ARROW_RED.get();
+			ArrowRed red = (ArrowRed) arrowitem.createArrow(level(), new ItemStack(arrowitem), this);
 			red.shootFromRotation(this, this.getXRot(), this.getYRot(), 0.0F, 3.0F, 1.0F);
 			red.setCritArrow(true);
 			red.setBaseDamage(red.getBaseDamage());
 			red.setRange(getRange());
 			red.setSafety();
 			red.pickup = AbstractArrow.Pickup.DISALLOWED;
-				level().addFreshEntity(red);
+			level().addFreshEntity(red);
 		}
 	}
 
@@ -435,8 +427,7 @@ public class CrowTurretEntity extends LivingEntity {
 			}
 		}
 
-						List<LivingEntity> list = level().getNearbyEntities(LivingEntity.class, TargetingConditions.forCombat().range(48F), this, this.getBoundingBox().inflate(48F, 16F, 48F))
-			.stream().filter(mob -> mob instanceof Enemy).toList();
+		List<LivingEntity> list = level().getNearbyEntities(LivingEntity.class, TargetingConditions.forCombat().range(48F), this, this.getBoundingBox().inflate(48F, 16F, 48F)).stream().filter(Enemy.class::isInstance).toList();
 
 		double dist = Double.MAX_VALUE;
 		LivingEntity ret = null;
@@ -463,7 +454,7 @@ public class CrowTurretEntity extends LivingEntity {
 
 		double d3 = Math.sqrt(d0 * d0 + d2 * d2);
 		float f = (float) (Mth.atan2(d2, d0) * (180F / (float) Math.PI)) - 90.0F;
-		float f1 = (float) (-(Mth.atan2(d1, d3) * (180F / (float) Math.PI)));
+		float f1 = (float) -(Mth.atan2(d1, d3) * (180F / (float) Math.PI));
 		return new Vec2(f1, f);
 	}
 

@@ -1,10 +1,8 @@
 package defeatedcrow.hac.api.magic;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,7 +18,7 @@ public interface IJewelCharm extends IJewel {
 	 * DIFFENCE<br>
 	 * プレイヤーがダメージを受けたときに呼ばれ、軽減量を返す
 	 */
-	float reduceDamage(LivingEntity owner, ResourceKey<DamageType> climateHeat, float damage, ItemStack charm);
+	float reduceDamage(LivingEntity owner, DamageSource climateHeat, float damage, ItemStack charm);
 
 	/**
 	 * DIFFENCE<br>
@@ -34,7 +32,7 @@ public interface IJewelCharm extends IJewel {
 	 * ATTACK<br>
 	 * プレイヤーがダメージを与えたときに呼ばれ、ダメージ増加倍率を返す。
 	 */
-	float increaceDamage(LivingEntity owner, LivingEntity attackTarget, ResourceKey<DamageType> sourceType, float damage, ItemStack charm);
+	float increaceDamage(LivingEntity owner, LivingEntity attackTarget, DamageSource sourceType, float damage, ItemStack charm);
 
 	/**
 	 * ATTACK<br>

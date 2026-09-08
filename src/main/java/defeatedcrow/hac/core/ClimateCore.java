@@ -2,7 +2,7 @@ package defeatedcrow.hac.core;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 import defeatedcrow.hac.api.ClimateAPI;
@@ -20,6 +20,7 @@ import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.config.ConfigServerBuilder;
 import defeatedcrow.hac.core.json.TileNBTFunction;
 import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.material.DamageTypeInit;
 import defeatedcrow.hac.core.material.tabs.CreativeTabDC;
 import defeatedcrow.hac.core.network.packet.DCPacket;
 import defeatedcrow.hac.core.recipe.MaterialRecipes;
@@ -37,23 +38,24 @@ import defeatedcrow.hac.magic.material.entity.CrowTurretEntity;
 import defeatedcrow.hac.magic.recipe.MagicRecipeProvider;
 import defeatedcrow.hac.plugin.PluginDC;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.TagBuilder;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -74,20 +76,16 @@ public class ClimateCore {
 	public static boolean isDebug = false;
 
 	public ClimateCore(FMLJavaModLoadingContext context) {
-		
+
 		initAPI();
-		configDir = new File(FMLPaths.CONFIGDIR.get()
-		    .toFile() + "/heat_and_climate");
+		configDir = new File(FMLPaths.CONFIGDIR.get().toFile() + "/heat_and_climate");
 		isDebug = DCLogger.checkDebugModePass();
 
 		if (isDebug) {
 			Path path = FMLPaths.GAMEDIR.get();
-			if (path.toString()
-			    .contains("run")) {
-				assetsDir = new File(path.toFile()
-				    .getParent() + "/src/main/resources/assets/dcs_climate/");
-				dataDir = new File(path.toFile()
-				    .getParent() + "/src/main/resources/data/dcs_climate/");
+			if (path.toString().contains("run")) {
+				assetsDir = new File(path.toFile().getParent() + "/src/main/resources/assets/dcs_climate/");
+				dataDir = new File(path.toFile().getParent() + "/src/main/resources/data/dcs_climate/");
 				DCLogger.debugInfoLog("path test1: " + assetsDir.getPath());
 				DCLogger.debugInfoLog("path test2: " + dataDir.getPath());
 			}
@@ -102,8 +100,7 @@ public class ClimateCore {
 		FeatureInit.init();
 		TriggersDC.init();
 
-		final IEventBus bus = FMLJavaModLoadingContext.get()
-		    .getModEventBus();
+		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		CoreInit.BLOCKS.register(bus);
 		CoreInit.TABS.register(bus);
 		CoreInit.BLOCK_ENTITIES.register(bus);
@@ -160,18 +157,20 @@ public class ClimateCore {
 	}
 
 	public void attributeRegister(EntityAttributeCreationEvent event) {
-		event.put(MagicInit.CROW_TURRET.get(), CrowTurretEntity.createAttributes()
-		    .build());
+		event.put(MagicInit.CROW_TURRET.get(), CrowTurretEntity.createAttributes().build());
 	}
+
+	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.DAMAGE_TYPE, DamageTypeInit::bootstrap);
 
 	public void gatherData(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
 		PackOutput output = generator.getPackOutput();
 		CompletableFuture<HolderLookup.Provider> lookup = event.getLookupProvider();
 		ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+		generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(output, lookup, BUILDER, Set.of(ClimateCore.MOD_ID)));
 		BlockTagProviderDC blockTag = new BlockTagProviderDC(output, lookup, existingFileHelper);
 		generator.addProvider(event.includeServer(), blockTag);
-		generator.addProvider(event.includeServer(), new ItemTagProviderDC(output, lookup, safeBlockTags(blockTag.contentsGetter()), existingFileHelper));
+		generator.addProvider(event.includeServer(), new ItemTagProviderDC(output, lookup, blockTag, existingFileHelper));
 		generator.addProvider(event.includeServer(), new BiomeTagProviderDC(output, lookup, existingFileHelper));
 		generator.addProvider(event.includeServer(), new FluidTagProviderDC(output, lookup, existingFileHelper));
 
@@ -180,7 +179,7 @@ public class ClimateCore {
 		generator.addProvider(event.includeServer(), wrapRecipe(output, new MagicRecipeProvider(output), "Recipes: Magic"));
 		generator.addProvider(event.includeServer(), wrapRecipe(output, new MachineRecipeProvider(output), "Recipes: Machine"));
 
-		generator.addProvider(event.includeServer(), new AdvancementProvider(output, lookup, List.of(new AdvancementProviderDC())));
+		generator.addProvider(event.includeServer(), new AdvancementProviderDC(output, lookup, existingFileHelper));
 	}
 
 	// 1.20.1のRecipeProvider#getName()はfinalで全て"Recipes"を返すため、
@@ -199,11 +198,11 @@ public class ClimateCore {
 			}
 		};
 	}
+
 	// 旧来Blockタグ未定義のcopyが48箇所あり、1.19.2ではno-opだったが1.20.1ではMissing block tagで失敗する。
 	// ItemTag側48行を触らず、欠損時は空Tagとして扱うlookupラッパで旧出力を維持する。
 	//TODO runDataを行う際にエラーとなるので、一旦コレで回避してる。advancementの "tag":の旧記述に関しても修正したほうが良さそう。
-	private static java.util.concurrent.CompletableFuture<TagsProvider.TagLookup<Block>> safeBlockTags(
-			java.util.concurrent.CompletableFuture<TagsProvider.TagLookup<Block>> inner) {
+	private static java.util.concurrent.CompletableFuture<TagsProvider.TagLookup<Block>> safeBlockTags(java.util.concurrent.CompletableFuture<TagsProvider.TagLookup<Block>> inner) {
 		return inner.thenApply(lookup -> (TagKey<Block> key) -> {
 			java.util.Optional<TagBuilder> found = lookup.apply(key);
 			return found.isPresent() ? found : java.util.Optional.of(TagBuilder.create());

@@ -8,13 +8,13 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
-import defeatedcrow.hac.api.damage.DamageTypeClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.climate.register.BiomeClimateRegister;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.core.util.DamageSourceClimate;
 import defeatedcrow.hac.magic.MagicUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -87,9 +87,9 @@ public class ClientClimateData {
 		for (ItemStack check : charms) {
 			IJewelCharm charm = (IJewelCharm) check.getItem();
 			if (isCold)
-				coldPrev += charm.reduceDamage(player, DamageTypeClimate.CLIMATE_COLD, damage, check);
+				coldPrev += charm.reduceDamage(player, DamageSourceClimate.getInstance(world).getCold(), damage, check);
 			else
-				heatPrev += charm.reduceDamage(player, DamageTypeClimate.CLIMATE_HEAT, damage, check);
+				heatPrev += charm.reduceDamage(player, DamageSourceClimate.getInstance(world).getHeat(), damage, check);
 		}
 		charms.clear();
 

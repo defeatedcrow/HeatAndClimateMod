@@ -28,6 +28,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -148,7 +149,7 @@ public class CharmTriggerEvent {
 						charm.onConsumeResource(living, c1);
 					} else {
 						float am2 = amount;
-						dif *= source.typeHolder().unwrapKey().map(type -> charm.reduceDamage(living, type, am2, c1)).orElse(1.0F);
+						dif *= charm.reduceDamage(living, source, am2, c1);
 					}
 				}
 			}
@@ -161,7 +162,7 @@ public class CharmTriggerEvent {
 				if (!c2.isEmpty() && c2.getItem() instanceof IJewelCharm charm) {
 					if (charm.isActive(attacker, c2)) {
 						float am2 = amount;
-						atk *= source.typeHolder().unwrapKey().map(type -> charm.increaceDamage(attacker, living, type, am2, c2)).orElse(1.0F);
+						atk *= charm.increaceDamage(attacker, living, source, am2, c2);
 					}
 				}
 			}
