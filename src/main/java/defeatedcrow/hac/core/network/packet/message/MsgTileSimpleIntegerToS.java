@@ -60,7 +60,7 @@ public class MsgTileSimpleIntegerToS implements IPacketDC {
 		if (ctx.getSender() != null && ctx.getSender().getUUID().equals(id)) {
 			ServerPlayer player = ctx.getSender();
 			BlockPos pos = new BlockPos(x, y, z);
-			BlockEntity entity = player.getLevel().getBlockEntity(pos);
+			BlockEntity entity = player.level().getBlockEntity(pos);
 			if (entity instanceof IIntReceiverClient tile) {
 				tile.receiveIntegerFromClient(button);
 			}

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.DCTexturePath;
@@ -33,7 +33,7 @@ public class HopperEXPScreen extends AbstractContainerScreen<HopperEXPMenu> {
 	}
 
 	@Override
-	public void render(PoseStack pose, int mx, int my, float f) {
+	public void render(GuiGraphics pose, int mx, int my, float f) {
 		this.renderBackground(pose);
 		super.render(pose, mx, my, f);
 		this.renderTooltip(pose, mx, my);
@@ -53,30 +53,30 @@ public class HopperEXPScreen extends AbstractContainerScreen<HopperEXPMenu> {
 			list.add(Component.literal(this.menu.getGaugeProgress() + " / 100 EXP"));
 		}
 
-		this.renderComponentTooltip(pose, list, mx, my);
+		pose.renderComponentTooltip(this.font, list, mx, my);
 	}
 
 	@Override
-	protected void renderBg(PoseStack pose, float f, int mx, int my) {
+	protected void renderBg(GuiGraphics pose, float f, int mx, int my) {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, getGuiLocation());
 		int i = (this.width - this.imageWidth) / 2;
 		int j = (this.height - this.imageHeight) / 2;
-		this.blit(pose, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		pose.blit(getGuiLocation(), i, j, 0, 0, this.imageWidth, this.imageHeight);
 
 		boolean lock = this.getMenu().getContainer().isLocked();
 		if (lock) {
-			this.blit(pose, i + 156, j + 3, 176, 21, 12, 21);
+			pose.blit(getGuiLocation(), i + 156, j + 3, 176, 21, 12, 21);
 		} else {
-			this.blit(pose, i + 156, j + 3, 176, 0, 12, 21);
+			pose.blit(getGuiLocation(), i + 156, j + 3, 176, 0, 12, 21);
 		}
 
 		int g = this.menu.getGaugeProgress();
 		if (g > 0) {
-			this.blit(pose, i + 48, j + 33, 0, 182, 1, 4);
+			pose.blit(getGuiLocation(), i + 48, j + 33, 0, 182, 1, 4);
 			if (g > 1) {
-				this.blit(pose, i + 49, j + 33, 80 - g + 1, 182, g - 1, 4);
+				pose.blit(getGuiLocation(), i + 49, j + 33, 80 - g + 1, 182, g - 1, 4);
 
 			}
 		}

@@ -37,7 +37,8 @@ public class ColorSeedBagItem extends ItemDC {
 	final MagicColor color;
 
 	public ColorSeedBagItem(MagicColor c) {
-		super(new Item.Properties().tab(MagicInit.MAGIC).stacksTo(16), null);
+		super(new Item.Properties().stacksTo(16), null);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(MagicInit.MAGIC, this);
 		color = c;
 	}
 

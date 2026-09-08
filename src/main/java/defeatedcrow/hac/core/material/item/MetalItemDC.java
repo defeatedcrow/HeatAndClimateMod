@@ -15,7 +15,8 @@ public class MetalItemDC extends ItemDC {
 	private String domain = "main";
 
 	public MetalItemDC(Rarity rare, String s, TagKey<Item> pair) {
-		super(new Item.Properties().rarity(rare).tab(CoreInit.CORE), pair);
+		super(new Item.Properties().rarity(rare), pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.CORE, this);
 		name = s;
 	}
 

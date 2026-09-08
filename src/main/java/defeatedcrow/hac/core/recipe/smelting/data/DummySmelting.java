@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.material.CoreInit;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
@@ -43,7 +44,7 @@ public class DummySmelting implements IDummySmelting {
 	}
 
 	@Override
-	public ItemStack assemble(Container cont) {
+	public ItemStack assemble(Container cont, RegistryAccess access) {
 		return ItemStack.EMPTY;
 	}
 
@@ -63,7 +64,7 @@ public class DummySmelting implements IDummySmelting {
 	}
 
 	@Override
-	public ItemStack getResultItem() {
+	public ItemStack getResultItem(RegistryAccess access) {
 		return this.result.copy();
 	}
 

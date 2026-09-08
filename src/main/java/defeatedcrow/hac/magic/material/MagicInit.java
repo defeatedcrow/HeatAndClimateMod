@@ -7,7 +7,6 @@ import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.block.NoTabBlockItemDC;
 import defeatedcrow.hac.core.material.entity.ChairEntity;
-import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Magic;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.magic.client.gui.BlackRodMenu;
 import defeatedcrow.hac.magic.client.gui.BoringMenu;
@@ -89,6 +88,7 @@ import defeatedcrow.hac.magic.material.item.jems.SilverBracelet;
 import defeatedcrow.hac.magic.material.item.jems.SilverPendant;
 import defeatedcrow.hac.magic.material.item.jems.SilverRing;
 import net.minecraft.tags.TagKey;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -103,7 +103,8 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class MagicInit {
 
-	public static final CreativeModeTab MAGIC = new CreativeTabClimate_Magic("magic");
+	public static final RegistryObject<CreativeModeTab> MAGIC = CoreInit.TABS.register("magic",
+	    () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.magic")).icon(() -> new ItemStack(MagicInit.EXTRACT_MANA.get())).build());
 
 	public static void init() {}
 
@@ -328,18 +329,18 @@ public class MagicInit {
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("magic/" + name, block);
-		regItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(MAGIC), tag));
+		regItem(name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new BlockItemDC(name, obj.get(), new Item.Properties(), tag), MAGIC));
 		return obj;
 	}
 
 	public static RegistryObject<Block> regNoTabBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("magic/" + name, block);
-		regItem(name, () -> new NoTabBlockItemDC(name, obj.get(), new Item.Properties().tab(MAGIC), tag));
+		regItem(name, () -> new NoTabBlockItemDC(name, obj.get(), new Item.Properties(), tag));
 		return obj;
 	}
 
 	public static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> register(String name, MenuType.MenuSupplier<T> supplier) {
-		return CoreInit.MENU_TYPE.register(name, () -> new MenuType<>(supplier));
+		return CoreInit.MENU_TYPE.register(name, () -> new MenuType<>(supplier, net.minecraft.world.flag.FeatureFlags.VANILLA_SET));
 	}
 
 }

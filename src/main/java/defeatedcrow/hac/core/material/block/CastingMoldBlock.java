@@ -15,6 +15,7 @@ import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -30,8 +31,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.Tags;
@@ -58,7 +58,7 @@ public class CastingMoldBlock extends ClimateBlock implements IRapidCollectables
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.CLAY).strength(2.0F, 8.0F).noOcclusion();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.CLAY).strength(2.0F, 8.0F).noOcclusion();
 	}
 
 	@Override
@@ -132,7 +132,7 @@ public class CastingMoldBlock extends ClimateBlock implements IRapidCollectables
 
 	@Override
 	public TagKey<Item> collectableToolTag() {
-		return Tags.Items.TOOLS_SHOVELS;
+		return ItemTags.SHOVELS;
 	}
 
 	@Override

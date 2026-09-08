@@ -41,9 +41,9 @@ import net.minecraft.world.level.block.StemBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -61,13 +61,13 @@ public class CropAspiratorBlock extends RedstoneMachineBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL).strength(0.5F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.5F, 540.0F).noOcclusion();
 	}
 
 	@Override
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity target) {
 		if (DCState.getBool(state, DCState.POWERED))
-			target.hurt(DamageSource.CACTUS, 20.0F);
+			target.hurt(target.level().damageSources().cactus(), 20.0F);
 	}
 
 	@Override
@@ -101,7 +101,7 @@ public class CropAspiratorBlock extends RedstoneMachineBlock {
 							}
 						} else if (st.getBlock() instanceof CropBlock crop) {
 							if (crop.isMaxAge(st)) {
-								LootContext.Builder builder = new LootContext.Builder(level)
+								LootParams.Builder builder = new LootParams.Builder(level)
 								    .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p))
 								    .withParameter(LootContextParams.BLOCK_STATE, st)
 								    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(p))
@@ -118,7 +118,7 @@ public class CropAspiratorBlock extends RedstoneMachineBlock {
 							}
 						} else if (st.getBlock() instanceof BonemealableBlock crop && !HarvestBlackList.contains(st.getBlock())) {
 							if (!crop.isValidBonemealTarget(level, p, st, false)) {
-								LootContext.Builder builder = new LootContext.Builder(level)
+								LootParams.Builder builder = new LootParams.Builder(level)
 								    .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p))
 								    .withParameter(LootContextParams.BLOCK_STATE, st)
 								    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(p))
@@ -154,7 +154,7 @@ public class CropAspiratorBlock extends RedstoneMachineBlock {
 					}
 					return target == null || target.isEmpty();
 				}).orElse(false);
-				if (!flag && !level.getBlockState(pos).getMaterial().blocksMotion()) {
+				if (!flag && !level.getBlockState(pos).blocksMotion()) {
 					ItemEntity drop = new ItemEntity(level, pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D, target.copy());
 					flag = level.addFreshEntity(drop);
 				}

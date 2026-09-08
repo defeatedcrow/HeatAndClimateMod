@@ -19,6 +19,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.MenuProvider;
@@ -31,7 +32,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -41,7 +41,8 @@ public class BoringSurveyItem extends ItemDC implements MenuProvider {
 	private int[] blocks = new int[30];
 
 	public BoringSurveyItem() {
-		super(new Item.Properties().tab(CoreInit.MACHINE).stacksTo(1), TagDC.ItemTag.DUMMY);
+		super(new Item.Properties().stacksTo(1), TagDC.ItemTag.DUMMY);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	@Override
@@ -101,7 +102,7 @@ public class BoringSurveyItem extends ItemDC implements MenuProvider {
 	public static void setPlayerData(ItemStack item, Player player) {
 		if (!DCUtil.isEmpty(item) && item.getItem() instanceof BoringSurveyItem) {
 			CompoundTag tag = item.getOrCreateTag();
-			tag.putString("dcs.boring.date", DCTimeHelper.getDate(player.getLevel()));
+			tag.putString("dcs.boring.date", DCTimeHelper.getDate(player.level()));
 			tag.putInt("dcs.boring.x", player.blockPosition().getX());
 			tag.putInt("dcs.boring.y", player.blockPosition().getY());
 			tag.putInt("dcs.boring.z", player.blockPosition().getZ());
@@ -110,11 +111,11 @@ public class BoringSurveyItem extends ItemDC implements MenuProvider {
 	}
 
 	public static int getBlockTypeId(BlockState state) {
-		if (state.is(Blocks.LAVA) || state.getMaterial() == Material.LAVA) {
+		if (state.is(Blocks.LAVA)) {
 			return 1;
 		} else if (state.is(Blocks.BEDROCK)) {
 			return 2;
-		} else if (state.getMaterial() == Material.DIRT || state.getMaterial() == Material.GRASS || state.getMaterial() == Material.SAND) {
+		} else if (state.is(BlockTags.DIRT) || state.is(Blocks.GRASS_BLOCK) || state.is(BlockTags.SAND)) {
 			return 4;
 		} else if (state.is(Tags.Blocks.ORES_IRON)) {
 			return 5;
@@ -145,11 +146,11 @@ public class BoringSurveyItem extends ItemDC implements MenuProvider {
 		} else if (state.is(TagDC.BlockTag.ORES_GREEN) || state.is(TagDC.BlockTag.ORES_GREEN_DEEP)) {
 			return 18;
 		} else {
-			if (state.isAir() || state.getFluidState().isSource() || state.getMaterial().isReplaceable()) {
+			if (state.isAir() || state.getFluidState().isSource() || state.canBeReplaced()) {
 				return 0;
 			} else if (state.is(Tags.Blocks.ORES)) {
 				return 19;
-			} else if (state.getMaterial() == Material.STONE) {
+			} else if (state.is(BlockTags.BASE_STONE_OVERWORLD)) {
 				return 3;
 			} else {
 				return 19;

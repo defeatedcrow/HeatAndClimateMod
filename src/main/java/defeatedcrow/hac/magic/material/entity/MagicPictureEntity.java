@@ -66,9 +66,9 @@ public abstract class MagicPictureEntity extends OwnableMagicEntity {
 	@Override
 	protected void onRemoved() {
 		Vec3 pos = this.getEyePosition();
-		if (!level.isClientSide && !getDropItem().isEmpty()) {
-			ItemEntity drop = new ItemEntity(level, pos.x, pos.y + 0.1D, pos.z, getDropItem().copy());
-			level.addFreshEntity(drop);
+		if (!level().isClientSide && !getDropItem().isEmpty()) {
+			ItemEntity drop = new ItemEntity(level(), pos.x, pos.y + 0.1D, pos.z, getDropItem().copy());
+			level().addFreshEntity(drop);
 		}
 	}
 

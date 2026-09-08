@@ -36,7 +36,7 @@ public class SilverRing extends MagicJewelBase {
 
 	@Override
 	public void constantEffect(LivingEntity owner, ItemStack charm) {
-		if (owner != null && !owner.level.isClientSide) {
+		if (owner != null && !owner.level().isClientSide) {
 			int i = DCUtil.isEmpty(charm) ? 0 : charm.getCount() - 1;
 			MagicColor color = getColor();
 			if (color.isWhite) {
@@ -48,9 +48,9 @@ public class SilverRing extends MagicJewelBase {
 			} else if (color.isRed) {
 				owner.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 300));
 			} else if (color.isGreen) {
-				if (owner.getLevel().getGameTime() % 10 == 0) {
+				if (owner.level().getGameTime() % 10 == 0) {
 					double d = 8D + 4D * i;
-					List<ItemEntity> list = owner.level.getEntitiesOfClass(ItemEntity.class, owner.getBoundingBox().inflate(d), EntitySelector.ENTITY_STILL_ALIVE);
+					List<ItemEntity> list = owner.level().getEntitiesOfClass(ItemEntity.class, owner.getBoundingBox().inflate(d), EntitySelector.ENTITY_STILL_ALIVE);
 					list.stream().forEach(drop -> { drop.setPos(owner.getX(), owner.getY() + 0.15D, owner.getZ()); });
 				}
 			}

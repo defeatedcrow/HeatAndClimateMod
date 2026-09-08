@@ -14,7 +14,8 @@ public class ItemShovelDC extends ShovelItem implements IItemDC, ITierItem {
 	final TagKey<Item> tag;
 
 	public ItemShovelDC(TierDC tierIn, TagKey<Item> pair) {
-		super(tierIn, 1, -3.0F, new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE));
+		super(tierIn, 1, -3.0F, new Item.Properties().durability(tierIn.getUses()));
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 		tier = tierIn;
 		tag = pair;
 	}

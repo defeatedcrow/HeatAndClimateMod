@@ -30,6 +30,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraftforge.common.Tags;
 
@@ -97,7 +98,7 @@ public class LeavesPalm extends LeavesCropBlockDC {
 
 	// ドロップはなし
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		ItemStack tool = builder.getOptionalParameter(LootContextParams.TOOL);
 		if (DCUtil.isEmpty(tool)) {

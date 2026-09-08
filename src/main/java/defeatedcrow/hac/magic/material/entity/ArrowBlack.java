@@ -34,7 +34,7 @@ public class ArrowBlack extends AbstractArrow {
 
 	@Override
 	public void tick() {
-		if (this.inGroundTime > 2 || this.getY() < this.getLevel().getMinBuildHeight() || this.isInLava()) {
+		if (this.inGroundTime > 2 || this.getY() < this.level().getMinBuildHeight() || this.isInLava()) {
 			this.dealtDamage = true;
 		}
 
@@ -42,7 +42,7 @@ public class ArrowBlack extends AbstractArrow {
 		if ((this.dealtDamage || this.isNoPhysics()) && entity != null && entity instanceof LivingEntity) {
 			boolean flag = false;
 			BlockPos pos = new BlockPos(Mth.floor(this.getX()), Mth.floor(this.getY()), Mth.floor(this.getZ()));
-			if (level.getBlockState(pos).getMaterial().isReplaceable() && level.getBlockState(pos.above()).getMaterial().isReplaceable()) {
+			if (level().getBlockState(pos).canBeReplaced() && level().getBlockState(pos.above()).canBeReplaced()) {
 				entity.teleportToWithTicket(pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D);
 				entity.resetFallDistance();
 				flag = true;
@@ -60,16 +60,16 @@ public class ArrowBlack extends AbstractArrow {
 		}
 
 		super.tick();
-		if (this.level.isClientSide && !this.inGround) {
-			this.level.addParticle(ParticleTypes.INSTANT_EFFECT, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+		if (this.level().isClientSide && !this.inGround) {
+			this.level().addParticle(ParticleTypes.INSTANT_EFFECT, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 		}
 
 	}
 
 	public void dropItem(Vec3 pos) {
-		if (!level.isClientSide && !getPickupItem().isEmpty()) {
-			ItemEntity drop = new ItemEntity(level, pos.x, pos.y + 0.1D, pos.z, this.getPickupItem());
-			level.addFreshEntity(drop);
+		if (!level().isClientSide && !getPickupItem().isEmpty()) {
+					ItemEntity drop = new ItemEntity(level(), pos.x, pos.y + 0.1D, pos.z, this.getPickupItem());
+			level().addFreshEntity(drop);
 		}
 	}
 
@@ -94,7 +94,7 @@ public class ArrowBlack extends AbstractArrow {
 		if (liv != null && this.isAcceptibleReturnOwner()) {
 			BlockPos pos = new BlockPos(Mth.floor(liv.getX()), Mth.floor(liv.getY()), Mth.floor(liv.getZ()));
 			BlockPos pos2 = new BlockPos(Mth.floor(getOwner().getX()), Mth.floor(getOwner().getY()), Mth.floor(getOwner().getZ()));
-			if (level.getBlockState(pos).getMaterial().isReplaceable() && level.getBlockState(pos.above()).getMaterial().isReplaceable()) {
+			if (level().getBlockState(pos).canBeReplaced() && level().getBlockState(pos.above()).canBeReplaced()) {
 				getOwner().teleportToWithTicket(pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D);
 				getOwner().resetFallDistance();
 				liv.teleportToWithTicket(pos2.getX() + 0.5D, pos2.getY() + 0.15D, pos2.getZ() + 0.5D);

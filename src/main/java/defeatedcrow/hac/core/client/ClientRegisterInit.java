@@ -1315,15 +1315,15 @@ public class ClientRegisterInit {
 	}
 
 	public static void registerParticle(RegisterParticleProvidersEvent event) {
-		event.register(CoreInit.SMOKE.get(), SmokeParticleDC.Provider::new);
-		event.register(CoreInit.SMOKE_SMALL.get(), SmokeParticleDC.ProviderSmall::new);
-		event.register(CoreInit.LIGHT_ORB_WHITE.get(), LightOrbDC.Provider::new);
-		event.register(CoreInit.LIGHT_ORB_RED.get(), LightOrbDC.Provider::new);
-		event.register(CoreInit.LIGHT_ORB_BLUE.get(), LightOrbDC.Provider::new);
-		event.register(CoreInit.LEAKAGE.get(), LeakageParticleDC.Provider::new);
-		event.register(CoreInit.FOOD_PARTICLE.get(), SimpleParticleDC.Provider::new);
-		event.register(CoreInit.SPARKLE.get(), SparkleParticleDC.Provider::new);
-		event.register(CoreInit.BUBBLE_BLACK.get(), BubbleParticleDC.Provider::new);
+		event.registerSpriteSet(CoreInit.SMOKE.get(), SmokeParticleDC.Provider::new);
+		event.registerSpriteSet(CoreInit.SMOKE_SMALL.get(), SmokeParticleDC.ProviderSmall::new);
+		event.registerSpriteSet(CoreInit.LIGHT_ORB_WHITE.get(), LightOrbDC.Provider::new);
+		event.registerSpriteSet(CoreInit.LIGHT_ORB_RED.get(), LightOrbDC.Provider::new);
+		event.registerSpriteSet(CoreInit.LIGHT_ORB_BLUE.get(), LightOrbDC.Provider::new);
+		event.registerSpriteSet(CoreInit.LEAKAGE.get(), LeakageParticleDC.Provider::new);
+		event.registerSpriteSet(CoreInit.FOOD_PARTICLE.get(), SimpleParticleDC.Provider::new);
+		event.registerSpriteSet(CoreInit.SPARKLE.get(), SparkleParticleDC.Provider::new);
+		event.registerSpriteSet(CoreInit.BUBBLE_BLACK.get(), BubbleParticleDC.Provider::new);
 	}
 
 	public static void registerClientReloadListeners(RegisterClientReloadListenersEvent event) {
@@ -1346,10 +1346,10 @@ public class ClientRegisterInit {
 		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getFlowingFluid()
 		    .get(), RenderType.translucent());
 
-		ItemProperties.register(CoreInit.HARPOON_FLINT.get(), ResourceLocation.fromNamespaceAndPath("minecraft", "throwing"),
+		ItemProperties.register(CoreInit.HARPOON_FLINT.get(), new ResourceLocation("minecraft", "throwing"),
 		    (stack, level, living, i) -> (living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F));
 
-		ItemProperties.register(CoreInit.FISHING_ROD_STEEL.get(), ResourceLocation.fromNamespaceAndPath("minecraft", "cast"), (stack, level, living, i) -> {
+		ItemProperties.register(CoreInit.FISHING_ROD_STEEL.get(), new ResourceLocation("minecraft", "cast"), (stack, level, living, i) -> {
 			if (living == null) {
 				return 0.0F;
 			} else {
@@ -1363,7 +1363,7 @@ public class ClientRegisterInit {
 			}
 		});
 
-		ItemProperties.register(CoreInit.ALTIMETER.get(), ResourceLocation.fromNamespaceAndPath("minecraft", "angle"), (stack, level, liv, i) -> {
+		ItemProperties.register(CoreInit.ALTIMETER.get(), new ResourceLocation("minecraft", "angle"), (stack, level, liv, i) -> {
 			Entity entity = liv == null ? stack.getEntityRepresentation() : liv;
 			return entity == null ? 0.0F : entity.blockPosition()
 			    .getY() >= 192 ? 1.0F : Mth.clamp(

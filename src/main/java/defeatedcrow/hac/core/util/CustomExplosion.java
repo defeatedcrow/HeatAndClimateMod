@@ -28,7 +28,7 @@ public class CustomExplosion extends Explosion {
 	private Entity igniter;
 
 	public CustomExplosion(Level levelIn, @Nullable Entity bom, double x, double y, double z, float radiusIn, boolean safetyIn) {
-		super(levelIn, bom, null, null, x, y, z, radiusIn, false, Explosion.BlockInteraction.NONE);
+		super(levelIn, bom, null, null, x, y, z, radiusIn, false, net.minecraft.world.level.Explosion.BlockInteraction.KEEP);
 		isSafety = safetyIn;
 		lev = levelIn;
 		rad = radiusIn;
@@ -77,7 +77,7 @@ public class CustomExplosion extends Explosion {
 						double d10 = (1.0D - d12) * d14;
 						float damage = ((int) ((d10 * d10 + d10) / 2.0D * 7.0D * f2 + 1.0D));
 						if (target instanceof Mob mob) {
-							if ((mob.getTarget() != null && mob.getTarget().equals(getSourceMob())) || mob.getTarget() instanceof Player) {
+							if ((mob.getTarget() != null && mob.getTarget().equals(getIndirectSourceEntity())) || mob.getTarget() instanceof Player) {
 								damage *= 3.0F;
 							}
 						}

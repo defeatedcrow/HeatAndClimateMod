@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.tag.TagUtil;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -58,11 +59,19 @@ public enum MaterialsDC implements ArmorMaterial {
 	}
 
 	@Override
+	public int getDurabilityForType(ArmorItem.Type type) {
+		return getDurabilityForSlot(type.getSlot());
+	}
+
 	public int getDurabilityForSlot(EquipmentSlot p_40484_) {
 		return HEALTH_PER_SLOT[p_40484_.getIndex()] * this.durabilityMultiplier;
 	}
 
 	@Override
+	public int getDefenseForType(ArmorItem.Type type) {
+		return getDefenseForSlot(type.getSlot());
+	}
+
 	public int getDefenseForSlot(EquipmentSlot p_40487_) {
 		return this.slotProtections[p_40487_.getIndex()];
 	}

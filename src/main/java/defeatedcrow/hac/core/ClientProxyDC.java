@@ -51,6 +51,7 @@ import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
@@ -194,7 +195,7 @@ public class ClientProxyDC extends CommonProxyDC {
 		if (getClientLevel().isPresent()) {
 			Registry<Biome> registry = getClientLevel().get()
 			    .registryAccess()
-			    .registryOrThrow(Registry.BIOME_REGISTRY);
+			    .registryOrThrow(Registries.BIOME);
 			Optional<ResourceKey<Biome>> key = registry.getResourceKey(biome);
 			key.ifPresent(k -> {
 			    registry.getHolder(k)

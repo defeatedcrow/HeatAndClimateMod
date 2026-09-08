@@ -24,7 +24,8 @@ public abstract class ItemFoodDC extends ItemDC implements IFoodTaste {
 	private boolean rawFood = false;
 
 	public ItemFoodDC(int nut, float sat, TagKey<Item> pair) {
-		super(new Item.Properties().tab(FoodInit.FOOD).food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().build()), pair);
+		super(new Item.Properties().food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().build()), pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(FoodInit.FOOD, this);
 	}
 
 	public ItemFoodDC(Properties prop, TagKey<Item> pair) {

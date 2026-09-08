@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
@@ -64,18 +65,18 @@ public class ChainBlockDC extends ChainBlock implements IBlockDC, IJsonDataDC {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (state == null || builder == null) {
 			ret.addAll(super.getDrops(state, builder));
 		} else {
 			if (state.getBlock() instanceof IBlockDC) {
-				LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+				LootParams cont = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
 				IBlockDC block = (IBlockDC) state.getBlock();
 				Entity breaker = null;
 				ItemStack tool = ItemStack.EMPTY;
 				if (cont.hasParam(LootContextParams.TOOL) && !DCUtil.isEmpty(cont.getParamOrNull(LootContextParams.TOOL))) {
-					tool = cont.getParam(LootContextParams.TOOL);
+					tool = cont.getParameter(LootContextParams.TOOL);
 				}
 				if (cont.hasParam(LootContextParams.THIS_ENTITY)) {
 					breaker = cont.getParamOrNull(LootContextParams.THIS_ENTITY);

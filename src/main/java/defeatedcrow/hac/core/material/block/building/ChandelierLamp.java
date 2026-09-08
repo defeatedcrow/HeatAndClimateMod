@@ -19,8 +19,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 public class ChandelierLamp extends EntityBlockDC {
 
@@ -40,7 +39,7 @@ public class ChandelierLamp extends EntityBlockDC {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F, 6.0F).noOcclusion().lightLevel((state) -> {
+		return BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(0.1F, 6.0F).noOcclusion().lightLevel((state) -> {
 			return 15;
 		});
 	}

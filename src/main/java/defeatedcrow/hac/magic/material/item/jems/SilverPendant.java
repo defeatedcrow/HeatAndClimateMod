@@ -21,6 +21,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -46,7 +47,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.Tags;
 
 public class SilverPendant extends MagicJewelBase {
@@ -74,7 +74,7 @@ public class SilverPendant extends MagicJewelBase {
 
 	@Override
 	public void constantEffect(LivingEntity owner, ItemStack charm) {
-		if (owner != null && !owner.level.isClientSide) {
+		if (owner != null && !owner.level().isClientSide) {
 			int i = DCUtil.isEmpty(charm) ? 0 : charm.getCount() - 1;
 			MagicColor color = getColor();
 			if (color.isRed) {
@@ -121,14 +121,14 @@ public class SilverPendant extends MagicJewelBase {
 
 			List<BlockPos> list = getTargetPos(pos, dir, charm.getCount() * 2);
 			for (BlockPos p : list) {
-				BlockState s = owner.level.getBlockState(p);
+				BlockState s = owner.level().getBlockState(p);
 				if (s != null && !s.hasBlockEntity() && isTerrainBlock(s)) {
-					boolean b1 = s.canHarvestBlock(player.level, p, player);
-					boolean b2 = s.onDestroyedByPlayer(player.level, p, player, b1, player.level.getFluidState(p));
+					boolean b1 = s.canHarvestBlock(player.level(), p, player);
+					boolean b2 = s.onDestroyedByPlayer(player.level(), p, player, b1, player.level().getFluidState(p));
 					if (b1 && b2) {
 						Block block = s.getBlock();
-						block.destroy(owner.level, p, s);
-						block.playerDestroy(owner.level, player, p, s, owner.level.getBlockEntity(p), held);
+						block.destroy(owner.level(), p, s);
+						block.playerDestroy(owner.level(), player, p, s, owner.level().getBlockEntity(p), held);
 						cons = true;
 					}
 				}
@@ -138,7 +138,7 @@ public class SilverPendant extends MagicJewelBase {
 				c.onConsumeResource(player, charm);
 
 				ItemStack cop = held.copy();
-				held.mineBlock(owner.level, state, pos, player);
+				held.mineBlock(owner.level(), state, pos, player);
 				if (held.isEmpty() && !cop.isEmpty())
 					net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(player, cop, InteractionHand.MAIN_HAND);
 			}
@@ -148,7 +148,7 @@ public class SilverPendant extends MagicJewelBase {
 	}
 
 	boolean isTerrainBlock(BlockState state) {
-		return state.is(Tags.Blocks.STONE) || state.is(Tags.Blocks.SAND) || state.is(BlockTags.DIRT) || state.is(Tags.Blocks.GRAVEL) || state.getMaterial() == Material.GRASS;
+		return state.is(Tags.Blocks.STONE) || state.is(Tags.Blocks.SAND) || state.is(BlockTags.DIRT) || state.is(Tags.Blocks.GRAVEL) || state.is(Blocks.GRASS_BLOCK);
 	}
 
 	List<BlockPos> getTargetPos(BlockPos pos, Direction face, int r) {
@@ -192,7 +192,7 @@ public class SilverPendant extends MagicJewelBase {
 		if (c.isBlue) {
 			double d = 8D + 4D * charm.getCount();
 			DCLogger.debugInfoLog("### TargetAI Jammer activated ###");
-			List<LivingEntity> list = owner.level.getEntitiesOfClass(LivingEntity.class, owner.getBoundingBox().inflate(d), EntitySelector.ENTITY_STILL_ALIVE);
+			List<LivingEntity> list = owner.level().getEntitiesOfClass(LivingEntity.class, owner.getBoundingBox().inflate(d), EntitySelector.ENTITY_STILL_ALIVE);
 			if (list != null && !list.isEmpty()) {
 				for (LivingEntity liv : list) {
 					if (liv instanceof NeutralMob n) {
@@ -200,7 +200,7 @@ public class SilverPendant extends MagicJewelBase {
 							n.stopBeingAngry();
 						}
 					} else if (liv instanceof Monster monster) {
-						monster.targetSelector.removeAllGoals();
+						monster.targetSelector.removeAllGoals(g -> true);
 					}
 				}
 			}
@@ -212,7 +212,7 @@ public class SilverPendant extends MagicJewelBase {
 
 	private boolean matchRecipe(SmeltingRecipe recipe, ItemStack item) {
 		NonNullList<Ingredient> ing = recipe.getIngredients();
-		return ing.size() == 1 && ing.get(0).test(item) && !recipe.getResultItem().isEmpty();
+		return ing.size() == 1 && ing.get(0).test(item) && !recipe.getResultItem(net.minecraft.core.RegistryAccess.EMPTY).isEmpty();
 	}
 
 	@Override

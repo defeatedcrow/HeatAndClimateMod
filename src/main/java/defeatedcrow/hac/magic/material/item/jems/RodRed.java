@@ -19,6 +19,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -72,7 +73,7 @@ public class RodRed extends MagicJewelBase {
 	public InteractionResultHolder<ItemStack> onBlockHit(Level level, Player player, InteractionHand hand, ItemStack charm, BlockHitResult res) {
 		if (!DCUtil.isEmpty(charm) && level instanceof ServerLevel serverLevel) {
 			Vec3 vec3 = Vec3.atCenterOf(res.getBlockPos());
-			BlockPos p1 = new BlockPos(vec3);
+			BlockPos p1 = BlockPos.containing(vec3.x, vec3.y, vec3.z);
 			if (!level.getBlockState(p1)
 			    .isAir()) {
 				ResourceKey<Level> dim = serverLevel.dimension();
@@ -110,14 +111,14 @@ public class RodRed extends MagicJewelBase {
 				int dz = tag.getInt(TagKeyDC.POS_Z);
 				int d = tag.getInt(TagKeyDC.DIRECTION);
 				Direction dir = Direction.from3DDataValue(d);
-				ResourceKey<Level> dim = ResourceKey.create(Registry.DIMENSION_REGISTRY, ResourceLocation.parse(s1));
+				ResourceKey<Level> dim = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(s1));
 				if (!serverLevel.dimension()
 				    .equals(dim)) {
 					MutableComponent mes = Component.translatable("dcs.tip.rod.red.error1");
 					return InteractionResultHolder.success(charm);
 				} else {
 					Vec3 vec = new Vec3(dx, dy, dz);
-					BlockPos pos = new BlockPos(vec);
+					BlockPos pos = BlockPos.containing(vec.x, vec.y, vec.z);
 					if (level.isLoaded(pos)) {
 						BlockState state = level.getBlockState(pos);
 						if (state != null && !state.isAir()) {

@@ -24,6 +24,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -95,13 +96,13 @@ public abstract class ConveyorBlockBase extends EntityBlockDC {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (state.getBlock() instanceof ConveyorBlockBase cont && builder != null) {
-			LootContext context = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+			LootParams context = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
 			BlockEntity tile = null;
 			if (context.hasParam(LootContextParams.BLOCK_ENTITY)) {
-				tile = context.getParam(LootContextParams.BLOCK_ENTITY);
+				tile = context.getParameter(LootContextParams.BLOCK_ENTITY);
 			}
 
 			ret.add(getMainDrop());

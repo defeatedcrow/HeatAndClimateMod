@@ -6,10 +6,10 @@ import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.math.Matrix4f;
+import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -50,7 +50,7 @@ public class FermentationJarScreen extends AbstractContainerScreen<FermentationJ
 	}
 
 	@Override
-	public void render(PoseStack pose, int mx, int my, float f) {
+	public void render(GuiGraphics pose, int mx, int my, float f) {
 		this.renderBackground(pose);
 		super.render(pose, mx, my, f);
 		this.renderTooltip(pose, mx, my);
@@ -99,38 +99,38 @@ public class FermentationJarScreen extends AbstractContainerScreen<FermentationJ
 			list.add(Component.translatable("dcs.tip.device.airflow", air.localize()));
 		}
 
-		this.renderComponentTooltip(pose, list, mx, my);
+		pose.renderComponentTooltip(this.font, list, mx, my);
 	}
 
 	@Override
-	protected void renderBg(PoseStack pose, float f, int mx, int my) {
+	protected void renderBg(GuiGraphics pose, float f, int mx, int my) {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, DCTexturePath.GUI_FERMENTATION_JAR.getLocation());
 
 		int i = (this.width - this.imageWidth) / 2;
 		int j = (this.height - this.imageHeight) / 2;
-		this.blit(pose, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		pose.blit(DCTexturePath.GUI_FERMENTATION_JAR.getLocation(), i, j, 0, 0, this.imageWidth, this.imageHeight);
 
 		boolean lock = this.getMenu().getContainer().isLocked();
 		if (lock) {
-			this.blit(pose, i + 156, j + 3, 176, 21, 12, 21);
+			pose.blit(DCTexturePath.GUI_FERMENTATION_JAR.getLocation(), i + 156, j + 3, 176, 21, 12, 21);
 		} else {
-			this.blit(pose, i + 156, j + 3, 176, 0, 12, 21);
+			pose.blit(DCTexturePath.GUI_FERMENTATION_JAR.getLocation(), i + 156, j + 3, 176, 0, 12, 21);
 		}
 
 		int tempID = this.menu.getTempID();
-		this.blit(pose, i + 11, j + 36, 190, tempID * 14, 14, 14);
+		pose.blit(DCTexturePath.GUI_FERMENTATION_JAR.getLocation(), i + 11, j + 36, 190, tempID * 14, 14, 14);
 
 		int humID = this.menu.getHumID();
-		this.blit(pose, i + 11, j + 51, 204, humID * 14, 14, 14);
+		pose.blit(DCTexturePath.GUI_FERMENTATION_JAR.getLocation(), i + 11, j + 51, 204, humID * 14, 14, 14);
 
 		int airID = this.menu.getAirID();
-		this.blit(pose, i + 11, j + 66, 218, airID * 14, 14, 14);
+		pose.blit(DCTexturePath.GUI_FERMENTATION_JAR.getLocation(), i + 11, j + 66, 218, airID * 14, 14, 14);
 
 		int l = this.menu.getBurnProgress();
 		if (l > 0) {
-			this.blit(pose, i + 103, j + 55, 176, 42, l, 9);
+			pose.blit(DCTexturePath.GUI_FERMENTATION_JAR.getLocation(), i + 103, j + 55, 176, 42, l, 9);
 		}
 
 		if (!this.menu.getInputFluid().isEmpty()) {
@@ -163,7 +163,7 @@ public class FermentationJarScreen extends AbstractContainerScreen<FermentationJ
 		return super.mouseClicked(x, y, i0);
 	}
 
-	public static void renderFluid(PoseStack pose, FluidStack fluid, int x, int y, int width, int height, int amo) {
+	public static void renderFluid(GuiGraphics pose, FluidStack fluid, int x, int y, int width, int height, int amo) {
 		IClientFluidTypeExtensions ext = IClientFluidTypeExtensions.of(fluid.getFluid().getFluidType());
 		ResourceLocation res = ext.getStillTexture(fluid);
 		TextureAtlasSprite tex = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(res);
@@ -171,7 +171,7 @@ public class FermentationJarScreen extends AbstractContainerScreen<FermentationJ
 		int y1 = y + (height - amo);
 
 		RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
-		Matrix4f matrix = pose.last().pose();
+		Matrix4f matrix = pose.pose().last().pose();
 		setColor(color);
 
 		int hc = amo / 16;

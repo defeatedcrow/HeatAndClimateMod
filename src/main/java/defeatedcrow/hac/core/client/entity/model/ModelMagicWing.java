@@ -50,7 +50,7 @@ public class ModelMagicWing<T extends LivingEntity> extends AgeableListModel<T> 
 
 	@Override
 	public void setupAnim(T living, float f1, float f2, float part, float headYaw, float headPitch) {
-		boolean b = !living.isOnGround() && living.getDeltaMovement().length() > 0.05D;
+		boolean b = !living.onGround() && living.getDeltaMovement().length() > 0.05D;
 		if (b) {
 			int i1 = ClientTickEventDC.i;
 			int i2 = i1 - 1;

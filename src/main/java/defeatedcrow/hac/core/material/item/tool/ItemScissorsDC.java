@@ -14,7 +14,8 @@ public class ItemScissorsDC extends ShearsItem implements IItemDC, ITierItem {
 	final TagKey<Item> tag;
 
 	public ItemScissorsDC(TierDC tierIn, TagKey<Item> pair) {
-		super(new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE));
+		super(new Item.Properties().durability(tierIn.getUses()));
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 		tier = tierIn;
 		tag = pair;
 	}

@@ -20,8 +20,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 public class PlankBlockDC extends BlockDC {
 
@@ -33,7 +32,7 @@ public class PlankBlockDC extends BlockDC {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.SAND)
+		return BlockBehaviour.Properties.of().mapColor(MapColor.SAND)
 		    .strength(2.0F, 3.0F)
 		    .sound(SoundType.WOOD);
 	}

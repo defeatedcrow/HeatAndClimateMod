@@ -50,7 +50,7 @@ public class CardRedBlue extends MagicCardBase {
 				if (!(mob instanceof Enemy) && mob.position().distanceTo(player.position()) > d / 4D) {
 					return;
 				}
-				mob.hurt(DamageSource.LIGHTNING_BOLT, 12.0F * boost);
+				mob.hurt(mob.level().damageSources().lightningBolt(), 12.0F * boost);
 				if (mob.getVehicle() != null) {
 					mob.removeVehicle();
 				}

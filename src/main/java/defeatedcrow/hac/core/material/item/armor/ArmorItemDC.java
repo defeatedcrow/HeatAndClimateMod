@@ -35,8 +35,9 @@ public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 	final ArmorMaterial material;
 	protected String armorName;
 
-	public ArmorItemDC(String n, ArmorMaterial mat, EquipmentSlot slot, ModelType t) {
-		super(mat, slot, new Item.Properties().tab(CoreInit.CLOTH));
+	public ArmorItemDC(String n, ArmorMaterial mat, ArmorItem.Type armorType, ModelType t) {
+		super(mat, armorType, new Item.Properties());
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.CLOTH, this);
 		name = n;
 		type = t;
 		material = mat;
@@ -124,7 +125,7 @@ public class ArmorItemDC extends ArmorItem implements IJsonDataDC, IItemDC {
 		return TagDC.ItemTag.DUMMY;
 	}
 
-	public ModelType getType() {
+	public ModelType getModelType() {
 		return type;
 	}
 

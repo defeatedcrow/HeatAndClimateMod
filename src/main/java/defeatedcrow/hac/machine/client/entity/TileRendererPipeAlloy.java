@@ -1,7 +1,7 @@
 package defeatedcrow.hac.machine.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.machine.FaceIO;
 import defeatedcrow.hac.api.material.EntityRenderData;
@@ -33,7 +33,7 @@ public class TileRendererPipeAlloy implements BlockEntityRenderer<FluidPipeAlloy
 
 			poseStack.pushPose();
 			poseStack.translate(0.5F, 0.5F, 0.5F);
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+			poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
 			poseStack.scale(1F, 1F, 1F);
 
 			this.model.renderToBuffer(poseStack, buffer.getBuffer(model.renderType(tex)), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);

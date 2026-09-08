@@ -6,10 +6,9 @@ import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.math.Matrix4f;
+import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -30,6 +29,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -125,24 +125,24 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 	}
 
 	@Override
-	public void draw(IClimateSmelting recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
+	public void draw(IClimateSmelting recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
 		Minecraft minecraft = Minecraft.getInstance();
 		Font font = minecraft.font;
 
 		MutableComponent text4 = Component.literal(recipe.recipeFrequency() + "Tick");
-		font.draw(stack, text4, 70, 56, 0xFF000000);
+		graphics.drawString(font, text4, 70, 56, 0xFF000000);
 
 		RenderSystem.setShaderTexture(0, PluginTexDC.SMELTING.getLocation());
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 
 		if (recipe.hasBlockProcess())
-			drawTexturedModalRect(stack.last().pose(), 33, 56, 0, 184, 7, 9);
+			drawTexturedModalRect(graphics.pose().last().pose(), 33, 56, 0, 184, 7, 9);
 
 		if (recipe.hasEntityProcess())
-			drawTexturedModalRect(stack.last().pose(), 42, 56, 9, 184, 7, 9);
+			drawTexturedModalRect(graphics.pose().last().pose(), 42, 56, 9, 184, 7, 9);
 
 		if (recipe.hasDropItemProcess())
-			drawTexturedModalRect(stack.last().pose(), 51, 56, 18, 184, 7, 9);
+			drawTexturedModalRect(graphics.pose().last().pose(), 51, 56, 18, 184, 7, 9);
 
 	}
 

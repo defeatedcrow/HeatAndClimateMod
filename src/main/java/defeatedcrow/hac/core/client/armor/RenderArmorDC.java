@@ -21,7 +21,7 @@ public class RenderArmorDC implements IClientItemExtensions {
 	@NotNull
 	public HumanoidModel<?> getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel<?> original) {
 		if (EntityModelLoader.MODEL_BOOTS != null && !DCUtil.isEmpty(stack) && stack.getItem() instanceof ArmorItemDC armor) {
-			return switch (armor.getType()) {
+			return switch (armor.getModelType()) {
 			case BOOTS -> EntityModelLoader.MODEL_BOOTS;
 			case SKIRT -> EntityModelLoader.MODEL_SKIRT;
 			case HAT -> EntityModelLoader.MODEL_HAT;

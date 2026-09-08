@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.entity.EntityModelLoader;
@@ -26,10 +26,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class RenderPlayerEventDC {
 
-	private static final ResourceLocation WINGS_LOCATION = ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/entity/magic/magic_wing.png");
-	private static final ResourceLocation FIN_LOCATION = ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/entity/magic/magic_fin.png");
-	private static final ResourceLocation WINGS_LOCATION_BLACK = ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/entity/magic/magic_wing_black.png");
-	private static final ResourceLocation WINGS_LOCATION_HALLOWEEN = ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/entity/magic/magic_wing_halloween.png");
+	private static final ResourceLocation WINGS_LOCATION = new ResourceLocation("dcs_climate", "textures/entity/magic/magic_wing.png");
+	private static final ResourceLocation FIN_LOCATION = new ResourceLocation("dcs_climate", "textures/entity/magic/magic_fin.png");
+	private static final ResourceLocation WINGS_LOCATION_BLACK = new ResourceLocation("dcs_climate", "textures/entity/magic/magic_wing_black.png");
+	private static final ResourceLocation WINGS_LOCATION_HALLOWEEN = new ResourceLocation("dcs_climate", "textures/entity/magic/magic_wing_halloween.png");
 
 	@SubscribeEvent
 	public static void renderWings(RenderPlayerEvent.Post event) {
@@ -45,8 +45,8 @@ public class RenderPlayerEventDC {
 					PoseStack pose = event.getPoseStack();
 					pose.pushPose();
 					pose.translate(0D, y, 0D);
-					pose.mulPose(Vector3f.YP.rotationDegrees(f));
-					pose.mulPose(Vector3f.XP.rotationDegrees(180.0F + f2));
+					pose.mulPose(Axis.YP.rotationDegrees(f));
+					pose.mulPose(Axis.XP.rotationDegrees(180.0F + f2));
 					pose.scale(1.5F, 1.5F, 1.5F);
 					ModelMagicWing<LivingEntity> model = EntityModelLoader.MODEL_WING;
 					model.setupAnim(player, 0F, 0F, event.getPartialTick(), 0F, 0F);
@@ -65,8 +65,8 @@ public class RenderPlayerEventDC {
 					PoseStack pose = event.getPoseStack();
 					pose.pushPose();
 					pose.translate(0D, y, 0D);
-					pose.mulPose(Vector3f.YP.rotationDegrees(f));
-					pose.mulPose(Vector3f.XP.rotationDegrees(180.0F + f2));
+					pose.mulPose(Axis.YP.rotationDegrees(f));
+					pose.mulPose(Axis.XP.rotationDegrees(180.0F + f2));
 					pose.scale(2F, 2F, 2F);
 					ModelMagicFin<LivingEntity> model = EntityModelLoader.MODEL_FIN;
 					model.setupAnim(player, 0F, 0F, event.getPartialTick(), 0F, 0F);

@@ -19,6 +19,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
@@ -71,7 +72,7 @@ public class GoldPendant extends MagicJewelBase {
 				float l = Mth.floor(damage * 0.25F);
 				float eff = f * l;
 				if (owner instanceof Player player) {
-					if (!player.level.isClientSide)
+					if (!player.level().isClientSide)
 						player.getFoodData().eat(f, 1.0F);
 				}
 				owner.heal(f * eff);
@@ -83,7 +84,7 @@ public class GoldPendant extends MagicJewelBase {
 
 	@Override
 	public float reduceDamage(LivingEntity owner, DamageSource source, float damage, ItemStack charm) {
-		if (getColor().isWhite && source.isExplosion()) {
+		if (getColor().isWhite && source.is(DamageTypeTags.IS_EXPLOSION)) {
 			return (float) Math.pow(0.5D, charm.getCount());
 		}
 		return 1F;
@@ -96,25 +97,25 @@ public class GoldPendant extends MagicJewelBase {
 		if (getColor().isGreen) {
 			ItemStack item = new ItemStack(state.getBlock());
 			if (state.is(BlockTags.LOGS)) {
-				if (!owner.level.isClientSide) {
+				if (!owner.level().isClientSide) {
 					int lim = ConfigCommonBuilder.INSTANCE.vTimberLimit.get();
-					List<BlockPos> set = DCUtil.findLog(owner.level, pos, state.getBlock(), lim, ConfigCommonBuilder.INSTANCE.enTimberBreakLeaves.get());
+					List<BlockPos> set = DCUtil.findLog(owner.level(), pos, state.getBlock(), lim, ConfigCommonBuilder.INSTANCE.enTimberBreakLeaves.get());
 					if (set.isEmpty()) {
 						set = ImmutableList.of(pos);
 					}
 					int count = 0;
 					ItemStack copy = owner.getMainHandItem().copy();
 					for (BlockPos p2 : set) {
-						BlockState target = owner.level.getBlockState(p2);
+						BlockState target = owner.level().getBlockState(p2);
 						if (target.is(BlockTags.LOGS)) {
 							count++;
-							owner.level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
+							owner.level().setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
 						} else {
-							target.getBlock().destroy(owner.level, p2, target);
+							target.getBlock().destroy(owner.level(), p2, target);
 							if (owner instanceof Player player) {
-								target.getBlock().playerDestroy(owner.level, player, p2, target, null, copy);
+								target.getBlock().playerDestroy(owner.level(), player, p2, target, null, copy);
 							}
-							owner.level.setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
+							owner.level().setBlock(p2, Blocks.AIR.defaultBlockState(), 3);
 						}
 					}
 
@@ -128,15 +129,15 @@ public class GoldPendant extends MagicJewelBase {
 						count -= i;
 						ItemStack drop = item.copy();
 						drop.setCount(i);
-						ItemEntity dropE = new ItemEntity(owner.level, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, drop);
-						if (owner.level.addFreshEntity(dropE))
-							owner.level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+						ItemEntity dropE = new ItemEntity(owner.level(), pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, drop);
+						if (owner.level().addFreshEntity(dropE))
+							owner.level().setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
 					}
 
 					if (owner instanceof Player player) {
 						ItemStack held = player.getMainHandItem();
 						ItemStack cop = held.copy();
-						held.mineBlock(owner.level, state, pos, player);
+						held.mineBlock(owner.level(), state, pos, player);
 						if (held.isEmpty() && !cop.isEmpty())
 							net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(player, cop, InteractionHand.MAIN_HAND);
 					}
@@ -144,26 +145,26 @@ public class GoldPendant extends MagicJewelBase {
 				return true;
 			}
 		} else if (getColor().isRed) {
-			if (!owner.level.isClientSide && owner.level instanceof ServerLevel server) {
+			if (!owner.level().isClientSide && owner.level() instanceof ServerLevel server) {
 				List<ItemStack> drops = Block.getDrops(state, server, pos, server.getBlockEntity(pos));
 				if (!drops.isEmpty()) {
 					for (ItemStack item : drops) {
 						Optional<SmeltingRecipe> recipe = server.getServer().getRecipeManager().getAllRecipesFor(RecipeType.SMELTING).stream().filter(r -> matchRecipe(r, item)).findFirst();
 						recipe.ifPresentOrElse(r -> {
-							ItemStack out = r.getResultItem();
-							ItemEntity dropE = new ItemEntity(owner.level, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, out.copy());
-							owner.level.addFreshEntity(dropE);
+							ItemStack out = r.getResultItem(server.registryAccess());
+							ItemEntity dropE = new ItemEntity(owner.level(), pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, out.copy());
+							owner.level().addFreshEntity(dropE);
 						}, () -> {
-							ItemEntity dropE = new ItemEntity(owner.level, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, item.copy());
-							owner.level.addFreshEntity(dropE);
+							ItemEntity dropE = new ItemEntity(owner.level(), pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, item.copy());
+							owner.level().addFreshEntity(dropE);
 						});
 					}
-					owner.level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+					owner.level().setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
 
 					if (owner instanceof Player player) {
 						ItemStack held = player.getMainHandItem();
 						ItemStack cop = held.copy();
-						held.mineBlock(owner.level, state, pos, player);
+						held.mineBlock(owner.level(), state, pos, player);
 						if (held.isEmpty() && !cop.isEmpty())
 							net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(player, cop, InteractionHand.MAIN_HAND);
 					}
@@ -177,7 +178,7 @@ public class GoldPendant extends MagicJewelBase {
 
 	private boolean matchRecipe(SmeltingRecipe recipe, ItemStack item) {
 		NonNullList<Ingredient> ing = recipe.getIngredients();
-		return ing.size() == 1 && ing.get(0).test(item) && !recipe.getResultItem().isEmpty();
+		return ing.size() == 1 && ing.get(0).test(item) && !recipe.getResultItem(net.minecraft.core.RegistryAccess.EMPTY).isEmpty();
 	}
 
 	@Override

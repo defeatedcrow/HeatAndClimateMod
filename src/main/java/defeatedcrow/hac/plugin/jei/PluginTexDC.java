@@ -27,6 +27,6 @@ public enum PluginTexDC {
 	}
 
 	public ResourceLocation getLocation() {
-		return ResourceLocation.fromNamespaceAndPath("dcs_climate", name);
+		return new ResourceLocation("dcs_climate", name);
 	}
 }

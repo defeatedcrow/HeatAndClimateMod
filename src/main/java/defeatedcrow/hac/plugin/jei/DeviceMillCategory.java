@@ -3,7 +3,6 @@ package defeatedcrow.hac.plugin.jei;
 import java.util.List;
 
 import com.google.common.collect.Lists;
-import com.mojang.blaze3d.vertex.PoseStack;
 
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.machine.material.MachineInit;
@@ -17,6 +16,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
@@ -68,13 +68,13 @@ public class DeviceMillCategory implements IRecipeCategory<IDeviceRecipe> {
 	}
 
 	@Override
-	public void draw(IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
+	public void draw(IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
 		Minecraft minecraft = Minecraft.getInstance();
 		Font font = minecraft.font;
 		int chance1 = recipe.getSecondaryRate();
 		if (chance1 > 0) {
 			String text = chance1 + "%";
-			font.draw(stack, text, 108, 16, 0xFF000000);
+			graphics.drawString(font, text, 108, 16, 0xFF000000);
 		}
 	}
 }

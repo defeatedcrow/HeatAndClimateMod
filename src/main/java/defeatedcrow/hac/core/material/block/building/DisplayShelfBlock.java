@@ -30,9 +30,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -69,7 +69,7 @@ public class DisplayShelfBlock extends ContainerTileBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD)
+		return BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
 		    .strength(0.1F, 540.0F)
 		    .noOcclusion();
 	}
@@ -136,14 +136,14 @@ public class DisplayShelfBlock extends ContainerTileBlock {
 	// drop
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (state.getBlock() instanceof EntityBlockDC cont && builder != null) {
-			LootContext context = builder.withParameter(LootContextParams.BLOCK_STATE, state)
+			LootParams context = builder.withParameter(LootContextParams.BLOCK_STATE, state)
 			    .create(LootContextParamSets.BLOCK);
 			BlockEntity tile = null;
 			if (context.hasParam(LootContextParams.BLOCK_ENTITY)) {
-				tile = context.getParam(LootContextParams.BLOCK_ENTITY);
+				tile = context.getParameter(LootContextParams.BLOCK_ENTITY);
 			}
 
 			ret.add(getMainDrop());

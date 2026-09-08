@@ -1,6 +1,7 @@
 package defeatedcrow.hac.food.material.item;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
@@ -46,7 +47,7 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 
 public class EmptyPackItem extends MaterialItemDC {
 
-	public EmptyPackItem(CreativeModeTab tab, String s, TagKey<Item> pair) {
+	public EmptyPackItem(Supplier<CreativeModeTab> tab, String s, TagKey<Item> pair) {
 		super(tab, s, pair);
 	}
 
@@ -73,18 +74,18 @@ public class EmptyPackItem extends MaterialItemDC {
 				if (state.getFluidState().is(Fluids.WATER) && state.getFluidState().isSource()) {
 					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
 					ItemStack ret = new ItemStack(FoodInit.FOOD_WATER.get());
-					if (!player.level.isClientSide) {
-						ItemEntity drop = new ItemEntity(player.level, player.getX(), player.getY(), player.getZ(), ret);
-						player.level.addFreshEntity(drop);
+					if (!player.level().isClientSide) {
+						ItemEntity drop = new ItemEntity(player.level(), player.getX(), player.getY(), player.getZ(), ret);
+						player.level().addFreshEntity(drop);
 						itemstack.shrink(1);
 					}
 					return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
 				} else if (state.getFluidState().is(CoreInit.SPARKLING.getStillFluid().get())) {
 					player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
 					ItemStack ret = new ItemStack(FoodInit.FOOD_SPARKLING.get());
-					if (!player.level.isClientSide) {
-						ItemEntity drop = new ItemEntity(player.level, player.getX(), player.getY(), player.getZ(), ret);
-						player.level.addFreshEntity(drop);
+					if (!player.level().isClientSide) {
+						ItemEntity drop = new ItemEntity(player.level(), player.getX(), player.getY(), player.getZ(), ret);
+						player.level().addFreshEntity(drop);
 						itemstack.shrink(1);
 					}
 					return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
@@ -98,16 +99,16 @@ public class EmptyPackItem extends MaterialItemDC {
 	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand) {
 		ItemStack itemstack = player.getItemInHand(hand);
 		if (entity instanceof Cow || entity instanceof Llama || entity instanceof Goat) {
-			BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
+			BlockPos pos = BlockPos.containing(entity.getX(), entity.getY(), entity.getZ());
 			if (!((Animal) entity).isBaby()) {
 				player.playSound(SoundEvents.BUCKET_FILL, 1.0F, 1.0F);
-				if (!player.level.isClientSide) {
-					ItemEntity drop = new ItemEntity(player.level, player.getX(), player.getY(), player.getZ(), new ItemStack(FoodInit.FOOD_MILK.get()));
-					player.level.addFreshEntity(drop);
+				if (!player.level().isClientSide) {
+					ItemEntity drop = new ItemEntity(player.level(), player.getX(), player.getY(), player.getZ(), new ItemStack(FoodInit.FOOD_MILK.get()));
+					player.level().addFreshEntity(drop);
 					itemstack.shrink(1);
 				}
 			}
-			return net.minecraft.world.InteractionResult.sidedSuccess(player.level.isClientSide);
+			return net.minecraft.world.InteractionResult.sidedSuccess(player.level().isClientSide);
 		}
 		return net.minecraft.world.InteractionResult.PASS;
 	}

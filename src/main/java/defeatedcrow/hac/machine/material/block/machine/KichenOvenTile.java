@@ -112,7 +112,7 @@ public class KichenOvenTile extends KichenStoveTile {
 						if (recipe != null) {
 							if (totalProg[i] > 0) {
 								if (currentProg[i] > totalProg[i]) {
-									ItemStack output = recipe.assemble(dummy);
+									ItemStack output = recipe.assemble(dummy, getLevel().registryAccess());
 									if (!DCUtil.isEmpty(output) && this.inventory.canInsertResult(output, slot + 1, slot + 1) > 0) {
 										this.inventory.insertResult(output, slot + 1, slot + 1);
 										this.getInventory().removeItem(slot, 1);

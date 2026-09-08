@@ -88,7 +88,7 @@ public class DCRecipes {
 		        .contains(clm.getHumidity())
 		    && DCAirflow.underRoofs()
 		        .contains(clm.getAirflow())) {
-			ItemStack output = recipe.assemble(dummyInv);
+			ItemStack output = recipe.assemble(dummyInv, level.registryAccess());
 			if (!DCUtil.isEmpty(output)) {
 				return Optional.of(output);
 			}

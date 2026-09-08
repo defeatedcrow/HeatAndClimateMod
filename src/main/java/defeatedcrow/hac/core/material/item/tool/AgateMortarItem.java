@@ -10,7 +10,8 @@ import net.minecraft.world.item.ItemStack;
 public class AgateMortarItem extends CraftingItemDC {
 
 	public AgateMortarItem(String n) {
-		super(n, new Item.Properties().tab(CoreInit.MACHINE).stacksTo(1), TagDC.ItemTag.CRAFT_MORTAR);
+		super(n, new Item.Properties().stacksTo(1), TagDC.ItemTag.CRAFT_MORTAR);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	static Supplier<Item> getSup() {

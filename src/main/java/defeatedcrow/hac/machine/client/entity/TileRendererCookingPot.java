@@ -3,9 +3,9 @@ package defeatedcrow.hac.machine.client.entity;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Matrix3f;
-import com.mojang.math.Matrix4f;
-import com.mojang.math.Vector3f;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.util.DCState;
@@ -73,8 +73,8 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 
 			poseStack.pushPose();
 			poseStack.translate(0.5F, 0.5F + f2, 0.5F);
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-			poseStack.mulPose(Vector3f.YP.rotationDegrees(dir.toYRot()));
+			poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+			poseStack.mulPose(Axis.YP.rotationDegrees(dir.toYRot()));
 			poseStack.scale(f1, f1, f1);
 
 			if (isC)
@@ -141,7 +141,7 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 		VertexConsumer vertex = buffer.getBuffer(RenderType.translucent());
 		RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
 
-		pose.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+		pose.mulPose(Axis.ZP.rotationDegrees(90.0F));
 		drawQuad(m4f, m3f, vertex, light, colors, 0, -w, -w, h, w, w, tex);
 
 		pose.popPose();
@@ -155,8 +155,8 @@ public class TileRendererCookingPot implements BlockEntityRenderer<CookingPotTil
 
 			pose.pushPose();
 			pose.translate(0.5F, 0F, 0.5F);
-			pose.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-			pose.mulPose(Vector3f.YP.rotationDegrees(dir.toYRot()));
+			pose.mulPose(Axis.XP.rotationDegrees(180.0F));
+			pose.mulPose(Axis.YP.rotationDegrees(dir.toYRot()));
 			if (isB)
 				pose.scale(0.75F, 1F, 0.75F);
 			else

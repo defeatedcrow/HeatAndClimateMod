@@ -1,7 +1,7 @@
 package defeatedcrow.hac.core.client.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.util.DCState;
@@ -41,8 +41,8 @@ public class TileRendererHammock implements BlockEntityRenderer<NoSaveHammockTil
 
 				poseStack.pushPose();
 				poseStack.translate(0.5F, f2, 0.5F);
-				poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
-				poseStack.mulPose(Vector3f.YP.rotationDegrees(dir.toYRot()));
+				poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+				poseStack.mulPose(Axis.YP.rotationDegrees(dir.toYRot()));
 				poseStack.scale(f1, f1, f1);
 				this.model.renderToBuffer(poseStack, buffer.getBuffer(model.renderType(tex)), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 				if (hasSolidWall(tile, dir)) {
@@ -59,10 +59,8 @@ public class TileRendererHammock implements BlockEntityRenderer<NoSaveHammockTil
 		Level level = tile.getLevel();
 		BlockPos pos = tile.getBlockPos();
 		return level.getBlockState(pos.relative(dir.getOpposite()))
-		    .getMaterial()
 		    .isSolid()
 		    && level.getBlockState(pos.relative(dir, 2))
-		        .getMaterial()
 		        .isSolid();
 	}
 

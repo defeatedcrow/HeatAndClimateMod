@@ -27,19 +27,20 @@ import net.minecraft.world.level.BlockGetter;
 public class RawFishItem extends FoodMaterialItemDC {
 
 	public RawFishItem(String s, Rarity rare, TagKey<Item> pair) {
-		super(new Item.Properties().rarity(rare).tab(FoodInit.FOOD), s, pair);
+		super(new Item.Properties().rarity(rare), s, pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(FoodInit.FOOD, this);
 	}
 
 	@Override
 	public boolean onEntityItemUpdate(ItemStack stack, ItemEntity drop) {
-		if (drop != null && !DCUtil.isEmpty(stack) && drop.getThrower() != null && drop.getAge() > 100) {
-			Player owner = drop.getThrower() != null ? drop.getLevel().getPlayerByUUID(drop.getThrower()) : null;
+			if (drop != null && !DCUtil.isEmpty(stack) && drop.getOwner() != null && drop.getAge() > 100) {
+			Player owner = drop.getOwner() instanceof Player player ? player : null;
 			float f = drop.getEyeHeight();
 			if (owner != null && drop.getItem().hasTag() && drop.getItem().getTag().contains("Released_Fish"))
 				if (drop.isInWater() && drop.getFluidHeight(FluidTags.WATER) > f) {
-					if (!drop.getLevel().isClientSide()) {
-						ServerLevel serverlevel = (ServerLevel) drop.getLevel();
-						drop.playSound(SoundEvents.FISHING_BOBBER_SPLASH, 0.25F, 1.0F + (drop.getLevel().random.nextFloat() - drop.getLevel().random.nextFloat()) * 0.4F);
+					if (!drop.level().isClientSide()) {
+						ServerLevel serverlevel = (ServerLevel) drop.level();
+						drop.playSound(SoundEvents.FISHING_BOBBER_SPLASH, 0.25F, 1.0F + (drop.level().random.nextFloat() - drop.level().random.nextFloat()) * 0.4F);
 						double d3 = drop.getY() + 0.5D;
 						serverlevel.sendParticles(ParticleTypes.BUBBLE, drop.getX(), d3, drop.getZ(), (int) (1.0F + drop.getBbWidth() * 20.0F), (double) drop.getBbWidth(), 0.0D, (double) drop.getBbWidth(), (double) 0.2F);
 						serverlevel.sendParticles(ParticleTypes.SPLASH, drop.getX(), d3, drop.getZ(), (int) (1.0F + drop.getBbWidth() * 20.0F), (double) drop.getBbWidth(), 0.0D, (double) drop.getBbWidth(), (double) 0.2F);

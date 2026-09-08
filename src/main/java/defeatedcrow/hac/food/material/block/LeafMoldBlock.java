@@ -15,6 +15,7 @@ import defeatedcrow.hac.core.material.block.BlockDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -27,8 +28,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 
 public class LeafMoldBlock extends BlockDC implements IRapidCollectables {
@@ -42,7 +42,7 @@ public class LeafMoldBlock extends BlockDC implements IRapidCollectables {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.GRASS).instabreak().sound(SoundType.GRASS);
+		return BlockBehaviour.Properties.of().mapColor(MapColor.GRASS).instabreak().sound(SoundType.GRASS);
 	}
 
 	@Override
@@ -107,7 +107,7 @@ public class LeafMoldBlock extends BlockDC implements IRapidCollectables {
 
 	@Override
 	public TagKey<Item> collectableToolTag() {
-		return Tags.Items.TOOLS_SHOVELS;
+		return ItemTags.SHOVELS;
 	}
 
 	@Override

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.DCTexturePath;
@@ -33,7 +33,7 @@ public class MonitorAndonScreen extends AbstractContainerScreen<MonitorAndonMenu
 	}
 
 	@Override
-	public void render(PoseStack pose, int mx, int my, float f) {
+	public void render(GuiGraphics pose, int mx, int my, float f) {
 		this.renderBackground(pose);
 		super.render(pose, mx, my, f);
 		this.renderTooltip(pose, mx, my);
@@ -87,47 +87,47 @@ public class MonitorAndonScreen extends AbstractContainerScreen<MonitorAndonMenu
 		// int j = (this.height - this.imageHeight) / 2;
 		// list.add(Component.literal("X" + (mx - i) + ", Y" + (my - j)));
 
-		this.renderComponentTooltip(pose, list, mx, my);
+		pose.renderComponentTooltip(this.font, list, mx, my);
 	}
 
 	@Override
-	protected void renderBg(PoseStack pose, float f, int mx, int my) {
+	protected void renderBg(GuiGraphics pose, float f, int mx, int my) {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, DCTexturePath.GUI_MONITOR_ANDON.getLocation());
 		int i = (this.width - this.imageWidth) / 2;
 		int j = (this.height - this.imageHeight) / 2;
-		this.blit(pose, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		pose.blit(DCTexturePath.GUI_MONITOR_ANDON.getLocation(), i, j, 0, 0, this.imageWidth, this.imageHeight);
 
 		boolean lock = this.getMenu().getContainer().isLocked();
 		if (lock) {
-			this.blit(pose, i + 156, j + 3, 176, 21, 12, 21);
+			pose.blit(DCTexturePath.GUI_MONITOR_ANDON.getLocation(), i + 156, j + 3, 176, 21, 12, 21);
 		} else {
-			this.blit(pose, i + 156, j + 3, 176, 0, 12, 21);
+			pose.blit(DCTexturePath.GUI_MONITOR_ANDON.getLocation(), i + 156, j + 3, 176, 0, 12, 21);
 		}
 
 		if (this.menu.isRSMode()) {
-			this.blit(pose, i + 44, j + 23, 208, 16, 39, 8);
+			pose.blit(DCTexturePath.GUI_MONITOR_ANDON.getLocation(), i + 44, j + 23, 208, 16, 39, 8);
 		} else {
-			this.blit(pose, i + 93, j + 23, 208, 24, 39, 8);
+			pose.blit(DCTexturePath.GUI_MONITOR_ANDON.getLocation(), i + 93, j + 23, 208, 24, 39, 8);
 		}
 
 		if (this.menu.isAlartMode()) {
-			this.blit(pose, i + 138, j + 46, 208, 38, 10, 6);
+			pose.blit(DCTexturePath.GUI_MONITOR_ANDON.getLocation(), i + 138, j + 46, 208, 38, 10, 6);
 		} else {
-			this.blit(pose, i + 138, j + 40, 208, 32, 10, 6);
+			pose.blit(DCTexturePath.GUI_MONITOR_ANDON.getLocation(), i + 138, j + 40, 208, 32, 10, 6);
 		}
 
 		if (this.menu.getPairPos() != null) {
-			this.blit(pose, i + 25, j + 38, 208, 0, 16, 16);
+			pose.blit(DCTexturePath.GUI_MONITOR_ANDON.getLocation(), i + 25, j + 38, 208, 0, 16, 16);
 		}
 
 		if (this.menu.getRedThreshold() > 0) {
-			this.blit(pose, i + 84, j + 40, 189, 13 * this.menu.getRedThreshold() - 13, 19, 13);
+			pose.blit(DCTexturePath.GUI_MONITOR_ANDON.getLocation(), i + 84, j + 40, 189, 13 * this.menu.getRedThreshold() - 13, 19, 13);
 		}
 
 		if (this.menu.getYellowThreshold() > 0) {
-			this.blit(pose, i + 84, j + 58, 189, 13 * this.menu.getYellowThreshold() - 13, 19, 13);
+			pose.blit(DCTexturePath.GUI_MONITOR_ANDON.getLocation(), i + 84, j + 58, 189, 13 * this.menu.getYellowThreshold() - 13, 19, 13);
 		}
 	}
 

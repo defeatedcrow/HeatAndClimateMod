@@ -7,10 +7,9 @@ import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.math.Matrix4f;
+import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -36,6 +35,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -172,14 +172,14 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 	}
 
 	@Override
-	public void draw(ClimateCropBaseBlock recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
+	public void draw(ClimateCropBaseBlock recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
 		CropTier tier = recipe.getTier();
 		CropType type = recipe.getFamily();
 		Minecraft minecraft = Minecraft.getInstance();
 		Font font = minecraft.font;
 
 		MutableComponent name = recipe.getName();
-		font.draw(stack, name, 65, 9, 0xFF000000);
+		graphics.drawString(font, name, 65, 9, 0xFF000000);
 
 		MutableComponent com = type.localize();
 		int c = 0xFF808080;
@@ -196,7 +196,7 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 			c = ChatFormatting.DARK_AQUA.getColor();
 			com.append(" EPIC");
 		}
-		font.draw(stack, com, 65, 20, c);
+		graphics.drawString(font, com, 65, 20, c);
 
 		boolean common = ConfigCommonBuilder.INSTANCE.enCommonCrop.get() && recipe.getTier() == CropTier.COMMON;
 		MutableComponent text4 = Component.translatable("dcs.gui.jei.habitat");
@@ -208,20 +208,20 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 		} else {
 			text4.append(" ").append(Component.translatable("dcs.gui.jei.no_habitat"));
 		}
-		font.draw(stack, text4, 25, 80, 0xFF000000);
+		graphics.drawString(font, text4, 25, 80, 0xFF000000);
 
 		int chance1 = CropTier.COMMON.getMutationChance();
 		String text = chance1 + "%";
-		font.draw(stack, text, 60, 113, 0xFF000000);
+		graphics.drawString(font, text, 60, 113, 0xFF000000);
 
 		int chance2 = CropTier.RARE.getMutationChance();
 		String text2 = chance2 + "%";
-		font.draw(stack, text2, 81, 113, 0xFF000000);
+		graphics.drawString(font, text2, 81, 113, 0xFF000000);
 
 		if (recipe.getMutationTarget(CropTier.EPIC).isPresent()) {
 			int chance3 = CropTier.EPIC.getMutationChance();
 			String text3 = chance3 + "%";
-			font.draw(stack, text3, 102, 113, 0xFF000000);
+			graphics.drawString(font, text3, 102, 113, 0xFF000000);
 		}
 
 		RenderSystem.setShaderTexture(0, PluginTexDC.CROP.getLocation());
@@ -230,17 +230,17 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 		List<SoilType> soils = recipe.getSoilTypes(tier);
 		for (SoilType soil : soils) {
 			if (soil == SoilType.FARMLAND) {
-				drawTexturedModalRect(stack.last().pose(), 35, 60, 0, 182, 16, 16);
+				drawTexturedModalRect(graphics.pose().last().pose(), 35, 60, 0, 182, 16, 16);
 			} else if (soil == SoilType.DIRT) {
-				drawTexturedModalRect(stack.last().pose(), 52, 60, 16, 182, 16, 16);
+				drawTexturedModalRect(graphics.pose().last().pose(), 52, 60, 16, 182, 16, 16);
 			} else if (soil == SoilType.SAND) {
-				drawTexturedModalRect(stack.last().pose(), 69, 60, 32, 182, 16, 16);
+				drawTexturedModalRect(graphics.pose().last().pose(), 69, 60, 32, 182, 16, 16);
 			} else if (soil == SoilType.MUD) {
-				drawTexturedModalRect(stack.last().pose(), 86, 60, 48, 182, 16, 16);
+				drawTexturedModalRect(graphics.pose().last().pose(), 86, 60, 48, 182, 16, 16);
 			} else if (soil == SoilType.WATER) {
-				drawTexturedModalRect(stack.last().pose(), 103, 60, 64, 182, 16, 16);
+				drawTexturedModalRect(graphics.pose().last().pose(), 103, 60, 64, 182, 16, 16);
 			} else if (soil == SoilType.LOGS) {
-				drawTexturedModalRect(stack.last().pose(), 103, 60, 80, 182, 16, 16);
+				drawTexturedModalRect(graphics.pose().last().pose(), 103, 60, 80, 182, 16, 16);
 			}
 		}
 
@@ -248,10 +248,10 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 		if (registanceC > 0 && ConfigCommonBuilder.INSTANCE.enContinuousFailure.get()) {
 			for (int i = 0; i < registanceC; i++) {
 				int ad = i * 9;
-				drawTexturedModalRect(stack.last().pose(), ad + 37, 29, 90 + ad, 170, 8, 8);
+				drawTexturedModalRect(graphics.pose().last().pose(), ad + 37, 29, 90 + ad, 170, 8, 8);
 			}
 		} else {
-			drawTexturedModalRect(stack.last().pose(), 26, 29, 90, 180, 55, 8);
+			drawTexturedModalRect(graphics.pose().last().pose(), 26, 29, 90, 180, 55, 8);
 		}
 
 	}

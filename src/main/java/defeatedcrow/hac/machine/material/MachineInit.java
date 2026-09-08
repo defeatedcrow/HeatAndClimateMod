@@ -481,139 +481,139 @@ public class MachineInit {
 
 	// Menu
 	public static final RegistryObject<MenuType<HeatingChamberMenu>> CHAMBER_MENU = CoreInit.register("dcs_chamber_item", (IContainerFactory<HeatingChamberMenu>) (id, playerInv, data) -> {
-		HeatingChamberTile cont = (HeatingChamberTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		HeatingChamberTile cont = (HeatingChamberTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return HeatingChamberMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<FluidChamberMenu>> FLUID_CHAMBER_MENU = CoreInit.register("dcs_chamber_fluid", (IContainerFactory<FluidChamberMenu>) (id, playerInv, data) -> {
-		FluidChamberTile cont = (FluidChamberTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		FluidChamberTile cont = (FluidChamberTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return FluidChamberMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<KichenStoveMenu>> KICHEN_STOVE_MENU = CoreInit.register("dcs_chamber_kitchen", (IContainerFactory<KichenStoveMenu>) (id, playerInv, data) -> {
-		KichenStoveTile cont = (KichenStoveTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		KichenStoveTile cont = (KichenStoveTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return KichenStoveMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<KichenOvenMenu>> KICHEN_OVEN_MENU = CoreInit.register("dcs_chamber_oven", (IContainerFactory<KichenOvenMenu>) (id, playerInv, data) -> {
-		KichenOvenTile cont = (KichenOvenTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		KichenOvenTile cont = (KichenOvenTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return KichenOvenMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<PortableTankMenu>> FLUID_MENU = CoreInit.register("dcs_fluid_tank", (IContainerFactory<PortableTankMenu>) (id, playerInv, data) -> {
-		PortableFluidTankTile cont = (PortableFluidTankTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		PortableFluidTankTile cont = (PortableFluidTankTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return PortableTankMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<PortableTankMenu>> FLUID_MENU_LARGE = CoreInit.register("dcs_fluid_tank_large", (IContainerFactory<PortableTankMenu>) (id, playerInv, data) -> {
-		PortableFluidTankTile cont = (PortableFluidTankTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		PortableFluidTankTile cont = (PortableFluidTankTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return PortableTankMenu.getLargeMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<CookingPotMenu>> POT_MENU = CoreInit.register("dcs_cooking_pot", (IContainerFactory<CookingPotMenu>) (id, playerInv, data) -> {
-		CookingPotTile cont = (CookingPotTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		CookingPotTile cont = (CookingPotTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return CookingPotMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<FermentationJarMenu>> JAR_MENU = CoreInit.register("dcs_fermentation_jar", (IContainerFactory<FermentationJarMenu>) (id, playerInv, data) -> {
-		FermentationJarTile cont = (FermentationJarTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		FermentationJarTile cont = (FermentationJarTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return FermentationJarMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<TeaPotMenu>> TEA_POT_MENU = CoreInit.register("dcs_tea_pot", (IContainerFactory<TeaPotMenu>) (id, playerInv, data) -> {
-		TeaPotTile cont = (TeaPotTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		TeaPotTile cont = (TeaPotTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return TeaPotMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<CoffeeMakerMenu>> COFFEE_MAKER_MENU = CoreInit.register("dcs_coffee_maker", (IContainerFactory<CoffeeMakerMenu>) (id, playerInv, data) -> {
-		CoffeeMakerTile cont = (CoffeeMakerTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		CoffeeMakerTile cont = (CoffeeMakerTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return CoffeeMakerMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<MillMenu>> MILL_MENU = CoreInit.register("dcs_pulveriser", (IContainerFactory<MillMenu>) (id, playerInv, data) -> {
-		StoneMillTile cont = (StoneMillTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		StoneMillTile cont = (StoneMillTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return MillMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<RollCrusherMenu>> CRUSHER_MENU = CoreInit.register("dcs_roll_crusher", (IContainerFactory<RollCrusherMenu>) (id, playerInv, data) -> {
-		RollCrusherTile cont = (RollCrusherTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		RollCrusherTile cont = (RollCrusherTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return RollCrusherMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<EnergyBatteryMenu>> BATTERY_MENU = CoreInit.register("dcs_battery", (IContainerFactory<EnergyBatteryMenu>) (id, playerInv, data) -> {
-		EnergyMachineBaseDC cont = (EnergyMachineBaseDC) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		EnergyMachineBaseDC cont = (EnergyMachineBaseDC) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return EnergyBatteryMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<EnergyBatteryMenu>> GENERATOR_MENU = CoreInit.register("dcs_generator", (IContainerFactory<EnergyBatteryMenu>) (id, playerInv, data) -> {
-		EnergyMachineBaseDC cont = (EnergyMachineBaseDC) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		EnergyMachineBaseDC cont = (EnergyMachineBaseDC) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return EnergyBatteryMenu.getGeneratorMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<BoilerBiomassMenu>> BOILER_BIOMASS_MENU = CoreInit.register("dcs_boiler_biomass", (IContainerFactory<BoilerBiomassMenu>) (id, playerInv, data) -> {
-		BoilerBiomassTile cont = (BoilerBiomassTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		BoilerBiomassTile cont = (BoilerBiomassTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return BoilerBiomassMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<HopperFilterMenu>> HOPPER_FILTER_MENU = CoreInit.register("dcs_filter_hopper", (IContainerFactory<HopperFilterMenu>) (id, playerInv, data) -> {
-		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return HopperFilterMenu.filterMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<HopperFilterMenu>> HOPPER_GOLD_MENU = CoreInit.register("dcs_gold_hopper", (IContainerFactory<HopperFilterMenu>) (id, playerInv, data) -> {
-		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return HopperFilterMenu.goldMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<HopperFilterMenu>> HOPPER_FILTER_GOLD_MENU = CoreInit.register("dcs_filter_gold_hopper", (IContainerFactory<HopperFilterMenu>) (id, playerInv, data) -> {
-		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		HopperBaseTile cont = (HopperBaseTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return HopperFilterMenu.filterGoldMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<HopperEXPMenu>> HOPPER_EXP_MENU = CoreInit.register("dcs_exp_hopper", (IContainerFactory<HopperEXPMenu>) (id, playerInv, data) -> {
-		HopperEXPTile cont = (HopperEXPTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		HopperEXPTile cont = (HopperEXPTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return HopperEXPMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<ConveyorSorterMenu>> CONVEYOR_SORTER_MENU = CoreInit.register("dcs_conveyor_sorter", (IContainerFactory<ConveyorSorterMenu>) (id, playerInv, data) -> {
-		ConveyorSortingTile cont = (ConveyorSortingTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		ConveyorSortingTile cont = (ConveyorSortingTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return ConveyorSorterMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<KichenBenchMenu>> KICHEN_BENCH_MENU = CoreInit.register("dcs_kitchen_bench", (IContainerFactory<KichenBenchMenu>) (id, playerInv, data) -> {
-		KichenBenchTile cont = (KichenBenchTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		KichenBenchTile cont = (KichenBenchTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return KichenBenchMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static final RegistryObject<MenuType<MonitorAndonMenu>> MONITOR_ANDON_MENU = CoreInit.register("dcs_monitor_andon", (IContainerFactory<MonitorAndonMenu>) (id, playerInv, data) -> {
-		MonitorAndonTile cont = (MonitorAndonTile) playerInv.player.level.getBlockEntity(data.readBlockPos());
+		MonitorAndonTile cont = (MonitorAndonTile) playerInv.player.level().getBlockEntity(data.readBlockPos());
 		return MonitorAndonMenu.getMenu(id, playerInv, cont);
 	});
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, Rarity rare, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("machine/" + name, block);
-		regItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE)
-		    .rarity(rare), tag));
+		regItem(name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new BlockItemDC(name, obj.get(), new Item.Properties()
+		    .rarity(rare), tag), CoreInit.MACHINE));
 		return obj;
 	}
 
 	public static RegistryObject<Block> regFluidBlock(String name, Supplier<Block> block, Rarity rare, int cap) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("machine/" + name, block);
-		regItem(name, () -> new FluidBlockItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE)
-		    .rarity(rare), TagDC.ItemTag.HAC_MACHINE).setCap(cap));
+		regItem(name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new FluidBlockItemDC(name, obj.get(), new Item.Properties()
+		    .rarity(rare), TagDC.ItemTag.HAC_MACHINE).setCap(cap), CoreInit.MACHINE));
 		return obj;
 	}
 
 	public static RegistryObject<Block> regEnergyBlock(String name, Supplier<Block> block, Rarity rare, int cap) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("machine/" + name, block);
-		regItem(name, () -> new EnergyTankItemDC(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE)
-		    .rarity(rare), TagDC.ItemTag.ENERGY_MACHINE).setCap(cap));
+		regItem(name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new EnergyTankItemDC(name, obj.get(), new Item.Properties()
+		    .rarity(rare), TagDC.ItemTag.ENERGY_MACHINE).setCap(cap), CoreInit.MACHINE));
 		return obj;
 	}
 
 	public static RegistryObject<Block> regMonitorBlock(String name, Supplier<Block> block) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("machine/" + name, block);
-		regItem(name, () -> new MonitorBlockItem(name, obj.get(), new Item.Properties().tab(CoreInit.MACHINE), TagDC.ItemTag.DISPLAY_MACHINE));
+		regItem(name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new MonitorBlockItem(name, obj.get(), new Item.Properties(), TagDC.ItemTag.DISPLAY_MACHINE), CoreInit.MACHINE));
 		return obj;
 	}
 

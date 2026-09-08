@@ -27,8 +27,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class DummyDianthusBlock extends BlockDC {
@@ -41,7 +40,7 @@ public class DummyDianthusBlock extends BlockDC {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_PINK).instabreak().sound(SoundType.GRASS).randomTicks().noOcclusion().noCollission().noLootTable();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().sound(SoundType.GRASS).randomTicks().noOcclusion().noCollission().noLootTable();
 	}
 
 	@Override

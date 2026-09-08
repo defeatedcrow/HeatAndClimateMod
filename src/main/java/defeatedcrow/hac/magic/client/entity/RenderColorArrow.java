@@ -11,14 +11,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class RenderColorArrow extends ArrowRenderer<AbstractArrow> {
-	public static final ResourceLocation WHITE = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/entity/magic/white_arrow.png");
-	public static final ResourceLocation BLUE = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/entity/magic/blue_arrow.png");
-	public static final ResourceLocation BLACK = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/entity/magic/black_arrow.png");
-	public static final ResourceLocation RED = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/entity/magic/red_arrow.png");
-	public static final ResourceLocation GREEN = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/entity/magic/green_arrow.png");
-	public static final ResourceLocation BLACK_S = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/entity/magic/black_needle.png");
-	public static final ResourceLocation RED_S = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/entity/magic/red_needle.png");
-	public static final ResourceLocation GREEN_S = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/entity/magic/green_needle.png");
+	public static final ResourceLocation WHITE = new ResourceLocation(ClimateCore.MOD_ID, "textures/entity/magic/white_arrow.png");
+	public static final ResourceLocation BLUE = new ResourceLocation(ClimateCore.MOD_ID, "textures/entity/magic/blue_arrow.png");
+	public static final ResourceLocation BLACK = new ResourceLocation(ClimateCore.MOD_ID, "textures/entity/magic/black_arrow.png");
+	public static final ResourceLocation RED = new ResourceLocation(ClimateCore.MOD_ID, "textures/entity/magic/red_arrow.png");
+	public static final ResourceLocation GREEN = new ResourceLocation(ClimateCore.MOD_ID, "textures/entity/magic/green_arrow.png");
+	public static final ResourceLocation BLACK_S = new ResourceLocation(ClimateCore.MOD_ID, "textures/entity/magic/black_needle.png");
+	public static final ResourceLocation RED_S = new ResourceLocation(ClimateCore.MOD_ID, "textures/entity/magic/red_needle.png");
+	public static final ResourceLocation GREEN_S = new ResourceLocation(ClimateCore.MOD_ID, "textures/entity/magic/green_needle.png");
 
 	public RenderColorArrow(EntityRendererProvider.Context cont) {
 		super(cont);

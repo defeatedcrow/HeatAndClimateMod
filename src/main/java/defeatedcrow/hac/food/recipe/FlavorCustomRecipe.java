@@ -8,17 +8,19 @@ import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 
 public class FlavorCustomRecipe extends CustomRecipe {
 
-	public FlavorCustomRecipe(ResourceLocation res) {
-		super(res);
+	public FlavorCustomRecipe(ResourceLocation res, CraftingBookCategory cat) {
+		super(res, cat);
 	}
 
 	@Override
@@ -45,7 +47,7 @@ public class FlavorCustomRecipe extends CustomRecipe {
 	}
 
 	@Override
-	public ItemStack assemble(CraftingContainer cont) {
+	public ItemStack assemble(CraftingContainer cont, RegistryAccess access) {
 		List<ItemStack> list = Lists.newArrayList();
 		ItemStack meal = ItemStack.EMPTY;
 		ItemStack seasoning = ItemStack.EMPTY;

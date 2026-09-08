@@ -17,7 +17,7 @@ public class EntityRenderData {
 	boolean isOuter;
 
 	public EntityRenderData(String name, float s, float a) {
-		texPath = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/entity/" + name + ".png");
+		texPath = new ResourceLocation(ClimateCore.MOD_ID, "textures/entity/" + name + ".png");
 		location = name;
 		outer = "main";
 		scale = s;
@@ -26,7 +26,7 @@ public class EntityRenderData {
 	}
 
 	public EntityRenderData(String name, float s, float a, String outerName) {
-		texPath = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/entity/" + name + ".png");
+		texPath = new ResourceLocation(ClimateCore.MOD_ID, "textures/entity/" + name + ".png");
 		location = name;
 		outer = outerName;
 		scale = s;
@@ -40,12 +40,12 @@ public class EntityRenderData {
 
 	@OnlyIn(Dist.CLIENT)
 	public ModelLayerLocation getLayerLocation() {
-		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, location), "main");
+		return new ModelLayerLocation(new ResourceLocation(ClimateCore.MOD_ID, location), "main");
 	}
 
 	@OnlyIn(Dist.CLIENT)
 	public ModelLayerLocation getOuterLocation() {
-		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, location), outer);
+		return new ModelLayerLocation(new ResourceLocation(ClimateCore.MOD_ID, location), outer);
 	}
 
 	public boolean hasOuter() {

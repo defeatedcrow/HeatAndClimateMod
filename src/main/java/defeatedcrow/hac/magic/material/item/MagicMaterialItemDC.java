@@ -18,7 +18,8 @@ public class MagicMaterialItemDC extends MaterialItemDC implements IColorDC {
 	private final MagicColor color;
 
 	public MagicMaterialItemDC(MagicColor c, String s, Rarity rare, TagKey<Item> pair) {
-		super(new Item.Properties().tab(MagicInit.MAGIC).rarity(rare), s, pair);
+		super(new Item.Properties().rarity(rare), s, pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(MagicInit.MAGIC, this);
 		color = c;
 	}
 

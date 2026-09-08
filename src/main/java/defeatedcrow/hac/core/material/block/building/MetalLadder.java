@@ -42,8 +42,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -71,7 +70,7 @@ public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(3.0F, 30.0F).noOcclusion();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 30.0F).noOcclusion();
 	}
 
 	@Override
@@ -168,7 +167,7 @@ public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 						mpos.setWithOffset(pos, 0, -y, 0);
 						if (level.getBlockState(mpos).getBlock() == this)
 							continue;
-						else if (level.getBlockState(mpos).getMaterial().isReplaceable()) {
+						else if (level.getBlockState(mpos).canBeReplaced()) {
 							next = pos.below(y);
 							break;
 						} else
@@ -180,7 +179,7 @@ public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 						mpos.setWithOffset(pos, 0, y, 0);
 						if (level.getBlockState(mpos).getBlock() == this)
 							continue;
-						else if (level.getBlockState(mpos).getMaterial().isReplaceable()) {
+						else if (level.getBlockState(mpos).canBeReplaced()) {
 							next = pos.above(y);
 							break;
 						} else
@@ -190,7 +189,7 @@ public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 				if (!next.equals(pos)) {
 					Direction dir = DCState.getFace(state, DCState.FACING);
 					if (dir != null) {
-						boolean top = level.getBlockState(next.above()).getMaterial().isReplaceable();
+						boolean top = level.getBlockState(next.above()).canBeReplaced();
 						boolean clamp = level.getBlockState(next.relative(dir)).isFaceSturdy(level, pos.relative(dir), dir.getOpposite());
 						FluidState fluidstate = level.getFluidState(next);
 						BlockState place = this.defaultBlockState().setValue(DCState.FACING, dir).setValue(DCState.FLAG, clamp).setValue(DCState.TOP, top).setValue(WATERLOGGED, Boolean.valueOf(
@@ -222,7 +221,7 @@ public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 		if (s1.getValue(WATERLOGGED)) {
 			level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 		}
-		boolean top = level.getBlockState(pos.above()).getMaterial().isReplaceable();
+		boolean top = level.getBlockState(pos.above()).canBeReplaced();
 		boolean clamp = false;
 		FluidState fluidstate = level.getFluidState(pos);
 		Direction face = DCState.getFace(s1, DCState.FACING);
@@ -240,7 +239,7 @@ public class MetalLadder extends BlockDC implements SimpleWaterloggedBlock {
 		Direction face = cont.getHorizontalDirection();
 		Direction dir = cont.getClickedFace();
 
-		boolean top = level.getBlockState(pos.above()).getMaterial().isReplaceable();
+		boolean top = level.getBlockState(pos.above()).canBeReplaced();
 		BlockState s1 = level.getBlockState(pos.relative(dir));
 		if (s1.getBlock() == this) {
 			face = DCState.getFace(s1, DCState.FACING);

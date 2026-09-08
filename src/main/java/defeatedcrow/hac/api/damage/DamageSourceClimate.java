@@ -1,6 +1,12 @@
 package defeatedcrow.hac.api.damage;
 
+import net.minecraft.core.Holder;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
 
 /**
  * 気候によるダメージのDamageSource<br>
@@ -8,22 +14,54 @@ import net.minecraft.world.damagesource.DamageSource;
  */
 public class DamageSourceClimate extends DamageSource {
 
-	public static DamageSourceClimate climateHeatDamage = new DamageSourceClimate(
-			"dcs_heat").setHeatDamage().setBypassesArmor();
-	public static DamageSourceClimate climateColdDamage = new DamageSourceClimate(
-			"dcs_cold").setHeatDamage().setNegativeDamage().setBypassesArmor();
-	public static DamageSourceClimate climateWaterDamage = new DamageSourceClimate(
-			"dcs_water").setHumDamage().setBypassesArmor();
-	public static DamageSourceClimate climateDryDamage = new DamageSourceClimate(
-			"dcs_dry").setHumDamage().setNegativeDamage().setBypassesArmor();
-	public static DamageSourceClimate climateWindDamage = new DamageSourceClimate(
-			"dcs_wind").setAirDamage().setBypassesArmor();
-	public static DamageSourceClimate climateSuffocationDamage = new DamageSourceClimate(
-			"dcs_suffocation").setAirDamage().setNegativeDamage().setBypassesArmor();
-	public static DamageSource machineDamage = new DamageSource("dcs_machine");
+	public static final String MOD_ID = "dcs_climate";
 
-	public DamageSourceClimate(String damageTypeIn) {
-		super(damageTypeIn);
+	public static final ResourceKey<DamageType> HEAT = key("dcs_heat");
+	public static final ResourceKey<DamageType> COLD = key("dcs_cold");
+	public static final ResourceKey<DamageType> WATER = key("dcs_water");
+	public static final ResourceKey<DamageType> DRY = key("dcs_dry");
+	public static final ResourceKey<DamageType> WIND = key("dcs_wind");
+	public static final ResourceKey<DamageType> SUFFOCATION = key("dcs_suffocation");
+	public static final ResourceKey<DamageType> MACHINE = key("dcs_machine");
+
+	private static ResourceKey<DamageType> key(String name) {
+		return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(MOD_ID, name));
+	}
+
+	private static Holder<DamageType> holder(RegistryAccess access, ResourceKey<DamageType> key) {
+		return access.registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(key);
+	}
+
+	public static DamageSourceClimate climateHeatDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, HEAT)).setHeatDamage();
+	}
+
+	public static DamageSourceClimate climateColdDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, COLD)).setHeatDamage().setNegativeDamage();
+	}
+
+	public static DamageSourceClimate climateWaterDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, WATER)).setHumDamage();
+	}
+
+	public static DamageSourceClimate climateDryDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, DRY)).setHumDamage().setNegativeDamage();
+	}
+
+	public static DamageSourceClimate climateWindDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, WIND)).setAirDamage();
+	}
+
+	public static DamageSourceClimate climateSuffocationDamage(RegistryAccess access) {
+		return new DamageSourceClimate(holder(access, SUFFOCATION)).setAirDamage().setNegativeDamage();
+	}
+
+	public static DamageSource machineDamage(RegistryAccess access) {
+		return new DamageSource(holder(access, MACHINE));
+	}
+
+	public DamageSourceClimate(Holder<DamageType> type) {
+		super(type);
 	}
 
 	public boolean isHeat;
@@ -32,7 +70,6 @@ public class DamageSourceClimate extends DamageSource {
 	public boolean isAir;
 
 	private DamageSourceClimate setBypassesArmor() {
-		super.bypassArmor();
 		return this;
 	}
 

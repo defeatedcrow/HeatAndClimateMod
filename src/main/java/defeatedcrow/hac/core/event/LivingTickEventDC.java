@@ -59,14 +59,14 @@ public class LivingTickEventDC {
 	@SubscribeEvent
 	public static void onLivingTick(LivingEvent.LivingTickEvent event) {
 		LivingEntity living = event.getEntity();
-		if (living != null && living.level != null) {
-			if (living.level.getGameTime() % ConfigCommonBuilder.INSTANCE.vUpdateInterval.get() == 0) {
+		if (living != null && living.level() != null) {
+			if (living.level().getGameTime() % ConfigCommonBuilder.INSTANCE.vUpdateInterval.get() == 0) {
 				if (living instanceof Player || ConfigCommonBuilder.INSTANCE.enMobDamage.get()) {
 					onLivingClimateUpdate(living);
 				}
 			}
-			if (!living.level.isClientSide) {
-				if (living.level.getGameTime() % 20 == 0) {
+			if (!living.level().isClientSide) {
+				if (living.level().getGameTime() % 20 == 0) {
 
 					if (living instanceof Player && ConfigCommonBuilder.INSTANCE.enPotionSharing.get()) {
 						onLivingPotionSharing(living);
@@ -162,7 +162,7 @@ public class LivingTickEventDC {
 		if (ConfigCommonBuilder.INSTANCE.enTempDamage.get()) {
 
 			// ピースフルではダメージがない
-			if (living.level.getDifficulty() == Difficulty.PEACEFUL && !ConfigCommonBuilder.INSTANCE.enPeacefulDamage.get()) {
+			if (living.level().getDifficulty() == Difficulty.PEACEFUL && !ConfigCommonBuilder.INSTANCE.enPeacefulDamage.get()) {
 				return;
 			}
 
@@ -171,7 +171,7 @@ public class LivingTickEventDC {
 			// return;
 			// }
 
-			IClimate clm = new ClimateSupplier(living.level, living.blockPosition()).get();
+			IClimate clm = new ClimateSupplier(living.level(), living.blockPosition()).get();
 
 			DCHeatTier heat = clm.getHeat();
 
@@ -185,8 +185,8 @@ public class LivingTickEventDC {
 			}
 			float damTemp = Math.abs(heat.getTier()) * 1.0F; // hot 0F ~ 8.0F / cold 0F ~ 10.0F
 			boolean isCold = heat.getTier() < 0;
-			DamageSourceClimate source = isCold ? DamageSourceClimate.climateColdDamage :
-					DamageSourceClimate.climateHeatDamage;
+			DamageSourceClimate source = isCold ? DamageSourceClimate.climateColdDamage(living.level().registryAccess()) :
+					DamageSourceClimate.climateHeatDamage(living.level().registryAccess());
 
 			// 基礎ダメージ
 			if (isCold) {
@@ -237,9 +237,9 @@ public class LivingTickEventDC {
 						Vec3 vec = null;
 						BlockPos p2 = null;
 						if (isCold) {
-							p2 = ClimateAPI.calculator.getMaxColdPos(living.level, living.blockPosition(), 3);
+							p2 = ClimateAPI.calculator.getMaxColdPos(living.level(), living.blockPosition(), 3);
 						} else {
-							p2 = ClimateAPI.calculator.getMaxHeatPos(living.level, living.blockPosition(), 3);
+							p2 = ClimateAPI.calculator.getMaxHeatPos(living.level(), living.blockPosition(), 3);
 						}
 
 						if (p2 != null) {
@@ -270,7 +270,7 @@ public class LivingTickEventDC {
 			/* wet effect */
 
 			if (living instanceof Player && ConfigCommonBuilder.INSTANCE.enWetEffect.get() && !DCItemUtil.isWearArmorItem(CoreInit.LEGGINS_WADERS.get(), living, EquipmentSlot.LEGS))
-				if (!living.getLevel().isClientSide && clm.getHumidity() == DCHumidity.UNDERWATER || living.isInWaterRainOrBubble()) {
+				if (!living.level().isClientSide && clm.getHumidity() == DCHumidity.UNDERWATER || living.isInWaterRainOrBubble()) {
 					if (!living.hasEffect(CoreInit.WET.get()) || living.getEffect(CoreInit.WET.get()).getDuration() < 20) {
 						living.addEffect(new MobEffectInstance(CoreInit.WET.get(), 600, 0));
 					}
@@ -305,7 +305,7 @@ public class LivingTickEventDC {
 						int point = Villager.FOOD_POINTS.get(food.getItem());
 						vil.heal(point * 2F);
 						vil.getPersistentData().putInt("dcs_fulfill_interval", 5);
-						if (vil.getLevel() instanceof ServerLevel serverLevel)
+						if (vil.level() instanceof ServerLevel serverLevel)
 							MsgEffectToC.sendToClient(serverLevel, vil.position().add(0D, 2.4D, 0D), 43);
 					}
 				}
@@ -341,7 +341,7 @@ public class LivingTickEventDC {
 		}
 		if (list.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLACK_RED)) && monster instanceof Phantom) {
 			CompoundTag explosion = new CompoundTag();
-			int rand = monster.getLevel().getRandom().nextInt(64);
+			int rand = monster.level().getRandom().nextInt(64);
 			explosion.putByte("Type", (byte) (1 + rand & 3));
 			List<Integer> colors = Lists.newArrayList();
 			colors.add(fireworkColors[rand & 7].getFireworkColor());
@@ -360,8 +360,8 @@ public class LivingTickEventDC {
 			listtag.add(explosion);
 			basetag.put("Explosions", listtag);
 
-			FireworkRocketEntity firework = new FireworkRocketEntity(monster.getLevel(), null, monster.getX(), monster.getY() + 1.0D, monster.getZ(), rocket);
-			monster.getLevel().addFreshEntity(firework);
+			FireworkRocketEntity firework = new FireworkRocketEntity(monster.level(), null, monster.getX(), monster.getY() + 1.0D, monster.getZ(), rocket);
+			monster.level().addFreshEntity(firework);
 			monster.discard();
 		}
 	}

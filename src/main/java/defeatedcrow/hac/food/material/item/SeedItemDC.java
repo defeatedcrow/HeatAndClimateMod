@@ -36,7 +36,8 @@ public class SeedItemDC extends BlockItemDC {
 	private final ICropData data;
 
 	public SeedItemDC(CropTier rare, CropType t, Block block, String n, TagKey<Item> pair) {
-		super(n, block, new Item.Properties().rarity(rare.getRarity()).tab(FoodInit.AGRI), pair);
+		super(n, block, new Item.Properties().rarity(rare.getRarity()), pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(FoodInit.AGRI, this);
 		name = n;
 		type = t;
 		tier = rare;

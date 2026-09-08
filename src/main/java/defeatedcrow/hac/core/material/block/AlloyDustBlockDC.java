@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -28,8 +29,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 
 public class AlloyDustBlockDC extends ClimateBlock implements IRapidCollectables {
@@ -48,7 +48,7 @@ public class AlloyDustBlockDC extends ClimateBlock implements IRapidCollectables
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.METAL).randomTicks().strength(3.0F, 6.0F);
+		return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).randomTicks().strength(3.0F, 6.0F);
 	}
 
 	@Override
@@ -134,7 +134,7 @@ public class AlloyDustBlockDC extends ClimateBlock implements IRapidCollectables
 
 	@Override
 	public TagKey<Item> collectableToolTag() {
-		return Tags.Items.TOOLS_SHOVELS;
+		return ItemTags.SHOVELS;
 	}
 
 	@Override

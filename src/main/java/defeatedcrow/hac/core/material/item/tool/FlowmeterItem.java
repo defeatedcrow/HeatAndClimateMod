@@ -31,7 +31,8 @@ import net.minecraftforge.fluids.FluidUtil;
 public class FlowmeterItem extends CraftingItemDC {
 
 	public FlowmeterItem(String n) {
-		super(n, new Item.Properties().tab(CoreInit.MACHINE).stacksTo(1), TagDC.ItemTag.CRAFT_FLOWMETER);
+		super(n, new Item.Properties().stacksTo(1), TagDC.ItemTag.CRAFT_FLOWMETER);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	@Override

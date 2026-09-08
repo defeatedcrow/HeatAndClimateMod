@@ -57,11 +57,11 @@ public class IngPair {
 		if (type.equalsIgnoreCase("tag") || type.equalsIgnoreCase("dic_name")) {
 			return name;
 		} else if (type.equalsIgnoreCase("item")) {
-			ResourceLocation res = ResourceLocation.parse(name);
+			ResourceLocation res = new ResourceLocation(name);
 			Item ret = ForgeRegistries.ITEMS.getValue(res);
 			return ret;
 		} else if (type.equalsIgnoreCase("block")) {
-			ResourceLocation res = ResourceLocation.parse(name);
+			ResourceLocation res = new ResourceLocation(name);
 			Block ret = ForgeRegistries.BLOCKS.getValue(res);
 			return ret;
 		}
@@ -70,11 +70,11 @@ public class IngPair {
 
 	public ItemStack getItem() {
 		if (type.equalsIgnoreCase("item")) {
-			ResourceLocation res = ResourceLocation.parse(name);
+			ResourceLocation res = new ResourceLocation(name);
 			Item ret = ForgeRegistries.ITEMS.getValue(res);
 			return new ItemStack(ret);
 		} else if (type.equalsIgnoreCase("block")) {
-			ResourceLocation res = ResourceLocation.parse(name);
+			ResourceLocation res = new ResourceLocation(name);
 			Block ret = ForgeRegistries.BLOCKS.getValue(res);
 			return new ItemStack(ret);
 		}

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.DCTexturePath;
@@ -27,7 +27,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> implements RecipeUpdateListener {
-	private static final ResourceLocation RECIPE_BUTTON_LOCATION = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/gui/recipe_button.png");
+	private static final ResourceLocation RECIPE_BUTTON_LOCATION = new ResourceLocation("minecraft", "textures/gui/recipe_button.png");
 	private final RecipeBookComponent recipeBookComponent = new RecipeBookComponent();
 	private boolean widthTooNarrow;
 
@@ -63,7 +63,7 @@ public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> 
 	}
 
 	@Override
-	public void render(PoseStack pose, int mx, int my, float f) {
+	public void render(GuiGraphics pose, int mx, int my, float f) {
 		this.renderBackground(pose);
 
 		if (this.recipeBookComponent.isVisible() && this.widthTooNarrow) {
@@ -91,26 +91,26 @@ public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> 
 		}
 
 		this.renderTooltip(pose, mx, my);
-		this.renderComponentTooltip(pose, list, mx, my);
+		pose.renderComponentTooltip(this.font, list, mx, my);
 		this.recipeBookComponent.renderTooltip(pose, this.leftPos, this.topPos, mx, my);
 	}
 
 	@Override
-	protected void renderBg(PoseStack pose, float f, int mx, int my) {
+	protected void renderBg(GuiGraphics pose, float f, int mx, int my) {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, DCTexturePath.GUI_KICHEN_BENCH.getLocation());
 		int i = leftPos;
 		int j = (this.height - this.imageHeight) / 2;
-		this.blit(pose, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		pose.blit(DCTexturePath.GUI_KICHEN_BENCH.getLocation(), i, j, 0, 0, this.imageWidth, this.imageHeight);
 
 		boolean lock = this.getMenu()
 		    .getContainer()
 		    .isLocked();
 		if (lock) {
-			this.blit(pose, i + 156, j + 3, 176, 21, 12, 21);
+			pose.blit(DCTexturePath.GUI_KICHEN_BENCH.getLocation(), i + 156, j + 3, 176, 21, 12, 21);
 		} else {
-			this.blit(pose, i + 156, j + 3, 176, 0, 12, 21);
+			pose.blit(DCTexturePath.GUI_KICHEN_BENCH.getLocation(), i + 156, j + 3, 176, 0, 12, 21);
 		}
 	}
 
@@ -168,7 +168,6 @@ public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> 
 
 	@Override
 	public void removed() {
-		this.recipeBookComponent.removed();
 		super.removed();
 	}
 

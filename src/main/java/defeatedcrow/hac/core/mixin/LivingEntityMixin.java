@@ -31,8 +31,8 @@ public abstract class LivingEntityMixin implements IForgeLivingEntity {
 		LivingEntity liv = LivingEntity.class.cast(this);
 		if (liv.isAlive() && ConfigCommonBuilder.INSTANCE.enTightEffect.get() && liv.getType()
 		    .getCategory() != MobCategory.MONSTER && !(liv instanceof Bat) && !(liv instanceof WaterAnimal)) {
-			BlockPos pos = new BlockPos(liv.getX(), liv.getEyeY(), liv.getZ());
-			IClimate clm = new ClimateSupplier(liv.getLevel(), pos).get();
+			BlockPos pos = BlockPos.containing(liv.getX(), liv.getEyeY(), liv.getZ());
+			IClimate clm = new ClimateSupplier(liv.level(), pos).get();
 			if (clm.getAirflow() == DCAirflow.TIGHT) {
 				boolean flag = liv instanceof Player;
 				boolean flag1 = liv.canDrownInFluidType(liv.getEyeInFluidType()) && !MobEffectUtil.hasWaterBreathing(liv) && (!flag || !((Player) liv).getAbilities().invulnerable);
@@ -46,7 +46,7 @@ public abstract class LivingEntityMixin implements IForgeLivingEntity {
 					liv.setAirSupply(air);
 					if (liv.getAirSupply() == -20) {
 						liv.setAirSupply(0);
-						liv.hurt(DamageSource.DROWN, 2.0F);
+						liv.hurt(liv.level().damageSources().drown(), 2.0F);
 					}
 				}
 			}
@@ -58,8 +58,8 @@ public abstract class LivingEntityMixin implements IForgeLivingEntity {
 		LivingEntity liv = LivingEntity.class.cast(this);
 		if (liv.isAlive() && ConfigCommonBuilder.INSTANCE.enTightEffect.get() && liv.getType()
 		    .getCategory() != MobCategory.MONSTER && !(liv instanceof Bat) && !(liv instanceof WaterAnimal)) {
-			BlockPos pos = new BlockPos(liv.getX(), liv.getEyeY(), liv.getZ());
-			IClimate clm = new ClimateSupplier(liv.getLevel(), pos).get();
+			BlockPos pos = BlockPos.containing(liv.getX(), liv.getEyeY(), liv.getZ());
+			IClimate clm = new ClimateSupplier(liv.level(), pos).get();
 			if (clm.getAirflow() == DCAirflow.TIGHT) {
 				return true;
 			}

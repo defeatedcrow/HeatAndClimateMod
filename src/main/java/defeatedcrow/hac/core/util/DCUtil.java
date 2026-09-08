@@ -58,7 +58,7 @@ public class DCUtil {
 		return rand.nextBoolean() ? 1 : -1;
 	}
 
-	public static final ResourceLocation DUMMY = ResourceLocation.fromNamespaceAndPath("dcs_climate", "empty");
+	public static final ResourceLocation DUMMY = new ResourceLocation("dcs_climate", "empty");
 
 	public static boolean isEmpty(ItemStack item) {
 		if (item == null) {
@@ -116,8 +116,7 @@ public class DCUtil {
 	public static boolean setBlockIfReplaceable(Level level, BlockPos pos, BlockState set, boolean needAir) {
 		if (!level.getBlockState(pos)
 		    .is(BlockTags.FEATURES_CANNOT_REPLACE) && level.getBlockState(pos)
-		        .getMaterial()
-		        .isReplaceable()
+		        .canBeReplaced()
 		    && (!needAir || level.getBlockState(pos)
 		        .getBlock() == Blocks.AIR)) {
 			return level.setBlock(pos, set, 2);
@@ -151,7 +150,7 @@ public class DCUtil {
 	}
 
 	public static boolean removeBadPotion(LivingEntity liv) {
-		if (liv != null && !liv.getLevel().isClientSide) {
+		if (liv != null && !liv.level().isClientSide) {
 			List<MobEffect> remove = Lists.newArrayList();
 			for (MobEffectInstance p : liv.getActiveEffects()) {
 				if (p.getEffect()
@@ -169,7 +168,7 @@ public class DCUtil {
 	}
 
 	public static boolean removeAllPotion(LivingEntity liv) {
-		if (liv != null && !liv.getLevel().isClientSide) {
+		if (liv != null && !liv.level().isClientSide) {
 			List<MobEffectInstance> remove = Lists.newArrayList();
 			remove.addAll(liv.getActiveEffects()
 			    .stream()

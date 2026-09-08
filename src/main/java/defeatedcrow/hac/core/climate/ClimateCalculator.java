@@ -425,8 +425,7 @@ public class ClimateCalculator implements IClimateCalculator {
 			BlockState state = level.getBlockState(pos2);
 			Block block = level.getBlockState(pos2)
 			    .getBlock();
-			if (!level.isEmptyBlock(pos2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.getMaterial()
-			    .blocksMotion()) {
+			if (!level.isEmptyBlock(pos2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.blocksMotion()) {
 				return true;
 			}
 			pos2 = pos2.above();
@@ -453,8 +452,7 @@ public class ClimateCalculator implements IClimateCalculator {
 			BlockState state = level.getBlockState(p2);
 			Block block = level.getBlockState(p2)
 			    .getBlock();
-			if (!level.isEmptyBlock(p2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.getMaterial()
-			    .blocksMotion()) {
+			if (!level.isEmptyBlock(p2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.blocksMotion()) {
 				break;
 			} else {
 				count++;
@@ -468,8 +466,7 @@ public class ClimateCalculator implements IClimateCalculator {
 			BlockState state = level.getBlockState(p2);
 			Block block = level.getBlockState(p2)
 			    .getBlock();
-			if (!level.isEmptyBlock(p2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.getMaterial()
-			    .blocksMotion()) {
+			if (!level.isEmptyBlock(p2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.blocksMotion()) {
 				break;
 			} else {
 				count++;
@@ -559,10 +556,8 @@ public class ClimateCalculator implements IClimateCalculator {
 			} else if (ClimateAPI.registerBlock.isRegisteredAir(state)) {
 				ret = ClimateAPI.registerBlock.getAirflow(state)
 				    .orElse(DCAirflow.TIGHT);
-			} else if (!state.getMaterial()
-			    .blocksMotion()
-			    && !state.getMaterial()
-			        .isLiquid()) {
+			} else if (!state.blocksMotion()
+			    && !state.liquid()) {
 				ret = DCAirflow.NORMAL;
 			}
 			return ret;

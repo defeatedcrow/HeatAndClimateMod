@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.network.packet.IPacketDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.material.item.jems.RodBlack;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -55,7 +56,7 @@ public class MsgLeftClickToS implements IPacketDC {
 			ItemStack held = player.getItemInHand(hand);
 			if (actionId == 0) {
 				if (!DCUtil.isEmpty(held) && held.getItem() instanceof RodBlack rod) {
-					rod.onEmptyHit(player.getLevel(), player, hand, held);
+					rod.onEmptyHit((ServerLevel) player.level(), player, hand, held);
 				}
 			}
 		}

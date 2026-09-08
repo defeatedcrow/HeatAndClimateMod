@@ -6,10 +6,9 @@ import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.math.Matrix4f;
+import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -34,8 +33,10 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -79,7 +80,7 @@ public class BiomeDataCategory implements IRecipeCategory<Biome> {
 		float temp = recipe.getBaseTemperature();
 		float tempOffset = ConfigCommonBuilder.INSTANCE.getSeasonTempOffset(DCTimeHelper.staticSeason);
 		temp -= tempOffset;
-		float rainfall = recipe.getDownfall();
+		float rainfall = recipe.getModifiedClimateSettings().downfall();
 		List<TagKey<Biome>> tags = tagList(recipe);
 
 		boolean isNether = tags.contains(BiomeTags.IS_NETHER);
@@ -207,11 +208,11 @@ public class BiomeDataCategory implements IRecipeCategory<Biome> {
 	}
 
 	@Override
-	public void draw(Biome recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
+	public void draw(Biome recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
 		float temp = recipe.getBaseTemperature();
 		float tempOffset = ConfigCommonBuilder.INSTANCE.getSeasonTempOffset(DCTimeHelper.staticSeason);
 		temp -= tempOffset;
-		float rainfall = recipe.getDownfall();
+		float rainfall = recipe.getModifiedClimateSettings().downfall();
 		List<TagKey<Biome>> tags = tagList(recipe);
 		boolean isNether = tags.contains(BiomeTags.IS_NETHER);
 		boolean isEnd = tags.contains(BiomeTags.IS_END);
@@ -223,75 +224,75 @@ public class BiomeDataCategory implements IRecipeCategory<Biome> {
 		Minecraft minecraft = Minecraft.getInstance();
 		Font font = minecraft.font;
 
-		Registry<Biome> biomeReg = ClimateCore.proxy.getClientLevel().get().registryAccess().registryOrThrow(Registry.BIOME_REGISTRY);
+		Registry<Biome> biomeReg = ClimateCore.proxy.getClientLevel().get().registryAccess().registryOrThrow(Registries.BIOME);
 		ResourceLocation key = biomeReg.getKey(recipe);
 
 		MutableComponent name = Component.translatable("biome." + key.getNamespace() + "." + key.getPath());
 		if (name != null && !name.getString().isBlank()) {
-			font.draw(stack, name, 22, 10, 0xFF000000);
+			graphics.drawString(font, name, 22, 10, 0xFF000000);
 		} else {
 			Component.literal(key.getPath());
-			font.draw(stack, name, 22, 10, 0xFF000000);
+			graphics.drawString(font, name, 22, 10, 0xFF000000);
 		}
 
 		String mod_id = key.getNamespace();
-		font.draw(stack, mod_id, 22, 22, 0xFF000000);
+		graphics.drawString(font, mod_id, 22, 22, 0xFF000000);
 
-		font.draw(stack, temp + " F", 80, 43, 0xFF505050);
-		font.draw(stack, rainfall + " F", 78, 61, 0xFF505050);
+		graphics.drawString(font, temp + " F", 80, 43, 0xFF505050);
+		graphics.drawString(font, rainfall + " F", 78, 61, 0xFF505050);
 
 		RenderSystem.setShaderTexture(0, PluginTexDC.BIOME.getLocation());
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 
 		if (tags.contains(TagDC.BiomeTag.WHITE_BIOME)) {
-			drawTexturedModalRect(stack.last().pose(), 20, 92, 0, 182, 21, 15);
+			drawTexturedModalRect(graphics.pose().last().pose(), 20, 92, 0, 182, 21, 15);
 		}
 		if (tags.contains(TagDC.BiomeTag.BLUE_BIOME)) {
-			drawTexturedModalRect(stack.last().pose(), 43, 92, 21, 182, 21, 15);
+			drawTexturedModalRect(graphics.pose().last().pose(), 43, 92, 21, 182, 21, 15);
 		}
 		if (tags.contains(TagDC.BiomeTag.BLACK_BIOME)) {
-			drawTexturedModalRect(stack.last().pose(), 66, 92, 42, 182, 21, 15);
+			drawTexturedModalRect(graphics.pose().last().pose(), 66, 92, 42, 182, 21, 15);
 		}
 		if (tags.contains(TagDC.BiomeTag.RED_BIOME)) {
-			drawTexturedModalRect(stack.last().pose(), 89, 92, 63, 182, 21, 15);
+			drawTexturedModalRect(graphics.pose().last().pose(), 89, 92, 63, 182, 21, 15);
 		}
 		if (tags.contains(TagDC.BiomeTag.GREEN_BIOME)) {
-			drawTexturedModalRect(stack.last().pose(), 112, 92, 84, 182, 21, 15);
+			drawTexturedModalRect(graphics.pose().last().pose(), 112, 92, 84, 182, 21, 15);
 		}
 
 		if (tags.contains(Tags.Biomes.IS_PLAINS) || tags.contains(Tags.Biomes.IS_SPARSE)) {
-			drawTexturedModalRect(stack.last().pose(), 24, 98, 0, 198, 6, 6);
+			drawTexturedModalRect(graphics.pose().last().pose(), 24, 98, 0, 198, 6, 6);
 		}
 		if (tags.contains(BiomeTags.IS_SAVANNA)) {
-			drawTexturedModalRect(stack.last().pose(), 31, 98, 6, 198, 6, 6);
+			drawTexturedModalRect(graphics.pose().last().pose(), 31, 98, 6, 198, 6, 6);
 		}
 
 		if (tags.contains(Tags.Biomes.IS_COLD) || tags.contains(BiomeTags.IS_HILL)) {
-			drawTexturedModalRect(stack.last().pose(), 47, 98, 12, 198, 6, 6);
+			drawTexturedModalRect(graphics.pose().last().pose(), 47, 98, 12, 198, 6, 6);
 		}
 		if (tags.contains(Tags.Biomes.IS_CONIFEROUS) || tags.contains(BiomeTags.IS_TAIGA)) {
-			drawTexturedModalRect(stack.last().pose(), 54, 98, 18, 198, 6, 6);
+			drawTexturedModalRect(graphics.pose().last().pose(), 54, 98, 18, 198, 6, 6);
 		}
 
 		if (tags.contains(Tags.Biomes.IS_WATER)) {
-			drawTexturedModalRect(stack.last().pose(), 70, 98, 24, 198, 6, 6);
+			drawTexturedModalRect(graphics.pose().last().pose(), 70, 98, 24, 198, 6, 6);
 		}
 		if (tags.contains(Tags.Biomes.IS_SPOOKY) || tags.contains(Tags.Biomes.IS_SWAMP) || tags.contains(BiomeTags.IS_NETHER)) {
-			drawTexturedModalRect(stack.last().pose(), 77, 98, 30, 198, 6, 6);
+			drawTexturedModalRect(graphics.pose().last().pose(), 77, 98, 30, 198, 6, 6);
 		}
 
 		if (tags.contains(Tags.Biomes.IS_SANDY) || tags.contains(Tags.Biomes.IS_DRY) || tags.contains(Tags.Biomes.IS_HOT)) {
-			drawTexturedModalRect(stack.last().pose(), 93, 98, 36, 198, 6, 6);
+			drawTexturedModalRect(graphics.pose().last().pose(), 93, 98, 36, 198, 6, 6);
 		}
 		if (tags.contains(BiomeTags.IS_MOUNTAIN) || tags.contains(BiomeTags.IS_BADLANDS)) {
-			drawTexturedModalRect(stack.last().pose(), 100, 98, 42, 198, 6, 6);
+			drawTexturedModalRect(graphics.pose().last().pose(), 100, 98, 42, 198, 6, 6);
 		}
 
 		if (tags.contains(Tags.Biomes.IS_DENSE) || tags.contains(BiomeTags.IS_FOREST)) {
-			drawTexturedModalRect(stack.last().pose(), 116, 98, 48, 198, 6, 6);
+			drawTexturedModalRect(graphics.pose().last().pose(), 116, 98, 48, 198, 6, 6);
 		}
 		if (tags.contains(Tags.Biomes.IS_LUSH) || tags.contains(BiomeTags.IS_JUNGLE)) {
-			drawTexturedModalRect(stack.last().pose(), 123, 98, 54, 198, 6, 6);
+			drawTexturedModalRect(graphics.pose().last().pose(), 123, 98, 54, 198, 6, 6);
 		}
 
 	}

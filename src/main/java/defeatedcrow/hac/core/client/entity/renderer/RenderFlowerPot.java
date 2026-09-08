@@ -2,7 +2,7 @@ package defeatedcrow.hac.core.client.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IEntityItem;
@@ -55,8 +55,8 @@ public class RenderFlowerPot extends EntityRenderer<FlowerPotEntity> {
 
 				poseStack.pushPose();
 				poseStack.translate(0F, f2, 0F);
-				poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - yaw));
-				poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+				poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - yaw));
+				poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
 				poseStack.scale(f1, f1, f1);
 				model.setupAnim(entity, 180.0F - yaw, partialTicks, packedLight, f1, f2);
 				VertexConsumer vertex = buffer.getBuffer(model.renderType(tex));
@@ -69,8 +69,8 @@ public class RenderFlowerPot extends EntityRenderer<FlowerPotEntity> {
 				BlockState flowerState = FlowerPotEntity.getRenderState(flower);
 				poseStack.pushPose();
 				poseStack.translate(0.0F, 0.0F, 0.0F);
-				poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - yaw));
-				poseStack.mulPose(Vector3f.XP.rotationDegrees(0.0F));
+				poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - yaw));
+				poseStack.mulPose(Axis.XP.rotationDegrees(0.0F));
 				if (flowerState.getBlock() instanceof LeavesCropBlockDC || flowerState.getBlock() instanceof LeavesBlock) {
 					poseStack.scale(0.45F, 0.45F, 0.45F);
 					poseStack.translate(-0.5F, 0.85F, -0.5F);

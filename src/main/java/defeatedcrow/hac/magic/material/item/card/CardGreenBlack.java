@@ -8,12 +8,13 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 
@@ -32,7 +33,7 @@ public class CardGreenBlack extends MagicCardBase {
 		else {
 			for (int i = 1; i < 64 && i + p1.getY() < level.getMaxBuildHeight(); i++) {
 				BlockState state = level.getBlockState(p1.above(i));
-				if (state.getMaterial().isSolidBlocking() || state.getMaterial().getPushReaction() == PushReaction.BLOCK) {
+				if (state.isSolid() || state.getPistonPushReaction() == PushReaction.BLOCK) {
 					onGround = false;
 					break;
 				}
@@ -46,12 +47,12 @@ public class CardGreenBlack extends MagicCardBase {
 			for (int i = level.getMaxBuildHeight() - 1; i > p1.getY(); i--) {
 				mpos.set(p1.getX(), i, p1.getZ());
 				BlockState state = level.getBlockState(mpos);
-				if (!state.getMaterial().isReplaceable() || state.getMaterial().isLiquid()) {
-					if (state.getMaterial() == Material.LAVA || state.getMaterial() == Material.CACTUS) {
+				if (!state.canBeReplaced() || state.liquid()) {
+					if (state.is(Blocks.LAVA) || state.is(Blocks.CACTUS)) {
 						isDangerBlock = true;
 						break;
-					} else if (level.getBlockState(mpos.above()).getMaterial().isReplaceable() && level.getBlockState(mpos.above(2)).getMaterial().isReplaceable()) {
-						if (level.getBlockState(mpos.above()).getMaterial() == Material.POWDER_SNOW || state.getMaterial() == Material.CACTUS || state.getMaterial() == Material.FIRE) {
+					} else if (level.getBlockState(mpos.above()).canBeReplaced() && level.getBlockState(mpos.above(2)).canBeReplaced()) {
+						if (level.getBlockState(mpos.above()).is(Blocks.POWDER_SNOW) || state.is(Blocks.CACTUS) || state.is(BlockTags.FIRE)) {
 							isDangerBlock = true;
 						}
 						break;
@@ -80,10 +81,10 @@ public class CardGreenBlack extends MagicCardBase {
 			for (int i = level.getMinBuildHeight() + 1; i < p1.getY(); i++) {
 				mpos.set(p1.getX(), i, p1.getZ());
 				BlockState state = level.getBlockState(mpos);
-				if (state.getMaterial().isReplaceable() && level.getBlockState(mpos.above()).getMaterial().isReplaceable()) {
-					if (state.getMaterial() == Material.POWDER_SNOW || state.getMaterial() == Material.CACTUS || state.getMaterial() == Material.FIRE) {
+				if (state.canBeReplaced() && level.getBlockState(mpos.above()).canBeReplaced()) {
+					if (state.is(Blocks.POWDER_SNOW) || state.is(Blocks.CACTUS) || state.is(BlockTags.FIRE)) {
 						isDangerBlock = true;
-					} else if (level.getBlockState(mpos.below()).getMaterial() == Material.LAVA || level.getBlockState(mpos.below()).getMaterial() == Material.CACTUS) {
+					} else if (level.getBlockState(mpos.below()).is(Blocks.LAVA) || level.getBlockState(mpos.below()).is(Blocks.CACTUS)) {
 						isDangerBlock = true;
 					}
 					break;

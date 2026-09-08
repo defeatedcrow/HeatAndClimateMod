@@ -50,11 +50,11 @@ public class ArrowGreen extends AbstractArrow {
 			LivingEntity liv = (LivingEntity) entity;
 
 			this.dealtDamage = true;
-			if (liv != null && !level.isClientSide) {
+			if (liv != null && !level().isClientSide) {
 				if (liv.getVehicle() != null) {
 					liv.removeVehicle();
 				}
-				ChairEntity bind = MagicInit.BIND_PLANT_ENTITY.get().create(level);
+				ChairEntity bind = MagicInit.BIND_PLANT_ENTITY.get().create(level());
 				bind.setPos(liv.position());
 				bind.setDeltaMovement(0D, 0D, 0D);
 				bind.setMaxAge(maxAge);
@@ -62,7 +62,7 @@ public class ArrowGreen extends AbstractArrow {
 					bind.setOwner(player.getUUID());
 				}
 				liv.startRiding(bind);
-				level.addFreshEntity(bind);
+				level().addFreshEntity(bind);
 			}
 
 			this.playSound(this.getHitGroundSoundEvent(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));

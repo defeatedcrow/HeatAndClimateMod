@@ -6,20 +6,15 @@ import java.util.function.Consumer;
 import com.google.common.collect.ImmutableList;
 
 import net.minecraft.advancements.Advancement;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.advancements.AdvancementProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.advancements.AdvancementSubProvider;
 
-public class AdvancementProviderDC extends AdvancementProvider {
+public class AdvancementProviderDC implements AdvancementSubProvider {
 
 	private final List<Consumer<Consumer<Advancement>>> tabs = ImmutableList.of(new MainAdvancement(), new MagicAdvancement(), new MachineAdvancement());
 
-	public AdvancementProviderDC(DataGenerator gen, ExistingFileHelper helper) {
-		super(gen, helper);
-	}
-
 	@Override
-	protected void registerAdvancements(Consumer<Advancement> consumer, net.minecraftforge.common.data.ExistingFileHelper fileHelper) {
+	public void generate(HolderLookup.Provider provider, Consumer<Advancement> consumer) {
 		for (Consumer<Consumer<Advancement>> con : this.tabs) {
 			con.accept(consumer);
 		}

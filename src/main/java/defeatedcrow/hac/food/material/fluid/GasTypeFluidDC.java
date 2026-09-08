@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidType;
@@ -53,15 +53,15 @@ public class GasTypeFluidDC {
 		name = s;
 		isWaterType = false;
 		color = c;
-		tex = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, texName);
+		tex = new ResourceLocation(ClimateCore.MOD_ID, texName);
 
 		type = CoreInit.FLUID_TYPES.register(name, () -> new FluidType(prop) {
 			@Override
 			public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
 				consumer.accept(new IClientFluidTypeExtensions() {
 
-					private static final ResourceLocation UNDERWATER_LOCATION = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/misc/underwater.png"),
-					    WATER_OVERLAY = ResourceLocation.fromNamespaceAndPath("minecraft", "block/water_overlay");
+					private static final ResourceLocation UNDERWATER_LOCATION = new ResourceLocation("minecraft", "textures/misc/underwater.png"),
+					    WATER_OVERLAY = new ResourceLocation("minecraft", "block/water_overlay");
 
 					@Override
 					public ResourceLocation getStillTexture() {
@@ -112,7 +112,7 @@ public class GasTypeFluidDC {
 		still = CoreInit.FLUIDS.register(name, () -> new ForgeFlowingFluid.Source(fluidProperties()));
 		flow = CoreInit.FLUIDS.register(name + "_flowing", () -> new ForgeFlowingFluid.Flowing(fluidProperties()));
 
-		block = CoreInit.BLOCKS.register("fluid/" + name, () -> new LiquidBlock(getStillFluid(), BlockBehaviour.Properties.of(Material.WATER)
+		block = CoreInit.BLOCKS.register("fluid/" + name, () -> new LiquidBlock(getStillFluid(), BlockBehaviour.Properties.of().mapColor(MapColor.WATER).liquid()
 		    .noCollission()
 		    .strength(100.0F)
 		    .noLootTable()) {
@@ -133,9 +133,8 @@ public class GasTypeFluidDC {
 				level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
 			}
 		});
-		bucket = CoreInit.ITEMS.register("fluid/bucket_" + name, () -> new BucketItem(getStillFluid(), new Item.Properties().craftRemainder(Items.BUCKET)
-		    .stacksTo(1)
-		    .tab(CoreInit.CORE)));
+		bucket = CoreInit.ITEMS.register("fluid/bucket_" + name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new BucketItem(getStillFluid(), new Item.Properties().craftRemainder(Items.BUCKET)
+		    .stacksTo(1)), CoreInit.CORE));
 	}
 
 	/* 基本データ */

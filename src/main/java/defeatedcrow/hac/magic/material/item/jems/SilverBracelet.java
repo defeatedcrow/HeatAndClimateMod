@@ -46,7 +46,7 @@ public class SilverBracelet extends MagicJewelBase {
 
 	@Override
 	public void constantEffect(LivingEntity owner, ItemStack charm) {
-		if (owner != null && !owner.level.isClientSide) {
+		if (owner != null && !owner.level().isClientSide) {
 			int i = DCUtil.isEmpty(charm) ? 0 : charm.getCount() - 1;
 			MagicColor color = getColor();
 			if (color == MagicColor.WHITE_BLUE) {

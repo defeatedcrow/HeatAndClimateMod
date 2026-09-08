@@ -14,7 +14,8 @@ public class FishingRodItemDC extends FishingRodItem implements IItemDC, ITierIt
 	final TagKey<Item> tag;
 
 	public FishingRodItemDC(TierDC tierIn, TagKey<Item> pair) {
-		super(new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE));
+		super(new Item.Properties().durability(tierIn.getUses()));
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 		tier = tierIn;
 		tag = pair;
 	}

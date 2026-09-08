@@ -44,8 +44,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -70,7 +69,7 @@ public class FluidSinkBlock_Lab extends BlockDC implements EntityBlock, SimpleWa
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(0.1F, 540.0F).noOcclusion();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(0.1F, 540.0F).noOcclusion();
 	}
 
 	@Override

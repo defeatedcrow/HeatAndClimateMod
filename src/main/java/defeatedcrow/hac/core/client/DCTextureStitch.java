@@ -6,10 +6,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class DCTextureStitch {
 
 	@SubscribeEvent
-	public static void register(TextureStitchEvent.Pre event) {
-		for (DCTexturePath path : DCTexturePath.elements()) {
-			event.addSprite(path.getLocation());
-		}
+	public static void register(TextureStitchEvent event) {
+		// 1.20.1ではTextureStitchEventからaddSpriteが削除されたため、GUIテクスチャの事前登録は行わない(必要時に自動読込される)
 	}
 
 }

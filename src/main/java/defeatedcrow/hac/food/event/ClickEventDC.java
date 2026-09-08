@@ -15,6 +15,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.Cow;
@@ -73,7 +74,7 @@ public class ClickEventDC {
 				}
 			}
 			// green manure
-			else if (!item.isEmpty() && item.is(Tags.Items.TOOLS_HOES)) {
+			else if (!item.isEmpty() && item.is(ItemTags.HOES)) {
 				int m = DCState.getInt(target, DCState.STAGE5);
 				if (target.is(TagDC.BlockTag.CROP_GREEN_MANURES) && (m == -1 || m > 1)) {
 					// 下のブロック
@@ -178,7 +179,7 @@ public class ClickEventDC {
 		UseOnContext target = event.getContext();
 		ItemStack tool = event.getHeldItemStack();
 		if (player != null && target != null && event.getToolAction() == ToolActions.AXE_STRIP) {
-			Level playerLevel = player.getLevel();
+			Level playerLevel = player.level();
 			BlockState log = target.getLevel()
 			    .getBlockState(target.getClickedPos());
 			if (log.getBlock() == FoodInit.LOG_CH_WILD.get()) {

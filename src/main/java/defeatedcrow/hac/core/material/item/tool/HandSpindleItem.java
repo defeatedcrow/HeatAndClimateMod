@@ -10,7 +10,8 @@ import net.minecraft.world.item.ItemStack;
 public class HandSpindleItem extends CraftingItemDC {
 
 	public HandSpindleItem(String n) {
-		super(n, new Item.Properties().tab(CoreInit.MACHINE).stacksTo(1), TagDC.ItemTag.CRAFT_SPINDLE);
+		super(n, new Item.Properties().stacksTo(1), TagDC.ItemTag.CRAFT_SPINDLE);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	static Supplier<Item> getSup() {

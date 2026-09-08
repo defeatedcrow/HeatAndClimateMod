@@ -7,9 +7,6 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.item.MaterialItemDC;
-import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Agri;
-import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Cont;
-import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Food;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.food.material.block.FallenLeavesBlock;
 import defeatedcrow.hac.food.material.block.FertileBlock;
@@ -199,10 +196,12 @@ import defeatedcrow.hac.food.material.item.RawFishItem;
 import defeatedcrow.hac.food.material.item.SeedItemDC;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -212,9 +211,12 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class FoodInit {
 
-	public static final CreativeModeTab FOOD = new CreativeTabClimate_Food("food");
-	public static final CreativeModeTab AGRI = new CreativeTabClimate_Agri("agri");
-	public static final CreativeModeTab CONT = new CreativeTabClimate_Cont("container");
+	public static final RegistryObject<CreativeModeTab> FOOD = CoreInit.TABS.register("food",
+	    () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.food")).icon(() -> new ItemStack(FoodInit.BREAD_ROUND_BAKED_ITEM.get())).build());
+	public static final RegistryObject<CreativeModeTab> AGRI = CoreInit.TABS.register("agri",
+	    () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.agri")).icon(() -> new ItemStack(FoodInit.CROP_AL_WILD.get())).build());
+	public static final RegistryObject<CreativeModeTab> CONT = CoreInit.TABS.register("container",
+	    () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.container")).icon(() -> new ItemStack(FoodInit.CONT_CROP_APPLE.get())).build());
 
 	public static void init() {}
 
@@ -1807,13 +1809,13 @@ public class FoodInit {
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("food/" + name, block);
-		regItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(AGRI), tag));
+		regItem(name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new BlockItemDC(name, obj.get(), new Item.Properties(), tag), AGRI));
 		return obj;
 	}
 
 	public static RegistryObject<Block> regCont(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("container/" + name, block);
-		regContItem(name, () -> new BlockItemDC(name, obj.get(), new Item.Properties().tab(CONT), tag));
+		regContItem(name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new BlockItemDC(name, obj.get(), new Item.Properties(), tag), CONT));
 		return obj;
 	}
 

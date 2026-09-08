@@ -21,8 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -43,7 +42,7 @@ public class SmallTable extends BlockDC implements SimpleWaterloggedBlock {
 	}
 
 	public static BlockBehaviour.Properties prop() {
-		return BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(1.0F, 6.0F).noOcclusion();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(1.0F, 6.0F).noOcclusion();
 	}
 
 	@Override

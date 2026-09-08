@@ -18,7 +18,7 @@ public class MobEffectBird extends MobEffectDC {
 
 	@Override
 	public void applyEffectTick(LivingEntity liv, int amp) {
-		if (liv.level.isClientSide && liv instanceof Player player && camMovement(player)) {
+		if (liv.level().isClientSide && liv instanceof Player player && camMovement(player)) {
 			if (fish && player.isInWaterOrBubble()) {
 				if (ClimateCore.proxy.keyFowardPushed()) {
 					Vec3 v = player.getDeltaMovement();
@@ -57,7 +57,7 @@ public class MobEffectBird extends MobEffectDC {
 					double d1 = v.x;
 					double d2 = v.y + 0.2D;
 					double d3 = v.z;
-					if (ClimateCore.proxy.keyFowardPushed() && !player.isOnGround()) {
+					if (ClimateCore.proxy.keyFowardPushed() && !player.onGround()) {
 						float f = player.yHeadRot;
 						float f2 = Mth.sin(-f * Mth.DEG_TO_RAD);
 						float f3 = Mth.cos(f * Mth.DEG_TO_RAD);
@@ -72,7 +72,7 @@ public class MobEffectBird extends MobEffectDC {
 					Vec3 v2 = new Vec3(d1, d2, d3);
 					player.setDeltaMovement(v2);
 				}
-				if (ClimateCore.proxy.keySneakPushed() && !player.isInWaterOrRain() && !player.isOnGround()) {
+				if (ClimateCore.proxy.keySneakPushed() && !player.isInWaterOrRain() && !player.onGround()) {
 					Vec3 v = player.getDeltaMovement();
 					Vec3 v2 = new Vec3(v.x, 0D, v.z);
 					player.setDeltaMovement(v2);

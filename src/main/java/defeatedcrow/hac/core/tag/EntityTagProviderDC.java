@@ -1,9 +1,12 @@
 package defeatedcrow.hac.core.tag;
 
+import java.util.concurrent.CompletableFuture;
+
 import org.jetbrains.annotations.Nullable;
 
 import defeatedcrow.hac.magic.material.MagicInit;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.EntityType;
@@ -12,13 +15,13 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class EntityTagProviderDC extends EntityTypeTagsProvider {
 
-	public EntityTagProviderDC(DataGenerator gen, @Nullable ExistingFileHelper helper) {
-		super(gen, "dcs_climate", helper);
+	public EntityTagProviderDC(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup, @Nullable ExistingFileHelper helper) {
+		super(output, lookup, "dcs_climate", helper);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected void addTags() {
+	protected void addTags(HolderLookup.Provider provider) {
 		tag(EntityTypeTags.ARROWS).add(MagicInit.ARROW_WHITE_ENTITY.get(), MagicInit.ARROW_BLUE_ENTITY.get(),
 				MagicInit.ARROW_BLACK_ENTITY.get(), MagicInit.ARROW_RED_ENTITY.get(), MagicInit.ARROW_GREEN_ENTITY.get());
 

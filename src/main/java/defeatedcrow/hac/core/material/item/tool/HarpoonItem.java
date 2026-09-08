@@ -41,7 +41,8 @@ public class HarpoonItem extends ItemDC implements ITierItem {
 	private final Multimap<Attribute, AttributeModifier> defaultModifiers;
 
 	public HarpoonItem(String nameIn, TierDC tierIn, TagKey<Item> pair) {
-		super(new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE), pair);
+		super(new Item.Properties().durability(tierIn.getUses()), pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 		tier = tierIn;
 		name = nameIn;
 		ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();

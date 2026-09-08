@@ -48,7 +48,7 @@ public class GoldRing extends MagicJewelBase {
 
 	@Override
 	public void constantEffect(LivingEntity owner, ItemStack charm) {
-		if (owner != null && !owner.level.isClientSide) {
+		if (owner != null && !owner.level().isClientSide) {
 			int i = DCUtil.isEmpty(charm) ? 0 : charm.getCount() - 1;
 			MagicColor color = getColor();
 			if (color.isWhite) {
@@ -72,15 +72,15 @@ public class GoldRing extends MagicJewelBase {
 			DCLogger.debugInfoLog("### OreSearch system activated ###");
 			BlockPos pos = owner.blockPosition();
 			int y = pos.getY();
-			if (y <= owner.level.getMinBuildHeight())
+			if (y <= owner.level().getMinBuildHeight())
 				return false;
-			if (y > owner.level.getMaxBuildHeight())
-				y = owner.level.getMaxBuildHeight();
+			if (y > owner.level().getMaxBuildHeight())
+				y = owner.level().getMaxBuildHeight();
 			BlockState ret = Blocks.AIR.defaultBlockState();
 			BlockPos.MutableBlockPos mp = new BlockPos.MutableBlockPos();
-			while (y > owner.level.getMinBuildHeight() && ret.getBlock() == Blocks.AIR) {
+			while (y > owner.level().getMinBuildHeight() && ret.getBlock() == Blocks.AIR) {
 				mp.set(pos.getX(), y, pos.getZ());
-				BlockState ore = owner.level.getBlockState(mp);
+				BlockState ore = owner.level().getBlockState(mp);
 				if (new ItemStack(ore.getBlock()).is(Tags.Items.ORES)) {
 					ret = ore;
 					break;

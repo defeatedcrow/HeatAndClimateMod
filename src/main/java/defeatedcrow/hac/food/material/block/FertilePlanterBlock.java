@@ -71,7 +71,7 @@ public class FertilePlanterBlock extends FertileBlock {
 
 	@Override
 	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float f) {
-		entity.causeFallDamage(f, 1.0F, DamageSource.FALL);
+		entity.causeFallDamage(f, 1.0F, entity.level().damageSources().fall());
 	}
 
 	@Override

@@ -11,10 +11,9 @@ import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.ItemInteractWithBlockTrigger;
+import net.minecraft.advancements.critereon.ItemUsedOnLocationTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.LocationPredicate;
-import net.minecraft.advancements.critereon.PlacedBlockTrigger;
 import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -28,7 +27,7 @@ public class MachineAdvancement implements Consumer<Consumer<Advancement>> {
 
 		Advancement v1 = Advancement.Builder.advancement()
 		    .display(CoreInit.SCREWDRIVER.get(), Component.translatable("advancements.dcs_climate.metal.root.title"), Component.translatable("advancements.dcs_climate.metal.root.desc"),
-		        ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/gui/advancement/metal.png"), FrameType.TASK, false, false, false)
+		        new ResourceLocation("dcs_climate", "textures/gui/advancement/metal.png"), FrameType.TASK, false, false, false)
 		    .addCriterion("in_overworld", PlayerTrigger.TriggerInstance.located(LocationPredicate.inDimension(Level.OVERWORLD)))
 		    .save(t, "dcs_climate:metal/root");
 
@@ -100,7 +99,7 @@ public class MachineAdvancement implements Consumer<Consumer<Advancement>> {
 		Advancement m6 = Advancement.Builder.advancement()
 		    .parent(m5)
 		    .display(MachineInit.STONE_MILL.get(), Component.translatable("advancements.dcs_climate.metal.stone_mill.title"), Component.translatable("advancements.dcs_climate.metal.stone_mill.desc"), null, FrameType.TASK, true, true, false)
-		    .addCriterion("place_stone_mill", PlacedBlockTrigger.TriggerInstance.placedBlock(MachineInit.STONE_MILL.get()))
+		    .addCriterion("place_stone_mill", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(MachineInit.STONE_MILL.get()))
 		    .save(t, "dcs_climate:metal/stone_mill");
 
 		Advancement m9 = Advancement.Builder.advancement()
@@ -112,7 +111,7 @@ public class MachineAdvancement implements Consumer<Consumer<Advancement>> {
 		Advancement m7 = Advancement.Builder.advancement()
 		    .parent(m6)
 		    .display(CoreInit.SCREWDRIVER.get(), Component.translatable("advancements.dcs_climate.metal.cable.title"), Component.translatable("advancements.dcs_climate.metal.cable.desc"), null, FrameType.TASK, true, true, false)
-		    .addCriterion("screwdriver_to_cable", ItemInteractWithBlockTrigger.TriggerInstance.itemUsedOnBlock(LocationPredicate.Builder.location()
+		    .addCriterion("screwdriver_to_cable", ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(LocationPredicate.Builder.location()
 		        .setBlock(BlockPredicate.Builder.block()
 		            .of(MachineInit.CABLE_COPPER.get())
 		            .build()),

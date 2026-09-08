@@ -57,8 +57,9 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -138,7 +139,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	/* 基本データ */
 	protected static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.LEAVES)
+		return BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
 		    .strength(0.2F)
 		    .randomTicks()
 		    .sound(SoundType.GRASS)
@@ -219,18 +220,18 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (state == null || builder == null) {
 			ret.addAll(super.getDrops(state, builder));
 		} else if (state.getBlock() instanceof IClimateCrop) {
-			LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state)
+			LootParams cont = builder.withParameter(LootContextParams.BLOCK_STATE, state)
 			    .create(LootContextParamSets.BLOCK);
 			IClimateCrop crop = (IClimateCrop) state.getBlock();
 			ServerLevel level = cont.getLevel();
 			ItemStack tool = ItemStack.EMPTY;
 			if (cont.hasParam(LootContextParams.TOOL) && !DCUtil.isEmpty(cont.getParamOrNull(LootContextParams.TOOL))) {
-				tool = cont.getParam(LootContextParams.TOOL);
+				tool = cont.getParameter(LootContextParams.TOOL);
 			}
 
 			if (tool.is(Tags.Items.SHEARS) || tool.is(TagDC.ItemTag.SCYTHES) || tool.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {

@@ -6,10 +6,9 @@ import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.math.Matrix4f;
+import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -31,6 +30,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -148,7 +148,7 @@ public class HeatTreatmentCategory implements IRecipeCategory<IHeatTreatment> {
 	}
 
 	@Override
-	public void draw(IHeatTreatment recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
+	public void draw(IHeatTreatment recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
 		Minecraft minecraft = Minecraft.getInstance();
 		Font font = minecraft.font;
 
@@ -158,24 +158,24 @@ public class HeatTreatmentCategory implements IRecipeCategory<IHeatTreatment> {
 		MutableComponent text1 = Component.literal(recipe.getHeatingTime() + "Tick");
 
 		if (recipe.getCoolingTemp().isEmpty() || !ConfigCommonBuilder.INSTANCE.enHeatTreatment.get()) {
-			drawTexturedModalRect(stack.last().pose(), 11, 25, 0, 190, 137, 40);
+			drawTexturedModalRect(graphics.pose().last().pose(), 11, 25, 0, 190, 137, 40);
 		}
 
 		if (recipe.getAnnealingTemp().isEmpty() || !ConfigCommonBuilder.INSTANCE.enHeatTreatment.get()) {
-			drawTexturedModalRect(stack.last().pose(), 11, 59, 0, 190, 137, 40);
+			drawTexturedModalRect(graphics.pose().last().pose(), 11, 59, 0, 190, 137, 40);
 		}
 
 		if (!recipe.getCoolingTemp().isEmpty() && ConfigCommonBuilder.INSTANCE.enHeatTreatment.get()) {
-			font.draw(stack, text1, 45, 26, 0xFF000000);
+			graphics.drawString(font, text1, 45, 26, 0xFF000000);
 		}
 
 		if (!recipe.getAnnealingTemp().isEmpty() && ConfigCommonBuilder.INSTANCE.enHeatTreatment.get()) {
-			font.draw(stack, text1, 45, 60, 0xFF000000);
+			graphics.drawString(font, text1, 45, 60, 0xFF000000);
 		}
 
-		font.draw(stack, text1, 45, 93, 0xFF000000);
+		graphics.drawString(font, text1, 45, 93, 0xFF000000);
 		MutableComponent text2 = Component.literal("Failure");
-		font.draw(stack, text2, 80, 106, 0xFF000000);
+		graphics.drawString(font, text2, 80, 106, 0xFF000000);
 
 	}
 

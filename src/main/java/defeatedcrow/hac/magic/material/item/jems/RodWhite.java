@@ -63,7 +63,7 @@ public class RodWhite extends MagicJewelBase {
 		if (!DCUtil.isEmpty(charm) && level instanceof ServerLevel serverLevel) {
 			BlockPos p1 = res.getBlockPos().relative(res.getDirection());
 			BlockState target = level.getBlockState(res.getBlockPos());
-			if (!level.isOutsideBuildHeight(p1) && target.isFaceSturdy(level, p1, res.getDirection(), SupportType.CENTER) && level.getBlockState(p1).getMaterial().isReplaceable()) {
+			if (!level.isOutsideBuildHeight(p1) && target.isFaceSturdy(level, p1, res.getDirection(), SupportType.CENTER) && level.getBlockState(p1).canBeReplaced()) {
 				BlockPlaceContext cont = new BlockPlaceContext(level, player, hand, new ItemStack(MagicInit.SMALL_LIGHT.get()), res);
 				BlockState light = MagicInit.SMALL_LIGHT.get().getStateForPlacement(cont);
 				level.setBlock(p1, light, 3);

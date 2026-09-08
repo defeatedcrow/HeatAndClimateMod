@@ -28,7 +28,8 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 public class EnergymeterItem extends CraftingItemDC {
 
 	public EnergymeterItem(String n) {
-		super(n, new Item.Properties().tab(CoreInit.MACHINE).stacksTo(1), TagDC.ItemTag.CRAFT_ENERGYMETER);
+		super(n, new Item.Properties().stacksTo(1), TagDC.ItemTag.CRAFT_ENERGYMETER);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	@Override

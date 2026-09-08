@@ -38,6 +38,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -92,7 +93,7 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 			if (!level.isClientSide && player instanceof ServerPlayer sp) {
 				if (player.getMainHandItem().is(Items.NAME_TAG) && ClimateCore.proxy.isOP(player)) {
 					Component name = player.getMainHandItem().getHoverName();
-					Player target = ClimateCore.proxy.getPlayer(sp.getLevel(), name.getString());
+					Player target = ClimateCore.proxy.getPlayer(sp.serverLevel(), name.getString());
 					if (target != null) {
 						chest.setOwner(target.getUUID());
 						chest.setOwnerName(target.getScoreboardName());
@@ -110,15 +111,15 @@ public abstract class EntityBlockDC extends BlockDC implements EntityBlock, Simp
 	// drop
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (state == null || builder == null) {
 			ret.addAll(super.getDrops(state, builder));
 		} else if (state.getBlock() instanceof EntityBlockDC cont && builder != null) {
-			LootContext context = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+			LootParams context = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
 			BlockEntity tile = null;
 			if (context.hasParam(LootContextParams.BLOCK_ENTITY)) {
-				tile = context.getParam(LootContextParams.BLOCK_ENTITY);
+				tile = context.getParameter(LootContextParams.BLOCK_ENTITY);
 			}
 
 			ItemStack drop = getMainDrop();

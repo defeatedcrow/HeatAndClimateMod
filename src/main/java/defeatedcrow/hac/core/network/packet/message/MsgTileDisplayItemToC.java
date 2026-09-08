@@ -77,7 +77,7 @@ public class MsgTileDisplayItemToC implements IPacketDC {
 		if (level != null && level instanceof ServerLevel) {
 			MsgTileDisplayItemToC packet = new MsgTileDisplayItemToC(pos, item, s);
 			level.players().forEach(player -> {
-				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
 			});
 		}
 	}

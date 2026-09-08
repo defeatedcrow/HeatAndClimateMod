@@ -37,7 +37,8 @@ public class CushionItem extends ItemDC implements IEntityItem {
 	final String name;
 
 	public CushionItem(String n) {
-		super(new Item.Properties().tab(CoreInit.BUILD), TagDC.ItemTag.HAC_CUSHION);
+		super(new Item.Properties(), TagDC.ItemTag.HAC_CUSHION);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.BUILD, this);
 		name = n;
 	}
 
@@ -90,7 +91,6 @@ public class CushionItem extends ItemDC implements IEntityItem {
 		boolean b1 = level.getBlockState(pos)
 		    .isFaceSturdy(level, pos, Direction.UP, SupportType.CENTER);
 		boolean b2 = !level.getBlockState(pos.above())
-		    .getMaterial()
 		    .blocksMotion();
 		return true; // b1 && b2;
 	}

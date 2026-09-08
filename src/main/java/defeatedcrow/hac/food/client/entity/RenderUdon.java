@@ -2,7 +2,7 @@ package defeatedcrow.hac.food.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.api.material.IEntityItem;
@@ -44,8 +44,8 @@ public class RenderUdon<T extends FoodEntityBase> extends RenderFoodBase<FoodEnt
 
 				poseStack.pushPose();
 				poseStack.translate(0F, f2, 0F);
-				poseStack.mulPose(Vector3f.YP.rotationDegrees(360.0F - yaw));
-				poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+				poseStack.mulPose(Axis.YP.rotationDegrees(360.0F - yaw));
+				poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
 				poseStack.scale(f1, f1, f1);
 				noodleModel.setupAnim(entity, 360.0F - yaw, partialTicks, packedLight, f1, f2);
 				VertexConsumer vertex = buffer.getBuffer(noodleModel.renderType(tex));
@@ -57,8 +57,8 @@ public class RenderUdon<T extends FoodEntityBase> extends RenderFoodBase<FoodEnt
 
 				poseStack.pushPose();
 				poseStack.translate(0F, f2, 0F);
-				poseStack.mulPose(Vector3f.YP.rotationDegrees(360.0F - yaw));
-				poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+				poseStack.mulPose(Axis.YP.rotationDegrees(360.0F - yaw));
+				poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
 				poseStack.scale(f1, f1, f1);
 				noodleModel.setupAnim(entity, 360.0F - yaw, partialTicks, packedLight, f1, f2);
 				VertexConsumer vertex2 = buffer.getBuffer(RenderType.entityTranslucent(tex));

@@ -51,23 +51,23 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 		super.tick();
 
 		if (isRaw()) {
-			ClimateSupplier supplier = new ClimateSupplier(level, blockPosition());
+			ClimateSupplier supplier = new ClimateSupplier(level(), blockPosition());
 			IClimate clm = supplier.get();
 
 			if (currentRecipe != null) {
-				if (currentRecipe.matcheInput(getItem()) && currentRecipe.matchClimate(clm) && currentRecipe.additionalRequire(getLevel(), blockPosition())) {
+				if (currentRecipe.matcheInput(getItem()) && currentRecipe.matchClimate(clm) && currentRecipe.additionalRequire(level(), blockPosition())) {
 					if (count > 0) {
 						count--;
 					} else if (count <= 0) {
 						ItemStack ret = currentRecipe.getOutput().copy();
 						int taste = copyTaste(ret, getItem());
 						this.setItem(ret);
-						level.playSound(null, this, SoundEvents.LAVA_EXTINGUISH, SoundSource.AMBIENT, 1.0F, 1.0F);
-						level.addParticle(ParticleTypes.SMOKE, this.getRandomX(0.1D), this.getRandomY() * 0.5D, this.getRandomZ(0.1D), 0D, 0.003D, 0D);
-						float exp = 10.0F + 2.0F * (1.0F + level.random.nextFloat()) * taste;
+						level().playSound(null, this, SoundEvents.LAVA_EXTINGUISH, SoundSource.AMBIENT, 1.0F, 1.0F);
+						level().addParticle(ParticleTypes.SMOKE, this.getRandomX(0.1D), this.getRandomY() * 0.5D, this.getRandomZ(0.1D), 0D, 0.003D, 0D);
+						float exp = 10.0F + 2.0F * (1.0F + level().random.nextFloat()) * taste;
 						if (exp > 0.0F) {
-							ExperienceOrb orb = new ExperienceOrb(level, this.getX(), this.getY(), this.getZ(), Mth.ceil(exp));
-							level.addFreshEntity(orb);
+							ExperienceOrb orb = new ExperienceOrb(level(), this.getX(), this.getY(), this.getZ(), Mth.ceil(exp));
+							level().addFreshEntity(orb);
 						}
 					}
 
@@ -84,19 +84,19 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 			}
 		}
 
-		BlockEntity under = getLevel().getBlockEntity(getOnPos());
-		BlockState underState = getLevel().getBlockState(getOnPos());
+		BlockEntity under = level().getBlockEntity(getOnPos());
+		BlockState underState = level().getBlockState(getOnPos());
 		if (under != null && under instanceof Hopper && !DCState.getBool(underState, DCState.FLAG)) {
 			this.dropItem(this.position());
 			this.kill();
 		}
 
-		if (getLevel().random.nextInt(5) == 0 && !isRaw() && !getItem().isEmpty() && getItem().getItem() instanceof ItemEntityFood food) {
+		if (level().random.nextInt(5) == 0 && !isRaw() && !getItem().isEmpty() && getItem().getItem() instanceof ItemEntityFood food) {
 			if (food.isHotFood()) {
-				double d0 = this.position().x + getLevel().random.nextDouble() * 0.4D - 0.2D;
+				double d0 = this.position().x + level().random.nextDouble() * 0.4D - 0.2D;
 				double d1 = this.position().y + 0.25D;
-				double d2 = this.position().z + getLevel().random.nextDouble() * 0.4D - 0.2D;
-				level.addParticle(CoreInit.SMOKE_SMALL.get(), d0, d1, d2, 0.0D, 0.01D, 0.0D);
+				double d2 = this.position().z + level().random.nextDouble() * 0.4D - 0.2D;
+				level().addParticle(CoreInit.SMOKE_SMALL.get(), d0, d1, d2, 0.0D, 0.01D, 0.0D);
 			}
 		}
 	}
@@ -118,15 +118,15 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 			if (player.getItemInHand(hand).is(TagDC.ItemTag.CUTLERY)) {
 				ItemStack food = getItem().copy();
 				if (food.isEdible()) {
-					player.eat(getLevel(), food);
-					getLevel().playSound(player, this.getX(), this.getY(), this.getZ(), SoundEvents.CHICKEN_EGG, SoundSource.PLAYERS, 0.5F, getLevel().random.nextFloat() * 0.2F + 0.8F);
+					player.eat(level(), food);
+					level().playSound(player, this.getX(), this.getY(), this.getZ(), SoundEvents.CHICKEN_EGG, SoundSource.PLAYERS, 0.5F, level().random.nextFloat() * 0.2F + 0.8F);
 					this.kill();
 				}
 			} else if (getItem().getItem() == FoodInit.BREAD_TORTILLA_BAKED_ITEM.get() && player.getItemInHand(hand).is(TagDC.ItemTag.CHEESE)) {
-				ClimateSupplier supplier = new ClimateSupplier(level, blockPosition());
+				ClimateSupplier supplier = new ClimateSupplier(level(), blockPosition());
 				IClimate clm = supplier.get();
 				if (clm.getHeat().getTier() > DCHeatTier.BOIL.getTier()) {
-					FoodEntityBase food = FoodInit.QUESADILLA.get().create(getLevel());
+					FoodEntityBase food = FoodInit.QUESADILLA.get().create(level());
 					food.setPos(this.getEyePosition());
 					food.setDeltaMovement(0D, 0D, 0D);
 					food.setYRot(this.yRotO);
@@ -136,14 +136,14 @@ public class FoodEntityBase extends ObjectEntityBaseDC {
 					int taste = DCUtil.getFoodTaste(player.getItemInHand(hand)) + DCUtil.getFoodTaste(getItem());
 					DCUtil.setFoodTaste(quesadilla, taste);
 					food.setItem(quesadilla);
-					if (level.addFreshEntity(food)) {
-						level.playSound(null, this, SoundEvents.LAVA_EXTINGUISH, SoundSource.AMBIENT, 1.0F, 1.0F);
+					if (level().addFreshEntity(food)) {
+						level().playSound(null, this, SoundEvents.LAVA_EXTINGUISH, SoundSource.AMBIENT, 1.0F, 1.0F);
 						this.kill();
-						level.gameEvent(food, GameEvent.ENTITY_PLACE, food.getPosition(0F));
+						level().gameEvent(food, GameEvent.ENTITY_PLACE, food.getPosition(0F));
 					}
 				}
 			} else if (getItem().getItem() == FoodInit.STICK_CHICKEN_COOKED.get()) {
-				if (player.getLevel().dimension() == Level.NETHER) {
+				if (player.level().dimension() == Level.NETHER) {
 					ClimateCore.proxy.triggerAdvancement(player, "main/nether_chicken");
 				}
 			}

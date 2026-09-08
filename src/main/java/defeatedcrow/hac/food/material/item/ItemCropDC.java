@@ -31,8 +31,8 @@ public class ItemCropDC extends ItemDC {
 	protected final CropTier tier;
 
 	public ItemCropDC(CropTier rare, CropType t, String s, TagKey<Item> pair, boolean poison) {
-		super(new Item.Properties().rarity(rare.getRarity())
-		    .tab(FoodInit.AGRI), pair);
+		super(new Item.Properties().rarity(rare.getRarity()), pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(FoodInit.AGRI, this);
 		name = s;
 		type = t;
 		tier = rare;

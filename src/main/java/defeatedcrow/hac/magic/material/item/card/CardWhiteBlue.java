@@ -50,7 +50,7 @@ public class CardWhiteBlue extends MagicCardBase {
 					f1 = (float) Mth.wrapDegrees(Mth.atan2(vec31.z, vec31.x) * (180F / (float) Math.PI) - 90.0D);
 				}
 
-				if (!serverlevel.dimension().equals(playerS.getLevel().dimension())) {
+				if (!serverlevel.dimension().equals(playerS.level().dimension())) {
 					serverlevel.getProfiler().push("portal");
 					playerS.setPortalCooldown();
 					playerS.changeDimension(serverlevel);
@@ -60,7 +60,7 @@ public class CardWhiteBlue extends MagicCardBase {
 				playerS.resetFallDistance();
 				flag = true;
 			} else if (spawnPos != null) {
-				if (!serverlevel.dimension().equals(playerS.getLevel().dimension())) {
+				if (!serverlevel.dimension().equals(playerS.level().dimension())) {
 					serverlevel.getProfiler().push("portal");
 					playerS.setPortalCooldown();
 					playerS.changeDimension(serverlevel);

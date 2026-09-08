@@ -24,7 +24,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -75,7 +74,7 @@ public class IntakeFanTile extends EnergyMachineBaseDC implements IRenderBlockDa
 				BlockEntity backEntity = getLevel().getBlockEntity(backPos);
 				FluidStack air = new FluidStack(CoreInit.AIR.getStillFluid().get(), 200);
 				boolean flag = false;
-				if (getLevel().getBlockState(backPos).getMaterial() == Material.AIR) {
+				if (getLevel().getBlockState(backPos).isAir()) {
 					flag = true;
 				} else if (backEntity != null) {
 					flag = backEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, dir.getOpposite()).map(handler -> {
@@ -104,8 +103,8 @@ public class IntakeFanTile extends EnergyMachineBaseDC implements IRenderBlockDa
 
 			BlockPos front = pos.relative(dir);
 			BlockPos back = pos.relative(dir.getOpposite());
-			boolean b1 = level.getBlockState(front).getMaterial() == Material.AIR;
-			boolean b2 = level.getBlockState(back).getMaterial() == Material.AIR
+			boolean b1 = level.getBlockState(front).isAir();
+			boolean b2 = level.getBlockState(back).isAir()
 					|| (level.getBlockEntity(back) != null
 							&& level.getBlockEntity(back).getCapability(ForgeCapabilities.FLUID_HANDLER).map(handler -> {
 								return handler.fill(new FluidStack(CoreInit.AIR.getStillFluid().get(), 1000), FluidAction.SIMULATE) > 0;

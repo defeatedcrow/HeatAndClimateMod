@@ -18,7 +18,7 @@ public class FlowerCropItem extends MaterialItemDC {
 	private boolean seasoning = false;
 	private final Supplier<Block> cropBlock;
 
-	public FlowerCropItem(CreativeModeTab tab, String s, TagKey<Item> pair, Supplier<Block> crop) {
+	public FlowerCropItem(Supplier<CreativeModeTab> tab, String s, TagKey<Item> pair, Supplier<Block> crop) {
 		super(tab, s, pair);
 		setDomain("food");
 		cropBlock = crop;

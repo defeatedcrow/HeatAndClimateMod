@@ -2,7 +2,7 @@ package defeatedcrow.hac.magic.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.magic.client.model.CrowTurretModel;
@@ -33,15 +33,15 @@ public class RenderCrowTurret extends EntityRenderer<CrowTurretEntity> {
 
 			poseStack.pushPose();
 			poseStack.translate(0F, 0F, 0F);
-			poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - bodyY));
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+			poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - bodyY));
+			poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
 			poseStack.scale(1F, 1F, 1F);
 			this.model.renderBody(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 			poseStack.popPose();
 
 			poseStack.pushPose();
 			poseStack.translate(0F, 0F, 0F);
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(180.0F));
+			poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
 			poseStack.scale(1F, 1F, 1F);
 			this.model.setupAnim(entity, 1.0F, 1.0F, partialTicks, headY, headP);
 			this.model.renderToBuffer(poseStack, vertex, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);

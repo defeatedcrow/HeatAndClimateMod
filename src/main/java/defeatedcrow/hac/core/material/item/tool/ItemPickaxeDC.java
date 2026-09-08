@@ -36,7 +36,8 @@ public class ItemPickaxeDC extends PickaxeItem implements IItemDC, ITierItem {
 	final TagKey<Item> tag;
 
 	public ItemPickaxeDC(TierDC tierIn, TagKey<Item> pair) {
-		super(tierIn, 0, -2.8F, new Item.Properties().durability(tierIn.getUses()).tab(CoreInit.MACHINE));
+		super(tierIn, 0, -2.8F, new Item.Properties().durability(tierIn.getUses()));
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 		tier = tierIn;
 		tag = pair;
 	}

@@ -32,7 +32,7 @@ public class JeiHumidityHelper implements IIngredientHelper<DCHumidity> {
 
 	@Override
 	public ResourceLocation getResourceLocation(DCHumidity ingredient) {
-		return ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "humidity/" + ingredient.toString());
+		return new ResourceLocation(ClimateCore.MOD_ID, "humidity/" + ingredient.toString());
 	}
 
 	@Override

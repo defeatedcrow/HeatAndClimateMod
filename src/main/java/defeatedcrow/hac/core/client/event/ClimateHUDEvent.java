@@ -7,10 +7,9 @@ import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.math.Matrix4f;
+import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.EnumSeason;
@@ -25,6 +24,7 @@ import defeatedcrow.hac.magic.material.MagicInit;
 import defeatedcrow.hac.magic.material.item.jems.RodBlack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.GameRenderer;
@@ -72,7 +72,7 @@ public class ClimateHUDEvent {
 		    .equals(VanillaGuiOverlay.HOTBAR.id())) {
 			LocalPlayer player = Minecraft.getInstance().player;
 			Level world = Minecraft.getInstance().level;
-			PoseStack pose = event.getPoseStack();
+			GuiGraphics graphics = event.getGuiGraphics();
 			if (player != null && world != null && !Minecraft.getInstance().options.hideGui) {
 				if (active) {
 					if (count == 0) {
@@ -131,10 +131,10 @@ public class ClimateHUDEvent {
 						if (showIcon) {
 							int i1 = ConfigClientBuilder.INSTANCE.HUD_c.get();
 							if (i1 == 4) {
-								drawTexturedModalRect(pose.last()
+								drawTexturedModalRect(graphics.pose().last()
 								    .pose(), x, y, 0, 0, 32, 32);
 							} else {
-								drawTexturedModalRect(pose.last()
+								drawTexturedModalRect(graphics.pose().last()
 								    .pose(), x, y, i1 * 32, 96, 32, 32);
 							}
 
@@ -142,24 +142,24 @@ public class ClimateHUDEvent {
 							int i2 = clm.getHeat()
 							    .getID();
 							if (i2 < DCHeatTier.KILN.getID()) {
-								drawTexturedModalRect(pose.last()
+								drawTexturedModalRect(graphics.pose().last()
 								    .pose(), x + 6, y + 3, i2 * 23, 35, 23, 26);
 							} else {
 								i2 -= 10;
-								drawTexturedModalRect(pose.last()
+								drawTexturedModalRect(graphics.pose().last()
 								    .pose(), x + 6, y + 3, i2 * 23, 61, 23, 26);
 							}
 
 							// hum
 							int i3 = clm.getHumidity()
 							    .getID();
-							drawTexturedModalRect(pose.last()
+							drawTexturedModalRect(graphics.pose().last()
 							    .pose(), x + 7, y + 10, 112 + i3 * 3, 0, 3, 3);
 
 							// air
 							int i4 = clm.getAirflow()
 							    .getID();
-							drawTexturedModalRect(pose.last()
+							drawTexturedModalRect(graphics.pose().last()
 							    .pose(), x + 15, y + 10, 112 + i4 * 3, 3, 3, 3);
 
 							// weather
@@ -170,7 +170,7 @@ public class ClimateHUDEvent {
 							if (we < 0) {
 								i5 += 14;
 							}
-							drawTexturedModalRect(pose.last()
+							drawTexturedModalRect(graphics.pose().last()
 							    .pose(), x + 9, y + 16, 32 + i5, 0, 7, 7);
 
 							// hour
@@ -178,12 +178,12 @@ public class ClimateHUDEvent {
 							if (i6 >= 12) {
 								i6 -= 12;
 							}
-							drawTexturedModalRect(pose.last()
+							drawTexturedModalRect(graphics.pose().last()
 							    .pose(), x + 4, y + 6, 32 + i6 * 17, 10, 17, 17);
 
 							// damage icon
 							int i7 = ClientClimateData.INSTANCE.getIconTier();
-							drawTexturedModalRect(pose.last()
+							drawTexturedModalRect(graphics.pose().last()
 							    .pose(), x + 24, y + 26, 64 + i7 * 9, 0, 9, 9);
 
 							if (ConfigClientBuilder.INSTANCE.showDamEffect.get()) {
@@ -218,16 +218,16 @@ public class ClimateHUDEvent {
 								    .getGuiScaledWidth() / 2;
 								int underY = event.getWindow()
 								    .getGuiScaledHeight();
-								drawTexturedModalRect(pose.last()
+								drawTexturedModalRect(graphics.pose().last()
 								    .pose(), widX + 100, underY - 30, 0, 130, 20, 20);
-								drawTexturedModalRect(pose.last()
+								drawTexturedModalRect(graphics.pose().last()
 								    .pose(), widX + 116, underY - 34, 20 + 7 * num, 130, 7, 9);
 								if (!DCUtil.isEmpty(card)) {
 									Lighting.setupFor3DItems();
 									RenderSystem.enableDepthTest();
 									ItemRenderer itemRenderer = Minecraft.getInstance()
 									    .getItemRenderer();
-									itemRenderer.renderGuiItem(card, widX + 102, underY - 28);
+									graphics.renderItem(card, widX + 102, underY - 28);
 									Lighting.setupForFlatItems();
 									RenderSystem.disableDepthTest();
 								}
@@ -255,7 +255,7 @@ public class ClimateHUDEvent {
 									biomeName.append(" ( " + String.format("%.1f", celsius) + "\u2103 )");
 								}
 								fr.width(biomeName);
-								fr.drawShadow(pose, biomeName, x, y - 30, 0xffffff);
+								graphics.drawString(fr, biomeName, x, y - 30, 0xffffff, true);
 							}
 
 							int c2 = 0xFFFFFF;
@@ -263,11 +263,11 @@ public class ClimateHUDEvent {
 							MutableComponent sN = season.getFullname();
 							c2 = season.color.getTextColor();
 							fr.width(sN);
-							fr.drawShadow(pose, sN, x, y - 20, c2);
+							graphics.drawString(fr, sN, x, y - 20, c2, true);
 
 							String dN = DCTimeHelper.getDateDisp();
 							fr.width(dN);
-							fr.drawShadow(pose, dN, x, y - 10, 0xFFFFFF);
+							graphics.drawString(fr, dN, x, y - 10, 0xFFFFFF, true);
 						}
 
 						// climate
@@ -285,11 +285,11 @@ public class ClimateHUDEvent {
 							int aC = clm.getAirflow()
 							    .getColorInt();
 							fr.width(tN);
-							fr.drawShadow(pose, tN, x + 34, y + 2, tC);
+							graphics.drawString(fr, tN, x + 34, y + 2, tC, true);
 							fr.width(hN);
-							fr.drawShadow(pose, hN, x + 34, y + 12, hC);
+							graphics.drawString(fr, hN, x + 34, y + 12, hC, true);
 							fr.width(aN);
-							fr.drawShadow(pose, aN, x + 34, y + 22, aC);
+							graphics.drawString(fr, aN, x + 34, y + 22, aC, true);
 						}
 					}
 				}
@@ -319,8 +319,7 @@ public class ClimateHUDEvent {
 				RenderSystem.defaultBlendFunc();
 
 				int i7 = ClientClimateData.INSTANCE.getIconTier();
-				drawTexturedModalRect(event.getPoseStack()
-				    .last()
+				drawTexturedModalRect(event.getGuiGraphics().pose().last()
 				    .pose(), gui.getGuiLeft() + x1, gui.getGuiTop() + y1, 64 + i7 * 9, 0, 9, 9);
 
 				if (x > x1 && x < x1 + 9 && y > y1 && y < y1 + 8) {
@@ -328,7 +327,7 @@ public class ClimateHUDEvent {
 					list.add(Component.literal("Armor Heat Resistant"));
 					list.add(Component.literal("Heat: " + String.format("%.1fF", ClientClimateData.INSTANCE.getArmorHeatPrev())));
 					list.add(Component.literal("Cold: " + String.format("%.1fF", ClientClimateData.INSTANCE.getArmorColdPrev())));
-					gui.renderComponentTooltip(event.getPoseStack(), list, event.getMouseX(), event.getMouseY());
+					event.getGuiGraphics().renderComponentTooltip(Minecraft.getInstance().font, list, event.getMouseX(), event.getMouseY());
 				}
 			}
 		}

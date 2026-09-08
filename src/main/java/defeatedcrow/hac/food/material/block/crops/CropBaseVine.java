@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -97,9 +96,9 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 				if (super.mayPlaceOn(check, level, p2))
 					b1 = true;
 			} else if (dir == Direction.UP) {
-				if (check.getMaterial().isSolid())
+				if (check.isSolid())
 					b3 = true;
-			} else if (check.getMaterial().isSolid()) {
+			} else if (check.isSolid()) {
 				b2 = true;
 			}
 		}
@@ -137,11 +136,11 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 		BlockPos pos = cont.getClickedPos();
 		BlockState next = super.getStateForPlacement(cont);
 		boolean down = super.mayPlaceOn(level.getBlockState(pos.below()), level, pos.below());
-		boolean up = level.getBlockState(pos.above()).getMaterial().isSolid();
-		boolean north = level.getBlockState(pos.north()).getMaterial().isSolid();
-		boolean south = level.getBlockState(pos.south()).getMaterial().isSolid();
-		boolean east = level.getBlockState(pos.east()).getMaterial().isSolid();
-		boolean west = level.getBlockState(pos.west()).getMaterial().isSolid();
+		boolean up = level.getBlockState(pos.above()).isSolid();
+		boolean north = level.getBlockState(pos.north()).isSolid();
+		boolean south = level.getBlockState(pos.south()).isSolid();
+		boolean east = level.getBlockState(pos.east()).isSolid();
+		boolean west = level.getBlockState(pos.west()).isSolid();
 		boolean flag = down || checkFlag(level, pos);
 		return next.setValue(DCState.DOWN, down).setValue(DCState.UP, up).setValue(DCState.NORTH, north).setValue(DCState.SOUTH, south)
 				.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
@@ -151,11 +150,11 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 	public BlockState updateShape(BlockState state, Direction dir, BlockState state2, LevelAccessor level, BlockPos pos, BlockPos pos2) {
 		BlockState next = state;
 		boolean down = super.mayPlaceOn(level.getBlockState(pos.below()), level, pos.below());
-		boolean up = level.getBlockState(pos.above()).getMaterial().isSolid();
-		boolean north = level.getBlockState(pos.north()).getMaterial().isSolid();
-		boolean south = level.getBlockState(pos.south()).getMaterial().isSolid();
-		boolean east = level.getBlockState(pos.east()).getMaterial().isSolid();
-		boolean west = level.getBlockState(pos.west()).getMaterial().isSolid();
+		boolean up = level.getBlockState(pos.above()).isSolid();
+		boolean north = level.getBlockState(pos.north()).isSolid();
+		boolean south = level.getBlockState(pos.south()).isSolid();
+		boolean east = level.getBlockState(pos.east()).isSolid();
+		boolean west = level.getBlockState(pos.west()).isSolid();
 		boolean flag = down || checkFlag(level, pos);
 		next = next.setValue(DCState.DOWN, down).setValue(DCState.UP, up).setValue(DCState.NORTH, north).setValue(DCState.SOUTH, south)
 				.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
@@ -172,7 +171,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 			if (!DCState.getBool(state, DCState.UP)) {
 				// 上に伸びるのを優先する
 				BlockState check = world.getBlockState(pos.above());
-				if (check.getMaterial() == Material.AIR && checkVineSupport(world, pos.above(), false)) {
+				if (check.isAir() && checkVineSupport(world, pos.above(), false)) {
 					BlockState put = this.updateShape(this.defaultBlockState(), Direction.UP, state, world, pos.above(), pos.above());
 					b = world.setBlock(pos.above(), put, 3);
 				}
@@ -181,7 +180,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 				int d = world.random.nextInt(4);
 				Direction dir = Direction.from2DDataValue(d);
 				BlockState check = world.getBlockState(pos.relative(dir));
-				if (check.getMaterial() == Material.AIR && checkVineSupport(world, pos.relative(dir), false)) {
+				if (check.isAir() && checkVineSupport(world, pos.relative(dir), false)) {
 					BlockState put = this.updateShape(this.defaultBlockState(), dir, state, world, pos.relative(dir), pos.relative(dir));
 					world.setBlock(pos.relative(dir), this.defaultBlockState().setValue(DCState.STAGE6, 2), 3);
 				}

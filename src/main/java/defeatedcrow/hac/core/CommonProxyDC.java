@@ -39,6 +39,7 @@ import defeatedcrow.hac.food.event.ItemTossEventDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.PlayerAdvancements;
@@ -165,7 +166,7 @@ public class CommonProxyDC {
 	public void triggerAdvancement(LivingEntity player, String res) {
 		if (player instanceof ServerPlayer serverplayer) {
 			Advancement adv = serverplayer.server.getAdvancements()
-			    .getAdvancement(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, res));
+			    .getAdvancement(new ResourceLocation(ClimateCore.MOD_ID, res));
 			if (adv != null)
 				((ServerPlayer) player).getAdvancements()
 				    .award(adv, "impossible");
@@ -175,7 +176,7 @@ public class CommonProxyDC {
 	public boolean isAdvancementDone(LivingEntity player, String res) {
 		if (player instanceof ServerPlayer serverplayer) {
 			Advancement adv = serverplayer.server.getAdvancements()
-			    .getAdvancement(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, res));
+			    .getAdvancement(new ResourceLocation(ClimateCore.MOD_ID, res));
 			if (adv != null && adv.getDisplay() != null) {
 				PlayerAdvancements advs = serverplayer.server.getPlayerList()
 				    .getPlayerAdvancements(serverplayer);
@@ -189,7 +190,7 @@ public class CommonProxyDC {
 	public boolean isOP(Player player) {
 		if (player == null)
 			return false;
-		return player.getLevel()
+		return player.level()
 		    .getServer()
 		    .getPlayerList()
 		    .isOp(player.getGameProfile());
@@ -232,7 +233,7 @@ public class CommonProxyDC {
 		List<TagKey<Biome>> list = Lists.newArrayList();
 		if (level != null && level instanceof ServerLevel serverlevel) {
 			Registry<Biome> registry = serverlevel.registryAccess()
-			    .registryOrThrow(Registry.BIOME_REGISTRY);
+			    .registryOrThrow(Registries.BIOME);
 			Optional<ResourceKey<Biome>> key = registry.getResourceKey(biome);
 			key.ifPresent(k -> {
 			    registry.getHolder(k)

@@ -27,7 +27,8 @@ import net.minecraft.world.phys.HitResult;
 public class HandyBellowItem extends CraftingItemDC {
 
 	public HandyBellowItem(String n) {
-		super(n, new Item.Properties().tab(CoreInit.MACHINE).stacksTo(1), null);
+		super(n, new Item.Properties().stacksTo(1), null);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	@Override

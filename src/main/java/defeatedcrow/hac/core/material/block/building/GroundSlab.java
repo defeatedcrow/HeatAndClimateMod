@@ -17,6 +17,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -27,6 +28,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -39,8 +41,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -61,7 +62,7 @@ public class GroundSlab extends BlockDC implements SimpleWaterloggedBlock, Bonem
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.DIRT, MaterialColor.DIRT).sound(SoundType.GRAVEL).strength(0.3F);
+		return BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).sound(SoundType.GRAVEL).strength(0.3F);
 	}
 
 	@Override
@@ -81,7 +82,7 @@ public class GroundSlab extends BlockDC implements SimpleWaterloggedBlock, Bonem
 				return InteractionResult.SUCCESS;
 			} else {
 				ItemStack held = player.getItemInHand(hand);
-				if (!DCUtil.isEmpty(held) && held.is(Tags.Items.TOOLS_SHOVELS)) {
+				if (!DCUtil.isEmpty(held) && held.is(ItemTags.SHOVELS)) {
 					BlockState next = BuildInit.SLAB_PATH.get().defaultBlockState();
 					level.setBlock(pos, next, 2);
 					level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -180,7 +181,7 @@ public class GroundSlab extends BlockDC implements SimpleWaterloggedBlock, Bonem
 	/* Bonemeal */
 
 	@Override
-	public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean b) {
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean b) {
 		if (level instanceof Level)
 			return state.is(BuildInit.SLAB_DIRT.get()) && GrassSlab.canBeGrass((Level) level, pos);
 		return false;

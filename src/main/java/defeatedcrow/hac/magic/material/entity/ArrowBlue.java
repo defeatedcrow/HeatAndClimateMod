@@ -35,18 +35,18 @@ public class ArrowBlue extends AbstractArrow {
 
 	@Override
 	public void tick() {
-		if (this.inGroundTime > 0 || this.getY() < this.getLevel().getMinBuildHeight() || this.isInLava() || this.isInWater()) {
+		if (this.inGroundTime > 0 || this.getY() < this.level().getMinBuildHeight() || this.isInLava() || this.isInWater()) {
 			this.dealtDamage = true;
 		}
 
 		if ((this.dealtDamage || this.isNoPhysics())) {
 			boolean flag = false;
 			BlockPos pos = new BlockPos(Mth.floor(this.xOld), Mth.floor(this.yOld), Mth.floor(this.zOld));
-			if (level.getBlockState(pos).getMaterial().isReplaceable()) {
+			if (level().getBlockState(pos).canBeReplaced()) {
 				if (this.isInLava())
-					level.setBlock(pos, Blocks.STONE.defaultBlockState(), 3);
+					level().setBlock(pos, Blocks.STONE.defaultBlockState(), 3);
 				else
-					level.setBlock(pos, Blocks.PACKED_ICE.defaultBlockState(), 3);
+					level().setBlock(pos, Blocks.PACKED_ICE.defaultBlockState(), 3);
 				flag = true;
 			}
 			if (flag) {
@@ -62,16 +62,16 @@ public class ArrowBlue extends AbstractArrow {
 		}
 
 		super.tick();
-		if (this.level.isClientSide && !this.inGround) {
-			this.level.addParticle(ParticleTypes.INSTANT_EFFECT, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+		if (this.level().isClientSide && !this.inGround) {
+			this.level().addParticle(ParticleTypes.INSTANT_EFFECT, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 		}
 
 	}
 
 	public void dropItem(Vec3 pos) {
-		if (!level.isClientSide && !getPickupItem().isEmpty()) {
-			ItemEntity drop = new ItemEntity(level, pos.x, pos.y + 0.1D, pos.z, this.getPickupItem());
-			level.addFreshEntity(drop);
+			if (!level().isClientSide && !getPickupItem().isEmpty()) {
+				ItemEntity drop = new ItemEntity(level(), pos.x, pos.y + 0.1D, pos.z, this.getPickupItem());
+				level().addFreshEntity(drop);
 		}
 	}
 

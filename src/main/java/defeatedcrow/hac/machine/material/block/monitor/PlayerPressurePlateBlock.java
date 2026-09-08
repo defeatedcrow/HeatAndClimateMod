@@ -27,15 +27,14 @@ import net.minecraft.world.level.block.WeightedPressurePlateBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 public class PlayerPressurePlateBlock extends WeightedPressurePlateBlock implements IBlockDC, IJsonDataDC {
 
 	final String name;
 
 	public PlayerPressurePlateBlock(String n) {
-		super(1, getProp());
+		super(1, getProp(), net.minecraft.world.level.block.state.properties.BlockSetType.IRON);
 		name = n;
 	}
 
@@ -47,7 +46,7 @@ public class PlayerPressurePlateBlock extends WeightedPressurePlateBlock impleme
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SNOW).sound(SoundType.STONE).strength(0.3F).randomTicks();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).sound(SoundType.STONE).strength(0.3F).randomTicks();
 	}
 
 	@Override

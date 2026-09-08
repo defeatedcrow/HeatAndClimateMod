@@ -1,13 +1,13 @@
 package defeatedcrow.hac.core.client.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.material.block.building.DisplayCaseTile;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -62,9 +62,9 @@ public class TileRendererDisplayCase implements BlockEntityRenderer<DisplayCaseT
 					poseStack.translate(0.5D, 0.5D, 0.5D);
 					float f = 180 - dir.toYRot();
 					poseStack.translate(f1, offsetY, f2);
-					poseStack.mulPose(Vector3f.YP.rotationDegrees(f));
+					poseStack.mulPose(Axis.YP.rotationDegrees(f));
 					poseStack.scale(0.3F, 0.3F, 0.3F);
-					this.itemRenderer.renderStatic(disp, ItemTransforms.TransformType.FIXED, l, OverlayTexture.NO_OVERLAY, poseStack, buffer, i);
+					this.itemRenderer.renderStatic(disp, ItemDisplayContext.FIXED, l, OverlayTexture.NO_OVERLAY, poseStack, buffer, tile.getLevel(), i);
 					poseStack.popPose();
 				}
 			}
@@ -92,9 +92,9 @@ public class TileRendererDisplayCase implements BlockEntityRenderer<DisplayCaseT
 					poseStack.translate(0.5D, 0.5D, 0.5D);
 					float f = 180 - dir.toYRot();
 					poseStack.translate(f1, offsetY, f2);
-					poseStack.mulPose(Vector3f.YP.rotationDegrees(f));
+					poseStack.mulPose(Axis.YP.rotationDegrees(f));
 					poseStack.scale(0.3F, 0.3F, 0.3F);
-					this.itemRenderer.renderStatic(disp, ItemTransforms.TransformType.FIXED, l, OverlayTexture.NO_OVERLAY, poseStack, buffer, i);
+					this.itemRenderer.renderStatic(disp, ItemDisplayContext.FIXED, l, OverlayTexture.NO_OVERLAY, poseStack, buffer, tile.getLevel(), i);
 					poseStack.popPose();
 				}
 			}

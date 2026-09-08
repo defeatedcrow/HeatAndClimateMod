@@ -16,7 +16,7 @@ public class AvoidHeatDamageGoal extends FleeSunGoal {
 
 	public AvoidHeatDamageGoal(PathfinderMob mob, double speed, Vec3 pos) {
 		super(mob, speed);
-		level = mob.getLevel();
+		level = mob.level();
 		avoidPos = pos;
 	}
 

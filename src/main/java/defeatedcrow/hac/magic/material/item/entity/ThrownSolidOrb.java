@@ -40,9 +40,9 @@ public class ThrownSolidOrb extends ThrowableItemProjectile {
 	@Override
 	protected void onHit(HitResult hitRes) {
 		super.onHit(hitRes);
-		if (this.level instanceof ServerLevel serverLevel) {
+			if (this.level() instanceof ServerLevel serverLevel) {
 			MsgEffectToC.sendToClient(serverLevel, hitRes.getLocation(), 81);
-			ExperienceOrb.award((ServerLevel) this.level, this.position(), EXP_VALUE);
+				ExperienceOrb.award((ServerLevel) this.level(), this.position(), EXP_VALUE);
 			this.discard();
 		}
 

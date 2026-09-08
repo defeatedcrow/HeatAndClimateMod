@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 
 public class TrapdoorWoodDC extends TrapDoorBlock implements IBlockDC, IJsonDataDC {
 
@@ -31,7 +31,7 @@ public class TrapdoorWoodDC extends TrapDoorBlock implements IBlockDC, IJsonData
 	private String texDir = "build/trapdoor_";
 
 	public TrapdoorWoodDC(String n) {
-		super(BlockBehaviour.Properties.of(Material.WOOD, Blocks.OAK_PLANKS.defaultMaterialColor()).strength(3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(TrapdoorWoodDC::never));
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(3.0F).sound(SoundType.WOOD).noOcclusion().isValidSpawn(TrapdoorWoodDC::never), net.minecraft.world.level.block.state.properties.BlockSetType.OAK);
 		name = n;
 	}
 

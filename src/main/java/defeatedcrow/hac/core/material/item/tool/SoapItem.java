@@ -26,20 +26,21 @@ import net.minecraft.world.level.BlockGetter;
 public class SoapItem extends MaterialItemDC {
 
 	public SoapItem(String s, TagKey<Item> pair) {
-		super(new Item.Properties().tab(CoreInit.MACHINE), s, pair);
+		super(new Item.Properties(), s, pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack stack, Player playerIn, LivingEntity entity, InteractionHand hand) {
 		if (entity instanceof Sheep sheep) {
 			if (sheep.isAlive() && !sheep.isSheared() && sheep.getColor() != DyeColor.WHITE) {
-				sheep.level.playSound(playerIn, sheep, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
-				if (!playerIn.level.isClientSide) {
+				sheep.level().playSound(playerIn, sheep, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
+				if (!playerIn.level().isClientSide) {
 					sheep.setColor(DyeColor.WHITE);
 					stack.shrink(1);
 				}
 			}
-			return InteractionResult.sidedSuccess(playerIn.level.isClientSide);
+			return InteractionResult.sidedSuccess(playerIn.level().isClientSide);
 		}
 		return InteractionResult.PASS;
 	}

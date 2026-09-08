@@ -77,7 +77,7 @@ public class CropBlockPedalia extends ClimateCropBaseBlock {
 	@Override
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 		if (getCurrentStage(state) == CropStage.GROWN && !level.isClientSide() && entity instanceof LivingEntity living && living.getHealth() > 1.0F) {
-			living.hurt(DamageSource.CACTUS, 1.0F);
+			living.hurt(living.level().damageSources().cactus(), 1.0F);
 		}
 	}
 

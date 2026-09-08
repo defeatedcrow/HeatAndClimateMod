@@ -31,7 +31,8 @@ import net.minecraft.world.phys.Vec3;
 public abstract class CutleryItem extends CraftingItemDC implements IEntityItem {
 
 	public CutleryItem(String n) {
-		super(n, new Item.Properties().tab(CoreInit.MACHINE).stacksTo(1), TagDC.ItemTag.CUTLERY);
+		super(n, new Item.Properties().stacksTo(1), TagDC.ItemTag.CUTLERY);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	@Override
@@ -54,7 +55,7 @@ public abstract class CutleryItem extends CraftingItemDC implements IEntityItem 
 	@Override
 	public boolean canSpawnHere(Level level, BlockPos pos) {
 		boolean b1 = level.getBlockState(pos).isFaceSturdy(level, pos, Direction.UP, SupportType.CENTER);
-		boolean b2 = !level.getBlockState(pos.above()).getMaterial().blocksMotion();
+		boolean b2 = !level.getBlockState(pos.above()).blocksMotion();
 		return true; // b1 && b2;
 	}
 

@@ -41,10 +41,10 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -70,7 +70,7 @@ public class SpileCupBlock extends EntityBlockDC {
 	}
 
 	public static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.METAL).strength(3.0F, 6.0F).randomTicks();
+		return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.0F, 6.0F).randomTicks();
 	}
 
 	@Override
@@ -153,7 +153,7 @@ public class SpileCupBlock extends EntityBlockDC {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (state == null || builder == null) {
 			ret.add(new ItemStack(this));
@@ -163,13 +163,13 @@ public class SpileCupBlock extends EntityBlockDC {
 			SapType type = SapType.getFromState(state);
 			ret.add(new ItemStack(this));
 			if (i > 0) {
-				LootContext cont = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+				LootParams cont = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
 				IClimateCrop crop = (IClimateCrop) state.getBlock();
 				ServerLevel level = cont.getLevel();
 				Vec3 v3 = null;
 				if (cont.hasParam(LootContextParams.ORIGIN)) {
-					v3 = cont.getParam(LootContextParams.ORIGIN);
-					BlockPos pos = new BlockPos(v3);
+					v3 = cont.getParameter(LootContextParams.ORIGIN);
+					BlockPos pos = BlockPos.containing(v3.x, v3.y, v3.z);
 					BlockState log = level.getBlockState(pos.relative(dir));
 					ItemStack item = new ItemStack(type.getDrop(), i);
 					if (log != null && log.is(TagDC.BlockTag.LOG_SWEET)) {

@@ -26,7 +26,6 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.Tags;
 
 public class SpringFeature extends Feature<NoneFeatureConfiguration> {
@@ -80,12 +79,12 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 				mp.set(chunk.getMiddleBlockX(), j, chunk.getMiddleBlockZ());
 				BlockState check = level.getBlockState(mp);
 				BlockState under = level.getBlockState(mp.below());
-				if (!under.isAir() && isPlaceable(under) && check.getMaterial().isLiquid()) {
+				if (!under.isAir() && isPlaceable(under) && check.liquid()) {
 					height = j;
 					break;
 				}
 
-				if (!check.isAir() && isPlaceable(check) && (under.getMaterial().isLiquid() || under.isAir())) {
+				if (!check.isAir() && isPlaceable(check) && (under.liquid() || under.isAir())) {
 					height = j;
 					break;
 				}
@@ -102,7 +101,7 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 					height = j;
 					break;
 				}
-				if (check.getMaterial().isLiquid()) {
+				if (check.liquid()) {
 					height = 0;
 					break;
 				}
@@ -124,7 +123,7 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 					for (int y = -4; y <= 2; y++) {
 						mp.set(p.getX() + x, p.getY() + y, p.getZ() + z);
 						BlockState st = level.getBlockState(mp);
-						if (st.isAir() || st.getMaterial().isReplaceable()) {
+						if (st.isAir() || st.canBeReplaced()) {
 							continue;
 						}
 						double d = Math.sqrt(x * x + y * y + z * z);
@@ -145,12 +144,12 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 					for (int y = -4; y <= 2; y++) {
 						mp.set(p.getX() + x, p.getY() + y, p.getZ() + z);
 						BlockState st = level.getBlockState(mp);
-						if (st.isAir() || st.getMaterial().isReplaceable()) {
+						if (st.isAir() || st.canBeReplaced()) {
 							continue;
 						}
 						double d = Math.sqrt(x * x + y * y + z * z);
 						double d2 = random.nextDouble() * 0.5D;
-						if (d < r && y >= 0 && st.getMaterial().isReplaceable()) {
+						if (d < r && y >= 0 && st.canBeReplaced()) {
 							level.setBlock(mp, Blocks.AIR.defaultBlockState(), 2);
 							continue;
 						}
@@ -169,7 +168,7 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 									boolean a1 = true;
 									for (Direction dir : Direction.values()) {
 										BlockState check = level.getBlockState(mp.relative(dir));
-										if (dir != Direction.UP && !check.getMaterial().isSolid() && !check.getMaterial().isLiquid()) {
+										if (dir != Direction.UP && !check.isSolid() && !check.liquid()) {
 											a1 = false;
 										}
 									}
@@ -182,7 +181,7 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 									boolean a1 = true;
 									for (Direction dir : Direction.values()) {
 										BlockState check = level.getBlockState(mp.relative(dir));
-										if (dir != Direction.UP && !check.getMaterial().isSolid() && !check.getMaterial().isLiquid()) {
+										if (dir != Direction.UP && !check.isSolid() && !check.liquid()) {
 											a1 = false;
 										}
 									}
@@ -232,8 +231,8 @@ public class SpringFeature extends Feature<NoneFeatureConfiguration> {
 
 	static boolean isPlaceable(BlockState block) {
 		if (!block.hasBlockEntity() && !block.is(BlockTags.FEATURES_CANNOT_REPLACE))
-			if (block.getMaterial() == Material.STONE || block.getMaterial() == Material.SAND || block.getMaterial() == Material.CLAY || block.getMaterial() == Material.ICE || block
-					.getMaterial() == Material.DIRT || block.getMaterial() == Material.GRASS || block.getMaterial() == Material.SNOW || block.getMaterial() == Material.POWDER_SNOW) {
+			if (block.is(BlockTags.BASE_STONE_OVERWORLD) || block.is(BlockTags.SAND) || block.is(Blocks.CLAY) || block.is(Blocks.ICE) || block
+					.is(BlockTags.DIRT) || block.is(Blocks.GRASS_BLOCK) || block.is(Blocks.SNOW_BLOCK) || block.is(Blocks.POWDER_SNOW)) {
 				if (TagUtil.matchTag("ores", block.getBlock().asItem()).isEmpty() && block.getBlock() != Blocks.POINTED_DRIPSTONE) {
 					return true;
 				}

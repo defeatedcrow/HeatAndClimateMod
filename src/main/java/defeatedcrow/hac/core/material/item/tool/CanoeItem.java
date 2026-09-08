@@ -30,7 +30,8 @@ import net.minecraft.world.phys.Vec3;
 public class CanoeItem extends ItemDC {
 
 	public CanoeItem() {
-		super(new Item.Properties().tab(CoreInit.MACHINE).stacksTo(1), ItemTags.BOATS);
+		super(new Item.Properties().stacksTo(1), ItemTags.BOATS);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(CoreInit.MACHINE, this);
 	}
 
 	@Override

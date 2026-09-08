@@ -32,7 +32,7 @@ public class FishingEventDC {
 			ItemStack held = event.getEntity().getMainHandItem();
 			if (item.is(TagDC.ItemTag.FISH_VANILLA)) {
 				List<ItemStack> replace = Lists.newArrayList();
-				Level level = event.getHookEntity().getLevel();
+				Level level = event.getHookEntity().level();
 				BlockPos pos = event.getHookEntity().blockPosition();
 				Holder<Biome> biome = level.getBiome(pos);
 				replace.addAll(DCUtil.getFish(level, biome, event.getEntity(), held));
@@ -63,7 +63,7 @@ public class FishingEventDC {
 				}
 			} else if (item.is(Items.FISHING_ROD)) {
 				List<ItemStack> replace = Lists.newArrayList();
-				Level level = event.getHookEntity().getLevel();
+				Level level = event.getHookEntity().level();
 				BlockPos pos = event.getHookEntity().blockPosition();
 				Holder<Biome> biome = level.getBiome(pos);
 				if (level.random.nextInt(20) < 4) {
