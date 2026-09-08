@@ -28,7 +28,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -54,7 +53,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
@@ -93,8 +91,7 @@ public class CharmTriggerEvent {
 
 			// tracer
 			if (living.hasEffect(CoreInit.TRACER.get())) {
-				int f = living.getEffect(CoreInit.TRACER.get())
-				    .getAmplifier() + 1;
+				int f = living.getEffect(CoreInit.TRACER.get()).getAmplifier() + 1;
 				MobEffectInstance glow = new MobEffectInstance(MobEffects.GLOWING, 600 * f, 0);
 				attacker.addEffect(glow);
 			}
@@ -116,9 +113,9 @@ public class CharmTriggerEvent {
 		boolean b1 = false;
 		float dif = 1.0F;
 
-		if (source.is(DamageTypes.WITHER) || source.is(DamageTypes.MAGIC)) {
+		if (source.is(DamageTypes.MAGIC) || source.is(DamageTypes.INDIRECT_MAGIC)) {
 			if (MagicUtil.hasHandCharms(living, new ItemStack(MagicInit.BRACELET_SILVER_GREEN.get()))) {
-				living.heal(amount);
+				living.heal(event.getAmount());
 				event.setCanceled(true);
 				return;
 			}
@@ -126,20 +123,16 @@ public class CharmTriggerEvent {
 
 		if (source.is(DamageTypes.LIGHTNING_BOLT)) {
 			if (!DCUtil.isEmpty(living.getMainHandItem())) {
-				if (living.getMainHandItem()
-				    .getItem() == MagicInit.ROD_RED.get()) {
+				if (living.getMainHandItem().getItem() == MagicInit.ROD_RED.get()) {
 					ItemStack activated = new ItemStack(MagicInit.ROD_RED_ACTIVE.get());
-					if (living.getMainHandItem()
-					    .getTag() != null) {
-						CompoundTag tag = living.getMainHandItem()
-						    .getTag();
+					if (living.getMainHandItem().getTag() != null) {
+						CompoundTag tag = living.getMainHandItem().getTag();
 						activated.setTag(tag);
 					}
 					living.setItemInHand(InteractionHand.MAIN_HAND, activated);
 					event.setCanceled(true);
 					return;
-				} else if (living.getMainHandItem()
-				    .getItem() == MagicInit.ROD_RED_ACTIVE.get()) {
+				} else if (living.getMainHandItem().getItem() == MagicInit.ROD_RED_ACTIVE.get()) {
 					event.setCanceled(true);
 					return;
 				}
@@ -154,7 +147,8 @@ public class CharmTriggerEvent {
 						b1 = true;
 						charm.onConsumeResource(living, c1);
 					} else {
-						dif *= charm.reduceDamage(living, source, amount, c1);
+						float am2 = amount;
+						dif *= source.typeHolder().unwrapKey().map(type -> charm.reduceDamage(living, type, am2, c1)).orElse(1.0F);
 					}
 				}
 			}
@@ -166,23 +160,20 @@ public class CharmTriggerEvent {
 			for (ItemStack c2 : attCharms) {
 				if (!c2.isEmpty() && c2.getItem() instanceof IJewelCharm charm) {
 					if (charm.isActive(attacker, c2)) {
-						atk *= charm.increaceDamage(attacker, living, source, amount, c2);
+						float am2 = amount;
+						atk *= source.typeHolder().unwrapKey().map(type -> charm.increaceDamage(attacker, living, type, am2, c2)).orElse(1.0F);
 					}
 				}
 			}
 
 			if (living instanceof Player player && (attacker instanceof Phantom || attacker.getMobType() == MobType.ARTHROPOD)) {
 				SimpleEntry<Integer, ItemStack> coil = DCItemUtil.getItem(player, Ingredient.of(CoreInit.COIL_CASE.get()));
-				if (!coil.getValue()
-				    .isEmpty()) {
-					if (!living.level().isClientSide && coil.getValue()
-					    .hurt(1, living.getRandom(), null)) {
-						player.getInventory()
-						    .setItem(coil.getKey(), new ItemStack(CoreInit.EMPTY_COIL_CASE.get()));
-						player.getInventory()
-						    .setChanged();
+				if (!coil.getValue().isEmpty()) {
+					if (!living.level().isClientSide && coil.getValue().hurt(1, living.getRandom(), null)) {
+						player.getInventory().setItem(coil.getKey(), new ItemStack(CoreInit.EMPTY_COIL_CASE.get()));
+						player.getInventory().setChanged();
 					}
-					attacker.hurt(player.level().damageSources().playerAttack(player), 20F);
+					attacker.hurt(living.level().damageSources().playerAttack(player), 20F);
 					event.setAmount(0F);
 
 					if (player != null && attacker instanceof Phantom) {
@@ -217,8 +208,7 @@ public class CharmTriggerEvent {
 				amount -= armor;
 			}
 			if (living.hasEffect(CoreInit.COLD_RESISTANCE.get())) {
-				int f = living.getEffect(CoreInit.COLD_RESISTANCE.get())
-				    .getAmplifier() + 1;
+				int f = living.getEffect(CoreInit.COLD_RESISTANCE.get()).getAmplifier() + 1;
 				f2 -= 4.0F * f;
 			}
 			if (DCItemUtil.isWearArmorItem(CoreInit.LEGGINS_WADERS.get(), living, EquipmentSlot.CHEST)) {
@@ -226,7 +216,7 @@ public class CharmTriggerEvent {
 			}
 		}
 
-		if (source.is(DamageTypes.CACTUS) || source.is(DamageTypes.HOT_FLOOR) || source.is(DamageTypes.SWEET_BERRY_BUSH)) {
+		if (source.is(DamageTypes.CACTUS) || source.is(DamageTypes.SWEET_BERRY_BUSH) || source.is(DamageTypes.HOT_FLOOR) || source.is(DamageTypes.STALAGMITE)) {
 			if (DCItemUtil.isWearArmorItem(CoreInit.BOOTS_SAFETY.get(), living, EquipmentSlot.FEET)) {
 				f2 = 0F;
 			}
@@ -241,12 +231,13 @@ public class CharmTriggerEvent {
 			}
 		}
 
-		if (b1 || amount < 0.5F || amount * dif * atk * f2 < 0.5F) {
+		float finalAmo = amount * dif * atk * f2;
+		if (b1 || amount < 0.5F || finalAmo < 0.5F) {
 			event.setCanceled(true);
 			return;
 		}
 
-		event.setAmount(amount * dif * atk * f2);
+		event.setAmount(finalAmo);
 	}
 
 	@SubscribeEvent
@@ -262,20 +253,14 @@ public class CharmTriggerEvent {
 				v = amount;
 			}
 
-			for (int i = 0; i < player.getInventory()
-			    .getContainerSize(); i++) {
-				ItemStack item = player.getInventory()
-				    .getItem(i);
+			for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+				ItemStack item = player.getInventory().getItem(i);
 				if (!item.isEmpty()) {
 					if (!player.level().isClientSide && item.getItem() instanceof InertElementItem element) {
-						if (element.isSuitablePlace(player) && element.charge(v, item) && element.getActivatedElement()
-						    .get() != Items.AIR) {
-							player.getInventory()
-							    .setItem(i, new ItemStack(element.getActivatedElement()
-							        .get()));
+						if (element.isSuitablePlace(player) && element.charge(v, item) && element.getActivatedElement().get() != Items.AIR) {
+							player.getInventory().setItem(i, new ItemStack(element.getActivatedElement().get()));
 						}
-						player.getInventory()
-						    .setChanged();
+						player.getInventory().setChanged();
 					}
 				}
 			}
@@ -292,8 +277,7 @@ public class CharmTriggerEvent {
 
 			if (living instanceof Npc || living instanceof OwnableEntity ownable && ownable.getOwner() != null) {
 				List<MagicPictureEntity> picList = MagicPictureEvent.getList();
-				if (picList.stream()
-				    .anyMatch(MagicPictureEvent.checkColor(MagicColor.GREEN_WHITE))) {
+				if (picList.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.GREEN_WHITE))) {
 					count += 3;
 				}
 			}
@@ -319,19 +303,15 @@ public class CharmTriggerEvent {
 				if (source != null && source.getEntity() instanceof PathfinderMob attacker) {
 					attacker.heal(attacker.getMaxHealth() * 0.5F);
 					int i = ConfigCommonBuilder.INSTANCE.vMobTargetInterval.get() * 60;
-					attacker.getPersistentData()
-					    .putInt("dcs_fulfill_interval", i);
+					attacker.getPersistentData().putInt("dcs_fulfill_interval", i);
 				}
 			}
 
-			if (living instanceof ServerPlayer && living.getDisplayName()
-			    .getString()
-			    .contains("defeatedcrow")) {
+			if (living instanceof ServerPlayer && living.getDisplayName().getString().contains("defeatedcrow")) {
 				ItemStack chicken = new ItemStack(FoodInit.STICK_CHICKEN_COOKED.get());
 				ItemEntity drop = new ItemEntity(living.level(), living.getX(), living.getEyeY(), living.getZ(), chicken);
 				drop.setDefaultPickUpDelay();
-				living.level()
-				    .addFreshEntity(drop);
+				living.level().addFreshEntity(drop);
 			}
 		}
 	}
@@ -342,8 +322,7 @@ public class CharmTriggerEvent {
 		BlockState state = event.getState();
 		BlockPos pos = event.getPos();
 		Level level = player.level();
-		if (level.isClientSide || player.isCrouching() || !level.getGameRules()
-		    .getBoolean(GameRules.RULE_DOBLOCKDROPS))
+		if (level.isClientSide || player.isCrouching() || !level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS))
 			return;
 
 		boolean ret = false;
@@ -363,28 +342,22 @@ public class CharmTriggerEvent {
 		if (ret)
 			return;
 
-		if (!CollectBlackList(state) && !state.hasBlockEntity() && !player.getMainHandItem()
-		    .isEmpty() && MagicUtil.hasHandCharms(player, new ItemStack(MagicInit.BRACELET_SILVER_BLACK.get())) && level instanceof ServerLevel serverLevel) {
+		ItemStack held = DCUtil.isEmpty(player.getMainHandItem()) ? ItemStack.EMPTY : player.getMainHandItem().copy();
+		if (!CollectBlackList(state) && !state.hasBlockEntity() && !player.getMainHandItem().isEmpty() && MagicUtil.hasHandCharms(player, new ItemStack(MagicInit.BRACELET_SILVER_BLACK.get())) && level instanceof ServerLevel serverLevel) {
 			int lim = ConfigCommonBuilder.INSTANCE.vTimberLimit.get();
 			Set<BlockPos> set = DCUtil.getConnectedTargetList(level, pos, state.getBlock(), lim);
 			set.add(pos);
 			set.forEach(p2 -> {
 				BlockState s2 = level.getBlockState(p2);
 				BlockEntity e2 = level.getBlockEntity(p2);
-				LootParams.Builder builder = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
-				    .withParameter(LootContextParams.BLOCK_STATE, s2)
-				    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2)
-				    .withOptionalParameter(LootContextParams.THIS_ENTITY, player)
-				    .withParameter(LootContextParams.TOOL, player.getMainHandItem());
-				s2.getDrops(builder)
-				    .forEach(item -> { Block.popResource(serverLevel, player.blockPosition(), item); });
-				s2.getBlock()
-				    .destroy(serverLevel, p2, s2);
+				LootParams.Builder builder = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2)).withParameter(LootContextParams.TOOL, held)
+				    .withOptionalParameter(LootContextParams.THIS_ENTITY, player).withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2);
+				s2.getDrops(builder).forEach(item -> { Block.popResource(serverLevel, player.blockPosition(), item); });
+				s2.getBlock().destroy(serverLevel, p2, s2);
 				serverLevel.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
 			});
 
-			player.getMainHandItem()
-			    .hurtAndBreak(2, player, p -> { p.broadcastBreakEvent(EquipmentSlot.MAINHAND); });
+			player.getMainHandItem().hurtAndBreak(2, player, p -> { p.broadcastBreakEvent(EquipmentSlot.MAINHAND); });
 			ret = true;
 
 		} else {
@@ -403,20 +376,14 @@ public class CharmTriggerEvent {
 				targetPosList.forEach(p2 -> {
 					BlockState s2 = level.getBlockState(p2);
 					BlockEntity e2 = level.getBlockEntity(p2);
-					LootParams.Builder builder = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2))
-					    .withParameter(LootContextParams.BLOCK_STATE, s2)
-					    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2)
-					    .withOptionalParameter(LootContextParams.THIS_ENTITY, player)
-					    .withParameter(LootContextParams.TOOL, player.getMainHandItem());
-					s2.getDrops(builder)
-					    .forEach(item -> { Block.popResource(serverLevel, p2, item); });
-					s2.getBlock()
-					    .destroy(serverLevel, p2, s2);
+					LootParams.Builder builder = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(p2)).withParameter(LootContextParams.TOOL, held)
+					    .withOptionalParameter(LootContextParams.THIS_ENTITY, player).withOptionalParameter(LootContextParams.BLOCK_ENTITY, e2);
+					s2.getDrops(builder).forEach(item -> { Block.popResource(serverLevel, p2, item); });
+					s2.getBlock().destroy(serverLevel, p2, s2);
 					serverLevel.setBlock(p2, Blocks.AIR.defaultBlockState(), 2);
 				});
 
-				player.getMainHandItem()
-				    .hurtAndBreak(2, player, p -> { p.broadcastBreakEvent(EquipmentSlot.MAINHAND); });
+				player.getMainHandItem().hurtAndBreak(2, player, p -> { p.broadcastBreakEvent(EquipmentSlot.MAINHAND); });
 
 				ret = true;
 			}
@@ -461,12 +428,8 @@ public class CharmTriggerEvent {
 
 	@SubscribeEvent
 	public static void onPotionEffectColor(PotionColorCalculationEvent event) {
-		if (event.getEffects() != null && !event.getEffects()
-		    .isEmpty()) {
-			if (event.getEffects()
-			    .size() < 2 && event.getEffects()
-			        .stream()
-			        .anyMatch(e -> e.getEffect() == CoreInit.WET.get())) {
+		if (event.getEffects() != null && !event.getEffects().isEmpty()) {
+			if (event.getEffects().size() < 2 && event.getEffects().stream().anyMatch(e -> e.getEffect() == CoreInit.WET.get())) {
 				event.shouldHideParticles(true);
 				event.setCanceled(true);
 			}

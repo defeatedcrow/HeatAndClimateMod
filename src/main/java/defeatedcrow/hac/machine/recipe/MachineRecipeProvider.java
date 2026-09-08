@@ -1,31 +1,18 @@
 package defeatedcrow.hac.machine.recipe;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonObject;
-
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.machine.material.MachineInit;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
@@ -42,1044 +29,395 @@ public class MachineRecipeProvider extends RecipeProvider {
 	}
 
 	static void craftRecipes(Consumer<FinishedRecipe> cons) {
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MOTOR_TIER1.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XYX")
-		    .pattern("XYX")
-		    .define('Y', Tags.Items.INGOTS_IRON)
-		    .define('X', Tags.Items.INGOTS_COPPER)
-		    .unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER))
-		    .save(cons, "dcs_climate:machine/small_motor_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MOTOR_TIER1.get(), 1).pattern("XYX").pattern("XYX").pattern("XYX").define('Y', Tags.Items.INGOTS_IRON).define('X', Tags.Items.INGOTS_COPPER)
+		    .unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER)).save(cons, "dcs_climate:machine/small_motor_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MOTOR_TIER2.get(), 1)
-		    .pattern("XYX")
-		    .pattern("ZYZ")
-		    .pattern("ZYZ")
-		    .define('X', TagDC.ItemTag.INGOT_MAGNET)
-		    .define('Y', TagDC.ItemTag.INGOT_STEEL)
-		    .define('Z', Tags.Items.INGOTS_COPPER)
-		    .unlockedBy("has_ingot_magnet", has(TagDC.ItemTag.INGOT_MAGNET))
-		    .save(cons, "dcs_climate:machine/middle_motor_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MOTOR_TIER2.get(), 1).pattern("XYX").pattern("ZYZ").pattern("ZYZ").define('X', TagDC.ItemTag.INGOT_MAGNET).define('Y', TagDC.ItemTag.INGOT_STEEL)
+		    .define('Z', Tags.Items.INGOTS_COPPER).unlockedBy("has_ingot_magnet", has(TagDC.ItemTag.INGOT_MAGNET)).save(cons, "dcs_climate:machine/middle_motor_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.IMPELLER_TIER1.get(), 1)
-		    .pattern(" X ")
-		    .pattern("XYX")
-		    .pattern(" X ")
-		    .define('X', TagDC.ItemTag.INGOT_STEEL)
-		    .define('Y', TagDC.ItemTag.MOTOR_T1)
-		    .unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1))
-		    .save(cons, "dcs_climate:machine/small_impeller_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.IMPELLER_TIER1.get(), 1).pattern(" X ").pattern("XYX").pattern(" X ").define('X', TagDC.ItemTag.INGOT_STEEL).define('Y', TagDC.ItemTag.MOTOR_T1)
+		    .unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1)).save(cons, "dcs_climate:machine/small_impeller_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.IMPELLER_TIER2.get(), 1)
-		    .pattern(" X ")
-		    .pattern("XYX")
-		    .pattern(" X ")
-		    .define('X', TagDC.ItemTag.INGOT_SUS)
-		    .define('Y', TagDC.ItemTag.MOTOR_T2)
-		    .unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T2))
-		    .save(cons, "dcs_climate:machine/middle_impeller_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.IMPELLER_TIER2.get(), 1).pattern(" X ").pattern("XYX").pattern(" X ").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', TagDC.ItemTag.MOTOR_T2)
+		    .unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T2)).save(cons, "dcs_climate:machine/middle_impeller_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BATTERYITEM_TIER1.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .pattern("XWX")
-		    .define('X', Tags.Items.INGOTS_IRON)
-		    .define('Y', TagDC.ItemTag.DUST_NICKEL)
-		    .define('Z', TagDC.ItemTag.DUST_TRONA)
-		    .define('W', Items.BLAZE_POWDER)
-		    .unlockedBy("has_dust_nickel", has(TagDC.ItemTag.DUST_NICKEL))
-		    .save(cons, "dcs_climate:machine/small_battery_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BATTERYITEM_TIER1.get(), 1).pattern("XYX").pattern("XZX").pattern("XWX").define('X', Tags.Items.INGOTS_IRON).define('Y', TagDC.ItemTag.DUST_NICKEL)
+		    .define('Z', TagDC.ItemTag.DUST_TRONA).define('W', Items.BLAZE_POWDER).unlockedBy("has_dust_nickel", has(TagDC.ItemTag.DUST_NICKEL)).save(cons, "dcs_climate:.shaped(RecipeCategory.MISC, small_battery_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BATTERYITEM_TIER2.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .pattern("XWX")
-		    .define('X', Tags.Items.INGOTS_IRON)
-		    .define('Y', TagDC.ItemTag.DUST_LITHIUM)
-		    .define('Z', TagDC.ItemTag.DUST_COAL)
-		    .define('W', TagDC.ItemTag.DUST_COBALT)
-		    .unlockedBy("has_dust_lithium", has(TagDC.ItemTag.DUST_LITHIUM))
-		    .save(cons, "dcs_climate:machine/middle_battery_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BATTERYITEM_TIER2.get(), 1).pattern("XYX").pattern("XZX").pattern("XWX").define('X', Tags.Items.INGOTS_IRON).define('Y', TagDC.ItemTag.DUST_LITHIUM)
+		    .define('Z', TagDC.ItemTag.DUST_COAL).define('W', TagDC.ItemTag.DUST_COBALT).unlockedBy("has_dust_lithium", has(TagDC.ItemTag.DUST_LITHIUM)).save(cons, "dcs_climate:machine/middle_battery_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CHAMBER_BRICK_A.get(), 1)
-		    .pattern("X X")
-		    .pattern("XYX")
-		    .pattern("XXX")
-		    .define('X', Tags.Items.INGOTS_BRICK)
-		    .define('Y', Items.CAMPFIRE)
-		    .unlockedBy("has_campfire", has(Items.CAMPFIRE))
-		    .save(cons, "dcs_climate:machine/bricks_stove_a_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CHAMBER_BRICK_A.get(), 1).pattern("X X").pattern("XYX").pattern("XXX").define('X', Tags.Items.INGOTS_BRICK).define('Y', Items.CAMPFIRE)
+		    .unlockedBy("has_campfire", has(Items.CAMPFIRE)).save(cons, "dcs_climate:machine/bricks_stove_a_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CHAMBER_BRICK_B.get(), 1)
-		    .pattern("XXX")
-		    .pattern("XYX")
-		    .pattern("X X")
-		    .define('X', Tags.Items.INGOTS_BRICK)
-		    .define('Y', Items.CAMPFIRE)
-		    .unlockedBy("has_campfire", has(Items.CAMPFIRE))
-		    .save(cons, "dcs_climate:machine/bricks_stove_b_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CHAMBER_BRICK_B.get(), 1).pattern("XXX").pattern("XYX").pattern("X X").define('X', Tags.Items.INGOTS_BRICK).define('Y', Items.CAMPFIRE)
+		    .unlockedBy("has_campfire", has(Items.CAMPFIRE)).save(cons, "dcs_climate:machine/bricks_stove_b_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CHAMBER_IRON.get(), 1)
-		    .pattern("XXX")
-		    .pattern("XYX")
-		    .pattern("XXX")
-		    .define('X', Tags.Items.INGOTS_IRON)
-		    .define('Y', Items.CAMPFIRE)
-		    .unlockedBy("has_campfire", has(Items.CAMPFIRE))
-		    .save(cons, "dcs_climate:machine/iron_stove_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CHAMBER_IRON.get(), 1).pattern("XXX").pattern("XYX").pattern("XXX").define('X', Tags.Items.INGOTS_IRON).define('Y', Items.CAMPFIRE)
+		    .unlockedBy("has_campfire", has(Items.CAMPFIRE)).save(cons, "dcs_climate:machine/iron_stove_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CHAMBER_IRON.get(), 1)
-		    .pattern("XXX")
-		    .pattern("XYX")
-		    .pattern("XXX")
-		    .define('X', TagUtil.BRONZE_OR_BRASS)
-		    .define('Y', Items.CAMPFIRE)
-		    .unlockedBy("has_campfire", has(Items.CAMPFIRE))
-		    .save(cons, "dcs_climate:machine/iron_stove_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CHAMBER_IRON.get(), 1).pattern("XXX").pattern("XYX").pattern("XXX").define('X', TagUtil.BRONZE_OR_BRASS).define('Y', Items.CAMPFIRE)
+		    .unlockedBy("has_campfire", has(Items.CAMPFIRE)).save(cons, "dcs_climate:machine/iron_stove_1");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.FUEL_BURNER.get(), 1)
-		    .pattern("XYX")
-		    .pattern("ZWZ")
-		    .define('X', MachineInit.PIPE_BRASS.get())
-		    .define('Y', Items.FLINT_AND_STEEL)
-		    .define('Z', TagDC.ItemTag.INGOT_STEEL)
-		    .define('W', Items.BUCKET)
-		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get()))
-		    .save(cons, "dcs_climate:machine/fuel_burner_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.FUEL_BURNER.get(), 1).pattern("XYX").pattern("ZWZ").define('X', MachineInit.PIPE_BRASS.get()).define('Y', Items.FLINT_AND_STEEL).define('Z', TagDC.ItemTag.INGOT_STEEL)
+		    .define('W', Items.BUCKET).unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get())).save(cons, "dcs_climate:machine/fuel_burner_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_STOVE.get(), 1)
-		    .pattern("XYX")
-		    .pattern("X X")
-		    .define('X', TagDC.ItemTag.INGOT_SUS)
-		    .define('Y', MachineInit.FUEL_BURNER.get())
-		    .unlockedBy("has_burner", has(MachineInit.FUEL_BURNER.get()))
-		    .save(cons, "dcs_climate:machine/kitchen_stove_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_STOVE.get(), 1).pattern("XYX").pattern("X X").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', MachineInit.FUEL_BURNER.get())
+		    .unlockedBy("has_burner", has(MachineInit.FUEL_BURNER.get())).save(cons, "dcs_climate:machine/kitchen_stove_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_OVEN_WOOD.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', ItemTags.PLANKS)
-		    .define('Y', MachineInit.KICHEN_STOVE.get())
-		    .define('Z', MachineInit.CHAMBER_IRON.get())
-		    .unlockedBy("has_kitchen_stove", has(MachineInit.KICHEN_STOVE.get()))
-		    .save(cons, "dcs_climate:machine/kitchen_oven_wood_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_OVEN_WOOD.get(), 1).pattern("XYX").pattern("XZX").define('X', ItemTags.PLANKS).define('Y', MachineInit.KICHEN_STOVE.get())
+		    .define('Z', MachineInit.CHAMBER_IRON.get()).unlockedBy("has_kitchen_stove", has(MachineInit.KICHEN_STOVE.get())).save(cons, "dcs_climate:machine/kitchen_oven_wood_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_OVEN_BLACK.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', TagUtil.BLACKSTONES)
-		    .define('Y', MachineInit.KICHEN_STOVE.get())
-		    .define('Z', MachineInit.CHAMBER_IRON.get())
-		    .unlockedBy("has_kitchen_stove", has(MachineInit.KICHEN_STOVE.get()))
-		    .save(cons, "dcs_climate:machine/kitchen_oven_black_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_OVEN_BLACK.get(), 1).pattern("XYX").pattern("XZX").define('X', TagUtil.BLACKSTONES).define('Y', MachineInit.KICHEN_STOVE.get())
+		    .define('Z', MachineInit.CHAMBER_IRON.get()).unlockedBy("has_kitchen_stove", has(MachineInit.KICHEN_STOVE.get())).save(cons, "dcs_climate:machine/kitchen_oven_black_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_OVEN_LAB.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', TagDC.ItemTag.BUILDING_LINOLEUM)
-		    .define('Y', MachineInit.KICHEN_STOVE.get())
-		    .define('Z', MachineInit.CHAMBER_IRON.get())
-		    .unlockedBy("has_kitchen_stove", has(MachineInit.KICHEN_STOVE.get()))
-		    .save(cons, "dcs_climate:machine/kitchen_oven_lab_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_OVEN_LAB.get(), 1).pattern("XYX").pattern("XZX").define('X', TagDC.ItemTag.BUILDING_LINOLEUM).define('Y', MachineInit.KICHEN_STOVE.get())
+		    .define('Z', MachineInit.CHAMBER_IRON.get()).unlockedBy("has_kitchen_stove", has(MachineInit.KICHEN_STOVE.get())).save(cons, "dcs_climate:machine/kitchen_oven_lab_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_BRICK.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', Tags.Items.INGOTS_BRICK)
-		    .define('Y', Items.CRAFTING_TABLE)
-		    .define('Z', Tags.Items.CHESTS)
-		    .unlockedBy("has_crafting_table", has(Items.CRAFTING_TABLE))
-		    .save(cons, "dcs_climate:machine/bricks_kichen_bench_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_BRICK.get(), 1).pattern("XYX").pattern("XZX").define('X', Tags.Items.INGOTS_BRICK).define('Y', Items.CRAFTING_TABLE).define('Z', Tags.Items.CHESTS)
+		    .unlockedBy("has_crafting_table", has(Items.CRAFTING_TABLE)).save(cons, "dcs_climate:machine/bricks_kichen_bench_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_SUS.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', TagDC.ItemTag.INGOT_SUS)
-		    .define('Y', Items.CRAFTING_TABLE)
-		    .define('Z', Tags.Items.CHESTS)
-		    .unlockedBy("has_crafting_table", has(Items.CRAFTING_TABLE))
-		    .save(cons, "dcs_climate:machine/sus_kichen_bench_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_SUS.get(), 1).pattern("XYX").pattern("XZX").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', Items.CRAFTING_TABLE).define('Z', Tags.Items.CHESTS)
+		    .unlockedBy("has_crafting_table", has(Items.CRAFTING_TABLE)).save(cons, "dcs_climate:machine/sus_kichen_bench_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_WOOD_A.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', ItemTags.PLANKS)
-		    .define('Y', Items.CRAFTING_TABLE)
-		    .define('Z', Tags.Items.CHESTS)
-		    .unlockedBy("has_crafting_table", has(Items.CRAFTING_TABLE))
-		    .save(cons, "dcs_climate:machine/wood_kichen_bench_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_WOOD_A.get(), 1).pattern("XYX").pattern("XZX").define('X', ItemTags.PLANKS).define('Y', Items.CRAFTING_TABLE).define('Z', Tags.Items.CHESTS)
+		    .unlockedBy("has_crafting_table", has(Items.CRAFTING_TABLE)).save(cons, "dcs_climate:machine/wood_kichen_bench_1");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_WOOD_A.get(), 1)
-		    .requires(MachineInit.KICHEN_BENCH_WOOD_B.get())
-		    .unlockedBy("has_wood_kitchen_bench_b", has(MachineInit.KICHEN_BENCH_WOOD_B.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_WOOD_A.get(), 1).requires(MachineInit.KICHEN_BENCH_WOOD_B.get()).unlockedBy("has_wood_kitchen_bench_b", has(MachineInit.KICHEN_BENCH_WOOD_B.get()))
 		    .save(cons, "dcs_climate:machine/wood_kichen_bench_2");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_WOOD_B.get(), 1)
-		    .requires(MachineInit.KICHEN_BENCH_WOOD_A.get())
-		    .unlockedBy("has_wood_kitchen_bench", has(MachineInit.KICHEN_BENCH_WOOD_A.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_WOOD_B.get(), 1).requires(MachineInit.KICHEN_BENCH_WOOD_A.get()).unlockedBy("has_wood_kitchen_bench", has(MachineInit.KICHEN_BENCH_WOOD_A.get()))
 		    .save(cons, "dcs_climate:machine/wood_kichen_bench_b_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_BLACK_A.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', TagUtil.BLACKSTONES)
-		    .define('Y', Items.CRAFTING_TABLE)
-		    .define('Z', Tags.Items.CHESTS)
-		    .unlockedBy("has_crafting_table", has(Items.CRAFTING_TABLE))
-		    .save(cons, "dcs_climate:machine/black_kichen_bench_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_BLACK_A.get(), 1).pattern("XYX").pattern("XZX").define('X', TagUtil.BLACKSTONES).define('Y', Items.CRAFTING_TABLE).define('Z', Tags.Items.CHESTS)
+		    .unlockedBy("has_crafting_table", has(Items.CRAFTING_TABLE)).save(cons, "dcs_climate:machine/black_kichen_bench_1");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_BLACK_A.get(), 1)
-		    .requires(MachineInit.KICHEN_BENCH_BLACK_B.get())
-		    .unlockedBy("has_black_kitchen_bench_b", has(MachineInit.KICHEN_BENCH_BLACK_B.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_BLACK_A.get(), 1).requires(MachineInit.KICHEN_BENCH_BLACK_B.get()).unlockedBy("has_black_kitchen_bench_b", has(MachineInit.KICHEN_BENCH_BLACK_B.get()))
 		    .save(cons, "dcs_climate:machine/black_kichen_bench_2");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_BLACK_B.get(), 1)
-		    .requires(MachineInit.KICHEN_BENCH_BLACK_A.get())
-		    .unlockedBy("has_black_kitchen_bench", has(MachineInit.KICHEN_BENCH_BLACK_A.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_BLACK_B.get(), 1).requires(MachineInit.KICHEN_BENCH_BLACK_A.get()).unlockedBy("has_black_kitchen_bench", has(MachineInit.KICHEN_BENCH_BLACK_A.get()))
 		    .save(cons, "dcs_climate:machine/black_kichen_bench_b_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_LAB_A.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', TagDC.ItemTag.BUILDING_LINOLEUM)
-		    .define('Y', Items.CRAFTING_TABLE)
-		    .define('Z', Tags.Items.CHESTS)
-		    .unlockedBy("has_crafting_table", has(Items.CRAFTING_TABLE))
-		    .save(cons, "dcs_climate:machine/lab_kichen_bench_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_LAB_A.get(), 1).pattern("XYX").pattern("XZX").define('X', TagDC.ItemTag.BUILDING_LINOLEUM).define('Y', Items.CRAFTING_TABLE).define('Z', Tags.Items.CHESTS)
+		    .unlockedBy("has_crafting_table", has(Items.CRAFTING_TABLE)).save(cons, "dcs_climate:machine/lab_kichen_bench_1");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_LAB_A.get(), 1)
-		    .requires(MachineInit.KICHEN_BENCH_LAB_B.get())
-		    .unlockedBy("has_lab_kitchen_bench_b", has(MachineInit.KICHEN_BENCH_LAB_B.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_LAB_A.get(), 1).requires(MachineInit.KICHEN_BENCH_LAB_B.get()).unlockedBy("has_lab_kitchen_bench_b", has(MachineInit.KICHEN_BENCH_LAB_B.get()))
 		    .save(cons, "dcs_climate:machine/lab_kichen_bench_2");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_LAB_B.get(), 1)
-		    .requires(MachineInit.KICHEN_BENCH_LAB_A.get())
-		    .unlockedBy("has_lab_kitchen_bench", has(MachineInit.KICHEN_BENCH_LAB_A.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_LAB_B.get(), 1).requires(MachineInit.KICHEN_BENCH_LAB_A.get()).unlockedBy("has_lab_kitchen_bench", has(MachineInit.KICHEN_BENCH_LAB_A.get()))
 		    .save(cons, "dcs_climate:machine/lab_kichen_bench_b_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_BRICK.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', Tags.Items.INGOTS_BRICK)
-		    .define('Y', Items.BUCKET)
-		    .define('Z', MachineInit.PIPE_BRASS.get())
-		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get()))
-		    .save(cons, "dcs_climate:machine/bricks_sink_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_BRICK.get(), 1).pattern("XYX").pattern("XZX").define('X', Tags.Items.INGOTS_BRICK).define('Y', Items.BUCKET).define('Z', MachineInit.PIPE_BRASS.get())
+		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get())).save(cons, "dcs_climate:machine/bricks_sink_1");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_SINK_BRICK.get(), 1)
-		    .requires(MachineInit.HALF_SINK_BRICK.get())
-		    .unlockedBy("has_half_sink", has(MachineInit.HALF_SINK_BRICK.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_SINK_BRICK.get(), 1).requires(MachineInit.HALF_SINK_BRICK.get()).unlockedBy("has_half_sink", has(MachineInit.HALF_SINK_BRICK.get()))
 		    .save(cons, "dcs_climate:machine/bricks_sink_2");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.HALF_SINK_BRICK.get(), 1)
-		    .requires(MachineInit.KICHEN_SINK_BRICK.get())
-		    .unlockedBy("has_kichen_sink", has(MachineInit.KICHEN_SINK_BRICK.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.HALF_SINK_BRICK.get(), 1).requires(MachineInit.KICHEN_SINK_BRICK.get()).unlockedBy("has_kichen_sink", has(MachineInit.KICHEN_SINK_BRICK.get()))
 		    .save(cons, "dcs_climate:machine/bricks_half_sink_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_SUS.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', TagDC.ItemTag.INGOT_SUS)
-		    .define('Y', Items.BUCKET)
-		    .define('Z', MachineInit.PIPE_BRASS.get())
-		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get()))
-		    .save(cons, "dcs_climate:machine/sus_sink_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_SUS.get(), 1).pattern("XYX").pattern("XZX").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', Items.BUCKET).define('Z', MachineInit.PIPE_BRASS.get())
+		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get())).save(cons, "dcs_climate:machine/sus_sink_1");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_WOOD.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', ItemTags.PLANKS)
-		    .define('Y', Items.BUCKET)
-		    .define('Z', MachineInit.PIPE_BRASS.get())
-		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get()))
-		    .save(cons, "dcs_climate:machine/wood_sink_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_WOOD.get(), 1).pattern("XYX").pattern("XZX").define('X', ItemTags.PLANKS).define('Y', Items.BUCKET).define('Z', MachineInit.PIPE_BRASS.get())
+		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get())).save(cons, "dcs_climate:machine/wood_sink_1");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_BLACK.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', TagUtil.BLACKSTONES)
-		    .define('Y', Items.BUCKET)
-		    .define('Z', MachineInit.PIPE_BRASS.get())
-		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get()))
-		    .save(cons, "dcs_climate:machine/black_sink_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_BLACK.get(), 1).pattern("XYX").pattern("XZX").define('X', TagUtil.BLACKSTONES).define('Y', Items.BUCKET).define('Z', MachineInit.PIPE_BRASS.get())
+		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get())).save(cons, "dcs_climate:machine/black_sink_1");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_LAB.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', TagDC.ItemTag.BUILDING_LINOLEUM)
-		    .define('Y', Items.BUCKET)
-		    .define('Z', MachineInit.PIPE_BRASS.get())
-		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get()))
-		    .save(cons, "dcs_climate:machine/lab_sink_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_LAB.get(), 1).pattern("XYX").pattern("XZX").define('X', TagDC.ItemTag.BUILDING_LINOLEUM).define('Y', Items.BUCKET).define('Z', MachineInit.PIPE_BRASS.get())
+		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get())).save(cons, "dcs_climate:machine/lab_sink_1");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_FILTER.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .pattern(" X ")
-		    .define('X', Tags.Items.INGOTS_IRON)
-		    .define('Y', Items.IRON_BARS)
-		    .define('Z', Tags.Items.CHESTS)
-		    .unlockedBy("has_ingot_iron", has(Tags.Items.INGOTS_IRON))
-		    .save(cons, "dcs_climate:machine/hopper_filter_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_FILTER.get(), 1).pattern("XYX").pattern("XZX").pattern(" X ").define('X', Tags.Items.INGOTS_IRON).define('Y', Items.IRON_BARS).define('Z', Tags.Items.CHESTS)
+		    .unlockedBy("has_ingot_iron", has(Tags.Items.INGOTS_IRON)).save(cons, "dcs_climate:machine/hopper_filter_1");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_FILTER.get(), 1)
-		    .pattern("Y")
-		    .pattern("X")
-		    .define('X', Items.HOPPER)
-		    .define('Y', Items.IRON_BARS)
-		    .unlockedBy("has_ingot_iron", has(Tags.Items.INGOTS_IRON))
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_FILTER.get(), 1).pattern("Y").pattern("X").define('X', Items.HOPPER).define('Y', Items.IRON_BARS).unlockedBy("has_ingot_iron", has(Tags.Items.INGOTS_IRON))
 		    .save(cons, "dcs_climate:machine/hopper_filter_2");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_GOLD.get(), 1)
-		    .pattern("X X")
-		    .pattern("XZX")
-		    .pattern(" X ")
-		    .define('X', Tags.Items.INGOTS_GOLD)
-		    .define('Z', Tags.Items.CHESTS)
-		    .unlockedBy("has_ingot_gold", has(Tags.Items.INGOTS_GOLD))
-		    .save(cons, "dcs_climate:machine/hopper_gold_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_GOLD.get(), 1).pattern("X X").pattern("XZX").pattern(" X ").define('X', Tags.Items.INGOTS_GOLD).define('Z', Tags.Items.CHESTS)
+		    .unlockedBy("has_ingot_gold", has(Tags.Items.INGOTS_GOLD)).save(cons, "dcs_climate:machine/hopper_gold_1");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_FILTER_GOLD.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .pattern(" X ")
-		    .define('X', Tags.Items.INGOTS_GOLD)
-		    .define('Y', Items.IRON_BARS)
-		    .define('Z', Tags.Items.CHESTS)
-		    .unlockedBy("has_ingot_gold", has(Tags.Items.INGOTS_GOLD))
-		    .save(cons, "dcs_climate:machine/hopper_filter_gold_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_FILTER_GOLD.get(), 1).pattern("XYX").pattern("XZX").pattern(" X ").define('X', Tags.Items.INGOTS_GOLD).define('Y', Items.IRON_BARS).define('Z', Tags.Items.CHESTS)
+		    .unlockedBy("has_ingot_gold", has(Tags.Items.INGOTS_GOLD)).save(cons, "dcs_climate:machine/hopper_filter_gold_1");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_FILTER_GOLD.get(), 1)
-		    .pattern("Y")
-		    .pattern("X")
-		    .define('X', MachineInit.HOPPER_GOLD.get())
-		    .define('Y', Items.IRON_BARS)
-		    .unlockedBy("has_hopper_gold", has(MachineInit.HOPPER_GOLD.get()))
-		    .save(cons, "dcs_climate:machine/hopper_filter_gold_2");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_FILTER_GOLD.get(), 1).pattern("Y").pattern("X").define('X', MachineInit.HOPPER_GOLD.get()).define('Y', Items.IRON_BARS)
+		    .unlockedBy("has_hopper_gold", has(MachineInit.HOPPER_GOLD.get())).save(cons, "dcs_climate:machine/hopper_filter_gold_2");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_EXP.get(), 1)
-		    .pattern("Y")
-		    .pattern("X")
-		    .define('X', Items.HOPPER)
-		    .define('Y', TagDC.ItemTag.MANA_EXTRACT)
-		    .unlockedBy("has_extract_mana", has(TagDC.ItemTag.MANA_EXTRACT))
-		    .save(cons, "dcs_climate:machine/hopper_exp_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HOPPER_EXP.get(), 1).pattern("Y").pattern("X").define('X', Items.HOPPER).define('Y', TagDC.ItemTag.MANA_EXTRACT)
+		    .unlockedBy("has_extract_mana", has(TagDC.ItemTag.MANA_EXTRACT)).save(cons, "dcs_climate:machine/hopper_exp_1");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CONVEYOR.get(), 8)
-		    .pattern("XYX")
-		    .define('X', TagDC.ItemTag.INGOT_STEEL)
-		    .define('Y', TagDC.ItemTag.MOTOR_T1)
-		    .unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1))
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CONVEYOR.get(), 8).pattern("XYX").define('X', TagDC.ItemTag.INGOT_STEEL).define('Y', TagDC.ItemTag.MOTOR_T1).unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1))
 		    .save(cons, "dcs_climate:machine/conveyor_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR.get(), 1)
-		    .requires(MachineInit.CONVEYOR_VERTICAL.get())
-		    .unlockedBy("has_conveyor_vertical", has(MachineInit.CONVEYOR_VERTICAL.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR.get(), 1).requires(MachineInit.CONVEYOR_VERTICAL.get()).unlockedBy("has_conveyor_vertical", has(MachineInit.CONVEYOR_VERTICAL.get()))
 		    .save(cons, "dcs_climate:machine/conveyor_vertical_2");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CONVEYOR_VERTICAL.get(), 3)
-		    .pattern("X")
-		    .pattern("X")
-		    .pattern("X")
-		    .define('X', MachineInit.CONVEYOR.get())
-		    .unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CONVEYOR_VERTICAL.get(), 3).pattern("X").pattern("X").pattern("X").define('X', MachineInit.CONVEYOR.get()).unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
 		    .save(cons, "dcs_climate:machine/conveyor_vertical_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_SMELTING.get(), 1)
-		    .requires(MachineInit.CONVEYOR.get())
-		    .requires(CoreInit.TEMPMETER.get())
-		    .unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_SMELTING.get(), 1).requires(MachineInit.CONVEYOR.get()).requires(CoreInit.TEMPMETER.get()).unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
 		    .save(cons, "dcs_climate:machine/conveyor_smelting_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_DROPPER.get(), 1)
-		    .requires(MachineInit.CONVEYOR.get())
-		    .requires(Items.DROPPER)
-		    .unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_DROPPER.get(), 1).requires(MachineInit.CONVEYOR.get()).requires(Items.DROPPER).unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
 		    .save(cons, "dcs_climate:machine/conveyor_dropper_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_SORTER.get(), 1)
-		    .requires(MachineInit.CONVEYOR.get())
-		    .requires(MachineInit.HOPPER_FILTER.get())
-		    .unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_SORTER.get(), 1).requires(MachineInit.CONVEYOR.get()).requires(MachineInit.HOPPER_FILTER.get()).unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
 		    .save(cons, "dcs_climate:machine/conveyor_sorter_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_FILLER.get(), 1)
-		    .requires(MachineInit.CONVEYOR.get())
-		    .requires(Items.BUCKET)
-		    .requires(Items.REPEATER)
-		    .unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
-		    .save(cons, "dcs_climate:machine/conveyor_filler_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_FILLER.get(), 1).requires(MachineInit.CONVEYOR.get()).requires(Items.BUCKET).requires(Items.REPEATER)
+		    .unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get())).save(cons, "dcs_climate:machine/conveyor_filler_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.SPRINKLER.get(), 1)
-		    .pattern(" Y ")
-		    .pattern("XZX")
-		    .define('X', Items.STONE_SLAB)
-		    .define('Y', MachineInit.PIPE_BRASS.get())
-		    .define('Z', TagDC.ItemTag.IMPELLER_T1)
-		    .unlockedBy("has_impeller_t1", has(TagDC.ItemTag.IMPELLER_T1))
-		    .save(cons, "dcs_climate:machine/sprinkler_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.SPRINKLER.get(), 1).pattern(" Y ").pattern("XZX").define('X', Items.STONE_SLAB).define('Y', MachineInit.PIPE_BRASS.get()).define('Z', TagDC.ItemTag.IMPELLER_T1)
+		    .unlockedBy("has_impeller_t1", has(TagDC.ItemTag.IMPELLER_T1)).save(cons, "dcs_climate:machine/sprinkler_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.FAUCET_A.get(), 1)
-		    .pattern("XYX")
-		    .pattern("ZZZ")
-		    .pattern("Z  ")
-		    .define('X', TagDC.ItemTag.WATER)
-		    .define('Y', TagDC.ItemTag.CLOTH_RUBBER)
-		    .define('Z', TagDC.ItemTag.INGOT_SUS)
-		    .unlockedBy("has_ingot_sus", has(TagDC.ItemTag.INGOT_SUS))
-		    .save(cons, "dcs_climate:machine/faucet_a_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.FAUCET_A.get(), 1).pattern("XYX").pattern("ZZZ").pattern("Z  ").define('X', TagDC.ItemTag.WATER).define('Y', TagDC.ItemTag.CLOTH_RUBBER)
+		    .define('Z', TagDC.ItemTag.INGOT_SUS).unlockedBy("has_ingot_sus", has(TagDC.ItemTag.INGOT_SUS)).save(cons, "dcs_climate:machine/faucet_a_1");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FAUCET_A.get(), 1)
-		    .requires(MachineInit.FAUCET_D.get())
-		    .unlockedBy("has_faucet_d", has(MachineInit.FAUCET_D.get()))
-		    .save(cons, "dcs_climate:machine/faucet_a_2");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FAUCET_A.get(), 1).requires(MachineInit.FAUCET_D.get()).unlockedBy("has_faucet_d", has(MachineInit.FAUCET_D.get())).save(cons, "dcs_climate:machine/faucet_a_2");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FAUCET_B.get(), 1)
-		    .requires(MachineInit.FAUCET_A.get())
-		    .unlockedBy("has_faucet_a", has(MachineInit.FAUCET_A.get()))
-		    .save(cons, "dcs_climate:machine/faucet_b_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FAUCET_B.get(), 1).requires(MachineInit.FAUCET_A.get()).unlockedBy("has_faucet_a", has(MachineInit.FAUCET_A.get())).save(cons, "dcs_climate:machine/faucet_b_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FAUCET_C.get(), 1)
-		    .requires(MachineInit.FAUCET_B.get())
-		    .unlockedBy("has_faucet_b", has(MachineInit.FAUCET_B.get()))
-		    .save(cons, "dcs_climate:machine/faucet_c_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FAUCET_C.get(), 1).requires(MachineInit.FAUCET_B.get()).unlockedBy("has_faucet_b", has(MachineInit.FAUCET_B.get())).save(cons, "dcs_climate:machine/faucet_c_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FAUCET_D.get(), 1)
-		    .requires(MachineInit.FAUCET_C.get())
-		    .unlockedBy("has_faucet_c", has(MachineInit.FAUCET_C.get()))
-		    .save(cons, "dcs_climate:machine/faucet_d_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FAUCET_D.get(), 1).requires(MachineInit.FAUCET_C.get()).unlockedBy("has_faucet_c", has(MachineInit.FAUCET_C.get())).save(cons, "dcs_climate:machine/faucet_d_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PORTABLE_CAN.get(), 1)
-		    .pattern(" X ")
-		    .pattern("XYX")
-		    .pattern(" X ")
-		    .define('X', Tags.Items.INGOTS_IRON)
-		    .define('Y', Items.BUCKET)
-		    .unlockedBy("has_bucket", has(Items.BUCKET))
-		    .save(cons, "dcs_climate:machine/portable_can_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PORTABLE_CAN.get(), 1).pattern(" X ").pattern("XYX").pattern(" X ").define('X', Tags.Items.INGOTS_IRON).define('Y', Items.BUCKET)
+		    .unlockedBy("has_bucket", has(Items.BUCKET)).save(cons, "dcs_climate:machine/portable_can_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PORTABLE_CAN.get(), 1)
-		    .pattern(" X ")
-		    .pattern("XYX")
-		    .pattern(" X ")
-		    .define('X', TagDC.ItemTag.INGOT_ALUMINUM)
-		    .define('Y', Items.BUCKET)
-		    .unlockedBy("has_bucket", has(Items.BUCKET))
-		    .save(cons, "dcs_climate:machine/portable_can_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PORTABLE_CAN.get(), 1).pattern(" X ").pattern("XYX").pattern(" X ").define('X', TagDC.ItemTag.INGOT_ALUMINUM).define('Y', Items.BUCKET)
+		    .unlockedBy("has_bucket", has(Items.BUCKET)).save(cons, "dcs_climate:machine/portable_can_1");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PORTABLE_CAN.get(), 1)
-		    .pattern(" X ")
-		    .pattern("XYX")
-		    .pattern(" X ")
-		    .define('X', TagUtil.BRONZE_OR_BRASS)
-		    .define('Y', Items.BUCKET)
-		    .unlockedBy("has_bucket", has(Items.BUCKET))
-		    .save(cons, "dcs_climate:machine/portable_can_2");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PORTABLE_CAN.get(), 1).pattern(" X ").pattern("XYX").pattern(" X ").define('X', TagUtil.BRONZE_OR_BRASS).define('Y', Items.BUCKET)
+		    .unlockedBy("has_bucket", has(Items.BUCKET)).save(cons, "dcs_climate:machine/portable_can_2");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.PORTABLE_CAN_WHITE.get(), 1)
-		    .requires(MachineInit.PORTABLE_CAN.get())
-		    .requires(TagDC.ItemTag.EXTRACT_WHITE)
-		    .unlockedBy("has_portable_can", has(MachineInit.PORTABLE_CAN.get()))
-		    .save(cons, "dcs_climate:machine/portable_can_white_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.PORTABLE_CAN_WHITE.get(), 1).requires(MachineInit.PORTABLE_CAN.get()).requires(TagDC.ItemTag.EXTRACT_WHITE)
+		    .unlockedBy("has_portable_can", has(MachineInit.PORTABLE_CAN.get())).save(cons, "dcs_climate:machine/portable_can_white_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.PORTABLE_CAN_BLUE.get(), 1)
-		    .requires(MachineInit.PORTABLE_CAN.get())
-		    .requires(TagDC.ItemTag.EXTRACT_BLUE)
-		    .unlockedBy("has_portable_can", has(MachineInit.PORTABLE_CAN.get()))
-		    .save(cons, "dcs_climate:machine/portable_can_blue_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.PORTABLE_CAN_BLUE.get(), 1).requires(MachineInit.PORTABLE_CAN.get()).requires(TagDC.ItemTag.EXTRACT_BLUE)
+		    .unlockedBy("has_portable_can", has(MachineInit.PORTABLE_CAN.get())).save(cons, "dcs_climate:machine/portable_can_blue_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.PORTABLE_CAN_BLACK.get(), 1)
-		    .requires(MachineInit.PORTABLE_CAN.get())
-		    .requires(TagDC.ItemTag.EXTRACT_BLACK)
-		    .unlockedBy("has_portable_can", has(MachineInit.PORTABLE_CAN.get()))
-		    .save(cons, "dcs_climate:machine/portable_can_black_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.PORTABLE_CAN_BLACK.get(), 1).requires(MachineInit.PORTABLE_CAN.get()).requires(TagDC.ItemTag.EXTRACT_BLACK)
+		    .unlockedBy("has_portable_can", has(MachineInit.PORTABLE_CAN.get())).save(cons, "dcs_climate:machine/portable_can_black_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.PORTABLE_CAN_RED.get(), 1)
-		    .requires(MachineInit.PORTABLE_CAN.get())
-		    .requires(TagDC.ItemTag.EXTRACT_RED)
-		    .unlockedBy("has_portable_can", has(MachineInit.PORTABLE_CAN.get()))
-		    .save(cons, "dcs_climate:machine/portable_can_red_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.PORTABLE_CAN_RED.get(), 1).requires(MachineInit.PORTABLE_CAN.get()).requires(TagDC.ItemTag.EXTRACT_RED)
+		    .unlockedBy("has_portable_can", has(MachineInit.PORTABLE_CAN.get())).save(cons, "dcs_climate:machine/portable_can_red_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.PORTABLE_CAN_GREEN.get(), 1)
-		    .requires(MachineInit.PORTABLE_CAN.get())
-		    .requires(TagDC.ItemTag.EXTRACT_GREEN)
-		    .unlockedBy("has_portable_can", has(MachineInit.PORTABLE_CAN.get()))
-		    .save(cons, "dcs_climate:machine/portable_can_green_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.PORTABLE_CAN_GREEN.get(), 1).requires(MachineInit.PORTABLE_CAN.get()).requires(TagDC.ItemTag.EXTRACT_GREEN)
+		    .unlockedBy("has_portable_can", has(MachineInit.PORTABLE_CAN.get())).save(cons, "dcs_climate:machine/portable_can_green_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.IBC.get(), 1)
-		    .pattern("ZYZ")
-		    .pattern("XXX")
-		    .define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER)
-		    .define('Y', Tags.Items.GLASS)
-		    .define('Z', Items.IRON_BARS)
-		    .unlockedBy("has_bucket", has(Items.BUCKET))
-		    .save(cons, "dcs_climate:machine/ibc_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.IBC.get(), 1).pattern("ZYZ").pattern("XXX").define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER).define('Y', Tags.Items.GLASS).define('Z', Items.IRON_BARS)
+		    .unlockedBy("has_bucket", has(Items.BUCKET)).save(cons, "dcs_climate:machine/ibc_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.COOKING_POT_NORMAL.get(), 1)
-		    .pattern("XYX")
-		    .pattern("X X")
-		    .pattern("XXX")
-		    .define('X', TagDC.ItemTag.INGOT_STEEL)
-		    .define('Y', Tags.Items.GLASS)
-		    .unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
-		    .save(cons, "dcs_climate:machine/cooking_pot_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.COOKING_POT_NORMAL.get(), 1).pattern("XYX").pattern("X X").pattern("XXX").define('X', TagDC.ItemTag.INGOT_STEEL).define('Y', Tags.Items.GLASS)
+		    .unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL)).save(cons, "dcs_climate:machine/cooking_pot_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.COOKING_POT_WHITE.get(), 1)
-		    .requires(MachineInit.COOKING_POT_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_WHITE)
-		    .unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/cooking_pot_white_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.COOKING_POT_WHITE.get(), 1).requires(MachineInit.COOKING_POT_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_WHITE)
+		    .unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get())).save(cons, "dcs_climate:machine/cooking_pot_white_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.COOKING_POT_BLUE.get(), 1)
-		    .requires(MachineInit.COOKING_POT_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_BLUE)
-		    .unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/cooking_pot_blue_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.COOKING_POT_BLUE.get(), 1).requires(MachineInit.COOKING_POT_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_BLUE)
+		    .unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get())).save(cons, "dcs_climate:machine/cooking_pot_blue_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.COOKING_POT_BLACK.get(), 1)
-		    .requires(MachineInit.COOKING_POT_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_BLACK)
-		    .unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/cooking_pot_black_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.COOKING_POT_BLACK.get(), 1).requires(MachineInit.COOKING_POT_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_BLACK)
+		    .unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get())).save(cons, "dcs_climate:machine/cooking_pot_black_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.COOKING_POT_RED.get(), 1)
-		    .requires(MachineInit.COOKING_POT_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_RED)
-		    .unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/cooking_pot_red_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.COOKING_POT_RED.get(), 1).requires(MachineInit.COOKING_POT_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_RED)
+		    .unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get())).save(cons, "dcs_climate:machine/cooking_pot_red_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.COOKING_POT_GREEN.get(), 1)
-		    .requires(MachineInit.COOKING_POT_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_GREEN)
-		    .unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/cooking_pot_green_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.COOKING_POT_GREEN.get(), 1).requires(MachineInit.COOKING_POT_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_GREEN)
+		    .unlockedBy("has_cooking_pot", has(MachineInit.COOKING_POT_NORMAL.get())).save(cons, "dcs_climate:machine/cooking_pot_green_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.TEA_POT_NORMAL.get(), 1)
-		    .pattern(" X ")
-		    .pattern("XYX")
-		    .pattern("XXX")
-		    .define('X', TagDC.ItemTag.INGOT_STEEL)
-		    .define('Y', TagDC.ItemTag.CLOTHS)
-		    .unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
-		    .save(cons, "dcs_climate:machine/tea_pot_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.TEA_POT_NORMAL.get(), 1).pattern(" X ").pattern("XYX").pattern("XXX").define('X', TagDC.ItemTag.INGOT_STEEL).define('Y', TagDC.ItemTag.CLOTHS)
+		    .unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL)).save(cons, "dcs_climate:machine/tea_pot_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.TEA_POT_WHITE.get(), 1)
-		    .requires(MachineInit.TEA_POT_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_WHITE)
-		    .unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/tea_pot_white_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.TEA_POT_WHITE.get(), 1).requires(MachineInit.TEA_POT_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_WHITE)
+		    .unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get())).save(cons, "dcs_climate:machine/tea_pot_white_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.TEA_POT_BLUE.get(), 1)
-		    .requires(MachineInit.TEA_POT_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_BLUE)
-		    .unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/tea_pot_blue_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.TEA_POT_BLUE.get(), 1).requires(MachineInit.TEA_POT_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_BLUE)
+		    .unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get())).save(cons, "dcs_climate:machine/tea_pot_blue_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.TEA_POT_BLACK.get(), 1)
-		    .requires(MachineInit.TEA_POT_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_BLACK)
-		    .unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/tea_pot_black_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.TEA_POT_BLACK.get(), 1).requires(MachineInit.TEA_POT_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_BLACK)
+		    .unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get())).save(cons, "dcs_climate:machine/tea_pot_black_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.TEA_POT_RED.get(), 1)
-		    .requires(MachineInit.TEA_POT_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_RED)
-		    .unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/tea_pot_red_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.TEA_POT_RED.get(), 1).requires(MachineInit.TEA_POT_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_RED)
+		    .unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get())).save(cons, "dcs_climate:machine/tea_pot_red_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.TEA_POT_GREEN.get(), 1)
-		    .requires(MachineInit.TEA_POT_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_GREEN)
-		    .unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/tea_pot_green_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.TEA_POT_GREEN.get(), 1).requires(MachineInit.TEA_POT_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_GREEN)
+		    .unlockedBy("has_cooking_pot", has(MachineInit.TEA_POT_NORMAL.get())).save(cons, "dcs_climate:machine/tea_pot_green_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.COFFEE_SIPHON.get(), 1)
-		    .pattern("XXX")
-		    .pattern("YWY")
-		    .pattern("YZY")
-		    .define('X', Tags.Items.GLASS)
-		    .define('Y', TagDC.ItemTag.INGOT_STEEL)
-		    .define('Z', ItemTags.CANDLES)
-		    .define('W', TagDC.ItemTag.CLOTHS)
-		    .unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL))
-		    .save(cons, "dcs_climate:machine/coffee_siphon_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.COFFEE_SIPHON.get(), 1).pattern("XXX").pattern("YWY").pattern("YZY").define('X', Tags.Items.GLASS).define('Y', TagDC.ItemTag.INGOT_STEEL).define('Z', ItemTags.CANDLES)
+		    .define('W', TagDC.ItemTag.CLOTHS).unlockedBy("has_steel", has(TagDC.ItemTag.INGOT_STEEL)).save(cons, "dcs_climate:machine/coffee_siphon_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.COFFEE_MACCHINETTA.get(), 1)
-		    .pattern("YYY")
-		    .pattern("YXY")
-		    .define('X', TagDC.ItemTag.CLOTHS)
-		    .define('Y', TagDC.ItemTag.INGOT_SUS)
-		    .unlockedBy("has_sus", has(TagDC.ItemTag.INGOT_SUS))
-		    .save(cons, "dcs_climate:machine/coffee_maccinetta_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.COFFEE_MACCHINETTA.get(), 1).pattern("YYY").pattern("YXY").define('X', TagDC.ItemTag.CLOTHS).define('Y', TagDC.ItemTag.INGOT_SUS)
+		    .unlockedBy("has_sus", has(TagDC.ItemTag.INGOT_SUS)).save(cons, "dcs_climate:machine/coffee_maccinetta_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_NORMAL.get(), 1)
-		    .pattern(" X ")
-		    .pattern("X X")
-		    .pattern("XXX")
-		    .define('X', Tags.Items.INGOTS_BRICK)
-		    .unlockedBy("has_bricks", has(Tags.Items.INGOTS_BRICK))
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_NORMAL.get(), 1).pattern(" X ").pattern("X X").pattern("XXX").define('X', Tags.Items.INGOTS_BRICK).unlockedBy("has_bricks", has(Tags.Items.INGOTS_BRICK))
 		    .save(cons, "dcs_climate:machine/farmentation_jar_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_NORMAL.get(), 1)
-		    .pattern(" X ")
-		    .pattern("X X")
-		    .pattern("XXX")
-		    .define('X', ItemTags.TERRACOTTA)
-		    .unlockedBy("has_terracotta", has(ItemTags.TERRACOTTA))
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_NORMAL.get(), 1).pattern(" X ").pattern("X X").pattern("XXX").define('X', ItemTags.TERRACOTTA).unlockedBy("has_terracotta", has(ItemTags.TERRACOTTA))
 		    .save(cons, "dcs_climate:machine/farmentation_jar_1");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_WHITE.get(), 1)
-		    .requires(MachineInit.FERMENTATION_JAR_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_WHITE)
-		    .unlockedBy("has_farmentation_jar", has(MachineInit.FERMENTATION_JAR_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/farmentation_jar_white_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_WHITE.get(), 1).requires(MachineInit.FERMENTATION_JAR_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_WHITE)
+		    .unlockedBy("has_farmentation_jar", has(MachineInit.FERMENTATION_JAR_NORMAL.get())).save(cons, "dcs_climate:machine/farmentation_jar_white_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_BLUE.get(), 1)
-		    .requires(MachineInit.FERMENTATION_JAR_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_BLUE)
-		    .unlockedBy("has_farmentation_jar", has(MachineInit.FERMENTATION_JAR_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/farmentation_jar_blue_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_BLUE.get(), 1).requires(MachineInit.FERMENTATION_JAR_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_BLUE)
+		    .unlockedBy("has_farmentation_jar", has(MachineInit.FERMENTATION_JAR_NORMAL.get())).save(cons, "dcs_climate:machine/farmentation_jar_blue_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_BLACK.get(), 1)
-		    .requires(MachineInit.FERMENTATION_JAR_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_BLACK)
-		    .unlockedBy("has_farmentation_jar", has(MachineInit.FERMENTATION_JAR_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/farmentation_jar_black_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_BLACK.get(), 1).requires(MachineInit.FERMENTATION_JAR_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_BLACK)
+		    .unlockedBy("has_farmentation_jar", has(MachineInit.FERMENTATION_JAR_NORMAL.get())).save(cons, "dcs_climate:machine/farmentation_jar_black_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_RED.get(), 1)
-		    .requires(MachineInit.FERMENTATION_JAR_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_RED)
-		    .unlockedBy("has_farmentation_jar", has(MachineInit.FERMENTATION_JAR_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/farmentation_jar_red_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_RED.get(), 1).requires(MachineInit.FERMENTATION_JAR_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_RED)
+		    .unlockedBy("has_farmentation_jar", has(MachineInit.FERMENTATION_JAR_NORMAL.get())).save(cons, "dcs_climate:machine/farmentation_jar_red_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_GREEN.get(), 1)
-		    .requires(MachineInit.FERMENTATION_JAR_NORMAL.get())
-		    .requires(TagDC.ItemTag.EXTRACT_GREEN)
-		    .unlockedBy("has_farmentation_jar", has(MachineInit.FERMENTATION_JAR_NORMAL.get()))
-		    .save(cons, "dcs_climate:machine/farmentation_jar_green_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_GREEN.get(), 1).requires(MachineInit.FERMENTATION_JAR_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_GREEN)
+		    .unlockedBy("has_farmentation_jar", has(MachineInit.FERMENTATION_JAR_NORMAL.get())).save(cons, "dcs_climate:machine/farmentation_jar_green_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.SPILE.get(), 1)
-		    .requires(Items.BUCKET)
-		    .requires(Tags.Items.STRING)
-		    .requires(Items.TRIPWIRE_HOOK)
-		    .unlockedBy("has_bucket", has(Items.BUCKET))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.SPILE.get(), 1).requires(Items.BUCKET).requires(Tags.Items.STRING).requires(Items.TRIPWIRE_HOOK).unlockedBy("has_bucket", has(Items.BUCKET))
 		    .save(cons, "dcs_climate:machine/spile_and_cup_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CABLE_COPPER.get(), 8)
-		    .pattern("XXX")
-		    .define('X', Tags.Items.INGOTS_COPPER)
-		    .unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER))
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CABLE_COPPER.get(), 8).pattern("XXX").define('X', Tags.Items.INGOTS_COPPER).unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER))
 		    .save(cons, "dcs_climate:machine/copper_cable_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CABLE_COPPER_COATED.get(), 8)
-		    .pattern("YYY")
-		    .pattern("XXX")
-		    .define('Y', TagDC.ItemTag.CLOTH_RUBBER)
-		    .define('X', Tags.Items.INGOTS_COPPER)
-		    .unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER))
-		    .save(cons, "dcs_climate:machine/copper_cable_coated_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CABLE_COPPER_COATED.get(), 8).pattern("YYY").pattern("XXX").define('Y', TagDC.ItemTag.CLOTH_RUBBER).define('X', Tags.Items.INGOTS_COPPER)
+		    .unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER)).save(cons, "dcs_climate:machine/copper_cable_coated_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CABLE_COPPER_COATED.get(), 1)
-		    .requires(MachineInit.CABLE_COPPER.get())
-		    .requires(TagDC.ItemTag.CLOTH_RUBBER)
-		    .unlockedBy("has_cable_copper", has(MachineInit.CABLE_COPPER.get()))
-		    .save(cons, "dcs_climate:machine/copper_cable_coated_2");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CABLE_COPPER_COATED.get(), 1).requires(MachineInit.CABLE_COPPER.get()).requires(TagDC.ItemTag.CLOTH_RUBBER)
+		    .unlockedBy("has_cable_copper", has(MachineInit.CABLE_COPPER.get())).save(cons, "dcs_climate:machine/copper_cable_coated_2");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CABLE_ALUMINUM_COATED.get(), 8)
-		    .pattern("YYY")
-		    .pattern("XXX")
-		    .pattern("YYY")
-		    .define('Y', TagDC.ItemTag.CLOTH_RUBBER)
-		    .define('X', TagDC.ItemTag.INGOT_ALUMINUM)
-		    .unlockedBy("has_ingot_alminum", has(TagDC.ItemTag.INGOT_ALUMINUM))
-		    .save(cons, "dcs_climate:machine/alminum_cable_coated_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CABLE_ALUMINUM_COATED.get(), 8).pattern("YYY").pattern("XXX").pattern("YYY").define('Y', TagDC.ItemTag.CLOTH_RUBBER).define('X', TagDC.ItemTag.INGOT_ALUMINUM)
+		    .unlockedBy("has_ingot_alminum", has(TagDC.ItemTag.INGOT_ALUMINUM)).save(cons, "dcs_climate:machine/alminum_cable_coated_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PIPE_BRASS.get(), 8)
-		    .pattern("XXX")
-		    .define('X', TagDC.ItemTag.INGOT_BRASS)
-		    .unlockedBy("has_ingot_brass", has(TagDC.ItemTag.INGOT_BRASS))
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PIPE_BRASS.get(), 8).pattern("XXX").define('X', TagDC.ItemTag.INGOT_BRASS).unlockedBy("has_ingot_brass", has(TagDC.ItemTag.INGOT_BRASS))
 		    .save(cons, "dcs_climate:machine/brass_pipe_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PIPE_NICKELSILVER.get(), 8)
-		    .pattern("XXX")
-		    .define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER)
-		    .unlockedBy("has_ingot_nickelsilver", has(TagDC.ItemTag.INGOT_NICKEL_SILVER))
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PIPE_NICKELSILVER.get(), 8).pattern("XXX").define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER).unlockedBy("has_ingot_nickelsilver", has(TagDC.ItemTag.INGOT_NICKEL_SILVER))
 		    .save(cons, "dcs_climate:machine/nickelsilver_pipe_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BATTERY_SMALL.get(), 1)
-		    .pattern("XXX")
-		    .pattern("YYY")
-		    .pattern("XXX")
-		    .define('X', TagDC.ItemTag.INGOT_STEEL)
-		    .define('Y', MachineInit.BATTERYITEM_TIER1.get())
-		    .unlockedBy("has_cbatteryitem_t1", has(MachineInit.BATTERYITEM_TIER1.get()))
-		    .save(cons, "dcs_climate:machine/battery_small_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BATTERY_SMALL.get(), 1).pattern("XXX").pattern("YYY").pattern("XXX").define('X', TagDC.ItemTag.INGOT_STEEL).define('Y', MachineInit.BATTERYITEM_TIER1.get())
+		    .unlockedBy("has_cbatteryitem_t1", has(MachineInit.BATTERYITEM_TIER1.get())).save(cons, "dcs_climate:machine/battery_small_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BATTERY_MIDDLE.get(), 1)
-		    .pattern("XXX")
-		    .pattern("YYY")
-		    .pattern("XXX")
-		    .define('X', TagDC.ItemTag.INGOT_SUS)
-		    .define('Y', MachineInit.BATTERYITEM_TIER2.get())
-		    .unlockedBy("has_cbatteryitem_t2", has(MachineInit.BATTERYITEM_TIER2.get()))
-		    .save(cons, "dcs_climate:machine/battery_middle_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BATTERY_MIDDLE.get(), 1).pattern("XXX").pattern("YYY").pattern("XXX").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', MachineInit.BATTERYITEM_TIER2.get())
+		    .unlockedBy("has_cbatteryitem_t2", has(MachineInit.BATTERYITEM_TIER2.get())).save(cons, "dcs_climate:machine/battery_middle_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.GENERATOR_SMALL.get(), 1)
-		    .pattern("XXX")
-		    .pattern("YZY")
-		    .pattern("XXX")
-		    .define('X', TagDC.ItemTag.INGOT_STEEL)
-		    .define('Y', MachineInit.BATTERYITEM_TIER1.get())
-		    .define('Z', TagDC.ItemTag.IMPELLER_T1)
-		    .unlockedBy("has_batteryitem_t1", has(MachineInit.BATTERYITEM_TIER1.get()))
-		    .save(cons, "dcs_climate:machine/generator_small_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.GENERATOR_SMALL.get(), 1).pattern("XXX").pattern("YZY").pattern("XXX").define('X', TagDC.ItemTag.INGOT_STEEL).define('Y', MachineInit.BATTERYITEM_TIER1.get())
+		    .define('Z', TagDC.ItemTag.IMPELLER_T1).unlockedBy("has_batteryitem_t1", has(MachineInit.BATTERYITEM_TIER1.get())).save(cons, "dcs_climate:machine/generator_small_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BOILER_BIOMASS.get(), 1)
-		    .pattern(" X ")
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', TagDC.ItemTag.INGOT_STEEL)
-		    .define('Y', Items.BUCKET)
-		    .define('Z', MachineInit.CHAMBER_IRON.get())
-		    .unlockedBy("has_chamber", has(MachineInit.CHAMBER_IRON.get()))
-		    .save(cons, "dcs_climate:machine/boiler_biomass_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BOILER_BIOMASS.get(), 1).pattern(" X ").pattern("XYX").pattern("XZX").define('X', TagDC.ItemTag.INGOT_STEEL).define('Y', Items.BUCKET)
+		    .define('Z', MachineInit.CHAMBER_IRON.get()).unlockedBy("has_chamber", has(MachineInit.CHAMBER_IRON.get())).save(cons, "dcs_climate:machine/boiler_biomass_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HYDRO_TURBINE.get(), 1)
-		    .pattern("XXX")
-		    .pattern("ZYZ")
-		    .pattern("XXX")
-		    .define('X', TagDC.ItemTag.INGOT_SUS)
-		    .define('Y', TagDC.ItemTag.IMPELLER_T2)
-		    .define('Z', MachineInit.CABLE_COPPER_COATED.get())
-		    .unlockedBy("has_impeller_t2", has(TagDC.ItemTag.IMPELLER_T2))
-		    .save(cons, "dcs_climate:machine/hydro_turbine_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.HYDRO_TURBINE.get(), 1).pattern("XXX").pattern("ZYZ").pattern("XXX").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', TagDC.ItemTag.IMPELLER_T2)
+		    .define('Z', MachineInit.CABLE_COPPER_COATED.get()).unlockedBy("has_impeller_t2", has(TagDC.ItemTag.IMPELLER_T2)).save(cons, "dcs_climate:machine/hydro_turbine_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.STONE_MILL.get(), 1)
-		    .pattern("ZYZ")
-		    .pattern("XXX")
-		    .pattern("XWX")
-		    .define('X', TagDC.ItemTag.INGOT_STEEL)
-		    .define('Y', TagDC.ItemTag.MOTOR_T1)
-		    .define('Z', Tags.Items.STONE)
-		    .define('W', Tags.Items.CHESTS)
-		    .unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1))
-		    .save(cons, "dcs_climate:machine/stone_mill_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.STONE_MILL.get(), 1).pattern("ZYZ").pattern("XXX").pattern("XWX").define('X', TagDC.ItemTag.INGOT_STEEL).define('Y', TagDC.ItemTag.MOTOR_T1).define('Z', Tags.Items.STONE)
+		    .define('W', Tags.Items.CHESTS).unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1)).save(cons, "dcs_climate:machine/stone_mill_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.WATER_PUMP.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .pattern("XWX")
-		    .define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER)
-		    .define('Y', TagDC.ItemTag.FLUID_PIPE)
-		    .define('Z', Items.BUCKET)
-		    .define('W', TagDC.ItemTag.IMPELLER_T1)
-		    .unlockedBy("has_impeller_t1", has(TagDC.ItemTag.IMPELLER_T1))
-		    .save(cons, "dcs_climate:machine/water_pump_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.WATER_PUMP.get(), 1).pattern("XYX").pattern("XZX").pattern("XWX").define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER).define('Y', TagDC.ItemTag.FLUID_PIPE)
+		    .define('Z', Items.BUCKET).define('W', TagDC.ItemTag.IMPELLER_T1).unlockedBy("has_impeller_t1", has(TagDC.ItemTag.IMPELLER_T1)).save(cons, "dcs_climate:machine/water_pump_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.VOLUTE_PUMP.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .pattern("XWX")
-		    .define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER)
-		    .define('Y', TagDC.ItemTag.FLUID_PIPE)
-		    .define('Z', TagDC.ItemTag.MOTOR_T2)
-		    .define('W', TagDC.ItemTag.IMPELLER_T2)
-		    .unlockedBy("has_impeller_t2", has(TagDC.ItemTag.IMPELLER_T2))
-		    .save(cons, "dcs_climate:machine/volute_pump_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.VOLUTE_PUMP.get(), 1).pattern("XYX").pattern("XZX").pattern("XWX").define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER).define('Y', TagDC.ItemTag.FLUID_PIPE)
+		    .define('Z', TagDC.ItemTag.MOTOR_T2).define('W', TagDC.ItemTag.IMPELLER_T2).unlockedBy("has_impeller_t2", has(TagDC.ItemTag.IMPELLER_T2)).save(cons, "dcs_climate:machine/volute_pump_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.INTAKE_FAN.get(), 1)
-		    .pattern("XXX")
-		    .pattern("YZY")
-		    .pattern("XXX")
-		    .define('X', TagDC.ItemTag.INGOT_ALUMINUM)
-		    .define('Y', Items.IRON_BARS)
-		    .define('Z', TagDC.ItemTag.IMPELLER_T2)
-		    .unlockedBy("has_impeller_t2", has(TagDC.ItemTag.IMPELLER_T2))
-		    .save(cons, "dcs_climate:machine/intake_fan_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.INTAKE_FAN.get(), 1).pattern("XXX").pattern("YZY").pattern("XXX").define('X', TagDC.ItemTag.INGOT_ALUMINUM).define('Y', Items.IRON_BARS)
+		    .define('Z', TagDC.ItemTag.IMPELLER_T2).unlockedBy("has_impeller_t2", has(TagDC.ItemTag.IMPELLER_T2)).save(cons, "dcs_climate:machine/intake_fan_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.EXHAUST_VENT.get(), 1)
-		    .pattern(" X ")
-		    .pattern("XYX")
-		    .pattern(" X ")
-		    .define('X', TagDC.ItemTag.INGOT_ALUMINUM)
-		    .define('Y', Items.IRON_BARS)
-		    .unlockedBy("has_iron_bars", has(Items.IRON_BARS))
-		    .save(cons, "dcs_climate:machine/exhaust_vent_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.EXHAUST_VENT.get(), 1).pattern(" X ").pattern("XYX").pattern(" X ").define('X', TagDC.ItemTag.INGOT_ALUMINUM).define('Y', Items.IRON_BARS)
+		    .unlockedBy("has_iron_bars", has(Items.IRON_BARS)).save(cons, "dcs_climate:machine/exhaust_vent_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.ITEM_ASPIRATOR.get(), 1)
-		    .pattern("XYX")
-		    .pattern("X X")
-		    .pattern("XZX")
-		    .define('X', TagDC.ItemTag.INGOT_SUS)
-		    .define('Y', MachineInit.INTAKE_FAN.get())
-		    .define('Z', Items.REDSTONE_TORCH)
-		    .unlockedBy("has_intake_fan", has(MachineInit.INTAKE_FAN.get()))
-		    .save(cons, "dcs_climate:machine/item_aspirator_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.ITEM_ASPIRATOR.get(), 1).pattern("XYX").pattern("X X").pattern("XZX").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', MachineInit.INTAKE_FAN.get())
+		    .define('Z', Items.REDSTONE_TORCH).unlockedBy("has_intake_fan", has(MachineInit.INTAKE_FAN.get())).save(cons, "dcs_climate:machine/item_aspirator_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CROP_ASPIRATOR.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XWX")
-		    .pattern("XZX")
-		    .define('X', TagDC.ItemTag.INGOT_SUS)
-		    .define('Y', MachineInit.INTAKE_FAN.get())
-		    .define('Z', Items.REDSTONE_TORCH)
-		    .define('W', TagDC.ItemTag.SCYTHES)
-		    .unlockedBy("has_intake_fan", has(MachineInit.INTAKE_FAN.get()))
-		    .save(cons, "dcs_climate:machine/crop_aspirator_1");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CROP_ASPIRATOR.get(), 1).pattern("XYX").pattern("XWX").pattern("XZX").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', MachineInit.INTAKE_FAN.get())
+		    .define('Z', Items.REDSTONE_TORCH).define('W', TagDC.ItemTag.SCYTHES).unlockedBy("has_intake_fan", has(MachineInit.INTAKE_FAN.get())).save(cons, "dcs_climate:machine/crop_aspirator_1");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CROP_ASPIRATOR.get(), 1)
-		    .requires(MachineInit.ITEM_ASPIRATOR.get())
-		    .requires(TagDC.ItemTag.SCYTHES)
-		    .unlockedBy("has_item_aspirator", has(MachineInit.ITEM_ASPIRATOR.get()))
-		    .save(cons, "dcs_climate:machine/crop_aspirator_2");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CROP_ASPIRATOR.get(), 1).requires(MachineInit.ITEM_ASPIRATOR.get()).requires(TagDC.ItemTag.SCYTHES)
+		    .unlockedBy("has_item_aspirator", has(MachineInit.ITEM_ASPIRATOR.get())).save(cons, "dcs_climate:machine/crop_aspirator_2");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.ROLL_CRUSHER.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .pattern("XWX")
-		    .define('X', TagDC.ItemTag.INGOT_SUS)
-		    .define('Y', TagDC.ItemTag.MOTOR_T2)
-		    .define('W', Tags.Items.CHESTS)
-		    .define('Z', TagDC.ItemTag.BATTERY_T2)
-		    .unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T2))
-		    .save(cons, "dcs_climate:machine/roll_crusher_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.ROLL_CRUSHER.get(), 1).pattern("XYX").pattern("XZX").pattern("XWX").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', TagDC.ItemTag.MOTOR_T2).define('W', Tags.Items.CHESTS)
+		    .define('Z', TagDC.ItemTag.BATTERY_T2).unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T2)).save(cons, "dcs_climate:machine/roll_crusher_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BLADE_ALUMINA.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XYX")
-		    .pattern("XYX")
-		    .define('X', TagDC.ItemTag.DUST_ALUMINA)
-		    .define('Y', TagDC.ItemTag.INGOT_TITANIUM)
-		    .unlockedBy("has_roll_crusher", has(MachineInit.ROLL_CRUSHER.get()))
-		    .save(cons, "dcs_climate:machine/blade_alumina_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BLADE_ALUMINA.get(), 1).pattern("XYX").pattern("XYX").pattern("XYX").define('X', TagDC.ItemTag.DUST_ALUMINA).define('Y', TagDC.ItemTag.INGOT_TITANIUM)
+		    .unlockedBy("has_roll_crusher", has(MachineInit.ROLL_CRUSHER.get())).save(cons, "dcs_climate:machine/blade_alumina_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BLADE_SUS.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XYX")
-		    .pattern("XYX")
-		    .define('X', TagDC.ItemTag.INGOT_SUS)
-		    .define('Y', TagDC.ItemTag.INGOT_TITANIUM)
-		    .unlockedBy("has_roll_crusher", has(MachineInit.ROLL_CRUSHER.get()))
-		    .save(cons, "dcs_climate:machine/blade_sus_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BLADE_SUS.get(), 1).pattern("XYX").pattern("XYX").pattern("XYX").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', TagDC.ItemTag.INGOT_TITANIUM)
+		    .unlockedBy("has_roll_crusher", has(MachineInit.ROLL_CRUSHER.get())).save(cons, "dcs_climate:machine/blade_sus_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BLADE_SCREEN.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XYX")
-		    .pattern("XYX")
-		    .define('Y', Items.IRON_BARS)
-		    .define('X', TagDC.ItemTag.INGOT_TITANIUM)
-		    .unlockedBy("has_roll_crusher", has(MachineInit.ROLL_CRUSHER.get()))
-		    .save(cons, "dcs_climate:machine/blade_screen_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BLADE_SCREEN.get(), 1).pattern("XYX").pattern("XYX").pattern("XYX").define('Y', Items.IRON_BARS).define('X', TagDC.ItemTag.INGOT_TITANIUM)
+		    .unlockedBy("has_roll_crusher", has(MachineInit.ROLL_CRUSHER.get())).save(cons, "dcs_climate:machine/blade_screen_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_RS.get(), 1)
-		    .pattern("XZX")
-		    .pattern("YYY")
-		    .define('X', TagDC.ItemTag.DUST_BISMUTH)
-		    .define('Y', Tags.Items.STONE)
-		    .define('Z', Items.REDSTONE_TORCH)
-		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH))
-		    .save(cons, "dcs_climate:machine/monitor_rs_lamp_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_RS.get(), 1).pattern("XZX").pattern("YYY").define('X', TagDC.ItemTag.DUST_BISMUTH).define('Y', Tags.Items.STONE).define('Z', Items.REDSTONE_TORCH)
+		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH)).save(cons, "dcs_climate:machine/monitor_rs_lamp_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_RS_PILOT.get(), 1)
-		    .pattern("XZX")
-		    .pattern("YYY")
-		    .define('X', TagDC.ItemTag.DUST_BISMUTH)
-		    .define('Y', Tags.Items.STONE)
-		    .define('Z', Items.REDSTONE_LAMP)
-		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH))
-		    .save(cons, "dcs_climate:machine/monitor_rs_pilot_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_RS_PILOT.get(), 1).pattern("XZX").pattern("YYY").define('X', TagDC.ItemTag.DUST_BISMUTH).define('Y', Tags.Items.STONE).define('Z', Items.REDSTONE_LAMP)
+		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH)).save(cons, "dcs_climate:machine/monitor_rs_pilot_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_COMPARATOR.get(), 1)
-		    .pattern("XZX")
-		    .pattern("YYY")
-		    .define('X', TagDC.ItemTag.DUST_BISMUTH)
-		    .define('Y', Tags.Items.STONE)
-		    .define('Z', Items.COMPARATOR)
-		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH))
-		    .save(cons, "dcs_climate:machine/monitor_comparator_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_COMPARATOR.get(), 1).pattern("XZX").pattern("YYY").define('X', TagDC.ItemTag.DUST_BISMUTH).define('Y', Tags.Items.STONE).define('Z', Items.COMPARATOR)
+		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH)).save(cons, "dcs_climate:machine/monitor_comparator_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_LAMP.get(), 1)
-		    .pattern("XZX")
-		    .pattern("YYY")
-		    .define('X', TagDC.ItemTag.DUST_BISMUTH)
-		    .define('Y', TagDC.ItemTag.GEM_AGATES)
-		    .define('Z', TagDC.ItemTag.CRAFT_DRIVER)
-		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH))
-		    .save(cons, "dcs_climate:machine/monitor_andon_lamp_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_LAMP.get(), 1).pattern("XZX").pattern("YYY").define('X', TagDC.ItemTag.DUST_BISMUTH).define('Y', TagDC.ItemTag.GEM_AGATES)
+		    .define('Z', TagDC.ItemTag.CRAFT_DRIVER).unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH)).save(cons, "dcs_climate:machine/monitor_andon_lamp_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_1.get(), 1)
-		    .requires(MachineInit.MONITOR_ANDON_LAMP.get())
-		    .requires(Tags.Items.GLASS)
-		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
-		    .save(cons, "dcs_climate:machine/andon_panel_1");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_1.get(), 1).requires(MachineInit.MONITOR_ANDON_LAMP.get()).requires(Tags.Items.GLASS)
+		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get())).save(cons, "dcs_climate:machine/andon_panel_1");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_2.get(), 1)
-		    .requires(MachineInit.MONITOR_ANDON_PANEL_1.get())
-		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_2.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_1.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
 		    .save(cons, "dcs_climate:machine/andon_panel_2");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_3.get(), 1)
-		    .requires(MachineInit.MONITOR_ANDON_PANEL_2.get())
-		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_3.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_2.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
 		    .save(cons, "dcs_climate:machine/andon_panel_3");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_4.get(), 1)
-		    .requires(MachineInit.MONITOR_ANDON_PANEL_3.get())
-		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_4.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_3.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
 		    .save(cons, "dcs_climate:machine/andon_panel_4");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_5.get(), 1)
-		    .requires(MachineInit.MONITOR_ANDON_PANEL_4.get())
-		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_5.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_4.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
 		    .save(cons, "dcs_climate:machine/andon_panel_5");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_6.get(), 1)
-		    .requires(MachineInit.MONITOR_ANDON_PANEL_5.get())
-		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_6.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_5.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
 		    .save(cons, "dcs_climate:machine/andon_panel_6");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_7.get(), 1)
-		    .requires(MachineInit.MONITOR_ANDON_PANEL_6.get())
-		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_7.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_6.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
 		    .save(cons, "dcs_climate:machine/andon_panel_7");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_8.get(), 1)
-		    .requires(MachineInit.MONITOR_ANDON_PANEL_7.get())
-		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_8.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_7.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
 		    .save(cons, "dcs_climate:machine/andon_panel_8");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_9.get(), 1)
-		    .requires(MachineInit.MONITOR_ANDON_PANEL_8.get())
-		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_9.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_8.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
 		    .save(cons, "dcs_climate:machine/andon_panel_9");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_1.get(), 1)
-		    .requires(MachineInit.MONITOR_ANDON_PANEL_9.get())
-		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_1.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_9.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
 		    .save(cons, "dcs_climate:machine/andon_panel_1_2");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_TEMP.get(), 1)
-		    .pattern("XZX")
-		    .pattern("YYY")
-		    .define('X', TagDC.ItemTag.DUST_BISMUTH)
-		    .define('Y', TagDC.ItemTag.GEM_AGATES)
-		    .define('Z', CoreInit.TEMPMETER.get())
-		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH))
-		    .save(cons, "dcs_climate:machine/monitor_temp_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_TEMP.get(), 1).pattern("XZX").pattern("YYY").define('X', TagDC.ItemTag.DUST_BISMUTH).define('Y', TagDC.ItemTag.GEM_AGATES).define('Z', CoreInit.TEMPMETER.get())
+		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH)).save(cons, "dcs_climate:machine/monitor_temp_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_ENERGY.get(), 1)
-		    .pattern("XZX")
-		    .pattern("YYY")
-		    .define('X', TagDC.ItemTag.DUST_BISMUTH)
-		    .define('Y', TagDC.ItemTag.GEM_AGATES)
-		    .define('Z', CoreInit.ENERGYMETER.get())
-		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH))
-		    .save(cons, "dcs_climate:machine/monitor_energy_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_ENERGY.get(), 1).pattern("XZX").pattern("YYY").define('X', TagDC.ItemTag.DUST_BISMUTH).define('Y', TagDC.ItemTag.GEM_AGATES).define('Z', CoreInit.ENERGYMETER.get())
+		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH)).save(cons, "dcs_climate:machine/monitor_energy_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.STORMGLASS.get(), 1)
-		    .requires(TagDC.ItemTag.DUST_NITER)
-		    .requires(TagDC.ItemTag.CAMPHOR)
-		    .requires(TagDC.ItemTag.LIQUOR)
-		    .requires(TagDC.ItemTag.WATER)
-		    .unlockedBy("has_niter_dust", has(TagDC.ItemTag.DUST_NITER))
-		    .save(cons, "dcs_climate:machine/stormglass_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.STORMGLASS.get(), 1).requires(TagDC.ItemTag.DUST_NITER).requires(TagDC.ItemTag.CAMPHOR).requires(TagDC.ItemTag.LIQUOR).requires(TagDC.ItemTag.WATER)
+		    .unlockedBy("has_niter_dust", has(TagDC.ItemTag.DUST_NITER)).save(cons, "dcs_climate:machine/stormglass_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PLAYER_PRESSURE_PLATE.get(), 1)
-		    .pattern("XX")
-		    .define('X', TagDC.ItemTag.GEMBLOCK_CHALCEDONY)
-		    .unlockedBy("has_block_chalcedony", has(TagDC.ItemTag.GEMBLOCK_CHALCEDONY))
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PLAYER_PRESSURE_PLATE.get(), 1).pattern("XX").define('X', TagDC.ItemTag.GEMBLOCK_CHALCEDONY).unlockedBy("has_block_chalcedony", has(TagDC.ItemTag.GEMBLOCK_CHALCEDONY))
 		    .save(cons, "dcs_climate:machine/player_pressure_plate_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MEMORY_COORD.get(), 1)
-		    .requires(TagDC.ItemTag.DUST_BISMUTH)
-		    .requires(TagDC.ItemTag.DUST_GOLD)
-		    .requires(TagDC.ItemTag.DUST_CRYSTAL)
-		    .requires(Items.PAPER)
-		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH))
-		    .save(cons, "dcs_climate:machine/memory_coord_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MEMORY_COORD.get(), 1).requires(TagDC.ItemTag.DUST_BISMUTH).requires(TagDC.ItemTag.DUST_GOLD).requires(TagDC.ItemTag.DUST_CRYSTAL).requires(Items.PAPER)
+		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH)).save(cons, "dcs_climate:machine/memory_coord_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MEMORY_COORD.get(), 1)
-		    .requires(MachineInit.MEMORY_COORD.get())
-		    .unlockedBy("has_memory_coord", has(MachineInit.MEMORY_COORD.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MEMORY_COORD.get(), 1).requires(MachineInit.MEMORY_COORD.get()).unlockedBy("has_memory_coord", has(MachineInit.MEMORY_COORD.get()))
 		    .save(cons, "dcs_climate:machine/memory_coord_reset_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.OPTICAL_SENSOR.get(), 1)
-		    .pattern("X")
-		    .pattern("Y")
-		    .pattern("Z")
-		    .define('X', TagDC.ItemTag.GEM_FLUORITE)
-		    .define('Y', Items.DAYLIGHT_DETECTOR)
-		    .define('Z', TagDC.ItemTag.GEM_TOURMALINE)
-		    .unlockedBy("has_gem_tourmaline", has(TagDC.ItemTag.GEM_TOURMALINE))
-		    .save(cons, "dcs_climate:machine/optical_sensor_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.OPTICAL_SENSOR.get(), 1).pattern("X").pattern("Y").pattern("Z").define('X', TagDC.ItemTag.GEM_FLUORITE).define('Y', Items.DAYLIGHT_DETECTOR)
+		    .define('Z', TagDC.ItemTag.GEM_TOURMALINE).unlockedBy("has_gem_tourmaline", has(TagDC.ItemTag.GEM_TOURMALINE)).save(cons, "dcs_climate:machine/optical_sensor_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.REFLECTIVE_SENSOR.get(), 1)
-		    .pattern("XXX")
-		    .pattern("XYX")
-		    .pattern("XZX")
-		    .define('X', Tags.Items.STONE)
-		    .define('Y', TagDC.ItemTag.SENSOR_OPTICAL)
-		    .define('Z', Tags.Items.DUSTS_REDSTONE)
-		    .unlockedBy("has_optical_sensor", has(TagDC.ItemTag.SENSOR_OPTICAL))
-		    .save(cons, "dcs_climate:machine/reflective_sensor_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.REFLECTIVE_SENSOR.get(), 1).pattern("XXX").pattern("XYX").pattern("XZX").define('X', Tags.Items.STONE).define('Y', TagDC.ItemTag.SENSOR_OPTICAL)
+		    .define('Z', Tags.Items.DUSTS_REDSTONE).unlockedBy("has_optical_sensor", has(TagDC.ItemTag.SENSOR_OPTICAL)).save(cons, "dcs_climate:machine/reflective_sensor_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.ENTITY_CAMERA.get(), 1)
-		    .pattern("XXX")
-		    .pattern("ZYW")
-		    .pattern("XXX")
-		    .define('X', TagDC.ItemTag.INGOT_SUS)
-		    .define('Y', TagDC.ItemTag.SENSOR_OPTICAL)
-		    .define('Z', Tags.Items.ENDER_PEARLS)
-		    .define('W', Items.REDSTONE_LAMP)
-		    .unlockedBy("has_optical_sensor", has(TagDC.ItemTag.SENSOR_OPTICAL))
-		    .save(cons, "dcs_climate:machine/entity_camera_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.ENTITY_CAMERA.get(), 1).pattern("XXX").pattern("ZYW").pattern("XXX").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', TagDC.ItemTag.SENSOR_OPTICAL)
+		    .define('Z', Tags.Items.ENDER_PEARLS).define('W', Items.REDSTONE_LAMP).unlockedBy("has_optical_sensor", has(TagDC.ItemTag.SENSOR_OPTICAL)).save(cons, "dcs_climate:machine/entity_camera_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.AUTO_MILKER.get(), 1)
-		    .pattern("ZYW")
-		    .pattern("VXV")
-		    .define('X', Items.BUCKET)
-		    .define('Y', TagDC.ItemTag.MOTOR_T1)
-		    .define('Z', TagDC.ItemTag.SENSOR_OPTICAL)
-		    .define('W', Items.REDSTONE_TORCH)
-		    .define('V', Tags.Items.GLASS)
-		    .unlockedBy("has_optical_sensor", has(TagDC.ItemTag.SENSOR_OPTICAL))
-		    .save(cons, "dcs_climate:machine/auto_milker_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.AUTO_MILKER.get(), 1).pattern("ZYW").pattern("VXV").define('X', Items.BUCKET).define('Y', TagDC.ItemTag.MOTOR_T1).define('Z', TagDC.ItemTag.SENSOR_OPTICAL)
+		    .define('W', Items.REDSTONE_TORCH).define('V', Tags.Items.GLASS).unlockedBy("has_optical_sensor", has(TagDC.ItemTag.SENSOR_OPTICAL)).save(cons, "dcs_climate:machine/auto_milker_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.WATER_BASIN.get(), 1)
-		    .pattern("XYX")
-		    .pattern("XXX")
-		    .define('X', BuildInit.MORTAR.get())
-		    .define('Y', Items.IRON_BARS)
-		    .unlockedBy("has_mortar_block", has(BuildInit.MORTAR.get()))
-		    .save(cons, "dcs_climate:machine/water_intake_basin_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.WATER_BASIN.get(), 1).pattern("XYX").pattern("XXX").define('X', BuildInit.MORTAR.get()).define('Y', Items.IRON_BARS)
+		    .unlockedBy("has_mortar_block", has(BuildInit.MORTAR.get())).save(cons, "dcs_climate:machine/water_intake_basin_0");
 
-	}
-
-	@Override
-	public CompletableFuture<?> run(CachedOutput cache) {
-
-		Set<ResourceLocation> set = Sets.newHashSet();
-		List<CompletableFuture<?>> list = Lists.newArrayList();
-		buildRecipes(recipe -> {
-			if (!set.add(recipe.getId())) {
-				// throw new IllegalStateException("Duplicate recipe " + recipe.getId());
-			} else {
-				list.add(DataProvider.saveStable(cache, recipe.serializeRecipe(), this.recipePathProvider.json(recipe.getId())));
-				JsonObject jsonobject = recipe.serializeAdvancement();
-				if (jsonobject != null) {
-					list.add(saveAdvancement(cache, recipe, jsonobject));
-				}
-			}
-		});
-		return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
-	}
-
-	private static void saveRecipeMirror(CachedOutput cach, JsonObject json, Path path) {
-		DataProvider.saveStable(cach, json, path);
-	}
-
-	protected void saveAdvancementMirror(CachedOutput cach, JsonObject json, Path path) {
-		DataProvider.saveStable(cach, json, path);
 	}
 
 }

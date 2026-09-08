@@ -18,7 +18,6 @@ import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.api.recipe.RecipeTypeDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -137,7 +136,7 @@ public class DeviceRecipe implements IDeviceRecipe {
 	public List<TagKey<Fluid>> getInputFluids() {
 		List<TagKey<Fluid>> ret = Lists.newArrayList();
 		for (String name : inputFluid) {
-			ResourceLocation res = new ResourceLocation(name);
+			ResourceLocation res = ResourceLocation.parse(name);
 			TagKey<Fluid> tagkey = TagKey.create(Registries.FLUID, res);
 			if (tagkey != null)
 				ret.add(tagkey);
@@ -196,16 +195,13 @@ public class DeviceRecipe implements IDeviceRecipe {
 			return input1.isEmpty();
 		} else if (getInputFluids().size() == 1) {
 			TagKey<Fluid> tag1 = getInputFluids().get(0);
-			f1 = !input1.isEmpty() && input1.getFluid()
-			    .is(tag1);
+			f1 = !input1.isEmpty() && input1.getFluid().is(tag1);
 			f2 = true;
 		} else if (getInputFluids().size() > 1) {
 			TagKey<Fluid> tag1 = getInputFluids().get(0);
 			TagKey<Fluid> tag2 = getInputFluids().get(1);
-			f1 = !input1.isEmpty() && input1.getFluid()
-			    .is(tag1);
-			f2 = !input2.isEmpty() && input2.getFluid()
-			    .is(tag2);
+			f1 = !input1.isEmpty() && input1.getFluid().is(tag1);
+			f2 = !input2.isEmpty() && input2.getFluid().is(tag2);
 		}
 		return f1 && f2;
 	}
@@ -252,16 +248,14 @@ public class DeviceRecipe implements IDeviceRecipe {
 
 		if (!result.isEmpty()) {
 			JsonObject ret = new JsonObject();
-			ret.addProperty("item", ForgeRegistries.ITEMS.getKey(result.getItem())
-			    .toString());
+			ret.addProperty("item", ForgeRegistries.ITEMS.getKey(result.getItem()).toString());
 			ret.addProperty("count", result.getCount());
 			json.add("result", ret);
 		}
 
 		if (!secondary.isEmpty()) {
 			JsonObject sec = new JsonObject();
-			sec.addProperty("item", ForgeRegistries.ITEMS.getKey(secondary.getItem())
-			    .toString());
+			sec.addProperty("item", ForgeRegistries.ITEMS.getKey(secondary.getItem()).toString());
 			sec.addProperty("count", secondary.getCount());
 			json.add("secondary", sec);
 
@@ -270,8 +264,7 @@ public class DeviceRecipe implements IDeviceRecipe {
 
 		if (!tertiary.isEmpty()) {
 			JsonObject ter = new JsonObject();
-			ter.addProperty("item", ForgeRegistries.ITEMS.getKey(tertiary.getItem())
-			    .toString());
+			ter.addProperty("item", ForgeRegistries.ITEMS.getKey(tertiary.getItem()).toString());
 			ter.addProperty("count", tertiary.getCount());
 			json.add("tertiary", ter);
 
@@ -280,8 +273,7 @@ public class DeviceRecipe implements IDeviceRecipe {
 
 		if (!resultFluid.isEmpty()) {
 			JsonObject retF = new JsonObject();
-			retF.addProperty("fluid", ForgeRegistries.FLUIDS.getKey(resultFluid.getFluid())
-			    .toString());
+			retF.addProperty("fluid", ForgeRegistries.FLUIDS.getKey(resultFluid.getFluid()).toString());
 			retF.addProperty("amount", resultFluid.getAmount());
 			json.add("result_fluid", retF);
 		}

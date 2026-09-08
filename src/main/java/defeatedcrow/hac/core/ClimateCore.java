@@ -73,7 +73,8 @@ public class ClimateCore {
 
 	public static boolean isDebug = false;
 
-	public ClimateCore() {
+	public ClimateCore(FMLJavaModLoadingContext context) {
+		
 		initAPI();
 		configDir = new File(FMLPaths.CONFIGDIR.get()
 		    .toFile() + "/heat_and_climate");
@@ -92,12 +93,9 @@ public class ClimateCore {
 			}
 		}
 
-		ModLoadingContext.get()
-		    .registerConfig(ModConfig.Type.CLIENT, ConfigClientBuilder.CONFIG_CLIENT);
-		ModLoadingContext.get()
-		    .registerConfig(ModConfig.Type.COMMON, ConfigCommonBuilder.CONFIG_COMMON);
-		ModLoadingContext.get()
-		    .registerConfig(ModConfig.Type.SERVER, ConfigServerBuilder.CONFIG_SERVER);
+		context.registerConfig(ModConfig.Type.CLIENT, ConfigClientBuilder.CONFIG_CLIENT);
+		context.registerConfig(ModConfig.Type.COMMON, ConfigCommonBuilder.CONFIG_COMMON);
+		context.registerConfig(ModConfig.Type.SERVER, ConfigServerBuilder.CONFIG_SERVER);
 
 		TagDC.init();
 		CoreInit.init();

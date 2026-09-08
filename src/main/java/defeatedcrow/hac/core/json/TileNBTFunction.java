@@ -24,7 +24,7 @@ public class TileNBTFunction extends LootItemConditionalFunction {
 		if (instance != null) {
 			return;
 		}
-		instance = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, new ResourceLocation("dcs_climate", "nbt_tile"), new LootItemFunctionType(new Serializer()));
+		instance = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, ResourceLocation.fromNamespaceAndPath("dcs_climate", "nbt_tile"), new LootItemFunctionType(new TileNBTFunction.Serializer()));
 	}
 
 	protected TileNBTFunction(LootItemCondition[] conditions) {

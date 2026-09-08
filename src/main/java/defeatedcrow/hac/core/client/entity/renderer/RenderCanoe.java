@@ -4,7 +4,6 @@ import com.mojang.datafixers.util.Pair;
 
 import defeatedcrow.hac.core.client.entity.model.CanoeModel;
 import defeatedcrow.hac.core.material.item.tool.CanoeItem;
-import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ListModel;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

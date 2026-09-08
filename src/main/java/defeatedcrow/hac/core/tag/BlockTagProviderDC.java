@@ -4,6 +4,7 @@ import java.util.concurrent.CompletableFuture;
 
 import org.jetbrains.annotations.Nullable;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.block.IBlockDC;
@@ -13,6 +14,7 @@ import defeatedcrow.hac.food.material.block.crops.ClimateCropBaseBlock;
 import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -26,55 +28,55 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class BlockTagProviderDC extends BlockTagsProvider {
 
-	public BlockTagProviderDC(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup, @Nullable ExistingFileHelper helper) {
-		super(output, lookup, "dcs_climate", helper);
+	public BlockTagProviderDC(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper helper) {
+		super(output, lookupProvider, ClimateCore.MOD_ID, helper);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected void addTags(HolderLookup.Provider provider) {
+	protected void addTags(Provider provider) {
 
-		var pickaxe = this.tag(BlockTags.MINEABLE_WITH_PICKAXE);
+		TagsProvider.TagAppender<Block> pickaxe = this.tag(BlockTags.MINEABLE_WITH_PICKAXE);
 		CoreInit.BLOCKS.getEntries()
 		    .stream()
 		    .filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolType() == ToolType.PICKAXE)
-		    .map(RegistryObject::get)
-		    .forEach(pickaxe::add);
+		    .map(RegistryObject::getKey)
+		    .forEach(b -> pickaxe.add(b));
 
-		var axe = this.tag(BlockTags.MINEABLE_WITH_AXE);
+		TagsProvider.TagAppender<Block> axe = this.tag(BlockTags.MINEABLE_WITH_AXE);
 		CoreInit.BLOCKS.getEntries()
 		    .stream()
 		    .filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolType() == ToolType.AXE)
-		    .map(RegistryObject::get)
-		    .forEach(axe::add);
+		    .map(RegistryObject::getKey)
+		    .forEach(b -> axe.add(b));
 
-		var toolTier1 = this.tag(BlockTags.NEEDS_STONE_TOOL);
+		TagsProvider.TagAppender<Block> toolTier1 = this.tag(BlockTags.NEEDS_STONE_TOOL);
 		CoreInit.BLOCKS.getEntries()
 		    .stream()
 		    .filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolTier() == 1)
-		    .map(RegistryObject::get)
-		    .forEach(toolTier1::add);
+		    .map(RegistryObject::getKey)
+		    .forEach(b -> toolTier1.add(b));
 
-		var toolTier2 = this.tag(BlockTags.NEEDS_IRON_TOOL);
+		TagsProvider.TagAppender<Block> toolTier2 = this.tag(BlockTags.NEEDS_IRON_TOOL);
 		CoreInit.BLOCKS.getEntries()
 		    .stream()
 		    .filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolTier() == 2)
-		    .map(RegistryObject::get)
-		    .forEach(toolTier2::add);
+		    .map(RegistryObject::getKey)
+		    .forEach(b -> toolTier2.add(b));
 
-		var toolTier3 = this.tag(BlockTags.NEEDS_DIAMOND_TOOL);
+		TagsProvider.TagAppender<Block> toolTier3 = this.tag(BlockTags.NEEDS_DIAMOND_TOOL);
 		CoreInit.BLOCKS.getEntries()
 		    .stream()
 		    .filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolTier() == 3)
-		    .map(RegistryObject::get)
-		    .forEach(toolTier3::add);
+		    .map(RegistryObject::getKey)
+		    .forEach(b -> toolTier3.add(b));
 
-		var crops = this.tag(BlockTags.CROPS);
+		TagsProvider.TagAppender<Block> crops = this.tag(BlockTags.CROPS);
 		CoreInit.BLOCKS.getEntries()
 		    .stream()
 		    .filter(block -> block.get() instanceof ClimateCropBaseBlock)
-		    .map(RegistryObject::get)
-		    .forEach(crops::add);
+		    .map(RegistryObject::getKey)
+		    .forEach(b -> crops.add(b));
 
 		tag(TagDC.BlockTag.ORES_WHITE).add(CoreInit.ORE_WHITE.get());
 		tag(TagDC.BlockTag.ORES_BLUE).add(CoreInit.ORE_BLUE.get());
@@ -304,8 +306,8 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		// plugins
 
-		tag(TagDC.BlockTag.CROP_GREEN_MANURES).addOptional(new ResourceLocation("biomesoplenty", "clover"));
-		tag(TagDC.BlockTag.CROP_GREEN_MANURES).addOptional(new ResourceLocation("biomesoplenty", "dune_grass"));
+		tag(TagDC.BlockTag.CROP_GREEN_MANURES).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "clover"));
+		tag(TagDC.BlockTag.CROP_GREEN_MANURES).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "dune_grass"));
 
 	}
 

@@ -286,7 +286,7 @@ public class DCItemUtil {
 		List<ItemStack> ret = new ArrayList<>();
 		if (str == null)
 			return ret;
-			ResourceLocation tagname = new ResourceLocation(str);
+		ResourceLocation tagname = ResourceLocation.bySeparator(str, ':');
 		ForgeRegistries.ITEMS.tags()
 		    .getTagNames()
 		    .filter(r -> r.location()
@@ -305,7 +305,7 @@ public class DCItemUtil {
 		List<ItemStack> ret = new ArrayList<>();
 		if (domain == null || name == null)
 			return ret;
-		ResourceLocation tagname = new ResourceLocation(domain, name);
+		ResourceLocation tagname = ResourceLocation.fromNamespaceAndPath(domain, name);
 		ForgeRegistries.ITEMS.tags()
 		    .getTagNames()
 		    .filter(r -> r.location()
@@ -324,7 +324,7 @@ public class DCItemUtil {
 		List<ItemStack> ret = new ArrayList<>();
 		if (domain == null || name == null)
 			return TagDC.ItemTag.DUMMY;
-		ResourceLocation tagname = new ResourceLocation(domain, name);
+		ResourceLocation tagname = ResourceLocation.fromNamespaceAndPath(domain, name);
 		return ForgeRegistries.ITEMS.tags()
 		    .getTagNames()
 		    .filter(r -> r.location()
@@ -355,7 +355,7 @@ public class DCItemUtil {
 				}
 			}
 
-			Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, itemName));
+			Block block = ForgeRegistries.BLOCKS.getValue(ResourceLocation.fromNamespaceAndPath(modid, itemName));
 			if (block != null && block != Blocks.AIR) {
 				// DCLogger.debugTrace("Find target: " + modid + ":" + itemName);
 				return block;
@@ -385,7 +385,7 @@ public class DCItemUtil {
 						}
 					}
 
-					Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, itemName));
+					Block block = ForgeRegistries.BLOCKS.getValue(ResourceLocation.fromNamespaceAndPath(modid, itemName));
 					if (block != null && block != Blocks.AIR) {
 						DCLogger.infoLog(logname + " add target: " + modid + ":" + itemName);
 						list.add(block);
@@ -417,7 +417,7 @@ public class DCItemUtil {
 						}
 					}
 
-					Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(modid, itemName));
+					Item item = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath(modid, itemName));
 					if (item != null && item != Items.AIR) {
 						DCLogger.infoLog(logname + " add target: " + modid + ":" + itemName);
 						list.add(item);
@@ -435,11 +435,11 @@ public class DCItemUtil {
 		if (names != null && names.length > 0) {
 			for (String name : names) {
 				if (name != null) {
-					ResourceLocation res = new ResourceLocation(name);
+					ResourceLocation res = ResourceLocation.bySeparator(name, ':');
 					if (res.getNamespace()
 					    .equalsIgnoreCase("minecraft")) {
 						String n = res.getPath();
-						res = new ResourceLocation("minecraft", n);
+						res = ResourceLocation.fromNamespaceAndPath("minecraft", n);
 					}
 					if (ForgeRegistries.ENTITY_TYPES.containsKey(res)) {
 						EntityType<?> entity = ForgeRegistries.ENTITY_TYPES.getValue(res);

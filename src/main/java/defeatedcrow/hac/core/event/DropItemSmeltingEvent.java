@@ -25,11 +25,10 @@ public class DropItemSmeltingEvent {
 	@SubscribeEvent
 	public static void onItemUpdate(DCItemUpdateEvent event) {
 		ItemEntity drop = event.entity;
-		if (drop != null && !drop.level()
-		    .isClientSide() && !DCUtil.isEmpty(drop.getItem())) {
+		if (drop != null && !drop.level().isClientSide() && !DCUtil.isEmpty(drop.getItem())) {
 			Level level = drop.level();
 			Vec3 p = drop.getEyePosition();
-			BlockPos pos = BlockPos.containing(p.x, p.y, p.z);
+			BlockPos pos = BlockPos.containing(p);
 			ItemStack item = drop.getItem();
 
 			// 20tickおき
@@ -47,15 +46,13 @@ public class DropItemSmeltingEvent {
 					int i = tag.getInt(TagKeyDC.CURRENT_PROGRESS);
 					if (i <= 0) {
 						if (recipe1.isPresent()) {
-							ItemStack output = recipe1.get()
-							    .getOutput();
+							ItemStack output = recipe1.get().getOutput();
 							output.setCount(item.getCount());
 							drop.setItem(output);
 							if (level instanceof ServerLevel serverLevel)
 								MsgEffectToC.sendToClient(serverLevel, p, 24);
 						} else if (recipe2.isPresent()) {
-							ItemStack output = recipe2.get()
-							    .getCurrentOutput(item, current);
+							ItemStack output = recipe2.get().getCurrentOutput(item, current);
 							output.setCount(item.getCount());
 							drop.setItem(output);
 							if (level instanceof ServerLevel serverLevel)

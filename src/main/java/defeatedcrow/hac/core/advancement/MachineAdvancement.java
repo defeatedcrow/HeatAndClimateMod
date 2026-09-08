@@ -9,39 +9,43 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.BlockPredicate;
+import net.minecraft.advancements.critereon.EnterBlockTrigger;
 import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.ItemUsedOnLocationTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.ItemUsedOnLocationTrigger;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.PlayerTrigger;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.ForgeAdvancementProvider.AdvancementGenerator;
 
-public class MachineAdvancement implements Consumer<Consumer<Advancement>> {
+public class MachineAdvancement implements AdvancementGenerator {
 
 	@Override
-	public void accept(Consumer<Advancement> t) {
+	public void generate(HolderLookup.Provider registries, Consumer<Advancement> saver, ExistingFileHelper helper) {
 
 		Advancement v1 = Advancement.Builder.advancement()
 		    .display(CoreInit.SCREWDRIVER.get(), Component.translatable("advancements.dcs_climate.metal.root.title"), Component.translatable("advancements.dcs_climate.metal.root.desc"),
-		        new ResourceLocation("dcs_climate", "textures/gui/advancement/metal.png"), FrameType.TASK, false, false, false)
+		        ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/gui/advancement/metal.png"), FrameType.TASK, false, false, false)
 		    .addCriterion("in_overworld", PlayerTrigger.TriggerInstance.located(LocationPredicate.inDimension(Level.OVERWORLD)))
-		    .save(t, "dcs_climate:metal/root");
+		    .save(saver, "dcs_climate:metal/root");
 
 		Advancement m0 = Advancement.Builder.advancement()
 		    .parent(v1)
 		    .display(Items.FLINT, Component.translatable("advancements.dcs_climate.metal.flint.title"), Component.translatable("advancements.dcs_climate.metal.flint.desc"), null, FrameType.TASK, true, true, false)
 		    .addCriterion("has_flint", InventoryChangeTrigger.TriggerInstance.hasItems(Items.FLINT))
-		    .save(t, "dcs_climate:metal/metal_flint");
+		    .save(saver, "dcs_climate:metal/metal_flint");
 
 		Advancement m0_2 = Advancement.Builder.advancement()
 		    .parent(m0)
 		    .display(CoreInit.MORTAR.get(), Component.translatable("advancements.dcs_climate.metal.mortar.title"), Component.translatable("advancements.dcs_climate.metal.mortar.desc"), null, FrameType.TASK, true, true, false)
 		    .addCriterion("has_mortar", InventoryChangeTrigger.TriggerInstance.hasItems(CoreInit.MORTAR.get()))
-		    .save(t, "dcs_climate:metal/metal_mortar");
+		    .save(saver, "dcs_climate:metal/metal_mortar");
 
 		Advancement m1 = Advancement.Builder.advancement()
 		    .parent(m0_2)
@@ -49,7 +53,7 @@ public class MachineAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_drops", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item()
 		        .of(TagDC.ItemTag.RAW_MATERIALS_COLOR)
 		        .build()))
-		    .save(t, "dcs_climate:metal/metal_ore");
+		    .save(saver, "dcs_climate:metal/metal_ore");
 
 		Advancement m2 = Advancement.Builder.advancement()
 		    .parent(m1)
@@ -70,7 +74,7 @@ public class MachineAdvancement implements Consumer<Consumer<Advancement>> {
 		        .of(TagDC.ItemTag.DUST_IRON)
 		        .build()))
 		    .requirements(RequirementsStrategy.OR)
-		    .save(t, "dcs_climate:metal/dust");
+		    .save(saver, "dcs_climate:metal/dust");
 
 		Advancement m3 = Advancement.Builder.advancement()
 		    .parent(m2)
@@ -78,7 +82,7 @@ public class MachineAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_brass", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item()
 		        .of(TagDC.ItemTag.METALBLOCK_BRASS)
 		        .build()))
-		    .save(t, "dcs_climate:metal/brass");
+		    .save(saver, "dcs_climate:metal/brass");
 
 		Advancement m4 = Advancement.Builder.advancement()
 		    .parent(m3)
@@ -86,7 +90,7 @@ public class MachineAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_brass_tool", InventoryChangeTrigger.TriggerInstance.hasItems(CoreInit.PICKAXE_BRASS.get()))
 		    .addCriterion("has_steel_tool", InventoryChangeTrigger.TriggerInstance.hasItems(CoreInit.PICKAXE_STEEL.get()))
 		    .requirements(RequirementsStrategy.OR)
-		    .save(t, "dcs_climate:metal/brass_tool");
+		    .save(saver, "dcs_climate:metal/brass_tool");
 
 		Advancement m5 = Advancement.Builder.advancement()
 		    .parent(m3)
@@ -94,19 +98,19 @@ public class MachineAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_motor_t1", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item()
 		        .of(TagDC.ItemTag.MOTOR_T1)
 		        .build()))
-		    .save(t, "dcs_climate:metal/motor_t1");
+		    .save(saver, "dcs_climate:metal/motor_t1");
 
 		Advancement m6 = Advancement.Builder.advancement()
 		    .parent(m5)
 		    .display(MachineInit.STONE_MILL.get(), Component.translatable("advancements.dcs_climate.metal.stone_mill.title"), Component.translatable("advancements.dcs_climate.metal.stone_mill.desc"), null, FrameType.TASK, true, true, false)
-		    .addCriterion("place_stone_mill", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(MachineInit.STONE_MILL.get()))
-		    .save(t, "dcs_climate:metal/stone_mill");
+		    .addCriterion("place_stone_mill", EnterBlockTrigger.TriggerInstance.entersBlock((MachineInit.STONE_MILL.get())))
+		    .save(saver, "dcs_climate:metal/stone_mill");
 
 		Advancement m9 = Advancement.Builder.advancement()
 		    .parent(m6)
 		    .display(Items.LIGHTNING_ROD, Component.translatable("advancements.dcs_climate.metal.lightning.title"), Component.translatable("advancements.dcs_climate.metal.lightning.desc"), null, FrameType.CHALLENGE, true, true, false)
 		    .addCriterion("impossible", new ImpossibleTrigger.TriggerInstance())
-		    .save(t, "dcs_climate:metal/lightning");
+		    .save(saver, "dcs_climate:metal/lightning");
 
 		Advancement m7 = Advancement.Builder.advancement()
 		    .parent(m6)
@@ -117,14 +121,14 @@ public class MachineAdvancement implements Consumer<Consumer<Advancement>> {
 		            .build()),
 		        ItemPredicate.Builder.item()
 		            .of(CoreInit.SCREWDRIVER.get())))
-		    .save(t, "dcs_climate:metal/cable");
+		    .save(saver, "dcs_climate:metal/cable");
 
 		Advancement m8 = Advancement.Builder.advancement()
 		    .parent(m7)
 		    .display(MachineInit.CABLE_COPPER.get(), Component.translatable("advancements.dcs_climate.metal.cable_danger.title"), Component.translatable("advancements.dcs_climate.metal.cable_danger.desc"), null, FrameType.CHALLENGE, true,
 		        true, false)
 		    .addCriterion("impossible", new ImpossibleTrigger.TriggerInstance())
-		    .save(t, "dcs_climate:metal/cable_danger");
+		    .save(saver, "dcs_climate:metal/cable_danger");
 	}
 
 }

@@ -74,23 +74,13 @@ public class AirflowRenderer implements IIngredientRenderer<DCAirflow> {
 	private static void drawTexturedModalRect(Matrix4f mat, int x, int y, int tX, int tY, int wid, int hei) {
 		float f = 1F / 16F;
 		float f1 = 1F / 16F;
-		BufferBuilder bufferbuilder = Tesselator.getInstance()
-		    .getBuilder();
+		BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
 		bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-		bufferbuilder.vertex(mat, x + 0, y + hei, 90.0F)
-		    .uv((tX + 0) * f, (tY + 16) * f1)
-		    .endVertex();
-		bufferbuilder.vertex(mat, x + wid, y + hei, 90.0F)
-		    .uv((tX + 16) * f, (tY + 16) * f1)
-		    .endVertex();
-		bufferbuilder.vertex(mat, x + wid, y + 0, 90.0F)
-		    .uv((tX + 16) * f, (tY + 0) * f1)
-		    .endVertex();
-		bufferbuilder.vertex(mat, x + 0, y + 0, 90.0F)
-		    .uv((tX + 0) * f, (tY + 0) * f1)
-		    .endVertex();
-		Tesselator.getInstance()
-		    .end();
+		bufferbuilder.vertex(mat, x + 0, y + hei, 90.0F).uv((tX + 0) * f, (tY + 16) * f1).endVertex();
+		bufferbuilder.vertex(mat, x + wid, y + hei, 90.0F).uv((tX + 16) * f, (tY + 16) * f1).endVertex();
+		bufferbuilder.vertex(mat, x + wid, y + 0, 90.0F).uv((tX + 16) * f, (tY + 0) * f1).endVertex();
+		bufferbuilder.vertex(mat, x + 0, y + 0, 90.0F).uv((tX + 0) * f, (tY + 0) * f1).endVertex();
+		Tesselator.getInstance().end();
 	}
 
 }

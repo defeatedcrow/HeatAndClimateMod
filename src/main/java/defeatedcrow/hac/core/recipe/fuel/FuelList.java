@@ -41,7 +41,7 @@ public class FuelList {
 
 	private static void addBiomassFuel(ItemStack input, int time) {
 		ResourceLocation res = DCUtil.getRes(input.getItem())
-		    .orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
+		    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
 		String fName = res.getPath()
 		    .replace('/', '_');
 		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.BIOMASS.toString(), time, "empty", Ingredient.of(input)));
@@ -56,7 +56,7 @@ public class FuelList {
 
 	private static void addThermalFuel(ItemStack input, int time) {
 		ResourceLocation res = DCUtil.getRes(input.getItem())
-		    .orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
+		    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
 		String fName = res.getPath()
 		    .replace('/', '_');
 		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.THERMAL.toString(), time, "empty", Ingredient.of(input)));

@@ -13,10 +13,11 @@ import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.ItemUsedOnLocationTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.ItemUsedOnLocationTrigger;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.PlayerTrigger;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -24,22 +25,24 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.ForgeAdvancementProvider.AdvancementGenerator;
 
-public class MainAdvancement implements Consumer<Consumer<Advancement>> {
+public class MainAdvancement implements AdvancementGenerator {
 
 	@Override
-	public void accept(Consumer<Advancement> t) {
+	public void generate(HolderLookup.Provider registries, Consumer<Advancement> saver, ExistingFileHelper helper) {
 		Advancement v1 = Advancement.Builder.advancement()
 		    .display(CoreInit.ICON_HAC.get(), Component.translatable("advancements.dcs_climate.main.root.title"), Component.translatable("advancements.dcs_climate.main.root.desc"),
-		        new ResourceLocation("dcs_climate", "textures/gui/advancement/main.png"), FrameType.TASK, false, false, false)
+		        ResourceLocation.fromNamespaceAndPath("dcs_climate", "textures/gui/advancement/main.png"), FrameType.TASK, false, false, false)
 		    .addCriterion("in_overworld", PlayerTrigger.TriggerInstance.located(LocationPredicate.inDimension(Level.OVERWORLD)))
-		    .save(t, "dcs_climate:main/root");
+		    .save(saver,  "dcs_climate:main/root");
 
 		Advancement a2 = Advancement.Builder.advancement()
 		    .parent(v1)
 		    .display(CoreInit.ICON_BURN.get(), Component.translatable("advancements.dcs_climate.main.damage.title"), Component.translatable("advancements.dcs_climate.main.damage.desc"), null, FrameType.TASK, true, true, false)
 		    .addCriterion("impossible", new ImpossibleTrigger.TriggerInstance())
-		    .save(t, "dcs_climate:main/damage");
+		    .save(saver,  "dcs_climate:main/damage");
 
 		Advancement v2 = Advancement.Builder.advancement()
 		    .parent(a2)
@@ -47,7 +50,7 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_spindle", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item()
 		        .of(CoreInit.HAND_SPINDLE.get())
 		        .build()))
-		    .save(t, "dcs_climate:main/spindle");
+		    .save(saver,  "dcs_climate:main/spindle");
 
 		Advancement a1 = Advancement.Builder.advancement()
 		    .parent(v2)
@@ -55,13 +58,13 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_string", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item()
 		        .of(Tags.Items.STRING)
 		        .build()))
-		    .save(t, "dcs_climate:main/string");
+		    .save(saver,  "dcs_climate:main/string");
 
 		Advancement a3 = Advancement.Builder.advancement()
 		    .parent(a1)
 		    .display(CoreInit.HAT_LINEN_RED.get(), Component.translatable("advancements.dcs_climate.main.wear.title"), Component.translatable("advancements.dcs_climate.main.wear.desc"), null, FrameType.TASK, true, true, false)
 		    .addCriterion("impossible", new ImpossibleTrigger.TriggerInstance())
-		    .save(t, "dcs_climate:main/wear");
+		    .save(saver,  "dcs_climate:main/wear");
 
 		Advancement a4 = Advancement.Builder.advancement()
 		    .parent(v1)
@@ -69,7 +72,7 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_wild_crop", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item()
 		        .of(TagDC.ItemTag.CROP_WILD)
 		        .build()))
-		    .save(t, "dcs_climate:main/wild_crops");
+		    .save(saver,  "dcs_climate:main/wild_crops");
 
 		Advancement a5 = Advancement.Builder.advancement()
 		    .parent(a4)
@@ -80,7 +83,7 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		            .build()),
 		        ItemPredicate.Builder.item()
 		            .of(TagDC.ItemTag.FERTILIZER)))
-		    .save(t, "dcs_climate:main/fertilizer");
+		    .save(saver,  "dcs_climate:main/fertilizer");
 
 		Advancement a6 = Advancement.Builder.advancement()
 		    .parent(a5)
@@ -88,7 +91,7 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_rare_crop", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item()
 		        .of(TagDC.ItemTag.CROP_RARE)
 		        .build()))
-		    .save(t, "dcs_climate:main/rare_crops");
+		    .save(saver,  "dcs_climate:main/rare_crops");
 
 		Advancement a7 = Advancement.Builder.advancement()
 		    .parent(a6)
@@ -96,7 +99,7 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_tree_crop", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item()
 		        .of(TagDC.ItemTag.TREE_WILD)
 		        .build()))
-		    .save(t, "dcs_climate:main/tree_crops");
+		    .save(saver,  "dcs_climate:main/tree_crops");
 
 		Advancement a9 = Advancement.Builder.advancement()
 		    .parent(a7)
@@ -116,7 +119,7 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_epic_crop12", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_SU_PISTACHIO.get()))
 		    .addCriterion("has_epic_crop13", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.CROP_AL_LEEK.get()))
 		    .requirements(RequirementsStrategy.AND)
-		    .save(t, "dcs_climate:main/epic_crops");
+		    .save(saver,  "dcs_climate:main/epic_crops");
 
 		Advancement a10 = Advancement.Builder.advancement()
 		    .parent(a4)
@@ -124,35 +127,35 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_hac_fish", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item()
 		        .of(TagDC.ItemTag.FISH_HAC)
 		        .build()))
-		    .save(t, "dcs_climate:main/fish");
+		    .save(saver,  "dcs_climate:main/fish");
 
 		Advancement a11 = Advancement.Builder.advancement()
 		    .parent(a6)
 		    .display(CoreInit.MOSQUITO_COIL.get(), Component.translatable("advancements.dcs_climate.main.mosquito_coil.title"), Component.translatable("advancements.dcs_climate.main.mosquito_coil.desc"), null, FrameType.CHALLENGE, true,
 		        true, false)
 		    .addCriterion("impossible", new ImpossibleTrigger.TriggerInstance())
-		    .save(t, "dcs_climate:main/mosquito_coil");
+		    .save(saver,  "dcs_climate:main/mosquito_coil");
 
 		Advancement b1 = Advancement.Builder.advancement()
 		    .parent(a6)
 		    .display(FoodInit.BREAD_ROUND_RAW_ITEM.get(), Component.translatable("advancements.dcs_climate.main.bread_raw.title"), Component.translatable("advancements.dcs_climate.main.bread_raw.desc"), null, FrameType.TASK, true, true,
 		        false)
 		    .addCriterion("has_dough", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.BREAD_ROUND_RAW_ITEM.get()))
-		    .save(t, "dcs_climate:main/bread_raw");
+		    .save(saver,  "dcs_climate:main/bread_raw");
 
 		Advancement b2 = Advancement.Builder.advancement()
 		    .parent(b1)
 		    .display(FoodInit.BREAD_ROUND_BAKED_ITEM.get(), Component.translatable("advancements.dcs_climate.main.bread_bake.title"), Component.translatable("advancements.dcs_climate.main.bread_bake.desc"), null, FrameType.TASK, true, true,
 		        false)
 		    .addCriterion("has_bread", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.BREAD_ROUND_BAKED_ITEM.get()))
-		    .save(t, "dcs_climate:main/bread_bake");
+		    .save(saver,  "dcs_climate:main/bread_bake");
 
 		Advancement b3 = Advancement.Builder.advancement()
 		    .parent(b2)
 		    .display(FoodInit.STICK_CHICKEN_COOKED.get(), Component.translatable("advancements.dcs_climate.main.nether_chicken.title"), Component.translatable("advancements.dcs_climate.main.nether_chicken.desc"), null, FrameType.CHALLENGE,
 		        true, true, false)
 		    .addCriterion("impossible", new ImpossibleTrigger.TriggerInstance())
-		    .save(t, "dcs_climate:main/nether_chicken");
+		    .save(saver,  "dcs_climate:main/nether_chicken");
 
 		CompoundTag tag = new CompoundTag();
 		tag.putInt(TagKeyDC.TASTE, 2);
@@ -163,7 +166,7 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_good_taste_food", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item()
 		        .hasNbt(tag)
 		        .build()))
-		    .save(t, "dcs_climate:main/delicious");
+		    .save(saver,  "dcs_climate:main/delicious");
 
 		Advancement b5 = Advancement.Builder.advancement()
 		    .parent(b2)
@@ -173,14 +176,14 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		    .addCriterion("has_tea_pot", InventoryChangeTrigger.TriggerInstance.hasItems(MachineInit.TEA_POT_NORMAL.get()))
 		    .addCriterion("has_fermentation_jar", InventoryChangeTrigger.TriggerInstance.hasItems(MachineInit.FERMENTATION_JAR_NORMAL.get()))
 		    .requirements(RequirementsStrategy.OR)
-		    .save(t, "dcs_climate:main/cooking_pot");
+		    .save(saver,  "dcs_climate:main/cooking_pot");
 
 		Advancement b6 = Advancement.Builder.advancement()
 		    .parent(b5)
 		    .display(FoodInit.TEA_APPLE_MILK.get(), Component.translatable("advancements.dcs_climate.main.apple_milk_tea.title"), Component.translatable("advancements.dcs_climate.main.apple_milk_tea.desc"), null, FrameType.CHALLENGE, true,
 		        true, true)
 		    .addCriterion("has_apple_milk_tea", InventoryChangeTrigger.TriggerInstance.hasItems(FoodInit.TEA_APPLE_MILK.get()))
-		    .save(t, "dcs_climate:main/apple_milk_tea");
+		    .save(saver,  "dcs_climate:main/apple_milk_tea");
 
 		Advancement b7 = Advancement.Builder.advancement()
 		    .parent(b5)
@@ -189,7 +192,7 @@ public class MainAdvancement implements Consumer<Consumer<Advancement>> {
 		        .of(FoodInit.RAMEN_TONKOTSU.get())
 		        .hasNbt(tag)
 		        .build()))
-		    .save(t, "dcs_climate:main/tonkotsu");
+		    .save(saver,  "dcs_climate:main/tonkotsu");
 	}
 
 }

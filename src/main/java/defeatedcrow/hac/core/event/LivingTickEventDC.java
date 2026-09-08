@@ -12,7 +12,7 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.damage.ClimateDamageEvent;
 import defeatedcrow.hac.api.damage.ClimateDamageEvent.DamageSet;
-import defeatedcrow.hac.api.damage.DamageSourceClimate;
+import defeatedcrow.hac.api.damage.DamageTypeClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.api.magic.MagicColor;
@@ -23,16 +23,19 @@ import defeatedcrow.hac.core.network.packet.message.MsgEffectToC;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.core.util.DamageSourceClimate;
 import defeatedcrow.hac.magic.MagicUtil;
 import defeatedcrow.hac.magic.material.MagicInit;
 import defeatedcrow.hac.magic.material.entity.MagicPictureEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -86,8 +89,7 @@ public class LivingTickEventDC {
 	}
 
 	public static void onLivingUpdate(LivingEntity living) {
-		if (living.hasEffect(MobEffects.JUMP) || living.hasEffect(CoreInit.BIRD.get())
-				|| MagicUtil.hasHandCharms(living, new ItemStack(MagicInit.BRACELET_SILVER_RED.get()))) {
+		if (living.hasEffect(MobEffects.JUMP) || living.hasEffect(CoreInit.BIRD.get()) || MagicUtil.hasHandCharms(living, new ItemStack(MagicInit.BRACELET_SILVER_RED.get()))) {
 			living.fallDistance = 0.0F;
 		}
 		if (living.hasEffect(CoreInit.FISH.get()) && living.getAirSupply() < living.getMaxAirSupply()) {
@@ -185,8 +187,7 @@ public class LivingTickEventDC {
 			}
 			float damTemp = Math.abs(heat.getTier()) * 1.0F; // hot 0F ~ 8.0F / cold 0F ~ 10.0F
 			boolean isCold = heat.getTier() < 0;
-			DamageSourceClimate source = isCold ? DamageSourceClimate.climateColdDamage(living.level().registryAccess()) :
-					DamageSourceClimate.climateHeatDamage(living.level().registryAccess());
+			ResourceKey<DamageType> source = isCold ? DamageTypeClimate.CLIMATE_COLD : DamageTypeClimate.CLIMATE_HEAT;
 
 			// 基礎ダメージ
 			if (isCold) {
@@ -219,7 +220,7 @@ public class LivingTickEventDC {
 
 				float finalDam = damTemp - prevTemp;
 
-				ClimateDamageEvent fireEvent = new ClimateDamageEvent(living, source, clm, finalDam);
+				ClimateDamageEvent fireEvent = new ClimateDamageEvent(living, DamageSourceClimate.getInstance(living.level()).getClimateDamage(isCold), clm, finalDam);
 				DamageSet result = fireEvent.result();
 				finalDam = result.damage;
 				DamageSource source2 = result.source;
@@ -334,8 +335,7 @@ public class LivingTickEventDC {
 	// ファントムが爆発する
 	public static void onMonsterUpdate(LivingEntity monster) {
 		List<MagicPictureEntity> list = MagicPictureEvent.getList();
-		if (list.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLACK_WHITE))
-				&& !monster.getType().is(TagDC.EntityTag.SPAWN_SUPPRESSOR_BLACKLIST)) {
+		if (list.stream().anyMatch(MagicPictureEvent.checkColor(MagicColor.BLACK_WHITE)) && !monster.getType().is(TagDC.EntityTag.SPAWN_SUPPRESSOR_BLACKLIST)) {
 			monster.discard();
 			return;
 		}

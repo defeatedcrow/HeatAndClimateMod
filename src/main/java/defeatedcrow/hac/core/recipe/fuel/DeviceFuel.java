@@ -6,7 +6,6 @@ import defeatedcrow.hac.api.recipe.FuelTypeDC;
 import defeatedcrow.hac.api.recipe.IDeviceFuel;
 import defeatedcrow.hac.core.tag.TagDC.FluidTag;
 import defeatedcrow.hac.core.util.DCItemUtil;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -44,7 +43,7 @@ public class DeviceFuel implements IDeviceFuel {
 	public TagKey<Fluid> getInputFluid() {
 		if (isEmptyFluid(inputFluidName))
 			return FluidTag.AIR;
-		ResourceLocation res = new ResourceLocation(inputFluidName);
+		ResourceLocation res = ResourceLocation.parse(inputFluidName);
 		TagKey<Fluid> tagkey = TagKey.create(Registries.FLUID, res);
 		if (tagkey != null)
 			return tagkey;
@@ -71,8 +70,7 @@ public class DeviceFuel implements IDeviceFuel {
 		if (tag == FluidTag.AIR) {
 			return input.isEmpty();
 		} else {
-			return !input.isEmpty() && input.getFluid()
-			    .is(tag);
+			return !input.isEmpty() && input.getFluid().is(tag);
 		}
 	}
 

@@ -212,8 +212,7 @@ public class ClimateCalculator implements IClimateCalculator {
 
 		// biomeの基礎湿度
 		DCHumidity hum = ClimateAPI.registerBiome.getHumidity(level, pos);
-		Biome biome = level.getBiome(pos)
-		    .get();
+		Biome biome = level.getBiome(pos).get();
 		int ret = hum.getID() - 1;
 		boolean isUnderwater = false;
 		boolean hasWater = false;
@@ -229,8 +228,7 @@ public class ClimateCalculator implements IClimateCalculator {
 		for (Direction face : Direction.values()) {
 			BlockPos p1 = new BlockPos(pos.getX() + face.getStepX(), pos.getY() + face.getStepY(), pos.getZ() + face.getStepZ());
 			if (level.isLoaded(p1)) {
-				Block block = level.getBlockState(p1)
-				    .getBlock();
+				Block block = level.getBlockState(p1).getBlock();
 				if (block instanceof IClimateIgnoreBlock) {
 					if (((IClimateIgnoreBlock) block).isActive(level.getBlockState(p1))) {
 						continue;
@@ -243,11 +241,9 @@ public class ClimateCalculator implements IClimateCalculator {
 				}
 
 				FluidState f = level.getFluidState(p1);
-				if (f.getType()
-				    .canHydrate(f, level, p1, Blocks.FARMLAND.defaultBlockState(), p1) && f.getAmount() > 0) {
+				if (f.getType().canHydrate(f, level, p1, Blocks.FARMLAND.defaultBlockState(), p1) && f.getAmount() > 0) {
 					hasWater = true;
-				} else if (!level.getBlockState(p1)
-				    .isFaceSturdy(level, p1, Direction.UP)) {
+				} else if (!level.getBlockState(p1).isFaceSturdy(level, p1, Direction.UP)) {
 					hasAir++; // 3blockまでOK
 				}
 			}
@@ -259,8 +255,7 @@ public class ClimateCalculator implements IClimateCalculator {
 
 		// 雨が降っている
 		if (!hasRoof(level, pos)) {
-			int offset = level.isRaining() && level.dimensionType()
-			    .hasSkyLight() ? 1 : 0;
+			int offset = level.isRaining() && level.dimensionType().hasSkyLight() ? 1 : 0;
 			ret += offset;
 		}
 
@@ -396,8 +391,7 @@ public class ClimateCalculator implements IClimateCalculator {
 			DCAirflow ret = air;
 			if (hasWind) {
 				ret = DCAirflow.FLOW;
-				if (level.isRaining() && !level.dimensionType()
-				    .ultraWarm()) {
+				if (level.isRaining() && !level.dimensionType().ultraWarm()) {
 					ret = DCAirflow.getTypeByID(ret.getID() + 1);
 				}
 			} else {
@@ -417,18 +411,14 @@ public class ClimateCalculator implements IClimateCalculator {
 		}
 		BlockPos pos2 = pos.above();
 		int lim = pos.getY() + 16;
-		if (!level.dimensionType()
-		    .hasSkyLight()) {
+		if (!level.dimensionType().hasSkyLight()) {
 			lim = pos.getY() + 12;
 		}
 		while (pos2.getY() < lim && pos2.getY() < level.getHeight()) {
 			BlockState state = level.getBlockState(pos2);
-			Block block = level.getBlockState(pos2)
-			    .getBlock();
-			if (!level.isEmptyBlock(pos2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.blocksMotion()) {
-				return true;
-			}
-			pos2 = pos2.above();
+			Block block = level.getBlockState(pos2).getBlock();
+			if (!level.isEmptyBlock(pos2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.isSolid())
+				pos2 = pos2.above();
 		}
 		return false;
 	}
@@ -439,8 +429,7 @@ public class ClimateCalculator implements IClimateCalculator {
 		}
 		int count = 0;
 		int lim = 16;
-		if (!level.dimensionType()
-		    .hasSkyLight()) {
+		if (!level.dimensionType().hasSkyLight()) {
 			lim = 8;
 		}
 		boolean end = false;
@@ -450,9 +439,8 @@ public class ClimateCalculator implements IClimateCalculator {
 
 			BlockPos p2 = pos.above(i);
 			BlockState state = level.getBlockState(p2);
-			Block block = level.getBlockState(p2)
-			    .getBlock();
-			if (!level.isEmptyBlock(p2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.blocksMotion()) {
+			Block block = level.getBlockState(p2).getBlock();
+			if (!level.isEmptyBlock(p2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.isSolid()) {
 				break;
 			} else {
 				count++;
@@ -464,9 +452,8 @@ public class ClimateCalculator implements IClimateCalculator {
 
 			BlockPos p2 = pos.below(i);
 			BlockState state = level.getBlockState(p2);
-			Block block = level.getBlockState(p2)
-			    .getBlock();
-			if (!level.isEmptyBlock(p2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.blocksMotion()) {
+			Block block = level.getBlockState(p2).getBlock();
+			if (!level.isEmptyBlock(p2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.isSolid()) {
 				break;
 			} else {
 				count++;
@@ -482,21 +469,18 @@ public class ClimateCalculator implements IClimateCalculator {
 			Block block = state.getBlock();
 			DCHeatTier ret = null;
 			if (ClimateAPI.registerBlock.isRegisteredHeat(state)) {
-				ret = ClimateAPI.registerBlock.getHeatTier(state)
-				    .orElse(DCHeatTier.NORMAL);
+				ret = ClimateAPI.registerBlock.getHeatTier(state).orElse(DCHeatTier.NORMAL);
 			} else if (block instanceof IHeatTile) {
 				ret = ((IHeatTile) block).getHeatTier(level, target, source);
 			} else if (block instanceof IFluidBlock) {
 				Fluid type = ((IFluidBlock) block).getFluid();
 				if (type != null) {
-					ret = DCHeatTier.getTypeByTemperature(type.getFluidType()
-					    .getTemperature());
+					ret = DCHeatTier.getTypeByTemperature(type.getFluidType().getTemperature());
 				}
 			} else if (block instanceof LiquidBlock) {
 				Fluid type = ((LiquidBlock) block).getFluid();
 				if (type != null) {
-					ret = DCHeatTier.getTypeByTemperature(type.getFluidType()
-					    .getTemperature());
+					ret = DCHeatTier.getTypeByTemperature(type.getFluidType().getTemperature());
 				}
 			}
 
@@ -517,25 +501,20 @@ public class ClimateCalculator implements IClimateCalculator {
 			if (block instanceof IHumidityTile) {
 				ret = ((IHumidityTile) block).getHumidity(Level, target, source);
 			} else if (ClimateAPI.registerBlock.isRegisteredHum(state)) {
-				ret = ClimateAPI.registerBlock.getHumidity(state)
-				    .orElse(DCHumidity.NORMAL);
+				ret = ClimateAPI.registerBlock.getHumidity(state).orElse(DCHumidity.NORMAL);
 			} else if (block instanceof IFluidBlock) {
 				Fluid type = ((IFluidBlock) block).getFluid();
-				if (type != null && type.getFluidType()
-				    .canHydrate(type.defaultFluidState(), Level, target, Blocks.FARMLAND.defaultBlockState(), source)) {
+				if (type != null && type.getFluidType().canHydrate(type.defaultFluidState(), Level, target, Blocks.FARMLAND.defaultBlockState(), source)) {
 					ret = DCHumidity.UNDERWATER;
 				}
 			} else if (block instanceof LiquidBlock) {
 				Fluid type = ((LiquidBlock) block).getFluid();
-				if (type != null && type.getFluidType()
-				    .canHydrate(type.defaultFluidState(), Level, target, Blocks.FARMLAND.defaultBlockState(), source)) {
+				if (type != null && type.getFluidType().canHydrate(type.defaultFluidState(), Level, target, Blocks.FARMLAND.defaultBlockState(), source)) {
 					ret = DCHumidity.UNDERWATER;
 				}
-			} else if (!state.getFluidState()
-			    .isEmpty()) {
+			} else if (!state.getFluidState().isEmpty()) {
 				FluidState stack = state.getFluidState();
-				if (stack.getFluidType()
-				    .canHydrate(stack, Level, target, Blocks.FARMLAND.defaultBlockState(), source))
+				if (stack.getFluidType().canHydrate(stack, Level, target, Blocks.FARMLAND.defaultBlockState(), source))
 					ret = DCHumidity.UNDERWATER;
 			}
 			return ret;
@@ -554,10 +533,8 @@ public class ClimateCalculator implements IClimateCalculator {
 			} else if (block instanceof IAirflowTile) {
 				ret = ((IAirflowTile) block).getAirflow(level, target, source);
 			} else if (ClimateAPI.registerBlock.isRegisteredAir(state)) {
-				ret = ClimateAPI.registerBlock.getAirflow(state)
-				    .orElse(DCAirflow.TIGHT);
-			} else if (!state.blocksMotion()
-			    && !state.liquid()) {
+				ret = ClimateAPI.registerBlock.getAirflow(state).orElse(DCAirflow.TIGHT);
+			} else if (!state.isSolid() && !state.liquid()) {
 				ret = DCAirflow.NORMAL;
 			}
 			return ret;

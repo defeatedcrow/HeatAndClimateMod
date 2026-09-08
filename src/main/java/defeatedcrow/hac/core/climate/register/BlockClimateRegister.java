@@ -186,7 +186,7 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 	/* json */
 	public static void registerBlockClimate(ParamBlock param) {
 		if (param != null && param.blockName != null) {
-			ResourceLocation res = new ResourceLocation(param.blockName);
+			ResourceLocation res = ResourceLocation.parse(param.blockName);
 			Block b = ForgeRegistries.BLOCKS.getValue(res);
 			if (b != null && b != Blocks.AIR) {
 				BlockSet set = new BlockSet(b, param.property, param.values);

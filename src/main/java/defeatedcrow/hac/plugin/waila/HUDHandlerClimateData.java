@@ -131,7 +131,7 @@ public class HUDHandlerClimateData implements IBlockComponentProvider {
 
 	}
 
-	public static final ResourceLocation CLIMATE = new ResourceLocation("dcs_climate", "show_climate");
-	public static final ResourceLocation CLIMATE_SMELTING = new ResourceLocation("dcs_climate", "show_climate_smelting_target");
+	public static final ResourceLocation CLIMATE = ResourceLocation.fromNamespaceAndPath("dcs_climate", "show_climate");
+	public static final ResourceLocation CLIMATE_SMELTING = ResourceLocation.fromNamespaceAndPath("dcs_climate", "show_climate_smelting_target");
 
 }

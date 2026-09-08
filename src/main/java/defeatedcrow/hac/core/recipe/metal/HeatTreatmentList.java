@@ -64,7 +64,7 @@ public class HeatTreatmentList {
 
 	private static void addRecipe(Item output, IHeatTreatment recipe) {
 		ResourceLocation resO = DCUtil.getRes(output)
-		    .orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
+		    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
 		DCRecipes.HEAT_TREATMENT.put(resO, recipe);
 	}
 

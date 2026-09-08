@@ -81,13 +81,8 @@ public class DCRecipes {
 
 	public static Optional<ItemStack> getVanillaSmeltingRecipe(IClimate clm, ItemStack item, Level level) {
 		dummyInv.inv.set(0, item);
-		SmeltingRecipe recipe = quickCheck.getRecipeFor(dummyInv, level)
-		    .orElse(null);
-		if (recipe != null && DCHeatTier.smeltingTemp()
-		    .contains(clm.getHeat()) && DCHumidity.notWet()
-		        .contains(clm.getHumidity())
-		    && DCAirflow.underRoofs()
-		        .contains(clm.getAirflow())) {
+		SmeltingRecipe recipe = quickCheck.getRecipeFor(dummyInv, level).orElse(null);
+		if (recipe != null && DCHeatTier.smeltingTemp().contains(clm.getHeat()) && DCHumidity.notWet().contains(clm.getHumidity()) && DCAirflow.underRoofs().contains(clm.getAirflow())) {
 			ItemStack output = recipe.assemble(dummyInv, level.registryAccess());
 			if (!DCUtil.isEmpty(output)) {
 				return Optional.of(output);
@@ -145,14 +140,7 @@ public class DCRecipes {
 	public static Optional<IHeatTreatment> hasAnyHeatTreatmentRecipe(ItemLike item) {
 		for (IHeatTreatment recipe : DCRecipes.HEAT_TREATMENT.values()) {
 			ItemStack check = new ItemStack(item);
-			if (recipe.getHeatingInput()
-			    .test(check)
-			    || recipe.getHeatingOutput()
-			        .asItem() == item.asItem()
-			    || recipe.getCoolingOutput()
-			        .asItem() == item.asItem()
-			    || recipe.getFail()
-			        .asItem() == item.asItem()) {
+			if (recipe.getHeatingInput().test(check) || recipe.getHeatingOutput().asItem() == item.asItem() || recipe.getCoolingOutput().asItem() == item.asItem() || recipe.getFail().asItem() == item.asItem()) {
 				return Optional.of(recipe);
 			}
 		}
@@ -229,20 +217,11 @@ public class DCRecipes {
 
 	public static Optional<IDeviceRecipe> getCrusherRecipe(List<ItemStack> inputs, @Nonnull ItemStack catalyst) {
 		if (catalyst.is(TagDC.ItemTag.BLADE_ALUMINA))
-			return DCRecipes.PULVERISE.values()
-			    .stream()
-			    .filter(recipe -> recipe.matcheInput(inputs).length > 0)
-			    .findAny();
+			return DCRecipes.PULVERISE.values().stream().filter(recipe -> recipe.matcheInput(inputs).length > 0).findAny();
 		if (catalyst.is(TagDC.ItemTag.BLADE_SANITARY))
-			return DCRecipes.SQUEEZE.values()
-			    .stream()
-			    .filter(recipe -> recipe.matcheInput(inputs).length > 0)
-			    .findAny();
+			return DCRecipes.SQUEEZE.values().stream().filter(recipe -> recipe.matcheInput(inputs).length > 0).findAny();
 		if (catalyst.is(TagDC.ItemTag.BLADE_SCREEN))
-			return DCRecipes.SIEVE.values()
-			    .stream()
-			    .filter(recipe -> recipe.matcheInput(inputs).length > 0)
-			    .findAny();
+			return DCRecipes.SIEVE.values().stream().filter(recipe -> recipe.matcheInput(inputs).length > 0).findAny();
 		return Optional.empty();
 	}
 

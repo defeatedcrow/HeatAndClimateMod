@@ -55,8 +55,8 @@ public class MsgLeftClickToS implements IPacketDC {
 			InteractionHand hand = isMainHand ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
 			ItemStack held = player.getItemInHand(hand);
 			if (actionId == 0) {
-				if (!DCUtil.isEmpty(held) && held.getItem() instanceof RodBlack rod) {
-					rod.onEmptyHit((ServerLevel) player.level(), player, hand, held);
+				if (!DCUtil.isEmpty(held) && held.getItem() instanceof RodBlack rod && player.level() instanceof ServerLevel serverLevel) {
+					rod.onEmptyHit(serverLevel, player, hand, held);
 				}
 			}
 		}

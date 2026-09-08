@@ -4,6 +4,7 @@ import java.util.concurrent.CompletableFuture;
 
 import org.jetbrains.annotations.Nullable;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.item.IItemDC;
 import defeatedcrow.hac.food.material.FoodInit;
@@ -12,27 +13,27 @@ import defeatedcrow.hac.food.material.item.ItemEdibleCropDC;
 import defeatedcrow.hac.food.material.item.ItemFoodDC;
 import defeatedcrow.hac.magic.material.MagicInit;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ItemTagProviderDC extends ItemTagsProvider {
 
-	public ItemTagProviderDC(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup, CompletableFuture<TagsProvider.TagLookup<Block>> blockTags, @Nullable ExistingFileHelper helper) {
-		super(output, lookup, blockTags, "dcs_climate", helper);
+	public ItemTagProviderDC(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, BlockTagsProvider blockTags, @Nullable ExistingFileHelper helper) {
+		super(output, provider, blockTags.contentsGetter(), ClimateCore.MOD_ID, helper);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected void addTags(HolderLookup.Provider provider) {
+	protected void addTags(Provider provider) {
 
 		CoreInit.ITEMS.getEntries()
 		    .stream()
@@ -724,17 +725,17 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		copy(TagDC.BlockTag.LEAKAGE_MACHINE, TagDC.ItemTag.LEAKAGE_MACHINE);
 
 		// plugin
-		tag(TagDC.ItemTag.CROP_BARLEY).addOptional(new ResourceLocation("biomesoplenty", "barley"));
-		tag(TagDC.ItemTag.CROP_LAVENDER).addOptional(new ResourceLocation("biomesoplenty", "lavender"));
-		tag(TagDC.ItemTag.CROP_LAVENDER).addOptional(new ResourceLocation("biomesoplenty", "tall_lavender"));
-		tag(TagDC.ItemTag.CROP_REED).addOptional(new ResourceLocation("biomesoplenty", "reed"));
-		tag(TagDC.ItemTag.VINE_PLANT).addOptional(new ResourceLocation("biomesoplenty", "willow_vine"));
-		tag(TagDC.ItemTag.COBWEB).addOptional(new ResourceLocation("biomesoplenty", "hanging_cobweb"));
-		tag(TagDC.ItemTag.COBWEB).addOptional(new ResourceLocation("biomesoplenty", "stringy_cobweb"));
+		tag(TagDC.ItemTag.CROP_BARLEY).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "barley"));
+		tag(TagDC.ItemTag.CROP_LAVENDER).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "lavender"));
+		tag(TagDC.ItemTag.CROP_LAVENDER).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "tall_lavender"));
+		tag(TagDC.ItemTag.CROP_REED).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "reed"));
+		tag(TagDC.ItemTag.VINE_PLANT).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "willow_vine"));
+		tag(TagDC.ItemTag.COBWEB).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "hanging_cobweb"));
+		tag(TagDC.ItemTag.COBWEB).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "stringy_cobweb"));
 
-		tag(TagDC.ItemTag.VINE_PLANT).addOptional(new ResourceLocation("atmospheric", "passion_vine"));
-		tag(TagDC.ItemTag.CROP_CITRUS).addOptional(new ResourceLocation("atmospheric", "orange"));
-		tag(TagDC.ItemTag.CROP_CITRUS).addOptional(new ResourceLocation("atmospheric", "blood_orange"));
+		tag(TagDC.ItemTag.VINE_PLANT).addOptional(ResourceLocation.fromNamespaceAndPath("atmospheric", "passion_vine"));
+		tag(TagDC.ItemTag.CROP_CITRUS).addOptional(ResourceLocation.fromNamespaceAndPath("atmospheric", "orange"));
+		tag(TagDC.ItemTag.CROP_CITRUS).addOptional(ResourceLocation.fromNamespaceAndPath("atmospheric", "blood_orange"));
 	}
 
 }

@@ -166,7 +166,7 @@ public class CommonProxyDC {
 	public void triggerAdvancement(LivingEntity player, String res) {
 		if (player instanceof ServerPlayer serverplayer) {
 			Advancement adv = serverplayer.server.getAdvancements()
-			    .getAdvancement(new ResourceLocation(ClimateCore.MOD_ID, res));
+			    .getAdvancement(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, res));
 			if (adv != null)
 				((ServerPlayer) player).getAdvancements()
 				    .award(adv, "impossible");
@@ -176,7 +176,7 @@ public class CommonProxyDC {
 	public boolean isAdvancementDone(LivingEntity player, String res) {
 		if (player instanceof ServerPlayer serverplayer) {
 			Advancement adv = serverplayer.server.getAdvancements()
-			    .getAdvancement(new ResourceLocation(ClimateCore.MOD_ID, res));
+			    .getAdvancement(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, res));
 			if (adv != null && adv.getDisplay() != null) {
 				PlayerAdvancements advs = serverplayer.server.getPlayerList()
 				    .getPlayerAdvancements(serverplayer);

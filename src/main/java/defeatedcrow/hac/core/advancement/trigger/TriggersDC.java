@@ -1,5 +1,6 @@
 package defeatedcrow.hac.core.advancement.trigger;
 
+import defeatedcrow.hac.core.ClimateCore;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.advancements.critereon.PlayerTrigger;
@@ -9,7 +10,7 @@ public class TriggersDC {
 
 	public static void init() {}
 
-	public static final PlayerTrigger HEAT_DAMAGE = register(new PlayerTrigger(new ResourceLocation("heat_damage")));
+	public static final PlayerTrigger HEAT_DAMAGE = register(new PlayerTrigger(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "heat_damage")));
 
 	public static <T extends CriterionTrigger<?>> T register(T crit) {
 		return CriteriaTriggers.register(crit);

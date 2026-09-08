@@ -18,7 +18,7 @@ public class ParamEntity {
 	}
 
 	public Optional<EntityType<?>> getEntityType() {
-		EntityType<?> ret = ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(entityName));
+		EntityType<?> ret = ForgeRegistries.ENTITY_TYPES.getValue(ResourceLocation.parse(entityName));
 		if (ret != null) {
 			return Optional.of(ret);
 		}

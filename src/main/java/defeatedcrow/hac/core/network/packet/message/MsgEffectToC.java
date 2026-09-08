@@ -66,18 +66,14 @@ public class MsgEffectToC implements IPacketDC {
 	public static void sendToClient(ServerLevel level, Vec3 pos, int i) {
 		if (level != null) {
 			MsgEffectToC packet = new MsgEffectToC(pos, i);
-			level.players().forEach(player -> {
-			    DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
-			});
+			level.players().forEach(player -> { DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT); });
 		}
 	}
 
 	public static void sendToClient(ServerLevel level, BlockPos pos, int i) {
 		if (level != null) {
 			MsgEffectToC packet = new MsgEffectToC(pos, i);
-			level.players().forEach(player -> {
-			    DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
-			});
+			level.players().forEach(player -> { DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT); });
 		}
 	}
 

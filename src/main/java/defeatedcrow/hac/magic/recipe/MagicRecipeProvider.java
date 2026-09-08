@@ -1,23 +1,11 @@
 package defeatedcrow.hac.magic.recipe;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonObject;
-
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.magic.material.MagicInit;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -43,7 +31,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 
 	static void craftRecipes(Consumer<FinishedRecipe> cons) {
 		// arrow
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MagicInit.ARROW_WHITE.get(), 8)
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MagicInit.ARROW_WHITE.get(), 8)
 				.pattern("XXX")
 				.pattern("XYX")
 				.pattern("XXX")
@@ -52,7 +40,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_extract_white", has(TagDC.ItemTag.EXTRACT_WHITE))
 				.save(cons, "dcs_climate:magic/craft_arrow_white");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MagicInit.ARROW_BLUE.get(), 8)
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MagicInit.ARROW_BLUE.get(), 8)
 				.pattern("XXX")
 				.pattern("XYX")
 				.pattern("XXX")
@@ -61,7 +49,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_extract_blue", has(TagDC.ItemTag.EXTRACT_BLUE))
 				.save(cons, "dcs_climate:magic/craft_arrow_blue");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MagicInit.ARROW_BLACK.get(), 8)
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MagicInit.ARROW_BLACK.get(), 8)
 				.pattern("XXX")
 				.pattern("XYX")
 				.pattern("XXX")
@@ -70,7 +58,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_extract_black", has(TagDC.ItemTag.EXTRACT_BLACK))
 				.save(cons, "dcs_climate:magic/craft_arrow_black");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MagicInit.ARROW_RED.get(), 8)
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MagicInit.ARROW_RED.get(), 8)
 				.pattern("XXX")
 				.pattern("XYX")
 				.pattern("XXX")
@@ -79,7 +67,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_extract_red", has(TagDC.ItemTag.EXTRACT_RED))
 				.save(cons, "dcs_climate:magic/craft_arrow_red");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MagicInit.ARROW_GREEN.get(), 8)
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MagicInit.ARROW_GREEN.get(), 8)
 				.pattern("XXX")
 				.pattern("XYX")
 				.pattern("XXX")
@@ -1283,33 +1271,6 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_extract_blue", has(TagDC.ItemTag.EXTRACT_BLUE))
 				.save(cons, "dcs_climate:magic/craft_pigment_green3");
 
-	}
-
-	@Override
-	public CompletableFuture<?> run(CachedOutput cache) {
-
-		Set<ResourceLocation> set = Sets.newHashSet();
-		List<CompletableFuture<?>> list = Lists.newArrayList();
-		buildRecipes(recipe -> {
-			if (!set.add(recipe.getId())) {
-				// throw new IllegalStateException("Duplicate recipe " + recipe.getId());
-			} else {
-				list.add(DataProvider.saveStable(cache, recipe.serializeRecipe(), this.recipePathProvider.json(recipe.getId())));
-				JsonObject jsonobject = recipe.serializeAdvancement();
-				if (jsonobject != null) {
-					list.add(saveAdvancement(cache, recipe, jsonobject));
-				}
-			}
-		});
-		return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
-	}
-
-	private static void saveRecipeMirror(CachedOutput cach, JsonObject json, Path path) {
-		DataProvider.saveStable(cach, json, path);
-	}
-
-	protected void saveAdvancementMirror(CachedOutput cach, JsonObject json, Path path) {
-		DataProvider.saveStable(cach, json, path);
 	}
 
 }

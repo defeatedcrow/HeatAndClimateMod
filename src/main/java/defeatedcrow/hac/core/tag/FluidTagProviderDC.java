@@ -4,8 +4,10 @@ import java.util.concurrent.CompletableFuture;
 
 import org.jetbrains.annotations.Nullable;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.material.CoreInit;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.tags.FluidTags;
@@ -15,13 +17,13 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class FluidTagProviderDC extends FluidTagsProvider {
 
-	public FluidTagProviderDC(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup, @Nullable ExistingFileHelper helper) {
-		super(output, lookup, "dcs_climate", helper);
+	public FluidTagProviderDC(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper helper) {
+		super(output, lookupProvider,ClimateCore.MOD_ID, helper);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected void addTags(HolderLookup.Provider provider) {
+	protected void addTags(Provider provider) {
 
 		tag(TagDC.FluidTag.BRINE).add(CoreInit.BRINE.getStillFluid().get());
 		tag(TagDC.FluidTag.HOT_SPRING).add(CoreInit.HOTSPRING.getStillFluid().get());

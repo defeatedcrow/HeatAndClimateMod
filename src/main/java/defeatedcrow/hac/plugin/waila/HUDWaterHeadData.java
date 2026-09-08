@@ -55,6 +55,6 @@ public class HUDWaterHeadData implements IBlockComponentProvider {
 
 	}
 
-	public static final ResourceLocation FLUID_HEAD = new ResourceLocation("dcs_climate", "fluid_head");
+	public static final ResourceLocation FLUID_HEAD = ResourceLocation.fromNamespaceAndPath("dcs_climate", "fluid_head");
 
 }

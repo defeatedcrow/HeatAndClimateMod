@@ -46,7 +46,7 @@ public class ClimateSmeltingList {
 		for (FoodRecipes.Smelting foods : FoodRecipes.INSTANCE.Smeltings) {
 			ResourceLocation res = DCUtil.getRes(foods.output()
 			    .get())
-			    .orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
+			    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
 			String fName = res.getPath()
 			    .replace('/', '_');
 			ClimateSmelting ret = new ClimateSmelting(new ItemStack(foods.output()
@@ -59,7 +59,7 @@ public class ClimateSmeltingList {
 		for (FoodRecipes.SmeltingBlock foods : FoodRecipes.INSTANCE.SmeltingBlocks) {
 			ResourceLocation res = DCUtil.getRes(foods.output()
 			    .get())
-			    .orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
+			    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
 			String fName = res.getPath()
 			    .replace('/', '_');
 			ClimateSmelting ret = new ClimateSmelting(new ItemStack(foods.output()
@@ -122,7 +122,7 @@ public class ClimateSmeltingList {
 
 	private static void addRecipe(ItemStack output, List<DCHeatTier> heat, List<DCHumidity> hum, List<DCAirflow> air, int f, Ingredient input) {
 		ResourceLocation resO = DCUtil.getRes(output.getItem())
-		    .orElse(new ResourceLocation(ClimateCore.MOD_ID, "main/null_item"));
+		    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
 		String fName = resO.getPath()
 		    .replace('/', '_');
 		ClimateSmelting ret = new ClimateSmelting(output, heat, hum, air, f, input);

@@ -87,8 +87,8 @@ public class HUDHandlerCropData implements IBlockComponentProvider {
 
 	}
 
-	public static final ResourceLocation CROP = new ResourceLocation("dcs_climate", "show_cropdata");
-	public static final ResourceLocation FARMLAND = new ResourceLocation("dcs_climate", "show_farmland_moisture");
-	public static final ResourceLocation FERTILE = new ResourceLocation("dcs_climate", "show_farmland_fertile");
+	public static final ResourceLocation CROP = ResourceLocation.fromNamespaceAndPath("dcs_climate", "show_cropdata");
+	public static final ResourceLocation FARMLAND = ResourceLocation.fromNamespaceAndPath("dcs_climate", "show_farmland_moisture");
+	public static final ResourceLocation FERTILE = ResourceLocation.fromNamespaceAndPath("dcs_climate", "show_farmland_fertile");
 
 }

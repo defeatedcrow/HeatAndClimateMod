@@ -126,7 +126,7 @@ public class BlockUpdateEventDC {
 				}
 			}
 
-			if ((block instanceof SnowLayerBlock)) {
+			if (block instanceof SnowLayerBlock) {
 				if (world.getBiome(p).get().warmEnoughToRain(p)) {
 					ClimateSupplier clm = new ClimateSupplier(world, p);
 					if (clm.get().getHeat().getTier() > DCHeatTier.COLD.getTier()) {
@@ -146,13 +146,9 @@ public class BlockUpdateEventDC {
 			BlockState place = event.getPlacedBlock();
 			BlockSnapshot snap = event.getBlockSnapshot();
 			Optional<IClimateSmelting> recipe = DCRecipes.hasAnySmeltingRecipe(place.getBlock());
-			recipe.ifPresent(ret -> {
-			    placer.level().scheduleTick(snap.getPos(), place.getBlock(), ret.recipeFrequency());
-			});
+			recipe.ifPresent(ret -> { placer.level().scheduleTick(snap.getPos(), place.getBlock(), ret.recipeFrequency()); });
 			Optional<IHeatTreatment> recipe2 = DCRecipes.hasAnyHeatTreatmentRecipe(place.getBlock());
-			recipe2.ifPresent(ret -> {
-			    placer.level().scheduleTick(snap.getPos(), place.getBlock(), ret.getHeatingTime());
-			});
+			recipe2.ifPresent(ret -> { placer.level().scheduleTick(snap.getPos(), place.getBlock(), ret.getHeatingTime()); });
 		}
 	}
 
