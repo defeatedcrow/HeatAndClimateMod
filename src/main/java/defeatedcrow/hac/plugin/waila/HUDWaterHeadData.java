@@ -22,21 +22,19 @@ public class HUDWaterHeadData implements IBlockComponentProvider {
 	private static final HUDWaterHeadData INSTANCE = new HUDWaterHeadData();
 
 	@Override
-	public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
-		if (accessor.getBlock() == Blocks.AIR)
+	public void appendTooltip(ITooltip tooltip, BlockAccessor level, IPluginConfig config) {
+		if (level.getBlock() == Blocks.AIR)
 			return;
 		if (config.get(FLUID_HEAD)) {
-			BlockEntity tile = accessor.getBlockEntity();
+			BlockEntity tile = level.getBlockEntity();
 			if (tile == null)
 				return;
-			tile.getCapability(ForgeCapabilities.FLUID_HANDLER)
-			    .filter(HUDWaterHeadData::isPipe)
-			    .ifPresent(handler -> {
-				    FluidStack fluid = handler.getFluidInTank(0);
-				    int head = DCFluidUtil.getHead(fluid);
-				    if (!fluid.isEmpty())
-					    tooltip.add(Component.translatable(String.format("Head: %d block", head)));
-			    });
+			tile.getCapability(ForgeCapabilities.FLUID_HANDLER).filter(HUDWaterHeadData::isPipe).ifPresent(handler -> {
+				FluidStack fluid = handler.getFluidInTank(0);
+				int head = DCFluidUtil.getHead(fluid);
+				if (!fluid.isEmpty())
+					tooltip.add(Component.translatable(String.format("Head: %d block", head)));
+			});
 		}
 	}
 
@@ -44,17 +42,22 @@ public class HUDWaterHeadData implements IBlockComponentProvider {
 		return handler instanceof IFluidPipe || handler instanceof DCHeadTank;
 	}
 
+	public static void register(IWailaClientRegistration registrar) {
+
+		try {
+			registrar.addConfig(FLUID_HEAD, true);
+		} catch (Exception e) {
+		}
+
+		registrar.registerBlockComponent(INSTANCE, FluidPipeBlock.class);
+
+	}
+
+	public static final ResourceLocation FLUID_HEAD = ResourceLocation.fromNamespaceAndPath("dcs_climate", "fluid_head");
+
 	@Override
 	public ResourceLocation getUid() {
-		return UID;
+		return FLUID_HEAD;
 	}
-
-	public static void register(IWailaClientRegistration registration) {
-		registration.addConfig(FLUID_HEAD, true);
-		registration.registerBlockComponent(INSTANCE, FluidPipeBlock.class);
-	}
-
-	public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath("dcs_climate", "fluid_head_data");
-	public static final ResourceLocation FLUID_HEAD = ResourceLocation.fromNamespaceAndPath("dcs_climate", "fluid_head");
 
 }

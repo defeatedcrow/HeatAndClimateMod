@@ -2900,13 +2900,10 @@
 
     "## jade":"jade",
 
-  "config.jade.plugin_dcs_climate.climate_data":"Climate Data",
   "config.jade.plugin_dcs_climate.show_climate":"Show climate",
   "config.jade.plugin_dcs_climate.show_climate_smelting_target":"Show climate smelting target",
-  "config.jade.plugin_dcs_climate.crop_data":"Crop Data",
   "config.jade.plugin_dcs_climate.show_cropdata":"Show crop data",
   "config.jade.plugin_dcs_climate.show_farmland_fertile":"Show farmland fertility",
-  "config.jade.plugin_dcs_climate.fluid_head_data":"Fluid Head Data",
   "config.jade.plugin_dcs_climate.fluid_head":"Show fluid head",
 
     "## advancement_main":"main",
