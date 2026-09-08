@@ -1,7 +1,0 @@
-{
-  "dcs_climate:plugin": {
-       "initializer":"defeatedcrow.hac.plugin.waila.DCWailaPlugin",
-       "side":"*",
-       "required":[]
-  }
-}

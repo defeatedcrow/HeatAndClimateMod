@@ -2901,6 +2901,17 @@
   "dcs.tip.waila.smelting_tick_scheduled":"ブロック更新予定あり",
   "dcs.tip.waila.smelting_tick_not_scheduled":"ブロック更新なし",
 
+    "## jade":"jade",
+
+  "config.jade.plugin_dcs_climate.climate_data":"気候データ",
+  "config.jade.plugin_dcs_climate.show_climate":"気候を表示",
+  "config.jade.plugin_dcs_climate.show_climate_smelting_target":"気候精錬の対象を表示",
+  "config.jade.plugin_dcs_climate.crop_data":"作物データ",
+  "config.jade.plugin_dcs_climate.show_cropdata":"作物の状態を表示",
+  "config.jade.plugin_dcs_climate.show_farmland_fertile":"農地の肥沃度を表示",
+  "config.jade.plugin_dcs_climate.fluid_head_data":"流体ヘッドデータ",
+  "config.jade.plugin_dcs_climate.fluid_head":"流体ヘッドを表示",
+
     "## advancement1":"main",
 
   "advancements.dcs_climate.main.root.title":"HeatAndClimateへようこそ!",

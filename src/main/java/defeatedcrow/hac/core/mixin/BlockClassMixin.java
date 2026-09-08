@@ -38,14 +38,12 @@ public abstract class BlockClassMixin implements IForgeBlock {
 			callback.setReturnValue(true);
 	}
 
-	@Inject(method = "isFertile", at = @At(value = "HEAD"), cancellable = true, remap = false)
-	public void hookFertile(BlockState state, BlockGetter level, BlockPos pos, @Nonnull CallbackInfoReturnable<Boolean> callback) {
-		boolean ret = false;
+	@Override
+	public boolean isFertile(BlockState state, BlockGetter level, BlockPos pos) {
 		if (state.is(TagDC.BlockTag.FARMLAND))
-			ret = DCState.getInt(state, FarmBlock.MOISTURE) > 0 || DCState.getInt(state, DCState.FERTILE) >= 0;
+			return DCState.getInt(state, FarmBlock.MOISTURE) > 0 || DCState.getInt(state, DCState.FERTILE) >= 0;
 
-		if (ret)
-			callback.setReturnValue(true);
+		return false;
 	}
 
 }

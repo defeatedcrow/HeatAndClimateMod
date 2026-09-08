@@ -1,15 +1,22 @@
 package defeatedcrow.hac.plugin.waila;
 
-import mcp.mobius.waila.api.IRegistrar;
-import mcp.mobius.waila.api.IWailaPlugin;
+import snownee.jade.api.IWailaClientRegistration;
+import snownee.jade.api.IWailaCommonRegistration;
+import snownee.jade.api.IWailaPlugin;
+import snownee.jade.api.WailaPlugin;
 
+@WailaPlugin("dcs_climate")
 public class DCWailaPlugin implements IWailaPlugin {
 
 	@Override
-	public void register(IRegistrar registrar) {
-		HUDHandlerClimateData.register(registrar);
-		HUDHandlerCropData.register(registrar);
-		HUDWaterHeadData.register(registrar);
+	public void register(IWailaCommonRegistration registration) {
+	}
+
+	@Override
+	public void registerClient(IWailaClientRegistration registration) {
+		HUDHandlerClimateData.register(registration);
+		HUDHandlerCropData.register(registration);
+		HUDWaterHeadData.register(registration);
 	}
 
 }
