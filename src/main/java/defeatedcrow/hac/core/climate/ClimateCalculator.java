@@ -417,8 +417,10 @@ public class ClimateCalculator implements IClimateCalculator {
 		while (pos2.getY() < lim && pos2.getY() < level.getHeight()) {
 			BlockState state = level.getBlockState(pos2);
 			Block block = level.getBlockState(pos2).getBlock();
-			if (!level.isEmptyBlock(pos2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.isSolid())
-				pos2 = pos2.above();
+			if (!level.isEmptyBlock(pos2) && !state.is(TagDC.BlockTag.NOT_LOOF) && state.isSolid()) {
+				return true;
+			}
+			pos2 = pos2.above();
 		}
 		return false;
 	}

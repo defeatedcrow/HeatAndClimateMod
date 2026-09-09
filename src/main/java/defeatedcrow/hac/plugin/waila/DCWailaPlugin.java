@@ -2,7 +2,9 @@ package defeatedcrow.hac.plugin.waila;
 
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaPlugin;
+import snownee.jade.api.WailaPlugin;
 
+@WailaPlugin("dcs_climate")
 public class DCWailaPlugin implements IWailaPlugin {
 
 	@Override

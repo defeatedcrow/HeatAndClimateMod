@@ -27,6 +27,8 @@ public class HUDWaterHeadData implements IBlockComponentProvider {
 			return;
 		if (config.get(FLUID_HEAD)) {
 			BlockEntity tile = level.getBlockEntity();
+			if (tile == null)
+				return;
 			tile.getCapability(ForgeCapabilities.FLUID_HANDLER).filter(HUDWaterHeadData::isPipe).ifPresent(handler -> {
 				FluidStack fluid = handler.getFluidInTank(0);
 				int head = DCFluidUtil.getHead(fluid);

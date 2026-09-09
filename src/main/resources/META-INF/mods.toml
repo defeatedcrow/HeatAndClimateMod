@@ -27,3 +27,9 @@ Take advantage of the climate and have fun!
     versionRange="[1.20.1,1.21.1)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.dcs_climate]] #optional
+    modId="jade"
+    mandatory=false
+    versionRange="[11,)"
+    ordering="NONE"
+    side="CLIENT"
