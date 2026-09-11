@@ -42,7 +42,7 @@ public class MachineRecipeProvider extends RecipeProvider {
 		    .unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T2)).save(cons, "dcs_climate:machine/middle_impeller_0");
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BATTERYITEM_TIER1.get(), 1).pattern("XYX").pattern("XZX").pattern("XWX").define('X', Tags.Items.INGOTS_IRON).define('Y', TagDC.ItemTag.DUST_NICKEL)
-		    .define('Z', TagDC.ItemTag.DUST_TRONA).define('W', Items.BLAZE_POWDER).unlockedBy("has_dust_nickel", has(TagDC.ItemTag.DUST_NICKEL)).save(cons, "dcs_climate:.shaped(RecipeCategory.MISC, small_battery_0");
+		    .define('Z', TagDC.ItemTag.DUST_TRONA).define('W', Items.BLAZE_POWDER).unlockedBy("has_dust_nickel", has(TagDC.ItemTag.DUST_NICKEL)).save(cons, "dcs_climate:machine/small_battery_0");
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.BATTERYITEM_TIER2.get(), 1).pattern("XYX").pattern("XZX").pattern("XWX").define('X', Tags.Items.INGOTS_IRON).define('Y', TagDC.ItemTag.DUST_LITHIUM)
 		    .define('Z', TagDC.ItemTag.DUST_COAL).define('W', TagDC.ItemTag.DUST_COBALT).unlockedBy("has_dust_lithium", has(TagDC.ItemTag.DUST_LITHIUM)).save(cons, "dcs_climate:machine/middle_battery_0");
@@ -104,17 +104,17 @@ public class MachineRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_LAB_A.get(), 1).requires(MachineInit.KICHEN_BENCH_LAB_B.get()).unlockedBy("has_lab_kitchen_bench_b", has(MachineInit.KICHEN_BENCH_LAB_B.get()))
 		    .save(cons, "dcs_climate:machine/lab_kichen_bench_2");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_LAB_B.get(), 1).requires(MachineInit.KICHEN_BENCH_LAB_A.get()).unlockedBy("has_lab_kitchen_bench", has(MachineInit.KICHEN_BENCH_LAB_A.get()))
-		    .save(cons, "dcs_climate:machine/lab_kichen_bench_b_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_BENCH_LAB_B.get(), 1).requires(MachineInit.KICHEN_BENCH_LAB_A.get()).unlockedBy("has_lab_kitchen_bench", has(MachineInit.KICHEN_BENCH_LAB_A.get())).save(cons,
+		    "dcs_climate:machine/lab_kichen_bench_b_0");
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_BRICK.get(), 1).pattern("XYX").pattern("XZX").define('X', Tags.Items.INGOTS_BRICK).define('Y', Items.BUCKET).define('Z', MachineInit.PIPE_BRASS.get())
 		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get())).save(cons, "dcs_climate:machine/bricks_sink_1");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_SINK_BRICK.get(), 1).requires(MachineInit.HALF_SINK_BRICK.get()).unlockedBy("has_half_sink", has(MachineInit.HALF_SINK_BRICK.get()))
-		    .save(cons, "dcs_climate:machine/bricks_sink_2");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.KICHEN_SINK_BRICK.get(), 1).requires(MachineInit.HALF_SINK_BRICK.get()).unlockedBy("has_half_sink", has(MachineInit.HALF_SINK_BRICK.get())).save(cons,
+		    "dcs_climate:machine/bricks_sink_2");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.HALF_SINK_BRICK.get(), 1).requires(MachineInit.KICHEN_SINK_BRICK.get()).unlockedBy("has_kichen_sink", has(MachineInit.KICHEN_SINK_BRICK.get()))
-		    .save(cons, "dcs_climate:machine/bricks_half_sink_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.HALF_SINK_BRICK.get(), 1).requires(MachineInit.KICHEN_SINK_BRICK.get()).unlockedBy("has_kichen_sink", has(MachineInit.KICHEN_SINK_BRICK.get())).save(cons,
+		    "dcs_climate:machine/bricks_half_sink_0");
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.KICHEN_SINK_SUS.get(), 1).pattern("XYX").pattern("XZX").define('X', TagDC.ItemTag.INGOT_SUS).define('Y', Items.BUCKET).define('Z', MachineInit.PIPE_BRASS.get())
 		    .unlockedBy("has_pipe", has(MachineInit.PIPE_BRASS.get())).save(cons, "dcs_climate:machine/sus_sink_1");
@@ -149,8 +149,8 @@ public class MachineRecipeProvider extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CONVEYOR.get(), 8).pattern("XYX").define('X', TagDC.ItemTag.INGOT_STEEL).define('Y', TagDC.ItemTag.MOTOR_T1).unlockedBy("has_motor_t1", has(TagDC.ItemTag.MOTOR_T1))
 		    .save(cons, "dcs_climate:machine/conveyor_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR.get(), 1).requires(MachineInit.CONVEYOR_VERTICAL.get()).unlockedBy("has_conveyor_vertical", has(MachineInit.CONVEYOR_VERTICAL.get()))
-		    .save(cons, "dcs_climate:machine/conveyor_vertical_2");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR.get(), 1).requires(MachineInit.CONVEYOR_VERTICAL.get()).unlockedBy("has_conveyor_vertical", has(MachineInit.CONVEYOR_VERTICAL.get())).save(cons,
+		    "dcs_climate:machine/conveyor_vertical_2");
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CONVEYOR_VERTICAL.get(), 3).pattern("X").pattern("X").pattern("X").define('X', MachineInit.CONVEYOR.get()).unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
 		    .save(cons, "dcs_climate:machine/conveyor_vertical_0");
@@ -158,8 +158,8 @@ public class MachineRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_SMELTING.get(), 1).requires(MachineInit.CONVEYOR.get()).requires(CoreInit.TEMPMETER.get()).unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
 		    .save(cons, "dcs_climate:machine/conveyor_smelting_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_DROPPER.get(), 1).requires(MachineInit.CONVEYOR.get()).requires(Items.DROPPER).unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
-		    .save(cons, "dcs_climate:machine/conveyor_dropper_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_DROPPER.get(), 1).requires(MachineInit.CONVEYOR.get()).requires(Items.DROPPER).unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get())).save(cons,
+		    "dcs_climate:machine/conveyor_dropper_0");
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.CONVEYOR_SORTER.get(), 1).requires(MachineInit.CONVEYOR.get()).requires(MachineInit.HOPPER_FILTER.get()).unlockedBy("has_conveyor", has(MachineInit.CONVEYOR.get()))
 		    .save(cons, "dcs_climate:machine/conveyor_sorter_0");
@@ -271,11 +271,11 @@ public class MachineRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.FERMENTATION_JAR_GREEN.get(), 1).requires(MachineInit.FERMENTATION_JAR_NORMAL.get()).requires(TagDC.ItemTag.EXTRACT_GREEN)
 		    .unlockedBy("has_farmentation_jar", has(MachineInit.FERMENTATION_JAR_NORMAL.get())).save(cons, "dcs_climate:machine/farmentation_jar_green_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.SPILE.get(), 1).requires(Items.BUCKET).requires(Tags.Items.STRING).requires(Items.TRIPWIRE_HOOK).unlockedBy("has_bucket", has(Items.BUCKET))
-		    .save(cons, "dcs_climate:machine/spile_and_cup_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.SPILE.get(), 1).requires(Items.BUCKET).requires(Tags.Items.STRING).requires(Items.TRIPWIRE_HOOK).unlockedBy("has_bucket", has(Items.BUCKET)).save(cons,
+		    "dcs_climate:machine/spile_and_cup_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CABLE_COPPER.get(), 8).pattern("XXX").define('X', Tags.Items.INGOTS_COPPER).unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER))
-		    .save(cons, "dcs_climate:machine/copper_cable_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CABLE_COPPER.get(), 8).pattern("XXX").define('X', Tags.Items.INGOTS_COPPER).unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER)).save(cons,
+		    "dcs_climate:machine/copper_cable_0");
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CABLE_COPPER_COATED.get(), 8).pattern("YYY").pattern("XXX").define('Y', TagDC.ItemTag.CLOTH_RUBBER).define('X', Tags.Items.INGOTS_COPPER)
 		    .unlockedBy("has_ingot_copper", has(Tags.Items.INGOTS_COPPER)).save(cons, "dcs_climate:machine/copper_cable_coated_0");
@@ -286,8 +286,8 @@ public class MachineRecipeProvider extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.CABLE_ALUMINUM_COATED.get(), 8).pattern("YYY").pattern("XXX").pattern("YYY").define('Y', TagDC.ItemTag.CLOTH_RUBBER).define('X', TagDC.ItemTag.INGOT_ALUMINUM)
 		    .unlockedBy("has_ingot_alminum", has(TagDC.ItemTag.INGOT_ALUMINUM)).save(cons, "dcs_climate:machine/alminum_cable_coated_0");
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PIPE_BRASS.get(), 8).pattern("XXX").define('X', TagDC.ItemTag.INGOT_BRASS).unlockedBy("has_ingot_brass", has(TagDC.ItemTag.INGOT_BRASS))
-		    .save(cons, "dcs_climate:machine/brass_pipe_0");
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PIPE_BRASS.get(), 8).pattern("XXX").define('X', TagDC.ItemTag.INGOT_BRASS).unlockedBy("has_ingot_brass", has(TagDC.ItemTag.INGOT_BRASS)).save(cons,
+		    "dcs_climate:machine/brass_pipe_0");
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.PIPE_NICKELSILVER.get(), 8).pattern("XXX").define('X', TagDC.ItemTag.INGOT_NICKEL_SILVER).unlockedBy("has_ingot_nickelsilver", has(TagDC.ItemTag.INGOT_NICKEL_SILVER))
 		    .save(cons, "dcs_climate:machine/nickelsilver_pipe_0");
@@ -358,32 +358,32 @@ public class MachineRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_1.get(), 1).requires(MachineInit.MONITOR_ANDON_LAMP.get()).requires(Tags.Items.GLASS)
 		    .unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get())).save(cons, "dcs_climate:machine/andon_panel_1");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_2.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_1.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
-		    .save(cons, "dcs_climate:machine/andon_panel_2");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_2.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_1.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get())).save(cons,
+		    "dcs_climate:machine/andon_panel_2");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_3.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_2.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
-		    .save(cons, "dcs_climate:machine/andon_panel_3");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_3.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_2.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get())).save(cons,
+		    "dcs_climate:machine/andon_panel_3");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_4.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_3.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
-		    .save(cons, "dcs_climate:machine/andon_panel_4");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_4.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_3.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get())).save(cons,
+		    "dcs_climate:machine/andon_panel_4");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_5.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_4.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
-		    .save(cons, "dcs_climate:machine/andon_panel_5");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_5.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_4.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get())).save(cons,
+		    "dcs_climate:machine/andon_panel_5");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_6.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_5.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
-		    .save(cons, "dcs_climate:machine/andon_panel_6");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_6.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_5.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get())).save(cons,
+		    "dcs_climate:machine/andon_panel_6");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_7.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_6.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
-		    .save(cons, "dcs_climate:machine/andon_panel_7");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_7.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_6.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get())).save(cons,
+		    "dcs_climate:machine/andon_panel_7");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_8.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_7.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
-		    .save(cons, "dcs_climate:machine/andon_panel_8");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_8.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_7.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get())).save(cons,
+		    "dcs_climate:machine/andon_panel_8");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_9.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_8.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
-		    .save(cons, "dcs_climate:machine/andon_panel_9");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_9.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_8.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get())).save(cons,
+		    "dcs_climate:machine/andon_panel_9");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_1.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_9.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get()))
-		    .save(cons, "dcs_climate:machine/andon_panel_1_2");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MONITOR_ANDON_PANEL_1.get(), 1).requires(MachineInit.MONITOR_ANDON_PANEL_9.get()).unlockedBy("has_andon_lamp", has(MachineInit.MONITOR_ANDON_LAMP.get())).save(cons,
+		    "dcs_climate:machine/andon_panel_1_2");
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.MONITOR_TEMP.get(), 1).pattern("XZX").pattern("YYY").define('X', TagDC.ItemTag.DUST_BISMUTH).define('Y', TagDC.ItemTag.GEM_AGATES).define('Z', CoreInit.TEMPMETER.get())
 		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH)).save(cons, "dcs_climate:machine/monitor_temp_0");
@@ -400,8 +400,8 @@ public class MachineRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MEMORY_COORD.get(), 1).requires(TagDC.ItemTag.DUST_BISMUTH).requires(TagDC.ItemTag.DUST_GOLD).requires(TagDC.ItemTag.DUST_CRYSTAL).requires(Items.PAPER)
 		    .unlockedBy("has_dust_bismuth", has(TagDC.ItemTag.DUST_BISMUTH)).save(cons, "dcs_climate:machine/memory_coord_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MEMORY_COORD.get(), 1).requires(MachineInit.MEMORY_COORD.get()).unlockedBy("has_memory_coord", has(MachineInit.MEMORY_COORD.get()))
-		    .save(cons, "dcs_climate:machine/memory_coord_reset_0");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, MachineInit.MEMORY_COORD.get(), 1).requires(MachineInit.MEMORY_COORD.get()).unlockedBy("has_memory_coord", has(MachineInit.MEMORY_COORD.get())).save(cons,
+		    "dcs_climate:machine/memory_coord_reset_0");
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MachineInit.OPTICAL_SENSOR.get(), 1).pattern("X").pattern("Y").pattern("Z").define('X', TagDC.ItemTag.GEM_FLUORITE).define('Y', Items.DAYLIGHT_DETECTOR)
 		    .define('Z', TagDC.ItemTag.GEM_TOURMALINE).unlockedBy("has_gem_tourmaline", has(TagDC.ItemTag.GEM_TOURMALINE)).save(cons, "dcs_climate:machine/optical_sensor_0");

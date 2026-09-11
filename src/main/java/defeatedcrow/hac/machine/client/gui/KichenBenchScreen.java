@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gui.GuiGraphics;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.DCTexturePath;
 import defeatedcrow.hac.core.network.packet.message.MsgTileOwnerKeyToS;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
@@ -27,7 +27,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> implements RecipeUpdateListener {
-	private static final ResourceLocation RECIPE_BUTTON_LOCATION = new ResourceLocation("minecraft", "textures/gui/recipe_button.png");
+	private static final ResourceLocation RECIPE_BUTTON_LOCATION = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/gui/recipe_button.png");
 	private final RecipeBookComponent recipeBookComponent = new RecipeBookComponent();
 	private boolean widthTooNarrow;
 
@@ -49,7 +49,7 @@ public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> 
 		this.addRenderableWidget(new ImageButton(this.leftPos + 8, this.height / 2 - 48, 20, 18, 0, 0, 19, RECIPE_BUTTON_LOCATION, button -> {
 			this.recipeBookComponent.toggleVisibility();
 			this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
-			((ImageButton) button).setPosition(this.leftPos + 8, this.height / 2 - 48);
+			button.setPosition(this.leftPos + 8, this.height / 2 - 48);
 		}));
 		this.addWidget(this.recipeBookComponent);
 		this.setInitialFocus(this.recipeBookComponent);
@@ -76,14 +76,10 @@ public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> 
 		}
 
 		List<Component> list = Lists.newArrayList();
-		boolean lock = this.getMenu()
-		    .getContainer()
-		    .isLocked();
+		boolean lock = this.getMenu().getContainer().isLocked();
 		if (this.isHovering(156, 3, 12, 20, mx, my)) {
 			if (lock) {
-				list.add(Component.translatable("dcs.tip.container.ownable_locked", this.getMenu()
-				    .getContainer()
-				    .getOwnerName()));
+				list.add(Component.translatable("dcs.tip.container.ownable_locked", this.getMenu().getContainer().getOwnerName()));
 			} else if (ClimateCore.proxy.keyShiftPushed())
 				list.add(Component.translatable("dcs.tip.container.ownable"));
 			else
@@ -104,9 +100,7 @@ public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> 
 		int j = (this.height - this.imageHeight) / 2;
 		pose.blit(DCTexturePath.GUI_KICHEN_BENCH.getLocation(), i, j, 0, 0, this.imageWidth, this.imageHeight);
 
-		boolean lock = this.getMenu()
-		    .getContainer()
-		    .isLocked();
+		boolean lock = this.getMenu().getContainer().isLocked();
 		if (lock) {
 			pose.blit(DCTexturePath.GUI_KICHEN_BENCH.getLocation(), i + 156, j + 3, 176, 21, 12, 21);
 		} else {
@@ -127,17 +121,10 @@ public class KichenBenchScreen extends AbstractContainerScreen<KichenBenchMenu> 
 		double dx = x - (i + 156);
 		double dy = y - (j + 3);
 		if (dx >= 0.0D && dy >= 0.0D && dx < 112.0D && dy < 21.0D) {
-			if (this.getMenu()
-			    .getContainer() != null && this.getMenu().isOwner) {
-				boolean b = this.getMenu()
-				    .getContainer()
-				    .toggleLock();
-				MsgTileOwnerKeyToS.sendToServer(this.minecraft.player, this.getMenu()
-				    .getContainer()
-				    .getBlockPos(), b);
-				Minecraft.getInstance()
-				    .getSoundManager()
-				    .play(SimpleSoundInstance.forUI(SoundEvents.IRON_DOOR_OPEN, 1.0F));
+			if (this.getMenu().getContainer() != null && this.getMenu().isOwner) {
+				boolean b = this.getMenu().getContainer().toggleLock();
+				MsgTileOwnerKeyToS.sendToServer(this.minecraft.player, this.getMenu().getContainer().getBlockPos(), b);
+				Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.IRON_DOOR_OPEN, 1.0F));
 				return true;
 			}
 		}

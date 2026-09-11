@@ -26,7 +26,6 @@ import defeatedcrow.hac.core.material.item.MetalItemDC;
 import defeatedcrow.hac.core.material.item.NoTabItemDC;
 import defeatedcrow.hac.core.material.item.NullItemDC;
 import defeatedcrow.hac.core.material.item.armor.ArmorItemDC;
-import net.minecraft.world.item.ArmorItem;
 import defeatedcrow.hac.core.material.item.tool.AgateMortarItem;
 import defeatedcrow.hac.core.material.item.tool.AltimeterItem;
 import defeatedcrow.hac.core.material.item.tool.CanoeItem;
@@ -87,6 +86,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -127,14 +127,14 @@ public class CoreInit {
 
 	public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ClimateCore.MOD_ID);
 
-	public static final RegistryObject<CreativeModeTab> CORE = TABS.register("core",
-	    () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.core")).icon(() -> new ItemStack(CoreInit.OREITEM_WHITE2.get())).build());
-	public static final RegistryObject<CreativeModeTab> BUILD = TABS.register("build",
-	    () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.build")).icon(() -> new ItemStack(CoreInit.STONE_GYPSUM.get())).build());
-	public static final RegistryObject<CreativeModeTab> MACHINE = TABS.register("machine",
-	    () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.machine")).icon(() -> new ItemStack(CoreInit.SCREWDRIVER.get())).build());
-	public static final RegistryObject<CreativeModeTab> CLOTH = TABS.register("clothing",
-	    () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.clothing")).icon(() -> new ItemStack(CoreInit.SHIRT_LINEN.get())).build());
+	public static final RegistryObject<CreativeModeTab> CORE
+	    = TABS.register("dcs.1.core", () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.core")).icon(() -> new ItemStack(CoreInit.OREITEM_WHITE2.get())).build());
+	public static final RegistryObject<CreativeModeTab> BUILD
+	    = TABS.register("dcs.2.build", () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.build")).icon(() -> new ItemStack(CoreInit.STONE_GYPSUM.get())).build());
+	public static final RegistryObject<CreativeModeTab> MACHINE
+	    = TABS.register("dcs.3.machine", () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.machine")).icon(() -> new ItemStack(CoreInit.SCREWDRIVER.get())).build());
+	public static final RegistryObject<CreativeModeTab> CLOTH
+	    = TABS.register("dcs.4.clothing", () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.clothing")).icon(() -> new ItemStack(CoreInit.SHIRT_LINEN.get())).build());
 
 	public static void init() {
 		FoodInit.init();
@@ -525,20 +525,15 @@ public class CoreInit {
 	public static final RegistryObject<Block> STONE_NATRON = regBlock("stone_natron", () -> new LayerStoneBlock("stone_natron"), TagDC.ItemTag.ORES_NATRON);
 
 	public static final RegistryObject<Block> ORE_WHITE = regBlock("ore_white", () -> new OreBlockGemDC(OREITEM_WHITE1, "ore_white").setSecondary(GEM_CRYSTAL), TagDC.ItemTag.ORES_WHITE);
-	public static final RegistryObject<Block> ORE_WHITE_DEEP = regBlock("ore_white_deep", () -> new OreBlockGemDC(OREITEM_WHITE2, "ore_white_deep").setSecondary(GEM_THUNDEREGG)
-	    .setTier(2), TagDC.ItemTag.ORES_WHITE_DEEP);
+	public static final RegistryObject<Block> ORE_WHITE_DEEP = regBlock("ore_white_deep", () -> new OreBlockGemDC(OREITEM_WHITE2, "ore_white_deep").setSecondary(GEM_THUNDEREGG).setTier(2), TagDC.ItemTag.ORES_WHITE_DEEP);
 	public static final RegistryObject<Block> ORE_BLUE = regBlock("ore_blue", () -> new OreBlockGemDC(OREITEM_BLUE1, "ore_blue").setSecondary(() -> Items.LAPIS_LAZULI), TagDC.ItemTag.ORES_BLUE);
-	public static final RegistryObject<Block> ORE_BLUE_DEEP = regBlock("ore_blue_deep", () -> new OreBlockGemDC(OREITEM_BLUE2, "ore_blue_deep").setSecondary(GEM_CELESTITE)
-	    .setTier(2), TagDC.ItemTag.ORES_BLUE_DEEP);
+	public static final RegistryObject<Block> ORE_BLUE_DEEP = regBlock("ore_blue_deep", () -> new OreBlockGemDC(OREITEM_BLUE2, "ore_blue_deep").setSecondary(GEM_CELESTITE).setTier(2), TagDC.ItemTag.ORES_BLUE_DEEP);
 	public static final RegistryObject<Block> ORE_BLACK = regBlock("ore_black", () -> new OreBlockGemDC(OREITEM_BLACK1, "ore_black").setSecondary(GEM_VIVIANITE), TagDC.ItemTag.ORES_BLACK);
-	public static final RegistryObject<Block> ORE_BLACK_DEEP = regBlock("ore_black_deep", () -> new OreBlockGemDC(OREITEM_BLACK2, "ore_black_deep").setSecondary(GEM_FANG)
-	    .setTier(2), TagDC.ItemTag.ORES_BLACK_DEEP);
+	public static final RegistryObject<Block> ORE_BLACK_DEEP = regBlock("ore_black_deep", () -> new OreBlockGemDC(OREITEM_BLACK2, "ore_black_deep").setSecondary(GEM_FANG).setTier(2), TagDC.ItemTag.ORES_BLACK_DEEP);
 	public static final RegistryObject<Block> ORE_RED = regBlock("ore_red", () -> new OreBlockGemDC(OREITEM_RED1, "ore_red").setSecondary(GEM_JASPER), TagDC.ItemTag.ORES_RED);
-	public static final RegistryObject<Block> ORE_RED_DEEP = regBlock("ore_red_deep", () -> new OreBlockGemDC(OREITEM_RED2, "ore_red_deep").setSecondary(GEM_ALMANDINE)
-	    .setTier(2), TagDC.ItemTag.ORES_RED_DEEP);
+	public static final RegistryObject<Block> ORE_RED_DEEP = regBlock("ore_red_deep", () -> new OreBlockGemDC(OREITEM_RED2, "ore_red_deep").setSecondary(GEM_ALMANDINE).setTier(2), TagDC.ItemTag.ORES_RED_DEEP);
 	public static final RegistryObject<Block> ORE_GREEN = regBlock("ore_green", () -> new OreBlockGemDC(OREITEM_GREEN1, "ore_green").setSecondary(GEM_MALACHITE), TagDC.ItemTag.ORES_GREEN);
-	public static final RegistryObject<Block> ORE_GREEN_DEEP = regBlock("ore_green_deep", () -> new OreBlockGemDC(OREITEM_GREEN2, "ore_green_deep").setSecondary(GEM_OLIVINE)
-	    .setTier(2), TagDC.ItemTag.ORES_GREEN_DEEP);
+	public static final RegistryObject<Block> ORE_GREEN_DEEP = regBlock("ore_green_deep", () -> new OreBlockGemDC(OREITEM_GREEN2, "ore_green_deep").setSecondary(GEM_OLIVINE).setTier(2), TagDC.ItemTag.ORES_GREEN_DEEP);
 
 	public static final RegistryObject<Block> DUSTBLOCK_BRASS = regBlock("dustblock_brass", () -> new AlloyDustBlockDC("dustblock_brass"), TagDC.ItemTag.DUSTBLOCK_BRASS);
 	public static final RegistryObject<Block> DUSTBLOCK_BRONZE = regBlock("dustblock_bronze", () -> new AlloyDustBlockDC("dustblock_bronze"), TagDC.ItemTag.DUSTBLOCK_BRONZE);
@@ -623,36 +618,23 @@ public class CoreInit {
 	public static final RegistryObject<Block> CASTING_TOURMARINE_RAW = regBlock("casting_mold_tourmarine_raw", () -> new CastingMoldBlock("casting_mold_tourmarine_raw", CoreInit.DUST_ALUMINA, true), null);
 	public static final RegistryObject<Block> CASTING_TOURMARINE = regBlock("casting_mold_tourmarine", () -> new CastingMoldBlock("casting_mold_tourmarine", CoreInit.GEM_TOURMALINE, false), null);
 
-	public static final RegistryObject<EntityType<ThrownHarpoon>> HARPOON = ENTITIES.register("harpoon", () -> EntityType.Builder.<ThrownHarpoon> of(ThrownHarpoon::new, MobCategory.MISC)
-	    .sized(0.5F, 0.5F)
-	    .clientTrackingRange(4)
-	    .updateInterval(20)
-	    .build("harpoon"));
+	public static final RegistryObject<EntityType<ThrownHarpoon>> HARPOON
+	    = ENTITIES.register("harpoon", () -> EntityType.Builder.<ThrownHarpoon> of(ThrownHarpoon::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("harpoon"));
 
-	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_CHOPSTICKS = ENTITIES.register("cutlery_chopsticks", () -> EntityType.Builder.<ObjectEntityBaseDC> of(ObjectEntityBaseDC::new, MobCategory.MISC)
-	    .sized(0.25F, 0.25F)
-	    .updateInterval(5)
-	    .build("cutlery_chopsticks"));
+	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_CHOPSTICKS
+	    = ENTITIES.register("cutlery_chopsticks", () -> EntityType.Builder.<ObjectEntityBaseDC> of(ObjectEntityBaseDC::new, MobCategory.MISC).sized(0.25F, 0.25F).updateInterval(5).build("cutlery_chopsticks"));
 
-	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_SPOON = ENTITIES.register("cutlery_spoon", () -> EntityType.Builder.<ObjectEntityBaseDC> of(ObjectEntityBaseDC::new, MobCategory.MISC)
-	    .sized(0.25F, 0.25F)
-	    .updateInterval(5)
-	    .build("cutlery_spoon"));
+	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_SPOON
+	    = ENTITIES.register("cutlery_spoon", () -> EntityType.Builder.<ObjectEntityBaseDC> of(ObjectEntityBaseDC::new, MobCategory.MISC).sized(0.25F, 0.25F).updateInterval(5).build("cutlery_spoon"));
 
-	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_FORK = ENTITIES.register("cutlery_fork", () -> EntityType.Builder.<ObjectEntityBaseDC> of(ObjectEntityBaseDC::new, MobCategory.MISC)
-	    .sized(0.25F, 0.25F)
-	    .updateInterval(5)
-	    .build("cutlery_fork"));
+	public static final RegistryObject<EntityType<ObjectEntityBaseDC>> CUTLERY_FORK
+	    = ENTITIES.register("cutlery_fork", () -> EntityType.Builder.<ObjectEntityBaseDC> of(ObjectEntityBaseDC::new, MobCategory.MISC).sized(0.25F, 0.25F).updateInterval(5).build("cutlery_fork"));
 
-	public static final RegistryObject<EntityType<ChairEntity>> CHAIR_ENTITY = ENTITIES.register("chair_entity", () -> EntityType.Builder.<ChairEntity> of(ChairEntity::new, MobCategory.MISC)
-	    .sized(0.5F, 0.1F)
-	    .updateInterval(10)
-	    .build("chair_entity"));
+	public static final RegistryObject<EntityType<ChairEntity>> CHAIR_ENTITY
+	    = ENTITIES.register("chair_entity", () -> EntityType.Builder.<ChairEntity> of(ChairEntity::new, MobCategory.MISC).sized(0.5F, 0.1F).updateInterval(10).build("chair_entity"));
 
-	public static final RegistryObject<EntityType<CanoeEntity>> CANOE = ENTITIES.register("canoe_entity", () -> EntityType.Builder.<CanoeEntity> of(CanoeEntity::new, MobCategory.MISC)
-	    .sized(1.375F, 0.5625F)
-	    .clientTrackingRange(10)
-	    .build("canoe_entity"));
+	public static final RegistryObject<EntityType<CanoeEntity>> CANOE
+	    = ENTITIES.register("canoe_entity", () -> EntityType.Builder.<CanoeEntity> of(CanoeEntity::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build("canoe_entity"));
 
 	// effect
 
@@ -662,8 +644,8 @@ public class CoreInit {
 
 	public static final RegistryObject<MobEffect> BIRD = regPotionEffect("effect_bird", () -> new MobEffectBird(false, "effect_bird", MobEffectCategory.BENEFICIAL, 0xFFD050).setIconIndex(1, 0));
 	public static final RegistryObject<MobEffect> FISH = regPotionEffect("effect_fish", () -> new MobEffectBird(true, "effect_fish", MobEffectCategory.BENEFICIAL, 0x5080FF).setIconIndex(2, 0));
-	public static final RegistryObject<MobEffect> NIMBLE = regPotionEffect("effect_nimble", () -> new MobEffectDC("effect_nimble", MobEffectCategory.BENEFICIAL, 0xFF90E0).setIconIndex(2, 1)
-	    .addAttributeModifier(Attributes.ATTACK_SPEED, MobEffectDC.ATTACK_SPEED_MODIFIER.toString(), 0.25F, AttributeModifier.Operation.ADDITION));
+	public static final RegistryObject<MobEffect> NIMBLE = regPotionEffect("effect_nimble", () -> new MobEffectDC("effect_nimble", MobEffectCategory.BENEFICIAL, 0xFF90E0).setIconIndex(2, 1).addAttributeModifier(Attributes.ATTACK_SPEED,
+	    MobEffectDC.ATTACK_SPEED_MODIFIER.toString(), 0.25F, AttributeModifier.Operation.ADDITION));
 	public static final RegistryObject<MobEffect> HEAVY = regPotionEffect("effect_heavyboots", () -> new MobEffectDC("effect_heavyboots", MobEffectCategory.BENEFICIAL, 0x00D050).setIconIndex(0, 1)
 	    .addAttributeModifier(Attributes.KNOCKBACK_RESISTANCE, MobEffectDC.NOCKBACK_MODIFIER.toString(), 0.2F, AttributeModifier.Operation.ADDITION));
 	public static final RegistryObject<MobEffect> TRACER = regPotionEffect("effect_tracer", () -> new MobEffectDC("effect_tracer", MobEffectCategory.BENEFICIAL, 0x500050).setIconIndex(2, 2));
@@ -676,49 +658,18 @@ public class CoreInit {
 
 	public static final WaterTypeFluidDC BRINE = new WaterTypeFluidDC("brine", 0xE000F0C0);
 	public static final WaterTypeFluidDC HOTSPRING = new WaterTypeFluidDC("hotspring", 0xFFAEFFDE, 353);
-	public static final WaterTypeFluidDC PLANT_OIL = new WaterTypeFluidDC("plant_oil", 0xFFAFC000, FluidType.Properties.create()
-	    .canSwim(false)
-	    .fallDistanceModifier(0F)
-	    .motionScale(0.007D)
-	    .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-	    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
-	    .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
-	    .canHydrate(false)
-	    .density(900)
-	    .viscosity(6000)
-	    .temperature(298));
-	public static final WaterTypeFluidDC USED_PLANT_OIL = new WaterTypeFluidDC("used_plant_oil", 0xFFA08020, FluidType.Properties.create()
-	    .canSwim(false)
-	    .fallDistanceModifier(0F)
-	    .motionScale(0.007D)
-	    .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-	    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
-	    .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
-	    .canHydrate(false)
-	    .density(900)
-	    .viscosity(6000)
-	    .temperature(298));
-	public static final WaterTypeFluidDC FUEL_OIL = new WaterTypeFluidDC("fuel_oil", 0xFFF8E000, FluidType.Properties.create()
-	    .canSwim(false)
-	    .fallDistanceModifier(0F)
-	    .motionScale(0.007D)
-	    .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-	    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
-	    .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
-	    .canHydrate(false)
-	    .density(800)
-	    .viscosity(1500)
-	    .temperature(298));
-	public static final WaterTypeFluidDC SPARKLING = new WaterTypeFluidDC("sparkling", 0xFF40B0FF, FluidType.Properties.create()
-	    .fallDistanceModifier(0F)
-	    .canExtinguish(true)
-	    .canConvertToSource(true)
-	    .supportsBoating(true)
-	    .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-	    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
-	    .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
-	    .canHydrate(true)
-	    .temperature(283), "fluid/sparkling_still");
+	public static final WaterTypeFluidDC PLANT_OIL
+	    = new WaterTypeFluidDC("plant_oil", 0xFFAFC000, FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+	        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(900).viscosity(6000).temperature(298));
+	public static final WaterTypeFluidDC USED_PLANT_OIL
+	    = new WaterTypeFluidDC("used_plant_oil", 0xFFA08020, FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+	        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(900).viscosity(6000).temperature(298));
+	public static final WaterTypeFluidDC FUEL_OIL
+	    = new WaterTypeFluidDC("fuel_oil", 0xFFF8E000, FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+	        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(800).viscosity(1500).temperature(298));
+	public static final WaterTypeFluidDC SPARKLING
+	    = new WaterTypeFluidDC("sparkling", 0xFF40B0FF, FluidType.Properties.create().fallDistanceModifier(0F).canExtinguish(true).canConvertToSource(true).supportsBoating(true).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+	        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(true).temperature(283), "fluid/sparkling_still");
 
 	public static final GasTypeFluidDC AIR = new GasTypeFluidDC("compressed_air", 0xC040B0FF, false, "fluid/sparkling_still");
 

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:bones"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/metalbox_bone"
-  }
+  },
+  "show_notification": true
 }

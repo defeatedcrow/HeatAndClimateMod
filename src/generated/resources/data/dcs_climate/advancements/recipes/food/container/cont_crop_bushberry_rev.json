@@ -30,5 +30,6 @@
     "recipes": [
       "dcs_climate:container/cont_crop_bushberry_rev"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

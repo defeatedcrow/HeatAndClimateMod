@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "redstone",
   "key": {
     "X": {
       "tag": "forge:glass"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "minecraft:daylight_detector"
-  }
+  },
+  "show_notification": true
 }

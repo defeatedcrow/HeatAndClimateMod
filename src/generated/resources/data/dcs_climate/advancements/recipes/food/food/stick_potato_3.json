@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/stick_potato_3"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "minecraft:hopper"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/hopper_filter"
-  }
+  },
+  "show_notification": true
 }

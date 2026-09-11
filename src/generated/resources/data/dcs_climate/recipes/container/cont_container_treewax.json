@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingredients/treewax"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/container_treewax"
-  }
+  },
+  "show_notification": true
 }

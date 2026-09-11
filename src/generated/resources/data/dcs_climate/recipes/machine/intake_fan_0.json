@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingots/aluminum"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/intake_fan"
-  }
+  },
+  "show_notification": true
 }

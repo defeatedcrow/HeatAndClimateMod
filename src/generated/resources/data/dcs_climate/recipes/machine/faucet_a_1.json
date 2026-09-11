@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingredients/water"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/faucet_a"
-  }
+  },
+  "show_notification": true
 }

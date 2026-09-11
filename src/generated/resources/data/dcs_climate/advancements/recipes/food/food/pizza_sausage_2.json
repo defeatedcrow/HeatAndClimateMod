@@ -30,5 +30,6 @@
     "recipes": [
       "dcs_climate:food/pizza_sausage_2"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

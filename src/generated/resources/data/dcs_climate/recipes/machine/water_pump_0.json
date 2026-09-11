@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "W": {
       "tag": "dcs_climate:impellers/small"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/water_pump"
-  }
+  },
+  "show_notification": true
 }

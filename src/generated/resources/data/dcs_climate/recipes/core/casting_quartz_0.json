@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "X": {
       "tag": "forge:ores/gipsum"
@@ -13,5 +14,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/casting_mold_quartz_raw"
-  }
+  },
+  "show_notification": true
 }

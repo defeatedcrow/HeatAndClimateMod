@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingots/aluminum"
@@ -11,5 +12,6 @@
   ],
   "result": {
     "item": "minecraft:bucket"
-  }
+  },
+  "show_notification": true
 }

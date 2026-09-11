@@ -17,14 +17,14 @@ import defeatedcrow.hac.core.ClimateCore;
 
 public class FuelConfig {
 
-	private FuelConfig() {};
+	private FuelConfig() {}
 
 	public static FuelConfig INSTANCE = new FuelConfig();
 
 	private static Map<String, DeviceFuel> list = new LinkedHashMap<>();
 
 	public static void addRecipe(String name, DeviceFuel recipe) {
-		INSTANCE.list.put(name, recipe);
+		FuelConfig.list.put(name, recipe);
 	}
 
 	public static void initFile() {
@@ -34,12 +34,12 @@ public class FuelConfig {
 
 		// configフォルダに生成する
 		// 生成は最初のみ
-		File dir = new File(ClimateCore.dataDir, "/recipes/fuel/");
+		File dir = new File(ClimateCore.dataDir, "/recipes/device_fuel/");
 		if (!dir.getParentFile().exists()) {
 			dir.getParentFile().mkdirs();
 		}
 
-		for (Entry<String, DeviceFuel> table : INSTANCE.list.entrySet()) {
+		for (Entry<String, DeviceFuel> table : FuelConfig.list.entrySet()) {
 			File f = new File(dir, table.getValue().getType().toString() + "_" + table.getKey() + ".json");
 
 			// すでにファイルが有る場合は何もしない。

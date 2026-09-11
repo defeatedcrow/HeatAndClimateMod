@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingots/sus"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/crusher_blade_sanitary"
-  }
+  },
+  "show_notification": true
 }

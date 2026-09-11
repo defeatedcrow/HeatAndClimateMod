@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/repair_oxidised_block_waxed"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

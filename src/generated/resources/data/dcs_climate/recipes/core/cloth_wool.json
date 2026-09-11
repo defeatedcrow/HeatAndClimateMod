@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:strings/wool"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:food/cloth_wool"
-  }
+  },
+  "show_notification": true
 }

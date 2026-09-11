@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "dcs_climate:food/leaves_euphorbia_manchineel"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "dcs_climate:food/sap_poison"
-  }
+  },
+  "show_notification": true
 }

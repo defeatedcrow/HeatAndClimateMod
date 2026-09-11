@@ -31,5 +31,6 @@
     [
       "has_hac_fish"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

@@ -2,13 +2,14 @@ package defeatedcrow.hac.plugin.jei;
 
 import java.util.List;
 
+import org.joml.Matrix4f;
+
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -20,6 +21,7 @@ import defeatedcrow.hac.plugin.jei.ingredients.HeatTierRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.HumidityRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.IngredientTypeDC;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -41,9 +43,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 
 	public ClimateSmeltingCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(FoodInit.BREAD_ROUND_BAKED_ITEM.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.SMELTING.getLocation(), 21, 20, 127, 68)
-				.addPadding(0, 0, 10, 3)
-				.build();
+		background = guiHelper.drawableBuilder(PluginTexDC.SMELTING.getLocation(), 21, 20, 127, 68).addPadding(0, 0, 10, 3).build();
 	}
 
 	@Override
@@ -78,8 +78,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 			heats.addAll(DCHeatTier.elements());
 		}
 		for (DCHeatTier heat : heats) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 34 + heat.getID() * 6, 28).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
-					new HeatTierRenderer(6, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 34 + heat.getID() * 6, 28).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER, new HeatTierRenderer(6, 3));
 		}
 
 		List<DCHumidity> hums = recipe.requiredHum();
@@ -87,8 +86,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 			hums.addAll(DCHumidity.elements());
 		}
 		for (DCHumidity hum : hums) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 34 + hum.getID() * 21, 38).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
-					new HumidityRenderer(21, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 34 + hum.getID() * 21, 38).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY, new HumidityRenderer(21, 3));
 		}
 
 		List<DCAirflow> airs = recipe.requiredAir();
@@ -96,13 +94,12 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 			airs.addAll(DCAirflow.elements());
 		}
 		for (DCAirflow air : airs) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 34 + air.getID() * 21, 48).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW,
-					new AirflowRenderer(21, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 34 + air.getID() * 21, 48).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW, new AirflowRenderer(21, 3));
 		}
 	}
 
 	@Override
-	public List<Component> getTooltipStrings(IClimateSmelting recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+	public void getTooltip(ITooltipBuilder tooltip, IClimateSmelting recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
 		List<Component> list = Lists.newArrayList();
 		// list.add(Component.translatable("X :" + mouseX + ", Y: " + mouseY));
 
@@ -121,7 +118,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 				list.add(Component.translatable("dcs.gui.jei.smelting_tip3"));
 			}
 
-		return list;
+		tooltip.addAll(list);
 	}
 
 	@Override
@@ -130,7 +127,7 @@ public class ClimateSmeltingCategory implements IRecipeCategory<IClimateSmelting
 		Font font = minecraft.font;
 
 		MutableComponent text4 = Component.literal(recipe.recipeFrequency() + "Tick");
-		graphics.drawString(font, text4, 70, 56, 0xFF000000);
+		graphics.drawString(font, text4, 70, 56, 0xFF000000, false);
 
 		RenderSystem.setShaderTexture(0, PluginTexDC.SMELTING.getLocation());
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);

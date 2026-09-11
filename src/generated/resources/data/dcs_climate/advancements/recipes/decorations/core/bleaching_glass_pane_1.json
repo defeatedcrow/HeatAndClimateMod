@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/bleaching_glass_pane_1"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

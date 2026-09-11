@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/kobachi_tuna_avocado_0"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

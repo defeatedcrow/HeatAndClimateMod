@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/foodmaterial_chinese_noodle"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

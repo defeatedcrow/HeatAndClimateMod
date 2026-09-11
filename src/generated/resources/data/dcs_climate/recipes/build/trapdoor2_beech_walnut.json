@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "redstone",
   "key": {
     "X": {
       "item": "dcs_climate:food/plank_beech_walnut"
@@ -12,5 +13,6 @@
   "result": {
     "count": 3,
     "item": "dcs_climate:build/trapdoor_walnut"
-  }
+  },
+  "show_notification": true
 }

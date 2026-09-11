@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "X": {
       "tag": "forge:ingots/steel"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/pickaxe_steel"
-  }
+  },
+  "show_notification": true
 }

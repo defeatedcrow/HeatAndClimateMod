@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/kobachi_poisson_cru_2"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

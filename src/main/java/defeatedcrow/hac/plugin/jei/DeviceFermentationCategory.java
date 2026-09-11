@@ -2,12 +2,13 @@ package defeatedcrow.hac.plugin.jei;
 
 import java.util.List;
 
+import org.joml.Matrix4f;
+
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -20,6 +21,7 @@ import defeatedcrow.hac.plugin.jei.ingredients.HeatTierRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.HumidityRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.IngredientTypeDC;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -39,9 +41,7 @@ public class DeviceFermentationCategory implements IRecipeCategory<IDeviceRecipe
 
 	public DeviceFermentationCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(MachineInit.FERMENTATION_JAR_NORMAL.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.FERMENTATION.getLocation(), 15, 6, 142, 92)
-				.addPadding(0, 0, 8, 3)
-				.build();
+		background = guiHelper.drawableBuilder(PluginTexDC.FERMENTATION.getLocation(), 15, 6, 142, 92).addPadding(0, 0, 8, 3).build();
 	}
 
 	@Override
@@ -96,8 +96,7 @@ public class DeviceFermentationCategory implements IRecipeCategory<IDeviceRecipe
 			heats.addAll(DCHeatTier.elements());
 		}
 		for (DCHeatTier heat : heats) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 38 + heat.getID() * 6, 66).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
-					new HeatTierRenderer(6, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 38 + heat.getID() * 6, 66).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER, new HeatTierRenderer(6, 3));
 		}
 
 		List<DCHumidity> hums = recipe.requiredHum();
@@ -105,8 +104,7 @@ public class DeviceFermentationCategory implements IRecipeCategory<IDeviceRecipe
 			hums.addAll(DCHumidity.elements());
 		}
 		for (DCHumidity hum : hums) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 38 + hum.getID() * 21, 75).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
-					new HumidityRenderer(21, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 38 + hum.getID() * 21, 75).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY, new HumidityRenderer(21, 3));
 		}
 
 		List<DCAirflow> airs = recipe.requiredAir();
@@ -114,13 +112,12 @@ public class DeviceFermentationCategory implements IRecipeCategory<IDeviceRecipe
 			airs.addAll(DCAirflow.elements());
 		}
 		for (DCAirflow air : airs) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 38 + air.getID() * 21, 85).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW,
-					new AirflowRenderer(21, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 38 + air.getID() * 21, 85).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW, new AirflowRenderer(21, 3));
 		}
 	}
 
 	@Override
-	public List<Component> getTooltipStrings(IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+	public void getTooltip(ITooltipBuilder tooltip, IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
 		List<Component> list = Lists.newArrayList();
 		// list.add(Component.translatable("X :" + mouseX + ", Y: " + mouseY));
 
@@ -131,7 +128,7 @@ public class DeviceFermentationCategory implements IRecipeCategory<IDeviceRecipe
 			}
 		}
 
-		return list;
+		tooltip.addAll(list);
 	}
 
 	@Override

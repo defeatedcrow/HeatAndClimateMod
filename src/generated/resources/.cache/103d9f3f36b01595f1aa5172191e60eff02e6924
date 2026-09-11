@@ -1,0 +1,8 @@
+// 1.20.1	2026-09-10T22:37:33.9879462	Registries
+9d4148dab699f52c32e49ac2aab91160b3e74c27 data/dcs_climate/damage_type/cold.json
+972e9ffc97f1e1927648d4d535d2121b342441f2 data/dcs_climate/damage_type/dry.json
+aa22f9a0efd9b9d81f7ae2610ffb893ca8248b90 data/dcs_climate/damage_type/heat.json
+a2e521335048755074415ec506b84fba6412fc32 data/dcs_climate/damage_type/machine.json
+5e6ed9c0b3febd14ce1e10f9eb70629366db5901 data/dcs_climate/damage_type/suffocation.json
+9409085e4fa6726a952e24aca527c65d4ee04d95 data/dcs_climate/damage_type/water.json
+17b17b1d43e462ddf2d60189980a55facd038cbd data/dcs_climate/damage_type/wind.json

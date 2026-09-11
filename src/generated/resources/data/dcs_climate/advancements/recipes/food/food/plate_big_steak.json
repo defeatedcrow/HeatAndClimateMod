@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/plate_big_steak"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

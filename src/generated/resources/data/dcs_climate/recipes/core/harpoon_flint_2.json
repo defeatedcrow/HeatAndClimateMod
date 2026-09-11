@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "X": {
       "tag": "forge:rods/wooden"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/harpoon_flint"
-  }
+  },
+  "show_notification": true
 }

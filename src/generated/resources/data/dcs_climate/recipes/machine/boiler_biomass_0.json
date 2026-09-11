@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingots/steel"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/boiler_biomass"
-  }
+  },
+  "show_notification": true
 }

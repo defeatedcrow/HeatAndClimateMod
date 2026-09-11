@@ -12,7 +12,6 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 
@@ -1269,7 +1268,7 @@ public class MagicRecipeProvider extends RecipeProvider {
 				.requires(MagicInit.EXTRACT_BLUE.get())
 				.requires(Items.BUCKET)
 				.unlockedBy("has_extract_blue", has(TagDC.ItemTag.EXTRACT_BLUE))
-				.save(cons, "dcs_climate:magic/craft_pigment_green3");
+				.save(cons, "dcs_climate:magic/craft_blue_to_water");
 
 	}
 

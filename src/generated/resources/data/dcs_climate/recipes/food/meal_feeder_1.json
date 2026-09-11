@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:animal_feeds"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "dcs_climate:food/meal_feeder"
-  }
+  },
+  "show_notification": true
 }

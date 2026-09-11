@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "X": {
       "tag": "forge:saps/latex"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/dustblock_rubber"
-  }
+  },
+  "show_notification": true
 }

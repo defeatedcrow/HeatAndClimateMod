@@ -17,7 +17,7 @@
           {
             "condition": "minecraft:match_tool",
             "predicate": {
-              "items": "#forge:fertilizer"
+              "tag": "forge:fertilizer"
             }
           }
         ]
@@ -44,5 +44,6 @@
     [
       "use_fertilizer"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

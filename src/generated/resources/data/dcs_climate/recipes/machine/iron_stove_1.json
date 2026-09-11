@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": [
       {
@@ -20,5 +21,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/chamber_iron"
-  }
+  },
+  "show_notification": true
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "dcs_climate:food/log_sumac_lacquer"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/logcont_sumac_lacquer"
-  }
+  },
+  "show_notification": true
 }

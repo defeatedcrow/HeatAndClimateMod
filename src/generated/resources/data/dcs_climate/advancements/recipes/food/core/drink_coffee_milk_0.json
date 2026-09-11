@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/drink_coffee_milk_0"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

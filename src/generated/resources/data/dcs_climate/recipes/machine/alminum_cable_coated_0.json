@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingots/aluminum"
@@ -16,5 +17,6 @@
   "result": {
     "count": 8,
     "item": "dcs_climate:machine/cable_aluminum_coated"
-  }
+  },
+  "show_notification": true
 }

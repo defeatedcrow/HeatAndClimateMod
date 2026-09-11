@@ -31,5 +31,6 @@
     [
       "has_rare_crop"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

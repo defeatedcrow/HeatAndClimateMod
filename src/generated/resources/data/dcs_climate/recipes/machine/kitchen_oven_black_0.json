@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": [
       {
@@ -25,5 +26,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/kitchen_oven_black"
-  }
+  },
+  "show_notification": true
 }

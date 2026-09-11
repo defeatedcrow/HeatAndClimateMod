@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "X": {
       "tag": "minecraft:planks"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/hand_spindle"
-  }
+  },
+  "show_notification": true
 }

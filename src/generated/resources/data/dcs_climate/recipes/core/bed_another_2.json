@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "X": {
       "item": "dcs_climate:build/straw_mat"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "minecraft:yellow_bed"
-  }
+  },
+  "show_notification": true
 }

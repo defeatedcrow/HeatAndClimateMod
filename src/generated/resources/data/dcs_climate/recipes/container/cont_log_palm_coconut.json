@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "dcs_climate:food/log_palm_coconut"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/logcont_palm_coconut"
-  }
+  },
+  "show_notification": true
 }

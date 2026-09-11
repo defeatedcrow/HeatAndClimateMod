@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/sake_chazuke_2"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

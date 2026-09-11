@@ -31,5 +31,6 @@
     [
       "has_ring"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

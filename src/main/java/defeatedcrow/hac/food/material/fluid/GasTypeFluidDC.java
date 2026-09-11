@@ -53,15 +53,15 @@ public class GasTypeFluidDC {
 		name = s;
 		isWaterType = false;
 		color = c;
-		tex = new ResourceLocation(ClimateCore.MOD_ID, texName);
+		tex = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, texName);
 
 		type = CoreInit.FLUID_TYPES.register(name, () -> new FluidType(prop) {
 			@Override
 			public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
 				consumer.accept(new IClientFluidTypeExtensions() {
 
-					private static final ResourceLocation UNDERWATER_LOCATION = new ResourceLocation("minecraft", "textures/misc/underwater.png"),
-					    WATER_OVERLAY = new ResourceLocation("minecraft", "block/water_overlay");
+					private static final ResourceLocation UNDERWATER_LOCATION = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/misc/underwater.png"),
+					    WATER_OVERLAY = ResourceLocation.fromNamespaceAndPath("minecraft", "block/water_overlay");
 
 					@Override
 					public ResourceLocation getStillTexture() {
@@ -98,9 +98,7 @@ public class GasTypeFluidDC {
 
 			@Override
 			public void onVaporize(@Nullable Player player, Level level, BlockPos pos, FluidStack stack) {
-				if (!level.getBlockState(pos.above())
-				    .getFluidState()
-				    .isEmpty()) {
+				if (!level.getBlockState(pos.above()).getFluidState().isEmpty()) {
 					level.playSound(player, pos, SoundEvents.BUBBLE_COLUMN_UPWARDS_AMBIENT, SoundSource.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
 					for (int l = 0; l < 4; ++l)
 						level.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, pos.getX() + Math.random(), pos.getY() + Math.random(), pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);
@@ -112,15 +110,10 @@ public class GasTypeFluidDC {
 		still = CoreInit.FLUIDS.register(name, () -> new ForgeFlowingFluid.Source(fluidProperties()));
 		flow = CoreInit.FLUIDS.register(name + "_flowing", () -> new ForgeFlowingFluid.Flowing(fluidProperties()));
 
-		block = CoreInit.BLOCKS.register("fluid/" + name, () -> new LiquidBlock(getStillFluid(), BlockBehaviour.Properties.of().mapColor(MapColor.WATER).liquid()
-		    .noCollission()
-		    .strength(100.0F)
-		    .noLootTable()) {
+		block = CoreInit.BLOCKS.register("fluid/" + name, () -> new LiquidBlock(getStillFluid(), BlockBehaviour.Properties.of().mapColor(MapColor.WATER).liquid().noCollission().strength(100.0F).noLootTable()) {
 			@Override
 			public void onPlace(BlockState state, Level level, BlockPos pos, BlockState state2, boolean flag) {
-				if (!level.getBlockState(pos.above())
-				    .getFluidState()
-				    .isEmpty()) {
+				if (!level.getBlockState(pos.above()).getFluidState().isEmpty()) {
 					level.playSound(null, pos, SoundEvents.BUBBLE_COLUMN_UPWARDS_AMBIENT, SoundSource.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
 					for (int l = 0; l < 4; ++l)
 						level.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, pos.getX() + Math.random(), pos.getY() + Math.random(), pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);
@@ -133,23 +126,12 @@ public class GasTypeFluidDC {
 				level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
 			}
 		});
-		bucket = CoreInit.ITEMS.register("fluid/bucket_" + name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new BucketItem(getStillFluid(), new Item.Properties().craftRemainder(Items.BUCKET)
-		    .stacksTo(1)), CoreInit.CORE));
+		bucket = CoreInit.ITEMS.register("fluid/bucket_" + name, () -> defeatedcrow.hac.core.material.tabs.CreativeTabDC.of(new BucketItem(getStillFluid(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)), CoreInit.CORE));
 	}
 
 	/* 基本データ */
 	protected static FluidType.Properties getWaterProp(int temp, boolean drown) {
-		return FluidType.Properties.create()
-		    .fallDistanceModifier(1F)
-		    .pathType(null)
-		    .adjacentPathType(null)
-		    .density(0)
-		    .viscosity(0)
-		    .canPushEntity(false)
-		    .canSwim(false)
-		    .canDrown(drown)
-		    .canHydrate(false)
-		    .temperature(temp);
+		return FluidType.Properties.create().fallDistanceModifier(1F).pathType(null).adjacentPathType(null).density(0).viscosity(0).canPushEntity(false).canSwim(false).canDrown(drown).canHydrate(false).temperature(temp);
 	}
 
 	public String getFluidName() {
@@ -157,9 +139,7 @@ public class GasTypeFluidDC {
 	}
 
 	protected ForgeFlowingFluid.Properties fluidProperties() {
-		return new ForgeFlowingFluid.Properties(type, still, flow).bucket(getBucket())
-		    .block(getStillBlock())
-		    .levelDecreasePerBlock(15);
+		return new ForgeFlowingFluid.Properties(type, still, flow).bucket(getBucket()).block(getStillBlock()).levelDecreasePerBlock(15);
 	}
 
 	public Supplier<FluidType> getType() {

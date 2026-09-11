@@ -33,5 +33,6 @@
     [
       "has_mortar"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

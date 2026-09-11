@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "X": {
       "item": "dcs_climate:food/plank_euphorbia_kukui"
@@ -11,5 +12,6 @@
   "result": {
     "count": 6,
     "item": "dcs_climate:build/slab_euphorbia_kukui"
-  }
+  },
+  "show_notification": true
 }

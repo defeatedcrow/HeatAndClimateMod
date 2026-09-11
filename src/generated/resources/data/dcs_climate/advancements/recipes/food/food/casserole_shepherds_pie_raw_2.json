@@ -30,5 +30,6 @@
     "recipes": [
       "dcs_climate:food/casserole_shepherds_pie_raw_2"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

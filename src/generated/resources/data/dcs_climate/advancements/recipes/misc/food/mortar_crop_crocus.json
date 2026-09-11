@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/mortar_crop_crocus"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

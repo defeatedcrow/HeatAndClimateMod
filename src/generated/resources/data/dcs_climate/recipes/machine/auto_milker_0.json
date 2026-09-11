@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "V": {
       "tag": "forge:glass"
@@ -23,5 +24,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/auto_milker"
-  }
+  },
+  "show_notification": true
 }

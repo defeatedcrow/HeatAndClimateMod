@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingots/sus"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/kitchen_stove"
-  }
+  },
+  "show_notification": true
 }

@@ -1331,45 +1331,34 @@ public class ClientRegisterInit {
 	}
 
 	public static void registerRenderTypes() {
-		ItemBlockRenderTypes.setRenderLayer(CoreInit.BRINE.getStillFluid()
-		    .get(), RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(CoreInit.BRINE.getFlowingFluid()
-		    .get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.BRINE.getStillFluid().get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.BRINE.getFlowingFluid().get(), RenderType.translucent());
 
-		ItemBlockRenderTypes.setRenderLayer(CoreInit.HOTSPRING.getStillFluid()
-		    .get(), RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(CoreInit.HOTSPRING.getFlowingFluid()
-		    .get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.HOTSPRING.getStillFluid().get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.HOTSPRING.getFlowingFluid().get(), RenderType.translucent());
 
-		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getStillFluid()
-		    .get(), RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getFlowingFluid()
-		    .get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getStillFluid().get(), RenderType.translucent());
+		ItemBlockRenderTypes.setRenderLayer(CoreInit.SPARKLING.getFlowingFluid().get(), RenderType.translucent());
 
-		ItemProperties.register(CoreInit.HARPOON_FLINT.get(), new ResourceLocation("minecraft", "throwing"),
-		    (stack, level, living, i) -> (living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F));
+		ItemProperties
+		    .register(CoreInit.HARPOON_FLINT.get(), ResourceLocation.fromNamespaceAndPath("minecraft", "throwing"), (stack, level, living, i) -> (living != null && living.isUsingItem() && living.getUseItem() == stack ? 1.0F : 0.0F));
 
-		ItemProperties.register(CoreInit.FISHING_ROD_STEEL.get(), new ResourceLocation("minecraft", "cast"), (stack, level, living, i) -> {
+		ItemProperties.register(CoreInit.FISHING_ROD_STEEL.get(), ResourceLocation.fromNamespaceAndPath("minecraft", "cast"), (stack, level, living, i) -> {
 			if (living == null) {
 				return 0.0F;
 			} else {
 				boolean flag = living.getMainHandItem() == stack;
 				boolean flag1 = living.getOffhandItem() == stack;
-				if (living.getMainHandItem()
-				    .getItem() instanceof FishingRodItem) {
+				if (living.getMainHandItem().getItem() instanceof FishingRodItem) {
 					flag1 = false;
 				}
 				return (flag || flag1) && living instanceof Player && ((Player) living).fishing != null ? 1.0F : 0.0F;
 			}
 		});
 
-		ItemProperties.register(CoreInit.ALTIMETER.get(), new ResourceLocation("minecraft", "angle"), (stack, level, liv, i) -> {
+		ItemProperties.register(CoreInit.ALTIMETER.get(), ResourceLocation.fromNamespaceAndPath("minecraft", "angle"), (stack, level, liv, i) -> {
 			Entity entity = liv == null ? stack.getEntityRepresentation() : liv;
-			return entity == null ? 0.0F : entity.blockPosition()
-			    .getY() >= 192 ? 1.0F : Mth.clamp(
-			        (entity.blockPosition()
-			            .getY() + 64) / 256F,
-			        0F, 1F);
+			return entity == null ? 0.0F : entity.blockPosition().getY() >= 192 ? 1.0F : Mth.clamp((entity.blockPosition().getY() + 64) / 256F, 0F, 1F);
 		});
 	}
 }

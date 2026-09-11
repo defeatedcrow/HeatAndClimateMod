@@ -46,5 +46,6 @@
     [
       "screwdriver_to_cable"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

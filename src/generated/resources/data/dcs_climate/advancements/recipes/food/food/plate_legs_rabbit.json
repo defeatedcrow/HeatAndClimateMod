@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/plate_legs_rabbit"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

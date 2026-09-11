@@ -30,5 +30,6 @@
     "recipes": [
       "dcs_climate:smelting/campfire_fried_egg"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

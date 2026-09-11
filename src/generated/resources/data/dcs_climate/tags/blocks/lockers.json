@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:build/locker_normal",
+    "dcs_climate:build/locker_white",
+    "dcs_climate:build/locker_blue",
+    "dcs_climate:build/locker_black",
+    "dcs_climate:build/locker_red",
+    "dcs_climate:build/locker_green"
+  ]
+}

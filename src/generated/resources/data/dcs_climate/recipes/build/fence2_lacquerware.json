@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "dcs_climate:food/plank_lacquerware"
@@ -15,5 +16,6 @@
   "result": {
     "count": 6,
     "item": "dcs_climate:build/fence_lacquerware"
-  }
+  },
+  "show_notification": true
 }

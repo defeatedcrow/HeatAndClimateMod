@@ -213,5 +213,6 @@
     [
       "has_epic_crop13"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

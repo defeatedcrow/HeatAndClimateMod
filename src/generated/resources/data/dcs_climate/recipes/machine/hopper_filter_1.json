@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingots/iron"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/hopper_filter"
-  }
+  },
+  "show_notification": true
 }

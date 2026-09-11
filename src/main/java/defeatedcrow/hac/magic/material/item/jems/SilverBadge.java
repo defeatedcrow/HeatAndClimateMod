@@ -13,7 +13,6 @@ import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -79,11 +78,7 @@ public class SilverBadge extends MagicJewelBase {
 					}
 					flag = true;
 				} else if (attacker instanceof Player player) {
-					Monster monster = player.level()
-					    .getNearestEntity(Monster.class, TargetingConditions.forCombat()
-					        .range(16D), target, target.getX(), target.getY(), target.getZ(),
-					        player.getBoundingBox()
-					            .inflate(16D));
+					Monster monster = player.level().getNearestEntity(Monster.class, TargetingConditions.forCombat().range(16D), target, target.getX(), target.getY(), target.getZ(), player.getBoundingBox().inflate(16D));
 					if (monster != null) {
 						source = monster.level().damageSources().mobAttack(monster);
 					} else {
@@ -116,14 +111,10 @@ public class SilverBadge extends MagicJewelBase {
 			Vec3 vec3 = Vec3.atBottomCenterOf(pos.relative(dir));
 			BlockPos p1 = BlockPos.containing(vec3.x, vec3.y, vec3.z);
 			BlockPos p2 = p1.above();
-			if (level.getBlockState(p1)
-			    .canBeReplaced()
-			    && level.getBlockState(p2)
-			        .canBeReplaced()) {
+			if (level.getBlockState(p1).canBeReplaced() && level.getBlockState(p2).canBeReplaced()) {
 				ResourceKey<Level> dim = serverLevel.dimension();
 				CompoundTag tag = charm.getOrCreateTag();
-				tag.putString(TagKeyDC.DIM_LOCATION, dim.location()
-				    .toString());
+				tag.putString(TagKeyDC.DIM_LOCATION, dim.location().toString());
 				tag.putInt(TagKeyDC.POS_X, p1.getX());
 				tag.putInt(TagKeyDC.POS_Y, p1.getY());
 				tag.putInt(TagKeyDC.POS_Z, p1.getZ());
@@ -146,24 +137,19 @@ public class SilverBadge extends MagicJewelBase {
 	public boolean onUsing(ServerPlayer owner, ItemStack charm) {
 		if (!DCUtil.isEmpty(charm) && getColor().isBlue) {
 			ServerLevel serverLevel = owner.serverLevel();
-			if (charm.hasTag() && charm.getTag()
-			    .contains(TagKeyDC.DIM_LOCATION)) {
+			if (charm.hasTag() && charm.getTag().contains(TagKeyDC.DIM_LOCATION)) {
 				CompoundTag tag = charm.getTag();
 				String s1 = tag.getString(TagKeyDC.DIM_LOCATION);
 				double dx = tag.getInt(TagKeyDC.POS_X) + 0.5D;
 				double dy = tag.getInt(TagKeyDC.POS_Y) + 0.05D;
 				double dz = tag.getInt(TagKeyDC.POS_Z) + 0.5D;
-				ResourceKey<Level> dim = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(s1));
-				if (!serverLevel.dimension()
-				    .equals(dim)) {
-					ServerLevel nextLevel = serverLevel.getServer()
-					    .getLevel(dim);
-					nextLevel.getProfiler()
-					    .push("portal");
+				ResourceKey<Level> dim = ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse(s1));
+				if (!serverLevel.dimension().equals(dim)) {
+					ServerLevel nextLevel = serverLevel.getServer().getLevel(dim);
+					nextLevel.getProfiler().push("portal");
 					owner.setPortalCooldown();
 					owner.changeDimension(nextLevel);
-					nextLevel.getProfiler()
-					    .pop();
+					nextLevel.getProfiler().pop();
 				}
 				owner.teleportToWithTicket(dx, dy, dz);
 				owner.resetFallDistance();
@@ -186,8 +172,7 @@ public class SilverBadge extends MagicJewelBase {
 			}
 		}
 		MutableComponent itemName = Component.translatable("dcs.tip.badge_s.name." + getColor().toString());
-		itemName.withStyle(getColor().chatColor)
-		    .withStyle(ChatFormatting.ITALIC);
+		itemName.withStyle(getColor().chatColor).withStyle(ChatFormatting.ITALIC);
 		list.add(itemName);
 	}
 
@@ -203,23 +188,17 @@ public class SilverBadge extends MagicJewelBase {
 			}
 
 			if (!DCUtil.isEmpty(item) && getColor().isBlue) {
-				if (item.hasTag() && item.getTag()
-				    .contains(TagKeyDC.DIM_LOCATION)) {
+				if (item.hasTag() && item.getTag().contains(TagKeyDC.DIM_LOCATION)) {
 					CompoundTag tag = item.getTag();
 					String s1 = tag.getString(TagKeyDC.DIM_LOCATION);
 					int dx = tag.getInt(TagKeyDC.POS_X);
 					int dy = tag.getInt(TagKeyDC.POS_Y);
 					int dz = tag.getInt(TagKeyDC.POS_Z);
-					list.add(Component.translatable("dcs.tip.coodinate")
-					    .withStyle(ChatFormatting.GRAY));
-					list.add(Component.literal("DIM: " + s1)
-					    .withStyle(ChatFormatting.GRAY));
-					list.add(Component.literal("X: " + dx)
-					    .withStyle(ChatFormatting.GRAY));
-					list.add(Component.literal("Y: " + dy)
-					    .withStyle(ChatFormatting.GRAY));
-					list.add(Component.literal("Z: " + dz)
-					    .withStyle(ChatFormatting.GRAY));
+					list.add(Component.translatable("dcs.tip.coodinate").withStyle(ChatFormatting.GRAY));
+					list.add(Component.literal("DIM: " + s1).withStyle(ChatFormatting.GRAY));
+					list.add(Component.literal("X: " + dx).withStyle(ChatFormatting.GRAY));
+					list.add(Component.literal("Y: " + dy).withStyle(ChatFormatting.GRAY));
+					list.add(Component.literal("Z: " + dz).withStyle(ChatFormatting.GRAY));
 				}
 			}
 		}

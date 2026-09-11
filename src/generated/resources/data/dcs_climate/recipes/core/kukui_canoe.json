@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "X": {
       "item": "dcs_climate:food/plank_euphorbia_kukui"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/canoe_kukui"
-  }
+  },
+  "show_notification": true
 }

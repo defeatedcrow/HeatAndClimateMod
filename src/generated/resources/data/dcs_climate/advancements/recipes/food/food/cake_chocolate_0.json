@@ -30,5 +30,6 @@
     "recipes": [
       "dcs_climate:food/cake_chocolate_0"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

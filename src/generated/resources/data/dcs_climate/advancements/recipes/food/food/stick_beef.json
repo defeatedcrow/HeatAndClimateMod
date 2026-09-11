@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/stick_beef"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

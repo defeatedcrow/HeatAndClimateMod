@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "dcs_climate:food/dust_press_cake"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/container_press_cake"
-  }
+  },
+  "show_notification": true
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "X": {
       "item": "dcs_climate:food/plank_sumac_lacquer"
@@ -11,5 +12,6 @@
   "result": {
     "count": 6,
     "item": "dcs_climate:build/slab_sumac_lacquer"
-  }
+  },
+  "show_notification": true
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "dcs_climate:food/log_morus_paper"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/logcont_morus_paper"
-  }
+  },
+  "show_notification": true
 }

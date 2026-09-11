@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:container/cont_beef_rev"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

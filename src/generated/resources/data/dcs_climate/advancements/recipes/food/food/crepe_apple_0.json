@@ -30,5 +30,6 @@
     "recipes": [
       "dcs_climate:food/crepe_apple_0"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

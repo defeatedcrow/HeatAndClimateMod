@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/muesli_oat"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

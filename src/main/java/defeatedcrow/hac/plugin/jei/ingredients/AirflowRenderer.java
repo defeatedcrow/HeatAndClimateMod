@@ -2,13 +2,14 @@ package defeatedcrow.hac.plugin.jei.ingredients;
 
 import java.util.List;
 
+import org.joml.Matrix4f;
+
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.core.ClimateCore;
@@ -36,7 +37,7 @@ public class AirflowRenderer implements IIngredientRenderer<DCAirflow> {
 	public void render(GuiGraphics graphics, DCAirflow ingredient) {
 		RenderSystem.enableBlend();
 
-		RenderSystem.setShaderTexture(0, new ResourceLocation(ClimateCore.MOD_ID, "textures/gui/icon_base.png"));
+		RenderSystem.setShaderTexture(0, ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/gui/icon_base.png"));
 		Matrix4f matrix = graphics.pose().last().pose();
 		setGLColorFromInt(ingredient.getColorInt());
 

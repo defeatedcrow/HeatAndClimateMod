@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:crops/apple"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/woodbox_apple"
-  }
+  },
+  "show_notification": true
 }

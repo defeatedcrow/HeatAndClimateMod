@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/drink_lassi_mango_1"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_slim_stairs_metal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:build/slim_stairs_metal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dcs_climate:smelting/smelting_reduction_slim_stairs_metal"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_slim_stairs_metal",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dcs_climate:smelting/smelting_reduction_slim_stairs_metal"
+    ]
+  },
+  "sends_telemetry_event": false
+}

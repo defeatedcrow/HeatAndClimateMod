@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "X": {
       "item": "dcs_climate:food/plank_citrus_pomelo"
@@ -16,5 +17,6 @@
   "result": {
     "count": 3,
     "item": "dcs_climate:build/slim_stairs_citrus_pomelo"
-  }
+  },
+  "show_notification": true
 }

@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/food_cake_batter_0"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

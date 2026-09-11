@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/packed_mud_from_straw"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

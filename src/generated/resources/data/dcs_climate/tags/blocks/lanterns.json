@@ -1,0 +1,9 @@
+{
+  "values": [
+    "dcs_climate:build/berry_lantern_white",
+    "dcs_climate:build/berry_lantern_blue",
+    "dcs_climate:build/berry_lantern_black",
+    "dcs_climate:build/berry_lantern_red",
+    "dcs_climate:build/berry_lantern_green"
+  ]
+}

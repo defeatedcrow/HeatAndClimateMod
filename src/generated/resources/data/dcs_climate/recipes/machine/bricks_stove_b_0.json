@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingots/brick"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/chamber_brick_b"
-  }
+  },
+  "show_notification": true
 }

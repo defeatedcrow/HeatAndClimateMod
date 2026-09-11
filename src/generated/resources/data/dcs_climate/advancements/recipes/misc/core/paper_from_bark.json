@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/paper_from_bark"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

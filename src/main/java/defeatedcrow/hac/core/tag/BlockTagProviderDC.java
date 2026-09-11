@@ -36,47 +36,24 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 	@Override
 	protected void addTags(Provider provider) {
 
+		// identification
 		TagsProvider.TagAppender<Block> pickaxe = this.tag(BlockTags.MINEABLE_WITH_PICKAXE);
-		CoreInit.BLOCKS.getEntries()
-		    .stream()
-		    .filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolType() == ToolType.PICKAXE)
-		    .map(RegistryObject::getKey)
-		    .forEach(b -> pickaxe.add(b));
+		CoreInit.BLOCKS.getEntries().stream().filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolType() == ToolType.PICKAXE).map(RegistryObject::getKey).forEach(b -> pickaxe.add(b));
 
 		TagsProvider.TagAppender<Block> axe = this.tag(BlockTags.MINEABLE_WITH_AXE);
-		CoreInit.BLOCKS.getEntries()
-		    .stream()
-		    .filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolType() == ToolType.AXE)
-		    .map(RegistryObject::getKey)
-		    .forEach(b -> axe.add(b));
+		CoreInit.BLOCKS.getEntries().stream().filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolType() == ToolType.AXE).map(RegistryObject::getKey).forEach(b -> axe.add(b));
 
 		TagsProvider.TagAppender<Block> toolTier1 = this.tag(BlockTags.NEEDS_STONE_TOOL);
-		CoreInit.BLOCKS.getEntries()
-		    .stream()
-		    .filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolTier() == 1)
-		    .map(RegistryObject::getKey)
-		    .forEach(b -> toolTier1.add(b));
+		CoreInit.BLOCKS.getEntries().stream().filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolTier() == 1).map(RegistryObject::getKey).forEach(b -> toolTier1.add(b));
 
 		TagsProvider.TagAppender<Block> toolTier2 = this.tag(BlockTags.NEEDS_IRON_TOOL);
-		CoreInit.BLOCKS.getEntries()
-		    .stream()
-		    .filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolTier() == 2)
-		    .map(RegistryObject::getKey)
-		    .forEach(b -> toolTier2.add(b));
+		CoreInit.BLOCKS.getEntries().stream().filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolTier() == 2).map(RegistryObject::getKey).forEach(b -> toolTier2.add(b));
 
 		TagsProvider.TagAppender<Block> toolTier3 = this.tag(BlockTags.NEEDS_DIAMOND_TOOL);
-		CoreInit.BLOCKS.getEntries()
-		    .stream()
-		    .filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolTier() == 3)
-		    .map(RegistryObject::getKey)
-		    .forEach(b -> toolTier3.add(b));
+		CoreInit.BLOCKS.getEntries().stream().filter(block -> block.get() instanceof IBlockDC && ((IBlockDC) block.get()).getToolTier() == 3).map(RegistryObject::getKey).forEach(b -> toolTier3.add(b));
 
 		TagsProvider.TagAppender<Block> crops = this.tag(BlockTags.CROPS);
-		CoreInit.BLOCKS.getEntries()
-		    .stream()
-		    .filter(block -> block.get() instanceof ClimateCropBaseBlock)
-		    .map(RegistryObject::getKey)
-		    .forEach(b -> crops.add(b));
+		CoreInit.BLOCKS.getEntries().stream().filter(block -> block.get() instanceof ClimateCropBaseBlock).map(RegistryObject::getKey).forEach(b -> crops.add(b));
 
 		tag(TagDC.BlockTag.ORES_WHITE).add(CoreInit.ORE_WHITE.get());
 		tag(TagDC.BlockTag.ORES_BLUE).add(CoreInit.ORE_BLUE.get());
@@ -94,7 +71,10 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		    TagDC.BlockTag.ORES_BLUE_DEEP, TagDC.BlockTag.ORES_BLACK_DEEP, TagDC.BlockTag.ORES_RED_DEEP, TagDC.BlockTag.ORES_GREEN_DEEP);
 
 		tag(Tags.Blocks.ORES).addTags(TagDC.BlockTag.ORES_WHITE, TagDC.BlockTag.ORES_BLUE, TagDC.BlockTag.ORES_BLACK, TagDC.BlockTag.ORES_RED, TagDC.BlockTag.ORES_GREEN, TagDC.BlockTag.ORES_WHITE_DEEP, TagDC.BlockTag.ORES_BLUE_DEEP,
-		    TagDC.BlockTag.ORES_BLACK_DEEP, TagDC.BlockTag.ORES_RED_DEEP, TagDC.BlockTag.ORES_GREEN_DEEP);
+		    TagDC.BlockTag.ORES_BLACK_DEEP, TagDC.BlockTag.ORES_RED_DEEP, TagDC.BlockTag.ORES_GREEN_DEEP, TagDC.BlockTag.ORES_CHALCEDONY, TagDC.BlockTag.ORES_HELIODOR, TagDC.BlockTag.ORES_TOPAZ, TagDC.BlockTag.ORES_FLUORITE,
+		    TagDC.BlockTag.ORES_LARIMAR, TagDC.BlockTag.ORES_AQUAMARINE, TagDC.BlockTag.ORES_JET, TagDC.BlockTag.ORES_IOLITE, TagDC.BlockTag.ORES_OPAL, TagDC.BlockTag.ORES_DRAGONSEYE, TagDC.BlockTag.ORES_DESERTROSE,
+		    TagDC.BlockTag.ORES_ROSINCA, TagDC.BlockTag.ORES_SPINEL, TagDC.BlockTag.ORES_SERPENTINE, TagDC.BlockTag.ORES_AMAZONITE, TagDC.BlockTag.ORES_JADEITE, TagDC.BlockTag.ORES_SALT, TagDC.BlockTag.ORES_NITER,
+		    TagDC.BlockTag.ORES_SULFUR, TagDC.BlockTag.ORES_GYPSUM, TagDC.BlockTag.ORES_TRAVERTINE, TagDC.BlockTag.ORES_LIME);
 
 		tag(TagDC.BlockTag.ORES_CHALCEDONY).add(CoreInit.ORE_CHALCEDONY.get());
 		tag(TagDC.BlockTag.ORES_HELIODOR).add(CoreInit.ORE_HELIODOR.get());
@@ -146,6 +126,38 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.METALBLOCK_HASTELLOY).add(CoreInit.METALBLOCK_HASTELLOY.get());
 		tag(TagDC.BlockTag.METALBLOCK_BSCCO).add(CoreInit.METALBLOCK_BSCCO.get());
 
+		tag(TagDC.BlockTag.GEMBLOCK_CHALCEDONY).add(CoreInit.GEMBLOCK_CHALCEDONY.get());
+		tag(TagDC.BlockTag.GEMBLOCK_CRYSTAL).add(CoreInit.GEMBLOCK_CRYSTAL.get());
+		tag(TagDC.BlockTag.GEMBLOCK_THUNDEREGG).add(CoreInit.GEMBLOCK_THUNDEREGG.get());
+		tag(TagDC.BlockTag.GEMBLOCK_CATSEYE).add(CoreInit.GEMBLOCK_CATSEYE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_CELESTITE).add(CoreInit.GEMBLOCK_CELESTITE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_SAPPHIRE).add(CoreInit.GEMBLOCK_SAPPHIRE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_VIVIANITE).add(CoreInit.GEMBLOCK_VIVIANITE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_FANG).add(CoreInit.GEMBLOCK_FANG.get());
+		tag(TagDC.BlockTag.GEMBLOCK_DRAGONSEYE).add(CoreInit.GEMBLOCK_DRAGONSEYE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_JASPER).add(CoreInit.GEMBLOCK_JASPER.get());
+		tag(TagDC.BlockTag.GEMBLOCK_ALMANDINE).add(CoreInit.GEMBLOCK_ALMANDINE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_RUBY).add(CoreInit.GEMBLOCK_RUBY.get());
+		tag(TagDC.BlockTag.GEMBLOCK_MALACHITE).add(CoreInit.GEMBLOCK_MALACHITE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_OLIVINE).add(CoreInit.GEMBLOCK_OLIVINE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_FLUORITE).add(CoreInit.GEMBLOCK_FLUORITE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_JET).add(CoreInit.GEMBLOCK_JET.get());
+		tag(TagDC.BlockTag.GEMBLOCK_DESERTROSE).add(CoreInit.GEMBLOCK_DESERTROSE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_SERPENTINE).add(CoreInit.GEMBLOCK_SERPENTINE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_HELIODOR).add(CoreInit.GEMBLOCK_HELIODOR.get());
+		tag(TagDC.BlockTag.GEMBLOCK_TOPAZ).add(CoreInit.GEMBLOCK_TOPAZ.get());
+		tag(TagDC.BlockTag.GEMBLOCK_LARIMAR).add(CoreInit.GEMBLOCK_LARIMAR.get());
+		tag(TagDC.BlockTag.GEMBLOCK_AQUAMARINE).add(CoreInit.GEMBLOCK_AQUAMARINE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_IOLITE).add(CoreInit.GEMBLOCK_IOLITE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_SAKURA).add(CoreInit.GEMBLOCK_SAKURA.get());
+		tag(TagDC.BlockTag.GEMBLOCK_KUNZITE).add(CoreInit.GEMBLOCK_KUNZITE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_OPAL).add(CoreInit.GEMBLOCK_OPAL.get());
+		tag(TagDC.BlockTag.GEMBLOCK_ROSINCA).add(CoreInit.GEMBLOCK_ROSINCA.get());
+		tag(TagDC.BlockTag.GEMBLOCK_SPINEL).add(CoreInit.GEMBLOCK_SPINEL.get());
+		tag(TagDC.BlockTag.GEMBLOCK_AMAZONITE).add(CoreInit.GEMBLOCK_AMAZONITE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_JADEITE).add(CoreInit.GEMBLOCK_JADEITE.get());
+		tag(TagDC.BlockTag.GEMBLOCK_DEMANTOID).add(CoreInit.GEMBLOCK_DEMANTOID.get());
+
 		tag(TagDC.BlockTag.MUTABLE_FARMLAND).add(FoodInit.FERTILE.get(), FoodInit.FERTILE_PLANTER_GEM.get());
 		tag(TagDC.BlockTag.FARMLAND).add(Blocks.FARMLAND, FoodInit.FERTILE.get(), FoodInit.FERTILE_PLANTER.get(), FoodInit.FERTILE_PLANTER_GEM.get());
 		tag(TagDC.BlockTag.MUD).add(Blocks.MUD, Blocks.MUDDY_MANGROVE_ROOTS);
@@ -159,10 +171,17 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(TagDC.BlockTag.BAMBOO_SHOOT).add(Blocks.BAMBOO_SAPLING);
 
-		tag(TagDC.BlockTag.CROP_GREEN_MANURES)
-		    .add(FoodInit.BLOCK_BR_RAPESEED.get(), FoodInit.BLOCK_BR_GREEN.get(), FoodInit.BLOCK_BR_CABBAGE.get(), FoodInit.BLOCK_BR_RADISH.get(), FoodInit.BLOCK_CR_OAT.get(), FoodInit.BLOCK_CR_RYE.get(), FoodInit.BLOCK_CR_BARLEY.get(),
-		        FoodInit.BLOCK_PE_GREEN.get(), FoodInit.BLOCK_PE_GARBANZO.get(), FoodInit.BLOCK_PE_SOY.get(), FoodInit.BLOCK_RE_SORGHUM.get())
-		    .addTag(TagDC.BlockTag.WEED);
+		tag(TagDC.BlockTag.CROP_GREEN_MANURES).add(FoodInit.BLOCK_BR_RAPESEED.get(), FoodInit.BLOCK_BR_GREEN.get(), FoodInit.BLOCK_BR_CABBAGE.get(), FoodInit.BLOCK_BR_RADISH.get(), FoodInit.BLOCK_CR_OAT.get(), FoodInit.BLOCK_CR_RYE.get(),
+		    FoodInit.BLOCK_CR_BARLEY.get(), FoodInit.BLOCK_PE_GREEN.get(), FoodInit.BLOCK_PE_GARBANZO.get(), FoodInit.BLOCK_PE_SOY.get(), FoodInit.BLOCK_RE_SORGHUM.get()).addTag(TagDC.BlockTag.WEED);
+
+		tag(BlockTags.WOODEN_SLABS).add(BuildInit.SLAB_BEECH.get(), BuildInit.SLAB_WALNUT.get(), BuildInit.DOOR_SWEET.get(), BuildInit.SLAB_CHERRY.get(), BuildInit.SLAB_CAMPHOR.get(), BuildInit.SLAB_CITRUS.get(), BuildInit.SLAB_ASH.get(),
+		    BuildInit.SLAB_SUMAC.get(), BuildInit.SLAB_LACQUER.get(), BuildInit.SLAB_EUCALYPTUS.get(), BuildInit.SLAB_KUKUI.get());
+
+		tag(BlockTags.WOODEN_STAIRS).add(BuildInit.STAIRS_BEECH.get(), BuildInit.STAIRS_WALNUT.get(), BuildInit.DOOR_SWEET.get(), BuildInit.STAIRS_CHERRY.get(), BuildInit.STAIRS_CAMPHOR.get(), BuildInit.STAIRS_CITRUS.get(),
+		    BuildInit.STAIRS_ASH.get(), BuildInit.STAIRS_SUMAC.get(), BuildInit.STAIRS_LACQUER.get(), BuildInit.STAIRS_EUCALYPTUS.get(), BuildInit.STAIRS_KUKUI.get());
+
+		tag(TagDC.BlockTag.HAC_SLIM_STAIRS).add(BuildInit.SLIM_STAIRS_BEECH.get(), BuildInit.SLIM_STAIRS_WALNUT.get(), BuildInit.DOOR_SWEET.get(), BuildInit.SLIM_STAIRS_CHERRY.get(), BuildInit.SLIM_STAIRS_CAMPHOR.get(),
+		    BuildInit.SLIM_STAIRS_CITRUS.get(), BuildInit.SLIM_STAIRS_ASH.get(), BuildInit.SLIM_STAIRS_SUMAC.get(), BuildInit.SLIM_STAIRS_LACQUER.get(), BuildInit.SLIM_STAIRS_EUCALYPTUS.get(), BuildInit.SLIM_STAIRS_KUKUI.get());
 
 		tag(BlockTags.WOODEN_FENCES).add(BuildInit.FENCE_BEECH.get(), BuildInit.FENCE_WALNUT.get(), BuildInit.FENCE_SWEET.get(), BuildInit.FENCE_CHERRY.get(), BuildInit.FENCE_CAMPHOR.get(), BuildInit.FENCE_CITRUS.get(),
 		    BuildInit.FENCE_ASH.get(), BuildInit.FENCE_PALM.get(), BuildInit.FENCE_SORGHUM.get(), BuildInit.FENCE_SUMAC.get(), BuildInit.FENCE_LACQUER.get(), BuildInit.FENCE_EUCALYPTUS.get(), BuildInit.FENCE_KUKUI.get());
@@ -177,6 +196,30 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(BlockTags.CLIMBABLE).add(BuildInit.LADDER_METAL.get(), BuildInit.LADDER_VINE.get(), MagicInit.SCAFFOLDING.get());
 		tag(BlockTags.FALL_DAMAGE_RESETTING).add(MagicInit.SCAFFOLDING.get());
+
+		tag(TagDC.BlockTag.BUILDING_BRICKS).add(BuildInit.BRICKS_MUD.get(), BuildInit.BRICKS_GYPSUM.get(), BuildInit.BRICKS_SERPENTINE.get(), BuildInit.BRICKS_GREISEN.get(), BuildInit.BRICKS_SKARN.get(), BuildInit.BRICKS_HORNFELS.get(),
+		    BuildInit.BRICKS_MARBLE.get(), BuildInit.BRICKS_SCHIST_BLUE.get(), BuildInit.BRICKS_SCHIST_NETHER.get(), BuildInit.BRICKS_GRANITE.get(), BuildInit.BRICKS_MORTAR.get(), BuildInit.ADOBE_BRICKS.get());
+
+		tag(TagDC.BlockTag.BUILDING_PILLAR).add(BuildInit.PILLAR_MUD.get(), BuildInit.PILLAR_GYPSUM.get(), BuildInit.PILLAR_SERPENTINE.get(), BuildInit.PILLAR_GREISEN.get(), BuildInit.PILLAR_SKARN.get(), BuildInit.PILLAR_HORNFELS.get(),
+		    BuildInit.PILLAR_MARBLE.get(), BuildInit.PILLAR_SCHIST_BLUE.get(), BuildInit.PILLAR_SCHIST_NETHER.get(), BuildInit.PILLAR_GRANITE.get(), BuildInit.PILLAR_MORTAR.get());
+
+		tag(TagDC.BlockTag.BUILDING_CHISELED).add(BuildInit.CHISELED_MUD.get(), BuildInit.CHISELED_GYPSUM.get(), BuildInit.CHISELED_SERPENTINE.get(), BuildInit.CHISELED_GREISEN.get(), BuildInit.CHISELED_SKARN.get(),
+		    BuildInit.CHISELED_HORNFELS.get(), BuildInit.CHISELED_MARBLE.get(), BuildInit.CHISELED_SCHIST_BLUE.get(), BuildInit.CHISELED_SCHIST_NETHER.get(), BuildInit.CHISELED_GRANITE.get(), BuildInit.CHISELED_MORTAR.get());
+
+		tag(TagDC.BlockTag.BUILDING_STONE).add(BuildInit.FLINTBRICKS.get(), BuildInit.FLINTBRICKS_WHITE.get(), BuildInit.FLINTBRICKS_BLACK.get(), BuildInit.FLINTBRICKS_RED.get(), BuildInit.MOSAIC_BLACK.get(), BuildInit.MOSAIC_BLUE.get(),
+		    BuildInit.MOSAIC_YELLOW.get(), BuildInit.MOSAIC_RED.get(), BuildInit.CLAYBRICKS_BLACK.get(), BuildInit.CLAYBRICKS_RED.get(), BuildInit.CLAYBRICKS_GREEN.get(), BuildInit.CLAYBRICKS_BROWN.get(), BuildInit.CLAYBRICKS_BLUE.get(),
+		    BuildInit.CLAYBRICKS_PURPLE.get(), BuildInit.CLAYBRICKS_CYAN.get(), BuildInit.CLAYBRICKS_LIGHT_GRAY.get(), BuildInit.CLAYBRICKS_GRAY.get(), BuildInit.CLAYBRICKS_PINK.get(), BuildInit.CLAYBRICKS_LIME.get(),
+		    BuildInit.CLAYBRICKS_YELLOW.get(), BuildInit.CLAYBRICKS_LIGHT_BLUE.get(), BuildInit.CLAYBRICKS_MAGENTA.get(), BuildInit.CLAYBRICKS_ORANGE.get(), BuildInit.CLAYBRICKS_WHITE.get(), BuildInit.MORTAR.get());
+
+		tag(TagDC.BlockTag.BUILDING_LINOLEUM).add(BuildInit.LINOLEUM_BLACK.get(), BuildInit.LINOLEUM_RED.get(), BuildInit.LINOLEUM_GREEN.get(), BuildInit.LINOLEUM_BROWN.get(), BuildInit.LINOLEUM_BLUE.get(), BuildInit.LINOLEUM_PURPLE.get(),
+		    BuildInit.LINOLEUM_CYAN.get(), BuildInit.LINOLEUM_LIGHT_GRAY.get(), BuildInit.LINOLEUM_GRAY.get(), BuildInit.LINOLEUM_PINK.get(), BuildInit.LINOLEUM_LIME.get(), BuildInit.LINOLEUM_YELLOW.get(),
+		    BuildInit.LINOLEUM_LIGHT_BLUE.get(), BuildInit.LINOLEUM_MAGENTA.get(), BuildInit.LINOLEUM_ORANGE.get(), BuildInit.LINOLEUM_WHITE.get());
+
+		tag(BlockTags.STAIRS).add(BuildInit.STAIRS_MUD.get(), BuildInit.STAIRS_GYPSUM.get(), BuildInit.STAIRS_SERPENTINE.get(), BuildInit.STAIRS_GREISEN.get(), BuildInit.STAIRS_SKARN.get(), BuildInit.STAIRS_HORNFELS.get(),
+		    BuildInit.STAIRS_MARBLE.get(), BuildInit.STAIRS_SCHIST_BLUE.get(), BuildInit.STAIRS_SCHIST_NETHER.get(), BuildInit.STAIRS_GRANITE.get(), BuildInit.STAIRS_MORTAR.get(), BuildInit.STAIRS_ADOBE.get());
+
+		tag(BlockTags.SLABS).add(BuildInit.SLAB_MUD.get(), BuildInit.SLAB_GYPSUM.get(), BuildInit.SLAB_SERPENTINE.get(), BuildInit.SLAB_GREISEN.get(), BuildInit.SLAB_SKARN.get(), BuildInit.SLAB_HORNFELS.get(), BuildInit.SLAB_MARBLE.get(),
+		    BuildInit.SLAB_SCHIST_BLUE.get(), BuildInit.SLAB_SCHIST_NETHER.get(), BuildInit.SLAB_GRANITE.get(), BuildInit.SLAB_MORTAR.get(), BuildInit.SLAB_ADOBE.get());
 
 		tag(BlockTags.WALLS).add(BuildInit.WALL_MUD.get(), BuildInit.WALL_GYPSUM.get(), BuildInit.WALL_SERPENTINE.get(), BuildInit.WALL_GREISEN.get(), BuildInit.WALL_SKARN.get(), BuildInit.WALL_HORNFELS.get(), BuildInit.WALL_MARBLE.get(),
 		    BuildInit.WALL_SCHIST_BLUE.get(), BuildInit.WALL_SCHIST_NETHER.get(), BuildInit.WALL_GRANITE.get(), BuildInit.WALL_MORTAR.get(), BuildInit.WALL_ADOBE.get());
@@ -210,6 +253,22 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		    FoodInit.PLANK_MR_MULBERRY.get(), FoodInit.PLANK_OL_ASH.get(), FoodInit.PLANK_PL_COCONUT.get(), FoodInit.PLANK_RE_SORGHUM.get(), FoodInit.PLANK_SU_LACQUER.get(), FoodInit.PLANK_MY_EUCALYPTUS.get(),
 		    FoodInit.PLANK_EU_KUKUI.get());
 
+		tag(TagDC.BlockTag.HAC_LANTERN).add(BuildInit.BERRY_LANTERN_WHITE.get(), BuildInit.BERRY_LANTERN_BLUE.get(), BuildInit.BERRY_LANTERN_BLACK.get(), BuildInit.BERRY_LANTERN_RED.get(), BuildInit.BERRY_LANTERN_GREEN.get());
+		tag(TagDC.BlockTag.HAC_ANDON).add(BuildInit.ANDON_LANTERN_WHITE.get(), BuildInit.ANDON_LANTERN_BLUE.get(), BuildInit.ANDON_LANTERN_BLACK.get(), BuildInit.ANDON_LANTERN_RED.get(), BuildInit.ANDON_LANTERN_GREEN.get());
+		tag(TagDC.BlockTag.HAC_CARPET).add(BuildInit.CARPET_WHITE.get(), BuildInit.CARPET_BLUE.get(), BuildInit.CARPET_BLACK.get(), BuildInit.CARPET_RED.get(), BuildInit.CARPET_GREEN.get());
+		tag(TagDC.BlockTag.HAC_CHAIR).add(BuildInit.CHAIR_WHITE.get(), BuildInit.CHAIR_BLUE.get(), BuildInit.CHAIR_BLACK.get(), BuildInit.CHAIR_RED.get(), BuildInit.CHAIR_GREEN.get());
+		tag(TagDC.BlockTag.HAC_ROUND_CHAIR).add(BuildInit.CHAIR_ROUND_WHITE.get(), BuildInit.CHAIR_ROUND_BLUE.get(), BuildInit.CHAIR_ROUND_BLACK.get(), BuildInit.CHAIR_ROUND_RED.get(), BuildInit.CHAIR_ROUND_GREEN.get());
+		tag(TagDC.BlockTag.HAC_LEATHER_SOFA).add(BuildInit.SOFA_LEATHER.get(), BuildInit.SOFA_LEATHER_BLACK.get(), BuildInit.SOFA_LEATHER_RED.get());
+		tag(TagDC.BlockTag.HAC_SOFA).add(BuildInit.SOFA_WHITE.get(), BuildInit.SOFA_BLUE.get(), BuildInit.SOFA_BLACK.get(), BuildInit.SOFA_PINK.get(), BuildInit.SOFA_GREEN.get());
+		tag(TagDC.BlockTag.HAC_BED).add(BuildInit.BED_LINEN.get(), BuildInit.BED_WHITE.get(), BuildInit.BED_BLUE.get(), BuildInit.BED_BLACK.get(), BuildInit.BED_RED.get(), BuildInit.BED_GREEN.get());
+		tag(TagDC.BlockTag.HAC_TABLE).add(BuildInit.TABLE_WHITE.get(), BuildInit.TABLE_BLUE.get(), BuildInit.TABLE_BLACK.get(), BuildInit.TABLE_RED.get(), BuildInit.TABLE_GREEN.get());
+		tag(TagDC.BlockTag.HAC_LUGGAGE).add(BuildInit.LUGGAGE_NORMAL.get(), BuildInit.LUGGAGE_WHITE.get(), BuildInit.LUGGAGE_BLUE.get(), BuildInit.LUGGAGE_BLACK.get(), BuildInit.LUGGAGE_RED.get(), BuildInit.LUGGAGE_GREEN.get());
+		tag(TagDC.BlockTag.HAC_LOCKER).add(BuildInit.LOCKER_NORMAL.get(), BuildInit.LOCKER_WHITE.get(), BuildInit.LOCKER_BLUE.get(), BuildInit.LOCKER_BLACK.get(), BuildInit.LOCKER_RED.get(), BuildInit.LOCKER_GREEN.get());
+		tag(TagDC.BlockTag.HAC_CABINET).add(BuildInit.CABINET_NORMAL.get(), BuildInit.CABINET_WHITE.get(), BuildInit.CABINET_BLUE.get(), BuildInit.CABINET_BLACK.get(), BuildInit.CABINET_RED.get(), BuildInit.CABINET_GREEN.get());
+		tag(TagDC.BlockTag.HAC_CURTAIN).add(BuildInit.KITCHEN_CURTAIN_WHITE.get(), BuildInit.KITCHEN_CURTAIN_YELLOW.get(), BuildInit.KITCHEN_CURTAIN_BLUE.get(), BuildInit.KITCHEN_CURTAIN_BLACK.get(), BuildInit.KITCHEN_CURTAIN_RED.get(),
+		    BuildInit.KITCHEN_CURTAIN_GREEN.get());
+
+		// system
 		tag(TagDC.BlockTag.LOG_SWEET).add(FoodInit.LOG_BH_WALNUT.get(), FoodInit.LOG_BH_SWEET.get(), FoodInit.LOG_PL_COCONUT.get(), Blocks.BIRCH_LOG);
 		tag(TagDC.BlockTag.LOG_RESIN).add(Blocks.ACACIA_LOG, Blocks.SPRUCE_LOG, FoodInit.LOG_MY_EUCALYPTUS.get());
 		tag(TagDC.BlockTag.LOG_LATEX).add(FoodInit.LOG_MR_RUBBER.get());
@@ -223,13 +282,13 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(TagDC.BlockTag.CONT_LEAVES).add(FoodInit.CONT_LEAVES.get());
 
+		tag(TagDC.BlockTag.CONT_CHARCOAL).add(FoodInit.CONT_LOG_CHARCOAL.get());
+
 		tag(TagDC.BlockTag.CONT_LOGS).add(FoodInit.CONT_LOG_OAK.get(), FoodInit.CONT_LOG_BIRCH.get(), FoodInit.CONT_LOG_SPRUCE.get(), FoodInit.CONT_LOG_JUNGLE.get(), FoodInit.CONT_LOG_ACACIA.get(), FoodInit.CONT_LOG_DARKOAK.get(),
 		    FoodInit.CONT_LOG_MANGROVE.get(), FoodInit.CONT_LOG_CRIMSON.get(), FoodInit.CONT_LOG_WARPED.get(), FoodInit.CONT_LOG_BH_COMMON.get(), FoodInit.CONT_LOG_BH_WALNUT.get(), FoodInit.CONT_LOG_BH_SWEET.get(),
 		    FoodInit.CONT_LOG_CH_WILD.get(), FoodInit.CONT_LOG_CN_CAMPHOR.get(), FoodInit.CONT_LOG_CN_CINNAMON.get(), FoodInit.CONT_LOG_CT_POMELO.get(), FoodInit.CONT_LOG_MR_MULBERRY.get(), FoodInit.CONT_LOG_MR_PAPER.get(),
 		    FoodInit.CONT_LOG_MR_RUBBER.get(), FoodInit.CONT_LOG_OL_ASH.get(), FoodInit.CONT_LOG_PL_COCONUT.get(), FoodInit.CONT_LOG_SU_LACQUER.get(), FoodInit.CONT_LOG_SU_MANGO.get(), FoodInit.CONT_LOG_MY_EUCALYPTUS.get(),
 		    FoodInit.CONT_LOG_EU_KUKUI.get(), FoodInit.CONT_LOG_EU_MANCHINEEL.get());
-
-		tag(TagDC.BlockTag.CONT_CHARCOAL).add(FoodInit.CONT_LOG_CHARCOAL.get());
 
 		tag(TagDC.BlockTag.CONT_CROPS).add(FoodInit.CONT_CROP_APPLE.get(), FoodInit.CONT_CROP_CARROT.get(), FoodInit.CONT_CROP_POTATO.get(), FoodInit.CONT_CROP_BEET.get(), FoodInit.CONT_CROP_PUMPKIN.get(), FoodInit.CONT_CROP_MELON.get(),
 		    FoodInit.CONT_CROP_CACTUS.get(), FoodInit.CONT_CROP_COCOA.get(), FoodInit.CONT_CROP_SUGARCANE.get(), FoodInit.CONT_CROP_BUSHBERRY.get(), FoodInit.CONT_CROP_GLOWBERRY.get());
@@ -254,8 +313,7 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(TagDC.BlockTag.HOPPER_FILTER).add(MachineInit.HOPPER_FILTER.get(), MachineInit.HOPPER_FILTER_GOLD.get());
 
-		tag(TagDC.BlockTag.HOPPER).addTag(TagDC.BlockTag.HOPPER_FILTER)
-		    .add(Blocks.HOPPER, MachineInit.HOPPER_GOLD.get());
+		tag(TagDC.BlockTag.HOPPER).addTag(TagDC.BlockTag.HOPPER_FILTER).add(Blocks.HOPPER, MachineInit.HOPPER_GOLD.get());
 
 		tag(TagDC.BlockTag.FLUID_PIPE).add(MachineInit.PIPE_BRASS.get());
 
@@ -293,6 +351,8 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(TagDC.BlockTag.NOT_LOOF).addTags(TagDC.BlockTag.COOKING_POT, TagDC.BlockTag.TEA_POT, TagDC.BlockTag.FERMENTATION_JAR, TagDC.BlockTag.FAUSET, TagDC.BlockTag.MONITOR, TagDC.BlockTag.WALL_LAMP, BlockTags.FENCES, BlockTags.SIGNS,
 		    BlockTags.BANNERS, BlockTags.BUTTONS);
+
+		tag(TagDC.BlockTag.MAGMA).add(Blocks.MAGMA_BLOCK);
 
 		// // climate
 		//

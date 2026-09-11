@@ -30,5 +30,6 @@
     "recipes": [
       "dcs_climate:food/foodmaterial_tomyum_paste"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_batteryitem_t1": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:machine/batteryitem_small"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dcs_climate:machine/generator_small_0"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_batteryitem_t1",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dcs_climate:machine/generator_small_0"
+    ]
+  },
+  "sends_telemetry_event": false
+}

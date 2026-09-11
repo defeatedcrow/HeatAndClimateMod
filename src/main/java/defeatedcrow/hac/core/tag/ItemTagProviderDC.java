@@ -17,7 +17,6 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
@@ -35,61 +34,94 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 	@Override
 	protected void addTags(Provider provider) {
 
-		CoreInit.ITEMS.getEntries()
-		    .stream()
-		    .filter(item -> item.get() instanceof IItemDC && ((IItemDC) item.get()).getPairTag() != null)
-		    .map(RegistryObject::get)
-		    .forEach(i -> {
-			    IItemDC item = (IItemDC) i;
-			    if (item.getPairTag() != TagDC.ItemTag.DUMMY) {
-				    tag(item.getPairTag()).add(i);
+		CoreInit.ITEMS.getEntries().stream().filter(item -> item.get() instanceof IItemDC && ((IItemDC) item.get()).getPairTag() != null).map(RegistryObject::get).forEach(i -> {
+			IItemDC item = (IItemDC) i;
+			if (item.getPairTag() != TagDC.ItemTag.DUMMY) {
+				tag(item.getPairTag()).add(i);
 
-				    if (TagUtil.isMatch("forge", "ores", item.getPairTag())) {
-					    tag(Tags.Items.ORES).addTag(item.getPairTag());
-				    }
+				if (TagUtil.isMatch("forge", "ores", item.getPairTag())) {
+					tag(Tags.Items.ORES).addTag(item.getPairTag());
+				}
 
-				    if (TagUtil.isMatch("forge", "raw_materials", item.getPairTag())) {
-					    tag(Tags.Items.RAW_MATERIALS).addTag(item.getPairTag());
-				    }
+				if (TagUtil.isMatch("forge", "raw_materials", item.getPairTag())) {
+					tag(Tags.Items.RAW_MATERIALS).addTag(item.getPairTag());
+				}
 
-				    if (TagUtil.isMatch("forge", "ingots", item.getPairTag())) {
-					    tag(Tags.Items.INGOTS).addTag(item.getPairTag());
-				    }
+				if (TagUtil.isMatch("forge", "ingots", item.getPairTag())) {
+					tag(Tags.Items.INGOTS).addTag(item.getPairTag());
+				}
 
-				    if (TagUtil.isMatch("forge", "dusts", item.getPairTag())) {
-					    tag(Tags.Items.DUSTS).addTag(item.getPairTag());
-				    }
+				if (TagUtil.isMatch("forge", "dusts", item.getPairTag())) {
+					tag(Tags.Items.DUSTS).addTag(item.getPairTag());
+				}
 
-				    if (TagUtil.isMatch("forge", "gems", item.getPairTag()) && !TagUtil.isMatch("forge", "storage_blocks", item.getPairTag())) {
-					    tag(Tags.Items.GEMS).addTag(item.getPairTag());
-				    }
+				if (TagUtil.isMatch("forge", "gems", item.getPairTag()) && !TagUtil.isMatch("forge", "storage_blocks", item.getPairTag())) {
+					tag(Tags.Items.GEMS).addTag(item.getPairTag());
+				}
 
-				    if (TagUtil.isMatch("forge", "crops", item.getPairTag()) && !TagUtil.isMatch("forge", "storage_blocks", item.getPairTag())) {
-					    tag(Tags.Items.CROPS).addTag(item.getPairTag());
-				    }
+				if (TagUtil.isMatch("forge", "crops", item.getPairTag()) && !TagUtil.isMatch("forge", "storage_blocks", item.getPairTag())) {
+					tag(Tags.Items.CROPS).addTag(item.getPairTag());
+				}
 
-				    if (TagUtil.isMatch("forge", "seeds", item.getPairTag())) {
-					    tag(Tags.Items.SEEDS).addTag(item.getPairTag());
-				    }
+				if (TagUtil.isMatch("forge", "seeds", item.getPairTag())) {
+					tag(Tags.Items.SEEDS).addTag(item.getPairTag());
+				}
 
-				    if (TagUtil.isMatch("forge", "storage_blocks", item.getPairTag())) {
-					    tag(Tags.Items.STORAGE_BLOCKS).addTag(item.getPairTag());
-				    }
+				if (TagUtil.isMatch("forge", "storage_blocks", item.getPairTag())) {
+					tag(Tags.Items.STORAGE_BLOCKS).addTag(item.getPairTag());
+				}
 
-			    }
+			}
 
-			    if (item instanceof ItemFoodDC && ((ItemFoodDC) item).isRawFood()) {
-				    tag(TagDC.ItemTag.RAW_FOOD).add(i);
-			    }
+			if (item instanceof ItemFoodDC && ((ItemFoodDC) item).isRawFood()) {
+				tag(TagDC.ItemTag.RAW_FOOD).add(i);
+			}
 
-			    if (item instanceof FoodMaterialItemDC food) {
-				    tag(food.getFlavorTag()).add(i);
-			    }
+			if (item instanceof FoodMaterialItemDC food) {
+				tag(food.getFlavorTag()).add(i);
+			}
 
-			    if (item instanceof ItemEdibleCropDC food) {
-				    tag(food.getFlavorTag()).add(i);
-			    }
-		    });
+			if (item instanceof ItemEdibleCropDC food) {
+				tag(food.getFlavorTag()).add(i);
+			}
+		});
+
+		// blocks
+		copy(TagDC.BlockTag.CROP_PUMPKIN, TagDC.ItemTag.CROP_PUMPKIN);
+		copy(TagDC.BlockTag.CROP_MELON, TagDC.ItemTag.CROP_MELON);
+		copy(TagDC.BlockTag.CROP_CACTUS, TagDC.ItemTag.CROP_CACTUS);
+
+		copy(TagDC.BlockTag.ORES_LIME, TagDC.ItemTag.ORES_LIME);
+		copy(TagDC.BlockTag.ORES_COLOR, TagDC.ItemTag.ORES_COLOR);
+
+		copy(TagDC.BlockTag.LOG_SWEET, TagDC.ItemTag.LOG_SWEET);
+		copy(TagDC.BlockTag.LOG_RESIN, TagDC.ItemTag.LOG_RESIN);
+		copy(TagDC.BlockTag.LOG_LATEX, TagDC.ItemTag.LOG_LATEX);
+		copy(TagDC.BlockTag.LOG_LACQUER, TagDC.ItemTag.LOG_LACQUER);
+		copy(TagDC.BlockTag.LOG_SAP, TagDC.ItemTag.LOG_SAP);
+
+		copy(TagDC.BlockTag.BUILDING_LINOLEUM, TagDC.ItemTag.BUILDING_LINOLEUM);
+		copy(TagDC.BlockTag.BUILDING_BRICKS, TagDC.ItemTag.BUILDING_BRICKS);
+		copy(TagDC.BlockTag.BUILDING_PILLAR, TagDC.ItemTag.BUILDING_PILLAR);
+		copy(TagDC.BlockTag.BUILDING_CHISELED, TagDC.ItemTag.BUILDING_CHISELED);
+		copy(TagDC.BlockTag.BUILDING_STONE, TagDC.ItemTag.BUILDING_STONE);
+
+		copy(TagDC.BlockTag.HOPPER_FILTER, TagDC.ItemTag.HOPPER_FILTER);
+		copy(TagDC.BlockTag.HOPPER, TagDC.ItemTag.HOPPER);
+
+		copy(TagDC.BlockTag.FLUID_PIPE, TagDC.ItemTag.FLUID_PIPE);
+		copy(TagDC.BlockTag.ENERGY_CABLE, TagDC.ItemTag.ENERGY_CABLE);
+
+		copy(TagDC.BlockTag.HAC_MACHINE, TagDC.ItemTag.HAC_MACHINE);
+		copy(TagDC.BlockTag.ENERGY_MACHINE, TagDC.ItemTag.ENERGY_MACHINE);
+		copy(TagDC.BlockTag.CLIMATE_MACHINE, TagDC.ItemTag.CLIMATE_MACHINE);
+		copy(TagDC.BlockTag.DISPLAY_MACHINE, TagDC.ItemTag.DISPLAY_MACHINE);
+		copy(TagDC.BlockTag.LEAKAGE_MACHINE, TagDC.ItemTag.LEAKAGE_MACHINE);
+
+		copy(TagDC.BlockTag.CONT_CROPS, TagDC.ItemTag.CONT_CROPS);
+		copy(TagDC.BlockTag.CONT_WAX, TagDC.ItemTag.CONT_WAX);
+
+		copy(TagDC.BlockTag.WEED, TagDC.ItemTag.WEED);
 
 		// vanilla
 
@@ -174,6 +206,9 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(ItemTags.FREEZE_IMMUNE_WEARABLES).add(CoreInit.LEGGINS_WADERS.get(), CoreInit.BOOTS_SAFETY.get());
 
 		// main
+
+		tag(Tags.Items.ORES).addTags(TagDC.ItemTag.ORES_WHITE, TagDC.ItemTag.ORES_BLUE, TagDC.ItemTag.ORES_BLACK, TagDC.ItemTag.ORES_RED, TagDC.ItemTag.ORES_GREEN, TagDC.ItemTag.ORES_WHITE_DEEP, TagDC.ItemTag.ORES_BLUE_DEEP,
+		    TagDC.ItemTag.ORES_BLACK_DEEP, TagDC.ItemTag.ORES_RED_DEEP, TagDC.ItemTag.ORES_GREEN_DEEP);
 
 		tag(TagDC.ItemTag.RAW_MATERIALS_COLOR).add(CoreInit.OREITEM_WHITE1.get(), CoreInit.OREITEM_WHITE2.get(), CoreInit.OREITEM_WHITE3.get(), CoreInit.OREITEM_BLUE1.get(), CoreInit.OREITEM_BLUE2.get(), CoreInit.OREITEM_BLUE3.get(),
 		    CoreInit.OREITEM_BLACK1.get(), CoreInit.OREITEM_BLACK2.get(), CoreInit.OREITEM_BLACK3.get(), CoreInit.OREITEM_RED1.get(), CoreInit.OREITEM_RED2.get(), CoreInit.OREITEM_RED3.get(), CoreInit.OREITEM_GREEN1.get(),
@@ -312,10 +347,8 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.CROP_NUTS).addTags(TagDC.ItemTag.CROP_BEECH, TagDC.ItemTag.CROP_WALNUT, TagDC.ItemTag.CROP_ACORN, TagDC.ItemTag.CROP_COCONUT, TagDC.ItemTag.CROP_PISTACHIO, TagDC.ItemTag.ALMOND_NUTS, TagDC.ItemTag.CASHEW_NUTS,
 		    TagDC.ItemTag.KUKUI_NUTS);
 
-		tag(TagDC.ItemTag.CROP_TSUKEMONO)
-		    .addTags(TagDC.ItemTag.CROP_RAPESEED, TagDC.ItemTag.CROP_NAPA, TagDC.ItemTag.CROP_CABBAGE, TagDC.ItemTag.CROP_RADISH, TagDC.ItemTag.CROP_CELERY, TagDC.ItemTag.CROP_CUCUMBER, TagDC.ItemTag.CROP_SORREL,
-		        TagDC.ItemTag.CROP_WATER_SPINACH, TagDC.ItemTag.CROP_EGGPLANT)
-		    .add(Items.CARROT);
+		tag(TagDC.ItemTag.CROP_TSUKEMONO).addTags(TagDC.ItemTag.CROP_RAPESEED, TagDC.ItemTag.CROP_NAPA, TagDC.ItemTag.CROP_CABBAGE, TagDC.ItemTag.CROP_RADISH, TagDC.ItemTag.CROP_CELERY, TagDC.ItemTag.CROP_CUCUMBER,
+		    TagDC.ItemTag.CROP_SORREL, TagDC.ItemTag.CROP_WATER_SPINACH, TagDC.ItemTag.CROP_EGGPLANT).add(Items.CARROT);
 
 		tag(TagDC.ItemTag.CROP_LILY_ROOT).addTags(TagDC.ItemTag.SEED_AMANA, TagDC.ItemTag.SEED_FAWN, TagDC.ItemTag.SEED_GOLDBAND);
 
@@ -356,8 +389,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.NOODLE).addTags(TagDC.ItemTag.PASTA);
 
-		tag(TagDC.ItemTag.SPARKLING).add(CoreInit.SPARKLING.getBucket()
-		    .get());
+		tag(TagDC.ItemTag.SPARKLING).add(CoreInit.SPARKLING.getBucket().get());
 
 		tag(TagDC.ItemTag.RAW_MEAT).addTags(TagDC.ItemTag.RAW_BEEF, TagDC.ItemTag.RAW_PORK, TagDC.ItemTag.RAW_CHICKEN, TagDC.ItemTag.RAW_MUTTON, TagDC.ItemTag.RAW_RABBIT, TagDC.ItemTag.FROG);
 
@@ -365,8 +397,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.ALL_RAW_MEAT).addTags(TagDC.ItemTag.RAW_MEAT, TagDC.ItemTag.RAW_PLANT_MEAT);
 
-		tag(TagDC.ItemTag.COOKED_FISH).addTags(TagDC.ItemTag.COOKED_COD, TagDC.ItemTag.COOKED_SALMON)
-		    .add(FoodInit.STICK_FISH_COOKED.get(), FoodInit.GRILLED_WHITE_FISH.get(), FoodInit.TEMPURA_FISH.get());
+		tag(TagDC.ItemTag.COOKED_FISH).addTags(TagDC.ItemTag.COOKED_COD, TagDC.ItemTag.COOKED_SALMON).add(FoodInit.STICK_FISH_COOKED.get(), FoodInit.GRILLED_WHITE_FISH.get(), FoodInit.TEMPURA_FISH.get());
 
 		tag(Tags.Items.BONES).addTags(TagDC.ItemTag.BONE_COW, TagDC.ItemTag.BONE_PIG, TagDC.ItemTag.BONE_CHICKEN);
 
@@ -427,50 +458,25 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.MAGIC_ARROW).add(MagicInit.ARROW_WHITE.get(), MagicInit.ARROW_BLUE.get(), MagicInit.ARROW_BLACK.get(), MagicInit.ARROW_RED.get(), MagicInit.ARROW_GREEN.get());
 
 		tag(TagDC.ItemTag.SEED_WHITE).addTags(TagDC.ItemTag.SEED_CHIVES, TagDC.ItemTag.SEED_GOOSEFOOT, TagDC.ItemTag.SEED_ARTEMISIA, TagDC.ItemTag.SEED_RAPESEED, TagDC.ItemTag.SEED_CHILI, TagDC.ItemTag.SEED_SORREL)
-		    .add(FoodInit.BLOCK_MY_EUCALYPTUS.get()
-		        .asItem());
+		    .add(FoodInit.BLOCK_MY_EUCALYPTUS.get().asItem());
 
-		tag(TagDC.ItemTag.SEED_BLUE).addTags(TagDC.ItemTag.SEED_OAT, TagDC.ItemTag.SEED_MINT, TagDC.ItemTag.SEED_CROCUS, TagDC.ItemTag.SEED_ANEMONE, TagDC.ItemTag.SEED_SNOWDROP)
-		    .add(FoodInit.BLOCK_BH_COMMON.get()
-		        .asItem(),
-		        FoodInit.BLOCK_ER_HEATH.get()
-		            .asItem(),
-		        FoodInit.BLOCK_OL_ASH.get()
-		            .asItem());
+		tag(TagDC.ItemTag.SEED_BLUE).addTags(TagDC.ItemTag.SEED_OAT, TagDC.ItemTag.SEED_MINT, TagDC.ItemTag.SEED_CROCUS, TagDC.ItemTag.SEED_ANEMONE, TagDC.ItemTag.SEED_SNOWDROP).add(FoodInit.BLOCK_BH_COMMON.get().asItem(),
+		    FoodInit.BLOCK_ER_HEATH.get().asItem(), FoodInit.BLOCK_OL_ASH.get().asItem());
 
 		tag(TagDC.ItemTag.SEED_BLACK).addTags(TagDC.ItemTag.SEED_CELERY, TagDC.ItemTag.SEED_BUCE, TagDC.ItemTag.SEED_BINDWEED, TagDC.ItemTag.SEED_REED, TagDC.ItemTag.SEED_WILD_RICE, TagDC.ItemTag.SEED_NIGHTSHADE)
-		    .add(FoodInit.BLOCK_RO_RUGOSA.get()
-		        .asItem(),
-		        FoodInit.BLOCK_EU_KUKUI.get()
-		            .asItem());
+		    .add(FoodInit.BLOCK_RO_RUGOSA.get().asItem(), FoodInit.BLOCK_EU_KUKUI.get().asItem());
 
-		tag(TagDC.ItemTag.SEED_RED).addTags(TagDC.ItemTag.SEED_JUTE, TagDC.ItemTag.SEED_ROGERIA, TagDC.ItemTag.SEED_WILD_GRAPE)
-		    .add(FoodInit.BLOCK_CH_WILD.get()
-		        .asItem(),
-		        FoodInit.BLOCK_CM_OIL.get()
-		            .asItem(),
-		        FoodInit.BLOCK_SU_LACQUER.get()
-		            .asItem(),
-		        FoodInit.BLOCK_RU_GARDENIA.get()
-		            .asItem());
+		tag(TagDC.ItemTag.SEED_RED).addTags(TagDC.ItemTag.SEED_JUTE, TagDC.ItemTag.SEED_ROGERIA, TagDC.ItemTag.SEED_WILD_GRAPE).add(FoodInit.BLOCK_CH_WILD.get().asItem(), FoodInit.BLOCK_CM_OIL.get().asItem(),
+		    FoodInit.BLOCK_SU_LACQUER.get().asItem(), FoodInit.BLOCK_RU_GARDENIA.get().asItem());
 
-		tag(TagDC.ItemTag.SEED_GREEN).addTags(TagDC.ItemTag.SEED_GINGER, TagDC.ItemTag.SEED_GREEN_PEAS, TagDC.ItemTag.SEED_CALABASH, TagDC.ItemTag.SEED_SPIRANTHES, TagDC.ItemTag.SEED_AMANA)
-		    .add(FoodInit.BLOCK_CT_POMELO.get()
-		        .asItem(),
-		        FoodInit.BLOCK_CN_CAMPHOR.get()
-		            .asItem(),
-		        FoodInit.BLOCK_MR_MULBERRY.get()
-		            .asItem(),
-		        FoodInit.BLOCK_PL_COCONUT.get()
-		            .asItem());
+		tag(TagDC.ItemTag.SEED_GREEN).addTags(TagDC.ItemTag.SEED_GINGER, TagDC.ItemTag.SEED_GREEN_PEAS, TagDC.ItemTag.SEED_CALABASH, TagDC.ItemTag.SEED_SPIRANTHES, TagDC.ItemTag.SEED_AMANA).add(FoodInit.BLOCK_CT_POMELO.get().asItem(),
+		    FoodInit.BLOCK_CN_CAMPHOR.get().asItem(), FoodInit.BLOCK_MR_MULBERRY.get().asItem(), FoodInit.BLOCK_PL_COCONUT.get().asItem());
 
-		tag(TagDC.ItemTag.MAGIC_TIER1).addTags(TagDC.ItemTag.MAGIC_ARROW, TagDC.ItemTag.MAGIC_RING)
-		    .add(MagicInit.CARD_BLACK_1.get(), MagicInit.CARD_BLUE_1.get(), MagicInit.CARD_GREEN_1.get(), MagicInit.CARD_RED_1.get(), MagicInit.CARD_WHITE_1.get(), MagicInit.CARD_BW.get(), MagicInit.CARD_GB.get(), MagicInit.CARD_RU.get(),
-		        MagicInit.CARD_UG.get(), MagicInit.CARD_WR.get());
+		tag(TagDC.ItemTag.MAGIC_TIER1).addTags(TagDC.ItemTag.MAGIC_ARROW, TagDC.ItemTag.MAGIC_RING).add(MagicInit.CARD_BLACK_1.get(), MagicInit.CARD_BLUE_1.get(), MagicInit.CARD_GREEN_1.get(), MagicInit.CARD_RED_1.get(),
+		    MagicInit.CARD_WHITE_1.get(), MagicInit.CARD_BW.get(), MagicInit.CARD_GB.get(), MagicInit.CARD_RU.get(), MagicInit.CARD_UG.get(), MagicInit.CARD_WR.get());
 
-		tag(TagDC.ItemTag.MAGIC_TIER2).addTags(TagDC.ItemTag.MAGIC_PENDANT)
-		    .add(MagicInit.CARD_BLACK_2.get(), MagicInit.CARD_BLUE_2.get(), MagicInit.CARD_GREEN_2.get(), MagicInit.CARD_RED_2.get(), MagicInit.CARD_WHITE_2.get(), MagicInit.CARD_BR.get(), MagicInit.CARD_GW.get(), MagicInit.CARD_RG.get(),
-		        MagicInit.CARD_UB.get(), MagicInit.CARD_WU.get());
+		tag(TagDC.ItemTag.MAGIC_TIER2).addTags(TagDC.ItemTag.MAGIC_PENDANT).add(MagicInit.CARD_BLACK_2.get(), MagicInit.CARD_BLUE_2.get(), MagicInit.CARD_GREEN_2.get(), MagicInit.CARD_RED_2.get(), MagicInit.CARD_WHITE_2.get(),
+		    MagicInit.CARD_BR.get(), MagicInit.CARD_GW.get(), MagicInit.CARD_RG.get(), MagicInit.CARD_UB.get(), MagicInit.CARD_WU.get());
 
 		tag(TagDC.ItemTag.MAGIC_TIER3).addTags(TagDC.ItemTag.MAGIC_BADGE);
 
@@ -491,8 +497,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.RAW_EDIBLE_FISH).addTags(TagDC.ItemTag.RAW_COD, TagDC.ItemTag.RAW_SALMON, TagDC.ItemTag.MACKEREL, TagDC.ItemTag.SARDINE, TagDC.ItemTag.CARP, TagDC.ItemTag.ROCKFISH, TagDC.ItemTag.GROUPER, TagDC.ItemTag.SEABREAM,
 		    TagDC.ItemTag.FLOUNDER, TagDC.ItemTag.MULLET, TagDC.ItemTag.SMELT, TagDC.ItemTag.FLATHEAD, TagDC.ItemTag.GURNARD, TagDC.ItemTag.TUNA, TagDC.ItemTag.SKIPJACK, TagDC.ItemTag.TROUT);
 
-		tag(TagDC.ItemTag.RAW_ALL_FISH).addTags(TagDC.ItemTag.RAW_EDIBLE_FISH)
-		    .add(Items.PUFFERFISH, Items.TROPICAL_FISH);
+		tag(TagDC.ItemTag.RAW_ALL_FISH).addTags(TagDC.ItemTag.RAW_EDIBLE_FISH).add(Items.PUFFERFISH, Items.TROPICAL_FISH);
 
 		tag(TagDC.ItemTag.FISH_BLUE).addTags(TagDC.ItemTag.MACKEREL, TagDC.ItemTag.SARDINE, TagDC.ItemTag.SKIPJACK);
 
@@ -545,8 +550,7 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 
 		tag(TagDC.ItemTag.FISH_LARGE).add(FoodInit.FOOD_CARP.get(), FoodInit.FOOD_FLOUNDER.get(), FoodInit.FOOD_GROUPER.get(), FoodInit.FOOD_TUNA.get(), FoodInit.FOOD_SKIPJACK.get(), Items.COD, Items.SALMON);
 
-		tag(TagDC.ItemTag.FISH_ALL).addTags(TagDC.ItemTag.FISH_VANILLA, TagDC.ItemTag.FISH_HAC)
-		    .add(FoodInit.FOOD_KRILL.get(), FoodInit.FOOD_PRAWN.get(), FoodInit.FOOD_CRAB.get(), FoodInit.FOOD_SQUID.get());
+		tag(TagDC.ItemTag.FISH_ALL).addTags(TagDC.ItemTag.FISH_VANILLA, TagDC.ItemTag.FISH_HAC).add(FoodInit.FOOD_KRILL.get(), FoodInit.FOOD_PRAWN.get(), FoodInit.FOOD_CRAB.get(), FoodInit.FOOD_SQUID.get());
 
 		tag(TagDC.ItemTag.FISH_ROD).addTags(TagDC.ItemTag.FISH_ALL);
 
@@ -558,171 +562,13 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.CRUSHER_BLADE).addTags(TagDC.ItemTag.BLADE_SANITARY, TagDC.ItemTag.BLADE_ALUMINA, TagDC.ItemTag.BLADE_SCREEN);
 
 		tag(TagDC.ItemTag.FUEL_BIOMASS).add(FoodInit.DUST_WOOD.get(), FoodInit.DUST_PLANT.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.VINE.get(), FoodInit.SORGHUM_STICK.get(), FoodInit.FOOD_DEFATTED_SOY.get(),
-		    FoodInit.FOOD_PRESS_CAKE.get(), FoodInit.FOOD_BRAN.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.FEED_HAY.get(), FoodInit.FEED_STRAW.get(), FoodInit.FOOD_GERM.get(), FoodInit.FALLEN_LEAVES.get()
-		        .asItem());
+		    FoodInit.FOOD_PRESS_CAKE.get(), FoodInit.FOOD_BRAN.get(), FoodInit.FOOD_BAGASSE.get(), FoodInit.FEED_HAY.get(), FoodInit.FEED_STRAW.get(), FoodInit.FOOD_GERM.get(), FoodInit.FALLEN_LEAVES.get().asItem());
 
-		tag(TagDC.ItemTag.HAC_FUELS).add(FoodInit.CONT_LOG_BRIQUET.get()
-		    .asItem());
+		tag(TagDC.ItemTag.HAC_FUELS).add(FoodInit.CONT_LOG_BRIQUET.get().asItem());
 
 		tag(TagDC.ItemTag.HAC_FUELS).addTags(TagDC.ItemTag.FUEL_BIOMASS, TagDC.ItemTag.FOOD_WAX);
 
 		tag(TagDC.ItemTag.HAC_MACHINE).addTags(TagDC.ItemTag.ENERGY_MACHINE, TagDC.ItemTag.CLIMATE_MACHINE, TagDC.ItemTag.DISPLAY_MACHINE, TagDC.ItemTag.LEAKAGE_MACHINE, TagDC.ItemTag.FLUID_PIPE, TagDC.ItemTag.ENERGY_CABLE);
-
-		// blocks
-		copy(TagDC.BlockTag.ORES_WHITE, TagDC.ItemTag.ORES_WHITE);
-		copy(TagDC.BlockTag.ORES_BLUE, TagDC.ItemTag.ORES_BLUE);
-		copy(TagDC.BlockTag.ORES_BLACK, TagDC.ItemTag.ORES_BLACK);
-		copy(TagDC.BlockTag.ORES_RED, TagDC.ItemTag.ORES_RED);
-		copy(TagDC.BlockTag.ORES_GREEN, TagDC.ItemTag.ORES_GREEN);
-
-		copy(TagDC.BlockTag.ORES_WHITE_DEEP, TagDC.ItemTag.ORES_WHITE_DEEP);
-		copy(TagDC.BlockTag.ORES_BLUE_DEEP, TagDC.ItemTag.ORES_BLUE_DEEP);
-		copy(TagDC.BlockTag.ORES_BLACK_DEEP, TagDC.ItemTag.ORES_BLACK_DEEP);
-		copy(TagDC.BlockTag.ORES_RED_DEEP, TagDC.ItemTag.ORES_RED_DEEP);
-		copy(TagDC.BlockTag.ORES_GREEN_DEEP, TagDC.ItemTag.ORES_GREEN_DEEP);
-
-		copy(TagDC.BlockTag.ORES_COLOR, TagDC.ItemTag.ORES_COLOR);
-
-		copy(TagDC.BlockTag.ORES_CHALCEDONY, TagDC.ItemTag.ORES_CHALCEDONY);
-		copy(TagDC.BlockTag.ORES_HELIODOR, TagDC.ItemTag.ORES_HELIODOR);
-		copy(TagDC.BlockTag.ORES_TOPAZ, TagDC.ItemTag.ORES_TOPAZ);
-		copy(TagDC.BlockTag.ORES_FLUORITE, TagDC.ItemTag.ORES_FLUORITE);
-		copy(TagDC.BlockTag.ORES_LARIMAR, TagDC.ItemTag.ORES_LARIMAR);
-		copy(TagDC.BlockTag.ORES_AQUAMARINE, TagDC.ItemTag.ORES_AQUAMARINE);
-		copy(TagDC.BlockTag.ORES_JET, TagDC.ItemTag.ORES_JET);
-		copy(TagDC.BlockTag.ORES_IOLITE, TagDC.ItemTag.ORES_IOLITE);
-		copy(TagDC.BlockTag.ORES_OPAL, TagDC.ItemTag.ORES_OPAL);
-		copy(TagDC.BlockTag.ORES_DRAGONSEYE, TagDC.ItemTag.ORES_DRAGONSEYE);
-		copy(TagDC.BlockTag.ORES_DESERTROSE, TagDC.ItemTag.ORES_DESERTROSE);
-		copy(TagDC.BlockTag.ORES_ROSINCA, TagDC.ItemTag.ORES_ROSINCA);
-		copy(TagDC.BlockTag.ORES_SPINEL, TagDC.ItemTag.ORES_SPINEL);
-		copy(TagDC.BlockTag.ORES_SERPENTINE, TagDC.ItemTag.ORES_SERPENTINE);
-		copy(TagDC.BlockTag.ORES_AMAZONITE, TagDC.ItemTag.ORES_AMAZONITE);
-		copy(TagDC.BlockTag.ORES_JADEITE, TagDC.ItemTag.ORES_JADEITE);
-
-		copy(Tags.Blocks.ORES, Tags.Items.ORES);
-
-		copy(TagDC.BlockTag.ORES_SALT, TagDC.ItemTag.ORES_SALT);
-		copy(TagDC.BlockTag.ORES_NITER, TagDC.ItemTag.ORES_NITER);
-		copy(TagDC.BlockTag.ORES_SULFUR, TagDC.ItemTag.ORES_SULFUR);
-		copy(TagDC.BlockTag.ORES_LIME, TagDC.ItemTag.ORES_LIME);
-		copy(TagDC.BlockTag.ORES_GYPSUM, TagDC.ItemTag.ORES_GYPSUM);
-		copy(TagDC.BlockTag.ORES_TRAVERTINE, TagDC.ItemTag.ORES_TRAVERTINE);
-
-		copy(TagDC.BlockTag.DUSTBLOCK_BRASS, TagDC.ItemTag.DUSTBLOCK_BRASS);
-		copy(TagDC.BlockTag.DUSTBLOCK_BRONZE, TagDC.ItemTag.DUSTBLOCK_BRONZE);
-		copy(TagDC.BlockTag.DUSTBLOCK_NICKEL_SILVER, TagDC.ItemTag.DUSTBLOCK_NICKEL_SILVER);
-		copy(TagDC.BlockTag.DUSTBLOCK_STEEL, TagDC.ItemTag.DUSTBLOCK_STEEL);
-		copy(TagDC.BlockTag.DUSTBLOCK_ALUMINUM, TagDC.ItemTag.DUSTBLOCK_ALUMINUM);
-		copy(TagDC.BlockTag.DUSTBLOCK_SILVER, TagDC.ItemTag.DUSTBLOCK_SILVER);
-		copy(TagDC.BlockTag.DUSTBLOCK_SUS, TagDC.ItemTag.DUSTBLOCK_SUS);
-		copy(TagDC.BlockTag.DUSTBLOCK_MAGNET, TagDC.ItemTag.DUSTBLOCK_MAGNET);
-		copy(TagDC.BlockTag.DUSTBLOCK_COBALT, TagDC.ItemTag.DUSTBLOCK_COBALT);
-		copy(TagDC.BlockTag.DUSTBLOCK_HASTELLOY, TagDC.ItemTag.DUSTBLOCK_HASTELLOY);
-		copy(TagDC.BlockTag.DUSTBLOCK_BSCCO, TagDC.ItemTag.DUSTBLOCK_BSCCO);
-		copy(TagDC.BlockTag.DUSTBLOCK_RUBBER, TagDC.ItemTag.DUSTBLOCK_RUBBER);
-
-		copy(TagDC.BlockTag.METALBLOCK_BRASS, TagDC.ItemTag.METALBLOCK_BRASS);
-		copy(TagDC.BlockTag.METALBLOCK_BRONZE, TagDC.ItemTag.METALBLOCK_BRONZE);
-		copy(TagDC.BlockTag.METALBLOCK_NICKEL_SILVER, TagDC.ItemTag.METALBLOCK_NICKEL_SILVER);
-		copy(TagDC.BlockTag.METALBLOCK_STEEL, TagDC.ItemTag.METALBLOCK_STEEL);
-		copy(TagDC.BlockTag.METALBLOCK_ALUMINUM, TagDC.ItemTag.METALBLOCK_ALUMINUM);
-		copy(TagDC.BlockTag.METALBLOCK_SILVER, TagDC.ItemTag.METALBLOCK_SILVER);
-		copy(TagDC.BlockTag.METALBLOCK_SUS, TagDC.ItemTag.METALBLOCK_SUS);
-		copy(TagDC.BlockTag.METALBLOCK_MAGNET, TagDC.ItemTag.METALBLOCK_MAGNET);
-		copy(TagDC.BlockTag.METALBLOCK_COBALT, TagDC.ItemTag.METALBLOCK_COBALT);
-		copy(TagDC.BlockTag.METALBLOCK_HASTELLOY, TagDC.ItemTag.METALBLOCK_HASTELLOY);
-		copy(TagDC.BlockTag.METALBLOCK_BSCCO, TagDC.ItemTag.METALBLOCK_BSCCO);
-		copy(TagDC.BlockTag.BLOCK_RUBBER, TagDC.ItemTag.BLOCK_RUBBER);
-
-		copy(TagDC.BlockTag.GEMBLOCK_CHALCEDONY, TagDC.ItemTag.GEMBLOCK_CHALCEDONY);
-		copy(TagDC.BlockTag.GEMBLOCK_CRYSTAL, TagDC.ItemTag.GEMBLOCK_CRYSTAL);
-		copy(TagDC.BlockTag.GEMBLOCK_THUNDEREGG, TagDC.ItemTag.GEMBLOCK_THUNDEREGG);
-		copy(TagDC.BlockTag.GEMBLOCK_CATSEYE, TagDC.ItemTag.GEMBLOCK_CATSEYE);
-		copy(TagDC.BlockTag.GEMBLOCK_CELESTITE, TagDC.ItemTag.GEMBLOCK_CELESTITE);
-		copy(TagDC.BlockTag.GEMBLOCK_SAPPHIRE, TagDC.ItemTag.GEMBLOCK_SAPPHIRE);
-		copy(TagDC.BlockTag.GEMBLOCK_VIVIANITE, TagDC.ItemTag.GEMBLOCK_VIVIANITE);
-		copy(TagDC.BlockTag.GEMBLOCK_FANG, TagDC.ItemTag.GEMBLOCK_FANG);
-		copy(TagDC.BlockTag.GEMBLOCK_DRAGONSEYE, TagDC.ItemTag.GEMBLOCK_DRAGONSEYE);
-		copy(TagDC.BlockTag.GEMBLOCK_JASPER, TagDC.ItemTag.GEMBLOCK_JASPER);
-		copy(TagDC.BlockTag.GEMBLOCK_ALMANDINE, TagDC.ItemTag.GEMBLOCK_ALMANDINE);
-		copy(TagDC.BlockTag.GEMBLOCK_RUBY, TagDC.ItemTag.GEMBLOCK_RUBY);
-		copy(TagDC.BlockTag.GEMBLOCK_MALACHITE, TagDC.ItemTag.GEMBLOCK_MALACHITE);
-		copy(TagDC.BlockTag.GEMBLOCK_OLIVINE, TagDC.ItemTag.GEMBLOCK_OLIVINE);
-		copy(TagDC.BlockTag.GEMBLOCK_FLUORITE, TagDC.ItemTag.GEMBLOCK_FLUORITE);
-		copy(TagDC.BlockTag.GEMBLOCK_JET, TagDC.ItemTag.GEMBLOCK_JET);
-		copy(TagDC.BlockTag.GEMBLOCK_DESERTROSE, TagDC.ItemTag.GEMBLOCK_DESERTROSE);
-		copy(TagDC.BlockTag.GEMBLOCK_SERPENTINE, TagDC.ItemTag.GEMBLOCK_SERPENTINE);
-		copy(TagDC.BlockTag.GEMBLOCK_HELIODOR, TagDC.ItemTag.GEMBLOCK_HELIODOR);
-		copy(TagDC.BlockTag.GEMBLOCK_TOPAZ, TagDC.ItemTag.GEMBLOCK_TOPAZ);
-		copy(TagDC.BlockTag.GEMBLOCK_LARIMAR, TagDC.ItemTag.GEMBLOCK_LARIMAR);
-		copy(TagDC.BlockTag.GEMBLOCK_AQUAMARINE, TagDC.ItemTag.GEMBLOCK_AQUAMARINE);
-		copy(TagDC.BlockTag.GEMBLOCK_IOLITE, TagDC.ItemTag.GEMBLOCK_IOLITE);
-		copy(TagDC.BlockTag.GEMBLOCK_SAKURA, TagDC.ItemTag.GEMBLOCK_SAKURA);
-		copy(TagDC.BlockTag.GEMBLOCK_KUNZITE, TagDC.ItemTag.GEMBLOCK_KUNZITE);
-		copy(TagDC.BlockTag.GEMBLOCK_OPAL, TagDC.ItemTag.GEMBLOCK_OPAL);
-		copy(TagDC.BlockTag.GEMBLOCK_ROSINCA, TagDC.ItemTag.GEMBLOCK_ROSINCA);
-		copy(TagDC.BlockTag.GEMBLOCK_SPINEL, TagDC.ItemTag.GEMBLOCK_SPINEL);
-		copy(TagDC.BlockTag.GEMBLOCK_AMAZONITE, TagDC.ItemTag.GEMBLOCK_AMAZONITE);
-		copy(TagDC.BlockTag.GEMBLOCK_JADEITE, TagDC.ItemTag.GEMBLOCK_JADEITE);
-		copy(TagDC.BlockTag.GEMBLOCK_DEMANTOID, TagDC.ItemTag.GEMBLOCK_DEMANTOID);
-
-		copy(TagDC.BlockTag.CONT_LEAVES, TagDC.ItemTag.CONT_LEAVES);
-		copy(TagDC.BlockTag.CONT_LOGS, TagDC.ItemTag.CONT_LOGS);
-		copy(TagDC.BlockTag.CONT_CHARCOAL, TagDC.ItemTag.CONT_CHARCOAL);
-		copy(TagDC.BlockTag.CONT_CROPS, TagDC.ItemTag.CONT_CROPS);
-		copy(TagDC.BlockTag.CONT_WAX, TagDC.ItemTag.CONT_WAX);
-
-		copy(BlockTags.LEAVES, ItemTags.LEAVES);
-
-		copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
-
-		copy(TagDC.BlockTag.CROP_PUMPKIN, TagDC.ItemTag.CROP_PUMPKIN);
-		copy(TagDC.BlockTag.CROP_MELON, TagDC.ItemTag.CROP_MELON);
-		copy(TagDC.BlockTag.CROP_CACTUS, TagDC.ItemTag.CROP_CACTUS);
-
-		copy(TagDC.BlockTag.LOG_SWEET, TagDC.ItemTag.LOG_SWEET);
-		copy(TagDC.BlockTag.LOG_RESIN, TagDC.ItemTag.LOG_RESIN);
-		copy(TagDC.BlockTag.LOG_LATEX, TagDC.ItemTag.LOG_LATEX);
-		copy(TagDC.BlockTag.LOG_LACQUER, TagDC.ItemTag.LOG_LACQUER);
-		copy(TagDC.BlockTag.LOG_SAP, TagDC.ItemTag.LOG_SAP);
-
-		copy(TagDC.BlockTag.MAGMA, TagDC.ItemTag.MAGMA);
-
-		copy(TagDC.BlockTag.WEED, TagDC.ItemTag.WEED);
-
-		copy(TagDC.BlockTag.BUILDING_LINOLEUM, TagDC.ItemTag.BUILDING_LINOLEUM);
-		copy(TagDC.BlockTag.BUILDING_BRICKS, TagDC.ItemTag.BUILDING_BRICKS);
-		copy(TagDC.BlockTag.BUILDING_PILLAR, TagDC.ItemTag.BUILDING_PILLAR);
-		copy(TagDC.BlockTag.BUILDING_CHISELED, TagDC.ItemTag.BUILDING_CHISELED);
-		copy(TagDC.BlockTag.BUILDING_STONE, TagDC.ItemTag.BUILDING_STONE);
-
-		copy(TagDC.BlockTag.HAC_LANTERN, TagDC.ItemTag.HAC_LANTERN);
-		copy(TagDC.BlockTag.HAC_ANDON, TagDC.ItemTag.HAC_ANDON);
-		copy(TagDC.BlockTag.HAC_CARPET, TagDC.ItemTag.HAC_CARPET);
-		copy(TagDC.BlockTag.HAC_CHAIR, TagDC.ItemTag.HAC_CHAIR);
-		copy(TagDC.BlockTag.HAC_ROUND_CHAIR, TagDC.ItemTag.HAC_ROUND_CHAIR);
-		copy(TagDC.BlockTag.HAC_SOFA, TagDC.ItemTag.HAC_SOFA);
-		copy(TagDC.BlockTag.HAC_BED, TagDC.ItemTag.HAC_BED);
-		copy(TagDC.BlockTag.HAC_TABLE, TagDC.ItemTag.HAC_TABLE);
-		copy(TagDC.BlockTag.HAC_LUGGAGE, TagDC.ItemTag.HAC_LUGGAGE);
-		copy(TagDC.BlockTag.HAC_LOCKER, TagDC.ItemTag.HAC_LOCKER);
-		copy(TagDC.BlockTag.HAC_CABINET, TagDC.ItemTag.HAC_CABINET);
-		copy(TagDC.BlockTag.HAC_SLIM_STAIRS, TagDC.ItemTag.HAC_SLIM_STAIRS);
-
-		copy(Tags.Blocks.ORES, Tags.Items.ORES);
-
-		copy(TagDC.BlockTag.HOPPER_FILTER, TagDC.ItemTag.HOPPER_FILTER);
-		copy(TagDC.BlockTag.HOPPER, TagDC.ItemTag.HOPPER);
-
-		copy(TagDC.BlockTag.FLUID_PIPE, TagDC.ItemTag.FLUID_PIPE);
-		copy(TagDC.BlockTag.ENERGY_CABLE, TagDC.ItemTag.ENERGY_CABLE);
-
-		copy(TagDC.BlockTag.HAC_MACHINE, TagDC.ItemTag.HAC_MACHINE);
-		copy(TagDC.BlockTag.ENERGY_MACHINE, TagDC.ItemTag.ENERGY_MACHINE);
-		copy(TagDC.BlockTag.CLIMATE_MACHINE, TagDC.ItemTag.CLIMATE_MACHINE);
-		copy(TagDC.BlockTag.DISPLAY_MACHINE, TagDC.ItemTag.DISPLAY_MACHINE);
-		copy(TagDC.BlockTag.LEAKAGE_MACHINE, TagDC.ItemTag.LEAKAGE_MACHINE);
 
 		// plugin
 		tag(TagDC.ItemTag.CROP_BARLEY).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "barley"));

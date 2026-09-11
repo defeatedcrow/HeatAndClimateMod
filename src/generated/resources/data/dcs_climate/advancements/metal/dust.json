@@ -75,5 +75,6 @@
       "has_dust_tin",
       "has_dust_iron"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

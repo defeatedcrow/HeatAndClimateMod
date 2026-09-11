@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/drink_tea_berry_milk_0"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

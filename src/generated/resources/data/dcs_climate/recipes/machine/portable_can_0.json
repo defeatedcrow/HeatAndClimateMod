@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingots/iron"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/portable_can"
-  }
+  },
+  "show_notification": true
 }

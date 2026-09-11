@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/stickey_piston_another_0"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "minecraft:paper"
@@ -13,5 +14,6 @@
   "result": {
     "count": 16,
     "item": "dcs_climate:food/pack_empty"
-  }
+  },
+  "show_notification": true
 }

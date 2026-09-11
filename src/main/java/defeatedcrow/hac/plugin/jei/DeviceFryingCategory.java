@@ -2,12 +2,13 @@ package defeatedcrow.hac.plugin.jei;
 
 import java.util.List;
 
+import org.joml.Matrix4f;
+
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
@@ -16,6 +17,7 @@ import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.plugin.jei.ingredients.HeatTierRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.IngredientTypeDC;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -35,9 +37,7 @@ public class DeviceFryingCategory implements IRecipeCategory<IDeviceRecipe> {
 
 	public DeviceFryingCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(FoodInit.FOOD_PLANT_OIL.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.FRYING.getLocation(), 8, 5, 155, 72)
-				.addPadding(0, 0, 4, 1)
-				.build();
+		background = guiHelper.drawableBuilder(PluginTexDC.FRYING.getLocation(), 8, 5, 155, 72).addPadding(0, 0, 4, 1).build();
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class DeviceFryingCategory implements IRecipeCategory<IDeviceRecipe> {
 		int l = Math.min(6, recipe.getInputs().size());
 		for (int l1 = 0; l1 < l; l1++) {
 			int x = l1 > 2 ? 18 : 0;
-			int y = (l1 % 3) * 18;
+			int y = l1 % 3 * 18;
 			builder.addSlot(RecipeIngredientRole.INPUT, 60 + x, 6 + y).addIngredients(recipe.getInputs().get(l1));
 		}
 
@@ -93,13 +93,12 @@ public class DeviceFryingCategory implements IRecipeCategory<IDeviceRecipe> {
 			heats.addAll(DCHeatTier.elements());
 		}
 		for (DCHeatTier heat : heats) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 41 + heat.getID() * 6, 67).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
-					new HeatTierRenderer(6, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 41 + heat.getID() * 6, 67).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER, new HeatTierRenderer(6, 3));
 		}
 	}
 
 	@Override
-	public List<Component> getTooltipStrings(IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+	public void getTooltip(ITooltipBuilder tooltip, IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
 		List<Component> list = Lists.newArrayList();
 		// list.add(Component.translatable("X :" + mouseX + ", Y: " + mouseY));
 
@@ -109,7 +108,7 @@ public class DeviceFryingCategory implements IRecipeCategory<IDeviceRecipe> {
 				list.add(Component.literal("Fluid Tag: " + tag.location().toString()));
 			}
 		}
-		return list;
+		tooltip.addAll(list);
 	}
 
 	@Override

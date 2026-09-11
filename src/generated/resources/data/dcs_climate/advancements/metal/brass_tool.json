@@ -47,5 +47,6 @@
       "has_brass_tool",
       "has_steel_tool"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

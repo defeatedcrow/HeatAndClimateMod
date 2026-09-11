@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/paper_from_straw"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

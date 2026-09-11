@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/nameshi_0"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

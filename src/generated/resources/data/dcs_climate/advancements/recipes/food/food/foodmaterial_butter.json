@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/foodmaterial_butter"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

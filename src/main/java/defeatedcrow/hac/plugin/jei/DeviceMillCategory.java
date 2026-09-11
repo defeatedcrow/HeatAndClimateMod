@@ -1,12 +1,9 @@
 package defeatedcrow.hac.plugin.jei;
 
-import java.util.List;
-
-import com.google.common.collect.Lists;
-
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
 import defeatedcrow.hac.machine.material.MachineInit;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -62,10 +59,7 @@ public class DeviceMillCategory implements IRecipeCategory<IDeviceRecipe> {
 	}
 
 	@Override
-	public List<Component> getTooltipStrings(IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
-		List<Component> list = Lists.newArrayList();
-		return list;
-	}
+	public void getTooltip(ITooltipBuilder tooltip, IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {}
 
 	@Override
 	public void draw(IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
@@ -74,7 +68,7 @@ public class DeviceMillCategory implements IRecipeCategory<IDeviceRecipe> {
 		int chance1 = recipe.getSecondaryRate();
 		if (chance1 > 0) {
 			String text = chance1 + "%";
-			graphics.drawString(font, text, 108, 16, 0xFF000000);
+			graphics.drawString(font, text, 108, 16, 0xFF000000, false);
 		}
 	}
 }

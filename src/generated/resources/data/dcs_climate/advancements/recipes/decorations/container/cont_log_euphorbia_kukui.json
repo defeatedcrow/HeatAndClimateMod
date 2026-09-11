@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_log_euphorbia_kukui": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/log_euphorbia_kukui"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dcs_climate:container/cont_log_euphorbia_kukui"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_log_euphorbia_kukui",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dcs_climate:container/cont_log_euphorbia_kukui"
+    ]
+  },
+  "sends_telemetry_event": false
+}

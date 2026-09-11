@@ -2,12 +2,13 @@ package defeatedcrow.hac.plugin.jei;
 
 import java.util.List;
 
+import org.joml.Matrix4f;
+
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.IDeviceRecipe;
@@ -16,6 +17,7 @@ import defeatedcrow.hac.machine.material.MachineInit;
 import defeatedcrow.hac.plugin.jei.ingredients.HeatTierRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.IngredientTypeDC;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -35,9 +37,7 @@ public class DeviceTeaCategory implements IRecipeCategory<IDeviceRecipe> {
 
 	public DeviceTeaCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(MachineInit.TEA_POT_NORMAL.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.TEA.getLocation(), 15, 6, 142, 72)
-			.addPadding(0, 0, 8, 3)
-			.build();
+		background = guiHelper.drawableBuilder(PluginTexDC.TEA.getLocation(), 15, 6, 142, 72).addPadding(0, 0, 8, 3).build();
 	}
 
 	@Override
@@ -88,13 +88,12 @@ public class DeviceTeaCategory implements IRecipeCategory<IDeviceRecipe> {
 			heats.addAll(DCHeatTier.elements());
 		}
 		for (DCHeatTier heat : heats) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 40 + heat.getID() * 6, 66).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
-				new HeatTierRenderer(6, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 40 + heat.getID() * 6, 66).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER, new HeatTierRenderer(6, 3));
 		}
 	}
 
 	@Override
-	public List<Component> getTooltipStrings(IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+	public void getTooltip(ITooltipBuilder tooltip, IDeviceRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
 		List<Component> list = Lists.newArrayList();
 		// list.add(Component.translatable("X :" + mouseX + ", Y: " + mouseY));
 
@@ -105,7 +104,7 @@ public class DeviceTeaCategory implements IRecipeCategory<IDeviceRecipe> {
 			}
 		}
 
-		return list;
+		tooltip.addAll(list);
 	}
 
 	@Override

@@ -25,5 +25,6 @@
     [
       "impossible"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

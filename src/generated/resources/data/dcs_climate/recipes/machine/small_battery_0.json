@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "W": {
       "item": "minecraft:blaze_powder"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/batteryitem_small"
-  }
+  },
+  "show_notification": true
 }

@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/salad_potato_0"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

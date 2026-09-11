@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/bread_cream"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "X": {
       "tag": "forge:ingots/iron"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/lure_jig_glitter"
-  }
+  },
+  "show_notification": true
 }

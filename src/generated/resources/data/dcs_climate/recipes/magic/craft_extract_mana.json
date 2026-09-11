@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "dcs_climate:magic/drop_mana"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:magic/extract_mana"
-  }
+  },
+  "show_notification": true
 }

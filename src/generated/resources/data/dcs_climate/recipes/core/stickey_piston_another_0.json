@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "redstone",
   "key": {
     "X": {
       "tag": "forge:saps/resin"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "minecraft:sticky_piston"
-  }
+  },
+  "show_notification": true
 }

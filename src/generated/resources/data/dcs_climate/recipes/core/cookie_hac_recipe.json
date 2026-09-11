@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingredients/wheat"
@@ -14,5 +15,6 @@
   "result": {
     "count": 4,
     "item": "minecraft:cookie"
-  }
+  },
+  "show_notification": true
 }

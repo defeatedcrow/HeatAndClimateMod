@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "dcs_climate:building_stones/linoleum"
@@ -17,5 +18,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/kitchen_bench_lab_a"
-  }
+  },
+  "show_notification": true
 }

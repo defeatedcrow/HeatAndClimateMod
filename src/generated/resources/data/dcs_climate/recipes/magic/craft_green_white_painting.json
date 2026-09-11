@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "W": {
       "tag": "forge:gems/diamond"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "dcs_climate:magic/picture_item_green_white"
-  }
+  },
+  "show_notification": true
 }

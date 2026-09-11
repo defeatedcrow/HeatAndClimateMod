@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "dcs_climate:build/mortar"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/water_basin"
-  }
+  },
+  "show_notification": true
 }

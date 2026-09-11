@@ -31,5 +31,6 @@
     [
       "has_wild_crop"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

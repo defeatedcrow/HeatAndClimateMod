@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "minecraft:charcoal"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/logcont_charcoal"
-  }
+  },
+  "show_notification": true
 }

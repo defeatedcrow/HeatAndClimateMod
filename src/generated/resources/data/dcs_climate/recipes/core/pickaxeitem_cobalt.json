@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "X": {
       "tag": "forge:ingots/cobalt_alloy"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/pickaxe_cobalt"
-  }
+  },
+  "show_notification": true
 }

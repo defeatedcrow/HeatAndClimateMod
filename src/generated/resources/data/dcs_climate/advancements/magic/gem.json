@@ -31,5 +31,6 @@
     [
       "has_gems"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

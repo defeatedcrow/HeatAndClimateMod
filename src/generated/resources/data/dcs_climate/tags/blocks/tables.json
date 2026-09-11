@@ -1,0 +1,9 @@
+{
+  "values": [
+    "dcs_climate:build/table_white",
+    "dcs_climate:build/table_blue",
+    "dcs_climate:build/table_black",
+    "dcs_climate:build/table_red",
+    "dcs_climate:build/table_green"
+  ]
+}

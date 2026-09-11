@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "X": {
       "tag": "forge:clothes"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "minecraft:white_bed"
-  }
+  },
+  "show_notification": true
 }

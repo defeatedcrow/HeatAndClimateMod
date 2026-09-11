@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/sieve_ore_diamond"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

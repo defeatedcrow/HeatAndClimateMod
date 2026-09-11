@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "V": {
       "tag": "forge:dusts/borax"
@@ -24,5 +25,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/casting_mold_tourmarine_raw"
-  }
+  },
+  "show_notification": true
 }

@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/cooked_sweetpotato_raw"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

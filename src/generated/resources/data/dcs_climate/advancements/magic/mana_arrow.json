@@ -31,5 +31,6 @@
     [
       "has_arrow_white"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

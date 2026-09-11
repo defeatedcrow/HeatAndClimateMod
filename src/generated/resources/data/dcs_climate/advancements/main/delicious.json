@@ -31,5 +31,6 @@
     [
       "has_good_taste_food"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

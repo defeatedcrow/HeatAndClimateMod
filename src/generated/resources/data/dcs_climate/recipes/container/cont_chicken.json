@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingredients/raw_chicken"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/cardboard_chicken"
-  }
+  },
+  "show_notification": true
 }

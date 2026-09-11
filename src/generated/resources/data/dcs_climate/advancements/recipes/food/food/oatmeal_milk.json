@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/oatmeal_milk"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

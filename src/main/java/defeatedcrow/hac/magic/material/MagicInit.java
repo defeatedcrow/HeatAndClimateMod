@@ -87,8 +87,8 @@ import defeatedcrow.hac.magic.material.item.jems.SilverBadge;
 import defeatedcrow.hac.magic.material.item.jems.SilverBracelet;
 import defeatedcrow.hac.magic.material.item.jems.SilverPendant;
 import defeatedcrow.hac.magic.material.item.jems.SilverRing;
-import net.minecraft.tags.TagKey;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -103,8 +103,8 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class MagicInit {
 
-	public static final RegistryObject<CreativeModeTab> MAGIC = CoreInit.TABS.register("magic",
-	    () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.magic")).icon(() -> new ItemStack(MagicInit.EXTRACT_MANA.get())).build());
+	public static final RegistryObject<CreativeModeTab> MAGIC
+	    = CoreInit.TABS.register("dcs.7.magic", () -> CreativeModeTab.builder().title(Component.translatable("itemgroup.dcs.magic")).icon(() -> new ItemStack(MagicInit.EXTRACT_MANA.get())).build());
 
 	public static void init() {}
 
@@ -119,52 +119,51 @@ public class MagicInit {
 	public static final RegistryObject<EntityType<ArrowGreen>> ARROW_GREEN_ENTITY
 	    = CoreInit.ENTITIES.register("arrow_green", () -> EntityType.Builder.<ArrowGreen> of(ArrowGreen::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("arrow_green"));
 
-	public static final RegistryObject<EntityType<ArrowRobber>> ARROW_ROBBER_ENTITY = CoreInit.ENTITIES.register("arrow_robber", () -> EntityType.Builder.<ArrowRobber> of(ArrowRobber::new,
-	    MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("arrow_robber"));
-	public static final RegistryObject<EntityType<ArrowBindPlant>> ARROW_BIND_ENTITY = CoreInit.ENTITIES.register("arrow_bind", () -> EntityType.Builder.<ArrowBindPlant> of(ArrowBindPlant::new,
-	    MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("arrow_bind"));
+	public static final RegistryObject<EntityType<ArrowRobber>> ARROW_ROBBER_ENTITY
+	    = CoreInit.ENTITIES.register("arrow_robber", () -> EntityType.Builder.<ArrowRobber> of(ArrowRobber::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("arrow_robber"));
+	public static final RegistryObject<EntityType<ArrowBindPlant>> ARROW_BIND_ENTITY
+	    = CoreInit.ENTITIES.register("arrow_bind", () -> EntityType.Builder.<ArrowBindPlant> of(ArrowBindPlant::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("arrow_bind"));
 
-	public static final RegistryObject<EntityType<ChairEntity>> BIND_PLANT_ENTITY = CoreInit.ENTITIES.register("bind_plant", () -> EntityType.Builder.<ChairEntity> of(ChairEntity::new,
-	    MobCategory.MISC).sized(1.0F, 0.25F).clientTrackingRange(4).updateInterval(20).build("bind_plant"));
-	public static final RegistryObject<EntityType<ChairEntity>> BIND_ELECTRIC_ENTITY = CoreInit.ENTITIES.register("bind_electric", () -> EntityType.Builder.<ChairEntity> of(ChairEntity::new,
-	    MobCategory.MISC).sized(1.0F, 0.25F).clientTrackingRange(8).updateInterval(20).build("bind_electric"));
+	public static final RegistryObject<EntityType<ChairEntity>> BIND_PLANT_ENTITY
+	    = CoreInit.ENTITIES.register("bind_plant", () -> EntityType.Builder.<ChairEntity> of(ChairEntity::new, MobCategory.MISC).sized(1.0F, 0.25F).clientTrackingRange(4).updateInterval(20).build("bind_plant"));
+	public static final RegistryObject<EntityType<ChairEntity>> BIND_ELECTRIC_ENTITY
+	    = CoreInit.ENTITIES.register("bind_electric", () -> EntityType.Builder.<ChairEntity> of(ChairEntity::new, MobCategory.MISC).sized(1.0F, 0.25F).clientTrackingRange(8).updateInterval(20).build("bind_electric"));
 
-	public static final RegistryObject<EntityType<PhoenixLightEntity>> PHOENIX_LIGHT_ENTITY = CoreInit.ENTITIES.register("phoenix_light", () -> EntityType.Builder.<PhoenixLightEntity> of(
-	    PhoenixLightEntity::new,
-	    MobCategory.MISC).sized(1.0F, 1.0F).clientTrackingRange(12).updateInterval(20).build("phoenix_light"));
+	public static final RegistryObject<EntityType<PhoenixLightEntity>> PHOENIX_LIGHT_ENTITY
+	    = CoreInit.ENTITIES.register("phoenix_light", () -> EntityType.Builder.<PhoenixLightEntity> of(PhoenixLightEntity::new, MobCategory.MISC).sized(1.0F, 1.0F).clientTrackingRange(12).updateInterval(20).build("phoenix_light"));
 
-	public static final RegistryObject<EntityType<SilkyFairyEntity>> SILKY_FAIRY_ENTITY = CoreInit.ENTITIES.register("silky_fairy", () -> EntityType.Builder.<SilkyFairyEntity> of(SilkyFairyEntity::new,
-	    MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(5).build("silky_fairy"));
+	public static final RegistryObject<EntityType<SilkyFairyEntity>> SILKY_FAIRY_ENTITY
+	    = CoreInit.ENTITIES.register("silky_fairy", () -> EntityType.Builder.<SilkyFairyEntity> of(SilkyFairyEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(5).build("silky_fairy"));
 
-	public static final RegistryObject<EntityType<SilkySmallBombEntity>> SILKY_BOMB_ENTITY = CoreInit.ENTITIES.register("silky_bomb", () -> EntityType.Builder.<SilkySmallBombEntity> of(
-	    SilkySmallBombEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(5).build("silky_bomb"));
+	public static final RegistryObject<EntityType<SilkySmallBombEntity>> SILKY_BOMB_ENTITY
+	    = CoreInit.ENTITIES.register("silky_bomb", () -> EntityType.Builder.<SilkySmallBombEntity> of(SilkySmallBombEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(5).build("silky_bomb"));
 
-	public static final RegistryObject<EntityType<CrowTurretEntity>> CROW_TURRET = CoreInit.ENTITIES.register("crow_turret", () -> EntityType.Builder.<CrowTurretEntity> of(CrowTurretEntity::new,
-	    MobCategory.CREATURE).sized(1.0F, 1.0F).clientTrackingRange(32).updateInterval(5).build("crow_turret"));
+	public static final RegistryObject<EntityType<CrowTurretEntity>> CROW_TURRET
+	    = CoreInit.ENTITIES.register("crow_turret", () -> EntityType.Builder.<CrowTurretEntity> of(CrowTurretEntity::new, MobCategory.CREATURE).sized(1.0F, 1.0F).clientTrackingRange(32).updateInterval(5).build("crow_turret"));
 
-	public static final RegistryObject<EntityType<PictureEntityWU>> MAGIC_PICTURE_WU = CoreInit.ENTITIES.register("magic_picture_wu", () -> EntityType.Builder.<PictureEntityWU> of(PictureEntityWU::new,
-	    MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_wu"));
-	public static final RegistryObject<EntityType<PictureEntityWR>> MAGIC_PICTURE_WR = CoreInit.ENTITIES.register("magic_picture_wr", () -> EntityType.Builder.<PictureEntityWR> of(PictureEntityWR::new,
-	    MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_wr"));
-	public static final RegistryObject<EntityType<PictureEntityUB>> MAGIC_PICTURE_UB = CoreInit.ENTITIES.register("magic_picture_ub", () -> EntityType.Builder.<PictureEntityUB> of(PictureEntityUB::new,
-	    MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_ub"));
-	public static final RegistryObject<EntityType<PictureEntityUG>> MAGIC_PICTURE_UG = CoreInit.ENTITIES.register("magic_picture_ug", () -> EntityType.Builder.<PictureEntityUG> of(PictureEntityUG::new,
-	    MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_ug"));
-	public static final RegistryObject<EntityType<PictureEntityBR>> MAGIC_PICTURE_BR = CoreInit.ENTITIES.register("magic_picture_br", () -> EntityType.Builder.<PictureEntityBR> of(PictureEntityBR::new,
-	    MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_br"));
-	public static final RegistryObject<EntityType<PictureEntityBW>> MAGIC_PICTURE_BW = CoreInit.ENTITIES.register("magic_picture_bw", () -> EntityType.Builder.<PictureEntityBW> of(PictureEntityBW::new,
-	    MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_bw"));
-	public static final RegistryObject<EntityType<PictureEntityRG>> MAGIC_PICTURE_RG = CoreInit.ENTITIES.register("magic_picture_rg", () -> EntityType.Builder.<PictureEntityRG> of(PictureEntityRG::new,
-	    MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_rg"));
-	public static final RegistryObject<EntityType<PictureEntityRU>> MAGIC_PICTURE_RU = CoreInit.ENTITIES.register("magic_picture_ru", () -> EntityType.Builder.<PictureEntityRU> of(PictureEntityRU::new,
-	    MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_ru"));
-	public static final RegistryObject<EntityType<PictureEntityGW>> MAGIC_PICTURE_GW = CoreInit.ENTITIES.register("magic_picture_gw", () -> EntityType.Builder.<PictureEntityGW> of(PictureEntityGW::new,
-	    MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_gw"));
-	public static final RegistryObject<EntityType<PictureEntityGB>> MAGIC_PICTURE_GB = CoreInit.ENTITIES.register("magic_picture_gb", () -> EntityType.Builder.<PictureEntityGB> of(PictureEntityGB::new,
-	    MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_gb"));
+	public static final RegistryObject<EntityType<PictureEntityWU>> MAGIC_PICTURE_WU
+	    = CoreInit.ENTITIES.register("magic_picture_wu", () -> EntityType.Builder.<PictureEntityWU> of(PictureEntityWU::new, MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_wu"));
+	public static final RegistryObject<EntityType<PictureEntityWR>> MAGIC_PICTURE_WR
+	    = CoreInit.ENTITIES.register("magic_picture_wr", () -> EntityType.Builder.<PictureEntityWR> of(PictureEntityWR::new, MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_wr"));
+	public static final RegistryObject<EntityType<PictureEntityUB>> MAGIC_PICTURE_UB
+	    = CoreInit.ENTITIES.register("magic_picture_ub", () -> EntityType.Builder.<PictureEntityUB> of(PictureEntityUB::new, MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_ub"));
+	public static final RegistryObject<EntityType<PictureEntityUG>> MAGIC_PICTURE_UG
+	    = CoreInit.ENTITIES.register("magic_picture_ug", () -> EntityType.Builder.<PictureEntityUG> of(PictureEntityUG::new, MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_ug"));
+	public static final RegistryObject<EntityType<PictureEntityBR>> MAGIC_PICTURE_BR
+	    = CoreInit.ENTITIES.register("magic_picture_br", () -> EntityType.Builder.<PictureEntityBR> of(PictureEntityBR::new, MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_br"));
+	public static final RegistryObject<EntityType<PictureEntityBW>> MAGIC_PICTURE_BW
+	    = CoreInit.ENTITIES.register("magic_picture_bw", () -> EntityType.Builder.<PictureEntityBW> of(PictureEntityBW::new, MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_bw"));
+	public static final RegistryObject<EntityType<PictureEntityRG>> MAGIC_PICTURE_RG
+	    = CoreInit.ENTITIES.register("magic_picture_rg", () -> EntityType.Builder.<PictureEntityRG> of(PictureEntityRG::new, MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_rg"));
+	public static final RegistryObject<EntityType<PictureEntityRU>> MAGIC_PICTURE_RU
+	    = CoreInit.ENTITIES.register("magic_picture_ru", () -> EntityType.Builder.<PictureEntityRU> of(PictureEntityRU::new, MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_ru"));
+	public static final RegistryObject<EntityType<PictureEntityGW>> MAGIC_PICTURE_GW
+	    = CoreInit.ENTITIES.register("magic_picture_gw", () -> EntityType.Builder.<PictureEntityGW> of(PictureEntityGW::new, MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_gw"));
+	public static final RegistryObject<EntityType<PictureEntityGB>> MAGIC_PICTURE_GB
+	    = CoreInit.ENTITIES.register("magic_picture_gb", () -> EntityType.Builder.<PictureEntityGB> of(PictureEntityGB::new, MobCategory.MISC).sized(0.5F, 1.0F).clientTrackingRange(32).updateInterval(20).build("magic_picture_gb"));
 
-	public static final RegistryObject<EntityType<ThrownSolidOrb>> SOLID_ORB = CoreInit.ENTITIES.register("exp_solid_orb_entity", () -> EntityType.Builder.<ThrownSolidOrb> of(ThrownSolidOrb::new,
-	    MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("exp_solid_orb_entity"));
+	public static final RegistryObject<EntityType<ThrownSolidOrb>> SOLID_ORB
+	    = CoreInit.ENTITIES.register("exp_solid_orb_entity", () -> EntityType.Builder.<ThrownSolidOrb> of(ThrownSolidOrb::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("exp_solid_orb_entity"));
 
 	public static final RegistryObject<Item> DROP_WHITE = regItem("drop_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "drop_w", Rarity.COMMON, TagDC.ItemTag.DROP_WHITE).setDomain("magic"));
 	public static final RegistryObject<Item> DROP_BLUE = regItem("drop_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "drop_u", Rarity.COMMON, TagDC.ItemTag.DROP_BLUE).setDomain("magic"));
@@ -172,38 +171,23 @@ public class MagicInit {
 	public static final RegistryObject<Item> DROP_RED = regItem("drop_r", () -> new MagicMaterialItemDC(MagicColor.RED, "drop_r", Rarity.COMMON, TagDC.ItemTag.DROP_RED).setDomain("magic"));
 	public static final RegistryObject<Item> DROP_GREEN = regItem("drop_g", () -> new MagicMaterialItemDC(MagicColor.GREEN, "drop_g", Rarity.COMMON, TagDC.ItemTag.DROP_GREEN).setDomain("magic"));
 
-	public static final RegistryObject<Item> EXTRACT_WHITE = regItem("extract_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "extract_w", Rarity.COMMON, TagDC.ItemTag.EXTRACT_WHITE).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> EXTRACT_BLUE = regItem("extract_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "extract_u", Rarity.COMMON, TagDC.ItemTag.EXTRACT_BLUE).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> EXTRACT_BLACK = regItem("extract_b", () -> new MagicMaterialItemDC(MagicColor.BLACK, "extract_b", Rarity.COMMON, TagDC.ItemTag.EXTRACT_BLACK).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> EXTRACT_RED = regItem("extract_r", () -> new MagicMaterialItemDC(MagicColor.RED, "extract_r", Rarity.COMMON, TagDC.ItemTag.EXTRACT_RED).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> EXTRACT_GREEN = regItem("extract_g", () -> new MagicMaterialItemDC(MagicColor.GREEN, "extract_g", Rarity.COMMON, TagDC.ItemTag.EXTRACT_GREEN).setDomain(
-	    "magic"));
+	public static final RegistryObject<Item> EXTRACT_WHITE = regItem("extract_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "extract_w", Rarity.COMMON, TagDC.ItemTag.EXTRACT_WHITE).setDomain("magic"));
+	public static final RegistryObject<Item> EXTRACT_BLUE = regItem("extract_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "extract_u", Rarity.COMMON, TagDC.ItemTag.EXTRACT_BLUE).setDomain("magic"));
+	public static final RegistryObject<Item> EXTRACT_BLACK = regItem("extract_b", () -> new MagicMaterialItemDC(MagicColor.BLACK, "extract_b", Rarity.COMMON, TagDC.ItemTag.EXTRACT_BLACK).setDomain("magic"));
+	public static final RegistryObject<Item> EXTRACT_RED = regItem("extract_r", () -> new MagicMaterialItemDC(MagicColor.RED, "extract_r", Rarity.COMMON, TagDC.ItemTag.EXTRACT_RED).setDomain("magic"));
+	public static final RegistryObject<Item> EXTRACT_GREEN = regItem("extract_g", () -> new MagicMaterialItemDC(MagicColor.GREEN, "extract_g", Rarity.COMMON, TagDC.ItemTag.EXTRACT_GREEN).setDomain("magic"));
 
-	public static final RegistryObject<Item> PIGMENT_WHITE = regItem("pigment_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "pigment_w", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_WHITE).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> PIGMENT_BLUE = regItem("pigment_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "pigment_u", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_BLUE).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> PIGMENT_BLACK = regItem("pigment_b", () -> new MagicMaterialItemDC(MagicColor.BLACK, "pigment_b", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_BLACK).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> PIGMENT_RED = regItem("pigment_r", () -> new MagicMaterialItemDC(MagicColor.RED, "pigment_r", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_RED).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> PIGMENT_GREEN = regItem("pigment_g", () -> new MagicMaterialItemDC(MagicColor.GREEN, "pigment_g", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_GREEN).setDomain(
-	    "magic"));
+	public static final RegistryObject<Item> PIGMENT_WHITE = regItem("pigment_w", () -> new MagicMaterialItemDC(MagicColor.WHITE, "pigment_w", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_WHITE).setDomain("magic"));
+	public static final RegistryObject<Item> PIGMENT_BLUE = regItem("pigment_u", () -> new MagicMaterialItemDC(MagicColor.BLUE, "pigment_u", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_BLUE).setDomain("magic"));
+	public static final RegistryObject<Item> PIGMENT_BLACK = regItem("pigment_b", () -> new MagicMaterialItemDC(MagicColor.BLACK, "pigment_b", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_BLACK).setDomain("magic"));
+	public static final RegistryObject<Item> PIGMENT_RED = regItem("pigment_r", () -> new MagicMaterialItemDC(MagicColor.RED, "pigment_r", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_RED).setDomain("magic"));
+	public static final RegistryObject<Item> PIGMENT_GREEN = regItem("pigment_g", () -> new MagicMaterialItemDC(MagicColor.GREEN, "pigment_g", Rarity.UNCOMMON, TagDC.ItemTag.PIGMENT_GREEN).setDomain("magic"));
 
-	public static final RegistryObject<Item> ELEMENT_WHITE_INERT = regItem("element_w_inert", () -> new InertElementItem(MagicColor.WHITE, "element_w_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> ELEMENT_BLUE_INERT = regItem("element_u_inert", () -> new InertElementItem(MagicColor.BLUE, "element_u_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> ELEMENT_BLACK_INERT = regItem("element_b_inert", () -> new InertElementItem(MagicColor.BLACK, "element_b_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> ELEMENT_RED_INERT = regItem("element_r_inert", () -> new InertElementItem(MagicColor.RED, "element_r_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain(
-	    "magic"));
-	public static final RegistryObject<Item> ELEMENT_GREEN_INERT = regItem("element_g_inert", () -> new InertElementItem(MagicColor.GREEN, "element_g_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain(
-	    "magic"));
+	public static final RegistryObject<Item> ELEMENT_WHITE_INERT = regItem("element_w_inert", () -> new InertElementItem(MagicColor.WHITE, "element_w_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_BLUE_INERT = regItem("element_u_inert", () -> new InertElementItem(MagicColor.BLUE, "element_u_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_BLACK_INERT = regItem("element_b_inert", () -> new InertElementItem(MagicColor.BLACK, "element_b_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_RED_INERT = regItem("element_r_inert", () -> new InertElementItem(MagicColor.RED, "element_r_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain("magic"));
+	public static final RegistryObject<Item> ELEMENT_GREEN_INERT = regItem("element_g_inert", () -> new InertElementItem(MagicColor.GREEN, "element_g_inert", TagDC.ItemTag.ELEMENT_INERT).setDomain("magic"));
 
 	public static final RegistryObject<Item> ELEMENT_WHITE = regItem("element_w", () -> new MagicElementItem(MagicColor.WHITE, "element_w", TagDC.ItemTag.ELEMENT_WHITE).setDomain("magic"));
 	public static final RegistryObject<Item> ELEMENT_BLUE = regItem("element_u", () -> new MagicElementItem(MagicColor.BLUE, "element_u", TagDC.ItemTag.ELEMENT_BLUE).setDomain("magic"));
@@ -213,8 +197,7 @@ public class MagicInit {
 
 	public static final RegistryObject<Item> DROP_MANA = regItem("drop_mana", () -> new MagicMaterialItemDC(MagicColor.NONE, "drop_mana", Rarity.COMMON, TagDC.ItemTag.MANA_DROPS).setDomain("magic"));
 	public static final RegistryObject<Item> EXTRACT_MANA = regItem("extract_mana", () -> new MagicMaterialItemDC(MagicColor.NONE, "extract_mana", Rarity.UNCOMMON, TagDC.ItemTag.MANA_EXTRACT).setDomain("magic"));
-	public static final RegistryObject<Item> ELEMENT_MANA = regItem("element_mana", () -> new MagicMaterialItemDC(MagicColor.NONE, "element_mana", Rarity.RARE, TagDC.ItemTag.MANA_ELEMENT).setDomain(
-	    "magic"));
+	public static final RegistryObject<Item> ELEMENT_MANA = regItem("element_mana", () -> new MagicMaterialItemDC(MagicColor.NONE, "element_mana", Rarity.RARE, TagDC.ItemTag.MANA_ELEMENT).setDomain("magic"));
 
 	public static final RegistryObject<Item> EXP_GEM = regItem("exp_solid_orb", EXPSolidOrbItem::new);
 

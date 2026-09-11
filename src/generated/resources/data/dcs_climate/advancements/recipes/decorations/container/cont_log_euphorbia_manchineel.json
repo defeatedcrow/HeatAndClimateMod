@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_log_euphorbia_manchineel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dcs_climate:food/log_euphorbia_manchineel_dry"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dcs_climate:container/cont_log_euphorbia_manchineel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_log_euphorbia_manchineel",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dcs_climate:container/cont_log_euphorbia_manchineel"
+    ]
+  },
+  "sends_telemetry_event": false
+}

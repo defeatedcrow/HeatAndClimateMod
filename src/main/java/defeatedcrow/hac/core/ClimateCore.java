@@ -18,6 +18,7 @@ import defeatedcrow.hac.core.climate.register.MobResistanceRegister;
 import defeatedcrow.hac.core.config.ConfigClientBuilder;
 import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.config.ConfigServerBuilder;
+import defeatedcrow.hac.core.json.JsonInit;
 import defeatedcrow.hac.core.json.TileNBTFunction;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.DamageTypeInit;
@@ -60,6 +61,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 
@@ -100,7 +102,7 @@ public class ClimateCore {
 		FeatureInit.init();
 		TriggersDC.init();
 
-		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		final IEventBus bus = context.getModEventBus();
 		CoreInit.BLOCKS.register(bus);
 		CoreInit.TABS.register(bus);
 		CoreInit.BLOCK_ENTITIES.register(bus);
@@ -211,6 +213,10 @@ public class ClimateCore {
 
 	public void clientSetup(FMLClientSetupEvent event) {
 
+	}
+
+	public void jsonSetup(FMLLoadCompleteEvent event) {
+		JsonInit.init();
 	}
 
 }

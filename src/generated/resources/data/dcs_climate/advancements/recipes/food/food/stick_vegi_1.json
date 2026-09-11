@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/stick_vegi_1"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

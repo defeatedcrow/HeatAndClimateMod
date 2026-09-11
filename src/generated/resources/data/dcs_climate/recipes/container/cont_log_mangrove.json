@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "minecraft:mangrove_log"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/logcont_mangrove"
-  }
+  },
+  "show_notification": true
 }

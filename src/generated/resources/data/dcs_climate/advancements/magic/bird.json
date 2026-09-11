@@ -29,5 +29,6 @@
     [
       "has_magic_tier2"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

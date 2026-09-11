@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingots/steel"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/impeller_small"
-  }
+  },
+  "show_notification": true
 }

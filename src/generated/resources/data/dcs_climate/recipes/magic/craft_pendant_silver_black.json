@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:dusts/crystal"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "dcs_climate:magic/pendant_s_black"
-  }
+  },
+  "show_notification": true
 }

@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/foodmaterial_mixed_spice"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

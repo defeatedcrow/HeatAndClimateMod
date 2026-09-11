@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "minecraft:baked_potato"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/burntbox_baked_potato"
-  }
+  },
+  "show_notification": true
 }

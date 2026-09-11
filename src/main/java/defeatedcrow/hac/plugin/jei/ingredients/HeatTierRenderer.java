@@ -2,13 +2,14 @@ package defeatedcrow.hac.plugin.jei.ingredients;
 
 import java.util.List;
 
+import org.joml.Matrix4f;
+
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.ClimateCore;
@@ -38,7 +39,7 @@ public class HeatTierRenderer implements IIngredientRenderer<DCHeatTier> {
 		RenderSystem.enableBlend();
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 
-		RenderSystem.setShaderTexture(0, new ResourceLocation(ClimateCore.MOD_ID, "textures/gui/icon_base.png"));
+		RenderSystem.setShaderTexture(0, ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "textures/gui/icon_base.png"));
 		Matrix4f matrix = graphics.pose().last().pose();
 		setGLColorFromInt(ingredient.getColorInt());
 
@@ -76,23 +77,13 @@ public class HeatTierRenderer implements IIngredientRenderer<DCHeatTier> {
 	private static void drawTexturedModalRect(Matrix4f mat, int x, int y, int tX, int tY, int wid, int hei) {
 		float f = 1F / 16F;
 		float f1 = 1F / 16F;
-		BufferBuilder bufferbuilder = Tesselator.getInstance()
-		    .getBuilder();
+		BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
 		bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-		bufferbuilder.vertex(mat, x + 0, y + hei, 90.0F)
-		    .uv((tX + 0) * f, (tY + hei) * f1)
-		    .endVertex();
-		bufferbuilder.vertex(mat, x + wid, y + hei, 90.0F)
-		    .uv((tX + wid) * f, (tY + hei) * f1)
-		    .endVertex();
-		bufferbuilder.vertex(mat, x + wid, y + 0, 90.0F)
-		    .uv((tX + wid) * f, (tY + 0) * f1)
-		    .endVertex();
-		bufferbuilder.vertex(mat, x + 0, y + 0, 90.0F)
-		    .uv((tX + 0) * f, (tY + 0) * f1)
-		    .endVertex();
-		Tesselator.getInstance()
-		    .end();
+		bufferbuilder.vertex(mat, x + 0, y + hei, 90.0F).uv((tX + 0) * f, (tY + hei) * f1).endVertex();
+		bufferbuilder.vertex(mat, x + wid, y + hei, 90.0F).uv((tX + wid) * f, (tY + hei) * f1).endVertex();
+		bufferbuilder.vertex(mat, x + wid, y + 0, 90.0F).uv((tX + wid) * f, (tY + 0) * f1).endVertex();
+		bufferbuilder.vertex(mat, x + 0, y + 0, 90.0F).uv((tX + 0) * f, (tY + 0) * f1).endVertex();
+		Tesselator.getInstance().end();
 	}
 
 }

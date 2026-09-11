@@ -44,7 +44,7 @@ public class JEIPluginDC implements IModPlugin {
 
 	@Override
 	public ResourceLocation getPluginUid() {
-		return new ResourceLocation(ClimateCore.MOD_ID, "core");
+		return ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "core");
 	}
 
 	@Override
@@ -76,41 +76,26 @@ public class JEIPluginDC implements IModPlugin {
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registration) {
-		registration.addRecipeCategories(new BiomeDataCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new ClimateSmeltingCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new HeatTreatmentCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new CropDataCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new TreeDataCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new DeviceCookingCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new DeviceFryingCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new DeviceTeaCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new DeviceFermentationCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new FuelBiomassCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new FuelFluidCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new DeviceMillCategory(registration.getJeiHelpers()
-		    .getGuiHelper()));
-		registration.addRecipeCategories(new DeviceCrusherCategory(registration.getJeiHelpers()
-		    .getGuiHelper(), () -> new ItemStack(MachineInit.BLADE_ALUMINA.get()), "pulverise"));
-		registration.addRecipeCategories(new DeviceCrusherCategory(registration.getJeiHelpers()
-		    .getGuiHelper(), () -> new ItemStack(MachineInit.BLADE_SUS.get()), "squeeze") {
+		registration.addRecipeCategories(new BiomeDataCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new ClimateSmeltingCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new HeatTreatmentCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new CropDataCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new TreeDataCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new DeviceCookingCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new DeviceFryingCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new DeviceTeaCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new DeviceFermentationCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new FuelBiomassCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new FuelFluidCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new DeviceMillCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new DeviceCrusherCategory(registration.getJeiHelpers().getGuiHelper(), () -> new ItemStack(MachineInit.BLADE_ALUMINA.get()), "pulverise"));
+		registration.addRecipeCategories(new DeviceCrusherCategory(registration.getJeiHelpers().getGuiHelper(), () -> new ItemStack(MachineInit.BLADE_SUS.get()), "squeeze") {
 			@Override
 			public RecipeType<IDeviceRecipe> getRecipeType() {
 				return JEIPluginDC.CRUSHER_SQUEEZE_DATA;
 			}
 		});
-		registration.addRecipeCategories(new DeviceCrusherCategory(registration.getJeiHelpers()
-		    .getGuiHelper(), () -> new ItemStack(MachineInit.BLADE_SCREEN.get()), "sieve") {
+		registration.addRecipeCategories(new DeviceCrusherCategory(registration.getJeiHelpers().getGuiHelper(), () -> new ItemStack(MachineInit.BLADE_SCREEN.get()), "sieve") {
 			@Override
 			public RecipeType<IDeviceRecipe> getRecipeType() {
 				return JEIPluginDC.CRUSHER_SIEVE_DATA;
@@ -162,49 +147,49 @@ public class JEIPluginDC implements IModPlugin {
 		registration.addRecipeClickArea(KichenOvenScreen.class, 78, 84, 52, 7, RecipeTypes.SMELTING);
 	}
 
-	public static final ResourceLocation SMELTING_ID = new ResourceLocation(ClimateCore.MOD_ID, "smelting_data");
+	public static final ResourceLocation SMELTING_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "smelting_data");
 	public static final RecipeType<IClimateSmelting> SMELTING_DATA = new RecipeType<>(SMELTING_ID, IClimateSmelting.class);
 
-	public static final ResourceLocation HEAT_TREATMENT_ID = new ResourceLocation(ClimateCore.MOD_ID, "heat_treatment_data");
+	public static final ResourceLocation HEAT_TREATMENT_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "heat_treatment_data");
 	public static final RecipeType<IHeatTreatment> HEAT_TREATMENT_DATA = new RecipeType<>(HEAT_TREATMENT_ID, IHeatTreatment.class);
 
-	public static final ResourceLocation CROP_ID = new ResourceLocation(ClimateCore.MOD_ID, "crop_data");
+	public static final ResourceLocation CROP_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "crop_data");
 	public static final RecipeType<ClimateCropBaseBlock> CROP_DATA = new RecipeType<>(CROP_ID, ClimateCropBaseBlock.class);
 
-	public static final ResourceLocation TREE_ID = new ResourceLocation(ClimateCore.MOD_ID, "tree_data");
+	public static final ResourceLocation TREE_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "tree_data");
 	public static final RecipeType<LeavesCropBlockDC> TREE_DATA = new RecipeType<>(TREE_ID, LeavesCropBlockDC.class);
 
-	public static final ResourceLocation COOKING_ID = new ResourceLocation(ClimateCore.MOD_ID, "cooking_data");
+	public static final ResourceLocation COOKING_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "cooking_data");
 	public static final RecipeType<IDeviceRecipe> COOKING_DATA = new RecipeType<>(COOKING_ID, IDeviceRecipe.class);
 
-	public static final ResourceLocation FRYING_ID = new ResourceLocation(ClimateCore.MOD_ID, "frying_data");
+	public static final ResourceLocation FRYING_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "frying_data");
 	public static final RecipeType<IDeviceRecipe> FRYING_DATA = new RecipeType<>(FRYING_ID, IDeviceRecipe.class);
 
-	public static final ResourceLocation TEA_ID = new ResourceLocation(ClimateCore.MOD_ID, "tea_data");
+	public static final ResourceLocation TEA_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "tea_data");
 	public static final RecipeType<IDeviceRecipe> TEA_DATA = new RecipeType<>(TEA_ID, IDeviceRecipe.class);
 
-	public static final ResourceLocation FERMENTATION_ID = new ResourceLocation(ClimateCore.MOD_ID, "fermentation_data");
+	public static final ResourceLocation FERMENTATION_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "fermentation_data");
 	public static final RecipeType<IDeviceRecipe> FERMENTATION_DATA = new RecipeType<>(FERMENTATION_ID, IDeviceRecipe.class);
 
-	public static final ResourceLocation MILL_ID = new ResourceLocation(ClimateCore.MOD_ID, "mill_data");
+	public static final ResourceLocation MILL_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "mill_data");
 	public static final RecipeType<IDeviceRecipe> MILL_DATA = new RecipeType<>(MILL_ID, IDeviceRecipe.class);
 
-	public static final ResourceLocation CRUSHER_PULVERISE_ID = new ResourceLocation(ClimateCore.MOD_ID, "crusher_pulverise_data");
+	public static final ResourceLocation CRUSHER_PULVERISE_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "crusher_pulverise_data");
 	public static final RecipeType<IDeviceRecipe> CRUSHER_PULVERISE_DATA = new RecipeType<>(CRUSHER_PULVERISE_ID, IDeviceRecipe.class);
 
-	public static final ResourceLocation CRUSHER_SQUEEZE_ID = new ResourceLocation(ClimateCore.MOD_ID, "crusher_squeeze_data");
+	public static final ResourceLocation CRUSHER_SQUEEZE_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "crusher_squeeze_data");
 	public static final RecipeType<IDeviceRecipe> CRUSHER_SQUEEZE_DATA = new RecipeType<>(CRUSHER_SQUEEZE_ID, IDeviceRecipe.class);
 
-	public static final ResourceLocation CRUSHER_SIEVE_ID = new ResourceLocation(ClimateCore.MOD_ID, "crusher_sieve_data");
+	public static final ResourceLocation CRUSHER_SIEVE_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "crusher_sieve_data");
 	public static final RecipeType<IDeviceRecipe> CRUSHER_SIEVE_DATA = new RecipeType<>(CRUSHER_SIEVE_ID, IDeviceRecipe.class);
 
-	public static final ResourceLocation BIOMASS_FUEL_ID = new ResourceLocation(ClimateCore.MOD_ID, "fuel_biomass_data");
+	public static final ResourceLocation BIOMASS_FUEL_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "fuel_biomass_data");
 	public static final RecipeType<IDeviceFuel> BIOMASS_FUEL_DATA = new RecipeType<>(BIOMASS_FUEL_ID, IDeviceFuel.class);
 
-	public static final ResourceLocation FLUID_FUEL_ID = new ResourceLocation(ClimateCore.MOD_ID, "fuel_fluid_data");
+	public static final ResourceLocation FLUID_FUEL_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "fuel_fluid_data");
 	public static final RecipeType<IDeviceFuel> FLUID_FUEL_DATA = new RecipeType<>(FLUID_FUEL_ID, IDeviceFuel.class);
 
-	public static final ResourceLocation BIOME_ID = new ResourceLocation(ClimateCore.MOD_ID, "biome_data");
+	public static final ResourceLocation BIOME_ID = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "biome_data");
 	public static final RecipeType<Biome> BIOME_DATA = new RecipeType<>(BIOME_ID, Biome.class);
 
 }

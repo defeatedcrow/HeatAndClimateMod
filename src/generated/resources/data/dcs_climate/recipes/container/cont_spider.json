@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "minecraft:spider_eye"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "dcs_climate:container/metalbox_spider"
-  }
+  },
+  "show_notification": true
 }

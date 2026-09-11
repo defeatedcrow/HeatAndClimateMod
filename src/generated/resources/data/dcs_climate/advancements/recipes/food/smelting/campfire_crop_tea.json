@@ -30,5 +30,6 @@
     "recipes": [
       "dcs_climate:smelting/campfire_crop_tea"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

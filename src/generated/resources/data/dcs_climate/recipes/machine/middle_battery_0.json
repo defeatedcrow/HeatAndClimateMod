@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "W": {
       "tag": "forge:dusts/cobalt"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/batteryitem_middle"
-  }
+  },
+  "show_notification": true
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "minecraft:dirt"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "dcs_climate:food/fertile_planter_gem"
-  }
+  },
+  "show_notification": true
 }

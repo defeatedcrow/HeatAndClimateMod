@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:ingots/brass"
@@ -11,5 +12,6 @@
   "result": {
     "count": 8,
     "item": "dcs_climate:machine/pipe_brass"
-  }
+  },
+  "show_notification": true
 }

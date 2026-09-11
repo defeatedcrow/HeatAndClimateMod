@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/bread_round"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

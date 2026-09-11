@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/plate_stuffed_bellpepper"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

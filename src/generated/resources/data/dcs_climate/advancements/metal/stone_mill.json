@@ -3,14 +3,9 @@
   "criteria": {
     "place_stone_mill": {
       "conditions": {
-        "location": [
-          {
-            "block": "dcs_climate:machine/stone_mill",
-            "condition": "minecraft:block_state_property"
-          }
-        ]
+        "block": "dcs_climate:machine/stone_mill"
       },
-      "trigger": "minecraft:placed_block"
+      "trigger": "minecraft:enter_block"
     }
   },
   "display": {
@@ -32,5 +27,6 @@
     [
       "place_stone_mill"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

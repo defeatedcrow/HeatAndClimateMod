@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "dcs_climate:color_elements/blue"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "dcs_climate:magic/bracelet_s_blue"
-  }
+  },
+  "show_notification": true
 }

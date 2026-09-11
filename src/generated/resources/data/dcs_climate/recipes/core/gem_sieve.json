@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "X": {
       "tag": "forge:ingots/iron"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/sieve"
-  }
+  },
+  "show_notification": true
 }

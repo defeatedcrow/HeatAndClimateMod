@@ -3,6 +3,8 @@ package defeatedcrow.hac.plugin.jei;
 import java.util.List;
 import java.util.Optional;
 
+import org.joml.Matrix4f;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -10,7 +12,6 @@ import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -27,6 +28,7 @@ import defeatedcrow.hac.plugin.jei.ingredients.HeatTierRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.HumidityRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.IngredientTypeDC;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -50,7 +52,7 @@ public class TreeDataCategory implements IRecipeCategory<LeavesCropBlockDC> {
 
 	public TreeDataCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(FoodInit.CROP_BH_SWEET.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.TREE.getLocation(), 21, 19, 134, 124).addPadding(0, 0, 10, 8).build();
+		background = guiHelper.drawableBuilder(PluginTexDC.TREE.getLocation(), 21, 19, 134, 128).addPadding(0, 0, 10, 8).build();
 	}
 
 	@Override
@@ -101,25 +103,22 @@ public class TreeDataCategory implements IRecipeCategory<LeavesCropBlockDC> {
 
 		List<DCHeatTier> heats = recipe.getSuitableTemp(tier);
 		for (DCHeatTier heat : heats) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 42 + heat.getID() * 6, 41).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER,
-			    new HeatTierRenderer(6, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 42 + heat.getID() * 6, 41).addIngredient(IngredientTypeDC.HEAT_TIER, heat).setCustomRenderer(IngredientTypeDC.HEAT_TIER, new HeatTierRenderer(6, 3));
 		}
 
 		List<DCHumidity> hums = recipe.getSuitableHum(tier);
 		for (DCHumidity hum : hums) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 42 + hum.getID() * 21, 47).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY,
-			    new HumidityRenderer(21, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 42 + hum.getID() * 21, 47).addIngredient(IngredientTypeDC.HUMIDITY, hum).setCustomRenderer(IngredientTypeDC.HUMIDITY, new HumidityRenderer(21, 3));
 		}
 
 		List<DCAirflow> airs = recipe.getSuitableAir(tier);
 		for (DCAirflow air : airs) {
-			builder.addSlot(RecipeIngredientRole.INPUT, 42 + air.getID() * 21, 53).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW,
-			    new AirflowRenderer(21, 3));
+			builder.addSlot(RecipeIngredientRole.INPUT, 42 + air.getID() * 21, 53).addIngredient(IngredientTypeDC.AIRFLOW, air).setCustomRenderer(IngredientTypeDC.AIRFLOW, new AirflowRenderer(21, 3));
 		}
 	}
 
 	@Override
-	public List<Component> getTooltipStrings(LeavesCropBlockDC recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+	public void getTooltip(ITooltipBuilder tooltip, LeavesCropBlockDC recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
 		CropTier tier = recipe.getTier();
 		List<Component> list = Lists.newArrayList();
 		// list.add(Component.translatable("X :" + mouseX + ", Y: " + mouseY));
@@ -168,7 +167,7 @@ public class TreeDataCategory implements IRecipeCategory<LeavesCropBlockDC> {
 				list.add(Component.translatable("dcs.gui.jei.crop_water"));
 			}
 
-		return list;
+		tooltip.addAll(list);
 	}
 
 	@Override
@@ -179,7 +178,7 @@ public class TreeDataCategory implements IRecipeCategory<LeavesCropBlockDC> {
 		Font font = minecraft.font;
 
 		Component name = recipe.getSeedItem(recipe.defaultBlockState()).getHoverName();
-		graphics.drawString(font, name, 65, 9, 0xFF000000);
+		graphics.drawString(font, name, 65, 9, 0xFF000000, false);
 
 		MutableComponent com = type.localize();
 		int c = 0xFF808080;
@@ -196,7 +195,7 @@ public class TreeDataCategory implements IRecipeCategory<LeavesCropBlockDC> {
 			c = ChatFormatting.DARK_AQUA.getColor();
 			com.append(" EPIC");
 		}
-		graphics.drawString(font, com, 65, 20, c);
+		graphics.drawString(font, com, 65, 20, c, false);
 
 		boolean common = ConfigCommonBuilder.INSTANCE.enCommonCrop.get() && recipe.getTier() == CropTier.COMMON;
 		MutableComponent text4 = Component.translatable("dcs.gui.jei.habitat");
@@ -208,20 +207,20 @@ public class TreeDataCategory implements IRecipeCategory<LeavesCropBlockDC> {
 		} else {
 			text4.append(" ").append(Component.translatable("dcs.gui.jei.no_habitat"));
 		}
-		graphics.drawString(font, text4, 25, 80, 0xFF000000);
+		graphics.drawString(font, text4, 25, 80, 0xFF000000, false);
 
 		int chance1 = CropTier.COMMON.getMutationChance();
 		String text = chance1 + "%";
-		graphics.drawString(font, text, 60, 113, 0xFF000000);
+		graphics.drawString(font, text, 60, 113, 0xFF000000, false);
 
 		int chance2 = CropTier.RARE.getMutationChance();
 		String text2 = chance2 + "%";
-		graphics.drawString(font, text2, 81, 113, 0xFF000000);
+		graphics.drawString(font, text2, 81, 113, 0xFF000000, false);
 
 		if (recipe.getMutationTarget(CropTier.EPIC).isPresent()) {
 			int chance3 = CropTier.EPIC.getMutationChance();
 			String text3 = chance3 + "%";
-			graphics.drawString(font, text3, 102, 113, 0xFF000000);
+			graphics.drawString(font, text3, 102, 113, 0xFF000000, false);
 		}
 
 		RenderSystem.setShaderTexture(0, PluginTexDC.TREE.getLocation());

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "X": {
       "tag": "forge:clothes/rubber"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/lure_worm_craw"
-  }
+  },
+  "show_notification": true
 }

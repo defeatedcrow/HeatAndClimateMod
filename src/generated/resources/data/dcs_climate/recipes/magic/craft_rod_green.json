@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "W": {
       "item": "minecraft:grass_block"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "dcs_climate:magic/rod_green_white"
-  }
+  },
+  "show_notification": true
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "minecraft:planks"
@@ -11,5 +12,6 @@
   ],
   "result": {
     "item": "minecraft:oak_boat"
-  }
+  },
+  "show_notification": true
 }

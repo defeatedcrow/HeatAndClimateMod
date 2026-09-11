@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "X": {
       "tag": "minecraft:planks"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/lure_egi_fire"
-  }
+  },
+  "show_notification": true
 }

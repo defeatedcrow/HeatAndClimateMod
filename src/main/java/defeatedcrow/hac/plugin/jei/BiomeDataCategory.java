@@ -2,13 +2,14 @@ package defeatedcrow.hac.plugin.jei;
 
 import java.util.List;
 
+import org.joml.Matrix4f;
+
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -24,6 +25,7 @@ import defeatedcrow.hac.plugin.jei.ingredients.HeatTierRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.HumidityRenderer;
 import defeatedcrow.hac.plugin.jei.ingredients.IngredientTypeDC;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -52,7 +54,7 @@ public class BiomeDataCategory implements IRecipeCategory<Biome> {
 
 	public BiomeDataCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(MachineInit.STORMGLASS.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.BIOME.getLocation(), 21, 19, 134, 125).addPadding(0, 0, 10, 8).build();
+		background = guiHelper.drawableBuilder(PluginTexDC.BIOME.getLocation(), 21, 19, 134, 124).addPadding(0, 0, 10, 8).build();
 	}
 
 	@Override
@@ -112,7 +114,7 @@ public class BiomeDataCategory implements IRecipeCategory<Biome> {
 	}
 
 	@Override
-	public List<Component> getTooltipStrings(Biome recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+	public void getTooltip(ITooltipBuilder tooltip, Biome recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
 		List<TagKey<Biome>> tags = tagList(recipe);
 		List<Component> list = Lists.newArrayList();
 
@@ -200,7 +202,7 @@ public class BiomeDataCategory implements IRecipeCategory<Biome> {
 
 		// list.add(Component.translatable("X :" + mouseX + ", Y: " + mouseY));
 
-		return list;
+		tooltip.addAll(list);
 	}
 
 	private boolean mouseIsIn(double x, double y, double xm, double ym, double xx, double yx) {
@@ -229,17 +231,17 @@ public class BiomeDataCategory implements IRecipeCategory<Biome> {
 
 		MutableComponent name = Component.translatable("biome." + key.getNamespace() + "." + key.getPath());
 		if (name != null && !name.getString().isBlank()) {
-			graphics.drawString(font, name, 22, 10, 0xFF000000);
+			graphics.drawString(font, name, 22, 10, 0xFF000000, false);
 		} else {
 			Component.literal(key.getPath());
-			graphics.drawString(font, name, 22, 10, 0xFF000000);
+			graphics.drawString(font, name, 22, 10, 0xFF000000, false);
 		}
 
 		String mod_id = key.getNamespace();
-		graphics.drawString(font, mod_id, 22, 22, 0xFF000000);
+		graphics.drawString(font, mod_id, 22, 22, 0xFF000000, false);
 
-		graphics.drawString(font, temp + " F", 80, 43, 0xFF505050);
-		graphics.drawString(font, rainfall + " F", 78, 61, 0xFF505050);
+		graphics.drawString(font, temp + " F", 80, 43, 0xFF505050, false);
+		graphics.drawString(font, rainfall + " F", 78, 61, 0xFF505050, false);
 
 		RenderSystem.setShaderTexture(0, PluginTexDC.BIOME.getLocation());
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "dcs_climate:build/luggage_normal",
+    "dcs_climate:build/luggage_white",
+    "dcs_climate:build/luggage_blue",
+    "dcs_climate:build/luggage_black",
+    "dcs_climate:build/luggage_red",
+    "dcs_climate:build/luggage_green"
+  ]
+}

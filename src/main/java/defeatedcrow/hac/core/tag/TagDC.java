@@ -190,11 +190,13 @@ public class TagDC {
 		public static final TagKey<Block> HAC_CHAIR = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "chairs"));
 		public static final TagKey<Block> HAC_ROUND_CHAIR = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "round_chairs"));
 		public static final TagKey<Block> HAC_SOFA = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "sofas"));
+		public static final TagKey<Block> HAC_LEATHER_SOFA = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "leather_sofas"));
 		public static final TagKey<Block> HAC_BED = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "beds"));
 		public static final TagKey<Block> HAC_TABLE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "tables"));
 		public static final TagKey<Block> HAC_LUGGAGE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "luggages"));
 		public static final TagKey<Block> HAC_LOCKER = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "lockers"));
 		public static final TagKey<Block> HAC_CABINET = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "cabinets"));
+		public static final TagKey<Block> HAC_CURTAIN = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "curtains"));
 		public static final TagKey<Block> HAC_SLIM_STAIRS = BlockTags.create(ResourceLocation.fromNamespaceAndPath("dcs_climate", "slim_stairs"));
 
 		private static TagKey<Block> blockTag(String name) {

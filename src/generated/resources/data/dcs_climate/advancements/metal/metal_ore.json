@@ -31,5 +31,6 @@
     [
       "has_drops"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

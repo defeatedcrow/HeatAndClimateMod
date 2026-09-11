@@ -2,17 +2,18 @@ package defeatedcrow.hac.plugin.jei;
 
 import java.util.List;
 
-import com.google.common.collect.Lists;
+import org.joml.Matrix4f;
+
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import org.joml.Matrix4f;
 
 import defeatedcrow.hac.api.recipe.IDeviceFuel;
 import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.machine.material.MachineInit;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -35,9 +36,7 @@ public class FuelFluidCategory implements IRecipeCategory<IDeviceFuel> {
 
 	public FuelFluidCategory(IGuiHelper guiHelper) {
 		icon = guiHelper.createDrawableItemStack(new ItemStack(MachineInit.FUEL_BURNER.get()));
-		background = guiHelper.drawableBuilder(PluginTexDC.FUEL.getLocation(), 32, 20, 100, 25)
-				.addPadding(0, 0, 0, 0)
-				.build();
+		background = guiHelper.drawableBuilder(PluginTexDC.FUEL.getLocation(), 32, 20, 100, 25).addPadding(0, 0, 0, 0).build();
 	}
 
 	@Override
@@ -73,10 +72,7 @@ public class FuelFluidCategory implements IRecipeCategory<IDeviceFuel> {
 	}
 
 	@Override
-	public List<Component> getTooltipStrings(IDeviceFuel recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
-		List<Component> list = Lists.newArrayList();
-		return list;
-	}
+	public void getTooltip(ITooltipBuilder tooltip, IDeviceFuel recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {}
 
 	@Override
 	public void draw(IDeviceFuel recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
@@ -84,7 +80,7 @@ public class FuelFluidCategory implements IRecipeCategory<IDeviceFuel> {
 		Font font = minecraft.font;
 
 		MutableComponent time = Component.literal(recipe.getBurnTime() + "Tick");
-		graphics.drawString(font, time, 50, 12, 0xFF000000);
+		graphics.drawString(font, time, 50, 12, 0xFF000000, false);
 	}
 
 	private static void drawTexturedModalRect(Matrix4f mat, int x, int y, int tX, int tY, int wid, int hei) {

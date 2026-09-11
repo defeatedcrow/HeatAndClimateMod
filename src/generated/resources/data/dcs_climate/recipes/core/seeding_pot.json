@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "X": {
       "item": "minecraft:paper"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/seeding_pot"
-  }
+  },
+  "show_notification": true
 }

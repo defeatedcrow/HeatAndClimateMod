@@ -23,7 +23,6 @@ import defeatedcrow.hac.core.event.MagicPictureEvent;
 import defeatedcrow.hac.core.event.ServerTickEventDC;
 import defeatedcrow.hac.core.event.ThunderstruckEventDC;
 import defeatedcrow.hac.core.event.WandererTradeEventDC;
-import defeatedcrow.hac.core.json.JsonInit;
 import defeatedcrow.hac.core.material.entity.FlowerPotEntity;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.core.recipe.device.DeviceRecipeConfig;
@@ -99,7 +98,7 @@ public class CommonProxyDC {
 	}
 
 	public void commonInit() {
-		JsonInit.init();
+
 		CoreConfigDC.loadConfig();
 
 		FoodProxy.commonInit();
@@ -165,23 +164,18 @@ public class CommonProxyDC {
 
 	public void triggerAdvancement(LivingEntity player, String res) {
 		if (player instanceof ServerPlayer serverplayer) {
-			Advancement adv = serverplayer.server.getAdvancements()
-			    .getAdvancement(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, res));
+			Advancement adv = serverplayer.server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, res));
 			if (adv != null)
-				((ServerPlayer) player).getAdvancements()
-				    .award(adv, "impossible");
+				((ServerPlayer) player).getAdvancements().award(adv, "impossible");
 		}
 	}
 
 	public boolean isAdvancementDone(LivingEntity player, String res) {
 		if (player instanceof ServerPlayer serverplayer) {
-			Advancement adv = serverplayer.server.getAdvancements()
-			    .getAdvancement(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, res));
+			Advancement adv = serverplayer.server.getAdvancements().getAdvancement(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, res));
 			if (adv != null && adv.getDisplay() != null) {
-				PlayerAdvancements advs = serverplayer.server.getPlayerList()
-				    .getPlayerAdvancements(serverplayer);
-				return advs != null && advs.getOrStartProgress(adv)
-				    .isDone();
+				PlayerAdvancements advs = serverplayer.server.getPlayerList().getPlayerAdvancements(serverplayer);
+				return advs != null && advs.getOrStartProgress(adv).isDone();
 			}
 		}
 		return false;
@@ -190,18 +184,13 @@ public class CommonProxyDC {
 	public boolean isOP(Player player) {
 		if (player == null)
 			return false;
-		return player.level()
-		    .getServer()
-		    .getPlayerList()
-		    .isOp(player.getGameProfile());
+		return player.level().getServer().getPlayerList().isOp(player.getGameProfile());
 	}
 
 	public Player getPlayer(ServerLevel level, String name) {
 		if (name == null)
 			return null;
-		return level.getServer()
-		    .getPlayerList()
-		    .getPlayerByName(name);
+		return level.getServer().getPlayerList().getPlayerByName(name);
 	}
 
 	public static void registerVillagerFoods() {
@@ -232,14 +221,9 @@ public class CommonProxyDC {
 	public List<TagKey<Biome>> getBiomeTags(Level level, Biome biome) {
 		List<TagKey<Biome>> list = Lists.newArrayList();
 		if (level != null && level instanceof ServerLevel serverlevel) {
-			Registry<Biome> registry = serverlevel.registryAccess()
-			    .registryOrThrow(Registries.BIOME);
+			Registry<Biome> registry = serverlevel.registryAccess().registryOrThrow(Registries.BIOME);
 			Optional<ResourceKey<Biome>> key = registry.getResourceKey(biome);
-			key.ifPresent(k -> {
-			    registry.getHolder(k)
-			        .ifPresent(holder -> holder.getTagKeys()
-			            .forEach(tag -> list.add(tag)));
-			});
+			key.ifPresent(k -> { registry.getHolder(k).ifPresent(holder -> holder.getTagKeys().forEach(tag -> list.add(tag))); });
 		}
 		return list;
 	}

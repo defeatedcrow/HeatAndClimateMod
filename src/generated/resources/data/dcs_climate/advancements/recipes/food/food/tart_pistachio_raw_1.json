@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/tart_pistachio_raw_1"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

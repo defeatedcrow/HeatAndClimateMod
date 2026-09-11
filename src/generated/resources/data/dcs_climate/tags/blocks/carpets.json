@@ -1,0 +1,9 @@
+{
+  "values": [
+    "dcs_climate:build/carpet_white",
+    "dcs_climate:build/carpet_blue",
+    "dcs_climate:build/carpet_black",
+    "dcs_climate:build/carpet_red",
+    "dcs_climate:build/carpet_green"
+  ]
+}

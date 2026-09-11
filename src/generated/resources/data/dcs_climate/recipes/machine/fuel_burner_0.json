@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "W": {
       "item": "minecraft:bucket"
@@ -20,5 +21,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/fuel_burner"
-  }
+  },
+  "show_notification": true
 }

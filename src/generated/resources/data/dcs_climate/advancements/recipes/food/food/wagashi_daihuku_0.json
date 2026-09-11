@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/wagashi_daihuku_0"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

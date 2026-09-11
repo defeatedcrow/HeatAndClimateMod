@@ -157,7 +157,7 @@ public class PlantRecipes {
 
 		list2.add(new Wood("beech_common", FoodInit.LOG_BH_COMMON, FoodInit.PLANK_BH_COMMON, BuildInit.STAIRS_BEECH, BuildInit.SLIM_STAIRS_BEECH, BuildInit.SLAB_BEECH, BuildInit.FENCE_BEECH, BuildInit.DOOR_BEECH, BuildInit.TRAPDOOR_BEECH));
 		list2.add(
-		    new Wood("beech_walnut", FoodInit.LOG_BH_WALNUT, FoodInit.PLANK_BH_WALNUT, BuildInit.STARIS_WALNUT, BuildInit.SLIM_STAIRS_WALNUT, BuildInit.SLAB_WALNUT, BuildInit.FENCE_WALNUT, BuildInit.DOOR_WALNUT, BuildInit.TRAPDOOR_WALNUT));
+		    new Wood("beech_walnut", FoodInit.LOG_BH_WALNUT, FoodInit.PLANK_BH_WALNUT, BuildInit.STAIRS_WALNUT, BuildInit.SLIM_STAIRS_WALNUT, BuildInit.SLAB_WALNUT, BuildInit.FENCE_WALNUT, BuildInit.DOOR_WALNUT, BuildInit.TRAPDOOR_WALNUT));
 		list2.add(new Wood("beech_sweet", FoodInit.LOG_BH_SWEET, FoodInit.PLANK_BH_SWEET, BuildInit.STAIRS_SWEET, BuildInit.SLIM_STAIRS_SWEET, BuildInit.SLAB_SWEET, BuildInit.FENCE_SWEET, BuildInit.DOOR_SWEET, BuildInit.TRAPDOOR_SWEET));
 		list2.add(
 		    new Wood("cherry_wild", FoodInit.LOG_CH_WILD, FoodInit.PLANK_CH_WILD, BuildInit.STAIRS_CHERRY, BuildInit.SLIM_STAIRS_CHERRY, BuildInit.SLAB_CHERRY, BuildInit.FENCE_CHERRY, BuildInit.DOOR_CHERRY, BuildInit.TRAPDOOR_CHERRY));

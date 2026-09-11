@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/mortar_sugar_cane"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/cookie_hac_recipe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

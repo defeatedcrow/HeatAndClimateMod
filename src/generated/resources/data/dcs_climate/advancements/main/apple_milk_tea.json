@@ -33,5 +33,6 @@
     [
       "has_apple_milk_tea"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

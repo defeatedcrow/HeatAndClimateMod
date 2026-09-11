@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/bleaching_candle_1"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

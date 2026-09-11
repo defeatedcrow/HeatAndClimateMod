@@ -41,8 +41,7 @@ public class JsonBuilderDC {
 		File dir = new File(ClimateCore.assetsDir, "/models/item/");
 
 		// 生成にIJsonDataDCインターフェイスを使うので、実装チェックをする。
-		if (dir != null && item != null && item instanceof IJsonDataDC) {
-			IJsonDataDC data = (IJsonDataDC) item;
+		if (dir != null && item != null && item instanceof IJsonDataDC data) {
 			JsonModelSimpleDC model = data.getItemModel();
 
 			File f = new File(dir, data.getRegistryName() + ".json");
@@ -95,15 +94,12 @@ public class JsonBuilderDC {
 		if (!ClimateCore.isDebug || ClimateCore.assetsDir == null)
 			return;
 
-		if (block != null && block instanceof IJsonDataDC) {
-			IJsonDataDC data = (IJsonDataDC) block;
-
+		if (block != null && block instanceof IJsonDataDC data) {
 			/* DropLoot */
 			File dir3 = new File(ClimateCore.dataDir, "/loot_tables/blocks/");
 
 			// 生成にIJsonDataDCインターフェイスを使うので、実装チェックをする。
-			if (dir3 != null && block instanceof IBlockDC) {
-				IBlockDC blockDC = (IBlockDC) block;
+			if (dir3 != null && block instanceof IBlockDC blockDC) {
 				ItemStack drop = blockDC.getMainDrop();
 				Optional<ResourceLocation> regName = DCUtil.getRes(drop.getItem());
 				regName.ifPresent(res -> {
@@ -326,10 +322,12 @@ public class JsonBuilderDC {
 
 	private static class BlockLoot_Normal {
 		final String type = "minecraft:block";
+		final String random_sequence;
 		final List<Pool> pools = Lists.newArrayList();
 
 		private BlockLoot_Normal(String name) {
 			pools.add(new Pool(name));
+			random_sequence = name;
 		}
 	}
 
@@ -346,23 +344,10 @@ public class JsonBuilderDC {
 		final List<Map<String, String>> conditions = ImmutableList.of(ImmutableMap.of("condition", "minecraft:survives_explosion"));
 		final List<Map<String, String>> entries = Lists.newArrayList();
 		final int rolls = 1;
+		final double bonus_rolls = 0.0;
 
 		private Pool(String item) {
 			Map<String, String> map = new HashMap<>();
-			map.put("type", "minecraft:item");
-			map.put("name", item);
-			entries.add(map);
-		}
-	}
-
-	private static class Pool_NBT {
-		final List<Map<String, String>> conditions = ImmutableList.of(ImmutableMap.of("condition", "minecraft:survives_explosion"));
-		final List<Map<String, Object>> entries = Lists.newArrayList();
-		final int rolls = 1;
-
-		private Pool_NBT(String item) {
-			Map<String, Object> map = new HashMap<>();
-			map.put("functions", ImmutableList.of(ImmutableMap.of("function", "dcs_climate:nbt_tile")));
 			map.put("type", "minecraft:item");
 			map.put("name", item);
 			entries.add(map);

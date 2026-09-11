@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "redstone",
   "key": {
     "X": {
       "item": "dcs_climate:food/plank_beech_common"
@@ -13,5 +14,6 @@
   "result": {
     "count": 3,
     "item": "dcs_climate:build/door_beech"
-  }
+  },
+  "show_notification": true
 }

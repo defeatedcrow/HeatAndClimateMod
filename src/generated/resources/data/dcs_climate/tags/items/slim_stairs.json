@@ -1,3 +1,18 @@
 {
-  "values": []
+  "values": [
+    "dcs_climate:build/slim_stairs_beech_common",
+    "dcs_climate:build/slim_stairs_beech_walnut",
+    "dcs_climate:build/slim_stairs_beech_sweet",
+    "dcs_climate:build/slim_stairs_cherry_wild",
+    "dcs_climate:build/slim_stairs_cinnamon_camphor",
+    "dcs_climate:build/slim_stairs_citrus_pomelo",
+    "dcs_climate:build/slim_stairs_euphorbia_kukui",
+    "dcs_climate:build/slim_stairs_morus_mulberry",
+    "dcs_climate:build/slim_stairs_myrtle_eucalyptus",
+    "dcs_climate:build/slim_stairs_olive_ash",
+    "dcs_climate:build/slim_stairs_sumac_lacquer",
+    "dcs_climate:build/slim_stairs_lacquerware",
+    "dcs_climate:build/slim_stairs_palm_coconut",
+    "dcs_climate:build/slim_stairs_reed_sorghum"
+  ]
 }

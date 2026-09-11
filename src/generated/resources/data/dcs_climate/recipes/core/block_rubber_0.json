@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "group": "storage_pack",
   "key": {
     "X": {
@@ -13,5 +14,6 @@
   ],
   "result": {
     "item": "dcs_climate:main/block_rubber"
-  }
+  },
+  "show_notification": true
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "tag": "forge:dusts/bismuth"
@@ -17,5 +18,6 @@
   ],
   "result": {
     "item": "dcs_climate:machine/monitor_rs_pilot"
-  }
+  },
+  "show_notification": true
 }

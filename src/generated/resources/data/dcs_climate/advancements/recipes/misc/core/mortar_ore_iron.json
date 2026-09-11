@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:core/mortar_ore_iron"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

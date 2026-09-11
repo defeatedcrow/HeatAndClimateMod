@@ -1,3 +1,4 @@
 {
-  "type": "dcs_climate:food_customize"
+  "type": "dcs_climate:food_customize",
+  "category": "misc"
 }

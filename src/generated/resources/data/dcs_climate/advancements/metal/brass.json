@@ -31,5 +31,6 @@
     [
       "has_brass"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

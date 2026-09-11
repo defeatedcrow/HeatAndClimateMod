@@ -59,5 +59,6 @@
       "has_tea_pot",
       "has_fermentation_jar"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

@@ -28,5 +28,6 @@
     "recipes": [
       "dcs_climate:food/curry_rice_0"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
