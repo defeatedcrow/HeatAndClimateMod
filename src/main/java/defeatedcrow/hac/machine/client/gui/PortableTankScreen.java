@@ -2,19 +2,20 @@ package defeatedcrow.hac.machine.client.gui;
 
 import java.util.List;
 
+import org.joml.Matrix4f;
+
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import net.minecraft.client.gui.GuiGraphics;
-import org.joml.Matrix4f;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.DCTexturePath;
 import defeatedcrow.hac.core.network.packet.message.MsgTileOwnerKeyToS;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -59,12 +60,10 @@ public class PortableTankScreen extends AbstractContainerScreen<PortableTankMenu
 		if (this.isHovering(156, 3, 12, 20, mx, my)) {
 			if (lock) {
 				list.add(Component.translatable("dcs.tip.container.ownable_locked", this.getMenu().getContainer().getOwnerName()));
-			} else {
-				if (ClimateCore.proxy.keyShiftPushed())
-					list.add(Component.translatable("dcs.tip.container.ownable"));
-				else
-					list.add(Component.translatable("dcs.tip.container.ownable_short"));
-			}
+			} else if (ClimateCore.proxy.keyShiftPushed())
+				list.add(Component.translatable("dcs.tip.container.ownable"));
+			else
+				list.add(Component.translatable("dcs.tip.container.ownable_short"));
 		}
 		if (this.isHovering(w1, 27, w2, 40, mx, my)) {
 			if (!this.menu.getFluid().isEmpty()) {
@@ -127,22 +126,23 @@ public class PortableTankScreen extends AbstractContainerScreen<PortableTankMenu
 		ResourceLocation res = ext.getStillTexture(fluid);
 		TextureAtlasSprite tex = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(res);
 		int color = ext.getTintColor(fluid);
-		int y1 = y + (height - amo);
+		int y1 = y + height - amo;
 
 		RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
 		Matrix4f matrix = pose.pose().last().pose();
 		setColor(color);
 
 		int hc = amo / 16;
-		int hr = amo - (hc * 16);
+		int hr = amo - hc * 16;
 		if (hc > 0)
 			for (int h = 0; h < hc; h++) {
-				int y2 = y1 + hr + (h * 16);
+				int y2 = y1 + hr + h * 16;
 				draw(matrix, x, y2, width, 16, tex, 0);
 			}
 		if (hr > 0) {
 			draw(matrix, x, y1, width, hr, tex, 16 - hr);
 		}
+		setColor(0xFFFFFFFF);
 	}
 
 	public static void draw(Matrix4f matrix, float x, float y, int w, int h, TextureAtlasSprite sprite, int top) {
@@ -150,7 +150,7 @@ public class PortableTankScreen extends AbstractContainerScreen<PortableTankMenu
 		float uMax = sprite.getU1();
 		float vMin = sprite.getV0();
 		float vMax = sprite.getV1();
-		vMax = vMax - (top / 16F * (vMax - vMin));
+		vMax = vMax - top / 16F * (vMax - vMin);
 
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 
@@ -168,7 +168,7 @@ public class PortableTankScreen extends AbstractContainerScreen<PortableTankMenu
 		float red = (color >> 16 & 0xFF) / 255.0F;
 		float green = (color >> 8 & 0xFF) / 255.0F;
 		float blue = (color & 0xFF) / 255.0F;
-		float alpha = ((color >> 24) & 0xFF) / 255F;
+		float alpha = (color >> 24 & 0xFF) / 255F;
 		RenderSystem.setShaderColor(red, green, blue, alpha);
 	}
 }

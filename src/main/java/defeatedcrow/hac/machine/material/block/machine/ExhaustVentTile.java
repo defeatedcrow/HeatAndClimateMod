@@ -32,8 +32,7 @@ public class ExhaustVentTile extends BlockEntity implements IFluidTankTileDC {
 	}
 
 	public boolean isActive() {
-		return !DCState.getBool(this.getBlockState(), DCState.POWERED)
-				&& !DCState.getBool(this.getBlockState(), EntityBlockDC.WATERLOGGED);
+		return !DCState.getBool(this.getBlockState(), DCState.POWERED) && !DCState.getBool(this.getBlockState(), EntityBlockDC.WATERLOGGED);
 	}
 
 	boolean lastFlag = false;
@@ -55,14 +54,14 @@ public class ExhaustVentTile extends BlockEntity implements IFluidTankTileDC {
 				tile.tank.drain(1, FluidAction.EXECUTE);
 			}
 
-			int hash = tile.tank.getFluidInTank(0).hashCode();
+			int hash = tile.tank.getFluidHash();
 			if (tile.lastHash != hash) {
 				tile.lastHash = hash;
 				flag = true;
 			}
 
 			if (flag && level instanceof ServerLevel) {
-				tile.setChanged(level, pos, state);
+				BlockEntity.setChanged(level, pos, state);
 				NonNullList<FluidStack> list = NonNullList.withSize(3, FluidStack.EMPTY);
 				list.set(0, tile.tank.getFluidInTank(0));
 				MsgTileFluidToC.sendToClient((ServerLevel) level, pos, list);

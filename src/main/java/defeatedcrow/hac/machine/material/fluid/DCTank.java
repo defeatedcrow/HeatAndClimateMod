@@ -28,6 +28,10 @@ public class DCTank implements IFluidHandler, IFluidTank {
 		return tag;
 	}
 
+	public int getFluidHash() {
+		return isEmpty() ? 0 : fluid.hashCode() + fluid.getAmount() * 13;
+	}
+
 	@Override
 	public @NotNull FluidStack getFluid() {
 		return fluid;

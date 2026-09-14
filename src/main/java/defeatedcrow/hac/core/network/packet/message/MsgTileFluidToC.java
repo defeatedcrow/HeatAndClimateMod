@@ -30,7 +30,7 @@ public class MsgTileFluidToC implements IPacketDC {
 		z = pos.getZ();
 		for (int i = 0; i < fluids.size(); i++) {
 			list.set(i, fluids.get(i).copy());
-			// DCLogger.debugInfoLog("tank -> packet " + i + "," + fluids.get(i).getTranslationKey());
+			//DCLogger.debugInfoLog("tank -> packet " + i + "," + fluids.get(i).getTranslationKey());
 		}
 	}
 
@@ -40,7 +40,7 @@ public class MsgTileFluidToC implements IPacketDC {
 		z = i3;
 		for (int i = 0; i < fluids.size(); i++) {
 			list.set(i, fluids.get(i).copy());
-			// DCLogger.debugInfoLog("tank -> packet2 " + i + "," + fluids.get(i).getTranslationKey());
+			//DCLogger.debugInfoLog("tank -> packet2 " + i + "," + fluids.get(i).getTranslationKey());
 		}
 	}
 
@@ -74,7 +74,7 @@ public class MsgTileFluidToC implements IPacketDC {
 			if (entity instanceof IFluidTankTileDC handler) {
 				for (int i = 0; i < handler.getTanks(); i++) {
 					handler.getTank(i).setFluid(list.get(i));
-					// DCLogger.debugInfoLog("packet -> tank " + i + "," + list.get(i).getTranslationKey());
+					//DCLogger.debugInfoLog("packet -> tank " + i + "," + list.get(i).getTranslationKey());
 				}
 			}
 		}
@@ -83,9 +83,7 @@ public class MsgTileFluidToC implements IPacketDC {
 	public static void sendToClient(ServerLevel level, BlockPos pos, NonNullList<FluidStack> fluids) {
 		if (level != null) {
 			MsgTileFluidToC packet = new MsgTileFluidToC(pos, fluids);
-			level.players().forEach(player -> {
-				DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
-			});
+			level.players().forEach(player -> { DCPacket.INSTANCE.getChannel().sendTo(packet, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT); });
 		}
 	}
 

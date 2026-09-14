@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "dcs_climate:fluid/fuel_oil_bucket"
+    "layer0": "dcs_climate:item/fluid/fuel_oil_bucket"
   }
 }

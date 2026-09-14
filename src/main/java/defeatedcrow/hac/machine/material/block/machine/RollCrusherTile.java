@@ -35,6 +35,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -50,26 +51,17 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 	public final ContainerData crusherDataAccess = new ContainerData() {
 		@Override
 		public int get(int id) {
-			switch (id) {
-			case 0:
-				return RollCrusherTile.this.currentProgress;
-			case 1:
-				return RollCrusherTile.this.currentRate;
-			case 2:
-				return RollCrusherTile.this.getEnergyHandler().getEnergyStored();
-			case 3:
-				return RollCrusherTile.this.errorData[0];
-			case 4:
-				return RollCrusherTile.this.errorData[1];
-			case 5:
-				return RollCrusherTile.this.errorData[2];
-			case 6:
-				return RollCrusherTile.this.errorData[3];
-			case 7:
-				return RollCrusherTile.this.errorData[4];
-			default:
-				return 0;
-			}
+			return switch (id) {
+			case 0 -> RollCrusherTile.this.currentProgress;
+			case 1 -> RollCrusherTile.this.currentRate;
+			case 2 -> RollCrusherTile.this.getEnergyHandler().getEnergyStored();
+			case 3 -> RollCrusherTile.this.errorData[0];
+			case 4 -> RollCrusherTile.this.errorData[1];
+			case 5 -> RollCrusherTile.this.errorData[2];
+			case 6 -> RollCrusherTile.this.errorData[3];
+			case 7 -> RollCrusherTile.this.errorData[4];
+			default -> 0;
+			};
 		}
 
 		@Override
@@ -134,42 +126,41 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 			if (!DCUtil.isEmpty(this.inventory.getItem(outtankS1)) && !this.inventory.isMaxStack(11)) {
 				ItemStack copy = this.inventory.getItem(outtankS1).copy();
 				copy.setCount(1);
-				flag = FluidUtil.getFluidHandler(copy)
-						.map(handler -> {
-							FluidStack fluid = handler.getFluidInTank(0);
-							if (fluid.isEmpty() || outputTank.isFull()) {
-								int space = Math.min(outputTank.getFluidAmount(), handler.getTankCapacity(0));
-								int d = handler.fill(outputTank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
-								if (d > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
-									// drain
-									outputTank.drain(d, FluidAction.EXECUTE);
-									ItemStack ret = handler.getContainer();
-									if (!ret.isEmpty()) {
-										ret.setCount(1);
-										inventory.incrStackInSlot(outtankS2, ret);
-									}
-									inventory.removeItem(outtankS1, 1);
-									return true;
-								}
-							} else if (handler.isFluidValid(TANK_CAP, fluid)) {
-								FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
-								int f = outputTank.fill(drain, FluidAction.SIMULATE);
-								if (f > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
-									// fill
-									drain.setAmount(f);
-									outputTank.fill(drain, FluidAction.EXECUTE);
-									handler.drain(drain, FluidAction.EXECUTE);
-									ItemStack ret = handler.getContainer().copy();
-									if (!ret.isEmpty()) {
-										ret.setCount(1);
-										inventory.incrStackInSlot(outtankS2, ret);
-									}
-									inventory.removeItem(outtankS1, 1);
-									return true;
-								}
+				flag = FluidUtil.getFluidHandler(copy).map(handler -> {
+					FluidStack fluid = handler.getFluidInTank(0);
+					if (fluid.isEmpty() || outputTank.isFull()) {
+						int space = Math.min(outputTank.getFluidAmount(), handler.getTankCapacity(0));
+						int d = handler.fill(outputTank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
+						if (d > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
+							// drain
+							outputTank.drain(d, FluidAction.EXECUTE);
+							ItemStack ret = handler.getContainer();
+							if (!ret.isEmpty()) {
+								ret.setCount(1);
+								inventory.incrStackInSlot(outtankS2, ret);
 							}
-							return false;
-						}).orElse(false);
+							inventory.removeItem(outtankS1, 1);
+							return true;
+						}
+					} else if (handler.isFluidValid(TANK_CAP, fluid)) {
+						FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
+						int f = outputTank.fill(drain, FluidAction.SIMULATE);
+						if (f > 0 && inventory.canInsertResult(handler.getContainer(), outtankS2, outtankS2) != 0) {
+							// fill
+							drain.setAmount(f);
+							outputTank.fill(drain, FluidAction.EXECUTE);
+							handler.drain(drain, FluidAction.EXECUTE);
+							ItemStack ret = handler.getContainer().copy();
+							if (!ret.isEmpty()) {
+								ret.setCount(1);
+								inventory.incrStackInSlot(outtankS2, ret);
+							}
+							inventory.removeItem(outtankS1, 1);
+							return true;
+						}
+					}
+					return false;
+				}).orElse(false);
 			}
 
 			if (lastHash != currentProgress) {
@@ -178,7 +169,7 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 					MsgTileSimpleIntegerToC.sendToClient((ServerLevel) level, pos, currentProgress);
 			}
 
-			int hash2 = outputTank.getFluid().hashCode() + outputTank.getFluidAmount();
+			int hash2 = outputTank.getFluidHash();
 			if (lastHash2 != hash2) {
 				lastHash2 = hash2;
 				flag = true;
@@ -190,7 +181,7 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 			}
 
 			if (flag) {
-				this.setChanged(level, pos, state);
+				BlockEntity.setChanged(level, pos, state);
 			}
 		}
 		return super.onTickProcess(level, pos, state);
@@ -253,7 +244,7 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 		return recipe != null;
 	}
 
-	protected int[] consume = new int[0];
+	protected int[] consume = {};
 
 	private NonNullList<ItemStack> getResults(boolean random) {
 		NonNullList<ItemStack> ret = NonNullList.withSize(4, ItemStack.EMPTY);
@@ -268,15 +259,14 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 						if (!check.getCraftingRemainingItem().isEmpty()) {
 							ret.set(0, check.getCraftingRemainingItem().copy());
 						} else if (FluidUtil.getFluidContained(check).isPresent()) {
-							ItemStack cont = FluidUtil.getFluidHandler(check)
-									.map(handler -> {
-										FluidStack fluid = handler.getFluidInTank(0);
-										if (!fluid.isEmpty()) {
-											handler.drain(fluid, FluidAction.EXECUTE);
-											return handler.getContainer().copy();
-										}
-										return ItemStack.EMPTY;
-									}).orElse(ItemStack.EMPTY);
+							ItemStack cont = FluidUtil.getFluidHandler(check).map(handler -> {
+								FluidStack fluid = handler.getFluidInTank(0);
+								if (!fluid.isEmpty()) {
+									handler.drain(fluid, FluidAction.EXECUTE);
+									return handler.getContainer().copy();
+								}
+								return ItemStack.EMPTY;
+							}).orElse(ItemStack.EMPTY);
 							if (!DCUtil.isEmpty(cont)) {
 								ret.set(0, cont);
 							}
@@ -284,7 +274,7 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 					}
 				}
 			}
-			if ((recipe.getType() != RecipeTypeDC.SQUEEZE || recipe.getOutputFluid().isEmpty())) {
+			if (recipe.getType() != RecipeTypeDC.SQUEEZE || recipe.getOutputFluid().isEmpty()) {
 				ret.set(1, recipe.getOutput()); // squeezeはPrimaryがない
 			}
 			if (recipe.getSecondaryRate() > 0 && (!random || level.random.nextInt(100) < recipe.getSecondaryRate())) {
@@ -375,7 +365,7 @@ public class RollCrusherTile extends EnergyProcessTile implements IFluidTankTile
 					flag = true;
 				}
 			if (flag) {
-				this.setChanged(level, pos, state);
+				BlockEntity.setChanged(level, pos, state);
 			}
 			return flag;
 		}

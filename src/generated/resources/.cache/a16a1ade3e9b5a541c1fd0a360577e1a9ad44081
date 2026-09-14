@@ -1,12 +1,12 @@
-// 1.20.1	2026-09-12T00:40:50.3948337	Tags for minecraft:block mod id dcs_climate
+// 1.20.1	2026-09-15T00:25:17.0157884	Tags for minecraft:block mod id dcs_climate
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/blocks/andons.json
 10483793c64468d4f5b52de535ddf0ddc8dba771 data/dcs_climate/tags/blocks/bamboo_shoot.json
 4daf75917f6756b62ac41cc59093013ab3b36b88 data/dcs_climate/tags/blocks/beds.json
-110e0260cd3734cccbd792590d641706f6033bb1 data/dcs_climate/tags/blocks/building_stones.json
-c7f96f68fcca93bc6fe2450a3d1f1b41ea5b9021 data/dcs_climate/tags/blocks/building_stones/bricks.json
-37b81f1ced017a5998c0ddd9ad9756d1bd2cce97 data/dcs_climate/tags/blocks/building_stones/chiseled.json
+21330aa56e6f756958d8bd892443f670bbbaf717 data/dcs_climate/tags/blocks/building_stones.json
+06b949bc461b20f8740141f309397037604998bb data/dcs_climate/tags/blocks/building_stones/bricks.json
+f0332bf8fa15d83dd07f1eecdcef7bea47060259 data/dcs_climate/tags/blocks/building_stones/chiseled.json
 bce5a9ef2305814f82915f3c4cd77e4e38b99da7 data/dcs_climate/tags/blocks/building_stones/linoleum.json
-51137264e631573abba87e5b5fee1467e0a6d06e data/dcs_climate/tags/blocks/building_stones/pillar.json
+c20746768ee949c582bfb37046af710101ad0a02 data/dcs_climate/tags/blocks/building_stones/pillar.json
 1b95d84ade6714ec42e149fb8c466842ed48814c data/dcs_climate/tags/blocks/cabinets.json
 f35d812b052f342ebd36cf608ff0b5a45fc8383d data/dcs_climate/tags/blocks/carpets.json
 16ad035b4b79435bab6423de83f53915e0232fa5 data/dcs_climate/tags/blocks/chairs.json
@@ -37,12 +37,12 @@ f30647ed6f862e6bb5cecc09e7b06fd69d088c38 data/dcs_climate/tags/blocks/leather_so
 f2cdc97a774fb6bb826cc512d5fda718518ef3ab data/dcs_climate/tags/blocks/logs_can_collect_sap/sweet_sap.json
 6a83964cca7baf3ade9b044040273c2d2c98dbcb data/dcs_climate/tags/blocks/luggages.json
 25cf27c7785a28d845320d9f4d412840726754c1 data/dcs_climate/tags/blocks/machines.json
-af01e42317f63dc3a54da95dfc59def9ec8cf6a1 data/dcs_climate/tags/blocks/machines/cable_energy.json
+e5222a128e0337e7993917ff680f30117ebecf8e data/dcs_climate/tags/blocks/machines/cable_energy.json
 7ba979d0ec6c9206653864ba5791aaeffda3a375 data/dcs_climate/tags/blocks/machines/climate.json
-897964d576c6e085a81336660fa2bfb22ada6e39 data/dcs_climate/tags/blocks/machines/display.json
+2bda8cdb87e6ae12878b8893c18ae1eb9a6018a4 data/dcs_climate/tags/blocks/machines/display.json
 5de2e0e4c59a26dd61799ef7f2ad20e8f16a3b7d data/dcs_climate/tags/blocks/machines/energy.json
 94ff6238538ed033196035f110b10721b2cf337f data/dcs_climate/tags/blocks/machines/leakage.json
-ea87dddaf131cef22fdeafd24a3a9421b7b97368 data/dcs_climate/tags/blocks/machines/pipe_fluid.json
+29ae47f2c57fd87e6b195176b5e9e554a2417d1e data/dcs_climate/tags/blocks/machines/pipe_fluid.json
 230616b7b3c6b414bb5b51b346f2555e205fae16 data/dcs_climate/tags/blocks/not_loof_blocks.json
 9e7038e1e7eac8e4c4d44ec95d92118f664a9003 data/dcs_climate/tags/blocks/not_loof_blocks/cooking_pot.json
 f462741c4cd4f7271897f81dfa32efab2deb6cfd data/dcs_climate/tags/blocks/not_loof_blocks/fauset.json
@@ -165,6 +165,6 @@ d834e91d596939b5052eae20b8a61a2707d8e324 data/minecraft/tags/blocks/slabs.json
 fba12fd49e2fc3cd86609bc6f04d1b94e27afb82 data/minecraft/tags/blocks/walls.json
 7cc83ae4a741cf0d89583b4253253fdf7a625fc5 data/minecraft/tags/blocks/wooden_doors.json
 8aa690be1d1b5f179b7b163d643ab9fc32de8d7b data/minecraft/tags/blocks/wooden_fences.json
-84dc07b5209ec3f0db43ca87c3592b45f5eea317 data/minecraft/tags/blocks/wooden_slabs.json
+f65326ff56775e57faa49a1f21f87db7959f4a7f data/minecraft/tags/blocks/wooden_slabs.json
 cc903435fdb5e68c725a25d715a99e66b1a969da data/minecraft/tags/blocks/wooden_stairs.json
 e74325f2b15e22ab4ab1002cee1244606cccf6e4 data/minecraft/tags/blocks/wooden_trapdoors.json

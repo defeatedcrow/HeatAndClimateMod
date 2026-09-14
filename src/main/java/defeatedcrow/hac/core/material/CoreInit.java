@@ -656,22 +656,19 @@ public class CoreInit {
 	public static final RegistryObject<MobEffect> FLAG = regPotionEffect("effect_flag", () -> new MobEffectFlag("effect_flag", MobEffectCategory.NEUTRAL, 0xFF0050).setIconIndex(3, 2));
 	public static final RegistryObject<MobEffect> LUMBERJACK = regPotionEffect("effect_lumberjack", () -> new MobEffectFlag("effect_lumberjack", MobEffectCategory.NEUTRAL, 0x00FF30).setIconIndex(5, 2));
 
-	public static final WaterTypeFluidDC BRINE = new WaterTypeFluidDC("brine", 0xE000F0C0);
-	public static final WaterTypeFluidDC HOTSPRING = new WaterTypeFluidDC("hotspring", 0xFFAEFFDE, 353);
-	public static final WaterTypeFluidDC PLANT_OIL
-	    = new WaterTypeFluidDC("plant_oil", 0xFFAFC000, FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-	        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(900).viscosity(6000).temperature(298));
+	public static final WaterTypeFluidDC BRINE = new WaterTypeFluidDC("brine");
+	public static final WaterTypeFluidDC HOTSPRING = new WaterTypeFluidDC("hotspring", 353);
+	public static final WaterTypeFluidDC PLANT_OIL = new WaterTypeFluidDC("plant_oil", FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+	    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(900).viscosity(6000).temperature(298));
 	public static final WaterTypeFluidDC USED_PLANT_OIL
-	    = new WaterTypeFluidDC("used_plant_oil", 0xFFA08020, FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+	    = new WaterTypeFluidDC("used_plant_oil", FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
 	        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(900).viscosity(6000).temperature(298));
-	public static final WaterTypeFluidDC FUEL_OIL
-	    = new WaterTypeFluidDC("fuel_oil", 0xFFF8E000, FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-	        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(800).viscosity(1500).temperature(298));
-	public static final WaterTypeFluidDC SPARKLING
-	    = new WaterTypeFluidDC("sparkling", 0xFF40B0FF, FluidType.Properties.create().fallDistanceModifier(0F).canExtinguish(true).canConvertToSource(true).supportsBoating(true).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-	        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(true).temperature(283), "fluid/sparkling_still");
+	public static final WaterTypeFluidDC FUEL_OIL = new WaterTypeFluidDC("fuel_oil", FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+	    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(800).viscosity(1500).temperature(298));
+	public static final WaterTypeFluidDC SPARKLING = new WaterTypeFluidDC("sparkling", FluidType.Properties.create().fallDistanceModifier(0F).canExtinguish(true).canConvertToSource(true).supportsBoating(true)
+	    .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(true).temperature(283));
 
-	public static final GasTypeFluidDC AIR = new GasTypeFluidDC("compressed_air", 0xC040B0FF, false, "fluid/sparkling_still");
+	public static final GasTypeFluidDC AIR = new GasTypeFluidDC("compressed_air", false, "block/fluid/compressed_air_still");
 
 	// enchantment
 	public static final RegistryObject<Enchantment> BIG_GAME_FISHING = regEnchantment("dcs_big_game_fishing", () -> new FishingEnchantment(EquipmentSlot.MAINHAND));

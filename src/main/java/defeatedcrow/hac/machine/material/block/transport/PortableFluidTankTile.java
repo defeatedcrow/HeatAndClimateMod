@@ -94,52 +94,51 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 			if (!DCUtil.isEmpty(this.inventory.getItem(0)) && !this.inventory.isMaxStack(1)) {
 				ItemStack copy = this.inventory.getItem(0).copy();
 				copy.setCount(1);
-				flag = FluidUtil.getFluidHandler(copy)
-						.map(handler -> {
-							FluidStack fluid = handler.getFluidInTank(0);
-							if (fluid.isEmpty() || getTank().isFull()) {
-								int space = Math.min(getTank().getFluidAmount(), handler.getTankCapacity(0));
-								int d = handler.fill(getTank().drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
-								if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
-									// drain
-									getTank().drain(d, FluidAction.EXECUTE);
-									ItemStack ret = handler.getContainer().copy();
-									if (!ret.isEmpty()) {
-										ret.setCount(1);
-										inventory.incrStackInSlot(1, ret);
-									}
-									inventory.removeItem(0, 1);
-									return true;
-								}
-							} else if (handler.isFluidValid(getTankCap(), fluid)) {
-								FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
-								int f = getTank().fill(drain, FluidAction.SIMULATE);
-								if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
-									// fill
-									drain.setAmount(f);
-									getTank().fill(drain, FluidAction.EXECUTE);
-									handler.drain(drain, FluidAction.EXECUTE);
-									ItemStack ret = handler.getContainer().copy();
-									if (!ret.isEmpty()) {
-										ret.setCount(1);
-										inventory.incrStackInSlot(1, ret);
-									}
-									inventory.removeItem(0, 1);
-									return true;
-								}
+				flag = FluidUtil.getFluidHandler(copy).map(handler -> {
+					FluidStack fluid = handler.getFluidInTank(0);
+					if (fluid.isEmpty() || getTank().isFull()) {
+						int space = Math.min(getTank().getFluidAmount(), handler.getTankCapacity(0));
+						int d = handler.fill(getTank().drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
+						if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
+							// drain
+							getTank().drain(d, FluidAction.EXECUTE);
+							ItemStack ret = handler.getContainer().copy();
+							if (!ret.isEmpty()) {
+								ret.setCount(1);
+								inventory.incrStackInSlot(1, ret);
 							}
-							return false;
-						}).orElse(false);
+							inventory.removeItem(0, 1);
+							return true;
+						}
+					} else if (handler.isFluidValid(getTankCap(), fluid)) {
+						FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
+						int f = getTank().fill(drain, FluidAction.SIMULATE);
+						if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
+							// fill
+							drain.setAmount(f);
+							getTank().fill(drain, FluidAction.EXECUTE);
+							handler.drain(drain, FluidAction.EXECUTE);
+							ItemStack ret = handler.getContainer().copy();
+							if (!ret.isEmpty()) {
+								ret.setCount(1);
+								inventory.incrStackInSlot(1, ret);
+							}
+							inventory.removeItem(0, 1);
+							return true;
+						}
+					}
+					return false;
+				}).orElse(false);
 			}
 
-			int hash = getTank().getFluid().hashCode();
+			int hash = getTank().getFluidHash();
 			if (lastHash != hash) {
 				lastHash = hash;
 				flag = true;
 			}
 
 			if (flag && level instanceof ServerLevel) {
-				this.setChanged(level, pos, state);
+				BlockEntity.setChanged(level, pos, state);
 				NonNullList<FluidStack> list = NonNullList.withSize(3, FluidStack.EMPTY);
 				list.set(0, getTank().getFluid());
 				MsgTileFluidToC.sendToClient((ServerLevel) level, pos, list);
@@ -209,7 +208,7 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 
 	// cap
 
-	LazyOptional<? extends IFluidHandler> fluidhandler = LazyOptional.of(() -> getTank());
+	LazyOptional<? extends IFluidHandler> fluidhandler = LazyOptional.of(this::getTank);
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
@@ -228,7 +227,7 @@ public abstract class PortableFluidTankTile extends ProcessTileBaseDC implements
 	@Override
 	public void reviveCaps() {
 		super.reviveCaps();
-		this.fluidhandler = LazyOptional.of(() -> getTank());
+		this.fluidhandler = LazyOptional.of(this::getTank);
 	}
 
 	@Override

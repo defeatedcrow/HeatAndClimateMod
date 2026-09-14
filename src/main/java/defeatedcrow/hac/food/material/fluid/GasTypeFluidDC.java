@@ -32,7 +32,6 @@ public class GasTypeFluidDC {
 
 	private final String name;
 	private final boolean isWaterType;
-	private final int color;
 	private final ResourceLocation tex;
 	protected final RegistryObject<FluidType> type;
 
@@ -41,18 +40,17 @@ public class GasTypeFluidDC {
 	protected RegistryObject<LiquidBlock> block;
 	protected RegistryObject<Item> bucket;
 
-	public GasTypeFluidDC(String s, int color, boolean drown, String texName) {
-		this(s, color, getWaterProp(298, drown), texName);
+	public GasTypeFluidDC(String s, boolean drown, String texName) {
+		this(s, getWaterProp(298, drown), texName);
 	}
 
-	public GasTypeFluidDC(String s, int color, int temp, boolean drown, String texName) {
-		this(s, color, getWaterProp(temp, false), texName);
+	public GasTypeFluidDC(String s, int temp, boolean drown, String texName) {
+		this(s, getWaterProp(temp, false), texName);
 	}
 
-	public GasTypeFluidDC(String s, int c, FluidType.Properties prop, String texName) {
+	public GasTypeFluidDC(String s, FluidType.Properties prop, String texName) {
 		name = s;
 		isWaterType = false;
-		color = c;
 		tex = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, texName);
 
 		type = CoreInit.FLUID_TYPES.register(name, () -> new FluidType(prop) {
@@ -82,11 +80,6 @@ public class GasTypeFluidDC {
 					@Override
 					public ResourceLocation getRenderOverlayTexture(net.minecraft.client.Minecraft mc) {
 						return UNDERWATER_LOCATION;
-					}
-
-					@Override
-					public int getTintColor() {
-						return color;
 					}
 				});
 			}

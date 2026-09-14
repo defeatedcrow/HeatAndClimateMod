@@ -27,6 +27,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.ForgeMod;
@@ -44,24 +45,24 @@ public class AutoMilkerTank extends PortableFluidTankTile {
 		super(MachineInit.AUTO_MILKER_TILE.get(), pos, state);
 	}
 
+	@Override
 	public int getTankCap() {
 		return 8000;
 	}
 
 	public DCLimitedTank limitedTank = new DCLimitedTank(ForgeMod.MILK.get(), getTankCap());
 
+	@Override
 	public DCTank getTank() {
 		return limitedTank;
-	};
+	}
 
 	/* processはスロットの液体容器処理 */
 
 	int count = 4;
 	private int lastHash = 0;
 
-	private static final Predicate<Entity> MILK_ANIMAL = (entity) -> {
-		return entity.isAlive() && (entity instanceof Cow || entity instanceof Goat || entity instanceof Llama);
-	};
+	private static final Predicate<Entity> MILK_ANIMAL = entity -> (entity.isAlive() && (entity instanceof Cow || entity instanceof Goat || entity instanceof Llama));
 
 	@Override
 	public boolean onTickProcess(Level level, BlockPos pos, BlockState state) {
@@ -87,36 +88,35 @@ public class AutoMilkerTank extends PortableFluidTankTile {
 			if (!DCUtil.isEmpty(this.inventory.getItem(0)) && !this.inventory.isMaxStack(1)) {
 				ItemStack copy = this.inventory.getItem(0).copy();
 				copy.setCount(1);
-				flag = FluidUtil.getFluidHandler(copy)
-						.map(handler -> {
-							FluidStack fluid = handler.getFluidInTank(0);
-							if (fluid.isEmpty() || getTank().isFull()) {
-								int space = Math.min(getTank().getFluidAmount(), handler.getTankCapacity(0));
-								int d = handler.fill(getTank().drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
-								if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
-									// drain
-									getTank().drain(d, FluidAction.EXECUTE);
-									ItemStack ret = handler.getContainer().copy();
-									if (!ret.isEmpty()) {
-										ret.setCount(1);
-										inventory.incrStackInSlot(1, ret);
-									}
-									inventory.removeItem(0, 1);
-									return true;
-								}
+				flag = FluidUtil.getFluidHandler(copy).map(handler -> {
+					FluidStack fluid = handler.getFluidInTank(0);
+					if (fluid.isEmpty() || getTank().isFull()) {
+						int space = Math.min(getTank().getFluidAmount(), handler.getTankCapacity(0));
+						int d = handler.fill(getTank().drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
+						if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
+							// drain
+							getTank().drain(d, FluidAction.EXECUTE);
+							ItemStack ret = handler.getContainer().copy();
+							if (!ret.isEmpty()) {
+								ret.setCount(1);
+								inventory.incrStackInSlot(1, ret);
 							}
-							return false;
-						}).orElse(false);
+							inventory.removeItem(0, 1);
+							return true;
+						}
+					}
+					return false;
+				}).orElse(false);
 			}
 
-			int hash = getTank().getFluid().hashCode();
+			int hash = getTank().getFluidHash();
 			if (lastHash != hash) {
 				lastHash = hash;
 				flag = true;
 			}
 
 			if (flag && level instanceof ServerLevel) {
-				this.setChanged(level, pos, state);
+				BlockEntity.setChanged(level, pos, state);
 				NonNullList<FluidStack> list = NonNullList.withSize(3, FluidStack.EMPTY);
 				list.set(0, getTank().getFluid());
 				MsgTileFluidToC.sendToClient((ServerLevel) level, pos, list);

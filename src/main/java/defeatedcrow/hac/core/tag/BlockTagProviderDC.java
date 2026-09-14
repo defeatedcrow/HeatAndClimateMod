@@ -174,7 +174,7 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 		tag(TagDC.BlockTag.CROP_GREEN_MANURES).add(FoodInit.BLOCK_BR_RAPESEED.get(), FoodInit.BLOCK_BR_GREEN.get(), FoodInit.BLOCK_BR_CABBAGE.get(), FoodInit.BLOCK_BR_RADISH.get(), FoodInit.BLOCK_CR_OAT.get(), FoodInit.BLOCK_CR_RYE.get(),
 		    FoodInit.BLOCK_CR_BARLEY.get(), FoodInit.BLOCK_PE_GREEN.get(), FoodInit.BLOCK_PE_GARBANZO.get(), FoodInit.BLOCK_PE_SOY.get(), FoodInit.BLOCK_RE_SORGHUM.get()).addTag(TagDC.BlockTag.WEED);
 
-		tag(BlockTags.WOODEN_SLABS).add(BuildInit.SLAB_BEECH.get(), BuildInit.SLAB_WALNUT.get(), BuildInit.DOOR_SWEET.get(), BuildInit.SLAB_CHERRY.get(), BuildInit.SLAB_CAMPHOR.get(), BuildInit.SLAB_CITRUS.get(), BuildInit.SLAB_ASH.get(),
+		tag(BlockTags.WOODEN_SLABS).add(BuildInit.SLAB_BEECH.get(), BuildInit.SLAB_WALNUT.get(), BuildInit.SLAB_SWEET.get(), BuildInit.SLAB_CHERRY.get(), BuildInit.SLAB_CAMPHOR.get(), BuildInit.SLAB_CITRUS.get(), BuildInit.SLAB_ASH.get(),
 		    BuildInit.SLAB_SUMAC.get(), BuildInit.SLAB_LACQUER.get(), BuildInit.SLAB_EUCALYPTUS.get(), BuildInit.SLAB_KUKUI.get());
 
 		tag(BlockTags.WOODEN_STAIRS).add(BuildInit.STAIRS_BEECH.get(), BuildInit.STAIRS_WALNUT.get(), BuildInit.DOOR_SWEET.get(), BuildInit.STAIRS_CHERRY.get(), BuildInit.STAIRS_CAMPHOR.get(), BuildInit.STAIRS_CITRUS.get(),
@@ -295,18 +295,6 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(TagDC.BlockTag.CONT_WAX).add(FoodInit.CONT_BEESWAX.get(), FoodInit.CONT_TREEWAX.get());
 
-		tag(TagDC.BlockTag.BUILDING_BRICKS).add(BuildInit.BRICKS_MUD.get(), BuildInit.BRICKS_GYPSUM.get(), BuildInit.BRICKS_SERPENTINE.get(), BuildInit.BRICKS_GREISEN.get(), BuildInit.BRICKS_SKARN.get(), BuildInit.BRICKS_HORNFELS.get(),
-		    BuildInit.BRICKS_MARBLE.get(), BuildInit.BRICKS_SCHIST_BLUE.get(), BuildInit.BRICKS_SCHIST_NETHER.get(), BuildInit.BRICKS_GRANITE.get(), BuildInit.BRICKS_MORTAR.get(), BuildInit.ADOBE_BRICKS.get());
-
-		tag(TagDC.BlockTag.BUILDING_PILLAR).add(BuildInit.PILLAR_MUD.get(), BuildInit.PILLAR_GYPSUM.get(), BuildInit.PILLAR_SERPENTINE.get(), BuildInit.PILLAR_GREISEN.get(), BuildInit.PILLAR_SKARN.get(), BuildInit.PILLAR_HORNFELS.get(),
-		    BuildInit.PILLAR_MARBLE.get(), BuildInit.PILLAR_SCHIST_BLUE.get(), BuildInit.PILLAR_SCHIST_NETHER.get(), BuildInit.PILLAR_GRANITE.get(), BuildInit.PILLAR_MORTAR.get());
-
-		tag(TagDC.BlockTag.BUILDING_CHISELED).add(BuildInit.CHISELED_MUD.get(), BuildInit.CHISELED_GYPSUM.get(), BuildInit.CHISELED_SERPENTINE.get(), BuildInit.CHISELED_GREISEN.get(), BuildInit.CHISELED_SKARN.get(),
-		    BuildInit.CHISELED_HORNFELS.get(), BuildInit.CHISELED_MARBLE.get(), BuildInit.CHISELED_SCHIST_BLUE.get(), BuildInit.CHISELED_SCHIST_NETHER.get(), BuildInit.CHISELED_GRANITE.get(), BuildInit.CHISELED_MORTAR.get());
-
-		tag(TagDC.BlockTag.BUILDING_STONE).add(BuildInit.FLINTBRICKS.get(), BuildInit.FLINTBRICKS_WHITE.get(), BuildInit.FLINTBRICKS_BLACK.get(), BuildInit.FLINTBRICKS_RED.get(), BuildInit.MOSAIC_BLACK.get(), BuildInit.MOSAIC_BLUE.get(),
-		    BuildInit.MOSAIC_YELLOW.get(), BuildInit.MOSAIC_RED.get(), BuildInit.MORTAR.get());
-
 		tag(TagDC.BlockTag.DIRT_SLABS).add(BuildInit.SLAB_DIRT.get(), BuildInit.SLAB_GRASS.get(), BuildInit.SLAB_PATH.get());
 
 		tag(TagDC.BlockTag.BUILDING_STONE).addTags(TagDC.BlockTag.BUILDING_BRICKS, TagDC.BlockTag.BUILDING_PILLAR, TagDC.BlockTag.BUILDING_CHISELED);
@@ -315,9 +303,9 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(TagDC.BlockTag.HOPPER).addTag(TagDC.BlockTag.HOPPER_FILTER).add(Blocks.HOPPER, MachineInit.HOPPER_GOLD.get());
 
-		tag(TagDC.BlockTag.FLUID_PIPE).add(MachineInit.PIPE_BRASS.get());
+		tag(TagDC.BlockTag.FLUID_PIPE).add(MachineInit.PIPE_BRASS.get(), MachineInit.PIPE_NICKELSILVER.get());
 
-		tag(TagDC.BlockTag.ENERGY_CABLE).add(MachineInit.CABLE_COPPER.get(), MachineInit.CABLE_COPPER_COATED.get());
+		tag(TagDC.BlockTag.ENERGY_CABLE).add(MachineInit.CABLE_COPPER.get(), MachineInit.CABLE_COPPER_COATED.get(), MachineInit.CABLE_ALUMINUM_COATED.get());
 
 		tag(TagDC.BlockTag.HAC_MACHINE).addTags(TagDC.BlockTag.ENERGY_MACHINE, TagDC.BlockTag.CLIMATE_MACHINE, TagDC.BlockTag.DISPLAY_MACHINE, TagDC.BlockTag.LEAKAGE_MACHINE, TagDC.BlockTag.FLUID_PIPE, TagDC.BlockTag.ENERGY_CABLE);
 
@@ -342,7 +330,10 @@ public class BlockTagProviderDC extends BlockTagsProvider {
 
 		tag(TagDC.BlockTag.CLIMATE_MACHINE).add(MachineInit.KICHEN_STOVE.get(), MachineInit.FUEL_BURNER.get(), MachineInit.CHAMBER_IRON.get(), MachineInit.CHAMBER_BRICK_A.get(), MachineInit.CHAMBER_BRICK_B.get());
 
-		tag(TagDC.BlockTag.DISPLAY_MACHINE).add(MachineInit.STORMGLASS.get(), MachineInit.ENTITY_CAMERA.get(), MachineInit.REFLECTIVE_SENSOR.get(), MachineInit.PLAYER_PRESSURE_PLATE.get());
+		tag(TagDC.BlockTag.DISPLAY_MACHINE).add(MachineInit.STORMGLASS.get(), MachineInit.ENTITY_CAMERA.get(), MachineInit.REFLECTIVE_SENSOR.get(), MachineInit.PLAYER_PRESSURE_PLATE.get(), MachineInit.MONITOR_ANDON_LAMP.get(),
+		    MachineInit.MONITOR_ANDON_PANEL_1.get(), MachineInit.MONITOR_ANDON_PANEL_2.get(), MachineInit.MONITOR_ANDON_PANEL_3.get(), MachineInit.MONITOR_ANDON_PANEL_4.get(), MachineInit.MONITOR_ANDON_PANEL_5.get(),
+		    MachineInit.MONITOR_ANDON_PANEL_6.get(), MachineInit.MONITOR_ANDON_PANEL_7.get(), MachineInit.MONITOR_ANDON_PANEL_8.get(), MachineInit.MONITOR_ANDON_PANEL_9.get(), MachineInit.MONITOR_COMPARATOR.get(),
+		    MachineInit.MONITOR_ENERGY.get(), MachineInit.MONITOR_RS.get(), MachineInit.MONITOR_RS_PILOT.get(), MachineInit.MONITOR_TEMP.get(), MachineInit.STORMGLASS.get());
 
 		tag(TagDC.BlockTag.FAUSET).add(MachineInit.FAUCET_A.get(), MachineInit.FAUCET_B.get(), MachineInit.FAUCET_C.get(), MachineInit.FAUCET_D.get());
 

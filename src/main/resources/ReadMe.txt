@@ -1,9 +1,9 @@
-#### Heat&Climate Mod v4.0.1 for Minecraft 1.19.2 ####
+#### Heat&Climate Mod v5.0.0_pre for Minecraft 1.20.1 ####
 
 # 導入環境 / Introduction conditions
 
-・Minecraft1.19.2
-・MincraftForge 1.19.2-43.5.0
+・Minecraft1.20.1
+・MincraftForge 1.20.1-47.4.10
 
 *Notice*
 
@@ -897,6 +897,9 @@
 ****************************************************************************************************
 
 #### 更新履歴 / Change log ####
+
+○v5.0.0pre
+ ex: 開発環境をMC1.20.1-forge47.4.10に更新。
 
 ○v4.0.1
  add: ハンモック

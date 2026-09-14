@@ -41,17 +41,15 @@ public abstract class PortableFluidTankBlock extends ProcessTileBlock {
 			ItemStack held = player.getItemInHand(hand);
 			if (level.isClientSide) {
 				return InteractionResult.SUCCESS;
-			} else {
-				if (!DCUtil.isEmpty(held) && FluidUtil.getFluidHandler(held.copy()).isPresent()) {
-					if (DCFluidUtil.exchangeFluid(level, player.position(), tank.getTank(), held)) {
-						tile.setChanged();
-						player.getInventory().setChanged();
-						level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1.0F, 1.2F);
-					}
-					return InteractionResult.CONSUME;
-				} else {
-					super.use(state, level, pos, player, hand, hitRes);
+			} else if (!DCUtil.isEmpty(held) && FluidUtil.getFluidHandler(held.copy()).isPresent()) {
+				if (DCFluidUtil.exchangeFluid(level, player.position(), tank.getTank(), held)) {
+					tile.setChanged();
+					player.getInventory().setChanged();
+					level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1.0F, 1.2F);
 				}
+				return InteractionResult.SUCCESS;
+			} else {
+				super.use(state, level, pos, player, hand, hitRes);
 			}
 		}
 		return InteractionResult.sidedSuccess(level.isClientSide);

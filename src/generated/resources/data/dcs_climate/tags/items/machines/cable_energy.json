@@ -4,6 +4,7 @@
     "dcs_climate:machine/cable_copper_coated",
     "dcs_climate:machine/cable_aluminum_coated",
     "dcs_climate:machine/cable_copper",
-    "dcs_climate:machine/cable_copper_coated"
+    "dcs_climate:machine/cable_copper_coated",
+    "dcs_climate:machine/cable_aluminum_coated"
   ]
 }

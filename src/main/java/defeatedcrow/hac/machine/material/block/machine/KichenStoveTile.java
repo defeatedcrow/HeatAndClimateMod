@@ -24,6 +24,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -47,14 +48,11 @@ public class KichenStoveTile extends HeatSourceTile implements IFluidTankTileDC 
 	public final ContainerData dataAccess = new ContainerData() {
 		@Override
 		public int get(int id) {
-			switch (id) {
-			case 0:
-				return KichenStoveTile.this.currentProgress;
-			case 1:
-				return KichenStoveTile.this.totalProgress;
-			default:
-				return 0;
-			}
+			return switch (id) {
+			case 0 -> KichenStoveTile.this.currentProgress;
+			case 1 -> KichenStoveTile.this.totalProgress;
+			default -> 0;
+			};
 		}
 
 		@Override
@@ -89,52 +87,51 @@ public class KichenStoveTile extends HeatSourceTile implements IFluidTankTileDC 
 			if (!DCUtil.isEmpty(this.inventory.getItem(0)) && !this.inventory.isMaxStack(1)) {
 				ItemStack copy = this.inventory.getItem(0).copy();
 				copy.setCount(1);
-				flag = FluidUtil.getFluidHandler(copy)
-						.map(handler -> {
-							FluidStack fluid = handler.getFluidInTank(0);
-							if (fluid.isEmpty() || tank.isFull()) {
-								int space = Math.min(tank.getFluidAmount(), handler.getTankCapacity(0));
-								int d = handler.fill(tank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
-								if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
-									// drain
-									tank.drain(d, FluidAction.EXECUTE);
-									ItemStack ret = handler.getContainer().copy();
-									if (!ret.isEmpty()) {
-										ret.setCount(1);
-										inventory.incrStackInSlot(1, ret);
-									}
-									inventory.removeItem(0, 1);
-									return true;
-								}
-							} else if (handler.isFluidValid(getTankCap(), fluid)) {
-								FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
-								int f = tank.fill(drain, FluidAction.SIMULATE);
-								if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
-									// fill
-									drain.setAmount(f);
-									tank.fill(drain, FluidAction.EXECUTE);
-									handler.drain(drain, FluidAction.EXECUTE);
-									ItemStack ret = handler.getContainer().copy();
-									if (!ret.isEmpty()) {
-										ret.setCount(1);
-										inventory.incrStackInSlot(1, ret);
-									}
-									inventory.removeItem(0, 1);
-									return true;
-								}
+				flag = FluidUtil.getFluidHandler(copy).map(handler -> {
+					FluidStack fluid = handler.getFluidInTank(0);
+					if (fluid.isEmpty() || tank.isFull()) {
+						int space = Math.min(tank.getFluidAmount(), handler.getTankCapacity(0));
+						int d = handler.fill(tank.drain(space, FluidAction.SIMULATE), FluidAction.EXECUTE);
+						if (d > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
+							// drain
+							tank.drain(d, FluidAction.EXECUTE);
+							ItemStack ret = handler.getContainer().copy();
+							if (!ret.isEmpty()) {
+								ret.setCount(1);
+								inventory.incrStackInSlot(1, ret);
 							}
-							return false;
-						}).orElse(false);
+							inventory.removeItem(0, 1);
+							return true;
+						}
+					} else if (handler.isFluidValid(getTankCap(), fluid)) {
+						FluidStack drain = handler.drain(fluid, FluidAction.SIMULATE);
+						int f = tank.fill(drain, FluidAction.SIMULATE);
+						if (f > 0 && inventory.canInsertResult(handler.getContainer(), 1, 1) != 0) {
+							// fill
+							drain.setAmount(f);
+							tank.fill(drain, FluidAction.EXECUTE);
+							handler.drain(drain, FluidAction.EXECUTE);
+							ItemStack ret = handler.getContainer().copy();
+							if (!ret.isEmpty()) {
+								ret.setCount(1);
+								inventory.incrStackInSlot(1, ret);
+							}
+							inventory.removeItem(0, 1);
+							return true;
+						}
+					}
+					return false;
+				}).orElse(false);
 			}
 
-			int hash = tank.getFluid().hashCode();
+			int hash = tank.getFluidHash();
 			if (lastHash != hash) {
 				lastHash = hash;
 				flag = true;
 			}
 
 			if (flag && level instanceof ServerLevel) {
-				this.setChanged(level, pos, state);
+				BlockEntity.setChanged(level, pos, state);
 				NonNullList<FluidStack> list = NonNullList.withSize(3, FluidStack.EMPTY);
 				list.set(0, tank.getFluid());
 				MsgTileFluidToC.sendToClient((ServerLevel) level, pos, list);

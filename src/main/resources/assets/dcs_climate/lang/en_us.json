@@ -2300,6 +2300,14 @@
   "fluid_type.dcs_climate.used_plant_oil":"Used Plant Oil",
   "fluid_type.dcs_climate.sparkling":"Sparkling Water",
   "fluid_type.dcs_climate.compressed_air":"Compressed Air",
+  
+  "block.dcs_climate.fluid.brine":"Brine",
+  "block.dcs_climate.fluid.hotspring":"Hotspring",
+  "block.dcs_climate.fluid.fuel_oil":"Fuel Oil",
+  "block.dcs_climate.fluid.plant_oil":"Plant Oil",
+  "block.dcs_climate.fluid.used_plant_oil":"Used Plant Oil",
+  "block.dcs_climate.fluid.sparkling":"Sparkling Water",
+  "block.dcs_climate.fluid.compressed_air":"Compressed Air",
 
     "## entities":"",
 

@@ -1,14 +1,14 @@
-// 1.20.1	2026-09-12T00:52:23.5301616	Tags for minecraft:item mod id dcs_climate
+// 1.20.1	2026-09-15T00:25:17.023789	Tags for minecraft:item mod id dcs_climate
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 05c427bae6c42fa3468413da8a796681e5a20abb data/dcs_climate/tags/items/battery_items.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
 90173982f93614053feb56db3678b12782574184 data/dcs_climate/tags/items/battery_items/small.json
 4daf75917f6756b62ac41cc59093013ab3b36b88 data/dcs_climate/tags/items/beds.json
-50924a06ecbc345f985320cfdc2f73c350fa1c5e data/dcs_climate/tags/items/building_stones.json
-b14bea3659ed00c9ff312f649702630c2d27fe54 data/dcs_climate/tags/items/building_stones/bricks.json
-3c0dd1a1e0114121ff4ad36dacba7dc3c504694b data/dcs_climate/tags/items/building_stones/chiseled.json
+fc7d1cb75c791e9aa75fb762be474b87b40f5787 data/dcs_climate/tags/items/building_stones.json
+3b28decae087970a711a4462f77f3148a6c74041 data/dcs_climate/tags/items/building_stones/bricks.json
+37b81f1ced017a5998c0ddd9ad9756d1bd2cce97 data/dcs_climate/tags/items/building_stones/chiseled.json
 3a057b4db9c3f88353aa3a61079657c24cf22f9c data/dcs_climate/tags/items/building_stones/linoleum.json
-5fbe1c24c0817cb22713c847a9e5752fcb8105e8 data/dcs_climate/tags/items/building_stones/pillar.json
+51137264e631573abba87e5b5fee1467e0a6d06e data/dcs_climate/tags/items/building_stones/pillar.json
 1b95d84ade6714ec42e149fb8c466842ed48814c data/dcs_climate/tags/items/cabinets.json
 3ebf02db67e2caa14a6ed41a30670c907ffdf9e4 data/dcs_climate/tags/items/can_fish_with_rod.json
 f35d812b052f342ebd36cf608ff0b5a45fc8383d data/dcs_climate/tags/items/carpets.json
@@ -137,12 +137,12 @@ f30647ed6f862e6bb5cecc09e7b06fd69d088c38 data/dcs_climate/tags/items/leather_sof
 f2cdc97a774fb6bb826cc512d5fda718518ef3ab data/dcs_climate/tags/items/logs_can_collect_sap/sweet_sap.json
 6a83964cca7baf3ade9b044040273c2d2c98dbcb data/dcs_climate/tags/items/luggages.json
 b5aa99ed14fdbaec12ac973b4596dcb37076ba9d data/dcs_climate/tags/items/machines.json
-606f0f25c5e2fd411948cced410c4e471a6f97ce data/dcs_climate/tags/items/machines/cable_energy.json
+9f68205a030e5f141af41b87afe436dd61ee6749 data/dcs_climate/tags/items/machines/cable_energy.json
 e249aeb9e3a41699cd3be0b2d44f6a0516b9b694 data/dcs_climate/tags/items/machines/climate.json
-08e699e38a738e77ae9997fe3caff1371726c8f8 data/dcs_climate/tags/items/machines/display.json
+599e8c10b52c37d8b39ae3816e108263fb11f3b7 data/dcs_climate/tags/items/machines/display.json
 c3e38aea7817899a61cc80ce741810baa74c3229 data/dcs_climate/tags/items/machines/energy.json
 94ff6238538ed033196035f110b10721b2cf337f data/dcs_climate/tags/items/machines/leakage.json
-795d1bfc168f76bb78684f082f5753e91dbf5cf6 data/dcs_climate/tags/items/machines/pipe_fluid.json
+7de647de7d54e17c7d7ffe5bc166f48a6dc004fd data/dcs_climate/tags/items/machines/pipe_fluid.json
 62ae5234cd911be66bc8e103a5005b0fc78b0e98 data/dcs_climate/tags/items/magic.json
 ee0c324158675b8c748be8b1a5bb2dfc0d0297a8 data/dcs_climate/tags/items/magic/tier1.json
 24ced985b511a6bbdc950eafdec1fd02e215af71 data/dcs_climate/tags/items/magic/tier2.json

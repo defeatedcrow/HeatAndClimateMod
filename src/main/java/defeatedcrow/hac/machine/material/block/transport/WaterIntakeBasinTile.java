@@ -113,7 +113,7 @@ public class WaterIntakeBasinTile extends PortableFluidTankTile {
 				}).orElse(false);
 			}
 
-			int hash = getTank().getFluid().hashCode();
+			int hash = getTank().getFluidHash();
 			if (lastHash != hash) {
 				lastHash = hash;
 				flag = true;
