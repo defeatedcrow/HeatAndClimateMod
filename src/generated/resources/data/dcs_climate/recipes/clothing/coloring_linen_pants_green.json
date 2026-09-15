@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "cloth_coloring",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/pants_linen"
+    },
+    {
+      "tag": "forge:dyes/green"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/pants_linen_green"
+  }
+}

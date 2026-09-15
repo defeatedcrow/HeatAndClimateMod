@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/pattern_paper_tunic"
+    },
+    {
+      "tag": "forge:clothes/plant"
+    },
+    {
+      "tag": "forge:clothes/plant"
+    },
+    {
+      "tag": "forge:gems/agates"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/dress_linen"
+  }
+}

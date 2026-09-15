@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "forge:clothes"
+    },
+    "Y": {
+      "tag": "forge:ingots/iron"
+    },
+    "Z": {
+      "tag": "forge:dyes/green"
+    }
+  },
+  "pattern": [
+    "Z",
+    "X",
+    "Y"
+  ],
+  "result": {
+    "item": "dcs_climate:build/chair_round_green"
+  },
+  "show_notification": true
+}

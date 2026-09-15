@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Y": {
+      "tag": "forge:rods/wooden"
+    },
+    "Z": {
+      "tag": "forge:ingots/brass_or_bronze"
+    }
+  },
+  "pattern": [
+    "Z",
+    "Y",
+    "X"
+  ],
+  "result": {
+    "item": "dcs_climate:build/toolhook"
+  },
+  "show_notification": true
+}

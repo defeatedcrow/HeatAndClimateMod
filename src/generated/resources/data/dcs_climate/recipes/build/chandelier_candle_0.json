@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "item": "dcs_climate:build/candlestick"
+    },
+    "Y": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "pattern": [
+    " X ",
+    "XYX",
+    " X "
+  ],
+  "result": {
+    "item": "dcs_climate:build/chandelier_candle"
+  },
+  "show_notification": true
+}

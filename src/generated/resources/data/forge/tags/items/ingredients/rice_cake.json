@@ -1,5 +1,9 @@
 {
   "values": [
-    "dcs_climate:food/food_mochi"
+    "dcs_climate:food/food_mochi",
+    {
+      "id": "bamboomod:bamboofood_mochi",
+      "required": false
+    }
   ]
 }

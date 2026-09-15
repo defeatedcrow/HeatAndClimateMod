@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "minecraft:dirt"
+    }
+  },
+  "pattern": [
+    "XXX"
+  ],
+  "result": {
+    "count": 6,
+    "item": "dcs_climate:build/dirt_slab"
+  },
+  "show_notification": true
+}

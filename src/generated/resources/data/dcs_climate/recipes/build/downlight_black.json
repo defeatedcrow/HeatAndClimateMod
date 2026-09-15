@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "forge:dyes/black"
+    },
+    {
+      "item": "dcs_climate:build/small_light_wood"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/small_light_black"
+  }
+}

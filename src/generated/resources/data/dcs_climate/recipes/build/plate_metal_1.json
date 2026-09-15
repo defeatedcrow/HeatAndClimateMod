@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/iron"
+    },
+    "Y": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "pattern": [
+    "XYX"
+  ],
+  "result": {
+    "count": 2,
+    "item": "dcs_climate:build/plate_steel"
+  },
+  "show_notification": true
+}

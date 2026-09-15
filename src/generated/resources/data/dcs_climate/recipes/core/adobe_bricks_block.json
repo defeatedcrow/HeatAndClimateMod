@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "item": "dcs_climate:main/adobe_brick_item"
+    }
+  },
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "result": {
+    "item": "dcs_climate:build/adobe_bricks"
+  },
+  "show_notification": true
+}

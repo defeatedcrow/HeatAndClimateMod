@@ -3,6 +3,10 @@
     "dcs_climate:food/bark_cherry_wild",
     "dcs_climate:food/bark_morus_paper",
     "dcs_climate:food/bark_birch",
-    "dcs_climate:food/bark_oak"
+    "dcs_climate:food/bark_oak",
+    {
+      "id": "farmersdelight:tree_bark",
+      "required": false
+    }
   ]
 }

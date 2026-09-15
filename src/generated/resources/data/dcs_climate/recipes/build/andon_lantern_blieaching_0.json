@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "dcs_climate:andons"
+    },
+    {
+      "tag": "forge:soaps/olive"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/andon_lantern_white"
+  }
+}

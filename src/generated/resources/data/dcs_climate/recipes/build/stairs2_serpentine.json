@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "item": "dcs_climate:main/stone_serpentine"
+    }
+  },
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "result": {
+    "count": 4,
+    "item": "dcs_climate:build/stairs_serpentine"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/pattern_paper_jacket"
+    },
+    {
+      "tag": "forge:clothes/cotton"
+    },
+    {
+      "tag": "forge:clothes/cotton"
+    },
+    {
+      "tag": "forge:gems"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/blouse_cloth"
+  }
+}

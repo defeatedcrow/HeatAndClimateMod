@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "bleaching",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/dress_maid_black"
+    },
+    {
+      "tag": "forge:soaps/olive"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/dress_maid"
+  }
+}

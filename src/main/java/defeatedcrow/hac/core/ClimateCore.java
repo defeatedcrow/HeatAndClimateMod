@@ -25,6 +25,8 @@ import defeatedcrow.hac.core.material.DamageTypeInit;
 import defeatedcrow.hac.core.material.tabs.CreativeTabDC;
 import defeatedcrow.hac.core.network.packet.DCPacket;
 import defeatedcrow.hac.core.recipe.MaterialRecipes;
+import defeatedcrow.hac.core.recipe.vanilla.BuildingRecipeProvider;
+import defeatedcrow.hac.core.recipe.vanilla.ClothingRecipeProvider;
 import defeatedcrow.hac.core.recipe.vanilla.VanillaRecipeProvider;
 import defeatedcrow.hac.core.tag.BiomeTagProviderDC;
 import defeatedcrow.hac.core.tag.BlockTagProviderDC;
@@ -176,10 +178,12 @@ public class ClimateCore {
 		generator.addProvider(event.includeServer(), new BiomeTagProviderDC(output, lookup, existingFileHelper));
 		generator.addProvider(event.includeServer(), new FluidTagProviderDC(output, lookup, existingFileHelper));
 
-		generator.addProvider(event.includeServer(), wrapRecipe(output, new VanillaRecipeProvider(output), "Recipes: Vanilla"));
-		generator.addProvider(event.includeServer(), wrapRecipe(output, new FoodRecipeProvider(output), "Recipes: Food"));
-		generator.addProvider(event.includeServer(), wrapRecipe(output, new MagicRecipeProvider(output), "Recipes: Magic"));
-		generator.addProvider(event.includeServer(), wrapRecipe(output, new MachineRecipeProvider(output), "Recipes: Machine"));
+		generator.addProvider(event.includeServer(), wrapRecipe(output, new VanillaRecipeProvider(output), "Recipes:Vanilla"));
+		generator.addProvider(event.includeServer(), wrapRecipe(output, new BuildingRecipeProvider(output), "Recipes:Building"));
+		generator.addProvider(event.includeServer(), wrapRecipe(output, new ClothingRecipeProvider(output), "Recipes:Clothing"));
+		generator.addProvider(event.includeServer(), wrapRecipe(output, new FoodRecipeProvider(output), "Recipes:Food"));
+		generator.addProvider(event.includeServer(), wrapRecipe(output, new MagicRecipeProvider(output), "Recipes:Magic"));
+		generator.addProvider(event.includeServer(), wrapRecipe(output, new MachineRecipeProvider(output), "Recipes:Machine"));
 
 		generator.addProvider(event.includeServer(), new AdvancementProviderDC(output, lookup, existingFileHelper));
 	}

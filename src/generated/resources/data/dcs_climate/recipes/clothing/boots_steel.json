@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "tag": "forge:clothes"
+    }
+  },
+  "pattern": [
+    "X X",
+    "XYX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/boots_steel"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "item": "dcs_climate:build/bricks_mortar"
+    }
+  },
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "result": {
+    "count": 4,
+    "item": "dcs_climate:build/pillar_mortar"
+  },
+  "show_notification": true
+}

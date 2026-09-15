@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Y": {
+      "tag": "forge:clothes/plant"
+    }
+  },
+  "pattern": [
+    "Y",
+    "X"
+  ],
+  "result": {
+    "item": "dcs_climate:build/carpet_linen"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "forge:clothes"
+    },
+    "Y": {
+      "tag": "minecraft:wooden_fences"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "Y Y"
+  ],
+  "result": {
+    "item": "dcs_climate:build/sofa_white"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "dustblock_pack",
+  "key": {
+    "L": {
+      "tag": "forge:dusts/cobalt"
+    },
+    "P": {
+      "tag": "forge:dusts/nickel"
+    },
+    "S": {
+      "tag": "forge:dusts/chromium"
+    },
+    "T": {
+      "tag": "forge:dusts/molybdenum"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PSS",
+    "TTL"
+  ],
+  "result": {
+    "item": "dcs_climate:main/dustblock_hastelloy"
+  },
+  "show_notification": true
+}

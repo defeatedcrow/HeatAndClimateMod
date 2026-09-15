@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "forge:clothes/plant"
+    },
+    {
+      "item": "dcs_climate:build/table_wood"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/table_linen"
+  }
+}

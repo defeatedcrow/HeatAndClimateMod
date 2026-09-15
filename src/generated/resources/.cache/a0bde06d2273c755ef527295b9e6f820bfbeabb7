@@ -1,4 +1,4 @@
-// 1.20.1	2026-09-15T00:25:17.023789	Tags for minecraft:item mod id dcs_climate
+// 1.20.1	2026-09-16T02:56:10.3677574	Tags for minecraft:item mod id dcs_climate
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 05c427bae6c42fa3468413da8a796681e5a20abb data/dcs_climate/tags/items/battery_items.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
@@ -201,8 +201,8 @@ a9152ef66ad53c0dc476507a71766cb55a07d58d data/forge/tags/items/animal_feeds.json
 7d6fd01964c88a56cda99333872579b37ef749b0 data/forge/tags/items/animal_feeds/compound.json
 0332ee57f7973ff3aa0e5f810558555ce7563caf data/forge/tags/items/animal_feeds/hay.json
 70864e18e0f52d0d9a159d2fb77d3a69aebeb492 data/forge/tags/items/animal_feeds/silage.json
-7f473b6b18af20cad07cd66ab6dce77e93ea4f56 data/forge/tags/items/animal_feeds/straw.json
-d3bdfe2e50768566585605e769b52d63c8d8ae0d data/forge/tags/items/barks.json
+23f5847e62c08a688c7f3af201c8d16bab9c55ef data/forge/tags/items/animal_feeds/straw.json
+69c342eb116a11a65bffc717c10dc16730354631 data/forge/tags/items/barks.json
 d673abe514b8497e051af0ae88941b292f686d8e data/forge/tags/items/bones.json
 16f0c29d53c26e277a717e116af209100cafa85d data/forge/tags/items/clothes.json
 518917c86ad0f68a4b941321fa200bf24bea8795 data/forge/tags/items/clothes/cotton.json
@@ -523,7 +523,7 @@ b7a1f487a9ea53992619f74e53191409bb435cda data/forge/tags/items/ingredients/anko.
 95e633e6cf17d7c46d9dc5443a222b21782af13c data/forge/tags/items/ingredients/aroma_rice.json
 29f04ee2b19f29f1c3add1db803db9ee116ae52b data/forge/tags/items/ingredients/bacon.json
 d952ef1b1fe160e61738f8b06d0dbd20ef27af4d data/forge/tags/items/ingredients/bagasse.json
-01eb075209d2e07cecc5a3f66bc5a14c8b5eb820 data/forge/tags/items/ingredients/bamboo_shoot.json
+57abfa3c07365f674ce01582a53347662762e246 data/forge/tags/items/ingredients/bamboo_shoot.json
 c8ae00487769cc8af31edfa00b8ec67148460290 data/forge/tags/items/ingredients/barley.json
 6a08bea75f62dd133e4b73a34bd90bcdc3e90252 data/forge/tags/items/ingredients/basesoup.json
 1429d5ab1c43355f40c5c8cd7fef82885d6959ae data/forge/tags/items/ingredients/batter.json
@@ -618,9 +618,9 @@ bd928ddfbd630ca3abfd792d4214fab0a6d9f54a data/forge/tags/items/ingredients/raw_s
 196d96e53f2152f93e8267ea92d34ad04804368e data/forge/tags/items/ingredients/raw_sausage.json
 571c3c8a789460f483c19b20c15048e6d62b87a3 data/forge/tags/items/ingredients/rennet.json
 a65361a6ac85412452709ee084685eac0c176b13 data/forge/tags/items/ingredients/residues.json
-14baec8a5da10c79cdc928a2f94b5d3815701000 data/forge/tags/items/ingredients/rice.json
+f0a7de2ac7c1eaf5866890f0e534cfa52f0037bd data/forge/tags/items/ingredients/rice.json
 53e27b384ae930eadb30b6ba0114631bfb717ffd data/forge/tags/items/ingredients/rices.json
-8f0fe0558fa0b10265135a174f22425419b7d329 data/forge/tags/items/ingredients/rice_cake.json
+b95c3f108e8190bf8257a659a2b31ebf5459ea0a data/forge/tags/items/ingredients/rice_cake.json
 e1d5701902af573581d70367c4792e620e02d4e0 data/forge/tags/items/ingredients/roasted_coffee.json
 dcbdeef42e7b64c33e8951a52ffc2a6745f8797b data/forge/tags/items/ingredients/rockfish.json
 f662d554b05307a14bb5b2fc11fc8ed83257589d data/forge/tags/items/ingredients/roe.json
@@ -650,7 +650,7 @@ be7acdc39b139f4c15c4e53d23ad1907e858e023 data/forge/tags/items/ingredients/tea_l
 6d49140b9dbf9008b77534bd842a9bac2cdf7c29 data/forge/tags/items/ingredients/trout.json
 51f8cc452a6d7f5e3ab19a16c8f2b0ef32fe9f0b data/forge/tags/items/ingredients/tuna.json
 094e093362bfcbb9a375840c972e654ae458c86c data/forge/tags/items/ingredients/vanilla_cured.json
-5c30b60932a4e1b7101a377e0e1be1bbbfa04cae data/forge/tags/items/ingredients/vine.json
+a34ede58b56decd3ec92346ee476f2ea1613e332 data/forge/tags/items/ingredients/vine.json
 8344c9b999865f9ba063b11cdf4a3383639e3892 data/forge/tags/items/ingredients/vinegar.json
 e48cbad30b2e5483f251e5cab75a273775e4c6b7 data/forge/tags/items/ingredients/water.json
 5297705bd5a141a39bed191dedf0e813cc9a1f41 data/forge/tags/items/ingredients/wax.json

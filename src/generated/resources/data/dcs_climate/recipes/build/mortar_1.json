@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "forge:dusts/lime"
+    },
+    {
+      "tag": "forge:dusts/lime"
+    },
+    {
+      "tag": "forge:sand"
+    },
+    {
+      "tag": "forge:ingredients/water"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "dcs_climate:build/mortar"
+  }
+}

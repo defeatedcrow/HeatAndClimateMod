@@ -1,5 +1,9 @@
 {
   "values": [
-    "dcs_climate:food/animalfeed_straw"
+    "dcs_climate:food/animalfeed_straw",
+    {
+      "id": "farmersdelight:straw",
+      "required": false
+    }
   ]
 }

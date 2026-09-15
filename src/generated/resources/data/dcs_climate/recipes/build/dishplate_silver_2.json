@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/nickel_silver"
+    }
+  },
+  "pattern": [
+    "X X",
+    " X "
+  ],
+  "result": {
+    "item": "dcs_climate:build/dishplate_silver"
+  },
+  "show_notification": true
+}

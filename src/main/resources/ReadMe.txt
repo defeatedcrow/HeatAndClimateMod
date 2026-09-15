@@ -1,4 +1,4 @@
-#### Heat&Climate Mod v5.0.0_pre for Minecraft 1.20.1 ####
+#### Heat&Climate Mod v5.0.1 for Minecraft 1.20.1 ####
 
 # 導入環境 / Introduction conditions
 
@@ -898,10 +898,15 @@
 
 #### 更新履歴 / Change log ####
 
-○v5.0.0pre
+○v5.0.1
+ fix: Building、Clothingレシピの生成忘れ
+ fix: Fluid関連のMissingTexを修正。
+ ex: いくつかのOptionalなItemTagを追加。
+
+○v5.0.0pre (2026.9.15)
  ex: 開発環境をMC1.20.1-forge47.4.10に更新。
 
-○v4.0.1
+○v4.0.1 (2026.8.23)
  add: ハンモック
  add: 革張りのソファ
  add: クッション
@@ -938,7 +943,7 @@
  fix: 一部の料理Entityのモデルが正しく表示されない問題を修正。
  fix: 魔法の石鹸を金床で使用できるようにした。
 
-○v4.0.0pre
+○v4.0.0pre (2026.6.21)
  add: コーヒーサイフォン
  add: マキネッタ
  add: 生ハムとベーコン

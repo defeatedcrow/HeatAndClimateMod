@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "tag": "forge:leather"
+    },
+    "Y": {
+      "tag": "forge:string"
+    }
+  },
+  "pattern": [
+    "XYX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/shawl_fur"
+  },
+  "show_notification": true
+}

@@ -582,6 +582,14 @@ public class ItemTagProviderDC extends ItemTagsProvider {
 		tag(TagDC.ItemTag.VINE_PLANT).addOptional(ResourceLocation.fromNamespaceAndPath("atmospheric", "passion_vine"));
 		tag(TagDC.ItemTag.CROP_CITRUS).addOptional(ResourceLocation.fromNamespaceAndPath("atmospheric", "orange"));
 		tag(TagDC.ItemTag.CROP_CITRUS).addOptional(ResourceLocation.fromNamespaceAndPath("atmospheric", "blood_orange"));
+
+		tag(TagDC.ItemTag.BAMBOO_SHOOT).addOptional(ResourceLocation.fromNamespaceAndPath("bamboomod", "bamboo_shoot"));
+		tag(TagDC.ItemTag.DUST_RICE).addOptional(ResourceLocation.fromNamespaceAndPath("bamboomod", "rawrice"));
+		tag(TagDC.ItemTag.RICE_CAKE).addOptional(ResourceLocation.fromNamespaceAndPath("bamboomod", "bamboofood_mochi"));
+
+		tag(TagDC.ItemTag.BARKS).addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "tree_bark"));
+		tag(TagDC.ItemTag.FEED_STRAW).addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "straw"));
+		tag(TagDC.ItemTag.VINE).addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "rope"));
 	}
 
 }

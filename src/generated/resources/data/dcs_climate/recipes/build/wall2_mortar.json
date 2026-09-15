@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "item": "dcs_climate:build/mortar"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "count": 6,
+    "item": "dcs_climate:build/wall_mortar"
+  },
+  "show_notification": true
+}

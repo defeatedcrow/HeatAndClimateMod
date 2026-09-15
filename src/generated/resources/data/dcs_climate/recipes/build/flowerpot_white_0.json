@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "forge:gems/agates"
+    },
+    "Y": {
+      "tag": "minecraft:flowers"
+    }
+  },
+  "pattern": [
+    "XYX",
+    " X "
+  ],
+  "result": {
+    "item": "dcs_climate:build/flower_pot_white"
+  },
+  "show_notification": true
+}

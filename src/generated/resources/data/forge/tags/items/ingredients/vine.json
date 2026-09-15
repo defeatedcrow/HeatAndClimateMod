@@ -1,5 +1,9 @@
 {
   "values": [
-    "dcs_climate:food/food_vine"
+    "dcs_climate:food/food_vine",
+    {
+      "id": "farmersdelight:rope",
+      "required": false
+    }
   ]
 }

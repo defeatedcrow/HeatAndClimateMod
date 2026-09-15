@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "forge:animal_feeds/hay"
+    }
+  },
+  "pattern": [
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:build/straw_mat"
+  },
+  "show_notification": true
+}

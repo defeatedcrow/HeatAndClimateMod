@@ -1,5 +1,9 @@
 {
   "values": [
-    "dcs_climate:food/food_rice"
+    "dcs_climate:food/food_rice",
+    {
+      "id": "bamboomod:rawrice",
+      "required": false
+    }
   ]
 }

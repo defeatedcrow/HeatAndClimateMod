@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "item": "dcs_climate:build/chal_lamp_table"
+    },
+    "Y": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "pattern": [
+    " X ",
+    "XYX",
+    " X "
+  ],
+  "result": {
+    "item": "dcs_climate:build/chandelier_iron"
+  },
+  "show_notification": true
+}

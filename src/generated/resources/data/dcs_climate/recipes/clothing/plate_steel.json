@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/steel"
+    },
+    "Y": {
+      "tag": "forge:clothes"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/plate_steel"
+  },
+  "show_notification": true
+}

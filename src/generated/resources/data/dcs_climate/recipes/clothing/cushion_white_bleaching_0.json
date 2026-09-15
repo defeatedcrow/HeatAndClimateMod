@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "forge:soaps/olive"
+    },
+    {
+      "tag": "dcs_climate:cushions"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/cushion_white"
+  }
+}

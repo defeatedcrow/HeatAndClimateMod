@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "forge:ingredients/vine"
+    }
+  },
+  "pattern": [
+    "X X",
+    "XXX",
+    "X X"
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:build/vine_ladder"
+  },
+  "show_notification": true
+}

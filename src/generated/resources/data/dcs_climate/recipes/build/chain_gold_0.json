@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "forge:nuggets/gold"
+    },
+    "Y": {
+      "tag": "forge:ingots/gold"
+    }
+  },
+  "pattern": [
+    "X",
+    "Y",
+    "X"
+  ],
+  "result": {
+    "item": "dcs_climate:build/chain_gold"
+  },
+  "show_notification": true
+}

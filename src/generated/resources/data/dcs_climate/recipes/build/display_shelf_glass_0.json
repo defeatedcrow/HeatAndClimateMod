@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "dcs_climate:building_stones/linoleum"
+    },
+    "Z": {
+      "tag": "forge:glass"
+    }
+  },
+  "pattern": [
+    "XZX",
+    "XZX"
+  ],
+  "result": {
+    "item": "dcs_climate:build/display_shelf_glass"
+  },
+  "show_notification": true
+}

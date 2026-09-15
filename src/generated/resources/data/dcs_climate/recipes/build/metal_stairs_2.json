@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/aluminum"
+    }
+  },
+  "pattern": [
+    "  X",
+    " X ",
+    "X  "
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:build/metal_stairs"
+  },
+  "show_notification": true
+}

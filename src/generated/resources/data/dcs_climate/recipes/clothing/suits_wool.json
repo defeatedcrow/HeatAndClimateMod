@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/pattern_paper_suits"
+    },
+    {
+      "tag": "forge:clothes/wool"
+    },
+    {
+      "tag": "forge:clothes/wool"
+    },
+    {
+      "tag": "forge:string"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/suits_wool"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "forge:clothes/cotton"
+    },
+    {
+      "item": "dcs_climate:build/chair_wood"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:build/chair_white"
+  }
+}

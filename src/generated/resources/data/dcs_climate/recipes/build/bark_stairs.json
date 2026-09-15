@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Y": {
+      "tag": "forge:barks"
+    }
+  },
+  "pattern": [
+    "  Y",
+    " YX",
+    "YX "
+  ],
+  "result": {
+    "count": 3,
+    "item": "dcs_climate:build/stairs_wood_bark"
+  },
+  "show_notification": true
+}

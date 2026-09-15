@@ -1,6 +1,6 @@
 {
     "render_type": "minecraft:translucent",
     "textures": {
-        "particle": "dcs_climate:fluid/compressed_air_still"
+        "particle": "dcs_climate:block/fluid/compressed_air_still"
     }
 }

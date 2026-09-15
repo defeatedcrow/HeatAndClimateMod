@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "dustblock_pack",
+  "key": {
+    "P": {
+      "tag": "forge:dusts/copper"
+    },
+    "S": {
+      "tag": "forge:dusts/tin"
+    },
+    "T": {
+      "tag": "forge:dusts/tin"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PPP",
+    "SST"
+  ],
+  "result": {
+    "item": "dcs_climate:main/dustblock_bronze"
+  },
+  "show_notification": true
+}

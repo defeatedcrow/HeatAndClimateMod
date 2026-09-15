@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "storage_unpack",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/gemblock_olivine"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/gem_olivine"
+  }
+}

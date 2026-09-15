@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "storage_pack",
+  "key": {
+    "X": {
+      "tag": "forge:gems/jasper"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/gemblock_jasper"
+  },
+  "show_notification": true
+}

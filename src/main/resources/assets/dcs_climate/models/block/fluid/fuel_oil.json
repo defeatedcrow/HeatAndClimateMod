@@ -1,5 +1,5 @@
 {
     "textures": {
-        "particle": "dcs_climate:fluid/fuel_oil_still"
+        "particle": "dcs_climate:block/fluid/fuel_oil_still"
     }
 }

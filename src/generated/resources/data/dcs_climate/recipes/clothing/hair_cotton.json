@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "dcs_climate:main/pattern_paper_wear"
+    },
+    {
+      "tag": "forge:clothes/cotton"
+    },
+    {
+      "tag": "forge:leather"
+    },
+    {
+      "tag": "forge:gems/agates"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/hair_cloth"
+  }
+}

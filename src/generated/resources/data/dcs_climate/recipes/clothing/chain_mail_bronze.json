@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "tag": "forge:ingots/brass_or_bronze"
+    },
+    "Y": {
+      "tag": "forge:clothes"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "X X"
+  ],
+  "result": {
+    "item": "dcs_climate:main/chain_mail_bronze"
+  },
+  "show_notification": true
+}

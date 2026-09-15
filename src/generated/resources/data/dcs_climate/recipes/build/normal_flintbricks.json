@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "tag": "forge:gems/flint"
+    },
+    "Y": {
+      "tag": "forge:cobblestone"
+    }
+  },
+  "pattern": [
+    "XY",
+    "YX"
+  ],
+  "result": {
+    "count": 4,
+    "item": "dcs_climate:build/flintbricks"
+  },
+  "show_notification": true
+}

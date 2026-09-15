@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "tag": "forge:clothes/rubber"
+    },
+    "Y": {
+      "tag": "forge:clothes"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/waders_rubber"
+  },
+  "show_notification": true
+}

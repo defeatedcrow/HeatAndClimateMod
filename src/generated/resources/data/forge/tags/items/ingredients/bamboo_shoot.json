@@ -1,6 +1,10 @@
 {
   "values": [
     "dcs_climate:food/food_bamboo_shoot",
-    "#forge:ingredients/makomotake"
+    "#forge:ingredients/makomotake",
+    {
+      "id": "bamboomod:bamboo_shoot",
+      "required": false
+    }
   ]
 }
