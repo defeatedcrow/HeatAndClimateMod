@@ -14,6 +14,8 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -100,44 +102,49 @@ public class SaplingMorus extends SaplingBaseBlock {
 	@Override
 	protected BlockState getLogState(CropTier t) {
 		return switch (t) {
-		case COMMON -> FoodInit.LOG_MR_PAPER.get()
-		    .defaultBlockState()
-		    .setValue(DCState.WILD, true);
-		case RARE -> FoodInit.LOG_MR_RUBBER.get()
-		    .defaultBlockState()
-		    .setValue(DCState.WILD, true);
-		default -> FoodInit.LOG_MR_MULBERRY.get()
-		    .defaultBlockState()
-		    .setValue(DCState.WILD, true);
+		case COMMON -> FoodInit.LOG_MR_PAPER.get().defaultBlockState().setValue(DCState.WILD, true);
+		case RARE -> FoodInit.LOG_MR_RUBBER.get().defaultBlockState().setValue(DCState.WILD, true);
+		default -> FoodInit.LOG_MR_MULBERRY.get().defaultBlockState().setValue(DCState.WILD, true);
 		};
 	}
 
 	@Override
 	protected BlockState getLeavesState(CropTier t) {
 		return switch (t) {
-		case COMMON -> FoodInit.LEAVES_MR_PAPER.get()
-		    .defaultBlockState()
-		    .setValue(DCState.FLAG, true);
-		case RARE -> FoodInit.LEAVES_MR_RUBBER.get()
-		    .defaultBlockState()
-		    .setValue(DCState.FLAG, true);
-		default -> FoodInit.LEAVES_MR_MULBERRY.get()
-		    .defaultBlockState()
-		    .setValue(DCState.FLAG, true);
+		case COMMON -> FoodInit.LEAVES_MR_PAPER.get().defaultBlockState().setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_MR_RUBBER.get().defaultBlockState().setValue(DCState.FLAG, true);
+		default -> FoodInit.LEAVES_MR_MULBERRY.get().defaultBlockState().setValue(DCState.FLAG, true);
 		};
 	}
 
 	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
-		// 各種サイズが違う
-		level.random.nextInt(4);
-		int h = 3 + level.random.nextInt(4);
-		int r = 3;
+		RandomSource rand = level.getRandom();
+		int h = 1;
 		BlockState log = getLogState(t);
 		BlockState leaves = getLeavesState(t);
-		if (t == CropTier.RARE) {
-			h = 8 + level.random.nextInt(5);
-			r = 4;
+
+		boolean large = false;
+		if (TreeShapeGen.isLargeTree(level, pos, state))
+			large = true;
+		else if (TreeShapeGen.hasNextSapling(level, pos, state))
+			return;
+
+		if (t == CropTier.WILD) {
+			h = 3 + level.random.nextInt(4);
+			if (large) {
+				h = 7 + level.random.nextInt(4);
+			}
+		} else if (t == CropTier.COMMON) {
+			h = 2 + level.random.nextInt(6);
+			if (large) {
+				h = 6 + level.random.nextInt(5);
+			}
+		} else if (t == CropTier.RARE) {
+			h = 8 + level.random.nextInt(6);
+			if (large) {
+				h = 20 + level.random.nextInt(3);
+			}
 		}
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
@@ -146,19 +153,46 @@ public class SaplingMorus extends SaplingBaseBlock {
 		// 安全性チェック
 		if (pos.getY() + h > level.getMaxBuildHeight())
 			return;
+		int limit = TreeShapeGen.replaceCheck(level, pos, h);
 
 		if (!level.isClientSide) {
-			if (replaceCheck(level, pos, h))
+			if (limit < 1)
 				return;
 
-			if (h > 9) {
-				SaplingBeech.growBigTree2(level, pos, h, log, leaves);
-			} else if (h > 5) {
-				SaplingBeech.growBigTree(level, pos, h, log, leaves);
+			if (limit < 6) {
+				TreeShapeGen.growTreeAS(level, pos, limit, log, leaves);
+			} else if (limit < 9) {
+				TreeShapeGen.growTreeAS(level, pos, limit, log, leaves);
+				for (Direction d : Direction.Plane.HORIZONTAL) {
+					if (level.getRandom().nextBoolean())
+						TreeShapeGen.growBlanchAS(level, pos.above(limit - 4 + rand.nextInt(3)), d, 1, 1 + rand.nextInt(2), log, leaves);
+				}
+			} else if (limit < 12) {
+				TreeShapeGen.growTreeAM(level, pos, limit, log, leaves);
+				for (Direction d : Direction.Plane.HORIZONTAL) {
+					if (level.getRandom().nextBoolean())
+						TreeShapeGen.growBlanchAS(level, pos.above(limit - 8 + rand.nextInt(3)), d, 2, 2 + rand.nextInt(2), log, leaves);
+				}
+			} else if (limit < 18) {
+				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);
+				TreeShapeGen.growTreeBigLog(level, pos, limit - 10, log);
+				for (Direction d : Direction.Plane.HORIZONTAL) {
+					TreeShapeGen.growBlanchAS(level, pos.above(limit - 8), d, 2, 3, log, leaves);
+					if (level.getRandom().nextBoolean())
+						TreeShapeGen.growBlanchAM(level, pos.above(limit - 12 + rand.nextInt(2)), d, 1, 2, log, leaves);
+				}
 			} else {
-				growTree(level, pos, h, log, leaves);
+				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);
+				TreeShapeGen.growTreeBigLog(level, pos, limit - 12, log);
+				for (Direction d : Direction.Plane.HORIZONTAL) {
+					TreeShapeGen.growBlanchAS(level, pos.above(limit - 8), d, 2, 3, log, leaves);
+					TreeShapeGen.growBlanchAL(level, pos.above(limit - 12 + rand.nextInt(2)), d, 1, 2, log, leaves);
+					TreeShapeGen.growBlanchAL(level, pos.above(limit - 16 + rand.nextInt(2)), d, 2, 4, log, leaves);
+				}
 			}
-
+			if (large) {
+				TreeShapeGen.clearSapling(level, pos, state);
+			}
 		}
 	}
 

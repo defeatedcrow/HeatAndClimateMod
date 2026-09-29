@@ -245,7 +245,7 @@ public class CharmTriggerEvent {
 	public static void onXpPickup(PlayerXpEvent.XpChange event) {
 		Player player = event.getEntity();
 		int amount = event.getAmount();
-		int v = 0;
+		int v = amount;
 
 		if (amount > 0) {
 			int count = MagicUtil.hasCharmItem(player, new ItemStack(MagicInit.PENDANT_GOLD_BLUE.get()));
@@ -253,6 +253,7 @@ public class CharmTriggerEvent {
 				amount = Math.min(amount * (count + 1), Short.MAX_VALUE);
 				v = amount;
 			}
+			event.setAmount(amount);
 
 			for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
 				ItemStack item = player.getInventory().getItem(i);
@@ -265,7 +266,6 @@ public class CharmTriggerEvent {
 					}
 				}
 			}
-			event.setAmount(amount);
 		}
 
 	}

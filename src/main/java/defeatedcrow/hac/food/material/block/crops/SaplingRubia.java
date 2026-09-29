@@ -14,6 +14,7 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
@@ -108,33 +109,32 @@ public class SaplingRubia extends SaplingBaseBlock {
 
 	@Override
 	protected BlockState getLogState(CropTier t) {
-		return FoodInit.LOG_BH_COMMON.get()
-		    .defaultBlockState()
-		    .setValue(DCState.WILD, true);
+		return FoodInit.LOG_BH_COMMON.get().defaultBlockState().setValue(DCState.WILD, true);
 	}
 
 	@Override
 	protected BlockState getLeavesState(CropTier t) {
 		return switch (t) {
-		case COMMON -> FoodInit.LEAVES_RU_COFFEE.get()
-		    .defaultBlockState()
-		    .setValue(DCState.FLAG, true);
-		case RARE -> FoodInit.LEAVES_RU_IXORA.get()
-		    .defaultBlockState()
-		    .setValue(DCState.FLAG, true);
-		default -> FoodInit.LEAVES_RU_GARDENIA.get()
-		    .defaultBlockState()
-		    .setValue(DCState.FLAG, true);
+		case COMMON -> FoodInit.LEAVES_RU_COFFEE.get().defaultBlockState().setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_RU_IXORA.get().defaultBlockState().setValue(DCState.FLAG, true);
+		default -> FoodInit.LEAVES_RU_GARDENIA.get().defaultBlockState().setValue(DCState.FLAG, true);
 		};
 	}
 
 	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
-		level.random.nextInt(2);
-		int h = 1 + level.random.nextInt(3);
-		int r = 2;
+		RandomSource rand = level.getRandom();
+		int h = 1;
 		BlockState log = getLogState(t);
 		BlockState leaves = getLeavesState(t);
+
+		if (t == CropTier.WILD) {
+			h = 1 + level.random.nextInt(3);
+		} else if (t == CropTier.COMMON) {
+			h = 1 + level.random.nextInt(4);
+		} else if (t == CropTier.RARE) {
+			h = 1 + level.random.nextInt(2);
+		}
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);
@@ -142,11 +142,13 @@ public class SaplingRubia extends SaplingBaseBlock {
 		// 安全性チェック
 		if (pos.getY() + h > level.getMaxBuildHeight())
 			return;
+		int limit = TreeShapeGen.replaceCheck(level, pos, h);
 
 		if (!level.isClientSide) {
-			if (replaceCheck(level, pos, h))
+			if (limit < 1)
 				return;
-			growSmallTree(level, pos, h, log, leaves);
+
+			TreeShapeGen.growTreeBS(level, pos, h, log, leaves);
 		}
 	}
 

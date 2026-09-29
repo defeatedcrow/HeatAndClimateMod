@@ -85,28 +85,23 @@ public class DCUtil {
 	}
 
 	public static String getName(Item item) {
-		return getRes(item).map(ResourceLocation::getPath)
-		    .orElse("empty");
+		return getRes(item).map(ResourceLocation::getPath).orElse("empty");
 	}
 
 	public static String getName(Block block) {
-		return getRes(block).map(ResourceLocation::getPath)
-		    .orElse("empty");
+		return getRes(block).map(ResourceLocation::getPath).orElse("empty");
 	}
 
 	public static String getName(TagKey<Item> tag) {
-		return tag.location()
-		    .getPath();
+		return tag.location().getPath();
 	}
 
 	public static Optional<ResourceLocation> getLocationName(Holder<?> holder) {
-		return holder.unwrap()
-		    .map(res -> Optional.ofNullable(res.location()), b -> Optional.empty());
+		return holder.unwrap().map(res -> Optional.ofNullable(res.location()), b -> Optional.empty());
 	}
 
 	public static String getBlockRegName(Block block) {
-		return getRes(block).map(res -> (res.getNamespace() + ":" + res.getPath()))
-		    .orElse("empty");
+		return getRes(block).map(res -> (res.getNamespace() + ":" + res.getPath())).orElse("empty");
 	}
 
 	public static Boolean getFalse(BlockState state, BlockGetter level, BlockPos pos) {
@@ -114,11 +109,7 @@ public class DCUtil {
 	}
 
 	public static boolean setBlockIfReplaceable(Level level, BlockPos pos, BlockState set, boolean needAir) {
-		if (!level.getBlockState(pos)
-		    .is(BlockTags.FEATURES_CANNOT_REPLACE) && level.getBlockState(pos)
-		        .canBeReplaced()
-		    && (!needAir || level.getBlockState(pos)
-		        .getBlock() == Blocks.AIR)) {
+		if (!level.getBlockState(pos).is(BlockTags.FEATURES_CANNOT_REPLACE) && level.getBlockState(pos).canBeReplaced() && (!needAir || level.getBlockState(pos).getBlock() == Blocks.AIR)) {
 			return level.setBlock(pos, set, 2);
 		}
 		return false;
@@ -127,13 +118,11 @@ public class DCUtil {
 	public static float getPotionResistantData(LivingEntity living, boolean isCold) {
 		float prev = 0F;
 		if (!isCold && living.hasEffect(MobEffects.FIRE_RESISTANCE)) {
-			int f = living.getEffect(MobEffects.FIRE_RESISTANCE)
-			    .getAmplifier() + 1;
+			int f = living.getEffect(MobEffects.FIRE_RESISTANCE).getAmplifier() + 1;
 			prev += 4.0F * f;
 		}
 		if (isCold && living.hasEffect(CoreInit.COLD_RESISTANCE.get())) {
-			int f = living.getEffect(CoreInit.COLD_RESISTANCE.get())
-			    .getAmplifier() + 1;
+			int f = living.getEffect(CoreInit.COLD_RESISTANCE.get()).getAmplifier() + 1;
 			prev += 4.0F * f;
 		}
 
@@ -153,8 +142,7 @@ public class DCUtil {
 		if (liv != null && !liv.level().isClientSide) {
 			List<MobEffect> remove = Lists.newArrayList();
 			for (MobEffectInstance p : liv.getActiveEffects()) {
-				if (p.getEffect()
-				    .getCategory() == MobEffectCategory.HARMFUL)
+				if (p.getEffect().getCategory() == MobEffectCategory.HARMFUL)
 					remove.add(p.getEffect());
 			}
 
@@ -170,9 +158,7 @@ public class DCUtil {
 	public static boolean removeAllPotion(LivingEntity liv) {
 		if (liv != null && !liv.level().isClientSide) {
 			List<MobEffectInstance> remove = Lists.newArrayList();
-			remove.addAll(liv.getActiveEffects()
-			    .stream()
-			    .toList());
+			remove.addAll(liv.getActiveEffects().stream().toList());
 
 			for (MobEffectInstance p2 : remove) {
 				liv.removeEffect(p2.getEffect());
@@ -228,10 +214,8 @@ public class DCUtil {
 			return 0;
 		if (item.getItem() instanceof IFoodTaste food) {
 			return food.getTaste(item);
-		} else if (item.getTag() != null && item.getTag()
-		    .contains(TagKeyDC.TASTE)) {
-			int taste = item.getTag()
-			    .getInt(TagKeyDC.TASTE);
+		} else if (item.getTag() != null && item.getTag().contains(TagKeyDC.TASTE)) {
+			int taste = item.getTag().getInt(TagKeyDC.TASTE);
 			taste = Mth.clamp(taste, -2, 2);
 			return taste;
 		} else if (item.is(TagDC.ItemTag.HAC_FOOD_FLAVOR)) {
@@ -290,8 +274,7 @@ public class DCUtil {
 		boolean day = time > 7 && time < 17;
 		boolean night = time < 5 || time > 19;
 
-		float temp = biome.get()
-		    .getBaseTemperature();
+		float temp = biome.get().getBaseTemperature();
 		boolean cold = temp < 0.3F && biome.is(Tags.Biomes.IS_COLD);
 		boolean warm = temp > 0.3F && biome.is(Tags.Biomes.IS_HOT);
 
@@ -319,14 +302,11 @@ public class DCUtil {
 			else if (warm && fish.is(TagDC.ItemTag.FISH_COLD_WATER))
 				continue;
 
-			if (big > 0 && level.getRandom()
-			    .nextInt(big + 1) > 0 && !fish.is(TagDC.ItemTag.FISH_LARGE)) {
+			if (big > 0 && level.getRandom().nextInt(big + 1) > 0 && !fish.is(TagDC.ItemTag.FISH_LARGE)) {
 				continue;
-			} else if (bottom > 0 && level.getRandom()
-			    .nextInt(bottom + 1) > 0 && !fish.is(TagDC.ItemTag.FISH_FLOOR)) {
+			} else if (bottom > 0 && level.getRandom().nextInt(bottom + 1) > 0 && !fish.is(TagDC.ItemTag.FISH_FLOOR)) {
 				continue;
-			} else if (squid > 0 && level.getRandom()
-			    .nextInt(squid + 1) > 0 && !fish.is(TagDC.ItemTag.SQUID)) {
+			} else if (squid > 0 && level.getRandom().nextInt(squid + 1) > 0 && !fish.is(TagDC.ItemTag.SQUID)) {
 				continue;
 			}
 
@@ -378,8 +358,7 @@ public class DCUtil {
 		DCLogger.debugInfoLog("Fish list: " + (fishes.isEmpty() ? "empty" : fishes.size()));
 		if (!fishes.isEmpty()) {
 			for (ItemStack choice : fishes) {
-				DCLogger.debugInfoLog("fish:" + choice.getDisplayName()
-				    .getString());
+				DCLogger.debugInfoLog("fish:" + choice.getDisplayName().getString());
 			}
 		}
 		if (fishes.isEmpty()) {
@@ -417,15 +396,8 @@ public class DCUtil {
 			return founds;
 		}
 		do {
-			nextTargets = nextTargets.stream()
-			    .flatMap(target -> Arrays.stream(Direction.values())
-			        .map(target::relative))
-			    .filter(fixedPos -> world.getBlockState(fixedPos)
-			        .getBlock()
-			        .equals(block))
-			    .limit(limit - founds.size())
-			    .filter(founds::add)
-			    .collect(Collectors.toList());
+			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative)).filter(fixedPos -> world.getBlockState(fixedPos).getBlock().equals(block)).limit(limit - founds.size())
+			    .filter(founds::add).collect(Collectors.toList());
 
 		} while (founds.size() <= limit && !nextTargets.isEmpty());
 
@@ -438,31 +410,14 @@ public class DCUtil {
 		List<BlockPos> logs = new ArrayList<>();
 		Set<BlockPos> founds = new LinkedHashSet<>();
 		do {
-			nextTargets = nextTargets.stream()
-			    .flatMap(target -> Arrays.stream(Direction.values())
-			        .map(target::relative))
-			    .filter(fixedPos -> (world.getBlockState(fixedPos)
-			        .is(BlockTags.LEAVES)
-			        || world.getBlockState(fixedPos)
-			            .is(BlockTags.LOGS)))
-			    .limit(limit - founds.size())
-			    .filter(founds::add)
-			    .collect(Collectors.toList());
-
+			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative)).filter(fixedPos -> fixedPos.getY() >= pos.getY())
+			    .filter(fixedPos -> (world.getBlockState(fixedPos).is(BlockTags.LEAVES) || world.getBlockState(fixedPos).is(BlockTags.LOGS))).limit(limit - founds.size()).filter(founds::add).collect(Collectors.toList());
 		} while (founds.size() <= limit && logs.isEmpty() && !nextTargets.isEmpty());
 
 		if (includeLeaves) {
-			logs = founds.stream()
-			    .filter(p -> world.getBlockState(p)
-			        .is(block)
-			        || world.getBlockState(p)
-			            .is(BlockTags.LEAVES))
-			    .toList();
+			logs = founds.stream().filter(p -> world.getBlockState(p).is(block) || world.getBlockState(p).is(BlockTags.LEAVES)).toList();
 		} else {
-			logs = founds.stream()
-			    .filter(p -> world.getBlockState(p)
-			        .is(block))
-			    .toList();
+			logs = founds.stream().filter(p -> world.getBlockState(p).is(block)).toList();
 		}
 
 		return logs;

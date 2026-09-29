@@ -4,12 +4,12 @@ license="All rights reserved, Please see homepage."
 issueTrackerURL="https://github.com/defeatedcrow/HeatAndClimateMod/issues"
 [[mods]]
 modId="dcs_climate"
-version="5.0.1"
+version="5.0.2"
 displayName="HeatAndClimate"
 updateJSONURL="https://defeatedcrow.jp/version/heatandclimate.json"
 displayURL="https://github.com/defeatedcrow/HeatAndClimateMod"
 logoFile="logofile_x256.png"
-authors="defeatedcrow"
+authors="defeatedcrow, contributors: ruby, 276327"
 
 description='''
 Take advantage of the climate and have fun!

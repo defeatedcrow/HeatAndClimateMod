@@ -24,7 +24,7 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -94,8 +94,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		}
 		if (ConfigCommonBuilder.INSTANCE.enCommonCrop.get() && random.nextInt(100) < 20) {
 			// 20%の確率
-			targets = tree ? TargetCropList.commonTreeList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList()
-			    : TargetCropList.commonList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList();
+			targets = tree ? TargetCropList.commonTreeList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList() : TargetCropList.commonList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList();
 		}
 
 		// DCLogger.debugInfoLog("=== target size: " + targets.size() + " " + tree + " ===");
@@ -187,13 +186,13 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 	}
 
 	private static boolean isSurface(BlockState state) {
-		return state.getFluidState().isEmpty() && !state.is(BlockTags.FEATURES_CANNOT_REPLACE) && !state.liquid()
-		    && (state.canBeReplaced() || state.is(BlockTags.LEAVES) || state.is(TagDC.BlockTag.WEED) || state.is(BlockTags.CROPS) || state.is(BlockTags.SAPLINGS) || state.is(BlockTags.FLOWERS));
+		if (!state.getFluidState().isEmpty() && state.is(BlockTags.FEATURES_CANNOT_REPLACE) && state.liquid())
+			return false;
+		return state.canBeReplaced() || state.is(BlockTags.LEAVES) || state.is(TagDC.BlockTag.WEED) || state.is(BlockTags.SAPLINGS) || state.is(BlockTags.FLOWERS);
 	}
 
 	private static boolean isSoil(BlockState soil) {
-		return soil.is(BlockTags.DIRT) || soil.is(BlockTags.SAND) || soil.is(Blocks.FARMLAND) || soil.is(Blocks.GRASS_BLOCK)
-		    || soil.getFluidState().is(FluidTags.WATER);
+		return soil.is(BlockTags.DIRT) || soil.is(BlockTags.SAND) || soil.is(Blocks.FARMLAND) || soil.is(Blocks.GRASS_BLOCK) || soil.getFluidState().is(FluidTags.WATER);
 	}
 
 	private static boolean suitableSoil(ClimateCropBaseBlock crop, WorldGenLevel level, BlockPos p, BlockState soil) {
@@ -202,16 +201,16 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 
 	private static boolean canReplaceBlock(ClimateCropBaseBlock crop, BlockState avobe, BlockState air) {
 		AquaticType aquatic = crop.isAquaticPlant(crop.getTier());
-		boolean air2 = air.isAir();
+		boolean air2 = isSurface(avobe) && !(avobe.getBlock() instanceof DoublePlantBlock);
 		if (isWater(air)) {
 			air2 = aquatic == AquaticType.SUBMERGED || aquatic == AquaticType.FORCED_SUBMERGED;
 		}
-		boolean air1 = !avobe.is(BlockTags.FEATURES_CANNOT_REPLACE) && avobe.canBeReplaced();
+		boolean air1 = isSurface(avobe);
 		if (aquatic == AquaticType.FORCED_EMERGED || aquatic == AquaticType.FORCED_SUBMERGED) {
 			air1 = isWater(avobe);
-		} else if (air1) {
-			air1 = aquatic == AquaticType.EMERGED || aquatic == AquaticType.SUBMERGED
-			    || !avobe.liquid() && avobe.getFluidState().isEmpty() && !(avobe.getBlock() instanceof LiquidBlock);
+		} else if (aquatic == AquaticType.EMERGED || aquatic == AquaticType.SUBMERGED) {
+			if (isWater(avobe))
+				air1 = true;
 		}
 		return air1 && air2;
 	}
@@ -227,7 +226,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		}
 		boolean b1 = false;
 		boolean b2 = false;
-			float humid = biome.get().getModifiedClimateSettings().downfall();
+		float humid = biome.get().getModifiedClimateSettings().downfall();
 		for (String s : block.getGeneratedBiomeTag(block.getTier())) {
 			if (TagUtil.matchTag(s.toLowerCase(), biome).isPresent()) {
 				b1 = true;

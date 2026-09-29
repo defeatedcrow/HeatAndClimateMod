@@ -1,4 +1,4 @@
-#### Heat&Climate Mod v5.0.1 for Minecraft 1.20.1 ####
+#### Heat&Climate Mod v5.0.2 for Minecraft 1.20.1 ####
 
 # 導入環境 / Introduction conditions
 
@@ -318,6 +318,14 @@
 
   適さない気温では、花や作物が得られなくなります。
   At unfavorable temperatures, the leaves of the tree will not bear flowers or fruits.
+  
+  樹木の大きさと形は種類によって異なります。
+  The size and shape of trees vary depending on the species.
+  
+  樹木の苗木を十字型に配置すると、大樹に成長することがあります。
+  If you arrange tree saplings in a cross shape, you might be able to grow a large tree.
+  一部の木はとても大きくなります。植える場所にご注意ください！
+  Some trees grow very large. Be careful!
 
  ● 釣り / Fishing
 
@@ -898,7 +906,17 @@
 
 #### 更新履歴 / Change log ####
 
-○v5.0.1
+○v5.0.2
+ change: 追加樹木の樹形を改良
+ change: 作物の自然生成条件を緩和し、バニラ植物を置き換えて生成できるようにした
+ change: 木こり機能のブロック走査範囲を上方修正。
+ change: スイバの苗、桜の花のテクスチャの色味を修正。
+ change: スイバ、藍の収穫時期を広げた。
+ fix: 不活性な結晶がEXPを得られないのを修正。
+ fix: ユーカリの原木ブロックの向きStateを修正。
+ ex: zh_CN.lang追加 (236327氏より)
+
+○v5.0.1 (2026.9.16)
  fix: Building、Clothingレシピの生成忘れ
  fix: Fluid関連のMissingTexを修正。
  ex: いくつかのOptionalなItemTagを追加。

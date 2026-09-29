@@ -14,6 +14,8 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -110,36 +112,46 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 	@Override
 	protected BlockState getLogState(CropTier t) {
 		return switch (t) {
-		case COMMON -> FoodInit.BLOCK_EU_CASSAVA.get()
-		    .defaultBlockState();
-		case RARE -> FoodInit.LOG_EU_MANCHINEEL.get()
-		    .defaultBlockState()
-		    .setValue(DCState.WILD, true);
-		default -> FoodInit.LOG_EU_KUKUI.get()
-		    .defaultBlockState()
-		    .setValue(DCState.WILD, true);
+		case COMMON -> FoodInit.BLOCK_EU_CASSAVA.get().defaultBlockState();
+		case RARE -> FoodInit.LOG_EU_MANCHINEEL.get().defaultBlockState().setValue(DCState.WILD, true);
+		default -> FoodInit.LOG_EU_KUKUI.get().defaultBlockState().setValue(DCState.WILD, true);
 		};
 	}
 
 	@Override
 	protected BlockState getLeavesState(CropTier t) {
 		return switch (t) {
-		case RARE -> FoodInit.LEAVES_EU_MANCHINEEL.get()
-		    .defaultBlockState()
-		    .setValue(DCState.FLAG, true);
-		default -> FoodInit.LEAVES_EU_KUKUI.get()
-		    .defaultBlockState()
-		    .setValue(DCState.FLAG, true);
+		case RARE -> FoodInit.LEAVES_EU_MANCHINEEL.get().defaultBlockState().setValue(DCState.FLAG, true);
+		default -> FoodInit.LEAVES_EU_KUKUI.get().defaultBlockState().setValue(DCState.FLAG, true);
 		};
 	}
 
 	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
-		// 高さ5~8、幅5
-		int h = 5 + level.random.nextInt(4);
-		int r = 2;
+		RandomSource rand = level.getRandom();
+		int h = 1;
 		BlockState log = getLogState(t);
 		BlockState leaves = getLeavesState(t);
+
+		boolean large = false;
+		if (TreeShapeGen.isLargeTree(level, pos, state))
+			large = true;
+		else if (TreeShapeGen.hasNextSapling(level, pos, state))
+			return;
+
+		if (t == CropTier.WILD) {
+			h = 3 + level.random.nextInt(4);
+			if (large) {
+				h = 7 + level.random.nextInt(3);
+			}
+		} else if (t == CropTier.COMMON) {
+			h = 0;
+		} else if (t == CropTier.RARE) {
+			h = 3 + level.random.nextInt(5);
+			if (large) {
+				h = 6 + level.random.nextInt(3);
+			}
+		}
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);
@@ -147,6 +159,7 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 		// 安全性チェック
 		if (pos.getY() + h > level.getMaxBuildHeight())
 			return;
+		int limit = TreeShapeGen.replaceCheck(level, pos, h);
 
 		if (!level.isClientSide) {
 			if (t == CropTier.COMMON) {
@@ -154,13 +167,20 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 				return;
 			}
 
-			if (replaceCheck(level, pos, h))
+			if (limit < 1)
 				return;
 
-			if (h > 6) {
-				SaplingBeech.growDomeTree(level, pos, h, log, leaves);
+			if (limit < 6) {
+				TreeShapeGen.growTreeAS(level, pos, limit, log, leaves);
 			} else {
-				growSmallDomeTree(level, pos, h, log, leaves);
+				TreeShapeGen.growTreeAS(level, pos, limit, log, leaves);
+				for (Direction d : Direction.Plane.HORIZONTAL) {
+					if (level.getRandom().nextBoolean())
+						TreeShapeGen.growBlanchBS(level, pos.above(limit - 6 + rand.nextInt(2)), d, 1 + rand.nextInt(2), 1 + rand.nextInt(2), log, leaves);
+				}
+			}
+			if (large) {
+				TreeShapeGen.clearSapling(level, pos, state);
 			}
 		}
 	}
