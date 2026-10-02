@@ -14,6 +14,8 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -135,21 +137,29 @@ public class SaplingOlive extends SaplingBaseBlock {
 
 	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
-		// 各種サイズが違う
-		level.random.nextInt(5);
-		int h = 8 + level.random.nextInt(5);
-		int r = 4;
+		RandomSource rand = level.getRandom();
+		int h = 1;
 		BlockState log = getLogState(t);
 		BlockState leaves = getLeavesState(t);
-		if (t == CropTier.COMMON) {
-			h = 5 + level.random.nextInt(4);
-			r = 3;
-		} else if (t == CropTier.RARE) {
-			h = 3 + level.random.nextInt(3);
-			r = 2;
-		} else if (t == CropTier.EPIC) {
-			h = 1 + level.random.nextInt(3);
-			r = 2;
+
+		boolean large = false;
+		if (TreeShapeGen.isLargeTree(level, pos, state))
+			large = true;
+		else if (TreeShapeGen.hasNextSapling(level, pos, state))
+			return;
+
+		if (t == CropTier.WILD) {
+			h = 10 + level.random.nextInt(6);
+			if (large) {
+				h = 20 + level.random.nextInt(3);
+			}
+		} else if (t == CropTier.COMMON) {
+			h = 3 + level.random.nextInt(4);
+			if (large) {
+				h = 8 + level.random.nextInt(5);
+			}
+		} else {
+			h = 1 + level.random.nextInt(4);
 		}
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
@@ -158,21 +168,51 @@ public class SaplingOlive extends SaplingBaseBlock {
 		// 安全性チェック
 		if (pos.getY() + h > level.getMaxBuildHeight())
 			return;
+		int limit = TreeShapeGen.replaceCheck(level, pos, h);
 
 		if (!level.isClientSide) {
-			if (replaceCheck(level, pos, h))
+			if (limit < 1)
 				return;
 
-			if (t == CropTier.EPIC) {
-				growSmallTree(level, pos, h, log, leaves);
-			} else if (h > 8) {
-				SaplingBeech.growBigTree2(level, pos, h, log, leaves);
-			} else if (h > 5) {
-				SaplingBeech.growBigTree(level, pos, h, log, leaves);
+			if (limit < 6) {
+				TreeShapeGen.growTreeAS(level, pos, limit, log, leaves);
+			} else if (limit < 9) {
+				TreeShapeGen.growTreeAM(level, pos, limit, log, leaves);
+			} else if (limit < 12) {
+				TreeShapeGen.growTreeAS(level, pos, limit, log, leaves);
+				for (Direction d : Direction.Plane.HORIZONTAL) {
+					if (level.getRandom()
+					    .nextBoolean())
+						TreeShapeGen.growBlanchBS(level, pos.above(limit - 5 + rand.nextInt(2)), d, 1, 1 + rand.nextInt(2), log, leaves);
+				}
+			} else if (limit < 15) {
+				TreeShapeGen.growTreeAM(level, pos, limit, log, leaves);
+				for (Direction d : Direction.Plane.HORIZONTAL) {
+					if (level.getRandom()
+					    .nextInt(3) > 0)
+						TreeShapeGen.growBlanchAS(level, pos.above(limit - 8 + rand.nextInt(3)), d, 2, 1 + rand.nextInt(2), log, leaves);
+				}
+			} else if (limit < 18) {
+				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);
+				TreeShapeGen.growTreeBigLog(level, pos, limit - 10, log);
+				for (Direction d : Direction.Plane.HORIZONTAL) {
+					TreeShapeGen.growBlanchAS(level, pos.above(limit - 8 + rand.nextInt(3)), d, 2, 3, log, leaves);
+					if (level.getRandom()
+					    .nextBoolean())
+						TreeShapeGen.growBlanchAL(level, pos.above(limit - 12 + rand.nextInt(2)), d, 1, 2, log, leaves);
+				}
 			} else {
-				growTree(level, pos, h, log, leaves);
+				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);
+				TreeShapeGen.growTreeBigLog(level, pos, limit - 12, log);
+				for (Direction d : Direction.Plane.HORIZONTAL) {
+					TreeShapeGen.growBlanchAS(level, pos.above(limit - 8), d, 2, 3, log, leaves);
+					TreeShapeGen.growBlanchAL(level, pos.above(limit - 12 + rand.nextInt(2)), d, 1, 2, log, leaves);
+					TreeShapeGen.growBlanchAL(level, pos.above(limit - 16 + rand.nextInt(2)), d, 2, 2 + rand.nextInt(2), log, leaves);
+				}
 			}
-
+			if (large) {
+				TreeShapeGen.clearSapling(level, pos, state);
+			}
 		}
 	}
 

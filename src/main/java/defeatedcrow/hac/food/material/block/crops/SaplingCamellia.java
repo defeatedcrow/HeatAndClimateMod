@@ -15,11 +15,11 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class SaplingCamellia extends SaplingBaseBlock {
@@ -136,15 +136,17 @@ public class SaplingCamellia extends SaplingBaseBlock {
 
 	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
-		level.random.nextInt(2);
-		int h = 1 + level.random.nextInt(2);
-		int r = 2;
+		RandomSource rand = level.getRandom();
+		int h = 1;
 		BlockState log = getLogState(t);
 		BlockState leaves = getLeavesState(t);
+
 		if (t == CropTier.COMMON) {
-			h = 2 + level.random.nextInt(3);
+			h = 3 + level.random.nextInt(4);
 		} else if (t == CropTier.RARE) {
 			h = 1;
+		} else {
+			h = 1 + level.random.nextInt(2);
 		}
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
@@ -153,44 +155,18 @@ public class SaplingCamellia extends SaplingBaseBlock {
 		// 安全性チェック
 		if (pos.getY() + h > level.getMaxBuildHeight())
 			return;
+		int limit = TreeShapeGen.replaceCheck(level, pos, h);
 
 		if (!level.isClientSide) {
-			if (replaceCheck(level, pos, h))
+			if (limit < 0)
 				return;
 
-			if (t == CropTier.COMMON) {
-				// 幹
-				for (int i = 0; i < h; i++) {
-					level.setBlock(pos.above(i), log, 2);
-				}
-
-				// 葉
-				level.setBlock(pos.above(h), leaves, 2);
-				for (int j = h - 1; j < h + 1; j++) {
-					for (int k = -r; k <= r; k++) {
-						for (int l = -r; l <= r; l++) {
-							double lim = 4D;
-							if (j == h) {
-								lim = 2D;
-							}
-							BlockPos p1 = pos.offset(k, j, l);
-							BlockPos p2 = pos.offset(0, j, 0);
-
-							if (p1.equals(p2) || p1.distSqr(p2) > lim)
-								continue;
-
-							if (level.getBlockState(p1)
-							    .getBlock() == Blocks.AIR) {
-								level.setBlock(p1, leaves, 2);
-							}
-
-						}
-					}
+			if (limit < 2) {
+				for (int l = 0; l <= limit; l++) {
+					level.setBlock(pos.above(l), leaves, 2);
 				}
 			} else {
-				for (int i = 0; i < h; i++) {
-					level.setBlock(pos.above(i), leaves, 2);
-				}
+				TreeShapeGen.growTreeAS(level, pos, limit - 1, log, leaves);
 			}
 		}
 	}

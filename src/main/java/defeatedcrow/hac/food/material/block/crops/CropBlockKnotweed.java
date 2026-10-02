@@ -36,7 +36,10 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 
 	public CropBlockKnotweed(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, false).setValue(DCState.STAGE6, 0).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any()
+		    .setValue(DCState.DOUBLE, false)
+		    .setValue(DCState.STAGE6, 0)
+		    .setValue(DCState.WILD, false));
 	}
 
 	@Override
@@ -48,7 +51,8 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult res) {
-		if (player.getItemInHand(hand).isEmpty()) {
+		if (player.getItemInHand(hand)
+		    .isEmpty()) {
 			BlockPos upper = DCState.getBool(state, DCState.DOUBLE) ? pos : pos.above();
 			BlockPos under = DCState.getBool(state, DCState.DOUBLE) ? pos.below() : pos;
 			if (onHarvest(level, upper, level.getBlockState(upper), player) || onHarvest(level, under, level.getBlockState(under), player))
@@ -85,6 +89,18 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 	}
 
 	@Override
+	public boolean canHarvest(BlockState state) {
+		int stage = DCState.getInt(state, DCState.STAGE6);
+		if (this.getTier() == CropTier.WILD) {
+			return stage > 1 && stage < 5;
+		} else if (this.getTier() == CropTier.RARE) {
+			return stage > 2 && stage < 5;
+		} else {
+			return stage == 4;
+		}
+	}
+
+	@Override
 	public void afterHarvest(Level world, BlockPos pos, BlockState thisState) {
 		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
 			boolean d = DCState.getBool(thisState, DCState.DOUBLE);
@@ -111,15 +127,13 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")),
+		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_1")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_2")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_f")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_c")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross_under", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_d")),
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")),
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_1")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/solanum_0")), new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_1")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_2")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_f")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross_upper", ImmutableMap.of("cross", "dcs_climate:block/crop/knotweed_" + getSpeciesName(cropTier) + "_c")),
@@ -133,8 +147,8 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 
 	@Override
 	public List<String> getStateNameSuffix() {
-		return ImmutableList.of("double=false,stage6=0", "double=false,stage6=1", "double=false,stage6=2", "double=false,stage6=3", "double=false,stage6=4", "double=false,stage6=5",
-		    "double=true,stage6=0", "double=true,stage6=1", "double=true,stage6=2", "double=true,stage6=3", "double=true,stage6=4", "double=true,stage6=5");
+		return ImmutableList.of("double=false,stage6=0", "double=false,stage6=1", "double=false,stage6=2", "double=false,stage6=3", "double=false,stage6=4", "double=false,stage6=5", "double=true,stage6=0", "double=true,stage6=1",
+		    "double=true,stage6=2", "double=true,stage6=3", "double=true,stage6=4", "double=true,stage6=5");
 	}
 
 	@Override
@@ -146,7 +160,9 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE6, 2).setValue(DCState.WILD, true);
+		return this.defaultBlockState()
+		    .setValue(DCState.STAGE6, 2)
+		    .setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */

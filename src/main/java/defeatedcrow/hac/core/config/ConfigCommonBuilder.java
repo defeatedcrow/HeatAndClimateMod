@@ -183,7 +183,7 @@ public class ConfigCommonBuilder {
 		    .define("Enable Lunberjack Effect Break Leaves", false);
 
 		this.vTimberLimit = builder.comment("Sets the limit for the number of blocks scanned by the lumberjack effect.")
-		    .defineInRange("Lumberjack Block Limit", 512, 32, 2048);
+		    .defineInRange("Lumberjack Block Limit", 2048, 32, 8192);
 
 		this.enCustomSpring = builder.comment("Enable natural generation of custom springs in Overworld.")
 		    .define("Enable Custom Spring Generation", true);

@@ -14,6 +14,7 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -127,12 +128,21 @@ public class SaplingCitrus extends SaplingBaseBlock {
 
 	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
-		// 高さ3~5、幅5
-		level.random.nextInt(2);
-		int h = 3 + level.random.nextInt(3);
-		int r = 2;
+		RandomSource rand = level.getRandom();
+		int h = 1;
 		BlockState log = getLogState(t);
 		BlockState leaves = getLeavesState(t);
+
+		boolean large = false;
+		if (TreeShapeGen.isLargeTree(level, pos, state))
+			large = true;
+		else if (TreeShapeGen.hasNextSapling(level, pos, state))
+			return;
+
+		h = 1 + level.random.nextInt(4);
+		if (large) {
+			h = 5 + level.random.nextInt(3);
+		}
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);
@@ -140,15 +150,16 @@ public class SaplingCitrus extends SaplingBaseBlock {
 		// 安全性チェック
 		if (pos.getY() + h > level.getMaxBuildHeight())
 			return;
+		int limit = TreeShapeGen.replaceCheck(level, pos, h);
 
 		if (!level.isClientSide) {
-			if (replaceCheck(level, pos, h))
+			if (limit < 1)
 				return;
 
-			if (h == 3) {
-				growSmallTree(level, pos, h, log, leaves);
+			if (limit < 6) {
+				TreeShapeGen.growTreeAS(level, pos, limit, log, leaves);
 			} else {
-				growTree(level, pos, h, log, leaves);
+				TreeShapeGen.growTreeAM(level, pos, limit, log, leaves);
 			}
 		}
 	}

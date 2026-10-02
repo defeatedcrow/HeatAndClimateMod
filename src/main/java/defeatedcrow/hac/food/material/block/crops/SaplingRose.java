@@ -14,6 +14,7 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -125,11 +126,12 @@ public class SaplingRose extends SaplingBaseBlock {
 
 	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
-		level.random.nextInt(2);
+		RandomSource rand = level.getRandom();
 		int h = 1;
-		int r = 2;
 		BlockState log = getLogState(t);
 		BlockState leaves = getLeavesState(t);
+
+		h = 0 + level.random.nextInt(3);
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);
@@ -137,13 +139,16 @@ public class SaplingRose extends SaplingBaseBlock {
 		// 安全性チェック
 		if (pos.getY() + h > level.getMaxBuildHeight())
 			return;
+		int limit = TreeShapeGen.replaceCheck(level, pos, h);
 
 		if (!level.isClientSide) {
-			if (replaceCheck(level, pos, h))
+			if (limit < 0)
 				return;
 
-			for (int i = 0; i < h; i++) {
-				level.setBlock(pos.above(i), leaves, 2);
+			if (limit == 0) {
+				level.setBlock(pos, leaves, 2);
+			} else {
+				TreeShapeGen.growTreeBS(level, pos, h, log, leaves);
 			}
 		}
 	}
