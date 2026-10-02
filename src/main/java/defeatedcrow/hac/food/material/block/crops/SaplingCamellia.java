@@ -152,15 +152,15 @@ public class SaplingCamellia extends SaplingBaseBlock {
 		int limit = TreeShapeGen.replaceCheck(level, pos, h);
 
 		if (!level.isClientSide) {
-			if (limit < 1)
+			if (limit < 0)
 				return;
 
 			if (limit < 2) {
-				for (int l = 0; l < limit; l++) {
+				for (int l = 0; l <= limit; l++) {
 					level.setBlock(pos.above(l), leaves, 2);
 				}
 			} else {
-				TreeShapeGen.growTreeAS(level, pos, h, log, leaves);
+				TreeShapeGen.growTreeAS(level, pos, limit - 1, log, leaves);
 			}
 		}
 	}

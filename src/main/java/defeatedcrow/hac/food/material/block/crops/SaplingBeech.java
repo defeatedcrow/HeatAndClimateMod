@@ -138,7 +138,7 @@ public class SaplingBeech extends SaplingBaseBlock {
 		if (t == CropTier.WILD) {
 			h = 6 + level.random.nextInt(6);
 			if (large) {
-				h = 13 + level.random.nextInt(3);
+				h = 13 + level.random.nextInt(5);
 			}
 		} else if (t == CropTier.COMMON) {
 			h = 6 + level.random.nextInt(4);
@@ -169,25 +169,30 @@ public class SaplingBeech extends SaplingBaseBlock {
 			} else if (limit < 9) {
 				TreeShapeGen.growTreeAM(level, pos, limit, log, leaves);
 			} else if (limit < 12) {
-				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);
-			} else if (limit < 15) {
-				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);
-				if (limit > 12) {
-					TreeShapeGen.growTreeBigLog(level, pos, limit - 12, log);
-				} else if (large) {
-					TreeShapeGen.clearSapling(level, pos, state);
-				}
+				TreeShapeGen.growTreeAM(level, pos, limit, log, leaves);
 				for (Direction d : Direction.Plane.HORIZONTAL) {
 					if (level.getRandom().nextBoolean())
-						TreeShapeGen.growBlanchAS(level, pos.above(limit - 8 + rand.nextInt(3)), d, 2, 3 + rand.nextInt(2), log, leaves);
+						TreeShapeGen.growBlanchBS(level, pos.above(limit - 6 + rand.nextInt(2)), d, 1, 1, log, leaves);
 				}
-			} else {
+			} else if (limit < 15) {
 				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);
 				TreeShapeGen.growTreeBigLog(level, pos, limit - 10, log);
 				for (Direction d : Direction.Plane.HORIZONTAL) {
-					TreeShapeGen.growBlanchAS(level, pos.above(limit - 8), d, 2, 3, log, leaves);
-					TreeShapeGen.growBlanchAL(level, pos.above(limit - 12 + rand.nextInt(2)), d, 1, 2, log, leaves);
+					if (level.getRandom().nextInt(4) > 0)
+						TreeShapeGen.growBlanchAS(level, pos.above(limit - 8 + rand.nextInt(4)), d, 2, 2 + rand.nextInt(2), log, leaves);
 				}
+			} else {
+				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);
+				TreeShapeGen.growTreeBigLog(level, pos, limit - 12, log);
+				for (Direction d : Direction.Plane.HORIZONTAL) {
+					if (level.getRandom().nextInt(4) > 0)
+						TreeShapeGen.growBlanchAS(level, pos.above(limit - 8 + rand.nextInt(4)), d, 2, 1 + rand.nextInt(2), log, leaves);
+					if (level.getRandom().nextInt(4) > 0)
+						TreeShapeGen.growBlanchAM(level, pos.above(limit - 12 + rand.nextInt(4)), d, 1 + rand.nextInt(2), 1, log, leaves);
+				}
+			}
+			if (large) {
+				TreeShapeGen.clearSapling(level, pos, state);
 			}
 		}
 	}

@@ -1,8 +1,12 @@
 package defeatedcrow.hac.core.util;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
+
+import org.apache.commons.compress.utils.Lists;
 
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -56,7 +60,9 @@ public class CustomExplosion extends Explosion {
 		int i1 = Mth.floor(vec.y + f2 + 1.0D);
 		int j2 = Mth.floor(vec.z - f2 - 1.0D);
 		int j1 = Mth.floor(vec.z + f2 + 1.0D);
-		List<Entity> list = lev.getEntities(bom, new AABB(k1, i2, j2, l1, i1, j1)).stream().filter(e -> !e.equals(igniter) && !e.equals(bom)).filter(e -> !isSafety || e instanceof Enemy).filter(e -> e.distanceToSqr(vec) < f2).toList();
+		List<Entity> list = lev.getEntities(bom, new AABB(k1, i2, j2, l1, i1, j1)).stream().filter(e -> !e.equals(igniter) && !e.equals(bom)).filter(e -> !isSafety || e instanceof Enemy).filter(e -> e.distanceToSqr(vec) < f2)
+		    .collect(Collectors.toCollection(ArrayList::new));
+		List<Entity> list2 = Lists.newArrayList();
 
 		net.minecraftforge.event.ForgeEventFactory.onExplosionDetonate(lev, this, list, f2);
 

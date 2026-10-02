@@ -143,7 +143,7 @@ public class SaplingRose extends SaplingBaseBlock {
 			if (limit == 0) {
 				level.setBlock(pos, leaves, 2);
 			} else {
-				TreeShapeGen.growTreeAS(level, pos, h, log, leaves);
+				TreeShapeGen.growTreeBS(level, pos, h, log, leaves);
 			}
 		}
 	}

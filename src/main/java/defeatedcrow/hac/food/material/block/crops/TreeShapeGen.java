@@ -16,7 +16,7 @@ public class TreeShapeGen {
 
 	protected static int replaceCheck(Level level, BlockPos pos, int height) {
 		int limit = height;
-		for (int i = 1; i <= height; i++) {
+		for (int i = 1; i < height; i++) {
 			if (!level.getBlockState(pos.above(i)).canBeReplaced() && !level.getBlockState(pos.above(i)).is(BlockTags.LEAVES)) {
 				return i - 1;
 			}
