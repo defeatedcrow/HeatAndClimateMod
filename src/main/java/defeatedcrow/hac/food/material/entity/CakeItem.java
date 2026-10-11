@@ -32,12 +32,14 @@ public class CakeItem extends ItemEntityFood {
 	// 回復
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
-		int taste = getTaste(stack) + 1;
-		if (stack.getItem() != FoodInit.CAKE_BUTTER.get()) {
-			taste *= 2;
+		if (living != null && living.isAlive() && !living.level().isClientSide) {
+			int taste = getTaste(stack) + 1;
+			if (stack.getItem() != FoodInit.CAKE_BUTTER.get()) {
+				taste *= 2;
+			}
+			if (taste > 0)
+				living.heal(1.0F * taste);
 		}
-		if (taste > 0)
-			living.heal(1.0F * taste);
 		return super.finishUsingItem(stack, level, living);
 	}
 

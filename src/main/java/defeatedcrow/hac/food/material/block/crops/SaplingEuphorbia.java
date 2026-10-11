@@ -85,7 +85,7 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("WATER", "BEACH", "LUSH");
+		case WILD -> ImmutableList.of("OCEAN", "BEACH", "LUSH");
 		case COMMON -> ImmutableList.of("SAVANNA", "SANDY", "JUNGLE");
 		default -> Lists.newArrayList();
 		};

@@ -58,6 +58,14 @@ public class DCHeadTank extends DCTank implements IFluidPipe, IFacingTile, ICapa
 		return fluid != null && fluid.getAmount() + flowRate >= capacity;
 	}
 
+	public int getHead() {
+		return DCFluidUtil.getHead(fluid);
+	}
+
+	public void setHead(int head) {
+		DCFluidUtil.setHead(fluid, head);
+	}
+
 	@Override
 	public FaceIO getFace(Direction dir) {
 		int i = dir.get3DDataValue();
@@ -120,8 +128,7 @@ public class DCHeadTank extends DCTank implements IFluidPipe, IFacingTile, ICapa
 			if (faces.size() <= i) {
 				faces.add(i, FaceIO.NONE);
 			}
-			int id = faces.get(i)
-			    .getID();
+			int id = faces.get(i).getID();
 			nbt.putInt(TagKeyDC.FACE_IO + i, id);
 		}
 

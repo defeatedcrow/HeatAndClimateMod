@@ -16,6 +16,7 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -35,10 +36,7 @@ public class CropBlockMorningGlory_Flower extends ClimateCropBaseBlock {
 
 	public CropBlockMorningGlory_Flower(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any()
-		    .setValue(DCState.DOUBLE, false)
-		    .setValue(DCState.STAGE6, 0)
-		    .setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, false).setValue(DCState.STAGE6, 0).setValue(DCState.WILD, false));
 	}
 
 	@Override
@@ -50,8 +48,7 @@ public class CropBlockMorningGlory_Flower extends ClimateCropBaseBlock {
 
 	@Override
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult res) {
-		if (player.getItemInHand(hand)
-		    .isEmpty()) {
+		if (player.getItemInHand(hand).isEmpty()) {
 			BlockPos upper = DCState.getBool(state, DCState.DOUBLE) ? pos : pos.above();
 			BlockPos under = DCState.getBool(state, DCState.DOUBLE) ? pos.below() : pos;
 			if (onHarvest(level, upper, level.getBlockState(upper), player) || onHarvest(level, under, level.getBlockState(under), player))
@@ -140,10 +137,20 @@ public class CropBlockMorningGlory_Flower extends ClimateCropBaseBlock {
 	/* IClimateCrop */
 
 	@Override
+	public List<ItemStack> getCropItems(BlockState state, int fortune) {
+		List<ItemStack> list = Lists.newArrayList();
+		int i = DCUtil.rand.nextInt(fortune + 2);
+		if (i > 0) {
+			ItemStack ret = new ItemStack(FoodInit.VINE.get(), i);
+			list.add(ret);
+		}
+		list.add(new ItemStack(getCropItem(getTier())));
+		return list;
+	}
+
+	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState()
-		    .setValue(DCState.STAGE6, 2)
-		    .setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, 2).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */

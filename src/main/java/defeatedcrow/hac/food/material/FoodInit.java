@@ -389,66 +389,66 @@ public class FoodInit {
 
 	// 串焼き
 	public static final RegistryObject<Item> STICK_BEEF_RAW = regItem("stick_beef_raw", () -> new StickBeefItem("stick_beef_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_BEEF_COOKED = regItem("stick_beef_cooked", () -> new StickBeefItem("stick_beef_cooked", 10, 0.4F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_BEEF_COOKED = regItem("stick_beef_cooked", () -> new StickBeefItem("stick_beef_cooked", 8, 0.4F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_PORK_RAW = regItem("stick_pork_raw", () -> new StickBeefItem("stick_pork_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_PORK_COOKED = regItem("stick_pork_cooked", () -> new StickBeefItem("stick_pork_cooked", 10, 0.4F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_PORK_COOKED = regItem("stick_pork_cooked", () -> new StickBeefItem("stick_pork_cooked", 7, 0.4F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_MUTTON_RAW = regItem("stick_mutton_raw", () -> new StickMeatItem("stick_mutton_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_MUTTON_COOKED = regItem("stick_mutton_cooked", () -> new StickMeatItem("stick_mutton_cooked", 8, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_MUTTON_COOKED = regItem("stick_mutton_cooked", () -> new StickMeatItem("stick_mutton_cooked", 7, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_CHICKEN_RAW = regItem("stick_chicken_raw", () -> new StickMeatItem("stick_chicken_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_CHICKEN_COOKED = regItem("stick_chicken_cooked", () -> new StickMeatItem("stick_chicken_cooked", 8, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_CHICKEN_COOKED = regItem("stick_chicken_cooked", () -> new StickMeatItem("stick_chicken_cooked", 6, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_OFFAL_RAW = regItem("stick_offal_raw", () -> new StickMeatItem("stick_offal_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_OFFAL_COOKED = regItem("stick_offal_cooked", () -> new StickMeatItem("stick_offal_cooked", 8, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_OFFAL_COOKED = regItem("stick_offal_cooked", () -> new StickMeatItem("stick_offal_cooked", 6, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_FISH_RAW = regItem("stick_fish_raw", () -> new StickFishItem("stick_fish_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_FISH_COOKED = regItem("stick_fish_cooked", () -> new StickFishItem("stick_fish_cooked", 6, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_FISH_COOKED = regItem("stick_fish_cooked", () -> new StickFishItem("stick_fish_cooked", 5, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_POTATO_RAW = regItem("stick_potato_raw", () -> new StickPotatoItem("stick_potato_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_POTATO_COOKED = regItem("stick_potato_cooked", () -> new StickPotatoItem("stick_potato_cooked", 5, 0.4F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_POTATO_COOKED = regItem("stick_potato_cooked", () -> new StickPotatoItem("stick_potato_cooked", 4, 0.4F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_CORN_RAW = regItem("stick_corn_raw", () -> new StickCornItem("stick_corn_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_CORN_COOKED = regItem("stick_corn_cooked", () -> new StickCornItem("stick_corn_cooked", 6, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_CORN_COOKED = regItem("stick_corn_cooked", () -> new StickCornItem("stick_corn_cooked", 4, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_EGGPLANT_RAW = regItem("stick_eggplant_raw", () -> new StickPotatoItem("stick_eggplant_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_EGGPLANT_COOKED = regItem("stick_eggplant_cooked", () -> new StickPotatoItem("stick_eggplant_cooked", 4, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_EGGPLANT_COOKED = regItem("stick_eggplant_cooked", () -> new StickPotatoItem("stick_eggplant_cooked", 3, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_VEGI_RAW = regItem("stick_vegi_raw", () -> new StickVegiItem("stick_vegi_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_VEGI_COOKED = regItem("stick_vegi_cooked", () -> new StickVegiItem("stick_vegi_cooked", 10, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_VEGI_COOKED = regItem("stick_vegi_cooked", () -> new StickVegiItem("stick_vegi_cooked", 8, 0.3F, TagDC.ItemTag.HAC_SKEWERED));
 	public static final RegistryObject<Item> STICK_LETTUCE_RAW = regItem("stick_lettuce_raw", () -> new StickPotatoItem("stick_lettuce_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> STICK_LETTUCE_COOKED = regItem("stick_lettuce_cooked", () -> new StickPotatoItem("stick_lettuce_cooked", 6, 0.2F, TagDC.ItemTag.HAC_SKEWERED));
+	public static final RegistryObject<Item> STICK_LETTUCE_COOKED = regItem("stick_lettuce_cooked", () -> new StickPotatoItem("stick_lettuce_cooked", 7, 0.2F, TagDC.ItemTag.HAC_SKEWERED));
 
 	// 鉄板焼
 	public static final RegistryObject<Item> PLATE_BEEF_RAW = regItem("plate_beef_raw", () -> new PlateBeefItem("plate_beef_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> PLATE_BEEF_COOKED = regItem("plate_beef_cooked", () -> new PlateBeefItem("plate_beef_cooked", 14, 1.0F, TagDC.ItemTag.HAC_PLATE_MEAL));
+	public static final RegistryObject<Item> PLATE_BEEF_COOKED = regItem("plate_beef_cooked", () -> new PlateBeefItem("plate_beef_cooked", 12, 1.0F, TagDC.ItemTag.HAC_PLATE_MEAL));
 	public static final RegistryObject<Item> PLATE_MEAT_RAW = regItem("plate_meat_raw", () -> new PlateMeatItem("plate_meat_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> PLATE_MEAT_COOKED = regItem("plate_meat_cooked", () -> new PlateMeatItem("plate_meat_cooked", 12, 0.8F, TagDC.ItemTag.HAC_PLATE_MEAL));
+	public static final RegistryObject<Item> PLATE_MEAT_COOKED = regItem("plate_meat_cooked", () -> new PlateMeatItem("plate_meat_cooked", 11, 0.8F, TagDC.ItemTag.HAC_PLATE_MEAL));
 	public static final RegistryObject<Item> PLATE_LEGS_RAW = regItem("plate_legs_raw", () -> new PlateLegsItem("plate_legs_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> PLATE_LEGS_COOKED = regItem("plate_legs_cooked", () -> new PlateLegsItem("plate_legs_cooked", 10, 0.6F, TagDC.ItemTag.HAC_PLATE_MEAL));
 	public static final RegistryObject<Item> PLATE_GARLIC_RAW = regItem("plate_big_garlic_raw", () -> new PlateGarlicItem("plate_big_garlic_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> PLATE_GARLIC_COOKED = regItem("plate_big_garlic_cooked", () -> new PlateGarlicItem("plate_big_garlic_cooked", 16, 0.8F, TagDC.ItemTag.HAC_PLATE_MEAL));
+	public static final RegistryObject<Item> PLATE_GARLIC_COOKED = regItem("plate_big_garlic_cooked", () -> new PlateGarlicItem("plate_big_garlic_cooked", 14, 0.8F, TagDC.ItemTag.HAC_PLATE_MEAL));
 	public static final RegistryObject<Item> PLATE_CHICKEN_BIG_RAW = regItem("plate_big_chicken_raw", () -> new PlateChickenItem("plate_big_chicken_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> PLATE_CHICKEN_BIG_COOKED = regItem("plate_big_chicken_cooked", () -> new PlateChickenItem("plate_big_chicken_cooked", 14, 1.0F, TagDC.ItemTag.HAC_PLATE_MEAL));
+	public static final RegistryObject<Item> PLATE_CHICKEN_BIG_COOKED = regItem("plate_big_chicken_cooked", () -> new PlateChickenItem("plate_big_chicken_cooked", 12, 1.0F, TagDC.ItemTag.HAC_PLATE_MEAL));
 	public static final RegistryObject<Item> PLATE_FISH_RAW = regItem("plate_fish_raw", () -> new PlateFishItem("plate_fish_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> PLATE_FISH_COOKED = regItem("plate_fish_cooked", () -> new PlateFishItem("plate_fish_cooked", 10, 0.6F, TagDC.ItemTag.HAC_PLATE_MEAL));
 	public static final RegistryObject<Item> PLATE_BONE_MARROW_RAW = regItem("plate_bone_marrow_raw", () -> new PlateBoneMarrowItem("plate_bone_marrow_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> PLATE_BONE_MARROW_COOKED = regItem("plate_bone_marrow_cooked", () -> new PlateBoneMarrowItem("plate_bone_marrow_cooked", 14, 0.6F, TagDC.ItemTag.HAC_PLATE_MEAL));
+	public static final RegistryObject<Item> PLATE_BONE_MARROW_COOKED = regItem("plate_bone_marrow_cooked", () -> new PlateBoneMarrowItem("plate_bone_marrow_cooked", 8, 0.6F, TagDC.ItemTag.HAC_PLATE_MEAL));
 	public static final RegistryObject<Item> PLATE_STUFFED_BELL_RAW = regItem("plate_stuffed_bellpepper_raw", () -> new PlateStuffedVegiItem("plate_stuffed_bellpepper_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> PLATE_STUFFED_BELL_COOKED = regItem("plate_stuffed_bellpepper_cooked", () -> new PlateStuffedVegiItem("plate_stuffed_bellpepper_cooked", 12, 0.6F, TagDC.ItemTag.HAC_PLATE_MEAL));
 	public static final RegistryObject<Item> PLATE_STUFFED_PAPRIKA_RAW = regItem("plate_stuffed_paprika_raw", () -> new PlateStuffedVegiItem("plate_stuffed_paprika_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> PLATE_STUFFED_PAPRIKA_COOKED = regItem("plate_stuffed_paprika_cooked", () -> new PlateStuffedVegiItem("plate_stuffed_paprika_cooked", 14, 0.6F, TagDC.ItemTag.HAC_PLATE_MEAL));
+	public static final RegistryObject<Item> PLATE_STUFFED_PAPRIKA_COOKED = regItem("plate_stuffed_paprika_cooked", () -> new PlateStuffedVegiItem("plate_stuffed_paprika_cooked", 13, 0.6F, TagDC.ItemTag.HAC_PLATE_MEAL));
 	public static final RegistryObject<Item> PLATE_POTATO_RAW = regItem("plate_potato_raw", () -> new PlateStuffedVegiItem("plate_potato_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> PLATE_POTATO_COOKED = regItem("plate_potato_cooked", () -> new PlateStuffedVegiItem("plate_potato_cooked", 10, 0.6F, TagDC.ItemTag.HAC_PLATE_MEAL));
+	public static final RegistryObject<Item> PLATE_POTATO_COOKED = regItem("plate_potato_cooked", () -> new PlateStuffedVegiItem("plate_potato_cooked", 8, 0.6F, TagDC.ItemTag.HAC_PLATE_MEAL));
 	public static final RegistryObject<Item> PLATE_PUMPKIN_RAW = regItem("plate_pumpkin_raw", () -> new PlatePumpkinItem("plate_pumpkin_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> PLATE_PUMPKIN_COOKED = regItem("plate_pumpkin_cooked", () -> new PlatePumpkinItem("plate_pumpkin_cooked", 16, 0.6F, TagDC.ItemTag.HAC_PLATE_MEAL));
 
 	public static final RegistryObject<Item> SWEETPOTATO_RAW = regItem("sweetpotato_raw", () -> new CookedSweetpotatoItem("sweetpotato_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> SWEETPOTATO_COOKED = regItem("sweetpotato_cooked", () -> new CookedSweetpotatoItem("sweetpotato_cooked", 6, 0.2F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SWEETPOTATO_COOKED = regItem("sweetpotato_cooked", () -> new CookedSweetpotatoItem("sweetpotato_cooked", 4, 0.2F, TagDC.ItemTag.HAC_SALAD));
 	public static final RegistryObject<Item> SWEETPOTATO_CASSAVA_RAW = regItem("sweetpotato_cassava_raw", () -> new CookedSweetpotatoItem("sweetpotato_cassava_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> SWEETPOTATO_CASSAVA_COOKED = regItem("sweetpotato_cassava_cooked", () -> new CookedSweetpotatoItem("sweetpotato_cassava_cooked", 6, 0.2F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SWEETPOTATO_CASSAVA_COOKED = regItem("sweetpotato_cassava_cooked", () -> new CookedSweetpotatoItem("sweetpotato_cassava_cooked", 4, 0.2F, TagDC.ItemTag.HAC_SALAD));
 
 	// パン
 	public static final RegistryObject<Item> BREAD_ROUND_RAW_ITEM = regItem("bread_round_raw", () -> new BreadRoundItem("bread_round_raw", 0, 0F, TagDC.ItemTag.DOUGH).setRawFood());
-	public static final RegistryObject<Item> BREAD_ROUND_BAKED_ITEM = regItem("bread_round_baked", () -> new BreadRoundItem("bread_round_baked", 4, 0.4F, TagDC.ItemTag.HAC_BREAD_PLANE));
+	public static final RegistryObject<Item> BREAD_ROUND_BAKED_ITEM = regItem("bread_round_baked", () -> new BreadRoundItem("bread_round_baked", 3, 0.4F, TagDC.ItemTag.HAC_BREAD_PLANE));
 	public static final RegistryObject<Item> BREAD_SQUARE_RAW_ITEM = regItem("bread_square_raw", () -> new BreadSquareItem("bread_square_raw", 0, 0F, TagDC.ItemTag.DOUGH).setRawFood());
-	public static final RegistryObject<Item> BREAD_SQUARE_BAKED_ITEM = regItem("bread_square_baked", () -> new BreadSquareItem("bread_square_baked", 4, 0.4F, TagDC.ItemTag.HAC_BREAD_PLANE));
+	public static final RegistryObject<Item> BREAD_SQUARE_BAKED_ITEM = regItem("bread_square_baked", () -> new BreadSquareItem("bread_square_baked", 3, 0.4F, TagDC.ItemTag.HAC_BREAD_PLANE));
 	public static final RegistryObject<Item> BREAD_CORN_RAW_ITEM = regItem("bread_corn_raw", () -> new BreadSquareItem("bread_corn_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> BREAD_CORN_BAKED_ITEM = regItem("bread_corn_baked", () -> new BreadSquareItem("bread_corn_baked", 4, 0.4F, TagDC.ItemTag.HAC_BREAD_PLANE));
 	public static final RegistryObject<Item> BREAD_FLAT_RAW_ITEM = regItem("bread_flat_raw", () -> new BreadFlatItem("bread_flat_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> BREAD_FLAT_BAKED_ITEM = regItem("bread_flat_baked", () -> new BreadFlatItem("bread_flat_baked", 4, 0.4F, TagDC.ItemTag.HAC_BREAD_PLANE));
+	public static final RegistryObject<Item> BREAD_FLAT_BAKED_ITEM = regItem("bread_flat_baked", () -> new BreadFlatItem("bread_flat_baked", 3, 0.4F, TagDC.ItemTag.HAC_BREAD_PLANE));
 	public static final RegistryObject<Item> BREAD_TORTILLA_RAW_ITEM = regItem("bread_tortilla_raw", () -> new BreadFlatItem("bread_tortilla_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> BREAD_TORTILLA_BAKED_ITEM = regItem("bread_tortilla_baked", () -> new BreadFlatItem("bread_tortilla_baked", 4, 0.4F, TagDC.ItemTag.HAC_BREAD_PLANE));
 	public static final RegistryObject<Item> BREAD_NUTS_RAW_ITEM = regItem("bread_nuts_raw", () -> new BreadRoundItem("bread_nuts_raw", 0, 0F, null).setRawFood());
@@ -456,17 +456,17 @@ public class FoodInit {
 	public static final RegistryObject<Item> BREAD_CINNAMON_RAW_ITEM = regItem("bread_cinnamon_raw", () -> new BreadRoundItem("bread_cinnamon_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> BREAD_CINNAMON_BAKED_ITEM = regItem("bread_cinnamon_baked", () -> new BreadRoundItem("bread_cinnamon_baked", 6, 0.4F, TagDC.ItemTag.HAC_BREAD));
 	public static final RegistryObject<Item> BREAD_ANKO_RAW_ITEM = regItem("bread_anko_raw", () -> new BreadRoundItem("bread_anko_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> BREAD_ANKO_BAKED_ITEM = regItem("bread_anko_baked", () -> new BreadRoundItem("bread_anko_baked", 7, 0.4F, TagDC.ItemTag.HAC_BREAD));
+	public static final RegistryObject<Item> BREAD_ANKO_BAKED_ITEM = regItem("bread_anko_baked", () -> new BreadRoundItem("bread_anko_baked", 6, 0.4F, TagDC.ItemTag.HAC_BREAD));
 	public static final RegistryObject<Item> BREAD_CREAM_RAW_ITEM = regItem("bread_cream_raw", () -> new BreadCreamItem("bread_cream_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> BREAD_CREAM_BAKED_ITEM = regItem("bread_cream_baked", () -> new BreadCreamItem("bread_cream_baked", 6, 0.4F, TagDC.ItemTag.HAC_BREAD));
+	public static final RegistryObject<Item> BREAD_CREAM_BAKED_ITEM = regItem("bread_cream_baked", () -> new BreadCreamItem("bread_cream_baked", 8, 0.4F, TagDC.ItemTag.HAC_BREAD));
 	public static final RegistryObject<Item> BREAD_SAUSAGE_RAW_ITEM = regItem("bread_sausage_raw", () -> new BreadSausageItem("bread_sausage_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> BREAD_SAUSAGE_BAKED_ITEM = regItem("bread_sausage_baked", () -> new BreadSausageItem("bread_sausage_baked", 7, 0.6F, TagDC.ItemTag.HAC_BREAD));
 	public static final RegistryObject<Item> BREAD_CRAPE_BAKED_ITEM = regItem("crepe_baked", () -> new BreadFlatItem("crepe_baked", 4, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 
 	// サンドイッチ
-	public static final RegistryObject<Item> SANDWICH_FRUIT_ITEM = regItem("sandwich_fruit", () -> new SandwichItem("sandwich_fruit", 5, 0.3F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
-	public static final RegistryObject<Item> SANDWICH_MARMALADE_ITEM = regItem("sandwich_marmalade", () -> new SandwichItem("sandwich_marmalade", 5, 0.3F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
-	public static final RegistryObject<Item> SANDWICH_EGG_ITEM = regItem("sandwich_egg", () -> new SandwichItem("sandwich_egg", 6, 0.4F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
+	public static final RegistryObject<Item> SANDWICH_FRUIT_ITEM = regItem("sandwich_fruit", () -> new SandwichItem("sandwich_fruit", 4, 0.3F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
+	public static final RegistryObject<Item> SANDWICH_MARMALADE_ITEM = regItem("sandwich_marmalade", () -> new SandwichItem("sandwich_marmalade", 4, 0.3F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
+	public static final RegistryObject<Item> SANDWICH_EGG_ITEM = regItem("sandwich_egg", () -> new SandwichItem("sandwich_egg", 5, 0.4F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
 	public static final RegistryObject<Item> SANDWICH_SALAD_ITEM = regItem("sandwich_salad", () -> new SandwichItem("sandwich_salad", 6, 0.4F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
 	public static final RegistryObject<Item> SANDWICH_SALMON_ITEM = regItem("sandwich_salmon", () -> new SandwichItem("sandwich_salmon", 6, 0.4F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
 	public static final RegistryObject<Item> SANDWICH_BLT_ITEM = regItem("sandwich_blt", () -> new SandwichItem("sandwich_blt", 7, 0.4F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
@@ -474,118 +474,118 @@ public class FoodInit {
 
 	public static final RegistryObject<Item> TACO_MEAT = regItem("taco_meat", () -> new TacoItem("taco_meat", 16, 0.5F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
 	public static final RegistryObject<Item> TACO_AVOCADO = regItem("taco_avocado", () -> new TacoItem("taco_avocado", 14, 0.5F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
-	public static final RegistryObject<Item> TACO_FISH = regItem("taco_fish", () -> new TacoItem("taco_fish", 15, 0.5F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
+	public static final RegistryObject<Item> TACO_FISH = regItem("taco_fish", () -> new TacoItem("taco_fish", 16, 0.5F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
 	public static final RegistryObject<Item> TACO_QUESADILLA = regItem("taco_quesadilla", () -> new QuesadillaItem("taco_quesadilla", 8, 0.5F, TagDC.ItemTag.HAC_BREAD_SANDWICH));
 
 	public static final RegistryObject<Item> PIZZA_TOMATO_RAW_ITEM = regItem("pizza_tomato_raw", () -> new PizzaItem("pizza_tomato_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> PIZZA_TOMATO_BAKED_ITEM = regItem("pizza_tomato_baked", () -> new PizzaItem("pizza_tomato_baked", 8, 0.5F, TagDC.ItemTag.HAC_PIZZA));
+	public static final RegistryObject<Item> PIZZA_TOMATO_BAKED_ITEM = regItem("pizza_tomato_baked", () -> new PizzaItem("pizza_tomato_baked", 6, 0.5F, TagDC.ItemTag.HAC_PIZZA));
 	public static final RegistryObject<Item> PIZZA_MARGHERITA_RAW_ITEM = regItem("pizza_margherita_raw", () -> new PizzaItem("pizza_margherita_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> PIZZA_MARGHERITA_BAKED_ITEM = regItem("pizza_margherita_baked", () -> new PizzaItem("pizza_margherita_baked", 10, 0.5F, TagDC.ItemTag.HAC_PIZZA));
 	public static final RegistryObject<Item> PIZZA_ROMANA_RAW_ITEM = regItem("pizza_romana_raw", () -> new PizzaItem("pizza_romana_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> PIZZA_ROMANA_BAKED_ITEM = regItem("pizza_romana_baked", () -> new PizzaItem("pizza_romana_baked", 13, 0.5F, TagDC.ItemTag.HAC_PIZZA));
+	public static final RegistryObject<Item> PIZZA_ROMANA_BAKED_ITEM = regItem("pizza_romana_baked", () -> new PizzaItem("pizza_romana_baked", 14, 0.5F, TagDC.ItemTag.HAC_PIZZA));
 	public static final RegistryObject<Item> PIZZA_TONNO_RAW_ITEM = regItem("pizza_tonno_raw", () -> new PizzaItem("pizza_tonno_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> PIZZA_TONNO_BAKED_ITEM = regItem("pizza_tonno_baked", () -> new PizzaItem("pizza_tonno_baked", 14, 0.5F, TagDC.ItemTag.HAC_PIZZA));
+	public static final RegistryObject<Item> PIZZA_TONNO_BAKED_ITEM = regItem("pizza_tonno_baked", () -> new PizzaItem("pizza_tonno_baked", 16, 0.5F, TagDC.ItemTag.HAC_PIZZA));
 	public static final RegistryObject<Item> PIZZA_SAUSAGE_RAW_ITEM = regItem("pizza_sausage_raw", () -> new PizzaItem("pizza_sausage_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> PIZZA_SAUSAGE_BAKED_ITEM = regItem("pizza_sausage_baked", () -> new PizzaItem("pizza_sausage_baked", 16, 0.5F, TagDC.ItemTag.HAC_PIZZA));
 	public static final RegistryObject<Item> PIZZA_MENTAI_RAW_ITEM = regItem("pizza_mentai_raw", () -> new PizzaItem("pizza_mentai_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> PIZZA_MENTAI_BAKED_ITEM = regItem("pizza_mentai_baked", () -> new PizzaItem("pizza_mentai_baked", 12, 0.5F, TagDC.ItemTag.HAC_PIZZA));
+	public static final RegistryObject<Item> PIZZA_MENTAI_BAKED_ITEM = regItem("pizza_mentai_baked", () -> new PizzaItem("pizza_mentai_baked", 8, 0.5F, TagDC.ItemTag.HAC_PIZZA));
 
 	// キャセロール
 	public static final RegistryObject<Item> CASSEROLE_GRATIN_SHRIMP_RAW_ITEM = regItem("casserole_gratin_shrimp_raw", () -> new CasseroleItem("casserole_gratin_shrimp_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> CASSEROLE_GRATIN_SHRIMP_BAKED_ITEM = regItem("casserole_gratin_shrimp_baked", () -> new CasseroleItem("casserole_gratin_shrimp_baked", 14, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
+	public static final RegistryObject<Item> CASSEROLE_GRATIN_SHRIMP_BAKED_ITEM = regItem("casserole_gratin_shrimp_baked", () -> new CasseroleItem("casserole_gratin_shrimp_baked", 15, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
 	public static final RegistryObject<Item> CASSEROLE_GRATIN_ONION_RAW_ITEM = regItem("casserole_gratin_onion_raw", () -> new CasseroleItem("casserole_gratin_onion_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> CASSEROLE_GRATIN_ONION_BAKED_ITEM = regItem("casserole_gratin_onion_baked", () -> new CasseroleItem("casserole_gratin_onion_baked", 14, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
+	public static final RegistryObject<Item> CASSEROLE_GRATIN_ONION_BAKED_ITEM = regItem("casserole_gratin_onion_baked", () -> new CasseroleItem("casserole_gratin_onion_baked", 6, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
 	public static final RegistryObject<Item> CASSEROLE_SHEPHERDS_PIE_RAW_ITEM = regItem("casserole_shepherds_pie_raw", () -> new CasseroleItem("casserole_shepherds_pie_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> CASSEROLE_SHEPHERDS_PIE_BAKED_ITEM = regItem("casserole_shepherds_pie_baked", () -> new CasseroleItem("casserole_shepherds_pie_baked", 14, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
+	public static final RegistryObject<Item> CASSEROLE_SHEPHERDS_PIE_BAKED_ITEM = regItem("casserole_shepherds_pie_baked", () -> new CasseroleItem("casserole_shepherds_pie_baked", 18, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
 	public static final RegistryObject<Item> CASSEROLE_DORIA_RAW_ITEM = regItem("casserole_doria_raw", () -> new CasseroleItem("casserole_doria_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> CASSEROLE_DORIA_BAKED_ITEM = regItem("casserole_doria_baked", () -> new CasseroleItem("casserole_doria_baked", 12, 0.6F, TagDC.ItemTag.HAC_CASSEROLE));
+	public static final RegistryObject<Item> CASSEROLE_DORIA_BAKED_ITEM = regItem("casserole_doria_baked", () -> new CasseroleItem("casserole_doria_baked", 13, 0.6F, TagDC.ItemTag.HAC_CASSEROLE));
 	public static final RegistryObject<Item> CASSEROLE_JANSSONS_FRESTELESE_RAW_ITEM = regItem("casserole_janssons_frestelese_raw", () -> new CasseroleItem("casserole_janssons_frestelese_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> CASSEROLE_JANSSONS_FRESTELESE_BAKED_ITEM = regItem("casserole_janssons_frestelese_baked", () -> new CasseroleItem("casserole_janssons_frestelese_baked", 12, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
+	public static final RegistryObject<Item> CASSEROLE_JANSSONS_FRESTELESE_BAKED_ITEM = regItem("casserole_janssons_frestelese_baked", () -> new CasseroleItem("casserole_janssons_frestelese_baked", 14, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
 	public static final RegistryObject<Item> CASSEROLE_PARMIGIANA_RAW_ITEM = regItem("casserole_parmigiana_raw", () -> new CasseroleItem("casserole_parmigiana_raw", 0, 0F, null).setRawFood());
 	public static final RegistryObject<Item> CASSEROLE_PARMIGIANA_BAKED_ITEM = regItem("casserole_parmigiana_baked", () -> new CasseroleItem("casserole_parmigiana_baked", 10, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
 	public static final RegistryObject<Item> CASSEROLE_MOUSSAKA_RAW_ITEM = regItem("casserole_moussaka_raw", () -> new CasseroleItem("casserole_moussaka_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> CASSEROLE_MOUSSAKA_BAKED_ITEM = regItem("casserole_moussaka_baked", () -> new CasseroleItem("casserole_moussaka_baked", 10, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
+	public static final RegistryObject<Item> CASSEROLE_MOUSSAKA_BAKED_ITEM = regItem("casserole_moussaka_baked", () -> new CasseroleItem("casserole_moussaka_baked", 14, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
 	public static final RegistryObject<Item> CASSEROLE_STUFFING_RAW_ITEM = regItem("casserole_stuffing_raw", () -> new CasseroleItem("casserole_stuffing_raw", 0, 0F, TagDC.ItemTag.STAFFING).setRawFood());
-	public static final RegistryObject<Item> CASSEROLE_STUFFING_BAKED_ITEM = regItem("casserole_stuffing_baked", () -> new CasseroleItem("casserole_stuffing_baked", 10, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
+	public static final RegistryObject<Item> CASSEROLE_STUFFING_BAKED_ITEM = regItem("casserole_stuffing_baked", () -> new CasseroleItem("casserole_stuffing_baked", 7, 0.4F, TagDC.ItemTag.HAC_CASSEROLE));
 
 	// サラダ
-	public static final RegistryObject<Item> SALAD_SIMPLE = regItem("salad_simple", () -> new SaladItem("salad_simple", 4, 0.4F, TagDC.ItemTag.HAC_SALAD));
-	public static final RegistryObject<Item> SALAD_GREEN = regItem("salad_green", () -> new SaladItem("salad_green", 6, 0.4F, TagDC.ItemTag.HAC_SALAD));
-	public static final RegistryObject<Item> SALAD_POTATO = regItem("salad_potato", () -> new SaladItem("salad_potato", 10, 0.4F, TagDC.ItemTag.HAC_SALAD));
-	public static final RegistryObject<Item> SALAD_NUTS = regItem("salad_nuts", () -> new SaladItem("salad_nuts", 8, 0.4F, TagDC.ItemTag.HAC_SALAD));
-	public static final RegistryObject<Item> SALAD_CITRUS = regItem("salad_citrus", () -> new SaladItem("salad_citrus", 7, 0.4F, TagDC.ItemTag.HAC_SALAD));
-	public static final RegistryObject<Item> SALAD_MELON = regItem("salad_melon", () -> new SaladItem("salad_melon", 7, 0.4F, TagDC.ItemTag.HAC_SALAD));
-	public static final RegistryObject<Item> SALAD_SALMON = regItem("salad_salmon", () -> new SaladItem("salad_salmon", 10, 0.4F, TagDC.ItemTag.HAC_SALAD));
-	public static final RegistryObject<Item> SALAD_TOFU = regItem("salad_tofu", () -> new SaladItem("salad_tofu", 8, 0.4F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SALAD_SIMPLE = regItem("salad_simple", () -> new SaladItem("salad_simple", 4, 0.1F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SALAD_GREEN = regItem("salad_green", () -> new SaladItem("salad_green", 5, 0.1F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SALAD_POTATO = regItem("salad_potato", () -> new SaladItem("salad_potato", 10, 0.1F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SALAD_NUTS = regItem("salad_nuts", () -> new SaladItem("salad_nuts", 7, 0.1F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SALAD_CITRUS = regItem("salad_citrus", () -> new SaladItem("salad_citrus", 6, 0.1F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SALAD_MELON = regItem("salad_melon", () -> new SaladItem("salad_melon", 6, 0.1F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SALAD_SALMON = regItem("salad_salmon", () -> new SaladItem("salad_salmon", 7, 0.1F, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> SALAD_TOFU = regItem("salad_tofu", () -> new SaladItem("salad_tofu", 6, 0.1F, TagDC.ItemTag.HAC_SALAD));
 
 	// スープ
-	public static final RegistryObject<Item> SOUP_CREAM_POTATO = regItem("soup_cream_potato", () -> new SoupItem("soup_cream_potato", 8, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_CREAM_PUMPKIN = regItem("soup_cream_pumpkin", () -> new SoupItem("soup_cream_pumpkin", 8, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_CREAM_CORN = regItem("soup_cream_corn", () -> new SoupItem("soup_cream_corn", 8, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_CREAM_SPINACH = regItem("soup_cream_spinach", () -> new SoupItem("soup_cream_spinach", 8, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_CREAM_PARSNIP = regItem("soup_cream_parsnip", () -> new SoupItem("soup_cream_parsnip", 8, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_CREAM_SHRIMP = regItem("soup_cream_shrimp", () -> new SoupItem("soup_cream_shrimp", 10, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_CHINESE_EGG = regItem("soup_chinese_egg", () -> new SoupItem("soup_chinese_egg", 8, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_CHINESE_CRAB = regItem("soup_chinese_crab", () -> new SoupItem("soup_chinese_crab", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_LEAVES = regItem("soup_leaves", () -> new SoupItem("soup_leaves", 6, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_LEEK = regItem("soup_leek", () -> new SoupItem("soup_leek", 6, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_JUTE = regItem("soup_jute", () -> new SoupItem("soup_jute", 8, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_CREAM_POTATO = regItem("soup_cream_potato", () -> new SoupItem("soup_cream_potato", 4, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_CREAM_PUMPKIN = regItem("soup_cream_pumpkin", () -> new SoupItem("soup_cream_pumpkin", 4, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_CREAM_CORN = regItem("soup_cream_corn", () -> new SoupItem("soup_cream_corn", 4, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_CREAM_SPINACH = regItem("soup_cream_spinach", () -> new SoupItem("soup_cream_spinach", 5, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_CREAM_PARSNIP = regItem("soup_cream_parsnip", () -> new SoupItem("soup_cream_parsnip", 3, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_CREAM_SHRIMP = regItem("soup_cream_shrimp", () -> new SoupItem("soup_cream_shrimp", 5, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_CHINESE_EGG = regItem("soup_chinese_egg", () -> new SoupItem("soup_chinese_egg", 3, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_CHINESE_CRAB = regItem("soup_chinese_crab", () -> new SoupItem("soup_chinese_crab", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_LEAVES = regItem("soup_leaves", () -> new SoupItem("soup_leaves", 2, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_LEEK = regItem("soup_leek", () -> new SoupItem("soup_leek", 2, 0.5F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_JUTE = regItem("soup_jute", () -> new SoupItem("soup_jute", 4, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> SOUP_GASPACHO = regItem("soup_gaspacho", () -> new SoupItem("soup_gaspacho", 8, 0.6F, true, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_TARATOR = regItem("soup_tarator", () -> new SoupItem("soup_tarator", 6, 0.6F, true, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_MINESTRONE = regItem("soup_minestrone", () -> new SoupItem("soup_minestrone", 10, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_CHILIBEANS = regItem("soup_chilibeans", () -> new SoupItem("soup_chilibeans", 12, 0.8F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> SOUP_SORREL = regItem("soup_sorrel", () -> new SoupItem("soup_sorrel", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_TARATOR = regItem("soup_tarator", () -> new SoupItem("soup_tarator", 8, 0.6F, true, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_MINESTRONE = regItem("soup_minestrone", () -> new SoupItem("soup_minestrone", 5, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_CHILIBEANS = regItem("soup_chilibeans", () -> new SoupItem("soup_chilibeans", 7, 0.8F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> SOUP_SORREL = regItem("soup_sorrel", () -> new SoupItem("soup_sorrel", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 
-	public static final RegistryObject<Item> STEW_BORSCH = regItem("stew_borsch", () -> new PorridgeItem("stew_borsch", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_CONSOMME_VEGETABLE = regItem("stew_consomme_vegetable", () -> new PorridgeItem("stew_consomme_vegetable", 10, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_IRISH = regItem("stew_irish", () -> new PorridgeItem("stew_irish", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_CREAM_MUSHROOM = regItem("stew_cream_mushroom", () -> new PorridgeItem("stew_cream_mushroom", 10, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_CREAM_SALMON = regItem("stew_cream_salmon", () -> new PorridgeItem("stew_cream_salmon", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_CREAM_SHRIMP = regItem("stew_cream_shrimp", () -> new PorridgeItem("stew_cream_shrimp", 10, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_CULLEN_SKINK = regItem("stew_cullenskink", () -> new PorridgeItem("stew_cullenskink", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_KHARCHO = regItem("stew_kharcho", () -> new PorridgeItem("stew_kharcho", 14, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_GOULASH = regItem("stew_goulash", () -> new PorridgeItem("stew_goulash", 14, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_ERWTEN = regItem("stew_erwten", () -> new PorridgeItem("stew_erwten", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_LAMPREDOTTO = regItem("stew_lampredotto", () -> new PorridgeItem("stew_lampredotto", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_PALMNUTS = regItem("stew_palmnuts", () -> new PorridgeItem("stew_palmnuts", 14, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_TOMYUMGOONG = regItem("stew_tomyumgoong", () -> new PorridgeItem("stew_tomyumgoong", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_TOMYUMPLA = regItem("stew_tomyumpla", () -> new PorridgeItem("stew_tomyumpla", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_TOMYUMGAI = regItem("stew_tomyumgai", () -> new PorridgeItem("stew_tomyumgai", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_BAKKUTTEH = regItem("stew_bakkutteh", () -> new PorridgeItem("stew_bakkutteh", 14, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> STEW_MOTU = regItem("stew_offal", () -> new PorridgeItem("stew_offal", 12, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_BORSCH = regItem("stew_borsch", () -> new PorridgeItem("stew_borsch", 7, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_CONSOMME_VEGETABLE = regItem("stew_consomme_vegetable", () -> new PorridgeItem("stew_consomme_vegetable", 4, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_IRISH = regItem("stew_irish", () -> new PorridgeItem("stew_irish", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_CREAM_MUSHROOM = regItem("stew_cream_mushroom", () -> new PorridgeItem("stew_cream_mushroom", 5, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_CREAM_SALMON = regItem("stew_cream_salmon", () -> new PorridgeItem("stew_cream_salmon", 7, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_CREAM_SHRIMP = regItem("stew_cream_shrimp", () -> new PorridgeItem("stew_cream_shrimp", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_CULLEN_SKINK = regItem("stew_cullenskink", () -> new PorridgeItem("stew_cullenskink", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_KHARCHO = regItem("stew_kharcho", () -> new PorridgeItem("stew_kharcho", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_GOULASH = regItem("stew_goulash", () -> new PorridgeItem("stew_goulash", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_ERWTEN = regItem("stew_erwten", () -> new PorridgeItem("stew_erwten", 8, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_LAMPREDOTTO = regItem("stew_lampredotto", () -> new PorridgeItem("stew_lampredotto", 5, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_PALMNUTS = regItem("stew_palmnuts", () -> new PorridgeItem("stew_palmnuts", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_TOMYUMGOONG = regItem("stew_tomyumgoong", () -> new PorridgeItem("stew_tomyumgoong", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_TOMYUMPLA = regItem("stew_tomyumpla", () -> new PorridgeItem("stew_tomyumpla", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_TOMYUMGAI = regItem("stew_tomyumgai", () -> new PorridgeItem("stew_tomyumgai", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_BAKKUTTEH = regItem("stew_bakkutteh", () -> new PorridgeItem("stew_bakkutteh", 5, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> STEW_MOTU = regItem("stew_offal", () -> new PorridgeItem("stew_offal", 4, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 
-	public static final RegistryObject<Item> WABOWL_MISO_TOFU = regItem("wabowl_miso_tofu", () -> new WaBowlItem("wabowl_miso_tofu", 7, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> WABOWL_MISO_AGE = regItem("wabowl_miso_age", () -> new WaBowlItem("wabowl_miso_age", 7, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> WABOWL_MISO_EGGPLANT = regItem("wabowl_miso_eggplant", () -> new WaBowlItem("wabowl_miso_eggplant", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> WABOWL_MISO_MUSHROOM = regItem("wabowl_miso_mushroom", () -> new WaBowlItem("wabowl_miso_mushroom", 7, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> WABOWL_MISO_TOFU = regItem("wabowl_miso_tofu", () -> new WaBowlItem("wabowl_miso_tofu", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> WABOWL_MISO_AGE = regItem("wabowl_miso_age", () -> new WaBowlItem("wabowl_miso_age", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> WABOWL_MISO_EGGPLANT = regItem("wabowl_miso_eggplant", () -> new WaBowlItem("wabowl_miso_eggplant", 4, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> WABOWL_MISO_MUSHROOM = regItem("wabowl_miso_mushroom", () -> new WaBowlItem("wabowl_miso_mushroom", 5, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> WABOWL_MISO_PORK = regItem("wabowl_miso_pork", () -> new WaBowlItem("wabowl_miso_pork", 8, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> WABOWL_MISO_CARP = regItem("wabowl_miso_carp", () -> new WaBowlItem("wabowl_miso_carp", 9, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> WABOWL_SHIRUKO = regItem("wabowl_shiruko", () -> new WaBowlItem("wabowl_shiruko", 5, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> WABOWL_MISO_CARP = regItem("wabowl_miso_carp", () -> new WaBowlItem("wabowl_miso_carp", 6, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> WABOWL_SHIRUKO = regItem("wabowl_shiruko", () -> new WaBowlItem("wabowl_shiruko", 4, 0.6F, false, TagDC.ItemTag.HAC_SOUP));
 
 	public static final RegistryObject<Item> HOTPOT_TOFU = regItem("hotpot_tofu", () -> new HotPotItem("hotpot_tofu", 5, 0.6F, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> HOTPOT_CHICKEN = regItem("hotpot_chicken", () -> new HotPotItem("hotpot_chicken", 6, 0.6F, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> HOTPOT_CRAB = regItem("hotpot_crab", () -> new HotPotItem("hotpot_crab", 7, 0.6F, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> HOTPOT_CRAB = regItem("hotpot_crab", () -> new HotPotItem("hotpot_crab", 6, 0.6F, TagDC.ItemTag.HAC_SOUP));
 	public static final RegistryObject<Item> HOTPOT_MALATANG = regItem("hotpot_malatang", () -> new HotPotItem("hotpot_malatang", 7, 0.6F, TagDC.ItemTag.HAC_SOUP));
 
 	// 小鉢
-	public static final RegistryObject<Item> KOBACHI_PUMPKIN = regItem("kobachi_pumpkin", () -> new KobachiItem("kobachi_pumpkin", 6, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_TARO = regItem("kobachi_taro", () -> new KobachiItem("kobachi_taro", 6, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_TARO_SQUID = regItem("kobachi_taro_squid", () -> new KobachiItem("kobachi_taro_squid", 8, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_RADISH_SQUID = regItem("kobachi_radish_squid", () -> new KobachiItem("kobachi_radish_squid", 8, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_BAMBOO = regItem("kobachi_bamboo", () -> new KobachiItem("kobachi_bamboo", 6, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_POTATO = regItem("kobachi_sweetpotato", () -> new KobachiItem("kobachi_sweetpotato", 7, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_TIKUZEN = regItem("kobachi_tikuzen", () -> new KobachiItem("kobachi_tikuzen", 12, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_CHICKEN = regItem("kobachi_chicken", () -> new KobachiItem("kobachi_chicken", 12, 0.6F, true, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_PORK = regItem("kobachi_pork", () -> new KobachiItem("kobachi_pork", 12, 0.6F, true, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_FLOWER = regItem("kobachi_flower", () -> new KobachiItem("kobachi_flower", 10, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_AGE = regItem("kobachi_age", () -> new KobachiItem("kobachi_age", 10, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_NAMASU = regItem("kobachi_namasu", () -> new KobachiItem("kobachi_namasu", 6, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_WHITE = regItem("kobachi_white", () -> new KobachiItem("kobachi_white", 8, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_YAKKO = regItem("kobachi_yakko", () -> new KobachiItem("kobachi_yakko", 8, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_NAMEROU = regItem("kobachi_namerou", () -> new KobachiItem("kobachi_namerou", 8, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_TUNA_AVOCADO = regItem("kobachi_tuna_avocado", () -> new KobachiItem("kobachi_tuna_avocado", 10, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_SKIPJACK_AVOCADO = regItem("kobachi_skipjack_avocado", () -> new KobachiItem("kobachi_skipjack_avocado", 10, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
-	public static final RegistryObject<Item> KOBACHI_POISSON_CRU = regItem("kobachi_poisson_cru", () -> new KobachiItem("kobachi_poisson_cru", 10, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_PUMPKIN = regItem("kobachi_pumpkin", () -> new KobachiItem("kobachi_pumpkin", 3, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_TARO = regItem("kobachi_taro", () -> new KobachiItem("kobachi_taro", 2, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_TARO_SQUID = regItem("kobachi_taro_squid", () -> new KobachiItem("kobachi_taro_squid", 4, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_RADISH_SQUID = regItem("kobachi_radish_squid", () -> new KobachiItem("kobachi_radish_squid", 4, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_BAMBOO = regItem("kobachi_bamboo", () -> new KobachiItem("kobachi_bamboo", 3, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_POTATO = regItem("kobachi_sweetpotato", () -> new KobachiItem("kobachi_sweetpotato", 4, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_TIKUZEN = regItem("kobachi_tikuzen", () -> new KobachiItem("kobachi_tikuzen", 5, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_CHICKEN = regItem("kobachi_chicken", () -> new KobachiItem("kobachi_chicken", 5, 0.6F, true, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_PORK = regItem("kobachi_pork", () -> new KobachiItem("kobachi_pork", 5, 0.6F, true, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_FLOWER = regItem("kobachi_flower", () -> new KobachiItem("kobachi_flower", 4, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_AGE = regItem("kobachi_age", () -> new KobachiItem("kobachi_age", 4, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_NAMASU = regItem("kobachi_namasu", () -> new KobachiItem("kobachi_namasu", 3, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_WHITE = regItem("kobachi_white", () -> new KobachiItem("kobachi_white", 9, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_YAKKO = regItem("kobachi_yakko", () -> new KobachiItem("kobachi_yakko", 6, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_NAMEROU = regItem("kobachi_namerou", () -> new KobachiItem("kobachi_namerou", 7, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_TUNA_AVOCADO = regItem("kobachi_tuna_avocado", () -> new KobachiItem("kobachi_tuna_avocado", 13, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_SKIPJACK_AVOCADO = regItem("kobachi_skipjack_avocado", () -> new KobachiItem("kobachi_skipjack_avocado", 13, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
+	public static final RegistryObject<Item> KOBACHI_POISSON_CRU = regItem("kobachi_poisson_cru", () -> new KobachiItem("kobachi_poisson_cru", 11, 0.6F, false, TagDC.ItemTag.HAC_KOBACHI));
 
 	public static final RegistryObject<Item> MINIDISH_SAUERKRAUT = regItem("food_sauerkraut", () -> new MinidishItem("food_sauerkraut", 4, 0.2F, TagDC.ItemTag.HAC_KOBACHI));
 	public static final RegistryObject<Item> MINIDISH_TSUKEMONO = regItem("food_tsukemono", () -> new MinidishItem("food_tsukemono", 4, 0.2F, TagDC.ItemTag.HAC_KOBACHI));
@@ -593,239 +593,239 @@ public class FoodInit {
 	public static final RegistryObject<Item> MINIDISH_UMEBOSHI = regItem("food_umeboshi", () -> new MinidishItem("food_umeboshi", 4, 0.2F, TagDC.ItemTag.HAC_KOBACHI));
 
 	// 焼き物
-	public static final RegistryObject<Item> FRIED_EGG = regItem("fried_egg", () -> new FriedEggItem("fried_egg", 6, 0.4F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> FRIED_EGG = regItem("fried_egg", () -> new FriedEggItem("fried_egg", 5, 0.4F, TagDC.ItemTag.HAC_SAUTE));
 	public static final RegistryObject<Item> BACON_EGG = regItem("fried_egg_bacon", () -> new FriedEggItem("fried_egg_bacon", 10, 0.6F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> GRILLED_CRAB = regItem("grilled_crab", () -> new FriedEggItem("grilled_crab", 6, 0.4F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> GRILLED_CRAB = regItem("grilled_crab", () -> new FriedEggItem("grilled_crab", 4, 0.4F, TagDC.ItemTag.HAC_SAUTE));
 
-	public static final RegistryObject<Item> OMELET_BASIC = regItem("omelet_basic", () -> new OmeletItem("omelet_basic", 8, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> OMELET_VEGI = regItem("omelet_vegi", () -> new OmeletItem("omelet_vegi", 12, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> SAUSAGE_SAUTE = regItem("sausage_saute", () -> new OmeletItem("sausage_saute", 12, 0.8F, TagDC.ItemTag.HAC_MEAT_MEAL));
-	public static final RegistryObject<Item> SAUSAGE_CURRY = regItem("sausage_curry", () -> new OmeletItem("sausage_curry", 12, 0.8F, TagDC.ItemTag.HAC_MEAT_MEAL));
-	public static final RegistryObject<Item> GALETTE = regItem("galette_complete", () -> new OmeletItem("galette_complete", 10, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> OMELET_BASIC = regItem("omelet_basic", () -> new OmeletItem("omelet_basic", 6, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> OMELET_VEGI = regItem("omelet_vegi", () -> new OmeletItem("omelet_vegi", 10, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUSAGE_SAUTE = regItem("sausage_saute", () -> new OmeletItem("sausage_saute", 7, 0.8F, TagDC.ItemTag.HAC_MEAT_MEAL));
+	public static final RegistryObject<Item> SAUSAGE_CURRY = regItem("sausage_curry", () -> new OmeletItem("sausage_curry", 9, 0.8F, TagDC.ItemTag.HAC_MEAT_MEAL));
+	public static final RegistryObject<Item> GALETTE = regItem("galette_complete", () -> new OmeletItem("galette_complete", 14, 0.8F, TagDC.ItemTag.HAC_SAUTE));
 
 	// 炒め物
-	public static final RegistryObject<Item> SAUTE_CHILI_GREEN = regItem("saute_green", () -> new SauteItem("saute_green", 10, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> SAUTE_GREEN_SQUID = regItem("saute_green_squid", () -> new SauteItem("saute_green_squid", 13, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> SAUTE_MABO = regItem("saute_mabo_tofu", () -> new SauteItem("saute_mabo_tofu", 14, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> SAUTE_CHILI_NASU = regItem("saute_yuxiang_qiezi", () -> new SauteItem("saute_yuxiang_qiezi", 14, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> SAUTE_CHILI_MEAT = regItem("saute_yuxiang_rousi", () -> new SauteItem("saute_yuxiang_rousi", 17, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> SAUTE_CHILI_FISH = regItem("saute_gan_shao_yu", () -> new SauteItem("saute_gan_shao_yu", 18, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> SAUTE_CHILI_PRAWN = regItem("saute_gan_shao_xia", () -> new SauteItem("saute_gan_shao_xia", 15, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> SAUTE_WHITE_CHICKEN = regItem("saute_baiqieji", () -> new SauteItem("saute_baiqieji", 14, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> SAUTE_HOT_CHICKEN = regItem("saute_koushuiji", () -> new SauteItem("saute_koushuiji", 16, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> SAUTE_SANBEIJI = regItem("saute_sanbeiji", () -> new SauteItem("saute_sanbeiji", 14, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUTE_CHILI_GREEN = regItem("saute_green", () -> new SauteItem("saute_green", 6, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUTE_GREEN_SQUID = regItem("saute_green_squid", () -> new SauteItem("saute_green_squid", 10, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUTE_MABO = regItem("saute_mabo_tofu", () -> new SauteItem("saute_mabo_tofu", 13, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUTE_CHILI_NASU = regItem("saute_yuxiang_qiezi", () -> new SauteItem("saute_yuxiang_qiezi", 11, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUTE_CHILI_MEAT = regItem("saute_yuxiang_rousi", () -> new SauteItem("saute_yuxiang_rousi", 14, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUTE_CHILI_FISH = regItem("saute_gan_shao_yu", () -> new SauteItem("saute_gan_shao_yu", 12, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUTE_CHILI_PRAWN = regItem("saute_gan_shao_xia", () -> new SauteItem("saute_gan_shao_xia", 10, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUTE_WHITE_CHICKEN = regItem("saute_baiqieji", () -> new SauteItem("saute_baiqieji", 10, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUTE_HOT_CHICKEN = regItem("saute_koushuiji", () -> new SauteItem("saute_koushuiji", 13, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUTE_SANBEIJI = regItem("saute_sanbeiji", () -> new SauteItem("saute_sanbeiji", 16, 0.8F, TagDC.ItemTag.HAC_SAUTE));
 	public static final RegistryObject<Item> SAUTE_CRAB_EGG = regItem("saute_fuyung_dan", () -> new SauteItem("saute_fuyung_dan", 16, 0.8F, TagDC.ItemTag.HAC_SAUTE));
-	public static final RegistryObject<Item> SAUTE_CASHEW_CHICKEN = regItem("saute_cashew_chicken", () -> new SauteItem("saute_cashew_chicken", 16, 0.8F, TagDC.ItemTag.HAC_SAUTE));
+	public static final RegistryObject<Item> SAUTE_CASHEW_CHICKEN = regItem("saute_cashew_chicken", () -> new SauteItem("saute_cashew_chicken", 12, 0.8F, TagDC.ItemTag.HAC_SAUTE));
 
 	// カレー
-	public static final RegistryObject<Item> CURRY_VEGI = regItem("curry_vegi", () -> new CurryItem("curry_vegi", 8, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
-	public static final RegistryObject<Item> CURRY_BEANS = regItem("curry_beans", () -> new CurryItem("curry_beans", 8, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
-	public static final RegistryObject<Item> CURRY_SPINACH = regItem("curry_spinach", () -> new CurryItem("curry_spinach", 11, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
-	public static final RegistryObject<Item> CURRY_FISH = regItem("curry_fish", () -> new CurryItem_Fish("curry_fish", 12, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
-	public static final RegistryObject<Item> CURRY_BUTTER_CHICKEN = regItem("curry_butter_chicken", () -> new CurryItem("curry_butter_chicken", 14, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
-	public static final RegistryObject<Item> CURRY_VINDALOO = regItem("curry_vindaloo", () -> new CurryItem("curry_vindaloo", 14, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
+	public static final RegistryObject<Item> CURRY_VEGI = regItem("curry_vegi", () -> new CurryItem("curry_vegi", 6, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
+	public static final RegistryObject<Item> CURRY_BEANS = regItem("curry_beans", () -> new CurryItem("curry_beans", 6, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
+	public static final RegistryObject<Item> CURRY_SPINACH = regItem("curry_spinach", () -> new CurryItem("curry_spinach", 6, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
+	public static final RegistryObject<Item> CURRY_FISH = regItem("curry_fish", () -> new CurryItem_Fish("curry_fish", 7, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
+	public static final RegistryObject<Item> CURRY_BUTTER_CHICKEN = regItem("curry_butter_chicken", () -> new CurryItem("curry_butter_chicken", 7, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
+	public static final RegistryObject<Item> CURRY_VINDALOO = regItem("curry_vindaloo", () -> new CurryItem("curry_vindaloo", 8, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
 
-	public static final RegistryObject<Item> CURRY_GREEN = regItem("curry_green", () -> new CurryItem("curry_green", 12, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
-	public static final RegistryObject<Item> CURRY_RED = regItem("curry_red", () -> new CurryItem("curry_red", 12, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
-	public static final RegistryObject<Item> CURRY_MASSAMAN = regItem("curry_massaman", () -> new CurryItem("curry_massaman", 12, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
+	public static final RegistryObject<Item> CURRY_GREEN = regItem("curry_green", () -> new CurryItem("curry_green", 6, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
+	public static final RegistryObject<Item> CURRY_RED = regItem("curry_red", () -> new CurryItem("curry_red", 6, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
+	public static final RegistryObject<Item> CURRY_MASSAMAN = regItem("curry_massaman", () -> new CurryItem("curry_massaman", 7, 0.6F, false, TagDC.ItemTag.HAC_CURRY));
 
 	// 煮込み
-	public static final RegistryObject<Item> LARGE_BOWL_ACQUA_PAZZA = regItem("large_bowl_acqua_pazza", () -> new CurryItem_Fish("large_bowl_acqua_pazza", 12, 0.7F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> LARGE_BOWL_FISH = regItem("large_bowl_fish", () -> new CurryItem_Meat("large_bowl_fish", 14, 0.7F, false, TagDC.ItemTag.HAC_SOUP));
-	public static final RegistryObject<Item> LARGE_BOWL_CABBAGE = regItem("large_bowl_cabbage", () -> new CurryItem_Meat("large_bowl_cabbage", 10, 0.7F, false, TagDC.ItemTag.HAC_MEAT_MEAL));
-	public static final RegistryObject<Item> LARGE_BOWL_LAMB = regItem("large_bowl_lamb", () -> new CurryItem_Meat("large_bowl_lamb", 12, 0.7F, false, TagDC.ItemTag.HAC_MEAT_MEAL));
-	public static final RegistryObject<Item> LARGE_BOWL_BEEF = regItem("large_bowl_beef", () -> new CurryItem_Meat("large_bowl_beef", 12, 0.7F, false, TagDC.ItemTag.HAC_MEAT_MEAL));
+	public static final RegistryObject<Item> LARGE_BOWL_ACQUA_PAZZA = regItem("large_bowl_acqua_pazza", () -> new CurryItem_Fish("large_bowl_acqua_pazza", 7, 0.7F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> LARGE_BOWL_FISH = regItem("large_bowl_fish", () -> new CurryItem_Meat("large_bowl_fish", 7, 0.7F, false, TagDC.ItemTag.HAC_SOUP));
+	public static final RegistryObject<Item> LARGE_BOWL_CABBAGE = regItem("large_bowl_cabbage", () -> new CurryItem_Meat("large_bowl_cabbage", 5, 0.7F, false, TagDC.ItemTag.HAC_MEAT_MEAL));
+	public static final RegistryObject<Item> LARGE_BOWL_LAMB = regItem("large_bowl_lamb", () -> new CurryItem_Meat("large_bowl_lamb", 6, 0.7F, false, TagDC.ItemTag.HAC_MEAT_MEAL));
+	public static final RegistryObject<Item> LARGE_BOWL_BEEF = regItem("large_bowl_beef", () -> new CurryItem_Meat("large_bowl_beef", 7, 0.7F, false, TagDC.ItemTag.HAC_MEAT_MEAL));
 
 	// 刺身
-	public static final RegistryObject<Item> LARGE_BOWL_CARPACCIO = regItem("large_bowl_carpaccio", () -> new CurryItem_Sashimi("large_bowl_carpaccio", 16, 0.2F, false, TagDC.ItemTag.HAC_MEAT_MEAL));
-	public static final RegistryObject<Item> LARGE_BOWL_FISH_CARPACCIO = regItem("large_bowl_fish_carpaccio", () -> new CurryItem_Sashimi("large_bowl_fish_carpaccio", 16, 0.2F, false, TagDC.ItemTag.HAC_FISH_MEAL));
-	public static final RegistryObject<Item> LARGE_BOWL_CAPRESE = regItem("large_bowl_caprese", () -> new CurryItem_Sashimi("large_bowl_caprese", 12, 0.2F, false, TagDC.ItemTag.HAC_SALAD));
+	public static final RegistryObject<Item> LARGE_BOWL_CARPACCIO = regItem("large_bowl_carpaccio", () -> new CurryItem_Sashimi("large_bowl_carpaccio", 10, 0.2F, false, TagDC.ItemTag.HAC_MEAT_MEAL));
+	public static final RegistryObject<Item> LARGE_BOWL_FISH_CARPACCIO = regItem("large_bowl_fish_carpaccio", () -> new CurryItem_Sashimi("large_bowl_fish_carpaccio", 9, 0.2F, false, TagDC.ItemTag.HAC_FISH_MEAL));
+	public static final RegistryObject<Item> LARGE_BOWL_CAPRESE = regItem("large_bowl_caprese", () -> new CurryItem_Sashimi("large_bowl_caprese", 7, 0.2F, false, TagDC.ItemTag.HAC_SALAD));
 
-	public static final RegistryObject<Item> SASHIMI_WHITE = regItem("sashimi_white", () -> new SquareSashimiItem("sashimi_white", 8, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
-	public static final RegistryObject<Item> SASHIMI_SALMON = regItem("sashimi_salmon", () -> new SquareSashimiItem("sashimi_salmon", 8, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
-	public static final RegistryObject<Item> SASHIMI_BLUE = regItem("sashimi_blue", () -> new SquareSashimiItem("sashimi_blue", 8, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
-	public static final RegistryObject<Item> SASHIMI_TUNA = regItem("sashimi_tuna", () -> new SquareSashimiItem("sashimi_tuna", 8, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
-	public static final RegistryObject<Item> SASHIMI_SQUID = regItem("sashimi_squid", () -> new SquareSashimiItem("sashimi_squid", 8, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
+	public static final RegistryObject<Item> SASHIMI_WHITE = regItem("sashimi_white", () -> new SquareSashimiItem("sashimi_white", 6, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
+	public static final RegistryObject<Item> SASHIMI_SALMON = regItem("sashimi_salmon", () -> new SquareSashimiItem("sashimi_salmon", 6, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
+	public static final RegistryObject<Item> SASHIMI_BLUE = regItem("sashimi_blue", () -> new SquareSashimiItem("sashimi_blue", 6, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
+	public static final RegistryObject<Item> SASHIMI_TUNA = regItem("sashimi_tuna", () -> new SquareSashimiItem("sashimi_tuna", 7, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
+	public static final RegistryObject<Item> SASHIMI_SQUID = regItem("sashimi_squid", () -> new SquareSashimiItem("sashimi_squid", 6, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
 
 	// 魚料理
-	public static final RegistryObject<Item> FISH_MEUNIERE = regItem("fish_meuniere", () -> new SquareFishItem("fish_meuniere", 10, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
-	public static final RegistryObject<Item> SIMMERD_FISH = regItem("simmered_fish", () -> new SquareFishItem("simmered_fish", 10, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
-	public static final RegistryObject<Item> GRILLED_SALMON = regItem("grilled_salmon", () -> new SquareFishItem("grilled_salmon", 10, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
-	public static final RegistryObject<Item> GRILLED_WHITE_FISH = regItem("grilled_white_fish", () -> new SquareFishItem("grilled_white_fish", 10, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
-	public static final RegistryObject<Item> IWASHI_MENTAI = regItem("iwashi_mentai", () -> new SquareFishItem("iwashi_mentai", 10, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
+	public static final RegistryObject<Item> FISH_MEUNIERE = regItem("fish_meuniere", () -> new SquareFishItem("fish_meuniere", 6, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
+	public static final RegistryObject<Item> SIMMERD_FISH = regItem("simmered_fish", () -> new SquareFishItem("simmered_fish", 6, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
+	public static final RegistryObject<Item> GRILLED_SALMON = regItem("grilled_salmon", () -> new SquareFishItem("grilled_salmon", 4, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
+	public static final RegistryObject<Item> GRILLED_WHITE_FISH = regItem("grilled_white_fish", () -> new SquareFishItem("grilled_white_fish", 4, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
+	public static final RegistryObject<Item> IWASHI_MENTAI = regItem("iwashi_mentai", () -> new SquareFishItem("iwashi_mentai", 6, 0.3F, TagDC.ItemTag.HAC_FISH_MEAL));
 
 	// 揚げ物
 	public static final RegistryObject<Item> TEMPURA_VEGI = regItem("tempura_vegi", () -> new TempuraVegiItem("tempura_vegi", 6, 0.3F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> TEMPURA_PRAWN = regItem("tempura_prawn", () -> new TempuraPrawnItem("tempura_prawn", 10, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> TEMPURA_UMESISO = regItem("tempura_umesiso", () -> new TempuraIkatenItem("tempura_umesiso", 11, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> TEMPURA_IKATEN = regItem("tempura_ikaten", () -> new TempuraIkatenItem("tempura_ikaten", 9, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> TEMPURA_FISH = regItem("tempura_fish", () -> new TempuraFishItem("tempura_fish", 8, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> TEMPURA_PRAWN = regItem("tempura_prawn", () -> new TempuraPrawnItem("tempura_prawn", 6, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> TEMPURA_UMESISO = regItem("tempura_umesiso", () -> new TempuraIkatenItem("tempura_umesiso", 9, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> TEMPURA_IKATEN = regItem("tempura_ikaten", () -> new TempuraIkatenItem("tempura_ikaten", 6, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> TEMPURA_FISH = regItem("tempura_fish", () -> new TempuraFishItem("tempura_fish", 6, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
 
-	public static final RegistryObject<Item> DEEPFRY_TONKATSU = regItem("deepfry_tonkatsu", () -> new DeepfryTonkatsuItem("deepfry_tonkatsu", 13, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> DEEPFRY_KARAAGE = regItem("deepfry_karaage", () -> new DeepfryKaraageItem("deepfry_karaage", 12, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> DEEPFRY_CROQUETTE_POTATO = regItem("deepfry_croquette_potato", () -> new DeepfryCroquetteItem("deepfry_croquette_potato", 10, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> DEEPFRY_CROQUETTE_PUMPKIN = regItem("deepfry_croquette_pumpkin", () -> new DeepfryCroquetteItem("deepfry_croquette_pumpkin", 10, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> DEEPFRY_CROQUETTE_CORN = regItem("deepfry_croquette_corn", () -> new DeepfryCroquetteItem("deepfry_croquette_corn", 12, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> DEEPFRY_CROQUETTE_CRAB = regItem("deepfry_croquette_crab", () -> new DeepfryCroquetteItem("deepfry_croquette_crab", 12, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
-	public static final RegistryObject<Item> DEEPFRY_CROQUETTE_FISH = regItem("deepfry_croquette_fish", () -> new DeepfryCroquetteItem("deepfry_croquette_fish", 12, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> DEEPFRY_TONKATSU = regItem("deepfry_tonkatsu", () -> new DeepfryTonkatsuItem("deepfry_tonkatsu", 9, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> DEEPFRY_KARAAGE = regItem("deepfry_karaage", () -> new DeepfryKaraageItem("deepfry_karaage", 8, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> DEEPFRY_CROQUETTE_POTATO = regItem("deepfry_croquette_potato", () -> new DeepfryCroquetteItem("deepfry_croquette_potato", 7, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> DEEPFRY_CROQUETTE_PUMPKIN = regItem("deepfry_croquette_pumpkin", () -> new DeepfryCroquetteItem("deepfry_croquette_pumpkin", 6, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> DEEPFRY_CROQUETTE_CORN = regItem("deepfry_croquette_corn", () -> new DeepfryCroquetteItem("deepfry_croquette_corn", 8, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> DEEPFRY_CROQUETTE_CRAB = regItem("deepfry_croquette_crab", () -> new DeepfryCroquetteItem("deepfry_croquette_crab", 8, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
+	public static final RegistryObject<Item> DEEPFRY_CROQUETTE_FISH = regItem("deepfry_croquette_fish", () -> new DeepfryCroquetteItem("deepfry_croquette_fish", 14, 0.4F, TagDC.ItemTag.HAC_SIDE_DISH));
 
 	// おかゆ
 	public static final RegistryObject<Item> DUMPLING_TUBERS = regItem("dumpling_tubers", () -> new DumplingItem("dumpling_tubers", 3, 0.4F, TagDC.ItemTag.HAC_PORRIDGE));
 	public static final RegistryObject<Item> DUMPLING_CEREALS = regItem("dumpling_cereals", () -> new DumplingItem("dumpling_cereals", 3, 0.4F, TagDC.ItemTag.HAC_PORRIDGE));
 	public static final RegistryObject<Item> DUMPLING_BUCKWHEAT = regItem("dumpling_buckwheat", () -> new DumplingItem("dumpling_buckwheat", 3, 0.4F, TagDC.ItemTag.HAC_PORRIDGE));
 
-	public static final RegistryObject<Item> PORRIDGE = regItem("porridge_simple", () -> new PorridgeItem("porridge_simple", 4, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
-	public static final RegistryObject<Item> PORRIDGE_MILK = regItem("porridge_milk", () -> new PorridgeItem("porridge_milk", 6, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
-	public static final RegistryObject<Item> OATMEAL_MILK = regItem("oat_milk", () -> new PorridgeItem("oat_milk", 6, 0.4F, true, TagDC.ItemTag.HAC_PORRIDGE));
-	public static final RegistryObject<Item> MUESLI = regItem("muesli", () -> new PorridgeItem("muesli", 12, 0.4F, true, TagDC.ItemTag.HAC_PORRIDGE));
-	public static final RegistryObject<Item> PORRIDGE_SAFFRON = regItem("porridge_saffron", () -> new PorridgeItem("porridge_saffron", 10, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
-	public static final RegistryObject<Item> PORRIDGE_SQUID = regItem("porridge_squid", () -> new PorridgeItem("porridge_squid", 10, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
+	public static final RegistryObject<Item> PORRIDGE = regItem("porridge_simple", () -> new PorridgeItem("porridge_simple", 2, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
+	public static final RegistryObject<Item> PORRIDGE_MILK = regItem("porridge_milk", () -> new PorridgeItem("porridge_milk", 4, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
+	public static final RegistryObject<Item> OATMEAL_MILK = regItem("oat_milk", () -> new PorridgeItem("oat_milk", 4, 0.4F, true, TagDC.ItemTag.HAC_PORRIDGE));
+	public static final RegistryObject<Item> MUESLI = regItem("muesli", () -> new PorridgeItem("muesli", 8, 0.4F, true, TagDC.ItemTag.HAC_PORRIDGE));
+	public static final RegistryObject<Item> PORRIDGE_SAFFRON = regItem("porridge_saffron", () -> new PorridgeItem("porridge_saffron", 5, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
+	public static final RegistryObject<Item> PORRIDGE_SQUID = regItem("porridge_squid", () -> new PorridgeItem("porridge_squid", 5, 0.6F, false, TagDC.ItemTag.HAC_PORRIDGE));
 
 	// ごはん
 	public static final RegistryObject<Item> RICE_CHAOFAN = regItem("rice_chaofan", () -> new RicemealItem("rice_chaofan", 14, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> RICE_KETCHUP = regItem("rice_ketchup", () -> new RicemealItem("rice_ketchup", 14, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> RICE_OMERICE = regItem("rice_omerice", () -> new RicemealItem("rice_omerice", 18, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> RICE_HAINAN = regItem("rice_hainan_chicken", () -> new RicemealItem("rice_hainan_chicken", 16, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> RICE_PILAV = regItem("rice_pilav", () -> new RicemealItem("rice_pilav", 14, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> RICE_JAMBALAYA = regItem("rice_jambalaya", () -> new RicemealItem("rice_jambalaya", 16, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> RICE_JOLLOF = regItem("rice_jollof", () -> new RicemealItem("rice_jollof", 16, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> RICE_PAELLIA = regItem("rice_paellia", () -> new RicemealItem("rice_paellia", 18, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> CURRY_BIRIYANI = regItem("curry_biriyani", () -> new CurryItem("curry_biriyani", 12, 0.6F, false, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> CURRY_RICE = regItem("curry_rice", () -> new CurryItem_Rice("curry_rice", 15, 0.6F, false, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> RICE_KETCHUP = regItem("rice_ketchup", () -> new RicemealItem("rice_ketchup", 13, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> RICE_OMERICE = regItem("rice_omerice", () -> new RicemealItem("rice_omerice", 20, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> RICE_HAINAN = regItem("rice_hainan_chicken", () -> new RicemealItem("rice_hainan_chicken", 12, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> RICE_PILAV = regItem("rice_pilav", () -> new RicemealItem("rice_pilav", 12, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> RICE_JAMBALAYA = regItem("rice_jambalaya", () -> new RicemealItem("rice_jambalaya", 13, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> RICE_JOLLOF = regItem("rice_jollof", () -> new RicemealItem("rice_jollof", 15, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> RICE_PAELLIA = regItem("rice_paellia", () -> new RicemealItem("rice_paellia", 15, 0.5F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> CURRY_BIRIYANI = regItem("curry_biriyani", () -> new CurryItem("curry_biriyani", 10, 0.6F, false, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> CURRY_RICE = regItem("curry_rice", () -> new CurryItem_Rice("curry_rice", 10, 0.6F, false, TagDC.ItemTag.HAC_RICE_MEAL));
 
-	public static final RegistryObject<Item> BOILED_RICE = regItem("rice_boiled", () -> new RiceBowlItem("rice_boiled", 6, 0.4F, TagDC.ItemTag.BOILED_RICE));
-	public static final RegistryObject<Item> RICE_BARLEY = regItem("rice_barley", () -> new RiceBowlItem("rice_barley", 6, 0.4F, TagDC.ItemTag.BOILED_RICE));
-	public static final RegistryObject<Item> RICE_NAPA = regItem("rice_napa", () -> new RiceBowlItem("rice_napa", 8, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> RICE_SEKI = regItem("rice_seki", () -> new RiceBowlItem("rice_seki", 10, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> RICE_FISH = regItem("rice_fish", () -> new RiceBowlItem("rice_fish", 10, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> RICE_MUSHROOM = regItem("rice_mushroom", () -> new RiceBowlItem("rice_mushroom", 8, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> RICE_TAIMESHI = regItem("rice_taimeshi", () -> new RiceBowlItem("rice_taimeshi", 10, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> BOILED_RICE = regItem("rice_boiled", () -> new RiceBowlItem("rice_boiled", 3, 0.4F, TagDC.ItemTag.BOILED_RICE));
+	public static final RegistryObject<Item> RICE_BARLEY = regItem("rice_barley", () -> new RiceBowlItem("rice_barley", 3, 0.4F, TagDC.ItemTag.BOILED_RICE));
+	public static final RegistryObject<Item> RICE_NAPA = regItem("rice_napa", () -> new RiceBowlItem("rice_napa", 5, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> RICE_SEKI = regItem("rice_seki", () -> new RiceBowlItem("rice_seki", 6, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> RICE_FISH = regItem("rice_fish", () -> new RiceBowlItem("rice_fish", 8, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> RICE_MUSHROOM = regItem("rice_mushroom", () -> new RiceBowlItem("rice_mushroom", 5, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> RICE_TAIMESHI = regItem("rice_taimeshi", () -> new RiceBowlItem("rice_taimeshi", 8, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
 
-	public static final RegistryObject<Item> CHAZUKE_UME = regItem("chazuke_ume", () -> new ChazukeItem("chazuke_ume", 10, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> CHAZUKE_SAKE = regItem("chazuke_sake", () -> new ChazukeItem("chazuke_sake", 12, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> CHAZUKE_TAI = regItem("chazuke_tai", () -> new ChazukeItem("chazuke_tai", 12, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
-	public static final RegistryObject<Item> CHAZUKE_TARAKO = regItem("chazuke_tarako", () -> new ChazukeItem("chazuke_tarako", 12, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> CHAZUKE_UME = regItem("chazuke_ume", () -> new ChazukeItem("chazuke_ume", 8, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> CHAZUKE_SAKE = regItem("chazuke_sake", () -> new ChazukeItem("chazuke_sake", 10, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> CHAZUKE_TAI = regItem("chazuke_tai", () -> new ChazukeItem("chazuke_tai", 11, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
+	public static final RegistryObject<Item> CHAZUKE_TARAKO = regItem("chazuke_tarako", () -> new ChazukeItem("chazuke_tarako", 10, 0.4F, TagDC.ItemTag.HAC_RICE_MEAL));
 
 	// 麺
-	public static final RegistryObject<Item> PASTA_OIL = regItem("pasta_oil", () -> new PastaItem("pasta_oil", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> PASTA_BASIL = regItem("pasta_basil", () -> new PastaItem("pasta_basil", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> PASTA_KRILL = regItem("pasta_krill", () -> new PastaItem("pasta_krill", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> PASTA_TOMATO = regItem("pasta_tomato", () -> new PastaItem("pasta_tomato", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PASTA_OIL = regItem("pasta_oil", () -> new PastaItem("pasta_oil", 8, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PASTA_BASIL = regItem("pasta_basil", () -> new PastaItem("pasta_basil", 10, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PASTA_KRILL = regItem("pasta_krill", () -> new PastaItem("pasta_krill", 14, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PASTA_TOMATO = regItem("pasta_tomato", () -> new PastaItem("pasta_tomato", 10, 0.6F, TagDC.ItemTag.HAC_NOODLE));
 	public static final RegistryObject<Item> PASTA_PRAWN = regItem("pasta_prawn", () -> new PastaItem("pasta_prawn", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> PASTA_PUTTANESCA = regItem("pasta_puttanesca", () -> new PastaItem("pasta_puttanesca", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> PASTA_BEEF = regItem("pasta_beef", () -> new PastaItem("pasta_beef", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> PASTA_SQUID = regItem("pasta_squid", () -> new PastaItem("pasta_squid", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> PASTA_COD = regItem("pasta_cod", () -> new PastaItem("pasta_cod", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> PASTA_ROE = regItem("pasta_roe", () -> new PastaItem("pasta_roe", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> PASTA_KETCHUP = regItem("pasta_ketchup", () -> new PastaItem("pasta_ketchup", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> PASTA_CARBONARA = regItem("pasta_carbonara", () -> new PastaItem("pasta_carbonara", 12, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PASTA_PUTTANESCA = regItem("pasta_puttanesca", () -> new PastaItem("pasta_puttanesca", 14, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PASTA_BEEF = regItem("pasta_beef", () -> new PastaItem("pasta_beef", 16, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PASTA_SQUID = regItem("pasta_squid", () -> new PastaItem("pasta_squid", 16, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PASTA_COD = regItem("pasta_cod", () -> new PastaItem("pasta_cod", 18, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PASTA_ROE = regItem("pasta_roe", () -> new PastaItem("pasta_roe", 14, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PASTA_KETCHUP = regItem("pasta_ketchup", () -> new PastaItem("pasta_ketchup", 14, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PASTA_CARBONARA = regItem("pasta_carbonara", () -> new PastaItem("pasta_carbonara", 15, 0.6F, TagDC.ItemTag.HAC_NOODLE));
 
 	public static final RegistryObject<Item> PHAT_THAI_PRAWN = regItem("phat_thai_prawn", () -> new NoodleItem("phat_thai_prawn", 16, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> PHAT_THAI_CHICKEN = regItem("phat_thai_chicken", () -> new NoodleItem("phat_thai_chicken", 16, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> PHAT_THAI_CHICKEN = regItem("phat_thai_chicken", () -> new NoodleItem("phat_thai_chicken", 17, 0.6F, TagDC.ItemTag.HAC_NOODLE));
 
-	public static final RegistryObject<Item> RAMEN_SHOYU = regItem("ramen_shoyu", () -> new RamenItem("ramen_shoyu", 15, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> RAMEN_MISO = regItem("ramen_miso", () -> new RamenItem("ramen_miso", 15, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> RAMEN_SHOYU = regItem("ramen_shoyu", () -> new RamenItem("ramen_shoyu", 14, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> RAMEN_MISO = regItem("ramen_miso", () -> new RamenItem("ramen_miso", 16, 0.6F, TagDC.ItemTag.HAC_NOODLE));
 	public static final RegistryObject<Item> RAMEN_TONKOTSU = regItem("ramen_tonkotsu", () -> new RamenItem("ramen_tonkotsu", 15, 0.6F, TagDC.ItemTag.HAC_NOODLE));
 	public static final RegistryObject<Item> RAMEN_OKINAWA = regItem("ramen_okinawa", () -> new RamenItem("ramen_okinawa", 15, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> RAMEN_HOUTOU = regItem("ramen_houtou", () -> new RamenItem("ramen_houtou", 15, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> RAMEN_HOUTOU = regItem("ramen_houtou", () -> new RamenItem("ramen_houtou", 16, 0.6F, TagDC.ItemTag.HAC_NOODLE));
 	public static final RegistryObject<Item> RAMEN_TANTAN = regItem("ramen_tantan", () -> new RamenItem("ramen_tantan", 13, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> RAMEN_SESAMI = regItem("ramen_tantan_sesami", () -> new RamenItem("ramen_tantan_sesami", 15, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> RAMEN_BEEF = regItem("ramen_lanzhou_beef", () -> new RamenItem("ramen_lanzhou_beef", 15, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> RAMEN_REIMEN = regItem("ramen_naeng_myeon", () -> new RamenItem("ramen_naeng_myeon", 15, 0.6F, false, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> RAMEN_SESAMI = regItem("ramen_tantan_sesami", () -> new RamenItem("ramen_tantan_sesami", 13, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> RAMEN_BEEF = regItem("ramen_lanzhou_beef", () -> new RamenItem("ramen_lanzhou_beef", 16, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> RAMEN_REIMEN = regItem("ramen_naeng_myeon", () -> new RamenItem("ramen_naeng_myeon", 18, 0.6F, false, TagDC.ItemTag.HAC_NOODLE));
 	public static final RegistryObject<Item> RAMEN_LAKSA = regItem("ramen_laksa", () -> new RamenItem("ramen_laksa", 15, 0.6F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> RAMEN_TOMYUM = regItem("ramen_tomyum", () -> new RamenItem("ramen_tomyum", 15, 0.6F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> RAMEN_TOMYUM = regItem("ramen_tomyum", () -> new RamenItem("ramen_tomyum", 18, 0.6F, TagDC.ItemTag.HAC_NOODLE));
 
 	public static final RegistryObject<Item> UDON_SIMPLE = regItem("udon_simple", () -> new UdonItem("udon_simple", 10, 0.3F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> UDON_KITSUNE = regItem("udon_kitsune", () -> new UdonItem("udon_kitsune", 14, 0.3F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> UDON_TSUKIMI = regItem("udon_tsukimi", () -> new UdonItem("udon_tsukimi", 14, 0.3F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> UDON_TENPURA = regItem("udon_tenpura", () -> new UdonItem("udon_tenpura", 16, 0.3F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> UDON_KITSUNE = regItem("udon_kitsune", () -> new UdonItem("udon_kitsune", 13, 0.3F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> UDON_TSUKIMI = regItem("udon_tsukimi", () -> new UdonItem("udon_tsukimi", 15, 0.3F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> UDON_TENPURA = regItem("udon_tenpura", () -> new UdonItem("udon_tenpura", 15, 0.3F, TagDC.ItemTag.HAC_NOODLE));
 
 	public static final RegistryObject<Item> SOBA_SIMPLE = regItem("soba_simple", () -> new SobaItem("soba_simple", 10, 0.3F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> SOBA_KITSUNE = regItem("soba_kitsune", () -> new SobaItem("soba_kitsune", 14, 0.3F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> SOBA_TSUKIMI = regItem("soba_tsukimi", () -> new SobaItem("soba_tsukimi", 14, 0.3F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> SOBA_TENPURA = regItem("soba_tenpura", () -> new SobaItem("soba_tenpura", 16, 0.3F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> SOBA_KITSUNE = regItem("soba_kitsune", () -> new SobaItem("soba_kitsune", 13, 0.3F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> SOBA_TSUKIMI = regItem("soba_tsukimi", () -> new SobaItem("soba_tsukimi", 15, 0.3F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> SOBA_TENPURA = regItem("soba_tenpura", () -> new SobaItem("soba_tenpura", 15, 0.3F, TagDC.ItemTag.HAC_NOODLE));
 
 	public static final RegistryObject<Item> ZARUSOBA_SIMPLE = regItem("zarusoba", () -> new ZarusobaItem("zarusoba", 10, 0.3F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> ZARUSOBA_TEA = regItem("zarusoba_tea", () -> new ZarusobaItem("zarusoba_tea", 12, 0.3F, TagDC.ItemTag.HAC_NOODLE));
-	public static final RegistryObject<Item> ZARUSOBA_SISO = regItem("zarusoba_siso", () -> new ZarusobaItem("zarusoba_siso", 12, 0.3F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> ZARUSOBA_TEA = regItem("zarusoba_tea", () -> new ZarusobaItem("zarusoba_tea", 11, 0.3F, TagDC.ItemTag.HAC_NOODLE));
+	public static final RegistryObject<Item> ZARUSOBA_SISO = regItem("zarusoba_siso", () -> new ZarusobaItem("zarusoba_siso", 11, 0.3F, TagDC.ItemTag.HAC_NOODLE));
 
 	// タルト
 	public static final RegistryObject<Item> TART_APPLE_RAW_ITEM = regItem("tart_apple_raw", () -> new TartItem("tart_apple_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> TART_APPLE_BAKED_ITEM = regItem("tart_apple_baked", () -> new TartItem("tart_apple_baked", 10, 0.2F, TagDC.ItemTag.HAC_TART));
+	public static final RegistryObject<Item> TART_APPLE_BAKED_ITEM = regItem("tart_apple_baked", () -> new TartItem("tart_apple_baked", 20, 0.5F, TagDC.ItemTag.HAC_TART));
 	public static final RegistryObject<Item> TART_BERRY_RAW_ITEM = regItem("tart_berry_raw", () -> new TartItem("tart_berry_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> TART_BERRY_BAKED_ITEM = regItem("tart_berry_baked", () -> new TartItem("tart_berry_baked", 10, 0.2F, TagDC.ItemTag.HAC_TART));
+	public static final RegistryObject<Item> TART_BERRY_BAKED_ITEM = regItem("tart_berry_baked", () -> new TartItem("tart_berry_baked", 20, 0.5F, TagDC.ItemTag.HAC_TART));
 	public static final RegistryObject<Item> TART_PEACH_RAW_ITEM = regItem("tart_peach_raw", () -> new TartItem("tart_peach_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> TART_PEACH_BAKED_ITEM = regItem("tart_peach_baked", () -> new TartItem("tart_peach_baked", 12, 0.3F, TagDC.ItemTag.HAC_TART));
+	public static final RegistryObject<Item> TART_PEACH_BAKED_ITEM = regItem("tart_peach_baked", () -> new TartItem("tart_peach_baked", 20, 0.5F, TagDC.ItemTag.HAC_TART));
 	public static final RegistryObject<Item> TART_LEMON_RAW_ITEM = regItem("tart_lemon_raw", () -> new TartItem("tart_lemon_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> TART_LEMON_BAKED_ITEM = regItem("tart_lemon_baked", () -> new TartItem("tart_lemon_baked", 12, 0.3F, TagDC.ItemTag.HAC_TART));
+	public static final RegistryObject<Item> TART_LEMON_BAKED_ITEM = regItem("tart_lemon_baked", () -> new TartItem("tart_lemon_baked", 20, 0.5F, TagDC.ItemTag.HAC_TART));
 	public static final RegistryObject<Item> TART_COCOA_RAW_ITEM = regItem("tart_cocoa_raw", () -> new TartItem("tart_cocoa_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> TART_COCOA_BAKED_ITEM = regItem("tart_cocoa_baked", () -> new TartItem("tart_cocoa_baked", 12, 0.3F, TagDC.ItemTag.HAC_TART));
+	public static final RegistryObject<Item> TART_COCOA_BAKED_ITEM = regItem("tart_cocoa_baked", () -> new TartItem("tart_cocoa_baked", 20, 0.5F, TagDC.ItemTag.HAC_TART));
 	public static final RegistryObject<Item> TART_PISTACHIO_RAW_ITEM = regItem("tart_pistachio_raw", () -> new TartItem("tart_pistachio_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> TART_PISTACHIO_BAKED_ITEM = regItem("tart_pistachio_baked", () -> new TartItem("tart_pistachio_baked", 14, 0.3F, TagDC.ItemTag.HAC_TART));
+	public static final RegistryObject<Item> TART_PISTACHIO_BAKED_ITEM = regItem("tart_pistachio_baked", () -> new TartItem("tart_pistachio_baked", 20, 0.5F, TagDC.ItemTag.HAC_TART));
 	public static final RegistryObject<Item> TART_QUICHE_POTATO_RAW_ITEM = regItem("tart_quiche_potato_raw", () -> new TartItem("tart_quiche_potato_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> TART_QUICHE_POTATO_BAKED_ITEM = regItem("tart_quiche_potato_baked", () -> new TartItem("tart_quiche_potato_baked", 10, 0.3F, TagDC.ItemTag.HAC_TART));
+	public static final RegistryObject<Item> TART_QUICHE_POTATO_BAKED_ITEM = regItem("tart_quiche_potato_baked", () -> new TartItem("tart_quiche_potato_baked", 20, 0.5F, TagDC.ItemTag.HAC_TART));
 	public static final RegistryObject<Item> TART_QUICHE_COD_RAW_ITEM = regItem("tart_quiche_cod_raw", () -> new TartItem("tart_quiche_cod_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> TART_QUICHE_COD_BAKED_ITEM = regItem("tart_quiche_cod_baked", () -> new TartItem("tart_quiche_cod_baked", 14, 0.3F, TagDC.ItemTag.HAC_TART));
+	public static final RegistryObject<Item> TART_QUICHE_COD_BAKED_ITEM = regItem("tart_quiche_cod_baked", () -> new TartItem("tart_quiche_cod_baked", 20, 0.5F, TagDC.ItemTag.HAC_TART));
 	public static final RegistryObject<Item> TART_QUICHE_SALMON_RAW_ITEM = regItem("tart_quiche_salmon_raw", () -> new TartItem("tart_quiche_salmon_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> TART_QUICHE_SALMON_BAKED_ITEM = regItem("tart_quiche_salmon_baked", () -> new TartItem("tart_quiche_salmon_baked", 14, 0.3F, TagDC.ItemTag.HAC_TART));
+	public static final RegistryObject<Item> TART_QUICHE_SALMON_BAKED_ITEM = regItem("tart_quiche_salmon_baked", () -> new TartItem("tart_quiche_salmon_baked", 20, 0.5F, TagDC.ItemTag.HAC_TART));
 	public static final RegistryObject<Item> TART_QUICHE_RAW_ITEM = regItem("tart_quiche_raw", () -> new TartItem("tart_quiche_raw", 0, 0F, null).setRawFood());
-	public static final RegistryObject<Item> TART_QUICHE_BAKED_ITEM = regItem("tart_quiche_baked", () -> new TartItem("tart_quiche_baked", 14, 0.3F, TagDC.ItemTag.HAC_TART));
+	public static final RegistryObject<Item> TART_QUICHE_BAKED_ITEM = regItem("tart_quiche_baked", () -> new TartItem("tart_quiche_baked", 20, 0.5F, TagDC.ItemTag.HAC_TART));
 
 	// お菓子
 	public static final RegistryObject<Item> DONUT_SUGER = regItem("donut_sugar", () -> new DonutItem("donut_sugar", 6, 0.1F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> DONUT_CINNAMON = regItem("donut_cinnamon", () -> new DonutItem("donut_cinnamon", 7, 0.1F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> DONUT_CINNAMON = regItem("donut_cinnamon", () -> new DonutItem("donut_cinnamon", 14, 0.1F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> DONUT_COCOA = regItem("donut_cocoa", () -> new DonutItem("donut_cocoa", 7, 0.1F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> DONUT_COCONUT = regItem("donut_coconut", () -> new DonutItem("donut_coconut", 8, 0.1F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> DONUT_BERRY = regItem("donut_berry", () -> new DonutItem("donut_berry", 8, 0.1F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> DONUT_COCONUT = regItem("donut_coconut", () -> new DonutItem("donut_coconut", 9, 0.1F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> DONUT_BERRY = regItem("donut_berry", () -> new DonutItem("donut_berry", 9, 0.1F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> DONUT_MINT = regItem("donut_mint", () -> new DonutItem("donut_mint", 8, 0.1F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> DONUT_JELLY = regItem("donut_jelly", () -> new DonutItem("donut_jelly", 8, 0.1F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> DONUT_JELLY = regItem("donut_jelly", () -> new DonutItem("donut_jelly", 7, 0.1F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> DONUT_ROSE = regItem("donut_rose", () -> new DonutItem("donut_rose", 8, 0.1F, TagDC.ItemTag.HAC_SWEETS));
 
 	public static final RegistryObject<Item> PANCAKE_HONEY = regItem("pancake", () -> new PancakeItem("pancake", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 
-	public static final RegistryObject<Item> CRAPE_SUGAR = regItem("crepe_sugar", () -> new CrapeItem("crepe_sugar", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_SUGAR = regItem("crepe_sugar", () -> new CrapeItem("crepe_sugar", 6, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> CRAPE_CREAM = regItem("crepe_cream", () -> new CrapeItem("crepe_cream", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CRAPE_CARAMEL = regItem("crepe_caramel", () -> new CrapeItem("crepe_caramel", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CRAPE_COCOA = regItem("crepe_cocoa", () -> new CrapeItem("crepe_cocoa", 12, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CRAPE_BERRY = regItem("crepe_berry", () -> new CrapeItem("crepe_berry", 12, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CRAPE_APPLE = regItem("crepe_apple", () -> new CrapeItem("crepe_apple", 12, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CRAPE_TUNA = regItem("crepe_tuna", () -> new CrapeItem("crepe_tuna", 14, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_CARAMEL = regItem("crepe_caramel", () -> new CrapeItem("crepe_caramel", 14, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_COCOA = regItem("crepe_cocoa", () -> new CrapeItem("crepe_cocoa", 14, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_BERRY = regItem("crepe_berry", () -> new CrapeItem("crepe_berry", 16, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_APPLE = regItem("crepe_apple", () -> new CrapeItem("crepe_apple", 17, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CRAPE_TUNA = regItem("crepe_tuna", () -> new CrapeItem("crepe_tuna", 13, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 
 	public static final RegistryObject<Item> CAKE_BUTTER = regItem("cake_butter", () -> new CakeItem("cake_butter", 4, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CAKE_BERRY = regItem("cake_berry", () -> new CakeItem("cake_berry", 6, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CAKE_CHOCOLATE = regItem("cake_chocolate", () -> new CakeItem("cake_chocolate", 6, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CAKE_GREENTEA = regItem("cake_greentea", () -> new CakeItem("cake_greentea", 6, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CAKE_APPLE = regItem("cake_tarte_tatin", () -> new CakeItem("cake_tarte_tatin", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CAKE_LEMON = regItem("cake_lemon", () -> new CakeItem("cake_lemon", 6, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CAKE_GRAPE = regItem("cake_jelly_grape", () -> new CakeItem("cake_jelly_grape", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CAKE_ROSE = regItem("cake_jelly_rose", () -> new CakeItem("cake_jelly_rose", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CAKE_CASSATA = regItem("cake_cassata", () -> new CakeItem("cake_cassata", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CAKE_BAKLAVA = regItem("cake_baklava", () -> new CakeItem("cake_baklava", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> CAKE_CREAM_VANILLA = regItem("cake_cream_vanilla", () -> new CakeItem("cake_cream_vanilla", 6, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CAKE_BERRY = regItem("cake_berry", () -> new CakeItem("cake_berry", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CAKE_CHOCOLATE = regItem("cake_chocolate", () -> new CakeItem("cake_chocolate", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CAKE_GREENTEA = regItem("cake_greentea", () -> new CakeItem("cake_greentea", 7, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CAKE_APPLE = regItem("cake_tarte_tatin", () -> new CakeItem("cake_tarte_tatin", 11, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CAKE_LEMON = regItem("cake_lemon", () -> new CakeItem("cake_lemon", 7, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CAKE_GRAPE = regItem("cake_jelly_grape", () -> new CakeItem("cake_jelly_grape", 9, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CAKE_ROSE = regItem("cake_jelly_rose", () -> new CakeItem("cake_jelly_rose", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CAKE_CASSATA = regItem("cake_cassata", () -> new CakeItem("cake_cassata", 12, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CAKE_BAKLAVA = regItem("cake_baklava", () -> new CakeItem("cake_baklava", 9, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> CAKE_CREAM_VANILLA = regItem("cake_cream_vanilla", () -> new CakeItem("cake_cream_vanilla", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> CAKE_CREAM_MANGO = regItem("cake_cream_mango", () -> new CakeItem("cake_cream_mango", 6, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> CAKE_CREAM_SESAMI = regItem("cake_cream_sesami", () -> new CakeItem("cake_cream_sesami", 6, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 
-	public static final RegistryObject<Item> WAGASHI_BOTA = regItem("wagashi_bota", () -> new WagashiItem("wagashi_bota", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> WAGASHI_BOTA = regItem("wagashi_bota", () -> new WagashiItem("wagashi_bota", 7, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> WAGASHI_KUSA = regItem("wagashi_kusa", () -> new WagashiItem("wagashi_kusa", 8, 0.2F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> WAGASHI_SAKURA = regItem("wagashi_sakura", () -> new WagashiItem("wagashi_sakura", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> WAGASHI_SAKURA = regItem("wagashi_sakura", () -> new WagashiItem("wagashi_sakura", 9, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> WAGASHI_DAIHUKU = regItem("wagashi_daifuku", () -> new WagashiItem("wagashi_daifuku", 10, 0.2F, TagDC.ItemTag.HAC_SWEETS));
 
-	public static final RegistryObject<Item> ICECREAM_VANILLA = regItem("icecream_vanilla", () -> new IcecreamItem("icecream_vanilla", 7, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
-	public static final RegistryObject<Item> ICECREAM_NUTS = regItem("icecream_nuts", () -> new IcecreamItem("icecream_nuts", 7, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
-	public static final RegistryObject<Item> ICECREAM_COCOA = regItem("icecream_cocoa", () -> new IcecreamItem("icecream_cocoa", 7, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
-	public static final RegistryObject<Item> ICECREAM_BERRY = regItem("icecream_berry", () -> new IcecreamItem("icecream_berry", 7, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
-	public static final RegistryObject<Item> ICECREAM_WATERMELON = regItem("icecream_watermelon", () -> new IcecreamItem("icecream_watermelon", 7, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
-	public static final RegistryObject<Item> ICECREAM_MELON = regItem("icecream_melon", () -> new IcecreamItem("icecream_melon", 7, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
-	public static final RegistryObject<Item> ICECREAM_GRAPE = regItem("icecream_grape", () -> new IcecreamItem("icecream_grape", 7, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
-	public static final RegistryObject<Item> ICECREAM_CITRUS = regItem("icecream_citrus", () -> new IcecreamItem("icecream_citrus", 7, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
-	public static final RegistryObject<Item> ICECREAM_MANGO = regItem("icecream_mango", () -> new IcecreamItem("icecream_mango", 7, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
-	public static final RegistryObject<Item> ICECREAM_GUAVA = regItem("icecream_guava", () -> new IcecreamItem("icecream_guava", 7, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
-	public static final RegistryObject<Item> ICECREAM_SUNDAE_COCOA = regItem("sundae_cocoa", () -> new IcecreamItem("sundae_cocoa", 10, 0.3F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> ICECREAM_SUNDAE_PEACH = regItem("sundae_peach", () -> new IcecreamItem("sundae_peach", 11, 0.3F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> ICECREAM_VANILLA = regItem("icecream_vanilla", () -> new IcecreamItem("icecream_vanilla", 8, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
+	public static final RegistryObject<Item> ICECREAM_NUTS = regItem("icecream_nuts", () -> new IcecreamItem("icecream_nuts", 9, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
+	public static final RegistryObject<Item> ICECREAM_COCOA = regItem("icecream_cocoa", () -> new IcecreamItem("icecream_cocoa", 9, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
+	public static final RegistryObject<Item> ICECREAM_BERRY = regItem("icecream_berry", () -> new IcecreamItem("icecream_berry", 9, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
+	public static final RegistryObject<Item> ICECREAM_WATERMELON = regItem("icecream_watermelon", () -> new IcecreamItem("icecream_watermelon", 9, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
+	public static final RegistryObject<Item> ICECREAM_MELON = regItem("icecream_melon", () -> new IcecreamItem("icecream_melon", 9, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
+	public static final RegistryObject<Item> ICECREAM_GRAPE = regItem("icecream_grape", () -> new IcecreamItem("icecream_grape", 9, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
+	public static final RegistryObject<Item> ICECREAM_CITRUS = regItem("icecream_citrus", () -> new IcecreamItem("icecream_citrus", 9, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
+	public static final RegistryObject<Item> ICECREAM_MANGO = regItem("icecream_mango", () -> new IcecreamItem("icecream_mango", 9, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
+	public static final RegistryObject<Item> ICECREAM_GUAVA = regItem("icecream_guava", () -> new IcecreamItem("icecream_guava", 9, 0.2F, TagDC.ItemTag.HAC_ICECREAMS));
+	public static final RegistryObject<Item> ICECREAM_SUNDAE_COCOA = regItem("sundae_cocoa", () -> new IcecreamItem("sundae_cocoa", 14, 0.3F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> ICECREAM_SUNDAE_PEACH = regItem("sundae_peach", () -> new IcecreamItem("sundae_peach", 16, 0.3F, TagDC.ItemTag.HAC_SWEETS));
 	public static final RegistryObject<Item> ICECREAM_SUNDAE_COFFEE = regItem("sundae_affogato", () -> new IcecreamItem("sundae_affogato", 10, 0.3F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> ICECREAM_PUDDING = regItem("icecream_pudding", () -> new IcecreamItem("icecream_pudding", 18, 0.3F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> ICECREAM_SODA_MELON = regItem("creamsoda_melon", () -> new IcecreamItem("creamsoda_melon", 14, 0.3F, TagDC.ItemTag.HAC_SWEETS));
-	public static final RegistryObject<Item> ICECREAM_SODA_MALLOW = regItem("creamsoda_mallow", () -> new IcecreamItem("creamsoda_mallow", 14, 0.3F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> ICECREAM_PUDDING = regItem("icecream_pudding", () -> new IcecreamItem("icecream_pudding", 20, 0.3F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> ICECREAM_SODA_MELON = regItem("creamsoda_melon", () -> new IcecreamItem("creamsoda_melon", 12, 0.3F, TagDC.ItemTag.HAC_SWEETS));
+	public static final RegistryObject<Item> ICECREAM_SODA_MALLOW = regItem("creamsoda_mallow", () -> new IcecreamItem("creamsoda_mallow", 12, 0.3F, TagDC.ItemTag.HAC_SWEETS));
 
 	// ドリンク
 	public static final RegistryObject<Item> DRINK_APPLE = regItem("drink_apple", () -> new DrinkColdItem("drink_apple", 4, 0F, 2, TagDC.ItemTag.HAC_DRINK_COLD));

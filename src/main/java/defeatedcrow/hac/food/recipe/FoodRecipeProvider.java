@@ -879,7 +879,7 @@ public class FoodRecipeProvider extends RecipeProvider {
 
 		// food materials
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_PASTRY.get(), 1).requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT)).requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT)).requires(Ingredient.of(Tags.Items.EGGS))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_PASTRY.get(), 3).requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT)).requires(Ingredient.of(TagDC.ItemTag.FOOD_FAT)).requires(Ingredient.of(Tags.Items.EGGS))
 		    .requires(Ingredient.of(TagDC.ItemTag.DUST_SALT)).unlockedBy("has_dust_wheat", has(TagDC.ItemTag.DUST_WHEAT)).save(cons, "dcs_climate:food/foodmaterial_pastry");
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.NOODLE_PASTA.get(), 1).requires(Ingredient.of(TagDC.ItemTag.DUST_WHEAT)).requires(Ingredient.of(Tags.Items.EGGS))
@@ -932,24 +932,24 @@ public class FoodRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_ROE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.FISH_WITH_ROE)).unlockedBy("has_fish_with_roe", has(TagDC.ItemTag.FISH_WITH_ROE)).save(cons,
 		    "dcs_climate:food/foodmaterial_fish_roe");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_MAYONNAISE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.VINEGAR)).requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL)).requires(Ingredient.of(Tags.Items.EGGS))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_MAYONNAISE.get(), 8).requires(Ingredient.of(TagDC.ItemTag.VINEGAR)).requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL)).requires(Ingredient.of(Tags.Items.EGGS))
 		    .unlockedBy("has_eggs", has(Tags.Items.EGGS)).save(cons, "dcs_climate:food/foodmaterial_mayonnaise");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_MAYONNAISE.get(), 1).requires(Ingredient.of(TagDC.ItemTag.CROP_LEMON)).requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL)).requires(Ingredient.of(Tags.Items.EGGS))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_MAYONNAISE.get(), 8).requires(Ingredient.of(TagDC.ItemTag.CROP_LEMON)).requires(Ingredient.of(TagDC.ItemTag.PLANT_OIL)).requires(Ingredient.of(Tags.Items.EGGS))
 		    .unlockedBy("has_eggs", has(Tags.Items.EGGS)).save(cons, "dcs_climate:food/foodmaterial_mayonnaise_2");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_TOMYUM_PASTE.get(), 1).requires(Ingredient.of(FoodInit.FOOD_FISH_SAUSE.get())).requires(Ingredient.of(FoodInit.FOOD_SHRIMP_PASTE.get()))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_TOMYUM_PASTE.get(), 8).requires(Ingredient.of(FoodInit.FOOD_FISH_SAUSE.get())).requires(Ingredient.of(FoodInit.FOOD_SHRIMP_PASTE.get()))
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER)).requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI)).requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS)).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
 		    .unlockedBy("has_shrimp_paste", has(FoodInit.FOOD_SHRIMP_PASTE.get())).save(cons, "dcs_climate:food/foodmaterial_tomyum_paste");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_THAI_CURRY_PASTE.get(), 1).requires(Ingredient.of(FoodInit.FOOD_SHRIMP_PASTE.get())).requires(Ingredient.of(TagDC.ItemTag.CROP_CORIANDER))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_THAI_CURRY_PASTE.get(), 8).requires(Ingredient.of(FoodInit.FOOD_SHRIMP_PASTE.get())).requires(Ingredient.of(TagDC.ItemTag.CROP_CORIANDER))
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER)).requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI)).requires(Ingredient.of(TagDC.ItemTag.CROP_LEEKS)).requires(Ingredient.of(TagDC.ItemTag.CROP_CITRUS))
 		    .unlockedBy("has_shrimp_paste", has(FoodInit.FOOD_SHRIMP_PASTE.get())).save(cons, "dcs_climate:food/foodmaterial_thai_curry_paste");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_HERB_SALT.get(), 1).requires(Ingredient.of(TagDC.ItemTag.DUST_SALT)).requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_HERB_SALT.get(), 8).requires(Ingredient.of(TagDC.ItemTag.DUST_SALT)).requires(Ingredient.of(TagDC.ItemTag.CROP_HERBS))
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_SPICES)).unlockedBy("has_salt", has(TagDC.ItemTag.DUST_SALT)).save(cons, "dcs_climate:food/foodmaterial_herb_salt");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_MIXED_SPICES.get(), 1).requires(Ingredient.of(TagDC.ItemTag.CROP_CARDAMOM)).requires(Ingredient.of(TagDC.ItemTag.CROP_CINNAMON))
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.FOOD_MIXED_SPICES.get(), 8).requires(Ingredient.of(TagDC.ItemTag.CROP_CARDAMOM)).requires(Ingredient.of(TagDC.ItemTag.CROP_CINNAMON))
 		    .requires(Ingredient.of(TagDC.ItemTag.CROP_CLOVE)).requires(Ingredient.of(TagDC.ItemTag.CROP_GINGER)).requires(Ingredient.of(TagDC.ItemTag.CROP_CHILI)).requires(Ingredient.of(TagDC.ItemTag.SEED_APIUM))
 		    .requires(Ingredient.of(TagDC.ItemTag.SEED_FENNEL)).unlockedBy("has_clove", has(TagDC.ItemTag.CROP_CLOVE)).save(cons, "dcs_climate:food/foodmaterial_mixed_spice");
 

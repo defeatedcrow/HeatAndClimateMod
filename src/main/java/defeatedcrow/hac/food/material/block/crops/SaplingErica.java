@@ -78,8 +78,8 @@ public class SaplingErica extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("CONIFEROUS", "COLD", "MOUNTAIN");
-		case COMMON -> ImmutableList.of("CONIFEROUS", "JUNGLE", "MOUNTAIN");
+		case WILD -> ImmutableList.of("SPARSE", "COLD", "MOUNTAIN", "WET");
+		case COMMON -> ImmutableList.of("CONIFEROUS", "JUNGLE", "MOUNTAIN", "SLOPE");
 		default -> Lists.newArrayList();
 		};
 	}
@@ -87,8 +87,8 @@ public class SaplingErica extends SaplingBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("HOT", "OCEAN");
-		case COMMON -> ImmutableList.of("LOWLAND");
+		case WILD -> ImmutableList.of("HOT", "OCEAN", "DENCE", "SANDY");
+		case COMMON -> ImmutableList.of("LOWLAND", "DRY");
 		default -> Lists.newArrayList();
 		};
 	}

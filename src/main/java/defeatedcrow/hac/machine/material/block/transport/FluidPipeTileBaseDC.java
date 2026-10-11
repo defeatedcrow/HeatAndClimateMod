@@ -6,12 +6,15 @@ import defeatedcrow.hac.api.machine.FaceIO;
 import defeatedcrow.hac.api.machine.IFacingTile;
 import defeatedcrow.hac.api.machine.IFluidPipe;
 import defeatedcrow.hac.core.material.block.OwnableBaseTileDC;
+import defeatedcrow.hac.core.network.packet.message.IIntReceiver;
+import defeatedcrow.hac.core.network.packet.message.MsgTileSimpleIntegerToC;
 import defeatedcrow.hac.machine.material.fluid.DCHeadTank;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,7 +22,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 
-public abstract class FluidPipeTileBaseDC extends OwnableBaseTileDC implements IFacingTile {
+public abstract class FluidPipeTileBaseDC extends OwnableBaseTileDC implements IFacingTile, IIntReceiver {
 
 	public FluidPipeTileBaseDC(BlockEntityType<?> tile, BlockPos pos, BlockState state) {
 		super(tile, pos, state);
@@ -34,8 +37,27 @@ public abstract class FluidPipeTileBaseDC extends OwnableBaseTileDC implements I
 		return true;
 	}
 
+	int lastHead = 0;
+	int count = 9;
+
 	public boolean onTickProcess(Level level, BlockPos pos, BlockState state) {
+		if (count > 0) {
+			count--;
+		} else {
+			count = 9;
+			int head = getFluidHandler().getHead();
+			if (lastHead != head) {
+				lastHead = head;
+				if (level instanceof ServerLevel)
+					MsgTileSimpleIntegerToC.sendToClient((ServerLevel) level, pos, head);
+			}
+		}
 		return false;
+	}
+
+	@Override
+	public void receiveInteger(int i) {
+		getFluidHandler().setHead(i);
 	}
 
 	@Override
@@ -78,7 +100,7 @@ public abstract class FluidPipeTileBaseDC extends OwnableBaseTileDC implements I
 
 	// caps
 
-	private LazyOptional<? extends IFluidPipe> tank = LazyOptional.of(() -> getFluidHandler());
+	private LazyOptional<? extends IFluidPipe> tank = LazyOptional.of(this::getFluidHandler);
 
 	public abstract PipeTank getFluidHandler();
 
@@ -105,7 +127,7 @@ public abstract class FluidPipeTileBaseDC extends OwnableBaseTileDC implements I
 	@Override
 	public void reviveCaps() {
 		super.reviveCaps();
-		tank = LazyOptional.of(() -> getFluidHandler());
+		tank = LazyOptional.of(this::getFluidHandler);
 	}
 
 	@Override
@@ -120,35 +142,6 @@ public abstract class FluidPipeTileBaseDC extends OwnableBaseTileDC implements I
 			super(cap, flow);
 			pipe = pipeIn;
 		}
-
-		// @Override
-		// public int fill(FluidStack get, FluidAction action, Direction from) {
-		// if (get == null || get.isEmpty() || get.getAmount() == 0)
-		// return 0;
-		// int amo = get.getAmount();
-		// int ret = super.fill(get, action, from);
-		// if (ret == amo)
-		// return ret;
-		// // overflow
-		// else if (from != Direction.UP && isAlmostFull()) {
-		// FluidStack copy = get.copy();
-		// copy.setAmount(amo - ret);
-		// BlockEntity upwardEntity = getLevel().getBlockEntity(pipe.getBlockPos().above());
-		//
-		// DCFluidUtil.addHead(copy, DCFluidUtil.getDirectionHead(from.getOpposite()));
-		// if (upwardEntity != null) {
-		// int ret2 = upwardEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.DOWN).map(targetHandler -> {
-		// if (targetHandler instanceof IFluidPipe pipe) {
-		// return pipe.getFace(Direction.DOWN).canReceive() ? pipe.fill(copy, action, Direction.DOWN) : 0;
-		// } else {
-		// return targetHandler.fill(get, action);
-		// }
-		// }).orElse(0);
-		// return ret = ret2;
-		// }
-		// }
-		// return ret;
-		// }
 	}
 
 }

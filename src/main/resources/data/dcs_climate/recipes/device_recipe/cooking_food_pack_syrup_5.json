@@ -7,7 +7,7 @@
   },
   "ingredients": [
     {
-      "tag": "forge:crops/potato"
+      "tag": "forge:crops/tubers"
     },
     {
       "item": "dcs_climate:food/food_malt"

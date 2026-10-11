@@ -68,18 +68,19 @@ public class DrinkCupItem extends ItemEntityFood {
 
 	@Override
 	public ItemStack finishUsingItem(ItemStack item, Level level, LivingEntity liv) {
-		int taste = getTaste(item);
-		if (taste > -2 && !level.isClientSide) {
-			if (item.is(FoodInit.TEA_MILK.get())) {
-				DCUtil.removeAllPotion(liv);
-			} else {
-				MobEffectInstance effect = potion(potionId, milk, taste).get();
-				if (liv.hasEffect(effect.getEffect())) {
-					int d = liv.getEffect(effect.getEffect())
-					    .getDuration() + effect.getDuration();
-					effect = new MobEffectInstance(effect.getEffect(), d, effect.getAmplifier());
+		if (liv != null && liv.isAlive() && !liv.level().isClientSide) {
+			int taste = getTaste(item);
+			if (taste > -2 && !level.isClientSide) {
+				if (item.is(FoodInit.TEA_MILK.get())) {
+					DCUtil.removeAllPotion(liv);
+				} else {
+					MobEffectInstance effect = potion(potionId, milk, taste).get();
+					if (liv.hasEffect(effect.getEffect())) {
+						int d = liv.getEffect(effect.getEffect()).getDuration() + effect.getDuration();
+						effect = new MobEffectInstance(effect.getEffect(), d, effect.getAmplifier());
+					}
+					liv.addEffect(effect);
 				}
-				liv.addEffect(effect);
 			}
 		}
 		return super.finishUsingItem(item, level, liv);

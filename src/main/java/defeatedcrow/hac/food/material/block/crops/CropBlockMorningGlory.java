@@ -16,8 +16,10 @@ import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -27,7 +29,7 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 
 	public CropBlockMorningGlory(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, 0).setValue(DCState.WILD, false));
 	}
 
 	@Override
@@ -44,13 +46,12 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_0")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_1")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/morningglory_" + getSpeciesName(cropTier) + "_2")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/morningglory_" + getSpeciesName(cropTier) + "_f")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/morningglory_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/morningglory_" + getSpeciesName(cropTier) + "_d")));
+		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_0")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/leaf_1")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/morningglory_" + getSpeciesName(cropTier) + "_2")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/morningglory_" + getSpeciesName(cropTier) + "_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/morningglory_" + getSpeciesName(cropTier) + "_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/morningglory_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
@@ -71,8 +72,20 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 	/* IClimateCrop */
 
 	@Override
+	public List<ItemStack> getCropItems(BlockState state, int fortune) {
+		List<ItemStack> list = Lists.newArrayList();
+		int i = DCUtil.rand.nextInt(fortune + 2);
+		if (i > 0) {
+			ItemStack ret = new ItemStack(FoodInit.VINE.get(), i);
+			list.add(ret);
+		}
+		list.add(new ItemStack(getCropItem(getTier())));
+		return list;
+	}
+
+	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(2)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, 2).setValue(DCState.WILD, true);
 	}
 
 	/* ICropData */
@@ -89,7 +102,7 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFlowerState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+		return state.setValue(DCState.STAGE6, 3);
 	}
 
 	@Override
@@ -114,58 +127,42 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 
 	@Override
 	public ItemLike getSeedItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.BLOCK_MO_WATER.get();
-		case RARE:
-			return FoodInit.BLOCK_MO_POTATO.get();
-		case EPIC:
-			return FoodInit.BLOCK_MO_FLOWER.get();
-		default:
-			return FoodInit.BLOCK_MO_BINDWEED.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.BLOCK_MO_WATER.get();
+		case RARE -> FoodInit.BLOCK_MO_POTATO.get();
+		case EPIC -> FoodInit.BLOCK_MO_FLOWER.get();
+		default -> FoodInit.BLOCK_MO_BINDWEED.get();
+		};
 	}
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_MO_WATER.get();
-		case RARE:
-			return FoodInit.CROP_MO_POTATO.get();
-		case EPIC:
-			return FoodInit.CROP_MO_FLOWER.get();
-		default:
-			return FoodInit.CROP_MO_BINDWEED.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_MO_WATER.get();
+		case RARE -> FoodInit.CROP_MO_POTATO.get();
+		case EPIC -> FoodInit.CROP_MO_FLOWER.get();
+		default -> FoodInit.CROP_MO_BINDWEED.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_MO_BINDWEED.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_MO_WATER.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_MO_POTATO.get());
-		case EPIC:
-			return Optional.of(FoodInit.BLOCK_MO_FLOWER.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_MO_BINDWEED.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_MO_WATER.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_MO_POTATO.get());
+		case EPIC -> Optional.of(FoodInit.BLOCK_MO_FLOWER.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.SAND);
-		case COMMON:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.SAND, SoilType.MUD, SoilType.WATER);
-		default:
-			return ImmutableList.of(SoilType.FARMLAND);
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.SAND);
+		case COMMON -> ImmutableList.of(SoilType.FARMLAND, SoilType.SAND, SoilType.MUD, SoilType.WATER);
+		default -> ImmutableList.of(SoilType.FARMLAND);
+		};
 	}
 
 	@Override
@@ -193,24 +190,19 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("BEACH", "OCEAN");
-		case COMMON:
-			return ImmutableList.of("REVER", "SWAMP");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("BEACH", "OCEAN");
+		case COMMON -> ImmutableList.of("REVER", "SWAMP");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("COLD");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("COLD");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

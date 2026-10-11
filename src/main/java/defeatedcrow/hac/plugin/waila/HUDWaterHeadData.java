@@ -3,7 +3,6 @@ package defeatedcrow.hac.plugin.waila;
 import defeatedcrow.hac.api.machine.IFluidPipe;
 import defeatedcrow.hac.machine.material.block.transport.FluidPipeBlock;
 import defeatedcrow.hac.machine.material.fluid.DCFluidUtil;
-import defeatedcrow.hac.machine.material.fluid.DCHeadTank;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
@@ -39,7 +38,7 @@ public class HUDWaterHeadData implements IBlockComponentProvider {
 	}
 
 	private static boolean isPipe(IFluidHandler handler) {
-		return handler instanceof IFluidPipe || handler instanceof DCHeadTank;
+		return handler instanceof IFluidPipe;
 	}
 
 	public static void register(IWailaClientRegistration registrar) {

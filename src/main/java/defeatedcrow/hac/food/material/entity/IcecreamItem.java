@@ -32,11 +32,16 @@ public class IcecreamItem extends ItemEntityFood {
 	// 回復
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
-		int taste = getTaste(stack) + 2;
-		if (taste > 0)
-			living.heal(2.0F * taste);
-		if (living.isOnFire()) {
-			living.clearFire();
+		if (living != null && living.isAlive() && !living.level().isClientSide) {
+			int taste = getTaste(stack) + 2;
+			if (stack.is(FoodInit.ICECREAM_PUDDING.get())) {
+				float h = living.getMaxHealth();
+				living.heal(2.0F + h);
+			} else if (taste > 0)
+				living.heal(2.0F * taste);
+			if (living.isOnFire()) {
+				living.clearFire();
+			}
 		}
 		return super.finishUsingItem(stack, level, living);
 	}

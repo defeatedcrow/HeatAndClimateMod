@@ -81,8 +81,10 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -124,6 +126,7 @@ public class CoreInit {
 	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SEREALIZER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<MenuType<?>> MENU_TYPE = DeferredRegister.create(ForgeRegistries.MENU_TYPES, ClimateCore.MOD_ID);
 	public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPE = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, ClimateCore.MOD_ID);
+	public static final DeferredRegister<Attribute> ATTRIBUTE = DeferredRegister.create(ForgeRegistries.ATTRIBUTES, ClimateCore.MOD_ID);
 
 	public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ClimateCore.MOD_ID);
 
@@ -636,8 +639,11 @@ public class CoreInit {
 	public static final RegistryObject<EntityType<CanoeEntity>> CANOE
 	    = ENTITIES.register("canoe_entity", () -> EntityType.Builder.<CanoeEntity> of(CanoeEntity::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build("canoe_entity"));
 
-	// effect
+	// attribute
+	public static final RegistryObject<Attribute> ATTRIBUTE_HEAT_RESISTANCE = ATTRIBUTE.register("heat_resistance", () -> new RangedAttribute("attribute.name.dcs_climate.heat_resistance", 0.0D, -20.0D, 20.0D).setSyncable(true));
+	public static final RegistryObject<Attribute> ATTRIBUTE_COLD_RESISTANCE = ATTRIBUTE.register("cold_resistance", () -> new RangedAttribute("attribute.name.dcs_climate.cold_resistance", 0.0D, -20.0D, 20.0D).setSyncable(true));
 
+	// effect
 	public static final RegistryObject<MobEffect> COLD_RESISTANCE = regPotionEffect("effect_cold_resistance", () -> new MobEffectDC("effect_cold_resistance", MobEffectCategory.BENEFICIAL, 0x0050FF).setIconIndex(1, 1));
 	public static final RegistryObject<Potion> COLD_RES_POTION = regPotion("cold_resistance", () -> new Potion("cold_resistance", new MobEffectInstance(COLD_RESISTANCE.get(), 3600)));
 	public static final RegistryObject<Potion> COLD_RES_LONG = regPotion("long_cold_resistance", () -> new Potion("long_cold_resistance", new MobEffectInstance(COLD_RESISTANCE.get(), 9600)));

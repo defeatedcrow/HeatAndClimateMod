@@ -1,5 +1,6 @@
 package defeatedcrow.hac.core.worldgen.vein;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.google.common.collect.Lists;
@@ -28,10 +29,10 @@ public enum EnumVein {
 	BLACK_WHITE(12, MagicColor.BLACK_WHITE, TagDC.BiomeTag.BLACK_BIOME, TagDC.BiomeTag.WHITE_BIOME),
 	RED_BLUE(13, MagicColor.RED_BLUE, TagDC.BiomeTag.RED_BIOME, TagDC.BiomeTag.BLUE_BIOME),
 	GREEN_BLACK(14, MagicColor.GREEN_BLACK, TagDC.BiomeTag.GREEN_BIOME, TagDC.BiomeTag.BLACK_BIOME),
-	NETHER(15, MagicColor.BLACK_RED, BiomeTags.IS_NETHER);
+	NETHER(15, MagicColor.BLACK_RED, BiomeTags.IS_NETHER),
+	END(15, MagicColor.BLACK_WHITE, BiomeTags.IS_END);
 
-	public static final EnumVein[] VALUES = { RED, GREEN, BLUE, WHITE, BLACK, WHITE_BLUE, BLUE_BLACK, BLACK_RED, RED_GREEN,
-		GREEN_WHITE, WHITE_RED, BLUE_GREEN, BLACK_WHITE, RED_BLUE, GREEN_BLACK, NETHER };
+	public static final EnumVein[] VALUES = { RED, GREEN, BLUE, WHITE, BLACK, WHITE_BLUE, BLUE_BLACK, BLACK_RED, RED_GREEN, GREEN_WHITE, WHITE_RED, BLUE_GREEN, BLACK_WHITE, RED_BLUE, GREEN_BLACK, NETHER, END };
 
 	public final int id;
 	public final MagicColor color;
@@ -42,9 +43,7 @@ public enum EnumVein {
 		id = i;
 		color = c;
 		if (tags != null) {
-			for (TagKey<Biome> tag : tags) {
-				biomes.add(tag);
-			}
+			Collections.addAll(biomes, tags);
 		}
 	}
 

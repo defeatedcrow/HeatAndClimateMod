@@ -90,7 +90,7 @@ public class SaplingBeech extends SaplingBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD, COMMON -> ImmutableList.of("CONIFEROUS", "LOWLAND");
+		case WILD, COMMON -> ImmutableList.of("CONIFEROUS", "LOWLAND", "HOT", "SAVANNA");
 		default -> Lists.newArrayList();
 		};
 	}

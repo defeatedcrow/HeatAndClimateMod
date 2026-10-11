@@ -128,7 +128,6 @@ public class SaplingCherry extends SaplingBaseBlock {
 
 	@Override
 	protected void onGrowingTree(Level level, BlockPos pos, BlockState state, CropTier t) {
-		// 高さ3~6、幅5
 		RandomSource rand = level.getRandom();
 		int h = 1;
 		BlockState log = getLogState(t);

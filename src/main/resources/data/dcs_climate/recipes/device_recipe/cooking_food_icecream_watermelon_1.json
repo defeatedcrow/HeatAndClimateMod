@@ -16,7 +16,7 @@
       "tag": "forge:ingredients/sugars"
     },
     {
-      "item": "minecraft:melon_slice"
+      "tag": "forge:crops/melon"
     }
   ],
   "heat": [

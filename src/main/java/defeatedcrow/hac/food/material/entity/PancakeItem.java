@@ -32,9 +32,11 @@ public class PancakeItem extends ItemEntityFood {
 	// 回復
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
-		int taste = getTaste(stack) + 1;
-		if (taste > 0)
-			living.heal(2.0F * taste);
+		if (living != null && living.isAlive() && !living.level().isClientSide) {
+			int taste = getTaste(stack) + 1;
+			if (taste > 0)
+				living.heal(2.0F * taste);
+		}
 		return super.finishUsingItem(stack, level, living);
 	}
 

@@ -1,16 +1,26 @@
 package defeatedcrow.hac.food.material.entity;
 
+import java.util.function.Supplier;
+
 import defeatedcrow.hac.api.material.EntityRenderData;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.item.ItemEntityFood;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 
 public class TartItem extends ItemEntityFood {
 
 	public TartItem(String s, int nut, float sat, TagKey<Item> pair) {
-		super(s, nut, sat, false, pair);
+		super(s, new Item.Properties().food(new FoodProperties.Builder().nutrition(nut).saturationMod(sat).alwaysEat().effect(health(), 1.0F).build()), false, pair);
+		defeatedcrow.hac.core.material.tabs.CreativeTabDC.add(FoodInit.FOOD, this);
+	}
+
+	private static Supplier<MobEffectInstance> health() {
+		return () -> new MobEffectInstance(MobEffects.HEALTH_BOOST, 3600, 1);
 	}
 
 	@Override

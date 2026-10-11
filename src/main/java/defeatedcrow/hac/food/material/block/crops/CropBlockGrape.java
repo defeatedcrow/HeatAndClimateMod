@@ -14,8 +14,10 @@ import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -35,10 +37,8 @@ public class CropBlockGrape extends CropBaseVine {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_0")),
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_1")),
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_2")),
+		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_0")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_1")), new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_2")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_f")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_" + getSpeciesName(cropTier) + "_c")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/grape_d")),
@@ -63,6 +63,20 @@ public class CropBlockGrape extends CropBaseVine {
 	@Override
 	public JsonModelDC getItemModel() {
 		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_grape_" + getSpeciesName(cropTier)));
+	}
+
+	/* IClimateCrop */
+
+	@Override
+	public List<ItemStack> getCropItems(BlockState state, int fortune) {
+		List<ItemStack> list = Lists.newArrayList();
+		int i = DCUtil.rand.nextInt(fortune + 2);
+		if (i > 0) {
+			ItemStack ret = new ItemStack(FoodInit.VINE.get(), i);
+			list.add(ret);
+		}
+		list.add(new ItemStack(getCropItem(getTier())));
+		return list;
 	}
 
 	/* ICropData */

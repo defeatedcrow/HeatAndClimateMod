@@ -79,7 +79,7 @@ public class SaplingCinnamon extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("FOREST");
+		case WILD -> ImmutableList.of("FOREST", "PLATEAU");
 		case COMMON -> ImmutableList.of("SWAMP", "JUNGLE");
 		default -> Lists.newArrayList();
 		};

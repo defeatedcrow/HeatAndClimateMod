@@ -22,11 +22,8 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 
 public class OreveinFeature extends Feature<NoneFeatureConfiguration> {
 
-	private boolean isForced = false;
-
 	public OreveinFeature(Codec<NoneFeatureConfiguration> codec) {
 		super(codec);
-		isForced = false;
 	}
 
 	@Override
@@ -46,10 +43,9 @@ public class OreveinFeature extends Feature<NoneFeatureConfiguration> {
 					ChunkPos c = new ChunkPos(chunk.x + x, chunk.z + z);
 					OreVein[] veins = OreGenPos.INSTANCE.getVeins(c, level);
 					if (veins != null) {
-						for (int i = 0; i < veins.length; i++) {
-							OreVein vein = veins[i];
+						for (OreVein vein : veins) {
 							if (vein != null) {
-								generateVein(level, chunk, vein);
+								generateVein(level, chunk, vein, false);
 								flag = true;
 								// DCLogger.debugInfoLog("check_" + i + ": pos " + vein.pos.toShortString());
 							}
@@ -64,8 +60,8 @@ public class OreveinFeature extends Feature<NoneFeatureConfiguration> {
 
 	static boolean isPlaceable(BlockState block) {
 		if (!block.hasBlockEntity() && !block.is(BlockTags.FEATURES_CANNOT_REPLACE))
-			if (block.is(BlockTags.BASE_STONE_OVERWORLD) || block.is(BlockTags.SAND) || block.is(Blocks.CLAY) || block
-				.is(BlockTags.DIRT)) {
+			if (block.is(BlockTags.STONE_ORE_REPLACEABLES) || block.is(BlockTags.BASE_STONE_OVERWORLD) || block.is(BlockTags.BASE_STONE_NETHER) || block.is(BlockTags.SAND) || block.is(Blocks.CLAY) || block.is(BlockTags.DIRT)
+			    || block.is(Blocks.END_STONE)) {
 				if (TagUtil.matchTag("ores", block.getBlock().asItem()).isEmpty() && block.getBlock() != Blocks.POINTED_DRIPSTONE) {
 					return true;
 				}
@@ -74,14 +70,14 @@ public class OreveinFeature extends Feature<NoneFeatureConfiguration> {
 	}
 
 	static boolean avobeCheck(BlockState block) {
-		if (block.is(TagDC.BlockTag.WEED) || block.is(BlockTags.CROPS) || block.is(BlockTags.SAPLINGS) || block.is(BlockTags.FLOWERS) || block.is(Blocks.SEAGRASS) || block.is(Blocks.TALL_SEAGRASS) || block.is(Blocks.KELP) || block
-			.is(Blocks.KELP_PLANT) || block.is(Blocks.BAMBOO) || block.is(Blocks.BAMBOO_SAPLING)) {
+		if (block.is(TagDC.BlockTag.WEED) || block.is(BlockTags.CROPS) || block.is(BlockTags.SAPLINGS) || block.is(BlockTags.FLOWERS) || block.is(Blocks.SEAGRASS) || block.is(Blocks.TALL_SEAGRASS) || block.is(Blocks.KELP)
+		    || block.is(Blocks.KELP_PLANT) || block.is(Blocks.BAMBOO) || block.is(Blocks.BAMBOO_SAPLING)) {
 			return true;
 		}
 		return false;
 	}
 
-	public void generateVein(WorldGenLevel level, ChunkPos chunk, OreVein vein) {
+	public static void generateVein(WorldGenLevel level, ChunkPos chunk, OreVein vein, boolean isForced) {
 		if (vein.table == null) {
 			return;
 		}
@@ -140,8 +136,7 @@ public class OreveinFeature extends Feature<NoneFeatureConfiguration> {
 					int h2 = y;
 					BlockPos p = new BlockPos(center.getX() + x, center.getY() + y + offY, center.getZ() + z);
 
-					if (p.getX() >= chunk.getMinBlockX() && p.getX() <= chunk.getMaxBlockX() && p.getZ() >= chunk.getMinBlockZ() && p.getZ() <= chunk
-						.getMaxBlockZ()) {
+					if (p.getX() >= chunk.getMinBlockX() && p.getX() <= chunk.getMaxBlockX() && p.getZ() >= chunk.getMinBlockZ() && p.getZ() <= chunk.getMaxBlockZ()) {
 
 						BlockState block = level.getBlockState(p);
 						double d1 = Math.sqrt(center.distSqr(p));

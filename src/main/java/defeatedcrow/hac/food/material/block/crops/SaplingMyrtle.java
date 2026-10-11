@@ -81,7 +81,7 @@ public class SaplingMyrtle extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("SAVANNA, SPARSE, RIVER, SWAMP");
+		case WILD -> ImmutableList.of("SAVANNA", "SPARSE", "RIVER", "SWAMP");
 		case COMMON -> ImmutableList.of("JUNGLE");
 		default -> Lists.newArrayList();
 		};
@@ -132,9 +132,9 @@ public class SaplingMyrtle extends SaplingBaseBlock {
 			return;
 
 		if (t == CropTier.WILD) {
-			h = 8 + level.random.nextInt(4);
+			h = 10 + level.random.nextInt(5);
 			if (large) {
-				h = 18 + level.random.nextInt(3);
+				h = 20 + level.random.nextInt(5);
 			}
 		} else if (t == CropTier.COMMON) {
 			h = 1 + level.random.nextInt(3);
@@ -173,7 +173,7 @@ public class SaplingMyrtle extends SaplingBaseBlock {
 				}
 			} else {
 				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);
-				TreeShapeGen.growTreeBigLog(level, pos, limit - 12, log);
+				TreeShapeGen.growTreeBigLog(level, pos, limit / 2, log);
 				for (Direction d : Direction.Plane.HORIZONTAL) {
 					if (level.getRandom().nextInt(4) > 0)
 						TreeShapeGen.growBlanchAS(level, pos.above(limit - 6 + rand.nextInt(3)), d, 2, 1 + rand.nextInt(2), log, leaves);

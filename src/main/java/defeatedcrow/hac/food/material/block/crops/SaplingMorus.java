@@ -76,7 +76,7 @@ public class SaplingMorus extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("JUNGLE", "SWAMP");
+		case WILD -> ImmutableList.of("JUNGLE", "SWAMP", "MOUNTAIN");
 		case COMMON -> ImmutableList.of("JUNGLE", "MOUNTAIN");
 		default -> Lists.newArrayList();
 		};

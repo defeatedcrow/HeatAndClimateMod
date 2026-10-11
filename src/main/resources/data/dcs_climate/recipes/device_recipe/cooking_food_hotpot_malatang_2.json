@@ -16,13 +16,13 @@
       "tag": "forge:crops/sichuan_pepper"
     },
     {
-      "tag": "forge:crops/vegetables"
+      "tag": "forge:crops/spices"
     },
     {
       "tag": "forge:ingredients/all_raw_meats"
     },
     {
-      "tag": "forge:crops/spices"
+      "tag": "forge:crops/vegetables"
     }
   ],
   "heat": [

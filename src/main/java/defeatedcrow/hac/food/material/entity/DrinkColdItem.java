@@ -60,22 +60,24 @@ public class DrinkColdItem extends ItemEntityFood {
 
 	@Override
 	public ItemStack finishUsingItem(ItemStack item, Level level, LivingEntity liv) {
-		int taste = getTaste(item);
-		if (taste > -2 && !level.isClientSide) {
-			if (item.is(FoodInit.DRINK_VEGETABLE.get()) || item.is(FoodInit.DRINK_LASSI_PLANE.get())) {
-				DCUtil.removeBadPotion(liv);
-			} else if (item.is(FoodInit.DRINK_LASSI_MANGO.get()) || item.is(FoodInit.DRINK_LASSI_CITRUS.get())) {
-				DCUtil.removeBadPotion(liv);
-				if (taste > 0) {
-					liv.heal(1.0F * taste);
+		if (liv != null && liv.isAlive() && !liv.level().isClientSide) {
+			int taste = getTaste(item);
+			if (taste > -2 && !level.isClientSide) {
+				if (item.is(FoodInit.DRINK_VEGETABLE.get()) || item.is(FoodInit.DRINK_LASSI_PLANE.get())) {
+					DCUtil.removeBadPotion(liv);
+				} else if (item.is(FoodInit.DRINK_LASSI_MANGO.get()) || item.is(FoodInit.DRINK_LASSI_CITRUS.get())) {
+					DCUtil.removeBadPotion(liv);
+					if (taste > 0) {
+						liv.heal(1.0F * taste);
+					}
+				} else {
+					MobEffectInstance effect = potion(potionId, taste).get();
+					if (liv.hasEffect(effect.getEffect())) {
+						int d = liv.getEffect(effect.getEffect()).getDuration() + effect.getDuration();
+						effect = new MobEffectInstance(effect.getEffect(), d, effect.getAmplifier());
+					}
+					liv.addEffect(effect);
 				}
-			} else {
-				MobEffectInstance effect = potion(potionId, taste).get();
-				if (liv.hasEffect(effect.getEffect())) {
-					int d = liv.getEffect(effect.getEffect()).getDuration() + effect.getDuration();
-					effect = new MobEffectInstance(effect.getEffect(), d, effect.getAmplifier());
-				}
-				liv.addEffect(effect);
 			}
 		}
 		return super.finishUsingItem(item, level, liv);

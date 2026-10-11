@@ -35,21 +35,18 @@ public class CropBlockGourd extends CropBaseVine {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_0")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_1")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_2")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_f")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_d")),
-				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/gourd_2")),
-				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_f")),
-				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_c")),
-				new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/gourd_d")),
-				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_o_n")),
-				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_o_f")),
-				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_o_c")),
-				new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_o_d")));
+		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_0")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_1")), new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_2")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_d")), new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/gourd_2")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_side", ImmutableMap.of("crop", "dcs_climate:block/crop/vine/gourd_d")),
+		    new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_o_n")),
+		    new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_o_f")),
+		    new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_" + getSpeciesName(cropTier) + "_o_c")),
+		    new JsonModelDC("dcs_climate:block/dcs_build_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/vine/gourd_o_d")));
 	}
 
 	@Override
@@ -71,65 +68,51 @@ public class CropBlockGourd extends CropBaseVine {
 
 	@Override
 	public BlockState getFlowerState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(3));
+		return state.setValue(DCState.STAGE6, 3);
 	}
 
 	@Override
 	public int getContinuousRegistance(CropTier t) {
-		switch (t) {
-		case RARE:
-			return 1;
-		default:
-			return 3;
-		}
+		return switch (t) {
+		case RARE -> 1;
+		default -> 3;
+		};
 	}
 
 	@Override
 	public ItemLike getSeedItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.BLOCK_GO_CUCUMBER.get();
-		case RARE:
-			return FoodInit.BLOCK_GO_CANTALOUP.get();
-		default:
-			return FoodInit.BLOCK_GO_CALABASH.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.BLOCK_GO_CUCUMBER.get();
+		case RARE -> FoodInit.BLOCK_GO_CANTALOUP.get();
+		default -> FoodInit.BLOCK_GO_CALABASH.get();
+		};
 	}
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_GO_CUCUMBER.get();
-		case RARE:
-			return FoodInit.CROP_GO_CANTALOUP.get();
-		default:
-			return FoodInit.CROP_GO_CALABASH.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_GO_CUCUMBER.get();
+		case RARE -> FoodInit.CROP_GO_CANTALOUP.get();
+		default -> FoodInit.CROP_GO_CALABASH.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_GO_CALABASH.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_GO_CUCUMBER.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_GO_CANTALOUP.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_GO_CALABASH.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_GO_CUCUMBER.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_GO_CANTALOUP.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
 	public List<SoilType> getSoilTypes(CropTier tier) {
-		switch (tier) {
-		case WILD, COMMON:
-			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
-		default:
-			return ImmutableList.of(SoilType.FARMLAND);
-		}
+		return switch (tier) {
+		case WILD, COMMON -> ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
+		default -> ImmutableList.of(SoilType.FARMLAND);
+		};
 	}
 
 	@Override
@@ -149,14 +132,11 @@ public class CropBlockGourd extends CropBaseVine {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("JUNGLE", "SWAMP");
-		case COMMON:
-			return ImmutableList.of("JUNGLE", "MOUNTAIN");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("JUNGLE", "SWAMP");
+		case COMMON -> ImmutableList.of("JUNGLE", "MOUNTAIN");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

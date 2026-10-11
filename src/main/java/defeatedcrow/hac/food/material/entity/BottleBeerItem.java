@@ -33,20 +33,22 @@ public class BottleBeerItem extends ItemEntityFood {
 	// ポーション効果付き
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
-		if (!DCUtil.isEmpty(stack) && stack.getItem() instanceof IFoodTaste food) {
-			MobEffect potion = getPotion(stack.getItem());
-			int taste = food.getTaste(stack);
-			MobEffect eff = getPotion(stack.getItem());
-			int dur = 2400 + (taste * 600);
-			if (living.hasEffect(potion)) {
-				dur += living.getEffect(potion).getDuration();
-			}
-			if (taste < 0)
-				taste = 0;
+		if (living != null && living.isAlive() && !living.level().isClientSide) {
+			if (!DCUtil.isEmpty(stack) && stack.getItem() instanceof IFoodTaste food) {
+				MobEffect potion = getPotion(stack.getItem());
+				int taste = food.getTaste(stack);
+				MobEffect eff = getPotion(stack.getItem());
+				int dur = 2400 + taste * 600;
+				if (living.hasEffect(potion)) {
+					dur += living.getEffect(potion).getDuration();
+				}
+				if (taste < 0)
+					taste = 0;
 
-			MobEffectInstance ret = new MobEffectInstance(eff, dur, taste);
-			if (!level.isClientSide) {
-				living.addEffect(ret);
+				MobEffectInstance ret = new MobEffectInstance(eff, dur, taste);
+				if (!level.isClientSide) {
+					living.addEffect(ret);
+				}
 			}
 		}
 		return super.finishUsingItem(stack, level, living);
@@ -58,7 +60,7 @@ public class BottleBeerItem extends ItemEntityFood {
 			MobEffect potion = getPotion(stack.getItem());
 			int taste = food.getTaste(stack);
 			MobEffect eff = getPotion(stack.getItem());
-			int dur = 2400 + (taste * 600);
+			int dur = 2400 + taste * 600;
 			if (taste < 0)
 				taste = 0;
 			MobEffectInstance instance = new MobEffectInstance(eff, dur, taste);
