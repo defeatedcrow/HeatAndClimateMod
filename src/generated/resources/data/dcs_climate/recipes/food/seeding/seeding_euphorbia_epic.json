@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "seeding",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/crop_euphorbia_epic"
+    },
+    {
+      "item": "dcs_climate:main/seeding_pot"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/sapling_euphorbia_epic"
+  }
+}

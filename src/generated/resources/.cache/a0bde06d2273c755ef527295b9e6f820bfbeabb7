@@ -1,4 +1,4 @@
-// 1.20.1	2026-09-16T02:56:10.3677574	Tags for minecraft:item mod id dcs_climate
+// 1.20.1	2026-10-15T20:47:49.9674383	Tags for minecraft:item mod id dcs_climate
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 05c427bae6c42fa3468413da8a796681e5a20abb data/dcs_climate/tags/items/battery_items.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
@@ -220,7 +220,7 @@ ceb883b7349b5c333561182528462fd639554e73 data/forge/tags/items/crafting_tools/sc
 940e64f7498d44c5827d2f17cdaa1a589630f6ab data/forge/tags/items/crafting_tools/sieve.json
 a6f7273f7130d5d607b7da073fc5a85f25b3b69d data/forge/tags/items/crafting_tools/spindle.json
 4ec7c0320bbd686b3356bcb714654d2bc32519cb data/forge/tags/items/crafting_tools/tempmeter.json
-fe27ac5aefb139e14996bfd0fb8c7b32b10c2d49 data/forge/tags/items/crops.json
+1bac04c9e9b542fa4b7a44e6172ae81379c7918d data/forge/tags/items/crops.json
 8a6bfdd3837538291f01b0f804642adddd18b8d8 data/forge/tags/items/crops/acorn.json
 d88083011e32e8b51cb47ea5b551feb82811f08c data/forge/tags/items/crops/adzuki.json
 78dd9e8f2ea77aa6e032dfd34a103de282855ba7 data/forge/tags/items/crops/all_grapes.json
@@ -254,6 +254,7 @@ d7430b3c53db44c16a8bf44f8cf335eb0942bf4e data/forge/tags/items/crops/cantaloup.j
 7eebf5c09606d3867392e9424ea5a6844b7995b3 data/forge/tags/items/crops/carrot.json
 67bf180af088e4d15592e0221404dd801a1a62bb data/forge/tags/items/crops/cashew.json
 559f3896f27578adab06b510b1100b2713a39269 data/forge/tags/items/crops/cassava.json
+4b2cfbd16cb3d85345e37e0724adefe05d026761 data/forge/tags/items/crops/castor.json
 63999e2bd627dc235e41308cdd1471a0d2745363 data/forge/tags/items/crops/cattleya.json
 9fa70025c54fa07762d47b47bd6bb2e4097fe96c data/forge/tags/items/crops/celery.json
 763ec2ef0c24fa3650e346ba23ad0ebe9bdb40a3 data/forge/tags/items/crops/cereals.json
@@ -911,11 +912,11 @@ a993675cd6d4b3ad999000d25441be803db3a7b4 data/minecraft/tags/items/boats.json
 563e18c2280b90b56428550e4fb35d91786354c9 data/minecraft/tags/items/flowers.json
 5ee7f6137705b796a2b17e71224eb7ddfc0a6ce2 data/minecraft/tags/items/freeze_immune_wearables.json
 de55e3bc141a6c7c652839513d1088f25d8307a3 data/minecraft/tags/items/hoes.json
-680eab7ebfe5e459755c8bb57f67e72a100c3146 data/minecraft/tags/items/leaves.json
+f39529e76ebac23d2320a1baa7434c041dcc7d37 data/minecraft/tags/items/leaves.json
 bc9935cd9dacbbc9daf8a0f48d4adc6e99648b00 data/minecraft/tags/items/logs_that_burn.json
 1b097378589fa8865bc999833d8acf029eabb58d data/minecraft/tags/items/pickaxes.json
 61e420eefe8c3ab3fa965d457834294e3089d94f data/minecraft/tags/items/planks.json
-2d19f8299b6ba5f192d9e25799e9236bba9856f5 data/minecraft/tags/items/saplings.json
+c75fffe831ceb97aaf536d6a9924369e90b44dcd data/minecraft/tags/items/saplings.json
 b09813e5f532ede20063601054ad2a9512b194b8 data/minecraft/tags/items/shovels.json
 4622117b8ea0453d2960985a02e1a4fb0f024018 data/minecraft/tags/items/slabs.json
 2b4fb2d95bad2c7128b237257a8c17ab9035a4f4 data/minecraft/tags/items/stairs.json

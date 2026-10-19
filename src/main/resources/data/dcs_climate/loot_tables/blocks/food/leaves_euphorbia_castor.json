@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "dcs_climate:food/sapling_euphorbia_epic",
+  "pools": [
+    {
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "name": "dcs_climate:food/sapling_euphorbia_epic",
+          "type": "minecraft:item"
+        }
+      ],
+      "rolls": 1,
+      "bonus_rolls": 0.0
+    }
+  ]
+}

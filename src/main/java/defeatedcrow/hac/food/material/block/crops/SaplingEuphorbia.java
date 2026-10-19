@@ -39,6 +39,7 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 		return switch (t) {
 		case COMMON -> FoodInit.CROP_EU_CASSAVA.get();
 		case RARE -> FoodInit.CROP_EU_MANCHINEEL.get();
+		case EPIC -> FoodInit.CROP_EU_CASTOR.get();
 		default -> FoodInit.CROP_EU_KUKUI.get();
 		};
 	}
@@ -49,6 +50,7 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 		case WILD -> Optional.of(FoodInit.BLOCK_EU_KUKUI.get());
 		case COMMON -> Optional.of(FoodInit.BLOCK_EU_CASSAVA.get());
 		case RARE -> Optional.of(FoodInit.BLOCK_EU_MANCHINEEL.get());
+		case EPIC -> Optional.of(FoodInit.BLOCK_EU_CASTOR.get());
 		default -> Optional.empty();
 		};
 	}
@@ -106,6 +108,8 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 			return "cassava";
 		if (tier == CropTier.RARE)
 			return "manchineel";
+		if (tier == CropTier.EPIC)
+			return "castor";
 		return "kukui";
 	}
 
@@ -114,6 +118,7 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 		return switch (t) {
 		case COMMON -> FoodInit.BLOCK_EU_CASSAVA.get().defaultBlockState();
 		case RARE -> FoodInit.LOG_EU_MANCHINEEL.get().defaultBlockState().setValue(DCState.WILD, true);
+		case EPIC -> FoodInit.LOG_EU_KUKUI.get().defaultBlockState().setValue(DCState.WILD, true);
 		default -> FoodInit.LOG_EU_KUKUI.get().defaultBlockState().setValue(DCState.WILD, true);
 		};
 	}
@@ -122,6 +127,7 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 	protected BlockState getLeavesState(CropTier t) {
 		return switch (t) {
 		case RARE -> FoodInit.LEAVES_EU_MANCHINEEL.get().defaultBlockState().setValue(DCState.FLAG, true);
+		case EPIC -> FoodInit.LEAVES_EU_CASTOR.get().defaultBlockState().setValue(DCState.FLAG, true);
 		default -> FoodInit.LEAVES_EU_KUKUI.get().defaultBlockState().setValue(DCState.FLAG, true);
 		};
 	}
@@ -151,6 +157,8 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 			if (large) {
 				h = 6 + level.random.nextInt(3);
 			}
+		} else if (t == CropTier.EPIC) {
+			h = 1 + level.random.nextInt(2);
 		}
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
@@ -164,6 +172,13 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 		if (!level.isClientSide) {
 			if (t == CropTier.COMMON) {
 				level.setBlock(pos, log, 2);
+				return;
+			}
+
+			if (t == CropTier.EPIC) {
+				for (int i = 0; i < h; i++) {
+					level.setBlock(pos.above(i), leaves, 2);
+				}
 				return;
 			}
 

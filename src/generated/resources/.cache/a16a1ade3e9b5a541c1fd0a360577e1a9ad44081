@@ -1,4 +1,4 @@
-// 1.20.1	2026-09-15T00:25:17.0157884	Tags for minecraft:block mod id dcs_climate
+// 1.20.1	2026-10-15T20:47:49.9636867	Tags for minecraft:block mod id dcs_climate
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/blocks/andons.json
 10483793c64468d4f5b52de535ddf0ddc8dba771 data/dcs_climate/tags/blocks/bamboo_shoot.json
 4daf75917f6756b62ac41cc59093013ab3b36b88 data/dcs_climate/tags/blocks/beds.json
@@ -147,13 +147,13 @@ e28e4fab16a0d5c2eba669b19d1026ad7ebf42c2 data/forge/tags/blocks/storage_blocks/t
 d3832d708ff9b2e83f4502b9cf13a6c7e4df0f38 data/forge/tags/blocks/storage_blocks/wax.json
 f3ac02c781860266eae053f53d63d4c9a61543fa data/forge/tags/blocks/weed.json
 361763f637f6d2440f4c06c485dee9909863643e data/minecraft/tags/blocks/climbable.json
-781c701f33a11eee1ac1537f01055cc94998d852 data/minecraft/tags/blocks/crops.json
+ad972390a3e0cac94349f123dc82b8d3acbfddda data/minecraft/tags/blocks/crops.json
 51bfb95affcbc24ac36cd79587b8b0137bbd49ed data/minecraft/tags/blocks/fall_damage_resetting.json
 0c66697fb072599561fc62082ec9457347694d33 data/minecraft/tags/blocks/fences.json
 4f70c6aa1886452df3a643211c4f3c6571cfebe0 data/minecraft/tags/blocks/flowers.json
 fab376db5df3d5c8be10b7d3b98cfa4a76778258 data/minecraft/tags/blocks/leaves.json
 d3c6fe14bcf27696e1ac7fc477f55460bba4b9d5 data/minecraft/tags/blocks/logs_that_burn.json
-9eb220411c08ca96591cce334fa3043b98408cac data/minecraft/tags/blocks/mineable/axe.json
+c0348c926197af1a629398c26c85e62331b01875 data/minecraft/tags/blocks/mineable/axe.json
 8cbfd33ece33b3796f5daf38f9f65b8d8709c409 data/minecraft/tags/blocks/mineable/pickaxe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/needs_diamond_tool.json
 333b0e2ade270e3c2c54c0ec974c8027fbda16bd data/minecraft/tags/blocks/needs_iron_tool.json

@@ -89,6 +89,7 @@ public class LeavesManchineel extends LeavesCropBlockDC {
 		case WILD -> Optional.of(FoodInit.BLOCK_EU_KUKUI.get());
 		case COMMON -> Optional.of(FoodInit.BLOCK_EU_CASSAVA.get());
 		case RARE -> Optional.of(FoodInit.BLOCK_EU_MANCHINEEL.get());
+		case EPIC -> Optional.of(FoodInit.BLOCK_EU_CASTOR.get());
 		default -> Optional.empty();
 		};
 	}

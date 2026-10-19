@@ -1,4 +1,4 @@
-// 1.20.1	2026-10-09T00:15:47.6181052	Recipes:Food
+// 1.20.1	2026-10-15T20:47:49.9432616	Recipes:Food
 905d5d7e66e3cfe156b965e7a6af58c3c7e8c79c data/dcs_climate/advancements/recipes/building_blocks/build/planks_sorghum.json
 d6daf2e2b135011a4fdfdaca22320f3c0ea175af data/dcs_climate/advancements/recipes/building_blocks/build/slab2_beech_common.json
 c79f805cd98bfbd9b5fef196fbe397f47d1a54b7 data/dcs_climate/advancements/recipes/building_blocks/build/slab2_beech_sweet.json
@@ -613,6 +613,7 @@ f7cbcaa22cae5e63c54a4138d943c470a8a95519 data/dcs_climate/advancements/recipes/m
 4137e5047c09e345ea932d30d9e599924bb66e34 data/dcs_climate/advancements/recipes/misc/food/seeding/seeding_erica_rare.json
 ad51437bb4c1a8ab5275a285560024bd4fa32ee2 data/dcs_climate/advancements/recipes/misc/food/seeding/seeding_erica_wild.json
 05557300d956ce656c89b307331ef1f8ccadd3d0 data/dcs_climate/advancements/recipes/misc/food/seeding/seeding_euphorbia_common.json
+076c087b57624de2586490ace338623acd8fdc35 data/dcs_climate/advancements/recipes/misc/food/seeding/seeding_euphorbia_epic.json
 6c7173c25855037cc2e3494cb4c3d0da010f8077 data/dcs_climate/advancements/recipes/misc/food/seeding/seeding_euphorbia_rare.json
 3ebcb241083670312821aeb8c6baf58fd142b49d data/dcs_climate/advancements/recipes/misc/food/seeding/seeding_euphorbia_wild.json
 23eede30072c28d0939f6f6137df44fb358ad1d3 data/dcs_climate/advancements/recipes/misc/food/seeding/seeding_ginger_common.json
@@ -1270,6 +1271,7 @@ df0723c4fce524f5d29d77f9ac4d502e628e0377 data/dcs_climate/recipes/food/seeding/s
 b9909c42b68ee14e7d23bed4e4538ed2825d7792 data/dcs_climate/recipes/food/seeding/seeding_erica_rare.json
 8efad7e3f7ab4795310fe75b502655707488de8b data/dcs_climate/recipes/food/seeding/seeding_erica_wild.json
 0006905d67ee2b66455cd18f51844bd730672b4a data/dcs_climate/recipes/food/seeding/seeding_euphorbia_common.json
+37a6b6f48eac17afc8501afe86429b23efa628bc data/dcs_climate/recipes/food/seeding/seeding_euphorbia_epic.json
 ad495ac1ef59255f58b0ae88d9858fd6a34960b7 data/dcs_climate/recipes/food/seeding/seeding_euphorbia_rare.json
 f0638152d4efabe285a1483d3eef72a6c2945059 data/dcs_climate/recipes/food/seeding/seeding_euphorbia_wild.json
 89b307c69555d57ced1d370da55e5ec050d112a4 data/dcs_climate/recipes/food/seeding/seeding_ginger_common.json

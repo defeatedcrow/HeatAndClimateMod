@@ -86,7 +86,7 @@ public class SaplingCherry extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD, COMMON -> ImmutableList.of("MOUNTAIN", "FOREST");
+		case WILD, COMMON -> ImmutableList.of("MOUNTAIN", "FOREST", "DENCE");
 		default -> Lists.newArrayList();
 		};
 	}

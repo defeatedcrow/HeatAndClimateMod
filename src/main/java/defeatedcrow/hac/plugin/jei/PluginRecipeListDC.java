@@ -191,6 +191,7 @@ public class PluginRecipeListDC {
 
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_EU_KUKUI.get());
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_EU_MANCHINEEL.get());
+			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_EU_CASTOR.get());
 
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MR_MULBERRY.get());
 			TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_MR_PAPER.get());
@@ -258,7 +259,11 @@ public class PluginRecipeListDC {
 
 		if (BIOME_LIST.isEmpty() && ClimateCore.proxy.getClientLevel().isPresent()) {
 			Registry<Biome> biomeReg = ClimateCore.proxy.getClientLevel().get().registryAccess().registryOrThrow(Registries.BIOME);
-			BIOME_LIST.addAll(biomeReg.stream().toList());
+			biomeReg.asLookup().listElements().forEach(ref -> {
+				if (ref != null && ref.get() != null) {
+					BIOME_LIST.add(ref.get());
+				}
+			});
 		}
 	}
 

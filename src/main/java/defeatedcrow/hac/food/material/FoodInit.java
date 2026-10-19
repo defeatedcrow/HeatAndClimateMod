@@ -59,6 +59,7 @@ import defeatedcrow.hac.food.material.block.crops.LeavesBlueberry;
 import defeatedcrow.hac.food.material.block.crops.LeavesCamellia;
 import defeatedcrow.hac.food.material.block.crops.LeavesCamphor;
 import defeatedcrow.hac.food.material.block.crops.LeavesCashew;
+import defeatedcrow.hac.food.material.block.crops.LeavesCastor;
 import defeatedcrow.hac.food.material.block.crops.LeavesCherry;
 import defeatedcrow.hac.food.material.block.crops.LeavesCinnamon;
 import defeatedcrow.hac.food.material.block.crops.LeavesClove;
@@ -1227,6 +1228,7 @@ public class FoodInit {
 	public static final RegistryObject<Item> CROP_EU_KUKUI = regCrop(CropTier.WILD, CropType.EUPHORBIA, TagDC.ItemTag.CROP_KUKUI);
 	public static final RegistryObject<Item> CROP_EU_CASSAVA = regCrop(CropTier.COMMON, CropType.EUPHORBIA, TagDC.ItemTag.CROP_CASSAVA);
 	public static final RegistryObject<Item> CROP_EU_MANCHINEEL = regInedibleCrop(CropTier.RARE, CropType.EUPHORBIA, TagDC.ItemTag.CROP_MANCHINEEL);
+	public static final RegistryObject<Item> CROP_EU_CASTOR = regInedibleCrop(CropTier.EPIC, CropType.EUPHORBIA, TagDC.ItemTag.CROP_CASTOR);
 	public static final RegistryObject<Item> CROP_MR_MULBERRY = regCrop(CropTier.WILD, CropType.MORUS, TagDC.ItemTag.CROP_MULBERRY, 1, 0F, 0);
 	public static final RegistryObject<Item> CROP_MR_PAPER = regCrop(CropTier.COMMON, CropType.MORUS, TagDC.ItemTag.CROP_KAJI, 1, 0F);
 	public static final RegistryObject<Item> CROP_MR_RUBBER = regInedibleCrop(CropTier.RARE, CropType.MORUS, TagDC.ItemTag.CROP_RUBBER);
@@ -1363,6 +1365,7 @@ public class FoodInit {
 	public static final RegistryObject<Block> BLOCK_EU_KUKUI = regCropBlock(CropTier.WILD, CropType.EUPHORBIA, () -> new SaplingEuphorbia(CropTier.WILD), "sapling", ItemTags.SAPLINGS);
 	public static final RegistryObject<Block> BLOCK_EU_CASSAVA = regSeed(CropTier.COMMON, CropType.EUPHORBIA, () -> new CropBlockEuphorbia_Cassava(CropTier.COMMON), TagDC.ItemTag.SEED_CASSAVA);
 	public static final RegistryObject<Block> BLOCK_EU_MANCHINEEL = regCropBlock(CropTier.RARE, CropType.EUPHORBIA, () -> new SaplingEuphorbia(CropTier.RARE), "sapling", ItemTags.SAPLINGS);
+	public static final RegistryObject<Block> BLOCK_EU_CASTOR = regCropBlock(CropTier.EPIC, CropType.EUPHORBIA, () -> new SaplingEuphorbia(CropTier.EPIC), "sapling", ItemTags.SAPLINGS);
 	public static final RegistryObject<Block> BLOCK_MR_MULBERRY = regCropBlock(CropTier.WILD, CropType.MORUS, () -> new SaplingMorus(CropTier.WILD), "sapling", ItemTags.SAPLINGS);
 	public static final RegistryObject<Block> BLOCK_MR_PAPER = regCropBlock(CropTier.COMMON, CropType.MORUS, () -> new SaplingMorus(CropTier.COMMON), "sapling", ItemTags.SAPLINGS);
 	public static final RegistryObject<Block> BLOCK_MR_RUBBER = regCropBlock(CropTier.RARE, CropType.MORUS, () -> new SaplingMorus(CropTier.RARE), "sapling", ItemTags.SAPLINGS);
@@ -1409,6 +1412,7 @@ public class FoodInit {
 	public static final RegistryObject<Block> LEAVES_ER_BLUEBERRY = regBlock("leaves_erica_blueberry", LeavesBlueberry::new, ItemTags.LEAVES);
 	public static final RegistryObject<Block> LEAVES_EU_KUKUI = regBlock("leaves_euphorbia_kukui", LeavesKukui::new, ItemTags.LEAVES);
 	public static final RegistryObject<Block> LEAVES_EU_MANCHINEEL = regBlock("leaves_euphorbia_manchineel", LeavesManchineel::new, ItemTags.LEAVES);
+	public static final RegistryObject<Block> LEAVES_EU_CASTOR = regBlock("leaves_euphorbia_castor", LeavesCastor::new, ItemTags.LEAVES);
 	public static final RegistryObject<Block> LEAVES_MR_MULBERRY = regBlock("leaves_morus_mulberry", LeavesMulberry::new, ItemTags.LEAVES);
 	public static final RegistryObject<Block> LEAVES_MR_PAPER = regBlock("leaves_morus_paper", LeavesPaper::new, ItemTags.LEAVES);
 	public static final RegistryObject<Block> LEAVES_MR_RUBBER = regBlock("leaves_morus_rubber", LeavesRubber::new, ItemTags.LEAVES);

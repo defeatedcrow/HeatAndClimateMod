@@ -90,7 +90,7 @@ public class SaplingRose extends SaplingBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("HOT");
+		case WILD -> ImmutableList.of("HOT", "MOUNTAIN");
 		case COMMON -> ImmutableList.of("HOT", "LOWLAND");
 		default -> Lists.newArrayList();
 		};
@@ -126,8 +126,6 @@ public class SaplingRose extends SaplingBaseBlock {
 		BlockState log = getLogState(t);
 		BlockState leaves = getLeavesState(t);
 
-		h = 0 + level.random.nextInt(3);
-
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
 		leaves = leaves.setValue(DCState.STAGE6, m);
 
@@ -140,11 +138,7 @@ public class SaplingRose extends SaplingBaseBlock {
 			if (limit < 0)
 				return;
 
-			if (limit == 0) {
-				level.setBlock(pos, leaves, 2);
-			} else {
-				TreeShapeGen.growTreeBS(level, pos, h, log, leaves);
-			}
+			level.setBlock(pos, leaves, 2);
 		}
 	}
 

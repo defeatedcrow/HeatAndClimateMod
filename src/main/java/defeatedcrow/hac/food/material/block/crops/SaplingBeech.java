@@ -82,7 +82,7 @@ public class SaplingBeech extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD, COMMON -> ImmutableList.of("MOUNTAIN", "COLD");
+		case WILD, COMMON -> ImmutableList.of("MOUNTAIN", "COLD", "DENCE", "HILL");
 		default -> Lists.newArrayList();
 		};
 	}
@@ -172,7 +172,7 @@ public class SaplingBeech extends SaplingBaseBlock {
 				TreeShapeGen.growTreeAM(level, pos, limit, log, leaves);
 				for (Direction d : Direction.Plane.HORIZONTAL) {
 					if (level.getRandom().nextBoolean())
-						TreeShapeGen.growBlanchBS(level, pos.above(limit - 6 + rand.nextInt(2)), d, 1, 1, log, leaves);
+						TreeShapeGen.growBlanchBS(level, pos.above(limit - 8 + rand.nextInt(2)), d, 1, 1, log, leaves);
 				}
 			} else if (limit < 15) {
 				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);

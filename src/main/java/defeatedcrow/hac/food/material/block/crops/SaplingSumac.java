@@ -92,8 +92,8 @@ public class SaplingSumac extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("MOUNTAIN", "FOREST");
-		case COMMON -> ImmutableList.of("JUNGLE");
+		case WILD -> ImmutableList.of("MOUNTAIN", "FOREST", "DENCE");
+		case COMMON -> ImmutableList.of("JUNGLE", "LUSH");
 		default -> Lists.newArrayList();
 		};
 	}

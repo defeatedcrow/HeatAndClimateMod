@@ -432,6 +432,7 @@
   "item.dcs_climate.food.crop_euphorbia_wild":"Kukui nuts",
   "item.dcs_climate.food.crop_euphorbia_common":"Cassava",
   "item.dcs_climate.food.crop_euphorbia_rare":"Death Apple",
+  "item.dcs_climate.food.crop_euphorbia_epic":"Castor Beans",
   "item.dcs_climate.food.crop_morus_wild":"Mulberry",
   "item.dcs_climate.food.crop_morus_common":"Paper Mulberry",
   "item.dcs_climate.food.crop_morus_rare":"Rubberwood Berry",
@@ -1554,6 +1555,7 @@
   "block.dcs_climate.food.sapling_erica_rare":"Blueberry",
   "block.dcs_climate.food.sapling_euphorbia_wild":"Kukui",
   "block.dcs_climate.food.sapling_euphorbia_rare":"Manchineel",
+  "block.dcs_climate.food.sapling_euphorbia_epic":"Castor Bean",
   "block.dcs_climate.food.sapling_morus_wild":"Mulberry",
   "block.dcs_climate.food.sapling_morus_common":"Paper Mulberry",
   "block.dcs_climate.food.sapling_morus_rare":"Rubberwood",
@@ -1600,6 +1602,7 @@
   "block.dcs_climate.food.leaves_erica_blueberry":"Blueberry Leaves",
   "block.dcs_climate.food.leaves_euphorbia_kukui":"Kukui Leaves",
   "block.dcs_climate.food.leaves_euphorbia_manchineel":"Manchineel Leaves",
+  "block.dcs_climate.food.leaves_euphorbia_castor":"Castor Leaves",
   "block.dcs_climate.food.leaves_morus_mulberry":"Mulberry Leaves",
   "block.dcs_climate.food.leaves_morus_paper":"Paper Mulberry Leaves",
   "block.dcs_climate.food.leaves_morus_rubber":"Rubberwood Leaves",
@@ -2890,6 +2893,7 @@
   "dcs.gui.jei.crop_tip2":"WILD crops may mutate when growing on fertilized farmblock.",
   "dcs.gui.jei.tree_flower":"Flowering Seasons",
   "dcs.gui.jei.tree_crop":"Harvest Seasons",
+  "biomes.dcs_climate.empty_biome":"Empty Name Biome",
 
     "## gui_waila":"waila",
 

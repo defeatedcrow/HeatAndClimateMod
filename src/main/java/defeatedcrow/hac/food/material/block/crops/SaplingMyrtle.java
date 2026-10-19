@@ -81,7 +81,7 @@ public class SaplingMyrtle extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("SAVANNA", "SPARSE", "RIVER", "SWAMP");
+		case WILD -> ImmutableList.of("SAVANNA", "RIVER", "SWAMP", "DRY");
 		case COMMON -> ImmutableList.of("JUNGLE");
 		default -> Lists.newArrayList();
 		};
@@ -90,7 +90,7 @@ public class SaplingMyrtle extends SaplingBaseBlock {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD, COMMON -> ImmutableList.of("SNOWY", "COLD");
+		case WILD, COMMON -> ImmutableList.of("SNOWY", "COLD", "PLAINS");
 		default -> Lists.newArrayList();
 		};
 	}
@@ -162,21 +162,21 @@ public class SaplingMyrtle extends SaplingBaseBlock {
 				TreeShapeGen.growTreeAM(level, pos, limit, log, leaves);
 				for (Direction d : Direction.Plane.HORIZONTAL) {
 					if (level.getRandom().nextBoolean())
-						TreeShapeGen.growBlanchAS(level, pos.above(limit - 6 + rand.nextInt(4)), d, 2, 1 + rand.nextInt(2), log, leaves);
+						TreeShapeGen.growBlanchAS(level, pos.above(limit - 8 + rand.nextInt(4)), d, 2, 1 + rand.nextInt(2), log, leaves);
 				}
 			} else if (limit < 15) {
 				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);
 				TreeShapeGen.growTreeBigLog(level, pos, limit - 10, log);
 				for (Direction d : Direction.Plane.HORIZONTAL) {
 					if (level.getRandom().nextInt(4) > 0)
-						TreeShapeGen.growBlanchAS(level, pos.above(limit - 6 + rand.nextInt(3)), d, 2, 2 + rand.nextInt(2), log, leaves);
+						TreeShapeGen.growBlanchAS(level, pos.above(limit - 8 + rand.nextInt(3)), d, 2, 2 + rand.nextInt(2), log, leaves);
 				}
 			} else {
 				TreeShapeGen.growTreeAL(level, pos, limit, log, leaves);
 				TreeShapeGen.growTreeBigLog(level, pos, limit / 2, log);
 				for (Direction d : Direction.Plane.HORIZONTAL) {
 					if (level.getRandom().nextInt(4) > 0)
-						TreeShapeGen.growBlanchAS(level, pos.above(limit - 6 + rand.nextInt(3)), d, 2, 1 + rand.nextInt(2), log, leaves);
+						TreeShapeGen.growBlanchAS(level, pos.above(limit - 8 + rand.nextInt(3)), d, 2, 1 + rand.nextInt(2), log, leaves);
 					if (level.getRandom().nextInt(4) > 0)
 						TreeShapeGen.growBlanchAM(level, pos.above(limit - 12 + rand.nextInt(3)), d, 1 + rand.nextInt(2), 1, log, leaves);
 				}

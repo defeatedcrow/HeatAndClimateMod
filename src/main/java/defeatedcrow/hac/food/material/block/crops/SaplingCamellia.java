@@ -90,7 +90,7 @@ public class SaplingCamellia extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("MOUNTAIN", "COLD");
+		case WILD -> ImmutableList.of("MOUNTAIN", "COLD", "DENSE");
 		case COMMON -> ImmutableList.of("MOUNTAIN", "JUNGLE");
 		default -> Lists.newArrayList();
 		};
@@ -155,8 +155,8 @@ public class SaplingCamellia extends SaplingBaseBlock {
 			if (limit < 0)
 				return;
 
-			if (limit < 2) {
-				for (int l = 0; l <= limit; l++) {
+			if (t != CropTier.COMMON) {
+				for (int l = 0; l < limit; l++) {
 					level.setBlock(pos.above(l), leaves, 2);
 				}
 			} else {

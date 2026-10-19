@@ -84,7 +84,7 @@ public class SaplingRubia extends SaplingBaseBlock {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD, COMMON -> ImmutableList.of("MOUNTAIN", "FOREST", "JUNGLE");
+		case WILD, COMMON -> ImmutableList.of("MOUNTAIN", "FOREST", "JUNGLE", "LUSH");
 		default -> Lists.newArrayList();
 		};
 	}
@@ -129,11 +129,11 @@ public class SaplingRubia extends SaplingBaseBlock {
 		BlockState leaves = getLeavesState(t);
 
 		if (t == CropTier.WILD) {
-			h = 1 + level.random.nextInt(3);
+			h = 0 + level.random.nextInt(3);
 		} else if (t == CropTier.COMMON) {
 			h = 1 + level.random.nextInt(4);
 		} else if (t == CropTier.RARE) {
-			h = 1 + level.random.nextInt(2);
+			h = 0 + level.random.nextInt(3);
 		}
 
 		int m = ((LeavesCropBlockDC) leaves.getBlock()).getSeasonLeafStage(level, pos, leaves);
@@ -145,10 +145,13 @@ public class SaplingRubia extends SaplingBaseBlock {
 		int limit = TreeShapeGen.replaceCheck(level, pos, h);
 
 		if (!level.isClientSide) {
-			if (limit < 1)
+			if (limit < 0)
 				return;
-
-			TreeShapeGen.growTreeBS(level, pos, h, log, leaves);
+			if (h == 0) {
+				level.setBlock(pos, leaves, 2);
+			} else {
+				TreeShapeGen.growTreeBS(level, pos, h, log, leaves);
+			}
 		}
 	}
 

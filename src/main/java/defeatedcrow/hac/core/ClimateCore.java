@@ -130,6 +130,7 @@ public class ClimateCore {
 		bus.addListener(this::gatherData);
 		bus.addListener(this::attributeRegister);
 		bus.addListener(CreativeTabDC::fillTab);
+		bus.addListener(this::jsonSetup);
 
 		proxy.addListener(bus);
 

@@ -76,14 +76,13 @@ public class CropBlockEuphorbia_Cassava extends ClimateCropBaseBlock {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_0")),
+		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_0")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/aroids_1")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/euphorbia_" + getSpeciesName(cropTier) + "_2")),
-		    new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves", ImmutableMap.of("crop", "dcs_climate:block/crop/euphorbia_" + getSpeciesName(cropTier) + "_f",
-		        "leaves", "dcs_climate:block/crop/euphorbia_" + getSpeciesName(cropTier) + "_leaves1")),
-		    new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves", ImmutableMap.of("crop", "dcs_climate:block/crop/euphorbia_" + getSpeciesName(cropTier) + "_2",
-		        "leaves", "dcs_climate:block/crop/euphorbia_" + getSpeciesName(cropTier) + "_leaves1")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves", ImmutableMap.of("crop", "dcs_climate:block/crop/euphorbia_" + getSpeciesName(cropTier) + "_f", "leaves",
+		        "dcs_climate:block/crop/euphorbia_" + getSpeciesName(cropTier) + "_leaves1")),
+		    new JsonModelDC("dcs_climate:block/dcs_crop_large_leaves", ImmutableMap.of("crop", "dcs_climate:block/crop/euphorbia_" + getSpeciesName(cropTier) + "_2", "leaves",
+		        "dcs_climate:block/crop/euphorbia_" + getSpeciesName(cropTier) + "_leaves1")),
 		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/crop/euphorbia_" + getSpeciesName(cropTier) + "_d")));
 	}
 
@@ -129,6 +128,7 @@ public class CropBlockEuphorbia_Cassava extends ClimateCropBaseBlock {
 		return switch (t) {
 		case COMMON -> FoodInit.BLOCK_EU_CASSAVA.get();
 		case RARE -> FoodInit.BLOCK_EU_MANCHINEEL.get();
+		case EPIC -> FoodInit.BLOCK_EU_CASTOR.get();
 		default -> FoodInit.BLOCK_EU_KUKUI.get();
 		};
 	}
@@ -138,6 +138,7 @@ public class CropBlockEuphorbia_Cassava extends ClimateCropBaseBlock {
 		return switch (t) {
 		case COMMON -> FoodInit.CROP_EU_CASSAVA.get();
 		case RARE -> FoodInit.CROP_EU_MANCHINEEL.get();
+		case EPIC -> FoodInit.CROP_EU_CASTOR.get();
 		default -> FoodInit.CROP_EU_KUKUI.get();
 		};
 	}
@@ -148,6 +149,7 @@ public class CropBlockEuphorbia_Cassava extends ClimateCropBaseBlock {
 		case WILD -> Optional.of(FoodInit.BLOCK_EU_KUKUI.get());
 		case COMMON -> Optional.of(FoodInit.BLOCK_EU_CASSAVA.get());
 		case RARE -> Optional.of(FoodInit.BLOCK_EU_MANCHINEEL.get());
+		case EPIC -> Optional.of(FoodInit.BLOCK_EU_CASTOR.get());
 		default -> Optional.empty();
 		};
 	}
@@ -188,6 +190,8 @@ public class CropBlockEuphorbia_Cassava extends ClimateCropBaseBlock {
 			return "cassava";
 		if (tier == CropTier.RARE)
 			return "manchineel";
+		if (tier == CropTier.EPIC)
+			return "castor";
 		return "kukui";
 	}
 

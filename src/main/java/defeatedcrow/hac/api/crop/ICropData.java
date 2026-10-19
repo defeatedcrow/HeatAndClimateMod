@@ -9,6 +9,7 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
@@ -16,9 +17,13 @@ public interface ICropData {
 
 	CropType getFamily();
 
-	ItemLike getSeedItem(CropTier tier);
+	default ItemLike getSeedItem(CropTier tier) {
+		return Items.AIR;
+	}
 
-	Item getCropItem(CropTier tier);
+	default Item getCropItem(CropTier tier) {
+		return Items.AIR;
+	}
 
 	Optional<Block> getMutationTarget(CropTier tier);
 
@@ -53,11 +58,21 @@ public interface ICropData {
 	}
 
 	public enum SoilType {
-		FARMLAND, DIRT, SAND, MUD, WATER, LOGS;
+		FARMLAND,
+		DIRT,
+		SAND,
+		MUD,
+		WATER,
+		LOGS;
 	}
 
 	public enum AquaticType {
-		NONE, EMERGED, SUBMERGED, FLOATING, FORCED_EMERGED, FORCED_SUBMERGED;
+		NONE,
+		EMERGED,
+		SUBMERGED,
+		FLOATING,
+		FORCED_EMERGED,
+		FORCED_SUBMERGED;
 	}
 
 }

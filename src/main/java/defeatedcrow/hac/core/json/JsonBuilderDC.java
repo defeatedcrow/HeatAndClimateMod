@@ -99,58 +99,62 @@ public class JsonBuilderDC {
 			File dir3 = new File(ClimateCore.dataDir, "/loot_tables/blocks/");
 
 			// 生成にIJsonDataDCインターフェイスを使うので、実装チェックをする。
+
+			/*
 			if (dir3 != null && block instanceof IBlockDC blockDC) {
 				ItemStack drop = blockDC.getMainDrop();
-				Optional<ResourceLocation> regName = DCUtil.getRes(drop.getItem());
-				regName.ifPresent(res -> {
-					String name = res.toString();
+				if (drop != null && !DCUtil.isEmpty(drop)) {
+					Optional<ResourceLocation> regName = DCUtil.getRes(drop.getItem());
+					regName.ifPresent(res -> {
+						String name = res.toString();
 
-					File f = new File(dir3, data.getRegistryName() + ".json");
+						File f = new File(dir3, data.getRegistryName() + ".json");
 
-					// すでにファイルが有る場合は何もしない。
-					if (!f.exists()) {
-						// ファイルを生成する。
-						if (!f.getParentFile().exists()) {
-							f.getParentFile().mkdirs();
-						}
-
-						try {
-							f.createNewFile();
-						} catch (IOException e1) {
-							e1.printStackTrace();
-						}
-
-						// JSONファイルの生成。
-						try {
-							if (f.canWrite()) {
-								// Streamは開けたら閉めるを徹底しよう。ご安全に!
-								FileOutputStream fos = new FileOutputStream(f.getPath());
-								OutputStreamWriter osw = new OutputStreamWriter(fos);
-								JsonWriter jsw = new JsonWriter(osw);
-
-								// ここでインデントのスペースの数を調整でき、ファイルの内容が適宜改行されるようになる。
-								jsw.setIndent("  ");
-								Gson gson = new GsonBuilder().serializeNulls().disableHtmlEscaping().create();
-
-								if (data.getDropType() == IJsonDataDC.BlockType.NORMAL) {
-									BlockLoot_Normal jsonObj = new BlockLoot_Normal(name);
-									gson.toJson(jsonObj, BlockLoot_Normal.class, jsw);
-								} else if (data.getDropType() == IJsonDataDC.BlockType.ENTITY_NBT) {
-									BlockLoot_NBT jsonObj = new BlockLoot_NBT(name);
-									gson.toJson(jsonObj, BlockLoot_NBT.class, jsw);
-								}
-
-								osw.close();
-								fos.close();
-								jsw.close();
+						// すでにファイルが有る場合は何もしない。
+						if (!f.exists()) {
+							// ファイルを生成する。
+							if (!f.getParentFile().exists()) {
+								f.getParentFile().mkdirs();
 							}
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
 
-					}
-				});
-			}
+							try {
+								f.createNewFile();
+							} catch (IOException e1) {
+								e1.printStackTrace();
+							}
+
+							// JSONファイルの生成。
+							try {
+								if (f.canWrite()) {
+									// Streamは開けたら閉めるを徹底しよう。ご安全に!
+									FileOutputStream fos = new FileOutputStream(f.getPath());
+									OutputStreamWriter osw = new OutputStreamWriter(fos);
+									JsonWriter jsw = new JsonWriter(osw);
+
+									// ここでインデントのスペースの数を調整でき、ファイルの内容が適宜改行されるようになる。
+									jsw.setIndent("  ");
+									Gson gson = new GsonBuilder().serializeNulls().disableHtmlEscaping().create();
+
+									if (data.getDropType() == IJsonDataDC.BlockType.NORMAL) {
+										BlockLoot_Normal jsonObj = new BlockLoot_Normal(name);
+										gson.toJson(jsonObj, BlockLoot_Normal.class, jsw);
+									} else if (data.getDropType() == IJsonDataDC.BlockType.ENTITY_NBT) {
+										BlockLoot_NBT jsonObj = new BlockLoot_NBT(name);
+										gson.toJson(jsonObj, BlockLoot_NBT.class, jsw);
+									}
+
+									osw.close();
+									fos.close();
+									jsw.close();
+								}
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+
+						}
+					});
+				}
+			} */
 
 			/* Block Model */
 			// modelsフォルダに生成する

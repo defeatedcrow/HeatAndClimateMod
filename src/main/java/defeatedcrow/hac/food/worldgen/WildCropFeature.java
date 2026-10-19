@@ -81,32 +81,49 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 	public static boolean updateFlower(WorldGenLevel level, BlockPos pos, RandomSource random) {
 		random.nextInt(100);
 		// サークル状に生成
+		// より条件が一致する作物を優先する
 		Holder<Biome> biome = level.getBiome(pos);
-		List<ClimateCropBaseBlock> targets = TargetCropList.targetList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList();
+		List<ClimateCropBaseBlock> targetFirst = TargetCropList.targetList.stream().filter(b -> matchBiome(biome, pos.getY(), b) > 1).toList();
+		List<ClimateCropBaseBlock> targetSecond = TargetCropList.targetList.stream().filter(b -> matchBiome(biome, pos.getY(), b) > 0).toList();
 		boolean tree = random.nextInt(100) < 30;
-		if (tree) {
+		if (ConfigCommonBuilder.INSTANCE.enCommonCrop.get() && random.nextInt(100) < 20) {
+			// 20%の確率
+			if (tree) {
+				// 村には生成しないように
+				if (level.getLevel().isCloseToVillage(pos, 8)) {
+					return false;
+				} else {
+					targetFirst = TargetCropList.commonTreeList.stream().filter(b -> matchBiome(biome, pos.getY(), b) > 1).toList();
+					targetSecond = TargetCropList.commonTreeList.stream().filter(b -> matchBiome(biome, pos.getY(), b) > 0).toList();
+				}
+			} else {
+				targetFirst = TargetCropList.commonList.stream().filter(b -> matchBiome(biome, pos.getY(), b) > 1).toList();
+				targetSecond = TargetCropList.commonList.stream().filter(b -> matchBiome(biome, pos.getY(), b) > 0).toList();
+			}
+		} else if (tree) {
 			// 村には生成しないように
 			if (level.getLevel().isCloseToVillage(pos, 8)) {
 				return false;
 			} else {
-				targets = TargetCropList.targetTreeList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList();
+				targetFirst = TargetCropList.targetTreeList.stream().filter(b -> matchBiome(biome, pos.getY(), b) > 1).toList();
+				targetSecond = TargetCropList.targetTreeList.stream().filter(b -> matchBiome(biome, pos.getY(), b) > 0).toList();
 			}
-		}
-		if (ConfigCommonBuilder.INSTANCE.enCommonCrop.get() && random.nextInt(100) < 20) {
-			// 20%の確率
-			targets = tree ? TargetCropList.commonTreeList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList() : TargetCropList.commonList.stream().filter(b -> matchBiome(biome, pos.getY(), b)).toList();
 		}
 
 		// DCLogger.debugInfoLog("=== target size: " + targets.size() + " " + tree + " ===");
 		// DCLogger.debugInfoLog("pos: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ());
-
-		if (!targets.isEmpty() && targets.size() > 0) {
-			int i = targets.size();
-			ClimateCropBaseBlock crop = i < 2 ? targets.get(0) : targets.get(random.nextInt(i));
+		ClimateCropBaseBlock crop = null;
+		boolean first = random.nextInt(100) < 70 && !targetFirst.isEmpty() && targetFirst.size() > 0;
+		if (first) {
+			int i = targetFirst.size();
+			crop = i < 2 ? targetFirst.get(0) : targetFirst.get(random.nextInt(i));
+		} else if (!targetSecond.isEmpty() && targetSecond.size() > 0) {
+			int i = targetSecond.size();
+			crop = i < 2 ? targetSecond.get(0) : targetSecond.get(random.nextInt(i));
+		}
+		if (crop != null) {
 			boolean wild = crop.getTier() == CropTier.WILD;
-
 			// DCLogger.debugInfoLog("crop: " + crop.getRegistryName());
-
 			// 設置
 			BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
 			if (tree) {
@@ -219,28 +236,13 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		return state.getFluidState().is(FluidTags.WATER) && !state.getFluidState().isEmpty() && state.getFluidState().isSource();
 	}
 
-	private static boolean matchBiome(Holder<Biome> biome, int height, ClimateCropBaseBlock block) {
-		if (!block.getSuitableTemp(block.getTier()).contains(DCHeatTier.getTypeByBiomeTemp(biome.get().getBaseTemperature()))) {
-			// 温度条件の一致
-			return false;
-		}
-		boolean b1 = false;
+	private static int matchBiome(Holder<Biome> biome, int height, ClimateCropBaseBlock block) {
+		int weight = 0;
 		boolean b2 = false;
 		float humid = biome.get().getModifiedClimateSettings().downfall();
-		for (String s : block.getGeneratedBiomeTag(block.getTier())) {
-			if (TagUtil.matchTag(s.toLowerCase(), biome).isPresent()) {
-				b1 = true;
-				break;
-			} else if (s.contains("MOUNTAIN") && height > 130) {
-				b1 = true;
-				break;
-			} else if (s.contains("DRY") && humid < 0.35F) {
-				b1 = true;
-				break;
-			} else if ((s.contains("WET") || s.contains("WATER")) && humid > 0.8F) {
-				b1 = true;
-				break;
-			}
+		if (!block.getSuitableTemp(block.getTier()).contains(DCHeatTier.getTypeByBiomeTemp(biome.get().getBaseTemperature()))) {
+			// 温度条件の一致
+			return -1;
 		}
 		for (String s2 : block.getAvoidBiomeTag(block.getTier())) {
 			if (TagUtil.matchTag(s2.toLowerCase(), biome).isPresent()) {
@@ -260,7 +262,35 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 				break;
 			}
 		}
-		return b1 && !b2;
+		if (b2)
+			return -1;
+
+		for (String s : block.getGeneratedBiomeTag(block.getTier())) {
+			if (TagUtil.matchTag(s.toLowerCase(), biome).isPresent()) {
+				weight++;
+			} else if (s.contains("MOUNTAIN") && height > 120) {
+				weight++;
+				if (height > 180) {
+					weight++;
+				}
+			} else if (s.contains("LOWLAND") && height < 90) {
+				weight++;
+				if (height < 70) {
+					weight++;
+				}
+				break;
+			} else if (s.contains("DRY") && humid < 0.35F) {
+				weight++;
+			} else if ((s.contains("WET") || s.contains("WATER")) && humid > 0.8F) {
+				weight++;
+			} else if (biome.unwrapKey().isPresent()) {
+				if (biome.unwrapKey().get().location().getPath().contains(s)) {
+					weight++;
+				}
+			}
+		}
+
+		return weight;
 	}
 
 }

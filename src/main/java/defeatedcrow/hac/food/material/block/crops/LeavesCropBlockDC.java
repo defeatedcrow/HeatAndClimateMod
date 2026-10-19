@@ -44,6 +44,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -97,17 +98,19 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		if (defoliation) {
-			return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_spr")), new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap
-			    .of("all", "dcs_climate:block/tree/" + texName() + "_leaves_smr")), new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap
-			        .of("all", "dcs_climate:block/tree/" + texName() + "_leaves_aut")), new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap
-			            .of("all", "dcs_climate:block/tree/" + texName() + "_leaves_wtr")), new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap
-			                .of("all", "dcs_climate:block/tree/" + texName() + "_leaves_f")), new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_c")));
+			return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_spr")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_smr")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_aut")),
+			    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_wtr")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_f")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_c")));
 		} else {
-			return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")), new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap
-			    .of("all", "dcs_climate:block/tree/" + texName() + "_leaves")), new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap
-			        .of("all", "dcs_climate:block/tree/" + texName() + "_leaves")), new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap
-			            .of("all", "dcs_climate:block/tree/" + texName() + "_leaves_d")), new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap
-			                .of("all", "dcs_climate:block/tree/" + texName() + "_leaves_f")), new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_c")));
+			return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_d")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_f")),
+			    new JsonModelDC("dcs_climate:block/dcs_leaves", ImmutableMap.of("all", "dcs_climate:block/tree/" + texName() + "_leaves_c")));
 		}
 	}
 
@@ -260,7 +263,10 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	@Override
 	public ItemStack getSeedItem(BlockState thisState) {
-		return new ItemStack(getSeedItem(cropTier));
+		if (cropTier != null && getSeedItem(cropTier) != Items.AIR)
+			return new ItemStack(getSeedItem(cropTier));
+		else
+			return ItemStack.EMPTY;
 	}
 
 	@Override

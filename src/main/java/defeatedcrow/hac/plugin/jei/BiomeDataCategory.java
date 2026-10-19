@@ -1,6 +1,7 @@
 package defeatedcrow.hac.plugin.jei;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.joml.Matrix4f;
 
@@ -41,6 +42,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
@@ -226,18 +228,26 @@ public class BiomeDataCategory implements IRecipeCategory<Biome> {
 		Minecraft minecraft = Minecraft.getInstance();
 		Font font = minecraft.font;
 
-		Registry<Biome> biomeReg = ClimateCore.proxy.getClientLevel().get().registryAccess().registryOrThrow(Registries.BIOME);
-		ResourceLocation key = biomeReg.getKey(recipe);
-
-		MutableComponent name = Component.translatable("biome." + key.getNamespace() + "." + key.getPath());
+		Optional<ResourceKey<Biome>> key = Optional.empty();
+		try {
+			Registry<Biome> biomeReg = ClimateCore.proxy.getClientLevel().get().registryAccess().registryOrThrow(Registries.BIOME);
+			key = biomeReg.getResourceKey(recipe);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		ResourceLocation rl = ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "empty_biome");
+		if (key.isPresent()) {
+			rl = key.get().location();
+		}
+		MutableComponent name = Component.translatable("biome." + rl.getNamespace() + "." + rl.getPath());
 		if (name != null && !name.getString().isBlank()) {
 			graphics.drawString(font, name, 22, 10, 0xFF000000, false);
 		} else {
-			Component.literal(key.getPath());
+			Component.literal(rl.getPath());
 			graphics.drawString(font, name, 22, 10, 0xFF000000, false);
 		}
 
-		String mod_id = key.getNamespace();
+		String mod_id = rl.getNamespace();
 		graphics.drawString(font, mod_id, 22, 22, 0xFF000000, false);
 
 		graphics.drawString(font, temp + " F", 80, 43, 0xFF505050, false);

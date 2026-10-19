@@ -545,6 +545,7 @@ public class TagDC {
 		public static final TagKey<Item> CROP_KUKUI = itemTag("crops/kukui");
 		public static final TagKey<Item> CROP_CASSAVA = itemTag("crops/cassava");
 		public static final TagKey<Item> CROP_MANCHINEEL = itemTag("crops/manchineel");
+		public static final TagKey<Item> CROP_CASTOR = itemTag("crops/castor");
 		public static final TagKey<Item> CROP_MULBERRY = itemTag("crops/mulberry");
 		public static final TagKey<Item> CROP_KAJI = itemTag("crops/kaji");
 		public static final TagKey<Item> CROP_RUBBER = itemTag("crops/rubber");
