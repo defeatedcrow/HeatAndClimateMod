@@ -11,8 +11,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -26,15 +29,9 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 	protected static final VoxelShape D_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
 
 	public CropBaseVine(CropTier t) {
-		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0))
-				.setValue(DCState.NORTH, false)
-				.setValue(DCState.SOUTH, false)
-				.setValue(DCState.EAST, false)
-				.setValue(DCState.WEST, false)
-				.setValue(DCState.UP, false)
-				.setValue(DCState.DOWN, false)
-				.setValue(DCState.WILD, false));
+		super(t, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, 0).setValue(DCState.NORTH, false).setValue(DCState.SOUTH, false).setValue(DCState.EAST, false).setValue(DCState.WEST, false)
+		    .setValue(DCState.UP, false).setValue(DCState.DOWN, false).setValue(DCState.WILD, false));
 	}
 
 	@Override
@@ -142,8 +139,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 		boolean east = level.getBlockState(pos.east()).isSolid();
 		boolean west = level.getBlockState(pos.west()).isSolid();
 		boolean flag = down || checkFlag(level, pos);
-		return next.setValue(DCState.DOWN, down).setValue(DCState.UP, up).setValue(DCState.NORTH, north).setValue(DCState.SOUTH, south)
-				.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
+		return next.setValue(DCState.DOWN, down).setValue(DCState.UP, up).setValue(DCState.NORTH, north).setValue(DCState.SOUTH, south).setValue(DCState.EAST, east).setValue(DCState.WEST, west);
 	}
 
 	@Override
@@ -156,8 +152,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 		boolean east = level.getBlockState(pos.east()).isSolid();
 		boolean west = level.getBlockState(pos.west()).isSolid();
 		boolean flag = down || checkFlag(level, pos);
-		next = next.setValue(DCState.DOWN, down).setValue(DCState.UP, up).setValue(DCState.NORTH, north).setValue(DCState.SOUTH, south)
-				.setValue(DCState.EAST, east).setValue(DCState.WEST, west);
+		next = next.setValue(DCState.DOWN, down).setValue(DCState.UP, up).setValue(DCState.NORTH, north).setValue(DCState.SOUTH, south).setValue(DCState.EAST, east).setValue(DCState.WEST, west);
 		return flag || up || north || south || east || west ? next : super.updateShape(state, dir, state2, level, pos, pos2);
 	}
 
@@ -191,7 +186,7 @@ public abstract class CropBaseVine extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFeatureState() {
-		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(2)).setValue(DCState.WILD, true);
+		return this.defaultBlockState().setValue(DCState.STAGE6, 2).setValue(DCState.WILD, true);
 	}
 
 	@Override

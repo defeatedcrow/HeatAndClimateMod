@@ -113,7 +113,7 @@ public class WildCropFeature extends Feature<NoneFeatureConfiguration> {
 		// DCLogger.debugInfoLog("=== target size: " + targets.size() + " " + tree + " ===");
 		// DCLogger.debugInfoLog("pos: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ());
 		ClimateCropBaseBlock crop = null;
-		boolean first = random.nextInt(100) < 70 && !targetFirst.isEmpty() && targetFirst.size() > 0;
+		boolean first = random.nextInt(100) < 50 && !targetFirst.isEmpty() && targetFirst.size() > 0;
 		if (first) {
 			int i = targetFirst.size();
 			crop = i < 2 ? targetFirst.get(0) : targetFirst.get(random.nextInt(i));
