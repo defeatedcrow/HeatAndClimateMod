@@ -1,4 +1,4 @@
-// 1.20.1	2026-10-15T20:47:49.9674383	Tags for minecraft:item mod id dcs_climate
+// 1.20.1	2026-10-22T00:25:19.7726881	Tags for minecraft:item mod id dcs_climate
 e02a4b0578cf2d6a6a5ca863a3119bd75f571254 data/dcs_climate/tags/items/andons.json
 05c427bae6c42fa3468413da8a796681e5a20abb data/dcs_climate/tags/items/battery_items.json
 d9d9545ada1b1449caa06b5c42f5cbb41da38cfb data/dcs_climate/tags/items/battery_items/middle.json
@@ -435,7 +435,7 @@ bd377eeba2aa3156ac2035d008cf6bb46ae6e4e8 data/forge/tags/items/dust_blocks/nicke
 0898ba4181d6e5fe8a193fa1b5318c7400c8580c data/forge/tags/items/dust_blocks/silver.json
 7e907643b0fb4fc9f7abbe08bbdc854e6b9c0cdb data/forge/tags/items/dust_blocks/steel.json
 4676b8676d6c8c541c0342fc14d97df6c712ce46 data/forge/tags/items/dust_blocks/sus.json
-b6bd6d179434f143c5c23709a509aff7bbceb04d data/forge/tags/items/dust_blocks/titanium.json
+b6bd6d179434f143c5c23709a509aff7bbceb04d data/forge/tags/items/dust_blocks/titanium_alloy.json
 e994390ddaf573b64ea1a5de1d6b4f1b059f7361 data/forge/tags/items/eggs.json
 25cb5fb083761a5951523f7ac997eaa1fb84649f data/forge/tags/items/fallen_leaves.json
 5cc570bb13b8d66af94d7c67fefdd9c4a992277f data/forge/tags/items/fertilizer.json
@@ -499,7 +499,7 @@ b499b8836bcf8ddf4d0094c5d6115090b405f1a1 data/forge/tags/items/gems/thunder_egg.
 0e1f9cc4929b5cf6e560a1d5068cc6f10e5e55da data/forge/tags/items/gems/vivianite.json
 87baf2f8d57d0b126473e79e8cdc03aa0f9f6ab3 data/forge/tags/items/glass.json
 9e66a9b477554be6088cd528231062bd3a512fbb data/forge/tags/items/grasses.json
-3e7af232f092979dc7c2b8d4e06763c94479eab8 data/forge/tags/items/ingots.json
+698044b151d781de237386b5d7aedfb805410712 data/forge/tags/items/ingots.json
 3dcc112c81f5d14bc27bc9c644872a3e392e46be data/forge/tags/items/ingots/aluminum.json
 e6cca59db19fcc1027d478a8d55f99f40680d952 data/forge/tags/items/ingots/brass.json
 67addb0ad4ad19114dd11ef6c77b70f5cc5a6a4d data/forge/tags/items/ingots/brass_or_bronze.json
@@ -513,7 +513,7 @@ d3660ae5f2430ad4d39f501f041dc1c96386f4d0 data/forge/tags/items/ingots/hastelloy.
 d42a66be66bf2e935184ed49083c315886928158 data/forge/tags/items/ingots/silver.json
 d3b550483f19afea8b512600d266ea1c0c617c17 data/forge/tags/items/ingots/steel.json
 883a92100d56f309415d7747acc73a51a8a8283d data/forge/tags/items/ingots/sus.json
-383fa35ae06d345734d42092257b9a9dcf4a046c data/forge/tags/items/ingots/titanium.json
+383fa35ae06d345734d42092257b9a9dcf4a046c data/forge/tags/items/ingots/titanium_alloy.json
 325821429dc0f07b8f779e78c226b2bd520fbe79 data/forge/tags/items/ingredients/agar.json
 4ded075328e082033aa09ec1cc97f2ba1977b1e3 data/forge/tags/items/ingredients/all_raw_meats.json
 7baf4e127de856ca13cd8e67c0c7973b767d6c68 data/forge/tags/items/ingredients/almond_milk.json
@@ -806,7 +806,7 @@ fc6723cf57dbbe205fa25c542007e4907277ea5c data/forge/tags/items/shears.json
 d008aafae145de3f68713ad4c0dc017f11ade104 data/forge/tags/items/soaps.json
 69a564f2648b5b46ce683320ba14ad5b2e6ea771 data/forge/tags/items/soaps/magic.json
 6e36aac6c9c4b9b6b6ce4dcde367d4e978fa6ac4 data/forge/tags/items/soaps/olive.json
-b1cddb1cb7adcd502a0030cab93a0002f83010e0 data/forge/tags/items/storage_blocks.json
+bf207bb1e1839bd7ed1b46d93113d6d9a0a3dd6c data/forge/tags/items/storage_blocks.json
 fe99af2f5f149521b2d03ded72573562321e122b data/forge/tags/items/storage_blocks/almandine.json
 0414b1767326cef707dad988aff98808c46c5dc1 data/forge/tags/items/storage_blocks/aluminum.json
 d46a44edb72aff635100691c23101b3e54a44a8b data/forge/tags/items/storage_blocks/amazonite.json
@@ -884,7 +884,7 @@ c6a8521e79ed7a2b6381a4b1cd17379b8516cf3d data/forge/tags/items/storage_blocks/sp
 582270914d88d447598018ca32a789d9854e837f data/forge/tags/items/storage_blocks/steel.json
 46225b91b53648d7f1861eae3d246fc58892b93d data/forge/tags/items/storage_blocks/sus.json
 00ff7c03dfcfea2b8266bd983127b17acd79dcd8 data/forge/tags/items/storage_blocks/thunder_egg.json
-48d87fe2c91e74ff38e934ef3fa98be51c0b4fa6 data/forge/tags/items/storage_blocks/titanium.json
+48d87fe2c91e74ff38e934ef3fa98be51c0b4fa6 data/forge/tags/items/storage_blocks/titanium_alloy.json
 e28e4fab16a0d5c2eba669b19d1026ad7ebf42c2 data/forge/tags/items/storage_blocks/topaz.json
 98e5cfd0810559e280d292ddf13c8e877212aa4e data/forge/tags/items/storage_blocks/treewax.json
 14b7b8f5a19206a912524ccbf110acaa66843df6 data/forge/tags/items/storage_blocks/vivianite.json

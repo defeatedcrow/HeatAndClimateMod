@@ -67,6 +67,7 @@ public class SaplingEuphorbia extends SaplingBaseBlock {
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
 		return switch (t) {
 		case COMMON -> ImmutableList.of(DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL);
+		case EPIC -> ImmutableList.of(DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL);
 		default -> ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
 		};
 	}

@@ -1,4 +1,4 @@
-// 1.20.1	2026-10-15T20:47:49.9432616	Recipes:Food
+// 1.20.1	2026-10-22T00:25:19.7511396	Recipes:Food
 905d5d7e66e3cfe156b965e7a6af58c3c7e8c79c data/dcs_climate/advancements/recipes/building_blocks/build/planks_sorghum.json
 d6daf2e2b135011a4fdfdaca22320f3c0ea175af data/dcs_climate/advancements/recipes/building_blocks/build/slab2_beech_common.json
 c79f805cd98bfbd9b5fef196fbe397f47d1a54b7 data/dcs_climate/advancements/recipes/building_blocks/build/slab2_beech_sweet.json
@@ -335,7 +335,6 @@ a73eecafd129b1bcab7cfbc0dbce5407b5ad6198 data/dcs_climate/advancements/recipes/f
 8aadb8b670a3a6f4d1b45b4c0787d4a45ab6fdb6 data/dcs_climate/advancements/recipes/food/food/dumpling_cereals_2.json
 bd3c899015de4ef373b9ad72baf1a9ed817b12ba data/dcs_climate/advancements/recipes/food/food/dumpling_tubers_0.json
 e762ae23ec1c588e331c1692c1ee91673726bf10 data/dcs_climate/advancements/recipes/food/food/dumpling_tubers_1.json
-11efde429bb7d80ac05d1bc3abbca372a4a16ddb data/dcs_climate/advancements/recipes/food/food/dumpling_tubers_2.json
 c8a41d6e1ccaf445dcd725d71d23228552b19a16 data/dcs_climate/advancements/recipes/food/food/foodmaterial_buckwheat_noodle.json
 5a1b5e97e84816fbfe5d57004b0a9e69b042d5cf data/dcs_climate/advancements/recipes/food/food/foodmaterial_butter.json
 e0947b94c4be419bdd827b6a67fb70385ca7b623 data/dcs_climate/advancements/recipes/food/food/foodmaterial_chinese_noodle.json
@@ -1072,8 +1071,7 @@ f60432f936893efe45c256c4841c6dd1caab62eb data/dcs_climate/recipes/food/crepe_cre
 90aa4743f60f1b7d2b814b5c009f315aaee0d5b4 data/dcs_climate/recipes/food/dumpling_cereals_0.json
 c95b07f00a6f17b10a8567771efa6cbc94fbcf78 data/dcs_climate/recipes/food/dumpling_cereals_2.json
 f114057d805a3871e21087b0f48c97f95d4b2fc8 data/dcs_climate/recipes/food/dumpling_tubers_0.json
-08564b94a5949b43c01f279aab4d769c06f8133d data/dcs_climate/recipes/food/dumpling_tubers_1.json
-3ddf357edbadbf76b676d6591f478609d5bf2079 data/dcs_climate/recipes/food/dumpling_tubers_2.json
+3ddf357edbadbf76b676d6591f478609d5bf2079 data/dcs_climate/recipes/food/dumpling_tubers_1.json
 4a345e306ec2d57514a2cc502c9fe79720a4f65f data/dcs_climate/recipes/food/fertile_planter_block_1.json
 265536b75fbc19aca67de3fb6df8f472d1220909 data/dcs_climate/recipes/food/fertile_planter_block_2.json
 c2bd52599bb26c38f2d27590d68353b91ca89435 data/dcs_climate/recipes/food/fertile_planter_gem_1.json

@@ -1,4 +1,4 @@
-// 1.20.1	2026-09-16T02:56:10.3582418	Recipes:Machine
+// 1.20.1	2026-10-22T00:25:19.7686873	Recipes:Machine
 c929369e726845372397edc609a8b49f93cb41bf data/dcs_climate/advancements/recipes/misc/machine/alminum_cable_coated_0.json
 a9b9202c404b39086c17610050443bf0761c88ef data/dcs_climate/advancements/recipes/misc/machine/andon_panel_1.json
 aa506813eb8fdcc99854ab85afef25dd188c44d6 data/dcs_climate/advancements/recipes/misc/machine/andon_panel_1_2.json
@@ -148,9 +148,9 @@ d0821400e6a0cea47cffdc26bd0042be10f70e68 data/dcs_climate/recipes/machine/batter
 f71cb551883036bb2b5df5d89d4ee8dd67d62410 data/dcs_climate/recipes/machine/black_kichen_bench_2.json
 f2ed8ffe90d65d64db65c036672fd9bb37f2ce7d data/dcs_climate/recipes/machine/black_kichen_bench_b_0.json
 67292da4a5f6704d6d1d7d29c27aa935b119212b data/dcs_climate/recipes/machine/black_sink_1.json
-e0a3f400bb9ef18a4d107b08e1ec2e3d4b15b7af data/dcs_climate/recipes/machine/blade_alumina_0.json
-0d45d13163578930114e46bac7d3fd6f99aff666 data/dcs_climate/recipes/machine/blade_screen_0.json
-000c882ffeb49e1e4afc5f66ff7dead17df27e96 data/dcs_climate/recipes/machine/blade_sus_0.json
+2aa6461ca15674620c08a1e7b69c64136a152ee6 data/dcs_climate/recipes/machine/blade_alumina_0.json
+01b49be840e601e7b683b4df29b52c335cd559d5 data/dcs_climate/recipes/machine/blade_screen_0.json
+bddb58ad05e7c91d1fd2e73d9b2201bec0a2a6f1 data/dcs_climate/recipes/machine/blade_sus_0.json
 83dbad84b08c12b6e5b4816fb3e79f450c2bd887 data/dcs_climate/recipes/machine/boiler_biomass_0.json
 e6e658600619fa4f4d0bc654515e5240f40c93fc data/dcs_climate/recipes/machine/brass_pipe_0.json
 a6cd093e85823fa054f1c9d38e9a5e87b0438f0c data/dcs_climate/recipes/machine/bricks_half_sink_0.json

@@ -1,6 +1,7 @@
-// 1.20.1	2026-09-10T22:37:34.0066821	Tags for minecraft:fluid mod id dcs_climate
+// 1.20.1	2026-10-22T00:30:00.2948068	Tags for minecraft:fluid mod id dcs_climate
 b1b4725037170e91c4793f9d032bf05221c90a51 data/forge/tags/fluids/air.json
 90dd3ef79bbfd42b6edabec2cc3801e0f68a42bc data/forge/tags/fluids/brine.json
+025f85c2cfa200d65ed4c6dd94371f981fc94c94 data/forge/tags/fluids/castor_oil.json
 7e802270e4a803c2a613c65d9340d7d15dba33fa data/forge/tags/fluids/drink_waters.json
 5e23b314f2e2e69914c7494e4187874e9cfb41be data/forge/tags/fluids/flammable_oil.json
 7eaa561539b919f7f1caec6cb96e3b58ae2bdf69 data/forge/tags/fluids/fuel_oil.json

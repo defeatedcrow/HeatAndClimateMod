@@ -36,50 +36,43 @@ public class FuelList {
 		addBiomassFuel(TagDC.ItemTag.CONT_RESIDUES, 1600);
 		addFluidFuel(TagDC.FluidTag.PLANT_OIL, 30);
 		addFluidFuel(TagDC.FluidTag.USED_PLANT_OIL, 30);
+		addFluidFuel(TagDC.FluidTag.CASTOR_OIL, 80);
 		addFluidFuel(TagDC.FluidTag.FUEL, 240);
 	}
 
 	private static void addBiomassFuel(ItemStack input, int time) {
-		ResourceLocation res = DCUtil.getRes(input.getItem())
-		    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
-		String fName = res.getPath()
-		    .replace('/', '_');
+		ResourceLocation res = DCUtil.getRes(input.getItem()).orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
+		String fName = res.getPath().replace('/', '_');
 		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.BIOMASS.toString(), time, "empty", Ingredient.of(input)));
 	}
 
 	private static void addBiomassFuel(TagKey<Item> input, int time) {
 		ResourceLocation res = input.location();
-		String fName = res.getPath()
-		    .replace('/', '_');
+		String fName = res.getPath().replace('/', '_');
 		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.BIOMASS.toString(), time, "empty", Ingredient.of(input)));
 	}
 
 	private static void addThermalFuel(ItemStack input, int time) {
-		ResourceLocation res = DCUtil.getRes(input.getItem())
-		    .orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
-		String fName = res.getPath()
-		    .replace('/', '_');
+		ResourceLocation res = DCUtil.getRes(input.getItem()).orElse(ResourceLocation.fromNamespaceAndPath(ClimateCore.MOD_ID, "main/null_item"));
+		String fName = res.getPath().replace('/', '_');
 		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.THERMAL.toString(), time, "empty", Ingredient.of(input)));
 	}
 
 	private static void addThermalFuel(TagKey<Item> input, int time) {
 		ResourceLocation res = input.location();
-		String fName = res.getPath()
-		    .replace('/', '_');
+		String fName = res.getPath().replace('/', '_');
 		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.THERMAL.toString(), time, "empty", Ingredient.of(input)));
 	}
 
 	private static void addFluidFuel(TagKey<Fluid> fluid, int time) {
 		ResourceLocation res = fluid.location();
-		String fName = res.getPath()
-		    .replace('/', '_');
+		String fName = res.getPath().replace('/', '_');
 		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.FLUID.toString(), time, res.toString(), Ingredient.of(new ItemStack(CoreInit.NULL_ITEM.get()))));
 	}
 
 	private static void addGasFuel(TagKey<Fluid> fluid, int time) {
 		ResourceLocation res = fluid.location();
-		String fName = res.getPath()
-		    .replace('/', '_');
+		String fName = res.getPath().replace('/', '_');
 		FuelConfig.addRecipe(fName, new DeviceFuel(FuelTypeDC.GAS.toString(), time, res.toString(), Ingredient.of(new ItemStack(CoreInit.NULL_ITEM.get()))));
 	}
 

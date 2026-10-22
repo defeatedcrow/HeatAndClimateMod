@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "X": {
-      "tag": "forge:ingots/titanium"
+      "tag": "forge:ingots/titanium_alloy"
     },
     "Y": {
       "item": "minecraft:iron_bars"

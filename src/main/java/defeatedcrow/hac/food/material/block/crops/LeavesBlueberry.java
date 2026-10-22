@@ -70,16 +70,12 @@ public class LeavesBlueberry extends LeavesCropBlockDC {
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_ER_HEATH.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_ER_RHODODENDRON.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_ER_BLUEBERRY.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_ER_HEATH.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_ER_RHODODENDRON.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_ER_BLUEBERRY.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -89,7 +85,7 @@ public class LeavesBlueberry extends LeavesCropBlockDC {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
-		return ImmutableList.of(DCHeatTier.FROSTBITE, DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL);
+		return ImmutableList.of(DCHeatTier.FROSTBITE, DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
 	}
 
 	@Override

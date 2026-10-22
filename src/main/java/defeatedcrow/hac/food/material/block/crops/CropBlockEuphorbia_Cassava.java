@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -176,12 +177,20 @@ public class CropBlockEuphorbia_Cassava extends ClimateCropBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		return ImmutableList.of("SAVANNA", "SANDY", "JUNGLE");
+		return switch (t) {
+		case WILD -> ImmutableList.of("OCEAN", "BEACH", "LUSH");
+		case COMMON -> ImmutableList.of("SAVANNA", "SANDY", "JUNGLE");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		return ImmutableList.of("COLD", "WATER", "SWAMP");
+		return switch (t) {
+		case WILD -> ImmutableList.of("SNOWY", "DRY", "MOUNTAIN");
+		case COMMON -> ImmutableList.of("COLD", "WATER", "SWAMP");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

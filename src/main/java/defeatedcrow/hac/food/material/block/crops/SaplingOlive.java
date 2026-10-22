@@ -62,10 +62,12 @@ public class SaplingOlive extends SaplingBaseBlock {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
-		if (t == CropTier.EPIC) {
+		if (t == CropTier.WILD) {
+			return ImmutableList.of(DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
+		} else if (t == CropTier.EPIC) {
 			return ImmutableList.of(DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL);
 		}
-		return ImmutableList.of(DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
+		return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
 	}
 
 	@Override

@@ -59,18 +59,13 @@ public class LeavesPlum extends LeavesCropBlockDC {
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_CH_WILD.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_CH_PLUM.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_CH_PEACH.get());
-		case EPIC:
-			return Optional.of(FoodInit.BLOCK_CH_ALMOND.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_CH_WILD.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_CH_PLUM.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_CH_PEACH.get());
+		case EPIC -> Optional.of(FoodInit.BLOCK_CH_ALMOND.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -95,24 +90,19 @@ public class LeavesPlum extends LeavesCropBlockDC {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD, COMMON:
-			return ImmutableList.of("MOUNTAIN", "FOREST");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("MOUNTAIN", "FOREST", "DENCE");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("CONIFEROUS", "HOT", "LOWLAND");
-		case COMMON:
-			return ImmutableList.of("CONIFEROUS", "HOT");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("CONIFEROUS", "HOT", "LOWLAND");
+		case COMMON -> ImmutableList.of("CONIFEROUS", "HOT");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

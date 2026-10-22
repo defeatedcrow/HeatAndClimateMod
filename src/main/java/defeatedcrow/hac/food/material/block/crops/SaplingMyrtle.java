@@ -82,7 +82,7 @@ public class SaplingMyrtle extends SaplingBaseBlock {
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
 		case WILD -> ImmutableList.of("SAVANNA", "RIVER", "SWAMP", "DRY");
-		case COMMON -> ImmutableList.of("JUNGLE");
+		case COMMON -> ImmutableList.of("JUNGLE", "LUSH");
 		default -> Lists.newArrayList();
 		};
 	}

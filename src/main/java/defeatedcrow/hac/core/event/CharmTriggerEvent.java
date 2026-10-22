@@ -432,7 +432,6 @@ public class CharmTriggerEvent {
 		if (event.getEffects() != null && !event.getEffects().isEmpty()) {
 			if (event.getEffects().size() < 2 && event.getEffects().stream().anyMatch(e -> e.getEffect() == CoreInit.WET.get())) {
 				event.shouldHideParticles(true);
-				event.setCanceled(true);
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-#### Heat&Climate Mod v5.0.4 for Minecraft 1.20.1 ####
+#### Heat&Climate Mod v5.0.5 for Minecraft 1.20.1 ####
 
 # 導入環境 / Introduction conditions
 
@@ -906,7 +906,14 @@
 
 #### 更新履歴 / Change log ####
 
-○v5.0.4
+○v5.0.5
+ add: ひまし油
+ fix: 樹木の生成条件がJEI図鑑データに反映していない。
+ fix: PotionColorCalculationEventでのクラッシュを修正。
+ fix: チタン合金のタグ名をtitanium_alloyに変えた。
+ fix: 春雨のクラフトレシピの被りを修正。
+
+○v5.0.4 (2026.10.19)
  add: トウゴマ
  change: 料理の回復量と作成個数を全体的に調整。
  change: 調味料アイテムの作成個数を上方修正。

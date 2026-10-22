@@ -73,13 +73,15 @@ public class SaplingCamellia extends SaplingBaseBlock {
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
 		if (t == CropTier.COMMON) {
 			return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
+		} else if (t == CropTier.RARE) {
+			return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
 		}
 		return ImmutableList.of(DCHeatTier.FROSTBITE, DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
 	}
 
 	@Override
 	public List<DCHumidity> getSuitableHum(CropTier t) {
-		return ImmutableList.of(DCHumidity.DRY, DCHumidity.NORMAL, DCHumidity.WET);
+		return ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET);
 	}
 
 	@Override

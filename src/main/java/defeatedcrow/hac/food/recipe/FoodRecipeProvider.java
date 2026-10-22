@@ -266,11 +266,8 @@ public class FoodRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.DUMPLING_TUBERS.get(), 1).requires(Ingredient.of(TagDC.ItemTag.WATER)).requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
 		    .unlockedBy("has_tubers", has(TagDC.ItemTag.CROP_TUBERS)).save(cons, "dcs_climate:food/dumpling_tubers_0");
 
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.DUMPLING_TUBERS.get(), 1).requires(Ingredient.of(TagDC.ItemTag.WATER)).requires(Ingredient.of(TagDC.ItemTag.DUST_STARCH))
-		    .unlockedBy("has_tubers", has(TagDC.ItemTag.CROP_TUBERS)).save(cons, "dcs_climate:food/dumpling_tubers_1");
-
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.DUMPLING_TUBERS.get(), 2).requires(Ingredient.of(TagDC.ItemTag.WATER)).requires(Ingredient.of(TagDC.ItemTag.CROP_TUBERS))
-		    .requires(Ingredient.of(TagDC.ItemTag.DUST_CEREALS)).unlockedBy("has_tubers", has(TagDC.ItemTag.CROP_TUBERS)).save(cons, "dcs_climate:food/dumpling_tubers_2");
+		    .requires(Ingredient.of(TagDC.ItemTag.DUST_CEREALS)).unlockedBy("has_tubers", has(TagDC.ItemTag.CROP_TUBERS)).save(cons, "dcs_climate:food/dumpling_tubers_1");
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodInit.DUMPLING_CEREALS.get(), 1).requires(Ingredient.of(TagDC.ItemTag.WATER)).requires(Ingredient.of(TagDC.ItemTag.DUST_CEREALS))
 		    .unlockedBy("has_dust_cereals", has(TagDC.ItemTag.DUST_CEREALS)).save(cons, "dcs_climate:food/dumpling_cereals_0");

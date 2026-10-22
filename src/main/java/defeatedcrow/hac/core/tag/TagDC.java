@@ -307,7 +307,7 @@ public class TagDC {
 		public static final TagKey<Item> INGOT_NICKEL_SILVER = itemTag("ingots/nickel_silver");
 		public static final TagKey<Item> INGOT_STEEL = itemTag("ingots/steel");
 		public static final TagKey<Item> INGOT_SUS = itemTag("ingots/sus");
-		public static final TagKey<Item> INGOT_TITANIUM = itemTag("ingots/titanium");
+		public static final TagKey<Item> INGOT_TITANIUM = itemTag("ingots/titanium_alloy");
 		public static final TagKey<Item> INGOT_MAGNET = itemTag("ingots/magnet");
 		public static final TagKey<Item> INGOT_COBALT = itemTag("ingots/cobalt_alloy");
 		public static final TagKey<Item> INGOT_HASTELLOY = itemTag("ingots/hastelloy");
@@ -321,7 +321,7 @@ public class TagDC {
 		public static final TagKey<Item> DUSTBLOCK_ALUMINUM = itemTag("dust_blocks/aluminum");
 		public static final TagKey<Item> DUSTBLOCK_SILVER = itemTag("dust_blocks/silver");
 		public static final TagKey<Item> DUSTBLOCK_SUS = itemTag("dust_blocks/sus");
-		public static final TagKey<Item> DUSTBLOCK_TITANIUM = itemTag("dust_blocks/titanium");
+		public static final TagKey<Item> DUSTBLOCK_TITANIUM = itemTag("dust_blocks/titanium_alloy");
 		public static final TagKey<Item> DUSTBLOCK_MAGNET = itemTag("dust_blocks/magnet");
 		public static final TagKey<Item> DUSTBLOCK_COBALT = itemTag("dust_blocks/cobalt_alloy");
 		public static final TagKey<Item> DUSTBLOCK_HASTELLOY = itemTag("dust_blocks/hastelloy");
@@ -335,7 +335,7 @@ public class TagDC {
 		public static final TagKey<Item> METALBLOCK_ALUMINUM = itemTag("storage_blocks/aluminum");
 		public static final TagKey<Item> METALBLOCK_SILVER = itemTag("storage_blocks/silver");
 		public static final TagKey<Item> METALBLOCK_SUS = itemTag("storage_blocks/sus");
-		public static final TagKey<Item> METALBLOCK_TITANIUM = itemTag("storage_blocks/titanium");
+		public static final TagKey<Item> METALBLOCK_TITANIUM = itemTag("storage_blocks/titanium_alloy");
 		public static final TagKey<Item> METALBLOCK_MAGNET = itemTag("storage_blocks/magnet");
 		public static final TagKey<Item> METALBLOCK_COBALT = itemTag("storage_blocks/cobalt_alloy");
 		public static final TagKey<Item> METALBLOCK_HASTELLOY = itemTag("storage_blocks/hastelloy");
@@ -1255,6 +1255,7 @@ public class TagDC {
 		public static final TagKey<Fluid> ALL_WATER = fruidTag("waters");
 		public static final TagKey<Fluid> DRINK_WATER = fruidTag("drink_waters");
 		public static final TagKey<Fluid> PLANT_OIL = fruidTag("plant_oil");
+		public static final TagKey<Fluid> CASTOR_OIL = fruidTag("castor_oil");
 		public static final TagKey<Fluid> USED_PLANT_OIL = fruidTag("used_plant_oil");
 		public static final TagKey<Fluid> FUEL = fruidTag("fuel_oil");
 		public static final TagKey<Fluid> AIR = fruidTag("air");

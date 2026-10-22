@@ -18,7 +18,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 public class FluidTagProviderDC extends FluidTagsProvider {
 
 	public FluidTagProviderDC(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper helper) {
-		super(output, lookupProvider,ClimateCore.MOD_ID, helper);
+		super(output, lookupProvider, ClimateCore.MOD_ID, helper);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -30,15 +30,13 @@ public class FluidTagProviderDC extends FluidTagsProvider {
 		tag(TagDC.FluidTag.SPARKLING).add(CoreInit.SPARKLING.getStillFluid().get());
 		tag(TagDC.FluidTag.PLANT_OIL).add(CoreInit.PLANT_OIL.getStillFluid().get());
 		tag(TagDC.FluidTag.USED_PLANT_OIL).add(CoreInit.USED_PLANT_OIL.getStillFluid().get());
+		tag(TagDC.FluidTag.CASTOR_OIL).add(CoreInit.CASTOR_OIL.getStillFluid().get());
 		tag(TagDC.FluidTag.FUEL).add(CoreInit.FUEL_OIL.getStillFluid().get());
 		tag(TagDC.FluidTag.AIR).add(Fluids.EMPTY, CoreInit.AIR.getStillFluid().get());
 
-		tag(TagDC.FluidTag.ALL_WATER).add(CoreInit.BRINE.getStillFluid().get(),
-				CoreInit.HOTSPRING.getStillFluid().get(), CoreInit.SPARKLING.getStillFluid().get())
-				.addTag(FluidTags.WATER);
+		tag(TagDC.FluidTag.ALL_WATER).add(CoreInit.BRINE.getStillFluid().get(), CoreInit.HOTSPRING.getStillFluid().get(), CoreInit.SPARKLING.getStillFluid().get()).addTag(FluidTags.WATER);
 
-		tag(TagDC.FluidTag.DRINK_WATER).add(CoreInit.SPARKLING.getStillFluid().get())
-				.addTag(FluidTags.WATER);
+		tag(TagDC.FluidTag.DRINK_WATER).add(CoreInit.SPARKLING.getStillFluid().get()).addTag(FluidTags.WATER);
 
 		tag(TagDC.FluidTag.ALL_MILK).add(ForgeMod.MILK.get());
 

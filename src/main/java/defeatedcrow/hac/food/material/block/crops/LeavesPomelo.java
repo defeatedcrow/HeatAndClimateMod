@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -55,18 +56,13 @@ public class LeavesPomelo extends LeavesCropBlockDC {
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_CT_POMELO.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_CT_MANDARIN.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_CT_LEMON.get());
-		case EPIC:
-			return Optional.of(FoodInit.BLOCK_CT_PEPPER.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_CT_POMELO.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_CT_MANDARIN.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_CT_LEMON.get());
+		case EPIC -> Optional.of(FoodInit.BLOCK_CT_PEPPER.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -91,7 +87,18 @@ public class LeavesPomelo extends LeavesCropBlockDC {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		return ImmutableList.of("JUNGLE", "FOREST");
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("JUNGLE", "FOREST", "LUSH");
+		default -> Lists.newArrayList();
+		};
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("CONIFEROUS", "COLD", "SAVANNA");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

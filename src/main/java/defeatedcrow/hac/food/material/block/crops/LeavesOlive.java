@@ -88,8 +88,8 @@ public class LeavesOlive extends LeavesCropBlockDC {
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("FOREST", "COLD", "CONIFEROUS");
-		case COMMON -> ImmutableList.of("DRY", "PLAINS");
+		case WILD -> ImmutableList.of("FOREST", "COLD", "CONIFEROUS", "DENCE");
+		case COMMON -> ImmutableList.of("DRY", "PLAINS", "SPARSE");
 		default -> Lists.newArrayList();
 		};
 	}
@@ -97,8 +97,8 @@ public class LeavesOlive extends LeavesCropBlockDC {
 	@Override
 	public List<String> getAvoidBiomeTag(CropTier t) {
 		return switch (t) {
-		case WILD -> ImmutableList.of("WET", "HOT");
-		case COMMON -> ImmutableList.of("WET", "COLD");
+		case WILD -> ImmutableList.of("WET", "HOT", "PEAK", "MOUNTAIN");
+		case COMMON -> ImmutableList.of("WET", "COLD", "MOUNTAIN");
 		default -> Lists.newArrayList();
 		};
 	}

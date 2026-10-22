@@ -35,7 +35,7 @@ public class CropBlockPalm extends ClimateCropBaseBlock {
 
 	public CropBlockPalm(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, Integer.valueOf(0)).setValue(DCState.WILD, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE6, 0).setValue(DCState.WILD, false));
 	}
 
 	@Override
@@ -57,13 +57,12 @@ public class CropBlockPalm extends ClimateCropBaseBlock {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_crop_0")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_crop_1")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_crop_2")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_crop_2")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_crop_3")),
-				new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_d")));
+		return ImmutableList.of(new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_crop_0")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_crop_1")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_crop_2")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_crop_2")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_crop_3")),
+		    new JsonModelDC("dcs_climate:block/dcs_cross", ImmutableMap.of("cross", "dcs_climate:block/tree/palm_" + getSpeciesName(cropTier) + "_d")));
 	}
 
 	@Override
@@ -95,7 +94,7 @@ public class CropBlockPalm extends ClimateCropBaseBlock {
 
 	@Override
 	public BlockState getFlowerState(BlockState state) {
-		return state.setValue(DCState.STAGE6, Integer.valueOf(1));
+		return state.setValue(DCState.STAGE6, 1);
 	}
 
 	@Override
@@ -105,40 +104,30 @@ public class CropBlockPalm extends ClimateCropBaseBlock {
 
 	@Override
 	public ItemLike getSeedItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.BLOCK_PL_DATE.get();
-		case RARE:
-			return FoodInit.BLOCK_PL_OIL.get();
-		default:
-			return FoodInit.BLOCK_PL_COCONUT.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.BLOCK_PL_DATE.get();
+		case RARE -> FoodInit.BLOCK_PL_OIL.get();
+		default -> FoodInit.BLOCK_PL_COCONUT.get();
+		};
 	}
 
 	@Override
 	public Item getCropItem(CropTier t) {
-		switch (t) {
-		case COMMON:
-			return FoodInit.CROP_PL_DATE.get();
-		case RARE:
-			return FoodInit.CROP_PL_OIL.get();
-		default:
-			return FoodInit.CROP_PL_COCONUT.get();
-		}
+		return switch (t) {
+		case COMMON -> FoodInit.CROP_PL_DATE.get();
+		case RARE -> FoodInit.CROP_PL_OIL.get();
+		default -> FoodInit.CROP_PL_COCONUT.get();
+		};
 	}
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		switch (t) {
-		case WILD:
-			return Optional.of(FoodInit.BLOCK_PL_COCONUT.get());
-		case COMMON:
-			return Optional.of(FoodInit.BLOCK_PL_DATE.get());
-		case RARE:
-			return Optional.of(FoodInit.BLOCK_PL_OIL.get());
-		default:
-			return Optional.empty();
-		}
+		return switch (t) {
+		case WILD -> Optional.of(FoodInit.BLOCK_PL_COCONUT.get());
+		case COMMON -> Optional.of(FoodInit.BLOCK_PL_DATE.get());
+		case RARE -> Optional.of(FoodInit.BLOCK_PL_OIL.get());
+		default -> Optional.empty();
+		};
 	}
 
 	@Override
@@ -173,14 +162,19 @@ public class CropBlockPalm extends ClimateCropBaseBlock {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		switch (t) {
-		case WILD:
-			return ImmutableList.of("OCEAN", "BEACH");
-		case COMMON:
-			return ImmutableList.of("SAVANNA", "DESERT");
-		default:
-			return Lists.newArrayList();
-		}
+		return switch (t) {
+		case WILD -> ImmutableList.of("OCEAN", "BEACH", "JUNGLE", "LUSH");
+		case COMMON -> ImmutableList.of("DESERT", "SAVANNA", "SANDY");
+		default -> Lists.newArrayList();
+		};
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		return switch (t) {
+		case WILD, COMMON -> ImmutableList.of("COLD", "RIVER");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

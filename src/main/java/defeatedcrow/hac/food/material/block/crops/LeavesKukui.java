@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -90,7 +91,20 @@ public class LeavesKukui extends LeavesCropBlockDC {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		return ImmutableList.of("OCEAN", "BEACH", "LUSH");
+		return switch (t) {
+		case WILD -> ImmutableList.of("OCEAN", "BEACH", "LUSH");
+		case COMMON -> ImmutableList.of("SAVANNA", "SANDY", "JUNGLE");
+		default -> Lists.newArrayList();
+		};
+	}
+
+	@Override
+	public List<String> getAvoidBiomeTag(CropTier t) {
+		return switch (t) {
+		case WILD -> ImmutableList.of("SNOWY", "DRY", "MOUNTAIN");
+		case COMMON -> ImmutableList.of("COLD", "WATER", "SWAMP");
+		default -> Lists.newArrayList();
+		};
 	}
 
 	@Override

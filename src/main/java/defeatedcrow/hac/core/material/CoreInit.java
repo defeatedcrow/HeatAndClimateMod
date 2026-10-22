@@ -664,13 +664,15 @@ public class CoreInit {
 
 	public static final WaterTypeFluidDC BRINE = new WaterTypeFluidDC("brine");
 	public static final WaterTypeFluidDC HOTSPRING = new WaterTypeFluidDC("hotspring", 353);
-	public static final WaterTypeFluidDC PLANT_OIL = new WaterTypeFluidDC("plant_oil", FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-	    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(900).viscosity(6000).temperature(298));
+	public static final WaterTypeFluidDC PLANT_OIL = new WaterTypeFluidDC("plant_oil", FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.015D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+	    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA).canHydrate(false).density(900).viscosity(1500).temperature(298));
 	public static final WaterTypeFluidDC USED_PLANT_OIL
-	    = new WaterTypeFluidDC("used_plant_oil", FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-	        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(900).viscosity(6000).temperature(298));
-	public static final WaterTypeFluidDC FUEL_OIL = new WaterTypeFluidDC("fuel_oil", FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.007D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-	    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(false).density(800).viscosity(1500).temperature(298));
+	    = new WaterTypeFluidDC("used_plant_oil", FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.015D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+	        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA).canHydrate(false).density(900).viscosity(3000).temperature(298));
+	public static final WaterTypeFluidDC CASTOR_OIL = new WaterTypeFluidDC("castor_oil", FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.015).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+	    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA).canHydrate(false).density(900).viscosity(3000).temperature(298));
+	public static final WaterTypeFluidDC FUEL_OIL = new WaterTypeFluidDC("fuel_oil", FluidType.Properties.create().canSwim(false).fallDistanceModifier(0F).motionScale(0.015D).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+	    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA).canHydrate(false).density(800).viscosity(1500).temperature(298));
 	public static final WaterTypeFluidDC SPARKLING = new WaterTypeFluidDC("sparkling", FluidType.Properties.create().fallDistanceModifier(0F).canExtinguish(true).canConvertToSource(true).supportsBoating(true)
 	    .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).canHydrate(true).temperature(283));
 
