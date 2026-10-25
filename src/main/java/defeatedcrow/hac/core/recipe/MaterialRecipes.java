@@ -58,7 +58,7 @@ public class MaterialRecipes {
 	public static final Alloy SUS = new Alloy("sus", Rarity.RARE, CoreInit.METALBLOCK_SUS, CoreInit.DUSTBLOCK_SUS, CoreInit.INGOT_SUS, () -> TagDC.ItemTag.DUST_IRON, () -> TagDC.ItemTag.DUST_CHROMIUM, () -> TagDC.ItemTag.DUST_NICKEL);
 
 	public static final Alloy TITANIUM
-	    = new Alloy("titanium", Rarity.RARE, CoreInit.METALBLOCK_TITANIUM, CoreInit.DUSTBLOCK_TITANIUM, CoreInit.INGOT_TITANIUM, () -> TagDC.ItemTag.DUST_TITANIUM, () -> TagDC.ItemTag.DUST_ALUMINUM, () -> TagDC.ItemTag.DUST_CHROMIUM);
+	    = new Alloy("titanium_alloy", Rarity.RARE, CoreInit.METALBLOCK_TITANIUM, CoreInit.DUSTBLOCK_TITANIUM, CoreInit.INGOT_TITANIUM, () -> TagDC.ItemTag.DUST_TITANIUM, () -> TagDC.ItemTag.DUST_ALUMINUM, () -> TagDC.ItemTag.DUST_CHROMIUM);
 
 	public static final Alloy MAGNET
 	    = new Alloy("magnet", Rarity.RARE, CoreInit.METALBLOCK_MAGNET, CoreInit.DUSTBLOCK_MAGNET, CoreInit.INGOT_MAGNET, () -> TagDC.ItemTag.DUST_MAGNETITE, () -> TagDC.ItemTag.DUST_COAL, () -> TagDC.ItemTag.GEM_CELESTITE);

@@ -1,4 +1,4 @@
-#### Heat&Climate Mod v5.0.5 for Minecraft 1.20.1 ####
+#### Heat&Climate Mod v5.0.6 for Minecraft 1.20.1 ####
 
 # 導入環境 / Introduction conditions
 
@@ -696,7 +696,7 @@
   It works when water flows in from directly below. It needs a sufficient "water head" to work.
 
   『水頭』に応じた広さの耕地に水を与えます。
-  It wets an area of ​​farmland according to the "water head".
+  It wets an area of farmland according to the "water head".
   
  ● 取水ます / Water Intake Basin
  
@@ -906,7 +906,11 @@
 
 #### 更新履歴 / Change log ####
 
-○v5.0.5
+○v5.0.6
+ fix: 村人が繁殖できない
+ fix: チタニウム合金のレシピが欠けている
+
+○v5.0.5 (2026.10.24)
  add: ひまし油
  fix: 樹木の生成条件がJEI図鑑データに反映していない。
  fix: PotionColorCalculationEventでのクラッシュを修正。

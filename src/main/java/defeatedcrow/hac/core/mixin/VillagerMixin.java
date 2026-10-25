@@ -17,7 +17,7 @@ public class VillagerMixin {
 	@Inject(method = "wantsToPickUp", at = @At(value = "HEAD"), cancellable = true, remap = true)
 	public void hookPickUp(ItemStack item, @Nonnull CallbackInfoReturnable<Boolean> callback) {
 		if (ConfigCommonBuilder.INSTANCE.enVillagerEatToHeal.get())
-			if (!item.isEmpty() && Villager.FOOD_POINTS.keySet().contains(item.getItem())) {
+			if (!item.isEmpty() && Villager.FOOD_POINTS.containsKey(item.getItem())) {
 				callback.setReturnValue(true);
 			}
 	}

@@ -3,16 +3,16 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dcs_climate:core/metalblock_titanium"
+        "recipe": "dcs_climate:core/ingot_titanium_alloy"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_titanium_ingot": {
+    "has_titanium_alloy_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "dcs_climate:main/ingot_titanium"
+              "dcs_climate:main/metalblock_titanium"
             ]
           }
         ]
@@ -22,13 +22,13 @@
   },
   "requirements": [
     [
-      "has_titanium_ingot",
+      "has_titanium_alloy_block",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "dcs_climate:core/metalblock_titanium"
+      "dcs_climate:core/ingot_titanium_alloy"
     ]
   },
   "sends_telemetry_event": false

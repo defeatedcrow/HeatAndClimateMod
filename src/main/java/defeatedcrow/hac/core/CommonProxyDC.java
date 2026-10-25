@@ -212,6 +212,10 @@ public class CommonProxyDC {
 		map.put(FoodInit.SANDWICH_SALMON_ITEM.get(), 4);
 		map.put(FoodInit.SANDWICH_SALAD_ITEM.get(), 4);
 		if (Villager.FOOD_POINTS instanceof ImmutableMap) {
+			map.put(Items.BREAD, 4);
+			map.put(Items.CARROT, 1);
+			map.put(Items.POTATO, 1);
+			map.put(Items.BEETROOT, 1);
 			Villager.FOOD_POINTS = map;
 		} else {
 			Villager.FOOD_POINTS.putAll(map);
